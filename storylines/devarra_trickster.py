@@ -227,7 +227,7 @@ letter(P + "dead.woken", "The hide splits", [
         c("Continue", "threat_shame", requires=(SHAME_SOLD,), forbids=(STORY_TOLD,)),
         c("Continue", "threat_escaped", requires=(ESCAPED,), forbids=(STORY_TOLD, STORY_SOLD)),
         c("Continue", "threat", forbids=(STORY_TOLD, STORY_SOLD, ESCAPED))),
-    dv("threat_told", '''"You told me my ending from behind a rock, and then your dwarf put his blade under my wing." {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} "And then you paid him not to cut me. I lay in the dark and listened for the rest of it. A story buys a life in my lair, crusader. I never said whose. It bought yours."''',
+    dv("threat_told", '''"You told me my ending from behind a rock, and then the blades came out." {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} "And then you paid him not to cut me. I lay in the dark and listened for the rest of it. A story buys a life in my lair, crusader. I never said whose. It bought yours."''',
        c("Continue", "mother")),
     dv("threat_sold", '''"The blind elf came to where I lay with a lantern he did not need and told your story to my bones. Kenabres. The lies. All of it." {n}Her lip lifts off one tooth; it is new, and very white.{/n} "It was impressive. And your butchers took my teeth. I pay what I charge, crusader, and I remember what I am charged."''',
        c("Continue", "mother")),
@@ -249,15 +249,15 @@ letter(P + "dead.woken", "The hide splits", [
        c("Continue", "said_project", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet")),
        c("Continue", "said_destroyed", requires=("eggs.destroyed",)),
        c("Continue", "said_unknown", forbids=EGGS)),
-    dv("said_omelet", '''"Your city ate my children with herbs." {n}She says it very quietly.{/n} "Every citizen had a plate. I can smell it on your breath, and on theirs, and on the stones of your gate. Someone salted them."''',
+    dv("said_omelet", '''"Your city ate my children with herbs." {n}She says it very quietly.{/n} "Every citizen had a plate. I can smell it on your city, on its breath and on the stones of its gate. Someone salted them."''',
        c("Continue", "clutch")),
     dv("said_druids", '''"Your druids carried my eggs into the hills. They smelled of gold, and of lies. I followed them for a day and a night and lost them at a river, and I do not lose things."''',
        c("Continue", "clutch")),
     dv("said_project", '''"They are in your vaults. I can hear them." {n}Her head turns, very slowly, toward Drezen, and stays there.{/n} "Keep them warm, crusader. If they are cold when I come for them, Drezen will be warm enough."''',
        c("Continue", "clutch")),
-    dv("said_destroyed", '''"Slop on a golem's fist." {n}Nothing in her voice moves at all.{/n} "You stood there and watched."''',
+    dv("said_destroyed", '''"Slop on a golem's fist, or under somebody's boot." {n}Nothing in her voice moves at all.{/n} "Nobody in that chamber stopped it."''',
        c("Continue", "clutch")),
-    dv("said_unknown", '''"The golems had them. Then the golems had nothing, and nobody in that hall would tell me where they went, because everybody in that hall was dead or made of stone." {n}Her eye settles on you.{/n} "You were there. You will find out for me."''',
+    dv("said_unknown", '''"Xanthir's toys had them, the last I knew. Where they are now, nobody alive has told me." {n}Her eye settles on you.{/n} "You know where the demons kept them. You will find out for me."''',
        c("Continue", "clutch")),
     dv("clutch", '''{n}She waits. It is a very particular kind of waiting, and every horse left on the picket line understands it.{/n}''',
        c('[Give her the cook] "Citadel kitchens, second door. He\'s the one who salted them."', "cook_given",
@@ -421,3 +421,7 @@ def integrate(payload):
     trickster_world; the late commit is bound here because no scene reads it yet."""
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
+    # Q11 history gates (devarra_tower): Greybor's strike is named only where its native cue was seen; the Abyss vigil only
+    # where the tower was climbed while the Chapter03 etude was still playing (it completes at ToNexus).
+    payload.setdefault("SeenCues", {})["devarra.greybor_struck"] = ["5a083cd26e6c39b46b3eddcf648f87c8"]   # GoodEnter/Cue_0034
+    payload.setdefault("Etudes", {})["devarra.chapter_three"] = "15e0048c7daf0ac4999c2313b58df0e3"        # Chapter03

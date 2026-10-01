@@ -237,6 +237,24 @@ internal static class DevarraTricksterTests
             var w = World(story, s.Chapters[0], new[] { "trickster", "trickster.ever", P + "returned", "devarra.started" }.Concat(needs).ToArray());
             check(Rules.Available(story, s, Later(story, w, s.DelayHours + 1)), "A watchtower beat never opens: " + s.Id);
         }
+        // Q11 history witnesses: what a beat recalls must have happened on this save.
+        var abyss = S(T + "after_the_abyss");
+        var dwarf = S(T + "the_dwarf");
+        var climbCh3 = After(firstClimb, Later(story, World(story, 3, "trickster", "trickster.ever", P + "returned", P + "tested", "devarra.started", "devarra.chapter_three"), 30), "leave", 1).First();
+        check(climbCh3.Has(T + "climbed") && climbCh3.Has(T + "climbed_before_the_abyss"),
+            "A Chapter 3 climb does not record that she was back before the Abyss.");
+        var climbCh5 = Program.Walk(firstClimb, Later(story, World(story, 5, "trickster", "trickster.ever", P + "returned", P + "tested", "devarra.started"), 30)).ToList();
+        check(climbCh5.Count > 0 && climbCh5.All(r => !r.Has(T + "climbed_before_the_abyss")),
+            "A Chapter 5 first climb claims she waited out the Abyss.");
+        check(Rules.Available(story, abyss, Later(story, climbCh3, 24, 5)) && climbCh5.All(r => !Rules.Available(story, abyss, Later(story, r, 24, 5))),
+            "The Abyss vigil is not gated on a Chapter 3 climb.");
+        var noAmbush = World(story, 5, "trickster", "trickster.ever", P + "returned", "devarra.started", T + "climbed");
+        check(!Rules.Available(story, dwarf, Later(story, noAmbush, 30)) && Rules.Available(story, dwarf, Later(story, World(story, 5, "trickster", "trickster.ever", P + "returned", "devarra.started", T + "climbed", "devarra.greybor_struck"), 30)),
+            "Greybor's ambush is recalled without its native cue.");
+        check(dwarf.Nodes.Single(n => n.Id == "climb").Choices[2].Requires.Contains("devarra.react.greybor.repeat_work"),
+            "The Commander reports Greybor's message without having heard it.");
+        check(story.Scenes.Any(s => s.Id == "devarra.lastcall.page") && story.Scenes.Any(s => s.Id == "devarra.lastcall.call"),
+            "The egg bill has no Last Call collection.");
         Console.WriteLine("PASS: Devarra Trickster (Trk_Devarra_*): the lair story, the golems, the Storyteller's price, the moult, the tithe, the tower's terms and " + tower.Length + " watchtower beats.");
     }
 }

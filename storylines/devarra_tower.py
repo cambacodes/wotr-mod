@@ -48,6 +48,8 @@ LOOKED_AWAY = T + "looked_away"
 WATCHED = T + "watched"
 VAULT_OPENED = T + "vault_opened"
 VAULT_REFUSED = T + "vault_refused"
+CH3 = "devarra.chapter_three"               # Chapter03 etude 15e0048c (Playing; completed by ToNexus), bound in devarra_trickster
+CLIMBED_CH3 = T + "climbed_before_the_abyss"   # she was back and the tower climbed before the march into the Wound
 
 
 def hub(id, title, entry, nodes, requires, forbids=(), delay=0, **extra):
@@ -80,7 +82,7 @@ hub(T + "first_climb", "The watchtower", '"She\'s sent for me, hasn\'t she?"', [
 "One piece of advice. She does not like to be looked at while she is eating. She does not like to be looked away from, either. Nobody has yet found the angle between."''',
         c("Continue", "tower")),
     nar("tower", '''{n}The watchtower has lost its upper floor to some older war, and she has made the ruin into a nest: the broken stair is a ramp, the arrow slits are stuffed with fleeces, and a grey wing is folded over the top like a roof. The floor is scattered with bones, sorted by size, smallest at the door.{/n}
-{n}She is lying around the base of the stair with her head on the sill. In the dusk her new hide looks like ash that has not yet decided to be cold. There is a pale seam low on her flank, under the wing, where Greybor's blade went in; the moult grew over it and did not bother to hide it.{/n}''',
+{n}She is lying around the base of the stair with her head on the sill. In the dusk her new hide looks like ash that has not yet decided to be cold. There is a pale seam low on her flank, under the wing, where the killing blow went in; the moult grew over it and did not bother to hide it.{/n}''',
         c("Continue", "look")),
     dv("look", '''"You climb loudly." {n}She does not lift her head.{/n} "The old man climbs like a cat. You climb like a crusader, as if the mountain owed you the path."
 {n}One eye opens and fixes on you. Up close, it is the size of a shield, and the colour of the inside of a furnace.{/n} "Sit. Not there; that is a bone I have not finished. There."''',
@@ -115,7 +117,8 @@ hub(T + "first_climb", "The watchtower", '"She\'s sent for me, hasn\'t she?"', [
        c("Continue", "leave")),
     dv("leave", '''"Go down now. Come back when I send for you." {n}She breathes out as you turn, once, not at you but past you, and the stone of the doorway beside your head goes red and runs. Your cloak is smoking at the shoulder. The heat stays in your cheek all the way down the ridge, and for a week afterwards the skin there peels.{/n}
 "So that your sentries know where you have been," she says behind you, "and that you came back down because I allowed it."''',
-       c("[Go down the mountain.]", flags=(CLIMBED,))),
+       c("[Go down the mountain.]", flags=(CLIMBED,), forbids=(CH3,)),
+       c("[Go down the mountain.]", flags=(CLIMBED, CLIMBED_CH3), requires=(CH3,))),
 ], requires=("trickster.ever", RETURNED, TESTED), forbids=(CLIMBED,), delay=24)
 
 
@@ -129,9 +132,9 @@ hub(T + "her_questions", "Three questions for a liar", '"Has she sent anything d
         c('"A boat, at the Kenabres river, the night the city fell. I never gave it back."', "first_boat", flags=(STOLE_FIRST,)),
         c('"A name. The one I use. It belonged to someone else before it was mine."', "first_name", flags=(STOLE_FIRST,)),
         c('"Tell her I don\'t remember."', "first_none")),
-    teller("first_boat", '''"A boat." {n}He smiles.{/n} "She will like that. A thing that floats away from a burning city with nobody's leave. It is practically a dragon."''',
+    teller("first_boat", '''"A boat." {n}He smiles.{/n} "A stolen boat, off a burning city. I will carry those words exactly. What she makes of them is her business."''',
         c("Continue", "second")),
-    teller("first_name", '''{n}The smile goes, for a moment.{/n} "A name. Yes. I will carry that one carefully. She knows what names are worth; hers was given to her by the thing that hatched her, and she has never let anyone else say it wrong."''',
+    teller("first_name", '''{n}The smile goes, for a moment.{/n} "A name. Yes. I will carry that one carefully. She keeps her own name close enough that I have never heard her say it twice the same way."''',
         c("Continue", "second")),
     teller("first_none", '''"I will tell her." {n}A pause.{/n} "She will not believe it. Nobody forgets the first thing they stole. They only forget that it was theft."''',
         c("Continue", "second")),
@@ -139,20 +142,20 @@ hub(T + "her_questions", "Three questions for a liar", '"Has she sent anything d
         c('"Everyone I love. That\'s how I know I love them. I bother to lie."', "second_all", flags=(LOVED_LIE,)),
         c('"You. I told you what you were, and it was a lie, and then it wasn\'t."', "second_her", flags=(LOVED_LIE,)),
         c('"No one. I don\'t lie to people I love."', "second_none")),
-    teller("second_all", '''"Everyone." {n}He nods slowly.{/n} "That is the most honest thing anyone has said at this table in some time. I will carry it exactly as you said it, and I will not tell her that your voice went quiet on the last word."''',
+    teller("second_all", '''"Everyone." {n}He nods slowly.{/n} "I will repeat it exactly. Including the way your voice went on the last word. She will ask, and I do not lie to her; it is bad for my health."''',
         c("Continue", "third")),
     teller("second_her", '''{n}He does not answer at once.{/n} "Commander. You understand that I am to carry this up word for word, to a woundwyrm, who has three hundred years of experience in telling what people mean from how they smell when they say it."
 "Very well. It is your neck. Or your forearm."''',
         c("Continue", "third")),
-    teller("second_none", '''"No one." {n}He writes nothing down, but you have the sense that he is remembering the exact shape of it.{/n} "She will call that a lie. She will be impressed that you told it so steadily."''',
+    teller("second_none", '''"No one." {n}He writes nothing down, but you have the sense that he is remembering the exact shape of it.{/n} "She will call that a lie. I cannot promise she will believe the steadiness either."''',
         c("Continue", "third")),
     teller("third", '''"The last: what will you do when the jokes stop working?"''',
         c('"Keep telling them. Somebody has to."', "third_keep", flags=(JOKES_STOP,)),
         c('"Find out what I am without them."', "third_find", flags=(JOKES_STOP,)),
         c('"They won\'t stop."', "third_wont")),
-    teller("third_keep", '''"Keep telling them." {n}He turns his cup the last quarter turn, back to where it started.{/n} "That is the answer she hoped for, I think, and the one she will pretend to despise. Dragons go on sitting on gold long after it has stopped being useful. It is the sitting that matters."''',
+    teller("third_keep", '''"Keep telling them." {n}He turns his cup the last quarter turn, back to where it started.{/n} "She asked the question. She can judge the answer. Dragons go on sitting on gold long after it has stopped being useful; she may think that a compliment, or she may think it a confession."''',
         c("Continue", "end")),
-    teller("third_find", '''"Find out what you are." {n}He is quiet.{/n} "She did that. Three days in the dark in a dead body, finding out what she was without the thing she had been. I do not think she enjoyed it. I think she will respect you for being willing to."''',
+    teller("third_find", '''"Find out what you are." {n}He is quiet.{/n} "She had three days in the dark in a dead body to find out that. I have not asked her what she found. I will carry your answer and not my opinion."''',
         c("Continue", "end")),
     teller("third_wont", '''"They will. They always do. Every trickster's last trick is the one that does not land." {n}He says it without malice, the way he would read out a line of a very old ballad.{/n} "But I will tell her you said they will not. She likes arrogance. She finds it seasons the meat."''',
         c("Continue", "end")),
@@ -190,7 +193,7 @@ hub(T + "the_tax", "The assessment", '"Why is there a clerk crying in your corri
     nar("eaten", '''{n}Oswin, to his eternal credit, opens the satchel himself. She eats the forms one at a time, in order, with great ceremony: the assessment, the schedule of improvements, the notice of reoccupation, the receipt for the notice. She saves the blank requisitions for last and eats those as dessert.{/n}
 {n}When the satchel is empty she studies Oswin the way she studied the proclamation. Then she breathes on him, very gently, just enough to dry the ink on his wrists.{/n}''',
         c("Continue", "end")),
-    teller("end", '''{n}At the foot of the ridge, the Storyteller is waiting with his lantern.{/n} "He is alive? Good. The Treasury will call it a successful assessment. Clerks always survive dragons; it is the forms that suffer." {n}He pats Oswin's shoulder as the young man goes past, shaking.{/n} "She will talk about this for a week. She has not had anything to laugh at since the moult."''',
+    teller("end", '''{n}At the foot of the ridge, the Storyteller is waiting with his lantern.{/n} "He is alive? Good. The Treasury will call it a successful assessment. This clerk survived. His superior should not take that for an invitation." {n}He pats Oswin's shoulder as the young man goes past, shaking.{/n} "She will talk about this for a week. She has not had anything to laugh at since the moult."''',
         c('"Neither have I."')),
 ], requires=(CLIMBED,), forbids=(TAXED,), delay=48)
 
@@ -250,7 +253,7 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
        c("Continue", "withheld_vault", requires=("eggs.project",), forbids=("eggs.druids",)),
        c("Continue", "withheld_told", requires=("eggs.druids",)),
        c("Continue", "withheld_told", forbids=("eggs.project", "eggs.druids"))),
-    dv("withheld_told", '''{n}So you tell her what little you know: where they were taken, how far, that the ones who took them were careful. She listens as if every word were a piece of meat, weighing each one before she swallows it.{/n}
+    dv("withheld_told", '''{n}So you tell her what little you are sure of, and nothing you are not. She listens as if every word were a piece of meat, weighing each one before she swallows it.{/n}
 "Careful," she repeats. "Good. Careful is good." {n}She is quiet.{/n} "I will not ask you again for a while. It is too expensive, asking."''',
        c("Continue", "end")),
     dv("withheld_vault", '''"They are in your vault. I lie at the wall every night and listen to them. They are growing. I can hear the difference." {n}Her claws scrape the stone.{/n} "Let me in. Once. Under your guard, with your spears at my throat, with whatever you like. I want to put my face against the shells and let them hear that I am still here."''',
@@ -293,7 +296,7 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
        c("Continue", "end")),
 
     # Unknown: she wants the Commander to find them.
-    dv("unknown", '''"Found them?" {n}She does not even let you reach the top of the stair.{/n} "You said you would find out. It has been days."''',
+    dv("unknown", '''"Found them?" {n}She does not even let you reach the top of the stair.{/n} "It has been days. You are the one who walks about in that city and asks people questions."''',
        c('"They were taken out of the Sanctum. Nobody will say where."', "unknown_told"),
        c('"I haven\'t found anything. I\'m still looking."', "unknown_looking")),
     dv("unknown_told", '''"Nobody will say." {n}She lies down again, heavily.{/n} "That is what they told me about my mother's clutch, three hundred years ago. Nobody will say. Nobody ever says." {n}Her eye closes.{/n} "Keep asking. Ask the wrong people. You are good at the wrong people."''',
@@ -334,22 +337,26 @@ hub(T + "bane", "A trophy for your desk", '"What\'s in the sack, and why is it m
 # --- After the commit: 7. The first bite -----------------------------------------------------------------------------
 
 hub(T + "first_bite", "Once a year, where she chooses", '"She sent for me. Just me."', [
-    teller("start", '''"Just you." {n}He does not get up.{/n} "She was very specific. I am to walk you to the foot of the ridge and then walk back, and I am not to listen, and I am to tell the watch on the north gate that if they see fire on the ridge tonight it is not the enemy." {n}He turns his cup.{/n} "I have carried many messages in a long life, Commander. That is the first one that made me blush."''',
+    teller("start", '''"Just you." {n}He does not get up.{/n} "She was very specific. I am to walk you to the foot of the ridge and then walk back, and I am not to listen, and I am to tell the watch on the north gate that if they see fire on the ridge tonight it is not the enemy." {n}He turns his cup.{/n} "I will leave you at the path. I have no wish to hear what follows, and she has made very sure that I will not."''',
         c("Continue", "ridge")),
     nar("ridge", '''{n}He leaves you at the foot of the path. You climb the rest alone, in the dark, with the lamps of Drezen at your back and the tower above you like a black tooth.{/n}
 {n}There is fire on the ridge. She has lit it herself: a ring of burning brush around the base of the tower, low and orange, so that the whole ruin glows from inside like a lantern. The heat reaches you halfway up the path.{/n}''',
         c("Continue", "inside")),
-    dv("inside", '''"You came." {n}She is lying in the ring of fire as if it were a bath, the flames running over her new grey hide and doing nothing to it at all.{/n} "Take off the gauntlet, crusader. Not the sword arm. I remember."''',
-        c("[Take off the gauntlet.]", "close")),
-    nar("close", '''{n}She curls around you before you are aware that she has moved: the tail first, then the long body, grey coils closing one by one until there is nothing in the world but hot scaled hide on every side and her breath on the back of your neck like a forge door. It is hard to breathe. It is very hard to think.{/n}
+    dv("inside", '''"You came." {n}She is lying in the ring of fire as if it were a bath, the flames running over her new grey hide and doing nothing to it at all.{/n} "Take off the gauntlet, crusader. Not the sword arm. I remember." {n}Her eye goes down you slowly, the way it goes down a herd on the east road from the ridge, choosing.{/n} "Then the rest. I did not light a fire on my own mountain to bite a sleeve."''',
+        c("[Take off the gauntlet, and then the rest.]", "close")),
+    nar("close", '''{n}The buckles are hot to the touch before you are halfway down them. You drop the last of it on the bones, and the firelight is on your bare skin, and so is she: she curls around you before you are aware that she has moved, the tail first, then the long body, grey coils closing one by one until there is nothing in the world but hot scaled hide against you from heel to nape, and her breath on the back of your neck like a forge door. It is hard to breathe. It is very hard to think.{/n}
 {n}Her head comes around slowly over your shoulder. She does not bite. She tastes first: the tongue, forked and hot and dry as paper, down the inside of your bared forearm from the elbow to the pulse of the wrist, once, and then again, slower, as if she were reading.{/n}''',
         c("Continue", "tasting")),
     dv("tasting", '''"There," she says, very low, and the word goes through the coils and through you. "Iron. Ink. Fear, a little; good. And under it the thing I tasted in the dark while I was dead. The story. You still taste of the story you paid my tariff with."
-{n}The coils tighten, just enough.{/n} "Look at me. I want you to watch."''',
-        c("[Look at her.]", "bite")),
-    nar("bite", '''{n}Her eye is a hand's breadth from your face, orange as the fire, and it does not blink. Her jaws open. The teeth are very white and very clean, and they are the last thing you see clearly: they come down around your forearm slowly, so slowly, and you do not pull away. You have wanted this since the first night she called you food, and she can taste that too; the coils answer it, tightening until your ribs creak and the heat of her is the only thing you know. The points of her teeth settle against your skin. She breathes out, a long rasp of forge-air over your throat, and her whole long body shudders once around you in the firelight, hungry, and holding still.{/n}''',
+{n}The coils tighten, just enough.{/n} "Look at me. I want you to watch. And tell me why you climbed up here with your belt already loose."''',
+        c('[Look at her] "Because I\'ve wanted you since the first night you called me food."', "bite"),
+        c("[Look at her, and let her read the answer off your skin.]", "bite")),
+    nar("bite", '''{n}Her eye is a hand's breadth from your face, orange as the fire, and it does not blink. Her jaws open. The teeth are very white and very clean, and they come down around your forearm slowly, so slowly, and you do not pull away. The points go in exactly as deep as her tariff says and no deeper. She drinks what wells up with her eye on yours, and the coils answer it, tightening until your ribs creak.{/n}
+{n}Then she lets the arm go, and the coils turn. They do not loosen; they roll, carrying you over the hot stone and onto her, and she lifts the grey wing off her flank like a blanket thrown back. Under it is the seam where the killing blow went in, and below the seam the pale, furnace-hot scales of her belly, the one part of her no living thing has ever been let near. Her tail closes round your hips and draws you down into that heat, bare skin to burning scale, and holds you there. The sound she makes is too low to hear. You feel it in your teeth.{/n}
+"Mine," she says against your hair. "All of it. Pay the rest."
+{n}And she pulls you in.{/n}''',
         c("Continue", "morning")),
-    nar("morning", '''{n}The brush has burned down to a black ring on the rock. You are lying against her flank, inside the curve of her, warmer than you have been since the Worldwound; your forearm is bound in a strip of fleece from the arrow slits, and there is a neat grey crescent of marks under it that you already know will never quite fade. It throbs with your pulse. Every beat of it is hers, and she knows exactly how many she took.{/n}''',
+    nar("morning", '''{n}The brush has burned down to a black ring on the rock. You are lying against her flank, inside the curve of her, warmer than you have been since the Worldwound, and printed from shoulder to knee with the pattern of her scales, red as a brand where they pressed hardest; your forearm is bound in a strip of fleece from the arrow slits, and there is a neat grey crescent of marks under it that you already know will never quite fade. It throbs with your pulse.{/n}''',
         c("Continue", "after")),
     dv("after", '''"Small," she says, without opening her eyes. "I said it would be small. I keep my bargains." {n}Her tail shifts, and you slide a little closer against the heat of her.{/n} "Go down when you like. Not yet. The old man is still pretending he did not hear anything, and it would be rude to spoil it for him."''',
        c("[Stay a little longer.]", flags=(BITTEN_ONCE,))),
@@ -360,7 +367,7 @@ hub(T + "first_bite", "Once a year, where she chooses", '"She sent for me. Just 
 
 hub(T + "what_she_says", "What she says about you", '"Does she talk about me? When I\'m not there?"', [
     teller("start", '''{n}He turns his cup a quarter turn, and then another, before he answers.{/n} "I am a storyteller, Commander. You are asking me to tell you a story about yourself that is not mine to tell. That has a price."
-{n}He smiles, a little.{/n} "But she did not tell me to keep it secret, and I have carried so many of her threats up and down that ridge that I think I have earned the right to carry one other thing."''',
+{n}He smiles, a little.{/n} "But she did not forbid me to repeat it. I will tell you what I heard, and what I found with my fingers. What it means is your trouble."''',
         c("Continue", "says")),
     teller("says", '''"She counts your visits. Not out loud; she scratches them on the stair, one line for each, the way prisoners mark days. I found them with my fingers, the last time I went up." {n}He turns his cup.{/n} "When the wind is from the city she lies with her head out of the tower and listens for your voice among the others. She can pick it out. She told me so as though she were confessing to a disease."''',
         c("Continue", "worst")),
@@ -370,9 +377,9 @@ hub(T + "what_she_says", "What she says about you", '"Does she talk about me? Wh
     teller("message", '''"Very well. What shall I carry?"''',
         c('"Tell her I count them too."', "count"),
         c('"Tell her the old man talks too much."', "talks")),
-    teller("count", '''{n}He nods slowly.{/n} "I will tell her. She will pretend to be disgusted. She will ask me to repeat it, to make certain I have the words right." {n}The smile again.{/n} "I will make her ask twice."''',
+    teller("count", '''{n}He nods slowly.{/n} "I will tell her. If she wants it repeated, she can ask." {n}A dry smile.{/n} "She will ask. She asks for everything twice, to see if the price changes."''',
         c("Continue", "end")),
-    teller("talks", '''"She will like that very much. She has been saying the same thing about me for months." {n}He chuckles, a dry sound.{/n} "We will have something in common at last, she and I, besides you."''',
+    teller("talks", '''"She has been saying the same thing about me for months." {n}He chuckles, a dry sound.{/n} "Then I shall have carried a message she cannot dispute. That will be a first."''',
         c("Continue", "end")),
     teller("secret", '''"I will not tell her." {n}A pause.{/n} "She will know anyway. She can smell a question on you from the foot of the ridge, and that one has a very particular smell. But I will not be the one who told her. A messenger has some honour, even to a dragon."''',
         c("Continue", "end")),
@@ -388,7 +395,7 @@ hub(T + "what_happened_next", "The next part of the story", '"She wants the next
         c("Continue", "owed", requires=(ENDING_OWED,)),
         c("Continue", "sold", requires=(STORY_SOLD,), forbids=(ENDING_OWED,)),
         c("Continue", "climb", forbids=(ENDING_OWED, STORY_SOLD))),
-    teller("owed", '''"She reminds you that you told her the first part yourself, from behind a rock in her lair, before your dwarf put his blade in her. She says that part was very good, and that you have been living on credit since."''',
+    teller("owed", '''"She reminds you that you told her the first part yourself, from behind a rock in her lair, before the blades came out. She says that part was very good, and that you have been living on credit since."''',
         c("Continue", "climb")),
     teller("sold", '''{n}His mouth twists.{/n} "She reminds you, and me, that she already has the first part. I told it to her bones. Kenabres to the night of the sale." {n}A pause.{/n} "She says it was the best meal she ever had, and that it is time for dessert."''',
         c("Continue", "climb")),
@@ -412,7 +419,7 @@ hub(T + "what_happened_next", "The next part of the story", '"She wants the next
 # --- 10. Back up the mountain (the Commander left her the tower and her memory; one more climb) --------------------
 
 hub(T + "back_up_the_mountain", "She is still hungry", '"Is she still up there?"', [
-    teller("start", '''"She is still up there. She has not moved from the sill in a week, the drovers say, and the oxen on the east road are safe, which frightens them more than when she ate them." {n}He turns his face toward the ridge.{/n} "You left her the tower and her memory, Commander. She has been living on the memory. I do not think it is very filling."''',
+    teller("start", '''"She is still up there. She has not moved from the sill in a week, the drovers say, and the oxen on the east road are safe, which frightens them more than when she ate them." {n}He turns his face toward the ridge.{/n} "The drovers say she has not hunted in a week. I have not asked her why. I have learned not to ask a hungry dragon questions about her appetite."''',
         c("Continue", "climb")),
     nar("climb", '''{n}The tower is exactly as you left it: the bones sorted by size, the fleeces in the arrow slits, the grey wing folded over the top. She does not lift her head when you come in. She only says, without looking,{/n}''',
         c("Continue", "her")),
@@ -437,6 +444,7 @@ HIDE_GIVEN = T + "hide_given"
 HIDE_SOLD = T + "hide_sold"
 HIDE_BURNED = T + "hide_burned"
 DWARF = T + "dwarf_spoken"
+GREYBOR_STRUCK = "devarra.greybor_struck"   # SeenCues GoodEnter/Cue_0034 5a083cd2: "Sweet dreams." (bound in devarra_trickster)
 SCRAPED = T + "scraped"
 RING = T + "ring_finished"
 FLOWN = T + "flown"
@@ -481,12 +489,12 @@ hub(T + "the_old_hide", "Her old face", '"What happened to the old hide?"', [
     dv("burn", '''{n}She goes very still.{/n} "Nobody wears me." {n}She repeats it as though tasting a new spice.{/n} "Very well. Stand back."
 {n}She breathes on her old body. It takes a long time to catch; dragon hide does not burn easily, even when the dragon wants it to. When it does, she watches it the whole way down, and she does not say anything at all until there is nothing but a black shape on the grass.{/n}''',
        c("Continue", "burn_2")),
-    dv("burn_2", '''"There." {n}Her voice is rough with smoke.{/n} "Now I am the only one." {n}She turns her head and looks at you.{/n} "Do not do me kindnesses, crusader. I do not know what to do with them. I will have to eat something to feel better."''',
+    dv("burn_2", '''"There." {n}Her voice is rough with smoke.{/n} "Now I am the only one." {n}She turns her head and looks at you.{/n} "You burned good hide, crusader. A merchant in Nerosyan would have paid you a hoard for it." {n}She licks the ash off her teeth.{/n} "Bring me something worth that fire. I am going to eat something now. Do not watch."''',
        c("Continue", "end")),
     dv("give", '''"Mine." {n}She looks down at it at last, at her own dead face, for a very long time.{/n} "I will keep it, then. I will drag it up the ridge and lay it across the door of the tower, so that anyone who comes to kill me has to walk through the last one who tried."
 {n}She takes the hide in her jaws, gently, the way she would lift an egg, and does not look at you again. At the edge of the field she stops.{/n} "You might have sold it. I know what it was worth. Remember that you did not. I will."''',
        c("Continue", "end")),
-    teller("end", '''{n}Back in Drezen, the Storyteller listens to your account without interrupting.{/n} "I was in the lair when she was still wearing it. I could not see her face, of course. But I could hear it, when she spoke; the old hide creaked around the jaw. The new one does not." {n}He smiles, very slightly.{/n} "Something about her sounds lighter. I do not think it is the weight."''',
+    teller("end", '''{n}Back in Drezen, the Storyteller listens to your account without interrupting.{/n} "I was in the lair when she was still wearing it. I could not see her face, of course. But I could hear it, when she spoke; the old hide creaked around the jaw. The new one does not."''',
         c('"Maybe not."')),
 ], requires=("trickster.ever", RETURNED), forbids=(HIDE_DEALT,), delay=24)
 
@@ -496,10 +504,10 @@ hub(T + "the_old_hide", "Her old face", '"What happened to the old hide?"', [
 hub(T + "the_dwarf", "Who set the ambush", '"She asked about Greybor, didn\'t she."', [
     teller("start", '''"She did. She asked me the name of the dwarf who put his blade under her wing. She described the blade. She described the angle." {n}His hands are very still on the table.{/n} "I did not tell her. I am not in the habit of handing names to dragons. But she knows the smell of him, Commander, and I think she knows you know it too. She has asked for you."''',
         c("Continue", "climb")),
-    dv("climb", '''"The dwarf." {n}She does not bother with a greeting; she is lying across the doorway with the grey seam under her wing turned toward you, deliberately, so you cannot look anywhere else.{/n} "He found the one soft place on me in three hundred years, and he put steel in it, and he said 'sweet dreams'. I heard him. It was the last thing I heard before your voice." {n}Her eye narrows.{/n} "I want him."''',
+    dv("climb", '''"The dwarf." {n}She does not bother with a greeting; she is lying across the doorway with the grey seam under her wing turned toward you, deliberately, so you cannot look anywhere else.{/n} "He found the one soft place on me in three hundred years, and he put steel in it, and he said 'sweet dreams'. I heard him through my own roaring." {n}Her eye narrows.{/n} "I want him."''',
        c('"No. He works for me. He\'s under my protection."', "protect"),
        c('"He was paid to do it. Take it up with whoever paid him. That was me."', "me"),
-       c('"He said to tell you repeat work is billed at the full rate."', "rate")),
+       c('"He said to tell you repeat work is billed at the full rate."', "rate", requires=("devarra.react.greybor.repeat_work",))),
     dv("protect", '''"Under your protection." {n}The tower goes very quiet.{/n} "You say that word to me a great deal, crusader, for a thing that is soft all the way through." {n}She flexes her claws.{/n} "Very well. I will not eat your dwarf. Not because you told me not to. Because he was good at it. The ones who are good at killing you are the only ones worth remembering. I will remember him instead. It is worse."''',
        c("Continue", "end")),
     dv("me", '''{n}She lowers her head until her eye is level with yours and stays there, breathing.{/n} "You." {n}It is almost fond.{/n} "Yes. It was always you, wasn't it? The dwarf was the blade. You were the hand. And then you were the voice, too, telling the story that paid my tariff, and then the one who kept the saws off me." {n}She pulls back.{/n} "You are very greedy, crusader. You wanted to kill me and name me both. I have never met anyone so greedy. It is nearly dragonish."''',
@@ -508,7 +516,7 @@ hub(T + "the_dwarf", "Who set the ambush", '"She asked about Greybor, didn\'t sh
        c("Continue", "end")),
     teller("end", '''{n}At the foot of the ridge, the Storyteller falls into step beside you.{/n} "And?" {n}He listens to your answer and nods.{/n} "Then the dwarf lives. I am glad. He is rude to me, and he smells of other men's blood, but he once told me my story about the ring was 'not bad', which from him is an ode."''',
         c('"From him, it is."', flags=(DWARF,))),
-], requires=(CLIMBED,), forbids=(DWARF,), delay=24)
+], requires=(CLIMBED, GREYBOR_STRUCK), forbids=(DWARF,), delay=24)   # only where his strike is on record (GoodEnter/Cue_0034)
 
 
 # --- 14. The itch (after the first climb): the old scales that did not come off ----------------------------------
@@ -539,7 +547,7 @@ hub(T + "the_itch", "The places she cannot reach", '"She\'s asked for a spade?"'
 # --- 15. The ring (after the first climb): the Storyteller finishes the story he started in her lair ----------------
 
 hub(T + "the_ring", "The one about the ring", '"She wants the end of the story about the ring."', [
-    teller("start", '''"She does." {n}For the first time since you have known him, the Storyteller looks uncomfortable.{/n} "In the lair I told her about a gnome at a party in Restov, and a signet ring with the arms of King Irovetti, and a man who thought himself immune to the knives he had paid for. She asked me what happened next, and then your dwarf attacked, and I never finished." {n}He folds his hands.{/n} "She has decided I owe her the ending. She wants it told in the tower, with you present, so that there is a witness when she decides whether it was worth my life."''',
+    teller("start", '''"She does." {n}For the first time since you have known him, the Storyteller looks uncomfortable.{/n} "In the lair I told her about a gnome at a party in Restov, and a signet ring with the arms of King Irovetti, and a man who thought himself immune to the knives he had paid for. She asked me what happened next, and then the lair was full of steel and fire, and I never finished." {n}He folds his hands.{/n} "She has decided I owe her the ending. She wants it told in the tower, with you present, so that there is a witness when she decides whether it was worth my life."''',
         c('"I\'ll come."', "tower"),
         c('"I\'ll come, and if she tries to eat you, she\'ll have to go through me."', "guard")),
     teller("guard", '''"How gallant." {n}The discomfort does not leave his face, but something else joins it.{/n} "She would go through you, Commander, and very quickly, and it would be undignified for both of us. But I thank you. It is a better line than most of the ones in my story."''',
@@ -547,7 +555,7 @@ hub(T + "the_ring", "The one about the ring", '"She wants the end of the story a
     nar("tower", '''{n}So you climb the ridge together, the blind elf and the Commander, and the old man sits down on a bone the size of a bench in front of a dragon who once kept him prisoner in her lair, and clears his throat.{/n}
 {n}She lies with her chin on the floor, her eye level with his face, close enough that her breath stirs his hair. She does not blink.{/n}''',
         c("Continue", "story")),
-    teller("story", '''"The gnome's name was Tartuccio," he says, and his voice changes, as it did in the lair, and takes on the shrill, sneering edge of someone else. "He rode into the Stolen Lands with the ring on his finger and a list of rivals in his pocket, and at the top of the list was an adventurer nobody had heard of. A dark horse." {n}The voice goes back to his own.{/n} "He meant to be a lord. He was very clever. He planned everything except the possibility that the dark horse might be the better story."''',
+    teller("story", '''"The gnome's name was Tartuccio," he says, and his voice turns shrill and sneering, the voice of someone else. "He rode into the Stolen Lands with the ring on his finger and a list of rivals in his pocket, and at the top of the list was an adventurer nobody had heard of. A dark horse." {n}The voice goes back to his own.{/n} "He meant to be a lord. He was very clever. He planned everything except the possibility that the dark horse might be the better story."''',
         c("Continue", "story_2")),
     teller("story_2", '''"He did not come back out of the Stolen Lands. The dark horse did, and became a baron, and then something the songs in Brevoy still disagree about." {n}He spreads his hands.{/n} "And the ring he thought would keep him safe from all the knives? It is in my bag, as it was in your lair, madam. It kept him safe from every knife but the one he was holding."''',
         c("Continue", "verdict")),
@@ -578,7 +586,7 @@ hub(T + "the_flight", "Over Drezen at night", '"She wants to fly? With me?"', [
        c("Continue", "down")),
     dv("demons", '''"I fight everything." {n}She sounds almost amused.{/n} "Demons are simply the easiest to find. They are everywhere, and they never learn, and they taste of rot, which is how I like my enemies." {n}She drops a little, and your stomach goes with her.{/n} "And the golems that held my eggs were made by a man who serves them. I am very thorough, crusader. I go back to the beginning of a debt."''',
        c("Continue", "down")),
-    nar("down", '''{n}She brings you down on the ridge just before dawn, so gently that you barely feel the landing. Your hands are numb, your face is raw with cold, and you have never in your life seen so much of the world at once.{/n}''',
+    nar("down", '''{n}She brings you down on the ridge just before dawn, so gently that you barely feel the landing. Your hands are numb, your face is raw with cold, and Drezen, which was a scatter of lamps under you all night, is only now growing back to its proper size.{/n}''',
         c("Continue", "end_her")),
     dv("end_her", '''"Now you know how small you are." {n}She settles around the tower, folding her wings.{/n} "Remember it the next time you tell someone what they are. You told me I was a clutch-mother. From up there, crusader, you are a lamp. A very small lamp. I could put it out with one breath." {n}She closes her eyes.{/n} "I will not. Go down."''',
        c("[Go down the mountain.]", flags=(FLOWN,))),
@@ -624,7 +632,7 @@ hub(T + "after_the_abyss", "You were gone", '"Was she there, while I was in the 
         c('"What was it?"', "what")),
     teller("what", '''"She was counting." {n}He smiles.{/n} "Aloud, all night, in Draconic. The scratches on her stair, one for each time you climbed it. One, and one, and one again. As if she might have missed one, and it would be the one that mattered."''',
         c('"..."', flags=(ABYSS_BACK,))),
-], requires=("trickster.ever", RETURNED, CLIMBED), forbids=(ABYSS_BACK,), delay=0, chapters=(5,))
+], requires=("trickster.ever", RETURNED, CLIMBED, CLIMBED_CH3), forbids=(ABYSS_BACK,), delay=0, chapters=(5,))
 
 
 # --- 19. A story for nothing (after the commit) -----------------------------------------------------------------------
@@ -634,16 +642,16 @@ hub(T + "a_story_for_nothing", "Not owed", '"I want to tell her a story. Not one
         c("Continue", "climb")),
     dv("climb", '''"The old man says you have brought me a story you do not owe me." {n}She sounds suspicious.{/n} "That is not how stories work. Stories are what you pay with. What do you want for it?"''',
        c('"Nothing. Just listen."', "tell")),
-    nar("tell", '''{n}So you tell her something small. A story with no dragons in it, and no demons, and no crusade: a day from before any of this, a market, a dog, a stolen pie, a rainstorm, nothing that matters to anyone living but you.{/n}
+    nar("tell", '''{n}So you tell her something small. A story with no dragons in it, and no demons, and no crusade: a market, a dog, a stolen pie, a rainstorm. Whether any of it happened is your business.{/n}
 {n}She listens with growing confusion, and then with something else. When you finish she does not speak for a while.{/n}''',
         c("Continue", "her")),
     dv("her", '''"That was terrible." {n}She sounds genuinely offended.{/n} "Nothing happened in it. There was no price and no blood and nobody learned anything. The dog did not even eat anybody." {n}She lays her head down.{/n} "Tell it again."''',
        c("[Tell it again.]", "again")),
-    nar("again", '''{n}You tell it again. Halfway through she interrupts to ask what colour the dog was, and whether the pie was meat or fruit, and you realise, with a peculiar lurch, that she is not judging it. She is simply listening, the way the Storyteller said she listened at the east gate: to the sound of a small ordinary life happening somewhere without her.{/n}''',
+    nar("again", '''{n}You tell it again. Halfway through she interrupts to ask what colour the dog was, and whether the pie was meat or fruit, and then she waits, with her chin on the sill, for you to go on.{/n}''',
         c("Continue", "end_her")),
     dv("end_her", '''"Fruit," she says, at the end, with deep disapproval. "I would have eaten the dog." {n}She closes her eyes.{/n} "Go down. And do not tell anyone you gave me something for nothing. If it gets about, they will all want to try it, and I will have to eat them."''',
        c("Continue", "end")),
-    teller("end", '''{n}The Storyteller is sitting on his rock at the foot of the ridge when you come down, and he is smiling openly, which you have never seen him do.{/n} "I heard. I am sorry; I lied about keeping back. I am a storyteller." {n}He stands.{/n} "Commander, I have been paid in a dragon's mercy once in my life, and I was grateful. I think you have just paid her in something she has never been paid in at all. I do not have a name for it either."''',
+    teller("end", '''{n}The Storyteller is sitting on his rock at the foot of the ridge when you come down, and he is smiling openly, which you have never seen him do.{/n} "I heard. I am sorry; I lied about keeping back. I am a storyteller." {n}He stands.{/n} "She asked to hear it twice. She has never asked me to tell anything twice that she did not mean to eat the teller of. I cannot tell you why. I would not try to find out."''',
         c('"Neither do I."', flags=(FREE_STORY,))),
 ], requires=(COMMITTED,), forbids=(FREE_STORY,), delay=48)
 
@@ -659,7 +667,7 @@ hub(T + "under_the_wing", "The storm", '"There\'s a storm coming. Is she all rig
     dv("her", '''"Sit," she says. "There. Against me." {n}Her flank is hot as a banked hearth through your wet clothes.{/n} "You are cold. Crusaders are always cold. You eat bread and wear iron and wonder why." {n}The wing settles lower, and the dark closes in, warm and close and smelling of forge-smoke and rain.{/n} "Sleep, if you want. I will not bite. It is not the day."''',
        c("[Sleep against her.]", "sleep"),
        c('"Why did you call me up in the storm?"', "why")),
-    dv("why", '''{n}The storm answers first, all around the wing.{/n} "Because in the lair, before, there was a storm like this, and I lay alone under the rock and listened to the thunder and was not afraid of it, and it was very dull." {n}Her breath stirs your wet hair.{/n} "And tonight I wanted to find out whether it would still be dull with a thing beside me that is afraid of it. It is not. Sleep."''',
+    dv("why", '''{n}The storm answers first, all around the wing.{/n} "Because in the lair, before, there was a storm like this, and I lay alone under the rock and listened to the thunder and was not afraid of it, and it was very dull." {n}Her breath stirs your wet hair.{/n} "And tonight I wanted to find out whether it would still be dull with a thing beside me that I could frighten. It is not. Sleep."''',
        c("[Sleep against her.]", "sleep")),
     nar("sleep", '''{n}You sleep. Sometime in the night you wake, and the storm is still raging somewhere beyond the wing, and her great head has come around in the dark and is resting on the floor beside you, one eye half-open, orange as a coal, watching you breathe.{/n}
 {n}When she sees that you are awake she closes it, deliberately, and pretends to be asleep until the morning.{/n}''',
@@ -672,7 +680,7 @@ hub(T + "under_the_wing", "The storm", '"There\'s a storm coming. Is she all rig
 hub(T + "before_the_end", "What you still owe", '"I\'m going somewhere I might not come back from. I want to see her."', [
     teller("start", '''"I know where you are going. Everyone in Drezen knows; they only pretend not to, so they can sleep." {n}He stands, which he rarely does for anyone.{/n} "I will walk you to the foot of the ridge. I would like you to know, Commander, that whatever happens, the story is a good one. I am not flattering you. I am a professional."''',
         c("Continue", "climb")),
-    dv("climb", '''"You are going to the end of the world." {n}She does not ask; she has heard the city.{/n} "To the place where the Wound goes all the way down. And you have come to tell me, this time, before you go." {n}Her eye does not leave you.{/n} "Good. You can be taught."''',
+    dv("climb", '''"You are going to the end of the world." {n}She does not ask; she has heard the city.{/n} "To the place where the Wound goes all the way down. And you have come to tell me before you go." {n}Her eye does not leave you.{/n} "Good. You can be taught."''',
        c('"If I don\'t come back, the tower is yours. It always was."', "if"),
        c('"I\'ll come back. I owe you the end."', "owe")),
     dv("if", '''{n}The wing comes around you before you finish, not hard, just close, closing you in against her.{/n} "If you do not come back," she says, very quietly, "I will go down there and find what is left of you and bring it back up this mountain and eat it, so that nothing else can. That is what dragons do with what is theirs." {n}The wing tightens.{/n} "So do not make me. I would not enjoy it. That is the first time I have ever said so about a meal."''',
@@ -702,14 +710,14 @@ hub(T + "the_drovers", "Four oxen and a list", '"Why is the quartermaster sendin
         c('[Pay them from the war chest] "The crusade will make it good."', "paid", crusade=("Finances", -50)),
         c('"Take it up with her. She\'s on the ridge."', "her"),
         c('[Promise them she\'ll stay off the east road] "It won\'t happen again. I\'ll see to it."', "promise")),
-    teller("paid", '''{n}The brothers go away with their purse, bowing, and the Storyteller waits until the door has shut.{/n} "She will hear of it, you know. She hears everything that is said about food." {n}A pause.{/n} "I will tell you now what she will say, and save you the climb: that you paid for her dinner. That nobody has ever paid for her dinner. That it is a very strange feeling, and she does not know whether it is an insult."''',
+    teller("paid", '''{n}The brothers go away with their purse, bowing, and the Storyteller waits until the door has shut.{/n} "She will hear of it, you know. She hears everything that is said about food." {n}A pause.{/n} "You have paid for her dinner, with the crusade's coin. When I tell her, she will either be insulted or she will order more oxen. I will carry her reply when she gives one."''',
         c("Continue", "end")),
     teller("her", '''{n}The brothers look at each other, and then at you, and then leave without their compensation and without another word.{/n}
-"That," the Storyteller says, "was cruel, and fair, and very like her. She will be delighted when I tell her." {n}He turns his cup.{/n} "She says that a thing that walks where she eats has made its choice. I would not have said it to their faces. You did. That is the difference between us, Commander, and it is why she sends for you and only talks to me."''',
+"That," the Storyteller says, "was cruel, and fair, and very like her. She will be delighted when I tell her." {n}He turns his cup, and does not look pleased.{/n} "She says that a thing that walks where she eats has made its choice. I would not have said it to their faces. You did. Three brothers will tell that on the east road for the rest of their lives, and they will not tell it kindly."''',
         c("Continue", "end")),
     teller("promise", '''{n}The brothers go away satisfied, and the Storyteller sighs.{/n} "You promised them she would stay off the east road." {n}He sighs.{/n} "Commander, she will hear that too. She will hear that you promised something about her, to strangers, without asking. I will carry her answer down when she gives it. I do not think it will be about oxen."''',
         c("Continue", "promise_her")),
-    teller("promise_her", '''{n}He goes up the next morning and comes back at noon.{/n} "She says: 'The Commander may promise whatever it likes about the east road. I have not eaten on the east road since the first morning. I have been eating on the north road. Tell the Commander I was being polite, and that it has now spoiled it by noticing.'" {n}He smiles.{/n} "I believe that is her way of saying you were right."''',
+    teller("promise_her", '''{n}He goes up the next morning and comes back at noon.{/n} "She says: 'The Commander may promise whatever it likes about the east road. I have not eaten on the east road since the first morning. I have been eating on the north road. Tell the Commander I was being polite, and that it has now spoiled it by noticing.'" {n}He does not smile.{/n} "The north-road drovers have not been compensated. I thought you should know whose road it is now."''',
         c("Continue", "end")),
     teller("end", '''"The oxen, in any case, are settled." {n}He sets his cup down.{/n} "Your first diplomatic incident with a woundwyrm, concluded without casualties among the diplomats. I shall put it in a story one day. I shall have to change the names, or nobody will believe it."''',
         c('"Change mine first."', flags=(DROVERS,))),
@@ -749,7 +757,7 @@ hub(T + "the_meal", "Dinner on the ridge", '"She\'s invited me to dinner?"', [
     teller("start", '''"She has invited you to dinner. She was very precise: you are to bring nothing, you are to be hungry, and you are not to ask what it is." {n}He clears his throat.{/n} "I asked, on your behalf. She said it had four legs and one head and had never been to Drezen, and that this was all I needed to know, and that I was not invited. I confess I was relieved."''',
         c("Continue", "climb")),
     nar("climb", '''{n}There is a whole stag turning on a spit of broken spear shafts in the middle of the tower floor, and no fire under it. She is lying with her chin on her claws beside it, breathing on it slowly, patiently, in a long thin stream of flame that she moves from end to end as carefully as a cook with a basting brush.{/n}
-{n}The smell is extraordinary. You had not realised how long it has been since you ate anything that was not army rations.{/n}''',
+{n}The smell of roast meat fills the ruin and goes straight past your nose to your stomach.{/n}''',
         c("Continue", "her")),
     dv("her", '''"Sit. Do not touch it." {n}She keeps breathing on the stag without looking at you.{/n} "I watched your cooks, in the kitchens under the citadel. They put things in the fire and take them out burned on the outside and raw in the middle, and they call that cooking. I have been doing it better than them for three hundred years." {n}The flame moves along the flank.{/n} "Now. Tell me what you want. Not the leg. The leg is mine."''',
        c('"Whatever you give me."', "give"),
@@ -761,8 +769,8 @@ hub(T + "the_meal", "Dinner on the ridge", '"She\'s invited me to dinner?"', [
        c("Continue", "eat")),
     dv("people", '''"People are tough, and they talk, and they never season themselves properly." {n}She rolls the stag over with one claw.{/n} "I eat people when people deserve it, or when people are in the way, or when I am bored. Stags I eat because they are delicious. You should know the difference, crusader, since you have been on the list of the first kind and are now, apparently, a guest." {n}She tears off a piece.{/n} "Eat."''',
        c("Continue", "eat")),
-    nar("eat", '''{n}It is, you have to admit, the best meat you have tasted in a year: smoky and tender all the way through, cooked so evenly that there is not one burned edge on it.{/n}
-{n}She watches you eat every mouthful, with an expression you have never seen on her before, and it takes you a moment to recognise it. It is the look of someone watching a thing they made being enjoyed.{/n}''',
+    nar("eat", '''{n}It is smoky and tender all the way through, cooked so evenly that there is not one burned edge on it.{/n}
+{n}She watches every mouthful go down, the way she watches the east road from the sill: to see what it does next.{/n}''',
         c('"It\'s better than my cooks."', "better")),
     dv("better", '''"It is better than your cooks." {n}She turns back to the stag, satisfied.{/n} "Of course it is. I told you." {n}She tears off the leg, the one that was hers, and eats it in two bites.{/n} "You may come to dinner again. Bring nothing. Be hungry. Do not bring the old man; he talks with his mouth full, and his stories are better cold."''',
        c("[Stay until the stag is bones.]", flags=(FED,))),
@@ -774,18 +782,18 @@ hub(T + "the_meal", "Dinner on the ridge", '"She\'s invited me to dinner?"', [
 hub(T + "the_soft_place", "Where the blade went in", '"She sent for me again. Not about food, I suppose."', [
     teller("start", '''"Not about food." {n}He does not smile.{/n} "She said to tell you to come alone, and to come unarmed, and to come in daylight. I asked her why daylight. She said, 'So that the Commander can see exactly what I am showing it.'" {n}He turns his face toward the ridge.{/n} "Leave your sword with me, Commander. I will keep it for you. I have kept worse things for worse people."''',
         c("Continue", "climb")),
-    nar("climb", '''{n}She is lying on her side in the sun on the tower floor, one wing lifted and held high, like a sail, like a door propped open. Under it, low on her flank where the new grey hide is thinnest, is the seam: a long pale ridge where Greybor's blade went in and the moult grew over it.{/n}
+    nar("climb", '''{n}She is lying on her side in the sun on the tower floor, one wing lifted and held high, like a sail, like a door propped open. Under it, low on her flank where the new grey hide is thinnest, is the seam: a long pale ridge where the killing blow went in and the moult grew over it.{/n}
 {n}She does not look at you. She is looking at the sky.{/n}''',
         c("Continue", "her")),
-    dv("her", '''"There." {n}Her voice is flat and quiet.{/n} "The one soft place. The dwarf found it with steel. I have spent three hundred years making certain nobody else ever could, and now it is there again, on a new body, in the same place, because that is where you killed me and the moult remembered." {n}A long breath.{/n} "Put your hand on it."''',
+    dv("her", '''"There." {n}Her voice is flat and quiet.{/n} "The one soft place. Steel found it. I have spent three hundred years making certain nobody else ever could, and now it is there again, on a new body, in the same place, because that is where you killed me and the moult remembered." {n}A long breath.{/n} "Put your hand on it."''',
        c("[Put your hand on it.]", "touch"),
        c('"Why are you showing me this?"', "why")),
-    dv("why", '''"Because you know where it is. You watched the dwarf find it. If you ever want to kill me again, you will not need a dwarf." {n}She still does not look at you.{/n} "I am tired of waiting to find out whether you will. So I am showing you, in daylight, with my wing up, and your sword at the bottom of the mountain. Now we both know. Put your hand on it."''',
+    dv("why", '''"Because you know where it is. You were there when it was found. If you ever want to kill me again, you will not need to look for it." {n}She still does not look at you.{/n} "So I am showing you, in daylight, with my wing up, and your sword at the bottom of the mountain, and my teeth a length from your neck. Put your hand on it. Then we will see which of us is quicker."''',
        c("[Put your hand on it.]", "touch")),
     nar("touch", '''{n}The seam is hot under your palm, hotter than the rest of her, and softer: soft enough that you can feel her heartbeat through it, huge and slow and very steady, the heartbeat of something that could crush you by rolling over in its sleep.{/n}
 {n}Under your hand it speeds up. Only a little. Only for a moment. Then she makes it slow down again, deliberately, and you feel her do it.{/n}''',
         c("Continue", "after")),
-    dv("after", '''"There," she says, very quietly. "Now you have your hand on the only place I cannot defend, and I have let you, and you have not done anything with it." {n}The wing comes down, slowly, over your arm, over your shoulder, until you are standing in the grey dark under it with your hand still on her side.{/n} "Do not ever tell anyone about this. Not the old man. Not your generals. Not the other things you love. This one is mine."''',
+    dv("after", '''"There," she says, very quietly, and the teeth come a little closer to your neck. "Now take your hand away, crusader. Slowly." {n}You do not. The wing comes down, slowly, over your arm, over your shoulder, until you are standing in the grey dark under it with your hand still on her side.{/n} "Do not ever tell anyone about this. Not the old man. Not your generals. Not the other things you love. This one is mine."''',
        c('"I won\'t."', "wont")),
     dv("wont", '''"No. You will not." {n}She lifts the wing again, and the daylight comes back.{/n} "You are a liar and a thief and you have never kept a secret in your life that you could sell. But you will keep this one." {n}Her eye turns to you at last.{/n} "I know, because I am the secret. Go down. Get your sword back from the old man before he starts telling stories about it."''',
        c("[Go down the mountain.]", flags=(SEAM,))),
@@ -798,7 +806,7 @@ hub(T + "the_hunt", "Hunting at the edge", '"She wants to take me hunting?"', [
     teller("start", '''"At the edge of the Wound. At dawn. On her back." {n}He has clearly been instructed to say exactly this and nothing else, and it pains him.{/n} "She says that a thing she has decided to keep should know how she eats, since it will be watching her do it for years. She says you may bring a weapon. She says you will not need it, and that she will be offended if you use it."''',
         c("Continue", "flight")),
     nar("flight", '''{n}You fly north in the grey before sunrise, low and fast over the dead ground, until the air starts to taste of copper and ash and the earth below turns cracked and wrong. She lands on a black ridge without a sound, and crouches, and you slide down from her shoulder into the grit beside her.{/n}
-{n}Below, in a hollow, a pack of babaus is feeding on something you do not want to look at too closely. There are nine of them. She watches them the way a cat watches a bird that has not yet noticed the cat.{/n}''',
+{n}Below, in a hollow, a pack of babaus is feeding on something that was a Mendevian outrider this morning, to judge by the boots. There are nine of them. She watches them the way a cat watches a bird that has not yet noticed the cat.{/n}''',
         c("Continue", "wait")),
     dv("wait", '''"Watch," she breathes, and her whisper is still loud enough to lift the dust. "Not the killing. Anyone can kill. Watch the waiting."
 {n}She does not move for a long, long time. The sun comes up behind you and stretches her shadow down the ridge, toward the hollow, a little at a time, and she lets it, until the very tip of it touches the nearest babau's heel.{/n}''',
@@ -811,7 +819,7 @@ hub(T + "the_hunt", "Hunting at the edge", '"She wants to take me hunting?"', [
     dv("bite", '''{n}It is foul, and you do it anyway, and you do not look away from her while you do.{/n}
 "Hah." {n}The laugh comes out of her with a gust of hot breath that smells of the hunt.{/n} "You would. Of course you would. You would eat a demon at dawn to win an argument with a dragon." {n}She lowers her head until her black muzzle is next to your face.{/n} "Good. Now everyone who is not watching knows."''',
        c("Continue", "home")),
-    dv("gesture", '''"The gesture." {n}She considers you, and then the demon, and then you again.{/n} "Yes. That is better manners than I have ever had. A thing that knows what it is being offered, and says so, and does not pretend to want it." {n}She eats the demon herself, in three bites.{/n} "Remember the gesture, then. I will. I gave you the first bite, and you said no, and I let you. Nobody else has ever been let."''',
+    dv("gesture", '''"The gesture." {n}She considers you, and then the demon, and then you again, and her lip lifts.{/n} "Too delicate for demon meat. Very well. I shall take your share, and you will watch me take it." {n}She eats the demon herself, in three bites, slowly, with her eye on you the whole time.{/n} "Next time I offer you the first bite, crusader, I will not offer twice."''',
        c("Continue", "home")),
     nar("home", '''{n}She flies you home in the full morning light, slow and heavy with the hunt, and brings you down on the ridge above the city just as the bells of Drezen start for the morning service. On the wall the sentries are watching; they have been watching since dawn. She lets them.{/n}''',
         c("[Go down the mountain.]", flags=(HUNTED_TOGETHER,))),
@@ -824,7 +832,7 @@ hub(T + "the_garrison_book", "The odds", '"Why are the soldiers on the north wal
     teller("start", '''"Because the soldiers on the north wall have been running a book on you since the first time you climbed the ridge." {n}He says it with a great deal of pleasure.{/n} "The odds on your coming back down alive were eight to one against, the first week. They are now level. The man who runs the book asked me whether I had inside information. I said I was blind. He said that was why he asked."''',
         c('"Who\'s betting against me?"', "against"),
         c('"What are the odds on her?"', "on_her")),
-    teller("against", '''"Most of the old soldiers, who have seen dragons before. Most of the chaplains, on principle. And one of your generals, very heavily, which I think you should know." {n}He smiles.{/n} "Betting for you: the young soldiers, who have not seen dragons before, and the quartermaster, who says anyone who can get Wilcer Garms's oxen back off a dragon's list can do anything."''',
+    teller("against", '''"Most of the old soldiers, who have seen dragons before. Most of the chaplains, on principle. And one of your generals, very heavily, which I think you should know." {n}He smiles.{/n} "Betting for you: the young soldiers, who have not seen dragons before, and the quartermaster, who says the crusade cannot afford to lose its Commander to a lizard and has bet accordingly, as a point of order."''',
         c("Continue", "tell_her")),
     teller("on_her", '''"There is a separate book on her. The question is not whether she will eat you. The question is whether she will ever come down into the city." {n}He turns his cup.{/n} "Nobody has bet that she will. The odds are a hundred to one. I have considered placing a small wager myself. I am a storyteller; I know when a story is heading somewhere."''',
         c("Continue", "tell_her")),
@@ -833,7 +841,7 @@ hub(T + "the_garrison_book", "The odds", '"Why are the soldiers on the north wal
         c('"Don\'t. Let them have their fun."', "dont")),
     teller("tell", '''{n}He goes up that evening and comes back laughing, silently, his shoulders shaking.{/n} "She wanted to know the odds. I told her. She said, 'Level? Level? After everything?' She was so offended on your behalf that she flew over the north wall at dawn, very low, very slowly, and looked at each of the soldiers in turn." {n}He wipes his eyes.{/n} "The odds are now three to one in your favour. The book on her coming down into the city has been closed, as nobody will take the other side."''',
         c("Continue", "end")),
-    teller("dont", '''"Let them have their fun." {n}He nods.{/n} "That is kind. It is also clever. A garrison that is betting on its Commander's love affair with a dragon is not a garrison that is thinking about how many demons there are beyond the wall." {n}He settles back.{/n} "I will not tell her. She will find out anyway. She always does. But it will not have been me."''',
+    teller("dont", '''"Let them have their fun." {n}He nods.{/n} "A garrison that is betting on its Commander's visits to a dragon is not a garrison that is counting the demons beyond the wall." {n}He settles back.{/n} "I will not tell her. She will find out anyway. She always does. But it will not have been me."''',
         c("Continue", "end")),
     teller("end", '''"In any case, I have placed my wager." {n}He folds his hands.{/n} "I will not tell you which book. A storyteller must keep some things back, or nobody will pay for the ending."''',
         c('"Fair."', flags=(BOOK,))),
@@ -845,14 +853,14 @@ hub(T + "the_garrison_book", "The odds", '"Why are the soldiers on the north wal
 hub(T + "the_messenger", "What the messenger thinks", '"You\'ve carried every message between us. What do you think of it?"', [
     teller("start", '''{n}When he answers, he does not look toward the ridge.{/n} "I think that she held me in that lair for days, deciding how I would taste, and that I paid for my life with the best story I had, and that I have not slept well since. I think that you gave her a new body to be hungry in, and I said some stories should be allowed to end, and I meant it."''',
         c("Continue", "but")),
-    teller("but", '''"And I think that I have climbed that ridge more times than I can count, carrying her threats down and your jokes up, and that somewhere on the way I stopped being afraid of her." {n}He turns his cup.{/n} "Not because she is less dangerous. She is more. Because she is not bored any more. A bored dragon is a catastrophe waiting for a village. A dragon with something to wait for is only a dragon."''',
+    teller("but", '''"And I think that I have climbed that ridge more times than I can count, carrying her threats down and your jokes up, and that somewhere on the way I stopped being afraid of her." {n}He turns his cup.{/n} "Not because she is less dangerous. She is more. She waits for your footsteps now, and the north watch still counts the men it lost to her. I cannot tell you which of those she will think of first, on the day it matters. Neither can she, I suspect."''',
         c('"Do you forgive her?"', "forgive"),
         c('"Do you forgive me?"', "forgive_me")),
-    teller("forgive", '''"Forgive her?" {n}He laughs, a dry, surprised sound.{/n} "No. I am an old man, and she tried to eat me, and I am allowed to hold that for the rest of my life. But I will tell you a secret, Commander, since you have paid for so many." {n}He leans forward.{/n} "The last time I went up, she asked me for the end of a story I had never started. I told her I would make one up. She said she would wait. I think that is the first time anyone has ever waited for me."''',
+    teller("forgive", '''"Forgive her?" {n}He laughs, a dry, surprised sound.{/n} "No. I am an old man, and she tried to eat me, and I am allowed to hold that for the rest of my life. But I will tell you a secret, Commander, since you have paid for so many." {n}He leans forward.{/n} "The last time I went up, she asked me for the end of a story I had never started. I told her I would make one up. She said she would wait. I left before she changed her mind. I am not sure, even now, that waiting was not a threat."''',
         c("Continue", "end")),
-    teller("forgive_me", '''"You?" {n}He considers it with great seriousness.{/n} "You told a lie over her body, and she paid for it as if it were a story, because to her there is no difference. She tells it differently every time she tells it, and so, I notice, do you. That is a terrible thing to do to a story." {n}He smiles.{/n} "And every one of them was a very good story. I am a professional, Commander. I forgive good stories anything."''',
+    teller("forgive_me", '''"You?" {n}He considers it with great seriousness.{/n} "You told a lie over her body, and she paid for it as if it were a story, because to her there is no difference. She tells it differently every time she tells it, and so, I notice, do you. That is a terrible thing to do to a story." {n}He does not smile.{/n} "And every one of them was a very good story. That does not bring back the two men of the north watch, or the cook, or whatever she ate on the north road last week. Ask me again when I have heard the ending."''',
         c("Continue", "end")),
-    teller("end", '''"Go up to her. She is waiting; she is always waiting now." {n}He waves you away.{/n} "And when all this is over, when the war is done and you are old and she is still up there, I would like to hear how it ends. I will pay full price."''',
+    teller("end", '''"I have carried her messages. The climb is yours." {n}He waves you away.{/n} "And when all this is over, however it ends, for you or for her, I would like to hear it. I will pay full price."''',
         c('"You\'ll have it free."', flags=(TELLER_VIEW,))),
 ], requires=(COMMITTED,), forbids=(TELLER_VIEW,), delay=96)
 
@@ -868,9 +876,9 @@ ROOF = T + "on_the_roof"
 # --- 29. The hoard (after the first climb): the old lair and what she left in it ----------------------------------
 
 hub(T + "the_hoard", "What she left in the lair", '"She wants to go back to her old lair?"', [
-    teller("start", '''"She wants her hoard." {n}He says it as though announcing a natural disaster.{/n} "It is still in the lair where she held me, under the rockfall at the back. She did not have time to take it when your dwarf found her. She wants it brought to the watchtower, all of it, and she wants you to help." {n}He pauses.{/n} "I told her dragons do not let anyone near their hoards. She said, 'That is why it has to be the Commander. I want to see what it does.'"''',
+    teller("start", '''"She wants her hoard." {n}He says it as though announcing a natural disaster.{/n} "It is still in the lair where she held me, under the rockfall at the back. She did not take it when she left the old lair. She wants it brought to the watchtower, all of it, and she wants you to help." {n}He pauses.{/n} "I told her dragons do not let anyone near their hoards. She said, 'That is why it has to be the Commander. I want to see what it does.'"''',
         c("Continue", "lair")),
-    nar("lair", '''{n}The lair is exactly as you remember it: the broken rock, the old bones, the place where the Storyteller sat and told his story with a dragon's claw curled around his ankle. She digs out the rockfall at the back in a few minutes, flinging boulders down the gorge like pebbles.{/n}
+    nar("lair", '''{n}She leads you down into the old lair: the broken rock, the old bones, and the flat stone where, the Storyteller says, he sat and told his story with a dragon's claw curled around his ankle. She digs out the rockfall at the back in a few minutes, flinging boulders down the gorge like pebbles.{/n}
 {n}Behind it the hoard glows. Coin of four kingdoms, most of them fallen. A crown with the stones prised out. Sarkorian torcs, a dwarven helm, a set of silver spoons, a child's wooden horse with a gold bridle painted on it. It is not as large as the songs say a dragon's hoard should be. It is very carefully arranged.{/n}''',
         c("Continue", "her")),
     dv("her", '''"Three hundred years." {n}She stands over it with her wings half raised, like a hen over a nest.{/n} "Every piece of it taken from something that thought it was stronger than me." {n}Her eye swings to you.{/n} "Now. You will carry it up the ridge, a sack at a time, on your own back, and I will watch you do it, and we will both see how much of it arrives."''',
@@ -882,12 +890,12 @@ hub(T + "the_hoard", "What she left in the lair", '"She wants to go back to her 
         c("Continue", "honest_her")),
     dv("honest_her", '''"All of it." {n}She sounds almost offended.{/n} "You carried three hundred years of gold up a mountain on your own back, and you did not take one coin." {n}She looks at you with something close to suspicion.{/n} "Either you are an honest thing, crusader, which I refuse to believe, or you are playing a longer game than I can see. I will find out which. I have time."''',
        c("Continue", "end")),
-    nar("steal", '''{n}On the fourth climb you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. You do it well. You have done it a thousand times.{/n}
+    nar("steal", '''{n}On the fourth climb you let one coin slip from the sack into your sleeve: a small gold piece from a kingdom that no longer exists, with a queen's head on it. It slides into your sleeve without a sound.{/n}
 {n}She counts it all when you have finished, with one claw, very slowly. Then she looks at your sleeve.{/n}''',
         c("Continue", "steal_her")),
     dv("steal_her", '''"One." {n}Her voice is perfectly calm.{/n} "The Queen of Iobaria. I took her from a bandit who took her from a merchant who took her from a tomb. She has been stolen more often than she was ever spent." {n}Her eye does not move from your sleeve.{/n} "Keep her. You earned her; nobody has ever stolen from me and lived to be caught. That was the price of seeing what you would do. Now I know."''',
        c("Continue", "end")),
-    dv("ask", '''{n}She stares at you as though you had grown a second head.{/n} "Ask." {n}It comes out of her like a cough of smoke.{/n} "You are a thief. I have watched you steal from generals and golems and gods. And you ask me, for one coin, like a child at a table." {n}Then she puts one claw into the hoard and slides out a single gold piece with a queen's head on it, and pushes it toward you across the floor.{/n} "Take it. And now carry the rest."''',
+    dv("ask", '''{n}She stares at you as though you had grown a second head.{/n} "Ask." {n}It comes out of her like a cough of smoke.{/n} "You are a thief. You stole my carcass out from under the hunters. And you ask me, for one coin, like a child at a table." {n}Then she puts one claw into the hoard and slides out a single gold piece with a queen's head on it, and pushes it toward you across the floor.{/n} "Take it. And now carry the rest."''',
        c("Continue", "ask_2")),
     nar("ask_2", '''{n}She flies the hoard to the foot of the ridge in two loads; the ridge is your part. It takes eleven climbs and the whole of a day. She counts it all when you have finished, twice. Then she looks at the gold piece, which you have been carrying in your hand the whole time, turning it over.{/n}''',
         c("Continue", "ask_her")),
@@ -913,17 +921,17 @@ hub(T + "the_bones", "Sorted by size", '"What does she do up there all day?"', [
        c("Continue", "then")),
     dv("ring", '''{n}She is quiet for a moment.{/n} "A crusader. Not one of yours. One of the ones from a hundred years ago, who came into the Worldwound on the first crusades and did not come out. I found him in a cave." {n}She hooks the ring off the finger bone with one claw and drops it into your palm.{/n} "I did not kill him. I keep him because he is the only crusader I ever found who went all the way in. I thought you should know that there was one before you."''',
        c("Continue", "then")),
-    dv("then", '''"Now your turn." {n}She lies down with her chin among the bones.{/n} "You have a floor too, crusader, in your head. The things you have killed and the things you have not finished. Tell me one. Not a demon. Something that mattered."''',
+    dv("then", '''"Now your turn." {n}She lies down with her chin among the bones.{/n} "Name something you killed that was worth the trouble. Not a demon; I can smell those on you. Something that cost you."''',
         c('[Tell her about someone you couldn\'t save.]', "lost"),
         c('[Tell her about someone you killed who didn\'t deserve it.]', "killed"),
         c('"My floor isn\'t sorted. I don\'t look at it."', "unsorted")),
-    dv("lost", '''{n}She listens without moving, and when you are done she does not say anything comforting, because she does not know how.{/n} "That one is not finished," she says at last. "I can hear it. You carry it at the back, where the big ones go." {n}She shifts.{/n} "Good. Keep carrying it. The ones you put down are the ones that come back and eat you."''',
+    dv("lost", '''{n}She listens without moving, and when you are done she does not say anything comforting, because she does not know how.{/n} "You kept nothing of it?" she says at last. "No tooth? No bone? Not even a ring?" {n}She sniffs, disgusted.{/n} "Then tell it well, the next time you tell it. That is all you have left of it, and you told it badly."''',
        c("Continue", "end")),
     dv("killed", '''{n}She listens with great interest, which is worse than disapproval.{/n} "And you think about it." {n}She seems genuinely curious.{/n} "I have killed a great many things that did not deserve it. I do not think about them at all. I only keep the bones." {n}She considers you.{/n} "Perhaps that is the difference between us. Perhaps it is only that you have fewer bones. Come back when you have more, and we will see."''',
        c("Continue", "end")),
-    dv("unsorted", '''"No." {n}She sounds almost sad.{/n} "No, I did not think you did. You step on everything on your floor as if it were not there." {n}She pushes the crow's bones a little closer to you with her claw.{/n} "Start with small ones. That is how I began. One small thing, sorted, in its place, every morning. It stops them from getting under your feet."''',
+    dv("unsorted", '''"No." {n}She does not sound surprised.{/n} "You step on everything on your floor as if it were not there. So do cattle." {n}She pushes the crow's bones a little closer to you with her claw.{/n} "Then mind where you put your feet on mine. I keep my dead where I can see them, and I bite things that kick them."''',
        c("Continue", "end")),
-    teller("end", '''{n}The Storyteller hears the account in silence.{/n} "She told me, in the lair, that bones were for picking her teeth." {n}He turns his cup.{/n} "She has become a keeper of stories, Commander. I did not teach her that on purpose. I think I must have, all the same, and I am not certain whether to be proud or afraid."''',
+    teller("end", '''{n}The Storyteller hears the account in silence.{/n} "She told me, in the lair, that bones were for picking her teeth." {n}He turns his cup.{/n} "Now she sorts them and tells you what they were. I would be flattered that she learned it from me, if I did not know what she keeps the stories for. She keeps them the way she keeps the bones: picked clean."''',
         c('"Both."', flags=(BONES,))),
 ], requires=(CLIMBED,), forbids=(BONES,), delay=96)
 
@@ -935,18 +943,19 @@ hub(T + "her_fear", "The thing she will not say", '"She\'s quiet. The sentries s
         c("Continue", "climb")),
     dv("climb", '''{n}She does not lift her head when you come in. Her eye follows you across the floor, dull as a banked coal.{/n} "You have come to ask what is wrong." {n}Her voice is very flat.{/n} "Then ask. I will not tell you unless you ask."''',
         c('"What\'s wrong?"', "wrong")),
-    dv("wrong", '''"The old man told me something, in the lair, before you came. That a trickster's last trick is always the one that does not land." {n}She is quiet a long time.{/n} "I lie here and I think: the hide is mine, but I am still a bargain. You paid my tariff with a story, and the story is not finished. What happens when your tricks stop landing, crusader? Does the story end? Do the terms end with it? Do I wake one morning hungry, with nothing in me that remembers why I have not eaten you?" {n}Her claws flex against the stone.{/n} "I was dead once. I do not want to be dead again, and I do not want to be what I was before it. I did not know that until I had something to lose."''',
-        c('"You\'re not a trick. You got up on your own. All I did was keep the knives off. Nobody gets to take that back."', "made"),
-        c('"I don\'t know. Nobody does. That\'s the joke."', "dunno"),
-        c('"Then I\'ll keep telling them. Every day. For as long as it takes."', "keep")),
-    dv("made", '''"On my own." {n}She turns the words over, slowly.{/n} "A clutch is what a dragon makes. It does not go back into the dragon when the dragon dies. It goes on. So, it seems, do I." {n}She lifts her head a little.{/n} "Yes. I will choose to believe the rest. Not because it is true. Because you bet three days and a dragon's worth of hide on a guess, and nobody in three hundred years has waited three days for anything of mine but the carcass." {n}She puts her head back down, and after days of watching she closes both eyes.{/n}''',
+    dv("wrong", '''{n}She lifts the wing. The seam under it has opened along a hand's length, wet and grey at the lips, and the new hide around it is cracked like a dry riverbed.{/n} "It split three nights ago, when I took a vrock at the Wound's edge and it got a claw in. It has not closed. Everything else on me closes." {n}Her eye holds you, dull and furious.{/n} "You gambled that my body knew what it was doing. Perhaps it did once. If the next blade finds this, the stories you paid me in will not stitch it, and I will be a carcass again, and this time nobody will be fool enough to wait three days. Do not tell me it will heal. Tell me what you are going to do."''',
+        c('[Send for the crusade\'s best surgeon, and the alchemist who seals siege-armour] "Tomorrow. Both of them, up the ridge, whether they like it or not."', "made"),
+        c('"I don\'t know. Nobody\'s ever kept a woundwyrm alive long enough to find out."', "dunno"),
+        c('[Draw your knife and cut your own palm] "Then take what you need to close it. You took the rest already."', "keep")),
+    dv("made", '''"A surgeon. Up my mountain." {n}She shows you her teeth.{/n} "He will be so frightened his hands will shake, and if they shake on my seam I will eat them, and then I will eat him, and you will have to find another." {n}She lays her head down, watching you.{/n} "Send the alchemist first. Alchemists are used to things that might explode. And tell the surgeon what I said about his hands. I want him careful, not brave."''',
        c("Continue", "end")),
-    dv("dunno", '''{n}She does not answer. Then, unexpectedly, the laugh: small, rusty, the kiln door barely opening.{/n} "That is the joke. Yes. Of course it is. You bought my terms with a story, and you do not know how it ends either." {n}She lays her head on your boots, heavily, deliberately.{/n} "Then we will find out together. That is the only way anyone ever finds out the end of a story. I had forgotten. The old man would be disgusted with me."''',
+    dv("dunno", '''{n}She does not answer. Then the laugh, small and rusty, the kiln door barely opening.{/n} "Nobody. No. They cut us up for glue and hide and sell our blood by the thimble." {n}She lays her head on your boots, heavily, so that you cannot move without her leave.{/n} "Then stop guessing aloud, crusader, and find me somebody who has cut one up. A renderer, a hide-merchant, a demon who has eaten one. Whoever knows where we come apart knows where we are held together. Bring them up here. I will not eat them until they have talked."''',
        c("Continue", "end")),
-    dv("keep", '''"Every day." {n}Her eye holds you.{/n} "You would. You would stand on this mountain every morning and tell a dragon what she is, just in case it stopped being true in the night." {n}She shifts, and her tail comes around the floor behind you, not quite touching.{/n} "I do not believe it would work. I do not believe it is necessary. Do it anyway." {n}Her eye closes.{/n} "Start tomorrow. I am tired tonight."''',
+    dv("keep", '''{n}She watches the blood run down your wrist, and her nostrils open.{/n} "Blood does not close a hide, crusader. Every hunter who ever came up a mountain after me knew that." {n}Her tongue comes out anyway, and takes it off your palm, slowly, all of it.{/n} "But it was offered, and I do not refuse what is offered." {n}She lays her head down.{/n} "Now send your surgeon. And if he faints at the top of the stair, I keep him."''',
        c("Continue", "end")),
     teller("end", '''{n}The next morning the sentries report that the grey dragon went hunting at dawn, far out over the Wound's edge, and came back with a vrock in each claw, and ate them both on the sill in full view of the north wall, very noisily.{/n}
-{n}The Storyteller smiles when he hears.{/n} "She wants the city to remember what she is," he says. "It had begun to forget. So had she."''',
+{n}A week later the people you sent up the ridge come down it grey to the lips, with their pots and needles used up, and refuse to say what they saw. One of them does not come down at all for two days, and when he does he has lost a finger, and will only say that he flinched.{/n}
+{n}The Storyteller hears the account without smiling.{/n} "The seam is shut, then. She will be hungry after. Tell the north watch to stay off the walls tonight."''',
         c('"Good."', flags=(FEAR,))),
 ], requires=(COMMITTED,), forbids=(FEAR,), delay=120)
 
@@ -1008,11 +1017,11 @@ hub(T + "his_story", "A story made up for a dragon", '"You said she asked you fo
     teller("story", '''"Once there was a thief," he says, "who stole a word. It was the most dangerous word in the world: the word for what a thing is. And the thief, being a thief, did not keep it. The thief gave it away, carelessly, to a dead thing on a floor, just to see what would happen."
 {n}He turns his blind face toward her.{/n} "And the dead thing got up, and was very angry, and went to live on a mountain, and every night it looked down at the thief's city and planned how it would take the word back."''',
         c("Continue", "story_2")),
-    teller("story_2", '''"But the thief kept climbing the mountain. For no reason. To bring it food, and fire, and stories that were not owed. And the thing on the mountain began to wait for the climbing, and then to count it." {n}His hands are very still.{/n} "And one night the thing on the mountain understood that it could not take the word back, because the word had been given, and a given thing is not a stolen thing, and cannot be stolen back. It could only be given again."''',
+    teller("story_2", '''"But the thief kept climbing the mountain, with whatever the thief had, which was mostly talk. And the thing on the mountain began to wait for the climbing, and then to count it." {n}His hands are very still.{/n} "And one night the thing on the mountain understood that it could not take the word back, because the word had been given, and a given thing is not a stolen thing, and cannot be stolen back. It could only be given again."''',
         c("Continue", "ending")),
-    dv("ending", '''{n}She lifts her head.{/n} "And? What happened next?" {n}It is exactly the tone she used in the lair; you realise with a jolt that it is the same line, the one that saved his life.{/n}''',
+    dv("ending", '''{n}She lifts her head.{/n} "And? What happened next?" {n}The old man's hands go still on his knees. Whatever that line once meant in a lair, he does not say.{/n}''',
         c("Continue", "ending_2")),
-    teller("ending_2", '''{n}He smiles.{/n} "I do not know, madam. That is why I had to make it up. That is where it stops. The rest is not mine." {n}He turns his face toward you.{/n} "It belongs to them."''',
+    teller("ending_2", '''{n}He smiles.{/n} "I do not know, madam. That is why I had to make it up. That is where it stops." {n}He turns his face toward you.{/n} "The thief has not yet paid me for the ending."''',
         c("Continue", "her")),
     dv("her", '''{n}She looks at you. Then at the old man. Then back at you.{/n} "That was a very bad story," she says at last. "Nothing happened in it. Nobody was eaten. The thief did not even steal anything worth having." {n}Her voice drops.{/n} "Tell it again, old man. Slower. I want to hear the part about the counting."''',
        c("Continue", "end")),
@@ -1065,7 +1074,7 @@ hub(T + "the_trail", "Tracks that are not druids'", '"She\'s been gone for days.
        c("Continue", "end")),
     dv("no_lie", '''{n}Her eye opens and fixes on you, and for a moment you think she will strike.{/n} "You will not lie." {n}Then, slowly, the anger goes out of her, and something older and much tireder takes its place.{/n} "No. Not about this. I asked you to, and you would not. That is worse than any lie you have ever told me." {n}She looks east.{/n} "And better. Go down. I need to not be looked at."''',
        c("Continue", "end")),
-    teller("end", '''{n}The Storyteller hears what happened in silence.{/n} "She left them." {n}He shakes his head slowly.{/n} "In the lair, she told me that dragons do not give up what is theirs, ever, and that anyone who did was not a dragon. I believed her. I think tonight she found out that there are two kinds of mother, and that she is the kind she never expected to be."''',
+    teller("end", '''{n}The Storyteller hears what happened in silence.{/n} "She left them." {n}He shakes his head slowly.{/n} "In the lair, she told me that dragons do not give up what is theirs, ever." {n}He turns his face toward the ridge.{/n} "She left without the young. You should not assume she has finished counting them."''',
         c('"..."', flags=(TRAIL,))),
 ], requires=(HUNTING, CLIMBED), forbids=(TRAIL,), delay=96)
 
@@ -1073,10 +1082,10 @@ hub(T + "the_trail", "Tracks that are not druids'", '"She\'s been gone for days.
 # --- 37. The scar (after the first bite): the surgeons ask ------------------------------------------------------------
 
 hub(T + "the_scar", "The surgeons have questions", '"The surgeons keep asking about my arm."', [
-    teller("start", '''"I imagine they do." {n}He sounds amused.{/n} "A neat grey crescent of punctures, perfectly spaced, healing clean, on the forearm of the Commander of the crusade, who will say only that it was 'a bargain'. Your chief surgeon came to me because he has heard I know dragons. He wanted to know whether the bite would fester." {n}He smiles.{/n} "I told him that she has very clean teeth, and that the wound would heal, and that he should not expect it to be the last."''',
+    teller("start", '''"I imagine they do." {n}He sounds amused.{/n} "A neat grey crescent of punctures, perfectly spaced, healing clean, on the forearm of the Commander of the crusade, who will say only that it was 'a bargain'. Your chief surgeon came to me because he has heard I know dragons. He wanted to know whether the bite would fester." {n}He smiles.{/n} "I told him who made the marks, and that healing them was his trade and not mine, and that he should not expect them to be the last."''',
         c('"What else did he ask?"', "asked"),
         c('"Does she know they\'re asking?"', "knows")),
-    teller("asked", '''"He asked whether you were under an enchantment." {n}The smile widens.{/n} "I told him that you were under the most powerful enchantment known to any storyteller, and that it had no cure, and that the dragon was under it too, and that he should keep this to himself. He went away looking very serious. I believe he thinks it is a curse."''',
+    teller("asked", '''"He asked whether you were under an enchantment." {n}The smile widens.{/n} "I told him I know of no spell on you, and that if he wished to know what you are under he should ask you, and that he should ask it in daylight, in company." {n}He smiles, very slightly.{/n} "He went away looking very serious. I believe he thinks it is a curse. I did not correct him."''',
         c("Continue", "climb")),
     teller("knows", '''"She knows everything that is said about her, and most of what is said about you." {n}He tilts his head.{/n} "She asked me yesterday whether the mark was healing well. I said I could not see it. She said, 'Then touch it, next time the Commander is careless enough to let you.' I did not. I have my limits."''',
         c("Continue", "climb")),
@@ -1134,7 +1143,7 @@ hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."
        c("Continue", "eleven", forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed"))),
     dv("omelet", '''"Eleven your city ate. I have smelled every one of them on its breath." {n}Her claws close on the stone.{/n} "And one it did not eat, because you had it in your hearth, under a coat of ash, and called it a rock."''',
        c("Continue", "stole")),
-    dv("druids", '''"Eleven the golden liars carried off in a handcart. I know where they went." {n}Her claws close on the stone.{/n} "And one they never carried, because you had it in your hearth, under a coat of ash, and called it a rock."''',
+    dv("druids", '''"Eleven the golden liars carried off in a handcart." {n}Her claws close on the stone.{/n} "And one they never carried, because you had it in your hearth, under a coat of ash, and called it a rock."''',
        c("Continue", "stole")),
     dv("vault", '''"Eleven in your vault, in straw, and a clerk who cannot count." {n}Her claws close on the stone.{/n} "And one that was never in the straw at all, because you had it in your hearth, under a coat of ash, and called it a rock."''',
        c("Continue", "stole")),
@@ -1154,7 +1163,7 @@ hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."
 "So I bill the thief. A life. You took one; you owe one. I will name it when I choose: tomorrow, or when you are old, or at the edge of the world. And when I name it, you will pay it, and you will not send the silver to argue for you."''',
        c("Continue", "tariff", requires=(BITTEN,)),
        c("Continue", "pay", forbids=(BITTEN,))),
-    dv("tariff", '''"And do not think to offer me your arm for it. The bite is my tariff; you pay that gladly, and I take it gladly, and we both enjoy it." {n}The eye narrows.{/n} "This is a bill. You will not enjoy paying it. That is how you will know it is paid."''',
+    dv("tariff", '''"And do not think to offer me your arm for it. The bite is my tariff; you pay it every year and I take it every year, and that account is square." {n}The eye narrows.{/n} "This is a bill. You will not enjoy paying it. That is how you will know it is paid."''',
        c("Continue", "pay")),
     dv("pay", '''{n}She waits. The whole tower waits with her, and the Storyteller at the door does not breathe.{/n}''',
        c('"Name it when you like. I\'ll pay."', "named", flags=(EGG_BILL,)),
@@ -1180,7 +1189,7 @@ EPILOGUE_PARAGRAPHS = (
     (TAX_EXEMPT, "{n}The east road paid its levy in oxen for the rest of the war, and nobody from the Treasury ever climbed the north ridge again to dispute the rate.{/n}"),
     (ROOF, "{n}Drezen never again ran a book on anything to do with the grey dragon. The man who had run the last one kept the ledger, framed, over his fireplace, with the odds on the last page: a hundred to one, and nobody on the other side.{/n}"),
     (COIN_ASKED, "{n}The Commander carried a small gold coin with a vanished queen's head on it for the rest of their life, and never spent it. It was, as far as anyone knows, the only thing ever given out of a dragon's hoard.{/n}"),
-    (EGG_BILL, "{n}The smallest egg of her clutch grew up in a lime-kiln under the east wall, raised by someone else, and flew up the north ridge the year it was grown to ask her what it was. She told it. She never collected the life the Commander owed her for it. She said a bill that has not been collected is worth more than one that has, because it can still be called.{/n}"),
+    (EGG_BILL, "{n}The smallest egg of her clutch grew up in a lime-kiln under the east wall, raised by someone else, and flew up the north ridge the year it was grown to ask her what it was. She told it.{/n}"),
 )
 
 
@@ -1189,3 +1198,10 @@ def integrate(payload):
     from story_format import p
     page = next(s for s in payload["Scenes"] if s["Id"] == "devarra.trickster.epilogue.woken")["Nodes"][0]
     page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    # The egg bill: collected at Last Call (lastcall_partners "The Grey Tariff"), or still standing.
+    page["Paragraphs"].extend([
+        p("{n}She collected the life the Commander owed her for it a month in every year, on the ridge, as she had named it at the edge of the world. The Commander never once missed a month. She never once let {mf|him|her} come down the same weight.{/n}",
+          requires=(EGG_BILL, "devarra.lastcall.called")),
+        p("{n}She never named the life the Commander owed her for it. She said a bill that has not been collected is worth more than one that has, because it can still be called; and every winter, on the first cold night, the Commander looked up at the ridge and wondered whether this was the year.{/n}",
+          requires=(EGG_BILL,), forbids=("devarra.lastcall.called",)),
+    ])
