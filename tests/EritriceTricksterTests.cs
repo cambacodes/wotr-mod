@@ -214,7 +214,7 @@ internal static class EritriceTricksterTests
             "The refusal page or the declined-then-carried override is wrong.");
 
         // The standing debate: every sitting reachable, the night only after the commit, and it is the one heated beat.
-        var debateStart = World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", "council.session_minuted");
+        var debateStart = World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", "council.session_minuted", "eritrice.certain_book_said");
         foreach (var sitting in sittings)
             check(sitting.Optional && sitting.Requires.Contains("trickster.ever"), "A sitting is not an optional Trickster-path beat: " + sitting.Id);
         check(sittings.Length >= 30, "The standing debate is missing sittings.");
@@ -340,6 +340,15 @@ internal static class EritriceTricksterTests
         foreach (var flag in new[] { K + "alichino_handled", K + "argued_own_case", K + "chair_recused" })
             check(Rules.Available(story, voted, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one", K + "a_motion_to_expel", flag)),
                 "The motion to expel is never resolved: " + flag);
+        // Sol verify sweep (r5): the book line only if she said it; the Crossroads paragraphs only where the Crossroads was made;
+        // the grudge and Alichino's absence at sessions only while the Council convenes.
+        check(S(K + "a_certain_book").Requires.Contains("eritrice.certain_book_said")
+              && story.SeenCues["eritrice.certain_book_said"].Contains("07c13d2efd8a90b45824a79873b62108"), "The certain book is recalled unheard.");
+        var metParas = pageMet.Nodes[0].Paragraphs;
+        check(metParas.Where(p => p.Requires.Contains(K + "crossroads_drafted") && p.Text.Contains("Crossroads of Worlds")).All(p => p.AnyGroups.Any(g => g.Contains("ending.trickster_full")))
+              && metParas.Where(p => p.Text.Contains("every session the Commander attended")).All(p => p.Requires.Contains("council.epilogue_convened"))
+              && metParas.Where(p => p.Text.Contains("not seen at the Council for a decade")).All(p => p.Requires.Contains("council.epilogue_convened")),
+            "An epilogue paragraph assumes a Crossroads or a convening Council that the ending did not produce.");
         Console.WriteLine("PASS: Eritrice Trickster (Trk_Eritrice_*): motion, minutes, second and third readings, the sealed hall's letters, the tabled grudge and the standing debate.");
     }
 }

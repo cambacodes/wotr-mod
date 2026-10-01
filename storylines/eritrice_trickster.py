@@ -123,7 +123,7 @@ SCENES.append(scene(P + "council.motion", "Motion carried", "Eritrice", 3, '"Mad
 # --- The payoff: the private debate, once a Council session has been minuted. ------------------------------------
 
 SCENES.append(scene(P + "council.private_debate", "The minutes stand", "Eritrice", 3, '"About my motion, Madam Chair."', [
-    nar("start", '''{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time." The censure beneath it has been read into the Council's record since, and there is a small neat tick beside it that is not in her hand.{/n}''',
+    nar("start", '''{n}She unrolls the scroll and turns it so you can read it. Among the Council's business, in her own upright hand: "Motion from the floor, the Commander: that the chair is in dire need of a private debate. Declared carried by the mover, acting as chair without appointment. The chair did not object in time." The censure beneath it is entered in full, and there is a small neat tick beside it that is not in her hand.{/n}''',
         c("Continue", "record")),
     e("record", '''"Alichino's tick. He reads everything that might one day be useful." {n}Her claws tap the scroll, once for each word.{/n}
 "I have read that line every night since, asking myself why I did not object. My element is truth, the truth that only honest debate can reach, and the truth is the one I gave you: I wanted to hear the debate."
@@ -296,7 +296,8 @@ SCENES.append(scene(P + "epilogue.we_did_meet", "", "EritriceEpilogue", 6, "", [
             p("{n}The Council's members pretended ever after that they had never met. She never admitted in public that the Council had met, which was the only lie anyone ever caught her telling. The minutes, which were not public, admitted everything.{/n}", requires=("council.epilogue_ceased",)),
             p("{n}At the Council's victory feast the members could not shake the feeling they had forgotten to invite someone. The chair had not forgotten. The chair had simply declined to share.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and went on arguing about the Worldwound. Its chair adjourned every session on time, which the members found suspicious, and went home early, which they found more suspicious still.{/n}", requires=("council.epilogue_convened",)),
-            p("{n}The grudge stayed on the agenda. She read it aloud at every session the Commander attended, and then, in the minutes, noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA,)),
+            p("{n}The grudge stayed on the agenda. She read it aloud at every session the Commander attended, and then, in the minutes, noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA, "council.epilogue_convened")),
+            p("{n}The grudge stayed on her private agenda, though the Council no longer met. She read it aloud at the head of every letter and every private sitting, and noted the Commander's reply. The replies grew shorter over the years, and warmer, and in the last volumes they are only one word long.{/n}", requires=(ON_AGENDA,), forbids=("council.epilogue_convened",)),
             p("{n}She never quoted a word of the case against that the Commander had made at the third reading. But in later years, whenever the Commander lied to anyone at all in her hearing, she went quiet at the table, and waited, and the Commander would remember the third reading, and correct it.{/n}", requires=(ON_RECORD,)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
@@ -316,7 +317,7 @@ SCENES.append(reaction("Chadali", P + "react.chadali_motion", (PRIMED,),
     entry='"Eritrice passed my motion."', portrait="Chadali"))
 
 SCENES.append(reaction("Nenio", P + "react.nenio_motion", (STARTED,),
-    '''"I have measured the chair. Sessions chaired: all of them. Votes carried: all of them. Votes contested before you: none. Conclusion: she is not a chairwoman, she is a weather system, and you have changed the weather."
+    '''"I have measured the chair. Sessions chaired: all of them. Votes contested: several, including the Council's own name, which was carried or was a tie depending on whom you ask. Times she yielded the chair before you: none. Conclusion: she is not a chairwoman, she is a weather system, and you have changed the weather."
 {n}Nenio holds out a ruler.{/n} "I require one whisker. For scale."''',
     answer_list=NENIO_HUB, forbids=NENIO_GUARD, chapter=3, last=5, Chapters=[3, 5], ForbidOverrides=NENIO_BACK,
     entry='"About Eritrice..."', portrait="Nenio"))
