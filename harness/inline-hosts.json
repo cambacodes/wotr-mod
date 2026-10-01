@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1041,
-  "resolved": 1041,
+  "entryTargetScenes": 1045,
+  "resolved": 1045,
   "inlineOnlyScenes": 272,
   "inlineOnlyResolved": 272,
-  "answerListScenesWithoutContact": 619,
-  "answerListScenesWithoutContactResolved": 619,
+  "answerListScenesWithoutContact": 623,
+  "answerListScenesWithoutContactResolved": 623,
   "lists": 112,
   "listsWithReachableHost": 111
  },
@@ -19387,6 +19387,63 @@
     "clicks": 0
    }
   },
+  "vellexia.trickster.after.night": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.after.night"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.after.visit_quarters": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.after.visit_quarters"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.mirrored.fetch": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.mirrored.fetch"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "vellexia.trickster.mirrored.unmirror": {
    "kind": "return-cue",
    "lists": [
@@ -19593,6 +19650,25 @@
     "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
     "dialogName": "StoryTeller_MainDialogue",
     "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
+  "vellexia.trickster.sword.late_portrait": {
+   "kind": "dialog",
+   "lists": [
+    "3c58e83a970a0f643a88e15f2323c805"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3c58e83a970a0f643a88e15f2323c805": "RRT_entry.vellexia.trickster.sword.late_portrait"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3c58e83a970a0f643a88e15f2323c805",
+    "dialog": "f77aadad8ee7d7446973d2e03d6d730b",
+    "dialogName": "Vendor_Quartermaster_Dialogue",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },

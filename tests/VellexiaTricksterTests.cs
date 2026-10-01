@@ -102,9 +102,12 @@ internal static class VellexiaTricksterTests
         check(speaks.Remote && portrait.Remote && speaks.Chapters.SequenceEqual(new[] { 4 }) && portrait.Chapters.SequenceEqual(new[] { 4 })
               && speaks.Areas.SequenceEqual(new[] { Nexus }) && portrait.Areas.SequenceEqual(new[] { Nexus }),
             "The Chapter 4 pages are not the Abyss letters of the night itself.");
-        check(fetch.Remote && latePortrait.Remote && invitation.Remote && fetch.Chapters.SequenceEqual(new[] { 5 })
-              && latePortrait.Chapters.SequenceEqual(new[] { 5 }) && invitation.Chapters.SequenceEqual(new[] { 5 }),
-            "The Chapter 5 setups lost their letter shape.");
+        // Q11 (COX): the late acquisitions, the failed-anchor visit and the night are physical (the quartermaster's hub);
+        // the never-met boast stays a letter.
+        foreach (var s in new[] { fetch, latePortrait, visitQuarters, night })
+            check(!s.Remote && s.AnswerLists.SequenceEqual(new[] { QmHub }) && s.Chapters.SequenceEqual(new[] { 5 }),
+                "Q11: a Chapter 5 Trickster beat is a letter again: " + s.Id);
+        check(invitation.Remote && invitation.Chapters.SequenceEqual(new[] { 5 }), "The never-met boast lost its letter shape.");
         foreach (var s in new[] { unmirror, likeness })
             check(s.AnswerLists.SequenceEqual(new[] { StHub }) && s.NativeReturnCue == StReturn && s.ContactUnit == null && !s.Remote,
                 "The Storyteller does not read the object inline on his own hub: " + s.Id);
@@ -386,6 +389,66 @@ internal static class VellexiaTricksterTests
         check(story.Scenes.Count(s => s.Relationship == "vellexia" && s.Remote && s.Owner == "Memory" && s.Chapters.Contains(4)) == 1,
             "Q11: the peaceful correspondence exceeds the Chapter 4 allowance.");
 
+        // Q11 Trk_Vellexia_SecondInvitationDrezen: missing the one Chapter 4 call does not strand the correspondence; the
+        // Drezen twin keeps the three native openings, opens the same account, and never plays beside the original.
+        var twin = S("vellexia.the_second_invitation_drezen");
+        var missedNexus = Later(story, mercy, 100, 5);
+        check(Rules.Available(story, twin, missedNexus) && !Rules.Available(story, secondInvitation, missedNexus),
+            "Trk_Vellexia_SecondInvitationDrezen: no Chapter 5 entry after the Nexus call was missed.");
+        var twinPages = new HashSet<string>();
+        var twinOpened = Program.Walk(twin, missedNexus, (pg, _) => twinPages.Add(pg)).FirstOrDefault(r => r.Has("vellexia.case_opened"));
+        check(twinOpened != null && twinPages.Contains("spared") && !twinPages.Contains("dismissed"),
+            "Trk_Vellexia_SecondInvitationDrezen: the twin does not open the account, or misremembers the ending.");
+        var twinCommitted = Step(S("vellexia.the_question_after_business"),
+            Step(S("vellexia.an_hour_that_counts"), Step(S("vellexia.the_wager_with_an_edge"),
+                Step(S("vellexia.the_clerks_own_price"), Step(S("vellexia.the_claim_before_the_event"), twinOpened, "vellexia.account_read"),
+                    "vellexia.witness_heard"), "vellexia.wager_chosen"), "vellexia.verdict_kept"), "vellexia.committed");
+        check(twinCommitted != null, "Trk_Vellexia_SecondInvitationDrezen: the twin's chain never reaches a commitment.");
+        var answeredInNexus = Program.Copy(missedNexus); answeredInNexus.Flags.Add("vellexia.the_second_invitation");
+        check(!Rules.Available(story, twin, answeredInNexus), "Trk_Vellexia_SecondInvitationDrezen: both invitations play.");
+
+        // Q11 Trk_Vellexia_Provocation: a greeted, living Vellexia with no continuation (affair unfinished, or finished without
+        // the shell) is reached by a live Trickster's insult; she answers in person, gives the shell, and can be committed to.
+        var provocation = S(P + "reacquire.provocation");
+        foreach (var history in new[] {
+            new[] { "trickster", "trickster.ever", "vellexia.greeted" },
+            new[] { "trickster", "trickster.ever", "vellexia.greeted", "vellexia.native_finished", "vellexia.dismissed_native" } })
+        {
+            var stranded = World(story, 5, history);
+            check(Rules.Available(story, provocation, stranded) && !Rules.Available(story, invitation, stranded),
+                "Trk_Vellexia_Provocation: a stranded living history has no road back: " + string.Join(",", history));
+            var provoked = Play(provocation, stranded).Single(r => r.Has(P + "provoked"));
+            check(provoked.Has("vellexia.prediction_known") && !provoked.Has("vellexia.seal_agreed"), "Trk_Vellexia_Provocation: the shell arrives before she answers.");
+            var arrives = Later(story, provoked, 24);
+            check(arrives.Has(P + "in_person") && Rules.Available(story, visit, arrives), "Trk_Vellexia_Provocation: she never comes to answer it.");
+            var provPages = new HashSet<string>();
+            var answered = Program.Walk(visit, arrives, (pg, _) => provPages.Add(pg)).Where(r => r.Has(visit.Id)).ToList();
+            check(provPages.Contains("provoked") && provPages.Contains("shell_prov") && !provPages.Contains("shell") && !provPages.Contains("entry"),
+                "Trk_Vellexia_Provocation: the visit calls a living guest dead or a prophet.");
+            check(Reaches(answered.First(r => r.Has(P + "courting")), "vellexia.committed"), "Trk_Vellexia_Provocation: no road to the commit.");
+        }
+        check(!Rules.Available(story, provocation, World(story, 5, "trickster.ever", "vellexia.greeted")),
+            "Trk_Vellexia_Provocation: the insult is carried without a live Trickster.");
+        check(!Rules.Available(story, provocation, World(story, 5, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.prediction_known")),
+            "Trk_Vellexia_Provocation: a Commander with a living continuation is offered the insult too.");
+
+        // Q11 Trk_Vellexia_LateCommitThreshold: the late commit stages its own threshold and morning.
+        var lateText = epCommit.Nodes[0].Text;
+        check(lateText.Contains("knees either side") && lateText.Contains("let the silk fall") && lateText.Contains("bruise")
+              && !lateText.Contains("by morning she had invented"), "Trk_Vellexia_LateCommitThreshold: the late commit fades before the threshold.");
+
+        // Q11 Trk_Vellexia_Ch5LetterCap (ledger: one Trickster-layer Chapter 5 letter): the only remote Trickster scenes in
+        // Chapter 5 sit on mutually exclusive branches, and the old first call never follows the in-person visit.
+        var ch5Letters = story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal) && s.Remote && !s.Reaction
+                                                 && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.Chapters.Contains(5))
+            .Select(s => s.Id).OrderBy(id => id).ToArray();
+        check(ch5Letters.SequenceEqual(new[] { P + "after.voice", P + "glass.uncovered", P + "never_visited.invitation", P + "reacquire.provocation" }),
+            "Trk_Vellexia_Ch5LetterCap: an unexpected Chapter 5 letter: " + string.Join(", ", ch5Letters));
+        check(invitation.Forbids.Contains("vellexia.greeted") && provocation.Requires.Contains("vellexia.greeted")
+              && S(P + "glass.uncovered").Requires.Contains(P + "kept_as_mirror") && invitation.Forbids.Contains("vellexia.dead")
+              && provocation.Forbids.Contains("vellexia.mirrored") && voice.Forbids.Contains("vellexia.return_kept"),
+            "Trk_Vellexia_Ch5LetterCap: two Chapter 5 letters can share a branch.");
+
         // Trk_Vellexia_Farewell: her own farewell; nothing to defy.
         var farewell = World(story, 4, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.farewell", "vellexia.native_finished",
                              "vellexia.prediction_known");
@@ -410,7 +473,7 @@ internal static class VellexiaTricksterTests
         // Trk_Vellexia_Visit: the test in person, and the shell she leaves.
         var guest = Later(story, invited, 24);
         var tested = Play(visit, guest);
-        var kept1 = tested.Single(r => r.Has(P + "cost.trick_kept"));
+        var kept1 = tested.First(r => r.Has(P + "cost.trick_kept") && r.Has("vellexia.return_kept"));
         check(kept1.Has(P + "visited") && tested.Any(r => r.Has(P + "lesson_given")) && !Rules.Available(story, visit, kept1),
             "Trk_Vellexia_Visit: the test does not record the trick, or repeats.");
         check(!Rules.Available(story, visitQuarters, guest), "The quarters twin opens while the presence stands.");
@@ -424,11 +487,12 @@ internal static class VellexiaTricksterTests
         check(shellPages.Contains("shell_entry_held") && !shellPages.Contains("shell_entry") && !shellPages.Contains("shell")
               && !shellPages.Contains("shell_held"), "She gives a second shell to a Commander who kept hers, or tells a living guest she is dead.");
 
-        // The first call: her price spoken; her no; the registered evenings; the commit; the night.
-        var calling = Later(story, kept1, 24);
-        check(Rules.Available(story, voice, calling) && !Rules.Available(story, voice, Later(story, kept1, 23)), "The first call ignores its day.");
-        var calls = Play(voice, calling);
-        var no = calls.First(r => r.Has("vellexia.closed"));
+        // The first question, asked in person at the end of the visit (Q11: the old remote first call is folded in): her
+        // price spoken; her no; the registered evenings; the commit; the night.
+        var calls = tested;
+        check(calls.All(r => r.Has("vellexia.return_kept") || r.Has("vellexia.closed")) && !calls.Any(r => Rules.Available(story, voice, Later(story, r, 100))),
+            "Q11: the old remote first call still follows the visit.");
+        var no = Play(visit, Later(story, nice, 24)).First(r => r.Has("vellexia.closed"));
         check(!no.Has("vellexia.return_kept") && !Reaches(no, "vellexia.committed"), "Her no is not final.");
         var courting = calls.First(r => r.Has(P + "courting") && !r.Has(P + "cost.bored_once"));
         check(calls.Any(r => r.Has(P + "cost.bored_once")) && calls.All(r => !r.Has(P + "cost.bored_once") || r.Has(P + "cost.predicted")),

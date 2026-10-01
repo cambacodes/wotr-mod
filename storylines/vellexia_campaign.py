@@ -3,6 +3,8 @@
 The early token and later rivalry are authored fiction, not native actor recovery.
 Remote scenes do not place Vellexia physically in the Commander's camp or capital.
 """
+import copy
+
 from story_format import c, n, p, scene
 from storylines.vellexia_opening import UNIT, AREA, ANSWER_LIST
 
@@ -313,6 +315,25 @@ s("the_second_invitation", "The invitation after the dismissal", "[Consider the 
 {n}The glass clouds as she closes the shell. No second request follows. Whatever becomes of Ilveris, it will not be a commission you accepted.{/n}''',
       c('[Close the shell and end this private correspondence.]', flags=("vellexia.closed",))),
 ], "vellexia.prediction_known")
+
+# Q11 (INT): the second invitation is the one Chapter 4 call; a Commander who left the Nexus before its light was answered
+# meets the same call in Drezen. Same pages and choices; an arrival opening; never both (the original's completion, or the
+# account it opens, forbids the twin).
+_SECOND = SCENES[-1]
+s("the_second_invitation_drezen", "The invitation after the affair", "[Open the echo shell. Its light has followed you back to Drezen.]",
+  [copy.deepcopy(page) for page in _SECOND["Nodes"]], "vellexia.prediction_known", chapter=5)
+SCENES[-1]["Nodes"][0]["Text"] = (
+    "{n}The echo shell came back through the portals with you, and in all that time it never once lit. Now, in Drezen, with "
+    "the war loud outside your door, a dim light moves beneath its closed cover. Your affair in the Upper City ended the way "
+    "everything ends in her house: on her terms, or very nearly.{/n}\n"
+    "{n}The shell glows, and goes on glowing, with the patience of someone who expects to be obeyed. When you open it, one "
+    "dark eye fills the cloudy glass.{/n}\n"
+    "\"Ah. Too near.\"\n"
+    "{n}Vellexia moves her shell farther away. Her face comes into view. She wears an expression of annoyance that becomes "
+    "amusement as soon as she sees you noticing it.{/n}\n"
+    "\"You took your time answering. I have been calling a crusader who was busy being somewhere my shell could not follow. "
+    "I have decided to find that flattering, provisionally.\"")
+SCENES[-1]["Forbids"] = [*SCENES[-1]["Forbids"], "vellexia.the_second_invitation", "vellexia.case_opened"]
 
 s("the_claim_before_the_event", "What the account can prove", "[Open the echo shell to examine Tessar's account.]", [
     n("start", "Vellexia", '''"You went somewhere my shell could not follow," Vellexia says as the glass clears, "and came back, which I shall count in your favour. Tessar did not wait for you. She accepted while you were gone. I find a promptly answered offer almost suspicious. Fortunately, the account is irritating enough to restore my faith in the enterprise."
