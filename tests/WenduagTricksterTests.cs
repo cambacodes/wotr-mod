@@ -24,6 +24,7 @@ internal static class WenduagTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
         state.Flags.UnionWith(flags);
+        state.AvailableContacts.Add("ae766624c03058440a036de90a7f2009");   // her presence copy (returned worlds)
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -133,8 +134,11 @@ internal static class WenduagTricksterTests
               && mine.Where(s => !s.Id.StartsWith(P + "early.", StringComparison.Ordinal) && !s.Id.StartsWith("wenduag.lastcall", StringComparison.Ordinal))
                   .All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
             "Path fit (v1): the early beats must be N-all and everything else Trickster-gated.");
-        check(!story.Presences.Keys.Any(k => k.StartsWith("wenduag", StringComparison.Ordinal)),
-            "Wenduag has a presence (every Drezen beat is a rest-delivered visit in the capital).");
+        var presence = story.Presences["wenduag.presence"];
+        check(story.Presences.Keys.Count(k => k.StartsWith("wenduag", StringComparison.Ordinal)) == 1 && presence.Mode == "spawn-copy"
+              && presence.Unit == "ae766624c03058440a036de90a7f2009" && presence.At?.Locator == "f8cfa132-6536-4fc5-a2be-1c49b0165202"
+              && presence.Requires.Contains(Returned) && presence.Forbids.Contains("wenduag.in_party"),
+            "Wenduag's presence is not the returned world's spawned copy at her exile locator.");
 
         // Trk_Wenduag_Early: the N-all hub beats (Chapters 1, 2, 3), with no Trickster gate.
         var w1 = World(story, 1);
@@ -302,6 +306,34 @@ internal static class WenduagTricksterTests
               && !Avail(claim, Later(keptGated, 24)),
             "Trk_Wenduag_Kept: the kept claim is not in person on her native lists, or the remote claim also plays.");
         Take(claimHub, Later(keptGated, 24), "after_knelt", 0, Committed);
+
+        // Trk_Wenduag_Presence: the returned world's claim is in person, on her presence.
+        check(claim.ContactUnit == "ae766624c03058440a036de90a7f2009" && claim.InteractionHub == "wenduag.presence" && !claim.Remote,
+            "Trk_Wenduag_Presence: the returned world's commit is not played in person on her presence.");
+
+        // Trk_Wenduag_Payment: every unprepared rescue pays on every reachable outcome (successful or failed Bluff).
+        int Paid(Scene scene, Snapshot w)
+        {
+            var min = int.MaxValue;
+            foreach (var outcome in Paths(scene, w))
+            {
+                int total = 0; var node = scene.Nodes[0];
+                foreach (var (id, index) in outcome.path)
+                {
+                    var choice = scene.Nodes.Single(x => x.Id == id).Choices[index];
+                    if (choice.Crusade != null) total += choice.Crusade.Amount;
+                }
+                min = Math.Min(min, -total);
+            }
+            return min;
+        }
+        check(Paid(abyssFall, fellUnbought) >= 100 && Paid(abyssFall, fellBought) == 0
+              && Paid(streetFall, streetUnbought) >= 50,
+            "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
+        var regill = S(P + "react.regill_watch");
+        check(regill.Reaction && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
+              && mine.Count(s => s.Reaction) == 3,
+            "Trk_Wenduag_Reactors: the allocated reactors (Lann, Irabeth, Regill) are not all present and guarded.");
 
         // Trk_Wenduag_PathFailed: an unprepared rescue is a live Trickster act; a bought fall still pays off after the path fails.
         check(!Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell"))

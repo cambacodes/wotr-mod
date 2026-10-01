@@ -210010,8 +210010,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.parent_romanced",
-          "targona.trickster.late_committed"
+          "targona.trickster.late_committed",
+          "targona.trickster.parent_romanced"
         ]
       ]
     },
@@ -424924,12 +424924,44 @@
               "Next": "cairn_known",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price_known",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.cost.late"
+              ],
               "Forbids": [],
               "Abort": false
             }
           ],
           "Portrait": "",
           "SpeakerUnit": "cb29621d99b902e4da6f5d232352fbda"
+        },
+        {
+          "Id": "price_known",
+          "Speaker": "Narrator",
+          "Text": "{n}Lann is gone up the stair. Your crusaders are not. They wait at the door of the demon's house, in the Abyss, under a burning sky, and they watch their Commander carry the traitor who tried to tear Lann's throat out down into the cellar, still breathing. Nobody bought this, and nothing was prepared; you are deciding it now, in front of all of them, and they will tell it in every camp from here to Drezen.{/n}",
+          "Choices": [
+            {
+              "Text": "[Build it anyway.]",
+              "Next": "cairn_known",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": ""
         },
         {
           "Id": "cairn",
@@ -425149,9 +425181,21 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "decide",
+              "Next": "calls",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -425165,9 +425209,21 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "decide",
+              "Next": "calls",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -425178,6 +425234,50 @@
           "Id": "lann_knows",
           "Speaker": "Wenduag",
           "Text": "\"Lann knows.\" {n}She says it before you can.{/n} \"I heard him. I was down, but I wasn't gone. *She's breathing. You were going to let me think I'd killed her.*\" {n}Her imitation of his voice is merciless and exact.{/n} \"And you built my cairn anyway, with him standing at the top of the stairs hating you for it.\" {n}She shakes her head, wondering.{/n} \"Do you know what that cost you? No. You'll find out. He's the only one of them who ever liked you for nothing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "calls",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "silent",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "calls",
+          "Speaker": "Wenduag",
+          "Text": "{n}She puts the hare down and wipes her knife on the stone.{/n}\n\"So. I died for him in his own house, and his children ran home and told him so, and he believed it. Nobody comes looking for me now.\" {n}She touches her temple.{/n} \"He still calls, at night. It's in the blood. But he calls the way you call a dog that's dead: out of habit, not expecting it to come.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "silent",
+          "Speaker": "Wenduag",
+          "Text": "{n}She puts the hare down and wipes her knife on the stone.{/n}\n\"So. I died for him in his own house, and his children ran home and told him so. And while I was crawling home through his doors, somebody killed him. The cellar neathers told me, the night I came down the stair.\" {n}She touches her temple.{/n} \"It's quiet in here. All the way down. I hate that it wasn't my hand.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425193,7 +425293,7 @@
         {
           "Id": "decide",
           "Speaker": "Wenduag",
-          "Text": "{n}She puts the hare down and wipes her knife on the stone.{/n}\n\"So. I died for him in his own house, and his children ran home and told him so, and he believed it. Nobody comes looking for me now.\" {n}She touches her temple.{/n} \"He still calls, at night. It's in the blood. But he calls the way you call a dog that's dead: out of habit, not expecting it to come.\" {n}Then the knife comes up, easily, point first.{/n} \"Now tell me why I shouldn't open your throat for putting me under stones. The strong have the right to decide. You decided. It's my turn.\"",
+          "Text": "{n}The knife comes up, easily, point first.{/n} \"Now tell me why I shouldn't open your throat for putting me under stones. The strong have the right to decide. You decided. It's my turn.\"",
           "Choices": [
             {
               "Text": "\"Because you dug.\"",
@@ -425208,6 +425308,18 @@
               "Next": "sava",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because he's dead, and you want to be alive to spit where they burned him.\"",
+              "Next": "spit",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -425242,6 +425354,22 @@
           "Id": "sava",
           "Speaker": "Wenduag",
           "Text": "{n}Her whole body goes tight, like a bowstring pulled.{/n} \"He isn't dead yet.\" {n}She lowers the knife, slowly.{/n} \"No. He isn't. And he thinks I am.\" {n}She sheathes it.{/n} \"All right. That's a reason. I'll keep you alive for it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "spit",
+          "Speaker": "Wenduag",
+          "Text": "{n}That surprises a laugh out of her.{/n} \"Spit where they burned him.\" {n}She lowers the knife.{/n} \"Yes. I'd like that. I'd like to stand on whatever's left of him and spit, and know he never got me back.\" {n}She sheathes it.{/n} \"All right. That's a reason.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425830,6 +425958,19 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
+                "wenduag.trickster.brask_knows",
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "quiet_dead",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
+              "Forbids": [
                 "wenduag.trickster.brask_knows"
               ],
               "Abort": false
@@ -425847,6 +425988,18 @@
               "Next": "quiet",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "quiet_dead",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -425857,6 +426010,34 @@
           "Id": "quiet",
           "Speaker": "Wenduag",
           "Text": "{n}She stops, and tilts her head, as if listening.{/n}\n\"Nobody's looking for me.\" {n}She touches her temple.{/n} \"He's still in here. Savamelekh. He calls at night; it's in the blood, he made sure of that. But he isn't calling *me* any more. His best daughter died in the street, fighting for him, and his demons ran home and told him so. You don't send for a corpse.\" {n}She lets her hand fall.{/n} \"You were right about that much.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "late",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.cost.late"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.cost.late"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "quiet_dead",
+          "Speaker": "Wenduag",
+          "Text": "{n}She stops, and tilts her head, as if listening.{/n}\n\"Nobody's looking for me. Nobody's calling, either.\" {n}She touches her temple.{/n} \"He's dead. Savamelekh. The cellar neathers say somebody finished him while I was under your stones, and the call stopped like a gong cut off in the middle of a stroke.\" {n}She lets her hand fall.{/n} \"It should have been my hand. I'll never forgive you for that, either. Add it to the list.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425915,6 +426096,18 @@
               "Next": "sava",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"Because you're alive, and he isn't. That's all the winning there is.\"",
+              "Next": "won",
+              "Set": [],
+              "Requires": [
+                "savamelekh.dead"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -425949,6 +426142,22 @@
           "Id": "sava",
           "Speaker": "Wenduag",
           "Text": "\"He's still out there.\" {n}She goes very still.{/n} \"Yes. And he thinks I'm dead. He'll never see me coming.\" {n}Slowly, she sheathes the knife.{/n} \"All right. That's a reason. I'll keep you alive for it.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stay",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "won",
+          "Speaker": "Wenduag",
+          "Text": "{n}She looks at you for a while over the knife.{/n} \"Alive, and he isn't.\" {n}She tastes it.{/n} \"That's the creed, isn't it. That's the whole creed, and you said it better than the old ones ever did.\" {n}She sheathes the knife.{/n} \"All right.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426354,6 +426563,22 @@
               "Next": "lie",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.lann.knows"
+              ],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Lie] \"She was dying when I buried her. I didn't know she'd live.\"",
+              "Next": "lie_known",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.lann.knows"
+              ],
               "Forbids": [],
               "Abort": false,
               "Alignment": {
@@ -426394,6 +426619,26 @@
               "Next": null,
               "Set": [
                 "wenduag.trickster.lann.owed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "cb29621d99b902e4da6f5d232352fbda"
+        },
+        {
+          "Id": "lie_known",
+          "Speaker": "Lann",
+          "Text": "{n}Lann stares at you.{/n} \"You didn't know.\" {n}He says it flatly, the way you repeat a price you are not going to pay.{/n} \"I stood at the top of that stair and told you she was breathing, and you looked at me and built the cairn with the head end loose. I've built cairns, Commander. I know what a loose head end is for.\" {n}He picks up his bow.{/n} \"Fine. That's your story. I'll know it's a story every time you tell it. I'm still with you. I just don't believe you any more, about anything that matters.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.trickster.lann.lied_again",
+                "wenduag.trickster.lann.disbelieved"
               ],
               "Requires": [],
               "Forbids": [],
@@ -427155,12 +427400,12 @@
       "Owner": "Wenduag",
       "MinChapter": 5,
       "MaxChapter": 5,
-      "Entry": "",
+      "Entry": "\"What have you got there?\"",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The door of your quarters bangs open without a knock, and something heavy hits the floor at your feet and grunts.{/n}\n{n}It is Sergeant Brask. His wrists are bound behind him with his own belt and his ankles with a strip torn from his own coat, and there is a gag in his mouth that is also, unless you are mistaken, a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}\n{n}Wenduag steps in over him and shuts the door with her heel.{/n}",
+          "Text": "{n}She does not answer. She stands, and steps aside, and there behind her in the angle of the wall, out of sight of the street, something heavy lies bound hand and foot, and grunts.{/n}\n{n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}\n{n}Wenduag puts her foot on his back, the way a hunter rests a foot on a kill, and pushes back her hood.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427427,12 +427672,11 @@
       "Chapters": [
         5
       ],
-      "Remote": true,
-      "Kind": "visit",
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
-      "Sender": "Wenduag"
+      "ContactUnit": "ae766624c03058440a036de90a7f2009",
+      "InteractionHub": "wenduag.presence"
     },
     {
       "Id": "wenduag.trickster.court.claim_in_person",
@@ -429168,7 +429412,7 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"In Neathholm there's a gong. A big one, bronze. Nobody knows where it came from; the old ones say a crusader camp, before anyone was born. Someone strikes it at every change of the watch, because in the tunnels there's no day and night, only the gong.\" {n}She tilts her head toward the bell.{/n} \"That's the only thing I miss. Isn't that stupid? Not the tribe. Not the dark. The gong. I used to count my life in it. Thousands of gongs since my father went hunting and didn't come back.\"",
+          "Text": "\"In Neathholm there's a gong. A big one, bronze. Nobody knows where it came from; the old ones say a crusader camp, before anyone was born. The gong keeper strikes it twice a day, once to start the day and once to end it, because in the tunnels there's no sun to do it for him.\" {n}She tilts her head toward the bell.{/n} \"That's the only thing I miss. Isn't that stupid? Not the tribe. Not the dark. The gong. I used to count my life in it. Thousands of gongs since my father went hunting and didn't come back.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429421,6 +429665,53 @@
       ]
     },
     {
+      "Id": "wenduag.trickster.react.regill_watch",
+      "Title": "Regill's word",
+      "Owner": "Regill",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You have something to say, Regill.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Regill",
+          "Text": "{n}Regill does not look up from his ledger of punishments.{/n} \"A traitor fell in your street, or in a demon's house, or in a Neathholm tunnel; I have not troubled to learn which. A traitor was buried by the Commander's own hand, without witnesses and without a tribunal. And there is now a neather in the cellars who eats raw hare, answers to no muster roll and comes and goes through gates that are shut to her kind.\" {n}He turns a page.{/n} \"I do not ask whether these facts are connected. Asking would oblige me to act. I note, Commander, that a crusade which buries its traitors privately has a Commander who has decided the law is a private matter. I will be keeping my own account of where that leads. Its entries are short.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Regill"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "wenduag.trickster.returned",
+        "regill.in_party"
+      ],
+      "Forbids": [
+        "regill.dead",
+        "regill.kicked_out",
+        "regill.plot_absent",
+        "wenduag.closed"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "wenduag",
+      "Reaction": true,
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "2366a8db6481070439fee222c0c52e45"
+      ]
+    },
+    {
       "Id": "wenduag.trickster.epilogue.pack",
       "Title": "",
       "Owner": "WenduagEpilogue",
@@ -429493,7 +429784,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}The succubus in the citadel learned to sleep with a lamp lit and her back to a wall. Hare's heads on her pillow, a knife in her door, and one night teeth at her throat in a dark corridor, and a laugh, and nothing else. She never found out whose. Wenduag said it was the best promise she ever kept.{/n}",
+              "Text": "{n}The succubus in the citadel knew whose hare's heads were on her pillow by the second night; she could smell a neather through three walls as well as a neather could smell her. She left the heads where they were. On the night Wenduag came for her throat in a dark corridor, Vellexia was waiting, and turned, and let her get close enough to bite, and laughed in her face, and asked whether that was the best a dog could do. Neither of them ever said who won. Both of them went on playing, every night of the war, and the Commander learned not to ask about the scratches.{/n}",
               "Requires": [
                 "wenduag.trickster.vellexia.hunted"
               ],
@@ -440277,6 +440568,32 @@
       "AnswerLists": [],
       "Dialog": "hub",
       "Greeting": "{n}Beside the Storyteller's shelves a tall, thin demon-woman in a high black collar stands with her arms folded, reading the spines upside down. She has been there since the morning bell. The Storyteller has stopped pretending he is not nervous, and the soldiers coming up the street step off the path when they reach her, and do not know why.{/n}"
+    },
+    "wenduag.presence": {
+      "Unit": "ae766624c03058440a036de90a7f2009",
+      "Area": "2570015799edf594daf2f076f2f975d8",
+      "Mode": "spawn-copy",
+      "At": {
+        "Locator": "f8cfa132-6536-4fc5-a2be-1c49b0165202",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "Requires": [
+        "trickster.ever",
+        "wenduag.trickster.returned"
+      ],
+      "Forbids": [
+        "wenduag.closed",
+        "wenduag.in_party",
+        "wenduag.committed"
+      ],
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "AnswerLists": [],
+      "Dialog": "hub",
+      "Greeting": "{n}A neather woman in a hunter's hood is crouched against the wall where the street from the south gate comes up toward the citadel, a spear across her knees, watching the gate. Soldiers going past give her a wide berth without knowing why. Under the hood, her teeth show.{/n}"
     }
   },
   "PermanentEtudes": [

@@ -239,6 +239,30 @@ for _node in _claim["Nodes"][1:]:
 SCENES.append(_claim)
 tag(_claim["Id"], "T")
 
+# Returned from her cairn, she is played in person too: a spawned copy of her unit at the place in Drezen where her native
+# exile walks her out (LannWenduGoAwayLocator, DrezenCapital main scene; no other presence uses it). The native unit stays
+# dead or gone; this copy is RRT's living Wenduag. The claim moves onto it.
+UNIT = "ae766624c03058440a036de90a7f2009"              # Wenduag_Companion
+PRESENCE = "wenduag.presence"
+PRESENCES = {
+    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy",
+                   At=dict(Locator="f8cfa132-6536-4fc5-a2be-1c49b0165202", Offset=[0.0, 0.0]),
+                   Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, IN_PARTY, COMMITTED], MinChapter=5, MaxChapter=5,
+                   AnswerLists=[], Dialog="hub",
+                   Greeting=("{n}A neather woman in a hunter's hood is crouched against the wall where the street from the south "
+                             "gate comes up toward the citadel, a spear across her knees, watching the gate. Soldiers going "
+                             "past give her a wide berth without knowing why. Under the hood, her teeth show.{/n}")),
+}
+_remote = next(x for x in SCENES if x["Id"] == W + "court.claim")
+_remote.pop("Remote", None)
+_remote.pop("Kind", None)
+_remote["ContactUnit"] = UNIT
+_remote["InteractionHub"] = PRESENCE
+_remote["Entry"] = '"What have you got there?"'
+_remote["Nodes"][0] = n("start", "Narrator", '''{n}She does not answer. She stands, and steps aside, and there behind her in the angle of the wall, out of sight of the street, something heavy lies bound hand and foot, and grunts.{/n}
+{n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}
+{n}Wenduag puts her foot on his back, the way a hunter rests a foot on a kill, and pushes back her hood.{/n}''', c("Continue", "her"))
+
 
 # --- 5. Her cairn (intimacy; Directive 12: heat up to the cut, cut at the start of the act). --------------------------------
 
@@ -449,7 +473,7 @@ visit(W + "court.hunt", "Outside the south postern", [
 visit(W + "court.gongs", "Counted in gongs", [
     nar("start", '''{n}You find her on the top of the citadel wall at the dead end of the night, sitting with her back to a merlon, listening. Down in the lower town a temple bell is telling the hour.{/n}''',
         c("Continue", "her")),
-    wd("her", '''"In Neathholm there's a gong. A big one, bronze. Nobody knows where it came from; the old ones say a crusader camp, before anyone was born. Someone strikes it at every change of the watch, because in the tunnels there's no day and night, only the gong." {n}She tilts her head toward the bell.{/n} "That's the only thing I miss. Isn't that stupid? Not the tribe. Not the dark. The gong. I used to count my life in it. Thousands of gongs since my father went hunting and didn't come back."''',
+    wd("her", '''"In Neathholm there's a gong. A big one, bronze. Nobody knows where it came from; the old ones say a crusader camp, before anyone was born. The gong keeper strikes it twice a day, once to start the day and once to end it, because in the tunnels there's no sun to do it for him." {n}She tilts her head toward the bell.{/n} "That's the only thing I miss. Isn't that stupid? Not the tribe. Not the dark. The gong. I used to count my life in it. Thousands of gongs since my father went hunting and didn't come back."''',
         c("Continue", "father")),
     wd("father", '''{n}She is quiet for a while.{/n}
 "They said the tunnels ate him. That's what they say when someone doesn't come back. The tunnels ate him." {n}Her voice is flat.{/n} "It wasn't the tunnels. It was him. Savamelekh. He took the strong ones, Rullo, old Gorom, my father, and fed them his poison until they forgot they'd ever had names." {n}She pulls her knees up.{/n} "Every neather child in Neathholm grows up knowing somebody the tunnels ate. None of them knows it was a demon with a skin like a wet drum. I know. I'm the only one who knows and is still alive."''',
@@ -486,6 +510,12 @@ SCENES.append(reaction("Irabeth", W + "react.irabeth_traitor", ("trickster.ever"
     Chapters=[5], **IRABETH_GUARD))
 tag(W + "react.irabeth_traitor", "T")
 
+SCENES.append(reaction("Regill", W + "react.regill_watch", ("trickster.ever", RETURNED, "regill.in_party"),
+    '''{n}Regill does not look up from his ledger of punishments.{/n} "A traitor fell in your street, or in a demon's house, or in a Neathholm tunnel; I have not troubled to learn which. A traitor was buried by the Commander's own hand, without witnesses and without a tribunal. And there is now a neather in the cellars who eats raw hare, answers to no muster roll and comes and goes through gates that are shut to her kind." {n}He turns a page.{/n} "I do not ask whether these facts are connected. Asking would oblige me to act. I note, Commander, that a crusade which buries its traitors privately has a Commander who has decided the law is a private matter. I will be keeping my own account of where that leads. Its entries are short."''',
+    answer_list="2366a8db6481070439fee222c0c52e45", relationship=REL, entry='"You have something to say, Regill."', chapter=5, last=5,
+    portrait="Regill", forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent", CLOSED), Chapters=[5]))
+tag(W + "react.regill_watch", "T")
+
 
 # --- 9. Epilogue pages (Owner WenduagEpilogue, Chapter 6; no effects; no page Requires another). ---------------------------
 
@@ -514,7 +544,7 @@ COMMITTED_PARAS = (
     p("{n}Old Tuhk went down the oldest stair one night with his cracked spear in his hands, and did not come back up, and his share fed the cellars through the winter. Nobody coughed in the furthest cellar that summer. She never spoke of it again, but she never again asked the Commander for anything she could decide herself, either.{/n}", requires=(W + "neathers.culled",)),
     p("{n}Old Tuhk died in a chaplain's bed in the spring, warm and dry, with a priest of Iomedae praying over him in a language he did not understand and Wenduag sitting at the foot of the bed with her arms folded, glaring at the priest. She said afterwards that it was a stupid way to die. She went back every day until it was over.{/n}", requires=(W + "neathers.infirmary",)),
     p("{n}Two of the little ones in the cellars caught the cough that winter. The Commander went down and looked at them, every time she said to, and one of them lived. She counted that as a draw.{/n}", requires=(W + "neathers.forbidden",)),
-    p("{n}The succubus in the citadel learned to sleep with a lamp lit and her back to a wall. Hare's heads on her pillow, a knife in her door, and one night teeth at her throat in a dark corridor, and a laugh, and nothing else. She never found out whose. Wenduag said it was the best promise she ever kept.{/n}", requires=(W + "vellexia.hunted",)),
+    p("{n}The succubus in the citadel knew whose hare's heads were on her pillow by the second night; she could smell a neather through three walls as well as a neather could smell her. She left the heads where they were. On the night Wenduag came for her throat in a dark corridor, Vellexia was waiting, and turned, and let her get close enough to bite, and laughed in her face, and asked whether that was the best a dog could do. Neither of them ever said who won. Both of them went on playing, every night of the war, and the Commander learned not to ask about the scratches.{/n}", requires=(W + "vellexia.hunted",)),
     p("{n}Wenduag left the succubus alone under the Commander's roof, as she had said she would, and passed her in the halls every day of the war without a word, and sniffed, every time, loudly.{/n}", requires=(W + "vellexia.left",)),
     p("{n}Some nights, when the war let them, she took the Commander out through the south postern barefoot with a spear and no light, and they came back before dawn with blood on their chins and nothing to say to anyone.{/n}", any_groups=((W + "hunt.ate", W + "hunt.cooked"),)),
     p("{n}She never once used the Commander's name where anyone could hear, and she stopped saying *master* altogether. When she needed to call the Commander she whistled, the way the neathers whistle in the tunnels, one note up and one down, and the Commander came, and everybody who saw it pretended not to have.{/n}"),
@@ -551,7 +581,13 @@ tag(W + "epilogue.dead", "T")
 # --- Registration -------------------------------------------------------------------------------------------------------------
 
 def integrate(payload):
-    """The Last Call partner key (committed here, or the native romance kept to the end); wenduag_trickster binds the rest."""
+    """The Last Call partner key (committed here, or the native romance kept to the end) and her presence; wenduag_trickster
+    binds the rest."""
+    for key, value in PRESENCES.items():
+        have = payload.setdefault("Presences", {}).get(key)
+        if have is not None and have != value:
+            raise ValueError("Conflicting presence: " + key)
+        payload["Presences"][key] = dict(value)
     for key, groups in _DERIVED_EXTRA.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != [list(g) for g in groups]:

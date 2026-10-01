@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 993,
-  "resolved": 993,
+  "entryTargetScenes": 994,
+  "resolved": 994,
   "inlineOnlyScenes": 256,
   "inlineOnlyResolved": 256,
-  "answerListScenesWithoutContact": 579,
-  "answerListScenesWithoutContactResolved": 579,
+  "answerListScenesWithoutContact": 580,
+  "answerListScenesWithoutContactResolved": 580,
   "lists": 105,
   "listsWithReachableHost": 104
  },
@@ -19188,6 +19188,25 @@
     "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
     "dialogName": "Lann_Main_dialog",
     "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.react.regill_watch": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.wenduag.trickster.react.regill_watch"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },
