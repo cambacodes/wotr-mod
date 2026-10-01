@@ -219,6 +219,26 @@ internal static class MinaghoChivarroTricksterTests
               && !sparedLetter.Nodes.Single(n => n.Id == "start").Text.Contains("It stopped", StringComparison.Ordinal),
             "An unprimed spared Minagho has no reachable transfer when her presence fails, or an opening precedes its act.");
 
+        // Sol r2 INT: Baphomet's one parley notices Horzalah's escape as it notices Hepzamirah's (a node variant, no debt).
+        check(Pages(parley, With(aliveCell0(), "horzalah.trickster.returned")).Contains("weaker")
+              && !Pages(parley, aliveCell0()).Contains("weaker"), "The parley ignores Horzalah's escape.");
+        // Sol r2 INT: a soft no keeps its priced second ask, for the pair and for each woman alone.
+        var pairNo = World(story, 5, "trickster.ever", Reunited, ChIn, MinIn, "minagho.spared_c4", P + "tprev.house", Declined);
+        var scars = S(P + "after.when_it_scars");
+        var scarOut = Done(scars, pairNo);
+        check(Av(scars, pairNo) && scarOut.Any(r => r.Has(Complete) && r.Has("minachiv.future_two") && r.Has(P + "night.pair") && r.Has(P + "cost.morning_after"))
+              && scarOut.Any(r => r.Has(Closed)) && !Av(scars, With(pairNo, Complete)), "The pair's soft no has no second ask.");
+        var minNo = World(story, 5, "trickster.ever", "chivarro.dead", MinIn, "minagho.spared_c4", DeclC, Declined);
+        check(Done(S(P + "alone.minagho_when_it_scars"), minNo).Any(r => r.Has(Complete) && r.Has("minachiv.future_minagho")),
+            "Minagho's soft no has no second ask.");
+        var chivNo = World(story, 5, "trickster.ever", "minagho.dead", ChIn, Waiting, Declined);
+        check(Done(S(P + "alone.chivarro_when_it_scars"), chivNo).Any(r => r.Has(Complete) && r.Has("minachiv.future_chivarro")),
+            "Chivarro's soft no has no second ask.");
+        // Sol r2 BEL: the red silk earns a meeting; the name is priced at it, with the hand on her table.
+        var wonBackOut = Done(wonBack, World(story, 5, "trickster.ever", P + "chivarro_walked", ChIn));
+        check(Pages(wonBack, World(story, 5, "trickster.ever", P + "chivarro_walked", ChIn)).Contains("hand")
+              && wonBackOut.Where(r => r.Has(P + "tprev.name")).All(r => r.Has(P + "cost.palm_on_table")), "The red silk buys the name without the hand.");
+
         // Trk_Minagho_SparedParleyAlive.
         var aliveCell = World(story, 5, "trickster.ever", "minagho.spared_c4", Primed);
         check(Av(parley, aliveCell) && Done(parley, aliveCell).Any(r => r.Has(P + "baphomet_heard")), "Trk_Minagho_SparedParleyAlive failed.");
@@ -412,6 +432,7 @@ internal static class MinaghoChivarroTricksterTests
         check(S("minachiv.ending_minagho_lost_completed").Forbids.Contains(RetM) && S("minachiv.ending_chivarro_lost").Forbids.Contains(RetC)
               && S("minachiv.ending_both_lost").Forbids.Contains(RetM) && S("minachiv.ending_both_lost").Forbids.Contains(RetC), "G6(a) missing on a lost page.");
 
+        Snapshot aliveCell0() => World(story, 5, "trickster.ever", "minagho.spared_c4", Primed);
         Snapshot With(Snapshot w, params string[] flags)
         {
             var next = Program.Copy(w);
