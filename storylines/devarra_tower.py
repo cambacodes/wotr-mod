@@ -125,7 +125,7 @@ hub(T + "first_climb", "The watchtower", '"She\'s sent for me, hasn\'t she?"', [
 # --- 3. Her questions (after the first climb) -----------------------------------------------------------------------
 
 hub(T + "her_questions", "Three questions for a liar", '"Has she sent anything down?"', [
-    teller("start", '''"Three questions." {n}He sets them down between you on the table as if they were coins.{/n} "She says a thing that lied her alive owes her an account of itself, and that she will know if you lie to her again, because she has tasted your lies and knows what they are made of."
+    teller("start", '''"Three questions." {n}He sets them down between you on the table as if they were coins.{/n} "She says a thing that bought her terms with a story owes her an account of itself, and that she will know if you lie to her again, because she has tasted your lies and knows what they are made of."
 "I am to carry the answers up word for word. I will. I would add, as the carrier, that I am curious too."''',
         c("Continue", "first")),
     teller("first", '''"The first: what did you steal first? Not the biggest thing. The first."''',
@@ -140,7 +140,7 @@ hub(T + "her_questions", "Three questions for a liar", '"Has she sent anything d
         c("Continue", "second")),
     teller("second", '''"The second: who have you lied to that you still love?"''',
         c('"Everyone I love. That\'s how I know I love them. I bother to lie."', "second_all", flags=(LOVED_LIE,)),
-        c('"You. I told you what you were, and it was a lie, and then it wasn\'t."', "second_her", flags=(LOVED_LIE,)),
+        c('"You. I told the stone you would get up, before anyone knew you could."', "second_her", flags=(LOVED_LIE,)),
         c('"No one. I don\'t lie to people I love."', "second_none")),
     teller("second_all", '''"Everyone." {n}He nods slowly.{/n} "I will repeat it exactly. Including the way your voice went on the last word. She will ask, and I do not lie to her; it is bad for my health."''',
         c("Continue", "third")),
@@ -231,7 +231,7 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
        c("[Tell her.]", "ate_yes_told")),
     nar("ate_yes_told", '''{n}You tell her. She listens with her eyes closed, and does not interrupt, and when you have finished she says nothing at all, and at the door the Storyteller shifts his weight at last.{/n}''',
         c("Continue", "ate_yes_end")),
-    dv("ate_yes_end", '''"Thank you," she says at last, and then, as if the word had been dragged out of her against her will: "No. Not thank you. I do not thank. I only take." {n}The eye opens.{/n} "I took it. Go home."''',
+    dv("ate_yes_end", '''"Herbs," she says at last. "They put herbs in my children." {n}The eye opens.{/n} "Bring me the name of the herb-seller. Not the cook; the seller. I want to know who profits from my clutch. Then go home."''',
        c("Continue", "end")),
     dv("ate_no", '''"No." {n}She tastes the air, once.{/n} "That is true. I can tell. You smell of a great many things, crusader, but not of them." {n}She lays her head back on the sill.{/n} "I do not know yet whether I am glad. Go home. Let me think about it at your city."''',
        c("Continue", "end")),
@@ -430,7 +430,7 @@ hub(T + "back_up_the_mountain", "She is still hungry", '"Is she still up there?"
     dv("yes", '''"Not the sword arm." {n}She says it the way a judge says 'so ordered'.{/n} "You kept me waiting, crusader. You will pay interest. I have not yet decided in what." {n}She lays her head back on the sill, facing the city, and at last she closes both eyes.{/n}''',
         c("[Go down the mountain.]")),
     dv("not_yet", '''"To see me." {n}Her face gives you nothing to read at all.{/n} "Then look. Look as long as you like. You kept me whole for three days; you may as well look at what you kept." {n}She turns back to the city.{/n} "And then go, and come back when you have an answer. I am still hungry. I am always hungry now."''',
-        c("[Go down the mountain.]")),
+        c("[Go down the mountain.]", abort=True)),
     dv("no", '''"Then there is nothing in you worth keeping." {n}She does not raise her voice.{/n} "I gave you two chances, crusader. I have never given anyone two. Go down the mountain before I remember the rest of you is edible."''',
         c("[Go.]")),
 ], requires=(LEFT_HUNGRY,), forbids=(COMMITTED,), delay=72)
@@ -858,7 +858,7 @@ hub(T + "the_messenger", "What the messenger thinks", '"You\'ve carried every me
         c('"Do you forgive me?"', "forgive_me")),
     teller("forgive", '''"Forgive her?" {n}He laughs, a dry, surprised sound.{/n} "No. I am an old man, and she tried to eat me, and I am allowed to hold that for the rest of my life. But I will tell you a secret, Commander, since you have paid for so many." {n}He leans forward.{/n} "The last time I went up, she asked me for the end of a story I had never started. I told her I would make one up. She said she would wait. I left before she changed her mind. I am not sure, even now, that waiting was not a threat."''',
         c("Continue", "end")),
-    teller("forgive_me", '''"You?" {n}He considers it with great seriousness.{/n} "You told a lie over her body, and she paid for it as if it were a story, because to her there is no difference. She tells it differently every time she tells it, and so, I notice, do you. That is a terrible thing to do to a story." {n}He does not smile.{/n} "And every one of them was a very good story. That does not bring back the two men of the north watch, or the cook, or whatever she ate on the north road last week. Ask me again when I have heard the ending."''',
+    teller("forgive_me", '''"You?" {n}He considers it with great seriousness.{/n} "You told a lie over her body, and she paid for it as if it were a story, because to her there is no difference. She tells it differently every time she tells it, and so, I notice, do you. That is a terrible thing to do to a story." {n}He does not smile.{/n} "And every one of them was a very good story. That does not bring back the two men of the north watch, or whatever she ate on the north road last week. Ask me again when I have heard the ending."''',
         c("Continue", "end")),
     teller("end", '''"I have carried her messages. The climb is yours." {n}He waves you away.{/n} "And when all this is over, however it ends, for you or for her, I would like to hear it. I will pay full price."''',
         c('"You\'ll have it free."', flags=(TELLER_VIEW,))),
@@ -991,7 +991,7 @@ hub(T + "first_snow", "Snow on the ridge", '"It snowed on the ridge last night. 
     nar("braziers", '''{n}It takes six carts and a great deal of swearing from the teamsters to get the braziers up the ridge. You go up with the last one.{/n}
 {n}She has lain down in a ring of them around the tower floor like a cat around a hearth, her wings wrapped tight about herself, her breath coming out in white plumes, glaring at the snow on the sill as though it had insulted her personally. The fleeces you sent are heaped under her chin.{/n}''',
         c("Continue", "braziers_her")),
-    dv("braziers_her", '''"Do not say anything." {n}Her teeth are very nearly chattering, which on a dragon is a sound like knives in a drawer.{/n} "Three hundred years I have wintered in the Worldwound, and I never once felt the cold. The old hide was a hand thick. This one is paper." {n}She pulls a fleece closer with one claw.{/n} "This is your fault. You kept the knives off me for three days in the snow while this grew. You did not think to keep me warm."''',
+    dv("braziers_her", '''"Do not say anything." {n}Her teeth are very nearly chattering, which on a dragon is a sound like knives in a drawer.{/n} "Three hundred winters in the mountains of the north, the last hundred of them in the Wound, and I never once felt the cold. The old hide was a hand thick. This one is paper." {n}She pulls a fleece closer with one claw.{/n} "This is your fault. You kept the knives off me for three days in the snow while this grew. You did not think to keep me warm."''',
        c('[Sit down inside the ring and lean against her.]', "lean"),
        c('"Next time you die, I\'ll bring braziers."', "both")),
     teller("city", '''{n}He goes up and comes back before noon, looking both shocked and delighted.{/n} "She said: 'Tell the Commander that if I come down into its city to get warm, I will not come back up, and the city will not be warm for very long afterwards.'" {n}He folds his hands.{/n} "And then she said, 'Send the braziers.' I have taken the liberty of ordering them in your name."''',
