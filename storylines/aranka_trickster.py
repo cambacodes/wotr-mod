@@ -59,6 +59,12 @@ KING_GONE = "fool_king.gone"
 # fallbacks Forbid the crown unless the King is gone, so they open only when no King is left to sing to: the King
 # is gone, or the Coronation has passed and he was never crowned (then no Chapter 5 King scene exists).
 NO_KING = "aranka.trickster.king_gone"
+# Q8 (Sol TRK/CAN/INT): the Commander attacked the Desnan adepts in Kenabres (DesnaTempleFinal/Answer_0026 3259064c,
+# "[Attack] ...I'm going to kill you."; Cue_0027 8b066a9c starts the fight). Aranka died there; no living copy, letter or
+# page may follow. Bound as SelectedAnswers and added to her relationship's UnavailableFlags (pages forbid it directly,
+# since epilogue availability skips relationship flags).
+KENABRES_ATTACKED = "aranka.kenabres_attacked"
+KENABRES_ATTACK_ANSWER = "3259064c6a1ac284c80ecc7d3fad6135"
 NO_KING_GATE = dict(RequiresAnyGroups=[[KING_GONE, "coronation.seen"]], ForbidOverrides={CROWNED: NO_KING})
 
 RELATIONSHIP_PATCH = dict(
@@ -441,7 +447,7 @@ VERSE_PARAGRAPHS = (
 
 def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
     SCENES.append(scene(id, title, "Epilogue", 1, "", [nar("end", text, paragraphs=paragraphs)], requires=requires,
-                        forbids=forbids, last=99, Relationship="aranka", **extra))
+                        forbids=(*forbids, KENABRES_ATTACKED), last=99, Relationship="aranka", **extra))
 
 
 page("aranka.trickster.epilogue.commit", "The last night in Nerosyan",
@@ -508,6 +514,12 @@ def integrate(payload):
     the failure override, the presence and one Guidance sentence."""
     rel = payload["Relationships"]["aranka"]
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
+    if KENABRES_ATTACKED not in rel["UnavailableFlags"]:
+        rel["UnavailableFlags"].append(KENABRES_ATTACKED)
+    answers = payload.setdefault("SelectedAnswers", {})
+    if answers.get(KENABRES_ATTACKED, KENABRES_ATTACK_ANSWER) != KENABRES_ATTACK_ANSWER:
+        raise ValueError("Conflicting binding: " + KENABRES_ATTACKED)
+    answers[KENABRES_ATTACKED] = KENABRES_ATTACK_ANSWER
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     # Q8 (Sol INT): one journal text for both venues, the island continuation and a fresh Trickster meeting.
     rel["Description"] = ("Aranka sings Starward Gaze for Desna, and whatever is between us is being written the same "

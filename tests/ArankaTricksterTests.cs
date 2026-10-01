@@ -305,6 +305,12 @@ internal static class ArankaTricksterTests
             "The late commit or the credit page is missing.");
         check(Rules.Available(story, epDeclined, declined) && !Rules.Available(story, epVerse, declined)
               && !Rules.Available(story, epDeclined, thirdOut.First(r => r.Has(Kept))), "Her no is not remembered, or outlives her yes.");
+        // Q8 (Sol TRK): a Commander who attacked the adepts in Kenabres killed her; no tavern, letter, presence or page follows.
+        var murdered = World(story, 3, "trickster", "trickster.ever", "aranka.kenabres_attacked");
+        check(!Rules.Available(story, tavern, murdered) && !Rules.Available(story, anyTavern, World(story, 5, "trickster", "trickster.ever", "aranka.kenabres_attacked", "coronation.after"))
+              && !Rules.Available(story, epVerse, World(story, 6, "trickster.ever", Kept, "aranka.kenabres_attacked"))
+              && story.SelectedAnswers["aranka.kenabres_attacked"] == "3259064c6a1ac284c80ecc7d3fad6135",
+            "A living Aranka follows her death in Kenabres.");
         // Q8 (Sol BEL): the third verse sung and its rhyme left hanging has its own page, never "never written".
         var hardNo = thirdOut.First(r => r.Has(Closed) && !r.Has(Kept));
         check(!Rules.Available(story, epDeclined, hardNo) && Rules.Available(story, S(P + "epilogue.unanswered"), hardNo)
