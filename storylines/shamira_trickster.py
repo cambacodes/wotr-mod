@@ -46,6 +46,7 @@ corner table in Drezen (shamira_dream), and the courtship after the waking is pl
 Nothing here reads, fills or removes Areelu's flask (SoulJar_Trickster): that bottle is Last Call's.
 """
 from story_format import c, n, p, reaction, scene
+from storylines import lastcall_ledger
 
 SCENES = []
 REL = "shamira"
@@ -139,6 +140,29 @@ NOT_NOCT = P + "throne.not_her"
 LIED_HER = P + "throne.lied"
 LATE_COMMITTED = P + "late_committed"
 SECRET = "trickster.secret.shamira_barracks"
+# Early thread T3 (15b-EARLY-THREADS.md, PP9): what the paper-eater swallowed, bought with his freedom (Chapter 3).
+TELMER_HUB = "ca6d1fdb3b2e1cd42a995788f05efdb2"      # c3/IvorySanctum/CultCamp_CultistFromEstrod/AnswersList_0002
+TELMER_RETURN = "0ff9dfa1944f90b4cb8fb2ceaefadf4b"   # Cue_0024 "Maybe you could let me go, and I... will tell you..."
+TELMER_RELEASE = "51e53730da8c07443be9a463ed33edcd"  # Cue_0013 (he sobs and wanders off; OnStop plays his departure)
+INTERROGATION = "shamira.early.telmer_interrogation"  # the scene id (completion), distinct from the success flag
+INTERROGATION_SEEN = INTERROGATION + ".seen"
+INTERROGATION_DECLINED = INTERROGATION + ".declined"
+NOTES = "shamira.early.telmer_notes"                 # set only by the release that bought the tally
+EXPOSED = "shamira.early.telmer_exposed"             # set with the release: he tells every cult fire who let him go
+TELMER_FAILED = "shamira.early.telmer_failed"
+TELMER_LETTER = "shamira.early.telmer_letter"
+TELMER_LETTER_SEEN = TELMER_LETTER + ".seen"
+LETTER_BURNED = TELMER_LETTER + ".burned"
+LETTER_KEPT = TELMER_LETTER + ".kept"
+XANTHIR_DEAD = "xanthir.dead"                        # SeenCue Xanthir_after/Cue_0038 (his death; OnStop Kill)
+MANIFEST = P + "manifest_shown"
+SEEN[XANTHIR_DEAD] = ["101f336e917865649aca9e074fde5be5"]
+# The native releases of the same half-elf (each Answer of the verdict list or hub that lets him go), and every release.
+SPARED = {"telmer.spared_0012": "dfc736a14d7a5184c9579533d3d90803",   # Answer_0012 "Get out of here."
+          "telmer.spared_0015": "514f660014964d0409d18eb5bb94e0f5",   # Answer_0015 "Renounce the demons..."
+          "telmer.spared_0017": "73cefa3ea5b79b54ebf9e84562d3eecf",   # Answer_0017 "Go wherever you will..."
+          "telmer.spared_0018": "d2b603cf4319b5847a24ad9e402384c6"}   # Answer_0018 [Point at the cauldron] (he eats it)
+SELECTED.update(SPARED)
 LIVE = (CLOSED, KEPT, CAST_OUT)
 
 DERIVED = {
@@ -148,6 +172,11 @@ DERIVED = {
     LATE_COMMITTED: [["trickster.ever", GAME]],
     # 05 §2.5 voice note: she keeps a harem; she is not kept in one.
     "shamira.harem.voice.keeps_a_harem": [[COMMITTED], [LATE_COMMITTED]],
+    # T3: the scribe walked free, natively or for the tally (native_next leaves no native dialog history).
+    "telmer.released": [["telmer.spared_0012"], ["telmer.spared_0015"], ["telmer.spared_0017"], ["telmer.spared_0018"], [NOTES]],
+    # The Ledger's Secrets page reads trickster.secret.<k> (08 §2.1), held once the tally is bought.
+    "trickster.secret.telmer_tally": [[NOTES]],
+
 }
 
 RELATIONSHIP = dict(
@@ -198,6 +227,70 @@ def page(id, title, nodes, requires, forbids=(), delay=0, chapters=(5,), kind="s
 WHISPER = "{n}Shamira's voice whispers inside your mind,{/n} "
 
 
+# --- Early thread T3 (15b-EARLY-THREADS.md, PP9; T, the live Trickster): "What did you eat this morning?" ---------------
+# Canon: the half-elf scribe Telmer (Ch1 Cue_0004 15b76999) eats paper (Ch1 Cue_0008); in Chapter 3 he offers Xanthir's
+# secrets for his freedom (Cue_0024 0ff9dfa1), and the camp barks say a student's notebook went missing, "the chewed-up
+# cover lying next to Paper-muncher's bedroll" (11fc5403). Jerribeth (JerribetnFinal/Cue_0013 bbd3bba7): the crystals come
+# from the Midnight Isles with Nocticula's approval, and Hepzamirah oversees the shipments. AUTHORED, labelled: that the
+# notebook held a crystal-loading tally, and every number and word of it. No canon links Telmer to Shamira; the thread is
+# the information. Telmer's dialog exists only while DemonScriptorAlive plays, so no extra binding gates it.
+
+def telmer(id, text, *choices):
+    """The half-elf scribe, the native conversant of his camp dialog."""
+    return n(id, "conversant", text, *choices)
+
+
+SCENES.append(scene(INTERROGATION, "What the paper-eater swallowed", "Shamira", 3,
+    '"Not what you were doing. What you *ate*. This morning. The notebook."', [
+    telmer("start", '''{n}The half-elf goes green, then white, then a sort of hopeful grey.{/n} "I... it was an accident! It was lying there, and the cover was already loose, and I had not eaten since the day before yesterday, and it was *delicious*... I mean... What notebook?"''',
+        c('"Recite it. Every line you swallowed."', check=dict(Skill="CheckIntimidate", DC=18, Success="recite", Failure="garbled"),
+          flags=(INTERROGATION_SEEN,)),
+        c('"Forget it."', abort=True, flags=(INTERROGATION_DECLINED, INTERROGATION_SEEN))),
+    telmer("recite", '''{n}He shuts his eyes and recites in the sing-song of a student who has had his lessons beaten into him:{/n} "'Consignment seven. Forty-one crates sent, by Hepzamirah's word, under the Lady in Shadow's seal. Forty received at the camp, counted and loaded. The forty-first not accounted.' Then a drawing of a crate. A bad one."
+{n}He wipes his mouth on his sleeve.{/n} "That's all. That's all of it, I swear on my own stomach. It was a very short notebook. Poor Telmer has an excellent memory and a terrible life."''',
+        c('"Walk. Now. Before I change my mind."', native_next=TELMER_RELEASE, flags=(NOTES, EXPOSED), alignment=("Chaotic", 1))),
+    telmer("garbled", '''{n}He recites. It goes on for some time. There are crates in it, then cauldrons, then a recipe for lentils, then what is plainly a love poem to a girl in the Sanctum's kitchens, rhymed badly.{/n} "...and that is every word, I swear it."
+{n}It is not. Whatever he swallowed this morning, he is not going to give it up to someone he is not more afraid of than his own masters.{/n}''',
+        c("[Let him babble.]", flags=(TELMER_FAILED,))),
+    ], requires=("trickster",), forbids=(INTERROGATION, INTERROGATION_SEEN), last=3, optional=True, Relationship=REL,
+    Chapters=[3], AnswerLists=[TELMER_HUB], NativeReturnCue=TELMER_RETURN))
+
+# The released scribe writes (Chapter 3, so always before her audience): a letter, two days after the release. The text
+# follows the verified Xanthir outcome at delivery, not an assumed chronology. Carrier (authored): a camp follower who
+# deserted the cult camp, paid in chewed coins.
+TELMER_SIGN = "Your servant, who told nobody anything,\nT."
+SCENES.append(scene(TELMER_LETTER, "Who told nobody anything", "Telmer", 3, "", [
+    nar("carrier", '''{n}A camp follower in a blanket stiff with filth turns up at the edge of your camp asking for "the one who lets people go". She ran from the cult camp below the Ivory Sanctum, she says, the night after you came through it, and she was paid to carry this. She shows you her pay: three copper coins, every one of them chewed.{/n}
+{n}The letter is written on the inside of a ration wrapper in a scribe's beautiful hand gone shaky. One corner has been nibbled.{/n}''',
+        c("Continue", "dead", requires=(XANTHIR_DEAD,), flags=(TELMER_LETTER_SEEN,)),
+        c("Continue", "alive", forbids=(XANTHIR_DEAD,), flags=(TELMER_LETTER_SEEN,))),
+    n("dead", "Telmer", '''"Most merciful Commander,
+They know you let me go. The cauldron-masters who are left think I sold them to you. I told them *nothing*. I told them I ran, which is true, and that you were terrible, which is also true, and they threw my bedroll in the latrine trench anyway.
+They say Master Xanthir is dead. I wept. I am not certain for whom.
+I have not eaten a single page since the camp. I am sending you this one instead, which surely proves my discretion. If you ever need a scribe with an excellent memory and an iron stomach, the girl who carries this knows where poor Telmer sleeps.
+''' + TELMER_SIGN + '"',
+        c("[Burn it.]", flags=(LETTER_BURNED,)),
+        c("[Keep it.]", flags=(LETTER_KEPT,))),
+    n("alive", "Telmer", '''"Most merciful Commander,
+They know you let me go. The Plagued One knows. I told him *nothing*. I have not been anywhere near him, which is how I intend to go on telling him nothing. Please remember that I told him nothing.
+I have not eaten a single page since the camp. I am sending you this one instead, so that somebody outside the Sanctum knows I said nothing, in case Master Xanthir decides I said something. He decides things like that. Then he decides what to do with the people who said them.
+''' + TELMER_SIGN + '"',
+        c("[Burn it.]", flags=(LETTER_BURNED,)),
+        c("[Keep it.]", flags=(LETTER_KEPT,))),
+    ], requires=("trickster", NOTES), forbids=(TELMER_LETTER_SEEN,), delay=48, last=3, Relationship=REL, Chapters=[3],
+    Remote=True, Kind="letter"))
+
+# The durable reader: a Secrets page in the Ledger, whether or not her Chapter 4 audience is ever reached.
+lastcall_ledger.early(dict(
+    Id="early.telmer", Section="Secrets", Portrait="Shamira", Title="A paper-eater's freedom",
+    Text="{n}At the cult camp below the Ivory Sanctum you let Xanthir's scribe walk free, for a crate tally he had eaten "
+         "that morning: forty-one crates sent under the Lady in Shadow's seal, forty received.{/n}",
+    Lines=[lastcall_ledger._line("{n}A paper-eater tells every cult fire who traded his freedom for a crate count.{/n}",
+                                 requires=[EXPOSED]),
+           lastcall_ledger._line("{n}A paper-eater owes you his life, and knows you know it.{/n}", requires=[LETTER_KEPT])],
+    Requires=["trickster.secret.telmer_tally"], Forbids=[], AnyGroups=[], Tooltip="RRT_Secret"))
+
+
 # --- Chapter 4: her audience, while she lives ------------------------------------------------------------------------
 
 audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in this city wants what\'s in my head. You may as well be first."', [
@@ -220,7 +313,10 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
         c("[Think of the war, and nothing else.]", "found_war", flags=(READ, STARTED, THOUGHT_WAR)),
         c("[Think of her. Only her, on her throne, burning.]", "found_her", flags=(READ, STARTED, THOUGHT_HER)),
         c("[Think of moonshine recipes, loudly and in detail, and hide something small under them.]", "recipes",
-          mythic="Trickster", flags=(READ, STARTED, HID))),
+          mythic="Trickster", flags=(READ, STARTED, HID)),
+        # T3 payoff (15b, PP9): appended, so [0]-[2] keep their indices.
+        c("[Think of a crate tally a paper-eater once recited, and let her find it.]", "manifest", requires=(NOTES,),
+          flags=(READ, STARTED, MANIFEST))),
     conv("found_war", '''"The war. Of course it's the war." {n}She sounds almost disappointed in you.{/n} "You put it in the front of your head and stood in front of it waving. That is not hiding, Golarian. That is showing."
 {n}The heat withdraws. She waves you off with two fingers.{/n} "Go. Take your war with you. Try not to die somewhere I can't hear it."''',
         c("[Bow, and leave her to her court.]")),
@@ -233,6 +329,19 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
         c("Continue", "idiot")),
     conv("idiot", '''{n}The heat pulls out of you all at once, like a hand out of cold water. She is smiling, and it is not a pleasant smile, and it is not an entirely unpleasant one either.{/n}
 "Either you are an idiot, or you have learned to hide from me, and a mortal who can hide from me in my own Harem is a mortal I will have to kill one day, or keep." {n}She points at the doors.{/n} "Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do."''',
+        c("[Bow, and leave her to her court.]")),
+    # T3 payoff: she finds the tally where the Commander left it. Political leverage in Alushinyrra, not her crystal task
+    # (that is Ziforian and the mine, Cue_0122); the servants who would sell her interest are her own canon (Cue_0094 062cb2f1).
+    conv("manifest", '''{n}She plucks it out of you like a hair from a sleeve.{/n} "'By Hepzamirah's word, under the Lady in Shadow's seal.' Forty-one sent, forty arrived." {n}Her eyes narrow, and something in them is delighted.{/n}
+"Nocticula seals the crates of Baphomet's daughter, and one of them is missing from the tally, if your paper-eater remembered it right. Stolen, diverted, or *given*. I shall enjoy finding out which."
+{n}She lets that settle.{/n} "You carried that into my house, and you let me take it. My own servants would have sold it to my enemies before they sold it to me. Either you are a fool, or you are buying me."''',
+        c("Continue", "manifest_exposed", requires=(EXPOSED,)),
+        c("Continue", "manifest_letter", requires=(LETTER_KEPT,), forbids=(EXPOSED,)),
+        c("[Bow, and leave her to her court.]", forbids=(EXPOSED, LETTER_KEPT))),
+    conv("manifest_exposed", '''"And you paid for it with the paper-eater's freedom." {n}She finds that too, a little deeper, and laughs.{/n} "He will be telling every cult cook-fire who let him go. So the Abyss will know you trade mercy for paper. How *public* of you."''',
+        c("Continue", "manifest_letter", requires=(LETTER_KEPT,)),
+        c("[Bow, and leave her to her court.]", forbids=(LETTER_KEPT,))),
+    conv("manifest_letter", '''"...And a letter from a paper-eater who thinks you will protect him. On a ration wrapper." {n}Her lip curls, the way a cat's does over something small and still moving.{/n} "How *sweet*. You collect debtors the way I collect secrets."''',
         c("[Bow, and leave her to her court.]")),
 ], requires=("trickster",), forbids=(READ,))
 
@@ -594,6 +703,19 @@ epilogue("mourned", '''{n}On the night the rift took the Commander, the coal of 
 {n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every mortal sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}
 {n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}''',
     requires=(EMBODIED, "sacrifice"), forbids=(ALIVE_AFTER, CLOSED), living=False)
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP9). --------------------------------------
+# PATH_FIT is the scene's class today: T (a device, or gated on the Trickster), N-all, or N-fit. PATH_FIT_V2 names the
+# scenes whose content would hold on her fitting paths (14-PATH-FIT §3), with those paths; they keep their Trickster gate
+# until the v2 pass replaces it with a path gate and writes her non-Trickster ending under canon fate.
+# Shamira is killed at the compulsory Trickster boudoir visit; on Demon and Legend she lives (14 §3: Dem Y, Leg Y, Dev and
+# Lic M). Her Chapter 4 audience beats read her and the Commander only, so their content holds there (minus the
+# [Trickster] recipes choice and the T3 tally choice, which stay Trickster-gated); everything from the briefing on is the
+# device and stays T. shamira_mind and shamira_dream are all T.
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {P + "ch4.read": "N-fit: Demon, Legend", P + "ch4.bird": "N-fit: Demon, Legend",
+               P + "ch4.first_taste": "N-fit: Demon, Legend"}
 
 
 def integrate(payload):

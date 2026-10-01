@@ -1161,6 +1161,19 @@ remote(P + "raid.ashore", "What the sea gave back", [
     TricksterDevice=True, TricksterState="raid")
 
 
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP9). --------------------------------------
+# PATH_FIT is the scene's class today: T (a device, or gated on the Trickster), N-all, or N-fit. PATH_FIT_V2 names the
+# scenes whose content would hold on her fitting paths (14-PATH-FIT §3), with those paths; they keep their Trickster gate
+# until the v2 pass replaces it with a path gate and writes her non-Trickster ending under canon fate.
+# Mielarah is a Chapter 4 NPC who may die in the raid, crash in the storm or be killed at Colyphyr (14 §3: Ang, Aza, Drg
+# and Leg Y; Aeo and Dev M). The tavern beats that read the curse's pattern prime the device (T); the comparison of
+# captains and the landfall words read only her and the voyage. mielarah_deck is all T (her presence after the return).
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {P + "tavern.captains": "N-fit: Angel, Azata, Dragon, Legend",
+               P + "colyphyr.landfall": "N-fit: Angel, Azata, Dragon, Legend",
+               P + "colyphyr.letter": "N-fit: Angel, Azata, Dragon, Legend"}
+
+
 def integrate(payload):
     """Register her presences, derived keys, world bindings and portrait fallback. Scenes are added by expansion.py."""
     for s in payload["Scenes"]:

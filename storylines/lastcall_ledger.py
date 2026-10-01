@@ -66,9 +66,25 @@ def _debt_entries():
     return out
 
 
+# Early threads (15b-EARLY-THREADS.md): each route registers its own book entry here at import time (the reader that
+# holds whether or not the player ever reaches the route's payoff). Appended after the debts, in registration order.
+EARLY = []
+
+
+def early(entry):
+    """Register one early-thread book entry (the BookEntry contract: Id, Section, Portrait, Title, Text, Lines, Requires,
+    Forbids, AnyGroups, Tooltip)."""
+    if any(e["Id"] == entry["Id"] for e in EARLY):
+        raise ValueError("Duplicate early Ledger entry: " + entry["Id"])
+    if entry["Section"] not in SECTIONS:
+        raise ValueError("Unknown Ledger section: " + entry["Section"])
+    EARLY.append(entry)
+
+
 def book():
     """payload["Books"]["trickster.ledger"] per 09-RRT-BOOK-UI.md §3."""
-    return dict(Title="The Trickster's Ledger", Opening=OPENING, Portrait="", Sections=list(SECTIONS), Entries=_debt_entries())
+    return dict(Title="The Trickster's Ledger", Opening=OPENING, Portrait="", Sections=list(SECTIONS),
+                Entries=_debt_entries() + [dict(e) for e in EARLY])
 
 
 def journal_entries():

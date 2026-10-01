@@ -1423,12 +1423,21 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 tails[g] = ("exit-ok" if exitish else "LAST ANSWER IS NOT AN EXIT") + " [%s] %r cues=%d" % (Path(idx[last][1]).stem, txt, len(cues))
         # E5: a native continuation must belong to the dialog that owns the scene's answer list (same ParentAsset).
         with zipfile.ZipFile(game / "blueprints.zip") as z:
+            def exit_owner(g):
+                """A BlueprintSequenceExit carries no ParentAsset; its owner is the cue sequence in the same folder whose
+                m_Exit names it (e.g. CultCamp_CultistFromEstrod/SequenceExit_0043 under CueSequence_0031)."""
+                folder = str(Path(idx[g][1]).parent).replace("\\", "/") + "/"
+                for name in z.namelist():
+                    if name.startswith(folder) and "/CueSequence_" in name and ("!bp_" + g).encode() in z.read(name):
+                        return json.loads(z.read(name).decode("utf-8-sig"))["AssetId"]
+                return None
             def parent(g):
                 """The owning BlueprintDialog: ParentAsset names the immediate owner (a list's cue, a cue's dialog...)."""
                 seen = set()
                 while g in idx and g not in seen and idx[g][0] != "BlueprintDialog":
                     seen.add(g)
-                    g = json.loads(z.read(idx[g][1]))["Data"].get("ParentAsset")
+                    nxt = json.loads(z.read(idx[g][1]))["Data"].get("ParentAsset")
+                    g = nxt if nxt or idx[g][0] != "BlueprintSequenceExit" else exit_owner(g)
                 return g if g in idx and idx[g][0] == "BlueprintDialog" else None
             for s in model.scenes:
                 for n in s["Nodes"]:
