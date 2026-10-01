@@ -344,7 +344,7 @@ s("i_crossing", "No order given", "Irabeth", 3,
       c('"I want you too. That doesn\'t excuse either of us."', "kiss"),
       c('"Then let us stop here."', "leave")),
     n("kiss", "Irabeth", '''{n}You hold out your hand. Irabeth looks at it for long enough that you nearly withdraw it. Then she takes it, her fingers warm and firm around yours.{/n}
-"I am choosing this. You are not to comfort me afterward by pretending that I was too confused to know it."
+"Iomedae forgive me. I have wanted to do this since you walked in."
 {n}She bends toward you. The first kiss is careful, almost solemn. When you rest your hand against the back of her neck, she makes a small, startled sound and draws you closer. Her strength is familiar; the tenderness with which she contains it is not.{/n}
 {n}When you part, she keeps her forehead against yours. Her breath is unsteady.{/n}
 "I had forgotten that wanting could make me feel so... foolish."
@@ -353,7 +353,7 @@ s("i_crossing", "No order given", "Irabeth", 3,
       c('"This is enough for tonight."', "gentle")),
     n("night", "Irabeth", '''{n}Irabeth takes off her gloves and sets them carefully together. Then she laughs at the absurdity of being orderly at such a moment. The laughter loosens something in both of you.{/n}
 "Come here."
-{n}There is no command in it. You go to her. She kisses you again, harder, and her hands go to her own buckles: the sword belt onto the chair, the breastplate onto the floor with a noise that makes her wince and then laugh. She hauls her shirt over her head, catches you by the collar and pulls you down onto the bed with her, her weight rolling over yours and her knee sliding between your thighs.{/n}
+{n}You go to her. She kisses you again, harder, and her hands go to her own buckles: the sword belt onto the chair, the breastplate onto the floor with a noise that makes her wince and then laugh. She hauls her shirt over her head, catches you by the collar and pulls you down onto the bed with her, her weight rolling over yours and her knee sliding between your thighs.{/n}
 {n}Later, before she leaves, she sits beside you in the darkness. Her hand finds yours without searching.{/n}
 "It mattered to me. I do not know what I am going to do with that. But it mattered."
 {n}She does not ask for absolution, and you do not offer it.{/n}''', c('[Say good night.]', flags=("i_affair",))),

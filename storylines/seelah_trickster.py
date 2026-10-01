@@ -129,7 +129,7 @@ hub("seelah.trickster.in_party.lift_lesson", "One lift, never on anyone who need
     '"You told me you were a thief once. Prove it. Teach me something."', [
     s_("start", '''{n}Seelah looks you up and down, the way she looks at a stranger's hands in a crowded market.{/n}
 "A paladin of Iomedae, teaching the Commander to pick pockets. The Inheritor is going to have words with me."
-{n}She grins anyway, and it is not a paladin's grin.{/n}
+{n}She grins anyway, the same grin she wears on a battlefield.{/n}
 "Fine. One lift. And you swear it now, on whatever you swear on: never on anyone who needs what's in the purse. I learned that one too late."''',
       c('[Let her show you] "Show me. Slowly. I want to see where the hand goes."', "lesson")),
     nar("lesson", '''{n}She walks past you, stumbles, catches your arm to steady herself and says she is so sorry, what a clumsy fool, is your shoulder all right? Then she holds up your purse between two fingers.{/n}
@@ -201,7 +201,7 @@ letter("seelah.trickster.dead.pickpocket", "The dead thief's purse", [
     nar("fumble", '''{n}You fumble the strings. They were never meant to be opened by anyone else. The chaplain pretends not to see.{/n}''',
       c("Continue", "coin")),
     nar("coin", '''{n}Her savings go into the chaplain's bowl coin by coin: coppers, a few silver, one gold piece she must have been keeping for something. It is not enough. It was never going to be enough.{/n}
-"I will not try the lesser rite on her," the chaplain says. "It has failed me twice this month on the crusade's dead, and when it fails, that is the end of it. The greater rite does not fail, and it wants two stones' worth of diamond dust. The chapel's own stone is promised to the next knight who falls."
+"I will not try the lesser rite on her," the chaplain says. "It brings the dead back weak, and I have seen it fail twice this month on the crusade's dead. She has a war to go back to. The greater rite gives her back whole, and it wants two stones' worth of diamond dust. The chapel's own stone is promised to the next knight who falls."
 {n}At the bottom of the purse is a square of paper folded very small. It is a list, in her hand, of every theft she can remember. Most lines are crossed out, each with a sum beside it and the word "paid". The first line is not: "A mithral helm. Acemi." There is no sum beside it.{/n}
 ''' + LIST_LAST,
       c('[Pick the dead thief\'s pocket] "Old habits, Seelah. Whatever\'s in the purse is mine. Including that."', "stall",
@@ -258,13 +258,11 @@ letter("seelah.trickster.dead.pickpocket_effects", "Her effects, without her", [
       c("Continue", "purse")),
     nar("purse", '''{n}At the bottom of the purse is a square of paper folded very small: a list, in her hand, of every theft she can remember, most of them crossed out and marked "paid". The first line is not: "A mithral helm. Acemi."{/n}
 ''' + LIST_LAST + '''
-{n}The chaplain's note goes on. He will not try the lesser rite on her; it has failed him too often on the crusade's dead, and a failed rite is the end of it. The greater rite wants two stones' worth of diamond dust, and he has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}''',
+{n}The chaplain's note goes on. He will not try the lesser rite on her; it brings the dead back weak, and it has failed him on the crusade's dead before. The greater rite wants two stones' worth of diamond dust, and he has a bowl and nothing to put in it, and one rule: a soul that has stood its trial cannot be raised. Nobody can say how long a soul waits before the Lady tries it, he writes; he has never dared find out. A fast rider reaches him in two days.{/n}''',
       c('[Pick the dead thief\'s pocket] "Old habits, Seelah. Whatever\'s in the purse is mine. Including that."', "stall",
-        requires=(DIAMOND_HELD,), mythic="Trickster", alignment=("Chaotic", 1), remove_item=DIAMOND,
-        flags=(DISPATCHED, HOLDS)),
+        requires=(DIAMOND_HELD,), mythic="Trickster", alignment=("Chaotic", 1)),
       c('[Pick the dead thief\'s pocket] "Old habits, Seelah. Whatever\'s in the purse is mine. Including that."', "stall",
-        forbids=(DIAMOND_HELD,), mythic="Trickster", alignment=("Chaotic", 1), crusade=("Favors", -100),
-        flags=(DISPATCHED, HOLDS, CHAPLAIN)),
+        forbids=(DIAMOND_HELD,), mythic="Trickster", alignment=("Chaotic", 1), flags=(CHAPLAIN,)),
       c('[Leave the purse tied] "Not like this."', abort=True)),
     nar("stall", '''{n}You put the list in your coat and go down to the chapel steps before the lamps are out.{/n}
 ''' + STALL, *lift_choices()),
@@ -278,11 +276,11 @@ letter("seelah.trickster.dead.pickpocket_effects", "Her effects, without her", [
     nar("taken", SELLER_TAKEN, c("Continue", "rider", forbids=(CHAPLAIN,)), c("Continue", "rider_word", requires=(CHAPLAIN,))),
     nar("paid", SELLER_PAID, c("Continue", "rider", forbids=(CHAPLAIN,)), c("Continue", "rider_word", requires=(CHAPLAIN,))),
     nar("rider", '''{n}You send the rider out with her savings, the relic-seller's stones and a diamond from your own coat: two stones' worth. You keep the list. Two days there, the chaplain's rite, two days back: nothing to do now but wait for the rider.{/n}''',
-      c('"Ride fast."')),
+      c('"Ride fast."', requires=(DIAMOND_HELD,), remove_item=DIAMOND, flags=(DISPATCHED, HOLDS))),
     nar("rider_word", '''{n}You send the rider out with her savings, the relic-seller's stones, and your word, sealed, that the crusade will make good the other stone. You keep the list. Two days there, the chaplain's rite, two days back: nothing to do now but wait for the rider.{/n}''',
-      c('"Ride fast."')),
+      c('"Ride fast."', crusade=("Favors", -100), flags=(DISPATCHED, HOLDS))),
 ], requires=("trickster", "trickster.ever", "seelah_dead", "seelah.dead.latched"), forbids=(FINALLY_DEAD, RETURNED, DISPATCHED),
-   delay=24, TricksterDevice=True, TricksterState="dead_no_unit")
+   delay=24, TricksterDevice=True, TricksterState="dead_no_unit", Areas=[DREZEN])
 
 # Q10 r2: the rider's four days are real. The chaplain's note waits >= 96 h after dispatch; she arrives two days after it,
 # and only then is she returned, a correspondent and eligible for the presence.
@@ -317,7 +315,7 @@ SCENES.append(scene("seelah.trickster.dismissed.setup", "Check your pockets", "S
    AnswerLists=[DISMISSAL],
    NativeReturnCue=FINAL_DECISION, EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="dismissed"))
 
-letter("seelah.trickster.dismissed.late", "A transfer on the clerk's desk", [
+letter("seelah.trickster.dismissed.late", "A transfer on the clerk's desk", [   # Areas: the gate clerk is in Drezen (Sol PP1)
     nar("start", '''{n}Two days on, her transfer is still on the gate clerk's desk, waiting for a courier to the Eagle Watch. The clerk is eating his lunch over it. There is a thumbprint of grease on the seal.{/n}''',
       c('[Lift the papers the way she taught you] "Excuse me. So sorry."', requires=(LESSON,), mythic="Trickster",
         check=dict(Skill="SkillThievery", DC=15, Success="lifted", Failure="caught", CommanderOnly=True)),
@@ -333,7 +331,7 @@ letter("seelah.trickster.dismissed.late", "A transfer on the clerk's desk", [
     nar("gone", '''{n}The courier comes at dusk and takes the papers north with the rest of the post. You watch him go from the wall, and you do not move your hands.{/n}''',
       c('"Good luck, Seelah."')),
 ], requires=("trickster", "seelah_gone", "seelah.gone.latched"), forbids=(PRIMED, RETURNED, DECLINED, "seelah_dead"), delay=48,
-   TricksterDevice=True, TricksterState="dismissed")
+   TricksterDevice=True, TricksterState="dismissed", Areas=[DREZEN])
 
 PAPERS_TEXT = '''"My transfer papers. My papers, Commander. No company in Mendev will sign me without them. The clerk at the gate laughed at me for a quarter of an hour, and then he told me who'd had them."
 {n}She is furious, and trying very hard not to be impressed, and not managing either one properly.{/n}
@@ -388,12 +386,12 @@ tavern("seelah.trickster.after.stay_or_go", "Two notices", '"Seelah. What now?"'
 
 THRESHOLD = '''{n}She does not answer with words. She drags you up the tavern stairs by the belt, and on the landing you find the belt is in her hand and no longer round your waist.{/n}
 "Ha. Got your belt. Old habits." Her breath is hot on your mouth. "Now hold still. I'm taking the rest, and this time I'm not giving it back."
-{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the bed under the eaves. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}'''
+{n}She kisses you laughing, then not laughing. Her armour is already off; she wriggles out of the gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you have reached the top step. The door of the little room slams behind you. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the bed under the eaves. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you, flushed and triumphant, the way she grins on a wall after a charge that worked.{/n}'''
 
-MORNING_NEAR = '''{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin.{/n}
+MORNING_NEAR = '''{n}Morning. She is sitting cross-legged on the bed in your shirt, lacing her boots, and she looks up with a grin.{/n}
 "All there. I only wanted to know how much you're worth." She stretches until her shoulders crack. "The Drezen road company can wait an hour. Iomedae forgive me, I'd do it again. Twice before breakfast, probably."'''
 
-MORNING_FAR = '''{n}Morning. She is sitting cross-legged on the bed counting your coins, and she hands the purse back with a grin that does not quite hold.{/n}
+MORNING_FAR = '''{n}Morning. She is sitting cross-legged on the bed in your shirt, lacing her boots, and she looks up with a grin that does not quite hold.{/n}
 "All there." She looks at the window, where the road south is. "The border company leaves at noon. I said I was leaving and I am. But I'm coming back on every leave they give me, and you're going to be here when I do, and that isn't a question."'''
 
 tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a while."', [
@@ -403,7 +401,7 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
     s_("near", '''"I took the Drezen road company, by the way. Close enough to rob you on feast days."''', c("Continue", "ask")),
     s_("far", '''"I took the border company, by the way. So whatever you're going to say, say it like I'm leaving. Because I am."''',
       c("Continue", "ask")),
-    nar("ask", '''{n}She waits, chin on her fist, the way she waits for a mark to finish talking.{/n}''',
+    nar("ask", '''{n}She waits, chin on her fist, the way she waits out a sermon she has heard before.{/n}''',
       c('[Ask her] "Seelah. Stay. Not as a sword."', "answer")),
     s_("answer", '''{n}She does not look away. She has never been good at looking away.{/n}
 "Then say what as. Carefully, Commander. I'm listening with both ears and I've had half a drink."''',
@@ -434,7 +432,7 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
       c('[Kiss her] "Stay. Not as a sword. As you."', "threshold", requires=("seelah.started",), flags=("seelah.committed",)),
       c('[Let her choose] "You know where the coat is."', "chooses", flags=("seelah.committed",))),
     s_("chooses", '''{n}She looks at your coat, then at you. Then she laughs, low, and reaches across the table and takes your purse out of it without any apology at all.{/n}
-"There. Chosen. Upstairs, Commander, before I think about it like a paladin."''',
+"There. Chosen. Upstairs, Commander. Before someone finds me another cart to lift."''',
       c("Continue", "threshold")),
     nar("threshold", THRESHOLD, c("Continue", "morning_near", forbids=(FAR,)), c("Continue", "morning_far", requires=(FAR,))),
     s_("morning_near", MORNING_NEAR, c('"I\'ll count it again later."')),
@@ -505,8 +503,8 @@ tavern("seelah.trickster.after.courtship", "Finders keepers", '"Seelah. Walk wit
 "So." {n}Her eyes go to your mouth and stay there.{/n} "I came back to Drezen for something, Commander, and it wasn't Fye's beer."''',
       c('[Kiss her]', "kissed", flags=(TAVERN_KISSED, COURTED)),
       c('[Step back into the street] "For the drinks, Seelah. And a friend."', "friends_walk", flags=(COURTED,))),
-    nar("kissed", '''{n}You kiss her, or she kisses you; later neither of you will admit which. She kisses the way she picks pockets, quick and then not quick at all, one fist in your collar and the other hand already inside your coat. When you come up for breath she is holding the glove again.{/n}
-"Ha." {n}She is flushed to the ears, freckles and all.{/n} "Keeping this one. Iomedae saw that, and She can take it up with me on Sunday." {n}She kisses you again, hard and fast, as if to make sure the first one happened.{/n} "Drinks are on you. Move, before I forget I'm a paladin and you're standing in an alley."''',
+    nar("kissed", '''{n}You kiss her, or she kisses you; later neither of you will admit which. She kisses the way she charges, quick and then not quick at all, one fist in your collar and the other hand already inside your coat. When you come up for breath she is holding the glove again.{/n}
+"Ha." {n}She is flushed to the ears, freckles and all.{/n} "Keeping this one. Iomedae saw that, and She can take it up with me on Sunday." {n}She kisses you again, hard and fast, as if to make sure the first one happened.{/n} "Drinks are on you. Move, before the cooper comes out and asks what we're doing to his wall."''',
       c('"Moving."')),
     s_("friends_walk", '''{n}She looks at you a breath longer, then laughs and lets go of your collar.{/n}
 "Drinks and a friend. Fine. That's more than I walked in with." {n}She tosses you the glove. The ring she turns in the light a while before she slaps it into your palm.{/n} "Next time I keep it."''',
@@ -519,13 +517,13 @@ tavern("seelah.trickster.after.courtship", "Finders keepers", '"Seelah. Walk wit
 
 VISIT_THRESHOLD = """{n}She does not answer with words. She takes you by the belt and walks you backwards across your own quarters, past the map table and the cold supper, and somewhere on the way the belt comes away in her hand.{/n}
 "Ha. Got your belt. Old habits." Her breath is hot on your mouth. "Now hold still. I'm taking the rest, and this time I'm not giving it back."
-{n}She kisses you laughing, then not laughing. She heels the bedchamber door shut, wriggles out of her gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you reach the bed. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the Commander's own blankets. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you like a thief who has just got away with something.{/n}"""
+{n}She kisses you laughing, then not laughing. She heels the bedchamber door shut, wriggles out of her gambeson in one practised motion, all freckles and sword-callus, and has your shirt over your head before you reach the bed. She backs you into it, bare to the waist, fingers already at the lacing of your breeches, and tumbles you down onto the Commander's own blankets. Then she swings a knee over your hips and straddles you, palms flat on your chest, hair falling round both your faces, and grins down at you, flushed and triumphant, the way she grins on a wall after a charge that worked.{/n}"""
 
 
 def visit_twin(src_id, new_id, title, swaps):
     src = next(x for x in SCENES if x["Id"] == src_id)
     twin = copy.deepcopy(src)
-    for key in ("ContactUnit", "Areas", "InteractionHub"):
+    for key in ("ContactUnit", "InteractionHub"):   # Sol PP1: keep Areas; the visit is still staged in Drezen
         twin.pop(key, None)
     twin.update(Id=new_id, Title=title, Entry="", Remote=True, Kind="visit")
     twin["Requires"] = twin["Requires"] + [FAILED]
@@ -542,7 +540,7 @@ def visit_twin(src_id, new_id, title, swaps):
 
 QUARTERS = ("{n}She is waiting in your quarters in the citadel when you come off the wall, on your one good chair with her "
             "boots on your map table. She got tired of waiting for you at Fye's; she says the guard let her in for a smile, which is a lie, and "
-            "for his purse back, which probably is not.{/n}\n")
+            "for the latest gossip from Fye's, which probably is not.{/n}\n")
 
 visit_twin("seelah.trickster.after.stay_or_go", "seelah.trickster.after.stay_or_go_visit", "Two notices", [
     ("{n}She has two recruiting notices on the table in front of her, weighted with her tankard so the draught from the door cannot take them.{/n}",
@@ -573,11 +571,11 @@ visit_twin("seelah.trickster.dismissed.second_ask", "seelah.trickster.dismissed.
 # --- Q10 r2: Seelah's word on the relic-seller, after the caught lift (whichever answer the Commander chose) -----------
 
 SELLER_NODES = [
-    s_("start", '''{n}She has her list out, and she is looking at the last line.{/n}
+    s_("start", '''{n}She has a scrap of paper out with the last line of her list on it, copied fresh in her own hand, and she is looking at it.{/n}
 "Brother Haldis says the relic-seller's stall is empty. I want to know what you did with him, Commander. All of it."''',
       c("Continue", "concealed", requires=(BROKER,)), c("Continue", "taken", requires=(TAKEN,)),
       c("Continue", "paid", requires=(PAID,))),
-    s_("concealed", '''"Your word. In front of the saints. To a man who robs the dead." {n}She folds the list very small.{/n}
+    s_("concealed", '''"Your word. In front of the saints. To a man who robs the dead." {n}She folds the scrap very small.{/n}
 "It's your word, not mine, so I'll let it stand. I'm not going to make a liar of you to feel clean. But every pilgrim he sold a stone to, I'm going to find, and buy it back, a coin at a time. Don't you dare offer me the money."''',
       c('"I won\'t."', flags=(SELLER_HEARD,))),
     s_("taken", '''{n}Her grin is slow, and very wide.{/n}
@@ -598,8 +596,8 @@ tavern("seelah.trickster.dead_no_unit.seller_word", "The last line", '"Seelah. A
        RequiresAnyGroups=SELLER_ANY)
 # Q10 r3: the failed-anchor twin; SELLER_HEARD keeps the pair exclusive.
 visit_twin("seelah.trickster.dead_no_unit.seller_word", "seelah.trickster.dead_no_unit.seller_word_visit", "The last line", [
-    ("{n}She has her list out, and she is looking at the last line.{/n}",
-     "{n}She is waiting in your quarters in the citadel, her list spread on your map table, and she is looking at the last line.{/n}"),
+    ("{n}She has a scrap of paper out with the last line of her list on it, copied fresh in her own hand, and she is looking at it.{/n}",
+     "{n}She is waiting in your quarters in the citadel, a scrap of paper on your map table with the last line of her list copied onto it, and she is looking at it.{/n}"),
 ])
 
 # --- Epilogue ------------------------------------------------------------------------------------------------------
