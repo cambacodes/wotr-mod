@@ -373,6 +373,13 @@ internal static class MinaghoChivarroTricksterTests
         check(minYes.Count == 1 && minYes[0].Has("minachiv.future_minagho") && Av(epMin, minYes[0]), "Trk_Chivarro_MinaghoAlone: flags.");
         var minReturnedAlone = World(story, 5, "trickster.ever", "minagho.dead", "chivarro.dead", RetM, MinIn, DeclC, Primed, Debt, Terms, Delivered);
         check(Av(aloneMin, minReturnedAlone) && !Av(aloneMinSpared, minReturnedAlone), "The returned Minagho has no alone commit.");
+        // Sol PP8 r2 (INT): reunion, Chivarro's walkout, "Let her stay gone": Minagho's own commit stays open, in her words.
+        var walkedOut = World(story, 5, "trickster.ever", "minagho.spared_c4", MinIn, ChIn, Reunited, SentBack);
+        var walkedPages = new HashSet<string>();
+        Program.Walk(aloneMinSpared, walkedOut, (page, _) => walkedPages.Add(page));
+        check(Av(aloneMinSpared, walkedOut) && Done(aloneMinSpared, walkedOut).Any(r => r.Has(Complete))
+              && aloneMinSpared.Nodes.Single(n => n.Id == "start").Choices.Count(c => Rules.Match(c.Requires, c.Forbids, walkedOut)) == 1,
+            "Trk_Chivarro_WalkoutThenMinagho: letting Chivarro go strands Minagho's own commit.");
 
         // The morning after each physical commit: once, after the night, before the ending pages.
         var pairMorning = S(P + "after.the_morning_after");

@@ -360,6 +360,14 @@ internal static class AreeluTricksterTests
         Program.Walk(notBurned, keptWorld, (page, _) => keptPages.Add(page));
         check(Available(notBurned, keptWorld) && keptPages.Contains("nb_across") && keptPages.Contains("nb_morning") && keptPages.Contains("nb_stopped"),
             "The appointment-kept page does not give a committed Areelu her night.");
+        // Sol PP8 r2 (INT/BEL): her refusal or the stake alone settles the page; no night follows either.
+        foreach (var refusal in new[] { Declined, StakeOnly })
+        {
+            var refusedPages = new HashSet<string>();
+            var refusedOut = Program.Walk(notBurned, World(story, 6, "trickster.ever", "iomedae.appointment_kept", Struck, Bet, Named, refusal), (page, _) => refusedPages.Add(page));
+            check(refusedOut.Count > 0 && !refusedPages.Contains("nb_across") && !refusedPages.Contains("nb_morning"),
+                "The appointment-kept page gives a night after " + refusal + ".");
+        }
         // Sol PP8 r1 (CAN): a stake named only at Threshold is never recalled as named in her cell.
         var lateRaise = new HashSet<string>();
         Program.Walk(raised, lateOut.First(r => r.Has(Struck) && r.Has(Named)), (page, _) => lateRaise.Add(page));

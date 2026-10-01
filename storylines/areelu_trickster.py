@@ -602,7 +602,7 @@ inline("areelu.trickster.rift.odds", "What the winner keeps", 6,
         c('[Joke] "I never arrange anything. I just leave the door open and see who walks in."', "doors"),
         c('"You said I was costing you hours. Am I?"', "feelings")),
     ar("feelings", '''{n}She looks at you for a long time. The violet flames of the rift throw her shadow across the floor between you, long and thin.{/n}
-"More than hours," she says at last. "I have a hypothesis I would rather not test: that when I look at you I have stopped calculating. That is the most dangerous sentence I have said aloud in a century, and I have said it to the one person who can use it against me."
+"More than hours," she says at last. "I have a hypothesis I would rather not test: that when I look at you I have stopped calculating. Write that down, if you like. It will cost me hours I do not have, and if you ever try to spend it, I will know, and I will take the hours back out of you."
 "Do not use it. Or do. Either way, one of us burns today, and it will not matter."''',
         c('"It\'ll matter after."', "after"),
         c("[Say nothing, and hold her gaze.]", "after")),
@@ -681,7 +681,7 @@ UNPRIMED_REFUSE = c('[Refuse] "Not at that price."', flags=(CLOSED,))
 at_threshold("areelu.trickster.wager.unprimed", "No credit at this table",
     '"One of us burns so the other lives, you said. I have a bet for you. My money\'s on neither."', [
     ar("start", '''"Neither." {n}She is on her knees in her own blood, and she looks at you as though you had tried to pay a physician in buttons.{/n}
-"You never came to my cell. You never picked up my glass. You fought your way through my fortress without a word about it, and now, with my life on the end of your blade, you would like to gamble." {n}Her mouth thins.{/n} "A wager is struck between parties who can both still lose. Only one of us can lose now, and it is not you."''',
+"You never brought me a wager. Not to my cell, not through my glass. You fought your way through my fortress without a word about it, and now, with my life on the end of your blade, you would like to gamble." {n}Her mouth thins.{/n} "A wager is struck between parties who can both still lose. Only one of us can lose now, and it is not you."''',
         c('"Then make it so I can lose. Name a price."', "price"),
         c('[Joke] "I\'m a late bloomer."', "bloomer"),
         c("[Say nothing.]", abort=True)),
@@ -976,8 +976,8 @@ page("areelu.trickster.finale.unnamed", "Uncollected", [
               "left on the table.", requires=(NAMED,), forbids=(DRAWN,)),
             p("The Commander had taken the Abyss out of her into the cauldron, and then chose another ending for what was "
               "left. The choice was the Commander's. The report does not argue with it.", requires=(DRAWN,)),
-            p("She fell in the fight, before anyone could bargain, as she had always said one of them would.",
-              requires=(FIGHT,)),
+            p("She fell in the fight, before the wager could be settled, as she had always said one of them would.",
+              requires=(FIGHT,), forbids=(SAC_TRICK, INCINERATED, SAC_WOUND, SAC_BEFORE)),
             p("She burned at the Commander's word, in the end, as the hunters had always wanted. The wager said that "
               "whoever burned would pay. It did not say who would light the fire, and the Commander had chosen to.",
               requires=(INCINERATED,)),
@@ -1887,8 +1887,10 @@ page("areelu.trickster.finale.not_burned", "Not burned", [
 {n}"The wager is therefore unsettled. Neither of us burned. I dislike an experiment with an outside variable. I will be studying this one for the rest of my life, and I intend to be difficult about it."{/n}''',
         # Sol PP8 r1 (BEL cap): a committed Areelu's night in this world. [0] is the original page end, kept for the others.
         c("Continue", forbids=(COMMITTED, LATE_COMMITTED)),
-        c("Continue", "nb_across", requires=(COMMITTED,)),
-        c("Continue", "nb_across", requires=(LATE_COMMITTED,), forbids=(COMMITTED,))),
+        c("Continue", "nb_across", requires=(COMMITTED,), forbids=(DECLINED, STAKE_ONLY)),
+        c("Continue", "nb_across", requires=(LATE_COMMITTED,), forbids=(COMMITTED, DECLINED, STAKE_ONLY)),
+        c("Continue", requires=(DECLINED,)),
+        c("Continue", requires=(STAKE_ONLY,), forbids=(DECLINED,))),
     nar("nb_across", '''{n}She did not wait to be asked. On the first night she came to the Commander's rooms with a lamp and a notebook, and set both down on the floor, the notebook closed.{/n}
 {n}"Where the wound was," she said. "Show me." The Commander unlaced the shirt. There was nothing to see: skin, paler than the rest, and under her palm, warm. She pressed until she could feel the heart under it, as if it might be lying to her.{/n}
 {n}"Something brought you back that I did not build," she said, very low, "and I intend to find out what it left in you." Then she pushed the Commander down onto the bed with the flat of that hand and followed, a knee on the mattress and then astride, the grey dress gathered up in her fist, and bent her head to the place where the wound had been, and set her teeth to it.{/n}''',

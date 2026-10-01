@@ -290,7 +290,7 @@ letter(P + "minagho_dead.collateral", "What the ledger says", [
 
 # 5.5 Spared: the brand stopped bleeding on her, and she has come to see the thief's hand.
 SPARED_OPEN = (
-    c('[Show her your palm] "Look at your fingers. It stopped the moment I opened my mouth in that cell. It bleeds on me now. Mornings, mostly."', "terms", requires=(PRIMED,)),
+    c('[Show her your palm] "Look at your fingers. It started drying the moment I opened my mouth in that cell, and it has been my palm that bleeds since. Mornings, mostly."', "terms", requires=(PRIMED,)),
     c('[Cut your palm and say the terms over it] "\'Until she spills the blood of the one who caused her to fail.\' That\'s me. Watch."',
       "terms", requires=("trickster",), forbids=(PRIMED,), flags=(PRIMED, DEBT, LATE_CLAIM), mythic="Trickster",
       crusade=("Favors", -100)))
@@ -652,8 +652,10 @@ letter(P + "alone.chivarro_letter", "The house she keeps now", [
 ALONE_MIN_NODES = [
     mg("start", '''"You keep looking at the gate as if someone else is coming through it." {n}She does not look at it herself.{/n}''',
        c('"She\'s in Herrax\'s cellar, and the house wants too much for her. Stay."', "terms", requires=("chivarro.dead.latched", DEPOSIT)),
-       c('"She went back through the press. Stay."', "terms", forbids=("chivarro.dead.latched",)),
-       c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead.latched",), forbids=(DEPOSIT,))),
+       c('"She went back through the press. Stay."', "terms", forbids=("chivarro.dead.latched", REUNITED)),
+       c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead.latched",), forbids=(DEPOSIT,)),
+       # Sol PP8 r2 (INT): the walkout after the reunion, answered with "Let her stay gone" (appended).
+       c('"She walked out, and I let her stay gone. Stay."', "terms", requires=(SENT_BACK, REUNITED), forbids=("chivarro.dead.latched",))),
     mg("killer", '''"I know." {n}Her lip peels back from her teeth.{/n} "Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean."
 {n}She is very still.{/n} "I have killed for less. I have lain down with worse. Which of those you get is mine to choose, and I will take a very long time choosing, and you will feel every day of it."
 "Here is why I am still standing here instead of opening your throat. Herrax has her rings on a tray in the Delights, fingers and all, for any guest to paw. You are going to buy them back from her and give them to me, and I am going to bury them somewhere Herrax will never find. And every time you look at me, you will remember who you bought them for."''',
@@ -671,13 +673,15 @@ ALONE_MIN_NODES = [
 ]
 ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead.latched"]]
 ALONE_MIN_FORBIDS = (REUNITED, RET_C, CH_IN, CLOSED, COMPLETE, DECLINED)
+# Sol PP8 r2 (INT): Chivarro's arrival and the reunion are history once she has been let go ("Let her stay gone").
+ALONE_MIN_FO = {REUNITED: SENT_BACK, CH_IN: SENT_BACK, RET_C: SENT_BACK}
 physical(P + "alone.minagho", "One lilitu, dry", "Minagho", PRES_MIN, MIN_UNIT, ALONE_MIN_NODES,
          requires=("trickster.ever", MIN_IN, RET_M), RequiresAnyGroups=ALONE_MIN_GATE, forbids=ALONE_MIN_FORBIDS, delay=96,
-         TricksterDevice=True, TricksterState="chivarro_dead")
+         TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 physical(P + "alone.minagho_spared", "One lilitu, dry", "Minagho", PRES_SPARED, MIN_UNIT, copy.deepcopy(ALONE_MIN_NODES),
          requires=("trickster.ever", MIN_IN, "minagho.spared.latched"), RequiresAnyGroups=ALONE_MIN_GATE,
          forbids=(*ALONE_MIN_FORBIDS, "minagho.dead", P + "alone.minagho"), delay=96,
-         TricksterDevice=True, TricksterState="chivarro_dead")
+         TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 letter(P + "alone.minagho_letter", "One lilitu, dry", [
     mg("start", '''"Stay, you said. For a mortal who owns my debt and bleeds for it every morning." {n}The hand is hard and very straight.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
        c('"Your price."', "came", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
@@ -689,7 +693,7 @@ letter(P + "alone.minagho_letter", "One lilitu, dry", [
         c("[Let her.]", flags=(MORNING,)))],
    requires=("trickster.ever", MIN_IN), RequiresAnyGroups=[*ALONE_MIN_GATE, [PRES_MIN + ".failed", PRES_SPARED + ".failed"]],
    forbids=(*ALONE_MIN_FORBIDS, P + "alone.minagho", P + "alone.minagho_spared"), delay=96,
-   TricksterDevice=True, TricksterState="chivarro_dead")
+   TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 
 
 # The priced second ask after a soft no (R2-1; Sol r2 INT). "Ask me when it scars": the Commander makes it scar, a week of
