@@ -305,6 +305,22 @@ internal static class ArankaTricksterTests
             "The late commit or the credit page is missing.");
         check(Rules.Available(story, epDeclined, declined) && !Rules.Available(story, epVerse, declined)
               && !Rules.Available(story, epDeclined, thirdOut.First(r => r.Has(Kept))), "Her no is not remembered, or outlives her yes.");
+        // Q8 (Sol TRK): a Commander who attacked the adepts in Kenabres killed her; no tavern, letter, presence or page follows.
+        var murdered = World(story, 3, "trickster", "trickster.ever", "aranka.kenabres_attacked");
+        check(!Rules.Available(story, tavern, murdered) && !Rules.Available(story, anyTavern, World(story, 5, "trickster", "trickster.ever", "aranka.kenabres_attacked", "coronation.after"))
+              && !Rules.Available(story, epVerse, World(story, 6, "trickster.ever", Kept, "aranka.kenabres_attacked"))
+              && story.SelectedAnswers["aranka.kenabres_attacked"] == "3259064c6a1ac284c80ecc7d3fad6135",
+            "A living Aranka follows her death in Kenabres.");
+        // Q8 (Sol BEL): the third verse sung and its rhyme left hanging has its own page, never "never written".
+        var hardNo = thirdOut.First(r => r.Has(Closed) && !r.Has(Kept));
+        check(!Rules.Available(story, epDeclined, hardNo) && Rules.Available(story, S(P + "epilogue.unanswered"), hardNo)
+              && !Rules.Available(story, S(P + "epilogue.unanswered"), declined), "The hard no after the third verse reads as never written.");
+        // Q8 (Sol BEL/CAN): the touring and mocking primers never hear the tambourine verse.
+        check(!Rules.Available(story, S(P + "react.anevia_verse"), World(story, 3, "trickster.ever", P + "primed", P + "cost.announced"))
+              && !Rules.Available(story, S(P + "react.lann_verse"), World(story, 3, "trickster.ever", P + "answered", P + "cost.mocking_verse", P + "cost.credited")),
+            "A reaction sings a verse the Commander never wrote.");
+        var sheet = tavern.Nodes.Single(n => n.Id == "sheet").Text;
+        check(!sheet.Contains("crown"), "The King swears on a crown he may not have.");
         check(Rules.Available(story, epNerosyan, released) && !Rules.Available(story, epVerse, released)
               && !Rules.Available(story, epCommit, released), "The stage page is missing, or the Commander is credited as her lover.");
 
@@ -314,10 +330,10 @@ internal static class ArankaTricksterTests
             "Aranka's reactors changed.");
         var anevia = S(P + "react.anevia_verse");
         var aneviaAlone = S(P + "react.anevia_verse_alone");
-        var widowed = World(story, 3, "trickster.ever", P + "primed", "irabeth_dead");
+        var widowed = World(story, 3, "trickster.ever", P + "primed", P + "cost.round_bought", "irabeth_dead");
         check(!Rules.Available(story, anevia, widowed) && Rules.Available(story, aneviaAlone, widowed)
-              && Rules.Available(story, anevia, World(story, 3, "trickster.ever", P + "primed")), "Anevia's Beth line plays over Irabeth's grave.");
-        var returnedBeth = World(story, 3, "trickster.ever", P + "primed", "irabeth_dead", "irabeth.trickster.returned");
+              && Rules.Available(story, anevia, World(story, 3, "trickster.ever", P + "primed", P + "cost.round_bought")), "Anevia's Beth line plays over Irabeth's grave.");
+        var returnedBeth = World(story, 3, "trickster.ever", P + "primed", P + "cost.round_bought", "irabeth_dead", "irabeth.trickster.returned");
         check(Rules.Available(story, anevia, returnedBeth) && !Rules.Available(story, aneviaAlone, returnedBeth),
             "Anevia still mourns a returned Irabeth.");
         check(!Rules.Available(story, S(P + "react.woljif_billing"), World(story, 3, "trickster.ever", P + "duet_sung", "woljif.dead")),

@@ -85,8 +85,10 @@ internal static class CamelliaTricksterTests
         // --- Shape: the relationship, the revival, the presence. ------------------------------------------------------
         check(rel.StartedFlag == "camellia.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
               && rel.UnavailableFlags.SequenceEqual(new[] { Killed, Dead, "camellia.kicked_out" })
-              && rel.UnavailableOverrides.Count == 2 && rel.UnavailableOverrides[Killed] == Returned && rel.UnavailableOverrides[Dead] == Returned
-              && !rel.UnavailableOverrides.ContainsKey("camellia.kicked_out")
+              && rel.UnavailableOverrides.Count == 3 && rel.UnavailableOverrides[Killed] == Returned && rel.UnavailableOverrides[Dead] == Returned
+              // Q8 (Sol INT): the native Q3 kill co-holds kicked_out; only a kick-out WITHOUT the kill stays closure.
+              && rel.UnavailableOverrides["camellia.kicked_out"] == P + "killed_held"
+              && story.Derived[P + "killed_held"].Single().SequenceEqual(new[] { Killed })
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "dead_otherwise", "killed_by_commander" })
               && rel.TricksterAccess["killed_by_commander"].Detect.SequenceEqual(new[] { Killed, Dead })
               && rel.TricksterAccess["dead_otherwise"].Detect.SequenceEqual(new[] { Dead, "!" + Killed }),
@@ -134,6 +136,17 @@ internal static class CamelliaTricksterTests
         var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, P + "primed"), 100);
         Take(third, cold, "unbargained", 0, P + "raised", P + "cost.bargain_late", P + "spirits_bargained");
         check(Ch(third, "unbargained", 0).Alignment?.Direction == "Evil", "The late bargain at the coffin is not dearer (Evil 1).");
+        // Q8 (Sol TRK/HOW): after the path is lost, a primer alone buys nothing; only a bargain already struck pays out.
+        var failedPrimed = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed"), 100);
+        check(Avail(third, failedPrimed) && Program.Walk(third, failedPrimed).All(r => !r.Has(P + "raised"))
+              && Ch(third, "unbargained", 0).Requires.Contains("trickster"),
+            "A lost path still opens a new bargain over her coffin.");
+        var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed", P + "spirits_bargained"), 100);
+        check(Program.Walk(third, failedPaid).Any(r => r.Has(P + "raised")), "A bargain bought on the live path does not pay out after it.");
+        // Q8 (Sol BEL): the scratching belongs to the prepared branch only.
+        check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratching") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratching")
+              && !third.Nodes.Single(n => n.Id == "unbargained").Text.Contains("scratching"),
+            "The coffin scratches on a branch where nobody bargained.");
         check(!story.Scenes.Where(s => s.Relationship == "camellia").SelectMany(s => s.Nodes).Any(n => n.Text.Contains("raise dead")),
             "A clerical scroll came back as her return device.");
         check(Avail(performance, Later(story, raisedNight, 100)), "The veiled mourner does not follow the raise.");
@@ -176,6 +189,8 @@ internal static class CamelliaTricksterTests
         Take(late, unprimed, "choose", 1, P + "declined", Closed);
 
         // Trk_Camellia_KilledAfterFailure
+        var q3Kill = World(story, 5, "trickster", "trickster.ever", Killed, "camellia.kicked_out");
+        check(Avail(late, q3Kill), "A Q3 kill (kicked_out co-held with the kill) is closed as a dismissal.");
         var failed = World(story, 3, "trickster.ever", "trickster.failed", Killed);
         check(!Avail(late, failed) && !Avail(performance, failed), "Trk_Camellia_KilledAfterFailure: a lost path must not open a new trick.");
 
@@ -310,7 +325,8 @@ internal static class CamelliaTricksterTests
                   && twin.Forbids.Contains(Dead) && twin.Forbids.Contains(Returned) && !twin.Requires.Contains(Returned)
                   && !twin.Nodes.SelectMany(n => n.Choices).Any(c => c.Requires.Contains(Killed) || c.Requires.Contains(Returned) || c.Requires.Contains(Dead)),
                 "A living twin needs her death, or keeps the dead branches' choices: " + twin.Id);
-        var danced = World(story, 4, "trickster", "trickster.ever", P + "masks.game", P + "masks.two_lies", P + "masks.mireya",
+        // Q8: the living test and the life after it are staged in Drezen (Chapters 3 and 5), so the walk resumes there.
+        var danced = World(story, 5, "trickster", "trickster.ever", P + "masks.game", P + "masks.two_lies", P + "masks.mireya",
                            P + "masks.a_dance_with_a_knife_in_it", P + "masks.danced");
         var lessonAlive = S(P + "beat.lesson_alive");
         check(Avail(lessonAlive, Later(story, danced, 100)), "The living Camellia's lesson does not follow the dance.");
@@ -360,10 +376,63 @@ internal static class CamelliaTricksterTests
 
         // --- Pages: the late commit, her refusal, and the kept page's sibling for a Commander on the roll of the dead. --
         var pages = story.Scenes.Where(s => s.Relationship == "camellia" && s.Owner == "CamelliaEpilogue").Select(s => s.Id).ToArray();
-        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused" }),
+        check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.commit_on_record", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused" }),
             "Camellia's epilogue pages do not match: " + string.Join(", ", pages));
         check(S(P + "epilogue.commit").Requires.Contains(P + "terms_named") && S(P + "epilogue.commit").Forbids.Contains(Committed),
             "The late commit page does not rest on her named price.");
+        // Q8 (Sol INT): a Last Call bottle survivor (commander_back, no cheated_death) keeps her pages; a dead Commander gets the
+        // memorial sibling, for the commit and for the late commit alike.
+        var alive6 = World(story, 6, "trickster.ever", Committed, "sacrifice", "trickster.commander_back");
+        var dead6 = World(story, 6, "trickster.ever", Committed, "sacrifice");
+        check(Avail(S(P + "epilogue.kept"), alive6) && !Avail(S(P + "epilogue.kept_on_record"), alive6)
+              && !Avail(S(P + "epilogue.kept"), dead6) && Avail(S(P + "epilogue.kept_on_record"), dead6),
+            "Her kept page and its memorial do not follow whether the Commander lived.");
+        var lateAlive = World(story, 6, "trickster.ever", P + "terms_named", "sacrifice", "trickster.commander_back");
+        var lateDead = World(story, 6, "trickster.ever", P + "terms_named", "sacrifice");
+        check(Avail(S(P + "epilogue.commit"), lateAlive) && !Avail(S(P + "epilogue.commit_on_record"), lateAlive)
+              && !Avail(S(P + "epilogue.commit"), lateDead) && Avail(S(P + "epilogue.commit_on_record"), lateDead),
+            "The late commit narrates a life with a dead Commander, or loses a living one.");
+        // Q8 (Sol CAN): the eve of the Threshold is Chapter 5, after Iz, on every twin; the living twin never recalls dying.
+        foreach (var id in new[] { "day.the_eve", "day.the_eve_camp", "day.the_eve_alive" })
+            check(S(P + id).Chapters.SequenceEqual(new[] { 5 }) && S(P + id).MinChapter == 5 && S(P + id).Requires.Contains("iz.done"),
+                "The eve of the Threshold opens outside its window: " + id);
+        check(!S(P + "day.the_eve_alive").Nodes.Any(n => n.Text.Contains("I did it once")) && S(P + "day.the_eve").Nodes.Any(n => n.Text.Contains("I did it once")),
+            "The living Camellia remembers a death she never had.");
+        check(!S(P + "masks.flies_at_a_window").Nodes.Single(n => n.Id == "fed").Text.Contains("sleeps like a child"),
+            "Bleeding demons relieves her, against FinalTruth Cue_0042.");
+        // Q8 (Sol CAN/INT): Drezen-staged hub twins stay in Drezen, Chapters 3 and 5, like the veiled twin.
+        foreach (var id in new[] { "returned.test", "cards.the_cutler", "bond.shelf", "evening.breakfast", "day.the_second_dance" })
+            foreach (var suffix in new[] { "_camp", "_alive" })
+            {
+                var twin = story.Scenes.SingleOrDefault(s => s.Id == P + id + suffix);
+                if (twin == null) continue;
+                check(twin.Areas.SequenceEqual(new[] { Drezen }) && !twin.Chapters.Contains(4), "A Drezen scene travels with the companion hub: " + twin.Id);
+            }
+        foreach (var id in new[] { "masks.the_funeral_i_would_like", "evening.a_table_for_strangers" })
+            check(S(P + id).Areas.SequenceEqual(new[] { Drezen }), "A Drezen courtship scene travels with the companion hub: " + id);
+        // Q8 (Sol INT): a commitment followed by her native death or dismissal, with no return, has no kept page.
+        check(!Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed))
+              && !Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, "camellia.kicked_out"))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
+            "The kept page outlives her death or dismissal.");
+        // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
+        check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
+        var coda = story.Scenes.SingleOrDefault(s => s.Id == "camellia.lastcall.page");
+        // Q8 coordinator ruling: the coda needs her commitment and does not play after her death or dismissal unless she returned.
+        check(coda != null && coda.Requires.Contains(Committed), "The Last Call coda does not require her commitment.");
+        var lc = new[] { "trickster.ever", "lastcall.active", Committed };
+        check(Avail(coda!, World(story, 6, lc)) && !Avail(coda!, World(story, 6, lc.Append(Killed).ToArray()))
+              && !Avail(coda!, World(story, 6, lc.Append(Dead).ToArray())) && !Avail(coda!, World(story, 6, lc.Append("camellia.kicked_out").ToArray()))
+              && Avail(coda!, World(story, 6, lc.Concat(new[] { Killed, Returned, "camellia.kicked_out" }).ToArray()))
+              && !Avail(coda!, World(story, 6, "trickster.ever", "lastcall.active", P + "terms_named")),
+            "The Last Call coda plays for a Camellia killed or dismissed after committing, or without her commitment.");
+        // Q8 (Sol INT): the veiled widow sits at Fye's bar only once the third night has given her back.
+        check(story.Presences["camellia.presence"].Requires.Contains(P + "raised"), "The veiled copy sits in the tavern while she is still underground.");
+        // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.
+        var again = S(P + "cards.two_lies_again");
+        check(Ch(again, "two", 0).Requires.Contains(P + "masks.out_lied") && Ch(again, "two", 1).Forbids.Contains(P + "masks.out_lied"),
+            "The second game rewrites a lost first game as a win.");
         check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named" }),
             "The Derived late commit does not rest on her named price.");
 

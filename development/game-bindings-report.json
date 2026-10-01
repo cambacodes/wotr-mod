@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4567,
-  "unique_targets": 998,
+  "binding_uses": 4602,
+  "unique_targets": 999,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -456,6 +456,10 @@
     },
     "91a0b72bdcd5809409760cb25ad7d8c3": {
       "path": "World/Dialogs/c1/GreyGarrison_ChapterEnd/Wardstone_BookEvent/Answer_0021.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "3259064c6a1ac284c80ecc7d3fad6135": {
+      "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Answer_0026.jbp",
       "type": "BlueprintAnswer"
     },
     "f21279d12e1c70449bd037e75d7fd4a7": {

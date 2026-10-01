@@ -46,24 +46,24 @@ SCENES.append(scene(MARKET, "The flower market", "Camellia", 3, '"You look like 
 # --- The anniversary. --------------------------------------------------------------------------------------------------
 
 met(ANNIVERSARY, "The anniversary", '"You\'re dressed in black."', [
-    cam("open", '''"I am in mourning." {n}She smooths the black silk at her waist with both hands.{/n} "It's the anniversary. Well, not a year. I couldn't wait a year. It's the monthly anniversary. I've decided to keep them. I've never had an anniversary of anything before, except my birthday, and nobody ever came to that."''',
+    cam("open", '''"I am in mourning." {n}She smooths the black silk at her waist with both hands.{/n} "It's the anniversary. Well, not a year. I couldn't wait a year. It's the monthly anniversary. I've decided to keep them. Why waste an excellent dress?"''',
         c("Continue", "killed_a", requires=(KILLED,)),
         c("Continue", "dead_a", forbids=(KILLED,))),
-    cam("killed_a", '''"One month since I died convincingly. One month since they put me under that plain little stone with the wedding lilies." {n}She lifts a glass of wine she will not drink.{/n} "To the dead. To me. To the only woman in Drezen who has read her own eulogy and found it wanting."''',
+    cam("killed_a", '''"Since I died convincingly. Since they put me under that plain little stone with the wedding lilies." {n}She lifts a glass of wine she will not drink.{/n} "To the dead. To me. To the only woman in Drezen who has read her own eulogy and found it wanting."''',
         c("Continue", "toast")),
-    cam("dead_a", '''"One month since I fell by the wagons, and lay there, and heard nothing at all for a day and a half. One month since you told me I was overacting." {n}She lifts a glass of wine she will not drink.{/n} "To the dead. To me. To the silence, which I miss, and to the rude voice that ended it, which I don't."''',
+    cam("dead_a", '''"Since I fell by the wagons, and lay there, and heard nothing at all. Since you told me I was overacting." {n}She lifts a glass of wine she will not drink.{/n} "To the dead. To me. To the silence, which I miss, and to the rude voice that ended it, which I don't."''',
         c("Continue", "toast")),
-    cam("toast", '''"You're supposed to drink to the dead, you know. It's the custom." {n}She holds the glass out to you.{/n} "I never drink in company. Drink for me. Tell me what you remember about me. The way people do at a wake. I want to hear what they'd have said, if they'd known me."''',
+    cam("toast", '''"You're supposed to drink to the dead, you know. It's the custom." {n}She holds the glass out to you.{/n} "I never drink at my own wake. Drink for me. Tell me what you remember about me. The way people do at a wake. I want to hear what they'd have said, if they'd known me."''',
         c('"I remember that you cheated at cards."', "cards"),
-        c('"I remember your face when I told you to die."', "face"),
+        c('"I remember your face at the end."', "face"),
         c('[Trickster] "I remember that you were a terrible person and a wonderful liar, and nobody has missed you at all."', "missed")),
-    cam("cards", '''"I never cheated at cards." {n}She is outraged.{/n} "I cheated at everything else, but never at cards. Cards are sacred. My teacher taught me that." {n}Then she stops.{/n} "You're lying. You're lying at my wake. That's..." {n}She begins to laugh.{/n} "That's exactly what I would have wanted. Say another one."''',
+    cam("cards", '''"I never cheated at cards." {n}She is outraged.{/n} "I cheated at everything else, but never at cards. It makes the cheating everywhere else so much more convincing." {n}Then she stops.{/n} "You're lying. You're lying at my wake. That's..." {n}She begins to laugh.{/n} "That's exactly what I would have wanted. Say another one."''',
         c("Continue", "close")),
     cam("face", '''{n}She goes very still.{/n} "What did it look like? My face. I've always wondered. I've never seen it from the outside, at that moment. Nobody who has ever seen it has been in any condition to tell me."
-{n}You tell her. You tell her it looked surprised, and then, just before the end, pleased. As if someone had finally told a joke she hadn't heard before.{/n}
-{n}She listens to the end, and when you are done she puts down the glass very carefully.{/n} "Thank you," {n}she says.{/n} "That's the only thing I ever wanted anyone to tell me."''',
+{n}You tell her what you saw: surprise, and then, just before the end, something very like pleasure, as if someone had finally told a joke she hadn't heard before.{/n}
+{n}She listens to the end, and when you are done she puts down the glass very carefully.{/n} "Surprised," {n}she says.{/n} "How embarrassing. We shall omit that from your account. The pleased part you may keep."''',
         c("Continue", "close")),
-    cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, one small sip. You have never once seen her drink.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
+    cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, one small sip, which is more than she usually allows herself in company.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
         c("Continue", "close")),
     cam("close", '''"Next month," {n}she says,{/n} "we'll do it again. And the month after. Until one of us is dead properly, and then the other one can do it alone." {n}She sets down the glass.{/n} "I'd prefer it to be me who does it alone. I'd do it so much better. But I won't insist."''',
         c("[Stay with her until the candle burns out]")),
@@ -81,13 +81,13 @@ met(SECOND_DANCE, "The second dance", '"Three steps and a turn?"', [
         c("Continue", "dance")),
     cam("noticed_d", '''"And last time you found the knife, and said so, and I was very cross with you, and I have forgiven you entirely." {n}She takes your left hand, and puts your right at her waist.{/n} "It's still there. Tonight I shan't be cross."''',
         c("Continue", "dance")),
-    cam("new_d", '''"We never had a first half, did we? I was dead too soon. So I shall teach you the whole thing at once, which is how I prefer to learn things, and people." {n}She takes your left hand and puts your right at her waist, a little lower than a dancing master would.{/n} "Three steps and a turn. Don't look at your feet."''',
+    cam("new_d", '''"We never had a first half, did we? We neglected your lessons. So I shall teach you the whole thing at once, which is how I prefer to learn things, and people." {n}She takes your left hand and puts your right at her waist, a little lower than a dancing master would.{/n} "Three steps and a turn. Don't look at your feet."''',
         c("Continue", "dance")),
     nar("dance", '''{n}Three steps and a turn. She counts under her breath, one-two-three, one-two-three, and the candles go round the walls. She is closer than the dance requires, and then closer still. Your hand at her waist finds the knife strapped high on her thigh, and this time she stops, and puts her own hand over yours, and holds it there.{/n}''',
         c("[Unbuckle the strap]", "strap"),
         c("[Leave it where it is]", "leave")),
     cam("strap", '''{n}She watches your face while you do it. The buckle is stiff; she does not help. When it gives, the knife slides down into your palm, warm from her skin, and she lets out a long, shaky breath.{/n}
-"There," {n}she whispers.{/n} "Now you're holding the only thing I've never let anyone hold. Put it somewhere I can see it."
+"There," {n}she whispers.{/n} "Mind the edge. I'm fond of that knife, and those fingers may still be useful. Put it somewhere I can see it."
 {n}You lay it on the floor between two of the candles. She looks at it for a moment, and then she does not look at it again.{/n}''',
         c("Continue", "end")),
     cam("leave", '''"Leave it?" {n}Her breath catches, and her eyes go dark and bright at once.{/n} "You'd dance with me armed. You'd lie down with me armed." {n}She presses closer, until you can feel the hilt between you both.{/n} "Nobody has ever wanted me with the knife. They always want me to take it off first. As if that made any difference."''',
@@ -127,3 +127,6 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
 {n}Camellia waves back, very prettily, and does not take her eyes off your face while she does it.{/n}''',
         c("[Wave back]", flags=(FRIEND_WATCHED,), alignment=("Evil", 1))),
 ], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=96, optional=True, living=())
+
+from storylines.camellia_trickster import city  # noqa: E402 (Q8)
+city(ANNIVERSARY, SECOND_DANCE, NEW_FRIEND)

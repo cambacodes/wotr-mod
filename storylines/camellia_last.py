@@ -4,7 +4,7 @@ Her pressed flowers are canon (Camelia/Cue_0071, the flower she is named for; th
 also show her). The flower language she learned from her Varisian teacher is her own telling, and she says so.
 """
 from story_format import c
-from storylines.camellia_trickster import COMMITTED, NOT_TODAY, P, cam, met
+from storylines.camellia_trickster import COMMITTED, NOT_TODAY, P, RET, SCENES, cam, met
 from storylines.camellia_masks import TWO_LIES, living
 
 FLOWERS = P + "day.the_language_of_flowers"
@@ -16,8 +16,8 @@ EVE = P + "day.the_eve"
 living(FLOWERS, "The language of flowers", '"Did you leave a flower on my pillow?"', [
     cam("open", '''"Three. Did you only find one?" {n}Camellia looks up from her herbarium, a heavy book of pressed stems, with an expression of mild reproach.{/n} "There was a violet under your pillow and a sprig of rue in your boot. You must look properly, my friend. I went to a great deal of trouble."''',
         c('"What do they mean?"', "mean")),
-    cam("mean", '''"Oh, everything means something. My teacher taught me. She said the Varisians had a language of flowers older than Taldor, and the Taldans stole it and made it into a parlour game, and my father's maids used to send each other bunches of it and giggle." {n}She turns a page. A pressed foxglove, very purple.{/n}
-"The violet means faithfulness. The rue means regret. And the one on your pillow..." {n}She smiles.{/n} "Well. You tell me what it was."''',
+    cam("mean", '''"Oh, everything means something, if you decide it does. My father's maids used to send each other bunches of flowers that meant things and giggle, so I made up a language of my own, a much more useful one." {n}She turns a page. A pressed foxglove, very purple.{/n}
+"In mine, the violet means faithfulness. The rue means regret. And the one on your pillow..." {n}She smiles.{/n} "Well. You tell me what it was."''',
         c('"A white rose."', "rose"),
         c('"Something with berries on it."', "berries"),
         c('[Trickster] "It was a lily. The white kind. For a wedding."', "lily")),
@@ -54,7 +54,10 @@ met(EVE, "The eve", '"Tomorrow we march on the Threshold."', [
         c('"I don\'t intend to die."', "intend"),
         c('[Trickster] "No. I\'ll do it so badly you\'ll have to come and tell me I\'m overacting."', "badly"),
         c('"If I do, I want your face to be the last thing I see."', "face")),
-    cam("intend", '''"Good." {n}She puts down the silk.{/n} "Then don't." {n}Somewhere below, a sergeant is shouting the names of a watch roster, and a horse is refusing a cart. She listens to both for a moment.{/n} "I did it once. I didn't care for the lying still. You'd hate it. You fidget."''',
+    cam("intend", '''"Good." {n}She puts down the silk.{/n} "Then don't." {n}Somewhere below, a sergeant is shouting the names of a watch roster, and a horse is refusing a cart. She listens to both for a moment.{/n}''',
+        c("Continue", "intend_dead", requires=(RET,)),
+        c("Continue", "close", forbids=(RET,))),
+    cam("intend_dead", '''"I did it once. I didn't care for the lying still. You'd hate it. You fidget."''',
         c("Continue", "close")),
     cam("badly", '''{n}For a moment she simply stares. Then she drops the knife on the blanket and laughs until she has to wipe her eyes on the corner of the silk.{/n}
 "You would. You'd lie there on the Threshold with your mouth open and your eyes rolled up like a bad actor in a provincial farce, just to make me come and fetch you." {n}She shakes her head.{/n} "And I would. I'd walk into whatever's left of the Abyss and tell your corpse it was an embarrassment. You've ruined dying for me forever. I hope you're pleased."''',
@@ -66,3 +69,11 @@ met(EVE, "The eve", '"Tomorrow we march on the Threshold."', [
     cam("close", '''"Go to sleep. I'll sit up." {n}She takes the lamp to the window, and sits with her back to the wall and her knife across her knees, facing the door.{/n} "Nothing is going to kill you in your sleep tonight, darling. I've made quite sure of that. I'm the only one in this city with the right."''',
         c("[Sleep]")),
 ], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=48, optional=True, living=())
+# Q8 (Sol CAN): the eve is the eve. Chapter 5 only, and only once Iz is done and the march on the Threshold is next.
+for _s in SCENES:
+    if _s["Id"] in (EVE, EVE + "_camp", EVE + "_alive"):
+        _s["MinChapter"], _s["Chapters"] = 5, [5]
+        _s["Requires"] = list(dict.fromkeys([*_s["Requires"], "iz.done"]))
+
+from storylines.camellia_trickster import city  # noqa: E402 (Q8)
+city(EVE)

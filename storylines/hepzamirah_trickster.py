@@ -72,6 +72,7 @@ YIELDED = P + "sparred_yielded"
 BESTED = P + "sparred_bested"
 EMBASSY = P + "embassy"
 CONFINED = P + "cost.confined"
+RELEASED = P + "flesh.released"   # Q8 (Sol INT): her three nights in the cells end here; yard beats wait for it
 LOOKED = P + "looked"
 LOOKED_AWAY = P + "looked_away"
 RENT_TAKEN = P + "rent_taken"
@@ -150,15 +151,15 @@ def lead(seq, then):
 
 def yard(id, title, entry, nodes, requires, forbids=(), delay=24, owner="Hepzamirah"):
     """A scene on her presence by the forge in Drezen (Chapter 5)."""
-    SCENES.append(scene(id, title, owner, 5, entry, nodes, requires=requires, forbids=(CLOSED, *forbids), delay=delay,
+    SCENES.append(scene(id, title, owner, 5, entry, nodes, requires=requires, forbids=(CLOSED, CONFINED, *forbids), delay=delay,
                         last=5, optional=True, Relationship=REL, Chapters=[5], ContactUnit=BODY_UNIT, Areas=[DREZEN],
-                        InteractionHub=PRESENCE))
+                        InteractionHub=PRESENCE, ForbidOverrides={CONFINED: RELEASED}))
 
 
 # --- Colyphyr (Chapter 4): the one time the Commander meets her alive. A standing offer she laughs at. -------------------
 
 SCENES.append(scene(P + "colyphyr.offer", "A standing offer", "Hepzamirah", 4,
-    '[Trust your intuition] "Your father\'s going to let you die down here. When he does, look me up."', [
+    '[Trust your intuition] "Mutasafen took your army. Your father won\'t forgive that. When he comes for you, look me up."', [
     hz("laugh", '''{n}For a moment the daughter of Baphomet only stares at you. Then she laughs, and the sound goes round the cavern twice before the rock swallows it.{/n}
 "Look you *up*? You are a gnat that has flown into the forge, crusader, and you offer the smith a favour?"
 {n}Her horns dip. Above her, the angel's chains shift, as if even he wants to hear the answer.{/n}
@@ -168,7 +169,7 @@ SCENES.append(scene(P + "colyphyr.offer", "A standing offer", "Hepzamirah", 4,
        c('"He\'s already weighing you against someone. I can see it on you."', "weighed")),
     hz("weighed", '''{n}The laughter stops as if a door had closed on it.{/n}
 "Weighing." {n}She says it very softly.{/n} "You know nothing about my father, crusader. You have never met a god who counts his children like coins and keeps only the heavy ones."
-{n}Her crimson eyes are fixed on you, and for one breath there is something behind them that is not contempt; something that has been listening at a door for years.{/n} "I am the heavy one. I have always been the heavy one."''',
+{n}Her crimson eyes are fixed on you, and for one breath she does not answer at all.{/n} "I am the heavy one. I gave him hundreds of better offerings than you will ever see."''',
        c("Continue", "shelf")),
     hz("shelf", '''{n}Something moves behind the crimson of her eyes, quick and cold, the way a spy's hand moves to a knife.{/n}
 "Offer it to the angel. He loves a promise. I will take your head instead, and keep it on a shelf, so that when my father proves you wrong you can watch."''',
@@ -182,8 +183,8 @@ SCENES.append(scene(P + "colyphyr.offer", "A standing offer", "Hepzamirah", 4,
 SNEER = '''"If you take me out, I will never thank you. Not today, not ever. I will owe you nothing and I will pay you nothing, and one day I will kill you for having seen me like this."
 "Take it, or leave me to rot, and stop gloating."'''
 GHOST_LEADS = [
-    ("recognized", hz, '''"You. The clown from Colyphyr." {n}Her dangling eye turns in its socket to find you.{/n} "'Your father is going to let you die down here.' You said it, and I laughed, and he did. I hate that you were right more than I hate him. Almost."''', OFFER),
-    ("boasted", hz, '''"He told you no soul leaves here, didn't he? He tells every visitor. It is his favourite thing to say about me." {n}The ghost's jaw works.{/n} "He says it the way a farmer counts cattle."''', BOASTED),
+    ("recognized", hz, '''"You. The clown from Colyphyr." {n}Her dangling eye turns in its socket to find you.{/n} "'When he comes for you, look me up.' You said it, and I laughed, and he came. I hate that you were right more than I hate him. Almost."''', OFFER),
+    ("boasted", hz, '''"He told you no soul leaves here, didn't he? He told you he owned us. He always liked the sound of ownership." {n}The ghost's jaw works.{/n} "He says it the way a farmer counts cattle."''', BOASTED),
 ]
 
 
@@ -262,7 +263,7 @@ SCENES.append(scene(P + "ghost.body", "The lodger", "Memory", 5, "", [
     hz("flesh_ask", '''"A ghost cannot hold a pick, clown," {n}the cold says, from the chair.{/n} "It cannot hold anything. I have tried your wine cup forty times. Find me flesh."
 "You know who grows it. My alchemist. The traitor. He keeps bodies of himself hidden like a squirrel keeps nuts, and he stole my army with the time he saved on dying. He can grow one more."''',
        c('[Write to the traitor] "Dear Mutasafen. Your old mistress is haunting my chair, and she remembers how you die. Let\'s talk about spare bodies."',
-         "terms", mythic="Trickster")),
+         "terms")),
     n("terms", "Mutasafen", '''{n}The cold goes out at dusk with your letter and comes back at dawn smelling of formaldehyde and triumph. The reply is scratched on a sheet stained yellow where a reagent dripped through it.{/n}
 "Commander. A ghost for a postman. You ask me to give a body to the one creature who swore to take my eyes. I decline, naturally.
 Then I consider the alternative: a dead princess who walks through walls, talks, and knows where I sleep. I accept, naturally.
@@ -285,10 +286,10 @@ M."{/n}
           "rename"),
     nar("rename", '''{n}The cold is on your shoulder now, looking down at itself. It says nothing at all.{/n}''',
         c('[Rename the vessel] "You\'re not his vessel. You\'re a lodger\'s flat. Lodgers have bodies, and they pay rent. Landlords don\'t keep spare keys."',
-          "flesh", mythic="Trickster", flags=(RET, WRONG_BODY))),
+          "flesh", flags=(RET, WRONG_BODY))),
     *lead([("flesh", nar, '''{n}Somewhere, very far away, a glass vial cracks on a laboratory shelf. The cold on your shoulder is gone. The thing in the crate opens its one good eye.{/n}
 {n}She sits up in the brine and touches the scar, the stump and the dead eye, slowly, the way a moneylender counts coins that have been clipped.{/n}''', None),
-           ("flesh_late", hz, '''"You struck me before you freed me. The jailers whispered your name all the way to Drezen. I counted every whisper."''', LATE),
+           ("flesh_late", hz, '''"You came late, clown. The jailers had time to learn your name, and they whispered it all the way to Drezen. I counted every whisper."''', LATE),
            ("flesh_altar", hz, '''"You walked past me in his prison. Then you knelt at his altar in your own city and cut his mark into your own arm, to reach me. I felt the corner come loose like a rotten tooth." {n}Her lip curls, and her eye goes to your sleeve and stays there.{/n} "My father's mark. On you. You used his own post, clown, and you will wear the stamp until you die. I have never been so insulted in my life."''', ALTAR),
            ("flesh_offer", hz, '''"'Look me up.' You said it in Colyphyr, over the angel's head. I have looked you up, clown. Here I am, in a crate."''', OFFER)],
           "first_rent"),
@@ -306,7 +307,7 @@ COURIER_LEADS = [
     ("paid_blood", hz, '''"He has come for the vial you promised his master, the empty one he hung on your gatepost. Payment on delivery, he says, and I am delivered. It is the only polite thing he has ever done, and he is doing it with my fingers round his windpipe."''', BLOOD),
     ("paid_coin", hz, '''"He says your laboratory bought my flesh and nothing else. The vial is for his master's silence about where I sleep, the price he raised at your gate. Of course he raised it. I taught that incubus spawn to haggle. So: a vial of you, for silence. Or his eyes, for mine."''', LAB),
     ("paid_threat", hz, '''"He says: 'You said no price. My master heard double.' I think I like your threat better than his arithmetic."''', MGRUDGE),
-    ("collectors", hz, '''"And my father's cultists knocked for your tiefling last month, I hear. This one is not Father's. Father's people do not wipe their feet."''',
+    ("collectors", hz, '''"And my father's cultists have already knocked for your tiefling, I hear. This one is not Father's. Father's people do not wipe their feet."''',
      "minagho_chivarro.trickster.debt.collectors"),
 ]
 SCENES.append(scene(P + "body.hounds", "The Apprentice at the gate", "Memory", 5, "", [
@@ -331,7 +332,7 @@ SCENES.append(scene(P + "body.hounds", "The Apprentice at the gate", "Memory", 5
 
 TERMS_LEADS = [
     ("ember", n, None, "ember.present"),
-    ("killed", hz, '''"The Apprentice's eyes went to Mutasafen in a box, as promised. He has not written since. I find I miss his handwriting the way one misses a toothache."''', COURIER_KILLED),
+    ("killed", hz, '''"The Apprentice's eyes went to Mutasafen in a box, as promised. I lie awake wondering which of his bodies opened it. It is the best sleep I have had."''', COURIER_KILLED),
     ("forged", hz, '''"Your vial of wine is on its way to Mutasafen's bench. I would give my other eye to watch him run it through his glassware."''', VIAL_FORGED),
     ("confined", hz, '''"And you let your chaplains lock my door from the outside for three nights. I have not forgotten. I am not a woman who forgets a lock."''', CONFINED),
 ]
@@ -345,7 +346,7 @@ TERMS_LEADS[0] = ("ember", ember_node, '''{n}Ember is sitting on an upturned buc
 "She let me stay the whole afternoon today. She only threw the jar once." {n}She points with it at the far wall, where the light does not reach.{/n} "She says she wants the clown. I think she means you."''', "ember.present")
 
 yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
-    *lead([("open", nar, '''{n}She is by the far wall of the smith's yard, where the light does not reach, arms crossed over a body she did not choose. The heavy pick the smith forged for her leans against the wall beside her, head down, like a hound told to wait.{/n}''', None),
+    *lead([("open", nar, '''{n}She is by the far wall of the smith's yard, where the light does not reach, arms crossed over a body she did not choose. Her heavy pick leans against the wall beside her, head down, like a hound told to wait.{/n}''', None),
            *TERMS_LEADS], "price"),
     hz("price", '''"Your chaplains pray outside my door as if I were a sickness. Your soldiers make the sign of the Inheritor when I pass, and one of them spat, once. Enough. Listen, clown, because I will say this once."
 "I stay. My own door, my own guards, and no priest mends anything else of mine. When I go for Mutasafen, nobody follows. And my father is mine. The day I call him, you will not bargain with him over my head."
@@ -387,11 +388,11 @@ yard(P + "body.terms", "Terms, in person", '"You wanted the clown."', [
 
 EP = dict(last=6, Relationship=REL)
 LEAVABLE_PARAS = (
-    p("{n}She kept the scar her father gave her, and the milk-white eye, and never let a priest heal either twice.{/n}", requires=(WRONG_BODY,)),
+    p("{n}She kept the scar her father gave her, and the milk-white eye, and never let a priest heal either.{/n}", requires=(WRONG_BODY,)),
     p("{n}Somewhere a vat of Mutasafen's still held a little of the Commander, until the fire.{/n}", requires=(BLOOD, VIAL_PAID)),
     p("{n}The crusade's books listed one laboratory \"in the Worldwound, address unknown\". The address, it turned out, was known to one person.{/n}", requires=(LAB,)),
-    p("{n}Mutasafen's last copy spent a year learning what was in the vial. It was wine. He did not live to enjoy the joke.{/n}", requires=(VIAL_FORGED,)),
-    p("{n}His Apprentice's eyes were never found. His master stopped writing letters altogether.{/n}", requires=(COURIER_KILLED,)),
+    p("{n}Mutasafen found the wine in the vial on his second test, and never forgave the joke. He did not live long enough to repay it.{/n}", requires=(VIAL_FORGED,)),
+    p("{n}Mutasafen hired himself a quieter Apprentice to replace the one whose eyes came to him in a box with a ribbon, and went on writing to her. She read every letter aloud to the forge, and fed it to the coals.{/n}", requires=(COURIER_KILLED,)),
     p("{n}She called the Commander \"landlord\" to the end, and meant it as a threat, and the Commander learned to take it as something else.{/n}", requires=(LANDLORD,)),
     p("{n}Of her father she spoke once a year, on the day of Colyphyr, and only to say that she had not called him yet.{/n}", requires=(GRUDGE,)),
 )
@@ -399,16 +400,16 @@ SCENES.append(scene(P + "epilogue.leavable", "", "HepzamirahEpilogue", 6, "", [
     nar("page", '''{n}Hepzamirah stayed at the Commander's side through the Threshold and after it, behind a door that had no lock because she had forbidden one. She never called it gratitude. The spring after the war, word came that a laboratory in the Worldwound had burned with every body in it; she came home with a crystal-cutter's lens on a cord, smelling of formaldehyde and smoke, and never said where it came from.{/n}''',
         paragraphs=LEAVABLE_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.leavable_on_record", "", "HepzamirahEpilogue", 6, "", [
     nar("page", '''{n}When the Commander was entered among the dead of the Threshold, Hepzamirah broke the door she had forbidden anyone to lock, and walked out through it into the Worldwound with her pick and nothing else. Mutasafen's laboratories burned one a season for years after, each with a single milk-white eye painted on the door. The daughter of Baphomet never called her father. Those who knew her said she was saving it for something.{/n}''')],
-    requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.cheated_death", CLOSED), **EP))
+    requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.commander_back", CLOSED), **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "HepzamirahEpilogue", 6, "", [
     nar("page", '''{n}Hepzamirah never gave the Commander her terms in Drezen. She gave them after the Threshold, at a door she had kicked open: "The door was leavable. I left. I came back. That is the only answer you get." She stayed on those terms, and no others.{/n}''')],
     requires=("trickster.ever", CS), forbids=(COMMITTED, CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.refused", "", "HepzamirahEpilogue", 6, "", [
     nar("page", '''{n}Hepzamirah left Drezen through the door she had been promised. For years afterwards Mutasafen's hidden laboratories burned, one a season, each with a single milk-white eye painted on the door. She never called her father. Those who knew her said she was saving it.{/n}''')],
