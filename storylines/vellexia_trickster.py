@@ -61,6 +61,8 @@ LESSON = "vellexia.trickster.lesson_given"
 VISITED = "vellexia.trickster.visited"
 COURTING = "vellexia.trickster.courting"
 LATE_COMMITTED = "vellexia.trickster.late_committed"
+INVITED = "vellexia.invited"                        # Q11: the Commander asked her to Drezen (two_unremarkable_pleasures / the cover)
+NIGHT_KEPT = "vellexia.trickster.night_kept"
 KNOWN = "vellexia.prediction_known"
 STARTED = "vellexia.started"
 FAILED = "trickster.failed"
@@ -502,7 +504,7 @@ letter("vellexia.trickster.after.night", "Less glass", [
       c("Continue", "hands", requires=(DIMINISHED,)),
       c("Continue", "arrived", forbids=(DIMINISHED,))),
     v("arrived", '''"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse." {n}She takes the lamp out of your hand and sets it down.{/n}
-"So I came through three portals and a rift camp that smells of mules. Less glass between us, I believe I said."''',
+"You asked me to come. I said you would not know the night. So I came through three portals and a rift camp that smells of mules, and here you are, not knowing it. Less glass between us, sweetheart."''',
       c("Continue", "threshold")),
     v("hands", '''"You said the next part might be difficult to come back from. I dislike waiting to find out whether I shall be bored by your corpse." {n}She holds up her unfinished hands.{/n}
 "These still do nothing. So you will have to do the undressing, sweetheart. All of it. I shall watch, and I shall tell you when you are doing it wrong."''',
@@ -514,7 +516,10 @@ letter("vellexia.trickster.after.night", "Less glass", [
     nar("morning", '''{n}Morning. The bed is empty and the shutters are open. There is a bruise on your throat the exact shape of her mouth, and a note on your maps of the Worldwound in handwriting that slopes like a laugh.{/n}
 {n}"Come back alive. I have not finished with you, and I refuse to be bored by a monument."{/n}''',
       c('[Wind a scarf over the bruise.]', flags=("vellexia.trickster.night_kept",))),
-], requires=("trickster.ever", VISITED, "vellexia.committed"), forbids=(KEPT, "vellexia.trickster.night_kept"), delay=12)
+], requires=("trickster.ever", "vellexia.committed"), forbids=(KEPT, NIGHT_KEPT), delay=12,
+    # Q11: the peaceful commit reaches the night as well as the recovery; she comes because she was asked to Drezen
+    # (INVITED) or because she has already come once in person (VISITED, whose commit at the cover also invites her).
+    RequiresAnyGroups=[[VISITED, INVITED]])
 
 
 # --- Epilogue: the late commit (R2-6) and paragraphs on her registered endings ------------------------------------------
@@ -543,7 +548,7 @@ MIRROR_PARAGRAPHS = (
 
 SCENES.append(scene("vellexia.trickster.epilogue.commit", "Kept waiting", "Epilogue", 5, "", [
     nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}
-{n}The terms she named that night were hers. The Commander agreed to them, which she found almost as surprising.{/n}''',
+{n}She drew the Commander away from the other guests before anyone else could claim the evening, into a room whose furniture watched, and by morning she had invented several excellent reasons for demanding another visit. The Commander came back for every one of them, which she found almost as surprising as being kept waiting.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS)],
     requires=(LATE_COMMITTED,), forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept"),
     last=99, Relationship="vellexia"))
@@ -576,6 +581,11 @@ REACTIONS = [
     reaction("Daeran", "vellexia.trickster.reaction.daeran_likeness", (DIMINISHED,),
              '''"She came out of a painting with unfinished hands, and the first thing she did was ask for a better painter. My dear, that is not a demon. That is an aristocrat."''',
              answer_list=DAERAN_HUB, forbids=DAERAN_GONE, chapter=5, last=5, delay=24, entry='"About Lady Vellexia..."'),
+    # Q11: the night's aftermath (Directive 12): Daeran sees the bruise. Never on friendship or the kept mirror.
+    reaction("Daeran", "vellexia.trickster.reaction.daeran_night", (NIGHT_KEPT,),
+             '''{n}Daeran's eyes go to your scarf, and stay there, and he smiles the way a man smiles at a rival's bill.{/n} "Lady Vellexia came to Drezen, then. Through a siege, for one night. The sentries are still arguing about the dress." {n}He tugs the scarf an inch lower with one finger, inspects the bruise, and lets it fall back.{/n} "I have collected every rumour about her for twenty years, and in none of them does she make a house call. Do keep breathing, Commander. She hates to lose a piece before she has finished with it."''',
+             answer_list=DAERAN_HUB, forbids=(*DAERAN_GONE, KEPT, "vellexia.farewell_friends", "vellexia.closed"), chapter=5, last=5,
+             delay=6, entry='"About Lady Vellexia..."'),
     reaction("Daeran", "vellexia.trickster.reaction.daeran_invitation", (ENTRY,),
              '''"An invitation from Lady Vellexia? People have died for less. Then they were upholstered."''',
              answer_list=DAERAN_HUB, forbids=DAERAN_GONE, chapter=5, last=5, delay=24, entry='"About Lady Vellexia..."'),
@@ -647,6 +657,7 @@ def integrate(payload):
                          ("vellexia.the_cover_before_the_battle", "vellexia.private_kept")):
         s = _scene(by_id, id)
         s["Requires"] = [previous]
+        s.pop("RequiresAnyGroups", None)   # Q11: the native-ending group is implied by the predecessor (or by a return)
         s["ForbidOverrides"] = dict(FO)
     _scene(by_id, "vellexia.the_voice_after_the_abyss")["ForbidOverrides"] = dict(FO)
 
@@ -658,7 +669,10 @@ def integrate(payload):
     _forbid(_scene(by_id, "vellexia.ending_hostility"), "vellexia.spared", RETURNED)
     for name in ORDINARY_ENDINGS:
         s = _scene(by_id, "vellexia.ending_" + name)
-        s["ForbidOverrides"] = dict(FO)
+        # Q11: a Commander who came back (the native punchline, Last Call) is not mourned and keeps the ordinary ending.
+        s["ForbidOverrides"] = ({**FO, "sacrifice": "trickster.commander_back"} if "sacrifice" in s["Forbids"] else dict(FO))
+        if name == "sacrifice":
+            _forbid(s, "trickster.commander_back")
         _forbid(s, KEPT)
         _paragraphs(s, TRICKSTER_PARAGRAPHS)
     _forbid(_scene(by_id, "vellexia.ending_interrupted"), LATE_COMMITTED)

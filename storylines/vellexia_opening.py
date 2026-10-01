@@ -57,7 +57,7 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 "She did."
 "Then she has not wasted your time."
 {n}Vellexia's smile sharpens.{/n}
-"Her advice is hers to give. She has not offered you to me, and I have not commissioned her to arrange your gratitude. Do remember that if you are tempted to blame her for enjoying yourself."
+"Jerribeth has excellent taste in dangerous company. Do try to justify her recommendation. I should hate to tell her she wasted a warning on someone who bores me."
 "I can answer for myself."
 "A claim worth testing. Let us begin with something small enough to survive the test."
 {n}She rests one finger on the back of the frame.{/n}''', c('"Tell me about the promise."', "terms"), portrait="VellexiaManorSpeaker"),
@@ -96,9 +96,9 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 "You would be the audience."
 "Flattery already? We have barely begun."
 {n}She takes the bracelet from the table, then thinks better of putting it on.{/n}
-"Very well. If you discover how it disappoints me, you may choose one question I must answer plainly. If you fail, I choose the question. No souls, no forfeited companions, no tedious promises of obedience. An answer."
-"Either of us may refuse the question and admit defeat."
-"Oh, keep a little courage."
+"Very well. Find the flaw, and I shall answer one question plainly. Fail, and I shall ask mine, and you will answer it. Do make it an interesting failure."
+"And if I would rather lose than answer?"
+"Then you will have lost twice, darling, and I shall know which question frightened you. Keep a little courage."
 "That is my wager."
 {n}Her gaze holds yours long enough for the smile to become a decision.{/n}
 "Accepted. I shall ask the artist to explain his triumph. He is waiting nearby. Join me again when he has finished, if I have not ceased believing he has one."
@@ -112,7 +112,7 @@ s("second_painter", "A seam in the surprise", '"Has your artist explained the po
 "What did you say?"
 "That I was considering a vulgar mind's opinion. Yours, specifically. He became much more accommodating."
 {n}The picture lies face down. A small brass key rests across its back.{/n}
-"He gave permission to open the frame. He will return for the balance or the picture. You will be pleased to hear that he departed with all the parts he arrived with. I considered mentioning it in his receipt."
+"He surrendered the key. I found that much wiser than his explanation. He will return for the balance or the picture. Astonishingly, he left with all his fingers; I considered mentioning it in his receipt."
 "You sound disappointed."
 "I am waiting to discover whether his picture is more ingenious than his excuses."''',
         c('[Open the back and examine the enchantment.]', "work"),
@@ -141,7 +141,7 @@ s("second_painter", "A seam in the surprise", '"Has your artist explained the po
 {n}You take your hand away. With her help, you lift the open frame upright and look around its edge. The light across the painted surface recedes slowly. The older panel has become visible through the newer painting, overlapping a mouth with a window and a hand with an empty chair.{/n}
 "I thought that controlled the image."
 "It did. You controlled it very badly."
-{n}She releases your wrist. There is no tenderness in the correction, but she leaves you room to examine what happened.{/n}
+{n}She releases your wrist and watches the next movement of your fingers with undisguised suspicion.{/n}
 "We will ask him to separate the workings. In front of us. Your mistake has made his economy rather conspicuous. That may prove useful even if your expertise does not."''', c('[Replace the back without touching another wire.]', "missed_end")),
     n("ask", "Vellexia", '''"You decline to be impressive?"
 "I decline to damage something merely to avoid asking a question. He knows how he assembled it. Let him show us."
@@ -219,8 +219,8 @@ s("price_of_novelty", "The artist's second account", '"What did the artist admit
 {n}She studies the picture, then you.{/n}
 "But you have been entertaining, and I would like your preference before I give mine. Keep the disappointing object and learn what it can do, or enjoy the cleaner pleasure of sending it away?"
 "Will my answer decide his safety?"
-"No. He may leave either way. He will lose money or prestige. I have been extremely clear about which pleasures I am buying this afternoon."
-{n}Her tone makes the limitation sound like extravagance, not contrition.{/n}''',
+"No. He is worth considerably more alive, to hear what I tell his next patron about him. How fortunate for him."
+{n}Her tone makes his survival sound like a whim she has not yet tired of.{/n}''',
         c('"Keep it, with the account corrected. I want to see what the older work was trying to do."', "keep"),
         c('"Return it. If he wants you as a patron, let him bring something he can describe honestly."', "return")),
     n("keep", "Vellexia", '''"Curiosity defeats indignation. I approve, though I would have enjoyed a little more indignation first."
@@ -278,7 +278,7 @@ s("two_observers", "The view from the other chair", '"What do you intend to try 
 "You want to be observed without becoming predictable."
 {n}Her fingers stop moving.{/n}
 "That sounds like someone who has visited. I dislike it considerably less than I expected. Now let me try you."
-{n}She draws her chair nearer, slowly enough for you to decide whether to move your own.{/n}''', c('[Wait for her account of you.]', "question")),
+{n}She draws her chair nearer, watching whether your attention follows her or stays on the door.{/n}''', c('[Wait for her account of you.]', "question")),
     n("question", "Vellexia", '''"You watch the door. You watch my hands. You also keep coming back. I could flatter myself that the third observation explains the first two, but I would rather hear your version."
 "I know you are dangerous."
 "Everyone knows that. Most people make a career of pretending they discovered it in private."
@@ -298,7 +298,7 @@ s("two_observers", "The view from the other chair", '"What do you intend to try 
 "We could spend an hour finding out. If it fails, you will have a very exclusive disappointment."
 "And you?"
 "I shall blame you. Briefly. Then I shall decide whether to invite you again."
-{n}She leaves the invitation there without dressing it as a promise.{/n}''', c('"An hour, then. No audience."', flags=("vellexia.observers_kept", "vellexia.private_hour"))),
+{n}She smiles as though the hour is already hers.{/n}''', c('"An hour, then. No audience."', flags=("vellexia.observers_kept", "vellexia.private_hour"))),
     n("danger", "Vellexia", '''"How greedy. You want the edge of the knife and the privilege of examining the handle."
 "I prefer knowing who is holding it."
 "And if I put it down?"
@@ -319,12 +319,12 @@ s("unadvertised_hour", "An hour with no witnesses", '"You offered an hour withou
 "Should I have been late?"
 "No. Then I would have resented the waiting. You see what a difficult undertaking you have chosen."
 {n}There are two cups on a narrow table. She pours into her own and drinks before offering you the other.{/n}
-"You may leave it. I would rather have your attention than an argument about hospitality."
-{n}She takes the chair farthest from the door, leaving the choice of the other to you.{/n}''', c('[Sit and give her the hour you promised.]', "opening"), c('"I need to postpone. I will ask again when I can keep the appointment."', abort=True)),
+"Drink, or spend the hour wondering what you refused. I should enjoy either expression."
+{n}She takes the chair farthest from the door, which leaves you the one with your back to it.{/n}''', c('[Sit and give her the hour you promised.]', "opening"), c('"I need to postpone. I will ask again when I can keep the appointment."', abort=True)),
     n("opening", "Narrator", '''{n}For a moment neither of you speaks. From elsewhere in the manor comes the distant sound of a door closing. Vellexia glances toward it, then deliberately turns back to you.{/n}''',
         c('"No audience. Are you already missing them?"', "private", requires=("vellexia.private_hour",)),
         c('"I have brought a story. It may disappoint your expectations."', "candid", requires=("vellexia.candid_hour",))),
-    n("private", "Vellexia", '''"I was wondering what they would invent to explain the closed door. Then I remembered that wondering was precisely the habit you had asked me to interrupt."
+    n("private", "Vellexia", '''"I was wondering what they would invent about us. I do hope it is something worth denying."
 "The door is open."
 "A detail that will trouble nobody determined to gossip."
 {n}She places the book on the table. You can see writing crowded into the margins, some lines crossed out so fiercely that the paper has torn.{/n}
@@ -375,26 +375,26 @@ s("unadvertised_hour", "An hour with no witnesses", '"You offered an hour withou
 "You have been watching me notice it."
 "Yes. I prefer to know whether my company is attentive."
 {n}Her knee touches yours. She leaves it there, then waits.{/n}
-"Tell me what you intend before I choose a pleasing interpretation. I could invent a splendid declaration from very little evidence. It would be unfair to expect you to live up to it."
+"You keep looking at my mouth. Shall I flatter myself, or have you discovered something more amusing to say? I could invent a splendid declaration for you from very little evidence."
 "Since when has that stopped you?"
-"Since I became curious about your actual answer. Do not make me regret the experiment."''',
-        c('"I am attracted to you. I would like another hour as someone courting you, if you want that too."', "court"),
-        c('"I want another hour, but I am not ready to decide how close I want us to become."', "slow"),
+"Since I became curious what you would say before I put the words in your mouth. Do not make me regret the experiment."''',
+        c('"I want you. And I intend to make you want another evening."', "court"),
+        c('"Another hour. You have not quite tempted me into the rest."', "slow"),
         c('"I enjoy your company. I want to keep this as conversation."', "company")),
-    n("court", "Vellexia", '''"Courting. What an earnest word to bring into this house."
-{n}She touches the back of your hand with two fingers, slowly enough for you to draw away.{/n}
-"I want another hour. I want to discover whether you can make that word sound less like a petition when nobody is listening. I will not promise to become a person who wants every hour after it."
+    n("court", "Vellexia", '''"How very direct. What an earnest thing to bring into this house."
+{n}Two fingers settle on the back of your hand; her smile sharpens as she feels your pulse jump under them.{/n}
+"Another hour, then. We shall see whether you can make me begrudge its ending. I have begrudged very few."
 "I asked for another."
-"Then I accept. Ask for the hour when you are ready, and I shall decide whether to keep you waiting."
+"And you shall have it. Come back soon. I have begun wondering what I shall do with you, and I dislike wondering for long."
 {n}Her fingers slip between yours for a moment before she withdraws them.{/n}
 "The answer is probably no. How indiscreet of me to admit it."''', c('"I would rather spend the time with you than outside the door."', flags=("vellexia.hour_kept", "vellexia.courting"))),
     n("slow", "Vellexia", '''"You have an admirable talent for approaching a precipice and asking whether there is a bench."
 "Is there?"
-{n}She laughs and moves her knee away, giving the space back without pretending she had not offered it.{/n}
+{n}She withdraws her knee with a little laugh, as though she has thought of a better temptation.{/n}
 "For another hour, yes. I am curious enough to allow an unfinished answer. Do not mistake that for limitless patience."
 "I don't."
-"Good. Ask when you are ready. Bring the same courage you used to disappoint me politely. We may discover a better occupation for it."
-{n}She picks up her cup. The conversation returns to the play, but she leaves the marked page closed.{/n}''', c('"Another hour, without pretending I have decided more."', flags=("vellexia.hour_kept", "vellexia.slow"))),
+"Good. Bring that admirable nerve back with you. You used it to disappoint me politely; I have other uses for it."
+{n}She picks up her cup. The conversation returns to the play, but she leaves the marked page closed.{/n}''', c('"Another hour. Surprise me."', flags=("vellexia.hour_kept", "vellexia.slow"))),
     n("company", "Vellexia", '''{n}Her expression stills. Then she draws back just far enough to make the new distance unmistakable.{/n}
 "A less flattering answer than I had prepared for. How economical of you to surprise me without purchasing anything."
 "I would rather be clear."
@@ -419,19 +419,19 @@ s("a_question_kept", "The question she chooses", '"You had another hour for me."
 "Even if you helped find the answer?"
 "Especially then. I prefer my wagers to produce something worth having. I have had your company and an unusually competent disagreement."
 {n}She leans back, apparently at ease.{/n}
-"Ask. I retain the right to refuse and admit defeat, as you so courageously insisted. I am beginning to appreciate that clause."
-"What do you want from me that I could actually choose to give?"
+"Ask. I should like to discover which question you think worth making me lose. Careful: I remember every question anyone has ever been foolish enough to ask me."
+"What would you most enjoy taking from me?"
 {n}Her ease changes. Her eyes stay on you, and something behind them has started to count.{/n}
 "That is a much better question than whether I have ever loved someone. I had prepared a beautiful lie for that one."''', c('[Wait for the answer she owes.]', "answer")),
     n("unowed", "Vellexia", '''"No. You came back without an enforceable return on your time. That was either generosity or a failure to read the market."
 "Perhaps I enjoyed the company."
 "An extravagant possibility."
 {n}She chooses a piece of fruit, considers it, then puts it back.{/n}
-"I would like to ask what you expect next. I find that I am more interested in whether you will answer honestly than in whether I will like the answer. An unfamiliar arrangement."
-"Then let me ask first. What do you want from me that I could actually choose to give?"
+"I have begun wondering what you expect from me. I suspect I could make you regret almost any answer, and I find I would rather hear it first."
+"Then let me ask first. What would you most enjoy taking from me?"
 {n}She looks at you with a stillness that briefly makes the room seem smaller.{/n}
 "You do have a talent for making a modest afternoon expensive."''', c('[Let her decide how plainly to answer.]', "answer")),
-    n("answer", "Vellexia", '''"I want your attention while it is still yours to withdraw. I want you to tell me when I have bored you, preferably in words sharp enough to make me consider the accusation. I want to discover something about you I did not arrange in advance."
+    n("answer", "Vellexia", '''"Your attention, darling. Especially the part you meant to spend elsewhere. Your insults, when I bore you, sharp enough to make me consider them. And one surprise you have been foolish enough to keep from me, which I intend to take."
 "And when that stops being new?"
 "Then I may become unpleasant. I have been unpleasant before."
 {n}She does not soften the admission with laughter.{/n}
@@ -445,14 +445,14 @@ s("a_question_kept", "The question she chooses", '"You had another hour for me."
         c('"A conversation that leaves the next answer open."', "slow", requires=("vellexia.slow",)),
         c('"A story you would tell someone whose company you want again."', "company", requires=("vellexia.company",))),
     n("kiss_offer", "Vellexia", '''"I do."
-{n}The answer comes without ornament. She puts a hand against your collar, pauses, and lets you close the remaining distance.{/n}
+{n}The answer comes without ornament. Her hand catches your collar and draws you into a deliberate, possessive kiss.{/n}
 {n}Her kiss is warm and deliberate. The pause afterward is more unsettling: she watches your face without speaking, close enough that you can feel her breath when she laughs softly.{/n}
-"There. I resisted improving the occasion with a prophecy or a threat. I hope you appreciate the restraint."
+"There. You have made me curious about a second one. An excellent beginning, and a dangerous one for you."
 "I noticed the kiss."
 "Then I chose well."
-{n}She kisses you again before drawing back. Her hand remains at your collar until you touch it, then opens easily against yours.{/n}
+{n}She kisses you again before drawing back. Her hand stays at your collar, holding, as though she has decided you are hers to keep there.{/n}
 "Stay for the hour. We need not spend it predicting what I shall want tomorrow."
-{n}You remain beside her. The next conversation begins slowly, with the fruit she had been too distracted to taste.{/n}''', c('[Stay for the hour you both chose.]', flags=("vellexia.opening_kept", "vellexia.first_kiss"))),
+{n}You remain beside her. The next conversation begins slowly, with the fruit she had been too distracted to taste.{/n}''', c('[Stay close and steal another kiss.]', flags=("vellexia.opening_kept", "vellexia.first_kiss"))),
     n("close", "Vellexia", '''"Then come closer. You have been negotiating from a very respectful distance."
 {n}She makes room beside her. When you sit, her shoulder rests against yours and her fingers settle lightly around your wrist.{/n}
 "This is an unusual way to spend an afternoon here."
@@ -469,14 +469,14 @@ s("a_question_kept", "The question she chooses", '"You had another hour for me."
 "Would an opinion about a person do?"
 "If the person is me, choose a better disguise."
 {n}You begin with an argument you once thought worth winning. She asks what losing would have cost. The question takes the conversation somewhere you had not intended, and she follows with evident interest.{/n}
-{n}When the hour ends, she does not ask for a decision.{/n}
-"You may return," she says. "With another unfinished thought, if necessary. I reserve the right to finish an argument."''', c('[Accept the invitation without adding a larger promise.]', flags=("vellexia.opening_kept",))),
+{n}When the hour ends, she keeps the best part of her own story back for your next visit, and tells you so.{/n}
+"You may return," she says. "With another unfinished thought, if necessary. I reserve the right to finish an argument."''', c('[Promise another visit.]', flags=("vellexia.opening_kept",))),
     n("company", "Vellexia", '''"A story for someone whose company I want again. You make conversation sound like a dangerous commission."
 {n}She considers, then begins an account of a noble who paid to have his enemy's name removed from every program at a celebration. The enemy purchased all the empty spaces and left them blank. By midnight, nobody was talking about anyone else.{/n}
 "Which one were you helping?"
 "At different points, both. I was younger. I considered that an efficient use of an evening."
 "And now?"
-"Now I might have purchased one empty space for myself. Knowing when to leave a thing alone can be wonderfully ostentatious."
+"Now I would purchase the whole program and let them quarrel over the scraps. Every blank space, and my name in none of them. Nobody would talk of anything else for a year."
 {n}She looks toward the cleared table and smiles at a thought she does not share.{/n}
 "Come back if you have a better example. I dislike surrendering the last word, but I will occasionally lend it to someone who knows what to do with it."''', c('"I will try to make good use of the loan."', flags=("vellexia.opening_kept",))),
 ], requires=("vellexia.hour_kept",))

@@ -32,7 +32,10 @@ internal static class VellexiaCampaignTests
         }.Select(g => g.Select(f => "vellexia." + f).ToArray()).ToArray();
 
         // Native dated quest progression is a fixture input between the played local and remote visits.
-        // Every authored prerequisite comes from an actual earlier player choice.
+        // Every authored prerequisite comes from an actual earlier player choice. Q11: each native ending of the affair
+        // (the bored dismissal Cue_0076, the mercy Cue_0098 after the final fight, the passionate farewell Cue_0106) is played.
+        var nativeEndings = new[] { new[] { "vellexia.dismissed_native" }, new[] { "vellexia.spared", "vellexia.final_fight" }, new[] { "vellexia.farewell" } };
+        foreach (var nativeEnding in nativeEndings)
         foreach (bool trickster in new[] { false, true })
         foreach (bool giftSeen in new[] { false, true })
         {
@@ -51,12 +54,14 @@ internal static class VellexiaCampaignTests
                     ready.Hour += scene.DelayHours + 24;
                     if (index == 8)
                     {
-                        ready.Flags.UnionWith(new[] { "vellexia.arena_invited", "vellexia.native_finished", "vellexia.dismissed_native" });
+                        ready.Flags.UnionWith(new[] { "vellexia.arena_invited", "vellexia.native_finished" });
+                        ready.Flags.UnionWith(nativeEnding);
+                        Rules.Complete(story, ready);   // fight_survived (spared OR returned) lifts the final fight
                         if (giftSeen) ready.Flags.Add("vellexia.coin_given");
                         ready.Area = nexus;
                         ready.AvailableContacts.Clear();
                     }
-                    if (index == 14) { ready.Chapter = 5; ready.Area = drezen; }
+                    if (index == 9) { ready.Chapter = 5; ready.Area = drezen; }   // Q11: only the second invitation is a Chapter 4 call
                     check(Rules.Available(story, scene, ready), "Vellexia earned predecessor cannot enter " + scene.Id);
                     if (index == 6) localReady.Add(Program.Copy(ready));
                     if (index >= 8) remoteReady.Add(Program.Copy(ready));
@@ -128,20 +133,29 @@ internal static class VellexiaCampaignTests
             var scene = chain.Skip(8).First(s => Rules.Available(story, s, ready));
             foreach (var flag in new[] { "vellexia.dead", "vellexia.early_fight", "vellexia.final_fight", "vellexia.mirrored", "vellexia.native_coercion", "inhuman", "vellexia.closed" })
             {
+                if (flag == "vellexia.final_fight" && ready.Has("vellexia.spared")) continue;   // the mercy follows the final fight
                 var blocked = Program.Copy(ready); blocked.Flags.Add(flag);
                 check(!Rules.Available(story, scene, blocked), "Vellexia remote contact bypasses native/history blocker: " + flag);
             }
             // The two evenings after the return call Require only their predecessor beat (a Trickster return reaches them
             // without the native dismissal); the predecessor itself is gated on the dismissal, so the old path is unchanged.
-            var gates = scene.Requires.Contains("vellexia.dismissed_native")
-                ? new[] { "vellexia.dismissed_native", "vellexia.native_finished" } : scene.Requires;
-            check(scene.Requires.Contains("vellexia.dismissed_native") || scene.Requires.SequenceEqual(new[] { "vellexia.return_kept" })
-                  || scene.Requires.SequenceEqual(new[] { "vellexia.private_kept" }), "Vellexia remote conversation lost its native dismissal: " + scene.Id);
-            foreach (var flag in gates)
+            var ended = new[] { "vellexia.dismissed_native", "vellexia.spared", "vellexia.farewell" };
+            bool nativeGated = scene.RequiresAnyGroups.Any(g => ended.All(g.Contains));
+            check(nativeGated && scene.Requires.Contains("vellexia.native_finished") || scene.Requires.SequenceEqual(new[] { "vellexia.return_kept" })
+                  || scene.Requires.SequenceEqual(new[] { "vellexia.private_kept" }), "Vellexia remote conversation lost its native ending: " + scene.Id);
+            if (nativeGated)
             {
-                var missing = Program.Copy(ready); missing.Flags.Remove(flag);
-                check(!Rules.Available(story, scene, missing), "Vellexia remote conversation assumes unfinished native dismissal: " + flag);
+                var unended = Program.Copy(ready); unended.Flags.ExceptWith(ended);
+                check(!Rules.Available(story, scene, unended), "Vellexia remote conversation assumes an unfinished native affair.");
+                var unfinished = Program.Copy(ready); unfinished.Flags.Remove("vellexia.native_finished");
+                check(!Rules.Available(story, scene, unfinished), "Vellexia remote conversation assumes an unfinished native quest.");
             }
+            else
+                foreach (var flag in scene.Requires)
+                {
+                    var missing = Program.Copy(ready); missing.Flags.Remove(flag);
+                    check(!Rules.Available(story, scene, missing), "Vellexia evening skips its predecessor: " + flag);
+                }
             var absent = Program.Copy(ready); absent.Area = "missing-area";
             check(!Rules.Available(story, scene, absent), "Vellexia remote entry has no location constraint.");
         }
@@ -154,7 +168,7 @@ internal static class VellexiaCampaignTests
             check(result[0].Id == "vellexia.ending_" + suffix, "Vellexia ending contradicts actual final choice.");
         }
         var special = new[] { ("vellexia.dead", "dead"), ("vellexia.mirrored", "mirror"), ("vellexia.native_coercion", "coercion"), ("vellexia.final_fight", "hostility"), ("vellexia.early_fight", "hostility"), ("inhuman", "changed"), ("ascended", "ascent"), ("sacrifice", "sacrifice") };
-        foreach (var state in latePartial.Where(s => !s.Has("vellexia.closed")))
+        foreach (var state in latePartial.Where(s => !s.Has("vellexia.closed") && s.Has("vellexia.dismissed_native")))
         {
             check(Ending(state).Count() == 1, "Vellexia played partial history lacks a truthful outcome.");
             foreach (var (flag, suffix) in special)
