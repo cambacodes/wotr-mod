@@ -119,8 +119,10 @@ internal static class HepzamirahTricksterTests
         check(Choice(body, "terms", 1).Crusade?.Resource == "Finances" && Choice(body, "terms", 1).Crusade!.Amount == -1000
               && Choice(body, "terms", 2).Alignment?.Direction == "Evil",
             "Mutasafen's coin and threat cost nothing.");
-        check(Choice(body, "rename", 0).Set.Contains(P + "returned") && Choice(body, "rename", 0).Mythic == "PlayerIsTrickster",
-            "The rename does not return her.");
+        check(Choice(body, "rename", 0).Set.Contains(P + "returned"), "The rename does not return her.");
+        // Q8 (Sol HOW): the payoff of a corner already stolen is selectable without the live path (no mythic answer gate).
+        check(body.Nodes.SelectMany(n => n.Choices).All(c => c.Mythic == null),
+            "The lodger's payoff answers need the live path, so a lost path strands her in the chair.");
         foreach (var s in yard)
             check(s.ContactUnit == Body && s.Areas.SequenceEqual(new[] { Drezen }) && !Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 5 })
                   && s.Forbids.Contains("hepzamirah.closed"),
@@ -256,6 +258,14 @@ internal static class HepzamirahTricksterTests
         check(Rules.Available(story, S(P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "courier_seen")),
             "The epilogue commit does not carry a world where the terms were never heard.");
 
+        // Q8 (Sol COX): a Last Call bottle survivor (commander_back without cheated_death) keeps her ending pages.
+        var bottle = World(story, 6, "trickster.ever", P + "courier_seen", "sacrifice", "trickster.commander_back");
+        check(Rules.Available(story, S(P + "epilogue.commit"), bottle)
+              && Rules.Available(story, S(P + "epilogue.leavable"), World(story, 6, "trickster.ever", P + "courier_seen", "hepzamirah.committed", "sacrifice", "trickster.commander_back"))
+              && !Rules.Available(story, S(P + "epilogue.leavable_on_record"), World(story, 6, "trickster.ever", "hepzamirah.committed", "sacrifice", "trickster.commander_back"))
+              && Rules.Available(story, S(P + "epilogue.leavable_on_record"), World(story, 6, "trickster.ever", "hepzamirah.committed", "sacrifice")),
+            "A surviving Commander loses Hepzamirah's ending, or a dead one keeps it.");
+
         // Trk_Hepzamirah_PathFailed: a new steal needs the live path; the payoff survives it.
         var failed = WorldIn(story, Labyrinth, 5, "trickster.was", "trickster.ever", "trickster.failed", "hepzamirah.dead", "hepzamirah.ghost_dispersed");
         check(!Any(failed, second, first, late), "Trk_Hepzamirah_PathFailed: a steal opens without the live path.");
@@ -280,11 +290,27 @@ internal static class HepzamirahTricksterTests
 
         // Every courtship beat is reachable on its own path, in order.
         var armed = World(story, 5, "trickster.ever", P + "primed", P + "returned", F + "first_morning", F + "the_pick", P + "armed", "ember.present");
-        foreach (var id in new[] { "chaplains", "mirror_open", "rent", "sister", "the_corner", "drill", "the_market", "the_nexus", "the_song", "flowers" })
+        foreach (var id in new[] { "chaplains", "mirror_open", "rent", "sister", "the_corner", "drill", "the_market", "the_nexus", "flowers" })
         {
             if (id == "mirror_open") continue;
             check(Rules.Available(story, S(F + id), Later(story, armed, 24)), "A courtship beat does not open after the pick: " + id);
         }
+        // Q8 (Sol INT): the garrison's cot verse waits for the cot.
+        check(!Rules.Available(story, S(F + "the_song"), Later(story, armed, 24)) && S(F + "the_song").Requires.Contains(B + "morning"),
+            "The barracks sing about the lovers' cot before there is one.");
+        // Q8 (Sol INT): three nights in the cells are enforced; the yard waits for the release at 72 h.
+        var chap = S(F + "chaplains");
+        var jailed = Play(chap, Later(story, armed, 24)).First(r => r.Has(P + "cost.confined"));
+        var release = S(F + "released");
+        foreach (var h in new[] { 0, 36, 71 })
+            check(!yard.Where(s => s != release).Any(s => Rules.Available(story, s, Later(story, jailed, h))) && !Rules.Available(story, release, Later(story, jailed, h)),
+                "A yard beat opens while she is in the cells (hour " + h + ").");
+        var freed = Later(story, jailed, 72);
+        check(Rules.Available(story, release, freed), "Her release does not come at 72 hours.");
+        var out72 = Play(release, freed).First();
+        check(out72.Has(F + "released") && Rules.Available(story, pick, Later(story, out72, 24)) == false
+              && Rules.Available(story, S(F + "the_market"), Later(story, out72, 24)),
+            "The yard does not reopen after her release.");
         var mirrored = Later(story, armed, 24);
         mirrored.Flags.Add(F + "mirror");
         check(Rules.Available(story, S(F + "the_horn"), Later(story, mirrored, 24)) && Rules.Available(story, S(F + "unsent"), Later(story, mirrored, 24)),
@@ -299,10 +325,13 @@ internal static class HepzamirahTricksterTests
             check(Rules.Available(story, S(B + id), Later(story, nights, 48)), "A post-commit beat does not open after the morning: " + id);
         var hunted = Later(story, nights, 48);
         hunted.Flags.Add(B + "the_hunt");
-        check(S(B + "the_eye").DelayHours == 48 && Rules.Available(story, S(B + "the_eye"), Later(story, hunted, 48))
+        hunted.Times[B + "the_hunt"] = hunted.Hour;
+        // Q8 (Sol BEL): two days out, two days back, the work between; she comes home on the fifth day.
+        check(S(B + "the_eye").DelayHours == 120 && Rules.Available(story, S(B + "the_eye"), Later(story, hunted, 120))
+              && !Rules.Available(story, S(B + "the_eye"), Later(story, hunted, 119))
               && !Rules.Available(story, S(B + "the_eye"), Later(story, nights, 48)),
             "What she brings back does not wait for the hunt.");
-        var eye = Play(S(B + "the_eye"), Later(story, hunted, 48));
+        var eye = Play(S(B + "the_eye"), Later(story, hunted, 120));
         check(eye.Any(r => r.Has(P + "eye_kept")) && eye.Any(r => r.Has(P + "eye_burned")), "The eye cannot be kept or burned.");
         check(Rules.Available(story, S(B + "eve"), Later(story, eye.First(), 24)), "The eve does not follow the eye.");
         var hunt = S(B + "the_hunt");

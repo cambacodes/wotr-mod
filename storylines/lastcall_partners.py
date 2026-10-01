@@ -438,7 +438,8 @@ partner("hepzamirah", "hepzamirah", "hepzamirah.committed", "hepzamirah.closed",
           [H + "cost.vial_forged"], [H + "cost.baphomet_grudge"]],
     call=call('''[Call in the rent] "Rent's due: a front-row seat when you kill your father. I'll need to be alive for it."''',
         '''{n}A long way off, in a body grown for her in a laboratory she will not name, Baphomet's favourite daughter laughs, and the sound carries.{/n}''',
-        (PILLAR_CHOICE, (PILLAR,), (), ())))
+        (PILLAR_CHOICE, (PILLAR,), (), ())),
+    page_commit_groups=[["hepzamirah.committed"], [H + "late_committed"]])   # Q8 (Sol COX): the late yes reaches her coda (additive)
 
 E = "eritrice.trickster."
 partner("eritrice", "eritrice", "eritrice.committed", "eritrice.closed", "Motion Carried",
