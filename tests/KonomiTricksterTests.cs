@@ -281,7 +281,7 @@ internal static class KonomiTricksterTests
         var roomOutcomes = Program.Walk(rooms, Later(story, received[0], 72), (page, _) => roomPages.Add(page));
         var supperKept = roomOutcomes.Where(r => r.Has("konomi.trickster.rooms_kept")).ToList();
         bool LateCommitted(Snapshot r) => World(story, 5, r.Flags.ToArray()).Has("konomi.trickster.late_committed");
-        check(supperKept.Count > 0 && supperKept.All(r => LateCommitted(r) && !r.Has("konomi.lovers"))
+        check(supperKept.Count > 0 && supperKept.All(r => LateCommitted(r) && r.Has("konomi.lovers"))
               && roomOutcomes.Any(r => r.Has("konomi.trickster.envoy") && !LateCommitted(r))
               && roomPages.Contains("accept") && roomPages.Contains("morning"),
             "Trk_Konomi_NeverArrived: her terms give no page, business only gives one, or the accepted terms skip the night.");
@@ -325,6 +325,12 @@ internal static class KonomiTricksterTests
         // Sol r4 INT: the ordinary farewell does not bar the dismissal rescue.
         var farewell = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.farewell");
         check(Rules.Available(story, late, farewell), "A completed farewell blocks the dismissal rescue.");
+        // Q12 (Sol INT): nor its courtship continuation, once her terms are settled.
+        var farewellSettled = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.farewell",
+                                    "konomi.trickster.recessed", "konomi.trickster.terms_settled", "konomi.trickster.cost.late", "konomi.trickster.back_from_the_road");
+        check(Rules.Available(story, priv, Later(story, farewellSettled, 72)) && Rules.Available(story, supper, Later(story, farewellSettled, 72))
+              && S("konomi.trickster.dismissed.a_season").Forbids.All(f => f != "konomi.farewell"),
+            "A completed farewell blocks the courtship after the dismissal rescue.");
         var committedLate = Program.Copy(lateCommit); committedLate.Flags.Add("konomi.committed");
         check(!Rules.Available(story, epCommit, committedLate), "The late commit replays after a commit.");
         var soft = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.declined");

@@ -257,7 +257,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
 "Nerosyan will hear that I was detained by the Commander on urgent business." {n}She blots the line.{/n} "Entirely accurate."
 {n}She does not look up when you come to stand behind her. She does lean back, just enough.{/n}''',
       c('"Leave the one with the heel print. I\'ll answer it myself."')),
-], requires=("trickster.ever", SETTLED), forbids=("konomi.committed", DECLINED, ENVOY), delay=72)
+], requires=("trickster.ever", SETTLED), forbids=("konomi.committed", DECLINED, ENVOY), delay=72, own=DEVICE_OWN)
 
 physical("konomi.trickster.dismissed.supper", "Supper, unminuted", '"Supper. No clerk."', [
     k("start", '''{n}She has chosen the room: the small one above the chancery, with one table, two chairs and no bell to call a secretary. The dishes are Nerosyan and the wine is not, and she tastes both before you do, out of habit rather than suspicion.{/n}
@@ -283,7 +283,7 @@ physical("konomi.trickster.dismissed.supper", "Supper, unminuted", '"Supper. No 
       c('"When your ledger is closed, then."')),
     k("politics", '''"There. A Commander's answer, and a correct one." {n}She finishes her wine and sets the cup upside down on its saucer.{/n} "I shall take the chair if you offer it, and you shall ask me for nothing else. It is a better bargain for both of us. I shall try to be grateful."''',
       c('"Goodnight, Lady Konomi."')),
-], requires=("trickster.ever", SETTLED), forbids=("konomi.lovers", TESTED, "konomi.committed", DECLINED, ENVOY), delay=24)
+], requires=("trickster.ever", SETTLED), forbids=("konomi.lovers", TESTED, "konomi.committed", DECLINED, ENVOY), delay=24, own=DEVICE_OWN)
 
 physical("konomi.trickster.dismissed.a_season", "A season, abridged", '"You asked for a season."', [
     k("start", '''{n}Her ledger is open at a page headed, in her own hand, with nothing but a date. The date is today's.{/n}
@@ -310,7 +310,7 @@ physical("konomi.trickster.dismissed.a_season", "A season, abridged", '"You aske
 {n}She takes the fan off the page and closes the ledger over the date.{/n}
 "I will be at the council table, Commander, as your envoy. That is all I will be. I do not bargain twice for the same thing."''',
       c('"Understood."', flags=(ENVOY,))),
-], requires=("trickster.ever", SETTLED, DECLINED), forbids=("konomi.committed", ASKED_AGAIN, ENVOY), delay=168)
+], requires=("trickster.ever", SETTLED, DECLINED), forbids=("konomi.committed", ASKED_AGAIN, ENVOY), delay=168, own=DEVICE_OWN)
 
 
 # --- State dead_retained: recalled for consultations (F17) --------------------------------------------------------
@@ -450,7 +450,7 @@ letter("konomi.trickster.never_arrived.audience_letter", "Late for her own audie
 ROOMS_KEPT = "konomi.trickster.rooms_kept"
 physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"You sent for me, Lady Konomi?"', [
     k("start", '''{n}She has her ledger open on the desk and a second one, thinner, beside it. The thin one has your name on the cover in her court hand.{/n}
-"Your account, Commander. The journey. The reception I left, at the rate of a good reception. Three weeks of a stipend the capital stopped paying me on the strength of a register entry you arranged." {n}She turns it round with one finger.{/n} "And a line at the bottom I have not yet priced: one attaché, invited by her own post, by a Commander she had never met, to a city she had never wished to see. I do not know what that costs. I should like to find out."''',
+"Your account, Commander. The journey. The reception I left, at the rate of a good reception. The stipend the capital stopped paying me from the day of the register entry you arranged." {n}She turns it round with one finger.{/n} "And a line at the bottom I have not yet priced: one attaché, invited by her own post, by a Commander she had never met, to a city she had never wished to see. I do not know what that costs. I should like to find out."''',
       c('[Pay it as written] "Every line. Including the one you haven\'t priced."', "paid", crusade=("Finances", -150)),
       c('"Spoken like a true politician. Let\'s talk price."', "haggle"),
       c('"Not tonight, Lady Konomi."', abort=True)),
@@ -460,7 +460,7 @@ physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"Yo
     k("paid", '''"Every line." {n}She looks at the ink as if it might be forged.{/n} "Nobody in Mendev pays the first figure. You have either a great deal of money or a very poor sense of how to keep it." {n}She taps the last line with her fan.{/n} "That one I still have not priced."''',
       c("Continue", "terms")),
     k("terms", '''"Here are my terms for it." {n}She closes the thin ledger.{/n} "Supper. Here, at this desk, once a week, at your expense, until one of us loses an argument we both care about. You may not bring your advisers. I may not bring my correspondents. Whoever concedes first pays for the wine."
-"Those are terms, Commander, not a favour. Accept them or do not. I shall bill you either way."''',
+{n}She does not look away while she says the rest, which costs her something.{/n} "Since I came through your gate this city has looked at me as a clerical error with ears. I should like one person in it to look at me across a table as something else. That is my motive. Those are my terms."''',
       c('[Accept her terms] "Done. I\'ll bring the wine; I expect to pay for it."', "accept", flags=(ROOMS_KEPT,)),
       c('"Business only, Lady Konomi. The council table is enough."', "business", flags=(ENVOY,))),
     nar("accept", '''{n}"Then the first supper is tonight," she says, "and you are late for it."{/n}
@@ -469,8 +469,8 @@ physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"Yo
       c("Continue", "morning")),
     k("morning", '''{n}In the morning she is at the desk again, dressed, writing, with your coat over the back of her chair as if she had won it.{/n}
 "I have entered last night as a supper," she says, without looking up. "The wine is on your account. The rest is not for sale." {n}Her ears are pink to the tips.{/n} "Same time next week, Commander. Do not be late twice."''',
-      c('"Same time next week."')),
-    k("business", '''"Business only." {n}She opens the thin ledger again and writes one line in it, very neatly.{/n} "Then I shall be your envoy, Commander, and nothing you have not paid for. I bill by the hour. You will find it adds up."''',
+      c('"Same time next week."', flags=("konomi.lovers",))),
+    k("business", '''"Business only." {n}She opens the thin ledger again and writes one line in it, very neatly.{/n} "Then I shall be your envoy, Commander, and Nerosyan shall have my honest opinion of you every week, in cipher. You will not enjoy it."''',
       c('"I\'m sure it will."')),
 ], requires=("trickster.ever", RETURNED, ACCREDITED, "konomi.missed_appointment"),
    forbids=("konomi.lovers", "konomi.committed", ROOMS_KEPT, ENVOY, DECLINED, "konomi.presence.failed"), delay=72, chapters=(3, 5))
