@@ -228,8 +228,16 @@ internal static class DevarraTricksterTests
         // The watchtower: the climb follows the test; the bite only after the commit.
         check(Rules.Available(story, firstClimb, Later(story, tested, 24)) && !Rules.Available(story, firstClimb, hungry),
             "The first climb does not follow the test, or opens before it.");
-        check(!Rules.Available(story, firstBite, Later(story, ready, 100)) && Rules.Available(story, firstBite, Later(story, bitten, 24)),
-            "The first bite is not gated on the commit.");
+        var bittenClimbed = Program.Copy(bitten);
+        bittenClimbed.Flags.Add(T + "climbed");
+        check(!Rules.Available(story, firstBite, Later(story, ready, 100)) && !Rules.Available(story, firstBite, Later(story, bitten, 24))
+              && Rules.Available(story, firstBite, Later(story, bittenClimbed, 24)),
+            "The first bite is not gated on the commit and the first climb.");
+        // Q11: Nidalynn's vault theft is counted in Drezen, her Sanctum theft in the Sanctum.
+        var oneShort = S(T + "one_short");
+        check(oneShort.Nodes.Single(n => n.Id == "start").Choices[0].Forbids.Contains("nidalynn.trickster.eggs.vault")
+              && oneShort.Nodes.Single(n => n.Id == "start").Choices[1].Requires.Contains("nidalynn.trickster.eggs.vault"),
+            "The missing egg is counted in the Sanctum after a vault theft.");
         check(Reaches(bitten, T + "first_bite") && Reaches(Later(story, tested, 24), T + "climbed"),
             "The watchtower beats are not reachable.");
         foreach (var s in tower)
