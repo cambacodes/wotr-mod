@@ -105,13 +105,15 @@ internal static class DevarraTricksterTests
         check(leash.ReturnToList && leash.AnswerLists.SequenceEqual(new[] { "04d72f75c1e841747a55b780fccf37fe", "d1f609c764422a24994568d850c99958",
               "ab4a075bbc5d24048bf892697e75f2e3" }), "The leash is not on the golems' master lists (after the native password).");
         check(left.ReturnToList && left.AnswerLists.SequenceEqual(new[] { "b265afc1afe5a4241b1d5d42a4148e75" }), "The clutch is not left on the native egg list.");
-        foreach (var s in new[] { tithe }.Concat(tower))
+        // PP7: the Chapter 4 memory (wrong_sky) is the one tower beat not on his hub: she is on her ridge, the Commander in the Abyss.
+        foreach (var s in new[] { tithe }.Concat(tower.Where(t => t.Id != T + "wrong_sky")))
             check(s.AnswerLists.SequenceEqual(new[] { StHub }) && s.NativeReturnCue == StReturn && s.ContactUnit == null
                   && !Rules.IsRemote(s) && s.Forbids.Contains("storyteller.dead"),
                 "A Devarra beat is not on the Storyteller's hub, guarded by his death: " + s.Id);
         foreach (var s in tower)
             check(s.Forbids.Contains("devarra.closed"), "A watchtower beat plays after her hard no: " + s.Id);
-        var letters = story.Scenes.Where(s => s.Relationship == "devarra" && Rules.IsRemote(s) && s.Owner != "DevarraEpilogue" && !retired.Contains(s)).ToArray();
+        var letters = story.Scenes.Where(s => s.Relationship == "devarra" && Rules.IsRemote(s) && s.Owner != "DevarraEpilogue" && !retired.Contains(s)
+            && s.Kind != "memory").ToArray();   // PP7: the Chapter 4 memory is no letter (shape checked below)
         check(letters.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "after.lair", P + "flight.eggs" })
               && letters.All(s => s.Chapters.SequenceEqual(new[] { 3, 5 })),
             "Devarra's letters are not exactly the return and the commit, in Chapters 3 and 5.");
@@ -323,6 +325,72 @@ internal static class DevarraTricksterTests
             "A Chapter 5 first climb claims she waited out the Abyss.");
         check(Rules.Available(story, abyss, Later(story, climbCh3, 24, 5)) && climbCh5.All(r => !Rules.Available(story, abyss, Later(story, r, 24, 5))),
             "The Abyss vigil is not gated on a Chapter 3 climb.");
+        // PP7 (Chapter 4): the wrong sky, a story kept back for her on the voyage out of Alushinyrra; the Abyss vigil reads it.
+        var sky = S(T + "wrong_sky");
+        string[] skyVariants = { T + "wrong_sky.fear", T + "wrong_sky.view", T + "wrong_sky.spent" };
+        string[] skyAnswers = { "sky_fear", "sky_view", "sky_spent" };
+        check(sky.Remote && sky.Kind == "memory" && sky.Chapters.SequenceEqual(new[] { 4 }) && sky.MinChapter == 4 && sky.MaxChapter == 4
+              && sky.Relationship == "devarra" && new[] { "trickster.ever", T + "climbed_before_the_abyss", "devarra.voyage_begun.latched" }.All(sky.Requires.Contains)
+              && story.Latches["devarra.voyage_begun.latched"].SequenceEqual(new[] { "devarra.voyage_begun" })
+              && new[] { "devarra.closed", T + "wrong_sky.kept" }.All(sky.Forbids.Contains)
+              && story.StartedDialogs["devarra.voyage_begun"] == "a07f6d1f93531e048928c5c9de328a92",
+            "The wrong sky lost its shape (remote memory, Chapter 4, after a Chapter 3 climb and the voyage).");
+        var skyPages = new HashSet<string>();
+        var abyssPages = new HashSet<string>();
+        foreach (bool flownOver in new[] { false, true })
+        {
+            var ashore = Later(story, climbCh3, 24, 4);
+            if (flownOver) ashore.Flags.Add(T + "flown");
+            check(!Rules.Available(story, sky, ashore), "The wrong sky opens before the voyage.");
+            var aboard = Program.Copy(ashore); aboard.Flags.Add("devarra.voyage_begun"); Rules.Complete(story, aboard);
+            aboard.Times["devarra.voyage_begun.latched"] = aboard.Hour;   // Main.RecordLatches stamps the hour the voyage began
+            check(!Rules.Available(story, sky, aboard) && !Rules.Available(story, sky, Later(story, aboard, sky.DelayHours - 1)),
+                "The wrong sky opens before its hours have passed on the voyage (the older climb must not count).");
+            check(Rules.Available(story, sky, Later(story, aboard, sky.DelayHours)), "The wrong sky does not open on the voyage.");
+            foreach (var chapter in new[] { 3, 5 })
+                check(!Rules.Available(story, sky, Later(story, aboard, sky.DelayHours, chapter)), "The wrong sky leaks into chapter " + chapter);
+            var closed = Later(story, aboard, sky.DelayHours); closed.Flags.Add("devarra.closed");
+            check(!Rules.Available(story, sky, closed), "The wrong sky ignores a closed route.");
+            var kept = Program.Walk(sky, Later(story, aboard, sky.DelayHours), (id, _) =>
+            {
+                skyPages.Add(id);
+                if (id == "lamps") check(flownOver, "The wrong sky remembers a flight over Drezen that was not flown.");
+                if (id == "planks") check(!flownOver, "The wrong sky forgets the flight over Drezen.");
+            }).Where(r => r.Has(sky.Id)).ToList();
+            check(kept.Count == 3 && kept.All(r => r.Has(T + "wrong_sky.kept") && skyVariants.Count(r.Has) == 1 && !Rules.Available(story, sky, r)),
+                "The wrong sky loses a variant, overlaps, or replays.");
+            foreach (var r in kept)
+            {
+                var home = Later(story, r, 24, 5);
+                check(Rules.Available(story, abyss, home), "The Abyss vigil does not follow the wrong sky.");
+                Program.Walk(abyss, home, (id, _) =>
+                {
+                    abyssPages.Add(id);
+                    int i = Array.IndexOf(skyAnswers, id);
+                    if (i >= 0) check(r.Has(skyVariants[i]), "The Abyss vigil answers a sky that was not kept: " + id);
+                });
+            }
+        }
+        foreach (var r in climbCh5)
+        {
+            var late = Later(story, r, 24, 4); late.Flags.Add("devarra.voyage_begun");
+            check(!Rules.Available(story, sky, late), "The wrong sky follows a first climb made after the Abyss.");
+        }
+        check(skyPages.SetEquals(sky.Nodes.Select(n => n.Id)), "Unreached page of the wrong sky.");
+        check(skyAnswers.All(abyssPages.Contains), "The Abyss vigil never answers the wrong sky.");
+        var vigil = abyss.Nodes.Single(n => n.Id == "climb").Choices;
+        check(vigil.Count == 5 && vigil[0].Next == "back" && vigil[1].Next == "gift" && vigil.Skip(2).Select(c => c.Requires.Single()).SequenceEqual(skyVariants)
+              && abyss.Nodes.TakeLast(3).Select(n => n.Id).SequenceEqual(skyAnswers),
+            "The wrong sky's answers were not appended to the Abyss vigil, or read the wrong flag.");
+        // PP7 (Sol r1): a vault clutch cooked or destroyed after the promise is answered as spent, never as living eggs.
+        var withheld = S(T + "the_clutch").Nodes.Single(n => n.Id == "withheld").Choices;
+        check(withheld.Count == 5 && withheld[0].Next == "withheld_vault" && withheld[0].Forbids.Contains("eggs.omelet") && withheld[0].Forbids.Contains("eggs.destroyed")
+              && withheld.Skip(3).All(c => c.Next == "withheld_spent" && c.Requires.Contains("eggs.project")),
+            "The clutch scene offers the vault after its eggs were spent.");
+        var hatch = S(P + "epilogue.woken").Nodes[0].Paragraphs.Where(x => x.Requires.Contains(T + "vault_opened")).ToArray();
+        check(hatch.Count(x => x.Text.Contains("hatched", StringComparison.Ordinal) && x.Forbids.Contains("eggs.omelet") && x.Forbids.Contains("eggs.destroyed")) == 1
+              && hatch.Count(x => x.Text.Contains("emptied the other way", StringComparison.Ordinal)) == 2,
+            "The epilogue hatches a clutch that was cooked or destroyed.");
         var noAmbush = World(story, 5, "trickster", "trickster.ever", P + "returned", "devarra.started", T + "climbed");
         check(!Rules.Available(story, dwarf, Later(story, noAmbush, 30)), "Greybor's ambush is recalled without its native cue.");
         check(dwarf.Nodes.Single(n => n.Id == "climb").Choices[2].Requires.Contains("devarra.react.greybor.repeat_work"),

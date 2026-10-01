@@ -5,7 +5,8 @@ the one buyer of her tariff who lived (KTC_StorytellerIsBack/Cue_0006, Cue_0019)
 and for the climbs he is the Commander's guide up the ridge, blind and unafraid of the path. Her only native unit is a
 hostile monster (WoundWormsLair_BlackDragon c540d81c, Factions/Mobs, no dialog), so she is never spawned: she speaks in
 these scenes under her own name and portrait (E14f) while the Storyteller stands by. The two letters of the spine are the
-route's whole letter budget (Chapter 3: 2, Chapter 5: 2), so nothing here is a letter.
+route's whole letter budget (Chapter 3: 2, Chapter 5: 2), so nothing here is a letter. The one remote beat is the
+Chapter 4 memory wrong_sky (PP7), kept on the voyage and told in person at the Abyss vigil.
 
 Authored, and labelled as authored: the watchtower, its bones and its new grey roof; the tax clerk; her questions; the
 demon nest; the bites. Her voice is built on her canon lines (StoryTellerAndDragonGoodEnter/Cue_0002 546738b4 "I do
@@ -57,6 +58,18 @@ VAULT_OPENED = T + "vault_opened"
 VAULT_REFUSED = T + "vault_refused"
 CH3 = "devarra.chapter_three"               # Chapter03 etude 15e0048c (Playing; completed by ToNexus), bound in devarra_trickster
 CLIMBED_CH3 = T + "climbed_before_the_abyss"   # she was back and the tower climbed before the march into the Wound
+# PP7 (Chapter 4): the wrong sky, a story kept back for her on the voyage out of Alushinyrra (wrong_sky; read by after_the_abyss).
+VOYAGE = "devarra.voyage_begun"             # StartedDialogs AirAdventures_BookEvent a07f6d1f (every captain), bound in integrate
+VOYAGE_SEEN = VOYAGE + ".latched"           # its latch: the delay runs from the hour the voyage began (Sol PP7 r1)
+SKY = T + "wrong_sky.kept"
+SKY_FEAR = T + "wrong_sky.fear"
+SKY_VIEW = T + "wrong_sky.view"
+SKY_SPENT = T + "wrong_sky.spent"
+SKY_CHOICES = (
+    c("[Keep the fall for her: the moment the deck dropped away under you, and what your stomach did.]", "fear"),
+    c("[Keep the view for her: the whole wrong sky from the rail, every colour of it, the way a dragon would want it.]", "view"),
+    c("[Keep nothing back. Tell it to the sailor on watch, the same night, while it is fresh.]", "spent"),
+)
 
 
 def hub(id, title, entry, nodes, requires, forbids=(), delay=0, **extra):
@@ -302,9 +315,12 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
     # The clutch withheld (the druids or the vault).
     dv("withheld", '''"You kept them from me." {n}She is lying curled so tightly around the broken stair that you have to climb over her tail to get in.{/n} "You said it to my face, and I let you live. I have thought about that every night since. I have decided you were telling the truth about them, and I have decided that I hate you for it."
 "So. You will tell me about them instead. Are they warm? Are they eating? Does anyone sing to them? I sang to them, in the lair. The old man heard me. Ask him."''',
-       c("Continue", "withheld_vault", requires=("eggs.project",), forbids=("eggs.druids",)),
+       c("Continue", "withheld_vault", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet", "eggs.destroyed")),
        c("Continue", "withheld_told", requires=("eggs.druids",)),
-       c("Continue", "withheld_told", forbids=("eggs.project", "eggs.druids"))),
+       c("Continue", "withheld_told", forbids=("eggs.project", "eggs.druids")),
+       # PP7 (Sol INT): the vault's project finished after the promise; the native outcome comes first.
+       c("Continue", "withheld_spent", requires=("eggs.project", "eggs.omelet"), forbids=("eggs.druids",)),
+       c("Continue", "withheld_spent", requires=("eggs.project", "eggs.destroyed"), forbids=("eggs.druids", "eggs.omelet"))),
     dv("withheld_told", '''{n}So you tell her what little you are sure of, and nothing you are not. She listens as if every word were a piece of meat, weighing each one before she swallows it.{/n}
 "Careful," she repeats. "Good. Careful is good." {n}She is quiet.{/n} "I will not ask you again for a while. It is too expensive, asking."''',
        c("Continue", "end")),
@@ -315,6 +331,9 @@ hub(T + "the_clutch", "What she wants from you", '"She asked about the eggs agai
 {n}She lies down among the eggs and puts her face against them, one after another, and makes a sound too low to hear, that you feel in the shells under your hand and in your back teeth. The guards at the door tighten their grip on their spears and do not know why.{/n}''',
         c("Continue", "vault_yes_2")),
     dv("vault_yes_2", '''{n}At dawn she gets up and leaves the way she came. At the breach she stops.{/n} "You let a woundwyrm into your vault, crusader, and the eggs are all still there." {n}It is almost a question.{/n} "Remember that I could have taken them. Remember that I did not. We will both remember it, and it will be the only kindness either of us ever does the other. Do not spend it."''',
+       c("Continue", "end")),
+    dv("withheld_spent", '''"You kept them from me, in your vault. I lay at the wall every night and listened to them grow." {n}Her claws are still on the stone.{/n} "Then one night there was nothing to listen to. I know what was done to them. I could smell it from the ridge."
+{n}She does not raise her voice. The fleeces in the arrow slits stir anyway.{/n} "You told me they would be warm, crusader. Go down the mountain before I decide what that was worth, and do not come up it again until I send."''',
        c("Continue", "end")),
     dv("vault_no", '''"Drezen's." {n}She says it very softly.{/n} "They are not Drezen's. They are not yours. They are mine, and you are keeping them, and you are keeping them well, and that is the only reason your city is still standing." {n}She turns her head away.{/n} "Say no to me again, crusader, when you are sure. I will still be listening at your wall."''',
        c("Continue", "end")),
@@ -540,7 +559,7 @@ SHELTERED = T + "sheltered"
 LAST_NIGHT = T + "last_night"
 
 hub(T + "first_message", "A message up the ridge", '"Can you take a message up the ridge?"', [
-    teller("start", '''"I can." {n}He does not reach for paper; he has never needed it.{/n} "I should warn you that she does not read. She says reading is what people do with stories they are afraid to hear out loud. So it will be your words, in my mouth, in front of her teeth. Choose them as if you were saying them yourself."''',
+    teller("start", '''"I can." {n}He does not reach for paper; he has never needed it.{/n} "I should warn you that she will not take your words on paper. She says a letter is what people send with stories they are afraid to tell out loud. So it will be your words, in my mouth, in front of her teeth. Choose them as if you were saying them yourself."''',
         c('"Tell her: welcome back."', "welcome", forbids=(FLOWN,)),
         c('"Tell her: the oxen on the east road belong to the crusade, and so do the horses."', "oxen"),
         c('"Tell her: I\'m glad it worked."', "glad"),
@@ -738,8 +757,12 @@ hub(T + "after_the_abyss", "You were gone", '"Was she there, while I was in the 
     dv("climb", '''{n}She hears you on the path long before you reach the top, and she does not move. When you come through the door she is lying exactly where she was when you left, as if she had not shifted in all those months, and her eye follows you across the floor and does not let go.{/n}
 "You went into the Wound." {n}Her voice is flat.{/n} "Without asking me. Without telling me what you would bring back."''',
        c('"I came back."', "back"),
-       c('"I brought you the worst hour of it. Nobody else has heard it."', "gift")),
-    dv("back", '''"You came back." {n}She breathes in, a long, slow breath from your boots to your hair, taking stock.{/n} "You smell of the Abyss. Of demon and of rot and of a hundred things I do not have names for." {n}Her tail moves across the stair, over old scratches in the stone, as if checking that they are all still there.{/n} "You came back. Do not do that again without telling me. A thing that owes me something does not go where it cannot pay."''',
+       c('"I brought you the worst hour of it. Nobody else has heard it."', "gift"),
+       # PP7: the Chapter 4 sky (wrong_sky), appended; their pages are the last of this scene.
+       c('"I flew over the Abyss, on a ship. I kept the part where the deck fell out from under me."', "sky_fear", requires=(SKY_FEAR,)),
+       c('"I brought you a sky. The Abyss from a ship\'s rail, all of it."', "sky_view", requires=(SKY_VIEW,)),
+       c('"I flew over the Abyss on a ship. The crew has the story already."', "sky_spent", requires=(SKY_SPENT,))),
+    dv("back",'''"You came back." {n}She breathes in, a long, slow breath from your boots to your hair, taking stock.{/n} "You smell of the Abyss. Of demon and of rot and of a hundred things I do not have names for." {n}Her tail moves across the stair, over old scratches in the stone, as if checking that they are all still there.{/n} "You came back. Do not do that again without telling me. A thing that owes me something does not go where it cannot pay."''',
        c("Continue", "end")),
     dv("gift", '''{n}You sit down on the bones and tell her the worst hour you had on the other side, the one you have told nobody, not the generals, not the people who were there. She listens with her eyes shut and her nostrils open, as if she could smell it on you while you talk.{/n}
 "The worst hour. Kept back. For me." {n}Her eye opens, a slit of furnace.{/n} "That is a better tithe than a forearm, crusader, and you will not get away with paying it only once. Do not look at me like that. Go away. I want to eat something and think about it."''',
@@ -748,7 +771,44 @@ hub(T + "after_the_abyss", "You were gone", '"Was she there, while I was in the 
         c('"What was it?"', "what")),
     teller("what", '''"She was counting." {n}He smiles.{/n} "Aloud, all night, in Draconic. The scratches on her stair, one for each time you climbed it. One, and one, and one again. As if she might have missed one, and it would be the one that mattered."''',
         c('"..."', flags=(ABYSS_BACK,))),
+    dv("sky_fear", '''"On a ship." {n}Her lip lifts off one tooth.{/n} "Planks and rope and a sail, in the air, and you trusted your weight to it." {n}She makes you tell the gust twice: how far the deck fell, what your hands did, whether you made a sound.{/n}
+"You were afraid of the sky. Good. It is the only honest thing anyone has ever carried out of the Abyss for me." {n}Her tail drags slowly across the scratched stair.{/n} "Next time you want to be afraid of the sky, crusader, you come up here and ask. I drop much further than a boat."''',
+       c("Continue", "end")),
+    dv("sky_view", '''{n}She listens to the whole of it with her eyes shut: the wind that came from underneath, the clouds that held only colour, the spires of Alushinyrra like teeth below the keel.{/n} "Which way did the wind come off the spires?" {n}You tell her.{/n} "And under the cloud?"
+"Nobody aboard would say."
+"Cowards. Open air all the way down." {n}Her wings shift against the tower walls, as if testing a draught.{/n} "I have no intention of flying there. You have stolen a sky I cannot have and brought it back to me in your mouth. I have not decided whether that is a gift or an insult. Keep coming up until I decide."''',
+       c("Continue", "end")),
+    dv("sky_spent", '''"The crew has it." {n}Her eye narrows to a slit.{/n} "You flew over the Abyss, and you spent it on a sailor the same night, while it was still warm." {n}She breathes out; the fleeces in the arrow slits stir.{/n} "Then I will not have it from you second-hand. Stale bread. Bring me something you kept, or bring me nothing."
+{n}She turns her head to the city. After a long while, without looking at you:{/n} "What colour were the clouds?"''',
+       c("Continue", "end")),
 ], requires=("trickster.ever", RETURNED, CLIMBED, CLIMBED_CH3), forbids=(ABYSS_BACK,), delay=0, chapters=(5,))
+
+
+# --- 18b. The wrong sky (Chapter 4, PP7): a memory on the voyage to Colyphyr --------------------------------------------
+# No courier climbs out of the Abyss to her ridge, and she takes no letters. What travels is a story kept back for her tariff
+# ("a story buys a life", Cue_0002 546738b4). Native moment: the airship voyage out of Alushinyrra (AirAdventures_BookEvent
+# a07f6d1f, every captain; StartAirAdventures cutscene in AlushinyrraMediumCity), bound as StartedDialogs. The crew, the
+# gust and the colours are authored and claim no specific day of the voyage. Path: T (her survival is the flight device).
+# Read in Chapter 5 by after_the_abyss (climb, appended answers). Gated like that vigil: a tower climbed before the march.
+
+SCENES.append(scene(T + "wrong_sky", "A ship in the wrong sky", "Devarra", 4, "", [
+    nar("start", '''{n}The ship lifts off from Alushinyrra and climbs into the Abyss's own sky, and for the first hours you stand at the rail and do not go below.{/n}''',
+        c("Continue", "lamps", requires=(FLOWN_OVER,)),
+        c("Continue", "planks", forbids=(FLOWN_OVER,))),
+    nar("lamps", '''{n}You remember being this high once, when Drezen was a scatter of small gold lamps under a black wing, and a voice in the wind told you how small you were. There is no wing here. There are planks, and rope, and a sail, and wind that comes from underneath.{/n}
+{n}A dragon on a ridge above Drezen sells lives for stories. She will want this one, and she will want it whole.{/n}''',
+        *SKY_CHOICES),
+    nar("planks", '''{n}You have never been this high with nothing under you but planks. The wind comes from underneath. The clouds are the wrong colour, and somewhere below them is a sea, or a pit, or nothing; nobody aboard will say which.{/n}
+{n}A dragon on a ridge above Drezen sells lives for stories. She will want this one, and she will want it whole.{/n}''',
+        *SKY_CHOICES),
+    nar("fear", '''{n}It comes in the first hour: a gust from below, the deck falling a man's height and catching, and your hands shut on the rail before you knew they had moved. Nobody saw. You decide nobody will hear of it either, until a dragon does. She will want the part where the crusader was afraid of the sky.{/n}''',
+        c("[Keep it for the ridge.]", flags=(SKY, SKY_FEAR))),
+    nar("view", '''{n}You stay at the rail until the light changes, and learn the sky the way a thief learns a house: where the wind comes from, which clouds carry weather and which carry only colour, how the spires of Alushinyrra look from above, like teeth. You tell none of it to anyone aboard.{/n}''',
+        c("[Keep it for the ridge.]", flags=(SKY, SKY_VIEW))),
+    nar("spent", '''{n}The sailor on watch is glad of the company. You give him all of it, the gust and the colours and the spires like teeth, and by the change of watch the whole crew has it, a little bigger at every telling. It is a good story. It is not hers any more.{/n}''',
+        c("[Go below.]", flags=(SKY, SKY_SPENT))),
+], requires=("trickster.ever", RETURNED, CLIMBED, CLIMBED_CH3, VOYAGE_SEEN), forbids=(CLOSED, SKY), delay=12, last=4, optional=True,
+    Relationship="devarra", Chapters=[4], Remote=True, Kind="memory"))
 
 
 # --- 19. A story for nothing (after the commit) -----------------------------------------------------------------------
@@ -1329,7 +1389,9 @@ hub(ONE_SHORT, "One short", '"She\'s counting again, isn\'t she?"', [
        c('"It\'s safe. That\'s all I\'ll say."', "safe", flags=(ONE_SHORT,))),
     dv("lied_free", '''"I have never once in three hundred years miscounted an egg." {n}She does not raise her voice. She does not need to.{/n} "That is the worst lie you have told me, crusader, and the first one I did not enjoy. Keep it. I will keep it too, next to the egg you are lying about, and I will add them together when I send the bill."''',
        c("[Go down the mountain.]")),
-], requires=("trickster.ever", RETURNED, N_PRIMED), forbids=(ONE_SHORT,), delay=24)
+], requires=("trickster.ever", RETURNED, N_PRIMED),
+   # PP7 (Sol BEL): once the kiln confession has told her where the twelfth is, she no longer asks.
+   forbids=(ONE_SHORT, T + "smallest_egg", "nidalynn.trickster.confessed"), delay=24)
 
 
 # --- 38. The smallest egg (Nidalynn's route, ledger 05 row 5): the bill for the one the Commander stole lands on the Commander -
@@ -1396,6 +1458,8 @@ hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."
 
 # --- Epilogue: her committed page remembers what the watchtower made of the years -----------------------------------
 
+VAULT_SPENT = "{n}She had lain once among the eggs in the Drezen vault, by the Commander's leave, with spears at her throat. After the vault was emptied the other way, she never again came down the ridge on that night of the year, and the Commander never asked her to.{/n}"
+
 EPILOGUE_PARAGRAPHS = (
     (NAMED, "{n}The Commander never said her true name aloud, not once, in all the years after. The Commander only knew it, as she had said, and she seemed to find that enough.{/n}"),
     (VAULT_OPENED, "{n}The clutch in the Drezen vault hatched in the end, far from her, into other hands. Every one of the young woundwyrms flew over the north ridge once, as if by accident, before going wherever they went. She watched every one of them out of sight.{/n}"),
@@ -1415,8 +1479,15 @@ EPILOGUE_PARAGRAPHS = (
 def integrate(payload):
     """Give her committed epilogue page the watchtower's consequences (E14c paragraphs)."""
     from story_format import p
+    payload.setdefault("StartedDialogs", {})[VOYAGE] = "a07f6d1f93531e048928c5c9de328a92"   # PP7: AirAdventures_BookEvent
+    payload.setdefault("Latches", {})[VOYAGE_SEEN] = [VOYAGE]
     page = next(s for s in payload["Scenes"] if s["Id"] == "devarra.trickster.epilogue.woken")["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    # PP7 (Sol CAN): the hatchlings only where the vault's clutch was not cooked or destroyed afterwards; otherwise the visit.
+    page.setdefault("Paragraphs", []).extend(
+        p(text, requires=(flag,), forbids=(("eggs.omelet", "eggs.destroyed") if flag == VAULT_OPENED else ()))
+        for flag, text in EPILOGUE_PARAGRAPHS)
+    page["Paragraphs"].append(p(VAULT_SPENT, requires=(VAULT_OPENED, "eggs.omelet")))
+    page["Paragraphs"].append(p(VAULT_SPENT, requires=(VAULT_OPENED, "eggs.destroyed"), forbids=("eggs.omelet",)))
     # The egg bill: collected at Last Call (lastcall_partners "The Grey Tariff"), or still standing.
     page["Paragraphs"].extend([
         p("{n}She collected the life the Commander owed her for it a month in every year, on the ridge, as she had named it at the edge of the world. The Commander never once missed a month. She never once let {mf|him|her} come down the same weight.{/n}",
