@@ -351,7 +351,7 @@ remote(E + "abyss.face", "A borrowed face", [
 {n}The woman with her face does not hesitate, which is the second mistake.{/n} "Your name," {n}she says tenderly.{/n} "What else would you write there?"''',
         c("Continue", "seen")),
     nar("lie", '''"I have never lied to you," {n}says the woman with her face, at once and warmly, as if it cost nothing.{/n}
-{n}The real one had to be dragged to say so much about herself in a square full of demons, and said it like an accusation.{/n}''',
+{n}The woman in the banner's memories never said anything about herself that was not dragged out of her, and never once said it warmly.{/n}''',
         c("Continue", "seen")),
     nar("sit", '''{n}You sit. The mud is warm, which mud in that field never was. She leans her head on your shoulder, which she never would, and her hand finds your knee, and it is only when she begins to tell you how the war will end, and how kindly, and how soon, that you understand what she is: the Abyss, trying on a shape it found in your sleep.{/n}''',
         c("Continue", "seen")),
@@ -458,7 +458,7 @@ remote(E + "dream.herald", "Her herald", [
         c("Continue", "fought", requires=(HERALD_FOUGHT,), forbids=(HERALD_SAVED, HERALD_FELL))),
     io("fought", '''"You fought him."
 {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "In Baphomet's prison, at the end, what was left of him wanted the fight more than it wanted saving, and he told you so, and you gave it to him. I heard him ask. I will not pretend I would have answered him the same way."
-{n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. I sent a proud angel after a mortal I did not understand, and let him believe what he wished to believe about you, because it served."''',
+{n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him."''',
        c("Continue", "stopped", forbids=(SPOKEN,)),
        c("Continue", "known", requires=(SPOKEN,))),
     io("saved", '''"You gave him back his heart."
@@ -468,7 +468,7 @@ remote(E + "dream.herald", "Her herald", [
        c("Continue", "known", requires=(SPOKEN,))),
     io("fell", '''"He is gone."
 {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "I told you in Drezen that I could not say whether he could be saved. You went where I could not go, and decided what I could not decide. I will not pretend I would have decided the same."
-{n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. I sent a proud angel after a mortal I did not understand, and let him believe what he wished to believe about you, because it served."''',
+{n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him."''',
        c("Continue", "stopped", forbids=(SPOKEN,)),
        c("Continue", "known", requires=(SPOKEN,))),
     io("known", '''"I came to tell you that myself, and not through a banner, because it is not a thing to be told through cloth." {n}The white does not waver.{/n} "He served me faithfully, and at the end badly, which was my fault. I will not have his ending carried to you by a flag. That is all. I have a war, and so, still, do you."''',

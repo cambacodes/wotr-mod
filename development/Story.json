@@ -210022,8 +210022,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -423456,6 +423456,7 @@
       ],
       "Requires": [
         "trickster.ever",
+        "trickster",
         "iomedae.started",
         "iz.done",
         "iomedae.trickster.bridge_known",
@@ -425226,7 +425227,7 @@
               "Next": "other_yes",
               "Set": [],
               "Requires": [
-                "iomedae.trickster.first_spoken"
+                "iomedae.trickster.courted"
               ],
               "Forbids": [],
               "Abort": false
@@ -425237,7 +425238,7 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
-                "iomedae.trickster.first_spoken"
+                "iomedae.trickster.courted"
               ],
               "Abort": false
             },
@@ -425271,7 +425272,7 @@
         {
           "Id": "other_no",
           "Speaker": "Narrator",
-          "Text": "\"I do not know you well enough to concede that.\" {n}She says it without unkindness, the way she said the lock would destroy the key.{/n} \"I have watched you. I have not yet spoken with you. Ask me afterward, if there is an afterward.\"",
+          "Text": "\"I do not know you well enough to concede that.\" {n}She says it without unkindness, the way she said the lock would destroy the key.{/n} \"I have watched you, and I have spoken with you once or not at all. That is not enough to concede anything to but an argument. Ask me afterward, if there is an afterward.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425672,7 +425673,7 @@
         {
           "Id": "fire",
           "Speaker": "Narrator",
-          "Text": "{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Almost everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}\n{n}You had forgotten the banner. You are still holding it. You cannot feel your hand.{/n}",
+          "Text": "{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Almost everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}\n{n}You left the banner in the rock at the edge, behind you. You cannot see it from in here. You cannot feel your hands.{/n}",
           "Choices": [
             {
               "Text": "[Say her name.]",
@@ -425709,7 +425710,7 @@
           "Text": "{n}You say it into the fire, or you think you do; there is no air in here to carry it. Whatever you have prayed in your life, this is not a prayer. It is the name of someone you argued with on a roof, said the way you would say it across a crowded room, to make her turn round.{/n}",
           "Choices": [
             {
-              "Text": "[Let the banner go.]",
+              "Text": "[Wait.]",
               "Next": "sword",
               "Set": [],
               "Requires": [
@@ -425719,7 +425720,7 @@
               "Abort": false
             },
             {
-              "Text": "[Let the banner go.]",
+              "Text": "[Wait.]",
               "Next": "order",
               "Set": [],
               "Requires": [],
@@ -425734,10 +425735,10 @@
         {
           "Id": "gorge",
           "Speaker": "Narrator",
-          "Text": "{n}Pins in the rock. The smell of burned rope. Forty people who were going to die, and a tired girl with a wet braid taking off her cloak. She did not know it would hold; you were the banner in her other hand, and you felt her not know. She cast it anyway.{/n}",
+          "Text": "{n}Pins in the rock. The smell of burned rope. Forty people who were going to die, and a tired girl with a wet braid taking off her cloak. She did not know it would hold; you were the banner in her other hand, and you felt her not know. She cast it anyway. You have nothing left to cast. You left it at the edge.{/n}",
           "Choices": [
             {
-              "Text": "[Cast the banner the way she cast her cloak.]",
+              "Text": "[Wait.]",
               "Next": "sword",
               "Set": [],
               "Requires": [
@@ -425747,7 +425748,7 @@
               "Abort": false
             },
             {
-              "Text": "[Cast the banner the way she cast her cloak.]",
+              "Text": "[Wait.]",
               "Next": "order",
               "Set": [],
               "Requires": [],
@@ -425762,7 +425763,7 @@
         {
           "Id": "hold",
           "Speaker": "Narrator",
-          "Text": "{n}You hold on. It is the last thing that is still yours: a staff in a hand you cannot feel, and a cloth you cannot see. The fire pulls at it the way it pulls at everything, and for one breath you are not sure whether you are holding the banner or it is holding you.{/n}\n{n}Then your fingers open, because they are burning, and it goes.{/n}",
+          "Text": "{n}You hold on to the last of yourself, which is not much: a name, a few faces, a roof at midnight. The fire pulls at it the way it pulls at everything, and for one breath you are not sure whether you are holding on or being held.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -425790,7 +425791,7 @@
         {
           "Id": "sword",
           "Speaker": "Narrator",
-          "Text": "{n}It does not burn. The Sword of Valor leaves your fingers and goes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from where you are to somewhere you cannot see, no wider than a plank. The fire goes around it.{/n}",
+          "Text": "{n}Behind you, at the edge, a hand pulls a staff out of scorched rock. You do not see it. You feel it, the way you feel a door open in a house you thought was empty.{/n}\n{n}The Sword of Valor comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It does not burn. The fire goes around it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -425806,7 +425807,7 @@
         {
           "Id": "order",
           "Speaker": "Narrator",
-          "Text": "{n}The cathedral's white banner leaves your fingers and goes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from where you are to somewhere you cannot see, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}",
+          "Text": "{n}Behind you, at the edge, a hand pulls a staff out of scorched rock. You do not see it. You feel it, the way you feel a door open in a house you thought was empty.{/n}\n{n}The cathedral's white banner comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426404,7 +426405,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}She stays the night, and leaves before the city wakes, and comes again, not often, for the rest of your life. She never once comes as a goddess. She never once asks you to be anything but what you are, which you had not known, until her, was a thing a person could be asked.{/n}",
+          "Text": "{n}She stays the night, and leaves before the city wakes, and comes again, not often, for the rest of your life. She never once comes as a goddess. She never once stops arguing with you, either, about the Wound and the war and what you owe, and she never once stops coming.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -428935,7 +428936,7 @@
         {
           "Id": "lie",
           "Speaker": "Narrator",
-          "Text": "\"I have never lied to you,\" {n}says the woman with her face, at once and warmly, as if it cost nothing.{/n}\n{n}The real one had to be dragged to say so much about herself in a square full of demons, and said it like an accusation.{/n}",
+          "Text": "\"I have never lied to you,\" {n}says the woman with her face, at once and warmly, as if it cost nothing.{/n}\n{n}The woman in the banner's memories never said anything about herself that was not dragged out of her, and never once said it warmly.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -429457,7 +429458,7 @@
         {
           "Id": "fought",
           "Speaker": "Iomedae",
-          "Text": "\"You fought him.\"\n{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"In Baphomet's prison, at the end, what was left of him wanted the fight more than it wanted saving, and he told you so, and you gave it to him. I heard him ask. I will not pretend I would have answered him the same way.\"\n{n}A silence, long for a goddess.{/n} \"I do not blame you. I blame myself. I sent a proud angel after a mortal I did not understand, and let him believe what he wished to believe about you, because it served.\"",
+          "Text": "\"You fought him.\"\n{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"In Baphomet's prison, at the end, what was left of him wanted the fight more than it wanted saving, and he told you so, and you gave it to him. I heard him ask. I will not pretend I would have answered him the same way.\"\n{n}A silence, long for a goddess.{/n} \"I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429513,7 +429514,7 @@
         {
           "Id": "fell",
           "Speaker": "Iomedae",
-          "Text": "\"He is gone.\"\n{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"I told you in Drezen that I could not say whether he could be saved. You went where I could not go, and decided what I could not decide. I will not pretend I would have decided the same.\"\n{n}A silence, long for a goddess.{/n} \"I do not blame you. I blame myself. I sent a proud angel after a mortal I did not understand, and let him believe what he wished to believe about you, because it served.\"",
+          "Text": "\"He is gone.\"\n{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"I told you in Drezen that I could not say whether he could be saved. You went where I could not go, and decided what I could not decide. I will not pretend I would have decided the same.\"\n{n}A silence, long for a goddess.{/n} \"I do not blame you. I blame myself. He followed you of his own will, and I let him go believing what he wished to believe about you, because it served, and I did not correct him.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -435449,8 +435450,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -439861,6 +439862,23 @@
       ],
       [
         "iomedae.trickster.rescued"
+      ]
+    ],
+    "iomedae.trickster.courted": [
+      [
+        "iomedae.trickster.disputed"
+      ],
+      [
+        "iomedae.trickster.dream.summit",
+        "iomedae.trickster.dream.herald"
+      ],
+      [
+        "iomedae.trickster.dream.summit",
+        "iomedae.trickster.disputation.called"
+      ],
+      [
+        "iomedae.trickster.dream.herald",
+        "iomedae.trickster.disputation.called"
       ]
     ],
     "iomedae.trickster.cost.miracle_owed": [

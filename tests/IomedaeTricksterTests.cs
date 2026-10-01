@@ -231,10 +231,10 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Fallback: lost at Iz (or the sock): the cathedral's banner by oath (Lawful 1) or theft (Thievery DC 22),
         // a failed theft turning into the oath; never while the Sword of Valor is in hand.
-        var lost = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost");
-        var sock = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost", "iz.sock_raised");
+        var lost = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost");
+        var sock = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost", "iz.sock_raised");
         var theft = order.Nodes.Single(n => n.Id == "night").Choices.Single(c => c.Check != null).Check!;
-        check(Avail(order, lost) && Avail(order, sock) && !Avail(order, World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost", Held))
+        check(Avail(order, lost) && Avail(order, sock) && !Avail(order, World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost", Held))
               && order.RequiresAnyGroups.Length == 1 && order.RequiresAnyGroups[0].Length == 2
               && theft.Skill == "SkillThievery" && theft.DC == 22 && theft.CommanderOnly && theft.Success == "stolen" && theft.Failure == "caught",
             "Trk_Iomedae_Fallback: the cathedral's banner is not reachable exactly when her own was lost.");
@@ -292,7 +292,7 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Threshold: the device act beside the native sacrifice (E14b); committed carries; after a refusal the truth
         // concedes at the Wound (the reachable yes, no price) and a joke closes; never argued, the argument is made there.
-        var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken" };
+        var t6 = new[] { "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken", P + "dream.summit", P + "dream.herald" };
         var tc = World(story, 6, t6.Concat(new[] { Committed }).ToArray());
         var td = World(story, 6, t6.Concat(new[] { Declined, P + "cost.boasted", P + "disputed" }).ToArray());
         var tn = World(story, 6, t6);
@@ -309,6 +309,8 @@ internal static class IomedaeTricksterTests
               && Take(wound, tn, "refused", 0, Declined).Has(Carried)
               && Take(wound, World(story, 6, "trickster", "trickster.ever", Started, Latch, Held), "rescue", 0, P + "rescue_only").Has(Carried)
               && !Paths(wound, World(story, 6, "trickster", "trickster.ever", Started, Latch, Held)).Any(o => o.state.Has(Committed))
+              && !Paths(wound, World(story, 6, "trickster", "trickster.ever", Started, Latch, Held, P + "first_spoken", P + "dream.summit")).Any(o => o.state.Has(Committed))
+              && Avail(order, sock) && !Avail(order, World(story, 5, "trickster.ever", "trickster.was", Started, Latch, P + "bridge_seen", "iz.done", "iz.banner_lost"))
               && Take(wound, tn, "rescue", 0, P + "rescue_only").Has(P + "cost.buried_to_the_world")
               && wound.Nodes.SelectMany(n => n.Choices).All(c => c.Crusade == null && c.Alignment == null && c.NativeNext == null)
               && Ch(wound, "plant", 2).Abort,

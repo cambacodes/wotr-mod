@@ -123,6 +123,7 @@ CARRIED = E + "banner_carried"                 # the device act at Threshold (th
 CONCEDED_AT_WOUND = E + "conceded_at_wound"
 KISSED_AT_WOUND = E + "kissed_at_wound"
 RESCUE_ONLY = E + "rescue_only"               # she conceded the argument at the Wound, and nothing else
+COURTED = E + "courted"                       # Derived: the disputation held, or at least two of her own conversations
 FALSE_FACE = E + "false_face_seen"             # Chapter 4: something in Alushinyrra wore her face in a dream
 STUDIED = E + "canons_studied"               # the cathedral's canons read before the disputation (Lore DC 20, not 24)
 AFTER_ROAD = E + "after.road"                 # the respondent's question: what the Commander will do with the life left
@@ -167,6 +168,7 @@ DERIVED = {
     KEPT: [[SACRIFICE, WOUND_CLOSED, "trickster.ever", CARRIED, COMMITTED]],
     RESCUED: [[SACRIFICE, WOUND_CLOSED, "trickster.ever", CARRIED, RESCUE_ONLY]],
     BURIED_ALIVE: [[KEPT], [RESCUED]],
+    COURTED: [[DISPUTED], [E + "dream.summit", E + "dream.herald"], [E + "dream.summit", CALLED], [E + "dream.herald", CALLED]],
     MIRACLE: [[KEPT], [RESCUED]],
     # No late romance: eligibility, the Table and Last Call read a concession she actually made.
     LATE_COMMITTED: [["trickster.ever", COMMITTED]],
@@ -328,7 +330,7 @@ remote(E + "order.banner", "A banner of her order", [
        c('"I\'ll be here."', flags=(CALLED, SPOKEN))),
     io("o.sworn", '''"You swore for it on my sign, in the old form. I heard every word." {n}Something moves in the voice.{/n} "A Trickster's oath. I did not think I would live to hear one. Tomorrow night, here, I will hear you out. Bring that oath with you."''',
        c('"I\'ll be here."', flags=(CALLED, SPOKEN))),
-], requires=(STARTED, IZ_DONE, BRIDGE_KNOWN, KEY_LATCH), forbids=(BANNER_HELD, ORDER_BANNER), delay=12, chapters=(5,),
+], requires=("trickster", STARTED, IZ_DONE, BRIDGE_KNOWN, KEY_LATCH), forbids=(BANNER_HELD, ORDER_BANNER), delay=12, chapters=(5,),
     kind="visit", drezen=True, RequiresAnyGroups=[[BANNER_LOST, SOCK]])
 
 
@@ -568,13 +570,13 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
         c('"It keeps it."', "boast", requires=(COST_BOASTED,)),
         c('"It keeps it."', "other_q", forbids=(COST_BOASTED,))),
     nar("other_q", '''"That is the argument," {n}says Iomedae.{/n} "It is all I have conceded."''',
-        c('"And the other thing? The one we never argued."', "other_yes", requires=(SPOKEN,)),
-        c('"And the other thing? The one we never argued."', "other_no", forbids=(SPOKEN,)),
+        c('"And the other thing? The one we never argued."', "other_yes", requires=(COURTED,)),
+        c('"And the other thing? The one we never argued."', "other_no", forbids=(COURTED,)),
         c('"That\'s all I need."', "rescue")),
     nar("other_yes", '''{n}She does not answer at once. The fire leans at the two of you and she does not lean away from it.{/n}
 "I have spoken to you in the dark more often than I have spoken to my own priests," {n}says the goddess of valour, quietly, as if the Wound were not listening.{/n} "It was not for the crusade. There. That is conceded too, and at a worse place than a roof."''',
         c("Continue", "decide")),
-    nar("other_no", '''"I do not know you well enough to concede that." {n}She says it without unkindness, the way she said the lock would destroy the key.{/n} "I have watched you. I have not yet spoken with you. Ask me afterward, if there is an afterward."''',
+    nar("other_no", '''"I do not know you well enough to concede that." {n}She says it without unkindness, the way she said the lock would destroy the key.{/n} "I have watched you, and I have spoken with you once or not at all. That is not enough to concede anything to but an argument. Ask me afterward, if there is an afterward."''',
         c("Continue", "rescue")),
     nar("rescue", '''"I have not decided whether I will answer. I will decide when you are in the fire, and not before." {n}She steps back half a pace, beside her banner, and waits.{/n}''',
         c("[Turn to the Wound.]", flags=GO + (RESCUE_ONLY, COST_BURIED))),
@@ -659,23 +661,24 @@ def page(id, title, nodes, requires, forbids=(), **extra):
 
 page("bridge", "The Bridge", [
     nar("fire", '''{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Almost everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}
-{n}You had forgotten the banner. You are still holding it. You cannot feel your hand.{/n}''',
+{n}You left the banner in the rock at the edge, behind you. You cannot see it from in here. You cannot feel your hands.{/n}''',
         c("[Say her name.]", "name"),
         c("[Think of the gorge.]", "gorge", requires=(BRIDGE_SEEN,)),
         c("[Think of nothing. Hold on.]", "hold")),
     nar("name", '''{n}You say it into the fire, or you think you do; there is no air in here to carry it. Whatever you have prayed in your life, this is not a prayer. It is the name of someone you argued with on a roof, said the way you would say it across a crowded room, to make her turn round.{/n}''',
-        c("[Let the banner go.]", "sword", requires=(BANNER_HELD,)),
-        c("[Let the banner go.]", "order", forbids=(BANNER_HELD,))),
-    nar("gorge", '''{n}Pins in the rock. The smell of burned rope. Forty people who were going to die, and a tired girl with a wet braid taking off her cloak. She did not know it would hold; you were the banner in her other hand, and you felt her not know. She cast it anyway.{/n}''',
-        c("[Cast the banner the way she cast her cloak.]", "sword", requires=(BANNER_HELD,)),
-        c("[Cast the banner the way she cast her cloak.]", "order", forbids=(BANNER_HELD,))),
-    nar("hold", '''{n}You hold on. It is the last thing that is still yours: a staff in a hand you cannot feel, and a cloth you cannot see. The fire pulls at it the way it pulls at everything, and for one breath you are not sure whether you are holding the banner or it is holding you.{/n}
-{n}Then your fingers open, because they are burning, and it goes.{/n}''',
+        c("[Wait.]", "sword", requires=(BANNER_HELD,)),
+        c("[Wait.]", "order", forbids=(BANNER_HELD,))),
+    nar("gorge", '''{n}Pins in the rock. The smell of burned rope. Forty people who were going to die, and a tired girl with a wet braid taking off her cloak. She did not know it would hold; you were the banner in her other hand, and you felt her not know. She cast it anyway. You have nothing left to cast. You left it at the edge.{/n}''',
+        c("[Wait.]", "sword", requires=(BANNER_HELD,)),
+        c("[Wait.]", "order", forbids=(BANNER_HELD,))),
+    nar("hold", '''{n}You hold on to the last of yourself, which is not much: a name, a few faces, a roof at midnight. The fire pulls at it the way it pulls at everything, and for one breath you are not sure whether you are holding on or being held.{/n}''',
         c("Continue", "sword", requires=(BANNER_HELD,)),
         c("Continue", "order", forbids=(BANNER_HELD,))),
-    nar("sword", '''{n}It does not burn. The Sword of Valor leaves your fingers and goes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from where you are to somewhere you cannot see, no wider than a plank. The fire goes around it.{/n}''',
+    nar("sword", '''{n}Behind you, at the edge, a hand pulls a staff out of scorched rock. You do not see it. You feel it, the way you feel a door open in a house you thought was empty.{/n}
+{n}The Sword of Valor comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It does not burn. The fire goes around it.{/n}''',
         c("Continue", "her")),
-    nar("order", '''{n}The cathedral's white banner leaves your fingers and goes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from where you are to somewhere you cannot see, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}''',
+    nar("order", '''{n}Behind you, at the edge, a hand pulls a staff out of scorched rock. You do not see it. You feel it, the way you feel a door open in a house you thought was empty.{/n}
+{n}The cathedral's white banner comes out over the fire the way a cast net goes out over water, and lies there, flat and taut, from the edge to where you are, no wider than a plank. It is a lesser thing than the one she carried, and the fire knows it: it scorches along the edges as it lies there, and the gold thread smokes.{/n}''',
         c("Continue", "her")),
     nar("her", '''{n}At the far end of it, where the fire stops, a woman in plain steel stands with one hand on the staff and her whole weight against it.{/n}
 {n}It is Iomedae. She has made herself look as she looked then, and with the part of you that can still think, you understand why: so that the bridge will be the kind of thing a mortal woman could make. A cloak. A banner. Her weight on one end of it.{/n}
@@ -760,7 +763,7 @@ page("lived", "The Argument, Continued", [
         c("Continue", "end")),
     nar("sorry", '''"Good. Stay sorry. It will make you useful." {n}Something in her face eases, very slightly.{/n} "Not too sorry. I have seen what that does to people, and I would rather have you."''',
         c("Continue", "end")),
-    nar("end", '''{n}She stays the night, and leaves before the city wakes, and comes again, not often, for the rest of your life. She never once comes as a goddess. She never once asks you to be anything but what you are, which you had not known, until her, was a thing a person could be asked.{/n}'''),
+    nar("end", '''{n}She stays the night, and leaves before the city wakes, and comes again, not often, for the rest of your life. She never once comes as a goddess. She never once stops arguing with you, either, about the Wound and the war and what you owe, and she never once stops coming.{/n}'''),
 ], requires=(COMMITTED,), forbids=(KEPT, SACRIFICE, CLOSED), **ALIVE)
 
 
