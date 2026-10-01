@@ -547,7 +547,7 @@
    "4": "ip",
    "5": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"1": "none: no Minagho early beat without a named native host that changes neither her canon hostility nor access (13 section 7 caveat; coordinator, 2026-10-01)", "2": "none: same caveat (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "64a6bc907e22cb94b8d5e3b6bb2dee65 World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0001: Ch1 Grey Garrison ('Do we have guests?')",
    "1": "14289b6f7a6fa574098876438546ec8b World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0001: Ch1 Grey Garrison finale",

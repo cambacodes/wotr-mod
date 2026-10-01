@@ -301,7 +301,20 @@ internal static class MinaghoChivarroTricksterTests
         check(chivYes.Count == 1 && chivYes[0].Has("minachiv.future_chivarro") && chivYes[0].Has(P + "cost.half_the_pair") && Av(epChiv, chivYes[0]),
             "Chivarro's alone commit failed.");
         // Minagho comes home later: the wake reunites them, and the alone commit closes.
-        var bothIn = Done(brand, World(story, 5, "trickster.ever", "minagho.dead", Primed, Debt, Terms, Delivered, ChIn, Waiting)).Single(r => r.Has(Reunited));
+        // Sol PP8 r1 (INT): every accepting arrival with Chivarro already in reunites them (no answer strands the pair).
+        var bothOuts = Done(brand, World(story, 5, "trickster.ever", "minagho.dead", Primed, Debt, Terms, Delivered, ChIn, Waiting)).Where(r => r.Has(MinIn)).ToList();
+        check(bothOuts.Count >= 3 && bothOuts.All(r => r.Has(Reunited)), "Trk_Chivarro_FirstThenMinagho: an accepting wake strands the pair.");
+        var bothIn = bothOuts.First();
+        foreach (var (arrival, w) in new[] {
+            (spared, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", Primed, ChIn, Waiting)),
+            (spared, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", ChIn, Waiting)),
+            (sparedLetter, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", Primed, ChIn, Waiting, "minagho_chivarro.presence.minagho_spared.failed")),
+            (sparedLetter, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", ChIn, Waiting, "minagho_chivarro.presence.minagho_spared.failed")),
+            (sparedLetter, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", Primed, ChIn, Waiting, "longcon.offer_heard", "minagho_chivarro.presence.minagho_spared.failed")) })
+        {
+            var accepted = Program.Walk(arrival, w).Where(r => r.Has(MinIn)).ToList();
+            check(accepted.Count > 0 && accepted.All(r => r.Has(Reunited)), "Trk_Chivarro_FirstThenMinagho: an accepting answer strands the pair on " + arrival.Id);
+        }
         check(!Av(aloneChiv, Later(story, bothIn)) && Av(offer, Later(story, bothIn)), "A reunited pair still sees the alone commit.");
 
         // Trk_Chivarro_BothDead / _Killed / _Deposit / _KilledNoDepositLate / _DepositSurvivesFailure / _KilledNoDepositFailed / _KeptBill.
@@ -360,6 +373,13 @@ internal static class MinaghoChivarroTricksterTests
         check(minYes.Count == 1 && minYes[0].Has("minachiv.future_minagho") && Av(epMin, minYes[0]), "Trk_Chivarro_MinaghoAlone: flags.");
         var minReturnedAlone = World(story, 5, "trickster.ever", "minagho.dead", "chivarro.dead", RetM, MinIn, DeclC, Primed, Debt, Terms, Delivered);
         check(Av(aloneMin, minReturnedAlone) && !Av(aloneMinSpared, minReturnedAlone), "The returned Minagho has no alone commit.");
+        // Sol PP8 r2 (INT): reunion, Chivarro's walkout, "Let her stay gone": Minagho's own commit stays open, in her words.
+        var walkedOut = World(story, 5, "trickster.ever", "minagho.spared_c4", MinIn, ChIn, Reunited, SentBack);
+        var walkedPages = new HashSet<string>();
+        Program.Walk(aloneMinSpared, walkedOut, (page, _) => walkedPages.Add(page));
+        check(Av(aloneMinSpared, walkedOut) && Done(aloneMinSpared, walkedOut).Any(r => r.Has(Complete))
+              && aloneMinSpared.Nodes.Single(n => n.Id == "start").Choices.Count(c => Rules.Match(c.Requires, c.Forbids, walkedOut)) == 1,
+            "Trk_Chivarro_WalkoutThenMinagho: letting Chivarro go strands Minagho's own commit.");
 
         // The morning after each physical commit: once, after the night, before the ending pages.
         var pairMorning = S(P + "after.the_morning_after");

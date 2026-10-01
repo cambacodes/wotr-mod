@@ -290,7 +290,7 @@ letter(P + "minagho_dead.collateral", "What the ledger says", [
 
 # 5.5 Spared: the brand stopped bleeding on her, and she has come to see the thief's hand.
 SPARED_OPEN = (
-    c('[Show her your palm] "Look at your fingers. It stopped the moment I opened my mouth in that cell. It bleeds on me now. Mornings, mostly."', "terms", requires=(PRIMED,)),
+    c('[Show her your palm] "Look at your fingers. It started drying the moment I opened my mouth in that cell, and it has been my palm that bleeds since. Mornings, mostly."', "terms", requires=(PRIMED,)),
     c('[Cut your palm and say the terms over it] "\'Until she spills the blood of the one who caused her to fail.\' That\'s me. Watch."',
       "terms", requires=("trickster",), forbids=(PRIMED,), flags=(PRIMED, DEBT, LATE_CLAIM), mythic="Trickster",
       crusade=("Favors", -100)))
@@ -323,6 +323,54 @@ letter(P + "spared.brand_letter", "It stopped bleeding", [
     ],
    requires=("trickster.ever", "minagho.spared.latched", PRES_SPARED + ".failed"), RequiresAnyGroups=[[PRIMED, "trickster"]],
    forbids=("minagho.dead", DECL_M, P + "spared.brand"), delay=96, TricksterDevice=True, TricksterState="minagho_alive")
+
+# 5.5b The Long Con's callback (doc 15 section 3, PP8): the citadel offer, remembered. Variant nodes only, appended to
+# both deliveries (the physical scene and its presence-failure letter); every existing choice keeps its index, and is
+# gated off only while the callback plays (the Derived read: longcon.offer_heard and the current Trickster; a former
+# Trickster sees the original opening). Pay and refuse stay the route's own DEBT and DECL_M choices.
+LONGCON_READ = "longcon.minagho_reads"    # Derived (trickster_world): [longcon.offer_heard, trickster]
+CELLARS = "longcon.sting_exposed"
+LONGCON_TEXT = {
+    P + "spared.brand": dict(
+        palm='''"You said it in the citadel, with the crusaders listening: *where to run when he sends for you*." {n}She touches the mark on her brow and holds up two dry fingertips.{/n} "Well. He will send. And when he does, it is your palm his collectors will come looking for, and here I am, sitting beside it."''',
+        run='''"You offered me somewhere to run. In the citadel, at the top of your voice, like a fishwife." {n}Her fingers go to the mark on her brow and come away wet.{/n} "So here I am, Golarian. Running."''',
+        cellars='''"...And I hear you show your face in cellars now. The Goat's own officer, they whisper in the lower city." {n}Her lip peels back from her teeth.{/n} "They have no idea what you are. Neither do I. That is the only reason I am still sitting here."'''),
+    P + "spared.brand_letter": dict(
+        palm='''{n}There is more, squeezed in under the first lines.{/n} "You said it in the citadel: where to run when he sends for you. He will send. The mark is dry, and it is your palm his collectors will look for. So I came to the palm."''',
+        run='''{n}There is more, squeezed in under the first lines, in a hand that has started to shake.{/n} "You offered me somewhere to run, in the citadel. I am running. The mark has not stopped bleeding."''',
+        cellars='''"And they say in the lower city that you show your face in cellars now, as his officer. I want to see that face."'''),
+}
+
+
+def _longcon_callback(s):
+    text = LONGCON_TEXT[s["Id"]]
+    nodes = {nd["Id"]: nd for nd in s["Nodes"]}
+    openers = [nodes["start"]] + ([nodes["terrified"]] if "terrified" in nodes else [])
+    decisions = [ch for ch in nodes["start"]["Choices"] if ch["Next"] != "terrified"]
+    for nd in openers:
+        for ch in nd["Choices"]:
+            if ch["Next"] != "terrified" and LONGCON_READ not in ch["Forbids"]:
+                ch["Forbids"].append(LONGCON_READ)
+        wait = ["minagho.terrified"] if nd["Id"] == "start" and "terrified" in nodes else []
+        nd["Choices"].append(c("Continue", "longcon_palm", requires=(LONGCON_READ, PRIMED), forbids=wait))
+        nd["Choices"].append(c("Continue", "longcon_run", requires=(LONGCON_READ,), forbids=(PRIMED, *wait)))
+
+    def plain(ch):
+        out = copy.deepcopy(ch)
+        out["Forbids"] = [f for f in out["Forbids"] if f not in (LONGCON_READ, "minagho.terrified")]
+        return out
+    primed = [plain(ch) for ch in decisions if PRIMED in ch["Requires"]]
+    unprimed = [plain(ch) for ch in decisions if PRIMED not in ch["Requires"]]
+    speak = mg if s["Id"].endswith(".brand") else (lambda i, t, *ch: n(i, "Minagho", t, *ch, portrait="Minagho"))
+    for nid, chosen in (("longcon_palm", primed), ("longcon_run", unprimed)):
+        s["Nodes"].append(speak(nid, text[nid.split("_")[1]], c("Continue", "longcon_cellars", requires=(CELLARS,)),
+                                *[dict(copy.deepcopy(ch), Forbids=ch["Forbids"] + [CELLARS]) for ch in chosen]))
+    s["Nodes"].append(speak("longcon_cellars", text["cellars"], *copy.deepcopy(primed + unprimed)))
+
+
+for _s in SCENES:
+    if _s["Id"] in LONGCON_TEXT:
+        _longcon_callback(_s)
 
 # 5.6 The collectors: optional, physical only, never twice (pursuers_met). One scene per Minagho presence.
 COLLECTOR_CHOICES = (
@@ -604,10 +652,12 @@ letter(P + "alone.chivarro_letter", "The house she keeps now", [
 ALONE_MIN_NODES = [
     mg("start", '''"You keep looking at the gate as if someone else is coming through it." {n}She does not look at it herself.{/n}''',
        c('"She\'s in Herrax\'s cellar, and the house wants too much for her. Stay."', "terms", requires=("chivarro.dead.latched", DEPOSIT)),
-       c('"She went back through the press. Stay."', "terms", forbids=("chivarro.dead.latched",)),
-       c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead.latched",), forbids=(DEPOSIT,))),
+       c('"She went back through the press. Stay."', "terms", forbids=("chivarro.dead.latched", REUNITED)),
+       c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead.latched",), forbids=(DEPOSIT,)),
+       # Sol PP8 r2 (INT): the walkout after the reunion, answered with "Let her stay gone" (appended).
+       c('"She walked out, and I let her stay gone. Stay."', "terms", requires=(SENT_BACK, REUNITED), forbids=("chivarro.dead.latched",))),
     mg("killer", '''"I know." {n}Her lip peels back from her teeth.{/n} "Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean."
-{n}She is very still.{/n} "I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it."
+{n}She is very still.{/n} "I have killed for less. I have lain down with worse. Which of those you get is mine to choose, and I will take a very long time choosing, and you will feel every day of it."
 "Here is why I am still standing here instead of opening your throat. Herrax has her rings on a tray in the Delights, fingers and all, for any guest to paw. You are going to buy them back from her and give them to me, and I am going to bury them somewhere Herrax will never find. And every time you look at me, you will remember who you bought them for."''',
        c("Continue", "terms")),
     mg("terms", '''"Stay. For a mortal who owns my debt and bleeds for it every morning." {n}Her lip curls.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
@@ -623,13 +673,15 @@ ALONE_MIN_NODES = [
 ]
 ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead.latched"]]
 ALONE_MIN_FORBIDS = (REUNITED, RET_C, CH_IN, CLOSED, COMPLETE, DECLINED)
+# Sol PP8 r2 (INT): Chivarro's arrival and the reunion are history once she has been let go ("Let her stay gone").
+ALONE_MIN_FO = {REUNITED: SENT_BACK, CH_IN: SENT_BACK, RET_C: SENT_BACK}
 physical(P + "alone.minagho", "One lilitu, dry", "Minagho", PRES_MIN, MIN_UNIT, ALONE_MIN_NODES,
          requires=("trickster.ever", MIN_IN, RET_M), RequiresAnyGroups=ALONE_MIN_GATE, forbids=ALONE_MIN_FORBIDS, delay=96,
-         TricksterDevice=True, TricksterState="chivarro_dead")
+         TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 physical(P + "alone.minagho_spared", "One lilitu, dry", "Minagho", PRES_SPARED, MIN_UNIT, copy.deepcopy(ALONE_MIN_NODES),
          requires=("trickster.ever", MIN_IN, "minagho.spared.latched"), RequiresAnyGroups=ALONE_MIN_GATE,
          forbids=(*ALONE_MIN_FORBIDS, "minagho.dead", P + "alone.minagho"), delay=96,
-         TricksterDevice=True, TricksterState="chivarro_dead")
+         TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 letter(P + "alone.minagho_letter", "One lilitu, dry", [
     mg("start", '''"Stay, you said. For a mortal who owns my debt and bleeds for it every morning." {n}The hand is hard and very straight.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
        c('"Your price."', "came", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
@@ -641,7 +693,7 @@ letter(P + "alone.minagho_letter", "One lilitu, dry", [
         c("[Let her.]", flags=(MORNING,)))],
    requires=("trickster.ever", MIN_IN), RequiresAnyGroups=[*ALONE_MIN_GATE, [PRES_MIN + ".failed", PRES_SPARED + ".failed"]],
    forbids=(*ALONE_MIN_FORBIDS, P + "alone.minagho", P + "alone.minagho_spared"), delay=96,
-   TricksterDevice=True, TricksterState="chivarro_dead")
+   TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 
 
 # The priced second ask after a soft no (R2-1; Sol r2 INT). "Ask me when it scars": the Commander makes it scar, a week of
@@ -731,7 +783,7 @@ MIN_MORNING = [
 "His. Every morning." {n}She takes your wrist, not gently, and holds the hand up to the grey light as if checking a coin for clipping.{/n} "I lay awake beside you waiting for it. I wanted to see if you would flinch, so I would know what you are worth."''',
        c('"Did I?"', "verdict"),
        c("[Say nothing and let it bleed.]", "verdict")),
-    mg("verdict", '''"No." {n}She lets go of the wrist.{/n} "Which means you are a liar or a fool, and I have not decided which. I will spend a long time deciding. You will not enjoy it."
+    mg("verdict", '''"No." {n}She lets go of the wrist.{/n} "You wanted me to hear it. Every dawn, another little reminder of what you paid for me. Clever. I could charge admission."
 {n}She turns back to her dagger, and then, without looking up:{/n} "Bind it properly, idiot. If you bleed to death on my account I will never forgive you, and I have a very long memory."''',
        c("[Bind it.]", flags=(MORNING,)),
        c('"You bind it."', "bind")),
@@ -856,6 +908,46 @@ SCENES.extend(REACTIONS)
 
 LOST = {"minachiv.ending_both_lost": (RET_M, RET_C), "minachiv.ending_minagho_lost": (RET_M,),
         "minachiv.ending_chivarro_lost": (RET_C,)}
+
+
+# Sol PP8 r1 (INT): Chivarro came first and waits on the quartermaster's bench; Minagho then arrives and accepts with an
+# answer that does not name Chivarro. Before, only the answer that named her set REUNITED, so the pair continuation could
+# be stranded. Save-safe twins: each accepting arrival answer (sets MIN_IN, not REUNITED, not already for CH_IN) is gated
+# off while Chivarro is in, and a twin appended at the end of the same node keeps its text and effects and also reunites.
+ARRIVALS = (P + "minagho_dead.brand", P + "minagho_dead.brand_letter", P + "minagho_dead.collateral", P + "spared.brand",
+            P + "spared.brand_letter")
+
+
+def _reunite_twins(s):
+    for node in s["Nodes"]:
+        twins = []
+        for ch in node["Choices"]:
+            if MIN_IN in ch["Set"] and REUNITED not in ch["Set"] and CH_IN not in ch["Requires"] and CH_IN not in ch["Forbids"]:
+                twin = copy.deepcopy(ch)
+                twin["Requires"] = twin["Requires"] + [CH_IN]
+                twin["Set"] = twin["Set"] + [REUNITED]
+                ch["Forbids"].append(CH_IN)
+                twins.append(twin)
+        node["Choices"].extend(twins)
+
+
+for _s in SCENES:
+    if _s["Id"] in ARRIVALS:
+        _reunite_twins(_s)
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP8). --------------------------------------
+# PATH_FIT is the scene's class today: T (a device, or gated on the Trickster), N-all, or N-fit. Every scene in this module
+# stands on the Trickster device (the brand re-addressed, the wardrobe, the house's double) or on a flag only the device
+# sets (the companion reactions read returned_*), so all are T. The non-Trickster romance is the registered parent route
+# (minagho_chivarro_continuation, path-neutral, reads the parent etude b5c19cd0 on every path); 14-PATH-FIT §3 fits it on
+# Azata (the canon reunion, Cue_0317 "never to part again") and Demon (Y), maybe Angel, Devil, Dragon, Legend and Lich.
+# Canon fate off Trickster: Staunton kills a still-branded Minagho in Ch5; Chivarro is killed or removed in Ch4.
+# Pacing (PP8): Minagho is present from Ch1 (Grey Garrison) as a captor; no Minagho early beat (13 §7 caveat: a Ch1 host
+# would need her canon hostility changed); her early thread is the Long Con (longcon.citadel_offer, Ch2, Relationship
+# longcon) read back here in Ch5 (section 5.5b).
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {}
 
 
 def integrate(payload):

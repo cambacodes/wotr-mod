@@ -10,7 +10,9 @@ Findings:
           H1  a Ch1-2 scene reads `trickster`/`trickster.ever` or carries Trickster content (device, Trickster state,
               Trickster mythic entry or choice).
           H2  a Ch1-2 scene sets a CommittedFlag, or the StartedFlag of a Trickster route (a relationship whose
-              StartedFlag no Ch3+ path-neutral scene sets).
+              StartedFlag no Ch3+ path-neutral scene sets). When the availability map is given, the StartedFlag rule
+              covers the roster's routes only: a framework relationship outside the roster (the Long Con, doc 15 section 7,
+              which starts at Chaleb's pyre in Ch1 and is no romance) is not a Trickster route.
           H3  a Ch1-2 scene sets a native key (an etude, quest, cue, answer, dialog or native flag binding), or any
               scene sets a key bound to a native or parent-mod romance etude (13 section 0).
           H4  a Ch1-2 scene reads or sets another relationship's CommittedFlag or a harem flag (`<rel>.harem...`).
@@ -264,7 +266,8 @@ def count_beats(story, routes):
     return starts, opens
 
 
-def hard_violations(story):
+def hard_violations(story, paced=None):
+    """paced: the roster's relationship ids (from the availability map); None applies H2's StartedFlag rule to all."""
     relationships = story["Relationships"]
     committed = {r["CommittedFlag"]: key for key, r in relationships.items()}
     started = {r["StartedFlag"]: key for key, r in relationships.items()}
@@ -305,7 +308,7 @@ def hard_violations(story):
         for key in sorted(written):
             if key in committed:
                 found.append(("H2", sid, "Ch1-2 scene sets CommittedFlag %s (%s)" % (key, committed[key])))
-            elif key in started and key not in base_started:
+            elif key in started and key not in base_started and (paced is None or started[key] in paced):
                 found.append(("H2", sid, "Ch1-2 scene sets StartedFlag %s of Trickster route %s" % (key, started[key])))
             if key in native and key not in romance_keys:
                 found.append(("H3", sid, "Ch1-2 scene sets native key %s (%s)" % (key, native[key])))
@@ -353,7 +356,7 @@ def lint(story, availability, roster):
     others = sorted(relationships - covered)
     if others:
         report["info"].append("relationships outside the roster (not paced): " + ", ".join(others))
-    report["hard"] = hard_violations(story)
+    report["hard"] = hard_violations(story, covered)
     return report
 
 

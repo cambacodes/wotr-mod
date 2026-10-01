@@ -294,7 +294,7 @@ LENS_NIGHT = [
 "Go to sleep, Commander. One of us should."''',
         c("Continue", "acc_start", flags=(LENS_ASKED,))),
     ar("notes", '''"The only one who has taken notes on you. Yes." {n}Something in the writing changes: the letters are no less precise, but they lean, very slightly, as if the hand were tired.{/n}
-"Everyone else looks at you and sees a saviour, or a monster, or a clown. I look at you and see a record. It is the most intimate thing I know how to do. Do not make me regret telling you so."''',
+"Everyone else looks at you and sees a saviour, or a monster, or a clown. I see a record, and the record is mine: I made it, I keep it, and it is worth more than anything the others think they see. Do not mistake that for sentiment. It is ownership."''',
         c("Continue", "acc_start", flags=(LENS_ASKED,))),
     ar("frost", '''"Frost." {n}The glass fogs over completely, and clears, and fogs again: once, twice, three times.{/n}
 "That was a laugh, Commander. I thought you should know what one looks like, from this side. Do not expect another."''',
@@ -314,22 +314,31 @@ LENS_NIGHT = [
     ar("last", '''"Sleep." {n}The letters come at once.{/n}
 "You sleep on your left side, with one hand under the pillow, as if something might be taken from under it in the night. You talk, sometimes. Last night you said 'neither' twice, and a name I could not read."
 "And at the second 'neither' the wound in your chest warmed this glass from across the tent. I wrote down the hour. I intend to find out what it answers to, and then I intend to use it."''',
-        c("Continue", "bait")),
+        c("Continue", "bait", forbids=("areelu.one_must_burn",)),
+        c("Continue", "bait_after", requires=("areelu.one_must_burn",))),
     ar("fool_king", '''{n}The frost thickens until the lens is almost white.{/n}
 "I was watching. The Commander of the Fifth Crusade, in the capital that crusaders bled for, put a crown on a fool and made the city kneel to him. The priests wept. The knights drank. The fool, I am told, gave a very good speech."
 "I have seen demon lords crowned, Commander. I have seen them uncrowned. None of them made me laugh." {n}A pause.{/n} "Do not ask whether I laughed. I am not going to tell you."''',
-        c("Continue", "bait")),
+        c("Continue", "bait", forbids=("areelu.one_must_burn",)),
+        c("Continue", "bait_after", requires=("areelu.one_must_burn",))),
     ar("yaniel", '''"I was an excellent Yaniel. You followed her, did you not? You went exactly where she led you. That is the only measure of a disguise that matters."
 {n}The frost settles.{/n} "It was the first time I spoke to you with a face. I chose a kind one. You did not notice the difference. Neither, I confess, did I, until afterwards."''',
-        c("Continue", "bait")),
+        c("Continue", "bait", forbids=("areelu.one_must_burn",)),
+        c("Continue", "bait_after", requires=("areelu.one_must_burn",))),
     ar("again", '''"Because you asked where I was, and it is a question nobody has asked me for a hundred years. They ask what I did. They ask how many. Never where I was."
 {n}The frost thins.{/n} "I was at a great many windows, Commander. Most of them were yours."''',
-        c("Continue", "bait")),
+        c("Continue", "bait", forbids=("areelu.one_must_burn",)),
+        c("Continue", "bait_after", requires=("areelu.one_must_burn",))),
     ar("alive", '''"Yes." {n}No hesitation at all.{/n} "I kept you alive so that you would be whole when it mattered. A vessel that breaks too early is useless."
 "You wanted me to say something softer. I do not have anything softer. I have this, which is true."''',
-        c("Continue", "bait")),
+        c("Continue", "bait", forbids=("areelu.one_must_burn",)),
+        c("Continue", "bait_after", requires=("areelu.one_must_burn",))),
     ar("bait", '''"Now listen. Soon you will find a crystal. When you do, you will find my laboratory, and me in it. I chose the bait myself."
 "Bring your wager. Say it to my face, or to what I have left of one. I would like to see you say 'neither' while I am looking at you."
+{n}The frost clears, and does not form again that night.{/n}''',
+        c("[Put the lens away.]")),
+    ar("bait_after", '''"You have seen my laboratory now, and me in it, and you did not bring your wager, or you did not bring it far enough. Bring it to Threshold."
+"Say it to my face, or to what I have left of one. I would like to see you say 'neither' while I am looking at you."
 {n}The frost clears, and does not form again that night.{/n}''',
         c("[Put the lens away.]")),
 ]
@@ -355,6 +364,18 @@ SCENES.append(scene("areelu.trickster.rivalry.lens", "Knock knock", "Areelu", 5,
     ar("reply", '''{n}The lens frosts over, and letters form in the frost, small and precise.{/n}
 "Knock knock. How childish. Yes, I have been watching. I told you at Iz that I would follow you, and I do not say things I do not mean."
 {n}The frost thickens, is wiped away from the other side, and forms again.{/n} "You are worth watching. That is not a compliment. It is a measurement."''',
+        c('"Then measure this. One of us is supposed to burn at the end. My money\'s on neither."', "terms"),
+        # The Long Con's Areelu crossing (doc 15 section 4a, PP8): appended; [0] -> terms is unchanged.
+        c("[Ask what she concluded in Drezen.]", "drezen_memory", requires=("trickster", "areelu.early.mask_counted"))),
+    ar("drezen_memory", '''{n}The frost thickens, clears, and thickens again, as though she were deciding how much of a file to show you.{/n} "Drezen."''',
+        c("Continue", "drezen_silent", requires=("areelu.early.read_silent",)),
+        c("Continue", "drezen_offered", requires=("areelu.early.read_offered",), forbids=("areelu.early.read_silent",)),
+        c("Continue", "drezen_counted", forbids=("areelu.early.read_silent", "areelu.early.read_offered"))),
+    ar("drezen_silent", '''"You said nothing. I have not mistaken that for an answer."''',
+        c('"Then measure this. One of us is supposed to burn at the end. My money\'s on neither."', "terms")),
+    ar("drezen_offered", '''"You gave me an explanation. I have not decided whether to believe it."''',
+        c('"Then measure this. One of us is supposed to burn at the end. My money\'s on neither."', "terms")),
+    ar("drezen_counted", '''"You counted my pauses in that cell. I noticed you counting."''',
         c('"Then measure this. One of us is supposed to burn at the end. My money\'s on neither."', "terms")),
     ar("reply2", '''{n}The lens frosts over from the other side. Letters form in it, small and precise.{/n}
 "Punchline. You insist on the vocabulary of the stage, as if the Wound were a comedy and you had read the last act."
@@ -581,7 +602,7 @@ inline("areelu.trickster.rift.odds", "What the winner keeps", 6,
         c('[Joke] "I never arrange anything. I just leave the door open and see who walks in."', "doors"),
         c('"You said I was costing you hours. Am I?"', "feelings")),
     ar("feelings", '''{n}She looks at you for a long time. The violet flames of the rift throw her shadow across the floor between you, long and thin.{/n}
-"More than hours," she says at last. "I have a hypothesis I would rather not test: that when I look at you I have stopped calculating. That is the most dangerous sentence I have said aloud in a century, and I have said it to the one person who can use it against me."
+"More than hours," she says at last. "I have a hypothesis I would rather not test: that when I look at you I have stopped calculating. Write that down, if you like. It will cost me hours I do not have, and if you ever try to spend it, I will know, and I will take the hours back out of you."
 "Do not use it. Or do. Either way, one of us burns today, and it will not matter."''',
         c('"It\'ll matter after."', "after"),
         c("[Say nothing, and hold her gaze.]", "after")),
@@ -660,7 +681,7 @@ UNPRIMED_REFUSE = c('[Refuse] "Not at that price."', flags=(CLOSED,))
 at_threshold("areelu.trickster.wager.unprimed", "No credit at this table",
     '"One of us burns so the other lives, you said. I have a bet for you. My money\'s on neither."', [
     ar("start", '''"Neither." {n}She is on her knees in her own blood, and she looks at you as though you had tried to pay a physician in buttons.{/n}
-"You never came to my cell. You never picked up my glass. You fought your way through my fortress without a word about it, and now, with my life on the end of your blade, you would like to gamble." {n}Her mouth thins.{/n} "A wager is struck between parties who can both still lose. Only one of us can lose now, and it is not you."''',
+"You never brought me a wager. Not to my cell, not through my glass. You fought your way through my fortress without a word about it, and now, with my life on the end of your blade, you would like to gamble." {n}Her mouth thins.{/n} "A wager is struck between parties who can both still lose. Only one of us can lose now, and it is not you."''',
         c('"Then make it so I can lose. Name a price."', "price"),
         c('[Joke] "I\'m a late bloomer."', "bloomer"),
         c("[Say nothing.]", abort=True)),
@@ -732,8 +753,14 @@ at_threshold("areelu.trickster.wager.raised", "A longitudinal experiment", '"The
         c("Continue", "collect")),
     ar("collect", '''"And if I burn, Commander?" {n}Her eyes do not leave your face.{/n} "You have never said what you collect. 'What is left of me' is not a quantity. I will not accept a term I cannot measure."''',
         c('"Your notes. A century of them. That\'s what\'s left of you."', "priced", forbids=(NAMED,)),
-        c('"We named it in your cell. Your notes."', "priced_known", requires=(NAMED,)),
-        c('"Your life. Nothing less."', "life", forbids=(DRAWN,))),
+        c('"We named it in your cell. Your notes."', "priced_known", requires=(NAMED, "areelu.trickster.wager.struck")),
+        c('"Your life. Nothing less."', "life", forbids=(DRAWN,)),
+        # Sol PP8 r1 (CAN): the stake was named here at Threshold, never in her cell (appended).
+        c('"Your notes. As we agreed, here."', "priced_agreed", requires=(NAMED,), forbids=("areelu.trickster.wager.struck",))),
+    ar("priced_agreed", '''"My notes. Yes. We agreed it at this edge, not an hour ago, and I have thought of nothing else since. The notes, and the graft with them: I made myself, and what I made is work." {n}Blood runs from her wound; she does not look at it.{/n}
+"Then this is what it costs you, to let paper burn in my place. Your wound is mine, win or lose. For study. You will not get a better term from me, and you will not get this one twice."''',
+        c('"Agreed."', "her_choice", flags=(NAMED, WOUND_CEDED)),
+        c('"No. Not the wound."', "life")),
     ar("priced", '''"My notes." {n}She is silent, and you can watch her test it, the way she tests everything: from the end backwards.{/n}
 "Yes. A century of paper. That is exactly what is left of me; everything else went into the Wound." {n}She touches the wound above her heart.{/n} "And the graft that holds the Abyss in me. I made myself, Commander. That was a working too, and a working is work. If you collect my work, you collect the stitch." "Very well. If you collect my work in place of my life, you pay for the privilege. Your wound is mine, win or lose. For study."''',
         c('"Agreed."', "her_choice", flags=(NAMED, WOUND_CEDED)),
@@ -949,8 +976,8 @@ page("areelu.trickster.finale.unnamed", "Uncollected", [
               "left on the table.", requires=(NAMED,), forbids=(DRAWN,)),
             p("The Commander had taken the Abyss out of her into the cauldron, and then chose another ending for what was "
               "left. The choice was the Commander's. The report does not argue with it.", requires=(DRAWN,)),
-            p("She fell in the fight, before anyone could bargain, as she had always said one of them would.",
-              requires=(FIGHT,)),
+            p("She fell in the fight, before the wager could be settled, as she had always said one of them would.",
+              requires=(FIGHT,), forbids=(SAC_TRICK, INCINERATED, SAC_WOUND, SAC_BEFORE)),
             p("She burned at the Commander's word, in the end, as the hunters had always wanted. The wager said that "
               "whoever burned would pay. It did not say who would light the fire, and the Commander had chosen to.",
               requires=(INCINERATED,)),
@@ -1281,7 +1308,7 @@ report("areelu.trickster.report.participation", "The report: participation", [
 {n}She wrote nothing more that morning. That afternoon the notebook went into a drawer with a lock of her own making, and the Commander never read another entry over her shoulder, and never found the key.{/n}''',
         c("Continue", "morning_after")),
     nar("morning_after", '''{n}That afternoon she went back across the hall and moved her own desk under the one window of her room that faced the street, where she could see who came to the Commander's door before the Commander did, with its back to the wall.{/n}
-{n}"You are the only protection I have left that the hunters respect," she said, when the Commander found it there. Then, because it was not the whole of it, and she had never in her life been able to leave a sum unfinished: "And nobody comes to your door that I have not seen first. The last time hunters came to a door of mine, I was at my desk with my back to the window." She looked at the desk as if it had spoken out of turn. "Strike that. It is a sound position." Her travelling case stayed packed beside it, and she did not hide that either.{/n}''',
+{n}"Your name on this door does what no ward of mine can: it makes the hunters ask permission," she said, when the Commander found it there. Then, because it was not the whole of it, and she had never in her life been able to leave a sum unfinished: "And nobody comes to your door that I have not seen first. The last time hunters came to a door of mine, I was at my desk with my back to the window." She looked at the desk as if it had spoken out of turn. "Strike that. It is a sound position." Her travelling case stayed packed beside it, and she did not hide that either.{/n}''',
         c('"Stay, then. On your terms."', "stay"),
         c('"Under my roof, the case goes in the cupboard."', "rules"),
         c('"Keep your door open, then. I will keep mine."', "door"),
@@ -1857,8 +1884,33 @@ page("areelu.trickster.finale.ascended", "Unsettled", [
 page("areelu.trickster.finale.not_burned", "Not burned", [
     nar("end", '''{n}"You did not burn." Areelu wrote it at the top of a clean page, and did not underline it, because she was not yet certain it was true.{/n}
 {n}"The lock took the key, exactly as designed. I measured the seam afterwards: it holds, and what holds it is everything I put into the subject, and the Abyss with it. That part burned. The rest of the subject came back over the edge on something I did not build, and I will not name its maker in my own report."{/n}
-{n}"The wager is therefore unsettled. Neither of us burned. I dislike an experiment with an outside variable. I will be studying this one for the rest of my life, and I intend to be difficult about it."{/n}''')],
+{n}"The wager is therefore unsettled. Neither of us burned. I dislike an experiment with an outside variable. I will be studying this one for the rest of my life, and I intend to be difficult about it."{/n}''',
+        # Sol PP8 r1 (BEL cap): a committed Areelu's night in this world. [0] is the original page end, kept for the others.
+        c("Continue", forbids=(COMMITTED, LATE_COMMITTED)),
+        c("Continue", "nb_across", requires=(COMMITTED,), forbids=(DECLINED, STAKE_ONLY)),
+        c("Continue", "nb_across", requires=(LATE_COMMITTED,), forbids=(COMMITTED, DECLINED, STAKE_ONLY)),
+        c("Continue", requires=(DECLINED,)),
+        c("Continue", requires=(STAKE_ONLY,), forbids=(DECLINED,))),
+    nar("nb_across", '''{n}She did not wait to be asked. On the first night she came to the Commander's rooms with a lamp and a notebook, and set both down on the floor, the notebook closed.{/n}
+{n}"Where the wound was," she said. "Show me." The Commander unlaced the shirt. There was nothing to see: skin, paler than the rest, and under her palm, warm. She pressed until she could feel the heart under it, as if it might be lying to her.{/n}
+{n}"Something brought you back that I did not build," she said, very low, "and I intend to find out what it left in you." Then she pushed the Commander down onto the bed with the flat of that hand and followed, a knee on the mattress and then astride, the grey dress gathered up in her fist, and bent her head to the place where the wound had been, and set her teeth to it.{/n}''',
+        c("[Let her.]", "nb_morning"),
+        c('[Catch her wrist.] "Not as an experiment."', "nb_stopped")),
+    nar("nb_morning", '''{n}In the morning the notebook was still on the floor where she had left it, and still closed. She picked it up on her way out and did not open it until she was across the hall, and the first line she wrote in it was not a measurement: "Variable unidentified. Observer not stopping."{/n}'''),
+    nar("nb_stopped", '''{n}She went still, and took her hand away, and looked at it as though it belonged to a colleague who had disappointed her.{/n}
+{n}"It was not an experiment," she said. "I would not have said so if you had not made me." The next evening she knocked, which she had never done, and waited to be let in.{/n}''')],
     requires=("trickster.ever", "iomedae.appointment_kept", STRUCK), forbids=(CLOSED, DIED), sequence=False)
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP8). --------------------------------------
+# Every scene here is the wager (the device) or reads a flag only it sets, so all are T. 14-PATH-FIT §3 fits her romance
+# only on Dragon (the canon redemption, Ending_AreeluRedeemed) and maybe Demon, Legend and Lich; on most paths she dies at
+# Threshold. No v2 candidate in this module: a Dragon-path romance needs its own redemption premise (v2).
+# Pacing (PP8): Ch2 3 in person, the Long Con's Areelu crossing (longcon.py: areelu.early.two_masks on the fake Yaniel's
+# list; courtesy_freed / courtesy_refused on her unmasked list), read back at Ch5 in rivalry.lens reply [1]. Ch3 none: she
+# is absent (her lab projection is Ch5). Ch4 1, Ch5 4 + 2, Ch6 10.
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {}
 
 
 def integrate(payload):

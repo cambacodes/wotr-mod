@@ -352,7 +352,26 @@ internal static class AreeluTricksterTests
         check(noDagger.Contains("gone") && !noDagger.Contains("give") && withDagger.Contains("give") && !withDagger.Contains("gone"),
             "The dagger page narrates a dagger the Commander does not hold.");
         // Trk_Areelu_PriorLien (ledger row 16): the Commander burned closing the Wound; only the prior-lien page plays.
-        // (iomedae.appointment_kept, Iomedae's form of this world, cannot be read until her route produces its primer.)
+        // Iomedae's form of this world (iomedae.appointment_kept, now produced by her route) has its own page, not_burned; a
+        // committed Areelu (a struck wager is at least late-committed) gets her night there (Sol PP8 r1, BEL cap).
+        var notBurned = S(P + "finale.not_burned");
+        var keptWorld = World(story, 6, "trickster.ever", "iomedae.appointment_kept", Struck, Bet, Committed, Named);
+        var keptPages = new HashSet<string>();
+        Program.Walk(notBurned, keptWorld, (page, _) => keptPages.Add(page));
+        check(Available(notBurned, keptWorld) && keptPages.Contains("nb_across") && keptPages.Contains("nb_morning") && keptPages.Contains("nb_stopped"),
+            "The appointment-kept page does not give a committed Areelu her night.");
+        // Sol PP8 r2 (INT/BEL): her refusal or the stake alone settles the page; no night follows either.
+        foreach (var refusal in new[] { Declined, StakeOnly })
+        {
+            var refusedPages = new HashSet<string>();
+            var refusedOut = Program.Walk(notBurned, World(story, 6, "trickster.ever", "iomedae.appointment_kept", Struck, Bet, Named, refusal), (page, _) => refusedPages.Add(page));
+            check(refusedOut.Count > 0 && !refusedPages.Contains("nb_across") && !refusedPages.Contains("nb_morning"),
+                "The appointment-kept page gives a night after " + refusal + ".");
+        }
+        // Sol PP8 r1 (CAN): a stake named only at Threshold is never recalled as named in her cell.
+        var lateRaise = new HashSet<string>();
+        Program.Walk(raised, lateOut.First(r => r.Has(Struck) && r.Has(Named)), (page, _) => lateRaise.Add(page));
+        check(!lateRaise.Contains("priced_known"), "The raised wager recalls a cell naming that never happened.");
         var priorLien = S(P + "finale.prior_lien");
         var burned = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", Struck, Bet, Committed, Named, Drawn);
         check(burned.Has(P + "commander_burned") && !burned.Has("trickster.cheated_death") && Available(priorLien, burned)

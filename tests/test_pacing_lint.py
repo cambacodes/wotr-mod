@@ -161,6 +161,18 @@ class PacingHardRuleTests(unittest.TestCase):
         self.choice["Set"].append("beta.started")    # a path-neutral Ch3 scene starts beta: a base route
         self.assertEqual(self.rules(), [])
 
+    def test_h2_framework_relationship_outside_the_roster(self):
+        # Doc 15 section 7: the Long Con starts in Ch1 and is no romance; with the roster given, only its routes count.
+        self.choice["Set"].append("alpha.started")
+        rules = [(rule, sid) for rule, sid, _ in pacing_lint.hard_violations(self.story, paced={"beta"})]
+        self.assertEqual(rules, [])
+        rules = [(rule, sid) for rule, sid, _ in pacing_lint.hard_violations(self.story, paced={"alpha"})]
+        self.assertEqual(rules, [("H2", "alpha.early")])
+        self.setUp()
+        self.choice["Set"].append("alpha.committed")   # the CommittedFlag rule still covers every relationship
+        rules = [(rule, sid) for rule, sid, _ in pacing_lint.hard_violations(self.story, paced={"beta"})]
+        self.assertEqual(rules, [("H2", "alpha.early")])
+
     def test_h3_native_keys_and_romance_etudes(self):
         self.choice["Set"].append("kenabres.fallen")
         self.assertEqual(self.rules(), [("H3", "alpha.early")])
