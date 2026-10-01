@@ -30,6 +30,8 @@ Placement (06-ROUTE-REGISTRY §3): the evil Arueshalae's Drezen beats are at the
 capital jeweller (JewelerCapitalTrader bc109323, unused by any other route), with the tailor's awning (TailorCapitalTrader
 253cdb8f) as the fallback copy. The crowded anchors (Fye, Wilcer Garms, the smith) are left alone.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
@@ -94,6 +96,12 @@ TAVERN_PRESENCE = "arueshalae.presence.evil_drezen"   # the jeweller's arcade af
 YARD_PRESENCE = "arueshalae.presence.evil_awning"     # the tailor's awning (fallback)
 LAIR_FAILED = LAIR_PRESENCE + ".failed"        # runtime: her lair copy is wanted but the locator did not resolve
 TAVERN_FAILED = TAVERN_PRESENCE + ".failed"    # runtime: the jeweller's unit is not in the capital
+YARD_FAILED = YARD_PRESENCE + ".failed"        # runtime: the tailor's awning did not resolve either (PP2: the letter's gate)
+# PP2: a presence's .failed is observed only while its own area is loaded, so the Drezen reunion and the lipstick note read
+# latches recorded at the moment of failure (Story.Latches: runtime-derived sources), which survive travel and reloads.
+LAIR_LATCHED = "arueshalae.lair_unplaced.latched"
+YARD_LATCHED = "arueshalae.awning_unplaced.latched"
+LATCHES = {LAIR_LATCHED: [LAIR_FAILED], YARD_LATCHED: [YARD_FAILED]}
 NIGHT_DONE = P + "evil.dawn"
 # The arcade and its fallback use two different bodies (presences sharing a unit and area must exclude each other).
 DREZEN_PLACES = ((TAVERN_PRESENCE, "", (), EVIL_UNIT), (YARD_PRESENCE, "_yard", (TAVERN_FAILED,), EVIL_NPC))
@@ -131,11 +139,13 @@ PRESENCES = {
                         MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREET_LAIR),
     TAVERN_PRESENCE: dict(Unit=EVIL_UNIT, Area=DREZEN, Mode="spawn-copy",
                           At=dict(NearUnit=JEWELER, Side="front", Distance=2.0),
-                          Requires=["trickster.ever", RETURNED, REUNITED, EVIL_DEAD], Forbids=[CLOSED, ALLY, NIGHT_DONE],
+                          Requires=["trickster.ever", RETURNED, EVIL_DEAD], Forbids=[CLOSED, ALLY, NIGHT_DONE],
+                          RequiresAnyGroups=[[REUNITED, LAIR_LATCHED]],   # PP2 (Sol COX): the reunion moves here when the lair fails
                           MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREET_ARCADE),
     YARD_PRESENCE: dict(Unit=EVIL_NPC, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="front", Distance=2.0),
-                        Requires=["trickster.ever", RETURNED, REUNITED, EVIL_DEAD, TAVERN_FAILED],
-                        Forbids=[CLOSED, ALLY, NIGHT_DONE], MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
+                        Requires=["trickster.ever", RETURNED, EVIL_DEAD, TAVERN_FAILED],
+                        Forbids=[CLOSED, ALLY, NIGHT_DONE], RequiresAnyGroups=[[REUNITED, LAIR_LATCHED]],
+                        MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
                         Greeting=GREET_AWNING),
 }
 
@@ -223,7 +233,7 @@ letter(P + "dead.starving", "Diagnosis", 3, [
     nar("thread", '''{n}The chaplain on duty has already given his answer, with the tiredness of a man who has given it before: he will not raise a demon. The rite calls a soul home to its body, and he will not stand over a succubus and call, and find out what answers. His books say her kind keep no soul apart from the flesh, so that nothing is set loose when they die, and that only a wish or a miracle is sure to bring one back; he has neither, and his bishop would not spend them on her if he had. It is not a question of diamonds.{/n}
 {n}You do not need him. You have something else. It is set in the inside of your wrist, where she kissed it: her gift, the thread a succubus leaves in a mortal she means to keep. Every bestiary in the crusade's library agrees that the gift is hers to take back, and that it tears something out of its keeper when it goes. Not one of them says what becomes of it when she dies, because nobody has ever asked a succubus for one as insurance. You felt for it at the hour of her death, and every hour since. It is cold, and faint, and still there.{/n}
 {n}So whatever ended on that field did not end all of her. That is the whole of your evidence, and the whole of your wager: a profane gift puts a life in its giver's keeping, the queen herself says so of hers, and at your asking Arueshalae tied this one the other way too, her life in yours. You are betting that a keeper may pull on what is kept. You put the inside of your wrist, the place where she kissed it, against her mouth.{/n}
-{n}The thread goes taut. Something pulls from the far end of it, from under your palm and from under your own skin at once, and it is not blood it wants. It takes the warmth out of your face and the ease out of your voice, the part of you that makes a room turn round when you walk into it, for as long as it takes to heal, and drags it down the thread into her; and the gift comes out of your wrist after it, like a splinter. Under your hand, stone goes to skin. The sprig slides out of her hands.{/n}
+{n}The thread goes taut. Something pulls from the far end of it, from under your palm and from under your own skin at once, and it is not blood it wants. It takes the ease out of your voice and drags it down the thread into her, and the gift comes out of your wrist after it, like a splinter. Your voice will come back thin, the way a man's does after a fever, and stay thin until it heals; the thread will not come back at all. Under your hand, stone goes to skin. The sprig slides out of her hands.{/n}
 {n}She wakes exactly as starved as she died, and her eyes find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,), flags=(GIFT_TORN,)),
         c("Continue", "plea", forbids=(CLAIMED,), flags=(GIFT_TORN,))),
@@ -247,8 +257,12 @@ hub(P + "returned.aftertaste", "Aftertaste", 3, '"How do you feel?"', [
     a("start", '''{n}She will not quite meet your eyes. She has taken to standing where she can see the door, and to keeping her hands behind her back.{/n}
 "I can still taste it. Every time I close my eyes. I thought the worst thing would be the wanting. It isn't. It's that I'm not hungry any more, and I can feel how good that is, and I know exactly what it cost."''',
       c("Continue", "you", requires=(FED_ON_YOU,), forbids=(GIFT_TORN,)),
-      c("Continue", "him", forbids=(FED_ON_YOU,)),
-      c("Continue", "gift", requires=(FED_ON_YOU, GIFT_TORN))),
+      c("Continue", "him", forbids=(FED_ON_YOU, GIFT_TORN)),
+      c("Continue", "gift", requires=(FED_ON_YOU, GIFT_TORN)),
+      c("Continue", "gift_him", requires=(GIFT_TORN,), forbids=(FED_ON_YOU,))),
+    a("gift_him", '''{n}She takes your wrist before you can stop her and turns it over. The place where she set her gift is a small white scar now, like a burn from a candle.{/n}
+"It's gone. It came back to me down the only road there was, and it brought half your voice with it. The quartermaster asked me yesterday whether you'd been ill." {n}She lets your wrist go.{/n} "That part I won't be sorry for; you told me not to be. The rest of it is another matter."''',
+      c("Continue", "him")),
     a("gift", '''{n}She takes your wrist before you can stop her and turns it over. The place where she set her gift is a small white scar now, like a burn from a candle.{/n}
 "It's gone. I can feel it's gone. I didn't take it back; it came back on its own, down the only road there was, and it brought half of you with it." {n}She listens to you breathe as if she were counting.{/n} "Your voice is thinner. Did you know? You used to fill a room. The quartermaster asked me yesterday whether you'd been ill." {n}She says it with a professional's bitterness: she knows exactly what was torn out of you, because she used to tear it out of people for a living.{/n} "It grows back, slowly, they say. The thread doesn't; that road's gone. That was mine to take back, and it took itself. I'm not sorry. You told me not to be."''',
       c("Continue", "you")),
@@ -396,9 +410,38 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
     nar("gate", '''{n}In the morning the gate guard reports that the prisoner tied there overnight has gone mad and will not stop weeping. Nobody saw anything. Nobody ever does.{/n}''', c()),
     nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
     nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you, and on it, in lipstick: "You chose nothing. Nothing has a name now. It's on your account, darling, not mine."{/n}''', c()),
-], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED),
+], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_LATCHED, YARD_LATCHED), forbids=(P + "evil.reunion", REUNITED, CLOSED),
     RequiresAnyGroups=[[DEBT, FAVOUR]],
     delay=120, chapters=(5,))
+
+# PP2 (Sol COX, ledger tier B: two Chapter 5 deliveries): when her lair copy cannot be placed, she is carried to Drezen as
+# the queen said ("I shall have her carried to the gate") and the reunion is met in person at the jeweller's arcade, or
+# under the tailor's awning when the jeweller is gone. The lipstick note is left only for a world where all three anchors
+# fail, so the late-referral branch (late_referral, second_opinion) stays at two deliveries when the lair fails.
+CITY_REUNION = [
+    a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who prescribed it.\"",
+      c("Continue", "hiding", requires=(QUEEN_HIDING,)),
+      c("Continue", "price", forbids=(QUEEN_HIDING,))),
+    a("hiding", '''"She's hiding, you know. Our Lady. For once nobody's watching me eat." {n}She says it lightly, and her eyes go to the dark under the shutters anyway, as if the dark might be listening. In the Midnight Isles, it usually is.{/n}''',
+      c("Continue", "price")),
+    a("price", '''"They left me at your gate like a parcel, and I've been sitting in your city all day waiting to be collected. So. The fee for a house call, doctor." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
+    *REUNION_ENDS,
+]
+for _hub, _suffix, _extra, _unit in DREZEN_PLACES:
+    _nodes = copy.deepcopy(CITY_REUNION)
+    for _node in _nodes:
+        _node["Text"] = _node["Text"].replace(
+            "Your soldiers drag it in on a chain: a babau from her own gang, the one that ran when the balor fell, which they dug "
+            "out of the rubble alive this morning on your orders. It sees her sitting up on the stones and makes",
+            "Your soldiers bring it up from the cells on a chain: a babau from her own gang, the one that ran when the balor fell, "
+            "which your people dragged alive out of the lair rubble the day you found her gone from it. It sees her and makes")
+        for _ch in _node["Choices"]:
+            if _ch["Text"].startswith("[Send a patrol into the rubble for a live one of her gang]"):
+                _ch["Text"] = "[Have the babau you dragged out of the lair rubble brought up from the cells] \"One of your boys survived. Eat him.\""
+    presence_scene(P + "evil.reunion_city" + _suffix, "The patient sits up", '"You look well, for a corpse."', _nodes,
+                   ("trickster.ever", RETURNED, EVIL_DEAD, LAIR_LATCHED, *_extra),
+                   (REUNITED, CLOSED, P + "evil.reunion", P + "evil.reunion_letter"), 24, _hub, DREZEN, unit=_unit,
+                   RequiresAnyGroups=[[DEBT, FAVOUR]])
 
 TERMS_OPEN = [
     a("terms", '''"I won't wear your colours, and I won't bless anything. I'll come when I'm hungry, and you'll open the door. That's the arrangement. Don't look at me like that. It's the only arrangement I've ever kept."''',
@@ -617,7 +660,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
         paragraphs=(
             p('''{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: all of her, the hunger and the prayer in one knot, for as long as she could hold it. She held it. Nobody who knew her was surprised, except her.{/n}''',
               forbids=(EVIL_DEAD,)),
-            p('''{n}The Commander's voice took the best part of a year to come back from the chapel, and the white scar on the wrist never went at all. She was the only one who never mentioned either.{/n}''',
+            p('''{n}The Commander's voice took the best part of a year to come back from the chapel, and the white scar on the wrist never went at all. She never asked whether it had been worth it.{/n}''',
               requires=(GIFT_TORN,)),
             p('''{n}She came through the Commander's window the first night after Threshold, sat on the sill with one knee drawn up, and said she had decided to keep visiting. It was the closest thing to a vow she ever made, and she kept it.{/n}''',
               requires=(EVIL_DEAD,)),
@@ -713,6 +756,11 @@ def integrate(payload):
     """Register her revival, presences and derived keys. Scenes are added by expansion.py; world keys bind on demand."""
     payload.setdefault("Revivals", {}).update({k: dict(v) for k, v in REVIVALS.items()})
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    latches = payload.setdefault("Latches", {})
+    for key, sources in LATCHES.items():
+        if latches.get(key, sources) != sources:
+            raise ValueError("Conflicting latch: " + key)
+        latches[key] = list(sources)
     # Nocticula_main/Cue_0521: Lann refuses the queen's offer (the reaction quotes it only where it was shown)
     payload.setdefault("SeenCues", {})["arueshalae.lann_refused_queen"] = ["00f8570585529f54ba41157ac66574f4"]
     for key, groups in DERIVED.items():
