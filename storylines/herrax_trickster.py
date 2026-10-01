@@ -20,8 +20,10 @@ Canon (Herraxa_dialogue b1a346ae, c4/TenThousandDelights):
   (Cue_0193 37ffd2b3); "Hello, hot stuff." (Cue_0150 d8c5d002).
 
 Device (a con, earned in two native dialogues, no magic, no document): told that Rokhorn still wants her chair, Herrax sets
-the night; the Commander sells it to him on his own list ("alone, on the private floor") and hands over her coin, which
-truly carries its bearer past her labyrinth to her rooms. Every checkable detail is true except who will be waiting. A
+the night; the Commander sells it to him on his own list ("alone, on the private floor") and hands over her coin. The coin
+does what canon says (any arch sets its bearer down under the Delights' own arch, Cue_0063, the PortalArk); past that, her
+girls on the arch take a favoured guest up the back stair to her rooms, which is her house's custom (authored, hers), and
+tonight they are hers. Every checkable detail is true except who will be waiting. A
 failed Bluff plays out in public: he claws the Commander's cheek, reads the lie, tells the house her floor was offered, and
 she cuts him anyway, before everyone. "Alone" is the lie told to Rokhorn about her guards; no partner is kept away and no
 other route's state is read, so the night plays the same with every romance open.
@@ -57,6 +59,8 @@ WILLODUS = "herrax.willodus_told"               # SeenCues Cue_0299 (node varian
 ASKED_KILL = "herrax.asked_kill_chivarro"       # SeenCues Cue_0045_KillChivarro (trickster_world)
 TOLD_DEAD = "herrax.told_chivarro_dead"         # SelectedAnswers Answer_0046 (the Commander's "Chivarro is dead.")
 HAGGLED = "herrax.haggled"                      # Etudes HerraxaSlaveHaggling (node variant, Chapter 4 only)
+SENT = "herrax.aasimars_sent"                   # SelectedAnswers MeatSlaver_dialogue/Answer_0039 2bfaec78: the Commander sent
+                                                # Dyunk's aasimar girls "to the Ten Thousand Delights" (starts AasimarsBrothel)
 
 # The chain.
 PRIMED = H + "primed"                           # she set the night; the Commander agreed to sell it
@@ -89,7 +93,8 @@ MC_DEPOSIT = MC + "chivarro_deposit"
 MC_FAVOR = MC + "cost.herrax_favor"
 MC_OWNED = MC + "chivarro_owned"
 
-SELECTED_ANSWERS = {CONFESSED: "c60613dca14bf0943a428246cf51bb3a", CLIENT: "33447e2dcba529f4ba678688db744411"}
+SELECTED_ANSWERS = {CONFESSED: "c60613dca14bf0943a428246cf51bb3a", CLIENT: "33447e2dcba529f4ba678688db744411",
+                    SENT: "2bfaec7837a9a4a40a43e73f06b3cf51"}
 SEEN_CUES = {WILLODUS: ["2e9aa440f006fc44ba3e34bf1a28de91"],
              "herrax.sermon_heard": ["2948da80165901a4ea1078f5ec441af3"],    # Cue_0321 (Arueshalae in her hall; variant)
              "herrax.sosiel_admired": ["e56632b9824273d4e89804db52ad7210"]}  # Cue_0303 (Sosiel on her scars; variant)
@@ -102,8 +107,8 @@ RELATIONSHIP = dict(
                  "the lesson."),
     Objective="Sell Rokhorn her night",
     Guidance=("On the Trickster path, in Chapter 4, once Herrax rules the Ten Thousand Delights. Ask her incubus Rokhorn why "
-              "he obeys her, keep the golden coin she gave you, and tell her what he still wants. If you leave the Midnight "
-              "Isles before it is finished, or never reach her there, her courier will find you in Chapter 5."),
+              "he obeys her, keep the golden coin she gave you, and tell her what he still wants. If you left the Midnight Isles "
+              "before it was finished, or never met her there, her courier will find you in Chapter 5."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
@@ -185,13 +190,13 @@ hall(H + "madam.schedule", "Her chair", '"A word about Rokhorn."', [
        c('"All right. How does it go?"', "plan")),
     hx("plan", '''"You go to him as a buyer. Not of his body; that's cheap. Of his ambition. You tell him I'll be alone on the private floor on the night I name, with my boys sent down to the arena for the crowd. You tell him you want a quarter of the house when he holds it."
 "And you give him my coin." {n}Her eye drops to your belt, to the gold coin with its obscene little engraving, hanging where it has hung since the day she gave it to you.{/n}
-"Every arch in the city knows it. It will carry him past every door of my labyrinth and set him down in my rooms like my favoured guest. That is what makes it true, honey. Everything you tell him will be true, except who's waiting."''',
+"Every arch in the city knows it, and sets whoever carries it down under my arch, downstairs, as my favoured guest. My rooms are three locked doors past that, and the girls who keep the arch hold the keys. They take a favoured guest up the back stair at any hour and ask nothing. They take nobody else up. Not even my own incubus." {n}Her mouth curls.{/n} "He's watched them do it for Chivarro's pets for years, and wanted it every time. That is what makes it true, honey. Everything you tell him will be true, except which girl carries the keys that night, and who's waiting at the top."''',
        c('[Agree: her night, your sale, her knife] "Name the night."', "named", flags=(PRIMED, STARTED)),
        c('"Let me deal with him quietly. A knife in the dark, and your chair stays yours."', "quietly")),
     hx("quietly", '''"My house. My knife." {n}The warmth goes out of her face all at once, a lamp pinched out between two fingers.{/n}
 "A quiet death teaches nobody anything, lover. A quiet death is a rumour too: the house says 'Rokhorn left', and next spring somebody else tries my chair to see if I made him leave. If you won't sell him my night, I'll find a worse liar who will. And I'll like you less."''',
        c("[Let it rest for now.]", abort=True)),
-    hx("named", '''"The night after tomorrow. The arena crowd goes down to the Battlebliss after dark, and every guest who can walk goes with it." {n}She holds out a hand, palm up, and does not take the coin; she only looks at it, and then at you.{/n}
+    hx("named", '''"The first arena night after he says yes. The arena crowd goes down to the Battlebliss after dark, and every guest who can walk goes with it." {n}She holds out a hand, palm up, and does not take the coin; she only looks at it, and then at you.{/n}
 "Go to him when you like. He's on my list; ask for him as any guest would. Pay him for his night first, if you want him soft. He's always softest with people who've paid him."
 "The coin goes with the sale, and you won't have it back. I don't give the same gift twice." {n}A beat.{/n} "And if he smells it on you, don't run. Running is how you tell a demon you were lying."''',
        c('"I don\'t run."'))],
@@ -201,9 +206,9 @@ hall(H + "madam.schedule", "Her chair", '"A word about Rokhorn."', [
 
 # --- 2. The sale, on Rokhorn's own list (a Bluff; failure plays out in public). -----------------------------------------
 
-SALE_PITCH = ('[Bluff] "Because the night after next she\'ll be alone on the private floor, with her boys sent down to the '
-              'arena. Here is her coin; the arches will set you down in her rooms. I want a quarter of the house when you '
-              'hold it."')
+SALE_PITCH = ('[Bluff] "Because on the next arena night she\'ll be alone on the private floor, with her boys sent down to the '
+              'arena. Here is her coin. Bring it to her arch after midnight and her girls will take you up the back stair '
+              'as her favoured guest. I want a quarter of the house when you hold it."')
 
 SCENES.append(scene(H + "madam.sell_the_night", "Her night, for sale", "Herrax", 4, '"Let\'s talk about business, not pleasure."', [
     rk("start", '''{n}Rokhorn stretches until his shoulders crack, and looks down at you with frank, bored appetite.{/n}
@@ -219,7 +224,7 @@ SCENES.append(scene(H + "madam.sell_the_night", "Her night, for sale", "Herrax",
        c(SALE_PITCH, check=dict(Skill="CheckBluff", DC=23, Success="bait", Failure="blown"), requires=(CLIENT,)),
        c('"Forget it. Just wondering."', abort=True)),
     rk("bait", '''{n}He takes the coin between two claws and turns it to the lamplight. He bites it. He runs a thumb over the little engraving and snorts.{/n}
-"Her coin. The real one." {n}He is quiet, and in the quiet you can watch him check every piece of what you told him, one by one, and find that every piece is true. The arena crowd. The private floor. The crusader who put Chivarro in the gutter.{/n}''',
+"Her coin. The real one." {n}He is quiet, and in the quiet you can watch him check every piece of what you told him, one by one, and find that every piece is true. The arena crowd. The private floor. The girls on the arch, who take the coin's bearer up and ask nothing. The crusader who put Chivarro in the gutter.{/n}''',
        c("Continue", "bait_greed", requires=(LIE_GREED,)),
        c("Continue", "bait_spite", requires=(LIE_SPITE,), forbids=(LIE_GREED,)),
        c("Continue", "bait_hunger", requires=(LIE_HUNGER,), forbids=(LIE_GREED, LIE_SPITE)),
@@ -233,7 +238,7 @@ SCENES.append(scene(H + "madam.sell_the_night", "Her night, for sale", "Herrax",
     rk("bait_plain", '''"A quarter of the house, for a coin and a night." {n}He weighs it, and you can see him like the arithmetic.{/n} "Cheap, for you. Cheap for me. That's how you know a bargain in Alushinyrra: both sides think they robbed the other."''',
        c("Continue", "bait_end")),
     rk("bait_end", '''{n}He closes his fist on the coin. When he opens it again it is gone, somewhere under the belt of his loincloth.{/n}
-"The night after next. While her boys are down at the arena." {n}He rolls his neck.{/n} "Now go and look innocent somewhere, crusader. You're terrible at it."''',
+"The next arena night, then. While her boys are down at the Battlebliss." {n}He rolls his neck.{/n} "Now go and look innocent somewhere, crusader. You're terrible at it."''',
        c("[Let him keep the coin.]", flags=(BAIT, COIN_LOST), remove_item=COIN, requires=(COIN_HELD,))),
     rk("blown", '''{n}His hand moves faster than your eye follows. A razor claw opens your cheek from the ear almost to the mouth, and before the sting arrives he is licking your blood off it, slowly, eyes half closed.{/n}
 {n}His voice drops, low and strange, the voice he uses for reading fates.{/n} "I see a floor with nobody alone on it. I see a coin going back to the hand it came from. I see a knife that isn't mine." {n}His eyes open.{/n} "Oh, hot stuff. She sent you."''',
@@ -260,15 +265,16 @@ hall(H + "madam.the_night", "The night", '"Is it time?"', [
        c("Continue", "arch", requires=(BAIT,)),
        c("Continue", "hall", requires=(BLOWN,), forbids=(BAIT,))),
     nar("arch", '''{n}Her rooms are at the heart of the labyrinth, three doors past any door a guest has seen. Tonight every lamp in them is out. The house lines the walls in the dark: the three Sinners, arm in arm; Morevet Honeyed Tongue with her lips parted; the Mad Glowworm cross-legged on a sideboard; a dozen of the boys with knives and no shirts. Nobody whispers.{/n}
-{n}Herrax sits on the dais at the far end. It was Chivarro's once; the cushions still smell of her perfume, and Herrax has kept them for exactly that reason.{/n}
-{n}Near midnight the arch in the wall flares gold, and Rokhorn steps through it with her coin hanging on his belt and his best smile already on. The lamps come up all at once. The smile stays where it is for a heartbeat too long.{/n}''',
+{n}Herrax sits in the one chair at the far end, with her curved knife across her knees.{/n}
+{n}Near midnight a lamp moves on the back stair. The girl who keeps the arch comes up it with her ring of keys, opening the three doors one after another, as she has opened them for favoured guests since Chivarro's time, and Rokhorn climbs behind her with the madam's coin hanging on his belt and his best smile already on. At the last door the girl steps aside to let him pass, and closes it behind him, and turns the key. The lamps come up all at once. The smile stays where it is for a heartbeat too long.{/n}''',
        c("Continue", "arch2")),
     nar("arch2", '''{n}Four of the boys have him on his knees before he gets his claws out. He doesn't struggle long. He looks round the room at every face that has come to watch him, and last of all at you, and he laughs, because there is nothing else left to do with his mouth.{/n}
 "Hot stuff," {n}he says.{/n} "Every word of it was true."''',
        c("Continue", "arch3")),
     hx("arch3", '''{n}Herrax comes down one step from the dais, no more. Her voice is warm, and carries to every wall.{/n}
-"You bought my night, sweet. You paid with my own coin, and you came through my own arch, because a stranger told you I'd be alone." {n}She tilts her head.{/n} "I'm never alone. You've lived in this house for years. How did you forget that?"
-{n}Rokhorn says nothing. There is nothing he could say in this room that would not be bought and sold by morning, and he knows it.{/n}''',
+"You bought my night, sweet. You paid with my own coin, and you came up my own stair behind my own girl, because a stranger told you I'd be alone." {n}She tilts her head.{/n} "I'm never alone. And my girls take nobody up those stairs I haven't told them to. You've lived in this house for years. How did you forget that?"
+{n}Rokhorn says nothing. There is nothing he could say in this room that would not be bought and sold by morning, and he knows it.{/n}
+{n}She nods to the boys. They walk him down through all three doors and the long stair into the great hall, where the lamps are lit and every guest still awake has been waiting, and they put him on his knees at the foot of Chivarro's old dais. Herrax climbs it and sits on the cushions, which still smell of the other woman's perfume.{/n}''',
        c("Continue", "knife")),
     nar("hall", '''{n}She does it in the great hall, under the lamps, where every guest and girl and boy in the Delights can see. Rokhorn is already on his knees at the foot of the old dais, held by four of the boys. Nobody has hurt him yet. They are saving it.{/n}
 {n}Every head turns when you come in, and every eye goes to the claw mark on your cheek. The whole house heard what he shouted: the favoured guest offered the madam's floor. Herrax lets them look at you for as long as it takes to be sure they have.{/n}''',
@@ -301,7 +307,7 @@ hall(H + "madam.the_night", "The night", '"Is it time?"', [
 {n}To you, lower, while the boys drag him out:{/n} "You gave the knife back. Most people keep a knife they're handed, lover. They can't help it."''',
        *AFTER_CUT),
     nar("stayed", '''{n}She takes the knife back from you, since you do not use it, and steps down to Rokhorn with it raised, and your hand closes on her wrist.{/n}
-{n}The hall goes silent the way a hall goes silent before a fight. She is stronger than you, and you both know it; she could tear free and open your face instead of his, and half the house is waiting to see her do it. She doesn't move. She looks at your hand on her wrist, in her own hall, in front of everyone.{/n}
+{n}The hall goes silent the way a hall goes silent before a fight. Along the walls a dozen of her boys have come off the plaster with their knives out, and one word from her would bring every one of them down on you; half the house is waiting to hear her say it. She doesn't say it. She looks at your hand on her wrist, in her own hall, in front of everyone.{/n}
 {n}Then she opens her fingers, and the knife drops into your palm.{/n}''',
        c("Continue", "stayed2")),
     hx("stayed2", '''"Let him go." {n}The boys let him go. Rokhorn gets up with his face whole and doesn't laugh; he's not fool enough to laugh now. He goes out of the hall fast.{/n}
@@ -315,7 +321,7 @@ hall(H + "madam.the_night", "The night", '"Is it time?"', [
 "Lent against me. It stays with me." {n}She drops it into her bodice, and looks at you.{/n} "The arches won't carry you to me any more, lover. From now on you walk up my stairs like everyone else. See how you like it."''',
        c('"I\'ll like the stairs."')),
     hx("coin_blown", '''{n}The house breaks up slowly, in knots, whispering. She lets them. They'll carry it to every house in the Upper City by morning, and that is the point.{/n}
-"You nearly cost me my floor, lover." {n}She turns her coin over in her fingers.{/n} "And then you stood where I told you and paid for it in front of them. I'll have to think about which of those I remember."''',
+"You nearly cost me my floor, lover." {n}She turns the knife over in her fingers, clean now, and lays it across her knee.{/n} "And then you stood where I told you and paid for it in front of them. I'll have to think about which of those I remember."''',
        c('"Think about it."'))],
     requires=(), forbids=(LESSON,), delay=24, RequiresAnyGroups=[[BAIT, BLOWN]])
 
@@ -378,13 +384,13 @@ hall(H + "madam.reachable", "At closing", '"The house is closing."', [
 {n}Rokhorn's blood is still on the tiles below the dais, gone brown in the grout. She told the girls not to scrub it.{/n}
 "Sit, lover. Not there. Here, on the step." {n}She sits above you on the dais, one bare foot on the step beside your hand.{/n}''',
        *_variants("")),
-    hx("cut_bait", '''"He walked through my arch with my coin on his belt, and every word you'd told him was true, and then you took my knife and cut exactly where I told you." {n}She turns her head so the lamp finds her own scar.{/n} "Do you know how rare that is? A hand that does what it's told, and does it well, and doesn't shake afterwards. I've bought a great many hands. Never one like that."''',
+    hx("cut_bait", '''"He came up my back stair with my coin on his belt, and every word you'd told him was true, and then you took my knife and cut exactly where I told you." {n}She turns her head so the lamp finds her own scar.{/n} "Do you know how rare that is? A hand that does what it's told, and does it well, and doesn't shake afterwards. I've bought a great many hands. Never one like that."''',
        c("Continue", "offer")),
     hx("cut_blown", '''"You botched the sale. He laughed it all over my house." {n}She says it without heat.{/n} "And then you walked the length of my hall under their eyes, and took my knife, and cut clean. They've stopped talking about the sale, lover. They talk about the cut now. That's a thing I can respect: a mess, paid for in public, in full."''',
        c("Continue", "offer")),
-    hx("handed_bait", '''"He came through my arch with my coin, and every word you'd told him was true. And when I gave you the knife, you gave it back to me. Hilt first." {n}She is quiet a while.{/n} "Everyone keeps a knife they're handed in this house, lover. Everyone. You gave me my lesson back to make myself. I haven't decided if that was manners or cunning. I like it either way."''',
+    hx("handed_bait", '''"He came up my back stair with my coin, and every word you'd told him was true. And when I gave you the knife, you gave it back to me. Hilt first." {n}She is quiet a while.{/n} "Everyone keeps a knife they're handed in this house, lover. Everyone. You gave me my lesson back to make myself. I haven't decided if that was manners or cunning. I like it either way."''',
        c("Continue", "offer")),
-    hx("handed_blown", '''"You botched the sale, and he laughed it all over my house. And then you gave me back my coin before all of them, and when I held out my knife you gave that back too." {n}She turns the coin over on her knee.{/n} "Twice in one night, the favoured guest put what was mine back in my hand where the house could see. They've stopped calling it a botch. They call it a tribute."''',
+    hx("handed_blown", '''"You botched the sale, and he laughed it all over my house. And then you walked the length of my hall and paid for it before all of them, and when I held out my knife you gave that back too." {n}She turns the knife over on her knee.{/n} "Twice in one night, the favoured guest put what was mine back in my hand where the house could see. They've stopped calling it a botch. They call it a tribute."''',
        c("Continue", "offer")),
     hx("offer", '''{n}She leans back on her hands.{/n}
 "I've told kings and demons and half the Upper City the same thing, lover: the keeper of this place is beyond anyone's reach. That's my role. Anything in this house can be bought, and everyone in it, except me. It's the whole reason they keep coming up my stairs."
@@ -430,42 +436,107 @@ hall(H + "madam.reachable_restored", "At closing", '"The house is closing."', [
     *_intimacy(),
     hx("no", '''"Then go down my stairs like anybody else." {n}She says it lightly, and her hand stays on the knife until you're gone.{/n} "You'll be welcome in my house. You'll pay at the door."''',
        c("[Go down the stairs.]"))],
-    requires=(RESTORED,), forbids=(COMMITTED,), delay=24)
+    requires=(RESTORED, "herrax.house.a_night_late"), forbids=(COMMITTED,), delay=24)
 
 
 # --- 6. Chapter 5 fallbacks: her courier finds the Commander (one of the two, never both). ------------------------------
 
-COURIER = '''{n}The courier comes to the citadel gate at dusk and will not give the guard a name, only a smile that makes the guard take a step back. He is an incubus, tall and bare-chested under a traveller's cloak gone grey with Worldwound ash, and he came up the roads out of the rift the way demons come to Golarion these days. He hands you a letter sealed in black wax with a gold coin pressed into it, and then he leans on your doorframe and waits.{/n}'''
+# Ledger 05 row 13 (the one discovery), folded into the one Chapter 5 letter so it never needs a second page: at the door,
+# Rokhorn sees the woman Herrax asked the Commander to finish (Cue_0045_KillChivarro) alive in the Commander's hall. The
+# reads are choice-level (node variants), as the ledger allows; the answer is the Commander's, and Herrax's reply follows.
+def discovery_entry(prefix=""):
+    return (
+        c('"What are you staring at?"', prefix + "chiv", requires=(ASKED_KILL, MC_REUNITED), forbids=(CONTRACT, MC_DEPOSIT, MC_FAVOR)),
+        c('"What are you staring at?"', prefix + "chiv", requires=(ASKED_KILL, MC_RETURNED),
+          forbids=(CONTRACT, MC_DEPOSIT, MC_FAVOR, MC_REUNITED)),
+    )
+
+
+DISCOVERY_ENTRY = discovery_entry()
+
+
+def discovery(prefix="", next=None):
+    return [
+        rl(prefix + "chiv", '''{n}He isn't looking at you. He is looking past your shoulder, into the hall, where a lilitu in borrowed wool sits at your table with a cup of your wine, and his smile has gone very still.{/n}
+"Well, well. Chivarro." {n}He says it softly, like a man who has found a coin in the gutter.{/n} "My mistress asked you for that one, hot stuff. 'Can you take care of her for me, my love?' I was standing behind the dais when she said it. And here she is, taken care of, drinking your wine."
+"She'll want to know what you meant by it. I carry answers. Choose yours."''',
+           c('"Tell her Chivarro stays out of her house and out of her business. She has my word."', prefix + "chiv_kept",
+             flags=(CONTRACT, KEPT_OUT)),
+           c('"Tell her Chivarro goes where she likes. So do I."', prefix + "chiv_stood", flags=(CONTRACT, STOOD),
+             alignment=("Chaotic", 1))),
+        rl(prefix + "chiv_kept", '''"Your word." {n}Rokhorn weighs it the way she would, like a coin on a counter.{/n} "She'll bite it first. She bites everything. And if the lilitu ever sets one foot on her stairs, she'll finish what you didn't and send you the bill; I'd put money on it." {n}He tucks your answer away.{/n}''',
+           c("Continue", next)),
+        rl(prefix + "chiv_stood", '''"Goes where she likes." {n}Rokhorn's grin comes slow.{/n} "Then she'll keep a knife for the lilitu the way she keeps a room for you, hot stuff. Both ready. I'd stay out of the way of both, if I were you. I'm going to."''',
+           c("Continue", next)),
+    ]
+
+
+COURIER = '''{n}The courier comes to the citadel gate at dusk and will not give the guard a name, only a smile that makes the guard take a step back. He is an incubus, tall and bare-chested under a traveller's cloak gone grey with Worldwound ash, and he came up the roads out of the rift the way demons come to Golarion these days. He hands you a letter sealed in black wax with a gold coin pressed into it.{/n}
+"Her coin in her wax." {n}He says it before you can ask, and holds up his right thumb: blistered white across the pad.{/n} "She paid a hedge-witch in the Lower City the price of a night with one of the Sinners to ward her seals. Open one with anything but the hand it's meant for and the wax bites, and whatever's under it burns. I tried. Once. On the first night out of the Isles." {n}He leans on your doorframe and waits, and does not look at the letter.{/n}'''
+
+# The late device (R2-2: a present, priced act): her letter is an innocent invitation, and the plan rides folded under the
+# coin in her seal, which Rokhorn cannot lift unseen. On the doorstep he tries to buy the Commander, as she said he would;
+# the Commander plays the buyer he wants, and pays for it now (his claw and a taste of blood, or crusade gold).
+COST_LATE = H + "cost.late"                     # the late con's price: his taste of the Commander's blood, or crusade gold
+LATE_RING = H + "late.earnest_ring"             # he paid his earnest with a ring off her tray; the Commander kept it
+LATE_PAID = H + "late.paid_his_price"           # the Bluff failed and the Commander paid him to believe it
 
 letter(H + "late.next_move", "A courier from the Isles", [
     nar("start", COURIER,
         c("Continue", "met", requires=(MET,)),
-        c("Continue", "stranger", forbids=(MET,))),
+        c("Continue", "stranger", requires=(MADAM,), forbids=(MET,)),
+        c("Continue", "stranger_house", forbids=(MET, MADAM))),
+    # Where Chivarro never fell (ChivarroRemovedFormPower never played), Herrax is not the madam: she is a senior girl of
+    # the house with her own rooms on the private floor, and Rokhorn wants them. Nothing of Chivarro's state is read or set.
+    hl("stranger_house", '''"We haven't met. I'm Herrax. I work the Ten Thousand Delights, in Alushinyrra, under a madam who pays me less than I'm worth and sleeps better than she should. The Isles still talk about you: the mortal the Lady in Shadow let walk out of her palace with all ten fingers. I like a guest with all ten fingers. They tip.
+Come and be my guest when your war is done. Ask for me by name, not for the madam. My boy will see you down the Wound road, if you ask him nicely. H."
+{n}That is all the letter says. Then you turn the coin in the broken wax, and find a second sheet pressed flat beneath it, folded to the size of a thumbnail, in a smaller hand.{/n}''',
+       c("Continue", "ask_house")),
+    hl("ask_house", '''"The house's incubus wants my rooms. Rokhorn. He tried for them once and lost, and paid the healers of three circles to forget it. Now he's circling again: smiling at my guests, counting my girls, telling the madam I'm getting old and the best rooms on the private floor would earn more with him in them. I don't get old, honey. I get even.
+I want him sold a night he won't forget. My night, in my rooms, with my girls waiting in the dark. I pick the night; a seller he doesn't know is mine sells it to him; I do the cutting. The madam won't stop me. She'll watch, and she'll learn something about who holds what in her house.
+He'll try to buy you on your doorstep before he's had a cup of your wine; that's what he's for. Let him. Make him pay something on account. When the Wound is shut, if you're alive, come back to the Isles and deliver it. Burn this. H."''',
+       c("Continue", "door")),
     hl("met", '''"My favourite guest left the Isles without a goodbye. Rude. I forgive it; I simply charge for it later.
-Since you never stay for news, here is some. My incubus wants my chair. He tried for it once and lost, and paid the healers of three circles to make him forget it. Now he's circling again: smiling at my guests, counting my girls, telling anyone who'll listen that the madam is getting old. I don't get old, honey. I get even."''',
+Come and be my guest when your war is done, lover. The Delights keep a room for a favoured guest, and a cup, and a girl to pour it, and I keep the bill. My boy will see you down the Wound road, if you ask him nicely. He's very nice to people who ask. H."
+{n}That is all the letter says. Then you turn the coin in the broken wax, and find a second sheet pressed flat beneath it, folded to the size of a thumbnail, in a smaller hand.{/n}''',
        c("Continue", "ask")),
-    hl("stranger", '''"We haven't met. I'm Herrax. I keep the Ten Thousand Delights, in Alushinyrra, and everything in them that can be kept. The Isles still talk about you: the mortal the Lady in Shadow let walk out of her palace with all ten fingers. I have a use for a mortal like that.
-My incubus wants my chair. He tried for it once and lost, and paid three circles of healers to forget it. Now he's circling again, and telling anyone who'll listen that the madam is getting old. I don't get old, honey. I get even."''',
+    hl("stranger", '''"We haven't met. I'm Herrax. I keep the Ten Thousand Delights, in Alushinyrra, and everything in them that can be kept. The Isles still talk about you: the mortal the Lady in Shadow let walk out of her palace with all ten fingers. I like a guest with all ten fingers. They tip.
+Come and be my guest when your war is done. My boy will see you down the Wound road, if you ask him nicely. H."
+{n}That is all the letter says. Then you turn the coin in the broken wax, and find a second sheet pressed flat beneath it, folded to the size of a thumbnail, in a smaller hand.{/n}''',
        c("Continue", "ask")),
-    hl("ask", '''"I want him sold a night he won't forget. My night, on my floor, with my house waiting in the dark. I pick the night; a seller he doesn't know is mine sells it to him; I do the cutting. Scars only teach when the right hand makes them.
-You'll have noticed who brought you this. I told him it's an invitation for you to come and be my guest when your war is done. Let him think so. He'll try to buy you on the doorstep; that's what he's for.
-When the Wound is shut, if you're alive, come back to the Isles. I'll give you something to sell him. H."''',
+    hl("ask", '''"My incubus wants my chair. He tried for it once and lost, and paid the healers of three circles to forget it. Now he's circling again: smiling at my guests, counting my girls, telling anyone who'll listen that the madam is getting old. I don't get old, honey. I get even.
+I want him sold a night he won't forget. My night, on my floor, with my house waiting in the dark. I pick the night; a seller he doesn't know is mine sells it to him; I do the cutting. Scars only teach when the right hand makes them.
+He'll try to buy you on your doorstep before he's had a cup of your wine; that's what he's for. Let him. Make him pay something on account. A man who has paid for a thing doesn't look at it too closely when it's delivered.
+When the Wound is shut, if you're alive, come back to the Isles and deliver it. Burn this. H."''',
        c("Continue", "door")),
     rl("door", '''{n}The incubus has been watching you read. When you look up, he smiles with his whole mouth.{/n}
-"Hello, hot stuff. She says you might visit, after." {n}He straightens off the doorframe.{/n} "When you do, ask for me before you ask for her. I'm told you can be bought. So can the house. I'll have a better offer by then."''',
+"Hello, hot stuff. She says you might visit, after." {n}He straightens off the doorframe.{/n} "When you do, ask for me before you ask for her. I'm told you can be bought. So can the house."''',
        c('"Why would I come to you and not to her?"', "why"),
-       c('[Promise to be there] "Tell your mistress I\'ll come when the Wound is shut."', "promised",
-         flags=(PRIMED, STARTED, PROMISED)),
+       c('[Play the buyer he wants] "Make me an offer, then."', "earnest"),
        c('"Tell her I\'m not for sale, and neither is anyone I know."', "refused", flags=(CLOSED,))),
     rl("why", '''"Because she's old, hot stuff, and I'm not." {n}He says it with total conviction.{/n} "She sits on a dead woman's cushions and counts rings off her tray and tells everyone the madam is beyond anyone's reach. I've reached her. I had the scars to prove it; I just had the sense to have them taken off."
 "When the chair changes hands, the people who stood on the right side of the stair get a cut. Be on the right side." {n}He smiles with all his teeth.{/n} "Now. What shall I tell her?"''',
-       c('[Promise to be there] "Tell your mistress I\'ll come when the Wound is shut."', "promised",
-         flags=(PRIMED, STARTED, PROMISED)),
+       c('[Play the buyer he wants] "Tell her I\'ll come. And tell me what you\'re offering."', "earnest"),
        c('"Tell her I\'m not for sale, and neither is anyone I know."', "refused", flags=(CLOSED,))),
-    rl("promised", '''"Oh, I'll tell her." {n}He laughs, and goes down your steps into the dusk without looking back, and whistles all the way to the gate.{/n}''',
-       c("[Keep the coin from the seal.]")),
+    rl("promised", '''"Oh, I'll tell her." {n}He laughs, and pulls the ashy cloak up round his shoulders, and on the top step he looks back once, past you, into your hall, the way a courier looks at everything he will be asked about later. Then he goes down into the dusk, whistling all the way to the gate.{/n}''',
+       c("[Keep the coin from the seal.]"), *DISCOVERY_ENTRY),
     rl("refused", '''"Shame." {n}He shrugs his cloak up round his shoulders.{/n} "She'll find another liar. The Abyss is full of them. Most of them are cheaper than you."''',
-       c("Continue"))],
+       c("Continue")),
+    rl("earnest", '''"A quarter of the house, the night I hold it, for the seller who brings me her floor." {n}He says it as though it were a love-word.{/n} "That's my offer. And because you're mortal, and mortals forget whose they are between one season and the next, I'll pay something on account." {n}He draws a ring off his smallest claw: heavy old gold with a black stone, the metal still worn flat on one side by somebody else's knuckle.{/n}
+"Take it, and tell me you'll sell her to me in the spring. Look at me while you say it. I can smell a lie on a mortal from here, and I can taste one from closer."''',
+       c('[Bluff] "Spring. Her floor, her night, your quarter. Give me the ring."',
+         check=dict(Skill="CheckBluff", DC=22, Success="earnest_taken", Failure="earnest_doubted")),
+       c('"Keep your ring. Tell her I\'m not for sale."', "refused", flags=(CLOSED,))),
+    rl("earnest_taken", '''{n}He looks at you a long while, and then he laughs, and drops the ring into your palm.{/n}
+"Greedy. Good. Greedy I understand." {n}He doesn't let go of your hand. One claw comes out, idly, and draws a line across the heel of your palm, and before it stings he has lifted it to his mouth.{/n} "Sellers in the Isles seal in blood, hot stuff. Now I've had a taste of you. If you sell her to anyone else, I'll know you in the dark from across the city." {n}His eyes half close.{/n} "Mm. Greedy, and tired, and something burning. I'll remember it."''',
+       c("[Close your hand on the ring and the cut.]", "promised", flags=(PRIMED, STARTED, PROMISED, COST_LATE, LATE_RING))),
+    rl("earnest_doubted", '''{n}He studies your face, and the ring goes back onto his claw.{/n}
+"No. You're lying, or you're frightened of her, and I can't tell which without a taste, and you won't give me one." {n}He isn't angry. He sounds like a merchant who has been offered bad coin.{/n}
+"Here's how it works in the Isles, hot stuff. People who mean it pay. The ones who only want to watch get a seat at the arena. Pay me for the privilege of selling to me, and I'll believe you're greedy. Greedy I trust."''',
+       c("[Pay him out of the crusade's purse, for the privilege.]", "promised", crusade=("Finances", -500),
+         flags=(PRIMED, STARTED, PROMISED, COST_LATE, LATE_PAID)),
+       c('"Then tell her I\'m not for sale."', "refused", flags=(CLOSED,))),
+    *discovery()],
     requires=("trickster",), forbids=(PRIMED, COMMITTED), delay=0,
     TricksterDevice=True, TricksterState="not_started")
 
@@ -475,16 +546,18 @@ OWED_VARIANTS = (
     c("Continue", "blown", requires=(BLOWN,), forbids=(BAIT, LESSON)),
     c("Continue", "lesson", requires=(LESSON,), forbids=(DECLINED,)),
     c("Continue", "knife", requires=(DECLINED,), forbids=(RESTORED,)),
-    c("Continue", "restored", requires=(RESTORED,)),
+    c("Continue", "restored", requires=(RESTORED,), forbids=("herrax.house.a_night_late",)),
+    c("Continue", "restored_watched", requires=(RESTORED, "herrax.house.a_night_late")),
 )
 
 letter(H + "owed.night", "The night, owed", [
-    nar("start", '''{n}The courier is an incubus in a traveller's cloak grey with Worldwound ash, and you know him. He leans in your doorway in Drezen as if he owned it, and holds out a letter sealed in black wax.{/n}''',
+    nar("start", '''{n}The courier is an incubus in a traveller's cloak grey with Worldwound ash, and you know him. He leans in your doorway in Drezen as if he owned it, and holds out a letter sealed in black wax with a gold coin pressed into the seal.{/n}
+"Warded," {n}Rokhorn says, before you can ask, and shows you the blistered pad of his thumb.{/n} "A hedge-witch's work; she paid a Sinner's night for it. Open it with any hand but yours and it burns. So I haven't read it, and I'd like it noted that I haven't read it." {n}He sounds as though it has cost him.{/n}''',
         *OWED_VARIANTS),
     hl("unsold", '''"You agreed to sell him my night, and then you left the Isles with my coin still on your belt and the night still in your pocket. I waited up. I don't wait up, lover.
 He's still circling. He's grown bolder since you left; he thinks my favourite guest ran out on me, and he's right. He brought you this letter himself and has no idea what's in it. That's the sort of man he is."''',
        c("Continue", "ask")),
-    hl("sold", '''"He came through my arch the night after you left, with my coin on his belt and every word you'd told him ringing in his ears. My house was waiting in the dark. I did the cutting myself, lip to cheekbone. You'd have liked it. You weren't there.
+    hl("sold", '''"He came up my back stair the night after you left, with my coin on his belt and every word you'd told him ringing in his ears. My house was waiting in the dark. I did the cutting myself, lip to cheekbone. You'd have liked it. You weren't there.
 The seller is supposed to stand where I tell them. You were halfway to the Worldwound. So the house watched, and the house noticed that the favoured guest missed the best night of the year." {n}Below, smaller:{/n} "He carries my letters now. Look at his face."''',
        c("Continue", "ask")),
     hl("blown", '''"You botched the sale, and he laughed it off every couch in my house, and then you left the Isles before the night came. So I did it anyway, in the great hall, under the lamps, with the whole house watching and my favourite guest nowhere at all.
@@ -499,33 +572,82 @@ You took it off me in my own hall, in front of my house, and then you left the I
     hl("restored", '''"You gave me my knife back, hilt first, in front of the Sinners. The house hasn't stopped telling it. And then you left before I'd decided about you. The night after, I put right what you'd stopped, and I looked for you at the back of the hall, and you were gone.
 I'd decided, lover. I don't like having decided at nobody."''',
        c("Continue", "ask")),
+    hl("restored_watched", '''"You gave me my knife back, hilt first, in front of the Sinners, and the next night you stood at the back of my hall and watched me put right what you'd stopped. You didn't flinch. The house noticed.
+And then, before closing, before I'd said a word to you, you were gone up the road to your war. I'd decided, lover. I don't like having decided at nobody."''',
+       c("Continue", "ask")),
     hl("ask", '''"So. When the Wound is shut, if you're alive, come back up my stairs. Whatever's owed between us is still owed; I don't close a book because the customer left town.
 Come in person. Not with a coin. You'll have to reach. H."''',
        c('[Promise to come back] "Tell her I\'ll come up her stairs when the Wound is shut."', "promised",
          flags=(STARTED, PROMISED)),
        c('"Tell her not to wait for me."', "refused", flags=(CLOSED,))),
-    rl("promised", '''{n}Rokhorn takes your answer with a courier's bow, which on him looks like an insult. If his face is stitched, the stitches pull when he smiles; he smiles anyway.{/n} "She'll be thrilled, hot stuff. She'll hide it very well."''',
-       c("Continue")),
+    rl("promised", '''{n}Rokhorn takes your answer with a courier's bow, which on him looks like an insult. If his face is stitched, the stitches pull when he smiles; he smiles anyway.{/n} "She'll be thrilled, hot stuff. She'll hide it very well." {n}On the top step he looks back once, past you, into your hall, the way a courier looks at everything he will be asked about later.{/n}''',
+       c("Continue"), *DISCOVERY_ENTRY),
     rl("refused", '''"I'll tell her." {n}He sounds pleased about it.{/n} "She won't wait. She never has. That's the whole secret of her."''',
-       c("Continue"))],
+       c("Continue")),
+    *discovery()],
     requires=(PRIMED,), forbids=(COMMITTED, PROMISED), delay=0)
 
 
 # --- 7. The one discovery (ledger 05 row 13): the woman she asked the Commander to finish is alive, at the Commander's side.
 
-letter(H + "chivarro_seen", "An unfinished request", [
-    hl("start", '''{n}Rokhorn brings the letter, with the smile he always brings to your door.{/n}
-"Rokhorn had a drink in Drezen, lover. At a table I'm told is yours, with a lilitu in borrowed wool and a voice like velvet, who told him the Delights' wine had gone off since she left.
-I asked you for her. 'Can you take care of her for me, my love?' And here she is, taken care of, in your city, drinking your wine. I don't say you lied. You never said you would. But I asked, and my gratitude would have known no bounds, and instead I have this letter to write." {n}The ink presses harder here.{/n}
-"I don't want her dead any more; I have her chair. I want her out of my house, and out of my business, forever. Give me that."''',
-       c('"She stays out of your house and out of your business. You have my word."', "kept_out", flags=(CONTRACT, KEPT_OUT)),
-       c('"She goes where she likes. So do I."', "stood", flags=(CONTRACT, STOOD), alignment=("Chaotic", 1))),
-    hl("kept_out", '''{n}The reply comes three weeks later, one line in the round hand:{/n} "Your word, then. I'll take it the way I take a stranger's coin, lover: I'll bite it first. If she sets one foot on my stairs, I'll finish what you didn't, and send you the bill."''',
-       c("Continue")),
-    hl("stood", '''{n}The reply comes three weeks later, one line in the round hand, and the pen has gone through the paper once:{/n} "Then I'll keep a knife for her the way I keep a room for you. Both of them ready. Neither of them used, if you're clever."''',
-       c("Continue"))],
-    requires=(STARTED, ASKED_KILL), forbids=(CONTRACT, MC_DEPOSIT, MC_FAVOR), delay=24,
-    RequiresAnyGroups=[[MC_REUNITED, MC_RETURNED]], optional=True)
+# Physical since the Q4 Sol pass: after the one Chapter 5 letter (whichever was sent) Rokhorn stays in Drezen, drinking at
+# the Fool King's bar (front of the King, 2.5 m: Eliandra left 2.5 and Shamira right 2.5 are 3.5 m away; the tiefling
+# trader's left side when the King is gone or cannot be found). He is there only while the discovery is pending: Chivarro
+# alive at the Commander's side, Herrax's request on record, no answer yet, no sale. The letters still carry the discovery
+# when Chivarro is already back when they arrive; this scene carries it when she comes back later. Spawn-copy of his own
+# unit (no dialog of its own) with a click-to-talk hub (ERRATA, Presence.Dialog "hub").
+DREZEN = "2570015799edf594daf2f076f2f975d8"
+FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"
+TIEFLING = "23eabf5b6364d4a4e86202dc5d27600b"   # Vendor_Tiefling (the lower town; Terendelev front, Galfrey's stall right, Mielarah behind)
+ROK_HUB = "herrax.presence.rokhorn"
+ROK_HUB_ALT = "herrax.presence.rokhorn_stall"
+ROK_FAILED = ROK_HUB + ".failed"
+KING_GONE = "fool_king.gone"
+LETTER_SENT = [H + "late.next_move", H + "owed.night", "herrax.letters.the_courier"]
+PENDING = [[MC_REUNITED, MC_RETURNED], LETTER_SENT]
+ROK_FORBIDS = [CLOSED, CONTRACT, MC_DEPOSIT, MC_FAVOR]
+PRESENCES = {
+    ROK_HUB: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FOOL_KING, Side="front", Distance=2.5),
+                  Requires=["trickster.ever", STARTED, ASKED_KILL], Forbids=ROK_FORBIDS + [ROK_FAILED, KING_GONE],
+                  RequiresAnyGroups=[list(g) for g in PENDING], MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
+                  Greeting=("{n}Rokhorn has the whole end of the King's bar to himself. The regulars have decided, without "
+                            "discussing it, that a bare-chested incubus in a cloak grey with Worldwound ash is best left the "
+                            "far end of anything. He raises his cup to you with two claws.{/n}")),
+    ROK_HUB_ALT: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="left", Distance=2.5),
+                      Requires=["trickster.ever", STARTED, ASKED_KILL], Forbids=list(ROK_FORBIDS),
+                      RequiresAnyGroups=[list(g) for g in PENDING] + [[ROK_FAILED, KING_GONE]], MinChapter=5, MaxChapter=5,
+                      AnswerLists=[], Dialog="hub",
+                      Greeting=("{n}Rokhorn is leaning on the tiefling trader's stall in the lower town, turning a string of "
+                                "cheap glass beads through his claws as if pricing them for a girl he dislikes. The trader has "
+                                "stopped trying to sell him anything.{/n}")),
+}
+DISCOVERY_WHERE = {
+    ROK_HUB: "{n}He has been drinking the King's wine for a week, waiting on your answers, because he was told to wait. Tonight he is not smiling.{/n}",
+    ROK_HUB_ALT: "{n}He has been loitering in your lower town for a week, waiting on your answers, because he was told to wait. Tonight he is not smiling.{/n}",
+}
+
+
+def _discovery_scene(hub, suffix):
+    twin = H + "chivarro_seen" + ("_stall" if not suffix else "")
+    groups = [list(g) for g in PENDING] + ([[ROK_FAILED, KING_GONE]] if suffix else [])
+    SCENES.append(scene(H + "chivarro_seen" + suffix, "An unfinished request", "Herrax", 5,
+                        '"Why are you still in Drezen, Rokhorn?"', [
+        rl("start", DISCOVERY_WHERE[hub] + '''
+"I saw who came in with you, hot stuff." {n}He tips his cup toward the door.{/n} "Chivarro. In borrowed wool, drinking your wine, telling your cook the Delights' vintages have gone off since she left. My mistress asked you for that one. 'Can you take care of her for me, my love?' I was standing behind the dais when she said it. And here she is. Taken care of."
+"I don't say you lied. Neither will she. You never said you would. But she asked, and her gratitude would have known no bounds, and now I'm to carry home your answer instead." {n}He puts the cup down.{/n} "She doesn't want the lilitu dead any more; she has the chair. She wants her out of the house, and out of the business, forever. What do I tell her?"''',
+           c('"She stays out of your mistress\'s house and out of her business. She has my word."', "kept_out", flags=(CONTRACT, KEPT_OUT)),
+           c('"She goes where she likes. So do I."', "stood", flags=(CONTRACT, STOOD), alignment=("Chaotic", 1))),
+        hl("kept_out", '''{n}Rokhorn leaves the city that night. The reply comes three weeks later, by another courier, one line in the round hand:{/n} "Your word, then. I'll take it the way I take a stranger's coin, lover: I'll bite it first. If she sets one foot on my stairs, I'll finish what you didn't, and send you the bill."''',
+           c("Continue")),
+        hl("stood", '''{n}Rokhorn leaves the city that night. The reply comes three weeks later, by another courier, one line in the round hand, and the pen has gone through the paper once:{/n} "Then I'll keep a knife for her the way I keep a room for you. Both of them ready. Neither of them used, if you're clever."''',
+           c("Continue"))],
+        requires=("trickster.ever", STARTED, ASKED_KILL), forbids=(CLOSED, CONTRACT, MC_DEPOSIT, MC_FAVOR, twin), delay=0,
+        last=5, optional=True, Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=ROK_UNIT, InteractionHub=hub,
+        RequiresAnyGroups=groups))
+
+
+_discovery_scene(ROK_HUB, "")
+_discovery_scene(ROK_HUB_ALT, "_stall")
 
 
 # --- 8. Epilogue pages (Owner HerraxEpilogue; appended in authored order; no effects). ---------------------------------
@@ -537,7 +659,8 @@ KEPT_PARAS = (
     p("{n}She kept Rokhorn. He served her breakfast every morning for the rest of her reign, with the scar she had given him a night late. She liked to tell guests that the Commander was the only living soul who had ever taken her knife in her own hall, and the only one who had ever given it back.{/n}", requires=(RESTORED,)),
     p("{n}The botched sale became a story in the Upper City, and then a better one: the favoured guest who walked the length of the madam's hall to pay for it. Herrax told it herself, and improved it every year.{/n}", requires=(BLOWN,)),
     p("{n}The Commander kept a thin white line on one cheek, from ear almost to mouth, where an incubus had once read a lie in the blood. Herrax called it the house's mark, and liked to trace it.{/n}", requires=(CHEEK,)),
-    p("{n}The golden coin never left her bodice. The arches of Alushinyrra never carried the Commander to the Delights again, and the Commander always came anyway, up the stairs, like everyone else, and without paying, like no one else.{/n}"),
+    p("{n}Her golden coin was never found. Somewhere in the Lower City a pawnbroker kept it in a drawer and never learned what it opened. The arches never carried the Commander to the Delights again, and the Commander came up the stairs anyway, like everyone else, and without paying, like no one else.{/n}", requires=(BLOWN,), forbids=(BAIT, COIN_BACK)),
+    p("{n}The golden coin never left her bodice. The arches of Alushinyrra never carried the Commander to the Delights again, and the Commander always came anyway, up the stairs, like everyone else, and without paying, like no one else.{/n}", any_groups=((BAIT, COIN_BACK),)),
     p("{n}Chivarro never set foot in the Delights again, and Herrax never spoke of her. Once a year a bottle of the house's worst wine arrived in Drezen with no note, which the Commander took to mean the account was open.{/n}", requires=(KEPT_OUT,)),
     p("{n}Herrax kept a knife for Chivarro the way she kept a room for the Commander: ready, and never used. Both women knew exactly where it was. Neither of them ever made the other reach for it.{/n}", requires=(STOOD,)),
     p("{n}The Commander wore the ram's-head ring from her tray to the end of the war, and every demon who saw it in the field knew whose bar it came from, and hesitated, which was sometimes enough.{/n}", requires=("herrax.house.ring.kept",)),
@@ -545,6 +668,7 @@ KEPT_PARAS = (
     p("{n}Nobody ever learned what had burned her eye. The Commander guessed once, aloud, and she never answered, and she never told any of the stories again where the Commander could hear.{/n}", requires=("herrax.house.eye.guessed",)),
     p("{n}The twin of her knife, made by a salamander in the Lower City who never sold to anyone twice, stayed at the Commander's belt through the rest of the war. It was never used on anyone. She said that was the point of it.{/n}", requires=("herrax.letters.knife.kept",)),
     p("{n}Rokhorn's offer in the rain, the Commander wrote to her the same night, and she never touched him for it. She kept him instead, bringing her wine with shaking hands, and said it was the finest punishment she had ever been taught.{/n}", requires=("herrax.letters.offer.told_her",)),
+    p("{n}The Commander paid the Battlebliss debt the first spring after the war: one night behind her bar in an apron, pouring for her guests and smiling at every one of them. Morevet sold the places at the bar for a month beforehand. Herrax kept the tips, and the apron.{/n}", requires=("herrax.letters.arena.bet_collected",)),
     p("{n}Rokhorn waited, as he had promised, for the Commander to sell her to him a second time. He waited the rest of his long life. It was, Herrax said, the only lesson he ever learned properly.{/n}", requires=("herrax.letters.offer.refused",)),
     p("{n}The favour Herrax held from the matter of Chivarro's body stayed on her books apart from everything else, at interest, and she collected it exactly once, as she had said she would.{/n}", requires=(MC_FAVOR,)),
 )
@@ -555,19 +679,24 @@ SCENES.append(scene(H + "epilogue.reachable", "", "HerraxEpilogue", 6, "", [
 {n}One person came up her stairs without a coin, without an arch and without paying, and found her there, and she was not for sale to them. The house called it the madam's one extravagance. Herrax called it good for business, and never once explained what she meant.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(H + "epilogue.after_hours", "", "HerraxEpilogue", 6, "", [
-    nar("page", '''{n}The spring after the Threshold, the Commander went back to the Midnight Isles, walked up the stairs of the Ten Thousand Delights like any other guest, and asked for the madam by name.{/n}''',
+    nar("page", '''{n}The spring after the Threshold, the Commander went back to the Midnight Isles, walked up the stairs of the Ten Thousand Delights like any other guest, and asked for Herrax by name.{/n}''',
         paragraphs=(
-            p("{n}Herrax named the night. The Commander sold it to Rokhorn in person, over a cup of his own wine, with a gold coin she had pressed into the Commander's palm for the purpose; every word of it was true except who would be waiting. He came through her arch at midnight with the coin on his belt, into a room full of her people, and she did her cutting, lip to cheekbone, and made the Commander stand at the front to watch.{/n}", forbids=(BAIT, BLOWN, LESSON)),
+            p("{n}Rokhorn had been waiting all winter for his seller. He had paid on account on a Drezen doorstep, and he had never once looked closely at what he had bought. Herrax named the night, and the Commander delivered it to him over a cup of his own wine, with a gold coin she had pressed into the Commander's palm for the purpose; every word of it was true except who would be waiting. After midnight the girl who kept the arch took him up the back stair with the coin on his belt, into a room full of her people, and she did her cutting, lip to cheekbone, and made the Commander stand at the front to watch.{/n}", requires=(COST_LATE,), forbids=(BAIT, BLOWN, LESSON)),
+            p("{n}Herrax named the night. The Commander sold it to Rokhorn in person, over a cup of his own wine, with a gold coin she had pressed into the Commander's palm for the purpose; every word of it was true except who would be waiting. After midnight the girl who kept the arch took him up the back stair with the coin on his belt, into a room full of her people, and she did her cutting, lip to cheekbone, and made the Commander stand at the front to watch.{/n}", forbids=(BAIT, BLOWN, LESSON, COST_LATE)),
+            p("{n}The ring he had paid on account went back onto her tray that night, where she counted it with the others, and she had the Commander's palm turned up to the lamp to look at the line his claw had left on it. \"He's tasted you,\" she said. \"Good. Now he knows exactly what he lost to.\"{/n}", requires=(LATE_RING,)),
             p("{n}There was nothing left to sell; she had done her cutting long since, and Rokhorn brought the wine up with his scar on show. So she skipped to the part she had been saving.{/n}", any_groups=((BAIT, BLOWN, LESSON),), forbids=(DECLINED,)),
             p("{n}The Commander came up her stairs with her knife and gave it back, hilt first, at the foot of the stair, before the Sinners and anyone else who cared to look, before a word was said. She took it, and then she did her cutting, a season late, and made the Commander stand at the back to watch.{/n}", requires=(DECLINED,), forbids=(RESTORED,)),
             p("{n}She had decided long before; she only wanted it said to a face. So she skipped to the part she had been saving.{/n}", requires=(RESTORED,)),
-            p("{n}At closing, in the empty hall, with the lamps burning, she offered the one thing her role forbade: to be reachable, by one person. The Commander said yes. The whole house knew by morning, because she made sure it did, and Rokhorn brought the breakfast up the dais steps with his mouth shut.{/n}"),
+            p("{n}At closing, in the empty hall, with the lamps burning, she offered the one thing her role forbade: to be reachable, by one person. The Commander said yes.{/n}", requires=(MADAM,)),
+            p("{n}Chivarro watched it from her own dais, and was very polite to Herrax for the rest of the season. At closing, in Herrax's rooms, with the lamps burning, she offered the one thing a girl of the Delights never gives: to be reachable, by one person, without a price. The Commander said yes.{/n}", forbids=(MADAM,)),
+            p("{n}She did not wait for the stairs. She took the Commander by the belt, her claws through the leather, and walked backwards up the steps with it, and sat down on the cushions and pulled until the Commander stood between her knees. \"Everyone else pays to be this close,\" she said, and set the Commander's thumb on the seam in her lip, and opened her mouth under it. Buckles went down onto the tiles one by one. Her gown had one clasp, and she broke it herself. The ragged wings came round them both like a cloak with holes in it, and with every breath she drew a little warmth out of the Commander, a little more than she gave back, exactly as she had warned. Then she hooked a leg round the Commander's hips and rolled them down into the cushions, came up astride, and sank down, and the lamps burned on over the empty hall.{/n}"),
+            p("{n}In the morning Rokhorn brought the breakfast up the steps with his mouth shut. The whole house knew by noon, because she made sure it did.{/n}"),
         ))],
     requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(H + "epilogue.knife", "", "HerraxEpilogue", 6, "", [
     nar("page", '''{n}Herrax kept the Ten Thousand Delights after the war, and never replaced the knife the Commander had taken off her in her own hall. She wore the empty bone sheath at her hip for years, so that everyone would ask, and told each of them a different story about who had the knife. None of the stories was flattering.{/n}
@@ -591,11 +720,18 @@ ARUESHALAE_HUB = "03ebad9587cbea0438d901a0f8df44f1"   # CompanionDialogues/Arues
 REGILL_HUB = "2366a8db6481070439fee222c0c52e45"       # CompanionDialogues/Regill/AnswersList_0002
 WOLJIF_HUB = "e41585da330233143b34ef64d7d62d69"       # CompanionDialogues/Woljif/AnswersList_0003
 
-SCENES.append(reaction("Arueshalae", H + "react.arueshalae_morning", ("trickster.ever", MORNING),
+SCENES.append(reaction("Arueshalae", H + "react.arueshalae_morning", ("trickster.ever", MORNING, "herrax.sermon_heard"),
     '''{n}Arueshalae has her arms wrapped round herself, though it isn't cold.{/n}
 "I lived in that house. Years. I told you what it is, standing in her hall: pain, filth and lies. The pleasures leave scabs." {n}She makes herself look at you.{/n}
 "And you slept on the madam's dais, and the man she cut carried you breakfast with the stitches still wet, and the whole house watched him do it. That's not a love story in the Delights. That's a lesson in who owns whom." {n}Quieter:{/n} "I hope you know which one you were in."''',
     answer_list=ARUESHALAE_HUB, chapter=4, last=5, entry='"You\'re very quiet this morning."', portrait="Arueshalae", **AR_GUARD))
+
+SCENES.append(reaction("Arueshalae", H + "react.arueshalae_morning_unheard", ("trickster.ever", MORNING),
+    '''{n}Arueshalae has her arms wrapped round herself, though it isn't cold.{/n}
+"I lived in that house. Years. Before her time on the dais, under Chivarro. I know what it sells: pain, filth and lies, and the pleasures leave scabs." {n}She makes herself look at you.{/n}
+"And you slept on the madam's dais, and the man she cut carried you breakfast with the stitches still wet, and the whole house watched him do it. That's not a love story in the Delights. That's a lesson in who owns whom." {n}Quieter:{/n} "I hope you know which one you were in."''',
+    answer_list=ARUESHALAE_HUB, chapter=4, last=5, entry='"You\'re very quiet this morning."', portrait="Arueshalae",
+    **dict(AR_GUARD, forbids=(*AR_GUARD["forbids"], "herrax.sermon_heard"))))
 
 SCENES.append(reaction("Arueshalae", H + "react.arueshalae_knife", ("trickster.ever", KNIFE_TAKEN),
     '''"You cut his face because she told you where." {n}Arueshalae's voice is very level.{/n}
@@ -614,8 +750,8 @@ SCENES.append(reaction("Regill", H + "react.regill_wrist", ("trickster.ever", DE
     answer_list=REGILL_HUB, chapter=4, last=5, entry='"About the Delights..."', portrait="Regill", **RE_GUARD))
 
 SCENES.append(reaction("Woljif", H + "react.woljif_con", ("trickster.ever", BAIT),
-    '''"Chief. Chief." {n}Woljif grabs your sleeve.{/n} "You sold a demon a night alone with his boss. You told him everything true. Every single thing. And the only lie was who'd be in the room." {n}He shakes his head in something close to worship.{/n}
-"You know how hard that is? Anyone can lie. Telling a mark the whole truth and still robbing him blind, that's art. And he paid you with her own coin!" {n}He sobers.{/n} "Don't ever do that to me, all right? I'd never see it coming."''',
+    '''"Chief. Chief." {n}Woljif grabs your sleeve.{/n} "You sold a demon a night alone with his boss. Every word true, except who'd be in the room. Nice. Old trick. My uncle did it to a fence in Kenabres." {n}He squints.{/n}
+"Except my uncle got paid. You gave the incubus her gold coin, the one that gets you in anywhere, for a quarter of a house he was never going to hold. So what did you get? A seat at a haircut?" {n}He shakes his head.{/n} "Chief, I love you, but you're a terrible businessman. Next time bring me. I'll make the demon pay for his own ambush."''',
     answer_list=WOLJIF_HUB, chapter=4, last=5, entry='"You look pleased with yourself."', portrait="Woljif", **WO_GUARD))
 
 SCENES.append(reaction("Woljif", H + "react.woljif_cheek", ("trickster.ever", CHEEK),
@@ -641,6 +777,11 @@ def integrate(payload):
     _bind(payload, "SelectedAnswers", SELECTED_ANSWERS)
     _bind(payload, "SeenCues", SEEN_CUES)
     _bind(payload, "InventoryItems", INVENTORY)
+    for key, value in PRESENCES.items():
+        have = payload.setdefault("Presences", {}).get(key)
+        if have is not None and have != value:
+            raise ValueError("Conflicting presence: " + key)
+        payload["Presences"][key] = dict(value)
     items = payload.setdefault("RemovableItems", [])
     if COIN not in items:
         items.append(COIN)

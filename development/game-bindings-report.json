@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4173,
-  "unique_targets": 875,
+  "binding_uses": 4219,
+  "unique_targets": 879,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -226,8 +226,16 @@
       "path": "Units/NPC/Unique/Act_4_MidnightIsles/FleshMarket/Chivarro.jbp",
       "type": "BlueprintUnit"
     },
+    "66e12264eaf6bf74196e20a9d7619cd2": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/HaremOfArdentDream/Shamira.jbp",
+      "type": "BlueprintUnit"
+    },
     "a32a07903e428d34cb0e98a804d40569": {
       "path": "Units/NPC/Unique/Act_4_MidnightIsles/RaptureOfRupture/Vellexia_Default.jbp",
+      "type": "BlueprintUnit"
+    },
+    "25ad116e1f5008e488b13f9b968596d4": {
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/TenThousandDelights/Rokhorn.jbp",
       "type": "BlueprintUnit"
     },
     "38f0acf8ba7c3b64b87369d478014fda": {
@@ -922,6 +930,10 @@
       "path": "World/Dialogs/c4/FleshMarket/HologramSlaver/Cue_0014.jbp",
       "type": "BlueprintCue"
     },
+    "2bfaec7837a9a4a40a43e73f06b3cf51": {
+      "path": "World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Answer_0039_AasimarsBrothel.jbp",
+      "type": "BlueprintAnswer"
+    },
     "d138954fd7cdb2d4e90bb28cbd76235e": {
       "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1466,6 +1478,10 @@
       "path": "World/Dialogs/c5/Mythic_Trickster/Debrief_Council/Cue_0015.jbp",
       "type": "BlueprintCue"
     },
+    "f4a908e91c5c447418fa52ddc589184f": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Debrief_Council/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
     "6a5c262473dfe824886bed3eb3eef59d": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -1513,6 +1529,10 @@
     "d3d0efb4dfcc1964c923d7b2d6e0dc77": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Shyka_Offer/AnswersList_0011.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "c3b8e7f1537c7cb4d839b2cff532cbb6": {
+      "path": "World/Dialogs/c5/Mythic_Trickster/Shyka_Offer/Cue_0002.jbp",
+      "type": "BlueprintCue"
     },
     "5d6810f1e0eb8204fa4c3211fc603769": {
       "path": "World/Dialogs/c5/Mythic_Trickster/Shyka_Offer/Cue_0010.jbp",
@@ -2348,10 +2368,6 @@
     },
     "bee15cff021828c4c92f09e8f771dbb2": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/FleshMarketMassacre.jbp",
-      "type": "BlueprintEtude"
-    },
-    "3f1a8be9cc6d082469d17da642655f53": {
-      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/HerraxaSlaveHaggling.jbp",
       "type": "BlueprintEtude"
     },
     "eff0ca2318f96c049b5c9e6785eac196": {

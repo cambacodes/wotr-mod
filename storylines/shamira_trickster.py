@@ -38,9 +38,11 @@ fire the syphon kept; the Commander's dreams as the only fire a stolen shell wil
 
 Delivery. No Shamira blueprint carries a dialog component (66e12264, ec9802dd and 4b7429fa checked), and on a Trickster
 run the Commander never walks Alushinyrra in Chapter 5 (the boudoir is one visit through Socothbenoth's closet, shut once
-the essence objective completes; 06a-NATIVE-PREREQS). So nothing is spawned for her: the Chapter 4 beats are inline on
-her own audience list; the setup and the first words are inline on Socothbenoth's briefing and closet lists, where he
-speaks; the rest are rest-delivered pages (her canon voice inside the Commander's mind, or her visits by the closets).
+the essence objective completes; 06a-NATIVE-PREREQS). The Chapter 4 beats are inline on her own audience list; the setup
+and the first words are inline on Socothbenoth's briefing and closet lists, where he speaks. While she has no body she
+lives behind the Commander's eyes, and those nights are sendings, folded into four pages (tier B, 05 §4.2). Once she has
+a body she is a spawn-copy of her own unit with a click-to-talk hub (ERRATA, Presence.Dialog "hub") at the Fool King's
+corner table in Drezen (shamira_dream), and the courtship after the waking is played there.
 Nothing here reads, fills or removes Areelu's flask (SoulJar_Trickster): that bottle is Last Call's.
 """
 from story_format import c, n, p, reaction, scene
@@ -230,27 +232,36 @@ audience(P + "ch4.read", "An open mind", '[Open your mind to her] "Everyone in t
 "Stop that." {n}Her nails whiten on the arm of her throne.{/n} "Stop thinking about barley at me. Something is under there, I can feel it moving like a mouse under a rug."''',
         c("Continue", "idiot")),
     conv("idiot", '''{n}The heat pulls out of you all at once, like a hand out of cold water. She is smiling, and it is not a pleasant smile, and it is not an entirely unpleasant one either.{/n}
-"Either you are an idiot, or you have learned to hide from me. I have not decided which, and I dislike not deciding." {n}She points at the doors.{/n} "Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do."''',
+"Either you are an idiot, or you have learned to hide from me, and a mortal who can hide from me in my own Harem is a mortal I will have to kill one day, or keep." {n}She points at the doors.{/n} "Leave. Come back when I have forgotten about you, which will be never. I will find out what was under the barley, Golarian. I always do."''',
         c("[Bow, and leave her to her court.]")),
 ], requires=("trickster",), forbids=(READ,))
 
 audience(P + "ch4.bird", "A dream is a bird", '"You said my dreams were loud. What does a demon want with a mortal\'s dreams?"', [
     conv("start", '''{n}Shamira considers the question for so long that the courtiers nearest the throne begin to edge away, in case the answer is them.{/n}
-"Want? Nothing. I have a queen who dreams of nothing at all, and a court that dreams of nothing but me. I am fed very well, thank you." {n}She examines her nails.{/n} "But you ask what they are. That, I will tell you, because it is the one thing in this city nobody else can."''',
+"Want? Nothing. I have a queen who wants nothing she cannot take, a court that wants nothing but my chair, and a city full of sleeping mortals under my windows. I am fed very well, thank you." {n}She examines her nails.{/n} "But you ask what they are. That, I will tell you, because it is the one thing in this city nobody else can."''',
         c("Continue", "sower")),
     conv("sower", '''"Before I was this, I was a sower. I carried dreams down out of Heaven on my wings and dropped them into sleeping heads the way a farmer throws seed: a song into a girl who could not sing yet, a city into a boy who had never seen one. I lit fires in people. That is what I was for."
 {n}Her voice has gone quieter. The light around her throne dims with it, as if it were listening too.{/n} "Some of the fires burned too hot. I let them. It was very beautiful to watch."''',
         c("Continue", "bird")),
-    conv("bird", '''"A dream is a bird, not a horse. You can't restrain it, you can only hurt it with your reins. My masters wanted reins. I wanted to see how high the birds would fly." {n}She smiles at something you cannot see.{/n} "One of them flew so high it burned a world. I watched it all the way up. And then I did not go home."
+    conv("bird", '''"A dream is a bird, not a horse. You can't restrain it, you can only hurt it with your reins. My masters wanted reins. I wanted to see how high the birds would fly." {n}She smiles at something you cannot see.{/n} "One of them caught like a wildfire. A dream so bright that making it real took atrocities, and the dreamers did them, one after another, gladly. I could have stopped it with a word. I watched it all the way up instead. And then I did not go home."
 "Nocticula found me afterwards, blazing on the black water like a shipwreck. She came out across the sea for me and wrapped me in her shadows, and I have been cool ever since."''',
         c('"And now you eat what you used to sow."', "eat"),
         c('"You miss it."', "miss")),
-    conv("eat", '''"Now I taste. There is a difference." {n}She wets her lips, slowly, to show you the difference.{/n} "The demons in this room dream of my throne every night. I can taste it on them when they bow. Envy tastes of iron. Lust tastes of salt. Yours..." {n}Her eyes narrow.{/n} "Yours tasted of burning barley and a dragon falling. I haven't decided if I liked it."''',
+    conv("eat", '''"Now I taste. There is a difference." {n}She wets her lips, slowly, to show you the difference.{/n} "The demons in this room want my throne every hour they are awake. I read it on them when they bow; that is manners, not a meal. Demons do not dream. The meal is in mortal heads, asleep. Envy tastes of iron. Lust tastes of salt. Yours..." {n}Her eyes narrow.{/n}''',
+        c("Continue", "eat_barley", requires=(HID,)),
+        c("Continue", "eat_war", requires=(THOUGHT_WAR,), forbids=(HID,)),
+        c("Continue", "eat_her", requires=(THOUGHT_HER,), forbids=(HID, THOUGHT_WAR)),
+        c("Continue", "chair", forbids=(HID, THOUGHT_WAR, THOUGHT_HER))),
+    conv("eat_barley", '''"Yours tasted of burning barley and a dragon falling. I haven't decided if I liked it."''',
+        c("Continue", "chair")),
+    conv("eat_war", '''"Yours tasted of smoke and a dragon falling, over and over, like a man chewing the same crust. One chair, Golarian. I told you."''',
+        c("Continue", "chair")),
+    conv("eat_her", '''"Yours tasted of me." {n}She says it lightly, and does not quite manage it.{/n} "Too hot. Much too bright. I haven't decided if I liked it."''',
         c("Continue", "chair")),
     conv("miss", '''"Miss it?" {n}The light around her flares, hot enough that you feel it on your face, and dies back.{/n} "I have not dreamed since I fell, Golarian. Demons don't. We live on other people's. Do not ever again ask me if I miss something. It is the kind of question that ends with me pulling out your tongue to see how it was attached."''',
         c("Continue", "chair")),
     conv("chair", '''{n}A courtier drifts too close to the dais, a thin smiling thing in a silver mask, and Shamira does not look at him. She does not need to. He drifts away again with his hands pressed to his temples.{/n}
-"There. That one dreams of my chair, and so, sometimes, do I. Of hers." {n}She says it lightly and watches whether you catch it. When you do, her face does something small and dangerous, a crack in a mask, and closes again.{/n}
+"There. That one wants my chair, and so, sometimes, do I. Hers." {n}She says it lightly and watches whether you catch it. When you do, her face does something small and dangerous, a crack in a mask, and closes again.{/n}
 "You heard nothing. Nobody hears anything in the Harem."''',
         c('[Flirt] "Walk in my dreams, then. Tonight. See if you like them better from inside."', "invite", flags=(BIRD, INVITED)),
         c('"Stay out of my head, Shamira. I mean it."', "warned", flags=(BIRD, WARNED_OFF))),
@@ -287,10 +298,15 @@ SCENES.append(scene(P + "killed.setup", "What's left of her", "Shamira", 5,
     '[Touch your temple] "Her essence goes in your cauldron. What happens to the rest of her?"', [
     conv("rest", '''{n}Socothbenoth blinks his black eyes at you, twice, as if you had asked him where the sun goes at night.{/n}
 "The rest? The rest of Shamira? Oh, darling. Nothing happens to the rest of her. That is rather the point." {n}He waves a hand, and his rings clatter.{/n} "Demons who die at home stay dead. The Abyss is a mouth; it chews and it swallows and it does not give back. The Nirvana goes in my cauldron, the rest goes down the Abyss's throat, and my sister sleeps alone for once in an age. Delicious."''',
-        c("Continue", "her_words", requires=(LET_IN,)),
-        c("Continue", "never_in", forbids=(LET_IN,))),
+        c("Continue", "her_words", requires=(LET_IN, READ)),
+        c("Continue", "never_in", forbids=(LET_IN,)),
+        c("Continue", "her_native", requires=(LET_IN,), forbids=(READ,))),
     n("her_words", "Narrator", '''{n}"The Abyss is a mouth, and it swallows its own." You have heard it before, or something very like it, in her Harem, with the heat of her behind your forehead and the whole court watching.{/n}
 {n}And you have felt it since: something left at the back of your head where she was, fine as a hair. On bad nights it tugs, the way a line tugs when something on the far end turns over in its sleep. She has been in your head. There is a thread in you tied to her. A dying thing goes for the nearest door it knows, and holds on to whatever line it has.{/n}''',
+        c('"She\'s been inside my head, Socothbenoth. She knows the way. What if I leave that door open while I kill her?"', "open", flags=(PRIMED, STARTED)),
+        c('[Keep it to yourself] "Just curious."', abort=True)),
+    n("her_native", "Narrator", '''{n}She has been in your head. You let her in, in her Harem, in front of her court: she went through you like a hand through a drawer, and took what she came for, and went.{/n}
+{n}Not all of her went. On bad nights something tugs at the back of your head, fine as a hair, the way a line tugs when something on the far end turns over in its sleep. Nobody has told you what it is. You can guess. And if the Abyss swallows its own, a thing that dying might reach for the nearest door it already knows; that is your guess too, and nothing more.{/n}''',
         c('"She\'s been inside my head, Socothbenoth. She knows the way. What if I leave that door open while I kill her?"', "open", flags=(PRIMED, STARTED)),
         c('[Keep it to yourself] "Just curious."', abort=True)),
     n("never_in", "Narrator", '''{n}She has never been in your head. Not freely. You kept her out, or she never asked, or she took what she wanted by force and went away again. There is no door in you that she knows.{/n}
@@ -298,7 +314,7 @@ SCENES.append(scene(P + "killed.setup", "What's left of her", "Shamira", 5,
         c('"What if I open my head to her, and keep it open while I kill her? Somewhere for the rest of her to go."', "blind", flags=(PRIMED, STARTED, OPENED_BLIND)),
         c('[Keep it to yourself] "Just curious."', abort=True)),
     conv("blind", '''{n}For a moment the Silken Sin says nothing at all, which you did not know he could do.{/n}
-"Open your mind. To Shamira. Now, of all times. While you kill her." {n}He presses his hands to his chest.{/n} "Darling, she reads minds the way I read the tailors' bills. She will look in, and see the knife, and see the plan, and see you, and she will come in through that door with everything she has left, all at once, like a drowning woman up a rope. It may not be only the rest of her that comes in. It may be the whole of her, and angry." {n}He beams.{/n} "I have never been so jealous of anyone in my life."''',
+"Open your mind. To Shamira. Now, of all times. While you kill her." {n}He presses his hands to his chest.{/n} "Darling, she reads minds the way I read the tailors' bills. She will look in, and see the knife, and see the plan, and see you, and she will come in through that door with everything she has left, all at once, like a drowning woman up a rope. It may not be only the rest of her that comes in. It may be the whole of her, and angry." {n}He beams.{/n} "If she tears you open, darling, do try to keep your eyes open. I want the whole story."''',
         c("Continue", "carpets")),
     conv("open", '''{n}For a moment the Silken Sin says nothing at all, which you did not know he could do.{/n}
 "You'd let her in. On purpose. While she's dying, and furious, and knows exactly whose hand did it." {n}He presses his hands to his chest.{/n} "I send you to fetch my sister's favourite toy's heart in a cauldron, and you plan to bring the toy home as well, inside your own skull, for company. Oh, you are wasted on Golarion. You are wasted on the whole Material Plane."''',
@@ -442,9 +458,13 @@ page(P + "killed.drowning", "Someone drowning", [
     TricksterDevice=True, TricksterState="cold")
 
 
-# --- Reactions (Shyka, acknowledgment only; Arueshalae, Daeran, Regill, Woljif on their own hubs, each with a stake) ----------------------
+# --- Reactions (05 §3.1 row 37: Shyka, Socothbenoth, Arueshalae). Socothbenoth speaks inside the setup and the first words;
+# the Daeran, Regill and Woljif reactions of the first build are retired by gating (the barracks witness is folded into her
+# own event, mind.barracks_after), never deleted. ------------------------------------------------------------------------------
 
 ARUESHALAE = ("arueshalae_dead", "arueshalae.evil_dead", "arueshalae.kicked_out", "arueshalae.kicked_out_evil")
+# G6(b): an Arueshalae who died and came back on her own Trickster road is present again (her death flag stays set).
+A_BACK = {"arueshalae_dead": "arueshalae.trickster.returned", "arueshalae.evil_dead": "arueshalae.trickster.returned"}
 DAERAN = ("daeran.dead", "daeran.kicked_out")
 WOLJIF = ("woljif.dead", "woljif.kicked_out")
 REGILL = ("regill.dead", "regill.kicked_out", "regill.left_plot")
@@ -455,30 +475,36 @@ SCENES.append(reaction("Shyka", P + "react.shyka", ("trickster.ever", RETURNED),
     answer_list=SHYKA_LIST, forbids=("shyka.gone",), chapter=5, last=5, entry="[Let Shyka look at you, and at whoever is looking out.]",
     NativeReturnCue=SHYKA_RETURN))
 
-SCENES.append(reaction("Arueshalae", P + "react.arueshalae_inside", ("trickster.ever", RETURNED),
+SCENES.append(reaction("Arueshalae", P + "react.arueshalae_inside", ("trickster.ever", RETURNED, "shamira.saw_arueshalae"),
     '''{n}Arueshalae will not meet your eyes across the fire. When you ask, she laughs, not very well.{/n}
 "You have Shamira in there. Behind your eyes. I can feel her looking out; every succubus in Alushinyrra knows that look. When she saw me with you in her throne room she told the whole court I'd fallen low." {n}She hugs her knees.{/n} "She isn't asleep in there. She's listening. She always listened hardest when she looked bored. Just... count your thoughts after you talk to her. All of them."''',
-    answer_list=ARUESHALAE_HUB, forbids=(EMBODIED, CLOSED) + ARUESHALAE, chapter=5, last=5,
+    answer_list=ARUESHALAE_HUB, forbids=(EMBODIED, CLOSED) + ARUESHALAE, chapter=5, last=5, ForbidOverrides=A_BACK,
+    entry='"You won\'t look at me."'))
+
+SCENES.append(reaction("Arueshalae", P + "react.arueshalae_inside_unseen", ("trickster.ever", RETURNED),
+    '''{n}Arueshalae will not meet your eyes across the fire. When you ask, she laughs, not very well.{/n}
+"You have Shamira in there. Behind your eyes. I can feel her looking out; every succubus in Alushinyrra knows that look. I grew up under her court. She had girls flayed for looking at her too long." {n}She hugs her knees.{/n} "She isn't asleep in there. She's listening. She always listened hardest when she looked bored. Just... count your thoughts after you talk to her. All of them."''',
+    answer_list=ARUESHALAE_HUB, forbids=(EMBODIED, CLOSED, "shamira.saw_arueshalae") + ARUESHALAE, chapter=5, last=5, ForbidOverrides=A_BACK,
     entry='"You won\'t look at me."'))
 
 SCENES.append(reaction("Arueshalae", P + "react.arueshalae_walking", ("trickster.ever", EMBODIED),
     '''"She's out. I can feel it." {n}Arueshalae touches the black pearl at her throat without seeming to notice.{/n} "Everyone who grew up in that city can feel it, the way you feel a storm in a bad knee. The Ardent Dream is walking around again in a body she didn't grow."
 {n}She looks at you, and her face does something complicated.{/n} "And she comes back every night, doesn't she. Into your sleep. I can smell her on you in the mornings." {n}She looks away.{/n} "I used to pray to be left alone in my dreams. I hope you didn't give that away cheaply."''',
-    answer_list=ARUESHALAE_HUB, forbids=ARUESHALAE, chapter=5, last=6, entry='"Something on your mind?"'))
+    answer_list=ARUESHALAE_HUB, forbids=ARUESHALAE, chapter=5, last=6, entry='"Something on your mind?"', ForbidOverrides=A_BACK))
 
 SCENES.append(reaction("Daeran", P + "react.daeran_sleep", ("trickster.ever", NEVER_ALONE),
     '''{n}Daeran swirls his wine and considers you over the rim with frank, delighted clinical interest.{/n}
 "You talk in your sleep now, my dear. Everyone in the corridor has heard it. And every night, somebody answers you. A woman. Very bored, very rude, and I know the voice." {n}He sips.{/n} "I stood in her throne room in Alushinyrra while she told us her life story, and I called it a bad novel, to her face. I should like to revise my review. It appears to have a sequel, and I am living next door to it."''',
-    answer_list=DAERAN_HUB, forbids=DAERAN, chapter=5, last=6, entry='"You\'re staring at me, Daeran."'))
+    answer_list=DAERAN_HUB, forbids=DAERAN + (EMBODIED,), chapter=5, last=6, entry='"You\'re staring at me, Daeran."'))
 
 SCENES.append(reaction("Regill", P + "react.regill_barracks", ("trickster.ever", BARRACKS),
     '''{n}Regill has a report on his knee and does not look up from it.{/n} "The north barracks. Two hundred men. Their drill is perfect and their sergeants have nothing to report, and that is my report." {n}He turns a page.{/n} "Men in a war complain, Commander. They gamble, they fight, they dream aloud and wake their bunkmates. These have stopped. All at once, on one night, the night you stood in their doorway until dawn." {n}Now he looks up.{/n} "I have not written down where you were standing. I will, if I am asked."''',
-    answer_list=REGILL_LIST, forbids=REGILL, chapter=5, last=6, entry='"You have something to report, Regill."'))
+    answer_list=REGILL_LIST, forbids=REGILL + (FUEL,), chapter=5, last=6, entry='"You have something to report, Regill."'))
 
 SCENES.append(reaction("Woljif", P + "react.woljif_voice", ("trickster.ever", RETURNED),
     '''"Boss. Boss. You been talkin' to yourself." {n}Woljif has taken a whole step back from you, cup and all.{/n} "Not like normal folk do. In two voices. And one of 'em, when I got close, said inside my head, 'Try to pick that pocket and I'll make you dream of your mother'."
 {n}He is not joking. His tail has gone round his leg.{/n} "Boss, last time a demon talked inside somebody's head around me, it was Voetiel, and it was about my soul. I know what it sounds like when one of 'em's moved in. Whatever you got in there, you ask it nice to stay out of mine."''',
-    answer_list=WOLJIF_HUB, forbids=(EMBODIED,) + WOLJIF, chapter=5, last=5, entry='"Something wrong, Woljif?"'))
+    answer_list=WOLJIF_HUB, forbids=(EMBODIED, FOUND) + WOLJIF, chapter=5, last=5, entry='"Something wrong, Woljif?"'))
 
 
 # --- Epilogue pages (ordered siblings; read-only) -------------------------------------------------------------------
@@ -486,21 +512,30 @@ SCENES.append(reaction("Woljif", P + "react.woljif_voice", ("trickster.ever", RE
 EPI = "ShamiraEpilogue"
 
 
-def epilogue(id, text, requires, forbids=(), paragraphs=()):
+ALIVE_AFTER = "trickster.commander_back"   # native Trickster survival or Last Call's bottle
+
+
+def epilogue(id, text, requires, forbids=(), paragraphs=(), living=True):
+    """living: the page narrates the Commander's life after the war, so it Forbids sacrifice unless the Commander came back."""
+    extra = dict(ForbidOverrides={"sacrifice": ALIVE_AFTER}) if living else {}
     SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
-                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL))
+                        requires=("trickster.ever", *requires), forbids=tuple(forbids) + (("sacrifice",) if living else ()),
+                        last=6, Relationship=REL, **extra))
 
 
 SHELL_PARAGRAPHS = (
-    p('''{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. She could have shaped it away; she was a succubus, and her face was whatever she said it was. She never did.{/n}''', requires=(TORN,)),
+    p('''{n}She wore the stolen body with a thin white seam across the collarbone where the last root had torn it on the way out of the earth. Everything else about that body she shaped as she pleased; the seam would not shape, as she had known the morning she woke. So she cut her gowns to show it, and let the court call it a duelling scar, and killed the three who believed it.{/n}''', requires=(TORN,)),
     p('''{n}Ramisa Sloughed Skin told the story of the theft at every sale for a hundred years, with names, as she had promised: the clown who stole a body from her garden for the woman the clown had killed. It became her favourite. It sold a great many bodies. Shamira never forgave her for it, and never managed to find where she was hiding.{/n}''', requires=(RAMISA_STORY,)),
     p('''{n}Ramisa Sloughed Skin sent Socothbenoth a bill for the tall woman with the long hands every season for the rest of his existence, and he paid none of them, because he had never ordered her, and she never once believed him.{/n}''', requires=(RAMISA_FOOLED,)),
     p('''{n}There had been less of her after the Commander's head than before. Nobody who had known her could have said what was missing: a song, perhaps, or a face she had once loved. She could not say either. It was the only thing she was ever afraid of.{/n}''', requires=(LATE,)),
 )
 
 epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira the Ardent Dream died in the Lady in Shadow's own bedchamber, at the hand of the Commander, and that her essence burned in the syphon at Threshold with everything else it held. The chroniclers did not look behind the Commander's eyes.{/n}
-{n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dream again. Only that she wore the room as if it had never been emptied, and that the light around her throne was dimmer than it had been, and did not wither anyone who looked at it.{/n}''',
-    requires=(EMBODIED, COMMITTED), forbids=(CLOSED,), paragraphs=SHELL_PARAGRAPHS + (
+{n}Nobody could say, afterwards, when a red-haired woman had first been seen in the Harem of Ardent Dream again. Only that she wore the room as if it had never been emptied.{/n}''',
+    requires=(EMBODIED, COMMITTED), forbids=(CLOSED,), paragraphs=(
+        p('''{n}On the night before the rift she came into the Commander's sleep as she always did, and for once she did not warm her hands. "Come out of the hole, clown," she said, in the throne-room voice, and under it something that was not. "I have already died of one trick this year. I will not lose you to a hole in the ground. It would be a very poor joke, and you are not allowed to tell poor jokes. Not to me." Then she sat down at the edge of the dream and did not leave it until the drums.{/n}'''),
+    ) + SHELL_PARAGRAPHS + (
+        p('''{n}The light around her throne was dimmer than it had been, and did not wither anyone who looked at it. Her court learned to look.{/n}''', forbids=(BARRACKS,)),
         p('''{n}The Commander never dreamed alone again. Every night, wherever the Commander slept, she came: through the dragon and the bread and the barley, into the one warm room she knew, to keep her stolen body alive for another day. Some nights she only sat at the edge of the dream and watched. Some nights she did not. She never once asked.{/n}'''),
         p('''{n}All that first year she kept to the edge of every dream, with her back turned, as the Commander had asked on the first night, and her hands were cold by noon, and her court whispered about it. Then, one night, the Commander asked her to turn round. She made the Commander ask twice.{/n}''', requires=(P + "terms.edge",)),
         p('''{n}The light around her throne came back brighter than anyone remembered, fed on a barracks of Mendevian soldiers who never dreamed again, and it withered whatever looked at it, as it always had. Of the men of that barracks, eleven deserted within the year, two hanged themselves, and one became a very great painter, and none of them could have said why.{/n}''', requires=(BARRACKS,)),
@@ -509,7 +544,7 @@ epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira t
         p('''{n}The Commander once told her, with a perfectly straight face, that of course they would help her take the Midnight Isles. She laughed until the Harem shook. Nobody in the Abyss had ever lied to her so badly, or so fondly.{/n}''', requires=(LIED_HER,)),
         p('''{n}The Lady in Shadow knew. She had known since the night she bent close to the Commander in her audience chamber and said hello to what was looking out. She never said a word to her steward about it, and her steward never asked what she knew, and the whole city watched the two of them not asking with enormous enjoyment.{/n}''', requires=(NOCT_KNOWS,)),
         p('''{n}The captain of the north postern kept his post to the end of the war and sold the templars of the Ivory Labyrinth a door every week, and every door was a wall of crossbows. His daughter came home in the second spring, in an exchange he had arranged himself. He never knew who had written his lists for him. Shamira always said it was the best joke she had ever been part of.{/n}''', requires=(P + "spy.turned",)),
-        p('''{n}The captain of the north postern lived out the war, and a long life after it, a dull, loyal, careful man who never dreamed and never wondered why. Shamira wore his daughter's face in his dreams for a while, then got bored of it and put it away.{/n}''', requires=(P + "spy.fed",)),
+        p('''{n}The captain of the north postern lived out the war, and a long life after it, a dull, loyal, careful man who never dreamed and never wondered why.{/n}''', requires=(P + "spy.fed",)),
         p('''{n}The chaplains of the crusade never forgave the Commander for the north barracks. They never said so; they only stopped praying aloud when the Commander walked into a room.{/n}''', requires=(P + "barracks.told",)),
         p('''{n}In the Harem of Ardent Dream the Commander was always her fool: bowed in, bowed out, never assassinated, because nobody in the Abyss kills a joke. The Commander had to be funny every visit for the rest of {mf|his|her} life. It was, by general agreement, the hardest duty of the Fifth Crusade.{/n}''', requires=(P + "court.fool",)),
         p('''{n}In the Harem of Ardent Dream the Commander was always her guest, who drank her wine without asking, and whom she had not yet killed. The court of Alushinyrra speculated about it for a hundred years and never once came near the truth.{/n}''', requires=(P + "court.guest",)),
@@ -518,12 +553,14 @@ epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira t
     ))
 
 epilogue("late", '''{n}The war ended before the Ardent Dream could finish her game. She came to the Commander's window a month after Threshold with her red hair full of the smell of the Abyss and sat on the sill with her legs crossed, and said that she was owed a round, and that she had come to win it.{/n}
-{n}She did not win it. She had never intended to. Afterwards nobody asked the Commander why a chair in the corner of the bedroom was always turned to face the wardrobe.{/n}''',
+{n}She won it. The Commander did not even try to hide her; she went through that head room by room and found herself in every one, and said afterwards that it was the least sporting victory of her long life, and the best. Nobody asked the Commander why a chair in the corner of the bedroom was always turned to face the wardrobe.{/n}''',
     requires=(LATE_COMMITTED, EMBODIED), forbids=(COMMITTED, CLOSED, ALLY), paragraphs=SHELL_PARAGRAPHS)
 
 epilogue("ally", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and sat her throne in the Harem of Ardent Dream as if she had never been dead.{/n}
 {n}She had lost one game in her life that she had meant to win, and she never played it again with anyone. She still came into the Commander's sleep every night, because the body would not live without it, and she sat at the far edge of every dream with her back turned, and never once looked round. She paid her debts exactly, and not one favour more.{/n}''',
-    requires=(EMBODIED, ALLY), forbids=(COMMITTED,), paragraphs=SHELL_PARAGRAPHS)
+    requires=(EMBODIED, ALLY), forbids=(COMMITTED,), paragraphs=(
+        p('''{n}On the night before the rift she spoke in the Commander's sleep for the first time since the game. "You won. I said I would never ask you anything again, and I won't. This isn't asking. This is telling. Come back out of the hole, Golarian. I owe you a life, and I pay my debts, and I can't pay a dead man."{/n}'''),
+    ) + SHELL_PARAGRAPHS)
 
 epilogue("closed_door", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and never spoke the Commander's name again. The Commander had shut a door on her in her own Harem. In the Abyss, some things are forgiven. That is not one of them.{/n}
 {n}She still came into the Commander's sleep every night; the body would have died without it. She never said a word there, either. The Commander never dreamed alone again, and never once had company.{/n}''',
@@ -552,6 +589,11 @@ epilogue("walked", '''{n}Shamira the Ardent Dream walked out of a wardrobe in Dr
 epilogue("unhoused", '''{n}The war ended with the Ardent Dream still behind the Commander's eyes, waiting for a body that never came. She talked, at first. Then she sulked. Then, for long stretches, she only listened, and the second heartbeat went on beside the Commander's own, patient as a cat at a mousehole.{/n}
 {n}Nobody else ever heard her. Everyone who stood too close to the Commander, though, found themselves thinking of her.{/n}''',
     requires=(FOUND,), forbids=(EMBODIED, KEPT, CAST_OUT, CLOSED))
+
+epilogue("mourned", '''{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}
+{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every mortal sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}
+{n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}''',
+    requires=(EMBODIED, "sacrifice"), forbids=(ALIVE_AFTER, CLOSED), living=False)
 
 
 def integrate(payload):

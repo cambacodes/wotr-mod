@@ -103,7 +103,7 @@ You touch that correction. Nocticula watches the movement.{/n}
         if '"And our earlier bargain?"' in withdrawal["Text"]:
             replace(withdrawal,
                 '"And our earlier bargain?"\n"Was not about a harbor. I have not forgotten its terms because you have tired of these."',
-                '"The letters?"\n"If you have something worth saying. I will not pretend we never chose each other\'s company because you have ceased to enjoy this part of it."')
+                '"The letters?"\n"If you have something worth saying. Bore me and I shall stop reading, and you will never know which letter it was."')
         else:
             replace(withdrawal,
                 '"Our earlier bargain still stands too."\n"I did not confuse it with an evening\'s company. Do me the courtesy of remembering that."',
@@ -136,7 +136,7 @@ You touch that correction. Nocticula watches the movement.{/n}
         elif gift == "absent":
             replace(pages["start"],
                 '"You could make the invitation rather difficult to refuse. Your gift has not gone away."\n"No," she says. "It has not."',
-                '"There is no gift between us tonight. There is still a room which exists because you want me in it."\n"And a door you have already asked me to open. Do not confuse my having opened it with my wishing you gone."')
+                '"There is no gift between us tonight. There is still a room which exists because you want me in it."\n"And a door you asked me to open. I opened it because I wanted you through it. Try not to make me regret the hinges."')
         if history != "prior":
             replace(pages["start"],
                 '"You should remember it. Particularly if you begin imagining that a pleasant evening has altered our older bargain."',
@@ -151,7 +151,7 @@ You touch that correction. Nocticula watches the movement.{/n}
             replace(pages["future"], 'Our original bargain still has its own terms.',
                 'We have chosen company, and we have done useful work. You have not bought my agreement to your larger ambitions.')
             replace(pages["limited"], 'Our earlier arrangement remains what it was.',
-                'Then the letters remain. I will not send another room and pretend that was what you asked to keep.')
+                'Then the letters remain. The rooms I make are for guests who come to them.')
             pages["limited"]["Choices"][0]["Text"] = '[Keep the correspondence. Decline the larger invitation.]'
             pages["limited"]["Choices"][0]["Set"].append("noct.join.letters_after_harbor")
         replace(pages["power"],

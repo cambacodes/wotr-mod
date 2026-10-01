@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 985,
-  "resolved": 985,
-  "inlineOnlyScenes": 245,
-  "inlineOnlyResolved": 245,
-  "answerListScenesWithoutContact": 571,
-  "answerListScenesWithoutContactResolved": 571,
+  "entryTargetScenes": 988,
+  "resolved": 988,
+  "inlineOnlyScenes": 246,
+  "inlineOnlyResolved": 246,
+  "answerListScenesWithoutContact": 574,
+  "answerListScenesWithoutContactResolved": 574,
   "lists": 102,
   "listsWithReachableHost": 101
  },
@@ -11272,6 +11272,25 @@
     "clicks": 0
    }
   },
+  "herrax.trickster.react.arueshalae_morning_unheard": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.herrax.trickster.react.arueshalae_morning_unheard"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
   "herrax.trickster.react.regill_night": {
    "kind": "dialog",
    "lists": [
@@ -15352,6 +15371,25 @@
     "clicks": 0
    }
   },
+  "nocticula.trickster.court.horzalah": {
+   "kind": "return-cue",
+   "lists": [
+    "765173e2a9e535e4cb66f0ec767c13af"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "765173e2a9e535e4cb66f0ec767c13af": "RRT_entry.nocticula.trickster.court.horzalah"
+   },
+   "resolved": true,
+   "host": {
+    "list": "765173e2a9e535e4cb66f0ec767c13af",
+    "dialog": "d8ba4c5d73f3e634f951485914179bd3",
+    "dialogName": "NocticulaThreshold_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "nocticula.trickster.court.shamira": {
    "kind": "return-cue",
    "lists": [
@@ -16687,14 +16725,14 @@
    }
   },
   "shamira.trickster.ch4.bird": {
-   "kind": "return-cue",
+   "kind": "return-to-list",
    "lists": [
     "d138954fd7cdb2d4e90bb28cbd76235e"
    ],
    "explicit": true,
    "contact": null,
    "entry": {
-    "d138954fd7cdb2d4e90bb28cbd76235e": "RRT_entry.shamira.trickster.ch4.bird"
+    "d138954fd7cdb2d4e90bb28cbd76235e": "RRT_entry.shamira.trickster.ch4.bird.d138954fd7cdb2d4e90bb28cbd76235e"
    },
    "resolved": true,
    "host": {
@@ -16771,6 +16809,25 @@
    "contact": null,
    "entry": {
     "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.shamira.trickster.react.arueshalae_inside"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "shamira.trickster.react.arueshalae_inside_unseen": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.shamira.trickster.react.arueshalae_inside_unseen"
    },
    "resolved": true,
    "host": {

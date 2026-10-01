@@ -13,18 +13,90 @@ palace" for one who bears her mark (Cue_0180 8d19d6a4); she walks the closets ba
 her to her lady's throne. The Commander may stand where she can see, refuse her Nocticula, or lie to a mind-reader.
 Nothing here harms Nocticula; the throne is a wish, and the epilogue keeps it one.
 """
-from story_format import c
-from storylines.shamira_trickster import (ALLY, BARRACKS, CAST_OUT, CITY, CLOSED, COMMITTED, EMBODIED, GAME, RAMISA_STORY,
-                                           KEPT, LIED_HER, LOST_GAME, NOCT_HIDING, NOT_NOCT, P, READ, SOCOTH_GONE, STAND,
-                                           THREW_OUT, THRONE, TORN, VISITED, WHISPER, nar, sh)
+import copy
+
+from story_format import c, scene
+from storylines import shamira_mind
+from storylines.shamira_trickster import (ALLY, BARRACKS, BIRD, LET_IN, CAST_OUT, CITY, CLOSED, COMMITTED, CRYSTALS, EMBODIED, GAME, HID, NEVER_ALONE, NOCT_KNOWS, STRIPPED,
+                                           RAMISA_STORY, KEPT, LIED_HER, LOST_GAME, NOCT_HIDING, NOT_NOCT, P, READ, REL,
+                                           SOCOTH_GONE, STAND, THREW_OUT, THRONE, TORN, VISITED, WHISPER, nar, sh)
 from storylines.shamira_trickster import page as _page
-from storylines.shamira_mind import LAST_HER, LAST_HOME, LAST_PEACE, WANT_STEWARD
+from storylines.shamira_mind import LAST_HER, LAST_HOME, LAST_PEACE, WANT_STEWARD, fold
 
 SCENES = []
 
 
 def page(*args, **kw):
     _page(*args, into=SCENES, **kw)
+
+
+# --- Her presence in Drezen once she has a body (ERRATA: a spawn-copy with Presence.Dialog "hub"; Sol COX/HOW) -----------
+# Embodied, she comes to the Commander's city through the wardrobe and sits where the drinking is worst and the thoughts are
+# loudest: the Fool King's tavern, at the corner table (right of the King, 2.5 m; Eliandra stands left of him, 2.5 m, so
+# the two are 5 m apart). When the King is gone or cannot be found, she waits behind the tailor's awning instead (behind,
+# 2.5 m: Arueshalae's evil copy front 2.0, Kaylessa left 2.5 and Terendelev right 2.5 are each at least 3.5 m away). The
+# courtship after the waking (her city, her visit, the game, the throne, a night alone) opens from there; the Harem night
+# and the night alone start at her table and go through the closets. Shamira_Actor (66e12264) carries no dialog of its own.
+DREZEN = "2570015799edf594daf2f076f2f975d8"      # DrezenCapital
+UNIT = "66e12264eaf6bf74196e20a9d7619cd2"        # Shamira (CutsceneNeutrals): her own body, spawn-copied
+FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"   # FoolKing, in his tavern in DrezenCapital
+TAILOR = "253cdb8f434e5a6469b75e18428316e3"      # TailorCapitalTrader (the awning)
+HUB = "shamira.presence"
+HUB_ALT = "shamira.presence.awning"
+HUB_FAILED = HUB + ".failed"                     # runtime: the King's copy is wanted but he could not be found
+KING_GONE = "fool_king.gone"
+ASKED_ALONE_ = P + "night_alone.asked"
+GREETING = ("{n}In the corner of the King's tavern, with her back to the wall and a cup of his worst wine, a tall red-haired "
+            "woman in a borrowed coat is watching the room. The drinkers nearest her keep losing the thread of their own "
+            "stories and cannot think why.{/n}")
+PRESENCE_FORBIDS = [CLOSED, KEPT, CAST_OUT, ALLY]   # Sol r6: the night alone no longer removes her (either outcome)
+PRESENCES = {
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FOOL_KING, Side="right", Distance=2.5),
+              Requires=["trickster.ever", EMBODIED], Forbids=PRESENCE_FORBIDS + [HUB_FAILED, KING_GONE], MinChapter=5,
+              MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
+    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="behind", Distance=2.5),
+                  Requires=["trickster.ever", EMBODIED], Forbids=list(PRESENCE_FORBIDS), MinChapter=5, MaxChapter=5,
+                  RequiresAnyGroups=[[HUB_FAILED, KING_GONE]], AnswerLists=[], Dialog="hub",
+                  Greeting=("{n}In the shade of the tailor's awning, out of the worst of the street, a tall red-haired woman "
+                            "in a borrowed coat is sitting on a crate as if it were a throne, watching the passers-by think.{/n}")),
+}
+PLACES = ((HUB, "", ()), (HUB_ALT, "_awning", ([HUB_FAILED, KING_GONE],)))
+
+
+AWNING = (  # the King's tavern, read as the tailor's awning (Sol BEL: the fallback must not stage an absent King)
+    ("pushes the other chair out with her foot, and pours you a cup of the King's worst wine", "moves over on the crate to make room, and pours you a cup of the tailor's sour wine"),
+    ("the King's worst wine", "the tailor's sour wine"), ("the King's wine", "the sour wine"),
+    ("come to her table", "come to her crate"), ("at her table", "on her crate"), ("her corner table", "her crate under the awning"),
+    ("The King has given up pretending not to look.", "The tailor has given up pretending not to look."),
+    ("She leans across the table", "She leans across"), ("onto the chair", "onto the crate"),
+    ("in the King's doorway", "at the end of the street"),
+    ("She gets up from the table and stops at the King's back door", "She gets up off the crate and stops at the mouth of the alley behind the stall"),
+    ("stops by the King's back door", "stops at the mouth of the alley behind the stall"),
+    ("The back door closes on her, and when you follow her out into the yard there is nobody in it", "The alley takes her, and when you follow her into it there is nobody there"),
+    ("The back door closes on her. When you follow her out into the yard,", "The alley takes her. When you follow her into it,"),
+    ("to sit in a tavern and drink this", "to sit in a street and drink this"),
+    ("\"You said you had a game.\"", "\"You said you had a game.\""),
+)
+
+
+def _awning(nodes):
+    nodes = copy.deepcopy(nodes)
+    for node in nodes:
+        for old, new in AWNING:
+            node["Text"] = node["Text"].replace(old, new)
+    return nodes
+
+
+def hub(id, title, entry, nodes, requires, forbids=(), delay=0):
+    """A physical beat on her presence (the King's corner table, or the awning): the same scene on each, each forbidding the
+    other. The first keeps the id the beat had as a page (save reference)."""
+    for key, suffix, any_groups in PLACES:
+        twin = id + ("_awning" if not suffix else "")
+        extra = dict(RequiresAnyGroups=[list(g) for g in any_groups]) if any_groups else {}
+        SCENES.append(scene(id + suffix, title, "Shamira", 5, entry, _awning(nodes) if suffix else copy.deepcopy(nodes),
+                            requires=tuple(dict.fromkeys(("trickster.ever", EMBODIED, *requires))),
+                            forbids=tuple(dict.fromkeys((twin, *forbids))), delay=delay, last=5, Relationship=REL,
+                            Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=key, **extra))
 
 
 NOCT_WILL_ATTEND = "noct.will_attend"      # read in node text only (Nocticula/Answer_0011 started it)
@@ -36,6 +108,14 @@ AS_GUEST = P + "court.guest"
 AS_EQUAL = P + "court.equal"
 
 LIVE = (CLOSED, KEPT, CAST_OUT)
+# Arueshalae's state, read in node text only (after.visit).
+A_DEAD = "arueshalae_dead"
+A_EVIL_DEAD = "arueshalae.evil_dead"
+A_KICKED = "arueshalae.kicked_out"
+A_KICKED_EVIL = "arueshalae.kicked_out_evil"
+A_RECRUITED = "arueshalae.evil_recruited"
+A_FAILED = "arueshalae.failed"
+A_RETURNED = "arueshalae.trickster.returned"
 
 
 # --- The first night of company: the cost, in play ---------------------------------------------------------------------
@@ -85,24 +165,33 @@ page(P + "after.first_company", "Company", [
 
 # --- Her city: the first whisper from Alushinyrra ---------------------------------------------------------------------
 
-page(P + "after.city", "Who sat in my chair", [
-    nar("start", '''{n}You dream of the war tables, the way you do: maps, lamps, the same argument about the same river crossing. At the edge of the dream, where the lamplight gives out, a red-haired woman is sitting on a map chest with her legs crossed, warming her hands at your lamp.{/n}
-{n}She has come for her coal, as she comes every night now. She takes it without asking. Then she talks.{/n}''',
+hub(P + "after.city", "Who sat in my chair", '"You look well, for a dead woman."', [
+    nar("start", '''{n}She does not get up when you come to her table. She pushes the other chair out with her foot, and pours you a cup of the King's worst wine, and watches you drink it the way she used to watch you from behind your own eyes.{/n}
+{n}Every demon in Alushinyrra would know that face. Nobody in Drezen does.{/n}''',
         c("Continue", "home")),
-    sh("home", WHISPER + '''"I am home." {n}The voice is hers, and it is rich with a satisfaction so deep it is almost sleepy.{/n} "I came out of a wardrobe in Socothbenoth's house, naked except for your coat, and walked through my own city at the hour when the demons are drunkest, and nobody knew me. Nobody. They were all too busy wearing black for me."''',
+    sh("home", '''"I have been home." {n}Her voice is rich with a satisfaction so deep it is almost sleepy.{/n} "I came out of a wardrobe in Socothbenoth's house, naked except for your coat, and walked through my own city at the hour when the demons are drunkest, and nobody knew me. Nobody. They were all too busy wearing black for me."''',
         c("Continue", "chair")),
     sh("chair", '''"My Harem was dark. My court had split in three. And in my chair, on my throne, in my light that withers fools, sat a glabrezu I once made kneel for a whole year because he looked at me without asking." {n}She sounds delighted.{/n} "He had my crown on. He had had it cut down to fit his horns."
-"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went in and took his dreams too. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him."''',
+"I let him talk for a while, in his head, about how he'd always known I'd fall. Then I went into his head, where a demon keeps his wants instead of dreams, and took his name out of it, and everything he had hung on it. He is sitting in the Lower City now, beside Ziforian, and he cannot remember his own name. It suits him."''',
         c('"You were meant to be dead. People will talk."', "talk"),
         c('"You\'re cruel, Shamira."', "cruel")),
     sh("talk", '''"People will talk to me. That is a different thing." {n}A soft laugh.{/n} "I have not told anyone my name. I am simply sitting in my Harem again, in a face they know, and letting them wonder. Nobody in Alushinyrra will ask a woman on that throne who she is. It's much too dangerous to know."''',
         c("Continue", "grower", requires=(RAMISA_STORY,)),
-        c("Continue", "lady", forbids=(RAMISA_STORY,))),
+        c("Continue", "lady", requires=(NOCT_KNOWS,), forbids=(RAMISA_STORY, NOCT_HIDING)),
+        c("Continue", "lady_unsure", forbids=(RAMISA_STORY, NOCT_KNOWS, NOCT_HIDING)),
+        c("Continue", "hiding", requires=(NOCT_HIDING,), forbids=(RAMISA_STORY,))),
     sh("grower", '''"And Ramisa is telling our story." {n}She is not purring.{/n} "At every sale. With names. 'The clown who stole a body from my garden for the woman the clown had killed.' Her customers adore it. Two of my own courtiers have asked me whether I've heard it." {n}A pause.{/n} "I am going to find where that marilith keeps her real body, one day, and plant something in it."''',
-        c("Continue", "lady")),
+        c("Continue", "lady", requires=(NOCT_KNOWS,), forbids=(NOCT_HIDING,)),
+        c("Continue", "lady_unsure", forbids=(NOCT_KNOWS, NOCT_HIDING)),
+        c("Continue", "hiding", requires=(NOCT_HIDING,))),
+    sh("lady_unsure", '''"And my lady." {n}The voice changes, as it always does when she comes to this.{/n} "I do not know whether she knows. Nobody came from her palace. Nobody stopped me at my own doors. Either she has not noticed that her steward walked out of the Abyss's mouth, which would be the first thing she has ever failed to notice, or she has, and she is letting me find out which." {n}A breath.{/n} "I have not decided which of those frightens me more. No. I have. The second."''',
+        c("Continue", "attends", requires=(NOCT_WILL_ATTEND,)),
+        c("Continue", "cold", forbids=(NOCT_WILL_ATTEND,))),
     sh("cruel", '''"Yes." {n}No shame at all, only amusement that you felt the need to say so.{/n} "I was cruel before you killed me, and I am cruel now, and in between I spent a week behind your eyes, being kind to you, because you were the only thing in there with me. Don't mistake a week for a nature, Golarian."''',
         c("Continue", "grower", requires=(RAMISA_STORY,)),
-        c("Continue", "lady", forbids=(RAMISA_STORY,))),
+        c("Continue", "lady", requires=(NOCT_KNOWS,), forbids=(RAMISA_STORY, NOCT_HIDING)),
+        c("Continue", "lady_unsure", forbids=(RAMISA_STORY, NOCT_KNOWS, NOCT_HIDING)),
+        c("Continue", "hiding", requires=(NOCT_HIDING,), forbids=(RAMISA_STORY,))),
     sh("lady", '''"And she knows." {n}The voice changes, as it always does when she comes to this.{/n} "My lady. She has not come. She has not sent. But the glabrezu's guards stepped aside for me as if they had been told to, and on the first night a black silk pillow was on my throne that I did not put there." {n}Silence.{/n} "She is letting me. As she always did. She is letting me want her chair and sit in mine, and she is watching to see what I do."''',
         c("Continue", "hiding", requires=(NOCT_HIDING,)),
         c("Continue", "attends", requires=(NOCT_WILL_ATTEND,), forbids=(NOCT_HIDING,)),
@@ -111,21 +200,20 @@ page(P + "after.city", "Who sat in my chair", [
         c("Continue", "cold")),
     sh("attends", '''"You told her about her brother's little plot, didn't you. I found it in you, while I was living in your head, and forgot it until tonight." {n}Something almost like amusement.{/n} "You sold her brother to her and me to him. You are a very busy clown. She will be grateful for about a century, which is a long time, for her."''',
         c("Continue", "cold")),
-    sh("cold", '''"I'm cold again." {n}It comes out abruptly, as if she did not mean to say it.{/n} "Not like before. Only at the edges. Your coal burns well, Golarian, but it burns down by dusk, and my Harem has a great many rooms." {n}A pause, and then, lightly, much too lightly:{/n} "I'm coming to Drezen. I want to see what you look like asleep, from the outside, with me in there. I have never looked from the outside before."''',
-        c("[Sleep on. She is still there.]", flags=(CITY,))),
-], requires=("trickster.ever", EMBODIED), forbids=(CITY,) + LIVE, delay=48)
+    sh("cold", '''"I'm cold again." {n}It comes out abruptly, as if she did not mean to say it.{/n} "Not like before. Only at the edges. Your coal burns well, Golarian, but it burns down by dusk, and my Harem has a great many rooms." {n}A pause, and then, lightly, much too lightly:{/n} "So I came to your city, to sit in a tavern and drink this and look at you awake, from the outside. I want to see what I am sitting in, every night. I have never looked from the outside before."''',
+        c("[Leave her to her wine.]", flags=(CITY,))),
+], requires=(), forbids=(CITY,) + LIVE, delay=48)
 
 
 # --- Her visit: out of the Commander's wardrobe -------------------------------------------------------------------------
 
-page(P + "after.visit", "Out of the wardrobe", [
-    nar("start", '''{n}You wake from a dream of Kenabres in which a red-haired woman was sitting on the fountain, as she does every night now, and for a moment you do not know what woke you. Then you see that the wardrobe door is open, and that there is a woman sitting on the end of your bed with her legs crossed, watching you.{/n}
-{n}She has dressed properly this time: a gown the colour of the inside of a fire, cut low and slit high, and her red hair piled up with pins of black glass. She looks as if she has been sitting there for some time.{/n}''',
+hub(P + "after.visit", "Out of the wardrobe", '"You were in my room last night. On the bed, not in the dream."', [
+    nar("start", '''{n}She has dressed properly this time: a gown the colour of the inside of a fire, cut low and slit high, and her red hair piled up with pins of black glass. The King has given up pretending not to look. She looks as if she has been waiting at her table for some time, and has enjoyed every minute of making you late.{/n}''',
         c("Continue", "watching")),
-    sh("watching", '''"You smile in your sleep when I come in." {n}She says it the way a scholar notes something odd in a specimen.{/n} "I have watched ten thousand sleepers from the inside. I have never watched one from the outside while I was in there too. You turn towards the door before I open it. You make room on the fountain." {n}She leans forward and puts one long finger on your forehead, exactly where she used to push her way in.{/n} "It is very strange to be expected."''',
+    sh("watching", '''"I was." {n}She says it the way a scholar notes something odd in a specimen.{/n} "I came out of your wardrobe and sat on the end of your bed, in this body, from the outside, while the rest of me was in your dream. You smile in your sleep when I come in. I have watched ten thousand sleepers from the inside; I have never watched one from the outside while I was in there too. You turn towards the door before I open it. You make room on the fountain." {n}She leans across the table and puts one long finger on your forehead, exactly where she used to push her way in.{/n} "It is very strange to be expected."''',
         c('"You\'re always there now."', "did"),
         c('"I like the company."', "restful")),
-    sh("did", '''"I am." {n}She does not take her finger away.{/n} "I have been in thousands of heads. I have never once gone back to the same one twice. Nobody told me it would feel like..." {n}She stops. She takes the finger away and looks at it.{/n} "Like coming home. It feels like coming home. I am furious about it, and I do not know with whom."''',
+    sh("did", '''"I am." {n}She does not take her finger away.{/n} "I have been in thousands of heads. I went back when I wanted something. Now I find myself coming here before I've decided what to take. Nobody told me it would feel like..." {n}She stops. She takes the finger away and looks at it.{/n} "Like coming home. It feels like coming home. I am furious about it, and I do not know with whom."''',
         c("Continue", "torn", requires=(TORN,)),
         c("Continue", "body", forbids=(TORN,))),
     sh("restful", '''"Liar." {n}Fondly, for her.{/n} "You miss being alone in there. I can feel you missing it, some nights; it moves through your dreams like a draught under a door." {n}She takes her finger away.{/n} "I know that draught. I have had it since I fell. I did not think I would ever be the thing that caused it."''',
@@ -134,7 +222,7 @@ page(P + "after.visit", "Out of the wardrobe", [
     sh("torn", '''{n}She sees you looking at the seam across her collarbone, white against the fire-coloured silk, and does not cover it.{/n}
 "My court thinks it's a duelling scar. I've let them. I've had three challenges already, from fools who thought it meant someone once beat me." {n}She smiles, slowly.{/n} "None of them will challenge anyone again."''',
         c("Continue", "body")),
-    sh("body", '''"The body is good." {n}She stretches, the way a cat stretches, to show you.{/n} "It's slow in the mornings. It gets hungry, which I had forgotten was a thing bodies did. It likes wine too much. And it is always, always a little cold." {n}She draws her feet up onto the bed.{/n} "Your coal is the only warm thing in it. I can feel it in here, burning down, every day, by dusk. Then I come and sit in your dragon, or your bread, or your stupid barley, until I'm warm again."''',
+    sh("body", '''"The body is good." {n}She stretches, the way a cat stretches, to show you.{/n} "It's slow in the mornings. It gets hungry, which I had forgotten was a thing bodies did. It likes wine too much. And it is always, always a little cold." {n}She draws her feet up onto the chair.{/n} "Your coal is the only warm thing in it. I can feel it in here, burning down, every day, by dusk. Then I come and sit in your dragon, or your bread, or your stupid barley, until I'm warm again."''',
         c("Continue", "barracks", requires=(BARRACKS,)),
         c("Continue", "arueshalae", forbids=(BARRACKS,))),
     sh("barracks", '''"And the barracks." {n}Her eyes go bright.{/n} "I felt it the moment I came into your city. They're still in there, the men I walked through: I can taste them, flat and grey, like bread left out. A sergeant of theirs hanged himself last week. Did they tell you? No. They put it down to the war." {n}She considers.{/n} "Two more of them will desert before the spring. One will paint something magnificent. I left a spark in him, by accident. I was in a hurry."''',
@@ -142,24 +230,42 @@ page(P + "after.visit", "Out of the wardrobe", [
         c("[Say nothing.]", "arueshalae")),
     sh("know", '''"Nobody does know." {n}Reasonably.{/n} "Except you. And now the Ledger in your head, which I can read upside down. You wrote it down under 'secrets', with a little mark beside it." {n}She laughs.{/n} "You keep accounts of your sins. How very Golarian. Hide that page, clown. There are people in your camp who'd read it."''',
         c("Continue", "arueshalae")),
-    sh("arueshalae", '''{n}She tilts her head, listening to something far off.{/n} "Your succubus is two rooms away. Arueshalae. She's awake; she's always awake. She knows I'm here." {n}A dry little pause.{/n} "She's praying. To Desna. For you, I think, not for herself. She has learned to dream of flowers and to pray for other people." {n}The contempt in her voice does not quite cover the other thing.{/n} "I cannot stand to listen to it. Close your door when I come, next time."''',
+    # Sol INT: Arueshalae as she actually is in this world (redeemed and here, corrupted and here, or gone), read in the
+    # node only, so her state never gates Shamira's route.
+    sh("arueshalae", '''{n}She tilts her head, listening to something in your city that you cannot hear.{/n}''',
+        c("Continue", "aru_redeemed", forbids=(A_RECRUITED, A_DEAD, A_KICKED, A_FAILED, A_EVIL_DEAD)),
+        c("Continue", "aru_redeemed", requires=(A_RETURNED,), forbids=(A_RECRUITED, A_KICKED, A_EVIL_DEAD)),
+        c("Continue", "aru_evil", requires=(A_RECRUITED,), forbids=(A_EVIL_DEAD, A_KICKED_EVIL)),
+        c("Continue", "aru_gone", requires=(A_RECRUITED, A_EVIL_DEAD), forbids=(A_RETURNED,)),
+        c("Continue", "aru_gone", requires=(A_RECRUITED, A_KICKED_EVIL), forbids=(A_EVIL_DEAD,)),
+        c("Continue", "aru_gone", requires=(A_DEAD,), forbids=(A_RECRUITED, A_RETURNED)),
+        c("Continue", "aru_gone", requires=(A_KICKED,), forbids=(A_RECRUITED, A_DEAD)),
+        c("Continue", "aru_gone", requires=(A_FAILED,), forbids=(A_RECRUITED, A_DEAD, A_KICKED, A_RETURNED, A_EVIL_DEAD)),
+        c("Continue", "aru_evil", requires=(A_EVIL_DEAD, A_RETURNED), forbids=(A_KICKED_EVIL,)),
+        c("Continue", "aru_gone", requires=(A_EVIL_DEAD,), forbids=(A_RECRUITED, A_RETURNED)),
+        c("Continue", "aru_gone", requires=(A_EVIL_DEAD, A_RETURNED, A_KICKED_EVIL))),
+    sh("aru_redeemed", '''"Your succubus came in an hour ago. Arueshalae." {n}A dry little pause.{/n} "She saw me, and stood in the door with her hand on the frame, the way I stand in yours, and then she went out again. She knows what I am; she grew up in my city. She's gone to pray. To Desna. For you, I think, not for herself." {n}The contempt in her voice does not quite cover the other thing.{/n} "She has learned to dream of flowers and to pray for other people. I cannot stand to be in the same street as it."''',
         c("Continue", "next")),
-    sh("next", '''{n}She gets up off your bed and walks to the wardrobe, and stops in its door with her hand on the frame, exactly where she stood the morning she woke.{/n}
+    sh("aru_evil", '''"Your other succubus has been standing in the King's doorway for an hour." {n}She does not look round.{/n} "Arueshalae. The one who went back to the city's ways, or never left them; I can taste which from here, and it tastes of home. She is deciding whether I am a rival or a meal." {n}A thin, pleased smile.{/n} "Neither. I am the one who was here first. Tell her so, if she asks. Or let her find out."''',
+        c("Continue", "next")),
+    sh("aru_gone", '''"No succubus at your side these days." {n}She turns her cup a quarter-turn on the wood.{/n} "I looked for Arueshalae in your head, the way one looks for a stain on a tablecloth. There's the shape where she was, and nothing in it." {n}She drinks.{/n} "Good. I never could stand the way she prayed."''',
+        c("Continue", "next")),
+    sh("next", '''{n}She gets up from the table and stops at the King's back door with her hand on the frame, exactly the way she stood in your wardrobe door the morning she woke.{/n}
 "Next time, I am taking you to the Harem. To the room where I first reached into your head." {n}She looks back at you over her shoulder.{/n} "I have a game I want to play with you. I have never played it with anyone. I'll tell you the rules there."''',
         c('"What kind of game?"', "kind"),
         c('"I\'ll come."', "come")),
-    sh("kind", '''"The kind I'm good at." {n}And that is all she will say. The wardrobe door closes on her, and when you open it again your coats are hanging there, and they smell of cinnamon.{/n}''',
-        c("[Close the wardrobe.]", flags=(VISITED, GAME))),
+    sh("kind", '''"The kind I'm good at." {n}And that is all she will say. The back door closes on her, and when you follow her out into the yard there is nobody in it, and the air smells of cinnamon.{/n}''',
+        c("[Let her go.]", flags=(VISITED, GAME))),
     sh("come", '''"I know you will. I've read it." {n}She smiles, and for once there is nothing in it but the smile.{/n} "I read it before I asked. I only asked because I wanted to hear you say it with your mouth. It's a much stupider instrument than your head. I find I like it."
-{n}The wardrobe door closes on her. When you open it again, your coats smell of cinnamon.{/n}''',
-        c("[Close the wardrobe.]", flags=(VISITED, GAME))),
-], requires=("trickster.ever", CITY), forbids=(VISITED,) + LIVE, delay=48, kind="visit")
+{n}The back door closes on her. When you follow her out into the yard, the air smells of cinnamon.{/n}''',
+        c("[Let her go.]", flags=(VISITED, GAME))),
+], requires=(CITY,), forbids=(VISITED,) + LIVE, delay=48)
 
 
 # --- The commit: think of anything but me, in the Harem of Ardent Dream --------------------------------------------------
 
-page(P + "harem", "Think of anything but me", [
-    nar("start", '''{n}She comes for you at the dead of night, out of the wardrobe, in black this time, and takes you by the wrist without a word. You go back the way you went for her body: the wardrobe, the empty Council with its candles burning for nobody, Socothbenoth's purple door, the house full of listening closets.{/n}
+hub(P + "harem", "Think of anything but me", '"You said you had a game."', [
+    nar("start", '''{n}She finishes the King's wine and stands, and takes you by the wrist without a word. That night she comes for you out of your own wardrobe, in black, and you go back the way you went for her body: the wardrobe, the empty Council with its candles burning for nobody, Socothbenoth's purple door, the house full of listening closets.{/n}
 {n}In the street outside his house there is an arch of black stone. She walks you under it, and the city folds.{/n}''',
         c("Continue", "harem")),
     nar("harem", '''{n}The Harem of Ardent Dream. You remember it full: courtiers, music, the smell of a hundred perfumes and a hundred sins, the crowd that watched her reach into your head. Tonight it is empty. The couches are bare. The fountains still run, and the sound of them fills the great room the way a held breath fills a chest.{/n}
@@ -171,7 +277,14 @@ page(P + "harem", "Think of anything but me", [
     nar("sits", '''{n}She sits on her throne, and crosses her legs, and looks down at you exactly as she looked down at you the first time, a lifetime ago, when you came to her court as a wanderer seeking patronage.{/n}''',
         c("Continue", "where_duel", requires=(THREW_OUT,)),
         c("Continue", "where_read", requires=(READ,), forbids=(THREW_OUT,)),
-        c("Continue", "where_crystals", forbids=(THREW_OUT, READ))),
+        c("Continue", "where_crystals", requires=(CRYSTALS,), forbids=(THREW_OUT, READ)),
+        c("Continue", "where_crystals", requires=(STRIPPED,), forbids=(THREW_OUT, READ, CRYSTALS)),
+        c("Continue", "where_first", forbids=(THREW_OUT, READ, CRYSTALS, STRIPPED, LET_IN)),
+        c("Continue", "where_invited", requires=(LET_IN,), forbids=(THREW_OUT, READ, CRYSTALS, STRIPPED))),
+    sh("where_invited", '''"Here. This is where you opened your head to me the first time, in front of my whole court." {n}Her voice fills the empty room.{/n} "I went in for what I wanted and came out again. I did not look at anything else in there. It did not occur to me that there was anything else worth looking at." {n}A small pause.{/n} "More fool me. Stand where you stood then."''',
+        c("[Stand where you stood.]", "rules")),
+    sh("where_first", '''"Here. This is where you stood the first time, in front of my whole court." {n}Her voice fills the empty room.{/n} "I did not even trouble to go into your head that day. I looked at you and decided there was nothing in there worth the heat." {n}A small pause.{/n} "More fool me. Stand where you stood then."''',
+        c("[Stand where you stood.]", "rules")),
     sh("where_duel", '''"Here. This is where you threw me out of your head." {n}Her voice fills the empty room.{/n} "In front of my whole court. I had not been beaten in public for centuries, and a Golarian did it with {mf|his|her} eyes shut, and the demons cheered. I have thought about that day more than I have thought about my own death." {n}A thin smile.{/n} "Stand where you stood then."''',
         c("[Stand where you stood.]", "rules")),
     sh("where_read", '''"Here. This is where I first had you in my head." {n}Her voice fills the empty room.{/n} "The whole court watched. You let me in because you thought it would amuse me, and it did. You hid something under the barley, or you didn't; either way I have been looking for it ever since. Stand where you stood then."''',
@@ -179,13 +292,17 @@ page(P + "harem", "Think of anything but me", [
     sh("where_crystals", '''"Here. This is where I first went into your head, for my crystals." {n}Her voice fills the empty room.{/n} "I wanted to know what you knew, and I took it, the way I took everything in those days: all at once, with the court watching. I did not look at anything else in there. I was not interested." {n}A small pause.{/n} "More fool me. Stand where you stood then."''',
         c("[Stand where you stood.]", "rules")),
     sh("rules", '''"Here is the game." {n}She leans forward.{/n} "Think of anything but me. Anything at all: your war, your dragon, your bread, your Wound. I will go into that crowded house of yours and look in every room. If I find myself in any of them, anywhere, I win."
-"If I don't, you win, and I will never ask you anything again, and we will be what we are. Allies. A clown and the woman he murdered and put back together." {n}A pause.{/n} "And no words. Words are for liars and I will not have them in my Harem tonight. Only what you think."''',
+"If I don't, you win, and I will never ask you anything again, and we will be what we are. Allies. A clown and the woman he murdered and put back together." {n}A pause.{/n} "And I look once. I do not dig through the same attic twice for anyone; that is for clerks and jealous husbands. Whatever you put in front of me, I walk round it once and no further. And no words. Words are for liars and I will not have them in my Harem tonight. Only what you think."''',
         c("Continue", "begin")),
     nar("begin", '''{n}The heat gathers behind your forehead, the old fever, exactly as it did the first time. But it is not a hand in a drawer tonight. It is slow, and careful, the way you would walk through a house you had once burned down, looking for anything that was left.{/n}
 {n}You have to think of something. The game has begun.{/n}''',
         c("[Think of the Wound.]", "wound"),
         c("[Think of Drezen, and the war tables, and every face you owe something to.]", "drezen"),
-        c("[Think of moonshine recipes, loudly, the way you did the first time.]", "barley")),
+        c("[Think of moonshine recipes, loudly, the way you did the first time.]", "barley", requires=(HID,)),
+        c("[Think of moonshine recipes, loudly.]", "barley_new", forbids=(HID,))),
+    nar("barley_new", '''{n}You think of barley. Mash and yeast and wormwood and copper, and a long argument with yourself about seals. She laughs out loud in the empty Harem, and the fountains carry it.{/n}
+{n}Then she goes looking under it, because nobody shouts barley at the Ardent Dream unless something is under it. And under it, where you did not know you had put anything, is her: on her throne, burning.{/n}''',
+        c("Continue", "search")),
     nar("wound", '''{n}You think of the Wound: the violet sky over the north, the rift in the earth that pulls at the scar under your ribs. It is enormous. It fills the house. She walks all the way round it, slowly, and you can feel her looking.{/n}
 {n}And there, at the very edge of it, where the rift's light falls on the ground, is a red-haired woman sitting on a stone with her back to the rift, holding her hands out to it as if it were a hearth.{/n}''',
         c("Continue", "search")),
@@ -196,12 +313,12 @@ page(P + "harem", "Think of anything but me", [
 {n}Then she goes looking under the barley, as she promised the first time she would. And under it, where you hid it that first day in her court, the small thing you would not let her have: her, on her throne, burning.{/n}''',
         c("Continue", "search")),
     sh("search", '''{n}She says nothing. Her hands are tight on the arms of the throne. You can feel her, very still, in the middle of your head, deciding whether what she has found counts.{/n}
-{n}You can still win. It would be easy. Think of the Wound, only the Wound, the whole violet weight of it, and bury the rest, and she will not look under it twice. She has told you so. She has never lied to you about anything that mattered.{/n}''',
+{n}You can still win. It would be easy. Think of the Wound, only the Wound, the whole violet weight of it, and bury the rest. She said she would not look under it twice, and you can feel her keeping to it: stopped at the edge of the rift's light, her attention pressed against the dark underneath like a hand against a door she has promised not to open. Whether she would keep that promise to anyone else, you have no way of knowing.{/n}''',
         c("[Stop hiding her. Let her find herself in every room.]", "lost", flags=(COMMITTED, LOST_GAME, ARCH)),
         c("[Think of the Wound. Only the Wound. Until she stops looking.]", "won", flags=(ALLY, ARCH)),
         c("[Throw her out of your head.]", "thrown", flags=(CLOSED, ARCH))),
     nar("lost", '''{n}You stop.{/n}
-{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the barracks' silence, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}
+{n}You stop holding the Wound up in front of everything, and let the house be what it is, and she walks into it. She finds herself behind your eyes, where she lived for a week. She finds herself on the lip of the fountain in Kenabres, where nobody sat before her. She finds herself in the square under the burning spire, and in the wardrobe, and in the dark on the floor of it among your boots. She finds herself at the edge of every dream you have had since, warming her hands.{/n}
 {n}Neither of you says anything. There is nothing to say. She has already heard it.{/n}''',
         c("Continue", "rise")),
     nar("rise", '''{n}She stands up from her throne.{/n}
@@ -214,13 +331,14 @@ page(P + "harem", "Think of anything but me", [
     nar("steps_plain", '''{n}She comes down the steps of the dais, one at a time, and the black gown comes down with her, a pin at a time: from her hair first, the black glass ringing on the stone, and then the rest, falling about her like smoke going the wrong way. Under it she is long and pale and made exactly as she wanted to be made, and she is shaking, very slightly, the way a flame shakes.{/n}
 {n}She does not say anything. She takes your face in her long cold hands, and her mouth tastes of cinders.{/n}''',
         c("Continue", "cut")),
-    nar("cut", '''{n}The last thing she opens in your head is the thing you had not known was shut: and the fever there becomes something else entirely, and your body follows your mind down onto the steps of her throne, into the heat of her, as if it had only been waiting to be told.{/n}
+    nar("cut", '''{n}The last thing she opens in your head is the thing you had not known was shut, and the fever there turns into plain, ordinary want. She reads it the moment it arrives. Her long hands go to your coat and take it off you the way her gown came off her, a fastening at a time, without hurry, and let it fall among the black glass pins. Her mouth is hot now. So is the rest of her.{/n}
+{n}She pushes you down onto the steps of her own throne, and the stone is warm under your back from the light, and she comes down after you: one knee on the step beside your hip, then the other, until she is astride you with her red hair falling round both your faces like a curtain and her palm flat over your hammering heart. She holds your eyes, and reads everything in them, and sinks down onto you.{/n}
 {n}Above you both, the light around the empty throne burns higher than it has burned since she came home, and the fountains go on running in the dark, and nobody in Alushinyrra is watching.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}There is no morning in the Abyss. There is only the purple light through the high windows changing its mind about how bright to be.{/n}
-{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. Demons do not sleep. She has been watching the whole night.{/n}''',
+{n}You wake on the steps of the dais, under her gown, with a dream of her still warm behind your eyes, as always now. She is sitting on the top step with her knees drawn up, awake, watching you, the way she watched you sleep in Drezen. She has not slept. She has been watching the whole night.{/n}''',
         c("Continue", "watch")),
-    sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and in all my long life I have never once walked into a dream that was already about me and been made welcome in it." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
+    sh("watch", '''"You dreamed of me all night." {n}Softly.{/n} "I was in there; I'm always in there. But you were dreaming of me before I came in, and I walked into it, and was made welcome in it, and stayed until it ended. I did not steal a thing. I did not have to." {n}She puts one finger on your forehead, the old place.{/n} "It was like a house after a party. Everyone else gone, and the lamps still warm."
 "I sit in your sleep every night. You will never be alone in there again. That is the arrangement, and it is not fair, and I will never give you your solitude back."''',
         c("Continue", "last_home", requires=(LAST_HOME,)),
         c("Continue", "last_peace", requires=(LAST_PEACE,)),
@@ -261,7 +379,12 @@ page(P + "harem", "Think of anything but me", [
     sh("steward", '''"You wanted a steward for Alushinyrra who owed you her life, the first night. I remember." {n}Very dry, in your head.{/n} "Now you are standing where a steward stands. Look at the pair of us. Nocticula would be sick with laughter."''',
         c("Continue", "bell_end")),
     nar("bell_end", '''{n}The music starts again. The court flows back to its couches and its quarrels, and pretends not to look at you, and looks at nothing else.{/n}
-{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends. You recognise him. He dreamed of her chair, once, in front of you, with his hands pressed to his temples.{/n}''',
+{n}When you leave, through the black arch, a demon in a silver mask falls into step beside you for a few paces and murmurs, without turning his head, that he has always admired the Lady Shamira and would be very glad to be of service to her friends.{/n}''',
+        c("Continue", "mask_known", requires=(BIRD,)),
+        c("Continue", "mask_stranger", forbids=(BIRD,))),
+    nar("mask_known", '''{n}You recognise him. He wanted her chair, once, in front of you, and walked away from the dais with his hands pressed to his temples.{/n}''',
+        c("[Go home through the arch.]")),
+    nar("mask_stranger", '''{n}You have never seen him before. His mask is very well made, and his hands, folded behind his back, are very still. He leaves you at the arch and does not look round.{/n}''',
         c("[Go home through the arch.]")),
     sh("won", '''{n}You think of the Wound. Only the Wound. You hold it up in front of everything, the whole violet weight of it, the pull on your scar, the rift, the fire, and you keep it there, and keep it there.{/n}
 {n}She looks for a long time. Then the heat goes out of your head, all at once, like a hand out of cold water.{/n}
@@ -278,21 +401,24 @@ page(P + "harem", "Think of anything but me", [
     sh("out", '''"You shut a door on me. In my own house." {n}She stands.{/n}
 "You cretin. Get out of my Harem." {n}Her voice does not rise. It does not need to.{/n} "I will still come into your sleep, since this body dies without it. I will sit with my back to you at the far edge of every dream you have, and I will never speak, and you will never see me again."''',
         c("[Go home through the arch, alone.]")),
-], requires=("trickster.ever", VISITED, GAME), forbids=(COMMITTED, ALLY) + LIVE, delay=24, kind="visit")
+], requires=(VISITED, GAME), forbids=(COMMITTED, ALLY) + LIVE, delay=24)
 
 
 
 
 # --- After: the throne she still wants -----------------------------------------------------------------------------------
 
-page(P + "after.throne", "The chair she wants", [
-    nar("start", '''{n}She comes out of the wardrobe at dusk this time, in something plain and dark that does not suit her, and sits in your chair at your table, among your maps, and drinks your wine without asking.{/n}
+hub(P + "after.throne", "The chair she wants", '"You have that look. The one from the Harem."', [
+    nar("start", '''{n}She has your usual cup at her corner table, in something plain and dark that does not suit her, and she is drinking your wine out of it without asking.{/n}
 {n}She has a look you know from the Harem: the look of a woman who has decided to say something dangerous and is enjoying the moment before she says it.{/n}''',
         c("Continue", "chair")),
-    sh("chair", '''"I have been thinking about my lady's chair." {n}She turns your cup in her long fingers.{/n} "I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. You know that. You caught me at it, in my own Harem, the day I told you about the birds."
+    sh("chair", '''"I have been thinking about my lady's chair." {n}She turns your cup in her long fingers.{/n} "I have been thinking about it for as long as I have served her; I thought about it the night she came out across the water for me. Every demon in my court knew it. Now you do."
 "Now I have your fire and a body nobody grew for a queen, and I am thinking about it again."''',
         c("Continue", "hiding", requires=(NOCT_HIDING,)),
-        c("Continue", "not_hiding", forbids=(NOCT_HIDING,))),
+        c("Continue", "not_hiding", requires=(NOCT_KNOWS,), forbids=(NOCT_HIDING,)),
+        c("Continue", "not_hiding_unsure", forbids=(NOCT_HIDING, NOCT_KNOWS))),
+    sh("not_hiding_unsure", '''"She is on her throne, and she has sent me nothing. Not a word, not a pillow, not a knife." {n}Her eyes glitter.{/n} "Either she does not know I am back, or she knows and is waiting to see how stupid I will be. One day she will be bored, or careless, or looking the other way. And on that day I want to know where you are standing."''',
+        c("Continue", "ask")),
     sh("hiding", '''"She is gone into the shadows. Her doors stand open. Her throne is empty, and all of Alushinyrra is waiting to see who is stupid enough to sit in it." {n}Her eyes glitter.{/n} "Somebody will. If it is not me, it will be a glabrezu with his horns through my crown. You would not want that. Think of the city."''',
         c("Continue", "ask")),
     sh("not_hiding", '''"She is on her throne. She knows exactly where I am, and what I want, and she sends me black silk pillows." {n}Her eyes glitter.{/n} "One day she will be bored, or careless, or looking the other way, the way she looked the other way when you carried me out of her bedroom behind your eyes. And on that day I want to know where you are standing."''',
@@ -312,17 +438,17 @@ page(P + "after.throne", "The chair she wants", [
 "Oh, you thought 'never' so loudly I nearly went deaf. You thought it in capitals. And you said 'of course' with your mouth, like a man selling a lame horse to a blind woman." {n}She wipes her eyes.{/n} "Nobody in the Abyss has ever lied to me so badly. They wouldn't dare. You lie to me the way other people bring flowers."
 "Keep doing it. Never once get better at it."''',
         c("Continue", "socoth")),
-    sh("socoth", '''"And his Council?" {n}She waves a hand at your maps, at the war, at everything.{/n} "Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, with the Nirvana and the Abyss and all the rest. He'll pour it into the Wound for you." {n}A pause.{/n}''',
+    sh("socoth", '''"And his Council?" {n}She waves a hand at your maps, at the war, at everything.{/n} "Socothbenoth wanted my essence for his great joke. He has it; it's in that diamond of yours, burning. He'll pour it into the Wound for you." {n}A pause.{/n}''',
         c("Continue", "socoth_gone", requires=(SOCOTH_GONE,)),
         c("Continue", "socoth_here", forbids=(SOCOTH_GONE,))),
     sh("socoth_gone", '''"Where is he now, I wonder? Not in his house; I've been there. His wardrobes are all shut." {n}She smiles, very slowly.{/n} "I hope he is somebody's guest, somewhere very dark, for a very long time. I hope his hostess has hideous carpets."''',
         c("Continue", "end")),
     sh("socoth_here", '''"He sent me a present, you know. In my Harem. A silk scarf in exactly my colour, and a card: 'For the leftovers.' Nothing else." {n}Her lip curls.{/n} "I am going to strangle him with it one day. Not soon. He'd enjoy it too much, now."''',
         c("Continue", "end")),
-    sh("end", '''{n}She finishes your wine and stands, and stops by the wardrobe with her hand on the frame, as she always does now.{/n}
+    sh("end", '''{n}She finishes your wine and stands, and stops by the King's back door with her hand on the frame, as she always does now.{/n}
 "You dreamed of the war tables again last night. I sat in the corner and was bored." {n}It is not a complaint.{/n} "I'll be there tonight. Dream of something with wine in it." {n}She opens the door.{/n} "Goodnight, Commander. Sleep. I'll be along."''',
-        c("[Close the wardrobe behind her.]")),
-], requires=("trickster.ever", COMMITTED), forbids=(THRONE,) + LIVE, delay=72, kind="visit")
+        c("[Let her go.]")),
+], requires=(COMMITTED,), forbids=(THRONE,) + LIVE, delay=72)
 
 
 # --- One night alone: the arrangement, tested --------------------------------------------------------------------------
@@ -332,8 +458,9 @@ TOOK_NIGHT = P + "night_alone.taken"
 GAVE_BACK = P + "night_alone.given_back"
 COLD_NIGHT = P + "cost.cold_night"
 
-page(P + "after.night_alone", "One night alone", [
-    nar("start", '''{n}You go the way she showed you: into the wardrobe, through the empty Council, through Socothbenoth's purple door and his house of listening closets, out under the black arch in the street.{/n}
+hub(P + "after.night_alone", "One night alone", '"One night alone. You said I could ask."', [
+    nar("start", '''"Not here." {n}She does not look up from her cup.{/n} "You ask me for that in my Harem, in front of my court, where they can see you ask. Tonight."
+{n}So that night you go the way she showed you: into the wardrobe, through the empty Council, through Socothbenoth's purple door and his house of listening closets, out under the black arch in the street.{/n}
 {n}The Harem is full tonight. Music, perfume, a hundred demons on the couches, a fight going on quietly in one corner that nobody is watching. The court sees you come in, a Golarian in a travelling coat, and goes silent in waves, from the door to the dais.{/n}''',
         c("Continue", "court")),
     sh("court", '''{n}She is on her throne, in red, with the low light around her. She watches you walk the whole length of the room, between the couches, and she does not help.{/n}
@@ -351,7 +478,7 @@ page(P + "after.night_alone", "One night alone", [
         c('"One night. I want to know what it\'s like again."', "take", flags=(TOOK_NIGHT, COLD_NIGHT)),
         c('"No. I only wanted to hear you offer it."', "offered", flags=(GAVE_BACK,))),
     sh("offered", '''{n}She stares at you. Then something in her face goes very soft and very dangerous at once.{/n}
-"You came all the way through Socothbenoth's closets and knelt in front of my court to hear me offer." {n}She shakes her head, slowly.{/n} "You are the stupidest creature in the Abyss, and I have met the whole Abyss." {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} "I'll be there tonight. Dream of the kitchen. I like the kitchen."''',
+"You came all the way through Socothbenoth's closets and walked the length of my Harem, in front of my court, to hear me offer." {n}She shakes her head, slowly.{/n} "You are the stupidest creature in the Abyss, and I have met the whole Abyss." {n}She pulls you down beside her on the step, and puts her forehead against yours, the old place.{/n} "I'll be there tonight. Dream of the kitchen. I like the kitchen."''',
         c("[Stay on the steps with her a while.]")),
     sh("take", '''{n}She is quiet for a while. Then she nods, once, like a merchant accepting a bad price.{/n}
 "Go home, then. Sleep. I won't come." {n}Her voice is perfectly level.{/n} "Don't look for me in it. If you look for me, it isn't alone, and you'll have wasted it."''',
@@ -362,9 +489,9 @@ page(P + "after.night_alone", "One night alone", [
     nar("morning", '''{n}She is sitting on the end of your bed when you wake, in the red dress from the Harem, with your blanket round her shoulders. Her lips are grey. Her long hands, when she lifts one to push her hair back, move slowly, like a cold woman's in a winter street, and the fingertips are white.{/n}
 {n}She does not come closer. She looks at your face, and reads it, and whatever she finds there makes her close her eyes.{/n}''',
         c("Continue", "read")),
-    sh("read", '''"You looked at the fountain." {n}Her voice is hoarse.{/n} "The whole night. You were alone, and you looked at the fountain." {n}She opens her eyes.{/n} "My hands are cold. They'll stay a little cold now, I think, at the tips. I don't mind. I wanted to know if you would miss me." {n}A ragged breath.{/n} "Tonight I'm coming back in. Try and stop me."''',
+    sh("read", '''"You looked at the fountain." {n}Her voice is hoarse.{/n} "The whole night. You were alone, and you looked at the fountain." {n}She opens her eyes.{/n} "My hands are cold. They'll stay a little cold now, at the tips. I shall wear them to court, and every fool who kisses them will know what it costs to be refused a night." {n}She flexes the white fingers, slowly, watching you watch them.{/n} "And now I know how much of you is mine. You could not even be alone without looking for me. Tonight I'm coming back in, clown, and I'm taking a coal and a half. Try and stop me."''',
         c("[Lift the blanket.]")),
-], requires=("trickster.ever", COMMITTED, THRONE), forbids=(ASKED_ALONE,) + LIVE, delay=72, kind="visit")
+], requires=(COMMITTED, THRONE), forbids=(ASKED_ALONE,) + LIVE, delay=72)
 
 
 # --- The soft no, kept: one favour, exactly --------------------------------------------------------------------------------
@@ -410,8 +537,51 @@ page(P + "after.eve", "The night before the rift", [
         c("[Think of her, loudly, and go to sleep.]", flags=(EVE,))),
     sh("plain", '''"We never finished anything, you and I. A murder, a body, a head with two heartbeats in it." {n}The voice goes dry.{/n} "Come back out of the Wound and finish something. I'm told it's what mortals do."''',
         c("[Think of her, loudly, and go to sleep.]", flags=(EVE,))),
-], requires=("trickster.ever", EMBODIED), forbids=(EVE,) + LIVE, delay=0, chapters=(6,))
+], requires=("trickster.ever", EMBODIED), forbids=(EVE, NEVER_ALONE) + LIVE, delay=0, chapters=(6,))
+# 05 §4.4: Chapter 6 has one rest and Shamira has no slot in it. The eve page stays registered (save reference) but is gated
+# off on NEVER_ALONE, which the waking always sets with EMBODIED; what she said that night is a paragraph of her pages.
+
+
+
+# The first night of company follows the waking on the same page (05 §4.2 fold; first_company stays registered and is never
+# delivered on a new road, because the waking page sets FIRST_COMPANY).
+_FUEL = next(s for s in shamira_mind.SCENES if s["Id"] == P + "mind.fuel")
+next(x for x in _FUEL["Nodes"] if x["Id"] == "w_go")["Choices"][0]["Next"] = "fc_start"
+_FUEL["Nodes"] += fold(next(s for s in SCENES if s["Id"] == P + "after.first_company"), "fc_")
+
+# The fuel page (with the waking and the first night of company) joins the dreams' page: the night after "Almost".
+_DREAM = next(s for s in shamira_mind.SCENES if s["Id"] == P + "mind.dream")
+_wake = next(x for x in _DREAM["Nodes"] if x["Id"] == "a_wake")
+_wake["Choices"][0]["Next"] = "f_start"
+_wake["Choices"][0]["Requires"] = [*_wake["Choices"][0]["Requires"], shamira_mind.SHELL]
+_wake["Choices"].append(c("[Get up.]", flags=(shamira_mind.ALMOST,), forbids=(shamira_mind.SHELL,)))
+_DREAM["Nodes"] += fold(_FUEL, "f_", texts={
+    "start": '''{n}The night after, you open the wardrobe, and there she hangs between your coats: the stolen body, pale and faceless, long-handed, still smelling faintly of black earth. You put your hand on its chest, where a heart would be, and for a while you both look at it: you with your eyes, and she with them too.{/n}'''})
+
+# The soft no's one favour follows the game (its own page is retired: the harem sets FAVOUR on this road).
+_FAV = next(s for s in SCENES if s["Id"] == P + "after.favour")
+for _h in [s for s in SCENES if s["Id"] in (P + "harem", P + "harem_awning")]:
+    _ally = next(x for x in _h["Nodes"] if x["Id"] == "ally")
+    _ally["Choices"][0]["Next"] = "fv_start"
+    _h["Nodes"] += fold(_FAV, "fv_", texts={
+        "start": '''{n}Three days later no wardrobe opens. In your sleep she sits where she always sits now, at the far edge of the dream with her back to you, and says nothing. Instead, one grey morning, there is a folded square of red silk on your map table, weighed down with one of the black glass pins she wore in her hair, and nobody on your staff can say how it got there.{/n}
+{n}Written on the silk, in a hand like a row of knives:{/n}'''})
+
+# The north barracks' surgeon finds the Commander at her table (her event, played in person; the witness of the retired
+# Regill reaction is folded into it).
+_BAR = next(s for s in shamira_mind.SCENES if s["Id"] == P + "mind.barracks_after")
+shamira_mind.SCENES.remove(_BAR)
+_bar_nodes = copy.deepcopy(_BAR["Nodes"])
+_bar_nodes[0]["Text"] = ('''"Your surgeon." {n}She does not turn round.{/n} "From the north barracks. He has been following you all afternoon, working himself up to it. I'll leave you to him. Try not to lie to him too well; he'll only come back."
+{n}The surgeon of the north barracks asks for you by name, which surgeons do not do. He is a thin Mendevian with ink on his cuffs and he will not sit down.{/n}''' + _bar_nodes[0]["Text"].split("{/n}", 1)[1])
+hub(_BAR["Id"], _BAR["Title"], '"Who is that man by the door?"', _bar_nodes, requires=(BARRACKS,),
+    forbids=tuple(f for f in _BAR["Forbids"] if f not in ("trickster.ever", EMBODIED)), delay=_BAR["DelayHours"])
 
 
 def integrate(payload):
-    """Nothing to bind: the native keys read here (Nocticula's hiding, her brother's plot) bind on demand."""
+    # Her presence (the King's corner table, or the awning); the native keys read here bind on demand.
+    for key, value in PRESENCES.items():
+        have = payload.setdefault("Presences", {}).get(key)
+        if have is not None and have != value:
+            raise ValueError("Conflicting presence: " + key)
+        payload["Presences"][key] = copy.deepcopy(value)
