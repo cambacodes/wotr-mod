@@ -324,6 +324,7 @@ BINDINGS = {
     'siphon.burst_council': ('SeenCues', '3c4dd53fef2e80540bba5272d38c9843', 'GrandFinal/Cue_0063 (the siphon with planar essence explodes)'),
     'siphon.burst_shamira': ('SeenCues', '2303848f628c04b40b45025ebb06d2b4', "GrandFinal/Cue_0092 (the siphon with Shamira's essence explodes)"),
     'soana.dead': ('Etudes', 'd4b624463e52e21438da6f4870320fee', 'SoanaDead'),
+    'soana.heard_creed': ('SeenCues', '353da9f2dae74074b8f1f280d6714c87', "SoanaAfterBear/Cue_0012 'a true protector is the one who sacrifices themselves'"),
     'soana.heard_link_a': ('SeenCues', '396b1d46a2cfb1e48b205468d4360ee9', "SoanaAfterBear/Cue_0015 'I forced the spirit to serve good by linking our lives together'"),
     'soana.heard_link_b': ('SeenCues', 'f09070d38bacb8545a4497e04cf2534a', 'SoanaAfterBear/Cue_0036 (twin of Cue_0015 on the second cue sequence)'),
     'soana.killed_by_camellia': ('Etudes', 'f102a4d0677148f4cab007f901a5ed3c', 'SoanaKilledByCamellia'),

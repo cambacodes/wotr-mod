@@ -63,6 +63,9 @@ SECOND = "soana.trickster.cost.second_ask"
 CATCHUP = "soana.trickster.cost.catchup"
 LATE = "soana.trickster.cost.late"
 DIE_KEPT = "soana.trickster.cost.die_in_her_bowl"
+CREED = "soana.heard_creed"                          # SeenCues SoanaAfterBear/Cue_0012 (her creed)
+BOUND_AGAIN = "soana.trickster.rebind"
+REBIND_DECLINED = "soana.trickster.rebind_declined"
 HEARD = "soana.heard_link"                            # Derived: SoanaAfterBear Cue_0015 or its twin Cue_0036 seen
 SACRIFICE_BACK = {"sacrifice": "trickster.commander_back"}
 DEFENDER = ["soana.old_defender", BEAR_DEAD]
@@ -162,8 +165,8 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("read", """{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}
 {n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own.{/n}
 {n}You put two fingers to the brand. It tugs back, once, like a line with a fish on it, and behind you, on the cold floor of the cave, the dead woman's hand closes on nothing.{/n}
-{n}So that is what holds her. Not the bear: the thing in the bear, the spirit of the Abyss she caught and broke to the forest's work. It is still tied to her, and a thing tied to a corpse can go nowhere and eat nothing. It has been starving on the end of a dead woman's rope since the night she fell; that is the howling in the trees. And it is the one thing in Wintersun that has spent centuries pushing life into what it was tied to.{/n}
-{n}It is a gamble, and a Trickster's kind: offer it a living hand to pull on instead of a dead one, and see whether it pays for the change by pushing back down her strand.{/n}""",
+{n}So that is what holds her. Not the bear: the thing in the bear, the spirit of the Abyss she caught and broke to the forest's work. It is still tied to her, and a thing tied to a corpse can go nowhere and eat nothing. It has been starving on the end of a dead woman's rope since the night she fell; that is the howling in the trees. And the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
+{n}It is a gamble, and a Trickster's kind: offer the thing on the far end a living hand to pull on instead of a dead one, and see whether it will drag her back up her own strand to get it.{/n}""",
         c('[Hold her clay medallion to the guardian\'s brand and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
           flags=(RETURNED, STARTED, GUARDIAN, SPENT, LEASH)),
@@ -174,8 +177,8 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("marks", """{n}You crouch where she fell. Days dead, and she has not begun to rot: her hands are grey but whole, and the cave smells of ash and dry herbs and nothing worse. On the rock above her pallet the same knot is scratched in charcoal, over and over, the knot of her clay medallion and of the brand on Orso's hide; and beside it, small, the way a trapper keeps a tally, three marks: a bear, a horned thing with too many teeth, and a stooped little figure with a braid.{/n}
 {n}A bear, a demon and an old woman, tied in one knot. She never told you so. She wrote it on her wall.{/n}
 {n}You put two fingers to the brand. It tugs back, once, like a line with a fish on it, and behind you, on the cold floor of the cave, the dead woman's hand closes on nothing.{/n}
-{n}So that is what holds her. Not the bear: the thing in the bear, the spirit of the Abyss she caught and broke to the forest's work. It is still tied to her, and a thing tied to a corpse can go nowhere and eat nothing. It has been starving on the end of a dead woman's rope since the night she fell; that is the howling in the trees. And the forest lived around that knot longer than anyone in Wintersun remembers; whatever is on the far end of it knows how to keep a thing alive.{/n}
-{n}It is a gamble, and a Trickster's kind: offer it a living hand to pull on instead of a dead one, and see whether it pays for the change by pushing back down her strand.{/n}""",
+{n}So that is what holds her. Not the bear: the thing in the bear, the spirit of the Abyss she caught and broke to the forest's work. It is still tied to her, and a thing tied to a corpse can go nowhere and eat nothing. It has been starving on the end of a dead woman's rope since the night she fell; that is the howling in the trees. And the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
+{n}It is a gamble, and a Trickster's kind: offer the thing on the far end a living hand to pull on instead of a dead one, and see whether it will drag her back up her own strand to get it.{/n}""",
         c('[Hold her clay medallion to the guardian\'s brand and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
           flags=(RETURNED, STARTED, GUARDIAN, SPENT, LEASH)),
@@ -196,7 +199,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("wake_spirit", """{n}The black grass around the bones stirs, though there is no wind. What lies in them strains once against the knot, and you feel it in your wrist, like a dog on a short rope. It does not get loose. You are holding it.{/n}""",
         c("Continue", "soana")),
     s("soana", """{n}Behind you, someone coughs up forest loam.{/n}
-"...Bloody hunter. Of course." {n}She spits loam.{/n} "You put your hand on my knot. Forty winters I held that demon by the throat, and a hand that holds a thing that long is part of the knot, like it or not. I knew. I told nobody, because I did not think any fool alive would pull on it." {n}She looks at the white print on your hand.{/n} "And it took the trade. Of course it did. A demon would sooner drag on a young fist than starve on a dead old woman's. That is worse."
+"...Bloody hunter. Of course." {n}She spits loam.{/n} "You put your hand on my knot. All those winters I held that demon by the throat, and a hand that holds a thing that long is part of the knot, like it or not. I knew. I told nobody, because I did not think any fool alive would pull on it." {n}She looks at the white print on your hand.{/n} "And it took the trade. Of course it did. A demon would sooner drag on a young fist than starve on a dead old woman's. That is worse."
 {n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}
 "I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"""",
         c('"You can hate me standing up."')),
@@ -297,6 +300,33 @@ at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has 
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
     ], requires=("trickster.ever", RETURNED, DECLINED), forbids=(CLOSED, COMMITTED), delay=96)
 
+# Q10 r2: a lover committed before she died (the registered courtship, then the handover or the Commander's own kill)
+# still owes the knot its second strand. The terms and the second ask forbid soana.committed, so this is that vow.
+at_cave("soana.trickster.returned.rebind", "An old promise, a new knot", '"You said three days."', [
+    s("start", '''{n}The grave is a low mound under the ferns. She has laid stones on it in a pattern you almost recognize. She does not get up.{/n}''',
+        c("Continue", "camellia", requires=(KILLED,)), c("Continue", "own", forbids=(KILLED,))),
+    s("camellia", '''"You courted me. You sat at my fire and ate my fish and called me beloved, and I let you. Then you stood outside my cave while your spirit talker opened my throat, because she asked nicely."
+{n}She turns a stone on the mound with one finger, so the pattern comes right.{/n}
+"And then you came back and pulled me up out of the dark by my own knot. I have been trying for three days to decide which of those you meant. I think it was all of them. That is the worst thing about you."''',
+        c("Continue", "price")),
+    s("own", '''"You courted me. You sat at my fire and ate my fish and called me beloved, and I let you. Then you killed me with your own hands, in my own cave."
+{n}She turns a stone on the mound with one finger, so the pattern comes right.{/n}
+"And then you came back and pulled me up out of the dark by my own knot. I have been trying for three days to decide which of those you meant. I think it was all of them. That is the worst thing about you."''',
+        c("Continue", "price")),
+    s("price", '''{n}She opens her hand. The knot is in it.{/n}
+"What we said before I died was said to a living woman with a whole knot. This one has one strand, and you are holding my leash in your bare hand. If I am to take it back and keep it, the other end needs a life on it. Yours. When I die again, it is your life the knot comes looking for first."
+"Old promises do not tie knots, hunter. Say it new or do not say it."''',
+        c('[Hold out your hand] "Mine first."', "night", forbids=(SPENT,), flags=(BEARER, BOUND_AGAIN)),
+        c('"No. Not this. Not my life on your knot."', "refuse", flags=(REBIND_DECLINED,)),
+        c('[Hold out your hand] "Mine first."', "night_clay", requires=(SPENT,), flags=(BEARER, BOUND_AGAIN))),
+    s("refuse", '''{n}She closes her fist over the knot.{/n}
+"Then I take my leash back alone, with one strand and my own blood, and it may kill me, and that will be your doing too. You may still come to my fire. You may not hold my leash, and you will not hold anything else of mine that matters."''',
+        c('[Go]')),
+    s("night", TERMS_NIGHT, c("Continue", "morning")),
+    s("morning", TERMS_MORNING, c('[Go]')),
+    s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
+    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT, COMMITTED), forbids=(CLOSED, BEARER, REBIND_DECLINED), delay=72)
+
 
 # The portion comes due (audit: the recurring blood price must be witnessed, not only promised). The first winter after
 # the handover, on her own list: the spirits come to the cave mouth, and the Commander can pay it or watch her pay it.
@@ -372,16 +402,21 @@ inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-b
 {n}She scratches the bear behind one ear. The bear sighs like a bellows.{/n}''', c("Continue", "question")),
     n("question", "Soana", '''"Your luck keeps her standing. My spirits keep her walking. When the war ends, hunter, you will be the one holding the dice."
 "When this war is done and the luck runs thin, and she lies down, will you let her stay down? Or will you roll again?"''',
-        c('"I\'ll let her rest. She\'s earned it."', "rest", flags=(TESTED, REST)),
+        c('"I\'ll let her rest. She\'s earned it."', "rest", requires=(CREED,), flags=(TESTED, REST)),
         c('"I\'ll roll again. As long as it takes."', "roll", flags=(TESTED, ROLL)),
         c('[Grin] "I\'ll roll for her. And if it comes up one, I\'ll call it twenty."', "cheat", flags=(TESTED, CHEAT)),
-        c('"Why does it matter what I\'d do?"', "why")),
+        c('"Why does it matter what I\'d do?"', "why"),
+        c('"I\'ll let her rest. She\'s earned it."', "rest_plain", forbids=(CREED,), flags=(TESTED, REST))),
     n("why", "Soana", '''{n}She looks at you with those small black eyes, sunk deep in the driftwood.{/n}
 "Because I am older than she is, hunter. Answer the question."''',
-        c('"I\'ll let her rest. She\'s earned it."', "rest", flags=(TESTED, REST)),
+        c('"I\'ll let her rest. She\'s earned it."', "rest", requires=(CREED,), flags=(TESTED, REST)),
         c('"I\'ll roll again. As long as it takes."', "roll", flags=(TESTED, ROLL)),
-        c('[Grin] "I\'ll roll for her. And if it comes up one, I\'ll call it twenty."', "cheat", flags=(TESTED, CHEAT))),
+        c('[Grin] "I\'ll roll for her. And if it comes up one, I\'ll call it twenty."', "cheat", flags=(TESTED, CHEAT)),
+        c('"I\'ll let her rest. She\'s earned it."', "rest_plain", forbids=(CREED,), flags=(TESTED, REST))),
     n("rest", "Soana", '''"A true protector is the one who sacrifices themselves. You heard me say it once, and you were listening. Hm."
+{n}She goes back to scratching the bear's ear, and for a while she says nothing at all, which from her is a speech.{/n}''',
+        c('[Leave them in the sun]')),
+    n("rest_plain", "Soana", '''"Hm. A true protector is the one who sacrifices themselves. I have said that to better hunters than you, and not one of them listened. You I have not decided about."
 {n}She goes back to scratching the bear's ear, and for a while she says nothing at all, which from her is a speech.{/n}''',
         c('[Leave them in the sun]')),
     n("roll", "Soana", '''"That is what a child says. A child with a toy it does not want to put away."
@@ -467,7 +502,7 @@ SCENES.append(scene("soana.trickster.epilogue.knot", "The second strand", "Epilo
               "from her own braid, complaining the whole time. When it chafed, she said that was how you knew it was working.",
               forbids=(SPENT,)),
             *EPILOGUE_PARAGRAPHS))],
-    requires=(RETURNED, COMMITTED), forbids=(CLOSED, "sacrifice"), last=99, Relationship="soana", ForbidOverrides=dict(SACRIFICE_BACK)))
+    requires=(RETURNED, BEARER), forbids=(CLOSED, "sacrifice"), last=99, Relationship="soana", ForbidOverrides=dict(SACRIFICE_BACK)))
 
 SCENES.append(scene("soana.trickster.epilogue.luck", "The die in the bowl", "Epilogue", 5, "", [
     nar("start", '''{n}The die stayed in Soana's bowl after the war, twenty up, and the she-bear who had carried the Commander's luck to the roads grew grey in the muzzle and very fat. The Commander came to Wintersun whenever the world allowed it, and some times when it did not.{/n}
@@ -504,9 +539,23 @@ SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue
 
 SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue", 5, "", [
     nar("start", '''{n}The Commander never went back to Wintersun. Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}
-{n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told that the Commander was a hunter who had held a dead woman to her own words, dug a few graves, and walked away. She did not say it kindly.{/n}''',
-        c())],
+{n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told about a hunter who had held a dead woman to her own words. She did not say it kindly.{/n}''',
+        c(), paragraphs=(
+            p("\"Dug my graves with their own hands,\" she would add. \"Badly. And still walked away.\"", requires=(DUG,)),
+            p("\"Paid Drezen to dig my graves,\" she would add, \"and walked away before the diggers had eaten my fish.\"",
+              requires=(BOUGHT,)),
+            p("\"Would not lift a spade for my dead,\" she would add. \"Turned round at my door and walked away.\"",
+              requires=(LEFT,)),
+        ))],
     requires=("trickster.ever", RETURNED, CLOSED), forbids=(COMMITTED, "sacrifice"), last=99, Relationship="soana",
+    ForbidOverrides=dict(SACRIFICE_BACK)))
+
+# Q10 r2: a lover from before her death who returned her but never took the knot's second strand.
+SCENES.append(scene("soana.trickster.epilogue.unvowed", "One strand, old promises", "Epilogue", 5, "", [
+    nar("start", '''{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She lived. She buried the dead forest one grave a day and bound what she could into what was left.{/n}
+{n}The Commander still came to her fire when the war allowed. She fed them, scolded them and took them to bed, and never once let them near the knot. "You had your chance at that," she said, and that was the end of it.{/n}''',
+        c())],
+    requires=("trickster.ever", RETURNED, COMMITTED), forbids=(BEARER, CLOSED, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
 # Q10: the Commander gave their life at the Threshold and stayed dead. Every Trickster page above describes a living
@@ -518,10 +567,10 @@ SCENES.append(scene("soana.trickster.epilogue.slack", "The slack strand", "Epilo
               "tied to the Commander's life, and that life had gone first, as she had told them it would. She cut the dead strand "
               "off with her knife, tied it round her own throat beside the old clay, and went on binding the Wintersun woods "
               "for twenty years more out of spite. She never said the Commander's name to anyone. She said \"the hunter\", and "
-              "everyone knew.", requires=(RETURNED, COMMITTED)),
+              "everyone knew.", requires=(RETURNED, BEARER)),
             p("The leash came back to her the night the Commander's hand stopped holding it: all of it at once, like a dropped "
               "rope. She caught it, went down on her knees under the weight, and held. It nearly killed her. It did not.",
-              requires=(RETURNED,), forbids=(COMMITTED,)),
+              requires=(RETURNED,), forbids=(BEARER,)),
             p("Out on the Wintersun road, the she-bear that had stood up on the Commander's luck all winter lay down in the "
               "ferns that night and did not get up. Soana took the die out of the bowl and buried it with her, twenty up.",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
@@ -573,11 +622,17 @@ ALIVE_PARAGRAPHS = (
       "cursed the Commander's name while she did it. She never missed a winter.", requires=(BLOOD,)),
     p("Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The "
       "Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later "
-      "calling them stupid.", requires=("soana.trickster.cost.portion_shared",)),
+      "calling them stupid.", requires=("soana.trickster.cost.portion_shared",), forbids=("sacrifice",)),
     p("She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
       requires=(DICE,), forbids=(LUCK_REFUSED,)),
 )
 ALIVE_ENDINGS = ("kept_life", "chosen_visits", "familiar_company", "sacrifice", "beyond_the_forest")
+# Q10 r2: the shared portion outlives a Commander who stayed dead; Soana pays both halves. (The living paragraph above
+# forbids sacrifice, and the living endings that a returned Commander reaches carry it again with the override below.)
+PORTION_ALIVE = ALIVE_PARAGRAPHS[1]
+PORTION_DEAD = p("The winter after the Threshold the spirits came to Wintersun twice: once for her portion, and once for the "
+                 "Commander's, which nobody alive was left to pay. Soana cut both palms and paid them both, every winter after, "
+                 "and cursed the dead for leaving her the bill.", requires=("soana.trickster.cost.portion_shared",))
 
 
 def _scene(by_id, id):
@@ -616,8 +671,11 @@ def integrate(payload):
         _forbid(_scene(by_id, id), RETURNED)
     for name in ALIVE_ENDINGS:
         _paragraphs(_scene(by_id, "soana.ending_" + name), ALIVE_PARAGRAPHS)
+    _paragraphs(_scene(by_id, "soana.ending_sacrifice"), (PORTION_DEAD,))
     # Ledger row 16: a Commander who came back from the sacrifice keeps the living endings (the mourning ones forbid it).
     for name in ("kept_life", "chosen_visits", "familiar_company"):
         scene_ = _scene(by_id, "soana.ending_" + name)
         if "sacrifice" in scene_["Forbids"]:
             scene_.setdefault("ForbidOverrides", {}).update(SACRIFICE_BACK)
+            # A Commander who came back holds `sacrifice` too: the living portion paragraph must not drop out for them.
+            _paragraphs(scene_, (dict(PORTION_ALIVE, Forbids=[], AnyGroups=[["trickster.commander_back"]]),))

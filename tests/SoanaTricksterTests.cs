@@ -418,6 +418,77 @@ internal static class SoanaTricksterTests
         check(Endings(pairEnd).SequenceEqual(new[] { epLuck.Id })
               && epLuck.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "cost.pair_given") && x.Text.Contains("luck they were born with")),
             "The surrendered pair leaves no mark on the ending.");
+
+        // Q10 r2 (INT/HOW): a lover committed in the registered courtship, then handed to Camellia, then raised by the knot,
+        // still has to take the knot's second strand; the knot pages read knot_bearer, not the older commitment.
+        var rebind = S(P + "returned.rebind");
+        var oldLover = World(story, 3, "trickster", "trickster.ever", "soana.committed", "soana.dead", "soana.killed_by_camellia",
+                             "soana.forest_dead");
+        var oldRaised = Pick(knot, oldLover, P + "returned");
+        check(!oldRaised.Has(P + "cost.knot_bearer"), "The old commitment counts as the knot's vow.");
+        var oldDug = Pick(graveyard, Later(story, oldRaised, 48), P + "graveyard_kept", P + "cost.grave_dug");
+        var atRebind = Later(story, oldDug, 72);
+        check(!Rules.Available(story, terms, atRebind) && Rules.Available(story, rebind, atRebind)
+              && !Rules.Available(story, rebind, Later(story, oldDug, 71)), "A committed lover has no road to the knot's vow.");
+        check(Reaches(oldRaised, P + "cost.knot_bearer"), "A committed lover cannot reach knot_bearer from the knot.");
+        var rebindPages = new HashSet<string>();
+        var rebindEnds = Program.Walk(rebind, atRebind, (id, _) => rebindPages.Add(id));
+        check(rebindPages.IsSupersetOf(new[] { "start", "camellia", "price", "night", "morning", "refuse" }) && !rebindPages.Contains("own"),
+            "The rebinding forgets who killed her, or skips the vow and the night.");
+        var vowed = Pick(rebind, atRebind, P + "cost.knot_bearer", P + "rebind");
+        var unvowed = Pick(rebind, atRebind, P + "rebind_declined");
+        check(!unvowed.Has(P + "cost.knot_bearer") && !Rules.Available(story, rebind, Later(story, unvowed, 200)),
+            "Declining the rebinding still binds, or asks forever.");
+        check(Endings(vowed).SequenceEqual(new[] { epKnot.Id }), "The rebound lover ends on the wrong pages: " + string.Join(",", Endings(vowed)));
+        check(Endings(unvowed).SequenceEqual(new[] { P + "epilogue.unvowed" }) && Endings(oldRaised).SequenceEqual(new[] { P + "epilogue.unvowed" }),
+            "A lover who returned her without the vow ends on the knot page, or on none.");
+        var ownKill = World(story, 3, "trickster", "trickster.ever", "soana.committed", "soana.dead", "soana.forest_dead");
+        var ownRebind = Later(story, Pick(graveyard, Later(story, Pick(knot, ownKill, P + "returned"), 48), P + "graveyard_kept"), 72);
+        var ownPages = new HashSet<string>();
+        Program.Walk(rebind, ownRebind, (id, _) => ownPages.Add(id));
+        check(ownPages.Contains("own") && !ownPages.Contains("camellia"), "The rebinding blames Camellia for the Commander's own kill.");
+
+        // Q10 r2 (INT): the shared portion's paragraphs follow the Commander's fate.
+        var portionWorld = World(story, 6, "trickster.ever", "soana.late_campaign_kept", "soana.committed", P + "cost.blood_given",
+                                 P + "cost.portion_shared");
+        string Visible(string sceneId, Snapshot w) => string.Join("|", Rules.VisibleParagraphs(S(sceneId).Nodes.Last(), w).Select(x => x.Text));
+        var deadWorld = Program.Copy(portionWorld); deadWorld.Flags.Add("sacrifice"); Rules.Complete(story, deadWorld);
+        var backWorld = Program.Copy(deadWorld); backWorld.Flags.Add("ending.trickster"); Rules.Complete(story, backWorld);
+        check(Rules.Available(story, S("soana.ending_sacrifice"), deadWorld) && Visible("soana.ending_sacrifice", deadWorld).Contains("paid them both")
+              && !Visible("soana.ending_sacrifice", deadWorld).Contains("letter from Wintersun"),
+            "The mourning ending sends the dead Commander letters, or forgets the shared portion.");
+        check(Rules.Available(story, S("soana.ending_kept_life"), backWorld) && !Rules.Available(story, S("soana.ending_sacrifice"), backWorld)
+              && Visible("soana.ending_kept_life", backWorld).Contains("letter from Wintersun")
+              && Visible("soana.ending_kept_life", portionWorld).Contains("letter from Wintersun")
+              && !Visible("soana.ending_kept_life", backWorld).Contains("paid them both"),
+            "A living Commander loses the shared portion, or is mourned.");
+        var slackDead = End(bound); slackDead.Flags.Add("sacrifice"); Rules.Complete(story, slackDead);
+        check(Visible(P + "epilogue.slack", slackDead).Contains("went slack") && !Visible(P + "epilogue.slack", slackDead).Contains("dropped"),
+            "The unreversed sacrifice misreads the knot.");
+
+        // Q10 r2 (BEL/HOW): each graveyard refusal is remembered as it went.
+        var boughtWalked = Pick(graveyard, back, P + "cost.grave_bought", "soana.closed");
+        var dugWalked = Pick(graveyard, back, P + "cost.grave_dug", "soana.closed");
+        foreach (var (w, says, never) in new[] { (walked, "Would not lift a spade", "Dug my graves"), (boughtWalked, "Paid Drezen", "Dug my graves"),
+                                                  (dugWalked, "Dug my graves", "Would not lift a spade") })
+        {
+            var e = End(w);
+            check(Endings(w).SequenceEqual(new[] { P + "epilogue.unbound" }) && Visible(P + "epilogue.unbound", e).Contains(says)
+                  && !Visible(P + "epilogue.unbound", e).Contains(never) && !S(P + "epilogue.unbound").Nodes[0].Text.Contains("dug"),
+                "The unbound ending misremembers the grave: " + says);
+        }
+
+        // Q10 r2 (INT): the creed is recalled only if the Commander heard it (SoanaAfterBear/Cue_0012).
+        var sheBearAt = Later(story, lucky, 48);
+        var creedPages = new HashSet<string>();
+        Program.Walk(sheBear, sheBearAt, (id, _) => creedPages.Add(id));
+        var heardWorld = Program.Copy(sheBearAt); heardWorld.Flags.Add("soana.heard_creed");
+        var heardPages = new HashSet<string>();
+        Program.Walk(sheBear, heardWorld, (id, _) => heardPages.Add(id));
+        check(creedPages.Contains("rest_plain") && !creedPages.Contains("rest") && heardPages.Contains("rest") && !heardPages.Contains("rest_plain")
+              && !S(P + "missed.she_bear").Nodes.Single(n => n.Id == "rest_plain").Text.Contains("heard me"),
+            "The she-bear recalls a creed the Commander never heard.");
+        check(Play(sheBear, sheBearAt).Any(r => r.Has(P + "answered_rest")), "An uninformed Commander cannot answer that she may rest.");
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }
