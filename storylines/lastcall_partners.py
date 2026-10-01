@@ -565,7 +565,8 @@ partner("jannah", "jannah", "jannah.committed", "jannah.closed", "The Front Rank
     call=call('''[Call the salute] "Jannah Aldori! To the first blood!"''',
         '''{n}You have called it once before, on a wall, with wings coming out of the dark: her whole name and the old Mivon words. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, someone who never runs any more answers.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Jannah: a rematch, owed", "An Aldori may always ask the one who beat her for a rematch, and I have beaten her, or she me, too often for the account ever to be square. She keeps the chalk in her pocket. I am to expect a circle wherever I go."))
+    page_commit_groups=[["jannah.committed"], [JA + "late_committed"]],   # Q6 r6 (COX): the late yes reaches her coda (additive)
+    ledger=("Jannah: a rematch, owed", "Her old master's salle let the beaten one ask for a rematch, and I have beaten her, or she me, too often for the account ever to be square. She keeps the chalk in her pocket. I am to expect a circle wherever I go."))
 NE = "nenio.trickster."
 partner("nenio", "nenio", "nenio.committed", "nenio.closed", "The Last Observation",
     '''Nenio spent the last night of the war on the roof of the citadel in Drezen with a spyglass, a stopwatch and a sheet headed THRESHOLD, OBSERVATIONS, because somebody had to write it down and she did not trust anybody else's handwriting except one, and that one was busy. When the rift closed, or failed to, she wrote down the time to the second. Then she sat with the pencil above the page for a long while and wrote nothing else at all, which in four thousand years she had never once done.''',

@@ -279,7 +279,7 @@ internal static class TargonaTricksterTests
         var greetNode = freeFurlough.Nodes.Single(n => n.Id == "why").Choices;
         check(greetNode.Count == 2 && greetNode[0].Set.Contains(P + "met") && !greetNode[0].Set.Contains(P + "drawn") && greetNode[1].Set.Contains(P + "drawn"),
             "The arrival's romantic answer is not an appended, recorded choice.");
-        check(spent.Nodes.Single(n => n.Id == "report_hand").Text.Contains("Hand of the Inheritor", StringComparison.Ordinal)
+        check(!spent.Nodes.Any(n => n.Text.Contains("only road", StringComparison.Ordinal) || n.Text.Contains("Hand reads", StringComparison.Ordinal))
               && spent.Nodes.Single(n => n.Id == "night_spent").Choices[0].Forbids.Contains("herald.killed")
               && spent.Nodes.Single(n => n.Id == "night_spent").Choices[1].Requires.Contains("herald.killed")
               && !spent.Nodes.Single(n => n.Id == "report_chapel").Text.Contains("Hand of the Inheritor reads", StringComparison.Ordinal)
@@ -289,6 +289,14 @@ internal static class TargonaTricksterTests
         var hp = new HashSet<string>(); Program.Walk(spent, heraldDead, (page, _) => hp.Add(page));
         check(hp.Contains("report_chapel") && !hp.Contains("report_hand")
               && Program.Walk(spent, heraldDead).Any(o => o.Has(P + "cost.charges_spent")), "The dead Hand still reads the report.");
+
+        // Q6 r6 (BEL/CAN): the freed ward has a reactor; the correspondence names no Hand (captive or dead in many histories).
+        check(Rules.Available(story, S(P + "react.seelah_ward_free"), World(story, 5, "trickster.ever", "targona.free", P + "met", P + "night_kept"))
+              && !Rules.Available(story, S(P + "react.seelah_ward_free"), World(story, 5, "trickster.ever", "targona.free", P + "met")),
+            "The freed ward's night has no companion response.");
+        check(!story.Scenes.Where(x => x.Id.StartsWith("targona.", StringComparison.Ordinal) && !x.Id.StartsWith(P, StringComparison.Ordinal))
+                  .SelectMany(x => x.Nodes).Any(n => n.Text.Contains("the Hand", StringComparison.Ordinal)),
+            "The correspondence relies on the Hand of the Inheritor.");
 
         // Trk_Targona_TreatmentDone: a treatment that ended as RanRomance's romance runs the parent route instead. A friendship-only
         // treatment history (Sol quality pass, INT) can still be courted: walk it from the parent's own flags, no injected romance.

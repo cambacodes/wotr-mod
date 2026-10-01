@@ -199,7 +199,7 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, kind="visit", chapte
                         optional=optional, Relationship=REL, Remote=True, Kind=kind, Chapters=[chapter],
                         # Q6 r2 (COX): her Chapter 5 visits are manual reads (her book, "choose Read"); only the letter from the
                         # cells arrives at a rest, which keeps her inside the ledger's Chapter 5 allocation.
-                        **({"ManualOnly": True} if kind == "visit" and chapter == 5 else {}), **extra))
+                        **({"ManualOnly": True} if kind == "visit" and chapter == 5 and not extra.get("TricksterDevice") else {}), **extra))   # Q6 r6 (INT): the device pages (stories, wagon) arrive at a rest
 
 
 # --- Killed worlds, Chapter 3: the forms at the cage (inline, before the native [Attack]). -----------------------------
@@ -322,7 +322,7 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 "All right. I'll stay where you can find me. I thought that would be harder to say."''',
         c("[Leave her to the cell.]")),
     jan("released", '''"Released." {n}She takes it like a blow she had been warned about.{/n}
-"In Mivon that's an honour. The victor saying the loser owes nothing; they paint it on the salle wall. Here it just means you're done with me."
+"In the old man's salle that's an honour. The victor saying the loser owes nothing; he'd chalk it on the wall. Here it just means you're done with me."
 {n}She doesn't move toward the steps.{/n} "I'm staying anyway. Not because I owe you. Because I chose it, and that's the first thing I've done since the Houndheart camp that my legs didn't choose for me."''',
         c("[Leave her to the cell.]")),
     jan("nameless", '''{n}It lands. You watch it land. Then she straightens, heels together, the way a recruit stands for a sentence.{/n}
@@ -406,23 +406,23 @@ visit(P + "alive.stories", "Blood and tale", [
         c('"Agreed. I\'ll tell yours first."', "your_tale"),
         c('[Let her go to the wagon] "No. Go, if you have to."', "let_go")),
     nar("your_tale", '''{n}She settles against the wall, cross-legged, and waits the way a judge waits.{/n}
-{n}You tell her part of Houndheart: the quasit out of Elan's chest, Curl with the ring, Seelah between him and Elan's sword, the colours that put Elan and her face-down in the dirt, and then the demons coming in over the tents. And then her.{/n}''',
+{n}You tell her part of Houndheart: the quasit out of Elan's chest, the colours that put Elan and her face-down in the dirt, the chase across the runes, Curl out of nowhere with the ring and the things he called up out of the ground, Seelah between him and Elan's sword. And then her.{/n}''',
         c('[Tell it true] "You ran. Before it was over, you ran north, and you didn\'t come back for any of us."', "true"),
         c('[Tell it kinder] "You went for help, and got lost in the scrub."', "kind_lie")),
     jan("kind_lie", '''"No." {n}She says it before you've finished.{/n}
 "That's a kind lie, and it's the worst sort. First blood to me."''',
         c("Continue", "won")),
     jan("true", '''{n}She nods once, as if you had touched her on the guard and not the body. No blood.{/n}
-"My turn. Your part." {n}She tells it fast and flat, like a report.{/n} "You had your weapon out before the rest of us knew what had come out of that chest. When the demons came in over the tents you killed the first of them before Elan was off his knees, and you shouted for us to close up on you. I was on your left. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it."''',
+"My turn. Your part." {n}She tells it fast and flat, like a report.{/n} "You had your weapon out before the rest of us knew what had come out of that chest. When Curl's things came up out of the ground you killed the first of them while Elan was still shouting at him, and you shouted for us to close up on you. I was on your left. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it."''',
         c("Continue", "her_tale")),
-    jan("her_tale", '''"Then more of them came, and you turned to meet them, and I came round out of those colours with my face in the dirt, left my sword where it lay, and ran."
+    jan("her_tale", '''"Then more of them came, and you turned to meet them, and I threw my sword down in the dirt and ran."
 {n}She stops, and waits for you to find the lie, if there is one.{/n}''',
         c("[Perception] Go back over that night, stroke by stroke, and look for the lie in hers.",
           check=dict(Skill="SkillPerception", DC=20, Success="caught", Failure="missed")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
-    nar("caught", '''{n}You remember the colours, the tents, the demons. You remember a half-elf on your left with an Aldori blade, and the blade was not lying in the dirt. It was in the first demon to reach Elan while he was still on his knees, to the hilt, and she had to put her boot on its chest to get it back out. She ran after that. Not before.{/n}''',
-        c('"You didn\'t leave your sword lying. You killed the one going for Elan, and then you ran. You\'ve been telling it worse than it was."', "yield")),
-    jan("yield", '''{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: the colours, the tents, her boot on its chest.{/n}
+    nar("caught", '''{n}You remember the chase, Curl, the things out of the ground. You remember a half-elf on your left with an Aldori blade, and the blade was not lying in the dirt. It was in the first thing going for Seelah's back, to the hilt, and she had to put her boot on its chest to get it back out. She ran after that. Not before.{/n}''',
+        c('"You didn\'t throw your sword down. You killed the one going for Seelah\'s back, and then you ran. You\'ve been telling it worse than it was."', "yield")),
+    jan("yield", '''{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: Curl, Seelah's back, her boot on its chest.{/n}
 "...First blood." {n}She says it very quietly.{/n} "To you. Seven years in the circles of Mivon and I never bled first, and I lose my record in a cell, to a story, on a lie I told against myself."
 {n}She leaves the practice sword where it lies inside the circle.{/n} "Say it, then. What comes next."''',
         c('"You walk out of this cell. The wagon goes without you."', "stay", flags=(CAUGHT, RETURNED, STARTED, FIRST_LOSS)),
@@ -430,7 +430,7 @@ visit(P + "alive.stories", "Blood and tale", [
     jan("stay", '''"The wagon goes without me." {n}She gets off the bunk and stands, and doesn't seem to know what to do with her hands.{/n}
 "All right. By the forms. Don't expect me to be grateful. The forms don't say anything about grateful."''',
         c("[Leave her the cell for the night.]")),
-    nar("missed", '''{n}You go back over it and find nothing. The colours, the tents, the demons: it all sits where she put it. If there is a lie in her telling, it is buried deeper than your memory reaches.{/n}''',
+    nar("missed", '''{n}You go back over it and find nothing. The chest, the chase, Curl's things: it all sits where she put it. If there is a lie in her telling, it is buried deeper than your memory reaches.{/n}''',
         c('[Bluff] Name a lie anyway: "Elan\'s chest was on your left, not your right. You weren\'t where you say you were."',
           check=dict(Skill="CheckBluff", DC=26, Success="false_blood", Failure="false_caught")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
@@ -705,12 +705,12 @@ visit(P + "chalk_circle", "A circle in the yard", [
 {n}She's sitting on the yard wall in the dark with her knees drawn up, watching. She doesn't call down.{/n}''',
         c('[Step into the circle] "I lied to you in your cell. I named a lie you never told, because I missed the one you did, and I wanted you out of that cell more than I wanted to win clean."',
           "walked_in", requires=(HELD_LIE,), flags=(CONFESSED, COMMITTED, LATE_YES)),
-        c("[Step into the circle, draw, and salute her properly.]", "saluted_in", requires=(THREW,),
+        c("[Step into the circle, draw, and salute her properly.]", "saluted_in", requires=(THREW,), forbids=(HELD_LIE,),
           flags=(COMMITTED, LATE_YES)),
         c('[Step into the circle] "What I said over you at the muster was a lie, and a cheap one. You fought like an Aldori. I\'ll say so at the next muster, to the same four hundred."',
-          "unsaid_in", requires=(SHAMED,), flags=(COMMITTED, LATE_YES)),
+          "unsaid_in", requires=(SHAMED,), forbids=(HELD_LIE,), flags=(COMMITTED, LATE_YES)),
         c("[Step into the circle, lay down your weapon, and lie back on the sand with your eyes on the sky.]", "yield_in",
-          requires=(REFUSED_YIELD,), flags=(COMMITTED, LATE_YES, LATE_YIELD)),
+          requires=(REFUSED_YIELD,), forbids=(HELD_LIE,), flags=(COMMITTED, LATE_YES, LATE_YIELD)),
         c("[Leave the circle as it is.]", "left", flags=(CLOSED, GONE))),
     jan("walked_in", '''{n}She comes down off the wall and walks into the chalk, and stops inside measure.{/n}
 "That's all I wanted. Not sorry. Just the truth, said out loud, inside the circle, where it counts." {n}She picks up her sword and lays it across your feet.{/n}
@@ -820,7 +820,7 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth_wagon_free", (RETURNED,),
 
 SCENES.append(reaction("Irabeth", P + "react.irabeth_sand", (PUBLIC_YIELD, SHE_FIRST),
     '''"You lay down in the sand in front of my sergeants." {n}Irabeth says it the way she would read out a charge.{/n}
-"The whole muster. Flat on your back inside a deserter's chalk, with your eyes on the sky, because she cut your jaw and some rule from Mivon said you had to."
+"The whole muster. Flat on your back inside a deserter's chalk, with your eyes on the sky, because she cut your jaw and some rule of her old master's said you had to."
 {n}She is quiet a moment.{/n} "I've never seen anything like it. Half of them think less of you for it. The other half would walk into the Worldwound behind you tomorrow. I haven't decided which half I'm in."''',
     answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"You heard about the muster."',
     portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
@@ -829,7 +829,7 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth_sand", (PUBLIC_YIELD, SHE_F
 SCENES.append(reaction("Irabeth", P + "react.irabeth_yielded", (PUBLIC_YIELD, C + "yielded_the_circle"),
     '''"You lay down in the sand in front of my sergeants." {n}Irabeth says it the way she would read out a charge.{/n}
 "Before a blade was lifted. You'd beaten her in front of all of them, and then you walked into her chalk and lay down anyway, and she lay down next to you, and four hundred soldiers stood there with their mouths open."
-{n}She is quiet a moment.{/n} "I asked the Watch what it meant. The ones from Mivon wouldn't tell me. They just looked at me as if I'd asked what a prayer was for. I haven't decided whether that's a good sign."''',
+{n}She is quiet a moment.{/n} "I asked her what it meant. She said it was her old master's, from his salle and nobody else's, and then she wouldn't say another word. I haven't decided whether that's a good sign."''',
     answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"You heard about the muster."',
     portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
 

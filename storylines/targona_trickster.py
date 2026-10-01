@@ -423,9 +423,9 @@ letter(P + "free.spent_light", "The last wand", [
 {n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}''',
         c('[Finish at dawn] Put the empty wands away.', "report_hand", forbids=(HERALD_KILLED,)),
         c('[Finish at dawn] Put the empty wands away.', "report_chapel", requires=(HERALD_KILLED,))),
-    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report to the Hand of the Inheritor, as he writes everything: three wands, one Commander, no deaths by morning. The Hand reads such reports aloud to Heaven's healers. It is the only road there is from a field infirmary to the halls of Heaven, and this time somebody on the far end of it is listening.{/n}''',
+    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. He prays the names of the night at compline, as the Inheritor's chaplains do, and Heaven's healers have been asking after Drezen's wounded since the siege. Word of a Commander who emptied the stores for strangers travels. This time it reaches an angel with her own reasons to listen.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
-    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. Since the Hand fell, the reports go to the chapel of the Inheritor, where the priests read every name of the living and the dead at the altar, for whatever in Heaven still listens. This time something does.{/n}''',
+    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning, and he prays the names of the night at compline, more of them every week since the Hand fell. Heaven's healers have been asking after Drezen's wounded since the siege. Word of a Commander who emptied the stores for strangers travels. This time it reaches an angel with her own reasons to listen.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
 ], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
 
@@ -522,7 +522,7 @@ ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
 "Then I will hold you to it. I am told that is what Tricksters hate most." {n}She almost smiles.{/n} "Yes."''',
       c("Continue", "threshold")),
     t("unpromised", '''"No. I did not think you could." {n}She goes on folding.{/n}
-"You would do it one day, for a stranger with a fever, and you might even be right to, and I would never know when it was coming. I cannot live beside that. I am sorry."''',
+"Then you would spend him. That light is what is left of my brother, Commander. A wand night is a candle; it costs him nothing. A death is a bonfire. Every time you cheat one, there is less of Lariel in you, and one day there will be nothing of him left but your habit of reaching for it. I will not sit beside you and watch you spend him. I am sorry."''',
       c('[Leave her the ward.]')),
     *night_nodes(),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), delay=72)
@@ -605,6 +605,14 @@ page(P + "epilogue.sacrifice", "The name over the door",
 # --- Reactions (ledger 05 section 3.1 row 39: exactly Seelah, Sosiel and Ember) -------------------------------------
 
 REACTIONS = [
+    # Q6 r6 (BEL): the freed state's ward has its own allocated reactor; the killed-branch barks are dormant.
+    reaction("Seelah", P + "react.seelah_ward_free", (MET, NIGHT),
+             '''{n}Seelah is waiting by the stores, and she is very carefully not looking at your cloak.{/n}
+"There was a black feather on you this morning. Wilcer Garms wrote something in his ledger and won't tell me what." {n}She looks at you, and her ears are pink.{/n}
+"An angel of the host, Commander. One of Iomedae's own. I knelt to her in the infirmary and she told me to get up and hold a basin." {n}A helpless laugh.{/n} "Be good to her. I don't know what I'd say to Heaven if you weren't."''',
+             answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone"), chapter=3, last=5, Chapters=[3, 5],
+             ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"},
+             entry='"You\'ve been to the infirmary."'),
     reaction("Seelah", P + "react.seelah_furlough", (RETURNED,),
              '''"There's an angel in the infirmary changing bandages. She asked me not to kneel. I knelt anyway."
 {n}Seelah turns her helmet over in her hands.{/n}

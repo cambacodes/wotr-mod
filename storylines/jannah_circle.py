@@ -161,14 +161,14 @@ meet(HOUNDHEART, "Houndheart", '"You\'re quiet today."', [
         c("Continue", "told", requires=(LIED,)),
         c("Continue", "told", requires=(STORY_LOST,)),
         c("Continue", "untold", forbids=(CAUGHT, LIED, STORY_LOST))),
-    jan("told", '''"We told the camp in the cell, you and I, or started to. But blood and tale is about what you did. It isn't about what was going on in your head while you did it. My master said that part belonged to nobody but the fencer. I'm going to give it to you anyway."''',
+    jan("told", '''"We told the camp in the cell, you and I, or started to. But blood and tale is about what you did. It isn't about what was going on in your head while you did it. Nobody gets that part. I'm going to give it to you anyway, so sit still."''',
         c("Continue", "league")),
     jan("untold", '''"You were there. You saw me go. You've never asked me why, and everyone else has asked me nothing else for a year, so I'm going to tell you, and you're going to sit there and let me."''',
         c("Continue", "league")),
     jan("league", '''"Seelah talked us into it. Elan's ring for his Kiana, left in his travelling chest when the demons hit the Houndhearts' camp on the edge of the Wound. The League of the Inspiring Cart, riding out to find a ring. It was going to be a story. We were going to tell it in the Defender's Heart for years."
 "No glory without risk. That was Seelah's. I used to shout it louder than she did."''',
         c("Continue", "camp")),
-    jan("camp", '''"Then a quasit came out of Elan's chest, and Curl had the ring, and Elan swung at him and Seelah got in the way, and the quasit's colours put Elan and me face-down in the dirt. When I came round the camp was full of demons, and somebody was screaming who might have been me." {n}The bucket in the corner goes on filling.{/n}
+    jan("camp", '''"Then a quasit came out of Elan's chest with the ring, and its colours put Elan and me face-down in the dirt. When we came round we chased it all over that camp like children after a hen. And then Curl was just there, snatching the ring out of its paws and calling things up out of the ground, and Elan swung at him and Seelah got in the way, and somebody was screaming who might have been me." {n}The bucket in the corner goes on filling.{/n}
 "Everyone asks why I ran. I've been asking for a year. I've gone over it the way I'd go over a lost bout, stroke by stroke, looking for the moment I decided."''',
         c("Continue", "legs")),
     jan("legs", '''"There isn't one. I didn't decide. My legs decided, and I went with them, and I was two miles north through the scrub toward Numeria before I remembered I had a head."
@@ -186,7 +186,7 @@ meet(HOUNDHEART, "Houndheart", '"You\'re quiet today."', [
         c('"Deserters hang in most armies. You got a cage, and then me. Count yourself lucky."', "lucky", flags=(HH_LUCKY,)),
         c('"Next time your legs want to decide, look for me. I\'ll be standing where you can see me."', "stand", flags=(HH_STAND,))),
     jan("honest", '''"What I do next is true as well." {n}She tries it out, slowly, like a new sequence.{/n}
-"My master used to say a lost bout has two halves: the losing, and what you do with your sword afterwards. I've spent a year practising the first half. Over and over. I'm very good at it now."
+"A lost bout's got two halves, losing and what you do after. I've spent a year on the losing half. Over and over, every night, in the cage and the cell. I'm very good at it now."
 {n}She gets up and empties the bucket out through the bars into the gutter.{/n} "Time I learned the other half."''',
         c("[Leave her with the rain.]")),
     jan("lucky", '''{n}She laughs. It's the old laugh, the tavern laugh from Kenabres, and there is nothing in it at all.{/n}
@@ -383,7 +383,7 @@ meet(BLADE, "Forty-one", '"That isn\'t a practice sword."', [
 "I think that was the kind word."''',
         c("Continue", "scabbard")),
     jan("scabbard", '''{n}She turns the scabbard over and shows you the inside of its throat, where the leather is cut with tiny, neat notches.{/n}
-"Forty-one. One for every bout I fought in earnest. Tournaments, quarrels, the bandits on the river roads. I stopped counting at forty-one because counting started to feel like bragging, and my master said bragging is a feint you use on yourself."''',
+"Forty-one. One for every bout I fought in earnest. Tournaments, quarrels, the bandits on the river roads. I stopped counting at forty-one because I'd have kept going, and nobody can stand a girl who counts out loud. I know. I tried."''',
         c("Continue", "wrong_way", requires=(SCAR,)),
         c("Continue", "wrong_way", requires=(CAUGHT,)),
         c("Continue", "wrong_way", requires=(LIED,)),
@@ -493,7 +493,7 @@ meet(SPARRING, "Measure", '"The yard\'s empty this time of night."', [
     nar("close", '''{n}By the time the lantern starts to gutter you are both sweating in the cold and her hair has come down. She has stopped taking your sword. The last pass ends with the blunted blades crossed between you and her face a hand's breadth from yours, and neither of you steps back.{/n}''',
         c("Continue", "measure_line")),
     jan("measure_line", '''"This is inside measure." {n}She doesn't move.{/n} "This is where the forms say you finish something."
-"Not yet." {n}Her eyes go to your mouth and come back.{/n} "Not here, with a lantern and a pump. The old man used to say nothing worth doing is done where nobody can see it."''',
+"Not yet." {n}Her eyes go to your mouth and come back.{/n} "Not here, with a lantern and a pump. I want people to see it. I want the whole yard to see it, and gossip, and be jealous."''',
         c('"Then I\'ll wait for a better audience."', "wait"),
         c("[Close the hand's breadth.]", "kissed", flags=(SPAR_KISSED,))),
     jan("wait", '''"You'd better." {n}She steps back out of measure, very deliberately, the way you'd step back from a drop.{/n}
@@ -590,7 +590,7 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
         c('"Yes."', "yes"),
         c('"Not you."', "not_you")),
     jan("yes", '''"Good." {n}She sets the cup down.{/n}
-"No, I mean it. Good. At least you'd know my name when you did it, and you told me first. The old man in Mivon used to say the only opponent you can't forgive is the one who pretends they aren't one."''',
+"No, I mean it. Good. At least you'd know my name when you did it, and you told me first. I can fight somebody who tells me first. It's the smiling ones I can't stand."''',
         c("[Drink the gaol's terrible beer with her.]")),
     jan("not_you", '''"Liar." {n}But she is almost smiling.{/n}
 "You'd spend me in a heartbeat if the crusade needed it, and then you'd go over it every night for the rest of your life. That's what I'll settle for, Commander. Being gone over."''',
@@ -614,7 +614,7 @@ visit(RIDE, "The Houndhearts' camp", [
     nar("camp", '''{n}There is nothing left of the Houndhearts' camp. Wind and weather have taken the tents and the broken chests, and the scrub has grown back over the trampled ground. On a leaning pole at its edge hangs a strip of cloth that was a banner once, the Houndhearts' hound bleached almost to nothing.{/n}''',
         c("Continue", "here")),
     jan("here", '''"Here." {n}She stops in the middle of nowhere in particular.{/n}
-"Elan's chest was here. The tents there. Curl there, where Seelah stood between him and Elan's sword. I was here, with my face in the dirt." {n}She turns, slowly, until she is facing north, toward Numeria.{/n} "And that's where my legs went."''',
+"Elan's chest was here. The runes there, where we chased the quasit. Curl there, where Seelah stood between him and Elan's sword. I was here." {n}She turns, slowly, until she is facing north, toward Numeria.{/n} "And that's where my legs went."''',
         c("[Stand beside her.]", "beside", flags=(RIDE_BESIDE,)),
         c("[Go back to the horses and leave her to it.]", "horses"),
         c('"You don\'t have to do this."', "dont")),
@@ -803,8 +803,8 @@ meet(CURL, "The fourth of the League", '"You never talk about Curl."', [
     jan("start", '''"No. I don't." {n}She doesn't take her eyes off the tankard.{/n}
 "Curl was the one I liked best, at first. A halfling thief with red hair and a laugh like a dropped tray, who'd stolen from everyone in Kenabres and paid most of them back. He said he wasn't cut out for war. He said he didn't want to die. I thought that was the most honest thing anybody in that city had said all year."''',
         c("Continue", "camp")),
-    jan("camp", '''"At Houndheart Curl wasn't Curl. He snatched Elan's ring out of the chest, and Elan called him a traitor and swung at him, and Seelah threw herself in the way and said they'd bewitched him." {n}She turns her hands over and looks at the palms.{/n}
-"Then the quasit's colours had me face-down by the chest. I could see Curl's boots. I've gone over it a hundred times. Whether I saw his face change before I ran."''',
+    jan("camp", '''"At Houndheart Curl wasn't Curl. He came out of nowhere and snatched Elan's ring out of the quasit's paws, and called things up out of the ground, and Elan called him a traitor and swung at him, and Seelah threw herself in the way and said they'd bewitched him." {n}She turns her hands over and looks at the palms.{/n}
+"I was across the camp from him. I could see his face. I've gone over it a hundred times. Whether I saw his face change before I ran."''',
         c('"Did you?"', "did"),
         c('"It wouldn\'t matter if you had."', "matter")),
     jan("did", '''"I don't know." {n}She says it the way a fencer admits a touch she can't feel yet.{/n}
