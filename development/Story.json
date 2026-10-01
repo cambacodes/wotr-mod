@@ -210010,8 +210010,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -424875,12 +424875,44 @@
               "Next": "cairn",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "price",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.cost.late"
+              ],
               "Forbids": [],
               "Abort": false
             }
           ],
           "Portrait": "",
           "SpeakerUnit": "cb29621d99b902e4da6f5d232352fbda"
+        },
+        {
+          "Id": "price",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody bought this. There was no plan and no bargain: an hour ago she was trying to tear Lann's throat out for Savamelekh, and now you are on your knees in his hall choosing to bury her breathing. There is a price for deciding it here, now, with nothing prepared, and you pay it in front of everyone.{/n}\n{n}Your crusaders wait at the door of his house, in the Abyss, with the Wound's sky burning over them, while their Commander builds a cairn for the traitor who tried to kill one of their own. Every one of them will tell it in every camp from here to Drezen. Not one of them will tell it kindly.{/n}",
+          "Choices": [
+            {
+              "Text": "[Build it anyway.]",
+              "Next": "cairn",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -100
+              }
+            }
+          ],
+          "Portrait": ""
         },
         {
           "Id": "knows",
@@ -425020,6 +425052,12 @@
       ],
       "Remote": true,
       "Kind": "event",
+      "RequiresAnyGroups": [
+        [
+          "wenduag.trickster.bought",
+          "trickster"
+        ]
+      ],
       "TricksterDevice": true,
       "TricksterState": "abyss"
     },
@@ -425474,7 +425512,7 @@
               "Check": {
                 "Skill": "CheckBluff",
                 "DC": 26,
-                "Success": "yields",
+                "Success": "yields_late",
                 "Failure": "pull_rank_hard"
               }
             }
@@ -425496,8 +425534,28 @@
               "Check": {
                 "Skill": "CheckBluff",
                 "DC": 26,
-                "Success": "yields",
+                "Success": "yields_late",
                 "Failure": "pull_rank_hard"
+              }
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "yields_late",
+          "Speaker": "Sergeant Brask",
+          "Text": "{n}Brask looks at your face, and at hers, and puts his knife away. He does not like it.{/n} \"Your kill, Commander.\" {n}He spits on the stones a hand's breadth from her head.{/n}\n{n}Nobody bought this; she was trying to kill you an hour ago, and you are claiming her body from your own watch with nothing prepared. That has a price, and you pay it on the spot: a cask for the gate, three days' leave for the men who saw, and your word, in front of half the lower town, that the Commander will answer for the traitor's grave. Before noon every barracks in Drezen knows what the Commander bought this morning, and for whom.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "catacomb",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Favors",
+                "Amount": -50
               }
             }
           ],
@@ -425718,6 +425776,12 @@
       ],
       "Remote": true,
       "Kind": "event",
+      "RequiresAnyGroups": [
+        [
+          "wenduag.trickster.bought",
+          "trickster"
+        ]
+      ],
       "TricksterDevice": true,
       "TricksterState": "street"
     },
@@ -426578,7 +426642,7 @@
         {
           "Id": "stain",
           "Speaker": "Narrator",
-          "Text": "{n}She looks.{/n}\n{n}She doesn't look. She laughs, low, delighted, right against your ear.{/n} \"The stain on the cuff. Hosilla tried that on me when I was seven. I took two of her fingers for it.\"\n{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since she came back from the dark you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers, every night, against exactly this. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}",
+          "Text": "{n}She looks.{/n}\n{n}She doesn't look. She laughs, low, delighted, right against your ear.{/n} \"The stain on the cuff. Hosilla tried that on me when I was seven. I took two of her fingers for it.\"\n{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since your first night in this citadel you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers; Commanders who sleep without one do not stay Commanders long. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427236,7 +427300,7 @@
         {
           "Id": "after_given",
           "Speaker": "Wenduag",
-          "Text": "{n}She comes back before midnight, with his blood under her nails and his last button in her fist, and drops it on your table.{/n}\n\"You gave him to me.\" {n}She sits on the table beside it.{/n} \"You didn't pretend it was justice. You didn't tell me to be merciful. You just gave him to me, because I wanted him.\" {n}She looks at you.{/n} \"That's how I know. Nobody ever gave me anything I wanted before. They gave me what they thought I should have. Scraps. Orders. Stones.\" {n}She reaches out and puts her hand flat on your chest, over the heart, and presses, the way she pressed her knee there in the dark.{/n} \"Now you're mine. I'm not asking.\"",
+          "Text": "{n}She comes back before midnight, with his blood under her nails and his last button in her fist, and drops it on your table.{/n}\n\"You gave him to me.\" {n}She sits on the table beside it.{/n} \"You didn't pretend it was justice. You didn't tell me to be merciful. You just gave him to me, because I wanted him.\" {n}She looks at you.{/n} \"That's how I know. Savamelekh fed me too, in the Maze. Good meat, more than the tribe ever gave me, and I was glad of it. But he fed me so I'd be his: every bite had his poison on it and a hook in it.\" {n}She rolls the button between her fingers.{/n} \"You gave me one of yours and didn't tell me what to do with him. No hook. That's either very stupid or very strong.\" {n}She reaches out and puts her hand flat on your chest, over the heart, and presses, the way she pressed her knee there in the dark.{/n} \"Now you're mine. I'm not asking.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427354,7 +427418,8 @@
         "wenduag.trickster.court.claim",
         "wenduag.trickster.native",
         "wenduag.closed",
-        "wenduag.committed"
+        "wenduag.committed",
+        "wenduag.in_party"
       ],
       "DelayHours": 24,
       "Optional": false,
@@ -427368,6 +427433,292 @@
         "2570015799edf594daf2f076f2f975d8"
       ],
       "Sender": "Wenduag"
+    },
+    {
+      "Id": "wenduag.trickster.court.claim_in_person",
+      "Title": "What she caught",
+      "Owner": "Wenduag",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "\"You look pleased with yourself.\"",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "conversant",
+          "Text": "{n}She does not answer. She jerks her head toward the stair to your quarters and walks, and you follow her up, and when she opens your door something heavy lies on the floor inside, bound hand and foot, and grunts.{/n}\n{n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}\n{n}Wenduag steps in over him and shuts the door with her heel.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "her",
+          "Speaker": "conversant",
+          "Text": "\"I caught him on the wall walk behind the south gate. Alone, for once. He was brushing his coat.\" {n}She pushes back her hood. She is flushed and bright-eyed and very pleased with herself, and there is a scratch down one cheek that she has not bothered to wipe.{/n} \"He fought. Not well. I didn't hurt him much. I wanted him to be able to see.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "why_knows",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.brask_knows"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "wenduag.trickster.brask_knows"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "why_knows",
+          "Speaker": "conversant",
+          "Text": "\"He's been telling people he saw me breathing in the street. The captain laughed at him. The next one might not.\" {n}She nudges Brask with her toe, not hard, the way you nudge a sleeping dog.{/n} \"So he's your problem too. But that's not why I brought him.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "why",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "why",
+          "Speaker": "conversant",
+          "Text": "{n}She crouches beside him, easy on her heels, and looks up at you across his body.{/n}\n\"In the tunnels, when a hunter wants somebody, she doesn't bring them flowers. What would you do with flowers, underground? She brings them what she caught. The best thing she caught. And she puts it at their feet, and she waits to see what they do with it.\" {n}She puts a hand flat on Brask's heaving back.{/n} \"If they eat it, they're hers. If they give it back to her, they're hers. If they kick it away, well.\" {n}She shrugs.{/n} \"Then she knows.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "want",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "want",
+          "Speaker": "conversant",
+          "Text": "\"He called me mongrel bitch at your gate. He laughed at me with his men. He'd have put my head on a pole and brushed his coat under it.\" {n}Her voice is very steady.{/n} \"And he's yours. One of your soldiers, in your city, under your law.\" {n}She stands.{/n} \"So he's the best thing I could catch. Something of mine, that's also something of yours.\" {n}She folds her arms and waits.{/n} \"Well. There he is.\"",
+          "Choices": [
+            {
+              "Text": "[Nudge him toward her with your boot.] \"He's yours.\"",
+              "Next": "given",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Pull out his gag.] \"On your knees, sergeant. Ask her pardon. Use her name.\"",
+              "Next": "knelt",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Take her knife off her belt, and do it yourself.]",
+              "Next": "struck",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Cut his bonds and set him on his feet.] \"Get up, sergeant. Back to your gate.\"",
+              "Next": "no",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "given",
+          "Speaker": "conversant",
+          "Text": "{n}She looks at you for a moment, very still. Then she smiles, slow and wide, until every one of her teeth is showing.{/n}\n\"Mine.\" {n}She hauls Brask up by the back of his collar, one-handed, as if he weighed nothing, and he makes a thin noise through his gag.{/n} \"Don't worry, sergeant. I'm not going to kill you. Dead men forget. I want you to remember.\" {n}She drags him to the door and out, and it swings shut behind them.{/n}\n{n}Whatever happens on the wall walk behind the south gate that night, the watch does not hear it, or says it did not. In the morning Brask is in the infirmary with two fingers of his sword hand broken and every button cut off his shirt, and he tells the chaplain he fell down the stairs, and he never, afterwards, says the word *mongrel* in anyone's hearing again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after_given",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "after_given",
+          "Speaker": "conversant",
+          "Text": "{n}She comes back before midnight, with his blood under her nails and his last button in her fist, and drops it on your table.{/n}\n\"You gave him to me.\" {n}She sits on the table beside it.{/n} \"You didn't pretend it was justice. You didn't tell me to be merciful. You just gave him to me, because I wanted him.\" {n}She looks at you.{/n} \"That's how I know. Savamelekh fed me too, in the Maze. Good meat, more than the tribe ever gave me, and I was glad of it. But he fed me so I'd be his: every bite had his poison on it and a hook in it.\" {n}She rolls the button between her fingers.{/n} \"You gave me one of yours and didn't tell me what to do with him. No hook. That's either very stupid or very strong.\" {n}She reaches out and puts her hand flat on your chest, over the heart, and presses, the way she pressed her knee there in the dark.{/n} \"Now you're mine. I'm not asking.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.committed",
+                "wenduag.started",
+                "wenduag.trickster.claim.given"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "knelt",
+          "Speaker": "Sergeant Brask",
+          "Text": "{n}Brask spits out the rag and draws breath to shout, and sees your face, and does not. He gets his knees under him, awkwardly, with his hands still tied behind his back, and kneels there in his shirt on your floor with his nose dripping.{/n}\n\"I...\" {n}He swallows.{/n} \"I ask your pardon. Wenduag.\" {n}He looks at you.{/n} \"Of Neathholm.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after_knelt",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "after_knelt",
+          "Speaker": "conversant",
+          "Text": "{n}She stares down at him. Then she begins to laugh, a helpless, whooping laugh that doubles her over and makes her hold on to the wall.{/n}\n\"Of Neathholm!\" {n}She wipes her eyes.{/n} \"Oh, that's worse than killing him. That's so much worse. He'll have to live with having said it.\" {n}She hauls him up by the collar and throws him out of the door, still tied, and you hear him go down the stairs on his knees.{/n}\n{n}Then she turns to you, still grinning, with tears of laughter on her face.{/n} \"You made him say my name. The whole name.\" {n}She comes close.{/n} \"Nobody on the surface ever says it right. They say *the mongrel*, or *the Commander's dog*. You made one of them say it on his knees.\" {n}She takes your face in both hands, rough, and looks at it as if she had caught it.{/n} \"You're mine now. I'm not asking.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.committed",
+                "wenduag.started",
+                "wenduag.trickster.claim.knelt"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "struck",
+          "Speaker": "Narrator",
+          "Text": "{n}She lets you take it. She watches you do it with her lips parted.{/n}\n{n}You pull Brask's head back by the hair, and lay the flat of her knife along his cheek so that he can feel the cold of it, and then turn it and draw the point once across the back of his hand, the one he points with, where everyone who salutes him will see the line every day of his life. Not deep. Deep enough.{/n}\n{n}Then you cut his bonds with the same knife, and open the door, and he goes, without a word, clutching his hand.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "after_struck",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "after_struck",
+          "Speaker": "conversant",
+          "Text": "{n}She takes her knife back from you, and looks at the blood on it, and wipes it, slowly, on her own sleeve.{/n}\n\"You did it yourself. Again.\" {n}Her voice is thick.{/n} \"With my knife. In front of me.\" {n}She sheathes it, and puts her hand over the hilt, as if it were warm.{/n} \"In the caves, when a chief takes a hunter's kill and finishes it with the hunter's own blade, it means: *what's yours is mine, and what's mine is yours, and anybody who touches either answers to both*.\" {n}She steps close, very close, and puts her teeth, not gently, against the side of your neck, and then takes them away.{/n} \"You didn't know that. You did it anyway. You're mine now. I'm not asking.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.committed",
+                "wenduag.started",
+                "wenduag.trickster.claim.struck"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "no",
+          "Speaker": "conversant",
+          "Text": "{n}Brask scrambles up, rubbing his wrists, and does not wait to be told twice. The door bangs behind him.{/n}\n{n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}\n\"Back to your gate.\" {n}She repeats it slowly.{/n} \"I brought you the best thing I could catch, and you let it go.\" {n}She is not angry. That is the worst of it.{/n} \"Then you're not mine. And I'm not yours. That's what it means, where I come from. That's all it means.\" {n}She pulls her hood up.{/n} \"I'll still fight your war. I'm not stupid. But don't come down the cellar stair any more, {mf|master|mistress}. The neathers won't let you through.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "wenduag.trickster.with_you",
+        "wenduag.in_party",
+        "wenduag.trickster.proved",
+        "wenduag.trickster.gate_seen"
+      ],
+      "Forbids": [
+        "wenduag.trickster.native",
+        "wenduag.closed",
+        "wenduag.committed",
+        "wenduag.trickster.court.claim_in_person"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "wenduag",
+      "Chapters": [
+        5
+      ],
+      "AnswerLists": [
+        "ced27e744d2dded40bbb5adf17816dbb",
+        "9bad7ea452d30254997b153473954cc1",
+        "b14654863485b734aa0fb5ec16d2846a"
+      ],
+      "ReturnToList": true,
+      "ReturnText": "{n}Wenduag is sitting on your map table, eating, as if nothing at all had happened tonight.{/n}"
     },
     {
       "Id": "wenduag.trickster.court.cairn",
@@ -427919,7 +428270,7 @@
         {
           "Id": "hunt",
           "Speaker": "Wenduag",
-          "Text": "{n}Her face lights up like a child's.{/n} \"Nobody dies.\" {n}She says it the way she said it at the gate, like the terms of a bad bargain she has every intention of enjoying.{/n} \"You're no fun. But all right. Nobody dies.\" {n}She slides off the parapet.{/n} \"She'll hear me coming, though. Every night, somewhere in the dark, just behind her. She'll never see me. She'll never know when. And one night she'll turn round and I'll be there, and I'll say *boo*.\" {n}Her grin is terrible.{/n} \"And that'll be my promise kept.\"",
+          "Text": "{n}Her face lights up like a child's.{/n} \"Nobody dies.\" {n}She says it the way she said it at the gate, like the terms of a bad bargain she has every intention of enjoying.{/n} \"You're no fun. But all right. Nobody dies.\" {n}She slides off the parapet.{/n} \"She'll hear me coming, though. Every night, somewhere in the dark, just behind her. A hare's head on her pillow. My knife in her door. Her own scent on my hands when I pass her in the hall. She'll never see me. She'll never know when.\" {n}Her grin is terrible.{/n} \"And one night she'll turn round and I'll be close enough to bite, and I'll let her feel my teeth on her throat, and I'll let her live. That's the scream I promised. The fun ones are the ones they remember.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427938,7 +428289,8 @@
       "Requires": [
         "trickster.ever",
         "wenduag.trickster.with_you",
-        "wenduag.trickster.court.claim"
+        "wenduag.trickster.gate_seen",
+        "vellexia.trickster.in_person"
       ],
       "Forbids": [
         "wenduag.trickster.court.vellexia",
@@ -427953,12 +428305,6 @@
       ],
       "Remote": true,
       "Kind": "visit",
-      "RequiresAnyGroups": [
-        [
-          "wenduag.vellexia_conflict",
-          "vellexia.trickster.in_person"
-        ]
-      ],
       "Areas": [
         "2570015799edf594daf2f076f2f975d8"
       ],
@@ -428124,7 +428470,7 @@
       "Requires": [
         "trickster.ever",
         "wenduag.trickster.with_you",
-        "wenduag.trickster.court.claim"
+        "wenduag.trickster.gate_seen"
       ],
       "Forbids": [
         "wenduag.trickster.court.yaniel",
@@ -428476,6 +428822,10 @@
               "Alignment": {
                 "Direction": "Good",
                 "Value": 1
+              },
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -100
               }
             }
           ],
@@ -428947,7 +429297,6 @@
       "Requires": [
         "trickster.ever",
         "wenduag.trickster.with_you",
-        "wenduag.trickster.court.claim",
         "wenduag.committed"
       ],
       "Forbids": [
@@ -429139,6 +429488,22 @@
               "Text": "{n}Two of the little ones in the cellars caught the cough that winter. The Commander went down and looked at them, every time she said to, and one of them lived. She counted that as a draw.{/n}",
               "Requires": [
                 "wenduag.trickster.neathers.forbidden"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The succubus in the citadel learned to sleep with a lamp lit and her back to a wall. Hare's heads on her pillow, a knife in her door, and one night teeth at her throat in a dark corridor, and a laugh, and nothing else. She never found out whose. Wenduag said it was the best promise she ever kept.{/n}",
+              "Requires": [
+                "wenduag.trickster.vellexia.hunted"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Wenduag left the succubus alone under the Commander's roof, as she had said she would, and passed her in the halls every day of the war without a word, and sniffed, every time, loudly.{/n}",
+              "Requires": [
+                "wenduag.trickster.vellexia.left"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -433509,8 +433874,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

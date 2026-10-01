@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-wenduag\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4191,
-  "unique_targets": 895,
+  "binding_uses": 4194,
+  "unique_targets": 896,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1925,6 +1925,10 @@
     "d84337e5fbe54c1428ac6cdf3f6603ec": {
       "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q3The Last Resort/WenduagHelloAgain/Cue_0033.jbp",
       "type": "BlueprintCue"
+    },
+    "b14654863485b734aa0fb5ec16d2846a": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q3The Last Resort/WenduDubious_Companion/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
     },
     "5db28e499fd812848b92d6ac7b26e234": {
       "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",

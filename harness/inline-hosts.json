@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 992,
-  "resolved": 992,
-  "inlineOnlyScenes": 255,
-  "inlineOnlyResolved": 255,
-  "answerListScenesWithoutContact": 578,
-  "answerListScenesWithoutContactResolved": 578,
-  "lists": 104,
-  "listsWithReachableHost": 103
+  "entryTargetScenes": 993,
+  "resolved": 993,
+  "inlineOnlyScenes": 256,
+  "inlineOnlyResolved": 256,
+  "answerListScenesWithoutContact": 579,
+  "answerListScenesWithoutContactResolved": 579,
+  "lists": 105,
+  "listsWithReachableHost": 104
  },
  "scenes": {
   "a_crossing": {
@@ -18940,6 +18940,29 @@
     "clicks": 0
    }
   },
+  "wenduag.trickster.court.claim_in_person": {
+   "kind": "return-to-list",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb",
+    "9bad7ea452d30254997b153473954cc1",
+    "b14654863485b734aa0fb5ec16d2846a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.wenduag.trickster.court.claim_in_person.ced27e744d2dded40bbb5adf17816dbb",
+    "9bad7ea452d30254997b153473954cc1": "RRT_entry.wenduag.trickster.court.claim_in_person.9bad7ea452d30254997b153473954cc1",
+    "b14654863485b734aa0fb5ec16d2846a": "RRT_entry.wenduag.trickster.court.claim_in_person.b14654863485b734aa0fb5ec16d2846a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "wenduag.trickster.crystal.bid": {
    "kind": "return-cue",
    "lists": [
@@ -24512,6 +24535,46 @@
       "9fb122d392ebbb249bbc227e3b012788": 1,
       "f725329c0103c7a4682e87ab115d3a55": 1,
       "f8c022f9197b15646b72b01cdbad5c49": 1
+     }
+    }
+   ]
+  },
+  "b14654863485b734aa0fb5ec16d2846a": {
+   "list": "b14654863485b734aa0fb5ec16d2846a",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "5ccbb7fd54aac8e4f8893841ff93fba7",
+     "dialogName": "WenduDubious_Companion_dialogue",
+     "cues": [
+      "db59cc50e760ae74baf3f9d4a51f1e7f",
+      "9b41495fe4c35a84f92b953aab90069d",
+      "d2df59c40895d5d4496edeb0852481b8",
+      "7f0107bd894462849830f4ac3d8e18d4",
+      "607e8ed0970b1e041bb8455b134846ab",
+      "48e16a2b03fc0b449ae2bc3d6298a9e0",
+      "53d5696398a6f244c95197047bf57a2c"
+     ],
+     "cueNames": [
+      "Cue_0021",
+      "Cue_0002",
+      "Cue_0015",
+      "Cue_0016",
+      "Cue_0017",
+      "Cue_0018",
+      "Cue_0020"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "1bc6e007ba11ad64eb79fcadeff07915": 1,
+      "1e3c2b48ebc7ae546aff2fce586ef2b7": 1,
+      "2c77c9f46195ebd428dd8dcfbf0b3c6b": 1,
+      "6158d28a56bbf1a4b87cd65e3726979b": 1,
+      "9ed72cb9889902a46b9269d1ff3b2031": 2,
+      "bc05853e3b46a7941ba783f9b42f2e56": 1
      }
     }
    ]

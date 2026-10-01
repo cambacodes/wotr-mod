@@ -658,7 +658,11 @@ page(W + "abyss.fall", "The best of his daughters", [
           check=dict(Skill="CheckBluff", DC=26, Success="alone", Failure="knows"))),
     lann("alone", '''{n}Lann looks down at her. His mouth works.{/n}
 "I never wanted it to be me," he says, to nobody. "Mama said one day she'd push somebody too far. I always thought it would be you." {n}He wipes his hands on his coat, carefully, all the way to the wrists, and goes to see to the others, and does not look back.{/n}''',
-        c("Continue", "cairn")),
+        c("Continue", "cairn", forbids=(LATE,)),
+        c("Continue", "price", requires=(LATE,))),
+    nar("price", '''{n}Nobody bought this. There was no plan and no bargain: an hour ago she was trying to tear Lann's throat out for Savamelekh, and now you are on your knees in his hall choosing to bury her breathing. There is a price for deciding it here, now, with nothing prepared, and you pay it in front of everyone.{/n}
+{n}Your crusaders wait at the door of his house, in the Abyss, with the Wound's sky burning over them, while their Commander builds a cairn for the traitor who tried to kill one of their own. Every one of them will tell it in every camp from here to Drezen. Not one of them will tell it kindly.{/n}''',
+        c("[Build it anyway.]", "cairn", crusade=("Favors", -100))),
     lann("knows", '''{n}Lann looks from your face to hers, and you watch him understand. It happens slowly, the way ice goes on a pond.{/n}
 "She's breathing." {n}His voice is flat.{/n} "You were going to let me think I'd killed her." {n}His hand goes to his knife, and stays there, and does not draw it.{/n} "She tried to rip my throat out, Commander. Just now. You saw." {n}He stares at you. Then he takes his hand off the knife.{/n} "Do what you want. You always do." {n}He walks away. He does not look back either, but it is a different kind of not looking.{/n}''',
         c("Continue", "cairn_known")),
@@ -670,6 +674,7 @@ page(W + "abyss.fall", "The best of his daughters", [
 {n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it. Let him stop sending for her.{/n}''',
         *cairn_close((LANN_KNOWS,))),
 ], requires=("trickster.ever", DEAD, FELL), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4,), kind="event", areas=(),
+    RequiresAnyGroups=[[BOUGHT, "trickster"]],   # an unprepared rescue is a live Trickster act (ledger R2-2)
     **device("abyss"))
 
 # The abyss cairn records the cairn and the cost. A known Lann was not lied to: his cost is what he watched you do.
@@ -746,11 +751,14 @@ page(W + "street.fall", "The traitor in the street", [
     n("brask_sees", "Sergeant Brask", '''{n}You see nothing, only blood. Then boots crunch on the stones beside you and the sergeant of the south gate squats down with a grunt: a big man with a red neck and a new coat, spattered to the elbows.{/n}
 "Well, would you look at that." {n}He points with his dagger at the corner of her mouth, where a bubble of blood swells and shrinks.{/n} "Still breathing, the bitch. Tough as old boots, these mongrels." {n}He shifts his grip on the dagger.{/n} "Want me to finish her, Commander? Traitor's head goes on a pole over the south gate. That's the law. I'd take it kindly if I could be the one to put it there."''',
         c('"That\'s the death rattle, sergeant. Put your knife away. Her people bury their own, and I\'ll do it myself."',
-          check=dict(Skill="CheckBluff", DC=26, Success="yields", Failure="pull_rank_hard"))),
+          check=dict(Skill="CheckBluff", DC=26, Success="yields_late", Failure="pull_rank_hard"))),
     n("brask_late", "Sergeant Brask", '''{n}Boots crunch on the stones behind you. The sergeant of the south gate comes picking his way through the bodies: a big man with a red neck and a new coat, spattered to the elbows. He looks down at her with enormous satisfaction.{/n}
 "Traitor's head goes on a pole over the south gate, Commander. That's the law. I'd take it kindly if I could be the one to put it there. I told them all she'd turn."''',
         c('"She\'s mine. My kill, my traitor. Her people bury their own under stones, and I\'ll do it myself. Nobody touches her."',
-          check=dict(Skill="CheckBluff", DC=26, Success="yields", Failure="pull_rank_hard"))),
+          check=dict(Skill="CheckBluff", DC=26, Success="yields_late", Failure="pull_rank_hard"))),
+    n("yields_late", "Sergeant Brask", '''{n}Brask looks at your face, and at hers, and puts his knife away. He does not like it.{/n} "Your kill, Commander." {n}He spits on the stones a hand's breadth from her head.{/n}
+{n}Nobody bought this; she was trying to kill you an hour ago, and you are claiming her body from your own watch with nothing prepared. That has a price, and you pay it on the spot: a cask for the gate, three days' leave for the men who saw, and your word, in front of half the lower town, that the Commander will answer for the traitor's grave. Before noon every barracks in Drezen knows what the Commander bought this morning, and for whom.{/n}''',
+        c("Continue", "catacomb", crusade=("Favors", -50))),
     n("yields", "Sergeant Brask", '''{n}Brask opens his mouth, and looks at your face, and shuts it.{/n} "Your kill, Commander." {n}He does not like it. He steps back and spits on the stones, a hand's breadth from her head.{/n} "As you say. Mongrels bury mongrels."''',
         c("Continue", "catacomb")),
     n("yields_lann", "Sergeant Brask", '''{n}Brask opens his mouth, and looks at your face, and shuts it.{/n} "Your kill, Commander." {n}He steps back and spits on the stones.{/n}
@@ -775,6 +783,7 @@ page(W + "street.fall", "The traitor in the street", [
 {n}You build it in an empty niche at the bottom of the oldest stair: flat stones set on edge, the head end packed loose, her knife closed into her right hand. Lann does not come. Lann is somewhere up in the citadel, grieving for a woman who is breathing under your hands.{/n}''',
         *cairn_close((LIED,))),
 ], requires=("trickster.ever", KICKED, DEAD, STREET), forbids=(STREET_CAIRN,), delay=2, chapters=(5,), kind="event",
+    RequiresAnyGroups=[[BOUGHT, "trickster"]],   # an unprepared rescue is a live Trickster act (ledger R2-2)
     areas=(), **device("street"))
 
 for _node in SCENES[-1]["Nodes"]:

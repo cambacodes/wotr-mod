@@ -13,6 +13,8 @@ the citadel, where the strong one decides.
 
 Must acknowledge (from her side, in her voice, no pair scene): Lann (wenduag_trickster), Yaniel, Savamelekh, Vellexia.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 from storylines.wenduag_trickster import (ABYSS_CAIRN, BARE, BOTH, BOUGHT, BRASK_KNOWS, BRASK_MET, CAIRN, CLOSED, COMMITTED,
                                           DEEP, DREZEN, GATE_SEEN, IN_PARTY, KILLED, LANN_GONE, LANN_HUB, LANN_IN, LANN_KNOWS,
@@ -82,7 +84,7 @@ visit(W + "court.trial", "Weak things die in their sleep", [
         c("Continue", flags=(PROVED, WON, STARTED))),
     nar("stain", '''{n}She looks.{/n}
 {n}She doesn't look. She laughs, low, delighted, right against your ear.{/n} "The stain on the cuff. Hosilla tried that on me when I was seven. I took two of her fingers for it."
-{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since she came back from the dark you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers, every night, against exactly this. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}''',
+{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since your first night in this citadel you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers; Commanders who sleep without one do not stay Commanders long. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}''',
         c("Continue", "stain_her")),
     wd("stain_her", '''"...Cheat." {n}She goes very still on top of you, with her knife at your throat and yours under her heart. Her eyes are wide.{/n} "You said the stupid thing so I'd laugh at it." {n}And then she is grinning, all her teeth.{/n} "Filthy, clever cheat. You knew I'd know it. You wanted me to know it." {n}She laughs, and the laugh pushes her chest against your point, and she does not seem to care.{/n} "Hosilla would say that's not a fight. Hosilla is dead. Fighting is the meaning of life, {mf|master|mistress}. Cheating is how you win it."''',
         c("[Put your dagger back under the maps.]", flags=(PROVED, TRICKED, STARTED))),
@@ -191,7 +193,7 @@ visit(W + "court.claim", "What she caught", [
 {n}Whatever happens on the wall walk behind the south gate that night, the watch does not hear it, or says it did not. In the morning Brask is in the infirmary with two fingers of his sword hand broken and every button cut off his shirt, and he tells the chaplain he fell down the stairs, and he never, afterwards, says the word *mongrel* in anyone's hearing again.{/n}''',
         c("Continue", "after_given")),
     wd("after_given", '''{n}She comes back before midnight, with his blood under her nails and his last button in her fist, and drops it on your table.{/n}
-"You gave him to me." {n}She sits on the table beside it.{/n} "You didn't pretend it was justice. You didn't tell me to be merciful. You just gave him to me, because I wanted him." {n}She looks at you.{/n} "That's how I know. Nobody ever gave me anything I wanted before. They gave me what they thought I should have. Scraps. Orders. Stones." {n}She reaches out and puts her hand flat on your chest, over the heart, and presses, the way she pressed her knee there in the dark.{/n} "Now you're mine. I'm not asking."''',
+"You gave him to me." {n}She sits on the table beside it.{/n} "You didn't pretend it was justice. You didn't tell me to be merciful. You just gave him to me, because I wanted him." {n}She looks at you.{/n} "That's how I know. Savamelekh fed me too, in the Maze. Good meat, more than the tribe ever gave me, and I was glad of it. But he fed me so I'd be his: every bite had his poison on it and a hook in it." {n}She rolls the button between her fingers.{/n} "You gave me one of yours and didn't tell me what to do with him. No hook. That's either very stupid or very strong." {n}She reaches out and puts her hand flat on your chest, over the heart, and presses, the way she pressed her knee there in the dark.{/n} "Now you're mine. I'm not asking."''',
         c("Continue", flags=YES + (GIVEN,))),
     n("knelt", "Sergeant Brask", '''{n}Brask spits out the rag and draws breath to shout, and sees your face, and does not. He gets his knees under him, awkwardly, with his hands still tied behind his back, and kneels there in his shirt on your floor with his nose dripping.{/n}
 "I..." {n}He swallows.{/n} "I ask your pardon. Wenduag." {n}He looks at you.{/n} "Of Neathholm."''',
@@ -211,7 +213,31 @@ visit(W + "court.claim", "What she caught", [
 {n}Wenduag has not moved. She is looking at you as if you had turned into a stranger in front of her eyes.{/n}
 "Back to your gate." {n}She repeats it slowly.{/n} "I brought you the best thing I could catch, and you let it go." {n}She is not angry. That is the worst of it.{/n} "Then you're not mine. And I'm not yours. That's what it means, where I come from. That's all it means." {n}She pulls her hood up.{/n} "I'll still fight your war. I'm not stupid. But don't come down the cellar stair any more, {mf|master|mistress}. The neathers won't let you through."''',
         c("Continue", flags=(CLOSED,))),
-], requires=(PROVED, GATE_SEEN), forbids=(COMMITTED,), delay=24)
+], requires=(PROVED, GATE_SEEN), forbids=(COMMITTED, IN_PARTY), delay=24)
+
+# Kept at the Commander's side, she is a living companion: the claim is played in person, on her own native list (R2-3).
+# The twin opens on the walk to the Commander's quarters; the rest is the same scene. Mutually exclusive by IN_PARTY.
+HUB_LISTS = ["ced27e744d2dded40bbb5adf17816dbb",    # CompanionDialogues/Wenduag/AnswersList_0003 (W path)
+             "9bad7ea452d30254997b153473954cc1",    # WenduagTraitorCompanion/AnswersList_0003 (L path, recruited)
+             "b14654863485b734aa0fb5ec16d2846a"]    # WenduDubious_Companion/AnswersList_0003 (redeemed, recruited at Lann's Q3)
+_claim = copy.deepcopy(SCENES[-1])
+_claim["Id"] = W + "court.claim_in_person"
+_claim["Entry"] = '"You look pleased with yourself."'
+_claim.pop("Remote", None); _claim.pop("Kind", None); _claim.pop("Areas", None)
+_claim["Requires"] = ["trickster.ever", WITH_YOU, IN_PARTY, PROVED, GATE_SEEN]
+_claim["Forbids"] = [NATIVE, CLOSED, COMMITTED, _claim["Id"]]
+_claim["AnswerLists"] = HUB_LISTS
+_claim["ReturnToList"] = True
+_claim["ReturnText"] = "{n}Wenduag is sitting on your map table, eating, as if nothing at all had happened tonight.{/n}"
+_claim["Nodes"][0] = n("start", "conversant", '''{n}She does not answer. She jerks her head toward the stair to your quarters and walks, and you follow her up, and when she opens your door something heavy lies on the floor inside, bound hand and foot, and grunts.{/n}
+{n}It is Sergeant Brask. His wrists are tied behind him with his own belt and his ankles with a strip torn from his own coat, and the gag in his mouth is, unless you are mistaken, also a piece of his own coat. The rest of the coat is gone. His nose is bleeding. His eyes are enormous.{/n}
+{n}Wenduag steps in over him and shuts the door with her heel.{/n}''', c("Continue", "her"))
+for _node in _claim["Nodes"][1:]:
+    if _node["Speaker"] == "Wenduag":
+        _node["Speaker"] = "conversant"
+        _node["Portrait"] = ""
+SCENES.append(_claim)
+tag(_claim["Id"], "T")
 
 
 # --- 5. Her cairn (intimacy; Directive 12: heat up to the cut, cut at the start of the act). --------------------------------
@@ -297,9 +323,9 @@ visit(W + "court.vellexia", "The blond one", [
         c('"Hunt her, if you want. Frighten her. Nobody dies."', "hunt")),
     wd("leave", '''"Under your roof." {n}She weighs it, and does not like it, and puts it down.{/n} "All right. I'll leave her be. Under your roof." {n}She turns back to the window.{/n} "Outside it, she's meat, like everybody else. Tell her that, when you see her. Tell her the neather said so. She'll know what it means; her kind always do."''',
         c("Continue", flags=(W + "vellexia.left",))),
-    wd("hunt", '''{n}Her face lights up like a child's.{/n} "Nobody dies." {n}She says it the way she said it at the gate, like the terms of a bad bargain she has every intention of enjoying.{/n} "You're no fun. But all right. Nobody dies." {n}She slides off the parapet.{/n} "She'll hear me coming, though. Every night, somewhere in the dark, just behind her. She'll never see me. She'll never know when. And one night she'll turn round and I'll be there, and I'll say *boo*." {n}Her grin is terrible.{/n} "And that'll be my promise kept."''',
+    wd("hunt", '''{n}Her face lights up like a child's.{/n} "Nobody dies." {n}She says it the way she said it at the gate, like the terms of a bad bargain she has every intention of enjoying.{/n} "You're no fun. But all right. Nobody dies." {n}She slides off the parapet.{/n} "She'll hear me coming, though. Every night, somewhere in the dark, just behind her. A hare's head on her pillow. My knife in her door. Her own scent on my hands when I pass her in the hall. She'll never see me. She'll never know when." {n}Her grin is terrible.{/n} "And one night she'll turn round and I'll be close enough to bite, and I'll let her feel my teeth on her throat, and I'll let her live. That's the scream I promised. The fun ones are the ones they remember."''',
         c("Continue", flags=(W + "vellexia.hunted",))),
-], requires=(W + "court.claim",), RequiresAnyGroups=[[VELLEXIA_SEEN, VELLEXIA_HERE]], optional=True)
+], requires=(GATE_SEEN, VELLEXIA_HERE), optional=True)   # only while Vellexia walks Drezen in her own body
 
 visit(W + "court.yaniel", "The paladin in the cage", [
     nar("start", '''{n}Wenduag has heard the story at last. The neathers in the cellars tell it among themselves: the paladin who waited eighty years in a demon's cage in the Midnight Fane for somebody to open the door.{/n}''',
@@ -319,7 +345,7 @@ visit(W + "court.yaniel", "The paladin in the cage", [
         c("Continue", flags=(W + "yaniel.rival",))),
     wd("mistake", '''{n}Her disappointment is sharper than anger would have been.{/n} "A mistake." {n}She looks away.{/n} "The strong are allowed to kill. They're not allowed to be stupid about it. That's how they stop being strong."''',
         c("Continue", flags=(W + "yaniel.mistake",))),
-], requires=(W + "court.claim",), RequiresAnyGroups=[[YANIEL_FREED, YANIEL_KILLED]],
+], requires=(GATE_SEEN,), RequiresAnyGroups=[[YANIEL_FREED, YANIEL_KILLED]],
     forbids=(W + "early.yaniel", YANIEL_ASKED), optional=True)
 
 
@@ -373,7 +399,8 @@ visit(W + "court.neathers", "The weak get eaten", [
     wd("ask", '''{n}She looks at you sideways.{/n} "These are my people now. They do what I say. But they're in your city, under your roof, and your chaplains come down here sometimes with their bread and their prayers." {n}Her yellow eyes are steady.{/n} "So I'm asking. I'm asking you, because I'm yours. Tonight I walk him down the oldest stair, past my cairn, and leave him in the dark with his spear. Or I don't. Say which."''',
         c('"Do it. It\'s your tribe, and your arithmetic."', "cull", alignment=("Evil", 1)),
         c('"No. Nobody gets left in the dark to die in my city."', "forbid"),
-        c('"Take him up to the chaplains\' infirmary. Tonight. I\'ll pay for his bed."', "infirmary", alignment=("Good", 1))),
+        c('"Take him up to the chaplains\' infirmary. Tonight. I\'ll pay for his bed."', "infirmary", alignment=("Good", 1),
+          crusade=("Finances", -100))),
     wd("cull", '''{n}She nods, as if you had confirmed a sum.{/n}
 "Yes." {n}Then, lower:{/n} "I did this once before, in the Maze, for Hosilla. Nobody said anything. I carried all of it. Nobody ever said *do it* out loud before, so that somebody else carried half." {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}
 {n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}''',
@@ -439,7 +466,7 @@ visit(W + "court.gongs", "Counted in gongs", [
     wd("stronger", '''{n}That pleases her. It pleases her enough that she laughs out loud, and a sentry further along the wall looks round and then pretends he hasn't.{/n}
 "The stronger one. Yes. That's the only honest answer anyone's ever given me about anything." {n}She gets up.{/n} "Don't ever tell me it was because you liked me. I'd have to kill you for lying." {n}She holds out her hand, and pulls you to your feet, and does not let go of it.{/n} "One more gong. Come to bed."''',
         c("Continue", flags=(W + "gongs.stronger",))),
-], requires=(W + "court.claim", COMMITTED), optional=True)
+], requires=(COMMITTED,), optional=True)
 
 
 # --- 8. Reactions (named companions with a stake: Lann above all; Irabeth for the traitor in her city). ---------------------
@@ -487,6 +514,8 @@ COMMITTED_PARAS = (
     p("{n}Old Tuhk went down the oldest stair one night with his cracked spear in his hands, and did not come back up, and his share fed the cellars through the winter. Nobody coughed in the furthest cellar that summer. She never spoke of it again, but she never again asked the Commander for anything she could decide herself, either.{/n}", requires=(W + "neathers.culled",)),
     p("{n}Old Tuhk died in a chaplain's bed in the spring, warm and dry, with a priest of Iomedae praying over him in a language he did not understand and Wenduag sitting at the foot of the bed with her arms folded, glaring at the priest. She said afterwards that it was a stupid way to die. She went back every day until it was over.{/n}", requires=(W + "neathers.infirmary",)),
     p("{n}Two of the little ones in the cellars caught the cough that winter. The Commander went down and looked at them, every time she said to, and one of them lived. She counted that as a draw.{/n}", requires=(W + "neathers.forbidden",)),
+    p("{n}The succubus in the citadel learned to sleep with a lamp lit and her back to a wall. Hare's heads on her pillow, a knife in her door, and one night teeth at her throat in a dark corridor, and a laugh, and nothing else. She never found out whose. Wenduag said it was the best promise she ever kept.{/n}", requires=(W + "vellexia.hunted",)),
+    p("{n}Wenduag left the succubus alone under the Commander's roof, as she had said she would, and passed her in the halls every day of the war without a word, and sniffed, every time, loudly.{/n}", requires=(W + "vellexia.left",)),
     p("{n}Some nights, when the war let them, she took the Commander out through the south postern barefoot with a spear and no light, and they came back before dawn with blood on their chins and nothing to say to anyone.{/n}", any_groups=((W + "hunt.ate", W + "hunt.cooked"),)),
     p("{n}She never once used the Commander's name where anyone could hear, and she stopped saying *master* altogether. When she needed to call the Commander she whistled, the way the neathers whistle in the tunnels, one note up and one down, and the Commander came, and everybody who saw it pretended not to have.{/n}"),
     p("{n}Every so often she woke the Commander in the night with a knife at the throat and her knee on the breastbone, to see. The Commander never once lay there working out whether she meant it. She said that was how she knew.{/n}", any_groups=((W + "trial.won", W + "trial.tricked"),)),

@@ -292,6 +292,30 @@ internal static class WenduagTricksterTests
             check(Avail(trial, World(story, 5, "trickster", "trickster.ever", "wenduag.in_party", way)), "Trk_Wenduag_Kept: the courtship does not open for " + way);
         check(!Avail(trial, World(story, 5, "trickster", "trickster.ever", "wenduag.in_party")), "Trk_Wenduag_Kept: the courtship opens for a Wenduag nobody earned.");
 
+        // Trk_Wenduag_Kept: a kept companion's trial says nothing of stones; her claim is played in person on her own list.
+        var keptW = World(story, 5, "trickster", "trickster.ever", "wenduag.in_party", P + "bought");
+        var keptProved = Take(trial, keptW, "stain_her", 0, P + "proved");
+        check(Paths(trial, keptW).All(o => !o.path.Contains(("which_back", 0))), "Trk_Wenduag_Kept: a kept Wenduag remembers a burial she never had.");
+        var claimHub = S(P + "court.claim_in_person");
+        var keptGated = Take(gate, Later(keptProved, 24), "after_hers", 0, P + "gate_seen");
+        check(claimHub.ReturnToList && claimHub.AnswerLists.Length == 3 && !claimHub.Remote && Avail(claimHub, Later(keptGated, 24))
+              && !Avail(claim, Later(keptGated, 24)),
+            "Trk_Wenduag_Kept: the kept claim is not in person on her native lists, or the remote claim also plays.");
+        Take(claimHub, Later(keptGated, 24), "after_knelt", 0, Committed);
+
+        // Trk_Wenduag_PathFailed: an unprepared rescue is a live Trickster act; a bought fall still pays off after the path fails.
+        check(!Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell"))
+              && Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought"))
+              && !Avail(streetFall, World(story, 5, "trickster.ever", Kicked, Dead, "wenduag.street_confronted")),
+            "Trk_Wenduag_PathFailed: an unprepared rescue appears after the Trickster path failed.");
+        check(Ch(abyssFall, "price", 0).Crusade?.Amount == -100 && Ch(streetFall, "yields_late", 0).Crusade?.Amount == -50,
+            "Trk_Wenduag_PathFailed: an unprepared rescue costs nothing.");
+
+        // Trk_Wenduag_Vellexia: the hunt is offered only while Vellexia walks Drezen in her own body.
+        var vel = S(P + "court.vellexia");
+        check(vel.Requires.Contains("vellexia.trickster.in_person") && !Avail(vel, World(story, 5, "trickster", "trickster.ever", Returned, P + "gate_seen", "wenduag.vellexia_conflict")),
+            "Trk_Wenduag_Vellexia: the hunt is offered while Vellexia is a mirror or absent.");
+
         // Trk_Wenduag_Lann: the cost, paid first or named by him.
         var lannWorld = World(story, 5, "trickster", "trickster.ever", Killed, P + "cairn_built", P + "cost.lied_to_lann", Returned, "lann.in_party");
         check(Avail(truth, lannWorld) && truth.ReturnToList && truth.AnswerLists.SequenceEqual(new[] { "66385ad77fa743e4bb1234078dbd804c" })
