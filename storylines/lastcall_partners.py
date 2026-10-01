@@ -76,10 +76,11 @@ DEBTS = [
          ledger_text="Leased from the church of Abadar, returnable at the end of the world. A lien stands. The Master of the First Vault reads the small print so I don't have to.",
          page_called="The church of Abadar collected to the letter. The cauldron had been leased returnable at the end of the world, and at Threshold the world ended in every sense the lease required; it went back as it had come, and the lien attached itself to whatever the Wound became. Before the year was out, a counting-house of the First Vault stood where the rift had been, and its clerks asked every traveller what they were bringing in and what they meant to take out."),
     dict(key="sunhammer", groups=[["kiana.trickster.cost.sunhammer_favour"], ["kiana.trickster.cost.guests_robbed"], ["kiana.trickster.cost.courier_marked"]],
-         called_by=[called("kiana")],
+         called_by=[called("kiana")], outlived=["kiana.sunhammer_dead"],   # JewelerFinal Cue_0042/0043: Q3 kills him
          ledger_title="Darek Sunhammer: a favour and some stones",
          ledger_text="The jeweller who made the wedding stones is owed a favour, or a grudge, and still keeps what he keeps. A dwarf remembers a bill.",
-         page_called="Darek Sunhammer sent his apprentice, as he always did, with the bill carried in his head rather than on paper, where a jeweller keeps the things he does not want read. One favour, owed. The Commander settled it across a table in Drezen in terms neither side ever repeated, and the wedding guests still in Sunhammer's keeping went home the same week."),
+         page_called="Darek Sunhammer sent his apprentice, as he always did, with the bill carried in his head rather than on paper, where a jeweller keeps the things he does not want read. One favour, owed. The Commander settled it across a table in Drezen in terms neither side ever repeated, and the apprentice went home with the bill wiped clean from his master's head.",
+         page_outlived="Darek Sunhammer collected nothing. He had died before Threshold, in the fight that brought the stolen souls home, with the Commander's favour still owing in the one ledger he kept in his head, and a dwarf's head is not inherited. His apprentice never came to Drezen again, and the bill went into the ground with the man who had kept it."),
     dict(key="mutasafen", groups=[["hepzamirah.trickster.cost.mutasafen_grudge"], ["hepzamirah.trickster.cost.lab_funded"],
                                   ["hepzamirah.trickster.cost.blood_sample"], ["hepzamirah.trickster.cost.vial_paid"],
                                   ["hepzamirah.trickster.cost.vial_forged"]],
@@ -289,15 +290,20 @@ partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
 
 KI = "kiana.trickster."
 partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
-    '''Kiana did not go back to Mendev after the war. She stayed in Drezen, where nobody had arranged her marriage and nobody had put her soul in a jewel, and she took a room above a baker's with a window that looked at nothing in particular. She said it was the first view she had ever chosen.''',
+    '''Kiana stayed in Drezen after the war. She took a room above a baker's, with a window that looked at nothing in particular, and said it was the first view she had ever chosen for herself. She hung the princess's costume on the back of the door, where it could sulk.''',
     (
-        page_p('''The wedding guests still in Sunhammer's keeping came home that spring. Kiana met every coach. She knew all their names, and she made the Commander learn them too.''', requires=(called("kiana"),)),
+        page_p('''The wedding guests still in Sunhammer's keeping came home that spring. Kiana met every coach. She knew all their names, and she made the Commander learn them too.''', requires=(called("kiana"), KI + "cost.guests_robbed"), forbids=(KI + "guests_bought_back",)),
         page_p('''She never quite forgave the Commander the guests left behind in the pouch the first time, when {mf|he|she} was quicker to free her than to count the others. She said so once, plainly, and never needed to again.''', requires=(KI + "cost.guests_robbed",), forbids=(called("kiana"),)),
         page_p('''The counterfeit that had stood in for her stone went back to Sunhammer's bench in his apprentice's hand. Kiana liked to imagine the day he put a loupe to it, and made the Commander imagine it with her.''', requires=(KI + "cost.counterfeit_spent",)),
     ), deal=[[KI + "cost.sunhammer_favour"], [KI + "cost.guests_robbed"], [KI + "cost.courier_marked"]],
-    call=call('''[Call in the courier's account] "Sunhammer, you're owed. Collect now, while I've a pulse to collect from."''',
-        '''{n}Far off, in a shop that smells of solder, a dwarf lays down a loupe and makes a note in the one ledger he keeps in his head.{/n}''',
-        (PLAIN_CHOICE, (), (), ())))   # Sunhammer is a mortal jeweller: he collects, but is no power
+    # Q10 (HOW, R2-6): the late yes on kiana.trickster.epilogue.commit reaches her coda. Her "then don't promise it" and an
+    # ended relationship (the completed kiana.parting scene) keep it off; G5: no closed flag is read.
+    page_commit_groups=[["kiana.committed"], [KI + "late_committed"]], page_forbids=("kiana.uncertain", "kiana.parting"),
+    call=call('''[Settle the jeweller's account] "Sunhammer's bill. I'm closing it tonight, one way or the other."''',
+        '''{n}One account from Drezen is still open: a jeweller's, kept in a dwarf's head rather than on paper, the way a jeweller keeps the things he does not want read. At the rift, in the fire and the noise, you close it.{/n}''',
+        # Living: he collects. Dead (Q3, JewelerFinal Cue_0042/0043): the favour died with him; no courier acts for a corpse.
+        (PLAIN_CHOICE, (), (), ("kiana.sunhammer_dead",)),
+        ('''[Strike it] "He's dead. A dead dwarf's ledger is a closed book."''', None, ("kiana.sunhammer_dead",), ())))   # Sunhammer is a mortal jeweller: he collects, but is no power
 
 MCR = "minagho_chivarro.trickster."
 partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", "The House of Two",
@@ -322,7 +328,7 @@ S = "soana.trickster."
 partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
     '''Soana went back to the Wintersun wood when the war ended and did not ask the Commander to follow. {mf|He|She} followed anyway, and she let {mf|him|her} stay on the understanding that {mf|he|she} would make {mf|himself|herself} useful and keep out of her graves. {mf|He|She} was useful, and kept out of most of them.''',
     (
-        page_p('''The knot still held, retied, one end in Soana and the other round the Commander's wrist where the gut strip had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.''', requires=(S + "cost.guardian_paid",)),
+        page_p('''The knot still held, retied, one end in Soana and the other round the Commander's wrist where the knot had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.''', requires=(S + "cost.guardian_paid", S + "cost.knot_bearer")),
         page_p('''The spirits came for their portion, and Soana stood between them and the Commander, and paid them in her own blood. She did not say it was for love. She said it was her wood and her debt, which is how Soana says it.''', requires=(called("soana"),)),
         page_p('''She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. It only ever came up one way, which was the lead in it, and she said that was the point: it saved her the trouble of pretending she had not already decided.''', requires=(S + "cost.die_in_her_bowl",)),
     ), declined=S + "declined",
@@ -386,6 +392,9 @@ partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Pr
         page_p('''She would not live under a false name, and the Commander was officially dead. So she kept her own name, and her own door, and walked through it into the Commander's rooms every evening, openly, and told anyone who asked exactly where she was going.''', requires=(ON_RECORD,)),
         page_p('''It was Seelah who found the flask at the edge of the Wound. She said it was the easiest theft of her life.''', requires=(H2,)),
     ), declined=SE + "declined",
+    # Q10 r3: the qualified late commit (late_committed + her romance, seelah_trickster.LATE_CODA) also plays the coda;
+    # an unreconciled no stays excluded by the declined forbid, and the friend road by friends.
+    page_forbids=(SE + "friends",), page_commit_groups=[["seelah.committed"], [SE + "late_coda"]],
     deal=[[SE + "cost.holds_her_death"], [SE + "cost.keeps_it"], [SE + "cost.robbed_back"]],
     call=call('''[Call in the thief's promise] "Seelah, you swore you'd steal it back. Now's the time. Pick my pocket."''',
         '''{n}You feel it before you understand it: a light touch at your coat, a thief's apology, from a woman who is not here.{/n}''',

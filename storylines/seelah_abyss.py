@@ -46,7 +46,7 @@ s("letter", "An audience for cruelty", [
 {n}Seelah's hand falls from the woman's shoulder.{/n}
 "I thought if we stopped him quickly..."
 {n}"I wanted that too. I just wish I didn't have to go back there tomorrow."{/n}
-{n}She puts the letter inside her coat. Before leaving, she thanks you for returning it. She keeps one hand pressed against the fold as she walks away.{/n}''', c('[Give her room to leave.]', "return")),
+{n}She puts the letter inside her coat. Before leaving, she thanks you for returning it. She keeps one hand pressed against the fold as she walks away.{/n}''', c('[Watch her go.]', "return")),
     n("burned", "Seelah", '''{n}You stop in a narrow passage away from the stall. Seelah still has one hand closed around the strip of red cloth.{/n}
 "I'm sorry. I thought we could reach it while he was looking at you."
 {n}The copyist shakes her head. "He didn't get to the end. That matters."{/n}
@@ -54,26 +54,26 @@ s("letter", "An audience for cruelty", [
 {n}"My sister draws a little house beside her name. Every time. As if I could forget where she lives."{/n}
 {n}Seelah offers her the cloth. The woman takes it absently, winds it around her fingers, and leaves before either of you can find something else to say.{/n}''', c('[Let her go.]', "return")),
     n("return", "Seelah", '''{n}Back at the Nexus, Seelah unbuckles her sword belt and lays it down with unnecessary care.{/n}
-"I thought standing beside her would be the easy part."
+"Stand beside her. Get the letter. How did we make such a mess of that?"
 {n}You begin to answer. She raises a hand, then lowers it again.{/n}
-"No. Sorry. I do want to hear you. Just not while I'm still trying to make the afternoon come out differently."
+"No. Sorry. I'll listen tomorrow. Tonight I'll just argue, and you've had enough of that from me."
 {n}She looks at you directly.{/n}
-"Tomorrow. Will you let me be angry tonight without deciding I've stopped wanting you here?"''',
+"Come back tomorrow, will you? I'm angry. That doesn't mean I've suddenly gone off you."''',
       c('"Yes. We will talk tomorrow."', flags=("seelah.letter_unsettled",))),
 ], requires=("seelah.abyss_together",))
 
 
 s("letter_after", "What we meant to do", [
-    n("start", "Seelah", '''{n}Seelah comes to find you. She has brought neither an apology disguised as a joke nor something for you to eat.{/n}
-"I've been rehearsing this conversation. In every version I get to sound more sensible than I was yesterday."
-{n}She sits on a low stone, leaving the conversation between you instead of trying to fold you into an embrace.{/n}
-"I heard someone laughing at a hungry woman, and I stopped looking at the woman standing beside me."''',
+    n("start", "Seelah", '''{n}Seelah comes to find you empty-handed. She opens her mouth, shuts it, then plants her hands on her hips.{/n}
+"I had a fine speech ready. Made me sound very wise. Pity about yesterday."
+{n}She sits on a low stone and scuffs the ground with her heel.{/n}
+"I was so busy wanting to knock his teeth out that I forgot to look at the woman holding my sleeve."''',
       c('"I thought stopping him was worth the attention it would draw."', "public", requires=("seelah.letter_public",)),
       c('"I did not expect anyone to recognize her. I was trying to get the letter back."', "public", requires=("seelah.letter_public",)),
-      c('"We kept her identity out of his performance. We still lost something she wanted."', "burned", requires=("seelah.letter_burned",))),
-    n("public", "Seelah", '''"I thought I knew what getting it back would cost. A threat, perhaps an argument. Then we could leave. She was the one who had to go back."
+      c('"He never got her name. But we lost her letter."', "burned", requires=("seelah.letter_burned",))),
+    n("public", "Seelah", '''"I thought I'd scare him, she'd take the letter, and we'd be done. Except she has to go back to those stalls and ask for work. We don't."
 {n}She rubs her palms together, impatient with herself.{/n}
-"I am glad she has the letter. I'm not going to pretend that doesn't count. But I keep remembering how pleased I was when he stepped back. Before I looked at her."
+"She has her letter. Good. I'm glad of that. But when he backed off, I thought we'd won. Then I saw her face."
 {n}Her eyes meet yours.{/n}
 "Did you see her sooner than I did?"''',
       c('"No. I was watching him too."', "admit"),
@@ -82,33 +82,33 @@ s("letter_after", "What we meant to do", [
 {n}She gives a short, unhappy laugh.{/n}
 "You were insulting an awning. I was furious with you for about three heartbeats."
 {n}She looks down at the stone beneath her hands.{/n}
-"I wish we'd got the letter. I also know he might have read the rest while we were trying to be cleverer. I can't find a version that lets me be pleased with everything."''',
+"Damn it, I wish we'd got the letter. But if we'd waited for a better trick, he might have read it all. Either way, she walks off clutching that scrap of cloth."''',
       c('"We should have agreed on a signal before we went in."', "signal"),
-      c('"I need you to give me time to act, even when my plan looks foolish."', "trust")),
-    n("admit", "Seelah", '''"Then next time one of us watches the person we're there for. Even when the other is making a very satisfying speech."
+      c('"Let me finish the trick before you charge in, even if I look like a fool."', "trust")),
+    n("admit", "Seelah", '''"Next time, one of us keeps an eye on whoever asked for help. The other can make the grand speech."
 {n}Her mouth twists.{/n}
-"Especially then."
-{n}She does not look relieved. But she has stopped searching your face for an answer that will make her feel better.{/n}''', c('[Agree to check with each other.]', "end", flags=("seelah.check_person",))),
-    n("assumed", "Seelah", '''"That sounds ugly when you say it. I've done it too."
-{n}She takes a moment before continuing.{/n}
-"I want us to catch it before somebody has to explain the harm we didn't bother to notice. Even if it means interrupting each other in front of people."
-{n}She looks at you without softening the request.{/n}
-"I won't enjoy that. I'm asking anyway."''', c('[Agree to let her interrupt, and to do the same for her.]', "end", flags=("seelah.check_person",))),
+"And give the speech-maker a good jab if they're getting carried away."
+{n}Seelah rubs a hand over her face. Her shoulders are still hunched, but she looks you in the eye again.{/n}''', c('[Agree to watch each other as well as the person you are helping.]', "end", flags=("seelah.check_person",))),
+    n("assumed", "Seelah", '''"Ugh. 'She'll thank me afterward.' I've said that too."
+{n}She grimaces and presses her palms against the stone.{/n}
+"If I start doing that again, stop me. In front of everyone, if you have to. I'll do the same for you. Better a red face than another mess like yesterday."
+{n}She points a finger at you.{/n}
+"And if I grumble, remind me whose bright idea it was."''', c('[Agree to stop each other when you get carried away.]', "end", flags=("seelah.check_person",))),
     n("signal", "Seelah", '''"Something better than looking at me while I am already marching past you."
 {n}She offers her wrist.{/n}
-"Here. Two taps. I stop and look. It won't solve the whole city, but I might hear the next sentence someone says to me."
-{n}You try the signal. She holds still, deliberately, until you finish.{/n}''', c('[Agree on the signal.]', "end", flags=("seelah.check_signal",))),
-    n("trust", "Seelah", '''"Give me something to recognize. I can trust you and still misunderstand you."
+"Here. Two taps. I'll stop and look. Try it before I get my sword out, eh?"
+{n}You tap her wrist twice. She turns her head toward you, eyebrows raised.{/n}''', c('[Agree on the signal.]', "end", flags=("seelah.check_signal",))),
+    n("trust", "Seelah", '''"Then give me a signal! I saw you mocking an awning. I didn't see a plan."
 {n}She holds out her wrist.{/n}
 "Two taps when we can reach each other. Say my name when we can't. I'll look before I start arguing."
 {n}A trace of humor returns.{/n}
 "I am making no promises about what happens after I look."''', c('[Agree on the signal.]', "end", flags=("seelah.check_signal",))),
     n("end", "Seelah", '''{n}For a while neither of you speaks. Then Seelah shifts closer on the stone.{/n}
-"I don't want to get good at leaving these conversations unfinished. Yesterday needed a night. It didn't need a week."
-{n}She rests her hand beside yours, close enough to invite an answer.{/n}
+"There. If I'd put that off another week, I'd have worn a trench pacing around camp. One night was bad enough."
+{n}She lays her hand beside yours, her little finger brushing your knuckle.{/n}
 "Will you walk with me? Just here. I have had quite enough of awnings for now."''',
       c('[Take her hand and walk beside her.]', flags=("seelah.letter_discussed",)),
-      c('[Walk beside her, still thinking over the conversation.]', flags=("seelah.letter_discussed",))),
+      c('[Walk beside her and think over what she said.]', flags=("seelah.letter_discussed",))),
 ], requires=("seelah.letter_unsettled",))
 
 
@@ -126,12 +126,12 @@ s("letter_work", "The price she names", [
     n("public", "Narrator", '''{n}"Two people asked about my sister. One thought it was funny. I didn't get much work from him anyway."{/n}
 {n}She rubs at a spot on the oilcloth.{/n}
 {n}"I read the letter again last night. Properly, this time. I am glad I can do that."{/n}
-{n}Seelah nods, but does not offer the answer she seems to have prepared. The copyist points toward a narrow street.{/n}
+{n}Seelah nods and tightens her grip on the samples. The copyist points toward a narrow street.{/n}
 {n}"Come on. If we're late, she'll charge me for waiting."{/n}''', c('[Follow her.]', "customer")),
     n("burned", "Narrator", '''{n}"No one has said anything. I think we managed that much."{/n}
 {n}She folds the edge of the oilcloth inward.{/n}
 {n}"I wrote down the parts I remembered. There was a bit about a neighbor's dog that I can't get right. My sister made it sound as though she was trying very hard not to laugh."{/n}
-{n}Seelah starts to speak, then lets the pause remain.{/n}
+{n}Seelah draws breath, then bites her lip.{/n}
 {n}"I still have work to do," the copyist says. "It helps. This way."{/n}''', c('[Follow her.]', "customer")),
     n("customer", "Narrator", '''{n}The customer receives you in a cramped room lined with narrow drawers. She is a tiefling with a silver ring on each horn and a habit of tapping her nails while other people speak.{/n}
 {n}She examines the samples, pauses over a line, and turns the page toward the copyist.{/n}
@@ -141,11 +141,11 @@ s("letter_work", "The price she names", [
 {n}Seelah draws breath. Beside her, the copyist reaches for the faulty sample. Her hand is steady.{/n}''',
       c('[Tap Seelah\'s wrist twice, as agreed.]', "signal_used", requires=("seelah.check_signal",)),
       c('"Seelah. Look at her."', "person_seen", requires=("seelah.check_person",)),
-      c('[Keep quiet and let Seelah decide whether to intervene.]', "her_choice")),
+      c('[Keep quiet and watch Seelah.]', "her_choice")),
     n("signal_used", "Seelah", '''{n}Seelah turns toward you. For an instant she looks annoyed. Then she closes her mouth and watches the copyist take a pen from her sleeve.{/n}
 {n}She shifts the samples to her other arm, freeing the wrist you touched. Her hand brushes yours once before she lets it fall.{/n}''', c('[Wait for the copyist to answer.]', "bargain", flags=("seelah.signal_used",))),
-    n("person_seen", "Seelah", '''{n}Seelah looks at you first. You glance toward the copyist, who has taken a pen from her sleeve without asking either of you for help.{/n}
-{n}Seelah shifts her weight back onto both feet. When the customer looks toward her, she holds out the remaining samples instead of answering for their owner.{/n}''', c('[Let the copyist negotiate.]', "bargain", flags=("seelah.person_seen",))),
+    n("person_seen", "Seelah", '''{n}Seelah looks at you first. You glance toward the copyist. A pen is already in the woman's hand.{/n}
+{n}Seelah shifts her weight back onto both feet. The customer looks toward her. Seelah holds out the remaining samples, her lips pressed together.{/n}''', c('[Let the copyist negotiate.]', "bargain", flags=("seelah.person_seen",))),
     n("her_choice", "Seelah", '''{n}"There is more work here," Seelah begins, lifting the bundle. "You can see..."{/n}
 {n}The copyist holds out her hand without turning. Seelah stops. After a moment, she puts the bundle into it.{/n}
 {n}The customer drums her nails on the table. The copyist waits until she finishes.{/n}''', c('[Wait beside Seelah.]', "bargain", flags=("seelah.stopped_herself",))),
@@ -156,19 +156,19 @@ s("letter_work", "The price she names", [
 {n}The customer's nails stop moving. At last she nods.{/n}
 {n}Outside, Seelah helps the copyist wrap the samples in their oilcloth again.{/n}
 {n}"Six pages aren't a living. But they're six pages." She looks at the two of you. "Thank you for carrying them."{/n}
-{n}She leaves you at the next turning. This time she is already thinking about her work when she goes.{/n}''', c('[Walk back with Seelah.]', "return")),
+{n}She leaves you at the next turning, counting the six pages on her ink-stained fingers.{/n}''', c('[Walk back with Seelah.]', "return")),
     n("return", "Seelah", '''"I was going to tell that woman exactly what I thought of her offer."
 {n}Seelah watches the copyist disappear into the street.{/n}
 "She probably knew. I have been told I am very easy to read when somebody is being a bastard."
 {n}She turns back to you.{/n}
 "It would have been a good speech."''',
       c('"Save it. I am sure the city will give you another opportunity."', "tease"),
-      c('"I liked watching you decide what to do with it."', "warm")),
+      c('"You swallowed a fine speech. I liked that."', "warm")),
     n("tease", "Seelah", '''"I'll polish it on the way back. You can tell me where to put the swearing."
 {n}Her laugh comes more easily than it did during your last conversation. She takes your arm, then stops short at a turning and draws you out of the way of a passing cart.{/n}
 "There. I remain extremely useful company."''', c('[Continue the walk with her.]', flags=("seelah.copyist_followed",))),
-    n("warm", "Seelah", '''{n}She studies your face, suspicious of praise that arrives too neatly. Then she smiles.{/n}
-"I liked having you there. Even when I didn't particularly like what I needed to hear."
+    n("warm", "Seelah", '''{n}She narrows her eyes at you, then breaks into a smile.{/n}
+"I'm glad you came. Even if you did catch me about to put my foot in it again."
 {n}She reaches for your hand.{/n}
 "Don't expect me to admit that every time. You'd become impossible."''', c('[Walk beside her.]', flags=("seelah.copyist_followed",))),
 ], requires=("seelah.letter_discussed",))

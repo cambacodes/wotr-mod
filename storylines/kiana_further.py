@@ -19,8 +19,8 @@ def s(id, title, nodes, after, delay=48, **extra):
 # An older completed capstone stays completed. This letter alone opts into later work.
 SCENES.append(scene("kiana.later_incident", "A less private audience", "Kiana", 5, "", [
     n("start", "Narrator", '''{n}A note from Kiana asks whether you have time for something awkward. Someone outside her circle has taken an interest in the princess. Unfortunately, that person also appears to have taken an interest in advertising the Commander.{/n}
-"We have already had our conversation about what we want. I have no intention of making you sit it again. This is a new inconvenience. I would appreciate your company while I find out how large it is."
-{n}There is room to send an answer. The evenings you have already kept remain yours.{/n}''',
+"Some fool has advertised you with my princess. Come and help me discover which of us he expects to perform."
+{n}Kiana has left a generous space beneath her complaint for your answer.{/n}''',
       c('[Answer that you will come and hear what happened.]', flags=("kiana.further_requested", "kiana.catchup_requested")),
       c('[Keep the note until you can give her the time.]', abort=True), portrait="Kiana"),
 ], Relationship="kiana", Remote=True, ManualOnly=True, Chapters=[5], Areas=[DREZEN],
@@ -46,9 +46,9 @@ s("borrowed_name", "The name above the title", [
 "Yes."
 {n}Two of the carters stop working. Rovan begins to hold himself as though he has been called before an officer.{/n}''',
       c('[Diplomacy] "Nobody is in trouble for wanting an evening off. Tell us what you actually promised."', check=dict(Skill="CheckDiplomacy", DC=24, Success="plain", Failure="stiff", CommanderOnly=True), forbids=("kiana.further_plain", "kiana.further_stiff", "kiana.further_private")),
-      c('"Kiana lent you the page. Ask her to walk through the notice with you. I will wait here."', "private", flags=("kiana.further_private",), forbids=("kiana.further_plain", "kiana.further_stiff")),
-      c('[Return to the explanation Rovan gave openly.]', "plain", requires=("kiana.further_plain",)),
-      c('[Return to the explanation Kiana had to draw out of him.]', "stiff", requires=("kiana.further_stiff",))),
+      c('"Kiana, show him what he has done to your princess. I shall admire the wheel."', "private", flags=("kiana.further_private",), forbids=("kiana.further_plain", "kiana.further_stiff")),
+      c('[Ask Rovan again what he promised.]', "plain", requires=("kiana.further_plain",)),
+      c('[Ask Kiana what Rovan told her.]', "stiff", requires=("kiana.further_stiff",))),
     n("plain", "Rovan", '''"I said she would come. I should have asked first. I said the Commander liked it, and someone asked whether it was an order to attend. I made a joke instead of answering."
 {n}One of the carters gives him a look of such concentrated disgust that he stops attempting to smile.{/n}
 "I said we could all benefit from refinement. It sounded funnier yesterday."
@@ -68,7 +68,7 @@ s("borrowed_name", "The name above the title", [
 "I promised she would come," he tells you. "And I let people believe your request meant more than it did."
 "There was no request," Kiana says.
 "No. There wasn't. I will tell them."
-{n}He hands her the page with less ceremony than he tried to give you.{/n}''', c('[Look at the page with her permission.]', "page")),
+{n}He hands her the page with less ceremony than he tried to give you.{/n}''', c('[Read the page Kiana holds out.]', "page")),
     n("page", "Kiana", '''{n}The beginning is hers. Halfway down, the guest has become a weary captain who wins the princess by explaining that other people have difficult lives too. The princess thanks him for correcting her and promises to be less troublesome.{/n}
 {n}Kiana reads that passage twice.{/n}
 "Did you write this?"
@@ -77,18 +77,18 @@ s("borrowed_name", "The name above the title", [
 "People like a lesson. I read my ending to Orvenna while she was working. She liked it."
 "Then they can learn to ask before completing someone else's work."
 {n}She smooths the fold with a thumbnail. A pale crystal at her temple catches the light when she bends closer.{/n}
-"You may tell your own story about a captain. You may not tell people I wrote this one, or that the Commander ordered them to hear it."''',
-      c('"Correct the notice and offer the real scene, if you still want an audience. Everyone can choose whether to stay."', "offer", flags=("kiana.further_offer",), forbids=("kiana.further_withdraw",)),
+"Write your own captain, Rovan. Put my name or the Commander's on him again and I shall feed him to the mice."''',
+      c('"Correct the notice. Then give them the real scene, if Kiana still wants to read it."', "offer", flags=("kiana.further_offer",), forbids=("kiana.further_withdraw",)),
       c('"Take your page back. He can arrange a different entertainment without borrowing either of our names."', "withdraw", flags=("kiana.further_withdraw",), forbids=("kiana.further_offer",))),
     n("offer", "Kiana", '''"I want them to hear a woman being troublesome without a captain arriving to repair her. Apparently that has become an educational undertaking."
 {n}She turns to Rovan.{/n}
-"I will come once. You will say that before anyone loses an evening they intended to spend elsewhere. There is no order, no inspection, and no reward for laughing."
+"One performance. Tell them the princess commands nothing except the mice."
 "I can say that."
-"Say it now to the people who heard you yesterday. Then find someone willing to read the guest. Ask them. That part is important."
+"Tell them now. Then find me a guest who can read without murdering the jokes."
 {n}Rovan turns toward the carters. His correction is awkward and audible. One tells him he should have made the whole thing a lesson in wheel repair.{/n}
 {n}Kiana almost smiles.{/n}''', c('[Leave him to make the remaining corrections.]', "end")),
     n("withdraw", "Kiana", '''{n}Kiana folds her page and puts it away.{/n}
-"No performance of mine at this gathering. You have other people to ask, and you can begin by asking whether they want an entertainment."
+"You may have the evening, Rovan. You cannot have my princess."
 {n}Rovan looks at the blank space left in his hands.{/n}
 "They'll be disappointed."
 "I am disappointed now. You will survive sharing the experience."
@@ -100,10 +100,10 @@ s("borrowed_name", "The name above the title", [
 "And you will not advertise that as a performance."''', c('[Leave him to correct what he promised.]', "end")),
     n("end", "Kiana", '''{n}Outside the yard, Kiana walks several paces before speaking.{/n}
 "I wanted strangers to enjoy something I made. I was not prepared for enjoying it to include replacing the woman at its center with a grateful cushion."
-"You were clear about what you wanted."
-"Eventually. There was a moment when I wanted you to frighten him so I would not have to explain anything."
+"I doubt he will borrow the princess again."
+"I nearly asked you to frighten him. It would have saved a great deal of breath."
 {n}She looks at you sidelong.{/n}
-"I am not particularly proud of that moment. I am telling you because it was there."
+"A shameful temptation. Next time I may surrender to it."
 {n}She takes your arm for the walk back, still angry enough to make her steps quick.{/n}''', c('[Keep the next evening free to finish what was begun.]', flags=("kiana.further_name_kept",))),
 ], after=())
 
@@ -114,14 +114,14 @@ s("yard_evening", "People who may leave", [
 {n}Kiana reads it, then hands him the board.{/n}
 "Sensible. A rare but welcome direction for the evening."
 {n}Several carters sit along the low wall. Kiana folds her scarf and leaves it beside a clear place to sit. A broad-shouldered woman is trimming a damaged strap. She does not put her work down when you enter.{/n}''',
-      c('[Join the voluntary reading.]', "reading", requires=("kiana.further_offer",)),
+      c('[Join the reading.]', "reading", requires=("kiana.further_offer",)),
       c('[Join Kiana while she corrects the promised entertainment.]', "withdrawn", requires=("kiana.further_withdraw",))),
     n("reading", "Narrator", '''{n}Rovan introduces Kiana by name, without appending yours. He says anyone who has better plans should take them. A man near the gate immediately leaves. Rovan looks wounded until Kiana nudges him with her elbow.{/n}
 {n}The woman with the strap agrees to read the guest. Her name is Orvenna. She holds the page in one broad hand and gives the princess a skeptical look before delivering a line.{/n}
 "Your castle has mice."
 "They are hereditary mice," Kiana answers. "One cannot dismiss old retainers merely because they eat the curtains."
 {n}Orvenna glances toward a heap of chewed sacking. The yard laughs. Kiana waits for it, then continues without explaining the joke.{/n}
-{n}The scene is short. The princess offers an invitation; the guest asks whether the mice will be at supper. No captain appears to settle either question.{/n}''', c('[Let the applause belong to the people who chose to give it.]', "complaint")),
+{n}The scene is short. The princess offers an invitation; the guest asks whether the mice will be at supper. No captain appears to settle either question.{/n}''', c('[Applaud with the carters.]', "complaint")),
     n("withdrawn", "Kiana", '''"I lent Rovan a page. I did not agree to the changes he made or promise to perform it. He has corrected the notice. I have come because I would rather tell you that myself than have you blame the Commander for withdrawing it."
 {n}She does not look at you while she says it.{/n}
 {n}The woman with the strap snorts.{/n}
@@ -129,7 +129,7 @@ s("yard_evening", "People who may leave", [
 "Orvenna," Rovan begins.
 "Yes. That remains my name when I'm annoyed."
 {n}Someone offers to tell a story about a mule that refused a bridge. Orvenna says everyone has heard it, but settles her strap in her lap to listen anyway.{/n}
-{n}Kiana sits on the wall beside you. She has recovered her page and given up the chance to have this audience hear it. She listens to the mule story without attempting to turn it into her own evening.{/n}''', c('[Stay until the story has finished.]', "complaint")),
+{n}Kiana sits beside you and listens to the mule story, one hand folded around the rescued page.{/n}''', c('[Stay until the story has finished.]', "complaint")),
     n("complaint", "Orvenna", '''"I liked the captain better," Orvenna says when the talk pauses.
 {n}Rovan makes an unhappy noise. Kiana turns toward her.{/n}
 "He knew when someone had been selfish."
@@ -147,8 +147,8 @@ s("yard_evening", "People who may leave", [
     n("listen", "Narrator", '''{n}You remain beside her. Orvenna looks as if she expected a rebuke from you, and for a moment that expectation occupies the silence.{/n}
 {n}Kiana takes a breath. She does not reach for the page or turn toward the gate.{/n}''', c('[Listen.]', "history")),
     n("history", "Narrator", '''{n}Kiana looks directly at Orvenna.{/n}''',
-      c('[Hear the answer she chooses about her separation.]', "separated", requires=("kiana.separated",), forbids=("kiana.bereaved", "seelah.elan_dead")),
-      c('[Hear the answer she chooses about her bereavement.]', "widow", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",))),
+      c('[Listen to her answer about Elan.]', "separated", requires=("kiana.separated",), forbids=("kiana.bereaved", "seelah.elan_dead")),
+      c('[Listen to her answer about Elan.]', "widow", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",))),
     n("separated", "Kiana", '''"Elan is a good man. That is true whether you approve of me or not. I will not tell you that I left a villain so that you can feel comfortable about sharing a wall with me."
 {n}She keeps her voice level with effort.{/n}
 "He and I have spoken. There are things he has a right to ask me. You are not asking for him."
@@ -191,7 +191,7 @@ s("unborrowed_evening", "What she asks of you", [
 {n}She takes a short note from beneath the clean page.{/n}
 "Rovan has written to apologize. No audience, no notice, no request for you to approve the apology. It is an improvement."
 "And Orvenna?"
-"Nothing. I do not intend to go looking for her so that we can achieve a pleasing conclusion."
+"Nothing. She can keep her captain. I have better company here."
 {n}She lays the note down.{/n}''',
       c('[Ask about the page she chose to share.]', "offered", requires=("kiana.further_offer",)),
       c('[Ask about the page she took back.]', "withdrawn", requires=("kiana.further_withdraw",))),
@@ -199,62 +199,62 @@ s("unborrowed_evening", "What she asks of you", [
 {n}She touches the clean sheet.{/n}
 "I said yes. I am copying it here. Orvenna does not own everyone who sat in that yard, and I liked hearing them laugh at the mice."
 "Will you go back?"
-"Perhaps. Not because I must prove I am brave, and certainly not because someone has decided I owe them entertainment. I may want to hear another person read that guest."
+"Perhaps. If I want to hear their laughter again. Orvenna can choke on the mice."
 {n}She moves the blank sheet away from the edge of the table.{/n}
 "I will send this first. Then I can decide."''', c('[Ask what she wants to say about your part in the evening.]', "commander")),
     n("withdrawn", "Kiana", '''"It is still mine. That sounds rather grand for a page with a blot in the corner."
 {n}She takes it from between two other sheets and lays it flat.{/n}
 "I keep imagining how it might have sounded in the yard. Then I remember how much I disliked being promised as if I were part of the refreshments. Both thoughts remain inconveniently persuasive."
 "Would you make the same choice?"
-"That evening? Yes. Another evening might be different. I do not have to punish every future invitation for Rovan's first one."
+"Yes. Rovan can earn another invitation by learning to leave my pages alone."
 {n}She smooths the crease without trying to erase it.{/n}
 "For now, I am writing something else. A woman who refuses to attend her own very flattering portrait unveiling. I am enjoying her enormously."''', c('[Ask what she wants to say about your part in the evening.]', "commander")),
     n("commander", "Kiana", '''"There is one part I have been putting off."
 {n}She pulls the chair a little closer, then appears annoyed with herself for doing it.{/n}''',
       c('[Hear what she thought of your intervention.]', "spoke", requires=("kiana.further_spoke",)),
       c('[Hear what she thought of your silence.]', "listened", requires=("kiana.further_listened",))),
-    n("spoke", "Kiana", '''"I know why you answered Orvenna. For a moment I was glad someone had. Then I heard the Commander telling a carter which questions were permitted, and I wondered whether anyone would hear my answer after yours."
+    n("spoke", "Kiana", '''"I nearly cheered when you answered Orvenna. Then everybody stared at you, and I lost the audience for my own perfectly good quarrel."
 "I did stop when you asked."
-"You did. I noticed that too. I am not asking you to accept a version in which you shouted and I was very patient. Neither happened."
+"You stopped. I noticed. Next time let me get my claws into her first."
 {n}She draws one finger along the chair's arm.{/n}
-"I want to be able to be angry with somebody in your presence without everyone waiting for your verdict. I do not know how often that will be possible. I want us to try."''', c('[Tell her what you can actually offer.]', "position")),
-    n("listened", "Kiana", '''"I saw you decide to wait. I was grateful. I was also furious that I had to find the words while you were sitting right there."
+"Interrupt my quarrel again and I shall steal your next speech, with all the gestures."''', c('[Answer her.]', "position")),
+    n("listened", "Kiana", '''"You waited. Admirably. I spent half the quarrel wishing you would rescue me and the other half preparing to bite you if you tried."
 {n}She shakes her head before you can answer.{/n}
-"You did what I needed. That does not mean I enjoyed needing it. I thought I should tell you both parts before the second one escaped during some quite unrelated argument."
+"You sat there looking patient while I struggled for a magnificent insult. I nearly accused you of enjoying it."
 "What would you want next time?"
-"Stay. Listen. If I ask you to speak, speak. It sounds straightforward when I say it here, with no carter deciding she knows my marriage better than I do."
+"Stay beside me. If I shout your name, come roaring to the rescue. Until then the carter is mine."
 {n}She looks toward the empty doorway.{/n}
-"I expect I shall still be cross."''', c('[Tell her what you can actually offer.]', "position")),
-    n("position", "Kiana", '''{n}She waits without reaching for her pages. This conversation has no other character she can put between you.{/n}''',
-      c('"I can wait for you to ask, even when I dislike what I am hearing."', "wait", flags=("kiana.further_wait_voice",), forbids=("kiana.further_answer_abuse",)),
-      c('"I will not answer questions about your life for you. I may still object when someone tries to humiliate you."', "object", flags=("kiana.further_answer_abuse",), forbids=("kiana.further_wait_voice",))),
-    n("wait", "Kiana", '''"Thank you. I am not asking you to enjoy it."
+"I expect I shall still be cross."''', c('[Answer her.]', "position")),
+    n("position", "Kiana", '''{n}She leaves the pages untouched and waits for your answer.{/n}''',
+      c('"Then I shall leave you the first insult."', "wait", flags=("kiana.further_wait_voice",), forbids=("kiana.further_answer_abuse",)),
+      c('"I shall leave you the first insult. The second may be mine."', "object", flags=("kiana.further_answer_abuse",), forbids=("kiana.further_wait_voice",))),
+    n("wait", "Kiana", '''"Good. You will hate it. I shall enjoy that."
 "I doubt I will."
 "Good. I would find that extremely irritating."
 {n}The corner of her mouth lifts. She rests a hand over yours, keeping it there while the silence loses some of its weight.{/n}
-"I may ask badly. I may say your name as though you should have guessed ten minutes earlier. You are allowed to remind me that I requested the chance to be difficult for myself."
-"I will try to find a tactful moment."
-"Please do. Immediately afterward may be unwise."''', c('[Stay with the agreement you have actually made.]', "history")),
+"If I shout your name ten minutes late, look suitably heroic. Spare me the lecture until I have finished being furious."
+"I shall wait until you put down the quill knife."
+"Please do. Immediately afterward may be unwise."''', c('[Keep her hand in yours.]', "history")),
     n("object", "Kiana", '''{n}She considers that longer than you expect.{/n}
 "Then object. Loudly, if you like; you have the voice for it. But the next time you tell a room what I feel, I shall tell it what you look like asleep, and I shall not be kind."
 "I can do that."
-"I believe you. You have listened to me here. That matters more than devising a perfect answer for someone we may not see again."
-{n}Her hand finds yours on the arm of the chair.{/n}
-"And if you ever do stand up in a room and tell it what I feel, I shall stand up after you and tell it what you feel. In detail. With gestures."''', c('[Keep the distinction between defending her and speaking for her.]', "history")),
+"Good. I have already devised three better insults, and I resent having wasted them."
+{n}Her hand finds yours on the arm of the chair and stays there.{/n}
+"Orvenna should count herself lucky. I was saving the one about her mule."''', c('[Squeeze her hand.]', "history")),
     n("history", "Narrator", '''{n}She looks at your joined hands before speaking again.{/n}''',
-      c('[Stay with the history that began by waiting.]', "waited", requires=("kiana.separated", "kiana.waited"), forbids=("kiana.affair", "kiana.bereaved", "seelah.elan_dead")),
-      c('[Stay with the history that includes the undisclosed kiss.]', "affair", requires=("kiana.separated", "kiana.affair"), forbids=("kiana.bereaved", "seelah.elan_dead")),
-      c('[Stay with her grief without asking it to explain the whole evening.]', "bereaved", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",))),
+      c('[Ask about the days before her answer.]', "waited", requires=("kiana.separated", "kiana.waited"), forbids=("kiana.affair", "kiana.bereaved", "seelah.elan_dead")),
+      c('[Ask about the kiss she told Elan about.]', "affair", requires=("kiana.separated", "kiana.affair"), forbids=("kiana.bereaved", "seelah.elan_dead")),
+      c('[Listen as she remembers Elan.]', "bereaved", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",))),
     n("waited", "Kiana", '''"We waited before we began this. It mattered to me. It did not arrange the rest of the world into people who would understand."
 {n}She turns your hand over, tracing the crease beneath your thumb.{/n}
-"I am glad we waited. I am also glad we did not decide that waiting had to last until nobody could be hurt. I would still be sending you pages and pretending not to watch the door."
+"We waited long enough. A little longer and I should have stolen every messenger in Drezen just to get your answer."
 "You watched the door?"
 "You were unusually slow with some of the pages. I had to occupy myself somehow."''', c('[Move nearer.]', "desire")),
     n("affair", "Kiana", '''"What we did before I told Elan remains what we did. Orvenna being cruel does not make it suddenly considerate."
 "No."
 "I have told him the truth. I will not tell every stranger the same thing so that they can decide whether I have been sorry enough to enjoy an evening."
 {n}She squeezes your hand.{/n}
-"And I will not turn you into a punishment I keep choosing because I am ashamed of wanting you. I do want you. I wanted to say that somewhere no one could mistake it for an argument addressed to them."''', c('[Let her see that you heard her.]', "desire")),
+"I wanted you then. I want you now. If I meant to punish myself, I should choose considerably worse company."''', c('[Take her hand.]', "desire")),
     n("bereaved", "Kiana", '''"I kept thinking of something Elan would have said about that captain. Something very earnest. Then he would have realized the princess was making fun of him and become magnificently embarrassed."
 {n}Her smile hurts a little. She lets it remain.{/n}
 "That is the memory I wanted to have. Not the one someone demanded because she had already invented a worse story."
@@ -264,19 +264,19 @@ s("unborrowed_evening", "What she asks of you", [
 "I have no intention of thanking you for rescuing me from my own temperament."
 "I hadn't requested thanks."
 "Good. I have something less instructive in mind."
-{n}She kisses the corner of your mouth, pauses to see your answer, then smiles.{/n}''',
+{n}She kisses the corner of your mouth, catches your lower lip with her next kiss and smiles against it.{/n}''',
       c('[Kiss her and stay for the private evening.]', "kiss"),
       c('"Come outside with me. I want some time with you that no one has advertised."', "walk")),
     n("kiss", "Narrator", '''{n}She meets your kiss with none of the composure she maintained in the yard. Her hand slides to the back of your neck. When you stand, she comes with you, laughing softly as the chair catches against your heel.{/n}
 "Our scenery remains unreliable."
 {n}You move it aside. She closes the door, turns the key, and comes back already pulling the pins out of her hair. She undoes your belt with more concentration than she gave the whole scene in the yard, and when it is done she pushes you down onto the edge of the bed and climbs into your lap, her knees either side of you, her skirts rucked up and her hands in your hair.{/n}
-{n}Later, when the room has grown quiet, she rests her head against your shoulder. She has not become less troublesome. She seems pleased that you have noticed.{/n}''', c('[Keep the evening without making it an answer to the whole city.]', flags=("kiana.further_kept", "kiana.further_private_evening"))),
+{n}Later, when the room has grown quiet, she rests her head against your shoulder. She has not become less troublesome. She seems pleased that you have noticed.{/n}''', c('[Stay with her.]', flags=("kiana.further_kept", "kiana.further_private_evening"))),
     n("walk", "Kiana", '''"An unadvertised walk. We shall be a great disappointment to the public."
 {n}She takes her scarf from the chair and puts it on without arranging it for effect. At the door she catches your hand again.{/n}
 "If anyone asks, we are investigating the quality of the evening air. It is a very serious commission."
 {n}You find a quieter street and let the conversation stray. She tells you a dreadful rhyme about the captain, tries a better one, and objects when you prefer the first.{/n}
 {n}When you turn back, she draws you close enough to kiss before releasing your hand to open her door.{/n}
-"There. Something they may not put on a board."''', c('[Leave her with a real evening to remember and the next one still welcome.]', flags=("kiana.further_kept", "kiana.further_private_walk"))),
+"There. Something they may not put on a board."''', c('[Walk her to her door.]', flags=("kiana.further_kept", "kiana.further_private_walk"))),
 ], after=("kiana.further_yard_kept",))
 
 

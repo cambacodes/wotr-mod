@@ -5,68 +5,68 @@ from story_format import c, n, scene
 def reckoning(prefix, destination):
     """Read the current native outcome at this conversation, without saving a readiness alias."""
     return [
-        n(prefix + "_quest", "Seelah", '''"Before we start deciding where to put my things, there's something I want to be clear about. My work with my friends is part of what I would be bringing with me."
+        n(prefix + "_quest", "Seelah", '''"Before you clear a shelf for my things, remember I've still got work to do for my friends. My sword won't be hanging over the hearth just to look pretty."
 {n}She sits forward, resting her hands on her knees.{/n}
-"I don't want to give you the easy version and leave you to discover the rest."''',
+"You should hear the trouble before you find my boots under your table."''',
           c('"Tell me where things stand now."', prefix + "_unfinished", forbids=("seelah.souls_returned",)),
           c('"Tell me where things stand now."', prefix + "_bad", requires=("seelah.souls_returned", "seelah.ending_bad")),
           c('"Tell me where things stand now."', prefix + "_moderate", requires=("seelah.souls_returned", "seelah.ending_moderate"), forbids=("seelah.ending_bad",)),
           c('"Tell me where things stand now."', prefix + "_returned", requires=("seelah.souls_returned",), forbids=("seelah.ending_bad", "seelah.ending_moderate"))),
-        n(prefix + "_unfinished", "Seelah", '''"There are people I still haven't helped. I don't know yet how much I can put right. When the fighting ends, I won't suddenly stop wanting to find out."
+        n(prefix + "_unfinished", "Seelah", '''"There are people I still haven't helped. I don't know how many I can bring home. But when the fighting ends, I'm going to keep looking."
 {n}She looks at you steadily.{/n}
-"I want a life with you. I may also need to leave a comfortable room because somebody is still missing from theirs. If I say I'll come back, I want you to know why I went."
+"I want to live with you. But if someone's still missing, I'll pull on my boots and go after them. I'll tell you where I'm going. And I'll come back."
 {n}Her mouth twists.{/n}
-"That sounded less like a warning in my head. I'm trying to tell you what you can expect, not frighten you into choosing someone with fewer problems."''', c('"We can speak honestly about what is still unfinished."', destination)),
-        n(prefix + "_bad", "Seelah", '''"We brought back souls. That matters. It didn't undo everything that happened, and there are days when being told it ought to be enough makes me want to shout."
+"Hah. That sounded better before I said it. I'm asking you to keep a place for me, not handing you a list of reasons to run."''', c('"Tell me who still needs finding."', destination)),
+        n(prefix + "_bad", "Seelah", '''"We brought the souls back. Thank the gods for that. But everything else didn't mend itself. Tell me I ought to be satisfied, and some days I'll shout your ears off."
 {n}She presses her palms together, then lets them fall apart.{/n}
-"I may need to travel on my own when I can. I don't know how long. I can promise to tell you what I know instead of calling every difficult day a private matter until you give up asking."''', c('"And Elan?"', prefix + "_elan")),
-        n(prefix + "_moderate", "Seelah", '''"I still have questions about what I did, and what I thought I knew. Bringing people back didn't answer all of them."
+"When I can, I may take to the road alone. For how long? I don't know. But I won't keep snapping 'none of your business' until you stop asking. You'll hear from me, even if the news is rotten."''', c('"And Elan?"', prefix + "_elan")),
+        n(prefix + "_moderate", "Seelah", '''"I thought I knew what I was doing. Now? I've got questions. We brought people back, but I still lie awake wondering where I went wrong."
 {n}She gives a small, rueful smile.{/n}
-"I'd like to hear how other people live with that. I may go looking for them. I want to write to you while I'm away, even when all I have to report is that the road is wet and I haven't become wiser."
+"Someone must have wrestled with this before me. I may go looking for them. I'll write to you, even if the whole letter says my boots are soaked and I'm still an idiot."
 "You may complain about the rain. I intend to."''', c('"And Elan?"', prefix + "_elan")),
-        n(prefix + "_returned", "Seelah", '''"I'm glad we brought them back. I want to keep finding reasons to be glad. But I don't get to arrange what everybody does next just because I want us all together again."
+        n(prefix + "_returned", "Seelah", '''"We brought them back! I'd like us all around a table again, making enough noise to wake the neighbors. Whether they'll come is another question."
 {n}She catches herself smiling at the thought.{/n}
-"I will probably suggest it anyway. You can remind me that an invitation is supposed to wait for an answer."
-"With you, too. I have a great many plans. I want to hear yours before I start calling them ours."''', c('"And Elan?"', prefix + "_elan")),
+"I'll ask anyway. If I start counting chairs before anyone answers, kick me under the table."
+"And I've got plenty of plans for you and me. Go on, tell me yours before I spend all our coin on mine."''', c('"And Elan?"', prefix + "_elan")),
         n(prefix + "_elan", "Seelah", '''{n}Seelah takes a moment before answering.{/n}''',
           c('[Listen.]', prefix + "_elan_dead", requires=("seelah.elan_dead",)),
           c('[Listen.]', prefix + "_elan_other", forbids=("seelah.elan_dead",))),
         n(prefix + "_elan_dead", "Seelah", '''"I miss him. Sometimes I remember something he said and begin an argument he isn't here to finish."
 {n}Her voice catches, and she waits until she can trust it.{/n}
-"I don't want you to fill that space. I want to be able to tell you when I miss him, and still have a good evening with you afterward. Sometimes both happen."''', c('"You can tell me."', destination)),
-        n(prefix + "_elan_other", "Seelah", '''"I can't promise you what he'll choose. I have enough trouble speaking for myself when I want an answer badly."
+"I miss him. You can't mend that. But I want to tell you about him, then stay here with you over supper. I've laughed at his jokes and cried over them in the same evening before."''', c('"You can tell me."', destination)),
+        n(prefix + "_elan_other", "Seelah", '''"You'll have to ask him. I'd dearly like to hear his answer, but I can't drag it out of him."
 {n}She rubs a thumb along the edge of her chair.{/n}
-"If there is another conversation to have with him, it will have to be his as well as mine. I won't plan it here and pretend he's already agreed."''', c('"Then let us speak for ourselves."', destination)),
+"If we talk again, he'll have plenty to say, I'm sure. No use settling it here with his chair empty."''', c('"All right. What do you want?"', destination)),
     ]
 
 
 def future_gate_nodes(destination="start", migration=False):
     """Gate developed plans through played history; every postponement remains replayable."""
-    title = "We have made a promise already. I still want to give it some actual days together." if migration else "I'd like to talk about that. I also want us to have something to make plans from besides how much we like the idea."
-    activity_choices = [c('"We have shared those days. Let us talk about what comes next."', "future_quest", requires=("seelah.late_race_kept",)),
-                        c('"What would you like us to make time for first?"', "future_visits", forbids=("seelah.late_race_kept",))]
+    title = "I remember our promise. Now I'd like a few days with you before we start packing our things together." if migration else "I'd like that. But let's spend a few days together before we start arguing over where the hearth goes."
+    activity_choices = [c('"We have had those days together. What comes next?"', "future_quest", requires=("seelah.late_race_kept",)),
+                        c('"What shall we do first?"', "future_visits", forbids=("seelah.late_race_kept",))]
     if not migration:
-        activity_choices.append(c('"I want to keep seeing you, but I cannot promise those days before the war ends."', "short_quest", forbids=("seelah.late_race_kept",)))
+        activity_choices.append(c('"I want to see you again. But I cannot promise whole days together before the war ends."', "short_quest", forbids=("seelah.late_race_kept",)))
     nodes = [
-        n("future_entry", "Seelah", title, c('"Tell me."', "future_abyss"), c('"Let us find a better time for this conversation."', abort=True)),
-        n("future_abyss", "Seelah", '''"First, is there something we've been leaving unsaid? I don't want to step over it because planning a house sounds nicer."''',
-          c('"Let us talk about the days we can share."', "future_activity", forbids=("seelah.letter_unsettled",)),
+        n("future_entry", "Seelah", title, c('"Tell me."', "future_abyss"), c('"Tell me another evening."', abort=True)),
+        n("future_abyss", "Seelah", '''"First, have we left anything hanging? Drawing a hearth on a scrap of paper won't make it go away."''',
+          c('"Nothing hanging. What shall we do together?"', "future_activity", forbids=("seelah.letter_unsettled",)),
           c('"We talked, and we went back to the copyist. I have not forgotten."', "future_activity", requires=("seelah.letter_unsettled", "seelah.copyist_followed")),
-          c('"We addressed the copyist after we came back. I remember what we said."', "future_activity", requires=("seelah.letter_unsettled", "seelah.letter_return_addressed"), forbids=("seelah.copyist_followed",)),
+          c('"We talked about the copyist here in Drezen. I remember."', "future_activity", requires=("seelah.letter_unsettled", "seelah.letter_return_addressed"), forbids=("seelah.copyist_followed",)),
           c('"The copyist. We still need to speak about her."', "future_copyist", requires=("seelah.letter_unsettled",), forbids=("seelah.copyist_followed", "seelah.letter_return_addressed"))),
-        n("future_copyist", "Seelah", '''"Yes. I want to finish that conversation before we make another promise."
-{n}She stays beside you, but leaves the imagined house for another evening.{/n}
-"Ask me about her when you can stay. I have something here that I need to show you."''', c('[Return to the conversation about the copyist before making future plans.]', abort=True)),
-        n("future_activity", "Seelah", '''"I wanted us to have an afternoon where I could be ridiculous about winning, and you could discover whether that was a terrible mistake."
+        n("future_copyist", "Seelah", '''"Yes. The copyist first. We left that in a fine mess."
+{n}Seelah stays beside you, her smile gone.{/n}
+"Come and sit with me when you aren't rushing off. I've got something to show you."''', c('[Return to the conversation about the copyist before making future plans.]', abort=True)),
+        n("future_activity", "Seelah", '''"I want an afternoon to beat you at something and crow about it. You might regret encouraging me."
 {n}She smiles.{/n}
-"And a few days when helping someone didn't turn out quite as neatly as we hoped. I want to know what we do with those days too."''', *activity_choices),
-        n("future_visits", "Seelah", '''"Something we can actually do. We can return to the grand promises afterward."''',
+"And when we try to help someone and make a mess of it, I want you there for the cleaning up. We won't win every afternoon."''', *activity_choices),
+        n("future_visits", "Seelah", '''"Let's start with an outing. The grand speeches can wait."''',
           c('"Then let us begin with the washing-yard invitation."', "future_saw", forbids=("seelah.saw_arranged",)),
           c('"We should see how the repair turned out."', "future_platform", requires=("seelah.saw_arranged",), forbids=("seelah.platform_kept",)),
           c('"You asked me to find you after the repair."', "future_faith", requires=("seelah.platform_kept",), forbids=("seelah.faith_spoken",)),
           c('"You promised me an evening with a view."', "future_roof", requires=("seelah.faith_spoken",), forbids=("seelah.aftermath_ready",)),
           c('"Let us make time for the course and the race."', "future_race", requires=("seelah.aftermath_ready",))),
-        n("future_saw", "Seelah", '''"The washing yard, then. Mera and Orsa will have plenty to say without us imagining it in advance. Ask me when you have time to go."''', c('[Keep the future conversation open and ask about the washing yard.]', abort=True)),
+        n("future_saw", "Seelah", '''"The washing yard, then. Mera and Orsa won't be short of things to tell us. Come and get me when you can go."''', c('[Keep the future conversation open and ask about the washing yard.]', abort=True)),
         n("future_platform", "Seelah", '''"Yes. We arranged a repair. I want to see what came of it before I begin congratulating anyone."''', c('[Keep the future conversation open and ask how the repair went.]', abort=True)),
         n("future_faith", "Seelah", '''"I did. I meant it. Come and find me when we can finish a conversation without either of us rushing away."''', c('[Keep the future conversation open and keep that meeting.]', abort=True)),
         n("future_roof", "Seelah", '''"Food, sky, and no grand plan. I can manage that. Give me the time to arrange it."''', c('[Keep the future conversation open and arrange the roof evening.]', abort=True)),
@@ -83,13 +83,13 @@ def future_gate_nodes(destination="start", migration=False):
     if not migration:
         nodes.extend(reckoning("short", "short_choice"))
         nodes.extend([
-            n("short_choice", "Seelah", '''"Then let us promise what we can mean now. I want to keep seeing you. I won't pretend we have already learned how to build a whole life together."
+            n("short_choice", "Seelah", '''"Then come and see me. I want you here. A whole life together? I won't swear to that yet."
 {n}She rests her hand on the table, close to yours.{/n}
-"There can be more later. Or there may be less than we hope. I'd rather begin honestly."''',
-              c('"I want to keep choosing our evenings. That is the promise I can make now."', "short_end"),
-              c('"I cannot offer even that honestly."', "no")),
+"Maybe we'll be arguing over a hearth one day. Maybe we won't get that far. For now, I'd like another evening with you."''',
+              c('"I will come back for another evening. That much I can promise."', "short_end"),
+              c('"I cannot promise to keep coming back."', "no")),
             n("short_end", "Seelah", '''"All right. An evening at a time."
-{n}Her smile is warm, though she leaves the grander plans unspoken.{/n}
+{n}She smiles at you across the table.{/n}
 "Come and see me when there isn't an emergency. I would like to discover what you complain about on an ordinary day."''',
               c('[Agree to keep seeing each other, one evening at a time.]', flags=("seelah.committed", "seelah.chosen_future", "seelah.short_future_chosen"))),
         ])
@@ -101,16 +101,16 @@ def farewell_gate_nodes():
         n("farewell_entry", "Seelah", '''"Before we say our last goodbyes to Drezen, are there invitations we still mean to keep? I don't want us to remember them only when the gates are behind us."''',
           c('[Review the time still available together.]', "farewell_pending"),
           c('[Keep the farewell now, leaving any remaining Drezen meetings unfinished.]', "start")),
-        n("farewell_pending", "Seelah", '''{n}Seelah waits while you consider what the two of you have actually done, and what you have only promised.{/n}''',
-          c('"We still need to address the copyist. Let us do that before leaving."', "farewell_copyist", requires=("seelah.letter_unsettled",), forbids=("seelah.copyist_followed", "seelah.letter_return_addressed")),
-          c('"I want time for the invitations we have not kept, before the race is behind us too."', "farewell_activity", forbids=("seelah.late_race_kept",)),
+        n("farewell_pending", "Seelah", '''{n}Seelah sits down beside you and counts your unfinished outings on her fingers.{/n}''',
+          c('"We still owe each other a talk about the copyist. Before we leave."', "farewell_copyist", requires=("seelah.letter_unsettled",), forbids=("seelah.copyist_followed", "seelah.letter_return_addressed")),
+          c('"We still have outings to catch up on before the race. I want to go with you."', "farewell_activity", forbids=("seelah.late_race_kept",)),
           c('"You asked me for an evening after the race. I want to keep it."', "farewell_evening", requires=("seelah.late_race_kept",), forbids=("seelah.late_evening_kept",)),
           c('"We planned something after that evening. Let us try it before we leave."', "farewell_step", requires=("seelah.late_evening_kept",), forbids=("seelah.late_campaign_kept",)),
           c('[Keep the farewell now, leaving any remaining Drezen meetings unfinished.]', "start")),
         n("farewell_copyist", "Seelah", '"Yes. Ask me about her while we still have a quiet place to sit."', c('[Postpone the farewell and return to the copyist conversation.]', abort=True)),
         n("farewell_activity", "Seelah", '"So do I. Come and find me between the things we cannot put off. We can make a few days out of it."', c('[Postpone the farewell and continue the earlier invitations.]', abort=True)),
         n("farewell_evening", "Seelah", '"Good. I was hoping you had not forgotten. Give me time to find a room and I will be very pleased to see you."', c('[Postpone the farewell and keep the after-race evening.]', abort=True)),
-        n("farewell_step", "Seelah", '"Then let us keep it. We have time for something we wanted, if we stop spending it saying we ought to."', c('[Postpone the farewell and keep the next outing.]', abort=True)),
+        n("farewell_step", "Seelah", '"Then let\'s go! We\'ve spent enough time talking about it to have gone twice already."', c('[Postpone the farewell and keep the next outing.]', abort=True)),
     ]
 
 
@@ -128,27 +128,27 @@ def s(id, title, entry, nodes, requires, forbids=()):
                         delay=0, optional=True))
 
 
-s("future_followup", "The days inside the promise", '"We made a promise. I want to talk about the days inside it."', [
+s("future_followup", "The days inside the promise", '"We promised each other a life together. How shall we spend it?"', [
     *future_gate_nodes("kept_promise", migration=True),
-    n("kept_promise", "Seelah", '''"I haven't forgotten what we promised. I don't need you to say the old words again as though they only begin counting now."
-{n}She reaches for your hand, then leaves the invitation between you.{/n}
-"We've had some of those days together. I know more about what I want with you. I wanted you to hear it with the difficult parts included."''',
-      c('"I still want that life with you. With room for what you have told me."', "renewed"),
-      c('"I need time to think. I am not taking back our promise tonight."', abort=True)),
-    n("renewed", "Seelah", '''"Good. Then I will keep making plans, and you can keep telling me which ones need work."
+    n("kept_promise", "Seelah", '''"I remember our promise. You don't have to swear it all over again."
+{n}She reaches across the table, her fingers brushing yours.{/n}
+"We've had a few days to try it. I want more. Even after all that trouble I've just told you about."''',
+      c('"I still want a life with you. Unfinished work, muddy boots and all."', "renewed"),
+      c('"Let me sleep on it. My promise still stands."', abort=True)),
+    n("renewed", "Seelah", '''"Good! I'll keep making plans. Shout if you see a hole in one before I fall through it."
 {n}She laughs softly.{/n}
 "Not all of them. I am bound to get one right without assistance eventually."''',
-      c('[Keep making room for the life you have promised each other.]', flags=("seelah.developed_commitment",))),
+      c('[Keep your promise of a life together.]', flags=("seelah.developed_commitment",))),
 ], requires=("seelah.road", "seelah.committed"), forbids=("seelah.developed_commitment", "seelah.farewell"))
 
-s("farewell_catchup", "Time before the gates", '"We said our goodbyes, but we are still here. Can we keep another invitation?"', [
-    n("start", "Seelah", '''"We can. I was beginning to think we had made a rule against enjoying the time before we actually left."
+s("farewell_catchup", "Time before the gates", '"We said goodbye, but the gates are still ahead of us. Shall we take that outing we missed?"', [
+    n("start", "Seelah", '''"Yes! I was starting to think saying goodbye meant we had to sit around looking solemn until someone saddled the horses."
 {n}She looks toward the street, then back at you.{/n}
-"We have already said what we meant. I won't ask you to forget it. If we still have time for something we missed, I'd like to use it."''',
-      c('"Then let us return to the invitations we left unfinished."', "yes"),
+"I meant every word. But we're still here, and there's an outing we haven't taken. Let's go while we can."''',
+      c('"Then let us take those outings we missed."', "yes"),
       c('"Not now. I am glad I asked."', abort=True)),
-    n("yes", "Seelah", '''"Find me when you can stay. We'll take up the next thing we can actually do here."
+    n("yes", "Seelah", '''"Come and get me when you can stay a while. We'll see which outing we can squeeze in before we leave."
 {n}She gives you a pleased, almost conspiratorial smile.{/n}
 "No need to polish the farewell. I thought the first one was rather good."''',
-      c('[Make time for the remaining Drezen meetings without erasing the farewell.]', flags=("seelah.catchup_requested",))),
+      c('[Keep your farewell, and take another outing together before leaving Drezen.]', flags=("seelah.catchup_requested",))),
 ], requires=("seelah.farewell", "seelah.committed"), forbids=("seelah.catchup_requested",))

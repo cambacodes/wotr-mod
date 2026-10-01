@@ -134,8 +134,8 @@ internal static class EtudeBindingTests
         Record(story, bear, Read(story, bear, 3, "0a5654e7dc18f074d9356009d55eb51b"));
         bear.Etudes["soana.bear_dead.live"] = (false, false);
         var knot = Read(story, bear, 3, "", "trickster", "trickster.ever", "soana.dead");
-        check(knot.Has("soana.bear_dead") && Rules.Available(story, S("soana.trickster.killed.knot"), knot)
-              && ChoiceOpen(S("soana.trickster.killed.knot"), "start", c => c.Requires.Contains("soana.bear_dead"), knot),
+        check(knot.Has("soana.bear_dead") && knot.Has("soana.guardian_dead") && Rules.Available(story, S("soana.trickster.killed.knot"), knot)
+              && ChoiceOpen(S("soana.trickster.killed.knot"), "start", c => c.Requires.Contains("soana.guardian_dead"), knot),
             "Etude_Soana: the knot letter's bear branch is shut away from Wintersun.");
     }
 }

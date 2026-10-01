@@ -26,16 +26,16 @@ s("boots", "The last dry bench", 1, '"Seelah, are you busy this evening?"', [
     n("start", "Seelah", '''{n}Seelah has claimed a bench near the fire with the determined air of someone defending a breach. Her boots stand upside down beside it. A damp sock hangs from the pommel of her sword.{/n}
 "If you need a paladin, give me a moment. If you need this bench, prepare to fight for it."
 {n}She shifts her legs before you have answered, making room.{/n}
-"Actually, sit down. You look as though you've forgotten it's allowed."''',
+"Oh, sit down. You're making my feet ache just looking at you."''',
       c('"I came looking for you. The bench is a welcome extra."', "company"),
       c('"I wanted to sit with someone who would not ask me to decide anything."', "rest"),
       c('"You are drying a sock on a sacred weapon."', "sock")),
     n("company", "Seelah", '''"Oh?"
 {n}She starts to smile, then looks down at her stockinged feet.{/n}
 "Well. You've caught me looking my best. Give me warning next time and I'll have someone sing about the boots."
-{n}She does not move away when you sit. Her shoulder is warm through the worn cloth of her sleeve.{/n}
+{n}You sit shoulder to shoulder. Hers is warm through the worn cloth of her sleeve.{/n}
 "Was there something you wanted to talk about, or did you come to admire a woman who has finally defeated a buckle?"''',
-      c('"I thought we might discover whether we enjoy each other without an emergency."', "meal", flags=("seelah.direct",)),
+      c('"I wanted your company for once without a demon trying to kill us."', "meal", flags=("seelah.direct",)),
       c('"The buckle never stood a chance."', "meal", flags=("seelah.playful",))),
     n("rest", "Seelah", '''"I can do that."
 {n}She indicates a cloth bundle behind the bench.{/n}
@@ -76,7 +76,7 @@ s("boots", "The last dry bench", 1, '"Seelah, are you busy this evening?"', [
     n("plans", "Seelah", '''{n}Seelah cuts a blemish out of her half of the apple and drops it into the fire.{/n}
 "Then let me make one that isn't very far ahead."
 {n}She rests the little knife beside the bread.{/n}
-"We finish this. We sit until our feet stop complaining. Tomorrow, if there is a chance to do something pleasant together, we notice it before it has gone."
+"We finish the food. We sit until our feet stop complaining. And tomorrow, if there's a spare hour, I'm finding you before somebody fills it with work."
 {n}She leans back, stretching a tired shoulder.{/n}
 "I can manage that much planning. On a good day."''',
       c('"Tomorrow, then."', "finish", flags=("seelah.invited",)),
@@ -107,7 +107,7 @@ s("wager", "A very poor wager", 1, '"Can I tempt you away from work for a while?
 {n}She puts a button in your hand, closing your fingers around it with hers.{/n}
 "But then everyone would hear how badly you were losing. I am trying to protect your dignity."
 {n}Her hand remains a moment longer than the explanation requires.{/n}
-"Would you rather I moved?"''',
+"Or were you hoping to escape me with a walk?"''',
       c('"No. I was admiring your planning."', "dance", flags=("seelah.dance", "seelah.flirted",)),
       c('"I would rather take a walk with you."', "walk", flags=("seelah.walk",))),
     n("ask", "Seelah", '''{n}Seelah looks at the cup, sets it upright, and takes your hand.{/n}
@@ -134,11 +134,11 @@ s("wager", "A very poor wager", 1, '"Can I tempt you away from work for a while?
 {n}You do not get far. She stops to return a dropped glove, exchange a few words with a guard, and help lift a stubborn wheel over a rut. At the third interruption she looks apologetically at you.{/n}
 "I am making a terrible job of the part where nobody else can hear us."
 {n}She leads you away from the busiest path. For several paces you can hear only your own footsteps.{/n}
-"There. I have run out of excuses to put it off. I like spending time with you. I would like you to know when I am doing it on purpose."''',
+"There. Nobody to interrupt. I wanted you all to myself for a bit. That's why I keep hunting you down, y'know."''',
       c('"I was beginning to hope that you were."', "walk_end", flags=("seelah.flirted",)),
-      c('"I enjoy it too. I am still working out what that means."', "walk_end", flags=("seelah.unhurried",))),
+      c('"I like your company too. The rest, I am not sure of yet."', "walk_end", flags=("seelah.unhurried",))),
     n("walk_end", "Seelah", '''"Good. I didn't want to spend the next week pretending I happened to be everywhere you were. It would have made me look a very poor scout."
-{n}Her fingers brush yours. A question, small enough that you can answer it by taking her hand or simply continuing beside her.{/n}
+{n}Her fingers brush yours as you walk, once, then again. She glances sideways at you with a grin.{/n}
 {n}Then she remembers the button under the crate and groans. It came from her only good shirt. You turn back together to look for it.{/n}''',
       c('[Take her hand and arrange another evening together.]', flags=("seelah.evening", "seelah.flirted")),
       c('[Walk beside her and make plans to meet again.]', flags=("seelah.evening",))),
@@ -151,9 +151,9 @@ EVENING = [
 "On the bright side, we can eat these without opening our mouths very far."
 {n}She takes a bite, sending crumbs down her clean shirt. You share the food, picking at the flattened edges. When you both reach for the same piece, she catches your fingers and keeps them in hers.{/n}
 "I was thinking about kissing you," she says. "Apparently I can't do that and eat at the same time."''',
-      c('"You can kiss me, if that is what you are trying to ask."', "kiss", flags=("seelah.kissed",)),
-      c('"I want to kiss you. I am also worried about what it changes."', "worry"),
-      c('"I like being close to you. I need more time."', "time", flags=("seelah.unhurried",))),
+      c('"Then put the pastry down and kiss me."', "kiss", flags=("seelah.kissed",)),
+      c('"I want to kiss you. And tomorrow? Will we still know what to say to each other?"', "worry"),
+      c('"I like sitting here with you. The kiss can wait for another evening."', "time", flags=("seelah.unhurried",))),
     n("kiss", "Seelah", '''{n}The distance between you closes. Seelah kisses you, her hand tightening around yours against the blanket.{/n}
 {n}When she draws back, her smile has lost its uncertainty.{/n}
 "Better than the buttons."
@@ -161,14 +161,14 @@ EVENING = [
       c('[Stay with her a little longer.]', flags=("seelah.courting",))),
     n("worry", "Seelah", '''"So am I."
 {n}She picks a loose thread from the blanket, then catches herself and leaves it alone.{/n}
-"I could say we will always be sensible and never quarrel at the wrong time. But you have met me, so that would be a poor beginning."
+"Well, I can't promise I'll suddenly grow wise and sweet-tempered. You've heard me argue. I'd be caught lying before we finished supper."
 {n}She looks back at you.{/n}
-"I want to try. I don't need you to know where it ends tonight."''',
+"But I want to kiss you. And come hunting for you tomorrow. That's as far as I've got."''',
       c('[Kiss her.]', "kiss", flags=("seelah.kissed",)),
       c('"Then let us start with another evening together."', "time", flags=("seelah.unhurried",))),
     n("time", "Seelah", '''"Then another evening it is."
-{n}She is a little disappointed. She does not disguise it well, though she makes room for you to settle more comfortably beside her.{/n}
-"I am still glad I asked. Now you know why I keep finding reasons to sit here."
+{n}Her smile droops. She shifts over on the blanket and brushes the crumbs off the patch beside her.{/n}
+"Well, at least I've finally said it. I was running out of excuses to sit so close."
 {n}She separates the remaining bread into two pieces and gives you one.{/n}
 "At least I didn't ruin this. Remember that if anybody asks about my skills as a host."
 {n}She eats her share, brushing the crumbs off her shirt with more care this time.{/n}''',
@@ -181,12 +181,12 @@ s("promise", "An invitation kept", 2, '"I would like another evening with you, S
 {n}A young recruit has lost something borrowed from a friend. A little brass clasp, nothing valuable to anyone else. The recruit has already searched alone and is frightened of admitting it is gone.{/n}
 "I said I would help if it hadn't turned up," Seelah tells you. "I also said I would meet you."
 {n}She looks from the parcel in her hands to the recruit waiting a few paces away.{/n}
-"I should have noticed those were becoming the same evening."''',
+"Two promises, one evening. Wonderful. I can count demons better than that."''',
       c('"Let us help together. We can eat afterward."', "search", flags=("seelah.shared_duty",)),
       c('"Ask someone else to help. I want you to keep this evening for us."', "keep", flags=("seelah.kept_evening",)),
       c('"Go. But choose another time for us."', "later", flags=("seelah.rescheduled",))),
     n("search", "Seelah", '''{n}Relief crosses her face, followed by a small wince.{/n}
-"You make that very easy. I shouldn't count on it always being easy."
+"Thanks. I owe you a supper that doesn't start with crawling through the dirt."
 {n}The three of you search the ground where the recruit was working. Seelah kneels without worrying about the clean shirt. She finds a nail, a bent spoon, and a coin that the recruit insists cannot be theirs.{/n}
 {n}You find the clasp caught in a fold of a discarded sack. The recruit's thanks are so fervent that Seelah has to rescue you from them.{/n}
 "Go and return it," she says. "Before it falls in love with another sack."
@@ -196,17 +196,17 @@ s("promise", "An invitation kept", 2, '"I would like another evening with you, S
       c('"Next time, we leave before anyone can find us."', "supper", flags=("seelah.next_private",))),
     n("keep", "Seelah", '''{n}For a moment she looks disappointed in you. Then her gaze drops to the bread and she lets out a breath.{/n}
 "Yes. I did promise."
-{n}She finds another willing pair of hands for the search, explains where the recruit has already looked, and returns. She has not suddenly stopped worrying about the clasp.{/n}
-"I feel selfish," she admits as you begin walking. "And a little irritated that I feel selfish. It was one evening. I meant to keep it."
+{n}She finds another willing pair of hands for the search, explains where the recruit has already looked, and returns. As you leave, she glances back at the two figures bent over the ground.{/n}
+"They have help," she says as you begin walking. "So why am I still looking over my shoulder? I promised you this evening. One evening!"
 {n}She gives you a rueful smile.{/n}
 "If I mention that clasp three more times, you may throw a piece of bread at me."''',
-      c('"I wanted your company, not an apology for wanting it too."', "supper"),
+      c('"You wanted this evening too. Come on, before the bread goes stale."', "supper"),
       c('"We can ask whether they found it afterward."', "supper")),
     n("later", "Seelah", '''"I will."
-{n}She says it quickly, then stops herself from adding a promise she has not thought through.{/n}
-"Tomorrow, after the evening meal. Ask me then. If I let somebody else claim the evening again, you may remind me how much I dislike broken promises."
+{n}She answers quickly, then frowns and counts on her fingers.{/n}
+"Tomorrow, after the evening meal. Come and find me. If somebody tries to grab me for another errand, remind me I already broke one promise to you."
 {n}She gives you half the bread before she goes.{/n}
-"Thank you," she says, then grimaces. "That sounded as though I was thanking you for being convenient. I'm sorry to miss tonight. I was looking forward to it."
+"Thank you," she says, then grimaces. "Oh, that's a poor substitute for supper together. I'm sorry. I was looking forward to tonight."
 {n}She stays long enough to squeeze your hand, then goes to help the recruit.{/n}''',
       c('[Leave her to the search. Meet again another evening.]')),
 ] + EVENING, requires=("seelah.wager",), delay=24, Chapters=[2, 3, 5])
@@ -214,9 +214,9 @@ s("promise", "An invitation kept", 2, '"I would like another evening with you, S
 
 s("kept", "An evening that belongs to us", 2, '\"Have you kept this evening free?\"', [
     n("start", "Seelah", '''{n}Seelah has a parcel ready when you find her. The brass clasp has been returned, her good shirt has survived the search, and she has found something better than bread for supper.{/n}
-"I told everyone I was unavailable. I may have made it sound as though I was undertaking a dangerous expedition."
+"I told everyone I'd be busy tonight. Might have made it sound like a dangerous expedition."
 {n}She gives you a conspiratorial smile.{/n}
 "It worked. Nobody wants to come along."''',
-      c('"I appreciate the trouble you have taken."', "supper"),
+      c('"You went to all that trouble for me? Thank you."', "supper"),
       c('"Then let us disappear before someone grows brave."', "supper")),
 ] + EVENING, requires=("seelah.promise", "seelah.rescheduled"), delay=24, Chapters=[2, 3, 5])
