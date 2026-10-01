@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-devarra\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4700,
-  "unique_targets": 1026,
+  "binding_uses": 4720,
+  "unique_targets": 1033,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -542,6 +542,10 @@
       "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Cue_0024.jbp",
       "type": "BlueprintCue"
     },
+    "b265afc1afe5a4241b1d5d42a4148e75": {
+      "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "d2f3ae3a8d7d0eb4aab722e777b7c260": {
       "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0018.jbp",
       "type": "BlueprintCue"
@@ -550,8 +554,28 @@
       "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
     },
+    "04d72f75c1e841747a55b780fccf37fe": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0020.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "d1f609c764422a24994568d850c99958": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0035.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "ab4a075bbc5d24048bf892697e75f2e3": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/AnswersList_0039.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "b8dfb42d03fc931409f2b80614cfa9de": {
       "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "24de2c3ecf95fc640a84a5211d90121d": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0006.jbp",
+      "type": "BlueprintCue"
+    },
+    "450b4a857a418f24c87ca6ae3984e4ff": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0028.jbp",
       "type": "BlueprintCue"
     },
     "9c653a907d8549248bd9d202c1fb8964": {
@@ -560,6 +584,10 @@
     },
     "d39b1e850904daa43b7e6dab3a6e7f83": {
       "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0046.jbp",
+      "type": "BlueprintCue"
+    },
+    "ea54d573de2fd7842b0fe4d9c513a88e": {
+      "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0047.jbp",
       "type": "BlueprintCue"
     },
     "190fda58a169c9340b626f1a503c696f": {

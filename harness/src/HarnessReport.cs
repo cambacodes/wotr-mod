@@ -32,6 +32,8 @@ namespace RRT.TestHarness
         public List<string> Degraded = new List<string>();
         public List<string> Warnings = new List<string>();
         public List<string> ReflectionProblems = new List<string>();
+        /// <summary>E18: one line per Story.NativeGates gate, read off the real loaded blueprints ("MISSING ..." fails the run).</summary>
+        public List<string> NativeGates = new List<string>();
         public int SceneCount;
         public int DialogCount;
         public bool BlueprintCacheSeen;
@@ -194,6 +196,8 @@ namespace RRT.TestHarness
             if (!Init.RrtModFound) s.Failures.Add("RRT mod RanRomanceTirabade not found by UMM.");
             if (!Init.Initialized) s.Failures.Add("Tirabade.Main did not initialize" + (Init.Error != null ? ": " + Init.Error : "."));
             if (Init.ReflectionProblems.Count > 0) s.Failures.Add("Reflection lookups failed: " + string.Join("; ", Init.ReflectionProblems));
+            foreach (var gate in Init.NativeGates)
+                if (gate.StartsWith("MISSING", StringComparison.Ordinal)) s.Failures.Add("Native gate not attached: " + gate);
             foreach (var save in Saves)
             {
                 if (save.LoadOk) s.SavesLoaded++;

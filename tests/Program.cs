@@ -499,6 +499,8 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) ChadaliTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) ArueshalaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) DevarraTricksterTests.Run(story, Check);
+            // Option A (devarra-device-options.md): the moult device is retired (gated off with Forbids trickster.ever; ids kept for saves).
+            playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "devarra" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
             if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) DelamereTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) KaylessaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "mielarah.trickster.tavern.arithmetic")) MielarahTricksterTests.Run(story, Check);
