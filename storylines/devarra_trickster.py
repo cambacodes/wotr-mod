@@ -292,7 +292,7 @@ letter(P + "dead.woken", "The hide splits", [
        c("[Watch her go.]")),
     dv("unknown", '''"You will." {n}She lowers her head until one eye is level with yours, close enough that you can feel the heat of it.{/n} "And when you do, you will tell me before you tell anyone else. That is how this is going to work."''',
        c("[Watch her go.]")),
-], requires=("trickster.ever", PRIMED, LATCHED), forbids=(RETURNED, DECLINED), delay=48, TricksterDevice=True)
+], requires=("trickster.ever", PRIMED, LATCHED), forbids=(RETURNED, DECLINED), delay=72, TricksterDevice=True)   # the three days
 
 
 # --- The test (physical, Chapters 3-5): her two demands, carried by the one messenger she does not eat --------------
@@ -330,7 +330,7 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
 # --- The commit (remote, tier B). Her verdict, her terms, her refusal on every branch ------------------------------
 
 letter(P + "after.lair", "A tower above Drezen", [
-    nar("climb", '''{n}The ruined watchtower on the ridge above Drezen has a new roof: a grey wing, folded. You climb because you were sent for. The Storyteller's message was one line long, and he delivered it with the expression of a man who has been asked not to add anything.{/n}
+    nar("climb", '''{n}The ruined watchtower on the ridge above Drezen has a new roof: a grey wing, folded. You climb because you were sent for: one line burned into the timber of the north gate at the height of a dragon's head, which the gatekeepers have not dared to plane off.{/n}
 {n}Inside, the floor is scattered with bones, sorted by size. She is lying around the broken stair with her head on the parapet, watching the city's lamps come on one by one.{/n}''',
         c("Continue", "second_question", requires=(ST_DEAD,), forbids=(TESTED,)),
         c("Continue", "verdict", requires=(TESTED,))),
@@ -344,7 +344,7 @@ letter(P + "after.lair", "A tower above Drezen", [
        c("Continue", "flattered", requires=(FLATTERED,)),
        c("Continue", "kept_back", requires=(KEPT_BACK,)),
        c("Continue", "terms", forbids=(TRUE, FLATTERED, KEPT_BACK))),
-    dv("true", '''"A true story. I hate true stories. They are the only kind that have ever impressed me."''',
+    dv("true", '''"A true story. You did not know the end, and you said so, to my face, inside the reach of my teeth." {n}Her lip lifts.{/n} "That impressed me. Do not make a habit of it."''',
        c("Continue", "hunted", requires=(HUNTS,)), c("Continue", "cultists", requires=(RUTHLESS,), forbids=(HUNTS,)),
        c("Continue", "terms", forbids=(HUNTS, RUTHLESS))),
     dv("flattered", '''"You lied to me about my own ending, and you lied in my favour. The first liar I have met with manners. Keep doing it."''',

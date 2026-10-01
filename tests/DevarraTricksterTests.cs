@@ -172,7 +172,8 @@ internal static class DevarraTricksterTests
         var sold = After(fallback, unprimed, "price", 0).First();
         check(sold.Has(P + "primed") && sold.Has(P + "cost.late") && sold.Has(P + "cost.story_sold"),
             "Trk_Devarra_Unprimed: the sold story does not prime on late terms.");
-        check(Rules.Available(story, woken, Later(story, sold, 48)), "Trk_Devarra_Unprimed: the return does not follow the sale.");
+        check(Rules.Available(story, woken, Later(story, sold, 72)) && !Rules.Available(story, woken, Later(story, sold, 71)),
+            "Trk_Devarra_Unprimed: the return does not follow the sale after the promised three days.");
         var twice = After(fallback, unprimed, "raised", 0).First();
         check(twice.Has(P + "cost.shame_sold"), "Threatening the Storyteller does not cost the shameful story.");
 

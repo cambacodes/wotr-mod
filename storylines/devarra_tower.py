@@ -622,11 +622,11 @@ hub(T + "after_the_abyss", "You were gone", '"Was she there, while I was in the 
     dv("climb", '''{n}She hears you on the path long before you reach the top, and she does not move. When you come through the door she is lying exactly where she was when you left, as if she had not shifted in all those months, and her eye follows you across the floor and does not let go.{/n}
 "You went into the Wound." {n}Her voice is flat.{/n} "Without asking me. Without telling me what you would bring back."''',
        c('"I came back."', "back"),
-       c('"I brought you something."', "gift")),
+       c('"I brought you the worst hour of it. Nobody else has heard it."', "gift")),
     dv("back", '''"You came back." {n}She breathes in, a long, slow breath from your boots to your hair, taking stock.{/n} "You smell of the Abyss. Of demon and of rot and of a hundred things I do not have names for." {n}Her tail moves across the stair, over old scratches in the stone, as if checking that they are all still there.{/n} "You came back. Do not do that again without telling me. A thing that owes me something does not go where it cannot pay."''',
        c("Continue", "end")),
-    dv("gift", '''{n}You put it down on the floor between you: a shard of black glass from a demon's city that sings faintly when the wind blows through it.{/n}
-"You brought me something." {n}She studies it without touching it.{/n} "From the Abyss. You were in the Wound, among everything that ever wanted you dead, and you thought of me enough to steal something." {n}She lays her chin on the floor beside it, very close, so that it sings into her ear.{/n} "Do not look at me like that. I am listening to it. Go away."''',
+    dv("gift", '''{n}You sit down on the bones and tell her the worst hour you had on the other side, the one you have told nobody, not the generals, not the people who were there. She listens with her eyes shut and her nostrils open, as if she could smell it on you while you talk.{/n}
+"The worst hour. Kept back. For me." {n}Her eye opens, a slit of furnace.{/n} "That is a better tithe than a forearm, crusader, and you will not get away with paying it only once. Do not look at me like that. Go away. I want to eat something and think about it."''',
        c("Continue", "end")),
     teller("end", '''{n}At the foot of the ridge, the Storyteller is standing where he always stands.{/n} "She is quieter. That is good. The garrison on the north wall have been hearing her all the months you were gone, every night: not roaring. A sound they could not name." {n}He pauses.{/n} "I could name it. I did not tell them. Some stories should not be told to soldiers."''',
         c('"What was it?"', "what")),
@@ -733,7 +733,7 @@ hub(T + "her_name", "What to call her", '"She\'s asked for me again?"', [
         c('"The dragon."', "dragon"),
         c('"Devarra."', "devarra"),
         c('"Mine."', "mine")),
-    dv("dragon", '''"The dragon." {n}She sounds disappointed, and a little relieved.{/n} "As if there were only one. As if there were no others in the world you could be talking about." {n}She considers it.{/n} "Well. There are not, for you. Very well. Call me the dragon, then, in front of your people. It will frighten them properly."''',
+    dv("dragon", '''"The dragon." {n}She sounds disappointed, and a little relieved.{/n} "As if there were only one." {n}She considers it, and decides she likes it.{/n} "Good. When you say 'the dragon' in front of your people, they will think of me, and they will look up at the ridge, and they will be afraid. Call me that. It frightens them properly."''',
        c("Continue", "name")),
     dv("devarra", '''{n}The whole tower goes still.{/n} "Where did you hear that?" {n}She does not wait.{/n} "No. I know where. The crusade writes everything down; somewhere there is a clerk who wrote 'the dragon Devarra' in a book, as if a name were a thing you could own because you had spelled it." {n}Smoke curls from her nostrils.{/n} "You said it to my face. That is different. Say it again, and I will decide whether you may."''',
        c("Continue", "name")),
@@ -998,7 +998,7 @@ hub(T + "first_snow", "Snow on the ridge", '"It snowed on the ridge last night. 
         c("Continue", "braziers")),
     nar("lean", '''{n}You step between the braziers and sit down with your back against her flank. She is cold, the way a stove is cold in the morning: warmth still deep inside, but none of it reaching the surface. After a moment she shifts, and the grey wing comes down over both of you, and between the braziers and the wing and the two of you it is suddenly, absurdly, warm.{/n}''',
         c("Continue", "lean_her")),
-    dv("lean_her", '''"Hm." {n}Her voice rumbles through her ribs into your back.{/n} "You are warmer than you look. Crusaders run hot. It is all that righteousness, burning." {n}She settles.{/n} "Stay until the snow stops. It is not because I want you here. It is because you are a brazier that talks, and I have run out of the other kind."''',
+    dv("lean_her", '''"Hm." {n}Her voice rumbles through her ribs into your back.{/n} "You are warmer than you look. Crusaders run hot. It is all that righteousness, burning." {n}She settles.{/n} "Stay until the snow stops. I want your heat, and I am taking it. Get up before I say, and I will lie on you until you learn."''',
        c("Continue", "end")),
     dv("both", '''"Next time." {n}She considers this with narrowed eyes.{/n} "Knives off, and braziers. Yes. Next time you sit up with a dead thing, crusader, be thorough. Think of the winters." {n}She huffs a jet of flame at the snow on the sill, which hisses and vanishes.{/n} "Now go and find more braziers. These are too small. Everything your crusade makes is too small."''',
        c("Continue", "end")),
