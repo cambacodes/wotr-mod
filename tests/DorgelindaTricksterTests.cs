@@ -336,5 +336,74 @@ internal static class DorgelindaTricksterTests
             foreach (var node in s.Nodes)
                 check(!node.Text.Contains("you say") && !node.Text.Contains("you tell her"),
                     "The Commander speaks inside her node: " + s.Id + "/" + node.Id);
+
+        // Q9 (Sol INT): a tribunal held in Chapter 3 with the injected recount never taken still opens the route in Chapter 5,
+        // through her closed tribunal books: a new witnessed signature, late terms; walking away keeps it replayable.
+        var books = S(P + "office.tribunal_books");
+        var heldTribunal = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", "dorgelinda.fellows_tribunal", "dorgelinda.verdict_prison");
+        check(Rules.Available(story, books, heldTribunal) && !Rules.Available(story, stocktake, heldTribunal) && !Rules.Available(story, recount, heldTribunal)
+              && books.Chapters.SequenceEqual(new[] { 5 }) && books.EntryMythic == "PlayerIsTrickster",
+            "Trk_Dorgelinda_TribunalBooks: a held tribunal without the recount has no Chapter 5 entry.");
+        check(!Rules.Available(story, books, World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", "dorgelinda.fellows_tribunal", P + "primed")),
+            "Trk_Dorgelinda_TribunalBooks: the tribunal books open after the recount already primed the audit.");
+        var reviewed = Program.WalkVia(books, heldTribunal, "sign", 0);
+        check(reviewed.Count > 0 && reviewed.All(r => r.Has(P + "primed") && r.Has(P + "cost.late") && r.Has(P + "cost.tribunal_books")),
+            "Trk_Dorgelinda_TribunalBooks: the late signature does not prime the audit on late terms.");
+        check(Program.WalkVia(books, heldTribunal, "hole", 1).All(r => !r.Has(books.Id) && !r.Has(P + "primed")),
+            "Trk_Dorgelinda_TribunalBooks: declining to sign records the scene.");
+        var reviewOpen = Later(story, reviewed.First(), 48);
+        check(Rules.Available(story, open, reviewOpen) && Program.WalkVia(open, reviewOpen, "start", 6).Count > 0
+              && Program.WalkVia(open, reviewOpen, "path", 4).Count > 0
+              && Program.Walk(open, reviewOpen, (id, st) => check(!id.StartsWith("verdict_", StringComparison.Ordinal) && id != "path_late",
+                  "Trk_Dorgelinda_TribunalBooks: the late signing replays the tribunal's verdict or wet ink: " + id)).Count > 0,
+            "Trk_Dorgelinda_TribunalBooks: the audit does not open on its own history.");
+        check(Reaches(reviewed.First(), "dorgelinda.committed"), "Trk_Dorgelinda_TribunalBooks: no road to the commit.");
+
+        // Q9 (Sol CAN): the King is billed only when the Fool King was crowned.
+        check(Choice(revels, "bill", 1).Requires.Contains("dorgelinda.king_revel"), "The no-King city can bill a King.");
+        var merryOnly = World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.merry_city");
+        Program.Walk(revels, merryOnly, (id, st) => check(id != "king" && id != "crowned", "The no-King cellar reaches the King: " + id));
+
+        // Q9 (Sol BEL): the plague ward never thanks the Commander for a rope spared after an execution verdict.
+        var ward = S(L + "the_plague_ward");
+        check(story.Derived["dorgelinda.verdict_hanged"].Length == 2, "The derived hanging verdict is missing.");
+        var hangedWard = World(story, 3, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.fellows_tribunal",
+            "dorgelinda.verdict_hanged_wenduag", L + "the_warehouse", L + "potions_ours");
+        Program.Walk(ward, hangedWard, (id, st) => check(id != "rope" && id != "wait", "The ward spares a hanged man's rope: " + id));
+        check(Program.WalkVia(ward, hangedWard, "outside", 2).Count > 0 && Program.WalkVia(ward, hangedWard, "outside", 3).Count > 0,
+            "The hanged ward has no closing words.");
+
+        // Q9 (Sol BEL): walking out of the quarrel stays walked out; the repair is a later, explicit choice.
+        var quarrel = S(L + "hammer_and_tongs");
+        var coldCounts = S(L + "cold_counts");
+        var walked = Program.WalkVia(quarrel, World(story, 5, "trickster.ever", "dorgelinda.present", "dorgelinda.committed", L + "other_columns"), "seal", 1);
+        check(walked.Count > 0 && walked.All(r => r.Has(L + "quarrel_cold") && !r.Has(L + "quarrel_mended")),
+            "Leaving the quarrel still mends it.");
+        check(!Rules.Available(story, coldCounts, Later(story, walked.First(), 48)) && Rules.Available(story, coldCounts, Later(story, walked.First(), 168)),
+            "The cold counts do not follow the walk-out.");
+        var counts = Program.Walk(coldCounts, Later(story, walked.First(), 168));
+        check(counts.Any(r => r.Has(L + "quarrel_mended")) && counts.Any(r => r.Has(L + "quarrel_unmended") && !r.Has(L + "quarrel_mended")),
+            "The cold counts do not offer both the apology and the standing quarrel.");
+
+        // Q9 (Sol INT): the smaller yes comes after the one morning, and keeps her after-the-war talk to herself.
+        check(others.Requires.Contains(L + "morning_count") && !Rules.Available(story, others, Later(story, nights.First(), 24)),
+            "Her other columns can come before the morning the smaller yes forbids.");
+        var narrowed = World(story, 5, "trickster.ever", "dorgelinda.present", "dorgelinda.committed", L + "after_hours", L + "morning_count", L + "narrowed");
+        Program.Walk(afterWar, narrowed, (id, st) => check(id != "after" && id != "where", "The smaller yes still tells her after: " + id));
+
+        // Q9 (Sol COX): the bottled-death return keeps her closing page, and the late commit reaches her Last Call coda.
+        check(S(P + "epilogue.after_the_war").ForbidOverrides["sacrifice"] == "trickster.commander_back",
+            "Her closing page vanishes on the Last Call return.");
+        var coda = S("dorgelinda.lastcall.page");
+        check(coda.RequiresAnyGroups.Length == 1 && coda.RequiresAnyGroups[0].Contains("dorgelinda.committed")
+              && coda.RequiresAnyGroups[0].Contains(P + "late_committed") && coda.Forbids.Contains(P + "declined"),
+            "The late commit is missing from her Last Call coda.");
+
+        // Q9 (Sol INT): shared nodes recall no history the player may not have.
+        foreach (var (sc, nd) in new[] { (receipts, "thought"), (commit, "ask"), (commit, "open"), (methods, "start"), (S(L + "the_right_size"), "complaint"),
+                                                 (inquiry, "start"), (S(L + "the_sergeants_version"), "you"), (hand, "ask_back") })
+            foreach (var banned in new[] { "for the Abyss", "since the caravans", "a warehouse", "the carts, the warehouse", "Bartley's lot kept" })
+                check(!sc.Nodes.Single(n => n.Id == nd).Text.Contains(banned, StringComparison.OrdinalIgnoreCase),
+                    "A shared node recalls a branch history: " + sc.Id + "/" + nd + " '" + banned + "'");
     }
 }

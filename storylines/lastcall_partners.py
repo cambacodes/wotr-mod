@@ -419,11 +419,15 @@ partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed",
         page_p('''The boots were entered as paid. She kept the last pair on a shelf in the stores and would not issue them to anyone.''', requires=(D + "cost.boots_paid",)),
         page_p('''Her audit of the Commander never formally concluded. She kept it open, hostile, on principle, and conducted it twice a week over supper.''', requires=(D + "cost.audit_hostile",)),
         page_p('''When the Commander was entered as dead, she refused to close the account. "Dead's a status, not a balance," she told the clerk from Nerosyan.''', requires=(ON_RECORD,)),
-    ), declined=D + "declined",
+        # Q9 (Sol COX): the late history (the second book reached, no yes in the war) plays this coda too; her own epilogue
+        # page puts the question ("close it, or stay in it"), and this line holds the Commander's staying.
+        page_p('''The war had ended before the audit did. She brought the last ledger to the Commander the spring after Threshold with the line still open and "carried forward" already written under it, and the Commander stayed in it. She never wrote any other word for what they were. She said it was not a stores term.''', requires=(D + "late_committed",), forbids=("dorgelinda.committed",)),
+    ), declined=D + "declined", page_forbids=("dorgelinda.ledger.line_ruled",),   # Q9 (Sol COX): the line ruled off after a lie
     deal=[[D + "cost.line_open"], [D + "cost.boots_owed"], [D + "cost.carts_signed"]],
     call=call('''[Settle the open line] "Quartermaster: the account marked 'used, quietly'. I'm ready to explain."''',
         '''{n}Somewhere in the stores at Drezen a quartermaster looks up from her ledger at one particular line, and does not rule it off.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
+    page_commit_groups=[["dorgelinda.committed"], [D + "late_committed"]],   # Q9 (Sol COX): the late yes reaches her coda
     ledger=("Dorgelinda: a line marked \"used, quietly\"", "One line in the stores ledger is open in my name. Dorgelinda won't close an account while the debtor might still explain it."))
 
 H = "hepzamirah.trickster."

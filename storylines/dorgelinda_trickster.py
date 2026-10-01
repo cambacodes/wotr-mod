@@ -60,6 +60,8 @@ TWICE = P + "cost.twice_weekly"
 LINE_OPEN = P + "cost.line_open"
 BOOTS_PAID = P + "cost.boots_paid"
 TOLD_ALL = P + "cost.told_all"
+REVIEW = P + "cost.tribunal_books"     # Q9 (Sol INT): the Ch5 signing under the closed tribunal's shortfall (recount missed)
+HANGED = "dorgelinda.verdict_hanged"   # derived: either hanging verdict
 
 RELATIONSHIP = dict(
     Title="A thorough audit",
@@ -83,7 +85,7 @@ SEEN_CUES = {
     HUSHED: ["76349e9bb678de3468e70c87c8e777ae"],        # Logistics_5/Cue_0045 (Woljif's verdict: hushed up, sent away)
     REDEEMED: ["75690b4f1e8fa734b8699b454c9137d2"],      # Logistics_5/Cue_0046 (Arueshalae's verdict: a chance to atone)
 }
-DERIVED = {P + "late_committed": [["trickster.ever", METHODS]]}
+DERIVED = {P + "late_committed": [["trickster.ever", METHODS]], HANGED: [[HANGED_LANN], [HANGED_WENDUAG]]}
 RENAMED = {"dorgelinda.weekly_count": P + "after.weekly_count", "dorgelinda.fellows_methods": P + "after.fellows_methods",
            "dorgelinda.commit": P + "after.commit", "dorgelinda.ending_committed": P + "epilogue.committed"}
 
@@ -127,12 +129,12 @@ SCENES.append(scene(P + "caravans.countersign", "The lost carts", "Dorgelinda", 
 SCENES.append(scene(P + "tribunal.recount", "Nothing's missing", "Dorgelinda", 3,
     '[Count it again, slowly] "Quartermaster, count the stores again. Nothing\'s missing. It was used, quietly."',
     [nar("count", '''{n}Dorgelinda sends a clerk for the stores ledger. The tribunal waits. Bartley watches the door as if it might still be an exit.{/n}''',
-         c("[Watch the clerk turn back three weeks.]", "count_prepared", requires=(CARTS,)),
+         c("[Watch the clerk turn back to the caravan pages.]", "count_prepared", requires=(CARTS,)),
          c("[Take the pen out of the clerk's hand.]", "count_late", forbids=(CARTS,))),
-     nar("count_prepared", '''{n}The clerk comes back with the ledger open at a page three weeks old. Between two caravan manifests, in your hand, is the line about the lost carts, and under it the rider no clerk ever read to the end: "...and all stores that follow them: issued to the Commander, for operations." Every crate in the warehouse by the city walls followed them.{/n}''',
+     nar("count_prepared", '''{n}The clerk comes back with the ledger open at the caravan pages, weeks back. Between two caravan manifests, in your hand, is the line about the lost carts, and under it the rider no clerk ever read to the end: "...and all stores that follow them: issued to the Commander, for operations." Every crate in the warehouse by the city walls followed them.{/n}''',
          c("[Turn the ledger toward her.]", "read_prepared")),
      d("read_prepared", '''{n}She reads it with her finger under the words, the way a child reads, the way a quartermaster reads a thing she has already signed off.{/n}
-"I read every line in that book. Twice. I never read the end of that one."''',
+"I read every line in that book. Twice. I read that one. I never thought what you'd shove under it."''',
        c("Continue", "audit")),
      nar("count_late", '''{n}The clerk comes back with the ledger and a different face. Nothing balances. You take the pen from his hand, in front of the whole tribunal, and write one line under today's date: "All stores unaccounted: issued to the Commander, for operations." The ink shines wet in the lamplight.{/n}''',
          c("[Turn the ledger toward her.]", "read_late")),
@@ -164,6 +166,43 @@ office(P + "office.stocktake", "Nothing's missing",
    EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1))
 
 
+# --- State 1b (Chapter 5): the tribunal sat in Chapter 3 and the recount was never asked for. The Fellows' books are
+# closed on a verdict; what they sold is still a hole with no name under it. The Commander signs under it, late. ------
+
+BOOKS_VERDICT = [
+    c("Continue", "hanged", requires=(HANGED,)),
+    c("Continue", "prison", requires=(PRISON,), forbids=(HANGED,)),
+    c("Continue", "hushed", requires=(HUSHED,), forbids=(HANGED, PRISON)),
+    c("Continue", "redeemed", requires=(REDEEMED,), forbids=(HANGED, PRISON, HUSHED)),
+    c("Continue", "sat", forbids=(HANGED, PRISON, HUSHED, REDEEMED)),
+]
+
+office(P + "office.tribunal_books", "The Fellows' books",
+    '[Ask after the Fellows\' accounts] "The tribunal\'s books, Quartermaster. Did they ever balance?"', [
+    d("start", '''"Balance?" {n}She bends, grunting, and hauls a crate out from under the desk with her good hand. Ledgers, tally boards, a corporal's pay book with the cover torn off.{/n} "That's the Fellows of the Crusade, Commander. All of 'em I could find. It's been sittin' under my feet since the tribunal, waitin' for Nerosyan to ask."''', *BOOKS_VERDICT),
+    d("hanged", '''"We executed the ones the tribunal wanted dead. I saw it done. And the salt pork they sold off to the sutlers is still sold. An execution doesn't buy back a single barrel."''',
+      c("Continue", "hole")),
+    d("prison", '''"Bartley's lot are on the road to Nerosyan or past it, in the chains I asked for. And the salt pork they sold off to the sutlers is still sold. Chains don't buy back a single barrel."''',
+      c("Continue", "hole")),
+    d("hushed", '''"Bartley's lot are at some fort at the end of the world, and Woljif's still tellin' the ranks they escaped. And the salt pork they sold off to the sutlers is still sold. A good story doesn't buy back a single barrel."''',
+      c("Continue", "hole")),
+    d("redeemed", '''"Bartley's diggin' latrines by the east wall and his lads are carryin' crates for nothin'. Fine. And the salt pork they sold off to the sutlers is still sold. A shovel doesn't buy back a single barrel."''',
+      c("Continue", "hole")),
+    d("sat", '''"The tribunal sat, and said its piece, and went off to its supper. And the salt pork the Fellows sold off to the sutlers is still sold. Talk doesn't buy back a single barrel."''',
+      c("Continue", "hole")),
+    d("hole", '''{n}She opens the top ledger at a page ruled in red: what the warehouse by the walls gave back, and under it, longer, what it did not.{/n}
+"Nerosyan wants a name at the foot of that. I'll give 'em the Fellows'. Thieves, it'll say, and that's the last word anybody writes about men who fought on the walls." {n}She holds the pen over the page and does not write.{/n} "Unless somebody's got a better name."''',
+      c('[Take the pen. Before her clerks, write under the red column: "Issued to the Commander, for operations. Used, quietly."]', "sign"),
+      c('"Write the Fellows. It\'s what they did."', "leave")),
+    d("leave", '''"Aye. It is." {n}She writes nothing yet. She shoves the crate back under the desk with her boot.{/n} "It'll keep till Nerosyan asks. Most things do, down here."''',
+      c("[Leave her to it.]", abort=True)),
+    d("sign", '''{n}Three clerks stop writing. The one by the door forgets to breathe. She watches your hand go down the whole red column, and does not stop it, and does not help.{/n}
+"That's wet ink, Commander, and it's months late, and my clerks just watched you wet it." {n}She turns the book to the lamp and reads your line twice.{/n} "The tribunal's done. There's no neck on the end of this. So either you're lyin' for somethin' I can't see yet, or you ate the lot." {n}She shuts the ledger on your name.{/n} "I'll be findin' out which."''',
+      c("[Leave her to her ledger.]", flags=(PRIMED, AUDIT, LATE, REVIEW), crusade=("Materials", -100))),
+], requires=("trickster", TRIBUNAL, PRESENT), forbids=(PRIMED,), chapters=(5,),
+   EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1))
+
+
 # --- The return beat, shared by all three states: she opens the audit (48 h after the device). ----------------------
 
 TALK = [
@@ -172,24 +211,29 @@ TALK = [
     c('[Intimidate] "You\'ll close that book, Quartermaster."',
       check=dict(Skill="CheckIntimidate", DC=30, Success="shut", Failure="refused", CommanderOnly=True)),
 ]
+TALK_LATE = [
+    c('"I signed for a shortage I never used. I\'d rather the blame sat on me than on them."', "terms", flags=(CONFESSED,)),
+] + TALK[1:]
 PATH = [
-    c("Continue", "path_carts", requires=(CARTS,)),
-    c("Continue", "path_late", requires=(LATE,)),
+    c("Continue", "path_carts", requires=(CARTS,), forbids=(REVIEW, ABYSS)),
+    c("Continue", "path_late", requires=(LATE,), forbids=(REVIEW,)),
     c("Continue", "path_abyss", requires=(ABYSS,)),
     c("Continue", "path_plain", forbids=(CARTS, LATE, ABYSS)),
+    c("Continue", "path_review", requires=(REVIEW,)),
 ]
 
 office(P + "audit.open", "A thorough audit", '"You said you\'d be findin\' out."', [
     d("start", '''"I counted it again. Slowly. Then I counted the Commander's boots, rations, blankets and bottles, and you've drawn about enough for {mf|a man|a woman} and a half."
 {n}She lays the ledger open between you, one hand flat on the page. The other lies in her lap where it always lies, the fingers curled like dry roots.{/n}
 "So where's it gone? One eye, one good hand, a lifetime of hard postin's. I don't tear up paperwork, Commander."''',
-      c("Continue", "verdict_hanged", requires=(HANGED_LANN,)),
-      c("Continue", "verdict_hanged", requires=(HANGED_WENDUAG,), forbids=(HANGED_LANN,)),
-      c("Continue", "verdict_prison", requires=(PRISON,), forbids=(HANGED_LANN, HANGED_WENDUAG)),
-      c("Continue", "verdict_hushed", requires=(HUSHED,), forbids=(HANGED_LANN, HANGED_WENDUAG, PRISON)),
-      c("Continue", "verdict_redeemed", requires=(REDEEMED,), forbids=(HANGED_LANN, HANGED_WENDUAG, PRISON, HUSHED)),
-      c("Continue", "path", forbids=(HANGED_LANN, HANGED_WENDUAG, PRISON, HUSHED, REDEEMED))),
-    d("verdict_hanged", '''"You lied the stores clean for them and then hanged them anyway. I stood under that gallows with the rest of the ranks, Commander. I'd like to know what the lie was for, if it wasn't for their necks."''',
+      c("Continue", "verdict_hanged", requires=(HANGED_LANN,), forbids=(REVIEW,)),
+      c("Continue", "verdict_hanged", requires=(HANGED_WENDUAG,), forbids=(HANGED_LANN, REVIEW)),
+      c("Continue", "verdict_prison", requires=(PRISON,), forbids=(HANGED_LANN, HANGED_WENDUAG, REVIEW)),
+      c("Continue", "verdict_hushed", requires=(HUSHED,), forbids=(HANGED_LANN, HANGED_WENDUAG, PRISON, REVIEW)),
+      c("Continue", "verdict_redeemed", requires=(REDEEMED,), forbids=(HANGED_LANN, HANGED_WENDUAG, PRISON, HUSHED, REVIEW)),
+      c("Continue", "path", forbids=(HANGED_LANN, HANGED_WENDUAG, PRISON, HUSHED, REDEEMED, REVIEW)),
+      c("Continue", "path", requires=(REVIEW,))),
+    d("verdict_hanged", '''"You lied the stores clean for them and then had them executed anyway. I stood with the rest of the ranks and watched it done, Commander. I'd like to know what the lie was for, if it wasn't for their necks."''',
       c("Continue", "path")),
     d("verdict_prison", '''"You gave me the sentence I asked for. Chains to Nerosyan and no rope. Don't think that buys you a lighter audit. It buys you the chair you're sittin' in."''',
       c("Continue", "path")),
@@ -198,10 +242,11 @@ office(P + "audit.open", "A thorough audit", '"You said you\'d be findin\' out."
     d("verdict_redeemed", '''"And then you let them work it off. Bartley's diggin' latrines by the east wall and singin' while he does it, which I'll grant is a punishment for the rest of us."''',
       c("Continue", "path")),
     nar("path", '''{n}She taps the line in your name with one blunt fingernail, twice.{/n}''', *PATH),
-    d("path_carts", '''"Three weeks. Your name sat in my book for three weeks, under the carts a vrock 'carried off', and I read past it every mornin'. So you knew. Before the tribunal, before Bartley, before any of it. Talk."''', *TALK),
+    d("path_carts", '''"Your name was already in my book, under the carts a vrock 'carried off', and I read past it every mornin'. So you knew, before I knew how much those drivers had lost. Talk."''', *TALK),
     d("path_late", '''"You signed my ledger in front of a tribunal with the ink still wet. I've seen braver lies. Not many. Talk."''', *TALK),
-    d("path_abyss", '''"You signed under my shortages like a {mf|man|woman} signs for {mf|his|her} own boots. Nobody signs for the Abyss. You did. Talk."''', *TALK),
+    d("path_abyss", '''"You signed under my shortages like a {mf|man|woman} signs for {mf|his|her} own boots. Nobody signs for the Abyss. You did. Talk."''', *TALK_LATE),
     d("path_plain", '''"Your name's in my book over stores nobody else would touch. Talk."''', *TALK),
+    d("path_review", '''"You signed under the Fellows' red column months after the tribunal was done, with my clerks gawpin', for no man's neck at all. I've seen braver lies. I've never seen a stranger one. Talk."''', *TALK_LATE),
     d("shut", '''{n}She closes the book. She stands, and salutes, and there is nothing in her face at all.{/n}
 "Commander."''',
       c("[Leave her office.]", flags=(CLOSED,))),
@@ -269,8 +314,8 @@ office(P + "after.fellows_methods", "The second book", '"Shut the door. No, all 
     d("crumbs", '''"Her Majesty squeezed Mendev dry to march on Iz. There's nothin' left to buy honest. I checked. Twice. Then I stopped checkin', 'cause it was makin' me sick."''',
       c("Continue", "start")),
     d("start", '''{n}She lays a second ledger on top of the first. It is thinner, and older, and the hand in it is not hers.{/n}
-"Bartley's lot kept this. Took it off his clerk the day we caught 'em, and I've had it in my drawer since, readin' it at night like some folk read scripture. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. A weight discrepancy here, some cargo that dried out there. I've read it three times. It's good work." {n}She taps the cover.{/n}
-"You're the one person in Drezen I can say that to. You ate a warehouse and signed for it. So I'm askin' you. Do we keep a second book?"''',
+"The Fellows kept this. It came to me in a sack of oats, the way their things do, and I've had it in my drawer since, readin' it at night like some folk read scripture. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. A weight discrepancy here, some cargo that dried out there. I've read it three times. It's good work." {n}She taps the cover.{/n}
+"You're the one person in Drezen I can say that to. You put your name under stores nobody could find and never blinked. So I'm askin' you. Do we keep a second book?"''',
       c('"Keep your hands clean. I\'ll keep mine dirty for both of us."', "clean"),
       c('"Do it. Their methods. Your books."', "dirty")),
     d("clean", '''{n}She turns her head so the one eye has you square, the way she sights down a row of barrels for the one that's leaking.{/n}
@@ -293,7 +338,7 @@ ASK = (
 )
 
 office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."', [
-    nar("open", '''{n}The ledger is open at your line. It has grown: carts, a warehouse, boots, a bottle that was never on any manifest. Weeks of small entries in her hand, every one of them dated, some of them in the code she uses for things she will not have her clerks read. She has not closed it. She has not ruled it off.{/n}
+    nar("open", '''{n}The ledger is open at your line. It has grown: the first line in your hand, then boots, blankets, a bottle that was never on any manifest. Weeks of small entries in her hand, every one of them dated, some of them in the code she uses for things she will not have her clerks read. She has not closed it. She has not ruled it off.{/n}
 {n}She has shut the door without being asked, and bolted it, and sent the sergeant to count something at the far end of the yard.{/n}''',
         c("Continue", "recall_clean", requires=(CLEAN,)),
         c("Continue", "recall_dirty", requires=(DIRTY,), forbids=(CLEAN,)),
@@ -306,8 +351,8 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
     d("confessed", '''"You told me the truth once, the day I opened the audit. I wrote it down. It's still in here, at the back. Unsent."''',
       c("Continue", "ask")),
-    d("ask", '''{n}Her dented tin cup is on the desk beside the book: the one she drinks the third toast from, the one that never goes to anybody else. It is empty. The bottle that was never on any manifest stands next to it, unopened.{/n}
-"I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the caravans. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't." {n}Her good hand lies flat by the keys, not on them.{/n}
+    d("ask", '''{n}Her dented tin cup is on the desk beside the book: the one she drinks the third toast from, the one that never goes to anybody else. It is empty. The bottle that was never on any manifest stands next to it.{/n}
+"I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the day you signed it. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't." {n}Her good hand lies flat by the keys, not on them.{/n}
 "I'm no girl, and I'm no fool, and I don't ask twice. So. Yes or no?"''', *ASK),
     d("yes", '''{n}She opens the bottle one-handed, bracing it against the desk with her bad wrist, fills her own dented cup to the brim and pushes it across to you with the back of her hand. She does not pour one for herself.{/n}
 "Armed, armoured and fed. Supply service toast. Most nights it's two out of three." {n}She watches you lift it.{/n} "Tonight it's three. Drink it all; that cup's yours now, and nobody's drunk from it since Kenabres but me."
@@ -325,10 +370,10 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
 # --- The one priced second ask after her soft no. -----------------------------------------------------------------------
 
 office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
-    d("price", '''"Where did it go. All of it. The carts, the warehouse, the Abyss. Every line." {n}The pen is already in her hand. She has turned to a clean page, which in her office is the closest thing to a courtesy.{/n}''',
+    d("price", '''"Where did it go. All of it. Every line in your name, from the first." {n}The pen is already in her hand. She has turned to a clean page, which in her office is the closest thing to a courtesy.{/n}''',
       c("[Tell her everything, and let her strike it from the stores.]", "told", crusade=("Materials", -100)),
-      c('"Not the warehouse. Anything else."', "no")),
-    d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances, which it has not done since the caravans.{/n}
+      c('"Not all of it. Anything else."', "no")),
+    d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances, which it has not done since the day you first signed it.{/n}
 "There. Was that so hard." {n}She puts the pen down, takes her own dented cup off the shelf, and stands it on the balanced page, empty.{/n} "Now ask."''',
       c("[Ask.]", flags=(COMMITTED, TOLD_ALL))),
     d("no", '''"Then we're done, Commander." {n}She rules a line under your column, the only line she has ever drawn in anger.{/n}
@@ -376,10 +421,10 @@ SCENES.append(reaction("Regill", "dorgelinda.react.regill.countersign", (CARTS, 
     answer_list=REGILL_HUB, forbids=(TRIBUNAL, *REGILL_GUARD["forbids"]), chapter=3, last=5, portrait="Regill"))
 SCENES.append(reaction("Regill", "dorgelinda.react.regill.recount", (PRIMED, TRIBUNAL, "regill.in_party"),
     '''"A commander who signs for thieves and a quartermaster who reads past the signature. In the Order I would have both flogged. Only one of you can be." {n}He does not smile.{/n} "Promote her."''',
-    answer_list=REGILL_HUB, forbids=REGILL_GUARD["forbids"], chapter=3, last=5, portrait="Regill"))
+    answer_list=REGILL_HUB, forbids=(REVIEW, *REGILL_GUARD["forbids"]), chapter=3, last=5, portrait="Regill"))
 SCENES.append(reaction("Lann", "dorgelinda.react.lann.recount", (PRIMED, TRIBUNAL, "lann.in_party"),
     '''"You lied a whole warehouse clean for them. Next time some hungry recruit asks me why he shouldn't steal, I'm sending him to you. You can explain the difference. I can't."''',
-    answer_list=LANN_HUB, forbids=LANN_GUARD["forbids"], chapter=3, last=5, portrait="Lann"))
+    answer_list=LANN_HUB, forbids=(REVIEW, *LANN_GUARD["forbids"]), chapter=3, last=5, portrait="Lann"))
 SCENES.append(reaction("Regill", "dorgelinda.react.regill.stocktake", (PRIMED, "trickster", "regill.in_party"),
     '''"Four crates of cold iron issued to your party, and your signature under every shortage since. In the Order we call that a confession with the crime left blank. Your dwarf will fill it in. I would."''',
     answer_list=REGILL_HUB, forbids=(TRIBUNAL, *REGILL_GUARD["forbids"]), chapter=5, last=5, portrait="Regill"))
@@ -393,7 +438,8 @@ KONOMI_GUARD = dict(forbids=("konomi.dismissed", "konomi.retained_dead"),
 # konomi.retained_dead is runtime-derived (it clears when she is raised), so it takes a plain Forbid, as elsewhere.
 SCENES.append(reaction("Konomi", "dorgelinda.react.konomi.ledgers", (PRIMED, TRIBUNAL, "konomi.in_office"),
     '''"Your quartermaster's shortfall walked into your personal account, I hear. A warehouse, before a tribunal." {n}She opens her fan one fold.{/n} "The minutes will be very short and very careful. Nerosyan will want the ledgers, Commander. I have not yet decided whether to tell them where to look."''',
-    answer_list=KONOMI_HUB, chapter=3, last=5, portrait="Konomi", **KONOMI_GUARD))
+    answer_list=KONOMI_HUB, chapter=3, last=5, portrait="Konomi",
+    forbids=(REVIEW, *KONOMI_GUARD["forbids"]), ForbidOverrides=KONOMI_GUARD["ForbidOverrides"]))
 SCENES.append(reaction("Konomi", "dorgelinda.react.konomi.ledgers_abyss", (PRIMED, "konomi.in_office"),
     '''"Your quartermaster's shortfall walked into your personal account, I hear. Arrowheads, into the Abyss, on your signature." {n}She opens her fan one fold.{/n} "I have minuted it as 'lost to the enemy'. The enemy has not objected. Nerosyan will want the ledgers, Commander. I have not yet decided whether to tell them where to look."''',
     answer_list=KONOMI_HUB, chapter=5, last=5, portrait="Konomi",
