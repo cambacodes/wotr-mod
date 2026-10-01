@@ -15,9 +15,9 @@ SCENES = [scene(ID, "A turn for herself", "Konomi", 3,
 {n}She closes the box.{/n}
 "I know the steps. What I do not have is a partner who will let me enjoy them without asking whom I intend to impress."
 {n}Her gaze rests on you, amused and direct.{/n}
-"Can you spare a little time? The room will have no audience. You need not arrive with an accomplishment to demonstrate."''',
+"Can you spare an hour? There will be no audience, so you need not dance for one. I intend to dance for myself, and I want a partner who keeps time."''',
       c('"I would like that. Show me."', "room"),
-      c('"Another time. Keep your hour; I would rather not rush it."', abort=True)),
+      c('"Another time. I cannot spare the hour today."', abort=True)),
     n("room", "Narrator", '''{n}When you meet her in the borrowed room, the tables have been pushed against the wall. There is no supper laid out. Konomi has placed her outdoor shoes beneath a chair and opened one shutter for light.{/n}
 {n}She crosses the empty floor, turns, and comes back with a small, precise lift of her heel. Her skirt follows the turn without catching. The pleasure on her face appears before she notices you watching.{/n}
 "There. That is the part I wanted. A room full of conversation is apt to swallow it."
@@ -25,34 +25,34 @@ SCENES = [scene(ID, "A turn for herself", "Konomi", 3,
 "The tune repeats. I can supply it, provided you do not expect singing worth paying for. I was trained to dance at a court where a missed step cost a family its seat. Nobody here is keeping score."
 {n}She offers her hand.{/n}''',
       c('"Let me follow you. I spend enough of my day deciding where everyone goes."', "follow"),
-      c('"I would enjoy leading. Tell me if I am pulling you where you do not want to go."', "lead"),
-      c('"I would rather learn beside you before we hold each other."', "beside")),
+      c('"I would enjoy leading. Correct me when I go wrong. You will anyway."', "lead"),
+      c('"Show me beside you first. I learn faster when I can see the whole figure."', "beside")),
     n("follow", "Konomi", '''"Then look at my shoulder, not your feet. I shall tell you when to turn."
 {n}She waits for you to settle your hand, adjusts her own, and begins slowly. The first change of direction is so small that you nearly continue straight ahead. She stops before your feet tangle.{/n}
 "You need not anticipate me. I am enjoying choosing. Let me have that part."
 {n}On the next attempt you wait for the pressure of her hand. She brings you through the turn and smiles with unmistakable satisfaction.{/n}
 "Again. This time I should like the whole figure."''',
       c('[Let her lead you through the next figure.]', "listen", flags=("konomi.dance_followed",))),
-    n("lead", "Konomi", '''"I will tell you. You may find that reassuring or rather inconvenient."
+    n("lead", "Konomi", '''"I will. Loudly, if necessary. You may find that reassuring or rather inconvenient."
 {n}She shows you the opening, then places her hand in yours. At your first turn she follows readily. At the second she stops and looks down at the narrowing space between her skirt and the chair.{/n}
 "If you want a larger circle, move the chair. Do not make me dance around it while you enjoy the view."
 {n}You move it together. This time there is room for the sweep she demonstrated. She follows your lead, then adds the little lift at the end, smiling before she recovers her breath.{/n}
 "Yes. That was what I wanted. You may be pleased with yourself."''',
-      c('[Offer the next turn without hurrying her through the finish.]', "listen", flags=("konomi.dance_led",))),
+      c('[Give her the next turn, and the room to finish it properly.]', "listen", flags=("konomi.dance_led",))),
     n("beside", "Konomi", '''"Of course. Watch the turn from here. It is easier than watching it approach your feet."
 {n}She makes room beside her and demonstrates without touching you. You try the figure in parallel, with a generous gap between you. On the return she takes the turn outward, leaving your space clear.{/n}
 "That works rather well. I can see when you are about to go the wrong way."
-{n}She is smiling. You repeat the opening, and this time she adds the lift at its end. You can attempt it or keep the plain turn; she gives you time for either.{/n}
+{n}She is smiling. You repeat the opening, and this time she adds the lift at its end, then watches you sidelong with one eyebrow raised, plainly wagering on whether you will dare it.{/n}
 "We could keep this version. I wanted company, not a particular arrangement of your hands."''',
       c('[Keep the space between you and repeat the figure together.]', "listen", flags=("konomi.dance_beside",))),
     n("listen", "Konomi", '''{n}A cart rattles past outside, briefly drowning the tune. Konomi stops humming, waits for it to pass, and laughs when its final wheel finds a loose stone.{/n}
 "It has no sense of timing."
 {n}She reaches the shutter before you do, but pauses with her hand on its edge.{/n}
 "Open or closed? We shall lose a little light if I shut it."
-{n}The question is ordinary enough. So is her waiting. She has no recommendation prepared for you to defend yourself against.{/n}''',
+{n}It is the first question she has asked you all week without a recommendation already drafted to go with it. She seems faintly scandalized by the novelty.{/n}''',
       c('"Closed. I keep listening for somebody who needs me, even when nobody has called."', "quiet"),
       c('"Leave it open. Ordinary noise makes it easier to believe I am allowed to be here."', "street"),
-      c('"Open. I like the light, and I would rather tell you what I enjoy than explain a hurt."', "pleasure")),
+      c('"Open. I like the light. That is the whole reason."', "pleasure")),
     n("quiet", "Konomi", '''{n}She closes the shutter. A thin stripe of daylight remains beneath it.{/n}
 "I had a maid once who learned to knock so softly that I never heard her. I thought I wanted silence. What I wanted was to decide when I answered. She could not possibly have guessed that from my instructions."
 {n}Konomi leaves the shutter fastened and comes back to you.{/n}
@@ -68,7 +68,7 @@ SCENES = [scene(ID, "A turn for herself", "Konomi", 3,
 {n}She comes back to her place on the floor.{/n}
 "When you arrived, I was pleased before I had decided what to say. That was agreeable. I should like to become used to it."''',
       c('"I was pleased to find you dancing before you saw me. Keep that part."', "street_end")),
-    n("pleasure", "Konomi", '''"Fair. I asked about a shutter, not your most carefully guarded sorrow."
+    n("pleasure", "Konomi", '''"Good. I asked about a shutter, not for your most carefully guarded sorrow."
 {n}She opens it fully and steps into the light. A few bright threads in her cuff catch the sun as she raises her hand.{/n}
 "I like this sleeve. It was expensive. I have received sufficiently many useful compliments on it that I sometimes forget I bought it because I wanted to watch it move."
 {n}She turns her wrist, admiring the embroidery without apology.{/n}

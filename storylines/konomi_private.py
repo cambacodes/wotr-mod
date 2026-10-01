@@ -53,7 +53,7 @@ s("carriers", "What the wagons can carry", [
 "You have spent a favor before knowing what it will cost to repay."
 {n}Selis flushes. Vanna's expression changes, losing some of its anger.{/n}
 {n}"Why did you not tell me?"{/n}
-{n}"Because you would have said exactly that."{/n}''', c('[Give the women room to answer one another.]', "obligation")),
+{n}"Because you would have said exactly that."{/n}''', c('[Keep quiet and let them have it out.]', "obligation")),
     n("obligation", "Konomi", '''{n}Konomi turns to Vanna.{/n}
 "You wanted this partnership before we counted a single chest. Why?"
 {n}Vanna picks a flake of dried mud from her sleeve.{/n}
@@ -121,8 +121,8 @@ s("before_road", "An evening before the road", [
 "At court I would have dressed this up as a farewell call and let you guess the rest. I have lost the court, so I may as well lose the costume."
 {n}She turns toward you.{/n}
 "I am attracted to you. I am leaving Drezen. I have not managed to make either fact conveniently smaller."''',
-      c('"I am attracted to you too. May I come closer?"', "near", flags=("konomi.before_road_hand", "konomi.private_interest", "konomi.attracted")),
-      c('"I would like us to take our time, even with the journey ahead."', "talk")),
+      c('"I am attracted to you too. Move your chair."', "near", flags=("konomi.before_road_hand", "konomi.private_interest", "konomi.attracted")),
+      c('"Then tell me about the journey first. I want the whole evening, not only its end."', "talk")),
     n("near", "Konomi", '''{n}She closes the space between your hands and draws her chair nearer. One of its legs catches on the edge of the rug. She looks down at it with such frank annoyance that you both laugh.{/n}
 "A useful interruption. I was in danger of making this unbearably solemn."
 {n}This time she moves the chair carefully. Her knee rests against yours.{/n}
@@ -135,16 +135,16 @@ s("before_road", "An evening before the road", [
 {n}Her thumb brushes the edge of your collar.{/n}
 "You may make that difficult for me again."''',
       c('[Kiss her again, then stay close.]', "talk", flags=("konomi.before_road_kissed",)),
-      c('"I would rather know what you are thinking now."', "talk", flags=("konomi.before_road_kissed",))),
+      c('"Then stop looking for one and tell me what you are plotting."', "talk", flags=("konomi.before_road_kissed",))),
     n("talk", "Konomi", '''{n}She leaves the traveling case where it is. Beyond the window, the sweeping stops; for a little while neither of you supplies another sound.{/n}
 "I will not ask you to make the road disappear," she says at last. "I have things to do in Nerosyan. I would like to know what we intend to do about the distance."''',
       c('"Keep writing. Tell me when you expect to return, and I will tell you when I can meet you."', "letters", flags=("konomi.private_letters",)),
-      c('"I care for other people too. I want to keep a place for you without offering a promise that erases them."', "others", flags=("konomi.private_letters", "konomi.private_other_promises"))),
+      c('"There are others in my life. I will not lie to you about them, and I will not drop you for them."', "others", flags=("konomi.private_letters", "konomi.private_other_promises"))),
     n("letters", "Konomi", '''"I can do that. I may write too much when I am irritated. You may tell me which pages you enjoyed most."
 {n}She looks at the case.{/n}
 "Do not leave every invitation for the day when there is nothing inconvenient about it. We will become very dignified correspondents and never see one another."
 {n}Her hand rests near yours again.{/n}
-"Ask when you want me there. I will answer when I can."''', c('[Agree to keep asking honestly.]', "finish")),
+"Ask when you want me there. I will answer when I can."''', c('[Promise to keep asking.]', "finish")),
     n("others", "Konomi", '''"Then make the invitation you can keep."
 {n}She considers you for a moment.{/n}
 "I never held a monopoly on your time, and I do not bid for one now. What I buy, I expect delivered. If you must break an appointment, send word before I have spent the evening staring at an empty chair."

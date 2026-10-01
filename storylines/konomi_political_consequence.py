@@ -27,7 +27,7 @@ s("the_names_admitted", "The names admitted to the room", '"Did you receive the 
     n("start", "Konomi", '''{n}Konomi has opened a letter beside a list of names. Some names have titles beside them; others have been struck through. She turns both pages toward you.{/n}
 "Veyra keeps correspondence for a small circle in Nerosyan. They compare accounts supplied by people who have held public responsibilities. No authority to issue orders. Considerable influence over which account of an order becomes accepted."
 {n}She rests a finger beside her own name.{/n}
-"She has invited me to review their next collection. I asked what I could show you. These terms, the disputed admission and the examples in her reply. Nothing from the restricted papers."
+"She has invited me to review their next collection. I asked what I could show you. These terms, the disputed admission and the examples in her reply. The restricted papers are Veyra's stock, not mine, and I do not give away goods I have not yet bought."
 "A difficult answer?"
 "An attractive one. Those require rather more care."''',
       c('[Read the terms with her.]', "context"),
@@ -60,7 +60,7 @@ s("the_names_admitted", "The names admitted to the room", '"Did you receive the 
 {n}Konomi's expression is cool.{/n}
 "He is correct about the appointment. I suspect he is less interested in accuracy than in being the only person who can explain his absence."
 "Would you admit her?"
-"I would like to hear her. I also want an institution capable of saying who may read a letter entrusted to it. I have no intention of treating access to private papers as a reward for being the most sympathetic person excluded."''', c('[Ask what arrangements she would accept.]', "choice")),
+"I would like to hear her. I also want an institution that can say who may read a letter entrusted to it. One that cannot will soon be trusted with nothing worth reading. Access to private papers is not a prize for the most sympathetic person left outside the door."''', c('[Ask what arrangements she would accept.]', "choice")),
     n("choice", "Konomi", '''"I can accept the existing rules. Marenne may submit an account, but she will not see the restricted replies. I would have access and a place among people who can answer my questions without asking a second intermediary. I want that place."
 {n}She turns the page.{/n}
 "Or I can sponsor her for this one comparison. Veyra allows a member to take responsibility for an unconfirmed correspondent. We would work from a smaller set of extracts whose authors permit that arrangement. I would give up the broader reading and put my name beside hers when errors are corrected."
@@ -138,7 +138,7 @@ s("the_answer_on_record", "The answer she puts her name to", '"What did the circ
     n("walk", "Narrator", '''{n}She agrees at once, then spends a moment looking for the gloves she put inside her own case. You wait while she finds them. She gives you a look that discourages the most obvious remark and invites a better one.{/n}
 {n}Outside, she takes your arm. You choose the first turning; she chooses the next. Neither has an appointment at the end of the street.{/n}
 "There," she says. "We have found a use for two people who insist on choosing."
-{n}You continue walking until one of you wants to turn back, and say so.{/n}''', c('[Enjoy the walk and return together.]', flags=("konomi.political_reply_kept",))),
+{n}You walk until she declares the street exhausted of interest and steers you back toward her door by the elbow.{/n}''', c('[Enjoy the walk and return together.]', flags=("konomi.political_reply_kept",))),
 ], after=("konomi.political_terms_sent",), delay=168)
 
 
@@ -167,7 +167,7 @@ def integrate(payload):
           c('[Ask about the circular they sent to readers of their own choosing.]', "work_circular", requires=("konomi.circular_offer",)), portrait="Konomi"),
         n("work_morning", "Konomi", '''"And the handcart. I remember what my glove looked like afterward. Oselda's arrangement worked, though neither of us had allowed for everything it would cost."
 {n}She sets the papers farther from the plant.{/n}
-"I wanted my proposal chosen. I am glad I was there to see hers work. I can still find both things true without needing another trial to reconcile them."''',
+"I wanted my proposal chosen. I am glad I was there to see hers work. I do not need another trial to tell me which I prefer. I prefer mine. Hers worked."''',
           c('[Ask about the private reports they agreed to write together.]', "work_joint", requires=("konomi.joint_offer",)),
           c('[Ask about the circular they sent to readers of their own choosing.]', "work_circular", requires=("konomi.circular_offer",)), portrait="Konomi"),
         n("work_joint", "Konomi", '''"Two reports, both names and a reduced fee. Their first question went to Oselda. I have not ceased wanting to be asked first, but it was useful to discover that being asked second did not prevent me from enjoying the work."

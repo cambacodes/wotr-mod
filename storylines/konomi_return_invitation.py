@@ -11,12 +11,12 @@ SCENES = [scene("konomi.return_letter", "A reply in her own hand", "Konomi", 3, 
       c('[Ask whether she would welcome a short personal visit.]', "request"),
       c('[Send your good wishes without asking her to receive you.]', "good_wishes"),
       c('[Put the unfinished letter aside for now.]', abort=True)),
-    n("request", "Narrator", '''{n}You keep the request brief. You would like to see her when she feels able, and there is no need to send an immediate answer. You add that you can bring the map if she wishes to inspect the instrument of your argument.{/n}
+    n("request", "Narrator", '''{n}You keep the request brief. You would like to see her, at an hour of her choosing; she will choose it regardless. You add that you can bring the map if she wishes to inspect the instrument of your argument.{/n}
 {n}Her reply arrives folded around your own letter. Your final sentence has acquired a small mark in the margin.{/n}
 {n}"I am pleased to discover that the map has not been appointed to manage my correspondence. Please keep it occupied elsewhere for the present. I have questions for you before I have questions for a piece of paper."{/n}
 {n}Beneath that, in slightly less even handwriting, she has written another paragraph.{/n}''',
       c('[Read the rest of her reply.]', "reply")),
-    n("reply", "Narrator", '''{n}"I would welcome a short visit in Drezen. I shall sit down, and you may tell me what you attempted without turning it into a report for the council. If I become tired, I shall say so. Please believe me before I have to become diplomatic about it."{/n}
+    n("reply", "Narrator", '''{n}"I would welcome a short visit in Drezen. I shall sit down, and you may tell me what you attempted without turning it into a report for the council. When I tire, I shall dismiss you. I have been practising dismissals on my physician, and I am told I am now very good at them."{/n}
 {n}There is a pause in the ink before the last line.{/n}
 {n}"I find that I would rather hear your voice than read another account of myself."{/n}
 {n}She has signed the letter herself. You recognize the care with which she has made the final stroke, even though the pen has pressed harder than the flourish requires.{/n}''',

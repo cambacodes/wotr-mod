@@ -52,9 +52,9 @@ def pages(private):
 "I want a part in those decisions. Peace should leave us better occupations than defending our wartime reputations."''', c('[Ask what that means for her own work.]', "council")),
         n("crisis", "Konomi", '''"The divisions in Nerosyan are doing damage far beyond the rooms where the arguments begin. Public services are failing. Roads are unsafe. The danger of famine grows while people debate who deserves to issue the next instruction."
 {n}She stops herself from unfolding the letter.{/n}
-"I have a great many opinions about that. You know several of them already. Tonight I wanted to tell you why I will not promise to become less interested when our conversations become more personal."
-"I have not asked you to."
-"No. You have not. People generally stop asking and start assuming, and I prefer to shut that door before anyone walks through it. I want a country capable of governing itself. There are evenings when wanting it makes me very poor company."
+"I have a great many opinions about that. You know several of them already. Tonight I wanted you to understand that sharing your supper table does not buy you a quieter envoy."
+"I have not asked for one."
+"No. Men in your position rarely ask. They wait for the woman to soften, and when she does not, they write to the capital for a more agreeable one. I want a country capable of governing itself. There are evenings when wanting it makes me very poor company."
 {n}Her glance toward you is dry.{/n}
 "You are permitted to say so. Preferably with a better argument than that I would look prettier if I smiled."''', c('[Ask how she sees her work continuing.]', "council")),
         n("uncertain", "Konomi", '''"I will not give you a convenient ending to a dispute merely because it would make this conversation easier. There are accounts I would need to check before attaching my name to one."
@@ -69,11 +69,11 @@ def pages(private):
           c('"What part of that work do you want for yourself?"', "unconcluded", forbids=("konomi.council_conclusion_seen",))),
         n("concluded", "Konomi", '''"I meant what I said about the council. I did not mean that I had lost the desire to be useful, or to have my advice taken seriously."
 {n}She gives you an appraising look.{/n}
-"I am aware that those are not always identical ambitions. It would be tedious to pretend otherwise with somebody I want to know me."
-''' + role, c('[Hear what she wants you to understand.]', "respect")),
+"I am aware that those are not always identical ambitions. It would be tedious to pretend otherwise with somebody I intend to keep."
+''' + role, c('[Hear her terms.]', "respect")),
         n("unconcluded", "Konomi", '''"Influence over a decision before everyone has spent a week defending it. The chance to ask an unwelcome question while the answer can still change something."
 {n}She rests her hands on the writing case.{/n}
-"We need not settle the future of every institution tonight. I am telling you which part of my work I would miss, and which part I have no intention of giving up merely to become an agreeable guest."''', c('[Hear what she wants you to understand.]', "respect")),
+"We need not settle the future of every institution tonight. I am telling you which part of my work I would miss, and which part I have no intention of giving up merely to become an agreeable guest."''', c('[Hear her terms.]', "respect")),
         n("respect", "Narrator", '''{n}She watches your reaction with more interest than she gives the letters.{/n}''',
           c('"When you acknowledged my political judgment, did you expect us to stop disagreeing?"', "earned", requires=("konomi.political_respect_seen",)),
           c('"And where would you put my judgment among those decisions?"', "unearned", forbids=("konomi.political_respect_seen",))),
@@ -88,13 +88,13 @@ def pages(private):
 "You may be hoping for a more flattering answer. I can offer one about your company. I enjoy it sufficiently to risk telling you things which do not flatter either of us."
 "A formidable recommendation."
 "I thought so. I have been unusually generous."
-{n}Her smile makes it easier to answer the invitation without mistaking it for agreement on every political question.{/n}''', c('[Ask what she would like to share next.]', "offer")),
-        n("offer", "Konomi", '''"Another conversation when I have something worth showing you. I would like you to see how I decide which question to send, or what I do with an answer I dislike."
-{n}She pushes neither letter toward you yet.{/n}
-"The people who wrote to me have not consented to having their private business used to entertain my guest. I can ask what they are willing to share. That may leave us with a less impressive example."
+{n}Her smile is an invitation. It is not, you suspect, a concession on a single political question.{/n}''', c('[Ask what she would like to share next.]', "offer")),
+        n("offer", "Konomi", '''"Another conversation, when I have something worth showing you. I would like you to see how I decide which question to send, and what I do with an answer I dislike."
+{n}She lays her hand flat on the folded letters and leaves it there.{/n}
+"Not these, however. Those letters are worth money, Commander. Supper buys you my company, not my correspondents. When I have a reply I can afford to show you, you shall see it, and you will find it less impressive than you hoped."
 "You would still want me here?"
-"Yes. I am trying to invite you, not recruit an audience."''',
-          c('"Show me how you frame the questions, when you have permission."', "questions"),
+"Yes. I am inviting you, not recruiting an audience. Audiences pay for their seats."''',
+          c('"Show me how you frame the questions, when you have one you can afford to show."', "questions"),
           c('"I would rather hear what you do with a difficult reply."', "replies")),
         n("questions", "Konomi", '''"Then you may object before I send anything. I reserve the right to disagree with the objection."
 {n}She puts the letters away and gives you her attention again.{/n}

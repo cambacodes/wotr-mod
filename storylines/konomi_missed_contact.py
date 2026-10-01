@@ -41,11 +41,11 @@ s("the_unintroduced_letter", "A name without an appointment", [
       c('[Ask for a personal afternoon, without claiming a previous friendship.]', "new", forbids=("konomi.margin", "konomi.lovers")),
       c('[Acknowledge the conversations you have already had.]', "known", requires=("konomi.margin",), forbids=("konomi.lovers",)),
       c('[Tell her that you miss her company.]', "lover", requires=("konomi.lovers",))),
-    n("new", "Narrator", '''{n}"Lady Konomi, would you consider a private afternoon? I would like to know what you enjoy discussing when nobody has prepared an agenda. You may choose the place. I can offer my company and a willingness to discover what I ought to have asked."{/n}
+    n("new", "Narrator", '''{n}"Lady Konomi, would you consider a private afternoon? I would like to know what you enjoy discussing when nobody has prepared an agenda. You may choose the place. I can offer my company, and a better question than the council has ever asked you."{/n}
 {n}You add your name. The little window in the sheet waits while you reread the page.{/n}''', c('[Send the invitation.]', "send", flags=("konomi.missed_personal_invitation",))),
     n("known", "Narrator", '''{n}"Konomi, I would like to speak with you again. Privately, at a place you choose, with time to finish an answer. I have wondered what you are doing and caught myself composing the reply before hearing it. You would have something to say about that. I would like to hear it."{/n}
-{n}You leave enough room below the invitation for her to write a short refusal, should she prefer that answer.{/n}''', c('[Send the invitation.]', "send", flags=("konomi.missed_known_invitation",))),
-    n("lover", "Narrator", '''{n}"Konomi, I miss you. I would like to know how you are, including the things I might find difficult to hear. If you want to see me, name a place and a time. I am asking for an afternoon. I hope there will be more, but I would rather hear your answer than write it for you."{/n}
+{n}You leave room below the invitation for a short refusal. She writes excellent ones, and you would rather not make her buy more paper.{/n}''', c('[Send the invitation.]', "send", flags=("konomi.missed_known_invitation",))),
+    n("lover", "Narrator", '''{n}"Konomi, I miss you. Tell me how you are, and do not trim the parts you think will sting; you never did before. If you want to see me, name a place and a time. I am asking for an afternoon. I would ask for more, but you would only make me pay for it."{/n}
 {n}For a moment you consider making the first sentence more elaborate. You leave it alone.{/n}''', c('[Send the invitation.]', "send", flags=("konomi.missed_lover_invitation",))),
     n("send", "Narrator", '''{n}The envelope passes through the window. Its edges do not fold. Instead, the window reluctantly becomes large enough to admit it, bumping into the inquiry's upper margin.{/n}
 {n}The ink-stained finger returns your receipt. Beneath DELIVERY OFFERED, someone has written that future correspondence must use an address supplied by the recipient.{/n}
@@ -100,14 +100,14 @@ s("the_courtyard_introduction", "An afternoon by arrangement", [
 "Yes. And I would like to be paid before they decide that discussing it constitutes a personal favor."
 {n}She smiles.{/n}
 "I enjoy being useful. I also enjoy discovering that I have understood a difficult person correctly. Occasionally those ambitions help one another."''', c('[Ask what she would enjoy about this afternoon.]', "company")),
-    n("company", "Konomi", '''"I would like to be asked a question whose answer you have not already prepared."
+    n("company", "Konomi", '''"I would like to be asked a question whose answer you have not already prepared. I receive very few. People bring me prepared answers the way they bring me wine, to put me in a generous mood."
 {n}She catches your expression.{/n}
-"I have been practicing that myself. You arrived, and I immediately wanted to decide what your invitation meant. It seemed more efficient than asking."
+"Yes, I am a hypocrite. You arrived, and I had already drafted three explanations of your invitation. Asking is cheaper than drafting."
 {n}Her fingers move over the chair arm, then stop.{/n}
-"So I shall ask. What would you like?"''',
+"So. What do you want, Commander?"''',
       c('"To see you privately and find out whether the attraction is mutual."', "interest", forbids=("konomi.lovers",)),
       c('"To have afternoons together again. I have missed them."', "lover", requires=("konomi.lovers",)),
-      c('"Another conversation. I would rather let us discover the rest."', "slow")),
+      c('"Another conversation first. I want to see your terms before I name mine."', "slow")),
     n("interest", "Konomi", '''"It is sufficiently mutual for me to want another afternoon."
 {n}She lets you see the smile this time.{/n}
 "I am not yet prepared to make a more elaborate prediction. It would be unfortunate if the first thing you learned about me were that I become inaccurate when pleased."
@@ -117,9 +117,9 @@ s("the_courtyard_introduction", "An afternoon by arrangement", [
 "I have thought of several things I wanted to tell you. Most seemed too small to begin a letter. I should probably have begun with one of them."
 {n}She looks down at your joined hands.{/n}
 "I would like another afternoon. Then we may discover whether I have remembered all the small things."''', c('[Stay near and make another plan.]', "arrange", flags=("konomi.private_interest",))),
-    n("slow", "Konomi", '''"I can agree to that."
+    n("slow", "Konomi", '''"Sensible. Irritatingly so."
 {n}She leans back and glances up at the light along the courtyard wall.{/n}
-"I did not reserve this place merely to improve the comfort of our correspondence. But I would rather discover what we want than obtain an answer because the chairs were already arranged."
+"I did not reserve this place merely to improve the comfort of our correspondence. But a bargain struck because the chairs were already arranged is a bargain somebody regrets by supper."
 {n}A smile returns.{/n}
 "They were a considerable undertaking. You have no idea how long I looked for that stone."''', c('[Promise another conversation.]', "arrange", flags=("konomi.private_unhurried",))),
     n("arrange", "Konomi", '''"The carriers will show me their wagons next. I would like you to come, if they agree. I shall ask them before sending you the time."

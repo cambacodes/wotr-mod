@@ -7,14 +7,14 @@ SCENES = [scene("konomi.private_history", "What was left unanswered", "Konomi", 
       c('[Meet her to arrange the next visit.]', "fresh", forbids=("konomi.disagreement",)),
       c('[Return to her note when you have time.]', abort=True)),
     n("fresh", "Konomi", '''"The carriers have agreed to show me the wagons. I would like you to come. They have agreed to that as well."
-{n}She gives you the location and the time, then waits while you decide whether you can attend.{/n}
+{n}She gives you the location and the time, and then the size of her fee, in case you require persuading.{/n}
 "I shall be working. I hope you will find me interesting company even when I am asking somebody else an inconvenient question."
 {n}She smiles as you settle the arrangement.{/n}
 "Good. I would like to see you there."''', c('[Arrange to meet her at the yard.]', flags=("konomi.private_history_ready",))),
     n("start", "Konomi", '''{n}Konomi meets you in the courtyard again. This time a folded petition lies beneath a cup she has set out for you. Beside it is a narrow writing case, firmly shut.{/n}
-"I enjoyed seeing you. I also realized how much we managed not to discuss."
+"I enjoyed seeing you. Then I went through my papers and found how much we had managed not to discuss."
 {n}She draws the petition clear of the cup.{/n}
-"Before we begin making pleasant plans, I want to know that we remember what was still happening when we stopped speaking."''',
+"Before we make pleasant plans, we settle the old accounts. I do not open a new ledger on top of one that does not balance."''',
       c('[Sit down and hear her out.]', "petition"),
       c('[Ask to return when you can give the conversation time.]', abort=True)),
     n("petition", "Narrator", '''{n}The paper is the settlement's petition that once prompted an argument about a shipment assigned to Drezen. Konomi leaves it where you can read it.{/n}''',
@@ -47,7 +47,7 @@ SCENES = [scene("konomi.private_history", "What was left unanswered", "Konomi", 
     n("letter", "Narrator", '''{n}Konomi moves the petition aside and rests one hand on the writing case.{/n}''',
       c('[Ask what became of the stolen letter and your answer to it.]', "unanswered", requires=("konomi.leak",), forbids=("konomi.scandal_answered",)),
       c('[Ask what remains after the response she already described.]', "answered", requires=("konomi.scandal_answered",)),
-      c('[Give her time to say what she wants from your renewed correspondence.]', "new_letters", forbids=("konomi.leak", "konomi.scandal_answered",))),
+      c('[Ask what she wants from your letters now.]', "new_letters", forbids=("konomi.leak", "konomi.scandal_answered",))),
     n("unanswered", "Konomi", '''"I did not withdraw our reply. Whatever happened afterward, I would not give its recipient the pleasure of deciding that I had been ashamed to write it."
 {n}She opens the case and removes a folded answer.{/n}''',
       c('[Ask about the consequences of the public acknowledgment.]', "public", requires=("konomi.public",)),
@@ -86,10 +86,10 @@ SCENES = [scene("konomi.private_history", "What was left unanswered", "Konomi", 
 {n}She exhales slowly.{/n}
 "The next time somebody waves a page of mine at you, I shall remember this afternoon, and I shall remember the other one too. I do not forget debts, paid or unpaid. It is a professional failing."
 {n}She moves the case off the bench beside her.{/n}
-"Sit. I have not decided what to do with you yet. You may as well be comfortable while I think."''', c('[Stay without asking her to declare the hurt over.]', "hearing")),
+"Sit. I have not decided what to do with you yet. You may as well be comfortable while I think."''', c('[Sit, and let her think.]', "hearing")),
     n("remember", "Konomi", '''"I remember it too. I do not need you to deliver it again as though I had mislaid the first version."
 {n}She moves the case aside.{/n}
-"I want to know that the next private letter will not become something you are prepared to disown when it is inconvenient. That will take more than one good answer from either of us."''', c('[Agree to let later conduct answer that.]', "hearing")),
+"I want to know that the next private letter will not become something you are prepared to disown when it is inconvenient. That will take more than one good answer from either of us."''', c('[Tell her to judge you by what you do next.]', "hearing")),
     n("stood", "Konomi", '''"So do I. I am glad we can still say that."
 {n}She moves the case away from the space between you.{/n}
 "I did not invite you back so that we could spend every afternoon defending the old ones. But I wanted to be certain we were not pretending they had belonged to somebody else."''', c('[Ask what remains to be done.]', "hearing")),

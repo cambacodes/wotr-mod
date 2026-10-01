@@ -30,7 +30,7 @@ SCENES[0]["Nodes"][0]["Text"] = '''{n}Konomi asks you to visit the room she is u
 "What does he say?"
 "He admits buying a copy and calls it a memorandum he believed he could circulate. The receipt says what he paid, not what he read."
 {n}Konomi rests one hand beside the wrapped original without opening it.{/n}
-"I want them to compare the pages. I still want you there to decide what they may read. Coming back to Drezen has not given me permission to answer that question for you."'''
+"I want them to compare the pages. It is your hand on the page, and they will want you to swear to it. Coming back to Drezen has not taught me to forge your signature."'''
 
 SCENES[1]["Nodes"][0]["Text"] = '''{n}Konomi opens the door of her borrowed room. The association's written finding lies on the table beside your letter. She has moved her work to the windowsill to make space for supper.{/n}
 "They sent it here, as I asked. Nobody has attempted to deliver it to my former office. A modest success, but I intend to enjoy it."

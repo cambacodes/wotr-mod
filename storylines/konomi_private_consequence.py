@@ -93,7 +93,7 @@ s("private_return_terms", "The price of being asked first", [
 ], delay=168, manual=True)
 
 s("private_kept_hours", "An hour she could have sold", [
-    n("start", "Narrator", '''{n}On the morning of your promised visit, Konomi sends a runner with a question: can you come to the lease office before meeting her elsewhere? There is time to decline. She has asked the runner to wait for your answer.{/n}
+    n("start", "Narrator", '''{n}On the morning of your promised visit, Konomi sends a runner with a question: can you come to the lease office before meeting her elsewhere? The runner has been told to wait, and plainly paid to look at the door until you answer.{/n}
 {n}You agree. At the office, the owner has already left. Konomi is replacing the fittings in their box while the prospective tenant fastens a traveling cloak. The woman thanks her for the answer, not warmly, and goes out past you.{/n}
 "She dislikes the space I could offer," Konomi says. "She was quite right to refuse it. I wish she had reached the decision before I finished the explanation."
 {n}She lifts the box from the desk.{/n}
@@ -155,16 +155,16 @@ s("private_kept_hours", "An hour she could have sold", [
       c('[Stay beside her and tell her the thing you wanted time to explain.]', "long_talk")),
     n("short_kiss", "Narrator", '''{n}She answers the kiss immediately. When somebody passes the doorway, she waits with her mouth close to yours until the footsteps have gone, then finishes what she began.{/n}
 {n}Afterward you walk until the time you agreed to part. She keeps hold of your arm. The afternoon was shorter than either of you wanted; neither has to pretend it vanished entirely.{/n}''', c('[Part at the agreed time.]', flags=("konomi.private_extra_fee", "konomi.private_visit_kissed", "konomi.private_hours_kept"))),
-    n("short_talk", "Narrator", '''{n}You tell her about something you have been putting off because it will disappoint a person whose good opinion matters to you. She asks whether you want advice. This time you say no.{/n}
-{n}Konomi listens without offering a better argument. At the turning where you must part, she squeezes your hand.{/n}
+    n("short_talk", "Narrator", '''{n}You tell her about something you have been putting off because it will disappoint a person whose good opinion matters to you. Her advice is assembling before you finish the first sentence; you can watch it happen. You tell her you do not want it.{/n}
+{n}Konomi takes this like a tariff she disapproves of and pays it anyway, biting back two better arguments in plain view. At the turning where you must part, she squeezes your hand.{/n}
 "Write and tell me how it goes. I shall have drafted three better replies for you by then, and I shall burn every one of them unread. You may admire the sacrifice."
 {n}She looks ruefully back toward the street you walked together.{/n}
 "We did manage some of it."''', c('[Part at the agreed time.]', flags=("konomi.private_extra_fee", "konomi.private_hours_kept"))),
     n("long_kiss", "Narrator", '''{n}She draws you nearer by your sleeve. There is time to kiss her without listening for the next summons, time to laugh when the stone shifts beneath you, and time to settle together on the steadier part before beginning again.{/n}
 {n}When you finally stand, Konomi straightens your collar. Her own is not quite straight. You attend to that while she pretends to find the attention unnecessary.{/n}
 {n}You take the longer way back. She does not calculate what the afternoon would have paid.{/n}''', c('[Walk back together before your other appointments.]', flags=("konomi.private_full_afternoon", "konomi.private_visit_kissed", "konomi.private_hours_kept"))),
-    n("long_talk", "Narrator", '''{n}You tell her about something you have been putting off because it will disappoint a person whose good opinion matters to you. She asks whether you want advice. This time you say no.{/n}
-{n}Konomi leans against your shoulder while you explain. Once she begins a suggestion, catches herself, and asks a question instead. You reach the end without finding an easy answer. She remains beside you.{/n}
+    n("long_talk", "Narrator", '''{n}You tell her about something you have been putting off because it will disappoint a person whose good opinion matters to you. Her advice is assembling before you finish the first sentence; you can watch it happen. You tell her you do not want it.{/n}
+{n}Konomi leans against your shoulder while you explain. Once she gets as far as "If I were you," and stops herself with an audible click of the teeth. You reach the end without an easy answer. She does not move from your side.{/n}
 "You brought that to me instead of to your council. I shall take it as the compliment it is. I also held my tongue for a full quarter of an hour, which no ambassador has ever managed to make me do."
 {n}You laugh, and she nudges you with her shoulder. There is still time to sit before you need to walk back.{/n}''', c('[Keep the rest of the afternoon, then return together.]', flags=("konomi.private_full_afternoon", "konomi.private_hours_kept"))),
 ], requires=("konomi.private_terms_sent",), delay=48)
@@ -176,7 +176,7 @@ s("private_last_visit", "The visit before you leave", [
 {n}She closes the door and rests against it for a moment.{/n}
 "There is something practical to tell you. Then I should like to be as impractical as the remaining time allows."''',
       c('[Hear what became of the agreement before saying goodbye.]', "business"),
-      c('[Leave this farewell for the day you are ready to make it.]', abort=True)),
+      c('[Put off the farewell for another day.]', abort=True)),
     n("business", "Konomi", '''"The first tenant paid for her option. Her adviser sent the receipt. The owner and I have signed the arrangement we discussed, and I have been paid under it. I will keep working from both cities."
 {n}Konomi sits on the edge of the bed, leaving space beside her.{/n}
 "There. That is done, and I did not have to be dismissed for it this time. There will always be another applicant. I refuse to spend tonight on any of them."
@@ -204,12 +204,12 @@ s("private_last_visit", "The visit before you leave", [
 {n}She turns your hand palm upward and brushes her thumb over it.{/n}
 "Next time I may refuse the fee. Next time you may be the one selling me an hour. We shall haggle each time, openly, like honest merchants. It is the only arrangement I have ever trusted."
 {n}She looks directly at you.{/n}
-"Today I have kept the time. There is no proposal waiting for you to finish reading while I work."''', c('[Tell her what you want her to carry forward.]', "future")),
+"Today I have kept the time. There is no proposal waiting for you to finish reading while I work."''', c('[Make her an offer before you go.]', "future")),
     n("whole", "Konomi", '''"So am I. I also remember the fee. I have a very good memory for both sorts of thing."
 {n}She lifts your hand to her cheek.{/n}
 "You told me outright the afternoon was yours and you would not sell it back. I have met two people in my life who would say that to my face. The other one was my grandmother."
 {n}She leans into your touch.{/n}
-"Today is kept too. Nobody is buying it."''', c('[Tell her what you want her to carry forward.]', "future")),
+"Today is kept too. Nobody is buying it."''', c('[Make her an offer before you go.]', "future")),
     n("future", "Konomi", '''"I have been wondering what people expect to hear at a farewell like this. Something they could repeat afterward without explaining who we were on an ordinary afternoon."
 {n}She shakes her head.{/n}
 "I want the ordinary afternoons. I am frightened that I will not have them. There is no elegant form of that request, and I have drafted eleven."
@@ -239,7 +239,7 @@ s("private_last_visit", "The visit before you leave", [
     n("night", "Narrator", '''{n}She kisses you hard, as if the war might come through the door before she has finished. Her hand closes in your collar and does not let go until she needs both hands for your belt.{/n}
 "The lamp stays lit," she says against your mouth. "I intend to remember this properly."
 {n}Her robe slides from her shoulders onto the floor beside the travelling case. She pushes you back across the bed, climbs over you, and settles her knees either side of your hips, her hair falling loose around your face as she pulls your hands to her hips and bends to kiss you.{/n}
-{n}Much later, when the lamp is out, she asks whether you are awake. You are. She tells you one of the thoughts that has kept her from sleeping. You do not promise to make it impossible. You find her hand beneath the cover and hold it until she stops trying to explain.{/n}
+{n}Much later, when the lamp is out, she asks whether you are awake. You are. In a precise, level voice she tells you which of the war's likely outcomes she has been costing out since supper. You do not promise her any of them. You find her hand beneath the cover and hold it until the figures run out.{/n}
 {n}In the morning she walks you to the door. The book remains on the windowsill.{/n}
 "Go carefully," she says. "I want another inconvenient afternoon."
 {n}You kiss her once more before you leave.{/n}''', c('[Leave with the farewell and the affection you chose.]', flags=("konomi.private_consequence_complete", "konomi.private_farewell_night"))),
@@ -247,7 +247,7 @@ s("private_last_visit", "The visit before you leave", [
 {n}Before you must leave, she lights the lamp. You help her find a place for the borrowed book where she can reach it from the bed. She tells you which part she intends to argue with when you have both read it.{/n}
 {n}At the door she holds you once more.{/n}
 "Go carefully," she says. "I want another inconvenient afternoon."
-{n}She keeps your hand until you are ready to let go.{/n}''', c('[Leave with the farewell and the affection you chose.]', flags=("konomi.private_consequence_complete",))),
+{n}She keeps your hand until the bells force the matter.{/n}''', c('[Leave with the farewell and the affection you chose.]', flags=("konomi.private_consequence_complete",))),
 ], requires=("konomi.private_hours_kept",), delay=24, manual=True)
 
 

@@ -35,7 +35,7 @@ recovery("retained_inquiry", "An objection to the last line", [
 {n}On the map, a line of smaller writing appears. NO FURTHER CORRESPONDENCE EXPECTED.{/n}
 {n}It is an extravagant claim to fit in so little space.{/n}''',
       c('[Examine the claim before attempting to change anything.]', "examine"),
-      c('[Leave the map open. You are not ready to attempt this.]', abort=True)),
+      c('[Leave the map open for now.]', abort=True)),
     n("examine", "Narrator", '''{n}The annotation gives no reason why an expectation should be binding. You trace its letters without touching the black stroke. A second line emerges: ALL REPLIES RECEIVED AFTER CLOSURE WILL BE RETURNED TO SENDER.{/n}
 {n}You ask who signed for the closure. The map produces a smudge shaped like a signature. You ask for a legible copy. The smudge acquires a second smudge certifying the first.{/n}
 {n}A clerk passing the doorway sees you arguing with a map and quietly takes her documents elsewhere. You cannot fault her judgment.{/n}''',
@@ -126,8 +126,8 @@ visit("return_first_words", "The first unfinished answer", [
 "I would find their disappointment exhausting. For the moment I should prefer they direct their questions elsewhere."
 {n}She looks up again.{/n}
 "And you? What have you been waiting to say?"''',
-      c('"You do not need to revisit the decision we made about us."', "boundary", requires=("konomi.closed",)),
-      c('"Our farewell still belongs to us. This visit need not undo it."', "boundary", requires=("konomi.farewell",), forbids=("konomi.closed",)),
+      c('"What we ended stays ended. I did not do this to reopen it."', "boundary", requires=("konomi.closed",)),
+      c('"Our farewell stands. I did not come to collect on it."', "boundary", requires=("konomi.farewell",), forbids=("konomi.closed",)),
       c('"We parted. I still wanted you to have another day."', "boundary", requires=("konomi.private_parted",), forbids=("konomi.closed", "konomi.farewell")),
       c('"I missed you."', "love", requires=("konomi.lovers",), forbids=CLOSED),
       c('"I hoped we would have another private afternoon."', "private", requires=("konomi.missed_private_access",), forbids=(*CLOSED, "konomi.lovers")),
@@ -138,7 +138,7 @@ visit("return_first_words", "The first unfinished answer", [
 {n}She rests both hands on the chair arms.{/n}
 "Good. Say it plainly and I can file it. I have had people at my bedside all day drafting the rest of my life for me, and they all write badly."
 {n}The tension at the corner of her mouth eases.{/n}
-"Thank you for coming. And for what you attempted before there was an answer. We need not turn that into a different answer to an older question."''',
+"Thank you for coming, and for what you attempted. It does not buy a different answer to an older question, and I am relieved you have not tried to spend it that way."''',
       c('[Let the visit remain a visit of recovery.]', "water")),
     n("love", "Konomi", '''{n}She reaches for your hand, misses it by a little, and lets you bring it the rest of the way. Her fingers close firmly once they have found yours.{/n}
 "That is the first answer today that has made sense immediately."
@@ -165,7 +165,7 @@ visit("return_first_words", "The first unfinished answer", [
 "I would like a second visit. Tomorrow would be unwise. I will spend it convincing myself that tomorrow exists without immediately filling it."
 {n}She looks at you over the cup.{/n}
 "The day after, perhaps. Bring the map, if it has finished arguing. I should like to see whether it has spelled my name correctly."
-{n}She does not ask you to leave at once. You remain until she begins to tire, then let the visit end before she has to insist.{/n}''',
+{n}She does not ask you to leave at once. You remain until she begins to tire, and go before she can dismiss you, which she notes with professional approval.{/n}''',
       c('[Agree to the later visit.]', flags=("konomi.return_first_words", "konomi.return_followup_invited"))),
 ])
 
@@ -227,7 +227,7 @@ visit("return_second_visit", "A day she has left partly empty", [
 "I mean to take the walk I mentioned. A short one, before I decide that good weather is an instruction to prove something."
 {n}She puts the ruler away and leaves the map with you. You tuck her signed sheet beside it.{/n}
 "I hope you find a better use for that than arguing with it again. Though I suspect it knows where to find you."
-{n}She leaves with plans for her own afternoon. Your earlier parting has not been erased, and this visit has not needed to erase it.{/n}''',
+{n}She leaves with plans for her own afternoon. Your earlier parting stands where you both left it.{/n}''',
       c('[Let the next afternoon belong to her.]', flags=("konomi.return_aftercare_complete",))),
     n("familiar", "Konomi", '''"You may also write something shorter than an account of the future."
 {n}She watches you put away the sheet.{/n}

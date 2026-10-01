@@ -68,7 +68,7 @@ s("a_useful_supper", "The price of a quiet street", '"You mentioned an invitatio
 "Then you know the woman over the west gate begins work before sunrise. And that Hesset sometimes sleeps in his wagon. Which will be standing beside the other wagons."
 {n}Hesset lowers his spoon.{/n}
 "I hadn't got to that part."
-{n}Varine looks toward Konomi. She does not immediately supply an answer.{/n}""", c('[Ask what each of them would need before agreeing.]', "needs")),
+{n}Varine looks toward Konomi. She does not immediately supply an answer.{/n}""", c('[Ask what it would take for each of them to agree.]', "needs")),
     n("needs", "Konomi", """"Hesset?"
 "A time I can depend on. I can sleep somewhere else if I know before I get there. It is waiting that ruins me."
 "Oselda?"
@@ -290,7 +290,7 @@ s("the_trial_day", "An improvement with a bill attached", '"How is the trial goi
 "I invited you to hear a proposal. I discovered afterward that I cared rather more about what you saw while I was defending it."
 {n}She looks at you directly. The small composed smile has gone.{/n}
 "In council I would have had that plank in my report and Oselda's name in a footnote. I nearly did it here. You watched me decide not to, and I found I wanted you to see it. That is a weakness, Commander, and I am telling you so you cannot sell it to anyone."
-"You could tell me what you would enjoy."
+"Then sell it to me instead. What do you want, right now?"
 "At present? Taking off this glove. And not having to draft the next part as a proposal. I have written enough proposals today."
 {n}She begins working at the fastening. You wait until she has freed her hand, then take it.{/n}""",
       c('[Kiss her, and let the unhurried moment last.]', "kiss"),
@@ -339,7 +339,7 @@ s("a_name_beside_hers", "The readers she wanted", '"Has Varine answered about th
 {n}Oselda sits back. "Now we have something to discuss."{/n}""", c('[Ask what each arrangement would demand of their time.]', "time")),
     n("time", "Konomi", """{n}The private reports would require an answer on a fixed day. Each woman would write the parts she knew, then they would argue over the conclusions before sending them. The offered fee could pay for Oselda's time away from other accounts and a portion of Konomi's evenings.{/n}
 {n}The circular could wait until they had something worth saying. It would travel farther through Varine's acquaintances, but neither writer would control which reader received it next. There would be no claim on an evening merely because a payment was due.{/n}
-"My office still takes precedence," Konomi says. "I will not sell information given to it in confidence. We use what the participants agree to share, as we did here. If there is a conflict, this work waits."
+"My office comes first," Konomi says. "What reaches me as the crown's envoy is the crown's stock, and I do not sell the crown's goods out of my own stall. It is the quickest way I know to be recalled. We write what the yard told us, and nothing else. If the two collide, this work waits."
 "Then put that in the offer," Oselda answers. "I would rather discover what waiting means before I depend on the fee."
 {n}They write a limit on the number of reports. Konomi strikes out a phrase promising prompt answers and replaces it with the days she can actually offer.{/n}
 "That is less flattering," she says.
