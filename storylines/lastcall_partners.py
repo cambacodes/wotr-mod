@@ -158,16 +158,16 @@ partner("anevia", "anevia", "anevia.committed", "anevia.closed", "Anevia, After"
 
 I = "irabeth.trickster."
 partner("irabeth", "irabeth", "irabeth.committed", "irabeth.closed", "Irabeth, Dismissed",
-    '''Irabeth Tirabade was still under the Commander's orders at Threshold, as she had been since Iz. She had tried to put the sword down and could not, not until the Wound was shut. When word came that it was, she laid the sword on the table in her quarters, flexed the hand for some time, and sat down to wait for someone to dismiss her.''',
+    '''Irabeth Tirabade was still under the Commander's orders at Threshold, as she had been since Iz. She had sworn at a bier that the sword would not leave her reach until the Wound was shut, and she had kept it, every hour, out of plain stubbornness. When word came that it was, she laid the sword on the table in her quarters, flexed the hand for some time, and sat down to wait for someone to dismiss her.''',
     (
-        page_p('''Nobody did. The Commander came instead, with the discharge {mf|he|she} had kept unsigned since Iz, filled it in, dated it the day after the rift, and added a line under the signature: "Report in person." She did. She reported most evenings, for the rest of their lives, and was never once late.''', requires=(called("irabeth"),)),
+        page_p('''Nobody did. The Commander came instead, with the discharge {mf|he|she} had kept unsigned since Iz, filled it in, dated it the day after the rift, and added a line under the signature: "Report in person." She read it twice, and came, because she chose to. The Commander never sent for her again. She came most evenings anyway, on her own invitation, for the rest of their lives, and was never once late.''', requires=(called("irabeth"),)),
         page_p('''She knew about the lie at Iz; Nevi had seen to that. Irabeth kept serving, because a knight does, and kept the Commander at arm's length at every table afterwards, because a wife does. The Commander learned to take the far chair without being told.''', requires=(I + "cost.accounting_lied",)),
         page_p('''She went to the Commander's funeral in full plate and stood at attention through every speech. Afterwards she told the chaplain that the deceased had been absent without leave for most of the war, and that she saw no reason to take it seriously now.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened she saluted it, then saluted the Commander, then saluted the flask again, and declined to explain the order of precedence.''', requires=(H2,)),
     ), declined=I + "declined", page_forbids=("committed",),
     deal=[[I + "cost.under_orders"]],
     call=call('''[Call in the standing order] "Knight-Captain, you're still under my orders. Nobody's dismissed tonight. Including me."''',
-        '''{n}You say it the way you have said a hundred orders on a hundred walls. Somewhere behind you, in Drezen, a knight who cannot put down her sword stands up without knowing why.{/n}''',
+        '''{n}You say it the way you have said a hundred orders on a hundred walls. Somewhere behind you, in Drezen, a knight who swore not to put down her sword until this night is still at her post, because she gave her word, and an order nobody has rescinded is one she means to see through.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     call_commit=[["irabeth.committed"], ["committed"]],
     ledger=("Irabeth: an order not rescinded", "The Knight-Captain is still under my orders. Her discharge is unsigned. I will need to be alive to sign it."))

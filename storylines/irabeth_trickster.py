@@ -476,11 +476,11 @@ MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, 
 {n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-REASONS_NEW = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and somebody who knows what you're capable of has to stand close enough to stop you."
+REASONS_NEW = '''"You lay down under my sword and handed me yours. I've served three commanders. Not one of them would have done it, and every one of them would have been right not to."
 {n}Her jaw sets.{/n}
-"And somewhere between the ruin and that back stair I started wanting you. I didn't before Iz. I don't like that I do now. I'm not going to pretend otherwise, and I'm not going to thank you for it."'''
+"And since that back stair I've wanted you. I didn't before Iz. I don't like that I do now, and I'm not going to thank you for it."'''
 
-REASONS_TEXT = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you."
+REASONS_TEXT = '''"You lay down under my sword and handed me yours. Nobody at Iz would have bet on that. Least of all me."
 {n}Her jaw sets.{/n}
 "And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."'''
 
@@ -732,11 +732,13 @@ REACTIONS = [
              answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone", KILLED), chapter=5, last=5,
              entry='"Irabeth is back."'),
     reaction("Galfrey", "irabeth.trickster.dead.react_galfrey", (RETURNED,),
-             '''{n}A letter under the Queen's seal, in the Queen's own hand.{/n}
+             '''{n}Irabeth holds out a letter under the Queen's seal, in the Queen's own hand, and does not let go of it while you read.{/n}
 "I wept for you in front of my knights, Knight Tirabade. I would do it again. You gave your life for mine at Iz, and I will not be told that the gift was a clerical error.
 You owe me the dignity of an explanation. Your Commander owes me a better one.
-Galfrey."''',
-             remote=True, forbids=("galfrey.dead", "galfrey.killed_by_commander", KILLED), chapter=5, last=5,
+Galfrey."
+{n}She folds it along its creases and puts it inside her surcoat.{/n} "I've written mine. She's still waiting for yours, Commander."''',
+             answer_list=HUB, speaker="Irabeth", portrait="Irabeth", entry='"Anything to report, Knight-Captain?"',
+             forbids=("galfrey.dead", "galfrey.killed_by_commander", KILLED), chapter=5, last=5,
              delay=24, title="A letter under the Queen's seal", Chapters=[5], RequiresAnyGroups=[["irabeth.sacrificed"]]),
     # Q12 (Sol INT): the Queen who came back as Kitrane (galfrey.trickster.returned) cannot write under a seal she gave up.
     # She stops Irabeth in the market instead, and Irabeth reports it on her own hub: inline, no delivery.
@@ -760,7 +762,8 @@ Galfrey."''',
 "'Struck down by the Commander.' And under it: 'Called back on the Commander's order, the Commander's confession entered above.' Same ink. Same hand. The chaplain says you stood over him while he wrote it, and paid the Queen's jeweller for the diamond himself." {n}She closes the book.{/n}
 "You killed my sister, and then you went and told the Inheritor so, in writing, so she'd come back. I don't know what to do with that, Commander. I'm going to pray until I do. And then I'm going to hit you."''',
              answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone", "irabeth.trickster.blow_rewritten"), chapter=5, last=5,
-             entry='"Irabeth is back."'),
+             entry='"Irabeth is back."',
+             ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"}),
 ]
 SCENES.extend(REACTIONS)
 
