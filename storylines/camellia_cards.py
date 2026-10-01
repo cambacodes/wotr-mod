@@ -96,8 +96,8 @@ met(CUTLER, "The cutler", '"Where are we going?"', [
     cam("choose", '''{n}She walks along the wall with her hands clasped behind her back, like a lady at an exhibition.{/n}
 "You see, a knife is like a friend. Everyone thinks they want the biggest one. They don't. They want the one that fits." {n}She takes down a long, wicked thing with a serrated back.{/n} "This one is for people who want to be seen with a knife." {n}She puts it back. She takes down a plain little blade no longer than her hand.{/n} "This one is for people who want to use one."''',
         c('"Which one would you choose for me?"', "for_me"),
-        c('"Which one did you use on me? At the end, I mean."', "used")),
-    cam("used", '''"None of these." {n}She says it without a flicker.{/n} "You never saw the one I used, my friend. You were looking at my face. Everybody always is." {n}She smiles.{/n} "It's why I come to shops like this. To look at them properly, for once. I so rarely get to."''',
+        c('"Which one would you use on me, when the day comes?"', "used")),
+    cam("used", '''"None of these." {n}She says it without a flicker.{/n} "You'd never see the one I used, my friend. You'd be looking at my face. Everybody always is." {n}She smiles.{/n} "It's why I come to shops like this. To look at them properly, for once. I so rarely get to."''',
         c("Continue", "for_me")),
     cam("for_me", '''{n}She takes her time. She holds three different blades up against your hand, frowning, as a dressmaker holds up ribbons. At last she settles on one: short, heavy in the spine, with a grip wrapped in plain black cord. Nothing about it is beautiful. It fits your palm as if it had been made there.{/n}
 "This one." {n}She closes your fingers round it.{/n} "It's honest. It won't pretend to be anything it isn't. I think you should have at least one honest thing about you."''',

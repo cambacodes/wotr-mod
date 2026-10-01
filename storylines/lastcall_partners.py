@@ -498,7 +498,8 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
         '''{n}The fire gutters, though there is no wind. Somewhere a lady in black sets down a small clean knife beside an empty bowl, and a great many voices that are not hers lean in to listen.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Camellia: blood at the new moon", "Her spirits have my blood on account, a little each dark of the moon. She says they are very good at keeping count. So, I'm afraid, is she."),
-    page_commit_groups=[["camellia.committed"], [CA + "late_committed"]])   # Q8 (Sol INT): the late yes reaches her coda (additive)
+    page_commit_groups=[["camellia.committed"], [CA + "late_committed"]],   # Q8 (Sol INT): the late yes reaches her coda (additive)
+    page_forbids=(CA + "cost.asked_her_tame", CA + "cost.called_guard"))   # Q8 (Sol INT): a test refused after the terms closes her coda too
 
 
 AU = "arueshalae.trickster."

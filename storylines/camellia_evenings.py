@@ -72,7 +72,7 @@ living(SALLE, "Hit me where it counts", '"You\'re holding two swords. Should I b
     cam("open", '''"Foils." {n}She tosses you one, hilt first, and it is only when you catch it that you see the button on the point.{/n} "Practice blades. My father's fencing master would have fainted to see me use such cheap ones, but the quartermaster had nothing better, and I haven't practised in months. I'm getting sloppy."
 "And I want to see how you fight. Not on the battlefield. Everybody fights well on a battlefield. It's the only place where nobody is watching you."''',
         c("Continue", "rules")),
-    cam("rules", '''"First touch to the body wins. Not the arm, not the leg. My master always said that a touch to the arm is a wound and a touch to the body is a conversation." {n}She salutes, very correctly, blade to her lips.{/n} "Let us converse."''',
+    cam("rules", '''"First touch to the body wins. Not the arm, not the leg. A touch to the arm is a wound and a touch to the body is a conversation. I made that rule up just now. I like it." {n}She salutes, very correctly, blade to her lips.{/n} "Let us converse."''',
         c("Continue", "out", requires=(OUT_LIED,)),
         c("Continue", "bout", forbids=(OUT_LIED,))),
     cam("out", SALLE_LEADS_OUT, c("Continue", "bout")),

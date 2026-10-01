@@ -438,7 +438,7 @@ SCENES.append(scene(P + "killed.performance_letter", "A letter from Mireya", "Me
         c('[Write back your own] "If you ever need to kill a friend, start with me."',
           flags=(RET, KNOWS, STARTED, MARKED, TERMS)),
         c("[Burn the letter]", flags=(DECLINED, CLOSED))),
-    ], requires=("trickster.ever", PRIMED, KILLED, RAISED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=96,
+    ], requires=("trickster.ever", PRIMED, KILLED, RAISED, PRESENCE_FAILED), forbids=(PERFORMANCE, RET, DECLINED), delay=168,
     last=5, Relationship=REL, Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
 
 
@@ -528,7 +528,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
         c("[Lie still and smile back]", "steady"),
         c("[Put your own knife to her ribs]", "blade"),
         c("[Shout for the guard]", "guard")),
-    cam("steady", '''"There. That face. Not dread. Not fury. Interest." {n}The knife goes away. If there was a bowl, she binds your wrist with a strip of her own lace, very tightly, and sets the bowl aside without once looking into it.{/n}
+    cam("steady", '''"There. That face. Not dread. Not fury. Interest." {n}The knife goes away. She ties a strip of her own lace round your wrist, very tightly, whether or not anything there is bleeding, and does not once look at her own handiwork.{/n}
 "I have killed every friend I ever had. I haven't decided about you. Let's call it an experiment, and see how long it runs."''',
         c('[Ask her to stay] "Then stay."', "yes", requires=(RET,)),
         c('[Ask her to stay] "Then stay."', "yes_a", forbids=(RET,)),
@@ -614,7 +614,7 @@ KEPT_PARAS = (
     p("{n}She never stopped asking. Once a season she would find a prisoner nobody loved and bring the Commander to the cell door and ask. The Commander said no. She said thank you, and waited for the next one. She was very good at waiting.{/n}", requires=(PRISONER_SPARED,)),
     p("{n}She kept the list on the Commander's shelf all her life. Nobody on it ever changed.{/n}", requires=(LIST_KEPT,)),
     p("{n}On the same shelf, beside the list, hung a little bone snake on a cord. Visitors were told it held a very old and very beautiful spirit. The Commander never said otherwise.{/n}", requires=(AMULET_KEPT,)),
-    p("{n}A witness who had once seen a dead woman in church lived to a great age in Drezen, telling children about the singing ghost with the dog made of mist.{/n}", requires=(WITNESS_LIED,)),
+    p("{n}A witness who had once seen a dead woman in church lived to a great age in Drezen, telling children about the singing ghost with the dog made of mist.{/n}", requires=(WITNESS_LIED, KILLED)),
     p("{n}There was a railing on the river steps now. People said somebody had fallen there, once, in the dark.{/n}", requires=(WITNESS_HERS,)),
     p("{n}A banner-mender named Ilse married her sergeant of the Third Company and kept, all her life, a horror of coughing ladies. She never knew why she had once been told to stay away. She lived to see her grandchildren.{/n}", requires=(FRIEND_WARNED,)),
     p("{n}A banner-mender named Ilse took walks every evening with a veiled lady for three years. Every evening the Commander waited for her to come home, and watched her face when she did. Ilse married her sergeant in the spring. Camellia sent the flowers: white lilies, the wedding kind. Whether that was a gift or a promise, nobody ever found out. Least of all Ilse.{/n}", requires=(FRIEND_WATCHED,)),

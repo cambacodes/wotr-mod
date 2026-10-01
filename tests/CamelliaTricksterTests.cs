@@ -416,6 +416,10 @@ internal static class CamelliaTricksterTests
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned))
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
+        // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
+        check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
+        var coda = story.Scenes.SingleOrDefault(s => s.Id == "camellia.lastcall.page");
+        check(coda == null || coda.Forbids.Contains(P + "cost.asked_her_tame") && coda.Forbids.Contains(P + "cost.called_guard"), "The Last Call coda outlives a refused test.");
         // Q8 (Sol INT): the veiled widow sits at Fye's bar only once the third night has given her back.
         check(story.Presences["camellia.presence"].Requires.Contains(P + "raised"), "The veiled copy sits in the tavern while she is still underground.");
         // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.
