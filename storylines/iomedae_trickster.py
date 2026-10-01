@@ -653,6 +653,7 @@ SCENES.append(reaction("Seelah", E + "react.seelah", ("trickster.ever", DISPUTED
 "If you're taking Her banner into the Wound... no, don't tell me. If you come back, I'm hitting you. If you don't, I'm praying for you. I'm doing both."''',
     answer_list=SEELAH_HUB, chapter=5, last=6, entry='"About last night, on the citadel."', portrait="Seelah",
     forbids=("seelah_dead", "seelah_gone")))
+SCENES[-1]["ForbidOverrides"] = {"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"}
 tag(E + "react.seelah")
 
 SCENES.append(reaction("Sosiel", E + "react.sosiel", ("trickster.ever", COMMITTED, DISPUTED),
@@ -665,7 +666,7 @@ tag(E + "react.sosiel")
 
 SCENES.append(reaction("Daeran", E + "react.daeran", ("trickster.ever", COMMITTED, DISPUTED),
     '''"'Your pride will destroy you!'" {n}Daeran does it in her voice, beautifully, and then, with a flourish, in yours.{/n} "'Only if I lose the argument.'"
-{n}He lowers himself onto a chair with the air of a man settling in for a play.{/n} "You argued canon law with the Inheritor on a roof at midnight, and she conceded. The whole city is talking about it and none of them believe it. My dear Commander, I have never been so jealous of anyone in my life, and I have been jealous of some extremely beautiful people."
+{n}He lowers himself onto a chair with the air of a man settling in for a play.{/n} "You argued canon law with the Inheritor on a roof at midnight, and she conceded. The whole city is talking about it and none of them believe it. Do you know how many of her priests would have you burned for half of what you said up there? And she conceded. To you. The cathedral will be rewriting its catechism for a decade, and nobody will be allowed to say why."
 "Do write down what you said to her. I want to use it on a bishop."''',
     answer_list=DAERAN_HUB, chapter=5, last=6, entry='"You look pleased with yourself."', portrait="Daeran",
     forbids=("daeran.dead", "daeran.kicked_out")))
@@ -684,6 +685,7 @@ SCENES.append(reaction("Seelah", E + "react.seelah_eve", ("trickster.ever", COMM
 {n}She sets the buckle down.{/n} "Don't tell Her anything from me. If I ever see Her, I'll tell Her myself. And you..." {n}She points the polishing rag at you like a sword.{/n} "You come back. That's an order. I know I can't give you orders. I'm giving it anyway."''',
     answer_list=SEELAH_HUB, chapter=6, last=6, entry='"You look like you want to say something."', portrait="Seelah",
     forbids=("seelah_dead", "seelah_gone")))
+SCENES[-1]["ForbidOverrides"] = {"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"}
 tag(E + "react.seelah_eve")
 
 SCENES.append(reaction("Sosiel", E + "react.sosiel_frame", ("trickster.ever", COMMITTED, E + "react.sosiel"),
@@ -841,6 +843,10 @@ page("lived", "The Argument, Continued", [
 ], requires=(COMMITTED,), forbids=(KEPT, SACRIFICE, CLOSED), **ALIVE)
 
 
+SEELAH_OPEN = 'Seelah found you at breakfast. She sat down across from you with her porridge and did not eat it. "The east-wall sentry says a knight came down your stair before dawn," she said. "Plain steel. Braid. Wished him good morning like she\'d known him all his life." She looked at you for a long moment, and whatever she saw made her put the spoon down. "Be good to her," said Iomedae\'s paladin, very quietly, as if it were a prayer and an order at once. "And if you\'re not, don\'t ever tell me."'
+SEELAH_BURIED = 'Seelah heard it from the sergeant at the postern, who had told nobody else. She found the stranger that evening in the back room of an inn outside the walls, shut the door, and sat down without taking off her gauntlets. "You and her," she said. It was not a question. She looked at the stranger for a long time, the way she used to look at the Commander before a charge. "Be good to her," said Iomedae\'s paladin, very quietly, as if it were a prayer and an order at once. "And if you\'re not, don\'t ever tell me."'
+
+
 page("platform", "Where It Flew", [
     nar("night", '''{n}The platform on top of the citadel of Drezen, at night.{/n}''',
         c("Continue", "buried", requires=(DEAD_TO_WORLD,)),
@@ -927,12 +933,12 @@ page("platform", "Where It Flew", [
     nar("name_hers", '''"No." {n}At once, and without heat.{/n} "I will not name you. A god who names a mortal is making a claim, and I have made enough claims on you for one night." {n}Something moves at the corner of her mouth.{/n} "Choose one before I come back. Choose a good one. I will be judging it."''',
         c("Continue", "sentry")),
     nar("sentry", '''{n}The sentry reaches the top of the stair and finds a bare pole, an empty platform, and a knight of some small order in plain steel coming down past him, who wishes him a good morning in a voice that makes him stand straighter for the rest of the day.{/n}''',
-        c("Continue")),
+        c("Continue"), paragraphs=(p(SEELAH_BURIED, requires=("seelah.in_party",)),)),
     nar("morning_open", '''{n}You wake cold on the stones with her cloak over you and the sky over Drezen going grey. She is already in her steel, buckling the last strap one-handed, her helm under her arm.{/n}
 "I have a war," {n}she says,{/n} "and so do you, and you are still its Commander. I did not expect that to be the harder of our two situations."
 "I will come back. Not often. Do not wait on the platform; I will find you." {n}At the head of the stair she turns.{/n} "Your sentries will talk. Let them. I have been talked about by better."
 {n}The sentry on the morning round salutes a knight of some small order in plain steel coming down out of his Commander's citadel before dawn, and never asks anybody about it, ever.{/n}''',
-        c("Continue")),
+        c("Continue"), paragraphs=(p(SEELAH_OPEN, requires=("seelah.in_party",)),)),
 ], requires=(COMMITTED,), forbids=(SACRIFICE, CLOSED), **ALIVE)
 
 
@@ -1085,7 +1091,7 @@ page("respect", "Watched", [
             p('''You never slept under her banner again, wherever it flew. It showed you nothing more.''',
               requires=(SENT_AWAY,), forbids=(BANNER_HELD, SOCK, BANNER_LOST)),
         )),
-], requires=(STARTED,), forbids=(COMMITTED, SACRIFICE, RESCUED), **ALIVE)
+], requires=(), forbids=(COMMITTED, SACRIFICE, RESCUED), RequiresAnyGroups=[[STARTED, SENT_AWAY]], **ALIVE)
 
 
 page("rescued", "Answered", [
@@ -1121,3 +1127,35 @@ def integrate(payload):
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
     payload.setdefault("PortraitFallbacks", {}).setdefault("Iomedae", PORTRAIT_GUID)
+
+
+# Ledger row 6, decision 3: when the Appointment was kept the flask is empty (the death is in Pharasma's book). Runs after
+# lastcall.integrate. Each flask-holds-death paragraph yields to an Appointment variant placed right after it; the bottle page
+# yields to the Iomedae coda's own bottle paragraph.
+EMPTY_FLASK = [
+    ("elyanka.trickster.epilogue.claim", "corked in a flask",
+     "{n}Hers was a claim on a corpse that would never fall due: the flask in the Commander's pocket came out of the Wound empty, and the death was in the Lady of Graves' book. \"Pharasma was faster,\" she said, and kept her claim anyway. Two claims, and not a copper paid. She said it was the most honest marriage she had ever seen.{/n}"),
+    ("elyanka.trickster.epilogue.debt", "death was in a flask",
+     "{n}The terms were never repeated aloud. They did not need to be. The flask in the Commander's pocket was empty; the death was in the Lady of Graves' book, where no claim reaches. \"Pharasma was faster,\" she said, and inspected the collateral every spring anyway, out of professional spite.{/n}"),
+    ("elyanka.lastcall.page", "with a death corked in a flask",
+     "The Commander stepped into the Wound, and gave everything, and came back out of it anyway, across a banner, with an empty flask in one pocket. The claim had not fallen due. It never would. She held out her hand for the flask, and was shown it, and weighed it with two cold fingers, and gave it back. \"Empty,\" she said. \"Pharasma was faster.\" She did not laugh. She said afterwards that it was the first time she had ever been outbid by a goddess, and that she intended it to be the last."),
+    ("trickster.lastcall.page.collectors", "on its feet with its death corked in a flask",
+     "Baphomet sent no one. The Lord of the Minotaurs does not send; he waits for his seal to bring him what it marks. It brought him nothing. A seal needs a body to own, and the one he had been promised was in an empty grave in Drezen, and its death was written in the Lady of Graves' book, where no seal reaches. It is said that the Prince of Beasts does not forgive a debtor who cheats him on a point of his own wording. It is also said that he has begun to reread his contracts."),
+    ("trickster.lastcall.page.collectors", "the debtor's death was in a flask",
+     "The Whispering Way's collector came after Threshold as a man in grey who spoke in the voice of the envoy who had bought the claim. He presented it in a whisper, word for word as it had been sold, and was told that the debtor's death was not in the debtor's keeping at all, but in the Lady of Graves' book, and that the terms had said nothing about goddesses. He agreed, in her voice, that they had not, and went away to repeat the answer to her. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one."),
+]
+
+
+def integrate_joint(payload):
+    by_id = {s_["Id"]: s_ for s_ in payload["Scenes"]}
+    for sid, needle, text in EMPTY_FLASK:
+        scene_ = by_id[sid]
+        hits = [(node, i_) for node in scene_["Nodes"] for i_, para in enumerate(node.get("Paragraphs") or []) if needle in para["Text"]]
+        if len(hits) != 1:
+            raise ValueError("Iomedae joint ending: expected one paragraph in %s with %r" % (sid, needle))
+        node, i_ = hits[0]
+        para = node["Paragraphs"][i_]
+        para["Forbids"] = [*para["Forbids"], KEPT]
+        node["Paragraphs"].insert(i_ + 1, dict(Text=text, Requires=[*para["Requires"], KEPT],
+                                               Forbids=[f for f in para["Forbids"] if f != KEPT], AnyGroups=[list(g) for g in para.get("AnyGroups") or []]))
+    by_id["trickster.lastcall.page.bottle"]["Forbids"].append(KEPT)

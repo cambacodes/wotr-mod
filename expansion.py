@@ -548,6 +548,7 @@ def make_expansion(*, independent_tirabade=True):
     iomedae_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
+    iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)

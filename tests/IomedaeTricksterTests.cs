@@ -376,7 +376,7 @@ internal static class IomedaeTricksterTests
         var watched = World(story, 6, "trickster.ever", Started, Declined);
         // Epilogue pages ignore the ClosedFlag (Rules.Available returns before the relationship check), so a closed route's
         // refusal paragraphs do render: the Commander's own no is told.
-        var closedW = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away");
+        var closedW = Later(moved, 400, 6);   // the real early refusal: the moved choice, carried to Chapter 6 (no Started)
         check(Avail(Pg("respect"), closedW) && Render(Pg("respect"), closedW).Contains("moved your bed")
               && Avail(Pg("respect"), watched) && !Avail(Pg("respect"), World(story, 6, "trickster.ever", Started, Committed)),
             "Trk_Iomedae_Worlds: an uncommitted Commander who lived has no page.");
@@ -400,6 +400,24 @@ internal static class IomedaeTricksterTests
         var sockBridge = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Order, "iz.banner_lost", "iz.sock_raised");
         check(!Reachable(plat2, sockBridge).Any(x => x.Contains("nothing will ever be at the top")),
             "Trk_Iomedae_Worlds: the platform promises an empty pole forever beside Drezen's sock memorial.");
+        // Audit r8: the Appointment empties the flask (ledger row 6); Seelah answers the platform night; her reactions survive her return.
+        var jointW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held,
+            "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle", "elyanka.committed");
+        var ioCoda = S("iomedae.lastcall.page");
+        check(jointW.Has(Kept) && jointW.Has("lastcall.h2") && Render(ioCoda, jointW).Contains("The flask came out empty") && !Render(ioCoda, jointW).Contains("One was a death corked")
+              && !Avail(S("trickster.lastcall.page.bottle"), jointW)
+              && !Render(S("elyanka.lastcall.page"), jointW).Contains("with a death corked in a flask") && Render(S("elyanka.lastcall.page"), jointW).Contains("Pharasma was faster")
+              && S("elyanka.trickster.epilogue.claim").Nodes.SelectMany(n => n.Paragraphs).Count(pp => pp.Requires.Contains(Kept)) == 1
+              && S("trickster.lastcall.page.collectors").Nodes.SelectMany(n => n.Paragraphs).Count(pp => pp.Requires.Contains(Kept)) == 2
+              && Render(S("elyanka.lastcall.page"), World(story, 6, "trickster.ever", Started, "sacrifice", "ending.wound_closed", "trickster.lastcall.taken",
+                  "trickster.lastcall.pillar.bottle", "elyanka.committed")).Contains("with a death corked in a flask"),
+            "Trk_Iomedae_Coexist: the joint Appointment/Last Call ending keeps a death in the flask (ledger row 6 says it is empty).");
+        check(new[] { "react.seelah", "react.seelah_eve" }.All(r => S(P + r).ForbidOverrides["seelah_dead"] == "seelah.trickster.returned"
+                  && S(P + r).ForbidOverrides["seelah_gone"] == "seelah.trickster.returned")
+              && Render(plat2, World(story, 6, "trickster.ever", Started, Committed, "ending.wound_closed", "seelah.in_party")).Contains("Be good to her")
+              && Render(plat2, World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, "seelah.in_party")).Contains("back room of an inn")
+              && !Render(plat2, livedW).Contains("Be good to her"),
+            "Trk_Iomedae_Reactions: no companion answers the platform night, or Seelah's reactions die with her return.");
         check(Render(Pg("after"), bridgeW).Contains("no appeal") && !Render(Pg("after"), livedW).Contains("no appeal")
               && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Hear my terms")) && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Write my name beside the debt")),
             "Trk_Iomedae_Worlds: the appointment leaks into an ordinary life, or the Lady of Graves' terms are not staged.");
@@ -486,7 +504,7 @@ internal static class IomedaeTricksterTests
         var coda = story.Scenes.Single(s => s.Id == "iomedae.lastcall.page");
         check(coda.Requires.Contains(Committed) && coda.Requires.Contains(Active) && coda.Forbids.Contains(Declined) && coda.ForbidOverrides[Declined] == Committed
               && !story.Scenes.Any(s => s.Id == "iomedae.lastcall.call")
-              && Render(coda, h2).Contains("never saw the second"),
+              && Render(coda, h2).Contains("never saw the banner"),
             "Trk_Iomedae_LastCall: her coda is not wired to her concession, or it has a call-in (her debt is made at the rift).");
         check(story.Derived["iomedae.harem.eligible"].Any(gr => gr.Length == 1 && gr[0] == Committed)
               && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed })

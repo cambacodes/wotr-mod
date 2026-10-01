@@ -417261,6 +417261,17 @@
               "Requires": [
                 "lastcall.active"
               ],
+              "Forbids": [
+                "iomedae.appointment_kept"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}Hers was a claim on a corpse that would never fall due: the flask in the Commander's pocket came out of the Wound empty, and the death was in the Lady of Graves' book. \"Pharasma was faster,\" she said, and kept her claim anyway. Two claims, and not a copper paid. She said it was the most honest marriage she had ever seen.{/n}",
+              "Requires": [
+                "lastcall.active",
+                "iomedae.appointment_kept"
+              ],
               "Forbids": [],
               "AnyGroups": []
             },
@@ -417887,6 +417898,17 @@
               "Text": "{n}The terms were never repeated aloud. They did not need to be. The Commander's death was in a flask, and the flask was in the Commander's pocket, and she inspected the collateral every spring anyway, in case the cork had slipped.{/n}",
               "Requires": [
                 "lastcall.active"
+              ],
+              "Forbids": [
+                "iomedae.appointment_kept"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}The terms were never repeated aloud. They did not need to be. The flask in the Commander's pocket was empty; the death was in the Lady of Graves' book, where no claim reaches. \"Pharasma was faster,\" she said, and inspected the collateral every spring anyway, out of professional spite.{/n}",
+              "Requires": [
+                "lastcall.active",
+                "iomedae.appointment_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -418609,6 +418631,17 @@
               "Text": "The Commander stepped into the Wound, and gave everything, and came back out of it anyway, with a death corked in a flask where the Wound could not reach it. The claim had not fallen due. It never would. She had been cheated by the letter of her own terms, whispered and unwritten, which said nothing about flasks. She laughed until she coughed, and then she held out her hand for the flask. \"It's in my pocket,\" the Commander told her. \"Corked.\" She was shown it. She was never given it.",
               "Requires": [
                 "lastcall.h2"
+              ],
+              "Forbids": [
+                "iomedae.appointment_kept"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Commander stepped into the Wound, and gave everything, and came back out of it anyway, across a banner, with an empty flask in one pocket. The claim had not fallen due. It never would. She held out her hand for the flask, and was shown it, and weighed it with two cold fingers, and gave it back. \"Empty,\" she said. \"Pharasma was faster.\" She did not laugh. She said afterwards that it was the first time she had ever been outbid by a goddess, and that she intended it to be the last.",
+              "Requires": [
+                "lastcall.h2",
+                "iomedae.appointment_kept"
               ],
               "Forbids": [],
               "AnyGroups": []
@@ -425900,7 +425933,11 @@
       "Reaction": true,
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
-      ]
+      ],
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "iomedae.trickster.react.sosiel",
@@ -425955,7 +425992,7 @@
         {
           "Id": "start",
           "Speaker": "Daeran",
-          "Text": "\"'Your pride will destroy you!'\" {n}Daeran does it in her voice, beautifully, and then, with a flourish, in yours.{/n} \"'Only if I lose the argument.'\"\n{n}He lowers himself onto a chair with the air of a man settling in for a play.{/n} \"You argued canon law with the Inheritor on a roof at midnight, and she conceded. The whole city is talking about it and none of them believe it. My dear Commander, I have never been so jealous of anyone in my life, and I have been jealous of some extremely beautiful people.\"\n\"Do write down what you said to her. I want to use it on a bishop.\"",
+          "Text": "\"'Your pride will destroy you!'\" {n}Daeran does it in her voice, beautifully, and then, with a flourish, in yours.{/n} \"'Only if I lose the argument.'\"\n{n}He lowers himself onto a chair with the air of a man settling in for a play.{/n} \"You argued canon law with the Inheritor on a roof at midnight, and she conceded. The whole city is talking about it and none of them believe it. Do you know how many of her priests would have you burned for half of what you said up there? And she conceded. To you. The cathedral will be rewriting its catechism for a decade, and nobody will be allowed to say why.\"\n\"Do write down what you said to her. I want to use it on a bishop.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426068,7 +426105,11 @@
       "Reaction": true,
       "AnswerLists": [
         "417fa384f3250634bb71859fbc913453"
-      ]
+      ],
+      "ForbidOverrides": {
+        "seelah_dead": "seelah.trickster.returned",
+        "seelah_gone": "seelah.trickster.returned"
+      }
     },
     {
       "Id": "iomedae.trickster.react.sosiel_frame",
@@ -427600,7 +427641,17 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Seelah heard it from the sergeant at the postern, who had told nobody else. She found the stranger that evening in the back room of an inn outside the walls, shut the door, and sat down without taking off her gauntlets. \"You and her,\" she said. It was not a question. She looked at the stranger for a long time, the way she used to look at the Commander before a charge. \"Be good to her,\" said Iomedae's paladin, very quietly, as if it were a prayer and an order at once. \"And if you're not, don't ever tell me.\"",
+              "Requires": [
+                "seelah.in_party"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         },
         {
           "Id": "morning_open",
@@ -427616,7 +427667,17 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "Seelah found you at breakfast. She sat down across from you with her porridge and did not eat it. \"The east-wall sentry says a knight came down your stair before dawn,\" she said. \"Plain steel. Braid. Wished him good morning like she'd known him all his life.\" She looked at you for a long moment, and whatever she saw made her put the spoon down. \"Be good to her,\" said Iomedae's paladin, very quietly, as if it were a prayer and an order at once. \"And if you're not, don't ever tell me.\"",
+              "Requires": [
+                "seelah.in_party"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
         }
       ],
       "Requires": [
@@ -428481,8 +428542,7 @@
         }
       ],
       "Requires": [
-        "trickster.ever",
-        "iomedae.started"
+        "trickster.ever"
       ],
       "Forbids": [
         "iomedae.committed",
@@ -428492,6 +428552,12 @@
       "DelayHours": 0,
       "Optional": false,
       "Relationship": "iomedae",
+      "RequiresAnyGroups": [
+        [
+          "iomedae.started",
+          "iomedae.trickster.sent_away"
+        ]
+      ],
       "ForbidOverrides": {
         "sacrifice": "trickster.commander_back"
       }
@@ -428580,7 +428646,7 @@
           "Portrait": "",
           "Paragraphs": [
             {
-              "Text": "Two things kept the Commander out of the Wound's keeping, and neither was the Commander's power, which the lock had taken. One was a death corked in a flask in Drezen. The other was a banner laid over the fire the way a cloak was once laid over a gorge. Areelu measured the first and wrote it down. She never saw the second, and Iomedae never told her.",
+              "Text": "The Commander went into the Wound with a death corked in a flask, and came out across a banner laid over the fire the way a cloak was once laid over a gorge. The flask came out empty. The Lady of Graves had been faster: the death was in her book, where Iomedae had agreed it would stay. Areelu measured the flask afterwards and wrote down what she had put into it. She never saw the banner, and Iomedae never told her. The Commander carried the empty flask for the rest of {mf|his|her} life anyway, corked, out of habit, and never once unstoppered it.",
               "Requires": [
                 "iomedae.appointment_kept",
                 "lastcall.h2"
@@ -433474,7 +433540,8 @@
         "trickster.lastcall.pillar.bottle"
       ],
       "Forbids": [
-        "trickster.failed"
+        "trickster.failed",
+        "iomedae.appointment_kept"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -433539,6 +433606,22 @@
               "Text": "Baphomet sent no one. The Lord of the Minotaurs does not send; he waits for his seal to bring him what it marks. It brought him nothing. A seal needs a body to own, and the one he had been promised was either in an empty grave or on its feet with its death corked in a flask, where no seal reaches. It is said that the Prince of Beasts does not forgive a debtor who cheats him on a point of his own wording. It is also said that he has begun to reread his contracts.",
               "Requires": [
                 "lastcall.debt.baphomet"
+              ],
+              "Forbids": [
+                "iomedae.appointment_kept"
+              ],
+              "AnyGroups": [
+                [
+                  "minagho_chivarro.lastcall.called",
+                  "hepzamirah.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "Baphomet sent no one. The Lord of the Minotaurs does not send; he waits for his seal to bring him what it marks. It brought him nothing. A seal needs a body to own, and the one he had been promised was in an empty grave in Drezen, and its death was written in the Lady of Graves' book, where no seal reaches. It is said that the Prince of Beasts does not forgive a debtor who cheats him on a point of his own wording. It is also said that he has begun to reread his contracts.",
+              "Requires": [
+                "lastcall.debt.baphomet",
+                "iomedae.appointment_kept"
               ],
               "Forbids": [],
               "AnyGroups": [
@@ -433662,6 +433745,21 @@
               "Text": "The Whispering Way's collector came after Threshold as a man in grey who spoke in the voice of the envoy who had bought the claim. He presented it in a whisper, word for word as it had been sold, and was told that the debtor's death was in a flask, corked, in the debtor's pocket, and that the terms had said nothing about flasks. He agreed, in her voice, that they had not, and went away to repeat the answer to her. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one.",
               "Requires": [
                 "lastcall.debt.whispering_way"
+              ],
+              "Forbids": [
+                "iomedae.appointment_kept"
+              ],
+              "AnyGroups": [
+                [
+                  "elyanka.lastcall.called"
+                ]
+              ]
+            },
+            {
+              "Text": "The Whispering Way's collector came after Threshold as a man in grey who spoke in the voice of the envoy who had bought the claim. He presented it in a whisper, word for word as it had been sold, and was told that the debtor's death was not in the debtor's keeping at all, but in the Lady of Graves' book, and that the terms had said nothing about goddesses. He agreed, in her voice, that they had not, and went away to repeat the answer to her. In Caliphas the Way does not forgive a debtor who cheats it by the letter. It does, she let it be known, admire one.",
+              "Requires": [
+                "lastcall.debt.whispering_way",
+                "iomedae.appointment_kept"
               ],
               "Forbids": [],
               "AnyGroups": [
@@ -436149,8 +436247,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
