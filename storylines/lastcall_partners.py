@@ -557,7 +557,10 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
         page_p('''The Commander never found out what she would have done if the flask had not held. She would not say. She said a silver does not tell a trickster what she would have done if the trick had failed, because the trickster would only use it next time.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she was standing at the back with a loaf under her arm, because somebody would be hungry after, and she was right.''', requires=(H2,)),
         page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",)),
+        # Q9 (Sol INT): the late history (her own face shown, the war over before the salt) plays this coda too.
+        page_p('''The salt was still unbroken when the war ended. She brought it up the citadel stair the spring after, with a loaf under her arm, and put both on the Commander's table, and sat down to wait. She was not in any hurry.''', requires=(NI + "late_committed",), forbids=("nidalynn.committed",)),
     ), declined=NI + "refused",
+    page_commit_groups=[["nidalynn.committed"], [NI + "late_committed"]],   # Q9 (Sol INT): the late yes reaches her coda
     deal=[[NI + "cost.salt_eaten"]],
     call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',
         '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}''',

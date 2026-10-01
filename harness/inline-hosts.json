@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1006,
-  "resolved": 1006,
+  "entryTargetScenes": 1007,
+  "resolved": 1007,
   "inlineOnlyScenes": 250,
   "inlineOnlyResolved": 250,
-  "answerListScenesWithoutContact": 586,
-  "answerListScenesWithoutContactResolved": 586,
+  "answerListScenesWithoutContact": 587,
+  "answerListScenesWithoutContactResolved": 587,
   "lists": 103,
   "listsWithReachableHost": 102
  },
@@ -15436,6 +15436,25 @@
     "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
     "dialogName": "GrimborMainDialogue",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nidalynn.trickster.react.ulbrig.snowfield": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.nidalynn.trickster.react.ulbrig.snowfield"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
     "clicks": 0
    }
   },

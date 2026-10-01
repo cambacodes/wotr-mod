@@ -271,10 +271,10 @@ internal static class NidalynnTricksterTests
                     "Nidalynn needs someone else dead or closed, or the Gold Dragon path: " + s.Id + " " + key);
 
         // Reactors, pages, household.
-        check(reactions.Length == 3 && reactions.All(r => r.Nodes.Count == 1)
-              && reactions.Select(r => r.Owner).OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Ulbrig", "Woljif" }),
+        check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
+              && reactions.Select(r => r.Owner).OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Ulbrig", "Ulbrig", "Woljif" }),
             "The reactions are not Greybor, Ulbrig and Woljif.");
-        check(pages.Length == 7 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 8 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "form_chosen" })
               && story.Derived["nidalynn.harem.eligible"].Length == 2 && story.Derived.ContainsKey("nidalynn.harem.voice.fed_at_the_fire"),
@@ -345,6 +345,22 @@ internal static class NidalynnTricksterTests
         var leftWorld = Later(story, World(story, 5, "trickster.ever", P + "met", "nidalynn.started", P + "form_chosen", P + "steps.torcs", P + "torc.left"), 25);
         check(Visited(women, leftWorld).Contains("torc_left") && !Visited(women, leftWorld).Contains("torc"),
             "Trk_Nidalynn_Staging: the girl wears a torc the Commander left in the jeweller's tray.");
+
+        // Q9 r2 (Sol INT/BEL): physical visits only in Drezen; the late yes reaches the Last Call coda; living pages need the
+        // Commander back, and a page keeps her when the Commander did not come back.
+        foreach (var s in own.Where(x => Rules.IsRemote(x) && x.Kind != "letter"))
+            check(s.Areas.SequenceEqual(new[] { Drezen }), "Trk_Nidalynn_Area: a Drezen visit plays outside Drezen: " + s.Id);
+        var awayWorld = Later(story, World(story, 3, "trickster.ever", P + "primed"), 13);
+        awayWorld.Area = "00000000000000000000000000000000";
+        check(!Avail(stone, awayWorld), "Trk_Nidalynn_Area: the hearth page plays away from Drezen.");
+        var coda = S("nidalynn.lastcall.page");
+        check(coda.RequiresAnyGroups.Length == 1 && coda.RequiresAnyGroups[0].Contains(Committed) && coda.RequiresAnyGroups[0].Contains(P + "late_committed"),
+            "Trk_Nidalynn_LastCall: the late commit is missing from her coda.");
+        foreach (var id in new[] { "salt", "late", "heel" })
+            check(S(P + "epilogue." + id).Forbids.Contains("sacrifice") && S(P + "epilogue." + id).ForbidOverrides["sacrifice"] == "trickster.commander_back",
+                "Trk_Nidalynn_Sacrifice: a living page plays for a Commander who did not come back: " + id);
+        check(Avail(S(P + "epilogue.unreturned"), World(story, 6, "trickster.ever", Committed, "sacrifice")),
+            "Trk_Nidalynn_Sacrifice: no page for the Commander who did not come back.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))

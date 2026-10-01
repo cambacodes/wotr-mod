@@ -186,7 +186,8 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, chapters=(3, 5), kin
         id, title, owner, min(chapters), "", nodes,
         requires=tuple(dict.fromkeys(("trickster.ever", *requires))),
         forbids=tuple(dict.fromkeys((CLOSED, LEFT_WITH_IT, *forbids))), delay=delay, last=max(chapters),
-        optional=optional, Relationship=REL, Chapters=sorted(set(chapters)), Remote=True, Kind=kind, **extra))
+        optional=optional, Relationship=REL, Chapters=sorted(set(chapters)), Remote=True, Kind=kind,
+        **({} if kind == "letter" else dict(Areas=[DREZEN])), **extra))
 
 
 # --- The device (physical, Chapter 3): the smallest egg, out from under the fists in the ash-bin -------------------------
@@ -339,9 +340,13 @@ SCENES.append(reaction("Ulbrig", P + "react.ulbrig.white_girl", (MET, "ulbrig.in
     answer_list=ULBRIG_HUB, relationship=REL, forbids=("ulbrig.dead", "ulbrig.kicked_out", CLOSED),
     entry='"You look like you\'ve seen a ghost, Ulbrig."', chapter=3, last=5, delay=48))
 SCENES.append(reaction("Woljif", P + "react.woljif.small_one", (HATCHED, WOLJIF_SIGHED),
-    '''"Boss. That thing at the kiln. That's one of the eggs from the Sanctum, ain't it." {n}Woljif is not grinning, which is unusual.{/n} "I said somethin' down there, when you smashed the rest. About how maybe they were the lucky ones, 'cause kids without moms don't do so well." {n}He scratches at a horn.{/n} "Then you went and pinched the runt, and got some old Sarkorian lady to be its mom. So now I gotta figure out if I was wrong." {n}He brightens a little.{/n} "Tell her it likes rats. I seen it eat four. That's good. That's a kid that knows how to get by."''',
+    '''"Chief. That thing at the kiln. That's one of the eggs from the Sanctum, ain't it." {n}Woljif is not grinning, which is unusual.{/n} "I said somethin' down there, when you smashed the rest. About how maybe they were the lucky ones, 'cause kids without moms don't do so well." {n}He scratches at a horn.{/n} "Then you went and pinched the runt, and got some old Sarkorian lady to be its mom. So now I gotta figure out if I was wrong." {n}He brightens a little.{/n} "Tell her it likes rats. I seen it eat four. That's good. That's a kid that knows how to get by."''',
     answer_list=WOLJIF_HUB, relationship=REL, forbids=("woljif.dead", "woljif.kicked_out", CLOSED),
     entry='"Something on your mind, Woljif?"', chapter=3, last=5, delay=24))
+SCENES.append(reaction("Ulbrig", P + "react.ulbrig.snowfield", (SNOW, "ulbrig.in_party"),
+    '''"Warchief." {n}Ulbrig is grinning into his cup and trying not to.{/n} "Half of Drezen saw you come down off the north peak with frost in your hair and that white-haired woman barefoot beside you, eh. The other half heard it by noon." {n}The grin goes.{/n} "My gran would've said: a woman who sings the Windstep songs doesn't break her salt for just anybody. Don't make her sorry she broke it for you. That's all. That's all I'll say." {n}He drinks.{/n} "...She feeds you, though. Good. You've needed feeding since the day I met you."''',
+    answer_list=ULBRIG_HUB, relationship=REL, forbids=("ulbrig.dead", "ulbrig.kicked_out", CLOSED),
+    entry='"You\'ve a look on you, Ulbrig."', chapter=5, last=5, delay=24))
 
 
 # --- Epilogue pages (ordered siblings; read-only) ------------------------------------------------------------------------
@@ -359,9 +364,12 @@ TORC_LEFT = P + "torc.left"
 FIRST_DEMON = P + "after.first_demon"
 
 
-def epilogue(id, text, requires, forbids=(), paragraphs=()):
+def epilogue(id, text, requires, forbids=(), paragraphs=(), **extra):
     SCENES.append(scene(P + "epilogue." + id, "", EPI, 6, "", [nar("page", text, paragraphs=paragraphs)],
-                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL))
+                        requires=("trickster.ever", *requires), forbids=forbids, last=6, Relationship=REL, **extra))
+
+
+ALIVE = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})   # Q9 (Sol BEL): living pages need the Commander back
 
 
 EPILOGUE_PARAGRAPHS = (
@@ -391,15 +399,19 @@ EPILOGUE_PARAGRAPHS = (
 
 epilogue("salt", '''{n}Nidalynn stayed in Drezen after the war, in the old lime-kiln below the east wall, which she roofed with slate and never once let cool. The refugees who stayed called her the widow long after she stopped looking like one, and brought her their disputes, their broken bones and their bread, and she fed every one of them before she let them talk.{/n}
 {n}She was never in a hurry. The Commander learned that it was not patience, exactly. It was that she had already decided, and she saw no reason to rush the part she was enjoying.{/n}''',
-         requires=(COMMITTED,), forbids=(CLOSED,), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
 
 epilogue("late", '''{n}The war ended before the young dragon was ready to fly. It flew in the spring after Threshold, off the kiln roof, badly, and then well, and circled Drezen three times shrieking while the whole city came out to point.{/n}
 {n}That evening a tall woman with a white braid came up the citadel stair with a loaf of bread, a knife and a little salt folded in a paper, and put them on the Commander's table without a word, and sat down to wait. She was not in any hurry. She had waited for worse things, and much longer.{/n}''',
-         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, BREAD_KEPT), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, BREAD_KEPT, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
 
 epilogue("heel", '''{n}The heel of the loaf stayed on the shelf in the kiln, wrapped in a cloth, long after it was stone-hard and good for nothing. She never moved it and never mentioned it.{/n}
 {n}People who knew them both said that the Commander came down to the kiln more evenings than not, and that the two of them sat by the fire and talked until late, and that it was the most patient courtship anyone in Drezen had ever seen, and that it was not clear to anyone, including the two of them, which of them was doing the courting.{/n}''',
-         requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
+
+epilogue("unreturned", '''{n}When word came down from Threshold that the Commander would not be coming back, Nidalynn banked the kiln under the east wall and did not let it cool, that winter or any winter after. The young dragon was fed. The refugees were fed. She said the Commander's name at the fire the way she said the others, and every year on that night she set out bread and salt for one more than came, and ate her own share slowly, and was grateful, because she had said she would be.{/n}''',
+         requires=("sacrifice",), forbids=("trickster.commander_back", CLOSED),
+         RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, BREAD_KEPT]], paragraphs=EPILOGUE_PARAGRAPHS)
 
 epilogue("apart", '''{n}The widow was gone from the jeweller's steps by the end of the war. The refugees said she had gone north with a young dragon that would not stay in a city, and that whatever she had said to the Commander she had said in the kiln, where nobody could hear it.{/n}
 {n}Sometimes, when it snowed, a silver shape went over Drezen very high, and did not come down.{/n}''',

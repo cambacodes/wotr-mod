@@ -343,7 +343,7 @@ visit(BACK, "Home from the dark", [
         c('"Like a nightmare that kept its promises."', "nightmare"),
         c('"The demons laughed at my jokes. That was the worst part."', "laughed"),
         c('"I don\'t want to talk about it."', "quiet")),
-    nd("nightmare", '''{n}She nods slowly, as if you had said something she recognised.{/n} "I've never been down. I've stood at the edge of it and smelled it, and that was enough to put me off my food, and nothing puts me off my food." {n}She reaches across and puts her hand over yours on the table, briefly.{/n} "You went all the way down. And you came back up and let me feed you. That's a kind of courage nobody sings about."''',
+    nd("nightmare", '''{n}She nods slowly, as if you had said something she recognised.{/n} "I've never been down. I've stood at the edge of it and smelled it, and that was enough to put me off my food, and nothing puts me off my food." {n}She reaches across and puts her hand over yours on the table, briefly.{/n} "You went all the way down, and came back up, and not one of your generals thought to feed you after. Typical. That's soldiers all over."''',
         c("Continue", "news")),
     nd("laughed", '''{n}She stares at you, and then she laughs, a real laugh, big and startled.{/n} "Oh, they would. They would." {n}She wipes her eyes.{/n} "A trickster in the Abyss. They must have thought you were one of theirs, until you weren't." {n}The laugh goes out of her face slowly.{/n} "Don't let them be the only ones who laugh at your jokes. That's how it starts. Come and tell them to me instead. I'll laugh at the bad ones too."''',
         c("Continue", "news")),
