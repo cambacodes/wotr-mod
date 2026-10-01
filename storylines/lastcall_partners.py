@@ -781,12 +781,13 @@ partner("devarra", "devarra", "devarra.committed", "devarra.closed", "The Grey T
         page_p('''The tariff was collected every year on the same night, in a ring of fire, where she chose. By the end the Commander's forearm was a grey ladder of crescents from wrist to elbow, and she could tell anyone who asked exactly how many rungs it had.''', requires=(DV + "cost.bitten",)),
         page_p('''The world buried the Commander. She flew over the funeral very low and very slowly, and looked at each mourner in turn, and went back to her ridge without eating any of them. The city took it as an omen. She said it was manners: she did not eat at other people's funerals, only at her own.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she came down off the ridge, landed on the citadel roof in front of the whole garrison, and stayed there until the Commander came up to her. The north wall never ran a book on her again.''', requires=(H2,)),
-    ), declined=DV + "declined", page_forbids=(DV + "refused", DV + "left_hungry"),
+    ), declined=DV + "declined", page_forbids=(DV + "refused",),
+    page_forbid_overrides={DV + "left_hungry": "devarra.committed"},
     page_commit_groups=[["devarra.committed"], [DV + "late_committed"]],
     deal=[[DV + "cost.egg_withheld"]],
     call=call('''[Call up the north ridge] "Devarra! You said you'd name your price at the edge of the world. This is the edge. Name it."''',
         '''{n}You shout it into the roar the way she says you climb: loudly, as if the mountain owed you the path. Nothing answers. Then, very far behind you, over a city you cannot see, something grey lifts off a ridge and does not hurry.{/n}''',
-        (PLAIN_CHOICE, (), (), ())),
+        (PLAIN_CHOICE, (), (), (DV + "refused",))),
     ledger=("Devarra: the smallest egg", "I took a life out of a woundwyrm's clutch and paid her nothing for it. She has billed me a life. She has not said whose, or when. She says a bill that has not been collected is worth more than one that has, because it can still be called."))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.

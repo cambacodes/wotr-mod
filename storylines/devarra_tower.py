@@ -140,7 +140,7 @@ hub(T + "her_questions", "Three questions for a liar", '"Has she sent anything d
         c("Continue", "second")),
     teller("second", '''"The second: who have you lied to that you still love?"''',
         c('"Everyone I love. That\'s how I know I love them. I bother to lie."', "second_all", flags=(LOVED_LIE,)),
-        c('"You. I told the stone you would get up, before anyone knew you could."', "second_her", flags=(LOVED_LIE,)),
+        c('"You. I paid for you to get up, before anyone knew you could."', "second_her", flags=(LOVED_LIE,)),
         c('"No one. I don\'t lie to people I love."', "second_none")),
     teller("second_all", '''"Everyone." {n}He nods slowly.{/n} "I will repeat it exactly. Including the way your voice went on the last word. She will ask, and I do not lie to her; it is bad for my health."''',
         c("Continue", "third")),
