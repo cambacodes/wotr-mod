@@ -14,6 +14,7 @@ way, and later renames the body Mutasafen grows her, so that its maker keeps no 
 return is hepzamirah_flesh; this module holds the device, the deal, the courier, the terms and the pages.
 """
 from story_format import c, n, p, reaction, scene
+from storylines import lastcall_ledger
 
 SCENES = []
 REL = "hepzamirah"
@@ -92,6 +93,24 @@ EYE_KEPT = P + "eye_kept"
 EYE_BURNED = P + "eye_burned"
 EVE_PROMISE = P + "eve_promise"
 FAVOUR_OWED = P + "cost.favour_owed"
+# Early thread T2 (15b-EARLY-THREADS.md, PP9): a message for her, loaded onto her fleeing lash in Woljif's Chapter 3 quest.
+Q2_DEAD_LIST = "74e18303ff0d4db40b235cd5a38ef12e"   # Q2WoljifCultVoetiel/AnswersList_0003 (CultistsKilled playing)
+Q2_ALIVE_LIST = "78ff106a5d3b42d4b96adcbd1d1b626c"  # Q2WoljifCultVoetiel/AnswersList_0035 (no conditions)
+Q3_HUB = "cdf898c8df8913340b7b9341590d4117"         # Q3WoljifAbyss_Voetiel/AnswersList_0006 (Chapter 4, the mansion)
+WOLJIF_UNIT = "766435873b1361c4287c351de194e5f9"    # Units/Companions/Woljif/Woljif_Companion
+VOETIEL_UNIT = "d75ee7e088ea2d64b8b602e2e59ad6a5"   # Units/Monsters/Demon Glabrezu/Woljif_Q2_VoetielMeeting/Voetiel (Q3 cues name him)
+WOLJIF_HUB = "e41585da330233143b34ef64d7d62d69"     # CompanionDialogues/Woljif/AnswersList_0003
+WOLJIF_GUARD = ("woljif.dead", "woljif.kicked_out")
+MOON = "hepzamirah.early.moon_message"             # the scene id, and the flag set where the offer is spoken
+MOON_SEEN = MOON + ".seen"
+MOON_DECLINED = MOON + ".declined"
+TOLD_BLUFF = "woljif.told_bluff"
+RECKON = "hepzamirah.early.moon_reckoning"
+RECKON_SEEN = RECKON + ".seen"
+PROMISED = "woljif.moon_promised"
+DOUBT = "woljif.moon_doubt"
+MOON_CALLBACK = P + "moon_callback"
+
 
 EMBER_FORBIDS = ("ember_dead", "ember_gone", "ember.killed_in_kenabres")
 
@@ -122,7 +141,10 @@ PRESENCES = {
                    Greeting="{n}Hepzamirah has taken the corner of the smith's yard where the heat of the forge is worst. "
                             "She does not turn her head. The milk-white eye is on your side.{/n} \"Clown.\""),
 }
-DERIVED = {P + "late_committed": [["trickster.ever", CS]]}
+DERIVED = {P + "late_committed": [["trickster.ever", CS]],
+           # T2 (15b): the Ledger's Secrets page reads trickster.secret.<k> (08 §2.1; HouseholdTests), held once the
+           # offer is spoken.
+           "trickster.secret.woljif_moon": [[MOON]]}
 RENAMED = {"hepzamirah.complete": COMMITTED, "hepzamirah.visit.fathers_hounds": P + "body.hounds",
            "hepzamirah.visit.what_she_wants": P + "body.terms", "hepzamirah.epilogue.leavable": P + "epilogue.leavable",
            "hepzamirah.trickster.ghost.late_eviction": P + "ghost.late_gather", "hepzamirah.trickster.hounds_met": CS}
@@ -154,6 +176,70 @@ def yard(id, title, entry, nodes, requires, forbids=(), delay=24, owner="Hepzami
     SCENES.append(scene(id, title, owner, 5, entry, nodes, requires=requires, forbids=(CLOSED, CONFINED, *forbids), delay=delay,
                         last=5, optional=True, Relationship=REL, Chapters=[5], ContactUnit=BODY_UNIT, Areas=[DREZEN],
                         InteractionHub=PRESENCE, ForbidOverrides={CONFINED: RELEASED}))
+
+
+# --- Early thread T2 (15b-EARLY-THREADS.md, PP9; T, the live Trickster): "Carry this to her". -------------------------
+# Canon: in Woljif's second quest (Chapter 3, Chapter03_Extra) Voetiel, "Hepzamirah's scourging lash" (Cue_0007 b096e7b9),
+# demands the Moon of the Abyss for her; every branch ends in combat, and he flees at 10% HP (VoetielRunsAway 8256eb14).
+# Canon Voetiel takes no deal, so nothing is sold to him: the Commander loads him with an offer for his mistress, in front
+# of Woljif, whose inheritance it is. Authored: that he carried it home, and what she said of it (the ghost's callback).
+# One ReturnToList scene covers both of his lists (cultists dead / alive; the conditioned list rules out a native return).
+
+
+def voe(id, text, *choices):
+    """Voetiel, the native conversant of his own quest dialogs."""
+    return n(id, "conversant", text, *choices)
+
+
+def voe_q3(id, text, *choices):
+    """Voetiel in Woljif's third quest. That dialog is started by a cutscene with Woljif as its speaker
+    (Woljif_Q3_AbandonedMansion/Voetiel_dialog/CommandStartDialog 7427cf3d), so the conversant is Woljif; Voetiel's native
+    cues there name his unit, and so do these (E14f)."""
+    return n(id, "Voetiel", text, *choices, speaker_unit=VOETIEL_UNIT)
+
+
+def wol(id, text, *choices):
+    """Woljif inside his own quest dialog (E14f: his companion unit speaks)."""
+    return n(id, "Woljif", text, *choices, speaker_unit=WOLJIF_UNIT)
+
+
+SCENES.append(scene(MOON, "A message for the mistress", "Hepzamirah", 3,
+    '"Before we kill each other, a message for your mistress."', [
+    voe("start", '''"A message? From *you*?" {n}His small yellow eyes go to Woljif and back, and the great pincers close slowly, the way a man cracks his knuckles.{/n} "Speak, then. Mistress enjoys hearing what mortals think they are worth."''',
+        c('"Tell Hepzamirah the Moon of the Abyss has a price, and I set it. Not her lash. *Her*. If she wants it, she deals with me."',
+          "spoken", flags=(MOON, MOON_SEEN), alignment=("Evil", 1)),
+        c('"On second thought, no. Kill him."', abort=True, flags=(MOON_DECLINED, MOON_SEEN))),
+    voe("spoken", '''"Mistress does not deal, mortal. Mistress *takes*." {n}But he is listening, the way a hound listens to a word it will be made to repeat. His lips move once over it, *the price, and I set it*, and the yellow eyes go flat and careful.{/n}''',
+        c("Continue", "woljif_asks")),
+    wol("woljif_asks", '''"...Chief." {n}Woljif has gone very still, the way he goes still in a crowd when a purse is about to change hands.{/n} "You tryin' to sell the rock, or me with it?"''',
+        c('"The rock. Probably."'),
+        c('"Neither. I\'m lying to her."', flags=(TOLD_BLUFF,))),
+    ], requires=("trickster",), forbids=(MOON, MOON_SEEN), last=3, optional=True, Relationship=REL, Chapters=[3],
+    AnswerLists=[Q2_DEAD_LIST, Q2_ALIVE_LIST], ReturnToList=True,
+    ReturnText="{n}Voetiel's pincers open and close, once. Woljif is very quiet.{/n}"))
+
+
+# Chapter 4, inside Woljif's third quest (Q3WoljifAbyss_Voetiel, the mansion in Alushinyrra): the lash remembers, and the
+# tiefling answers in the scene, so the native Cue_0017 (his hurt at "a cut") is never replayed. The native outcome (the
+# Moon, the fight, Woljif killing Voetiel) is untouched.
+RECKON_DECISIONS = (
+    ('"The Moon\'s his. I was lying to her, not to him."', "promised"),
+    ('"I was lying to both of them. That\'s the job."', "doubt"),
+)
+SCENES.append(scene(RECKON, "Which of us were you lying to", "Hepzamirah", 4,
+    '"You ran from me once with a message, Voetiel. Did it reach her?"', [
+    voe_q3("start", '''{n}Voetiel's laugh is a wet grinding, like millstones in a flood.{/n} "Your master priced the Moon to my mistress once, little tiefling. In front of you. Did you think I would forget?"''',
+        c("Continue", "start_bluff", flags=(RECKON_SEEN,), requires=(TOLD_BLUFF,)),
+        *(c(text, nxt, flags=(RECKON_SEEN,), forbids=(TOLD_BLUFF,)) for text, nxt in RECKON_DECISIONS)),
+    voe_q3("start_bluff", '''"...And then you told the tiefling it was a *lie*. In front of me." {n}The yellow eyes slide from you to Woljif and back, delighted.{/n} "Which of us were you lying to, crusader?"''',
+        *(c(text, nxt) for text, nxt in RECKON_DECISIONS)),
+    wol("promised", '''{n}He doesn't look at you.{/n} "...Words, chief. I'll hold you to 'em."''',
+        c("[Turn back to Voetiel.]", flags=(PROMISED,))),
+    wol("doubt", '''"Yeah. That's the job." {n}Flat.{/n} "Good to know whose."''',
+        c("[Turn back to Voetiel.]", flags=(DOUBT,))),
+    ], requires=("trickster", MOON), forbids=(RECKON, RECKON_SEEN), last=4, optional=True, Relationship=REL, Chapters=[4],
+    AnswerLists=[Q3_HUB], ReturnToList=True,
+    ReturnText="{n}Voetiel grins. Woljif doesn't look at either of you.{/n}"))
 
 
 # --- Colyphyr (Chapter 4): the one time the Commander meets her alive. A standing offer she laughs at. -------------------
@@ -192,7 +278,12 @@ def setup_scene(id, title, entry, open_text, extra_forbids=(), extra_requires=()
     nodes = lead([("open", hz, open_text, None), *GHOST_LEADS], "sneer")
     nodes.append(hz("sneer", SNEER,
         c('"After you."', flags=(PRIMED, GRUDGE, STARTED), native_next=DISSIPATE),
-        c('"On second thought, rot."', flags=(CLOSED,), alignment=("Lawful", 1))))
+        c('"On second thought, rot."', flags=(CLOSED,), alignment=("Lawful", 1)),
+        # T2 payoff (15b, PP9): appended, so [0] and [1] keep their indices in both setups.
+        c("[The Moon I offered through your lash]", "moon_callback", requires=(MOON,))))
+    nodes.append(hz("moon_callback", '''"He crawled back to me bleeding, with your offer in his mouth. I let him live so he could fail me again. He did."
+{n}Her lip curls.{/n} "You priced my bastard brother's bauble to *me*, through my own lash, with the tiefling listening. You thought you could bargain with Baphomet's daughter through that fool? And look at us now. You in my father's prison with a door in your pocket, and me in pieces on the floor of it." {n}The dangling eye rolls up to find you.{/n} "Take me out, then, merchant. We will see who ends up owing whom."''',
+        c('"After you."', flags=(PRIMED, GRUDGE, STARTED, MOON_CALLBACK), native_next=DISSIPATE)))
     SCENES.append(scene(id, title, "Hepzamirah", 5, entry, nodes,
         requires=("trickster", DEAD, *extra_requires), forbids=(PRIMED, CLOSED, DISPERSED, *extra_forbids), last=5,
         optional=True, Relationship=REL, Chapters=[5], AnswerLists=[GHOST_LIST], NativeReturnCue=GHOST_RETURN,
@@ -425,6 +516,44 @@ SCENES.append(reaction("Greybor", P + "react.greybor", (RET,),
 SCENES.append(reaction("Ember", P + "react.ember", (RET, "ember.present"),
     '''"The sad lady with the broken head has a head again. It's still a bit broken." {n}Ember brightens, then frowns.{/n} "She shouted at me when I brought her flowers. That's all right. People who hurt a lot shout. I'll bring more."''',
     answer_list=EMBER_LIST, forbids=EMBER_FORBIDS, entry='"Hepzamirah is out."', chapter=5, last=5, portrait="Ember"))
+# T2's later Woljif interaction (15b residual, PP9): the reckoning in his Chapter 4 quest, answered when the mistress whose
+# lash hunted him is walking Drezen in a body. Two readers, one per answer he got; neither says what became of the Moon.
+SCENES.append(reaction("Woljif", P + "react.woljif_promised", (RET, PROMISED),
+    '''"Chief. The horned lady by the forge. Hepzamirah. The big lizard's 'Mistress', the one he was gonna bring my skull to in a goblet, like she'd pat him on the head for it." {n}Woljif rubs the back of his neck and looks anywhere but the forge.{/n}
+"You told him the Moon was mine. In that house, in front of her dog. I been holdin' you to it, like I said I would." {n}A crooked grin, not quite steady.{/n} "So I figure if she ever asks you what it's worth, you're gonna tell her it ain't yours to price. Right? Right. Just checkin'."''',
+    answer_list=WOLJIF_HUB, forbids=(*WOLJIF_GUARD, DOUBT, CONFINED), entry='"Hepzamirah is back. In a body."', chapter=5, last=5,
+    portrait="Woljif", ForbidOverrides={CONFINED: RELEASED}))
+SCENES.append(reaction("Woljif", P + "react.woljif_doubt", (RET, DOUBT),
+    '''"Yeah, I seen her. Horns, one bad eye, stands by the forge like she owns the heat." {n}Woljif doesn't sit down. He keeps the table between you, easy, the way he does with a mark.{/n}
+"Back in that house, in front of her lizard, you said you'd been lyin' about my inheritance to both of us. Her and me. 'That's the job,' you said." {n}He shrugs.{/n} "No hard feelin's, chief. I grew up in Kenabres; everybody's got a job. I'm just sleepin' with my boots on while she's in town, and with my back to a wall. Nothin' personal."''',
+    answer_list=WOLJIF_HUB, forbids=(*WOLJIF_GUARD, PROMISED, CONFINED), entry='"Hepzamirah is back. In a body."', chapter=5, last=5,
+    portrait="Woljif", ForbidOverrides={CONFINED: RELEASED}))
+
+
+# T2's durable reader: a Secrets page in the Ledger (lastcall_ledger EARLY). Its lines make no claim about the relic's fate.
+lastcall_ledger.early(dict(
+    Id="early.woljif_moon", Section="Secrets", Portrait="Woljif", Title="The Moon of the Abyss",
+    Text="{n}In the snows, before the fight, you gave Hepzamirah's lash a message to carry home: the Moon of the Abyss had a "
+         "price, and you set it. Woljif was standing right there. It was his.{/n}",
+    Lines=[lastcall_ledger._line("{n}You told Woljif the Moon was his. Whatever he did with it was his to do.{/n}", requires=[PROMISED]),
+           lastcall_ledger._line("{n}Woljif stopped turning his back on you after that.{/n}", requires=[DOUBT]),
+           lastcall_ledger._line("{n}You priced Woljif's Moon to his hunter in front of him. You never told him why.{/n}",
+                                 requires=[MOON], forbids=[PROMISED, DOUBT, TOLD_BLUFF]),
+           lastcall_ledger._line("{n}You priced Woljif's Moon to his hunter in front of him, and told him it was a lie. He is still "
+                                 "deciding who it was told to.{/n}", requires=[MOON, TOLD_BLUFF], forbids=[PROMISED, DOUBT])],
+    Requires=["trickster.secret.woljif_moon"], Forbids=[], AnyGroups=[], Tooltip="RRT_Secret"))
+
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP9). --------------------------------------
+# PATH_FIT is the scene's class today: T (a device, or gated on the Trickster), N-all, or N-fit. PATH_FIT_V2 names the
+# scenes whose content would hold on her fitting paths (14-PATH-FIT §3), with those paths; they keep their Trickster gate
+# until the v2 pass replaces it with a path gate and writes her non-Trickster ending under canon fate.
+# Hepzamirah dies at Colyphyr on every path (14 §3); every later scene stands on the device, the Colyphyr offer is its
+# primer, and the early threads Require the live Trickster (15b). Her Demon-path Chapter 3 abduction is coercion, never a
+# romance beat. hepzamirah_flesh is all T (it needs the return). No v2 candidate.
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {}
 
 
 def integrate(payload):

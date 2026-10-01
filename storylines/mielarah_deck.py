@@ -16,7 +16,7 @@ other captains.
 import copy
 
 from story_format import c, n, scene
-from storylines.mielarah_trickster import (
+from storylines.mielarah_trickster import (LANN_HEARD, 
     CLOSED, COMMITTED, CONTACT, CHARTER, CORRECTED, DECLINED, DOCKED, DREZEN, FLOWN, FREED, HUB, HUB_FAILED, HUB_FB,
     KILLED, LANDFALL, LAUGHING, LIED, MEANT, MINDER, MORNING, NIGHT, NOTICED, OSKEL_DEAD, P, RECKONED, REL, RETURNED,
     SECRET_KNOWN, SHIP_LOST, TIGHTENED, TOLD, UNIT, KERZ, NOCTA, D, SAID_USE, CUT, DEAD_LATCH, LANN_GUARD, WOLJIF_GUARD,
@@ -49,6 +49,24 @@ def nar(id, text, *choices, **kw):
 
 
 PLACES = ((HUB, "", ()), (HUB_FB, ".arcade", (HUB_FAILED,)))
+# PP9 (Sol INT): the arcade twin reads where it happens. The jeweller anchor replaces the tiefling's stall in the staging.
+ARCADE_TEXT = (
+    ("the tiefling trader has dragged his trestle back against the wall of the lower town to keep out of it, and looks as though "
+     "he would drag the wall back too, if he could.",
+     "the jewellers either side of her have pulled their trays back behind their counters to keep out of it, and look as though "
+     "they would pull the arcade's pillars back too, if they could."),
+    ("behind the tiefling's stall", "behind the jewellers' counters"),
+    ("beside the tiefling's stall", "among the jewellers' counters"),
+    ("the trader has put a bucket under it", "a jeweller has put a bucket under it"),
+    ("cobbles", "flagstones"),
+)
+
+
+def arcade(nodes):
+    for node in nodes:
+        for old, new in ARCADE_TEXT:
+            node["Text"] = node["Text"].replace(old, new)
+    return nodes
 
 
 def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
@@ -56,7 +74,7 @@ def deck(id, title, entry, nodes, requires, forbids=(), delay=0, **fields):
     on each hub, each forbidding the other's completion."""
     for hub, suffix, extra in PLACES:
         twin = id + ("" if suffix else ".arcade")
-        SCENES.append(scene(id + suffix, title, "Mielarah", 5, entry, copy.deepcopy(nodes),
+        SCENES.append(scene(id + suffix, title, "Mielarah", 5, entry, arcade(copy.deepcopy(nodes)) if suffix else copy.deepcopy(nodes),
                             requires=("trickster.ever", CONTACT, *requires, *extra),
                             forbids=(CLOSED, KILLED, twin, *forbids), delay=delay, last=5, Relationship=REL, Chapters=[5],
                             Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub, **copy.deepcopy(fields)))
@@ -200,7 +218,8 @@ deck(D + "nearest", "The nearest", '"I came to see the ship."', [
 
 # --- 3. The best job in the whole world (a flight over Drezen; Lann's line). ---------------------------------------
 
-LANN_ALIVE_CHOICE = c("Continue", "lann", forbids=LANN_GUARD)
+LANN_ALIVE_CHOICE = c("Continue", "lann", requires=(LANN_HEARD,), forbids=LANN_GUARD)
+LANN_NEW_CHOICE = c("Continue", "lann_new", forbids=(*LANN_GUARD, LANN_HEARD))
 
 deck(D + "best_job", "The best job in the whole world", '"You said you\'d show me what she can do."', [
     nar("start", '''{n}This time she does not take you to the cabin. She takes you to the wheel.{/n}
@@ -217,7 +236,11 @@ deck(D + "best_job", "The best job in the whole world", '"You said you\'d show m
 {n}Mielarah stands at your shoulder with her hands behind her back and says nothing for a while. When you glance at her she is not looking at the sky. She is looking at you, holding her ship, and she is smiling with her whole face, which you have not seen before, and which makes her look ten years lighter and very dangerous.{/n}''',
         LANN_ALIVE_CHOICE,
         c("Continue", "sky", requires=("lann.dead",)),
-        c("Continue", "sky", requires=("lann.kicked_out",))),
+        c("Continue", "sky", requires=("lann.kicked_out",)),
+        LANN_NEW_CHOICE),
+    mi("lann_new", '''"Your mongrel archer came up yesterday, with a message from your quartermaster that could have gone by runner. He asked if he could hold her. I let him, for a count of ten." {n}She shakes her head.{/n}
+"Then he asked me what it was like, being a real captain. I told him the truth: it's the best job in the whole world. He went red to the ears and said he was going to steal that, and say it to everyone." {n}Her smile goes crooked.{/n} "I let him keep it. It's true, whoever says it."''',
+       c("Continue", "sky")),
     mi("lann", '''"Your mongrel archer came up yesterday, with a message from your quartermaster that could have gone by runner. He asked if he could hold her. I let him, for a count of ten." {n}She shakes her head.{/n}
 "He told me it was the best job in the whole world. I said that was my line, and he'd stolen it, and he went red to the ears and said he'd heard me say it to him in the Bad Luck, the first real captain he ever asked." {n}Her smile goes crooked.{/n} "I'd forgotten. He hadn't. I let him keep it. It's true, whoever says it."''',
        c("Continue", "sky")),
@@ -255,7 +278,7 @@ deck(D + "special_cargo", "Special cargo", '"You said you\'d tell me about the t
        c("Continue", "spite")),
     mi("spite", '''"He could have killed me on the ramp. He didn't. He watched me go, the whole way up, and I knew exactly what he was doing. He was deciding how to make it last."
 "So he made it last." {n}She spreads her hands.{/n} "Six years, and not a scratch. The steward, the mate, the Pathfinder on my step. I have come to think that the curse is not a punishment at all. It's a joke. His joke. The woman who walked out of Abaddon untouched will walk through the whole of the rest of her life untouched, and watch."
-{n}She looks at you across the table, and her eyes are dry and very tired.{/n} "And then you walked into the Bad Luck and read the punchline off my face. I think he has noticed that too."''',
+{n}She looks at you across the table, and her eyes are dry and very tired.{/n} "And then you came along and read the punchline off six years of my dead. I think he has noticed that too."''',
        c('"A joke is a thing that can be told differently."', "differently"),
        c('[Take her hand across the table.]', "hand")),
     mi("differently", '''"Spoken like a Trickster." {n}But she is listening.{/n} "Told differently how? Tell me the other version, then. I've heard his a thousand times."''',
@@ -473,7 +496,7 @@ deck(D + "morning", "The block on the planks", '[Wake on the quarterdeck.]', [
 "I stood there all night listening for it to try again," {n}she says into your collar.{/n} "It didn't. It tried once and missed and it didn't try again."''',
        c("Continue", "spade")),
     mi("spade", '''"But I heard something else. Before the sun." {n}Her voice changes; it goes to the cold far place.{/n} "The spade. Not behind me, where it always is. Somewhere else, and slow, and not digging for me at all."
-"He has noticed you, Commander. I have met him once, in Abaddon, and I have lived six years inside his joke. That is all the acquaintance I can claim, and it is enough. You read his rule in a tavern and you stood where his joke says nobody stands and you held my wheel through his weather, and the block missed." {n}She looks out at the white floor of the clouds.{/n} "He is Zyphus's herald, and heralds do not forget being made fools of. He cursed me for taking six Pathfinders out of his hands in Abaddon. I don't know what he'll do about you. I know he'll take his time."''',
+"He has noticed you, Commander. I have met him once, in Abaddon, and I have lived six years inside his joke. That is all the acquaintance I can claim, and it is enough. You read his rule and you stood where his joke says nobody stands and you held my wheel through his weather, and the block missed." {n}She looks out at the white floor of the clouds.{/n} "He is Zyphus's herald, and heralds do not forget being made fools of. He cursed me for taking six Pathfinders out of his hands in Abaddon. I don't know what he'll do about you. I know he'll take his time."''',
        c('"Let him dig."', "shield"),
        c('[Trickster] "Then I\'ll have to keep standing where he can\'t reach me."', "shield")),
     mi("shield", '''{n}She turns her head and looks at you, very close, and then she smiles, and it is not the courteous smile or the bitter one. It is the smile from the chart table in the Bad Luck, when she was sixteen again.{/n}
@@ -729,7 +752,7 @@ deck(D + "other_voyage", "The ship you chose", '"You wanted to hear about the vo
        c("[Help her roll up the chart.]", flags=(OTHER_VOYAGE,))),
     mi("test", '''{n}She stares at you. Then she puts both hands over her face and laughs into them, helplessly, for quite a long time.{/n}
 "You sailed with somebody else," {n}she says through her fingers,{/n} "to find out whether I would come anyway."
-"And I did. Through the Worldwound, with a hold full of rope, because a stranger in the Bad Luck read my curse like a chart and then went off with {n}(her voice climbs){/n} somebody worse." {n}She takes her hands away.{/n} "That is the most outrageous thing anyone has ever done to me, and I have been cursed by a herald of Zyphus. Help me roll up this chart before I throw it at you."''',
+"And I did. Through the Worldwound, with a hold full of rope, because a stranger read my curse like a chart and then went off with {n}(her voice climbs){/n} somebody worse." {n}She takes her hands away.{/n} "That is the most outrageous thing anyone has ever done to me, and I have been cursed by a herald of Zyphus. Help me roll up this chart before I throw it at you."''',
        c("[Help her roll up the chart.]", flags=(OTHER_VOYAGE,))),
 ], requires=(DOCKED, CHARTER), forbids=(OTHER_VOYAGE, LANDFALL, RETURNED), delay=24)
 

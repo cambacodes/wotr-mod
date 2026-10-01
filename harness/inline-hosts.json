@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1051,
-  "resolved": 1051,
-  "inlineOnlyScenes": 272,
-  "inlineOnlyResolved": 272,
-  "answerListScenesWithoutContact": 629,
-  "answerListScenesWithoutContactResolved": 629,
-  "lists": 111,
-  "listsWithReachableHost": 110
+  "entryTargetScenes": 1056,
+  "resolved": 1056,
+  "inlineOnlyScenes": 275,
+  "inlineOnlyResolved": 275,
+  "answerListScenesWithoutContact": 634,
+  "answerListScenesWithoutContactResolved": 634,
+  "lists": 115,
+  "listsWithReachableHost": 114
  },
  "scenes": {
   "a_crossing": {
@@ -10428,6 +10428,46 @@
     "clicks": 0
    }
   },
+  "hepzamirah.early.moon_message": {
+   "kind": "return-to-list",
+   "lists": [
+    "74e18303ff0d4db40b235cd5a38ef12e",
+    "78ff106a5d3b42d4b96adcbd1d1b626c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "74e18303ff0d4db40b235cd5a38ef12e": "RRT_entry.hepzamirah.early.moon_message.74e18303ff0d4db40b235cd5a38ef12e",
+    "78ff106a5d3b42d4b96adcbd1d1b626c": "RRT_entry.hepzamirah.early.moon_message.78ff106a5d3b42d4b96adcbd1d1b626c"
+   },
+   "resolved": true,
+   "host": {
+    "list": "74e18303ff0d4db40b235cd5a38ef12e",
+    "dialog": "ccf2771c6f3af0a4ea75a08cf9a727f6",
+    "dialogName": "Q2WoljifCultVoetiel_dialogue",
+    "cue": "Cue_0002",
+    "clicks": 1
+   }
+  },
+  "hepzamirah.early.moon_reckoning": {
+   "kind": "return-to-list",
+   "lists": [
+    "cdf898c8df8913340b7b9341590d4117"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "cdf898c8df8913340b7b9341590d4117": "RRT_entry.hepzamirah.early.moon_reckoning.cdf898c8df8913340b7b9341590d4117"
+   },
+   "resolved": true,
+   "host": {
+    "list": "cdf898c8df8913340b7b9341590d4117",
+    "dialog": "7bcec1d0cd44b3744bd5d4507efd8917",
+    "dialogName": "Q3WoljifAbyss_Voetiel_dialogue",
+    "cue": "Cue_0003",
+    "clicks": 1
+   }
+  },
   "hepzamirah.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -10565,6 +10605,44 @@
     "list": "174d6c94b6725f44aad1d2a76993a926",
     "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
     "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "hepzamirah.trickster.react.woljif_doubt": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.hepzamirah.trickster.react.woljif_doubt"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "hepzamirah.trickster.react.woljif_promised": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.hepzamirah.trickster.react.woljif_promised"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
     "cue": "Cue_0001",
     "clicks": 0
    }
@@ -17400,6 +17478,25 @@
     "dialogName": "Seelah_Main_dialog",
     "cue": "Cue_0002",
     "clicks": 0
+   }
+  },
+  "shamira.early.telmer_interrogation": {
+   "kind": "return-cue",
+   "lists": [
+    "ca6d1fdb3b2e1cd42a995788f05efdb2"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ca6d1fdb3b2e1cd42a995788f05efdb2": "RRT_entry.shamira.early.telmer_interrogation"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ca6d1fdb3b2e1cd42a995788f05efdb2",
+    "dialog": "7d28b5b3e8a5b22498dd47c1fbef76d2",
+    "dialogName": "CultCamp_CultistFromEstrod_dialogue",
+    "cue": "Cue_0024",
+    "clicks": 1
    }
   },
   "shamira.lastcall.call": {
@@ -24938,6 +25035,42 @@
     }
    ]
   },
+  "74e18303ff0d4db40b235cd5a38ef12e": {
+   "list": "74e18303ff0d4db40b235cd5a38ef12e",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "ccf2771c6f3af0a4ea75a08cf9a727f6",
+     "dialogName": "Q2WoljifCultVoetiel_dialogue",
+     "cues": [
+      "b9c1be66ff1e12f448760217fbc80101",
+      "b096e7b933e30ff44b6a6477677e45b6",
+      "2e60dc25340c6c448b22e5d3d9c60595",
+      "405071e9308ce524aa9cd25324745345"
+     ],
+     "cueNames": [
+      "Cue_0002",
+      "Cue_0007",
+      "Cue_0008",
+      "Cue_0052"
+     ],
+     "speaker": "766435873b1361c4287c351de194e5f9",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "37a5c52171b264745b974808d0007ba0": 1,
+      "ac6276d5c89ba99448563f14786824d8": 1,
+      "d1f7c838c2eca2f409ae740e1c25564e": 1
+     }
+    }
+   ]
+  },
   "74f66c9edaa71a644ba091fb1ff4a435": {
    "list": "74f66c9edaa71a644ba091fb1ff4a435",
    "listName": "AnswersList_0045",
@@ -25087,6 +25220,42 @@
       "d0d0e0bcd2aab6a4d93dc46d34642e59": 1,
       "f6f62b9446e369d488409c3eb0d8af21": 1,
       "f7cc6463bec3c5f44b1b34e35718f3d9": 1
+     }
+    }
+   ]
+  },
+  "78ff106a5d3b42d4b96adcbd1d1b626c": {
+   "list": "78ff106a5d3b42d4b96adcbd1d1b626c",
+   "listName": "AnswersList_0035",
+   "hosts": [
+    {
+     "dialog": "ccf2771c6f3af0a4ea75a08cf9a727f6",
+     "dialogName": "Q2WoljifCultVoetiel_dialogue",
+     "cues": [
+      "b9c1be66ff1e12f448760217fbc80101",
+      "c95fc8bc6b3d95140a4160a91c35ceb0",
+      "d227fd7bccd1fbe48b5301ba4135e653",
+      "4761ad660ea49c34ba53c226b4137207"
+     ],
+     "cueNames": [
+      "Cue_0002",
+      "Cue_0039",
+      "Cue_0040",
+      "Cue_0054"
+     ],
+     "speaker": "766435873b1361c4287c351de194e5f9",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "a7ea36b78ad69924a93c21034364728d": 1,
+      "d43a448bb95b5ea488455ccef47f98f3": 1,
+      "d9519b919b0f31c4090baa58a6e84e30": 1
      }
     }
    ]
@@ -26315,6 +26484,47 @@
     }
    ]
   },
+  "ca6d1fdb3b2e1cd42a995788f05efdb2": {
+   "list": "ca6d1fdb3b2e1cd42a995788f05efdb2",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "7d28b5b3e8a5b22498dd47c1fbef76d2",
+     "dialogName": "CultCamp_CultistFromEstrod_dialogue",
+     "cues": [
+      "0ff9dfa1944f90b4cb8fb2ceaefadf4b",
+      "33e2398b43643eb4d999684e3dfd4ad9",
+      "055c6e3471994e741a7edb9ea379246b",
+      "dcd7c7b1f8201314cabe1bc29a98dfd6",
+      "6023547d5d8bb8a43858215ed52084df",
+      "ec2bf627691dbdb4198a516ab68a041b"
+     ],
+     "cueNames": [
+      "Cue_0024",
+      "Cue_0022",
+      "Cue_0025",
+      "Cue_0026",
+      "SequenceExit_0029",
+      "SequenceExit_0049"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "7a16a80b556930b4083e2108a3eb520e": 2,
+      "8547ff68c7cec5b40ad719c28a6aa7ed": 2,
+      "fb19e054d12fd6f4491df65c1f90fa6d": 2,
+      "fe0e2e1da1644434cb06024af8e9fb42": 1
+     }
+    }
+   ]
+  },
   "cba15a10b7929e44ca32745529948d0c": {
    "list": "cba15a10b7929e44ca32745529948d0c",
    "listName": "AnswersList_0002",
@@ -26423,6 +26633,55 @@
       "6fac2460e632e93419f62e3e2228a26b": 1,
       "8326e158cefab804a852b7133a3b2e50": 2,
       "dd2df628865bd1c4f959cda69acf6e0e": 1
+     }
+    }
+   ]
+  },
+  "cdf898c8df8913340b7b9341590d4117": {
+   "list": "cdf898c8df8913340b7b9341590d4117",
+   "listName": "AnswersList_0006",
+   "hosts": [
+    {
+     "dialog": "7bcec1d0cd44b3744bd5d4507efd8917",
+     "dialogName": "Q3WoljifAbyss_Voetiel_dialogue",
+     "cues": [
+      "b2a7a43e27edb344383b877ab6f306a1",
+      "01d1203d2e734004db993f1cbe61dc21",
+      "ce087feb4e7b60446b3e51ef32920ce0",
+      "158dbb2922dd2094dbde751813cd5435",
+      "e0edc2d66c3ff2840a90567cbe40433b",
+      "b160fd7cd7b3887419648ca8913bee39",
+      "6e01af39af165c14cabe4cd8acb073e1",
+      "e8e85a8c2bd0c9f4fa1f115fb57ade66",
+      "59c2b5a75e4e483ea87b5a8b6894ab24"
+     ],
+     "cueNames": [
+      "Cue_0003",
+      "Cue_0005",
+      "Cue_0014",
+      "Cue_0015",
+      "Cue_0017",
+      "Cue_0023",
+      "Cue_0026",
+      "Cue_0027",
+      "SequenceExit_0003"
+     ],
+     "speaker": "d75ee7e088ea2d64b8b602e2e59ad6a5",
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0004",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "093756e4f2ac6b142bee6ffe71ec82e4": 1,
+      "146004b10c6b7c6489f1231fb6aba394": 2,
+      "4979825db4b7ea44c9d63558e724ab43": 3,
+      "c2ce1f1e68f78d3438f8d8a8e544ab68": 2,
+      "f109b45d9bcaaa84fa7956236a780e79": 2,
+      "f1e5e4cc52d830941ae70075f5760fdf": 3
      }
     }
    ]

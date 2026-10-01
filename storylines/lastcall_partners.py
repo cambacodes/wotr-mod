@@ -787,6 +787,16 @@ partner("iomedae", "iomedae", "iomedae.committed", "iomedae.closed", "The Bridge
     deal=[[IO + "banner_carried"]],
     ledger=("Iomedae: her banner, carried into the Wound", "I am carrying the Inheritor's banner into the Wound on a wager she never took. If she answers it, I will owe her a miracle of her choosing. If she does not, I will owe nobody anything, ever again."))
 
+MI = "mielarah.trickster."
+partner("mielarah", "mielarah", "mielarah.committed", "mielarah.closed", "The Nearest",
+    '''Mielarah did not come to the Threshold. Starcatcher hung over Drezen that night with every lantern lit and one figure at the wheel, and the place at the captain's elbow, half a stride from the binnacle, stood empty. She did not look north. She wrote the date in the book where she keeps her dead, on a line of its own, left the rest of the line blank, and watched the ladder.''',
+    (
+        page_p('''The crusade entered the Commander among the dead of the Threshold. Mielarah read the notice twice and did not write the name in her book. She kept the place at her elbow empty for the whole of the next voyage, and any sailor who asked her why was put off at the next port.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she came down her own ladder, crossed the room in four strides with nobody to walk round her, and stood at the Commander's elbow, nearest, while the priests argued. Nothing fell. Nothing ever did.''', requires=(H2,)),
+        page_p('''The Gravedragger's book still held the Commander's name, with the hour left blank, and the rift did not fill it in. She knew it was there. Oskel had told her, and she had made the Commander tell it again, twice, the way she checks a figure she does not like. For the rest of their life she kept the Commander off scaffolds, cornices and loose stairs with the patience of a woman who had watched one joke for six years and meant to watch this one longer.''', requires=(MI + "cost.herald_debt",)),
+        page_p('''Somewhere a spade went on digging for the Commander, slow and patient, the way it had since Vazglar. Mielarah listened for it on every night watch. She said it was further off than it had been, and she wrote down by how much.''', requires=(MI + "cost.noticed",), forbids=(MI + "cost.herald_debt",)),
+    ), declined=MI + "declined")
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 

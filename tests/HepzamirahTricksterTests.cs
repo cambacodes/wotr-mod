@@ -139,10 +139,12 @@ internal static class HepzamirahTricksterTests
         check(giveBack.RemoveItem == Pick && giveBack.Requires.Contains("hepzamirah.pick_held") && story.RemovableItems.Contains(Pick)
               && story.InventoryItems["hepzamirah.pick_held"] == Pick,
             "Dreadful Onslaught cannot be given back, or is removed without being held.");
-        check(reactions.Length == 2 && reactions.All(r => r.Nodes.Count == 1)
+        // PP9 (15b T2): Woljif answers the Moon reckoning, one reaction per answer he got, behind his own guards.
+        check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Any(r => r.Owner == "Greybor" && r.Forbids.Contains("greybor.dead"))
-              && reactions.Any(r => r.Owner == "Ember" && r.Requires.Contains("ember.present") && r.Forbids.Contains("ember_dead")),
-            "The reactions are not exactly Greybor and Ember behind their guards.");
+              && reactions.Any(r => r.Owner == "Ember" && r.Requires.Contains("ember.present") && r.Forbids.Contains("ember_dead"))
+              && reactions.Count(r => r.Owner == "Woljif" && r.Forbids.Contains("woljif.dead") && r.Forbids.Contains("woljif.kicked_out")) == 2,
+            "The reactions are not exactly Greybor, Ember and Woljif's two Moon answers behind their guards.");
         check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived["hepzamirah.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "courier_seen" }),

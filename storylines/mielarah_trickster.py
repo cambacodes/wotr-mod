@@ -73,6 +73,8 @@ KERZ = "captain.kerz"
 NOCTA = "captain.nocticula"
 SIGHT = "trickster.perception_tier1"      # a chosen Trickster trick: "You see more than other people."
 LANN_GUARD = ("lann.dead", "lann.kicked_out")
+MARKET = "mielarah.deck.market"           # the market: she named the Commander nearest in Drezen (mielarah_deck)
+LANN_HEARD = "mielarah.lann_asked"          # SeenCue Tumberd/Cue_0079: Lann asked her, in the Bad Luck, what it is like
 WOLJIF_GUARD = ("woljif.dead", "woljif.kicked_out")
 
 # Authored flags.
@@ -135,7 +137,8 @@ HUB_FAILED = HUB + ".failed"
 
 BINDINGS = {
     "Etudes": {},
-    "SeenCues": {HIRED: ["a67acc05e448a134aa2e4de0a30c5a15"]},          # Tumberd/Cue_0075 (the portal to her deck)
+    "SeenCues": {HIRED: ["a67acc05e448a134aa2e4de0a30c5a15"],           # Tumberd/Cue_0075 (the portal to her deck)
+                 LANN_HEARD: ["b8605cacc05f3ed4d81dd2c6a2f69b72"]},   # Tumberd/Cue_0079 "...the best job in the whole world." (to Lann)
     "StartedDialogs": {VOYAGE: "a07f6d1f93531e048928c5c9de328a92"},     # AirAdventures_BookEvent
     "SelectedAnswers": {AMULETS: "9e0edaeccb20fbb4eb23477c1aab6706",    # AirAdventures/Answer_0316
                         LIMERICKS: "4dea3c896793d784591ae398e902c739",  # AirAdventures/Answer_0472 (PlayerIsTrickster)
@@ -940,7 +943,7 @@ remote(P + "charter.rumour", "Six crew in two years", [
 "Commander. I have had a great many letters about my curse. Most come from priests offering to lift it for a fee; one came from a man in Nex who wanted to buy it. Yours is the first that told me something I did not know."
 "You went to Colyphyr with another captain. I hear you came back. I shan't ask what that was like; I can guess. Your gold is received and I have already spent some of it. Starcatcher comes north through the Worldwound when her holds are full. Keep the people nearest you sensible until then. M."''',
         c("[Keep the letter.]", flags=(CHARTER, STARTED, PATTERN, LATE))),
-], requires=("trickster", "trickster.ever"), forbids=(PATTERN, CHARTER, HIRED, CLOSED), delay=24, chapters=(5,), kind="event",
+], requires=("trickster", "trickster.ever", "mielarah.met"), forbids=(PATTERN, CHARTER, HIRED, CLOSED), delay=24, chapters=(5,), kind="event",
     RequiresAnyGroups=[[KERZ, NOCTA]])
 
 
@@ -1032,9 +1035,23 @@ SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
 "I told you I would not ask you anything again, and I keep my word, even to you." {n}She did not hold out her hand. She only moved her boots to one side of the bottom rung, so that there was room on it for two.{/n} "I am not asking. I am telling you where the ladder is. The wheel is where you left it."''',
         c('[Take her hand and climb.]', "climb"),
         c('[Stay on the ground.]', "stay")),
-    nar("climb", '''{n}The ladder swung under both of you all the way up, and she laughed at you the whole time, and at the top she put your hands on the spokes and took hers away. Starcatcher went north that afternoon, over the healed ground where the Worldwound had been, and held her course the whole way.{/n}'''),
+    nar("climb", '''{n}The ladder swung under both of you all the way up, and she laughed at you the whole time, and at the top she put your hands on the spokes and took hers away. Starcatcher went north that afternoon, over the ground the whole war had been fought for, whatever it had become, and held her course the whole way.{/n}'''),
     nar("stay", '''{n}She looked down at you for a while, swinging gently on the ladder over the rooftops. Then she nodded, as if a column of figures had come out the way she expected, and climbed back up. Starcatcher was over the horizon by evening. Every spring after that, a bill of lading arrived in Drezen for one passenger, fare paid, berth unassigned.{/n}'''),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "sacrifice"),
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
+
+
+# PP9 (Sol HOW): the unfinished courtship (R2-6). The market made the Commander her nearest in Drezen; the war ended
+# before she could give the Commander her wheel. No commitment is claimed: she says what she meant to do, and leaves the
+# ladder down. The late yes is the climb, an epilogue choice with no effects (as on epilogue.late).
+SCENES.append(scene(P + "epilogue.unfinished", "", "MielarahEpilogue", 6, "", [
+    nar("page", '''{n}The war ended before Mielarah gave the Commander her wheel. She had meant to. She said so afterwards, plainly, the way a magister reports a result she was not allowed to finish measuring: the storm had been picked out, the course was laid, and then the crusade marched and the weather went by without them.{/n}
+"I do not leave experiments half done, Commander. It is untidy, and the Academy would never let me hear the end of it." {n}Starcatcher hung over the rooftops of Drezen, a hundred feet up, with a rope ladder let down to the bottom rung.{/n} "There is still weather in the world. There is still a wheel. You know where both of them are."''',
+        c("[Climb the ladder.]", "climb"),
+        c("[Let her fly.]", "fly")),
+    nar("climb", '''{n}She did not help you up. She stood at the top with her hands behind her back and watched you climb it the way she watched every new hand climb, for the mistake, and when you reached the rail she put your hands on the spokes and took hers away. That evening she took Starcatcher into the first squall line she could find, and through it, and stood at your elbow the whole way, nearest, laughing.{/n}'''),
+    nar("fly", '''{n}She nodded, as if a column of figures had come out the way she expected, and the ladder went up after her. Starcatcher was over the horizon by evening. For years afterwards a bill of lading reached Drezen every spring for one passenger, fare paid, berth unassigned, with the place at the captain's elbow marked on the deck plan in her small upright hand.{/n}'''),
+], requires=("trickster.ever", MARKET), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 
@@ -1089,7 +1106,7 @@ remote(P + "raid.overboard", "The man at the plank", [
         c('"No. You\'ll find her faster without me. Bring her back."', "herald", flags=(OVERBOARD, LATE, HUNG, NOTICED, STARTED)),
         c('"I\'ll stay until you\'re out of sight."', "herald", flags=(OVERBOARD, LATE, HUNG, NOTICED, STARTED))),
     nar("herald", '''{n}At dusk, while Oskel walks the new hands up the rigging, there is somebody at the rail where the plank was: grey, and very tall, and patient, with earth on the hem of a coat that has never been near earth, and a spade over one shoulder, its blade worn bright.{/n}
-{n}"You read my rule in a tavern," the Gravedragger says, "and now you would steer by it. Two hundred miles of sea, and a hatch cover, and a bosun with good eyes. He will not find her. I could tell him where she is."{/n}
+{n}"You have my rule now," the Gravedragger says, "and you would steer by it. Two hundred miles of sea, and a hatch cover, and a bosun with good eyes. He will not find her. I could tell him where she is."{/n}
 {n}"She is not in my book. She has never been in my book. That is the joke: everyone near her, and never her, and she counts them. I do not end a good joke in the second act." He looks at you the way a sexton looks at a plot. "But I do not give bearings for nothing, and you have been stealing from me."{/n}''',
         c('"Name the price."', "price")),
     nar("price", '''{n}"Your name. In my book, with the hour left blank." He says it without relish, like a clerk quoting a tariff. "Not now. Not soon, perhaps. Some day there will be a cornice, or a cart horse, or a loose stair, and you will not see it coming, and I will not warn you. That is all. Everyone else I have ever taken was given no choice. You are being given one. I find that very funny."{/n}''',
@@ -1159,6 +1176,19 @@ remote(P + "raid.ashore", "What the sea gave back", [
         c("[Let her go.]")),
 ], requires=("trickster.ever", DEAD_LATCH, OVERBOARD), forbids=(RETURNED, CLOSED), delay=48, chapters=(4, 5),
     TricksterDevice=True, TricksterState="raid")
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP9). --------------------------------------
+# PATH_FIT is the scene's class today: T (a device, or gated on the Trickster), N-all, or N-fit. PATH_FIT_V2 names the
+# scenes whose content would hold on her fitting paths (14-PATH-FIT §3), with those paths; they keep their Trickster gate
+# until the v2 pass replaces it with a path gate and writes her non-Trickster ending under canon fate.
+# Mielarah is a Chapter 4 NPC who may die in the raid, crash in the storm or be killed at Colyphyr (14 §3: Ang, Aza, Drg
+# and Leg Y; Aeo and Dev M). The tavern beats that read the curse's pattern prime the device (T); the comparison of
+# captains and the landfall words read only her and the voyage. mielarah_deck is all T (her presence after the return).
+PATH_FIT = {s["Id"]: "T" for s in SCENES}
+PATH_FIT_V2 = {P + "tavern.captains": "N-fit: Angel, Azata, Dragon, Legend",
+               P + "colyphyr.landfall": "N-fit: Angel, Azata, Dragon, Legend",
+               P + "colyphyr.letter": "N-fit: Angel, Azata, Dragon, Legend"}
 
 
 def integrate(payload):

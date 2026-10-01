@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4654,
-  "unique_targets": 1008,
+  "binding_uses": 4670,
+  "unique_targets": 1020,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -514,6 +514,34 @@
       "path": "World/Dialogs/c3/Drezen_C3/Herald/Cue_0076.jbp",
       "type": "BlueprintCue"
     },
+    "ca6d1fdb3b2e1cd42a995788f05efdb2": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "dfc736a14d7a5184c9579533d3d90803": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Answer_0012.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "514f660014964d0409d18eb5bb94e0f5": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Answer_0015.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "73cefa3ea5b79b54ebf9e84562d3eecf": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Answer_0017.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "d2b603cf4319b5847a24ad9e402384c6": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Answer_0018.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "51e53730da8c07443be9a463ed33edcd": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Cue_0013.jbp",
+      "type": "BlueprintCue"
+    },
+    "0ff9dfa1944f90b4cb8fb2ceaefadf4b": {
+      "path": "World/Dialogs/c3/IvorySanctum/CultCamp_CultistFromEstrod/Cue_0024.jbp",
+      "type": "BlueprintCue"
+    },
     "d2f3ae3a8d7d0eb4aab722e777b7c260": {
       "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0018.jbp",
       "type": "BlueprintCue"
@@ -584,6 +612,10 @@
     },
     "f52f61f9f2ada7045a3b7f2f89350b95": {
       "path": "World/Dialogs/c3/IvorySanctum/JerribetnFinal/Cue_0039.jbp",
+      "type": "BlueprintCue"
+    },
+    "101f336e917865649aca9e074fde5be5": {
+      "path": "World/Dialogs/c3/IvorySanctum/Xanthir_after/Cue_0038.jbp",
       "type": "BlueprintCue"
     },
     "b00190e0e55fd9944b7fc8de5c83cbc0": {
@@ -1316,6 +1348,10 @@
     },
     "a67acc05e448a134aa2e4de0a30c5a15": {
       "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0075.jbp",
+      "type": "BlueprintCue"
+    },
+    "b8605cacc05f3ed4d81dd2c6a2f69b72": {
+      "path": "World/Dialogs/c4/TavernBadLuck/Tumberd/Cue_0079.jbp",
       "type": "BlueprintCue"
     },
     "3ffc9b66a39689f43ac3207aa84ee565": {
@@ -2373,6 +2409,18 @@
     "eeea5c1c81a03ba4f83abe1ab0a70df0": {
       "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/WenduTraitor_DrezensStreet/Cue_0025.jbp",
       "type": "BlueprintCue"
+    },
+    "74e18303ff0d4db40b235cd5a38ef12e": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Woljif/Q2WoljifCultVoetiel/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "78ff106a5d3b42d4b96adcbd1d1b626c": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Woljif/Q2WoljifCultVoetiel/AnswersList_0035.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "cdf898c8df8913340b7b9341590d4117": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Woljif/Q3WoljifAbyssMoonRising/Q3WoljifAbyss_Voetiel/AnswersList_0006.jbp",
+      "type": "BlueprintAnswersList"
     },
     "fb47ae9136f1be0409ceb396d2614fe5": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Additional_C3/After_Lab/Answer_0022.jbp",
