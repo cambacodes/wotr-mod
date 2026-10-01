@@ -332,6 +332,10 @@ internal static class EritriceTricksterTests
               && !Choice(accurate, "start", 2).Text.Contains("[Lie]"), "Other lovers are asserted as fact, or a sole partner cannot say so.");
         check(!S(K + "twice_nightly").Nodes.Any(n => n.Text.Contains("never counted to three")), "The countdown is an unprecedented event again.");
         // BEL: the motion to expel is resolved for each approach.
+        // Sol r4 INT: the session that unlocks the private debate is any of the three minuted sessions (spec binding).
+        check(story.SeenCues["council.session_minuted"].Length == 3 && story.SeenCues["council.session_minuted"].Contains("fd991da9cb8bb4a4f9576adbf51de6fd"),
+            "The private debate waits on one optional cue.");
+
         var voted = S(K + "the_motion_to_expel_voted");
         foreach (var flag in new[] { K + "alichino_handled", K + "argued_own_case", K + "chair_recused" })
             check(Rules.Available(story, voted, World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", M + "point_one", K + "a_motion_to_expel", flag)),
