@@ -425277,7 +425277,7 @@
           "Choices": [
             {
               "Text": "[Own it] \"I did it. It won, and it cost them their minds, and some never came back. I owe them more than a joke. I'm going in anyway, and it isn't a sure thing.\"",
-              "Next": "conceded",
+              "Next": "u_check",
               "Set": [
                 "iomedae.trickster.answered.madness"
               ],
@@ -425303,7 +425303,7 @@
           "Choices": [
             {
               "Text": "[The truth] \"I stole it. The canon never said I could. I'm going in anyway, and it isn't a sure thing.\"",
-              "Next": "conceded",
+              "Next": "u_check",
               "Set": [
                 "iomedae.trickster.answered.theft"
               ],
@@ -425329,7 +425329,7 @@
           "Choices": [
             {
               "Text": "[The truth] \"No. It isn't. I'm going anyway.\"",
-              "Next": "conceded",
+              "Next": "u_check",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -425353,7 +425353,7 @@
           "Choices": [
             {
               "Text": "\"I might die in there. You might not answer. The world gets its grave either way: the Commander dies in the Wound and stays dead. I'm asking anyway.\"",
-              "Next": "conceded",
+              "Next": "u_check",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -425362,6 +425362,190 @@
             {
               "Text": "\"It's a sure thing. You'll answer.\"",
               "Next": "refused",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "u_check",
+          "Speaker": "Narrator",
+          "Text": "{n}She does not answer the argument yet. She is looking at you the way she looked at you on the roof, when there was something you had not answered.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "u_madness",
+              "Set": [],
+              "Requires": [
+                "iomedae.reproached"
+              ],
+              "Forbids": [
+                "iomedae.trickster.answered.madness"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "u_theft",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.cost.banner_stolen"
+              ],
+              "Forbids": [
+                "iomedae.trickster.answered.theft",
+                "iomedae.reproached"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "u_theft",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.cost.banner_stolen",
+                "iomedae.trickster.answered.madness"
+              ],
+              "Forbids": [
+                "iomedae.trickster.answered.theft"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "conceded",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.reproached",
+                "iomedae.trickster.cost.banner_stolen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "conceded",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.answered.madness"
+              ],
+              "Forbids": [
+                "iomedae.trickster.cost.banner_stolen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "conceded",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.answered.theft"
+              ],
+              "Forbids": [
+                "iomedae.reproached"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "conceded",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.answered.madness",
+                "iomedae.trickster.answered.theft"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "u_madness",
+          "Speaker": "Narrator",
+          "Text": "\"At the Summit I asked you whether another victory bought with your followers' minds was truly your path,\" {n}says Iomedae.{/n} \"You never answered me. Answer me now, at the edge, before you ask me for anything.\"",
+          "Choices": [
+            {
+              "Text": "[Own it] \"I did it. It won, and it cost people their minds, and some of them haven't come back. I won't pretend it was nothing.\"",
+              "Next": "u_after_m",
+              "Set": [
+                "iomedae.trickster.answered.madness"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Joke] \"They were due a holiday.\"",
+              "Next": "turned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "u_after_m",
+          "Speaker": "Narrator",
+          "Text": "\"It was not nothing.\" {n}She does not soften.{/n} \"It is answered. It is not forgiven; it is not mine to forgive.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "u_theft",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.cost.banner_stolen"
+              ],
+              "Forbids": [
+                "iomedae.trickster.answered.theft"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "conceded",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.trickster.cost.banner_stolen"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "conceded",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.answered.theft"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "u_theft",
+          "Speaker": "Narrator",
+          "Text": "\"And the banner in the rock beside you came out of my own house,\" {n}says Iomedae.{/n} \"You did not ask for it. Say so.\"",
+          "Choices": [
+            {
+              "Text": "[The truth] \"I stole it. I'd do it again, and I'm telling you so.\"",
+              "Next": "conceded",
+              "Set": [
+                "iomedae.trickster.answered.theft"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Lie] \"I borrowed it. The canon said I could.\"",
+              "Next": "turned",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -426854,7 +427038,7 @@
         {
           "Id": "bare_kept",
           "Speaker": "Narrator",
-          "Text": "{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}",
+          "Text": "{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top tonight. Her banner is in the seam of the world, and whatever Drezen hangs there next will be something else.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -431864,7 +432048,7 @@
         {
           "Id": "how",
           "Speaker": "conversant",
-          "Text": "\"She has never said. The priests say faith.\" {n}He hesitates, as if he were about to say something improper about his mistress.{/n} \"I think she was very stubborn, and very tired, and there was nobody else to do it. That is what most miracles look like from close by. From far off they look like hymns. From close by they look like someone who has not slept, doing the only thing left.\"",
+          "Text": "\"She has never said. The priests say faith, and they are right.\" {n}He lifts his chin, the way he does when he speaks of her in front of demons.{/n} \"Her company was going to die on that bank, and she would not allow it. She asked nothing of heaven that night that she had not already given it. My lady did not wait to be a goddess to do what was right, Champion. That is why she became one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -440396,7 +440580,7 @@
     ],
     "iomedae.trickster.courted": [
       [
-        "iomedae.trickster.disputed"
+        "iomedae.trickster.argument_only"
       ],
       [
         "iomedae.trickster.dream.summit",

@@ -324,6 +324,19 @@ internal static class IomedaeTricksterTests
               && !taRescue.Has(Committed) && Take(wound, ta, "decide", 0, Committed, Carried).Has(P + "cost.buried_to_the_world")
               && !Paths(wound, ta).Any(o => o.path.Any(e => e.node == "unargued")),
             "Trk_Iomedae_ArgumentOnly: declining the rest after the concession still commits, or the Wound forgets it.");
+        // Audit r7: a refused disputation is not courtship; the Wound answers the open offences before any concession.
+        var abbreviated = World(story, 6, "trickster", "trickster.ever", Started, Latch, Held, P + "disputed", Declined, P + "cost.boasted", Called);
+        check(!Paths(wound, abbreviated).Any(o => o.state.Has(Committed)) && Paths(wound, abbreviated).Any(o => o.state.Has(P + "rescue_only"))
+              && !Paths(wound, abbreviated).Any(o => o.path.Any(e => e.node == "other_yes")),
+            "Trk_Iomedae_Threshold: a disputation refused at the first objection still earns the romance at the Wound.");
+        string[] courted = { P + "dream.summit", P + "dream.herald" };
+        var reproachedW = World(story, 6, new[] { "trickster", "trickster.ever", Started, Latch, Held, "iomedae.reproached" }.Concat(courted).ToArray());
+        var stolenW = World(story, 6, new[] { "trickster", "trickster.ever", Started, Latch, Order, P + "cost.banner_stolen" }.Concat(courted).ToArray());
+        var bothW = World(story, 6, new[] { "trickster", "trickster.ever", Started, Latch, Order, P + "cost.banner_stolen", "iomedae.reproached" }.Concat(courted).ToArray());
+        bool Answers(Snapshot w, params string[] owed) => Paths(wound, w).Where(o => o.state.Has(Committed) || o.state.Has(P + "rescue_only")).All(o => owed.All(o.state.Has))
+            && Paths(wound, w).Any(o => o.state.Has(Committed)) && Paths(wound, w).Any(o => o.state.Has(Closed));
+        check(Answers(reproachedW, P + "answered.madness") && Answers(stolenW, P + "answered.theft") && Answers(bothW, P + "answered.madness", P + "answered.theft"),
+            "Trk_Iomedae_Threshold: skipping the disputation skips the madness or the theft (or a dismissive answer is not refused).");
 
         // Trk_Iomedae_RefusalByCause: the Wound answers the offence that was given (the boast, the mocked madness, the lie).
         var tm = World(story, 6, t6.Concat(new[] { Declined, P + "cost.madness_mocked", P + "disputed" }).ToArray());
@@ -381,9 +394,12 @@ internal static class IomedaeTricksterTests
         var plat2 = Pg("platform");
         check(Avail(plat2, flaskW) && Reachable(plat2, flaskW).Any(x => x.Contains("postern under the east wall"))
               && !Reachable(plat2, flaskW).Any(x => x.Contains("sentry who salutes")) && !Reachable(plat2, flaskW).Any(x => x.Contains("still its Commander"))
-              && Reachable(plat2, flaskW).Any(x => x.Contains("empty coffin in the yard")) && !Reachable(plat2, flaskW).Any(x => x.Contains("nothing will ever be at the top"))
-              && Reachable(plat2, bridgeW).Any(x => x.Contains("nothing will ever be at the top")) && Reachable(plat2, livedW).Any(x => x.Contains("sentry who salutes")),
+              && Reachable(plat2, flaskW).Any(x => x.Contains("empty coffin in the yard")) && !Reachable(plat2, flaskW).Any(x => x.Contains("nothing at the top tonight"))
+              && Reachable(plat2, bridgeW).Any(x => x.Contains("nothing at the top tonight")) && Reachable(plat2, livedW).Any(x => x.Contains("sentry who salutes")),
             "Trk_Iomedae_Coexist: a Commander the world buried is saluted on the platform, or the flask world inherits the bridge's pole.");
+        var sockBridge = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Order, "iz.banner_lost", "iz.sock_raised");
+        check(!Reachable(plat2, sockBridge).Any(x => x.Contains("nothing will ever be at the top")),
+            "Trk_Iomedae_Worlds: the platform promises an empty pole forever beside Drezen's sock memorial.");
         check(Render(Pg("after"), bridgeW).Contains("no appeal") && !Render(Pg("after"), livedW).Contains("no appeal")
               && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Hear my terms")) && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Write my name beside the debt")),
             "Trk_Iomedae_Worlds: the appointment leaks into an ordinary life, or the Lady of Graves' terms are not staged.");

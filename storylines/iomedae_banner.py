@@ -293,7 +293,7 @@ at_herald(E + "herald.legend", "The Acts", 4, '"Tell me about your lady. Before 
 "I have prayed before that banner," he says at last, quietly. "It has never shown me anything." {n}There is no envy in it. There is something nearer to fear.{/n} "Forgive me. In this place I am afraid of everything that shows us what we want to see. And yet a relic of hers would not lie."
 {n}He sets his hand on your shoulder, heavily, the way knights do it.{/n} "When we are home, and she can hear you, ask her yourself. Not through me."''',
         c("Continue", flags=(BRIDGE_TOLD, DREAMS_TOLD))),
-    herald("how", '''"She has never said. The priests say faith." {n}He hesitates, as if he were about to say something improper about his mistress.{/n} "I think she was very stubborn, and very tired, and there was nobody else to do it. That is what most miracles look like from close by. From far off they look like hymns. From close by they look like someone who has not slept, doing the only thing left."''',
+    herald("how", '''"She has never said. The priests say faith, and they are right." {n}He lifts his chin, the way he does when he speaks of her in front of demons.{/n} "Her company was going to die on that bank, and she would not allow it. She asked nothing of heaven that night that she had not already given it. My lady did not wait to be a goddess to do what was right, Champion. That is why she became one."''',
         c("Continue", flags=(BRIDGE_TOLD,))),
 ], requires=(DREAM_BANNER,), forbids=(BRIDGE_TOLD,), lists=HERALD4_LIST, back=HERALD4_BACK)
 
