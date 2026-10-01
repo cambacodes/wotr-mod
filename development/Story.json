@@ -177090,7 +177090,7 @@
         {
           "Id": "start",
           "Speaker": "Chivarro",
-          "Text": "\"There is a buyer. There is always a buyer. A marilith in the Lower City wants the two lilitu who walked out of Baphomet's ledger and Herrax's, and she has sent a list of what she would pay.\" {n}Minagho's hand, under Chivarro's, in a harder script:{/n} \"She would pay less than you did. Tell us what to do with it, Golarian. We want to see what you say.\"",
+          "Text": "\"There is a buyer. There is always a buyer. A marilith in the Lower City wants the two lilitu who walked out of the Lower City under a crusader's colours, and she has sent a list of what she would pay.\" {n}Minagho's hand, under Chivarro's, in a harder script:{/n} \"She would pay less than you did. Tell us what to do with it, Golarian. We want to see what you say.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -178311,7 +178311,7 @@
         {
           "Id": "killer",
           "Speaker": "Minagho",
-          "Text": "\"I know.\" {n}Her lip peels back from her teeth.{/n} \"Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean.\"\n{n}She is very still.{/n} \"I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it.\"",
+          "Text": "\"I know.\" {n}Her lip peels back from her teeth.{/n} \"Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean.\"\n{n}She is very still.{/n} \"I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it.\"\n\"Here is why I am still standing here instead of opening your throat. Herrax has her rings on a tray in the Delights, fingers and all, for any guest to paw. You are going to buy them back from her and give them to me, and I am going to bury them somewhere Herrax will never find. And every time you look at me, you will remember who you bought them for.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -178486,7 +178486,7 @@
         {
           "Id": "killer",
           "Speaker": "Minagho",
-          "Text": "\"I know.\" {n}Her lip peels back from her teeth.{/n} \"Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean.\"\n{n}She is very still.{/n} \"I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it.\"",
+          "Text": "\"I know.\" {n}Her lip peels back from her teeth.{/n} \"Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean.\"\n{n}She is very still.{/n} \"I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it.\"\n\"Here is why I am still standing here instead of opening your throat. Herrax has her rings on a tray in the Delights, fingers and all, for any guest to paw. You are going to buy them back from her and give them to me, and I am going to bury them somewhere Herrax will never find. And every time you look at me, you will remember who you bought them for.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -178735,11 +178735,11 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The palm does not scar. It will not; the Goat's seal opens it every dawn. So you make it scar. Seven mornings running you go down to the quartermaster's brazier before the stores open, heat the flat of a crusade knife until it whitens, and press it to the cut as it opens, until the line across your palm is a ridge of shining, puckered skin that still bleeds every dawn but is, now, unmistakably a scar. Wilcer Garms stops asking what the knife is for on the third morning. On the seventh you send the two of them one line, and the hand to prove it.{/n}",
+          "Text": "{n}\"Ask me when it scars,\" she said. The palm does not scar. It will not; the Goat's seal opens it every dawn. You could make it scar.{/n}",
           "Choices": [
             {
-              "Text": "[Hold up the scarred palm] \"It scarred. Ask your question again, or I'll ask mine.\"",
-              "Next": "pair",
+              "Text": "[Make it scar: the brazier and a white-hot knife, every dawn for five days.]",
+              "Next": "burn",
               "Set": [
                 "minagho_chivarro.trickster.cost.scar_burned"
               ],
@@ -178754,6 +178754,22 @@
               "Requires": [],
               "Forbids": [],
               "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "burn",
+          "Speaker": "Narrator",
+          "Text": "{n}Five mornings running you go down to the quartermaster's brazier before the stores open, heat the flat of a crusade knife until it whitens, and press it to the cut as it opens, until the line across your palm is a ridge of shining, puckered skin that still bleeds every dawn but is, now, unmistakably a scar. Wilcer Garms stops asking what the knife is for on the third morning. On the fifth you send the two of them one line, and the hand to prove it.{/n}",
+          "Choices": [
+            {
+              "Text": "[Hold up the scarred palm] \"It scarred. Ask your question again, or I'll ask mine.\"",
+              "Next": "pair",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -178867,11 +178883,11 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The Goat's seal opens your palm every dawn, and it will never close on its own. So for a week of dawns you close it yourself, at the quartermaster's brazier, with the flat of a knife heated white, until what runs across your palm is a scar that bleeds and not merely a cut. You do not tell her. On the seventh morning you go down to her crate with the hand bound, and unbind it in front of her.{/n}",
+          "Text": "{n}\"Ask me when it scars,\" she said. The Goat's seal opens your palm every dawn, and it will never close on its own. You could close it yourself.{/n}",
           "Choices": [
             {
-              "Text": "[Show her the scar] \"It scarred. Ask me, or I'll ask you.\"",
-              "Next": "min",
+              "Text": "[Close it yourself: the brazier and a white-hot knife, every dawn for five days.]",
+              "Next": "burn",
               "Set": [
                 "minagho_chivarro.trickster.cost.scar_burned"
               ],
@@ -178891,9 +178907,25 @@
           "Portrait": ""
         },
         {
+          "Id": "burn",
+          "Speaker": "Narrator",
+          "Text": "{n}For five dawns you close it yourself, at the quartermaster's brazier, with the flat of a knife heated white, until what runs across your palm is a scar that bleeds and not merely a cut. You do not tell her. On the fifth morning you go down to her crate with the hand bound, and unbind it in front of her.{/n}",
+          "Choices": [
+            {
+              "Text": "[Show her the scar] \"It scarred. Ask me, or I'll ask you.\"",
+              "Next": "min",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
           "Id": "min",
           "Speaker": "Minagho",
-          "Text": "\"You burned it closed.\" {n}She does not touch it. She looks at it the way she looks at a contract she means to break.{/n} \"It still opens. It is still his. But the scar is yours, and you made it every morning for a week without telling me, which is the first thing you have ever done for me without a joke in it.\"\n{n}Her lip curls, and it is not quite contempt.{/n} \"Ask, Golarian.\"",
+          "Text": "\"You burned it closed.\" {n}She does not touch it. She looks at it the way she looks at a contract she means to break.{/n} \"It still opens. It is still his. But the scar is yours, and you made it every morning for five days without telling me, which is the first thing you have ever done for me without a joke in it.\"\n{n}Her lip curls, and it is not quite contempt.{/n} \"Ask, Golarian.\"",
           "Choices": [
             {
               "Text": "\"Stay.\"",
@@ -179000,7 +179032,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You wait, as she told you to. A full month, without a letter, a wardrobe or a knock. On the last day of it you send a runner to the room above the chandler's shop with a purse: a year's rent, in advance, and no note at all.{/n}",
+          "Text": "{n}You wait, as she told you to. Five days, without a letter, a wardrobe or a knock, which for you is a very long time. On the fifth you send a runner to the room above the chandler's shop with a purse: a year's rent, in advance, and no note at all.{/n}",
           "Choices": [
             {
               "Text": "[Send the purse.]",
@@ -180159,7 +180191,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Commander had knelt to Baphomet once, for her, while she lay dead in his cells. She learned of it when she woke, and never forgot it. She stood at the other side of every room after that, and watched the Commander across it with an expression that those who knew her described as a very private kind of respect.",
+              "Text": "The Commander had knelt to Baphomet once, for her, while she lay dead in his cells. She learned of it when she woke, and told the Commander, exactly once, at length and with a knife in her hand, what she thought of a mortal who kneels to the Goat. She never again stood beside the Commander in any room where his name was spoken. Everywhere else, she did, and dared anyone to remark on it.",
               "Requires": [
                 "minagho_chivarro.trickster.cost.baphomet_knelt",
                 "minagho_chivarro.trickster.minagho_in"
@@ -427644,8 +427676,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

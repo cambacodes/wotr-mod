@@ -473,7 +473,7 @@ letter(P + "chivarro_dead.the_bill_letter", "Goods", [
 
 CHAIN_FORBIDS = (CLOSED, "minagho.dead", "chivarro.dead")
 letter(P + "after.what_the_offer_bought", "What the offer bought", varied("start", cv,
-    '''"There is a buyer. There is always a buyer. A marilith in the Lower City wants the two lilitu who walked out of Baphomet's ledger and Herrax's, and she has sent a list of what she would pay." {n}Minagho's hand, under Chivarro's, in a harder script:{/n} "She would pay less than you did. Tell us what to do with it, Golarian. We want to see what you say."''',
+    '''"There is a buyer. There is always a buyer. A marilith in the Lower City wants the two lilitu who walked out of the Lower City under a crusader's colours, and she has sent a list of what she would pay." {n}Minagho's hand, under Chivarro's, in a harder script:{/n} "She would pay less than you did. Tell us what to do with it, Golarian. We want to see what you say."''',
     [("receipt", cv, "{n}Chivarro, in the margin:{/n} \"The receipt you burned is the only one of its kind. The marilith has asked for a copy.\"",
       BURNED)],
     (c('"Take the buyer\'s list. Sell it back to her."', flags=(T_OFFER, P + "offer_sold_back"), alignment=("Evil", 1)),
@@ -607,7 +607,8 @@ ALONE_MIN_NODES = [
        c('"She went back through the press. Stay."', "terms", forbids=("chivarro.dead.latched",)),
        c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead.latched",), forbids=(DEPOSIT,))),
     mg("killer", '''"I know." {n}Her lip peels back from her teeth.{/n} "Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean."
-{n}She is very still.{/n} "I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it."''',
+{n}She is very still.{/n} "I have killed for less. I have lain down with worse. I have not decided which of those you are, and I will take a very long time deciding, and you will feel every day of it."
+"Here is why I am still standing here instead of opening your throat. Herrax has her rings on a tray in the Delights, fingers and all, for any guest to paw. You are going to buy them back from her and give them to me, and I am going to bury them somewhere Herrax will never find. And every time you look at me, you will remember who you bought them for."''',
        c("Continue", "terms")),
     mg("terms", '''"Stay. For a mortal who owns my debt and bleeds for it every morning." {n}Her lip curls.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
        c('"Your price."', "threshold", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
@@ -648,9 +649,11 @@ letter(P + "alone.minagho_letter", "One lilitu, dry", [
 # meetings, so they open whatever presence stands. A fresh refusal (closing the hand) is the permanent no.
 SCARRED = P + "cost.scar_burned"
 letter(P + "after.when_it_scars", "When it scars", [
-    nar("start", '''{n}The palm does not scar. It will not; the Goat's seal opens it every dawn. So you make it scar. Seven mornings running you go down to the quartermaster's brazier before the stores open, heat the flat of a crusade knife until it whitens, and press it to the cut as it opens, until the line across your palm is a ridge of shining, puckered skin that still bleeds every dawn but is, now, unmistakably a scar. Wilcer Garms stops asking what the knife is for on the third morning. On the seventh you send the two of them one line, and the hand to prove it.{/n}''',
-        c('[Hold up the scarred palm] "It scarred. Ask your question again, or I\'ll ask mine."', "pair", flags=(SCARRED,)),
+    nar("start", '''{n}"Ask me when it scars," she said. The palm does not scar. It will not; the Goat's seal opens it every dawn. You could make it scar.{/n}''',
+        c("[Make it scar: the brazier and a white-hot knife, every dawn for five days.]", "burn", flags=(SCARRED,)),
         c("[Let it bleed a while longer.]", abort=True)),
+    nar("burn", '''{n}Five mornings running you go down to the quartermaster's brazier before the stores open, heat the flat of a crusade knife until it whitens, and press it to the cut as it opens, until the line across your palm is a ridge of shining, puckered skin that still bleeds every dawn but is, now, unmistakably a scar. Wilcer Garms stops asking what the knife is for on the third morning. On the fifth you send the two of them one line, and the hand to prove it.{/n}''',
+        c('[Hold up the scarred palm] "It scarred. Ask your question again, or I\'ll ask mine."', "pair")),
     mg("pair", '''"You burned it." {n}Minagho takes your wrist and turns the hand to the light, and runs her thumb along the ridge, hard, until it opens and bleeds anyway.{/n} "It still bleeds. Of course it bleeds; it is his. But you made it scar in spite of him, one morning at a time, and you did not ask either of us to watch."
 {n}Chivarro, from the bench:{/n} "I watched. From the stair. Every morning. It was disgusting, honey, and I have never been so flattered. Ask."''',
        c('"Stay. Both of you. On your terms."', "night", flags=(COMPLETE, "minachiv.future_two", CHAIN)),
@@ -663,10 +666,12 @@ letter(P + "after.when_it_scars", "When it scars", [
    delay=120, ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 letter(P + "alone.minagho_when_it_scars", "When it scars", [
-    nar("start", '''{n}The Goat's seal opens your palm every dawn, and it will never close on its own. So for a week of dawns you close it yourself, at the quartermaster's brazier, with the flat of a knife heated white, until what runs across your palm is a scar that bleeds and not merely a cut. You do not tell her. On the seventh morning you go down to her crate with the hand bound, and unbind it in front of her.{/n}''',
-        c('[Show her the scar] "It scarred. Ask me, or I\'ll ask you."', "min", flags=(SCARRED,)),
+    nar("start", '''{n}"Ask me when it scars," she said. The Goat's seal opens your palm every dawn, and it will never close on its own. You could close it yourself.{/n}''',
+        c("[Close it yourself: the brazier and a white-hot knife, every dawn for five days.]", "burn", flags=(SCARRED,)),
         c("[Let it bleed a while longer.]", abort=True)),
-    mg("min", '''"You burned it closed." {n}She does not touch it. She looks at it the way she looks at a contract she means to break.{/n} "It still opens. It is still his. But the scar is yours, and you made it every morning for a week without telling me, which is the first thing you have ever done for me without a joke in it."
+    nar("burn", '''{n}For five dawns you close it yourself, at the quartermaster's brazier, with the flat of a knife heated white, until what runs across your palm is a scar that bleeds and not merely a cut. You do not tell her. On the fifth morning you go down to her crate with the hand bound, and unbind it in front of her.{/n}''',
+        c('[Show her the scar] "It scarred. Ask me, or I\'ll ask you."', "min")),
+    mg("min", '''"You burned it closed." {n}She does not touch it. She looks at it the way she looks at a contract she means to break.{/n} "It still opens. It is still his. But the scar is yours, and you made it every morning for five days without telling me, which is the first thing you have ever done for me without a joke in it."
 {n}Her lip curls, and it is not quite contempt.{/n} "Ask, Golarian."''',
        c('"Stay."', "night", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
        c('[Close the hand] "Forget I asked."', flags=(CLOSED,))),
@@ -678,7 +683,7 @@ letter(P + "alone.minagho_when_it_scars", "When it scars", [
    forbids=(REUNITED, RET_C, CH_IN, CLOSED, COMPLETE), delay=120, TricksterDevice=True, TricksterState="chivarro_dead")
 
 letter(P + "alone.chivarro_when_it_scars", "Paid in advance", [
-    nar("start", '''{n}You wait, as she told you to. A full month, without a letter, a wardrobe or a knock. On the last day of it you send a runner to the room above the chandler's shop with a purse: a year's rent, in advance, and no note at all.{/n}''',
+    nar("start", '''{n}You wait, as she told you to. Five days, without a letter, a wardrobe or a knock, which for you is a very long time. On the fifth you send a runner to the room above the chandler's shop with a purse: a year's rent, in advance, and no note at all.{/n}''',
         c("[Send the purse.]", "chv", crusade=("Finances", -200)),
         c("[Wait a while longer.]", abort=True)),
     cv("chv", '''{n}The runner comes back with the purse still in his hand and a message he has been made to learn by heart.{/n} "'A year in advance. Nobody pays a madam in advance, honey; it is terribly bad business. It means you intend to come back. Come and ask me to my face, and bring the purse.'"''',
