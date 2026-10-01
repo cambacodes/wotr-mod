@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4324,
-  "unique_targets": 903,
+  "binding_uses": 4351,
+  "unique_targets": 911,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -262,6 +262,10 @@
       "path": "Weapons/Items/UniquePF2/RadiancePlus2.jbp",
       "type": "BlueprintItemWeapon"
     },
+    "d9385822b9871ac468e00aa01b68d45a": {
+      "path": "Weapons/Items/UniquePF2/Chapter1/CrystalDaggerItem.jbp",
+      "type": "BlueprintItemWeapon"
+    },
     "15acf7ada5903ec429f7cd62a6162613": {
       "path": "Weapons/Items/UniquePF2/Chapter3/CursedDelameresBowItem.jbp",
       "type": "BlueprintItemWeapon"
@@ -444,6 +448,10 @@
     },
     "16083b4c429389c45aece47df3d2d590": {
       "path": "World/Crusade/RankUps/Logistics/Logistics_Officer/Answer_0008.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "91a0b72bdcd5809409760cb25ad7d8c3": {
+      "path": "World/Dialogs/c1/GreyGarrison_ChapterEnd/Wardstone_BookEvent/Answer_0021.jbp",
       "type": "BlueprintAnswer"
     },
     "f21279d12e1c70449bd037e75d7fd4a7": {
@@ -1310,6 +1318,10 @@
       "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0020.jbp",
       "type": "BlueprintCue"
     },
+    "c214b2d290676f344a9227a2711393a6": {
+      "path": "World/Dialogs/c5/AreshkagalTomb/FoxMyself/Cue_0032.jbp",
+      "type": "BlueprintCue"
+    },
     "8a5d9a9b77b581b4f82ac7a06602fc7e": {
       "path": "World/Dialogs/c5/DrezenMain_C5/Coronation/Cue_0009.jbp",
       "type": "BlueprintCue"
@@ -1854,6 +1866,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Answer_0061.jbp",
       "type": "BlueprintAnswer"
     },
+    "20a557207800252419c55049322943c4": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Answer_0132.jbp",
+      "type": "BlueprintAnswer"
+    },
     "b0a9f1ed31f114b42bb4abc8fbda29e3": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0372.jbp",
       "type": "BlueprintCue"
@@ -2285,6 +2301,22 @@
     "8c8b748a66ebad84f9b4cbcd73c2aab9": {
       "path": "World/Encounters/TempleOfDelamere/UnlockableFlags/KyadoDead.jbp",
       "type": "BlueprintUnlockableFlag"
+    },
+    "d66b1fdc9d313784ca51712640e210c7": {
+      "path": "World/Encounters/TricksterCouncil/Items/EmptySyphon.jbp",
+      "type": "BlueprintItem"
+    },
+    "f873b21424513e64eabe1a0e138812ba": {
+      "path": "World/Encounters/TricksterCouncil/Items/SyphonWithCouncilNoShyka.jbp",
+      "type": "BlueprintItem"
+    },
+    "e26fec918fd8e774ba241955f03d4b9d": {
+      "path": "World/Encounters/TricksterCouncil/Items/SyphonWithCouncilShyka.jbp",
+      "type": "BlueprintItem"
+    },
+    "cfc7c93f8e93340469287afc905371c2": {
+      "path": "World/Encounters/TricksterCouncil/Items/SyphonWithShamira.jbp",
+      "type": "BlueprintItem"
     },
     "96ca61bbf4a54228be37a4a95fa0704d": {
       "path": "World/Etudes/Common/DLC1_Megaepic/DLC1_Threshold_Outdoor/DLC1_StorytellerDead.jbp",

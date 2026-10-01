@@ -67,6 +67,16 @@ AWAY_L = "nenio.away.latched"
 RIDDLE_DONE = P + "riddle_done"
 RIDDLE_DECLINED = P + "riddle_declined"            # only this wager closes; never her no to the romance
 NAME_FILED = P + "cost.name_filed"
+NAME_GONE = P + "name_gone"                        # Derived: staked + her native farewell seen (after_enigma talks about it)
+NAME_STAKED = P + "name_staked"                    # the riddle answered: the stake taken (filed after her native farewell)
+WHO_SILENT = F + "who_are_you.silent"              # the Commander told her of refusing the void (not a loophole)
+SILENCE_CLAUSE = P + "cost.silence_clause"        # the Sphinx's axiom written into the debt's terms at the bargain (Sol r3 TRK)
+ENIGMA_RESOLVED = "nenio.enigma_resolved"          # SeenCues FoxMyself/Cue_0032 (she thanks the Commander by name)
+# The answer owed to the Sphinx, collected in Chapter 6 (Sol TRK).
+DEBT_PAID = P + "debt.paid"                        # the true answer given; the Sphinx keeps it
+DEBT_EVADED = P + "debt.evaded"                    # paid in the Sphinx's own coin: the absence of an answer
+DEBT_DEFAULTED = P + "debt.defaulted"              # refused: volume one taken instead
+DEBT_SETTLED = (DEBT_PAID, DEBT_EVADED, DEBT_DEFAULTED)
 RIDDLE_REBUILT = P + "riddle_rebuilt"
 # Loss worlds.
 RETURNED = P + "returned"
@@ -100,6 +110,8 @@ ARCH_DEAD = F + "architect.the_dead"
 ARCH_AGREED = F + "architect.agreed"
 ARCH_TRICK = F + "architect.footnote"
 # The killed world's box marked KENABRES? (nenio_folios): told, or lied to (a Ledger secret).
+TOLD_BITE = "nenio.told_bite"                      # SelectedAnswers CompanionDialogues/Nenio/Answer_0132 ("I can bite hard enough, too!")
+KENABRES_SAID = F + "stranger.kenabres_said"        # the Commander named Kenabres to the recreated stranger (the box's source)
 KENABRES_TOLD = F + "kenabres_box.told"
 KENABRES_LIED = F + "kenabres_box.lied"
 KENABRES_SECRET = "trickster.secret.nenio_kenabres"
@@ -265,10 +277,10 @@ SCENES.append(scene(P + "taken.riddle", "A riddle only she can answer", "Nenio",
 "Very well. An exchange."
 {n}Her lips move once without sound, as if she is checking the word before she spends it.{/n} "The answer is Nenio."''',
          c("Continue", "filed")),
-     nen("filed", '''{n}Something goes out of her shoulders, the way a held breath goes. She blinks at you, twice, fast, the way she blinks when she has decided to forget something and is waiting for it to finish going.{/n}
-"The riddle is answered. The stake is taken." {n}She studies your face with enormous care, like a page in a hand she cannot read.{/n} "You have a name. I know that you have one. I know the shape of the place where it was. I cannot find it." {n}Quietly, and not in the anomaly's voice at all:{/n} "{mf|Boy|Girl}. Follower. That will have to do."''',
-         c("[Let her go on.]", native_next=FOX_ONE, forbids=(FOX_ARGUED,), flags=(RIDDLE_DONE, STARTED, NAME_FILED)),
-         c("[Let her go on.]", native_next=FOX_TWO, requires=(FOX_ARGUED,), flags=(RIDDLE_DONE, STARTED, NAME_FILED))),
+     nen("filed", '''{n}Something goes out of her shoulders, the way a held breath goes. She blinks at you, twice, fast.{/n}
+"The riddle is answered. The stake is taken." {n}She studies your face with enormous care, like a page she means to copy out before it is taken away.{/n} "I have your name still. I shall file it tonight, when we are out of this place, the way I file everything: I think of it once, completely, and then I stop. By morning it will be gone." {n}Quietly, and not in the anomaly's voice at all:{/n} "Until then I may spend it once or twice. Do not count."''',
+         c("[Let her go on.]", native_next=FOX_ONE, forbids=(FOX_ARGUED,), flags=(RIDDLE_DONE, STARTED, NAME_STAKED)),
+         c("[Let her go on.]", native_next=FOX_TWO, requires=(FOX_ARGUED,), flags=(RIDDLE_DONE, STARTED, NAME_STAKED))),
      nen("told", '''{n}Her gaze settles on you, level and empty.{/n}
 "The absence of an answer is an answer too." {n}It is exactly what the masked woman said to you among the statues, long ago, and she says it in exactly the same voice.{/n}
 "A riddle told is a riddle spent. The grain of sand has given the answer away, and received nothing for it. The universe notes the waste."''',
@@ -295,7 +307,7 @@ SCENES.append(scene(P + "taken.riddle", "A riddle only she can answer", "Nenio",
 meet(P + "after_enigma", "The shape of a name", '"You keep looking at me as if I were a misprint."', [
     nar("open", '''{n}Nenio is sitting on @SEAT@ with a sheet of paper on her knee and a pencil in her fist, and she has written nothing. When she sees you, she looks at your face, then at the sheet, then at your face again, with the particular frown of a scholar checking a citation that has gone missing from the shelf.{/n}''',
         c("Continue", "missing")),
-    nen("missing", '''"It is gone. I have checked." {n}She taps the pencil against the blank sheet.{/n} "Everything else is where I left it. Areshkagal, the Enigma, the grain of sand, the mask, the chicken and the egg, which I never got to ask about. The way back, which I could draw for you blindfolded. Your face, your boots, the nick in your left thumbnail, your habit of standing slightly to one side of doors."
+    nen("missing", '''"I filed it last night, by the fire, the way I file kings: all of it, once, completely, and then I put it down. It is gone. I have checked." {n}She taps the pencil against the blank sheet.{/n} "Everything else is where I left it. Areshkagal, the Enigma, the grain of sand, the mask, the chicken and the egg, which I never got to ask about. The way back, which I could draw for you blindfolded. Your face, your boots, the nick in your left thumbnail, your habit of standing slightly to one side of doors."
 "Your name is not. There is a hole the shape of it. I can feel the edges. It is like putting your tongue where a tooth was."''',
         c('"You said it once, at the end. You thanked me."', "thanked"),
         c('"You never used it anyway."', "never"),
@@ -310,12 +322,12 @@ meet(P + "after_enigma", "The shape of a name", '"You keep looking at me as if I
 "This left a hole. Hypothesis: a thing that leaves a hole was load-bearing." {n}She writes it down, and underlines it, and then looks at what she has written as if it had been rude to her.{/n} "I dislike that hypothesis. I am going to leave it on the page until it apologises."''',
         c('[Flirt] "Load-bearing. I\'ll take that."', "flirt"),
         c('"What am I to you now, then? Without the name."', "call"),
-        c("[Leave her with her page.]")),
+        c("[Leave her with her page.]", flags=(NAME_FILED,))),
     nen("flirt", '''"You will take it because it was not offered to you. That is very like you." {n}She does not quite smile.{/n} "Follower. I shall call you follower, which is accurate, and {mf|boy|girl} when you are being tiresome, which is also accurate."''',
-        c("[Leave her with her page.]")),
+        c("[Leave her with her page.]", flags=(NAME_FILED,))),
     nen("call", '''"Follower. It was always accurate. Now it is also sufficient." {n}She taps the sheet.{/n} "The Encyclopedia will have to make do. Under 'Crusade, Commander of the', there will be a space, and after the space a great many adjectives, most of them provisional."''',
-        c("[Leave her with her page.]")),
-], requires=(RIDDLE_DONE,), delay=12, chapter=5, places=("hub",))
+        c("[Leave her with her page.]", flags=(NAME_FILED,))),
+], requires=(RIDDLE_DONE, ENIGMA_RESOLVED), forbids=(NAME_FILED,), delay=12, chapter=5, places=("hub",))
 
 
 # --- Loss worlds (build sheet): the Sphinx's servant, and the follower's field report. --------------------------------------
@@ -323,63 +335,118 @@ meet(P + "after_enigma", "The shape of a name", '"You keep looking at me as if I
 visit(P + "dead.the_price", "The vessel belongs to the Sphinx", [
     nar("open", '''{n}They have laid Nenio out on a trestle in the cold room behind the chapel, with her pencil in her fist, because nobody could get it out of her fingers. The chaplain has tied her hands together over her chest with a strip of linen, and her sleeves are still full of crumpled paper. One sheet has slid out onto the floor. It says, in her impossible hand, "Hypothesis:", and nothing after.{/n}
 {n}There is somebody standing over her who was not there when you came in.{/n}''',
-        c("Continue", "claim")),
+        c("Continue", "claim", forbids=(ENIGMA_RESOLVED,)),
+        c("Continue", "claim_after", requires=(ENIGMA_RESOLVED,))),
+    grey("claim_after", '''{n}A grey robe, frayed at the hem. A plain white mask with two slits in it. The figure does not turn when you come closer; it simply begins to speak, as if it had been waiting for an audience of exactly one.{/n}
+"I am the answer, but what is the question?" {n}The mask tilts toward the body.{/n} "The anomaly's vessel was recreated to serve a purpose on Golarion. It served it: the worthy one was shown the way, and walked it. A tool that has done its work goes back to the one who made it. It belongs to the Faceless Sphinx. It is reclaimed."''',
+        c('"She isn\'t yours. She took her mask off years ago."', "nothing"),
+        c('"What does your mistress want for her?"', "nothing")),
     grey("claim", '''{n}A grey robe, frayed at the hem. A plain white mask with two slits in it. The figure does not turn when you come closer; it simply begins to speak, as if it had been waiting for an audience of exactly one.{/n}
 "I am the answer, but what is the question?" {n}The mask tilts toward the body.{/n} "The anomaly's vessel was recreated to serve a purpose on Golarion. The vessel is spent before its purpose. It belongs to the Faceless Sphinx. It is reclaimed."''',
         c('"She isn\'t yours. She took her mask off years ago."', "nothing"),
         c('"What does your mistress want for her?"', "nothing")),
     grey("nothing", '''"The anomaly is nothing. Nothing has no owner but the one who made it." {n}The servant lays one grey sleeve across Nenio's bound hands, lightly, like a librarian marking a place.{/n} "Unless the grain of sand has something to offer the Sphinx that the Sphinx does not already know. That is a short list."''',
-        c('[Offer the manuscript for the vessel] "The notes for the other ninety-nine volumes of the Encyclopedia Golarionnica. Four thousand years of observations she never showed anyone. Your mistress hoards secrets. Here are a hundred thousand pages of them."',
+        c('[Offer the manuscript for the vessel] "Her notes. Every trunk of them: the whole of the Encyclopedia Golarionnica that is not yet written, everything she has observed and never shown anyone. Your mistress hoards secrets. Here are a hundred thousand pages of them."',
           "terms", mythic="Trickster"),
         c('"Take the body. She\'d want it studied."', "rest")),
     grey("terms", '''{n}For a while the mask does nothing at all. Then, very slowly, it turns toward the trunks against the wall, the ones she dragged across half of Mendev and never let anyone lift.{/n}
 "The grain of sand offers the anomaly's scribblings for the anomaly. Knowledge for a vessel." {n}A sound like a page turning, from somewhere inside the robe.{/n} "The Sphinx finds this acceptable, and insufficient. The grain of sand will also owe the Sphinx one answer, when she asks. Any question. The true answer. Not a riddle."''',
         c('[Hand over the manuscript] "Her notes, and one answer, when she asks. Give her back."', "raised"),
-        c('[Refuse] "Not her life\'s work. Not for her. She\'d never forgive me."', "rest")),
-    nar("raised", '''{n}The servant does not lift the trunks. It rests one hand on the lid of the first, and they are simply lighter, the way a room is lighter when somebody has left it. When you look again the mask is gone, and the trunks are empty except for the first, which holds one bound book: volume one, the only volume she ever finished, its spine cracked from being opened too often.{/n}
+        c('[Refuse] "Not her life\'s work. Not for her. She\'d never forgive me."', "rest"),
+        c('[Bargain over the terms] "One answer. And your mistress\'s own rule goes in the terms with it: the absence of an answer is an answer too."',
+          "clause", mythic="Trickster")),
+    grey("clause", '''{n}The mask stops. For the first time it looks at you instead of through you.{/n}
+"The grain of sand quotes the Sphinx to her servant, over the body, in the middle of a bargain." {n}A page turns inside the robe.{/n} "She values that more than the scribblings. It goes in the terms. But a clause is not free. If the grain of sand ever pays in silence, whatever it withholds becomes the Sphinx's. It will never be able to say those words, to anyone, in any tongue."''',
+        c('[Hand over the manuscript] "Her notes, one answer, and the clause. Give her back."', "raised", flags=(SILENCE_CLAUSE,))),
+    nar("raised", '''{n}The servant does not lift the trunks. It rests one hand on the lid of the first, and they are simply lighter, the way a room is lighter when somebody has left it. When you look again the mask is gone, and the trunks are empty except for the first, which holds one bound book: volume one, the only volume she ever had bound, its spine cracked from being opened too often.{/n}
 {n}On the trestle, Nenio sneezes. Then she sits up, looks at the linen on her wrists, looks at the chaplain in the doorway, and says with great indignation, "Who tied me up? This is not a knot. This is an insult to knots."{/n}''',
         c("[Untie her hands.]", revive="nenio", flags=(RETURNED, STARTED, MANUSCRIPT, OWES))),
     nar("rest", '''{n}The servant inclines its mask to you, a small, exact courtesy, the kind a clerk gives a customer who has decided not to buy.{/n}
 {n}In the morning the trestle is empty. The linen is folded on it, very neatly, and on top of the linen lies the sheet that fell from her sleeve. Someone has finished it. "Hypothesis: nothing." It is not her handwriting.{/n}''',
         c("[Fold the sheet away.]", flags=(LET_REST,))),
-], requires=("trickster", DEAD, DEAD_L), forbids=(RETURNED, LET_REST), delay=24, kind="event", chapters=(3, 4, 5),
-    Recovery="nenio", TricksterDevice=True, TricksterState=DEAD)
+], requires=("trickster", DEAD, DEAD_L), forbids=(RETURNED, LET_REST), delay=24, kind="event", chapters=(3, 5),
+    Recovery="nenio", TricksterDevice=True, TricksterState=DEAD, Areas=[DREZEN])
 
 visit(P + "dead.the_price_recreated", "A new vessel", [
     nar("open", '''{n}There was nothing left to bury. The report says so plainly, in a clerk's round hand: the scholar Nenio, kitsune, lost with the rearguard; no remains recovered. Somebody has written "Encyclopedia?" in the margin, and somebody else has crossed it out.{/n}
 {n}Her trunks came back with the baggage. You are sitting on one of them, with the report on your knee, when you notice the grey figure in the corner of the tent.{/n}''',
         c("Continue", "claim")),
     grey("claim", '''"I am the answer, but what is the question?" {n}A plain white mask, a frayed grey robe.{/n} "The anomaly's vessel is spent, and scattered. The Sphinx made it once, from a pilgrim's dust. The Sphinx could make it again. The Sphinx does nothing for nothing."''',
-        c('[Offer the manuscript for a new vessel] "The notes for the other ninety-nine volumes of her Encyclopedia, and every secret in them she never let anybody read. Make her again."',
+        c('[Offer the manuscript for a new vessel] "Her notes, every trunk of them, the whole unwritten Encyclopedia, and every secret in them she never let anybody read. Make her again."',
           "terms", mythic="Trickster"),
         c('"Let her be. She would hate being made twice."', "rest")),
     grey("terms", '''"Knowledge for a new vessel. The old one is spent." {n}The mask turns to the trunks under you, and you feel them grow lighter through the wood.{/n} "And the grain of sand will owe the Sphinx one answer, when she asks. The new vessel will come on its own feet. It will not march in the grain of sand's army. It was not bought for the army."''',
         c('[Hand over the manuscript] "Her notes, and one answer. Make her."', "made",
           flags=(RETURNED, STARTED, MANUSCRIPT, OWES, RECREATED)),
-        c('[Refuse] "Not her life\'s work."', "rest")),
-    nar("made", '''{n}When you look up again the corner of the tent is empty, and so are the trunks, all but the first, which holds volume one, the only volume she ever finished, with a pencil stuck in it to mark the place.{/n}
+        c('[Refuse] "Not her life\'s work."', "rest"),
+        c('[Bargain over the terms] "One answer. And your mistress\'s own rule goes in the terms with it: the absence of an answer is an answer too."',
+          "clause", mythic="Trickster")),
+    grey("clause", '''{n}The mask stops. For the first time it looks at you instead of at the trunks.{/n}
+"The grain of sand quotes the Sphinx to her servant, in the middle of a bargain." {n}A page turns inside the robe.{/n} "She values that more than the scribblings. It goes in the terms. But a clause is not free. If the grain of sand ever pays in silence, whatever it withholds becomes the Sphinx's. It will never be able to say those words, to anyone, in any tongue."''',
+        c('[Hand over the manuscript] "Her notes, one answer, and the clause. Make her."', "made",
+          flags=(RETURNED, STARTED, MANUSCRIPT, OWES, RECREATED, SILENCE_CLAUSE))),
+    nar("made", '''{n}When you look up again the corner of the tent is empty, and so are the trunks, all but the first, which holds volume one, the only volume she ever had bound, with a pencil stuck in it to mark the place.{/n}
 {n}Nine days later the market wardens in Drezen send up a complaint: a woman in a grey scholar's coat has requisitioned two of the spice trader's crates and is measuring the customers.{/n}''',
         c("[Go down to the market.]")),
     nar("rest", '''{n}The grey figure bows exactly as far as courtesy requires, and is gone. The trunks stay heavy. You never open them. Nobody could have read them anyway.{/n}''',
         c("[Leave the trunks closed.]", flags=(LET_REST,))),
 ], requires=("trickster", DEAD, DEAD_L), forbids=(RETURNED, LET_REST, BODY_KEPT), delay=24, kind="event",
-    chapters=(3, 4, 5), TricksterDevice=True, TricksterState=DEAD)
+    chapters=(3, 5), TricksterDevice=True, TricksterState=DEAD)   # Sol r3 COX: an Abyss loss waits for Drezen (R2-5)
+
+# Chapter 5, in person (Sol r1 COX: no new rest delivery): the Sphinx's servant collects the answer owed, in front of her.
+# The question is her own trap's ("Who are you?", which "merely stating my name failed to satisfy", FoxReveal/Cue_0044).
+# The prepared loophole is bargained at the debt itself (Sol r3 TRK): the Commander wrote the Sphinx's axiom ("The absence of
+# an answer is an answer too", FoxReveal/Cue_0002) into the terms, at a price named then: the withheld words become hers.
+meet(P + "debt.collected", "The question", '"Nenio? Who is that behind you?"', [
+    nar("open", '''{n}Nenio is at @DESK@ with her pencil stopped halfway through a word, looking past you. There is a grey figure standing @WHERE@ where nobody was a moment ago: a frayed robe, a plain white mask.{/n}
+{n}"It is for you," she says, very quietly, without taking her eyes off it. "Do not mind me. I am taking notes."{/n}''',
+        c("Continue", "ask")),
+    grey("ask", '''"I am the answer, but what is the question?" {n}The mask tilts, from you to her and back.{/n} "Today the question is the Sphinx's, and the answer is owed. One question. The true answer. Not a riddle."
+"Who is the anomaly?" {n}A pause, exactly long enough.{/n} "She was asked the same among the statues, and her name did not satisfy. It will not satisfy now. A false answer, or a partial one, and the Sphinx takes back what she made."''',
+        c("[Pay] Answer it truly, all of it, with her listening.", "paid"),
+        c("[Pay in the Sphinx's coin] Say nothing, as the terms allow, and hold the mask's eyes.", "coin",
+          requires=(SILENCE_CLAUSE,), mythic="Trickster"),
+        c('[Refuse] "Not to you. Take something else."', "default")),
+    nar("paid", '''{n}You tell it. It takes a long time, because the true answer is long, and the mask does not hurry you. What she is: a kitsune who forgot she was one, four thousand years old, a pilgrim's dust made over by a Sphinx, a scholar with a hand nobody can read. What she is to you. What you gave for her. Behind you her pencil has stopped moving altogether.{/n}''',
+        c("Continue", "kept")),
+    grey("kept", '''"The answer is true and complete." {n}Something inside the robe turns a page.{/n} "The Sphinx keeps what she is given. The grain of sand will find that those words are hers now. It may say other words to the anomaly. Not those. Never those again."
+{n}Then there is nobody there.{/n}''',
+        c("Continue", "heard")),
+    nen("heard", '''"I heard it." {n}She has not written a word.{/n} "Once. That is the whole print run, then: one copy, and I have it, and it is not for the Encyclopedia." {n}Her ears are flat against her hair.{/n} "Do not try to say it again. I would not be able to bear watching you find out that you cannot."''',
+        c("[Sit down beside her, and say other things.]", flags=(DEBT_PAID,))),
+    nar("coin", '''{n}You say nothing. The clause is in the terms; you put it there yourself, and the servant took it. You do not look away from the slits in the mask, and you do not fill the silence, though it goes on long enough to become a sound of its own.{/n}''',
+        c("Continue", "contested")),
+    grey("contested", '''"Silence is the Sphinx's coin. It is also a refusal wearing a mask." {n}The mask does not move.{/n} "But the clause is the Sphinx's own, and she does not contradict herself. She takes the coin, at the price named when it was written."
+"A coin is struck from metal. This one is struck from what the grain of sand would have said. The Sphinx takes the metal. The grain of sand keeps nothing: it will never be able to say those words, to anyone."''',
+        c("[Hold its eyes. Pay the metal.]", "coin_done"),
+        c("[Pay after all] Answer it truly, all of it.", "paid")),
+    nen("coin_done", '''{n}Then there is nobody there, and Nenio lets out a breath she seems to have been holding since the Nameless Ruins.{/n}
+"You paid her in her own coin, and she bit it, and it rang true." {n}She looks at you with enormous interest.{/n} "So the Sphinx has nothing about me. And you have nothing to say about me, ever, in so many words." {n}She picks up the pencil.{/n} "I can live with the second. I have lived a very long time without most people's words. I shall have to watch what you do instead, which was always the better data."''',
+        c("[Let her watch.]", flags=(DEBT_EVADED,))),
+    grey("default", '''"The grain of sand defaults." {n}No anger in it. A clerk noting a sum.{/n} "A debt unpaid is collected from the security. The security is the vessel. The Sphinx does not want the vessel; it has a purpose still. She will take what the vessel values most that is not the vessel."
+{n}Then there is nobody there.{/n}''',
+        c("Continue", "default_after")),
+    nen("default_after", '''{n}Her hand goes to @DESK@, to where volume one always lies. It is not there. She lifts the papers, and the stone, and looks under them, and it is not there either.{/n}
+"My book." {n}It is not a question.{/n} "You owed her an answer, and you did not give it, and she took my book instead." {n}Her ears are flat.{/n} "I would have told you to give it. I would have told you in very long words. You did not ask."''',
+        c("[Let her be angry.]", flags=(DEBT_DEFAULTED,))),
+], requires=(OWES, SCRIBE, P + "night"), forbids=(*DEBT_SETTLED, DISSOLVED), delay=48, chapter=5)   # Sol r3: after night one
+
 
 # In person, once she is back in the party: the ninety-nine volumes.
-meet(P + "dead.welcome_back", "Ninety-nine volumes", '"Nenio. You look... well."', [
-    nar("open", '''{n}Nenio has all her trunks open around her like a fortress with the walls knocked down. They are empty. Four thousand years of notes are gone, every bundle, every string. She is sitting in the middle of them with volume one of the Encyclopedia Golarionnica on her knees, the only volume she ever finished, holding it with both hands, as if it might also try to leave.{/n}''',
+meet(P + "dead.welcome_back", "Every trunk", '"Nenio. You look... well."', [
+    nar("open", '''{n}Nenio has all her trunks open around her like a fortress with the walls knocked down. They are empty. Every note she carried is gone, every bundle, every string. She is sitting in the middle of them with volume one of the Encyclopedia Golarionnica on her knees, the only volume she ever had bound, holding it with both hands, as if it might also try to leave.{/n}''',
         c("Continue", "theft")),
-    nen("theft", '''"The notes for ninety-nine volumes of the Encyclopedia Golarionnica are missing." {n}She says it very calmly, which is worse than shouting.{/n} "Hypothesis one: theft. The thief left volume one. Hypothesis two: the thief has taste, and knew that volume one is finished and the rest were only notes, and that notes cannot be rebuilt from memory, and wished me to suffer exactly as much as possible and no more."
+    nen("theft", '''"The notes for the Encyclopedia Golarionnica are missing. All of them." {n}She says it very calmly, which is worse than shouting.{/n} "Hypothesis one: theft. The thief left volume one. Hypothesis two: the thief has taste, and knew that volume one is finished and the rest were only notes, and that notes cannot be rebuilt from memory, and wished me to suffer exactly as much as possible and no more."
 "Hypothesis three is that I am dead and this is an afterlife for scholars, but the tea is too bad for that." {n}She lifts her eyes to you.{/n} "Do you know anything about this, {mf|boy|girl}?"''',
         c('[Tell her] "You died. A servant of the Sphinx came for your body. I bought you back with your notes."', "told",
           flags=(TOLD_THEFT, SCRIBE)),
         c('[Say nothing] "I\'ll ask around."', "silent", flags=(THIEF_HUNTED, SCRIBE))),
     nen("told", '''{n}She does not move for some time. Her thumb goes back and forth over the cracked spine of volume one.{/n}
-"You sold my life's work to the Faceless Sphinx for my life." {n}She counts something on her fingers, loses count, and starts again.{/n} "Ninety-nine volumes of notes. Four thousand years. For one kitsune who cannot even keep a pencil sharp."
+"You sold my life's work to the Faceless Sphinx for my life." {n}She counts something on her fingers, loses count, and starts again.{/n} "Every note I ever took. Every trunk. For one kitsune who cannot even keep a pencil sharp."
 "That is the worst trade I have ever heard of, and I am including the time a man in Absalom sold me a map to his own house." {n}Her voice wobbles and she frowns at it until it stops.{/n} "What did the servant's hands look like? Describe them. Precisely. I intend to steal it all back one day, and I will need to recognise the shelf."''',
         c("Continue", "begin")),
     nen("silent", '''"Ask around." {n}She gives you the expression she keeps for a sample that has lied about its weight.{/n}
-"Very well." {n}She opens volume one at the flyleaf, takes the pencil out of her hair, and writes across the top of the page in capitals: THIEF. Then she underlines it twice.{/n} "I shall find them. I have ninety-nine volumes of free time."''',
+"Very well." {n}She opens volume one at the flyleaf, takes the pencil out of her hair, and writes across the top of the page in capitals: THIEF. Then she underlines it twice.{/n} "I shall find them. I have a great deal of free time now. It used to be full of notes."''',
         c("Continue", "begin")),
     nen("begin", '''"Now. The notes are gone, so I shall have to observe everything again, and write it down again, and I cannot do it with my own hand. Nobody can read it, including, on bad days, me." {n}She holds the pencil out to you, point first.{/n}
 "You will. From dictation. Starting with volume two, 'Babau to Brevoy', because volume one is finished and I refuse to begin anything twice. You have a legible hand. It is the only thing about you I have ever envied."''',
@@ -394,14 +461,14 @@ meet(P + "dead.market", "Made twice", '"Nenio?"', [
     nen("open", '''{n}She looks up from @DESK@ with a pencil between her teeth, and takes it out to speak.{/n}
 "Correct, and I did not tell you. Interesting. You have the look of somebody who has been to my funeral." {n}She squints.{/n} "Do not deny it. People who have been to a funeral always stand as if they are still holding their hat."''',
         c("Continue", "made")),
-    nen("made", '''"I woke nine days ago on a road outside Drezen with volume one of my own Encyclopedia, which is the only volume I ever finished, and a very clear instruction not to join any armies. Nobody gave the instruction. It was simply there, the way the smell of rain is there." {n}She pats volume one.{/n} "My notes for the other ninety-nine are gone, all of them. I suspect the Faceless Sphinx. I have no proof. I dislike having no proof about my own biography."
+    nen("made", '''"I woke nine days ago on a road outside Drezen with volume one of my own Encyclopedia, which is the only volume I ever finished, and a very clear instruction not to join any armies. Nobody gave the instruction. It was simply there, the way the smell of rain is there." {n}She pats volume one.{/n} "My notes are gone, all of them. I suspect the Faceless Sphinx. I have no proof. I dislike having no proof about my own biography."
 "Did you do something?"''',
-        c('[Tell her] "I paid for you with your notes. All ninety-nine volumes of them."', "told", flags=(TOLD_THEFT, SCRIBE)),
+        c('[Tell her] "I paid for you with your notes. Every trunk of them."', "told", flags=(TOLD_THEFT, SCRIBE)),
         c('[Say nothing] "I\'m just glad to see you."', "silent", flags=(THIEF_HUNTED, SCRIBE))),
     nen("told", '''"You paid for me." {n}She looks at the book, and at you, and at the book.{/n} "With my own work. Without asking me." {n}Her ears flatten.{/n} "I would have said no. I would definitely have said no. I would have said it in very long words."
 "And then I would have been dead, and unable to say anything, which is a weakness in my position." {n}She sets the pencil down with great precision.{/n} "Sit. I cannot join your army. But the Encyclopedia does not care about armies, and it needs a hand that people can read."''',
         c("[Sit on @SEAT@.]")),
-    nen("silent", '''"Glad." {n}She writes the word down, then crosses it out, which she never does, and writes THIEF over the top of it.{/n} "I shall find out who took my notes. Meanwhile you may be useful. The Encyclopedia needs a hand that people can read, and I need somebody who is glad, as a control."''',
+    nen("silent", '''"Glad." {n}She writes the word down, looks at it, crosses it out hard, and writes THIEF over the top of it.{/n} "I shall find out who took my notes. Meanwhile you may be useful. The Encyclopedia needs a hand that people can read, and I need somebody who is glad, as a control."''',
         c("[Sit on @SEAT@.]")),
 ], requires=(RETURNED, RECREATED), delay=24, places=("visitor", "arcade"))
 
@@ -422,17 +489,23 @@ visit(P + "killed.recreated", "What is the question?", [
 "A hammer can be used on more than one nail. The grain of sand has read the Sphinx's own thoughts back to her." {n}A pause.{/n} "It is impudent. It is also correct. The vessel was recreated once. It can be recreated again."''',
         c("Continue", "terms")),
     grey("argued_badly", '''{n}You make the argument badly: too long, too clever, full of words the servant clearly thinks you do not understand. It hears you out anyway.{/n}
-"The grain of sand's reasoning is poor." {n}A pause.{/n} "The conclusion is not. The purpose remains unserved. The vessel can be recreated. Poor reasoning costs more."''',
+"The grain of sand's reasoning is poor." {n}A pause.{/n} "The conclusion is not. The purpose remains unserved. The vessel can be recreated. The Sphinx does not pay for arguments. She weighs conclusions, and this one stands without its argument."''',
         c("Continue", "terms")),
     grey("terms", '''"The grain of sand will owe the Sphinx one answer, when she asks. And the anomaly will not remember the grain of sand. Not Kenabres, not the blade, not the face. Memory was not purchased. Memory is extra."''',
         c('[Accept] "Then she won\'t remember me. Make her anyway."', "made", flags=(RETURNED, STARTED, UNREMEMBERED, OWES)),
-        c('[Refuse] "No. Some entries stay closed."', "rest")),
+        c('[Refuse] "No. Some entries stay closed."', "rest"),
+        c('[Bargain over the terms] "One answer. And your mistress\'s own rule goes in the terms with it: the absence of an answer is an answer too."',
+          "clause", mythic="Trickster")),
+    grey("clause", '''{n}The mask stops. For the first time it looks at you instead of at the page.{/n}
+"The grain of sand quotes the Sphinx to her servant, in the middle of a bargain." {n}A page turns inside the robe.{/n} "It goes in the terms. But a clause is not free. If the grain of sand ever pays in silence, whatever it withholds becomes the Sphinx's. It will never be able to say those words, to anyone, in any tongue."''',
+        c('[Accept] "Then she won\'t remember me, and the clause stands. Make her anyway."', "made",
+          flags=(RETURNED, STARTED, UNREMEMBERED, OWES, SILENCE_CLAUSE))),
     nar("made", '''{n}The lamp flickers once. The robe is not there. On your report, under "the cultist suspected of", someone has written a single word in a hand that is not yours and not anyone's: "Pending."{/n}
 {n}Two weeks later a woman in a grey scholar's coat walks into Drezen by the south road, asks the gate sergeant where she might find an unremarkable spice trader, and begins to measure the market.{/n}''',
         c("[Put the report away.]")),
     nar("rest", '''{n}The mask inclines itself to you and is gone. You finish the report. Under "the cultist suspected of" you write, at last, the truth, and it takes longer than you expected, and there is no one to read it over your shoulder.{/n}''',
         c("[Seal the report.]", flags=(LET_REST,))),
-], requires=("trickster", KILLED, KILLED_L), forbids=(RETURNED, LET_REST), delay=24, kind="event", chapters=(3, 4, 5),
+], requires=("trickster", KILLED, KILLED_L), forbids=(RETURNED, LET_REST), delay=24, kind="event", chapters=(3, 5),
     TricksterDevice=True, TricksterState=KILLED)
 
 # The recreated scholar at the market: she has never met the Commander, and hires a follower.
@@ -440,7 +513,7 @@ meet(P + "killed.stranger", "A follower wanted", '"Excuse me. Are you measuring 
     nen("open", '''"Yes. Stay where you are; you are the tallest thing in the market that is not a tent pole." {n}She has a length of knotted string in one hand and a pencil in the other, and she has already written something down about you.{/n}
 "You are nobody I know. That is not a criticism; I know almost nobody. I arrived in this city a fortnight ago with one volume of my life's work and no memory of the road here, and I am making the best of it." {n}She peers at you.{/n} "Unless we have met? You have the look of somebody who knows something about me that I do not. People who look like that usually do."''',
         c('[Lie] "Never. I\'d remember you."', "never"),
-        c('"We met once. In Kenabres. It went badly."', "kenabres"),
+        c('"We met once. In Kenabres. It went badly."', "kenabres", flags=(KENABRES_SAID,)),
         c('"I\'m the Commander of the crusade."', "commander")),
     nen("never", '''"Everyone says that and nobody does. Memory is a very unreliable instrument; that is why I write things down." {n}She makes a small note.{/n} "You lie with your left shoulder. Most people use their eyes. It is quite charming."''',
         c("Continue", "offer")),
@@ -448,7 +521,7 @@ meet(P + "killed.stranger", "A follower wanted", '"Excuse me. Are you measuring 
         c("Continue", "offer")),
     nen("commander", '''"Are you." {n}She looks you up and down with scientific disappointment.{/n} "Thus far I see no scientific evidence of your exceptionality. But I have only been looking for a quarter of an hour, and I am told you have been busy."''',
         c("Continue", "offer")),
-    nen("offer", '''"Here is my situation. I have one finished volume of a hundred, and no notes for the other ninety-nine, which is not how I remember leaving them, except that I do not remember leaving them at all. My handwriting cannot be read by any living person, which is a safeguard against plagiarism and an obstacle to publication. I require a follower who can hold a pencil, walk behind me, write down my deepest thoughts, and admire the profundity of my intellect at reasonable intervals."
+    nen("offer", '''"Here is my situation. I have one finished volume of a hundred, and no notes for the rest, which is not how I remember leaving them, except that I do not remember leaving them at all. My handwriting cannot be read by any living person, which is a safeguard against plagiarism and an obstacle to publication. I require a follower who can hold a pencil, walk behind me, write down my deepest thoughts, and admire the profundity of my intellect at reasonable intervals."
 {n}She rubs her nose with the pencil.{/n} "You will do. You have been admiring it for some minutes already."''',
         c('"I accept."', flags=(SCRIBE,)),
         c('[Flirt] "What does the follower get?"', "gets", flags=(SCRIBE,))),
@@ -462,7 +535,7 @@ visit(P + "away.field_report", "A field report", [
 {n}You draw the diagrams yourself. Demon by demon, rift by rift, the way she once walked you through them while you held the lamp.{/n}''',
         c('[Make the diagram on page six wrong, in a way only she would notice.]', "wrong", mythic="Trickster"),
         c('[Make it all correct, and sign it plainly.]', "correct")),
-    nar("wrong", '''{n}On page six you draw a vrock with its wings on backwards. Not badly: carefully, with measurements, so that a scholar reading it would have to decide whether the observer is an idiot or has seen something nobody else has. Nenio has never in four thousand years been able to leave a question like that unanswered.{/n}
+    nar("wrong", '''{n}On page six you draw a vrock with its wings on backwards. Not badly: carefully, with measurements, so that a scholar reading it would have to decide whether the observer is an idiot or has seen something nobody else has. Nenio has never in her life been able to leave a question like that unanswered.{/n}
 {n}At the bottom you write: "Observer: your follower. Findings unverified. Verification requires the author in person."{/n}''',
         c("Continue", "reply")),
     nar("correct", '''{n}It is a good report. It is also a dull one, and you know it before the ink is dry. You send it anyway.{/n}
@@ -472,7 +545,7 @@ visit(P + "away.field_report", "A field report", [
 "The author does not verify amateurs. The author will, however, verify page six, because it is wrong in an interesting way, and nobody is allowed to be wrong in an interesting way without supervision."
 "Arriving Drezen. Do not tidy anything."''',
         c("[Fold the reply.]", flags=(PRIMED_AWAY,))),
-], requires=("trickster", AWAY_L), forbids=(PRIMED_AWAY, RETURNED), delay=0, kind="letter", chapters=(3, 4, 5),
+], requires=("trickster", AWAY_L), forbids=(PRIMED_AWAY, RETURNED), delay=0, kind="letter", chapters=(3, 5),
     TricksterDevice=True, TricksterState="nenio.away", RequiresAnyGroups=[[SENT_AWAY, KICKED_OUT]])
 
 meet(P + "away.correction", "Erratum", '"You came."', [
@@ -506,8 +579,8 @@ meet(P + "commit.hypothesis", "A space for a name", '"Go on. \'Crusade, Commande
     nar("open", '''{n}She is dictating the crusade. Not a battle, not a demon: the crusade itself, the whole unwieldy animal, for the letter C. She walks up and down in front of @DESK@ with her hands behind her back and her tail of papers trailing out of one sleeve, and you write.{/n}
 {n}"Crusade, the. Fifth of that name. Composition: knights, priests, mercenaries, the desperate and the bored. Morale: variable. Commander of the..." She stops. "Leave a space," she says, as she always says, and you leave it, as you always do.{/n}
 {n}Then she does not go on. She stands with one finger raised, as if she had been about to make a point and it had got away from her.{/n}''',
-        c("Continue", "filed_q", requires=(NAME_FILED,)),
-        c("Continue", "kept_q", forbids=(NAME_FILED,))),
+        c("Continue", "filed_q", requires=(NAME_GONE,)),
+        c("Continue", "kept_q", forbids=(NAME_GONE,))),
     nen("filed_q", '''"Why does my page keep a space for your name?"
 {n}She says it to the air, not to you, and then hears it, and her ears go flat.{/n}
 "I filed your name in the Enigma. It is gone; I have checked, several times, in the night, which is when I check things. A space is a promise to fill something in later. I do not make promises to empty shelves." {n}She points at the page in your hands.{/n} "And yet every time I dictate the word 'Commander', I tell you to leave a space. Nine times since the Enigma. I counted. I did not mean to count."''',
@@ -552,12 +625,12 @@ meet(P + "commit.result", "What survived the night", '"So. What\'s left of the w
         c("Continue", "void", requires=(TAMPERED,)),
         c("Continue", "clean", forbids=(TAMPERED,))),
     nen("clean", '''"Report." {n}She reads without looking at the list.{/n} "Forgotten overnight, on purpose: the name of the Queen of Mendev, again; the eight arcane schools, which I shall have to look up, to my shame; the number of bones in a vrock's wing; the price of pepper in Drezen; a song my mother may have sung, if I had a mother, which is not established; four hundred and twelve minor facts about the Worldwound, which I regret; and tea."
-"Retained: the Worldwound itself, because I cannot forget a thing I am writing about; the Encyclopedia; my own name, which I have paid for; and you."''',
+"Retained: the Worldwound itself, because I cannot forget a thing I am writing about; the Encyclopedia; my own name; and you."''',
         c("Continue", "you")),
     nen("you", '''"Not just your face. Your face I could have explained; faces are sticky, the eyes are made to hold them. Everything. The way you hold a pencil wrong. The way you stand to one side of doors. The way you never laugh at me until afterwards, when I am ridiculous, which is often, and I can see you saving it up." {n}She puts the list down.{/n} "I spent an hour on you alone, between three and four in the morning. I stopped thinking about you with great discipline. You did not go. You simply waited, like a word on the tip of the tongue, until I stopped trying."''',
         c("Continue", "decides")),
     nen("decides", '''"The data admit two interpretations. One: you are a persistent contaminant, like damp. Two: you are relevant." {n}She folds her hands on the page.{/n}
-"When two truths contradict each other, one may accept one of them and consider the other conditional. I learned that recently, from a very wise source." {n}Something happens at the corner of her mouth.{/n} "I have decided. I will accept the second as the truth. After all, I like it more than the other one."''',
+"When two interpretations both fit the data, a scientist may adopt one as the working hypothesis and keep the other on file. That is not cowardice. It is method." {n}Something happens at the corner of her mouth.{/n} "I have decided. I adopt the second. It is the more interesting one, and I have never once in my life chosen the duller hypothesis."''',
         c("Continue", "variable")),
     nen("variable", '''{n}She gets up. She comes around @DESK@, which she never does, because the desk is where she keeps the world at the right distance for measuring it, and she stands in front of you with nothing in her hands.{/n}
 "I have observed this four thousand times. In taverns, in temples, in the backs of carts. The pupils, the pulse, the breathing, the stupid things people say. I have notes." {n}Her voice goes lower.{/n} "I have never once been a variable. I would like to be. Tonight. The follow-up, with instruments, and with me inside the experiment instead of beside it."''',
@@ -590,7 +663,7 @@ meet(P + "commit.replication", "Replication", '"Nenio. About the margins."', [
     nar("open", '''{n}She has laid out the evidence on @DESK@ the way a magistrate would: volume one open at page forty, then at page two hundred and six, the folded sketch, and beside them three sheets of her own notes, dense with comparisons of pencil strokes. She has been at it for three days. You can tell because she has stopped wearing her hair up and is using the pencil for the notes instead.{/n}''',
         c("Continue", "asks")),
     nen("asks", '''"I have compared the strokes. Whoever wrote these initials holds a pencil wrong in exactly the way you hold a pencil wrong. Whoever drew the sketch has seen your face from very close, from the left, in poor light, which is how you see your own face shaving." {n}She does not look up.{/n}
-"I have a conclusion. I do not want to publish it without asking the subject. That is a first. I dislike firsts." {n}Now she looks up.{/n} "Did you do it?"''',
+"I have a conclusion. I do not want to publish it without asking the subject. That is a first, and firsts are the only things worth publishing, so answer quickly, before you contaminate it." {n}Now she looks up.{/n} "Did you do it?"''',
         c('[Confess] "Yes. I was afraid you\'d forget me. So I cheated."', "confessed"),
         c('[Deny it] "No. It wasn\'t me."', "denied")),
     nen("confessed", '''{n}She lets out a breath she seems to have been holding since the morning after.{/n}
@@ -620,10 +693,12 @@ meet(P + "commit.replication", "Replication", '"Nenio. About the margins."', [
 
 # The night: the room she requisitioned for the Encyclopedia. Stopwatch, the pulse counted aloud, the cut at the first motion.
 visit(P + "night", "Night one", [
-    nar("open", '''{n}She has taken a storeroom in the citadel for the Encyclopedia and told the quartermaster it was for the war effort, which he believed because she said it very loudly. There are planks across trestles along every wall, and on the planks, in their trunks, the notes for ninety-nine volumes: bundles of paper tied with string, labelled in a hand nobody can read, and at the end of the row volume one, bound, the only one finished.{/n}''',
-        c("Continue", "shelves", forbids=(MANUSCRIPT,)),
-        c("Continue", "bare", requires=(MANUSCRIPT,))),
-    nar("shelves", '''{n}One candle. A cleared space on the floor with a blanket spread over it, and a cushion taken from somebody's chapel. On the nearest plank, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed NIGHT ONE.{/n}''',
+    nar("open", '''{n}She has taken a storeroom in the citadel for the Encyclopedia and told the quartermaster it was for the war effort, which he believed because she said it very loudly. There are planks across trestles along every wall.{/n}''',
+        c("Continue", "shelves", forbids=(MANUSCRIPT, UNREMEMBERED)),
+        c("Continue", "bare", requires=(MANUSCRIPT,)),
+        c("Continue", "bare", requires=(UNREMEMBERED,), forbids=(MANUSCRIPT,))),
+    nar("shelves", '''{n}On the planks, in their trunks, lie her notes: bundles of paper tied with string, labelled in a hand nobody can read, and at the end of the row volume one, her bound working draft.{/n}
+{n}One candle. A cleared space on the floor with a blanket spread over it, and a cushion taken from somebody's chapel. On the nearest plank, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed NIGHT ONE.{/n}''',
         c("Continue", "friend_note", requires=(FRIEND_DONE,)),
         c("Continue", "begin", forbids=(FRIEND_DONE,))),
     nar("bare", '''{n}The planks are empty all along the walls, where the notes used to be, except one, where volume one lies on its own like the last tooth in a jaw, and beside it, in a row, as if for an examination: a stopwatch, a ruler, a pencil, a clean sheet headed NIGHT ONE. One candle. A blanket on the floor, and a cushion taken from somebody's chapel.{/n}''',
@@ -632,7 +707,7 @@ visit(P + "night", "Night one", [
     nar("friend_note", '''{n}Under the heading, in smaller capitals, she has written: "SEE ALSO: FRIENDSHIP, POINT FIVE. RESULT PREVIOUSLY NOT OBSERVED. EXPERIMENTER DREW INSTEAD. NOT THIS TIME."{/n}''',
         c("Continue", "begin")),
     nen("begin", '''{n}Nenio is sitting cross-legged on the blanket with the stopwatch in her hand. She has taken the pencil out of her hair, and her hair has come down, a great deal of it, dark and heavy, and she has plainly forgotten that it would.{/n}
-"Sit. Here. No, closer. The instrument has a short range." {n}She holds the stopwatch up.{/n} "Baseline first. I will take your pulse at rest, and then not at rest. This is the follow-up to your hypothesis, conducted properly, with instruments. I have been designing it since the morning. I have spent four thousand years recording what other people do in rooms like this, from the outside, and I have decided that the method was wrong."''',
+"Sit. Here. No, closer. The instrument has a short range." {n}She holds the stopwatch up.{/n} "Baseline first. I will take your pulse at rest, and then not at rest. This is the follow-up to your hypothesis, conducted properly, with instruments. I have been designing it since the morning. I have spent my whole life recording what other people do in rooms like this, from the outside, and I have decided that the method was wrong."''',
         c("[Sit close.]", "count"),
         c('[Flirt] "And your pulse? Who\'s measuring that?"', "hers")),
     nen("hers", '''"Nobody. That is the flaw in the design." {n}She takes your hand and puts two of your fingers on the inside of her own wrist, where the skin is thin and warm and very fast.{/n} "There. You are measuring it. Do not tell me the number. I will only argue with it."''',
@@ -651,18 +726,18 @@ visit(P + "night", "Night one", [
 {n}"Thirty-four," she says, and her voice has gone somewhere it has not been before. "Thirty... Thirty-five..."{/n}''',
         c("Continue", "lose")),
     nen("lose", '''{n}She kisses you in the middle of a number. Not the careful single kiss of an experiment: hungry and clumsy and completely unscientific, her free hand in your hair, her body pressed the whole length of yours, pushing you back onto the blanket among her fallen notes.{/n}
-"I have lost the count," she says against your throat, astonished. "I have never lost a count. Four thousand years." {n}Her breath is ragged, and she laughs at it, and does not try to steady it.{/n} "I do not care. Write that down. No. Do not write anything down."''',
+"I have lost the count," she says against your throat, astonished. "I have never lost a count. Never." {n}Her breath is ragged, and she laughs at it, and does not try to steady it.{/n} "I do not care. Write that down. No. Do not write anything down."''',
         c("Continue", "watch")),
     nar("watch", '''{n}She opens her hand. The stopwatch falls onto the blanket, still ticking, and neither of you reaches for it. She is over you, her hair falling around both your faces like a curtain around a lamp, her knees either side of your hips, pulling the last of your clothes away with more determination than skill, and she looks down at you the way she looks at a ruin nobody has catalogued: as if everything in it were about to be hers.{/n}
 {n}"Night one," she says. "Beginning now."{/n}''',
         c("[Let the watch run down.]")),
-], requires=(FIRST_NIGHT,), forbids=(P + "night",), delay=4, chapters=(3, 5), optional=False)
+], requires=(FIRST_NIGHT,), forbids=(P + "night",), delay=4, chapters=(3, 5), optional=False, Areas=[DREZEN])
 
 
 meet(P + "morning", "Subject: [blank]", '"You left before I woke."', [
     nar("open", '''{n}She is at @DESK@, dressed, with her hair pinned up again and the pencil through it, writing. When you come up she turns the sheet round so you can see it, and waits, with the expression of a scholar presenting a paper to a hostile room.{/n}''',
-        c("Continue", "entry_filed", requires=(NAME_FILED,)),
-        c("Continue", "entry_kept", forbids=(NAME_FILED,))),
+        c("Continue", "entry_filed", requires=(NAME_GONE,)),
+        c("Continue", "entry_kept", forbids=(NAME_GONE,))),
     nar("entry_filed", '''{n}It is an entry in the Encyclopedia, in the capitals she uses when she wants to be read. "SUBJECT: [          ]. STATUS: MINE." Under it, in her own illegible hand, a great deal more, and at the bottom, legible again: "Name not recoverable. Irrelevant. See above."{/n}''',
         c("Continue", "her")),
     nar("entry_kept", '''{n}It is an entry in the Encyclopedia, in the capitals she uses when she wants to be read. "SUBJECT: [          ]. STATUS: MINE." Under it, in her own illegible hand, a great deal more, and at the bottom, legible again: "Name known. Withheld. The Encyclopedia does not print what it does not need."{/n}''',
@@ -688,58 +763,66 @@ meet(P + "morning", "Subject: [blank]", '"You left before I woke."', [
 
 EP = dict(last=6, Relationship=REL)
 KEPT_PARAS = (
-    p("{n}She never had the Commander's name again. She called {mf|him|her} \"follower\" in private and \"the Commander\" in print, and when a Mendevian herald once shouted the name across a banqueting hall she turned round to see who was meant, and then turned back, perfectly content, and went on eating.{/n}", requires=(NAME_FILED,)),
-    p("{n}She knew the Commander's name. She never once wrote it down. When asked why, she said that the Encyclopedia did not print what it did not need, and that she did not need it; she had the original.{/n}", forbids=(NAME_FILED, UNREMEMBERED)),
+    p("{n}She never had the Commander's name again. She called {mf|him|her} \"follower\" in private and \"the Commander\" in print, and when a Mendevian herald once shouted the name across a banqueting hall she turned round to see who was meant, and then turned back, perfectly content, and went on eating.{/n}", requires=(NAME_GONE,)),
+    p("{n}She knew the Commander's name. She never once wrote it down. When asked why, she said that the Encyclopedia did not print what it did not need, and that she did not need it; she had the original.{/n}", forbids=(NAME_GONE, UNREMEMBERED)),
     p("{n}She never recovered the notes the Commander had traded away for her. She began again from volume two, observing everything a second time, in the Commander's hand, and by the end of her life the second edition was longer than the first had ever been. She made a point of mentioning this to the Faceless Sphinx, in writing, every year.{/n}", requires=(MANUSCRIPT,)),
-    p("{n}Somewhere in the Enigma an answer is still owed. The Commander has been told the Sphinx will ask one question and wants the true answer. Nenio has been preparing a list of the questions the Sphinx is likely to ask, with suggested replies, for years. It is three hundred pages long. The Commander has been forbidden to read it.{/n}", requires=(OWES,)),
+    p("{n}Somewhere in the Enigma an answer is still owed. The Sphinx's servant never came to collect it during the war, and has not come since. Nenio keeps her list of likely questions up to date, every spring, in case.{/n}", requires=(OWES,), forbids=DEBT_SETTLED),
+    p("{n}The Sphinx's question was answered in full. She heard those words once, when the Commander answered the Sphinx's servant in front of her, and never again; they were no longer the Commander's to say. She noticed, and wrote down every other word instead, and said once that it made for a longer study and a better one.{/n}", requires=(DEBT_PAID,)),
+    p("{n}The Sphinx's question was answered in her own coin: nothing at all. Nenio, who had watched it, laughed about it afterwards until she had to sit down, and then wrote to the Faceless Sphinx every year afterwards, asking whether she had enjoyed the silence, and never received a reply, which she said proved the point.{/n}", requires=(DEBT_EVADED,)),
+    p("{n}The Sphinx took volume one for the Commander's unpaid answer. Nenio began it again from the letter A, in the Commander's hand, and made the Commander write the entry on Abadar twice, as a penance, because it was the entry nobody had asked for.{/n}", requires=(DEBT_DEFAULTED,)),
     p("{n}She never remembered Kenabres, or the square, or the blade. The Commander told her once, when it had to be told. She wrote it down, read it through twice the next month as she had promised, and said that it was a very interesting account of somebody else's death, and that she preferred her own life.{/n}", requires=(UNREMEMBERED, KENABRES_TOLD)),
-    p("{n}She never remembered Kenabres. The box she had drawn round the word in volume one stayed there, around an account of an arrest at a gate that fitted very neatly. Once in a great while, when she could not sleep, she opened the book at the flyleaf and looked at it, and the Commander, watching her, did not say anything.{/n}", requires=(UNREMEMBERED, KENABRES_LIED)),
-    p("{n}She never remembered Kenabres, or what had happened to her there. She kept the word in a box in the margin of volume one, and never opened it, and said that a box was a promise that the thing was still there.{/n}", requires=(UNREMEMBERED,), forbids=(KENABRES_TOLD, KENABRES_LIED)),
+    p("{n}She never remembered Kenabres. The box she had drawn round the word in volume one stayed there, around an account of an arrest at a gate that fitted very neatly. Once in a great while, when she could not sleep, she opened the book at the flyleaf and looked at it, and the Commander, watching her, did not say anything.{/n}", requires=(UNREMEMBERED, KENABRES_LIED), forbids=(DEBT_DEFAULTED,)),
+    p("{n}She never remembered Kenabres, or what had happened to her there. She kept the word in a box in the margin of volume one, and never opened it, and said that a box was a promise that the thing was still there.{/n}", requires=(UNREMEMBERED, KENABRES_SAID), forbids=(KENABRES_TOLD, KENABRES_LIED, DEBT_DEFAULTED)),
+    p("{n}She never remembered the road to Drezen, or anything before it. She said once that a scholar who wakes on a road with one book and no past has two choices, to be frightened or to be interested, and that she had never once been able to manage the first.{/n}", requires=(UNREMEMBERED,), forbids=(KENABRES_SAID,)),
     p("{n}The probation was never lifted. Nenio extended it by a year every spring, at the author's discretion, and made the Commander say yes each time, out loud, with numbers.{/n}", requires=(DEMOTED,)),
-    p("{n}She kept the sketch of the Commander's face that she had found in her sleeve. She had been angry about it. She kept it anyway, in volume one, at page forty, and when anyone asked about the initials in the margin she said they were a printer's error.{/n}", requires=(CONFESSED,)),
-    p("{n}Her entry on Areelu Vorlesh, in the end, carried a list of the dead of Sarkoris as long as the entry itself. She put it there because a follower had once made her read it aloud, and she said it had been the most tedious experiment of her life, and the only one she was sure had been worth doing.{/n}", requires=(ARCH_DEAD,)),
+    p("{n}She kept the sketch of the Commander's face that she had found in her sleeve. She had been angry about it. She kept it anyway, in volume one, at page forty, and when anyone asked about the initials in the margin she said they were a printer's error.{/n}", requires=(CONFESSED,), forbids=(DEBT_DEFAULTED,)),
+    p("{n}Her entry on Areelu Vorlesh, in the end, carried a list of the dead of Sarkoris as long as the entry itself. She put it there because a follower had once made her read it aloud, and she left it there because an entry without its costs was a sloppy entry. It did not soften a word of her admiration. Scholars in Absalom have been arguing for years about which half of the entry she meant.{/n}", requires=(ARCH_DEAD,)),
     p("{n}Her entry on Areelu Vorlesh remained the most admiring in the Encyclopedia. Scholars in Absalom walked out of her lectures over it, and she let them go, and went on, and never once apologised.{/n}", requires=(ARCH_AGREED,)),
     p("{n}Her entry on Areelu Vorlesh has a footnote longer than the entry, in a legible hand, listing every Sarkorian town by name. Nobody knows who wrote it. Nenio claimed it was a printer's error, too.{/n}", requires=(ARCH_TRICK,)),
 )
+# Sol r4 INT: epilogues bypass UnavailableFlags; each living page guards every loss, lifted only by her Trickster return.
+LOSSES = (DEAD, KILLED, SENT_AWAY, KICKED_OUT)
+LOSS_BACK = {k: RETURNED for k in LOSSES}
+
 SCENES.append(scene(P + "epilogue.article", "", "NenioEpilogue", 6, "", [
     nar("page", '''{n}Nenio kept her promise from the steps of the Threshold. The Encyclopedia Golarionnica carries a short article on the great deeds of the Commander of the Fifth Crusade. It is forty pages long. Nine of them are footnotes. The title line of the entry has a blank in it, carefully ruled, and under the blank the status line reads "longitudinal study, ongoing".{/n}
-{n}She never finished the Encyclopedia. She said a thing that was finished was a thing nobody had to think about any more, and that she intended to be thought about. She went on travelling, and measuring, and forgetting kings, and wherever she went the Commander's legible hand went too, taking dictation, and more often than was strictly necessary for science, the pen was put down.{/n}''',
+{n}She never finished the Encyclopedia. Every volume she published bred three supplements, and every supplement a correction to the supplements, and she said that an encyclopedia which stopped growing was an obituary. She went on travelling, and measuring, and forgetting kings, and wherever she went the Commander's legible hand went too, taking dictation, and more often than was strictly necessary for science, the pen was put down.{/n}''',
         paragraphs=KEPT_PARAS)],
-    requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    requires=("trickster.ever", COMMITTED), forbids=(CLOSED, DISSOLVED, "sacrifice", *LOSSES),
+    ForbidOverrides={"sacrifice": "trickster.commander_back", **LOSS_BACK}, **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "NenioEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Nenio finished her experiment. She had the question on her tongue the day of the Threshold, and did not ask it, because a question asked in a hurry is a question answered badly.{/n}
 {n}A year later, to the day, she arrived at the Commander's door with one candle, a stopwatch and a list, and announced that she had run the test after all, alone, in a room in Absalom, for three hundred and sixty-five consecutive nights. "Hypothesis: you are relevant," she said. "Result: persistent. I have decided." She was let in before she had finished the sentence, and the list was never read out.{/n}''',
         paragraphs=(
-            p("{n}She still did not have the Commander's name. She said the door had been the right one anyway, which was more than could be said for most names.{/n}", requires=(NAME_FILED,)),
-            p("{n}Volume one came with her. It was the only volume she had left, and she put it on the Commander's shelf as if she had always meant it to live there.{/n}", requires=(MANUSCRIPT,)),
+            p("{n}She still did not have the Commander's name. She said the door had been the right one anyway, which was more than could be said for most names.{/n}", requires=(NAME_GONE,)),
+            p("{n}Volume one came with her. It was the only volume she had left, and she put it on the Commander's shelf as if she had always meant it to live there.{/n}", requires=(MANUSCRIPT,), forbids=(DEBT_DEFAULTED,)),
         ))],
-    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, DECLINED, REFUSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, DECLINED, REFUSED, DISSOLVED, "sacrifice", *LOSSES),
+    ForbidOverrides={"sacrifice": "trickster.commander_back", **LOSS_BACK}, **EP))
 
 SCENES.append(scene(P + "epilogue.void", "", "NenioEpilogue", 6, "", [
     nar("page", '''{n}Nenio never concluded. The Encyclopedia Golarionnica contains an entry on the Commander of the Fifth Crusade, cross-referenced to "forgetting, deliberate, method of", which ends: "Result void. Replication pending. See margin."{/n}
 {n}There is nothing written in the margin. In every copy she ever supervised, the margin is left clean, and the printers were given strict instructions to leave it so, and never told why.{/n}''')],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), **EP))
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, DISSOLVED, *LOSSES), ForbidOverrides=dict(LOSS_BACK), **EP))
 
 SCENES.append(scene(P + "epilogue.closed", "", "NenioEpilogue", 6, "", [
     nar("page", '''{n}Nenio left the crusade's company after the Threshold, with one trunk and a great deal of paper, bound for Absalom and the universities she intended one day to run. The Encyclopedia Golarionnica, when its first volumes appeared, carried an entry on the Fifth Crusade that was thorough, admiring and entirely impersonal.{/n}''',
         paragraphs=(
-            p("{n}Under \"Crusade, Commander of the\", there is a name. It is spelled correctly. It is the only name in the whole Encyclopedia she never once allowed an editor to touch.{/n}", forbids=(NAME_FILED,)),
-            p("{n}Under \"Crusade, Commander of the\", there is a blank, carefully ruled. Editors in Absalom have tried three times to fill it in. Each time the proofs came back from the author with the name struck out and the blank restored, and a note in the margin: \"Not recoverable. Leave it.\"{/n}", requires=(NAME_FILED,)),
+            p("{n}Under \"Crusade, Commander of the\", there is a name. It is spelled correctly. It is the only name in the whole Encyclopedia she never once allowed an editor to touch.{/n}", forbids=(NAME_GONE,)),
+            p("{n}Under \"Crusade, Commander of the\", there is a blank, carefully ruled. Editors in Absalom have tried three times to fill it in. Each time the proofs came back from the author with the name struck out and the blank restored, and a note in the margin: \"Not recoverable. Leave it.\"{/n}", requires=(NAME_GONE,)),
         ))],
-    requires=("trickster.ever", STARTED, CLOSED), forbids=(COMMITTED,), **EP))
+    requires=("trickster.ever", STARTED, CLOSED), forbids=(COMMITTED, DISSOLVED, *LOSSES), ForbidOverrides=dict(LOSS_BACK), **EP))
 
 
 # --- Reactions: Sosiel and Anevia (ledger 05 §3.1 row 32; the build sheet). -------------------------------------------------
 
-SCENES.append(reaction("Sosiel", P + "react.sosiel_point_five", (FIRST_NIGHT,),
+SCENES.append(reaction("Sosiel", P + "react.sosiel_point_five", (P + "night",),
     '''{n}Sosiel has his sketchbook open on his knee, and he closes it rather quickly when he sees you.{/n}
 "Nenio came to me yesterday for a professional opinion. She had a drawing she wanted checked for proportion. I told her I paint landscapes and Shelyn's saints, mostly, and she said the principles were the same and the subject was less holy." {n}He clears his throat.{/n}
 "I checked it. It was very good. It was also you. I said so. She said 'correct' and took it back and went away humming." {n}A slow smile.{/n} "Shelyn loves every honest kind of love, Commander, even the kind that comes with a ruler. I think this one is honest. I will pray for you both, from a respectful distance, with my eyes shut."''',
     answer_list=SOSIEL_HUB, forbids=("sosiel.dead", "sosiel.kicked_out"), chapter=3, last=5, Chapters=[3, 5],
-    entry='"You look as though you\'ve seen something."', portrait="Sosiel"))
+    entry='"You look as though you\'ve seen something."', portrait="Sosiel", delay=12))
 
 SCENES.append(reaction("Anevia", P + "react.anevia_gate", (RETURNED, KILLED),
     '''"The gate log says: Nenio, kitsune, scientist, came in on the south road at the change of the watch." {n}Anevia taps the ledger with one finger.{/n}
@@ -749,7 +832,7 @@ SCENES.append(reaction("Anevia", P + "react.anevia_gate", (RETURNED, KILLED),
     chapter=3, last=5, Chapters=[3, 5], entry='"Anything odd at the gate?"', portrait="Anevia"))
 
 
-SCENES.append(reaction("Sosiel", P + "react.sosiel_no_name", (NAME_FILED,),
+SCENES.append(reaction("Sosiel", P + "react.sosiel_no_name", (NAME_GONE,),
     '''"Nenio asked me to paint your portrait." {n}Sosiel turns a brush over in his fingers.{/n} "Just your face. Small, for the frontispiece of an entry. And under it, where a painter puts the name, she wanted a plate with nothing on it. A blank plate, gilded."
 "I asked her why. She said the name had been spent, in the Enigma, on a riddle, and that she wished to be reminded every time she opened the book exactly what it had bought." {n}He is quiet a moment.{/n} "Shelyn teaches that a thing given away for love is not lost; it is only kept somewhere else. I told her so. She wrote it down and said it was unverifiable. Then she asked me to put a little more gold on the plate."''',
     answer_list=SOSIEL_HUB, forbids=("sosiel.dead", "sosiel.kicked_out"), chapter=5, last=5, Chapters=[5],
@@ -767,12 +850,16 @@ household.secret("nenio_kenabres", "An arrest at the gate",
 # Three native keys the build sheet names that no other route reads yet (checked in blueprints.zip and enGB), and the kitsune
 # reveal that decides whether her tail is in the night scene.
 NATIVE = {
-    "SeenCues": {FOX_ARGUED: [FOX_ONE], FOX_REVEALED: ["5db28e499fd812848b92d6ac7b26e234"]},
-    "SelectedAnswers": {ASKED_FORGETTING: "ece25c57e50c9e0458c6cd47a143d8fe", ASKED_GIFT: "9763b3f979b4cce449e5ca1d28f50eed"},
+    "SeenCues": {FOX_ARGUED: [FOX_ONE], FOX_REVEALED: ["5db28e499fd812848b92d6ac7b26e234"],
+                 ENIGMA_RESOLVED: ["c214b2d290676f344a9227a2711393a6"]},
+    "SelectedAnswers": {ASKED_FORGETTING: "ece25c57e50c9e0458c6cd47a143d8fe", ASKED_GIFT: "9763b3f979b4cce449e5ca1d28f50eed",
+                        TOLD_BITE: "20a557207800252419c55049322943c4"},
 }
 
 DERIVED = {
     VISITOR: [[RECREATED], [UNREMEMBERED], [PRIMED_AWAY]],
+    # Sol r1 INT: the stake is filed once her native farewell (FoxMyself/Cue_0032, which still says the name) has been seen.
+    NAME_GONE: [[NAME_FILED], [RIDDLE_DONE, ENIGMA_RESOLVED]],
     LATE_COMMITTED: [["trickster.ever", STARTED]],
     BODY_KEPT: [["revive.nenio.available"]],
     # 05 §2.5 voice note: she joins, and she will want a control group.

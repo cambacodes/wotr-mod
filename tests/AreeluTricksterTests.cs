@@ -27,6 +27,26 @@ internal static class AreeluTricksterTests
     private const string Started = "areelu.started";
     private const string Closed = "areelu.closed";
     private const string FinalList = "f56a69dc64a48b14096a557697f43f2a";
+    private const string Siphon = "areelu.siphon.council";
+    private const string Unprimed = P + "cost.unprimed";
+    private const string LifeTerm = P + "term.life";
+    private const string Dagger = "areelu.dagger_held";
+
+    // Every node path through a scene (Sol HOW: sequence checks, not only per-page availability).
+    private static List<List<string>> Paths(Scene scene, Snapshot state)
+    {
+        var all = new List<List<string>>();
+        void Go(string id, List<string> path)
+        {
+            var here = new List<string>(path) { id };
+            var node = scene.Nodes.Single(n => n.Id == id);
+            var next = node.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).SelectMany(c => c.Next == null ? new string[0] : Rules.NextNodes(c)).ToList();
+            if (next.Count == 0 || node.Choices.Any(c => c.Next == null && Rules.Match(c.Requires, c.Forbids, state))) all.Add(here);
+            foreach (var n in next) Go(n, here);
+        }
+        Go(scene.Nodes[0].Id, new List<string>());
+        return all;
+    }
     private const string TricksterPage = "fb42f8bd123bf1f40a448f6dbc66cbbe";
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
@@ -172,11 +192,8 @@ internal static class AreeluTricksterTests
         // Seelah objects on her own hub once the Commander commits; G6: her return lifts her death/departure guard.
         var seelah = S(P + "react.seelah_objects");
         var courted = World(story, 6, "trickster.ever", Struck, Bet, Committed);
-        check(seelah.Reaction && seelah.AnswerLists.SequenceEqual(new[] { "417fa384f3250634bb71859fbc913453" })
-              && Available(seelah, courted) && !Available(seelah, World(story, 6, "trickster.ever", Struck, Bet)),
-            "Seelah's reaction is not on her hub, or not gated on the commit.");
-        check(!Available(seelah, With(story, courted, "seelah_dead")) && !Available(seelah, With(story, courted, "seelah_gone"))
-              && seelah.Nodes.SelectMany(n => n.Choices).All(ch => ch.Set.Length == 0), "Seelah's guard is wrong.");
+        check(seelah.Reaction && !Available(seelah, courted) && seelah.Forbids.Contains("trickster.ever"),
+            "Seelah's reaction is not retired (the ledger allocates Areelu exactly Nenio and Ember).");
 
         // Chapter 6 beats after the wager.
         var ch6 = World(story, 6, "trickster", "trickster.ever", Primed, Bet, Struck, Started);
@@ -205,10 +222,27 @@ internal static class AreeluTricksterTests
 
         // Finale pages: Trk_Areelu_Rewrite / _Survived / _NoWager / _Declined, the stake only and the late commit.
         // The stake collected on screen: the soul cauldron takes the graft before the final choice.
-        var cauldronWorld = World(story, 6, "trickster", "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed, Named);
-        check(collect.ReturnToList && Available(collect, cauldronWorld) && !Available(collect, World(story, 6, "trickster.ever", Primed, Bet, Struck, Committed, Named))
-              && !Available(collect, World(story, 6, "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed)),
-            "The collection does not need both the soul cauldron and the named stake.");
+        var cauldronWorld = World(story, 6, "trickster", "trickster.ever", Siphon, Primed, Bet, Struck, Committed, Named, WoundCeded);
+        check(collect.ReturnToList && Available(collect, cauldronWorld) && !Available(collect, World(story, 6, "trickster.ever", Primed, Bet, Struck, Committed, Named, WoundCeded))
+              && !Available(collect, World(story, 6, "trickster.ever", Siphon, Primed, Bet, Struck, Committed, WoundCeded)),
+            "The collection does not need both a siphon in hand and the named stake.");
+        // Sol INT (r1): the native Trickster finale (GrandFinal/Answer_0055) needs a filled siphon; an empty one cannot be collected into.
+        check(!Available(collect, World(story, 6, "trickster", "trickster.ever", "areelu.siphon.empty", Primed, Bet, Struck, Committed, Named, WoundCeded)),
+            "The graft can be collected into the empty siphon.");
+        // Sol INT: the historical hand-over is not possession (Shyka_Offer/Cue_0031 takes the filled siphon back).
+        check(!Available(collect, World(story, 6, "trickster.ever", "council.cauldron_given", Primed, Bet, Struck, Committed, Named, WoundCeded)),
+            "The collection reads the Council's hand-over instead of the siphon in the inventory.");
+        // Sol TRK: the substitution is paid for before it is collected, and never after "Your life. Nothing less."
+        check(!Available(collect, World(story, 6, "trickster.ever", Siphon, Primed, Bet, Struck, Named)),
+            "The graft can be collected before the wound is ceded.");
+        check(!Available(collect, With(story, cauldronWorld, LifeTerm)), "The life-only term still receives the work substitution.");
+        var cellNamed = World(story, 6, "trickster", "trickster.ever", Siphon, Primed, Bet, Struck, Started, Named);
+        var raisedLife = Program.Walk(raised, cellNamed).Where(r => r.Has(Committed) && !r.Has(WoundCeded)).ToList();
+        check(raisedLife.Count > 0 && raisedLife.All(r => !Available(collect, r)), "A commit without the wound price reaches the collection.");
+        var raisedPaid = Program.Walk(raised, cellNamed).Where(r => r.Has(Committed) && r.Has(WoundCeded)).ToList();
+        check(raisedPaid.Count > 0 && raisedPaid.All(r => Available(collect, r)), "The paid commit does not reach the collection.");
+        check(collect.Nodes.Any(n => n.Id == "full") && Program.Walk(collect, With(story, cauldronWorld)).Where(r => r.Has(collect.Id)).All(r => r.Has(Drawn)),
+            "The collection does not settle a filled siphon's contents.");
         var collected = Program.Walk(collect, cauldronWorld).Where(r => r.Has(collect.Id)).ToList();
         check(collected.Count == 1 && collected[0].Has(Drawn) && collect.Nodes.SelectMany(n => n.Choices).Any(ch => ch.Mythic == "PlayerIsTrickster") && collect.Nodes.Any(n => n.Id == "contest"),
             "The collection does not draw the graft with a [Trickster] act.");
@@ -243,6 +277,80 @@ internal static class AreeluTricksterTests
         var lateCommit = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Bet, Named, Drawn);
         check(lateCommit.Has(P + "late_committed") && Available(rewrite, lateCommit), "The late commit (R2-6) does not reach the rewrite.");
         check(Available(ascended, World(story, 6, "trickster.ever", "areelu.ascended", Struck, Bet, Committed)), "The ascended page failed.");
+
+        // Sol INT: the missed-entry world (no Iz bet, no lens) has its own Threshold wager, at her harshest terms.
+        var unprimedScene = S(P + "wager.unprimed");
+        var cold = World(story, 6, "trickster", "trickster.ever");
+        check(unprimedScene.ReturnToList && unprimedScene.AnswerLists.SequenceEqual(new[] { FinalList }) && Available(unprimedScene, cold)
+              && !Available(late, cold) && !Available(unprimedScene, World(story, 6, "trickster.ever"))
+              && !Available(unprimedScene, With(story, cold, Primed)), "The unprimed Threshold entry is missing or misgated.");
+        var coldOut = Program.Walk(unprimedScene, cold).Where(r => r.Has(unprimedScene.Id)).ToList();
+        check(coldOut.Any(r => r.Has(Primed) && r.Has(Late) && r.Has(Struck) && r.Has(WoundCeded) && r.Has(Named) && r.Has(Unprimed))
+              && coldOut.Any(r => r.Has(Closed) && !r.Has(Struck)), "The unprimed wager does not produce its flags through the choices.");
+        var coldStruck = With(story, coldOut.First(r => r.Has(Struck)));
+        var coldRaised = Program.Walk(raised, coldStruck).Where(r => r.Has(Committed)).ToList();
+        check(Available(raised, coldStruck) && coldRaised.Count > 0 && coldStruck.Has(P + "wager_on_screen"),
+            "The unprimed wager cannot be raised to the commit.");
+        var coldFinale = World(story, 6, "trickster.ever", "areelu.sacrifice_trickster", "ending.trickster", Struck, Unprimed, Committed, Named, WoundCeded, Drawn);
+        check(Available(rewrite, coldFinale) && Available(report[0], coldFinale), "The unprimed commit does not reach the rewrite and the report.");
+
+        // Sol INT: the punchline after the graft was drawn: she lives, and the body follows the extraction.
+        var drawnPunchline = With(story, punchline, Named, WoundCeded, Drawn);
+        check(Available(survived, drawnPunchline) && Available(report.Single(s => s.Id.EndsWith(".grey")), drawnPunchline)
+              && !Available(report.Single(s => s.Id.EndsWith(".graft")), drawnPunchline), "The drawn punchline restores the graft.");
+        var drawnNight = new HashSet<string>();
+        Program.Walk(report.Single(s => s.Id.EndsWith(".participation")), drawnPunchline, (node, _) => drawnNight.Add(node));
+        check(drawnNight.Contains("in_mortal_2") && !drawnNight.Contains("in_witch_2"), "The drawn punchline night shows the Abyss.");
+        // A punchline over her native death in the fight revives nobody.
+        check(!report.Any(s => Available(s, With(story, punchline, "areelu.dead_fight"))), "The punchline revives an Areelu who died.");
+
+        // Sol COX (r1): Areelu's page and the Last Call page agree about Shyka (H1: the Commander came back one person).
+        var fw = World(story, 6, "trickster.ever", "sacrifice", "ending.trickster_allplanes_fw", Struck, Bet, Committed);
+        var fwH1 = With(story, fw, "trickster.lastcall.taken");
+        string ShykaLine(Snapshot w) => string.Join("|", Rules.VisibleParagraphs(survived.Nodes[0], w).Select(pp => pp.Text).Where(tx => tx.Contains("Shyka")));
+        check(Available(survived, fw) && fwH1.Has("lastcall.h1") && ShykaLine(fw).Contains("initialled twice") && !ShykaLine(fw).Contains("bottle")
+              && ShykaLine(fwH1).Contains("bottle") && !ShykaLine(fwH1).Contains("initialled twice"),
+            "The Shyka paragraph contradicts the Last Call H1 page.");
+        // Sol INT (r1): a returned Nenio (G6(b)) is at breakfast exactly once; a dissolved one never.
+        var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned");
+        int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.StartsWith("Nenio arrived at breakfast"));
+        check(Breakfast(rewriteWorld) == 1 && Breakfast(nenioBack) == 1 && Breakfast(With(story, rewriteWorld, "nenio.dead")) == 0
+              && Breakfast(With(story, nenioBack, "nenio.dissolved")) == 0, "A returned Nenio misses breakfast, or appears twice.");
+        // Sol COX (r1): no companion outside the allocation visits the report.
+        check(report.Single(s => s.Id.EndsWith(".visitors")).Nodes.Single(n => n.Id == "start").Choices.Where(ch => ch.Next == "daeran").All(ch => ch.Forbids.Contains("trickster.ever")),
+            "Daeran still visits the report.");
+
+        // Sol r2 (CAN): the lens invents no deaths; the Crossroads shows no fighting hosts (Epilogues/Cue_0175 turns them to ale).
+        check(lens.Nodes.Single(n => n.Id == "died").Text.IndexOf("twice", StringComparison.Ordinal) < 0
+              && report.Single(s => s.Id.EndsWith(".crossroads")).Nodes.All(n => !n.Text.Contains("killing") && !n.Text.Contains("fought") && !n.Text.Contains("still fighting")),
+            "The lens counts deaths that never happened, or the Crossroads is still a battlefield.");
+        // Every other native death keeps canon fate, and the page says whose choice it was.
+        foreach (var fate in new[] { "areelu.incinerated", "areelu.sacrifice_wound", "areelu.sacrifice_before", "areelu.dead_fight" })
+        {
+            var w = World(story, 6, "trickster.ever", fate, Struck, Bet, Committed, Named, Drawn);
+            check(Rules.VisibleParagraphs(unnamed.Nodes[0], w).Length >= 2, "The uncollected page does not explain " + fate);
+        }
+
+        // Sol BEL: the breakup ends the report; the afterword lives only in the branches that continue.
+        var promise = report.Single(s => s.Id.EndsWith(".promise"));
+        check(!Available(report.Single(s => s.Id.EndsWith(".afterword")), rewriteWorld) && !Available(report.Single(s => s.Id.EndsWith(".afterword")), punchline),
+            "The separate afterword page still plays.");
+        foreach (var world in new[] { rewriteWorld, punchline })
+        {
+            var paths = Paths(promise, world);
+            check(paths.Where(pth => pth.Contains("burned")).All(pth => !pth.Contains("afterword"))
+                  && paths.Any(pth => pth.Contains("kept") && pth.Contains("aw_line")) && paths.Any(pth => pth.Contains("filed") && pth.Contains("afterword")),
+                "The promise page's endings are inconsistent.");
+        }
+
+        // Sol CAN: the dagger is narrated only where the inventory holds it.
+        var daggerPage = report.Single(s => s.Id.EndsWith(".dagger"));
+        var noDagger = new HashSet<string>();
+        Program.Walk(daggerPage, rewriteWorld, (node, _) => noDagger.Add(node));
+        var withDagger = new HashSet<string>();
+        Program.Walk(daggerPage, With(story, rewriteWorld, Dagger), (node, _) => withDagger.Add(node));
+        check(noDagger.Contains("gone") && !noDagger.Contains("give") && withDagger.Contains("give") && !withDagger.Contains("gone"),
+            "The dagger page narrates a dagger the Commander does not hold.");
         // Trk_Areelu_PriorLien (ledger row 16): the Commander burned closing the Wound; only the prior-lien page plays.
         // (iomedae.appointment_kept, Iomedae's form of this world, cannot be read until her route produces its primer.)
         var priorLien = S(P + "finale.prior_lien");
@@ -250,17 +358,39 @@ internal static class AreeluTricksterTests
         check(burned.Has(P + "commander_burned") && !burned.Has("trickster.cheated_death") && Available(priorLien, burned)
               && !Available(survived, burned) && !report.Any(s => Available(s, burned)), "Trk_Areelu_PriorLien failed.");
         check(!Available(priorLien, punchline) && !Available(priorLien, rewriteWorld), "The prior-lien page plays when the Commander lived.");
+        // Sol r3 COX: Last Call H2 returns the Commander from the Wound-closed sacrifice; the permanent-loss page yields.
+        var bottled = World(story, 6, "trickster.ever", "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle",
+            Struck, Bet, Committed, Named, Drawn);
+        var lienBottled = S(P + "finale.lien_bottled");
+        check(bottled.Has("trickster.commander_back") && !Available(priorLien, bottled) && Available(lienBottled, bottled) && !Available(lienBottled, burned),
+            "Sol r3 COX: Areelu's prior lien ignores Last Call H2 (or the H2 page plays in a permanent loss).");
+        var h2Nodes = new HashSet<string>();
+        Program.Walk(lienBottled, bottled, (node, _) => h2Nodes.Add(node));
+        check(h2Nodes.Contains("across") && h2Nodes.Contains("morning") && h2Nodes.Contains("stopped")
+              && !lienBottled.Nodes.SelectMany(n => new[] { n.Text }.Concat(n.Paragraphs.Select(pp => pp.Text))).Any(t => t.Contains("empty flask")),
+            "Sol r4 BEL/COX: the H2 romance has no night, or the flask leaves the Commander.");
+        // Sol r3 INT: the native Trickster sacrifice also starts Ending_AreeluDead (areelu.dead_fight); the collected
+        // rewrite lifts both, and the report (with its intimate beat) continues. A bare combat death stays canon.
+        var fullRewrite = With(story, rewriteWorld, "areelu.dead_fight");
+        check(Available(report.Single(s => s.Id.EndsWith(".rooms")), fullRewrite) && Available(report.Single(s => s.Id.EndsWith(".participation")), fullRewrite)
+              && !Available(report.Single(s => s.Id.EndsWith(".rooms")), World(story, 6, "trickster.ever", "areelu.dead_fight", "ending.trickster", Struck, Bet, Committed, Named, Drawn)),
+            "Sol r3 INT: the native sacrifice's general death key blocks the rewritten report.");
+        // Sol r3 CAN: the Crossroads of Worlds is the all-planes outcome only.
+        var crossroads = report.Single(s => s.Id.EndsWith(".crossroads"));
+        check(!Available(crossroads, rewriteWorld) && !Available(crossroads, punchline)
+              && Available(crossroads, World(story, 6, "trickster.ever", "sacrifice", "ending.trickster_allplanes", Struck, Bet, Committed)),
+            "Sol r3 CAN: the Crossroads page plays on the Nirvana-only ending.");
         check(!Available(report.Single(s => s.Id.EndsWith(".wound")), World(story, 6, "trickster.ever", "areelu.sacrifice_wound", Struck, Bet, Committed, Named)),
             "The wound page plays after the Wound was closed.");
 
         // The intimate beat and its refusal are reachable on both survivals; the morning after follows the yes.
         var participation = report.Single(s => s.Id.EndsWith(".participation"));
-        foreach (var world in new[] { rewriteWorld, punchline, lateCommit })
+        foreach (var world in new[] { rewriteWorld, With(story, rewriteWorld, "areelu.dead_fight"), punchline, lateCommit })
         {
             var visited = new HashSet<string>();
             var ends = Program.Walk(participation, world, (node, _) => visited.Add(node));
             check(ends.Count > 0 && visited.Contains("morning") && visited.Contains("morning_after") && visited.Contains("closed")
-                  && (world == punchline ? visited.Contains("in_witch_2") : visited.Contains("in_mortal_2")),
+                  && (ReferenceEquals(world, punchline) ? visited.Contains("in_witch_2") : visited.Contains("in_mortal_2")),
                 "The night, its morning after or its refusal is unreachable.");
         }
         // Every page of the report walks to the end on both survivals without a dead end.

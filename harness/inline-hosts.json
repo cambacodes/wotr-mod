@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 994,
-  "resolved": 994,
-  "inlineOnlyScenes": 249,
-  "inlineOnlyResolved": 249,
-  "answerListScenesWithoutContact": 580,
-  "answerListScenesWithoutContactResolved": 580,
+  "entryTargetScenes": 999,
+  "resolved": 999,
+  "inlineOnlyScenes": 250,
+  "inlineOnlyResolved": 250,
+  "answerListScenesWithoutContact": 581,
+  "answerListScenesWithoutContactResolved": 581,
   "lists": 103,
   "listsWithReachableHost": 102
  },
@@ -1822,6 +1822,25 @@
     "dialogName": "AreeluCell_AreeluLabAgain_c5_dialog",
     "cue": "Cue_0002",
     "clicks": 1
+   }
+  },
+  "areelu.trickster.wager.unprimed": {
+   "kind": "return-to-list",
+   "lists": [
+    "f56a69dc64a48b14096a557697f43f2a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f56a69dc64a48b14096a557697f43f2a": "RRT_entry.areelu.trickster.wager.unprimed.f56a69dc64a48b14096a557697f43f2a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f56a69dc64a48b14096a557697f43f2a",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0004_ShadowFin",
+    "clicks": 0
    }
   },
   "areelu.trickster.witch.the_clause": {
@@ -14644,6 +14663,63 @@
     "clicks": 0
    }
   },
+  "nenio.folio.abyss.drink": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.abyss.drink"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.abyss.lamp": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.abyss.lamp"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.folio.abyss.shoulder": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.folio.abyss.shoulder"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
   "nenio.folio.architect": {
    "kind": "dialog",
    "lists": [
@@ -15079,6 +15155,25 @@
    "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
    "entry": {
     "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.dead.welcome_back"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ab909cc3a6194840b1475b99547c263",
+    "dialog": "a32d6df24f1acee4982c968f732e87a5",
+    "dialogName": "NenioCompanion_dialogue",
+    "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nenio.trickster.debt.collected": {
+   "kind": "dialog",
+   "lists": [
+    "1ab909cc3a6194840b1475b99547c263"
+   ],
+   "explicit": true,
+   "contact": "1b893f7cf2b150e4f8bc2b3c389ba71d",
+   "entry": {
+    "1ab909cc3a6194840b1475b99547c263": "RRT_entry.nenio.trickster.debt.collected"
    },
    "resolved": true,
    "host": {

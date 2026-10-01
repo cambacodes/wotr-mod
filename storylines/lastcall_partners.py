@@ -592,7 +592,8 @@ partner("nenio", "nenio", "nenio.committed", "nenio.closed", "The Last Observati
         page_p('''The world buried the Commander. Nenio attended, took notes, and chalked a small ruled blank under the name on the stone, three fingers wide. The sexton scrubbed it off every week. It was back every morning. She said a name was only a label, and the stone was premature.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she was there with the stopwatch, and timed it. She has never told anyone the number, and says she has forgotten it, and nobody believes her.''', requires=(H2,)),
         page_p('''She did not have the Commander's name at the rift, or after. She shouted "follower" and it did perfectly well.''', requires=(NE + "cost.name_filed",)),
-        page_p('''Somewhere behind a white mask a question is still waiting to be asked. Nenio has the three hundred and six likeliest answers ready, rolled and tied with string, in the Commander's pack, next to volume one.''', requires=(NE + "cost.owes_an_answer",)),
+        page_p('''Somewhere behind a white mask a question is still waiting to be asked. Nenio has the three hundred and six likeliest answers ready, rolled and tied with string, in the Commander's pack, next to volume one.''', requires=(NE + "cost.owes_an_answer",),
+               forbids=(NE + "debt.paid", NE + "debt.evaded", NE + "debt.defaulted")),   # Sol pass: additive gating; collected in Ch6
     ), declined=NE + "declined",
     deal=[[NE + "cost.name_filed"], [NE + "cost.owes_an_answer"]],
     call=call('''[Ask her a question] "Nenio! Hypothesis!"''',
