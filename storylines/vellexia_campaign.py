@@ -110,7 +110,7 @@ s("the_unused_reply", "A reply she has not written", '"You said I might return. 
 {n}The words are teasing; the attention behind them is not casual.{/n}
 "There is also an opinion I may want. An old acquaintance has begun selling predictions about other people's tastes. He claims he can tell a patron what will delight them before they have chosen it. His own conversation is exquisitely predictable. I am considering whether to make that public."
 "You want a collaborator."
-"Possibly. I have not yet decided whether he is worth the inconvenience. You will be disappointed to learn that my gifts occasionally precede my schemes."
+"Possibly. I have not yet decided whether he is worth the trouble of ruining. You will be disappointed to learn that my gifts occasionally precede my schemes."
 {n}She slides the case within reach.{/n}''',
       c('"I will take it. Ask when you have something you want me to hear."', "accepted"),
       c('"I would rather leave it here today."', abort=True)),
@@ -303,7 +303,7 @@ s("the_second_invitation", "The invitation after the dismissal", "[Consider the 
 "I have missed a certain quality of your disagreement," she says. "Do not become sentimental about the admission. It does not mean I have decided what else I miss."
 "Then we can leave that undecided."
 "Excellent. Keep that little uncertainty. It suits you far better than an apology, and I intend to take it from you slowly."
-{n}She closes the cover with the satisfied air of a woman who has found tomorrow's amusement. The light goes out, leaving you with an ordinary quiet and the inconvenience of being interested.{/n}''',
+{n}She closes the cover with the satisfied air of a woman who has found tomorrow's amusement. The light goes out, leaving you with an ordinary quiet and the unwelcome discovery that you are interested.{/n}''',
       c('[Agree to examine the account when it arrives.]', flags=("vellexia.case_opened", flag)))
       for id, flag in (("terms_clerk", "vellexia.clerk_terms"), ("terms_copy", "vellexia.shared_account"))],
     n("refuse", "Vellexia", '''{n}Her expression stills. For a moment you can see her deciding which unpleasant answer would please her most.{/n}
@@ -313,7 +313,7 @@ s("the_second_invitation", "The invitation after the dismissal", "[Consider the 
 {n}She reaches toward her cover, then pauses.{/n}
 "Keep the account of our dates accurate if anyone asks. I have no intention of improving it for your reputation either."
 {n}The glass clouds as she closes the shell. No second request follows. Whatever becomes of Ilveris, it will not be a commission you accepted.{/n}''',
-      c('[Close the shell and end this private correspondence.]', flags=("vellexia.closed",))),
+      c('[Close the shell and end this private correspondence.]', flags=("vellexia.closed", "vellexia.parted"))),
 ], "vellexia.prediction_known")
 
 # Q11 (INT): the second invitation is the one Chapter 4 call; a Commander who left the Nexus before its light was answered
@@ -567,7 +567,7 @@ s("an_hour_that_counts", "The result he must keep", "[Answer Vellexia's request 
 {n}She reads the reply, then shuts the book before the next scene can demand its turn.{/n}''', c('[Stay for the conversation after the account.]', "published_end")),
     n("sealed", "Vellexia", '''"Sealed, copied and witnessed. Ilveris has written that I will choose the unused hour. He has supplied an explanation, but it will be opened afterward. I refuse to have the evening spoiled by being told what I must think about it in advance."
 "You know his answer?"
-"We agreed I would. The wager is that he can predict my choice even when I have an excellent reason to make another. He considers pride a predictable inconvenience. I am about to give that opinion a costly audience."
+"We agreed I would. The wager is that he can predict my choice even when I have an excellent reason to make another. He considers pride a predictable weakness. I am about to give that opinion a costly audience."
 {n}She turns the shell to show Tessar at the far end of the table. Beside her stand three witnesses holding their copies. Ilveris has sent his signed acceptance; he has declined to attend in person.{/n}
 "A sensible man on a rare occasion," Vellexia says.
 {n}The first offer is the old play, performed by two hired actors who look as though they have heard what became of the last ones in this house. The second is a new mechanical theater whose silver figures dismantle an emperor's triumphal procession to build a privy. The third is the empty hour.{/n}
@@ -625,7 +625,7 @@ s("an_hour_that_counts", "The result he must keep", "[Answer Vellexia's request 
     n("won", "Vellexia", '''{n}She stays for the promised hour. By the end, the emperor has become the privy's door handle and the procession has begun praising his accessibility. Vellexia laughs so suddenly that one of the witnesses forgets to be discreet about staring.{/n}
 "Yes, I enjoyed it," she tells him. "You may report the astonishing event without inventing a more flattering cause."
 {n}Tessar records the completed hour, returns the circlet to its owner and prepares the correction Ilveris must circulate. His deposits will go back to the purchasers named in the agreement. He will keep whatever business does not depend on this wager.{/n}
-"Not ruined," Vellexia observes. "Merely inconvenienced in public. I shall have to make the most of it."
+"Not ruined," Vellexia observes. "Merely humiliated in public, at length. I shall have to make the most of it."
 {n}She asks the maker for a price for another performance, then rejects the first figure offered with such enthusiasm that the negotiation becomes an entertainment of its own. By the end he has agreed to build her a second emperor, smaller, with a face she will describe to him later.{/n}
 {n}When the room empties, she moves the shell close again.{/n}
 "You stayed. Even through the parts in which I had almost nothing to say to you. I find that more pleasant than I expected."''',
@@ -670,15 +670,15 @@ s("the_question_after_business", "What she asks without a fee", "[Open the shell
 "The fact that you kept opening this little door after I had given you an excellent reason to leave it shut."''',
       c('"I wanted the work settled. I also wanted to hear you."', "want"),
       c('[Leave the request unanswered until you can give it time.]', abort=True)),
-    n("want", "Vellexia", '''"Yes. That second part has become inconveniently important to me."
+    n("want", "Vellexia", '''"Yes. That second part I intend to keep."
 {n}She moves her hand away from the earring.{/n}
 "I wanted you gone, at the end. I said so, and I meant it, and I do not take back things I meant. Now I find that your voice has become an exceedingly inconvenient pleasure, and I resent it."
 "You could ask for one."
 "I am approaching the indignity with suitable care."
 {n}Her smile returns, but she does not let it finish the conversation for her.{/n}
-"You let me be wrong without pretending I had become a helpless creature who needed your good influence. You disagreed, sometimes at exactly the moment I wanted obedience. You also found things to enjoy that I had not selected to impress you."
+"Do you remember the perfume? I had sent it away unopened, and you told me, in front of Tessar, that I had done exactly what Ilveris predicted, and that I would have to live with being predictable or open the bottle. I nearly had you thrown down the stairs. Then I opened the bottle. It was vile, and he was wrong, and I have not enjoyed being contradicted so much in a century."
 "That sounds like another assessment."
-"It is. There is no invoice left to examine, and still I want you to open the shell. How irritating. I have had men flayed for being less inconvenient."
+"It is. There is no invoice left to examine, and still I want you to open the shell. How irritating. I have had men flayed for less."
 {n}She looks directly into the glass.{/n}
 "I want you as my lover. Imagine how delighted I am to discover that you may have something to say about it. Say it quickly, darling, before I decide to be offended by the delay."''',
       c('"I want you. Let us see how long we can keep each other interested."', "terms"),
@@ -686,7 +686,7 @@ s("the_question_after_business", "What she asks without a fee", "[Open the shell
       c('"I want your company. I do not want a romance with you."', "company")),
     n("terms", "Vellexia", '''"Then hear what you are getting, before you become fond of imagining me in your rooms."
 "Go on."
-"I am not becoming harmless for you. My quarrels are a considerable pleasure to me, and I shall go on having them. If I invite you into one, try to be worth the invitation."
+"My quarrels are a considerable pleasure to me, and I shall go on having them. If I invite you into one, try to be worth the invitation."
 {n}She watches you take that in, and seems to enjoy it.{/n}
 "Contradict me when you must. I shall enjoy discovering how cleverly you do it, and I shall punish you when you do it badly. I may punish you anyway. You may decide I am not worth it."
 "That is more honest than a promise you would resent."
@@ -700,7 +700,7 @@ s("the_question_after_business", "What she asks without a fee", "[Open the shell
     n("near", "Vellexia", '''"Come a little nearer the glass," she says. "I would like to see your face when I stop explaining myself."
 {n}You lift the shell. Her image grows clearer as she adjusts her own. For a moment the practical business of finding a comfortable position makes you both laugh.{/n}
 "We have selected an inconvenient distance for this conversation," you say.
-"An exquisite inconvenience. I can imagine what I would do if you were here without being distracted by whether my earring has caught in your collar."
+"An exquisite cruelty. I can imagine what I would do if you were here without being distracted by whether my earring has caught in your collar."
 "What would you do?"
 "Ask you to put the shell down. Then discover whether you come to me before I have finished asking."
 {n}Her voice lowers. She describes the kiss she would like to give you, the pause afterward and the pleasure of finding you still close. Nothing reaches through the glass. Your own breath catches anyway.{/n}
@@ -713,7 +713,7 @@ s("the_question_after_business", "What she asks without a fee", "[Open the shell
 "You can begin again."
 "I would rather hear what you were about to say. A shameful failure of discipline."
 {n}Later, when the eagerness has quieted, neither of you closes the cover immediately. She asks you a small question about where you are sitting, and you answer without trying to make the place worthy of her.{/n}
-"I would like to know that room," she says. "Not tonight. Tonight this has been enough to make tomorrow inconvenient."''',
+"I would like to know that room," she says. "Not tonight. Tonight I want you to go to bed hungry."''',
       c('[Tell her you want another evening as her lover.]', flags=("vellexia.departure_kept", "vellexia.renewed_lovers", "vellexia.committed"))),
     n("gentle", "Vellexia", '''"Then give me something unpolished to listen to. I refuse to spend a quiet evening hearing a visitor become solemn because nobody is touching them."
 {n}You tell her about a small irritation from your day. She offers a solution so excessive that you begin laughing before she finishes. She looks pleased, then asks what you actually did.{/n}
@@ -763,7 +763,7 @@ s("the_voice_after_the_abyss", "A different room for the same voice", "[Answer t
 "You could. I would enjoy the lie for approximately as long as it took you to finish it."
 {n}You tell her something true about the last days. She interrupts only to demand the detail you had tried to make less unpleasant, and then asks whether you have had a quiet hour since, in a tone that implies you had better say no.{/n}
 "This one may have to do," you say.
-"Then put the shell somewhere your arm will not ache. I refuse to be remembered as an inconvenient weight when I have gone to considerable trouble to be a voice."''', c('[Settle in and ask what became of her own business.]', "result")),
+"Then put the shell somewhere your arm will not ache. I refuse to be remembered as a weight on your arm when I have gone to considerable trouble to be a voice in your ear."''', c('[Settle in and ask what became of her own business.]', "result")),
     n("slow", "Vellexia", '''"Good. I would have resented being the only one who remembered leaving it there."
 {n}She watches your face for a moment before sitting back.{/n}
 "You are back. Excellent. Tell me what has made that room so unworthy of my attention. I have spent enough time imagining it to distrust the picture."
@@ -971,9 +971,9 @@ s("the_cover_before_the_battle", "Before the next silence", '"I want to speak be
     n("new_terms", "Vellexia", '''{n}Her smile comes before the answer.{/n}
 "Yes. I dislike the timing, but I want you. You have managed to make both statements rather urgent."
 "Tell me what you want."
-"You, darling. Your mouth, your insolence, and the delightful belief that I shall still want them tomorrow. You will spend the rest of your life wondering whether I do. That is the game. Do you remember what I told you about it? You must deceive yourself, a little, or it is no fun at all."
+"You, darling. Your mouth, your insolence, and the delightful belief that I shall still want them tomorrow. You will spend the rest of your life wondering whether I do. That is the game, darling. Somebody lets down their guard and bares their throat, and somebody bites. The first rule is that you must deceive yourself, a little, or it is no fun at all."
 {n}She pauses, watching your face, and her smile has teeth in it.{/n}
-"I am not becoming harmless. I shall keep my house and my quarrels and my appetites, and you will not ask me to put any of them down. Do not praise me tonight and hope to wake beside a better woman. I should find your disappointment delicious."
+"I shall keep my house and my quarrels and my appetites, and you will not ask me to put any of them down. Do not praise me tonight and hope to wake beside a better woman. I should find your disappointment delicious."
 "I know who I am asking."
 "Then ask me again when there is less glass between us. For now, I would like to hear that you mean it."''',
       c('"I remember. I want you anyway. Come to Drezen before I march, and I will say it with no glass at all."', "new_lovers"),
@@ -994,7 +994,7 @@ s("the_cover_before_the_battle", "Before the next silence", '"I want to speak be
       c('[Leave the shutters unlatched.]', flags=("vellexia.farewell_kept", "vellexia.farewell_lovers", "vellexia.invited"))),
     n("new_lovers", "Vellexia", '''"An invitation. Very well, I accept, and you will not know the night. Come nearer. I have waited through enough careful answers to enjoy this one without pretending I was indifferent to it."
 {n}You lift the shell. She tells you where she would put her mouth if the glass were gone, and in what order, and your answer makes her close her eyes for a moment.{/n}
-"An inconvenient thing to hear just before you leave. I intend to remember it."
+"A cruel thing to hear just before you leave. I intend to say it again. I intend to remember it."
 {n}You talk until the impending departure becomes something you can mention without allowing it every sentence. She asks for one ordinary detail of your morning and laughs at the answer.{/n}
 "Keep yourself alive if you can," she says at last. "I want more of this particular person. I have no use for a monument that cannot answer back."
 {n}You say goodbye as lovers. The cover closes after she has said it too.{/n}''',
@@ -1044,7 +1044,7 @@ s("the_cover_before_the_battle", "Before the next silence", '"I want to speak be
 {n}She draws the cover toward her. Before it closes, she looks back once.{/n}
 "I enjoyed the part you cannot give back. Remember that whenever you are tempted to become noble about having spared me something. You spared me nothing. I took it."
 {n}The glass clouds. No light follows it.{/n}''',
-      c('[Let the glass go dark.]', flags=("vellexia.farewell_kept", "vellexia.closed"))),
+      c('[Let the glass go dark.]', flags=("vellexia.farewell_kept", "vellexia.closed", "vellexia.parted"))),
 ], "vellexia.private_kept", chapter=5)
 
 
@@ -1061,7 +1061,7 @@ ending("lovers", "A light beneath the cover", '''{n}Vellexia remained a difficul
 {n}Vellexia did not become gentle toward the world to enjoy any of it.{/n}''', requires=("vellexia.farewell_lovers",), forbids=ORDINARY_BLOCK,
     # Q11: the lovers' ending follows what actually happened in the flesh (vellexia_trickster: after.visit, after.night).
     paragraphs=(
-        p('''{n}For a long time they were lovers across an inconvenient distance, and she made the distance into a weapon: a voice at the wrong hour, a description of her evening that left out exactly the part the Commander wanted, a promise to come to Drezen that she renewed and broke with equal pleasure.{/n}''',
+        p('''{n}For a long time they were lovers across a long distance, and she made the distance into a weapon: a voice at the wrong hour, a description of her evening that left out exactly the part the Commander wanted, a promise to come to Drezen that she renewed and broke with equal pleasure.{/n}''',
           forbids=("vellexia.trickster.visited", "vellexia.trickster.night_kept")),
         p('''{n}She had come to Drezen once already, in person, to look the Commander over like a purchase, and she made a habit of reminding the Commander that she could do it again whenever she liked, and of not doing it.{/n}''',
           requires=("vellexia.trickster.visited",), forbids=("vellexia.trickster.night_kept",)),

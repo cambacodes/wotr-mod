@@ -349,7 +349,7 @@ internal static class VellexiaTricksterTests
         // Q11 Trk_Vellexia_LoversEndingVariants: the lovers' ending follows what happened in the flesh.
         var loversNode = Ending("lovers").Nodes[0];
         int Shown(Snapshot w) => loversNode.Paragraphs.Count(pp => Rules.Match(pp.Requires, pp.Forbids, w)
-                                                                 && (pp.Text.Contains("inconvenient distance") || pp.Text.Contains("once already")
+                                                                 && (pp.Text.Contains("across a long distance") || pp.Text.Contains("once already")
                                                                      || pp.Text.Contains("first night before the march")));
         bool Says(Snapshot w, string text) => loversNode.Paragraphs.Any(pp => Rules.Match(pp.Requires, pp.Forbids, w) && pp.Text.Contains(text));
         check(!loversNode.Text.Contains("physical visit still required"), "Q11: the lovers' ending still calls the first visit unarranged.");
@@ -360,7 +360,7 @@ internal static class VellexiaTricksterTests
                 "Trk_Vellexia_LoversEndingVariants: the night is not remembered in the lovers' ending.");
         }
         var letters = Program.Copy(partedCommitted ?? parted); letters.Flags.Add("vellexia.farewell_lovers");
-        check(Shown(letters) == 1 && Says(letters, "inconvenient distance"), "Trk_Vellexia_LoversEndingVariants: correspondence-only lovers get the wrong account.");
+        check(Shown(letters) == 1 && Says(letters, "across a long distance"), "Trk_Vellexia_LoversEndingVariants: correspondence-only lovers get the wrong account.");
         var visitedOnly = Program.Copy(letters); visitedOnly.Flags.Add(P + "visited");
         check(Shown(visitedOnly) == 1 && Says(visitedOnly, "once already"), "Trk_Vellexia_LoversEndingVariants: the earlier visit is forgotten.");
 
@@ -467,6 +467,49 @@ internal static class VellexiaTricksterTests
         // Q11 r3: the claim opens on her clerk's acceptance, whichever invitation opened it; no absence is invented.
         check(!S("vellexia.the_claim_before_the_event").Nodes[0].Text.Contains("while you were gone"),
             "Q11: the claim places Tessar's acceptance in an absence the Drezen twin never had.");
+
+        // Q11 r4: an ended correspondence never gets the Last Call romance; the glove ritual never outlives the relationship;
+        // the Last Call bill names what was done to her; a first meeting introduces the love thesis rather than recalling it.
+        var lcPage = S("vellexia.lastcall.page");
+        var brokeUp = Step(cover, invitedHome, "vellexia.closed");
+        check(brokeUp != null && brokeUp.Has("vellexia.parted"), "Q11 r4: the cover's breakup does not record the parting.");
+        if (brokeUp != null)
+        {
+            var brokeUpLc = Program.Copy(brokeUp); brokeUpLc.Flags.Add("lastcall.active"); Rules.Complete(story, brokeUpLc);
+            check(!Rules.Available(story, lcPage, brokeUpLc), "Q11 r4: Last Call restores a romance the cover ended.");
+        }
+        var collected = Play(visit, Later(story, nice, 24)).First(r => r.Has("vellexia.closed"));
+        check(collected.Has("vellexia.parted"), "Q11 r4: her no at the visit does not record the parting.");
+        string Visible(Scene sc, Snapshot w) => string.Concat(sc.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => pp.Text));
+        foreach (var ended in new[] { "vellexia.closed", "sacrifice", "inhuman" })
+        {
+            var w = World(story, 6, "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", ended);
+            check(!Visible(Ending("closed"), w).Contains("gloves") && !Visible(Ending("sacrifice"), w).Contains("gloves")
+                  && !Visible(Ending("changed"), w).Contains("gloves") && Visible(Ending("closed"), w).Contains("never finished"),
+                "Q11 r4: the glove ritual outlives the relationship (" + ended + "), or the unfinished hands are forgotten.");
+        }
+        var gloved = World(story, 6, "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", "vellexia.farewell_lovers");
+        check(Visible(Ending("lovers"), gloved).Contains("gloves"), "Q11 r4: the lovers lose the glove ritual.");
+        foreach (var (history, bill, notBill) in new[] {
+            (P + "unmirrored", "looking-glass", "her hands"), (P + "cost.diminished", "her hands", "looking-glass"),
+            (P + "cost.predicted", "prophecy", "looking-glass"), (P + "provoked", "the insult", "looking-glass") })
+        {
+            var w = World(story, 6, "trickster.ever", "lastcall.active", "vellexia.committed", "vellexia.lastcall.called", history);
+            check(Visible(lcPage, w).Contains(bill) && !Visible(lcPage, w).Contains(notBill),
+                "Q11 r4: the Last Call bill narrates another history: " + history);
+        }
+        var lcCall = story.Scenes.Single(s => s.Id == "vellexia.lastcall.call");
+        check(!lcCall.Entry.Contains("furniture") && !string.Concat(lcCall.Nodes.Select(nd => nd.Text)).Contains("mirrors"),
+            "Q11 r4: the call-in names a mirror on every history.");
+        foreach (var nd in visit.Nodes.Concat(S("vellexia.the_cover_before_the_battle").Nodes))
+            check(!nd.Text.Contains("remember what I told you"), "Q11 r4: a first meeting recalls a thesis never spoken: " + nd.Id);
+        var giftedFinished = World(story, 5, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.native_finished", "vellexia.spared",
+                                   "vellexia.final_fight", "vellexia.coin_given", "vellexia.seal_agreed");
+        var giftedPages = new HashSet<string>();
+        check(Rules.Available(story, provocation, giftedFinished)
+              && Program.Walk(provocation, giftedFinished, (pg, _) => giftedPages.Add(pg)).Any(r => r.Has(P + "provoked"))
+              && giftedPages.Contains("finished") && !provocation.Nodes.Single(nd => nd.Id == "finished").Text.Contains("nothing of hers"),
+            "Q11 r4: the finished affair denies the coin and the shell she gave.");
 
         // Q11 Trk_Vellexia_Ch5LetterCap (ledger: one Trickster-layer Chapter 5 letter): the only remote Trickster scenes in
         // Chapter 5 sit on mutually exclusive branches, and the old first call never follows the in-person visit.

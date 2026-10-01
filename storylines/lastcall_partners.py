@@ -254,15 +254,21 @@ V = "vellexia.trickster."
 partner("vellexia", "vellexia", "vellexia.committed", "vellexia.closed", "Never Bored",
     '''Lady Vellexia gave a party the month after Threshold, in Alushinyrra, to celebrate the Commander's survival, or funeral; the invitations were deliberately unclear. It was the event of the decade. The Commander arrived late, in a borrowed face, and she recognized {mf|him|her} across the room and did not give the game away for three hours, which she said afterwards was the most fun she had had in a century.''',
     (
-        page_p('''She billed the Commander for the furniture. She had been hung on a wall as a looking-glass, and the bill came to exactly the value of a very good mirror, with interest, payable in visits. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"),)),
-        page_p('''She had come back from the glass a little less than she went in, and she never pretended otherwise. She decided, every evening, which part of herself to spend on the Commander, and she was mean with it whenever it amused her, which was often.''', requires=(V + "cost.diminished",)),
+        # Q11 r4: each bill names what the Commander actually did to her.
+        page_p('''She billed the Commander for the furniture. She had been hung on a wall as a looking-glass, and the bill came to exactly the value of a very good mirror, with interest, payable in visits. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "unmirrored")),
+        page_p('''She billed the Commander for her hands: a painter's fee for every year they stayed unfinished, payable in visits, with a surcharge whenever she caught the Commander looking at them. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "cost.diminished"), forbids=(V + "unmirrored",)),
+        page_p('''She billed the Commander for the prophecy: the price of being predicted, which nobody had ever charged before, so she invented the figure and doubled it, payable in visits. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "cost.predicted"), forbids=(V + "unmirrored", V + "cost.diminished")),
+        page_p('''She billed the Commander for the insult: one evening of attention for every footman who had repeated it, and she had made sure there were a great many footmen. The Commander paid in instalments and never once missed one.''', requires=(called("vellexia"), V + "provoked"), forbids=(V + "unmirrored", V + "cost.diminished", V + "cost.predicted")),
+        page_p('''She had come back from the canvas a little less than she went into it, and she never pretended otherwise. She decided, every evening, which part of herself to spend on the Commander, and she was mean with it whenever it amused her, which was often.''', requires=(V + "cost.diminished",)),
         page_p('''The Commander had bored her once. She never let {mf|him|her} forget that, and she let {mf|him|her} make up for it for years, at the far end of her table, until it amused her to move {mf|him|her} closer.''', requires=(V + "cost.bored_once",)),
-    ), declined=V + "declined", page_forbids=("vellexia.farewell_friends", "vellexia.farewell_slow", V + "kept_as_mirror"),
+    ), declined=V + "declined",
+    # Q11 r4: an ended correspondence (vellexia.parted, set with every closing answer) is never continued here (G5: not her closed flag).
+    page_forbids=("vellexia.farewell_friends", "vellexia.farewell_slow", V + "kept_as_mirror", "vellexia.parted"),
     deal=[[V + "returned"], [V + "cost.predicted"], [V + "cost.trick_kept"]],
-    call=call('''[Call in the furniture bill] "Vellexia, I owe you for the furniture. I'll pay in instalments. Mind you're there to collect them."''',
-        '''{n}Across a great distance, and a great many mirrors, a lady who is never bored sits up and pays attention.{/n}''',
+    call=call('''[Call in her bill] "Vellexia, I owe you, and you never let a debt go. I'll pay in instalments. Mind you're there to collect them."''',
+        '''{n}Across a great distance, a lady who is never bored sits up and pays attention, and reaches for her account book.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Vellexia: the furniture", "I owe Lady Vellexia for a season she spent on my wall. She keeps a very precise account of things nobody else would think to bill."),
+    ledger=("Vellexia: an account kept", "I owe Lady Vellexia for what I did to her, and for what I made her do. She keeps a very precise account of things nobody else would think to bill."),
     # Q11: the late commit (vellexia.trickster.late_committed = the courting answer of the first call after a return) is a
     # romance said yes to; friendship, the slow answer and the kept mirror stay excluded by page_forbids.
     page_commit_groups=[["vellexia.committed"], ["vellexia.trickster.late_committed"]])
@@ -773,7 +779,7 @@ partner("devarra", "devarra", "devarra.committed", "devarra.closed", "The Grey T
         page_p('''She came out of the north before dawn, grey as the ash, and landed on the lip of the world where the Commander had shouted the bill up into the dark, and named her price for the smallest egg. A life, as she had said; and she had chosen whose. Not the silver's, and not the hatchling's. The Commander's: every year of it that was left, one month in twelve, on her ridge, at her call, eating what she killed and going where she flew, and coming down thinner. The Commander paid the first month that winter. Nobody in Drezen asked where {mf|he|she} had been. The burns told them.''', requires=(called("devarra"), DV + "cost.egg_withheld")),
         page_p('''The tariff was collected every year on the same night, in a ring of fire, where she chose. By the end the Commander's forearm was a grey ladder of crescents from wrist to elbow, and she could tell anyone who asked exactly how many rungs it had.''', requires=(DV + "cost.bitten",)),
         page_p('''The world buried the Commander. She flew over the funeral very low and very slowly, and looked at each mourner in turn, and went back to her ridge without eating any of them. The city took it as an omen. She said it was manners: she did not eat at other people's funerals, only at her own.''', requires=(ON_RECORD,)),
-        page_p('''When the flask was opened in Drezen she came down off the ridge into the city for the first time, landed on the citadel roof in front of the whole garrison, and stayed there until the Commander came up to her. The north wall never ran a book on her again.''', requires=(H2,)),
+        page_p('''When the flask was opened in Drezen she came down off the ridge, landed on the citadel roof in front of the whole garrison, and stayed there until the Commander came up to her. The north wall never ran a book on her again.''', requires=(H2,)),
     ), declined=DV + "declined",
     deal=[[DV + "cost.egg_withheld"]],
     call=call('''[Call up the north ridge] "Devarra! You said you'd name your price at the edge of the world. This is the edge. Name it."''',

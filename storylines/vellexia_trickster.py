@@ -359,8 +359,8 @@ letter("vellexia.trickster.never_visited.invitation", "A party in your honour", 
       c('[Boast about the Upper City, and tip the wine-factor to carry it word for word] "Lady Vellexia? Charming. She\'s throwing a party in my honour. She just doesn\'t know it yet."',
         "card", mythic="Trickster", crusade=("Finances", -100)),
       c('[Change the subject] "The Abyss? I don\'t talk about the Abyss."', "silent")),
-    nar("card", '''{n}Vask laughs, pockets the coin, and repeats it back to you word for word, twice, so there can be no mistake.{/n}
-{n}Nine days later he is back, with lilac on his cuffs and a card he will not let anyone else touch. It invites you to a party that its hostess, by her own admission in the postscript, has not yet decided to throw.{/n}
+    nar("card", '''{n}Vask laughs, pockets the coin, and repeats it back to you word for word, twice, so there can be no mistake. Then he sends it down the camp road with the boy who carries his ledgers.{/n}
+{n}Lady Vellexia, it seems, keeps a page of her own at the rift camp, to hear whatever is said about her in Drezen. Before the night is out the boy is back, with lilac on his cuffs and a card he will not let anyone else touch. It invites you to a party that its hostess, by her own admission in the postscript, has not yet decided to throw.{/n}
 {n}"Tell me who told you I would," the postscript ends. "I should like to have them upholstered."{/n}''',
       c('"Tell her I\'ll come."', flags=(ENTRY, PRIMED, PREDICTED, KNOWN, STARTED))),
     nar("silent", '''{n}The table moves on to the siege. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}''',
@@ -379,14 +379,14 @@ letter("vellexia.trickster.reacquire.provocation", "Bored, by report", [
       c("Continue", "finished", requires=("vellexia.native_finished",))),
     nar("unfinished", '''{n}Somebody asks about the famous Lady Vellexia. You have been in her house; you left it in the middle of her entertainment, with her curiosity unpaid, and the Upper City has noticed. Vask has noticed that it noticed. He is waiting, with the patience of a man who sells messages by the word, to see whether you have one.{/n}''',
       c("Continue", "offer")),
-    nar("finished", '''{n}Somebody asks about the famous Lady Vellexia. Your affair with her ended in the Upper City the way her affairs end, and you came away with nothing of hers: no token, no word, not so much as a chair. Vask has heard the end of that story from three different footmen. He is waiting, with the patience of a man who sells messages by the word, to see whether you have one.{/n}''',
+    nar("finished", '''{n}Somebody asks about the famous Lady Vellexia. Your affair with her ended in the Upper City the way her affairs end, and nothing she ever gave you has spoken a word on her behalf since. Vask has heard the end of that story from three different footmen. He is waiting, with the patience of a man who sells messages by the word, to see whether you have one.{/n}''',
       c("Continue", "offer")),
     nar("offer", '''{n}"A message to a lady," Vask says, "costs what the lady will do to the messenger. Choose your words accordingly."{/n}''',
       c('[Tip the wine-factor to carry it word for word] "Tell Lady Vellexia the crusader she found so diverting left her house bored, and has not thought of her since."',
         "sent", mythic="Trickster", crusade=("Finances", -100)),
       c('[Let the Upper City keep its gossip] "Pour."', "silent")),
-    nar("sent", '''{n}Vask goes grey under the cambion red, repeats it back to you twice, and asks for his fee in advance.{/n}
-{n}Nine days later he is back, with lilac on his cuffs and one finger splinted. Her answer is not a card and not a letter. It is a single line he has been made to learn by heart: "Tell the crusader I am coming to see what boredom looks like, and that I shall know if it lies to me again."{/n}''',
+    nar("sent", '''{n}Vask goes grey under the cambion red, repeats it back to you twice, and asks for his fee in advance. Then he whistles up the boy who carries his ledgers through the rifts, and sends your words down the camp road before his nerve can fail.{/n}
+{n}The boy is back before the last bottle is empty, with lilac on his cuffs and one finger splinted. Lady Vellexia, it seems, keeps a page of her own at the rift camp to hear whatever is said about her in Drezen. Her answer is not a card and not a letter. It is a single line the boy has been made to learn by heart: "Tell the crusader I am coming to see what boredom looks like, and that I shall know if it lies to me again."{/n}''',
       c('"Let her come."', flags=(PROVOKED, KNOWN, STARTED))),
     nar("silent", '''{n}The table moves on to the siege. Vask sells the rest of his red to the quartermaster, and takes no message back down the rift with him.{/n}''',
       c('"Pour."', flags=(DECLINED,))),
@@ -497,7 +497,7 @@ def visit_nodes(place_text, where):
           c('"You. Not a debt, not a trick. You."', "want", flags=("vellexia.trickster.cost.bored_once",)),
           c('"Your company. Your worst opinions."', "company", flags=("vellexia.trickster.cost.bored_once",))),
         v("want", '''"Me." {n}She laughs, low and genuinely surprised, and for a moment she looks her age, which is very old.{/n}
-"Do you remember what I told you about that game? Somebody always bares their throat. Somebody always decides to bite."
+"Love is a game, darling, and I will tell you its rules once. Somebody always lets down their guard and bares their throat. Somebody always decides to bite. And you must deceive yourself a little, or it is no fun at all."
 "Very well. Call me. I shall decide each time whether to answer, and I shall answer more often than is good for either of us."''',
           c('"I\'ll call."', flags=("vellexia.return_kept", "vellexia.renewed_slow", COURTING))),
         v("company", '''"My worst opinions. How greedy." {n}She pulls her cloak around her, ready for the road.{/n}
@@ -506,7 +506,7 @@ def visit_nodes(place_text, where):
         v("collect", '''{n}Her face does not change at all.{/n}
 "You undid me once, sweetheart. Do not mistake that for owning me. Everything that ever owned me is furniture."
 "We are finished, and I am the one who says so." {n}She does not look back from %s.{/n}''' % pl["door"],
-          c('[Let her go.]', flags=("vellexia.closed",))),
+          c('[Let her go.]', flags=("vellexia.closed", "vellexia.parted"))),
     ]
 
 
@@ -561,7 +561,7 @@ letter("vellexia.trickster.after.voice", "Bare walls", [
       c('"Your company. Your worst opinions. Nothing I\'d have to explain to a priest."', "company"),
       c('[Collect] "You owe me your life. I\'m collecting."', "collect")),
     v("want", '''"Me." {n}She laughs, low and genuinely surprised, and for a moment she looks her age, which is very old.{/n}
-"Do you remember what I told you about that game? Somebody always bares their throat. Somebody always decides to bite."
+"Love is a game, darling, and I will tell you its rules once. Somebody always lets down their guard and bares their throat. Somebody always decides to bite. And you must deceive yourself a little, or it is no fun at all."
 "Very well. Call me. I shall decide each time whether to answer, and I shall answer more often than is good for either of us."''',
       c('"I\'ll call."', flags=("vellexia.return_kept", "vellexia.renewed_slow", COURTING))),
     v("company", '''"My worst opinions. How greedy." {n}She stretches out on the floor with the shell propped on her knees.{/n}
@@ -571,7 +571,7 @@ letter("vellexia.trickster.after.voice", "Bare walls", [
 "You undid me once, sweetheart. Do not mistake that for owning me. Everything that ever owned me is furniture."
 "We are finished, and I am the one who says so."
 {n}The glass clouds over. It does not light again.{/n}''',
-      c('[Close the shell.]', flags=("vellexia.closed",))),
+      c('[Close the shell.]', flags=("vellexia.closed", "vellexia.parted"))),
 ], requires=("trickster.ever", VISITED), forbids=(KEPT, "vellexia.return_kept"), delay=24)
 
 
@@ -618,19 +618,24 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
 
 # --- Epilogue: the late commit (R2-6) and paragraphs on her registered endings ------------------------------------------
 
+# Q11 r4: a paragraph about the life they go on sharing never plays on an ended correspondence, a friendship, a dead or
+# changed Commander (the native "sacrifice" ending is its own page; a Commander who came back is not "sacrifice" there).
+CONTINUING_NOT = ("vellexia.closed", "vellexia.parted", "vellexia.farewell_friends", "vellexia.farewell_slow", "sacrifice",
+                  "inhuman", "ascended")
 TRICKSTER_PARAGRAPHS = (
     p("The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited "
       "to, and she sent anonymous corrections to the speeches.", requires=(PRESUMED,), forbids=(KEPT,)),
     p("She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this "
       "the most unsettling thing about the house.", requires=(BARE,)),
-    p("Her hands were never finished. She wore gloves in company and took them off only for the Commander, who knew what "
-      "the gloves were for.", requires=(DIMINISHED,)),
+    p("Her hands were never finished, and she never let another painter near them.", requires=(DIMINISHED,)),
+    p("She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+      requires=(DIMINISHED,), forbids=CONTINUING_NOT),
     p("She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way "
       "other women describe a scar.", requires=(PREDICTED,)),
     p("She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the "
       "Upper City now walk.", requires=(TRICK_KEPT,)),
     p("She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, "
-      "always in company.", requires=("vellexia.trickster.cost.bored_once",)),
+      "always in company.", requires=("vellexia.trickster.cost.bored_once",), forbids=CONTINUING_NOT),
     p("A portrait of the Commander changed hands in the Upper City three times before the war was over, each time for more. "
       "Nobody who bought it would say what it showed. Vellexia bought it in the end, and never said either.", requires=(SAT,)),
 )

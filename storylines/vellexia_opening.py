@@ -129,7 +129,7 @@ s("second_painter", "A seam in the surprise", '"Has your artist explained the po
 "He has taught it to flatter."
 "More precisely, he has taught it which answers to hide."
 {n}Vellexia's amusement vanishes for a moment.{/n}
-"How diligent of him. I buy a surprise, and he kindly spares me the inconvenience of receiving one."
+"How diligent of him. I buy a surprise, and he kindly spares me the shock of receiving one."
 {n}She examines the junctions without touching them. You follow the wire to an adjustment hidden beside the catch. There are three small notches. It has been set to the last.{/n}
 "Can it be changed?"
 "Yes. I would begin with the middle notch. The original might be overwhelming without any restraint."
@@ -238,7 +238,7 @@ s("price_of_novelty", "The artist's second account", '"What did the artist admit
 {n}After the outer door closes, she returns to the empty table.{/n}
 "Gone. I find that I wanted the picture more once I had decided to refuse it. An irritating discovery. You owe me another."
 "I did not make the promise on the receipt."
-"No. You made yourself interesting while I was reading it. That is less enforceable, but far more inconvenient."
+"No. You made yourself interesting while I was reading it. That is less enforceable, and far more dangerous to you."
 {n}She draws a chair toward the cleared space.{/n}
 "Come back. We shall attempt a portrait without purchasing another artist's disappointment."''', c('"I will come back to see what you mean."', flags=("vellexia.price_settled", "vellexia.returned_picture"))),
 ], requires=("vellexia.panel_examined",))
