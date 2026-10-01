@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-iomedae\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4160,
-  "unique_targets": 879,
+  "binding_uses": 4164,
+  "unique_targets": 883,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -2049,6 +2049,22 @@
     "684c56330c5a4db4d80b99150a308c69": {
       "path": "World/Dialogs/Epilogues/Cue_0571.jbp",
       "type": "BlueprintCue"
+    },
+    "dfe36dafa2aa423badcfc58845521a30": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0023.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "c8e8d245e469495fa43bc3cefbb759b9": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0024.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "b310f96f6a3149f1ad439d5cfe285f25": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0025.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "52eeccb144a04ff79650f08eacff9a17": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0028.jbp",
+      "type": "BlueprintAnswer"
     },
     "33960c7f7af40cd43b7f801a76c87a0b": {
       "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",

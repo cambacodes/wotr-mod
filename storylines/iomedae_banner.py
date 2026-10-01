@@ -567,7 +567,7 @@ remote(E + "dream.questions", "Not in any report", [
     io("first", '''"I asked first." {n}A pause.{/n} "Very well. You asked a fair question. I will answer it."''',
        c("Continue", "hers")),
     io("hers", '''"Then here is one of mine, which is in no report either." {n}The white warms, very slightly.{/n}
-"Before a battle I ate bread and a raw onion, like a carter, because an old sergeant told me that a knight who could keep food down before a fight could do anything. I have not eaten an onion since the Starstone." {n}The voice considers this with apparent surprise.{/n} "I find that I miss them. That is the kind of thing I do not say to my herald."''',
+"Before a battle I ate bread and a raw onion, like a carter, because an old sergeant told me that a knight who could keep food down before a fight could do anything. I have not eaten an onion since the Starstone." {n}The voice considers this with apparent surprise.{/n} "I miss them. That is the kind of thing I do not say to my herald."''',
        c('"What else do you miss?"', "miss"),
        c('"I\'ll bring you one. Afterwards."', "onion")),
     io("miss", '''"Being tired in the ordinary way. Being wrong about small things, where it did not matter. Rain." {n}A pause.{/n} "Being touched without its meaning anything to anyone but the two people concerned. Gods do not get that. Everything we touch becomes a relic, or a scandal."''',

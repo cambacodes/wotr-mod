@@ -191,6 +191,15 @@ internal static class Program
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintFeature", StringComparison.Ordinal), "Wrong native fact type: " + guid);
             Seed<Kingmaker.Blueprints.Classes.BlueprintFeature>(guid);
         }
+        // E14e: a story line inserted ahead of a native cue needs its native parents (Continue First) loaded like the game does.
+        var continueParents = story.Scenes.Where(s => s.ContinueBefore != null).SelectMany(s => s.ContinueBefore!.Parents).Distinct().ToArray();
+        foreach (string guid in continueParents)
+        {
+            Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintCue", StringComparison.Ordinal), "Wrong native continue parent type: " + guid);
+            var parent = Seed<BlueprintCue>(guid);
+            parent.Continue = new Kingmaker.DialogSystem.CueSelection { Strategy = (Kingmaker.DialogSystem.Strategy)Enum.Parse(typeof(Kingmaker.DialogSystem.Strategy), (string)native[guid]["Continue"]!["Strategy"]!),
+                Cues = NativeReferences((JObject)native[guid]["Continue"]!, "Cues").Select(Reference<BlueprintCueBaseReference>).ToList() };
+        }
         foreach (string guid in unitIds)
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintUnit", StringComparison.Ordinal), "Wrong native unit type: " + guid);
@@ -388,6 +397,17 @@ internal static class Program
             Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + latch)) is BlueprintUnlockableFlag
                 && ResourcesLibrary.TryGetBlueprint(Id("flag.hour." + latch)) is BlueprintUnlockableFlag, "Latch flag not registered: " + latch);
         NativeAudienceTests.Run(story, Check);
+        foreach (var scene in story.Scenes.Where(s => s.ContinueBefore != null))
+        {
+            var line = ResourcesLibrary.TryGetBlueprint(Id("cue." + scene.Id + ".continue"));
+            foreach (string guid in scene.ContinueBefore!.Parents)
+            {
+                var cues = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(guid))!).Continue.Cues.Select(r => r.Guid).ToList();
+                int at = cues.IndexOf(BlueprintGuid.Parse(scene.ContinueBefore.Cue));
+                Check(line != null && at > 0 && cues[at - 1] == line.AssetGuid && cues.Count(g => g == line.AssetGuid) == 1,
+                    "Continue-before line is not inserted once, right before its anchor: " + scene.Id + " in " + guid);
+            }
+        }
         if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
         EndingDeliveryTests.Run(story, Id, Check);
         if (expandedEpilogue != null)

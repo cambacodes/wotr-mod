@@ -124,6 +124,16 @@ CONCEDED_AT_WOUND = E + "conceded_at_wound"
 KISSED_AT_WOUND = E + "kissed_at_wound"
 RESCUE_ONLY = E + "rescue_only"               # she conceded the argument at the Wound, and nothing else
 ARGUMENT_ONLY = E + "argument_only"           # the disputation held; the Commander took the argument and declined the rest
+DEAD_TO_WORLD = E + "dead_to_world"           # Derived: the world buried the Commander (her bridge, or Last Call's empty coffin)
+VERDICT = E + "afterlogue.verdict_heard"      # the E14e line in Pharasma's court was shown
+APPEALS = (E + "afterlogue.appeal_mercy", E + "afterlogue.appeal_iomedae", E + "afterlogue.appeal_justice",
+           E + "afterlogue.appeal_balance")   # SelectedAnswers: the Commander intervened at Areelu's trial (Cue_26's own condition)
+PHARASMA_UNIT = "db064cafc234498ca83a702c472c1a7b"
+APPEAL_ANSWERS = ("dfe36dafa2aa423badcfc58845521a30", "b310f96f6a3149f1ad439d5cfe285f25", "c8e8d245e469495fa43bc3cefbb759b9",
+                  "52eeccb144a04ff79650f08eacff9a17")  # afterlogue Answer_0023/0025/0024/0028
+VERDICT_CUE = "b4602032fbbd4c4c9c04493f5fe6ddcb"  # Epilogues_afterlogues/Cue_26: "You have earned your peace."
+VERDICT_PARENTS = ["da7646b4ce8e4e658ee92aa02877ec17", "abafa9f923204d5a96cb13bec9ab7771", "d7c1d87165af414ebffbd4f50151af49",
+                   "9377e7d23348467ab12a3de0a94246fc", "f8b124e1f6584f54a9a3f80e85973a0c"]  # Cue_0017/0018/0019/12/19, Continue First
 COURTED = E + "courted"                       # Derived: the disputation held, or at least two of her own conversations
 FALSE_FACE = E + "false_face_seen"             # Chapter 4: something in Alushinyrra wore her face in a dream
 STUDIED = E + "canons_studied"               # the cathedral's canons read before the disputation (Lore DC 20, not 24)
@@ -169,6 +179,7 @@ DERIVED = {
     KEPT: [[SACRIFICE, WOUND_CLOSED, "trickster.ever", CARRIED, COMMITTED]],
     RESCUED: [[SACRIFICE, WOUND_CLOSED, "trickster.ever", CARRIED, RESCUE_ONLY]],
     BURIED_ALIVE: [[KEPT], [RESCUED]],
+    DEAD_TO_WORLD: [[KEPT], [RESCUED], ["lastcall.dead_on_record"]],
     COURTED: [[DISPUTED], [E + "dream.summit", E + "dream.herald"], [E + "dream.summit", CALLED], [E + "dream.herald", CALLED]],
     MIRACLE: [[KEPT], [RESCUED]],
     # No late romance: eligibility, the Table and Last Call read a concession she actually made.
@@ -485,13 +496,13 @@ remote(E + "disputation", "Disputation", [
        c('"Then I\'ll take the argument, and leave the other thing where you set it down. You have a war. I won\'t make you carry me as well."', "argument_only")),
     io("argument_only", '''{n}The shadow on the stones goes still. When she speaks the formality is back in every syllable, and you have the impression that she put it on the way a knight puts a helm on: quickly, and because something needed covering.{/n}
 "Noted." {n}A pause.{/n} "The argument stands. What I conceded after it stands as well; I do not take a thing back because it was declined. You will have the banner at the Wound, and I will decide there whether to answer it, as I would have decided in any case."
-{n}Another pause, shorter.{/n} "That was courteously done. I had not expected courtesy from you. I find I do not know what to do with it."''',
+{n}Another pause, shorter.{/n} "That was courteously done. I had not expected courtesy from you." {n}She does not say what she means to do with it.{/n}''',
        c("[Stay until the torches burn down, and say nothing more.]", flags=(DISPUTED, ARGUMENT_ONLY))),
-    io("square_want", '''"Since the square." {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} "I told you in front of a demon lord that you were going to die, and that was when. You have poor taste, Commander." {n}A pause.{/n} "I find I do not mind it."''',
+    io("square_want", '''"Since the square." {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} "I told you in front of a demon lord that you were going to die, and that was when. You have poor taste, Commander." {n}A pause.{/n} "So, it seems, have I."''',
        c("[Stay on the platform until the torches burn down.]", "torches")),
     io("will", '''"I conceded that I may. I did not say that I will." {n}The voice does not waver.{/n} "You will learn it at the Wound, when I do. I will not promise you a miracle to make you braver. You are brave enough, and it would be a lie, because I have not decided."''',
        c('"Then I\'ll see you at the Wound."', "torches")),
-    io("rain", '''"Since the rain." {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} "A banner's memory of a tired girl in the mud. You have poor taste, Commander." {n}A pause.{/n} "I find I do not mind it."''',
+    io("rain", '''"Since the rain." {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} "A banner's memory of a tired girl in the mud. You have poor taste, Commander." {n}A pause.{/n} "So, it seems, have I."''',
        c("[Stay on the platform until the torches burn down.]", "torches")),
     io("staff", '''{n}Something passes down the staff under your palm, warm, like a hand closing over yours from above.{/n}
 "Yes," {n}she says,{/n} "there."''',
@@ -604,6 +615,18 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
 tag(E + "threshold.banner")
 
 
+# --- The afterlogue (E14e): at Areelu's trial, when the Commander intervened, Pharasma's closing line to a sacrificed Commander
+# (Cue_26, "You have earned your peace") is replaced in the bridge world by the terms she set on the bridge page. Cue_25 (the
+# living Commander) and Cue_27 (the demon) come first in every parent's Continue(First) list and do not hold here.
+
+SCENES.append(scene(E + "afterlogue.verdict", "The terms", "Iomedae", 6, "", [
+    n("verdict", "Pharasma", '''"Now you, {name}, the mortal who walked back over a bridge that was not yours to cross. You have done the impossible, and I have written it down as it happened: you died closing the Worldwound, and your death stands in my book. The Inheritor has answered to me for the rest. Go back to your grave and live beside it. When you come to this hall again there will be no bridge, and no one will be permitted to argue for you."''',
+      c("Continue", flags=(VERDICT,)), speaker_unit=PHARASMA_UNIT),
+], requires=("trickster.ever", BURIED_ALIVE), forbids=(VERDICT,), last=99, optional=True, Relationship=REL,
+    ContinueBefore=dict(Cue=VERDICT_CUE, Parents=list(VERDICT_PARENTS)), RequiresAnyGroups=[list(APPEALS)]))
+tag(E + "afterlogue.verdict")
+
+
 # --- Reactions (named companions with a stake: Seelah, her paladin; Sosiel, Shelyn's priest; Daeran, her mocker). -----------
 
 SCENES.append(reaction("Seelah", E + "react.seelah", ("trickster.ever", DISPUTED, "seelah.in_party"),
@@ -712,8 +735,21 @@ page("bridge", "The Bridge", [
         c("Continue", "sword_end", requires=(BANNER_HELD,)),
         c("Continue", "order_end", forbids=(BANNER_HELD,))),
     nar("sword_end", '''{n}At the far end she reaches out and takes your wrist and pulls, and you are standing on rock that does not burn. Then she lets the banner go behind you, into the fire, so that nothing can follow. The Sword of Valor drops into the seam and the seam closes over it, and where the Worldwound was there is a scar in the ground, smoking, and her banner is part of the scar.{/n}''',
-        c("Continue", "grave")),
+        c("Continue", "grey")),
     nar("order_end", '''{n}The cathedral's banner holds, and burns. By the far end it is burning under your hand where you grip its edge to keep your feet, and you do not let go, because she does not. When you step off onto rock that does not burn, your palm is burned to the bone and the banner is ash behind you, falling into a seam that closes over it, and where the Worldwound was there is a scar in the ground, smoking.{/n}''',
+        c("Continue", "grey")),
+    nar("grey", '''{n}Then there is no rock, and no fire, and no scar. There is a grey place, very large and very quiet, and a woman on a throne of bone who has been waiting for you longer than you have been alive. You know her the way you know the ground under you when you fall on it.{/n}
+"The key that walked out of its lock," {n}says the Lady of Graves.{/n} "I have heard your argument, mortal. You made it on a roof, to someone else. Nobody dies who comes back over: that is a lawyer's sentence, and it is false. You died in the Wound. I watched the thread cut."''',
+        c('"Then why am I talking to you?"', "terms"),
+        c("[Say nothing.]", "terms")),
+    nar("terms", '''"Because the Inheritor is standing behind you, and she has asked." {n}You do not turn. You can feel her there the way you felt her at the far end of the banner.{/n}
+"Hear my terms, then. Your death stays in my book, written as it happened: the Commander of the Fifth Crusade died closing the Worldwound. The world keeps its grave, and you will not contradict it, in word or in face. When you come to this hall again there will be no bridge, and no one will be permitted to argue for you: not she, and not your own tongue. And the Inheritor answers to me for this one, in whatever coin I name, whenever I name it."''',
+        c('"Why would you agree to that?"', "why_terms"),
+        c("[Look back at Iomedae.]", "liable")),
+    nar("why_terms", '''"Because since Kenabres you have been a knot in my threads, and every prophecy that touched you came out wrong." {n}The Lady of Graves does not smile; it is not clear that she can.{/n} "Now you are an entry. Entries I can live with. And a goddess who owes me is worth more than one mortal's last forty years."''',
+        c("[Look back at Iomedae.]", "liable")),
+    nar("liable", '''{n}Iomedae is in plain steel, with one hand still closed as if on a staff that is not there.{/n} "I accept them," {n}she says.{/n} "All of them. Write my name beside the debt."
+"It is written," {n}says the Lady of Graves.{/n} "Go back, mortal. Do not thank either of us."''',
         c("Continue", "grave")),
     nar("grave", '''"The Commander of the Fifth Crusade died in the Wound," {n}says Iomedae.{/n} "I saw it. So did the world. You will not contradict us."''',
         c('"And what am I?"', "what"),
@@ -739,7 +775,7 @@ page("bridge", "The Bridge", [
               requires=(CONCEDED_AT_WOUND,)),
             p('''You had told her once that it was a sure thing. It was not, and you went anyway. That was the part she kept.''',
               requires=(COST_BOASTED,)),
-            p('''Somewhere between the seam and the stones there was a grey place where a voice asked you questions, and what was left of your power gave you the right to answer them. When you woke you could not remember a word of it. Iomedae could. The Lady of Graves had heard the case: yours, made on a roof, and hers, made in that grey place. She was not persuaded that nobody had died. She ruled anyway. Your death stands in her book, and the world keeps its grave. At the next appointment there is no appeal. And the Inheritor answers to her for this one. On those terms she let you go back over. She did not say she had been persuaded, and Iomedae did not pretend she had.'''),
+            p('''You remembered the grey place when you woke, every word of it, and the terms. You have kept them since. So has she.'''),
             p('''Drezen woke to find the Sword of Valor gone from the world with its Commander. The chaplains said the Commander had carried it into the Wound as the Inheritor once carried it into battle, and they were right, and never knew how right. The invasions ended with the Wound, but the city's walls had to be watched the old way again, with wards and patrols and a priest at every gate, because every demon lord in the Abyss knew that the banner was gone.''',
               requires=(BANNER_HELD,)),
             p('''The hand that held the cathedral's banner over the fire never closed properly again.''',
@@ -754,7 +790,7 @@ page("lived", "The Argument, Continued", [
         c("Continue", "closed", requires=(WOUND_CLOSED,), forbids=(SACRIFICE,)),
         c("Continue", "flask", requires=(H2,), forbids=(CARRIED,)),
         c("Continue", "open", forbids=(WOUND_CLOSED,))),
-    nar("closed", '''"You did not go in," {n}says Iomedae, before anything else.{/n} "Something else was the key, in the end. I stood at the edge beside my banner with the fire in front of me and nothing to answer." {n}She sits down, heavily for a goddess, like a soldier at the end of a march.{/n} "I had spent a month deciding. I find that I am relieved, and that I resent the month."''',
+    nar("closed", '''"You did not go in," {n}says Iomedae, before anything else.{/n} "Something else was the key, in the end. I stood at the edge beside my banner with the fire in front of me and nothing to answer." {n}She sits down, heavily for a goddess, like a soldier at the end of a march.{/n} "I had spent a month deciding. I am relieved. I resent the month."''',
         c('"Sorry to waste your decision."', "wasted"),
         c("[Kiss her.]", "kissed")),
     nar("wasted", '''"It was not wasted. I know what I would have done." {n}She looks at you sidelong.{/n} "So, I think, do you. That is enough. I do not need to have been tested to know what I am."''',
@@ -766,7 +802,8 @@ page("lived", "The Argument, Continued", [
         c('"I didn\'t want to make you choose."', "choose")),
     nar("preferred", '''"I would." {n}A pause.{/n} "I also prefer you alive. I did not expect the two preferences to disagree, and I do not enjoy it." {n}Then, at last, she sits.{/n}''',
         c("Continue", "end")),
-    nar("choose", '''"That was a coward's choice, and you made it for me." {n}She considers it with evident distaste.{/n} "I do not know whether to be insulted or moved. I will be both, in turn, for some time." {n}Then, at last, she sits.{/n}''',
+    nar("choose", '''"You decided for me." {n}Her voice does not rise. It goes flat, the way it went flat in the square.{/n} "The one choice at that Wound that was mine, and you took it out of my hands and called it kindness. Do not do that again. Not to me."
+{n}Then she sits down, all at once, and puts her hand over yours on the table, and leaves it there.{/n}''',
         c("Continue", "end")),
     nar("open", '''"You left it open," {n}says Iomedae. No greeting.{/n} "Every soul it eats from now on, it eats because you chose a joke over a lock."''',
         c("Continue", "open_banner", requires=(CARRIED,)),
@@ -788,10 +825,14 @@ page("lived", "The Argument, Continued", [
 
 page("platform", "Where It Flew", [
     nar("night", '''{n}The platform on top of the citadel of Drezen, at night.{/n}''',
-        c("Continue", "buried", requires=(KEPT,)),
-        c("Continue", "open", forbids=(KEPT,))),
-    nar("buried", '''{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the postern under the east wall. The sergeant who keeps it served under you at the citadel gate; she saw your face under the hood the first night, and went white, and opened the door, and has opened it every night since without a word, and climbs to the platform stair ahead of you to send the watch on an errand. Nobody else looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}
-{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}''',
+        c("Continue", "buried", requires=(DEAD_TO_WORLD,)),
+        c("Continue", "open", forbids=(DEAD_TO_WORLD,))),
+    nar("buried", '''{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the postern under the east wall. The sergeant who keeps it served under you at the citadel gate; she saw your face under the hood the first night, and went white, and opened the door, and has opened it every night since without a word, and climbs to the platform stair ahead of you to send the watch on an errand. Nobody else looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}''',
+        c("Continue", "bare_kept", requires=(KEPT,)),
+        c("Continue", "bare_flask", forbids=(KEPT,))),
+    nar("bare_kept", '''{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}''',
+        c("Continue", "her")),
+    nar("bare_flask", '''{n}The pole is bare tonight. Whatever flew there at dusk has been taken down and folded on the parapet, squared at the corners the way a soldier folds a thing, and you know who asked for it.{/n}''',
         c("Continue", "her")),
     nar("open", '''{n}You climb the stair you have climbed a hundred times, past a sentry who salutes and asks nothing.{/n}''',
         c("Continue", "open_left", requires=(CARRIED,)),
@@ -812,7 +853,7 @@ page("platform", "Where It Flew", [
         c('"The knight. You argued a dead man into his grave."', "liked", requires=(E + "dream.test",))),
     nar("liked", '''"Of course you did." {n}Something at the corner of her mouth, and this time she does not put it away.{/n} "It is the one where I was most like you. I have been trying to decide for some time whether that is a compliment to either of us."''',
         c("[Go to her.]", "close")),
-    nar("why", '''"Because I would not have this be something either of us was asleep for." {n}She stands. In this shape she is a little shorter than you expected, and a good deal broader through the shoulder.{/n} "And because I have not owed myself anything since the Starstone. I find that I owe myself this."''',
+    nar("why", '''"Because I would not have this be something either of us was asleep for." {n}She stands. In this shape she is a little shorter than you expected, and a good deal broader through the shoulder.{/n} "And because I have not owed myself anything since the Starstone. I owe myself this."''',
         c("[Go to her.]", "close")),
     nar("pole", '''"Bare," {n}she agrees.{/n}''',
         c("Continue", "pole_kept", requires=(KEPT,)),
@@ -836,7 +877,7 @@ page("platform", "Where It Flew", [
         c('"They\'re beautiful."', "liar")),
     nar("ribs", '''{n}Her breath goes out of her short and hard, and her hand closes in your hair and holds you there. She lets it go on until she is shaking, the way an arm shakes that has held a weight too long.{/n}''',
         c("Continue", "cloak")),
-    nar("liar", '''"They are scars," {n}she says,{/n} "and you are a liar." {n}Her thumb traces your mouth.{/n} "I find I do not mind that tonight."''',
+    nar("liar", '''"They are scars," {n}she says,{/n} "and you are a liar." {n}Her thumb traces your mouth.{/n} "Tonight I will allow it."''',
         c("Continue", "cloak")),
     nar("cloak", '''{n}Then she does something you will remember for the rest of your life. She unclasps her cloak and casts it out across the bare stones of the platform, the way she once cast one out across a gorge, and it lies there flat and dark under the empty pole.{/n}
 "It has been a bridge," {n}says Iomedae.{/n} "It can be this."''',
@@ -844,7 +885,15 @@ page("platform", "Where It Flew", [
     nar("down", '''{n}She pulls you down onto it with her, rolls you under her, and comes up astride, the braid falling over one bare shoulder and the empty pole black against the stars behind her head. The stones are cold through the wool. She is not. Her hands press your wrists down into the cloak and hold them there while she looks at you, all of you, as if she were being careful not to miss anything. Then she lets go, and bends, and her mouth is at your throat, and her hands go to the laces of your shirt.{/n}
 "No banner," {n}she says.{/n} "No goddess. No war until morning."''',
         c("Continue", "morning_kept", requires=(KEPT,)),
-        c("Continue", "morning_open", forbids=(KEPT,))),
+        c("Continue", "morning_open", forbids=(KEPT, DEAD_TO_WORLD)),
+        c("Continue", "morning_dead", requires=(DEAD_TO_WORLD,), forbids=(KEPT,))),
+    nar("morning_dead", '''{n}You wake cold on the stones with her cloak over you and the sky over Drezen going grey. She is already in her steel, buckling the last strap one-handed, her helm under her arm.{/n}
+"I have a war," {n}she says.{/n} "So do you, though the world has buried you and it will be harder to wage."
+{n}Below, on the stair, boots: the sentry coming up on the morning round. You are the late Commander of the Fifth Crusade, and there is an empty coffin in the yard below with your name on it; you roll off the cloak into the shadow of the parapet and stay there, and she watches you do it with an expression that no sculptor has ever put on a statue of her.{/n}
+"I will come back. Not often. Do not wait on the platform; I will find you." {n}She tucks her cloak round you where you crouch. The boots are halfway up the stair. She does not hurry.{/n} "One thing more. The Commander of the Fifth Crusade is buried in the yard below. What am I to call what is left?"''',
+        c("[Tell her a name you make up on the spot.]", "name_new"),
+        c("[Tell her your own name, the one from before the crusade.]", "name_old"),
+        c('"You choose."', "name_hers")),
     nar("morning_kept", '''{n}You wake cold on the stones with her cloak over you and the sky over Drezen going grey. She is already in her steel, buckling the last strap one-handed, her helm under her arm.{/n}
 "I have a war," {n}she says.{/n} "So do you, though you are dead and it will be harder to wage."
 {n}Below, on the stair, boots: the sentry coming up on the morning round. You are the late Commander of the Fifth Crusade, and your grave is in the yard below; you roll off the cloak into the shadow of the parapet and stay there, and she watches you do it with an expression that no sculptor has ever put on a statue of her.{/n}
@@ -901,13 +950,13 @@ page("gate", "A Stranger", [
     nar("graves", '''"That she had noticed." {n}Iomedae is quiet for a moment.{/n} "She does not waste words. Nor do I, usually. I put your argument to her, and then mine. She agreed with neither. A soul that stands on a goddess's banner is on nobody's road, she said, and she would not have it argued over twice. She let you go on her terms: you are dead in her book, there is no appeal at the next appointment, and I answer to her for this one. I do. Then she told me that next time there will be nothing to cross back over, and that she will be waiting at the other end of it herself."
 {n}She looks at the road.{/n} "I told her I knew. I have known since the gorge. Everything I have ever carried across something, I have had to leave something on the other side."''',
         c("Continue", "leave")),
-    nar("miracle", '''"No." {n}Then, because you go on looking at her:{/n} "Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done." {n}She looks at the road.{/n} "I find I would rather be owed."''',
+    nar("miracle", '''"No." {n}Then, because you go on looking at her:{/n} "Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done." {n}She looks at the road.{/n} "I would rather be owed."''',
         c("Continue", "leave")),
     nar("supper", '''"Supper." {n}She says it as if the word amused her more than it should.{/n} "Very well. Supper. Then the war."
 {n}She eats what the stranger eats, which is bread and whatever there is, and she eats it the way soldiers eat, quickly and without looking at it, and when she has finished she takes the last onion off the board without asking and eats that too, raw, and does not explain.{/n}''',
         c("Continue", "leave")),
     nar("hand", '''{n}She lets you. She turns her hand over in yours and looks at the two hands together as if they were a document she was reading for errors. She does not find any. She does not let go.{/n}
-"This is not permitted," {n}she remarks, to nobody in particular.{/n} "There are canons about it. My priests wrote them, in my name. I find they did not write them very well."''',
+"This is not permitted," {n}she remarks, to nobody in particular.{/n} "There are canons about it. My priests wrote them, in my name. They did not write them very well."''',
         c("Continue", "leave")),
     nar("leave", '''{n}She stays longer than she meant to and less long than either of you would like. When she goes she goes the way soldiers go, without ceremony and without looking back, and the stranger watches her down the road until the road bends.{/n}''',
         c("Continue")),
@@ -959,7 +1008,7 @@ page("after", "Here and There", [
               requires=(KISSED_AT_WOUND,)),
             p('''The word in the socket stayed where it had been sealed, under a thumbprint in the wax, at the foot of the bare pole over Drezen. Nobody else ever read it. She said she had read it enough for everyone.''',
               requires=(TESTED,), forbids=(SLIP_BURNED,)),
-            p('''When the second appointment comes there will be no appeal; she has said so. She comes anyway.'''),
+            p('''When the second appointment comes there will be no appeal; she has said so. She comes anyway.''', requires=(KEPT,)),
         )),
 ], requires=(COMMITTED,), forbids=(SACRIFICE, CLOSED), **ALIVE)
 
@@ -1047,6 +1096,7 @@ def integrate(payload):
     expansion.py; the world keys (iz.*, iomedae.key_dies_revealed, seelah.*, sosiel.*, daeran.*, sacrifice, ending.*)
     bind on demand in trickster_world, whose trickster.commander_back carries the bridge world."""
     _bind(payload, "SeenCues", SEEN_CUES)
+    _bind(payload, "SelectedAnswers", dict(zip(APPEALS, APPEAL_ANSWERS)))
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != [list(g) for g in groups]:

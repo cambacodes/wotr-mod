@@ -375,6 +375,25 @@ internal static class IomedaeTricksterTests
               && !Render(Pg("respect"), sentLost).Contains("flew over Drezen")
               && !Pg("lived").Nodes[0].Text.Contains("did not go into the Wound"),
             "Trk_Iomedae_Worlds: a sent-away Commander's banner ignores Iz, or the lived opening denies a Last Call sacrifice.");
+        // Audit r6: the world's dead Commander (bridge or Last Call's coffin) is hidden on the platform; the appointment line is
+        // the bridge world's only; Pharasma's terms are staged on the bridge page; the court's closing line follows them.
+        var flaskW = World(story, 6, "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle");
+        var plat2 = Pg("platform");
+        check(Avail(plat2, flaskW) && Reachable(plat2, flaskW).Any(x => x.Contains("postern under the east wall"))
+              && !Reachable(plat2, flaskW).Any(x => x.Contains("sentry who salutes")) && !Reachable(plat2, flaskW).Any(x => x.Contains("still its Commander"))
+              && Reachable(plat2, flaskW).Any(x => x.Contains("empty coffin in the yard")) && !Reachable(plat2, flaskW).Any(x => x.Contains("nothing will ever be at the top"))
+              && Reachable(plat2, bridgeW).Any(x => x.Contains("nothing will ever be at the top")) && Reachable(plat2, livedW).Any(x => x.Contains("sentry who salutes")),
+            "Trk_Iomedae_Coexist: a Commander the world buried is saluted on the platform, or the flask world inherits the bridge's pole.");
+        check(Render(Pg("after"), bridgeW).Contains("no appeal") && !Render(Pg("after"), livedW).Contains("no appeal")
+              && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Hear my terms")) && Reachable(Pg("bridge"), bridgeW).Any(x => x.Contains("Write my name beside the debt")),
+            "Trk_Iomedae_Worlds: the appointment leaks into an ordinary life, or the Lady of Graves' terms are not staged.");
+        var verdict = S(P + "afterlogue.verdict");
+        check(verdict.ContinueBefore != null && verdict.ContinueBefore.Cue == "b4602032fbbd4c4c9c04493f5fe6ddcb" && verdict.ContinueBefore.Parents.Length == 5
+              && verdict.Nodes[0].SpeakerUnit == "db064cafc234498ca83a702c472c1a7b"
+              && Avail(verdict, World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, P + "afterlogue.appeal_mercy"))
+              && !Avail(verdict, bridgeW) && !Avail(verdict, World(story, 6, "trickster.ever", Started, Committed, "ending.wound_closed", P + "afterlogue.appeal_mercy"))
+              && Avail(verdict, World(story, 6, "trickster.ever", Started, Carried, P + "rescue_only", "sacrifice", "ending.wound_closed", Held, P + "afterlogue.appeal_justice")),
+            "Trk_Iomedae_Afterlogue: Pharasma's peace for a dead Commander is not replaced in the bridge world (or is replaced outside it).");
         check(pages.All(pg => pg.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))) && pages.Length == 8
               && Avail(Pg("gate"), bridgeW) && !Avail(Pg("gate"), livedW),
             "Trk_Iomedae_Pages: a page sets a flag, or a page is missing.");

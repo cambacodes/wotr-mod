@@ -210115,8 +210115,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.parent_romanced",
-          "targona.trickster.late_committed"
+          "targona.trickster.late_committed",
+          "targona.trickster.parent_romanced"
         ]
       ]
     },
@@ -424604,7 +424604,7 @@
         {
           "Id": "argument_only",
           "Speaker": "Iomedae",
-          "Text": "{n}The shadow on the stones goes still. When she speaks the formality is back in every syllable, and you have the impression that she put it on the way a knight puts a helm on: quickly, and because something needed covering.{/n}\n\"Noted.\" {n}A pause.{/n} \"The argument stands. What I conceded after it stands as well; I do not take a thing back because it was declined. You will have the banner at the Wound, and I will decide there whether to answer it, as I would have decided in any case.\"\n{n}Another pause, shorter.{/n} \"That was courteously done. I had not expected courtesy from you. I find I do not know what to do with it.\"",
+          "Text": "{n}The shadow on the stones goes still. When she speaks the formality is back in every syllable, and you have the impression that she put it on the way a knight puts a helm on: quickly, and because something needed covering.{/n}\n\"Noted.\" {n}A pause.{/n} \"The argument stands. What I conceded after it stands as well; I do not take a thing back because it was declined. You will have the banner at the Wound, and I will decide there whether to answer it, as I would have decided in any case.\"\n{n}Another pause, shorter.{/n} \"That was courteously done. I had not expected courtesy from you.\" {n}She does not say what she means to do with it.{/n}",
           "Choices": [
             {
               "Text": "[Stay until the torches burn down, and say nothing more.]",
@@ -424623,7 +424623,7 @@
         {
           "Id": "square_want",
           "Speaker": "Iomedae",
-          "Text": "\"Since the square.\" {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} \"I told you in front of a demon lord that you were going to die, and that was when. You have poor taste, Commander.\" {n}A pause.{/n} \"I find I do not mind it.\"",
+          "Text": "\"Since the square.\" {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} \"I told you in front of a demon lord that you were going to die, and that was when. You have poor taste, Commander.\" {n}A pause.{/n} \"So, it seems, have I.\"",
           "Choices": [
             {
               "Text": "[Stay on the platform until the torches burn down.]",
@@ -424655,7 +424655,7 @@
         {
           "Id": "rain",
           "Speaker": "Iomedae",
-          "Text": "\"Since the rain.\" {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} \"A banner's memory of a tired girl in the mud. You have poor taste, Commander.\" {n}A pause.{/n} \"I find I do not mind it.\"",
+          "Text": "\"Since the rain.\" {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} \"A banner's memory of a tired girl in the mud. You have poor taste, Commander.\" {n}A pause.{/n} \"So, it seems, have I.\"",
           "Choices": [
             {
               "Text": "[Stay on the platform until the torches burn down.]",
@@ -425620,6 +425620,63 @@
       ]
     },
     {
+      "Id": "iomedae.trickster.afterlogue.verdict",
+      "Title": "The terms",
+      "Owner": "Iomedae",
+      "MinChapter": 6,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "verdict",
+          "Speaker": "Pharasma",
+          "Text": "\"Now you, {name}, the mortal who walked back over a bridge that was not yours to cross. You have done the impossible, and I have written it down as it happened: you died closing the Worldwound, and your death stands in my book. The Inheritor has answered to me for the rest. Go back to your grave and live beside it. When you come to this hall again there will be no bridge, and no one will be permitted to argue for you.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "iomedae.trickster.afterlogue.verdict_heard"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "SpeakerUnit": "db064cafc234498ca83a702c472c1a7b"
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "iomedae.trickster.buried_alive"
+      ],
+      "Forbids": [
+        "iomedae.trickster.afterlogue.verdict_heard"
+      ],
+      "DelayHours": 0,
+      "Optional": true,
+      "Relationship": "iomedae",
+      "ContinueBefore": {
+        "Cue": "b4602032fbbd4c4c9c04493f5fe6ddcb",
+        "Parents": [
+          "da7646b4ce8e4e658ee92aa02877ec17",
+          "abafa9f923204d5a96cb13bec9ab7771",
+          "d7c1d87165af414ebffbd4f50151af49",
+          "9377e7d23348467ab12a3de0a94246fc",
+          "f8b124e1f6584f54a9a3f80e85973a0c"
+        ]
+      },
+      "RequiresAnyGroups": [
+        [
+          "iomedae.trickster.afterlogue.appeal_mercy",
+          "iomedae.trickster.afterlogue.appeal_iomedae",
+          "iomedae.trickster.afterlogue.appeal_justice",
+          "iomedae.trickster.afterlogue.appeal_balance"
+        ]
+      ]
+    },
+    {
       "Id": "iomedae.trickster.react.seelah",
       "Title": "Seelah's word",
       "Owner": "Seelah",
@@ -426128,7 +426185,7 @@
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "grave",
+              "Next": "grey",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -426141,6 +426198,86 @@
           "Id": "order_end",
           "Speaker": "Narrator",
           "Text": "{n}The cathedral's banner holds, and burns. By the far end it is burning under your hand where you grip its edge to keep your feet, and you do not let go, because she does not. When you step off onto rock that does not burn, your palm is burned to the bone and the banner is ash behind you, falling into a seam that closes over it, and where the Worldwound was there is a scar in the ground, smoking.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "grey",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "grey",
+          "Speaker": "Narrator",
+          "Text": "{n}Then there is no rock, and no fire, and no scar. There is a grey place, very large and very quiet, and a woman on a throne of bone who has been waiting for you longer than you have been alive. You know her the way you know the ground under you when you fall on it.{/n}\n\"The key that walked out of its lock,\" {n}says the Lady of Graves.{/n} \"I have heard your argument, mortal. You made it on a roof, to someone else. Nobody dies who comes back over: that is a lawyer's sentence, and it is false. You died in the Wound. I watched the thread cut.\"",
+          "Choices": [
+            {
+              "Text": "\"Then why am I talking to you?\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Say nothing.]",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Narrator",
+          "Text": "\"Because the Inheritor is standing behind you, and she has asked.\" {n}You do not turn. You can feel her there the way you felt her at the far end of the banner.{/n}\n\"Hear my terms, then. Your death stays in my book, written as it happened: the Commander of the Fifth Crusade died closing the Worldwound. The world keeps its grave, and you will not contradict it, in word or in face. When you come to this hall again there will be no bridge, and no one will be permitted to argue for you: not she, and not your own tongue. And the Inheritor answers to me for this one, in whatever coin I name, whenever I name it.\"",
+          "Choices": [
+            {
+              "Text": "\"Why would you agree to that?\"",
+              "Next": "why_terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Look back at Iomedae.]",
+              "Next": "liable",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "why_terms",
+          "Speaker": "Narrator",
+          "Text": "\"Because since Kenabres you have been a knot in my threads, and every prophecy that touched you came out wrong.\" {n}The Lady of Graves does not smile; it is not clear that she can.{/n} \"Now you are an entry. Entries I can live with. And a goddess who owes me is worth more than one mortal's last forty years.\"",
+          "Choices": [
+            {
+              "Text": "[Look back at Iomedae.]",
+              "Next": "liable",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "liable",
+          "Speaker": "Narrator",
+          "Text": "{n}Iomedae is in plain steel, with one hand still closed as if on a staff that is not there.{/n} \"I accept them,\" {n}she says.{/n} \"All of them. Write my name beside the debt.\"\n\"It is written,\" {n}says the Lady of Graves.{/n} \"Go back, mortal. Do not thank either of us.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426298,7 +426435,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "Somewhere between the seam and the stones there was a grey place where a voice asked you questions, and what was left of your power gave you the right to answer them. When you woke you could not remember a word of it. Iomedae could. The Lady of Graves had heard the case: yours, made on a roof, and hers, made in that grey place. She was not persuaded that nobody had died. She ruled anyway. Your death stands in her book, and the world keeps its grave. At the next appointment there is no appeal. And the Inheritor answers to her for this one. On those terms she let you go back over. She did not say she had been persuaded, and Iomedae did not pretend she had.",
+              "Text": "You remembered the grey place when you woke, every word of it, and the terms. You have kept them since. So has she.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -426392,7 +426529,7 @@
         {
           "Id": "closed",
           "Speaker": "Narrator",
-          "Text": "\"You did not go in,\" {n}says Iomedae, before anything else.{/n} \"Something else was the key, in the end. I stood at the edge beside my banner with the fire in front of me and nothing to answer.\" {n}She sits down, heavily for a goddess, like a soldier at the end of a march.{/n} \"I had spent a month deciding. I find that I am relieved, and that I resent the month.\"",
+          "Text": "\"You did not go in,\" {n}says Iomedae, before anything else.{/n} \"Something else was the key, in the end. I stood at the edge beside my banner with the fire in front of me and nothing to answer.\" {n}She sits down, heavily for a goddess, like a soldier at the end of a march.{/n} \"I had spent a month deciding. I am relieved. I resent the month.\"",
           "Choices": [
             {
               "Text": "\"Sorry to waste your decision.\"",
@@ -426488,7 +426625,7 @@
         {
           "Id": "choose",
           "Speaker": "Narrator",
-          "Text": "\"That was a coward's choice, and you made it for me.\" {n}She considers it with evident distaste.{/n} \"I do not know whether to be insulted or moved. I will be both, in turn, for some time.\" {n}Then, at last, she sits.{/n}",
+          "Text": "\"You decided for me.\" {n}Her voice does not rise. It goes flat, the way it went flat in the square.{/n} \"The one choice at that Wound that was mine, and you took it out of my hands and called it kindness. Do not do that again. Not to me.\"\n{n}Then she sits down, all at once, and puts her hand over yours on the table, and leaves it there.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426668,7 +426805,7 @@
               "Next": "buried",
               "Set": [],
               "Requires": [
-                "iomedae.appointment_kept"
+                "iomedae.trickster.dead_to_world"
               ],
               "Forbids": [],
               "Abort": false
@@ -426676,6 +426813,34 @@
             {
               "Text": "Continue",
               "Next": "open",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.trickster.dead_to_world"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "buried",
+          "Speaker": "Narrator",
+          "Text": "{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the postern under the east wall. The sergeant who keeps it served under you at the citadel gate; she saw your face under the hood the first night, and went white, and opened the door, and has opened it every night since without a word, and climbs to the platform stair ahead of you to send the watch on an errand. Nobody else looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "bare_kept",
+              "Set": [],
+              "Requires": [
+                "iomedae.appointment_kept"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "bare_flask",
               "Set": [],
               "Requires": [],
               "Forbids": [
@@ -426687,9 +426852,25 @@
           "Portrait": ""
         },
         {
-          "Id": "buried",
+          "Id": "bare_kept",
           "Speaker": "Narrator",
-          "Text": "{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the postern under the east wall. The sergeant who keeps it served under you at the citadel gate; she saw your face under the hood the first night, and went white, and opened the door, and has opened it every night since without a word, and climbs to the platform stair ahead of you to send the watch on an errand. Nobody else looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}\n{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}",
+          "Text": "{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "bare_flask",
+          "Speaker": "Narrator",
+          "Text": "{n}The pole is bare tonight. Whatever flew there at dusk has been taken down and folded on the parapet, squared at the corners the way a soldier folds a thing, and you know who asked for it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426859,7 +427040,7 @@
         {
           "Id": "why",
           "Speaker": "Narrator",
-          "Text": "\"Because I would not have this be something either of us was asleep for.\" {n}She stands. In this shape she is a little shorter than you expected, and a good deal broader through the shoulder.{/n} \"And because I have not owed myself anything since the Starstone. I find that I owe myself this.\"",
+          "Text": "\"Because I would not have this be something either of us was asleep for.\" {n}She stands. In this shape she is a little shorter than you expected, and a good deal broader through the shoulder.{/n} \"And because I have not owed myself anything since the Starstone. I owe myself this.\"",
           "Choices": [
             {
               "Text": "[Go to her.]",
@@ -427039,7 +427220,7 @@
         {
           "Id": "liar",
           "Speaker": "Narrator",
-          "Text": "\"They are scars,\" {n}she says,{/n} \"and you are a liar.\" {n}Her thumb traces your mouth.{/n} \"I find I do not mind that tonight.\"",
+          "Text": "\"They are scars,\" {n}she says,{/n} \"and you are a liar.\" {n}Her thumb traces your mouth.{/n} \"Tonight I will allow it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427089,8 +427270,53 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
+                "iomedae.appointment_kept",
+                "iomedae.trickster.dead_to_world"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "morning_dead",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.dead_to_world"
+              ],
+              "Forbids": [
                 "iomedae.appointment_kept"
               ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "morning_dead",
+          "Speaker": "Narrator",
+          "Text": "{n}You wake cold on the stones with her cloak over you and the sky over Drezen going grey. She is already in her steel, buckling the last strap one-handed, her helm under her arm.{/n}\n\"I have a war,\" {n}she says.{/n} \"So do you, though the world has buried you and it will be harder to wage.\"\n{n}Below, on the stair, boots: the sentry coming up on the morning round. You are the late Commander of the Fifth Crusade, and there is an empty coffin in the yard below with your name on it; you roll off the cloak into the shadow of the parapet and stay there, and she watches you do it with an expression that no sculptor has ever put on a statue of her.{/n}\n\"I will come back. Not often. Do not wait on the platform; I will find you.\" {n}She tucks her cloak round you where you crouch. The boots are halfway up the stair. She does not hurry.{/n} \"One thing more. The Commander of the Fifth Crusade is buried in the yard below. What am I to call what is left?\"",
+          "Choices": [
+            {
+              "Text": "[Tell her a name you make up on the spot.]",
+              "Next": "name_new",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Tell her your own name, the one from before the crusade.]",
+              "Next": "name_old",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"You choose.\"",
+              "Next": "name_hers",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -427485,7 +427711,7 @@
         {
           "Id": "miracle",
           "Speaker": "Narrator",
-          "Text": "\"No.\" {n}Then, because you go on looking at her:{/n} \"Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done.\" {n}She looks at the road.{/n} \"I find I would rather be owed.\"",
+          "Text": "\"No.\" {n}Then, because you go on looking at her:{/n} \"Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done.\" {n}She looks at the road.{/n} \"I would rather be owed.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427517,7 +427743,7 @@
         {
           "Id": "hand",
           "Speaker": "Narrator",
-          "Text": "{n}She lets you. She turns her hand over in yours and looks at the two hands together as if they were a document she was reading for errors. She does not find any. She does not let go.{/n}\n\"This is not permitted,\" {n}she remarks, to nobody in particular.{/n} \"There are canons about it. My priests wrote them, in my name. I find they did not write them very well.\"",
+          "Text": "{n}She lets you. She turns her hand over in yours and looks at the two hands together as if they were a document she was reading for errors. She does not find any. She does not let go.{/n}\n\"This is not permitted,\" {n}she remarks, to nobody in particular.{/n} \"There are canons about it. My priests wrote them, in my name. They did not write them very well.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427765,7 +427991,9 @@
             },
             {
               "Text": "When the second appointment comes there will be no appeal; she has said so. She comes anyway.",
-              "Requires": [],
+              "Requires": [
+                "iomedae.appointment_kept"
+              ],
               "Forbids": [],
               "AnyGroups": []
             }
@@ -430474,7 +430702,7 @@
         {
           "Id": "hers",
           "Speaker": "Iomedae",
-          "Text": "\"Then here is one of mine, which is in no report either.\" {n}The white warms, very slightly.{/n}\n\"Before a battle I ate bread and a raw onion, like a carter, because an old sergeant told me that a knight who could keep food down before a fight could do anything. I have not eaten an onion since the Starstone.\" {n}The voice considers this with apparent surprise.{/n} \"I find that I miss them. That is the kind of thing I do not say to my herald.\"",
+          "Text": "\"Then here is one of mine, which is in no report either.\" {n}The white warms, very slightly.{/n}\n\"Before a battle I ate bread and a raw onion, like a carter, because an old sergeant told me that a knight who could keep food down before a fight could do anything. I have not eaten an onion since the Starstone.\" {n}The voice considers this with apparent surprise.{/n} \"I miss them. That is the kind of thing I do not say to my herald.\"",
           "Choices": [
             {
               "Text": "\"What else do you miss?\"",
@@ -435737,8 +435965,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -438017,6 +438245,10 @@
     "eliandra.northern_lights_awakened": "984d9d1432ea89044a6515be61a22125",
     "horzalah.killed": "5de3ea4370854d229e047d95980006c9",
     "horzalah.killed_b": "717a2f84c7dbfd24dbb474abd26211b3",
+    "iomedae.trickster.afterlogue.appeal_mercy": "dfe36dafa2aa423badcfc58845521a30",
+    "iomedae.trickster.afterlogue.appeal_iomedae": "b310f96f6a3149f1ad439d5cfe285f25",
+    "iomedae.trickster.afterlogue.appeal_justice": "c8e8d245e469495fa43bc3cefbb759b9",
+    "iomedae.trickster.afterlogue.appeal_balance": "52eeccb144a04ff79650f08eacff9a17",
     "lastcall.flask_taken": "dbf6695999d744747aeb2d4f20b21b50",
     "storyteller.asked_queen": "b9d78ba896d19b14aa6c371dda617979",
     "shamira.cauldron_shown": "7b0b6c9d1425a7a41a154ee1b566842b",
@@ -440149,6 +440381,17 @@
       ],
       [
         "iomedae.trickster.rescued"
+      ]
+    ],
+    "iomedae.trickster.dead_to_world": [
+      [
+        "iomedae.appointment_kept"
+      ],
+      [
+        "iomedae.trickster.rescued"
+      ],
+      [
+        "lastcall.dead_on_record"
       ]
     ],
     "iomedae.trickster.courted": [
