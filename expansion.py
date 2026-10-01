@@ -72,6 +72,7 @@ from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
 from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
+from storylines import wenduag_trickster, wenduag_cairn
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -538,6 +539,15 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(elyanka_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(elyanka_hearse.SCENES))
     elyanka_trickster.integrate(payload)
+    # Wenduag: a new relationship (trickster/wenduag.md; 11-ROSTER-PLAN-2 §2, R6 build sheet): the Mongrel cairn. At
+    # Lann's Q1 kill the Commander's own blow is pulled and the burial taken alone, her knife in her hand; in the traitor
+    # and exile worlds the Commander outbids Savamelekh before he can buy her, and she falls in front of his gang. The
+    # courtship (wenduag_cairn) is Chapter 5, and every romance scene yields to her native romance (read only).
+    payload["Relationships"]["wenduag"] = copy.deepcopy(wenduag_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(wenduag_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(wenduag_cairn.SCENES))
+    wenduag_trickster.integrate(payload)
+    wenduag_cairn.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

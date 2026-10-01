@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 977,
-  "resolved": 977,
-  "inlineOnlyScenes": 242,
-  "inlineOnlyResolved": 242,
-  "answerListScenesWithoutContact": 563,
-  "answerListScenesWithoutContactResolved": 563,
-  "lists": 100,
-  "listsWithReachableHost": 99
+  "entryTargetScenes": 992,
+  "resolved": 992,
+  "inlineOnlyScenes": 255,
+  "inlineOnlyResolved": 255,
+  "answerListScenesWithoutContact": 578,
+  "answerListScenesWithoutContactResolved": 578,
+  "lists": 104,
+  "listsWithReachableHost": 103
  },
  "scenes": {
   "a_crossing": {
@@ -18912,6 +18912,299 @@
     "cue": "Cue_0001",
     "clicks": 0
    }
+  },
+  "wenduag.lastcall.call": {
+   "kind": "return-to-list",
+   "lists": [
+    "294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "294126e3264796e488ce19bfb1851355": "RRT_entry.wenduag.lastcall.call.294126e3264796e488ce19bfb1851355",
+    "16994192cfa484744bd10852b8dc806f": "RRT_entry.wenduag.lastcall.call.16994192cfa484744bd10852b8dc806f",
+    "b6bc1d5fb28e115499b8bcbbc0d541f9": "RRT_entry.wenduag.lastcall.call.b6bc1d5fb28e115499b8bcbbc0d541f9",
+    "3d3357c0474ce5a4bb13d68730faecb8": "RRT_entry.wenduag.lastcall.call.3d3357c0474ce5a4bb13d68730faecb8",
+    "e77c405d6dde5804bb1f873f971958b8": "RRT_entry.wenduag.lastcall.call.e77c405d6dde5804bb1f873f971958b8"
+   },
+   "resolved": true,
+   "host": {
+    "list": "294126e3264796e488ce19bfb1851355",
+    "dialog": "f125dc501dc6e984385332e67f324f01",
+    "dialogName": "GrandFinal_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.crystal.bid": {
+   "kind": "return-cue",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.wenduag.trickster.crystal.bid"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.early.gate": {
+   "kind": "return-cue",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.wenduag.trickster.early.gate"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.early.teeth": {
+   "kind": "return-cue",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.wenduag.trickster.early.teeth"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.early.walls": {
+   "kind": "return-cue",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.wenduag.trickster.early.walls"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.early.yaniel": {
+   "kind": "return-cue",
+   "lists": [
+    "ced27e744d2dded40bbb5adf17816dbb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ced27e744d2dded40bbb5adf17816dbb": "RRT_entry.wenduag.trickster.early.yaniel"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ced27e744d2dded40bbb5adf17816dbb",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.exile.bid_hub": {
+   "kind": "return-cue",
+   "lists": [
+    "0f4612672dd4d3e4d84575b23ffdddb3"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0f4612672dd4d3e4d84575b23ffdddb3": "RRT_entry.wenduag.trickster.exile.bid_hub"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0f4612672dd4d3e4d84575b23ffdddb3",
+    "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+    "dialogName": "Wenduag_dialogue_main",
+    "cue": "Cue_0016",
+    "clicks": 1
+   }
+  },
+  "wenduag.trickster.exile.bid_traitor": {
+   "kind": "return-cue",
+   "lists": [
+    "25a503735f9dd5448b84649add442029"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "25a503735f9dd5448b84649add442029": "RRT_entry.wenduag.trickster.exile.bid_traitor"
+   },
+   "resolved": true,
+   "host": {
+    "list": "25a503735f9dd5448b84649add442029",
+    "dialog": "2eb1dc57dfda0294e82683220bae7b59",
+    "dialogName": "WenduagTraitorCompanion_dialogue",
+    "cue": "Cue_0025",
+    "clicks": 1
+   }
+  },
+  "wenduag.trickster.killed.stage": {
+   "kind": "return-cue",
+   "lists": [
+    "71ec232384eb5d349aff0b7d60f092ed"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "71ec232384eb5d349aff0b7d60f092ed": "RRT_entry.wenduag.trickster.killed.stage"
+   },
+   "resolved": true,
+   "host": {
+    "list": "71ec232384eb5d349aff0b7d60f092ed",
+    "dialog": "6d17f0dee27a7a9449d0ee9a641f8266",
+    "dialogName": "WenduagDefeated_dialogue",
+    "cue": "Cue_0019",
+    "clicks": 5
+   }
+  },
+  "wenduag.trickster.lann.found_out": {
+   "kind": "return-to-list",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.lann.found_out.66385ad77fa743e4bb1234078dbd804c"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.lann.truth": {
+   "kind": "return-to-list",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.lann.truth.66385ad77fa743e4bb1234078dbd804c"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.react.irabeth_traitor": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.wenduag.trickster.react.irabeth_traitor"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.react.lann_morning": {
+   "kind": "dialog",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.react.lann_morning"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.traitor.bid": {
+   "kind": "return-cue",
+   "lists": [
+    "9bad7ea452d30254997b153473954cc1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "9bad7ea452d30254997b153473954cc1": "RRT_entry.wenduag.trickster.traitor.bid"
+   },
+   "resolved": true,
+   "host": {
+    "list": "9bad7ea452d30254997b153473954cc1",
+    "dialog": "2eb1dc57dfda0294e82683220bae7b59",
+    "dialogName": "WenduagTraitorCompanion_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.traitor.nerves": {
+   "kind": "return-cue",
+   "lists": [
+    "9bad7ea452d30254997b153473954cc1"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "9bad7ea452d30254997b153473954cc1": "RRT_entry.wenduag.trickster.traitor.nerves"
+   },
+   "resolved": true,
+   "host": {
+    "list": "9bad7ea452d30254997b153473954cc1",
+    "dialog": "2eb1dc57dfda0294e82683220bae7b59",
+    "dialogName": "WenduagTraitorCompanion_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
   }
  },
  "lists": {
@@ -19555,6 +19848,129 @@
       "cf997c49d95e6264abacf51f561020b4": 2,
       "e0e977e116f070a43aacc5b52c3f69e7": 2,
       "e390f535bc03daa48abde40d681f9bf3": 2
+     }
+    }
+   ]
+  },
+  "0f4612672dd4d3e4d84575b23ffdddb3": {
+   "list": "0f4612672dd4d3e4d84575b23ffdddb3",
+   "listName": "AnswersList_0017",
+   "hosts": [
+    {
+     "dialog": "7383531c4dcf5f54d9d291e452bb84dd",
+     "dialogName": "Wenduag_dialogue_main",
+     "cues": [
+      "f436e2adfafcc6541849a828790416ca"
+     ],
+     "cueNames": [
+      "Cue_0016"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0297",
+       "take": "Answer_0015"
+      }
+     ],
+     "answerDist": {
+      "0201f8148c4e99741ab3850f3cad103f": 3,
+      "03f202309be50514f9a5466e0a2cbd1b": 4,
+      "056c71a1f6a13a947a945d37da183393": 2,
+      "0b0d503c95ce0b6498dc4c5c233889b9": 3,
+      "0de26d772cb6040499d967c693a72dd0": 3,
+      "0de77ac08147ce34e8d1838fa5dab623": 5,
+      "15039ee1d94304d4caf538a36123a266": 3,
+      "1c9ad560ac0c9114d8a1ca1cfe9d5aef": 2,
+      "20acfc44cb19bba4980c7e503ea0669d": 3,
+      "2659c4ef978380942980eb34d9b8e7db": 3,
+      "26bac1f361cb9f14d9b781e0fa0bdc7d": 3,
+      "27e202b6d25a51448b45154fdc6761d3": 2,
+      "28b978ad829c371429f10e52f7343759": 3,
+      "2b5543f841ac65344876ace042b70743": 2,
+      "2fc44476348c3a741ad7c0cfbe43e57f": 3,
+      "3293dc01b8539bd4db487ba2da609758": 3,
+      "3911137bebd52ec4984597ddf36f52cc": 2,
+      "3a24055a9d995834f80c7e250427c4eb": 3,
+      "405e71fde71971942b80d36183a02fdc": 4,
+      "414ad9e519f697644a5bd3324ff892d1": 2,
+      "43d92cd44fcf8534fb1ea3273dc43371": 2,
+      "4444e6476fe816141a169dacc51c0f97": 3,
+      "44b2a530f65c5524ca840a87763637d5": 4,
+      "46904e95d3d239d478b6a083f2477114": 2,
+      "47723b57edf39be49833d868cca07f83": 3,
+      "484f538a05bb58c409bfcf59e04f4dd2": 2,
+      "48f7a73b07d6c4948b061ed549c29445": 3,
+      "4d6199282bf43cc40a0834befdf98b21": 3,
+      "4ef0fdfaff6578f4a936e867f1ab483e": 4,
+      "5159588e2f4d18948bb5d74dd2a20531": 3,
+      "51a2fc30be28c3345b95c9506df06ae8": 5,
+      "51e1d39b5077e6c4587d9fa676d7cf6a": 3,
+      "542092cd2475ea84abd6b93848c7b18b": 2,
+      "54fb8f541db19ca4ab19884fdb9c2e2c": 3,
+      "5764c0c9e4ef2654da5815f6191ad46d": 4,
+      "588a2311ef473014ab8d8bcf75cbfabf": 3,
+      "5cca07c406e7f2a4787d02ef9a867b79": 3,
+      "65fb242e2d6ae1246ab38ac33e602792": 2,
+      "663acc6aa59ac8144b2d954c041806b7": 3,
+      "699abb35bd18b9c4ebb875483eca211a": 3,
+      "6a3875e722a77894e9a5c60707c3af15": 3,
+      "6b93e776f246a984680a8246b3e2c2d9": 2,
+      "6c216a7607dac4045ba62d634da1e1c4": 3,
+      "6d04f29fd0b8e99449aac0f7298cde14": 2,
+      "6e7c9fc9d4c6b034ca500c3f7a6da663": 3,
+      "6faa385d6c4b1a745a0d74fc433c68ec": 2,
+      "723be7877bc3c8047b26319fc3cd4dd1": 2,
+      "759d17d55fe39a142bfc818284cfb49a": 3,
+      "77a57cf1c1138f149943a2329377c9c5": 2,
+      "794322736d911344cb9f95e5a78faad7": 2,
+      "7bc4ac24d88769e479fd66b0ef016283": 4,
+      "7d3193e27da88324eb01d5dd009a56b5": 2,
+      "7f05aeda98771ac4b83eec9b8590138d": 4,
+      "854833cfdf48e5b4abc6445bb6e0bc3e": 2,
+      "89a15150915fe2540ad24bf11e67425f": 3,
+      "8b4db2527922e4641a1ee1138f3155e8": 3,
+      "8f0cb25fa236a4242ba2e9a2c2c71330": 3,
+      "93a25d52b01570149a1ca2954ae24ea4": 3,
+      "94006bf9efab9e3459e75e2c63359536": 3,
+      "980212f8272522446a072c50dfe1ed75": 2,
+      "984f3d710adb4f742945301461f83146": 3,
+      "9a73fd94854abeb47a2646d362a200e7": 4,
+      "9ad9b86cbae4b2a42b5349402dab11e4": 2,
+      "a7a09aa0dfc4ba9459da47ff910b0dcc": 3,
+      "ac5dd1491a051a64b9bc4ff283c8b128": 2,
+      "aed87fd15cf929b4e9ef39f20ed47f03": 3,
+      "b35e6760de11e994081a4502ed8f0d00": 3,
+      "b982485434459194d9958a61bf21a957": 4,
+      "ba46f179f1c955a4a90c6187d35b26fa": 3,
+      "c06c20bc3f0f8ed45914b99078f2defc": 4,
+      "c5f7c3c0856f246449b1c1ce63b41c57": 3,
+      "c69e6cad443800a4aa6587b561e59a98": 2,
+      "c95b79f8a94702447a39a7f132cc1579": 2,
+      "cb5a42c7c84e04e4ea333ec90ffbedf5": 3,
+      "cddf4e5cada74464997e7254449a66d2": 2,
+      "d247f07837cb6e24887e0e1a708f3b13": 3,
+      "d39fcc32195a46d49a21edfa2be0cf90": 3,
+      "d3a5a44ab855b5c46b7ac7219b03ecbb": 4,
+      "d3a93da19f7006348968c4c7fbf486bf": 4,
+      "d46fefe5818803749ba7566c584915c2": 2,
+      "d50354262054baa4385ccd32600e2223": 2,
+      "da148ff9b13ba0347a909e0288b16036": 2,
+      "daca3b65228a7e2468e2f7080b29a367": 3,
+      "db9e56fa36d0fe943a2d189f568e2ee6": 3,
+      "e5d168ca5409d084188482df3fba8505": 3,
+      "e752882d918bc2142b62564163c7498a": 2,
+      "e92766b9297700b428b5af1a6a01b54a": 3,
+      "ea48cf98e133456418e007c54ef24996": 3,
+      "eb8807e8816a29f49a13f0a5adc4cefd": 2,
+      "ee4ef2fff7bcf4946b52443ac65de8ed": 3,
+      "f81090f4c2a9d7149807bbdfb546707b": 4,
+      "fbb6ae812006b7449bb4362efe2743be": 3,
+      "fbce169db2f0c9d43a9413c306cd2f30": 3,
+      "fbce4b55d49d0004ba56ba019dbc5326": 3,
+      "fcc1420094d9f64429d417694d4e08c9": 3,
+      "fcc1c93915fb0f848b4e55b364b49a32": 1
      }
     }
    ]
@@ -20704,6 +21120,44 @@
       "f49059bcec587cd4089ca6e76b6614f2": 2,
       "f7167714954a10740ab59dd019d1affc": 2,
       "fc852ce1254e07743b36269a441c88a2": 2
+     }
+    }
+   ]
+  },
+  "25a503735f9dd5448b84649add442029": {
+   "list": "25a503735f9dd5448b84649add442029",
+   "listName": "AnswersList_0026",
+   "hosts": [
+    {
+     "dialog": "2eb1dc57dfda0294e82683220bae7b59",
+     "dialogName": "WenduagTraitorCompanion_dialogue",
+     "cues": [
+      "62fb54095bcb8364fa834213c4283256"
+     ],
+     "cueNames": [
+      "Cue_0025"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "Answer_0008"
+      }
+     ],
+     "answerDist": {
+      "10a78ee878207be498cfaa9392d8cacf": 3,
+      "3df04462da5d87f42ac246bb0dea9646": 3,
+      "4531dde33252f764e8dca37569afcb0d": 2,
+      "535c886fd4e410942bdd6cdbcc8a2c8f": 3,
+      "549af1370ef7b094aaa903e4bbeb3a90": 2,
+      "634523f9615cc7e4593e4e6bdcd16587": 1,
+      "88a2b3a4aa6306548891862c5c4fe8b2": 3,
+      "99af9bf083a96e74da757fc5d2446368": 3,
+      "d99b5ad263a93904f95447716a86a43e": 2,
+      "fa44c511e5f5ab04cb38f355628f5d67": 2,
+      "ffdec298a826dbe4393bb031b1ecd503": 2
      }
     }
    ]
@@ -23165,6 +23619,58 @@
     }
    ]
   },
+  "71ec232384eb5d349aff0b7d60f092ed": {
+   "list": "71ec232384eb5d349aff0b7d60f092ed",
+   "listName": "AnswersList_0045",
+   "hosts": [
+    {
+     "dialog": "6d17f0dee27a7a9449d0ee9a641f8266",
+     "dialogName": "WenduagDefeated_dialogue",
+     "cues": [
+      "1d3ea8f8fe724a841b509dcab0961436"
+     ],
+     "cueNames": [
+      "Cue_0019"
+     ],
+     "speaker": "cb29621d99b902e4da6f5d232352fbda",
+     "reachable": true,
+     "clicks": 5,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "Answer_0006",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0010",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0039",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0040",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0050",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "11cf06e7662914746b6eeba79f28a89c": 7,
+      "28e6130dbcc821f4da7b336f73dd222b": 7,
+      "372aba7fb97b9534987be9427c4c379d": 5,
+      "55b7b49f1e7b4784a9804553cc6ff8a7": 6,
+      "5af0a44cbebe7154cbdc789d51ded88b": 8,
+      "e5051e07f2c7d734aba726d15e250a44": 6,
+      "eb84ef62475a0324aae01bb5758a3deb": 7,
+      "fb42776ee410415438b1400b644a0203": 8
+     }
+    }
+   ]
+  },
   "74989c07fc5fd8a42b18b333dc40acc1": {
    "list": "74989c07fc5fd8a42b18b333dc40acc1",
    "listName": "AnswersList_0003",
@@ -23881,6 +24387,51 @@
       "ba896768013472f478b1cef133551c6c": 2,
       "bff907ac27c4b284a8d5b352eba70519": 2,
       "d293b540fcc854945926bdba02b412ce": 1
+     }
+    }
+   ]
+  },
+  "9bad7ea452d30254997b153473954cc1": {
+   "list": "9bad7ea452d30254997b153473954cc1",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "2eb1dc57dfda0294e82683220bae7b59",
+     "dialogName": "WenduagTraitorCompanion_dialogue",
+     "cues": [
+      "ae74cd885f565b0479c471e006419672",
+      "daeb0e0796521c042bdd6baebbce7ade",
+      "c0215ee87cf866b48b8f23d972abda92",
+      "5e8edde6ab28ead4e996e9dc3ceba4b6",
+      "81df71b3b294ad641a3bfb36370fe354",
+      "0ad229979c720bc44bc17c031ce153e8",
+      "bab133a2c5c07724589a2bfe5c9d7e0f"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0010",
+      "Cue_0011",
+      "Cue_0012",
+      "Cue_0024",
+      "Cue_0030"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "10a78ee878207be498cfaa9392d8cacf": 2,
+      "3df04462da5d87f42ac246bb0dea9646": 2,
+      "4531dde33252f764e8dca37569afcb0d": 1,
+      "535c886fd4e410942bdd6cdbcc8a2c8f": 2,
+      "549af1370ef7b094aaa903e4bbeb3a90": 1,
+      "634523f9615cc7e4593e4e6bdcd16587": 2,
+      "88a2b3a4aa6306548891862c5c4fe8b2": 2,
+      "99af9bf083a96e74da757fc5d2446368": 2,
+      "d99b5ad263a93904f95447716a86a43e": 1,
+      "fa44c511e5f5ab04cb38f355628f5d67": 1,
+      "ffdec298a826dbe4393bb031b1ecd503": 1
      }
     }
    ]
