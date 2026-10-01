@@ -512,6 +512,8 @@ internal static class Program
             // PP9: the early threads T2 (Hepzamirah <- Voetiel) and T3 (Shamira <- Telmer), 15b-EARLY-THREADS.md.
             if (story.Scenes.Any(s => s.Id == "hepzamirah.early.moon_message")) EarlyThreadsTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "longcon.tell_them")) LongConTests.Run(story, Check);
+            // PP2: Camellia, Kaylessa and Arueshalae early beats, their readers, and the two near-miss fixes.
+            if (story.Scenes.Any(s => s.Id == "camellia.early.blood")) PacingPP2Tests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) JannahTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "aranka.early.duet")) PacingPP3Tests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) NenioTricksterTests.Run(story, Check);

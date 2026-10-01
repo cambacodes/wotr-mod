@@ -21,6 +21,11 @@ from storylines.camellia_trickster import (BY_ORDER, CLOSED, COMMITTED, DANCED, 
                                            WITNESS_LIED, cam, lead, met, nar)
 
 M = P + "masks."
+# PP2 early beats (camellia_early: path-neutral, set in the Prologue and Chapter 2), read here only.
+EARLY_ASKED = "camellia.early.blood.asked"
+EARLY_KEPT = "camellia.early.blood.kept"
+EARLY_SHIELD = "camellia.early.cart.shield"
+EARLY_WATCH = "camellia.early.cart.watch"
 
 TWO_LIES = M + "two_lies"
 MIREYA = M + "mireya"
@@ -43,6 +48,23 @@ def living(id, title, entry, nodes, requires=(), forbids=(), delay=48, chapter=3
 
 living(TWO_LIES, "Two lies and a truth", '"You look bored, Camellia. That seems dangerous."', [
     nar("open", '''{n}Camellia is sitting on her bedroll with a lap full of dried flowers, sorting them by some system known only to her: stems to the left, heads to the right, the ones with insects in them into a small silk bag that she ties very tightly.{/n}''',
+        c("Continue", "bored", forbids=(EARLY_ASKED, EARLY_KEPT, EARLY_SHIELD, EARLY_WATCH)),
+        # PP2 (13 section 2b): what she kept of the Prologue caves and the Chapter 2 cart, before she picks her game.
+        c("Continue", "early_asked", requires=(EARLY_ASKED,)),
+        c("Continue", "early_kept", requires=(EARLY_KEPT,), forbids=(EARLY_ASKED,)),
+        c("Continue", "early_shield", requires=(EARLY_SHIELD,), forbids=(EARLY_ASKED, EARLY_KEPT)),
+        c("Continue", "early_watch", requires=(EARLY_WATCH,), forbids=(EARLY_ASKED, EARLY_KEPT, EARLY_SHIELD))),
+    cam("early_asked", '''"You asked me about my skirts, once." {n}She does not look up from the flowers.{/n} "In the caves under Kenabres, with a dead man at my feet and you and your companions deciding whether I was worth the trouble of rescuing. You were the one who asked. I have been meaning to repay the attention."''',
+        c("Continue", "early_shield", requires=(EARLY_SHIELD,)),
+        c("Continue", "early_watch", requires=(EARLY_WATCH,), forbids=(EARLY_SHIELD,)),
+        c("Continue", "bored", forbids=(EARLY_SHIELD, EARLY_WATCH))),
+    cam("early_kept", '''"In the caves under Kenabres you looked at my skirts, and then at my face, and said nothing at all." {n}She drops a stem to the left.{/n} "I decided you had missed it. I have since revised my opinion of you, my friend. Upwards. I so rarely have to."''',
+        c("Continue", "early_shield", requires=(EARLY_SHIELD,)),
+        c("Continue", "early_watch", requires=(EARLY_WATCH,), forbids=(EARLY_SHIELD,)),
+        c("Continue", "bored", forbids=(EARLY_SHIELD, EARLY_WATCH))),
+    cam("early_shield", '''"At the camp, when the gargoyles came, you stood in front of me as though I were something that might break." {n}A dried poppy turns between her fingers.{/n} "People usually stand in front of me to get a better view of what is coming. You put your back to me. I have not decided yet whether that was brave or merely careless."''',
+        c("Continue", "bored")),
+    cam("early_watch", '''"At the camp, when the gargoyles came, you stood by the cart and watched me be frightened, to see what I would do instead." {n}A dried poppy turns between her fingers.{/n} "You saw what I did instead. You haven't asked me about it since. I find that I mind."''',
         c("Continue", "bored")),
     cam("bored", '''"Dangerous? Ha ha! You flatter me." {n}She does not look up.{/n} "I am never bored, my friend. I am waiting. Bored women yawn. I am deciding which of you to watch."
 {n}She holds a dried poppy up to the lamp, turns it, and drops it into the silk bag.{/n} "But since you are here, and since you are looking at me in that clever way, would you like to play a game? My teacher taught it to me when I was small. The old Varisian woman my father paid to live with us. She said it was how she learned when the spirits were lying."''',

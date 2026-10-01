@@ -87,7 +87,8 @@ class ProbeIsolationTests(unittest.TestCase):
         self.assertFalse(ids & set(harness_probes.PROBE_IDS), "a harness probe is in development/Story.json")
         self.assertNotIn("harness_probes", (ROOT / "expansion.py").read_text(encoding="utf-8"))
         # E-new 0 passed live (13 errata 2026-09-30); each shipped Prologue scene is reviewed (retcheck + replay text) and listed.
-        reviewed = {"anevia.early.watch", "seelah.early.pack"}   # PP1 (storylines/pacing_pp1.py)
+        reviewed = {"anevia.early.watch", "seelah.early.pack",   # PP1 (storylines/pacing_pp1.py)
+                    "camellia.early.blood"}                  # PP2 (MeetCamelia list 1ca6cf08, ReturnToList)
         self.assertEqual(sorted(s["Id"] for s in shipped["Scenes"] if rv.opens_in_prologue(rv.norm_scene(copy.deepcopy(s)))
                                 and s["Id"] not in reviewed), [],
                          "a shipped scene opens in the Prologue; review it (retcheck, replay text) and list it here")

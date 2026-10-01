@@ -324,7 +324,8 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
         c('[Play a cruel trick on Camellia] "Go on, then. Die convincingly. This time I\'m watching."', "scroll",
           mythic="Trickster", flags=(PRIMED, LATE, RAISED)),
         c('[Close the lid] "No. Let her stay dead."', flags=(DECLINED, CLOSED))),
-    nar("scroll", '''{n}Then you draw your knife across your own palm and hold it over her mouth, and speak to what goes to war with her: the spirits of battle she swore were always at her side. Keep her three nights more, you tell them, and give her back, and take it out of me. The blood runs between her lips. The lantern gutters. The sexton has stopped breathing. She has started.{/n}''',
+    nar("scroll", '''{n}Then you draw your knife across your own palm and hold it over her mouth, and speak to what goes to war with her: the spirits of battle she swore were always at her side. Nobody asked them to keep her before she died, and it is too late to ask for that now, so you ask for what is left. Give her back tonight, you tell them, and take it out of me.{/n}
+{n}They answer the way a creditor answers a man who comes after the day of payment. The palm is not enough. You open the vein at the wrist and hold it over her lips until the lantern-light goes grey at the edges, and they take the rest as a promise: blood at every new moon, for as long as she chooses. The blood runs between her lips. The lantern gutters. The sexton has stopped breathing. She has started.{/n}''',
         c("Continue", "shut", flags=(BARGAIN_COST, BARGAINED))),
     nar("shut", '''{n}Her eyes open. She looks up at you out of the box without moving anything else, and her voice is a dry whisper.{/n} "Rude. You bled on my face. Put the lid back. I'm dead until I say I'm not. That was the plan, wasn't it?"
 {n}You nod to the sexton. He lowers the lid on a woman who is, by every measure he knows, dead, and you both pretend very hard not to hear the small, delighted exhalation from inside the box as it closes.{/n}''',
@@ -332,7 +333,7 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
         c("[Go home]")),
     ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=5, Relationship=REL, Remote=True,
-    Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
+    Chapters=[3, 5], Areas=[DREZEN], TricksterDevice=True, TricksterState="killed_by_commander"))   # PP2 (Sol CAN): the Drezen cemetery
 
 
 # --- The third night (primed): the scroll read over her coffin. The device's operation, on the page. -----------------
@@ -357,7 +358,7 @@ SCENES.append(scene(P + "killed.third_night", "The third night", "Memory", 3, ""
     nar("home", '''{n}You walk the sexton back to the cemetery gate. He does not say anything. When you look back from the gate the lid is already a little askew, and the lilies on the grave have been rearranged, very neatly, by somebody with a strong opinion about flowers.{/n}''',
         c("[Go home]")),
     ], requires=("trickster.ever", PRIMED, KILLED), forbids=(LATE, RAISED, RET, DECLINED), delay=72, last=5, Relationship=REL,
-    Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
+    Remote=True, Chapters=[3, 5], Areas=[DREZEN], TricksterDevice=True, TricksterState="killed_by_commander"))   # PP2: the cemetery
 
 
 # --- The return, in person (R2-3): the veiled mourner at the end of Fye's bar. ---------------------------------------
@@ -466,7 +467,7 @@ SCENES.append(scene(P + "dead.overacting", "Curtain call", "Memory", 3, "", [
 # --- Her price (terms) and her test (the commit). Both in person; her refusal is reachable on every branch. -----------
 
 TERMS_LEADS = [
-    ("bowl", cam, '''"You held Mireya's bowl for me once, in the snow, while she drank. You didn't leave. I keep turning it over, like a coin I think might be false."''', BOWL_HELD),
+    ("bowl", cam, '''"You stood over Mireya's bowl with me once, in the snow, and watched me pour it out on the ground as full as it went in. You saw that, and you didn't say a word. I keep turning it over, like a coin I think might be false."''', BOWL_HELD),
     ("fed", cam, '''"In the Abyss, when the flies were loud, you sent me east to bleed demons, as if that would quiet them. It didn't. Demons aren't friends; there's nothing in their eyes when they understand. But you knew exactly what I was, and you pointed. I have been waiting ever since to see whether you would pretend otherwise."''', FED),
     ("dug", cam, '''"Your little thief is still digging after that porter in the lower city. She is very good. Tell her to stop before she reaches the bottom, or I will have to be very good too."''', INVESTIGATED),
     ("covered", cam, '''"'Deserters.' You wrote it yourself. I read it in the register and laughed until the spirits hushed me. You lie beautifully for a murderer, my friend."''', COVERED),

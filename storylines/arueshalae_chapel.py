@@ -21,6 +21,8 @@ HELD_HIS_HAND = P + "chaplain.held_his_hand"
 COMPLAINT = P + "chaplain.complaint"
 STAYS_CHAPLAIN = P + "chaplain.stays"
 COUNTING = P + "returned.counting"
+SOSIEL_OFFERED = P + "react.sosiel_fed"       # Sosiel's offer, played (a reaction scene id once completed)
+LANN_SAID = P + "react.lann_prisoner"         # Lann's word on the prisoner, played
 SERGEANT = P + "evil.sergeant"
 DAYBOOK = P + "evil.daybook"
 GUARD = (CLOSED, DEAD, EVIL_DEAD, RECRUITED)
@@ -100,8 +102,17 @@ hub(COMPLAINT, "A formal complaint", 3, '"I hear you\'ve been sent for."', [
 hub(COUNTING, "The count", 3, '"How many days?"', [
     a("start", '''{n}She knows what you mean. She always knows. She holds up her hand and counts on it, although she doesn't need to.{/n}
 "I've started counting again. Days since I ate. One more every morning." {n}She says it the way a sailor says how long since land.{/n} "Before, I counted the other way. Days since I fed. Now I count days since I was fed, which is different, because I didn't choose it. You chose it. I just swallowed."''',
-        c("Continue", "you", requires=(FED_ON_YOU,)),
-        c("Continue", "him", forbids=(FED_ON_YOU,))),
+        c("Continue", "you", requires=(FED_ON_YOU, SOSIEL_OFFERED)),
+        c("Continue", "him", requires=(LANN_SAID,), forbids=(FED_ON_YOU,)),
+        # Sol r3 (INT): Sosiel's offer and Lann's word are recalled only where those reactions were played.
+        c("Continue", "you_alone", requires=(FED_ON_YOU,), forbids=(SOSIEL_OFFERED,)),
+        c("Continue", "him_alone", forbids=(FED_ON_YOU, LANN_SAID))),
+    a("you_alone", '''"And every day it's you I taste. Not a stranger. You." {n}She rubs her lips with the back of her hand, the gesture of a woman trying to wipe off a kiss, and failing.{/n}
+"I keep thinking someone else should have offered. Anyone. It would be easier to want it from someone I didn't care about." {n}Her voice drops.{/n} "Isn't that monstrous? I'm grateful, and I'm already hungry for the same dish."''',
+        c("Continue", "ask")),
+    a("him_alone", '''"And every day I taste him. The cultist. He's in the east cells, still. He doesn't know his own name. I go and look at him, sometimes, through the grille. I don't know why." {n}She looks at you.{/n}
+"Nobody has said a word to me about it. Not one of them. I think they're waiting to see what I do with it. So am I."''',
+        c("Continue", "ask")),
     a("you", '''"And every day it's you I taste. Not a stranger. You." {n}She rubs her lips with the back of her hand, the gesture of a woman trying to wipe off a kiss, and failing.{/n}
 "Sosiel came to me. He said if I ever need it again, I should come to him first; he has more to spare. He meant it. He's the kindest man in this army." {n}Her voice drops.{/n} "And I don't want his. I want yours. Isn't that monstrous? I've been given two gifts and I'm already choosing between them like dishes."''',
         c("Continue", "ask")),

@@ -52,6 +52,7 @@ from storylines import seelah_trickster
 from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import camellia_trickster, camellia_masks, camellia_evenings, camellia_cards, camellia_days, camellia_last  # noqa: F401 (the others append to camellia_trickster.SCENES)
+from storylines import camellia_early  # noqa: F401 (PP2: the Prologue and Chapter 2 beats, appended to camellia_trickster.SCENES)
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
@@ -59,9 +60,11 @@ from storylines import longcon
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
+from storylines import arueshalae_early   # PP2: the Chapter 2 prison beat (path-neutral)
 from storylines import devarra_trickster, devarra_tower
 from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
+from storylines import kaylessa_early  # PP2: the Chapter 1 and 2 beats, appended to kaylessa_trickster.SCENES
 from storylines import mielarah_trickster, mielarah_deck
 from storylines import nidalynn_trickster, nidalynn_kiln, nidalynn_salt
 from storylines import shamira_trickster, shamira_mind, shamira_dream
@@ -438,12 +441,14 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(arueshalae_chapel.SCENES))
     payload["Scenes"].extend(copy.deepcopy(arueshalae_hours.SCENES))
     payload["Scenes"].extend(copy.deepcopy(arueshalae_notes.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(arueshalae_early.SCENES))
     arueshalae_trickster.integrate(payload)
     arueshalae_treatment.integrate(payload)
     arueshalae_rounds.integrate(payload)
     arueshalae_chapel.integrate(payload)
     arueshalae_hours.integrate(payload)
     arueshalae_notes.integrate(payload)
+    arueshalae_early.integrate(payload)
     # Devarra: the draft (retired to reference/retired-drafts) is replaced by the Trickster "Clutch-mother" route
     # (devarra.md round 2) and its watchtower courtship on the Storyteller's hub (devarra_tower).
     payload["Relationships"]["devarra"] = copy.deepcopy(devarra_trickster.RELATIONSHIP)
@@ -465,6 +470,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(kaylessa_wasps.SCENES))
     payload["Scenes"].extend(copy.deepcopy(kaylessa_clearing.SCENES))
     kaylessa_trickster.integrate(payload)
+    kaylessa_early.integrate(payload)
     # Mielarah: the unregistered draft (retired to reference/retired-drafts) is replaced by the Trickster route "Zyphus
     # picks the nearest" (11 §2) and its Chapter 5 courtship on her presence in Drezen (mielarah_deck).
     payload["Relationships"]["mielarah"] = copy.deepcopy(mielarah_trickster.RELATIONSHIP)

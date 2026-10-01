@@ -228,7 +228,11 @@ internal static class ArueshalaeTricksterTests
         check(hungry.Has(P + "reunited") && hungry.Has(P + "cost.sent_away_hungry"), "Trk_Arueshalae_EvilReunion: refusing does not reunite, hungry.");
         var letterTwin = S(P + "evil.reunion_letter");
         var lairFailed = Program.Copy(back); lairFailed.Flags.Add("arueshalae.presence.evil.failed");
-        check(Avail(letterTwin, Later(story, lairFailed, 130)), "Trk_Arueshalae_EvilReunionLetter: no letter when the lair copy fails.");
+        // PP2 (Sol COX): a failed lair moves the reunion to Drezen in person; the note is left only when every anchor fails.
+        check(!Avail(letterTwin, Later(story, lairFailed, 130)), "Trk_Arueshalae_EvilReunionLetter: a letter while Drezen can still host her.");
+        var allFailed = Program.Copy(lairFailed);
+        allFailed.Flags.Add("arueshalae.presence.evil_drezen.failed"); allFailed.Flags.Add("arueshalae.presence.evil_awning.failed");
+        check(Avail(letterTwin, Later(story, allFailed, 130)), "Trk_Arueshalae_EvilReunionLetter: no letter when every anchor fails.");
         var evilTerms = S(P + "evil.terms");
         var reunitedW = Later(story, World(story, 5, Drezen, "trickster.ever", "arueshalae.evil_dead", P + "returned", P + "reunited", P + "cost.nocticula_debt"), 60);
         check(Avail(evilTerms, reunitedW) && evilTerms.InteractionHub == "arueshalae.presence.evil_drezen", "Trk_Arueshalae_EvilTermsCommit: not available at the arcade.");
@@ -287,7 +291,8 @@ internal static class ArueshalaeTricksterTests
         check(First(again2, Later(story, later, 60), "roof", 0).Has("arueshalae.committed"), "The Commander's ask does not commit.");
         var night = S(T + "night");
         check(night.Requires.Contains("arueshalae.committed") && !Avail(night, Later(story, ready, 50)), "The night opens before any yes.");
-        check(Avail(night, Later(story, yes, 30)), "The night does not follow the yes.");
+        var yesHere = Later(story, yes, 30); yesHere.Area = Drezen;   // PP2: the tower is above Drezen's citadel
+        check(Avail(night, yesHere) && !Avail(night, Later(story, yes, 30)), "The night does not follow the yes in Drezen (or plays outside it).");
         foreach (var n in night.Nodes)
             check(!n.Text.Contains(" cot") && !n.Text.Contains("narrow bed"), "The night is staged on a cot: " + n.Id);
 
@@ -374,10 +379,13 @@ internal static class ArueshalaeTricksterTests
         check(Rules.Available(story, S(T + "discharged"), deferred) && !Rules.Available(story, S(T + "prescription_again"), deferred)
               && Program.WalkVia(S(T + "discharged"), deferred, "ask", 0).All(r => r.Has("arueshalae.committed")),
             "A deferred proposal followed by Elysium locks the treatment out of every commit.");
-        // The failed-presence letter serves the late referral as well.
-        check(Rules.Available(story, S(P + "evil.reunion_letter"), Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "returned",
-                  "arueshalae.evil_dead", P + "cost.late", P + "cost.nocticula_debt", "arueshalae.presence.evil.failed"), 130)),
-            "The late referral has no reunion when the lair presence fails.");
+        // The failed-lair reunion serves the late referral as well: in person at the arcade (PP2), the letter only when every
+        // anchor fails.
+        var lateLair = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "returned",
+                  "arueshalae.evil_dead", P + "cost.late", P + "cost.nocticula_debt", "arueshalae.presence.evil.failed"), 130);
+        lateLair.AvailableContacts.Add(EvilUnit);
+        check(Rules.Available(story, S(P + "evil.reunion_city"), lateLair) && !Rules.Available(story, S(P + "evil.reunion_letter"), lateLair),
+            "The late referral has no in-person reunion when the lair presence fails.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the diagnosis, the second opinion, the chaplain, the treatment and her proposal, the arcade, and the queen's favour.");
     }
 }

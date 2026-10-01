@@ -86,6 +86,11 @@ LIED = P + "lied_about_price"
 CONFESSED = P + "confessed_price"
 # The living world.
 WOUND_SEEN = P + "alive.wound_seen"
+# PP2 early beat (kaylessa_early, Chapter 2 war camp; path-neutral): her lesson on a false wound, read at the hunter's visit.
+TELLS_READ = "kaylessa.early.tells.read"
+TELLS_MISSED = "kaylessa.early.tells.missed"
+LESSON = '[Watch the bandage the way she taught you at the war camp: watch it when he forgets it.]'
+LESSON_DC = '[Remember the sergeant at the cook-fire, and watch the bandage when he forgets it. Perception DC 18.]'
 PLANNED = P + "alive.planned"
 SHIELD = P + "alive.shield_sworn"
 SWAP_CLEAN = P + "alive.swap_clean"
@@ -355,8 +360,11 @@ visit(P + "alive.hunter", "A courtesy between hunters", [
 "I ask for nothing that would trouble your crusade. Only your leave, and one courtesy: a word, from you, that an elf lies wounded in the ravine below the south wall. She goes to the wounded. She cannot help it. It is the last thing about her that is still one of us."''',
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed_s", flags=(PRIMED, STARTED),
           alignment=("Chaotic", 1)),
-        c("[Study the bandage while he talks]", check=dict(Skill="SkillPerception", DC=25, Success="seen_s", Failure="missed_s")),
-        c('[Send him away] "No hunting in my city."', abort=True)),
+        c("[Study the bandage while he talks]", check=dict(Skill="SkillPerception", DC=25, Success="seen_s", Failure="missed_s"),
+          forbids=(TELLS_READ, TELLS_MISSED)),
+        c('[Send him away] "No hunting in my city."', abort=True),
+        c(LESSON, "seen_s", requires=(TELLS_READ,)),
+        c(LESSON_DC, requires=(TELLS_MISSED,), check=dict(Skill="SkillPerception", DC=18, Success="seen_s", Failure="missed_s"))),
     nar("seen_s", '''{n}The bandage is clean where it ought to be foul, and the arm under it moves too easily whenever he forgets it. There is no wound. He has learned his predecessor's trade to the letter. A man who fakes a wound to bring his prey into the open keeps friends with bows somewhere out of the light.{/n}''',
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed_s", flags=(PRIMED, STARTED, WOUND_SEEN),
           alignment=("Chaotic", 1)),
@@ -372,8 +380,11 @@ visit(P + "alive.hunter", "A courtesy between hunters", [
 "I ask for nothing that would trouble your crusade. Only your leave, and one courtesy: a word, from you, that an elf lies wounded in the ravine below the south wall. She goes to the wounded. She cannot help it. It is the last thing about her that is still one of us."''',
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed", flags=(PRIMED, STARTED),
           alignment=("Chaotic", 1)),
-        c("[Study the bandage while he talks]", check=dict(Skill="SkillPerception", DC=25, Success="seen", Failure="missed")),
-        c('[Send him away] "No hunting in my city."', abort=True)),
+        c("[Study the bandage while he talks]", check=dict(Skill="SkillPerception", DC=25, Success="seen", Failure="missed"),
+          forbids=(TELLS_READ, TELLS_MISSED)),
+        c('[Send him away] "No hunting in my city."', abort=True),
+        c(LESSON, "seen", requires=(TELLS_READ,)),
+        c(LESSON_DC, requires=(TELLS_MISSED,), check=dict(Skill="SkillPerception", DC=18, Success="seen", Failure="missed"))),
     nar("seen", '''{n}The bandage is clean where it ought to be foul, and the arm under it moves too easily whenever he forgets it. There is no wound. A man who fakes a wound to bring his prey into the open keeps friends with bows somewhere out of the light.{/n}''',
         c('[Play along] "Name the place and the hour. I\'ll send her to you."', "agreed", flags=(PRIMED, STARTED, WOUND_SEEN),
           alignment=("Chaotic", 1)),

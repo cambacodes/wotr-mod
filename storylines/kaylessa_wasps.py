@@ -52,6 +52,9 @@ MARKSMEN_KEPT = K + "marksmen_kept"
 KISSED = K + "kissed"
 LETTER_SENT = K + "letter_sent"
 LETTER_KEPT = K + "letter_kept"
+# PP2 early beat (kaylessa_early, Chapter 1 Kenabres; path-neutral), read in "Hands" only.
+EARLY_BOUND = "kaylessa.early.dressed.bound"
+EARLY_LIED = "kaylessa.early.dressed.lied"
 DREW_THE_BOW = K + "drew_the_bow"
 
 
@@ -452,7 +455,17 @@ meet(HANDS, "Hands", '"Who are you watching?"', [
 "And these I watch hardest of all. They did things in the Worldwound that I only remember in the mornings. They're very good hands. Steady. Anemora said so." {n}She lowers them.{/n}
 "If you ever see them doing something I wouldn't do, soldier, you tell me. Loudly. Don't be polite about it. Politeness is how she got in the first time."''',
         c('"Loudly. I promise."', "kind_end"),
-        c("[Take one of her hands in yours.]", "kind_end")),
+        c("[Take one of her hands in yours.]", "kind_end"),
+        c('[Hold out your hand] "Kenabres. I\'ve had these on you before, and you watched every move they made."', "kenabres",
+          requires=(EARLY_BOUND,)),
+        c('"In Kenabres you told me a stranger\'s prayer was a sin to your mother\'s people. Was that true?"', "kenabres_lie",
+          requires=(EARLY_LIED,))),
+    kay("kenabres", '''{n}She looks at the hand you hold out, and then, for once, at your face.{/n} "Kenabres. A city burning, and you knelt in the street and tied a stranger's side shut with linen because she'd told you no spells, and you listened." {n}She turns your hand over, palm up, the way she watched it work that day.{/n}
+"I told you then your hands didn't lie. I've been checking ever since, soldier. They still don't." {n}She lets go.{/n} "Don't make anything of it."''',
+        c("Continue", "kind_end")),
+    kay("kenabres_lie", '''"No." {n}The corner of her mouth goes up.{/n} "There's no such people. I made them up in the time it took your knot to slip."
+"The truth's shorter. Anemora had me a long time, and things were done to me there that I couldn't stop. I won't lie still for anyone's hands or anyone's prayers again unless I say so. Not a priest's, not a friend's." {n}She looks back at the square.{/n} "You suspected it was a lie, and you let me keep it. I noticed that too."''',
+        c("Continue", "kind_end")),
     kay("kind_end", '''{n}She lets it sit there, whatever you did, and goes back to watching the grain dole, where the pickpocket has been caught at last and is being marched off by a very tired corporal.{/n} "There. Justice. Very dull, when somebody else does it."''',
         c("[Watch the square with her.]")),
     kay("kind", '''"Then you've had a very sad life." {n}But she knocks her shoulder against yours before she goes back to the square.{/n}''',

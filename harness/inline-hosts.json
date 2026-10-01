@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1099,
-  "resolved": 1099,
-  "inlineOnlyScenes": 301,
-  "inlineOnlyResolved": 301,
-  "answerListScenesWithoutContact": 668,
-  "answerListScenesWithoutContactResolved": 668,
-  "lists": 136,
-  "listsWithReachableHost": 135
+  "entryTargetScenes": 1104,
+  "resolved": 1104,
+  "inlineOnlyScenes": 306,
+  "inlineOnlyResolved": 306,
+  "answerListScenesWithoutContact": 673,
+  "answerListScenesWithoutContactResolved": 673,
+  "lists": 140,
+  "listsWithReachableHost": 139
  },
  "scenes": {
   "a_crossing": {
@@ -2402,6 +2402,25 @@
     "clicks": 0
    }
   },
+  "arueshalae.early.desna": {
+   "kind": "return-cue",
+   "lists": [
+    "7c789226898962e43802ccf27dc88395"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "7c789226898962e43802ccf27dc88395": "RRT_entry.arueshalae.early.desna"
+   },
+   "resolved": true,
+   "host": {
+    "list": "7c789226898962e43802ccf27dc88395",
+    "dialog": "c7c8cfb42140c554893d504a6ed4ee16",
+    "dialogName": "Arusha_DrezenPrison_Dialogue",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
   "arueshalae.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -3737,6 +3756,44 @@
     "dialog": "a718e45e4ea8f8a45acde516d72b6584",
     "dialogName": "Dialogue_Arueshalae_Main",
     "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "camellia.early.blood": {
+   "kind": "return-to-list",
+   "lists": [
+    "1ca6cf08fceeac141a0df689cecc784a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "1ca6cf08fceeac141a0df689cecc784a": "RRT_entry.camellia.early.blood.1ca6cf08fceeac141a0df689cecc784a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "1ca6cf08fceeac141a0df689cecc784a",
+    "dialog": "e92a8b79aa9c02f4d9641eb9ef22495d",
+    "dialogName": "MeetCamelia",
+    "cue": "Cue_0008",
+    "clicks": 2
+   }
+  },
+  "camellia.early.cart": {
+   "kind": "return-to-list",
+   "lists": [
+    "f40abd195a8b1ea46945b47576fa732a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f40abd195a8b1ea46945b47576fa732a": "RRT_entry.camellia.early.cart.f40abd195a8b1ea46945b47576fa732a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f40abd195a8b1ea46945b47576fa732a",
+    "dialog": "32b50aedba117e848b1776ee0e8dc773",
+    "dialogName": "GargoyleAttack_Camelia_Dialogue",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },
@@ -13942,6 +13999,44 @@
     "clicks": 0
    }
   },
+  "kaylessa.early.dressed": {
+   "kind": "return-cue",
+   "lists": [
+    "30fa5be33ddd7b144963473692af6942"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "30fa5be33ddd7b144963473692af6942": "RRT_entry.kaylessa.early.dressed"
+   },
+   "resolved": true,
+   "host": {
+    "list": "30fa5be33ddd7b144963473692af6942",
+    "dialog": "0eb0889b087e0ad41b6987282530ce84",
+    "dialogName": "Kaylessa_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "kaylessa.early.tells": {
+   "kind": "return-cue",
+   "lists": [
+    "30fa5be33ddd7b144963473692af6942"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "30fa5be33ddd7b144963473692af6942": "RRT_entry.kaylessa.early.tells"
+   },
+   "resolved": true,
+   "host": {
+    "list": "30fa5be33ddd7b144963473692af6942",
+    "dialog": "0eb0889b087e0ad41b6987282530ce84",
+    "dialogName": "Kaylessa_main_dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "kaylessa.trickster.dead.borrow": {
    "kind": "return-cue",
    "lists": [
@@ -22998,6 +23093,49 @@
     }
    ]
   },
+  "1ca6cf08fceeac141a0df689cecc784a": {
+   "list": "1ca6cf08fceeac141a0df689cecc784a",
+   "listName": "AnswersList_0009",
+   "hosts": [
+    {
+     "dialog": "e92a8b79aa9c02f4d9641eb9ef22495d",
+     "dialogName": "MeetCamelia",
+     "cues": [
+      "e6ba26401a42d994e8906e2f867740d8",
+      "90bddeeb7f218c6499f99f03a2e20c34",
+      "a9f9d4eebd2c03e438ba0f3792ba7078",
+      "30e07e00139e6414a91c75b3c3264226",
+      "bbf08b51e85f49742946a3647a568285"
+     ],
+     "cueNames": [
+      "Cue_0008",
+      "Cue_0013",
+      "Cue_0017",
+      "Cue_0019",
+      "Cue_0021"
+     ],
+     "speaker": "397b090721c41044ea3220445300e1b8",
+     "reachable": true,
+     "clicks": 2,
+     "path": [
+      {
+       "at": "Cue_0006",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0007",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "35d480d928e845a40a0661de241ceb79": 3,
+      "712417ce7cc82544b8902dc52e097651": 3,
+      "cbde3303de9b26f45918cbf33d60e1e3": 1,
+      "ff96f56ed6e58e143a269269c115e9bb": 1
+     }
+    }
+   ]
+  },
   "1f5aae1aab3b5b34ea3a0cbb1d0ca0b9": {
    "list": "1f5aae1aab3b5b34ea3a0cbb1d0ca0b9",
    "listName": "AnswersList_0015",
@@ -23882,6 +24020,77 @@
       "fdea4a2be69f96042996cfe6521b6622": 3,
       "ff071ea5f68a97845a0075feabbe99d5": 2,
       "ff4b63ae52c362e4c9ced489df37014b": 2
+     }
+    }
+   ]
+  },
+  "30fa5be33ddd7b144963473692af6942": {
+   "list": "30fa5be33ddd7b144963473692af6942",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "0eb0889b087e0ad41b6987282530ce84",
+     "dialogName": "Kaylessa_main_dialogue",
+     "cues": [
+      "2d7d6df431933024591e74d6dfd873e4",
+      "e5d64e54aeaed8b43b30b21d7fd3fbab",
+      "eb9272bf8aa412941943a3432f62961b",
+      "e80fd50663594354783d79cc5fa60dff",
+      "666148a3dd3f2ca438fbf2f618bc88a5",
+      "29662150e78eea340a75e0ee5e79faa6",
+      "29584996073a95243a0193d868100123",
+      "1988bcd88fe35424ebf4371eec3f96c5",
+      "41fc78e3411d27647b2712dff69d44e3",
+      "1a44532f0f3f8a849b8c5284fd19ed40",
+      "b83567c964f5eea44bbf5384b63cccc4",
+      "462478faddd1eab45a4e55739d81e6f7",
+      "a4c11f9c80943bd4e845ef1a81643c12",
+      "efc85c782973b4a44a040fc16e90785d",
+      "c3ac44c65a5183e4f89fd2990a5fc58c",
+      "b046d877011475b4f848d492f046fa7a",
+      "425898fabfef36844b7b21801a205274",
+      "c96bf64adb47eaf40afa81f59c8be8de"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0004",
+      "Cue_0006",
+      "Cue_0008",
+      "Cue_0010",
+      "Cue_0016",
+      "Cue_0033",
+      "Cue_0040",
+      "Cue_0049",
+      "Cue_0053",
+      "Cue_0055",
+      "Cue_0056",
+      "Cue_0057",
+      "Cue_0060",
+      "Cue_0070",
+      "Cue_0071",
+      "Cue_0073",
+      "SequenceExit_0079"
+     ],
+     "speaker": "ea562adea1736874c9c5616d140fe773",
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "01364f717992eb543976be3a1111a807": 1,
+      "06c13a20be8b76442ac5cd96e31e667c": 1,
+      "1bb52cc543cd1904dbbfcb59829c2b04": 1,
+      "44415c9b645fdc54ab13a0182c766171": 1,
+      "53ee66aaa5b38fa4eaadb4dda40a4c27": 1,
+      "5ae6d5672787f654bbcde8dd6405e581": 1,
+      "5ccea4193c6ce4e4eb1371cf04af4d64": 1,
+      "646979c12c7dc234b93533df386c7229": 1,
+      "9f98ffa7f2c71cb4c9e5da0c7a053876": 1,
+      "a4e1af2f7eff831479aeef4799cdbf59": 2,
+      "bb6622268de13b344a45261c37b4a1e2": 1,
+      "bf991305bc95e7e4fb658b1a1b38b79a": 3,
+      "d4964437f8870bf4ca6be9239eb78f33": 1,
+      "eee3718db9ef19c44966fd6ec88540b4": 1,
+      "f699affe2d392bb469868a9bdb87e3df": 2
      }
     }
    ]
@@ -26535,6 +26744,63 @@
       "f6474d6f04c5e924aa600da702e6d83e": 2,
       "f81c4e689a5e48c4683ed13a0e55fbb7": 3,
       "fb0846d8b46469b43998dcd1b569fa5d": 1
+     }
+    }
+   ]
+  },
+  "7c789226898962e43802ccf27dc88395": {
+   "list": "7c789226898962e43802ccf27dc88395",
+   "listName": "AnswersList_0006",
+   "hosts": [
+    {
+     "dialog": "c7c8cfb42140c554893d504a6ed4ee16",
+     "dialogName": "Arusha_DrezenPrison_Dialogue",
+     "cues": [
+      "0fe642d1f5e108e40bd3097e439efa12",
+      "d080984b99367c24dbcead9846d7871e",
+      "a76371393876f074ebcf977cd811b931",
+      "507a2891e424f7848a5792865ed8fb8b",
+      "37899239473b1d5489109c6155245398",
+      "b44ff8e9f940de844821431b6469b710",
+      "787910d829694ff41b624755288de213",
+      "aeb1baacfabca2d4d8d3beadc9c95c1a",
+      "39df443b2c431d942800dc642defd511",
+      "3aba171c24164904184d53271d432273",
+      "154a7fa5cd770b94ba5314a7c2e29ee9",
+      "cec49de78daa68e449e2b83cc664661e",
+      "1368d60516be49f682da4bbbd18e4af6",
+      "351208fc3b181d040b4d3739c9d0b311"
+     ],
+     "cueNames": [
+      "Cue_0004",
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0005",
+      "Cue_0008",
+      "Cue_0012",
+      "Cue_0019",
+      "Cue_0020",
+      "Cue_0024",
+      "Cue_0029",
+      "Cue_0043",
+      "Cue_0045",
+      "SequenceExit_0003",
+      "SequenceExit_0053"
+     ],
+     "speaker": "48fc622c39f1faa44b245cd1596b76d1",
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "5b870d1544ef99b489b352b9f1858ed5": 1,
+      "5f1b40a195e6f014790729c868612a88": 3,
+      "6fca1c24c30a21449b73838b5e2636e2": 2,
+      "83f6a62319b357c4eb944a23c56bb4de": 2,
+      "95806585b4dbc614b9a3a0e335a9a76b": 1,
+      "afe72b8c30d945f498e5d07b1500af76": 1,
+      "e9983331ed6c1bc41af427140638d6fc": 1,
+      "f8e8938c4de476e4da94c4090bcec837": 1,
+      "fc2f6ec32d4da584aafd872ce1ef4de4": 3
      }
     }
    ]
@@ -30059,6 +30325,34 @@
       "05a07bf862932e148a1c5edd50b25519": 1,
       "59dd7ebdee8d2d74c87a6737b71db210": 4,
       "8fd8f8c5b50384f46bb3b193866f6fbf": 1
+     }
+    }
+   ]
+  },
+  "f40abd195a8b1ea46945b47576fa732a": {
+   "list": "f40abd195a8b1ea46945b47576fa732a",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "32b50aedba117e848b1776ee0e8dc773",
+     "dialogName": "GargoyleAttack_Camelia_Dialogue",
+     "cues": [
+      "872dbbcca83313944b923fe9076b522d",
+      "3dc95933510ddc342acac646976ca331",
+      "8834a2a27b3662548910b9d2cdd84a68"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0006",
+      "Cue_0007"
+     ],
+     "speaker": "397b090721c41044ea3220445300e1b8",
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "a889be479d5f3644b91aa4d48e51237c": 1,
+      "d717accfddf8b7e4cb145b7b189d8810": 1
      }
     }
    ]

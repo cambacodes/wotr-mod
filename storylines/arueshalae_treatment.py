@@ -57,6 +57,11 @@ NO_FAST = T + "no_fast"
 HER_CALL = T + "her_call"
 NIGHT = T + "night"
 MORNING = T + "morning"
+DREZEN_AREA = "2570015799edf594daf2f076f2f975d8"   # DrezenCapital: the tower above the citadel
+# PP2 early beat (arueshalae_early, the Chapter 2 prison; path-neutral), read in "Night reading" only.
+EARLY_KEPT = "arueshalae.early.desna.kept"
+EARLY_DOUBTED = "arueshalae.early.desna.doubted"
+EARLY_PLAIN = "arueshalae.early.desna.plain"
 
 # Every treatment session is hers, on her hub, with her alive (or back) and not fallen.
 GUARD = (CLOSED, DEAD, EVIL_DEAD, RECRUITED)
@@ -83,6 +88,15 @@ def session(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, las
 session(STUDIED, "Night reading", 3, '"You were in the shrine library until the second bell."', [
     a("start", '''"I watch everyone. You know that." {n}She is standing at your elbow, looking at the books you have not put away: a Desnan breviary with a cracked spine, a travellers' psalter, a chaplain's commentary on the Song of the Spheres, all borrowed from the shrine, all open at the same page.{/n}
 "The Tender of Dreams' blessing for travellers. The star-candle and the words for the road." {n}Her voice changes.{/n} "Why are you reading about my goddess's mercy at the second bell, Commander?"''',
+        c("Continue", "why", forbids=(EARLY_KEPT, EARLY_DOUBTED, EARLY_PLAIN)),
+        c("Continue", "prison_kept", requires=(EARLY_KEPT,)),
+        c("Continue", "prison_doubted", requires=(EARLY_DOUBTED,), forbids=(EARLY_KEPT,)),
+        c("Continue", "prison_plain", requires=(EARLY_PLAIN,), forbids=(EARLY_KEPT, EARLY_DOUBTED))),
+    a("prison_kept", '''{n}She touches the open page, the travellers' blessing, without quite letting her finger rest on it.{/n} "You made me a prayer like this through the bars in Drezen, in your own words. A star, a road, one night." {n}She takes her hand back.{/n} "And now you've found the priests' version, and you're reading it at the second bell as if you meant to find something in it that isn't there. I'm afraid to ask what."''',
+        c("Continue", "why")),
+    a("prison_doubted", '''"In the cells under Drezen you promised me her pardon, and I told you that was the Dawnflower's promise, not hers." {n}A small, wry tilt of her head toward the breviary.{/n} "You've been doing your reading since. I can see the page from here. It's the right goddess, this time."''',
+        c("Continue", "why")),
+    a("prison_plain", '''"In the cells under Drezen you told me you didn't know the first thing about her, and that my warning wasn't enough. You didn't pretend it was." {n}She looks at the three books, all open at the same page.{/n} "You know something about her now. Why?"''',
         c("Continue", "why")),
     nar("why", '''{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}
 {n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}
@@ -406,20 +420,22 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
 "I come here to be where she can see me," she says. "I don't pray. I just sit where she can see."''',
         c("Continue", "flowers", requires=(ELYSIUM,)),
         c("Continue", "stars", forbids=(ELYSIUM,))),
-    a("flowers", '''{n}She has brought one of the white flowers from the study, the ones she says came from Elysium, and she tucks it into a crack in the stone.{/n}
-"Your cure hasn't got anything to cure any more. Have you noticed? Since the flowers, my touch doesn't take." {n}She laughs, a little helplessly.{/n} "All those candles. All that reading. And there's nothing left in me to take the cold out of you." {n}She sounds almost cheated.{/n} "I keep expecting you to grow cold. You don't."''',
+    a("flowers", '''{n}She has nothing in her hands tonight, and she keeps looking at them, as if they belonged to someone else.{/n}
+"Your cure hasn't got anything to cure any more. Have you noticed? Since the Abyss let go of me, my touch doesn't take." {n}She laughs, a little helplessly.{/n} "All those candles. All that reading. And there's nothing left in me to take the cold out of you." {n}She sounds almost cheated.{/n} "I keep expecting you to grow cold. You don't."''',
         c("Continue", "undress")),
     a("stars", '''"I know how to make a mortal want me. I learned it in the Upper City, and I hate remembering how." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
         c("Continue", "cure", requires=(CURE,)),
-        c("Continue", "uncured", forbids=(CURE,))),
-    nar("cure", '''{n}You lit the star-candle in a niche of the broken bell-wall before she carried you up; it will take one drain, once, until you sleep. Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in, and the little flame in the niche takes it and goes out.{/n}
+        c("Continue", "uncured", forbids=(CURE, CURED)),
+        c("Continue", "cure", requires=(CURED,), forbids=(CURE,))),   # PP2 post-cap: the rite already worked by Lore
+    nar("cure", '''{n}Before the first kiss, you take the star-candle out of your coat. She watches you set it in a niche of the broken bell-wall, out of the wind, and kneel to it, and say the whole of the blessing over it, a quarter of an hour of the old Desnan words, until the wick takes and the little flame stands up straight. It will take one drain, once, until you sleep. She waits the whole quarter-hour with her arms round her knees, and does not once look away from your mouth.{/n}
+{n}Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in, and the little flame in the niche takes it and goes out.{/n}
 {n}The rest is hers to take, and yours to pay, and you both know it. She kisses you again anyway, and you let it cost what it costs, and she watches your face the whole time, counting.{/n}''',
         c("Continue", "undress")),
     nar("uncured", '''{n}Her first kiss is careful, almost a question, and the cold comes with it, and there is nothing you can do about it except not pull away. She feels it take you, and stops, and you pull her back.{/n}
 "You'll be weak tomorrow," she says against your mouth. "You'll be grey and useless and the second company will talk." {n}You tell her to let them. She makes a sound you have never heard her make, and does.{/n}''',
         c("Continue", "undress")),
     nar("undress", '''{n}She knows how to undress a person. Her hands begin that way, quick and certain, and then she hears how quietly the buckles are coming loose, and whatever she remembers in that sound makes her stop. When she begins again she is slow, and clumsy, and has to try your belt twice, and she does not let herself get better at it. Her wings unfold and curve round you both against the wind off the Worldwound; she apologises for them; you tell her not to.{/n}
-{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long breath that she does not need.{/n}
+{n}She lays you down on her cloak on the old bell-floor, under the whole wheel of the stars, and follows you down, her hair falling round both your faces, her skin cool and then not cool at all. She settles astride your hips, braces one hand on the stone beside your head, and draws one long, unsteady breath.{/n}
 "I want you." {n}It comes out rough, and far too loud for a bell tower, and she does not take it back.{/n} "Not the way I was taught to want. Mine. Look at me while I do this."''',
         c("Continue", "morning_after", requires=(ELYSIUM,)),
         c("Continue", "morning_after_paid", forbids=(ELYSIUM,))),
@@ -429,7 +445,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     a("morning_after_paid", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
 "Still beating. Slower than it was." {n}You feel her count it against her cheek.{/n} "I took some of it. I felt myself take it, and I didn't stop, because you told me not to, and because I didn't want to. You'll be grey tomorrow, and I'll have done that, and I'll look at it all day." {n}She does not lift her head.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her see what it cost."''',
         c("[Let her listen.]", flags=(NIGHT,))),
-], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,))
+], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,), Areas=[DREZEN_AREA])   # PP2 post-cap: the citadel tower
 
 
 # --- The morning after: first light on the tower -----------------------------------------------------------------
@@ -451,10 +467,10 @@ session(MORNING, "Case notes, continued", 5, '"Good morning, doctor."', [
 "Nothing. Not a drop, the whole night. I kept waiting for the cold to start in you and it never came, and I didn't know what to do with my hands, because they'd always had a job before." {n}She laughs, unsteadily.{/n} "I brought one of your candles up in my pocket, out of habit. It's still there. I nearly lit it at midnight, just to have something to blame."''',
         c('"Put it in the case notes: patient recovering."', "recovering_e", flags=(MORNING,)),
         c('"Put it in the case notes: doctor recovering."', "doctor_e", flags=(MORNING,))),
-    a("recovering_e", '''"Recovering." {n}She writes it, and looks at the word, and crosses it out.{/n} "No. I don't know what this is. The flowers came, and the hunger went quiet, and I keep listening for it the way you listen for a dog that's stopped barking." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "Write 'under observation.' I'm going to watch it for a long time before I believe it."''', c()),
+    a("recovering_e", '''"Recovering." {n}She writes it, and looks at the word, and crosses it out.{/n} "No. I don't know what this is. The Abyss let go of me, and the hunger went quiet, and I keep listening for it the way you listen for a dog that's stopped barking." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "Write 'under observation.' I'm going to watch it for a long time before I believe it."''', c()),
     a("doctor_e", '''{n}She looks you over, frankly, from your hair to your bare feet.{/n} "The doctor isn't recovering from anything. The doctor's pink. The doctor slept like a baby on a bell-floor, and I lay awake all night beside a warm mortal and didn't take one thing." {n}She writes it anyway.{/n}
 "Doctor: insufferable. Patient: frightened of how good this is." {n}She kisses your forehead and then, because she can, your mouth.{/n} "Stay till the sun's up. Doctor's orders. Mine."''', c()),
-], (NIGHT, "trickster.ever"), forbids=(MORNING,), delay=6, chapters=(5,))
+], (NIGHT, "trickster.ever"), forbids=(MORNING,), delay=6, chapters=(5,), Areas=[DREZEN_AREA])   # PP2 post-cap: first light on the tower
 
 
 # Q11: after the native Elysium ending (BestEnding cues 0c5b3449, f3f59947: her touch no longer drains) every session
@@ -465,7 +481,7 @@ for _scene in SCENES:
 
 DISCHARGED = T + "discharged"
 session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching things."', [
-    a("start", '''"I do, don't I?" {n}She is sitting on the edge of her bedroll with her bare hands in her lap, turning them over, as if they belonged to someone she had just been introduced to.{/n} "The flowers came, and since the flowers I've touched the quartermaster, a horse, three novices and the cat. On purpose. Nobody went grey. Nobody even noticed."
+    a("start", '''"I do, don't I?" {n}She is sitting on the edge of her bedroll with her bare hands in her lap, turning them over, as if they belonged to someone she had just been introduced to.{/n} "The Abyss let go of me, and since then I've touched the quartermaster, a horse, three novices and the cat. On purpose. Nobody went grey. Nobody even noticed."
 {n}She looks up at you, and laughs, and it shakes.{/n} "You've lost your only patient, doctor. There's nothing left in me for your candles to take."''',
         c("Continue", "ask")),
     a("ask", '''"So I'm going to do the thing on my list I was keeping for when I was cured, because I'm not going to get a better day for it." {n}She stands, and takes your hand, and holds it, and nothing happens except that she holds it.{/n} "Will you have me? Not your patient. Me. The one who's left."''',
@@ -489,5 +505,8 @@ def integrate(payload):
     if (payload.get(kind) or {}).get("arueshalae.elysium") not in (None, value):
         raise ValueError("Conflicting binding: arueshalae.elysium")
     payload.setdefault(kind, {})["arueshalae.elysium"] = value
-    payload.setdefault("SeenCues", {})["arueshalae.back_to_reality"] = ["6b24754fcea768342a30a1e18ce91b92"]
+    # PP2 (Sol r2, INT): BackToReality has two release cues: Cue_0018 6b24754f, and the romance branch's Cue_0025 8ad7c2ba
+    # ("Freedom. Finally... the Abyss has released me from its clutches... I am not a monster anymore!").
+    payload.setdefault("SeenCues", {})["arueshalae.back_to_reality"] = ["6b24754fcea768342a30a1e18ce91b92",
+                                                                        "8ad7c2ba0e060e545b12269cc5ced777"]
     payload.setdefault("Derived", {})[ELYSIUM] = [["arueshalae.elysium"], ["arueshalae.back_to_reality"]]
