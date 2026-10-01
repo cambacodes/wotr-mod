@@ -415,7 +415,7 @@ letter(P + "chivarro_dead.bought", "The house always collects", [
     cv("sale", '''{n}The last page is in another hand, sharp and slanted, written by someone who has had a month in the dark with nothing to do but compose it.{/n}
 "Sold. In my own house. To *you*. Under 'goods'." {n}The pen has gone through the paper twice.{/n}
 "Here is my price, since nobody asked it. The bill. Burn it, and I come to Drezen owing you nothing and hating you for the favour. Keep it, and I come anyway, and you sleep with one eye open for the rest of your short life."''',
-       c('[Burn the bill] "Nothing. Get dressed."', flags=(RET_C, CH_IN, BURNED, STARTED), alignment=("Chaotic", 1)),
+       c('[Burn the bill] "Nothing. Get dressed."', flags=(RET_C, CH_IN, BURNED, STARTED), alignment=("Chaotic", 1), forbids=(MIN_IN,)),
        c('[Burn the bill] "Nothing. Get dressed. Minagho hates waiting."', requires=(MIN_IN,),
          flags=(RET_C, CH_IN, BURNED, STARTED, REUNITED), alignment=("Chaotic", 1)),
        c('[Keep the bill] "Everything. And now I own it."', flags=(RET_C, CH_IN, OWNED), alignment=("Evil", 2))),
@@ -439,15 +439,18 @@ physical(P + "chivarro_dead.the_bill", "Goods", "Chivarro", PRES_CHIV, CHIV_UNIT
        c('[Keep the bill] "Mine. That\'s what you are."', "kept", alignment=("Evil", 1))),
     cv("burned", '''{n}She watches the paper curl in the quartermaster's brazier. She does not thank you. She waits until the last corner of "goods" has gone black, and then she breathes out, very slowly, through her teeth.{/n}
 "Late. But burned." {n}She stands, and she is taller than she was a moment ago.{/n} "Now I owe you nothing, honey, and you owe me a great deal. Let us see what you do with that."''',
-       c("[Let her go.]", flags=(BURNED, STARTED, P + "cost.bill_answered"))),
+       c("[Let her go.]", flags=(BURNED, STARTED, P + "cost.bill_answered"), forbids=(MIN_IN,)),
+       c("[Let her go to Minagho.]", flags=(BURNED, STARTED, P + "cost.bill_answered", REUNITED), requires=(MIN_IN,))),
     cv("kept", '''{n}She folds the bill again, carefully, and gives it back to you, and her fingers do not touch yours.{/n} "Then I stay. Owned. On paper, in your city, at your door. Do not ever mistake it for anything else, and do not ever come to my bed with it in your pocket. I would take the hand that holds it."''',
        c("[Pocket the bill.]", flags=(KEPT, P + "cost.bill_answered"))),
 ], requires=("trickster.ever", RET_C, OWNED), forbids=(BURNED, KEPT, CLOSED), delay=24,
    TricksterDevice=True, TricksterState="chivarro_dead")
 letter(P + "chivarro_dead.the_bill_letter", "Goods", [
     cv("start", '''{n}The bill comes back to you folded around a note in a sharp, slanted hand.{/n} "I am goods. Goods do not take lovers, and they do not say yes. They are used, or they are sold on. Which of those am I? Answer with the bill."''',
-       c("[Burn it and send her the ashes.]", flags=(BURNED, STARTED, P + "cost.bill_answered"), alignment=("Chaotic", 1)),
-       c("[Keep it.]", flags=(KEPT, P + "cost.bill_answered"), alignment=("Evil", 1)))],
+       c("[Burn it and send her the ashes.]", flags=(BURNED, STARTED, P + "cost.bill_answered"), alignment=("Chaotic", 1), forbids=(MIN_IN,)),
+       c("[Keep it.]", flags=(KEPT, P + "cost.bill_answered"), alignment=("Evil", 1)),
+       c("[Burn it, and send her the ashes and Minagho's direction.]", flags=(BURNED, STARTED, P + "cost.bill_answered", REUNITED),
+         alignment=("Chaotic", 1), requires=(MIN_IN,)))],
    requires=("trickster.ever", RET_C, OWNED, PRES_CHIV + ".failed"), forbids=(BURNED, KEPT, CLOSED, P + "chivarro_dead.the_bill"),
    delay=96, TricksterDevice=True, TricksterState="chivarro_dead")
 

@@ -339,6 +339,18 @@ internal static class MinaghoChivarroTricksterTests
         check(!Av(road, Later(story, service)) && !Av(epCommit, service) && !Av(epPair, service) && Av(epOwned, service),
             "The kept bill is treated as a romance.");
         check(Av(billLetter, With(ownedReady, "minagho_chivarro.presence.chivarro.failed")), "The bill's letter twin misfires.");
+        // Sol r3 INT/HOW: Minagho first, then Chivarro bought, by every burn (at once, after keeping the bill, or by letter): the pair
+        // is reunited and its chain opens; nothing seeds the reunion.
+        var minFirst = World(story, 5, "trickster", "trickster.ever", "minagho.spared_c4", MinIn, Primed, Debt, "chivarro.dead", Deposit, Favor);
+        var minFirstOut = Done(bought, minFirst);
+        check(minFirstOut.Where(r => r.Has(P + "bill_burned")).All(r => r.Has(Reunited)) && minFirstOut.Any(r => r.Has(P + "bill_burned"))
+              && Av(offer, Later(story, minFirstOut.First(r => r.Has(P + "bill_burned")))), "A Chivarro bought after Minagho is not reunited with her.");
+        var keptFirst = Later(story, minFirstOut.First(r => r.Has(Owned)));
+        var releasedOut = Done(bill, keptFirst);
+        var releasedByLetter = Done(billLetter, With(keptFirst, "minagho_chivarro.presence.chivarro.failed"));
+        check(releasedOut.Where(r => r.Has(P + "bill_burned")).All(r => r.Has(Reunited)) && releasedOut.Any(r => r.Has(P + "bill_burned"))
+              && releasedByLetter.Where(r => r.Has(P + "bill_burned")).All(r => r.Has(Reunited))
+              && Av(offer, Later(story, releasedOut.First(r => r.Has(P + "bill_burned")))), "Burning a kept bill strands a pair whose Minagho came first.");
         check(Pages(price, Later(story, With(burned, P + "tprev.offer"))).Contains("owned"), "The owned variant of the price is missing.");
 
         // Trk_Chivarro_MinaghoAlone (spared presence copy of the beat) and the dead-returned beat.

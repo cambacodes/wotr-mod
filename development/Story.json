@@ -176747,7 +176747,9 @@
                 "minachiv.started"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "minagho_chivarro.trickster.minagho_in"
+              ],
               "Abort": false,
               "Alignment": {
                 "Direction": "Chaotic",
@@ -176870,6 +176872,23 @@
                 "minagho_chivarro.trickster.cost.bill_answered"
               ],
               "Requires": [],
+              "Forbids": [
+                "minagho_chivarro.trickster.minagho_in"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "[Let her go to Minagho.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.bill_burned",
+                "minachiv.started",
+                "minagho_chivarro.trickster.cost.bill_answered",
+                "minagho_chivarro.trickster.reunited"
+              ],
+              "Requires": [
+                "minagho_chivarro.trickster.minagho_in"
+              ],
               "Forbids": [],
               "Abort": false
             }
@@ -176942,7 +176961,9 @@
                 "minagho_chivarro.trickster.cost.bill_answered"
               ],
               "Requires": [],
-              "Forbids": [],
+              "Forbids": [
+                "minagho_chivarro.trickster.minagho_in"
+              ],
               "Abort": false,
               "Alignment": {
                 "Direction": "Chaotic",
@@ -176961,6 +176982,25 @@
               "Abort": false,
               "Alignment": {
                 "Direction": "Evil",
+                "Value": 1
+              }
+            },
+            {
+              "Text": "[Burn it, and send her the ashes and Minagho's direction.]",
+              "Next": null,
+              "Set": [
+                "minagho_chivarro.trickster.bill_burned",
+                "minachiv.started",
+                "minagho_chivarro.trickster.cost.bill_answered",
+                "minagho_chivarro.trickster.reunited"
+              ],
+              "Requires": [
+                "minagho_chivarro.trickster.minagho_in"
+              ],
+              "Forbids": [],
+              "Abort": false,
+              "Alignment": {
+                "Direction": "Chaotic",
                 "Value": 1
               }
             }
@@ -230590,7 +230630,7 @@
         {
           "Id": "case",
           "Speaker": "Eritrice",
-          "Text": "{n}She listens without writing, which you have never seen her do. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}\n\"The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on.\"",
+          "Text": "{n}She listens with the quill laid flat beside the scroll, as if she had put down a weapon. When you finish, she is quiet. Her claws rest on the blank line and do not tap.{/n}\n\"The truth shines through the endless lies. I said that to you the day we met. I did not expect to be the one it shone on.\"",
           "Choices": [
             {
               "Text": "[Call the question] \"Then call the question.\"",
@@ -230869,7 +230909,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The Council's last circular reaches Drezen: its hall is sealed, and \"any business still pending before this body may be filed with the chair in writing, with surety, for the record\". You have no motion pending. You write one now. The Council's rules, which she wrote, say what surety a member posts: \"a thing of the mover's own, forfeit to the chair if the motion is frivolous.\" Money is not the mover's own. It is the crusade's.{/n}\n{n}So you write out the one true thing you have never told anyone, all of it, seal it under your own wax, and put it in with the motion.{/n}",
+          "Text": "{n}The Council's last circular reaches Drezen: its hall is sealed, and \"any business still pending before this body may be filed with the chair in writing, with surety, for the record\". You have no motion pending. You write one now. Under it, in her own upright hand, plainly added for this one occasion: the chair will hear a late motion only if the mover stakes \"a thing of the mover's own, forfeit to the chair if the motion is frivolous.\" Money is not the mover's own. It is the crusade's.{/n}\n{n}So you write out the one true thing you have never told anyone, all of it, seal it under your own wax, and put it in with the motion.{/n}",
           "Choices": [
             {
               "Text": "[File the motion, with the sealed truth as surety] \"I move that the chair is in dire need of a private debate. Surety enclosed.\"",
@@ -233822,7 +233862,7 @@
         {
           "Id": "hand",
           "Speaker": "Eritrice",
-          "Text": "{n}Her claws close around your fingers. They do not cut. It is a near thing, and you both know it, and neither of you lets go.{/n}\n{n}At last:{/n} \"You are the only one who ever comes back after a session. Did you know that? Every one of them leaves, and you come back.\" {n}The claws draw in, slowly, until it is only a hand.{/n}\n\"I will remember that. I am not writing it down. Some things are not for the record, and I did not know until tonight that I had any.\"",
+          "Text": "{n}Her claws close around your fingers. They do not cut. It is a near thing, and you both know it, and neither of you lets go.{/n}\n{n}At last:{/n} \"Every one of them leaves after a session, and you come back. I have noticed. I notice everything; it is a fault.\" {n}The claws draw in, slowly, until it is only a hand.{/n}\n\"I will remember that. I am not writing it down. Some things are not for the record, and I did not know until tonight that I had any.\"",
           "Choices": [
             {
               "Text": "[Stay a while.]",
@@ -234876,7 +234916,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "\"The war does not wait for the agenda. I know that. I have always known it.\" {n}She rolls the old scroll.{/n}\n\"I have simply never before had someone at the table whose soldiers were dying while I found the right wording. It concentrates the mind.\" {n}A pause.{/n} \"It is unpleasant. Do not stop.\"",
+          "Text": "\"The war does not wait for the agenda. I know that. I have always known it.\" {n}She rolls the old scroll.{/n}\n\"I have had members at this table whose cities were burning. I have not had one who made me feel it while I found the right wording. It concentrates the mind.\" {n}A pause.{/n} \"It is unpleasant. Do not stop.\"",
           "Choices": [
             {
               "Text": "[Leave her with the agenda.]",
@@ -235826,7 +235866,7 @@
         {
           "Id": "hand",
           "Speaker": "Eritrice",
-          "Text": "{n}Her fingers are warm and very still under yours. Neither of you moves.{/n}\n{n}At last she speaks.{/n} \"If I ever draw it at this table, I want your hand to be there. Exactly there. Not to stop me. So that I have to feel it, and decide.\"\n{n}She lifts her hand from the hilt, and leaves yours there a moment longer, and then takes it and holds it, which she has never done.{/n}",
+          "Text": "{n}Her fingers are warm and very still under yours. Neither of you moves.{/n}\n{n}At last she speaks.{/n} \"If I ever draw it at this table, I want your hand to be there. Exactly there. Not to stop me. So that I have to feel it, and decide.\"\n{n}She lifts her hand from the hilt, and leaves yours there a moment longer, and then takes it and holds it, hard, as if it might be called to order.{/n}",
           "Choices": [
             {
               "Text": "[Hold on.]",
@@ -235962,7 +236002,7 @@
         {
           "Id": "confess",
           "Speaker": "Eritrice",
-          "Text": "{n}She lets go of the chair, and looks at the marks her claws have left, and seems for a moment genuinely shocked by them.{/n}\n\"The chair is jealous.\" {n}She says it like the reading of a verdict.{/n} \"The chair has never been jealous. The chair did not know that she could be. It is a very stupid feeling. It argues with itself and loses both sides.\"",
+          "Text": "{n}She lets go of the chair, and looks at the marks her claws have left, and seems for a moment genuinely shocked by them.{/n}\n\"The chair is jealous.\" {n}She says it like the reading of a verdict.{/n} \"It is a very stupid feeling, and I resent having it about a demon lord with scented sleeves. It argues with itself and loses both sides.\"",
           "Choices": [
             {
               "Text": "\"You've got nothing to be jealous of.\"",
@@ -236047,7 +236087,9 @@
       "Forbids": [
         "eritrice.closed",
         "eritrice.lost_at_council",
-        "eritrice.council.his_eyes"
+        "eritrice.council.his_eyes",
+        "socot.gone",
+        "council.walked_out"
       ],
       "DelayHours": 48,
       "Optional": true,
@@ -236090,7 +236132,7 @@
               "Abort": false
             },
             {
-              "Text": "[Lie] \"There's no one else.\"",
+              "Text": "\"There's no one else.\"",
               "Next": "lie",
               "Set": [],
               "Requires": [],
@@ -236135,10 +236177,10 @@
         {
           "Id": "lie",
           "Speaker": "Eritrice",
-          "Text": "{n}She does not write it down. She looks at you, and her face goes flat and formal, the chair's face, the way it did the first time you lied to her at this table.{/n}\n{n}Very quietly:{/n} \"Rule two. A point is answered honestly or not at all.\" {n}She waits.{/n}\n\"I know there are others. I did not ask so that you could protect me from it. I asked so that you would not have to. Try again.\"",
+          "Text": "{n}She does not write it down. She looks at you, and her face goes flat and formal, the chair's face, the way it did the first time you lied to her at this table.{/n}\n{n}Very quietly:{/n} \"Rule two. A point is answered honestly or not at all.\" {n}She waits.{/n}\n\"Three members of this Council have told me otherwise, and they agree on nothing else. They may all be wrong; it would not be the first time. If they are, say it again, plainly, and I will minute it and believe it. If they are not, I did not ask so that you could protect me. Try again.\"",
           "Choices": [
             {
-              "Text": "[Tell her the truth.]",
+              "Text": "[Tell her the truth: every name.]",
               "Next": "truth",
               "Set": [],
               "Requires": [],
@@ -236148,6 +236190,30 @@
             {
               "Text": "\"...There are others. I won't name them.\"",
               "Next": "private",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"They're wrong. There is no one else.\"",
+              "Next": "only",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "only",
+          "Speaker": "Eritrice",
+          "Text": "{n}She looks at you for a long time, the way she reads a motion twice before she votes. Then she writes, in the private hand: \"The Commander sits at one table.\"{/n}\n\"Then the Council is wrong, which it frequently is. Chadali will be disappointed; she had hoped for a crowd.\" {n}Her ears tilt.{/n} \"If that changes, I expect to be told before Chadali is.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "rule",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -236517,7 +236583,7 @@
         {
           "Id": "move",
           "Speaker": "Eritrice",
-          "Text": "\"I move that the debate be held twice nightly.\" {n}She says it with perfect solemnity, and then ruins it by purring at the end.{/n}\n\"Seconded?\" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} \"The chair notes that the floor is taking a very long time to second a simple motion. The chair will count to three. The chair has never counted to three for anyone. One.\"",
+          "Text": "\"I move that the debate be held twice nightly.\" {n}She says it with perfect solemnity, and then ruins it by purring at the end.{/n}\n\"Seconded?\" {n}She turns her head, and her whiskers brush your jaw, and her breath is warm on your throat.{/n} \"The floor is taking a very long time to second a simple motion. I want you, and I am not a patient lion. I will count to three. One.\"",
           "Choices": [
             {
               "Text": "[Second it before she reaches two.]",
@@ -237080,7 +237146,9 @@
               "Text": "\"The Worldwound might make it smaller.\"",
               "Next": "smaller",
               "Set": [],
-              "Requires": [],
+              "Requires": [
+                "eritrice.proposed_key"
+              ],
               "Forbids": [],
               "Abort": false
             },
@@ -237095,6 +237163,32 @@
             {
               "Text": "[Turn the sheet back over and read it.]",
               "Next": "read",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"The Worldwound might make it smaller.\"",
+              "Next": "smaller_early",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "eritrice.proposed_key"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Eritrice"
+        },
+        {
+          "Id": "smaller_early",
+          "Speaker": "Eritrice",
+          "Text": "\"Yes. I included it.\" {n}Very quietly.{/n} \"I have read every report you have sent this Council, and some you did not send. I know what the war does to the ones who go nearest the Wound. I put that in the figures. And then I put in the chance that you do something no one has predicted, which with you is very high.\" {n}A breath.{/n}\n\"The figures do not agree with each other. I am considering disciplining them.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "close",
               "Set": [],
               "Requires": [],
               "Forbids": [],
@@ -237122,7 +237216,7 @@
         {
           "Id": "waste",
           "Speaker": "Eritrice",
-          "Text": "\"Counting is not waste. Counting is how I know what a thing is worth.\" {n}But she does not turn the sheet back over.{/n}\n\"You will die, Commander. Soon, as I measure things. I will not. Every one of your crusades has been a single breath to me. I have watched four of them draw in and let out.\" {n}Her claws rest on the back of the sheet.{/n} \"I have never before minded.\"",
+          "Text": "\"Counting is not waste. Counting is how I know what a thing is worth.\" {n}But she does not turn the sheet back over.{/n}\n\"You will die, Commander. Soon, as I measure things. I will not. Every one of your crusades has been a single breath to me. I have watched four of them draw in and let out.\" {n}Her claws rest on the back of the sheet.{/n} \"I mind this one.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -238031,7 +238125,7 @@
         {
           "Id": "trick",
           "Speaker": "Eritrice",
-          "Text": "\"I do not want to know how.\" {n}At once.{/n} \"If you tell me how, I will have to minute it, and if it is what I suspect, I will have to minute it with a very specific word.\"\n{n}She weighs you, the way she weighs an amendment.{/n} \"If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she has never before declined to inquire into anything.\" {n}She looks, for a moment, almost smug.{/n} \"Go. Before I change my mind.\"",
+          "Text": "\"I do not want to know how.\" {n}At once.{/n} \"If you tell me how, I will have to minute it, and if it is what I suspect, I will have to minute it with a very specific word.\"\n{n}She weighs you, the way she weighs an amendment.{/n} \"If Alichino withdraws his own motion, freely, in writing, the chair will accept the withdrawal. The chair will not inquire into his reasons. The chair notes that she is declining to inquire, and that she will enjoy not knowing.\" {n}She looks, for a moment, almost smug.{/n} \"Go. Before I change my mind.\"",
           "Choices": [
             {
               "Text": "[Go and find a devil's weak spot.]",
@@ -238067,7 +238161,7 @@
         {
           "Id": "recuse",
           "Speaker": "Eritrice",
-          "Text": "\"Recuse myself.\" {n}She tastes the word the way she tasted \"both\".{/n}\n\"Hand the chair to someone else. For one vote. Because I cannot be impartial about you.\" {n}A long silence.{/n} \"That is correct procedure. It is also the first time anyone has ever suggested that I am not impartial, and the first time it has been true.\"\n{n}She writes: \"The chair recuses herself from the motion to expel the Commander, on grounds of partiality, which she declares.\" She signs it hard enough to tear the scroll.{/n}\n\"Cobblehoof will chair it. He will snort at everything. It will be the longest session in the history of the multiverse.\"",
+          "Text": "\"Recuse myself.\" {n}She tastes the word the way she tasted \"both\".{/n}\n\"Hand the chair to someone else. For one vote. Because I cannot be impartial about you.\" {n}A long silence.{/n} \"That is correct procedure. It is also an insult to the chair, and a true one, which is the worst kind.\"\n{n}She writes: \"The chair recuses herself from the motion to expel the Commander, on grounds of partiality, which she declares.\" She signs it hard enough to tear the scroll.{/n}\n\"Cobblehoof will chair it. He will snort at everything. It will be the longest session in the history of the multiverse.\"",
           "Choices": [
             {
               "Text": "[Thank her.]",
@@ -238085,7 +238179,7 @@
         {
           "Id": "close",
           "Speaker": "Eritrice",
-          "Text": "{n}As you turn to go:{/n} \"Whatever happens at that session, it will be minuted truly. If they expel you, I will write it down. And then I will write a dissent, in my own name, as the chair, which I have never done.\" {n}She looks at the black seal.{/n}\n\"It will be very long. It will be the best thing I have ever written. Alichino will have to read all of it, because the rules require it.\"",
+          "Text": "{n}As you turn to go:{/n} \"Whatever happens at that session, it will be minuted truly. If they expel you, I will write it down. And then I will write a dissent, in my own name, as the chair, and I will enjoy every line of it.\" {n}She looks at the black seal.{/n}\n\"It will be very long. It will be the best thing I have ever written. Alichino will have to read all of it, because the rules require it.\"",
           "Choices": [
             {
               "Text": "[Leave her drafting the dissent in advance.]",
@@ -248039,8 +248133,8 @@
       ]
     },
     {
-      "Id": "chadali.trickster.after.orange_tree_letter",
-      "Title": "The seed from Axis",
+      "Id": "chadali.trickster.council.late_wager",
+      "Title": "A penny by post",
       "Owner": "Chadali",
       "MinChapter": 5,
       "MaxChapter": 5,
@@ -248048,60 +248142,56 @@
       "Nodes": [
         {
           "Id": "start",
-          "Speaker": "Chadali",
-          "Text": "{n}A seed comes up from the Drezen gate in a twist of yellow silk: pale, striped, warm as a coin that has been in a pocket. The note is in the round hand, with fewer underlinings than usual.{/n}\n\"The door to the hall doesn't open any more, and I said no to you once, in it. I'm still cross about the needle. I'm also still waiting for my proper question. This is from the tree at the top of Axis. Plant it in your city: a real one, with a gardener and a wall, not a trick. If it takes, ask me again and I'll say yes. If you won't spend a single stone on it, then it was only ever a game. C.\"",
+          "Speaker": "Narrator",
+          "Text": "{n}The Council's hall is sealed, and you never once called a coin for her in it. So you call one now, by post: a Drezen silver penny, worn smooth, wrapped in a note that names a wager and a stake.{/n}",
           "Choices": [
             {
-              "Text": "[Plant the tree] \"It gets the best corner of the citadel garden.\"",
-              "Next": "came",
-              "Set": [
-                "chadali.committed",
-                "chadali.trickster.cost.orange_tree"
-              ],
+              "Text": "[Send the wager] \"Heads, you write back. Tails, you write back anyway. The stake: a hundred crowns to your shrine by the grain market, whichever way it falls.\"",
+              "Next": "reply",
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false,
+              "Mythic": "PlayerIsTrickster",
+              "Alignment": {
+                "Direction": "Chaotic",
+                "Value": 1
+              },
               "Crusade": {
-                "Resource": "Materials",
+                "Resource": "Finances",
                 "Amount": -100
               }
             },
             {
-              "Text": "[Send the seed back] \"I don't garden.\"",
+              "Text": "[Keep the penny.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": "Chadali"
+        },
+        {
+          "Id": "reply",
+          "Speaker": "Chadali",
+          "Text": "{n}The answer comes in a round, happy hand with a great many underlinings, and a cookie in the envelope, somewhat broken.{/n} \"That's not a bet! Both faces are the same! That's cheating where I can see it, which is allowed, but only just.\"\n\"I'm keeping the penny. The shrine is keeping the hundred crowns; its roof leaks. And I'm writing back, which means you win, which I hate.\" {n}Further down, smaller:{/n} \"Next time send me something true instead of something clever. Then I'll decide whether you're lucky.\"",
+          "Choices": [
+            {
+              "Text": "[Write back] \"Something true, then. I missed you at the table.\"",
               "Next": null,
               "Set": [
-                "chadali.closed"
+                "chadali.started",
+                "chadali.trickster.courted",
+                "chadali.trickster.cost.late_wager"
               ],
               "Requires": [],
               "Forbids": [],
               "Abort": false
-            }
-          ],
-          "Portrait": "Chadali"
-        },
-        {
-          "Id": "came",
-          "Speaker": "Narrator",
-          "Text": "{n}She comes herself, the week the wall goes up, in yellow silk with a basket on her arm, and inspects the seedling on her knees in the mud of the citadel garden before she will look at you at all. Then she stands, wipes her hands down your tabard, and says, \"Yes. There. You don't even have to ask again.\"{/n}\n{n}That night she kicks her sandals off inside the door of your quarters and does not bother with the lamp. She pulls the flower from her hair and the silk from her shoulders, pushes you down onto the bed with both hands, and climbs over you, laughing, a knee either side of your hips. \"I bet you,\" she says against your mouth, \"that the tree takes.\"{/n}",
-          "Choices": [
+            },
             {
-              "Text": "Continue",
-              "Next": "morning",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "Chadali"
-        },
-        {
-          "Id": "morning",
-          "Speaker": "Narrator",
-          "Text": "{n}In the morning there is garden soil on the sheets and honey on the pillow, and she is out by the wall before you wake, telling the gardener exactly how deep. The seedling has put out one new leaf overnight. She swears it was not her.{/n}",
-          "Choices": [
-            {
-              "Text": "[Go and look at the leaf.]",
+              "Text": "[Let it rest there.]",
               "Next": null,
               "Set": [],
               "Requires": [],
@@ -248113,20 +248203,21 @@
         }
       ],
       "Requires": [
+        "trickster",
         "trickster.ever",
-        "chadali.trickster.declined",
-        "chadali.trickster.returned"
+        "council.debrief_motion"
       ],
       "Forbids": [
-        "chadali.committed",
+        "chadali.trickster.primed",
+        "chadali.started",
         "chadali.closed",
-        "chadali.trickster.after.orange_tree"
+        "chadali.lost_at_council"
       ],
-      "DelayHours": 72,
+      "DelayHours": 24,
       "Optional": false,
       "Relationship": "chadali",
       "Remote": true,
-      "Kind": "visit",
+      "Kind": "letter",
       "Sender": "Chadali"
     },
     {
@@ -248488,6 +248579,22 @@
               "AnyGroups": []
             },
             {
+              "Text": "{n}She wore a Drezen silver penny on a string round her neck, and tapped it, once, as she sat down.{/n}",
+              "Requires": [
+                "chadali.trickster.cost.late_wager"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "{n}She had said no once, in the hall, and had meant it at the time. The hall was sealed now, and the seed she had meant to bring was still in her sleeve. She had come up the road anyway, to find out whether she still meant it.{/n}",
+              "Requires": [
+                "chadali.trickster.declined"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
               "Text": "{n}She had felt the coin fall at the rift, the night the Commander called in the luck she had borrowed, and had paid it all back at once, the way she did everything. She had come up the road, she said, to see what it had bought.{/n}",
               "Requires": [
                 "chadali.lastcall.called"
@@ -248504,7 +248611,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "{n}Before anything else she held out her hand, palm up, and waited until the Commander understood, and pricked a thumb on the brooch-pin she offered. \"The needle,\" she said. \"You promised. That's paid.\"{/n}",
+              "Text": "{n}Before anything else she held out a brooch-pin, point first, and then, while the Commander was still reaching for it, put it away again. \"No. The needle you owe me isn't a pin in a kitchen,\" she said. \"It's the next real one, the next time somebody comes for something you love with a needle in their hand. It stays on the books until then. I never forget a bet.\"{/n}",
               "Requires": [
                 "chadali.trickster.cost.needle_owed"
               ],
@@ -248584,7 +248691,8 @@
       "ForbidOverrides": {
         "council.fought": "chadali.trickster.returned",
         "council.fought_nocta_allied": "chadali.trickster.returned",
-        "sacrifice": "trickster.commander_back"
+        "sacrifice": "trickster.commander_back",
+        "chadali.trickster.declined": "chadali.trickster.hall_sealed"
       },
       "Relationship": "chadali"
     },
@@ -248621,7 +248729,8 @@
         "chadali.committed",
         "chadali.closed",
         "council.fought",
-        "council.fought_nocta_allied"
+        "council.fought_nocta_allied",
+        "chadali.trickster.hall_sealed"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -249670,7 +249779,8 @@
               "Text": "\"I'll move him. And I'll tell her it was me.\"",
               "Next": "told",
               "Set": [
-                "chadali.wagers.prayer_answered"
+                "chadali.wagers.prayer_answered",
+                "chadali.wagers.prayer_credited"
               ],
               "Requires": [],
               "Forbids": [],
@@ -249775,7 +249885,7 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "\"Because you are!\" {n}She says it the way other people say the sky is up.{/n}\n\"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You found the Lexicon. You found the way in. You make things go well just by standing near them.\"\n{n}She reaches over and pats your cheek, twice, as if you were a very good dog.{/n}",
+          "Text": "\"Because you are!\" {n}She says it the way other people say the sky is up.{/n}\n\"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You walk into a room and things start going well. You make things go well just by standing near them.\"\n{n}She reaches over and pats your cheek, twice, as if you were a very good dog.{/n}",
           "Choices": [
             {
               "Text": "\"I'm not a charm. I'm a person. I bleed, and I choose.\"",
@@ -252723,7 +252833,7 @@
         {
           "Id": "start",
           "Speaker": "Chadali",
-          "Text": "{n}She is holding a letter from one of her priests. You can see the seal of a little Elysian sun on it. Her face is quite calm, which is how you know you are in trouble.{/n}\n\"My priests in Drezen had a very lucky month.\" {n}Calmly.{/n} \"Their roof was mended for free. The grain came early. A soldier returned a purse she'd found, and there was twice as much in it as was lost.\" {n}She folds the letter.{/n}\n\"And every single lucky thing had a crusade stamp on it somewhere. Your stamp.\" {n}She looks up.{/n} \"You rigged my luck.\"",
+          "Text": "{n}She is holding a letter from one of her priests. You can see the seal of a little Elysian sun on it. Her face is quite calm, which is how you know you are in trouble.{/n}\n\"The crossbowman's brother came home from the walls.\" {n}Calmly.{/n} \"She went to my shrine by the grain market to give thanks, and she paid for a new roof for it out of her own wages, because her prayer worked. My priest wrote to tell me how happy she was.\" {n}She folds the letter.{/n}\n\"Her prayer didn't work. You did. There was a crusade order with your seal on it moving him off the wall the morning after I read you her helmet. I asked.\" {n}She looks up.{/n} \"You rigged my luck. And now she's paying for a roof on it.\"",
           "Choices": [
             {
               "Text": "\"I wanted your people to have a good month. Is that so bad?\"",
@@ -252863,12 +252973,14 @@
       ],
       "Requires": [
         "trickster.ever",
-        "chadali.fortunes.burnt_edges"
+        "chadali.fortunes.burnt_edges",
+        "chadali.wagers.prayer_answered"
       ],
       "Forbids": [
         "chadali.closed",
         "chadali.lost_at_council",
-        "chadali.fortunes.rigged"
+        "chadali.fortunes.rigged",
+        "chadali.wagers.prayer_credited"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -253875,7 +253987,8 @@
       ],
       "Requires": [
         "trickster.ever",
-        "chadali.started"
+        "chadali.started",
+        "chadali.lexicon_found"
       ],
       "Forbids": [
         "chadali.closed",
@@ -253986,7 +254099,7 @@
         {
           "Id": "laugh",
           "Speaker": "Chadali",
-          "Text": "{n}She pretends to be offended for exactly one verse, and then she is laughing too, and cannot finish the tenth verse at all.{/n}\n\"It's terrible, isn't it? It's so terrible.\" {n}She wipes her eyes.{/n} \"Everything I make is a little bit terrible. The cookies. The songs. The luck, sometimes. That's how you know it's made by someone, and not just found lying about.\"",
+          "Text": "{n}She pretends to be offended for exactly one verse, and then she is laughing too, and cannot finish the tenth verse at all.{/n}\n\"It's terrible, isn't it? It's so terrible.\" {n}She wipes her eyes.{/n} \"I wrote it terrible on purpose. A good drinking song has to be bad enough that everybody sings louder to drown it. My cookies are perfect, so somebody has to suffer somewhere.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429846,6 +429959,10 @@
     "chadali.free_space": [
       "2889c1e9b792f2c4e95a8cc551971063"
     ],
+    "chadali.lexicon_found": [
+      "805e49b56b678a145891d30f5a5b30f6",
+      "331665d02ccb36a4ba8ad2568a333947"
+    ],
     "chadali.feared_the_cauldron": [
       "ea1508e9383290a4dac192b606fdd0d4"
     ],
@@ -431030,6 +431147,20 @@
       [
         "trickster.ever",
         "chadali.trickster.returned"
+      ]
+    ],
+    "chadali.trickster.hall_sealed": [
+      [
+        "council.debrief_motion"
+      ],
+      [
+        "council.fought"
+      ],
+      [
+        "council.fought_nocta_allied"
+      ],
+      [
+        "trickster.failed"
       ]
     ],
     "arueshalae.trickster.late_committed": [
