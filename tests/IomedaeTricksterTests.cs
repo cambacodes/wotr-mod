@@ -381,11 +381,19 @@ internal static class IomedaeTricksterTests
         check(!Avail(S("galfrey.trickster.epilogue.alive"), galfreyW) && Avail(S("galfrey.trickster.epilogue.alive_buried"), galfreyW)
               && Avail(S("galfrey.trickster.epilogue.alive"), World(story, 6, "trickster.ever", "galfrey.final", "galfrey.committed")),
             "Trk_Iomedae_Coexist: Galfrey's queen-and-general ending plays beside a Commander who is a grave.");
+        // Konomi's public ending yields to its buried sibling (audit r4, COX); the frame paragraph closes both world pages.
+        var konomiW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, "konomi.committed", "konomi.public");
+        var konomiLive = World(story, 6, "trickster.ever", "konomi.committed", "konomi.public");
+        check(!Avail(S("konomi.ending_public"), konomiW) && Avail(S("konomi.ending_public_buried"), konomiW)
+              && Avail(S("konomi.ending_public"), konomiLive) && !Avail(S("konomi.ending_public_buried"), konomiLive)
+              && Render(Pg("bridge"), konomiW).Contains("kept for indoors")
+              && Render(Pg("rescued"), rescuedW).Contains("kept for indoors"),
+            "Trk_Iomedae_Coexist: Konomi's well-known public ending plays beside a Commander who is a grave.");
 
         // Trk_Iomedae_Intimacy: on the bare platform, after Threshold, she in plain steel; the cut at the first motion astride.
         var plat = Pg("platform");
         check(plat.Nodes.Single(n => n.Id == "down").Text.Contains("comes up astride") && plat.Nodes.Single(n => n.Id == "cloak").Text.Contains("It has been a bridge")
-              && Reachable(plat, bridgeW).Any(x => x.Contains("sally port")) && !Reachable(plat, livedW).Any(x => x.Contains("sally port")),
+              && Reachable(plat, bridgeW).Any(x => x.Contains("postern under the east wall")) && !Reachable(plat, livedW).Any(x => x.Contains("postern under the east wall")),
             "Trk_Iomedae_Intimacy: the platform night is not staged to the cut, or the buried Commander is not hidden.");
 
         // Trk_Iomedae_Reactions: Seelah, Sosiel, Daeran (twice), each on their hub, guarded.

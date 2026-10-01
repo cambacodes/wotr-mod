@@ -24,7 +24,7 @@ internal static class KonomiContactTests
         // The Trickster route (konomi.trickster.*) has its own contact contract: KonomiTricksterTests.
         var scenes = story.Scenes.Where(s => s.Relationship == "konomi" && !s.Id.StartsWith("konomi.trickster.", StringComparison.Ordinal)).ToArray();
         excluded = excluded.Concat(new[] { "the_unintroduced_letter", "the_answer_she_addressed", "the_courtyard_introduction",
-            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon", "retained_inquiry", "retained_attempt", "return_letter" }
+            "ending_missed_declined", "ending_missed_interrupted", "ending_missed_interrupted_aeon", "retained_inquiry", "retained_attempt", "return_letter", "ending_public_buried" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id))).ToArray();
         var aftercare = new[] { "return_first_words", "return_second_visit" }
             .Where(id => scenes.Any(s => s.Id == "konomi." + id)).ToArray();

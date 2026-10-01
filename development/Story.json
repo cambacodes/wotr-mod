@@ -20269,7 +20269,8 @@
         "ascended",
         "konomi.private_future",
         "konomi.missed_contact_invalidated",
-        "sacrifice"
+        "sacrifice",
+        "iomedae.trickster.buried_alive"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -159741,72 +159742,6 @@
       "Relationship": "konomi"
     },
     {
-      "Id": "konomi.lastcall.page",
-      "Title": "Terms, Accepted",
-      "Owner": "Epilogue",
-      "MinChapter": 1,
-      "MaxChapter": 99,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "page",
-          "Speaker": "Narrator",
-          "Text": "Konomi returned to the court of Nerosyan after the war as its attaché to whatever the Commander had become, a post the court invented for her because nobody else would take it. Her reports were exact, witty and quite useless to anyone who wanted to know what the Commander was actually doing, which was the point.",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": "",
-          "Paragraphs": [
-            {
-              "Text": "She named her price the night after Threshold, as she had said she would: a seat for Nerosyan at every table the Commander ever sat at, and her own name on the invitation. The Commander agreed before she had finished, which she found suspicious, and she spent a year looking for the catch.",
-              "Requires": [
-                "konomi.lastcall.called"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She had outfoxed the Commander once, fairly, at the recess, and she never let it be forgotten. It was, she said, the only victory over the Fifth Crusade that the court of Nerosyan ever won.",
-              "Requires": [
-                "konomi.trickster.cost.outfoxed"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            },
-            {
-              "Text": "She billed the Commander for every consultation, at her rate, and the Commander paid every bill and kept the receipts in a drawer she was not supposed to know about.",
-              "Requires": [
-                "konomi.trickster.cost.consult_fee"
-              ],
-              "Forbids": [],
-              "AnyGroups": []
-            }
-          ]
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "lastcall.active",
-        "konomi.committed"
-      ],
-      "Forbids": [
-        "konomi.trickster.declined"
-      ],
-      "DelayHours": 0,
-      "Optional": false,
-      "Relationship": "lastcall",
-      "ForbidOverrides": {
-        "konomi.trickster.declined": "konomi.committed"
-      }
-    },
-    {
       "Id": "konomi.trickster.dismissed.react_regill",
       "Title": "Regill's word",
       "Owner": "Regill",
@@ -160054,6 +159989,164 @@
       "AnswerLists": [
         "33178c26f304abe41949f3fb0fa8ac6e"
       ]
+    },
+    {
+      "Id": "konomi.ending_public_buried",
+      "Title": "Letters to nobody",
+      "Owner": "Epilogue",
+      "MinChapter": 5,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Lady Konomi wore black for the Commander of the Fifth Crusade for the full term the court allowed, and not a day longer, and wrote the Royal Council a memorandum on the cost of the funeral that is still cited in Nerosyan as a model of its kind.{/n}\n{n}She never became a reliable source of agreement with the person she wrote to afterwards, either. Her household knew there was someone: letters went out every week to a different waystation, sealed in plain wax and addressed to nobody, and twice a year the envoy took leave and went nowhere for a fortnight, and came back in a temper or in a very good mood, and was never asked which. Whoever it was argued with her as nobody else in Mendev dared to. She never named them. The few letters she left unsealed were burned unread when she died, on her own written instruction, by a servant who said afterwards that there had been a great many of them.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Konomi",
+          "Paragraphs": [
+            {
+              "Text": "Lady Konomi reached Nerosyan eventually. She never explained the delay, and she billed the crown for three days of travel that had taken her nowhere.",
+              "Requires": [
+                "konomi.trickster.recessed"
+              ],
+              "Forbids": [
+                "konomi.trickster.cost.outfoxed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "In Nerosyan they said the new envoy to Drezen had been appointed by the Commander, at her own suggestion, on terms nobody else was shown.",
+              "Requires": [
+                "konomi.trickster.recessed",
+                "konomi.trickster.cost.outfoxed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.",
+              "Requires": [
+                "konomi.trickster.favour_owed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's request. Lady Konomi had it framed, and billed the crown for the frame. Every envoy who ever sat across from her read it, and asked, and was told plainly that she had died at her post and come back on her own fee. None of them ever again quite trusted a Commander who could afford it.",
+              "Requires": [
+                "konomi.trickster.returned",
+                "konomi.trickster.cost.recalled"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', entered from a dovecote's report two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the query every spring, and sends it back.",
+              "Requires": [
+                "konomi.trickster.returned",
+                "konomi.trickster.cost.accredited"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "konomi.committed",
+        "konomi.public",
+        "iomedae.trickster.buried_alive"
+      ],
+      "Forbids": [
+        "konomi.closed",
+        "inhuman",
+        "ascended",
+        "konomi.private_future",
+        "konomi.missed_contact_invalidated",
+        "sacrifice"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "konomi",
+      "ForbidOverrides": {
+        "sacrifice": "trickster.commander_back"
+      }
+    },
+    {
+      "Id": "konomi.lastcall.page",
+      "Title": "Terms, Accepted",
+      "Owner": "Epilogue",
+      "MinChapter": 1,
+      "MaxChapter": 99,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "page",
+          "Speaker": "Narrator",
+          "Text": "Konomi returned to the court of Nerosyan after the war as its attaché to whatever the Commander had become, a post the court invented for her because nobody else would take it. Her reports were exact, witty and quite useless to anyone who wanted to know what the Commander was actually doing, which was the point.",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "",
+          "Paragraphs": [
+            {
+              "Text": "She named her price the night after Threshold, as she had said she would: a seat for Nerosyan at every table the Commander ever sat at, and her own name on the invitation. The Commander agreed before she had finished, which she found suspicious, and she spent a year looking for the catch.",
+              "Requires": [
+                "konomi.lastcall.called"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had outfoxed the Commander once, fairly, at the recess, and she never let it be forgotten. It was, she said, the only victory over the Fifth Crusade that the court of Nerosyan ever won.",
+              "Requires": [
+                "konomi.trickster.cost.outfoxed"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She billed the Commander for every consultation, at her rate, and the Commander paid every bill and kept the receipts in a drawer she was not supposed to know about.",
+              "Requires": [
+                "konomi.trickster.cost.consult_fee"
+              ],
+              "Forbids": [],
+              "AnyGroups": []
+            }
+          ]
+        }
+      ],
+      "Requires": [
+        "trickster.ever",
+        "lastcall.active",
+        "konomi.committed"
+      ],
+      "Forbids": [
+        "konomi.trickster.declined"
+      ],
+      "DelayHours": 0,
+      "Optional": false,
+      "Relationship": "lastcall",
+      "ForbidOverrides": {
+        "konomi.trickster.declined": "konomi.committed"
+      }
     },
     {
       "Id": "nocticula.trickster.defeated.debrief_clue",
@@ -210022,8 +210115,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.parent_romanced",
-          "targona.trickster.late_committed"
+          "targona.trickster.late_committed",
+          "targona.trickster.parent_romanced"
         ]
       ]
     },
@@ -426109,6 +426202,12 @@
               ],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "The people who mattered were told, one at a time, behind a shut door, by a stranger with a hood up who knew things only the Commander could know. Most of them hit the stranger. All of them kept it. Whatever they made of their lives afterwards they made beside someone the world called by another name, or by none, and the old title they kept for indoors. When they told it later, among themselves, they said \"the Commander\" anyway, and nobody outside the door ever understood whom they meant.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -426474,7 +426573,7 @@
         {
           "Id": "buried",
           "Speaker": "Narrator",
-          "Text": "{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the old sally port under the east wall that the demons used for seventy years and the crusade has never quite found. Nobody looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}\n{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}",
+          "Text": "{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the postern under the east wall. The sergeant who keeps it served under you at the citadel gate; she saw your face under the hood the first night, and went white, and opened the door, and has opened it every night since without a word, and climbs to the platform stair ahead of you to send the watch on an errand. Nobody else looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}\n{n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427870,6 +427969,12 @@
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
+            },
+            {
+              "Text": "The people who mattered were told, one at a time, behind a shut door, by a stranger with a hood up who knew things only the Commander could know. Most of them hit the stranger. All of them kept it. Whatever they made of their lives afterwards they made beside someone the world called by another name, or by none, and the old title they kept for indoors. When they told it later, among themselves, they said \"the Commander\" anyway, and nobody outside the door ever understood whom they meant.",
+              "Requires": [],
+              "Forbids": [],
+              "AnyGroups": []
             }
           ]
         }
@@ -429193,7 +429298,7 @@
         {
           "Id": "asked",
           "Speaker": "Iomedae",
-          "Text": "\"You asked me in the square whether I asked anyone's leave.\" {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"I answered you in front of the Lady in Shadow and the Architect, briefly, because neither of them deserved more. You did.\"",
+          "Text": "\"You asked me in the square whether I asked anyone's leave.\" {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"I answered you in front of the Lady in Shadow, briefly, because she did not deserve more. You did.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -429209,7 +429314,7 @@
         {
           "Id": "square",
           "Speaker": "Iomedae",
-          "Text": "\"You stood in the square before the cathedral and heard what I came to say.\" {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"I said it in front of the Lady in Shadow and the Architect, because they deserved to hear it said. You deserved to hear it differently.\"",
+          "Text": "\"You stood in the square before the cathedral and heard what I came to say.\" {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"I said it in front of the Lady in Shadow, because she deserved to hear it said. You deserved to hear it differently.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -430129,7 +430234,7 @@
         {
           "Id": "nobody",
           "Speaker": "Iomedae",
-          "Text": "\"Nobody is a great deal to have been. Most saints begin there. They simply lie about it afterwards, and their biographers help.\"",
+          "Text": "\"Nobody is a great deal to have been. I began there too. There are books now that give me a noble house and a vision in the cradle. I had a borrowed sword, and a sergeant who told me to stop dropping it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -430201,7 +430306,7 @@
         {
           "Id": "first",
           "Speaker": "Iomedae",
-          "Text": "\"I asked first.\" {n}A pause.{/n} \"Very well. It is only fair, and I am supposed to care about that.\"",
+          "Text": "\"I asked first.\" {n}A pause.{/n} \"Very well. You asked a fair question. I will answer it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -431550,7 +431655,7 @@
         {
           "Id": "ask",
           "Speaker": "Iomedae",
-          "Text": "{n}The goddess inclines her head a fraction: the leave a judge gives a petitioner. Behind her the Lady in Shadow smiles at nothing, and the Architect of the Worldwound watches you as if you were an experiment that had begun to talk.{/n}",
+          "Text": "{n}The goddess inclines her head a fraction: the leave a judge gives a petitioner. Behind her the Lady in Shadow smiles at nothing, and waits to see what the question costs you.{/n}",
           "Choices": [
             {
               "Text": "\"When your people were at the edge of a gorge, with the bridge burned and the dead behind them, did you ask anyone's leave?\"",
@@ -431608,7 +431713,7 @@
         {
           "Id": "banner",
           "Speaker": "Iomedae",
-          "Text": "{n}Her eyes stay on you a little longer than on anyone else in the square.{/n} \"But you knew the answer. You have been sleeping under my banner, and it has been indiscreet.\"\n{n}She does not turn her head toward the demon lord.{/n} \"We will not discuss my banner in front of the Lady in Shadow, nor in front of the woman who built you to die. Make your decision, Commander. I will not make it for you.\"",
+          "Text": "{n}Her eyes stay on you a little longer than on anyone else in the square.{/n} \"But you knew the answer. You have been sleeping under my banner, and it has been indiscreet.\"\n{n}She does not turn her head toward the demon lord.{/n} \"We will not discuss my banner in front of the Lady in Shadow, nor while the woman who built you to die is still loose with her plans for you. Make your decision, Commander. I will not make it for you.\"",
           "Choices": [
             {
               "Text": "[Nod, and turn back to the matter at hand.]",

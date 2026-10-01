@@ -659,6 +659,14 @@ def page(id, title, nodes, requires, forbids=(), **extra):
     tag(E + "epilogue." + id)
 
 
+# Every other account of these years is told by the few who were let in on it: the world's Commander is a grave.
+HOUSE_FRAME = ("The people who mattered were told, one at a time, behind a shut door, by a stranger with a hood up who knew things only "
+               "the Commander could know. Most of them hit the stranger. All of them kept it. Whatever they made of their lives "
+               "afterwards they made beside someone the world called by another name, or by none, and the old title they kept for "
+               "indoors. When they told it later, among themselves, they said \"the Commander\" anyway, and nobody outside the door "
+               "ever understood whom they meant.")
+
+
 page("bridge", "The Bridge", [
     nar("fire", '''{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Almost everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}
 {n}You left the banner in the rock at the edge, behind you. You cannot see it from in here. You cannot feel your hands.{/n}''',
@@ -726,6 +734,7 @@ page("bridge", "The Bridge", [
               requires=(BANNER_HELD,)),
             p('''The hand that held the cathedral's banner over the fire never closed properly again.''',
               requires=(ORDER_BANNER,)),
+            p(HOUSE_FRAME),
         )),
 ], requires=(KEPT,), forbids=(CLOSED,))
 
@@ -771,7 +780,7 @@ page("platform", "Where It Flew", [
     nar("night", '''{n}The platform on top of the citadel of Drezen, at night.{/n}''',
         c("Continue", "buried", requires=(KEPT,)),
         c("Continue", "open", forbids=(KEPT,))),
-    nar("buried", '''{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the old sally port under the east wall that the demons used for seventy years and the crusade has never quite found. Nobody looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}
+    nar("buried", '''{n}Drezen still wears black for its Commander. You come into the city after dark in a borrowed coat with the hood up, by the postern under the east wall. The sergeant who keeps it served under you at the citadel gate; she saw your face under the hood the first night, and went white, and opened the door, and has opened it every night since without a word, and climbs to the platform stair ahead of you to send the watch on an errand. Nobody else looks at you twice. You are nobody; there is a grave in the citadel yard to prove it.{/n}
 {n}The platform is bare. The pole stands in its iron socket with the halyard slapping against it, and nothing at the top, and nothing will ever be at the top again.{/n}''',
         c("Continue", "her")),
     nar("open", '''{n}You climb the stair you have climbed a hundred times, past a sentry who salutes and asks nothing.{/n}''',
@@ -1003,6 +1012,7 @@ page("rescued", "Answered", [
         paragraphs=(
             p('''Some years later she came back, unannounced, and asked it herself.''', requires=(SPOKEN,)),
             p('''The Lady of Graves had let the stranger go back over on her own terms: the death stands in her book, and there is no appeal at the next appointment. Iomedae answers to her for it.'''),
+            p(HOUSE_FRAME),
         )),
 ], requires=(RESCUED,), forbids=(CLOSED, COMMITTED))
 
