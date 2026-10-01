@@ -260,7 +260,9 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
             p('''{n}She kept the wanting out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw all of her at once, and the cat did not care.{/n}''',
               requires=(SAINT_ONLY,)),
             p('''{n}The Commander never quite stopped being a quack, and she never quite stopped being a patient, and the treatment was never completed, because, as she told anyone who asked, the best treatments never are.{/n}''',
-              forbids=(SAINT_ONLY,)),
+              forbids=(SAINT_ONLY, ELYSIUM)),
+            p('''{n}The treatment ended the day the flowers came, and she discharged herself, loudly, in front of witnesses. The Commander kept the title of quack anyway. She said it was the only diagnosis {mf|he|she} had ever got right.{/n}''',
+              requires=(ELYSIUM,), forbids=(SAINT_ONLY,)),
         ))],
     requires=("trickster.ever", COMMITTED, INTAKE), forbids=(CLOSED, EVIL_DEAD, RECRUITED), last=6, Relationship="arueshalae"))
 

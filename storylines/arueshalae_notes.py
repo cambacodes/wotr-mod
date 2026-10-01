@@ -234,7 +234,10 @@ hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
     a("mark", '''"And this did." {n}She runs her thumb along it.{/n} "A cat did this, because it liked me, and it stayed. A smithy cat that I bought a fish for, and it leaves a mark on me that I can still find with my thumb a month later."
 {n}She looks at you, her eyes very bright.{/n} "I wanted it to stay. Desna help me, I still do."''',
         c('"It isn\'t mad. It\'s the first thing you\'ve kept that nobody gave you a use for."', "keep", flags=(SCAR,)),
-        c('[Kiss the scar, lightly, and take what it costs]', "kiss", flags=(SCAR,))),
+        c('[Kiss the scar, lightly, and take what it costs]', "kiss", flags=(SCAR,), forbids=(ELYSIUM,)),
+        c('[Kiss the scar, lightly]', "kiss_e", flags=(SCAR,), requires=(ELYSIUM,))),
+    nar("kiss_e", '''{n}You lift her hand and kiss the white line, lightly, once. Nothing comes out of you. Nothing at all. She stares at the place your mouth was as if she had expected to see frost on it.{/n}
+"Now it's got two things in it," she says, unsteadily. "The cat, and you. And it didn't cost you anything. I'll never get used to that. I'm not going to try."''', c()),
     a("keep", '''"The first thing I've kept that nobody gave me a use for." {n}She holds the hand against her chest.{/n} "The novice's song is like that. And the stone. And the list. I'm collecting them, aren't I? Useless things. I'm going to be the most cluttered demon in the history of the Abyss." {n}She laughs.{/n} "Good."''', c()),
     nar("kiss", '''{n}You lift her hand and kiss the white line, lightly, once. The cold comes, and you let it come, because a scar is a thing you kiss without bargaining. She goes very still, and then she takes her hand back, slowly, and looks at the scar as if it had changed colour.{/n}
 "Now it's got two things in it," she says, unsteadily. "The cat, and you. It'll never heal now. I won't let it."''', c()),

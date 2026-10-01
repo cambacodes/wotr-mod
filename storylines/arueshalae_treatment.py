@@ -239,7 +239,20 @@ session(ALUSHINYRRA, "Where I grew up", 4, '"Tell me about the house you grew up
     a("noted", '''"The treatment plan." {n}She rests her chin on her knees and smiles at the dark.{/n} "You haven't got a treatment plan. You've got a pocket full of jokes and a very straight face." {n}A pause.{/n} "Write it down anyway. I want to see what it looks like in your handwriting."''', c()),
     a("first", '''{n}She goes absolutely still. Then she counts on her fingers, silently, going back through days you can't see.{/n}
 "It is," she says, astonished. "It is. The cat doesn't count; I wanted the cat to want me. The smell of the bakery was close. But this..." {n}She presses her hand to her mouth.{/n} "That's the first thing. The first thing I've wanted that isn't somebody. Oh. Oh, I'm going to cry in the Abyss, in front of a demon's camp, and it's your fault."''', c()),
-], (INTAKE, "trickster.ever"), forbids=(ALUSHINYRRA,), delay=24, chapters=(4, 5))
+], (INTAKE, "trickster.ever"), forbids=(ALUSHINYRRA,), delay=24, chapters=(4,))
+
+# Q11: the telling is staged in the Abyss, so it stays in Chapter 4; a Chapter 5 player who missed it hears it in Drezen.
+import copy as _copy
+_twin = _copy.deepcopy(SCENES[-1])
+_twin.update(Id=T + "alushinyrra_drezen", MinChapter=5, MaxChapter=5, Chapters=[5])
+_twin["Forbids"] = _twin["Forbids"] + [T + "alushinyrra_drezen"]
+for _node in _twin["Nodes"]:
+    _node["Text"] = (_node["Text"]
+        .replace("The Abyss does that to her: in the camps of the Abyss she sleeps less and watches more, and she stands between you and the dark without seeming to notice she does it.",
+                 "She has been like this since the Abyss: sleeping less, watching more, standing between you and the dark without seeming to notice she does it.")
+        .replace("Oh, I'm going to cry in the Abyss, in front of a demon's camp, and it's your fault.",
+                 "Oh, I'm going to cry on the citadel wall, in front of the whole watch, and it's your fault."))
+SCENES.append(_twin)
 
 
 # --- The queen's claim (optional; after Nocticula_main/Cue_0523) --------------------------------------------------
@@ -312,7 +325,7 @@ session(RELAPSE_TWO, "Contraindications", 5, '"You look like you haven\'t slept.
 
 session(SLIPPED, "A missed night", 5, '"You\'re awake. Don\'t get up."', [
     nar("start", '''{n}The march from the Ivory Labyrinth ran late, the candles were in the baggage, and you fell asleep in your boots without saying the blessing. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}
-{n}You wake a day later. A whole day: the council met without you, and the quartermaster signed for you, and nobody could rouse you. Your hands are cold to the wrist and will not warm at the brazier. When you try to stand, the tent tilts.{/n}''',
+{n}That was two nights ago. You lost the whole of the day after it: the council met without you, and the quartermaster signed for you, and nobody could rouse you. Your hands are still cold to the wrist and will not warm at the brazier. When you try to stand, the tent tilts.{/n}''',
         c("Continue", "her")),
     a("her", '''{n}She is sitting in the far corner of the tent, as far from the cot as the canvas allows, with her knees drawn up and her wings wrapped round them. Her face is grey. You have seen that look on the faces of the soldiers who dug out Kenabres.{/n}
 "You didn't light it." {n}Her voice is very flat.{/n} "You reached for me and I was hungry and I didn't stop, not for a long breath, and you didn't say the words, and I didn't make you. The chaplain says you'll keep the cold in your hands for a month." {n}She looks at the cold hands, and away.{/n}''',
