@@ -282,7 +282,7 @@ for hub_key, suffix, extra, unit in DREZEN_PLACES:
 
 # Q11: after the native Elysium ending (BestEnding; her touch no longer drains) the sessions that stage a drain close.
 for _scene in SCENES:
-    if _scene["Id"] in (TEACH, GLOVES) and ELYSIUM not in _scene["Forbids"]:
+    if _scene["Id"] in (TEACH, GLOVES, SOSIEL_OFFER) and ELYSIUM not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM)
 
 

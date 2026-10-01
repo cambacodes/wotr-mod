@@ -12,7 +12,7 @@ from storylines.arueshalae_trickster import (AFTERTASTE, CHAPLAIN, CLOSED, COMMI
                                              FED_ON_PRISONER, FED_ON_YOU, HUB, HUNGRY, P, RECRUITED, RETURNED, REUNITED,
                                              TAVERN_FAILED, DREZEN_PLACES, TAVERN_PRESENCE, UNIT, YARD_PRESENCE, ALLY, IF_ASKED,
                                              EVERY_TIME)
-from storylines.arueshalae_treatment import INTAKE, KITCHEN, TOUCHED
+from storylines.arueshalae_treatment import ELYSIUM, INTAKE, KITCHEN, TOUCHED
 
 SCENES = []
 CENSER = P + "chaplain.censer"
@@ -146,6 +146,12 @@ tavern(DAYBOOK, "The daybook", '"You kept something of hers?"', [
     a("end", '''{n}She puts it away again, very carefully, next to her skin.{/n} "Buy me another drink, and don't ask me anything else tonight. You have a way of asking things that makes me answer, and I don't like it." {n}A thin smile.{/n} "Ask me again and I'll find somebody less tedious to drink with."''',
         c("[Buy her another drink.]", flags=(DAYBOOK,))),
 ], (), delay=24)
+
+
+# Q11: after the native Elysium ending the returned count of hungry days is not restaged.
+for _scene in SCENES:
+    if _scene["Id"] in (COUNTING,) and ELYSIUM not in _scene["Forbids"]:
+        _scene["Forbids"].append(ELYSIUM)
 
 
 def integrate(payload):

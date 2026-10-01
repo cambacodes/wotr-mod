@@ -127,7 +127,7 @@ GREET_AWNING = ("{n}The jeweller's arcade is boarded up. Under the tailor's stri
                 "wool, a woman in black is draped across the cutting table like a length of expensive silk.{/n}")
 PRESENCES = {
     LAIR_PRESENCE: dict(Unit=EVIL_UNIT, Area=LAIR, Mode="spawn-copy", At=dict(Locator=LAIR_LOCATOR),
-                        Requires=["trickster.ever", RETURNED, EVIL_DEAD], Forbids=[CLOSED, REUNITED],
+                        Requires=["trickster.ever", RETURNED, EVIL_DEAD], Forbids=[CLOSED, REUNITED], RequiresAnyGroups=[[DEBT, FAVOUR]],
                         MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREET_LAIR),
     TAVERN_PRESENCE: dict(Unit=EVIL_UNIT, Area=DREZEN, Mode="spawn-copy",
                           At=dict(NearUnit=JEWELER, Side="front", Distance=2.0),
@@ -311,7 +311,7 @@ letter(P + "evil.late_referral", "A referral, posthumously", 5, [
     nar("sent", '''{n}It says it back to you three times, in a voice like a hinge, until it has every word. Then it goes, flapping badly into the purple sky, and looks back once as if to ask whether you are serious. You are. It is the most serious referral you have ever written.{/n}
 {n}It knows where to take it, it tells you, cringing: to the queen's house in the Midnight Isles, and to the old woman on its stair who keeps the count of the queen's daughters, living and dead, and holds the bodies of the dead ones until the queen has decided about them. She takes the queen's messages. She charges for it.{/n}''', c()),
     nar("gone", '''{n}You let it go. It scuttles off into the rubble with its rings. You leave her where she fell. It is the only thing about her that you never tried to fix.{/n}''', c()),
-], requires=("trickster", EVIL_DEAD, EVIL_LATCH), forbids=(PRIMED, RETURNED, DECLINED), delay=24, chapters=(5,),
+], requires=("trickster", EVIL_DEAD, EVIL_LATCH), forbids=(PRIMED, DEBT, FAVOUR, DECLINED), delay=24, chapters=(5,),
     TricksterDevice=True, TricksterState="evil_dead")
 
 QUEEN_FEE = ('"My fee: once, when I call, she comes. You will not know when, and you will not stop her. Do not haggle. '
@@ -347,7 +347,7 @@ letter(P + "evil.second_opinion", "A second opinion", 5, [
     nar("pay_hiding", '''{n}You send back one word. Somewhere in the Midnight Isles a debt settles into the dark like a coin into a well, which is exactly the kind of debt that is always collected.{/n}''', c()),
     nar("raised_hiding", '''{n}You send it back. The next moth brings nothing but a smear of lipstick, and under it:{/n} "Idiot. She'll pick the hour and she'll pick it to hurt. A."''', c()),
     nar("refused_hiding", '''{n}You send nothing back. Nobody writes again.{/n}''', c()),
-], requires=("trickster.ever", PRIMED, EVIL_DEAD), forbids=(RETURNED, DECLINED), delay=72, chapters=(5,),
+], requires=("trickster.ever", PRIMED, EVIL_DEAD), forbids=(DEBT, FAVOUR, DECLINED), delay=72, chapters=(5,),
     TricksterDevice=True, TricksterState="evil_dead")
 
 REUNION_OPEN = '''"A second opinion." {n}She smiles with too many teeth.{/n} "You bought me back from her on credit. Don't ever let me see the bill."
@@ -382,7 +382,8 @@ presence_scene(P + "evil.reunion", "The patient sits up", '"You look well, for a
       c("Continue", "price")),
     a("price", '''"So. The fee for a house call, doctor." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
     *REUNION_ENDS,
-], ("trickster.ever", RETURNED, EVIL_DEAD), (REUNITED, CLOSED, P + "evil.reunion_letter"), 24, LAIR_PRESENCE, LAIR)
+], ("trickster.ever", RETURNED, EVIL_DEAD), (REUNITED, CLOSED, P + "evil.reunion_letter"), 24, LAIR_PRESENCE, LAIR,
+    RequiresAnyGroups=[[DEBT, FAVOUR]])   # the queen's price was paid: not a redeemed return from an earlier death
 
 letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
     nar("start", '''{n}A note in lipstick on a pressed black moth wing, pushed under your door by something that did not use the stairs:{/n}
@@ -396,6 +397,7 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
     nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
     nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you, and on it, in lipstick: "You chose nothing. Nothing has a name now. It's on your account, darling, not mine."{/n}''', c()),
 ], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED),
+    RequiresAnyGroups=[[DEBT, FAVOUR]],
     delay=120, chapters=(5,))
 
 TERMS_OPEN = [
@@ -663,7 +665,7 @@ SCENES.extend([
     reaction("Lann", P + "react.lann_prisoner", (RETURNED, FED_ON_PRISONER),
              '''"The east cells are one short and nobody's asking." {n}Lann doesn't look up from his fletching.{/n} "You fed her a man so she'd live. I think I'd have done the same. I'm not proud of thinking it. Don't ask me to be."''',
              chapter=3, last=5, entry='"About Arueshalae..."', **LANN),
-    reaction("Lann", P + "react.lann_deal", (RETURNED, EVIL_DEAD),
+    reaction("Lann", P + "react.lann_deal", (RETURNED, EVIL_DEAD, "arueshalae.lann_refused_queen"),
              '''"The queen offered me anything I wanted, and I told her I'd rather die than wear a debt." {n}He finally looks at you.{/n} "You went and took one out for a succubus who tried to eat you. That's either very noble or very stupid. I'm going with stupid. Mostly."''',
              chapter=5, last=5, entry='"About Arueshalae..."', **LANN),
     reaction("Sosiel", P + "react.sosiel_evil", (RETURNED, EVIL_DEAD),
@@ -692,6 +694,8 @@ def integrate(payload):
     """Register her revival, presences and derived keys. Scenes are added by expansion.py; world keys bind on demand."""
     payload.setdefault("Revivals", {}).update({k: dict(v) for k, v in REVIVALS.items()})
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    # Nocticula_main/Cue_0521: Lann refuses the queen's offer (the reaction quotes it only where it was shown)
+    payload.setdefault("SeenCues", {})["arueshalae.lann_refused_queen"] = ["00f8570585529f54ba41157ac66574f4"]
     for key, groups in DERIVED.items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != [list(g) for g in groups]:

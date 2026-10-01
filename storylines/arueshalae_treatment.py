@@ -86,7 +86,7 @@ session(STUDIED, "Night reading", 3, '"You were in the shrine library until the 
         c("Continue", "why")),
     nar("why", '''{n}You tell her the truth, because she would hear anything else. You remember a thing she said once, quietly, as if confessing it: that she should like to kiss someone again, but only as a mortal. Not as a demon. You have been reading ever since.{/n}
 {n}The breviary's blessing for travellers is a small, plain thing: a candle, a star, a few lines asking the goddess to watch one road for one night. It promises nothing about demons; no priest ever meant it for one. The rest is yours. The Trickster's lore can treat a negative condition the way a priest treats a poison, and you mean to hang that lore on the blessing's frame: one star, one night, one wolf kept off one road. Nobody taught you this. Nobody has tried it. You think the two will fit together. You are not sure.{/n}
-{n}If it fits at all, the arithmetic is already plain on the page. One candle, lit at dusk, can carry one drain: the first cold out of her, into the flame, and the wick is spent until you have slept. The second drain has nowhere to go but you. There is no version of this where you do not pay; there is only a version where you pay a little less, and know the moment the paying starts.{/n}''',
+{n}If it fits at all, the arithmetic is already plain on the page. One candle, lit with the whole blessing said over it, can carry one drain: the first cold out of her, into the flame, and then the wick is spent, and a fresh candle needs the whole blessing again, a quarter of an hour of it, which nobody has once a hand is already held. The second drain has nowhere to go but you. There is no version of this where you do not pay; there is only a version where you pay a little less, and know the moment the paying starts.{/n}''',
         c('[Lay the two texts side by side: you already know the lore] "The blessing gives it a shape. The lore does the rest."', "fit",
           requires=(CURE,)),
         c('[Work out the rite the hard way, from the chaplain\'s commentary]', forbids=(CURE,),
@@ -206,7 +206,7 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
         c("Continue", "cured")),
     a("cured", '''{n}She is staring at your joined hands. She has stopped breathing, if she breathes.{/n}
 "One." {n}Her voice is tiny.{/n} "One whole breath with your hand in mine, and it didn't take anything. The candle took it." {n}She is staring at the dead wick.{/n} "And then it was me again. I felt it. It would have been you the next breath, and the one after."
-"One star, one night," you tell her. "Until I sleep. Every evening, if you want it. That's the treatment."
+"One candle, one breath," you tell her. "Every evening, if you want it, with the blessing said fresh each time. That's the treatment."
 {n}She holds her own hand, the one you held, against her chest, and begins to cry, silently.{/n} "I've never held anyone's hand before without killing a little of them. Not once. One breath. Every evening. I'll take it."''',
         c("[Keep holding her hand.]", flags=(TOUCHED, CURED))),
     nar("pay_try", '''{n}She takes it. Her fingers are cool and very light, and then the cold begins: not in your hand, in the middle of you, like a draught under a door, and it keeps coming. The edges of the room go soft. Your knees tell you they have an opinion about standing.{/n}
@@ -286,7 +286,7 @@ session(KITCHEN, "A meal someone made", 5, '"Seventh bell. You said kitchens."',
         c("Continue", "hand_paid", forbids=(CURED,))),
     nar("hand_cure", '''{n}She reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and presses her lips to the burn.{/n}
 {n}You lit the candle at dusk, before the onions burned; it is still going on the windowsill. The cold begins at once, deep and sweet, and the little flame on the sill takes it and goes blue. She lifts her mouth away before the second one can come, deliberately, watching your face over your knuckles.{/n}
-"Still working," she says. "One a night. I counted it. Good."''',
+"Still working," she says. "One to a candle. I counted it. Good."''',
         c("Continue", "after")),
     nar("hand_paid", '''{n}She reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and looks at it for a long time. Then she presses her lips, very briefly, to the burn.{/n}
 {n}The cold comes, sharp and quick. You feel it take something. She feels you feel it, and lets go at once, and holds her own wrist as if she had burned herself.{/n}

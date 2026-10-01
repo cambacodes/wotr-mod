@@ -372,7 +372,7 @@ internal static class ArueshalaeTricksterTests
             "A deferred proposal followed by Elysium locks the treatment out of every commit.");
         // The failed-presence letter serves the late referral as well.
         check(Rules.Available(story, S(P + "evil.reunion_letter"), Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "returned",
-                  "arueshalae.evil_dead", P + "cost.late", "arueshalae.presence.evil.failed"), 130)),
+                  "arueshalae.evil_dead", P + "cost.late", P + "cost.nocticula_debt", "arueshalae.presence.evil.failed"), 130)),
             "The late referral has no reunion when the lair presence fails.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the diagnosis, the second opinion, the chaplain, the treatment and her proposal, the arcade, and the queen's favour.");
     }
