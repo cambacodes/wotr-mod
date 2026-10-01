@@ -188,8 +188,9 @@ internal static class NidalynnTricksterTests
         // Trk_Nidalynn_Confess: the crowd at the kiln; the truth costs Favors and the claim question follows.
         var lane = Later(story, fired, 49);
         var her = hatching.Nodes.Single(n => n.Id == "her").Choices;
-        check(her.Count == 3 && her[0].Set.Contains(P + "confessed") && her[0].Crusade?.Resource == "Favors"
-              && her[1].Set.Contains(P + "lied_at_kiln") && her[2].Set.Contains(Closed) && her[2].Set.Contains(P + "given_to_the_crowd"),
+        check(her.Count == 4 && her[0].Set.Contains(P + "confessed") && her[0].Crusade?.Resource == "Favors"
+              && her[1].Set.Contains(P + "lied_at_kiln") && her[2].Set.Contains(Closed) && her[2].Set.Contains(P + "given_to_the_crowd")
+              && her[3].Set.Contains(P + "confessed") && her[3].Requires.Contains(P + "egg.vault") && her[0].Forbids.Contains(P + "egg.vault"),
             "Trk_Nidalynn_Confess: the kiln's pivot is not confess, lie or burn.");
         var confessed = After(hatching, lane, "said", 0).First();
         check(confessed.Has(P + "hatched") && confessed.Has(P + "confessed") && Avail(whose, Later(story, confessed, 25)),
@@ -282,6 +283,68 @@ internal static class NidalynnTricksterTests
         foreach (var s in own)
             foreach (var key in s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)).Where(k => k.StartsWith(P, StringComparison.Ordinal)))
                 check(produced.Contains(key) || story.Latches.ContainsKey(key), "A Nidalynn gate has no producer: " + s.Id + " requires " + key);
+
+        // Q9 (Sol INT/HOW): the acquisition history is read where it matters: the golems' egg and the vault's egg each reach
+        // their own question at the hearth, their own truth on the step and their own confession at the kiln.
+        List<string> Visited(Scene s, Snapshot w)
+        {
+            var ids = new List<string>();
+            Program.Walk(s, w, (id, st) => ids.Add(id));
+            return ids;
+        }
+        var golemHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "egg.golems", P + "met", "nidalynn.started"), 25);
+        var vaultHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "egg.vault", P + "cost.palms", P + "met", "nidalynn.started"), 25);
+        check(Visited(hearth, golemHearth).Contains("why") && !Visited(hearth, golemHearth).Contains("why_vault")
+              && Visited(hearth, vaultHearth).Contains("why_vault") && !Visited(hearth, vaultHearth).Contains("why"),
+            "Trk_Nidalynn_History: the hearth asks the wrong Commander about the golems or the vault.");
+        check(Program.Walk(hearth, vaultHearth).Any(r => r.Has(P + "kiln_agreed")), "Trk_Nidalynn_History: the vault's hearth does not reach the kiln.");
+        var vaultStep = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "hearth.grey_stone", P + "egg.vault", "eggs.project"), 25);
+        check(Program.WalkVia(widow, vaultStep, "rock", 3).All(r => r.Has(P + "told_egg")) && Program.WalkVia(widow, vaultStep, "rock", 3).Count > 0
+              && Program.WalkVia(widow, vaultStep, "rock", 1).Count == 0,
+            "Trk_Nidalynn_History: the vault's Commander tells the widow about the golems.");
+        var vaultLane = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "egg.vault", P + "met", "nidalynn.started", P + "kiln"), 49);
+        var vaultConfessions = Visited(hatching, vaultLane);
+        check(vaultConfessions.Contains("confess_vault") && !vaultConfessions.Contains("confess")
+              && Program.Walk(hatching, vaultLane).Any(r => r.Has(P + "confessed") && r.Has(P + "hatched")),
+            "Trk_Nidalynn_History: the vault's Commander confesses the golems to the lane.");
+        check(!Visited(hatching, lane).Contains("confess_vault"), "Trk_Nidalynn_History: the golems' Commander confesses the vault.");
+
+        // Q9 (Sol INT/HOW): the reunion after the Abyss only for a Commander she met before it; a Chapter 5 first meeting gets
+        // its own words; the reunion never plays after the first flight, and its news follows what has happened.
+        var back = S(P + "door.home_from_the_dark");
+        var ch3Met = Program.Walk(widow, Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "hearth.grey_stone", "eggs.project"), 25));
+        check(ch3Met.All(r => r.Has(P + "met") && r.Has(P + "met_before_abyss")), "Trk_Nidalynn_Reunion: a Chapter 3 meeting is not latched.");
+        var ch5Met = Program.Walk(widow, Later(story, World(story, 5, "trickster", "trickster.ever", "irabeth.chapter_five", P + "primed", P + "hearth.grey_stone", "eggs.project"), 25));
+        check(ch5Met.All(r => r.Has(P + "met") && !r.Has(P + "met_before_abyss")), "Trk_Nidalynn_Reunion: a Chapter 5 first meeting is latched as before the Abyss.");
+        var homeEarly = Later(story, ch3Met.First(), 13, 5);
+        var homeNew = Later(story, ch5Met.First(), 13);
+        check(Avail(back, homeEarly) && Avail(back, homeNew), "Trk_Nidalynn_Reunion: the door after the Abyss does not open.");
+        check(Visited(back, homeEarly).Contains("look") && !Visited(back, homeEarly).Contains("look_new")
+              && Visited(back, homeNew).Contains("look_new") && !Visited(back, homeNew).Contains("look"),
+            "Trk_Nidalynn_Reunion: a Chapter 5 first meeting is greeted as a reunion, or the reunion as a stranger.");
+        check(!Visited(back, homeNew).Contains("news_egg") && Visited(back, homeNew).Contains("news_hearth"),
+            "Trk_Nidalynn_Reunion: the egg's kiln news reaches a Commander who never took it to the kiln.");
+        check(!Avail(back, Later(story, World(story, 5, "trickster.ever", P + "primed", P + "met", P + "met_before_abyss", "nidalynn.started", P + "hatched", P + "proposed"), 13)),
+            "Trk_Nidalynn_Reunion: the first night home plays after the first flight.");
+
+        // Q9 (Sol VOI): the wolves story makes innocents pay; she will not raise the hatchling on it. Correct it, or she goes.
+        var goat = S(P + "kiln.the_goat");
+        var goatWorld = Later(story, World(story, 3, "trickster.ever", P + "met", "nidalynn.started", P + "cost.claim_given_up", P + "hatched"), 49);
+        var wolves = Program.WalkVia(goat, goatWorld, "her", 2);
+        check(wolves.Any(r => r.Has(P + "goat.corrected") && !r.Has(Closed)) && wolves.Any(r => r.Has(P + "goat.lie_kept") && r.Has(Closed))
+              && wolves.All(r => r.Has(P + "goat.corrected") || r.Has(Closed)),
+            "Trk_Nidalynn_Goat: the wolves story can stand without correction and without her refusal.");
+        check(Ch(goat, "after_wolves", 0).Forbids.Contains(P + "goat.wolves"), "Trk_Nidalynn_Goat: the old acceptance of the wolves is not retired.");
+
+        // Q9 (Sol BEL): her own face answers "why now" without the snowfield's breakfast; the torc is shown as it is.
+        check(!form.Nodes.Single(n => n.Id == "now").Text.Contains("chewing") && !form.Nodes.Single(n => n.Id == "now").Text.Contains("bread"),
+            "Trk_Nidalynn_Staging: her own face eats bread that was never served.");
+        var women = S(P + "steps.the_widows_time");
+        foreach (var node in women.Nodes)
+            check(!node.Text.Contains("or she is not") && !node.Text.Contains("either way"), "Trk_Nidalynn_Staging: the narrator shows an authoring alternative: " + node.Id);
+        var leftWorld = Later(story, World(story, 5, "trickster.ever", P + "met", "nidalynn.started", P + "form_chosen", P + "steps.torcs", P + "torc.left"), 25);
+        check(Visited(women, leftWorld).Contains("torc_left") && !Visited(women, leftWorld).Contains("torc"),
+            "Trk_Nidalynn_Staging: the girl wears a torc the Commander left in the jeweller's tray.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))

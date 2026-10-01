@@ -4,8 +4,8 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1004,
-  "resolved": 1004,
+  "entryTargetScenes": 1006,
+  "resolved": 1006,
   "inlineOnlyScenes": 250,
   "inlineOnlyResolved": 250,
   "answerListScenesWithoutContact": 586,
@@ -6871,6 +6871,25 @@
     "clicks": 0
    }
   },
+  "dorgelinda.ledger.cold_counts": {
+   "kind": "dialog",
+   "lists": [
+    "fa57cf97ea01bf34e9a30f6ad444381e"
+   ],
+   "explicit": true,
+   "contact": "8692bff6041c47a0b13158d5977f291b",
+   "entry": {
+    "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.dorgelinda.ledger.cold_counts"
+   },
+   "resolved": true,
+   "host": {
+    "list": "fa57cf97ea01bf34e9a30f6ad444381e",
+    "dialog": "c1cb7e7361777b940829b8b71ae03f23",
+    "dialogName": "Logistics_Officer_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "dorgelinda.ledger.half_an_army": {
    "kind": "dialog",
    "lists": [
@@ -7583,6 +7602,25 @@
    "contact": "8692bff6041c47a0b13158d5977f291b",
    "entry": {
     "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.dorgelinda.trickster.office.stocktake"
+   },
+   "resolved": true,
+   "host": {
+    "list": "fa57cf97ea01bf34e9a30f6ad444381e",
+    "dialog": "c1cb7e7361777b940829b8b71ae03f23",
+    "dialogName": "Logistics_Officer_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "dorgelinda.trickster.office.tribunal_books": {
+   "kind": "dialog",
+   "lists": [
+    "fa57cf97ea01bf34e9a30f6ad444381e"
+   ],
+   "explicit": true,
+   "contact": "8692bff6041c47a0b13158d5977f291b",
+   "entry": {
+    "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.dorgelinda.trickster.office.tribunal_books"
    },
    "resolved": true,
    "host": {
