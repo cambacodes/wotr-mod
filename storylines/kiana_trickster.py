@@ -74,7 +74,7 @@ PRESENCES = {
     # Q10: a spawned copy at Arsinoe's counter (E12b NearUnit), so the pivot needs Kiana's own actor. If Arsinoe is not in
     # the capital the anchor fails, kiana.presence.failed is raised, and the letter twin carries the pivot.
     "kiana.presence": dict(Unit=KYANA, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=ARSINOE, Side="right", Distance=2.5),
-                           Requires=["trickster.ever", RETURNED], Forbids=["kiana.closed"],
+                           Requires=["trickster.ever"], RequiresAnyGroups=[[RETURNED, MET]], Forbids=["kiana.closed"],
                            MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
                            Greeting="{n}Kiana is perched on the end of Arsinoe's counter in a borrowed robe and her wedding "
                                     "shoes, swinging one foot, with a pen behind her ear and a list of names in her lap.{/n}"),
@@ -190,7 +190,7 @@ letter("kiana.trickster.possessed.fake_gem", "Paste", [
 {n}Then she sees your palm flat on the apprentice's, the guild way, and she stops laughing.{/n}
 "What did you promise him?"''',
       c('[Tell her it is your debt, not hers.]', flags=(RETURNED, FAVOUR, RANSOMED, H_MARRIED))),
-], requires=("trickster", "trickster.ever", "chapter_later", SOUL_LOST), forbids=(RETURNED, Q3),
+], requires=("trickster", "trickster.ever", "chapter_later", SOUL_LOST), forbids=(RETURNED, Q3, SUNHAMMER_DEAD),
    TricksterDevice=True, TricksterState="possessed_no_rescue")
 
 
@@ -217,7 +217,7 @@ letter("kiana.trickster.awake.dog_collar", "The sample", [
     k("paid", '''{n}He counts it twice. Then he holds out his palm, the guild way, "One favour, owed," and you strike it, and he empties the pouch onto the nearest blanket: stones in a row, like rings laid out on a jeweller's velvet. Arsinoe kneels at the bedside with her cleaving chisel and takes them one at a time, the way a jeweller cuts a row of stones for a necklace: grain, edge, one clean tap. Down the ward, one after another, the sleepers breathe in. The dog sneezes.{/n}
 "Every one of them." {n}Kiana does not laugh. She takes your hand instead and holds it hard enough to hurt.{/n} "You paid for every one of them. Do you know what you've promised him?"''',
       c('[Count the stones with her] "No. I\'ll find out when he asks."', flags=(RETURNED, FAVOUR, RANSOMED, H_MARRIED))),
-], requires=("trickster", "trickster.ever", "chapter_later", "kiana.q2_done"), forbids=(RETURNED, Q3, SOUL_LOST),
+], requires=("trickster", "trickster.ever", "chapter_later", "kiana.q2_done"), forbids=(RETURNED, Q3, SOUL_LOST, SUNHAMMER_DEAD),
    TricksterDevice=True, TricksterState="awake_no_rescue")
 
 
@@ -418,13 +418,19 @@ SCENES.append(scene("kiana.trickster.ward_rounds", "Rounds", "Kiana", 5, "", [
     k("start", '''{n}She hops down off the counter as you come in, and the list in her lap goes everywhere.{/n}
 "Rounds," {n}she announces, collecting it.{/n} "Arsinoe says I am not a priestess and I am not to do rounds. So I do rounds. I go down the ward and tell everyone who's awake the worst joke I know, and I mark down who laughs. Laughing is a symptom. A good one." {n}She hands you half the list.{/n} "You take the left side. You have a face for bad jokes."''',
         c('[Do the left side.]', "rounds"),
-        c('[Take her wrist instead] "I came for the doctor, not the ward."', "wrist")),
+        c('[Take her wrist instead] "I came for the doctor, not the ward."', "wrist", requires=("kiana.lovers",)),
+        # Q10: before an affair or a night together, she answers the same move with a joke and the ward.
+        c('[Take her wrist instead] "I came for the doctor, not the ward."', "wrist", requires=("kiana.affair",), forbids=("kiana.lovers",)),
+        c('[Take her wrist instead] "I came for the doctor, not the ward."', "wrist_early", forbids=("kiana.lovers", "kiana.affair"))),
     k("rounds", '''{n}You do the left side. Two laugh, one throws a cup, and the boy who lost his ring tells you a worse joke back. When you meet her in the middle she is grinning.{/n}
 "Seven out of nine. You're hired." {n}She tucks the list into your belt, slowly, with her fingers lingering at the buckle a moment longer than any list needs.{/n} "Payment later. Arsinoe is watching."''',
         c('[Let Arsinoe watch.]', flags=("kiana.trickster.rounds_kept",))),
     k("wrist", '''{n}She lets you have it, and looks at your hand round it, and then at you, with the princess's whole court in her eyebrows.{/n}
 "Bold. In a temple. With a list." {n}She steps in until the list crackles between you and kisses you quickly, behind the curtain, where Arsinoe can certainly hear.{/n} "There. Now go away before she bills you for it."''',
         c('[Go, before the bill.]', flags=("kiana.trickster.rounds_kept",))),
+    k("wrist_early", '''{n}She looks down at your hand round her wrist, then up at you, with the princess's whole court in her eyebrows, and twists free as neatly as a dancer.{/n}
+"The doctor is a married woman with a list, Commander, and the list comes first." {n}She slaps half of it against your chest.{/n} "Left side. If you make the old sergeant laugh, I might let you hold the other wrist. Might."''',
+        c('[Do the left side.]', "rounds")),
 ], requires=("trickster.ever", MET), forbids=("kiana.closed",), delay=24, last=5, optional=True, Relationship="kiana",
    Areas=[DREZEN], Chapters=[5], ContactUnit=KYANA, InteractionHub="kiana.presence"))
 
@@ -449,7 +455,7 @@ SCENES.append(scene("kiana.trickster.pouch.second_offer", "Revised terms", "Kian
 {n}Arsinoe opens her ledger and writes in red ink, under the column headed *Sunhammer. Outstanding*, your promise, word for word, and the date.{/n}
 "You'll come for them yourself." {n}Kiana says it back to you slowly, trying the words for weight, the way she tries a line.{/n} "Good. Then I'm holding you to it. Every one of them. I'll keep the list." {n}She does not smile.{/n} "And if you don't, Commander, that goes in the play too."''',
       c('[Give her your word.]', flags=(VOW,))),
-], requires=("trickster.ever", ROBBED, MET), forbids=(Q3, "kiana.closed"), delay=72, last=5, optional=True,
+], requires=("trickster.ever", ROBBED, MET), forbids=(Q3, "kiana.closed", SUNHAMMER_DEAD), delay=72, last=5, optional=True,
    Relationship="kiana", Areas=[DREZEN], Chapters=[5], ContactUnit=ARSINOE, AnswerLists=[ARSINOE_HUB]))
 
 
@@ -520,14 +526,14 @@ PARAGRAPHS = (
       "broken on an auditor's bench. The baker and the crossbowman had been married since the spring, and sent the "
       "Commander a slice of each cake, with no note.", requires=(POSTPONED,), forbids=(KING,)),
     p("The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King "
-      "was sober. He was not. Three weddings went ahead that week anyway, and Kiana went to every one.",
+      "was sober. He was not. The baker and the crossbowman were married that week anyway, and Kiana went to both, and danced at both, and did not look at the third licence once.",
       requires=(POSTPONED, KING)),
 )
 
 SCENES.append(scene("kiana.trickster.epilogue.commit", "The last line", "Epilogue", 5, "", [
     nar("start", '''{n}Kiana wrote the last scene of her play after the war, in a room nobody had to lend her. At the end of it the princess asks the guest one question. She gave the Commander the only copy of the script, and the question was underlined twice.{/n}''',
-        c('[Write the answer in the margin.]', "margin"),
-        c('[Answer it out loud, on the opening night.]', "stage"),
+        c('[Write the answer in the margin.]', "margin", requires=(LATE_YES,)),
+        c('[Answer it out loud, on the opening night.]', "stage", requires=(LATE_YES,)),
         # Q10 (HOW, R2-1): the question can be refused here, unless the Commander already answered it yes by letter.
         c('[Give the script back with the margin empty.]', "blank", forbids=(LATE_YES,))),
     nar("margin", '''{n}The Commander wrote one word in the margin and handed the script back. Kiana read it, and read it again, and then crossed out the guest's exit and wrote the rest of the scene herself. It ran long. Nobody in the audience complained.{/n}''',
@@ -539,21 +545,37 @@ SCENES.append(scene("kiana.trickster.epilogue.commit", "The last line", "Epilogu
 ], requires=("trickster.ever", MET, "kiana.lovers"), forbids=("kiana.committed", "kiana.closed", "kiana.morning", LATE_NO), last=99,
     Relationship="kiana"))
 
-# Q10 (HOW, R2-1): the late question, asked before the ending. A Trickster spine that ran into Chapter 6 before her
-# "kiana.morning" gets one letter with the princess's question; the yes is the only producer of the late commitment.
-SCENES.append(scene("kiana.trickster.late_question", "The underlined question", "Kiana", 6, "", [
+# Q10 (HOW, R2-1; INT R2-3): the princess's question, asked in person at Arsinoe's counter on her presence hub once she and
+# the Commander are lovers and before her "kiana.morning" letter. The yes is the only producer of the late commitment.
+def question_choices():
+    return (c('[Write yes under the question, and sign it.]', "yes"), c('[Write no, and sign that too.]', "no"))
+SCENES.append(scene("kiana.trickster.late_question", "The underlined question", "Kiana", 5, "", [
+    k("start", '''{n}She is waiting on the end of Arsinoe's counter with the last page of the play in her lap. The princess's question is underlined twice.{/n}
+"The war keeps eating our evenings, and I've stopped waiting for it to finish." {n}She holds out the page, and a pen.{/n} "Answer her, Commander. In ink, now, while I watch. If it's no, write no; the princess has survived worse reviews."''',
+      *question_choices()),
+    k("yes", '''{n}You write it under the question and sign it. She reads it upside down before you have finished, takes the page, folds it into her bodice over her heart, and kisses you across the counter, hard enough that Arsinoe puts down her pen.{/n}
+"Then the guest stays. Come home when they let you. I've kept the chair."''',
+      c('[Keep her hand.]', flags=(LATE_YES,))),
+    k("no", '''{n}You write it, and sign it. She reads it, nods, and folds the page very small.{/n}
+"Thank you. I'd rather have a no in ink than a yes I had to guess at. The princess keeps her castle. Don't you dare come to the opening night and look sorry."''',
+      c('[Leave her the page.]', flags=(LATE_NO,))),
+], requires=("trickster.ever", MET, "kiana.lovers"), forbids=("kiana.morning", "kiana.committed", "kiana.closed"), delay=24,
+    last=5, optional=True, Relationship="kiana", Areas=[DREZEN], Chapters=[5], ContactUnit=KYANA, InteractionHub="kiana.presence"))
+
+# Its letter twin, only when her copy could not be placed beside Arsinoe (E12b runtime observation).
+SCENES.append(scene("kiana.trickster.late_question_letter", "The underlined question, by post", "Kiana", 5, "", [
     k("start", '''{n}The letter has a page of the play folded inside it, the last one. The princess's question is underlined twice. Underneath, in Kiana's hand and much smaller:{/n}
 "The war has eaten our next evening, and probably the one after. I am not waiting for it to finish eating. Answer her, Commander. In ink. If the answer is no, write no; the princess has survived worse reviews."''',
-      c('[Write yes under the question, and sign it.]', "yes"),
-      c('[Write no, and sign that too.]', "no")),
+      *question_choices()),
     k("yes", '''{n}Her reply comes back the same week: the page again, with your yes on it and, under that, one line in her hand.{/n}
 "Then the guest stays. Come home when they let you. I've kept the chair."''',
       c('[Keep the page.]', flags=(LATE_YES,))),
     k("no", '''{n}Her reply comes back the same week, very short.{/n}
 "Thank you for writing it down. I'd rather have a no in ink than a yes I had to guess at. The princess keeps her castle. Don't you dare come to the opening night and look sorry."''',
       c('[Keep the page.]', flags=(LATE_NO,))),
-], requires=("trickster.ever", MET, "kiana.lovers"), forbids=("kiana.morning", "kiana.committed", "kiana.closed"), delay=0,
-    last=6, optional=True, Relationship="kiana", Remote=True, Chapters=[6], Areas=[DREZEN]))
+], requires=("trickster.ever", MET, "kiana.lovers", PLACED_FAILED),
+    forbids=("kiana.morning", "kiana.committed", "kiana.closed", LATE_YES, LATE_NO), delay=24,
+    last=5, optional=True, Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN]))
 
 SCENES.append(scene("kiana.trickster.epilogue.late_no", "The guest's exit", "Epilogue", 5, "", [
     nar("start", '''{n}Kiana's play opened in Drezen the spring after the war. The guest exits in the last scene, with a bow and a very good line, and the princess keeps her castle. The Commander was in the audience. Kiana had sent the ticket herself, with a note: "Front row. Look pleased for me."{/n}''',
@@ -625,7 +647,7 @@ REACTIONS = [
     anevia("kiana.trickster.awake.react_anevia", (RETURNED, DOG),
            '''"Heard you saved a dog from a cursed collar and let the rest walk out the door."
 {n}Anevia shrugs, not quite as lightly as she means to.{/n}
-"I've had worse days at work. Not many. You'll want to go and get the rest back, you know. Whatever you told the jeweller's boy."'''),
+"I've had worse days at work. Not many. You'll want to go and get the rest back, you know. Whatever you told the jeweller's boy."''', forbids=(BOUGHT, Q3)),
     arsinoe("kiana.trickster.no_wedding.react_arsinoe_council", (POSTPONED,),
             '''"One contract of marriage, suspended by order, and two reimbursed out of the crusade's purse, to the last copper of the flowers." {n}Arsinoe dips her pen.{/n}
 "The suspended one I shall hold as long as the council holds it. I audit jewellers, Commander. A second ledger under a counter is not a clerical habit. It is a plan."''', forbids=(KING,)),
@@ -738,6 +760,8 @@ def integrate(payload):
     _scene(by_id, "kiana.guest_table")["Forbids"].append(MET)
     # Q10 (COX): a native Q3 entry on a Trickster run is held to the same budget; the continuation stays on the other paths.
     _scene(by_id, "kiana.guest_table")["Forbids"].append("trickster.ever")
+    # Q10: once the question was answered in person (or by its twin), her morning letter does not ask it again.
+    _scene(by_id, "kiana.morning")["Forbids"].extend((LATE_YES, LATE_NO))
 
     # R2-6: a Trickster entry whose spine ran out before kiana.morning gets the late-commit page; one that reached
     # kiana.morning and heard her "then don't promise it" (kiana.uncertain) keeps the unfinished ending, as its twin.

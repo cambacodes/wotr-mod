@@ -338,18 +338,36 @@ internal static class KianaTricksterTests
         var loversOnly = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers");
         check(!loversOnly.Has("kiana.trickster.late_committed") && !Rules.Available(story, coda, loversOnly),
             "Q10 (R2-1): lovers alone establish the late commitment.");
+        // The question is asked in person on her presence hub in Chapter 5; the letter twin only when her copy was not placed.
         var question = S("kiana.trickster.late_question");
-        var asked = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers");
+        var questionLetter = S("kiana.trickster.late_question_letter");
+        check(question.InteractionHub == "kiana.presence" && question.ContactUnit == Kyana && Rules.IsPresenceHubScene(question)
+              && question.Chapters.SequenceEqual(new[] { 5 }) && Rules.IsRemote(questionLetter) && questionLetter.Chapters.SequenceEqual(new[] { 5 }),
+            "Q10: the princess's question is not asked in person in Chapter 5.");
+        var asked = World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers");
         var answers = Program.Walk(question, asked);
-        check(Rules.Available(story, question, asked) && answers.Count == 2 && answers.Count(r => r.Has("kiana.trickster.late_yes")) == 1
-              && answers.Count(r => r.Has("kiana.trickster.late_no")) == 1, "Q10: the late question lacks its yes or its no.");
+        check(Rules.Available(story, question, asked) && !Rules.Available(story, questionLetter, asked) && answers.Count == 2
+              && answers.Count(r => r.Has("kiana.trickster.late_yes")) == 1 && answers.Count(r => r.Has("kiana.trickster.late_no")) == 1,
+            "Q10: the late question lacks its yes or its no, or its letter twin plays beside it.");
+        var unplacedAsk = Program.Copy(asked); unplacedAsk.AvailableContacts.Remove(Kyana); unplacedAsk.Flags.Add("kiana.presence.failed");
+        check(!Rules.Available(story, question, unplacedAsk) && Rules.Available(story, questionLetter, unplacedAsk),
+            "Q10: an unplaced copy strands the question.");
         var saidNo = answers.Single(r => r.Has("kiana.trickster.late_no"));
         check(!saidNo.Has("kiana.trickster.late_committed") && !Rules.Available(story, epCommit, saidNo)
               && Rules.Available(story, S("kiana.trickster.epilogue.late_no"), saidNo), "Q10: the late no does not reach its own ending.");
-        check(Program.Walk(epCommit, asked).Any(r => r.Has(epCommit.Id)) && Pages(epCommit, asked).Contains("blank"),
-            "Q10: the epilogue question cannot be refused.");
         var saidYes = answers.Single(r => r.Has("kiana.trickster.late_yes"));
-        check(!Pages(epCommit, saidYes).Contains("blank"), "Q10: a written yes is asked again and may be refused.");
+        check(!Pages(epCommit, saidYes).Contains("blank") && Pages(epCommit, saidYes).Contains("margin") && Pages(epCommit, saidYes).Contains("stage"),
+            "Q10: a written yes is asked again and may be refused.");
+        foreach (var answered in new[] { saidYes, saidNo })
+            check(!Rules.Available(story, S("kiana.morning"), Later(story, answered, 100)) && !Rules.Available(story, questionLetter, Later(story, answered, 100)),
+                "Q10: the question is asked twice.");
+        // Acceptance without the question: lovers who never answered reach the page, may only leave the margin empty, and
+        // establish no commitment and no Last Call coda.
+        var neverAsked = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers");
+        var neverPages = Pages(epCommit, neverAsked);
+        check(Rules.Available(story, epCommit, neverAsked) && neverPages.Contains("blank") && !neverPages.Contains("margin") && !neverPages.Contains("stage")
+              && Program.Walk(epCommit, neverAsked).All(r => !r.Has("kiana.trickster.late_committed") && !Rules.Available(story, coda, r)),
+            "Q10: the epilogue narrates a commitment nobody recorded.");
         var lateYes = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers", "kiana.trickster.late_yes");
         check(lateYes.Has("kiana.trickster.late_committed") && Rules.Available(story, coda, lateYes), "Q10: the late commit loses her Last Call coda.");
         foreach (var off in new[] { "kiana.uncertain", "kiana.parting" })
@@ -388,6 +406,38 @@ internal static class KianaTricksterTests
         check(rounds.InteractionHub == "kiana.presence" && rounds.ContactUnit == Kyana && Rules.IsPresenceHubScene(rounds)
               && !Rules.Available(story, rounds, Later(story, sold, 48)) && Rules.Available(story, rounds, Later(story, met, 24)),
             "Q10: her hub has no beat after the pivot.");
+
+        // Q10 (CAN): a dead Sunhammer sends no apprentice; Anevia does not send the Commander after recovered guests.
+        foreach (var device in new[] { gem, collar })
+        {
+            var w = device == gem ? Program.Copy(possessed) : Program.Copy(plainAwake);
+            w.Flags.Add("kiana.sunhammer_dead"); Rules.Complete(story, w);
+            check(!Rules.Available(story, device, w), "Q10: a dead jeweller's apprentice brings terms: " + device.Id);
+        }
+        var offerDead = Later(story, Program.Copy(met), 100); offerDead.Flags.Add("kiana.sunhammer_dead");
+        check(!Rules.Available(story, S("kiana.trickster.pouch.second_offer"), offerDead), "Q10: a dead jeweller revises his terms.");
+        var aneviaAwake = S("kiana.trickster.awake.react_anevia");
+        var dogBase = World(story, 5, "trickster.ever", "kiana.trickster.returned", "kiana.trickster.dog_saved");
+        check(Rules.Available(story, aneviaAwake, dogBase), "Q10: Anevia's dog line is gone.");
+        foreach (var recovered in new[] { "kiana.trickster.guests_bought_back", "seelah.souls_returned" })
+        {
+            var w = Program.Copy(dogBase); w.Flags.Add(recovered); Rules.Complete(story, w);
+            check(!Rules.Available(story, aneviaAwake, w), "Q10: Anevia urges a recovery already made: " + recovered);
+        }
+        // Q10 (VOI): the kiss at rounds needs an affair or a night together; before that, a joke and the ward.
+        var roundsEarly = Later(story, met, 24);
+        var earlyPages = Pages(rounds, roundsEarly);
+        check(earlyPages.Contains("wrist_early") && !earlyPages.Contains("wrist"), "Q10: a married Kiana kisses at rounds.");
+        foreach (var earned in new[] { "kiana.lovers", "kiana.affair" })
+        {
+            var w = Program.Copy(roundsEarly); w.Flags.Add(earned);
+            var pages = Pages(rounds, w);
+            check(pages.Contains("wrist") && !pages.Contains("wrist_early"), "Q10: the earned kiss at rounds is missing: " + earned);
+        }
+        // Q10 (BEL): the decree paragraph names only the other two weddings.
+        var kingEnd = World(story, 6, "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed", "kiana.trickster.cost.betrothed",
+                            "kiana.trickster.decree_king", "kiana.committed");
+        check(!Rules.VisibleParagraphs(promised, kingEnd).Any(x => x.Text.Contains("Three weddings")), "Q10: her cancelled wedding goes ahead.");
 
         // Exclusivity: one device per world.
         foreach (var w in new[] { seen, missedWife, possessed, awake, noKing })

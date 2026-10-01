@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1038,
-  "resolved": 1038,
+  "entryTargetScenes": 1039,
+  "resolved": 1039,
   "inlineOnlyScenes": 271,
   "inlineOnlyResolved": 271,
-  "answerListScenesWithoutContact": 620,
-  "answerListScenesWithoutContactResolved": 620,
+  "answerListScenesWithoutContact": 621,
+  "answerListScenesWithoutContactResolved": 621,
   "lists": 111,
   "listsWithReachableHost": 110
  },
@@ -16898,6 +16898,25 @@
    "contact": null,
    "entry": {
     "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.seelah.trickster.dead.react_irabeth"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "seelah.trickster.dead.react_irabeth_given": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.seelah.trickster.dead.react_irabeth_given"
    },
    "resolved": true,
    "host": {
