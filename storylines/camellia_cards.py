@@ -182,7 +182,7 @@ Three." {n}She holds your eyes.{/n} "I love you."''',
 "Either way I had underestimated you. An error I shall be careful not to repeat." {n}She smiles.{/n} "Your turn. Three things. And I'm keeping them, mind. Whichever one is the lie, I shall find a use for it."''',
         c('[Trickster] "I love you. I love you. I love you."', "all"),
         c('"I\'m not afraid of you. I never was. I love you."', "mine")),
-    cam("else", '''"I lied the first time too. When we first played. I said I had never lied to you, and you caught it, and I laughed." {n}She puts the knife back down, very carefully, point towards the door.{/n}
+    cam("else", '''"I lied the first time too. When we first played, you answered my game with three truths, and I laughed." {n}She puts the knife back down, very carefully, point towards the door.{/n}
 "That wasn't the lie. The lie was that I laughed because you were clever. I laughed because you were the first person who ever caught me, and I wanted very badly to know what you would do with it. You did nothing at all. I have been waiting ever since for the bill." {n}She smiles.{/n} "Your turn. Three things. And I'm keeping them, mind. Whichever one is the lie, I shall find a use for it."''',
         c('[Trickster] "I love you. I love you. I love you."', "all"),
         c('"I\'m not afraid of you. I never was. I love you."', "mine")),

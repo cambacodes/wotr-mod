@@ -44,7 +44,7 @@ def living(id, title, entry, nodes, requires=(), forbids=(), delay=48, chapter=3
 living(TWO_LIES, "Two lies and a truth", '"You look bored, Camellia. That seems dangerous."', [
     nar("open", '''{n}Camellia is sitting on her bedroll with a lap full of dried flowers, sorting them by some system known only to her: stems to the left, heads to the right, the ones with insects in them into a small silk bag that she ties very tightly.{/n}''',
         c("Continue", "bored")),
-    cam("bored", '''"Dangerous? Ha ha! You flatter me." {n}She does not look up.{/n} "I am never bored, my friend. I am waiting. It is a different thing entirely. Boredom is empty, and waiting is full."
+    cam("bored", '''"Dangerous? Ha ha! You flatter me." {n}She does not look up.{/n} "I am never bored, my friend. I am waiting. Bored women yawn. I am deciding which of you to watch."
 {n}She holds a dried poppy up to the lamp, turns it, and drops it into the silk bag.{/n} "But since you are here, and since you are looking at me in that clever way, would you like to play a game? My teacher taught it to me when I was small. The old Varisian woman my father paid to live with us. She said it was how she learned when the spirits were lying."''',
         c('"What game?"', "rules"),
         c('"Do spirits lie?"', "spirits")),
@@ -375,7 +375,7 @@ met(P + "bond.witness", "The witness", '"You\'re worried. You never look worried
         c("Continue", "choice")),
     cam("killed_w", '''"A woman at the chapel, at the service for the Kenabres dead. I went for the music. I sat at the back, and I lifted my veil, just for a moment, because it was very hot. And a woman in the pew in front turned round." {n}She stops pacing.{/n} "She knew me. She used to buy candles from my father's steward. She went white as a sheet and said 'Lady Gwerm' in front of the chaplain, and then she fainted. They carried her out. She's in the infirmary. She's telling everyone who will listen that she saw a dead woman in church."''',
         c("Continue", "choice")),
-    cam("dead_w", '''"A night-soil man in the lower city. The night the spirits were paid." {n}She stops pacing.{/n} "He saw me come out of the alley. He didn't see anything else, he couldn't have, I was very neat. But he saw my face, and my face is very memorable, and now the porter is dead and there is a man in a tavern by the river telling everyone who will listen that he saw a lady come out of that alley with her sleeves rolled up."''',
+    cam("dead_w", '''"A night-soil man in the lower city. The night after the wagons." {n}She stops pacing.{/n} "He saw me come out of the alley. He didn't see anything else, he couldn't have, I was very neat. But he saw my face, and my face is very memorable, and now the porter is dead and there is a man in a tavern by the river telling everyone who will listen that he saw a lady come out of that alley with her sleeves rolled up."''',
         c("Continue", "choice")),
     cam("choice", '''"I can take care of it." {n}She says it lightly, reasonably, the way one offers to see to the washing.{/n} "It would be very easy. People like that fall down stairs all the time. It's practically their vocation."
 "Or you can take care of it. Your way." {n}She looks at you.{/n} "You are so resourceful. I should like to see your solution before I employ mine."''',

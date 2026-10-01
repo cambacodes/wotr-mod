@@ -101,7 +101,7 @@ living(SALLE, "Hit me where it counts", '"You\'re holding two swords. Should I b
 living(STRANGERS, "A table for strangers", '"Buy you a drink, Camellia?"', [
     nar("open", '''{n}She lets you take her to the tavern by the gate, the loud one with the bad wine, and chooses the table in the corner herself, with her back to the wall and the whole room in front of her. She orders something she does not drink.{/n}''',
         c("Continue", "game")),
-    cam("game", '''"Another game." {n}She leans her chin on her hand.{/n} "My teacher taught me this one too, in the market in Kenabres. You look at a stranger for the length of a breath, and then you tell me the lie they are telling. Everybody is telling one. It's the first thing a person puts on in the morning."
+    cam("game", '''"Another game." {n}She leans her chin on her hand.{/n} "I invented this one as a girl, at my father's windows. You look at a stranger for the length of a breath, and then you tell me the lie they are telling. Everybody is telling one. It's the first thing a person puts on in the morning."
 "I'll go first." {n}She nods towards a stout man by the fire, laughing with a group of soldiers.{/n} "Him. He is telling everyone he is happy to be home on leave. He is lying. He has not written to his wife. He is afraid of what she'll say when she sees his hands. They shake."''',
         c('"How can you know that?"', "how"),
         c('"My turn."', "yours")),

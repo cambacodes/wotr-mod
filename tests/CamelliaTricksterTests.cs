@@ -416,6 +416,8 @@ internal static class CamelliaTricksterTests
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned))
               && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
+        // Q8 (Sol INT): the veiled widow sits at Fye's bar only once the third night has given her back.
+        check(story.Presences["camellia.presence"].Requires.Contains(P + "raised"), "The veiled copy sits in the tavern while she is still underground.");
         // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.
         var again = S(P + "cards.two_lies_again");
         check(Ch(again, "two", 0).Requires.Contains(P + "masks.out_lied") && Ch(again, "two", 1).Forbids.Contains(P + "masks.out_lied"),

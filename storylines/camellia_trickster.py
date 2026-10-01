@@ -138,7 +138,7 @@ PRESENCES = {
     # companion, so Dialog "hub" makes the copy talkable through her own scenes only (E12c). If the anchor fails,
     # camellia.presence.failed opens the letter twin, and the epilogue page carries the commit.
     PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="left", Distance=3.5),
-                   Requires=["trickster.ever", KILLED, PRIMED], Forbids=[CLOSED, DECLINED], MinChapter=3, MaxChapter=5,
+                   Requires=["trickster.ever", KILLED, PRIMED, RAISED], Forbids=[CLOSED, DECLINED], MinChapter=3, MaxChapter=5,
                    AnswerLists=[], Dialog="hub",
                    Greeting="{n}At the far end of Fye's bar sits a woman in black lace to the chin, with a glass of wine "
                             "she has not touched and a bunch of lilies laid along the counter like a sleeping cat. Nobody "
