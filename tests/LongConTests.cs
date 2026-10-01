@@ -362,9 +362,12 @@ internal static class LongConTests
         foreach (var pair in permitted)
             foreach (var s in story.Scenes.Where(s => Reads(s).Contains(pair.Key)))
                 check(pair.Value.Contains(s.Id), "Reader lint: " + s.Id + " reads " + pair.Key);
+        var T1Readers = new[] { "noct.acq.audience_missed", "noct.acq.audience_patronage", "noct.acq.audience_rejected" };
         foreach (var s in story.Scenes.Where(s => !ours.Contains(s)))
             foreach (var key in Reads(s).Where(k => k.StartsWith(P, StringComparison.Ordinal)))
-                check(key == "longcon.minagho_reads" || key == Exposed && permitted[Exposed].Contains(s.Id),
+                check(key == "longcon.minagho_reads" || key == Exposed && permitted[Exposed].Contains(s.Id)
+                      // 15b T1 (user-approved): Nocticula's audience "author" node offers the Long Con pledge, gated on longcon.begun.
+                      || key == P + "begun" && T1Readers.Contains(s.Id),
                     "Reader lint: a scene outside the Long Con reads " + key + ": " + s.Id);
         var derived = story.Derived["longcon.minagho_reads"];
         check(derived.Length == 1 && derived[0].OrderBy(x => x, StringComparer.Ordinal).SequenceEqual(new[] { OfferHeard, "trickster" }),

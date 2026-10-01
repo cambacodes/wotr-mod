@@ -1219,7 +1219,7 @@ You touch the rim. It makes a small, disagreeable sound.{/n}
 The supplier knew the arrangement because Istrava once refused to pay for a repair after an evening ended too soon. He kept her complaint.
 Nocticula has not bought the bell or copied its enchantment into the dream. She has copied the complaint.{/n}
 "A second ringing ends the hunt," you say.
-"If we possess the baton. If the bell has not been altered since that repair. Two conditions. Do not let the pleasing noise of an idea drown them out."
+"If we possess the baton. If the bell has not been altered since that repair. Rhez answers to me for both, and if either fails I shall want to know whose idea wasted my agent."
 {n}The baton usually remains beside Istrava's chair. Her chamberlain, Vhal, carries it when she leaves the room. He is a cambion with a talent for making guests believe every inconvenience was arranged especially for them.
 Edris remembers that he has never accepted a mask himself.{/n}''',
       c('[Read the repair complaint for a way to stop the first marking. Use Magic Device, DC 34.]', check=dict(Skill="SkillUseMagicDevice", DC=34, Success="silence", Failure="fracture", CommanderOnly=True)),
@@ -1259,7 +1259,7 @@ There is no promise that the bell remains silent. The attendants will be warned 
 "Good. We need her to recognize her invitation too. Every guest was promised an honored quarry. Tell her the honor has been reserved for the only person qualified to preside over it."
 "She will recognize a threat."
 "A threat with excellent manners. Let her deny it before the other guests arrive. They will ask why she finds her own hospitality alarming."
-{n}Nocticula considers the announcement. You have not found a magical loophole that makes a written insult seize the baton. You have found a way to force Istrava to decide which part of her performance she is willing to defend in public.
+{n}Nocticula considers the announcement. It forces Istrava to decide which part of her performance she is willing to defend in public.
 Rhez can deliver the announcement through the lodge's musicians, who have been ordered to celebrate every guest's arrival. If they rehearse Istrava's arrival as well, the chamberlain must either interrupt the music or carry the baton out to conduct it.
 The interruption will make him visible from the service stair. It does not make him helpless.{/n}
 "She might laugh," Nocticula says.
@@ -1775,7 +1775,7 @@ Nocticula reads the last one aloud. You suggest that the poet may have been inju
 {n}She asks whether you want your part in the lodge's answer added to the account. Whatever you chose before still stands; she asks only because she likes watching you decide a thing twice.
 You tell her to keep the existing arrangement. The work should not acquire a new public author because its ending proved more flattering than its beginning.
 Nocticula nods. Her hand rests on the folded paper, keeping the wind from taking it.{/n}
-"I dislike how readily the story becomes mercy," she says. "I protected people whom somebody threatened beneath my name. I answered an insult. None of those things required me to become harmless."
+"I dislike how readily the story becomes mercy," she says. "I protected people whom somebody threatened beneath my name. I answered an insult. Both were mine to answer, and Istrava's chamberlain has still to learn what the second one costs."
 "They did require you to choose."
 "Yes. That is the part the poet found least suitable for a refrain."
 {n}She looks toward the place where the lodge's copied bell stood. There is no mark left on the quay. The absence makes the space seem larger than it did while you were planning what to put there.{/n}

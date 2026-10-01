@@ -11,7 +11,10 @@ internal static class NocticulaAcquiredHarborTests
         var acquired = story.Scenes.Where(s => s.Id.Contains(marker)).ToArray();
         if (acquired.Length == 0) return;
         var original = story.Scenes.Where(s => s.Relationship == "nocticula" && !s.Id.Contains(marker)
-                                               && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)).ToArray();
+                                               && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)
+                                               // PP4 pacing beats (pacing_pp4.py; PacingPP4Tests) are not the harbor campaign.
+                                               && !s.Id.StartsWith("nocticula.early.", StringComparison.Ordinal)
+                                               && !s.Id.StartsWith("nocticula.ch4.", StringComparison.Ordinal)).ToArray();
         var visits = original.Where(s => s.Owner == "Memory").ToArray();
         var endings = acquired.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         check(acquired.Length == 102 && visits.Length == 24 && original.Length == 32,

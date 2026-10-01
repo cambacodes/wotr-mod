@@ -408,7 +408,7 @@
    "5": "ip",
    "6": "remote"
   },
-  "exceptions": {},
+  "exceptions": {"4": "none: no Ch4 beat fits her route (coordinator, 2026-10-01; PP4 request)", "6": "none: no Ch6 beat fits her route (coordinator, 2026-10-01; PP4 request)"},
   "evidence": {
    "first_met": "0bb8e464eb1a6aa458e8d5dba62f5413 World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001: Ch3 Drezen wedding welcome (unit Kyana 180b0eaa5dce387458d2ebf0ee943985)",
    "3": "b82a10548fa150940833f570cfb5e0c1 World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/KTC_And_Timeline/SeelahCompanion_CapitalEvents/SeelahTimer_BeforeQ2_Wedding: the wedding is a Ch3 Drezen event",
