@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1051,
-  "resolved": 1051,
+  "entryTargetScenes": 1052,
+  "resolved": 1052,
   "inlineOnlyScenes": 272,
   "inlineOnlyResolved": 272,
-  "answerListScenesWithoutContact": 629,
-  "answerListScenesWithoutContactResolved": 629,
+  "answerListScenesWithoutContact": 630,
+  "answerListScenesWithoutContactResolved": 630,
   "lists": 111,
   "listsWithReachableHost": 110
  },
@@ -14561,6 +14561,25 @@
    "contact": null,
    "entry": {
     "2366a8db6481070439fee222c0c52e45": "RRT_entry.konomi.trickster.never_arrived.react_regill"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "konomi.trickster.never_arrived.react_regill_burned": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.konomi.trickster.never_arrived.react_regill_burned"
    },
    "resolved": true,
    "host": {

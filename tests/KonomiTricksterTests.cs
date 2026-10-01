@@ -254,8 +254,16 @@ internal static class KonomiTricksterTests
         check(audience.Nodes[0].Text.IndexOf("three months ago", StringComparison.Ordinal) < 0, "Arrears from before the register entry.");
         check(Rules.Available(story, accredited, never) && !Rules.Available(story, audience, never), "Trk_Konomi_NeverArrived: setup unavailable.");
         // PP5: the setup waits until its own account (the bow, two days to Nerosyan, two days back) is over.
-        var neverFresh = Program.Copy(never); neverFresh.Times["konomi.missed_contact_available"] = neverFresh.Hour - 95;
-        check(accredited.DelayHours == 96 && !Rules.Available(story, accredited, neverFresh), "PP5: the jug's account is read before its four days are over.");
+        // PP5 r2 (Sol INT/HOW): the observation is transient and carries no hour; the latch records when it was first seen.
+        check(never.Has("konomi.missed_contact.latched") && accredited.DelayHours == 96 && accredited.Requires.Contains("konomi.missed_contact.latched"),
+            "PP5: the jug's account has no recorded start for its four days.");
+        foreach (int waited in new[] { 95, 96 })
+        {
+            var seen = Program.Copy(never);
+            seen.Times.Remove("konomi.missed_contact_available"); seen.Times.Remove("trickster"); seen.Times.Remove("trickster.ever");
+            seen.Times["konomi.missed_contact.latched"] = seen.Hour - waited;
+            check(Rules.Available(story, accredited, seen) == (waited == 96), "PP5: the jug's account ignores its four days at hour " + waited);
+        }
         check(!Rules.Available(story, S("konomi.the_unintroduced_letter"), never), "The unintroduced letter still opens beside the jug.");
         var bowPages = new HashSet<string>();
         var bowed = Program.Walk(accredited, never, (page, _) => bowPages.Add(page)).Where(r => r.Has(accredited.Id)).ToList();
@@ -305,6 +313,41 @@ internal static class KonomiTricksterTests
         check(48 + 72 <= 504 && Rules.Available(story, epCommit, World(story, 6, supperKept[0].Flags.ToArray()))
               && !Rules.Available(story, epCommit, World(story, 6, roomOutcomes.First(r => r.Has("konomi.trickster.envoy")).Flags.ToArray())),
             "Trk_Konomi_NeverArrived: the accepted terms do not reach her page, or the envoy's do.");
+        // PP5 r2 (Sol INT): the journey paid at the audience is credited, the haggle is paid, and her office presence and
+        // her account end while the registered chain has her on the road to Nerosyan.
+        var auditioned = Program.Walk(audience, arrived).Where(r => r.Has(audience.Id)).ToList();
+        var paidJourney = auditioned.Single(r => r.Has("konomi.trickster.journey_paid"));
+        var unpaidJourney = auditioned.Single(r => !r.Has("konomi.trickster.journey_paid"));
+        var account = rooms.Nodes[0].Choices;
+        check(account.Count == 5 && account[0].Forbids.Contains("konomi.trickster.journey_paid") && account[1].Forbids.Contains("konomi.trickster.journey_paid")
+              && account[2].Abort && account[3].Requires.Contains("konomi.trickster.journey_paid") && account[3].Crusade?.Amount == -50
+              && account[4].Requires.Contains("konomi.trickster.journey_paid"), "PP5 r2: the account's choices were reordered, or bill the journey twice.");
+        var paidPages = new HashSet<string>(); Program.Walk(rooms, Later(story, paidJourney, 72), (page, _) => paidPages.Add(page));
+        var unpaidPages = new HashSet<string>(); Program.Walk(rooms, Later(story, unpaidJourney, 72), (page, _) => unpaidPages.Add(page));
+        check(paidPages.Contains("paid_rest") && paidPages.Contains("haggle_rest") && !paidPages.Contains("paid") && !paidPages.Contains("haggle")
+              && unpaidPages.Contains("paid") && unpaidPages.Contains("haggle") && !unpaidPages.Contains("paid_rest"),
+            "PP5 r2: the journey paid at her door is billed again in her account.");
+        check(rooms.Nodes.Single(n => n.Id == "haggle").Choices[0].Crusade?.Amount == -100
+              && rooms.Nodes.Single(n => n.Id == "haggle_rest").Choices[0].Crusade?.Amount == -25, "PP5 r2: the haggled account is never paid.");
+        var termsChoices = rooms.Nodes.Single(n => n.Id == "terms").Choices;
+        check(termsChoices.Count == 3 && termsChoices[0].Forbids.Contains("konomi.trickster.cost.accredited") && termsChoices[1].Next == "business"
+              && termsChoices[2].Next == "supper" && termsChoices[2].Set.Length == 0
+              && new[] { "supper", "supper_no", "supper_who", "supper_you", "stay" }.All(unpaidPages.Contains),
+            "PP5 r2 (Sol BEL): the threshold comes before the first supper and its personal exchange.");
+        var inTown = World(story, 3, received[0].Flags.ToArray());
+        var onTheRoad = World(story, 3, received[0].Flags.Concat(new[] { "konomi.private_departed" }).ToArray());
+        check(Rules.PresenceWanted(presence!, inTown) && !Rules.PresenceWanted(presence!, onTheRoad)
+              && Rules.Available(story, rooms, Later(story, inTown, 72)) && !Rules.Available(story, rooms, Later(story, onTheRoad, 72)),
+            "PP5 r2: Konomi keeps her office while the registered chain has her on the road to Nerosyan.");
+        // PP5 r2 (Sol COX, R2-6): the late yes reaches her Last Call coda.
+        var konomiCoda = S("konomi.lastcall.page");
+        check(konomiCoda.RequiresAnyGroups.Length == 1 && konomiCoda.RequiresAnyGroups[0].Contains("konomi.committed")
+              && konomiCoda.RequiresAnyGroups[0].Contains("konomi.trickster.late_committed"), "PP5 r2: the late commit is missing from her Last Call coda.");
+        // PP5 r2 (Sol VOI): Regill reads the paid informer and the burned one differently.
+        var regillPaid = S("konomi.trickster.never_arrived.react_regill");
+        var regillBurned = S("konomi.trickster.never_arrived.react_regill_burned");
+        check(regillPaid.Requires.Contains("konomi.trickster.cost.steward_paid") && regillBurned.Requires.Contains("konomi.trickster.cost.steward_burned")
+              && !regillBurned.Nodes[0].Text.Contains("door you left open"), "PP5 r2: Regill gives one verdict on two different informers.");
         var commitOffer = epCommit.Nodes[0].Choices;
         check(commitOffer.Count == 3 && commitOffer[0].Next == "signed" && commitOffer[1].Next == "terms" && commitOffer[2].Next == "dinner",
             "Trk_Konomi_LatePage: her late page has no unsettled answer, or its choices were reordered.");
@@ -384,7 +427,7 @@ internal static class KonomiTricksterTests
 
         // Reactions: Regill and Kyado only, one per state each; Kyado's road line needs his own canon observation.
         var reactions = story.Scenes.Where(s => s.Relationship == "konomi" && s.Reaction).ToArray();
-        check(reactions.Length == 6 && reactions.All(r => r.Owner == "Regill" || r.Owner == "Kyado"), "Konomi reactions changed.");
+        check(reactions.Length == 7 && reactions.All(r => r.Owner == "Regill" || r.Owner == "Kyado"), "Konomi reactions changed.");   // PP5 r2: + react_regill_burned
         var kyadoRoad = S("konomi.trickster.dismissed.react_kyado");
         var road = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.trickster.recessed", "kyado.in_drezen");
         check(!Rules.Available(story, kyadoRoad, road), "Kyado quotes a line he never said to this Commander.");

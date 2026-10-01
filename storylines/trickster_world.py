@@ -615,6 +615,8 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'kiana.soul_lost': ['kiana.possessed', 'kiana.soul_stolen_seen'],
  'kiana.widowed': ['seelah.elan_dead'],
  'konomi.dismissed.latched': ['konomi.dismissed'],
+ # PP5 r2: the missed contact recorded when first observed (the never-arrived setup's 96 hours run from it).
+ 'konomi.missed_contact.latched': ['konomi.missed_contact_available'],
  'mielarah.dead.latched': ['mielarah.dead'],
  'mielarah.met': ['mielarah.met_first', 'mielarah.met_again'],
  'mielarah.storm_crash.latched': ['mielarah.storm_crash'],
