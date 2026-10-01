@@ -321,6 +321,42 @@ internal static class ArueshalaeTricksterTests
             check(s.Nodes.SelectMany(n => n.Choices).All(c => c.Crusade == null), "A crusade fee in her route: " + s.Id);
         }
 
+        // Q11 witnesses: a failed reading can be retried; the living, recruited fallen Arueshalae has a romance; the
+        // Elysium morning drains nothing; elapsed-time claims are enforced; the torn gift costs something the game counts.
+        var studied = S(T + "studied");
+        var reading = World(story, 3, Drezen, "trickster", "trickster.ever");
+        var failedReading = Program.WalkVia(studied, reading, "not_yet", 0);
+        check(failedReading.Count > 0 && failedReading.All(r => !r.Has(T + "studied"))
+              && Rules.Available(story, studied, Later(story, failedReading[0], 24))
+              && !Rules.Available(story, S(T + "intake"), Later(story, failedReading[0], 24)),
+            "A failed night reading records the rite as learned, or forbids the promised retry.");
+        var learned = Program.WalkVia(studied, reading, "fit", 0);
+        check(learned.Count > 0 && learned.All(r => r.Has(T + "studied")) && Rules.Available(story, S(T + "intake"), Later(story, learned[0], 24)),
+            "A successful night reading does not open the intake.");
+        var houseCall = S(P + "fallen.house_call");
+        var recruited = World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.evil_recruited");
+        check(Rules.Available(story, houseCall, recruited) && !recruited.Has("arueshalae.evil_dead")
+              && !Rules.Available(story, houseCall, World(story, 5, Drezen, "trickster", "trickster.ever")),
+            "The living recruited fallen Arueshalae has no courtship, or it opens without her recruitment.");
+        var doorOpen = Program.WalkVia(houseCall, recruited, "ask", 0);
+        check(doorOpen.Count > 0 && doorOpen.All(r => r.Has("arueshalae.committed") && r.Has(P + "cost.open_door")),
+            "The recruited fallen commit does not commit.");
+        check(Rules.Available(story, S(P + "fallen.roof"), Later(story, doorOpen[0], 30))
+              && Program.Walk(S(P + "fallen.roof"), Later(story, doorOpen[0], 30)).All(r => r.Has(P + "evil.dawn")),
+            "The recruited fallen night is unreachable after the open door.");
+        var notTonight = Program.WalkVia(houseCall, recruited, "ask", 1);
+        check(notTonight.Count > 0 && Rules.Available(story, S(P + "fallen.lock"), Later(story, notTonight[0], 80))
+              && !Rules.Available(story, S(P + "fallen.lock"), Later(story, notTonight[0], 10)),
+            "'Not tonight' does not keep a reachable yes.");
+        check(Rules.Available(story, S(P + "epilogue.fallen"), Later(story, doorOpen[0], 100, 6))
+              && !Rules.Available(story, S(T + "epilogue.together"), Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae.committed", T + "intake", "arueshalae.evil_recruited"), 1)),
+            "The recruited fallen commit has no ending, or reads the redeemed daybook ending.");
+        var morning = S(T + "morning");
+        var elysium = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "night", "arueshalae.elysium"), 10);
+        check(Rules.Available(story, morning, elysium) && Program.WalkVia(morning, elysium, "start", 0).Count == 0
+              && Program.WalkVia(morning, elysium, "start", 1).Count > 0,
+            "After the native Elysium ending, the morning still counts a drain.");
+        check(S(T + "prescription").DelayHours >= 168, "The proposal opens before the fast's seven days have passed.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the diagnosis, the second opinion, the chaplain, the treatment and her proposal, the arcade, and the queen's favour.");
     }
 }
