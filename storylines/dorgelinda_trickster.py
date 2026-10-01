@@ -309,8 +309,13 @@ office(P + "after.fellows_methods", "The second book", '"Shut the door. No, all 
         c("Continue", "crumbs", forbids=(HARD_MEASURES, CONSCIENCE))),
     d("measures", '''"I put it to you at the council already. Requisitions. Donations for the war of faith." {n}Her voice goes flat on the word.{/n} "I'm puttin' something worse to you now, here, where nobody's takin' minutes."''',
       c("Continue", "start")),
-    d("conscience", '''"You were right, at the council. You wouldn't turn us into the Fellows of the Crusade, and I hate that you were right, because it means I'm still the one short of everythin'. Hear me anyway."''',
-      c("Continue", "start")),
+    d("conscience", '''"You were right, at the council. You wouldn't turn us into the Fellows of the Crusade, and the donations came in after, and the warehouses are near full. I hate it. I've never been so wrong and so fed in the same month. Hear me anyway."''',
+      c("Continue", "start_surplus")),
+    d("start_surplus", '''{n}She lays a second ledger on top of the first. It is thinner, and older, and the hand in it is not hers.{/n}
+"The Fellows kept this. It came to me in a sack of oats, the way their things do. Two books, one for the Crusade and one for what the Crusade doesn't know it's got. I've read it three times. It's good work." {n}She taps the cover.{/n}
+"Charity runs dry, Commander. Next winter the warehouses'll be bare again and the donors'll have found a new war to feel good about. So I'm askin' you while we're fat. Do we keep a second book, against the lean year? Or do I burn it while I can afford to?"''',
+      c('"Keep your hands clean. I\'ll keep mine dirty for both of us."', "clean"),
+      c('"Do it. Their methods. Your books."', "dirty")),
     d("crumbs", '''"Her Majesty squeezed Mendev dry to march on Iz. There's nothin' left to buy honest. I checked. Twice. Then I stopped checkin', 'cause it was makin' me sick."''',
       c("Continue", "start")),
     d("start", '''{n}She lays a second ledger on top of the first. It is thinner, and older, and the hand in it is not hers.{/n}
@@ -338,7 +343,7 @@ ASK = (
 )
 
 office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."', [
-    nar("open", '''{n}The ledger is open at your line. It has grown: the first line in your hand, then boots, blankets, a bottle that was never on any manifest. Weeks of small entries in her hand, every one of them dated, some of them in the code she uses for things she will not have her clerks read. She has not closed it. She has not ruled it off.{/n}
+    nar("open", '''{n}The ledger is open at your line. It has grown: the first line in your hand, then boots, blankets, a bottle that was never on any manifest. Small entries in her hand since the first, every one of them dated, some of them in the code she uses for things she will not have her clerks read. She has not closed it. She has not ruled it off.{/n}
 {n}She has shut the door without being asked, and bolted it, and sent the sergeant to count something at the far end of the yard.{/n}''',
         c("Continue", "recall_clean", requires=(CLEAN,)),
         c("Continue", "recall_dirty", requires=(DIRTY,), forbids=(CLEAN,)),
@@ -390,7 +395,10 @@ SCENES.append(scene(P + "epilogue.committed", "", "DorgelindaEpilogue", 6, "", [
         paragraphs=(
             p("{n}Under the first entry, in the Commander's hand, was a rider nobody but she had ever read to the end: \"...and all stores that follow them.\" She followed them.{/n}", requires=(CARTS,)),
             p("{n}The boots were entered as paid. She kept the last pair on a shelf in the stores, regulation, unworn, and would not issue them to anyone.{/n}", requires=(BOOTS_PAID,)),
-            p("{n}A confession sat in the back of the book, in her hand, never sent to Nerosyan.{/n}", any_groups=[[CONFESSED, TOLD_ALL]]),
+            p("{n}A confession sat in the back of the book, in her hand, never sent to Nerosyan.{/n}", any_groups=[[CONFESSED, TOLD_ALL]],
+              forbids=("dorgelinda.ledger.true_books_sent",)),
+            p("{n}The confession in the back of the book went to Nerosyan with the rest of the true ledgers. She had not torn it out, and she never said whether she had thought about it.{/n}",
+              any_groups=[[CONFESSED, TOLD_ALL]], requires=("dorgelinda.ledger.true_books_sent",)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))

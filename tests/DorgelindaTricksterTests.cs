@@ -62,11 +62,8 @@ internal static class DorgelindaTricksterTests
         // The outcomes of a walk that took the named choice of the named node.
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Choice(scene, node, index);
-            var hits = new List<Snapshot>();
-            var outcomes = Program.Walk(scene, w, (id, st) => { });
-            foreach (var r in outcomes)
-                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))) hits.Add(r);
+            // Q9 (Sol HOW): only the outcomes of paths that actually take the named choice.
+            var hits = Program.WalkVia(scene, w, node, index);
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -358,6 +355,15 @@ internal static class DorgelindaTricksterTests
                   "Trk_Dorgelinda_TribunalBooks: the late signing replays the tribunal's verdict or wet ink: " + id)).Count > 0,
             "Trk_Dorgelinda_TribunalBooks: the audit does not open on its own history.");
         check(Reaches(reviewed.First(), "dorgelinda.committed"), "Trk_Dorgelinda_TribunalBooks: no road to the commit.");
+
+        // Q9 r2 (Sol CAN): a conscience kept at the council (Logistics_8-2, the warehouses refilled) is a surplus-era question.
+        var conscienceWorld = World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.conscience_kept");
+        Program.Walk(methods, conscienceWorld, (id, st) => check(id != "start", "The conscience branch replays the shortage pitch."));
+        check(Program.WalkVia(methods, conscienceWorld, "start_surplus", 0).All(r => r.Has(P + "hands_clean")),
+            "The surplus-era second book cannot be burned.");
+        // Q9 r2 (Sol INT): a Commander with nobody else can say so.
+        check(Program.WalkVia(others, Later(story, mornings.First(), 24), "says", 4).All(r => r.Has(L + "sole_line") && !r.Has("dorgelinda.closed")),
+            "Her other columns force a Commander with nobody else to invent somebody.");
 
         // Q9 (Sol CAN): the King is billed only when the Fool King was crowned.
         check(Choice(revels, "bill", 1).Requires.Contains("dorgelinda.king_revel"), "The no-King city can bill a King.");

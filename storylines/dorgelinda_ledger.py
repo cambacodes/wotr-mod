@@ -332,7 +332,7 @@ office(RECEIPTS, "Receipts", '"You kept my column open?"', [
 "...Well, you weren't wrong." {n}She writes something. You do not ask what.{/n} "I kept thinkin' of you down there, signin' some demon's manifest with a straight face. If anyone could make the Abyss balance, it'd be you, and then I'd have to find a way to audit it."''',
       c("Continue", "close", flags=(WELCOMED,))),
     d("miss", '''"Miss you?" {n}She leans back in her chair.{/n}
-"I missed the balance. There's a hole in this book the exact shape of you, and every clerk who walked past it asked me what I was goin' to do about it." {n}She picks up the pen.{/n} "I told 'em I was waitin' for the owner to come and account for it. They thought I'd gone soft." {n}She writes.{/n} "Maybe I have. Don't tell the Council."''',
+"I missed bein' shouted at about boots. I missed somebody comin' through that door who didn't want somethin' off me." {n}She picks up the pen, and puts it down.{/n} "...Aye. I missed you. The clerks noticed. They think I've gone soft." {n}She picks the pen up again.{/n} "Don't tell the Council."''',
       c("Continue", "close", flags=(WELCOMED,))),
     d("close", '''"Right." {n}She shuts the book on your column, carefully, as if something might fall out.{/n}
 "Everythin' in Drezen's gone to the Abyss while you were in it. Mendev's in pieces. The Queen marched on Iz and took the treasury's best clerks and every spare cart with her. I've got soldiers wearin' boots made of saddle leather." {n}She stands, and for once comes round the desk.{/n}
@@ -1033,12 +1033,16 @@ office(OTHERS, "Other columns", '"You\'re quiet today."', [
     d("start", '''"I'm quiet 'cause I'm countin'." {n}She has a ledger open that is not the stores ledger. It is small, cheap, bound in grey cloth, and the hand in it is hers, very small.{/n}
 "Everybody in Drezen keeps accounts on the Commander. Did you know? The clerks keep 'em, the cooks keep 'em, the sentries on the east wall have a book goin' on who you'll be seen with next." {n}She taps the grey ledger.{/n} "I took theirs off 'em. Confiscated. It was a disgrace. The arithmetic was terrible."''',
       c('"And what does it say?"', "says")),
-    d("says", '''"It says I'm not the only line in your book." {n}Flatly, like a shortage.{/n}
-"I knew that. I'm not a fool, and I've got one good eye, and I use it." {n}She closes the grey ledger.{/n} "A Commander's got a lot of columns. I'd be a poor quartermaster if I thought a campaign ran on one supply line."''',
+    d("says", '''"It says I'm not the only line in your book. That's the sentries' arithmetic, mind." {n}Flatly, like a shortage.{/n}
+"I'm not a fool, and I've got one good eye, and I use it. A Commander's got a lot of columns, or folk say so." {n}She closes the grey ledger.{/n} "I'd be a poor quartermaster if I took a sentry's word for it, and a poorer one if I didn't ask."''',
       c('"There are others. Ask me about any of them, and I\'ll answer."', "bother"),
       c('"You\'re not the only line. You\'re the one I sign for."', "sign"),
       c('"That\'s my business, Quartermaster."', "unblessed"),
-      c('[Lie] "There\'s nobody else. The sentries have bad arithmetic."', "lie")),
+      c('[Lie] "There\'s nobody else. The sentries have bad arithmetic."', "lie"),
+      c('"Nobody else. Not one. The sentries can bet on the weather."', "nobody")),
+    d("nobody", '''"Nobody." {n}She weighs it with the one eye, the way she weighs a manifest that adds up too neatly.{/n} "Then the sentries' arithmetic is worse than I thought." {n}She tears the page with their wagers out of the grey ledger and feeds it into the lamp.{/n}
+"If that changes, I hear it from you first. Not from a sentry, not from a clerk, not from the mess. That's all I'll ask."''',
+      c("[Stay.]", flags=(L + "sole_line",))),
     d("unblessed", '''"Your business." {n}She says it slowly, as if entering it.{/n}
 "Right. Then it's yours, and my stores are mine. Nobody else draws on 'em on your seal, and I'll not ask, and you'll not tell." {n}She puts the grey ledger in a drawer and locks it.{/n}
 "That's not a blessin', Commander. Don't mistake it for one. It's a separate column, and I'll keep it separate." {n}She does not look up again.{/n} "Same time next week."''',
