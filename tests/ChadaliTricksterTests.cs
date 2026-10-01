@@ -270,6 +270,14 @@ internal static class ChadaliTricksterTests
         // Sol r3 CAN: the Lexicon recollection waits for the native discovery.
         check(Sc(S + "an_interesting_way").Requires.Contains("chadali.lexicon_found")
               && story.SeenCues["chadali.lexicon_found"].Contains("805e49b56b678a145891d30f5a5b30f6"), "The Lexicon is recalled before it is found.");
+        // Sol r4: the promise against force is recorded only when kept; she can be reminded she asked for the rigging; the shared
+        // remembering belongs to the ceased-Council ending.
+        var hurtScene = Sc(F + "will_it_hurt");
+        check(!Choice(hurtScene, "start", 0).Set.Contains(F + "promised_no_force") && Choice(hurtScene, "promise", 0).Set.Contains(F + "promised_no_force")
+              && !Choice(hurtScene, "promise", 1).Set.Contains(F + "promised_no_force")
+              && rigged.Nodes.Single(n => n.Id == "start").Choices.Any(c => c.Next == "asked")
+              && pageNight.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(H + "promised_to_remember")).All(p => p.Requires.Contains("council.epilogue_ceased")),
+            "A revised promise, a requested rigging or the shared remembering contradicts its history.");
         // Sol r2 CAN/BEL: no Chapter 5 essence debate in a Chapter 3 sitting; the burnt-cookie secret is recalled only after it was told.
         check(!Sc(H + "the_seat_beside_her").Nodes.Any(n => n.Text.Contains("essences"))
               && Choice(Sc(F + "worthless"), "frightened", 0).Requires.Contains(F + "burnt_edges") && Choice(Sc(F + "worthless"), "frightened", 2).Next == "forgive_early",

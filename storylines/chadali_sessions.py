@@ -329,7 +329,7 @@ session(OLD_FELLOW_AGAIN, "The old fellow, again", '"You\'ve been watching Cobbl
 
 session(FRIENDS, "We are friends, right?", '"About what I asked you in session..."', [
     ch("start", '''"About whether I was planning to take someone else's essence instead of giving mine." {n}She says it quickly, to get it over with.{/n}
-"You asked in front of everyone. I said no, of course not, I wouldn't do that to my friends. And then I said, 'Um, we are friends, right?'" {n}She looks at her hands.{/n} "I sounded so silly. Nobody answered. Alichino smirked."
+"You asked in front of everyone. I said no, of course not, I wouldn't do that to my friends. And then I said, 'Um, we are friends, right?'" {n}She looks at her hands.{/n} "I sounded so silly. Socothbenoth answered, very sweetly, and told you off for asking, and I could tell he was only being kind because it was me."
 "So I'm asking again. Here. Just you." {n}She looks up.{/n} "Are we friends? Or am I a jar with some Elysium in it that you need?"''',
       c('"You\'re not a jar. You never were."', "not_jar"),
       c('"I needed to know if you\'d run. Everyone was watching you."', "watching"),
@@ -381,7 +381,7 @@ session(LAST_EVENING, "The last evening", '"The hall feels different tonight."',
 
 EPILOGUE_PARAGRAPHS = [
     (SAID_IT_TO_USE_THEM, "{n}Alichino's little black notebook, returned to him with a lopsided flower in the margin, stayed on his shelf for the rest of his long existence. He never tore the page out. Nobody could decide whether that was spite or sentiment, and he declined to say.{/n}"),
-    (UNFORESEEN, "{n}Shyka laughed, once, at something the Commander did at the last session of the Council. Chadali said it sounded like crockery falling down a very long staircase, and that she had won the bet, and that the Commander owed her a very interesting cookie.{/n}"),
+    (UNFORESEEN, "{n}Shyka laughed, once, at something the Commander did at the last session of the Council. Chadali said it sounded like crockery falling down a very long staircase, that the Commander had won the bet fair and square, and that she would pay up as soon as she had baked a cookie interesting enough. She was still baking it, years later.{/n}"),
     (SANG, "{n}The drinking song about the coin was sung in every tavern in Drezen for a generation. It had eleven verses, or twelve, depending on who was drunk. The Commander was obliged to stand in several of those taverns and pretend not to know the chorus.{/n}"),
     (CARRIED_PARCEL, "{n}The little shrine by the grain market kept a plaque by its cracked step: \"The Commander knocked here.\" The step never cracked any further.{/n}"),
     (FELT_IT, "{n}In the war's last campaigns the Commander won a little less often and a little more slowly, and knew the names. She said that was the luckiest thing about any army.{/n}"),

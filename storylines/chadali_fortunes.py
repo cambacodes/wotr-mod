@@ -77,13 +77,13 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
         c("Continue", "start")),
     ch("start", '''"Shyka smiled at me." {n}She says it to the ring.{/n} "When I asked if it would hurt. They smiled, and said yes, and said it takes a part of your very being, and that they've done it many times before. Cheerfully. Like a recipe."
 "And then everyone looked at me. Because I'm the one who says everything will work out." {n}Her voice wobbles.{/n} "I said, is there no other way? I sounded so small. I hated it."''',
-      c('"Nobody will take it from you by force. Not while I\'m here."', "promise", flags=(PROMISED_SAFE,)),
+      c('"Nobody will take it from you by force. Not while I\'m here."', "promise"),
       c('"It will hurt. I won\'t lie to you. But it won\'t be for nothing."', "truth", flags=(TOLD_IT_HURTS,)),
       c('"There might be another way. I\'m looking."', "looking")),
     ch("promise", '''{n}She looks up so fast the flowers shake in her hair.{/n}
 "You mean it? You can't mean it. You need them. All of them. I read the Lexicon, or Eritrice read it to me, which is the same thing but slower." {n}Her hands have stopped on the ring.{/n}
 "If I say no and you've promised, then you have to choose between me and closing the Wound." {n}A breath.{/n} "Don't promise me that. Promise me something you can keep."''',
-      c('"I\'ll keep it. I\'ll find the other way."', "keep"),
+      c('"I\'ll keep it. I\'ll find the other way."', "keep", flags=(PROMISED_SAFE,)),
       c('"Then I promise to be there, whatever happens."', "there")),
     ch("truth", '''"It will hurt." {n}She repeats it, and nods, slowly, and her chin firms.{/n}
 "Thank you. Everyone else is being nice to me, or mean to me. Alichino says it will be 'a formality'. Cobblehoof says 'Phrr'. You just said it will hurt." {n}She lets out a shaky laugh.{/n} "That's the first thing anyone's said about it that I could hold."''',
@@ -293,7 +293,11 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
 "Her prayer didn't work. You did. There was a crusade order with your seal on it moving him off the wall the morning after I read you her helmet. I asked." {n}She looks up.{/n} "You rigged my luck. And now she's paying for a roof on it."''',
       c('"I wanted your people to have a good month. Is that so bad?"', "bad"),
       c('"I wanted you to see it work. Your luck. For once."', "see"),
-      c('[Trickster] "Someone had to. You\'re always giving it away."', "giving")),
+      c('[Trickster] "Someone had to. You\'re always giving it away."', "giving"),
+      c('"You asked me to. In the hall, with her helmet in your hand, and you took the credit."', "asked")),
+    ch("asked", '''"I know." {n}She does not look away, which is worse.{/n} "I asked. I wanted her to keep believing in me, and I wanted it more than I wanted to be honest with her, and you did exactly what I asked, and did it well."
+"That's why I'm cross with you instead of myself. It's easier." {n}She unfolds the letter again.{/n} "It's not fair. I know it's not fair. Now help me decide what to do about her roof."''',
+      c("Continue", "choose")),
     ch("bad", '''"Yes!" {n}The calm cracks.{/n} "Yes, it's bad! They think it was me. They think their prayers worked. They'll pray harder, and next month you'll be off marching somewhere without a stamp, and nothing will happen, and they'll think I've stopped loving them."
 {n}She throws the letter on the table.{/n} "You can't rig somebody's luck because you love them. That's not luck, that's a leash."''',
       c("Continue", "choose")),

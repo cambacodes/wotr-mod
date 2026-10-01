@@ -337,4 +337,5 @@ def integrate(payload):
     from story_format import p
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
-    page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+    page.setdefault("Paragraphs", []).extend(
+        p(text, requires=(flag, "council.epilogue_ceased") if flag == REMEMBERED else (flag,)) for flag, text in EPILOGUE_PARAGRAPHS)

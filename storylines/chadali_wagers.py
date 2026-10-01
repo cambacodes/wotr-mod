@@ -191,7 +191,7 @@ wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
       c('[Flirt] "Whose charm, exactly?"', "whose")),
     ch("person", '''{n}The hand stops on your cheek. She takes it back, slowly, and folds it with the other in her lap.{/n}
 "I know you bleed." {n}Her voice has gone quiet.{/n} "I've seen the lists. Eritrice reads them out. I cover my ears, and she reads them louder."
-"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I'm not good at that. I'm good at believing. It's the only thing I'm good at." {n}She looks at her hands.{/n} "Is it very rude? It feels rude, now you've said it."''',
+"I call you lucky because if I stop calling you lucky, I'll have to think about you bleeding. And I don't want to. I'm chance; I make the odds better, I heal what I can reach, I make people stronger, and I can't do any of it while I'm counting your wounds." {n}She looks at her hands.{/n} "Is it very rude? It feels rude, now you've said it."''',
       c('"It\'s rude. Keep doing it anyway."', "anyway", flags=(CHARMED,)),
       c('"Think about it. The bleeding. I need you to."', "think", flags=(NOT_A_CHARM,))),
     ch("ornament", '''"An ornament!" {n}She is scandalised.{/n} "Ornaments sit on shelves! You've never sat on anything in your life except a horse and my good chair, which you didn't ask about."
