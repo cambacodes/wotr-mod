@@ -531,6 +531,7 @@ _FAVOUR = next(i for i, s in enumerate(SCENES) if s["Id"] == "nocticula.trickste
 SCENES[_FAVOUR:_FAVOUR] = _MIRROR_PAGES
 
 
+# RETIRED (2026-10-01): nothing in Arueshalae's route produces cost.nocticula_favour any more; kept, gated off, for ids.
 # Arueshalae's favour (ledger row 11: Nocticula writes court.arueshalae; it collects arueshalae's cost.nocticula_favour
 # once). Remote: after the Ch5 audience her throne room is walled off (Cue_0019/Cue_0023, native comment) and she has no
 # other unit in Chapter 5. Canon: she is "the succubus queen" who allows Arueshalae to follow the Commander
@@ -564,7 +565,9 @@ SCENES.append(scene("nocticula.trickster.court.arueshalae", "A favour, called", 
 "You burned a letter from a queen in front of her own subject. The favour is paid, Commander; you have just shown her what you think of me. She will remember that longer than anything I could have written."''',
        c("[Let the smoke go.]", flags=(FAVOUR_CALLED, FAVOUR_BURNED))),
 ], requires=("trickster.ever", "arueshalae.started", "arueshalae.trickster.returned", A_FAVOUR, "nocticula.trickster.contact"),
-   forbids=(FAVOUR_CALLED, FIGHT), delay=24, last=5, optional=True, Relationship="nocticula", Remote=True, Chapters=[5],
+   # RETIRED by gating (2026-10-01, coordinator ruling: Arueshalae's device redesign retires the queen's referral that
+   # produced cost.nocticula_favour; id, nodes and indices kept): Forbids chapter_later, held in every chapter >= 2.
+   forbids=(FAVOUR_CALLED, FIGHT, "chapter_later"), delay=24, last=5, optional=True, Relationship="nocticula", Remote=True, Chapters=[5],
    ForbidOverrides={FIGHT: RETURNED}))
 # Shamira behind the Commander's eyes (ledger row 11: Nocticula owns court.shamira; additive, R2). Inline on her own
 # Chapter 5 audience list, after the kill, while what is left of her steward is in the Commander's head: she smells her

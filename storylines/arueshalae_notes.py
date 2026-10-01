@@ -1,22 +1,25 @@
-"""Arueshalae, the last case notes: the list, the watcher watched, the quack's trick she cannot learn, the glover, the
-chaplain's sermon, and the second chair (Trickster path; arueshalae.md F18).
+"""Arueshalae, the last case notes: the list, the watcher watched, the ward she cannot learn but can spend, the
+chaplain's sermon, and the second chair (Trickster path; arueshalae.md F18). The glover and the fallen wager are retired
+by gating (2026-10-01; ids and indices kept).
 
 Canon: "I'm watching... I'm listening to their conversations, studying their faces" (hub 48ad6e04); "I used to talk a
 lot before, and all of it was a lie... I like silence more now" (b6c4b7ad); "It's a great temptation. I don't know if I
-should be trusted with such power" (63d51120). Authored and labelled: the glover, the sermon's text, the chairs.
+should be trusted with such power" (63d51120). Authored and labelled: the sermon's text, the chairs.
 """
 from story_format import c, n, scene
 from storylines.arueshalae_trickster import (AFTERTASTE, ALLY, CHAPLAIN, CLOSED, COMMITTED, DEAD, DREZEN, EVIL_DEAD,
-                                             EVIL_UNIT, HUB, P, RECRUITED, RETURNED, REUNITED, TAVERN_FAILED, DREZEN_PLACES,
-                                             TAVERN_PRESENCE, UNIT, YARD_PRESENCE)
+                                             EVIL_UNIT, HUB, P, RECRUITED, RETIRED_TEXT, RETURNED, REUNITED, SCROLL,
+                                             TAVERN_FAILED, DREZEN_PLACES, TAVERN_PRESENCE, UNIT, WARD_HELD, YARD_PRESENCE)
 from storylines.arueshalae_rounds import CAT, TEMPLE_LETTER
 from storylines.arueshalae_chapel import CENSER
-from storylines.arueshalae_treatment import (CURED, DRAINED, ELYSIUM, KITCHEN, MEALTIMES, MORNING, RX_WANT, RX_WATCH, T, TOUCHED)
+from storylines.arueshalae_treatment import (CURED, DRAINED, DREZEN_AREA, ELYSIUM, KITCHEN, MEALTIMES, MORNING, RX_WANT, RX_WATCH, T,
+                                             TOUCHED)
 
 SCENES = []
 FORTY = T + "day_forty"
 WATCHED = T + "watched_you_eat"
 TEACH = T + "teach_me"
+HER_BOX = T + "her_scroll"                 # she spent one of the Commander's scrolls on someone of her own choosing
 GLOVES = T + "the_glover"
 SERMON = P + "chaplain.sermon"
 CHAIR = T + "the_second_chair"
@@ -54,7 +57,7 @@ hub(FORTY, "Number forty", 3, '"How\'s the list?"', [
 "Number thirty-one: I want it to rain on a day when I don't have to go anywhere. Number thirty-three: I want to know what the novice who sweeps the chapel is humming. Number thirty-six, and I'm very proud of this one: I want to be bored."
 {n}She looks up.{/n} "Do you understand? Bored. Nothing happening, and nobody wanting anything, and no danger, and no hunger, just a long afternoon with nothing in it. Mortals complain about it constantly. I've never once had it."''',
         c("Continue", "forty")),
-    a("forty", '''"And number forty." {n}She hesitates, and turns the page so you can't see it.{/n} "Number forty I'm not going to read to you. It's about you. It's not a person-want, I checked, I was very careful. It's a thing-about-you want. But I'm not ready to say it out loud."
+    a("forty", '''"And number forty." {n}She hesitates, and turns the page so you can't see it.{/n} "Number forty I'm not going to read to you. It's about you. It isn't what you're thinking; I checked, I was very careful. But I'm not ready to say it out loud."
 "No. I'm keeping that page. Don't look at me like that."''',
         c('"Of course. Every patient\'s allowed one secret from their doctor."', "secret", flags=(FORTY,)),
         c('[Straight-faced] "Absolutely not. Hand it over. Medical necessity."', "tease", flags=(FORTY,))),
@@ -81,35 +84,32 @@ hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me
 # --- "Teach me the trick" --------------------------------------------------------------------------------------
 
 hub(TEACH, "The one trick", 5, '"Teach me how you do it."', [
-    a("start", '''"The cure. The candle. The way you name the first cold and give it somewhere to go." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
-"If I could learn it, I could do it for myself. I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench. I could touch them and lift it off them as I took it." {n}Her voice wavers.{/n} "Teach me. Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
+    a("start", '''"The ward. The scroll. The way you read it, and the cold simply doesn't come." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
+"Teach me to do it. Then I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench." {n}Her voice wavers.{/n} "Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
         c("Continue", "try")),
-    nar("try", '''{n}You try. You explain it as well as you can: the Trickster's lore, the naming of a condition, the treating of it. She listens as if her life depended on it. She takes your hand and tries to feel what you do, and turn it round, and do it herself.{/n}
-{n}Nothing happens. The cold goes out of you and into her, and you lift it off, and she feels you do it, and when she tries to do the same, there is nothing there to try with. It is like asking a fire to learn to be wet.{/n}''',
+    nar("try", '''{n}You try. You put a spent scroll case in her hands and show her how the words run, and she follows them with one finger, line by line, the way she follows a stranger's face in the market. Then you tell her the plain thing the shrine's chaplain told you, the thing you should have told her first: the ward goes on the one who is touched, not on the one who touches. She could have every scroll in Drezen read over herself, and her hand would take exactly what it always took.{/n}
+{n}She sits with that for a long time, turning the empty case over and over.{/n}''',
         c("Continue", "cant")),
-    a("cant", '''"I can't." {n}She lets go.{/n} "I could feel you weaken. I tried to stop it, and I could not." {n}She laughs, and it is not a good laugh.{/n}
-"Of course. Of course that's the joke. For one moment I thought I could take the baker's girl by the hand, and the pikeman, and walk out of here with nobody holding mine."''',
-        c('"Good. A cure you could work alone, you\'d spend on the baker\'s girl."', "need", flags=(TEACH,)),
-        c('"Then I\'ll hold the hands you can\'t. You point, I hold."', "point", flags=(TEACH,))),
-    a("need", '''{n}She stares at you, and then she hears the joke, and then the thing under it that you did not make a joke of.{/n} "You're jealous. Of the baker's girl. Of a pikeman with one leg." {n}Her mouth twists.{/n} "Lady Vellexia kept the good wine locked in a cabinet only she could open, so the guests would come back for it. Every one of them came back. I poured." {n}She looks down at your hand, which she has not let go of.{/n} "And here's the doctor, keeping the only key in {mf|his|her} own pocket. I ought to hate that. Tender of Dreams forgive me, I'm going to come back for it every night."''', c()),
-    a("point", '''"I point, and you hold." {n}Her mouth twitches.{/n} "The Commander of the crusade, going round the field hospital holding the hands of everyone a succubus points at." {n}Then she stops smiling.{/n} "You'd do it, wouldn't you. You'd actually do it." {n}She takes your hand, and doesn't try anything, and just holds it.{/n} "All right. I'll point. Carefully."''', c()),
+    a("cant", '''"So reading it over myself wouldn't help. I'd have to ward someone else, every time, and pay for every hand." {n}She laughs, and it is not a good laugh.{/n}
+"For one moment I thought I could take the baker's girl by the hand, and walk out of here with nobody holding mine. Instead I'd have to ask her father to let a demon have a scroll read over his daughter, at the price of a horse, so that I could show her how to fold dough."''',
+        c('"Good. A ward you could carry for anyone, you\'d spend on the baker\'s girl."', "need", flags=(TEACH,)),
+        c('"Then I\'ll hold the hands you can\'t. You point, I hold."', "point", flags=(TEACH,)),
+        c('[Take one of your own scrolls out of the case and put it in her hand] "Then buy it. This one\'s yours. Spend it on whoever you like."',
+          "hers", flags=(TEACH, HER_BOX), requires=(WARD_HELD,), remove_item=SCROLL)),
+    a("need", '''{n}She stares at you, and then she hears the joke, and then the thing under it that you did not make a joke of.{/n} "You're jealous. Of the baker's girl. Of a pikeman with one leg." {n}Her mouth twists.{/n} "Lady Vellexia kept the good wine locked in a cabinet only she could open, so the guests would come back for it. Every one of them came back. I poured." {n}She looks at the scroll case on your belt.{/n} "And here's the doctor, keeping the only key in {mf|his|her} own satchel. I ought to hate that. Tender of Dreams forgive me, I'm going to come back for it every night."''', c()),
+    a("point", '''"I point, and you hold." {n}Her mouth twitches.{/n} "The Commander of the crusade, going round the field hospital holding the hands of everyone a succubus points at." {n}Then she stops smiling.{/n} "You'd do it, wouldn't you. You'd actually do it." {n}She takes a fold of your sleeve, and doesn't try anything, and just holds it.{/n} "All right. I'll point. Carefully."''', c()),
+    a("hers", '''{n}She looks at the sealed scroll in her palm as if it were a live coal, or a ring.{/n} "Mine. To spend on whoever I like." {n}Her fingers close on it.{/n} "You know who it's going to be. You knew before you took it out."
+"The baker's girl. Tomorrow, before dawn. The shrine's chaplain will read it over her for me; he won't ask why, he'll only ask whether she's had breakfast. And for seven minutes I'll stand at the trough beside her and let her lean on me, and show her how to fold the dough with my hands on hers, and nothing will go out of her at all." {n}She tucks the scroll inside her bodice, against her skin, the way she keeps her list.{/n} "It's the most extravagant thing anyone has ever let me do. I'm going to remember this."''', c()),
 ], (KITCHEN, CURED), delay=48, chapters=(5,))
 
 
-# --- The glover (the path without the trick) ------------------------------------------------------------------
+# --- The glover: RETIRED by gating (2026-10-01; ids and indices kept). Any caress drains; no glove stops it. ---------
 
 hub(GLOVES, "A pair of gloves", 3, '"New gloves?"', [
-    a("start", '''{n}They are very fine: dark grey kid, lined with silk, stitched so close you can hardly see the seam. She holds up her hands to show you, turning them in the light like jewels.{/n}
-"The glover on Coppersmith Lane. He's blind in one eye and deaf in one ear and talks the whole time, and he measured my hands for an hour with a knotted string and never once noticed he was touching a demon." {n}She flexes her fingers.{/n} "I told him I needed gloves I could hold someone's hand through. He asked if my sweetheart was very cold. I said, no, I am."''',
-        c("Continue", "test")),
-    a("test", '''"They're thicker than silk. He says there's a layer of something in the lining, a thing the Kenabres alchemists use for handling foulspawn ichor." {n}She holds out her gloved hand to you, and then stops.{/n}
-"I want to try. Not because I'm hungry. Because you keep paying, every time, and it frightens me. I want to see how much this saves you."''',
-        c('[Take the gloved hand]', "take")),
-    nar("take", '''{n}Through the kid and the silk and the alchemists' lining, the cold is still there, but faint, like a draught through three shutters instead of one. You hold on for a long time. You hold on for a hundred breaths. At the end of it you are a little tired, the way you are tired at the end of a march, and that is all.{/n}''',
-        c("Continue", "after")),
-    a("after", '''"A hundred." {n}She counted. Of course she counted.{/n} "A hundred breaths, and you're still standing, and you're still you." {n}She stares at her own gloved fingers, laced through yours.{/n}
-"It's less than a real hand. I know it is. You can't feel my skin and I can't feel yours. But it's a hundred instead of three." {n}She squeezes, gently.{/n} "I'm going to wear these until they fall apart. And then I'm going to go back to the glover and have him make another pair, and I'm going to tip him outrageously."''',
-        c("[Keep holding on.]", flags=(GLOVES,))),
+    a("start", RETIRED_TEXT, c("Continue", "test")),
+    a("test", RETIRED_TEXT, c("[Take the gloved hand]", "take")),
+    nar("take", RETIRED_TEXT, c("Continue", "after")),
+    a("after", RETIRED_TEXT, c("[Keep holding on.]", flags=(GLOVES,))),
 ], (TOUCHED, DRAINED), delay=48, chapters=(3, 5))
 
 
@@ -132,7 +132,7 @@ hub(SERMON, "On temptation", 3, '"You\'re preaching on Sunday?"', [
 
 hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
     a("start", '''{n}She has. There is a chair in her room by the chapel that was not there yesterday: a plain Drezen kitchen chair, ash wood, with a rush seat, standing across the little table from her own. She is standing behind it with both hands on its back, as if introducing it.{/n}
-"You've heard me on the subject of Lady Vellexia's table. All those chairs, and nobody eating." {n}She pats the chair.{/n} "So I bought one, from the joiner on Coppersmith Lane, with my own coin, for one particular person to sit in. It's for you. It's yours. Nobody else sits in it unless you bring them."''',
+"You know I grew up in Lady Vellexia's house. All those chairs at her table, and nobody eating." {n}She pats the chair.{/n} "So I bought one, from the joiner on Coppersmith Lane, with my own coin, for one particular person to sit in. It's for you. It's yours. Nobody else sits in it unless you bring them."''',
         c("Continue", "why")),
     a("why", '''"In the Upper City a chair at the table meant you might be dinner." {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} "Here it means you're expected. I bought it for you, and I'm already sorry I showed it to you." {n}She lets go of it.{/n} "Sit down. Let's see if it works."''',
         c("[Sit in the chair.]", "sit", flags=(CHAIR,)),
@@ -234,14 +234,15 @@ hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
     a("mark", '''"And this did." {n}She runs her thumb along it.{/n} "A cat did this, because it liked me, and it stayed. A smithy cat that I bought a fish for, and it leaves a mark on me that I can still find with my thumb a month later."
 {n}She looks at you, her eyes very bright.{/n} "I wanted it to stay. Desna help me, I still do."''',
         c('"It isn\'t mad. It\'s the first thing you\'ve kept that nobody gave you a use for."', "keep", flags=(SCAR,)),
-        c('[Kiss the scar, lightly, and take what it costs]', "kiss", flags=(SCAR,), forbids=(ELYSIUM,)),
+        c('[Spend a Scroll of Death Ward: have the chaplain read it over you at the shrine door, come back, and kiss the scar]', "kiss", flags=(SCAR,), forbids=(ELYSIUM,),
+          requires=(WARD_HELD,), remove_item=SCROLL),
         c('[Kiss the scar, lightly]', "kiss_e", flags=(SCAR,), requires=(ELYSIUM,))),
     nar("kiss_e", '''{n}You lift her hand and kiss the white line, lightly, once. Nothing comes out of you. Nothing at all. She stares at the place your mouth was as if she had expected to see frost on it.{/n}
 "Now it's got two things in it," she says, unsteadily. "The cat, and you. And it didn't cost you anything. I'll never get used to that. I'm not going to try."''', c()),
-    a("keep", '''"The first thing I've kept that nobody gave me a use for." {n}She holds the hand against her chest.{/n} "The novice's song is like that. And the stone. And the list. I'm collecting them, aren't I? Useless things. I'm going to be the most cluttered demon in the history of the Abyss." {n}She laughs.{/n} "Good."''', c()),
-    nar("kiss", '''{n}You lift her hand and kiss the white line, lightly, once. The cold comes, and you let it come, because a scar is a thing you kiss without bargaining. She goes very still, and then she takes her hand back, slowly, and looks at the scar as if it had changed colour.{/n}
-"Now it's got two things in it," she says, unsteadily. "The cat, and you. It'll never heal now. I won't let it."''', c()),
-], (CAT,), delay=48, chapters=(3, 4, 5))
+    a("keep", '''"The first thing I've kept that nobody gave me a use for." {n}She holds the hand against her chest.{/n} "The list is like that, too. I'm collecting them, aren't I? Useless things. I'm going to be the most cluttered demon in the history of the Abyss." {n}She laughs.{/n} "Good."''', c()),
+    nar("kiss", '''{n}She watches you walk to the shrine door and back with the ward read over you, seal to last word, for this, and her mouth opens to stop you and does not. Then you lift her hand and kiss the white line, lightly, once. Nothing comes out of you. She goes very still, and then she takes her hand back, slowly, and looks at the scar as if it had changed colour.{/n}
+"You spent a horse on a cat scratch." {n}Her voice is unsteady.{/n} "Now it's got two things in it. The cat, and you. It'll never heal now. I won't let it."''', c()),
+], (CAT,), delay=48, chapters=(3, 5))
 
 
 # --- The chaplain prays -------------------------------------------------------------------------------------
@@ -250,7 +251,7 @@ hub(PRAYER, "Asking", 5, '"You were at the altar a long time."', [
     a("start", '''"I prayed." {n}She says it as if confessing to a theft.{/n} "To Desna. For myself, this time, not for anyone at the rail. I told you once that I try not to trouble her. That she'd done more for me than I deserved and asking more would be impudent."
 "But I'm the chaplain now. The second company asks me to pray for them every day. And it seemed very rude to keep asking her for things on their behalf when I'd never once asked her anything on my own."''',
         c("Continue", "what")),
-    a("what", '''"So I knelt, and I told her about the censer, and the boy who ran at Kenabres, and the pikeman in the hospital. And then I told her about you." {n}Her mouth twists.{/n} "I said, 'Tender of Dreams, the Commander has made me into a chaplain as a joke, and I have been doing it properly, and I think the joke is on both of us.'"
+    a("what", '''"So I knelt, and I told her about the censer, and the boy who ran at Kenabres, and the soldiers at the rail. And then I told her about you." {n}Her mouth twists.{/n} "I said, 'Tender of Dreams, the Commander has made me into a chaplain as a joke, and I have been doing it properly, and I think the joke is on both of us.'"
 "And then I asked her what I dream of. She asked me first, a long time ago. I thought it was time I asked her back."''',
         c('"What did she say?"', "said")),
     a("said", '''"Nothing." {n}She smiles.{/n} "She never does, not out loud. But I sat there for an hour, and nothing happened, and I wasn't hungry, and I wasn't afraid, and when I got up the second company was waiting at the rail with their swords, and one of them said, 'Chaplain, you look like you've been somewhere nice.'"
@@ -259,17 +260,15 @@ hub(PRAYER, "Asking", 5, '"You were at the altar a long time."', [
 ], (CHAPLAIN, CENSER), delay=48, chapters=(5,))
 
 
-# --- The fallen: a wager ------------------------------------------------------------------------------------
+# --- The fallen: a wager. RETIRED by gating (2026-10-01; ids and indices kept): its stakes were never settled. ----
 
 BET_NODES = [
-    a("start", '''"Let's have a wager, darling. You like wagers. Tricksters always do." {n}She has her chin in her hand and the lamp behind her, and she is smiling the Upper City smile, the one that means somebody is going to lose something.{/n}
-"I bet that before the war ends, you'll ask me to stay. Not visit. Stay. In your rooms, in your city, wearing your ridiculous colours." {n}She taps the table.{/n} "And I bet that when you ask, I'll say no, and you'll ask again, and I'll say no again, and you'll keep asking until one of us dies."''',
-        c("Continue", "stakes")),
-    a("stakes", '''"If I win, you owe me one night where you don't treat anything, don't cheat, don't lift a single drop. You just let me take what I take." {n}Her eyes glitter.{/n} "If you win... well. You won't win. But name a stake anyway. It's polite."''',
-        c('"If I win, you tell me what she dreamed of. The other one."', "dream", flags=(BET,)),
-        c('"I don\'t bet against myself. I never ask twice."', "never", flags=(BET,))),
-    a("dream", '''{n}The smile goes, for an instant, completely.{/n} "What she dreamed of." {n}She sits back.{/n} "That's a cruel stake, darling. That's a demon's stake." {n}The smile comes back, slower.{/n} "Accepted. Shake on it. Oh, you can't, can you? Not without paying." {n}She holds out her hand anyway, across the table, and waits to see if you will.{/n}''', c()),
-    a("never", '''"You never ask twice." {n}She laughs, delighted, and a little stung.{/n} "Then it's a very short wager. You'll ask once, I'll say no, and that'll be that." {n}She finishes her drink.{/n} "Liar. Everyone asks twice. The ones who say they won't ask three times."''', c()),
+    a("start", RETIRED_TEXT, c("Continue", "stakes")),
+    a("stakes", RETIRED_TEXT,
+        c("[Accept the wager.]", "dream", flags=(BET,)),
+        c("[Refuse the wager.]", "never", flags=(BET,))),
+    a("dream", RETIRED_TEXT, c()),
+    a("never", RETIRED_TEXT, c()),
 ]
 for hub_key, suffix, extra, unit in DREZEN_PLACES:
     SCENES.append(scene(BET + suffix, "A wager", "Arueshalae", 5, '"You\'re smiling. I don\'t like it."',
@@ -284,6 +283,9 @@ for hub_key, suffix, extra, unit in DREZEN_PLACES:
 for _scene in SCENES:
     if _scene["Id"] in (TEACH, GLOVES, SOSIEL_OFFER) and ELYSIUM not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM)
+    # Sol verify (2026-10-01): staged at a Drezen place (her room by the chapel; the shrine door), so only in Drezen.
+    if _scene["Id"] in (CHAIR, SCAR):
+        _scene["Areas"] = [DREZEN_AREA]
 
 
 def integrate(payload):

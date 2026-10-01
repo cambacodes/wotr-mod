@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pp2\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-arueshalae\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4721,
-  "unique_targets": 1037,
+  "binding_uses": 4740,
+  "unique_targets": 1039,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -25,6 +25,10 @@
     "3e4ce583dc71401588f33f8192c252cd": {
       "path": "Items/NewTrashLoot/NewJewelery/DarekSunhammersFake.jbp",
       "type": "BlueprintItemEquipmentNeck"
+    },
+    "89e10c3f21fa50c4b8719e004c7628d3": {
+      "path": "Items/Scrolls/Level4/ScrollOfDeathWard.jbp",
+      "type": "BlueprintItemEquipmentUsable"
     },
     "816f244523b5455a85ae06db452d4330": {
       "path": "Items/UsableSlotItem/TerendelevScaleItem.jbp",
@@ -2180,6 +2184,10 @@
     },
     "f95980a82d410e143a748c412da887fa": {
       "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Evil/MeetEvilArusha/Cue_0006.jbp",
+      "type": "BlueprintCue"
+    },
+    "68cfcd112d6060141a492949392692aa": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Evil/MeetEvilArusha/Cue_0011.jbp",
       "type": "BlueprintCue"
     },
     "480082b0c04099540be2ed84be7c9536": {

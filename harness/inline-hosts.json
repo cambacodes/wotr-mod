@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1072,
-  "resolved": 1072,
-  "inlineOnlyScenes": 281,
-  "inlineOnlyResolved": 281,
-  "answerListScenesWithoutContact": 645,
-  "answerListScenesWithoutContactResolved": 645,
+  "entryTargetScenes": 1073,
+  "resolved": 1073,
+  "inlineOnlyScenes": 282,
+  "inlineOnlyResolved": 282,
+  "answerListScenesWithoutContact": 646,
+  "answerListScenesWithoutContactResolved": 646,
   "lists": 120,
   "listsWithReachableHost": 119
  },
@@ -3293,6 +3293,25 @@
    "contact": null,
    "entry": {
     "3ef227bb0ba84104387fd9b4865a4ce0": "RRT_entry.arueshalae.trickster.evil.diagnosis"
+   },
+   "resolved": true,
+   "host": {
+    "list": "3ef227bb0ba84104387fd9b4865a4ce0",
+    "dialog": "102cdbf569be80d43bcd3f9b37c49f45",
+    "dialogName": "MeetEvilArusha_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "arueshalae.trickster.evil.home_visit": {
+   "kind": "return-cue",
+   "lists": [
+    "3ef227bb0ba84104387fd9b4865a4ce0"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "3ef227bb0ba84104387fd9b4865a4ce0": "RRT_entry.arueshalae.trickster.evil.home_visit"
    },
    "resolved": true,
    "host": {
