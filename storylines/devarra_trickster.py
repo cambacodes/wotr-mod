@@ -137,7 +137,7 @@ SCENES.append(scene(P + "dead.lair_story", "What happened next", "Devarra", 3, '
 {n}Whatever wore that hide took a wound that should have killed it, shed the wound with the skin, and is lying twenty paces away listening to a story. It is a guess, and nobody has ever tested it: that a thing which can shed a mortal wound might shed a death, if nobody cuts it open first.{/n}''',
         c("[One whisper to Greybor first.]", "greybor"),
         c('"Never mind."', abort=True)),
-    nar("greybor", '''{n}Greybor does not take his eyes off the soft place under her wing.{/n} "Whisper, then. I'm working."
+    nar("greybor", '''{n}Greybor does not take his eyes off the soft place under her wing.{/n} "Whisper, then. I'm working." "Hunters' talk. A wyrm killed in her shed dies wrong, they say, slow, like a coal in ash. I never met a man who waited to see. Talk."
 {n}You tell him: when she falls, she stays whole. No head, no heart, no hide off her. Nobody cuts her for three days; not him, not the quartermaster's renderers.{/n}
 "The head's my proof and half my fee. The rest of her's worth more than the fee." {n}One eye swivels to you, flat and professional.{/n} "You want to pay a dragon's worth to leave a dragon lying in a ditch, that's your coin. Double. From the war chest, not from you; I've seen your purse."''',
         c("Continue", "story")),
@@ -178,7 +178,7 @@ SCENES.append(scene(P + "dead.setup", "No order about clutch-mothers", "Devarra"
 
 storyteller(P + "dead.storytellers_version", "A story for a carcass", '"You were her prisoner. Tell me what she charged."', [
     teller("price", '''{n}His blind eyes do not move.{/n} "She charged what she charges everyone. A story good enough to impress her, or your life. I paid, and I am here."
-{n}He folds his hands on the head of his stick.{/n} "You want me to pay her again, for a dead dragon. The tariff still stands; I have no doubt she would honour it, even now. Dragons keep their bargains longer than they keep their bodies. But I will not spend one of my stories on her. Bring me one of yours. The true one, Commander. From Kenabres to tonight."''',
+{n}He folds his hands on the head of his stick.{/n} "You want me to pay her again, for a dead dragon. The tariff still stands; I have no doubt she would honour it, even now. She keeps her bargains longer than most people keep their word. But I will not spend one of my stories on her. Bring me one of yours. The true one, Commander. From Kenabres to tonight."''',
         c('[Pay his price] "Mine, then. Kenabres to tonight. Every trick."', "walls",
           mythic="Trickster", alignment=("Chaotic", 1), flags=(PRIMED, LATE, STORY_SOLD)),
         c('[Intimidate] "You\'ll tell it my way, old man."', "raised", flags=(THREATENED,)),
@@ -188,7 +188,7 @@ storyteller(P + "dead.storytellers_version", "A story for a carcass", '"You were
         c('[Pay twice] "Both. The one I\'m proud of, and the one I\'m not."', "walls",
           mythic="Trickster", alignment=("Chaotic", 1), flags=(PRIMED, LATE, STORY_SOLD, SHAME_SOLD)),
         c('"Keep your stories."', flags=(DECLINED,))),
-    teller("walls", '''"Before you begin, a thing you ought to know, since you are paying." {n}He turns his cup a quarter turn.{/n} "I spent several days in that lair with nothing to do but feel the walls for a way out. They are not stone. They are hides. Her old ones, split down the back and dry as vellum, and one of them has a hole through the chest I could put my head through. She has died in a skin before, Commander, and left the skin behind."
+    teller("walls", '''"Before you begin, a thing you ought to know, since you are paying." {n}He turns his cup a quarter turn.{/n} "I spent several days in that lair with nothing to do but feel the walls for a way out. They are not stone. They are hides. Her old ones, split down the back and dry as vellum, and one of them has a hole through the chest I could put my head through. She told me, while she was deciding how I would taste, that she had died in a skin before and left it behind. She also told me she had eaten a bishop. I believed one of those."
 "Nobody has ever let a dead woundwyrm lie long enough to find out whether she can do it twice. The crusade's renderers have been at her since she fell, a little at a time; your quartermaster has a price list. Her hide has turned their saws, they complain, and her meat has not rotted in all this time, which is a thing about this one carcass that nobody has thought to ask about. The last I heard, they had the teeth and the wing-leather, and had not reached the spine. Whether anything under that hide can still finish what it started, I cannot tell you. Nobody can. Leave her whole three days and find out."''',
         c('[Call the renderers off her] "Every saw off her tonight, and a guard on her till she gets up or rots. Put it on the quartermaster\'s account."', "climb",
           crusade=("Materials", -100), flags=(KEPT_WHOLE,))),
@@ -202,12 +202,19 @@ storyteller(P + "dead.storytellers_version", "A story for a carcass", '"You were
 # --- The return (remote, tier B). Device scene: the hide splits on the page ---------------------------------------
 
 letter(P + "dead.woken", "The hide splits", [
-    nar("wake", '''{n}For two days the reports from her carcass said what reports from carcasses say: that it stank, that it had not moved, that the quartermaster wished it minuted he had advised against paying good silver to guard meat. On the third day they stopped making sense.{/n}''',
-        c("Continue", "wake_sanctum", requires=(DEAD_SANCTUM,), forbids=(LATE, STORY_TOLD)),
-        c("Continue", "wake_lair", forbids=(DEAD_SANCTUM, LATE)),
-        c("Continue", "wake_late", requires=(LATE,)),
+    nar("wake", '''{n}You do not leave it to luck. There is hunters' talk, the kind Greybor repeats and does not believe, that a wyrm caught in her shed dies wrong and slow; there are the old split hides on her lair wall; and nobody has ever waited to see. So you buy what a mortal can buy. Two barrels of the citadel apothecary's cold-iron brine, the salt-and-quicklime paste the field surgeons pack round a wound to keep it from turning, worked into the split along her spine by men you pay not to ask why; a guard of your own, paid by the night; and the quartermaster's renderers kept off her, by order where an order will hold and by a lie about plague in the meat where it will not. If the brine fails, or the lie is found out, she rots like any other carcass, and you have spent good silver on a smell.{/n}
+{n}For two days the reports from her carcass said what reports from carcasses say: that it stank, that it had not moved, that the quartermaster wished it minuted he had advised against paying good silver to guard meat. On the third day they stopped making sense.{/n}''',
+        c("[Go and look at her on the third night]", requires=(DEAD_SANCTUM,), forbids=(LATE, STORY_TOLD), crusade=("Finances", -150),
+          check={"Skill": "SkillLoreNature", "DC": 14, "Success": "wake_sanctum", "Failure": "stalled"}),
+        c("[Go and look at her on the third night]", forbids=(DEAD_SANCTUM, LATE), crusade=("Finances", -150),
+          check={"Skill": "SkillLoreNature", "DC": 14, "Success": "wake_lair", "Failure": "stalled"}),
+        c("[Go and look at her on the third night]", requires=(LATE,), crusade=("Finances", -150),
+          check={"Skill": "SkillLoreNature", "DC": 14, "Success": "wake_late", "Failure": "stalled"}),
         # b9c: primed in the lair (Greybor's bargain), escaped, and killed in the Sanctum: the bargain held there too.
-        c("Continue", "wake_sanctum_told", requires=(DEAD_SANCTUM, STORY_TOLD), forbids=(LATE,))),
+        c("[Go and look at her on the third night]", requires=(DEAD_SANCTUM, STORY_TOLD), forbids=(LATE,), crusade=("Finances", -150),
+          check={"Skill": "SkillLoreNature", "DC": 14, "Success": "wake_sanctum_told", "Failure": "stalled"})),
+    nar("stalled", '''{n}The brine has gone grey and soft in the split, and the split has stopped. Under it the new hide is neither growing nor rotting; it is waiting, the way a fever waits, and it will not wait long. Somebody packed the salt too thin along the spine, or too late. The apothecary says, with his hand out, that another barrel might save it and might not.{/n}''',
+        c("[Pay for another barrel and another night's guard, and come back]", abort=True)),
     nar("wake_sanctum", '''{n}The golems had their order now: the lizard is shedding, not in breach; stand over her; let nobody cut her. For as long as they stood, they did exactly what they had been told; when Xanthir's last apprentice came back for the heart with a bone-saw, they turned him out. Your own standing order and two pickets in the egg chamber did the rest, and the crusade's renderers left their wagon at the door. On the third night the hide split along the spine, the way a snake's does, from the horns to the tail.{/n}
 {n}What came out of it was wet, and grey as eggshell, and smaller in the shoulder than the thing that had died. It stepped over its own old face without looking down. The golems, having no order about that, let it pass.{/n}''',
         c("Continue", "camp")),
@@ -238,7 +245,7 @@ letter(P + "dead.woken", "The hide splits", [
        c("Continue", "mother")),
     dv("threat", '''"You. The little parasite who told a room full of stone a story about me while I was still warm." {n}The new hide over the old wound is paler than the rest, a grey seam.{/n} "I was not quite gone. I heard every word, and then I heard the stone keep the saws off me for three days. A story buys a life from me, crusader, if it is good enough. It was. The life is yours. I pay what I charge, even dead."''',
        c("Continue", "mother")),
-    dv("mother", '''"I died a dragon and I got up a dragon. The new hide was growing under the old; it has done that all my life, a little at a time, and I have shed six. Whether it would finish in a dead thing, I did not know. Nobody knew. Perhaps the Wound did it; it never leaves flesh alone. Perhaps I was too angry to stay down. Perhaps it was only your luck. You guessed, with other people's money, and you had no right to be that lucky." {n}She turns her head, and you see how thin the new hide is over the ribs, like vellum.{/n} "I will tell you what I know, because I can feel it: there is nothing growing under this one. Whatever that was, it was the last of it. Kill me again, crusader, and I stay dead." {n}Her eye does not move from you.{/n} "The hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them."''',
+    dv("mother", '''"I died a dragon and I got up a dragon. The new hide was growing under the old; it does that, slowly, and I was nearly out of it when they killed me. Whether a shed half done can finish in a dead thing, I did not know. The hunters' talk says it can, and hunters lie for a living. You believed the talk, and bought brine, and paid men to stand over meat, with other people's money. I felt your salt in the split like frost. You had no right to be that lucky." {n}She turns her head, and you see how thin the new hide is over the ribs, like vellum.{/n} "I will tell you what I know, because I can feel it: there is nothing growing under this one. Whatever that was, it was the last of it. Kill me again, crusader, and I stay dead." {n}Her eye does not move from you.{/n} "The hide is mine. The terms are yours: you paid for them before you knew whether there would be anyone to collect. I did not ask for either, and I will not thank you for them."''',
        c("Continue", "failed", requires=(FAILED,)),
        c("Continue", "which_eggs", forbids=(FAILED,))),
     dv("failed", '''"Your little tricks have stopped working, I hear. Good. The ones that kept me whole were not tricks. They were coin, and pickets, and a lie told to stone with a straight face, and those still work. So does my tariff."''',
@@ -317,7 +324,7 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
           crusade=("Materials", -200), flags=(HUNTS,)),
         c('"She\'ll eat when I say so."', "owned", flags=(CLOSED, "devarra.trickster.refused"))),
     teller("owned", '''{n}The Storyteller sets down his cup.{/n} "I will carry that up, because you have asked me to, and because I would like to see her face, and cannot."
-{n}He comes back at dusk without his lantern.{/n} "She said: a woundwyrm does not come back to a keeper. The tower is empty. The oxen are safe. I do not think you will see her again, Commander, unless she decides to be the last thing you see."''',
+{n}He comes back at dusk without his lantern.{/n} "She said: she does not come back to a keeper. The tower is empty. The oxen are safe. I do not think you will see her again, Commander, unless she decides to be the last thing you see."''',
         c('"So be it."')),
     teller("ending", '''"The second question is older." {n}He turns his face toward the ridge.{/n} "You told her an ending once, or paid me to. She says a story that stops at the dragon getting up is not finished. She wants what happens next. She will judge it. I am to carry it up word for word, and I warn you: she has eaten better storytellers than either of us."''',
         c('[Tell it true] "The dragon gets up. The Commander who lied about her has to live with her. Neither of them knows how that ends."',
