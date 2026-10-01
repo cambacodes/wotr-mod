@@ -63,6 +63,7 @@ MET_B = "horzalah.met_q3_b"
 MET_Q2 = "horzalah.met_q2"
 SCAR_SEEN = "horzalah.scar_seen"
 CANARY = "horzalah.gift_delivered"
+GIFT_GIVEN = "horzalah.gift_given"     # Q12: YozzDying/Cue_0058 seen: she handed the Commander the box for her sister
 NAMED = "baphomet.named_horzalah"
 HEPZ_BACK = "hepzamirah.trickster.returned"           # node variants only (build sheet: no Requires/Forbids on hepzamirah.*)
 Q2_DONE = "greybor.q2_done"
@@ -138,7 +139,7 @@ DERIVED = {
 # failure is read from the cue that sets it: Greybor's "We've lost an important lead" after the assassin dies unquestioned.
 SEEN_CUES = {Q3_FAILED: [Q3_FAIL], RESCUE_TOLD: ["fc5119d8d4a54e047b07338764beb346"],
              SEALS_SEEN: ["fc1030e8724b086479d7ec2a52aae2a5"], SPAWN_TOLD: ["0cdc1a24d29c77f4490900d3a9418afc"],
-             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"], GUILD_SEEN: ["88e13a2fad6652e40aba28c64de187d3"], GREY_MET_Q2: ["f3ba94d6ca5f33d499b5ff0a11cda5df"]}
+             EXPLAINED: ["ae22177b1bc76fc42a9d08dba83cccdc"], GUILD_SEEN: ["88e13a2fad6652e40aba28c64de187d3"], GIFT_GIVEN: ["c200758b370f62944a47e9ec671ffbc6"], GREY_MET_Q2: ["f3ba94d6ca5f33d499b5ff0a11cda5df"]}
 
 # Path fit (ROUTE-BRIEF-R 2026-09-29, v1): T = device or Trickster-only; N-all = any path; N-fit = the fitting paths.
 PATH_FIT = {}
@@ -371,26 +372,26 @@ tag(H + "unmet.knife", "T")
 
 # --- 4. The Guild circles, as guessed (T): she comes back at night. -------------------------------------------------------
 
-SCENES.append(scene(H + "late.at_night", "Three nights", "Horzalah", 5, "", [
-    nar("start", '''{n}She does not use the window. You wake because the air in the room has folded, the way it folded around her when she left you last, and when it unfolds she is standing at the foot of your bed with a knife in her hand and three nights without sleep in her face.{/n}''',
+SCENES.append(scene(H + "late.at_night", "A night without sleep", "Horzalah", 5, "", [
+    nar("start", '''{n}She does not use the window. You wake because the air in the room has folded, the way it folded around her when she left you last, and when it unfolds she is standing at the foot of your bed with a knife in her hand and a night without sleep in her face.{/n}''',
         c("Continue", "refused", requires=(REFUSED,), forbids=(CAME,)),
         c("Continue", "refused_offer", requires=(REFUSED, CAME), forbids=(LET_GO,)),
         c("Continue", "refused_room", requires=(LET_GO,)),
         c("Continue", "dismissed", forbids=(REFUSED,))),
     hz("refused_offer", '''"You had me on the floor of this room with your blade under my chin," {n}she says,{/n} "and you made me an offer, and I spat on it." {n}Her mouth twists.{/n}
-"Father has said nothing since. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
+"Father has said nothing since. Not a word, not a whisper, not a cultist at the door. And since last night three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
        c("Continue", "head")),
     hz("refused_room", '''"You let me go," {n}she says.{/n} "You sat me on the floor of this room with your blade under my chin, and then you let me walk out through the wall, and told me to take my chances." {n}Her mouth twists.{/n}
-"I took them. Father has said nothing. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
+"I took them. Father has said nothing. Not a word, not a whisper, not a cultist at the door. And since last night three of my own masters have followed me from room to room in my own hall, smiling. They heard before I was home that I went out alone to take one mortal's head and came back without it. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
        c("Continue", "head")),
     hz("refused", '''"You guessed," {n}she says.{/n} "I lay there bleeding on that crossroads and you guessed, and you guessed right, and I spat on your boot for it."
-"Father has said nothing. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They are waiting for someone to say the word first. They would prefer it to be Father. They are beginning to think they do not need him to."''',
+"Father has said nothing. Not a word, not a whisper, not a cultist at the door. And since last night three of my own masters have followed me from room to room in my own hall, smiling. They are waiting for someone to say the word first. They would prefer it to be Father. They are beginning to think they do not need him to."''',
        c("Continue", "head")),
     hz("dismissed", '''"'Get out of my sight,' you said." {n}Her voice is hoarse, as if she had been shouting for days, or not using it at all.{/n} "I got out. It did not help."
-"Father has said nothing. Not a word, not a whisper, not a cultist at the door. And for three nights three of my own masters have followed me from room to room in my own hall, smiling. They heard about the crossroads before I was home. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
+"Father has said nothing. Not a word, not a whisper, not a cultist at the door. And since last night three of my own masters have followed me from room to room in my own hall, smiling. They heard about the crossroads before I was home. They are waiting to see who says the word 'failure' first, and they are beginning to think it will not need to be Father."''',
        c("Continue", "head")),
     hz("head", '''{n}The knife point comes up, not quite toward you.{/n}
-"So I came back for your head. It is the only thing that would shut their mouths. I have been standing here long enough to take it twice." {n}She does not move.{/n} "And I keep thinking that a woman who could not take it the first time, when she had every advantage, does not walk into her hall with it three days later. They would ask how. I would have to lie. They would smell it."''',
+"So I came back for your head. It is the only thing that would shut their mouths. I have been standing here long enough to take it twice." {n}She does not move.{/n} "And I keep thinking that a woman who could not take it the first time, when she had every advantage, does not walk into her hall with it a day later. They would ask how. I would have to lie. They would smell it."''',
        c('[Offer it again] "Then take the other thing. What I offered you before. It\'s still on the table."', "take",
          requires=(REFUSED,), forbids=(LET_GO,)),
        c('[Offer her a better story] "They\'d smell a head. They won\'t smell an ear. Take a piece of me home and tell them you let me live to wear the loss."',
@@ -451,10 +452,11 @@ SCENES.append(scene(H + "guild.kept", "The Guild bowed to the box", "Horzalah", 
        c("Continue", "pivot")),
     hz("pivot", '''{n}She folds her arms and looks at you, down the length of her nose, the way she looks at a contract she has not yet decided to accept.{/n}
 "So. The Guild is mine. My father is silent. My knives are grateful. I have everything I had before you beat me, and one ear more." {n}She tilts her head.{/n} "I came to see what I bought with your blood, mortal. I have seen. Now tell me why I should not simply go home and never think of you again."''',
-       c('[Hear what she wants] "Because you came. You didn\'t have to. What do you want?"', "wants"),
+       c('[Hear what she wants] "Because you came. You didn\'t have to. What do you want?"', "wants", forbids=("chapter.six",)),
        c('[Let her go for good] "You shouldn\'t. You have your Guild. Go home, and keep the ear."', "free"),
        c('[Threaten to take it back] "Because I know what\'s really in that box. One letter to your masters, and the story is mine again."',
-         "threat", alignment=("Evil", 1))),
+         "threat", alignment=("Evil", 1)),
+       c('[Hear what she wants] "Because you came. You didn\'t have to. What do you want?"', "wants6", requires=("chapter.six",))),
     hz("wants", '''{n}When she speaks it is slowly, as if she were reading terms off a contract she had not written.{/n}
 "I want to come and go in your city as I please, and have no one follow me. I want to stand where I like. I want your soldiers to step off the path when I walk it, and not to know why." {n}Her eyes go to the side of your head.{/n} "And I want to look at that whenever I choose, because it is mine."
 "Everything I have ever had, I took. My Guild. Yozz. My own name back. I do not know what to do with a thing that was handed to me." {n}She turns toward the air, which is already beginning to fold.{/n} "I am going to stand in your street and think about it. Do not have me watched."''',
@@ -556,6 +558,31 @@ presence(H + "test.the_gift", "A gift in the Abyss's idiom", '"Who is your frien
     night=hz("start", '''{n}The air in your room folds, and she is standing by your table, and she is not alone: a man stands a step behind her, grey at the temples, very well dressed, with a thin gold chain running from a cuff on his wrist to a ring on her smallest finger. He keeps his eyes on your floor.{/n}
 "Not a friend, mortal. A gift." {n}She lifts the hand with the ring, and the chain lifts with it.{/n}''',
              c("Continue", "gift")))
+
+# Q12 (Sol COX/HOW): a Chapter 6 entrant (Q3 lapsed) reaches guild.kept with no Chapter 5 presence left to hold her gift
+# test, so the romantic page was unreachable. In Chapter 6 she brings the gift to that same visit (no extra delivery): the
+# pivot's appended "wants6" answer, then the room version of the gift nodes (suffix _6), whose endings also record what the
+# ordinary "wants" answer records. The Chapter 5 road is unchanged (its "wants" answer forbids chapter.six).
+def _chapter_six_gift():
+    kept = next(s for s in SCENES if s["Id"] == H + "guild.kept")
+    night = next(s for s in SCENES if s["Id"] == H + "test.the_gift_night")
+    gift = copy.deepcopy(night["Nodes"][1:])
+    ids = {node["Id"] for node in gift}
+    for node in gift:
+        node["Id"] += "_6"
+        for choice in node["Choices"]:
+            if choice.get("Next") in ids:
+                choice["Next"] += "_6"
+            elif not choice.get("Next") and not choice.get("Abort"):
+                choice["Set"] = list(dict.fromkeys(choice["Set"] + [RETURNED, WANTS]))
+    kept["Nodes"].append(hz("wants6", """{n}When she speaks it is slowly, as if she were reading terms off a contract she had not written.{/n}
+"I want to come and go in your city as I please, and have no one follow me. I want your soldiers to step off the path when I walk it, and not to know why." {n}Her eyes go to the side of your head.{/n} "And I want to look at that whenever I choose, because it is mine."
+"They say your war is nearly over. I have no time left to stand in your street and think about you, so I have done my thinking on the way." {n}She snaps her fingers, and the air folds again behind her, and a man is standing there: grey at the temples, very well dressed, with a thin gold chain running from a cuff on his wrist to a ring on her smallest finger. He keeps his eyes on your floor.{/n}
+"Not a friend, mortal. A gift.\"""", c("Continue", "gift_6")))
+    kept["Nodes"].extend(gift)
+
+
+_chapter_six_gift()
 
 
 _COLLAR = [
@@ -856,6 +883,39 @@ SCENES.append(reaction("Wenduag", H + "react.wenduag_cheek", ("trickster.ever", 
 "You tried to put a collar on her, {mf|master|mistress}. I know what that looks like from the other side." {n}Her voice goes flat.{/n} "She did right."''',
     answer_list=WENDUAG_HUB, chapter=5, last=6, entry='"Something on your mind?"', portrait="Wenduag", **WEN_GUARD))
 tag(H + "react.wenduag_cheek", "T")
+
+
+# Q12 (Sol INT): a Wenduag brought back on her own Trickster route (wenduag.trickster.returned) has no party slot and no
+# companion hub: she is the spawned copy by the south gate (wenduag_cairn.PRESENCES, hub "wenduag.presence"). Her lines
+# about Horzalah are spoken there, as scenes of her own relationship on her own presence hub (the engine allows only the
+# presence's relationship there). They read Horzalah's flags and set nothing. The companion-hub originals keep their guard.
+WEN_BACK = "wenduag.trickster.returned"
+WEN_UNIT = "ae766624c03058440a036de90a7f2009"   # Wenduag_Companion (the presence copy's unit)
+WEN_STREET = (
+    ("react.wenduag_morning", MORNING, 5, '"The woman in the collar."',
+     """{n}Wenduag watches the thin demon-woman in the collar from her wall by the south gate, whenever she comes up the street, the way a hunter watches a wolf that has left its pack and not died of it.{/n}
+"You went down into her den, {mf|master|mistress}, and she walked you out of the front door in front of all her killers. In the Darklands we did that with a captive we meant to keep. We showed the whole tribe, so no one would try to take it." {n}A grim, approving grin.{/n}
+"Her own father threw her away. She took his leavings and made a knife of them. I know that walk. I am dead to this city, and I still walk it." {n}Her eyes narrow.{/n} "Do not turn your back on her. I would think less of her if she let you.\""""),
+    ("react.wenduag_gift", FREED, 5, '"Something on your mind?"',
+     """{n}Wenduag is sharpening her spear-head against the wall-stone. She does not stop.{/n}
+"The gate-soldiers talk when they think the dead woman cannot hear. You gave away a slave the demon brought you. Unchained him in front of her." {n}The stone scrapes.{/n} "In the Darklands a gift is a test. If you give it away, you are saying the giver is weak."
+"And she let you live." {n}She tests the edge on her thumb.{/n} "Then she wants you very badly, {mf|master|mistress}. That is more dangerous than if she hated you. I would know.\""""),
+    ("react.wenduag_ally", ALLY, 5, '"You\'re watching my new servant."',
+     """{n}Wenduag watches the grey-haired man who follows you up the street now, two steps behind with his eyes on the cobbles and a gold cuff on his wrist.{/n}
+"You took a slave from the demon-woman." {n}She says it without judgement, the way she would say you took a sword off a corpse.{/n} "In the Darklands we would say you won. She gave, you took; you are stronger."
+"But she does not look at you like a woman who lost, {mf|master|mistress}. She looks at you like a merchant who has just been paid." {n}Her eyes narrow.{/n} "Be careful what else she sells you.\""""),
+    ("react.wenduag_cheek", THREATENED, 6, '"Something on your mind?"',
+     """{n}Wenduag looks at the new cut on your face, from the corner of your mouth to where your ear used to be, and does not laugh, which is worse.{/n}
+"You threatened the demon-woman, and she did that, and left." {n}She nods slowly.{/n} "In the Darklands we would say you were lucky. She could have taken your throat. She took your face instead, so you would remember every morning in the water."
+"You tried to put a collar on her, {mf|master|mistress}. I know what that looks like from the other side." {n}Her voice goes flat.{/n} "She did right.\""""),
+)
+for _rid, _flag, _last, _entry, _text in WEN_STREET:
+    SCENES.append(scene(H + _rid + "_street", "Wenduag's word", "Wenduag", 5, _entry,
+                        [n("start", "Wenduag", _text, c("Continue"), portrait="Wenduag")],
+                        requires=("trickster.ever", WEN_BACK, _flag), forbids=("wenduag.closed", WEN_IN, H + _rid),
+                        last=5, Relationship="wenduag", Chapters=[5], Areas=[DREZEN], ContactUnit=WEN_UNIT,
+                        InteractionHub="wenduag.presence"))
+    tag(H + _rid + "_street", "T")
 
 
 # --- Registration --------------------------------------------------------------------------------------------------------

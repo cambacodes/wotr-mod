@@ -11,7 +11,7 @@ wearing. The possessive voice stays hers; nothing here is settled as exclusive f
 Every scene is Trickster-only (T in PATH_FIT): it follows the device.
 """
 from story_format import c, n, scene
-from storylines.horzalah_trickster import (ALLY, CANARY, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
+from storylines.horzalah_trickster import (ALLY, CANARY, GIFT_GIVEN, FREED, CHAMBER, CLOSED, COMMITTED, DECLINED, DREZEN, GREY_IN, HEPZ_BACK,
                                             LATE, LEFT_FREE, MET_A, MET_B, MET_Q2, NAMED, P_KNIFE, P_RIBBON, P_WHISTLE, PRESENCE, REL,
                                             SCAR_NOTED, SEALS_SEEN, SPAWN_TOLD, EXPLAINED, GREY_MET_Q2, TESTED, UNIT, WANTS, H, hz, nar, tag)
 
@@ -188,10 +188,14 @@ beat(H + "beat.sister", "The belch of Lamashtu", '"Tell me about Hepzamirah."', 
        c('"How did you get out?"', "out")),
     hz("last", '''"Long enough to be sold." {n}She says it flatly.{/n} "When Yozz came to make his deal, Father needed something to pay in advance, and there I was, already bound and gift-wrapped. It saved him the trouble. He likes it when things save him the trouble."''',
        c("Continue", "canary", requires=(CANARY,)),
-       c("Continue", "no_canary", forbids=(CANARY,))),
+       c("Continue", "no_canary", requires=(GIFT_GIVEN,), forbids=(CANARY,)),
+       c("Continue", "no_box", forbids=(CANARY, GIFT_GIVEN))),
     hz("out", '''"I did not get out. I was taken out, by a buyer, on a leash. It is not the same thing." {n}Her lip curls.{/n} "Yozz thought he was very clever, getting Baphomet's daughter for an advance payment. He did not know that Father was clearing a shelf."''',
        c("Continue", "canary", requires=(CANARY,)),
-       c("Continue", "no_canary", forbids=(CANARY,))),
+       c("Continue", "no_canary", requires=(GIFT_GIVEN,), forbids=(CANARY,)),
+       c("Continue", "no_box", forbids=(CANARY, GIFT_GIVEN))),
+    hz("no_box", '''"I had a gift made for her. A box with a white ribbon, and a dead canary in it with my voice in its beak and a spear of fire in its heart. I meant to hand it to whoever came to Yozz's hall to kill her for me." {n}Her lip curls.{/n} "Nobody came. So it sat on a shelf in my chamber while somebody else did the killing, and she died without my present." {n}A short, ugly laugh.{/n} "I still have it. I take it down sometimes and shake it."''',
+       c("Continue", "now")),
     hz("canary", '''"You carried my gift to her." {n}Her eyes go bright and hard.{/n} "In Colyphyr, in the mines. The dead canary. I put a little of my voice in its beak and a spear of fire in its heart, and I wrapped it in white ribbon, the way you wrap a present for someone you love."
 "I wish I had seen her face. Tell me. Did she scream?"''',
        c('"She laughed, actually."', "laughed"),
@@ -283,7 +287,7 @@ beat(H + "beat.names", "Three names", '"What happened to the three names on your
     hz("lord", '''"Alive. His wife is a very careful woman. She will try again next year." {n}She shrugs.{/n} "The Guild will not refund her either."''',
        c("[Take that away with you.]", flags=(NAMES_KNOWN,))),
     hz("left", '''"All three are dead." {n}She says it the way another woman would report the weather.{/n} "The quartermaster in his bath. The lord at his own table, which his wife enjoyed very much. The priest on his chapel steps, which I think was in poor taste, but the client insisted."
-"You knew their names for two weeks, mortal, and you did nothing. My masters noticed. They think better of you for it." {n}She tilts her head.{/n} "I have not decided whether I do."''',
+"You had their names, mortal, and you did nothing. My masters noticed. They think better of you for it." {n}She tilts her head.{/n} "I have not decided whether I do."''',
        c("[Take that away with you.]", flags=(NAMES_KNOWN,))),
 ], requires=(), any_groups=((BOARD_WARNED, BOARD_LEFT),), forbids=(NAMES_KNOWN,), delay=72)
 
@@ -697,7 +701,7 @@ beat(H + "beat.question", "What you want", '"You\'re frowning at me."', [
        c("Continue", "sick", requires=(CUP_SICK,)),
        c("Continue", "dreams", requires=(CUP_DREAMS,)),
        c("Continue", "start", forbids=(CUP_SICK, CUP_DREAMS))),
-    hz("sick", '''"You have your colour back. The quartermaster told my people you were sick in a bucket until the second bell and blamed the cook." {n}She sounds pleased.{/n} "You did not blame me. Nobody has ever not blamed me before. It has been bothering me."''',
+    hz("sick", '''"You have your colour back. The quartermaster told my people you were sick in a bucket until the second bell and blamed the cook." {n}She sounds delighted.{/n} "The cook, mortal. A fat Mendevian who cannot poison a rat. My people watched him sweat for a day." {n}Her eyes narrow.{/n} "So which was it? Did you not know it was me, or did you know and hand him to your sergeants to keep me out of it? One of those is stupid and one of those is mine, and I have not decided which I would rather."''',
        c("Continue", "start")),
     hz("dreams", '''"Did you dream?" {n}She does not wait for an answer.{/n} "I did. You were in it, holding two cups, and you would not drink either of them. I woke up furious." {n}Her eyes narrow.{/n} "That was your fault, and I have not decided what it costs."''',
        c("Continue", "start")),

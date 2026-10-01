@@ -369,12 +369,31 @@ internal static class HorzalahTricksterTests
         // budget): no presence, no room twins; her gift left unanswered is the open page. The Last Call coda needs the commit.
         var c6 = World(story, 6, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "chapter.six");
         var c6a = Take(unmet, c6, "exit", 0, Primed, Ear);
-        var c6b = Take(kept, Later(story, c6a, 48), "wants", 0, Wants);
+        // Q12 (Sol COX/HOW): in Chapter 6 the gift comes with her to the same visit, so the romantic page is reachable with
+        // no extra delivery: the Chapter 5 "wants" answer is shut, "wants6" leads into the room version of the gift.
+        var pivotChoices = kept.Nodes.Single(n => n.Id == "pivot").Choices;
+        check(pivotChoices.Single(ch => ch.Next == "wants").Forbids.Contains("chapter.six") && pivotChoices.Last().Next == "wants6"
+              && pivotChoices.Last().Requires.Contains("chapter.six") && !Rules.Match(pivotChoices[0].Requires, pivotChoices[0].Forbids, Later(story, c6a, 48)),
+            "Trk_Horzalah_Chapter6: the Chapter 5 answer (no gift) plays in Chapter 6, or the Chapter 6 answer was not appended.");
+        var c6b = Take(kept, Later(story, c6a, 48), "decline_end_6", 0, Wants, Tested, Returned);
+        var c6free = Take(kept, Later(story, c6a, 48), "free2_6", 0, Wants, Tested, P + "cost.gift_freed");
+        var c6ally = Take(kept, Later(story, c6a, 48), "accept2_6", 0, Wants, Ally);
         check(!Avail(gift, Later(story, c6b, 48)) && !Avail(giftNight, Later(story, c6b, 48))
               && !Avail(giftNight, Later(story, World(story, 6, "trickster.ever", Wants, "horzalah.presence.failed"), 48))
-              && Avail(pg["epilogue.unanswered"], c6b)
+              && Avail(pg["epilogue.commit"], World(story, 6, c6b.Flags.ToArray())) && Avail(pg["epilogue.commit"], World(story, 6, c6free.Flags.ToArray()))
+              && Avail(pg["epilogue.ally"], World(story, 6, c6ally.Flags.ToArray())) && !Avail(pg["epilogue.unanswered"], World(story, 6, c6b.Flags.ToArray()))
               && story.Scenes.Single(s => s.Id == "horzalah.lastcall.page").Requires.Contains(Committed),
-            "Trk_Horzalah_Chapter6: a courtship scene plays in Chapter 6, or the road does not end on the open page.");
+            "Trk_Horzalah_Chapter6: a presence scene plays in Chapter 6, or the Chapter 6 road cannot reach her romantic page.");
+        // Chapter 5 keeps its road: the plain answer, no gift on the spot.
+        var ch5Kept = Later(story, World(story, 5, "trickster", "trickster.ever", Primed, Ear), 48);
+        check(Through(kept, ch5Kept, "wants", 0).Any() && !Rules.Match(pivotChoices.Last().Requires, pivotChoices.Last().Forbids, ch5Kept),
+            "Trk_Horzalah_Chapter6: the Chapter 6 gift leaks into Chapter 5.");
+        // Q12 (Sol INT): a Wenduag back on her own Trickster route speaks from her presence by the south gate.
+        var street = story.Scenes.Where(s => s.Id.StartsWith(P + "react.wenduag_", StringComparison.Ordinal) && s.Id.EndsWith("_street", StringComparison.Ordinal)).ToArray();
+        check(street.Length == 4 && street.All(s => s.Relationship == "wenduag" && s.InteractionHub == "wenduag.presence"
+                  && s.Requires.Contains("wenduag.trickster.returned") && s.Forbids.Contains("wenduag.in_party")
+                  && !s.Forbids.Contains("wenduag.killed") && !s.Forbids.Contains("wenduag.kicked_out")),
+            "Trk_Horzalah_Wenduag: a returned Wenduag has no word on Horzalah.");
         // H2 (Last Call's bottle brings the Commander back with sacrifice held) keeps her romantic pages, as the native endings do.
         var h2 = World(story, 6, "trickster.ever", Committed, Ear, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle");
         check(h2.Has("trickster.commander_back") && Avail(pg["epilogue.together"], h2)

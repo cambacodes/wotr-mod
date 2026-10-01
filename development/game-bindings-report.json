@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4626,
-  "unique_targets": 1004,
+  "binding_uses": 4654,
+  "unique_targets": 1008,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -480,6 +480,10 @@
     },
     "f1a82798065c27b45aa1d17d9db80dc6": {
       "path": "World/Dialogs/c2_vs/DrezenSiege/FakeYaniel_ToAreelu/Cue_0014.jbp",
+      "type": "BlueprintCue"
+    },
+    "fc57e59b63872994089e92771068f3ad": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/Nurah_After_Battle/Cue_0034.jbp",
       "type": "BlueprintCue"
     },
     "dbf6695999d744747aeb2d4f20b21b50": {
@@ -2182,6 +2186,10 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/Cue_0051.jbp",
       "type": "BlueprintCue"
     },
+    "c200758b370f62944a47e9ec671ffbc6": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q2_Ch4_QuestionOfReputation/YozzDying/Cue_0058.jbp",
+      "type": "BlueprintCue"
+    },
     "65b730aabc12f344fb3fc779a8e8c53b": {
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/Horzalah_Ambush/Cue_0003.jbp",
       "type": "BlueprintCue"
@@ -2574,6 +2582,10 @@
       "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0055.jbp",
       "type": "BlueprintCue"
     },
+    "01592bbdcd954a243bcc4a50b6fe6dc6": {
+      "path": "World/Dialogs/NPC_Common/Nurah-Prison/Cue_0070.jbp",
+      "type": "BlueprintCue"
+    },
     "2f5b7e0b76d3c5a42a431e1e33a8db09": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
@@ -2896,6 +2908,10 @@
     },
     "047d71e3e928d454bbd168497ee7c17f": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_Outcomes/DeskariKilledInIz.jbp",
+      "type": "BlueprintEtude"
+    },
+    "518d91f94fb3a504a91571b7e75c68fc": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_Outcomes/IrabethSacrificedHerselfSavingGalfrey.jbp",
       "type": "BlueprintEtude"
     },
     "936af39436c74953b43a4165bfbcc9f9": {

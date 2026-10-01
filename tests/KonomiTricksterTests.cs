@@ -202,6 +202,9 @@ internal static class KonomiTricksterTests
         var dead = World(story, 3, "trickster", "trickster.ever", "konomi.retained_dead", "revive.konomi.available");
         check(Rules.Available(story, recalled, dead) && !Rules.Available(story, consult, dead), "Trk_Konomi_Dead: device unavailable.");
         check(!Rules.Available(story, S("konomi.retained_inquiry"), dead), "The map inquiry still opens beside the recall.");
+        // Q12 (Sol INT): a completed ordinary farewell is a goodbye, not a refusal; it does not bar the recovery.
+        var farewellDead = World(story, 3, "trickster", "trickster.ever", "konomi.farewell", "konomi.retained_dead", "revive.konomi.available");
+        check(Rules.Available(story, recalled, farewellDead), "Trk_Konomi_Dead: her completed farewell locks out the recovery from a retained death.");
         var rider = recalled.Nodes[0].Choices[0];
         check(rider.Crusade?.Resource == "Finances" && rider.Crusade.Amount == -300 && rider.Set.Contains("konomi.trickster.cost.recalled")
               && rider.Set.Contains("konomi.trickster.primed"), "Trk_Konomi_Dead: the rider lost its price.");
@@ -269,6 +272,25 @@ internal static class KonomiTricksterTests
         var yardStart = courtyard.Nodes[0].Choices;
         check(yardStart[0].Next == "first" && yardStart[1].Next == "again" && yardStart.Last().Next == "again_audience",
             "Courtyard choices reordered instead of appended.");
+        // Q12 (Sol COX/HOW): the never-arrived road's own short way to an answer, timed from the informer's bow, with no
+        // romantic evidence seeded: the account for the jug (72 h after the audience) and her supper terms.
+        var rooms = S("konomi.trickster.never_arrived.rooms");
+        check(!Rules.Available(story, rooms, Later(story, received[0], 71)) && Rules.Available(story, rooms, Later(story, received[0], 72)),
+            "Trk_Konomi_NeverArrived: her account comes before its time, or not at all.");
+        var roomPages = new HashSet<string>();
+        var roomOutcomes = Program.Walk(rooms, Later(story, received[0], 72), (page, _) => roomPages.Add(page));
+        var supperKept = roomOutcomes.Where(r => r.Has("konomi.trickster.rooms_kept")).ToList();
+        bool LateCommitted(Snapshot r) => World(story, 5, r.Flags.ToArray()).Has("konomi.trickster.late_committed");
+        check(supperKept.Count > 0 && supperKept.All(r => LateCommitted(r) && r.Has("konomi.lovers"))
+              && roomOutcomes.Any(r => r.Has("konomi.trickster.envoy") && !LateCommitted(r))
+              && roomPages.Contains("accept") && roomPages.Contains("morning"),
+            "Trk_Konomi_NeverArrived: her terms give no page, business only gives one, or the accepted terms skip the night.");
+        check(48 + 72 <= 504 && Rules.Available(story, epCommit, World(story, 6, supperKept[0].Flags.ToArray()))
+              && !Rules.Available(story, epCommit, World(story, 6, roomOutcomes.First(r => r.Has("konomi.trickster.envoy")).Flags.ToArray())),
+            "Trk_Konomi_NeverArrived: the accepted terms do not reach her page, or the envoy's do.");
+        var commitOffer = epCommit.Nodes[0].Choices;
+        check(commitOffer.Count == 3 && commitOffer[0].Next == "signed" && commitOffer[1].Next == "terms" && commitOffer[2].Next == "dinner",
+            "Trk_Konomi_LatePage: her late page has no unsettled answer, or its choices were reordered.");
 
         // Exclusivity across the three states (coexistence): one return per world.
         var all = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.retained_dead",
@@ -286,7 +308,7 @@ internal static class KonomiTricksterTests
             "A supper completes the romance without an intimate beat.");
         check(Rules.Available(story, epCommit, lateCommit) && !Rules.Available(story, S("konomi.ending_unfinished"), lateCommit),
             "Trk_Konomi_EpilogueCommit failed.");
-        check(epCommit.Nodes[0].Choices.Count == 2 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null),
+        check(epCommit.Nodes[0].Choices.Count == 3 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null),
             "The late commit gives the Commander no answer.");
         // Sol r2 INT: a dead Commander (sacrifice without the shared finale's return) is given no living future.
         var diedLate = World(story, 6, lateCommit.Flags.Concat(new[] { "sacrifice", "ending.wound_closed" }).ToArray());
@@ -303,6 +325,12 @@ internal static class KonomiTricksterTests
         // Sol r4 INT: the ordinary farewell does not bar the dismissal rescue.
         var farewell = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.farewell");
         check(Rules.Available(story, late, farewell), "A completed farewell blocks the dismissal rescue.");
+        // Q12 (Sol INT): nor its courtship continuation, once her terms are settled.
+        var farewellSettled = World(story, 5, "trickster", "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.farewell",
+                                    "konomi.trickster.recessed", "konomi.trickster.terms_settled", "konomi.trickster.cost.late", "konomi.trickster.back_from_the_road");
+        check(Rules.Available(story, priv, Later(story, farewellSettled, 72)) && Rules.Available(story, supper, Later(story, farewellSettled, 72))
+              && S("konomi.trickster.dismissed.a_season").Forbids.All(f => f != "konomi.farewell"),
+            "A completed farewell blocks the courtship after the dismissal rescue.");
         var committedLate = Program.Copy(lateCommit); committedLate.Flags.Add("konomi.committed");
         check(!Rules.Available(story, epCommit, committedLate), "The late commit replays after a commit.");
         var soft = World(story, 6, "trickster.ever", "konomi.dismissed", "konomi.trickster.terms_settled", "konomi.trickster.declined");

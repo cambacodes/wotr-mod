@@ -489,7 +489,8 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'kaylessa.trickster.late_committed': [['trickster.ever', 'kaylessa.trickster.clock_named']],
  'kaylessa.trickster.presence_on': [['kaylessa.trickster.primed'], ['kaylessa.trickster.returned']],
  'kiana.trickster.late_committed': [['trickster.ever', 'kiana.trickster.met', 'kiana.lovers', 'kiana.trickster.late_yes']],
- 'konomi.trickster.late_committed': [['trickster.ever', 'konomi.trickster.terms_settled', 'konomi.lovers']],
+ 'konomi.trickster.late_committed': [['trickster.ever', 'konomi.trickster.terms_settled', 'konomi.lovers'],
+                                     ['trickster.ever', 'konomi.trickster.cost.accredited', 'konomi.trickster.rooms_kept']],
  'konomi.trickster.presence_on': [['konomi.trickster.cost.late', 'konomi.dismissed', 'konomi.trickster.back_from_the_road'],
                                   ['konomi.trickster.cost.accredited', 'konomi.missed_letter_sent', 'konomi.trickster.arrived']],
  'melazmera.greybor_gone': [['greybor.dead'], ['greybor.kicked_out'], ['greybor.away']],
@@ -523,7 +524,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  # death), so proofs followed by an execution never commit her (Sol quality pass, TRK).
  # (Round 3) only the late branches, which can never reach her in-person terms: a proofs-only history elsewhere is her
  # unanswered page, not a romance. The late courier is raised and both pedlars leave her alive.
- 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.trickster.cost.late']],
+ 'nurah.trickster.late_committed': [['trickster.ever', 'nurah.trickster.proofs_seen', 'nurah.trickster.cost.late', 'nurah.trickster.late_yes']],
  'seelah.trickster.in_drezen': [['seelah_gone', 'seelah.trickster.primed'],
                                 ['seelah_dead', 'seelah.trickster.correspondent']],
  'seelah.trickster.late_committed': [['trickster.ever', 'seelah.trickster.stay_decided']],

@@ -74,7 +74,7 @@ s("return_offer", "A journey with two purposes", [
       c('[Confirm the visit and suggest a walk together before dinner.]', "confirm", flags=("konomi.return_walk",)),
       c('[Write that you cannot make plans yet. Reconsider the invitation later.]', abort=True)),
     n("confirm", "Narrator", '''{n}You confirm that you want her to come and tell her how to reach you when she arrives. You give the answer to the outgoing post before another report can cover it.{/n}
-{n}Her proposed visit will take more than a wish and a free evening. There is a journey to arrange, work to finish in Nerosyan and the road itself. This time, you have both agreed what you are waiting for.{/n}''',
+{n}Her proposed visit will take more than a wish and a free evening. There is a journey to arrange, work to finish in Nerosyan and the road itself. This time the letter in the outgoing bag names a date.{/n}''',
       c('[Send the confirmation.]', flags=("konomi.return_expected",))),
 ], requires=("konomi.capital_answer_sent",), delay=168)
 
@@ -109,17 +109,17 @@ s("private_reunion", "What the letters left out", [
 "I used to have more imposing reasons for wanting to return to the capital."''', c('[Ask what the visit will mean for her work in Nerosyan.]', "visit")),
     n("visit", "Konomi", '''"I have kept the room there. The instrument has acquired an entire second tune. I could hardly leave permanently at such a promising moment."
 {n}She breaks a piece of bread and considers the answer more seriously.{/n}
-"There is work worth returning to. This lease will keep me here for several days, perhaps longer if the parties disagree about the revisions. After that I intend to go back. I wanted you to know before we start enjoying ourselves and become tempted to avoid the subject."
+"There is work worth returning to. This lease will keep me here for several days, perhaps longer if the parties disagree about the revisions. After that I intend to go back. I tell you now, before the wine. I negotiate badly after wine, and so do you."
 {n}She tastes the bread.{/n}
 "I also want more of this than letters. I found that out by writing them."''',
-      c('"So did I. I want us to keep making these visits possible."', "want", flags=("konomi.distance_wants_visits", "konomi.private_interest", "konomi.attracted")),
-      c('"I want to spend this visit with you. Let us see how it goes before we plan the next one."', "visit_only", flags=("konomi.distance_taking_time",))),
+      c('"So did I. Name what the next journey costs, and I will find the coin."', "want", flags=("konomi.distance_wants_visits", "konomi.private_interest", "konomi.attracted")),
+      c('"This visit first. I do not book the next journey before I know what this one is worth."', "visit_only", flags=("konomi.distance_taking_time",))),
     n("want", "Konomi", '''"Good. I had a much longer explanation ready, and I am pleased not to need it."
 {n}She reaches across the paper and takes your hand as if it had been on her list of purchases.{/n}
 "I missed you. There were occasions when I missed the idea of you and suspected the real person might have been more difficult. It is a relief to have the real person here."''',
       c('[Take her hand and kiss her.]', "kiss", flags=("konomi.reunion_kissed",)),
       c('[Take her hand and stay beside her.]', "partners")),
-    n("visit_only", "Konomi", '''"Yes. I can leave the next journey unarranged for one evening."
+    n("visit_only", "Konomi", '''"A merchant's answer. Very well, I can leave the next journey unpriced for one evening."
 {n}She puts another piece of bread on your plate before taking one for herself.{/n}
 "Tell me something that did not fit in your letters. I have had far too much time to supply my own version of your days."''', c('[Continue over supper.]', "partners")),
     n("kiss", "Konomi", '''{n}She sets down the bread before she meets you. The care of that small movement almost makes you smile; then her hand is at your cheek and the distance between you is gone.{/n}

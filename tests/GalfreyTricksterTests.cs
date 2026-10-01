@@ -264,8 +264,26 @@ internal static class GalfreyTricksterTests
         check(Rules.Available(story, retScarred, foundBack), "Trk_Galfrey_Cortege: the late recovery does not lead to her return.");
         var recalled = new List<string>();
         Program.Walk(retScarred, foundBack, (id, _) => recalled.Add(id));
-        check(recalled.Contains("alone_found") && !recalled.Contains("alone") && !recalled.Contains("alone_silent"),
+        check((recalled.Contains("alone_found") || recalled.Contains("alone_found_talked")) && !recalled.Contains("alone") && !recalled.Contains("alone_silent"),
             "Trk_Galfrey_Cortege: the return invents a letter for the woman found on the bier.");
+        // Q12: the return remembers how the Commander got past the sergeant (paid, or talked), and the name came from
+        // the Commander's own war-camp meeting or, failing that, from the sergeant at the door.
+        foreach (var paid in new[] { true, false })
+        {
+            var f = paid ? One(cortege, unplanted, new[] { Taken, P + "cost.found_late", P + "cortege.paid" })
+                         : One(cortege, unplanted, new[] { Taken, P + "cost.found_late" }, P + "cortege.paid");
+            var fBack = Later(story, Later(story, One(eulogy, Later(story, f, 40), new[] { P + "cost.eulogy" }), 1, null, "coronation.after", "coronation.seen"), 100);
+            var fSeen = new List<string>();
+            Program.Walk(retScarred, fBack, (id, _) => fSeen.Add(id));
+            check(fSeen.Contains(paid ? "alone_found" : "alone_found_talked") && !fSeen.Contains(paid ? "alone_found_talked" : "alone_found"),
+                "Trk_Galfrey_Cortege: the return remembers a bribe that was never paid, or forgets one that was.");
+        }
+        var bierNodes = new List<string>();
+        Program.Walk(cortege, unplanted, (id, _) => bierNodes.Add(id));
+        var metNodes = new List<string>();
+        Program.Walk(cortege, Later(story, unplanted, 0, null, "galfrey.incognito_met"), (id, _) => metNodes.Add(id));
+        check(bierNodes.Contains("flare_told") && !bierNodes.Contains("flare") && metNodes.Contains("flare") && !metNodes.Contains("flare_told"),
+            "Trk_Galfrey_Cortege: the Commander remembers a war-camp meeting that never happened.");
         var bierRefused = Program.Walk(cortege, unplanted).First(r => r.Has(P + "let_die"));
         var bierEpi = World(story, 6, bierRefused.Flags.Concat(new[] { "trickster.ever" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.queen_bier"), bierEpi) && !Rules.Available(story, S(P + "epilogue.queen"), bierEpi),
@@ -335,8 +353,18 @@ internal static class GalfreyTricksterTests
         var plan = S(P + "alive.plan");
         check(Program.Walk(plan, Later(story, evening, 50)).Any(r => !r.Has(P + "alive.plan_kept")), "Trk_Galfrey_Living: a half-told plan still earns her.");
         var planKept = One(plan, Later(story, evening, 50), new[] { P + "alive.plan_kept" });
-        var livingYes = One(S(P + "alive.oath"), Later(story, planKept, 50), new[] { Committed });
-        check(Program.Walk(S(P + "alive.oath"), Later(story, planKept, 50)).Any(r => !r.Has(Committed))
+        // Q12: one kept plan is a beginning; the next one is a decision she objects to, and her objection must be answered.
+        var trial = S(P + "alive.trial");
+        check(!Rules.Available(story, S(P + "alive.oath"), Later(story, planKept, 50)) && Rules.Available(story, trial, Later(story, planKept, 50)),
+            "Trk_Galfrey_Living: one kept plan opens her bed without the next test.");
+        check(Program.Walk(trial, Later(story, planKept, 50)).Any(r => !r.Has(P + "alive.trial_kept"))
+              && Program.Walk(trial, Later(story, planKept, 50)).Where(r => r.Has(P + "alive.trial_priced")).All(r => !r.Has(P + "alive.trial_kept")),
+            "Trk_Galfrey_Living: the test has no failure, or a cultist turned loose unwatched still earns her.");
+        var trialKept = One(trial, Later(story, planKept, 50), new[] { P + "alive.trial_kept" });
+        var livingYes = One(S(P + "alive.oath"), Later(story, trialKept, 50), new[] { Committed });
+        check(Rules.Available(story, S(P + "react.irabeth.queen_night"), Later(story, livingYes, 20)),
+            "Trk_Galfrey_Living: the living Queen's night has no companion reaction.");
+        check(Program.Walk(S(P + "alive.oath"), Later(story, trialKept, 50)).Any(r => !r.Has(Committed))
               && Rules.Available(story, S(P + "epilogue.alive"), World(story, 6, livingYes.Flags.ToArray()))
               && World(story, 6, livingYes.Flags.ToArray()).Has(P + "partner"),
             "Trk_Galfrey_Living: the living commit has no no of hers, or no page, or no Last Call seat.");
@@ -399,11 +427,11 @@ internal static class GalfreyTricksterTests
         }
 
         // Reactions and pages.
-        check(reactions.Length == 11 && reactions.All(s => s.Nodes.Count == 1)
+        check(reactions.Length == 13 && reactions.All(s => s.Nodes.Count == 1)
               && new[] { "Irabeth", "Seelah", "Hulrun", "Daeran", "Thaberdine" }.All(o => reactions.Any(s => s.Owner == o))
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
-            "Galfrey's reactors are not Irabeth (five), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
+            "Galfrey's reactors are not Irabeth (seven), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
         // 9 since R6: alive_buried, the sibling of "alive" in the world where the Commander lives buried (iomedae_trickster).
         check(pages.Length == 9 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),

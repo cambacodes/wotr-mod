@@ -203,6 +203,17 @@ internal static class IrabethTricksterTests
         check(Rules.Available(story, blow, raisedBack), "Blow unrecoverable after the raise on the record.");
         var raisedPages = new HashSet<string>();
         var raisedOutcomes = Program.Walk(blow, raisedBack, (page, _) => raisedPages.Add(page));
+        // Q12 (Sol HOW): the aftermath is covered on both returns: Seelah hears of the sappers, or reads the chapel's book.
+        var raisedTruth = raisedOutcomes.First(r => r.Has(Returned));
+        check(Rules.Available(story, S("irabeth.trickster.killed.react_seelah_raised"), Later(story, raisedTruth, 24))
+              && !Rules.Available(story, S("irabeth.trickster.killed.react_seelah"), Later(story, raisedTruth, 24))
+              && Rules.Available(story, S("irabeth.trickster.killed.react_seelah"), Later(story, truth[0], 24))
+              && !Rules.Available(story, S("irabeth.trickster.killed.react_seelah_raised"), Later(story, truth[0], 24)),
+            "Seelah's reaction tells the raised Irabeth's story with sappers, or the dug one's with a diamond.");
+        var kitraneBack = Later(story, raisedTruth, 24); kitraneBack.Flags.Add("galfrey.trickster.returned"); Rules.Complete(story, kitraneBack);
+        check(Rules.Available(story, S("irabeth.trickster.killed.react_kitrane"), kitraneBack)
+              && !Rules.Available(story, S("irabeth.trickster.dead.react_kitrane"), kitraneBack),
+            "The Queen who came back as Kitrane has no word for the Irabeth the Commander struck down.");
         check(raisedPages.Contains("raised") && !raisedPages.Contains("both") && !raisedPages.Contains("dug")
               && raisedOutcomes.Any(r => r.Has(Returned) && r.Has("irabeth.trickster.accounting_truth"))
               && raisedOutcomes.Any(r => r.Has("irabeth.trickster.blow_stands") && !r.Has(Returned)),
@@ -275,7 +286,15 @@ internal static class IrabethTricksterTests
         var struckDown = World(story, 5, "trickster.ever", "irabeth_dead", Killed, Returned, "irabeth.trickster.back_on_duty",
                                "irabeth.trickster.cost.remembers_the_blow", "irabeth.trickster.answered_her", "anevia_gone");
         struckDown.Times["irabeth.trickster.back_on_duty"] = struckDown.Hour - 72;
-        check(!Rules.Available(story, commit, struckDown) && Rules.Available(story, watch, struckDown), "A yes after the blow without her test.");
+        // Q12 (Sol BEL): with no lover's history, she must want the Commander (the roll of the dead) before her test.
+        var roll = S("irabeth.trickster.killed.the_roll");
+        check(!Rules.Available(story, commit, struckDown) && !Rules.Available(story, watch, struckDown) && Rules.Available(story, roll, struckDown),
+            "A yes after the blow without her test, or her test before any reason to want the Commander.");
+        var rolls = Program.Walk(roll, struckDown);
+        check(rolls.Count(r => r.Has("irabeth.trickster.drawn")) == 2 && rolls.Any(r => !r.Has("irabeth.trickster.drawn")),
+            "The roll of the dead has no refusal, or no way to be drawn.");
+        struckDown = Later(story, rolls.First(r => r.Has("irabeth.trickster.drawn")), 24);
+        check(Rules.Available(story, watch, struckDown), "Her test does not follow the roll of the dead.");
         var watched = Program.Walk(watch, struckDown).Where(r => r.Has("irabeth.trickster.slept_under_her_sword")).ToList();
         check(watched.Count == 1 && Rules.Available(story, commit, watched[0]), "Her test cannot be passed, or passing it does not reopen the ask.");
         var blowPages = new HashSet<string>();
@@ -332,9 +351,12 @@ internal static class IrabethTricksterTests
         var endDead = World(story, 6, "irabeth_dead", "irabeth.lover");
         check(Rules.Available(story, S("irabeth.ending_loss"), endDead), "Canon loss page lost.");
 
-        // Reactions: the two allocated reactors, three scenes (Seelah per state, Galfrey's letter for the sacrifice).
+        // Reactions: the two allocated reactors. Seelah per state (the dug and the raised returns apart), Galfrey's letter for
+        // the sacrifice, and (Q12) Galfrey come back as Kitrane, whose word Irabeth reports on her own hub (no delivery).
         var reactions = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Reaction).ToArray();
-        check(reactions.Length == 3 && reactions.All(r => r.Owner == "Seelah" || r.Owner == "Galfrey"), "Irabeth reactions changed.");
+        check(reactions.Length == 6 && reactions.All(r => r.Owner == "Seelah" || r.Owner == "Galfrey"
+                  || r.Owner == "Irabeth" && r.Requires.Contains("galfrey.trickster.returned") && !r.Remote),
+            "Irabeth reactions changed.");
         if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) RunWithAnevia(story, check);
     }
 

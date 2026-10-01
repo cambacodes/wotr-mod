@@ -330,17 +330,17 @@ letter("irabeth.trickster.killed.late_step", "The report of the day", [
 # alive; the Commander, who taught her the step, is the one who sends men back to dig.
 letter("irabeth.trickster.killed.dig", "Half a pace left", [
     nar("start", '''{n}The report of the day at Iz lies on your camp table, waiting for your seal. Among the dead: "Knight-Captain Irabeth Tirabade, struck down by the Commander's hand, fell into the lower ruin, body not recovered." The column marches north at first light. The ruin is already behind it, and full of broken stone.{/n}
-{n}You taught her to step inside a blade. At Iz you felt where your own blade went, and it was not where you aimed it.{/n}''',
+{n}You taught her the step: half a pace left and inside, into whatever cover the ground gives. At Iz, when you struck her down, she was already moving. She went down into the broken stone of the lower ruin, out of sight, and nobody went in after her.{/n}''',
       c('[Send two sappers and the column\'s best healer back to the ruin] "She stepped. I taught her to. Dig."', "dig",
         crusade=("Favors", -150), flags=(DUG, "irabeth.started")),
       c('[Let the blow stand] "No. It happened. I did it."', "stands", flags=(DECLINED,)),
       c('[Buy the column a surgeon from the Mendevian baggage train first, then send the sappers and the healer] "She stepped. I taught her to. Dig."',
         "dig_paid", crusade=("Finances", -400), flags=(DUG, HEALER, "irabeth.started"))),
     nar("dig_paid", '''{n}The Mendevian baggage master has a surgeon to spare and a price for him that he does not bother to make polite. You pay it. The column keeps its healing; the healer goes back to the ruin with two sappers and their picks.{/n}
-{n}On the second morning a rider catches the column up. They found the Knight-Captain in a cellar of the lower ruin, under a fallen lintel, alive, with the wound packed with her own tabard and her sword in her fist. Your blade went in under the ribs and out again. It missed her heart by the width of half a pace.{/n}''',
+{n}On the second morning a rider catches the column up. They found the Knight-Captain in a cellar of the lower ruin, under a fallen lintel, alive, with the wound packed with her own tabard and her sword in her fist. Your blow took her in the side, under the ribs, where she had stepped to, and not in the heart, where she had stood. Half a pace.{/n}''',
       c('"Bring her home."')),
     nar("dig", '''{n}The healer argues. There are forty wounded in the wagons, and she is the one who keeps them breathing on the road. You send her anyway, with two sappers and their picks, and the column marches without them. Two men in the wagons die on the road who would have lived with her beside them. Nobody offers you their names. You ask for them.{/n}
-{n}On the second morning a rider catches the column up. They found the Knight-Captain in a cellar of the lower ruin, under a fallen lintel, alive, with the wound packed with her own tabard and her sword in her fist. Your blade went in under the ribs and out again. It missed her heart by the width of half a pace.{/n}''',
+{n}On the second morning a rider catches the column up. They found the Knight-Captain in a cellar of the lower ruin, under a fallen lintel, alive, with the wound packed with her own tabard and her sword in her fist. Your blow took her in the side, under the ribs, where she had stepped to, and not in the heart, where she had stood. Half a pace.{/n}''',
       c('"Bring her home."')),
     nar("stands", '''{n}You seal the report as it is written. The column marches at first light, and the lower ruin stays as it is.{/n}''',
       c('"File it."')),
@@ -348,15 +348,15 @@ letter("irabeth.trickster.killed.dig", "Half a pace left", [
    TricksterDevice=True, TricksterState="killed")
 
 physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knight-Captain?"', [
-    nar("start", '''{n}She is in the throne room with a sword in her hand. There is a fresh seam in her surcoat, over the ribs, where your blade went in.{/n}''',
+    nar("start", '''{n}She is in the throne room with a sword in her hand. There is a fresh seam in her surcoat, over the ribs, where your blow took her.{/n}''',
       c("Continue", "shaken", requires=(LATE,)), c("Continue", "dug", forbids=(LATE,))),
     nar("dug", '''{n}The report of the day at Iz, in the archive, says the Knight-Captain stepped inside the Commander's blow, fell into the lower ruin and was dug out alive on the second morning by men the Commander sent back for her. Every word of it is true.{/n}''',
       c("Continue", "both")),
     nar("shaken", '''{n}The chapel's book of Iz has two lines under her name, in the same steady hand. "Struck down by the Commander." And below it: "Called back on the Commander's order, the Commander's confession entered above." She has read it. You can tell by the way she stands.{/n}''',
       c("Continue", "both", forbids=(LATE,)), c("Continue", "raised")),
-    i("both", '''"I remember your blade in me. I remember the cold, after. I also remember stepping, the way you taught me, half a pace left and inside. That's why it went in under the ribs and not through the heart."
+    i("both", '''"I remember your blow. I remember the cold, after. I also remember stepping, the way you taught me, half a pace left and inside. That's why it took me in the side and not the heart, and why I went down into a cellar and not onto the street with the others."
 {n}Her knuckles whiten on the hilt.{/n}
-"You taught me the one thing that would save me from you. I hate that more than the blade."''',
+"You taught me the one thing that would save me from you. I hate that more than the blow."''',
       c('[Tell it the way the report does] "I swung. You stepped. Everybody saw you step."', "accounting", mythic="Trickster"),
       c('[Let the blow stand] "No. I did it. I won\'t take it back."', "salute", flags=(DECLINED, BLOW_STANDS))),
     i("accounting", '''"Everybody saw what happened. The report's true. That's what makes it worse."
@@ -380,7 +380,7 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
     nar("salute", '''{n}She salutes. It is a perfect salute, the one she gives the Queen.{/n}
 {n}Before noon her request for a posting on the southern wall is on your desk, in her square hand, with a space left for your seal. It is the only paper she has ever asked you to sign. You sign it. When you look up from it, the throne room is empty.{/n}''',
       c('"...Goodbye, Irabeth."')),
-    i("raised", '''"I remember your blade going in. I remember the cold. Then a voice calling me by my rank, once, and yours behind it, and I thought: I'm not finished with that one."
+    i("raised", '''"I remember your blow landing. I remember the cold. Then a voice calling me by my rank, once, and yours behind it, and I thought: I'm not finished with that one."
 {n}She has a sword in her hand that is not hers.{/n}
 "You killed me, Commander. Then you had a priest write it down and bought a diamond from the Queen's jeweller to fetch me back to read it. I swore at the altar with the chaplain for witness: this sword doesn't leave my reach until the Wound is shut. You'll never again find me without it."
 {n}She takes one very precise step closer.{/n}
@@ -399,6 +399,32 @@ physical("irabeth.trickster.killed.blow_missed", "The step she learned", '"Knigh
 
 # --- After the return: the test, the commit, her no ---------------------------------------------------------------
 
+# Q12 (Sol BEL): with no lover's history behind her, the killed history needs a reason for desire, not only vigilance. She
+# watches the Commander read the Iz line aloud at the muster, the one thing she would have done herself, and she is the one
+# who moves. Required (DRAWN) before her own trust test on that branch; a lover's history already has its grounds.
+DRAWN = "irabeth.trickster.drawn"
+physical("irabeth.trickster.killed.the_roll", "The roll of the dead", '"I\'ll read the roll tonight."', [
+    nar("start", '''{n}The roll of the week's dead is read in the throne room at the evening muster, as it always is, by a clerk. Tonight you take the list out of the clerk's hands and read it yourself: every name, rank and company, and how each one died. At the head of the old page, never corrected, is the line from Iz, and you read that too, in the same voice. "Knight-Captain Irabeth Tirabade. Struck down by the Commander."{/n}
+{n}Two hundred soldiers hear it. Nobody moves. At her post beside the throne, Irabeth does not move either.{/n}''',
+      c("Continue", "stair")),
+    i("stair", '''{n}She finds you on the back stair afterwards, where the torches are out, and takes you by the wrist hard enough to hurt.{/n}
+"You read it out. In front of my company. In front of recruits who think the sun comes up out of your boots." {n}Her grip does not ease.{/n} "Every officer I ever served under would have let the clerk lose that line. You read it like any other."
+{n}Then she pulls you in by the wrist and kisses you, once, furious, with her sword hilt jammed between your ribs and hers, and lets go.{/n}
+"That's the first thing you've done since Iz that I'd have done myself. Don't read anything into it."''',
+      c('[Catch her wrist before she goes] "Too late."', "caught", flags=(DRAWN,)),
+      c('[Let her go] "Goodnight, Knight-Captain."', "gone", flags=(DRAWN,)),
+      c('"That was a mistake, Knight-Captain."', "mistake")),
+    i("caught", '''{n}She stops. She looks at your hand on her wrist, then at you, and for one breath she leans in.{/n}
+"Not on a back stair like a pair of recruits." {n}She takes her wrist back, unhurried.{/n} "If you want something from me, Commander, you'll ask for it where I can see your hands."''',
+      c('"Goodnight, Knight-Captain."')),
+    nar("gone", '''{n}She goes down the stair two steps at a time and does not look back. On the landing below she stops for a moment with one hand flat on the wall, as if the stone had moved, and then she is gone.{/n}''',
+      c('"Goodnight."')),
+    i("mistake", '''"Probably." {n}She salutes, precisely.{/n} "I make one a year. That was this year's."''',
+      c('"Dismissed."', abort=True)),
+], requires=("trickster.ever", RETURNED, BLOW, "irabeth.trickster.back_on_duty"),
+   forbids=("irabeth.lover", DRAWN, BLOW_STANDS, "irabeth.committed"), delay=24)
+
+
 # Sol r1 BEL: after the Commander's own blade, no yes without a test she sets and the Commander passes.
 physical("irabeth.trickster.killed.the_watch", "Under her sword", '"Knight-Captain. You wanted me?"', [
     i("start", '''{n}She is in the guardroom off the throne room, where the night watch sleeps in shifts. One cot is made up. Beside it is a stool, and she is sitting on the stool with the sword across her knees.{/n}
@@ -410,7 +436,7 @@ physical("irabeth.trickster.killed.the_watch", "Under her sword", '"Knight-Capta
 {n}Near dawn you sleep, properly, for an hour. When you wake she has laid your sword belt across your chest and gone. On the stool is a scrap of duty roster with one line on it, in her square hand: "Slept. Didn't die. Neither did I."{/n}''',
       c('"Neither did I."')),
 ], requires=("trickster.ever", RETURNED, BLOW, "irabeth.trickster.back_on_duty"),
-   forbids=(TRUSTED, BLOW_STANDS, "irabeth.committed"), delay=24)
+   forbids=(TRUSTED, BLOW_STANDS, "irabeth.committed"), delay=24, RequiresAnyGroups=[["irabeth.lover", DRAWN]])
 
 physical("irabeth.trickster.back_on_duty", "Back on duty", '"Knight-Captain. A word."', [
     nar("start", '''{n}She is at her post in the throne room as if she never left it. The sword is at her hip. It has been within her reach every hour since she came back.{/n}''',
@@ -450,17 +476,17 @@ MORNING_HOME = '''{n}The watch changes under the window. She is back in armour, 
 {n}You buckle it for her. She takes the sword belt down and buckles that herself, and does not thank you.{/n}
 "Knight-Captain Tirabade, reporting for duty. Don't look at me like that in front of the guard."'''
 
-REASONS_NEW = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and somebody who knows what you're capable of has to stand close enough to stop you."
+REASONS_NEW = '''"You lay down under my sword and handed me yours. I've served three commanders. Not one of them would have done it, and every one of them would have been right not to."
 {n}Her jaw sets.{/n}
-"And somewhere between the ruin and that stool I started wanting you. I didn't before Iz. I don't like that I do now. I'm not going to pretend otherwise, and I'm not going to thank you for it."'''
+"And since that back stair I've wanted you. I didn't before Iz. I don't like that I do now, and I'm not going to thank you for it."'''
 
-REASONS_TEXT = '''"You want reasons. Here's what I've got. You slept under my sword and didn't lie in your sleep; I've watched men who did. You're still the one who can shut the Wound, and the Queen's gone or near it, and somebody who knows what you're capable of has to stand close enough to stop you."
+REASONS_TEXT = '''"You lay down under my sword and handed me yours. Nobody at Iz would have bet on that. Least of all me."
 {n}Her jaw sets.{/n}
 "And I wanted you before Iz. I buried it under the duty lists and it didn't stay buried. That's the part I can't forgive either of us for."'''
 
 THRESHOLD_BLOW = '''{n}She unbuckles the sword belt and hangs it on the corner of the roster-room door, where she can reach it from anywhere in the room, and looks at you while she does it so that you understand exactly why.{/n}
 "Take the rest off me, Commander. Slowly. If your hands go anywhere near that door, I'll know."
-{n}Gauntlet, then vambrace. Under the arming coat she is scar and muscle and heat, and the newest scar is under her ribs, where your blade went in. She puts your palm flat over it and holds it there, and kisses you like a dare. Then she drags you through the side door into her roster room, sweeps the duty lists off the desk with one arm, pulls you down onto it with her and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
+{n}Gauntlet, then vambrace. Under the arming coat she is scar and muscle and heat, and the newest scar is under her ribs, where your blow took her. She puts your palm flat over it and holds it there, and kisses you like a dare. Then she drags you through the side door into her roster room, sweeps the duty lists off the desk with one arm, pulls you down onto it with her and hooks a leg behind yours, and her hand goes to your belt.{/n}'''
 
 MORNING_HOUSE = '''{n}The watch changes under the window. She is back in armour, all but one gauntlet, and the sword belt is on the door where she hung it, a hand's width from her head all night. She holds out the bare hand to you without a word.{/n}
 "Nevi will know the second I walk into the kitchen. She'll laugh at me, and then she'll put me to work on the bread and ask questions until it's proved."
@@ -545,7 +571,7 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
 {n}She looks at her sword hand, then at you, and her mouth goes crooked.{/n}
 "This isn't thanks. Don't you dare take it for thanks."''',
       c("Continue", "reckon_blow", requires=(BLOW,)), c("Continue", "threshold", forbids=(BLOW,))),
-    i("reckon_blow", '''"And I remember your blade going in. I'll remember it tomorrow, and the day after. I'm here anyway. Work out what that says about me on your own time."''',
+    i("reckon_blow", '''"And I remember your blow landing. I'll remember it tomorrow, and the day after. I'm here anyway. Work out what that says about me on your own time."''',
       c("Continue", "threshold", forbids=(BLOW,)),          # retired by gating (index kept): the blow has its own approach
       c("Continue", "reasons", requires=("irabeth.lover",)),
       c("Continue", "reasons_new", forbids=("irabeth.lover",))),
@@ -647,7 +673,7 @@ UNDER_ORDERS_PARAGRAPHS = (
     p("She had come back because she was still on the Drezen roster, on a diamond the crusade could not spare. Teodor "
       "Vell, called back the same night, served in her company for the rest of the war and never learned what the second "
       "stone had cost; she saw to that, and saw to it that the company ate.", requires=(BOUGHT,)),
-    p("She had come back remembering two things at once: the Commander's blade, and the step. She never pretended the "
+    p("She had come back remembering two things at once: the Commander's blow, and the step. She never pretended the "
       "first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.", requires=(BLOW,),
       forbids=(LIED, K_RAISED)),
     p("The chapel's book of Iz kept both lines under her name for as long as there was a chapel in Drezen: struck down "
@@ -706,18 +732,38 @@ REACTIONS = [
              answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone", KILLED), chapter=5, last=5,
              entry='"Irabeth is back."'),
     reaction("Galfrey", "irabeth.trickster.dead.react_galfrey", (RETURNED,),
-             '''{n}A letter under the Queen's seal, in the Queen's own hand.{/n}
+             '''{n}Irabeth holds out a letter under the Queen's seal, in the Queen's own hand, and does not let go of it while you read.{/n}
 "I wept for you in front of my knights, Knight Tirabade. I would do it again. You gave your life for mine at Iz, and I will not be told that the gift was a clerical error.
 You owe me the dignity of an explanation. Your Commander owes me a better one.
-Galfrey."''',
-             remote=True, forbids=("galfrey.dead", "galfrey.killed_by_commander", KILLED), chapter=5, last=5,
-             delay=24, title="A letter under the Queen's seal", Chapters=[5]),
+Galfrey."
+{n}She folds it along its creases and puts it inside her surcoat.{/n} "I've written mine. She's still waiting for yours, Commander."''',
+             answer_list=HUB, speaker="Irabeth", portrait="Irabeth", entry='"Anything to report, Knight-Captain?"',
+             forbids=("galfrey.dead", "galfrey.killed_by_commander", KILLED), chapter=5, last=5,
+             delay=24, title="A letter under the Queen's seal", Chapters=[5], RequiresAnyGroups=[["irabeth.sacrificed"]]),
+    # Q12 (Sol INT): the Queen who came back as Kitrane (galfrey.trickster.returned) cannot write under a seal she gave up.
+    # She stops Irabeth in the market instead, and Irabeth reports it on her own hub: inline, no delivery.
+    reaction("Irabeth", "irabeth.trickster.dead.react_kitrane", (RETURNED, "galfrey.trickster.returned"),
+             '''"A knight of the Green Crows stopped me in the market this morning. Grey hood. Old sword." {n}Irabeth's voice is very level.{/n} "She looked at me the way she looks at a dispatch she's been waiting a week for, and she said, 'You were dead, Knight Tirabade. So was I. Neither of us is to make a habit of it.' Then she bought me a pie and walked off."
+{n}She sets the pie, untouched, on the duty roster.{/n} "I've taken orders in that voice since I was a squire, Commander. I'm not going to say whose it is. I'm going to eat the pie."''',
+             answer_list=HUB, forbids=(KILLED,), chapter=5, last=5, delay=24, entry='"Anything to report, Knight-Captain?"',
+             Chapters=[5]),
+    reaction("Irabeth", "irabeth.trickster.killed.react_kitrane", (RETURNED, KILLED, "galfrey.trickster.returned"),
+             '''"A knight of the Green Crows stopped me in the market this morning. Grey hood. Old sword." {n}Irabeth's voice is very level.{/n} "She looked at the seam in my surcoat, and then at me, and she said, 'I am told your Commander struck you down at Iz and then had you brought back. I have been put down and taken up again myself, lately. It does less for one's opinion of the hand that did it than one would like.' Then she walked off."
+{n}Her hand rests on the pommel at her hip.{/n} "I've taken orders in that voice since I was a squire, Commander. I'm not going to say whose it is. I'm going to think about what she said for a week."''',
+             answer_list=HUB, chapter=5, last=5, delay=24, entry='"Anything to report, Knight-Captain?"', Chapters=[5]),
     reaction("Seelah", "irabeth.trickster.killed.react_seelah", ("irabeth.trickster.blow_rewritten",),
              '''{n}Seelah's hands are shaking. She hides them behind her back, the way she did as a novice.{/n}
-"The sappers you sent back say they dug her out from under a lintel with your blade's hole in her. She says she stepped, the way you taught her, and that's why it missed her heart."
+"The sappers you sent back say they dug her out from under a lintel with your blow's wound in her side. She says she stepped, the way you taught her, and that's why it missed her heart."
 "You taught her to dodge you, Commander. Before Iz. I'm going to pray about what that means. And then I'm going to hit you."''',
              answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone"), chapter=5, last=5,
              entry='"Irabeth is back."'),
+    reaction("Seelah", "irabeth.trickster.killed.react_seelah_raised", (RETURNED, K_RAISED),
+             '''{n}Seelah has the chapel's book of Iz open on her knees. She has plainly been reading the same page for some time.{/n}
+"'Struck down by the Commander.' And under it: 'Called back on the Commander's order, the Commander's confession entered above.' Same ink. Same hand. The chaplain says you stood over him while he wrote it, and paid the Queen's jeweller for the diamond himself." {n}She closes the book.{/n}
+"You killed my sister, and then you went and told the Inheritor so, in writing, so she'd come back. I don't know what to do with that, Commander. I'm going to pray until I do. And then I'm going to hit you."''',
+             answer_list=SEELAH_HUB, forbids=("seelah_dead", "seelah_gone", "irabeth.trickster.blow_rewritten"), chapter=5, last=5,
+             entry='"Irabeth is back."',
+             ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"}),
 ]
 SCENES.extend(REACTIONS)
 

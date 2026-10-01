@@ -201,10 +201,28 @@ internal static class NurahTricksterTests
               && collected.All(r => r.Has("nurah.trickster.cost.chaplains_writ")), "The chaplains' price for the rite is missing.");
         var lateProofs = Later(story, collected[0], 72);
         check(Rules.Available(story, proofs, lateProofs), "Trk_Nurah_LateCourier: no proofs.");
-        var lateSeen = After(proofs, lateProofs, "proofs", 0);
+        // Q12 (Sol TRK): the proofs are not a romance. The late branch commits only on her postscript's personal answer.
+        var lateSeen = After(proofs, lateProofs, "ps", 0);
         check(!Rules.Available(story, terms, Later(story, lateSeen, 72)), "Trk_Nurah_LateCourier: in-play terms after a late collection.");
         var ending = Later(story, lateSeen, 72); ending.Chapter = 6;
         check(Rules.Available(story, epCommit, ending) && ending.Has("nurah.trickster.late_committed"), "Trk_Nurah_LateCourier: no epilogue commit.");
+        var bookOnlyLate = Later(story, After(proofs, lateProofs, "ps", 1), 72); bookOnlyLate.Chapter = 6; Rules.Complete(story, bookOnlyLate);
+        var silentLate = Later(story, Program.Walk(proofs, lateProofs).First(r => r.Has("nurah.trickster.proofs_seen")
+                             && !r.Has("nurah.trickster.late_yes") && !r.Has("nurah.trickster.book_agreed")), 72);
+        silentLate.Chapter = 6; Rules.Complete(story, silentLate);
+        check(!bookOnlyLate.Has("nurah.trickster.late_committed") && !Rules.Available(story, epCommit, bookOnlyLate)
+              && Rules.Available(story, S("nurah.trickster.epilogue.book_only"), bookOnlyLate) && !bookOnlyLate.Has("nurah.trickster.coda_alive")
+              && !silentLate.Has("nurah.trickster.late_committed") && Rules.Available(story, S("nurah.trickster.epilogue.unanswered"), silentLate),
+            "Trk_Nurah_LateCourier: the proofs alone still decide a romance, or the late branch has no author-only or unanswered end.");
+        // Q12 (Sol COX): the late-dead history with a returned, Commander-killed Camellia takes her card in the proofs packet.
+        var veiledLate = Program.Copy(lateProofs);
+        foreach (var f in new[] { "camellia.killed", "camellia.trickster.returned" }) { veiledLate.Flags.Add(f); veiledLate.Times[f] = veiledLate.Hour - 100; }
+        Rules.Complete(story, veiledLate);
+        var cardPages = new HashSet<string>();
+        Program.Walk(proofs, veiledLate, (page, _) => cardPages.Add(page));
+        check(cardPages.Contains("card_market") && !cardPages.Contains("card") && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_market"), veiledLate)
+              && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), veiledLate),
+            "Trk_Nurah_LateCourier: the returned Camellia's card costs the late-dead history a third delivery.");
 
         // Trk_Nurah_DeadProofs / DeadTerms / DeadTermsRefused: in person, at the raised presence.
         var returned = World(story, 5, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned",
@@ -213,6 +231,21 @@ internal static class NurahTricksterTests
         var deadSeen = Later(story, After(proofs, returned, "proofs", 0), 72);
         check(Rules.Available(story, terms, deadSeen) && !Rules.Available(story, ranTerms, deadSeen) && Commits(terms, deadSeen),
             "Trk_Nurah_DeadTerms.");
+        // Q12 (Sol BEL): the book is agreed on her terms; the romance is her proposition and its own answer.
+        var bookOnly = Program.Walk(terms, deadSeen).Where(r => r.Has("nurah.trickster.book_agreed") && !r.Has("nurah.complete")).ToList();
+        check(bookOnly.Count > 0 && Program.Walk(terms, deadSeen).Where(r => r.Has("nurah.complete")).All(r => r.Has("nurah.trickster.book_agreed"))
+              && Rules.Available(story, S("nurah.trickster.epilogue.book_only"), World(story, 6, bookOnly[0].Flags.ToArray()))
+              && !Rules.Available(story, terms, Later(story, bookOnly[0], 72)),
+            "Trk_Nurah_DeadTerms: agreeing to the book commits the romance, or the book-only answer has no page.");
+        // Q12 (Sol INT): her presence could not be placed: the same terms come to the Commander's rooms at night.
+        var termsNight = S("nurah.trickster.terms_night");
+        var failedRaised = Program.Copy(deadSeen); failedRaised.Flags.Add("nurah.presence.raised.failed"); failedRaised.Times["nurah.presence.raised.failed"] = failedRaised.Hour - 1;
+        Rules.Complete(story, failedRaised);
+        var failedLater = Later(story, failedRaised, 168);
+        check(Rules.IsRemote(termsNight) && !Rules.Available(story, termsNight, deadSeen) && !Rules.Available(story, termsNight, failedRaised)
+              && Rules.Available(story, termsNight, failedLater) && Commits(termsNight, failedLater) && termsNight.Forbids.Contains("nurah.trickster.terms") && terms.Forbids.Contains("nurah.trickster.terms_night")
+              && S("nurah.trickster.ran_off.terms_night").Requires.Contains("nurah.presence.failed"),
+            "Trk_Nurah_PresenceFailed: a failed placement leaves the early terms unanswerable.");
         check(Rules.PresenceWanted(story.Presences["nurah.presence.raised"], deadSeen) && !Rules.PresenceWanted(story.Presences["nurah.presence"], deadSeen),
             "The raised Nurah is not placed for her terms.");
         check(Program.Walk(terms, deadSeen).Any(r => r.Has("nurah.closed") && !r.Has("nurah.complete")), "Trk_Nurah_DeadTermsRefused.");
@@ -272,7 +305,9 @@ internal static class NurahTricksterTests
         check(Rules.Available(story, replyLate, lateReplyWorld) && !Rules.Available(story, reply, lateReplyWorld)
               && lateReplyWorld.Has("nurah.trickster.printer_paid"), "The late reply does not follow the late pedlar.");
         var lateAccepted = Program.Walk(replyLate, lateReplyWorld).Where(r => r.Has("nurah.trickster.accepted")).ToList();
-        check(lateAccepted.Count == 6 && Program.Walk(replyLate, lateReplyWorld).Any(r => r.Has("nurah.closed")), "The late reply's outcomes.");
+        check(lateAccepted.Count == 18 && lateAccepted.Count(r => r.Has("nurah.trickster.late_yes")) == 6
+              && lateAccepted.Count(r => r.Has("nurah.trickster.book_agreed")) == 6
+              && Program.Walk(replyLate, lateReplyWorld).Any(r => r.Has("nurah.closed")), "The late reply's outcomes.");
         // Round 5 (COX): the late reply carries the proofs itself, so the missed-primer runaway uses two Chapter 5 deliveries.
         check(lateAccepted.All(r => r.Has("nurah.trickster.proofs_seen")) && !Rules.Available(story, proofs, Later(story, lateAccepted[0], 72)),
             "The late reply does not carry the proofs, or the proofs arrive twice.");
@@ -288,7 +323,7 @@ internal static class NurahTricksterTests
         foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && !s.Reaction && Rules.Available(story, s, Later(story, budgetWalk, 72))))
             ch5Remote.Add(s.Id);
         check(ch5Remote.Count <= 2, "The late runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", ch5Remote));
-        var lateRanSeen = Later(story, lateAccepted[0], 72);
+        var lateRanSeen = Later(story, lateAccepted.First(r => r.Has("nurah.trickster.late_yes")), 72);
         check(!Rules.Available(story, ranTerms, lateRanSeen), "The late runaway gets the in-person terms.");
         var lateRanEnd = Program.Copy(lateRanSeen); lateRanEnd.Chapter = 6; Rules.Complete(story, lateRanEnd);
         check(Rules.Available(story, epCommit, lateRanEnd), "The late runaway has no epilogue commit.");
