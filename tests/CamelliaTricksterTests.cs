@@ -419,7 +419,14 @@ internal static class CamelliaTricksterTests
         // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
         check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
         var coda = story.Scenes.SingleOrDefault(s => s.Id == "camellia.lastcall.page");
-        check(coda == null || coda.Forbids.Contains(P + "cost.asked_her_tame") && coda.Forbids.Contains(P + "cost.called_guard"), "The Last Call coda outlives a refused test.");
+        // Q8 coordinator ruling: the coda needs her commitment and does not play after her death or dismissal unless she returned.
+        check(coda != null && coda.Requires.Contains(Committed), "The Last Call coda does not require her commitment.");
+        var lc = new[] { "trickster.ever", "lastcall.active", Committed };
+        check(Avail(coda!, World(story, 6, lc)) && !Avail(coda!, World(story, 6, lc.Append(Killed).ToArray()))
+              && !Avail(coda!, World(story, 6, lc.Append(Dead).ToArray())) && !Avail(coda!, World(story, 6, lc.Append("camellia.kicked_out").ToArray()))
+              && Avail(coda!, World(story, 6, lc.Concat(new[] { Killed, Returned, "camellia.kicked_out" }).ToArray()))
+              && !Avail(coda!, World(story, 6, "trickster.ever", "lastcall.active", P + "terms_named")),
+            "The Last Call coda plays for a Camellia killed or dismissed after committing, or without her commitment.");
         // Q8 (Sol INT): the veiled widow sits at Fye's bar only once the third night has given her back.
         check(story.Presences["camellia.presence"].Requires.Contains(P + "raised"), "The veiled copy sits in the tavern while she is still underground.");
         // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.

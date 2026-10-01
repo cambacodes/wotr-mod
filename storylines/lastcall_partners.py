@@ -118,14 +118,15 @@ PARTNERS = []
 
 
 def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, page_forbids=(), deal=(), call=None,
-            call_commit=None, ledger=None, page_commit_groups=None):
+            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None):
     """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
     route's late_committed key); `commit` stays first."""
     PARTNERS.append(dict(key=key, rel=rel, commit=commit, closed=closed, title=title, opener=opener, paragraphs=paragraphs,
                          declined=declined, page_forbids=tuple(page_forbids), deal=[list(g) for g in deal], call=call,
                          call_commit=call_commit or [[commit]], ledger_title=ledger[0] if ledger else None,
                          ledger_text=ledger[1] if ledger else None,
-                         page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None))
+                         page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None,
+                         page_forbid_overrides=dict(page_forbid_overrides or {})))
 
 
 def call(entry, text, *choices):
@@ -498,8 +499,11 @@ partner("camellia", "camellia", "camellia.committed", "camellia.closed", "The Ne
         '''{n}The fire gutters, though there is no wind. Somewhere a lady in black sets down a small clean knife beside an empty bowl, and a great many voices that are not hers lean in to listen.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Camellia: blood at the new moon", "Her spirits have my blood on account, a little each dark of the moon. She says they are very good at keeping count. So, I'm afraid, is she."),
-    page_commit_groups=[["camellia.committed"], [CA + "late_committed"]],   # Q8 (Sol INT): the late yes reaches her coda (additive)
-    page_forbids=(CA + "cost.asked_her_tame", CA + "cost.called_guard"))   # Q8 (Sol INT): a test refused after the terms closes her coda too
+    # Q8 coordinator ruling (HARD, coexistence): the coda requires her commitment and forbids her death or dismissal after it,
+    # lifted only by her own return (a Q3 kill co-holds kicked_out, lifted by killed_held). Never her closed flag (G5).
+    page_forbids=("camellia.killed", "camellia.dead", "camellia.kicked_out"),
+    page_forbid_overrides={"camellia.killed": CA + "returned", "camellia.dead": CA + "returned",
+                           "camellia.kicked_out": CA + "killed_held"})
 
 
 AU = "arueshalae.trickster."
@@ -776,6 +780,8 @@ def pages():
         extra = dict(Relationship="lastcall")
         if part["declined"]:
             extra["ForbidOverrides"] = {part["declined"]: part["commit"]}
+        if part.get("page_forbid_overrides"):   # Q8: a forbid lifted by the partner's own return flag (never a closed flag)
+            extra.setdefault("ForbidOverrides", {}).update(part["page_forbid_overrides"])
         if part.get("page_commit_groups"):
             extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
