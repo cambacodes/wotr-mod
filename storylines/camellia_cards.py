@@ -120,7 +120,7 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
     cam("open", '''"I brought the cards." {n}She is sitting on the floor of your room with the black silk unfolded in front of her and the deck in her hands, shuffling, over and over.{/n} "I thought I would read us. Both of us, together. My teacher said you should never read a couple. She said the cards get jealous. I've always wanted to find out whether that's true."''',
         c("Continue", "read_back", requires=(READ_BACK,)),
         c("Continue", "cards", forbids=(READ_BACK,))),
-    cam("read_back", '''"And last time you made me read my own card. The widow. I've been thinking about her ever since." {n}She stops shuffling.{/n} "I'm not afraid of her any more. I've been her. It was quite comfortable."''',
+    cam("read_back", '''"And last time you made me read my own card. The widow. I've been thinking about her ever since." {n}She stops shuffling.{/n} "I'm not afraid of her any more. I've tried her on in the glass. Black suits me."''',
         c("Continue", "cards")),
     cam("cards", '''{n}She lays down two cards, side by side, face down. She puts one of your hands on the left one and her own on the right.{/n}
 "Yours, and mine. We turn them together. And whatever they say, we don't argue with it. That's the rule." {n}Her fingers tighten on the back of her card.{/n} "Ready?"''',
@@ -172,16 +172,16 @@ Three." {n}She holds your eyes.{/n} "I love you."''',
         c('"Two, then."', "two"),
         c('"Three, then."', "three")),
     cam("three", '''{n}Her face does not change at all, and that is how you know you have said something terrible.{/n}
-"No," {n}she says quietly.{/n} "Three is true. Three is the one I was most afraid you'd pick." {n}She looks down at her hands.{/n} "I said it last, the way people save the lie for last. You told me that once. I wanted to see if you'd remember."''',
+"No," {n}she says pleasantly.{/n} "Three is true. I put it last because people put the lie last, and I wanted to watch you reach for the obvious." {n}She smiles at her hands.{/n} "You did. I shall remember the face you made. I may bring it up at dinner."''',
         c("Continue", "two")),
-    cam("two", '''"Two." {n}She lets out a breath she seems to have been holding for a very long time.{/n} "Yes. Two is the lie. Of course it is. I will want the knife back one day, darling. I can't help it. It's the one true thing about me that nobody can ever make untrue."
+    cam("two", '''"Two." {n}She claps, once, softly, like a judge at a fencing bout.{/n} "Yes. Two is the lie. Of course it is. I will want the knife back one day, darling. I can't help it. It's the one true thing about me that nobody can ever make untrue."
 {n}She picks the knife up off the pillow and turns it in the candlelight.{/n} "But not today. And I'll tell you something else, since you won."''',
         c("Continue", "else")),
     cam("else", '''"I lied the first time too. When we first played. I said I had never lied to you, and you caught it, and I laughed." {n}She puts the knife back down, very carefully, point towards the door.{/n}
-"That wasn't the lie. The lie was that I laughed because you were clever. I laughed because you were the first person who ever caught me, and I was so frightened I thought I might die." {n}She smiles.{/n} "Your turn. Three things. Make them good."''',
+"That wasn't the lie. The lie was that I laughed because you were clever. I laughed because you were the first person who ever caught me, and I wanted very badly to know what you would do with it. You did nothing at all. I have been waiting ever since for the bill." {n}She smiles.{/n} "Your turn. Three things. And I'm keeping them, mind. Whichever one is the lie, I shall find a use for it."''',
         c('[Trickster] "I love you. I love you. I love you."', "all"),
         c('"I\'m not afraid of you. I never was. I love you."', "mine")),
-    cam("all", '''"That's three truths." {n}Her voice cracks on it, just slightly.{/n} "That's cheating. You always cheat. You cheat with the truth, which is the only thing I can't see through." {n}She pulls you down to her by the collar.{/n} "Don't ever stop."''',
+    cam("all", '''"That's three truths." {n}She takes it like a winning card, slowly, between two fingers.{/n} "Cheat. You cheat with the truth, because you know it's the one thing I can't see through, and now I shall have to watch you for that as well." {n}She pulls you down to her by the collar.{/n} "You'll say it again when I ask. In front of whoever I choose. I want to see their faces when you do."''',
         c("[Don't stop]")),
     cam("mine", '''"The first one's a lie," {n}she says at once, with enormous satisfaction.{/n} "You're a little afraid of me. You always have been. It's the nicest thing about you." {n}She pulls you down to her by the collar.{/n} "And the rest?"
 {n}You don't answer. You don't have to. She has already found the seam.{/n}''',

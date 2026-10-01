@@ -144,25 +144,25 @@ living(FLIES, "Flies at a window", '"You\'ve gone pale. Is it the spirits?"', [
 "Here there is no land. There's only appetite. Nothing that ever lived here wants anything but more." {n}She lowers her hands and smiles, horribly, beautifully.{/n} "It sounds like flies at a window, my friend. Thousands of them. Beating and beating at the glass, and I am the glass."''',
         c('"What can I do?"', "do"),
         c('"How long have you heard them?"', "long")),
-    cam("long", '''"Since I was a little girl. My father brought doctors, and priests, and exorcists, and they all said something was wrong with me, and they all went away." {n}She shrugs.{/n} "Then my teacher came and said nothing was wrong with me at all. I was simply listening to something no one else could hear. I loved her for that. I loved her very much."
+    cam("long", '''"Since I was a little girl. My father brought doctors, and priests, and exorcists, and they all said something was wrong with me, and they all went away." {n}She shrugs.{/n} "Then my teacher came and said nothing was wrong with me at all. I was simply listening to something no one else could hear. She was very useful, for a while. Then she became tiresome."
 {n}She looks at her hands.{/n} "It is quieter, usually. There are ways to make it quieter."''',
         c('"What can I do?"', "do")),
-    cam("do", '''"Talk to me." {n}It comes out faster than she means it to, and she laughs to cover it.{/n} "Anything. Everything. Make it loud and long and stupid. They can't get in while I'm listening to someone who lies as well as you do. There isn't room."''',
+    cam("do", '''"Entertain me, my friend." {n}She says it the way she would order a footman to fetch a shawl.{/n} "Anything. Everything. Make it loud and long and stupid. I would rather be entertained while I wait than listen to them."''',
         c('[Trickster] Tell her the longest, most outrageous lie you know, and don\'t stop until she laughs.', "story"),
         c("[Sit beside her and take her hands off her ears]", "hands"),
         c('"There\'s a demon camp an hour east. Go and bleed some of them. Quiet it the usual way."', "fed")),
     cam("story", '''{n}So you tell her how you once sold a vrock its own left wing and charged it rent on the right. You tell her about the court of the Tyrant of Tuesdays, and the war of the three spoons. It gets worse. It gets much worse. Somewhere around the ambassador made entirely of cheese she snorts, very unbecomingly, and puts a hand over her mouth.{/n}
-"Stop. Stop, that's not fair, I was trying to be tragic." {n}She is shaking with laughter now, and when it passes, her shoulders have come down.{/n} "Oh. They've gone quiet. They've gone quite, quite quiet."''',
+"Stop. Stop, that's not fair, I was trying to be tragic." {n}She is shaking with laughter now, and when it passes, her shoulders have come down.{/n} "That was dreadful. Do tell me another."''',
         c("Continue", "quiet", flags=(QUIET,))),
     cam("hands", '''{n}Her hands are cold and damp and very strong. She lets you take them. She lets you hold them in her lap. For a long time neither of you says anything, and the warm rock breathes against your backs.{/n}
-"You're lying to me with your hands," {n}she says at last, very quietly.{/n} "You are telling me everything will be well. It's a very good lie. I'm going to believe it for a little while."''',
+"You're lying to me with your hands," {n}she says at last.{/n} "You are telling me everything will be well. A comforting lie. You should offer your services to the chaplains." {n}She does not take her hands back.{/n}''',
         c("Continue", "quiet", flags=(QUIET,))),
     cam("fed", '''{n}She is on her feet before you have finished the sentence, and already smoothing her hair.{/n}
 "You are the best of friends. The very best." {n}She kisses your cheek, quickly, like a girl leaving for a ball.{/n} "Don't wait up. And don't look for me, please. I am never at my prettiest afterwards."
-{n}She is back before dawn, washed and humming. Her sleeves are wet to the elbow. She sleeps like a child until noon.{/n}''',
+{n}She is back before dawn, washed, and not humming. Her sleeves are wet to the elbow. She lies down with her back to the camp and her hands pressed flat over her ears, and does not sleep. In the morning she tells everyone it was a lovely walk, and is short with the cook, and will not look at you until noon.{/n}''',
         c("[Let her sleep]", flags=(FED,))),
-    cam("quiet", '''"You know what you are?" {n}She rests her head against your shoulder, as if she had always done it.{/n} "You are the only noise I have ever met that is louder than they are. It's a terrible thing to say to someone. I mean it as the highest compliment I know."
-{n}Within minutes she is asleep. She sleeps with her mouth a little open and her fingers closed round your sleeve, and she does not let go until morning.{/n}''',
+    cam("quiet", '''"You know what you are?" {n}She rests her head against your shoulder, as if she had always done it.{/n} "Your conversation is preferable to theirs. At present. Do not let it go to your head."
+{n}She does not sleep. She sits with her head on your shoulder and her fingers closed round your sleeve, counting under her breath, and she does not let go until morning.{/n}''',
         c("[Stay until morning]")),
 ], requires=(GAME,), delay=48, chapter=4, last=4, chapters=(4,))
 
@@ -307,7 +307,7 @@ met(P + "beat.lesson", "Where a friend would stand", '"You said you wanted to te
         c("[Take the knife away]", "flinched"),
         c('[Trickster] "I feel like you\'ve done this before, from the other side."', "other_side")),
     cam("steady", '''{n}The knife does not move. Her pulse jumps against the steel, once, twice, and then settles, and then, very slowly, speeds up again, and it has nothing to do with fear.{/n}
-"Oh," {n}she breathes.{/n} "Oh, there it is. There it is. Nobody has ever looked at me like that with a knife in their hand. They look frightened, or angry, or sick." {n}She puts two fingers on your wrist and takes the knife back, very gently.{/n} "You just look interested."''',
+"Oh," {n}she breathes.{/n} "Oh, there it is. There it is. Interest. How flattering. Most people are far less courteous with a knife in their hand. They look frightened, or angry, or sick." {n}She puts two fingers on your wrist and takes the knife back, very gently.{/n} "You just look interested."''',
         c("Continue", "done", flags=(LESSON, STEADY))),
     cam("other_side", '''{n}For one moment, all the brightness goes out of her face, and what is left underneath is very still and very old.{/n}
 "Yes," {n}she says.{/n} "Many times. Never from this side."
@@ -316,7 +316,7 @@ met(P + "beat.lesson", "Where a friend would stand", '"You said you wanted to te
     cam("flinched", '''{n}You take the knife away. She watches it go with an expression you cannot read, then takes it from your hand and tucks it back into your sleeve herself.{/n}
 "There. That's what most people do." {n}She doesn't sound disappointed. She sounds as though she has learned something she will think about later.{/n} "It's all right, my friend. It isn't a test. Not yet. That comes afterwards, and it's much harder."''',
         c("Continue", "done", flags=(LESSON, FLINCHED))),
-    cam("done", '''"Go now. I have to think about my price." {n}She is at the door before you, unlocking it.{/n} "I've never had to set one before. Nobody ever lived long enough to pay."''',
+    cam("done", '''"Go now. I have to think about my price." {n}She is at the door before you, unlocking it.{/n} "I have yet to decide how troublesome you are worth making."''',
         c("[Go]")),
 ], requires=("trickster.ever", RET), forbids=(LESSON,), delay=24, any_groups=[[GRAVE, DUE]],
    living=(DANCE,), living_groups=())
@@ -330,14 +330,14 @@ met(P + "bond.shelf", "The shelf", '"Camellia. What have you done to my room?"',
     nar("open", '''{n}Your room has been tidied. Not cleaned; tidied, the way a museum is. Your papers are in stacks squared to the edge of the desk. Your spare boots stand at attention. On the shelf above the bed, where you keep nothing in particular, there is now a row of things: a dried rose, a pressed camellia flower in a little frame, the bone snake of an amulet coiled in a saucer, a small clean knife, and a folded sheet of paper.{/n}''',
         c("Continue", "shelf")),
     cam("shelf", '''"I've moved in." {n}She is sitting on your bed with her ankles crossed, eating an apple with a knife, in small precise slices.{/n} "A little. The things I keep are on the shelf. Everything I own that means anything fits on one shelf. Isn't that sad? Isn't that tidy?"
-"The rose is from my father's garden, where I walked every day for twelve years and never once saw the gate open. The camellia is pressed, because my name is the only thing my mother left me, and a name won't stand up on a shelf by itself. The knife you know." {n}She points at the paper with the knife, not the apple.{/n} "And that is my list."''',
+"The rose is from my father's garden, the one I was permitted to walk in, behind a gate. The camellia is pressed. I hate the things. My mother named me for one, and it's the only thing she left me, so I keep it where I can dislike it properly. The knife you know." {n}She points at the paper with the knife, not the apple.{/n} "And that is my list."''',
         c('"What list?"', "list")),
     cam("list", '''{n}You unfold it. It is a list of names in her small, beautiful, schoolroom hand, perhaps thirty of them. Some are crossed out. Beside every crossed-out name is a date. You recognise two: a steward from Kenabres who was found in a canal, and a chaplain in Drezen who fell down a stair. At the very top of the list is your own name. It has been crossed out, very neatly, and written again underneath.{/n}''',
         c("Continue", "what", requires=(KILLED,)),
         c("Continue", "what_d", requires=(RET,), forbids=(KILLED,)),
         c("Continue", "what_a", forbids=(RET,))),
     cam("what_a", '''"Those are my friends." {n}She says it with great tenderness.{/n} "All my friends. The ones with lines through them, I have finished being friends with. The others are still waiting. They don't know that. It's the only kindness I can do them."
-{n}She slices the apple.{/n} "I wrote you in the evening you beat me at my own game. I crossed you out the night I decided how I'd do it. Then I wrote you in again. I've never kept a name I've crossed out. I thought you ought to have it."''',
+{n}She slices the apple.{/n} "I wrote you in after our little game. I crossed you out the night I decided how I'd do it. Then I wrote you in again. I've never kept a name I've crossed out. I thought you ought to have it."''',
         c("[Fold it and put it back on the shelf]", "kept"),
         c("[Hold it to the candle]", "burned"),
         c('"There are names on here that aren\'t crossed out."', "names")),
@@ -378,7 +378,7 @@ met(P + "bond.witness", "The witness", '"You\'re worried. You never look worried
     cam("dead_w", '''"A night-soil man in the lower city. The night the spirits were paid." {n}She stops pacing.{/n} "He saw me come out of the alley. He didn't see anything else, he couldn't have, I was very neat. But he saw my face, and my face is very memorable, and now the porter is dead and there is a man in a tavern by the river telling everyone who will listen that he saw a lady come out of that alley with her sleeves rolled up."''',
         c("Continue", "choice")),
     cam("choice", '''"I can take care of it." {n}She says it lightly, reasonably, the way one offers to see to the washing.{/n} "It would be very easy. People like that fall down stairs all the time. It's practically their vocation."
-"Or you can take care of it. Your way." {n}She looks at you.{/n} "I'm asking. I've never asked anyone before. I thought I'd see what it felt like."''',
+"Or you can take care of it. Your way." {n}She looks at you.{/n} "You are so resourceful. I should like to see your solution before I employ mine."''',
         c('[Trickster] "Leave it to me. By tomorrow, nobody will believe a word the witness says. Including the witness."', "lied"),
         c('"Do it your way."', "hers")),
     cam("lied", '''{n}It takes you one afternoon. You visit the witness with a chaplain in tow and grave concern on your face. You ask, gently, whether the lady they saw had a veil. And a fan. And a small dog. And had she perhaps also been singing? By the time you leave, the witness has seen a dead woman, a singing ghost, a dog made of mist and the late Lord Gwerm himself, and the chaplain has recommended rest, and the story has become the sort of thing people tell children at bedtime. The chaplain has the witness moved to the quiet ward, for rest. The candle trade goes to a cousin. Nobody asks after her there.{/n}''',
@@ -416,7 +416,7 @@ met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
     cam("convincing", '''"Oh." {n}It is almost a gasp. Then she is laughing, with her forehead against your shoulder.{/n} "Oh, you monster. You'd do it. You'd lie there with my knife in you and I would never, ever know whether you were really dead. You'd ruin it for me forever."
 {n}She lifts her head.{/n} "Oh, that's cruel. Say it again."''',
         c("Continue", "night", flags=(NOT_TODAY,))),
-    cam("today", '''"Not today." {n}She says it after you, carefully, the way she says the names of flowers.{/n} "No. Not today. Today I'm going to do something very ordinary, and very dull, and I've never done it before in my life."
+    cam("today", '''"Not today." {n}She says it after you, carefully, the way she says the names of flowers.{/n} "No. Not today. Today I'm going to do something very ordinary, and very dull, and I intend to enjoy it enormously."
 {n}She closes the shutters on the rain.{/n} "I'm going to go to bed with someone I'm not going to kill."''',
         c("Continue", "night", flags=(NOT_TODAY,))),
     nar("night", '''{n}She takes the knife off the sill and puts it, point first, in the wood of the window frame, where it quivers and is still. Then she takes your face in both hands and kisses you, slowly, thoroughly, with her eyes open, as if she means to remember exactly what your face does.{/n}

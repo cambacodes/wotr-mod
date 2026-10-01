@@ -37,30 +37,30 @@ living(PUPPY, "A barking ball of happiness", '"Tell me about the puppy."', [
         c('"I want to know why you smiled when you said his name."', "smile")),
     cam("smile", '''"Did I?" {n}She touches her own mouth with the back of her hand, as if to check.{/n} "How careless of me. You notice a great deal, my friend. It's very flattering, and a little rude." {n}She bites off the thread.{/n} "Very well. You've earned a story. But I shall tell it properly, from the beginning. I hate stories that start in the middle."''',
         c("Continue", "him")),
-    cam("him", '''"Father gave him to me for my ninth birthday. A little brown thing with one white ear, from the kennels at the country house. I called him Sir Pomfrey. I had read about a knight called Pomfrey, who was very brave and died in the first chapter."
-"He slept on my bed. He followed me round the garden. He barked at the bars on my windows as if they were thieves, every morning, as though that would make them go away." {n}She smiles.{/n} "He was the only living thing in that house who was never afraid of me."''',
+    cam("him", '''"I was very small. He had curly fur, and he was always warm, and he slept against my feet." {n}Stitch.{/n} "I don't remember his name. Isn't that dreadful? I've tried. I remember the fur, and how warm he was."
+"He followed me everywhere. He was the only living thing in that house who was never afraid of me."''',
         c("Continue", "then")),
     cam("then", '''"The servants were afraid of me, you see. Father changed them whenever they started to suspect anything. New maids every season. They would come in rosy and chattering, and by midsummer they would stop chattering, and by autumn they would stop coming into my room at all. And then there would be new ones."
-"But Sir Pomfrey never stopped coming in. He never once looked at me the way the maids did." {n}Stitch. She has picked up the glove again.{/n} "I found that very restful."''',
+"But the puppy never stopped coming in. He never once looked at me the way the maids did." {n}Stitch. She has picked up the glove again.{/n} "I found that very restful."''',
         c('"What happened to him?"', "end")),
     cam("end", '''{n}She is quiet for so long that you think she will not answer. Then she holds the glove up to the light to inspect her work.{/n}
-"He grew old. Dogs do. His muzzle went grey and he couldn't climb onto the bed, so I lifted him. And one winter he stopped eating. The physician said it would be kinder to let him go."
-{n}She lowers the glove.{/n} "Father offered to have it done. I said no. I said I would do it myself, because he was mine."''',
-        c('"And did you?"', "did"),
+"I took a knife from the kitchen one afternoon and cut his head off. I don't remember deciding to. I remember holding the head in my hands, and how warm it still was, and the rest of him at my feet."
+{n}She lowers the glove.{/n} "My mother found me. That was the beginning of the doctors."''',
+        c('"Why?"', "did"),
         c("[Say nothing]", "did")),
-    cam("did", '''"Of course." {n}Very simply.{/n} "In the garden, under the roses, with my own hands. I held him in my lap and looked at him, and he looked at me." {n}Her voice does not change at all.{/n} "He wasn't afraid. Right to the very end, he wasn't afraid of me. He just looked puzzled. As if I were playing a game he didn't know the rules to."
-"I cried for a week. Real tears. I've never cried like that since." {n}She smiles.{/n} "And I have been trying, ever since, to find another face that looks at me like that. Only the other way round."''',
+    cam("did", '''"Why." {n}She considers it, needle poised.{/n} "Because he looked at me. Right to the very end, he wasn't afraid of me. He just looked puzzled. As if I were playing a game he didn't know the rules to." {n}Her voice does not change at all.{/n}
+"I have been trying, ever since, to find another face that looks at me like that. Only the other way round."''',
         c('"Afraid."', "afraid"),
         c('"That\'s the saddest thing you\'ve ever told me."', "sad"),
         c('[Trickster] "Which part of that was the lie?"', "lie")),
-    cam("afraid", '''"Yes." {n}She seems pleased that you understood.{/n} "Puzzled was lovely, but it was only the beginning. I wanted to know what comes after puzzled. What comes when they finally understand." {n}She threads the needle again, first time.{/n} "Everyone thinks I'm the saddest person they've ever met, or the most frightening. You're the first one who's simply listened."''',
+    cam("afraid", '''"Yes." {n}She seems pleased that you understood.{/n} "Puzzled was lovely, but it was only the beginning. I wanted to know what comes after puzzled. What comes when they finally understand." {n}She threads the needle again, first time.{/n} "You have listened very attentively, my friend. I trust it hasn't spoiled your appetite."''',
         c("Continue", "close")),
-    cam("sad", '''"Is it?" {n}She tilts her head, genuinely curious.{/n} "I always thought it was rather a sweet story. A girl and her dog. He was very well loved, you know. Right to the end." {n}She pats your hand.{/n} "You have a kind heart, my friend. I hope nobody ever takes advantage of it."''',
+    cam("sad", '''"Is it?" {n}She tilts her head, genuinely curious.{/n} "I always thought it was rather a sweet story. A girl and her dog. He was very warm, you know. Right to the end." {n}She pats your hand.{/n} "You have a kind heart, my friend. I hope nobody ever takes advantage of it."''',
         c("Continue", "close")),
     cam("lie", '''{n}Her needle stops halfway through the leather.{/n}
-"The crying," {n}she says, after a moment.{/n} "I didn't cry for a week. I cried for an afternoon, because I thought I ought to, and then I went in to supper." {n}She pulls the needle through.{/n} "But I wanted to cry for a week. Does that count? I've always hoped that counts."''',
+"The puzzled look," {n}she says, after a moment.{/n} "I don't remember his face at all. I gave him the look afterwards, because the story is so much better with it." {n}She pulls the needle through.{/n} "You are improving, my friend. Most people ask about the head."''',
         c("Continue", "close")),
-    cam("close", '''"There. Now you know all about Sir Pomfrey, and I shall never tell anyone else." {n}She holds up the finished glove, turning it this way and that.{/n} "I always tell my friends one true story. It's only fair. It gives them something to remember me by."''',
+    cam("close", '''"There. Now you know all about the puppy, and I shall never tell anyone else." {n}She holds up the finished glove, turning it this way and that.{/n} "A pleasing story, was it not? I tell it so seldom. It loses something every time."''',
         c("[Leave her to her mending]")),
 ], requires=(TWO_LIES,), delay=48)
 
@@ -135,7 +135,7 @@ living(STRANGERS, "A table for strangers", '"Buy you a drink, Camellia?"', [
 
 GLOVES = E + "the_gloves"
 living(GLOVES, "A pair of gloves", '"Are those for me?"', [
-    cam("open", '''"They are." {n}Camellia holds them out across the camp table: a pair of riding gloves in soft grey kid, the ones she was mending the night she told you about Sir Pomfrey. Every seam has been re-sewn in the same tiny, perfectly even stitches.{/n} "They were my father's. He never wore them. He had forty pairs. He'll never notice."''',
+    cam("open", '''"They are." {n}Camellia holds them out across the camp table: a pair of riding gloves in soft grey kid, the ones she was mending the night she told you about the puppy. Every seam has been re-sewn in the same tiny, perfectly even stitches.{/n} "They were my father's. He never wore them. He had forty pairs. He'll never notice."''',
         c('"Why give them to me?"', "why"),
         c("[Put them on]", "on")),
     cam("why", '''"Because your hands are always cold. I noticed at the fire. You hold them out to it like a beggar, and then you pretend you were only stretching." {n}She tilts her head.{/n} "And because I like to know where my friends' hands are. Grey kid shows everything. Mud, ash, ink." {n}A small smile.{/n} "Blood, of course. It's very hard to get out of grey."''',
@@ -262,9 +262,9 @@ met(BREAKFAST, "Breakfast", '"You\'re awake early."', [
     cam("ate", '''{n}You take the bread off the blade with your teeth, carefully. She watches you do it with enormous interest, and when you have swallowed she lets out a long, soft breath, as though she has been holding it.{/n}
 "You just did that. You just ate something a murderess held out to you on a knife, first thing in the morning, without even looking at it first." {n}She shakes her head, wondering.{/n} "You are either the bravest person I have ever met or the stupidest. I adore not knowing which."''',
         c("Continue", "close")),
-    cam("first", '''"Me first?" {n}She looks offended for exactly one heartbeat, and then enchanted.{/n} "You think I might have poisoned your breakfast. On our first morning. How romantic." {n}She eats the bread off the knife in one bite, chews, swallows, and licks the blade clean.{/n} "There. If I die, you'll know. And if I don't..." {n}She cuts another piece.{/n} "You'll never be quite sure I didn't simply have the antidote."''',
+    cam("first", '''"Me first?" {n}She looks offended for exactly one heartbeat, and then enchanted.{/n} "You think I might have poisoned your breakfast. At breakfast. How romantic." {n}She eats the bread off the knife in one bite, chews, swallows, and licks the blade clean.{/n} "There. If I die, you'll know. And if I don't..." {n}She cuts another piece.{/n} "You'll never be quite sure I didn't simply have the antidote."''',
         c("Continue", "close")),
-    cam("promise", '''"Sometimes." {n}She considers.{/n} "I promised my teacher I'd always be kind to the spirits. I have been. I promised Sir Pomfrey he wouldn't feel anything. He didn't." {n}She licks honey off her thumb.{/n} "I've kept every promise I ever meant. There are only a very few of them. It's why I make so many that I don't. It hides the real ones."
+    cam("promise", '''"Sometimes." {n}She considers.{/n} "I promised a priest once I'd be kind to the spirits. I have been." {n}She licks honey off her thumb.{/n} "I've kept every promise I ever meant. There are only a very few of them. It's why I make so many that I don't. It hides the real ones."
 {n}She holds out the knife again.{/n} "Eat your breakfast."''',
         c("Continue", "close")),
     cam("close", '''"We should do this every morning. I'll bring the bread, and you'll decide whether to trust me, and neither of us will ever get bored." {n}She settles back against the bedpost, your shirt slipping off one shoulder, the knife held loosely in her lap.{/n} "It's the most domestic thing I've ever done. I'm finding it strangely exciting."''',
@@ -275,14 +275,14 @@ met(BREAKFAST, "Breakfast", '"You\'re awake early."', [
 # --- A gift for a dead woman. -----------------------------------------------------------------------------------------
 
 met(GIFT, "A gift for a dead woman", '"I have something for you."', [
-    cam("open", '''"For me?" {n}She sets down whatever she was reading, and folds her hands in her lap, and looks at you exactly like a little girl on her birthday.{/n} "Nobody gives me presents. They give me things, which is different. Father gave me things. Dresses. Books. Sir Pomfrey. A present is something someone chooses because it's you."''',
+    cam("open", '''"For me?" {n}She sets down whatever she was reading, and folds her hands in her lap, and looks at you exactly like a little girl on her birthday.{/n} "A present? How attentive. Father gave me things. Dresses. Books. A puppy. A present is something someone chooses because it's you. Let us see how well you have observed me."''',
         c("Continue", "choose")),
     cam("choose", '''{n}She waits, her eyes going to your hands, your pockets, your face.{/n} "Well? I'm dying of suspense. Only a little. Only figuratively. I've done the other kind."''',
         c('[Trickster] Hand her a set of papers in a new name, with a Nerosyan address and a forger\'s thumbprint still smudged on the wax.', "papers"),
         c("Give her a charcoal rubbing of her own gravestone, framed.", "stone", requires=(KILLED,)),
         c("Give her a pair of fencing foils with real points.", "foils")),
     cam("papers", '''{n}She breaks the seal, and reads, and her eyebrows go up, and up.{/n}
-"'Mireya Voss, widow, of the Lantern Quarter, Nerosyan. Born in Taldor. No known relations.'" {n}She looks at you over the top of the paper.{/n} "You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?"
+"'Mireya Voss, widow, of Nerosyan. Born in Taldor. No known relations.'" {n}She looks at you over the top of the paper.{/n} "You've made me a person. You've made me a whole new person, with a street and a widowhood and a dead husband. Who was he?"
 {n}You tell her he was a wine merchant who died of a surfeit of eels. She presses the papers to her chest.{/n} "I shall wear her to every party. She'll be much better company than I am."''',
         c("Continue", "close", flags=(NEW_NAME,))),
     cam("stone", '''{n}She unwraps it, slowly, and then she is very quiet for a long time, looking at the charcoal letters of her own name and the date of her own death, pressed off stone onto paper.{/n}
@@ -314,9 +314,9 @@ met(PRISONER, "The prisoner", '"Camellia. They told me you were in the cells."',
     cam("yes", '''"Thank you." {n}She says it quite simply, the way one thanks a friend for passing the salt. She takes a small, clean knife from her sleeve.{/n} "You should go now, my friend. Or stay. It's up to you. I know it isn't pretty."
 {n}You leave. Behind you, as the door closes, you hear her begin to talk to him, softly, pleasantly, as if she were telling him a bedtime story. The guards on the stair do not look at you. Later, the chaplain records that the prisoner died in his chains of a failure of the heart.{/n}''',
         c("[Walk up into the light]", flags=(PRISONER_HERS,))),
-    cam("watch", '''{n}She blinks. Then something opens in her face, something unguarded and nearly shy.{/n}
-"Mine?" {n}She lets out a breath.{/n} "You want to watch me. Not him. Nobody has ever wanted to watch that part."
-{n}So you stand against the wall, and you watch her. You do not look at the man. You look at her face, the whole long time, and she looks back at you over his shoulder, and it is the most intimate and the most terrible thing you have ever shared with anyone. Afterwards she washes her hands in the bucket, slowly, and does not speak, and when she comes to you her eyes are wet.{/n}''',
+    cam("watch", '''{n}She blinks. Then she smiles, slowly, the smile of a performer told which seat the critic has taken.{/n}
+"Mine?" {n}She lets out a breath.{/n} "How discerning. Most spectators waste their attention on the wrong person."
+{n}So you stand against the wall, and you watch her. You do not look at the man. You look at her face, the whole long time, and she looks back at you over his shoulder, and it is the most intimate and the most terrible thing you have ever shared with anyone. Afterwards she washes her hands in the bucket, slowly, and dries them finger by finger, and studies your expression.{/n} "Well, my friend? Was the spectacle worth keeping him alive for?"''',
         c("[Hold her]", flags=(PRISONER_HERS,))),
     cam("no", '''{n}For a moment you see it: the flash of something bright and furious behind her eyes, gone almost before it is there, the look of a woman who has had her plate taken away.{/n}
 "Trial," {n}she says.{/n} "Of course. How very correct of you."
@@ -327,7 +327,7 @@ met(PRISONER, "The prisoner", '"Camellia. They told me you were in the cells."',
 
 # --- The mirror. ------------------------------------------------------------------------------------------------------
 
-MIRROR_LEADS_NEW = '''"'Mireya Voss, widow, of the Lantern Quarter.'" {n}She tries a curtsey at the glass.{/n} "She has a very good posture. Much better than mine. Widows always do; they've nothing left to bend for."'''
+MIRROR_LEADS_NEW = '''"'Mireya Voss, widow, of Nerosyan.'" {n}She tries a curtsey at the glass.{/n} "She has a very good posture. Much better than mine. Widows always do; they've nothing left to bend for."'''
 met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
     cam("open", '''"Have I?" {n}She is standing in front of the long glass in your room with the black veil in her hands, putting it on and taking it off, putting it on and taking it off, watching her own face appear and disappear.{/n} "I'm practising. I've been three people this year. Camellia, and a dead woman, and whoever I am now. I keep forgetting which face I've got on."''',
         c("Continue", "voss", requires=(NEW_NAME,)),
@@ -342,7 +342,7 @@ met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
 "That's the face you make when you're looking at me," {n}she says slowly.{/n} "I've seen it a hundred times. I was hoping it would tell me something." {n}A small, cold smile.{/n} "It doesn't. It only tells me what you want. You want me to be someone who can be shown things. That's very sweet. It's also the face the clerics had."''',
         c("Continue", "close")),
     cam("mine", '''{n}You make your Commander's face at her: the council-of-war face, the stern one. She copies it in the mirror, perfectly, instantly, down to the line between the eyebrows. Then you make the face you make when you are lying to a demon. She copies that too, and then she stops, and laughs.{/n}
-"I know that one," {n}she says.{/n} "That's the face you had when you told me to die convincingly. That's my favourite face in the whole world." {n}She holds it for a moment in the glass, your lie on her mouth, and it fits her far too well.{/n} "May I keep it? I shan't tell you what I'll use it for."''',
+"I know that one," {n}she says.{/n} "That's the face you had when you lied to me best. That's my favourite face in the whole world." {n}She holds it for a moment in the glass, your lie on her mouth, and it fits her far too well.{/n} "May I keep it? I shan't tell you what I'll use it for."''',
         c("Continue", "close")),
     cam("now", '''"Like now." {n}She looks at the woman in the glass, with her hair down and the veil in her hands and no paint on her mouth. Something passes over the reflection's face that does not pass over hers.{/n}
 "I don't like her," {n}she says, quite calmly.{/n} "She looks as if she might be about to say something true. Women who say true things in my family end up in the garden, under the roses." {n}She turns the glass to the wall.{/n} "There. Now nobody has to find out what she was going to say."''',
