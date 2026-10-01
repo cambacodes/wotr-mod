@@ -350,6 +350,74 @@ internal static class SoanaTricksterTests
                 "Camellia speaks after she is gone: " + r.Id);
         check(Rules.Available(story, S(P + "react.camellia_knot"), Later(story, World(story, 3, "trickster.ever",
               "soana.killed_by_camellia", "soana.dead", P + "returned"), 24)), "Camellia never hears the woman she bled is walking.");
+        // Q10 (INT): the knot recalls her words only for a Commander who heard them; otherwise her wall tells it.
+        HashSet<string> KnotPages(Snapshot w) { var pagesSeen = new HashSet<string>(); Program.Walk(knot, w, (id, _) => pagesSeen.Add(id)); return pagesSeen; }
+        var unheard = KnotPages(killed);
+        var heard = KnotPages(World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead",
+                                     "soana.heard_link_b"));
+        check(unheard.Contains("marks") && !unheard.Contains("read") && heard.Contains("read") && !heard.Contains("marks"),
+            "The knot recalls words the Commander never heard, or hides them from one who did.");
+        check(Play(knot, killed).Any(r => r.Has(P + "returned")), "An uninformed Commander cannot read the knot.");
+        check(knot.Nodes.Single(n => n.Id == "marks").Choices.Select(c => c.Next).SequenceEqual(new string?[] { "wake_clay", "wake_brand", null })
+              && knot.Nodes.Where(n => n.Id == "read" || n.Id == "marks").All(n => n.Text.Contains("hand closes on nothing")),
+            "The uninformed knot skips the test or the bargain.");
+
+        // Q10 (BEL): the clay halves exist only when the medallion was spent; otherwise her hair cord.
+        var brandTerms = new HashSet<string>();
+        Program.Walk(terms, atTerms, (id, _) => brandTerms.Add(id));
+        var clayDug = Pick(graveyard, Later(story, spent, 48), P + "graveyard_kept", P + "cost.grave_dug");
+        var clayTerms = new HashSet<string>();
+        var clayEnds = Program.Walk(terms, Later(story, clayDug, 72), (id, _) => clayTerms.Add(id));
+        check(!brandTerms.Contains("price_clay") && clayTerms.IsSupersetOf(new[] { "price_clay", "bind_clay", "night_clay" })
+              && !clayTerms.Contains("price") && clayEnds.Any(r => r.Has("soana.committed")),
+            "The terms show clay shards to a Commander who never broke the medallion, or hide them from one who did.");
+        check(!terms.Nodes.Where(n => n.Id == "price" || n.Id == "bind" || n.Id == "night" || n.Id == "no").Any(n => n.Text.Contains("shard") || n.Text.Contains("clay")),
+            "The brand-only terms speak of clay.");
+        check(secondAsk.Nodes.Where(n => n.Id != "night_clay").All(n => !n.Text.Contains("shard") && !n.Text.Contains("clay halves")),
+            "The second ask shows clay in a brand-only history.");
+
+        // Q10 (BEL): refusing the late throw's terms is shown; she takes the pledge back off the spirits' plate.
+        var lateRefusedPages = new HashSet<string>();
+        var lateOutcomes = Program.Walk(lateLuck, noDie, (id, _) => lateRefusedPages.Add(id));
+        check(lateRefusedPages.Contains("refused") && lateOutcomes.Any(r => r.Has(P + "luck_refused") && !r.Has(P + "primed_dice")),
+            "The late throw's refusal skips the confrontation, or keeps the die in her bowl.");
+
+        // Q10 (INT): a Camellia raised from her retained death hears it on her hub; the veiled (killed) Camellia has no companion
+        // hub and answers it in her own route at Fye's (camellia.kill_returned.soana).
+        var camelliaBack = Later(story, World(story, 3, "trickster.ever", "soana.killed_by_camellia", "soana.dead", P + "returned",
+                                              "camellia.dead", "camellia.trickster.returned"), 24);
+        foreach (var id in new[] { P + "react.camellia_knot", P + "react.camellia_portion" })
+            check(S(id).ForbidOverrides.TryGetValue("camellia.dead", out var lift) && lift == "camellia.trickster.returned",
+                "A raised Camellia never hears of Soana: " + id);
+        check(Rules.Available(story, S(P + "react.camellia_knot"), camelliaBack), "A raised Camellia never hears of the knot.");
+        check(story.Scenes.Any(s => s.Relationship == "camellia" && s.Nodes.Any(n => n.Id == "soana"
+              && n.Text.Contains("Wintersun woman is back"))), "The veiled Camellia never answers Soana's return.");
+
+        // Q10 (INT): the sacrifice. Survived (the punchline) keeps the living pages; stayed dead gets the slack strand.
+        var slack = S(P + "epilogue.slack");
+        string[] Ends(Snapshot s, params string[] extra)
+        {
+            var e = End(s); e.Flags.UnionWith(extra); Rules.Complete(story, e);
+            return pages.Where(p => Rules.Available(story, p, e)).Select(p => p.Id).ToArray();
+        }
+        check(Ends(bound, "sacrifice").SequenceEqual(new[] { slack.Id }), "A Commander who stayed dead is remembered as alive: knot.");
+        check(Ends(bound, "sacrifice", "ending.trickster").SequenceEqual(new[] { epKnot.Id }), "The punchline Commander loses the knot ending.");
+        check(Ends(lateBack, "sacrifice").SequenceEqual(new[] { slack.Id }) && Ends(walked, "sacrifice").SequenceEqual(new[] { slack.Id }),
+            "A dead Commander still has the leash taken from a living hand.");
+        check(slack.Nodes[0].Paragraphs.Count(x => x.Requires.Contains(P + "luck_kept")) == 1, "The slack page forgets the die.");
+        var keptLife = S("soana.ending_kept_life");
+        check(keptLife.Forbids.Contains("sacrifice") && keptLife.ForbidOverrides["sacrifice"] == "trickster.commander_back"
+              && S("soana.ending_sacrifice").Forbids.Contains("trickster.commander_back"),
+            "The registered endings mourn a Commander who came back, or deny them the living page.");
+
+        // Q10 (HOW): the missed branch's second ask takes the other die; it costs no crusade resource and the pair is remembered.
+        check(!story.Scenes.Any(s => s.Id.StartsWith(P, StringComparison.Ordinal)
+                                     && s.Nodes.Any(n => n.Paragraphs.Any(x => x.Requires.Contains(P + "cost.woods_sealed")))),
+            "A page still reads the retired sealed-woods cost.");
+        var pairEnd = Pick(bowlAsk, Later(story, bowlNo, 96), "soana.committed", P + "cost.pair_given");
+        check(Endings(pairEnd).SequenceEqual(new[] { epLuck.Id })
+              && epLuck.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "cost.pair_given") && x.Text.Contains("luck they were born with")),
+            "The surrendered pair leaves no mark on the ending.");
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }
