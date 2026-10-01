@@ -290,7 +290,7 @@ internal static class SoanaTricksterTests
         check(Rules.Available(story, bowlAsk, Later(story, bowlNo, 96)) && !Rules.Available(story, bowl, Later(story, bowlNo, 96)),
             "The missed branch has no priced second ask.");
         check(bowlAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.pair_given")
-              && c.Set.Contains("soana.committed")), "The bowl's second ask does not take the other die.");
+              && c.Set.Contains("soana.committed")), "The bowl's second ask does not put the Commander's other die in her keeping (a narrative price: no crusade effect, no claim on combat luck).");
         check(!Rules.Available(story, sheBear, World(story, 5, "trickster.ever", "soana.after_quest", "soana.old_defender", "soana.progression_kept")),
             "The missed courtship opens for a Commander who kept the registered visits.");
 
@@ -416,7 +416,7 @@ internal static class SoanaTricksterTests
             "A page still reads the retired sealed-woods cost.");
         var pairEnd = Pick(bowlAsk, Later(story, bowlNo, 96), "soana.committed", P + "cost.pair_given");
         check(Endings(pairEnd).SequenceEqual(new[] { epLuck.Id })
-              && epLuck.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "cost.pair_given") && x.Text.Contains("luck they were born with")),
+              && epLuck.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "cost.pair_given") && x.Text.Contains("pair sat in Soana's bowl") && !x.Text.Contains("luck they were born with")),
             "The surrendered pair leaves no mark on the ending.");
 
         // Q10 r2 (INT/HOW): a lover committed in the registered courtship, then handed to Camellia, then raised by the knot,
@@ -489,6 +489,48 @@ internal static class SoanaTricksterTests
               && !S(P + "missed.she_bear").Nodes.Single(n => n.Id == "rest_plain").Text.Contains("heard me"),
             "The she-bear recalls a creed the Commander never heard.");
         check(Play(sheBear, sheBearAt).Any(r => r.Has(P + "answered_rest")), "An uninformed Commander cannot answer that she may rest.");
+
+        // Q10 r3 (CAN): the slain and pulverised bears give no living counterparty; the Commander re-cuts the knot first.
+        foreach (var (extra, page) in new[] { ("trickster", "carcass"), ("soana.medallion_pulverized", "pelt") })
+        {
+            var deadBear = World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead",
+                                 "soana.bear_dead", extra, "soana.heard_link_a");
+            var seen = KnotPages(deadBear);
+            var outcomes = Play(knot, deadBear);
+            check(seen.IsSupersetOf(new[] { "spirit", page, "bait" }) && !seen.Contains("read") && !seen.Contains("marks")
+                  && !seen.Contains(page == "pelt" ? "carcass" : "pelt"),
+                "The dead-bear knot skips the re-cut knot or reads a living spirit: " + page);
+            check(outcomes.Any(r => r.Has(P + "returned") && r.Has(P + "cost.knot_recut"))
+                  && outcomes.Where(r => r.Has(P + "returned")).All(r => r.Has(P + "cost.knot_recut")),
+                "A dead bear's knot is bargained with before it is re-cut: " + page);
+        }
+        check(knot.Nodes.Where(n => n.Id == "spirit" || n.Id == "carcass" || n.Id == "pelt" || n.Id == "start")
+                  .All(n => !n.Text.Contains("still alive") && !n.Text.Contains("still bound") && !n.Text.Contains("spirits she kept")),
+            "The knot states the spirit's survival as fact.");
+        var deadBearMedallion = World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", "soana.bear_dead",
+                                      "soana.medallion_held");
+        check(Play(knot, deadBearMedallion).Where(r => r.Has(P + "returned")).All(r => r.Has(P + "cost.medallion_spent")),
+            "A held medallion is kept at a re-cut knot.");
+
+        // Q10 r3 (INT): Camellia's knife is remembered only by a Soana who saw her in the cave.
+        var sawWorld = Program.Copy(sheBearAt); sawWorld.Flags.Add("camellia.claimed_soana_a"); Rules.Complete(story, sawWorld);
+        var sawPages = new HashSet<string>();
+        Program.Walk(sheBear, sawWorld, (id, _) => sawPages.Add(id));
+        check(creedPages.Contains("roll_plain") && !creedPages.Contains("roll") && sawPages.Contains("roll") && !sawPages.Contains("roll_plain")
+              && !sheBear.Nodes.Single(n => n.Id == "roll_plain").Text.Contains("knife")
+              && Play(sheBear, sheBearAt).Any(r => r.Has(P + "answered_roll")),
+            "The she-bear remembers an absent Camellia, or forgets one who was there.");
+
+        // Q10 r3 (BEL): the Commander's pronouns, and the knot ending's token in full.
+        check(terms.Nodes.Single(n => n.Id == "fool").Text.Contains("{mf|He|She} is holding my leash"),
+            "The terms gender the Commander.");
+        string FullText(Scene page, Snapshot w) => page.Nodes[0].Text + "|" + string.Join("|", Rules.VisibleParagraphs(page.Nodes[0], End(w)).Select(x => x.Text));
+        var cordEnd = FullText(epKnot, bound);
+        var clayBound = Pick(terms, Later(story, clayDug, 72), "soana.committed", P + "cost.knot_bearer");
+        var clayEnd = FullText(epKnot, clayBound);
+        check(cordEnd.Contains("grey cord") && !cordEnd.Contains("clay") && clayEnd.Contains("halves of the clay knot")
+              && !clayEnd.Contains("grey cord"),
+            "The knot ending names the wrong token: " + cordEnd);
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }

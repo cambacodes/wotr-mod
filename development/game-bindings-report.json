@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-qual-q10\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4538,
-  "unique_targets": 1001,
+  "binding_uses": 4542,
+  "unique_targets": 1002,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -984,6 +984,10 @@
     },
     "e9feb6b2946c77641875f2bc731ede1e": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0017.jbp",
+      "type": "BlueprintCue"
+    },
+    "945035f8ed0d1474abcb700b985bc5a3": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaBear/Cue_0023.jbp",
       "type": "BlueprintCue"
     },
     "a07f6d1f93531e048928c5c9de328a92": {

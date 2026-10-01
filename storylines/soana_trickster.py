@@ -63,6 +63,9 @@ SECOND = "soana.trickster.cost.second_ask"
 CATCHUP = "soana.trickster.cost.catchup"
 LATE = "soana.trickster.cost.late"
 DIE_KEPT = "soana.trickster.cost.die_in_her_bowl"
+PULVERIZED = "soana.medallion_pulverized"          # SeenCues SoanaBear/Cue_0023 (Orso bit the clay knot to dust)
+SAW_CAMELLIA = "soana.saw_camellia"                 # Derived: Camellia spoke in her cave (SoanaAfterBear Cue_0065/0069)
+BAITED = "soana.trickster.cost.knot_recut"
 CREED = "soana.heard_creed"                          # SeenCues SoanaAfterBear/Cue_0012 (her creed)
 BOUND_AGAIN = "soana.trickster.rebind"
 REBIND_DECLINED = "soana.trickster.rebind_declined"
@@ -155,17 +158,18 @@ for suffix, lst, nrc, nxt in (("after_bear_a", "001686714a5c2384ba09686b45bd033f
 # --- State 2, killed: the knot never checked (F17, her own words read in the other direction) --------------------------
 
 SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "Soana", 3, "", [
-    nar("start", """{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. The forest died with her: the undergrowth is black, the birds are gone, and the spirits she kept in hand have been howling through the trees since the night she fell. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground.{/n}
+    nar("start", """{n}You go back to Wintersun alone, on a grey morning, with the crusade's business waiting behind you. The forest died with her: the undergrowth is black, the birds are gone, and something in the black trees has been howling since the night she fell. Soana's cave smells of cold ash and something sweeter under it. Nobody has taken her bones to the ground.{/n}
 {n}Something out in the trees stops moving when you step inside.{/n}""",
         c("Continue", "orso", forbids=(BEAR_DEAD,)), c("Continue", "spirit", requires=(BEAR_DEAD,))),
-    nar("orso", """{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded. Whatever she tied to him is still tied.{/n}""",
+    nar("orso", """{n}Orso comes to the cave mouth and will not come further. He has been circling it for days; the moss is worn down to stone in a ring. The brand on his shoulder is a knot, the same knot she wore in clay at her throat, and it has not faded. Whatever she tied to him has not come untied, by the look of it.{/n}""",
         c("Continue", "read", requires=(HEARD,)), c("Continue", "marks", forbids=(HEARD,))),
-    nar("spirit", """{n}Orso lies where he fell: a grey pelt stretched over bones. The brand is still on the pelt, darker than a dead thing's brand has any right to be, and the grass around the carcass has gone black in the shape of a knot. Something still lies in those bones: the spirit she bound, still bound, still alive after its fashion.{/n}""",
-        c("Continue", "read", requires=(HEARD,)), c("Continue", "marks", forbids=(HEARD,))),
+    nar("spirit", """{n}Orso lies where he died. The brand on his hide is only a scar on a dead thing now, and nothing in those bones moves.{/n}""",
+        c("Continue", "read", requires=(HEARD,), forbids=(BEAR_DEAD,)), c("Continue", "marks", forbids=(HEARD, BEAR_DEAD)),
+        c("Continue", "carcass", forbids=(PULVERIZED,)), c("Continue", "pelt", requires=(PULVERIZED,))),
     nar("read", """{n}You remember what she told you, with her arms folded over her chest: she used the medallion to control a spirit of the Abyss after linking it to the sacred bear, and she forced the spirit to serve good by linking our lives together.{/n}
 {n}*Our* lives. She may have meant the bear's and the spirit's. She may have meant her own.{/n}
 {n}You put two fingers to the brand. It tugs back, once, like a line with a fish on it, and behind you, on the cold floor of the cave, the dead woman's hand closes on nothing.{/n}
-{n}So that is what holds her. Not the bear: the thing in the bear, the spirit of the Abyss she caught and broke to the forest's work. It is still tied to her, and a thing tied to a corpse can go nowhere and eat nothing. It has been starving on the end of a dead woman's rope since the night she fell; that is the howling in the trees. And the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
+{n}So something holds her, and you wager it is the thing in the bear: the spirit of the Abyss she caught and broke to the forest's work. If it is tied to her, it is tied to a corpse, and a thing tied to a corpse can go nowhere and eat nothing; perhaps that is the howling in the trees. Whatever it is, the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
 {n}It is a gamble, and a Trickster's kind: offer the thing on the far end a living hand to pull on instead of a dead one, and see whether it will drag her back up her own strand to get it.{/n}""",
         c('[Hold her clay medallion to the guardian\'s brand and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
@@ -177,7 +181,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("marks", """{n}You crouch where she fell. Days dead, and she has not begun to rot: her hands are grey but whole, and the cave smells of ash and dry herbs and nothing worse. On the rock above her pallet the same knot is scratched in charcoal, over and over, the knot of her clay medallion and of the brand on Orso's hide; and beside it, small, the way a trapper keeps a tally, three marks: a bear, a horned thing with too many teeth, and a stooped little figure with a braid.{/n}
 {n}A bear, a demon and an old woman, tied in one knot. She never told you so. She wrote it on her wall.{/n}
 {n}You put two fingers to the brand. It tugs back, once, like a line with a fish on it, and behind you, on the cold floor of the cave, the dead woman's hand closes on nothing.{/n}
-{n}So that is what holds her. Not the bear: the thing in the bear, the spirit of the Abyss she caught and broke to the forest's work. It is still tied to her, and a thing tied to a corpse can go nowhere and eat nothing. It has been starving on the end of a dead woman's rope since the night she fell; that is the howling in the trees. And the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
+{n}So something holds her, and you wager it is the thing in the bear: the spirit of the Abyss she caught and broke to the forest's work. If it is tied to her, it is tied to a corpse, and a thing tied to a corpse can go nowhere and eat nothing; perhaps that is the howling in the trees. Whatever it is, the knot is not cut: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}
 {n}It is a gamble, and a Trickster's kind: offer the thing on the far end a living hand to pull on instead of a dead one, and see whether it will drag her back up her own strand to get it.{/n}""",
         c('[Hold her clay medallion to the guardian\'s brand and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
           "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
@@ -186,6 +190,26 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
           "wake_brand", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
           flags=(RETURNED, STARTED, GUARDIAN, LEASH)),
         c('[Leave the knot tied] "No. She said she was finished. Let her be finished."', flags=(CLOSED,))),
+    nar("carcass", """{n}Orso lies where he fell, and the carcass has gone soft and black at the edges. The grass has died in a ring around it, the way grass dies around a poisoned well. The brand on his shoulder is a scar on dead hide. Whatever she bound into him, it is not answering: you press two fingers to the brand and feel nothing but cold fur.{/n}
+{n}If there is anything left to pull on, you will have to give it something to hold first.{/n}""",
+        c('[Cut her knot into the dead hide, bleed into the cuts, and wait for something to come to it] "A knot is a door as well as a rope. Let us see who knocks."',
+          "bait", alignment=("Chaotic", 1), flags=(BAITED,)),
+        c('[Leave the knot cut] "She said she was finished. Let her be finished."', flags=(CLOSED,))),
+    nar("pelt", """{n}Orso is what the medallion left of him: a grey pelt stretched over bones, where he dropped when his teeth ground the clay knot to dust. The brand is still on the pelt, a scar on a dead thing, and the knot that held it is gone. You press two fingers to it and feel nothing but cold fur.{/n}
+{n}If there is anything left to pull on, you will have to tie the knot again yourself, and give it something to hold.{/n}""",
+        c('[Cut her knot into the dead hide, bleed into the cuts, and wait for something to come to it] "A knot is a door as well as a rope. Let us see who knocks."',
+          "bait", alignment=("Chaotic", 1), flags=(BAITED,)),
+        c('[Leave the knot cut] "She said she was finished. Let her be finished."', flags=(CLOSED,))),
+    nar("bait", """{n}You copy the brand into the hide with your knife, line by line, following the old scar, and then you open your palm and press it into the cuts until the hide is dark with you. It is a gamble, and you know it: that a knot cut in blood is a door as well as a rope, and that something at the Worldwound's edge will come to an open door. Then you sit down beside it in the cold and wait.{/n}
+{n}Near dawn the black trees go quiet. Something comes down out of them that you never see, and the cut knot in the hide drinks, and goes on drinking after your blood is gone. Behind you, on the cold floor of the cave, the dead woman's hand closes on nothing.{/n}
+{n}So the knot holds again, and she is on it. What is on the far end you cannot say: something of hers come back to its knot, or something new that found the door you cut. The knot is not cut now: when you pull, she answers. A rope that can be pulled one way can be pulled the other.{/n}""",
+        c('[Press her clay medallion into the cuts and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
+          "wake_clay", mythic="Trickster", alignment=("Chaotic", 1), requires=("soana.medallion_held",), remove_item=MEDALLION,
+          flags=(RETURNED, STARTED, GUARDIAN, SPENT, LEASH)),
+        c('[Lay your cut hand on the knot and bargain with what holds the other end] "Whatever you are: give her back, and pull on me instead."',
+          "wake_brand", mythic="Trickster", alignment=("Chaotic", 1), forbids=("soana.medallion_held",),
+          flags=(RETURNED, STARTED, GUARDIAN, LEASH)),
+        c('[Leave it] "No. She said she was finished. Let her be finished."', flags=(CLOSED,))),
     nar("wake_clay", """{n}You press the clay to the brand. Nothing happens, for long enough that you begin to feel foolish. Then the brand darkens, as a rope darkens when it is pulled wet, and something on the far end of the knot pulls back.{/n}
 {n}It does not speak. It does not need to. You feel it weigh you, the way it once weighed her: a new hand on the knot, a stranger's, soft with command. It wants what it always wanted, a hand to strain against. It will give her back if it gets yours.{/n}
 {n}You close your fist. The medallion cracks down the middle with a sound like a knuckle, and the pull comes up your arm: a weight round your wrist like a leash wound twice about the hand, with something heavy and hungry at the far end of it.{/n}""",
@@ -199,7 +223,7 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
     nar("wake_spirit", """{n}The black grass around the bones stirs, though there is no wind. What lies in them strains once against the knot, and you feel it in your wrist, like a dog on a short rope. It does not get loose. You are holding it.{/n}""",
         c("Continue", "soana")),
     s("soana", """{n}Behind you, someone coughs up forest loam.{/n}
-"...Bloody hunter. Of course." {n}She spits loam.{/n} "You put your hand on my knot. All those winters I held that demon by the throat, and a hand that holds a thing that long is part of the knot, like it or not. I knew. I told nobody, because I did not think any fool alive would pull on it." {n}She looks at the white print on your hand.{/n} "And it took the trade. Of course it did. A demon would sooner drag on a young fist than starve on a dead old woman's. That is worse."
+"...Bloody hunter. Of course." {n}She spits loam.{/n} "You put your hand on my knot. All those winters I held that demon by the throat, and a hand that holds a thing that long is part of the knot, like it or not. I knew. I told nobody, because I did not think any fool alive would pull on it." {n}She looks at the white print on your hand.{/n} "And it took the trade. Of course it did. A thing from the other side would sooner drag on a young fist than on a dead old woman's. That is worse."
 {n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}
 "I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"""",
         c('"You can hate me standing up."')),
@@ -267,7 +291,7 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
     s("no", '''{n}She closes her fist over the knot and turns away.{/n}
 "No. You laughed at my knot once already, and I woke up in a dead forest. Come back when you can keep your face straight over a thing that matters."''',
         c('[Go]', flags=(DECLINED,))),
-    s("fool", '''"I already found one. He is holding my leash, and he laughs at knots."
+    s("fool", '''"I already found one. {mf|He|She} is holding my leash, and {mf|he|she} laughs at knots."
 {n}She does not look at you again.{/n}''',
         c('[Go]', flags=(CLOSED,))),
     s("night", TERMS_NIGHT, c("Continue", "morning")),
@@ -403,16 +427,18 @@ inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-b
     n("question", "Soana", '''"Your luck keeps her standing. My spirits keep her walking. When the war ends, hunter, you will be the one holding the dice."
 "When this war is done and the luck runs thin, and she lies down, will you let her stay down? Or will you roll again?"''',
         c('"I\'ll let her rest. She\'s earned it."', "rest", requires=(CREED,), flags=(TESTED, REST)),
-        c('"I\'ll roll again. As long as it takes."', "roll", flags=(TESTED, ROLL)),
+        c('"I\'ll roll again. As long as it takes."', "roll", requires=(SAW_CAMELLIA,), flags=(TESTED, ROLL)),
         c('[Grin] "I\'ll roll for her. And if it comes up one, I\'ll call it twenty."', "cheat", flags=(TESTED, CHEAT)),
         c('"Why does it matter what I\'d do?"', "why"),
-        c('"I\'ll let her rest. She\'s earned it."', "rest_plain", forbids=(CREED,), flags=(TESTED, REST))),
+        c('"I\'ll let her rest. She\'s earned it."', "rest_plain", forbids=(CREED,), flags=(TESTED, REST)),
+        c('"I\'ll roll again. As long as it takes."', "roll_plain", forbids=(SAW_CAMELLIA,), flags=(TESTED, ROLL))),
     n("why", "Soana", '''{n}She looks at you with those small black eyes, sunk deep in the driftwood.{/n}
 "Because I am older than she is, hunter. Answer the question."''',
         c('"I\'ll let her rest. She\'s earned it."', "rest", requires=(CREED,), flags=(TESTED, REST)),
-        c('"I\'ll roll again. As long as it takes."', "roll", flags=(TESTED, ROLL)),
+        c('"I\'ll roll again. As long as it takes."', "roll", requires=(SAW_CAMELLIA,), flags=(TESTED, ROLL)),
         c('[Grin] "I\'ll roll for her. And if it comes up one, I\'ll call it twenty."', "cheat", flags=(TESTED, CHEAT)),
-        c('"I\'ll let her rest. She\'s earned it."', "rest_plain", forbids=(CREED,), flags=(TESTED, REST))),
+        c('"I\'ll let her rest. She\'s earned it."', "rest_plain", forbids=(CREED,), flags=(TESTED, REST)),
+        c('"I\'ll roll again. As long as it takes."', "roll_plain", forbids=(SAW_CAMELLIA,), flags=(TESTED, ROLL))),
     n("rest", "Soana", '''"A true protector is the one who sacrifices themselves. You heard me say it once, and you were listening. Hm."
 {n}She goes back to scratching the bear's ear, and for a while she says nothing at all, which from her is a speech.{/n}''',
         c('[Leave them in the sun]')),
@@ -422,6 +448,10 @@ inline("soana.trickster.missed.she_bear", "The she-bear", 5, '"How is your she-b
     n("roll", "Soana", '''"That is what a child says. A child with a toy it does not want to put away."
 {n}She pulls a burr out of the bear's fur and flicks it at your boots.{/n}
 "But it is honest. The last one who lied to me in this cave was your friend with the knife. Go away. I am thinking."''',
+        c('[Leave them in the sun]')),
+    n("roll_plain", "Soana", '''"That is what a child says. A child with a toy it does not want to put away."
+{n}She pulls a burr out of the bear's fur and flicks it at your boots.{/n}
+"But it is honest. Most who come up this path lie to me before they have their breath back. Go away. I am thinking."''',
         c('[Leave them in the sun]')),
     n("cheat", "Soana", '''{n}The old woman laughs so suddenly that the bear lifts her head.{/n}
 "Of course you would. You would cheat the Abyss out of its teeth and call it a favour to the Abyss. I have met demons with better manners and worse ideas."
@@ -469,8 +499,8 @@ inline("soana.trickster.missed.bowl", "The thing in her bowl", 5, '"You said you
 
 inline("soana.trickster.missed.second_ask", "The other die", 5, '"About your bowl."', [
     n("start", "Soana", '''{n}She sets the bowl on the stone between you, and holds out her other hand, palm up.{/n}
-"A cheat never carries one die. One sits in my bowl. The other is in your pocket, the one you roll against demons when your own luck is not good enough. I know it is there. I can hear it when you walk."
-"Give me its brother. Then the pair is mine, and my beasts stop sharing your luck with every sword you swing. You will fight the rest of this war on the luck you were born with, hunter. We will see how much that is."''',
+"A cheat never carries one die. One sits in my bowl. The other is in your pocket, the one you cheat your soldiers with at the fire. I know it is there. I can hear it when you walk."
+"Give me its brother. A liar's pair belongs together, and it belongs with me. You can throw honest bones at your camp fires from now on, hunter, or none at all."''',
         c('[Give her the other die] "Keep them both. And me."', "night",
           flags=(COMMITTED, DIE_KEPT, "soana.trickster.cost.pair_given")),
         c('"No. That one stays with me."', flags=(CLOSED,))),
@@ -489,12 +519,12 @@ EPILOGUE_PARAGRAPHS = (
     p("For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad "
       "moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
       requires=("soana.trickster.cost.luck_fed",)),
-    p("The Commander fought the rest of the war on the luck they were born with. Soana said it was more than she had "
-      "expected, and a good deal less than they deserved.", requires=("soana.trickster.cost.pair_given",)),
+    p("The Commander never threw a loaded die again. The pair sat in Soana's bowl, both twenty up, and nobody who visited "
+      "the cave was allowed to touch them.", requires=("soana.trickster.cost.pair_given",)),
 )
 
 SCENES.append(scene("soana.trickster.epilogue.knot", "The second strand", "Epilogue", 5, "", [
-    nar("start", '''{n}Soana took her leash back from the Commander's hand the night of the vow and tied it into the clay again, with the Commander's life at the other end. The Commander felt it pull on hungry nights for the rest of the war, in the wrist the knot had marked, and the wrist ached in cold weather ever after. When the war was over she began to plant the dead Wintersun woods, and, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}''',
+    nar("start", '''{n}Soana took her leash back from the Commander's hand the night of the vow and tied it into her knot again, with the Commander's life at the other end. The Commander felt it pull on hungry nights for the rest of the war, in the wrist the knot had marked, and the wrist ached in cold weather ever after. When the war was over she began to plant the dead Wintersun woods, and, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}''',
         c(), paragraphs=(
             p("The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, "
               "Soana said that was how you knew it was working.", requires=(SPENT,)),
