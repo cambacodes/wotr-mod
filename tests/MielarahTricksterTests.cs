@@ -85,7 +85,7 @@ internal static class MielarahTricksterTests
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
             var chosen = Choice(scene, node, index);
-            var hits = Program.Walk(scene, w).Where(r => chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))).ToList();
+            var hits = Program.WalkVia(scene, w, node, index).Where(r => chosen.Set.All(r.Has)).ToList();
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -306,8 +306,10 @@ internal static class MielarahTricksterTests
         var rumour = S(P + "charter.rumour");
         foreach (var captain in new[] { "captain.kerz", "captain.nocticula" })
         {
-            var stranger = World(story, 5, "trickster", "trickster.ever", captain);
-            check(Rules.IsRemote(rumour) && Rules.Available(story, rumour, stranger) && !Rules.Available(story, charterLetter, stranger),
+            // PP9 (Sol INT): she must have met the Commander in the Bad Luck (mielarah.met), so the deck's tavern memories hold.
+            var stranger = World(story, 5, "trickster", "trickster.ever", captain, "mielarah.met");
+            check(Rules.IsRemote(rumour) && Rules.Available(story, rumour, stranger) && !Rules.Available(story, charterLetter, stranger)
+                  && !Rules.Available(story, rumour, World(story, 5, "trickster", "trickster.ever", captain)),
                 "Trk_Mielarah_Charter: no Chapter 5 entry without her table (" + captain + ").");
             var signed = Program.Walk(rumour, stranger).Where(r => r.Has(P + "charter")).ToList();
             check(signed.Count > 0 && signed.All(r => r.Has(P + "primed.pattern") && r.Has(P + "cost.late") && r.Has("mielarah.started"))
@@ -369,7 +371,7 @@ internal static class MielarahTricksterTests
               && reactions.Where(r => r.Owner == "Woljif").All(r => r.Forbids.Contains("woljif.dead") && r.Forbids.Contains("woljif.kicked_out"))
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Lann", "Woljif" }),
             "The reactions are not exactly Lann and Woljif behind their guards.");
-        check(pages.Length == 2 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 3 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         // Sol INT: a first flight, a soft refusal or the epilogue's rejection never implies a commitment.
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", "mielarah.committed" })
@@ -385,6 +387,38 @@ internal static class MielarahTricksterTests
         check(h2c.Has("trickster.commander_back") && Rules.Available(story, S(P + "epilogue.committed"), h2c) && Rules.Available(story, S(P + "epilogue.late"), h2d)
               && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster.ever", "mielarah.committed", "sacrifice", "ending.wound_closed")),
             "The Last Call H2 survival loses Mielarah's pages, or a burned Commander keeps them.");
+        // PP9 (Sol HOW): the unfinished courtship plays after the market for a campaign that ends before her wheel, never
+        // beside a commitment, a refusal or her closure; the Last Call coda plays on her commitment with the herald variant.
+        var unfinished = S(P + "epilogue.unfinished");
+        var marketOnly = World(story, 6, "trickster.ever", P + "landfall", "mielarah.started", D + "market");
+        check(Rules.Available(story, unfinished, marketOnly)
+              && !Rules.Available(story, unfinished, With(marketOnly, "mielarah.committed"))
+              && !Rules.Available(story, unfinished, With(marketOnly, P + "declined"))
+              && !Rules.Available(story, unfinished, With(marketOnly, "mielarah.closed"))
+              && !Rules.Available(story, unfinished, World(story, 6, "trickster.ever", P + "landfall", "mielarah.started", D + "flown")),
+            "The unfinished-courtship page is not gated on the market, or plays beside a commitment, a refusal or her closure.");
+        var coda = story.Scenes.Single(s => s.Id == "mielarah.lastcall.page");
+        var codaNode = coda.Nodes.Single();
+        check(coda.Requires.Contains("mielarah.committed") && coda.Forbids.Contains(P + "declined")
+              && codaNode.Paragraphs.Any(p => p.Requires.Contains(P + "cost.herald_debt"))
+              && codaNode.Paragraphs.Any(p => p.Requires.Contains(P + "cost.noticed") && p.Forbids.Contains(P + "cost.herald_debt")),
+            "Her Last Call coda does not need her commitment, or does not answer the herald's debt apart from his notice.");
+        // INT: Lann's line is recalled only after the Bad Luck exchange (Cue_0079); otherwise he asks it on her deck.
+        var bestJob = S(D + "best_job");
+        var flyReady = World(story, 5, "trickster.ever", P + "landfall", "mielarah.started", P + "contact", D + "docked", D + "reckoned");
+        var lannNodes = new HashSet<string>();
+        Program.Walk(bestJob, flyReady, (node, _) => lannNodes.Add(node));
+        var heardNodes = new HashSet<string>();
+        Program.Walk(bestJob, With(flyReady, "mielarah.lann_asked"), (node, _) => heardNodes.Add(node));
+        check(lannNodes.Contains("lann_new") && !lannNodes.Contains("lann") && heardNodes.Contains("lann") && !heardNodes.Contains("lann_new")
+              && story.SeenCues["mielarah.lann_asked"].SequenceEqual(new[] { "b8605cacc05f3ed4d81dd2c6a2f69b72" }),
+            "Lann's best-job line is recalled without the Bad Luck exchange, or is lost with it.");
+        // INT: the arcade twins are staged at the jewellers', never at the tiefling's stall.
+        foreach (var twin in deck.Where(s => s.Id.EndsWith(".arcade", StringComparison.Ordinal)))
+            check(twin.Nodes.All(n => !n.Text.Contains("tiefling's stall") && !n.Text.Contains("trestle")), "An arcade twin is staged at the stall: " + twin.Id);
+        // INT: the broadsheet charter needs a Commander she has met in the Bad Luck.
+        check(S(P + "charter.rumour").Requires.Contains("mielarah.met"), "The broadsheet charter reaches a Commander she never met.");
+
         // Sol CAN/VOI: the wheel and the stern remember only what happened in this playthrough.
         var wheelNodes = new HashSet<string>();
         Program.Walk(wheel, ready, (node, _) => wheelNodes.Add(node));
