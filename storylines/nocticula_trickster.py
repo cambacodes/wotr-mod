@@ -171,7 +171,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
         c("Continue", "yes")),
     nt("why_voice", '''"You walked into my palace in my brother's voice and walked out with my secret, and then you killed me with his friends watching and never once spent it. A clown who can hold a secret that expensive through a murder." {n}Her eyes narrow, pleased.{/n} "I have been wondering since what else you are holding."''',
         c("Continue", "yes")),
-    nt("why_base", '''"You killed me in front of my brother's clowns, and you did not gloat; you went back to your war as if a demon lord were one more chore. Then you came to Threshold and, of everything a mortal could say to a queen's ghost, you told me you had killed my shadow." {n}The projection tilts its head.{/n} "The only true thing anyone has said to me since the Council, and you said it as a joke. I have been wondering since what else you know."''',
+    nt("why_base", '''"You killed me in front of my brother's clowns, crowing that you had got me at last, and then you went back to your war as if a demon lord were one more chore. Then you came to Threshold and, of everything a mortal could say to a queen's ghost, you told me you had killed my shadow." {n}The projection tilts its head.{/n} "The only true thing anyone has said to me since the Council, and you said it as a joke. I have been wondering since what else you know."''',
         c("Continue", "yes")),
     nt("yes", '''"Yes." {n}No hesitation at all; she has decided long before you asked, and was only waiting to see whether you would.{/n} "Beside me. Not at my feet. Where I can see your hands."
 "And since we are being honest, clown, there is one thing a projection does better than a body. It cannot be touched." {n}Her eyes glitter.{/n} "It can touch."''',
@@ -273,7 +273,7 @@ page("nocticula.trickster.defeated.epilogue.favour", "The favour",
 {n}The chair at the Commander's right hand, at every table the Commander would ever sit at, and nobody was to ask whose. Nobody did. The Commander paid it for the rest of a long life, and was never once sure which of them was being watched.{/n}''',
     ("trickster.ever", PAID, "noct.complete"), living=True)   # Last Call (doc 04): add Forbids lastcall.active when the finale lands (backlog).
 page("nocticula.trickster.defeated.epilogue.debt", "An unnamed favour",
-    '''{n}In the eleven years she kept the Commander waiting for an answer, the Lady in Shadow never named the favour. The Commander had bought her protection with it at Threshold and then declined her chair, and she let the debt stand exactly as it was: unnamed, unasked, and in the Abyss's books under the Commander's name. Nobody who wanted her secret out of the Commander ever got close enough to try. When she finally named it, it was the chair.{/n}''',
+    '''{n}In the eleven years she kept the Commander waiting for an answer, the Lady in Shadow never named the favour. The Commander had bought her protection with it at Threshold; she had withheld the chair, and let the debt stand exactly as it was: unnamed, unasked, and in the Abyss's books under the Commander's name. Nobody who wanted her secret out of the Commander ever got close enough to try. When she finally named it, it was the chair.{/n}''',
     ("trickster.ever", PAID, DECLINED), forbids=("noct.complete",), living=True)
 page("nocticula.trickster.defeated.epilogue.stalemate", "Places set",
     '''{n}Twice, agents of the Lady in Shadow were found in the Commander's household: a cook who could not cook, a steward who counted the wrong things. Twice, the Commander sent them home with a joke pinned to their sleeves.{/n}
@@ -310,7 +310,7 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
     nt("m_late", '''"You missed me at the door, and then you found me anyway, one shadow on a tent wall in a camp full of them, and put your boot on the right one. I have been wondering since what else you notice."''', *OFFER_PAGE),
     nt("m_floor", '''"You looked at the floor while my brother was drinking. Nobody looks at the floor. I have been wondering since what else you notice."''', *OFFER_PAGE),
     nt("m_dress", '''"You made me walk into a war council in what your pranks had left me, and you never once apologised. I have been waiting an age for someone that rude."''', *OFFER_PAGE),
-    nt("m_voice", '''"You carried my secret through my murder in my brother's voice and never spent it. I want to see what else you can carry."''', *OFFER_PAGE),
+    nt("m_voice", '''"You wore my brother's voice in my palace and walked out with my secret, and after you killed me you still never spent it. I want to see what else you can carry."''', *OFFER_PAGE),
     nt("m_base", '''"You told a queen's ghost you had killed her shadow. It was the only true thing anyone said to me that year, and you said it as a joke."''', *OFFER_PAGE),
     nt("yes_page", '''"So. Yes. Beside me, where I can see your hands. Do not make me say it twice. I will deny it."''',
         c("[Cross the room to her chair.]", "crossed"),
@@ -466,7 +466,7 @@ COURT_CHOICES = (c('"Ask her yourself. Carefully."', flags=(SECRET_VELLEXIA,)),
                  c("[Say nothing.]", abort=True))
 
 threshold("nocticula.trickster.court.vellexia", "Black for Vellexia", "\"Lady Vellexia of the Upper City. You've heard.\"", [
-    nar("start", "{n}At the name the projection's attention sharpens, the way a cat's does at a sound behind a wall. "
+    nar("start", "{n}At the name Nocticula's attention sharpens, the way a cat's does at a sound behind a wall. "
                  "The fires of Threshold lean in to listen with her.{/n}",
         c("Continue", "kept", requires=(V_KEPT,)),
         c("Continue", "diminished", requires=(V_DIMINISHED,), forbids=(V_KEPT,)),
@@ -497,11 +497,11 @@ COURT_H_CHOICES = (c('"She would rather have a knife than your patience, Lady."'
                    c("[Say nothing.]", abort=True))
 COURT_H = ('"I heard. Yozz\'s girl walked into my city\'s Guild in the middle of the evening, pinned a box over your '
            'contract and untied the ribbon, and my assassins passed a piece of you from hand to hand and bowed to it." '
-           '{n}The projection\'s smile is slow.{/n} "Her father said nothing. He never does, for her. One day I will collect '
+           '{n}Her smile is slow.{/n} "Her father said nothing. He never does, for her. One day I will collect '
            'the rent on that silence from him."')
 
 threshold("nocticula.trickster.court.horzalah", "An ear in my city", '"The Guild in your city has a new story, Lady."', [
-    nar("start", "{n}At the word Guild the projection's attention sharpens, and the fires of Threshold lean in to listen.{/n}",
+    nar("start", "{n}At the word Guild Nocticula's attention sharpens, and the fires of Threshold lean in to listen.{/n}",
         c("Continue", "threat", requires=(H_THREAT,)),
         c("Continue", "free", requires=(H_FREE,), forbids=(H_THREAT,)),
         c("Continue", "kept", forbids=(H_THREAT, H_FREE))),
