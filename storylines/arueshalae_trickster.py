@@ -445,7 +445,7 @@ hub(P + "failed.chaplain", "Chaplain", 3,
 "He thanked me," she says, when she comes back. "He didn't know what I am, and he thanked me. Is that what you wanted? Is that the joke?"''',
       c('"Then do it anyway. That\'s the job."', "job", alignment=("Chaotic", 1), flags=(CHAPLAIN, STARTED)),
       c('"It was a joke. I\'ll strike it out."', abort=True)),
-    a("job", '''"That's the job." {n}She repeats it the way people repeat a sentence in a foreign language, to see how it sits in the mouth.{/n} "All right. All right. Tomorrow at sunrise, then. Somebody has to tell me which end of a censer is which."''', c()),
+    a("job", '''"That's the job." {n}She repeats it the way people repeat a sentence in a foreign language, to see how it sits in the mouth.{/n} "The chaplains bury their own, you know. They won't do even that for me, if I fall. Somebody had better think about that before I do." "All right. All right. Tomorrow at sunrise, then. Somebody has to tell me which end of a censer is which."''', c()),
 ], ("trickster", "trickster.ever", FAILED), forbids=(CHAPLAIN, CLOSED, DEAD), chapters=(3, 5),
     EntryMythic="PlayerIsTrickster", TricksterDevice=True, TricksterState="failed")
 
@@ -470,7 +470,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c('"Neither."', "neither", flags=(CLOSED,))),
     a("both", '''"Both." {n}She closes her eyes.{/n} "I was afraid you'd say that. I hoped you would."
 {n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} "Both. All right. Both."''', c()),
-    a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} "No." {n}She picks the blade back up.{/n} "I hid half of myself for centuries, the other way round, for people who only wanted the half they liked. I won't do it for you. Ask me again when you want all of me, or don't ask."''', c()),
+    a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} {n}She picks the blade back up and holds it the way she holds it at the rail, as if it might cut her.{/n} "The hunger is in the good days too. It's in the blessing, and the bread, and in your hand when you pass me the cup. I can't send it into the next room while you visit." {n}Very quietly:{/n} "No. I'm sorry. I am. If you ever find you can bear the rest of me, I'll be on these steps."''', c()),
     a("not_yet", '''"Don't answer yet. You've got the look of someone who's going to be clever, and I can't bear clever tonight." {n}She picks the blade back up.{/n} "Ask me when I've gone a week without wanting to eat anyone. I'll tell you then. I promise I will."''', c()),
     nar("neither", '''{n}She lays the blade down very carefully on the step between you, as if it were the answer and she were giving it back, and goes inside.{/n}''', c()),
 ], ("trickster.ever",), forbids=(EVIL_DEAD, CLOSED, DECLINED, COMMITTED), delay=72, chapters=(5,),
@@ -489,7 +489,7 @@ hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
 # The chaplain never died and was never fed: her week ends on the thing that was done to her, the public appointment.
 hub(P + "terms_again_chaplain", "Seven days at the rail", 5, '"It\'s been a week."', [
     a("start", '''"Seven days. I counted twice, and then I made Sosiel count, because I didn't trust myself." {n}She doesn't smile. She is still wearing the stole the second company bought her, and she has not stopped touching its fringe.{/n}
-"Before I answer, I want one promise from you, and you won't like it. You made me their chaplain in front of a kneeling company, at vespers, so that I couldn't refuse without shaming every one of them. It worked. I'm keeping it. But it's mine now. If I ever want to put this down, or put you down, I walk out of that vestry, and you don't stand up at the altar rail and announce anything to keep me. No more staging. Not for me."''',
+"Before I answer, I want one promise from you, and you won't like it. You made me their chaplain in front of a kneeling company, at vespers, so that I couldn't refuse without shaming every one of them. It worked. I'm keeping it. But it's mine now. They kneel to me now, and I can't bear to disappoint a single one of them, and you knew I wouldn't." {n}Her fingers stop on the fringe.{/n} "Don't ever do that to me again. If you want something of me, ask me where only Desna can hear us, not in front of a kneeling company."''',
       c('[Promise] "No more staging. Your altar, and your door."', "yes", flags=(COMMITTED, NO_STAGING)),
       c('"I can\'t promise that."', "no", flags=(CLOSED,))),
     a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as I can stand at that rail without wanting to bite the hands on it." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
@@ -694,6 +694,17 @@ SCENES.extend([
 for _scene in SCENES:
     if _scene["Id"] in (P + "dead.starving", P + "insurance", P + "returned.aftertaste") and ELYSIUM_DONE not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM_DONE)
+
+
+# Q11 coordinator ruling (Chivarro precedent): the dead-state return is earned in life. Without the gift there is nothing to
+# pull; the Ledger says so plainly while she lies dead and unreturned.
+from storylines import lastcall_ledger as _ledger
+_ledger.EXTRA_ENTRIES.append(dict(
+    Id="lost.arueshalae", Section="Debts", Portrait="Arueshalae", Title="Arueshalae: nothing to pull",
+    Text=("{n}Arueshalae died in my service, and the chaplains will not raise a succubus. She told me once what her kind "
+          "give a mortal they mean to keep, and I never asked her for it. There is no thread in my wrist to pull and nothing "
+          "of hers left to bargain with. Whatever the priests will not do, I cannot.{/n}"),
+    Lines=[], Requires=["trickster.ever", DEAD], Forbids=[RETURNED, GIFT], AnyGroups=[], Tooltip="RRT_Debt"))
 
 
 def integrate(payload):

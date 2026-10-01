@@ -67,10 +67,10 @@ hub(FORTY, "Number forty", 3, '"How\'s the list?"', [
 
 hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me at meals."', [
     a("start", '''"Of course I have. You told me to watch people eat three times a day. You eat three times a day. Sometimes." {n}She has the daybook open, and she is completely unrepentant.{/n}
-"You're my most interesting subject. Everyone else eats as if they're at a meal. You eat as if you expect to be ambushed in the next four minutes. You keep your back to the wall. You never finish. You give your bread away, every time, to whoever's next to you, and you don't notice you've done it."''',
+"You're my most interesting subject. Everyone else eats as if they're at a meal. You eat as if you expect to be ambushed in the next four minutes. You keep your back to the wall. You never finish. Last night you gave half your bread to whoever was next to you, and didn't look to see who it was."''',
         c("Continue", "notes")),
     a("notes", '''{n}She turns a page, reading aloud in a clinical voice.{/n} "'Subject laughed with mouth full, twice. Subject told the quartermaster a joke about a goat that was not funny. Quartermaster laughed anyway. Conclusion: subject is loved.'" {n}She looks up, suddenly shy.{/n}
-"I didn't understand that, at first. Why the quartermaster laughed. And then I understood it, and I had to stop watching for a day." {n}She closes the book.{/n} "That's the thing about watching mortals properly. Eventually you see something you want, and you have to decide what to do about it."''',
+"I didn't understand that, at first. Why the quartermaster laughed. And then I understood it, and I had to stop watching for a day." {n}She closes the book.{/n} "I watched you hand that bread away, and I wanted to be the one sitting next to you. That's all. That's the whole entry."''',
         c('"And what are you going to do about it?"', "do", flags=(WATCHED,)),
         c('"Tell the quartermaster the goat joke was very funny."', "goat", flags=(WATCHED,))),
     a("do", '''"Keep watching." {n}She smiles, very small.{/n} "For now. Watching is what I do instead of taking. One day I'll put the book down and sit beside you at the mess table instead. I almost did today." {n}She tucks the book into her belt.{/n} "I'll let you know. Probably by accident."''', c()),
@@ -200,7 +200,7 @@ hub(SOSIEL_OFFER, "A kinder man's offer", 3, '"I went to see Sosiel."', [
         c('"Keep your sentence. I\'ll be insufferable at you until you find it."', "hard", flags=(SOSIEL_OFFER,)),
         c('"Go back and thank him properly. He\'d want to know you chose."', "thank", flags=(SOSIEL_OFFER,))),
     a("hard", '''{n}She laughs, and it breaks something in her shoulders loose.{/n} "Insufferable. Yes. Everybody says so. The quartermaster keeps a list." {n}She stands.{/n} "Be insufferable at me, then. For a long time. And when I go back to Sosiel, it'll be to learn the lute, not to eat."''', c()),
-    a("thank", '''"He'd want to know I chose." {n}She nods slowly.{/n} "Yes. He would. That's the difference, isn't it? He'd rather I chose no than yes because I couldn't help it." {n}She stands.{/n} "I'll go back tomorrow. With a set of strings for his lute; I've heard the third one buzz. I know how to buy a man's cooperation. This isn't that."''', c()),
+    a("thank", '''"He'd want to know I chose." {n}She nods slowly.{/n} "Yes. He would. He'd rather I walked away from him on my own feet than came crawling to his tent too hungry to say anything at all." {n}She stands.{/n} "I'll go back tomorrow. With a set of strings for his lute; I've heard the third one buzz. I know how to buy a man's cooperation. This isn't that."''', c()),
 ], (AFTERTASTE,), delay=48, chapters=(3, 5))
 
 

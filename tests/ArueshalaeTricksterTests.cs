@@ -142,10 +142,13 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_DeadDeclined: the vow is not a soft decline that ends the diagnosis.");
 
         // --- Polish batch 9: no mythic power lifts the death. The lore lowers a DC; the gift is prepared in life ------
-        check(Ch(starving, "treat", 0).Next == "work" && Ch(starving, "treat", 1).Next == "work"
-              && Ch(starving, "work", 0).Check?.Skill == "SkillLoreReligion" && Ch(starving, "work", 0).Check!.DC < 22
-              && Ch(starving, "wake", 0).Check!.DC == 22,
-            "Trk_Arueshalae_NoPowerLift: the lore path revives without a check, or does not lower the DC.");
+        // Q11 ruling: the unprepared wager is retired (earned outcome); its entry answers can never be selected.
+        check(new[] { 0, 2 }.All(i => Ch(starving, "start", i).Requires.Contains(P + "gift_held") && Ch(starving, "start", i).Forbids.Contains(P + "gift_held")),
+            "Trk_Arueshalae_NoPowerLift: an unprepared revival answer is still selectable.");
+        var lostPage = S("arueshalae.lastcall.page");
+        check(lostPage.Forbids.Contains("arueshalae_dead") && lostPage.ForbidOverrides["arueshalae_dead"] == P + "returned"
+              && story.Books["trickster.ledger"].Entries.Any(e => e.Id == "lost.arueshalae" && e.Forbids.Contains(P + "returned") && e.Forbids.Contains(P + "gift_held")),
+            "An unprepared death keeps a living Last Call coda, or the Ledger does not record what was lost.");
         check(!starving.Nodes.Any(n => n.Text.Contains("negative condition")), "Trk_Arueshalae_NoPowerLift: death is still read as a negative condition.");
         var insurance = S(P + "insurance");
         var aliveGift = Later(story, World(story, 3, "", "trickster", "trickster.ever"), 30);

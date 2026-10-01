@@ -61,7 +61,7 @@ session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
 {n}She holds the scratch up for you to see.{/n} "It bled. It healed. Nothing was taken. It wasn't afraid of me. It scratched me, and it wasn't afraid."''',
         c('"Congratulations. The patient has a pet."', "pet"),
         c('"I\'m going to need to examine that scratch. Very thoroughly."', "examine")),
-    a("pet", '''"It isn't mine. Nobody owns a cat. That's the other thing I've learned about mortals: they love the things they can't own, and they're very happy about it, and they complain about it all the time." {n}She beams.{/n} "I'm going to buy it a fish."''',
+    a("pet", '''"It isn't mine. Nobody owns a cat, the apprentice says. It took my fish, and scratched me, and came back this morning anyway, and she says that means it likes me." {n}She frowns at the scratch, and then beams.{/n} "I'm going to buy it a fish."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
     a("examine", '''{n}She laughs and hides the hand behind her back.{/n} "You are the worst thing that ever happened to a demon. The scratch is fine. The scratch is perfect. I'm keeping it until it scars." {n}She pauses.{/n} "Do succubi scar? I don't know. I'll find out. That can go in the notes too."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),

@@ -118,14 +118,15 @@ PARTNERS = []
 
 
 def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, page_forbids=(), deal=(), call=None,
-            call_commit=None, ledger=None, page_commit_groups=None):
+            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None):
     """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
     route's late_committed key); `commit` stays first."""
     PARTNERS.append(dict(key=key, rel=rel, commit=commit, closed=closed, title=title, opener=opener, paragraphs=paragraphs,
                          declined=declined, page_forbids=tuple(page_forbids), deal=[list(g) for g in deal], call=call,
                          call_commit=call_commit or [[commit]], ledger_title=ledger[0] if ledger else None,
                          ledger_text=ledger[1] if ledger else None,
-                         page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None))
+                         page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None,
+                         page_forbid_overrides=dict(page_forbid_overrides or {})))
 
 
 def call(entry, text, *choices):
@@ -529,7 +530,7 @@ partner("arueshalae", "arueshalae", "arueshalae.committed", "arueshalae.closed",
         page_p('''The Commander had once asked her for only the good days, and she had refused. She made the Commander pay for asking at the table: for a month {mf|he|she} ate at the far end, apart, while she was very polite about it, until she finally went and sat at that end too.''', requires=(AU + "cost.saint_only",)),
         page_p('''The world buried the Commander. Arueshalae sat through the funeral with her hands behind her back and did not cry, because she had taken the Commander's pulse that morning and knew exactly how the joke ended.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen, she was the one who took the first pulse, and she held the wrist long after she had counted it.''', requires=(H2,)),
-    ), declined=AU + "declined",
+    ), declined=AU + "declined", page_forbid_overrides={"arueshalae_dead": AU + "returned"},
     deal=[[AU + "cost.nocticula_debt"], [AU + "cost.nocticula_favour"]],
     call=call('''[Call in the second opinion] "Your Majesty, you sent her back on credit. Collect your summons tonight. I'll be here to be collected from."''',
         '''{n}A long way off, a black pearl on a string goes warm against a succubus's throat. She puts her hand over it and does not look at you, and does not take it away.{/n}''',
@@ -831,6 +832,10 @@ def pages():
         extra = dict(Relationship="lastcall")
         if part["declined"]:
             extra["ForbidOverrides"] = {part["declined"]: part["commit"]}
+        if part.get("page_forbid_overrides"):
+            # Q11: a partner who stayed dead (no earned return) gets no living coda; her own return lifts the forbid.
+            forbids = forbids + tuple(k for k in part["page_forbid_overrides"] if k not in forbids)
+            extra.setdefault("ForbidOverrides", {}).update(part["page_forbid_overrides"])
         if part.get("page_commit_groups"):
             extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
