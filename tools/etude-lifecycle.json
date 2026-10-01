@@ -1606,6 +1606,24 @@
     "hold"
    ]
   },
+  "518d91f94fb3a504a91571b7e75c68fc": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "IrabethSacrificedHerselfSavingGalfrey",
+    "IrabethDead",
+    "Irabeth",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "IrabethSacrificedHerselfSavingGalfrey",
+   "traits": [
+    "hold"
+   ]
+  },
   "52576309e24d8024fbc08c2ff7016c2f": {
    "ancestors_completed": [],
    "areas": {},
