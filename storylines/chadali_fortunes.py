@@ -289,8 +289,8 @@ fortune(MORNING, "Burnt edges", '"Is something burning?"', [
 
 fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
     ch("start", '''{n}She is holding a letter from one of her priests. You can see the seal of a little Elysian sun on it. Her face is quite calm, which is how you know you are in trouble.{/n}
-"My priests in Drezen had a very lucky month." {n}Calmly.{/n} "Their roof was mended for free. The grain came early. A soldier returned a purse she'd found, and there was twice as much in it as was lost." {n}She folds the letter.{/n}
-"And every single lucky thing had a crusade stamp on it somewhere. Your stamp." {n}She looks up.{/n} "You rigged my luck."''',
+"The crossbowman's brother came home from the walls." {n}Calmly.{/n} "She went to my shrine by the grain market to give thanks, and she paid for a new roof for it out of her own wages, because her prayer worked. My priest wrote to tell me how happy she was." {n}She folds the letter.{/n}
+"Her prayer didn't work. You did. There was a crusade order with your seal on it moving him off the wall the morning after I read you her helmet. I asked." {n}She looks up.{/n} "You rigged my luck. And now she's paying for a roof on it."''',
       c('"I wanted your people to have a good month. Is that so bad?"', "bad"),
       c('"I wanted you to see it work. Your luck. For once."', "see"),
       c('[Trickster] "Someone had to. You\'re always giving it away."', "giving")),
@@ -314,7 +314,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
 "Then do it with your name on it." {n}Very quietly.{/n} "If you have to act, act. Just don't do it wearing my face. I'll never ask you not to feed them. I'm asking you not to pretend you're me while you do it."
 "That's the whole of it. That's all I've got left that's mine."''',
       c('"With my name on it. I promise that much."', "stopped")),
-], requires=(MORNING,), forbids=(RIGGED,))
+], requires=(MORNING, "chadali.wagers.prayer_answered"), forbids=(RIGGED, "chadali.wagers.prayer_credited"))
 
 
 # --- 9. The meadows: Elysium, and a mortal clock. -----------------------------------------------------------------

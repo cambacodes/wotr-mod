@@ -41,6 +41,7 @@ SEEN_CUES = {
     DEVIL_EXCUSED: ["169e409dbf64fc14cbaa4fb3ad2121a7"],
     ODIOUS: ["12bb8e9afd0788c4a864e29d4add775f"],
     FREE_SPACE: ["2889c1e9b792f2c4e95a8cc551971063"],
+    "chadali.lexicon_found": ["805e49b56b678a145891d30f5a5b30f6", "331665d02ccb36a4ba8ad2568a333947"],   # Council_3/Cue_0005, Cue_0016
 }
 
 RECIPE = W + "the_recipe"
@@ -161,7 +162,7 @@ wager(PRAYERS, "A prayer in Drezen", '"Do people in Drezen pray to you?"', [
 "So I'll make you a bet. You can see the walls. You're the Commander. You could put her brother somewhere safe tomorrow with one word, and she'd think I did it." {n}Her eyes come up.{/n} "Would you? And would you let me have the credit?"''',
       c('[Trickster] "I\'ll move him. You keep the credit. She\'ll never know it was me."', "moved", flags=(PRAYER_ANSWERED,)),
       c('"No. I don\'t move soldiers because someone prayed. I move them because the war needs it."', "refused", flags=(PRAYER_LEFT,)),
-      c('"I\'ll move him. And I\'ll tell her it was me."', "told", flags=(PRAYER_ANSWERED,))),
+      c('"I\'ll move him. And I\'ll tell her it was me."', "told", flags=(PRAYER_ANSWERED, W + "prayer_credited"))),
     ch("moved", '''{n}She claps, and then catches herself, and looks at the paper with sudden, sharp unease.{/n}
 "That's a trick, isn't it. That's you making it true, and me getting thanked." {n}She is quiet.{/n} "She'll pray to me harder next time. For the next brother. And next time you won't be there."
 {n}She folds the paper into a very small square.{/n} "I'm going to let you do it. And I'm going to remember that I let you. Both of those are true."''',
@@ -183,7 +184,7 @@ wager(PRAYERS, "A prayer in Drezen", '"Do people in Drezen pray to you?"', [
 
 wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
     ch("start", '''"Because you are!" {n}She says it the way other people say the sky is up.{/n}
-"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You found the Lexicon. You found the way in. You make things go well just by standing near them."
+"The very first time you walked into this hall, I said, 'Just look how cute they are! They'll be our lucky charm,' and everyone laughed, and I was right. You walk into a room and things start going well. You make things go well just by standing near them."
 {n}She reaches over and pats your cheek, twice, as if you were a very good dog.{/n}''',
       c('"I\'m not a charm. I\'m a person. I bleed, and I choose."', "person"),
       c('"I don\'t mind being cute. I mind being an ornament."', "ornament"),

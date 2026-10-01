@@ -63,7 +63,10 @@ RELATIONSHIP = dict(
     TricksterAccess={LOST: dict(detect=[LOST], device=P + "fought.lucky", returned=RETURNED)},
 )
 
-DERIVED = {LATE_COMMITTED: [["trickster.ever", STARTED], ["trickster.ever", RETURNED]]}
+HALL_SEALED = P + "hall_sealed"
+DERIVED = {LATE_COMMITTED: [["trickster.ever", STARTED], ["trickster.ever", RETURNED]],
+           # The hall no longer opens: the Council's debrief closed it, it was fought, or the path was lost.
+           HALL_SEALED: [["council.debrief_motion"], ["council.fought"], ["council.fought_nocta_allied"], ["trickster.failed"]]}
 
 
 def ch(id, text, *choices, **kw):
@@ -170,19 +173,18 @@ hall(P + "after.orange_tree", "The seed from Axis", '"You came back."', [
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED,), delay=72)
 
 
-# The same second ask when the hall has closed after her soft no and she has reconciled (Sol r2 INT): by letter, then in person.
-letter(P + "after.orange_tree_letter", "The seed from Axis", [
-    ch("start", '''{n}A seed comes up from the Drezen gate in a twist of yellow silk: pale, striped, warm as a coin that has been in a pocket. The note is in the round hand, with fewer underlinings than usual.{/n}
-"The door to the hall doesn't open any more, and I said no to you once, in it. I'm still cross about the needle. I'm also still waiting for my proper question. This is from the tree at the top of Axis. Plant it in your city: a real one, with a gardener and a wall, not a trick. If it takes, ask me again and I'll say yes. If you won't spend a single stone on it, then it was only ever a game. C."''',
-      c('[Plant the tree] "It gets the best corner of the citadel garden."', "came", crusade=("Materials", -100),
-        flags=(COMMITTED, ORANGE_TREE)),
-      c('[Send the seed back] "I don\'t garden."', flags=(CLOSED,))),
-    nar("came", '''{n}She comes herself, the week the wall goes up, in yellow silk with a basket on her arm, and inspects the seedling on her knees in the mud of the citadel garden before she will look at you at all. Then she stands, wipes her hands down your tabard, and says, "Yes. There. You don't even have to ask again."{/n}
-{n}That night she kicks her sandals off inside the door of your quarters and does not bother with the lamp. She pulls the flower from her hair and the silk from her shoulders, pushes you down onto the bed with both hands, and climbs over you, laughing, a knee either side of your hips. "I bet you," she says against your mouth, "that the tree takes."{/n}''',
-        c("Continue", "morning")),
-    nar("morning", '''{n}In the morning there is garden soil on the sheets and honey on the pillow, and she is out by the wall before you wake, telling the gardener exactly how deep. The seedling has put out one new leaf overnight. She swears it was not her.{/n}''',
-        c("[Go and look at the leaf.]")),
-], requires=("trickster.ever", DECLINED, RETURNED), forbids=(COMMITTED, CLOSED, P + "after.orange_tree"), delay=72)
+# A live Trickster who never called her coin before the hall sealed peacefully: a wager by post (Sol r3 INT).
+LATE_WAGER = P + "cost.late_wager"
+letter(P + "council.late_wager", "A penny by post", [
+    nar("start", '''{n}The Council's hall is sealed, and you never once called a coin for her in it. So you call one now, by post: a Drezen silver penny, worn smooth, wrapped in a note that names a wager and a stake.{/n}''',
+        c('[Send the wager] "Heads, you write back. Tails, you write back anyway. The stake: a hundred crowns to your shrine by the grain market, whichever way it falls."',
+          "reply", crusade=("Finances", -100), mythic="Trickster", alignment=("Chaotic", 1)),
+        c("[Keep the penny.]", abort=True)),
+    ch("reply", '''{n}The answer comes in a round, happy hand with a great many underlinings, and a cookie in the envelope, somewhat broken.{/n} "That's not a bet! Both faces are the same! That's cheating where I can see it, which is allowed, but only just."
+"I'm keeping the penny. The shrine is keeping the hundred crowns; its roof leaks. And I'm writing back, which means you win, which I hate." {n}Further down, smaller:{/n} "Next time send me something true instead of something clever. Then I'll decide whether you're lucky."''',
+      c('[Write back] "Something true, then. I missed you at the table."', flags=(STARTED, COURTED, LATE_WAGER)),
+      c("[Let it rest there.]")),
+], requires=("trickster", "trickster.ever", "council.debrief_motion"), forbids=(PRIMED, STARTED, CLOSED, LOST), delay=24)
 
 
 # --- 4.2 Hall lost before the payoff (primed): the orange by courier. --------------------------------------------
@@ -247,9 +249,11 @@ SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
         c("[Give her back the coin.]", "coin"),
         paragraphs=(
             p("{n}The orange was bruised on one side, the way the first one had been, on the road from the sealed hall.{/n}", requires=(LATE,)),
+            p("{n}She wore a Drezen silver penny on a string round her neck, and tapped it, once, as she sat down.{/n}", requires=(LATE_WAGER,)),
+            p("{n}She had said no once, in the hall, and had meant it at the time. The hall was sealed now, and the seed she had meant to bring was still in her sleeve. She had come up the road anyway, to find out whether she still meant it.{/n}", requires=(DECLINED,)),
             p("{n}She had felt the coin fall at the rift, the night the Commander called in the luck she had borrowed, and had paid it all back at once, the way she did everything. She had come up the road, she said, to see what it had bought.{/n}", requires=("chadali.lastcall.called",)),
             p("{n}She had kept the apology the herald read in the square; she took it out of the basket, folded very small, and put it on top of the cookies, where the Commander would see it.{/n}", requires=(APOLOGISED,)),
-            p("{n}Before anything else she held out her hand, palm up, and waited until the Commander understood, and pricked a thumb on the brooch-pin she offered. \"The needle,\" she said. \"You promised. That's paid.\"{/n}", requires=(NEEDLE_OWED,)),
+            p("{n}Before anything else she held out a brooch-pin, point first, and then, while the Commander was still reaching for it, put it away again. \"No. The needle you owe me isn't a pin in a kitchen,\" she said. \"It's the next real one, the next time somebody comes for something you love with a needle in their hand. It stays on the books until then. I never forget a bet.\"{/n}", requires=(NEEDLE_OWED,)),
         )),
     nar("stay", '''{n}"Yes," said Chadali, before the word was quite finished. She took off her sandals and set them side by side under the Commander's table, the way a traveller does who means to stay. Then she pulled the white flower out of her hair, unpinned the yellow silk at her shoulder and let it fall to her waist, came round the table, and climbed into the Commander's lap as if she had been planning the route since the hall was sealed. "I bet you," she said against the Commander's mouth, both hands already busy at the Commander's belt, "that nobody comes through that door before morning."{/n}
 {n}Nobody did. In the morning the coin stood on its edge on the windowsill, she lay asleep across most of the bed with honey in her hair, and the barracks had lost at dice all night. They went on losing for a month. Nobody could prove anything.{/n}'''),
@@ -258,11 +262,13 @@ SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
 ],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "council.fought", "council.fought_nocta_allied", "sacrifice"),
     RequiresAnyGroups=[[STARTED, RETURNED]],
-    ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back"}, **EP))
+    # A soft no whose hall sealed before the seed could come keeps its later ask here (R2-1; Sol r3 INT).
+    ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED, "sacrifice": "trickster.commander_back",
+                     DECLINED: HALL_SEALED}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "ChadaliEpilogue", 6, "", [
     nar("page", '''{n}Chadali never did get her proper question. Every year, on the anniversary of the Council's first session, a parcel of cookies arrived in Drezen, with a coin in it lying flat, heads up, and no note at all.{/n}''')],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied"),
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "council.fought", "council.fought_nocta_allied", HALL_SEALED),
     ForbidOverrides={"council.fought": RETURNED, "council.fought_nocta_allied": RETURNED}, **EP))
 
 SCENES.append(scene(P + "epilogue.lucky_night", "", "ChadaliEpilogue", 6, "", [

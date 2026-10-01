@@ -115,7 +115,7 @@ internal static class ChadaliTricksterTests
                 "A hall scene is not on her private list in Chapters 3/5 behind the sealed-hall guard: " + hall.Id);
         foreach (var remote in new[] { letter, lucky })
             check(Rules.IsRemote(remote) && remote.MinChapter == 5 && remote.MaxChapter == 5, "A sealed-hall letter is not a Chapter 5 letter: " + remote.Id);
-        check(own.Count(Rules.IsRemote) == 3, "Chadali has letters beyond the spec's one-per-branch budget (orange, 'Lucky you', the sealed-hall seed).");
+        check(own.Count(Rules.IsRemote) == 3, "Chadali has letters beyond the spec's one-per-branch budget (orange, 'Lucky you', the late wager; one per branch).");
         check(lucky.TricksterDevice && lucky.TricksterState == "chadali.lost_at_council" && lucky.Requires.Contains("trickster")
               && lucky.Requires.Contains("chadali.lost_at_council.latched"),
             "'Lucky you' is not the ER-2 device of the lost-at-council state.");
@@ -249,14 +249,27 @@ internal static class ChadaliTricksterTests
               && paras.Single(p => p.Requires.Contains(P + "cost.luck_owed") && !p.Requires.Contains(F + "paid_back")).Forbids.Contains(F + "paid_back")
               && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains("chadali.lastcall.called")),
             "The romance pages contradict the Last Call call-in or the repaid loan.");
-        // Sol r2 INT: a soft no followed by the hall's closing and her reconciliation keeps the priced second ask (by letter).
-        var seedLetter = Sc(P + "after.orange_tree_letter");
-        var noThenFought = World(story, 5, "trickster.ever", "chadali.started", P + "declined", "council.fought", "chadali.lost_at_council.latched", P + "returned");
-        check(Rules.IsRemote(seedLetter) && Rules.Available(story, seedLetter, noThenFought) && !Rules.Available(story, tree, noThenFought)
-              && After(seedLetter, noThenFought, "start", 0).All(r => r.Has("chadali.committed") && r.Has(P + "cost.orange_tree"))
-              && Choice(seedLetter, "start", 0).Crusade?.Amount == -100 && First(seedLetter, noThenFought, "start", 1).Has("chadali.closed")
-              && seedLetter.Nodes.Single(n => n.Id == "came").Text.Contains("climbs over you"),
-            "A soft no is locked out when the hall closes before the second ask.");
+        // Sol r3 INT: a live, unprimed Trickster whose hall closed in peace is reached by a priced wager by post; a soft no whose hall
+        // sealed before the seed keeps its later ask on the late page (no extra letter, Sol r3 COX).
+        var lateWager = Sc(P + "council.late_wager");
+        var peaceful = World(story, 5, "trickster", "trickster.ever", "council.debrief_motion");
+        var wagerOut = After(lateWager, peaceful, "reply", 0);
+        check(Rules.IsRemote(lateWager) && Rules.Available(story, lateWager, peaceful) && wagerOut.All(r => r.Has("chadali.started"))
+              && Choice(lateWager, "start", 0).Crusade?.Amount == -100 && !Rules.Available(story, lateWager, World(story, 5, "trickster", "trickster.ever", "council.debrief_motion", P + "primed"))
+              && Rules.Available(story, pageCommit, Later(story, wagerOut[0], 100, 6)),
+            "A peaceful, unprimed sealed hall has no way in.");
+        var declinedSealed = World(story, 6, "trickster.ever", "chadali.started", P + "declined", "council.debrief_motion");
+        check(Rules.Available(story, pageCommit, declinedSealed) && !Rules.Available(story, pageDeclined, declinedSealed)
+              && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(P + "declined"))
+              && !story.Scenes.Any(s => s.Id == P + "after.orange_tree_letter"),
+            "A soft no is locked out when the hall seals before the seed.");
+        // Sol r3 BEL: the rigging is the Commander's own secret answer to the prayer; the needle is renegotiated, not paid with a pin.
+        var rigged = Sc(F + "rigged");
+        check(rigged.Requires.Contains(W + "prayer_answered") && rigged.Forbids.Contains(W + "prayer_credited")
+              && !pageCommit.Nodes[0].Paragraphs.Any(p => p.Text.Contains("That's paid")), "Chadali accuses the Commander of an act never chosen, or a pin pays the needle.");
+        // Sol r3 CAN: the Lexicon recollection waits for the native discovery.
+        check(Sc(S + "an_interesting_way").Requires.Contains("chadali.lexicon_found")
+              && story.SeenCues["chadali.lexicon_found"].Contains("805e49b56b678a145891d30f5a5b30f6"), "The Lexicon is recalled before it is found.");
         // Sol r2 CAN/BEL: no Chapter 5 essence debate in a Chapter 3 sitting; the burnt-cookie secret is recalled only after it was told.
         check(!Sc(H + "the_seat_beside_her").Nodes.Any(n => n.Text.Contains("essences"))
               && Choice(Sc(F + "worthless"), "frightened", 0).Requires.Contains(F + "burnt_edges") && Choice(Sc(F + "worthless"), "frightened", 2).Next == "forgive_early",
@@ -272,7 +285,7 @@ internal static class ChadaliTricksterTests
         check(night.Nodes.Any(n => n.Id == "cut") && night.Nodes.Single(n => n.Id == "look").Choices.Single().Set.Contains(F + "night"),
             "The night does not reach its threshold and cut.");
         // Sol r2 HOW: no Chapter 4 key proposal in a Chapter 3 fixture.
-        var courting3 = World(story, 3, "trickster.ever", "chadali.started", "chadali.called_babbling", "chadali.cobblehoof_stopped");
+        var courting3 = World(story, 3, "trickster.ever", "chadali.started", "chadali.called_babbling", "chadali.cobblehoof_stopped", "chadali.lexicon_found");
         foreach (var id in new[] { W + "the_recipe", W + "born_lucky", W + "her_worshippers", W + "a_lucky_charm", W + "the_old_fellow",
                                    W + "just_joking", W + "odious_questions", W + "knucklebones", W + "a_free_space", W + "so_gloomy",
                                    W + "the_real_wager", S + "what_you_said", S + "a_dull_future", S + "an_interesting_way",
@@ -290,7 +303,7 @@ internal static class ChadaliTricksterTests
         foreach (var id in new[] { F + "will_it_hurt", F + "a_great_big_fair", F + "matching_ribbons", F + "worthless",
                                    F + "sharp_needles", S + "we_are_friends_right", H + "pretend_we_never_met" })
             check(Reaches(chapterFive, id), "Sitting unreachable in Chapter 5: " + id);
-        var committed5 = World(story, 5, "trickster.ever", "chadali.started", "chadali.committed", W + "the_real_wager", W + "cobblehoof_left_cursed");
+        var committed5 = World(story, 5, "trickster.ever", "chadali.started", "chadali.committed", W + "the_real_wager", W + "cobblehoof_left_cursed", W + "prayer_answered");
         foreach (var id in new[] { F + "honey", F + "burnt_edges", F + "rigged", F + "the_meadows", F + "a_yellow_ribbon", F + "sharing",
                                    F + "paid_back", S + "what_chance_wishes", S + "you_bet_with_people", S + "the_old_fellow_again",
                                    S + "the_last_evening", H + "for_luck", H + "the_seat_beside_her" })

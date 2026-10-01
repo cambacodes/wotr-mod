@@ -153,7 +153,7 @@ session(LEXICON, "Written in a very interesting way", '"Did you understand the L
     ch("close", '''{n}She takes your hand and turns it over and looks at the palm, the way fortune-tellers do in the markets, though she does not pretend to read anything there.{/n}
 "I'll send you luck every morning. Double. I'll take it from Alichino's share. He won't notice; he never uses his."''',
       c("[Let her keep your hand a moment.]")),
-], requires=(STARTED,), forbids=(LEXICON,))
+], requires=(STARTED, "chadali.lexicon_found"), forbids=(LEXICON,))
 
 
 # --- 4. A drinking song. -----------------------------------------------------------------------------------------------
@@ -174,7 +174,7 @@ session(SONG, "A drinking song", '"Are you... singing?"', [
 {n}She raises the cup.{/n} "To the Commander! Who never left a thing to chance!"''',
       c("Continue", "close")),
     ch("laugh", '''{n}She pretends to be offended for exactly one verse, and then she is laughing too, and cannot finish the tenth verse at all.{/n}
-"It's terrible, isn't it? It's so terrible." {n}She wipes her eyes.{/n} "Everything I make is a little bit terrible. The cookies. The songs. The luck, sometimes. That's how you know it's made by someone, and not just found lying about."''',
+"It's terrible, isn't it? It's so terrible." {n}She wipes her eyes.{/n} "I wrote it terrible on purpose. A good drinking song has to be bad enough that everybody sings louder to drown it. My cookies are perfect, so somebody has to suffer somewhere."''',
       c("Continue", "close")),
     ch("close", '''"I'll teach it to your soldiers. Every tavern in Drezen, by the end of the month." {n}She beams, pink-cheeked.{/n} "And when they sing it, you'll have to stand there and pretend you don't know the words."''',
       c("[Finish her cup for her.]")),
