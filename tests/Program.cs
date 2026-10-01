@@ -508,6 +508,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "shamira.trickster.killed.voice")) ShamiraTricksterTests.Run(story, Check);
             // PP9: the early threads T2 (Hepzamirah <- Voetiel) and T3 (Shamira <- Telmer), 15b-EARLY-THREADS.md.
             if (story.Scenes.Any(s => s.Id == "hepzamirah.early.moon_message")) EarlyThreadsTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "longcon.tell_them")) LongConTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) JannahTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) NenioTricksterTests.Run(story, Check);
             // Sol quality pass: Nenio's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).

@@ -301,7 +301,20 @@ internal static class MinaghoChivarroTricksterTests
         check(chivYes.Count == 1 && chivYes[0].Has("minachiv.future_chivarro") && chivYes[0].Has(P + "cost.half_the_pair") && Av(epChiv, chivYes[0]),
             "Chivarro's alone commit failed.");
         // Minagho comes home later: the wake reunites them, and the alone commit closes.
-        var bothIn = Done(brand, World(story, 5, "trickster.ever", "minagho.dead", Primed, Debt, Terms, Delivered, ChIn, Waiting)).Single(r => r.Has(Reunited));
+        // Sol PP8 r1 (INT): every accepting arrival with Chivarro already in reunites them (no answer strands the pair).
+        var bothOuts = Done(brand, World(story, 5, "trickster.ever", "minagho.dead", Primed, Debt, Terms, Delivered, ChIn, Waiting)).Where(r => r.Has(MinIn)).ToList();
+        check(bothOuts.Count >= 3 && bothOuts.All(r => r.Has(Reunited)), "Trk_Chivarro_FirstThenMinagho: an accepting wake strands the pair.");
+        var bothIn = bothOuts.First();
+        foreach (var (arrival, w) in new[] {
+            (spared, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", Primed, ChIn, Waiting)),
+            (spared, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", ChIn, Waiting)),
+            (sparedLetter, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", Primed, ChIn, Waiting, "minagho_chivarro.presence.minagho_spared.failed")),
+            (sparedLetter, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", ChIn, Waiting, "minagho_chivarro.presence.minagho_spared.failed")),
+            (sparedLetter, World(story, 5, "trickster", "trickster.ever", "minagho.spared.latched", Primed, ChIn, Waiting, "longcon.offer_heard", "minagho_chivarro.presence.minagho_spared.failed")) })
+        {
+            var accepted = Program.Walk(arrival, w).Where(r => r.Has(MinIn)).ToList();
+            check(accepted.Count > 0 && accepted.All(r => r.Has(Reunited)), "Trk_Chivarro_FirstThenMinagho: an accepting answer strands the pair on " + arrival.Id);
+        }
         check(!Av(aloneChiv, Later(story, bothIn)) && Av(offer, Later(story, bothIn)), "A reunited pair still sees the alone commit.");
 
         // Trk_Chivarro_BothDead / _Killed / _Deposit / _KilledNoDepositLate / _DepositSurvivesFailure / _KilledNoDepositFailed / _KeptBill.

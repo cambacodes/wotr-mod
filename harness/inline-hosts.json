@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1067,
-  "resolved": 1067,
-  "inlineOnlyScenes": 276,
-  "inlineOnlyResolved": 276,
-  "answerListScenesWithoutContact": 640,
-  "answerListScenesWithoutContactResolved": 640,
-  "lists": 116,
-  "listsWithReachableHost": 115
+  "entryTargetScenes": 1078,
+  "resolved": 1078,
+  "inlineOnlyScenes": 283,
+  "inlineOnlyResolved": 283,
+  "answerListScenesWithoutContact": 647,
+  "answerListScenesWithoutContactResolved": 647,
+  "lists": 122,
+  "listsWithReachableHost": 121
  },
  "scenes": {
   "a_crossing": {
@@ -1547,6 +1547,63 @@
     "dialog": "ea9f80fde3f30f64b9f3bda0601c63d4",
     "dialogName": "DesnaAdepts_Azataisland_dialog",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "areelu.early.courtesy_freed": {
+   "kind": "return-to-list",
+   "lists": [
+    "4ab7a78f96a994446a56a9bc27ac2bfb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "4ab7a78f96a994446a56a9bc27ac2bfb": "RRT_entry.areelu.early.courtesy_freed.4ab7a78f96a994446a56a9bc27ac2bfb"
+   },
+   "resolved": true,
+   "host": {
+    "list": "4ab7a78f96a994446a56a9bc27ac2bfb",
+    "dialog": "b44f15d9aee4b7f4989701afd9bd2aeb",
+    "dialogName": "FakeYaniel_ToAreelu_dialog",
+    "cue": "Cue_0008",
+    "clicks": 3
+   }
+  },
+  "areelu.early.courtesy_refused": {
+   "kind": "return-to-list",
+   "lists": [
+    "4ab7a78f96a994446a56a9bc27ac2bfb"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "4ab7a78f96a994446a56a9bc27ac2bfb": "RRT_entry.areelu.early.courtesy_refused.4ab7a78f96a994446a56a9bc27ac2bfb"
+   },
+   "resolved": true,
+   "host": {
+    "list": "4ab7a78f96a994446a56a9bc27ac2bfb",
+    "dialog": "b44f15d9aee4b7f4989701afd9bd2aeb",
+    "dialogName": "FakeYaniel_ToAreelu_dialog",
+    "cue": "Cue_0008",
+    "clicks": 3
+   }
+  },
+  "areelu.early.two_masks": {
+   "kind": "return-cue",
+   "lists": [
+    "e47ef9ec640a1b4488ffb0c6a9983348"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e47ef9ec640a1b4488ffb0c6a9983348": "RRT_entry.areelu.early.two_masks"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e47ef9ec640a1b4488ffb0c6a9983348",
+    "dialog": "159869c7e83694a4ba0b49296e885d38",
+    "dialogName": "FakeYaniel_first_dialog",
+    "cue": "Cue_0002",
     "clicks": 0
    }
   },
@@ -14830,6 +14887,158 @@
     "clicks": 0
    }
   },
+  "longcon.big_joke": {
+   "kind": "return-to-list",
+   "lists": [
+    "2ce412d70ca0f40468252bec95ab2881"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2ce412d70ca0f40468252bec95ab2881": "RRT_entry.longcon.big_joke.2ce412d70ca0f40468252bec95ab2881"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2ce412d70ca0f40468252bec95ab2881",
+    "dialog": "fcced7160db207547a656f657b579d72",
+    "dialogName": "Nurah_After_Battle_Dialogue",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "longcon.citadel_offer": {
+   "kind": "return-cue",
+   "lists": [
+    "41dff710486d05d49bbb663f729ddabd"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "41dff710486d05d49bbb663f729ddabd": "RRT_entry.longcon.citadel_offer"
+   },
+   "resolved": true,
+   "host": {
+    "list": "41dff710486d05d49bbb663f729ddabd",
+    "dialog": "46953090b95e83b44a6741a072b818ab",
+    "dialogName": "Drezen_Final_Battle_Middle_Dialogue",
+    "cue": "Cue_0016",
+    "clicks": 4
+   }
+  },
+  "longcon.hanging_account": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.longcon.hanging_account"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "longcon.irabeth_after_hanging": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.longcon.irabeth_after_hanging"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "longcon.irabeth_cold": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.longcon.irabeth_cold"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "longcon.tell_them": {
+   "kind": "return-to-list",
+   "lists": [
+    "99e167bfcc0f3a74ca25cdec4dbe4e39"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "99e167bfcc0f3a74ca25cdec4dbe4e39": "RRT_entry.longcon.tell_them.99e167bfcc0f3a74ca25cdec4dbe4e39"
+   },
+   "resolved": true,
+   "host": {
+    "list": "99e167bfcc0f3a74ca25cdec4dbe4e39",
+    "dialog": "36f4d2c5e53171d4e9bcfb2a54beffef",
+    "dialogName": "Caleb_MainDialogue",
+    "cue": "Cue_0066",
+    "clicks": 5
+   }
+  },
+  "longcon.tell_them_b": {
+   "kind": "return-to-list",
+   "lists": [
+    "91fbd759907af9a43ba284ca8845ee45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "91fbd759907af9a43ba284ca8845ee45": "RRT_entry.longcon.tell_them_b.91fbd759907af9a43ba284ca8845ee45"
+   },
+   "resolved": true,
+   "host": {
+    "list": "91fbd759907af9a43ba284ca8845ee45",
+    "dialog": "36f4d2c5e53171d4e9bcfb2a54beffef",
+    "dialogName": "Caleb_MainDialogue",
+    "cue": "Cue_0060",
+    "clicks": 6
+   }
+  },
+  "longcon.the_talk": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": "280d4712dceb37f4a88e98f1f4c6e64f",
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.longcon.the_talk"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
   "melazmera.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -22790,6 +22999,42 @@
     }
    ]
   },
+  "2ce412d70ca0f40468252bec95ab2881": {
+   "list": "2ce412d70ca0f40468252bec95ab2881",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "fcced7160db207547a656f657b579d72",
+     "dialogName": "Nurah_After_Battle_Dialogue",
+     "cues": [
+      "9c23265c800af1247825ab5e7527f6f2",
+      "e891118e8e9c45947920d85b5372e66d",
+      "3e3e02b20d3e8da46802a0c9814fe6ba",
+      "217204ecd2fdaa74ab397f04a30acc77",
+      "b76c0585530fa944fa2311761982770b",
+      "bbda69efd807c284d96c9d93fa06b76e"
+     ],
+     "cueNames": [
+      "Cue_0002",
+      "Cue_0009",
+      "Cue_0010",
+      "Cue_0016",
+      "SequenceExit_0049",
+      "SequenceExit_0069"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "433cfc33717930a4a87efdff07d4dfc0": 1,
+      "739c6fa064e82fe48963480554a49f27": 2,
+      "9a9621249a1bf2449bbd7c723360bde9": 1,
+      "9f05ff7a6dafa8a41967ff6931723689": 1
+     }
+    }
+   ]
+  },
   "2f5b7e0b76d3c5a42a431e1e33a8db09": {
    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
    "listName": "AnswersList_0004",
@@ -23653,6 +23898,44 @@
     }
    ]
   },
+  "41dff710486d05d49bbb663f729ddabd": {
+   "list": "41dff710486d05d49bbb663f729ddabd",
+   "listName": "AnswersList_0004",
+   "hosts": [
+    {
+     "dialog": "46953090b95e83b44a6741a072b818ab",
+     "dialogName": "Drezen_Final_Battle_Middle_Dialogue",
+     "cues": [
+      "7be28a1118c8af24ebf757789b9cfa4c"
+     ],
+     "cueNames": [
+      "Cue_0016"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 4,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0002",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0018",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0003",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {}
+    }
+   ]
+  },
   "43f93812d6216c94db356622859397f1": {
    "list": "43f93812d6216c94db356622859397f1",
    "listName": "AnswersList_0004",
@@ -23811,6 +24094,53 @@
       "e5603282835aed948946ffedefe05ce5": 2,
       "e7ba8df11121761429f945bcc76c076b": 2,
       "e9c91e10ef45bc9499daf80eaf92f976": 2
+     }
+    }
+   ]
+  },
+  "4ab7a78f96a994446a56a9bc27ac2bfb": {
+   "list": "4ab7a78f96a994446a56a9bc27ac2bfb",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "b44f15d9aee4b7f4989701afd9bd2aeb",
+     "dialogName": "FakeYaniel_ToAreelu_dialog",
+     "cues": [
+      "d9f03d93a4c4c974cb78ff54a55170a0",
+      "b618fff15d921894e84b9b2fe9efaa39",
+      "f1a82798065c27b45aa1d17d9db80dc6",
+      "5d93ef006e6d33347b895e6f35d87c0e",
+      "9fcc631dee0ac3e4c8ddfef2da82d9c0",
+      "0ce1ef09570c2ac44b1aa4984c51813f"
+     ],
+     "cueNames": [
+      "Cue_0008",
+      "Cue_0006",
+      "Cue_0014",
+      "Cue_0017",
+      "SequenceExit_0025",
+      "SequenceExit_0037"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 3,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0015",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0013",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "2ef30c66752b6a1418049e35adf9a278": 1,
+      "44d40a7e80cfabc44a54ec8c37c7b3f6": 1
      }
     }
    ]
@@ -26108,6 +26438,91 @@
     }
    ]
   },
+  "91fbd759907af9a43ba284ca8845ee45": {
+   "list": "91fbd759907af9a43ba284ca8845ee45",
+   "listName": "AnswersList_0065",
+   "hosts": [
+    {
+     "dialog": "36f4d2c5e53171d4e9bcfb2a54beffef",
+     "dialogName": "Caleb_MainDialogue",
+     "cues": [
+      "09b947cb982e6724b8a94a157a30c288",
+      "6f7256d95bf24414c8671d5523de579f",
+      "4f00a9372cf2fd8459a91edf7301c6a4",
+      "0cbd3aa19effa73478f29c34754cb2d7",
+      "f2a7eeaf9e3373d48aa6bc380771fb3e",
+      "5fe601a75bf01f746ab6bbc1b4a13f29",
+      "daf23b557d8a8e84898de97d7a2073a8",
+      "885ddd7a52d02434baae0a7e60afcaf0",
+      "ea530c5c03d0a454b957c5981124537a",
+      "0042c4cd50be5884cbddfd5f45ce8256"
+     ],
+     "cueNames": [
+      "Cue_0060",
+      "Cue_0048",
+      "Cue_0050",
+      "Cue_0057",
+      "Cue_0058",
+      "Cue_0059",
+      "Cue_0114",
+      "SequenceExit_0082",
+      "SequenceExit_0091",
+      "SequenceExit_0106"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 6,
+     "path": [
+      {
+       "at": "Cue_0031",
+       "take": "continue",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0032",
+       "take": "ReiforceTrixterBefore",
+       "conditioned": true
+      },
+      {
+       "at": "Cue_0008",
+       "take": "continue",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0033",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0066",
+       "take": "Answer_0046"
+      }
+     ],
+     "answerDist": {
+      "3af173ac225cac048a4a66dacafc107c": 1,
+      "3e3d0f0ef15551a4fa3111f6674ff88e": 5,
+      "3eafdca176f14e3992c810bfeacdfad5": 5,
+      "4719a12978419064aafe1cf2ef65addf": 5,
+      "52c5fde99b42c45429752aa475d1a250": 4,
+      "68fd47d27005edb4987c4526dca364f4": 1,
+      "8e1bf1034cd7b6c449477b3888d2a659": 4,
+      "ae9ad17aefceb0a44892ea9d58b3d090": 1,
+      "b48d7462be579474b9fb0fc6b437ca13": 1,
+      "b9fe7aa3ddd18e046aa23cf289d3c326": 5,
+      "c64826fada4f3c5428ac033f44878328": 1,
+      "c80f13360d75f444483269a576ce1322": 1,
+      "d466ffaf1da1ae740aecfb10c8caa06f": 5,
+      "d72a3d08ee5aaef4a9dd451f2c6ec428": 1,
+      "d82037315afcfb242bdcd094df3d9651": 5,
+      "da1f8c42749aa6541bc1b8a37d8e6820": 2,
+      "f571ab594772f5b44a5ef6b442857d4f": 5
+     }
+    }
+   ]
+  },
   "9652bd6d33d394a498bb7a1c28693cc6": {
    "list": "9652bd6d33d394a498bb7a1c28693cc6",
    "listName": "AnswersList_0039",
@@ -26224,6 +26639,81 @@
       "ba896768013472f478b1cef133551c6c": 2,
       "bff907ac27c4b284a8d5b352eba70519": 2,
       "d293b540fcc854945926bdba02b412ce": 1
+     }
+    }
+   ]
+  },
+  "99e167bfcc0f3a74ca25cdec4dbe4e39": {
+   "list": "99e167bfcc0f3a74ca25cdec4dbe4e39",
+   "listName": "AnswersList_0042",
+   "hosts": [
+    {
+     "dialog": "36f4d2c5e53171d4e9bcfb2a54beffef",
+     "dialogName": "Caleb_MainDialogue",
+     "cues": [
+      "a562a39b3b128354c81a6c5bba6560b6",
+      "e71f6100cea6267429b95b8e999612ba",
+      "6f7256d95bf24414c8671d5523de579f",
+      "4f00a9372cf2fd8459a91edf7301c6a4",
+      "daf23b557d8a8e84898de97d7a2073a8",
+      "885ddd7a52d02434baae0a7e60afcaf0",
+      "528c558a4f0046d46b414863d58a72f7"
+     ],
+     "cueNames": [
+      "Cue_0066",
+      "Cue_0047",
+      "Cue_0048",
+      "Cue_0050",
+      "Cue_0114",
+      "SequenceExit_0082",
+      "SequenceExit_0088"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 5,
+     "path": [
+      {
+       "at": "Cue_0031",
+       "take": "continue",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0032",
+       "take": "ReiforceTrixterBefore",
+       "conditioned": true
+      },
+      {
+       "at": "Cue_0008",
+       "take": "continue",
+       "nextConditioned": true
+      },
+      {
+       "at": "Cue_0033",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "3af173ac225cac048a4a66dacafc107c": 2,
+      "3e3d0f0ef15551a4fa3111f6674ff88e": 4,
+      "3eafdca176f14e3992c810bfeacdfad5": 4,
+      "4719a12978419064aafe1cf2ef65addf": 4,
+      "52c5fde99b42c45429752aa475d1a250": 3,
+      "68fd47d27005edb4987c4526dca364f4": 2,
+      "8e1bf1034cd7b6c449477b3888d2a659": 3,
+      "ae9ad17aefceb0a44892ea9d58b3d090": 1,
+      "b48d7462be579474b9fb0fc6b437ca13": 1,
+      "b9fe7aa3ddd18e046aa23cf289d3c326": 4,
+      "c64826fada4f3c5428ac033f44878328": 2,
+      "c80f13360d75f444483269a576ce1322": 1,
+      "d466ffaf1da1ae740aecfb10c8caa06f": 4,
+      "d72a3d08ee5aaef4a9dd451f2c6ec428": 2,
+      "d82037315afcfb242bdcd094df3d9651": 4,
+      "da1f8c42749aa6541bc1b8a37d8e6820": 1,
+      "f571ab594772f5b44a5ef6b442857d4f": 4
      }
     }
    ]
@@ -27941,6 +28431,62 @@
       "f9689d5a4fa065d4e960d60aa59e75fb": 2,
       "f9c70e688cbc74644ae38a7ead11c20f": 1,
       "f9ef41e49d055dd4f825423c98333745": 1
+     }
+    }
+   ]
+  },
+  "e47ef9ec640a1b4488ffb0c6a9983348": {
+   "list": "e47ef9ec640a1b4488ffb0c6a9983348",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "159869c7e83694a4ba0b49296e885d38",
+     "dialogName": "FakeYaniel_first_dialog",
+     "cues": [
+      "f04a9e410fe2dd64c85bd46bb7f4484a",
+      "d845d3c6fdba97240b8c9e580c8153a3",
+      "449618c7fa467444cba47a6b4c7b4c40",
+      "b1899b2cf38aceb4fa4589b79ce87f83",
+      "0e60039ae68d50340b0f44d4f435137e",
+      "a6fd94d7f89e5024cb644e4a89b3062b",
+      "38bb928a4aa04e64ea2bd3b665d16985",
+      "1ed1497d5e772db43a3ec38194b7c0af",
+      "d4451bbf8569620448ad92f03456088c",
+      "764dfe899c5b6c646ba6d990bdd70603",
+      "d77c825831c442a2a0e99d35c57d6e40",
+      "a0ba8728888aa304ebf89789ff83d0f4",
+      "7bb0bb90c06eca3448c78fa70e1c5388",
+      "a741aafd5ed80a94092173394f2f7495"
+     ],
+     "cueNames": [
+      "Cue_0002",
+      "Cue_0007",
+      "Cue_0018",
+      "Cue_0023",
+      "Cue_0028",
+      "Cue_0029",
+      "Cue_0030",
+      "Cue_0032",
+      "Cue_0034",
+      "Cue_0035",
+      "SequenceExit_0002",
+      "SequenceExit_0014",
+      "SequenceExit_0043",
+      "SequenceExit_0047"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "2301abc3b390a3f479cb1fb6d9703f3e": 2,
+      "408dd7e61e76f934b985e3238485d66f": 1,
+      "54efdd6fbaec4d0459a49c808ca8eecc": 1,
+      "5a591ab08f78e984ab5749736b86581f": 1,
+      "7a1b392e8eb20544b8bde6ca1c06d13f": 1,
+      "7b5dd0a86f7dc994783aa246dfb86f55": 1,
+      "9ed143ac5efb13e4184092d857142026": 1,
+      "af7a739824cc5b341997df67728d01b3": 1
      }
     }
    ]

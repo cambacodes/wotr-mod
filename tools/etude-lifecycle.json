@@ -717,6 +717,23 @@
     "conditional"
    ]
   },
+  "25d3d4863357d7d4bb11243b11059a5a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "CalebFooled",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "CalebFooled",
+   "traits": [
+    "hold"
+   ]
+  },
   "260454e5186fbd34694a0393097f77b5": {
    "ancestors_completed": [
     "IrabethWithGalfreyCh5"

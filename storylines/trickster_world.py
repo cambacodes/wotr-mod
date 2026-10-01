@@ -301,6 +301,18 @@ BINDINGS = {
     'nurah.killing_mechanism': ('Etudes', '20927a9471c00814b808fd69e88879c7', 'NurahKilledInDrezen (started by NurahKilledAfterDrezen)'),
     'nurah.prison': ('Etudes', 'c922e0cbe25a0cf4dad4ce7a3ca81935', 'NuraInPrisonAfterDrezen'),
     'nurah.ran_off': ('Etudes', 'a86ab44f1a4d3f54fbeb51f5568bbb5c', 'NuraRanOffAfterDrezen'),
+    # The Long Con (doc 15, PP8): its native readers. CalebFooled plays from Cue_0008 (TricksterStates); the SelectedAnswers
+    # keys read the final native history; FakeYanielFreed is deliberately not bound (Main.cs reads Playing; Cue_0006 tests Started).
+    'CalebFooled': ('Etudes', '25d3d4863357d7d4bb11243b11059a5a', 'MythicTrickster/TricksterStates/CalebFooled (Caleb_MainDialogue/Cue_0008 fa744b1c OnShow StartEtude)'),
+    'pyre.both_killed': ('SelectedAnswers', 'da1f8c42749aa6541bc1b8a37d8e6820', "Caleb_MainDialogue/Answer_0044 'one spot, and there's three of you' (-> Cue_0047, both mates killed)"),
+    'pyre.one_killed': ('SelectedAnswers', 'd72a3d08ee5aaef4a9dd451f2c6ec428', "Caleb_MainDialogue/Answer_0053 'Chaleb, deal with him!' (-> Cue_0057, one mate killed)"),
+    'longcon.kc_appointed': ('SeenCues', '99b869e168624a4448e43cf7db48ae91', 'Warcamp_IntroTour/Tour_End_Queen/Cue_0057 (Galfrey names the Knight Commander, Ch2)'),
+    'longcon.chapter_three': ('Etudes', '15e0048c7daf0ac4999c2313b58df0e3', 'Chapter03 (Playing; the latch longcon.reached_ch3 records it)'),
+    'longcon.chapter_five': ('Etudes', '5b01aa690202e584888dfc600a4aac0a', 'Chapter05 (Playing; the latch longcon.reached_ch3 records it)'),
+    'nurah.asked_what_she_wants': ('SelectedAnswers', '9a9621249a1bf2449bbd7c723360bde9', "Nurah_After_Battle/Answer_0004 'Forget about the plans. What do you want?' (-> Cue_0009 'your big joke')"),
+    'yaniel.freed_answer': ('SelectedAnswers', 'af7a739824cc5b341997df67728d01b3', '[Break the shackles] FakeYaniel_First/Answer_0005 (free; starts FakeYanielFreed)'),
+    'yaniel.refused_0006': ('SelectedAnswers', 'fc3ffd4da7826e9499e324cdbe3ed328', '[Leave the woman in the torture chamber] FakeYaniel_First/Answer_0006 (refuse)'),
+    'yaniel.refused_0036': ('SelectedAnswers', 'e7efc4be02d5c8d4ea664340e1ffcb06', '[Leave the woman in the dungeon] FakeYaniel_First/Answer_0036 (final refusal)'),
     'nurah.trickster_recruited': ('Etudes', 'a879a3a637a7eeb43b40677e4a8c4450', 'NurahRecruitedByTrickster'),
     'ramisa.met': ('SeenCues', 'dad3c081b47eef04b8618b704c748397', "c4/FleshMarket/HologramSlaver/Cue_0003 (Ramisa's first greeting, 'a true artist of the sla"),
     'regill.dead': ('Etudes', '4c3565d1f0f9fb24981b510da246ef2f', 'RegillNotInParty_Dead'),
@@ -402,7 +414,12 @@ BINDINGS = {
     'yaniel.radiance_seen': ('SeenCues', 'cbf1a11c8d3ce814595149a211502ad1', 'TrueYaniel/Cue_0008 (Radiance handed to her; proves the Commander carried Radiance, whose '),
 }
 
-DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.primed']],
+DERIVED = {
+ # The Long Con (doc 15 section 3, PP8): Minagho's Ch5 callback reads the citadel offer on a live Trickster run.
+ 'longcon.minagho_reads': [['longcon.offer_heard', 'trickster']],
+ # The Long Con (PP8, Sol verify): the Swarm's Chapter 5 Drezen is a ruin; the crusade's civic aftermath does not play there.
+ 'longcon.drezen_fallen': [['swarm', 'longcon.chapter_five']],
+ 'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.primed']],
  'anevia.socoth_absent': [['socot.gone'], ['council.fought'], ['council.fought_nocta_allied']],
  'anevia.trickster.late_committed': [['trickster.ever', 'anevia.trickster.gate_seen', 'anevia.trickster.hand_taken'],
                                      ['trickster.ever', 'anevia.trickster.terms_kept']],
@@ -634,7 +651,9 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'wenduag.street.latched': ['wenduag.street_confronted'],
  'yaniel.freed.latched': ['yaniel.freed'],
  'yaniel.killed.latched': ['yaniel.killed'],
- 'yaniel.never_freed.latched': ['chapter_later']}
+ 'yaniel.never_freed.latched': ['chapter_later'],
+ # The Long Con (doc 15 section 5.4): Chapter 3 (or 5) first observed; the summons count their delay from it.
+ 'longcon.reached_ch3': ['longcon.chapter_three', 'longcon.chapter_five']}
 
 
 # Etude keys whose Completed state still means the event happened (Main.BuildState reads Playing OR Completed for them):
