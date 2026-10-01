@@ -257,7 +257,7 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
               requires=(SONG,)),
             p('''{n}She kept a kitchen with a window and a table too small for it, and burned things in it for the Commander, and nobody who sat at it was ever the one being eaten.{/n}''',
               requires=(AFTER_WAR,)),
-            p('''{n}She kept the wanting out of the Commander's sight, as she had promised. She was very good at it. Only the cat on the smithy roof ever saw all of her at once, and the cat did not care.{/n}''',
+            p('''{n}The Commander had once asked her for only the good days, and she had refused, and she never let {mf|him|her} forget it. Only the cat on the smithy roof ever saw all of her at once without being asked to, and the cat did not care.{/n}''',
               requires=(SAINT_ONLY,)),
             p('''{n}The Commander never quite stopped being a quack, and she never quite stopped being a patient, and the treatment was never completed, because, as she told anyone who asked, the best treatments never are.{/n}''',
               forbids=(SAINT_ONLY, ELYSIUM)),
@@ -287,7 +287,7 @@ SCENES.extend([
 
 # Q11: after the native Elysium ending (BestEnding; her touch no longer drains) the sessions that stage a drain close.
 for _scene in SCENES:
-    if _scene["Id"] in (OLD_NAME, DANCE, T + "react.sosiel_morning") and ELYSIUM not in _scene["Forbids"]:
+    if _scene["Id"] in (OLD_NAME, DANCE, WOUND, T + "react.sosiel_morning") and ELYSIUM not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM)
 
 

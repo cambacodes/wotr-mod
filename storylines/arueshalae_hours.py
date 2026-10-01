@@ -199,7 +199,7 @@ tavern(BOYS, "The boys", '"Your gang. At the lair."', [
 
 # Q11: after the native Elysium ending (BestEnding; her touch no longer drains) the sessions that stage a drain close.
 for _scene in SCENES:
-    if _scene["Id"] in (BAKERY, ABYSS_TOUCH, HUNDRED) and ELYSIUM not in _scene["Forbids"]:
+    if _scene["Id"] in (BAKERY, ABYSS_TOUCH, HUNDRED, WEDDING) and ELYSIUM not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM)
 
 

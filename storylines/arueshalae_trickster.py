@@ -465,12 +465,12 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c("Continue", "question")),
     a("question", '''"So I have a question for you. Only one, and you can't answer it with a joke, because I'll know." {n}She lays the blade down on the step between you.{/n} "Will you still want me when I'm good? Or only when I'm hungry?"''',
       c('"Both. Always both."', "both", flags=(COMMITTED,)),
-      c('"Only the good days."', "saint", flags=(COMMITTED, SAINT_ONLY)),
+      c('"Only the good days."', "saint", flags=(SAINT_ONLY, DECLINED)),
       c('[Let her keep her answer for now] "Then I\'ll ask again."', "not_yet", flags=(DECLINED,)),
       c('"Neither."', "neither", flags=(CLOSED,))),
     a("both", '''"Both." {n}She closes her eyes.{/n} "I was afraid you'd say that. I hoped you would."
 {n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} "Both. All right. Both."''', c()),
-    a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} "I'll keep the rest out of your sight. I'm very good at that. I did it for centuries, the other way round. You won't thank me for it, one day. But you'll have what you asked for."''', c()),
+    a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} "No." {n}She picks the blade back up.{/n} "I hid half of myself for centuries, the other way round, for people who only wanted the half they liked. I won't do it for you. Ask me again when you want all of me, or don't ask."''', c()),
     a("not_yet", '''"Don't answer yet. You've got the look of someone who's going to be clever, and I can't bear clever tonight." {n}She picks the blade back up.{/n} "Ask me when I've gone a week without wanting to eat anyone. I'll tell you then. I promise I will."''', c()),
     nar("neither", '''{n}She lays the blade down very carefully on the step between you, as if it were the answer and she were giving it back, and goes inside.{/n}''', c()),
 ], ("trickster.ever",), forbids=(EVIL_DEAD, CLOSED, DECLINED, COMMITTED), delay=72, chapters=(5,),
@@ -584,6 +584,12 @@ evil_hub(P + "fallen.lock", "The lock", '"You\'ve been at my door."', [
       c("Continue", "ask")),
     *[dict(nd) for nd in FALLEN_ASK],
 ], requires=(FALLEN_MET,), forbids=(COMMITTED, P + "fallen.lock"), delay=72)
+
+# A second 'not tonight' leaves the lock replayable: her promise to come back keeps a reachable yes.
+for _node in SCENES[-1]["Nodes"]:
+    if _node["Id"] == "later":
+        for _choice in _node["Choices"]:
+            _choice["Abort"] = True
 
 FALLEN_NIGHT_NODES = [
     a("start", '''"Your door was open. You weren't behind it. So I came to find you." {n}She is sitting on the sill of the war-room window with one knee drawn up and the rain at her back, as if she had always been there.{/n}

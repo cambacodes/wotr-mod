@@ -189,7 +189,7 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
 "No. You know I can't. You know what happens." {n}She eyes your outstretched hand as if it were a drawn sword.{/n} "Any caress, Commander. Any caress of any kind. That's not a manner of speaking. It's what I am."''',
         c("Continue", "dream", requires=(DREAM,)),
         c("Continue", "explain", forbids=(DREAM,))),
-    a("dream", '''"I know what you're thinking. In the dream, it didn't hurt. In the dream I could..." {n}Her cheeks go dark.{/n} "But that was the dream. That was the one place in all the worlds where my kiss isn't death. Out here I'm still what I was built to be. I won't risk you out here just because it was lovely in there."''',
+    a("dream", '''"I know what you're thinking. In the dream you bent down to kiss me, where it couldn't have hurt you, and I screamed and threw you off." {n}Her cheeks go dark.{/n} "I've been ashamed of that every day since. That was the one place in all the worlds where my kiss isn't death, and I still couldn't bear it. Out here I'm still what I was built to be. I won't risk you out here."''',
         c("Continue", "explain")),
     nar("explain", '''"It's a procedure," you tell her. "I read about it in a book I haven't written yet. You hold my hand. Whatever it costs, I'll know, the moment it happens. And I'll deal with it."
 {n}She searches your face for the joke. For once, you aren't making one. It frightens her more than the hand does.{/n}
@@ -324,11 +324,19 @@ session(RELAPSE_TWO, "Contraindications", 5, '"You look like you haven\'t slept.
 # --- The rite slips (Chapter 5): the cost, and her distance ---------------------------------------------------------
 
 session(SLIPPED, "A missed night", 5, '"You\'re awake. Don\'t get up."', [
-    nar("start", '''{n}The march from the Ivory Labyrinth ran late, the candles were in the baggage, and you fell asleep in your boots without saying the blessing. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}
+    nar("start", '''{n}The march from the Ivory Labyrinth ran late, and you fell asleep in your boots. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}
 {n}That was two nights ago. You lost the whole of the day after it: the council met without you, and the quartermaster signed for you, and nobody could rouse you. Your hands are still cold to the wrist and will not warm at the brazier. When you try to stand, the tent tilts.{/n}''',
-        c("Continue", "her")),
+        c("Continue", "her", requires=(CURED,)),
+        c("Continue", "her_paid", forbids=(CURED,))),
+    a("her_paid", '''{n}She is sitting in the far corner of the tent, as far from the cot as the canvas allows, with her knees drawn up and her wings wrapped round them. Her face is grey.{/n}
+"There was no candle. There never has been, not one that works. We've been paying for every touch, and I told myself we were paying carefully." {n}Her voice is very flat.{/n} "You reached for me and I was hungry and I didn't stop, not for a long breath. The chaplain says you'll keep the cold in your hands for a month."''',
+        c("Continue", "distance_paid")),
+    a("distance_paid", '''"So I've moved my bedroll. To the chapel crypt, in Drezen. Here, to the baggage lines." {n}She has plainly rehearsed this.{/n} "Somewhere I can't reach you in the night. Either you find a way to make that blessing hold, or we stop touching, or you come to me awake and knowing, every time. I won't be the thing that takes you in your sleep."''',
+        c('"Then I\'ll learn the rite properly, or I won\'t touch you. I swear it on the road."', "vow", flags=(SLIPPED, DRAINED, VOW_RITE)),
+        c('"Sleep where you like. I\'ll come to you awake, and knowing, every time."', "come", flags=(SLIPPED, DRAINED, CANDLE_BEARER)),
+        c('"You\'re right. Keep your distance for a while. I\'ll earn it back."', "earn", flags=(SLIPPED, DRAINED, DISTANCE_KEPT))),
     a("her", '''{n}She is sitting in the far corner of the tent, as far from the cot as the canvas allows, with her knees drawn up and her wings wrapped round them. Her face is grey. You have seen that look on the faces of the soldiers who dug out Kenabres.{/n}
-"You didn't light it." {n}Her voice is very flat.{/n} "You reached for me and I was hungry and I didn't stop, not for a long breath, and you didn't say the words, and I didn't make you. The chaplain says you'll keep the cold in your hands for a month." {n}She looks at the cold hands, and away.{/n}''',
+"You didn't light it. The candles were in the baggage and you didn't say the blessing." {n}Her voice is very flat.{/n} "You reached for me and I was hungry and I didn't stop, not for a long breath, and you didn't say the words, and I didn't make you. The chaplain says you'll keep the cold in your hands for a month." {n}She looks at the cold hands, and away.{/n}''',
         c("Continue", "distance")),
     a("distance", '''"So I've moved my bedroll. To the chapel crypt, in Drezen. Here, to the baggage lines." {n}She has plainly rehearsed this.{/n} "Somewhere I can't reach you in the night. Not until you can light that candle every single evening, march or no march, without once forgetting. I won't be the thing you forget about."''',
         c('"Then I\'ll never forget it again. Every night. I swear it on the road."', "vow", flags=(SLIPPED, DRAINED, VOW_RITE)),
@@ -366,12 +374,12 @@ session(T + "prescription", "The patient proposes", 5, '"You asked me to meet yo
     a("ask", '''{n}She brings her hands out from behind her back. They are empty. She holds them out to you, palms up, not touching, an inch away.{/n}
 "I'm not going to test you. I've tested everyone I ever met and it never once made me happy. I'm just going to ask." {n}Her voice goes very small and very steady.{/n} "Will you have me? I want you. Desna forgive me, I've been trying to say it all evening."''',
         c('"Yes. Both of you."', "both", flags=(COMMITTED,)),
-        c('"Yes. But keep the hunger out of my sight."', "saint", flags=(COMMITTED, SAINT_ONLY)),
+        c('"Yes. But keep the hunger out of my sight."', "saint", flags=(SAINT_ONLY, DECLINED)),
         c('"Not yet. Ask me again when we\'ve both slept."', "not_yet", flags=(DECLINED,)),
         c('"No."', "neither", flags=(CLOSED,))),
     a("both", '''{n}She closes the inch, and then does not seem to know what to do with your hand now she has it.{/n} "Both." {n}She says it again, as if checking it for a trick.{/n} "Both. I... I had something to say after that. I had a whole... it's gone." {n}Her grip tightens.{/n} "I want you so much right now it frightens me. And it's me wanting. There's nobody else in here to blame it on." {n}She laughs, very softly, and it shakes, and she does not let go.{/n} "Don't say anything. I'll get it wrong again. Just stay where you are."''', c()),
     a("saint", '''"Only the parts of me that pray, then." {n}She nods, and something shutters in her face, smoothly, the way it must have in Lady Vellexia's house when a guest said the wrong thing.{/n}
-"You talk as though there were two of me. There aren't. But I'll keep the wanting out of your sight. I'm very good at that. You won't thank me for it one day. But I asked, and you answered, and that's more than I ever expected to be given."''', c()),
+"You talk as though there were two of me. There aren't." {n}She puts her hands behind her back.{/n} "No. I spent a very long time being half a woman for people who only wanted the half they liked. I won't do it for you. Ask me again when you want all of it, or don't ask."''', c()),
     a("not_yet", '''{n}She lets her hands fall. She does not look hurt; she looks like someone recalculating a route.{/n} "Not yet." {n}She nods.{/n} "All right. I've waited longer for smaller things." {n}A small, crooked smile.{/n} "But I asked first. That's done. That can't be taken back. The next one's yours."''', c()),
     nar("neither", '''{n}She puts her hands behind her back again, very carefully, as if putting something away in a drawer. Then she goes down the steps and into the city, and the lamps come on behind her one by one.{/n}''', c()),
 ], (RELAPSE_TWO, "trickster.ever"), forbids=(COMMITTED, DECLINED, AFTERTASTE, CHAPLAIN, FAILED), delay=168, chapters=(5,))   # the fast's seven days

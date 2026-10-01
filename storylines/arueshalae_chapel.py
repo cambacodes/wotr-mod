@@ -150,7 +150,7 @@ tavern(DAYBOOK, "The daybook", '"You kept something of hers?"', [
 
 # Q11: after the native Elysium ending the returned count of hungry days is not restaged.
 for _scene in SCENES:
-    if _scene["Id"] in (COUNTING,) and ELYSIUM not in _scene["Forbids"]:
+    if _scene["Id"] in (COUNTING, DYING) and ELYSIUM not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM)
 
 

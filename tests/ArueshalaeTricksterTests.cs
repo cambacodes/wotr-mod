@@ -245,7 +245,8 @@ internal static class ArueshalaeTricksterTests
         check(appointed.Has(P + "cost.chaplain") && appointed.Has("arueshalae.started"), "Trk_Arueshalae_Failed: the job does not stick.");
         var ch5Chaplain = Later(story, World(story, 5, "", "trickster.ever", P + "cost.chaplain"), 100);
         check(First(terms, ch5Chaplain, "question", 3).Has("arueshalae.closed"), "Trk_Arueshalae_FailedTermsNeither: 'Neither' does not close.");
-        check(First(terms, ch5Chaplain, "question", 1).Has("arueshalae.committed"), "Trk_Arueshalae_FailedTermsCommit: 'the saint' does not commit.");
+        check(!First(terms, ch5Chaplain, "question", 1).Has("arueshalae.committed") && First(terms, ch5Chaplain, "question", 1).Has(P + "declined"),
+            "Trk_Arueshalae_FailedTermsCommit: 'only the good days' commits her to an answer she refuses (R2-1).");
 
         // --- The treatment: the living courtship -----------------------------------------------------------------
         var intake = S(T + "intake");
