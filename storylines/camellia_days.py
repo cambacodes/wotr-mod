@@ -53,7 +53,7 @@ met(ANNIVERSARY, "The anniversary", '"You\'re dressed in black."', [
         c("Continue", "toast")),
     cam("dead_a", '''"Since I fell by the wagons, and lay there, and heard nothing at all. Since you told me I was overacting." {n}She lifts a glass of wine she will not drink.{/n} "To the dead. To me. To the silence, which I miss, and to the rude voice that ended it, which I don't."''',
         c("Continue", "toast")),
-    cam("toast", '''"You're supposed to drink to the dead, you know. It's the custom." {n}She holds the glass out to you.{/n} "I never drink in company. Drink for me. Tell me what you remember about me. The way people do at a wake. I want to hear what they'd have said, if they'd known me."''',
+    cam("toast", '''"You're supposed to drink to the dead, you know. It's the custom." {n}She holds the glass out to you.{/n} "I never drink at my own wake. Drink for me. Tell me what you remember about me. The way people do at a wake. I want to hear what they'd have said, if they'd known me."''',
         c('"I remember that you cheated at cards."', "cards"),
         c('"I remember your face at the end."', "face"),
         c('[Trickster] "I remember that you were a terrible person and a wonderful liar, and nobody has missed you at all."', "missed")),
@@ -87,7 +87,7 @@ met(SECOND_DANCE, "The second dance", '"Three steps and a turn?"', [
         c("[Unbuckle the strap]", "strap"),
         c("[Leave it where it is]", "leave")),
     cam("strap", '''{n}She watches your face while you do it. The buckle is stiff; she does not help. When it gives, the knife slides down into your palm, warm from her skin, and she lets out a long, shaky breath.{/n}
-"There," {n}she whispers.{/n} "Now you're holding the only thing I've never let anyone hold. Put it somewhere I can see it."
+"There," {n}she whispers.{/n} "Mind the edge. I'm fond of that knife, and those fingers may still be useful. Put it somewhere I can see it."
 {n}You lay it on the floor between two of the candles. She looks at it for a moment, and then she does not look at it again.{/n}''',
         c("Continue", "end")),
     cam("leave", '''"Leave it?" {n}Her breath catches, and her eyes go dark and bright at once.{/n} "You'd dance with me armed. You'd lie down with me armed." {n}She presses closer, until you can feel the hilt between you both.{/n} "Nobody has ever wanted me with the knife. They always want me to take it off first. As if that made any difference."''',

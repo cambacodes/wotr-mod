@@ -126,7 +126,7 @@ living(STRANGERS, "A table for strangers", '"Buy you a drink, Camellia?"', [
     cam("better", '''"Do you?" {n}She considers you over the rim of the glass she isn't drinking from.{/n} "People always say that. They never mean it. They mean they want to know the curtain better, because it's pretty." {n}She puts the glass down.{/n} "But you might. You might actually mean it. How very strange."''',
         c("Continue", "last")),
     cam("last", '''{n}She walks back with you through the dark streets, her hand in the crook of your arm, naming the lie of every passer-by in a low, pleased murmur, like a woman naming birds. At the citadel gate she stops.{/n}
-"Thank you for the drink. I didn't touch it. I never drink in company." {n}She smiles.{/n} "It makes people think they can see behind the curtain."''',
+"Thank you for the drink. I didn't touch it. I never drink in company I'm reading." {n}She smiles.{/n} "It makes them think they can see behind the curtain."''',
         c("[Say good night]")),
 ], requires=(TWO_LIES,), delay=48, chapters=(3, 5))
 

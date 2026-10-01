@@ -186,10 +186,12 @@ Three." {n}She holds your eyes.{/n} "I love you."''',
 "That wasn't the lie. The lie was that I laughed because you were clever. I laughed because you were the first person who ever caught me, and I wanted very badly to know what you would do with it. You did nothing at all. I have been waiting ever since for the bill." {n}She smiles.{/n} "Your turn. Three things. And I'm keeping them, mind. Whichever one is the lie, I shall find a use for it."''',
         c('[Trickster] "I love you. I love you. I love you."', "all"),
         c('"I\'m not afraid of you. I never was. I love you."', "mine")),
-    cam("all", '''"That's three truths." {n}She takes it like a winning card, slowly, between two fingers.{/n} "Cheat. You cheat with the truth, because you know it's the one thing I can't see through, and now I shall have to watch you for that as well." {n}She pulls you down to her by the collar.{/n} "You'll say it again when I ask. In front of whoever I choose. I want to see their faces when you do."''',
+    cam("all", '''"That's three truths." {n}She takes it like a winning card, slowly, between two fingers.{/n} "Cheat. You cheat with the truth, because you know it's the one thing I can't see through, and now I shall have to watch you for that as well." {n}She pulls you down to her by the collar.{/n} "You'll say it again when I ask. In front of whoever I choose. I want to see their faces when you do."
+{n}The knife goes off the pillow onto the floor. She drags your shirt over your head, shrugs the shift off her own shoulders, and rolls you onto your back, and settles astride you with her hair falling round both your faces, and takes your hand and presses it flat under her breast, where a friend would stand, and holds it there while she lowers herself to your mouth.{/n}''',
         c("[Don't stop]")),
     cam("mine", '''"The first one's a lie," {n}she says at once, with enormous satisfaction.{/n} "You're a little afraid of me. You always have been. It's the nicest thing about you." {n}She pulls you down to her by the collar.{/n} "And the rest?"
-{n}You don't answer. You don't have to. She has already found the seam.{/n}''',
+{n}You don't answer. You don't have to. She has already found the seam, and the laces under it.{/n}
+{n}She pulls the ribbon at her throat, lets the shift slide, and draws you down onto her with her heels hooked behind your knees, the knife on the pillow by her ear, her eyes open and on your face the whole time, as if this too were a reading she meant to get right.{/n}''',
         c("[Put out the candle]")),
 ], requires=("trickster.ever", COMMITTED, GAME), delay=72, optional=True, living=())
 

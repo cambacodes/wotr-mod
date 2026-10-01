@@ -555,7 +555,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
 "Without the knife? You want the woman and not the appetite. There is no such woman. There was, once, and her name was Mireya, and I made her up."''',
         c("[Watch her go]", flags=(TAME, CLOSED))),
 ], requires=("trickster.ever", RET, TERMS), forbids=(COMMITTED,), delay=72, living=())
-city(P + "returned.test")
+city(P + "returned.terms", P + "returned.test")
 
 
 # --- Optional: the oath (ledger 05 row 12): a woman Camellia herself killed, walking again. --------------------------
@@ -625,24 +625,24 @@ SCENES.append(scene(P + "epilogue.kept", "", "CamelliaEpilogue", 6, "", [
 {n}People who dined with the two of them in later years said it was the most courteous evening they had ever sat through, and that they could never afterwards remember what either of them had said, only that both of them had been smiling, and that neither had once looked away from the other.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED, KILLED, DEAD, KICKED),
-    ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET}, **EP))   # Q8: and she is still with us
+    ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET, KICKED: P + "killed_held"}, **EP))   # Q8: and she is still with us
 
 SCENES.append(scene(P + "epilogue.kept_on_record", "", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}When the Commander was entered among the dead of the Threshold, a veiled woman came to the memorial with lilies, the wrong ones, and stood at the back, and did not weep. Afterwards the chaplain found her knife laid on the altar, point towards the door. Those who knew Camellia said it was the only time she ever gave anything back.{/n}''')],
     requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.commander_back", CLOSED, KILLED, DEAD, KICKED),
-    ForbidOverrides={KILLED: RET, DEAD: RET}, **EP))
+    ForbidOverrides={KILLED: RET, DEAD: RET, KICKED: P + "killed_held"}, **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "The knife, returned", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Camellia finished her test. She finished it anyway. On one moonless night the next spring she let herself into the Commander's rooms, laid a small clean knife on the pillow, point towards the door, and sat down to wait. She was still there in the morning. She said she had decided, on her own terms, that the Commander was more interesting alive. She did not say for how long.{/n}
 {n}She stayed. She kept the knife on the pillow between them, point towards the door, every night of her life, and every morning she was surprised to find that it was still there, and so was she.{/n}''')],
     requires=("trickster.ever", TERMS), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice", KILLED, DEAD, KICKED),
-    ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back", KILLED: RET, DEAD: RET, KICKED: P + "killed_held"}, **EP))
 
 # Q8 (Sol INT): her test was never finished, and the Commander stayed dead.
 SCENES.append(scene(P + "epilogue.commit_on_record", "The knife, unreturned", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Camellia finished her test, and the Commander was entered among the dead of the Threshold before she could set it. She came to the memorial veiled, with lilies, the wrong ones, and stood at the back through every prayer. The chaplain said afterwards that she had been the only mourner in the hall with dry eyes, and the only one who stayed until the candles were out. Nobody ever saw her in Drezen again. A small clean knife was found on the Commander's empty pillow, point towards the door, and nobody could say who had left it.{/n}''')],
     requires=("trickster.ever", TERMS, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, "trickster.commander_back", KILLED, DEAD, KICKED),
-    ForbidOverrides={KILLED: RET, DEAD: RET}, **EP))
+    ForbidOverrides={KILLED: RET, DEAD: RET, KICKED: P + "killed_held"}, **EP))
 
 SCENES.append(scene(P + "epilogue.refused", "Lace on the sill", "CamelliaEpilogue", 6, "", [
     nar("page", '''{n}Camellia never came back. Each year, on the day she left, someone laid lilies on the Commander's step: the wrong ones, for a wedding. The guards stopped asking who.{/n}''',

@@ -413,7 +413,8 @@ internal static class CamelliaTricksterTests
         // Q8 (Sol INT): a commitment followed by her native death or dismissal, with no return, has no kept page.
         check(!Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed))
               && !Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, "camellia.kicked_out"))
-              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned)),
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
         // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.
         var again = S(P + "cards.two_lies_again");
