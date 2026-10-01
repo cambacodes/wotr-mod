@@ -1346,7 +1346,7 @@ internal static class Program
                 Check(state.Has("kiana.separated"), "Kiana marriage outcome was not recorded.");
                 Check(route != "affair" || state.Has("kiana.owned_hurt"), "Kiana affair bypasses its consequence conversation.");
             }
-            state.Hour += 167;
+            state.Hour += Find("date").DelayHours - 1;
             Check(!Rules.Available(story, Find("date"), state), "Kiana invitation bypasses her chosen waiting period.");
             state.Hour++;
             Play("date", "kiana.lovers");

@@ -31,7 +31,7 @@ s("guest_table", "Enough bowls for everyone", [
       c('[Explain that duty will keep you away tonight, and ask to arrange another supper.]', abort=True)),
     n("told", "Kiana", '''"Yes. Then she asked what she ought to wear. That took considerably longer."
 {n}Kiana straightens one of the spoons, sees you watching, and leaves the other crooked.{/n}
-"They know about Elan. I haven't asked them to forget him because you're coming. I do want them to get through the soup without watching my expression after every sentence."
+"Lenna knows about Elan. If she watches my face through the whole soup course, I shall put an onion up her nose."
 "Will the soup survive that much attention?"
 "It will become insufferable. It's already rather pleased with itself."
 {n}There is a knock. Kiana opens the door to a broad woman carrying a jar beneath one arm and a thin, gray-bearded man holding a bundle of spoons.{/n}
@@ -46,37 +46,37 @@ s("guest_table", "Enough bowls for everyone", [
 {n}When Kiana laughs, Lenna leans back in her chair. Relief makes her careless.{/n}
 {n}"There she is. I was beginning to think we'd lost you to all that sadness. Good to see someone has brought you back." She nods toward you.{/n}
 {n}Kiana sets down her spoon. Odrin suddenly finds the jar's lid difficult to open.{/n}''',
-      c('"Kiana asked us here. Give her the credit for her own supper."', "speak", flags=("kiana.guest_table.spoke",)),
+      c('"Give the cook the credit, Lenna. She has armed herself with onions."', "speak", flags=("kiana.guest_table.spoke",)),
       c('[Let Kiana answer, keeping your attention on her.]', "listen", flags=("kiana.guest_table.listened",))),
     n("speak", "Kiana", '''"And the blame for trapping Odrin against the wall."
 {n}She smiles at him before turning to Lenna.{/n}
-"I know you meant to be kind. But please don't make the Commander the cure for everything that happened. That's a dreadful job to give someone over soup."
+"The Commander brought neither the soup nor a cure, Lenna. Eat before you flatter it into going cold."
 {n}Lenna's face reddens.{/n}
 "I only meant you look happy."
 "Then say that. I won't make you prove it."
 {n}Beneath the table, Kiana finds your knee with hers. The touch lasts only a moment. Lenna looks from one of you to the other, then down at her bowl.{/n}''',
-      c('[Allow the silence without rushing to make a joke.]', "history")),
+      c('[Take another spoonful of soup.]', "history")),
     n("listen", "Kiana", '''"I had to make the soup myself, Lenna. My rescuer was late."
 {n}Lenna begins to laugh, then sees that Kiana has not picked up her spoon.{/n}
-"I like being with the Commander. I liked being with you before that. I don't want every good evening weighed against the bad ones to see whether I've recovered enough."
+"I invited you to supper, Lenna, not to inspect how well I have mended."
 {n}Lenna holds her cup with both hands.{/n}
 "I didn't mean it that way."
-"I know. I heard it anyway, with half the table listening, and I have been composing replies since the soup."
+"Then give me something better to hear. Odrin, what did that dog steal?"
 {n}Kiana looks toward you. You stay with her gaze, and her shoulders ease a little.{/n}''',
       c('[Stay with the conversation.]', "history")),
     n("history", "Narrator", '''{n}Odrin places the opened jar in the middle of the table. Nobody reaches for it.{/n}
-{n}Kiana draws a breath. She has something more to say, and does not leave you to say it for her.{/n}''',
+{n}Kiana sets down her spoon and looks directly at Lenna.{/n}''',
       c('[Listen.]', "widowed", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",)),
       c('[Listen.]', "separated", requires=("kiana.separated",), forbids=("seelah.elan_dead", "kiana.bereaved"))),
-    n("widowed", "Kiana", '''"I can miss Elan while you're here. It doesn't mean you ought to leave. And if I laugh, you don't have to be relieved on my behalf. You might simply enjoy your own joke."
+    n("widowed", "Kiana", '''"Elan would have laughed at that. So am I. Stop looking relieved and tell us what the dog did next."
 {n}Her voice catches on the last word. She takes a drink before anyone can offer her one.{/n}
 "Some jokes are worth enjoying. Odrin's story about the dog has been getting better for years."
 "The dog has been getting more expensive," he says.
 {n}Kiana laughs through the breath she had been holding. Lenna manages a small smile, but does not yet look up.{/n}''',
       c('[Ask Odrin how the dog acquired its excellent references.]', "end")),
-    n("separated", "Kiana", '''"Elan hasn't become an unpleasant story because we separated. I had good evenings with him. I don't want to have to pretend otherwise to keep these."
+    n("separated", "Kiana", '''"Elan gave an excellent supper. He also burnt the bread once. Must I suppress one story to tell the other?"
 {n}She puts both hands around her bowl.{/n}
-"And I wasn't waiting for somebody better to notice me. I made choices. Some of them were difficult. You can ask about my life without making it sound like a rescue."
+"I left him myself, Lenna. No handsome general carried me off over a saddle."
 {n}Lenna nods too quickly, then stops herself.{/n}
 "All right. I am sorry."
 "Thank you. Now, Odrin, tell me what the butcher actually wrote. Did he recommend the dog for employment?"''',
@@ -86,7 +86,7 @@ s("guest_table", "Enough bowls for everyone", [
 {n}After Odrin has finally been allowed to wash the bowls, you and Kiana put the table back against the wall.{/n}
 "Well. Nobody choked. I had hoped to set my standards a little higher."
 {n}She turns Lenna's jar in her hands.{/n}
-"I'm glad you came. I wish the end had been easier. Those are both true, before you start composing an apology for attending."
+"I'm glad you came. Next time I may feed Lenna before she begins improving my life."
 {n}She puts the jar aside and takes your hand.{/n}
 "Walk me downstairs. We can be two people who ate too much soup for a few minutes."''',
       c('[Walk downstairs with her.]', flags=("kiana.guest_table.kept",))),
@@ -109,21 +109,21 @@ s("market_weather", "The color in daylight", [
 "Is that a difficult distinction?"
 "People have failed at easier tasks while looking at a pretty woman."
 {n}A drop runs down her wrist. She retreats beneath the awning, shaking it off.{/n}
-"I want something I can wear on an ordinary day. Everything I own seems to demand candles or apologies. I am tired of dressing for explanations."
+"I want to look splendid in daylight. Candles have been taking far too much credit."
 {n}She lays the cloth down and counts out her own coins. After a brief discussion of lengths, the seller begins cutting.{/n}''',
       c('"The blue suits you. I would like to see you wear it somewhere crowded."', "public", flags=("kiana.market_weather.public",)),
       c('"The blue suits you. I am imagining a walk where we can hear each other."', "quiet", flags=("kiana.market_weather.quiet",))),
     n("public", "Kiana", '''"Somewhere crowded? How scandalous. People might discover I buy cloth and eat supper."
 {n}Her amusement softens as she follows your glance toward the market.{/n}
-"I would like that. I have been going out alone or with old friends, as though you belong in a room with a door I must close. You don't."
+"Take me through the market. Let them discover that the vampire princess buys onions."
 {n}She accepts the wrapped cloth from the seller.{/n}
-"But if someone asks about Elan, I am going to answer them. I won't rush through it because you are standing beside me."
+"If anyone mentions Elan, I shall answer. You can hold the jar and look magnificent."
 "I won't ask you to."
 "Good. You may be seen carrying my jar. It is a position of considerable distinction."''',
       c('[Take the jar and walk beside her.]', "recognition")),
     n("quiet", "Kiana", '''"Somewhere with fewer people explaining how pleased they are for me? Tempting."
 {n}She accepts the wrapped cloth, then studies you over it.{/n}
-"I would like a quiet walk. I don't want to turn avoiding people into our principal shared interest, though. There are only so many alleys in Drezen, and some of them smell terrible."
+"A quiet walk, then. Choose an alley that smells of bread; I refuse to be mysterious beside a drain."
 "We can begin with one that doesn't."
 "Ambitious. I approve."
 {n}She gestures toward the open market.{/n}
@@ -135,7 +135,7 @@ s("market_weather", "The color in daylight", [
 {n}"I hadn't heard about it."{/n}
 {n}"Oh. Well, it's only a few of us. Odrin will be there. I thought you knew." Edris shifts the basket. "I'd better go before I turn these into something that needs cooking immediately."{/n}
 {n}She leaves. Rain splashes into a gutter beside your feet. Kiana watches the water for a moment, then takes the jar back.{/n}''',
-      c('"That hurt."', "hurt"),
+      c('"She invited Odrin and forgot you?"', "hurt"),
       c('"Do you want to ask Lenna about it?"', "ask")),
     n("hurt", "Kiana", '''"Yes. How inconvenient. I had prepared several excellent reasons not to be upset about an unanswered note."
 {n}She hooks a finger through the jar's handle.{/n}
@@ -145,9 +145,9 @@ s("market_weather", "The color in daylight", [
       c('"Then let us go."', "past")),
     n("ask", "Kiana", '''"Yes. Though I would prefer her to appear here, looking ashamed and carrying a very persuasive cake."
 {n}She looks down at the jar.{/n}
-"I don't want to lose a friend because I asked her to stop saying something that hurt. And I don't want to have to pretend it didn't hurt to get invited to supper."
+"One sharp word and Lenna has banished me from her roof. What a delicate little tyrant."
 {n}She turns toward the lane.{/n}
-"Come with me. You needn't make a speech. I'd like to arrive with someone who isn't trying to guess whether I ought to be happy."''',
+"Come along. If she has hidden behind a shoe, you can help me drag her out."''',
       c('[Walk with her toward the workshop.]', "past")),
     n("past", "Narrator", '''{n}The rain eases. You stop beneath an arch while Kiana tucks the cloth more securely under her arm. She looks at you as though she is deciding whether to say something.{/n}''',
       c('[Give her time.]', "waited", requires=("kiana.waited", "kiana.separated"), forbids=("seelah.elan_dead", "kiana.bereaved")),
@@ -162,15 +162,15 @@ s("market_weather", "The color in daylight", [
 "Lenna didn't promise us an easy afternoon. Neither did I. Come along."''', c('[Continue with her.]', "shut")),
     n("affair", "Kiana", '''"At supper I said I made choices. I meant the kiss too. I haven't forgotten it because there are nicer things to say now."
 {n}She shifts the cloth against her side.{/n}
-"If Lenna is angry about that, she can tell me. I won't ask her to call it romantic. But I would like her to ask me what happened before deciding that the Commander swept me away and I had nothing to do with it."
+"If Lenna wants to scold me about the kiss, she can do it to my face. You will not be blamed for carrying me off."
 "I was there. I won't give her that story."
 "Thank you. You may still sweep me away on some occasion that doesn't require anyone else to be lied to. Preferably in dry weather."
 {n}She steps from beneath the arch and waits for you.{/n}''', c('[Continue with her.]', "shut")),
-    n("widow", "Kiana", '''"When people are careful around me, I sometimes let them be. It can be easier than telling them what I want. Then I am annoyed when they keep being careful."
+    n("widow", "Kiana", '''"They tiptoe round me until I want to shout. Then I shout, and they tiptoe harder. Desna preserve me."
 {n}She watches the rain beyond the arch.{/n}
 "Elan would have liked Lenna's roof. You can see quite a long way from it. I don't know whether I would have said that aloud if she had invited me. Perhaps I would."
 "You can say it to me."
-"I know. I want to go up there with you too. I wish wanting it didn't come with quite so much thinking."
+"I want to see that roof with you. Elan had a good eye for a view, the wretch."
 {n}She turns the jar so its chipped side faces inward.{/n}
 "Let's find out whether we're invited before I spend the whole afternoon worrying about attending."''', c('[Continue with her.]', "shut")),
     n("shut", "Kiana", '''{n}Lenna's door is locked. A note asks customers to return tomorrow. Kiana reads it, tests the latch once, and puts the jar back into your hands.{/n}
@@ -202,7 +202,7 @@ s("lenna_door", "The unasked invitation", [
 {n}"You heard about the supper."{/n}
 {n}"Yes."{/n}
 {n}"I thought you wouldn't want to come. After I made such a mess of the last one."{/n}
-{n}Kiana pulls a chair away from the counter and sits. She gestures you toward another, leaving Lenna room to stand if she wants to.{/n}''',
+{n}Kiana pulls up two chairs, sits in one and pats the other for you.{/n}''',
       c('[Stay beside Kiana.]', "earlier")),
     n("earlier", "Narrator", '''{n}Lenna rubs at a spot of polish on her thumb. Her eyes keep returning to you.{/n}''',
       c('[Hear what she wants to say.]', "commander_spoke", requires=("kiana.guest_table.spoke",)),
@@ -216,7 +216,7 @@ s("lenna_door", "The unasked invitation", [
 "I thought you were angry."
 {n}Kiana does not answer for you.{/n}''',
       c('"I disliked what you said. I came today because Kiana wanted to see her friend."', "plain"),
-      c('"I meant the correction. I can understand why hearing it from me made it harder."', "rank")),
+      c('"I meant what I said. Now, have you saved any plum wine for us?"', "rank")),
     n("kiana_spoke", "Kiana", '''{n}"You looked at me as though you didn't know me," Lenna says.{/n}
 "I was trying to decide how much to say. If I had been speaking to a stranger, I probably would have let it pass."
 {n}Lenna bends over the boot, then sets it aside without doing anything to it.{/n}
@@ -225,9 +225,9 @@ s("lenna_door", "The unasked invitation", [
 {n}Kiana looks at you, her mouth twitching.{/n}
 "But I imagine there was some thinking involved as well."''',
       c('"I disliked what you said. I came today because Kiana wanted to see her friend."', "plain"),
-      c('"I was listening. I would rather hear you both than decide what either of you meant."', "listen")),
+      c('"Kiana had the floor. I was enjoying the view."', "listen")),
     n("plain", "Kiana", '''{n}Lenna nods, slowly this time.{/n}
-"I can live with someone disliking what I said. I suppose I was trying to avoid finding out whether you disliked me."
+"I was afraid you hated me. It seemed safer to hide behind a boot."
 "I still brought the jar back," Kiana says. "If I hated you, I would have kept it and sent Odrin to explain why."
 {n}Lenna laughs before she can prevent it. Kiana waits for her to finish.{/n}
 "I want to see you. But you have to invite me. I can't keep finding out about my own absence from Edris."''',
@@ -235,7 +235,7 @@ s("lenna_door", "The unasked invitation", [
     n("rank", "Kiana", '''{n}"It did," Lenna says. "People usually come to me when their shoes hurt. They don't bring the person in charge of the city."{/n}
 "I brought someone I wanted you to like," Kiana says. "I may have been rather hopeful about how easy that would be."
 {n}She glances at you.{/n}
-"You don't have to stop being the Commander for supper. Lenna doesn't have to stop noticing. Could we all be a little less mysterious about it?"
+"Yes, the Commander commands things. At supper I expect that to be confined to passing the bread."
 {n}Lenna exhales.{/n}
 "I was embarrassed. There. A complete absence of mystery."
 "Much better. I would have needed another jar to carry all the explanations I was inventing."''',
@@ -251,8 +251,8 @@ s("lenna_door", "The unasked invitation", [
 {n}"Is he aware that's the reason?"{/n}
 {n}"He thinks we want the recipe."{/n}
 {n}Kiana looks toward you, then back to Lenna.{/n}
-{n}"Yes. I'd like to come. And I would like you to ask me next time, even if you are cross with me."{/n}
-{n}"I can do that." Lenna pauses. "I am sorry about what I said. You didn't need me telling you what your life meant."{/n}
+"Yes, both of us. Cross or not, you can ask me yourself next time."
+{n}"I'm sorry," Lenna says. "I spoke like an idiot over your own soup."{/n}
 {n}"No. I might still need you telling me about the dog."{/n}
 {n}Lenna begins to smile, then groans. "He's acquired a collar. Odrin claims it was a gift."{/n}''',
       c('[Ask when the supper begins.]', "outside")),
@@ -261,7 +261,7 @@ s("lenna_door", "The unasked invitation", [
 {n}She looks back at the shop. Lenna raises a hand through the window. Kiana raises hers in return.{/n}
 "I'll come back tomorrow. For the shoe. I think I can manage to be a customer again."
 {n}She turns toward you.{/n}
-"Thank you for coming. I wanted you there even when I was wishing none of us had said anything difficult."
+"Thank you for coming. I should have thrown the jar if I had been left alone with it."
 {n}She reaches for your hand and tugs you gently into step.{/n}
 "Now take me somewhere for a drink that doesn't have plums in it. I must save my courage."''',
       c('[Walk with her to find a drink.]', flags=("kiana.lenna_door.invited",))),
@@ -278,11 +278,11 @@ s("blue_room", "What she takes with her", [
     n("box", "Kiana", '''{n}The box holds folded clothes, a cracked comb and several ribbons wound around pieces of card. Kiana puts the pins down and lifts a dark length of fabric from the top.{/n}
 "Part of an old costume. I used to be able to pack a whole kingdom into this box. Now it won't hold two shawls without an argument."
 {n}She drapes the fabric over her arm, then returns it to the box.{/n}
-"I don't want to spend the evening as the vampire princess. I liked being her. I still do, sometimes. Tonight I'd like to find out whether Lenna can offer me a drink without checking that I am enjoying myself correctly."
+"Tonight the princess stays in her box. I am going to drink Lenna's wine and complain if it is dreadful."
 {n}She bends to move the box beneath the table, then pauses with her hand on its lid.{/n}''',
       c('[Stay while she decides what to say.]', "bereaved", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",)),
       c('[Stay while she decides what to say.]', "separated", requires=("kiana.separated",), forbids=("seelah.elan_dead", "kiana.bereaved"))),
-    n("bereaved", "Kiana", '''"For a moment I thought I should put something of Elan's in here. Then I realized I was trying to tidy him into one place."
+    n("bereaved", "Kiana", '''"I nearly put Elan's letter in here. Imagine sharing a drawer with that comb for eternity."
 {n}She closes the lid without adding anything.{/n}
 "The letter is where I can find it. I read it again this morning. It made me cry. Then I was cross because I wanted my eyes to look nice tonight."
 {n}She touches the corner of one eye, checking for the damp that is no longer there.{/n}
@@ -290,8 +290,8 @@ s("blue_room", "What she takes with her", [
 "Your eyes look like yours."
 "How fortunate. I had nothing suitable to replace them with."
 {n}Her laugh comes unevenly, but it comes.{/n}
-"I want to go. I don't want you to think the letter was a request to stay home."''',
-      c('"Then we will go. We need not hurry through this first."', "pin"),
+"I still want to go. These eyes have survived crying; now let Lenna admire them."''',
+      c('"Lenna can wait while you choose the pin."', "pin"),
       c('"Would you like to tell me what you read?"', "letter")),
     n("letter", "Kiana", '''"Not the words. I would like to keep those today."
 {n}She pulls the chair closer and sits, leaving the shawl over its back.{/n}
@@ -306,25 +306,25 @@ s("blue_room", "What she takes with her", [
 {n}She looks toward the little picture she kept after separating from Elan. It still hangs where you saw it before.{/n}
 "Then I imagined explaining why the wall had developed a pale rectangle, and felt ridiculous. You have already seen it."
 {n}She shuts the box.{/n}
-"I don't want to make this room unpleasant for you. I also don't want to spend every visit hiding things before you arrive."
+"The picture stays. If I hide it, I shall have to invent a splendid explanation for the mark on the wall."
 "You told me why you kept it."
 "Yes. I was braver about it that evening. People ought to be more consistent. It would save a great deal of time."
 {n}She looks at you, waiting for an answer she has not supplied herself.{/n}''',
       c('"Leave it there. I want to know the woman who lives in this room."', "picture"),
-      c('"I noticed it. I am still learning how to be here, but I do not want you hiding it."', "learning")),
+      c('"Leave it there. Your shawl is winning my attention anyway."', "learning")),
     n("picture", "Kiana", '''"You will have to endure the comb too, then. It has broken two teeth and I keep expecting it to improve."
 {n}She pushes the box beneath the table with her foot.{/n}
-"Thank you. I like that you can be here without everything becoming a test of whom I loved more. I would be very bad company during such a test."
+"Good. I refuse to have the picture interrogated every time you visit."
 {n}She picks up the shawl, then lets it hang between her hands.{/n}
 "I do want you here. In case I have made that sound like a discussion about storage."''',
       c('"You haven\'t. Show me the pins."', "pin", flags=("kiana.blue_room.picture",))),
-    n("learning", "Kiana", '''"So am I. I keep arranging things as though the room will explain me if I get it right."
+    n("learning", "Kiana", '''"I tried moving everything twice. Apparently furniture is no substitute for a good entrance."
 {n}She glances at the wall.{/n}
-"The picture can stay. You can tell me when something is difficult. I would rather have an awkward conversation than discover you've been politely disliking my wall for three months."
+"If that wall offends you, say so. I can put a dreadful portrait of the princess there instead."
 "It is a perfectly agreeable wall."
 "Good. I shall let it know."
 {n}She picks up the shawl. Her smile is warmer now.{/n}
-"I want you here. We can learn some of it while we're enjoying ourselves."''',
+"I want you here. Come and admire something that can blush back."''',
       c('[Turn your attention to the pins.]', "pin", flags=("kiana.blue_room.learning",))),
     n("pin", "Kiana", '''{n}Kiana puts on the shawl. The dark blue falls below her shoulders, leaving the pale crystalline shape of her head uncovered. She holds the round pin against the fold, then the leaf.{/n}
 "One opinion. I reserve the right to ignore it."
@@ -402,15 +402,15 @@ s("roof_supper", "A place among the guests", [
 {n}"Three," Lenna says. "You're counting yourself."{/n}
 "I am very interested in my own work."
 {n}She leans closer to you.{/n}
-"Only if you'd enjoy it. I can tell the story myself. I have been doing it to unsuspecting people for years."''',
+"Take the guest's part, or I shall give it to Odrin and make you listen to him."''',
       c('"Give me a part. Something with a short speech."', "perform"),
       c('"Tell it. I want to hear which parts you like best."', "tell")),
     n("perform", "Narrator", '''{n}Kiana appoints you keeper of the castle doors, charged with explaining why nobody has brought the princess supper. Your explanation involves a stolen moon, a missing cook and a staircase that has changed its mind about where it leads.{/n}
 {n}She rejects every excuse until you suggest that the princess could fetch her own supper. Then she rises with great dignity, takes the bread basket and announces that the keeper is dismissed for excessive wisdom.{/n}
 {n}Lenna laughs with her mouth full. Odrin objects that a good staircase would never behave so badly. He gives Kiana three better excuses, of which she immediately steals two.{/n}
 {n}"You should do this properly," Edris says. "With the rest of it written down."{/n}
-{n}Kiana looks pleased, then thoughtful. "I should finish it, certainly. But if you invite people, tell me before I arrive."{/n}
-{n}Lenna sets down her cup. "No surprises."{/n}
+{n}"Finish it? Certainly. Advertise me without warning and I shall give you the villain's part, Edris."{/n}
+{n}Lenna raises her cup. "A villain who brings pudding, I hope."{/n}
 {n}"A pudding would still be acceptable."{/n}''',
       c('[Ask Kiana to read you the next version when it is ready.]', "later", flags=("kiana.roof_supper.performed",))),
     n("tell", "Narrator", '''{n}Kiana begins again, this time with the princess attempting to hide the moon in a cupboard. She tells it with her hands, moving cups and the bread basket to stand for the court. Odrin's cup becomes a particularly foolish chamberlain.{/n}
@@ -427,7 +427,7 @@ s("roof_supper", "A place among the guests", [
 "There is more bread."
 "I know. I have been keeping track."
 {n}She puts her shoulder beside yours against the wall.{/n}
-"I'm glad we came. I wanted this little bit as well. Standing near you without somebody assuming I needed to be taken aside."
+"I'm glad we came. Now I have stolen you from the table, and I intend to enjoy the theft."
 {n}For a while you watch a woman below trying to close her shutters around an obstinate flowerpot. She finally takes it inside. Kiana raises her cup in silent approval.{/n}
 "There. A satisfactory ending. I should borrow it."
 {n}Lenna calls over to ask whether you want pudding. Kiana answers for herself at once.{/n}
@@ -441,12 +441,12 @@ s("roof_supper", "A place among the guests", [
     n("separated", "Kiana", '''{n}"He'll have asked Elan too," Edris adds. "I don't know whether you knew."{/n}
 "I didn't. Thank you for telling me. I will ask Meral what he has arranged."
 {n}Edris glances at you. Kiana follows the glance, then turns back to her.{/n}
-"I might go alone. Elan and I might find it uncomfortable. We can decide after we've been asked."
+"I shall write to Meral. If Elan is coming, I want to know before I trip over him on the stairs."
 {n}"Of course," Edris says.{/n}
 {n}Kiana reaches for the last piece of crust and breaks it in half, offering you one piece.{/n}
-"I haven't forgotten you. I am trying to leave him room to answer without wondering who is waiting to hear it."
+"You are invited to this bread crust. Meral's supper must wait until he answers my letter."
 {n}Her voice is low enough to keep the explanation between you.{/n}''',
-      c('"Tell me what you decide when you are ready."', "stairs")),
+      c('"Send me word after Meral answers."', "stairs")),
     n("widow", "Narrator", '''{n}"Nothing elaborate," Edris says. "He wants to show off the room."{/n}
 {n}Kiana looks down at her plate. "Elan helped him move the table. They got it stuck halfway up. Meral was so sure that taking the legs off would be more trouble."{/n}
 {n}"Did they get it loose?" Lenna asks.{/n}
@@ -457,7 +457,7 @@ s("roof_supper", "A place among the guests", [
     n("stairs", "Kiana", '''{n}You carry the empty jug downstairs while Kiana holds the lamp. At the bottom she sets it beside Lenna's workbench and looks back up toward the voices on the roof.{/n}
 "I didn't know how much I wanted to be asked about the next supper until someone did it."
 {n}She rubs a thumb across the pin at her shoulder.{/n}
-"I am tired. I had a good evening. I think I want to go home before I begin examining it for defects."
+"Take me home before I begin accusing a perfectly good evening of misconduct."
 {n}She takes your arm as you step into the lane. There is nobody waiting there to congratulate either of you.{/n}
 "Walk with me? We needn't be interesting. I am quite prepared to admire a wall or complain about my shoes."''',
       c('[Walk her home.]', flags=("kiana.roof_supper.kept", "kiana.consequences_ready"))),

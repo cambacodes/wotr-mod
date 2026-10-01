@@ -55,6 +55,7 @@ BOUGHT = "kiana.trickster.guests_bought_back"         # the revised terms, paid:
 APOLOGY = "kiana.trickster.cost.apology"
 VOW = "kiana.trickster.pouch_vow"                     # the revised terms, refused: the Commander's word to fetch them
 LASTCALL_CALLED = "kiana.lastcall.called"             # Last Call settled Sunhammer's account (lastcall_partners); read only
+SUNHAMMER_DEAD = "kiana.sunhammer_dead"                # SeenCues JewelerFinal Cue_0042/0043 (trickster_world): Q3 kills him
 
 RELATIONSHIP_PATCH = dict(
     TricksterAccess={
@@ -111,7 +112,7 @@ letter("kiana.trickster.aftermath.letter_waited", "The bottom of the box", [
     nar("married", '''{n}Weeks late. A month of her waiting for an answer, and you did not know there was a question. Under the signature, squeezed in after the ink had nearly dried, is a postscript: "PS. Elan says hello. He is pretending not to be embarrassed about the wedding night. He is failing."{/n}
 {n}You take up a pen. The blank line waits.{/n}''',
       *page_choices(H_MARRIED, MET, LETTER_LATE)),
-    nar("widow", '''{n}She wrote it in the first hour, before anyone had told her. Elan is in it twice. The second time is a postscript: "PS. Elan says hello. He is pretending not to be embarrassed about the wedding night. He is failing."{/n}
+    nar("widow", '''{n}She wrote it in the first hour, before anyone had told her. Elan is in it twice. The second time is a postscript: "PS. Where is Elan? Nobody here will tell me anything. Tell him to come and be embarrassed about the wedding night in person."{/n}
 {n}By that evening she knew. The letter has been lying in a box ever since, being cheerful at nobody.{/n}
 {n}You take up a pen. The blank line waits.{/n}''',
       *page_choices(H_WIDOW, MET, LETTER_LATE)),
@@ -327,7 +328,7 @@ SCENES.append(scene("kiana.trickster.after.temple", "Behind the counter", "Kiana
 "I don't know whether to kiss you or hit you. I'm going to do neither until I've written it down. Then I'll know which one the scene wants."''',
       c("Continue", "page")),
     k("told_dog", '''"I heard. I was sitting right there." {n}She scratches the dog behind the ears; he groans with pleasure.{/n} "I wanted to hear you say it anyway, without an audience. You had one stone within reach, and you spent it on a dog, and the rest of them walked out of here in a pouch."
-"I'm not angry. I don't think I'm angry. I'm going to write it down until I find out."''',
+"I ought to be furious. Instead I keep laughing at the dog. Desna, what a dreadful audience I make."''',
       c("Continue", "page")),
     k("told_ransomed", '''"A thousand crowns and a favour. To him." {n}She repeats it the way you would repeat the price of a horse you could not believe anyone had paid.{/n} "You know he'll come for it. Men like that always come for it, at the worst moment, in front of everyone. It's how they get an audience."
 {n}She takes your hand, turns it over and looks at it, as if she expected to find the ink still on it.{/n}
@@ -396,8 +397,8 @@ SCENES.append(scene("kiana.betrothal", "What betrothal is for", "Kiana", 5, "", 
     k("truth", '''"You don't know how both work." {n}She laughs, and it catches.{/n} "Nobody does. That's why there are so many plays about it."
 {n}She turns the licence over. On the back, in her own hand, there is already a line of writing, crossed out and rewritten.{/n}
 "I talked to Elan before I came. I told him I didn't know what I wanted, and he said it was the first honest thing either of us had said since he proposed." {n}She sets the licence on the empty chair.{/n} "We're not getting married. Not now. Maybe not ever. He keeps the ring. I keep the dress, because it was mine first."
-"So there's room. I don't know for what yet. Write to me. Slowly."''',
-      c('[Write to her. Slowly.]', flags=("kiana.available", "kiana.attracted", "kiana.separated", "kiana.waited"))),
+"So write to me. Court the princess properly this time; she has already lost one wedding."''',
+      c('[Write her an invitation.]', flags=("kiana.available", "kiana.attracted", "kiana.separated", "kiana.waited"))),
 ], requires=(H_BETROTHED, "kiana.rehearsed"), forbids=("kiana.available",), delay=72, last=5, optional=False,
    Relationship="kiana", Remote=True, Chapters=[5], Areas=[DREZEN]))
 
@@ -436,13 +437,14 @@ PARAGRAPHS = (
       "last name, she looked up.", requires=(MET, VOW), forbids=(Q3, LASTCALL_CALLED)),
     p("Somewhere in Mendev a jeweller's apprentice remembered the cold of the Commander's palm on his, and his master kept "
       "the three words that went with it in a ledger: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
-      "the Commander's face while they answered.", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED, Q3)),
+      "the Commander's face while they answered.", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED, Q3, SUNHAMMER_DEAD)),
     p("Darek Sunhammer died with the Commander's favour still owed him, and nobody else ever came to collect it. Kiana "
-      "said it was the only debt she had ever seen cancelled by a funeral, and that she approved.", requires=(MET, FAVOUR, Q3),
-      forbids=(LASTCALL_CALLED,)),
+      "said it was the only debt she had ever seen cancelled by a funeral, and that she approved.", requires=(MET, FAVOUR),
+      forbids=(LASTCALL_CALLED,), any_groups=[[Q3, SUNHAMMER_DEAD]]),
     p("Elan and Kiana stayed friends, which surprised everyone but Elan.", requires=(MET, H_MARRIED),
       forbids=("kiana.widowed",)),
-    p("The marriage licence stayed postponed. Kiana had it framed.", requires=(MET, H_BETROTHED)),
+    p("Kiana framed the licence anyway, the cancelled one, with POSTPONED still stamped across it in red. It hung over "
+      "her writing table, and she told guests it was the only good review her wedding ever got.", requires=(MET, H_BETROTHED)),
     p("The hold on Kiana's licence was lifted the day the Wound closed, and the gift ring went to Arsinoe's temple, to be "
       "broken on an auditor's bench. The baker and the crossbowman had been married since the spring, and sent the "
       "Commander a slice of each cake, with no note.", requires=(POSTPONED,), forbids=(KING,)),
@@ -537,6 +539,13 @@ REACTIONS = [
 "I shall also invoice the crusade for the deposits, to the last copper of the flowers, and for the priestesses' time, and for one wedding cake, which was already baked and has since been eaten by the Houndhearts."'''),
     anevia("kiana.trickster.no_wedding.react_anevia", (POSTPONED,),
            '''"You held three weddings over a jeweller?" {n}Anevia whistles.{/n} "Beth's ring is from a smith in the lower town, thank the gods. Don't you dare go looking at it. And go and talk to those other two couples some evening. They had cakes ordered."'''),
+    # Q10 (INT): VendorArsinoe Answer_0025 -> Cue_0026 ("My search has brought no results yet") stays eligible after a ransom;
+    # the engine has no native-answer suppression, so Arsinoe reconciles it herself, in the same hub list.
+    reaction("Arsinoe", "kiana.trickster.react_arsinoe_souls_home", (MET,),
+             '''"The patients are home, Commander. Every one of them sat up and asked for water, which I am told is what souls do first." {n}She turns the ledger round and taps a column in black ink.{/n} "Your money bought them back. I have entered every name under recovered, and struck the line I used to give at this counter, that my prayers had found nothing."
+"I am still looking for the man who sold them to you. That account stays open. Abadar closes a ledger when it balances, and a man who sells souls at a profit does not balance."''',
+             answer_list=ARSINOE_HUB, forbids=(Q3, SUNHAMMER_DEAD), chapter=5, last=5, portrait="Arsinoe", entry='"About the wedding guests..."',
+             Areas=[DREZEN], Chapters=[5], RequiresAnyGroups=[[RANSOMED, BOUGHT]]),
 ]
 SCENES.extend(REACTIONS)
 
@@ -616,7 +625,7 @@ def integrate(payload):
     # The registered kiss offer scripts her consent in the Commander's mouth; on the path the offer is made, and she answers.
     attraction = _node(_scene(by_id, "kiana.marriage"), "attraction")
     _gate(attraction["Choices"][1], forbids=("trickster.ever",))
-    attraction["Choices"].append(c('[Step close enough to kiss her, and wait.]', "kiss", requires=("trickster.ever",),
+    attraction["Choices"].append(c('[Step close enough to kiss her.]', "kiss", requires=("trickster.ever",),
                                    forbids=("inhuman",)))
 
     # Directive 12, the Trickster variant of the registered night (kiana.date -> kiss).
@@ -630,6 +639,8 @@ def integrate(payload):
     # post-commitment chains (kiana_consequences and everything after it) do not open for it; its committed Kiana ends
     # on kiana.ending_promised, with this route's paragraphs. A Q3 entry keeps the whole registered route.
     _scene(by_id, "kiana.guest_table")["Forbids"].append(MET)
+    # Q10 (COX): a native Q3 entry on a Trickster run is held to the same budget; the continuation stays on the other paths.
+    _scene(by_id, "kiana.guest_table")["Forbids"].append("trickster.ever")
 
     # R2-6: a Trickster entry whose spine ran out before kiana.morning gets the late-commit page; one that reached
     # kiana.morning and heard her "then don't promise it" (kiana.uncertain) keeps the unfinished ending, as its twin.

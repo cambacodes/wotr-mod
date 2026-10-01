@@ -226,6 +226,7 @@ BINDINGS = {
     'kiana.counterfeit_held': ('InventoryItems', '3e4ce583dc71401588f33f8192c252cd', "DarekSunhammersFake 'Counterfeit Darek Sunhammer's Jewelry'"),
     'kiana.possessed': ('Etudes', '0d773e4f71ac38a4d917ed459f6a0d0b', 'KianaIsPosessed (read only via latch kiana.soul_lost)'),
     'kiana.q2_done': ('CompletedQuests', 'a1024628f074e4d4f9d2b15956975459', 'SeelahQ2_TillDeathDoUsPart_quest'),
+    'kiana.sunhammer_dead': ('SeenCues', ['beef9b7110dfebc429bf7109cd3be849', 'f40593793216253498d2e30bdd8dee03'], "JewelerFinal/Cue_0042 (his last words) and Cue_0043 ('Darek's lifeless body')"),
     'kiana.soul_stolen_seen': ('SeenCues', '77a1253ff7aa8b24e865dc784db866b3', 'ElanIsDesperate/Cue_0008 (shown only while WeddingEndingBad d983621f7b887b043acb0c43186bf8'),
     'kiana.wedding_seen': ('SeenCues', '4e7816f547519de44b5ddb8a9ba2bdd8', "WeddingUnexpected/Cue_0020 'I pronounce you husband and wife'"),
     'konomi.dismissed': ('SelectedAnswers', '73c5728c4c6658344bedcc1b666e598c', 'Diplomacy_6/Answer_0070'),

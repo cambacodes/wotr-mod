@@ -28,18 +28,18 @@ s("bakery_stairs", "The room above the bread", [
     n("history", "Narrator", '''{n}She folds the note along its existing crease. The paper has been opened often enough to soften at the corners.{/n}''',
       c('[Ask how she arranged the visit.]', "separated", requires=("kiana.separated",), forbids=("kiana.bereaved", "seelah.elan_dead")),
       c('[Wait beside her before climbing.]', "widow", requires=("kiana.bereaved", "seelah.elan_dead"), forbids=("kiana.separated",))),
-    n("separated", "Kiana", '''"I asked for a separate visit. Meral has invited Elan as well. He hasn't told me whether Elan has answered, and I haven't asked him to find out for my benefit."
+    n("separated", "Kiana", '''"Meral is seeing Elan another day. Today he must endure us and our half-eaten bread."
 {n}She tucks the note into her purse.{/n}
-"Perhaps later we will manage a table together. Today I wanted to come up these stairs without wondering whether every creak meant he was behind me."
+"Another day I may manage supper with Elan. Today I want the room to myself, with you and the dangerous furniture."
 "Does Meral understand?"
 "He said afternoons were convenient. He also asked whether I remembered where the shelf supports had been packed. I expect he understood as much as he needed to."
 {n}Her thumb rubs at a spot of flour on the loaf.{/n}''',
-      c('"You have made the arrangement you wanted."', "waited", requires=("kiana.waited",), forbids=("kiana.affair",)),
-      c('"I know my being here makes some of this harder."', "affair", requires=("kiana.affair",))),
-    n("waited", "Kiana", '''"Yes. It would be convenient if doing things carefully made them stop hurting. I continue to find the world badly organized in that respect."
+      c('"Then the afternoon is ours."', "waited", requires=("kiana.waited",), forbids=("kiana.affair",)),
+      c('"Does he know I am coming?"', "affair", requires=("kiana.affair",))),
+    n("waited", "Kiana", '''"Doing things properly still hurts. I intend to complain to Desna about that gross oversight."
 {n}She takes your free hand.{/n}
-"I am glad we waited when I asked you to. I don't want to keep making you stand on the stair because I can't promise that nobody will feel anything unpleasant at the top. Come on. He will have eaten his own bread by now."''', c('[Climb with her.]', "room")),
-    n("affair", "Kiana", '''"It does. So does my wanting you here. I wrote that to Meral too, although I used fewer words and did not explain the kiss. He is allowed to invite me without receiving my entire history."
+"We waited. I am glad. Now come upstairs before Meral eats the last of the bread."''', c('[Climb with her.]', "room")),
+    n("affair", "Kiana", '''"Meral knows you are coming. I spared him the scandal; he has enough trouble with that shelf."
 {n}She looks directly at you.{/n}
 "I am not going to improve that history by telling him Elan drove me away. If the subject comes up, I will answer for myself. For now I would like you to meet an old friend who has a dreadful shelf."
 "I can do that."
@@ -78,7 +78,7 @@ s("bakery_stairs", "The room above the bread", [
 "I want to try. Meral, ask about one afternoon. Edris, find out who actually wants to hear a play and who was merely being polite while you described it. Those are different lists."
 {n}Edris looks offended, then laughs.{/n}
 "I shall make them choose."
-"Let them choose a chair, not swear an oath. And tell them they can laugh. I don't want a room full of people sitting as if a commander has ordered them to enjoy themselves."
+"Give them a chair, Edris, and tell them to laugh loudly. The princess has a deplorable appetite for applause."
 {n}Kiana folds the list into her own purse. She has already begun arranging the first line under her breath.{/n}''', c('[Stay while they work out a possible afternoon.]', "leave")),
     n("workshop", "Kiana", '''"I did. I also liked seeing all the names."
 {n}She smooths the list, reluctant to put it down.{/n}
@@ -90,7 +90,7 @@ s("bakery_stairs", "The room above the bread", [
     n("leave", "Kiana", '''{n}By the time you leave, the bread is gone and Meral has found the missing shelf supports inside his own coat. Kiana carries a sheet covered with dates, cancellations and one drawing of an audience member with an enormous ear.{/n}
 "I drew that while they were discussing chairs. It is my ideal listener. Very attentive. Incapable of speaking."
 {n}Outside, she slides her arm through yours.{/n}
-"Come and hear the ending before anybody else does. I shall want an honest opinion. I am telling you now so that I cannot pretend otherwise when you give it."''', c('[Arrange an afternoon for the unfinished pages.]', flags=("kiana.bakery_visit_kept",))),
+"Come and hear the ending. If it is terrible, say so before I inflict it on fourteen strangers."''', c('[Arrange an afternoon for the unfinished pages.]', flags=("kiana.bakery_visit_kept",))),
 ], after="kiana.consequences_ready")
 
 
@@ -117,7 +117,7 @@ s("last_page", "The sentence she keeps", [
 {n}She points to a passage near the end.{/n}
 "The princess tells the guest she sent the servants away because she wanted to be alone with him. Then the cook comes back for her wages. It makes the speech rather less magnificent."
 "Is the guest staying?"
-"Tonight. I won't give the princess the rest of his life because she has managed one good invitation. But she has prepared a speech anyway. She has my worst habits."''', c('[Read the speech.]', "read")),
+"Tonight. He can try escaping tomorrow, when she discovers he snores."''', c('[Read the speech.]', "read")),
     n("read", "Narrator", '''{n}The speech begins as a declaration. By its fourth sentence, the princess is arguing with herself. She admits that she rehearsed the welcome, complains that the guest arrived before she had finished, and finally asks whether he would like to sit down.{/n}
 {n}Kiana watches you reach the end. She tries to examine her own cup without looking as though she is waiting.{/n}
 "Well?"
@@ -136,7 +136,7 @@ s("last_page", "The sentence she keeps", [
 {n}You laugh. Kiana drops the pose.{/n}
 "That. I want that. It takes longer, but there is a person inside it now."
 {n}She marks two pauses, then hesitates over the third.{/n}
-"I am keeping it. If they get bored, you may remind me I chose to be elaborate. Once. After I have eaten."''', c('[Read the guest while she tries it again.]', "your_part")),
+"I am keeping it. If they yawn, you may crow over me after supper."''', c('[Read the guest while she tries it again.]', "your_part")),
     n("cut", "Kiana", '''{n}Kiana draws one line through the middle paragraph. She stops before the staircase.{/n}
 "I shall keep this somewhere. It has done nothing wrong except be in the wrong place."
 {n}She copies the sentence onto a scrap and puts it beneath the pin. Then she reads the shortened speech.{/n}
@@ -148,7 +148,7 @@ s("last_page", "The sentence she keeps", [
     n("your_part", "Kiana", '''{n}You try three replies. The first is solemn, the second too clever. The third is a request to move the chair away from a draft. Kiana laughs and writes it down.{/n}
 "Keep that. I can play a woman who has forgotten the window."
 {n}She looks toward the real window and gets up to close it.{/n}
-"You could read the guest. If you wanted. I have another reader in mind if you don't. Lenna wants to be the cook. She says it is the only sensible person I have written."
+"Take the guest's part. Refuse, and I shall give it to Edris; she has been longing to order Lenna about."
 {n}Kiana puts the revised pages beside you.{/n}''',
       c('"Give me the guest. I have had some practice being invited by you."', "read_guest", flags=("kiana.follow_guest_role",)),
       c('"Let me listen from the room. I want to hear what happens when someone else answers you."', "listen", flags=("kiana.follow_listens",))),
@@ -160,7 +160,7 @@ s("last_page", "The sentence she keeps", [
 {n}She lets you have the pages, then bends to kiss your cheek before returning to her own copy.{/n}''', c('[Read until you can find the pauses together.]', "end")),
     n("listen", "Kiana", '''"Then Edris can read the guest. She will enjoy asking Lenna where supper is. They have wanted to give each other instructions for years."
 {n}Kiana settles beside you on the edge of the bed, the pages between your knees.{/n}
-"I do want you where I can see you. Not in the front if you dislike it. Somewhere I can look after a dreadful line and know one person remembers it used to be worse."
+"Sit where I can see you. If a line dies, I expect you to laugh outrageously and save it."
 "I can find somewhere."
 "Good. I shall try not to look at you after every line. That would be an alarming performance for everybody else."''', c('[Read her the revised ending once more.]', "end")),
     n("end", "Narrator", '''{n}When the room begins to darken, Kiana gathers the discarded strips, checking each against the pages she intends to keep. She tips the unwanted paper into a small box beneath the table.{/n}
@@ -276,7 +276,7 @@ s("ink_after", "What she does with applause", [
 "Will you try it again?"
 "Yes. With less staircase. I have enough trouble getting people into rooms without building another flight inside the speech."
 {n}She keeps the crossed-out version beneath the new one.{/n}
-"I don't wish I had never tried it. I wish I had heard that chair scrape while we were rehearsing. You might bring a worse chair next time."''', c('[Read the revised passage with her.]', "pages")),
+"Next time bring a chair that scrapes. It may improve the rehearsal more than your applause."''', c('[Read the revised passage with her.]', "pages")),
     n("short", "Kiana", '''"Mostly. I have put back one sentence. Before you accuse me of smuggling the whole speech in, it is a different sentence."
 {n}She reads it. The princess asks whether the guest can stay until the candles burn down, then admits that she bought very long candles.{/n}
 "There. She is ridiculous again. I missed that at the end. I don't want all her bad habits cured by having someone accept an invitation."
@@ -293,7 +293,7 @@ s("ink_after", "What she does with applause", [
 {n}She pushes the copy estimate nearer the script.{/n}
 "I want a clean set before another reading. I can do that myself, slowly. It will cost evenings. If I pay Meral to copy it, I can spend those evenings writing the next part, but I would have to take the noisier room."
 {n}A voice calls in the street. Kiana waits until it has passed before continuing.{/n}
-"I don't want to move into your rooms and discover that every hour I fail to write feels like an expensive favor. This is small enough to try myself. Come and inspect the place I choose with me, though. I would like you there before I pay for it."''',
+"I shall buy my own desk. You may come and admire it, but I intend to blame its wobble myself."''',
       c('"Take the quiet desk and make the copies slowly. You keep losing sentences to interruptions."', "quiet", flags=("kiana.follow_quiet_desk",)),
       c('"Pay for the copies and use Meral\'s room. You find things by hearing other people read."', "shared", flags=("kiana.follow_shared_room",))),
     n("quiet", "Kiana", '''"I do. Then I become cross with whoever has been living a perfectly reasonable life within earshot."
@@ -315,7 +315,7 @@ s("ink_after", "What she does with applause", [
 "The princess was free of charge."
 "She is how I lure people in."
 {n}Kiana puts the pen down and turns her chair until her knee rests against yours.{/n}
-"I want to tell you something about this evening that has nothing to do with whether I have worked hard enough to deserve it."''',
+"I have worked quite hard enough. Now come here and help me disgrace myself."''',
       c('"Tell me."', "want"),
       c('[Take her hand and wait.]', "want")),
     n("want", "Kiana", '''"I have been thinking about kissing you since you came through the door. I thought I should finish explaining the desk first. I have begun to suspect that my priorities were poor."
@@ -327,7 +327,7 @@ s("ink_after", "What she does with applause", [
 "I know."
 {n}Her next laugh is softer. She closes the space between you and leaves the pen, the accounts and the princess where they are. When you finally move away from the table, she reaches back only to cover the ink.{/n}
 "One practical thought. Then I intend to become a very bad example."
-{n}She lets the blue shawl fall over the back of the chair and goes to work on your collar with the ink-stained hand after all, button by button, watching your face to see whether you mind. You do not. She backs you against the edge of the desk, sets one knee on the chair beside your hip, and sweeps the princess's pages off the blotter with her forearm so that she can lean you back onto it. The lamp is left to burn itself down.{/n}
+{n}She lets the blue shawl fall over the back of the chair and goes to work on your collar with the ink-stained hand after all, button by button, quick and greedy. She backs you against the edge of the desk, sets one knee on the chair beside your hip, and sweeps the princess's pages off the blotter with her forearm so that she can lean you back onto it. Then she climbs up after you, skirts rucked to her thighs, and draws your belt loose with ink-black fingers. The lamp is left to burn itself down.{/n}
 {n}Later, she finds the mark on your collar and refuses to look sorry for it.{/n}''', c('[Keep the evening with her.]', flags=("kiana.ink_evening_kept",))),
     n("outside", "Kiana", '''"A bold proposal. We may discover we have legs."
 {n}She washes the ink from her hand before fastening the blue shawl. The water darkens, then clears beneath her fingers.{/n}
@@ -391,14 +391,14 @@ s("working_room", "A place for the unfinished", [
       c('"I would like to see what you write here."', "unpromised", forbids=("kiana.committed",))),
     n("promised", "Kiana", '''"The one after my second afternoon here. I may have something to read, or I may want to go somewhere that has never heard of a princess."
 {n}She names a day and watches you consider it.{/n}
-"We said we would make room. This is the room I have made. I want to know where the evening with you goes, so that I can stop keeping every other evening empty by accident."
+"That evening is yours. Miss it, and I shall put your name on the shoe-mender's bill."
 "That day will do."
 "Good. I shall write it beside the other arrangements. You will be in distinguished company. Rent, copying, somebody who has promised to mend my shoe."''', c('[Keep the evening she has named.]', "end", flags=("kiana.follow_evening_arranged",))),
     n("unpromised", "Kiana", '''"Then come after the second afternoon. I shall have had enough time to produce something and not enough to convince myself it is all dreadful."
 {n}She names a day.{/n}
-"I remember what you said about afterward. I am not going to slip a lifetime into the agreement while you are admiring the key. I do want this evening."
+"Come for that evening. The key opens a room, Commander, not an eternity."
 "So do I."
-"There. A manageable arrangement. You needn't stand looking relieved. I have not asked you to carry the desk home."''', c('[Agree to that evening without adding a promise about after the war.]', "end", flags=("kiana.follow_evening_arranged",))),
+"There. A manageable arrangement. You needn't stand looking relieved. I have not asked you to carry the desk home."''', c('[Promise to come that evening.]', "end", flags=("kiana.follow_evening_arranged",))),
     n("end", "Kiana", '''{n}She drops the key into her purse. Its small sound makes her smile.{/n}
 "I thought it would feel grander."
 "You could announce it."
@@ -425,7 +425,7 @@ s("kept_evening", "The time beside her name", [
     n("stop", "Kiana", '''"All right."
 {n}She writes three words on a scrap, puts it across the page and covers the ink. The movement is reluctant, but she gets up without adding another line.{/n}
 "I have left myself the end. If tomorrow's Kiana cannot understand it, she will have only tonight's Kiana to blame."
-{n}She comes to you, rests her hands against your arms and looks at your face properly, as though she has only now been allowed to.{/n}
+{n}She comes over, lays her hands on your arms and gives you the smile she has been wasting on the page.{/n}
 "Hello. I am pleased you came. That should have been the first thing I said."
 {n}The food she has bought waits in a covered bowl. She brings it to the table, tastes a little and decides it will do without reheating.{/n}
 "Cold supper. Warm company. I can work with that."''', c('[Help her set the table.]', "work")),
@@ -448,7 +448,7 @@ s("kept_evening", "The time beside her name", [
 "I wrote less than I meant to. What I wrote was better when I heard it. I shall have to decide how much noise I can use before it becomes simply noise. One week has not made me an expert."''', c('[Ask what happens after the cook gets paid.]', "hers")),
     n("hers", "Kiana", '''"She goes out. I haven't decided where. Somewhere the princess cannot send for her."
 {n}Kiana considers her own cup.{/n}
-"I might take an evening like that. No reading. No people asking what I have finished. I shall invite you if I want company, and if you cannot come I may go anyway. I have been leaving too many pleasant things until someone can do them with me."
+"One evening I shall abandon the princess and go dancing. Come if you can catch me; I refuse to wait beside a bakery."
 "Where would you go?"
 "That is the difficulty. I have invented a woman with an entire city to choose from and given myself a list consisting mostly of bakeries."
 {n}She smiles at you over the cup.{/n}
@@ -459,29 +459,29 @@ s("kept_evening", "The time beside her name", [
 {n}She turns the suggestion over, less dismissively than she sounds.{/n}
 "The fruit sellers do have the best things then. I could buy something before it has spent all day being admired by other people. I might even take Lenna if she promises not to ask about the pages."
 {n}Kiana writes the idea on the back of the meal's wrapping paper.{/n}
-"There. An intention. I have learned the difference between writing it down and having done it. You may ask me later whether I went."''', c('[Leave the invitation open for another day.]', "future")),
+"There. Written down. Ask me tomorrow whether I managed it, and be prepared for a magnificent excuse."''', c('[Leave the invitation open for another day.]', "future")),
     n("music", "Kiana", '''"Something I haven't helped write? What an extravagant idea."
 {n}She taps a finger against the cup, trying to remember a tune, then abandons it.{/n}
 "I shall ask Edris what she has heard. Ask where, I mean, before she sings it all to me and saves me the journey."
 "Would you want company?"
 "Perhaps. I want to find it first. I like the thought of bringing you to something I have discovered, instead of asking you to watch me arrange another room."
-{n}She writes a question for Edris on a scrap and leaves it where she will see it in the morning.{/n}''', c('[Let her keep the pleasure of finding it.]', "future")),
+{n}She writes a question for Edris on a scrap and leaves it where she will see it in the morning.{/n}''', c('[Ask her to bring you to the music when she finds it.]', "future")),
     n("future", "Narrator", '''{n}The meal is finished. Kiana carries the cups away, then returns to the place beside you. There are pages waiting, but she leaves them on the other side of the room.{/n}''',
-      c('"I like the life we are finding time for."', "steady", requires=("kiana.committed",)),
+      c('"I like coming home to you."', "steady", requires=("kiana.committed",)),
       c('"I am glad we kept this evening."', "present", forbids=("kiana.committed",))),
     n("steady", "Kiana", '''"So do I. Even the parts that turn out to involve rent and copying the same sentence three times."
 {n}She draws your hand into her lap.{/n}
-"I don't know what the room after the war will look like. I used to furnish it in my head whenever I was frightened. Everything stayed exactly where I put it. There were never any visitors I hadn't invited."
+"I used to imagine a castle after the war. Now I keep putting you in it, disturbing the princess's supper."
 {n}Her mouth curves.{/n}
 "This is much less convenient. I have begun to prefer it. There is someone in it who might ask me to leave the work alone and eat supper."
 "An unreasonable guest."
-"I chose the guest. I expect to be reminded."''', c('[Stay close while the street grows quieter.]', "close")),
+"My own fault. I chose a guest who steals the best bread."''', c('[Stay close while the street grows quieter.]', "close")),
     n("present", "Kiana", '''"Then keep another. When you can. I would rather hear a day than a magnificent description of what might happen someday."
 {n}She draws your hand into her lap.{/n}
-"I am making plans of my own. I want you in some of them. That is what I know tonight."
+"I want you at my next supper, and in several much less respectable places afterward."
 "I want to be here."
 "You are here. For once we have managed the difficult part before discussing it."
-{n}Kiana leans against you. She does not ask for the lasting promise you have not made, and she does not give the evening back because it lacks one.{/n}''', c('[Enjoy the time you actually have together.]', "close")),
+{n}Kiana leans against you and steals the warmth beneath your collar.{/n}''', c('[Draw her closer.]', "close")),
     n("close", "Kiana", '''"There is one more thing I wanted before you go."
 {n}She turns toward you, her pale crystals catching the last of the lamplight. The blue shawl has slipped from one shoulder. She leaves it there.{/n}''',
       c('[Kiss her and stay a little longer.]', "kiss", flags=("kiana.follow_last_kiss",)),

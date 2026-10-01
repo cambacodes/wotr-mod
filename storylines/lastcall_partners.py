@@ -76,10 +76,11 @@ DEBTS = [
          ledger_text="Leased from the church of Abadar, returnable at the end of the world. A lien stands. The Master of the First Vault reads the small print so I don't have to.",
          page_called="The church of Abadar collected to the letter. The cauldron had been leased returnable at the end of the world, and at Threshold the world ended in every sense the lease required; it went back as it had come, and the lien attached itself to whatever the Wound became. Before the year was out, a counting-house of the First Vault stood where the rift had been, and its clerks asked every traveller what they were bringing in and what they meant to take out."),
     dict(key="sunhammer", groups=[["kiana.trickster.cost.sunhammer_favour"], ["kiana.trickster.cost.guests_robbed"], ["kiana.trickster.cost.courier_marked"]],
-         called_by=[called("kiana")],
+         called_by=[called("kiana")], outlived=["kiana.sunhammer_dead"],   # JewelerFinal Cue_0042/0043: Q3 kills him
          ledger_title="Darek Sunhammer: a favour and some stones",
          ledger_text="The jeweller who made the wedding stones is owed a favour, or a grudge, and still keeps what he keeps. A dwarf remembers a bill.",
-         page_called="Darek Sunhammer sent his apprentice, as he always did, with the bill carried in his head rather than on paper, where a jeweller keeps the things he does not want read. One favour, owed. The Commander settled it across a table in Drezen in terms neither side ever repeated, and the wedding guests still in Sunhammer's keeping went home the same week."),
+         page_called="Darek Sunhammer sent his apprentice, as he always did, with the bill carried in his head rather than on paper, where a jeweller keeps the things he does not want read. One favour, owed. The Commander settled it across a table in Drezen in terms neither side ever repeated, and the apprentice went home with the bill wiped clean from his master's head.",
+         page_outlived="Darek Sunhammer collected nothing. He had died before Threshold, in the fight that brought the stolen souls home, with the Commander's favour still owing in the one ledger he kept in his head, and a dwarf's head is not inherited. His apprentice never came to Drezen again, and the bill went into the ground with the man who had kept it."),
     dict(key="mutasafen", groups=[["hepzamirah.trickster.cost.mutasafen_grudge"], ["hepzamirah.trickster.cost.lab_funded"],
                                   ["hepzamirah.trickster.cost.blood_sample"], ["hepzamirah.trickster.cost.vial_paid"],
                                   ["hepzamirah.trickster.cost.vial_forged"]],
@@ -288,15 +289,20 @@ partner("nurah", "nurah", "nurah.complete", "nurah.closed", "The Last Chapter",
 
 KI = "kiana.trickster."
 partner("kiana", "kiana", "kiana.committed", "kiana.closed", "Home by Spring",
-    '''Kiana did not go back to Mendev after the war. She stayed in Drezen, where nobody had arranged her marriage and nobody had put her soul in a jewel, and she took a room above a baker's with a window that looked at nothing in particular. She said it was the first view she had ever chosen.''',
+    '''Kiana stayed in Drezen after the war. She took a room above a baker's, with a window that looked at nothing in particular, and said it was the first view she had ever chosen for herself. She hung the princess's costume on the back of the door, where it could sulk.''',
     (
-        page_p('''The wedding guests still in Sunhammer's keeping came home that spring. Kiana met every coach. She knew all their names, and she made the Commander learn them too.''', requires=(called("kiana"),)),
+        page_p('''The wedding guests still in Sunhammer's keeping came home that spring. Kiana met every coach. She knew all their names, and she made the Commander learn them too.''', requires=(called("kiana"), KI + "cost.guests_robbed"), forbids=(KI + "guests_bought_back",)),
         page_p('''She never quite forgave the Commander the guests left behind in the pouch the first time, when {mf|he|she} was quicker to free her than to count the others. She said so once, plainly, and never needed to again.''', requires=(KI + "cost.guests_robbed",), forbids=(called("kiana"),)),
         page_p('''The counterfeit that had stood in for her stone went back to Sunhammer's bench in his apprentice's hand. Kiana liked to imagine the day he put a loupe to it, and made the Commander imagine it with her.''', requires=(KI + "cost.counterfeit_spent",)),
     ), deal=[[KI + "cost.sunhammer_favour"], [KI + "cost.guests_robbed"], [KI + "cost.courier_marked"]],
-    call=call('''[Call in the courier's account] "Sunhammer, you're owed. Collect now, while I've a pulse to collect from."''',
-        '''{n}Far off, in a shop that smells of solder, a dwarf lays down a loupe and makes a note in the one ledger he keeps in his head.{/n}''',
-        (PLAIN_CHOICE, (), (), ())))   # Sunhammer is a mortal jeweller: he collects, but is no power
+    # Q10 (HOW, R2-6): the late yes on kiana.trickster.epilogue.commit reaches her coda. Her "then don't promise it" and an
+    # ended relationship (the completed kiana.parting scene) keep it off; G5: no closed flag is read.
+    page_commit_groups=[["kiana.committed"], [KI + "late_committed"]], page_forbids=("kiana.uncertain", "kiana.parting"),
+    call=call('''[Settle the jeweller's account] "Sunhammer's bill. I'm closing it tonight, one way or the other."''',
+        '''{n}One account from Drezen is still open: a jeweller's, kept in a dwarf's head rather than on paper, the way a jeweller keeps the things he does not want read. At the rift, in the fire and the noise, you close it.{/n}''',
+        # Living: he collects. Dead (Q3, JewelerFinal Cue_0042/0043): the favour died with him; no courier acts for a corpse.
+        (PLAIN_CHOICE, (), (), ("kiana.sunhammer_dead",)),
+        ('''[Strike it] "He's dead. A dead dwarf's ledger is a closed book."''', None, ("kiana.sunhammer_dead",), ())))   # Sunhammer is a mortal jeweller: he collects, but is no power
 
 MCR = "minagho_chivarro.trickster."
 partner("minachiv", "minagho_chivarro", "minachiv.complete", "minachiv.closed", "The House of Two",

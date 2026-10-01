@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1035,
-  "resolved": 1035,
+  "entryTargetScenes": 1036,
+  "resolved": 1036,
   "inlineOnlyScenes": 271,
   "inlineOnlyResolved": 271,
-  "answerListScenesWithoutContact": 617,
-  "answerListScenesWithoutContactResolved": 617,
+  "answerListScenesWithoutContact": 618,
+  "answerListScenesWithoutContactResolved": 618,
   "lists": 111,
   "listsWithReachableHost": 110
  },
@@ -13622,6 +13622,25 @@
    "contact": "a609ed9b2205d034bb3bb04d2a255681",
    "entry": {
     "ecaf5cfe8087a4f45a2269974f4885c9": "RRT_entry.kiana.trickster.pouch.second_offer"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ecaf5cfe8087a4f45a2269974f4885c9",
+    "dialog": "d5adc0bbbad5f054098b527cf9cc64f1",
+    "dialogName": "VendorArsinoe_dialogue",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "kiana.trickster.react_arsinoe_souls_home": {
+   "kind": "dialog",
+   "lists": [
+    "ecaf5cfe8087a4f45a2269974f4885c9"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ecaf5cfe8087a4f45a2269974f4885c9": "RRT_entry.kiana.trickster.react_arsinoe_souls_home"
    },
    "resolved": true,
    "host": {

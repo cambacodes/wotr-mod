@@ -290,7 +290,7 @@ internal static class KianaTricksterTests
 
         // Reactions: Arsinoe, Anevia, Irabeth only; Anevia's lift with her return, Irabeth's with hers.
         var reactions = story.Scenes.Where(s => s.Relationship == "kiana" && s.Reaction).ToArray();
-        check(reactions.Length == 11 && reactions.All(r => r.Owner == "Arsinoe" || r.Owner == "Anevia" || r.Owner == "Irabeth"),
+        check(reactions.Length == 12 && reactions.All(r => r.Owner == "Arsinoe" || r.Owner == "Anevia" || r.Owner == "Irabeth"),
             "Kiana reactions changed.");
         var aneviaDog = S("kiana.trickster.awake.react_anevia");
         var dogWorld = World(story, 5, "trickster.ever", "kiana.trickster.returned", "kiana.trickster.dog_saved", "anevia_gone");
@@ -298,6 +298,47 @@ internal static class KianaTricksterTests
         dogWorld.Flags.Add("anevia.trickster.returned");
         check(Rules.Available(story, aneviaDog, dogWorld), "Anevia's return does not lift her reaction.");
         check(!Rules.Available(story, S("kiana.trickster.possessed.react_arsinoe_stones"), dogWorld), "The possessed-ward line plays for the dog.");
+
+        // Q10 (HOW): every spine beat waits at most 72 hours (spec section 6 budget).
+        foreach (var id in new[] { "kiana.stagecraft", "kiana.marriage", "kiana.widow", "kiana.answer", "kiana.date", "kiana.morning", "kiana.betrothal" })
+            check(S(id).DelayHours <= 72, "Q10: a Kiana spine beat waits more than 72 hours: " + id);
+        // Q10 (COX): a native Q3 entry on a Trickster run keeps to the Chapter 5 letter budget; off the path the chain stays.
+        check(!Rules.Available(story, S("kiana.guest_table"), Later(story, World(story, 5, "trickster.ever", "seelah.souls_returned", "kiana.lovers", "kiana.morning"), 48)),
+            "Q10: the post-commitment chain opens on a native Q3 entry on a Trickster run.");
+        // Q10 (INT): after either ransom Arsinoe answers for the recovered patients on her own hub; Q3 settles it natively.
+        var home = S("kiana.trickster.react_arsinoe_souls_home");
+        check(home.AnswerLists.SequenceEqual(new[] { ArsinoeHub }), "Q10: the souls-home answer left Arsinoe's hub.");
+        foreach (var payPath in new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" })
+            check(Rules.Available(story, home, World(story, 5, "trickster.ever", "kiana.trickster.met", payPath)), "Q10: Arsinoe is silent after " + payPath);
+        check(!Rules.Available(story, home, World(story, 5, "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.guests_robbed"))
+              && !Rules.Available(story, home, World(story, 5, "trickster.ever", "kiana.trickster.met", "kiana.trickster.guests_ransomed", "seelah.souls_returned")),
+            "Q10: Arsinoe reports souls home that never came home, or after Q3.");
+        // Q10 (CAN): Sunhammer's witnessed death (JewelerFinal Cue_0042/0043) cancels the favour everywhere.
+        var promised = S("kiana.ending_promised").Nodes[0];
+        var deadEnd = World(story, 6, "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.sunhammer_favour", "kiana.committed", "kiana.sunhammer_dead");
+        var deadParas = Rules.VisibleParagraphs(promised, deadEnd);
+        check(deadParas.Any(x => x.Text.Contains("cancelled by a funeral")) && !deadParas.Any(x => x.Text.Contains("called it in yet")),
+            "Q10: a dead jeweller still holds the Commander's favour.");
+        var call = S("kiana.lastcall.call");
+        var callDead = Program.Walk(call, deadEnd);
+        check(callDead.Count > 0 && callDead.All(r => !r.Has("kiana.lastcall.called") && r.Has("kiana.lastcall.resolved")),
+            "Q10: a dead Sunhammer is called in at the rift.");
+        var callAlive = Program.Walk(call, World(story, 6, "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.sunhammer_favour", "kiana.committed"));
+        check(callAlive.Count > 0 && callAlive.All(r => r.Has("kiana.lastcall.called")), "Q10: a living Sunhammer cannot be called in.");
+        // Q10 (BEL): the betrothed keepsake is the cancelled licence, not a live hold.
+        var licenceParas = Rules.VisibleParagraphs(promised, World(story, 6, "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed",
+                                                                   "kiana.trickster.cost.betrothed", "kiana.committed"));
+        check(licenceParas.Any(x => x.Text.Contains("POSTPONED")) && !licenceParas.Any(x => x.Text.Contains("stayed postponed")),
+            "Q10: the licence is both held and framed.");
+        // Q10 (HOW, R2-6): the late yes reaches her Last Call coda; her "then don't promise it" and a parting keep it off.
+        var coda = S("kiana.lastcall.page");
+        var lateYes = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers");
+        check(lateYes.Has("kiana.trickster.late_committed") && Rules.Available(story, coda, lateYes), "Q10: the late commit loses her Last Call coda.");
+        foreach (var off in new[] { "kiana.uncertain", "kiana.parting" })
+        {
+            var w = Program.Copy(lateYes); w.Flags.Add(off); Rules.Complete(story, w);
+            check(!Rules.Available(story, coda, w), "Q10: her Last Call coda plays after " + off);
+        }
 
         // Exclusivity: one device per world.
         foreach (var w in new[] { seen, missedWife, possessed, awake, noKing })

@@ -94,7 +94,7 @@ s("stagecraft", "The trouble with an entrance", [
       c('"I liked the sleeve. The princess has a terrible castle and refuses to admit it."', "comedy")),
     n("threat", "Kiana", '''"Good. I wanted to keep it."
 {n}She writes a note beside the line, then gives you a suspicious look.{/n}
-"You are allowed to disagree, you know. But if you make me laugh halfway through this next attempt, I'm starting again."
+"Contradict me, by all means. Make me laugh halfway through and you can start the whole scene again."
 {n}The next time she makes her entrance, you let her finish. She watches you watching her, and this time she remembers every word.{/n}''',
       c('[Help her rehearse the rest of the scene.]', "end", flags=("kiana.quiet_entrance",))),
     n("comedy", "Kiana", '''"Perhaps she bought the castle without visiting it first."
@@ -112,16 +112,16 @@ s("stagecraft", "The trouble with an entrance", [
 s("marriage", "The person in the room", [
     n("start", "Kiana", '''"Elan asked what I was writing. I told him about the princess and your terrible ending. He laughed."
 {n}Kiana folds the page once, then smooths it flat again.{/n}
-"I liked telling him. I also left out how often I've been hoping you would answer. That bothered me afterward."''',
+"Somehow I forgot to mention how often I watch for your messenger."''',
       c('"I have been hoping for your letters too."', "attraction"),
       c('"Then let us keep this a friendship you can speak about freely."', "friends")),
     n("attraction", "Kiana", '''"There. Now we've said something we can't pretend was about the play."
 {n}She looks directly at you.{/n}
-"He is a good man. He has not earned an unfaithful wife by being away, and I haven't stopped loving him because I like the way you look at me. I need to work out what that means before I make promises to anyone."''',
+"Elan has done nothing to deserve this. I love him, and I want you. Damn it, I shall have to tell him."''',
       c('"Speak to him first. I want you, but I can wait."', "wait", flags=("kiana.waited",)),
-      c('[If she wants it, offer one kiss before you part.]', "kiss", forbids=("inhuman",)),
+      c('[Step close enough to kiss her.]', "kiss", forbids=("inhuman",)),
       c('"I would rather stop here than ask you to make that choice."', "friends")),
-    n("kiss", "Kiana", '''{n}Kiana comes closer. She pauses within reach, watches your face, then kisses you. Her fingers close briefly around your sleeve.{/n}
+    n("kiss", "Kiana", '''{n}Kiana catches your sleeve, draws you down and kisses you.{/n}
 {n}When she steps away, she does not smile.{/n}
 "I wanted that. I won't tell him it simply happened to me."
 {n}She collects her pages, leaving yours until last.{/n}
@@ -137,19 +137,19 @@ s("widow", "An evening she chose", [
     n("start", "Kiana", '''{n}When Kiana next asks you back, she has lit one candle in the borrowed castle.{/n}
 "I laughed at something yesterday and wanted to tell Elan. I had almost turned around before I remembered."
 {n}She straightens the candle, though it was already standing evenly.{/n}
-"I don't want every evening to be about him. I don't want people to decide that means he mattered less, either."''',
-      c('"You can tell me about him when you want to."', "room"),
+"If everyone mentions Elan tonight, I shall cry into the wine. If nobody mentions him, I may throw it."''',
+      c('"Tell me what he would have said about this castle."', "room"),
       c('"What would you like this evening to be about?"', "room")),
     n("room", "Kiana", '''"A woman with an unfinished play and a guest she is beginning to look forward to seeing."
 {n}Her gaze stays on you.{/n}
-"I think I might want more than company. Slowly. I am allowed to be uncertain about it, aren't I?"''',
-      c('"So am I. We can find out together."', "try"),
+"I want you closer. There, I've said it. Don't look so pleased; I may still make you read."''',
+      c('"Then give me the guest\'s part. I intend to be irresistible."', "try"),
       c('"I would like to stay your friend."', "friend")),
-    n("try", "Kiana", '''{n}She pushes a page toward you.{/n}
-"Then read this part. The guest is supposed to be irresistible. I want to hear how you manage it without sounding terribly pleased with yourself."
+    n("try", "Kiana", '''"Irresistible. We shall see." {n}She pushes a page toward you.{/n}
+"Read it, then. I want to hear how you manage it without sounding terribly pleased with yourself."
 {n}Her next laugh surprises her. She lets it finish.{/n}''', c('[Read with her.]', flags=("kiana.attracted", "kiana.available", "kiana.bereaved",))),
     n("friend", "Kiana", '''"I'd like that. Stay for the reading, then. I still need someone willing to say the embarrassing lines."''', c('[Stay as her friend.]', flags=("kiana.closed",))),
-], requires=("kiana.company", "seelah.elan_dead"), delay=168)
+], requires=("kiana.company", "seelah.elan_dead"), delay=72)
 
 s("answer", "No second secret", [
     n("start", "Kiana", '''{n}Kiana sends for you without enclosing a page of the play. When you arrive, she has a small travel case by her chair.{/n}
@@ -163,41 +163,41 @@ s("answer", "No second secret", [
 "He said he wished I'd spoken before I kissed you. I could hardly argue. I don't want you to call him small-minded for being hurt."''',
       c('"He is right about that. I chose it too."', "apart", flags=("kiana.owned_hurt",)),
       c('"I will not ask you to defend me to him."', "apart", flags=("kiana.owned_hurt",))),
-    n("apart", "Kiana", '''"I told him I couldn't keep promising the marriage we had planned. He wants a wife who can make that promise. I want to find out what I can choose without making it for somebody else's sake."
+    n("apart", "Kiana", '''"He asked whether I still wanted our marriage. I could not say yes. He would have heard the lie."
 {n}She looks tired. There is relief in her voice, but no triumph.{/n}
 "We are separating. There will be practical things to settle. I haven't asked you here to move my case into your room."''',
-      c('"Tell me where you want it taken. Then take the time you need."', "later")),
+      c('"Where shall I take the case?"', "later")),
     n("later", "Kiana", '''"My friend has already arranged that. Tonight, I wanted you to know why I haven't written."
 {n}She rests her hands in her lap.{/n}
-"When I invite you again, it will be because I want to see you. That is all I can promise yet."''',
+"Watch for my next letter. It will contain an invitation, and probably an outrageous lie about my castle."''',
       c('[Leave the next invitation to her.]', flags=("kiana.available", "kiana.separated",))),
-], requires=("kiana.marriage", "kiana.attracted"), forbids=("seelah.elan_dead",), delay=120)
+], requires=("kiana.marriage", "kiana.attracted"), forbids=("seelah.elan_dead",), delay=72)
 
 s("date", "The guest stays", [
     n("start", "Kiana", '''{n}The next invitation is written in Kiana's most elaborate hand: One guest. No court. Bring no speeches.{/n}
 {n}She meets you in her borrowed castle, wearing a dark dress with a ribbon at the throat. The onions have been removed.{/n}
-"I thought we could manage an evening without deciding the whole future. I have been rather bad at those lately."''',
+"Tonight I have you, wine, and a dress that has already defeated two ribbons. The future can wait outside."''',
       c('"Have you decided what the princess wants?"', "want", forbids=("inhuman",)),
       c('"You look beautiful."', "dress", forbids=("inhuman",)),
       c('"I hardly resemble the guest you first imagined."', "changed", requires=("inhuman",))),
     n("changed", "Kiana", '''"No. And I can't make this easy by pretending you are wearing a costume."
 {n}Kiana leaves space between you. Her hands are steady, though she has stopped playing with the ribbon at her throat.{/n}
-"I used to laugh at things that frightened me. Sometimes that helped. Sometimes I was simply frightened and laughing."
+"I can laugh with my teeth chattering. It rather spoils the princess's dignity."
 {n}She draws a chair to the other side of the table.{/n}
-"Tonight I want to hear you. We stay here and talk. If the scene needs a wider stage, the leading lady will move her chair, and the audience will pretend not to notice. I have performed brave for half of Drezen. You get the rehearsal, lines fluffed and all."''',
-      c('"Then we begin with your voice, and mine."', "want")),
+"Sit there. If I want you closer, I shall steal your chair. The princess is a shameless thief."''',
+      c('"Then tell me what happened to the princess\'s first guest."', "want")),
     n("dress", "Kiana", '''"Thank you. I tried on three dresses before choosing the first. You are getting a very carefully arranged appearance of spontaneity."
 {n}She turns once so you can admire the result, then comes back to you.{/n}''', c('"What happens when the guest is thoroughly impressed?"', "want")),
     n("want", "Kiana", '''"Here is what I want."
 {n}Kiana waits until she has your attention before continuing.{/n}
 "I want this evening with you. And the next one, if you have it. I am asking you to answer my letters, and to turn up when you say you will. An actress can forgive anything but an empty seat she was promised."''',
       c('"I can promise that."', "close"),
-      c('"I cannot promise a relationship. I should have said so sooner."', "stop")),
+      c('"I want an evening, Kiana. I cannot offer you more."', "stop")),
     n("close", "Kiana", '''"Good. Then you may be charming again. I was beginning to miss it."
 {n}Her smile is a little unsteady now that the evening is no longer make-believe.{/n}''',
       c('[Kiss her.]', "kiss", forbids=("inhuman",)),
       c('"Stay beside me. I want to hear the rest in your own voice."', "read", forbids=("inhuman",)),
-      c('"I want to hear the rest in your own voice. Stay where you are comfortable."', "distance", requires=("inhuman",))),
+      c('"Read me the rest. I like watching you from here."', "distance", requires=("inhuman",))),
     n("kiss", "Kiana", '''{n}She meets you halfway. This kiss lasts until she begins to smile against your mouth.{/n}
 "I had a much better line prepared. I can't remember it now."
 {n}She does not go looking for the script.{/n}''', c('[Spend the evening together.]', flags=("kiana.lovers", "kiana.kissed",))),
@@ -207,10 +207,9 @@ s("date", "The guest stays", [
     n("distance", "Kiana", '''{n}Kiana stays in the chair she chose across the table. After a while, she stops glancing at the space between you.{/n}
 "I want to change the ending. The guest doesn't have to sweep her off her feet. Perhaps the princess has had enough of being swept anywhere."
 {n}She turns the page toward you and reads. Her voice grows less careful as the evening passes.{/n}''', c('[Listen, and spend the evening with her.]', flags=("kiana.lovers",))),
-    n("stop", "Kiana", '''"Yes. You should have."
-{n}She takes a moment before she answers the rest.{/n}
-"Thank you for saying it now. I would like the evening to myself."''', c('[Respect her decision.]', flags=("kiana.closed",))),
-], requires=("kiana.available",), delay=168)
+    n("stop", "Kiana", '''"An evening." {n}She sets the wine down, very precisely, out of your reach.{/n}
+"You might have said so before I bought the wine. No, take nothing back; I am glad you said it before the princess made a fool of herself. Go. I want the rest of this evening, and the bottle, to myself."''', c('[Respect her decision.]', flags=("kiana.closed",))),
+], requires=("kiana.available",), delay=72)
 
 s("morning", "An ordinary difficulty", [
     n("start", "Kiana", '''{n}Kiana has put the play aside. There is something else she wants to tell you before you begin reading.{/n}''',
@@ -223,7 +222,7 @@ s("morning", "An ordinary difficulty", [
     n("settling", "Kiana", '''"Elan and I have been sorting out what belongs to whom. We agreed about the furniture. Then neither of us wanted to be the first to take down a little picture we bought together."
 {n}She looks toward the wall, where the picture now hangs.{/n}
 "He told me to keep it. We were kind to each other for a few minutes. I was glad of that."''',
-      c('"I am glad you could have that conversation."', "work")),
+      c('"Keep it. I like it on that wall."', "work")),
     n("work", "Kiana", '''{n}Kiana takes up the play. She has crossed out most of its final page.{/n}
 "Everyone keeps congratulating me on being brave. I was trying to write a woman who wants a pleasant evening. Apparently that is a heroic undertaking now."
 {n}She shows you the one surviving sentence.{/n}
@@ -236,15 +235,15 @@ s("morning", "An ordinary difficulty", [
     n("papers", "Kiana", '''"An outrageous demand. I approve."
 {n}She puts her own pages aside first.{/n}
 "There. I have saved you from having to point out the hypocrisy."''', c('[Put your work aside too.]', "promise")),
-    n("promise", "Kiana", '''"When all this is over, I would like to keep seeing you. In rooms that don't have to be borrowed, perhaps. But I won't wait until the war is over to have a life."
+    n("promise", "Kiana", '''"When this war is over, I want you in a room nobody lent me, with the door locked and the princess sulking in a drawer. And I am not waiting for the war's leave to start living, either."
 {n}Her voice is quiet, with none of the princess in it.{/n}
-"Will you make room for that?"''',
-      c('"Yes. Let us keep choosing the time, even when it is difficult."', "yes"),
+"So. Are you in it, or must I write you out?"''',
+      c('"Yes. Keep a chair for me after the war."', "yes"),
       c('"I want you, but I cannot promise what happens after the war."', "uncertain")),
     n("yes", "Kiana", '''"Then I will hold you to the next evening first. I know how generals can be about distant plans."
-{n}She names a day. You make the arrangement together.{/n}''', c('[Keep making a life with her.]', flags=("kiana.committed",))),
-    n("uncertain", "Kiana", '''"Then don't promise it. Keep the evening you have offered. We can talk again when we know more."
-{n}She draws her chair closer.{/n}''', c('[Stay without making a lasting promise.]', flags=("kiana.uncertain",))),
+{n}She names a day. You make the arrangement together.{/n}''', c('[Promise to come back to her.]', flags=("kiana.committed",))),
+    n("uncertain", "Kiana", '''"Then promise me tonight. I have bought wine for two, and I resent waste."
+{n}She draws her chair closer.{/n}''', c('[Stay for the evening.]', flags=("kiana.uncertain",))),
 ], requires=("kiana.lovers",))
 
 s("seelah", "What she has heard", [
@@ -262,7 +261,7 @@ s("seelah", "What she has heard", [
 "I used to think getting everyone through the fighting would be the hard part. Then we'd all know how to be happy. Rather a lot to ask of winning a war, isn't it?"''', c('"It was a good thing to hope for."', "end")),
     n("grief", "Seelah", '''"She laughed when she told me about your play. Then she cried a little. I wasn't sure what to do, so I stayed."
 {n}Seelah gives you a small, tired smile.{/n}
-"That seemed to help. You don't have to fix every evening."''', c('"I am learning that."', "end")),
+"She needed company. I stayed until she threatened to make me read the prince."''', c('"I shall stay next time too."', "end")),
     n("end", "Seelah", '''"All right. I wanted to say it. Now I have to work out how to attend a play without becoming part of it. Kiana has threatened to give me a crown."
 {n}She sounds considerably more alarmed by this than by most military assignments.{/n}''', c('[Promise nothing about the crown.]', flags=("kiana.seelah_spoke",))),
 ], requires=("kiana.lovers",), forbids=("seelah_dead", "seelah_gone"), optional=True)
@@ -276,11 +275,11 @@ s("farewell", "The next page", [
       c('"I would like to hear what you plan to do while I am gone."', "plans")),
     n("plans", "Kiana", '''"Work on the play. Arrange a reading of the next draft. Discover which of my improvements people preferred before I improved them."
 {n}Her smile comes and goes.{/n}
-"There are people I'd like to invite who need an evening out. I was going to ask Arsinoe whether she knew anyone who might enjoy it. I thought an invitation would be better than deciding they ought to be cheered up."''',
+"Arsinoe must know somebody who would prefer a ridiculous princess to another evening of hospital soup."''',
       c('"I would like to speak with her too. Save me a seat when the play is ready."', "part", flags=("arsinoe.introduced",)),
       c('"Save me a seat."', "part")),
     n("part", "Kiana", '''"I will. You must be there to complain about the ending."
-{n}She gives you the folded page. For once she lets the plain request stand, without adding a joke to make it easier to hear.{/n}''', c('[Keep the page.]', flags=("kiana.farewell_kept",))),
+{n}She presses the folded page into your hand and holds on until you meet her eyes.{/n}''', c('[Keep the page.]', flags=("kiana.farewell_kept",))),
 ], requires=("kiana.morning",), RequiresAny=("kiana.future_settled", "inhuman"))
 
 s("parting", "The words outside the play", [
@@ -302,16 +301,16 @@ def ending(id, text, requires=(), forbids=(), owner="Epilogue"):
 
 
 ending("together", '''{n}Kiana took the play beyond readings to a production with scenery, borrowed costumes and more practical difficulties than she had budgeted for. One performance was interrupted when a guest asked why the vampire princess's castle smelled of onions. She considered this a promising response.{/n}
-{n}The small picture she had kept after separating from Elan hung in the room where she wrote. She did not take it down to make a visitor comfortable. Her marriage had been real, and so had its ending.{/n}
+{n}The picture she had bought with Elan hung beside the princess's latest portrait, to the princess's considerable disadvantage.{/n}
 {n}She and the Commander kept finding evenings for one another. Some were grand enough to satisfy the vampire princess. The ones Kiana spoke of most fondly involved unfinished work and someone who stayed to hear how her day had gone.{/n}''', requires=("kiana.committed", "kiana.separated", "kiana.future_settled"), forbids=("kiana.closed", "ascended"))
 ending("bereaved", '''{n}Kiana took the play beyond readings to a production with scenery and costumes. The scenery proved less reliable than the actors. She laughed through a disastrous rehearsal and insisted on inviting an audience anyway.{/n}
-{n}Elan's letters stayed in a drawer she opened when she wanted to hear his voice in the words. Some days she spoke about him. The Commander learned to listen without trying to bring those stories to a comforting conclusion.{/n}
+{n}Kiana kept Elan's letters in her drawer and sometimes read one aloud; the Commander knew which passages would make her laugh.{/n}
 {n}There were new letters too, and evenings worth dressing for. Kiana made plans with the person who had learned her ridiculous lines and stayed for the conversations that followed.{/n}''', requires=("kiana.committed", "kiana.bereaved", "kiana.future_settled"), forbids=("kiana.closed", "ascended"))
 ending("ascended", '''{n}Kiana discovered that loving someone who had become divine did not make waiting for an answer less irritating. Her letters said so, with increasingly elaborate illustrations.{/n}
 {n}When an answer came, she read it in private. Then she returned to the play, where the princess had acquired a guest with an inconveniently celestial schedule. The guest's best line was still a simple promise to stay for the evening.{/n}''', requires=("kiana.committed", "ascended", "kiana.future_settled"), forbids=("kiana.closed",))
 ending("apart", '''{n}Kiana kept the pages they had written together, though she put them away for a time. When she returned to the play, she changed the ending.{/n}
-{n}She did not offer their private conversations as an explanation for the changes. Whatever an audience made of the princess and her guest, Kiana chose how much of her own story she would tell.{/n}''', requires=("kiana.lovers", "kiana.closed"))
+{n}Asked about the changed ending, Kiana blamed the princess's appalling taste in guests.{/n}''', requires=("kiana.lovers", "kiana.closed"))
 ending("unfinished", '''{n}Their evenings never quite became the life Kiana had begun to imagine. For a while, she left room in her invitations. Eventually she made other plans.{/n}
 {n}She finished the play. The princess's guest had several excellent lines, but no longer appeared in the final scene.{/n}''', requires=("kiana.attracted",), forbids=("kiana.committed", "kiana.closed", "kiana.future_settled"))
 ending("aeon", '''{n}In the history the Commander left behind, there was no borrowed castle and no folded page carried into the last battle. Kiana had other evenings to live.{/n}
-{n}Whether a fragment of that other story survived in memory or only in a sudden wish to write, it could no longer require the ending two people had once planned for it.{/n}''', requires=("kiana.committed",), forbids=("kiana.closed",), owner="AeonEpilogue")
+{n}In that other history, no one had yet asked Kiana how a princess might hide the moon.{/n}''', requires=("kiana.committed",), forbids=("kiana.closed",), owner="AeonEpilogue")

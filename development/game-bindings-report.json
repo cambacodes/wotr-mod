@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-qual-q10\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4518,
-  "unique_targets": 997,
+  "binding_uses": 4526,
+  "unique_targets": 1000,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -952,6 +952,10 @@
     },
     "726e936d05fde7a4798854a917b4b73d": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "f09070d38bacb8545a4497e04cf2534a": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0036.jbp",
       "type": "BlueprintCue"
     },
     "c6b676fa989a5494cb6ce0c981979907": {
@@ -2284,6 +2288,14 @@
     },
     "81109ea8fb20dbc478cf67116740f4a1": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "beef9b7110dfebc429bf7109cd3be849": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0042.jbp",
+      "type": "BlueprintCue"
+    },
+    "f40593793216253498d2e30bdd8dee03": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/JewelerFinal/Cue_0043.jbp",
       "type": "BlueprintCue"
     },
     "aebbc1845e827dd4da4e28014e7b4162": {
