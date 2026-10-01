@@ -69,6 +69,12 @@ ELAN_DEAD = "seelah.elan_dead"
 # "Jannah and I will look around the northern side", Cue_0012 f75430d6). The duel of stories tells that day, so it needs it.
 HH_SEEN = "seelah.houndheart_seen"
 HH_SEEN_CUES = ["2100f41ae724734418dc74b15719543e", "f75430d6f83e9864ca9b16db1a170bd1"]
+# Q6 r6 (CAN): she handed her sword through the bars (Deserter Cue_2 / Cue_5, AddItemToPlayer); the Commander cut Seelah
+# down at the cage after Seelah broke the lock (Deserter Answer_0057 [Kill Seelah]).
+SWORD_GIVEN = "jannah.sword_given"
+SWORD_GIVEN_CUES = ["decaff681a6646ea8102a1860fcbd172", "5ddbadee4a3b4d169ad9fbe7a7f62253"]
+SEELAH_KILLED_AT_CAGE = "jannah.seelah_killed_at_cage"
+SEELAH_KILLED_ANSWER = "b1cf64a1c5af84c46b578fa82f865d66"
 SEELAH_DEAD = "seelah_dead"
 SEELAH_GONE = "seelah_gone"
 SEELAH_BACK = "seelah.trickster.returned"
@@ -347,13 +353,13 @@ visit(P + "alive.letter", "From the last cell", [
         c("Continue", "unmet", forbids=(JOINED, REFUSED, CONDEMNED, PRISON, FREE)),
         c("Continue", "joined_free", requires=(JOINED,), forbids=(CONDEMNED,))),
     jan("joined_free", '''"Commander. The jeweller is dead and the souls are home. I came to you on my own feet, nobody's prisoner, and I held the mouth of that hole for Seelah because I chose to. Now it's done I've chosen again. I've asked the Condemned for a place. The sergeant said yes before I'd finished asking, which I'm choosing to take as a compliment."
-"I didn't run. Not once, at the mouth of that hole or down in it when it counted. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
+"I didn't run. Not once, at the mouth of that hole. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
         c("Continue", "wagon")),
     jan("joined", '''"Commander. The jeweller is dead and the souls are home. The Condemned only let me go to find you in Drezen; if you'd turned me away I'd have gone straight back to them. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything."
-"I didn't run. Not once, at the mouth of that hole or down in it when it counted. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
+"I didn't run. Not once, at the mouth of that hole. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
         c("Continue", "wagon")),
     jan("refused", '''"Commander. You told me to leave Drezen. I didn't. I've put myself in the old cells under the citadel instead."
-"The cells aren't Drezen. They're the crusade's. And I was never going to run twice."''',
+"I haven't left. I've put myself where you can find me, and I'll go when the crusade sends me, not before. I was never going to run twice."''',
         c("Continue", "wagon")),
     jan("condemned", '''"Commander. My Condemned company came through Drezen on its way to the north gate. The sergeant lets us sleep in the gaol when we're in a town, so he can count us in the morning. I'm writing from the last cell."
 "He says I'm the only one of his who ever asked to be counted."''',
@@ -364,7 +370,7 @@ visit(P + "alive.letter", "From the last cell", [
     jan("free", '''"Commander. I walked out of the Molten Scar with the cage open behind me and no chain on me. I went to Kenabres and tried to be nobody. It didn't take. I'm bad at being nobody; I was raised to be looked at."
 "So I came back and gave the gaol my name, and they didn't know what to do with it, so they gave me a cell."''',
         c("Continue", "wagon")),
-    jan("unmet", '''"Commander. You may not know my face. I'm Jannah Aldori, of Mivon, recruit of the Eagle Watch until I ran from a fight with demons at the Houndheart camp. The vrocks had me in a cage in the Molten Scar after that, with two knights in the cages beside me who stopped being knights. I got out the night nobody was watching mine."
+    jan("unmet", '''"Commander. You may not know my face. I'm Jannah Aldori, of Mivon, recruit of the Eagle Watch until I ran from a fight with demons at the Houndheart camp. The vrocks had me in a cage in the Molten Scar after that. I got out the night nobody was watching mine."
 "I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue."''',
         c("Continue", "wagon")),
     jan("wagon", '''"The Condemned wagon goes north at the ninth bell of Oathday, and I mean to be on it. I'm writing so you'll hear it from me and not from a turnkey, and not think I ran again."''',
@@ -395,8 +401,8 @@ visit(P + "alive.stories", "Blood and tale", [
         c('[Challenge her] "Then fight me for it. If I win, you stay."', "challenge", requires=(HH_SEEN,)),
         c('[Let her go to the wagon] "Then go. Good luck, Jannah."', "let_go")),
     jan("challenge", '''"Fight you. In here?" {n}She looks round the cell: the bunk, the bucket, the circle she scratched.{/n}
-"With what? I haven't had my own blade since the Scar, and a stick against the Commander of the crusade is a joke I'm too tired to tell."
-{n}Then something changes in her face, the way it once did in Kenabres when somebody mentioned a lost cart of beer.{/n} "Wait. There's a game."''',
+"With what? They took my blade when I came down here, and a stick against the Commander of the crusade is a joke I'm too tired to tell."
+{n}Then something changes in her face, all at once, like a fencer seeing an opening.{/n} "Wait. There's a game."''',
         c("Continue", "rules")),
     jan("rules", '''"My master's salle played it on wet nights, when nobody could cross blades. Blood and tale. Two fencers tell the same bout, and each tells the other's part: you tell what I did, I tell what you did. The first one caught in a lie has bled first, and yields. He used to say a fencer who lies about a bout will lie with a blade, so you might as well find out over wine."
 "We'll tell Houndheart. You were there."''',
@@ -413,16 +419,16 @@ visit(P + "alive.stories", "Blood and tale", [
 "That's a kind lie, and it's the worst sort. First blood to me."''',
         c("Continue", "won")),
     jan("true", '''{n}She nods once, as if you had touched her on the guard and not the body. No blood.{/n}
-"My turn. Your part." {n}She tells it fast and flat, like a report.{/n} "You had your weapon out before the rest of us knew what had come out of that chest. When Curl's things came up out of the ground you killed the first of them while Elan was still shouting at him, and you shouted for us to close up on you. I was on your left. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it."''',
+"My turn. Your part." {n}She tells it fast and flat, like a report.{/n} "You had your weapon out before the rest of us knew what had come out of that chest. When Curl's things came up out of the ground you were moving before any of us, and you shouted for us to close up on you. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it."''',
         c("Continue", "her_tale")),
     jan("her_tale", '''"Then more of them came, and you turned to meet them, and I threw my sword down in the dirt and ran."
 {n}She stops, and waits for you to find the lie, if there is one.{/n}''',
         c("[Perception] Go back over that night, stroke by stroke, and look for the lie in hers.",
           check=dict(Skill="SkillPerception", DC=20, Success="caught", Failure="missed")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
-    nar("caught", '''{n}You remember the chase, Curl, the things out of the ground. You remember a half-elf on your left with an Aldori blade, and the blade was not lying in the dirt. It was in the first thing going for Seelah's back, to the hilt, and she had to put her boot on its chest to get it back out. She ran after that. Not before.{/n}''',
-        c('"You didn\'t throw your sword down. You killed the one going for Seelah\'s back, and then you ran. You\'ve been telling it worse than it was."', "yield")),
-    jan("yield", '''{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: Curl, Seelah's back, her boot on its chest.{/n}
+    nar("caught", '''{n}You remember the chase across the runes. You remember a half-elf creeping up on the quasit alone, sword out, the only one of you who tried, and the thing blinking away twenty paces with a clap just as she reached it. She ran later, when Curl's things came. Not before.{/n}''',
+        c('"You didn\'t just throw your sword down and run. You went after that quasit alone before any of us moved, and you ran later. You\'ve been telling it worse than it was."', "yield")),
+    jan("yield", '''{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: the quasit, the clap, her empty hands.{/n}
 "...First blood." {n}She says it very quietly.{/n} "To you. Seven years in the circles of Mivon and I never bled first, and I lose my record in a cell, to a story, on a lie I told against myself."
 {n}She leaves the practice sword where it lies inside the circle.{/n} "Say it, then. What comes next."''',
         c('"You walk out of this cell. The wagon goes without you."', "stay", flags=(CAUGHT, RETURNED, STARTED, FIRST_LOSS)),
@@ -855,7 +861,7 @@ SCENES.append(reaction("Seelah", P + "react.seelah_unknown", (RETURNED, DEAD, SE
 
 SCENES.append(reaction("Seelah", P + "react.seelah_cells", (RETURNED, SEELAH_HERSELF),
     '''"Jannah's in the gaol." {n}Seelah says it like an accusation, and then like good news, both in the same breath.{/n}
-"By choice! She put herself there! And you knew, and you went down and played some sort of game with her over the Houndheart camp, and now she's staying in Drezen." {n}She shakes her head.{/n}
+"And she won't leave it! She won't take a pardon! And you knew, and you went down and played some sort of game with her over the Houndheart camp, and now she's staying in Drezen." {n}She shakes her head.{/n}
 "I'd have gone down there myself if anyone had told me. She came and found me instead. She's different. She stands like somebody who's stopped waiting to be hit."''',
     entry='"You\'ve seen Jannah."', **dict(SEELAH_AT, forbids=("seelah_dead", "seelah_gone", DEAD_L))))
 
@@ -911,5 +917,12 @@ def integrate(payload):
     if seen.get(HH_SEEN, HH_SEEN_CUES) != HH_SEEN_CUES:
         raise ValueError("Conflicting binding: " + HH_SEEN)
     seen[HH_SEEN] = list(HH_SEEN_CUES)
+    if seen.get(SWORD_GIVEN, SWORD_GIVEN_CUES) != SWORD_GIVEN_CUES:
+        raise ValueError("Conflicting binding: " + SWORD_GIVEN)
+    seen[SWORD_GIVEN] = list(SWORD_GIVEN_CUES)
+    answers = payload.setdefault("SelectedAnswers", {})
+    if answers.get(SEELAH_KILLED_AT_CAGE, SEELAH_KILLED_ANSWER) != SEELAH_KILLED_ANSWER:
+        raise ValueError("Conflicting binding: " + SEELAH_KILLED_AT_CAGE)
+    answers[SEELAH_KILLED_AT_CAGE] = SEELAH_KILLED_ANSWER
     # The unit's own BlueprintPortrait (CR4_DeserterJanna m_Portrait) until custom art ships; a custom PNG always wins.
     payload.setdefault("PortraitFallbacks", {}).setdefault("Jannah", "550a859fc62244ceadeb40d79ca4d261")

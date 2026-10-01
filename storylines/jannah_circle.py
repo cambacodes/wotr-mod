@@ -21,7 +21,7 @@ from storylines.jannah_trickster import (CAUGHT, CLOSED, COMMITTED, CONDEMNED, D
                                          FREE, GONE, HH_HONEST, HH_LUCKY, HH_STAND, HOUNDHEART, JOINED, LIED, MIVON_LEGEND,
                                          MIVON_TRUTH, NAMELESS, NIGHT, POSTING, PRESENCE, PRISON, PUBLIC_YIELD, REL, RETURNED,
                                          SCAR, SEELAH_BACK, SEELAH_DEAD, SEELAH_FOR_HER, SEELAH_GONE, SEELAH_HERSELF,
-                                         SEELAH_KEPT, SHE_FIRST, STORY_LOST, UNIT, WALL_SALUTE, WALL_SHIELD, WALL_WATCHED, WALLS, YOU_FIRST, FIRST_LOSS,
+                                         SEELAH_KEPT, SHE_FIRST, STORY_LOST, UNIT, WALL_SALUTE, WALL_SHIELD, WALL_WATCHED, WALLS, YOU_FIRST, FIRST_LOSS, SWORD_GIVEN, SEELAH_KILLED_AT_CAGE,
                                          jan, nar)
 
 SCENES = []
@@ -243,11 +243,11 @@ visit(WALLS, "Wings over the north wall", [
 # Seelah (must-acknowledge): the friend she failed, from Jannah's side only.
 meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
     nar("open", '''{n}She is turning a battered pewter tankard over in her hands, the kind the Defender's Heart used to hang behind its bar. Someone has scratched a little cart on the side with a knife point, and four stick figures pushing it.{/n}''',
-        c("Continue", "mourn", requires=(SEELAH_DEAD,), forbids=(SEELAH_BACK, FREE)),
+        c("Continue", "mourn", requires=(SEELAH_DEAD,), forbids=(SEELAH_BACK, SEELAH_KILLED_AT_CAGE)),
         c("Continue", "gone", requires=(SEELAH_GONE,), forbids=(SEELAH_DEAD, SEELAH_BACK)),
         c("Continue", "living", forbids=(SEELAH_DEAD, SEELAH_GONE)),
         c("Continue", "living", requires=(SEELAH_BACK,)),
-        c("Continue", "mourn_saw", requires=(SEELAH_DEAD, FREE), forbids=(SEELAH_BACK,))),
+        c("Continue", "mourn_saw", requires=(SEELAH_DEAD, SEELAH_KILLED_AT_CAGE), forbids=(SEELAH_BACK,))),
     jan("mourn_saw", '''"Seelah's dead. I didn't hear it in a gaol; I was there. She broke my lock because you wanted me punished, and you cut her down for it, and I walked out of that cage past her." {n}She turns the four figures to the wall.{/n}
 "Don't tell me what you'd do differently. I've had a long time to work out what I'd have done, and none of it was anything."''',
         c("[Sit with her, and say nothing.]", "mourn_quiet")),
@@ -281,8 +281,8 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
     jan("cage_seen", '''"Every time I've stood in front of her since Houndheart, I've been in a cage or begging for something." {n}She turns the tankard a quarter-turn.{/n}
 "She'd forgive me. That's the trouble with Seelah. She'd forgive me before I'd finished asking, and then I'd have to live with it."''',
         c("Continue", "decide")),
-    jan("not_seen", '''"I haven't seen Seelah since Houndheart. I've seen her every night in my head, though, standing in the middle of that camp, shouting that motto of hers, looking round for me."
-"I wasn't there. I'm never there, in that dream. I've been gone for a year."''',
+    jan("not_seen", '''"I haven't faced her about Houndheart. I've seen her every night in my head, though, standing in the middle of that camp, shouting that motto of hers, looking round for me."
+"I wasn't there. I'm never there, in that dream. I've been gone a long time."''',
         c("Continue", "decide")),
     jan("decide", '''"She's in Drezen. I could walk up those steps and cross the square and be in front of her before the bell." {n}She doesn't move.{/n}
 "Demons I can manage now. I've had the practice, one way and another. It turns out I'm a coward about exactly one thing, and it's a paladin who'd forgive me."''',
@@ -310,7 +310,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
         c("[Leave her with it.]")),
     jan("mourn", '''"Seelah's dead." {n}She turns the tankard so the four little figures face the wall.{/n}
 "I heard in the gaol. Nobody thought to tell me properly; why would they? I was nobody to her, by the end. A friend who ran." {n}Her jaw works.{/n}
-"For a whole winter I told myself she was the reason I ran. I never got to tell her I'd stopped."''',
+"For a whole winter I told myself she was the reason I ran. I never told her properly that I'd stopped."''',
         c('"She\'d have forgiven you."', "mourn_forgive"),
         c("[Sit with her, and say nothing.]", "mourn_quiet")),
     jan("mourn_forgive", '''"I know. That's the worst part. She'd have forgiven me before I'd finished asking." {n}She presses the heels of her hands into her eyes, hard, and takes them away.{/n}
@@ -349,7 +349,7 @@ meet(MIVON, "Home", '"Is that a letter?"', [
 "He misses the daughter he sent. The best blade on the river, who never lost. I don't know if he'd miss this one. He's never met her."''',
         c("Continue", "write")),
     jan("write", '''"That's the question." {n}She puts the letter on the bunk between you, as if it were a blade laid down between two fencers.{/n}
-"I can write him the truth: I ran, I was caged, I'm in a cell in Drezen by choice. Or I can write him a hero. He'd believe the hero. He'd tell the whole street. He'd die happy." {n}She looks at you.{/n} "What would you do?"''',
+"I can write him the truth: I ran, I was caged, I'm in a cell in Drezen. Or I can write him a hero. He'd believe the hero. He'd tell the whole street. He'd die happy." {n}She looks at you.{/n} "What would you do?"''',
         c('"Write him the truth. He asked about his daughter, not about a legend."', "truth"),
         c('"Let him keep the daughter he believes in. The truth is yours; the legend is his."', "legend"),
         c('"It\'s your letter, and your father. I won\'t choose it for you."', "yours")),
@@ -369,15 +369,15 @@ meet(MIVON, "Home", '"Is that a letter?"', [
 meet(BLADE, "Forty-one", '"That isn\'t a practice sword."', [
     nar("open", '''{n}She has the long Aldori blade across her knees, and she's working the old leather off the grip with the point of a knife. Underneath, the wood is dark and smooth with years of her hand.{/n}''',
         c("Continue", "ash", requires=(SCAR,)),
-        c("Continue", "stores", forbids=(SCAR, FREE, PRISON)),
-        c("Continue", "given", requires=(FREE,), forbids=(SCAR,)),
-        c("Continue", "given", requires=(PRISON,), forbids=(SCAR, FREE))),
-    jan("given", '''"Mine. I gave it to you through the bars at the Scar and told you to make it serve the crusade better than I had. The turnkey found it in the citadel stores under a sack of turnips. That's how well it served."''',
+        c("Continue", "stores", forbids=(SCAR, SWORD_GIVEN)),
+        c("Continue", "given", requires=(SWORD_GIVEN,), forbids=(SCAR,)),
+        c("Continue", "given", requires=(SWORD_GIVEN,), forbids=(SCAR, "chapter_later"))),   # retired (Q6 r6)
+    jan("given", '''"Mine. The vrocks tossed it down outside my cage at the Scar, and I told you to take it. The turnkey found it in the citadel stores under a sack of turnips. That's how well it served."''',
         c("Continue", "master")),
     jan("ash", '''"The one you passed me through the bars." {n}She keeps working the leather.{/n} "I lay on it in the ash for an hour, and carried it through the Wound, and guarded salt with it all winter, and it never once asked me what I thought I was doing."''',
         c("Continue", "master")),
     jan("stores", '''"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again."
-"The vrocks threw it outside my cage in the Scar. Somebody carried it all the way back to Drezen and then put it under a sack of turnips. I don't know whether to thank them or challenge them."''',
+"Somebody brought it out of the Scar after me and put it under a sack of turnips. I'd like to know who, so I can decide whether to thank them or challenge them."''',
         c("Continue", "master")),
     jan("master", '''"My master gave it to me the day I left Mivon. He'd never said a kind word to me in seven years. He put this in my hands at the river stairs and said, 'Don't come back with it dirty.'" {n}Her mouth quirks.{/n}
 "I think that was the kind word."''',
@@ -622,7 +622,7 @@ visit(RIDE, "The Houndhearts' camp", [
 "Go and hold the horses, or stand there. I don't care which. Just don't tell me I don't have to."''',
         c("[Stand beside her.]", "beside", flags=(RIDE_BESIDE,)),
         c("[Go back to the horses.]", "horses")),
-    nar("beside", '''{n}You stand beside her, on her right, so that she is on your left, where she stood that day. She notices. She doesn't say anything about it.{/n}''',
+    nar("beside", '''{n}You stand beside her, on her right. She notices. She doesn't say anything about it.{/n}''',
         c("Continue", "circle")),
     nar("horses", '''{n}You go back to the road and hold the horses, and watch her from a hundred paces off: a half-elf alone in the scrub with her face to the north.{/n}''',
         c("Continue", "circle")),
@@ -803,7 +803,7 @@ meet(CURL, "The fourth of the League", '"You never talk about Curl."', [
     jan("start", '''"No. I don't." {n}She doesn't take her eyes off the tankard.{/n}
 "Curl was the one I liked best, at first. A halfling thief with red hair and a laugh like a dropped tray, who'd stolen from everyone in Kenabres and paid most of them back. He said he wasn't cut out for war. He said he didn't want to die. I thought that was the most honest thing anybody in that city had said all year."''',
         c("Continue", "camp")),
-    jan("camp", '''"At Houndheart Curl wasn't Curl. He came out of nowhere and snatched Elan's ring out of the quasit's paws, and called things up out of the ground, and Elan called him a traitor and swung at him, and Seelah threw herself in the way and said they'd bewitched him." {n}She turns her hands over and looks at the palms.{/n}
+    jan("camp", '''"At Houndheart Curl wasn't Curl. He came out of nowhere and snatched Elan's ring out of the quasit's paws, and called things up out of the ground, and Elan called him a traitor and swung at him, and Seelah threw herself in the way. She said afterwards they must have bewitched him." {n}She turns her hands over and looks at the palms.{/n}
 "I was across the camp from him. I could see his face. I've gone over it a hundred times. Whether I saw his face change before I ran."''',
         c('"Did you?"', "did"),
         c('"It wouldn\'t matter if you had."', "matter")),
@@ -942,7 +942,7 @@ visit(SONG, "Aldori, sorry", [
     nar("door", '''{n}You stay out on the step with your hood up and let the song wash out into the street. It's a dreadful song. It rhymes 'Aldori' with 'sorry' and 'first blood' with 'worst mud', and someone has put a verse in about the Houndheart camp that makes the whole room go quiet for two lines before it picks up again.{/n}''',
         c("Continue", "verse")),
     jan("verse", '''{n}When it's over she climbs down off the bench and comes to you, flushed, with foam on her lip and her eyes very bright.{/n}
-"They had the Houndheart verse wrong. They had me running before I'd struck a blow. I made them change it." {n}She wipes her mouth with the back of her hand.{/n} "Now I run after the first one's down, which is true, and I come back in the last verse, which is also true, and it doesn't rhyme at all, and I don't care."''',
+"They had the Houndheart verse wrong. They had me running before I'd struck a blow. I made them change it." {n}She wipes her mouth with the back of her hand.{/n} "Now I run after I've had a go at the quasit, which is true, and I come back in the last verse, which is also true, and it doesn't rhyme at all, and I don't care."''',
         c('"You made them sing it right."', "right"),
         c('[Flirt] "Sing me the last verse."', "sing")),
     jan("right", '''"I made them sing it true. Right would take a better poet than a dozen Watch recruits and me." {n}She takes your arm, in front of the whole room, as if it were the most ordinary thing in the world.{/n}

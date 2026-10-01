@@ -417,7 +417,7 @@ letter(P + "free.spent_light", "The last wand", [
           crusade=("Finances", -500)),
         c('"Leave the rationing to the surgeons."', abort=True)),
     nar("night", '''{n}You take the wand yourself and work down the rows all night, with Lariel's light in your chest behind every word. By dawn every cot has had its charge. The wand has not lost one.{/n}
-{n}The chaplains are paid to remember it as an ordinary night. Far above, in the halls of Heaven, someone made from the same soul looks up.{/n}''',
+{n}The chaplains are paid to remember it as an ordinary night. The infirmary chaplain writes it up anyway, as he writes everything, and his letters go to every healer who has ever asked him for news of Drezen's wounded. One of them is an angel.{/n}''',
         c('[Finish at dawn] Put the wand away. It is still full.', flags=(PRIMED, WAND))),
     nar("night_spent", '''{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}
 {n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}''',
@@ -450,12 +450,12 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
 "Someone worked these rows all night with a healer's wand and would not stop, and word of it reached me in the halls of Heaven. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("why", '''"For the wounded." {n}She considers you with sad, clear eyes.{/n}
-"Then I will stay, for the wounded. Heaven can spare me for a season, and Heaven's healers have been very kind to me, and very patient with this." {n}The black wing shifts.{/n} "Here nobody has time to be patient with it. I find I prefer that.
-"And I would like to know what kind of person uses a dead angel's light to sit up all night with strangers. I have not decided whether I approve."''',
+"Then I will stay, for the wounded. I have written to my healers in Heaven to say where I am; they will not like it, and they will forgive me. They have been very kind to me, and very patient with this." {n}The black wing shifts.{/n} "Here nobody has time to be patient with it. I find I prefer that.
+"And I would like to know what kind of person sits up all night with strangers. I have not decided whether I approve."''',
       c('[Welcome her] "Stay as long as they need you."', flags=(MET, STARTED)),
       c('[Say the rest] "Stay for the wounded. And stay because I asked you to."', "drawn", flags=(MET, STARTED, DRAWN))),
     t("drawn", '''{n}She looks at you for a long moment over the basin, and the black wing, which has been folded tight since she came in, loosens a little.{/n}
-"That is not a reason Heaven gives furloughs for." {n}She wrings out the cloth.{/n} "It may be a reason I stay anyway. Ask me again when the ward is quiet, Commander, and not over a dying man."''',
+"That is not what I came for." {n}She wrings out the cloth.{/n} "It may be a reason I stay anyway. Ask me again when the ward is quiet, Commander, and not over a dying man."''',
       c("[Leave her to the rows.]")),
 ], requires=("trickster.ever", WAND, FREE), forbids=(MET, CLOSED), delay=0)
 
@@ -505,9 +505,9 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
 "Yes, Commander. Not for a season."''',
       c("Continue", "threshold")),
     t("yes_free", '''{n}She does not answer at once. She washes her hands in the basin, slowly, and watches the water cloud.{/n}
-"The morning after your wand night I came down from the halls of Heaven to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers and a dead angel's light." {n}She dries her hands on her smock.{/n}
+"The morning after your wand night I came down to Drezen to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers." {n}She dries her hands on her smock.{/n}
 "Tonight you had no wand. You had a stool, and his hand, and a mother's voice that is not yours. I have judged you at every cot in this ward since, and I keep finding the same thing, and I am tired of pretending it is still a question." {n}The black wing lifts a little behind her, and she lets it.{/n}
-"I will write to Heaven and ask for more than a season. Yes, Commander. Not for a season."''',
+"I will write to my healers and tell them it will be more than a season. Yes, Commander. Not for a season."''',
       c("Continue", "threshold")),
     *night_nodes(),
 ], requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED), delay=96,
@@ -522,7 +522,7 @@ ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
 "Then I will hold you to it. I am told that is what Tricksters hate most." {n}She almost smiles.{/n} "Yes."''',
       c("Continue", "threshold")),
     t("unpromised", '''"No. I did not think you could." {n}She goes on folding.{/n}
-"Then you would spend him. That light is what is left of my brother, Commander. A wand night is a candle; it costs him nothing. A death is a bonfire. Every time you cheat one, there is less of Lariel in you, and one day there will be nothing of him left but your habit of reaching for it. I will not sit beside you and watch you spend him. I am sorry."''',
+"That light is what is left of my brother in this world, Commander. He was a blade of the host. He never once cheated anyone, not even Pharasma. I will not sit beside you and watch you make a thief of him. I am sorry."''',
       c('[Leave her the ward.]')),
     *night_nodes(),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), delay=72)
@@ -585,11 +585,11 @@ page(P + "epilogue.ally", "The ward's other chair",
      requires=("trickster.ever", FORGIVEN), forbids=(TESTED, MET, COMMITTED, CLOSED, DECLINED), paragraphs=LIGHT_PARAGRAPHS[:3])
 
 page(P + "epilogue.declined", "The stool by the last cot",
-     '''{n}Targona returned to the halls of Heaven with the last of the wounded she could not leave. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}''',
+     '''{n}When the last wounded soldier left the ward, Targona returned to the halls of Heaven. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}''',
      requires=("trickster.ever", DECLINED), forbids=(COMMITTED,))
 
 page(P + "epilogue.furlough", "A wand that never ran down",
-     '''{n}Heaven granted Targona her furlough, and then another, and then stopped counting. She kept a ward in Drezen with the Commander's name over the door.{/n}''',
+     '''{n}Targona never went back to Heaven's healers for longer than a visit. She kept a ward in Drezen with the Commander's name over the door.{/n}''',
      requires=("trickster.ever",), forbids=(CLOSED, DECLINED, "sacrifice"), paragraphs=WARD_PARAGRAPHS + LIGHT_PARAGRAPHS,
      RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
      ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.commander_back"})
@@ -597,7 +597,7 @@ page(P + "epilogue.furlough", "A wand that never ran down",
 # The Commander's sacrifice at the Threshold, with no way back (native Epilogues/Cue_0116 records the death): no reunion.
 page(P + "epilogue.sacrifice", "The name over the door",
      '''{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}
-{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
+{n}She told her healers in Heaven that she would finish her work in Drezen first. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
      requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, DECLINED, "trickster.commander_back"),
      paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]])
 

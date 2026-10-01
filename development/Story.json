@@ -57189,7 +57189,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The packet waiting among your personal correspondence holds a letter and a folded drawing. Targona has written your name on the outside, not your title.{/n}\n\"Commander. My captain in the host has asked me for a full account of Areelu's refuge, for the archives of Heaven. Know the house of your enemy better than she knows it herself: my captain taught me that before he taught me the sword, and it is the one order I have never resented.\n\"So I have been drawing her laboratory. The table. The chains. The ring of purple fire. I remember the door better than anything in it, and every time I set it down, I put the lock on the outside, where she kept it. I know very well I am free. I give thanks for it at morning prayers. Then at night I sit down with a pen and lock myself in again.\n\"The healers here look at my drawing and tell me what an angel ought to be able to bear. I did not ask them. I am asking you. You have been into the Abyss and walked out of it. Look at it as a soldier would, and tell me what you see.\"",
+          "Text": "{n}The packet waiting among your personal correspondence holds a letter and a folded drawing. Targona has written your name on the outside, not your title.{/n}\n\"Commander. I have begun an account of Areelu's refuge, for my comrades in the host. Know the house of your enemy better than she knows it herself: I learned that before I learned the sword, and I have never had cause to doubt it.\n\"So I have been drawing her laboratory. The chains. The ring of purple fire. I keep drawing a door, though I could not swear there was one, and every time I set it down I put the lock on the outside. I know very well I am free. I give thanks for it at morning prayers. Then at night I sit down with a pen and lock myself in again.\n\"I can give a report of a battle. This I cannot seem to give. I am asking you. You have been into the Abyss and walked out of it. Look at it as a soldier would, and tell me what you see.\"",
           "Choices": [
             {
               "Text": "Unfold the drawing.",
@@ -57213,7 +57213,7 @@
         {
           "Id": "drawing",
           "Speaker": "Narrator",
-          "Text": "{n}A square room. A narrow table with straps at the corners. A door whose hinges she has drawn twice, once on each side, and a neat arrow pointing out through it. The lock lies across the arrow like a bar across a gate.{/n}\nBeneath it she has written, in a smaller hand:\n\"I do not ask you to find the room. It lies under the ruin, and I thank Iomedae for every stone on top of it. Some of the distances will be wrong. I spent very little time looking at it from above.\"\nThe last sentence is underlined once, as though she has decided you may laugh at that much.\n\"There are hours I cannot account for, and I will not invent them for the archive. Areelu Vorlesh is incapable of contrition, even for a heartbeat; she would like nothing better than an angel who misremembers her prison. I will not give her that.\n\"Tell me the first thing you see. Do not soften it.\"",
+          "Text": "{n}A square room. A ring on the floor where the purple fire burned. A door whose hinges she has drawn twice, once on each side, and a neat arrow pointing out through it. The lock lies across the arrow like a bar across a gate.{/n}\nBeneath it she has written, in a smaller hand:\n\"I do not ask you to go back there. I would not go back for anything. Some of the distances will be wrong. I spent very little time looking at it from above.\"\nThe last sentence is underlined once, as though she has decided you may laugh at that much.\n\"There are hours I cannot account for, and I will not invent them for my account. Areelu Vorlesh is incapable of contrition, even for a heartbeat; she would like nothing better than an angel who misremembers her prison. I will not give her that.\n\"Tell me the first thing you see. Do not soften it.\"",
           "Choices": [
             {
               "Text": "Write: \"You drew the way out before you drew the bar across it.\"",
@@ -57237,7 +57237,7 @@
         {
           "Id": "exit",
           "Speaker": "Narrator",
-          "Text": "{n}You mark the place where the arrow begins. Its first stroke is darker than the line laid over it.{/n}\n\"You drew the way out first,\" you write. \"The bar came afterwards, in a thinner line. Scouts do the same with a ford they were nearly drowned in: the crossing goes down first, and the current after, when they remember it. Your hand knew the way out before it knew the lock.\n\"For the archive, draw it as it was. Bar and all. Then send me a copy, and I'll mark where a sapper would have gone through that wall if anyone had been fool enough to send one.\"\n{n}There is room left beneath your answer for something that is not about the room at all.{/n}",
+          "Text": "{n}You mark the place where the arrow begins. Its first stroke is darker than the line laid over it.{/n}\n\"You drew the way out first,\" you write. \"The bar came afterwards, in a thinner line. Scouts do the same with a ford they were nearly drowned in: the crossing goes down first, and the current after, when they remember it. Your hand knew the way out before it knew the lock.\n\"Keep your account as you remember it. Bar and all. Then send me a copy, and I'll mark where a sapper would have gone through that wall if anyone had been fool enough to send one.\"\n{n}There is room left beneath your answer for something that is not about the room at all.{/n}",
           "Choices": [
             {
               "Text": "Continue the letter.",
@@ -57253,7 +57253,7 @@
         {
           "Id": "hinges",
           "Speaker": "Narrator",
-          "Text": "{n}You copy both sets of hinges onto a scrap. One door swings in, into the room. The other swings out, flat against the corridor wall.{/n}\n\"You drew both,\" you write. \"You could have rubbed one out and sent your captain a clean drawing. You sent me the one where you weren't sure. I'd trust that over any map a scout ever handed me with a straight face.\n\"Put it in the account that way: two hinges, and the angel who drew them didn't know which. Then send me a copy. I'd like to know which way that door swung, because whoever built it meant something by it.\"\n{n}You set the scrap beside the letter and leave space beneath it.{/n}",
+          "Text": "{n}You copy both sets of hinges onto a scrap. One door swings in, into the room. The other swings out, flat against the corridor wall.{/n}\n\"You drew both,\" you write. \"You could have rubbed one out and sent me a clean drawing. You sent me the one where you weren't sure. I'd trust that over any map a scout ever handed me with a straight face.\n\"Put it in the account that way: two hinges, and the angel who drew them didn't know which. Then send me a copy. I'd like to know which way that door swung, because whoever built it meant something by it.\"\n{n}You set the scrap beside the letter and leave space beneath it.{/n}",
           "Choices": [
             {
               "Text": "Continue the letter.",
@@ -57383,7 +57383,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Targona sends back your letter with a new sheet. She has filled the strip for complaints.{/n}\n\"The brother who packed these pages used enough string to truss a sheep. I spent longer freeing the paper than drawing on it. That is my complaint. I enjoyed writing it more than is fitting, and I have confessed as much.\n\"Yes, send me the copy. I will draw the room for my captain as it was, bar and all, and keep yours beside it.\n\"I looked at the bar again. I remember drawing it. I was angry, because the door looked too easy to open, and it was never easy. Not once. You saw it before I did, and I am a little vexed that you did.\"\n{n}Below this, her hand grows smaller.{/n}\n\"There is a man in Drezen gathering crusaders' accounts for a book. He has asked me for the laboratory. Something short, he says, and uplifting. I said yes before I had thought, because he asked kindly, and an angel is not in the habit of refusing a kind request. Now I cannot get past his word. Uplifting.\"",
+          "Text": "{n}Targona sends back your letter with a new sheet. She has filled the strip for complaints.{/n}\n\"The brother who packed these pages used enough string to truss a sheep. I spent longer freeing the paper than drawing on it. That is my complaint. I enjoyed writing it more than is fitting.\n\"Yes, send me the copy. I will keep one drawing with my account and one with your letter.\n\"I looked at the bar again. I remember drawing it. I was angry, because the door looked too easy to open, and it was never easy. Not once. You saw it before I did, and I am a little vexed that you did.\"\n{n}Below this, her hand grows smaller.{/n}\n\"There is a man in Drezen gathering crusaders' accounts for a book. He has asked me for the laboratory. Something short, he says, and uplifting. I said yes before I had thought, because he asked kindly, and an angel is not in the habit of refusing a kind request. Now I cannot get past his word. Uplifting.\"",
           "Choices": [
             {
               "Text": "Read the additional note.",
@@ -57440,7 +57440,7 @@
         {
           "Id": "account",
           "Speaker": "Narrator",
-          "Text": "{n}Her draft begins with the soldiers who camped near her prison because her light still reached them. She does not name them. She does not pretend to know what became of them. Then the sentences go cold, the way a sermon goes cold when the preacher has stopped believing it.{/n}\n\"The captive angel remained a source of protection. Her suffering was therefore not without purpose.\"\nThe lines are struck through so hard that the nib has torn the sheet.\n\"I wrote that,\" Targona says underneath. \"No collector put it in my mouth. I wanted the reader to have something to hold, and I found I had written him a reason to leave me in the barrier.\n\"Men lived because I was there. I thank Iomedae for every one of them. I would have sheltered them awake, with a sword in my hand, if anyone had let me. Areelu chained an angel to a table and the camps were warmer for it, and I will not print a sentence that makes the second thing pay for the first.\"\nThe page ends with a question. Should she write it for him now, or tell him no?",
+          "Text": "{n}Her draft begins with the prisoners who sheltered near her barrier because her light kept the demons off them. She does not name them. She does not pretend to know what became of them. Then the sentences go cold, the way a sermon goes cold when the preacher has stopped believing it.{/n}\n\"The captive angel remained a source of protection. Her suffering was therefore not without purpose.\"\nThe lines are struck through so hard that the nib has torn the sheet.\n\"I wrote that,\" Targona says underneath. \"No collector put it in my mouth. I wanted the reader to have something to hold, and I found I had written him a reason to leave me in the barrier.\n\"Men lived because I was there. I thank Iomedae for every one of them. I would have sheltered them awake, with a sword in my hand, if anyone had let me. Areelu chained an angel, and the prisoners near her were safer for it, and I will not print a sentence that makes the second thing pay for the first.\"\nThe page ends with a question. Should she write it for him now, or tell him no?",
           "Choices": [
             {
               "Text": "Tell her to write it short, in her own name, with the anger left in.",
@@ -57464,7 +57464,7 @@
         {
           "Id": "publish",
           "Speaker": "Narrator",
-          "Text": "{n}You write a first line for her to throw away if she likes: \"Men lived because I was there. That is not why I was there.\"{/n}\nThe rest of your answer is short. She need not account for every hour or end on a lesson. She can write what she remembers, say plainly what others told her afterwards, and leave the lost hours lost.\nYou tell her the cost as well, because she would find it for herself anyway. Once it is printed men will quote it badly, and sooner or later somebody will write the tidy sentence back in for her.\n\"Write it the way you'd give a report to your captain,\" you finish. \"Send it if you want to. Don't put an amen at the end of it.\"",
+          "Text": "{n}You write a first line for her to throw away if she likes: \"Men lived because I was there. That is not why I was there.\"{/n}\nThe rest of your answer is short. She need not account for every hour or end on a lesson. She can write what she remembers, say plainly what others told her afterwards, and leave the lost hours lost.\nYou tell her the cost as well, because she would find it for herself anyway. Once it is printed men will quote it badly, and sooner or later somebody will write the tidy sentence back in for her.\n\"Write it the way you'd give a report to your comrades,\" you finish. \"Send it if you want to. Don't put an amen at the end of it.\"",
           "Choices": [
             {
               "Text": "Send your advice to publish.",
@@ -57482,7 +57482,7 @@
         {
           "Id": "private",
           "Speaker": "Narrator",
-          "Text": "{n}You tell her to refuse him plainly, without promising him a later date to sweeten it.{/n}\n\"Your captain gets the true account. He can get his uplifting paragraph from a man who wasn't there.\"\nYou tell her the price too. Other men will tell her story with less of her in it, and her silence won't make them truthful. You put that down plainly, because she would despise you for hiding it.\n\"If you change your mind, write and say so. Until then I'd like to read what you struck out.\"\n{n}You fold his proposed heading behind the reply without correcting it.{/n}",
+          "Text": "{n}You tell her to refuse him plainly, without promising him a later date to sweeten it.{/n}\n\"Your comrades can have the true account. He can get his uplifting paragraph from a man who wasn't there.\"\nYou tell her the price too. Other men will tell her story with less of her in it, and her silence won't make them truthful. You put that down plainly, because she would despise you for hiding it.\n\"If you change your mind, write and say so. Until then I'd like to read what you struck out.\"\n{n}You fold his proposed heading behind the reply without correcting it.{/n}",
           "Choices": [
             {
               "Text": "Send your advice to refuse him.",
@@ -57553,7 +57553,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}The next packet holds two copies of the room and a strip of paper broad enough to cut a small door from. She has kept the first drawing back for her captain.{/n}\n\"I did as we said about the collector. I will tell you what came of it when something has.\n\"Now the door. You asked which way it swung, and I cannot tell you, and it galls me. Areelu built nothing without a reason. If the door opened inward, she meant to come and go; if outward, she meant something to come out. The host's archivists want to know which. So do I.\n\"I have drawn the hinges both ways on this copy. Work it out however a soldier works out a wall: by looking, by cleverness, or by cutting through it. I suspect you are qualified in at least two of those.\"\n{n}The copied lines almost meet at one corner. Beneath them she has written: \"Send it back even if you fail. A scout who comes back from a bad road has still mapped it.\"{/n}",
+          "Text": "{n}The next packet holds two copies of the room and a strip of paper broad enough to cut a small door from. She has kept the first drawing with her account.{/n}\n\"I did as we said about the collector. I will tell you what came of it when something has.\n\"Now the door. You asked which way it swung, and I cannot tell you, and it galls me. I remember everything else about that place that I would rather forget, and not this.\n\"I have drawn the hinges both ways on this copy. Work it out however a soldier works out a wall: by looking, by cleverness, or by cutting through it. I suspect you are qualified in at least two of those.\"\n{n}The copied lines almost meet at one corner. Beneath them she has written: \"Send it back even if you fail. A scout who comes back from a bad road has still mapped it.\"{/n}",
           "Choices": [
             {
               "Text": "Study the fold and the two sets of hinges.",
@@ -57608,7 +57608,7 @@
         {
           "Id": "found",
           "Speaker": "Narrator",
-          "Text": "{n}The faint line ends just short of the apparent corner. You fold there, reverse the inner flap, and find it: a small door that opens outward, into the corridor, without carrying the room with it. Its lock is on the outside, where it could hold a prisoner in and let nothing else out.{/n}\nYou mark the sequence in Targona's numbering. The construction is awkward rather than elegant, which is how real doors in real fortresses usually turn out.\n\"It swung out,\" you write. \"It took three folds, and the first two made it worse; I've marked those as well. Whatever she kept in that room, she meant to let it out one day. Tell your archivists.\"\nYou return the worked copy with a blank one beside it. Before sealing the packet you open the little door again. It catches on your thumbnail. You add an arrow where she should lift it.",
+          "Text": "{n}The faint line ends just short of the apparent corner. You fold there, reverse the inner flap, and find it: a small door that opens outward, into the corridor, without carrying the room with it.{/n}\nYou mark the sequence in Targona's numbering. The construction is awkward rather than elegant, which is how real doors in real fortresses usually turn out.\n\"It opens outward, on paper at least,\" you write. \"It took three folds, and the first two made it worse; I've marked those as well. Whether her real door did, only she knows, and I'd rather not ask her.\"\nYou return the worked copy with a blank one beside it. Before sealing the packet you open the little door again. It catches on your thumbnail. You add an arrow where she should lift it.",
           "Choices": [
             {
               "Text": "Return the construction and its instructions.",
@@ -57626,7 +57626,7 @@
         {
           "Id": "creased",
           "Speaker": "Narrator",
-          "Text": "{n}The inner line disappears beneath your first crease. When you fold the flap back, the door catches and tears at its top corner. Another attempt only enlarges the tear.{/n}\nYou put the damaged copy beside the untouched one. For a moment it is tempting to begin again and send only the better result. Her line about scouts stops you.\n\"I couldn't make the two hinges agree,\" you write. \"I tore the paper trying. The door opens now, but only because its corner is ripped, and I won't pretend that was the plan.\"\nYou set down your attempts in order and leave the spare copy blank.\n\"Your archivists will have to make do with a torn map and an honest report. I've given worse to Irabeth and lived.\"\n{n}Both copies go into the packet. The failed one remains on top.{/n}",
+          "Text": "{n}The inner line disappears beneath your first crease. When you fold the flap back, the door catches and tears at its top corner. Another attempt only enlarges the tear.{/n}\nYou put the damaged copy beside the untouched one. For a moment it is tempting to begin again and send only the better result. Her line about scouts stops you.\n\"I couldn't make the two hinges agree,\" you write. \"I tore the paper trying. The door opens now, but only because its corner is ripped, and I won't pretend that was the plan.\"\nYou set down your attempts in order and leave the spare copy blank.\n\"Your account will have to make do with a torn map and an honest report. I've given worse to Irabeth and lived.\"\n{n}Both copies go into the packet. The failed one remains on top.{/n}",
           "Choices": [
             {
               "Text": "Return the failed attempt honestly.",
@@ -57644,7 +57644,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "{n}You cut three sides of a rectangle in the clear part of the copied wall. The fourth becomes a hinge. You trim a narrow strip from the flap's free edge so it opens without catching. When you lift it, the drawing opens onto the surface of your desk.{/n}\nIt is an almost insolently simple answer to a careful diagram. You keep the discarded strip and write down exactly what you did.\n\"I didn't find her door. I made one. Every sapper in the crusade will tell you that's the quicker way through a wall, and Areelu's walls aren't standing any more.\"\nAt the bottom you add a practical improvement: the new door wants a small handle so it can be opened without tearing its corner.\n{n}The uncertain original hinges remain visible. The new door does not need them to be correct.{/n}",
+          "Text": "{n}You cut three sides of a rectangle in the clear part of the copied wall. The fourth becomes a hinge. You trim a narrow strip from the flap's free edge so it opens without catching. When you lift it, the drawing opens onto the surface of your desk.{/n}\nIt is an almost insolently simple answer to a careful diagram. You keep the discarded strip and write down exactly what you did.\n\"I didn't find her door. I made one. Every sapper in the crusade will tell you that's the quicker way through a wall.\"\nAt the bottom you add a practical improvement: the new door wants a small handle so it can be opened without tearing its corner.\n{n}The uncertain original hinges remain visible. The new door does not need them to be correct.{/n}",
           "Choices": [
             {
               "Text": "Return the new opening and the strip you cut away.",
@@ -57715,7 +57715,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Targona's reply includes the paper door. She has added a handle shaped like a very small wing, and written OPEN HERE beside it in unnecessarily large letters.{/n}\n\"The archivist asked what the handle was for. I told him it was for opening the door. He wrote that down.\"\n{n}Her account of what happened to the drawing follows.{/n}",
+          "Text": "{n}Targona's reply includes the paper door. She has added a handle shaped like a very small wing, and written OPEN HERE beside it in unnecessarily large letters.{/n}\n\"The chaplain asked what the handle was for. I told him it was for opening the door. He wrote that down, which tells you everything about chaplains.\"\n{n}Her account of what happened to the drawing follows.{/n}",
           "Choices": [
             {
               "Text": "Read how she used the successful fold.",
@@ -57753,7 +57753,7 @@
         {
           "Id": "found",
           "Speaker": "Narrator",
-          "Text": "\"Outward. Of course it was outward. I have written it into the account, and the host's archivist went pale and took the page straight to my captain.\n\"I did your folds twice. The third time I did them in the wrong order and shut the little lock inside the room. I kept that one too; it is the only version of that room I have ever enjoyed.\n\"The dream has not changed, and I will not tell you it has to make you feel clever. But I know now which way her door swung, and why, and knowing the house of your enemy is a weapon. I gave thanks for it at dawn prayers.\"\n{n}The letter moves on to the collector. Her hand is firmer here than it was round the copied hinges.{/n}",
+          "Text": "\"Outward. Your folds work; I did them twice.\n\"I did your folds twice. The third time I did them in the wrong order and shut the little lock inside the room. I kept that one too; it is the only version of that room I have ever enjoyed.\n\"I still do not know how her door was truly made. But I know how to make one that opens, and I gave thanks for that at dawn prayers.\"\n{n}The letter moves on to the collector. Her hand is firmer here than it was round the copied hinges.{/n}",
           "Choices": [
             {
               "Text": "Read about her account.",
@@ -57769,7 +57769,7 @@
         {
           "Id": "failed",
           "Speaker": "Narrator",
-          "Text": "\"Thank you for sending the torn one on top. Irabeth was right to let you live.\n\"I tried the spare. My door caught too. So I cut a new hinge at the torn corner, which would be a poor repair on any door that has to keep out the weather. For a map of a ruin, it serves.\n\"The archivist has both copies now, yours and mine, and a note in my hand saying neither of us knows which way the door swung. He did not like it. I told him that an honest gap in a report has saved more soldiers than a confident lie, and that I would know; I have read Areelu's.\n\"The dream is the same. But I wake now with something to do with my hands, and I have thanked Iomedae for smaller mercies.\"\n{n}She turns to the collector without apologising for how little the paper did.{/n}",
+          "Text": "\"Thank you for sending the torn one on top. Irabeth was right to let you live.\n\"I tried the spare. My door caught too. So I cut a new hinge at the torn corner, which would be a poor repair on any door that has to keep out the weather. For a map of a ruin, it serves.\n\"I have kept both copies, yours and mine, with a note in my hand saying neither of us knows which way the door swung. An honest gap in a report has saved more soldiers than a confident lie.\n\"I tried your torn copy again before dawn, and thanked Iomedae for smaller mercies.\"\n{n}She turns to the collector without apologising for how little the paper did.{/n}",
           "Choices": [
             {
               "Text": "Read about her account.",
@@ -57785,7 +57785,7 @@
         {
           "Id": "cut",
           "Speaker": "Narrator",
-          "Text": "\"I laughed when I saw the hole. Then I rebuked myself for laughing. Then I opened it again.\n\"I gave your door a handle. You will see its shape is grander than the carpentry deserves. I chose it because it pleased me, and I confessed the vanity at compline, and the chaplain laughed at me, which is not in his rule.\n\"I gave the archivist your strip of cut wall with a note: 'The way through, as found by the Commander.' He has filed it under sapping. I think he is right.\n\"The dream has not changed. What changed was the hour after I woke. I had work for my hands that was not holding them still.\"\n{n}Below this she has written about the collector.{/n}",
+          "Text": "\"I laughed when I saw the hole. Then I rebuked myself for laughing. Then I opened it again.\n\"I gave your door a handle. You will see its shape is grander than the carpentry deserves. I chose it because it pleased me, and I confessed the vanity at compline, and the chaplain laughed at me, which is not in his rule.\n\"I have pinned your strip of cut wall beside the drawing with a note: 'The way through, as found by the Commander.'\n\"I did that before dawn prayers, and was early to them for once.\"\n{n}Below this she has written about the collector.{/n}",
           "Choices": [
             {
               "Text": "Read about her account.",
@@ -57861,7 +57861,7 @@
         {
           "Id": "question",
           "Speaker": "Narrator",
-          "Text": "\"The chaplain here says idle hands are the Abyss's workshop. I told him mine have been idle in a barrier for longer than he has been ordained, and that the Abyss did not need my help. He gave me a penance for the tone. I did it.\n\"So: a task, and I want your help with it. The men in the wayhouse ask me for stories at night, when the fever is bad and nobody can sleep. They do not want the lives of the saints; they have heard those. They want a soldier who wakes in the enemy's house and gets out. I mean to write them one. Awake, with a sword by the door, and Iomedae's name in her mouth.\n\"Tell me how she gets out, or whom she lets in, if she would rather hold the room. You have got out of worse places than I have; your reports say so, in a very modest voice.\"\n{n}There is a lightly drawn rectangle below the words, waiting for something to be put inside it.{/n}",
+          "Text": "\"The chaplain here says idle hands are the Abyss's workshop. I told him mine have been idle in a barrier for longer than he has been ordained, and that the Abyss did not need my help.\n\"So: a task, and I want your help with it. The men in the wayhouse ask me for stories at night, when the fever is bad and nobody can sleep. They do not want the lives of the saints; they have heard those. They want a soldier who wakes in the enemy's house and gets out. I mean to write them one. Awake, with a sword by the door, and Iomedae's name in her mouth.\n\"Tell me how she gets out, or whom she lets in, if she would rather hold the room. You have got out of worse places than I have; your reports say so, in a very modest voice.\"\n{n}There is a lightly drawn rectangle below the words, waiting for something to be put inside it.{/n}",
           "Choices": [
             {
               "Text": "Suggest a scene in which she chooses to leave.",
@@ -58117,7 +58117,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Targona's latest letter is less carefully arranged than the others. The first paragraph has been moved with an arrow, a second thought has been squeezed above the date, and a faint ring marks where a cup stood too near the edge.{/n}\n\"I began this before I knew what it was about. I do not recommend it. I have done penance for worse.\"\n{n}Her answer to your page occupies the first sheet.{/n}",
+          "Text": "{n}Targona's latest letter is less carefully arranged than the others. The first paragraph has been moved with an arrow, a second thought has been squeezed above the date, and a faint ring marks where a cup stood too near the edge.{/n}\n\"I began this before I knew what it was about. I do not recommend it.\"\n{n}Her answer to your page occupies the first sheet.{/n}",
           "Choices": [
             {
               "Text": "Read her response to the Trickster page.",
@@ -58262,7 +58262,7 @@
         {
           "Id": "lover",
           "Speaker": "Narrator",
-          "Text": "\"I miss kissing you. There. I have written it without first telling you how useful your last letter was, and I will confess the order at compline.\n\"I miss the pause before you decide whether to say something outrageous, and the times you decide against it and I can tell anyway. I want an evening with you when neither of us has a page to finish or a man to sit with.\"\n{n}The next line has been crossed out and replaced.{/n}\n\"I nearly promised to be easier company. That would be a lie, and I do not tell those. I can promise to be glad when you come.\n\"Until then, write me something you have wanted to tell me. It may be foolish. I have grown fond of the parts of your letters no clerk would copy.\"\n{n}She signs her name below the invitation. You read the first line again before reaching for a fresh sheet.{/n}",
+          "Text": "\"I miss kissing you. There. I have written it without first telling you how useful your last letter was, and I am not sorry.\n\"I miss the pause before you decide whether to say something outrageous, and the times you decide against it and I can tell anyway. I want an evening with you when neither of us has a page to finish or a man to sit with.\"\n{n}The next line has been crossed out and replaced.{/n}\n\"I nearly promised to be easier company. That would be a lie, and I do not tell those. I can promise to be glad when you come.\n\"Until then, write me something you have wanted to tell me. It may be foolish. I have grown fond of the parts of your letters no clerk would copy.\"\n{n}She signs her name below the invitation. You read the first line again before reaching for a fresh sheet.{/n}",
           "Choices": [
             {
               "Text": "Reply with affection and a private joke for the next letter.",
@@ -58362,7 +58362,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}\n\"My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.\n\"I do want to see you. I have wanted it since the last packet, and I have been ashamed of how often I reread it.\n\"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind a barrier that someone else built for my own good. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do.\"\n{n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}\n{n}You read the last line twice, and then go and find out how long the eastern road is on foot.{/n}",
+          "Text": "{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}\n\"I am tending the wounded at a wayhouse on Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.\n\"I do want to see you. I have wanted it since the last packet, and I have been ashamed of how often I reread it.\n\"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind Areelu's barrier. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do.\"\n{n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}\n{n}You read the last line twice, and then go and find out how long the eastern road is on foot.{/n}",
           "Choices": [
             {
               "Text": "[Trickster] Continue from the impossible extra door you drew on her page.",
@@ -58543,7 +58543,7 @@
         {
           "Id": "road",
           "Speaker": "Narrator",
-          "Text": "{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona comes by the public eastern road, on foot, stopping twice on the way at the dressing station by the ford because there were men there.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I walked,\" she says. \"It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way.\"",
+          "Text": "{n}The courier carries your invitation to the wayhouse. Targona comes by the public eastern road, on foot, stopping twice on the way at the dressing station by the ford because there were men there.{/n}\nNo spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.\n\"I walked,\" she says. \"It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way.\"",
           "Choices": [
             {
               "Text": "Walk the wall with her.",
@@ -209345,7 +209345,7 @@
         {
           "Id": "night",
           "Speaker": "Narrator",
-          "Text": "{n}You take the wand yourself and work down the rows all night, with Lariel's light in your chest behind every word. By dawn every cot has had its charge. The wand has not lost one.{/n}\n{n}The chaplains are paid to remember it as an ordinary night. Far above, in the halls of Heaven, someone made from the same soul looks up.{/n}",
+          "Text": "{n}You take the wand yourself and work down the rows all night, with Lariel's light in your chest behind every word. By dawn every cot has had its charge. The wand has not lost one.{/n}\n{n}The chaplains are paid to remember it as an ordinary night. The infirmary chaplain writes it up anyway, as he writes everything, and his letters go to every healer who has ever asked him for news of Drezen's wounded. One of them is an angel.{/n}",
           "Choices": [
             {
               "Text": "[Finish at dawn] Put the wand away. It is still full.",
@@ -209583,7 +209583,7 @@
         {
           "Id": "why",
           "Speaker": "Targona",
-          "Text": "\"For the wounded.\" {n}She considers you with sad, clear eyes.{/n}\n\"Then I will stay, for the wounded. Heaven can spare me for a season, and Heaven's healers have been very kind to me, and very patient with this.\" {n}The black wing shifts.{/n} \"Here nobody has time to be patient with it. I find I prefer that.\n\"And I would like to know what kind of person uses a dead angel's light to sit up all night with strangers. I have not decided whether I approve.\"",
+          "Text": "\"For the wounded.\" {n}She considers you with sad, clear eyes.{/n}\n\"Then I will stay, for the wounded. I have written to my healers in Heaven to say where I am; they will not like it, and they will forgive me. They have been very kind to me, and very patient with this.\" {n}The black wing shifts.{/n} \"Here nobody has time to be patient with it. I find I prefer that.\n\"And I would like to know what kind of person sits up all night with strangers. I have not decided whether I approve.\"",
           "Choices": [
             {
               "Text": "[Welcome her] \"Stay as long as they need you.\"",
@@ -209614,7 +209614,7 @@
         {
           "Id": "drawn",
           "Speaker": "Targona",
-          "Text": "{n}She looks at you for a long moment over the basin, and the black wing, which has been folded tight since she came in, loosens a little.{/n}\n\"That is not a reason Heaven gives furloughs for.\" {n}She wrings out the cloth.{/n} \"It may be a reason I stay anyway. Ask me again when the ward is quiet, Commander, and not over a dying man.\"",
+          "Text": "{n}She looks at you for a long moment over the basin, and the black wing, which has been folded tight since she came in, loosens a little.{/n}\n\"That is not what I came for.\" {n}She wrings out the cloth.{/n} \"It may be a reason I stay anyway. Ask me again when the ward is quiet, Commander, and not over a dying man.\"",
           "Choices": [
             {
               "Text": "[Leave her to the rows.]",
@@ -209804,7 +209804,7 @@
         {
           "Id": "yes_free",
           "Speaker": "Targona",
-          "Text": "{n}She does not answer at once. She washes her hands in the basin, slowly, and watches the water cloud.{/n}\n\"The morning after your wand night I came down from the halls of Heaven to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers and a dead angel's light.\" {n}She dries her hands on her smock.{/n}\n\"Tonight you had no wand. You had a stool, and his hand, and a mother's voice that is not yours. I have judged you at every cot in this ward since, and I keep finding the same thing, and I am tired of pretending it is still a question.\" {n}The black wing lifts a little behind her, and she lets it.{/n}\n\"I will write to Heaven and ask for more than a season. Yes, Commander. Not for a season.\"",
+          "Text": "{n}She does not answer at once. She washes her hands in the basin, slowly, and watches the water cloud.{/n}\n\"The morning after your wand night I came down to Drezen to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers.\" {n}She dries her hands on her smock.{/n}\n\"Tonight you had no wand. You had a stool, and his hand, and a mother's voice that is not yours. I have judged you at every cot in this ward since, and I keep finding the same thing, and I am tired of pretending it is still a question.\" {n}The black wing lifts a little behind her, and she lets it.{/n}\n\"I will write to my healers and tell them it will be more than a season. Yes, Commander. Not for a season.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -209935,7 +209935,7 @@
         {
           "Id": "unpromised",
           "Speaker": "Targona",
-          "Text": "\"No. I did not think you could.\" {n}She goes on folding.{/n}\n\"Then you would spend him. That light is what is left of my brother, Commander. A wand night is a candle; it costs him nothing. A death is a bonfire. Every time you cheat one, there is less of Lariel in you, and one day there will be nothing of him left but your habit of reaching for it. I will not sit beside you and watch you spend him. I am sorry.\"",
+          "Text": "\"No. I did not think you could.\" {n}She goes on folding.{/n}\n\"That light is what is left of my brother in this world, Commander. He was a blade of the host. He never once cheated anyone, not even Pharasma. I will not sit beside you and watch you make a thief of him. I am sorry.\"",
           "Choices": [
             {
               "Text": "[Leave her the ward.]",
@@ -210246,7 +210246,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Targona returned to the halls of Heaven with the last of the wounded she could not leave. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}",
+          "Text": "{n}When the last wounded soldier left the ward, Targona returned to the halls of Heaven. She never did hear the question asked without a trick in it. In Drezen's infirmary there is still a stool beside the last cot that nobody sits on.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -210282,7 +210282,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}Heaven granted Targona her furlough, and then another, and then stopped counting. She kept a ward in Drezen with the Commander's name over the door.{/n}",
+          "Text": "{n}Targona never went back to Heaven's healers for longer than a visit. She kept a ward in Drezen with the Commander's name over the door.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -210404,7 +210404,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}\n{n}She asked Heaven for no more furloughs, and Heaven, for once, did not argue. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}",
+          "Text": "{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}\n{n}She told her healers in Heaven that she would finish her work in Drezen first. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -329667,7 +329667,7 @@
         {
           "Id": "joined_free",
           "Speaker": "Jannah",
-          "Text": "\"Commander. The jeweller is dead and the souls are home. I came to you on my own feet, nobody's prisoner, and I held the mouth of that hole for Seelah because I chose to. Now it's done I've chosen again. I've asked the Condemned for a place. The sergeant said yes before I'd finished asking, which I'm choosing to take as a compliment.\"\n\"I didn't run. Not once, at the mouth of that hole or down in it when it counted. I'd like that written down somewhere, and you're the only one who writes things down who might believe it.\"",
+          "Text": "\"Commander. The jeweller is dead and the souls are home. I came to you on my own feet, nobody's prisoner, and I held the mouth of that hole for Seelah because I chose to. Now it's done I've chosen again. I've asked the Condemned for a place. The sergeant said yes before I'd finished asking, which I'm choosing to take as a compliment.\"\n\"I didn't run. Not once, at the mouth of that hole. I'd like that written down somewhere, and you're the only one who writes things down who might believe it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -329683,7 +329683,7 @@
         {
           "Id": "joined",
           "Speaker": "Jannah",
-          "Text": "\"Commander. The jeweller is dead and the souls are home. The Condemned only let me go to find you in Drezen; if you'd turned me away I'd have gone straight back to them. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything.\"\n\"I didn't run. Not once, at the mouth of that hole or down in it when it counted. I'd like that written down somewhere, and you're the only one who writes things down who might believe it.\"",
+          "Text": "\"Commander. The jeweller is dead and the souls are home. The Condemned only let me go to find you in Drezen; if you'd turned me away I'd have gone straight back to them. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything.\"\n\"I didn't run. Not once, at the mouth of that hole. I'd like that written down somewhere, and you're the only one who writes things down who might believe it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -329699,7 +329699,7 @@
         {
           "Id": "refused",
           "Speaker": "Jannah",
-          "Text": "\"Commander. You told me to leave Drezen. I didn't. I've put myself in the old cells under the citadel instead.\"\n\"The cells aren't Drezen. They're the crusade's. And I was never going to run twice.\"",
+          "Text": "\"Commander. You told me to leave Drezen. I didn't. I've put myself in the old cells under the citadel instead.\"\n\"I haven't left. I've put myself where you can find me, and I'll go when the crusade sends me, not before. I was never going to run twice.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -329763,7 +329763,7 @@
         {
           "Id": "unmet",
           "Speaker": "Jannah",
-          "Text": "\"Commander. You may not know my face. I'm Jannah Aldori, of Mivon, recruit of the Eagle Watch until I ran from a fight with demons at the Houndheart camp. The vrocks had me in a cage in the Molten Scar after that, with two knights in the cages beside me who stopped being knights. I got out the night nobody was watching mine.\"\n\"I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue.\"",
+          "Text": "\"Commander. You may not know my face. I'm Jannah Aldori, of Mivon, recruit of the Eagle Watch until I ran from a fight with demons at the Houndheart camp. The vrocks had me in a cage in the Molten Scar after that. I got out the night nobody was watching mine.\"\n\"I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -329976,7 +329976,7 @@
         {
           "Id": "challenge",
           "Speaker": "Jannah",
-          "Text": "\"Fight you. In here?\" {n}She looks round the cell: the bunk, the bucket, the circle she scratched.{/n}\n\"With what? I haven't had my own blade since the Scar, and a stick against the Commander of the crusade is a joke I'm too tired to tell.\"\n{n}Then something changes in her face, the way it once did in Kenabres when somebody mentioned a lost cart of beer.{/n} \"Wait. There's a game.\"",
+          "Text": "\"Fight you. In here?\" {n}She looks round the cell: the bunk, the bucket, the circle she scratched.{/n}\n\"With what? They took my blade when I came down here, and a stick against the Commander of the crusade is a joke I'm too tired to tell.\"\n{n}Then something changes in her face, all at once, like a fencer seeing an opening.{/n} \"Wait. There's a game.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -330072,7 +330072,7 @@
         {
           "Id": "true",
           "Speaker": "Jannah",
-          "Text": "{n}She nods once, as if you had touched her on the guard and not the body. No blood.{/n}\n\"My turn. Your part.\" {n}She tells it fast and flat, like a report.{/n} \"You had your weapon out before the rest of us knew what had come out of that chest. When Curl's things came up out of the ground you killed the first of them while Elan was still shouting at him, and you shouted for us to close up on you. I was on your left. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it.\"",
+          "Text": "{n}She nods once, as if you had touched her on the guard and not the body. No blood.{/n}\n\"My turn. Your part.\" {n}She tells it fast and flat, like a report.{/n} \"You had your weapon out before the rest of us knew what had come out of that chest. When Curl's things came up out of the ground you were moving before any of us, and you shouted for us to close up on you. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -330118,10 +330118,10 @@
         {
           "Id": "caught",
           "Speaker": "Narrator",
-          "Text": "{n}You remember the chase, Curl, the things out of the ground. You remember a half-elf on your left with an Aldori blade, and the blade was not lying in the dirt. It was in the first thing going for Seelah's back, to the hilt, and she had to put her boot on its chest to get it back out. She ran after that. Not before.{/n}",
+          "Text": "{n}You remember the chase across the runes. You remember a half-elf creeping up on the quasit alone, sword out, the only one of you who tried, and the thing blinking away twenty paces with a clap just as she reached it. She ran later, when Curl's things came. Not before.{/n}",
           "Choices": [
             {
-              "Text": "\"You didn't throw your sword down. You killed the one going for Seelah's back, and then you ran. You've been telling it worse than it was.\"",
+              "Text": "\"You didn't just throw your sword down and run. You went after that quasit alone before any of us moved, and you ran later. You've been telling it worse than it was.\"",
               "Next": "yield",
               "Set": [],
               "Requires": [],
@@ -330134,7 +330134,7 @@
         {
           "Id": "yield",
           "Speaker": "Jannah",
-          "Text": "{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: Curl, Seelah's back, her boot on its chest.{/n}\n\"...First blood.\" {n}She says it very quietly.{/n} \"To you. Seven years in the circles of Mivon and I never bled first, and I lose my record in a cell, to a story, on a lie I told against myself.\"\n{n}She leaves the practice sword where it lies inside the circle.{/n} \"Say it, then. What comes next.\"",
+          "Text": "{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: the quasit, the clap, her empty hands.{/n}\n\"...First blood.\" {n}She says it very quietly.{/n} \"To you. Seven years in the circles of Mivon and I never bled first, and I lose my record in a cell, to a story, on a lie I told against myself.\"\n{n}She leaves the practice sword where it lies inside the circle.{/n} \"Say it, then. What comes next.\"",
           "Choices": [
             {
               "Text": "\"You walk out of this cell. The wagon goes without you.\"",
@@ -332845,7 +332845,7 @@
         {
           "Id": "start",
           "Speaker": "Seelah",
-          "Text": "\"Jannah's in the gaol.\" {n}Seelah says it like an accusation, and then like good news, both in the same breath.{/n}\n\"By choice! She put herself there! And you knew, and you went down and played some sort of game with her over the Houndheart camp, and now she's staying in Drezen.\" {n}She shakes her head.{/n}\n\"I'd have gone down there myself if anyone had told me. She came and found me instead. She's different. She stands like somebody who's stopped waiting to be hit.\"",
+          "Text": "\"Jannah's in the gaol.\" {n}Seelah says it like an accusation, and then like good news, both in the same breath.{/n}\n\"And she won't leave it! She won't take a pardon! And you knew, and you went down and played some sort of game with her over the Houndheart camp, and now she's staying in Drezen.\" {n}She shakes her head.{/n}\n\"I'd have gone down there myself if anyone had told me. She came and found me instead. She's different. She stands like somebody who's stopped waiting to be hit.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -334039,7 +334039,7 @@
               ],
               "Forbids": [
                 "seelah.trickster.returned",
-                "jannah.free"
+                "jannah.seelah_killed_at_cage"
               ],
               "Abort": false
             },
@@ -334083,7 +334083,7 @@
               "Set": [],
               "Requires": [
                 "seelah_dead",
-                "jannah.free"
+                "jannah.seelah_killed_at_cage"
               ],
               "Forbids": [
                 "seelah.trickster.returned"
@@ -334334,7 +334334,7 @@
         {
           "Id": "not_seen",
           "Speaker": "Jannah",
-          "Text": "\"I haven't seen Seelah since Houndheart. I've seen her every night in my head, though, standing in the middle of that camp, shouting that motto of hers, looking round for me.\"\n\"I wasn't there. I'm never there, in that dream. I've been gone for a year.\"",
+          "Text": "\"I haven't faced her about Houndheart. I've seen her every night in my head, though, standing in the middle of that camp, shouting that motto of hers, looking round for me.\"\n\"I wasn't there. I'm never there, in that dream. I've been gone a long time.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -334492,7 +334492,7 @@
         {
           "Id": "mourn",
           "Speaker": "Jannah",
-          "Text": "\"Seelah's dead.\" {n}She turns the tankard so the four little figures face the wall.{/n}\n\"I heard in the gaol. Nobody thought to tell me properly; why would they? I was nobody to her, by the end. A friend who ran.\" {n}Her jaw works.{/n}\n\"For a whole winter I told myself she was the reason I ran. I never got to tell her I'd stopped.\"",
+          "Text": "\"Seelah's dead.\" {n}She turns the tankard so the four little figures face the wall.{/n}\n\"I heard in the gaol. Nobody thought to tell me properly; why would they? I was nobody to her, by the end. A friend who ran.\" {n}Her jaw works.{/n}\n\"For a whole winter I told myself she was the reason I ran. I never told her properly that I'd stopped.\"",
           "Choices": [
             {
               "Text": "\"She'd have forgiven you.\"",
@@ -334722,7 +334722,7 @@
         {
           "Id": "write",
           "Speaker": "Jannah",
-          "Text": "\"That's the question.\" {n}She puts the letter on the bunk between you, as if it were a blade laid down between two fencers.{/n}\n\"I can write him the truth: I ran, I was caged, I'm in a cell in Drezen by choice. Or I can write him a hero. He'd believe the hero. He'd tell the whole street. He'd die happy.\" {n}She looks at you.{/n} \"What would you do?\"",
+          "Text": "\"That's the question.\" {n}She puts the letter on the bunk between you, as if it were a blade laid down between two fencers.{/n}\n\"I can write him the truth: I ran, I was caged, I'm in a cell in Drezen. Or I can write him a hero. He'd believe the hero. He'd tell the whole street. He'd die happy.\" {n}She looks at you.{/n} \"What would you do?\"",
           "Choices": [
             {
               "Text": "\"Write him the truth. He asked about his daughter, not about a legend.\"",
@@ -334857,8 +334857,7 @@
               "Requires": [],
               "Forbids": [
                 "jannah.trickster.cost.temple_scar",
-                "jannah.free",
-                "jannah.prison"
+                "jannah.sword_given"
               ],
               "Abort": false
             },
@@ -334867,7 +334866,7 @@
               "Next": "given",
               "Set": [],
               "Requires": [
-                "jannah.free"
+                "jannah.sword_given"
               ],
               "Forbids": [
                 "jannah.trickster.cost.temple_scar"
@@ -334879,11 +334878,11 @@
               "Next": "given",
               "Set": [],
               "Requires": [
-                "jannah.prison"
+                "jannah.sword_given"
               ],
               "Forbids": [
                 "jannah.trickster.cost.temple_scar",
-                "jannah.free"
+                "chapter_later"
               ],
               "Abort": false
             }
@@ -334893,7 +334892,7 @@
         {
           "Id": "given",
           "Speaker": "Jannah",
-          "Text": "\"Mine. I gave it to you through the bars at the Scar and told you to make it serve the crusade better than I had. The turnkey found it in the citadel stores under a sack of turnips. That's how well it served.\"",
+          "Text": "\"Mine. The vrocks tossed it down outside my cage at the Scar, and I told you to take it. The turnkey found it in the citadel stores under a sack of turnips. That's how well it served.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -334925,7 +334924,7 @@
         {
           "Id": "stores",
           "Speaker": "Jannah",
-          "Text": "\"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again.\"\n\"The vrocks threw it outside my cage in the Scar. Somebody carried it all the way back to Drezen and then put it under a sack of turnips. I don't know whether to thank them or challenge them.\"",
+          "Text": "\"Mine. The turnkey found it in the gaol stores under a sack of turnips, which is where they put the weapons of people they don't expect to see again.\"\n\"Somebody brought it out of the Scar after me and put it under a sack of turnips. I'd like to know who, so I can decide whether to thank them or challenge them.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -336421,7 +336420,7 @@
         {
           "Id": "beside",
           "Speaker": "Narrator",
-          "Text": "{n}You stand beside her, on her right, so that she is on your left, where she stood that day. She notices. She doesn't say anything about it.{/n}",
+          "Text": "{n}You stand beside her, on her right. She notices. She doesn't say anything about it.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -337591,7 +337590,7 @@
         {
           "Id": "camp",
           "Speaker": "Jannah",
-          "Text": "\"At Houndheart Curl wasn't Curl. He came out of nowhere and snatched Elan's ring out of the quasit's paws, and called things up out of the ground, and Elan called him a traitor and swung at him, and Seelah threw herself in the way and said they'd bewitched him.\" {n}She turns her hands over and looks at the palms.{/n}\n\"I was across the camp from him. I could see his face. I've gone over it a hundred times. Whether I saw his face change before I ran.\"",
+          "Text": "\"At Houndheart Curl wasn't Curl. He came out of nowhere and snatched Elan's ring out of the quasit's paws, and called things up out of the ground, and Elan called him a traitor and swung at him, and Seelah threw herself in the way. She said afterwards they must have bewitched him.\" {n}She turns her hands over and looks at the palms.{/n}\n\"I was across the camp from him. I could see his face. I've gone over it a hundred times. Whether I saw his face change before I ran.\"",
           "Choices": [
             {
               "Text": "\"Did you?\"",
@@ -338446,7 +338445,7 @@
         {
           "Id": "verse",
           "Speaker": "Jannah",
-          "Text": "{n}When it's over she climbs down off the bench and comes to you, flushed, with foam on her lip and her eyes very bright.{/n}\n\"They had the Houndheart verse wrong. They had me running before I'd struck a blow. I made them change it.\" {n}She wipes her mouth with the back of her hand.{/n} \"Now I run after the first one's down, which is true, and I come back in the last verse, which is also true, and it doesn't rhyme at all, and I don't care.\"",
+          "Text": "{n}When it's over she climbs down off the bench and comes to you, flushed, with foam on her lip and her eyes very bright.{/n}\n\"They had the Houndheart verse wrong. They had me running before I'd struck a blow. I made them change it.\" {n}She wipes her mouth with the back of her hand.{/n} \"Now I run after I've had a go at the quasit, which is true, and I come back in the last verse, which is also true, and it doesn't rhyme at all, and I don't care.\"",
           "Choices": [
             {
               "Text": "\"You made them sing it right.\"",
@@ -420920,8 +420919,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "herald.killed": "348dfb40784b436cbe21347f8e0f08ce",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
@@ -423130,6 +423129,7 @@
     "shamira.let_in.thought": "33f75e114857c6945b931801f0943051",
     "shamira.let_in.told": "3a9a8c16a93db5844901ed3e1e5f5bed",
     "shamira.let_in.submitted": "d5c0eb028f41da648bfbdd5a1ac2dc97",
+    "jannah.seelah_killed_at_cage": "b1cf64a1c5af84c46b578fa82f865d66",
     "nenio.asked_forgetting": "ece25c57e50c9e0458c6cd47a143d8fe",
     "nenio.asked_gift": "9763b3f979b4cce449e5ca1d28f50eed",
     "herrax.rokhorn_confessed": "c60613dca14bf0943a428246cf51bb3a",
@@ -423514,6 +423514,10 @@
     "seelah.houndheart_seen": [
       "2100f41ae724734418dc74b15719543e",
       "f75430d6f83e9864ca9b16db1a170bd1"
+    ],
+    "jannah.sword_given": [
+      "decaff681a6646ea8102a1860fcbd172",
+      "5ddbadee4a3b4d169ad9fbe7a7f62253"
     ],
     "nenio.fox_argued": [
       "357224f06cf28804294c737124e66c29"

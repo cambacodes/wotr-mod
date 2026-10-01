@@ -47,25 +47,25 @@ def s(id, title, nodes, previous=None, delay=24, requires=()):
 
 s("unasked_question", "The house of the enemy", [
     n("start", "Narrator", '''{n}The packet waiting among your personal correspondence holds a letter and a folded drawing. Targona has written your name on the outside, not your title.{/n}
-"Commander. My captain in the host has asked me for a full account of Areelu's refuge, for the archives of Heaven. Know the house of your enemy better than she knows it herself: my captain taught me that before he taught me the sword, and it is the one order I have never resented.
-"So I have been drawing her laboratory. The table. The chains. The ring of purple fire. I remember the door better than anything in it, and every time I set it down, I put the lock on the outside, where she kept it. I know very well I am free. I give thanks for it at morning prayers. Then at night I sit down with a pen and lock myself in again.
-"The healers here look at my drawing and tell me what an angel ought to be able to bear. I did not ask them. I am asking you. You have been into the Abyss and walked out of it. Look at it as a soldier would, and tell me what you see."''',
+"Commander. I have begun an account of Areelu's refuge, for my comrades in the host. Know the house of your enemy better than she knows it herself: I learned that before I learned the sword, and I have never had cause to doubt it.
+"So I have been drawing her laboratory. The chains. The ring of purple fire. I keep drawing a door, though I could not swear there was one, and every time I set it down I put the lock on the outside. I know very well I am free. I give thanks for it at morning prayers. Then at night I sit down with a pen and lock myself in again.
+"I can give a report of a battle. This I cannot seem to give. I am asking you. You have been into the Abyss and walked out of it. Look at it as a soldier would, and tell me what you see."''',
       c("Unfold the drawing.", "drawing"), c("Put the drawing aside until you can give it an unhurried hour.", abort=True)),
-    n("drawing", "Narrator", '''{n}A square room. A narrow table with straps at the corners. A door whose hinges she has drawn twice, once on each side, and a neat arrow pointing out through it. The lock lies across the arrow like a bar across a gate.{/n}
+    n("drawing", "Narrator", '''{n}A square room. A ring on the floor where the purple fire burned. A door whose hinges she has drawn twice, once on each side, and a neat arrow pointing out through it. The lock lies across the arrow like a bar across a gate.{/n}
 Beneath it she has written, in a smaller hand:
-"I do not ask you to find the room. It lies under the ruin, and I thank Iomedae for every stone on top of it. Some of the distances will be wrong. I spent very little time looking at it from above."
+"I do not ask you to go back there. I would not go back for anything. Some of the distances will be wrong. I spent very little time looking at it from above."
 The last sentence is underlined once, as though she has decided you may laugh at that much.
-"There are hours I cannot account for, and I will not invent them for the archive. Areelu Vorlesh is incapable of contrition, even for a heartbeat; she would like nothing better than an angel who misremembers her prison. I will not give her that.
+"There are hours I cannot account for, and I will not invent them for my account. Areelu Vorlesh is incapable of contrition, even for a heartbeat; she would like nothing better than an angel who misremembers her prison. I will not give her that.
 "Tell me the first thing you see. Do not soften it."''',
       c('Write: "You drew the way out before you drew the bar across it."', "exit"),
       c('Write: "You drew the hinges twice. You didn\'t trust your own memory."', "hinges")),
     n("exit", "Narrator", '''{n}You mark the place where the arrow begins. Its first stroke is darker than the line laid over it.{/n}
 "You drew the way out first," you write. "The bar came afterwards, in a thinner line. Scouts do the same with a ford they were nearly drowned in: the crossing goes down first, and the current after, when they remember it. Your hand knew the way out before it knew the lock.
-"For the archive, draw it as it was. Bar and all. Then send me a copy, and I'll mark where a sapper would have gone through that wall if anyone had been fool enough to send one."
+"Keep your account as you remember it. Bar and all. Then send me a copy, and I'll mark where a sapper would have gone through that wall if anyone had been fool enough to send one."
 {n}There is room left beneath your answer for something that is not about the room at all.{/n}''',
       c("Continue the letter.", "personal")),
     n("hinges", "Narrator", '''{n}You copy both sets of hinges onto a scrap. One door swings in, into the room. The other swings out, flat against the corridor wall.{/n}
-"You drew both," you write. "You could have rubbed one out and sent your captain a clean drawing. You sent me the one where you weren't sure. I'd trust that over any map a scout ever handed me with a straight face.
+"You drew both," you write. "You could have rubbed one out and sent me a clean drawing. You sent me the one where you weren't sure. I'd trust that over any map a scout ever handed me with a straight face.
 "Put it in the account that way: two hinges, and the angel who drew them didn't know which. Then send me a copy. I'd like to know which way that door swung, because whoever built it meant something by it."
 {n}You set the scrap beside the letter and leave space beneath it.{/n}''',
       c("Continue the letter.", "personal")),
@@ -86,8 +86,8 @@ You leave a clean strip at the bottom of the page and label it ROOM FOR A COMPLA
 
 s("second_margin", "An uplifting account", [
     n("start", "Narrator", '''{n}Targona sends back your letter with a new sheet. She has filled the strip for complaints.{/n}
-"The brother who packed these pages used enough string to truss a sheep. I spent longer freeing the paper than drawing on it. That is my complaint. I enjoyed writing it more than is fitting, and I have confessed as much.
-"Yes, send me the copy. I will draw the room for my captain as it was, bar and all, and keep yours beside it.
+"The brother who packed these pages used enough string to truss a sheep. I spent longer freeing the paper than drawing on it. That is my complaint. I enjoyed writing it more than is fitting.
+"Yes, send me the copy. I will keep one drawing with my account and one with your letter.
 "I looked at the bar again. I remember drawing it. I was angry, because the door looked too easy to open, and it was never easy. Not once. You saw it before I did, and I am a little vexed that you did."
 {n}Below this, her hand grows smaller.{/n}
 "There is a man in Drezen gathering crusaders' accounts for a book. He has asked me for the laboratory. Something short, he says, and uplifting. I said yes before I had thought, because he asked kindly, and an angel is not in the habit of refusing a kind request. Now I cannot get past his word. Uplifting."''',
@@ -100,20 +100,20 @@ s("second_margin", "An uplifting account", [
 "She keeps crossing out the parts where she is angry. I keep writing them back in the margin. We are at eleven each.
 "My proposal is that we give the collector the most uplifting account imaginable: a door rising off its hinges and striking the woman who built it. Silver says that is not what happened. I said the word was uplifting, not accurate."
 {n}Targona has written beneath this: "This is why I still need your answer."{/n}''', c("Read Targona's proposed account.", "account")),
-    n("account", "Narrator", '''{n}Her draft begins with the soldiers who camped near her prison because her light still reached them. She does not name them. She does not pretend to know what became of them. Then the sentences go cold, the way a sermon goes cold when the preacher has stopped believing it.{/n}
+    n("account", "Narrator", '''{n}Her draft begins with the prisoners who sheltered near her barrier because her light kept the demons off them. She does not name them. She does not pretend to know what became of them. Then the sentences go cold, the way a sermon goes cold when the preacher has stopped believing it.{/n}
 "The captive angel remained a source of protection. Her suffering was therefore not without purpose."
 The lines are struck through so hard that the nib has torn the sheet.
 "I wrote that," Targona says underneath. "No collector put it in my mouth. I wanted the reader to have something to hold, and I found I had written him a reason to leave me in the barrier.
-"Men lived because I was there. I thank Iomedae for every one of them. I would have sheltered them awake, with a sword in my hand, if anyone had let me. Areelu chained an angel to a table and the camps were warmer for it, and I will not print a sentence that makes the second thing pay for the first."
+"Men lived because I was there. I thank Iomedae for every one of them. I would have sheltered them awake, with a sword in my hand, if anyone had let me. Areelu chained an angel, and the prisoners near her were safer for it, and I will not print a sentence that makes the second thing pay for the first."
 The page ends with a question. Should she write it for him now, or tell him no?''',
       c('Tell her to write it short, in her own name, with the anger left in.', "publish"),
       c('Tell her to refuse him plainly and keep the pages for herself.', "private")),
     n("publish", "Narrator", '''{n}You write a first line for her to throw away if she likes: "Men lived because I was there. That is not why I was there."{/n}
 The rest of your answer is short. She need not account for every hour or end on a lesson. She can write what she remembers, say plainly what others told her afterwards, and leave the lost hours lost.
 You tell her the cost as well, because she would find it for herself anyway. Once it is printed men will quote it badly, and sooner or later somebody will write the tidy sentence back in for her.
-"Write it the way you'd give a report to your captain," you finish. "Send it if you want to. Don't put an amen at the end of it."''', c("Send your advice to publish.", flags=("targona.account_public",))),
+"Write it the way you'd give a report to your comrades," you finish. "Send it if you want to. Don't put an amen at the end of it."''', c("Send your advice to publish.", flags=("targona.account_public",))),
     n("private", "Narrator", '''{n}You tell her to refuse him plainly, without promising him a later date to sweeten it.{/n}
-"Your captain gets the true account. He can get his uplifting paragraph from a man who wasn't there."
+"Your comrades can have the true account. He can get his uplifting paragraph from a man who wasn't there."
 You tell her the price too. Other men will tell her story with less of her in it, and her silence won't make them truthful. You put that down plainly, because she would despise you for hiding it.
 "If you change your mind, write and say so. Until then I'd like to read what you struck out."
 {n}You fold his proposed heading behind the reply without correcting it.{/n}''', c("Send your advice to refuse him.", flags=("targona.account_private",))),
@@ -121,9 +121,9 @@ You tell her the price too. Other men will tell her story with less of her in it
 
 
 s("the_folded_room", "Which way the door swung", [
-    n("start", "Narrator", '''{n}The next packet holds two copies of the room and a strip of paper broad enough to cut a small door from. She has kept the first drawing back for her captain.{/n}
+    n("start", "Narrator", '''{n}The next packet holds two copies of the room and a strip of paper broad enough to cut a small door from. She has kept the first drawing with her account.{/n}
 "I did as we said about the collector. I will tell you what came of it when something has.
-"Now the door. You asked which way it swung, and I cannot tell you, and it galls me. Areelu built nothing without a reason. If the door opened inward, she meant to come and go; if outward, she meant something to come out. The host's archivists want to know which. So do I.
+"Now the door. You asked which way it swung, and I cannot tell you, and it galls me. I remember everything else about that place that I would rather forget, and not this.
 "I have drawn the hinges both ways on this copy. Work it out however a soldier works out a wall: by looking, by cleverness, or by cutting through it. I suspect you are qualified in at least two of those."
 {n}The copied lines almost meet at one corner. Beneath them she has written: "Send it back even if you fail. A scout who comes back from a bad road has still mapped it."{/n}''',
       c("Study the fold and the two sets of hinges.", "study"),
@@ -133,19 +133,19 @@ Targona has numbered the corners so you can report what you tried. The smallest 
 You test a corner without pressing it flat. The inner lines are faint beneath the new ink. You could study them closely, or stop treating the drawing as a puzzle with one hidden answer and simply go through the wall.''',
       c("[Perception] Follow the faint inner line and find a fold that opens outward.", check=dict(Skill="SkillPerception", DC=25, Success="found", Failure="creased", CommanderOnly=True)),
       c("Make a new opening instead of solving the old arrangement.", "cut")),
-    n("found", "Narrator", '''{n}The faint line ends just short of the apparent corner. You fold there, reverse the inner flap, and find it: a small door that opens outward, into the corridor, without carrying the room with it. Its lock is on the outside, where it could hold a prisoner in and let nothing else out.{/n}
+    n("found", "Narrator", '''{n}The faint line ends just short of the apparent corner. You fold there, reverse the inner flap, and find it: a small door that opens outward, into the corridor, without carrying the room with it.{/n}
 You mark the sequence in Targona's numbering. The construction is awkward rather than elegant, which is how real doors in real fortresses usually turn out.
-"It swung out," you write. "It took three folds, and the first two made it worse; I've marked those as well. Whatever she kept in that room, she meant to let it out one day. Tell your archivists."
+"It opens outward, on paper at least," you write. "It took three folds, and the first two made it worse; I've marked those as well. Whether her real door did, only she knows, and I'd rather not ask her."
 You return the worked copy with a blank one beside it. Before sealing the packet you open the little door again. It catches on your thumbnail. You add an arrow where she should lift it.''', c("Return the construction and its instructions.", flags=("targona.fold_found",))),
     n("creased", "Narrator", '''{n}The inner line disappears beneath your first crease. When you fold the flap back, the door catches and tears at its top corner. Another attempt only enlarges the tear.{/n}
 You put the damaged copy beside the untouched one. For a moment it is tempting to begin again and send only the better result. Her line about scouts stops you.
 "I couldn't make the two hinges agree," you write. "I tore the paper trying. The door opens now, but only because its corner is ripped, and I won't pretend that was the plan."
 You set down your attempts in order and leave the spare copy blank.
-"Your archivists will have to make do with a torn map and an honest report. I've given worse to Irabeth and lived."
+"Your account will have to make do with a torn map and an honest report. I've given worse to Irabeth and lived."
 {n}Both copies go into the packet. The failed one remains on top.{/n}''', c("Return the failed attempt honestly.", flags=("targona.fold_failed",))),
     n("cut", "Narrator", '''{n}You cut three sides of a rectangle in the clear part of the copied wall. The fourth becomes a hinge. You trim a narrow strip from the flap's free edge so it opens without catching. When you lift it, the drawing opens onto the surface of your desk.{/n}
 It is an almost insolently simple answer to a careful diagram. You keep the discarded strip and write down exactly what you did.
-"I didn't find her door. I made one. Every sapper in the crusade will tell you that's the quicker way through a wall, and Areelu's walls aren't standing any more."
+"I didn't find her door. I made one. Every sapper in the crusade will tell you that's the quicker way through a wall."
 At the bottom you add a practical improvement: the new door wants a small handle so it can be opened without tearing its corner.
 {n}The uncertain original hinges remain visible. The new door does not need them to be correct.{/n}''', c("Return the new opening and the strip you cut away.", flags=("targona.fold_cut",))),
 ], "targona.second_margin")
@@ -153,24 +153,24 @@ At the bottom you add a practical improvement: the new door wants a small handle
 
 s("an_unpromised_future", "A tale for the wayhouse", [
     n("start", "Narrator", '''{n}Targona's reply includes the paper door. She has added a handle shaped like a very small wing, and written OPEN HERE beside it in unnecessarily large letters.{/n}
-"The archivist asked what the handle was for. I told him it was for opening the door. He wrote that down."
+"The chaplain asked what the handle was for. I told him it was for opening the door. He wrote that down, which tells you everything about chaplains."
 {n}Her account of what happened to the drawing follows.{/n}''',
       c("Read how she used the successful fold.", "found", requires=("targona.fold_found",)),
       c("Read what she did with the torn copy.", "failed", requires=("targona.fold_failed",)),
       c("Read what she made of the new door.", "cut", requires=("targona.fold_cut",))),
-    n("found", "Narrator", '''"Outward. Of course it was outward. I have written it into the account, and the host's archivist went pale and took the page straight to my captain.
+    n("found", "Narrator", '''"Outward. Your folds work; I did them twice.
 "I did your folds twice. The third time I did them in the wrong order and shut the little lock inside the room. I kept that one too; it is the only version of that room I have ever enjoyed.
-"The dream has not changed, and I will not tell you it has to make you feel clever. But I know now which way her door swung, and why, and knowing the house of your enemy is a weapon. I gave thanks for it at dawn prayers."
+"I still do not know how her door was truly made. But I know how to make one that opens, and I gave thanks for that at dawn prayers."
 {n}The letter moves on to the collector. Her hand is firmer here than it was round the copied hinges.{/n}''', c("Read about her account.", "account")),
     n("failed", "Narrator", '''"Thank you for sending the torn one on top. Irabeth was right to let you live.
 "I tried the spare. My door caught too. So I cut a new hinge at the torn corner, which would be a poor repair on any door that has to keep out the weather. For a map of a ruin, it serves.
-"The archivist has both copies now, yours and mine, and a note in my hand saying neither of us knows which way the door swung. He did not like it. I told him that an honest gap in a report has saved more soldiers than a confident lie, and that I would know; I have read Areelu's.
-"The dream is the same. But I wake now with something to do with my hands, and I have thanked Iomedae for smaller mercies."
+"I have kept both copies, yours and mine, with a note in my hand saying neither of us knows which way the door swung. An honest gap in a report has saved more soldiers than a confident lie.
+"I tried your torn copy again before dawn, and thanked Iomedae for smaller mercies."
 {n}She turns to the collector without apologising for how little the paper did.{/n}''', c("Read about her account.", "account")),
     n("cut", "Narrator", '''"I laughed when I saw the hole. Then I rebuked myself for laughing. Then I opened it again.
 "I gave your door a handle. You will see its shape is grander than the carpentry deserves. I chose it because it pleased me, and I confessed the vanity at compline, and the chaplain laughed at me, which is not in his rule.
-"I gave the archivist your strip of cut wall with a note: 'The way through, as found by the Commander.' He has filed it under sapping. I think he is right.
-"The dream has not changed. What changed was the hour after I woke. I had work for my hands that was not holding them still."
+"I have pinned your strip of cut wall beside the drawing with a note: 'The way through, as found by the Commander.'
+"I did that before dawn prayers, and was early to them for once."
 {n}Below this she has written about the collector.{/n}''', c("Read about her account.", "account")),
     n("account", "Narrator", '''{n}A second sheet records her reply to the collector, in her own words rather than a copy of yours.{/n}''',
       c("Read the consequences of publication.", "public", requires=("targona.account_public",)),
@@ -185,7 +185,7 @@ s("an_unpromised_future", "A tale for the wayhouse", [
 "There are men in the Mendevian camps who will read it and believe that what was done to them near that laboratory was an angel's holy choice. It was not. It was Areelu's, and she chose it for all of us. When my duties next take me into the city, I will go to his shop and ask him, before Iomedae, to print a correction. I will not shout. I will not need to.
 "I still will not give him my pages. But I will not let him give her mine."
 {n}She has left the next question on a line of its own.{/n}''', c("Read the private question.", "question")),
-    n("question", "Narrator", '''"The chaplain here says idle hands are the Abyss's workshop. I told him mine have been idle in a barrier for longer than he has been ordained, and that the Abyss did not need my help. He gave me a penance for the tone. I did it.
+    n("question", "Narrator", '''"The chaplain here says idle hands are the Abyss's workshop. I told him mine have been idle in a barrier for longer than he has been ordained, and that the Abyss did not need my help.
 "So: a task, and I want your help with it. The men in the wayhouse ask me for stories at night, when the fever is bad and nobody can sleep. They do not want the lives of the saints; they have heard those. They want a soldier who wakes in the enemy's house and gets out. I mean to write them one. Awake, with a sword by the door, and Iomedae's name in her mouth.
 "Tell me how she gets out, or whom she lets in, if she would rather hold the room. You have got out of worse places than I have; your reports say so, in a very modest voice."
 {n}There is a lightly drawn rectangle below the words, waiting for something to be put inside it.{/n}''',
@@ -228,7 +228,7 @@ The trouble is small enough to be funny. Meret makes an unnecessarily elaborate 
 
 s("what_she_keeps", "A letter she wanted to write", [
     n("start", "Narrator", '''{n}Targona's latest letter is less carefully arranged than the others. The first paragraph has been moved with an arrow, a second thought has been squeezed above the date, and a faint ring marks where a cup stood too near the edge.{/n}
-"I began this before I knew what it was about. I do not recommend it. I have done penance for worse."
+"I began this before I knew what it was about. I do not recommend it."
 {n}Her answer to your page occupies the first sheet.{/n}''',
       c("Read her response to the Trickster page.", "trick", requires=("targona.extra_ending",)),
       c("Read her response to the ordinary continuation.", "ordinary", requires=("targona.ordinary_ending",))),
@@ -256,7 +256,7 @@ s("what_she_keeps", "A letter she wanted to write", [
 {n}The sentence ends at the fold. You open the lower half of the sheet.{/n}''',
       c("Read what your lover chose to write.", "lover", requires=("targona.ran_romance",)),
       c("Read what your friend chose to write.", "friend", forbids=("targona.ran_romance",))),
-    n("lover", "Narrator", '''"I miss kissing you. There. I have written it without first telling you how useful your last letter was, and I will confess the order at compline.
+    n("lover", "Narrator", '''"I miss kissing you. There. I have written it without first telling you how useful your last letter was, and I am not sorry.
 "I miss the pause before you decide whether to say something outrageous, and the times you decide against it and I can tell anyway. I want an evening with you when neither of us has a page to finish or a man to sit with."
 {n}The next line has been crossed out and replaced.{/n}
 "I nearly promised to be easier company. That would be a lie, and I do not tell those. I can promise to be glad when you come.
@@ -275,9 +275,9 @@ s("what_she_keeps", "A letter she wanted to write", [
 
 s("the_open_threshold", "A door that opens both ways", [
     n("start", "Narrator", '''{n}Targona's letter carries the impression of a page opened and closed many times. She has drawn a small door beside the seal.{/n}
-"My current post has put me at the Celestial Order's wayhouse just beyond Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.
+"I am tending the wounded at a wayhouse on Drezen's eastern road. The courier who brought this can carry your reply back there. It is on Golarion, and the road between it and the city is ordinary.
 "I do want to see you. I have wanted it since the last packet, and I have been ashamed of how often I reread it.
-"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind a barrier that someone else built for my own good. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do."
+"But I know you, a little. If there is a trick in your answer, tell me what it is before you ask me to walk through it. I spent a long time behind Areelu's barrier. I will not step through another door I have not seen tested, not even yours. If the road is all we have, the road will do."
 {n}The invitation names the Drezen courtyard as the meeting point. The courier's dispatch slip carries the same wayhouse address as Targona's letter.{/n}
 {n}You read the last line twice, and then go and find out how long the eastern road is on foot.{/n}''',
       c("[Trickster] Continue from the impossible extra door you drew on her page.", "paper_setup", requires=("trickster", "targona.extra_ending")),
@@ -314,7 +314,7 @@ You answer with the smallest news you have, and ask for hers.''',
 "Thank you for not sending me the key. I would have used it, and you know that, which is why I am glad you did not.
 "Write to me tonight instead. Tell me something from your day too small for a dispatch. When there is a road worth trusting, I will walk it."''',
       c("Answer her and keep the correspondence open.", flags=("targona.visit_correspondence",))),
-    n("road", "Narrator", '''{n}The courier carries your invitation to the Celestial Order's wayhouse. Targona comes by the public eastern road, on foot, stopping twice on the way at the dressing station by the ford because there were men there.{/n}
+    n("road", "Narrator", '''{n}The courier carries your invitation to the wayhouse. Targona comes by the public eastern road, on foot, stopping twice on the way at the dressing station by the ford because there were men there.{/n}
 No spell moves her and no unstable gate closes behind her. She reaches the Drezen courtyard before the appointed hour and waits until you arrive.
 "I walked," she says. "It was a long road, and nobody on it looked at the wing. I liked that. Walk beside me the rest of the way."''',
       c("Walk the wall with her.", "walk"),

@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-qual-q6\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4092,
-  "unique_targets": 861,
+  "binding_uses": 4095,
+  "unique_targets": 864,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -526,6 +526,10 @@
       "path": "World/Dialogs/c3/MoltenScar/Deserter/AnswersList_0021.jbp",
       "type": "BlueprintAnswersList"
     },
+    "b1cf64a1c5af84c46b578fa82f865d66": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Answer_0057.jbp",
+      "type": "BlueprintAnswer"
+    },
     "83e788629a224ba7ad08da7e204685b4": {
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0003.jbp",
       "type": "BlueprintCue"
@@ -558,8 +562,16 @@
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0060.jbp",
       "type": "BlueprintCue"
     },
+    "decaff681a6646ea8102a1860fcbd172": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_2.jbp",
+      "type": "BlueprintCue"
+    },
     "bc82d1f5215d468ea1d70d582a3b2de4": {
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_3.jbp",
+      "type": "BlueprintCue"
+    },
+    "5ddbadee4a3b4d169ad9fbe7a7f62253": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_5.jbp",
       "type": "BlueprintCue"
     },
     "5ff8a80442182f84e849b4281f98b9ca": {
