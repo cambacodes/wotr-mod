@@ -722,6 +722,27 @@ REACTIONS += [
 SCENES.extend(REACTIONS)
 
 
+# --- Coordinator ruling (PP3, 2026-10-01): closed: dead, no raise -------------------------------------------------------
+# Buying her soul back from Ramisa and having the chaplains raise it is a raise, and the one-raise rule (06 registry: Irabeth's
+# chapel diamond is the only raise in the mod) forbids it. The dead branch's entries are RETIRED BY GATING (ids, nodes and
+# choice indices kept): each forbids chapter_later, which the runtime holds in every chapter from 2 on, so nothing can set
+# returned again. A dead Nurah's route is closed by her death (her UnavailableFlags), canon fate and an earned outcome (the
+# Chivarro / Arueshalae precedent). The prepared-in-life device stays: the forged pardon keeps her alive in her cell. Saves
+# that were already raised keep their later scenes (save compatibility). The Ledger says the loss plainly.
+DEAD_RETIRED = ("nurah.trickster.dead.rumour", "nurah.trickster.dead.bill_of_sale", "nurah.trickster.dead.rumour_courier")
+for _scene in SCENES:
+    if _scene["Id"] in DEAD_RETIRED and "chapter_later" not in _scene["Forbids"]:
+        _scene["Forbids"].append("chapter_later")
+
+from storylines import lastcall_ledger as _ledger
+_ledger.EXTRA_ENTRIES.append(dict(
+    Id="lost.nurah", Section="Debts", Portrait="Nurah", Title="Nurah: dead on my word",
+    Text=("{n}Nurah Dendiwhar is dead, and it was my word that did it. There were other words I could have said, and I "
+          "did not say them. She served the Abyss, so the Lady of Graves will have sent her there, to crawl in the mud with "
+          "the rest; and after that judgment no priest raises anyone, whatever a marilith in the Fleshmarkets might offer "
+          "to sell me. Her book will not be written. Nobody will ever read what she thought of me.{/n}"),
+    Lines=[], Requires=["trickster.ever"], Forbids=[RETURNED], AnyGroups=[list(DEATHS)], Tooltip="RRT_Debt"))
+
 # --- The registered route -----------------------------------------------------------------------------------------
 
 def integrate(payload):

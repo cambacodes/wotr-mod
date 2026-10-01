@@ -18,6 +18,7 @@ internal static class NurahTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
         state.Flags.UnionWith(flags);
+        if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);   // the runtime holds it (the retired dead branch reads it)
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
         return state;
@@ -28,6 +29,8 @@ internal static class NurahTricksterTests
         var later = Program.Copy(state); later.Hour += hours; if (chapter != null) later.Chapter = chapter.Value;
         Rules.Complete(story, later); return later;
     }
+
+    private static readonly string[] DeadRetired = { "nurah.trickster.dead.rumour", "nurah.trickster.dead.bill_of_sale", "nurah.trickster.dead.rumour_courier" };
 
     internal static void Run(Story story, Action<bool, string> check)
     {
@@ -153,15 +156,16 @@ internal static class NurahTricksterTests
         var evil = Program.Copy(readyTerms); evil.Flags.Add("nurah.trickster.temper_evil");
         check(Program.Walk(pTerms, evil).Any(r => r.Has("nurah.trickster.cost.coauthor") && r.Has("nurah.complete")), "The co-author answer is missing.");
 
-        // Trk_Nurah_PardonedThenKilled: death blocks the prison beats; Ramisa's market opens in Chapter 4.
+        // Trk_Nurah_PardonedThenKilled: death blocks the prison beats. Coordinator ruling (PP3): closed: dead, no raise; Ramisa's
+        // market is retired by gating (chapter_later), and the scene's pages are kept for old saves.
         var killed = World(story, 4, "trickster", "trickster.ever", "nurah.trickster.primed", "nurah.trickster.cost.ledger_lie",
                            "nurah.trickster.released", "nurah.trickster.accepted", "nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism");
-        check(Rules.Available(story, rumour, killed) && !Rules.Available(story, night, killed) && !Rules.Available(story, pProofs, killed),
-            "Trk_Nurah_PardonedThenKilled: availability.");
+        check(!Rules.Available(story, rumour, killed) && !Rules.Available(story, night, killed) && !Rules.Available(story, pProofs, killed),
+            "Trk_Nurah_PardonedThenKilled: availability (no raise).");
         var paid = After(rumour, killed, "offer", 0);
         check(paid.Has("nurah.trickster.larva_rumour") && paid.Has("nurah.trickster.cost.ramisa_fee"), "Trk_Nurah_PardonedThenKilled: flags.");
         var billReady = Later(story, paid, 24);
-        check(Rules.Available(story, bill, billReady), "Trk_Nurah_PardonedThenKilled: no bill.");
+        check(!Rules.Available(story, bill, billReady), "Trk_Nurah_PardonedThenKilled: the retired bill still opens.");
         var billPages = new HashSet<string>();
         Program.Walk(bill, billReady, (page, _) => billPages.Add(page));
         check(billPages.Contains("ledger") && billPages.Contains("surcharge") && billPages.Contains("rite_camellia"),
@@ -169,7 +173,7 @@ internal static class NurahTricksterTests
 
         // Trk_Nurah_Executed: the OR group, executed only.
         var executed = World(story, 4, "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism");
-        check(Rules.Available(story, rumour, executed) && !Rules.Available(story, courier, executed), "Trk_Nurah_Executed: availability.");
+        check(!Rules.Available(story, rumour, executed) && !Rules.Available(story, courier, executed), "Trk_Nurah_Executed: availability (no raise).");
         var audience = After(rumour, executed, "offer", 1);
         check(audience.Has("nurah.trickster.cost.ramisa_audience") && !audience.Has("nurah.trickster.cost.ramisa_fee"), "Trk_Nurah_Executed: flags.");
         var dead = World(story, 4, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism");
@@ -181,7 +185,7 @@ internal static class NurahTricksterTests
             var w = World(story, 4, "trickster.ever", "nurah.trickster.primed", "nurah.trickster.larva_rumour", "nurah.trickster.cost.ramisa_audience",
                           "nurah.dead_drezen", "nurah.killing_mechanism");
             if (camellia) { w.Flags.Add("nurah.dead_camellia"); w.Times["nurah.dead_camellia"] = w.Hour - 200; }
-            check(Rules.Available(story, bill, w), "Trk_Nurah_BillOfSale: unavailable.");
+            check(!Rules.Available(story, bill, w), "Trk_Nurah_BillOfSale: the retired bill still opens.");
             var freed = Program.Walk(bill, w).Where(r => r.Has("nurah.trickster.returned")).ToList();
             check(freed.Count > 0 && freed.All(r => r.Has("nurah.trickster.released") && r.Has("nurah.trickster.accepted") && r.Has("nurah.trickster.pseudonym")
                 && r.Has("nurah.trickster.cost.chaplains_writ")),
@@ -193,7 +197,7 @@ internal static class NurahTricksterTests
 
         // Trk_Nurah_LateCourier: Chapter 5, no Chapter 4 deal; worse terms; the commit falls to the epilogue page.
         var late = World(story, 5, "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism");
-        check(Rules.Available(story, courier, late) && !Rules.Available(story, rumour, late), "Trk_Nurah_LateCourier: availability.");
+        check(!Rules.Available(story, courier, late) && !Rules.Available(story, rumour, late), "Trk_Nurah_LateCourier: availability (no raise).");
         var collected = Program.Walk(courier, late).Where(r => r.Has("nurah.trickster.returned")).ToList();
         check(collected.Count > 0 && collected.All(r => r.Has("nurah.trickster.cost.late")), "Trk_Nurah_LateCourier: flags.");
         check(bill.Nodes.Single(n => n.Id == "sent").Choices.Single().Crusade?.Amount == -300
@@ -493,5 +497,35 @@ internal static class NurahTricksterTests
         var plain = World(story, 3, "nurah.prison");
         check(!story.Scenes.Where(s => s.Id.StartsWith("nurah.trickster.", StringComparison.Ordinal)).Any(s => Rules.Available(story, s, plain)),
             "A Trickster Nurah scene opened on another path.");
+
+        // Coordinator ruling (PP3, 2026-10-01): closed: dead, no raise. In every death world (executed after the siege, from the cell,
+        // pardoned then killed, or given to Camellia) nothing of hers opens in Chapters 3 to 5, no page or Last Call coda plays her
+        // alive, and the Ledger states the loss; a live prison Nurah keeps her pardon.
+        var deathWorlds = new[] {
+            new[] { "nurah.dead_drezen", "nurah.killing_mechanism" },
+            new[] { "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.primed", "nurah.trickster.cost.ledger_lie", "nurah.trickster.released", "nurah.trickster.accepted" },
+            new[] { "nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism" },
+            new[] { "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.complete", "nurah.trickster.released", "nurah.trickster.accepted", "nurah.trickster.proofs_seen" } };
+        foreach (var deaths in deathWorlds)
+        {
+            foreach (int ch in new[] { 3, 4, 5 })
+            {
+                var w = World(story, ch, deaths.Concat(new[] { "trickster", "trickster.ever" }).ToArray());
+                var open = story.Scenes.Where(sc => sc.Relationship == "nurah" && !sc.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                                                    && Rules.Available(story, sc, w)).Select(sc => sc.Id).ToArray();
+                check(open.Length == 0, "Closed: dead, no raise: Chapter " + ch + " still opens " + string.Join(", ", open));
+            }
+            var end = World(story, 6, deaths.Concat(new[] { "trickster.ever" }).ToArray());
+            check(!end.Has("nurah.trickster.coda_alive") && !end.Has("nurah.trickster.late_committed"), "Closed: dead, no raise: a coda key holds.");
+            var alivePages = story.Scenes.Where(sc => sc.Relationship == "nurah" && sc.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                                                 && Rules.Available(story, sc, end)).Select(sc => sc.Id).ToArray();
+            check(alivePages.Length == 0, "Closed: dead, no raise: a page plays her alive: " + string.Join(", ", alivePages));
+        }
+        check(DeadRetired.All(id => S(id).Forbids.Contains("chapter_later")), "The Ramisa revival is not retired by gating.");
+        var lostEntry = story.Books["trickster.ledger"].Entries.Single(e => e.Id == "lost.nurah");
+        check(lostEntry.Requires.Contains("trickster.ever") && lostEntry.Forbids.Contains("nurah.trickster.returned")
+              && lostEntry.AnyGroups.Length == 1 && Deaths.Concat(new[] { "nurah.dead_camellia" }).All(lostEntry.AnyGroups[0].Contains),
+            "The Ledger does not state her loss in every death world.");
+        check(Rules.Available(story, pardon, World(story, 3, "trickster", "trickster.ever", "nurah.prison")), "The in-life pardon was retired with the raise.");
     }
 }
