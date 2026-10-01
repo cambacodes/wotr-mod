@@ -29,7 +29,7 @@ internal static class TerendelevTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 || chapter == 3 ? Drezen : "" };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Human);
@@ -158,6 +158,7 @@ internal static class TerendelevTricksterTests
               && Rules.Available(story, where, World(story, 3, "trickster", "terendelev.voice_heard"))
               && !Rules.Available(story, where, World(story, 3, "trickster")),
             "Trk_Terendelev_Pacing: the Chapter 3 and 4 beats are shut.");
+        check(!Rules.Available(story, square, World(story, 4, "trickster")), "The Drezen memory plays in the Abyss (Q6 r2).");
         var tested = One(weeps, World(story, 4, "trickster", "terendelev.scale_held"), new[] { P + "blood_tested", P + "scale_warmed" });
         check(tested.Has(P + "blood_tested"), "Trk_Terendelev_Pacing: the blood is never tested in the Abyss.");
 
@@ -280,16 +281,73 @@ internal static class TerendelevTricksterTests
 
         // Reactions and pages.
         check(reactions.Length == 8 && reactions.All(s => s.Nodes.Count == 1)
-              && new[] { "Seelah", "Irabeth", "Anevia", "Storyteller", "Galfrey", "Daeran", "Regill" }.All(o => reactions.Any(s => s.Owner == o)),
+              && new[] { "Seelah", "Irabeth", "Anevia", "Storyteller", "Galfrey" }.All(o => reactions.Any(s => s.Owner == o))
+              && reactions.Where(s => s.Owner == "Daeran" || s.Owner == "Regill").All(s => s.Forbids.Contains("chapter_later")),
             "Terendelev's reactors are not Seelah (twice), Irabeth, Anevia, the Storyteller, Galfrey, Daeran and Regill.");
-        check(pages.Length == 5 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not five read-only Chapter 6 pages.");
+        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
+            "Her epilogue pages are not six read-only Chapter 6 pages.");
         var epiWatch = World(story, 6, turret.Flags.ToArray());
         check(Rules.Available(story, S(P + "epilogue.watch"), epiWatch) && !Rules.Available(story, S(P + "epilogue.late"), epiWatch)
               && !Rules.Available(story, S(P + "epilogue.debt"), epiWatch), "Her committed page is not the only page of a committed watch.");
         var epiLate = World(story, 6, square1.Flags.ToArray());
         check(Rules.Available(story, S(P + "epilogue.late"), epiLate), "The R2-6 late page does not carry an unanswered first night.");
         check(Rules.Available(story, S(P + "epilogue.rest"), World(story, 6, rested.Flags.ToArray())), "The rest page does not follow the rest granted.");
+
+        // Quality pass Q6.
+        HashSet<string> PagesOf(Scene scene, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(scene, w, (page, _) => seen.Add(page)); return seen; }
+        // CAN: she remembers the Commander at the second death only when the Commander fought there.
+        var withQueen = World(story, 5, "trickster.ever", Returned, "terendelev.started");
+        var leftEarly = World(story, 5, "trickster.ever", Returned, "terendelev.started", "iz.left_early");
+        check(PagesOf(firstNight, withQueen).Contains("iz") && !PagesOf(firstNight, withQueen).Contains("iz_queen")
+              && PagesOf(firstNight, leftEarly).Contains("iz_queen") && !PagesOf(firstNight, leftEarly).Contains("iz"),
+            "She remembers the Commander at a battle the Commander left.");
+        // COX: a Queen brought back on her own route is alive in Terendelev's chapel talk, and still writes.
+        var galScene = S(P + "watch.galfrey");
+        var queenBack = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "galfrey.trickster.returned");
+        var queenGone = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead");
+        check(PagesOf(galScene, queenBack).Contains("queen_back") && !PagesOf(galScene, queenBack).Contains("dead_late") && !PagesOf(galScene, queenBack).Contains("carry")
+              && PagesOf(galScene, queenGone).Contains("dead_unknown") && !PagesOf(galScene, queenGone).Contains("queen_back")
+              && !PagesOf(galScene, queenGone).Contains("dead_late"),
+            "A returned Queen is mourned as permanently dead.");
+        // Q6 r2 (CAN/COX): the Queen's death by its recorded cause.
+        var qEarly = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "iz.left_early");
+        var qPriestess = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "iz.manuscripts.live");
+        var qBackPriestess = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.dead", "iz.manuscripts.live", "galfrey.trickster.returned");
+        check(PagesOf(galScene, qEarly).Contains("dead_late") && PagesOf(galScene, qPriestess).Contains("dead_priestess") && !PagesOf(galScene, qPriestess).Contains("dead_late")
+              && PagesOf(galScene, qBackPriestess).Contains("queen_back_priestess") && !PagesOf(galScene, qBackPriestess).Contains("queen_back"),
+            "Terendelev claims a killing the record gives to the priestess.");
+        // Q6 r3 (CAN/COX): the Commander's own kill survives the Queen's return; the Lord of Locusts' death needs its record.
+        var qBackByYou = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.killed_by_commander", "galfrey.trickster.returned");
+        var qByYou = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "galfrey.killed_by_commander");
+        check(PagesOf(galScene, qBackByYou).Contains("queen_back_by_you") && !PagesOf(galScene, qBackByYou).Contains("queen_back")
+              && !PagesOf(galScene, qBackByYou).Contains("queen_back_priestess") && PagesOf(galScene, qByYou).Contains("dead_by_you")
+              && !PagesOf(galScene, qByYou).Contains("dead") && !PagesOf(galScene, qByYou).Contains("alive"),
+            "Terendelev claims the Queen's death when the Commander killed her.");
+        var deskari = S(P + "watch.deskari");
+        var dBase = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen");
+        var dKilled = World(story, 5, "trickster.ever", Returned, "terendelev.started", P + "first_night_seen", "iz.deskari_killed.live");
+        check(story.Etudes["iz.deskari_killed.live"] == "047d71e3e928d454bbd168497ee7c17f" && dKilled.Has("iz.deskari_killed")
+              && !Rules.Available(story, deskari, Later(story, dBase, 30)) && Rules.Available(story, deskari, Later(story, dKilled, 30)),
+            "The barracks confirm Deskari's death without DeskariKilledInIz.");
+        // Q6 r3 (INT): no living-Commander page after an unsurvived sacrifice; her own page instead.
+        var lost = World(story, 6, "trickster.ever", Returned, Committed, "sacrifice");
+        check(!Rules.Available(story, S(P + "epilogue.watch"), lost) && Rules.Available(story, S(P + "epilogue.sacrifice"), lost)
+              && !Rules.Available(story, S(P + "epilogue.sacrifice"), World(story, 6, "trickster.ever", Returned, Committed, "sacrifice", "ending.trickster")),
+            "An unsurvived sacrifice still gets the watch, or a returned Commander is mourned.");
+        var galLetter = S(P + "react.galfrey.letter");
+        check(galLetter.ForbidOverrides.TryGetValue("galfrey.dead", out var gback) && gback == "galfrey.trickster.returned"
+              && Rules.Available(story, galLetter, Later(story, World(story, 5, "trickster.ever", Returned, "galfrey.dead", "galfrey.trickster.returned"), 60)),
+            "The Queen's letter ignores her return.");
+        // CAN: Seelah's orphan years were in Solku; nothing puts her childhood in Kenabres.
+        foreach (var s in story.Scenes.Where(x => x.Relationship == "terendelev"))
+            foreach (var node in s.Nodes)
+                check(!node.Text.Contains("street kid in Kenabres", StringComparison.Ordinal) && !node.Text.Contains("night before", StringComparison.Ordinal),
+                    "Invented history or the wrong prologue chronology: " + s.Id + "/" + node.Id);
+        // INT/COX: the reports and visits that assumed an absence or a battle are manual reads, and assume neither.
+        foreach (var id in new[] { "letter.watch_report", "letter.second_report", "watch.at_the_gate", "watch.road", "watch.third_bell" })
+            check(S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))
+                  && !S(P + id).Nodes.Any(n => n.Text.Contains("departure", StringComparison.Ordinal) || n.Text.Contains("column comes back", StringComparison.Ordinal)),
+                "A Chapter 5 extra is still a rest delivery, or claims an absence: " + id);
 
         Console.WriteLine("PASS: Terendelev Trickster (Trk_Terendelev_*): the square and the Abyss, the bones on the Queen's list and the knight's, "
             + "the search and the gamble, the late page, the claim, the rest and the flinch, the first night and its debt, the release, "

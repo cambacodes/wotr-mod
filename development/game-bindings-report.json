@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4351,
-  "unique_targets": 911,
+  "binding_uses": 4370,
+  "unique_targets": 922,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -630,6 +630,10 @@
       "path": "World/Dialogs/c3/MoltenScar/Deserter/AnswersList_0021.jbp",
       "type": "BlueprintAnswersList"
     },
+    "b1cf64a1c5af84c46b578fa82f865d66": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Answer_0057.jbp",
+      "type": "BlueprintAnswer"
+    },
     "83e788629a224ba7ad08da7e204685b4": {
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0003.jbp",
       "type": "BlueprintCue"
@@ -662,8 +666,16 @@
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_0060.jbp",
       "type": "BlueprintCue"
     },
+    "decaff681a6646ea8102a1860fcbd172": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_2.jbp",
+      "type": "BlueprintCue"
+    },
     "bc82d1f5215d468ea1d70d582a3b2de4": {
       "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_3.jbp",
+      "type": "BlueprintCue"
+    },
+    "5ddbadee4a3b4d169ad9fbe7a7f62253": {
+      "path": "World/Dialogs/c3/MoltenScar/Deserter/Cue_5.jbp",
       "type": "BlueprintCue"
     },
     "5ff8a80442182f84e849b4281f98b9ca": {
@@ -833,6 +845,18 @@
     "3357022e6d1c5e047a0075a223606210": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
       "type": "BlueprintAnswer"
+    },
+    "a70275fb77f483847a68fe01586091ec": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0053.jbp",
+      "type": "BlueprintCue"
+    },
+    "4a58ea0622eb9924abb1579306f5a395": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0057.jbp",
+      "type": "BlueprintCue"
+    },
+    "a58f2095249a44549a4dfd2d60a9b6e1": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0067.jbp",
+      "type": "BlueprintCue"
     },
     "96993dc62aebc38469f890b857173117": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/TombOfDelamere_BookEvent.jbp",
@@ -2038,6 +2062,14 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",
       "type": "BlueprintCue"
     },
+    "2100f41ae724734418dc74b15719543e": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "f75430d6f83e9864ca9b16db1a170bd1": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
     "77a1253ff7aa8b24e865dc784db866b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp",
       "type": "BlueprintCue"
@@ -2280,6 +2312,10 @@
     },
     "1d5570f0d0d2b7b4ba805d48f492a749": {
       "path": "World/Encounters/AlushinyrraCity/Items/TeleportationMarks/TenThousandDelightsArk_Mark.jbp",
+      "type": "BlueprintItem"
+    },
+    "b5b0214f3ce3ded42a62094b87a434dd": {
+      "path": "World/Encounters/AreeluLab/Items/AbyssalKey.jbp",
       "type": "BlueprintItem"
     },
     "f0641f67501a4084897d9bcbc00ddc99": {
@@ -2560,6 +2596,10 @@
     },
     "42e220d5dadc4dfd8bb3ef23cae832eb": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/Iz_Default/MonsterDead.jbp",
+      "type": "BlueprintEtude"
+    },
+    "047d71e3e928d454bbd168497ee7c17f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_Outcomes/DeskariKilledInIz.jbp",
       "type": "BlueprintEtude"
     },
     "936af39436c74953b43a4165bfbcc9f9": {
@@ -2876,6 +2916,10 @@
     },
     "133f3b1b38f04fa44be3200b786e437f": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyRomance/GalfreyRomance_Finished.jbp",
+      "type": "BlueprintEtude"
+    },
+    "348dfb40784b436cbe21347f8e0f08ce": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Herald/HeraldKilled.jbp",
       "type": "BlueprintEtude"
     },
     "d7169995e449fdc4db861ddf0b9beff8": {

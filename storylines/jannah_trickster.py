@@ -65,6 +65,16 @@ REFUSED = "jannah.refused_q3"                     # ktc_DeserterJoins/Answer_001
 Q3_STARTED = "seelah.q3_started"                  # WeightOfMySword_SeelahQ3_quest 5a5a533c (started)
 SOULS = "seelah.souls_returned"                   # the same quest, completed
 ELAN_DEAD = "seelah.elan_dead"
+# Q6 r5 (CAN): the Commander was at the Houndheart camp with her (Seelah Q1 KnightCamp: Elan's chest, Cue_0011 2100f41a;
+# "Jannah and I will look around the northern side", Cue_0012 f75430d6). The duel of stories tells that day, so it needs it.
+HH_SEEN = "seelah.houndheart_seen"
+HH_SEEN_CUES = ["2100f41ae724734418dc74b15719543e", "f75430d6f83e9864ca9b16db1a170bd1"]
+# Q6 r6 (CAN): she handed her sword through the bars (Deserter Cue_2 / Cue_5, AddItemToPlayer); the Commander cut Seelah
+# down at the cage after Seelah broke the lock (Deserter Answer_0057 [Kill Seelah]).
+SWORD_GIVEN = "jannah.sword_given"
+SWORD_GIVEN_CUES = ["decaff681a6646ea8102a1860fcbd172", "5ddbadee4a3b4d169ad9fbe7a7f62253"]
+SEELAH_KILLED_AT_CAGE = "jannah.seelah_killed_at_cage"
+SEELAH_KILLED_ANSWER = "b1cf64a1c5af84c46b578fa82f865d66"
 SEELAH_DEAD = "seelah_dead"
 SEELAH_GONE = "seelah_gone"
 SEELAH_BACK = "seelah.trickster.returned"
@@ -130,9 +140,9 @@ RELATIONSHIP = dict(
     Description=("Jannah Aldori, a half-elf duellist of Mivon who never lost a bout and ran from one battle. She keeps "
                  "the Aldori forms the way other people keep a faith. I have had to learn them."),
     Objective="Answer Jannah Aldori",
-    Guidance=("On the Trickster path. At the Molten Scar, if you mean to strike the deserter in the cage, know the Aldori "
-              "forms first and offer them to her. If she lives, look for her in Chapter 5 in the old cells under the "
-              "Drezen citadel, where she has put herself. She fights her own duels, and she may throw one."),
+    Guidance=("On the Trickster path. At the Molten Scar, do not strike the deserter in the cage: a blow there kills her. "
+              "If she lives, look for her in Chapter 5 in the old cells under the Drezen citadel, where she has put "
+              "herself. She fights her own duels, and she may throw one."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[DEAD, DEAD_KNOWN], FailureFlags=[],
     UnavailableOverrides={DEAD: RETURNED, DEAD_KNOWN: RETURNED},
@@ -151,7 +161,7 @@ PRESENCES = {
                    Requires=["trickster.ever", PRESENCE_ON], Forbids=[CLOSED, GONE], MinChapter=5, MaxChapter=5,
                    AnswerLists=[], Dialog="hub",
                    Greeting="{n}In the last cell of the old gaol, with its door standing open, a half-elf in a patched "
-                            "gambeson sits on the bunk with a long, slightly curved blade across her knees. She has "
+                            "gambeson sits on the bunk with a practice sword across her knees. She has "
                             "scratched a circle into the floor stones with its point, three paces across, and she keeps "
                             "her boots out of it.{/n}"),
 }
@@ -161,7 +171,7 @@ DERIVED = {
     # of the story duel (or back from the wagon). The posting keeps her off the locator until she walks back in.
     PRESENCE_ON: [[DEAD_L, PRIMED], [RETURNED]],
     # A Seelah's Q3 in progress is left to finish before she writes from the cells.
-    Q3_SETTLED: [[JOINED], [REFUSED], [SOULS]],
+    Q3_SETTLED: [[REFUSED], [SOULS]],      # quality pass Q6 (INT): joining Q3 is not finishing it; the souls must be home
     # R2-6: the war can end between the wall and the muster; her page answers it after the Threshold.
     LATE_COMMITTED: [["trickster.ever", WALLS]],
     # 05 §2.5 voice note (morning after): she joins, but she will have it remembered who chalked the circle first.
@@ -192,10 +202,21 @@ def visit(id, title, nodes, requires, forbids=(), delay=24, kind="visit", chapte
                         requires=tuple(dict.fromkeys(("trickster.ever", *requires))) if "trickster" not in requires
                         else tuple(dict.fromkeys(requires)),
                         forbids=tuple(dict.fromkeys((CLOSED, GONE, *forbids))), delay=delay, last=chapter,
-                        optional=optional, Relationship=REL, Remote=True, Kind=kind, Chapters=[chapter], **extra))
+                        optional=optional, Relationship=REL, Remote=True, Kind=kind, Chapters=[chapter],
+                        # Q6 r2 (COX): her Chapter 5 visits are manual reads (her book, "choose Read"); only the letter from the
+                        # cells arrives at a rest, which keeps her inside the ledger's Chapter 5 allocation.
+                        **({"ManualOnly": True} if kind == "visit" and chapter == 5 and not extra.get("TricksterDevice") else {}), **extra))   # Q6 r6 (INT): the device pages (stories, wagon) arrive at a rest
 
 
 # --- Killed worlds, Chapter 3: the forms at the cage (inline, before the native [Attack]). -----------------------------
+# Quality pass Q6 r3: RETIRED BY GATING (both primers forbid chapter_later, held by the runtime in every chapter from 2 on;
+# ids, nodes and choice indices kept). The native [Attack] (Answer_0026 -> Cue_0027 199d4dbf) narrates her death and plays
+# KillJanna (103de7bd), whose CommandAction 3d7d10a2 executes a real Kill and whose CommandAction 1 opens the cage. A
+# staged survival needs a primed substitution of that outcome, which the engine does not have (contract, for a later E-item:
+# a primed-only authored cue ahead of Cue_0027 in Answer_0026.NextCue, running StartEtude JannaDead_SeelahDoesntKnow
+# f8129442 without PlayCutscene, plus a native-unit hide on leaving the area; verified in the harness in both branches).
+# Until it exists the cage is the Commander's own choice of a non-partner's death, and canon stands (11-ROSTER-PLAN-2
+# section 5, ruling #2). Her Trickster route is the living worlds: the duel of stories.
 
 SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
     '"In Kenabres you boasted of a fencing master in Mivon. Did he teach you the forms?"',
@@ -217,7 +238,7 @@ SCENES.append(scene(P + "cage.forms", "The forms", "Jannah", 3,
      jan("garbled_her", '''"No. You've never been anywhere near Mivon." {n}The pride goes back wherever it was hiding, and what is left is a frightened girl in a cage.{/n}
 "If you mean to kill me, Commander, kill me. Just don't pretend you know where I come from."''',
          c("[Step back from the cage.]", flags=(BOTCHED,)))],
-    requires=("trickster",), forbids=(NAMED, BOTCHED), last=3, Relationship=REL, Chapters=[3],
+    requires=("trickster",), forbids=(NAMED, BOTCHED, "chapter_later"), last=3, Relationship=REL, Chapters=[3],   # retired (Q6 r3)
     AnswerLists=[FIRST_LIST], NativeReturnCue=FIRST_CUE, EntryMythic="PlayerIsTrickster", TricksterDevice=True))
 
 # The challenge itself, invoked before the native [Attack] (on the sentence list she reaches only when Seelah is not there
@@ -235,7 +256,7 @@ SCENES.append(scene(P + "cage.terms", "To the first blood", "Jannah", 3,
 "Jannah Aldori. Of Mivon." {n}Her fingers have found what is under the grip. Her face does not change at all; seven years in a salle teach you that too.{/n} "Ready."''',
          c("[Take your guard, and choose your line: high, for the temple and first blood, not the throat.]", flags=(PRIMED,)),
          c("[Lower your blade, and take her sword back through the bars.]", abort=True))],
-    requires=("trickster", NAMED), forbids=(PRIMED,), last=3, Relationship=REL, Chapters=[3],
+    requires=("trickster", NAMED), forbids=(PRIMED, "chapter_later"), last=3, Relationship=REL, Chapters=[3],   # retired (Q6 r3)
     AnswerLists=[CAGE_LIST], ReturnToList=True,
     ReturnText="{n}She is on her feet in the cramped cage, blade high in the Aldori guard, eyes on you, waiting for your move.{/n}",
     EntryMythic="PlayerIsTrickster", TricksterDevice=True))
@@ -307,7 +328,7 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 "All right. I'll stay where you can find me. I thought that would be harder to say."''',
         c("[Leave her to the cell.]")),
     jan("released", '''"Released." {n}She takes it like a blow she had been warned about.{/n}
-"In Mivon that's an honour. The victor saying the loser owes nothing; they paint it on the salle wall. Here it just means you're done with me."
+"In the old man's salle that's an honour. The victor saying the loser owes nothing; he'd chalk it on the wall. Here it just means you're done with me."
 {n}She doesn't move toward the steps.{/n} "I'm staying anyway. Not because I owe you. Because I chose it, and that's the first thing I've done since the Houndheart camp that my legs didn't choose for me."''',
         c("[Leave her to the cell.]")),
     jan("nameless", '''{n}It lands. You watch it land. Then she straightens, heels together, the way a recruit stands for a sentence.{/n}
@@ -324,17 +345,21 @@ meet(P + "killed.yield", "An unclaimed yield", '"The turnkey says there\'s a dea
 
 visit(P + "alive.letter", "From the last cell", [
     nar("open", '''{n}The letter is folded small and sealed with candle wax, no signet. The hand is upright and exact, every stroke finished, like someone who was taught to write by the same master who taught her to cut.{/n}''',
-        c("Continue", "joined", requires=(JOINED,)),
+        c("Continue", "joined", requires=(JOINED, CONDEMNED)),
         c("Continue", "refused", requires=(REFUSED,), forbids=(JOINED,)),
         c("Continue", "condemned", requires=(CONDEMNED,), forbids=(JOINED, REFUSED)),
         c("Continue", "prison", requires=(PRISON,), forbids=(JOINED, REFUSED, CONDEMNED)),
         c("Continue", "free", requires=(FREE,), forbids=(JOINED, REFUSED, CONDEMNED, PRISON)),
-        c("Continue", "unmet", forbids=(JOINED, REFUSED, CONDEMNED, PRISON, FREE))),
-    jan("joined", '''"Commander. The jeweller is dead and the souls are home, and my parole was for the length of the hunt. I gave my word I'd go back to the Condemned when it ended. It's ended."
-"I didn't run. Not once, all the way into that hole and out again. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
+        c("Continue", "unmet", forbids=(JOINED, REFUSED, CONDEMNED, PRISON, FREE)),
+        c("Continue", "joined_free", requires=(JOINED,), forbids=(CONDEMNED,))),
+    jan("joined_free", '''"Commander. The jeweller is dead and the souls are home. I came to you on my own feet, nobody's prisoner, and I held the mouth of that hole for Seelah because I chose to. Now it's done I've chosen again. I've asked the Condemned for a place. The sergeant said yes before I'd finished asking, which I'm choosing to take as a compliment."
+"I didn't run. Not once, at the mouth of that hole. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
+        c("Continue", "wagon")),
+    jan("joined", '''"Commander. The jeweller is dead and the souls are home. The Condemned only let me go to find you in Drezen; if you'd turned me away I'd have gone straight back to them. You didn't turn me away. I'm going back anyway. The hunt's over, and a deserter who stays on only because nobody sent her back hasn't settled anything."
+"I didn't run. Not once, at the mouth of that hole. I'd like that written down somewhere, and you're the only one who writes things down who might believe it."''',
         c("Continue", "wagon")),
     jan("refused", '''"Commander. You told me to leave Drezen. I didn't. I've put myself in the old cells under the citadel instead."
-"The cells aren't Drezen. They're the crusade's. And I was never going to run twice."''',
+"I haven't left. I've put myself where you can find me, and I'll go when the crusade sends me, not before. I was never going to run twice."''',
         c("Continue", "wagon")),
     jan("condemned", '''"Commander. My Condemned company came through Drezen on its way to the north gate. The sergeant lets us sleep in the gaol when we're in a town, so he can count us in the morning. I'm writing from the last cell."
 "He says I'm the only one of his who ever asked to be counted."''',
@@ -342,10 +367,10 @@ visit(P + "alive.letter", "From the last cell", [
     jan("prison", '''"Commander. I've been in your cells since the Molten Scar. Nobody moved me. I think the clerk who had my papers died in the siege, and nobody else wanted them."
 "I've asked for the Condemned. This time I mean to be sent."''',
         c("Continue", "wagon")),
-    jan("free", '''"Commander. You let me go at the Molten Scar. I went to Kenabres and tried to be nobody. It didn't take. I'm bad at being nobody; I was raised to be looked at."
+    jan("free", '''"Commander. I walked out of the Molten Scar with the cage open behind me and no chain on me. I went to Kenabres and tried to be nobody. It didn't take. I'm bad at being nobody; I was raised to be looked at."
 "So I came back and gave the gaol my name, and they didn't know what to do with it, so they gave me a cell."''',
         c("Continue", "wagon")),
-    jan("unmet", '''"Commander. The last you saw of me I was running north from the Houndheart camp in the rain. The vrocks had me in a cage in the Molten Scar after that. When your army cleared the Scar, the sappers who came through behind you to burn the ritual pits found the cages. Everyone else in them was dead. They thought I was too, until I asked one of them for water."
+    jan("unmet", '''"Commander. You may not know my face. I'm Jannah Aldori, of Mivon, recruit of the Eagle Watch until I ran from a fight with demons at the Houndheart camp. The vrocks had me in a cage in the Molten Scar after that. I got out the night nobody was watching mine."
 "I walked here, and gave the gaol my name, and asked for a cell. They gave me one. I think they were too surprised to argue."''',
         c("Continue", "wagon")),
     jan("wagon", '''"The Condemned wagon goes north at the ninth bell of Oathday, and I mean to be on it. I'm writing so you'll hear it from me and not from a turnkey, and not think I ran again."''',
@@ -370,14 +395,14 @@ visit(P + "alive.stories", "Blood and tale", [
 "The Condemned will take me on nobody's order but mine. That's the one good thing about them."''',
         c("Continue", "choose")),
     jan("why", '''"Because I ran. Because the Condemned go wherever it's worst, and I want to stand somewhere bad and not run, just once, where somebody can see it."
-{n}She looks at the scratched circle, not at you.{/n} "And because nobody in the Condemned looks at me the way Seelah does. As if I'm forgiven. I can't stand being forgiven."''',
+{n}She looks at the scratched circle, not at you.{/n} "And because nobody in the Condemned would look at me the way Seelah would. As if I'm already forgiven. I can't stand being forgiven."''',
         c("Continue", "choose")),
     jan("choose", '''{n}She waits, with the patience of a woman who has already decided and is only being polite.{/n}''',
-        c('[Challenge her] "Then fight me for it. If I win, you stay."', "challenge"),
+        c('[Challenge her] "Then fight me for it. If I win, you stay."', "challenge", requires=(HH_SEEN,)),
         c('[Let her go to the wagon] "Then go. Good luck, Jannah."', "let_go")),
     jan("challenge", '''"Fight you. In here?" {n}She looks round the cell: the bunk, the bucket, the circle she scratched.{/n}
-"With what? They took my blade at the gate, and a stick against the Commander of the crusade is a joke I'm too tired to tell."
-{n}Then something changes in her face, the way it once did in Kenabres when somebody mentioned a lost cart of beer.{/n} "Wait. There's a game."''',
+"With what? They took my blade when I came down here, and a stick against the Commander of the crusade is a joke I'm too tired to tell."
+{n}Then something changes in her face, all at once, like a fencer seeing an opening.{/n} "Wait. There's a game."''',
         c("Continue", "rules")),
     jan("rules", '''"My master's salle played it on wet nights, when nobody could cross blades. Blood and tale. Two fencers tell the same bout, and each tells the other's part: you tell what I did, I tell what you did. The first one caught in a lie has bled first, and yields. He used to say a fencer who lies about a bout will lie with a blade, so you might as well find out over wine."
 "We'll tell Houndheart. You were there."''',
@@ -387,23 +412,23 @@ visit(P + "alive.stories", "Blood and tale", [
         c('"Agreed. I\'ll tell yours first."', "your_tale"),
         c('[Let her go to the wagon] "No. Go, if you have to."', "let_go")),
     nar("your_tale", '''{n}She settles against the wall, cross-legged, and waits the way a judge waits.{/n}
-{n}You tell her part of Houndheart: the demons coming out of the rain, the wagons drawn up, the fire, Elan shouting for shields. And then her.{/n}''',
-        c('[Tell it true] "You ran. Before it was over, you ran north into the rain, and you didn\'t come back for any of us."', "true"),
-        c('[Tell it kinder] "You went for help, and got lost in the rain."', "kind_lie")),
+{n}You tell her part of Houndheart: the quasit out of Elan's chest, the colours that put Elan and her face-down in the dirt, the chase across the runes, Curl out of nowhere with the ring and the things he called up out of the ground, Seelah between him and Elan's sword. And then her.{/n}''',
+        c('[Tell it true] "You ran. Before it was over, you ran north, and you didn\'t come back for any of us."', "true"),
+        c('[Tell it kinder] "You went for help, and got lost in the scrub."', "kind_lie")),
     jan("kind_lie", '''"No." {n}She says it before you've finished.{/n}
 "That's a kind lie, and it's the worst sort. First blood to me."''',
         c("Continue", "won")),
     jan("true", '''{n}She nods once, as if you had touched her on the guard and not the body. No blood.{/n}
-"My turn. Your part." {n}She tells it fast and flat, like a report.{/n} "You came over the wagon tongue with your weapon already out. You killed the first thing out of the rain before Elan had his shield up, and you shouted for us to form on the fire. I was on your left. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it."''',
+"My turn. Your part." {n}She tells it fast and flat, like a report.{/n} "You had your weapon out before the rest of us knew what had come out of that chest. When Curl's things came up out of the ground you were moving before any of us, and you shouted for us to close up on you. I remember thinking you looked like somebody painted on a temple wall, and hating you a little for it."''',
         c("Continue", "her_tale")),
-    jan("her_tale", '''"Then the second wave came, and you turned to meet it, and I dropped my sword in the mud before the first of them was over the barricade, and I ran."
+    jan("her_tale", '''"Then more of them came, and you turned to meet them, and I threw my sword down in the dirt and ran."
 {n}She stops, and waits for you to find the lie, if there is one.{/n}''',
         c("[Perception] Go back over that night, stroke by stroke, and look for the lie in hers.",
           check=dict(Skill="SkillPerception", DC=20, Success="caught", Failure="missed")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
-    nar("caught", '''{n}You remember the mud, the fire, the second wave. You remember a half-elf on your left with an Aldori blade, and the blade was not in the mud. It was in the first demon over the barricade, to the hilt, and she had to put her boot on its chest to get it back out. She ran after that. Not before.{/n}''',
-        c('"You didn\'t drop your sword. You killed the first one over the barricade, and then you ran. You\'ve been telling it worse than it was."', "yield")),
-    jan("yield", '''{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: the mud, the fire, her boot on its chest.{/n}
+    nar("caught", '''{n}You remember the chase across the runes. You remember a half-elf creeping up on the quasit alone, sword out, the only one of you who tried, and the thing blinking away twenty paces with a clap just as she reached it. She ran later, when Curl's things came. Not before.{/n}''',
+        c('"You didn\'t just throw your sword down and run. You went after that quasit alone before any of us moved, and you ran later. You\'ve been telling it worse than it was."', "yield")),
+    jan("yield", '''{n}She opens her mouth to say no, and nothing comes out. You watch her go back through it herself: the quasit, the clap, her empty hands.{/n}
 "...First blood." {n}She says it very quietly.{/n} "To you. Seven years in the circles of Mivon and I never bled first, and I lose my record in a cell, to a story, on a lie I told against myself."
 {n}She leaves the practice sword where it lies inside the circle.{/n} "Say it, then. What comes next."''',
         c('"You walk out of this cell. The wagon goes without you."', "stay", flags=(CAUGHT, RETURNED, STARTED, FIRST_LOSS)),
@@ -411,19 +436,19 @@ visit(P + "alive.stories", "Blood and tale", [
     jan("stay", '''"The wagon goes without me." {n}She gets off the bunk and stands, and doesn't seem to know what to do with her hands.{/n}
 "All right. By the forms. Don't expect me to be grateful. The forms don't say anything about grateful."''',
         c("[Leave her the cell for the night.]")),
-    nar("missed", '''{n}You go back over it and find nothing. The mud, the fire, the second wave: it all sits where she put it. If there is a lie in her telling, it is buried deeper than your memory reaches.{/n}''',
-        c('[Bluff] Name a lie anyway: "The fire was on the right, not the left. You weren\'t where you say you were."',
+    nar("missed", '''{n}You go back over it and find nothing. The chest, the chase, Curl's things: it all sits where she put it. If there is a lie in her telling, it is buried deeper than your memory reaches.{/n}''',
+        c('[Bluff] Name a lie anyway: "Elan\'s chest was on your left, not your right. You weren\'t where you say you were."',
           check=dict(Skill="CheckBluff", DC=26, Success="false_blood", Failure="false_caught")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
-    jan("false_blood", '''{n}She frowns. You watch her go back over the camp, looking for the fire, and not be sure.{/n}
-"...Maybe. Maybe it was on the right. I've told it to myself so many ways I can't find the edges any more." {n}Her mouth twists.{/n}
-"Then that's first blood. To you. My record, gone in a cell, over a campfire."''',
+    jan("false_blood", '''{n}She frowns. You watch her go back over the camp, looking for the chest, and not be sure.{/n}
+"...Maybe. Maybe it was on the left. I've told it to myself so many ways I can't find the edges any more." {n}Her mouth twists.{/n}
+"Then that's first blood. To you. My record, gone in a cell, over a travelling chest."''',
         c('"You walk out of this cell. The wagon goes without you."', "stay_false", flags=(LIED, SECRET, RETURNED, STARTED, FIRST_LOSS))),
     jan("stay_false", '''"The wagon goes without me." {n}She sits there a while longer, frowning at the circle as if it had cheated her and she can't work out how.{/n}
-"By the forms, then. I'll stay. And I'll think about that fire."''',
+"By the forms, then. I'll stay. And I'll think about that chest."''',
         c("[Leave her the cell for the night.]")),
     jan("false_caught", '''{n}Her eyes come up off the floor and fix on you, and for a heartbeat she looks exactly like what she is: a duellist who has seen a feint.{/n}
-"No. The fire was on the left. I had its smoke in my face the whole time." {n}She almost smiles.{/n} "That's a lie, Commander. First blood to me."''',
+"No. The chest was on my right. The quasit came out of it in my face." {n}She almost smiles.{/n} "That's a lie, Commander. First blood to me."''',
         c("Continue", "won")),
     jan("drawn", '''"No blood?" {n}She looks at you with something close to pity.{/n}
 "Then the tale's drawn, and a drawn bout goes to the one who was challenged. That's me."''',
@@ -439,7 +464,7 @@ visit(P + "alive.stories", "Blood and tale", [
 
 
 visit(P + "alive.wagon", "The ninth bell, and after", [
-    nar("open", '''{n}Twelve days after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}
+    nar("open", '''{n}On the second evening after the Condemned wagon went north, the gate sergeant sends up word that one of it has come back.{/n}
 {n}She comes into your quarters grey with road dust, her gambeson slit along one sleeve and sewn shut again with a Condemned surgeon's black thread.{/n}''',
         c("Continue", "old_scar", requires=(JOINED,)),
         c("Continue", "old_scar", requires=(REFUSED,), forbids=(JOINED,)),
@@ -448,7 +473,7 @@ visit(P + "alive.wagon", "The ninth bell, and after", [
         c("Continue", "ford")),
     nar("new_scar", '''{n}There is a cut on her right temple from the brow to above the ear, still angry and badly knitted. She stands in front of your table and waits to be looked at.{/n}''',
         c("Continue", "ford")),
-    jan("ford", '''"Half the wagon came back. We held a ford on the north road for three days against things with too many legs, and nobody in my file ran. I didn't either." {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}
+    jan("ford", '''"Half the wagon came back. They put us on a ford a morning's march up the north road, and in the night things with too many legs came over the water, and we held it till the relief came at noon, and nobody in my file ran. I didn't either." {n}She touches the stitches at her temple, briefly, like a fencer touching the button on a foil.{/n}
 "I'd like that written down too."''',
         c("Continue", "said")),
     jan("said", '''"I won in your cell. You yielded. By the old man's rule the winner says the end of the matter, and I didn't say it before the wagon left, because I didn't know it yet."
@@ -465,7 +490,7 @@ visit(P + "alive.wagon", "The ninth bell, and after", [
     jan("refused", '''{n}She takes it standing, the way she took the wagon: heels together, chin up.{/n}
 "All right. That's a fair reading of the forms. Not the only one." {n}She salutes you, flat of the blade to the brow, and goes out the way she came in, not running.{/n}''',
         c("[Let her go.]")),
-], requires=(POSTED,), forbids=(RETURNED,), delay=144, TricksterDevice=True, TricksterState="alive")
+], requires=(POSTED,), forbids=(RETURNED,), delay=36, TricksterDevice=True, TricksterState="alive")   # Q6 r3 (COX): 36 h keeps the lost-story chain inside 168 h
 
 
 # --- The commit: her public rematch at the muster (the bout decides only her record); then she chooses. -----------------------------------------------
@@ -479,11 +504,11 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
         c("Continue", "why", forbids=(LIED,)),
         c("Continue", "why", requires=(LIED, CONFESSED))),
     jan("lie", '''"One thing first, before I chalk a circle with you in it." {n}She stops rolling the chalk.{/n}
-"In my cell you caught me in a lie about the fire at Houndheart. I've gone over it every night since. The fire was on the left. I had its smoke in my face. You caught me in a lie I never told, and I gave you my record for it."
+"In my cell you caught me in a lie about Elan's chest at Houndheart. I've gone over it every night since. The chest was on my right. The quasit came out of it in my face. You caught me in a lie I never told, and I gave you my record for it."
 "I'm not asking you anything. I'm telling you I know. You can say so now, or you can say nothing, and I'll still walk out to that muster."''',
         c('[Confess] "Yes. I lied. I missed the real one, and I wanted you out of that cell more than I wanted to win clean."',
           "confessed", flags=(CONFESSED, SECRET_KNOWN)),
-        c('"The fire was on the right."', "held", flags=(HELD_LIE, SECRET_KNOWN))),
+        c('"The chest was on your left."', "held", flags=(HELD_LIE, SECRET_KNOWN))),
     jan("confessed", '''"There." {n}She lets out a breath she seems to have been holding since the cell.{/n}
 "That's what it looks like when somebody's caught in a lie and says so. My master called it the only honest yield there is. I'll take it." {n}She points the chalk at you.{/n} "The real one was mine, by the way. I found it. I'm not telling you where."''',
         c("Continue", "why")),
@@ -560,7 +585,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 "It stands, then." {n}She doesn't move a finger.{/n} "Quit the circle, Commander. I'm not allowed to get up until you do, and my arm hurts."''',
         c("[Quit the circle.]", "you_up")),
     jan("you_up", '''{n}You step over the chalk. She gets up, sheathes, and stands in the circle bleeding through her sleeve while the yard stares at her.{/n}
-"Two notches the wrong way," she says, to you, not to them. "Good. I'd hate to think the first one was an accident."''',
+"The wrong way, and in front of everybody," she says, to you, not to them. "Good. Nobody can say it was an accident."''',
         c("Continue", "after")),
     jan("shamed", '''{n}The yard goes very still. Jannah gets up, which she has never once done before the victor left the circle, and she does it slowly, deliberately, so that every one of them sees her break the forms rather than lie there under that.{/n}
 "The bout was fair," she says, to the yard. "What the Commander said after it wasn't. Write that down, anybody here who writes things down." {n}She walks out without sheathing.{/n}''',
@@ -579,8 +604,8 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 {n}Jannah doesn't follow. She stands in the middle of the circle with her blade lowered and says, quite clearly, so that everyone hears it: "Then it wasn't a bout. It was a brawl, and I don't give anything to brawlers."{/n}''',
         c("[Keep walking.]")),
     jan("after", '''{n}Later, when the muster has been dismissed three times and still hasn't gone anywhere, she walks you round behind the barracks to the practice yard. There's nobody in it: sand, a trough, a rack of blunted blades.{/n}
-"That was the bout. It decided what bouts decide." {n}She stops at the edge of the sand and turns to face you.{/n}
-"This is the other thing. I've been deciding it for a long while, and a sword didn't decide it, and neither did you. I did."''',
+"That was the bout." {n}She stops at the edge of the sand and turns to face you. Her ears have gone pink at the points, and she is scowling about it.{/n}
+"And this is me wanting you. I've wanted you since the cell. I'm sick of fencing round it."''',
         c("Continue", "yes", forbids=(HELD_LIE,)),
         c("Continue", "no_lie", requires=(HELD_LIE,))),
     jan("yes", '''{n}She takes your face in both hands, in the open yard, where anybody coming round the barracks could see, and kisses you: not quick, not careful, and not in any of the forms.{/n}
@@ -592,7 +617,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 "All right." {n}Her voice is perfectly level.{/n} "I decided. You decided. That's fair. The old man would have said so too." {n}She salutes you, flat of the blade to the brow, and goes.{/n}''',
         c("[Let her go.]")),
     jan("no_lie", '''"And I've decided no." {n}She says it quietly, without heat.{/n}
-"You caught me in a lie I never told, and you let me give you my record for it, and when I asked you for the truth you looked me in the eye and moved the fire again." {n}She steps back out of measure.{/n}
+"You caught me in a lie I never told, and you let me give you my record for it, and when I asked you for the truth you looked me in the eye and moved the chest again." {n}She steps back out of measure.{/n}
 "I fought you anyway, because the forms don't care what you are. I do."''',
         c("[Let her go.]", flags=(DECLINED,))),
 ], requires=(WALLS,), forbids=(COMMITTED, DECLINED), delay=24)
@@ -612,7 +637,17 @@ visit(P + "circle_night", "Inside the chalk", [
 "That's a salute too. The old man gave it once, to a student who'd beaten him. You just don't know it." {n}She lays her own sword across yours.{/n}''',
         c("Continue", "close")),
     jan("close", '''{n}She steps in, inside measure, where the old man taught her never to stand unless she meant to finish something.{/n}
-"In Mivon I never let anyone this close. You don't, if you want to stay unbeaten." {n}Her breath is quick and she isn't hiding it.{/n} "I'm not unbeaten any more. I find I don't mind."''',
+"In Mivon I never let anyone this close. You don't, if you want to stay unbeaten." {n}Her breath is quick and she isn't hiding it.{/n}''',
+        c("Continue", "mark_jaw", requires=(SHE_FIRST,), forbids=(COMMITTED,)),      # retired by gating (Q6; index kept)
+        c("Continue", "mark_arm", requires=(YOU_FIRST,), forbids=(COMMITTED,)),      # retired (Q6)
+        c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST, COMMITTED)),       # retired (Q6)
+        c("Continue", "record_lost", requires=(FIRST_LOSS,)),
+        c("Continue", "record_kept", forbids=(FIRST_LOSS,))),
+    jan("record_lost", '''"I'm not unbeaten any more. I find I don't mind."''',
+        c("Continue", "mark_jaw", requires=(SHE_FIRST,)),
+        c("Continue", "mark_arm", requires=(YOU_FIRST,)),
+        c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST))),
+    jan("record_kept", '''"I still am. Nobody's had my blood first, not the Scar, not you." {n}She takes one more step, so there is no measure left at all.{/n} "I'm letting you in anyway. Don't make me regret it."''',
         c("Continue", "mark_jaw", requires=(SHE_FIRST,)),
         c("Continue", "mark_arm", requires=(YOU_FIRST,)),
         c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST))),
@@ -656,10 +691,11 @@ meet(MORNING, "A scuffed circle", '"You\'ve got sand in your hair."', [
 {n}She tests the grip in her palm.{/n} "Whoever else you've got, Commander, and I've heard things, none of them chalked a circle in front of your muster. I did. You'll remember that."''',
         c('"I\'ll remember."', "houndheart"),
         c('[Flirt] "You hum when you\'re happy."', "hum"),
-        c('"Irabeth is going to want a word with me."', "irabeth")),
+        c('"Irabeth is going to want a word with me."', "irabeth", forbids=("irabeth_dead",)),
+        c('"Irabeth is going to want a word with me."', "irabeth", requires=("irabeth_dead", "irabeth.trickster.returned"))),
     jan("hum", '''"I do not." {n}She does, and she knows it, and the points of her ears go pink.{/n} "It's a drinking song from the river docks. It's about a boatman's wife. You wouldn't like the third verse."''',
         c("Continue", "houndheart")),
-    jan("irabeth", '''"Irabeth has already had a word with me. She said she spoke for me once, in Kenabres, four days before the demons came, and that she'd like to know what she's speaking for now." {n}Jannah shrugs.{/n}
+    jan("irabeth", '''"Irabeth has already had a word with me. She wanted to know what exactly the Eagle Watch would be vouching for, if anybody asked it." {n}Jannah shrugs, and her ears go pink.{/n}
 "I told her: a fencer. She didn't laugh. I think that means she was satisfied."''',
         c("Continue", "houndheart")),
     jan("houndheart", '''{n}She stops working the grip.{/n}
@@ -675,12 +711,12 @@ visit(P + "chalk_circle", "A circle in the yard", [
 {n}She's sitting on the yard wall in the dark with her knees drawn up, watching. She doesn't call down.{/n}''',
         c('[Step into the circle] "I lied to you in your cell. I named a lie you never told, because I missed the one you did, and I wanted you out of that cell more than I wanted to win clean."',
           "walked_in", requires=(HELD_LIE,), flags=(CONFESSED, COMMITTED, LATE_YES)),
-        c("[Step into the circle, draw, and salute her properly.]", "saluted_in", requires=(THREW,),
+        c("[Step into the circle, draw, and salute her properly.]", "saluted_in", requires=(THREW,), forbids=(HELD_LIE,),
           flags=(COMMITTED, LATE_YES)),
         c('[Step into the circle] "What I said over you at the muster was a lie, and a cheap one. You fought like an Aldori. I\'ll say so at the next muster, to the same four hundred."',
-          "unsaid_in", requires=(SHAMED,), flags=(COMMITTED, LATE_YES)),
+          "unsaid_in", requires=(SHAMED,), forbids=(HELD_LIE,), flags=(COMMITTED, LATE_YES)),
         c("[Step into the circle, lay down your weapon, and lie back on the sand with your eyes on the sky.]", "yield_in",
-          requires=(REFUSED_YIELD,), flags=(COMMITTED, LATE_YES, LATE_YIELD)),
+          requires=(REFUSED_YIELD,), forbids=(HELD_LIE,), flags=(COMMITTED, LATE_YES, LATE_YIELD)),
         c("[Leave the circle as it is.]", "left", flags=(CLOSED, GONE))),
     jan("walked_in", '''{n}She comes down off the wall and walks into the chalk, and stops inside measure.{/n}
 "That's all I wanted. Not sorry. Just the truth, said out loud, inside the circle, where it counts." {n}She picks up her sword and lays it across your feet.{/n}
@@ -713,24 +749,24 @@ KEPT_PARAS = (
     p("{n}She liked to tell people that the Commander had released her from a yield once, which in her old salle was the highest honour one fencer could pay another, and that she had stayed anyway, which her old master would have called being a fool.{/n}", requires=(RELEASED,)),
     p("{n}Of the Condemned company she rode north with, half came home. She kept their names on a strip of leather wound under her sword's grip, and rewound it every spring.{/n}", requires=(POSTING,)),
     p("{n}She never let the Commander forget that she had won blood and tale in a gaol cell. When they argued, she would say, \"Drawn bouts go to the one who was challenged,\" and the argument would be over, whether or not anybody had been challenged.{/n}", requires=(STORY_LOST,)),
-    p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander never drew first blood in any of them. Nobody who had seen the first bout believed that was an accident, and nobody said so to her face.{/n}", requires=(PUBLIC_YIELD,)),
+    p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it. The Commander fought every one of them in earnest, because she would have known otherwise and never forgiven it, and lost most of them, and won a few, and she kept the tally of both on the inside of her scabbard.{/n}", requires=(PUBLIC_YIELD,)),
     p("{n}Every year at the muster she challenged the Commander again, in front of whoever was watching, for no stake at all but the pleasure of it, and lost more often than she won, and enjoyed losing enormously, which in her old salle would have been a scandal.{/n}", requires=(YOU_FIRST,), forbids=(PUBLIC_YIELD,)),
     p("{n}The Commander said it at the next muster, out loud, to the same four hundred: that Jannah Aldori had fought like an Aldori, and that what had been said over her was a lie. She stood in the front rank and heard it with her chin up. Afterwards she said it was the second-best thing anyone had ever said to her in public.{/n}", requires=(SHAMED, LATE_YES)),
     p("{n}She wrote her father the truth about Houndheart. He wrote back that fate had brought her to Mendev, and she wrote back that fate had nothing to do with it. They kept up that argument by letter for the rest of his life, and neither of them ever gave an inch.{/n}", requires=(MIVON_TRUTH,)),
     p("{n}Her father in Mivon died believing his daughter had never lost a bout and never taken a step backwards. She never corrected him. She said some stories belong to the people who need them.{/n}", requires=(MIVON_LEGEND,)),
-    p("{n}She and Seelah stayed friends, the kind who argue about everything and turn up for each other anyway. Seelah hit her exactly once, the day she learned Jannah was alive, and never mentioned it again.{/n}", requires=(SEELAH_HERSELF,)),
-    p("{n}Seelah learned that Jannah was alive from the Commander, not from Jannah. It took the two of them a long time to find their way back to the tavern table, and they did it without any help from the Commander.{/n}", requires=(SEELAH_FOR_HER,)),
+    p("{n}She and Seelah stayed friends, the kind who argue about everything and turn up for each other anyway. Seelah hit her twice, the day Jannah walked across the square to find her, and never mentioned either one again.{/n}", requires=(SEELAH_HERSELF,)),
+    p("{n}Seelah learned that Jannah was in the Commander's gaol, and why, from the Commander, not from Jannah. It took the two of them a long time to find their way back to the tavern table, and they did it without any help from the Commander.{/n}", requires=(SEELAH_FOR_HER,)),
     p("{n}She told the Commander once that on the wall, with the vrocks coming, she had heard the salute called and remembered who she was. She never said whose voice it had been. She didn't have to.{/n}", requires=(WALL_SALUTE,)),
     p("{n}She never quite forgave the Commander for standing on the wall and watching to see whether she would run. She did not run. She said that was the only thing about that night that mattered, and that the watching was the Commander's own business, to carry.{/n}", requires=(WALL_WATCHED,)),
-    p("{n}She kept the question of the fire at Houndheart to herself for the rest of her life. Once, very late at night, she told the Commander where her own lie had been in that telling. She made the Commander swear never to repeat it, and the Commander never has.{/n}", requires=(CONFESSED,)),
+    p("{n}She kept the question of the chest at Houndheart to herself for the rest of her life. Once, very late at night, she told the Commander where her own lie had been in that telling. She made the Commander swear never to repeat it, and the Commander never has.{/n}", requires=(CONFESSED,)),
 )
 SCENES.append(scene(P + "epilogue.first_blood", "", "JannahEpilogue", 6, "", [
     nar("page", '''{n}Jannah Aldori, of Mivon, stayed at the Commander's side through the Threshold and after it. She never again wore the Eagle Watch's blue and never asked to; she said a tabard was a promise, and she had broken one already.{/n}
-{n}After the war she chalked a circle in a yard and taught the forms to anyone who would stand in it: soldiers, orphans, a one-armed priest, the children of people who had run. She taught the salute, the measure and the yield. She did not teach anyone to stay unbeaten. She said it was a bad habit, and that she was glad to be rid of it.{/n}
+{n}After the war she chalked a circle in a yard and taught the forms to anyone who would stand in it: soldiers, orphans, a one-armed priest, the children of people who had run. She taught the salute, the measure and the yield. She did not teach anyone to stay unbeaten. She said it was a bad habit.{/n}
 {n}She was never cured of Houndheart. Some nights it came back and sat on the end of the bed, and she let it sit there, and did not run from it either.{/n}''',
         paragraphs=KEPT_PARAS)],
     requires=("trickster.ever", COMMITTED), forbids=(CLOSED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "JannahEpilogue", 6, "", [
     nar("page", '''{n}The war ended before Jannah Aldori got her muster. She had the chalk in her pocket on the day of the Threshold, and she was angry about it for a month.{/n}
@@ -741,15 +777,21 @@ SCENES.append(scene(P + "epilogue.commit", "", "JannahEpilogue", 6, "", [
             p("{n}Of the Condemned company she rode north with, she kept the names under her sword's grip.{/n}", requires=(POSTING,)),
         ))],
     requires=("trickster.ever", LATE_COMMITTED), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
-    ForbidOverrides={"sacrifice": "trickster.cheated_death"}, **EP))
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.declined", "", "JannahEpilogue", 6, "", [
     nar("page", '''{n}Jannah Aldori stayed in Drezen until the war was over, in the last cell of the old gaol, with its door open. She trained with the Eagle Watch, fought where she was sent and never ran, and never once crossed blades with the Commander again.{/n}
-{n}When the crusade broke up she went home to Mivon. People who knew her there said she had come back quieter, and a better fencer than when she left, and that she would not talk about the man or woman who had beaten her with a lie.{/n}''')],
+{n}When the crusade broke up she went home to Mivon. People who knew her there said she had come back quieter, and a better fencer than when she left, and that there was one bout in Drezen she would not talk about.{/n}''',
+        paragraphs=(
+            p("{n}It was the Commander she would not talk about, and the lie the Commander had held to in the muster yard with four hundred watching. She said a blade could be forgiven anything but that.{/n}", requires=(HELD_LIE,)),
+            p("{n}When someone in Mivon asked her once how she had come to lose her only bout in Mendev, she said she hadn't lost it; it had been handed to her, in front of the whole muster, like alms. She said that was worse than a cut, and would say no more.{/n}", requires=(THREW,)),
+            p("{n}She never repeated what the Commander had said over her in the sand, before four hundred soldiers. The soldiers repeated it for her, for years.{/n}", requires=(SHAMED,)),
+            p("{n}She had drawn first blood on the Commander at the muster, fairly, and the Commander would not lie down in the sand for it. She said a victor who has to beg for her yield has not won anything, and she did not ask twice.{/n}", requires=(REFUSED_YIELD,)),
+        ))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), **EP))
 
 SCENES.append(scene(P + "epilogue.gone", "", "JannahEpilogue", 6, "", [
-    nar("page", '''{n}Nobody in Drezen saw Jannah Aldori again. A half-elf fencer with a scar on her temple was said to be teaching the forms in a river town far to the south, in a salle above a dye-works, and to be very hard on students who ran from a bout.{/n}
+    nar("page", '''{n}Nobody in Drezen saw Jannah Aldori again. A half-elf fencer from Mivon was said to be teaching the forms in a river town far to the south, in a salle above a dye-works, and to be very hard on students who ran from a bout.{/n}
 {n}She was said to be unbeaten, too, though the people who said so had never seen her lose, which is not the same thing.{/n}''')],
     requires=("trickster.ever", GONE), forbids=(COMMITTED,), **EP))
 
@@ -768,19 +810,35 @@ SCENES.append(reaction("Irabeth", P + "react.irabeth_rolls", (RETURNED, DEAD_L),
     answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"About the deserter in the gaol..."',
     portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
 
-SCENES.append(reaction("Irabeth", P + "react.irabeth_wagon", (RETURNED,),
+SCENES.append(reaction("Irabeth", P + "react.irabeth_wagon", (RETURNED, CONDEMNED),   # Q6 r5 (CAN): the appeal is the Condemned history (ktc_DeserterJoins/Cue_0013-0014)
     '''{n}Irabeth doesn't look up from her dispatches.{/n}
 "The Condemned sergeant came to me this morning. One short on his roll, and the one missing is sitting in your gaol on your leave. I spoke for that girl once, when she appealed to the Queen. I thought she'd earned a chance to die usefully."
 {n}She sets down the pen.{/n} "Now she's earned a chance to live usefully, apparently. See that she does."''',
     answer_list=IRABETH_HUB, forbids=(*IRABETH_GONE, DEAD_L), chapter=5, last=5, Chapters=[5],
     entry='"About the deserter in the gaol..."', portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
 
-SCENES.append(reaction("Irabeth", P + "react.irabeth_sand", (PUBLIC_YIELD,),
+SCENES.append(reaction("Irabeth", P + "react.irabeth_wagon_free", (RETURNED,),
+    '''{n}Irabeth doesn't look up from her dispatches.{/n}
+"The Condemned sergeant came to me this morning. He had a half-elf down for his north wagon, and now he hasn't, because she's sitting in your gaol on your leave."
+{n}She sets down the pen.{/n} "She ran from my Watch once. See that she doesn't run from yours."''',
+    answer_list=IRABETH_HUB, forbids=(*IRABETH_GONE, DEAD_L, CONDEMNED), chapter=5, last=5, Chapters=[5],
+    entry='"About the deserter in the gaol..."', portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
+
+SCENES.append(reaction("Irabeth", P + "react.irabeth_sand", (PUBLIC_YIELD, SHE_FIRST),
     '''"You lay down in the sand in front of my sergeants." {n}Irabeth says it the way she would read out a charge.{/n}
-"The whole muster. Flat on your back inside a deserter's chalk, with your eyes on the sky, because she cut your jaw and some rule from Mivon said you had to."
+"The whole muster. Flat on your back inside a deserter's chalk, with your eyes on the sky, because she cut your jaw and some rule of her old master's said you had to."
 {n}She is quiet a moment.{/n} "I've never seen anything like it. Half of them think less of you for it. The other half would walk into the Worldwound behind you tomorrow. I haven't decided which half I'm in."''',
     answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"You heard about the muster."',
     portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
+
+# Q6 r3 (INT): the voluntary yield (yielding_the_circle) has its own account; nobody cut the Commander for it.
+SCENES.append(reaction("Irabeth", P + "react.irabeth_yielded", (PUBLIC_YIELD, C + "yielded_the_circle"),
+    '''"You lay down in the sand in front of my sergeants." {n}Irabeth says it the way she would read out a charge.{/n}
+"Before a blade was lifted. You'd beaten her in front of all of them, and then you walked into her chalk and lay down anyway, and she lay down next to you, and four hundred soldiers stood there with their mouths open."
+{n}She is quiet a moment.{/n} "I asked her what it meant. She said it was her old master's, from his salle and nobody else's, and then she wouldn't say another word. I haven't decided whether that's a good sign."''',
+    answer_list=IRABETH_HUB, forbids=IRABETH_GONE, chapter=5, last=5, Chapters=[5], entry='"You heard about the muster."',
+    portrait="Irabeth", ForbidOverrides=dict(IRABETH_BACK)))
+
 
 # Seelah: the friend she failed, who grieved her or lost her, and whose Q3 may have returned her (a named stake, per the
 # coordinator's brief update; she speaks on her own companion hub, and only once Jannah has faced her or been told of).
@@ -803,7 +861,7 @@ SCENES.append(reaction("Seelah", P + "react.seelah_unknown", (RETURNED, DEAD, SE
 
 SCENES.append(reaction("Seelah", P + "react.seelah_cells", (RETURNED, SEELAH_HERSELF),
     '''"Jannah's in the gaol." {n}Seelah says it like an accusation, and then like good news, both in the same breath.{/n}
-"By choice! She put herself there! And you knew, and you went down and played some sort of game with her over the Houndheart camp, and now she isn't going to the Condemned." {n}She shakes her head.{/n}
+"And she won't leave it! She won't take a pardon! And you knew, and you went down and played some sort of game with her over the Houndheart camp, and now she's staying in Drezen." {n}She shakes her head.{/n}
 "I'd have gone down there myself if anyone had told me. She came and found me instead. She's different. She stands like somebody who's stopped waiting to be hit."''',
     entry='"You\'ve seen Jannah."', **dict(SEELAH_AT, forbids=("seelah_dead", "seelah_gone", DEAD_L))))
 
@@ -820,7 +878,7 @@ SCENES.append(reaction("Seelah", P + "react.seelah_muster", (COMMITTED,),
     entry='"You were at the muster."', **SEELAH_AT))
 
 SCENES.append(reaction("Thaberdine", P + "react.king_gaol", (RETURNED, "fool_king.available"),
-    '''"Commander! Is it true? A woman walked into the gaol and asked for a cell?" {n}The King is appalled.{/n}
+    '''"Commander! Is it true? There's a woman in the gaol who won't be let out?" {n}The King is appalled.{/n}
 "In my kingdom people ask to be let out of them. Usually through me. Usually drunk. I've issued a decree: the half-elf in the last cell is to have the good blanket, on account of she's the only honest prisoner in the realm and it's making the others look bad."''',
     entry='"Your Majesty. Heard any news from the gaol?"', **KING))
 
@@ -832,10 +890,10 @@ SCENES.append(reaction("Thaberdine", P + "react.king_muster", (COMMITTED, "fool_
 
 # --- Registration helpers ------------------------------------------------------------------------------------------------
 
-household.secret("jannah_false_blood", "The fire at Houndheart",
+household.secret("jannah_false_blood", "The chest at Houndheart",
                  "In the gaol, playing her master's game, I missed the lie she told against herself and named one she "
-                 "never told: the fire, left or right. She believed me, and gave me her record for it. She is in Drezen "
-                 "on the strength of a campfire I moved.", portrait="Jannah", witnesses=("jannah",), risk="high")
+                 "never told: Elan's chest, left or right. She believed me, and gave me her record for it. She is in Drezen "
+                 "on the strength of a travelling chest I moved.", portrait="Jannah", witnesses=("jannah",), risk="high")
 
 
 def _bind(payload, kind, table):
@@ -855,5 +913,16 @@ def integrate(payload):
             raise ValueError("Conflicting binding: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    seen = payload.setdefault("SeenCues", {})
+    if seen.get(HH_SEEN, HH_SEEN_CUES) != HH_SEEN_CUES:
+        raise ValueError("Conflicting binding: " + HH_SEEN)
+    seen[HH_SEEN] = list(HH_SEEN_CUES)
+    if seen.get(SWORD_GIVEN, SWORD_GIVEN_CUES) != SWORD_GIVEN_CUES:
+        raise ValueError("Conflicting binding: " + SWORD_GIVEN)
+    seen[SWORD_GIVEN] = list(SWORD_GIVEN_CUES)
+    answers = payload.setdefault("SelectedAnswers", {})
+    if answers.get(SEELAH_KILLED_AT_CAGE, SEELAH_KILLED_ANSWER) != SEELAH_KILLED_ANSWER:
+        raise ValueError("Conflicting binding: " + SEELAH_KILLED_AT_CAGE)
+    answers[SEELAH_KILLED_AT_CAGE] = SEELAH_KILLED_ANSWER
     # The unit's own BlueprintPortrait (CR4_DeserterJanna m_Portrait) until custom art ships; a custom PNG always wins.
     payload.setdefault("PortraitFallbacks", {}).setdefault("Jannah", "550a859fc62244ceadeb40d79ca4d261")

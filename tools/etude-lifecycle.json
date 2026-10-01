@@ -106,6 +106,23 @@
     "hold"
    ]
   },
+  "047d71e3e928d454bbd168497ee7c17f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "DeskariKilledInIz",
+    "TrueEnding",
+    "ImportantStates",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "DeskariKilledInIz",
+   "traits": [
+    "hold"
+   ]
+  },
   "056ba61e04cca104a9c95ac2d4658c67": {
    "ancestors_completed": [],
    "areas": {},
@@ -873,6 +890,23 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "348dfb40784b436cbe21347f8e0f08ce": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "HeraldKilled",
+    "Herald",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "HeraldKilled",
+   "traits": [
+    "hold"
    ]
   },
   "37a2df11c979ed446b6716142b2b01f5": {

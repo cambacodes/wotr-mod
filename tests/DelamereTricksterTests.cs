@@ -58,12 +58,25 @@ internal static class DelamereTricksterTests
         var pages = mine.Where(s => s.Owner == "DelamereEpilogue").ToArray();
         var reactions = mine.Where(s => s.Reaction).ToArray();
         Choice Choice(Scene scene, string node, int index) => scene.Nodes.Single(n => n.Id == node).Choices[index];
+        // Edge-exact (quality pass Q6, HOW): reach the node with this choice open, then take exactly that choice from there.
         List<Snapshot> After(Scene scene, Snapshot w, string node, int index)
         {
             var chosen = Choice(scene, node, index);
-            var hits = Program.Walk(scene, w).Where(r => chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))).ToList();
-            check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
-            return hits;
+            Snapshot? at = null;
+            Program.Walk(scene, w, (page, st) => { if (at == null && page == node && Rules.Match(chosen.Requires, chosen.Forbids, st)) at = Program.Copy(st); });
+            check(at != null, "Node not reached with its choice open: " + scene.Id + "/" + node + "[" + index + "]");
+            if (at == null) return new List<Snapshot> { w };
+            var edge = new Scene { Id = scene.Id, Relationship = scene.Relationship, Owner = scene.Owner,
+                                   Nodes = new[] { new Node { Id = "__edge", Choices = new List<Choice> { chosen } } }.Concat(scene.Nodes).ToList() };
+            var hits = Program.Walk(edge, at).ToList();
+            check(hits.Count > 0 && chosen.Set.All(hits[0].Has), "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
+            return hits.Count > 0 ? hits : new List<Snapshot> { w };
+        }
+        HashSet<string> Pages(Scene scene, Snapshot w)
+        {
+            var seen = new HashSet<string>();
+            Program.Walk(scene, w, (page, _) => seen.Add(page));
+            return seen;
         }
         // Plays every available Delamere scene forward (each committing or completing path) and reports whether a flag is held.
         bool Reaches(Snapshot start, string flag, int chapter = 5)
@@ -127,11 +140,15 @@ internal static class DelamereTricksterTests
         var committers = own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains("delamere.committed"))).Select(s => s.Id).OrderBy(i => i);
         check(committers.SequenceEqual(new[] { P + "woods.second_hunt", P + "woods.second_hunt_late", P + "woods.second_hunt_page" }),
             "Something other than the second hunt commits her.");
-        check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
-              && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Kyado", "Ulbrig", "Woljif" })
+        // Quality pass Q6 (COX): the ledger allocates Kyado alone; Ulbrig's and Woljif's lines are retired by gating (ids kept).
+        check(reactions.Where(r => r.Owner == "Kyado").Count() == 2 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Where(r => r.Owner == "Kyado").All(r => r.Forbids.Contains("kyado.dead")),
-            "The reactions are not Kyado (twice), Ulbrig and Woljif behind their guards.");
-        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+            "The reactions are not Kyado (twice) behind his guard.");
+        var anyReturned = World(story, 5, "trickster.ever", P + "returned", P + "cost.limp", "ulbrig.in_party", "delamere.started");
+        check(reactions.Where(r => r.Owner != "Kyado").All(r => !Rules.Available(story, r, Later(story, anyReturned, 100))
+                                                           && !Rules.Available(story, r, Later(story, World(story, 3, "trickster.ever", P + "returned", P + "cost.limp", "ulbrig.in_party"), 100))),
+            "A retired reactor (Ulbrig, Woljif) still speaks.");
+        check(pages.Length == 7 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "second_hunt_offered" })
               && story.Derived["delamere.harem.eligible"].Length == 2 && story.Derived.ContainsKey("delamere.harem.voice.a_village_not_a_city"),
@@ -164,6 +181,21 @@ internal static class DelamereTricksterTests
         var sent = After(crypt, visited, "grave", 0).First();
         check(sent.Has("delamere.closed") && sent.Has(P + "declined") && !sent.Has(P + "returned") && !Reaches(sent, "delamere.committed"),
             "Trk_Delamere_Declined: sending her back to her grave is not a hard no.");
+
+        // Quality pass Q6 (INT): the opened body is read from the tomb's own outcomes, not from starting the book event.
+        var visitedUnopened = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", P + "primed");
+        var cryptPages = Pages(crypt, visitedUnopened);
+        check(cryptPages.Contains("body_sealed") && !cryptPages.Contains("body_open"), "A tomb visited but never opened is shown open.");
+        foreach (var opened in new[] { "delamere.erastil_answered", "delamere.tomb_opened_forced", "delamere.tomb_opened_peaceful" })
+        {
+            var o = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", opened);
+            var op = Pages(crypt, o);
+            check(o.Has("delamere.tomb_opened") && op.Contains("body_open") && !op.Contains("body_sealed"), "An opened tomb is shown sealed: " + opened);
+        }
+        foreach (var s in own)
+            foreach (var n in s.Nodes)
+                check(!n.Text.Contains("breastplate", StringComparison.Ordinal) && !n.Text.Contains("stag-hide over", StringComparison.Ordinal),
+                    "Her relic armour is described on her, though the Commander may hold it: " + s.Id + "/" + n.Id);
 
         // Trk_Delamere_Unvisited: the initiated key, the sealed tomb.
         var initiated = World(story, 3, "trickster", "trickster.ever", "kyado.initiated");
@@ -264,6 +296,61 @@ internal static class DelamereTricksterTests
             "The day owed is not collected after the commit.");
         check(Rules.Available(story, village, Later(story, given, 24, 5)) && !Rules.Available(story, village, Later(story, given, 24, 3)),
             "What came of the count is not a Chapter 5 beat.");
+        // Quality pass Q6 (BEL): a count made after the Abyss (woken.count_late) never gets the Abyss-absence report.
+        var countLate = S(P + "woken.count_late");
+        var back5 = World(story, 5, "trickster.ever", P + "returned", "delamere.started", P + "cost.limp", P + "cost.hunt_owed");
+        check(!Rules.Available(story, count, back5) && Rules.Available(story, countLate, back5) && !Rules.Available(story, countLate, back),
+            "The count is not split by chapter.");
+        var givenLate = After(countLate, back5, "unwilling", 0).First();
+        check(givenLate.Has(P + "village.given") && givenLate.Has(P + "counted_after_the_abyss") && !Rules.Available(story, village, Later(story, givenLate, 48)),
+            "A count made after the Abyss still reports a season of the Commander's absence.");
+
+        // Quality pass Q6 (VOI): Red answers what the Commander actually told her.
+        foreach (var (q, exit) in new[] { (0, "time_truth"), (1, "time_lie"), (2, "time_both") })
+        {
+            var said = After(red, told, "question", q).First();
+            var rp = new HashSet<string>();
+            Program.Walk(red, told, (page, st) => { if (page == "wants" && Rules.Match(Choice(red, "wants", 3 + q).Requires, Choice(red, "wants", 3 + q).Forbids, st)) rp.Add("ok"); });
+            check(Choice(red, "wants", 3 + q).Next == exit && !Rules.Match(Choice(red, "wants", 0).Requires, Choice(red, "wants", 0).Forbids, said) && rp.Contains("ok"),
+                "Red's parting line does not follow the answer given: " + exit);
+        }
+        check(!red.Nodes.Single(n => n.Id == "time_lie").Text.Contains("did not lie", StringComparison.Ordinal), "She praises a liar's honesty.");
+
+        // Quality pass Q6 (INT): the romance pages need a surviving Commander; an unreversed sacrifice has its own page.
+        var epCaught = S(P + "epilogue.caught"); var epLate = S(P + "epilogue.late"); var epSac = S(P + "epilogue.sacrifice");
+        var wed6 = World(story, 6, "trickster.ever", "delamere.committed");
+        var lost6 = World(story, 6, "trickster.ever", "delamere.committed", "sacrifice");
+        var back6 = World(story, 6, "trickster.ever", "delamere.committed", "sacrifice", "ending.trickster");
+        check(Rules.Available(story, epCaught, wed6) && !Rules.Available(story, epCaught, lost6) && Rules.Available(story, epSac, lost6)
+              && (!back6.Has("trickster.commander_back") || Rules.Available(story, epCaught, back6) && !Rules.Available(story, epSac, back6))
+              && !Rules.Available(story, epSac, wed6), "A sacrificed Commander still runs at the first frost.");
+        var lateLost6 = World(story, 6, "trickster.ever", P + "second_hunt_offered", "sacrifice");
+        check(!Rules.Available(story, epLate, lateLost6) && Rules.Available(story, epSac, lateLost6), "The late page survives an unreversed sacrifice.");
+
+        // Quality pass Q6 (CAN): the god answered the Commander at her seal only if the Commander heard it; otherwise Haddo guesses.
+        var dy = S(P + "woken.old_deadeye");
+        var seal = dy.Nodes.Single(n => n.Id == "seal").Choices;
+        var chapelTold = Later(story, told, 48);
+        var answered = Program.Copy(chapelTold); answered.Flags.Add("delamere.erastil_answered");
+        check(!Pages(dy, chapelTold).Contains("stag_seen") && Pages(dy, chapelTold).Contains("stag_haddo")
+              && Pages(dy, answered).Contains("stag_seen") && !Pages(dy, answered).Contains("stag_haddo")
+              && seal[0].Forbids.Contains(P + "white_stag_told") && !dy.Nodes.Where(n => n.Id != "seal").Any(n => n.Text.Contains("Every time", StringComparison.Ordinal)),
+            "Old Deadeye's house still tells an invented history of answered pilgrims.");
+        check(dy.ManualOnly && S(P + "woken.names").ManualOnly && S(P + "woken.poachers").ManualOnly && S(P + "woken.hide").ManualOnly,
+            "An optional beat is still a rest delivery.");
+        // Q6 r2 (COX): only the wakings arrive at a rest; every courtship visit is a manual read.
+        check(own.Where(s => Rules.IsRemote(s) && !s.TricksterDevice).All(s => s.ManualOnly), "A courtship visit is still a rest delivery.");
+        // Q6 r2 (BEL): the limp is a kept cost the Commander can refuse; healing ends the hunt and has its own page.
+        var healed = After(crypt, visited, "healed", 0).First();
+        check(healed.Has(P + "leg_healed") && healed.Has("delamere.closed") && !healed.Has(P + "cost.limp") && !healed.Has(P + "cost.hunt_owed")
+              && Rules.Available(story, S(P + "epilogue.healed"), World(story, 6, healed.Flags.ToArray()))
+              && !Rules.Available(story, S(P + "epilogue.apart"), World(story, 6, healed.Flags.ToArray())),
+            "Healing the leg is not a real choice with its consequence.");
+        // Q6 r2 (BEL/CAN): nothing claims Kyado taught the call, and her scar is not from the canon ambush her armour turned.
+        check(!whiteStag.Nodes.Any(n => n.Text.Contains("The boy says", StringComparison.Ordinal))
+              && !S(P + "woken.old_deadeye").Nodes.Any(n => n.Text.Contains("The boy told you", StringComparison.Ordinal))
+              && !hunt.Nodes.Any(n => n.Text.Contains("With the knives", StringComparison.Ordinal)),
+            "A scene reports Kyado's lore the player may never have heard, or the knives that never pierced her armour.");
 
         // The beats around the fire: the god's answer over her seal, the names, the poachers, the brace.
         var deadeye = S(P + "woken.old_deadeye");

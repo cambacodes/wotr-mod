@@ -409,6 +409,8 @@ internal static class Program
         // These continuations have actual predecessor walkthroughs below; a snapshot
         // containing only direct prerequisites cannot represent their earlier choices.
         var playedContinuations = new HashSet<string> {
+            // Q6 r4: Targona's killed-state scenes, retired by gating (ruling #2); no longer devices, never openable.
+            "targona.trickster.dead.late_light", "targona.trickster.dead.late_crypt", "targona.trickster.dead.one_soul", "targona.trickster.dead.long_sleep",
             "arsinoe_your_hours", "arsinoe_borrowed_court", "arsinoe_price_of_an_evening",
             "arsinoe_courtyard_company", "arsinoe_another_hour", "arsinoe_the_unprofitable_hour",
             "soana.one_account", "soana.watch_line", "soana.price_of_warning",
