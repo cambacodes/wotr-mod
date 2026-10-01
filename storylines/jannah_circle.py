@@ -262,10 +262,10 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
         c("Continue", "elan", requires=(ELAN_DEAD,)),
         c("Continue", "elan_lives", forbids=(ELAN_DEAD,))),
     jan("elan", '''"Elan's dead." {n}She says it flatly, the way she says everything that matters.{/n}
-"He saw the jeweller with the souls and went in after him alone. He told me to stay and watch the door and wait for you. So I did. I didn't desert my post, Commander. I kept it. And he died anyway, on the other side of it." {n}She looks at the four stick figures on the tankard.{/n} "Two of us left out of four. That's the League."''',
+"He saw the jeweller with the souls and ran after him, alone, and the door was trapped, and he opened it. We came round the corner and Seelah got to him first. I didn't run, Commander. I didn't do anything else useful either." {n}She looks at the four stick figures on the tankard.{/n} "Curl came home with the souls, and he won't look any of us in the eye yet. So that's the League now. Seelah, a boy who can't look at us, and me."''',
         c("Continue", "q3_end")),
-    jan("elan_lives", '''"Elan's alive, and furious with me, which is how Elan says he's fond of you. Curl's gone, or whatever was wearing Curl is. Seelah is Seelah." {n}She turns the tankard so the cart faces you.{/n}
-"Three out of four. For a League that started with a barrel of beer, that's a better record than mine."''',
+    jan("elan_lives", '''"Elan's alive, and furious with me, which is how Elan says he's fond of you. Curl came home with the souls, and jumps when anybody says his name. Seelah is Seelah." {n}She turns the tankard so the cart faces you.{/n}
+"Four out of four, near enough. For a League that started with a barrel of beer, that's a better record than mine."''',
         c("Continue", "q3_end")),
     jan("q3_end", '''"She's the reason I'm still standing, and I told her once, in a cage, that she was the reason I ran. I've taken it back since. I'm not sure it's the kind of thing you can take back." {n}She puts the tankard down.{/n}
 "I don't want you telling her anything about us. I'll tell her. When there's something to tell."''',
@@ -277,7 +277,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
 "I wasn't there. I'm never there, in that dream. I've been gone for a year."''',
         c("Continue", "decide")),
     jan("decide", '''"She's in Drezen. I could walk up those steps and cross the square and be in front of her before the bell." {n}She doesn't move.{/n}
-"I'm not afraid of demons any more. I found that out on the wall. It turns out I'm a coward about exactly one thing, and it's a paladin who'd forgive me."''',
+"Demons I can manage now. I've had the practice, one way and another. It turns out I'm a coward about exactly one thing, and it's a paladin who'd forgive me."''',
         c('"Go and see her. Today."', "go", flags=(SEELAH_HERSELF,)),
         c('"I\'ll tell her for you."', "for_her", flags=(SEELAH_FOR_HER,)),
         c('"Leave Seelah out of it for now."', "kept", flags=(SEELAH_KEPT,))),
@@ -289,7 +289,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
     jan("go_end", '''"Terrible. The Defender's Heart is gone and Drezen can't brew." {n}She touches the handprint as if it were a medal.{/n}
 "Best I've ever had."''',
         c("[Leave her with it.]")),
-    jan("go_everything", '''"Everything about the cage, the ash, Houndheart, the salt road." {n}She touches the handprint.{/n}
+    jan("go_everything", '''"Everything. Houndheart, the cage, and every place I've been since." {n}She touches the handprint.{/n}
 "Not everything about you. She guessed that part. She said she'd hit you as well, but she's too well brought up to hit the Commander, so she's going to pray about it instead. I'd be worried, if I were you."''',
         c("[Leave her with it.]")),
     jan("for_her", '''"You'll tell her." {n}Relief and shame, both at once, and she lets you see both.{/n}
@@ -447,8 +447,8 @@ meet(WATCH, "The blue tabard", '"The Watch sergeant was asking about you."', [
     jan("folded", '''"Until I know." {n}She nods, and puts the tabard on the shelf above the bunk, folded, badge out.{/n}
 "It'll be there. That's the good thing about a tabard; it waits. It's more patient than I am."''',
         c("[Leave her with it.]")),
-    jan("mine", '''"For you." {n}She tilts her head.{/n}
-"That's a dangerous thing to say to me. The old man used to say a fencer who fights for one person and not a city is a sellsword or a lover, and that both end badly." {n}She puts the tabard on the shelf, folded.{/n} "I'll think about which one you meant."''',
+    jan("mine", '''"For you." {n}Her ears go pink, and she scowls to make up for it.{/n}
+"You can't just say that. Not with the door open. The turnkey hears everything, and he tells the cook." {n}She puts the tabard on the shelf, folded, and doesn't look at you.{/n} "...Say it again some time. When the door's shut."''',
         c("[Leave her with it.]")),
 ], requires=(WALLS,), forbids=(COMMITTED,), delay=24)
 
@@ -620,7 +620,7 @@ visit(RIDE, "The Houndhearts' camp", [
         c("Continue", "after_horses", forbids=(RIDE_BESIDE,))),
     jan("after_beside", '''{n}When she finally sheathes and turns, her boots are soaked through and her face is calm.{/n}
 "I stood there until I wanted to leave. Not until my legs did. I wanted to leave about ten minutes ago, and I stayed another fifty to make sure it was me."
-"You stood on my left." {n}She holds up a hand before you can answer.{/n} "Don't. I'd rather not know whether you did it on purpose. I'll decide you did."''',
+"You stood on my right." {n}She holds up a hand before you can answer.{/n} "Don't. I'd rather not know whether you did it on purpose. I'll decide you did."''',
         c("Continue", "end_pre", forbids=(COMMITTED,)),
         c("Continue", "end_post", requires=(COMMITTED,))),
     jan("after_horses", '''{n}When she finally sheathes and walks back to the road, her boots are soaked through and her face is calm.{/n}
@@ -674,8 +674,10 @@ meet(IRABETH, "One question", '"Someone\'s been down here. There\'s a second sto
 # Yielding the circle (after a rematch the Commander won): the public yield the Commander never paid, given anyway.
 meet(YIELD_CIRCLE, "Yielding the circle", '"The muster\'s in an hour."', [
     nar("open", '''{n}She has new notches on the inside of her scabbard, cut the wrong way, and she is looking at them as if they belonged to someone she didn't much like.{/n}''',
-        c("Continue", "start", requires=(FIRST_LOSS,)),
-        c("Continue", "start_one", forbids=(FIRST_LOSS,))),
+        c("Continue", "start", requires=(CAUGHT,)),
+        c("Continue", "start_one", forbids=(CAUGHT, LIED, SCAR)),
+        c("Continue", "start", requires=(LIED,), forbids=(CAUGHT,)),
+        c("Continue", "start", requires=(SCAR,), forbids=(CAUGHT, LIED))),
     jan("start", '''"Two." {n}She runs a thumbnail along them.{/n} "Forty-one bouts in Mivon, and then two, both to you, both the wrong way. I'll get used to it. I'm getting used to a lot of things."''',
         c('[Yield the circle] "At the muster today I\'m going to walk into your chalk and lay my blade down before the salute."', "warn"),
         c('"They were fair bouts. You lost them fairly."', "fair")),
@@ -805,7 +807,7 @@ meet(CURL, "The fourth of the League", '"You never talk about Curl."', [
 "I haven't gone. What would I say? 'You ran too'? He didn't run. He was taken. I'm the only one of the League who ran on her own legs." {n}She scowls at the tankard.{/n} "I'll go. When I've got something to say that isn't that."''',
         c('"Keep him facing the room."', "room"),
         c("[Say nothing.]", "quiet")),
-    jan("which", '''"The worst part is I can't ask him. Whatever was wearing Curl took the rest of him with it when it went."
+    jan("which", '''"The worst part is I can't ask him. Nobody knows where he is. Nobody knows if whatever was wearing him ever let go."
 {n}She reaches up and turns the tankard round, so the four figures face the room again.{/n} "I keep him facing the wall when I'm angry with him. I'm always angry with him. Then I remember he was frightened too, and he said so out loud, which is more than I ever did, and I turn him back."''',
         c('"Keep him facing the room."', "room"),
         c("[Say nothing.]", "quiet")),
@@ -859,7 +861,7 @@ meet(MASTER, "The old man", '"Tell me about your master."', [
     jan("left", '''"He gave me the sword at the river stairs. He'd never said a kind word to me in seven years. He put it in my hands and said, 'Don't come back with it dirty.'"
 {n}She tightens the leather.{/n} "I thought he meant with blood. I think now he meant with running."''',
         c("Continue", "now")),
-    jan("now", '''"He'd be ashamed of Houndheart. He'd be ashamed of the cage. He'd be ashamed of the salt road, and the cell, and a Commander of the crusade who learned the forms out of a book."
+    jan("now", '''"He'd be ashamed of Houndheart. He'd be ashamed of the cage. He'd be ashamed of the cell, and of a Commander of the crusade who learned the forms out of a book."
 {n}She holds the practice sword up and sights along it.{/n} "And then he'd say 'again'. That's the thing about the old man. He never once said you were finished. He just said again, until you stopped being bad at it."''',
         c('"Again, then."', "again"),
         c('"I\'d like to have met him."', "met")),
@@ -1010,7 +1012,7 @@ meet(STAIRS, "The duelling stairs", '"You\'re planning something."', [
 "He'll want to know if you can fence. He'll want to know which of us has drawn blood on the other, and how often, and I'm going to tell him the truth, whatever it is, and watch what his face does." {n}She's smiling now.{/n} "I think he'll challenge you. I think I'll let him."''',
         c("Continue", "end")),
     jan("street", '''"Everything worth doing in Mivon is done in front of the whole street. That's the point of the balconies." {n}She tucks the charcoal behind her ear.{/n}
-"You've already lain in the sand for me in front of four hundred soldiers, or put me in it, one or the other. A street of dyers throwing fruit won't bother you."''',
+"You've already stood in a chalk circle with me in front of four hundred soldiers. A street of dyers throwing fruit won't bother you."''',
         c("Continue", "end")),
     jan("end", '''{n}She folds the drawing in four and puts it inside her gambeson, over her heart, without apparently noticing she's done it.{/n}
 "If there's an after," she says again. "There might not be. But I've stopped planning for running, and I have to plan for something."''',
@@ -1067,7 +1069,7 @@ meet(LAST_MUSTER, "Before the last road", '"They say we march soon."', [
 "I want to ask you something before we go, and I want you to say yes without thinking about it, because if you think about it you'll say something sensible."''',
         c('"Ask."', "ask")),
     jan("ask", '''"If I run." {n}She says it steadily.{/n} "At the end, in front of whatever's waiting, if my legs decide. Don't come after me. Don't send anybody. Don't make it a story."
-"Let me find out on my own whether I stop. The way I found out on the salt road, or on the ford, or on the wall. If I come back, I come back on my own feet. That's the only way it counts."''',
+"Let me find out on my own whether I stop. The way I found out on the wall, and every time since. If I come back, I come back on my own feet. That's the only way it counts."''',
         c('"Yes."', "yes"),
         c('"No. I\'ll come after you. Every time."', "no")),
     jan("yes", '''"Thank you." {n}She lets out a breath.{/n}

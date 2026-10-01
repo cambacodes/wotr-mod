@@ -605,7 +605,7 @@ epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. 
 
 epilogue("guardian", '''{n}Terendelev went home to Kenabres. She walked the whole way, since she could not fly it, and arrived at the broken gate in a borrowed cloak with her boots worn through, and the first person to recognise her was a baker who had sold her bread for forty years and had never once guessed what she was.{/n}
 {n}She did not ask to be its dragon again; she could not have been. She took a room over the rebuilt east gate and stood its night watch in her grey coat with a pike, and healed whoever came up the stair, and was, the city said, a great deal more trouble than the old one had been, and a great deal easier to talk to. She guarded the city for the rest of its long life. Once a year a letter came to the Commander in a hand like claw-marks, always short. The last line was always the same: "The wound. Is it still open? Tell me the truth."{/n}''',
-         requires=(RETURNED, P + "guardian"), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(RETURNED, P + "guardian"), forbids=("sacrifice",), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
 
 epilogue("rest", '''{n}The fire at Iz burned for nine days and then went out on its own. The crusade raised a cairn over the bones, with the Queen's leave, and it is still there. Travellers who pass it say that it is warm to the touch in winter, which the learned say is only the sun on the stones.{/n}''',
          requires=(RESTED,), forbids=(RETURNED,))

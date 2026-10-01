@@ -55,7 +55,7 @@ s("unasked_question", "A page without a diagnosis", [
 Beneath it she has written, in a smaller hand:
 "I am not asking you to find the room. It lies under the ruin, and I thank Iomedae for every stone on top of it. Some of the distances may be wrong. I spent very little time looking at it from above."
 The last sentence is underlined once, as though she has decided you may laugh at that much.
-"There are hours I cannot account for, and I will not invent them to make a better story. But Areelu still keeps the only clear part of this one. She knew what she wanted, and I was the table she worked on. I want some of it back.
+"There are hours I cannot account for, and I will not invent them to make a better story. But Areelu still keeps the only clear part of this one. She knew what she wanted, and I was the table she worked on. My captain in the host used to say, know the house of your enemy better than she does. I mean to.
 "Tell me the first thing you see. Do not stop to decide what would comfort me."''',
       c('Write: "You drew the way out before you drew the bar across it."', "exit"),
       c('Write: "You drew the hinges twice. You didn\'t trust your own memory."', "hinges")),
@@ -169,7 +169,7 @@ s("an_unpromised_future", "The part no one commissioned", [
 "The dream is the same. The paper has not cured it. It has given my hands something to finish after I wake, and I have thanked Iomedae for smaller mercies."
 {n}She turns to the collector without apologising for how little the paper did.{/n}''', c("Read about her account.", "account")),
     n("cut", "Narrator", '''"I laughed when I saw the hole. Then I scolded myself for laughing. Then I opened it again.
-"I gave the door a handle. You will see its shape is grander than the carpentry deserves. I chose it because I liked it, for no better reason, and I have not done that since before Areelu.
+"I gave the door a handle. You will see its shape is grander than the carpentry deserves. I chose it because it pleased me, and I confessed the vanity at compline, and the chaplain laughed at me, which is not in his rule.
 "I am keeping the strip you cut away. If anyone asks why my drawing has a hole in it, I can show them exactly where the wall went.
 "The dream has not changed. Some foolish part of me hoped it would. What changed was the hour after I woke. I had work for my hands that was not holding them still."
 {n}Below this she has written about the collector.{/n}''', c("Read about her account.", "account")),
@@ -186,10 +186,9 @@ s("an_unpromised_future", "The part no one commissioned", [
 "There are men in the Mendevian camps who will read it and believe that what was done to them near that laboratory was an angel's holy choice. It was not. It was Areelu's, and she chose it for all of us. When my duties next take me into the city, I will go to his shop and ask him, before Iomedae, to print a correction. I will not shout. I will not need to.
 "I still will not give him my pages. But I will not let him give her mine."
 {n}She has left the next question on a line of its own.{/n}''', c("Read the private question.", "question")),
-    n("question", "Narrator", '''"May I ask you something that has no place in any account? What should I want, when nobody needs me for an hour?"
-{n}She has struck the question out and left it legible. Beneath it is another.{/n}
-"That was unfair. I began by asking you to choose for me, which is what everyone has done since the laboratory. Here is a better one. Will you help me with something useless? I want to write a woman in that room who knows what she wants before anyone comes to open the door.
-"It will not change what happened. I want to see what it does to the page."
+    n("question", "Narrator", '''"The chaplain here says idle hands are the Abyss's workshop. I told him mine have been idle in a barrier for longer than he has been ordained, and that the Abyss did not need my help. He gave me a penance for the tone. I did it.
+"So: a task, and I want your help with it. I mean to write the woman in that room as she should have been. Awake. With a sword by the door, and a plan, and Iomedae's name in her mouth before anyone came to open it. It is vanity, and I have confessed it, and I am going to do it anyway.
+"Tell me how she gets out, or whom she lets in, if she would rather hold the room. You have got out of worse places than I have; your reports say so, in a very modest voice."
 {n}There is a lightly drawn rectangle below the words, waiting for something to be put inside it.{/n}''',
       c('Suggest a scene in which she chooses to leave.', flags=("targona.story_leaving",)),
       c('Suggest a scene in which she chooses who may enter.', flags=("targona.story_receiving",))),
@@ -197,7 +196,7 @@ s("an_unpromised_future", "The part no one commissioned", [
 
 
 s("the_unscheduled_door", "Permission to surprise the page", [
-    n("start", "Narrator", '''{n}The scene Targona sends is brief. She has given its woman a name that is neither her own nor a title bestowed by people who needed protection.{/n}
+    n("start", "Narrator", '''{n}The scene Targona sends is brief. She has given its woman a name that is not her own.{/n}
 "I have called her Meret. I know no Meret who is likely to object. If you do, please do not tell me until I have finished this draft."
 {n}Meret wakes in a room containing a chair, a closed door, and a parcel tied with a thoroughly unreasonable quantity of string. The parcel is important enough to occupy three lines. The room's creator receives none.{/n}
 "I found I wanted to write about what she would take with her," Targona explains. "Then whether she would share it with anyone. I have enjoyed this more than anything since I woke in that barrier. I prayed about whether that was permitted, and nothing struck me down."
@@ -209,7 +208,7 @@ She takes the parcel to a bench where she can undo its knots in good light. Insi
 "I could not decide where she should go next," Targona writes. "For once, that did not feel like a failure in the story. I wanted her to have more street than she could use in a paragraph."
 {n}The final line says only that Meret finishes her purchase before anyone can turn it into a lesson. A little ink has spread beneath the word 'finishes.'{/n}''', c("Consider what you might add.", "method")),
     n("receiving", "Narrator", '''{n}Meret opens the parcel and finds a cup she has never liked. She places it on the table anyway, because it will do for a guest until she obtains another.{/n}
-Then she puts a chair beside the door and writes a notice: KNOCK IF YOU HAVE SOMETHING TO SAY THAT IS NOT ABOUT MY USEFULNESS.
+Then she puts a chair beside the door and writes a notice: KNOCK. THE CUP IS NOT FOR LENDING.
 The first visitor asks to borrow a spoon. Meret almost shuts the door, then decides that this is at least an honest request. She lends it, refuses to lend the cup, and asks whether the visitor knows a place selling better ones. He directs her to a stall at the corner. She chooses a chipped blue cup, leaves the old one on the table for guests, and makes him promise to return her spoon.
 "I like her," Targona writes. "She is less gracious than I meant her to be. I would enjoy visiting her, provided I brought my own spoon."
 {n}The story ends with the door left at an angle Meret chose herself.{/n}''', c("Consider what you might add.", "method")),
@@ -240,7 +239,7 @@ s("what_she_keeps", "A letter she wanted to write", [
 "Leave the room as it was. Send me more pages like this one, that argue with me. I have enjoyed the argument."
 {n}She has drawn Meret opening the door from its unexpected side. The figure carries a cup.{/n}''', c("Read the next page.", "voices")),
     n("ordinary", "Narrator", '''"I laughed at her plan for carrying the cup. Then I improved the plan in the margin, which I believe was exactly the trap you laid for me.
-"I gave Meret a companion for the next street. He talks too much about ceramics, and she discovers that she does not mind. I have not decided whether he will remain in the story. I am enjoying being able to decide that without a prophecy, an experiment, or someone announcing what sort of creature she must become.
+"I gave Meret a companion for the next street. He talks too much about ceramics, and she discovers that she does not mind. I have not decided whether he will remain in the story. Anograt says he must be eaten by something in the next chapter. I have forbidden it, and she has written the something in the margin anyway, with teeth.
 "I still wake with the old room in my thoughts sometimes. I have no triumphant ending to attach to that sentence. But there are other things waiting on the table now. A cup I like, a story I may change, and letters I am glad to receive.
 "I did not expect a cup to do so much. I suppose that is what cups are for."
 {n}She has enclosed the beginning of the new street, stopping before the talkative visitor can explain a second glaze.{/n}''', c("Read the next page.", "voices")),
@@ -344,7 +343,7 @@ Two days later the courier brings a note. She reached the wayhouse before midnig
       c("Reply with affection and leave the next invitation open.", flags=("targona.visit_pause",))),
     n("kiss", "Narrator", '''{n}Targona does not wait for you to ask twice. She takes the front of your coat in her fist and kisses you, hard and certain, the way she once told Areelu's barrier that she would bear whatever came.{/n}
 {n}Her thumb rests beneath your jaw. When she lets you breathe she keeps her brow against yours, and the black wing has come half open behind her without her noticing.{/n}
-"I have missed that," she says. "I have missed wanting something that nobody will write down afterwards as a symptom."
+"I have missed that," she says. "Iomedae forgive me, I have missed that more than I missed the wing."
 {n}Your hand finds the edge of the wing. She goes very still, and then she does not pull away.{/n}
 "Everyone is so careful with it. You are not being careful." {n}Her palm slides to your chest and finds your heart going like a drum.{/n} "There. That is the truest thing anyone has said to me since the laboratory."
 {n}She kisses you once more, slower, and then looks past you at the lit windows of the barracks, and at the dark stair beside them, and back at you.{/n}
@@ -386,7 +385,7 @@ The line beneath her note is left open for an answer.''',
       c("Reply that you want her, and that you will be waiting.", flags=("targona.key_reciprocal",)),
       c("Reply that you want her company, and leave the rest for another day.", flags=("targona.key_unpressured",))),
     n("pause", "Narrator", '''{n}The letter contains no key. Targona writes that she was pleased you let the evening end without asking her to turn it into a promise.{/n}
-"I still want you. I was glad you did not hurry me. I have been hurried by Areelu, and by Heaven's healers, and by my own fear, and you were the first thing in a long time that simply waited. I would like another evening. Come when the wounded let you."
+"I still want you. I was glad you did not hurry me; the wayhouse had fever in it that week, and I would have come to you smelling of vinegar and gone back before the bell. I would like another evening. Come when the wounded let you."
 She has added a small sketch of the courtyard, with the way in and out marked in equal-sized arrows.''',
       c("Tell her you want another evening, whenever the wounded can spare her.", flags=("targona.key_unpressured",)),
       c("Tell her you want to kiss her again when she asks.", flags=("targona.key_reciprocal",))),

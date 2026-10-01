@@ -536,7 +536,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                                  ['targona.free', 'targona.trickster.cost.wand_unspent']],
  # Killed branch: the washing (after forgiveness) is the last beat before the vigil (Sol quality pass, BEL).
  'targona.trickster.late_committed': [['trickster.ever', 'targona.trickster.washed_the_dead'],
-                                      ['trickster.ever', 'targona.trickster.met']],
+                                      ['trickster.ever', 'targona.trickster.met', 'targona.trickster.drawn']],
  'terendelev.ravener_dead': [['iz.monster_dead', 'trickster.ever']],
  # The monster's death as history: its latch, recorded while the party is in Iz (save-compatible with earlier builds).
  'iz.monster_dead': [['iz.monster_dead.latched']],

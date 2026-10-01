@@ -575,7 +575,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 "It stands, then." {n}She doesn't move a finger.{/n} "Quit the circle, Commander. I'm not allowed to get up until you do, and my arm hurts."''',
         c("[Quit the circle.]", "you_up")),
     jan("you_up", '''{n}You step over the chalk. She gets up, sheathes, and stands in the circle bleeding through her sleeve while the yard stares at her.{/n}
-"Two notches the wrong way," she says, to you, not to them. "Good. I'd hate to think the first one was an accident."''',
+"The wrong way, and in front of everybody," she says, to you, not to them. "Good. Nobody can say it was an accident."''',
         c("Continue", "after")),
     jan("shamed", '''{n}The yard goes very still. Jannah gets up, which she has never once done before the victor left the circle, and she does it slowly, deliberately, so that every one of them sees her break the forms rather than lie there under that.{/n}
 "The bout was fair," she says, to the yard. "What the Commander said after it wasn't. Write that down, anybody here who writes things down." {n}She walks out without sheathing.{/n}''',

@@ -95,11 +95,11 @@ internal static class TargonaTricksterTests
             check(Rules.IsRemote(s), "A letter is physical: " + s.Id);
         check(oneSoul.Chapters.SequenceEqual(new[] { 3 }) && oneSoul.DelayHours == 72 && longSleep.Chapters.SequenceEqual(new[] { 5 })
               && Rules.IsRemote(longSleep), "The ring payoff (Chapter 3, three nights) or its Abyss variant (Chapter 5) has the wrong window.");
-        foreach (var s in new[] { oneSoul, longSleep })
-            check(s.TricksterDevice && s.TricksterState == "targona.dead_lab", "A killed-state scene is not an ER-2 device: " + s.Id);
+        foreach (var s in new[] { oneSoul, longSleep, lateLight })
+            check(!s.TricksterDevice, "A retired killed-state scene is still advertised as a device: " + s.Id);
         var rel = story.Relationships["targona"];
-        check(rel.UnavailableOverrides["targona.dead_lab"] == P + "returned" && rel.TricksterAccess.Count == 2
-              && rel.TricksterAccess["targona.dead_lab"].Device == P + "dead.one_soul"
+        check(rel.UnavailableOverrides["targona.dead_lab"] == P + "returned" && rel.TricksterAccess.Count == 1
+              && !rel.TricksterAccess.ContainsKey("targona.dead_lab")
               && rel.TricksterAccess["freed_in_heaven"].Device == P + "free.spent_light"
               && rel.CommittedFlag == Committed && rel.ClosedFlag == Closed, "Targona's relationship patch is wrong.");
         check(story.Presences.TryGetValue("targona.presence", out var presence) && presence.Unit == Unit && presence.Mode == "spawn-copy"
@@ -267,6 +267,20 @@ internal static class TargonaTricksterTests
         // The Chapter 3 laboratory memory holds nothing from a later chapter or another mythic path (the Angel Nexus).
         foreach (var node in oneSoul.Nodes)
             check(!node.Text.Contains("Nexus", StringComparison.Ordinal), "The laboratory flashback remembers the Nexus: " + node.Id);
+
+        // Q6 r4 (TRK/BEL): the late romance needs her to have stayed because the Commander asked; a charitable welcome is a colleague.
+        var epColleague = S(P + "epilogue.colleague");
+        var welcomed6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent");
+        var drawn6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "cost.wand_unspent");
+        check(!welcomed6.Has(P + "late_committed") && !Rules.Available(story, epCommit, welcomed6) && !Rules.Available(story, epFurlough, welcomed6)
+              && Rules.Available(story, epColleague, welcomed6)
+              && drawn6.Has(P + "late_committed") && Rules.Available(story, epCommit, drawn6) && !Rules.Available(story, epColleague, drawn6),
+            "A charitable welcome becomes a romance at the war's end, or the asked-for stay does not.");
+        var greetNode = freeFurlough.Nodes.Single(n => n.Id == "why").Choices;
+        check(greetNode.Count == 2 && greetNode[0].Set.Contains(P + "met") && !greetNode[0].Set.Contains(P + "drawn") && greetNode[1].Set.Contains(P + "drawn"),
+            "The arrival's romantic answer is not an appended, recorded choice.");
+        check(spent.Nodes.Single(n => n.Id == "night_spent").Text.Contains("Hand of the Inheritor", StringComparison.Ordinal),
+            "The ordinary wands reach Heaven by no named road.");
 
         // Trk_Targona_TreatmentDone: a treatment that ended as RanRomance's romance runs the parent route instead. A friendship-only
         // treatment history (Sol quality pass, INT) can still be courted: walk it from the parent's own flags, no injected romance.

@@ -57,6 +57,7 @@ PRIMED = P + "primed"
 LAB_LINE = P + "told_in_lab"
 RETURNED = P + "returned"
 MET = P + "met"
+DRAWN = P + "drawn"                 # Q6 r4: in the freed state she stays because the Commander asked her to, not only for the wounded
 FORGIVEN = P + "forgiven"
 DECLINED = P + "declined"
 NIGHT = P + "night_kept"
@@ -96,7 +97,6 @@ RETIRED = "chapter_later"                    # retired by gating: the runtime ho
 RELATIONSHIP_PATCH = dict(
     UnavailableOverrides={DEAD: RETURNED},
     TricksterAccess={
-        DEAD: dict(detect=[DEAD], device=P + "dead.one_soul", returned=RETURNED),   # kept for save/validation; unreachable (Q6 r3)
         "freed_in_heaven": dict(detect=[], device=P + "free.spent_light", returned=MET),
     })
 PRESENCES = {
@@ -260,7 +260,7 @@ letter(P + "dead.late_light", "The hard way back", [
 {n}The breath goes into her like a blade. The scroll gives her body back whole, the black wing and all, and gives her nothing back of the days she lay in the ruin.{/n}''',
         c('[Stay until she breathes.]', flags=(PRIMED, LATE, ECHO_SPENT))),
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED, RETIRED), delay=0, chapters=(3,),   # retired by gating (Q6)
-   TricksterDevice=True, TricksterState=DEAD)
+   )   # Q6 r4: dormant, no longer an advertised device or TricksterState
 
 # Sol quality pass (INT): the same fallback after the Abyss, for a Commander who never prepared the scroll and never sent
 # back into the ruin in Chapter 3. Dearer, and later: the Hand's chaplains carried her out of the ruin themselves and have
@@ -280,7 +280,7 @@ letter(P + "dead.late_crypt", "The crypt under the chapel", [
 "Then I will not be carried to a crypt again for nothing. Take me up to the infirmary, Commander. If I am to cost that much, the wounded had better get the worth of it."''',
         c('[Carry her up the crypt stair.]', flags=(PRIMED, LATE, CRYPT, RETURNED, STARTED, STRUCK, SHARD))),
 ], requires=("trickster", DEAD), forbids=(PRIMED, RETURNED, RETIRED), delay=0, chapters=(5,),   # retired by gating (Q6)
-   TricksterDevice=True, TricksterState=DEAD)
+   )   # Q6 r4: dormant, no longer an advertised device or TricksterState
 
 letter(P + "dead.one_soul", "Read back in", [
     nar("start", '''{n}A runner comes up from the field infirmary behind the quartermaster's stores, out of breath, with his cap in his hand.{/n}''',
@@ -310,7 +310,7 @@ letter(P + "dead.one_soul", "Read back in", [
           flags=(RETURNED, STARTED, STRUCK, SHARD))),
     *ring_nodes(),
 ], requires=("trickster.ever", PRIMED, DEAD, DEAD_SEEN), forbids=(RETURNED,), delay=72, chapters=(3,),
-   TricksterDevice=True, TricksterState=DEAD)
+   )   # Q6 r4: dormant, no longer an advertised device or TricksterState
 
 # Quality pass Q6: the Abyss took the Commander before the three nights were up. The ring is broken in Chapter 5, after
 # months, and costs more to reach. One delivery; one_soul never follows it.
@@ -330,7 +330,7 @@ letter(P + "dead.long_sleep", "Months in her fire", [
 "It knows me better than it did. I can feel it listening to me." {n}She gets up on her own, and will not take your arm.{/n} "Two men at the gate, you said. Then take me to the infirmary, Commander, and let me earn them."''',
         c('[Walk her up out of the ruin.]', crusade=("Favors", -150), flags=(RETURNED, STARTED, STRUCK, SHARD, LONG))),
 ], requires=("trickster.ever", PRIMED, SLEEP, DEAD, DEAD_SEEN), forbids=(RETURNED,), delay=0, chapters=(5,),
-   TricksterDevice=True, TricksterState=DEAD)
+   )   # Q6 r4: dormant, no longer an advertised device or TricksterState
 
 
 ward(P + "dead.furlough", "A fever that broke at dawn", '"Targona."', [
@@ -419,7 +419,8 @@ letter(P + "free.spent_light", "The last wand", [
 {n}The chaplains are paid to remember it as an ordinary night. Far above, in the halls of Heaven, someone made from the same soul looks up.{/n}''',
         c('[Finish at dawn] Put the wand away. It is still full.', flags=(PRIMED, WAND))),
     nar("night_spent", '''{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}
-{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door. Far above, in the halls of Heaven, someone who has spent her whole life healing strangers looks up.{/n}''',
+{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}
+{n}The infirmary chaplain writes it into his weekly report to the Hand of the Inheritor, as he writes everything: three wands, one Commander, no deaths by morning. The Hand reads such reports aloud to Heaven's healers. It is the only road there is from a field infirmary to the halls of Heaven, and this time somebody on the far end of it is listening.{/n}''',
         c('[Finish at dawn] Put the empty wands away.', flags=(PRIMED, WAND, CHARGES))),
 ], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
 
@@ -432,7 +433,7 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
         c("Continue", "greet_treated", requires=(TREATED,)),
         c("Continue", "greet_lab_sleep", requires=(LAB_LINE, SLEEP), forbids=(TREATED,))),
     t("greet_treated", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
-"You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then someone worked these rows all night with a healer's wand and would not stop, and I felt it in the halls of Heaven like a hand on my shoulder, and I came down to see whether it was the same one."''',
+"You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then someone worked these rows all night with a healer's wand and would not stop, and word of it reached me in the halls of Heaven, and I came down to see whether it was the same one."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("greet_lab_sleep", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
 "Behind the barrier you asked me to lie back down in her sleep if it came to blood, and I said yes. Then you broke the barrier instead, and I went home to Heaven's healers after all. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
@@ -441,12 +442,16 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
 "Behind the barrier you showed me a scroll up your sleeve and asked me to let everyone mourn me. I said yes. And then you did not need it: you broke the barrier instead. And then someone worked these rows all night with a healer's wand and would not stop. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("greet", '''"Commander. Greetings, my rescuer." {n}She does not smile.{/n}
-"Someone worked these rows all night with a healer's wand and would not stop. I felt it in the halls of Heaven, like a hand on my shoulder. I came to see who would do such a thing, and why."''',
+"Someone worked these rows all night with a healer's wand and would not stop, and word of it reached me in the halls of Heaven. I came to see who would do such a thing, and why."''',
       c('[Explain] "They were dying. I had a light."', "why")),
     t("why", '''"For the wounded." {n}She considers you with sad, clear eyes.{/n}
 "Then I will stay, for the wounded. Heaven can spare me for a season, and Heaven's healers have been very kind to me, and very patient with this." {n}The black wing shifts.{/n} "Here nobody has time to be patient with it. I find I prefer that.
 "And I would like to know what kind of person uses a dead angel's light to sit up all night with strangers. I have not decided whether I approve."''',
-      c('[Welcome her] "Stay as long as they need you."', flags=(MET, STARTED))),
+      c('[Welcome her] "Stay as long as they need you."', flags=(MET, STARTED)),
+      c('[Say the rest] "Stay for the wounded. And stay because I asked you to."', "drawn", flags=(MET, STARTED, DRAWN))),
+    t("drawn", '''{n}She looks at you for a long moment over the basin, and the black wing, which has been folded tight since she came in, loosens a little.{/n}
+"That is not a reason Heaven gives furloughs for." {n}She wrings out the cloth.{/n} "It may be a reason I stay anyway. Ask me again when the ward is quiet, Commander, and not over a dying man."''',
+      c("[Leave her to the rows.]")),
 ], requires=("trickster.ever", WAND, FREE), forbids=(MET, CLOSED), delay=0)
 
 
@@ -562,7 +567,13 @@ page(P + "epilogue.commit", "When the ward was quiet",
 {n}She did not wait for the answer in words. She took the Commander up the ladder into the empty drying loft, where the last of the bandages still hung in rows from the rafters, and said, "I have tended every body in this city. I want one that is mine to want." She pulled the plain smock over her head and let it fall, and opened both wings, the white and the black, so that the linen swayed all down the row, and drew the Commander down onto the blanket under them and settled astride, and bent to kiss the Commander with her hair falling round both their faces.{/n}
 {n}In the morning Wilcer Garms found a black feather on the ladder and wrote something in his ledger. When the new infirmary opened, in a street near the Commander's house, she hung that feather over the door.{/n}''',
      requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
-     RequiresAnyGroups=[[TESTED, MET]], **SACRIFICE_GUARD)
+     RequiresAnyGroups=[[TESTED, DRAWN]], **SACRIFICE_GUARD)
+
+# Q6 r4 (TRK/BEL): a freed angel who stayed only for the wounded is a colleague, not a lover, when the war ends first.
+page(P + "epilogue.colleague", "The next cot",
+     '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. She and the Commander worked the rows together on the bad nights, and argued about wands, and never once about anything else.{/n}
+{n}When the tents came down she went back to Heaven's healers with the black wing folded tight, and a letter came to the Commander at midwinter, as correct as a report, asking after the drummer with the fever. At the bottom, in a smaller hand, she had written that the ward was quiet now, if anyone ever wanted to ask her anything that was not about wands.{/n}''',
+     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, DRAWN), paragraphs=WARD_PARAGRAPHS)
 
 page(P + "epilogue.ally", "The ward's other chair",
      '''{n}Targona forgave the Commander in front of the whole ward, and meant it, and never went further than that. She stayed in Drezen until the last cot was folded. When the Commander came to the infirmary, she handed over a basin or a roll of linen without being asked, and talked about the wounded, and about her brother, and never about the laboratory. People who saw them together took them for old comrades. In a way they were.{/n}''',
