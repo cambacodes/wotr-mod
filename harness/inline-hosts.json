@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1074,
-  "resolved": 1074,
-  "inlineOnlyScenes": 282,
-  "inlineOnlyResolved": 282,
-  "answerListScenesWithoutContact": 647,
-  "answerListScenesWithoutContactResolved": 647,
-  "lists": 122,
-  "listsWithReachableHost": 121
+  "entryTargetScenes": 1077,
+  "resolved": 1077,
+  "inlineOnlyScenes": 285,
+  "inlineOnlyResolved": 285,
+  "answerListScenesWithoutContact": 650,
+  "answerListScenesWithoutContactResolved": 650,
+  "lists": 125,
+  "listsWithReachableHost": 124
  },
  "scenes": {
   "a_crossing": {
@@ -14098,6 +14098,25 @@
     "clicks": 0
    }
   },
+  "kiana.wedding.cast": {
+   "kind": "return-to-list",
+   "lists": [
+    "ad91a2aed6132554782ca2ad10a1ee2a"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ad91a2aed6132554782ca2ad10a1ee2a": "RRT_entry.kiana.wedding.cast.ad91a2aed6132554782ca2ad10a1ee2a"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ad91a2aed6132554782ca2ad10a1ee2a",
+    "dialog": "029fe2bf51b828b46b8106e833ca6461",
+    "dialogName": "KyanaWelcome_SeelahQ2_dialog",
+    "cue": "Cue_0004",
+    "clicks": 3
+   }
+  },
   "konomi.a_name_beside_hers": {
    "kind": "dialog",
    "lists": [
@@ -16266,6 +16285,44 @@
     "dialogName": "Nocticula_TricksterC5_Dialogue",
     "cue": "Cue_0006",
     "clicks": 1
+   }
+  },
+  "nocticula.ch4.hoard": {
+   "kind": "return-to-list",
+   "lists": [
+    "09a3f2100af13ae429e1dedf27e32a80"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "09a3f2100af13ae429e1dedf27e32a80": "RRT_entry.nocticula.ch4.hoard.09a3f2100af13ae429e1dedf27e32a80"
+   },
+   "resolved": true,
+   "host": {
+    "list": "09a3f2100af13ae429e1dedf27e32a80",
+    "dialog": "a3d41e37a42dbaf45b4fe1f6619f2dc9",
+    "dialogName": "Nocticula_MainDialogue",
+    "cue": "Cue_0017",
+    "clicks": 1
+   }
+  },
+  "nocticula.early.gresilla_credit": {
+   "kind": "return-to-list",
+   "lists": [
+    "8a69c5acce98db74d87ff06fdcf1b975"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "8a69c5acce98db74d87ff06fdcf1b975": "RRT_entry.nocticula.early.gresilla_credit.8a69c5acce98db74d87ff06fdcf1b975"
+   },
+   "resolved": true,
+   "host": {
+    "list": "8a69c5acce98db74d87ff06fdcf1b975",
+    "dialog": "6a649fa02676f41498e0843e95ba15a6",
+    "dialogName": "Dialogue_NocticulaPriestess",
+    "cue": "Cue_0001",
+    "clicks": 0
    }
   },
   "nocticula.lastcall.call": {
@@ -21226,6 +21283,138 @@
       "ef3b6150052997246b4be8bb85a06366": 4,
       "f1901db44e9496d4d95ae7d9c161d558": 2,
       "fec77bfefc314a44a802a923348f291c": 4
+     }
+    }
+   ]
+  },
+  "09a3f2100af13ae429e1dedf27e32a80": {
+   "list": "09a3f2100af13ae429e1dedf27e32a80",
+   "listName": "AnswersList_0019",
+   "hosts": [
+    {
+     "dialog": "a3d41e37a42dbaf45b4fe1f6619f2dc9",
+     "dialogName": "Nocticula_MainDialogue",
+     "cues": [
+      "d527947cec58b784fbe72801da56b2fd",
+      "2f58beab7503ba246b84ffcf239d652c",
+      "8092a8c945d8d7043b93d5f3dce17d45",
+      "018edb7d408b5e84eabcab2dfc1b38ec",
+      "b0682b9f72c4a744a810167f0b6a403f"
+     ],
+     "cueNames": [
+      "Cue_0017",
+      "Cue_0049",
+      "Cue_0050",
+      "Cue_0206",
+      "Cue_0387"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 1,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "Answer_0007"
+      }
+     ],
+     "answerDist": {
+      "0139e61894ed0b84da8cd416ab0838b2": 3,
+      "015dfeee30cc2de4badcecf23d56bf97": 5,
+      "02881a332ac8bdc4aba17827abbc3934": 3,
+      "02b6d2aa007386249a2d10a443c2a7a5": 3,
+      "046b32d95b218c3439b8046f60f5923d": 2,
+      "083bb310d6203cc42a3ef91986efb99e": 3,
+      "0ba3223172dc66547bcb505d2e87752a": 3,
+      "0c42bf8c5e409e74f9d839aed5781cae": 2,
+      "0dc4eafbe5645f3438d47e379567c335": 4,
+      "1018f2dc8beb380408468d6c81e6ed48": 2,
+      "138e286dec1df804f9d5b918c4e5494a": 6,
+      "1724b18416cd78d43a287660a325da2d": 5,
+      "17dc54dfe2aa3e54d9e54d1271efa8ed": 6,
+      "1d5f0270cd940f0439059df3c17857e4": 2,
+      "1d792cfc7d326e740938bc8ce93f7b16": 3,
+      "1dcf88028c25f7d4aa084939732062e6": 3,
+      "200a8cb2321dbfb4090ad2c9f32c8154": 8,
+      "20b1bff5e25203044a213d5d050e663f": 2,
+      "2a0206e222a404b46be1f592ac953e93": 4,
+      "2b5f8e85cd2953a4d881d1cc59ba6ae8": 4,
+      "2d12c4e34943cd74bad908b03a95145b": 4,
+      "31ca0155524881b4bb7f58af0faeaa7a": 5,
+      "343d139a0e4b9a34789601bfa932e129": 2,
+      "35fe4828e45a9d14db7abfa2bc4e7be0": 4,
+      "3c310e769b8799f41b4a9ff22d0913cd": 2,
+      "437a903040860d34aaf9eb70ed4dde09": 2,
+      "46171496bfea5c343aaee42165fe102f": 3,
+      "4fc53b716afed34459f1486a96b0e590": 2,
+      "51f89beb1f0ffc54aaf559b3e93a242c": 3,
+      "528c2541c25cc474789356499dda8f70": 3,
+      "529673e99dfd1cd45be277d2acdc4e0e": 3,
+      "546fe766b5535074abf661b48e74210d": 2,
+      "55333931cc3e88d41b1643afc68b848c": 4,
+      "588486b95db353649829659f99f6920b": 2,
+      "592235fab2df7434293286a048481081": 4,
+      "5b0e980d1387c034ba25b18d5f657dca": 2,
+      "5c24c5372521f88479526b67b4f3dec7": 5,
+      "5e691d12773434041b174bf8e1e30608": 5,
+      "60a5a78d961920d4088cca93c83f4e7f": 5,
+      "65cfecdd1d444867be3f1c74c6127cee": 3,
+      "66b67721d2667a74bbbc823c0bab8765": 4,
+      "675712785814dc54fa71087802fa6fac": 3,
+      "68295b0e2352f954ba3e122a4ae83f94": 3,
+      "6c2db9e8bbe7c0042b00336f038a9bc7": 5,
+      "6f9cdeaca167d1a4381503859cf965f2": 9,
+      "73a61474860b4244aacbcc3d62709a7a": 4,
+      "77de9c764fec0fe4fbc957ea10d2f472": 3,
+      "78cd6ec5e1f26a943a3b69d22b53ebc7": 3,
+      "7ac6187c655fc4a4f9f36cb3b4f0cd15": 3,
+      "7c4c25bc72a4a8d47bc5f81b787a63f5": 3,
+      "839bb832ec74bf340b3f101beb9757b0": 6,
+      "85d9905dadaebbb42a4e21f5019a53fc": 3,
+      "85e664f8f9dbb534faf388c94e26f95a": 3,
+      "860175afe3653504d893c45d71f3ad83": 3,
+      "874e8d5b5103c424c9af363443789d7a": 2,
+      "8b7749c9f6e633a41a065d948174314f": 5,
+      "8c97f7224fcfb5f46a1b2990d26b0676": 5,
+      "8ef23225a0cee9d4c84333a064963950": 8,
+      "8fce52d6c627c0846afd3270e66c8715": 4,
+      "94d5a46b387d4384aa5661ede994b7f0": 4,
+      "95058b4dca82d4b4b827b64054cf7dfd": 2,
+      "96e105a0159a461499d635368b4689df": 8,
+      "9b4f5f287835d8644b524b338db53202": 7,
+      "9f494be58ceb0d64fafc4d14f4ff6d19": 1,
+      "a08b0a69ee5e38e40999240c614acc5a": 9,
+      "a2dee54e5c97c514196a01fde479919e": 4,
+      "a4d3d0c29a0d3c54c924ec3c37e66c80": 2,
+      "a8e33c22a216cdc4faffd547be250855": 3,
+      "ab9adf5f1f57844438c5cfb97089267d": 9,
+      "ad1fe9a596a47af4388ad2da9e91b76f": 1,
+      "ae47c0d7269b54d43bb076a0902de1fd": 3,
+      "b2f9b1c1c16d13f4fafd4904836f65f2": 3,
+      "b7f3ce81dbc555443ab09a25ce42e05b": 3,
+      "b88817536cb59944dac16c2048f839d3": 2,
+      "ba0b70cfc6b98bf45aef9ccab10574ae": 4,
+      "ba70f9f9b44b4764280215b22c2f88d5": 9,
+      "c394aa4a79b9bd0499068e5fd5a9cf5d": 3,
+      "c8fca5e5aec9ead4ebb0e8ebeef9aeb2": 2,
+      "c9872d3a470f64243b03e915fa0d688a": 1,
+      "cafe6276752713b40ab8deeff87e02ae": 2,
+      "cc3b6571ceba7e34ea99b5d5094717c6": 3,
+      "cc567d65b71fd9440a5c3e3dcdf2089c": 3,
+      "d4e67ffa6d32064499ca0d16038e4317": 2,
+      "d5863accfb06e5b4f8bbeebbfd07fea4": 3,
+      "d63372b041fbc524cafb089b5304702f": 2,
+      "db086914c372157499090fdb4ed3a06a": 3,
+      "db237b63b54d5c94aa3f59795d769b50": 5,
+      "dc91b47a6d7e8ef4ab65d049391c21c5": 6,
+      "df4c89ce055684b408366b75c7e81f1f": 3,
+      "e49994abafe44ef4d820b29460f65034": 2,
+      "ea43a05a124750047952e9eaf4582f6d": 3,
+      "ebf90f5452b3b3e4785f52827b49189a": 5,
+      "ef0cf58e937bc0d479d65ecf7f4bcf82": 5,
+      "f32a7ca75f0d9cc45ac77d79f482ab69": 4,
+      "f7860b19a34127a49a429d113b695339": 11,
+      "f7c773ce3c537f843bd31facee11f7f4": 3,
+      "fe294c2ca7630ef44bd8b2830fe134de": 4
      }
     }
    ]
@@ -26240,6 +26429,60 @@
     }
    ]
   },
+  "8a69c5acce98db74d87ff06fdcf1b975": {
+   "list": "8a69c5acce98db74d87ff06fdcf1b975",
+   "listName": "AnswersList_0005",
+   "hosts": [
+    {
+     "dialog": "6a649fa02676f41498e0843e95ba15a6",
+     "dialogName": "Dialogue_NocticulaPriestess",
+     "cues": [
+      "c5687fce0dd78634289e0efcbbbe2557",
+      "bd1a84094541f69419c4d82934957369",
+      "611dded3960770843ac0cc9813057c9e",
+      "0fd2a480a6c73694abb54dbb0f2bc470",
+      "c353ddca299a7e14392686673d44add0",
+      "25cb1d0904392c440b2262857a0f669c",
+      "a5d0c64646727b943b7a8f772b8697ec",
+      "3ac2d8a8307dd91428a90754e7658eda",
+      "973acfd192da46f42af448fb810c4985",
+      "0473fe82abcbeb94c922652047a64881",
+      "a9bcbce55fafadd46a83bd5a3e74c50a",
+      "8bda85afb494149459ef117ab2224a75"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0004",
+      "Cue_0010",
+      "Cue_0014",
+      "Cue_0028",
+      "Cue_0029",
+      "Cue_0031",
+      "Cue_0035",
+      "Cue_0037",
+      "Cue_0053",
+      "SequenceExit_0068",
+      "SequenceExit_0071"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "376f8f9190756304294b076a0d215473": 5,
+      "5e6536946b9578d499ac01b3542b04e8": 3,
+      "802ab33ac651fac44a8449af85da3158": 1,
+      "856eac9fb7ef04d4cbde965db1a8c40b": 2,
+      "891da40d1cd339340bb2ced2f99d93b8": 3,
+      "9c14785eee8f5d94bb9a69e783717346": 2,
+      "b76b656b5a78bd042a3396f3aa5836e3": 2,
+      "cabb978795c48b946a8685bd10fe43a2": 2,
+      "cbbade447908b5842a02b495dfe57a78": 3,
+      "d66239acf0097eb4687001e3201f09d6": 2
+     }
+    }
+   ]
+  },
   "8b4733e32e9112a479f8af49c39e3c49": {
    "list": "8b4733e32e9112a479f8af49c39e3c49",
    "listName": "AnswersList_0010",
@@ -26592,6 +26835,40 @@
       "f5dffe91d83a5bb4b90802596114876c": 3,
       "f72a2584527e83d49bf21809acc8ccad": 2
      }
+    }
+   ]
+  },
+  "ad91a2aed6132554782ca2ad10a1ee2a": {
+   "list": "ad91a2aed6132554782ca2ad10a1ee2a",
+   "listName": "AnswersList_0005",
+   "hosts": [
+    {
+     "dialog": "029fe2bf51b828b46b8106e833ca6461",
+     "dialogName": "KyanaWelcome_SeelahQ2_dialog",
+     "cues": [
+      "466c4a8957da5f14fa958d1718b4a552"
+     ],
+     "cueNames": [
+      "Cue_0004"
+     ],
+     "speaker": "180b0eaa5dce387458d2ebf0ee943985",
+     "reachable": true,
+     "clicks": 3,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0002",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0003",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {}
     }
    ]
   },

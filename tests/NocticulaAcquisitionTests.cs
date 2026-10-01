@@ -20,7 +20,10 @@ internal static class NocticulaAcquisitionTests
         var native = story.Etudes.Keys.Concat(story.CompletedEtudes.Keys).Concat(story.SeenCues.Keys)
             .Concat(story.SelectedAnswers.Keys).Concat(story.CompletedQuests.Keys).Concat(story.StartedDialogs.Keys).ToHashSet();
         check(living.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => c.Revive == null
-            && c.Set.All(flag => flag.StartsWith("noct.acq.", StringComparison.Ordinal) && !native.Contains(flag))),
+            && c.Set.All(flag => (flag.StartsWith("noct.acq.", StringComparison.Ordinal)
+                                  // 15b T1 (PP4): the request's two Gresilla outcomes keep the spec's exact names.
+                                  || flag == "nocticula.gresilla_credited" || flag == "nocticula.gresilla_exposed")
+                                 && !native.Contains(flag))),
             "Acquisition writes native evidence, parent state or an actor recovery.");
 
         string[][] histories = {
@@ -144,9 +147,12 @@ internal static class NocticulaAcquisitionTests
         }
         check(trials == 36 && initialDeclines == 12 && laterClosures == 12 && postponements == 12,
             "Assembled acquisition outcome counts changed; inspect new paths before updating expectations.");
+        // PP4 (pacing_pp4.py) appends nodes gated on its own beats (Gresilla's credit, the Chapter 4 hoard); PacingPP4Tests walks them.
+        var pp4 = new HashSet<string> { "harp", "author", "hoard_appraised", "hoard_bitten", "hoard_spent",
+                                        "call_names", "call_fear", "call_harp", "call_con", "refused", "unsigned" };
         foreach (var scene in living)
             // The scent_* nodes answer the Trickster voice at the audience; NocticulaTricksterTests walks them.
-            check(reached[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id).Where(id => !id.StartsWith("scent_", StringComparison.Ordinal))),
+            check(reached[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id).Where(id => !id.StartsWith("scent_", StringComparison.Ordinal) && !pp4.Contains(id))),
                 "Assembled acquisition missed authored nodes: " + scene.Id);
         foreach (string blocker in new[] { "noct.dead", "noct.acq.council_fight", "swarm", "legend", "dragon" })
         {

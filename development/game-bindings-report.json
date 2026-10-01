@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pp4\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4721,
-  "unique_targets": 1039,
+  "binding_uses": 4729,
+  "unique_targets": 1047,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -654,6 +654,10 @@
       "path": "World/Dialogs/c3/IvorySanctum/Xanthir_after/Cue_0038.jbp",
       "type": "BlueprintCue"
     },
+    "878ad1608527aec41b3a87bfe8afdbcd": {
+      "path": "World/Dialogs/c3/MidnightFane/FaneFinal/MidnightFaneFinal_dialog.jbp",
+      "type": "BlueprintDialog"
+    },
     "b00190e0e55fd9944b7fc8de5c83cbc0": {
       "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/AnswersList_0009.jbp",
       "type": "BlueprintAnswersList"
@@ -668,6 +672,18 @@
     },
     "093724348a359594ebe7f7193e7b86dc": {
       "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0026.jbp",
+      "type": "BlueprintCue"
+    },
+    "8a69c5acce98db74d87ff06fdcf1b975": {
+      "path": "World/Dialogs/c3/MidnightFane/NocticulaPriestess/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "23d2a8e402c2a3c45a3c2976b042aa4f": {
+      "path": "World/Dialogs/c3/MidnightFane/NocticulaPriestess/Answer_0003.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "0fd2a480a6c73694abb54dbb0f2bc470": {
+      "path": "World/Dialogs/c3/MidnightFane/NocticulaPriestess/Cue_0014.jbp",
       "type": "BlueprintCue"
     },
     "8b4733e32e9112a479f8af49c39e3c49": {
@@ -1256,6 +1272,14 @@
     },
     "50ab84494d3f15341bf5f87d712f3030": {
       "path": "World/Dialogs/c4/Nexus_Camp/Herald_Camp/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
+    "09a3f2100af13ae429e1dedf27e32a80": {
+      "path": "World/Dialogs/c4/Nocticula_main/AnswersList_0019.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "018edb7d408b5e84eabcab2dfc1b38ec": {
+      "path": "World/Dialogs/c4/Nocticula_main/Cue_0206.jbp",
       "type": "BlueprintCue"
     },
     "00f8570585529f54ba41157ac66574f4": {
@@ -2412,6 +2436,14 @@
     },
     "77a1253ff7aa8b24e865dc784db866b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "ad91a2aed6132554782ca2ad10a1ee2a": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/AnswersList_0005.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "7b2d088e3a4ebc94787276799bb4d2d8": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0001.jbp",
       "type": "BlueprintCue"
     },
     "4e7816f547519de44b5ddb8a9ba2bdd8": {

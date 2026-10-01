@@ -9,7 +9,10 @@ internal static class NocticulaContinuationTests
     {
         // The Trickster layer (nocticula.trickster.*) has its own suite, NocticulaTricksterTests.
         var scenes = story.Scenes.Where(s => s.Relationship == "nocticula" && !s.Id.Contains(".acquired.")
-                                             && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)).ToArray();
+                                             && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)
+                                             // PP4 pacing beats (pacing_pp4.py) have their own suite, PacingPP4Tests.
+                                             && !s.Id.StartsWith("nocticula.early.", StringComparison.Ordinal)
+                                             && !s.Id.StartsWith("nocticula.ch4.", StringComparison.Ordinal)).ToArray();
         var visits = scenes.Where(s => !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var endings = scenes.Except(visits).ToArray();
         check(visits.Length == 24 && endings.Length == 8, "Nocticula campaign or ending coverage changed; review the test scope.");
