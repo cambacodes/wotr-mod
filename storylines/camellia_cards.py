@@ -132,7 +132,7 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
         c('"Then we won\'t let go."', "wont"),
         c('[Trickster] "I stacked the deck while you weren\'t looking."', "stacked")),
     cam("wont", '''"No." {n}She gathers up the two cards and holds them together, face to face, as though they were kissing.{/n} "No, I don't think we shall. I think we're far too stubborn." {n}She tucks them into her bodice together, apart from the rest of the deck.{/n} "I shall keep these two. The others can be jealous."''',
-        c("Continue", "close")),
+        c("Continue", "wont_close")),
     cam("stacked", '''{n}She stares at you. Then at the cards. Then at you.{/n}
 "You did not." {n}She searches your face, and you watch her fail to find the seam. It is not a thing you have seen before.{/n} "You couldn't have. I was watching your hands the whole time. I always watch hands." {n}Her voice drops.{/n} "Did you?"
 {n}You don't answer. She begins to laugh, helplessly, and pulls you down onto the silk with her, scattering the rest of the deck across the floor.{/n}''',
@@ -140,13 +140,19 @@ met(DECK_AGAIN, "The deck, again", '"You brought the cards."', [
     nar("silk", '''{n}The cards slide under your shoulders like cold scales. She is astride you before the last of them has stopped moving, her knees in the black silk, her hair come loose over both of you, and she is still laughing, low, into your mouth.{/n}
 {n}Her knife is out. You did not see her draw it. She lays the flat of it along your throat, cool, and trails it down, slowly, opening your shirt one button at a time with the point, and her breath stops each time the steel touches skin. When the last button goes she sets the blade down on the silk beside your head, within her reach, not yours, and presses her mouth to the place where it rested.{/n}
 "Don't tell me," {n}she whispers.{/n} "Don't ever tell me whether you did."''',
-        c("[Pull her down to you]", "morning")),
+        c("[Pull her down to you]", "close")),
     nar("morning", '''{n}You wake alone on the floor, with the imprint of a card pressed into your back and the deck gathered up and gone. The candles have burned to stubs.{/n}
 {n}Only one card is left. It is pinned to the inside of your door at eye height by her small clean knife, driven into the wood to the hilt: the laughing man, mask side out, turned so that anyone who opens the door will see the mask first.{/n}
 {n}It takes you both hands to work the knife free. When you do, there is a line scratched into the back of the card in her small schoolroom hand: "I still don't know. Keep the knife where I can find it."{/n}''',
         c("[Keep the card, and the knife]")),
     cam("close", '''"Whatever the truth is," {n}she says, some time later, from somewhere near your collar,{/n} "I'm not going to find out. I'm going to leave it exactly where it is. It's the first thing in my life I've ever wanted to leave alone."''',
-        c("[Leave the cards where they fell]")),
+        c("[Leave the cards where they fell]", "morning")),
+    # Q-near-miss (Sol BEL): the kept spread has its own ending; the scattered cards and the stacked-deck question belong to
+    # "stacked" alone, which now reaches "close" after the cut and the morning after it.
+    cam("wont_close", '''{n}She ties the rest of the deck back into its black silk and sets it aside, and sits with one hand flat over her bodice, over the two cards, as if she could feel them through the cloth.{/n}
+"I shan't read them again. A spread like that, one doesn't ask twice. The second time the cards only tell you what you are afraid of." {n}She holds out her hand without looking at it. When you take it, she draws you down onto the floor beside her, shoulder to shoulder against the foot of your bed, and keeps your hand in her lap.{/n}
+"Stay where you are. I am going to sit here a while and enjoy being stubborn, and I want a witness."''',
+        c("[Stay where you are]")),
 ], requires=("trickster.ever", COMMITTED), delay=72, optional=True, living=())
 
 

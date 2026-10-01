@@ -86,7 +86,11 @@ class ProbeIsolationTests(unittest.TestCase):
         ids = {s["Id"] for s in shipped["Scenes"]}
         self.assertFalse(ids & set(harness_probes.PROBE_IDS), "a harness probe is in development/Story.json")
         self.assertNotIn("harness_probes", (ROOT / "expansion.py").read_text(encoding="utf-8"))
-        self.assertFalse([s["Id"] for s in shipped["Scenes"] if rv.opens_in_prologue(rv.norm_scene(copy.deepcopy(s)))],
+        # E-new 0 passed live (13 errata 2026-09-30, merged 41d44b1); a Prologue beat ships only once its own host/return
+        # pair is reviewed (13 section 2a item 6). Reviewed: PP2 Camellia's blood (MeetCamelia list 1ca6cf08, ReturnToList).
+        reviewed = {"camellia.early.blood"}
+        self.assertFalse([s["Id"] for s in shipped["Scenes"]
+                          if rv.opens_in_prologue(rv.norm_scene(copy.deepcopy(s))) and s["Id"] not in reviewed],
                          "a shipped scene opens in the Prologue; review E-new 0 before shipping one")
 
     def test_probe_story(self):
