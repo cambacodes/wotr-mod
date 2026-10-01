@@ -644,8 +644,8 @@ s("the_song_and_the_road", "The song and the road", '\"You said you chose the fi
         c('[Write the singers\' names in the margins.]', "copies", requires=("aranka.relationship_plan",))),
     n("copies", "Aranka", '''"You have not put your name on it," she says, checking the margin.
 "It is your song."
-"And the little lie?"
-"Ours. The moon will never forgive us."
+"And the moon?"
+"The moon can write its own song."
 {n}She reads the credits once more, makes a small, savage correction to Rovan's rhythm note, then seals each sheet in its own fold.{/n}
 "Tomorrow I leave for the first camp. Expect a letter full of outrageous boasts! If I forget to write, you may scold me when I bring the songs back."''',
         c('[Kiss her goodbye and wish her a splendid audience.]')),
