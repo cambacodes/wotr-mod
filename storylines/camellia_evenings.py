@@ -351,3 +351,6 @@ met(MIRROR, "The mirror", '"You\'ve been at that mirror for an hour."', [
 "I'll leave it there," {n}she says.{/n} "In case I need to be dead again. One never knows." {n}She does not look at the glass again that night, and when you wake in the small hours she is standing in front of it in the dark, perfectly still, with the veil in her hands.{/n}''',
         c("[Leave her to it]")),
 ], requires=("trickster.ever", COMMITTED, SHELF), delay=72, optional=True)
+
+from storylines.camellia_trickster import city  # noqa: E402 (Q8)
+city(BREAKFAST, GIFT, PRISONER, MIRROR)

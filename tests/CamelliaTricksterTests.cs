@@ -325,7 +325,8 @@ internal static class CamelliaTricksterTests
                   && twin.Forbids.Contains(Dead) && twin.Forbids.Contains(Returned) && !twin.Requires.Contains(Returned)
                   && !twin.Nodes.SelectMany(n => n.Choices).Any(c => c.Requires.Contains(Killed) || c.Requires.Contains(Returned) || c.Requires.Contains(Dead)),
                 "A living twin needs her death, or keeps the dead branches' choices: " + twin.Id);
-        var danced = World(story, 4, "trickster", "trickster.ever", P + "masks.game", P + "masks.two_lies", P + "masks.mireya",
+        // Q8: the living test and the life after it are staged in Drezen (Chapters 3 and 5), so the walk resumes there.
+        var danced = World(story, 5, "trickster", "trickster.ever", P + "masks.game", P + "masks.two_lies", P + "masks.mireya",
                            P + "masks.a_dance_with_a_knife_in_it", P + "masks.danced");
         var lessonAlive = S(P + "beat.lesson_alive");
         check(Avail(lessonAlive, Later(story, danced, 100)), "The living Camellia's lesson does not follow the dance.");
@@ -399,6 +400,18 @@ internal static class CamelliaTricksterTests
             "The living Camellia remembers a death she never had.");
         check(!S(P + "masks.flies_at_a_window").Nodes.Single(n => n.Id == "fed").Text.Contains("sleeps like a child"),
             "Bleeding demons relieves her, against FinalTruth Cue_0042.");
+        // Q8 (Sol CAN/INT): Drezen-staged hub twins stay in Drezen, Chapters 3 and 5, like the veiled twin.
+        foreach (var id in new[] { "returned.test", "cards.the_cutler", "bond.shelf", "evening.breakfast", "day.the_second_dance" })
+            foreach (var suffix in new[] { "_camp", "_alive" })
+            {
+                var twin = story.Scenes.SingleOrDefault(s => s.Id == P + id + suffix);
+                if (twin == null) continue;
+                check(twin.Areas.SequenceEqual(new[] { Drezen }) && !twin.Chapters.Contains(4), "A Drezen scene travels with the companion hub: " + twin.Id);
+            }
+        // Q8 (Sol BEL): "you caught it" plays only when the Commander did win the first game.
+        var again = S(P + "cards.two_lies_again");
+        check(Ch(again, "two", 0).Requires.Contains(P + "masks.out_lied") && Ch(again, "two", 1).Forbids.Contains(P + "masks.out_lied"),
+            "The second game rewrites a lost first game as a win.");
         check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named" }),
             "The Derived late commit does not rest on her named price.");
 

@@ -423,3 +423,6 @@ met(P + "bond.not_today", "Not today", '"You\'re very quiet tonight."', [
 {n}Her hands are cold from the window and then they are not. She undoes your shirt one button at a time and counts them under her breath, the way she counted the dance. On the last button she stops counting and pulls you down onto the bed with her, and the rain goes on and on against the shutters, and neither of you hears it.{/n}''',
         c("[Put out the candle.]")),
 ], requires=("trickster.ever", COMMITTED), any_groups=[[WITNESS_LIED, WITNESS_HERS]], forbids=(NOT_TODAY,), delay=72, living=())
+
+from storylines.camellia_trickster import city  # noqa: E402 (Q8)
+city(P + "bond.shelf", P + "bond.witness", P + "bond.not_today")

@@ -63,7 +63,7 @@ met(ANNIVERSARY, "The anniversary", '"You\'re dressed in black."', [
 {n}You tell her what you saw: surprise, and then, just before the end, something very like pleasure, as if someone had finally told a joke she hadn't heard before.{/n}
 {n}She listens to the end, and when you are done she puts down the glass very carefully.{/n} "Surprised," {n}she says.{/n} "How embarrassing. We shall omit that from your account. The pleased part you may keep."''',
         c("Continue", "close")),
-    cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, one small sip. You have never once seen her drink.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
+    cam("missed", '''"Nobody has missed me at all." {n}She repeats it slowly, savouring each word.{/n} "Oh, that's a beautiful eulogy. That's honest and cruel and entirely correct. The crusade has gone on as if I'd never existed." {n}She drinks, one small sip, which is more than she usually allows herself in company.{/n} "Except for one person. Whom I shall not name. At my own wake."''',
         c("Continue", "close")),
     cam("close", '''"Next month," {n}she says,{/n} "we'll do it again. And the month after. Until one of us is dead properly, and then the other one can do it alone." {n}She sets down the glass.{/n} "I'd prefer it to be me who does it alone. I'd do it so much better. But I won't insist."''',
         c("[Stay with her until the candle burns out]")),
@@ -127,3 +127,6 @@ met(NEW_FRIEND, "A new friend", '"Who was that you were laughing with?"', [
 {n}Camellia waves back, very prettily, and does not take her eyes off your face while she does it.{/n}''',
         c("[Wave back]", flags=(FRIEND_WATCHED,), alignment=("Evil", 1))),
 ], requires=("trickster.ever", COMMITTED, NOT_TODAY), delay=96, optional=True, living=())
+
+from storylines.camellia_trickster import city  # noqa: E402 (Q8)
+city(ANNIVERSARY, SECOND_DANCE, NEW_FRIEND)

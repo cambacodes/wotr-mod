@@ -245,6 +245,16 @@ def met(id, title, entry, nodes, requires, forbids=(), delay=24, optional=False,
                             Relationship=REL, AnswerLists=[HUB_LIST], ContactUnit=UNIT, **lextra))
 
 
+def city(*ids):
+    """Q8 (Sol CAN/INT): scenes staged in Drezen (her quarters, the citadel, the lower city) keep their hub twins (_camp,
+    _alive) to Drezen in Chapters 3 and 5, as the veiled twin already is: the companion hub travels with the party."""
+    wanted = {i + suffix for i in ids for suffix in ("_camp", "_alive")}
+    for s in SCENES:
+        if s["Id"] in wanted:
+            s["Areas"] = [DREZEN]
+            s["Chapters"] = [ch for ch in (s.get("Chapters") or [3, 5]) if ch != 4] or [5]
+
+
 # --- The line at the kill (P1 primers). Owlcat's inline mythic answers are the tone target. ---------------------------
 
 JOKE = '[Play a cruel trick on Camellia] "Go on, then. Die convincingly. I\'ll know if you don\'t."'
@@ -536,6 +546,7 @@ met(P + "returned.test", "A knife at the right height", '"Come to your quarters 
 "Without the knife? You want the woman and not the appetite. There is no such woman. There was, once, and her name was Mireya, and I made her up."''',
         c("[Watch her go]", flags=(TAME, CLOSED))),
 ], requires=("trickster.ever", RET, TERMS), forbids=(COMMITTED,), delay=72, living=())
+city(P + "returned.test")
 
 
 # --- Optional: the oath (ledger 05 row 12): a woman Camellia herself killed, walking again. --------------------------

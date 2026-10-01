@@ -74,3 +74,6 @@ for _s in SCENES:
     if _s["Id"] in (EVE, EVE + "_camp", EVE + "_alive"):
         _s["MinChapter"], _s["Chapters"] = 5, [5]
         _s["Requires"] = list(dict.fromkeys([*_s["Requires"], "iz.done"]))
+
+from storylines.camellia_trickster import city  # noqa: E402 (Q8)
+city(EVE)
