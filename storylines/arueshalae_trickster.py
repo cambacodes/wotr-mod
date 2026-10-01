@@ -175,7 +175,9 @@ PRESENCES = {
 }
 
 DERIVED = {
-    LATE_COMMITTED: [["trickster.ever", AFTERTASTE], ["trickster.ever", CHAPLAIN], ["trickster.ever", REUNITED]],
+    # Sol r2 (INT, R2-6): the living treatment that reaches Threshold before her proposal has its late answer too.
+    LATE_COMMITTED: [["trickster.ever", AFTERTASTE], ["trickster.ever", CHAPLAIN], ["trickster.ever", REUNITED],
+                     ["trickster.ever", "arueshalae.treatment.relapse_two"]],
     # node-read only (ledger 2): the bill owed to a queen in hiding
     UNANSWERED: [[DEBT, IN_HIDING], [FAVOUR, IN_HIDING]],
     # node-read only (ledger 2): the queen is in hiding while the letter is written (audit 2026-09-29: UNANSWERED needs
@@ -520,7 +522,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]], Areas=[DREZEN])   # the chapel steps
 
 hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
-    a("start", '''"Seven days. I counted twice, and then I made Sosiel count, because I didn't trust myself." {n}She doesn't smile.{/n}
+    a("start", '''"Seven days. I counted twice, and then I made the novice who sweeps the chapel count, because I didn't trust myself." {n}She doesn't smile.{/n}
 "Before I answer, I want one promise from you, and you won't like it. The next time I'm dying, you don't decide for me. No wrist held out like a bowl while I'm too far gone to spit it out, and nobody dragged up from the cells to be eaten. If you want a thread in me for next time, you come and ask for it while I'm alive to bite you for asking, and look me in the eye while you do it."''',
       c('[Promise] "No more doctoring you in your sleep. I swear it."', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
       c('"I can\'t promise that."', "no", flags=(CLOSED, REFUSED))),
@@ -531,7 +533,7 @@ hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
 
 # The chaplain never died and was never fed: her week ends on the thing that was done to her, the public appointment.
 hub(P + "terms_again_chaplain", "Seven days at the rail", 5, '"It\'s been a week."', [
-    a("start", '''"Seven days. I counted twice, and then I made Sosiel count, because I didn't trust myself." {n}She doesn't smile. She is still wearing the stole the second company bought her, and she has not stopped touching its fringe.{/n}
+    a("start", '''"Seven days. I counted twice, and then I made the novice who sweeps the chapel count, because I didn't trust myself." {n}She doesn't smile. She is still wearing the stole the second company bought her, and she has not stopped touching its fringe.{/n}
 "Before I answer, I want one promise from you, and you won't like it. You made me their chaplain in front of a kneeling company, at vespers, so that I couldn't refuse without shaming every one of them. It worked. I'm keeping it. But it's mine now. They kneel to me now, and I can't bear to disappoint a single one of them, and you knew I wouldn't." {n}Her fingers stop on the fringe.{/n} "Don't ever do that to me again. If you want something of me, ask me where only Desna can hear us, not in front of a kneeling company."''',
       c('[Promise] "No more staging. Your altar, and your door."', "yes", flags=(COMMITTED, NO_STAGING), forbids=(ELYSIUM_DONE,)),
       c('"I can\'t promise that."', "no", flags=(CLOSED, REFUSED)),
@@ -681,17 +683,19 @@ evil_hub(FALLEN_NIGHT, "The roofs of Drezen", '"You kept the door."', FALLEN_NIG
 
 EP = dict(last=6, Relationship="arueshalae")
 SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}The war ended before Arueshalae answered the Commander's question, so she answered it afterwards.{/n}''',
+    nar("page", '''{n}The war ended before the question between Arueshalae and the Commander was settled, so they settled it afterwards.{/n}''',
         paragraphs=(
             p('''{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: all of her, the hunger and the prayer in one knot, for as long as she could hold it. She held it. Nobody who knew her was surprised, except her.{/n}''',
-              forbids=(EVIL_DEAD,)),
+              forbids=(EVIL_DEAD,), any_groups=[[CHAPLAIN, AFTERTASTE]]),
+            p('''{n}It was her question, in the end, not the Commander's. She asked it a month after Threshold, on the citadel wall at dusk, with her hands held out an inch from the Commander's, palms up, not touching; and the Commander took them, and said yes. She said afterwards that it was the first question she had ever asked without knowing the answer first.{/n}''',
+              requires=("arueshalae.treatment.relapse_two",), forbids=(EVIL_DEAD, CHAPLAIN, AFTERTASTE)),
             p('''{n}The Commander's voice took the best part of a year to come back from the chapel, and the white scar on the wrist never went at all. She never asked whether it had been worth it.{/n}''',
               requires=(GIFT_TORN,)),
             p('''{n}She came through the Commander's window the first night after Threshold, sat on the sill with one knee drawn up, and said she had decided to keep visiting. It was the closest thing to a vow she ever made, and she kept it.{/n}''',
               requires=(EVIL_DEAD,)),
         ))],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, ALLY, RECRUITED),
-    RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN, REUNITED]], **EP))
+    RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN, REUNITED, "arueshalae.treatment.relapse_two"]], **EP))
 SCENES.append(scene(P + "epilogue.kept", "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}After the Worldwound was closed, Arueshalae stayed in Drezen, because the Commander was there, and because she had decided to.{/n}''',
         paragraphs=(
@@ -706,14 +710,15 @@ SCENES.append(scene(P + "epilogue.kept_fallen", "", "ArueshalaeEpilogue", 6, "",
     nar("page", '''{n}After the Worldwound was closed, Arueshalae kept visiting. The Commander's window was never locked, and the city learned to count its sergeants after she had passed through a street. She never pretended to be anything but what she was, and the Commander never asked her to.{/n}''')],
     requires=("trickster.ever", COMMITTED, EVIL_DEAD, REUNITED), forbids=(CLOSED, RECRUITED), **EP))
 SCENES.append(scene(P + "epilogue.declined", "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}Arueshalae never finished counting her week, and when anyone asked her about the Commander she said she was still deciding.{/n}''',
+    nar("page", '''{n}Arueshalae never gave the Commander her answer, and when anyone asked her about the Commander she said she was still counting.{/n}''',
         paragraphs=(
             p('''{n}She served as the crusade's chaplain until the end, and blessed the swords of the second company and the lamps of the field hospital.{/n}''',
               requires=(CHAPLAIN,)),
             p('''{n}She stayed with the crusade until the end, kept her count in a daybook, and never once let anyone hand her a knife at supper.{/n}''',
               forbids=(CHAPLAIN,)),
         ))],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, RECRUITED), RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]], **EP))
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, RECRUITED),
+    RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN, "arueshalae.treatment.relapse_two"]], **EP))
 SCENES.append(scene(P + "epilogue.fallen", "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}Arueshalae fought the rest of the war at the Commander's side, for the fun of it, and never once pretended otherwise. She ate what the Commander gave her and a good deal that the Commander did not, and the crusade learned to count its sergeants after she had passed through a town.{/n}''',
         paragraphs=(

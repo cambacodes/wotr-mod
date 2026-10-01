@@ -63,7 +63,7 @@ session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
         c('"I\'m going to need to examine that scratch. Very thoroughly."', "examine")),
     a("pet", '''"It isn't mine. Nobody owns a cat, the apprentice says. It took my fish, and scratched me, and came back this morning anyway, and she says that means it likes me." {n}She frowns at the scratch, and then beams.{/n} "I'm going to buy it a fish."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
-    a("examine", '''{n}She laughs and hides the hand behind her back.{/n} "You are the worst thing that ever happened to a demon. The scratch is fine. The scratch is perfect. I'm keeping it until it scars." {n}She pauses.{/n} "Do succubi scar? I don't know. I'll find out. That can go in the notes too."''',
+    a("examine", '''{n}She puts the hand behind her back, not quickly.{/n} "It's a scratch, doctor. A small animal didn't want me, and then did, and left a mark on its way out." {n}She considers that, frowning a little.{/n} "I want to keep it. I don't know why anyone would want to keep a thing that hurt. Do succubi scar? I don't know. I suppose I'll find out."''',
         c("[Let her go and buy it a fish.]", flags=(CAT,))),
 ], (MEALTIMES,), delay=24, chapters=(3, 5))   # Drezen-set (the smithy roof): not in the Abyss (R2-5)
 
@@ -156,7 +156,7 @@ session(WOUND, "The doctor is out", 5, '"You\'re sitting up. Good."', [
     nar("start", '''{n}The wound is not serious, the chaplains say, which is what they say about wounds that nearly were. You are propped up in the field hospital with your side strapped and a taste of healing potion in your mouth like old pennies, and she is sitting on the stool beside the cot where she has been sitting, the orderlies tell you, for eleven hours.{/n}''',
         c("Continue", "helpless")),
     a("helpless", '''"I couldn't do anything." {n}She is holding her own hands in her lap, as if they were a pair of animals that might get loose.{/n} "They carried you in and there was so much of you on the stretcher, and every healer in the tent went to work, and I just stood there. I knew exactly where it would hurt you, and not one thing to do about it."
-"Sosiel had to ask me to move. Twice. The second time he took my arm and walked me out, and he was very kind about it, and I wanted to kill him for being able to help."''',
+"The orderly had to ask me to move. Twice. The second time she took me by the sleeve and walked me out, and she was very kind about it, and I wanted to kill her for being able to help."''',
         c("Continue", "stitch")),
     a("stitch", '''{n}She picks up a needle and a reel of gut from the orderly's tray, holding them as if they were contraband.{/n}
 "So I asked the surgeon to teach me this. While you were asleep. I practised on a pig's belly from the kitchens." {n}She is blushing furiously.{/n} "It turns out I have very steady hands. It turns out that's what all those centuries were good for. The surgeon says I'm a natural. I didn't tell her why."

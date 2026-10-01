@@ -84,8 +84,8 @@ hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me
 # --- "Teach me the trick" --------------------------------------------------------------------------------------
 
 hub(TEACH, "The one trick", 5, '"Teach me how you do it."', [
-    a("start", '''"The ward. The scroll. The way you read it, and the cold simply doesn't come." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
-"Teach me to do it. Then I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench." {n}Her voice wavers.{/n} "Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
+    a("start", '''"The ward. The scroll. The way the chaplain reads it over you, and the cold simply doesn't come." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
+"Teach me how it's done. Could I learn the words? Could I arrange it myself, for somebody else? Then I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench." {n}Her voice wavers.{/n} "Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
         c("Continue", "try")),
     nar("try", '''{n}You try. You put a spent scroll case in her hands and show her how the words run, and she follows them with one finger, line by line, the way she follows a stranger's face in the market. Then you tell her the plain thing the shrine's chaplain told you, the thing you should have told her first: the ward goes on the one who is touched, not on the one who touches. She could have every scroll in Drezen read over herself, and her hand would take exactly what it always took.{/n}
 {n}She sits with that for a long time, turning the empty case over and over.{/n}''',

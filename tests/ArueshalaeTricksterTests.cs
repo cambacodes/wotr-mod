@@ -447,6 +447,40 @@ internal static class ArueshalaeTricksterTests
         check(new[] { "react.sosiel_fallen", "react.lann_fallen_hungry", "react.lann_fallen_prisoner" }.All(id => S(P + id).Requires.Contains("arueshalae.evil_recruited")),
             "Trk_Arueshalae_FallenWitnesses: the living fallen arrangement has no companion witnesses.");
         check(S(T + "first_quarrel").Requires.Contains(T + "cure_works"), "The quarrel over the scrolls can play before any scroll was spent.");
+        // Sol r2 (HOW/INT): one chronological living-route witness, earned through actual answers from the night reading
+        // (only trickster and trickster.ever are pre-set; every later flag carries the hour it was earned; the scroll is
+        // bought explicitly before the procedure). It reaches Threshold before her proposal: the late answer (R2-6) and
+        // her Last Call coda must both be there.
+        Snapshot Step(Snapshot from, string id, string node, int index, int hours, int? chapter = null)
+        {
+            var t = Later(story, from, hours, chapter);
+            t.Area = Drezen;
+            check(Avail(S(id), t), "Trk_Arueshalae_ChronologyWalk: " + id + " is not available when it should be.");
+            var outs = Program.WalkVia(S(id), t, node, index).Where(r => r.Has(id)).ToList();
+            check(outs.Count > 0, "Trk_Arueshalae_ChronologyWalk: " + id + "/" + node + "[" + index + "] does not complete.");
+            return outs.FirstOrDefault() ?? t;
+        }
+        var walk = World(story, 3, Drezen, "trickster", "trickster.ever");
+        walk = Step(walk, T + "studied", "why", 1, 1);
+        walk = Step(walk, T + "intake", "her", 0, 1);
+        walk = Step(walk, T + "mealtimes", "evening", 0, 24);
+        walk = Step(walk, T + "relapse", "stopped", 0, 48);
+        walk.Flags.Add(Ward);   // bought from the Chapter 3 scroll merchant
+        walk = Step(walk, T + "touched", "explain", 3, 48);
+        check(!walk.Has(Ward), "Trk_Arueshalae_ChronologyWalk: the procedure did not spend the scroll.");
+        walk = Step(walk, T + "alushinyrra_drezen", "meal", 0, 24, 5);
+        walk = Step(walk, T + "kitchen", "taste", 1, 48);
+        walk = Step(walk, T + "rite_slipped", "distance", 0, 24);
+        walk = Step(walk, T + "relapse_two", "ask", 2, 48);
+        check(!Avail(proposal, Later(story, walk, 167)) && Avail(proposal, Later(story, walk, 168)),
+            "Trk_Arueshalae_ChronologyWalk: the proposal does not wait exactly the fast's seven days from the relapse.");
+        var threshold = Later(story, walk, 100, 6);
+        var atLastCall = Program.Copy(threshold); atLastCall.Flags.Add("lastcall.active");
+        check(threshold.Has(P + "late_committed") && Avail(S(P + "epilogue.commit"), threshold) && Avail(lostPage, Later(story, atLastCall, 0)),
+            "Trk_Arueshalae_ChronologyWalk: a treatment that reaches Threshold before the proposal has no late answer or Last Call coda.");
+        // No living text names an absent Sosiel as a witness of her count or her vigil.
+        foreach (var id in new[] { T + "the_wound", P + "terms_again_chaplain" })
+            check(!S(id).Nodes.Any(n => n.Text.Contains("Sosiel")), "Trk_Arueshalae_Sosiel: " + id + " needs Sosiel present without a guard.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the Death Ward, the retired returns, the lair kill's closure, the chaplain, the treatment and her proposal, the arcade, and the retired court.");
     }
 }

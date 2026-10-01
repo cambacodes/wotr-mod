@@ -122,9 +122,9 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
 
 hub(QUARREL, "Second opinion", 5, '"You\'re angry with me."', [
     a("start", '''"Yes. I am." {n}She has her arms folded and her chin up, and the quartermaster's ledger under one of them.{/n}
-"I counted the seals. I went through his book line by line, the way I used to go through a mark's letters. Since the procedure you've bought more scrolls of death ward than the shrine buys in a season, and every one of them so that I could hold your hand for seven minutes." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take anything from anybody. And you've been paying for me by the minute, out of the same purse that buys arrows, and you never once told me the sum."''',
+"I counted the seals. Every seal I've watched the chaplain break over you since the procedure, every one of them so that I could hold your hand for seven minutes. And then I went to the scroll-sellers and asked the price, the way I used to price a mark's jewels." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take anything from anybody. And you've been paying for me by the minute, and you never once told me the sum."''',
         c("Continue", "fear")),
-    a("fear", '''"Do you know what I thought, when I added it up? Not 'how kind'. I thought: that's a sergeant's pay, gone in the time it takes a candle to drip. That's bread for the refugee quarter. That's what Lady Vellexia's guests spent to sit at her table, and she ate them anyway." {n}She is crying now, and furious about it.{/n}
+    a("fear", '''"Do you know what I thought, when I added it up? Not 'how kind'. I thought: that's a sergeant's pay, gone in the time it takes a candle to drip. That's bread for a street of the refugee quarter. That's what Lady Vellexia's guests spent to sit at her table, and she ate them anyway." {n}She is crying now, and furious about it.{/n}
 "So yes. I'm angry. I'm going to be angry for at least a day. And you're going to let me, and you're not going to make a joke about it, and from now on you're going to tell me before you buy another, so that I can say no."''',
         c('"I\'ll tell you. Before. Every time."', "promise", flags=(QUARREL,)),
         c('"No. It\'s my coin, and it\'s my hand. I\'ll spend both as I like."', "cant", flags=(QUARREL,))),
