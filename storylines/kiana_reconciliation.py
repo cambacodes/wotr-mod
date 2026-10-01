@@ -9,7 +9,7 @@ BRIDGES = {
         '''"We separated. Then he died. You need not choose which of those facts may sit at my table."
 {n}Kiana looks at Lenna, then at Odrin.{/n}
 "I miss him, Lenna. I also left him. Pass the onions before this becomes a trial."
-{n}Lenna puts her spoon down. "I'm sorry. I was trying to say something kind."
+{n}Lenna puts her spoon down.{/n} "I'm sorry. I was trying to say something kind."
 "I know. Tell me something else. Tell me how Odrin came to owe your butcher money."
 "That was the dog," Odrin says immediately.
 {n}Kiana reaches for the onions. "Then begin with the dog."{/n}''',
@@ -52,7 +52,7 @@ BRIDGES = {
 "I'll tell him."
 "Tell him to write. Let me answer him."''',
         '''"Ask Meral to write to me," Kiana says. "And please don't arrange a surprise reunion because somebody thinks they have heard something."
-{n}Edris's face changes. "I wouldn't."
+{n}Edris's face changes.{/n} "I wouldn't."
 "Good. Send me the guest list. I refuse to be surprised halfway up those stairs."
 {n}Edris nods, more slowly this time.{/n}
 "I'll ask him to write."

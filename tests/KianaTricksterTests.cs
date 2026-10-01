@@ -11,12 +11,14 @@ internal static class KianaTricksterTests
     private const string Arsinoe = "a609ed9b2205d034bb3bb04d2a255681";
     private const string ArsinoeHub = "ecaf5cfe8087a4f45a2269974f4885c9";
     private const string Counterfeit = "3e4ce583dc71401588f33f8192c252cd";
+    private const string Kyana = "180b0eaa5dce387458d2ebf0ee943985";
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
         state.Flags.UnionWith(flags);
         state.AvailableContacts.Add(Arsinoe);
+        state.AvailableContacts.Add(Kyana);   // Q10: her spawned copy stands at Arsinoe's counter
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 400;
         return state;
@@ -56,8 +58,9 @@ internal static class KianaTricksterTests
         var rel = story.Relationships["kiana"];
         check(rel.TricksterAccess.Count == 4 && rel.TricksterAccess["aftermath_missed"].Returned == "kiana.trickster.met"
               && rel.TricksterAccess["possessed_no_rescue"].Returned == "kiana.trickster.returned", "Kiana access map missing.");
-        check(story.Presences.TryGetValue("kiana.presence", out var presence) && presence.Unit == "180b0eaa5dce387458d2ebf0ee943985"
-              && presence.Mode == "reuse-native", "Kiana presence missing.");
+        check(story.Presences.TryGetValue("kiana.presence", out var presence) && presence.Unit == Kyana
+              && presence.Mode == "spawn-copy" && presence.At?.NearUnit == Arsinoe && presence.Dialog == "hub", "Kiana presence missing.");
+        check(temple.AdditionalContactUnits.SequenceEqual(new[] { Kyana }), "Q10: the pivot plays without Kiana's own actor.");
         var terms = gem.Nodes.Single(n => n.Id == "terms").Choices;
         check(terms[0].Mythic == "PlayerIsTrickster" && terms[0].Alignment?.Direction == "Chaotic" && terms[0].Alignment.Value == 1,
             "The appraisal lost its price.");
@@ -253,7 +256,7 @@ internal static class KianaTricksterTests
         var late = World(story, 6, "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.history_married");
         check(Rules.Available(story, epCommit, late) && !Any(late, S("kiana.ending_unfinished"), S("kiana.trickster.ending_unfinished")),
             "Trk_Kiana_EpilogueCommit failed.");
-        check(epCommit.Nodes[0].Choices.Count == 2 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
+        check(epCommit.Nodes[0].Choices.Count == 3 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
         var notYet = World(story, 6, "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.morning", "kiana.uncertain");
         check(!Rules.Available(story, epCommit, notYet) && Rules.Available(story, S("kiana.trickster.ending_unfinished"), notYet)
               && !Rules.Available(story, S("kiana.ending_unfinished"), notYet), "Her 'then don't promise it' is not honoured.");
@@ -332,13 +335,59 @@ internal static class KianaTricksterTests
             "Q10: the licence is both held and framed.");
         // Q10 (HOW, R2-6): the late yes reaches her Last Call coda; her "then don't promise it" and a parting keep it off.
         var coda = S("kiana.lastcall.page");
-        var lateYes = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers");
+        var loversOnly = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers");
+        check(!loversOnly.Has("kiana.trickster.late_committed") && !Rules.Available(story, coda, loversOnly),
+            "Q10 (R2-1): lovers alone establish the late commitment.");
+        var question = S("kiana.trickster.late_question");
+        var asked = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers");
+        var answers = Program.Walk(question, asked);
+        check(Rules.Available(story, question, asked) && answers.Count == 2 && answers.Count(r => r.Has("kiana.trickster.late_yes")) == 1
+              && answers.Count(r => r.Has("kiana.trickster.late_no")) == 1, "Q10: the late question lacks its yes or its no.");
+        var saidNo = answers.Single(r => r.Has("kiana.trickster.late_no"));
+        check(!saidNo.Has("kiana.trickster.late_committed") && !Rules.Available(story, epCommit, saidNo)
+              && Rules.Available(story, S("kiana.trickster.epilogue.late_no"), saidNo), "Q10: the late no does not reach its own ending.");
+        check(Program.Walk(epCommit, asked).Any(r => r.Has(epCommit.Id)) && Pages(epCommit, asked).Contains("blank"),
+            "Q10: the epilogue question cannot be refused.");
+        var saidYes = answers.Single(r => r.Has("kiana.trickster.late_yes"));
+        check(!Pages(epCommit, saidYes).Contains("blank"), "Q10: a written yes is asked again and may be refused.");
+        var lateYes = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers", "kiana.trickster.late_yes");
         check(lateYes.Has("kiana.trickster.late_committed") && Rules.Available(story, coda, lateYes), "Q10: the late commit loses her Last Call coda.");
         foreach (var off in new[] { "kiana.uncertain", "kiana.parting" })
         {
             var w = Program.Copy(lateYes); w.Flags.Add(off); Rules.Complete(story, w);
             check(!Rules.Available(story, coda, w), "Q10: her Last Call coda plays after " + off);
         }
+
+        // Q10 (CAN): the pivot's account matches what the Commander did: the Bluff, the bolt, the swap.
+        var bolted = gemOut.Single(r => r.Has("kiana.trickster.cost.courier_marked"));
+        var swappedOut = swapped[0];
+        var soldTold = Pages(temple, Later(story, sold, 24));
+        var boltTold = Pages(temple, Later(story, bolted, 24));
+        var swapTold = Pages(temple, Later(story, swappedOut, 24));
+        check(soldTold.Contains("told_robbed") && !soldTold.Contains("told_bolted") && !soldTold.Contains("told_swapped")
+              && boltTold.Contains("told_bolted") && !boltTold.Contains("told_robbed")
+              && swapTold.Contains("told_swapped") && !swapTold.Contains("told_robbed") && !swapTold.Contains("told_bolted"),
+            "Q10: the pivot recalls a rescue the Commander did not make.");
+        check(!temple.Nodes.Any(n => n.Text.Contains("*thanked*")), "Q10: the apprentice thanks the Commander for breaking his stone.");
+        // Q10 (INT): no Kiana actor, no pivot at the counter; an unplaced copy opens the letter twin, not before.
+        var noKiana = Later(story, sold, 24); noKiana.AvailableContacts.Remove(Kyana);
+        var twin = S("kiana.trickster.after.letter");
+        check(!Rules.Available(story, temple, noKiana) && !Rules.Available(story, twin, noKiana), "Q10: the pivot plays without Kiana.");
+        var unplaced = Later(story, sold, 24); unplaced.AvailableContacts.Remove(Kyana); unplaced.AvailableContacts.Remove(Arsinoe);
+        unplaced.Flags.Add("kiana.presence.failed");
+        check(Rules.IsRemote(twin) && Rules.Available(story, twin, unplaced) && Program.Walk(twin, unplaced).Any(r => r.Has("kiana.trickster.met")),
+            "Q10: a failed anchor strands the pivot.");
+        check(Program.Walk(temple, Later(story, sold, 24)).All(r => { var after = Program.Copy(r); after.Flags.Add("kiana.presence.failed"); return !Rules.Available(story, twin, Later(story, after, 48)); }), "Q10: the pivot and its letter twin both play.");
+        var presenceSpec = story.Presences["kiana.presence"];
+        var placedWorld = Later(story, sold, 24);
+        check(Rules.PresenceWanted(presenceSpec, placedWorld)
+              && Rules.PlanPresence(presenceSpec, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = true }).SequenceEqual(new[] { PresenceStep.Spawn })
+              && Rules.PlanPresence(presenceSpec, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false }).SequenceEqual(new[] { PresenceStep.Blocked }),
+            "Q10: Kiana's copy is not spawned beside Arsinoe, or is spawned without her.");
+        var rounds = S("kiana.trickster.ward_rounds");
+        check(rounds.InteractionHub == "kiana.presence" && rounds.ContactUnit == Kyana && Rules.IsPresenceHubScene(rounds)
+              && !Rules.Available(story, rounds, Later(story, sold, 48)) && Rules.Available(story, rounds, Later(story, met, 24)),
+            "Q10: her hub has no beat after the pivot.");
 
         // Exclusivity: one device per world.
         foreach (var w in new[] { seen, missedWife, possessed, awake, noKing })

@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1036,
-  "resolved": 1036,
+  "entryTargetScenes": 1038,
+  "resolved": 1038,
   "inlineOnlyScenes": 271,
   "inlineOnlyResolved": 271,
-  "answerListScenesWithoutContact": 618,
-  "answerListScenesWithoutContactResolved": 618,
+  "answerListScenesWithoutContact": 620,
+  "answerListScenesWithoutContactResolved": 620,
   "lists": 111,
   "listsWithReachableHost": 110
  },
@@ -16908,6 +16908,25 @@
     "clicks": 0
    }
   },
+  "seelah.trickster.dead.react_irabeth_taken": {
+   "kind": "dialog",
+   "lists": [
+    "871af36f2ab2b1f40b5de77976c54276"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "871af36f2ab2b1f40b5de77976c54276": "RRT_entry.seelah.trickster.dead.react_irabeth_taken"
+   },
+   "resolved": true,
+   "host": {
+    "list": "871af36f2ab2b1f40b5de77976c54276",
+    "dialog": "20e94a828d4016d45a6b723765306522",
+    "dialogName": "Irabeth_Dialogue",
+    "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
   "seelah.trickster.dead.react_sosiel": {
    "kind": "dialog",
    "lists": [
@@ -16943,6 +16962,25 @@
     "dialog": "0ec4d9a0f5599a44c8a25f77da94bfd7",
     "dialogName": "Dialogue_Sosiel_Main",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "seelah.trickster.dead.seller_word": {
+   "kind": "dialog",
+   "lists": [
+    "417fa384f3250634bb71859fbc913453"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "417fa384f3250634bb71859fbc913453": "RRT_entry.seelah.trickster.dead.seller_word"
+   },
+   "resolved": true,
+   "host": {
+    "list": "417fa384f3250634bb71859fbc913453",
+    "dialog": "ed7b39d0716d25c439f2b93c409da883",
+    "dialogName": "Seelah_Main_dialog",
+    "cue": "Cue_0002",
     "clicks": 0
    }
   },

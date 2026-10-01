@@ -487,7 +487,7 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'jerribeth.trickster.late_committed': [['trickster.ever', 'jerribeth.commission']],
  'kaylessa.trickster.late_committed': [['trickster.ever', 'kaylessa.trickster.clock_named']],
  'kaylessa.trickster.presence_on': [['kaylessa.trickster.primed'], ['kaylessa.trickster.returned']],
- 'kiana.trickster.late_committed': [['trickster.ever', 'kiana.trickster.met', 'kiana.lovers']],
+ 'kiana.trickster.late_committed': [['trickster.ever', 'kiana.trickster.met', 'kiana.lovers', 'kiana.trickster.late_yes']],
  'konomi.trickster.late_committed': [['trickster.ever', 'konomi.trickster.terms_settled', 'konomi.lovers']],
  'konomi.trickster.presence_on': [['konomi.trickster.cost.late', 'konomi.dismissed', 'konomi.trickster.back_from_the_road'],
                                   ['konomi.trickster.cost.accredited', 'konomi.missed_letter_sent', 'konomi.trickster.arrived']],
