@@ -205,6 +205,18 @@ internal static class PacingPP2Tests
         check(coda.RequiresAnyGroups.Any(g => g.Contains("arueshalae.committed") && g.Contains("arueshalae.trickster.late_committed"))
               && coda.Forbids.Contains("arueshalae.trickster.ally") && coda.Forbids.Contains("arueshalae.trickster.declined"),
             "Arueshalae: the Last Call coda ignores the late yes, or plays after her refusal.");
+        // Sol r3: arueshalae.changed is the release from the Abyss (two native paths); only BestEnding has the study's flowers.
+        check(!story.Scenes.Where(s => s.Relationship == "arueshalae").SelectMany(s => s.Nodes)
+                  .SelectMany(n => n.Paragraphs.Select(pp => pp.Text).Prepend(n.Text)).Any(t => t.Contains("the flowers", StringComparison.OrdinalIgnoreCase)),
+            "Arueshalae: a changed-state reader still recalls the flowers, which the BackToReality release never shows.");
+        check(S("arueshalae.trickster.react.sosiel_chaplain").Requires.Contains("arueshalae.trickster.chaplain.the_dying"),
+            "Arueshalae: Sosiel recalls the dying pikeman before the vigil.");
+        var counting = S("arueshalae.trickster.returned.counting");
+        check(C(counting, "start", 0).Requires.Contains("arueshalae.trickster.react.sosiel_fed") && C(counting, "start", 1).Requires.Contains("arueshalae.trickster.react.lann_prisoner")
+              && C(counting, "start", 2).Next == "you_alone" && C(counting, "start", 3).Next == "him_alone",
+            "Arueshalae: the count recalls Sosiel's offer or Lann's word where those reactions never played.");
+        check(new[] { city, cityYard }.All(s => N(s, "price").Choices.Select(ch => ch.Next).SequenceEqual(new[] { "taste", "cultist", "refuse" })),
+            "Arueshalae: the Drezen reunion offers a captive or courier nobody secured.");
         foreach (var id in new[] { "commit", "kept", "kept_fallen", "fallen" })
         {
             var page = S("arueshalae.trickster.epilogue." + id);

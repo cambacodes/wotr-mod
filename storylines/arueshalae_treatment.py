@@ -419,8 +419,8 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
 "I come here to be where she can see me," she says. "I don't pray. I just sit where she can see."''',
         c("Continue", "flowers", requires=(ELYSIUM,)),
         c("Continue", "stars", forbids=(ELYSIUM,))),
-    a("flowers", '''{n}She has brought one of the white flowers from the study, the ones she says came from Elysium, and she tucks it into a crack in the stone.{/n}
-"Your cure hasn't got anything to cure any more. Have you noticed? Since the flowers, my touch doesn't take." {n}She laughs, a little helplessly.{/n} "All those candles. All that reading. And there's nothing left in me to take the cold out of you." {n}She sounds almost cheated.{/n} "I keep expecting you to grow cold. You don't."''',
+    a("flowers", '''{n}She has nothing in her hands tonight, and she keeps looking at them, as if they belonged to someone else.{/n}
+"Your cure hasn't got anything to cure any more. Have you noticed? Since the Abyss let go of me, my touch doesn't take." {n}She laughs, a little helplessly.{/n} "All those candles. All that reading. And there's nothing left in me to take the cold out of you." {n}She sounds almost cheated.{/n} "I keep expecting you to grow cold. You don't."''',
         c("Continue", "undress")),
     a("stars", '''"I know how to make a mortal want me. I learned it in the Upper City, and I hate remembering how." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
         c("Continue", "cure", requires=(CURE,)),
@@ -465,7 +465,7 @@ session(MORNING, "Case notes, continued", 5, '"Good morning, doctor."', [
 "Nothing. Not a drop, the whole night. I kept waiting for the cold to start in you and it never came, and I didn't know what to do with my hands, because they'd always had a job before." {n}She laughs, unsteadily.{/n} "I brought one of your candles up in my pocket, out of habit. It's still there. I nearly lit it at midnight, just to have something to blame."''',
         c('"Put it in the case notes: patient recovering."', "recovering_e", flags=(MORNING,)),
         c('"Put it in the case notes: doctor recovering."', "doctor_e", flags=(MORNING,))),
-    a("recovering_e", '''"Recovering." {n}She writes it, and looks at the word, and crosses it out.{/n} "No. I don't know what this is. The flowers came, and the hunger went quiet, and I keep listening for it the way you listen for a dog that's stopped barking." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "Write 'under observation.' I'm going to watch it for a long time before I believe it."''', c()),
+    a("recovering_e", '''"Recovering." {n}She writes it, and looks at the word, and crosses it out.{/n} "No. I don't know what this is. The Abyss let go of me, and the hunger went quiet, and I keep listening for it the way you listen for a dog that's stopped barking." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "Write 'under observation.' I'm going to watch it for a long time before I believe it."''', c()),
     a("doctor_e", '''{n}She looks you over, frankly, from your hair to your bare feet.{/n} "The doctor isn't recovering from anything. The doctor's pink. The doctor slept like a baby on a bell-floor, and I lay awake all night beside a warm mortal and didn't take one thing." {n}She writes it anyway.{/n}
 "Doctor: insufferable. Patient: frightened of how good this is." {n}She kisses your forehead and then, because she can, your mouth.{/n} "Stay till the sun's up. Doctor's orders. Mine."''', c()),
 ], (NIGHT, "trickster.ever"), forbids=(MORNING,), delay=6, chapters=(5,))
@@ -479,7 +479,7 @@ for _scene in SCENES:
 
 DISCHARGED = T + "discharged"
 session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching things."', [
-    a("start", '''"I do, don't I?" {n}She is sitting on the edge of her bedroll with her bare hands in her lap, turning them over, as if they belonged to someone she had just been introduced to.{/n} "The flowers came, and since the flowers I've touched the quartermaster, a horse, three novices and the cat. On purpose. Nobody went grey. Nobody even noticed."
+    a("start", '''"I do, don't I?" {n}She is sitting on the edge of her bedroll with her bare hands in her lap, turning them over, as if they belonged to someone she had just been introduced to.{/n} "The Abyss let go of me, and since then I've touched the quartermaster, a horse, three novices and the cat. On purpose. Nobody went grey. Nobody even noticed."
 {n}She looks up at you, and laughs, and it shakes.{/n} "You've lost your only patient, doctor. There's nothing left in me for your candles to take."''',
         c("Continue", "ask")),
     a("ask", '''"So I'm going to do the thing on my list I was keeping for when I was cured, because I'm not going to get a better day for it." {n}She stands, and takes your hand, and holds it, and nothing happens except that she holds it.{/n} "Will you have me? Not your patient. Me. The one who's left."''',

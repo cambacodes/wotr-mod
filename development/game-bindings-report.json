@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pp2\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4716,
-  "unique_targets": 1036,
+  "binding_uses": 4719,
+  "unique_targets": 1037,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -2188,6 +2188,10 @@
     },
     "6b24754fcea768342a30a1e18ce91b92": {
       "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q3/BackToReality/Cue_0018.jbp",
+      "type": "BlueprintCue"
+    },
+    "8ad7c2ba0e060e545b12269cc5ced777": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q3/BackToReality/Cue_0025.jbp",
       "type": "BlueprintCue"
     },
     "d977fae7974bb88419e51e2c33876aac": {

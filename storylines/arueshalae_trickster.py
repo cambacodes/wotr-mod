@@ -437,8 +437,11 @@ CITY_REUNION = [
     a("price", '''"They left me at your gate like a parcel, and I've been sitting in your city all day waiting to be collected. So. The fee for a house call, doctor." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
     *REUNION_ENDS,
 ]
+CITY_DROPPED = ("babau", "demon")
 for _hub, _suffix, _extra, _unit in DREZEN_PLACES:
-    _nodes = copy.deepcopy(CITY_REUNION)
+    _nodes = [nd for nd in copy.deepcopy(CITY_REUNION) if nd["Id"] not in CITY_DROPPED]
+    for _node in _nodes:
+        _node["Choices"] = [ch for ch in _node["Choices"] if ch.get("Next") not in CITY_DROPPED]
     for _node in _nodes:
         _node["Text"] = _node["Text"].replace(
             "Your soldiers drag it in on a chain: a babau from her own gang, the one that ran when the balor fell, which they dug "
@@ -510,7 +513,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
         c("Continue", "fed", requires=(AFTERTASTE,), forbids=(ELYSIUM_DONE,)),
         c("Continue", "chaplain", forbids=(AFTERTASTE,)),
         c("Continue", "fed_e", requires=(AFTERTASTE, ELYSIUM_DONE))),
-    a("fed_e", '''"I used to count. Days since I last wanted to bite someone." {n}She turns the blade over, looking at her reflection in it.{/n} "Since the flowers I keep losing count, because nothing happens to make me start again. A novice cut his hand on the altar rail yesterday, and I bound it, and that was all. That was all, Commander."''',
+    a("fed_e", '''"I used to count. Days since I last wanted to bite someone." {n}She turns the blade over, looking at her reflection in it.{/n} "Since the Abyss let go of me I keep losing count, because nothing happens to make me start again. A novice cut his hand on the altar rail yesterday, and I bound it, and that was all. That was all, Commander."''',
       c("Continue", "question")),
     a("fed", '''"I've been counting. Days since I last wanted to bite someone. The number keeps going back to zero." {n}She turns the blade over, looking at her reflection in it.{/n} "It went back to zero yesterday. A novice cut his hand on the altar rail, and I had to go and stand in the well-house until it stopped smelling of him."''',
       c("Continue", "question")),
@@ -522,7 +525,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c('[Let her keep her answer for now] "Then I\'ll ask again."', "not_yet", flags=(DECLINED,)),
       c('"Neither."', "neither", flags=(CLOSED,)),
       c('"Only the good days."', "saint_e", flags=(SAINT_ONLY, DECLINED), requires=(ELYSIUM_DONE,))),
-    a("saint_e", '''{n}She lays the blade down very carefully.{/n} "The flowers came, and the hunger went quiet, and you still want me to keep my bad days in another room." {n}Her voice is gentle and does not move.{/n} "I can't. They're mine too, Commander, the way the scars are mine. No. Ask me again when you want the woman who has them."''', c()),
+    a("saint_e", '''{n}She lays the blade down very carefully.{/n} "The Abyss let go of me, and the hunger went quiet, and you still want me to keep my bad days in another room." {n}Her voice is gentle and does not move.{/n} "I can't. They're mine too, Commander, the way the scars are mine. No. Ask me again when you want the woman who has them."''', c()),
     a("both", '''"Both." {n}She closes her eyes.{/n} "I was afraid you'd say that. I hoped you would."
 {n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} "Both. All right. Both."''', c()),
     a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} {n}She picks the blade back up and holds it the way she holds it at the rail, as if it might cut her.{/n} "The hunger is in the good days too. It's in the blessing, and the bread, and in your hand when you pass me the cup. I can't send it into the next room while you visit." {n}Very quietly:{/n} "No. I'm sorry. I am. If you ever find you can bear the rest of me, I'll be on these steps."''', c()),
@@ -732,7 +735,7 @@ SCENES.extend([
     reaction("Sosiel", P + "react.sosiel_evil", (RETURNED, EVIL_DEAD),
              '''"I prayed for her the night she died at the lair." {n}Sosiel turns his cup in his hands.{/n} "I'm not sorry she's back. I'm afraid of what you promised to bring her, and I'll pray about that too. Every night, if you'll let me. Even if you won't."''',
              chapter=5, last=5, entry='"About Arueshalae..."', **SOSIEL),
-    reaction("Sosiel", P + "react.sosiel_chaplain", (CHAPLAIN,),
+    reaction("Sosiel", P + "react.sosiel_chaplain", (CHAPLAIN, P + "chaplain.the_dying"),   # Sol r3 INT: after the vigil it recalls
              '''"I've been helping her with the sermons." {n}Sosiel smiles, which is not something he does lightly about sermons.{/n} "She stayed with a dying pikeman until the lamps burned low, last night. I would have been glad of her at my own bedside."''',
              chapter=3, last=5, entry='"About Arueshalae..."', **SOSIEL),
     reaction("Sosiel", P + "react.sosiel_gift", (RETURNED, GIFT_TORN),
