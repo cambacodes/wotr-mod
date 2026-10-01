@@ -65,7 +65,7 @@ visit(OWN_FORM, "Her own face", [
 "And because she'll fly soon. The first time she looks down from the sky, I want her to see me, and not a cushion and a basket on a step." {n}Her chin comes up again.{/n} "That's two reasons. I had a third. I've lost it, standing here being looked at."''',
         c("Continue", "mother", requires=(DV_RETURNED,)),
         c("Continue", "eat", forbids=(DV_RETURNED,))),
-    nd("mother", '''"And there's a grey dragon on the ridge above your city who comes down at night and lies on the east wall and looks at my kiln." {n}Her voice does not change.{/n} "She hasn't come closer. She hasn't tried, while I'm in it. I'm not afraid of her; I keep the kiln hot and the sergeant's men on the lane, and I'm not the one who stole from her. But I thought you should hear it from me, in this face, and not from your sentries."''',
+    nd("mother", '''"And there's a grey dragon on the ridge above your city who comes down at night and lies on the east wall and looks at my kiln." {n}Her voice does not change.{/n} "She hasn't come closer. She hasn't tried, while I'm in it. I'm not afraid of her; I keep the kiln hot and the sergeant's men on the lane, and I'm not the one who hid this one from her. But I thought you should hear it from me, in this face, and not from your sentries."''',
         c("Continue", "eat")),
     nd("eat", '''"Now eat the soup, before it goes cold and I have to be the widow again to make you." {n}She sits down in your chair, the good one, and crosses her legs, and looks, now, very slightly unsure of herself, as if she had rehearsed everything up to this point and nothing after it.{/n}''',
         c("[Eat the soup, and let her watch you do it.]", "end"),
@@ -242,9 +242,9 @@ visit(SNOWFIELD, "Where the snow stays", [
 {n}Then she bends down to you, slowly, the way she does everything, and her mouth finds yours, and the snowfield takes you both.{/n}''',
         c("Continue", "morning")),
     nar("morning", '''{n}Grey light on the snowfield. Your eyelashes have frozen together, and when you get them open the first thing you see is a red-black face, upside down, with a great many teeth in it, a hand's breadth from your own.{/n}
-{n}The young dragon has found you. She is standing on your chest, which hurts, looking down at you with an expression of enormous disapproval, and every time you breathe she rises and falls.{/n}''',
+{n}The young dragon has found you. She has one forefoot planted on your chest, which hurts, and her head hung over you, looking down with an expression of enormous disapproval, and every time you breathe the foot rises and falls.{/n}''',
         c("Continue", "found")),
-    nd("found", '''"She followed us." {n}Nidalynn's voice is lazy and warm and somewhere behind your head, and you realise that you are lying against her, under the sheepskin, and that she has not put the dress back on.{/n} "All the way up. In the dark." {n}She sounds indecently proud.{/n} "She's been sitting on the snow over there since the stars went, sulking. She doesn't approve of you."''',
+    nd("found", '''"She followed us." {n}Nidalynn's voice is lazy and warm and somewhere behind your head, and you realise that you are lying against her, under the sheepskin, and that she has not put the dress back on.{/n} "All the way up. In the dark." {n}She sounds indecently proud.{/n} "She's been sitting over you since the stars went, sulking. She doesn't approve of you."''',
         c('"She\'s standing on me."', "standing"),
         c("[Scratch the young dragon under the jaw.]", "scratch")),
     nd("standing", '''"She is. It's a great honour." {n}She reaches up past your head and taps the young dragon on the snout, once.{/n} "Off. Off, madam. You'll crack a rib and then who'll feed you?" {n}The young dragon considers this, and gets off, slowly, making it clear that it was her own idea.{/n}''',
@@ -398,3 +398,15 @@ visit(LONG_NIGHT, "What a silver is afraid of", [
 "When she flies. There's somewhere I'll take you. I'll not tell you where. You'd only try to guess, and you'd guess wrong, and be smug about it."''',
         c("[Stay till the embers are grey.]", flags=(LONG_NIGHT,))),
 ], requires=(KISSED,), forbids=(LONG_NIGHT, PROPOSED), delay=24, optional=True)
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP10) ---------------------------------------
+# PATH_FIT is each scene's class today: T (a device, or gated on the Trickster), N-all or N-fit. Every Nidalynn scene is T:
+# off the Gold Dragon path she is met only through an egg the Commander kept by a trick (the golems' ash-bin, the vault's
+# coal or the druids' straw), and every later beat reads that egg. PATH_FIT_V2: her only canon presence is Chapter 5 on
+# the Gold Dragon path (NidalynnQuest1 4adaa0e0, DragonsKenabres), where a lawful good silver sworn to the gold dragon is
+# a fitting romance (14-PATH-FIT); none of these scenes carries over as written, because each is built on the kept egg.
+from storylines import nidalynn_kiln as _kiln, nidalynn_trickster as _trickster
+
+PATH_FIT = {s["Id"]: "T" for s in _trickster.SCENES + _kiln.SCENES + SCENES}
+PATH_FIT_V2 = {}   # candidate path: Gold Dragon (Chapter 5); a v2 route would need its own Kenabres meeting, not these
