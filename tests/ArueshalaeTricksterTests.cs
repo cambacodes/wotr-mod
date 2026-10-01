@@ -357,6 +357,20 @@ internal static class ArueshalaeTricksterTests
               && Program.WalkVia(morning, elysium, "start", 1).Count > 0,
             "After the native Elysium ending, the morning still counts a drain.");
         check(S(T + "prescription").DelayHours >= 168, "The proposal opens before the fast's seven days have passed.");
+        // Ledger row 2: native Nocticula keys reach her route only through Derived aliases, never a choice or scene gate.
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "arueshalae"))
+            check(s.Requires.Concat(s.Forbids).Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)))
+                      .All(k => !k.StartsWith("noct.", StringComparison.Ordinal)),
+                "An Arueshalae scene gates on a native Nocticula key: " + s.Id);
+        // A soft 'not yet' at the proposal, then the native Elysium ending: the discharge still offers the yes.
+        var deferred = World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", P + "declined", "arueshalae.elysium");
+        check(Rules.Available(story, S(T + "discharged"), deferred) && !Rules.Available(story, S(T + "prescription_again"), deferred)
+              && Program.WalkVia(S(T + "discharged"), deferred, "ask", 0).All(r => r.Has("arueshalae.committed")),
+            "A deferred proposal followed by Elysium locks the treatment out of every commit.");
+        // The failed-presence letter serves the late referral as well.
+        check(Rules.Available(story, S(P + "evil.reunion_letter"), Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "returned",
+                  "arueshalae.evil_dead", P + "cost.late", "arueshalae.presence.evil.failed"), 130)),
+            "The late referral has no reunion when the lair presence fails.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the diagnosis, the second opinion, the chaplain, the treatment and her proposal, the arcade, and the queen's favour.");
     }
 }

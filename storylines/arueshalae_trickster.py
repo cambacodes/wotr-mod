@@ -80,10 +80,13 @@ EVERY_TIME = P + "said_every_time"
 IF_ASKED = P + "said_if_asked"
 LATE_COMMITTED = P + "late_committed"
 GIFT = P + "gift_held"                 # "Insurance": she set her profane gift in the Commander's wrist
+ELYSIUM_DONE = "arueshalae.elysium"   # StartedDialogs BestEnding (bound in arueshalae_treatment's world keys)
 GIFT_TORN = P + "cost.gift_torn"       # the gift carried life the wrong way along it, and tore out of the keeper
 IN_HIDING = "noct.defeated_not_dead"          # text-read only (ledger 2): never a scene or choice gate
 QUEEN_HIDING = P + "queen_in_hiding"          # Derived node-read alias of IN_HIDING (the second opinion's first page)
 FOOLED = "noct.fooled"                        # text-read only
+QUEEN_FOOLED = P + "queen_fooled"             # Derived node-read alias of FOOLED
+FAVOUR_SETTLED = "nocticula.trickster.favour_called.arueshalae"   # Nocticula's court.arueshalae collected the favour
 DEAD_LATCH = "arueshalae_dead.latched"
 EVIL_LATCH = "arueshalae.evil_dead.latched"
 LAIR_PRESENCE = "arueshalae.presence.evil"
@@ -143,6 +146,8 @@ DERIVED = {
     # node-read only (ledger 2): the queen is in hiding while the letter is written (audit 2026-09-29: UNANSWERED needs
     # the debt this very letter creates, so it could never select the hiding branch)
     QUEEN_HIDING: [[IN_HIDING]],
+    # node-read alias (ledger 2): the queen was fooled at the Council
+    QUEEN_FOOLED: [[FOOLED]],
 }
 
 
@@ -203,7 +208,7 @@ letter(P + "dead.starving", "Diagnosis", 3, [
         c("Continue", "work", requires=(CLAIMED,)),
         c("Continue", "work", forbids=(CLAIMED,))),
     nar("wake", '''{n}The chaplain on duty has already given his answer, with the tiredness of a man who has given it before: he will not raise a demon. The rite calls a soul home to its body, and he will not stand over a succubus and call, and find out what answers. His books say her kind keep no soul apart from the flesh, so that nothing is set loose when they die, and that only a wish or a miracle is sure to bring one back; he has neither, and his bishop would not spend them on her if he had. It is not a question of diamonds.{/n}
-{n}Nothing set loose. You turn that over until it stops sounding like a verdict. Then everything she was is still here on the bier, stopped. And her skin is still doing the one thing every soldier in the crusade knows it does: any caress, of any kind, sucks the life out of a mortal. The novice on the step is the proof. You have no lore for this, only a field healer's hands and a wager nobody in this chapel has seen tried: that you can give her back what she is missing the only way her body has ever taken anything, by touch, and hold on long enough to start her again. It may not be enough. It may take more of you than you have.{/n}''',
+{n}Nothing set loose. You turn that over until it stops sounding like a verdict. Then everything she was is still here on the bier, stopped. And her skin is still doing the one thing every soldier in the crusade knows it does: any caress, of any kind, sucks the life out of a mortal. The novice on the step is the proof. You test it first, the way a field surgeon tests a wound: two fingers on the inside of her wrist, held there for a count of ten. The cold takes them at once, deep and greedy. And at the count of nine the grey of her lips goes faintly, unmistakably pink, and holds for a breath before it fades. Whatever her skin takes, it is still taking it into something. You have no lore for this, only a field healer's hands and a wager nobody in this chapel has seen tried: that you can give her back what she is missing the only way her body has ever taken anything, by touch, and hold on long enough to start her again. It may not be enough. It may take more of you than you have.{/n}''',
         c('[Lie down beside her, skin to skin, and let her take]',
           check={"Skill": "SkillLoreReligion", "DC": 22, "Success": "rite_holds", "Failure": "rite_fails"})),
     nar("rite_holds", '''{n}It takes the better part of an hour. The chaplain stops protesting and starts holding the candle for you. The pull comes and goes; twice it stops altogether, and twice you hold on through the stopping. Your hands go numb, and then your arms, and the room goes grey at the edges. Then, somewhere past the point where you could have let go and did not, the pull turns into something with a will behind it. Her body, which was built to take before its owner can stop it, takes. Something under your hand goes from stone to skin. The sprig slides out of her hands.{/n}
@@ -212,7 +217,7 @@ letter(P + "dead.starving", "Diagnosis", 3, [
         c("Continue", "plea", forbids=(CLAIMED,))),
     nar("rite_fails", '''{n}Something takes, a little, and then stops, and the cold goes on being only cold. After an hour you cannot feel your hands. The chaplain pulls you off the bier by the collar and says, not unkindly, that the body will keep until tomorrow, and that you will not, if you try that again tonight.{/n}''',
         c("[Get warm. Try again tomorrow.]", abort=True)),
-    nar("work", '''{n}You take off your gloves and your coat and lie down on the bier beside her, skin to skin, your cheek against hers and your palm flat on her breastbone, and you do not get up when the chaplain starts to protest. For a while there is nothing but cold stone. Then, faint as a draught under a door, it begins: the pull. The lore does not do this for you. It only tells you how to count your own pulse while she takes it, and when you must stop.{/n}''',
+    nar("work", '''{n}You take off your gloves and your coat and lie down on the bier beside her, skin to skin, your cheek against hers and your palm flat on her breastbone, and you do not get up when the chaplain starts to protest. For a while there is nothing but cold stone. You tested it first, the way a field surgeon tests a wound: two fingers on the inside of her wrist, held there for a count of ten. The cold took them at once, deep and greedy. And at the count of nine the grey of her lips went faintly, unmistakably pink, and held for a breath before it faded. Whatever her skin takes, it was still taking it into something. Then, faint as a draught under a door, it begins: the pull. The lore does not do this for you. It only tells you how to count your own pulse while she takes it, and when you must stop.{/n}''',
         c('[Hold on, and keep count of your own heart]',
           check={"Skill": "SkillLoreReligion", "DC": 16, "Success": "rite_holds", "Failure": "rite_fails"})),
     nar("thread", '''{n}The chaplain on duty has already given his answer, with the tiredness of a man who has given it before: he will not raise a demon. The rite calls a soul home to its body, and he will not stand over a succubus and call, and find out what answers. His books say her kind keep no soul apart from the flesh, so that nothing is set loose when they die, and that only a wish or a miracle is sure to bring one back; he has neither, and his bishop would not spend them on her if he had. It is not a question of diamonds.{/n}
@@ -316,9 +321,9 @@ QUEEN_CHOICES = (
 letter(P + "evil.second_opinion", "A second opinion", 5, [
     nar("start", '''{n}The answer comes back on the third morning, and it is not the vrock. It is a moth the size of your hand, black as a closed eye, and it settles on your knuckles and unfolds into a letter that smells of night-blooming flowers.{/n}''',
         c("Continue", "unanswered", requires=(QUEEN_HIDING,)),
-        c("Continue", "fooled", requires=(FOOLED,), forbids=(QUEEN_HIDING,)),
-        c("Continue", "late", requires=(LATE,), forbids=(QUEEN_HIDING, FOOLED)),
-        c("Continue", "queen", forbids=(QUEEN_HIDING, FOOLED, LATE))),
+        c("Continue", "fooled", requires=(QUEEN_FOOLED,), forbids=(QUEEN_HIDING,)),
+        c("Continue", "late", requires=(LATE,), forbids=(QUEEN_HIDING, QUEEN_FOOLED)),
+        c("Continue", "queen", forbids=(QUEEN_HIDING, QUEEN_FOOLED, LATE))),
     noc("queen", '''"A referral. How very civilised. You killed my succubus, Commander, and before the blade had even landed you were recommending me as her physician." {n}The hand is beautiful and not quite steady, as if the writer were laughing.{/n}
 "I am not a physician. I am the reason there are succubi. She is here. She is tedious. She talks about you. I will send her back." ''' + QUEEN_FEE,
         *QUEEN_CHOICES),
@@ -350,10 +355,10 @@ REUNION_OPEN = '''"A second opinion." {n}She smiles with too many teeth.{/n} "Yo
 REUNION_CHOICES = (
     c('[Let her feed] "Just a taste."', "taste", flags=(REUNITED, FED_ON_YOU)),
     c('[Drag a bound cultist forward] "Not me. Him."', "cultist", alignment=("Evil", 2), flags=(REUNITED, FED_ON_PRISONER)),
-    c('[Hand her the vrock courier\'s chain] "You said demons eat demons. Eat the messenger."', "demon",
+    c('[Have the vrock courier caught when it comes back for its fee, and hand her its chain] "Demons eat demons. Eat the messenger."', "demon",
       requires=(LATE,), flags=(REUNITED, FED_ON_DEMON)),
     c('[Refuse her] "Not a drop."', "refuse", flags=(REUNITED, HUNGRY)),
-    c('[Have the babau you took alive from her gang dragged in] "One of your boys survived. Eat him."', "babau",
+    c('[Send a patrol into the rubble for a live one of her gang] "One of your boys survived. Eat him."', "babau",
       forbids=(LATE,), flags=(REUNITED, FED_ON_DEMON)))
 REUNION_ENDS = [
     nar("taste", '''{n}She takes her time. She holds your wrist carefully, the way a good thing would hold it, and then she does not hold it that way at all. When she lets go, she licks her lip and looks at you as if you'd passed an exam you didn't know you were sitting.{/n}
@@ -369,8 +374,8 @@ REUNION_ENDS = [
 ]
 presence_scene(P + "evil.reunion", "The patient sits up", '"You look well, for a corpse."', [
     a("start", REUNION_OPEN + "\n" + "\"But first: I'm starving, and you're the one who prescribed it.\"",
-      c("Continue", "hiding", requires=(IN_HIDING,)),
-      c("Continue", "price", forbids=(IN_HIDING,))),
+      c("Continue", "hiding", requires=(QUEEN_HIDING,)),
+      c("Continue", "price", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's hiding, you know. Our Lady. First time in a thousand years nobody's watching me eat." {n}She says it lightly, and her eyes go to the dark corners of the lair anyway, as if the dark might be listening. In the Midnight Isles, it usually is.{/n}''',
       c("Continue", "price")),
     a("price", '''"So. The fee for a house call, doctor." {n}She stretches out one bare foot and taps your boot with it.{/n} "Somebody's life, a little of it. Yours or anyone's; I'm not fussy. Choose."''', *REUNION_CHOICES),
@@ -382,30 +387,35 @@ letter(P + "evil.reunion_letter", "A note in lipstick", 5, [
 "You didn't come to the lair. Rude. I'm hungry. Leave your window open tonight, or leave a cultist tied to the gate, or leave nothing, and find out what I do about nothing. A."''',
         c("[Leave the window open.]", "window", flags=(REUNITED, FED_ON_YOU)),
         c("[Leave a cultist tied to the gate.]", "gate", alignment=("Evil", 2), flags=(REUNITED, FED_ON_PRISONER)),
-        c("[Chain the babau from her gang to the gate instead.]", "vrock", flags=(REUNITED, FED_ON_DEMON)),
+        c("[Have a patrol dig a live one of her gang out of the lair rubble, and chain it to the gate instead.]", "vrock", flags=(REUNITED, FED_ON_DEMON)),
         c("[Leave nothing, and let her do what she threatened.]", "nothing", flags=(REUNITED, HUNGRY))),
     nar("window", '''{n}You wake at the hour before the first bell, colder than you went to sleep, with a black feather on the pillow and the taste of someone else's lipstick on your mouth.{/n}''', c()),
     nar("gate", '''{n}In the morning the gate guard reports that the prisoner tied there overnight has gone mad and will not stop weeping. Nobody saw anything. Nobody ever does.{/n}''', c()),
     nar("vrock", '''{n}In the morning there is an empty chain at the gate and a smear of something grey and sticky on the cobbles, and a lipstick mark on the gatepost at exactly the height of a woman leaning against it, laughing.{/n}''', c()),
     nar("nothing", '''{n}In the morning a patrol sergeant of the third company does not report for duty. They find him at noon, smiling, and he never wakes up. There is a black feather tucked into his cuff, addressed to you, and on it, in lipstick: "You chose nothing. Nothing has a name now. It's on your account, darling, not mine."{/n}''', c()),
-], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED, LATE),
+], requires=("trickster.ever", RETURNED, EVIL_DEAD, LAIR_FAILED), forbids=(P + "evil.reunion", REUNITED, CLOSED),
     delay=120, chapters=(5,))
 
 TERMS_OPEN = [
     a("terms", '''"I won't wear your colours, and I won't bless anything. I'll come when I'm hungry, and you'll open the door. That's the arrangement. Don't look at me like that. It's the only arrangement I've ever kept."''',
       c("Continue", "debt", requires=(DEBT,)),
-      c("Continue", "favour", forbids=(DEBT,))),
+      c("Continue", "favour", forbids=(DEBT, FAVOUR_SETTLED)),
+      c("Continue", "favour_paid", requires=(FAVOUR_SETTLED,), forbids=(DEBT,))),
+    a("favour_paid", '''"And she came for what you owed her, in her own court, and I stood in the doorway and watched you pay it." {n}Her smile is slow.{/n} "I wanted to see what a Trickster looks like when they're the one being collected. Now I know. I've thought about it every night since. It's the best thing I own."''',
+      c("Continue", "hungry", requires=(HUNGRY,)),
+      c("Continue", "hiding", requires=(QUEEN_HIDING,), forbids=(HUNGRY,)),
+      c("Continue", "ask", forbids=(HUNGRY, QUEEN_HIDING))),
     a("debt", '''"And when she calls, I'll go. Don't sulk. You said yes to it. And don't ever try to stop me: lock a door, hire a priest, stand in my way. I'll go through you to get to her, and I won't be gentle, because she won't let me be."''',
       c("Continue", "hungry", requires=(HUNGRY,)),
-      c("Continue", "hiding", requires=(IN_HIDING,), forbids=(HUNGRY,)),
-      c("Continue", "ask", forbids=(HUNGRY, IN_HIDING))),
+      c("Continue", "hiding", requires=(QUEEN_HIDING,), forbids=(HUNGRY,)),
+      c("Continue", "ask", forbids=(HUNGRY, QUEEN_HIDING))),
     a("favour", '''"And when she comes for what you owe her, I'll be watching. I want to see your face. I want to see what a Trickster looks like when they're the one being collected. And if you try to wriggle out of it, she won't come to you. She'll come to me, and ask me to fetch it."''',
       c("Continue", "hungry", requires=(HUNGRY,)),
-      c("Continue", "hiding", requires=(IN_HIDING,), forbids=(HUNGRY,)),
-      c("Continue", "ask", forbids=(HUNGRY, IN_HIDING))),
+      c("Continue", "hiding", requires=(QUEEN_HIDING,), forbids=(HUNGRY,)),
+      c("Continue", "ask", forbids=(HUNGRY, QUEEN_HIDING))),
     a("hungry", '''"You sent me away hungry once. I ate a patrol sergeant. Consider that my second opinion."''',
-      c("Continue", "hiding", requires=(IN_HIDING,)),
-      c("Continue", "ask", forbids=(IN_HIDING,))),
+      c("Continue", "hiding", requires=(QUEEN_HIDING,)),
+      c("Continue", "ask", forbids=(QUEEN_HIDING,))),
     a("hiding", '''"She's in hiding. She'll come out. Queens always do. Think about that before you lock any door."''',
       c("Continue", "ask")),
     a("ask", '''{n}She slides off the counter, takes the stolen ring off her finger and puts it on yours, and closes your hand over it.{/n} "So. Is the door open, darling, or do I have to steal the key?"''',
@@ -440,8 +450,11 @@ hub(P + "failed.chaplain", "Chaplain", 3,
 
 hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
     nar("start", '''{n}She is on the chapel steps after the evening blessing, a blade still across her knees. The soldiers have gone; the lamplighter has not come yet. It is the one hour in Drezen when nobody needs anything from either of you.{/n}''',
-        c("Continue", "fed", requires=(AFTERTASTE,)),
-        c("Continue", "chaplain", forbids=(AFTERTASTE,))),
+        c("Continue", "fed", requires=(AFTERTASTE,), forbids=(ELYSIUM_DONE,)),
+        c("Continue", "chaplain", forbids=(AFTERTASTE,)),
+        c("Continue", "fed_e", requires=(AFTERTASTE, ELYSIUM_DONE))),
+    a("fed_e", '''"I used to count. Days since I last wanted to bite someone." {n}She turns the blade over, looking at her reflection in it.{/n} "Since the flowers I keep losing count, because nothing happens to make me start again. A novice cut his hand on the altar rail yesterday, and I bound it, and that was all. That was all, Commander."''',
+      c("Continue", "question")),
     a("fed", '''"I've been counting. Days since I last wanted to bite someone. The number keeps going back to zero." {n}She turns the blade over, looking at her reflection in it.{/n} "It went back to zero yesterday. A novice cut his hand on the altar rail, and I had to go and stand in the well-house until it stopped smelling of him."''',
       c("Continue", "question")),
     a("chaplain", '''"The second company calls me Chaplain now. Not one of them asked what I used to be. They bring me their swords and their bad dreams and once, a boy from Nerosyan brought me a letter for his mother because he couldn't write." {n}She wipes the blade clean, although it is already clean.{/n} "I think that's the cruellest thing you've ever done to me. I think it might also be the kindest. I haven't decided."''',
@@ -651,6 +664,13 @@ SCENES.extend([
              '''"She blessed my bow this morning. It didn't catch fire." {n}Lann holds it up as evidence.{/n} "I checked twice. Then I went back and asked her to do the arrows. Don't tell her I said so."''',
              chapter=3, last=5, entry='"About Arueshalae..."', **LANN),
 ])
+
+
+# Q11: after the native Elysium ending her touch no longer drains: the drinking return, the gift, and the hunger that follows
+# a return are not restaged (native resurrection remains); the terms read her changed state.
+for _scene in SCENES:
+    if _scene["Id"] in (P + "dead.starving", P + "insurance", P + "returned.aftertaste") and ELYSIUM_DONE not in _scene["Forbids"]:
+        _scene["Forbids"].append(ELYSIUM_DONE)
 
 
 def integrate(payload):

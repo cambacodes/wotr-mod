@@ -156,7 +156,7 @@ hub(HUNDRED, "One hundred", 5, '"You look like you\'ve been counting."', [
         c('"A hundred and one, tomorrow."', "tomorrow", flags=(HUNDRED,)),
         c('"Then you can ask me whatever you like. That was the deal."', "deal", flags=(HUNDRED,))),
     a("tomorrow", '''"A hundred and one." {n}She laughs.{/n} "Yes. That's the right answer. Not 'well done'. Just the next number." {n}She tucks her hands behind her back, not out of fear, now; out of habit, and pleasure in the habit.{/n} "I'll ask you my question soon. On the chapel steps. Wear something nice. I'm going to."''', c()),
-    a("deal", '''"I'll ask you on the chapel steps." {n}She says it very seriously, as if booking an appointment.{/n} "Soon. When I've decided exactly what to ask. I've waited a hundred days; I can wait for the right words." {n}A pause.{/n} "They're going to be the most frightening words I've ever said. Make sure you're there."''', c()),
+    a("deal", '''"I'll ask you on the chapel steps." {n}She says it very seriously, as if booking an appointment.{/n} "Soon. When I've decided exactly what to ask. I've counted a hundred of them; I can wait for the right words." {n}A pause.{/n} "They're going to be the most frightening words I've ever said. Make sure you're there."''', c()),
 ], (COUNTING, AFTERTASTE), delay=72, chapters=(5,))
 
 
@@ -166,7 +166,10 @@ tavern(TOKEN, "The queen's token", '"What\'s that round your neck?"', [
     a("start", '''{n}She lifts it out on its string: a small black pearl, the size of a fingernail, cold even on a warm night.{/n}
 "This? My receipt. It was round my neck when I sat up, and nobody in that house would say whose hand had tied it. It means I'm hers, on loan. When she wants me, it'll get warm." {n}She rolls it between finger and thumb.{/n}''',
         c("Continue", "debt", requires=(DEBT,)),
-        c("Continue", "favour", forbids=(DEBT,))),
+        c("Continue", "favour", forbids=(DEBT, "nocticula.trickster.favour_called.arueshalae")),
+        c("Continue", "favour_paid", requires=("nocticula.trickster.favour_called.arueshalae",), forbids=(DEBT,))),
+    a("favour_paid", '''"Your favour. She came for it in her own court, and I watched you pay it, and the pearl went cold the moment you had." {n}She taps it.{/n} "I keep it anyway. A receipt is a receipt. And I like remembering your face."''',
+        c("Continue", "end")),
     a("debt", '''"One summons. Once. That's what you bought me with, darling. My one summons." {n}She laughs.{/n} "Do you know what she's likely to want? Nothing much. A dance. A conversation. A night. She'll pick the hour that hurts you most, not me. That's the art of it."''',
         c("Continue", "hiding", requires=(UNANSWERED,)),
         c("Continue", "end", forbids=(UNANSWERED,))),

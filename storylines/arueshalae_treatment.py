@@ -419,7 +419,7 @@ session(MORNING, "Case notes, continued", 5, '"Good morning, doctor."', [
         c("Continue", "count", forbids=(ELYSIUM,)),
         c("Continue", "count_e", requires=(ELYSIUM,))),
     a("count", '''{n}She sets the book down.{/n} "I counted. Last night. Out of habit. How much I took, how much you gave, how much came back." {n}She looks at you.{/n}
-"It came out even. I kept waiting to feel you weaken past the candle, and you didn't, and nobody at the table was the one being eaten." {n}Her voice wobbles.{/n} "I'm going to keep that page. I'm going to keep it until the paper falls apart, and then I'm going to remember it."''',
+"You'll be grey today; I took that, and I'll look at it all day. But I stopped where I meant to stop, every time, and you were still here when I did. Nobody at the table was the one being eaten." {n}Her voice wobbles.{/n} "I'm going to keep that page. I'm going to keep it until the paper falls apart, and then I'm going to remember it."''',
         c('"Put it in the case notes: patient recovering."', "recovering", flags=(MORNING,)),
         c('"Put it in the case notes: doctor recovering."', "doctor", flags=(MORNING,))),
     a("recovering", '''"Recovering." {n}She writes it, and then underlines it twice.{/n} "Not cured. I'm never going to be cured. The hunger's not a disease, it's what I'm made of, and you're a quack." {n}She leans over to kiss your forehead, quickly, lightly, a tax she has decided she can afford.{/n} "But recovering. I'll take recovering. I'll take it every morning, if you'll write it."''', c()),
@@ -454,7 +454,7 @@ session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching thi
     a("yes", '''{n}She does not let go of your hand. She puts her other hand flat on your chest, over your heart, and keeps it there, and waits, and the heart goes on beating under it.{/n} "Still there," she says. "Still there. Desna help me, I'm never going to get used to that."''', c()),
     a("later", '''"Not yet." {n}She squeezes your hand, hard, because she can.{/n} "All right. I've got a great deal of time now, and two hands to fill it. Ask me again when you've worked out what you're waiting for."''', c(abort=True)),
     a("no", '''{n}She lets go of your hand. She looks at her own for a moment, as if surprised it still works.{/n} "Then I'll go and touch something else," she says, and does not cry until she is out of the tent.''', c()),
-], (INTAKE, ELYSIUM, "trickster.ever"), forbids=(COMMITTED, DECLINED, AFTERTASTE, CHAPLAIN, FAILED, DISCHARGED), delay=24,
+], (INTAKE, ELYSIUM, "trickster.ever"), forbids=(COMMITTED, AFTERTASTE, CHAPLAIN, FAILED, DISCHARGED), delay=24,
     chapters=(5,))
 
 
