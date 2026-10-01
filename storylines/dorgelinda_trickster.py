@@ -409,7 +409,8 @@ SCENES.append(scene(P + "epilogue.committed_on_record", "", "DorgelindaEpilogue"
 
 SCENES.append(scene(P + "epilogue.commit", "", "DorgelindaEpilogue", 6, "", [
     nar("page", '''{n}The war ended before the audit did. The spring after Threshold, Dorgelinda Stranglehold came to the Commander with the Logistics Council's final ledger under her arm and one line still open in it. "I don't ship a book to Nerosyan with a hole in it," she said. "So. Either you close it, or you stay in it." She had already written "carried forward". She was not asking, much.{/n}''')],
-    requires=("trickster.ever", METHODS), forbids=(COMMITTED, CLOSED, DECLINED), **EP))
+    requires=("trickster.ever", METHODS), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))   # Q9 r3: the spring visit needs the Commander back
 
 SCENES.append(scene(P + "epilogue.declined", "", "DorgelindaEpilogue", 6, "", [
     nar("page", '''{n}Dorgelinda Stranglehold shipped the Logistics Council's ledgers to Nerosyan after the war, all but one. The Commander's column she kept, unbalanced, on her own shelf. She had said to come back when the Commander would tell her where it all went. She kept the shelf clear, in case.{/n}''')],

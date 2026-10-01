@@ -385,14 +385,14 @@ office(RATIONS, "Two out of three", '"You weren\'t at the mess."', [
     d("sit", '''{n}You sit. You eat. She watches you eat, and says nothing either, and after a while she reaches over with her spoon and takes one mouthful from your bowl, as if tasting for poison, and then another.{/n}
 "The turnip's off," she says. "I'll have words with the cook." {n}She does not take a third. She does not need to.{/n}''',
       c("Continue", "after", flags=(SHARED,))),
-    d("after", '''{n}Later, in her office, she opens your column and writes a line you can read, for once: Half ration, shared.{/n}
+    d("after", '''{n}Later, in her office, she opens your column and writes a line you can read, for once: Commander, at the mess.{/n}
 "I've fed armies on less than this, you know. On the hard postin's, before Drezen, the lads ate what the country let 'em and said thank you." {n}She stops.{/n} "Different war. Same arithmetic. Folk who've never been hungry think it's the cold that breaks an army. It's the empty bowl on the man beside you, and knowin' the officer's isn't."''',
       c('"Is that why you ate last?"', "last")),
     d("last", '''"That's why I eat last." {n}She caps the ink.{/n}
 "Doesn't make me a saint. It makes me a quartermaster the ranks'll believe when I tell 'em a lie." {n}She is quiet a while.{/n}
 "You sat at that table, Commander. They'll talk about it in the barracks for a month. You'll not have bought one crate with it, and you'll have bought more than a warehouse." {n}She puts the pen down.{/n} "Go on. I've letters to write to people who've never missed a meal."''',
       c("[Leave her to the letters.]")),
-], requires=("trickster.ever", COUNTED, PRESENT), forbids=(RATIONS,), delay=48, chapters=(5,))
+], requires=("trickster.ever", COUNTED, PRESENT), forbids=(RATIONS, "dorgelinda.conscience_kept"), delay=48, chapters=(5,))
 
 
 # --- 7. After hours (the intimate beat, after the commit). -------------------------------------------------------------
@@ -477,7 +477,7 @@ INQUIRY_CHOICES = (
 
 office(INQUIRY, "The inquiry", '"You look like you\'ve had a letter."', [
     d("start", '''"I've had a letter." {n}She holds it up by one corner, as if it were wet. It carries the seal of the Mendevian treasury, or what is left of the treasury.{/n}
-"Nerosyan wants the ledgers. All of 'em. They've heard talk in the capital about where Drezen's stores go, and none of it's kind. Some lord who's never missed a meal wants to see the books." {n}She drops it on the desk.{/n} "They'll see your line. Open since the day you signed it. Twenty-some things nobody can account for, in your name."''',
+"Nerosyan wants the ledgers. All of 'em. They've heard talk in the capital about where Drezen's stores go, and none of it's kind. Some lord who's never missed a meal wants to see the books." {n}She drops it on the desk.{/n} "They'll see your line. Open since the day you signed it. Twenty-some things in your name that nobody in Nerosyan can account for."''',
       c("Continue", "dirty", requires=(DIRTY,)),
       c("Continue", "clean", requires=(CLEAN,), forbids=(DIRTY,)),
       c("Continue", "plain", forbids=(CLEAN, DIRTY))),
@@ -1348,7 +1348,7 @@ SCENES.append(scene(P + "epilogue.after_the_war", "", "DorgelindaEpilogue", 6, "
             p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=(L + "narrowed",)),
             p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=(L + "unblessed",)),
             p("{n}The row about the seal was never mended. On office days she counted the Commander like a wagon for the rest of the war, and off them she did not, and neither of them ever said which was the truth.{/n}", requires=(L + "quarrel_unmended",)),
-            p("{n}They quarrelled, now and then, about irregular accounting. She told the Commander first when she was angry, and the Commander told her first when there was a lie to carry. It was, the sergeant said, the best-run household in Mendev.{/n}", requires=(L + "quarrel_mended",)),
+            p("{n}They quarrelled, now and then, about irregular accounting. She told the Commander first when she was angry, and the Commander told her first when there was a lie to carry. It was, the sergeant said, the best-run household in Mendev.{/n}", requires=(L + "quarrel_mended",), forbids=(L + "narrowed",)),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=6, Relationship="dorgelinda"))
