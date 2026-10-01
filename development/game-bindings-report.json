@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4219,
-  "unique_targets": 879,
+  "binding_uses": 4324,
+  "unique_targets": 903,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -178,6 +178,10 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Vendor_Tiefling.jbp",
       "type": "BlueprintUnit"
     },
+    "d914111e83e44194db99ab91d8c04632": {
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MidnightFane/Yaniel.jbp",
+      "type": "BlueprintUnit"
+    },
     "565ccab37e2475742b043ec912a750fa": {
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAeon_Ch3/Minagho_DrezenInThePast.jbp",
       "type": "BlueprintUnit"
@@ -246,6 +250,18 @@
       "path": "Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/LabyrinthOfBaphomet/HepzamirahGhost.jbp",
       "type": "BlueprintUnit"
     },
+    "3b2df06a731030d49a1240b763cb6069": {
+      "path": "Weapons/Items/UniquePF2/RadianceMasterwork.jbp",
+      "type": "BlueprintItemWeapon"
+    },
+    "de1fc233ad934a0a93a17ebed3ec0cfb": {
+      "path": "Weapons/Items/UniquePF2/RadiancePlus1ITem.jbp",
+      "type": "BlueprintItemWeapon"
+    },
+    "6a80e629e9a5ca74da1dabc2984bba3b": {
+      "path": "Weapons/Items/UniquePF2/RadiancePlus2.jbp",
+      "type": "BlueprintItemWeapon"
+    },
     "15acf7ada5903ec429f7cd62a6162613": {
       "path": "Weapons/Items/UniquePF2/Chapter3/CursedDelameresBowItem.jbp",
       "type": "BlueprintItemWeapon"
@@ -256,6 +272,14 @@
     },
     "3b8021631cd1b7d4eb749601047a7bda": {
       "path": "Weapons/Items/UniquePF2/Chapter4/DreadfulOnslaughtItem.jbp",
+      "type": "BlueprintItemWeapon"
+    },
+    "0ff011d62af77e9428e12ac08f63709e": {
+      "path": "Weapons/Items/UniqueUpgradableArtifacts/Yaniel_Longsword4HolyAvenger.jbp",
+      "type": "BlueprintItemWeapon"
+    },
+    "cf5c1a507825f184dacbc3abe14b9db1": {
+      "path": "Weapons/Items/UniqueUpgradableArtifacts/Yaniel_Longsword6HolyAvenger.jbp",
       "type": "BlueprintItemWeapon"
     },
     "31bab5549f7ea384186159a238360c8d": {
@@ -426,6 +450,22 @@
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
       "type": "BlueprintCue"
     },
+    "c1d54aee5b5ca0246a9294ce35df9b66": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/FakeYaniel_First/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "7418d421e3af812439ea312991c37147": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/FakeYaniel_ToAreelu/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "b618fff15d921894e84b9b2fe9efaa39": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/FakeYaniel_ToAreelu/Cue_0006.jbp",
+      "type": "BlueprintCue"
+    },
+    "f1a82798065c27b45aa1d17d9db80dc6": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/FakeYaniel_ToAreelu/Cue_0014.jbp",
+      "type": "BlueprintCue"
+    },
     "dbf6695999d744747aeb2d4f20b21b50": {
       "path": "World/Dialogs/c3/AreeluLaboratory/SoulJar/Answer_0006.jbp",
       "type": "BlueprintAnswer"
@@ -528,6 +568,50 @@
     },
     "093724348a359594ebe7f7193e7b86dc": {
       "path": "World/Dialogs/c3/MidnightFane/MinaghoAndAzata/Cue_0026.jbp",
+      "type": "BlueprintCue"
+    },
+    "8b4733e32e9112a479f8af49c39e3c49": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/AnswersList_0010.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "40fc513adfa1fd0428ae21b39b68e397": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Answer_0009.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "09d9caa56d1dd4743bb04f8e39ae7459": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Answer_0029.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "29a08c2b296c6b743a0c4579ba218b09": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Answer_0031.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "8f635c7b16eadd44b8a28aac5e937e37": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Answer_0043.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "f44d8f29a2f640c4885414cb2be61e05": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Answer_7.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "fd994112dc80453a954e9486f4668d36": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0003.jbp",
+      "type": "BlueprintCue"
+    },
+    "cbf1a11c8d3ce814595149a211502ad1": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "2e27a01bb56b6ea4587a46d30a0f9ccc": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "536ceec8863161f489ef28ddd9c51845": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0027.jbp",
+      "type": "BlueprintCue"
+    },
+    "efb1ee540ea049743bd146397641bb9b": {
+      "path": "World/Dialogs/c3/MidnightFane/TrueYaniel/Cue_0035.jbp",
       "type": "BlueprintCue"
     },
     "b2b77a591c8808f409aa2083bd1b318a": {
@@ -1296,6 +1380,10 @@
     },
     "f4eee511a0c0f9e4cace9e0ced47bfba": {
       "path": "World/Dialogs/c5/Iz/AreeluIntro/Cue_0014.jbp",
+      "type": "BlueprintCue"
+    },
+    "221a9592527d8b5498346c55549dd2be": {
+      "path": "World/Dialogs/c5/Iz/DeskariFight/Cue_0036.jbp",
       "type": "BlueprintCue"
     },
     "c132e5e4fabc68d49aad76af3f447eb6": {
@@ -2824,6 +2912,14 @@
     },
     "3b8bd37108050a94b9be14e22501e090": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Targona/TargonaIsWasKilledInAreeluLab.jbp",
+      "type": "BlueprintEtude"
+    },
+    "7c5526416ab9e104ba53446c47a8637c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Yaniel/Yaniel_Freed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "d6579be891428ff4fba964097afe5794": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Yaniel/Yaniel_Killed.jbp",
       "type": "BlueprintEtude"
     },
     "3a040afde22f4b742a2f607354ab17e7": {

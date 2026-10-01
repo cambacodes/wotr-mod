@@ -73,6 +73,7 @@ from storylines import galfrey_trickster, galfrey_kitrane
 from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
+from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -547,6 +548,13 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(melazmera_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(melazmera_hoard.SCENES))
     melazmera_trickster.integrate(payload)
+    # Yaniel: a new relationship (trickster/yaniel.md; 11-ROSTER-PLAN-2 §2, R5 build sheet): the swap, sword for shackle, inline
+    # on her Midnight Fane talk hub (or on the walls of Drezen in Chapter 5), her oath or her sword, the trade-back she proposes
+    # and the vigil at her niche; the courtship by letter, memory and visit (yaniel_walls). The YAN-01 drafts are retired.
+    payload["Relationships"]["yaniel"] = copy.deepcopy(yaniel_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(yaniel_trickster.SCENES))
+    yaniel_trickster.integrate(payload)
+    yaniel_walls.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

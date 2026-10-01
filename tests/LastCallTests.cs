@@ -125,12 +125,12 @@ internal static class LastCallTests
         var commits = new[] { "anevia.committed", "irabeth.committed", "committed", "arsinoe.committed", "jerribeth.committed", "konomi.committed",
             "noct.complete", "vellexia.committed", "nurah.complete", "nurah.ran_off" /* her coda needs a living Nurah */, "kiana.committed", "minachiv.complete", "soana.committed", "aranka.extension_kept",
             "gesmerha.committed", "seelah.committed", "targona.committed", "dorgelinda.committed", "hepzamirah.committed", "eritrice.committed",
-            "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed", "nidalynn.committed", "shamira.committed", "jannah.committed", "nenio.committed", "herrax.committed", "terendelev.committed", "eliandra.committed", "galfrey.committed", "horzalah.committed", "elyanka.committed", "melazmera.committed" };
+            "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed", "nidalynn.committed", "shamira.committed", "jannah.committed", "nenio.committed", "herrax.committed", "terendelev.committed", "eliandra.committed", "galfrey.committed", "horzalah.committed", "elyanka.committed", "melazmera.committed", "yaniel.committed" };
         var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).ToArray());
         var shown = codas.Where(s => Av(s, all)).Select(s => s.Id).ToList();
-        check(codas.Length == 35 && shown.Count == 33 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
+        check(codas.Length == 36 && shown.Count == 34 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
               && shown.Contains("tirabade.lastcall.page"),
-            "LastCall_AllCommitted: expected 33 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
+            "LastCall_AllCommitted: expected 34 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
         {
             var own = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle, coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0] : coda.Requires.Last());

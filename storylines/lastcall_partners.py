@@ -707,6 +707,23 @@ partner("melazmera", "melazmera", "melazmera.committed", "melazmera.closed", "Th
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Melazmera: a seal on a claw", "The Knight Commander's old seal is on the claw of an umbral dragon, and every order I have signed since has gone out under a new one. It is not a debt; it is in her hoard, and things in her hoard do not leave. In exchange I carry one of her stones, a sapphire that looks like a boring rock. She knows exactly which pocket it is in."))
 
+YA = "yaniel.trickster."
+partner("yaniel", "yaniel", "yaniel.committed", "yaniel.closed", "The Iron and the Wall",
+    """Yaniel stood the night watch on the east wall of Drezen, at the old gate she had held the day the city fell. She had been asked to ride to the Threshold with the Mendevian foot and had said no, very politely, and then less politely; somebody had to be on the wall, she said, in case the crusade had to come back through a gate in a hurry, and she had some experience of that. She stood there from dusk, with a lamp at her feet and her cloak pulled round her, and watched the red sky over the Wound, and did not sit down once.""",
+    (
+        page_p("""At the rift the Commander held up a husk's iron cuff, one sheared link swinging, and said her name into the dark as a sentry gives the word at a gate. Far off, on the east wall of Drezen, a gray-haired woman put her hand to her bare left wrist, where the iron used to be, and said "Here," to nobody, and the sentry beside her swore afterwards that she said it the way people answer a roll call they had not expected to be on.""", requires=(called("yaniel"),)),
+        page_p("""The world buried the Commander. Yaniel knelt a vigil over the grave in the rain, three nights running, the way a paladin does for a comrade, and on the fourth morning she got up and went back to her wall. She said she had been buried herself, once, with a statue, and that it had not taken.""", requires=(ON_RECORD,)),
+        page_p("""When the flask was opened in Drezen she was already in the room, in her wall cloak, with the lamp still in her hand. She did not say anything. She took the Commander's wrist and turned it over and looked at it for a long while, as if checking for a mark, and then she put the iron back in the Commander's palm and closed the fingers over it, one at a time.""", requires=(H2,)),
+        page_p("""Radiance was on her hip on the wall that night. It did not sing. She said afterwards that it had sung once and that was enough for any sword, and that it had been listening.""", requires=(YA + "carries", YA + "carries_holy")),
+        page_p("""Radiance was on her hip on the wall that night, a plain good sword in a plain soldier's hand, and she said afterwards that it was the best night's watch she had ever stood.""", requires=(YA + "carries",), forbids=(YA + "carries_holy",)),
+        page_p("""Radiance went to the Threshold on the Commander's hip, as sworn in a pit under the ground, and came back. She checked the edge, the grip and the Commander's face, in that order, and said the oath was kept, and never mentioned it again.""", requires=(YA + "oath_stands",)),
+    ), declined=YA + "declined",
+    deal=[[YA + "cost.shackle_kept"], [YA + "cost.oath_deskari"]],
+    call=call('''[Hold up her iron] "Yaniel. Your watch."''',
+        '''{n}You have carried her iron since the Midnight Fane: two fingers of crude husk-iron with one sheared link of chain, worn bright and thin on the inside by seventy years of the same bone. You hold it up now at the edge of the rift, where everything that was ever chained in the Abyss is screaming to be let out, and say her name into it the way a sentry calls a watch. Nothing answers for a while. Then, very far off, over a wall you cannot see, somebody who once held a gate until the last cart was through stands a little straighter.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Yaniel: a husk's iron", "I took a manacle off Yaniel's wrist in the Midnight Fane and I have carried it ever since. She offered to trade me back for it, fair and square, and I said no, and so did she. Nobody is square. I owe her a wall; she owes me a sword, or the other way about. Neither of us means to settle."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 
