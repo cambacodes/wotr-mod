@@ -422374,7 +422374,7 @@
         {
           "Id": "line",
           "Speaker": "conversant",
-          "Text": "{n}She chews on that, and does not like the taste.{/n} \"No. It breaks when all of them are afraid at once. Which is worse.\" {n}She nods at the third rank, where a boy is leaning on his pike to rest.{/n} \"That one will die first. He knows it. His friends know it. They keep him in the middle so he can't run, and they call it courage.\" {n}Her lip curls.{/n} \"In Neathholm, if you're too weak to stand alone, the tribe doesn't prop you up. It eats you, and the rest of us get stronger. Your way is kinder. It's also why your city is full of demons.\"",
+          "Text": "{n}She chews on that, and does not like the taste.{/n} \"No. It breaks when all of them are afraid at once. Which is worse.\" {n}She nods at the third rank, where a boy is leaning on his pike to rest.{/n} \"That one will die first. He knows it. His friends know it. They keep him in the middle so he can't run, and they call it courage.\" {n}Her lip curls.{/n} \"Sull would do the same, back home. Share the last of the food with the ones who can't hunt, and starve together, and call it the tribe. That's why my people are still living in a hole.\" {n}She spits.{/n} \"If I were chief, the ones who couldn't stand alone wouldn't eat the ones who could. Your way is kinder. It's also why your city is full of demons.\"",
           "Choices": [
             {
               "Text": "\"And yet the city is still ours.\"",
@@ -422966,7 +422966,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Lann said his words over her. You heard every one of them: that her soul might find peace wherever it ended up, since it had clearly not found it here. He meant them. Then your blade came down, low on the left side, and she folded over it with a look of pure satisfaction, as if you had finally done something she approved of, and lay still in the muck.{/n}\n{n}Now the others have gone back up the passage toward the light, and there is only Lann, standing over her with his arms hanging, and you, kneeling. You put two fingers under the angle of her jaw as a matter of form, the way anyone would.{/n}",
+          "Text": "{n}The first night you rest after Neathholm you do not sleep. You lie with your eyes open and go over it again, every stone, the way you went over it at the time, in the tunnel, after the others had gone.{/n}\n{n}Lann said his words over her. You heard every one of them: that her soul might find peace wherever it ended up, since it had clearly not found it here. He meant them. Then your blade came down, low on the left side, and she folded over it with a look of pure satisfaction, as if you had finally done something she approved of, and lay still in the muck.{/n}\n{n}Now the others have gone back up the passage toward the light, and there is only Lann, standing over her with his arms hanging, and you, kneeling. You put two fingers under the angle of her jaw as a matter of form, the way anyone would.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -423844,7 +423844,7 @@
           "Text": "{n}Something happens in her yellow eyes that has nothing servile in it at all. It is hunger.{/n}\n\"His death.\" {n}She says it the way other women say a lover's name.{/n} \"He fed me. In the Maze. He tore a piece off a priestess and put it in my hand and I ate it and I was grateful.\" {n}Her lip curls back from her teeth.{/n} \"Nobody feeds me and walks away. Nobody.\" {n}Then, sharp:{/n} \"How? He'll smell it on me the moment I go near him. He smells everything his poison touches.\"",
           "Choices": [
             {
-              "Text": "\"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. He doesn't call the dead.\"",
+              "Text": "\"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. Let them carry it home. Nobody sends for a corpse.\"",
               "Next": "plan",
               "Set": [],
               "Requires": [],
@@ -423860,7 +423860,7 @@
           "Text": "{n}She looks at you, really looks, as she has not since Neathholm: the way she looked at you over her own blood in the cave, weighing what you are.{/n}\n\"You'd do it, too.\" {n}It is not a question, and it is not fear. It is respect, which in her is worse.{/n} \"He'd do it slower. But you'd do it first.\" {n}She wets her lips.{/n} \"All right. I'm listening. What does a {mf|master|mistress} who'd do it first want with me? He'll smell a lie on me the moment I go near him.\"",
           "Choices": [
             {
-              "Text": "\"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. He doesn't call the dead.\"",
+              "Text": "\"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. Let them carry it home. Nobody sends for a corpse.\"",
               "Next": "plan",
               "Set": [],
               "Requires": [],
@@ -423873,7 +423873,7 @@
         {
           "Id": "plan",
           "Speaker": "conversant",
-          "Text": "{n}She is silent for a long while. Then she begins, very softly, to laugh.{/n}\n\"Die for him. So he stops calling.\" {n}Her eyes are wet with it.{/n} \"Oh, that's filthy. That's the filthiest thing I've ever heard an uplander say. And after, when he thinks his best daughter bled out on his floor for him?\"",
+          "Text": "{n}She is silent for a long while. Then she begins, very softly, to laugh.{/n}\n\"Die for him. So he stops sending for me.\" {n}Her eyes are wet with it.{/n} \"Oh, that's filthy. That's the filthiest thing I've ever heard an uplander say. And after, when he thinks his best daughter bled out on his floor for him?\"",
           "Choices": [
             {
               "Text": "\"After, you come and find me. And then we go and find him.\"",
@@ -423990,7 +423990,7 @@
         {
           "Id": "plan",
           "Speaker": "conversant",
-          "Text": "{n}You tell her how it will go, low, for her alone. She is dismissed, and she is bitter about it, and every soldier in the camp will see that she is bitter. She goes to her old patron with her pride in pieces, and he believes her, because it is true. He makes her his champion; he has always wanted one. And when you come home from whatever the war throws at you next, she brings his gang to meet you.{/n}\n{n}Savamelekh will call her; he has called every neather he ever fed, and his poison is in her. So she is to go when he calls, and fight you if he asks it, and when the time comes, fall down in front of his gang where you can reach her, and stay down. He does not call the dead.{/n}",
+          "Text": "{n}You tell her how it will go, low, for her alone. She is dismissed, and she is bitter about it, and every soldier in the camp will see that she is bitter. She goes to her old patron with her pride in pieces, and he believes her, because it is true. He makes her his champion; he has always wanted one. And when you come home from whatever the war throws at you next, she brings his gang to meet you.{/n}\n{n}Savamelekh will call her; he has called every neather he ever fed, and his poison is in her. So she is to go when he calls, and fight you if he asks it, and when the time comes, fall down in front of his gang where you can reach her, and stay down, and let them carry it home. Nobody sends for a corpse.{/n}",
           "Choices": [
             {
               "Text": "\"When he's dead, you won't be his. You'll be mine, and the neathers in Drezen will be yours to lead.\"",
@@ -424113,7 +424113,7 @@
         {
           "Id": "plan",
           "Speaker": "conversant",
-          "Text": "{n}You keep your voice low, for her alone. You know where she will go when she leaves: to the demon who fed her in the Maze, who has been waiting for his spy to report. Let her go to him thrown out and humiliated, and let him have her. And when you come home from the Abyss, let her bring him the Commander's head, or try.{/n}\n{n}Savamelekh will call her; he has called every neather he ever fed, and his poison is in her. So she is to go when he calls, and fight you if he asks it, and when the time comes, fall down in front of his gang where you can reach her, and stay down. He does not call the dead.{/n}",
+          "Text": "{n}You keep your voice low, for her alone. You know where she will go when she leaves: to the demon who fed her in the Maze, who has been waiting for his spy to report. Let her go to him thrown out and humiliated, and let him have her. And when you come home from the Abyss, let her bring him the Commander's head, or try.{/n}\n{n}Savamelekh will call her; he has called every neather he ever fed, and his poison is in her. So she is to go when he calls, and fight you if he asks it, and when the time comes, fall down in front of his gang where you can reach her, and stay down, and let them carry it home. Nobody sends for a corpse.{/n}",
           "Choices": [
             {
               "Text": "\"You were his spy. Now be mine. And when he's dead, the neathers in Drezen are yours.\"",
@@ -424452,7 +424452,7 @@
         {
           "Id": "yes",
           "Speaker": "Wenduag",
-          "Text": "{n}She stops smiling. She stays very still on her rock for a long time, and the grey light gets a little less grey.{/n}\n\"You're serious.\" {n}She looks down at her own hands, at the neat tally marks on her forearms that were not there before.{/n} \"Fall down in the street, and live. And he stops calling a dead woman.\" {n}Her voice is very quiet.{/n} \"Do you know what his call is like? It's like hunger. It's worse. I can't stop answering it. I tried.\"\n{n}She looks up.{/n} \"If I fall down, you'll pick me up. You'll bury me yourself. You won't let your people put my head on a pole.\" {n}She is not asking. She is telling you what you are going to do.{/n}",
+          "Text": "{n}She stops smiling. She stays very still on her rock for a long time, and the grey light gets a little less grey.{/n}\n\"You're serious.\" {n}She looks down at her own hands, at the neat tally marks on her forearms that were not there before.{/n} \"Fall down in the street, and live. And he stops sending for a dead woman.\" {n}Her voice is very quiet.{/n} \"Do you know what his call is like? It's like hunger. It's worse. I can't stop answering it. I tried. If he thinks I'm dead, he'll stop calling me by name. The rest of it I can bear.\"\n{n}She looks up.{/n} \"If I fall down, you'll pick me up. You'll bury me yourself. You won't let your people put my head on a pole.\" {n}She is not asking. She is telling you what you are going to do.{/n}",
           "Choices": [
             {
               "Text": "\"I'll bury you myself. The neather way.\"",
@@ -424742,13 +424742,13 @@
       "Title": "The best of his daughters",
       "Owner": "Wenduag",
       "MinChapter": 4,
-      "MaxChapter": 5,
+      "MaxChapter": 4,
       "Entry": "",
       "Nodes": [
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}Savamelekh called her \"the best of all my daughters\", and she went to him. She fought beside his children in his house with his poison making her quick and terrible, and nothing you could do would put her down. Then the others lay dead, and he was gone through his own door, and she stood breathing hard in the wreck of his hall and screamed at Lann that he would never win, and went for his throat.{/n}\n{n}Lann's blow took her in the side. She dropped like a cut rope.{/n}",
+          "Text": "{n}You have washed his cellar's dust out of your hair twice since you left his house, and it is still in the creases of your knuckles. When you finally rest, it all comes back, in order, the way you did it.{/n}\n{n}Savamelekh called her \"the best of all my daughters\", and she went to him. She fought beside his children in his house with his poison making her quick and terrible, and nothing you could do would put her down. Then the others lay dead, and he was gone through his own door, and she stood breathing hard in the wreck of his hall and screamed at Lann that he would never win, and went for his throat.{/n}\n{n}Lann's blow took her in the side. She dropped like a cut rope.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -424902,7 +424902,7 @@
         {
           "Id": "cairn",
           "Speaker": "Narrator",
-          "Text": "{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}\n{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}\n{n}Let him hear it. Let him stop calling.{/n}",
+          "Text": "{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}\n{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}\n{n}Let him hear it. Let him stop sending for her.{/n}",
           "Choices": [
             {
               "Text": "[Leave the knife and nothing else. The Mongrel way.]",
@@ -424955,7 +424955,7 @@
         {
           "Id": "cairn_known",
           "Speaker": "Narrator",
-          "Text": "{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}\n{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it. Let him stop calling.{/n}",
+          "Text": "{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}\n{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it. Let him stop sending for her.{/n}",
           "Choices": [
             {
               "Text": "[Leave the knife and nothing else. The Mongrel way.]",
@@ -425016,8 +425016,7 @@
       "Optional": false,
       "Relationship": "wenduag",
       "Chapters": [
-        4,
-        5
+        4
       ],
       "Remote": true,
       "Kind": "event",
@@ -425075,6 +425074,19 @@
               "Set": [],
               "Requires": [],
               "Forbids": [
+                "wenduag.trickster.lann.knows",
+                "wenduag.trickster.cost.late"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "lann_unbought",
+              "Set": [],
+              "Requires": [
+                "wenduag.trickster.cost.late"
+              ],
+              "Forbids": [
                 "wenduag.trickster.lann.knows"
               ],
               "Abort": false
@@ -425086,6 +425098,22 @@
               "Requires": [
                 "wenduag.trickster.lann.knows"
               ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "lann_unbought",
+          "Speaker": "Wenduag",
+          "Text": "\"Little Lann hit me.\" {n}She says it with a kind of wonder.{/n} \"I was trying to tear his throat out, and he hit me, and I went down. No plan. No bargain. I'd turned you down; I'd gone to him because he called and you'd thrown me out.\" {n}She stares at you.{/n} \"And you knelt in his filth and found me breathing, and lied to Lann, and built me a cairn anyway. For nothing. I'd sold you.\" {n}She shakes her head slowly.{/n} \"I don't understand it. I've been trying all the way home. I hate not understanding things.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "decide",
+              "Set": [],
+              "Requires": [],
               "Forbids": [],
               "Abort": false
             }
@@ -425127,7 +425155,7 @@
         {
           "Id": "decide",
           "Speaker": "Wenduag",
-          "Text": "{n}She puts the hare down and wipes her knife on the stone.{/n}\n\"So. You bought me before he could. I died for him in his own house, and he believed it, and he doesn't call me any more.\" {n}She touches her temple, as if listening for something that is no longer there.{/n} \"It's quiet. I didn't know it could be quiet in here.\" {n}Then the knife comes up, easily, point first.{/n} \"Now tell me why I shouldn't open your throat for putting me under stones. The strong have the right to decide. You decided. It's my turn.\"",
+          "Text": "{n}She puts the hare down and wipes her knife on the stone.{/n}\n\"So. I died for him in his own house, and his children ran home and told him so, and he believed it. Nobody comes looking for me now.\" {n}She touches her temple.{/n} \"He still calls, at night. It's in the blood. But he calls the way you call a dog that's dead: out of habit, not expecting it to come.\" {n}Then the knife comes up, easily, point first.{/n} \"Now tell me why I shouldn't open your throat for putting me under stones. The strong have the right to decide. You decided. It's my turn.\"",
           "Choices": [
             {
               "Text": "\"Because you dug.\"",
@@ -425175,7 +425203,7 @@
         {
           "Id": "sava",
           "Speaker": "Wenduag",
-          "Text": "{n}Her whole body goes tight, like a bowstring pulled.{/n} \"He isn't dead yet.\" {n}She lowers the knife, slowly.{/n} \"No. He isn't. And you promised me.\" {n}She sheathes it.{/n} \"All right. That's a reason. I'll keep you alive for it.\"",
+          "Text": "{n}Her whole body goes tight, like a bowstring pulled.{/n} \"He isn't dead yet.\" {n}She lowers the knife, slowly.{/n} \"No. He isn't. And he thinks I am.\" {n}She sheathes it.{/n} \"All right. That's a reason. I'll keep you alive for it.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -425261,7 +425289,7 @@
         {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}They were waiting for you in the lower town, in the stink of smoke and old blood, the way Savamelekh had promised: a gang of his demons, and at their head the neather who had given them everything they knew about you. She called you worm. She told them that the honour of your head was hers alone. Then they came at you, and she came with them, and the street was very loud for a while.{/n}\n{n}Now it is quiet, and she is lying on her back on the cobbles among his dead with her knife still in her hand and a great deal of blood under her.{/n}",
+          "Text": "{n}By the time you rest, the street has been sluiced and the bodies carted off and the song about it is already being sung in the barracks. You go over it anyway, every step, the way you did it this morning.{/n}\n{n}They were waiting for you in the lower town, in the stink of smoke and old blood, the way Savamelekh had promised: a gang of his demons, and at their head the neather who had given them everything they knew about you. She called you worm. She told them that the honour of your head was hers alone. Then they came at you, and she came with them, and the street was very loud for a while.{/n}\n{n}Now it is quiet, and she is lying on her back on the cobbles among his dead with her knife still in her hand and a great deal of blood under her.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -425764,7 +425792,7 @@
         {
           "Id": "quiet",
           "Speaker": "Wenduag",
-          "Text": "{n}She stops, and tilts her head, as if listening.{/n}\n\"It's quiet.\" {n}She touches her temple.{/n} \"In here. He's stopped. Savamelekh. He called every night, even when I was sleeping, even when I was fighting. And now he's stopped.\" {n}She lets her hand fall.{/n} \"Because I'm dead. His best daughter died in the street, fighting for him, and his demons ran home and told him so. You were right. He doesn't call the dead.\"",
+          "Text": "{n}She stops, and tilts her head, as if listening.{/n}\n\"Nobody's looking for me.\" {n}She touches her temple.{/n} \"He's still in here. Savamelekh. He calls at night; it's in the blood, he made sure of that. But he isn't calling *me* any more. His best daughter died in the street, fighting for him, and his demons ran home and told him so. You don't send for a corpse.\" {n}She lets her hand fall.{/n} \"You were right about that much.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426389,11 +426417,11 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"Weak things die in their sleep.\" {n}Wenduag's voice is very soft, and very close. She smells of the cellars and of raw meat.{/n} \"In Neathholm the old ones used to tell us that when we were small, and then they'd come round in the night and prove it. Most of us learned to sleep with one eye open. The ones who didn't, we buried.\" {n}The knee presses a little harder.{/n} \"You put me under stones, {mf|master|mistress}, and I dug. Now it's your turn. Are you a weak thing?\"",
+          "Text": "\"Weak things die in their sleep.\" {n}Wenduag's voice is very soft, and very close. She smells of the cellars and of raw meat.{/n} \"Hosilla used to say that, in the Maze, to the ones who came to her hungry. Then she'd come round in the night and prove it. I learned to sleep with one eye open. The ones who didn't, Savamelekh ate.\" {n}The knee presses a little harder.{/n}",
           "Choices": [
             {
               "Text": "Continue",
-              "Next": "which",
+              "Next": "which_back",
               "Set": [],
               "Requires": [
                 "wenduag.trickster.returned"
@@ -426409,6 +426437,22 @@
               "Forbids": [
                 "wenduag.trickster.returned"
               ],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "which_back",
+          "Speaker": "Wenduag",
+          "Text": "\"You put me under stones, {mf|master|mistress}, and I dug. Now it's your turn. Are you a weak thing?\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "which",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
               "Abort": false
             }
           ],
@@ -426534,7 +426578,7 @@
         {
           "Id": "stain",
           "Speaker": "Narrator",
-          "Text": "{n}She looks.{/n}\n{n}Of course she looks. Everyone looks. She is the best hunter you have ever seen, and she has been lying in the dark under stones and eating raw hare in a cellar for days, and somewhere in the back of her mind she is still a girl from the caves who was told off for dirty sleeves. Her eyes flick down to her cuff for half a heartbeat.{/n}\n{n}Half a heartbeat is a long time. When her eyes come back up, you have her knife, and she is on her back on the maps, and it is at her throat.{/n}",
+          "Text": "{n}She looks.{/n}\n{n}She doesn't look. She laughs, low, delighted, right against your ear.{/n} \"The stain on the cuff. Hosilla tried that on me when I was seven. I took two of her fingers for it.\"\n{n}She is so pleased with the old trick that she leans back to grin at you, half a finger's width, and lifts the knife a hair off your throat to do it. That is all you needed. Since she came back from the dark you have slept over these maps with your own dagger under the Worldwound, a hand's breadth from your fingers, every night, against exactly this. While she laughed at the cuff, your hand found it. When her grin comes back down, the point is resting under her breastbone.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426550,10 +426594,10 @@
         {
           "Id": "stain_her",
           "Speaker": "Wenduag",
-          "Text": "\"...Cheat.\" {n}She lies very still under the blade. Her eyes are wide.{/n} \"Filthy, clever cheat.\" {n}And then she is grinning, all her teeth, with your knee on her chest and her own knife at her throat.{/n} \"You know what the old ones would say? That's not fair. That's not a fight.\" {n}She laughs, and the laugh pushes her throat up against the edge, and she does not seem to care.{/n} \"The old ones are all dead. Fighting is the meaning of life, {mf|master|mistress}. Cheating is how you win it.\"",
+          "Text": "\"...Cheat.\" {n}She goes very still on top of you, with her knife at your throat and yours under her heart. Her eyes are wide.{/n} \"You said the stupid thing so I'd laugh at it.\" {n}And then she is grinning, all her teeth.{/n} \"Filthy, clever cheat. You knew I'd know it. You wanted me to know it.\" {n}She laughs, and the laugh pushes her chest against your point, and she does not seem to care.{/n} \"Hosilla would say that's not a fight. Hosilla is dead. Fighting is the meaning of life, {mf|master|mistress}. Cheating is how you win it.\"",
           "Choices": [
             {
-              "Text": "[Give her back her knife, hilt first.]",
+              "Text": "[Put your dagger back under the maps.]",
               "Next": null,
               "Set": [
                 "wenduag.trickster.proved",
@@ -428384,7 +428428,7 @@
         {
           "Id": "her",
           "Speaker": "Wenduag",
-          "Text": "\"Old Tuhk. He was the best trapper in Neathholm when I was small. He taught me to set a snare.\" {n}Her voice is quite matter-of-fact.{/n} \"Lung rot, from the damp down here, or from the tunnels before; it doesn't matter which. He'll die by the spring. Before that he'll eat a winter's food and give it to the rot, and cough on the little ones, and one or two of them will get it, and they'll die in the summer.\" {n}She folds her arms.{/n} \"In Neathholm the old ones would have walked him down to the deep tunnels tonight and left him there with his spear. It's kinder than the cough, and the tribe eats his share. The weak get eaten. That's not cruelty. That's arithmetic.\"",
+          "Text": "\"Old Tuhk. He was the best trapper in Neathholm when I was small. He taught me to set a snare.\" {n}Her voice is quite matter-of-fact.{/n} \"Lung rot, from the damp down here, or from the tunnels before; it doesn't matter which. He'll die by the spring. Before that he'll eat a winter's food and give it to the rot, and cough on the little ones, and one or two of them will get it, and they'll die in the summer.\" {n}She folds her arms.{/n} \"Sull would feed him to the last crumb and let the cough take three children with him, and call that the tribe. That's why the tribe is still living in a hole.\" {n}Her lip curls.{/n} \"I'd walk him down to the deep tunnels tonight and leave him there with his spear. It's kinder than the cough, and the little ones eat his share. The weak get eaten. That's not cruelty. That's arithmetic.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -428440,7 +428484,7 @@
         {
           "Id": "cull",
           "Speaker": "Wenduag",
-          "Text": "{n}She nods, as if you had confirmed a sum.{/n}\n\"Yes.\" {n}Then, lower:{/n} \"Nobody ever said it to me before. The old ones just did it. Nobody ever said *do it* out loud, so that somebody else carried half.\" {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}\n{n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}",
+          "Text": "{n}She nods, as if you had confirmed a sum.{/n}\n\"Yes.\" {n}Then, lower:{/n} \"I did this once before, in the Maze, for Hosilla. Nobody said anything. I carried all of it. Nobody ever said *do it* out loud before, so that somebody else carried half.\" {n}She goes into the cellar and crouches beside him, and says something in the neather tongue that makes him stop coughing and turn his milky eyes toward her, and she puts the cracked spear in his hands, and helps him up.{/n}\n{n}You do not go down the oldest stair with them that night. In the morning the straw in the furthest cellar is gone, and the bowl and the cup are washed and put away, and nobody in the cellars says anything about it, to you or to each other.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -428842,7 +428886,7 @@
         {
           "Id": "maze_lann",
           "Speaker": "Wenduag",
-          "Text": "\"In the Maze, the first time, you had to choose between me and Lann.\" {n}She turns her head.{/n} \"You chose Lann. Of course you did. Everyone chooses Lann. Lann is nice.\" {n}No bitterness in it; she says it the way she might say that water is wet.{/n} \"And then, later, when you had the choice again, with my life in your hand, you chose me. Not the way anyone would think. With stones and a knife.\" {n}She looks at you for a long while.{/n} \"I think that's the only choice that counted. The first one was just manners.\"",
+          "Text": "\"In the Maze, the first time, you had to choose between me and Lann.\" {n}She turns her head.{/n} \"You chose Lann. Of course you did. Everyone chooses Lann. Lann is nice.\" {n}No bitterness in it; she says it the way she might say that water is wet.{/n} \"And then, later, when you had the choice again, with my life in your hand, you chose me. Not the way anyone would think.\" {n}She looks at you for a long while.{/n} \"I think that's the only choice that counted. The first one was just manners.\"",
           "Choices": [
             {
               "Text": "\"It was the only one that counted.\"",
@@ -433465,8 +433509,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",
@@ -434927,7 +434971,8 @@
       "TricksterAccess": {
         "killed": {
           "Detect": [
-            "wenduag.killed"
+            "wenduag.killed",
+            "wenduag.dead_any"
           ],
           "Device": "wenduag.trickster.killed.back",
           "Returned": "wenduag.trickster.returned"

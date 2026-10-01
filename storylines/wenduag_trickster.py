@@ -23,7 +23,11 @@ The device (the Commander's plan and nerve, never a mythic power): the Commander
 mortal (Mobility, under Lann's eye); the burial is taken alone, the Mongrel way, with her knife back in her hand (the custom is
 Lann's word, and hers; never narrated as a rule of the world); she wakes under stones and digs. In the traitor and exile worlds
 the Commander buys her before Savamelekh can: she falls in front of his gang, and a Mongrel he believes dead is a Mongrel he
-stops calling. She was never dead: no raise, no word made true, no document.
+stops sending for: his call stays in her blood until he dies, but nobody comes looking for a corpse. She was never dead:
+no raise, no word made true, no document. The engine side, named: the native Kill actions run unchanged, and her native unit
+stays dead or gone. RRT revives and recruits nothing. After the return she exists only in RRT's rest-delivered scenes (no
+party slot, no presence), the way Galfrey's Kitrane does after the native death at Iz; every later scene reads the authored
+return flag, which the relationship's UnavailableOverrides honour.
 
 Cost: Lann's trust (he spoke his real eulogy over her, or believed his own blow killed her). The Commander can pay it first
 (lann.truth) or when Lann names what he is owed (lann.found_out). Damaged, never ended.
@@ -171,7 +175,9 @@ RELATIONSHIP = dict(
     FailureFlags=[],
     UnavailableOverrides={KILLED: RETURNED, DEAD: RETURNED, KICKED: RETURNED},
     TricksterAccess={
-        "killed": dict(detect=[KILLED], device=W + "killed.back", returned=RETURNED),
+        # WenduagNotInParty_Dead can join WenduagKilled (its activation reads WenduagKilled for an eligible companion):
+        # the killed world's device pages ignore both.
+        "killed": dict(detect=[KILLED, DEAD], device=W + "killed.back", returned=RETURNED),
         "abyss": dict(detect=[DEAD, "!" + KICKED], device=W + "abyss.back", returned=RETURNED),
         "exiled": dict(detect=[KICKED, "!" + DEAD], device=W + "exile.late_bid", returned=RETURNED),
         "street": dict(detect=[KICKED, DEAD], device=W + "street.back", returned=RETURNED),
@@ -265,7 +271,7 @@ inline(W + "early.walls", "Men in rows", (2,), '"You\'ve been watching the knigh
         c('"A line doesn\'t break when one man is afraid. That\'s the point of it."', "line"),
         c('"How would a Mongrel take Drezen, then?"', "take"),
         c('"You don\'t have to fight in their rows. You fight in mine."', "mine")),
-    conv("line", '''{n}She chews on that, and does not like the taste.{/n} "No. It breaks when all of them are afraid at once. Which is worse." {n}She nods at the third rank, where a boy is leaning on his pike to rest.{/n} "That one will die first. He knows it. His friends know it. They keep him in the middle so he can't run, and they call it courage." {n}Her lip curls.{/n} "In Neathholm, if you're too weak to stand alone, the tribe doesn't prop you up. It eats you, and the rest of us get stronger. Your way is kinder. It's also why your city is full of demons."''',
+    conv("line", '''{n}She chews on that, and does not like the taste.{/n} "No. It breaks when all of them are afraid at once. Which is worse." {n}She nods at the third rank, where a boy is leaning on his pike to rest.{/n} "That one will die first. He knows it. His friends know it. They keep him in the middle so he can't run, and they call it courage." {n}Her lip curls.{/n} "Sull would do the same, back home. Share the last of the food with the ones who can't hunt, and starve together, and call it the tribe. That's why my people are still living in a hole." {n}She spits.{/n} "If I were chief, the ones who couldn't stand alone wouldn't eat the ones who could. Your way is kinder. It's also why your city is full of demons."''',
         c('"And yet the city is still ours."', "ours")),
     conv("ours", '''"Yours." {n}She says it carefully, as if tasting it.{/n} "Because you're strong, not because they stand in rows. Every one of those men is here because you walked into a demon's army and came out with his head. They follow you because you're strong. The day you aren't, they'll follow somebody else." {n}She shrugs.{/n} "So would I. That's not an insult, {mf|master|mistress}. It's the only honest thing anybody here will ever tell you."''',
         c("Continue", flags=(W + "early.walls.line",))),
@@ -360,7 +366,8 @@ def cairn_close(extra=()):
 CAIRN_SET = (CAIRN, LIED, SECRET, PRIMED)
 
 page(W + "killed.cairn", "The Mongrel cairn", [
-    nar("start", '''{n}Lann said his words over her. You heard every one of them: that her soul might find peace wherever it ended up, since it had clearly not found it here. He meant them. Then your blade came down, low on the left side, and she folded over it with a look of pure satisfaction, as if you had finally done something she approved of, and lay still in the muck.{/n}
+    nar("start", '''{n}The first night you rest after Neathholm you do not sleep. You lie with your eyes open and go over it again, every stone, the way you went over it at the time, in the tunnel, after the others had gone.{/n}
+{n}Lann said his words over her. You heard every one of them: that her soul might find peace wherever it ended up, since it had clearly not found it here. He meant them. Then your blade came down, low on the left side, and she folded over it with a look of pure satisfaction, as if you had finally done something she approved of, and lay still in the muck.{/n}
 {n}Now the others have gone back up the passage toward the light, and there is only Lann, standing over her with his arms hanging, and you, kneeling. You put two fingers under the angle of her jaw as a matter of form, the way anyone would.{/n}''',
         c("Continue", "pulse")),
     nar("pulse", '''{n}There it is. Faint, and slow, and very far down, like somebody knocking on a door at the bottom of a well.{/n}''',
@@ -476,8 +483,8 @@ page(W + "ch4.stone", "A stone in the pack", [
 
 # --- 4. The bid (T): outbid Savamelekh before he can buy her. -----------------------------------------------------------------
 
-PLAN = ('''"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. He doesn't call the dead."''')
-PLAN_TOLD = ('''{n}Savamelekh will call her; he has called every neather he ever fed, and his poison is in her. So she is to go when he calls, and fight you if he asks it, and when the time comes, fall down in front of his gang where you can reach her, and stay down. He does not call the dead.{/n}''')
+PLAN = ('''"He will call you. He has called every neather he ever fed, and his poison is in you. So go when he calls. Fight us, if he asks it. And when it's time, fall down in front of his gang where I can reach you, and stay down. Let them carry it home. Nobody sends for a corpse."''')
+PLAN_TOLD = ('''{n}Savamelekh will call her; he has called every neather he ever fed, and his poison is in her. So she is to go when he calls, and fight you if he asks it, and when the time comes, fall down in front of his gang where you can reach her, and stay down, and let them carry it home. Nobody sends for a corpse.{/n}''')
 
 inline(W + "traitor.bid", "The better offer", (3, 4), '"Let\'s talk about Savamelekh, Wenduag. Just the two of us."', [
     conv("start", '''{n}Wenduag's face does everything a loyal servant's face should do: surprise, a flicker of fear, then eager, earnest devotion. It is a beautiful performance. You watched her give it to Lann in Neathholm with the blood still wet on her side.{/n}
@@ -503,7 +510,7 @@ inline(W + "traitor.bid", "The better offer", (3, 4), '"Let\'s talk about Savame
 "You'd do it, too." {n}It is not a question, and it is not fear. It is respect, which in her is worse.{/n} "He'd do it slower. But you'd do it first." {n}She wets her lips.{/n} "All right. I'm listening. What does a {mf|master|mistress} who'd do it first want with me? He'll smell a lie on me the moment I go near him."''',
         c(PLAN, "plan")),
     conv("plan", '''{n}She is silent for a long while. Then she begins, very softly, to laugh.{/n}
-"Die for him. So he stops calling." {n}Her eyes are wet with it.{/n} "Oh, that's filthy. That's the filthiest thing I've ever heard an uplander say. And after, when he thinks his best daughter bled out on his floor for him?"''',
+"Die for him. So he stops sending for me." {n}Her eyes are wet with it.{/n} "Oh, that's filthy. That's the filthiest thing I've ever heard an uplander say. And after, when he thinks his best daughter bled out on his floor for him?"''',
         c('"After, you come and find me. And then we go and find him."', "after")),
     conv("after", '''"And then we go and find him." {n}She savours it.{/n} "Fine. I'll answer when he calls. I'll fight you, if he asks it; I'll even try to kill Lann, because he'll believe that. And when it's time I'll fall down where you can reach me, and I'll lie there, and you'll do the rest." {n}She leans close, close enough that you can smell her: leather, iron, and something rank underneath, his poison in her sweat.{/n} "If you're not there, {mf|master|mistress}, I'll be dead for real, and I'll come back and haunt you. Neathers don't, usually. I'd make the effort."
 {n}Then she steps back, and bows, and the eager servant's face is on again as if it had never come off.{/n}''',
@@ -586,7 +593,7 @@ page(W + "exile.late_bid", "A new master", [
         c('"If you walk into my city with his gang, I will kill you. You know I will. Or you can walk in with them and fall down, and live."',
           check=dict(Skill="CheckIntimidate", DC=28, Success="yes", Failure="no"))),
     wd("yes", '''{n}She stops smiling. She stays very still on her rock for a long time, and the grey light gets a little less grey.{/n}
-"You're serious." {n}She looks down at her own hands, at the neat tally marks on her forearms that were not there before.{/n} "Fall down in the street, and live. And he stops calling a dead woman." {n}Her voice is very quiet.{/n} "Do you know what his call is like? It's like hunger. It's worse. I can't stop answering it. I tried."
+"You're serious." {n}She looks down at her own hands, at the neat tally marks on her forearms that were not there before.{/n} "Fall down in the street, and live. And he stops sending for a dead woman." {n}Her voice is very quiet.{/n} "Do you know what his call is like? It's like hunger. It's worse. I can't stop answering it. I tried. If he thinks I'm dead, he'll stop calling me by name. The rest of it I can bear."
 {n}She looks up.{/n} "If I fall down, you'll pick me up. You'll bury me yourself. You won't let your people put my head on a pole." {n}She is not asking. She is telling you what you are going to do.{/n}''',
         c('"I\'ll bury you myself. The neather way."', "deal")),
     wd("deal", '''"The neather way." {n}She laughs, a short raw sound.{/n} "What would an uplander know about the neather way?" {n}She stands.{/n} "Fine. It's a worse bargain than the one I'd have taken if you'd offered it before you threw me out. You'll pay for that, one day. But it's better than his." {n}She drops off the rock and is gone into the grey, and the sweet rank smell goes with her.{/n}''',
@@ -629,7 +636,8 @@ inline(W + "crystal.bid", "Two masters", (4,), '"I was in Savamelekh\'s house, W
 # --- 5. The falls (T): in Savamelekh's house (Lann's blow), and in the Drezen street. ---------------------------------------
 
 page(W + "abyss.fall", "The best of his daughters", [
-    nar("start", '''{n}Savamelekh called her "the best of all my daughters", and she went to him. She fought beside his children in his house with his poison making her quick and terrible, and nothing you could do would put her down. Then the others lay dead, and he was gone through his own door, and she stood breathing hard in the wreck of his hall and screamed at Lann that he would never win, and went for his throat.{/n}
+    nar("start", '''{n}You have washed his cellar's dust out of your hair twice since you left his house, and it is still in the creases of your knuckles. When you finally rest, it all comes back, in order, the way you did it.{/n}
+{n}Savamelekh called her "the best of all my daughters", and she went to him. She fought beside his children in his house with his poison making her quick and terrible, and nothing you could do would put her down. Then the others lay dead, and he was gone through his own door, and she stood breathing hard in the wreck of his hall and screamed at Lann that he would never win, and went for his throat.{/n}
 {n}Lann's blow took her in the side. She dropped like a cut rope.{/n}''',
         c("Continue", "bought", requires=(BOUGHT,)),
         c("Continue", "unbought", forbids=(BOUGHT,))),
@@ -656,12 +664,12 @@ page(W + "abyss.fall", "The best of his daughters", [
         c("Continue", "cairn_known")),
     nar("cairn", '''{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}
 {n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}
-{n}Let him hear it. Let him stop calling.{/n}''',
+{n}Let him hear it. Let him stop sending for her.{/n}''',
         *cairn_close((LANN_ALONE,))),
     nar("cairn_known", '''{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}
-{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it. Let him stop calling.{/n}''',
+{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it. Let him stop sending for her.{/n}''',
         *cairn_close((LANN_KNOWS,))),
-], requires=("trickster.ever", DEAD, FELL), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4, 5), kind="event", areas=(),
+], requires=("trickster.ever", DEAD, FELL), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4,), kind="event", areas=(),
     **device("abyss"))
 
 # The abyss cairn records the cairn and the cost. A known Lann was not lied to: his cost is what he watched you do.
@@ -682,21 +690,24 @@ page(W + "abyss.back", "She followed his smell home", [
     wd("her", '''"He came here, you know." {n}Wenduag does not turn round.{/n} "Savamelekh. Through his door, out of the Abyss, into your city, to call his children in your cellars. I woke up under the walls of his house with my knife in my hand and his smell still in the air, and I followed it." {n}She tears off a strip of hare.{/n} "Through his door. Across his bridges. Through places I won't describe to you, because you'd have nightmares, and you have enough. His smell all the way. It led me home." {n}She laughs, a thin, cracked sound.{/n} "He taught us to find him by it. He never thought about what else it could lead to."''',
         c("Continue", "lann")),
     wd("lann", '''{n}She turns, at last, and looks at you.{/n}''',
-        c("Continue", "lann_alone", forbids=(LANN_KNOWS,)),
+        c("Continue", "lann_alone", forbids=(LANN_KNOWS, LATE)),
+        c("Continue", "lann_unbought", requires=(LATE,), forbids=(LANN_KNOWS,)),
         c("Continue", "lann_knows", requires=(LANN_KNOWS,))),
+    wd("lann_unbought", '''"Little Lann hit me." {n}She says it with a kind of wonder.{/n} "I was trying to tear his throat out, and he hit me, and I went down. No plan. No bargain. I'd turned you down; I'd gone to him because he called and you'd thrown me out." {n}She stares at you.{/n} "And you knelt in his filth and found me breathing, and lied to Lann, and built me a cairn anyway. For nothing. I'd sold you." {n}She shakes her head slowly.{/n} "I don't understand it. I've been trying all the way home. I hate not understanding things."''',
+        c("Continue", "decide")),
     wd("lann_alone", '''"Little Lann hit me." {n}There is something almost fond in it, and something that is not fond at all.{/n} "I turned into it, like I said I would, and he put it exactly where I needed it. I didn't think he had it in him. He thinks he killed me, doesn't he? He thinks his old friend Wendu died with his steel in her, trying to tear his throat out." {n}She licks her fingers.{/n} "Let him. It'll make a man of him. Or it'll break him. Either way it's not my problem. It's yours. You told him."''',
         c("Continue", "decide")),
     wd("lann_knows", '''"Lann knows." {n}She says it before you can.{/n} "I heard him. I was down, but I wasn't gone. *She's breathing. You were going to let me think I'd killed her.*" {n}Her imitation of his voice is merciless and exact.{/n} "And you built my cairn anyway, with him standing at the top of the stairs hating you for it." {n}She shakes her head, wondering.{/n} "Do you know what that cost you? No. You'll find out. He's the only one of them who ever liked you for nothing."''',
         c("Continue", "decide")),
     wd("decide", '''{n}She puts the hare down and wipes her knife on the stone.{/n}
-"So. You bought me before he could. I died for him in his own house, and he believed it, and he doesn't call me any more." {n}She touches her temple, as if listening for something that is no longer there.{/n} "It's quiet. I didn't know it could be quiet in here." {n}Then the knife comes up, easily, point first.{/n} "Now tell me why I shouldn't open your throat for putting me under stones. The strong have the right to decide. You decided. It's my turn."''',
+"So. I died for him in his own house, and his children ran home and told him so, and he believed it. Nobody comes looking for me now." {n}She touches her temple.{/n} "He still calls, at night. It's in the blood. But he calls the way you call a dog that's dead: out of habit, not expecting it to come." {n}Then the knife comes up, easily, point first.{/n} "Now tell me why I shouldn't open your throat for putting me under stones. The strong have the right to decide. You decided. It's my turn."''',
         c('"Because you dug."', "dug"),
         c('"Because he isn\'t dead yet, and you want to be there when he is."', "sava"),
         CLOSING_NO),
     wd("dug", '''{n}She stares at you, and then laughs until she has to hold her side.{/n}
 "Because I dug." {n}The knife comes down.{/n} "Yes. You gave me stones and a knife and let me find out. The weak would have stayed under. I didn't." {n}She wipes her eyes.{/n} "You're a filthy, clever uplander and I'm going to follow you until one of us is dead for real."''',
         c("Continue", "stay")),
-    wd("sava", '''{n}Her whole body goes tight, like a bowstring pulled.{/n} "He isn't dead yet." {n}She lowers the knife, slowly.{/n} "No. He isn't. And you promised me." {n}She sheathes it.{/n} "All right. That's a reason. I'll keep you alive for it."''',
+    wd("sava", '''{n}Her whole body goes tight, like a bowstring pulled.{/n} "He isn't dead yet." {n}She lowers the knife, slowly.{/n} "No. He isn't. And he thinks I am." {n}She sheathes it.{/n} "All right. That's a reason. I'll keep you alive for it."''',
         c("Continue", "stay")),
     wd("stay", '''"I'll stay down here. I'm dead; the neathers in your cellars know how to keep a dead woman quiet, and they don't ask questions a hunter doesn't want answered." {n}She picks the hare back up.{/n} "When you want me, come down. Alone. And bring food. The dead get hungry."''',
         c("Continue", flags=RETURN_SET)),
@@ -708,7 +719,8 @@ page(W + "abyss.back", "She followed his smell home", [
 BRASK_PULL = dict(crusade=("Favors", -100))
 
 page(W + "street.fall", "The traitor in the street", [
-    nar("start", '''{n}They were waiting for you in the lower town, in the stink of smoke and old blood, the way Savamelekh had promised: a gang of his demons, and at their head the neather who had given them everything they knew about you. She called you worm. She told them that the honour of your head was hers alone. Then they came at you, and she came with them, and the street was very loud for a while.{/n}
+    nar("start", '''{n}By the time you rest, the street has been sluiced and the bodies carted off and the song about it is already being sung in the barracks. You go over it anyway, every step, the way you did it this morning.{/n}
+{n}They were waiting for you in the lower town, in the stink of smoke and old blood, the way Savamelekh had promised: a gang of his demons, and at their head the neather who had given them everything they knew about you. She called you worm. She told them that the honour of your head was hers alone. Then they came at you, and she came with them, and the street was very loud for a while.{/n}
 {n}Now it is quiet, and she is lying on her back on the cobbles among his dead with her knife still in her hand and a great deal of blood under her.{/n}''',
         c("Continue", "bought", requires=(BOUGHT,)),
         c("Continue", "unbought", forbids=(BOUGHT,))),
@@ -785,7 +797,7 @@ page(W + "street.back", "Up from the catacombs", [
     wd("brask", '''"And I heard your sergeant, too, before you carried me off. *That's a live woman.*" {n}She does his accent perfectly, the flat southern vowels of the Mendevian levies.{/n} "Brask. The one with the coat. He knows. He's up there right now drinking to my death and knowing it's a lie." {n}She turns the knife over in her hands.{/n} "I'm going to have to do something about Brask."''',
         c("Continue", "quiet")),
     wd("quiet", '''{n}She stops, and tilts her head, as if listening.{/n}
-"It's quiet." {n}She touches her temple.{/n} "In here. He's stopped. Savamelekh. He called every night, even when I was sleeping, even when I was fighting. And now he's stopped." {n}She lets her hand fall.{/n} "Because I'm dead. His best daughter died in the street, fighting for him, and his demons ran home and told him so. You were right. He doesn't call the dead."''',
+"Nobody's looking for me." {n}She touches her temple.{/n} "He's still in here. Savamelekh. He calls at night; it's in the blood, he made sure of that. But he isn't calling *me* any more. His best daughter died in the street, fighting for him, and his demons ran home and told him so. You don't send for a corpse." {n}She lets her hand fall.{/n} "You were right about that much."''',
         c("Continue", "late", requires=(LATE,)),
         c("Continue", "decide", forbids=(LATE,))),
     wd("late", '''"You didn't buy me, though." {n}Her eyes glint in the dark.{/n} "Not before. You didn't come and find me and make me an offer. I was trying to kill you in that street, {mf|master|mistress}. I meant it." {n}She holds up the knife.{/n} "And you still knelt down in the blood and saw me breathing and lied to your own sergeant for me. For a traitor who was trying to kill you." {n}She shakes her head, slowly.{/n} "I don't understand you. I hate not understanding things."''',

@@ -171,6 +171,13 @@ internal static class WenduagTricksterTests
         var buried = Take(cairn, afterBlow, "build", 0, P + "cairn_built", P + "cost.lied_to_lann", "trickster.secret.wenduag_cairn", P + "lann.alone", P + "cairn.bare");
         var buriedWatched = Take(cairn, afterBlow, "build_watched", 1, P + "cairn_built", P + "lann.watching", P + "cairn.water");
         check(!buried.Has(Returned) && !buried.Has(Started), "Trk_Wenduag_Cairn: the cairn returns her before she digs.");
+        // Overlapping native losses: WenduagNotInParty_Dead may hold beside WenduagKilled; the killed world still plays through.
+        var killedAndDead = World(story, 3, "trickster", "trickster.ever", Killed, Dead, P + "staged", P + "stroke_clean");
+        check(Avail(stage, World(story, 3, "trickster", "trickster.ever", Dead)) && Avail(cairn, killedAndDead),
+            "Trk_Wenduag_Cairn: the killed world stalls when WenduagNotInParty_Dead also holds.");
+        var buriedDead = Take(cairn, killedAndDead, "build", 2, P + "cairn_built", P + "cairn.mark");
+        var homeDead = Take(back, Later(buriedDead, 72), "lann", 1, Returned);
+        check(Avail(trial, At(Later(homeDead, 24), 5)), "Trk_Wenduag_Cairn: the courtship does not open after a return over overlapping losses.");
 
         // Trk_Wenduag_Back: she digs, and comes to Drezen (72 h); the Commander's no closes.
         check(!Avail(back, Later(buried, 71)) && Avail(back, Later(buried, 72)) && back.Areas.SequenceEqual(new[] { Drezen })
