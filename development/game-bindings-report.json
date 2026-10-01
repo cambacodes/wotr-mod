@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pp7\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4741,
-  "unique_targets": 1046,
+  "binding_uses": 4745,
+  "unique_targets": 1047,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1197,6 +1197,10 @@
     "2bfaec7837a9a4a40a43e73f06b3cf51": {
       "path": "World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Answer_0039_AasimarsBrothel.jbp",
       "type": "BlueprintAnswer"
+    },
+    "a3ca33a66c286b24493176d00a9a7527": {
+      "path": "World/Dialogs/c4/GoodSamaritan_SideQuest/Latverk_Final/Cue_0039.jbp",
+      "type": "BlueprintCue"
     },
     "d138954fd7cdb2d4e90bb28cbd76235e": {
       "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/AnswersList_0003.jbp",
