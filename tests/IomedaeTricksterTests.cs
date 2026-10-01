@@ -315,6 +315,15 @@ internal static class IomedaeTricksterTests
               && wound.Nodes.SelectMany(n => n.Choices).All(c => c.Crusade == null && c.Alignment == null && c.NativeNext == null)
               && Ch(wound, "plant", 2).Abort,
             "Trk_Iomedae_Threshold: after her refusal the truth does not concede at the Wound (or the joke does not close), or the act has a fee.");
+        // Trk_Iomedae_ArgumentOnly (audit r5, BEL): the Commander may take the argument and decline the rest; the Wound honours
+        // that (rescue only), and the Commander may still take the rest up there.
+        var argOnly = Take(disp, ready, "argument_only", 0, P + "argument_only");
+        var ta = World(story, 6, "trickster", "trickster.ever", Started, Latch, Held, P + "disputed", P + "argument_only");
+        var taRescue = Take(wound, ta, "argued", 0, P + "rescue_only", Carried);
+        check(argOnly.Has(P + "disputed") && !argOnly.Has(Committed) && !argOnly.Has(Declined) && !Avail(disp, Later(argOnly, 30))
+              && !taRescue.Has(Committed) && Take(wound, ta, "decide", 0, Committed, Carried).Has(P + "cost.buried_to_the_world")
+              && !Paths(wound, ta).Any(o => o.path.Any(e => e.node == "unargued")),
+            "Trk_Iomedae_ArgumentOnly: declining the rest after the concession still commits, or the Wound forgets it.");
 
         // Trk_Iomedae_RefusalByCause: the Wound answers the offence that was given (the boast, the mocked madness, the lie).
         var tm = World(story, 6, t6.Concat(new[] { Declined, P + "cost.madness_mocked", P + "disputed" }).ToArray());
@@ -358,6 +367,14 @@ internal static class IomedaeTricksterTests
         check(Avail(Pg("respect"), closedW) && Render(Pg("respect"), closedW).Contains("moved your bed")
               && Avail(Pg("respect"), watched) && !Avail(Pg("respect"), World(story, 6, "trickster.ever", Started, Committed)),
             "Trk_Iomedae_Worlds: an uncommitted Commander who lived has no page.");
+        var sentHeld = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", Held);
+        var sentSock = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", "iz.banner_lost", "iz.sock_raised");
+        var sentLost = World(story, 6, "trickster.ever", Started, Closed, P + "sent_away", "iz.banner_lost");
+        check(Render(Pg("respect"), sentHeld).Contains("flew over Drezen") && !Render(Pg("respect"), sentSock).Contains("flew over Drezen")
+              && Render(Pg("respect"), sentSock).Contains("a sock flew") && Render(Pg("respect"), sentLost).Contains("stood empty")
+              && !Render(Pg("respect"), sentLost).Contains("flew over Drezen")
+              && !Pg("lived").Nodes[0].Text.Contains("did not go into the Wound"),
+            "Trk_Iomedae_Worlds: a sent-away Commander's banner ignores Iz, or the lived opening denies a Last Call sacrifice.");
         check(pages.All(pg => pg.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))) && pages.Length == 8
               && Avail(Pg("gate"), bridgeW) && !Avail(Pg("gate"), livedW),
             "Trk_Iomedae_Pages: a page sets a flag, or a page is missing.");

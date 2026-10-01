@@ -210115,8 +210115,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -424589,6 +424589,33 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"Then I'll take the argument, and leave the other thing where you set it down. You have a war. I won't make you carry me as well.\"",
+              "Next": "argument_only",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Iomedae"
+        },
+        {
+          "Id": "argument_only",
+          "Speaker": "Iomedae",
+          "Text": "{n}The shadow on the stones goes still. When she speaks the formality is back in every syllable, and you have the impression that she put it on the way a knight puts a helm on: quickly, and because something needed covering.{/n}\n\"Noted.\" {n}A pause.{/n} \"The argument stands. What I conceded after it stands as well; I do not take a thing back because it was declined. You will have the banner at the Wound, and I will decide there whether to answer it, as I would have decided in any case.\"\n{n}Another pause, shorter.{/n} \"That was courteously done. I had not expected courtesy from you. I find I do not know what to do with it.\"",
+          "Choices": [
+            {
+              "Text": "[Stay until the torches burn down, and say nothing more.]",
+              "Next": null,
+              "Set": [
+                "iomedae.trickster.disputed",
+                "iomedae.trickster.argument_only"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": "Iomedae"
@@ -424747,7 +424774,8 @@
       "Forbids": [
         "iomedae.closed",
         "iomedae.committed",
-        "iomedae.trickster.declined"
+        "iomedae.trickster.declined",
+        "iomedae.trickster.argument_only"
       ],
       "DelayHours": 24,
       "Optional": true,
@@ -424868,6 +424896,22 @@
               "Forbids": [
                 "iomedae.committed",
                 "iomedae.trickster.declined",
+                "iomedae.trickster.argument_only",
+                "iomedae.silenced_nocticula",
+                "iomedae.threshold_sigh"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "argued",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.argument_only"
+              ],
+              "Forbids": [
+                "iomedae.committed",
+                "iomedae.trickster.declined",
                 "iomedae.silenced_nocticula",
                 "iomedae.threshold_sigh"
               ],
@@ -424938,6 +424982,22 @@
               "Forbids": [
                 "iomedae.committed",
                 "iomedae.trickster.declined",
+                "iomedae.trickster.argument_only",
+                "iomedae.silenced_nocticula",
+                "iomedae.threshold_sigh"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "argued",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.argument_only"
+              ],
+              "Forbids": [
+                "iomedae.committed",
+                "iomedae.trickster.declined",
                 "iomedae.silenced_nocticula",
                 "iomedae.threshold_sigh"
               ],
@@ -424980,6 +425040,20 @@
               "Requires": [],
               "Forbids": [
                 "iomedae.committed",
+                "iomedae.trickster.declined",
+                "iomedae.trickster.argument_only"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "argued",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.argument_only"
+              ],
+              "Forbids": [
+                "iomedae.committed",
                 "iomedae.trickster.declined"
               ],
               "Abort": false
@@ -425019,6 +425093,20 @@
               "Next": "unargued",
               "Set": [],
               "Requires": [],
+              "Forbids": [
+                "iomedae.committed",
+                "iomedae.trickster.declined",
+                "iomedae.trickster.argument_only"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "argued",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.argument_only"
+              ],
               "Forbids": [
                 "iomedae.committed",
                 "iomedae.trickster.declined"
@@ -425428,6 +425516,34 @@
                 "iomedae.trickster.conceded_at_wound",
                 "iomedae.trickster.cost.buried_to_the_world"
               ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "argued",
+          "Speaker": "Narrator",
+          "Text": "\"The argument stands,\" {n}says Iomedae.{/n} \"I conceded it on your roof, and the rest after it, and you took the one and set down the other.\" {n}The violet fire is in her eyes. It does not seem to trouble her.{/n} \"I have not decided whether I will answer. I will decide when you are in the fire.\"",
+          "Choices": [
+            {
+              "Text": "[Turn to the Wound.]",
+              "Next": null,
+              "Set": [
+                "iomedae.trickster.banner_carried",
+                "iomedae.trickster.rescue_only",
+                "iomedae.trickster.cost.buried_to_the_world"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I set it down on the roof. I'd like to pick it up again, here, if you'll let me.\"",
+              "Next": "other_yes",
+              "Set": [],
               "Requires": [],
               "Forbids": [],
               "Abort": false
@@ -426234,7 +426350,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}You did not go into the Wound as its key, in the end, and she never had to decide whether to answer her banner. She came anyway, a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, and she does not unsay what she has said.{/n}",
+          "Text": "{n}She came a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, on a roof, and she had not come to take the concession back.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -426372,7 +426488,7 @@
         {
           "Id": "choose",
           "Speaker": "Narrator",
-          "Text": "\"That is the first cowardly thing you have ever done, and you did it for me.\" {n}She considers it with evident distaste.{/n} \"I do not know whether to be insulted or moved. I will be both, in turn, for some time.\" {n}Then, at last, she sits.{/n}",
+          "Text": "\"That was a coward's choice, and you made it for me.\" {n}She considers it with evident distaste.{/n} \"I do not know whether to be insulted or moved. I will be both, in turn, for some time.\" {n}Then, at last, she sits.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427369,7 +427485,7 @@
         {
           "Id": "miracle",
           "Speaker": "Narrator",
-          "Text": "\"No.\" {n}Then, because she does not lie:{/n} \"Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done.\" {n}She looks at the road.{/n} \"I find I would rather be owed.\"",
+          "Text": "\"No.\" {n}Then, because you go on looking at her:{/n} \"Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done.\" {n}She looks at the road.{/n} \"I find I would rather be owed.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -427475,7 +427591,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him whether his company had held the ford. It had not held. She could not go to him herself; a goddess at a deathbed is a miracle, and she had spent hers. And she would not send a priest to soften it. \"You can tell him the truth so that he can carry it,\" she said. \"I have watched you do it to me.\" The stranger went, and sat with him through a night, and told him: the ford fell, but it fell an hour late, and in that hour the village behind it emptied onto the road, every soul, and that hour was his. He died knowing it. The stranger had never told anyone so hard a truth so carefully. She said the debt was paid, and did not say thank you, and stayed that night much longer than she meant to.",
+              "Text": "She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him whether his company had held the ford. It had not held. She could not go to him herself; that night she was holding a line of her own, in a war the stranger was never told about, and she would not leave it for one man, even one of hers. And she would not send a priest to soften it. \"You can tell him the truth so that he can carry it,\" she said. \"I have watched you do it to me.\" The stranger went, and sat with him through a night, and told him: the ford fell, but it fell an hour late, and in that hour the village behind it emptied onto the road, every soul, and that hour was his. He died knowing it. The stranger had never told anyone so hard a truth so carefully. She said the debt was paid, and did not say thank you, and stayed that night much longer than she meant to.",
               "Requires": [
                 "iomedae.appointment_kept"
               ],
@@ -427648,7 +427764,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "When the second appointment comes there will be no appeal; she has said so, and she does not lie. She comes anyway.",
+              "Text": "When the second appointment comes there will be no appeal; she has said so. She comes anyway.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -427908,9 +428024,45 @@
             {
               "Text": "The Sword of Valor flew over Drezen for the rest of your life. Some nights you slept two floors under it, out of habit, and woke with your hand curled round nothing. It showed you nothing more.",
               "Requires": [
-                "iomedae.trickster.sent_away"
+                "iomedae.trickster.sent_away",
+                "iomedae.banner_in_hand"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Sword of Valor was lost at Iz, and a sock flew in its place over the citadel, because you had put it there. Some nights you slept two floors under it, out of habit, and woke with your hand curled round nothing. A sock remembers nothing.",
+              "Requires": [
+                "iomedae.trickster.sent_away",
+                "iz.sock_raised"
+              ],
+              "Forbids": [
+                "iomedae.banner_in_hand"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "The Sword of Valor was lost at Iz, and the pole on the citadel stood empty for the rest of your life. Some nights you climbed up to it, out of habit, and stood under nothing. It showed you nothing more.",
+              "Requires": [
+                "iomedae.trickster.sent_away",
+                "iz.banner_lost"
+              ],
+              "Forbids": [
+                "iomedae.banner_in_hand",
+                "iz.sock_raised"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "You never slept under her banner again, wherever it flew. It showed you nothing more.",
+              "Requires": [
+                "iomedae.trickster.sent_away"
+              ],
+              "Forbids": [
+                "iomedae.banner_in_hand",
+                "iz.sock_raised",
+                "iz.banner_lost"
+              ],
               "AnyGroups": []
             }
           ]
@@ -430668,6 +430820,20 @@
               "Requires": [],
               "Forbids": [
                 "iomedae.committed",
+                "iomedae.trickster.declined",
+                "iomedae.trickster.argument_only"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "argued",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.argument_only"
+              ],
+              "Forbids": [
+                "iomedae.committed",
                 "iomedae.trickster.declined"
               ],
               "Abort": false
@@ -430676,9 +430842,25 @@
           "Portrait": ""
         },
         {
+          "Id": "argued",
+          "Speaker": "Iomedae",
+          "Text": "\"Tomorrow.\" {n}The white is very still tonight.{/n}\n\"You took the argument and left the rest on the roof, and I have let it lie there. Hear me exactly: the argument stands. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, as you will.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "others",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Iomedae"
+        },
+        {
           "Id": "committed",
           "Speaker": "Iomedae",
-          "Text": "\"Tomorrow.\" {n}The white is smaller tonight, as if she were keeping it close.{/n}\n\"I conceded the argument, and I do not unsay what I have said aloud. But hear me exactly, because tomorrow there will be no time for it. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will.\"",
+          "Text": "\"Tomorrow.\" {n}The white is smaller tonight, as if she were keeping it close.{/n}\n\"I conceded the argument, and it stands. But hear me exactly, because tomorrow there will be no time for it. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -430800,7 +430982,7 @@
         {
           "Id": "if_not",
           "Speaker": "Iomedae",
-          "Text": "\"Then you will have died closing the Worldwound, and I will bow my head to it, and mean it.\" {n}The white does not waver.{/n} \"I told you once that I do not lie. I will not tell you tonight that I would grieve less than I would.\"",
+          "Text": "\"Then you will have died closing the Worldwound, and I will bow my head to it, and mean it.\" {n}The white does not waver.{/n} \"I will not tell you tonight that I would grieve less than I would.\"",
           "Choices": [
             {
               "Text": "[Sleep.]",
@@ -431684,7 +431866,7 @@
         {
           "Id": "answer",
           "Speaker": "Iomedae",
-          "Text": "\"No.\"\n{n}She does not elaborate. Then, because she does not lie, she does.{/n} \"There was no one to ask, and no time to ask them. I did what was in front of me, and answered for it afterwards. I have been answering for it since, to people who were not there, in books that get the width of the gorge wrong.\"",
+          "Text": "\"No.\"\n{n}She does not elaborate. Then, because you asked it of the girl at the gorge and not of the goddess in the square, she does.{/n} \"There was no one to ask, and no time to ask them. I did what was in front of me, and answered for it afterwards. I have been answering for it since, to people who were not there, in books that get the width of the gorge wrong.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -435555,8 +435737,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
+    "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

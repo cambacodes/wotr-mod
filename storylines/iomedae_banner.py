@@ -373,7 +373,7 @@ SCENES.append(scene(E + "summit.precedent", "Leave", "Iomedae", 5,
         forbids=(BRIDGE_KNOWN,)),
       speaker_unit=IOMEDAE_UNIT),
     n("answer", "Iomedae", '''"No."
-{n}She does not elaborate. Then, because she does not lie, she does.{/n} "There was no one to ask, and no time to ask them. I did what was in front of me, and answered for it afterwards. I have been answering for it since, to people who were not there, in books that get the width of the gorge wrong."''',
+{n}She does not elaborate. Then, because you asked it of the girl at the gorge and not of the goddess in the square, she does.{/n} "There was no one to ask, and no time to ask them. I did what was in front of me, and answered for it afterwards. I have been answering for it since, to people who were not there, in books that get the width of the gorge wrong."''',
       c("Continue", "banner", requires=(DREAM_BANNER,)),
       c("Continue", "why", forbids=(DREAM_BANNER,)),
       speaker_unit=IOMEDAE_UNIT),
@@ -613,9 +613,13 @@ remote(E + "dream.eve", "The night before", [
     nar("start", '''{n}You took the banner down from the citadel yourself on the morning the crusade marched, and Drezen watched you do it and did not ask why. Now the whole crusade is awake pretending to sleep. You lie down with the banner rolled on its staff beside you, close enough to touch, and shut your eyes, and she is there before the dark has finished arriving.{/n}''',
         c("Continue", "committed", requires=(COMMITTED,)),
         c("Continue", "declined", requires=(DECLINED,), forbids=(COMMITTED,)),
-        c("Continue", "unargued", forbids=(COMMITTED, DECLINED))),
+        c("Continue", "unargued", forbids=(COMMITTED, DECLINED, E + "argument_only")),
+        c("Continue", "argued", requires=(E + "argument_only",), forbids=(COMMITTED, DECLINED))),
+    io("argued", '''"Tomorrow." {n}The white is very still tonight.{/n}
+"You took the argument and left the rest on the roof, and I have let it lie there. Hear me exactly: the argument stands. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, as you will."''',
+       c("Continue", "others")),
     io("committed", '''"Tomorrow." {n}The white is smaller tonight, as if she were keeping it close.{/n}
-"I conceded the argument, and I do not unsay what I have said aloud. But hear me exactly, because tomorrow there will be no time for it. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will."''',
+"I conceded the argument, and it stands. But hear me exactly, because tomorrow there will be no time for it. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will."''',
        c("Continue", "others")),
     io("declined", '''"You know why I left your roof." {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}
 "Tomorrow you will stand at the Wound with my banner, and I will be there. Show me. That is all I have left to say to you, and it is not little."''',
@@ -633,7 +637,7 @@ remote(E + "dream.eve", "The night before", [
        c('"Then I\'ll do the same."', "same")),
     io("same", '''"Check your straps," {n}she says.{/n} "And sleep. I will be there in the morning. That much I have decided."''',
        c("[Sleep.]", flags=(EVE_SEEN,))),
-    io("if_not", '''"Then you will have died closing the Worldwound, and I will bow my head to it, and mean it." {n}The white does not waver.{/n} "I told you once that I do not lie. I will not tell you tonight that I would grieve less than I would."''',
+    io("if_not", '''"Then you will have died closing the Worldwound, and I will bow my head to it, and mean it." {n}The white does not waver.{/n} "I will not tell you tonight that I would grieve less than I would."''',
        c("[Sleep.]", flags=(EVE_SEEN,))),
     io("there", '''"You will. That much I can promise, and I do."''',
        c("[Sleep.]", flags=(EVE_SEEN,))),

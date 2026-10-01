@@ -123,6 +123,7 @@ CARRIED = E + "banner_carried"                 # the device act at Threshold (th
 CONCEDED_AT_WOUND = E + "conceded_at_wound"
 KISSED_AT_WOUND = E + "kissed_at_wound"
 RESCUE_ONLY = E + "rescue_only"               # she conceded the argument at the Wound, and nothing else
+ARGUMENT_ONLY = E + "argument_only"           # the disputation held; the Commander took the argument and declined the rest
 COURTED = E + "courted"                       # Derived: the disputation held, or at least two of her own conversations
 FALSE_FACE = E + "false_face_seen"             # Chapter 4: something in Alushinyrra wore her face in a dream
 STUDIED = E + "canons_studied"               # the cathedral's canons read before the disputation (Lore DC 20, not 24)
@@ -480,7 +481,12 @@ remote(E + "disputation", "Disputation", [
        c('"Will you answer it, at the Wound?"', "will"),
        c('"I\'ve wanted you since the rain."', "rain", requires=(DREAM_BANNER,)),
        c('"I\'ve wanted you since the square."', "square_want", forbids=(DREAM_BANNER,)),
-       c("[Put your hand on the staff.]", "staff")),
+       c("[Put your hand on the staff.]", "staff"),
+       c('"Then I\'ll take the argument, and leave the other thing where you set it down. You have a war. I won\'t make you carry me as well."', "argument_only")),
+    io("argument_only", '''{n}The shadow on the stones goes still. When she speaks the formality is back in every syllable, and you have the impression that she put it on the way a knight puts a helm on: quickly, and because something needed covering.{/n}
+"Noted." {n}A pause.{/n} "The argument stands. What I conceded after it stands as well; I do not take a thing back because it was declined. You will have the banner at the Wound, and I will decide there whether to answer it, as I would have decided in any case."
+{n}Another pause, shorter.{/n} "That was courteously done. I had not expected courtesy from you. I find I do not know what to do with it."''',
+       c("[Stay until the torches burn down, and say nothing more.]", flags=(DISPUTED, ARGUMENT_ONLY))),
     io("square_want", '''"Since the square." {n}Something in the voice might, in a mortal woman, have been a laugh held behind the teeth.{/n} "I told you in front of a demon lord that you were going to die, and that was when. You have poor taste, Commander." {n}A pause.{/n} "I find I do not mind it."''',
        c("[Stay on the platform until the torches burn down.]", "torches")),
     io("will", '''"I conceded that I may. I did not say that I will." {n}The voice does not waver.{/n} "You will learn it at the Wound, when I do. I will not promise you a miracle to make you braver. You are brave enough, and it would be a lie, because I have not decided."''',
@@ -501,7 +507,7 @@ remote(E + "disputation", "Disputation", [
        c("[Stand alone under the banner.]", flags=(DISPUTED, DECLINED, COST_MOCKED))),
     io("lied", '''"I do not lie, Commander, and I know when I am lied to. I told you what would happen." {n}The shadow on the stones is suddenly only a shadow, falling the right way.{/n} From very far off: "I will be at the Wound. Bring the truth, if you have any left."''',
        c("[Stand alone under the banner.]", flags=(DISPUTED, DECLINED, COST_LIED))),
-], requires=(STARTED, BRIDGE_KNOWN, CALLED, IZ_DONE), forbids=(COMMITTED, DECLINED), delay=24, chapters=(5,), drezen=True)
+], requires=(STARTED, BRIDGE_KNOWN, CALLED, IZ_DONE), forbids=(COMMITTED, DECLINED, ARGUMENT_ONLY), delay=24, chapters=(5,), drezen=True)
 
 
 # --- Chapter 6, Threshold: the device act (E14b on the final lists; no clean return cue fits). -------------------------------
@@ -511,7 +517,8 @@ THRESHOLD_RETURN = "{n}The banner stands at the lip of the Wound, stretched flat
 def state(extra=()):
     return (c("Continue", "committed", requires=(COMMITTED,), forbids=tuple(extra)),
             c("Continue", "declined", requires=(DECLINED,), forbids=(COMMITTED, *extra)),
-            c("Continue", "unargued", forbids=(COMMITTED, DECLINED, *extra)))
+            c("Continue", "unargued", forbids=(COMMITTED, DECLINED, ARGUMENT_ONLY, *extra)),
+            c("Continue", "argued", requires=(ARGUMENT_ONLY,), forbids=(COMMITTED, DECLINED, *extra)))
 
 
 HALL = (c("Continue", "silenced", requires=(SILENCED,)),
@@ -584,6 +591,9 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
         c("Continue", "other_q")),
     nar("decide", '''"I have not decided whether I will answer. I will decide when you are in the fire, and not before." {n}She steps back half a pace, beside her banner, and waits.{/n}''',
         c("[Turn to the Wound.]", flags=GO + (COMMITTED, CONCEDED_AT_WOUND, COST_BURIED))),
+    nar("argued", '''"The argument stands," {n}says Iomedae.{/n} "I conceded it on your roof, and the rest after it, and you took the one and set down the other." {n}The violet fire is in her eyes. It does not seem to trouble her.{/n} "I have not decided whether I will answer. I will decide when you are in the fire."''',
+        c("[Turn to the Wound.]", flags=GO + (RESCUE_ONLY, COST_BURIED)),
+        c('"I set it down on the roof. I\'d like to pick it up again, here, if you\'ll let me."', "other_yes")),
     nar("turned", '''"Then go." {n}She turns her face toward the rift, and away from you.{/n} "I have nothing more to say to you."''',
         c("[Leave the banner where it stands.]", flags=GO + (CLOSED,))),
     nar("refused", '''"Then it is not a sacrifice. It is a transaction." {n}She does not turn away. That would be kinder.{/n} "I bow my head to sacrifices. Go in, Commander, and we will see which of us was right."''',
@@ -740,7 +750,7 @@ page("bridge", "The Bridge", [
 
 
 page("lived", "The Argument, Continued", [
-    nar("page", '''{n}You did not go into the Wound as its key, in the end, and she never had to decide whether to answer her banner. She came anyway, a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, and she does not unsay what she has said.{/n}''',
+    nar("page", '''{n}She came a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, on a roof, and she had not come to take the concession back.{/n}''',
         c("Continue", "closed", requires=(WOUND_CLOSED,), forbids=(SACRIFICE,)),
         c("Continue", "flask", requires=(H2,), forbids=(CARRIED,)),
         c("Continue", "open", forbids=(WOUND_CLOSED,))),
@@ -756,7 +766,7 @@ page("lived", "The Argument, Continued", [
         c('"I didn\'t want to make you choose."', "choose")),
     nar("preferred", '''"I would." {n}A pause.{/n} "I also prefer you alive. I did not expect the two preferences to disagree, and I do not enjoy it." {n}Then, at last, she sits.{/n}''',
         c("Continue", "end")),
-    nar("choose", '''"That is the first cowardly thing you have ever done, and you did it for me." {n}She considers it with evident distaste.{/n} "I do not know whether to be insulted or moved. I will be both, in turn, for some time." {n}Then, at last, she sits.{/n}''',
+    nar("choose", '''"That was a coward's choice, and you made it for me." {n}She considers it with evident distaste.{/n} "I do not know whether to be insulted or moved. I will be both, in turn, for some time." {n}Then, at last, she sits.{/n}''',
         c("Continue", "end")),
     nar("open", '''"You left it open," {n}says Iomedae. No greeting.{/n} "Every soul it eats from now on, it eats because you chose a joke over a lock."''',
         c("Continue", "open_banner", requires=(CARRIED,)),
@@ -891,7 +901,7 @@ page("gate", "A Stranger", [
     nar("graves", '''"That she had noticed." {n}Iomedae is quiet for a moment.{/n} "She does not waste words. Nor do I, usually. I put your argument to her, and then mine. She agreed with neither. A soul that stands on a goddess's banner is on nobody's road, she said, and she would not have it argued over twice. She let you go on her terms: you are dead in her book, there is no appeal at the next appointment, and I answer to her for this one. I do. Then she told me that next time there will be nothing to cross back over, and that she will be waiting at the other end of it herself."
 {n}She looks at the road.{/n} "I told her I knew. I have known since the gorge. Everything I have ever carried across something, I have had to leave something on the other side."''',
         c("Continue", "leave")),
-    nar("miracle", '''"No." {n}Then, because she does not lie:{/n} "Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done." {n}She looks at the road.{/n} "I find I would rather be owed."''',
+    nar("miracle", '''"No." {n}Then, because you go on looking at her:{/n} "Yes. I have decided a hundred times, and each time I have decided that it can wait, because once I ask for it I will have asked, and you will do it, and then it will be done." {n}She looks at the road.{/n} "I find I would rather be owed."''',
         c("Continue", "leave")),
     nar("supper", '''"Supper." {n}She says it as if the word amused her more than it should.{/n} "Very well. Supper. Then the war."
 {n}She eats what the stranger eats, which is bread and whatever there is, and she eats it the way soldiers eat, quickly and without looking at it, and when she has finished she takes the last onion off the board without asking and eats that too, raw, and does not explain.{/n}''',
@@ -909,7 +919,7 @@ page("after", "Here and There", [
         paragraphs=(
             p('''The Commander of the Fifth Crusade was buried at Drezen with honours, and the grave is remarkably unoccupied. Travellers still cross paths with a stranger here and there, on the roads of Mendev and further off. Among those who keep finding the stranger is a woman in plain steel, whom the stranger always recognizes first.''',
               requires=(KEPT,)),
-            p('''She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him whether his company had held the ford. It had not held. She could not go to him herself; a goddess at a deathbed is a miracle, and she had spent hers. And she would not send a priest to soften it. "You can tell him the truth so that he can carry it," she said. "I have watched you do it to me." The stranger went, and sat with him through a night, and told him: the ford fell, but it fell an hour late, and in that hour the village behind it emptied onto the road, every soul, and that hour was his. He died knowing it. The stranger had never told anyone so hard a truth so carefully. She said the debt was paid, and did not say thank you, and stayed that night much longer than she meant to.''',
+            p('''She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him whether his company had held the ford. It had not held. She could not go to him herself; that night she was holding a line of her own, in a war the stranger was never told about, and she would not leave it for one man, even one of hers. And she would not send a priest to soften it. "You can tell him the truth so that he can carry it," she said. "I have watched you do it to me." The stranger went, and sat with him through a night, and told him: the ford fell, but it fell an hour late, and in that hour the village behind it emptied onto the road, every soul, and that hour was his. He died knowing it. The stranger had never told anyone so hard a truth so carefully. She said the debt was paid, and did not say thank you, and stayed that night much longer than she meant to.''',
               requires=(KEPT,)),
             p('''The Commander lived on in the open, with a name and a war and a great many people who wanted things. She came anyway, rarely, and waited at the back of the hall in plain steel until the petitioners had gone.''',
               forbids=(KEPT, "lastcall.dead_on_record")),
@@ -949,7 +959,7 @@ page("after", "Here and There", [
               requires=(KISSED_AT_WOUND,)),
             p('''The word in the socket stayed where it had been sealed, under a thumbprint in the wax, at the foot of the bare pole over Drezen. Nobody else ever read it. She said she had read it enough for everyone.''',
               requires=(TESTED,), forbids=(SLIP_BURNED,)),
-            p('''When the second appointment comes there will be no appeal; she has said so, and she does not lie. She comes anyway.'''),
+            p('''When the second appointment comes there will be no appeal; she has said so. She comes anyway.'''),
         )),
 ], requires=(COMMITTED,), forbids=(SACRIFICE, CLOSED), **ALIVE)
 
@@ -1000,7 +1010,13 @@ page("respect", "Watched", [
             p('''Her banner stayed at the edge of the Wound where you had planted it, unanswered and unburned, stretched toward a rift you did not enter. She never took it back, and nobody else dared to.''',
               requires=(CARRIED,), forbids=(SENT_AWAY,)),
             p('''The Sword of Valor flew over Drezen for the rest of your life. Some nights you slept two floors under it, out of habit, and woke with your hand curled round nothing. It showed you nothing more.''',
-              requires=(SENT_AWAY,)),
+              requires=(SENT_AWAY, BANNER_HELD)),
+            p('''The Sword of Valor was lost at Iz, and a sock flew in its place over the citadel, because you had put it there. Some nights you slept two floors under it, out of habit, and woke with your hand curled round nothing. A sock remembers nothing.''',
+              requires=(SENT_AWAY, SOCK), forbids=(BANNER_HELD,)),
+            p('''The Sword of Valor was lost at Iz, and the pole on the citadel stood empty for the rest of your life. Some nights you climbed up to it, out of habit, and stood under nothing. It showed you nothing more.''',
+              requires=(SENT_AWAY, BANNER_LOST), forbids=(BANNER_HELD, SOCK)),
+            p('''You never slept under her banner again, wherever it flew. It showed you nothing more.''',
+              requires=(SENT_AWAY,), forbids=(BANNER_HELD, SOCK, BANNER_LOST)),
         )),
 ], requires=(STARTED,), forbids=(COMMITTED, SACRIFICE, RESCUED), **ALIVE)
 
