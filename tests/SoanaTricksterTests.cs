@@ -563,6 +563,26 @@ internal static class SoanaTricksterTests
             check(!friend.Has("soana.committed") && !friend.Has("soana.closed") && Endings(friend).SequenceEqual(new[] { P + "epilogue.friends" }),
                 "Friendship has no ending of its own: " + scene.Id + " -> " + string.Join(",", Endings(friend)));
         }
+
+        // Q10 close-out (INT): a lover committed before her death who returns her and walks away from her graves has exactly
+        // one closing page, with the leash resolved, both straight away and after digging.
+        var oldGrave = Later(story, oldRaised, 48);
+        foreach (var w in new[] { Pick(graveyard, oldGrave, "soana.closed", P + "cost.left_the_grave"),
+                                  Pick(graveyard, oldGrave, "soana.closed", P + "cost.grave_dug") })
+        {
+            var ends = Endings(w);
+            check(ends.SequenceEqual(new[] { P + "epilogue.unbound" }) && S(P + "epilogue.unbound").Nodes[0].Text.Contains("leash back"),
+                "A committed lover who left her graves ends on the wrong pages: " + string.Join(",", ends));
+        }
+
+        // Q10 close-out (CAN): after the medallion was pulverised, the slack strand names no restored clay token.
+        var pulvTerms = Later(story, Pick(graveyard, Later(story, pulvBack, 48), P + "graveyard_kept", P + "cost.grave_dug"), 72);
+        var pulvBound = Pick(terms, pulvTerms, P + "cost.knot_bearer");
+        var pulvDead = End(pulvBound); pulvDead.Flags.Add("sacrifice"); Rules.Complete(story, pulvDead);
+        var pulvSlack = FullText(slack, pulvDead);
+        check(Endings(pulvBound).SequenceEqual(new[] { epKnot.Id }) && pages.Where(pg => Rules.Available(story, pg, pulvDead)).Select(pg => pg.Id).SequenceEqual(new[] { slack.Id })
+              && pulvSlack.Contains("went slack") && !pulvSlack.Contains("clay"),
+            "The pulverised history's sacrifice ending restores a clay token: " + pulvSlack);
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }

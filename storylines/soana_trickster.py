@@ -591,7 +591,7 @@ SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue",
             p("\"Would not lift a spade for my dead,\" she would add. \"Turned round at my door and walked away.\"",
               requires=(LEFT,)),
         ))],
-    requires=("trickster.ever", RETURNED, CLOSED), forbids=(COMMITTED, "sacrifice"), last=99, Relationship="soana",
+    requires=("trickster.ever", RETURNED, CLOSED), forbids=("sacrifice",), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
 # Q10 r2: a lover from before her death who returned her but never took the knot's second strand.
@@ -622,7 +622,7 @@ SCENES.append(scene("soana.trickster.epilogue.slack", "The slack strand", "Epilo
         c(), paragraphs=(
             p("The knot on her wrist went slack all at once, the way a line goes slack when the fish is gone. Her end had been "
               "tied to the Commander's life, and that life had gone first, as she had told them it would. She cut the dead strand "
-              "off with her knife, tied it round her own throat beside the old clay, and went on binding the Wintersun woods "
+              "off with her knife, tied it round her own throat, and went on binding the Wintersun woods "
               "for twenty years more out of spite. She never said the Commander's name to anyone. She said \"the hunter\", and "
               "everyone knew.", requires=(RETURNED, BEARER)),
             p("The leash came back to her the night the Commander's hand stopped holding it: all of it at once, like a dropped "
