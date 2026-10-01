@@ -461,13 +461,10 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'horzalah.dead': [['horzalah.killed'], ['horzalah.killed_b'], ['horzalah.trickster.killed_unmet']],
  'horzalah.q3_lapsed': [['greybor.dead'], ['greybor.kicked_out'], ['greybor.away'], ['greybor.q3_failed'], ['chapter.six']],
  'horzalah.trickster.late_committed': [['trickster.ever', 'horzalah.trickster.tested']],
- 'iomedae.appointment_kept': [['sacrifice', 'ending.wound_closed', 'trickster.ever', 'iomedae.trickster.primed']],
- 'iomedae.b.scrap_owed': [['iomedae.trickster.banner.terms_kept']],
- 'iomedae.courted': [['iomedae.trickster.terms_heard'], ['iomedae.trickster.oath_at_the_wound']],
- 'iomedae.love_owed': [['iomedae.appointment_kept', 'iomedae.committed'],
-                       ['iomedae.appointment_kept', 'iomedae.trickster.late_committed']],
- 'iomedae.narrow_owed': [['trickster.cheated_death', 'iomedae.trickster.cost.name_on_the_wall']],
- 'iomedae.trickster.late_committed': [['trickster.ever', 'iomedae.trickster.primed']],
+ # R6 (iomedae_trickster): the bridge world. She conceded, the banner was carried in, the Wound closed on its key: she answered.
+ 'iomedae.appointment_kept': [['sacrifice', 'ending.wound_closed', 'trickster.ever', 'iomedae.trickster.banner_carried',
+                               'iomedae.committed']],
+ 'iomedae.trickster.late_committed': [['trickster.ever', 'iomedae.committed']],   # R6: no late romance
  'irabeth.trickster.late_committed': [['trickster.ever', 'irabeth.trickster.back_on_duty', 'irabeth.trickster.answered_her']],
  'irabeth.trickster.recommitted': [['irabeth.trickster.returned', 'irabeth.committed']],
  'irabeth.trickster.presence_on': [['irabeth_dead', 'irabeth.trickster.cost.vell', 'coronation.seen'],
@@ -550,8 +547,9 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
                               ['sacrifice', 'trickster.ever', 'ending.trickster_full'],
                               ['sacrifice', 'trickster.ever', 'ending.trickster_allplanes'],
                               ['sacrifice', 'trickster.ever', 'ending.trickster_allplanes_fw'],
-                              # Iomedae's Appointment group ([sacrifice, ending.wound_closed, trickster.ever, iomedae.trickster.primed])
-                              # returns with her route: until something produces iomedae.trickster.primed it is an invalid read.
+                              # Iomedae's bridge world (ledger row 16; R6: her banner, answered).
+                              ['iomedae.appointment_kept'],
+                              ['iomedae.trickster.rescued'],
                               ['trickster.lastcall.taken',
                                'ending.wound_closed',
                                'sacrifice',
@@ -660,6 +658,13 @@ def _bound(payload, key):
 def integrate(payload):
     """Bind every world key read by a registered scene (transitively through Derived/Latches). Never overrides an
     existing binding: the registered routes' own keys win, and a conflicting GUID is an error."""
+    # Ledger row 16 (R6 audit, COX): a page that mourns a sacrificed Commander never plays beside a Commander who came back
+    # (the punchline groups, Last Call's flask, Iomedae's bridge). Like Last Call's L6, but for every commander_back world.
+    for s in payload["Scenes"]:
+        if (s.get("Owner", "").endswith("Epilogue") and "sacrifice" in (s.get("Requires") or [])
+                and "trickster.commander_back" not in s["Forbids"]
+                and "trickster.commander_back" not in (s.get("ForbidOverrides") or {}).values()):
+            s["Forbids"].append("trickster.commander_back")
     pending = sorted({k for s in payload["Scenes"] for k in _keys(s)}
                      | {k for p in (payload.get("Presences") or {}).values()
                         for k in [*(p.get("Requires") or []), *(p.get("Forbids") or []),

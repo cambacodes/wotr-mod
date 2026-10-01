@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4468,
-  "unique_targets": 971,
+  "binding_uses": 4518,
+  "unique_targets": 997,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -490,8 +490,20 @@
       "path": "World/Dialogs/c3/Drezen_C3/GalfreyArrives/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
     },
+    "d383267ee2a7b8141835f106f40bf28e": {
+      "path": "World/Dialogs/c3/Drezen_C3/GalfreyArrives/Cue_0052.jbp",
+      "type": "BlueprintCue"
+    },
     "21467e29a21d22b438eac99a34d8c09b": {
       "path": "World/Dialogs/c3/Drezen_C3/GalfreyArrives/Cue_0066.jbp",
+      "type": "BlueprintCue"
+    },
+    "797452ab97defe74487c091e59379224": {
+      "path": "World/Dialogs/c3/Drezen_C3/Herald/AnswersList_0017.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "2ea22fac3bb0ed04ba643748d1c2bf8e": {
+      "path": "World/Dialogs/c3/Drezen_C3/Herald/Cue_0076.jbp",
       "type": "BlueprintCue"
     },
     "d2f3ae3a8d7d0eb4aab722e777b7c260": {
@@ -1150,6 +1162,14 @@
       "path": "World/Dialogs/c4/Mythic_Trickster/Council_Lexicon2/Cue_0054.jbp",
       "type": "BlueprintCue"
     },
+    "d1abc9044634dec45a396755380c8623": {
+      "path": "World/Dialogs/c4/Nexus_Camp/Herald_Camp/AnswersList_0022.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "50ab84494d3f15341bf5f87d712f3030": {
+      "path": "World/Dialogs/c4/Nexus_Camp/Herald_Camp/Cue_0010.jbp",
+      "type": "BlueprintCue"
+    },
     "b84ef61b070e9cb4e84f142dc8c04cdb": {
       "path": "World/Dialogs/c4/Nocticula_main/Cue_0523.jbp",
       "type": "BlueprintCue"
@@ -1426,6 +1446,18 @@
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0031.jbp",
       "type": "BlueprintCue"
     },
+    "7f18896facfbd614c96e2e4ea2d6c0d5": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/AnswersList_0136.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "909f6c75bd0169047806f1493f971e8a": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0045.jbp",
+      "type": "BlueprintCue"
+    },
+    "2129afdb1382e3947afdc2dc247728fe": {
+      "path": "World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0422.jbp",
+      "type": "BlueprintCue"
+    },
     "06184e4f0a65650488e36600d8274d26": {
       "path": "World/Dialogs/c5/Drezen_Under_Siedge/StorytellerDangerousDrezen/AnswersList_0005.jbp",
       "type": "BlueprintAnswersList"
@@ -1460,6 +1492,14 @@
     },
     "f4eee511a0c0f9e4cace9e0ced47bfba": {
       "path": "World/Dialogs/c5/Iz/AreeluIntro/Cue_0014.jbp",
+      "type": "BlueprintCue"
+    },
+    "1a0b602da28e56f4badf9406964e4244": {
+      "path": "World/Dialogs/c5/Iz/Banner/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "710ed96131bbf4e42b930f87cfd6aa25": {
+      "path": "World/Dialogs/c5/Iz/Banner/Cue_0014.jbp",
       "type": "BlueprintCue"
     },
     "221a9592527d8b5498346c55549dd2be": {
@@ -1549,6 +1589,30 @@
     "1e33632e47c601145aac9795f52e49d1": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Alderpash/Answer_0115.jbp",
       "type": "BlueprintAnswer"
+    },
+    "4a056226dce658f4da30d99d851537ec": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "7dbd09bed7138984c994631e35722a4e": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
+    "9d391c75a04e30946aee2fa377d65ede": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0017.jbp",
+      "type": "BlueprintCue"
+    },
+    "c241ccdbc3b178b41b7161d17ff43b17": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "55ab2d8561d68ad4aae145e4798b43d4": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
+    "1f0fef1fbc666cc42a213671d6b171a2": {
+      "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Herald/Cue_0026.jbp",
+      "type": "BlueprintCue"
     },
     "cbd2f289d8173fb41a231772290440ba": {
       "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/AnswersList_0071.jbp",
@@ -1798,6 +1862,14 @@
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0010.jbp",
       "type": "BlueprintCue"
     },
+    "05c37f9556af62c4ba275d57afdc91a8": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0022.jbp",
+      "type": "BlueprintCue"
+    },
+    "900c45dc39736cf4487017e2b096e107": {
+      "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0028.jbp",
+      "type": "BlueprintCue"
+    },
     "3cc60e02e5176f448a57b342ec52ae31": {
       "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0046.jbp",
       "type": "BlueprintCue"
@@ -1846,8 +1918,16 @@
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/AnswersList_0127.jbp",
       "type": "BlueprintAnswersList"
     },
+    "7f7ce7350ec78a946a8092dd01079063": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Answer_0026.jbp",
+      "type": "BlueprintAnswer"
+    },
     "3c4dd53fef2e80540bba5272d38c9843": {
       "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0063.jbp",
+      "type": "BlueprintCue"
+    },
+    "7d25dae905c61ee4ba3b16f921479880": {
+      "path": "World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0085.jbp",
       "type": "BlueprintCue"
     },
     "2303848f628c04b40b45025ebb06d2b4": {
@@ -1945,6 +2025,10 @@
     "20a557207800252419c55049322943c4": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Answer_0132.jbp",
       "type": "BlueprintAnswer"
+    },
+    "cdbc3902b0a3ea742b44922dedeee61b": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0215.jbp",
+      "type": "BlueprintCue"
     },
     "b0a9f1ed31f114b42bb4abc8fbda29e3": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Cue_0372.jbp",
@@ -2345,6 +2429,22 @@
     "684c56330c5a4db4d80b99150a308c69": {
       "path": "World/Dialogs/Epilogues/Cue_0571.jbp",
       "type": "BlueprintCue"
+    },
+    "dfe36dafa2aa423badcfc58845521a30": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0023.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "c8e8d245e469495fa43bc3cefbb759b9": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0024.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "b310f96f6a3149f1ad439d5cfe285f25": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0025.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "52eeccb144a04ff79650f08eacff9a17": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Answer_0028.jbp",
+      "type": "BlueprintAnswer"
     },
     "33960c7f7af40cd43b7f801a76c87a0b": {
       "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",
@@ -3296,6 +3396,10 @@
     },
     "007c4990584473046ac29666a235efb3": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/SocotGone.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b99cec06dab2bd24fa3124bad167028f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/TricksterBanner.jbp",
       "type": "BlueprintEtude"
     },
     "256f3c081f21ed84fb3612465a76944b": {

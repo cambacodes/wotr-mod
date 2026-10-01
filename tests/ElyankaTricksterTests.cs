@@ -273,7 +273,7 @@ internal static class ElyankaTricksterTests
             "Trk_Elyanka_Continuity: committed and marched before the hearse, the Chapter 6 visit still recalls the measuring.");
         var sentHome = Take(move, nw, "home", 0, LeftFree);
         var collectors = story.Scenes.Single(s => s.Id == "trickster.lastcall.page.collectors").Nodes[0].Paragraphs
-            .Where(pp => pp.Requires.Contains("lastcall.debt.whispering_way")).ToList();
+            .Where(pp => pp.Requires.Contains("lastcall.debt.whispering_way") && !pp.Requires.Contains("iomedae.appointment_kept")).ToList();   // the Appointment variant is Iomedae's (ledger row 6)
         check(sentHome.Has(Closed) && collectors.Count == 1 && !collectors[0].Text.Contains("never left") && collectors[0].Text.Contains("man in grey")
               && collectors[0].AnyGroups.Length == 1 && collectors[0].AnyGroups[0].Contains("elyanka.lastcall.called"),
             "Trk_Elyanka_Continuity: after a dismissal the creditor's collection reverses it (she presents the claim in person).");

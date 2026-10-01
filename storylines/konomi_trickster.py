@@ -13,6 +13,8 @@ ledger (her canon: her people "live everywhere"), and she consents only on her f
 Never arrived: a Nerosyan informer in the Drezen chancery, caught on the page and used as a postman. She prices, bills,
 refuses, and can walk away.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
@@ -555,6 +557,18 @@ ENDINGS = ("konomi.ending_public", "konomi.ending_private", "konomi.ending_chang
            "konomi.ending_distance_open_lived")
 LIVING_ENDINGS = ("konomi.ending_public", "konomi.ending_private", "konomi.ending_distance", "konomi.ending_distance_open",
                   "konomi.ending_distance_lived", "konomi.ending_distance_open_lived")
+BURIED = "iomedae.trickster.buried_alive"
+PUBLIC_BURIED_TEXT = (
+    "{n}Lady Konomi wore black for the Commander of the Fifth Crusade for the full term the court allowed, and not a day "
+    "longer, and wrote the Royal Council a memorandum on the cost of the funeral that is still cited in Nerosyan as a model of "
+    "its kind.{/n}\n"
+    "{n}She never became a reliable source of agreement with the person she wrote to afterwards, either. Her household knew "
+    "there was someone: letters went out every week to a different waystation, sealed in plain wax and addressed to nobody, "
+    "and twice a year the envoy took leave and went nowhere for a fortnight, and came back in a temper or in a very good mood, "
+    "and was never asked which. Whoever it was argued with her as nobody else in Mendev dared to. She never named them. The few "
+    "letters she left unsealed were burned unread when she died, on her own written instruction, by a servant who said "
+    "afterwards that there had been a great many of them.{/n}")
+
 AUDIENCE_ANSWER = '"You chose a better room than the attaché\'s office."'
 COURTYARD_NODES = [
     k("again_audience", '''"I did. The office has a jug in it now, on a shelf, with a label. The chancery will not let anyone move it."
@@ -617,3 +631,17 @@ def integrate(payload):
         for node in _scene(by_id, id)["Nodes"]:
             if all(ch.get("Next") is None for ch in node["Choices"]):
                 node.setdefault("Paragraphs", []).extend(dict(x) for x in TRICKSTER_PARAGRAPHS)
+
+
+    # R6 (iomedae_trickster): in the world where the Commander walked out of the Wound and stayed buried, a relationship
+    # "so well known that visitors arrived" cannot be the Commander's. Appended sibling of ending_public (which Forbids that
+    # world); the conditional paragraphs are carried over unchanged.
+    public = _scene(by_id, "konomi.ending_public")
+    public["Forbids"].append(BURIED)
+    buried = copy.deepcopy(public)
+    buried["Id"] = "konomi.ending_public_buried"
+    buried["Title"] = "Letters to nobody"
+    buried["Forbids"] = [f for f in buried["Forbids"] if f != BURIED]
+    buried["Requires"].append(BURIED)
+    _node(buried, "start")["Text"] = PUBLIC_BURIED_TEXT
+    payload["Scenes"].append(buried)

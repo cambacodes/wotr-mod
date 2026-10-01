@@ -77,6 +77,7 @@ PARTNERS = {
     "melazmera": ("Melazmera", "Melazmera"),
     "yaniel": ("Yaniel", "Yaniel"),
     "wenduag": ("Wenduag", "Wenduag"),
+    "iomedae": ("Iomedae", "Iomedae"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
 EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],

@@ -75,6 +75,7 @@ from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
 from storylines import wenduag_trickster, wenduag_cairn
+from storylines import iomedae_trickster, iomedae_banner
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -565,8 +566,16 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(wenduag_cairn.SCENES))
     wenduag_trickster.integrate(payload)
     wenduag_cairn.integrate(payload)
+    # Iomedae: a new relationship (trickster/iomedae.md, Build sheet R6; 11-ROSTER-PLAN-2 §2): veiled until the finale. The
+    # courtship is her banner's memory and her herald (iomedae_banner), then her own voice after the Summit; the commit is a
+    # formal disputation under her banner; the device is the banner carried into the Wound, which she may choose to answer.
+    payload["Relationships"]["iomedae"] = copy.deepcopy(iomedae_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(iomedae_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(iomedae_banner.SCENES))
+    iomedae_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
+    iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)

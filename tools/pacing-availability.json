@@ -1308,19 +1308,21 @@
    }
   ],
   "present": {
+   "3": "remote",
+   "4": "remote",
    "5": "ip",
    "6": "ip"
   },
   "exceptions": {},
   "evidence": {
-   "first_met": "e273e96dade33464ca349b84441f882e World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0002: Iomedae descends in person (speaker Iomedae 9a1443603c9353d4194a583a31228c8b)",
+   "first_met": "e273e96dade33464ca349b84441f882e World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0002: Iomedae descends in person (speaker Iomedae 9a1443603c9353d4194a583a31228c8b). Trickster (R6): veiled until then; her banner and her herald carry her in Ch3-4",
+   "3": "77e2e9cbeb829b64897f634697b03524 c3/Drezen_C3/Herald/Cue_0080: the Sword of Valor, her mortal banner, flies over Drezen and her herald is in the city (Herald_Drezen_c3 AnswersList_0017). Trickster: the banner's memories (remote) and the herald (inline), storylines/iomedae_banner.py",
+   "4": "50ab84494d3f15341bf5f87d712f3030 c4/Nexus_Camp/Herald_Camp/Cue_0010: her herald follows the Commander into the Abyss. Trickster: the herald tells her Acts (inline), and the Abyss pages (remote)",
    "5": "909f6c75bd0169047806f1493f971e8a World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit/Cue_0045: she speaks at the Summit, all paths",
-   "6": "7d25dae905c61ee4ba3b16f921479880 World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0085: she speaks at the finale (walk-away branch); c6/FirstFloor/NocticulaThreshold also uses her as speaker"
+   "6": "7d25dae905c61ee4ba3b16f921479880 World/Dialogs/c6/SecondFloor/GrandFinal/Cue_0085: she speaks at the finale (walk-away branch); c6/FirstFloor/NocticulaThreshold Cue_0022 05c37f9556af62c4ba275d57afdc91a8 also uses her voice. Trickster: she appears at the banner on both final lists"
   },
-  "verify": true,
-  "verify_chapters": [
-   "6"
-  ],
+  "verify": false,
+  "verify_chapters": [],
   "sources": [
    "C:/Users/Z/Documents/Projects/Writer/handoffs/trickster/iomedae.md:#### 1. Canon anchors",
    "blueprints: World/Dialogs/c5/Drezen_Under_Siedge/Goddesses_Summit",
@@ -1328,7 +1330,7 @@
    "blueprints: World/Dialogs/c6/SecondFloor/GrandFinal",
    "blueprints: World/Dialogs/c6/FirstFloor/NocticulaThreshold"
   ],
-  "notes": "A goddess. No dialog before Ch5 uses her as speaker (reference scan of her unit). She appears in person at the Goddesses' Summit in Ch5 (all paths; Angel adds IomedaeSecondVisit). In Ch6 she speaks only on certain finale branches, so Ch6 needs checking."
+  "notes": "A goddess. No dialog before Ch5 uses her as speaker, and before the Summit she only observes (Cue_0087). On Trickster (R6, veiled until the finale) Ch3-4 carry her through her banner's memories and her herald (the Hand of the Inheritor); she speaks as herself only after the Summit (dreams, her banner) and appears in person at Threshold and after."
  },
  "eliandra": {
   "character": "Eliandra",

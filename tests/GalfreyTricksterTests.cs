@@ -404,9 +404,10 @@ internal static class GalfreyTricksterTests
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
             "Galfrey's reactors are not Irabeth (five), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");
-        check(pages.Length == 8 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
+        // 9 since R6: alive_buried, the sibling of "alive" in the world where the Commander lives buried (iomedae_trickster).
+        check(pages.Length == 9 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Requires.Contains("trickster.ever")
                   && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not eight read-only Trickster Chapter 6 pages.");
+            "Her epilogue pages are not nine read-only Trickster Chapter 6 pages.");
 
         Console.WriteLine("PASS: Galfrey Trickster (Trk_Galfrey_*): the Kitrane question in Chapters 2-4 on every path, the offer at the bed "
             + "read or blind, for Mendev refused and for her taken, the road, the eulogy, the letter from the rubble, the return, the oath refused "
