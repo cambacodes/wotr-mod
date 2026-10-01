@@ -529,6 +529,9 @@ DERIVED = {'aivu.trickster.late_committed': [['trickster.ever', 'aivu.trickster.
  'seelah.trickster.late_committed': [['trickster.ever', 'seelah.trickster.stay_decided']],
  'shamira.trickster.late_committed': [['trickster.ever', 'shamira.trickster.decanted'],
                                       ['trickster.ever', 'shamira.trickster.pact']],
+ # Orso dead: in combat (the BearDead latch) or withered to pelt and bones when he bit the medallion (SoanaBear/Cue_0023,
+ # which starts no BearDead etude).
+ 'soana.guardian_dead': [['soana.bear_dead'], ['soana.medallion_pulverized']],
  'soana.heard_link': [['soana.heard_link_a'], ['soana.heard_link_b']],
  'soana.saw_camellia': [['camellia.claimed_soana_a'], ['camellia.claimed_soana_b']],
  'soana.lost': [['soana.dead'], ['soana.killed_by_camellia'], ['soana.forest_dead']],

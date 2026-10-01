@@ -531,6 +531,38 @@ internal static class SoanaTricksterTests
         check(cordEnd.Contains("grey cord") && !cordEnd.Contains("clay") && clayEnd.Contains("halves of the clay knot")
               && !clayEnd.Contains("grey cord"),
             "The knot ending names the wrong token: " + cordEnd);
+
+        // Q10 r4 (CAN/INT/HOW): the pulverised medallion kills Orso though no BearDead etude starts; the return chain reads
+        // soana.guardian_dead, so this history never meets a living Orso.
+        var pulverized = new Snapshot { Chapter = 3, Area = Wintersun, Hour = 5000 };
+        pulverized.Flags.UnionWith(new[] { "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", "soana.medallion_pulverized",
+                                           "chapter_later" });
+        pulverized.AvailableContacts.Add(Unit);
+        Rules.Complete(story, pulverized);
+        check(!pulverized.Has("soana.bear_dead") && pulverized.Has("soana.guardian_dead"), "The pulverised history is not a dead guardian.");
+        var pulvPages = KnotPages(pulverized);
+        var pulvOutcomes = Play(knot, pulverized);
+        check(pulvPages.IsSupersetOf(new[] { "spirit", "pelt", "bait", "wake_spirit" }) && !pulvPages.Contains("orso")
+              && !pulvPages.Contains("wake_orso") && !pulvPages.Contains("carcass") && !pulvPages.Contains("read") && !pulvPages.Contains("marks"),
+            "The pulverised history meets a living Orso: " + string.Join(",", pulvPages));
+        check(pulvOutcomes.Any(r => r.Has(P + "returned"))
+              && pulvOutcomes.Where(r => r.Has(P + "returned")).All(r => r.Has(P + "cost.knot_recut")),
+            "A pulverised knot is bargained with before it is re-cut.");
+        var pulvBack = pulvOutcomes.First(r => r.Has(P + "returned"));
+        var pulvGrave = new HashSet<string>();
+        Program.Walk(graveyard, Later(story, pulvBack, 48), (id, _) => pulvGrave.Add(id));
+        check(pulvGrave.Contains("spirit") && !pulvGrave.Contains("orso"), "The graveyard keeps Orso alive after the medallion was pulverised.");
+
+        // Q10 r4 (BEL): Corven is disclosed before any commitment off the registered courtship; friendship is an answer.
+        foreach (var (scene, at, node) in new[] { (terms, atTerms, "price"), (terms, Later(story, clayDug, 72), "price_clay"),
+                                                   (bowl, Later(story, tested0, 72), "terms") })
+        {
+            check(scene.Nodes.Single(n => n.Id == node).Text.Contains("Corven") && scene.Nodes.Single(n => n.Id == node).Text.Contains("whether he lives"),
+                "No Corven disclosure before the commitment: " + scene.Id + "/" + node);
+            var friend = Pick(scene, at, P + "friends");
+            check(!friend.Has("soana.committed") && !friend.Has("soana.closed") && Endings(friend).SequenceEqual(new[] { P + "epilogue.friends" }),
+                "Friendship has no ending of its own: " + scene.Id + " -> " + string.Join(",", Endings(friend)));
+        }
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }
