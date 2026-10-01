@@ -125,8 +125,8 @@ internal static class ChadaliTricksterTests
                                                    && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
             "The epilogue pages are not three effect-free, unanchored Chapter 6 pages (appended in authored order, as Eritrice, Nocticula and Dorgelinda).");
         check(story.Derived[P + "late_committed"].Length == 2, "The late-commit derived key is missing.");
-        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "stay", "half", "coin" }),
-            "The late-commit page does not let the Commander answer her (stay, half the orange, or the coin).");
+        check(pageCommit.Nodes[0].Choices.Select(c => c.Next).SequenceEqual(new[] { "stay", "half", "coin", "penny" }),
+            "The late-commit page does not let the Commander answer her (stay, half the orange, the coin, or the posted penny; PP6).");
 
         // Trk_Chadali_Coin.
         var council = World(story, 3, "trickster", "trickster.ever", "chadali.chance_asked");
@@ -389,6 +389,22 @@ internal static class ChadaliTricksterTests
               && shut.Choices[1].Forbids.Contains(P + "primed") && shut.Choices[1].Next == null,
             "The refusal returns a coin the unprimed Commander never gave her.");
         check(!Sc(F + "a_great_big_fair").Nodes.Any(n => n.Text.Contains("The bleeding, and the brick")), "The fair recalls conversations the player may not have had.");
+        // PP6 Sol r2. INT: a Commander committed before the Council fight gets the lucky night only after her reconciliation; the
+        // late page's keepsake is the coin only if it was called, the penny only if it was posted. CAN: the odious questions recall
+        // only the one Cue_0017 guarantees; the hall is reached by the chamber closet.
+        foreach (var fight in new[] { "council.fought", "council.fought_nocta_allied" })
+        {
+            check(!Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", fight)), "The lucky night ignores an unreconciled fight: " + fight);
+            check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", fight, P + "returned")), "The lucky night stays shut after her price: " + fight);
+        }
+        check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed")), "The lucky night is lost for a Commander who never fought her.");
+        var lateOpen = pageCommit.Nodes.Single(n => n.Id == "page").Choices;
+        check(lateOpen.Count == 4 && lateOpen[2].Next == "coin" && lateOpen[2].Requires.Contains(P + "primed")
+              && lateOpen[3].Next == "penny" && lateOpen[3].Requires.Contains(P + "cost.late_wager") && lateOpen[3].Forbids.Contains(P + "primed"),
+            "The late page hands back a keepsake the Commander never gave her.");
+        check(!Sc(W + "odious_questions").Nodes.Single(n => n.Id == "asked").Text.Contains("orphanage")
+              && !Sc(S + "the_last_evening").Nodes.Any(n => n.Text.Contains("long stair")) && !Sc(W + "so_gloomy").Nodes.Any(n => n.Text.Contains("passes the door to the hall")),
+            "A sitting recalls an unasked question, or walks to the hall by an invented stair.");
         Console.WriteLine("PASS: Chadali Trickster (Trk_Chadali_*): coin, orange, second cookie, the seed, the sealed hall's letters, 'Lucky you' and the wagers.");
     }
 }

@@ -295,8 +295,8 @@ wager(QUESTIONS, "Odious questions", '"Are you still cross about my questions?"'
       c("Continue", "asked", requires=(ODIOUS,)),
       c("Continue", "fresh", forbids=(ODIOUS,))),
     ch("asked", '''"Oh. Those questions." {n}She chews furiously for a moment, exactly the way she did the first time.{/n}
-"You asked if you didn't have to take responsibility any more, because chance would clean up after you. You asked about setting fire to an orphanage. You asked about bricks falling on your head." {n}She swallows.{/n} "You ruined my mood. It came back. It usually does."
-"I've been thinking about the brick one."''',
+"You asked if you didn't have to take responsibility any more, because chance would clean up after you." {n}She swallows.{/n} "You ruined my mood. It came back. It usually does."
+"Then I started on a worse one, all by myself. If a brick falls on a child, whose luck was that? I've been thinking about the brick one."''',
       c('"And?"', "brick")),
     ch("fresh", '''"You never asked me the horrible ones. Other people do. Eritrice, mostly, in session, when she wants to make a point." {n}She makes a face.{/n}
 "'If chance helps everyone, does chance help the demons?' 'If a brick falls on a child, whose luck was that?'" {n}She puts the cookie down.{/n} "I've been thinking about the brick one."''',
@@ -312,7 +312,7 @@ wager(QUESTIONS, "Odious questions", '"Are you still cross about my questions?"'
       c("[Take her hand.]", "hand", flags=(TOLD_BRICK,))),
     ch("good", '''{n}Her head comes up fast, and for a moment the empyreal lord looks out of the plump, sweet face, and it is not sweet at all.{/n}
 "What good is a sword? It doesn't save everyone either." {n}Her eyes are wet and furious.{/n}
-"You hope for the best anyway. You bake anyway. You leave the honey out anyway, even when the saucer's broken. That's what good it is." {n}She scrubs at her eyes with a yellow sleeve.{/n} "Don't you ever ask me that again. Ask me the orphanage one. That one's easy."''',
+"You hope for the best anyway. You bake anyway. You leave the honey out anyway, even when the saucer's broken. That's what good it is." {n}She scrubs at her eyes with a yellow sleeve.{/n} "Don't you ever ask me that again. Ask me something easy. Ask me about cookies."''',
       c("[Take her hand.]", "hand", flags=(TOLD_BRICK,))),
     ch("hand", '''{n}Her fingers close on yours at once, tight, sticky with honey. She does not look at you. She looks at the lamp until it steadies.{/n}
 "I don't tell anyone that. They'd feel sorry for me, and then they'd feel sorry for themselves for feeling sorry, and it goes round and round." {n}A shaky breath.{/n}
@@ -388,7 +388,7 @@ wager(WOUND, "A free space", '"What would you do with the Worldwound, if we clos
 # --- 10. So gloomy. ---------------------------------------------------------------------------------------------------
 
 wager(GLOOMY, "So gloomy", '"Not today, Chadali."', [
-    nar("open", '''{n}You did not mean to come here. The field reports were bad, and the walk from the war room to your quarters passes the door to the hall, and somehow you are standing at the end of the long table in the dark, with your gauntlets still on.{/n}''',
+    nar("open", '''{n}You did not mean to come here. The field reports were bad, you took them to your chamber to be alone with them, and somehow you opened the closet instead of the shutters, and now you are standing at the end of the long table in the dark, with your gauntlets still on.{/n}''',
         c("Continue", "start")),
     ch("start", '''"Oh." {n}She has seen your face. She gets up at once, cookies forgotten.{/n}
 "How can you be so gloomy?" {n}It is the kind of thing she says across the Council table to tease. She does not say it like a tease now.{/n} "Who was it? Don't tell me the number. Tell me the name. One name."''',

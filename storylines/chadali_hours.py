@@ -200,7 +200,7 @@ hour(WAITING, "Not today", '"You\'re very quiet."', [
 "...You really think so?" {n}And then, before you can answer:{/n} "No, don't answer. If you answer I'll believe you, and then I'll want you to ask, and I've got dough under my nails."''',
       c('"Are you nervous?"', "nervous")),
     ch("nervous", '''{n}She is quiet, her floury hands gone still in the bowl.{/n}
-"I don't get nervous," she says at last. "I'm getting nervous. I don't care for it. Like knowing the odds of everything except one thing, and that one thing is the only one that matters."
+"I don't get nervous," she says at last. "I'm getting nervous. I don't care for it. I can give you the odds on an army. I can't give you the odds on this, and I'm chance. It's insulting."
 {n}She looks up at you.{/n} "I'm chance, and I don't know what I'll say. Isn't that silly? I know what I'll say. I don't know if I'll be brave enough to say it."''',
       c('"I\'ll ask when you\'re ready. Not before."', "ready"),
       c('"You\'ll be brave enough. You were born in a meteor shower."', "brave")),

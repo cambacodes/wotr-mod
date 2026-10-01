@@ -373,7 +373,7 @@ session(LAST_EVENING, "The last evening", '"The hall feels different tonight."',
     ch("together", '''{n}She is at your side before you finish, her small warm hand under the saucer beside yours, her bracelets held carefully still.{/n}
 "Together, then. Slowly. Oh, slowly." {n}She is laughing and whispering at once.{/n} "If it falls, it's your fault. If it doesn't, it's luck. That's the rule for tonight. I just made it."''',
       c("[Walk her home, slowly.]")),
-    ch("walk", '''{n}You walk. You look at the coin all the way to the door, and through it, and down the long stair to Drezen, and along the dark corridors to your quarters. It does not fall. At your door you realise that you have been smiling like a fool the whole way.{/n}
+    ch("walk", '''{n}You walk. You look at the coin all the way to the door, and through the closet portal, and out among your own coats into your own chamber. It does not fall. At your door you realise that you have been smiling like a fool the whole way.{/n}
 {n}Behind you, very far away, somebody is singing a terrible drinking song.{/n}''',
       c("[Set the saucer down on the shelf.]")),
 ], requires=(COMMITTED,), forbids=(LAST_EVENING,), chapters=(5,), delay=48)

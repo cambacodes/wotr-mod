@@ -232,6 +232,9 @@ internal static class SoanaTricksterTests
         check(Rules.Available(story, secondAsk, Later(story, refused, 96)) && !Rules.Available(story, secondAsk, Later(story, refused, 95))
               && !Rules.Available(story, terms, Later(story, refused, 96)),
             "Trk_Soana_TermsRefused: the second ask ignores its days, or the terms repeat.");
+        // PP6 (Sol INT): a luck-chain postponement carried into a later death and return does not open the knot's second ask.
+        check(!Rules.Available(story, secondAsk, Later(story, World(story, 5, "trickster", "trickster.ever", P + "returned", P + "declined"), 200)),
+            "The knot's second ask opens before its graveyard and first ask.");
         var paid = Pick(secondAsk, Later(story, refused, 96), "soana.committed", P + "cost.second_ask");
         check(secondAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.second_ask")
               && c.Set.Contains("soana.committed")), "The second ask is a fee, or leaves no scar.");

@@ -331,7 +331,9 @@ at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has 
     s("night", TERMS_NIGHT, c("Continue", "morning")),
     s("morning", TERMS_MORNING, c('[Go]')),
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
-    ], requires=("trickster.ever", RETURNED, DECLINED), forbids=(CLOSED, COMMITTED), delay=96)
+    # PP6 (Sol INT): the knot's second ask follows the knot's own first ask; a luck-chain "not yet" (missed.bowl) shares
+    # soana.trickster.declined, so the graveyard test and the terms scene are required by name.
+    ], requires=("trickster.ever", RETURNED, DECLINED, GRAVE_KEPT, "soana.trickster.returned.terms"), forbids=(CLOSED, COMMITTED), delay=96)
 
 # Q10 r2: a lover committed before she died (the registered courtship, then the handover or the Commander's own kill)
 # still owes the knot its second strand. The terms and the second ask forbid soana.committed, so this is that vow.
