@@ -419,11 +419,15 @@ partner("dorgelinda", "dorgelinda", "dorgelinda.committed", "dorgelinda.closed",
         page_p('''The boots were entered as paid. She kept the last pair on a shelf in the stores and would not issue them to anyone.''', requires=(D + "cost.boots_paid",)),
         page_p('''Her audit of the Commander never formally concluded. She kept it open, hostile, on principle, and conducted it twice a week over supper.''', requires=(D + "cost.audit_hostile",)),
         page_p('''When the Commander was entered as dead, she refused to close the account. "Dead's a status, not a balance," she told the clerk from Nerosyan.''', requires=(ON_RECORD,)),
-    ), declined=D + "declined",
+        # Q9 (Sol COX): the late history (the second book reached, no yes in the war) plays this coda too; her own epilogue
+        # page puts the question ("close it, or stay in it"), and this line holds the Commander's staying.
+        page_p('''The war had ended before the audit did. She brought the last ledger to the Commander the spring after Threshold with the line still open and "carried forward" already written under it, and the Commander stayed in it. She never wrote any other word for what they were. She said it was not a stores term.''', requires=(D + "late_committed",), forbids=("dorgelinda.committed",)),
+    ), declined=D + "declined", page_forbids=("dorgelinda.ledger.line_ruled",),   # Q9 (Sol COX): the line ruled off after a lie
     deal=[[D + "cost.line_open"], [D + "cost.boots_owed"], [D + "cost.carts_signed"]],
     call=call('''[Settle the open line] "Quartermaster: the account marked 'used, quietly'. I'm ready to explain."''',
         '''{n}Somewhere in the stores at Drezen a quartermaster looks up from her ledger at one particular line, and does not rule it off.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
+    page_commit_groups=[["dorgelinda.committed"], [D + "late_committed"]],   # Q9 (Sol COX): the late yes reaches her coda
     ledger=("Dorgelinda: a line marked \"used, quietly\"", "One line in the stores ledger is open in my name. Dorgelinda won't close an account while the debtor might still explain it."))
 
 H = "hepzamirah.trickster."
@@ -553,7 +557,11 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
         page_p('''The Commander never found out what she would have done if the flask had not held. She would not say. She said a silver does not tell a trickster what she would have done if the trick had failed, because the trickster would only use it next time.''', requires=(ON_RECORD,)),
         page_p('''When the flask was opened in Drezen she was standing at the back with a loaf under her arm, because somebody would be hungry after, and she was right.''', requires=(H2,)),
         page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",)),
-    ), declined=NI + "refused",
+        # Q9 (Sol INT): the late history (her own face shown, the war over before the salt) plays this coda too.
+        page_p('''The salt was still unbroken when the war ended. She brought it up the citadel stair the spring after, with a loaf under her arm, and put both on the Commander's table, and sat down to wait. She was not in any hurry.''', requires=(NI + "late_committed",), forbids=("nidalynn.committed", NI + "bread_kept")),
+        page_p('''The heel of the loaf was still on the kiln shelf when the war ended, wrapped in its cloth, where the Commander had asked her to keep it. She kept it.''', requires=(NI + "bread_kept",), forbids=("nidalynn.committed",)),
+    ), declined=NI + "refused", page_forbids=(NI + "goat.lie_kept",),   # Q9 r3: she left over the wolves story
+    page_commit_groups=[["nidalynn.committed"], [NI + "late_committed"]],   # Q9 (Sol INT): the late yes reaches her coda
     deal=[[NI + "cost.salt_eaten"]],
     call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',
         '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}''',

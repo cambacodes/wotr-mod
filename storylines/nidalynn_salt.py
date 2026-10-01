@@ -12,8 +12,8 @@ the druids (she was one), the clutch.
 from story_format import c, scene
 from storylines.nidalynn_trickster import (
     CLAIMED, CLOSED, COMMITTED, DV_BILL, DV_HUNTING, DV_RETURNED, FED_DEMONS, FED_GOATS, FED_RATS, FIRST_DEMON, FORM,
-    HAND_SET, HATCHED, KISSED, LEFT_WITH_IT, LIE_KEPT, MET, NAME_NONE, NAME_PEBBLE, NAME_SOOT, P, PROPOSED, BREAD_KEPT, REFUSED, RENOUNCED,
-    SALT, SNOW, nar, nd)
+    HAND, HAND_SET, HATCHED, KILN, KISSED, LEFT_WITH_IT, LIE_KEPT, MET, MET_EARLY, NAME_NONE, NAME_PEBBLE, NAME_SOOT, P, PROPOSED, BREAD_KEPT,
+    REFUSED, RENOUNCED, SALT, SNOW, TORC_LEFT, nar, nd)
 from storylines.nidalynn_trickster import steps as _steps, visit as _visit
 from storylines.nidalynn_kiln import CLAIM_KEPT, TORCS
 
@@ -48,12 +48,12 @@ visit(OWN_FORM, "Her own face", [
     nd("soup", '''"Well, don't stand there with your mouth open; take the pot. It's hot, and I've carried it up four flights." {n}It is the same voice. It is not the widow's voice at all: lower, easier, with a laugh folded up inside it somewhere.{/n} "Barley and mutton. The little one ate the rest of the mutton, so it's mostly barley."''',
         c('"Nidalynn?"', "yes"),
         c('"Where\'s the belly?"', "belly")),
-    nd("yes", '''"Who else brings you soup?" {n}She comes in past you and puts the pot on your map table, on top of the map, without asking.{/n} "Don't answer that either. I know who brings you soup. I've been sitting on a step opposite your door for a season."''',
+    nd("yes", '''"Who else brings you soup?" {n}She comes in past you and puts the pot on your map table, on top of the map, without asking.{/n} "Don't answer that either. I know who brings you soup. I've been sitting on a step opposite your door long enough."''',
         c("Continue", "why")),
-    nd("belly", '''"Retired." {n}She comes in past you and puts the pot on your map table, on top of the map, without asking.{/n} "It had a long and honourable career. The women on the step are very upset; they'd knitted it a blanket. I told Old Anka the truth, the eldest of them, and she said she'd known since the autumn, because nobody carries that high for four months, and then she gave me the blanket anyway."''',
+    nd("belly", '''"Retired." {n}She comes in past you and puts the pot on your map table, on top of the map, without asking.{/n} "It had a long and honourable career. The women on the step are very upset; they'd knitted it a blanket. I told Old Anka the truth, the eldest of them, and she said she'd known all along, because nobody carries that high that long, and then she gave me the blanket anyway."''',
         c("Continue", "why")),
     nd("why", '''{n}She turns round, with her back to your map table and her hands braced on its edge, and lets you look at her. She does not make it easy, and she does not make it hard. She simply stands there, as herself, and lets it happen.{/n}
-"I said you'd know when I wanted to be looked at as myself. That you wouldn't have to ask." {n}Her chin comes up a little.{/n} "This is the shape I'd choose, if nobody needed me to be anything. I've worn it before, now and then, when I was somewhere I meant to stay. I wore it at Reudger's fire."''',
+"You'd know, I told myself, when I wanted to be looked at as myself. You'd not have to ask." {n}Her chin comes up a little.{/n} "This is the shape I'd choose, if nobody needed me to be anything. I've worn it before, now and then, when I was somewhere I meant to stay. I wore it at Reudger's fire."''',
         c('"You\'re beautiful."', "beautiful"),
         c('"Why now?"', "now"),
         c("[Say nothing. Look at her.]", "look")),
@@ -61,16 +61,16 @@ visit(OWN_FORM, "Her own face", [
         c("Continue", "now")),
     nd("look", '''{n}You look. She lets you. After a while the corner of her mouth goes up.{/n} "Thorough. That's a trickster for you. Checking the seams." {n}She holds out one arm, turning it over, as she did in your quarters that first night. It stays an arm.{/n} "No scales. No belly. Only me."''',
         c("Continue", "now")),
-    nd("now", '''"Now?" {n}She considers it, chewing.{/n} "Now I go back to my kiln, and the little one goes back to eating the undercroft, and you go back to your war. I'm not going to sit in your citadel and be looked at by your generals. I'll keep my kiln and my step. Come when you like, and come hungry; I'll know if you've eaten in the citadel first, and I'll be offended."
-{n}She looks at you sidelong, over the bread.{/n} "And don't ever lie to me about anything you love. The salt won't stand for it. Neither will I."''',
+    nd("now", '''"Why now?" {n}She looks down at her own hands on the edge of your table, as if they might know.{/n} "Because you gave her to me. In my own kiln, with nobody making you, and you didn't even haggle. A widow can't answer a thing like that; she can only bless you and go back to her mending. I wanted to answer it as myself."
+"And because she'll fly soon. The first time she looks down from the sky, I want her to see me, and not a cushion and a basket on a step." {n}Her chin comes up again.{/n} "That's two reasons. I had a third. I've lost it, standing here being looked at."''',
         c("Continue", "mother", requires=(DV_RETURNED,)),
         c("Continue", "eat", forbids=(DV_RETURNED,))),
-    nd("mother", '''"And there's a grey dragon on the ridge above your city who comes down at night and lies on the east wall and looks at my kiln." {n}Her voice does not change.{/n} "She hasn't come closer. She won't, while I'm in it. I'm not afraid of her; I'm older than she is, and I'm not the one who stole from her. But I thought you should hear it from me, in this face, and not from your sentries."''',
+    nd("mother", '''"And there's a grey dragon on the ridge above your city who comes down at night and lies on the east wall and looks at my kiln." {n}Her voice does not change.{/n} "She hasn't come closer. She hasn't tried, while I'm in it. I'm not afraid of her; I keep the kiln hot and the sergeant's men on the lane, and I'm not the one who stole from her. But I thought you should hear it from me, in this face, and not from your sentries."''',
         c("Continue", "eat")),
     nd("eat", '''"Now eat the soup, before it goes cold and I have to be the widow again to make you." {n}She sits down in your chair, the good one, and crosses her legs, and looks, now, very slightly unsure of herself, as if she had rehearsed everything up to this point and nothing after it.{/n}''',
         c("[Eat the soup, and let her watch you do it.]", "end"),
         c("[Put the soup down and go to her.]", "near")),
-    nd("near", '''{n}She puts up one hand, flat against your chest, before you are quite close enough, and holds you there. Not pushing. Holding.{/n} "Soup first." {n}Her eyes are laughing, and not only laughing.{/n} "I've waited a season on a step. I can wait for you to eat. So can you."''',
+    nd("near", '''{n}She puts up one hand, flat against your chest, before you are quite close enough, and holds you there. Not pushing. Holding.{/n} "Soup first." {n}Her eyes are laughing, and not only laughing.{/n} "I've waited long enough on a step. I can wait for you to eat. So can you."''',
         c("[Eat the soup.]", "end")),
     nd("end", '''{n}You eat. She watches you do it with the deep satisfaction of a woman who has fed somebody properly, and when you have finished she takes the pot back and tucks it under her arm.{/n}
 "There. The step, tomorrow, if you want me. It's the same step. It's a different woman on it." {n}At the door she stops.{/n} "And if the sergeant with the squint calls me 'mother', I shall bite him."''',
@@ -82,16 +82,20 @@ visit(OWN_FORM, "Her own face", [
 
 steps(WOMEN, "The widow's time", '"The women on the next step are staring at you."', [
     nd("start", '''"They're staring at you." {n}She takes another bite of her apple.{/n} "They've decided you're the reason the widow went away. Old Anka's put it about that the widow's man came back from the dead, and was a crusader, and took her off to Mendev to have the child in a proper bed. They've half convinced themselves it was you."
-"I didn't tell them that. I told Anka the truth. Anka told the rest of them a better story, because she's a Kellid and a Kellid would rather die than tell a story straight."''',
+"I didn't tell them that. I told Anka the truth. Anka told the rest of them a better story, because Anka would rather die than tell a story straight."''',
         c('"Does it bother you?"', "bother"),
         c('"Am I supposed to be the dead crusader?"', "crusader")),
     nd("crusader", '''"You're supposed to be a great many things, to hear them tell it. Tall. Handsome. Unfaithful. Very bad at writing letters." {n}She smiles at the apple.{/n} "I'd say they've got one of those right."''',
         c("Continue", "bother")),
     nd("bother", '''"No." {n}She thinks about it properly before she says it.{/n} "It's their story now. They made it out of what they had, the way the Windstep made cheese out of mare's milk because that's what there was. It's a kind story. Nobody in it is a fool, and nobody's left on a step."
 "And they still feed me. They feed me more, now. They say I'm too thin since the widow went." {n}She holds up the apple, which she did not buy.{/n} "You see? A costume isn't the only way to be looked after. It's only the quickest."''',
-        c("Continue", "torc", requires=(TORCS,)),
-        c("Continue", "end", forbids=(TORCS,))),
-    nd("torc", '''{n}She nods across the square. The Kellid girl from the jeweller's is there, at a water-trough, and she is wearing the hare torc, or she is not, and either way she lifts her chin at the white-haired woman on the step, the way you greet somebody from your own fell.{/n}
+        c("Continue", "torc", requires=(TORCS,), forbids=(TORC_LEFT,)),
+        c("Continue", "end", forbids=(TORCS,)),
+        c("Continue", "torc_left", requires=(TORC_LEFT,))),
+    nd("torc_left", '''{n}She nods across the square. The Kellid girl from the jeweller's is there, at a water-trough, with her collar open and her neck bare, and she lifts her chin at the white-haired woman on the step, the way you greet somebody from your own fell.{/n}
+"The torc's in some knight's saddlebag by now. The name isn't. She doesn't know who I am; she knows I'm the one who knew her great-great-grandmother's name. That's enough, for a girl with no clan left. It's a great deal."''',
+        c("Continue", "end")),
+    nd("torc", '''{n}She nods across the square. The Kellid girl from the jeweller's is there, at a water-trough, with the copper hare at her throat where it was made to be worn, and she lifts her chin at the white-haired woman on the step, the way you greet somebody from your own fell.{/n}
 "She doesn't know who I am. She knows I'm the one who knew her great-great-grandmother's name. That's enough, for a girl with no clan left. It's a great deal."''',
         c("Continue", "end")),
     nd("end", '''"Sit a while. The women want to look at you, and I want them to have a good look, so they'll stop asking me." {n}She moves over on the step, and it is not a wide step, and she does not move over very far.{/n}''',
@@ -113,14 +117,14 @@ visit(WINGS, "Wings", [
     nd("run", '''"I remember the first time I flew." {n}She says it quietly, as if to herself.{/n} "Off a cliff over the sea, a long way from here, with my mother shouting at me from the rocks. I didn't know how. I only knew that I'd rather fall than stand on that cliff another day." {n}She laughs under her breath.{/n} "I fell. A long way. Then I didn't."''',
         c('"Were you afraid?"', "afraid"),
         c('"Your mother pushed you?"', "mother")),
-    nd("mother", '''"Silver mothers don't push. They shout. It's worse." {n}Her mouth twitches.{/n} "She'd have liked you. She liked anyone who could make her laugh when she was angry. There weren't many."''',
+    nd("mother", '''"Mine didn't push. She shouted. It's worse." {n}Her mouth twitches.{/n} "She'd have liked you. She liked anyone who could make her laugh when she was angry. There weren't many."''',
         c("Continue", "afraid")),
     nd("afraid", '''"Terrified." {n}She turns her head and looks at you, and her face is very close, and very still.{/n} "It's the same now. I'm old, and I've flown over half the world, and I'm sitting on a wall with my heart going like that little one's, because I've decided something and I haven't said it yet."''',
         c('"Then say it."', "say"),
         c("[Kiss her.]", "kiss")),
     nd("say", '''"No." {n}She says it softly.{/n} "Some things you say. Some things you do." {n}And she leans the last little distance, and does.{/n}''',
         c("Continue", "kissed")),
-    nar("kiss", '''{n}She meets you halfway. She does not hurry. She has never hurried anything in her life, you think, and she does not start now: it is a slow kiss, and a thorough one, and it tastes of cold air and the apple she was eating on the step, and when her hand comes up to the back of your neck it is warm, and it stays.{/n}''',
+    nar("kiss", '''{n}She meets you halfway. She does not hurry: it is a slow kiss, and a thorough one, and it tastes of cold air and apples, and when her hand comes up to the back of your neck it is warm, and it stays.{/n}''',
         c("Continue", "kissed")),
     nar("kissed", '''{n}There is a crash below, and a shriek, and a sound that neither of you has heard before: a great ragged beating, like a sail in a gale.{/n}
 {n}You both look down. The young dragon is not in the lane. She is above it, for three heartbeats, four, five, labouring and lopsided and furious, a hand's breadth off the cobbles; and then she comes down again on the kiln roof, hard, and sits there with her wings half open, astonished.{/n}''',
@@ -148,9 +152,10 @@ visit(FLIGHT, "Salt on bread", [
         c("Continue", "ask")),
     nd("ask", '''{n}She picks up the knife and cuts the heel off the loaf, and holds the salt over it, and breaks a piece off the edge of the cake between her thumb and forefinger. It takes some doing. It has been a stone for a long time.{/n}
 "I'm not asking you to be anybody's husband, or wife, or to swear anything to a priest. I'm too old for priests." {n}She crumbles the salt over the bread.{/n} "I'm asking you to be of my fire. Mine, and hers, as long as the salt's in your blood. And it doesn't go out. So."''',
-        c("Continue", "held", requires=(HAND_SET,)),
-        c("Continue", "offer", forbids=(HAND_SET,))),
-    nd("held", '''{n}She takes your hand, the one she mended, and turns it palm up and puts the bread in it.{/n} "I set that hand. I'd like to see it close on something worth holding."''',
+        c("Continue", "held", requires=(HAND_SET, HAND)),
+        c("Continue", "offer", forbids=(HAND_SET,)),
+        c("Continue", "offer", requires=(HAND_SET,), forbids=(HAND,))),
+    nd("held", '''{n}She takes your hand, the one she mended, turns it palm up, and runs her thumb along the knuckles.{/n} "I set that hand. I'd like to see it close on something worth holding."''',
         c("Continue", "offer")),
     nd("offer", '''{n}She holds it out to you, the heel of the dark loaf with the old salt on it, on her open palm, and waits.{/n}
 {n}She is not smiling now. Her face is quite calm, and her hand is quite steady, and on the kiln roof above you the young dragon has started to sing, badly, the way young dragons sing, a long rising shriek at the sky that makes the lane's dogs howl.{/n}''',
@@ -196,7 +201,7 @@ visit(HEEL, "The heel of the loaf", [
 # --- 6. The snowfield (after the yes): she flies the Commander to the north peak, in her own form -----------------------
 
 visit(SNOWFIELD, "Where the snow stays", [
-    nar("lane", '''{n}The moon is down. The lane below the kiln is black, and the kiln's mouth is a red eye in it, and she is standing in the middle of the cobbles in her own shape with her braid undone and her feet bare on the frost.{/n}
+    nar("lane", '''{n}The moon is down. The lane below the kiln is black, and the kiln's mouth is a red eye in it, and she is standing in the middle of the cobbles in her own shape with her braid undone and her feet bare on the frost, and a rolled sheepskin and a stuffed bag at her feet.{/n}
 {n}"Stand back," she says. "Further. Further than that. I'm bigger than you'd think."{/n}''',
         c("Continue", "change")),
     nar("change", '''{n}It is not like the arm in your quarters. It is not fine or fast. It is like watching weather come in over a mountain: the dark filling, and filling, and going on filling long after you think it must stop.{/n}
@@ -215,10 +220,10 @@ visit(SNOWFIELD, "Where the snow stays", [
     nd("cold", '''"This is where I come when I want to be alone." {n}Her breath does not steam. Yours does, in great ragged clouds; your teeth are going like a drum.{/n} "I've never brought anyone. I've never wanted anyone here." {n}She looks at you shaking, and her face does something soft and wicked at once.{/n} "Oh. Oh, you poor warmblood. You're freezing."''',
         c('"You could have mentioned the cold."', "mention"),
         c("[Go to her.]", "go")),
-    nd("mention", '''"I could." {n}She is already coming toward you through the snow, which parts round her ankles and does not seem to touch her.{/n} "I wanted to see if you'd come anyway. You did."''',
+    nd("mention", '''"I should have." {n}She is already coming toward you through the snow, which parts round her ankles and does not seem to touch her.{/n} "I forget how little it takes to freeze one of you. I'll not forget again."''',
         c("Continue", "go")),
     nar("go", '''{n}She opens the sheepskin she has carried up in one claw, and puts it round you both, and pulls you in against her, and she is warm. Not a little warm. Warm like a hearth, like a banked kiln, like the heart of the thing that flew you here; the heat comes off her through the thin wool of the dress and into you, and your teeth stop.{/n}
-{n}She holds you like that for a while, with her chin on your hair, and does nothing else at all. She is in no hurry. She has never been in a hurry. Your hands, when they can feel again, find the laces at the back of the blue dress, and she goes still.{/n}''',
+{n}She holds you like that for a while, with her chin on your hair, and does nothing else at all. She is in no hurry. Your hands, when they can feel again, find the laces at the back of the blue dress, and she goes still.{/n}''',
         c("Continue", "slow")),
     nd("slow", '''"Slowly." {n}It is barely a word. Her mouth is at your temple.{/n} "I've waited a very long time to be hungry for anything, and I mean to take my time over it." {n}She tips her head back to look at you, and her eyes are not calm now, not any of the long patience in them, only want, plain and bright and nowhere near old.{/n} "Slowly. And be grateful."''',
         c("[Undo the laces, one at a time.]", "laces")),
@@ -239,13 +244,13 @@ visit(SNOWFIELD, "Where the snow stays", [
     nar("morning", '''{n}Grey light on the snowfield. Your eyelashes have frozen together, and when you get them open the first thing you see is a red-black face, upside down, with a great many teeth in it, a hand's breadth from your own.{/n}
 {n}The young dragon has found you. She is standing on your chest, which hurts, looking down at you with an expression of enormous disapproval, and every time you breathe she rises and falls.{/n}''',
         c("Continue", "found")),
-    nd("found", '''"She followed us." {n}Nidalynn's voice is lazy and warm and somewhere behind your head, and you realise that you are lying against her, under the sheepskin, and that she has not put the dress back on.{/n} "All the way up. In the dark. On her third real flight." {n}She sounds indecently proud.{/n} "She's been sitting on the snow over there since the stars went, sulking. She doesn't approve of you."''',
+    nd("found", '''"She followed us." {n}Nidalynn's voice is lazy and warm and somewhere behind your head, and you realise that you are lying against her, under the sheepskin, and that she has not put the dress back on.{/n} "All the way up. In the dark." {n}She sounds indecently proud.{/n} "She's been sitting on the snow over there since the stars went, sulking. She doesn't approve of you."''',
         c('"She\'s standing on me."', "standing"),
         c("[Scratch the young dragon under the jaw.]", "scratch")),
     nd("standing", '''"She is. It's a great honour." {n}She reaches up past your head and taps the young dragon on the snout, once.{/n} "Off. Off, madam. You'll crack a rib and then who'll feed you?" {n}The young dragon considers this, and gets off, slowly, making it clear that it was her own idea.{/n}''',
         c("Continue", "breakfast")),
     nd("scratch", '''{n}The young dragon goes rigid with outrage. Then, very slowly, her eyes half close, and she leans her jaw into your fingers, and a sound comes out of her like a kettle beginning to think about boiling.{/n}
-{n}Behind you, Nidalynn laughs so hard the sheepskin shakes.{/n} "Traitor. Seven weeks I've been scratching her. One night on a mountain and she's anybody's."''',
+{n}Behind you, Nidalynn laughs so hard the sheepskin shakes.{/n} "Traitor. All this time I've been scratching her. One night on a mountain and she's anybody's."''',
         c("Continue", "breakfast")),
     nd("breakfast", '''{n}She sits up, and the cold comes back into the sheepskin where she was, and she pulls her dress over her head without hurry and reaches for the bag she brought up in her other claw. Bread. The cake of old salt, wrapped in its cloth. A flask of something that turns out to be hot, and tastes of honey and pine.{/n}
 "Eat. You're half frozen, and you'll need your strength for the walk down; I'm not flying you home in daylight in front of the whole city." {n}She breaks the bread, and puts a crumb of the salt on your piece, and a crumb on hers.{/n} "There. Every morning, as long as there's any left. Then we'll find more."''',
@@ -272,7 +277,7 @@ visit(FIRST_DEMON, "What she hunts", [
         c("Continue", "fed")),
     nar("look", '''{n}The young dragon watches you look. When you look up at her she lifts her head, very high, the way the chaplain lifts his when he is about to say something about Iomedae, and makes a small, satisfied noise.{/n}''',
         c("Continue", "fed")),
-    nd("fed", '''"That's for you." {n}Nidalynn is laughing silently on the step.{/n} "A dragon's first kill goes to the one she thinks is the head of the house. I rather thought it'd be me."''',
+    nd("fed", '''"That's for you." {n}Nidalynn is laughing silently on the step.{/n} "She's brought her first kill to the one she thinks is the head of the house. I rather thought it'd be me."''',
         c("Continue", "demons", requires=(FED_DEMONS,)),
         c("Continue", "goats", requires=(FED_GOATS,)),
         c("Continue", "rats", requires=(FED_RATS,)),
@@ -288,7 +293,7 @@ visit(FIRST_DEMON, "What she hunts", [
         c("Continue", "bill", requires=(DV_BILL,)),
         c("Continue", "druids", requires=(DV_HUNTING,), forbids=(DV_BILL,)),
         c("Continue", "end", forbids=(DV_BILL, DV_HUNTING))),
-    nd("bill", '''"And the grey one's bill." {n}She does not look at the ridge, but her voice is careful.{/n} "I heard what she asked of you. A life, owed, to be named when she likes. That's a dragon's bill; I'd have written it the same." {n}She puts her hand on yours.{/n} "When she names it, you come to me first. Not to argue it. To tell me. I'll not have her collect in the dark from somebody who's eaten my salt."''',
+    nd("bill", '''"And the grey one's bill." {n}She does not look at the ridge, but her voice is careful.{/n} "I heard what she asked of you. A life, owed, to be named when she likes. I understand the bill; I'd not have written it so wide. A service, a risk, your own blood: that's fair dealing between dragons. If she names somebody else's child, she'll find me standing in front of it." {n}She puts her hand on yours.{/n} "When she names it, you come to me first. I'll not have her collect in the dark from somebody who's eaten my salt."''',
         c("Continue", "end")),
     nd("druids", '''"And the grey one's still following the druids." {n}Her mouth thins.{/n} "My people. You pointed her at them. They're further north than she'll ever find, and they're patient, and one of them is a good deal bigger than she is." {n}She looks at you.{/n} "I haven't forgiven that. I'm not going to. I've only decided it's a smaller thing than the rest of you. Don't make me decide again."''',
         c("Continue", "end")),
@@ -315,54 +320,62 @@ visit(P + "ridge.claimed_flight", "Where she flew", [
 # --- 9. Back from the Abyss (Chapter 5): the first night home -----------------------------------------------------------
 
 visit(BACK, "Home from the dark", [
-    nar("door", '''{n}You have been back in Drezen for half a day. You have seen the council, and the quartermaster, and a great many people who wanted to shake your hand, and you have not eaten, and you have not slept, and there is a smell of the Abyss in your clothes that no washing has touched.{/n}
+    nar("door", '''{n}You are back from the Abyss. You have seen the council, and the quartermaster, and a great many people who wanted to shake your hand, and you have not eaten properly since, or slept, and there is a smell of the Abyss in your clothes that no washing has touched.{/n}
 {n}At dusk there is a knock at your door that is not your steward's.{/n}''',
         c("Continue", "own", requires=(FORM,)),
         c("Continue", "widow", forbids=(FORM,))),
-    nar("own", '''{n}She is on the landing with a covered basket on her arm and snow on her sheepskin, tall and white-braided in her own face, and she does not wait to be asked in. She puts the basket on your table and takes your face in both hands and turns it to the lamp, the way she looked at your teeth, the way she looks at everything she means to mend.{/n}''',
-        c("Continue", "look")),
+    nar("own", '''{n}She is on the landing with a covered basket on her arm and snow on her sheepskin, tall and white-braided in her own face, and she does not wait to be asked in. She puts the basket on your table and takes your face in both hands and turns it to the lamp, the way she looks at everything she means to mend.{/n}''',
+        c("Continue", "look", requires=(MET_EARLY,)),
+        c("Continue", "look_new", forbids=(MET_EARLY,))),
     nar("widow", '''{n}She is on the landing in the widow's dress, with a covered basket on her arm and snow on her shawl, and she does not wait to be asked in. She puts the basket on your table and walks all the way round you once, slowly, the way a horse-trader walks round a horse, looking for what's lame.{/n}''',
-        c("Continue", "look")),
+        c("Continue", "look", requires=(MET_EARLY,)),
+        c("Continue", "look_new", forbids=(MET_EARLY,))),
+    nd("look_new", '''"Thinner than a Commander ought to be. Greyer than you were on my step." {n}She lets out a breath.{/n} "I'd only just found you, and then the whole quarter was saying where you'd been before I found you. Down into the Abyss, and back up, and nobody in that citadel has thought to feed you since."
+"Sit down. Eat. Don't tell me anything until you've eaten."''',
+        c("[Sit, and eat.]", "eat")),
     nd("look", '''"Thinner. Greyer. There's something wrong with your eyes; they don't sit still." {n}She lets out a breath.{/n} "But all there. I counted. I've been counting every night since you went, and I was afraid I'd lose count."
 "Sit down. Eat. Don't tell me anything until you've eaten."''',
         c("[Sit, and eat.]", "eat")),
-    nar("eat", '''{n}It is barley and mutton again, and black bread, and a pot of something sharp and green that she says is for the blood. She sits across from you and watches every spoonful go down with the fierce attention of a woman who has seen too many people not come back.{/n}
+    nar("eat", '''{n}It is barley and mutton, and black bread, and a pot of something sharp and green that she says is for the blood. She sits across from you and watches every spoonful go down with the fierce attention of a woman who has seen too many people not come back.{/n}
 {n}When you have finished she takes the bowl away, and then she sits down again, and folds her hands, and waits.{/n}''',
         c("Continue", "tell")),
     nd("tell", '''"Now. What was it like?" {n}She holds up a hand.{/n} "Not the war. I'll hear the war from your generals, and they'll lie. What was it like for you, in the dark?"''',
         c('"Like a nightmare that kept its promises."', "nightmare"),
         c('"The demons laughed at my jokes. That was the worst part."', "laughed"),
         c('"I don\'t want to talk about it."', "quiet")),
-    nd("nightmare", '''{n}She nods slowly, as if you had said something she recognised.{/n} "I've never been down. I've stood at the edge of it and smelled it, and that was enough to put me off my food, and nothing puts me off my food." {n}She reaches across and puts her hand over yours on the table, briefly.{/n} "You went all the way down. And you came back up and asked for soup. That's a kind of courage nobody sings about."''',
+    nd("nightmare", '''{n}She nods slowly, as if you had said something she recognised.{/n} "I've never been down. I've stood at the edge of it and smelled it, and that was enough to put me off my food, and nothing puts me off my food." {n}She reaches across and puts her hand over yours on the table, briefly.{/n} "You went all the way down, and came back up, and not one of your generals thought to feed you after. Typical. That's soldiers all over."''',
         c("Continue", "news")),
     nd("laughed", '''{n}She stares at you, and then she laughs, a real laugh, big and startled.{/n} "Oh, they would. They would." {n}She wipes her eyes.{/n} "A trickster in the Abyss. They must have thought you were one of theirs, until you weren't." {n}The laugh goes out of her face slowly.{/n} "Don't let them be the only ones who laugh at your jokes. That's how it starts. Come and tell them to me instead. I'll laugh at the bad ones too."''',
         c("Continue", "news")),
-    nd("quiet", '''"Then don't." {n}She says it at once, without offence.{/n} "Some things you carry by yourself for a while before you can put them down in front of anybody. I know about that." {n}She pushes the bread across to you again.{/n} "When you want to, there's a kiln, and a step, and me. It's not going anywhere. Neither am I."''',
+    nd("quiet", '''"Then don't." {n}She says it at once, without offence, and pushes the bread across to you again.{/n} "Eat. The Abyss can wait another night; it's waited long enough for everything else. When there's something you want said, come and say it on my step, and I'll feed you first."''',
         c("Continue", "news")),
     nd("news", '''"Well. My news." {n}She settles back.{/n}''',
         c("Continue", "news_hatched", requires=(HATCHED,)),
-        c("Continue", "news_egg", forbids=(HATCHED,))),
-    nd("news_hatched", '''"She's the size of a calf, and she can't fly yet, and she thinks she can. She's been off the kiln roof nineteen times while you were gone. The sergeant's started keeping a tally on the wall in charcoal." {n}Her face softens.{/n} "She looked for you every dusk. I told her you'd come back. She didn't believe me. She's a very sensible child."''',
+        c("Continue", "news_egg", requires=(KILN,), forbids=(HATCHED,)),
+        c("Continue", "news_hearth", forbids=(HATCHED, KILN))),
+    nd("news_hearth", '''"Your rock." {n}She glances at your hearth, and her face goes careful.{/n} "I can hear it from here. It's colder than it should be, and it's stopped singing at night; it only knocks. I said I'd come and look at it properly, and I will." {n}She pushes the bread back at you.{/n} "Not tonight. Tonight you eat."''',
         c("Continue", "end")),
-    nd("news_egg", '''"The egg's well. It's grown. It's not stopped knocking all winter, and the whole lower town's heard it sing." {n}She frowns.{/n} "It's waiting for something. I don't know what. They do that, sometimes, the wise ones. They wait till the house is whole."''',
+    nd("news_hatched", '''"She's the size of a calf, and she can't fly yet, and she thinks she can. She's been off the kiln roof nineteen times. The sergeant's started keeping a tally on the wall in charcoal." {n}Her face softens.{/n} "She looks for you every dusk. I tell her you'll come. She doesn't believe me. She's a very sensible child."''',
+        c("Continue", "end")),
+    nd("news_egg", '''"The egg's well. It's grown. It's not stopped knocking since it went in the kiln, and the whole lower town's heard it sing." {n}She frowns.{/n} "It's waiting for something. I don't know what. They do that, sometimes, the wise ones. They wait till the house is whole."''',
         c("Continue", "end")),
     nd("end", '''{n}She gets up, and picks up her basket, and at the door she stops.{/n} "Sleep tonight. Properly. In a bed, not a chair." {n}She looks back at you.{/n} "I'll know if you don't. The laundress on the second floor tells me everything."''',
         c("[Sleep.]", flags=(BACK,))),
-], requires=(MET,), forbids=(BACK, LIE_KEPT), delay=12, chapters=(5, 5))
+], requires=(MET,), forbids=(BACK, LIE_KEPT, PROPOSED), delay=12, chapters=(5, 5))
 
 
 # --- 10. The long night (after the kiss): what she's afraid of -----------------------------------------------------------
 
 visit(LONG_NIGHT, "What a silver is afraid of", [
     nar("kiln", '''{n}The kiln is banked low tonight. The young dragon is asleep at the back of it on the warm bricks, curled round herself like a dog, twitching in dreams, now and then letting out a small wet snort of smoke.{/n}
-{n}Nidalynn is sitting on the lime sack in her own face with her boots off and her feet to the embers, and she moves over for you without looking, and you sit, and for a while neither of you says anything, which is the most comfortable silence you have had in a year.{/n}''',
+{n}Nidalynn is sitting on the lime sack in her own face with her boots off, her feet to the embers and a loaf in her lap, and she moves over for you without looking, and you sit, and for a while neither of you says anything, which is the most comfortable silence you have had in a year.{/n}''',
         c("Continue", "ask")),
     nd("ask", '''"Can I tell you a thing I've told no one?" {n}She says it to the embers.{/n} "Not a secret. Silvers are no good at secrets. A thing I'm ashamed of."''',
         c('"Tell me."', "tell"),
         c("[Put your arm round her, and wait.]", "arm")),
     nar("arm", '''{n}She leans into it, the whole long warm weight of her, as if she had been waiting for somebody to do exactly that for a very long time and had given up expecting it.{/n}''',
         c("Continue", "tell")),
-    nd("tell", '''"When the Wound opened I was a long way north, off on my own business and in no hurry, because I'm never in a hurry." {n}She pokes the embers with a stick, harder than they need.{/n}
+    nd("tell", '''"When the Wound opened I was a long way north, off on my own business and in no hurry." {n}She pokes the embers with a stick, harder than they need.{/n}
 "I came back to ash. I'd not said goodbye to him. I thought there was time; there's always time, for us. That's the whole of it." {n}She holds out her hand without looking.{/n} "There. It's said. Pass me the bread."''',
         c('"He knew."', "knew"),
         c("[Say nothing. Hold on.]", "hold")),
@@ -372,8 +385,8 @@ visit(LONG_NIGHT, "What a silver is afraid of", [
         c("Continue", "afraid")),
     nd("hold", '''{n}She lets you. After a while her breathing evens out, and she says, in a different voice:{/n} "Thank you. For not saying something clever. I know you had one ready."''',
         c("Continue", "afraid")),
-    nd("afraid", '''"So now you know what a silver's afraid of." {n}She turns her head on your shoulder and looks at you, very close.{/n} "Not demons. Not golems. Not the grey one on the ridge. Leaving somebody for two years in a temper, and coming back to ash."
-"You're so short. All of you. You're here and then you're not, and I don't always notice the difference in time." {n}Her hand finds yours.{/n} "I noticed with you. I noticed the whole time you were gone."''',
+    nd("afraid", '''"So now you know what a silver's afraid of." {n}She turns her head on your shoulder and looks at you, very close.{/n} "Not demons. Not golems. Not even a woundwyrm. Leaving somebody for two years in a temper, and coming back to ash."
+"You're so short. All of you. You're here and then you're not, and I don't always notice the difference in time." {n}Her hand finds yours.{/n} "I noticed with you. I notice every time you go out of that door."''',
         c("[Kiss her.]", "kiss"),
         c('"Then don\'t leave in a temper."', "temper")),
     nd("temper", '''{n}She laughs, wet and startled.{/n} "No. No, I'll quarrel with you here, in the kiln, where you can hear it. That's what kilns are for." {n}And then she kisses you, since you did not.{/n}''',

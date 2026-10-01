@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1035,
-  "resolved": 1035,
+  "entryTargetScenes": 1038,
+  "resolved": 1038,
   "inlineOnlyScenes": 271,
   "inlineOnlyResolved": 271,
-  "answerListScenesWithoutContact": 617,
-  "answerListScenesWithoutContactResolved": 617,
+  "answerListScenesWithoutContact": 618,
+  "answerListScenesWithoutContactResolved": 618,
   "lists": 111,
   "listsWithReachableHost": 110
  },
@@ -6871,6 +6871,25 @@
     "clicks": 0
    }
   },
+  "dorgelinda.ledger.cold_counts": {
+   "kind": "dialog",
+   "lists": [
+    "fa57cf97ea01bf34e9a30f6ad444381e"
+   ],
+   "explicit": true,
+   "contact": "8692bff6041c47a0b13158d5977f291b",
+   "entry": {
+    "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.dorgelinda.ledger.cold_counts"
+   },
+   "resolved": true,
+   "host": {
+    "list": "fa57cf97ea01bf34e9a30f6ad444381e",
+    "dialog": "c1cb7e7361777b940829b8b71ae03f23",
+    "dialogName": "Logistics_Officer_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "dorgelinda.ledger.half_an_army": {
    "kind": "dialog",
    "lists": [
@@ -7583,6 +7602,25 @@
    "contact": "8692bff6041c47a0b13158d5977f291b",
    "entry": {
     "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.dorgelinda.trickster.office.stocktake"
+   },
+   "resolved": true,
+   "host": {
+    "list": "fa57cf97ea01bf34e9a30f6ad444381e",
+    "dialog": "c1cb7e7361777b940829b8b71ae03f23",
+    "dialogName": "Logistics_Officer_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "dorgelinda.trickster.office.tribunal_books": {
+   "kind": "dialog",
+   "lists": [
+    "fa57cf97ea01bf34e9a30f6ad444381e"
+   ],
+   "explicit": true,
+   "contact": "8692bff6041c47a0b13158d5977f291b",
+   "entry": {
+    "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.dorgelinda.trickster.office.tribunal_books"
    },
    "resolved": true,
    "host": {
@@ -15647,6 +15685,25 @@
     "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
     "dialogName": "GrimborMainDialogue",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nidalynn.trickster.react.ulbrig.snowfield": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.nidalynn.trickster.react.ulbrig.snowfield"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
     "clicks": 0
    }
   },
