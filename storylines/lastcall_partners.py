@@ -679,6 +679,20 @@ partner("elyanka", "elyanka", "elyanka.committed", "elyanka.closed", "The Claim"
         '''{n}You sold your body once, in the dead-house by the south gate, in a whisper, to a woman who had come four hundred miles for it. You say the terms aloud now, over the rift, the way she whispered them in the dead-house, word for word, in the language older than its words. Nobody here understands them. That is not the point. A creditor ought to know when her debt is about to fall due, and where to stand to collect it.{/n}''',
         (PLAIN_CHOICE, (PILLAR,), (), ())))
 
+IO = "iomedae.trickster."
+partner("iomedae", "iomedae", "iomedae.committed", "iomedae.closed", "The Bridge",
+    '''Iomedae was at the rift that night, as she had said she would be, beside a banner stretched flat toward the fire. The last joke was the Commander's, and so was the flask. The banner at the edge was hers, and she did not leave it.''',
+    (
+        page_p('''Two things kept the Commander out of the Wound's keeping, and neither was the Commander's power, which the lock had taken. One was a death corked in a flask in Drezen. The other was a banner laid over the fire the way a cloak was once laid over a gorge. Areelu measured the first and wrote it down. She never saw the second, and Iomedae never told her.''', requires=("iomedae.appointment_kept", H2)),
+        page_p('''The Commander told the Wound a joke instead of stepping into it, and walked away from an open rift with a flask in one pocket. There was no bridge to lay. Iomedae left her banner standing at the edge, stretched toward a Wound that stayed open, and did not take it back.''', requires=(IO + "banner_carried", "lastcall.h1"), forbids=("ending.wound_closed",)),
+        page_p('''She did not look at the flask once, all that night. She said afterwards that a goddess who does not lie had better not have opinions about bottles.''', forbids=("iomedae.appointment_kept",)),
+        page_p('''The King raised a toast to her the next time she passed through Drezen in plain steel, without knowing who she was, to "the lady with the face like a court summons". She drank it. She said it was the most accurate thing anyone had said about her in a century.''', requires=("fool_king.available",)),
+        page_p('''The world buried the Commander, and she let it. That was the one term of the argument she never once relaxed.''', requires=(ON_RECORD, IO + "cost.buried_to_the_world")),
+        page_p('''She came to the Commander afterwards as she had promised, not often, in plain steel, and never once asked what the Commander had owed the others who were called in at the rift, or what they had collected. She said a goddess who had granted a miracle had no business auditing anybody else's accounts. She said it as though it cost her something, and it did.''', requires=("iomedae.appointment_kept",)),
+    ), declined=IO + "declined",
+    deal=[[IO + "banner_carried"]],
+    ledger=("Iomedae: her banner, carried into the Wound", "I am carrying the Inheritor's banner into the Wound on a wager she never took. If she answers it, I will owe her a miracle of her choosing. If she does not, I will owe nobody anything, ever again."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 

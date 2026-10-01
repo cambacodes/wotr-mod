@@ -32,7 +32,7 @@ HOLDER_PORTRAIT = {"socoth": "Anevia", "baphomet": "Minagho", "nocticula": "Noct
 PARTNER_PORTRAIT = {"irabeth": "Irabeth", "jerribeth": "Jerribeth", "konomi": "Konomi", "vellexia": "Vellexia", "aranka": "Aranka",
                     "gesmerha": "Gesmerha", "seelah": "Seelah", "dorgelinda": "Dorgelinda", "eritrice": "Eritrice",
                     "areelu": "Areelu", "chadali": "Chadali", "camellia": "Camellia", "arueshalae": "Arueshalae",
-                    "shamira": "Shamira"}
+                    "shamira": "Shamira", "iomedae": "Iomedae"}
 
 OPENING = ("{n}The accounts of the Commander of the Fifth Crusade, kept by the Commander, since nobody else would believe "
            "them. Every {g|RRT_Debt}debt{/g} below is a thread from the world into my chest, and a creditor does not let a "
@@ -60,8 +60,8 @@ def _debt_entries():
         deal = sorted({k for g in part["deal"] for k in g})
         out.append(dict(Id="owed." + part["key"], Section="Debts", Portrait=PARTNER_PORTRAIT.get(part["key"], ""),
                         Title=part["ledger_title"], Text="{n}" + part["ledger_text"] + "{/n}",
-                        Lines=[_line("{n}Called in at the rift.{/n}", requires=[part["rel"] + ".lastcall.called"]),
-                               _line("{n}Settled, one way or another.{/n}", requires=[ACTIVE])],
+                        Lines=([_line("{n}Called in at the rift.{/n}", requires=[part["rel"] + ".lastcall.called"])] if part["call"] else [])
+                              + [_line("{n}Settled, one way or another.{/n}", requires=[ACTIVE])],
                         Requires=[], Forbids=[], AnyGroups=[deal], Tooltip="RRT_Debt"))
     return out
 
@@ -83,5 +83,6 @@ def journal_entries():
         if part.get("ledger_title"):
             out.append(dict(Id="owed." + part["key"], Title=part["ledger_title"], Description=part["ledger_text"],
                             OpenWhen=[list(g) for g in part["deal"]],
-                            SettledWhen=[[part["rel"] + ".lastcall.called"], [ACTIVE]]))
+                            # A debt made at the rift itself (Iomedae's banner) has no call-in: it settles with the ending.
+                            SettledWhen=([[part["rel"] + ".lastcall.called"]] if part["call"] else []) + [[ACTIVE]]))
     return out

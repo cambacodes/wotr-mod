@@ -1643,7 +1643,7 @@ page("areelu.trickster.finale.prior_lien", "You burned", [
               "is long, and precise, and entirely about a wound, ends with a single line that is not about the wound at "
               "all: \"The subject won the argument and lost the bet. I would have preferred the reverse.\""),
         ))],
-    requires=("trickster.ever", BURNED, STRUCK), forbids=(CLOSED, DIED), sequence=False)
+    requires=("trickster.ever", BURNED, STRUCK), forbids=(CLOSED, DIED, "iomedae.appointment_kept"), sequence=False)
 
 
 # --- The other outcomes of the wager (ordinary epilogue pages) ---------------------------------------------------------
@@ -1685,6 +1685,16 @@ page("areelu.trickster.finale.ascended", "Unsettled", [
 {n}If there is a last page to that report, nobody below has read it. The Commander's name is on it, and hers, and a single word between them in her small neat hand, and the word is not "neither". It is "both".{/n}''')],
     requires=("trickster.ever", STRUCK, ASCENDED), forbids=ROMANCE_FORBIDS, any_groups=(COMMITTED_ANY,),
     overrides=ROMANCE_OVERRIDES, sequence=False)
+
+
+# Ledger row 16, R6 (iomedae_trickster): Iomedae's bridge world. The Commander went into the Wound and the lock took the key,
+# but the key walked back out across her banner before it burned: the prior-lien page is gated off there, and this sibling
+# page settles the wager in her voice. (Iomedae is not named: Areelu would not give her the satisfaction.)
+page("areelu.trickster.finale.not_burned", "Not burned", [
+    nar("end", '''{n}"You did not burn." Areelu wrote it at the top of a clean page, and did not underline it, because she was not yet certain it was true.{/n}
+{n}"The lock took the key, exactly as designed. I measured the seam afterwards: it holds, and what holds it is everything I put into the subject, and the Abyss with it. That part burned. The rest of the subject came back over the edge on something I did not build, and I will not name its maker in my own report."{/n}
+{n}"The wager is therefore unsettled. Neither of us burned. I dislike an experiment with an outside variable. I will be studying this one for the rest of my life, and I intend to be difficult about it."{/n}''')],
+    requires=("trickster.ever", "iomedae.appointment_kept", STRUCK), forbids=(CLOSED, DIED), sequence=False)
 
 
 def integrate(payload):

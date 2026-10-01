@@ -72,6 +72,7 @@ from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
 from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
+from storylines import iomedae_trickster, iomedae_banner
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -538,6 +539,13 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(elyanka_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(elyanka_hearse.SCENES))
     elyanka_trickster.integrate(payload)
+    # Iomedae: a new relationship (trickster/iomedae.md, Build sheet R6; 11-ROSTER-PLAN-2 §2): veiled until the finale. The
+    # courtship is her banner's memory and her herald (iomedae_banner), then her own voice after the Summit; the commit is a
+    # formal disputation under her banner; the device is the banner carried into the Wound, which she may choose to answer.
+    payload["Relationships"]["iomedae"] = copy.deepcopy(iomedae_trickster.RELATIONSHIP)
+    payload["Scenes"].extend(copy.deepcopy(iomedae_trickster.SCENES))
+    payload["Scenes"].extend(copy.deepcopy(iomedae_banner.SCENES))
+    iomedae_trickster.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     trickster_engine(payload)

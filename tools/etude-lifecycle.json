@@ -3029,6 +3029,23 @@
     "conditional"
    ]
   },
+  "b99cec06dab2bd24fa3124bad167028f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "TricksterBanner",
+    "TricksterStates",
+    "MythicTrickster",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "TricksterBanner",
+   "traits": [
+    "hold"
+   ]
+  },
   "b9cbdf8a2f0545f694366b87ae7d7d44": {
    "ancestors_completed": [
     "Chapter05"

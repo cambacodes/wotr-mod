@@ -197,6 +197,13 @@ internal static class Program
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
         NurahContactEvidenceTests.Run(Check);
+        if (args.Contains("--iomedae"))
+        {
+            // One route's suite alone (fast iteration; the full run still calls it below).
+            IomedaeTricksterTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} Iomedae assertions.");
+            return;
+        }
         if (args.Contains("--prerequisite-groups"))
         {
             PrerequisiteGroupsTests.Run(Check);
@@ -486,6 +493,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "herrax.trickster.madam.schedule")) HerraxTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "horzalah.trickster.mercy.gift")) HorzalahTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) ElyankaTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) GalfreyTricksterTests.Run(story, Check);
