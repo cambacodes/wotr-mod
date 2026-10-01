@@ -57,6 +57,7 @@ PRIMED = P + "primed"
 LAB_LINE = P + "told_in_lab"
 RETURNED = P + "returned"
 MET = P + "met"
+HERALD_KILLED = "herald.killed"     # HeraldKilled 348dfb40 (ImportantNPCs_fate): the Hand is dead; reports go to the chapel
 DRAWN = P + "drawn"                 # Q6 r4: in the freed state she stays because the Commander asked her to, not only for the wounded
 FORGIVEN = P + "forgiven"
 DECLINED = P + "declined"
@@ -419,9 +420,13 @@ letter(P + "free.spent_light", "The last wand", [
 {n}The chaplains are paid to remember it as an ordinary night. Far above, in the halls of Heaven, someone made from the same soul looks up.{/n}''',
         c('[Finish at dawn] Put the wand away. It is still full.', flags=(PRIMED, WAND))),
     nar("night_spent", '''{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}
-{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}
-{n}The infirmary chaplain writes it into his weekly report to the Hand of the Inheritor, as he writes everything: three wands, one Commander, no deaths by morning. The Hand reads such reports aloud to Heaven's healers. It is the only road there is from a field infirmary to the halls of Heaven, and this time somebody on the far end of it is listening.{/n}''',
-        c('[Finish at dawn] Put the empty wands away.', flags=(PRIMED, WAND, CHARGES))),
+{n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}''',
+        c('[Finish at dawn] Put the empty wands away.', "report_hand", forbids=(HERALD_KILLED,)),
+        c('[Finish at dawn] Put the empty wands away.', "report_chapel", requires=(HERALD_KILLED,))),
+    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report to the Hand of the Inheritor, as he writes everything: three wands, one Commander, no deaths by morning. The Hand reads such reports aloud to Heaven's healers. It is the only road there is from a field infirmary to the halls of Heaven, and this time somebody on the far end of it is listening.{/n}''',
+        c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
+    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. Since the Hand fell, the reports go to the chapel of the Inheritor, where the priests read every name of the living and the dead at the altar, for whatever in Heaven still listens. This time something does.{/n}''',
+        c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
 ], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
 
 ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wards."', [
@@ -510,14 +515,14 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
 
 ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
     t("start", '''{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}
-"Ask, then. But first promise me something. My brother's light, the part of him that is in you: do not spend it on cheating death. Not unnoticed, not for me, not for anyone. If I fall, let me go. My brother went. I would rather be where he is than be the reason you keep cheating."''',
+"Ask, then. But first promise me something. My brother's light, the part of him that is in you: never spend it on cheating death. I have seen what it can do in your hands. I know what you would be tempted to do with it beside a dying man. Not unnoticed, not for me, not for anyone. If I fall, let me go. My brother went. I would rather be where he is than be the reason you keep cheating."''',
       c('[Promise, and ask her] "I promise. Stay with me."', "promised", flags=(COMMITTED, SEALED)),
       c('[Refuse the promise] "I can\'t promise that."', "unpromised", flags=(CLOSED,))),
     t("promised", '''{n}She puts the last bandage on the pile and squares it with both hands, very neatly, the way she does when she is trying not to let them shake.{/n}
 "Then I will hold you to it. I am told that is what Tricksters hate most." {n}She almost smiles.{/n} "Yes."''',
       c("Continue", "threshold")),
     t("unpromised", '''"No. I did not think you could." {n}She goes on folding.{/n}
-"You would do it again for a stranger with a fever, and you might even be right to, and I would never know when it was coming. I cannot live beside that. I am sorry."''',
+"You would do it one day, for a stranger with a fever, and you might even be right to, and I would never know when it was coming. I cannot live beside that. I am sorry."''',
       c('[Leave her the ward.]')),
     *night_nodes(),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), delay=72)
@@ -536,7 +541,7 @@ LIGHT_PARAGRAPHS = (
       "the whole time. She learned the names of the two men who died holding the ruin gate for her, and prayed for them at "
       "every compline, and would not let anyone call the black wing hers, though it folded to her now like a hand.",
       requires=(LONG,)),
-    p("The Commander kept the promise made in the quiet ward, never to spend her brother's light on death again. It was "
+    p("The Commander kept the promise made in the quiet ward, never to spend her brother's light on cheating death. It was "
       "harder than any vow they had broken, and Targona knew it, and said so, once.", requires=(SEALED,),
       forbids=("targona.lastcall.called",)),
     p("The Commander broke the promise made in the quiet ward, once, at the rift, and spent her brother's light after "
@@ -647,6 +652,10 @@ def integrate(payload):
                         "(a blow there kills her). Then work Drezen's field infirmary through a night with healing wands, "
                         "and look for Targona at the cots behind the quartermaster's stores in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    etudes = payload.setdefault("Etudes", {})
+    if etudes.get(HERALD_KILLED, "348dfb40784b436cbe21347f8e0f08ce") != "348dfb40784b436cbe21347f8e0f08ce":
+        raise ValueError("Conflicting binding: " + HERALD_KILLED)
+    etudes[HERALD_KILLED] = "348dfb40784b436cbe21347f8e0f08ce"   # HeraldKilled (ImportantNPCs_fate)
     # A completed Angelic Treatment runs RanRomance's own route only when it ended as a romance; a friendship-only treatment
     # history can still be courted on Trickster (Sol quality pass, INT).
     derived = payload.setdefault("Derived", {})

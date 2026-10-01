@@ -203,7 +203,7 @@ internal static class JannahTricksterTests
         };
         foreach (var (name, flags) in worlds)
         {
-            var w = World(story, 5, new[] { "trickster", "trickster.ever" }.Concat(flags).ToArray());
+            var w = World(story, 5, new[] { "trickster", "trickster.ever", "seelah.houndheart_seen" }.Concat(flags).ToArray());
             check(Avail(letter, w) && !Avail(yield, w), "Trk_Jannah_Alive_" + name + ": the letter from the cells does not come.");
             var node = letter.Nodes.Single(n => n.Id == "open").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, w)).Select(c => c.Next).ToList();
             check(node.Count == 1 && node[0] == name, "Trk_Jannah_Alive_" + name + ": the letter speaks from the wrong world (" + string.Join(",", node) + ").");
@@ -214,7 +214,17 @@ internal static class JannahTricksterTests
         }
         var q3open = World(story, 5, "trickster", "trickster.ever", "jannah.condemned", "coronation.seen", "seelah.q3_started");
         check(!Avail(letter, q3open), "Trk_Jannah_Q3: she writes from the cells in the middle of Seelah's Q3.");
-        var inCells = Later(story, Take(letter, World(story, 5, "trickster", "trickster.ever", "jannah.free", "coronation.seen"), "sign", 0, P + "alive.in_cells"), 12);
+        var inCells = Later(story, Take(letter, World(story, 5, "trickster", "trickster.ever", "jannah.free", "coronation.seen", "seelah.houndheart_seen"), "sign", 0, P + "alive.in_cells"), 12);
+        // Q6 r5 (CAN): the duel of stories tells Houndheart, so it needs the Commander there (KnightCamp Cue_0011/Cue_0012).
+        var noHH = Later(story, Take(letter, World(story, 5, "trickster", "trickster.ever", "coronation.seen"), "sign", 0, P + "alive.in_cells"), 12);
+        check(story.SeenCues["seelah.houndheart_seen"].Contains("2100f41ae724734418dc74b15719543e")
+              && Program.Walk(stories, noHH).All(r => !r.Has(Returned)) && Ch(stories, "choose", 0).Requires.Contains("seelah.houndheart_seen"),
+            "The duel of stories recalls a Houndheart the Commander never saw.");
+        // Q6 r5 (CAN): no invented Houndheart weather, wagons or fire anywhere in the living route.
+        foreach (var s in own.Where(x => !x.Forbids.Contains("chapter_later")))
+            foreach (var n in s.Nodes)
+                check(!new[] { "barricade", "wagon tongue", "second wave", "rained at Houndheart", "into the rain" }.Any(t => n.Text.Contains(t, StringComparison.Ordinal)),
+                    "Invented Houndheart detail in " + s.Id + "/" + n.Id);
         var caught = Take(stories, inCells, "yield", 0, P + "alive.caught_her", Returned, FirstLoss);
         check(Ch(stories, "her_tale", 0).Check?.Skill == "SkillPerception" && Ch(stories, "missed", 0).Check?.Skill == "CheckBluff",
             "Trk_Jannah_Stories: the catch is not Perception, or the false catch not a Bluff.");
@@ -307,7 +317,7 @@ internal static class JannahTricksterTests
             "The pages do not follow the commit, the late yes, her no and her leaving.");
 
         // Reactions: Irabeth and the King (the allocated pair), and Seelah (a named stake), each behind its guard.
-        check(reactions.Length == 11 && reactions.All(r => r.Nodes.Count == 1)
+        check(reactions.Length == 12 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Irabeth", "Seelah", "Thaberdine" })
               && reactions.Where(r => r.Owner == "Irabeth").All(r => r.AnswerLists.SequenceEqual(new[] { IrabethHub })
                                                                      && r.Forbids.Contains("irabeth_dead") && r.ForbidOverrides["irabeth_dead"] == "irabeth.trickster.returned")
@@ -317,6 +327,9 @@ internal static class JannahTricksterTests
               && reactions.Where(r => r.Owner == "Thaberdine").All(r => r.AnswerLists.SequenceEqual(new[] { KingC5 }) && r.NativeReturnCue != null
                                                                         && r.Forbids.Contains("fool_king.gone") && r.Requires.Contains("fool_king.available")),
             "The reactions are not exactly Irabeth, Seelah and the King behind their guards.");
+        // Q6 r5 (CAN): Irabeth's appeal account is the Condemned history only (ktc_DeserterJoins/Cue_0013-0014).
+        check(S(P + "react.irabeth_wagon").Requires.Contains("jannah.condemned") && S(P + "react.irabeth_wagon_free").Forbids.Contains("jannah.condemned"),
+            "Irabeth recalls an appeal Jannah never made.");
         var seelahKnown = World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself");
         check(Avail(S(P + "react.seelah_known"), seelahKnown) && !Avail(S(P + "react.seelah_unknown"), seelahKnown)
               && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.kept"))

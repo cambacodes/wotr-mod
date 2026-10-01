@@ -56,6 +56,9 @@ internal static class TargonaOpeningTests
                     {
                         seen[scene.Id].Add(node);
                         check(partial.Flags.SetEquals(ready.Flags), "Targona records an unacknowledged intermediate outcome.");
+                        // Q6 r5 (CAN): Anograt appears, in any node, only in the histories whose treatment created her.
+                        if (scene.Nodes.Single(x => x.Id == node).Text.Contains("Anograt", StringComparison.Ordinal))
+                            check(mode == "aeon" || mode == "trickster", "Targona names Anograt in a history without her: " + scene.Id + "/" + node);
                         if (node == "anograt" || node == "two")
                             check(mode == "aeon" || mode == "trickster", "Targona invents Anograt for a different transformation history.");
                         if (node == "lover" || node == "romance")

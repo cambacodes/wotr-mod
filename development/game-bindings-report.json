@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-qual-q6\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4087,
-  "unique_targets": 858,
+  "binding_uses": 4091,
+  "unique_targets": 861,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1850,6 +1850,14 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",
       "type": "BlueprintCue"
     },
+    "2100f41ae724734418dc74b15719543e": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "f75430d6f83e9864ca9b16db1a170bd1": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/KnightCamp/Cue_0012.jbp",
+      "type": "BlueprintCue"
+    },
     "77a1253ff7aa8b24e865dc784db866b3": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanIsDesperate/Cue_0008.jbp",
       "type": "BlueprintCue"
@@ -2672,6 +2680,10 @@
     },
     "133f3b1b38f04fa44be3200b786e437f": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyRomance/GalfreyRomance_Finished.jbp",
+      "type": "BlueprintEtude"
+    },
+    "348dfb40784b436cbe21347f8e0f08ce": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Herald/HeraldKilled.jbp",
       "type": "BlueprintEtude"
     },
     "d7169995e449fdc4db861ddf0b9beff8": {
