@@ -610,7 +610,7 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
         c('"And the other thing? The one we never argued."', "other_no", forbids=(COURTED,)),
         c('"That\'s all I need."', "rescue")),
     nar("other_yes", '''{n}She does not answer at once. The fire leans at the two of you and she does not lean away from it.{/n}
-"I have spoken to you in the dark more often than I have spoken to my own priests," {n}says the goddess of valour, quietly, as if the Wound were not listening.{/n} "It was not for the crusade. There. That is conceded too, and at a worse place than a roof."''',
+"I came to you in the dark when I had no need to, and listened longer than any war required," {n}says the goddess of valour, quietly, as if the Wound were not listening.{/n} "It was not for the crusade. There. That is conceded too, and at a worse place than a roof."''',
         c("Continue", "decide")),
     nar("other_no", '''"I do not know you well enough to concede that." {n}She says it without unkindness, the way she said the lock would destroy the key.{/n} "I have watched you, and I have spoken with you once or not at all. That is not enough to concede anything to but an argument. Ask me afterward, if there is an afterward."''',
         c("Continue", "rescue")),
@@ -806,7 +806,7 @@ page("bridge", "The Bridge", [
 
 
 page("lived", "The Argument, Continued", [
-    nar("page", '''{n}She came a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, on a roof, and she had not come to take the concession back.{/n}''',
+    nar("page", '''{n}She came a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, and she had not come to take the concession back.{/n}''',
         c("Continue", "closed", requires=(WOUND_CLOSED,), forbids=(SACRIFICE,)),
         c("Continue", "flask", requires=(H2,), forbids=(CARRIED,)),
         c("Continue", "open", forbids=(WOUND_CLOSED,))),
@@ -901,7 +901,7 @@ page("platform", "Where It Flew", [
         c('"They\'re beautiful."', "liar")),
     nar("ribs", '''{n}Her breath goes out of her short and hard, and her hand closes in your hair and holds you there. She lets it go on until she is shaking, the way an arm shakes that has held a weight too long.{/n}''',
         c("Continue", "cloak")),
-    nar("liar", '''"They are scars," {n}she says,{/n} "and you are a liar." {n}Her thumb traces your mouth.{/n} "Tonight I will allow it."''',
+    nar("liar", '''"They are scars," {n}she says,{/n} "and you are a liar." {n}Her thumb traces your mouth, and she does not argue the point.{/n}''',
         c("Continue", "cloak")),
     nar("cloak", '''{n}Then she does something you will remember for the rest of your life. She unclasps her cloak and casts it out across the bare stones of the platform, the way she once cast one out across a gorge, and it lies there flat and dark under the empty pole.{/n}
 "It has been a bridge," {n}says Iomedae.{/n} "It can be this."''',

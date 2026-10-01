@@ -210115,8 +210115,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.late_committed",
-          "targona.trickster.parent_romanced"
+          "targona.trickster.parent_romanced",
+          "targona.trickster.late_committed"
         ]
       ]
     },
@@ -425654,7 +425654,7 @@
         {
           "Id": "other_yes",
           "Speaker": "Narrator",
-          "Text": "{n}She does not answer at once. The fire leans at the two of you and she does not lean away from it.{/n}\n\"I have spoken to you in the dark more often than I have spoken to my own priests,\" {n}says the goddess of valour, quietly, as if the Wound were not listening.{/n} \"It was not for the crusade. There. That is conceded too, and at a worse place than a roof.\"",
+          "Text": "{n}She does not answer at once. The fire leans at the two of you and she does not lean away from it.{/n}\n\"I came to you in the dark when I had no need to, and listened longer than any war required,\" {n}says the goddess of valour, quietly, as if the Wound were not listening.{/n} \"It was not for the crusade. There. That is conceded too, and at a worse place than a roof.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -426712,7 +426712,7 @@
         {
           "Id": "page",
           "Speaker": "Narrator",
-          "Text": "{n}She came a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, on a roof, and she had not come to take the concession back.{/n}",
+          "Text": "{n}She came a month after Threshold, in plain steel and on foot, to wherever you were. She had conceded an argument aloud, and she had not come to take the concession back.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -427445,7 +427445,7 @@
         {
           "Id": "liar",
           "Speaker": "Narrator",
-          "Text": "\"They are scars,\" {n}she says,{/n} \"and you are a liar.\" {n}Her thumb traces your mouth.{/n} \"Tonight I will allow it.\"",
+          "Text": "\"They are scars,\" {n}she says,{/n} \"and you are a liar.\" {n}Her thumb traces your mouth, and she does not argue the point.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -432095,7 +432095,7 @@
         {
           "Id": "dreams",
           "Speaker": "conversant",
-          "Text": "{n}You tell him: the rain, the gorge, the dead knight in the snow. He hears you out with his wings folded close against his back.{/n}\n\"I have prayed before that banner,\" he says at last, quietly. \"It has never shown me anything.\" {n}There is no envy in it. There is something nearer to fear.{/n} \"Forgive me. In this place I am afraid of everything that shows us what we want to see. And yet a relic of hers would not lie.\"\n{n}He sets his hand on your shoulder, heavily, the way knights do it.{/n} \"When we are home, and she can hear you, ask her yourself. Not through me.\"",
+          "Text": "{n}You tell him what the banner has shown you, all of it, in the order it came. He hears you out with his wings folded close against his back.{/n}\n\"I have prayed before that banner,\" he says at last, quietly. \"It has never shown me anything.\" {n}There is no envy in it. There is something nearer to fear.{/n} \"Forgive me. In this place I am afraid of everything that shows us what we want to see. And yet a relic of hers would not lie.\"\n{n}He sets his hand on your shoulder, heavily, the way knights do it.{/n} \"When we are home, and she can hear you, ask her yourself. Not through me.\"",
           "Choices": [
             {
               "Text": "Continue",

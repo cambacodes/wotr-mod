@@ -289,7 +289,7 @@ at_herald(E + "herald.legend", "The Acts", 4, '"Tell me about your lady. Before 
         c('"Somebody in a tavern."', "tavern")),
     herald("tavern", '''"Then it was a very well-read tavern." {n}He lets it go, though you can see what it costs him to let anything go in this city.{/n} "Keep your secrets, Champion. The Abyss will try to have them out of you soon enough."''',
         c("Continue", flags=(BRIDGE_TOLD,))),
-    herald("dreams", '''{n}You tell him: the rain, the gorge, the dead knight in the snow. He hears you out with his wings folded close against his back.{/n}
+    herald("dreams", '''{n}You tell him what the banner has shown you, all of it, in the order it came. He hears you out with his wings folded close against his back.{/n}
 "I have prayed before that banner," he says at last, quietly. "It has never shown me anything." {n}There is no envy in it. There is something nearer to fear.{/n} "Forgive me. In this place I am afraid of everything that shows us what we want to see. And yet a relic of hers would not lie."
 {n}He sets his hand on your shoulder, heavily, the way knights do it.{/n} "When we are home, and she can hear you, ask her yourself. Not through me."''',
         c("Continue", flags=(BRIDGE_TOLD, DREAMS_TOLD))),
