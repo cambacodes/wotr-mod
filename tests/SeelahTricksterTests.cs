@@ -93,8 +93,12 @@ internal static class SeelahTricksterTests
         // Polish b9c: the bowl is filled by a lift on the relic-seller (her list's last line); the lift or the caught lift
         // both fill it, and only the caught one leaves him knowing the Commander's face.
         var raised = Program.Walk(pick, dead).Where(r => r.Has(Returned)).ToList();
-        check(raised.Count == 2 && raised.All(r => r.Has("seelah.revived") && r.Has("seelah.trickster.cost.holds_her_death")
-              && !r.Has("seelah.trickster.cost.chaplains_word")) && raised.Count(r => r.Has("seelah.trickster.cost.broker_knows")) == 1,
+        // Q10 r2: the caught lift offers his word (broker_knows), an arrest (seller_taken, Favors) or a buy-off (seller_paid,
+        // Finances); exactly one consequence each, and all four roads fill the bowl.
+        check(raised.Count == 4 && raised.All(r => r.Has("seelah.revived") && r.Has("seelah.trickster.cost.holds_her_death")
+              && !r.Has("seelah.trickster.cost.chaplains_word")) && raised.Count(r => r.Has("seelah.trickster.cost.broker_knows")) == 1
+              && raised.Count(r => r.Has("seelah.trickster.cost.seller_taken")) == 1 && raised.Count(r => r.Has("seelah.trickster.cost.seller_paid")) == 1
+              && raised.All(r => new[] { "broker_knows", "seller_taken", "seller_paid" }.Count(f => r.Has("seelah.trickster.cost." + f)) <= 1),
             "Trk_Seelah_Dead: the diamond rite sets the wrong flags, or a failed lift closes the road.");
         var liftDcs = Choices(pick).Where(c => c.Check != null).Select(c => (c.Check!.DC, lessoned: c.Requires.Contains("seelah.trickster.lift_lesson"))).ToList();
         check(liftDcs.Count == 2 && liftDcs.Single(d => d.lessoned).DC == 15 && liftDcs.Single(d => !d.lessoned).DC == 25
@@ -109,7 +113,7 @@ internal static class SeelahTricksterTests
         // Trk_Seelah_Dead_NoDiamond: the chapel's reserve, on the Commander's word.
         var poor = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "revive.seelah.available");
         var owed = Program.Walk(pick, poor).Where(r => r.Has(Returned)).ToList();
-        check(Rules.Available(story, pick, poor) && owed.Count == 2 && owed.All(r => r.Has("seelah.trickster.cost.chaplains_word")),
+        check(Rules.Available(story, pick, poor) && owed.Count == 4 && owed.All(r => r.Has("seelah.trickster.cost.chaplains_word")),
             "Trk_Seelah_Dead_NoDiamond failed.");
 
         // Trk_Seelah_Wakes: her price for getting up.
@@ -120,12 +124,61 @@ internal static class SeelahTricksterTests
         // Trk_Seelah_Dead_NoBody: no retained unit; the rite by rider, and she comes to Drezen.
         var nobody = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "seelah.diamond_held");
         check(Rules.Available(story, effects, nobody) && !Any(nobody, pick, late, papers), "Trk_Seelah_Dead_NoBody: wrong device set.");
-        var ridden = Program.Walk(effects, nobody).Where(r => r.Has(Returned)).ToList();
-        check(ridden.Count == 2 && ridden.All(r => r.Has("seelah.trickster.correspondent") && r.Has("seelah.trickster.cost.holds_her_death"))
-              && Choices(effects).Count(c => c.RemoveItem == Diamond) == 1, "Trk_Seelah_Dead_NoBody: the rider rite sets the wrong flags.");
-        var inTown = After(story, ridden[0], 30);
+        // Q10 r2: the rider's four days are real. Dispatch sets stones_sent only; the chaplain's note waits >= 96 h; she
+        // arrives (returned, correspondent, presence) two days after it, never before.
+        var reply = S("seelah.trickster.dead.effects_reply");
+        var arrival = S("seelah.trickster.dead.effects_arrival");
+        var dispatches = Program.Walk(effects, nobody).Where(r => r.Has("seelah.trickster.stones_sent")).ToList();
+        check(dispatches.Count == 4 && dispatches.All(r => !r.Has(Returned) && !r.Has("seelah.trickster.correspondent")
+              && r.Has("seelah.trickster.cost.holds_her_death")) && Choices(effects).Count(c => c.RemoveItem == Diamond) == 1,
+            "Trk_Seelah_Dead_NoBody: the rider rite returns her before the rider is back, or sets the wrong flags.");
+        Snapshot NoBodyArrives(Snapshot dispatched, string name)
+        {
+            var justSent = After(story, dispatched, 1);
+            check(!justSent.Has("seelah.trickster.in_drezen") && !Any(justSent, effects, reply, arrival, stay),
+                name + ": something opens straight after the rider leaves.");
+            var waiting = After(story, dispatched, 95);
+            check(!Rules.Available(story, reply, waiting) && !waiting.Has("seelah.trickster.in_drezen"), name + ": the note comes before 96 h.");
+            var noted = After(story, dispatched, 96);
+            check(Rules.Available(story, reply, noted) && !Rules.Available(story, stay, noted), name + ": no note at 96 h, or she is in Drezen early.");
+            var replied = Program.Walk(reply, noted).Single();
+            check(!replied.Has(Returned) && !Rules.Available(story, arrival, After(story, replied, 47)), name + ": she arrives with the note.");
+            var come = After(story, replied, 48);
+            check(Rules.Available(story, arrival, come), name + ": she never arrives.");
+            var arrived = Program.Walk(arrival, come).Single();
+            check(arrived.Has(Returned) && arrived.Has("seelah.trickster.correspondent") && arrived.Has("seelah.started"),
+                name + ": the arrival does not return her.");
+            return arrived;
+        }
+        var inTown = After(story, NoBodyArrives(dispatches[0], "Trk_Seelah_Dead_NoBody"), 30);
         check(inTown.Has("seelah.trickster.in_drezen") && Rules.Available(story, stay, inTown) && !Rules.Available(story, wakes, inTown),
             "Trk_Seelah_Dead_NoBody: she never comes to Drezen, or wakes into a party she is not in.");
+        check(!Rules.Available(story, effects, After(story, dispatches[0], 500)), "The rider rite reopens after dispatch.");
+
+        // Q10 r2: Seelah's word on the seller, per caught-lift answer; branch-true epilogue openers.
+        var sellerHub = S("seelah.trickster.dead.seller_word");
+        var sellerTavern = S("seelah.trickster.dead_no_unit.seller_word");
+        foreach (var (flag, page) in new[] { ("broker_knows", "concealed"), ("seller_taken", "taken"), ("seller_paid", "paid") })
+        {
+            var hubWorld = After(story, raised.Single(r => r.Has("seelah.trickster.cost." + flag)), 1, "seelah_dead", "revive.seelah.available");
+            hubWorld = After(story, Program.Walk(wakes, hubWorld).First(), 30);
+            var heard = new HashSet<string>();
+            Program.Walk(sellerHub, hubWorld, (p, _) => heard.Add(p));
+            check(Rules.Available(story, sellerHub, hubWorld) && heard.Contains(page) && heard.Count == 2, "Seelah's word on the seller is wrong for " + flag);
+            var noBody = After(story, NoBodyArrives(Program.Walk(effects, nobody).Single(r => r.Has("seelah.trickster.cost." + flag)), flag), 30);
+            check(Rules.Available(story, sellerTavern, noBody) && !Rules.Available(story, sellerHub, noBody), "No-unit seller word missing for " + flag);
+        }
+        var cleanLift = raised.Single(r => !r.Has("seelah.trickster.cost.broker_knows") && !r.Has("seelah.trickster.cost.seller_taken")
+            && !r.Has("seelah.trickster.cost.seller_paid"));
+        check(!Rules.Available(story, sellerHub, After(story, Program.Walk(wakes, After(story, cleanLift, 1, "seelah_dead", "revive.seelah.available")).First(), 30)),
+            "Seelah asks about a seller the Commander never faced.");
+        var pocketEnd = S("seelah.trickster.epilogue.pickpocket").Nodes.Single();
+        string EndText(Snapshot w) => string.Join("\n", Rules.VisibleParagraphs(pocketEnd, w).Select(p => p.Text));
+        var bierEnd = EndText(raised[0]);
+        var riderEnd = EndText(inTown);
+        check(bierEnd.Contains("night at her bier") && !bierEnd.Contains("sack of her effects")
+              && riderEnd.Contains("sack of her effects") && !riderEnd.Contains("night at her bier"),
+            "The pickpocket epilogue merges the bier and the rider histories.");
 
         // Trk_Seelah_Dismissed: the papers, primed at the dismissal, come back in person.
         var herded = World(story, 5, "trickster", "trickster.ever", "seelah_gone", "seelah.trickster.primed");
@@ -177,6 +230,22 @@ internal static class SeelahTricksterTests
         var asked = Program.Walk(second, loved);
         check(Rules.Available(story, second, loved) && asked.Any(r => r.Has("seelah.committed") && r.Has("seelah.trickster.cost.robbed_back"))
               && asked.Any(r => r.Has("seelah.closed")), "Trk_Seelah_Refusal: the priced second ask is wrong.");
+        // Q10 r2 (COX): the repaired romance keeps its Last Call coda; the refusal stays as history (declined), the coda's
+        // own override (declined -> committed) and the reconciliation flag carry it.
+        var coda = S("seelah.lastcall.page");
+        Snapshot AtLastCall(Snapshot w)
+        {
+            var end = After(story, w, 200);
+            end.Flags.Add("trickster.lastcall.taken"); end.Flags.Add("ending.trickster");
+            Rules.Complete(story, end);
+            return end;
+        }
+        var reconciled = asked.Single(r => r.Has("seelah.committed"));
+        check(reconciled.Has("seelah.trickster.declined") && reconciled.Has("seelah.trickster.reconciled")
+              && AtLastCall(reconciled).Has("lastcall.active") && Rules.Available(story, coda, AtLastCall(reconciled))
+              && !Rules.Available(story, S("seelah.trickster.epilogue.refused"), AtLastCall(reconciled)),
+            "The second ask's yes loses Seelah's Last Call coda, or still plays her refusal.");
+        check(!Rules.Available(story, coda, AtLastCall(asked.Single(r => r.Has("seelah.closed")))), "Her goodbye still gets the coda.");
         var death = World(story, 5, "trickster.ever", "seelah_dead", Returned, "seelah.trickster.correspondent",
             "seelah.trickster.cost.holds_her_death", "seelah.trickster.stay_decided", "seelah.trickster.courted");
         var noPages = new HashSet<string>();
@@ -211,7 +280,7 @@ internal static class SeelahTricksterTests
         var freshHerded = World(story, 5, "trickster", "trickster.ever", "seelah_gone", "seelah.trickster.primed");
         FreshReturnReachesCommit("Dismissal walk", After(story, Program.Walk(papers, freshHerded)[0], 30), stay, courtship, commit);
         var freshNobody = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "seelah.diamond_held");
-        FreshReturnReachesCommit("No-unit walk", After(story, Program.Walk(effects, freshNobody).First(r => r.Has(Returned)), 30),
+        FreshReturnReachesCommit("No-unit walk", After(story, NoBodyArrives(Program.Walk(effects, freshNobody).First(r => r.Has("seelah.trickster.stones_sent")), "No-unit walk"), 30),
             stay, courtship, commit);
 
         var stayVisit = S("seelah.trickster.after.stay_or_go_visit");
@@ -234,6 +303,9 @@ internal static class SeelahTricksterTests
         var secondAsked = Program.Walk(secondVisit, After(story, spurned, 100));
         check(Rules.Available(story, secondVisit, After(story, spurned, 100)) && secondAsked.Any(r => r.Has("seelah.committed"))
               && secondAsked.Any(r => r.Has("seelah.closed")), "Failed anchor: the second ask is unreachable, or lacks its yes or its no.");
+        var visitYes = secondAsked.Single(r => r.Has("seelah.committed"));
+        check(visitYes.Has("seelah.trickster.reconciled") && Rules.Available(story, coda, AtLastCall(visitYes)),
+            "Failed anchor: the visit second ask's yes loses the Last Call coda.");
 
         // Trk_Seelah_PathFailed: canon fate stands after the path fails.
         var failedPath = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", "seelah_dead", "revive.seelah.available");
