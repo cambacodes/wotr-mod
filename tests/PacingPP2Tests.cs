@@ -198,6 +198,13 @@ internal static class PacingPP2Tests
         check(sosielTalk.Requires.Contains("arueshalae.trickster.react.sosiel_fed") && sosielTalk.Forbids.Contains("sosiel.dead")
               && sosielTalk.Forbids.Contains("sosiel.kicked_out"),
             "Arueshalae: the Sosiel conversation recalls an offer he never made, or a Sosiel who is gone.");
+        // Sol r2 (INT): both BackToReality release cues mark her changed; the late yes reaches her Last Call coda.
+        check(story.SeenCues["arueshalae.back_to_reality"].SequenceEqual(new[] { "6b24754fcea768342a30a1e18ce91b92", "8ad7c2ba0e060e545b12269cc5ced777" }),
+            "Arueshalae: the romance branch's release cue (BackToReality/Cue_0025) does not mark her changed.");
+        var coda = S("arueshalae.lastcall.page");
+        check(coda.RequiresAnyGroups.Any(g => g.Contains("arueshalae.committed") && g.Contains("arueshalae.trickster.late_committed"))
+              && coda.Forbids.Contains("arueshalae.trickster.ally") && coda.Forbids.Contains("arueshalae.trickster.declined"),
+            "Arueshalae: the Last Call coda ignores the late yes, or plays after her refusal.");
         foreach (var id in new[] { "commit", "kept", "kept_fallen", "fallen" })
         {
             var page = S("arueshalae.trickster.epilogue." + id);

@@ -503,5 +503,8 @@ def integrate(payload):
     if (payload.get(kind) or {}).get("arueshalae.elysium") not in (None, value):
         raise ValueError("Conflicting binding: arueshalae.elysium")
     payload.setdefault(kind, {})["arueshalae.elysium"] = value
-    payload.setdefault("SeenCues", {})["arueshalae.back_to_reality"] = ["6b24754fcea768342a30a1e18ce91b92"]
+    # PP2 (Sol r2, INT): BackToReality has two release cues: Cue_0018 6b24754f, and the romance branch's Cue_0025 8ad7c2ba
+    # ("Freedom. Finally... the Abyss has released me from its clutches... I am not a monster anymore!").
+    payload.setdefault("SeenCues", {})["arueshalae.back_to_reality"] = ["6b24754fcea768342a30a1e18ce91b92",
+                                                                        "8ad7c2ba0e060e545b12269cc5ced777"]
     payload.setdefault("Derived", {})[ELYSIUM] = [["arueshalae.elysium"], ["arueshalae.back_to_reality"]]
