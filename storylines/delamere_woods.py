@@ -14,6 +14,8 @@ about who woke her.
 import copy
 
 from story_format import c, p, scene
+from storylines.delamere_trickster import BARK_ANSWERED   # PP10: the Commander's answer cut into the bark (Chapter 4)
+from storylines.delamere_trickster import STORYTELLER_SUPPLIES, WOKE_DREZEN   # PP10: the bark's carrier; the Drezen waking
 from storylines.delamere_trickster import (BOW_HELD, BOW_ITEM, BOW_RETURNED, CAUGHT, CLOSED, COMMITTED, CURSED_BOW_HELD,
                                            CURSED_BOW_ITEM, DECLINED, FIRST_FROST, HUNT_OWED, INITIATED, KYADO_DEAD,
                                            KYADO_JUDGED, KYADO_SPOKEN, LIMP, P, RAN_FAR, RAN_SHORT, RETURNED, SAID_AGAIN,
@@ -51,6 +53,7 @@ TRACKED = P + "tracked_her"
 VILLAGE_SEEN = P + "village_seen"
 VILLAGE = (VILLAGE_GIVEN, VILLAGE_FORCED, VILLAGE_REFUSED, VILLAGE_CLANS)
 COUNT_LATE = P + "counted_after_the_abyss"   # Q6 (BEL): the count was made in Chapter 5, after the Abyss, not before it
+ZANEDRA_LOST = P + "zanedra.told_lost"        # PP10: "I don't know" no longer gets her "West." (that answer's choice is retired)
 
 
 # --- 1. Fifty-three (she comes to Drezen for the first time) ----------------------------------------------------------
@@ -189,20 +192,28 @@ visit(P + "woken.first_meat", "The hunter eats last", [
 visit(P + "woken.feasting_table", "The feasting table", [
     nar("summons", '''{n}A charcoal-burner's boy finds you on the road with a message he has been made to learn by heart, and says it with his eyes shut: "The Blessed says come to her temple. She says bring the stag. She says she means you."{/n}
 {n}She meets you at the top of the crypt stair with a lantern, and takes you down without a word.{/n}''',
-        c("Continue", "stone")),
+        c("Continue", "stone", forbids=(WOKE_DREZEN,)),
+        c("Continue", "stone_drezen", requires=(WOKE_DREZEN,))),
+    # PP10 (Sol BEL): her sarcophagus went to Drezen with her bones; the feast's stains stayed on the bier and the floor.
+    nar("stone_drezen", '''{n}She has scrubbed the crypt. You can see how hard she has scrubbed it: the floor is raw and pale, and her knuckles are raw and pale too. Her sarcophagus went to Drezen with her bones; the masons left the bier it stood on, and the flags round it where the feasters knelt. And still the stains come up through the scrubbing like damp through plaster. Dark rings on the bier where the bowls were set down when the lid was full. A long brown smear on the flags where something was dragged.{/n}''',
+        c("Continue", "table")),
     nar("stone", '''{n}She has scrubbed the crypt. You can see how hard she has scrubbed it: the stone is raw and pale, and her knuckles are raw and pale too. And still, all across the lid of the sarcophagus, the stains come up through the scrubbing like damp through plaster. Dark rings where the bowls stood. A long brown smear where something was dragged.{/n}''',
         c("Continue", "table")),
-    dl("table", '''"They ate off me." {n}Her voice is perfectly level, which is worse than if it shook.{/n} "The boy told me. Baphomet's people. They came down here in the dark with their witch, and they put their bowls on my grave, and they ate. And sang. And the thing they ate was a boy from a farm three valleys over, whose father I would have known the name of, once."''',
+    dl("table", '''"They ate off me." {n}Her voice is perfectly level, which is worse than if it shook.{/n} "It is all in the boy's daybook, in his frightened little hand. Baphomet's people. They came down here in the dark with their witch, and they put their bowls on my grave, and they ate. And sang. And the thing they ate was a boy from a farm three valleys over, whose father I would have known the name of, once."''',
         c("Continue", "bones")),
     dl("bones", '''{n}She opens her other hand. In it are four small bones, clean and white, the bones of fingers.{/n} "I found these in the drain. I have been trying to decide which is worse: that they did it, or that I lay under it and did not wake. How many feasts under my back, and I never so much as twitched?" {n}Her hand closes.{/n} "A stag had to blow a horn in my ear."''',
         c('"You were dead. Nobody expects the dead to guard their own graves."', "dead"),
         c("[Say nothing. Let her finish.]", "finish")),
     dl("dead", '''"I expect it." {n}She says it flatly.{/n} "I am Delamere the Blessed. I guarded these valleys for forty winters. I did not expect death to be an excuse."''',
         c("Continue", "finish")),
-    dl("finish", '''"The witch. Zanedra, the boy calls her. She put rats in his belly with a word, and bowls on my grave with her hands." {n}She puts the finger bones down on the lid, very gently, in a row.{/n} "Where is she?"''',
+    dl("finish", '''"The witch. Zanedra, the boy calls her. She put rats in his belly with a word, and bowls on my grave with her hands." {n}She puts the finger bones down on the stone, very gently, in a row.{/n} "Where is she?"''',
         c('"Dead. She died down here, where she did it."', "told_dead", flags=(ZANEDRA_DEAD,)),
         c('"She ran west. Baphomet\'s people are leaving these parts, she said."', "told_fled", flags=(ZANEDRA_FLED,)),
-        c('"I don\'t know. The crusade lost track of her."', "told_fled", flags=(ZANEDRA_FLED,))),
+        c('"I don\'t know. The crusade lost track of her."', "told_fled", flags=(ZANEDRA_FLED,), forbids=("chapter_later",)),   # PP10: retired
+        c('"I don\'t know. The crusade lost track of her."', "told_lost", flags=(ZANEDRA_LOST,))),
+    dl("told_lost", '''"Lost." {n}She turns the word over like a bad coin.{/n} "Your crusade lost a witch whose flock ate a child off my grave. Then I will find her, when this war you are having gives me a season to spare. I tracked a stag three days for my lord. I can track a witch for thirty for a farm boy." {n}She looks back at the finger bones.{/n} "The Horned One's people go under the ground like rats in a haystack, and come up somewhere else. But they leave droppings."''',
+        c("Continue", "kyado_alive", forbids=(KYADO_DEAD,)),
+        c("Continue", "kyado_cairn", requires=(KYADO_DEAD,))),
     dl("told_dead", '''"Down here." {n}She looks around the crypt, at the walls, the stair, the place where the altar is, as if the floor might still show where.{/n} "Good. I would have liked it to be my arrow. I will not be greedy. A dead witch is a dead witch." {n}She turns back to the finger bones.{/n} "Her flock is not dead. The Horned One's people never are. They go under the ground like rats in a haystack, and come up somewhere else."''',
         c("Continue", "kyado_alive", forbids=(KYADO_DEAD,)),
         c("Continue", "kyado_cairn", requires=(KYADO_DEAD,))),
@@ -229,12 +240,12 @@ visit(P + "woken.feasting_table", "The feasting table", [
         c('[Speak for him] "Kyado. He was a shepherd boy with a witch\'s rats in his belly. He kept your temple as well as he could, and he died for it."', "mourned",
           flags=(TABLE, KYADO_MOURNED)),
         c('"Leave him in peace. He paid."', "mourned", flags=(TABLE, KYADO_MOURNED))),
-    dl("mourned", '''"Kyado." {n}She tries the name the way she tried her own blood in the dark.{/n} "Then I will say it when I pass the cairn. A shepherd boy. My own father kept sheep." {n}She looks at the finger bones on the lid.{/n} "Fear is not a sin, by my law. What a man does with it is. He did badly, and then he died, and dying is enough to pay for most things."''',
+    dl("mourned", '''"Kyado." {n}She tries the name the way she tried her own blood in the dark.{/n} "Then I will say it when I pass the cairn. A shepherd boy. My own father kept sheep." {n}She looks at the finger bones on the stone.{/n} "Fear is not a sin, by my law. What a man does with it is. He did badly, and then he died, and dying is enough to pay for most things."''',
         c("Continue", "baphomet")),
     dl("baphomet", '''{n}She gathers the finger bones back into her palm.{/n} "I will bury these by the boy's farm, if the farm is still there. And I will clean my grave again tomorrow, and the next day, and the day after, until I can lie on it and not smell them." {n}She glances at you, and her voice drops.{/n} "Stay a while, stag. Not to talk. The crypt is very quiet, and I have had a great deal of quiet."''',
         c("[Stay with her until the lantern burns down.]", "stayed"),
         c('"I have a war to get back to."', "war")),
-    nar("stayed", '''{n}You sit on the bottom step. She sits on the edge of her own sarcophagus with her knees drawn up and scrubs at it, slowly, and says nothing, and so do you.{/n}
+    nar("stayed", '''{n}You sit on the bottom step. She sits on the edge of the stone with her knees drawn up and scrubs at it, slowly, and says nothing, and so do you.{/n}
 {n}When the lantern gutters she stops scrubbing, and leans back against the wall beside you, and her shoulder rests against yours. It is warm. She does not move it away. Neither do you.{/n}''',
         c("[Leave when she falls asleep.]")),
     dl("war", '''"Of course you do." {n}No reproach in it.{/n} "Go on, then. The fourth step rocks; I have not fixed it yet." {n}She has already turned back to her scrubbing when you reach it, and it rocks.{/n}''',
@@ -271,7 +282,7 @@ visit(P + "woken.red_blood", "Red", [
     dl("lie", '''{n}Her face breaks open. It is terrible to watch.{/n} "He sent you." {n}She says it again, and her voice cracks on it.{/n} "He sent you. He did not forsake me. All that dark, and he had not forgotten." {n}She presses the heel of her cut hand against her eyes and holds it there.{/n}
 "Forgive me. I have not wept since I was a girl. It seems I have a great deal of it saved."''',
         c("Continue", "wants")),
-    dl("both", '''{n}She stares at you. Then, unwillingly, something in her face gives.{/n} "A door open, and a fool walking through it making a noise." {n}She almost laughs.{/n} "That is the most Erastil thing anybody has ever said to me. He never opened a door in his life that he did not expect someone to fall through. He left the snares; we walked into them." {n}She rubs her face.{/n} "Very well. My vow, and his door, and your noise. I can live with that. I am living with it."''',
+    dl("both", '''{n}She stares at you. Then, unwillingly, something in her face gives.{/n} "A door open, and a fool walking through it making a noise." {n}She almost laughs.{/n} "Old Deadeye leaves no gate open without a reason, and no work half done. If he left that one open, he had his reason, and I will ask him for it on my knees." {n}She rubs her face.{/n} "Very well. My vow, and his door, and your noise. I can live with that. I am living with it."''',
         c("Continue", "wants")),
     dl("wants", '''{n}She does not let go of your hand, still flat at her throat. If anything she presses it closer.{/n} "Do you know what the dead do not have, stag? Wanting. I stood at full draw in the dark for longer than there are words for, and I did not want anything, not even to let go."
 "Now I want everything. Bread. Fire. Sleep. The smell of rain." {n}Her voice drops.{/n} "Other things. I have not decided yet what to do about the other things."''',
@@ -305,22 +316,33 @@ visit(P + "woken.red_blood", "Red", [
 # --- The Abyss (Chapter 4): one letter, if she can find anyone to carry it ------------------------------------------
 
 visit(P + "woken.bark", "Birch bark", [
-    nar("packet", '''{n}It comes up the supply line in a packet of dispatches from Drezen, and it is not paper. It is a strip of birch bark as long as your forearm, rolled and tied with gut, and the words are cut into it with a knife point in a hand that has not written in a very long time.{/n}''',
+    nar("packet", '''{n}It comes through the Storyteller's portal with the supplies he fetches from Golarion, folded in among the bread and the lamp oil, and it is not paper. It is a strip of birch bark as long as your forearm, rolled and tied with gut, and the words are cut into it with a knife point in a hand that has not written in a very long time.{/n}''',
         c("Continue", "kyado_hand", forbids=(KYADO_DEAD,)),
         c("Continue", "own_hand", requires=(KYADO_DEAD,))),
     nar("kyado_hand", '''{n}Tucked inside the roll is a sheet of ordinary paper in a neat, anxious clerk's script. At the top someone has written: "She dictated. I wrote it down. The bark is her own; she said a letter should be something you can burn. Please don't burn it. K."{/n}''',
-        c("Continue", "letter")),
+        c("Continue", "letter", requires=(ZANEDRA_FLED,)),
+        c("Continue", "letter_hills", forbids=(ZANEDRA_FLED,))),
     nar("own_hand", '''{n}The Kellid letters are cut deep and square. Somebody at the Drezen end has pencilled a translation underneath, in the margin, with a note: "the huntress from the Erastil temple, for the Commander; she stood over me while I did this."{/n}''',
-        c("Continue", "letter")),
+        c("Continue", "letter", requires=(ZANEDRA_FLED,)),
+        c("Continue", "letter_hills", forbids=(ZANEDRA_FLED,))),
     dl("letter", '''"Stag.
 They tell me you have gone down into the Abyss. They say it as if it were a place. I hunted in bad places when I was alive, and I have been dead, and I do not believe anywhere is worse than the one I lay in. Come back and tell me I am wrong.
 The woods are quiet. The Horned One's people went west, as you said. I went after the ones who were slow. There are nine fewer. I left them in the trees on the west road so the others would see."''',
         c("Continue", "letter2")),
+    # PP10: the same letter when the Commander never told her the witch's people went west.
+    dl("letter_hills", '''"Stag.
+They tell me you have gone down into the Abyss. They say it as if it were a place. I hunted in bad places when I was alive, and I have been dead, and I do not believe anywhere is worse than the one I lay in. Come back and tell me I am wrong.
+The woods are quiet. Some of the Horned One's people were still in these hills when you went down. I went after them. There are nine fewer. I left them in the trees on the west road so the others would see."''',
+        c("Continue", "letter2")),
     dl("letter2", '''"I have counted the days since you went. That is what I do. I do not want you to think it means anything. It is fifty-one.
 You left with one good leg and one bad one. I gave you leave to limp on the bad one. I did not give you leave to lose the good one. Bring back both.
 Delamere, who was Blessed."''',
-        c("[Keep the bark.]", flags=(BARK,))),
-], requires=("trickster.ever", RETURNED), forbids=(CLOSED, BARK), delay=24, chapters=(4, 4), kind="letter", optional=True)
+        c("[Keep the bark.]", flags=(BARK,)),
+        # PP10: an answer, carried back by the same dispatch rider; woken.village and her epilogue read it.
+        c('[Cut an answer into the back of the bark with your knife, and give it to the Storyteller for his next trip] "Still counting. Both legs, so far."',
+          flags=(BARK, BARK_ANSWERED))),
+], requires=("trickster.ever", RETURNED, STORYTELLER_SUPPLIES), forbids=(CLOSED, BARK), delay=24, chapters=(4, 4), kind="letter",
+    optional=True)   # PP10 (Sol HOW): only once the Storyteller has offered to fetch supplies through his portal
 
 
 # --- 5. My woods (she proposes the second hunt) ---------------------------------------------------------------------
@@ -469,8 +491,16 @@ visit(P + "woods.second_hunt_late", "The second hunt", second_hunt(
 visit(P + "woken.village", "Fifty-three, again", [
     nar("arrive", '''{n}She is waiting on the road outside your camp when you come back from the Abyss, sitting on a milestone with a sack at her feet, as if she has been there every day since you left and meant to be there every day until you came.{/n}
 {n}She looks at you, all of you, from boots to hair, counting. Then she nods, once, as if a sum has come out right.{/n}''',
-        c("Continue", "both_legs")),
+        c("Continue", "both_legs", forbids=(BARK_ANSWERED,)),
+        c("Continue", "both_legs_bark", requires=(BARK_ANSWERED,))),
     dl("both_legs", '''"Both legs." {n}That is all the greeting you get.{/n} "Good. Walk with me. I have something to tell you, and I will not tell it on a road."''',
+        c("Continue", "given", requires=(VILLAGE_GIVEN,)),
+        c("Continue", "forced", requires=(VILLAGE_FORCED,)),
+        c("Continue", "refused", requires=(VILLAGE_REFUSED,)),
+        c("Continue", "clans", requires=(VILLAGE_CLANS,))),
+    # PP10: the Commander answered her bark from the Abyss.
+    dl("both_legs_bark", '''{n}Your strip of bark is through her belt, the cut side out, where her hand can find it the way it finds an arrow.{/n} "Both legs." {n}She taps the bark.{/n} "'So far,' you cut. I have read 'so far' every night since it came up the road. That is a cruel thing to send a hunter, stag. I know what a hunter finds at the end of a trail."
+{n}That is all the greeting you get.{/n} "Walk with me. I have something to tell you, and I will not tell it on a road."''',
         c("Continue", "given", requires=(VILLAGE_GIVEN,)),
         c("Continue", "forced", requires=(VILLAGE_FORCED,)),
         c("Continue", "refused", requires=(VILLAGE_REFUSED,)),

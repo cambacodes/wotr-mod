@@ -63,6 +63,10 @@ ERASTIL_ANSWERED = "delamere.erastil_answered"     # SeenCues TombOfDelamere_Boo
 OPENED_FORCED = "delamere.tomb_opened_forced"      # SeenCues Cue_0053 a70275fb (the body seen in a forced tomb)
 OPENED_PEACEFUL = "delamere.tomb_opened_peaceful"  # SeenCues Cue_0057 4a58ea06 (the body seen in an opened tomb)
 TOMB_OPENED = "delamere.tomb_opened"               # Derived: any of the three
+OPENED_KNIFE = "delamere.tomb_opened_knife"        # PP10 (Sol CAN): TombOfDelamere_BookEvent Cue_0038 f0a9e958, the seal crumbles
+OPENED_KNIFE_CRACK = "delamere.tomb_opened_knife_crack"   # PP10: Cue_0039 ce518077, a seal fragment cracks and the circle falls
+OPENED_PRAYER = "delamere.tomb_opened_prayer"      # PP10: Cue_0034 cab33f23, the Kellid prayer; the seal crumbles, the lid slides open
+OPENED_DISPELLED = "delamere.tomb_opened_dispelled"   # PP10: Cue_0037 202dc8ba, the spells broken; the seal crumbles
 CURSED_BOW_HELD = "delamere.cursed_bow_held"       # InventoryItems CursedDelameresBowItem
 
 RETURNED = P + "returned"
@@ -83,22 +87,31 @@ SAID_FINISH = P + "stag_said_finish"
 LEG_HEALED = P + "leg_healed"                 # Q6 r2 (BEL): the Commander had a priest straighten the leg, ending the hunt
 # The courtship (delamere_woods) sets these; the epilogues and reactions read them.
 SECOND_HUNT = P + "second_hunt_offered"
+STORYTELLER_SUPPLIES = "storyteller.supplies"   # PP10: SeenCues, the Storyteller's portal supplies (the bark's carrier)
 CAUGHT = P + "caught"
 LATE_COMMITTED = P + "late_committed"
 DERIVED = {
     # R2-6: she has proposed the second hunt; if the war ends first, the epilogue carries her yes (Last Call, household).
-    LATE_COMMITTED: [["trickster.ever", SECOND_HUNT]],
+    # PP10 (Sol INT): only for a Commander who told her the truth about her waking, or confessed the lie in her woods.
+    LATE_COMMITTED: [["trickster.ever", SECOND_HUNT, P + "told_truth"], ["trickster.ever", SECOND_HUNT, P + "told_both"],
+                     ["trickster.ever", SECOND_HUNT, P + "confessed"]],
     # 05 §2.1: eligibility ("delamere.harem.eligible") is derived by household.py from PARTNERS (committed or late).
     # 05 §2.5 voice note: a household is a village she can count (fifty-three, everyone known by name), never a city.
     "delamere.harem.voice.a_village_not_a_city": [[COMMITTED], [LATE_COMMITTED]],
-    TOMB_OPENED: [[ERASTIL_ANSWERED], [OPENED_FORCED], [OPENED_PEACEFUL], [RELICS_TAKEN]],   # relics are taken only from an open stone
+    TOMB_OPENED: [[ERASTIL_ANSWERED], [OPENED_FORCED], [OPENED_PEACEFUL], [RELICS_TAKEN],   # relics are taken only from an open stone
+                  [OPENED_KNIFE], [OPENED_KNIFE_CRACK], [OPENED_PRAYER], [OPENED_DISPELLED]],   # PP10: the knife openings; a lid closed again stays a broken seal
 }
 BINDINGS = {
     "UnlockableFlags": {RELICS_TAKEN: "3de8e7db06d4b9043bddfa77888ecfa5"},     # GotDelamereLoot
     "SelectedAnswers": {RELICS_CURSED: "3357022e6d1c5e047a0075a223606210"},    # TombOfDelamere_BookEvent/Answer_0048
     "InventoryItems": {BOW_HELD: BOW_ITEM, CURSED_BOW_HELD: CURSED_BOW_ITEM},
     "SeenCues": {ERASTIL_ANSWERED: "a58f2095249a44549a4dfd2d60a9b6e1", OPENED_FORCED: "a70275fb77f483847a68fe01586091ec",
-                 OPENED_PEACEFUL: "4a58ea0622eb9924abb1579306f5a395"},
+                 OPENED_PEACEFUL: "4a58ea0622eb9924abb1579306f5a395",
+                 # PP10: the Storyteller's offer to fetch supplies through his portal (StoryTeller_MainDialogue/Cue_0629,
+                 # "When I return to Golarion, I will buy some travel necessities", 19609f8b; shown while Chapter04 plays).
+                 STORYTELLER_SUPPLIES: "459bf324a71c81c4ba5f3eead9ba42bb",
+                 OPENED_KNIFE: "f0a9e958a349a3147b6e441d0ce21699", OPENED_KNIFE_CRACK: "ce518077ca8432b4583e0240bbd797f7",
+                 OPENED_PRAYER: "cab33f23f9c1f284eab13e33fbdc3df0", OPENED_DISPELLED: "202dc8ba3e8715840af76156384bea2e"},
 }
 
 RELATIONSHIP = dict(
@@ -239,9 +252,16 @@ def waking(place):
     nodes = [t["open"], nar("stair", t["stair"], c("Continue", "body_open", requires=(TOMB_OPENED,)),
                             c("Continue", "body_sealed", forbids=(TOMB_OPENED,)))]
     if not crypt:
-        nodes[1] = nar("stair", t["stair"], c("Continue", "body_drezen"))
+        # PP10 (Sol CAN): her hands as the relics left them, as in the crypt (a variant body, so the waking is no longer).
+        nodes[1] = nar("stair", t["stair"], c("Continue", "body_drezen", forbids=(RELICS_TAKEN,)),
+                       c("Continue", "body_drezen_taken", requires=(RELICS_TAKEN,)))
         nodes.append(nar("body_drezen", '''{n}She lies as the crusade laid her, on her back, with the lid set aside so the pilgrims can see her face. A tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs and the antler bow still locked in her hands.{/n}''',
                          c("Continue", "horn")))
+        nodes.append(nar("body_drezen_taken", '''{n}She lies as the crusade laid her, on her back, with the lid set aside so the pilgrims can see her face. A tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs.{/n}''',
+                         c("Continue", "given_back", requires=(BOW_RETURNED,)),
+                         c("Continue", "taken_held", requires=(BOW_HELD,), forbids=(BOW_RETURNED,)),
+                         c("Continue", "taken_cursed", requires=(CURSED_BOW_HELD,), forbids=(BOW_RETURNED, BOW_HELD)),
+                         c("Continue", "taken_gone", forbids=(BOW_RETURNED, BOW_HELD, CURSED_BOW_HELD))))
     crypt_nodes = [
         nar("body_open", '''{n}You have looked on her once before. You set your shoulder to the lid until the whole of her lies open to the light, as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}''',
             c("Continue", "in_hands", forbids=(RELICS_TAKEN,)),
@@ -269,6 +289,8 @@ def waking(place):
     ]
     if crypt:
         nodes += crypt_nodes
+    else:
+        nodes += crypt_nodes[3:]   # PP10: the relic branches (given_back .. yew) serve the Drezen waking too
     nodes += [
         nar("horn", '''{n}You take the horn down from its peg. It is heavier than it looks, and cold, and the stag cut into its side has been worn smooth by fingers that never once dared lift it to a mouth.{/n}''',
             c("Continue", "plea" if place == "kyado" else "lift")),
@@ -292,8 +314,15 @@ def waking(place):
         nar("roar", '''{n}You fill your chest and give it everything: three short barks from the belly, and then the long one, broken in the middle and rising, the sound a stag makes in the autumn hills when it wants the whole valley to know it is ready to fight anything that comes.{/n}
 {n}It hits the walls and does not stop there. It goes up and out, and somewhere far off in the dark, over woods that have not heard that call in a very long time, something answers.{/n}
 {n}Then the silence. Then, very close, a breath.{/n}''',
-            c("Continue", "rise")),
+            *((c("Continue", "rise", requires=(TOMB_OPENED,)), c("Continue", "rise_sealed", forbids=(TOMB_OPENED,))) if crypt
+              else (c("Continue", "rise"),))),
         nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
+{n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
+            c("Continue", "draw_antler", forbids=(YEW_BOW,)),
+            c("Continue", "draw_yew", requires=(YEW_BOW,))),
+        # PP10 (Sol BEL): an untouched tomb opens on the page before she rises (a variant of rise, so the waking is no longer).
+        nar("rise_sealed", '''{n}Then the seal goes. A crack runs round the ring of Kellid words, quick as frost across a puddle, and the stone circle drops in two halves on the lid. The lid itself grinds a hand's breadth sideways, pushed from beneath, and stops, and grinds again, until there is room for an arm, a shoulder, a face.{/n}
+{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
 {n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
             c("Continue", "draw_antler", forbids=(YEW_BOW,)),
             c("Continue", "draw_yew", requires=(YEW_BOW,))),
@@ -375,6 +404,8 @@ def waking(place):
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_DREZEN))),
     }
     nodes.append(homes[place])
+    if not crypt:
+        nodes = [x for x in nodes if x["Id"] != "rise_sealed"]   # PP10: the Drezen stone lies open
     return nodes
 
 
@@ -451,6 +482,7 @@ NAMES = P + "names_cut"
 POACHERS_PROVOST = P + "poachers.provost"
 POACHERS_HERS = P + "poachers.her_law"
 POACHERS_TRICKED = P + "poachers.tricked"
+BARK_ANSWERED = P + "bark_answered"   # PP10: the Commander cut an answer into her Chapter 4 bark (woken.bark)
 
 EPILOGUE_PARAGRAPHS = (
     p('''{n}The families she led out of Drezen's camps built their villages in the old Sarkorian clearings below her temple. None of them ever grew past fifty-three. When one did, she walked in at the next new moon and chose who would go and found the next, and the families went, and did not thank her, and did well.{/n}''', requires=(VILLAGE_GIVEN,)),
@@ -464,6 +496,8 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}The crusade's provost flogged three men for a doe in fawn in the spring of the war. It was the only time the crusade's law and hers agreed about anything, and she reminded the Commander of it at every quarrel after.{/n}''', requires=(POACHERS_PROVOST,)),
     p('''{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,)),
     p('''{n}The soldiers' story of Erastil's own doe outlived the crusade. Hunters in Mendev still let a doe in fawn pass, and some of them still look over their shoulders when they do it. She never corrected the story. She said it was the most useful lie ever told in her lord's name, and that she would answer to him for it herself, since the jester would only make him laugh.{/n}''', requires=(POACHERS_TRICKED,)),
+    # PP10: the answer to her bark from the Abyss.
+    p('''{n}For the rest of her second life she kept a strip of birch bark in her quiver, behind the arrows, with a few words cut into the back of it by a knife held badly somewhere in the Abyss: "Still counting. Both legs, so far." She never let it near a fire, though she had said herself that a letter should be something you can burn.{/n}''', requires=(BARK_ANSWERED,)),
     p('''{n}Kyado lived in the temple's stable for a year and said the prior's prayers from the doorway, as she had sentenced him to. On the first day of the second year she carried his bedroll back inside herself, and said nothing about it, then or ever.{/n}''', requires=(KYADO_JUDGED,)),
 )
 

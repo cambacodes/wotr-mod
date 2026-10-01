@@ -29,6 +29,7 @@ from storylines.delamere_trickster import (BOW_RETURNED, CLOSED, COMMITTED, ERAS
                                            NAMES, POACHERS_HERS, POACHERS_PROVOST, POACHERS_TRICKED, PROCLAIMED,
                                            RETURNED, STAG_TOLD, YEW_BOW, dl, kyado, nar)
 from storylines.delamere_trickster import temple as _temple, visit as _visit
+from storylines.delamere_trickster import KYADO_DEAD   # PP10: the jester's line from Kyado, alive or in his daybook
 from storylines.delamere_woods import CONFESSED, COUNTED, FIRST_MEAT, LIED, TABLE
 
 SCENES = []
@@ -74,7 +75,7 @@ visit(P + "woken.white_stag", "The white stag", [
     dl("death", '''"I was fifty-nine winters. Old, for a hunter on the roads." {n}She throws the bone into the fire.{/n} "A wolf came down out of the north in a hungry winter. White, as the stag had been, and too big, and wrong somehow in the way it moved. It took children out of the byres. I tracked it eleven days into the passes. On the eleventh I had it below me in a gully, on the ice. I drew."
 {n}She stops.{/n} "And then there is nothing. A rock came down, or the ice gave way under me, or my heart burst in my chest. I remember the draw. I remember the wolf's eyes. And then the dark."''',
         c("Continue", "draw")),
-    dl("draw", '''"I died at full draw, with the arrow on the string and the beast in front of me. I never loosed." {n}She holds up her right hand, the fingers curled as if around a bowstring, and looks at it.{/n} "That is what I was doing, stag. All that time, in the dark. Holding. Waiting for my fingers to open. The pilgrims felt it, the boy says, when they touched my bow. An arrow that was not there, pointing at their hearts. It was not pointing at them. It was pointing at a wolf."''',
+    dl("draw", '''"I died at full draw, with the arrow on the string and the beast in front of me. I never loosed." {n}She holds up her right hand, the fingers curled as if around a bowstring, and looks at it.{/n} "That is what I was doing, stag. All that time, in the dark. Holding. Waiting for my fingers to open. The pilgrims felt it, by the boy's daybook, when they touched my bow. An arrow that was not there, pointing at their hearts. It was not pointing at them. It was pointing at a wolf."''',
         c('"What happened to the wolf?"', "wolf"),
         c('"That\'s the saddest thing I\'ve ever heard."', "sad"),
         c('"Well. At least you held your form."', "form")),
@@ -137,7 +138,13 @@ visit(P + "woken.jester", "Defenceless", [
     nar("yard", '''{n}She is waiting in the yard of your quarters when you come back from the war council, sitting on the mounting block with her bow across her knees and a look on her face that you have learned means she has been thinking about something for a long time and has reached the end of it.{/n}''',
         c("Continue", "rumour")),
     dl("rumour", '''"While you were in the Abyss, people talked about you. They always talk about you; in a city nobody has anything better to do." {n}She turns the bow over.{/n} "They say you walked into places no one comes out of, and came out laughing. They say demons who were meant to eat you ended up arguing among themselves about the recipe. They say it the way children talk about the fox in the old stories. Half afraid. Half on the fox's side."''',
-        c("Continue", "kyado")),
+        c("Continue", "kyado", forbids=(KYADO_DEAD,)),
+        c("Continue", "kyado_book", requires=(KYADO_DEAD,))),
+    # PP10 (Sol CAN): when Kyado is dead she has his words from the prior's daybook, not from his mouth.
+    dl("kyado_book", '''"The boy kept a prior's daybook. I read it, after; somebody had to. Under the day you first came to my temple he wrote, in that small frightened hand, that anyone who treats everything seriously is defenceless before you, like a child." {n}She looks up.{/n} "I treat everything seriously, stag. I have never made a joke in my life that I know of. So I have been sitting on this block since the bell, asking myself whether I am defenceless before you."''',
+        c('"Yes."', "yes"),
+        c('"No. You\'re the only one I can\'t fool."', "no"),
+        c('[Thievery: while she talks, lift the skinning knife from her belt]', check=dict(Skill="SkillThievery", DC=26, Success="lifted", Failure="caught", CommanderOnly=True))),
     dl("kyado", '''"The boy said something to me once, about you, before I knew you. He said anyone who treats everything seriously is defenceless before you, like a child." {n}She looks up.{/n} "I treat everything seriously, stag. I have never made a joke in my life that I know of. So I have been sitting on this block since the bell, asking myself whether I am defenceless before you."''',
         c('"Yes."', "yes"),
         c('"No. You\'re the only one I can\'t fool."', "no"),
@@ -358,7 +365,7 @@ visit(P + "woken.hide", "The hide", [
 {n}"Stand," she says. You stand. The ankle holds. She watches you walk to the window and back, and something in her face eases that you did not know was tight.{/n}''',
         c("Continue", "count")),
     dl("count", '''"Good. Now hear me, because there is a thing I have been meaning to say, and I say things badly indoors." {n}She stays on her knees on your floor. It does not make her look any smaller.{/n}
-"I have walked this city, stag, the way I used to walk my valleys. I have heard what they say in your yard, and in the King's tavern, and on the walls. There are a great many people who think they have a claim on you, and some of them are right."''',
+"I have walked this city, stag, the way I used to walk my valleys. I have heard what they say in your yard, and in the King's tavern, and on the walls. There are a great many people who think they have a claim on you: soldiers, priests, petitioners, the whole crowding hive of it. Some of them are right."''',
         c('"Does that bother you?"', "bother"),
         c('"I\'m not going to lie to you about it."', "no_lie")),
     dl("bother", '''"Bother me?" {n}She considers it honestly, as she considers everything.{/n} "In my day a hunter who brought meat to one hearth and not the rest was a thief, whatever he called it. A hunter who fed every hearth in the village was doing his work." {n}She shrugs.{/n} "I will not be a hearth you visit when the others are cold. That is all. I will be fed, or I will go and feed myself. I have done it before."''',
@@ -427,3 +434,15 @@ visit(P + "woken.poachers", "Doe in fawn", [
         c("[Shoulder the doe.]")),
 ], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, POACHERS_PROVOST, POACHERS_HERS, POACHERS_TRICKED), delay=48,
     optional=True, ManualOnly=True)
+
+
+# --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP10) ---------------------------------------
+# PATH_FIT is each scene's class today: T (a device, or gated on the Trickster), N-all or N-fit. Every Delamere scene is T:
+# she is a living woman only because the Commander woke her with the stag's roar (crypt.stag and its twins), and every
+# later beat reads that waking. Kyado's horn lore is the device's primer. PATH_FIT_V2 is empty: on every other path canon
+# fate stands (destroyed, laid to rest in Drezen, set free, or raised by the Lich as an undead servant), and this romance is
+# built on her authored living return, so it has no other-path version (a route design statement, not a canon rule).
+from storylines import delamere_trickster as _trickster, delamere_woods as _woods
+
+PATH_FIT = {s["Id"]: "T" for s in _trickster.SCENES + _woods.SCENES + SCENES}
+PATH_FIT_V2 = {}

@@ -150,7 +150,9 @@ internal static class DelamereTricksterTests
             "A retired reactor (Ulbrig, Woljif) still speaks.");
         check(pages.Length == 7 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "second_hunt_offered" })
+        check(story.Derived[P + "late_committed"].Length == 3
+              && story.Derived[P + "late_committed"].All(g => g.Contains("trickster.ever") && g.Contains(P + "second_hunt_offered"))
+              && story.Derived[P + "late_committed"].Select(g => g.Last()).OrderBy(x => x).SequenceEqual(new[] { P + "confessed", P + "told_both", P + "told_truth" })
               && story.Derived["delamere.harem.eligible"].Length == 2 && story.Derived.ContainsKey("delamere.harem.voice.a_village_not_a_city"),
             "The late commit or the household eligibility is not declared.");
         var produced = new HashSet<string>(mine.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set));
@@ -186,11 +188,21 @@ internal static class DelamereTricksterTests
         var visitedUnopened = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", P + "primed");
         var cryptPages = Pages(crypt, visitedUnopened);
         check(cryptPages.Contains("body_sealed") && !cryptPages.Contains("body_open"), "A tomb visited but never opened is shown open.");
-        foreach (var opened in new[] { "delamere.erastil_answered", "delamere.tomb_opened_forced", "delamere.tomb_opened_peaceful" })
+        // PP10 (Sol CAN/BEL): the knife openings count as opened (a lid closed again is still a broken seal); a whole seal
+        // breaks on the page before she rises; the crypt walk reaches the seal only from an untouched tomb.
+        bool SealBreaks(Snapshot w) => Pages(crypt, w).Contains("rise_sealed");
+        check(SealBreaks(visitedUnopened) && !cryptPages.Contains("rise") && crypt.Nodes.Single(n => n.Id == "rise_sealed").Text.Contains("the seal goes"),
+            "Trk_Delamere_Seal: the whole seal is never broken on the page.");
+        check(!drezen.Nodes.Any(n => n.Id == "rise_sealed") && Pages(drezen, World(story, 3, "trickster", "trickster.ever", "delamere.remains_finished", "delamere.tomb_visited")).Contains("rise"),
+            "Trk_Delamere_Seal: the open Drezen stone breaks a seal.");
+        foreach (var opened in new[] { "delamere.erastil_answered", "delamere.tomb_opened_forced", "delamere.tomb_opened_peaceful",
+                                       "delamere.tomb_opened_knife", "delamere.tomb_opened_knife_crack",
+                                       "delamere.tomb_opened_prayer", "delamere.tomb_opened_dispelled" })
         {
             var o = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", opened);
             var op = Pages(crypt, o);
-            check(o.Has("delamere.tomb_opened") && op.Contains("body_open") && !op.Contains("body_sealed"), "An opened tomb is shown sealed: " + opened);
+            check(o.Has("delamere.tomb_opened") && op.Contains("body_open") && !op.Contains("body_sealed") && !SealBreaks(o),
+                "An opened tomb is shown sealed: " + opened);
         }
         foreach (var s in own)
             foreach (var n in s.Nodes)
@@ -221,6 +233,14 @@ internal static class DelamereTricksterTests
         check(Rules.Available(story, drezen, remains) && !Rules.Available(story, crypt, remains) && !Rules.Available(story, alone, remains),
             "Trk_Delamere_Drezen: the chapel waking is shut, or the crypt opens without her.");
         var city = After(drezen, remains, "home_drezen", 0).First();
+        // PP10 (Sol CAN): the Drezen waking follows the relics; the antler bow is in her hands only if it is not on the Commander's back.
+        var remainsHeld = World(story, 3, "trickster", "trickster.ever", "delamere.remains_finished", "delamere.tomb_visited", "delamere.relics_taken", "delamere.bow_held");
+        check(Pages(drezen, remains).Contains("body_drezen") && !Pages(drezen, remains).Contains("body_drezen_taken")
+              && Pages(drezen, remainsHeld).Contains("body_drezen_taken") && !Pages(drezen, remainsHeld).Contains("body_drezen")
+              && !drezen.Nodes.Single(n => n.Id == "body_drezen_taken").Text.Contains("antler bow")
+              && Pages(drezen, remainsHeld).Contains("taken_held") && !Pages(drezen, remainsHeld).Contains("in_hands")
+              && After(drezen, remainsHeld, "taken_held", 0).First().Has(P + "bow_returned"),
+            "Trk_Delamere_Drezen: the chapel puts the Commander's bow back in her hands without taking it.");
         check(city.Has(P + "woke_in_drezen") && city.Has(P + "returned") && Reaches(city, "delamere.committed", 3),
             "Trk_Delamere_Drezen: no road to the commit.");
 
@@ -324,7 +344,7 @@ internal static class DelamereTricksterTests
         check(Rules.Available(story, epCaught, wed6) && !Rules.Available(story, epCaught, lost6) && Rules.Available(story, epSac, lost6)
               && (!back6.Has("trickster.commander_back") || Rules.Available(story, epCaught, back6) && !Rules.Available(story, epSac, back6))
               && !Rules.Available(story, epSac, wed6), "A sacrificed Commander still runs at the first frost.");
-        var lateLost6 = World(story, 6, "trickster.ever", P + "second_hunt_offered", "sacrifice");
+        var lateLost6 = World(story, 6, "trickster.ever", P + "second_hunt_offered", P + "told_truth", "sacrifice");
         check(!Rules.Available(story, epLate, lateLost6) && Rules.Available(story, epSac, lateLost6), "The late page survives an unreversed sacrifice.");
 
         // Quality pass Q6 (CAN): the god answered the Commander at her seal only if the Commander heard it; otherwise Haddo guesses.
@@ -372,6 +392,77 @@ internal static class DelamereTricksterTests
         check(hide.Requires.Contains("delamere.committed") && Rules.Available(story, hide, Later(story, caught, 48))
               && !Rules.Available(story, hide, Later(story, offered, 48)),
             "The brace is not an after-the-commit beat.");
+
+        // PP10 (Trk_Delamere_Bark, Chapter 4): the bark from the Abyss. "As you said" only for the Commander who told her the
+        // witch's people went west; the old "I don't know" answer (which got "West.") is retired and its replacement gets
+        // "Lost.". The Commander may cut an answer into the bark; what came of the count (Chapter 5) and her pages read it.
+        var bark = S(P + "woken.bark");
+        var abyss = Later(story, World(story, 4, "trickster.ever", P + "returned", "delamere.started", "storyteller.supplies"), 25);
+        check(story.SeenCues["storyteller.supplies"].SequenceEqual(new[] { "459bf324a71c81c4ba5f3eead9ba42bb" })
+              && !Rules.Available(story, bark, Later(story, World(story, 4, "trickster.ever", P + "returned", "delamere.started"), 25)),
+            "Trk_Delamere_Bark: the bark comes before the Storyteller has offered to carry supplies.");
+        check(Rules.IsRemote(bark) && bark.Kind == "letter" && bark.Chapters.SequenceEqual(new[] { 4 }) && bark.ManualOnly && Rules.Available(story, bark, abyss)
+              && !Rules.Available(story, bark, Later(story, World(story, 5, "trickster.ever", P + "returned", "delamere.started"), 25)),
+            "Trk_Delamere_Bark: the bark is not her one manual Chapter 4 letter.");
+        check(Pages(bark, abyss).Contains("letter_hills") && !Pages(bark, abyss).Contains("letter"),
+            "Trk_Delamere_Bark: the letter says 'as you said' to a Commander who never said the witch went west.");
+        var westAbyss = Later(story, World(story, 4, "trickster.ever", P + "returned", "delamere.started", "storyteller.supplies", P + "zanedra.told_fled"), 25);
+        check(Pages(bark, westAbyss).Contains("letter") && !Pages(bark, westAbyss).Contains("letter_hills"), "Trk_Delamere_Bark: the west letter is lost.");
+        var witch = table.Nodes.Single(n => n.Id == "finish").Choices;
+        check(witch.Count == 4 && witch[2].Forbids.Contains("chapter_later") && witch[3].Next == "told_lost" && witch[3].Set.Contains(P + "zanedra.told_lost")
+              && !witch[3].Set.Contains(P + "zanedra.told_fled") && witch[1].Set.Contains(P + "zanedra.told_fled"),
+            "Trk_Delamere_Witch: 'I don't know' still gets her 'West.'");
+        var barkRuns = Program.Walk(bark, abyss);
+        check(barkRuns.Count(r => r.Has(P + "bark_letter")) == 2 && barkRuns.Count(r => r.Has(P + "bark_answered")) == 1
+              && barkRuns.All(r => !Rules.Available(story, bark, Later(story, r, 48))),
+            "Trk_Delamere_Bark: keeping and answering are not the two ways out, or the bark comes twice.");
+        var countedHome = new[] { "trickster.ever", P + "returned", "delamere.started", P + "counted", P + "village.given", P + "bark_letter" };
+        var answeredHome = Later(story, World(story, 5, countedHome.Concat(new[] { P + "bark_answered" }).ToArray()), 25);
+        var keptHome = Later(story, World(story, 5, countedHome), 25);
+        check(Pages(village, answeredHome).Contains("both_legs_bark") && !Pages(village, answeredHome).Contains("both_legs")
+              && Program.Walk(village, answeredHome).Any(r => r.Has(P + "village_seen"))
+              && Pages(village, keptHome).Contains("both_legs") && !Pages(village, keptHome).Contains("both_legs_bark"),
+            "Trk_Delamere_Bark: what came of the count does not read the answer to her bark.");
+        foreach (var id in new[] { "caught", "late", "apart" })
+        {
+            var node = S(P + "epilogue." + id).Nodes.Last();
+            var withAnswer = World(story, 6, "trickster.ever", P + "returned", P + "bark_letter", P + "bark_answered");
+            check(Rules.VisibleParagraphs(node, withAnswer).Any(t => t.Text.Contains("Both legs, so far"))
+                  && !Rules.VisibleParagraphs(node, World(story, 6, "trickster.ever", P + "returned", P + "bark_letter")).Any(t => t.Text.Contains("Both legs, so far")),
+                "Trk_Delamere_Bark: her page does not keep the answered bark: " + id);
+        }
+
+        // PP10 (Sol INT): the late commit needs the truth told, or the lie confessed in her woods; a kept lie gets the
+        // unfinished page, never the late yes.
+        var epLatePage = S(P + "epilogue.late");
+        var epUnfinished = S(P + "epilogue.unfinished");
+        string[] proposed = { "trickster.ever", P + "returned", "delamere.started", P + "red_blood", P + "second_hunt_offered" };
+        var liarEnd = World(story, 6, proposed.Concat(new[] { P + "lied_erastil" }).ToArray());
+        check(!liarEnd.Has(P + "late_committed") && !Rules.Available(story, epLatePage, liarEnd) && Rules.Available(story, epUnfinished, liarEnd),
+            "Trk_Delamere_LateLie: an unconfessed lie still gets the late yes.");
+        foreach (var said in new[] { P + "told_truth", P + "told_both" })
+            check(World(story, 6, proposed.Concat(new[] { said }).ToArray()).Has(P + "late_committed")
+                  && Rules.Available(story, epLatePage, World(story, 6, proposed.Concat(new[] { said }).ToArray())),
+                "Trk_Delamere_LateLie: the late yes is lost for " + said);
+        check(World(story, 6, proposed.Concat(new[] { P + "lied_erastil", P + "confessed" }).ToArray()).Has(P + "late_committed"),
+            "Trk_Delamere_LateLie: a confessed lie loses the late yes.");
+        // PP10 (Sol BEL): the Drezen waking moved her sarcophagus; the feasting table scrubs the bier and the floor.
+        var tableDrezen = Later(story, World(story, 3, "trickster.ever", P + "returned", "delamere.started", P + "first_meat", P + "woke_in_drezen", P + "counted"), 25);
+        var tableCrypt = Later(story, World(story, 3, "trickster.ever", P + "returned", "delamere.started", P + "first_meat", P + "counted"), 25);
+        check(Pages(table, tableDrezen).Contains("stone_drezen") && !Pages(table, tableDrezen).Contains("stone")
+              && Pages(table, tableCrypt).Contains("stone") && !Pages(table, tableCrypt).Contains("stone_drezen"),
+            "Trk_Delamere_Table: the moved sarcophagus is scrubbed in the temple.");
+        foreach (var node in table.Nodes.Where(n => n.Id != "stone"))
+            check(!node.Text.Contains("sarcophagus", StringComparison.Ordinal) || node.Id == "stone_drezen",
+                "Trk_Delamere_Table: a shared feasting-table node puts the moved sarcophagus back in the temple: " + node.Id);
+        // PP10 (Sol CAN): the jester's line from Kyado is his own words alive, or his daybook when he is dead.
+        var jester = S(P + "woken.jester");
+        var jesterAlive = Later(story, World(story, 5, "trickster.ever", P + "returned", "delamere.started", P + "first_meat"), 49);
+        var jesterDead = Later(story, World(story, 5, "trickster.ever", P + "returned", "delamere.started", P + "first_meat", "kyado.dead"), 49);
+        check(Pages(jester, jesterAlive).Contains("kyado") && !Pages(jester, jesterAlive).Contains("kyado_book")
+              && Pages(jester, jesterDead).Contains("kyado_book") && !Pages(jester, jesterDead).Contains("kyado")
+              && Program.Walk(jester, jesterDead).Any(r => r.Has(P + "jester_seen")),
+            "Trk_Delamere_Jester: a dead Kyado talks to her about the Commander.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))
