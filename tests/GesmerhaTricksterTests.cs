@@ -558,7 +558,7 @@ internal static class GesmerhaTricksterTests
             "The paid letter recalls a conversation the Commander did not have.");
         check(payoff.Nodes.Single(x => x.Id == "paid_risk").Text.Contains("anger") && !payoff.Nodes.Single(x => x.Id == "paid_risk").Text.Contains("*hands*"),
             "The risk history's letter does not recall her warning about Marhevok's anger.");
-        check(payoff.Nodes.All(x => !x.Text.Contains("would not stay dead")) && payoff.Nodes.Count(x => x.Text.Contains("last marvel")) >= 2,
+        check(payoff.Nodes.All(x => !x.Text.Contains("would not stay dead")) && payoff.Nodes.Count(x => x.Text.Contains("enough marvels")) >= 2,   // PP7 r3: the carvers' line no longer assumes the Lady exposed
             "The payoff invents a resurrection of the Lady.");
 
         // Sol round 2 (INT): the returned pages yield to a native survival, and a genuine sacrifice resolves the commission

@@ -217,7 +217,7 @@ hub(T + "her_questions", "Three questions for a liar", '"Has she sent anything d
     teller("third_wont", '''"They will. They always do. Every trickster's last trick is the one that does not land." {n}He says it without malice, the way he would read out a line of a very old ballad.{/n} "But I will tell her you said they will not. She likes arrogance. She finds it seasons the meat."''',
         c("Continue", "end")),
     teller("end", '''{n}He climbs the ridge at dusk and comes back after dark, and sits down across from you without a word for a while.{/n}
-"She listened to all three without interrupting. Then she said, 'The thing is more interesting than I thought, and less honest than it thinks.' Then she took my lantern out of my hand, and kept it, and told me to find my own way down." {n}He turns his useless eyes toward the window.{/n} "I have been blind for six hundred years, Commander. It was a long way down."''',
+"She listened to all three without interrupting. Then she said, 'The thing is more interesting than I thought, and less honest than it thinks.' Then she took my lantern out of my hand, and kept it, and told me to find my own way down." {n}He turns his useless eyes toward the window.{/n} "I know how to find a path in the dark, Commander. It was a long way down."''',
         c('"I will get you another lantern."', flags=(QUESTIONED,))),
     teller("third_find_free", '''"Find out what you are." {n}He is quiet.{/n} "She lay a night on a mountain with her side open, listening to Xanthir's charm call her, to find that out about herself. I have not asked her what she found. I will carry your answer and not my opinion."''',
         c("Continue", "end")),
@@ -1060,7 +1060,7 @@ hub(T + "the_messenger", "What the messenger thinks", '"You\'ve carried every me
 
 
 hub(T + "the_messenger_free", "What the messenger thinks", '"You\'ve carried every message between us. What do you think of it?"', [
-    teller("start", '''{n}When he answers, he does not look toward the ridge.{/n} "I think that she held me in that lair for days, deciding how I would taste, and that I paid for my life with the best story I had, and that I have not slept well since. I think that you told a better one than mine from behind a rock, and let her fly, and lied to a stone so that she would come back to us hungry. I said some stories should be allowed to end, and I meant it."''',
+    teller("start", '''{n}When he answers, he does not look toward the ridge.{/n} "I think that she held me in that lair for days, deciding how I would taste, and that I paid for my life with the best story I had, and that I have not slept well since. I think that you told a better one than mine from behind a rock, and let her fly, and lowered the stone's fists so that she would come back to us hungry. I said some stories should be allowed to end, and I meant it."''',
         c("Continue", "but")),
     teller("but", '''"And I think that I have climbed that ridge more times than I can count, carrying her threats down and your jokes up, and that somewhere on the way I stopped being afraid of her." {n}He tilts his head toward the ridge.{/n} "Not because she is less dangerous. She is more. She waits for your footsteps now, and the north watch still counts the men it lost to her. I cannot tell you which of those she will think of first, on the day it matters. Neither can she, I suspect."''',
         c('"Do you forgive her?"', "forgive"),
