@@ -376,6 +376,25 @@
     "conditional"
    ]
   },
+  "1129a007a909f5c4f860cd0909cd10e0": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagNotInParty_Dead",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WenduagNotInParty_Dead: CompanionInParty, OrAndLogic"
+   ],
+   "name": "WenduagNotInParty_Dead",
+   "traits": [
+    "conditional"
+   ]
+  },
   "11fc5662e0ce8074ea145a022282b879": {
    "ancestors_completed": [],
    "areas": {},
@@ -775,6 +794,23 @@
     "conditional"
    ]
   },
+  "285ae03094c379045b7cb3106e3f8abf": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Venduag_Chosen",
+    "0Prologue_Outcomes",
+    "0Prologue_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Venduag_Chosen",
+   "traits": [
+    "hold"
+   ]
+  },
   "29c5c64462384fa3b8aae34e4c9ebce9": {
    "ancestors_completed": [],
    "areas": {},
@@ -890,6 +926,32 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "33c4c2f66f2461e4993df21566252079": {
+   "ancestors_completed": [
+    "WenduagRomance"
+   ],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagRomance_Active",
+    "WenduagRomance",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [
+    "WenduagRomance"
+   ],
+   "conditional": [
+    "WenduagRomance: EtudeStatus"
+   ],
+   "name": "WenduagRomance_Active",
+   "traits": [
+    "conditional",
+    "self_completed",
+    "event_cascade"
    ]
   },
   "348dfb40784b436cbe21347f8e0f08ce": {
@@ -1544,6 +1606,24 @@
     "hold"
    ]
   },
+  "52576309e24d8024fbc08c2ff7016c2f": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagRedeemed",
+    "WenduagStates",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "WenduagRedeemed",
+   "traits": [
+    "hold"
+   ]
+  },
   "53fa4f1c1655c3c41b0280b3a8e4d8c9": {
    "ancestors_completed": [],
    "areas": {},
@@ -1828,6 +1908,26 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "653968fb2e671d1458cc95f66e66860a": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagTraitor",
+    "WenduagStates",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WenduagTraitor: CompanionInParty"
+   ],
+   "name": "WenduagTraitor",
+   "traits": [
+    "conditional"
    ]
   },
   "6596f51f8e640384189c6708bd55ed50": {
@@ -3251,6 +3351,29 @@
    "name": "SeelahNotInParty_KickedOut",
    "traits": [
     "conditional"
+   ]
+  },
+  "c3a5748e4a44a1649a75e0968c15a0c1": {
+   "ancestors_completed": [
+    "WenduagRomance"
+   ],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WenduagRomance_Finished",
+    "WenduagRomance",
+    "WenduagCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WenduagRomance: EtudeStatus"
+   ],
+   "name": "WenduagRomance_Finished",
+   "traits": [
+    "conditional",
+    "event_cascade"
    ]
   },
   "c6165efcd5571c442ae38d7c0601f2df": {

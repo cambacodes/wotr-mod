@@ -76,13 +76,16 @@ PARTNERS = {
     "elyanka": ("Elyanka", "Elyanka Camilary"),
     "melazmera": ("Melazmera", "Melazmera"),
     "yaniel": ("Yaniel", "Yaniel"),
+    "wenduag": ("Wenduag", "Wenduag"),
 }
 # Extra eligibility groups: a woman whose route has a second committed state (Nocticula's acquired harbour).
 EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],
                   # Galfrey: where she lives, her native romance kept to the end (Galfrey_Final) makes her a partner.
                   "galfrey": [["galfrey.romance_finished", "galfrey.final"]],
                   # RanRomance's completed Targona romance (targona_trickster: parent_romanced), which never sets committed.
-                  "targona": [["targona.trickster.parent_romanced"]]}
+                  "targona": [["targona.trickster.parent_romanced"]],
+                  # Wenduag: her native romance kept to the end (WenduagRomance_Finished, latched) makes her a partner.
+                  "wenduag": [["wenduag.romance_finished.latched"]]}
 PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
 
 SCENES = []

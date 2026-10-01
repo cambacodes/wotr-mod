@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4379,
-  "unique_targets": 930,
+  "binding_uses": 4468,
+  "unique_targets": 971,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -92,6 +92,10 @@
     },
     "90481a29cc75f424b9891a55c6dcbb53": {
       "path": "Units/Companions/Seelah/Seelah_NPC_Level1.jbp",
+      "type": "BlueprintUnit"
+    },
+    "ae766624c03058440a036de90a7f2009": {
+      "path": "Units/Companions/Wenduag/Wenduag_Companion.jbp",
       "type": "BlueprintUnit"
     },
     "3191b154bbed71b4595a5154ad067e90": {
@@ -1198,6 +1202,10 @@
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0036.jbp",
       "type": "BlueprintCue"
     },
+    "254b2f0f8e8647249a23c4031e00c2d1": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0117.jbp",
+      "type": "BlueprintCue"
+    },
     "3aa48f68198afe14cb6de752ce80cc8f": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Answer_0078.jbp",
       "type": "BlueprintAnswer"
@@ -1220,6 +1228,18 @@
     },
     "e3f0b327f22b2734e9fbce52b150cded": {
       "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0136.jbp",
+      "type": "BlueprintCue"
+    },
+    "d70c17267a6713d42a71144cc4ea8f2e": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0139.jbp",
+      "type": "BlueprintCue"
+    },
+    "90758eb069aa17d4180b1103650772ae": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0140.jbp",
+      "type": "BlueprintCue"
+    },
+    "ad4051d8ec49a54458e018eb8b2a16f4": {
+      "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0141.jbp",
       "type": "BlueprintCue"
     },
     "5cb721033c29ca04dab453de7c13b607": {
@@ -1962,6 +1982,22 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "0f4612672dd4d3e4d84575b23ffdddb3": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/AnswersList_0017.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "a75d1c112c133734f96ae1f25fe17c05": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "f436e2adfafcc6541849a828790416ca": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "fa010a1b9f738964782d313580c1c0d1": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Wenduag/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
     "e41585da330233143b34ef64d7d62d69": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Woljif/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
@@ -2090,6 +2126,58 @@
       "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/Q3_Ch5_PriceOfLoyalty/InterrogationAfterAssasination/Cue_0016.jbp",
       "type": "BlueprintCue"
     },
+    "71ec232384eb5d349aff0b7d60f092ed": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagDefeated/AnswersList_0045.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "1d3ea8f8fe724a841b509dcab0961436": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagDefeated/Cue_0019.jbp",
+      "type": "BlueprintCue"
+    },
+    "034a00e3e0c2ef64788c1d9cb6b815de": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagDefeated/Cue_0038.jbp",
+      "type": "BlueprintCue"
+    },
+    "fbf606cbf933aa04691bc7cfbe23292a": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagDefeated/Cue_0049.jbp",
+      "type": "BlueprintCue"
+    },
+    "9bad7ea452d30254997b153473954cc1": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagTraitorCompanion/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "25a503735f9dd5448b84649add442029": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagTraitorCompanion/AnswersList_0026.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "daeb0e0796521c042bdd6baebbce7ade": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagTraitorCompanion/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
+    "62fb54095bcb8364fa834213c4283256": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagTraitorCompanion/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "d07647bcdf0e2dc47b9534a3ca4cb048": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q1BackToTheRoots/WenduagTraitorCompanion/Cue_0029.jbp",
+      "type": "BlueprintCue"
+    },
+    "c3ca34383f9ee3a4e9908ce68a2e828b": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q2BadBlood/MongrelsDefeated/Cue_0001.jbp",
+      "type": "BlueprintCue"
+    },
+    "0b113d240e700dd4a8dc738452b29613": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q3The Last Resort/WenduagHelloAgain/Cue_0016.jbp",
+      "type": "BlueprintCue"
+    },
+    "d84337e5fbe54c1428ac6cdf3f6603ec": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q3The Last Resort/WenduagHelloAgain/Cue_0033.jbp",
+      "type": "BlueprintCue"
+    },
+    "b14654863485b734aa0fb5ec16d2846a": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Lann/Q3The Last Resort/WenduDubious_Companion/AnswersList_0003.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "5db28e499fd812848b92d6ac7b26e234": {
       "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Cue_0031.jbp",
       "type": "BlueprintCue"
@@ -2124,6 +2212,46 @@
     },
     "651ecf0cde0e1a54dbc93761d1751b43": {
       "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_DeserterJoins/Cue_0019.jbp",
+      "type": "BlueprintCue"
+    },
+    "f91a06c798cb4394ca80c5f4e927f4d9": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q2_CallOfBlood/SavaAndWendu/Cue_0011.jbp",
+      "type": "BlueprintCue"
+    },
+    "b97fe0d7003556b4d806c3db9bc15ecf": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q2_CallOfBlood/SavaAndWendu/Cue_0023.jbp",
+      "type": "BlueprintCue"
+    },
+    "7578c524612750e4588c8af8dae52f44": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/FinalSava/Cue_0025.jbp",
+      "type": "BlueprintCue"
+    },
+    "c309b3bad07c0cd4aa586a5291da1e2c": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/FinalSava/Cue_0035.jbp",
+      "type": "BlueprintCue"
+    },
+    "121cc01414b509c4098239378424c81c": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/SavaIsDeadNow/Cue_0137.jbp",
+      "type": "BlueprintCue"
+    },
+    "e0a0bc80863383a4cb2e7ded6adc4541": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/SavaIsDeadNow/Cue_0138.jbp",
+      "type": "BlueprintCue"
+    },
+    "94f483f833d6c9243b539112dbf707d2": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/SavaIsDeadNow/Cue_0139.jbp",
+      "type": "BlueprintCue"
+    },
+    "bfb97b63903554b4a80cc9a55384c17c": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/WenduTraitor_DrezensStreet/Cue_0021.jbp",
+      "type": "BlueprintCue"
+    },
+    "c724c5e9ac9b0e64e9b24dd77eb00523": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/WenduTraitor_DrezensStreet/Cue_0022.jbp",
+      "type": "BlueprintCue"
+    },
+    "eeea5c1c81a03ba4f83abe1ab0a70df0": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Wenduag/Q3_TraitorsBlood/WenduTraitor_DrezensStreet/Cue_0025.jbp",
       "type": "BlueprintCue"
     },
     "fb47ae9136f1be0409ceb396d2614fe5": {
@@ -2168,6 +2296,10 @@
     },
     "3edf6ac1aefa1e3429ca04c60cb8565c": {
       "path": "World/Dialogs/Companions/CompanionRomances/Arueshalae/Main_C5/BestEnding/Arueshalae_Romance_BestEnding_Dialogue.jbp",
+      "type": "BlueprintDialog"
+    },
+    "57115b131caefc84dbcf8285aa9ba345": {
+      "path": "World/Dialogs/Companions/CompanionRomances/Wenduag/YanielsDeath/WenduRom_YanielsDeath.jbp",
       "type": "BlueprintDialog"
     },
     "0a50c9c878844ed4a69b8d6131304c5e": {
@@ -2428,6 +2560,10 @@
     },
     "b9cbdf8a2f0545f694366b87ae7d7d44": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/KTCs_AfterCoronation.jbp",
+      "type": "BlueprintEtude"
+    },
+    "285ae03094c379045b7cb3106e3f8abf": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/0Prologue_Extra/0Prologue_Outcomes/Venduag_Chosen.jbp",
       "type": "BlueprintEtude"
     },
     "a837c3bc9cbb4e846ab5565915165c91": {
@@ -2882,8 +3018,28 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagKilled.jbp",
       "type": "BlueprintEtude"
     },
+    "1129a007a909f5c4f860cd0909cd10e0": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagNotInParty_Dead.jbp",
+      "type": "BlueprintEtude"
+    },
     "9b1902a20e98aa94094741ef9c91d962": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagNotInParty_KickedOut.jbp",
+      "type": "BlueprintEtude"
+    },
+    "52576309e24d8024fbc08c2ff7016c2f": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagRedeemed.jbp",
+      "type": "BlueprintEtude"
+    },
+    "653968fb2e671d1458cc95f66e66860a": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagTraitor.jbp",
+      "type": "BlueprintEtude"
+    },
+    "33c4c2f66f2461e4993df21566252079": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagRomance/WenduagRomance_Active.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c3a5748e4a44a1649a75e0968c15a0c1": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WenduagCompanion/WenduagRomance/WenduagRomance_Finished.jbp",
       "type": "BlueprintEtude"
     },
     "2df11d659d8f57846a6a3f16492adbb8": {
@@ -3190,12 +3346,20 @@
       "path": "World/Quests/Companions/Grimbor/Q2_QuestionOfReputation/QuestionOfReputation.jbp",
       "type": "BlueprintQuest"
     },
+    "df19bef39c8aa6a4b9dcaf40450b94dc": {
+      "path": "World/Quests/Companions/Lann/Q3TheLastResort/Q3TheLastResort_quest.jbp",
+      "type": "BlueprintQuest"
+    },
     "a1024628f074e4d4f9d2b15956975459": {
       "path": "World/Quests/Companions/Seelah/Q2_TillDeathDoUsPart/SeelahQ2_TillDeathDoUsPart_quest.jbp",
       "type": "BlueprintQuest"
     },
     "5a5a533c9ce630a48b877f9a194840cb": {
       "path": "World/Quests/Companions/Seelah/Q3_WeightOfMySword/WeightOfMySword_SeelahQ3_quest.jbp",
+      "type": "BlueprintQuest"
+    },
+    "5ba83bd1a6b1c884794fbb4858480e7f": {
+      "path": "World/Quests/Companions/Wenduag/Q3_TraitorsBlood/Q3_TraitorsBlood.jbp",
       "type": "BlueprintQuest"
     },
     "1ad9b8fa1fe3cb84b932e8a889fc1897": {

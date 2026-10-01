@@ -730,6 +730,22 @@ partner("yaniel", "yaniel", "yaniel.committed", "yaniel.closed", "The Iron and t
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Yaniel: a husk's iron", "I took a manacle off Yaniel's wrist in the Midnight Fane and I have carried it ever since. She offered to trade me back for it, fair and square, and I said no, and so did she. Nobody is square. I owe her a wall; she owes me a sword, or the other way about. Neither of us means to settle."))
 
+WD = "wenduag.trickster."
+partner("wenduag", "wenduag", WD + "partner", "wenduag.closed", "The Cairn",
+    '''Wenduag did not go to Threshold. Nobody had asked her to, and she would not have gone if they had: a hunter does not walk into a hole somebody else dug. She spent the last night of the war at the bottom of the oldest stair under Drezen's citadel, in the dark, sitting on her own cairn with her knife across her knees, listening. The neathers in the cellars above her say she did not move all night, and did not sleep, and that toward morning she was heard to laugh at nothing, and then to say a name.''',
+    (
+        page_p('''At the rift the Commander put a hand in a coat pocket and closed it round a flat grey stone, and said into the dark, the way the neathers say it in the tunnels when one hunter has gone ahead of another: "Dig." Far away, at the bottom of a stair in Drezen, a woman sitting on a heap of stones lifted her head.''', requires=(called("wenduag"),)),
+        page_p('''The world buried the Commander, with an empty coffin and a great deal of singing. Wenduag listened to it from the cellar stair and said the rhymes were even worse than the ones they had sung for her. Then she went down to the catacombs and packed the head end of a niche with loose stones, very carefully, and waited, because she knew how these things were done.''', requires=(ON_RECORD,)),
+        page_p('''When the flask was opened in Drezen she was already in the room, though nobody had seen her come in, and she put her face into the Commander's neck and breathed in, long and deep, the way a hunter checks that the meat is still good. It was. She said so.''', requires=(H2,)),
+        page_p('''The native romance had run its own course, in its own way, through Savamelekh's lair and past it, and nothing the Commander had done at a cairn had any part in it. She had never been buried. She did not need a stone to know which way was hers.''', requires=("wenduag.romance_finished.latched",), forbids=("wenduag.committed",)),
+        page_p('''Lann, who had never once gone down the cellar stair, came down it at dawn and found her sitting on the cairn, and said nothing, and sat down on the bottom step. They waited together until the news came. Neither of them ever told the Commander about it.''', requires=(WD + "lann.paid",)),
+    ),
+    deal=[[WD + "cairn_built"], [WD + "abyss_cairn"], [WD + "street_cairn"]],
+    call=call('''[Close your hand on the stone in your pocket] "Wenduag. Dig."''',
+        '''{n}You have carried it all through the war: a flat grey stone from the top of a cairn, with a line scratched across it by a knife. At the rift, in the fire and the screaming, you close your hand on it until the edges bite, and say the word the neathers say in the tunnels when one hunter has gone into the dark ahead of another. It goes out over the Wound and is swallowed. You do not know whether anyone hears it. You say it anyway.{/n}''',
+        (PLAIN_CHOICE, (), (), ())),
+    ledger=("Wenduag: a cairn, and a lie", "I built a cairn for a woman who was still breathing, the way her people bury their hunters, and put her own knife back in her hand, and let everyone who loved her or hated her believe she was dead. She dug. She owes me nothing for it and says so. I owe Lann the truth, or I have paid it; either way the stone is in my pocket."))
+
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
 FORBID_ACTIVE = ("nocticula.trickster.defeated.epilogue.favour",)
 
