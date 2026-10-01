@@ -62,5 +62,25 @@ internal static class EntryEffectTests
         Invalid("unknown entry alignment", s => s.EntryAlignment = new AlignmentChoice { Direction = "Up", Value = 1 });
         Invalid("zero entry alignment", s => s.EntryAlignment = new AlignmentChoice { Direction = "Chaotic", Value = 0 });
         Invalid("entry effects on a letter", s => { s.Remote = true; s.AnswerLists = Array.Empty<string>(); s.Relationship = "nurah"; s.TricksterDevice = true; });
+        // PP3: an inline beat Nurah owns, on explicit lists of her own dialog (NativeReturnCue or ReturnToList), needs no hub;
+        // the same scene without an inline return, or owned by someone else, is still refused.
+        Scene Beat() => new Scene
+        {
+            Id = "nurah.early.hands", Title = "Linen", Owner = "Nurah", Relationship = "nurah", MinChapter = 2, MaxChapter = 2, Entry = "x",
+            AnswerLists = new[] { "f392d579b9aac6947b65a2473775ffc9" }, NativeReturnCue = "9b8d54436ef3a9a4597223caacb31e71",
+            Nodes = new List<Node> { new Node { Id = "start", Speaker = "Nurah", Text = "x", Choices = new List<Choice> { new Choice { Set = new[] { "nurah.early.hands.bled" } } } } }
+        };
+        bool Accepted(Action<Scene> mutate)
+        {
+            var withBeat = Fixture();
+            var beat = Beat();
+            mutate(beat);
+            withBeat.Scenes.Add(beat);
+            try { Rules.Validate(withBeat); return true; } catch (InvalidOperationException) { return false; }
+        }
+        check(Accepted(_ => { }), "Nurah's inline beat on her own dialog was refused (NativeReturnCue).");
+        check(Accepted(s => { s.NativeReturnCue = null; s.ReturnToList = true; }), "Nurah's inline beat on her own dialog was refused (ReturnToList).");
+        check(!Accepted(s => s.NativeReturnCue = null), "A non-inline physical Nurah scene on a native list was accepted.");
+        check(!Accepted(s => s.Owner = "Irabeth"), "An inline Nurah scene voiced by somebody else was accepted.");
     }
 }

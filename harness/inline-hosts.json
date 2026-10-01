@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1067,
-  "resolved": 1067,
-  "inlineOnlyScenes": 276,
-  "inlineOnlyResolved": 276,
-  "answerListScenesWithoutContact": 640,
-  "answerListScenesWithoutContactResolved": 640,
-  "lists": 116,
-  "listsWithReachableHost": 115
+  "entryTargetScenes": 1072,
+  "resolved": 1072,
+  "inlineOnlyScenes": 281,
+  "inlineOnlyResolved": 281,
+  "answerListScenesWithoutContact": 645,
+  "answerListScenesWithoutContactResolved": 645,
+  "lists": 121,
+  "listsWithReachableHost": 120
  },
  "scenes": {
   "a_crossing": {
@@ -1177,6 +1177,25 @@
     "list": "5ff8a80442182f84e849b4281f98b9ca",
     "dialog": "ea9f80fde3f30f64b9f3bda0601c63d4",
     "dialogName": "DesnaAdepts_Azataisland_dialog",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "aranka.early.duet": {
+   "kind": "return-to-list",
+   "lists": [
+    "2373bef62ea65d741a8f54ba95f9a8b2"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2373bef62ea65d741a8f54ba95f9a8b2": "RRT_entry.aranka.early.duet.2373bef62ea65d741a8f54ba95f9a8b2"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2373bef62ea65d741a8f54ba95f9a8b2",
+    "dialog": "88bfe9bb56e68394a9e10a1fdc401a2e",
+    "dialogName": "DesnaAdept2_Bard_dialog",
     "cue": "Cue_0001",
     "clicks": 0
    }
@@ -13067,6 +13086,44 @@
     "clicks": 0
    }
   },
+  "jannah.early.bout": {
+   "kind": "return-to-list",
+   "lists": [
+    "9995876fa83c0f049a84df4ca349f4af"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "9995876fa83c0f049a84df4ca349f4af": "RRT_entry.jannah.early.bout.9995876fa83c0f049a84df4ca349f4af"
+   },
+   "resolved": true,
+   "host": {
+    "list": "9995876fa83c0f049a84df4ca349f4af",
+    "dialog": "94fb3e98765b19d49b5dbe2152dedcb1",
+    "dialogName": "KnightCamp_SeelahQ1_dialog",
+    "cue": "Cue_0007",
+    "clicks": 4
+   }
+  },
+  "jannah.early.laugh": {
+   "kind": "return-to-list",
+   "lists": [
+    "7d40d23732cd28b4db2079945eadb89e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "7d40d23732cd28b4db2079945eadb89e": "RRT_entry.jannah.early.laugh.7d40d23732cd28b4db2079945eadb89e"
+   },
+   "resolved": true,
+   "host": {
+    "list": "7d40d23732cd28b4db2079945eadb89e",
+    "dialog": "0cfe2725333dad944b2113413520f241",
+    "dialogName": "SeelahMeetsFriends_dialog",
+    "cue": "Cue_0042",
+    "clicks": 3
+   }
+  },
   "jannah.lastcall.call": {
    "kind": "return-to-list",
    "lists": [
@@ -16406,6 +16463,44 @@
     "dialog": "a32d6df24f1acee4982c968f732e87a5",
     "dialogName": "NenioCompanion_dialogue",
     "cue": "Cue_0014",
+    "clicks": 0
+   }
+  },
+  "nurah.early.hands": {
+   "kind": "return-cue",
+   "lists": [
+    "f392d579b9aac6947b65a2473775ffc9"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "f392d579b9aac6947b65a2473775ffc9": "RRT_entry.nurah.early.hands"
+   },
+   "resolved": true,
+   "host": {
+    "list": "f392d579b9aac6947b65a2473775ffc9",
+    "dialog": "fcced7160db207547a656f657b579d72",
+    "dialogName": "Nurah_After_Battle_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "nurah.early.hanging": {
+   "kind": "return-cue",
+   "lists": [
+    "2ce412d70ca0f40468252bec95ab2881"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2ce412d70ca0f40468252bec95ab2881": "RRT_entry.nurah.early.hanging"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2ce412d70ca0f40468252bec95ab2881",
+    "dialog": "fcced7160db207547a656f657b579d72",
+    "dialogName": "Nurah_After_Battle_Dialogue",
+    "cue": "Cue_0002",
     "clicks": 0
    }
   },
@@ -22581,6 +22676,81 @@
     }
    ]
   },
+  "2373bef62ea65d741a8f54ba95f9a8b2": {
+   "list": "2373bef62ea65d741a8f54ba95f9a8b2",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "88bfe9bb56e68394a9e10a1fdc401a2e",
+     "dialogName": "DesnaAdept2_Bard_dialog",
+     "cues": [
+      "719e5da62bf89db42872831eb31f0e1c",
+      "807d6ae7f44642a79c56c4161dd3d935",
+      "26535138da3817843a73e872975f85e7",
+      "ae8ac96be3e33ee4098ea7b85271599f",
+      "053af631839a53d408059cb64574d3a8",
+      "164ef5f812c80a046800a5997c995df1",
+      "ff8b18ff894b5d644a80e7d67a1fbd35",
+      "f4585df04124c67428eb689f9dcf3967",
+      "2c10c9d004184b7bbb22b6dd35f7fbc2",
+      "2e756329fd5fa1c4daa7c654bf53df93",
+      "30ddc8b7781974247a83177680fc89b1",
+      "6b7598a8bd55168408695ca10554c011",
+      "7ab9adcce7324f74e84725f7bcb6ae3b",
+      "b58f507ceefd4ae8a975b978c0f3ee21",
+      "dd66b8ab824c4b71864130c84bc72e15",
+      "cc20dfe8789e457b8dcbb8a0818120da",
+      "d399f9a4fce447d3aaa10312381dff42",
+      "86782ec7cea231a4586970d1bb8fa909",
+      "dddd26b4d7c728c47a51da3413654df2",
+      "c3b57a3ec5ca1cd43bef3b2bd87bfc69",
+      "c02f787d0fb8b2547b455b9fed5cb063"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0002",
+      "Cue_0005",
+      "Cue_0006",
+      "Cue_0007",
+      "Cue_0009",
+      "Cue_0013",
+      "Cue_0014",
+      "Cue_0015",
+      "Cue_0016",
+      "Cue_0017",
+      "Cue_0022",
+      "Cue_0026",
+      "Cue_14",
+      "Cue_15",
+      "Cue_2",
+      "Cue_3",
+      "SequenceExit_0028",
+      "SequenceExit_0031",
+      "SequenceExit_0036",
+      "SequenceExit_0042"
+     ],
+     "speaker": "096fc4a96d675bb45a0396bcaa7aa993",
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "1073edc1be8d476bade6bfcff9b287e2": 1,
+      "1894d651517a553468d2da0195c9122e": 1,
+      "18a663e9622ad4641a3d2909289d1982": 1,
+      "1cfee0985e8030c428f2550fce31d14d": 1,
+      "3c03b4ab371f45dd8e7a5044e1044962": 3,
+      "44db38d17b9d41b396ab1c801929b2d9": 1,
+      "57d610ec2148cbe4e9ea39c2f65316c9": 1,
+      "5f39a71d874ae9440b66314ca16ae8f9": 1,
+      "8616600df197b19448770768f0e411ae": 1,
+      "8909320b7c073a0468620d06679b5618": 3,
+      "953139a78ae142869340f88deb52d362": 1,
+      "c0e901a0ee9449b2a183f33977e8dd5d": 1,
+      "da10a8e01f6c47508c69f65d26567551": 1
+     }
+    }
+   ]
+  },
   "25a503735f9dd5448b84649add442029": {
    "list": "25a503735f9dd5448b84649add442029",
    "listName": "AnswersList_0026",
@@ -22786,6 +22956,42 @@
       "296f63de40bb5b645b322672406fe884": 2,
       "6bcefb6f95acbd5448ef00a863e0ea2f": 1,
       "9c4d4f1004fee9b49abea4687b86a8f4": 4
+     }
+    }
+   ]
+  },
+  "2ce412d70ca0f40468252bec95ab2881": {
+   "list": "2ce412d70ca0f40468252bec95ab2881",
+   "listName": "AnswersList_0003",
+   "hosts": [
+    {
+     "dialog": "fcced7160db207547a656f657b579d72",
+     "dialogName": "Nurah_After_Battle_Dialogue",
+     "cues": [
+      "9c23265c800af1247825ab5e7527f6f2",
+      "e891118e8e9c45947920d85b5372e66d",
+      "3e3e02b20d3e8da46802a0c9814fe6ba",
+      "217204ecd2fdaa74ab397f04a30acc77",
+      "b76c0585530fa944fa2311761982770b",
+      "bbda69efd807c284d96c9d93fa06b76e"
+     ],
+     "cueNames": [
+      "Cue_0002",
+      "Cue_0009",
+      "Cue_0010",
+      "Cue_0016",
+      "SequenceExit_0049",
+      "SequenceExit_0069"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "433cfc33717930a4a87efdff07d4dfc0": 1,
+      "739c6fa064e82fe48963480554a49f27": 2,
+      "9a9621249a1bf2449bbd7c723360bde9": 1,
+      "9f05ff7a6dafa8a41967ff6931723689": 1
      }
     }
    ]
@@ -25577,6 +25783,58 @@
     }
    ]
   },
+  "7d40d23732cd28b4db2079945eadb89e": {
+   "list": "7d40d23732cd28b4db2079945eadb89e",
+   "listName": "AnswersList_0033",
+   "hosts": [
+    {
+     "dialog": "0cfe2725333dad944b2113413520f241",
+     "dialogName": "SeelahMeetsFriends_dialog",
+     "cues": [
+      "f9f4c858e9747c34a898edb8a97fa32f",
+      "02731dab4b55f3b4c9579c368b8feb31",
+      "f2d1348c62f6af341be49baf3b1f0017",
+      "f66ef6e1dc944134aa2aa9614e02e36e",
+      "892ee31d55231ba4abc12746e3693994"
+     ],
+     "cueNames": [
+      "Cue_0042",
+      "Cue_0047",
+      "Cue_0048",
+      "Cue_0049",
+      "Cue_0052"
+     ],
+     "speaker": "588418cb0dfd7cb45b6e6d370ef42bea",
+     "reachable": true,
+     "clicks": 3,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0058",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0006",
+       "take": "Answer_0057"
+      }
+     ],
+     "answerDist": {
+      "09df9f666c7db674887af29e377509ad": 2,
+      "1778975699e9fed4087a23259b8d5cb4": 2,
+      "18d340329d8a66a4c94e6a71c17e7b09": 2,
+      "278f272690ed9cc439caf73bcc87c731": 1,
+      "5cbbaf1023cc72b469ddfff1c12a444a": 4,
+      "7111574bcaa474a4a906e0c7119326cf": 3,
+      "b6590212eee1e4e4a88c1a01c368c993": 2,
+      "d01295db57dadba4a810bd3e4a3bfdfc": 2,
+      "faf7f6274b054f243869f173836f12c4": 3
+     }
+    }
+   ]
+  },
   "7d6ad178bd7a1ef4ca737ab167570c79": {
    "list": "7d6ad178bd7a1ef4ca737ab167570c79",
    "listName": "AnswersList_0003",
@@ -26224,6 +26482,55 @@
       "ba896768013472f478b1cef133551c6c": 2,
       "bff907ac27c4b284a8d5b352eba70519": 2,
       "d293b540fcc854945926bdba02b412ce": 1
+     }
+    }
+   ]
+  },
+  "9995876fa83c0f049a84df4ca349f4af": {
+   "list": "9995876fa83c0f049a84df4ca349f4af",
+   "listName": "AnswersList_0008",
+   "hosts": [
+    {
+     "dialog": "94fb3e98765b19d49b5dbe2152dedcb1",
+     "dialogName": "KnightCamp_SeelahQ1_dialog",
+     "cues": [
+      "15591008438ca43438a350cd309963fc",
+      "2100f41ae724734418dc74b15719543e",
+      "ed2d60fdbc0424c4c8d4fee2268be04d",
+      "bc3c37923abcbcf48ae32eaa71567cf5",
+      "bcd42025d178edb4884ceb2ae713d60a"
+     ],
+     "cueNames": [
+      "Cue_0007",
+      "Cue_0011",
+      "Cue_0014",
+      "SequenceExit_0052",
+      "SequenceExit_0055"
+     ],
+     "speaker": "54be53f0b35bf3c4592a97ae335fe765",
+     "reachable": true,
+     "clicks": 4,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0004",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0005",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0006",
+       "take": "continue"
+      }
+     ],
+     "answerDist": {
+      "40209abcf11d65247be42139626a6a08": 1,
+      "f4f2ee27b85949840a291e597c361200": 1
      }
     }
    ]
@@ -28457,6 +28764,43 @@
       "f37c89100cd65d648943f55ceb7a5416": 1,
       "f6b61c36aef845beaae88508714d1735": 2,
       "fe9cde327d93f4d42a6942a00dd1ebcc": 2
+     }
+    }
+   ]
+  },
+  "f392d579b9aac6947b65a2473775ffc9": {
+   "list": "f392d579b9aac6947b65a2473775ffc9",
+   "listName": "AnswersList_0018",
+   "hosts": [
+    {
+     "dialog": "fcced7160db207547a656f657b579d72",
+     "dialogName": "Nurah_After_Battle_Dialogue",
+     "cues": [
+      "a8f5baca6f8323d489f70e7f7a3475fc",
+      "e8f34357bc2895942aba1ad0596a3cad",
+      "9b8d54436ef3a9a4597223caacb31e71",
+      "efdf889c7f6da224a98593217112b54b",
+      "16624212e835dbc459fbcdb183a79e0c",
+      "4f2c505cf299dd44c94b7752353c9698",
+      "6ff33f65cc9f4c5418a422cdefb84d91"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0020",
+      "Cue_0022",
+      "Cue_0033",
+      "SequenceExit_0040",
+      "SequenceExit_0061",
+      "SequenceExit_0067"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "05a07bf862932e148a1c5edd50b25519": 1,
+      "59dd7ebdee8d2d74c87a6737b71db210": 4,
+      "8fd8f8c5b50384f46bb3b193866f6fbf": 1
      }
     }
    ]

@@ -286,7 +286,7 @@ SCENES.append(scene("nurah.trickster.dead.rumour", "A custom order", "Ramisa", 4
     ramisa("offer", '''"It corrects the spelling on its own price tag, and it has opinions about your prose. Someone taught it to write, and nobody has managed to teach it to stop. Petitioners are currency here, but this one I would sell as a curiosity.
 "Everyone asks what a thing costs. The right question is what it is worth. Gold is dull, but gold will do. Or you could pay me properly."''', *PRICE),
     ramisa("dull", '"Dull. Accepted. My paperwork will find your camp."', c("Continue")),
-    ramisa("classic", '''"A story that hasn't happened yet." {n}The marilith runs her tongue along her lips.{/n} "Futures are the finest stock. They never spoil before delivery. Some would call it cliché. I call it classic. I shall bring the quill myself."''',
+    ramisa("classic", '''"A story that hasn't happened yet." {n}The marilith runs her tongue along her lips.{/n} "Futures are the finest stock. They never spoil before delivery. Some would call it cliche. I call it classic. I shall bring the quill myself."''',
       c("Continue")),
 ], requires=("trickster",), forbids=(CLOSED, RUMOUR, RETURNED), last=4, optional=True, Relationship="nurah",
     Chapters=[4], RequiresAnyGroups=[list(DEATHS)], AnswerLists=[RAMISA], NativeReturnCue=RAMISA_AGAIN,

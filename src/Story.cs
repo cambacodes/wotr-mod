@@ -1252,9 +1252,13 @@ namespace Tirabade
                         + "relationship whose presence has Dialog \"hub\"): " + scene.Id);
                 // E13: a Trickster device may meet Nurah physically on explicit native lists (prison, pardon, Camellia); an E6
                 // reaction to her route is spoken by its reactor on the reactor's own native list, without Nurah present.
+                // PP3: an inline beat she owns (NativeReturnCue or ReturnToList) on explicit lists of her own native dialog, where
+                // the native speaker voices her nodes (the siege of Drezen, Nurah_After_Battle).
                 if (scene.Relationship == "nurah" && !IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     && !IsNurahHubScene(scene) && !IsPresenceHubScene(scene)
-                    && !((scene.TricksterDevice || scene.Reaction) && scene.InteractionHub == null && scene.AnswerLists.Length > 0))
+                    && !((scene.TricksterDevice || scene.Reaction) && scene.InteractionHub == null && scene.AnswerLists.Length > 0)
+                    && !(scene.Owner == "Nurah" && scene.InteractionHub == null && scene.ContactUnit == null && scene.AnswerLists.Length > 0
+                         && (scene.NativeReturnCue != null || scene.ReturnToList)))
                     throw new InvalidOperationException("Physical Nurah scenes require the authored arrival hub: " + scene.Id);
                 if (scene.ManualOnly && !IsRemote(scene))
                     throw new InvalidOperationException("Manual-only delivery requires a remote scene: " + scene.Id);

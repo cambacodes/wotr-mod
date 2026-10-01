@@ -76,6 +76,7 @@ from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
 from storylines import wenduag_trickster, wenduag_cairn
 from storylines import iomedae_trickster, iomedae_banner
+from storylines import pacing_pp3
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -573,6 +574,11 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(iomedae_trickster.SCENES))
     payload["Scenes"].extend(copy.deepcopy(iomedae_banner.SCENES))
     iomedae_trickster.integrate(payload)
+    # Pacing pass PP3 (13-PACING-PASS): Aranka's, Nurah's and Jannah's early beats (path-neutral) and Nurah's Chapter 4
+    # packet (her Trickster prison branch); the consequences are appended to duet, night_out, alive.stories and her book pages.
+    if all(rel in payload["Relationships"] for rel in ("aranka", "nurah", "jannah")):
+        payload["Scenes"].extend(copy.deepcopy(pacing_pp3.SCENES))
+        pacing_pp3.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
