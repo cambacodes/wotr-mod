@@ -164,7 +164,8 @@ internal static class SeelahTricksterTests
               && !pages.Contains("morning_far"), "Trk_Seelah_Commit: the committing branches or the morning are wrong.");
 
         // Trk_Seelah_Refusal: without a romance she offers friendship or the door; her no opens one priced ask.
-        var friends = World(story, 5, "trickster.ever", "seelah_gone", Returned, "seelah.trickster.stay_decided", "seelah.trickster.goes_far");
+        var friends = World(story, 5, "trickster.ever", "seelah_gone", Returned, "seelah.trickster.stay_decided", "seelah.trickster.goes_far",
+            "seelah.trickster.courted");
         var answers = Program.Walk(commit, friends);
         check(Rules.Available(story, commit, friends) && answers.All(r => !r.Has("seelah.committed"))
               && answers.Any(r => r.Has("seelah.trickster.friends")), "Trk_Seelah_Refusal: a romantic commit without a romance.");
@@ -177,10 +178,62 @@ internal static class SeelahTricksterTests
         check(Rules.Available(story, second, loved) && asked.Any(r => r.Has("seelah.committed") && r.Has("seelah.trickster.cost.robbed_back"))
               && asked.Any(r => r.Has("seelah.closed")), "Trk_Seelah_Refusal: the priced second ask is wrong.");
         var death = World(story, 5, "trickster.ever", "seelah_dead", Returned, "seelah.trickster.correspondent",
-            "seelah.trickster.cost.holds_her_death", "seelah.trickster.stay_decided");
+            "seelah.trickster.cost.holds_her_death", "seelah.trickster.stay_decided", "seelah.trickster.courted");
         var noPages = new HashSet<string>();
         Program.Walk(commit, death, (page, _) => noPages.Add(page));
         check(noPages.Contains("no_death") && !noPages.Contains("no"), "Her no does not name the death in the Commander's pocket.");
+
+        // Q10 (Sol INT/HOW): a fresh return has no kiss behind it. Walk the actual presence scenes from the native dismissal
+        // and from the no-unit death, with no authored romance, to a reachable commit; then the same with Fye's anchor failed
+        // and no contact at all, through the visit twins.
+        var courtship = S("seelah.trickster.after.courtship");
+        check(new[] { courtship }.All(s => s.ContactUnit == Npc && s.InteractionHub == "seelah.presence" && s.AnswerLists.Length == 0),
+            "The courtship left the presence hub.");
+        Snapshot? Pick(List<Snapshot> outcomes, string flag) => outcomes.FirstOrDefault(r => r.Has(flag));
+        void FreshReturnReachesCommit(string name, Snapshot returned, Scene stayScene, Scene courtScene, Scene commitScene)
+        {
+            check(!returned.Has("seelah.romance") && Rules.Available(story, stayScene, returned), name + ": no decision after the return.");
+            var decided = Program.Walk(stayScene, returned).First(r => r.Has("seelah.trickster.stay_decided"));
+            var waiting = After(story, decided, 60);
+            check(!Rules.Available(story, commitScene, waiting) && Rules.Available(story, courtScene, waiting),
+                name + ": the commit opens before any courtship, or the courtship never opens.");
+            var courted = Program.Walk(courtScene, waiting);
+            check(courted.All(r => r.Has("seelah.trickster.courted")) && courted.Any(r => r.Has("seelah.trickster.tavern_kissed"))
+                  && courted.Any(r => !r.Has("seelah.trickster.tavern_kissed")), name + ": the courtship lacks the kiss or the friend.");
+            var kissed = After(story, Pick(courted, "seelah.trickster.tavern_kissed")!, 60);
+            check(kissed.Has("seelah.romance") && Rules.Available(story, commitScene, kissed)
+                  && Program.Walk(commitScene, kissed).Any(r => r.Has("seelah.committed")), name + ": no commit after the kiss.");
+            var friendly = After(story, courted.First(r => !r.Has("seelah.trickster.tavern_kissed")), 60);
+            var answers = Program.Walk(commitScene, friendly);
+            check(Rules.Available(story, commitScene, friendly) && answers.All(r => !r.Has("seelah.committed"))
+                  && answers.Any(r => r.Has("seelah.trickster.friends")), name + ": the friend road commits, or is closed.");
+        }
+        var freshHerded = World(story, 5, "trickster", "trickster.ever", "seelah_gone", "seelah.trickster.primed");
+        FreshReturnReachesCommit("Dismissal walk", After(story, Program.Walk(papers, freshHerded)[0], 30), stay, courtship, commit);
+        var freshNobody = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "seelah.diamond_held");
+        FreshReturnReachesCommit("No-unit walk", After(story, Program.Walk(effects, freshNobody).First(r => r.Has(Returned)), 30),
+            stay, courtship, commit);
+
+        var stayVisit = S("seelah.trickster.after.stay_or_go_visit");
+        var courtVisit = S("seelah.trickster.after.courtship_visit");
+        var commitVisit = S("seelah.trickster.dismissed.commit_visit");
+        var secondVisit = S("seelah.trickster.dismissed.second_ask_visit");
+        check(new[] { stayVisit, courtVisit, commitVisit, secondVisit }.All(s => s.Remote && s.ContactUnit == null && s.Kind == "visit"
+              && s.Requires.Contains("seelah.presence.failed")), "The failed-anchor visit twins are not remote visits.");
+        var noContact = World(story, 5, "trickster", "trickster.ever", "seelah_gone", "seelah.trickster.primed", "seelah.presence.failed");
+        noContact.AvailableContacts.Clear();
+        noContact.Hour += 200;
+        Rules.Complete(story, noContact);
+        check(!Any(noContact, papers, stay, courtship, commit, second) && Rules.Available(story, papersLetter, noContact),
+            "Failed anchor: a presence scene opens without a contact, or the papers letter does not.");
+        var mailed = After(story, Program.Walk(papersLetter, noContact).Single(), 30);
+        check(mailed.AvailableContacts.Count == 0, "The failed-anchor walk gained a contact.");
+        FreshReturnReachesCommit("Failed-anchor walk", mailed, stayVisit, courtVisit, commitVisit);
+        var spurned = Program.Walk(commitVisit, After(story, Pick(Program.Walk(courtVisit, After(story,
+            Program.Walk(stayVisit, mailed).First(), 30)), "seelah.trickster.tavern_kissed")!, 60)).Single(r => r.Has("seelah.trickster.declined"));
+        var secondAsked = Program.Walk(secondVisit, After(story, spurned, 100));
+        check(Rules.Available(story, secondVisit, After(story, spurned, 100)) && secondAsked.Any(r => r.Has("seelah.committed"))
+              && secondAsked.Any(r => r.Has("seelah.closed")), "Failed anchor: the second ask is unreachable, or lacks its yes or its no.");
 
         // Trk_Seelah_PathFailed: canon fate stands after the path fails.
         var failedPath = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", "seelah_dead", "revive.seelah.available");

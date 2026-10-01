@@ -18,7 +18,7 @@ def s(id, title, entry, nodes, requires=(), delay=24):
 
 s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of hands."', [
     n("start", "Seelah", '''{n}Seelah has a strip of wood tucked under one arm. Someone has drawn a wavering line along it, then crossed it out and drawn another.{/n}
-"A pair with better judgment than these would be useful. I offered to help repair a washing platform. Then I discovered that I can split wood very impressively and still be absolutely useless at making two pieces the same length."
+"Preferably hands that know which end of a saw to hold. I offered to fix a washing platform. Splitting wood? Easy. Cutting two boards the same length? Apparently that's a whole other profession."
 {n}She turns the strip over.{/n}
 "Mera is teaching me. She's the carpenter. Orsa does the washing. They've both said you can come, provided you don't mind being told where to stand."''',
       c('[Go with her to the washing yard.]', "yard"),
@@ -29,23 +29,23 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
 {n}Seelah draws breath to speak, then looks at Orsa's empty hands.{/n}''',
       c('[Touch Seelah\'s wrist twice, as you agreed.]', "signal", requires=("seelah.check_signal",), flags=("seelah.saw_listened",)),
       c('[Watch the women with her before either of you intervenes.]', "person", requires=("seelah.check_person",), forbids=("seelah.check_signal",), flags=("seelah.saw_listened",)),
-      c('[Give her time to ask what help is actually wanted.]', "need", requires=("seelah.knows_need",), forbids=("seelah.check_signal", "seelah.check_person"), flags=("seelah.saw_listened",)),
+      c('[Wait for Seelah to ask Orsa what happened.]', "need", requires=("seelah.knows_need",), forbids=("seelah.check_signal", "seelah.check_person"), flags=("seelah.saw_listened",)),
       c('[Listen as Seelah steps into the conversation.]', "hasty_start", forbids=("seelah.check_signal", "seelah.check_person", "seelah.knows_need"))),
     n("signal", "Seelah", '''{n}At the second tap she stops and turns toward you. Then she looks at Mera, taking in the open tool roll.{/n}
-"I heard her sound frightened. I hadn't heard what happened."
-{n}She sets down the strip of wood and leaves room for Orsa to answer.{/n}''', c('[Let Mera explain the loan.]', "listened")),
+"Right. Frightened voice, sword out. Except nobody's drawn a sword, and I haven't even asked about the saw."
+{n}She sets down the strip of wood and turns to Orsa.{/n}''', c('[Let Mera explain the loan.]', "listened")),
     n("person", "Seelah", '''{n}Seelah follows your attention from Orsa to the carpenter. Mera has left a space in the tool roll for the missing saw. She keeps touching it as though the tool might appear there.{/n}
 "We should hear what happened before I start making offers," Seelah says. "Mera?"
-{n}Orsa exhales. Seelah waits rather than deciding what that means.{/n}''', c('[Hear the agreement before proposing a solution.]', "listened")),
-    n("need", "Seelah", '''"Orsa, do you want help explaining something?"
+{n}Orsa lets out a breath. Seelah glances from her to the empty slot in Mera's tool roll.{/n}''', c('[Ask Mera about the borrowed saw.]', "listened")),
+    n("need", "Seelah", '''"Orsa, what's happened? Want me to help you tell it?"
 {n}The washer shakes her head, then looks toward the washhouse.{/n}
 {n}"I need to fetch it. I was hoping I wouldn't have to show everyone."{/n}
 "Then we'll wait. Mera, tell me what you agreed."
-{n}Seelah puts the wood down without offering to fetch the saw herself.{/n}''', c('[Wait with her.]', "listened")),
+{n}Seelah puts the wood down and settles on her heels beside the drain.{/n}''', c('[Wait with her.]', "listened")),
     n("listened", "Narrator", '''{n}"I lent it for a shelf," Mera says. "She was to bring it back before I began this platform. It isn't a shared tool. I earn my living with it."{/n}
 {n}Seelah nods, then turns to Orsa. "We won't know what to do until we see it."{/n}
-{n}Orsa looks at Mera. "All right."{/n}''', c('[Give Orsa room to fetch the saw.]', "broken")),
-    n("hasty_start", "Seelah", '''"Then let's hear her," Seelah says. "Nobody gets more honest because you stand over them."
+{n}Orsa looks at Mera. "All right."{/n}''', c('[Wait while Orsa fetches the saw.]', "broken")),
+    n("hasty_start", "Seelah", '''"Oh, let her get a word out," Seelah says. "You'll frighten the truth clean out of her."
 {n}Mera looks down at the gap between herself and Orsa.{/n}
 {n}"I am standing on the other side of a drain. I would like my saw back."{/n}
 {n}Seelah's mouth closes. She glances at you.{/n}''',
@@ -75,40 +75,40 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
     n("repayment", "Narrator", '''{n}Mera puts her remaining tools away. Orsa stands beside her rather than across the drain.{/n}
 {n}"I'll pay to repair it. Not all at once. I don't have it."{/n}
 {n}"I need the saw for work. I can't wait until you have it."{/n}
-"I'll pay the smith," Seelah says. "You can repay me a little at a time. If that is what you want, Orsa."
+"I'll pay the smith," Seelah says. "Orsa, how about you pay me back a few coins at a time?"
 {n}Orsa looks relieved, then wary. "I don't want to spend every washing day wondering when you'll come to collect."{/n}
 {n}Seelah rubs her hands on her trousers.{/n}
-"Fair. We should say what we're agreeing to before I go rushing off feeling generous."
+"Fair enough. Let's count the coins before I start throwing them about."
 {n}Mera places the wrapped saw on her tool roll. "And whether this is a loan at all. I won't pretend nobody has to pay because a paladin arrived."{/n}''',
-      c('"Make it a gift. Orsa owes Mera an honest account and care with borrowed tools, not a debt to us."', "gift", flags=("seelah.saw_gift",)),
-      c('"Ask what Orsa can repay without losing meals or rent. Agree on that amount and no more."', "loan", flags=("seelah.saw_loan",))),
+      c('"Pay for it outright. Orsa, tell Mera the truth next time, and take better care of her tools. Keep your coins."', "gift", flags=("seelah.saw_gift",)),
+      c('"Orsa, how much can you spare after food and rent? Make that the payment."', "loan", flags=("seelah.saw_loan",))),
     n("gift", "Seelah", '''"I can afford the repair. Or a replacement if that is what Mera needs."
 {n}She looks at Orsa.{/n}
-"You can say no. But if you say yes, I won't turn it into a favor you owe me later."
+"A gift, Orsa. No debt, no favors to collect later. Shall I take it to the smith?"
 {n}Orsa untwists her apron. "Yes. Thank you."{/n}
 {n}Mera lifts the tool roll. "Thank her by telling me when you break something. I might have lent you the other blade before I promised it elsewhere."{/n}
-{n}Orsa nods. She looks more ashamed than she did while the two women were arguing. Seelah begins to speak, then leaves the apology to her.{/n}''', c('[Walk to the smith with Mera and Seelah.]', "walk")),
-    n("loan", "Narrator", '''{n}Orsa names a small amount after each week's washing. Seelah asks whether that is the amount she can spare or the amount she thinks a paladin wants to hear.{/n}
+{n}Orsa nods, her eyes fixed on the towel around the saw. Seelah opens her mouth, catches herself, and picks up her strip of wood.{/n}''', c('[Walk to the smith with Mera and Seelah.]', "walk")),
+    n("loan", "Narrator", '''{n}Orsa names a small amount after each week's washing. "And after you've paid for supper?" Seelah asks. Orsa studies her apron.{/n}
 {n}After a pause, Orsa names a smaller one.{/n}
 "That one," Seelah says. "If the work stops, you tell me. No extra charge for needing longer."
 {n}Mera asks what happens if Seelah leaves Drezen.{/n}
-{n}Seelah thinks before answering. "We settle what remains before I go. I won't leave someone else to collect a promise I made."{/n}
-{n}Orsa agrees. She repeats the amount herself, then says she is sorry for hiding the saw. Mera listens without telling her that the concealment did not matter.{/n}''', c('[Walk to the smith with Mera and Seelah.]', "walk")),
+{n}Seelah scratches her chin. "Then Orsa and I settle it before I pack. I'm not handing her debt to some stranger with a big stick."{/n}
+{n}Orsa agrees. She repeats the amount herself, then says she is sorry for hiding the saw. Mera keeps her eyes on Orsa until the washer finishes, then nods.{/n}''', c('[Walk to the smith with Mera and Seelah.]', "walk")),
     n("walk", "Narrator", '''{n}Mera walks ahead to check whether the smith is still working. Seelah hangs back with you for a few steps.{/n}''',
       c('[Ask about the moment when she stopped to listen.]', "practice", requires=("seelah.saw_listened",)),
-      c('[Give her room to speak about the interruption.]', "hasty", forbids=("seelah.saw_listened",))),
-    n("practice", "Seelah", '''"I was ready to tell Mera off. I had a whole picture of what happened, and I hadn't even seen the saw."
+      c('[Ask why she cut Mera off.]', "hasty", forbids=("seelah.saw_listened",))),
+    n("practice", "Seelah", '''"I nearly gave Mera a fine scolding. Very righteous. Very loud. All without seeing the saw."
 {n}She looks toward the smith's door.{/n}
-"This time I waited. It didn't make me feel clever. I stood there wondering whether I was leaving Orsa to struggle. Then she showed us the blade, and we could do something about the actual problem."
+"Keeping my mouth shut was harder than holding that board. Orsa looked miserable, and I wanted to jump in. But then out came the saw. Broken teeth. Bent blade. Finally, something we could fix."
 {n}She gives you a crooked smile.{/n}
-"Apparently remembering is something you do with your mouth shut occasionally. Who knew?"''',
-      c('"Mera got to be a person who needed help too."', "thanks"),
+"Next time I forget, wave a broken saw at me. Apparently that helps."''',
+      c('"Mera needed help too. That saw earns her bread."', "thanks"),
       c('"You said I might have to remind you to let someone answer. I did not need to today."', "remember_frank", requires=("seelah.frank_terms",)),
-      c('"That was the kind of hearing I asked you for. Mera got it too."', "remember_heard", requires=("seelah.hear_terms",)),
+      c('"You heard Mera out. Just as I asked you to hear me."', "remember_heard", requires=("seelah.hear_terms",)),
       c('"I once asked you to take my side before hearing the rest. I am glad you refused."', "remember_demand", requires=("seelah.corrected_demand",))),
     n("remember_frank", "Seelah", '''"Don't sound too impressed. I was biting the inside of my cheek."
 {n}She nudges your arm with hers.{/n}
-"You can still remind me next time. Preferably before I've delivered the entire speech. I get attached to a good ending."
+"Give me a nudge next time. Before the end of the speech, preferably. I hate wasting a good ending."
 {n}Ahead of you, Mera catches the smith's door before it swings shut.{/n}
 "There. Another chance to let her do the talking."''', c('[Catch up with Mera.]', "thanks")),
     n("remember_heard", "Seelah", '''"She had quite a lot to say. I nearly supplied both halves of the argument for her."
@@ -126,22 +126,22 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
 {n}"If you can follow instructions," Mera says.{/n}
 "I've had some practice today."
 {n}Mera smiles and takes the saw inside. Seelah waits while she explains to the smith what she needs for her next job.{/n}''', c('[Stay until they have agreed on the repair.]', flags=("seelah.saw_arranged",))),
-    n("hasty", "Seelah", '''"I heard a frightened voice and decided I knew the rest. I don't like discovering how quickly I can turn somebody into a villain so I can be helpful."
+    n("hasty", "Seelah", '''"Orsa sounded frightened, so I charged in. Poor washer, wicked carpenter, Seelah to the rescue! Gods, what an ass I made of myself."
 {n}She glances toward Mera.{/n}
 "I owe her an apology. I still haven't said that I was unfair to her."''',
-      c('"Tell her plainly. She should not have to guess whether you still think she was cruel."', "plain", requires=("seelah.frank_terms",)),
+      c('"Tell her you were wrong. She heard the accusation. She should hear the apology."', "plain", requires=("seelah.frank_terms",)),
       c('"You asked me to hear your reasons. Mera deserved that too."', "heard", requires=("seelah.hear_terms",)),
-      c('"We both know wanting reassurance can turn into an unfair demand."', "demand", requires=("seelah.corrected_demand",))),
-    n("plain", "Seelah", '''"Yes. You gave me permission to speak plainly to you. That wasn't permission to stop listening to everyone else."
+      c('"I wanted you to take my side without hearing the rest. You just did the same to Mera."', "demand", requires=("seelah.corrected_demand",))),
+    n("plain", "Seelah", '''"Yes. You told me to speak plainly. Seems I heard 'Seelah, talk over everyone.' That's a rotten excuse."
 {n}She catches up with Mera and asks for a moment before they go inside.{/n}''', c('[Wait nearby while Seelah apologizes.]', "apology")),
     n("heard", "Seelah", '''"She did. I don't much enjoy hearing my own promise quoted back at me, but she did."
 {n}She catches up with Mera and asks for a moment before they go inside.{/n}''', c('[Wait nearby while Seelah apologizes.]', "apology")),
-    n("demand", "Seelah", '''"I remember. I was very clear about what you owed me. I should manage to give some of it to someone who isn't trying to court me."
+    n("demand", "Seelah", '''"I remember telling you off for it, too. Now I've gone and done it myself. Mera deserves an apology, courting me or not."
 {n}She catches up with Mera and asks for a moment before they go inside.{/n}''', c('[Wait nearby while Seelah apologizes.]', "apology")),
     n("apology", "Narrator", '''{n}"I spoke as though you were bullying her," Seelah says. "You weren't. I'm sorry."{/n}
 {n}Mera considers her. "If you want to come tomorrow, come. But when I tell you where to put your hands, don't decide I'm insulting you."{/n}
 {n}"That may be the easiest promise I've made today."{/n}
-{n}Mera goes in first. The smith unwraps the blade on her bench and asks questions which Seelah allows its owner to answer.{/n}''', c('[Stay until they have agreed on the repair.]', flags=("seelah.saw_arranged",))),
+{n}Mera goes in first. The smith unwraps the blade on her bench. As the two tradeswomen discuss it, Seelah props her strip of wood against the wall and waits.{/n}''', c('[Stay until they have agreed on the repair.]', flags=("seelah.saw_arranged",))),
 ])
 
 
@@ -160,118 +160,118 @@ s("platform_finished", "One person at a time", '"How did the repair go?"', [
 {n}Orsa raises an eyebrow.{/n}
 "All right. I was thinking about it."
 {n}The washer laughs and beckons a customer toward the repaired crossing. Seelah leaves her to work.{/n}''',
-      c('"How do you feel about giving the money?"', "gift", requires=("seelah.saw_gift",)),
+      c('"Any regrets about paying for the saw?"', "gift", requires=("seelah.saw_gift",)),
       c('"Have you settled how Orsa will repay you?"', "loan", requires=("seelah.saw_loan",))),
-    n("gift", "Seelah", '''"Pleased. And annoyed with myself, because part of me wants her to be so grateful that I'll know I did the right thing."
+    n("gift", "Seelah", '''"The saw cuts. The platform holds. Good use of my coins. So why was I waiting for Orsa to thank me a second time? Oh, don't answer that. I know."
 {n}She watches Orsa disagree with her customer about the basket's weight.{/n}
-"She doesn't have to become somebody easier to help because I spent money. She can take the gift and have a perfectly ordinary argument five minutes later."
+"I bought a saw blade, not a sweet temper. Listen to her! Five minutes after a good deed, and she's already arguing over the bill."
 {n}Seelah grins.{/n}
 "Though if she wins that argument, I may ask her to come shopping with me."''',
       c('"Would you make the same offer again?"', "same"),
-      c('"I think you wanted the gift to finish the whole problem."', "unfinished")),
-    n("loan", "Seelah", '''"Yes. She brought the first payment before I asked. I made certain she still had the work she expected. Then I accepted it."
+      c('"You hoped paying for the blade would settle everything."', "unfinished")),
+    n("loan", "Seelah", '''"Yes. First payment's already in my purse. I asked if the washing had paid as well as she'd hoped. It had, so I took the coins."
 {n}She pats the small purse at her belt.{/n}
-"I nearly handed it straight back. That would have felt generous too. It would also have meant our agreement lasted exactly as long as it took me to want a different feeling about myself."
+"Nearly shoved them straight back at her, too. 'Look how generous I am!' We'd agreed on a loan. She kept her word. I can manage to keep mine without making a spectacle of it."
 {n}She grimaces.{/n}
-"When I leave, I'll forgive whatever is left. I told her that today. She says until then she intends to pay what she promised, and I should let her."''',
-      c('"You can accept her choice without making her prove she deserves help."', "same"),
-      c('"It sounds as though she wants this to be an agreement between equals."', "unfinished")),
-    n("same", "Seelah", '''"I would still help. I would ask more questions before I decided what helping looked like."
+"Whatever's left when I leave Drezen, I'll strike out. Told her so today. She said, 'Until then, take the money and stop fussing.' Fair enough."''',
+      c('"Take the coins she promised. You would have helped her with an empty purse, too."', "same"),
+      c('"She wants to pay her share, not stand there with her cap in her hands."', "unfinished")),
+    n("same", "Seelah", '''"Of course I'd help. But next time I'll ask where the nail is before I swing the hammer."
 {n}Mera calls from the washhouse door. Seelah turns, expecting another board to carry, and receives a small paper packet instead.{/n}
 {n}"For your hand. Put it on before you get the cut filthy again."{/n}
 "Yes, Mera."
 {n}The carpenter looks delighted by the unqualified answer.{/n}''', c('[Walk out with Seelah.]', "outside")),
-    n("unfinished", "Seelah", '''"And I wanted to be the person who made it simple. That's not always a job anyone needs doing."
+    n("unfinished", "Seelah", '''"Yes. One generous sweep of the hand, and everything's fixed! Except Orsa still has washing to do, and Mera still has to teach me how to saw."
 {n}Mera calls from the washhouse door and gives her a little paper packet.{/n}
-{n}"For the cut. You can open it yourself. I thought you might appreciate being asked to do something you already know how to do."{/n}
+{n}"For the cut. I'll leave you to tie it. Unless you want me to carry you across the yard as well?"{/n}
 {n}Seelah laughs. "I had that coming."{/n}''', c('[Walk out with Seelah.]', "outside")),
     n("outside", "Seelah", '''{n}Outside the yard, she opens the packet and wraps the clean strip of cloth around her knuckle. You hold the end while she ties it.{/n}
-"I'd like to go somewhere quiet tomorrow. Somewhere I won't be tempted to announce that I've had a useful afternoon."
+"Tomorrow I'm finding a quiet corner. Before I start boasting about my magnificent bridge over three feet of drain."
 {n}She studies the finished knot.{/n}
-"I want to pray. You can come if you want. I don't have a speech ready about it."''',
+"I want to pray. Come along? I promise the speech will be for Iomedae. Lucky you."''',
       c('"I would like to be there."', "invited", flags=("seelah.prayer_company",)),
-      c('"Take the time you need. Tell me afterward, if you want to."', "later", flags=("seelah.prayer_private",))),
+      c('"Go pray. I\'ll see you afterward. You can tell me how it went then."', "later", flags=("seelah.prayer_private",))),
     n("invited", "Seelah", '''"Then come find me tomorrow. I know a quiet corner."
 {n}She catches your fingers before you let go of the bandage.{/n}
 "Thank you for today. All of it. Even the parts where you were rather inconvenient company."''', c('[Make time to meet her.]', flags=("seelah.platform_kept",))),
     n("later", "Seelah", '''"I will. And afterward I'd like to see you."
 {n}She catches your fingers before you let go of the bandage.{/n}
-"Tomorrow? We can decide what to do when we get there. I've made enough plans for other people today."''', c('[Arrange to see her afterward.]', flags=("seelah.platform_kept",))),
+"Tomorrow? We'll find something to do. I've issued enough marching orders for one day."''', c('[Arrange to see her afterward.]', flags=("seelah.platform_kept",))),
 ], requires=("seelah.saw_arranged",))
 
 
 s("inheritors_corner", "Words she has said before", '"You asked me to find you today."', [
     n("start", "Narrator", '''{n}Seelah is waiting beside a sheltered alcove in Drezen. Someone has set a small image of Iomedae on the stone ledge. There is room for two people to stand without blocking the passage.{/n}''',
       c('[Join her for the prayer you discussed.]', "prayer", requires=("seelah.prayer_company",)),
-      c('[Ask whether this is still a good time to meet.]', "after", requires=("seelah.prayer_private",)),
+      c('[Ask whether she has finished praying.]', "after", requires=("seelah.prayer_private",)),
       c('[Arrange another time.]', abort=True)),
-    n("prayer", "Seelah", '''"You don't have to kneel because I do. Or say anything."
+    n("prayer", "Seelah", '''"I'm going to kneel. Mind that stone if you join me. It's got a vicious corner."
 {n}She kneels, then shifts her weight off a sharp corner of the paving. After a moment she bows her head.{/n}
-"Inheritor. Help me do better than yesterday. And help me notice when yesterday wasn't entirely wasted."
+"Inheritor, help me do better than yesterday. And remember the good I did, even when I'm busy kicking myself for the rest."
 {n}Her lips move without sound. You hear someone pass behind you, then the scrape of a bucket carried away. Seelah remains where she is.{/n}
 {n}When she rises, she rubs her knee, notices you watching, and smiles.{/n}
-"No sacred meaning to that part. It's a very hard floor."''',
+"Ow. Faith's willing. Knees are complaining."''',
       c('"I would like to pray beside you, in my own words."', "own"),
-      c('"I am glad you let me be here. I do not know what I believe about being heard."', "doubt"),
+      c('"I\'m glad I came. Though I don\'t know whether any god would listen to me."', "doubt"),
       c('"May I ask what you were saying quietly?"', "quiet_words")),
     n("own", "Seelah", '''"Of course."
 {n}She steps aside, giving you the place before the image. You say what you came to say. Seelah waits until you turn back to her.{/n}
-"I won't ask you to explain it. I wanted you here, not giving an account of yourself."''', c('[Walk with her out of the passage.]', "outcomes")),
-    n("doubt", "Seelah", '''"Some days I know exactly what I believe and still don't know what to say. I have faith in her. That doesn't mean I understand what has happened, or why I was there to see it."
+"There. You, me, and no sermon. We should do this more often."''', c('[Walk with her out of the passage.]', "outcomes")),
+    n("doubt", "Seelah", '''"I trust her. Some mornings I kneel down and can't get a word out anyway. 'Why did that happen? Why was I there?' Round and round, like a dog after its tail."
 {n}She looks toward the little image.{/n}
-"I don't want you pretending for my sake. You stayed. I noticed."''', c('[Walk with her out of the passage.]', "outcomes")),
-    n("quiet_words", "Seelah", '''"Names. Then I stopped trying to make a sentence out of them."
+"Don't go inventing a prayer to impress me. You came. That was what I wanted."''', c('[Walk with her out of the passage.]', "outcomes")),
+    n("quiet_words", "Seelah", '''"Names. After a while I just kept saying them."
 {n}She rests her bandaged hand against her other palm.{/n}
-"I can tell you that much. I'd like to keep the rest. Not because you're forbidden to hear it. Because I haven't finished saying it, even to myself."''', c('"Then keep it. I am glad you invited me."', "outcomes")),
+"The rest is between me and her for now. I've still got words stuck in my throat. They'll come out when they're ready."''', c('"Then I\'ll leave the rest to her. I\'m glad you brought me."', "outcomes")),
     n("after", "Seelah", '''"Yes. I've finished. Or stopped, anyway."
 {n}She steps out of the alcove, leaving the space free for a woman carrying a covered bowl.{/n}
-"I thanked her for the things I keep forgetting to be grateful for. Then I asked some questions I don't expect to settle today. I'm glad I didn't try to make it shorter so I could arrive looking cheerful."
+"I thanked her. I've been forgetting that part. Then came the questions. Still no answers, but at least I didn't swallow the last half of the prayer and rush out grinning."
 {n}She gives you a small smile.{/n}
 "I am glad you're here too."''', c('[Walk with her.]', "outcomes")),
     n("outcomes", "Seelah", '''{n}You reach a low wall overlooking a narrow garden. Seelah puts her elbows on it and watches a sparrow turn a fallen leaf over with its beak.{/n}
-"I keep thinking about what comes after helping someone. Yesterday we could count the boards. There was a place to stand that hadn't been safe before. I liked knowing what we'd done."''',
+"Boards are easy. Count them, hammer them down, watch Orsa walk across without breaking her neck. There. Something put right. I wish the rest were that simple."''',
       c('[Let her talk about what returning the souls did not repair.]', "bad", requires=("seelah.souls_returned", "seelah.ending_bad")),
       c('[Ask what she is still trying to understand.]', "moderate", requires=("seelah.souls_returned", "seelah.ending_moderate"), forbids=("seelah.ending_bad",)),
       c('[Ask what has stayed with her since the rescue.]', "rescued", requires=("seelah.souls_returned",), forbids=("seelah.ending_bad", "seelah.ending_moderate")),
-      c('[Give her room to speak about unfinished work.]', "unfinished", forbids=("seelah.souls_returned",))),
-    n("bad", "Seelah", '''"I can't do that with the people we lost. Count everyone who came back and arrive at a number that makes it all right."
+      c('[Ask what she still hopes to put right.]', "unfinished", forbids=("seelah.souls_returned",))),
+    n("bad", "Seelah", '''"I can't count the people who came back and call it a victory. Not with the others still gone."
 {n}She presses her palms against the wall.{/n}
-"I know the rescue mattered. I get angry when I think someone is asking me to be happy enough to stop talking about what it couldn't change. Sometimes nobody has asked. I've prepared the argument anyway."
+"I'm glad we brought them back. Of course I am. But if someone tells me to smile and forget the rest, I'll bite their head off. Sometimes I start sharpening my teeth before anyone's said a word."
 {n}She looks at you.{/n}
-"There may be days when I need to go somewhere without you. I don't mean that as a threat. I don't want you waking up one morning and finding a note where an explanation should have been."''', c('"Tell me what you can. I will not demand a date when grief ends."', "friends", flags=("seelah.aftermath_grief",))),
-    n("moderate", "Seelah", '''"Whether I have mistaken getting through something for understanding it. I can tell somebody else to have faith. Then I get halfway through explaining what I mean and hear how easy I've made it sound."
+"Some days I'll want to saddle a horse and ride out alone. When I do, I'll tell you myself. You won't wake up to an empty chair and a scrap of paper."''', c('"Tell me before you ride. I won\'t ask when you\'ll stop missing them."', "friends", flags=("seelah.aftermath_grief",))),
+    n("moderate", "Seelah", '''"How I can come out the other side and still know so little. 'Have faith,' I tell people. Nice and easy from me. Then they ask why, and suddenly I've got a mouth full of turnips."
 {n}She turns so that she can see you properly.{/n}
-"I may need to travel on my own when I can. Listen to people who don't already know what answer they expect from me. I still want you in my life. I haven't worked out how often I can promise to be in the same room."
+"When there's a chance, I might take the road alone for a while. Hear what people say when they haven't already decided what Seelah the paladin ought to tell them. I want you. That hasn't changed. But I can't promise I'll always be waiting at your door."
 {n}She smiles without much amusement.{/n}
-"A magnificent invitation from someone trying to court you."''', c('"An honest one. We should keep talking about what we can promise."', "friends", flags=("seelah.aftermath_questions",))),
-    n("rescued", "Seelah", '''"That I still want to run ahead of everybody and promise the next thing will be better. I thought I'd have learned enough to stop wanting that."
+"Listen to that. 'Come here, I might be elsewhere!' A magnificent bit of courting."''', c('"An honest one. We\'ll talk again when you know where you\'re riding."', "friends", flags=("seelah.aftermath_questions",))),
+    n("rescued", "Seelah", '''"I still want to charge ahead shouting, 'This time it'll be better!' You'd think I'd have bitten my tongue off by now."
 {n}The sparrow flies away. Seelah follows it with her eyes.{/n}
-"I don't want to stop hoping. I want to stop handing people my hope as though they agreed to carry it. What happened to my friends isn't proof that my own life has worked out. I don't get to decide what the rescue ought to mean to everyone else."
+"I'll keep hoping. But I can't drag my friends along by the collar and tell them to cheer up. We got them back. That doesn't wipe out what happened, or make all my mistakes come right. They can tell me themselves what they're glad about."
 {n}She glances at you.{/n}
-"And neither do I get to do that with us."''', c('[Ask what she wants to remember about her friends.]', "friends", flags=("seelah.aftermath_hope",))),
-    n("unfinished", "Seelah", '''"There are things I haven't put right. Some may still be possible. Some may already be beyond anything I can do. I don't want a conversation about our future to sound as though we decided none of them mattered."
+"Same goes for you. If I try dragging you into my glorious future by the collar, kick me."''', c('[Ask what she wants to remember about her friends.]', "friends", flags=("seelah.aftermath_hope",))),
+    n("unfinished", "Seelah", '''"I've still got things to put right. Some I can reach. Others... I don't know. But I won't cross them off just because you and I have started making plans."
 {n}She turns away from the wall.{/n}
-"I am not asking you to refuse every good thing until the world is repaired. I couldn't keep that promise myself. I am asking that we leave room for the work and for the questions."
+"We can have supper. We can kiss. Gods, if I waited until I'd mended the whole world, I'd never get either. But when there's work to do, I'll go. And I'm still going to ask why, even when I don't like the answers."
 {n}She gives a small, tired laugh.{/n}
-"I didn't bring a list. You can stop looking as though I'm going to assign you something."''', c('"We can want a future without pretending everything is finished."', "plans", flags=("seelah.aftermath_unfinished",))),
+"Oh, stop looking at me like that. I haven't brought you a shovel."''', c('"Then we\'ll make our plans and keep doing the work."', "plans", flags=("seelah.aftermath_unfinished",))),
     n("friends", "Seelah", '''"Elan is part of it."''',
       c('[Listen to her memory of him.]', "elan", requires=("seelah.elan_dead",)),
-      c('[Let her explain without deciding for him.]', "elan_living", forbids=("seelah.elan_dead",))),
-    n("elan", "Seelah", '''"I remember how certain he could sound. Sometimes I wanted to shake him. Sometimes I wanted to borrow it for an hour."
+      c('[Ask about Elan.]', "elan_living", forbids=("seelah.elan_dead",))),
+    n("elan", "Seelah", '''"I remember him sounding so sure of himself. Made me want to shake him. Then five minutes later I'd be wishing I could believe as firmly as he did."
 {n}She looks down at her hands.{/n}
-"Now I can imagine him agreeing with any argument I want. He isn't here to tell me I've got him wrong. I don't want to start doing that. I miss a person. Not an answer I can put in his mouth."
+"Now I catch myself thinking, 'Elan would agree with me.' Convenient, isn't it? He can't argue back. I miss him. I won't make him my pet sermon."
 {n}After a moment she exhales.{/n}
-"I can tell a story about him without making it a lesson. I'm going to try."''', c('"I would like to hear it when you want to tell it."', "plans")),
-    n("elan_living", "Seelah", '''"He gets to answer for himself. That sounds obvious until I catch myself explaining what the rescue must have meant to him."
+"Next time I'll just tell you about him. Try to get through it without preaching."''', c('"I would like to hear it when you want to tell it."', "plans")),
+    n("elan_living", "Seelah", '''"I keep starting to tell people how glad he must be. Then I remember he has a perfectly good mouth of his own."
 {n}She brushes grit from her sleeve.{/n}
-"I would like to ask him sometime. I won't invite him to one of our evenings and then spring the question on him. If he wants to talk to me, we can arrange our own conversation."
+"I'll ask him myself one of these days. Just him and me. I won't lure him to supper with us and start cross-examining him over the bread."
 {n}Her smile returns.{/n}
-"That leaves you with me. I hope you had allowed for that."''', c('"I came to see you."', "plans")),
-    n("plans", "Seelah", '''"Then there's something I'd like to do with you. No lesson attached."
+"So you're stuck with me tonight. Hope you brought enough patience."''', c('"I came to see you."', "plans")),
+    n("plans", "Seelah", '''"Speaking of tonight, I've got a better idea than standing here talking your ears off."
 {n}She points toward the rooftops beyond the garden.{/n}
 "Mera knows a place above her workshop where you can see the evening sky. She offered it when I said I kept going out to look up and finding a wall in the way. She says the stairs are sound and I am not to demonstrate how much weight the railing will hold."
 {n}Seelah waits for your answer with an eagerness she makes little effort to hide.{/n}
-"Tomorrow? I'll bring food that doesn't require anyone to be grateful for it."''', c('[Arrange the evening on the roof.]', flags=("seelah.faith_spoken",))),
+"Tomorrow? I'll bring supper. You bring an appetite."''', c('[Arrange the evening on the roof.]', flags=("seelah.faith_spoken",))),
 ], requires=("seelah.platform_kept",))
 
 
@@ -280,7 +280,7 @@ s("roof_evening", "Enough sky for an evening", '"You promised me a view."', [
 {n}"The view is included," Mera calls. "The furniture is not to be tested to destruction."{/n}
 "There goes my plan for the evening," Seelah calls back.
 {n}Mera's laugh follows you up. Seelah spreads the cloth on a low crate between the seats, sets out the food, and puts the basket at her feet.{/n}
-"Cold chicken, flatbread, and something the woman selling it described as a pickle before I had an opportunity to disagree."''',
+"Cold chicken, flatbread, and something the woman swore was a pickle. She had my coins before I could argue."''',
       c('[Try the pickle.]', "pickle"),
       c('[Ask Seelah to try it first.]', "first"),
       c('[Explain that you need to return another evening.]', abort=True)),
@@ -300,11 +300,11 @@ s("roof_evening", "Enough sky for an evening", '"You promised me a view."', [
 {n}You watch until the color changes again. Below you, Mera shutters the workshop window. Seelah raises her hand in thanks when the carpenter looks up.{/n}''',
       c('"This is the kind of home evening I hoped for."', "home", requires=("seelah.day_home",)),
       c('"We did not have to travel far to find a view worth stopping for."', "road", requires=("seelah.day_road",)),
-      c('"I did not know what I wanted when you first asked. I am glad we tried this."', "try", requires=("seelah.day_uncertain",)),
+      c('"I couldn\'t give you an answer before. But this? Yes."', "try", requires=("seelah.day_uncertain",)),
       c('"I am glad you chose this."', "try", forbids=("seelah.day_home", "seelah.day_road", "seelah.day_uncertain"))),
-    n("home", "Seelah", '''"I remembered. I didn't know if it would still be what you wanted."
+    n("home", "Seelah", '''"You said supper at home. I remembered. Wasn't sure a borrowed roof would count."
 {n}She tears the last flatbread in two and offers you half.{/n}
-"I like going out. I like coming back too. Perhaps I could become a woman who knows both where she left her things and what she means to do tomorrow."
+"I like the road. But coming home to you, finding my boots where I left them, knowing what we're doing tomorrow... I could get used to that."
 {n}She laughs at your expression.{/n}
 "One of them, then. I won't demand miracles."''', c('[Stay and watch the light change.]', "future")),
     n("road", "Seelah", '''"A journey with stairs. We should count it."
@@ -312,22 +312,22 @@ s("roof_evening", "Enough sky for an evening", '"You promised me a view."', [
 "I would still like the longer ones. But if I wait for the perfect road before I invite you anywhere, I could miss rather a lot of evenings."
 {n}She points at the remaining pickle.{/n}
 "We even encountered a danger unknown to either of us. A proper expedition."''', c('[Stay and watch the light change.]', "future")),
-    n("try", "Seelah", '''"So am I. I kept trying to think of something impressive, then remembered that I wanted to spend the time with you, not explain afterward why it ought to have been enjoyable."
+    n("try", "Seelah", '''"So am I. I nearly wore a hole in my boots looking for something grand enough. Then I thought, 'Seelah, you idiot. You want supper with this person. Go buy supper.'"
 {n}She tears the last flatbread in two and offers you half.{/n}
-"I am prepared to call the sky a success. The pickle requires more thought."''', c('[Stay and watch the light change.]', "future")),
+"Good sky. Good company. Jury's still out on the pickle."''', c('[Stay and watch the light change.]', "future")),
     n("future", "Seelah", '''{n}As the light fades, Seelah moves the empty basket beneath her seat. She looks at you instead of the sky.{/n}
-"I meant what I said about needing room for the questions. I also want evenings like this. I don't want to make you guess which one I mean whenever I ask to see you."
+"I've still got questions. And there's still work waiting downstairs. But right now I'm looking at your mouth, and I'd rather you were sitting here."
 {n}She rests her hand on the seat beside her, palm up.{/n}
-"Tonight, I mean that I want you close. Tomorrow, we can talk about the promises we know how to keep."''',
-      c('[Take her hand and ask to kiss her.]', "kiss"),
+"Come closer. Tomorrow we'll talk about the promises. Tonight I want you against me."''',
+      c('[Take her hand. "Kiss me."]', "kiss"),
       c('[Take her hand and sit quietly together.]', "quiet"),
-      c('"I care for other people too. I want to make these evenings possible without treating them carelessly."', "others")),
-    n("others", "Seelah", '''"Then tell them when you're here, if they've been waiting for you. And tell me when you need to go."
+      c('"There are others I love. I want evenings with you, too, and I won\'t leave any of you waiting on a broken promise."', "others")),
+    n("others", "Seelah", '''"Then don't leave them watching the door. Tell them you're here. And if you've got to go, tell me before I pour another cup."
 {n}She leaves her hand where it is.{/n}
-"I don't need to be the only person who makes you happy. I do want to know that you wanted this evening, and that nobody is sitting somewhere believing you forgot them."
+"I won't demand every evening you have. But come because you want me, and keep your word to them, too. I don't fancy kissing you while someone else waits over a cold supper."
 {n}She smiles.{/n}
-"If we have half an hour, I'd rather enjoy half an hour than spend it proving somebody owes me the whole night."''',
-      c('[Take her hand and ask to kiss her.]', "kiss", flags=("seelah.aftermath_otherpartners",)),
+"Half an hour? I'll take it. Seems a waste to spend all thirty minutes arguing for the rest of the night."''',
+      c('[Take her hand. "Kiss me."]', "kiss", flags=("seelah.aftermath_otherpartners",)),
       c('[Take her hand and stay close for the time you have.]', "quiet", flags=("seelah.aftermath_otherpartners",))),
     n("kiss", "Seelah", '''"Yes."
 {n}She meets you halfway. Her free hand rests against your shoulder, then slides to the back of your neck as she kisses you again. You can feel her smiling before she draws back.{/n}
@@ -339,14 +339,14 @@ s("roof_evening", "Enough sky for an evening", '"You promised me a view."', [
     n("leave", "Narrator", '''{n}You pack the cups and the remaining food into the basket. Seelah folds the cloth over them and checks that neither of you has left anything behind.{/n}
 {n}At the stairs she offers you her free hand, then laughs when you point out how little space there is to walk side by side. She goes first and waits at the bottom.{/n}
 {n}She takes your hand again before you leave the workshop together.{/n}''',
-      c('[Talk about what this means for the life you have already promised each other.]', "promised", requires=("seelah.committed",)),
-      c('[Agree to talk about the future with what you now know.]', "consider", forbids=("seelah.committed",))),
-    n("promised", "Seelah", '''"I still mean it. I wanted you to hear the difficult part before either of us starts mistaking a promise for knowing exactly how our lives will go."
+      c('[Ask how her journeys will fit the life you have promised each other.]', "promised", requires=("seelah.committed",)),
+      c('[Arrange to talk again about your future.]', "consider", forbids=("seelah.committed",))),
+    n("promised", "Seelah", '''"I still mean it. There'll be journeys, and questions, and days when I come back in a foul temper. You ought to hear that from me before we start picking curtains."
 {n}She gives your hand a small squeeze.{/n}
-"And now you've heard it. You can remind me of the evening on the roof when I forget to ask for another one."''', c('[Keep making room for what you have learned about one another.]', flags=("seelah.aftermath_ready",))),
-    n("consider", "Seelah", '''"Tomorrow, then. The harder conversation. I still want it."
+"And if I get so busy chasing answers that I forget supper with you, remind me of this roof. Preferably without serving that pickle again."''', c('[Keep your promise, with her journeys and doubts still ahead.]', flags=("seelah.aftermath_ready",))),
+    n("consider", "Seelah", '''"Tomorrow, then. We'll tackle the hard part. I'm not ducking it."
 {n}She gives your hand a small squeeze.{/n}
-"For tonight, I'm glad we came."''', c('[Keep the evening and make time for the conversation.]', flags=("seelah.aftermath_ready",))),
+"For tonight, I'm glad we came."''', c('[Walk home with her and keep tomorrow free for the talk.]', flags=("seelah.aftermath_ready",))),
 ], requires=("seelah.faith_spoken",))
 
 
