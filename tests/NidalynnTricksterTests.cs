@@ -274,7 +274,7 @@ internal static class NidalynnTricksterTests
         check(reactions.Length == 4 && reactions.All(r => r.Nodes.Count == 1)
               && reactions.Select(r => r.Owner).OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Ulbrig", "Ulbrig", "Woljif" }),
             "The reactions are not Greybor, Ulbrig and Woljif.");
-        check(pages.Length == 8 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 9 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "form_chosen" })
               && story.Derived["nidalynn.harem.eligible"].Length == 2 && story.Derived.ContainsKey("nidalynn.harem.voice.fed_at_the_fire"),
@@ -361,6 +361,10 @@ internal static class NidalynnTricksterTests
                 "Trk_Nidalynn_Sacrifice: a living page plays for a Commander who did not come back: " + id);
         check(Avail(S(P + "epilogue.unreturned"), World(story, 6, "trickster.ever", Committed, "sacrifice")),
             "Trk_Nidalynn_Sacrifice: no page for the Commander who did not come back.");
+
+        check(Avail(S(P + "epilogue.wolves"), World(story, 6, "trickster.ever", Committed, P + "goat.lie_kept", Closed))
+              && S("nidalynn.lastcall.page").Forbids.Contains(P + "goat.lie_kept"),
+            "Trk_Nidalynn_Goat: leaving over the wolves story has no page, or the Last Call coda still plays.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))

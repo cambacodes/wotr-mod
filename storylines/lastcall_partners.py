@@ -558,8 +558,9 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
         page_p('''When the flask was opened in Drezen she was standing at the back with a loaf under her arm, because somebody would be hungry after, and she was right.''', requires=(H2,)),
         page_p('''The young dragon flew up the north ridge that summer, alone, to the grey tower, and came back three days later and would not say where she had been. The grey one's bill still stood. Nidalynn said it was only manners to leave it standing, and that she would be there when it was called.''', requires=("devarra.trickster.cost.egg_withheld",)),
         # Q9 (Sol INT): the late history (her own face shown, the war over before the salt) plays this coda too.
-        page_p('''The salt was still unbroken when the war ended. She brought it up the citadel stair the spring after, with a loaf under her arm, and put both on the Commander's table, and sat down to wait. She was not in any hurry.''', requires=(NI + "late_committed",), forbids=("nidalynn.committed",)),
-    ), declined=NI + "refused",
+        page_p('''The salt was still unbroken when the war ended. She brought it up the citadel stair the spring after, with a loaf under her arm, and put both on the Commander's table, and sat down to wait. She was not in any hurry.''', requires=(NI + "late_committed",), forbids=("nidalynn.committed", NI + "bread_kept")),
+        page_p('''The heel of the loaf was still on the kiln shelf when the war ended, wrapped in its cloth, where the Commander had asked her to keep it. She kept it.''', requires=(NI + "bread_kept",), forbids=("nidalynn.committed",)),
+    ), declined=NI + "refused", page_forbids=(NI + "goat.lie_kept",),   # Q9 r3: she left over the wolves story
     page_commit_groups=[["nidalynn.committed"], [NI + "late_committed"]],   # Q9 (Sol INT): the late yes reaches her coda
     deal=[[NI + "cost.salt_eaten"]],
     call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',

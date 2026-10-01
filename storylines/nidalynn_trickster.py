@@ -409,6 +409,10 @@ epilogue("heel", '''{n}The heel of the loaf stayed on the shelf in the kiln, wra
 {n}People who knew them both said that the Commander came down to the kiln more evenings than not, and that the two of them sat by the fire and talked until late, and that it was the most patient courtship anyone in Drezen had ever seen, and that it was not clear to anyone, including the two of them, which of them was doing the courting.{/n}''',
          requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
 
+epilogue("wolves", '''{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the white-haired woman from the jeweller's steps went north with a young red-black dragon, and did not come back, and did not write.{/n}
+{n}On the kiln step she left a heel of bread and a pinch of salt, untouched, where the Commander would be sure to pass.{/n}''',
+         requires=(GOAT_STANDS,))
+
 epilogue("unreturned", '''{n}When word came down from Threshold that the Commander would not be coming back, Nidalynn banked the kiln under the east wall and did not let it cool, that winter or any winter after. The young dragon was fed. The refugees were fed. She said the Commander's name at the fire the way she said the others, and every year on that night she set out bread and salt for one more than came, and ate her own share slowly, and was grateful, because she had said she would be.{/n}''',
          requires=("sacrifice",), forbids=("trickster.commander_back", CLOSED),
          RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, BREAD_KEPT]], paragraphs=EPILOGUE_PARAGRAPHS)
