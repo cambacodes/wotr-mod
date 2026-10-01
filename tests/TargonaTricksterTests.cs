@@ -221,6 +221,62 @@ internal static class TargonaTricksterTests
         Program.Walk(freeFurlough, toldFree, (page, _) => labPages.Add(page));
         check(labPages.Contains("greet_lab") && !labPages.Contains("greet"), "She forgets the barrier.");
 
+        // PP7 (Chapter 4): Latverk's freed captives sent to the camp (Latverk_Final Cue_0039); the memory, then her answer at
+        // the cots in Chapter 5.
+        var birds = S(P + "free.little_birds");
+        var names = S(P + "free.the_names");
+        string[] nameVariants = { P + "free.names_asked", P + "free.names_tended", P + "free.names_unasked" };
+        string[] nameAnswers = { "list", "tended", "unasked" };
+        check(birds.Remote && birds.Kind == "memory" && birds.Chapters.SequenceEqual(new[] { 4 }) && birds.MinChapter == 4 && birds.MaxChapter == 4
+              && birds.Relationship == "targona" && new[] { "trickster.ever", P + "met", "targona.aasimar_sent.latched" }.All(birds.Requires.Contains)
+              && story.Latches["targona.aasimar_sent.latched"].SequenceEqual(new[] { "targona.aasimar_sent" })
+              && birds.Forbids.Contains(Closed) && story.SeenCues["targona.aasimar_sent"].SequenceEqual(new[] { "a3ca33a66c286b24493176d00a9a7527" })
+              && !names.Remote && names.Chapters.SequenceEqual(new[] { 5 }) && names.ContactUnit == Unit && names.InteractionHub == "targona.presence"
+              && names.Relationship == "targona" && names.Forbids.Contains(Closed),
+            "Heaven's blood lost its shape (a Chapter 4 memory after the captives are sent; her answer in person in Chapter 5).");
+        // In the Abyss, not Drezen: a remote memory must carry no area restriction (Story.Available applies it).
+        var abyssMet = Program.Copy(met); abyssMet.Chapter = 4; abyssMet.AvailableContacts.Clear(); abyssMet.Area = "abyss-camp";
+        abyssMet = Later(story, abyssMet, 24);
+        check(!Rules.Available(story, birds, abyssMet), "Heaven's blood opens before the captives are sent.");
+        var seen = Program.Copy(abyssMet); seen.Flags.Add("targona.aasimar_sent"); Rules.Complete(story, seen);
+        seen.Times["targona.aasimar_sent.latched"] = seen.Hour;   // Main.RecordLatches stamps the hour it first sees the cue
+        check(seen.Has("targona.aasimar_sent.latched") && !Rules.Available(story, birds, seen)
+              && !Rules.Available(story, birds, Later(story, seen, birds.DelayHours - 1)),
+            "Heaven's blood opens before its hours have passed since the captives left (the older ward meeting must not count).");
+        var sentOff = Later(story, seen, birds.DelayHours);
+        check(Rules.Available(story, birds, sentOff), "Heaven's blood does not follow the captives.");
+        var neverMet = Program.Copy(sentOff); neverMet.Flags.Remove(P + "met");
+        check(!Rules.Available(story, birds, neverMet), "Heaven's blood opens for an angel the Commander has not met in the ward.");
+        foreach (var chapter in new[] { 3, 5 })
+        {
+            var wrong = Program.Copy(sentOff); wrong.Chapter = chapter;
+            check(!Rules.Available(story, birds, wrong), "Heaven's blood leaks into chapter " + chapter);
+        }
+        var birdPages = new HashSet<string>();
+        var namePages = new HashSet<string>();
+        var memories = Program.Walk(birds, sentOff, (page, _) => birdPages.Add(page)).Where(r => r.Has(birds.Id)).ToList();
+        check(memories.Count == 3 && memories.All(r => r.Has(P + "free.names_kept") && nameVariants.Count(r.Has) == 1 && !Rules.Available(story, birds, r)),
+            "Heaven's blood loses a variant, overlaps, or replays.");
+        foreach (var r in memories)
+        {
+            var home = Program.Copy(r); home.Chapter = 5; home.Area = Drezen; home.AvailableContacts.Add(Unit);
+            home = Later(story, home, names.DelayHours + 1);
+            check(Rules.Available(story, names, home), "Her answer does not follow the Abyss memory.");
+            var gone = Program.Copy(home); gone.AvailableContacts.Clear();
+            check(!Rules.Available(story, names, gone), "Her answer opens without her at the cots.");
+            var heard = Program.Walk(names, home, (page, _) =>
+            {
+                namePages.Add(page);
+                int i = Array.IndexOf(nameAnswers, page);
+                if (i >= 0) check(r.Has(nameVariants[i]), "She answers a memory the Commander does not have: " + page);
+            }).Where(o => o.Has(names.Id)).ToList();
+            check(heard.Count == 1 && heard.All(o => o.Has(P + "free.names_heard") && !Rules.Available(story, names, o)), "Her answer does not complete once.");
+        }
+        var unremembered = Later(story, met, 48);
+        check(!Rules.Available(story, names, unremembered), "Her answer opens with no Abyss memory.");
+        check(birdPages.SetEquals(birds.Nodes.Select(n => n.Id)) && namePages.SetEquals(names.Nodes.Select(n => n.Id)),
+            "Unreached page of Heaven's blood or of her answer.");
+
         // Sol quality pass (INT 58): the freed state reaches her with no contact supplied by the fixture. The wand night
         // alone must make her copy wanted and spawnable; only then does the contact exist, and the hub walks to the commit.
         foreach (var trick in new[] { true, false })

@@ -45,7 +45,9 @@ s("the_things_still_here", "The things left to carry", '"Gesmerha? May I come cl
 "I have not resumed the old afternoons. We have brought things here to sort before deciding who carries them away. I want the work finished without letting every bundle become a reason to argue about the whole history of Wintersun. So far, I have been ambitious."
 "Have Dera and the others returned?"
 "Some. Runa died while you were gone. Dera has been teaching one of her songs with the pause Runa always insisted was too short. I have not corrected it. I can already hear exactly what Runa would say, without making Dera listen to me say it for her."
-{n}Gesmerha lets the silence rest before asking whether you are comfortably seated.{/n}''', c('[Tell her you are, and listen to the work she came to finish.]', "work")),
+{n}Gesmerha lets the silence rest before asking whether you are comfortably seated.{/n}''', c('[Tell her you are, and listen to the work she came to finish.]', "work"),
+      # PP7: the Chapter 4 song (gesmerha_campaign.the_road_home), appended; its page is the last of this scene.
+      c('[Tell her you carried one of those songs into the Abyss.]', "abyss_song", requires=("gesmerha.abyss_song",))),
     n("work", "Narrator", '''{n}Someone enters the hall carrying a load that knocks against the doorframe. Gesmerha turns toward the sound.{/n}
 "Set it down, Halvek. If that is the long box, it will not fit beside me."
 "It is the long box."
@@ -94,6 +96,11 @@ s("the_things_still_here", "The things left to carry", '"Gesmerha? May I come cl
 "We have company," she says. "Company with an invitation to listen, not a new owner for the box."
 {n}Sella's answer comes from the doorway.{/n}
 "Good. I have brought enough relatives to disagree with already."''', c('[Let Gesmerha make the introductions.]', flags=("gesmerha.late_arrived",))),
+    n("abyss_song", "Gesmerha", '''"Which one?"
+"The travelers' song. Vesk's, for his brother."
+{n}Her head comes up.{/n} "That one went further than his brother did, then." {n}You tell her what you did with it down there. She listens without touching the bundle, as she listens to a block before the first cut.{/n}
+"Dera should hear that from you. Not today. Today she is teaching Runa's pause too short, and I am letting her." {n}She finds the edge of the chest and settles her hand on it.{/n} "Tell her when she has finished being cross with me. She will want it for the song."''',
+      c('[Tell her you will, and listen to the work she came to finish.]', "work")),
 ], "gesmerha.campaign_kept", delay=0)
 
 s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella before we decide what the box contains."', [
