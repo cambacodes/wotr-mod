@@ -463,6 +463,17 @@ internal static class JannahTricksterTests
         })
             check(!Avail(coda, World(story, 6, new[] { "trickster.ever", "lastcall.active" }.Concat(flags).ToArray())),
                 "Her Last Call coda plays although she is " + why + ".");
+        // Played through: each muster refusal, then its chalk-circle yes, then Chapter 6 with Last Call (declined stays set).
+        foreach (var (cause, index) in new[] { (P + "held_the_lie", 0), (P + "threw_the_bout", 1), (P + "shamed_her", 2), (P + "refused_the_yield", 3) })
+        {
+            var before = cause == P + "held_the_lie" ? Later(story, no, 72) : World(story, 5, "trickster.ever", Returned, P + "declined", cause, C + "walls");
+            foreach (var reconciled in Through(chalk, before, "open", index))
+            {
+                var end = World(story, 6, reconciled.Flags.Where(f => f != "chapter_later").Concat(new[] { "lastcall.active" }).ToArray());
+                check(end.Has(Committed) && end.Has(P + "declined") && !end.Has(Closed) && !end.Has(P + "gone") && Avail(coda, end),
+                    "Her Last Call coda is lost after the chalk-circle yes that answered " + cause + ".");
+            }
+        }
         var codaParas = coda.Nodes[0].Paragraphs;
         check(codaParas.Where(q => q.Text.Contains("north wall", StringComparison.Ordinal)).All(q => q.Requires.Contains(C + "walls.saluted"))
               && codaParas.Count(q => q.Requires.Contains("jannah.lastcall.called")) == 2

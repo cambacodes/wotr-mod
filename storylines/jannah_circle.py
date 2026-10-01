@@ -383,7 +383,7 @@ meet(BLADE, "Forty-one", '"That isn\'t a practice sword."', [
     jan("stores", '''"Not mine. Mine's somewhere in the Molten Scar, or on some demon's belt. The turnkey found me this one in the gaol stores, under a sack of turnips, which is where they put the weapons of people they don't expect to see again."
 "It'll do. It'll have to."''',
         c("Continue", "master")),
-    jan("master", '''"My master gave it to me the day I left Mivon. He'd never said a kind word to me in seven years. He put it in my hands at the river stairs and said, 'Don't come back with it dirty.'" {n}Her mouth quirks.{/n}
+    jan("master", '''"My own blade, the one I lost, my master gave me the day I left Mivon. He'd never said a kind word to me in seven years. He put it in my hands at the river stairs and said, 'Don't come back with it dirty.'" {n}Her mouth quirks.{/n}
 "I think that was the kind word. Well. I didn't come back with it at all."''',
         c("Continue", "scabbard")),
     jan("scabbard", '''{n}She turns the scabbard over and shows you the inside of its throat. The leather there is cut with tiny, neat notches, every one of them fresh.{/n}
@@ -405,7 +405,7 @@ meet(BLADE, "Forty-one", '"That isn\'t a practice sword."', [
 "Here." {n}She puts the blade in your hands, hilt first, and folds your fingers round the bare wood where the old leather used to be.{/n} "Feel that? I've wound it to my hand. A week, and it already sits where my old one did."''',
         c("[Hold it.]", "held", flags=(BLADE_HELD,))),
     jan("another", '''"One more, maybe." {n}She runs her thumb along the notches, one by one, like a rosary.{/n}
-"There's a bout I want. I haven't decided when. When I do, you'll know, because everybody will know." {n}She puts the blade in your hands, hilt first.{/n} "Here. Feel the balance. It's the last thing my master ever got right."''',
+"There's a bout I want. I haven't decided when. When I do, you'll know, because everybody will know." {n}She puts the blade in your hands, hilt first.{/n} "Here. Feel the balance. It's a turnip-sack sword, but it's honest."''',
         c("[Hold it.]", "held", flags=(BLADE_HELD,))),
     jan("held", '''{n}It is lighter than it looks, and it wants to move. Jannah watches you hold it the way she'd watch you hold something alive.{/n}
 "Good." {n}She takes it back and starts winding the new leather on, tight and neat.{/n} "You didn't grip it. I'll make a fencer of you yet."''',
@@ -596,8 +596,16 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
     jan("yes", '''"Good." {n}She sets the cup down.{/n}
 "No, I mean it. Good. At least you'd know my name when you did it, and you told me first. I can fight somebody who tells me first. It's the smiling ones I can't stand."''',
         c("[Drink the gaol's terrible beer with her.]")),
-    jan("not_you", '''"Liar." {n}But she is almost smiling.{/n}
-"You'd spend me in a heartbeat if the crusade needed it, and then you'd go over it every night for the rest of your life. That's what I'll settle for, Commander. Being gone over."''',
+    jan("not_you", '''"Not me?" {n}She sets the cup down, hard.{/n}
+"Tell me why. And don't say it's because I'm sitting here, or I'll pour the rest of this over your head."''',
+        c("[Drink the gaol's terrible beer with her.]", forbids=("chapter_later",)),   # retired by gating (Q6 follow-up, VOI); index kept
+        c('"Because I want you standing next to me when it\'s over. That\'s all. It isn\'t clever."', "not_you_want"),
+        c('"Because you\'re the best blade I have. Spending you on anything less than the end would be waste."', "not_you_waste")),
+    jan("not_you_want", '''{n}She looks at you for a long breath, ears going pink, and then picks the cup back up so she has something to do with her hands.{/n}
+"That's a stupid reason." {n}She drinks.{/n} "Say it again some time when I'm not sitting in a gaol. I want to hear if it sounds the same."''',
+        c("[Drink the gaol's terrible beer with her.]")),
+    jan("not_you_waste", '''"Waste." {n}She laughs, too loud, the old tavern laugh.{/n} "Well. That's honest, at least. You'd spend me at the end, then. At the big one."
+{n}She clinks her cup against yours.{/n} "Good. That's where I'd want to be spent. Just make sure I'm in the front rank when you do it, where I can see it coming."''',
         c("[Drink the gaol's terrible beer with her.]")),
     jan("kenabres", '''"Everybody has Kenabres." {n}She says it gently, for her.{/n}
 "I was there too. I was carrying beer through the streets while people burned, laughing too loud, and thinking I was a hero because we'd found a cart." {n}She refills your cup.{/n} "Tell me one of them. One name. I'll drink to them."''',
