@@ -66683,7 +66683,8 @@
         "ascended",
         "vellexia.closed",
         "vellexia.trickster.kept_as_mirror",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -71529,7 +71530,8 @@
         "legend",
         "dragon",
         "ascended",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -80912,7 +80914,8 @@
         "soana.closed",
         "inhuman",
         "ascended",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -81214,7 +81217,8 @@
         "soana.late_campaign_kept",
         "inhuman",
         "ascended",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -107275,7 +107279,8 @@
         "ember_gone",
         "ember.absent",
         "ascended",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -113938,7 +113943,8 @@
         "minachiv.closed",
         "minachiv.complete",
         "minagho_chivarro.trickster.committed",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -114326,7 +114332,8 @@
         "ascended",
         "minachiv.closed",
         "minagho_chivarro.trickster.committed",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -119993,7 +120000,8 @@
         "ascended",
         "noct.join.harbor_variant_ready",
         "nocticula.trickster.said_yes",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -139126,7 +139134,8 @@
         "noct.ending_sacrifice",
         "noct.join.history_refused",
         "noct.join.history_prior",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -139179,7 +139188,8 @@
         "noct.ending_sacrifice",
         "noct.join.history_new",
         "noct.join.history_prior",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -139232,7 +139242,8 @@
         "noct.ending_sacrifice",
         "noct.join.history_new",
         "noct.join.history_refused",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": true,
@@ -200870,7 +200881,8 @@
       "Forbids": [
         "trickster.cheated_death",
         "hepzamirah.closed",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -210010,8 +210022,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.parent_romanced",
-          "targona.trickster.late_committed"
+          "targona.trickster.late_committed",
+          "targona.trickster.parent_romanced"
         ]
       ]
     },
@@ -217010,7 +217022,8 @@
       "Forbids": [
         "trickster.cheated_death",
         "camellia.closed",
-        "lastcall.active"
+        "lastcall.active",
+        "trickster.commander_back"
       ],
       "DelayHours": 0,
       "Optional": false,
@@ -424992,6 +425005,99 @@
         {
           "Id": "declined",
           "Speaker": "Narrator",
+          "Text": "{n}She walked off your roof, the last time you argued. She has not forgotten why, and she does not pretend to.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "d_boast",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.cost.boasted"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "d_mock",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.cost.madness_mocked"
+              ],
+              "Forbids": [
+                "iomedae.trickster.cost.boasted"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "d_lie",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.trickster.cost.boasted",
+                "iomedae.trickster.cost.madness_mocked"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "d_mock",
+          "Speaker": "Narrator",
+          "Text": "\"You called Drezen's madness a holiday, on my roof, under my banner,\" {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} \"Answer for it now. Not to me. To them.\"",
+          "Choices": [
+            {
+              "Text": "[Own it] \"I did it. It won, and it cost them their minds, and some never came back. I owe them more than a joke. I'm going in anyway, and it isn't a sure thing.\"",
+              "Next": "conceded",
+              "Set": [
+                "iomedae.trickster.answered.madness"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Make a joke of it] \"They're still on holiday.\"",
+              "Next": "turned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "d_lie",
+          "Speaker": "Narrator",
+          "Text": "\"You lied to me about my own house,\" {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} \"Tell me the truth now, at the edge, where it costs you something.\"",
+          "Choices": [
+            {
+              "Text": "[The truth] \"I stole it. The canon never said I could. I'm going in anyway, and it isn't a sure thing.\"",
+              "Next": "conceded",
+              "Set": [
+                "iomedae.trickster.answered.theft"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Hold to the lie] \"Borrowed. I told you.\"",
+              "Next": "turned",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "d_boast",
+          "Speaker": "Narrator",
           "Text": "\"You told me it was a sure thing,\" {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} \"Is it?\"",
           "Choices": [
             {
@@ -425431,7 +425537,7 @@
         {
           "Id": "fire",
           "Speaker": "Narrator",
-          "Text": "{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}\n{n}You had forgotten the banner. You are still holding it. You cannot feel your hand.{/n}",
+          "Text": "{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Almost everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}\n{n}You had forgotten the banner. You are still holding it. You cannot feel your hand.{/n}",
           "Choices": [
             {
               "Text": "[Say her name.]",
@@ -425847,7 +425953,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "The Lady of Graves had nothing to collect: nobody had died who came back over. Iomedae said Pharasma would notice anyway, and went to tell her so herself, and never said what was said.",
+              "Text": "Somewhere between the seam and the stones there was a grey place where a voice asked you questions, and what was left of your power gave you the right to answer them. When you woke you could not remember a word of it. Iomedae could. She said only that the Lady of Graves had heard you out, and had nothing to collect, because nobody had died who came back over, and that she had gone to tell her so herself.",
               "Requires": [],
               "Forbids": [],
               "AnyGroups": []
@@ -427134,7 +427240,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She never named the miracle. Some years she almost did. The stranger learned to recognize the look, and to wait for it, and to say nothing, because a miracle chosen freely is repaid the same way or not at all.",
+              "Text": "She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him that his company had held the ford. It had not held. She could not tell him so; she does not lie. \"You can,\" she said. The stranger went, and sat with him through a night, and told him that the ford had held and that the Inheritor herself had said so, and he died believing it. She did not thank the stranger. She said the debt was paid, and that a lie told in her name was hers to carry, and she carried it. It was the only time the stranger ever saw her ashamed, and the only time she let anyone see it.",
               "Requires": [
                 "iomedae.appointment_kept"
               ],
@@ -427177,7 +427283,7 @@
               "AnyGroups": []
             },
             {
-              "Text": "She never raised Drezen's madness again. It had been answered, and she did not reopen a question once it was answered.",
+              "Text": "She did not let Drezen's madness rest because it had been answered. Every winter she sent the stranger to the houses where the ones who never came back from it were kept, to sit with them, carry water, and be cursed at by people who did not know whom they were cursing, and the stranger went. She never called it a penance. She called it the rest of the answer.",
               "Requires": [
                 "iomedae.trickster.answered.madness"
               ],
@@ -427358,10 +427464,23 @@
               "Text": "Her banner stood at the edge when you went in. She had said she bowed to sacrifices and not to bargains, and you had offered her a bargain. She did not answer it. She bowed her head at the edge, as she had said she would, and meant it, and the banner burned where it stood.",
               "Requires": [
                 "iomedae.trickster.banner_carried",
-                "iomedae.trickster.declined"
+                "iomedae.trickster.declined",
+                "iomedae.trickster.cost.boasted"
               ],
               "Forbids": [
                 "iomedae.committed"
+              ],
+              "AnyGroups": []
+            },
+            {
+              "Text": "Her banner stood at the edge when you went in. She had walked off your roof over a thing you had said there, and you had not unsaid it. She did not answer the banner. She bowed her head at the edge, and meant it, and the banner burned where it stood.",
+              "Requires": [
+                "iomedae.trickster.banner_carried",
+                "iomedae.trickster.declined"
+              ],
+              "Forbids": [
+                "iomedae.committed",
+                "iomedae.trickster.cost.boasted"
               ],
               "AnyGroups": []
             },
@@ -427478,9 +427597,20 @@
             {
               "Text": "She had said she did not bow to bargains, and you had offered her one on the platform. She did not come. Once, on a road in Mendev, a knight in plain steel passed you going the other way, and nodded, and did not stop.",
               "Requires": [
-                "iomedae.trickster.declined"
+                "iomedae.trickster.declined",
+                "iomedae.trickster.cost.boasted"
               ],
               "Forbids": [],
+              "AnyGroups": []
+            },
+            {
+              "Text": "She had walked off your roof over a thing you had said there, and you had not unsaid it. She did not come. Once, on a road in Mendev, a knight in plain steel passed you going the other way, and nodded, and did not stop.",
+              "Requires": [
+                "iomedae.trickster.declined"
+              ],
+              "Forbids": [
+                "iomedae.trickster.cost.boasted"
+              ],
               "AnyGroups": []
             },
             {
@@ -428268,7 +428398,7 @@
         {
           "Id": "night",
           "Speaker": "Narrator",
-          "Text": "{n}From the foot of the pole the banner looks as the Queen saw it: your colours, not hers, snapping over a city you took back with your blood on your hands and some of it on the cloth. A pilgrim would see a relic defaced. A priest would see an omen. The Queen saw a loss, and was too well-bred to say so twice.{/n}\n{n}You have been inside it. You have been the thing her hand closed on in the rain, and the staff she drove into a rock at the edge of a gorge, and the pole she set in the snow between herself and a dead knight. The colours are yours. Nothing underneath them has changed its mind.{/n}",
+          "Text": "{n}From the foot of the pole the banner looks as the Queen saw it: your colours, not hers, snapping over a city you took back with your blood on your hands and some of it on the cloth. A pilgrim would see a relic defaced. A priest would see an omen. The Queen saw a loss, and was too well-bred to say so twice.{/n}\n{n}You have been inside it. You have been the thing her hand closed on in the rain, and felt her lean her head against you in the dark, when she thought nobody could hear. The colours are yours. Nothing underneath them has changed its mind.{/n}",
           "Choices": [
             {
               "Text": "[Tell the banner] \"She's wrong. You're still hers.\"",
@@ -429118,9 +429248,50 @@
                 "iomedae.herald_saved"
               ],
               "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "fought",
+              "Set": [],
+              "Requires": [
+                "iomedae.herald_fought"
+              ],
+              "Forbids": [
+                "iomedae.herald_saved",
+                "iomedae.herald_fell"
+              ],
+              "Abort": false
             }
           ],
           "Portrait": ""
+        },
+        {
+          "Id": "fought",
+          "Speaker": "Iomedae",
+          "Text": "\"You fought him.\"\n{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} \"In Baphomet's prison, at the end, what was left of him wanted the fight more than it wanted saving, and he told you so, and you gave it to him. I heard him ask. I will not pretend I would have answered him the same way.\"\n{n}A silence, long for a goddess.{/n} \"I do not blame you. I blame myself. I sent a proud angel after a mortal I did not understand, and let him believe what he wished to believe about you, because it served.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "stopped",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.trickster.first_spoken"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "known",
+              "Set": [],
+              "Requires": [
+                "iomedae.trickster.first_spoken"
+              ],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Iomedae"
         },
         {
           "Id": "saved",
@@ -429316,7 +429487,8 @@
       "RequiresAnyGroups": [
         [
           "iomedae.herald_saved",
-          "iomedae.herald_fell"
+          "iomedae.herald_fell",
+          "iomedae.herald_fought"
         ]
       ],
       "Sender": "Iomedae"
@@ -429594,7 +429766,7 @@
       "Title": "No answer",
       "Owner": "Iomedae",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -429616,7 +429788,7 @@
         {
           "Id": "sums",
           "Speaker": "Narrator",
-          "Text": "{n}You go over it the way you go over a battle you lost: coldly, from the beginning. You had the argument. You had it by the throat. And then she asked you whether it was a wager, and you told her it was a sure thing, because it was the answer a Trickster gives, and because some part of you wanted to watch a goddess be told she was predictable.{/n}\n{n}She was not predictable. She got up and left.{/n}",
+          "Text": "{n}You go over it the way you go over a battle you lost: coldly, from the beginning. You had the argument. You had it by the throat. And then you gave her the one answer she had told you, in so many words, that she would not take.{/n}\n{n}She did not argue with it. She got up and left.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -429698,14 +429870,13 @@
         "iomedae.closed",
         "iomedae.committed"
       ],
-      "DelayHours": 48,
+      "DelayHours": 24,
       "Optional": true,
       "Relationship": "iomedae",
       "Remote": true,
       "Kind": "memory",
       "Chapters": [
-        5,
-        6
+        5
       ],
       "Sender": "Iomedae"
     },
@@ -429714,7 +429885,7 @@
       "Title": "Not in any report",
       "Owner": "Iomedae",
       "MinChapter": 5,
-      "MaxChapter": 6,
+      "MaxChapter": 5,
       "Entry": "",
       "Nodes": [
         {
@@ -430003,147 +430174,7 @@
       "Remote": true,
       "Kind": "sending",
       "Chapters": [
-        5,
-        6
-      ],
-      "Sender": "Iomedae"
-    },
-    {
-      "Id": "iomedae.trickster.orders",
-      "Title": "Orders for the dead",
-      "Owner": "Iomedae",
-      "MinChapter": 6,
-      "MaxChapter": 6,
-      "Entry": "",
-      "Nodes": [
-        {
-          "Id": "start",
-          "Speaker": "Narrator",
-          "Text": "{n}You conceded, on the platform, that the world would keep its grave. Tonight, in the last camp before Threshold, you find out what that costs in ink.{/n}\n{n}A Commander going into the Wound leaves orders: who commands after, what is to be done with the army, who is to be told. Every Commander in the history of the crusades who has written such orders has hoped, while writing them, that they would be burned unread. You are writing them knowing that they will be read, and obeyed, and that you will have to stand somewhere at the back of a crowd and watch them obeyed, and say nothing.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "write",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "write",
-          "Speaker": "Narrator",
-          "Text": "{n}You write the ordinary things first. The dispositions of the army. The debts the crusade owes to merchants who were paid in promises. The names of soldiers who deserve better than they have had. None of it is hard. You have always been good at telling other people what to do.{/n}\n{n}Then you come to the part where a Commander writes something for the people who will mourn, and your pen stops.{/n}",
-          "Choices": [
-            {
-              "Text": "[Write something true that does not give you away.]",
-              "Next": "true",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Write something grand, for the chaplains to read out.]",
-              "Next": "grand",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            },
-            {
-              "Text": "[Write nothing. Leave the space blank.]",
-              "Next": "blank",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "true",
-          "Speaker": "Narrator",
-          "Text": "{n}It takes you most of the night. In the end it is three lines: that you did this on purpose, that nobody made you, and that the people you are leaving are to stop saluting the empty chair and get on with their lives, which you paid rather a lot for. It does not say goodbye. You cannot quite bring yourself to lie in a letter she might read over someone's shoulder.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "seal",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "grand",
-          "Speaker": "Narrator",
-          "Text": "{n}It comes easily, which should worry you. Fire and sacrifice and the dawn of a new age; the Wound closed by the one it was opened to destroy. The chaplains will weep. It is magnificent, and it is a lie by emphasis, and you think of a goddess who will not lie even by emphasis, and you tear it up, and write three lines instead, and they are true.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "seal",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "blank",
-          "Speaker": "Narrator",
-          "Text": "{n}You leave it blank. Let them fill it with whatever they need; people always do. The dead are not consulted about their eulogies, and you are, in every way that the world will ever be told about, going to be dead.{/n}",
-          "Choices": [
-            {
-              "Text": "Continue",
-              "Next": "seal",
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        },
-        {
-          "Id": "seal",
-          "Speaker": "Narrator",
-          "Text": "{n}You seal it and give it to the quartermaster, to be opened if the Commander does not come back from the Wound. He takes it the way a man takes something hot. You do not tell him that he will open it either way.{/n}",
-          "Choices": [
-            {
-              "Text": "[Go to bed. The banner is beside the cot, rolled on its staff.]",
-              "Next": null,
-              "Set": [],
-              "Requires": [],
-              "Forbids": [],
-              "Abort": false
-            }
-          ],
-          "Portrait": ""
-        }
-      ],
-      "Requires": [
-        "trickster.ever",
-        "iomedae.committed",
-        "iomedae.trickster.cost.buried_to_the_world"
-      ],
-      "Forbids": [
-        "iomedae.closed"
-      ],
-      "DelayHours": 0,
-      "Optional": true,
-      "Relationship": "iomedae",
-      "Remote": true,
-      "Kind": "memory",
-      "Chapters": [
-        6
+        5
       ],
       "Sender": "Iomedae"
     },
@@ -430156,9 +430187,162 @@
       "Entry": "",
       "Nodes": [
         {
+          "Id": "open",
+          "Speaker": "Narrator",
+          "Text": "{n}The last camp before Threshold.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "o_start",
+              "Set": [],
+              "Requires": [
+                "iomedae.committed",
+                "iomedae.trickster.cost.buried_to_the_world"
+              ],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "iomedae.committed"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "Continue",
+              "Next": "start",
+              "Set": [],
+              "Requires": [
+                "iomedae.committed"
+              ],
+              "Forbids": [
+                "iomedae.trickster.cost.buried_to_the_world"
+              ],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "o_start",
+          "Speaker": "Narrator",
+          "Text": "{n}You conceded, on the platform, that the world would keep its grave. Tonight, in the last camp before Threshold, you find out what that costs in ink.{/n}\n{n}A Commander going into the Wound leaves orders: who commands after, what is to be done with the army, who is to be told. Every Commander in the history of the crusades who has written such orders has hoped, while writing them, that they would be burned unread. You are writing them knowing that they will be read, and obeyed, and that you will have to stand somewhere at the back of a crowd and watch them obeyed, and say nothing.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "o_write",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "o_write",
+          "Speaker": "Narrator",
+          "Text": "{n}You write the ordinary things first. The dispositions of the army. The debts the crusade owes to merchants who were paid in promises. The names of soldiers who deserve better than they have had. None of it is hard. You have always been good at telling other people what to do.{/n}\n{n}Then you come to the part where a Commander writes something for the people who will mourn, and your pen stops.{/n}",
+          "Choices": [
+            {
+              "Text": "[Write something true that does not give you away.]",
+              "Next": "o_true",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write something grand, for the chaplains to read out.]",
+              "Next": "o_grand",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Write nothing. Leave the space blank.]",
+              "Next": "o_blank",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "o_true",
+          "Speaker": "Narrator",
+          "Text": "{n}It takes you most of the night. In the end it is three lines: that you did this on purpose, that nobody made you, and that the people you are leaving are to stop saluting the empty chair and get on with their lives, which you paid rather a lot for. It does not say goodbye. You cannot quite bring yourself to lie in a letter she might read over someone's shoulder.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "o_seal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "o_grand",
+          "Speaker": "Narrator",
+          "Text": "{n}It comes easily, which should worry you. Fire and sacrifice and the dawn of a new age; the Wound closed by the one it was opened to destroy. The chaplains will weep. It is magnificent, and it is a lie by emphasis, and you think of a goddess who will not lie even by emphasis, and you tear it up, and write three lines instead, and they are true.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "o_seal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "o_blank",
+          "Speaker": "Narrator",
+          "Text": "{n}You leave it blank. Let them fill it with whatever they need; people always do. The dead are not consulted about their eulogies, and you are, in every way that the world will ever be told about, going to be dead.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "o_seal",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "o_seal",
+          "Speaker": "Narrator",
+          "Text": "{n}You seal it and give it to the quartermaster, to be opened if the Commander does not come back from the Wound. He takes it the way a man takes something hot. You do not tell him that he will open it either way.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go to bed. The banner is beside the cot, rolled on its staff.]",
+              "Next": "start",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
           "Id": "start",
           "Speaker": "Narrator",
-          "Text": "{n}You took the banner down from the citadel yourself on the morning the crusade marched, and Drezen watched you do it and did not ask why. Now it is the last camp before Threshold, and the whole crusade is awake pretending to sleep. You lie down with the banner rolled on its staff beside you, close enough to touch, and shut your eyes, and she is there before the dark has finished arriving.{/n}",
+          "Text": "{n}You took the banner down from the citadel yourself on the morning the crusade marched, and Drezen watched you do it and did not ask why. Now the whole crusade is awake pretending to sleep. You lie down with the banner rolled on its staff beside you, close enough to touch, and shut your eyes, and she is there before the dark has finished arriving.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -430215,7 +430399,7 @@
         {
           "Id": "declined",
           "Speaker": "Iomedae",
-          "Text": "\"You told me it was a sure thing.\" {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}\n\"Tomorrow you will stand at the Wound with my banner, and I will be there. Show me. That is all I have left to say to you, and it is not little.\"",
+          "Text": "\"You know why I left your roof.\" {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}\n\"Tomorrow you will stand at the Wound with my banner, and I will be there. Show me. That is all I have left to say to you, and it is not little.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -431037,7 +431221,7 @@
         {
           "Id": "looked",
           "Speaker": "conversant",
-          "Text": "\"It looked like a general asking about a fortress.\" {n}He says it without heat.{/n} \"Where the gate is weak. What the garrison eats. Which wall was built in a hurry. You asked what she lost when Aroden died. You asked how she did the thing at the gorge. I have heard siege engineers ask gentler questions.\"\n\"So I will ask you plainly, Champion, because in this place I have nothing left but plainness. Do you love my lady, or do you mean to use her?\"",
+          "Text": "\"It looked like a general asking about a fortress.\" {n}He says it without heat.{/n} \"Where the gate is weak. Which wall was built in a hurry. You asked me how she did the thing at the gorge the way a sapper asks how a wall was raised, and you already knew more of it than the Acts do. I have heard siege engineers ask gentler questions.\"\n\"So I will ask you plainly, Champion, because in this place I have nothing left but plainness. Do you love my lady, or do you mean to use her?\"",
           "Choices": [
             {
               "Text": "[Tell the truth] \"Both. I don't know yet which is winning.\"",
@@ -431149,7 +431333,7 @@
       ],
       "Requires": [
         "trickster",
-        "iomedae.trickster.bridge_told"
+        "iomedae.trickster.dreams_told"
       ],
       "Forbids": [
         "iomedae.closed"
@@ -437809,7 +437993,9 @@
     ],
     "iomedae.herald_fell": [
       "c241ccdbc3b178b41b7161d17ff43b17",
-      "1f0fef1fbc666cc42a213671d6b171a2",
+      "1f0fef1fbc666cc42a213671d6b171a2"
+    ],
+    "iomedae.herald_fought": [
       "4a056226dce658f4da30d99d851537ec",
       "7dbd09bed7138984c994631e35722a4e",
       "9d391c75a04e30946aee2fa377d65ede"

@@ -13,7 +13,7 @@ The device, the disputation, the Threshold, the reactions and the pages live in 
 from story_format import c, n, p, scene
 from storylines.iomedae_trickster import (
     E, REL, CLOSED, STARTED, COMMITTED, DREZEN, IOMEDAE_UNIT, SUMMIT_LIST, KEY_DIES, KEY_LATCH, IZ_DONE, BANNER_HELD,
-    ORDER_BANNER, HERALD_SAVED, HERALD_FELL, NENIO, DREAM_BANNER, SENT_AWAY, QUESTION_SENT, ASKED_WHOSE, ASKED_MIND,
+    ORDER_BANNER, HERALD_SAVED, HERALD_FELL, HERALD_FOUGHT, NENIO, DREAM_BANNER, SENT_AWAY, QUESTION_SENT, ASKED_WHOSE, ASKED_MIND,
     ASKED_BACK, HERALD_ANSWERED, BRIDGE_SEEN, TESTED, WORD_ARODEN, WORD_LIAR, WORD_PLEASE, TEST_DONE, SLIP_BURNED,
     BRIDGE_TOLD, DREAMS_TOLD, ABYSS_SILENCE, SUMMIT_ASKED, PLAN, HERALD_DREAM, SPOKEN, DISPUTED, DECLINED, MORTAL_SEEN,
     EVE_SEEN, BRIDGE_KNOWN, FALSE_FACE, QUEEN_SAW, io, nar, remote, tag)
@@ -215,7 +215,7 @@ remote(E + "platform.queen", "No longer hers", [
 {n}That night you go up to the platform.{/n}''',
         c("Continue", "night")),
     nar("night", '''{n}From the foot of the pole the banner looks as the Queen saw it: your colours, not hers, snapping over a city you took back with your blood on your hands and some of it on the cloth. A pilgrim would see a relic defaced. A priest would see an omen. The Queen saw a loss, and was too well-bred to say so twice.{/n}
-{n}You have been inside it. You have been the thing her hand closed on in the rain, and the staff she drove into a rock at the edge of a gorge, and the pole she set in the snow between herself and a dead knight. The colours are yours. Nothing underneath them has changed its mind.{/n}''',
+{n}You have been inside it. You have been the thing her hand closed on in the rain, and felt her lean her head against you in the dark, when she thought nobody could hear. The colours are yours. Nothing underneath them has changed its mind.{/n}''',
         c('[Tell the banner] "She\'s wrong. You\'re still hers."', "still"),
         c('[Tell the banner] "Maybe it\'s for the best. Hers or mine, you\'re going to be busy."', "busy"),
         c("[Say nothing. Stand your watch under it until the sentry comes.]", "watch")),
@@ -304,7 +304,7 @@ at_herald(E + "herald.doubt", "A fortress", 4, '"You\'ve been watching me differ
     herald("start", '''{n}The Hand of the Inheritor does not deny it. That is one of the things that makes him poor company in Alushinyrra, where everyone denies everything.{/n}
 "I have. Forgive me." {n}He folds his hands on the pommel of his sword.{/n} "You asked me about my lady's Acts as a scholar asks. Then you told me her banner shows you her life, and I was glad, because a relic of hers would not show its secrets to someone unworthy. And then I watched you ask about her again, in this city, and I did not know what I was watching."''',
         c('"What did it look like?"', "looked")),
-    herald("looked", '''"It looked like a general asking about a fortress." {n}He says it without heat.{/n} "Where the gate is weak. What the garrison eats. Which wall was built in a hurry. You asked what she lost when Aroden died. You asked how she did the thing at the gorge. I have heard siege engineers ask gentler questions."
+    herald("looked", '''"It looked like a general asking about a fortress." {n}He says it without heat.{/n} "Where the gate is weak. Which wall was built in a hurry. You asked me how she did the thing at the gorge the way a sapper asks how a wall was raised, and you already knew more of it than the Acts do. I have heard siege engineers ask gentler questions."
 "So I will ask you plainly, Champion, because in this place I have nothing left but plainness. Do you love my lady, or do you mean to use her?"''',
         c('[Tell the truth] "Both. I don\'t know yet which is winning."', "both"),
         c('"I\'m not using her. I\'m trying to understand her."', "understand"),
@@ -319,7 +319,7 @@ at_herald(E + "herald.doubt", "A fortress", 4, '"You\'ve been watching me differ
         c('"You\'ll come back."'),
         c('"I\'ll tell her."'),
         c("[Clasp his arm, the way knights do it.]")),
-], requires=(E + "bridge_told",), forbids=(), lists=HERALD4_LIST, back=HERALD4_BACK, delay=48)
+], requires=(E + "dreams_told",), forbids=(), lists=HERALD4_LIST, back=HERALD4_BACK, delay=48)
 
 
 # --- Chapter 4, 2. No banner in the Abyss. -----------------------------------------------------------------------------------
@@ -454,7 +454,13 @@ remote(E + "dream.herald", "Her herald", [
     nar("start", '''{n}It is not the banner dreaming. You know it at once, the way you know a face from a portrait of it.{/n}
 {n}There is no rain, no gorge, nobody's hands. There is a white space like the inside of a cloud, and a voice in it, and the voice is speaking to you.{/n}''',
         c("Continue", "saved", requires=(HERALD_SAVED,)),
-        c("Continue", "fell", requires=(HERALD_FELL,), forbids=(HERALD_SAVED,))),
+        c("Continue", "fell", requires=(HERALD_FELL,), forbids=(HERALD_SAVED,)),
+        c("Continue", "fought", requires=(HERALD_FOUGHT,), forbids=(HERALD_SAVED, HERALD_FELL))),
+    io("fought", '''"You fought him."
+{n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "In Baphomet's prison, at the end, what was left of him wanted the fight more than it wanted saving, and he told you so, and you gave it to him. I heard him ask. I will not pretend I would have answered him the same way."
+{n}A silence, long for a goddess.{/n} "I do not blame you. I blame myself. I sent a proud angel after a mortal I did not understand, and let him believe what he wished to believe about you, because it served."''',
+       c("Continue", "stopped", forbids=(SPOKEN,)),
+       c("Continue", "known", requires=(SPOKEN,))),
     io("saved", '''"You gave him back his heart."
 {n}Iomedae does not appear. The voice is enough; it fills the white the way light fills a room.{/n} "He came before me with the wound still open and knelt, and told me how wrong he had been about you. I told him he had been wrong in the other direction first, and that the fault was mine, not his. I let him believe you were my chosen. I do not lie. I let him mistake me, which is not so much better as I used to think."
 "You went into Baphomet's prison for a servant of mine whom I could not openly ask you to save. I did not ask. That is why it counts."''',
@@ -479,7 +485,7 @@ remote(E + "dream.herald", "Her herald", [
     io("listen", '''{n}She lets the silence go on, as if she were testing whether you would break it. You do not. When she speaks again there is something in the voice that might be approval, if goddesses approved of such small things.{/n} "Good. Most people talk to fill a silence. You wait to see what is in it."''',
        c("Continue", flags=(HERALD_DREAM, SPOKEN))),
 ], requires=(STARTED, KEY_LATCH), forbids=(HERALD_DREAM,), delay=24, chapters=(5,),
-    RequiresAnyGroups=[[HERALD_SAVED, HERALD_FELL]])
+    RequiresAnyGroups=[[HERALD_SAVED, HERALD_FELL, HERALD_FOUGHT]])
 
 
 # --- After her concession (Chapter 5-6): the dream she chooses. The heat, and where it will be. -----------------------------
@@ -527,8 +533,8 @@ remote(E + "silence", "No answer", [
     nar("start", '''{n}She does not come.{/n}
 {n}Not in the white, not in the banner, not in the small hours when you stand on the platform with your hand on the staff and say her name into the wind off the Wound like a sentry calling a password into the dark. The banner cracks and snaps, as banners do. It is only cloth. You had forgotten what that was like.{/n}''',
         c("Continue", "sums")),
-    nar("sums", '''{n}You go over it the way you go over a battle you lost: coldly, from the beginning. You had the argument. You had it by the throat. And then she asked you whether it was a wager, and you told her it was a sure thing, because it was the answer a Trickster gives, and because some part of you wanted to watch a goddess be told she was predictable.{/n}
-{n}She was not predictable. She got up and left.{/n}''',
+    nar("sums", '''{n}You go over it the way you go over a battle you lost: coldly, from the beginning. You had the argument. You had it by the throat. And then you gave her the one answer she had told you, in so many words, that she would not take.{/n}
+{n}She did not argue with it. She got up and left.{/n}''',
         c("Continue", "cost", requires=(E + "cost.boasted",)),
         c("Continue", "cost_other", forbids=(E + "cost.boasted",))),
     nar("cost", '''{n}She said she bowed to sacrifices and not to bargains, and that if you meant it you would show her at the Wound. It has taken you two days to understand that she was not being proud. She was telling you exactly what it would take, as she always does, and you were too pleased with yourself to hear it.{/n}''',
@@ -537,7 +543,7 @@ remote(E + "silence", "No answer", [
     nar("cost_other", '''{n}She told you that if you had anything better to say, you should say it at the Wound. It has taken you two days to understand that she meant it literally: she will be there, and she will listen, and she will not come here to be told it first.{/n}''',
         c("[Resolve to tell her the truth at the Wound, if she asks.]"),
         c("[Resolve not to need her. You have been going into the Wound alone since Kenabres.]")),
-], requires=(DECLINED,), forbids=(COMMITTED,), delay=48, chapters=(5, 6), kind="memory")
+], requires=(DECLINED,), forbids=(COMMITTED,), delay=24, chapters=(5,), kind="memory")
 
 
 # --- After her concession (Chapter 5-6): questions that are not about the war. ------------------------------------------------
@@ -578,42 +584,40 @@ remote(E + "dream.questions", "Not in any report", [
        c("[Sleep.]")),
     io("wrong", '''"You will be remembered wrong. Everyone is. I am remembered as a woman who never doubted and never ate onions." {n}The white begins to thin.{/n} "The ones who matter will remember you right. I intend to be one of them."''',
        c("[Sleep.]")),
-], requires=(COMMITTED,), forbids=(), delay=48, chapters=(5, 6))
-
-
-# --- Chapter 6. Orders for the dead: the Commander writes as someone who will not come back (the vow made concrete). --------
-
-remote(E + "orders", "Orders for the dead", [
-    nar("start", '''{n}You conceded, on the platform, that the world would keep its grave. Tonight, in the last camp before Threshold, you find out what that costs in ink.{/n}
-{n}A Commander going into the Wound leaves orders: who commands after, what is to be done with the army, who is to be told. Every Commander in the history of the crusades who has written such orders has hoped, while writing them, that they would be burned unread. You are writing them knowing that they will be read, and obeyed, and that you will have to stand somewhere at the back of a crowd and watch them obeyed, and say nothing.{/n}''',
-        c("Continue", "write")),
-    nar("write", '''{n}You write the ordinary things first. The dispositions of the army. The debts the crusade owes to merchants who were paid in promises. The names of soldiers who deserve better than they have had. None of it is hard. You have always been good at telling other people what to do.{/n}
-{n}Then you come to the part where a Commander writes something for the people who will mourn, and your pen stops.{/n}''',
-        c("[Write something true that does not give you away.]", "true"),
-        c("[Write something grand, for the chaplains to read out.]", "grand"),
-        c("[Write nothing. Leave the space blank.]", "blank")),
-    nar("true", '''{n}It takes you most of the night. In the end it is three lines: that you did this on purpose, that nobody made you, and that the people you are leaving are to stop saluting the empty chair and get on with their lives, which you paid rather a lot for. It does not say goodbye. You cannot quite bring yourself to lie in a letter she might read over someone's shoulder.{/n}''',
-        c("Continue", "seal")),
-    nar("grand", '''{n}It comes easily, which should worry you. Fire and sacrifice and the dawn of a new age; the Wound closed by the one it was opened to destroy. The chaplains will weep. It is magnificent, and it is a lie by emphasis, and you think of a goddess who will not lie even by emphasis, and you tear it up, and write three lines instead, and they are true.{/n}''',
-        c("Continue", "seal")),
-    nar("blank", '''{n}You leave it blank. Let them fill it with whatever they need; people always do. The dead are not consulted about their eulogies, and you are, in every way that the world will ever be told about, going to be dead.{/n}''',
-        c("Continue", "seal")),
-    nar("seal", '''{n}You seal it and give it to the quartermaster, to be opened if the Commander does not come back from the Wound. He takes it the way a man takes something hot. You do not tell him that he will open it either way.{/n}''',
-        c("[Go to bed. The banner is beside the cot, rolled on its staff.]")),
-], requires=(COMMITTED, E + "cost.buried_to_the_world"), forbids=(), delay=0, chapters=(6,), kind="memory")
+], requires=(COMMITTED,), forbids=(), delay=48, chapters=(5,))
 
 
 # --- Chapter 6. The night before Threshold: she has not decided; neither has the Commander. ---------------------------------
 
 remote(E + "dream.eve", "The night before", [
-    nar("start", '''{n}You took the banner down from the citadel yourself on the morning the crusade marched, and Drezen watched you do it and did not ask why. Now it is the last camp before Threshold, and the whole crusade is awake pretending to sleep. You lie down with the banner rolled on its staff beside you, close enough to touch, and shut your eyes, and she is there before the dark has finished arriving.{/n}''',
+    nar("open", '''{n}The last camp before Threshold.{/n}''',
+        c("Continue", "o_start", requires=(COMMITTED, E + "cost.buried_to_the_world")),
+        c("Continue", "start", forbids=(COMMITTED,)),
+        c("Continue", "start", requires=(COMMITTED,), forbids=(E + "cost.buried_to_the_world",))),
+    nar("o_start", '''{n}You conceded, on the platform, that the world would keep its grave. Tonight, in the last camp before Threshold, you find out what that costs in ink.{/n}
+{n}A Commander going into the Wound leaves orders: who commands after, what is to be done with the army, who is to be told. Every Commander in the history of the crusades who has written such orders has hoped, while writing them, that they would be burned unread. You are writing them knowing that they will be read, and obeyed, and that you will have to stand somewhere at the back of a crowd and watch them obeyed, and say nothing.{/n}''',
+        c("Continue", "o_write")),
+    nar("o_write", '''{n}You write the ordinary things first. The dispositions of the army. The debts the crusade owes to merchants who were paid in promises. The names of soldiers who deserve better than they have had. None of it is hard. You have always been good at telling other people what to do.{/n}
+{n}Then you come to the part where a Commander writes something for the people who will mourn, and your pen stops.{/n}''',
+        c("[Write something true that does not give you away.]", "o_true"),
+        c("[Write something grand, for the chaplains to read out.]", "o_grand"),
+        c("[Write nothing. Leave the space blank.]", "o_blank")),
+    nar("o_true", '''{n}It takes you most of the night. In the end it is three lines: that you did this on purpose, that nobody made you, and that the people you are leaving are to stop saluting the empty chair and get on with their lives, which you paid rather a lot for. It does not say goodbye. You cannot quite bring yourself to lie in a letter she might read over someone's shoulder.{/n}''',
+        c("Continue", "o_seal")),
+    nar("o_grand", '''{n}It comes easily, which should worry you. Fire and sacrifice and the dawn of a new age; the Wound closed by the one it was opened to destroy. The chaplains will weep. It is magnificent, and it is a lie by emphasis, and you think of a goddess who will not lie even by emphasis, and you tear it up, and write three lines instead, and they are true.{/n}''',
+        c("Continue", "o_seal")),
+    nar("o_blank", '''{n}You leave it blank. Let them fill it with whatever they need; people always do. The dead are not consulted about their eulogies, and you are, in every way that the world will ever be told about, going to be dead.{/n}''',
+        c("Continue", "o_seal")),
+    nar("o_seal", '''{n}You seal it and give it to the quartermaster, to be opened if the Commander does not come back from the Wound. He takes it the way a man takes something hot. You do not tell him that he will open it either way.{/n}''',
+        c("[Go to bed. The banner is beside the cot, rolled on its staff.]", "start")),
+    nar("start", '''{n}You took the banner down from the citadel yourself on the morning the crusade marched, and Drezen watched you do it and did not ask why. Now the whole crusade is awake pretending to sleep. You lie down with the banner rolled on its staff beside you, close enough to touch, and shut your eyes, and she is there before the dark has finished arriving.{/n}''',
         c("Continue", "committed", requires=(COMMITTED,)),
         c("Continue", "declined", requires=(DECLINED,), forbids=(COMMITTED,)),
         c("Continue", "unargued", forbids=(COMMITTED, DECLINED))),
     io("committed", '''"Tomorrow." {n}The white is smaller tonight, as if she were keeping it close.{/n}
 "I conceded the argument, and I do not unsay what I have said aloud. But hear me exactly, because tomorrow there will be no time for it. I conceded that I may answer my banner. I did not promise that I will. I will decide at the Wound, with the fire in front of me, as you will."''',
        c("Continue", "others")),
-    io("declined", '''"You told me it was a sure thing." {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}
+    io("declined", '''"You know why I left your roof." {n}There is no anger in it. It is worse than anger: it is a fact, set down where you will have to step over it.{/n}
 "Tomorrow you will stand at the Wound with my banner, and I will be there. Show me. That is all I have left to say to you, and it is not little."''',
        c("Continue", "others")),
     io("unargued", '''"You never raised it where it flew. The war took the nights, and I do not reproach you for that; it is a war." {n}A pause.{/n} "Tomorrow, at the Wound, raise it, and argue. Briefly. The Worldwound does not wait on disputations."''',

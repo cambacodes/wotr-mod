@@ -68,7 +68,8 @@ REPROACHED = "iomedae.reproached"              # Goddesses_Summit/Cue_0422: the 
 WITNESSED = "iomedae.witnessed_sacrifice"      # GrandFinal/Cue_0085: she bowed
 COERCED = "iomedae.sacrifice_coerced"          # GrandFinal/Answer_0026 [Submit]
 HERALD_SAVED = "iomedae.herald_saved"          # LabyrinthOfBaphometh/Herald/Cue_0021: his heart given back
-HERALD_FELL = "iomedae.herald_fell"            # the same dialog: he died, or was fought
+HERALD_FELL = "iomedae.herald_fell"            # the same dialog: he died there (Cue_0020, Cue_0026)
+HERALD_FOUGHT = "iomedae.herald_fought"        # the same dialog: he chose the fight (Cue_0011, Cue_0012, Cue_0017)
 NENIO = "iomedae.nenio_acts"                   # Nenio/Cue_0215: "turned her cloak into a bridge"
 QUEEN_SAW = "iomedae.queen_saw_banner"         # GalfreyArrives/Cue_0052: "...only to discover that it was no longer her banner"
 SILENCED = "iomedae.silenced_nocticula"        # NocticulaThreshold/Cue_0022: "Enough, Nocticula. You have lost the battle for this mortal soul"
@@ -150,8 +151,8 @@ RELATIONSHIP = dict(
 SEEN_CUES = {
     BANNER_HELD: ["1a0b602da28e56f4badf9406964e4244"],
     HERALD_SAVED: ["55ab2d8561d68ad4aae145e4798b43d4"],
-    HERALD_FELL: ["c241ccdbc3b178b41b7161d17ff43b17", "1f0fef1fbc666cc42a213671d6b171a2", "4a056226dce658f4da30d99d851537ec",
-                  "7dbd09bed7138984c994631e35722a4e", "9d391c75a04e30946aee2fa377d65ede"],
+    HERALD_FELL: ["c241ccdbc3b178b41b7161d17ff43b17", "1f0fef1fbc666cc42a213671d6b171a2"],
+    HERALD_FOUGHT: ["4a056226dce658f4da30d99d851537ec", "7dbd09bed7138984c994631e35722a4e", "9d391c75a04e30946aee2fa377d65ede"],
     NENIO: ["cdbc3902b0a3ea742b44922dedeee61b"],
     QUEEN_SAW: ["d383267ee2a7b8141835f106f40bf28e"],
     SILENCED: ["05c37f9556af62c4ba275d57afdc91a8"],
@@ -542,7 +543,17 @@ SCENES.append(scene(E + "threshold.banner", "Her own bridge", "Iomedae", 6,
         c("[Turn to the Wound.]", flags=GO + (KISSED_AT_WOUND,))),
     nar("worth", '''"I know." {n}She says it quietly, as she said the bow.{/n} "That is why I am still deciding, and not decided." {n}She steps back half a pace, beside her banner, and waits.{/n}''',
         c("[Turn to the Wound.]", flags=GO)),
-    nar("declined", '''"You told me it was a sure thing," {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} "Is it?"''',
+    nar("declined", '''{n}She walked off your roof, the last time you argued. She has not forgotten why, and she does not pretend to.{/n}''',
+        c("Continue", "d_boast", requires=(COST_BOASTED,)),
+        c("Continue", "d_mock", requires=(COST_MOCKED,), forbids=(COST_BOASTED,)),
+        c("Continue", "d_lie", forbids=(COST_BOASTED, COST_MOCKED))),
+    nar("d_mock", '''"You called Drezen's madness a holiday, on my roof, under my banner," {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} "Answer for it now. Not to me. To them."''',
+        c('[Own it] "I did it. It won, and it cost them their minds, and some never came back. I owe them more than a joke. I\'m going in anyway, and it isn\'t a sure thing."', "conceded", flags=(OWNED_MADNESS,)),
+        c('[Make a joke of it] "They\'re still on holiday."', "turned")),
+    nar("d_lie", '''"You lied to me about my own house," {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} "Tell me the truth now, at the edge, where it costs you something."''',
+        c('[The truth] "I stole it. The canon never said I could. I\'m going in anyway, and it isn\'t a sure thing."', "conceded", flags=(OWNED_THEFT,)),
+        c('[Hold to the lie] "Borrowed. I told you."', "turned")),
+    nar("d_boast", '''"You told me it was a sure thing," {n}says Iomedae. She does not raise her voice at the edge of the Wound. She does not need to.{/n} "Is it?"''',
         c('[The truth] "No. It isn\'t. I\'m going anyway."', "conceded"),
         c('[Make a joke of it] "Sure as anything."', "turned")),
     nar("unargued", '''"You never raised it where it flew," {n}says Iomedae.{/n} "Argue it here. Briefly. The Wound is waiting, and it does not wait on disputations."''',
@@ -631,7 +642,7 @@ def page(id, title, nodes, requires, forbids=(), **extra):
 
 
 page("bridge", "The Bridge", [
-    nar("fire", '''{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}
+    nar("fire", '''{n}The whole world shrinks to you and the Worldwound, and the Wound is the wound in your chest opened wide enough to walk into. You go into it the way you said you would: meaning it. Your blood boils in the violet fire. The seam the witch sewed through you draws tight, and you feel it close on what you are, the way a lock closes on the key turned in it. Almost everything the Abyss and Areelu poured into you goes out of you into the seam, and burns there, and holds it shut.{/n}
 {n}You had forgotten the banner. You are still holding it. You cannot feel your hand.{/n}''',
         c("[Say her name.]", "name"),
         c("[Think of the gorge.]", "gorge", requires=(BRIDGE_SEEN,)),
@@ -691,7 +702,7 @@ page("bridge", "The Bridge", [
               requires=(CONCEDED_AT_WOUND,)),
             p('''You had told her once that it was a sure thing. It was not, and you went anyway. That was the part she kept.''',
               requires=(COST_BOASTED,)),
-            p('''The Lady of Graves had nothing to collect: nobody had died who came back over. Iomedae said Pharasma would notice anyway, and went to tell her so herself, and never said what was said.'''),
+            p('''Somewhere between the seam and the stones there was a grey place where a voice asked you questions, and what was left of your power gave you the right to answer them. When you woke you could not remember a word of it. Iomedae could. She said only that the Lady of Graves had heard you out, and had nothing to collect, because nobody had died who came back over, and that she had gone to tell her so herself.'''),
             p('''Drezen woke to find the Sword of Valor gone from the world with its Commander. The chaplains said the Commander had carried it into the Wound as the Inheritor once carried it into battle, and they were right, and never knew how right. No demon ever again stepped out of the air into the city, because there was no longer a Wound to send them.''',
               requires=(BANNER_HELD,)),
             p('''The hand that held the cathedral's banner over the fire never closed properly again.''',
@@ -870,7 +881,7 @@ page("after", "Here and There", [
         paragraphs=(
             p('''The Commander of the Fifth Crusade was buried at Drezen with honours, and the grave is remarkably unoccupied. Travellers still cross paths with a stranger here and there, on the roads of Mendev and further off. Among those who keep finding the stranger is a woman in plain steel, whom the stranger always recognizes first.''',
               requires=(KEPT,)),
-            p('''She never named the miracle. Some years she almost did. The stranger learned to recognize the look, and to wait for it, and to say nothing, because a miracle chosen freely is repaid the same way or not at all.''',
+            p('''She named the miracle in the ninth year. A knight of hers lay dying in a hospice in Mendev and would not let go until someone told him that his company had held the ford. It had not held. She could not tell him so; she does not lie. "You can," she said. The stranger went, and sat with him through a night, and told him that the ford had held and that the Inheritor herself had said so, and he died believing it. She did not thank the stranger. She said the debt was paid, and that a lie told in her name was hers to carry, and she carried it. It was the only time the stranger ever saw her ashamed, and the only time she let anyone see it.''',
               requires=(KEPT,)),
             p('''The Commander lived on in the open, with a name and a war and a great many people who wanted things. She came anyway, rarely, and waited at the back of the hall in plain steel until the petitioners had gone.''',
               forbids=(KEPT, "lastcall.dead_on_record")),
@@ -880,7 +891,7 @@ page("after", "Here and There", [
               requires=(ARGUED_OLD,)),
             p('''She said the argument on the platform was the worst she had ever lost, and that she had lost it anyway. She said it fondly, which was worse.''',
               requires=(ARGUED_PLAIN,)),
-            p('''She never raised Drezen's madness again. It had been answered, and she did not reopen a question once it was answered.''',
+            p('''She did not let Drezen's madness rest because it had been answered. Every winter she sent the stranger to the houses where the ones who never came back from it were kept, to sit with them, carry water, and be cursed at by people who did not know whom they were cursing, and the stranger went. She never called it a penance. She called it the rest of the answer.''',
               requires=(OWNED_MADNESS,)),
             p('''The cathedral of Drezen never saw its banner of the Inheritor again. The old canon blamed demons in public and the late Commander in private, and in his prayers he told Her so, and was, he believed, heard.''',
               requires=(COST_STOLEN,)),
@@ -919,7 +930,9 @@ page("unanswered", "Bowed", [
     nar("page", '''{n}The Worldwound closed on its key, as the witch had designed it, and the key did not come back.{/n}''',
         paragraphs=(
             p('''Her banner stood at the edge when you went in. She had said she bowed to sacrifices and not to bargains, and you had offered her a bargain. She did not answer it. She bowed her head at the edge, as she had said she would, and meant it, and the banner burned where it stood.''',
-              requires=(CARRIED, DECLINED), forbids=(COMMITTED,)),
+              requires=(CARRIED, DECLINED, COST_BOASTED), forbids=(COMMITTED,)),
+            p('''Her banner stood at the edge when you went in. She had walked off your roof over a thing you had said there, and you had not unsaid it. She did not answer the banner. She bowed her head at the edge, and meant it, and the banner burned where it stood.''',
+              requires=(CARRIED, DECLINED), forbids=(COMMITTED, COST_BOASTED)),
             p('''Her banner stood at the edge when you went in, and she had turned her face from you. It burned where it stood.''',
               requires=(CARRIED, CLOSED)),
             p('''She had conceded, aloud, on the platform. She was at the edge. You never raised her banner there, and she could not answer what was never raised. She stood at the lip of the Wound a long time after it closed, and said nothing to anyone.''',
@@ -943,7 +956,9 @@ page("respect", "Watched", [
             p('''You moved your bed out from under her banner in the first weeks, and the dreams stopped, and nothing else ever began.''',
               requires=(SENT_AWAY,)),
             p('''She had said she did not bow to bargains, and you had offered her one on the platform. She did not come. Once, on a road in Mendev, a knight in plain steel passed you going the other way, and nodded, and did not stop.''',
-              requires=(DECLINED,)),
+              requires=(DECLINED, COST_BOASTED)),
+            p('''She had walked off your roof over a thing you had said there, and you had not unsaid it. She did not come. Once, on a road in Mendev, a knight in plain steel passed you going the other way, and nodded, and did not stop.''',
+              requires=(DECLINED,), forbids=(COST_BOASTED,)),
             p('''You never learned whether she had decided, at the edge, what she would have done. You thought about asking her, on that road in Mendev. You did not. Some arguments, once lost, are better left in the record the way they were lost; she had taught you that on the platform, and it was the only thing she taught you that you ever wished you had not learned.''',
               requires=(DECLINED,)),
             p('''You had turned her away at the edge of the Wound. She did not come back.''',

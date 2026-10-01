@@ -653,6 +653,13 @@ def _bound(payload, key):
 def integrate(payload):
     """Bind every world key read by a registered scene (transitively through Derived/Latches). Never overrides an
     existing binding: the registered routes' own keys win, and a conflicting GUID is an error."""
+    # Ledger row 16 (R6 audit, COX): a page that mourns a sacrificed Commander never plays beside a Commander who came back
+    # (the punchline groups, Last Call's flask, Iomedae's bridge). Like Last Call's L6, but for every commander_back world.
+    for s in payload["Scenes"]:
+        if (s.get("Owner", "").endswith("Epilogue") and "sacrifice" in (s.get("Requires") or [])
+                and "trickster.commander_back" not in s["Forbids"]
+                and "trickster.commander_back" not in (s.get("ForbidOverrides") or {}).values()):
+            s["Forbids"].append("trickster.commander_back")
     pending = sorted({k for s in payload["Scenes"] for k in _keys(s)}
                      | {k for p in (payload.get("Presences") or {}).values()
                         for k in [*(p.get("Requires") or []), *(p.get("Forbids") or []),

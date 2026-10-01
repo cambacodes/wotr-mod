@@ -139,7 +139,8 @@ internal static class IomedaeTricksterTests
             "Trk_Iomedae_Bindings: the relationship does not match the plan (she is never unavailable).");
         check(story.SeenCues[Held].SequenceEqual(new[] { "1a0b602da28e56f4badf9406964e4244" })
               && story.SeenCues["iomedae.herald_saved"].SequenceEqual(new[] { "55ab2d8561d68ad4aae145e4798b43d4" })
-              && story.SeenCues["iomedae.herald_fell"].Length == 5
+              && story.SeenCues["iomedae.herald_fell"].OrderBy(g => g).SequenceEqual(new[] { "1f0fef1fbc666cc42a213671d6b171a2", "c241ccdbc3b178b41b7161d17ff43b17" })
+              && story.SeenCues["iomedae.herald_fought"].Length == 3 && !story.SeenCues["iomedae.herald_fought"].Intersect(story.SeenCues["iomedae.herald_fell"]).Any()
               && story.SeenCues["iomedae.nenio_acts"].SequenceEqual(new[] { "cdbc3902b0a3ea742b44922dedeee61b" })
               && story.SeenCues["iz.banner_lost"].SequenceEqual(new[] { "710ed96131bbf4e42b930f87cfd6aa25" })
               && story.Etudes["iz.sock_raised"] == "b99cec06dab2bd24fa3124bad167028f",
@@ -272,8 +273,9 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Refusal: after a no, her silence (a page), and the yes still reachable at the Wound; after the vow, the orders.
         check(Avail(S(P + "silence"), Later(boast, 48)) && !Avail(S(P + "silence"), Later(yes, 48))
-              && Avail(S(P + "orders"), World(story, 6, "trickster.ever", Started, Committed, P + "cost.buried_to_the_world"))
-              && !Avail(S(P + "orders"), World(story, 6, "trickster.ever", Started, Committed)),
+              && Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed, P + "cost.buried_to_the_world")).Any(x => x.Contains("costs in ink"))
+              && !Reachable(eve, World(story, 6, "trickster.ever", Started, Latch, Held, Committed)).Any(x => x.Contains("costs in ink"))
+              && own.Count(x => x.Remote && x.Chapters.Contains(6)) <= 2,
             "Trk_Iomedae_Refusal: the refusal has no aftermath, or the orders are written without the vow.");
 
         // Trk_Iomedae_Heat: after her concession, the dream she chooses; the kiss, the buckle held, the promise of where.
@@ -309,6 +311,17 @@ internal static class IomedaeTricksterTests
               && Ch(wound, "plant", 2).Abort,
             "Trk_Iomedae_Threshold: after her refusal the truth does not concede at the Wound (or the joke does not close), or the act has a fee.");
 
+        // Trk_Iomedae_RefusalByCause: the Wound answers the offence that was given (the boast, the mocked madness, the lie).
+        var tm = World(story, 6, t6.Concat(new[] { Declined, P + "cost.madness_mocked", P + "disputed" }).ToArray());
+        var tl = World(story, 6, t6.Concat(new[] { Declined, P + "cost.lied", P + "disputed", Order, P + "cost.banner_stolen" }).ToArray());
+        check(Take(wound, tm, "d_mock", 0, Committed).Has(P + "answered.madness") && Take(wound, tl, "d_lie", 0, Committed).Has(P + "answered.theft")
+              && !Reachable(wound, tm).Any(x => x.Contains("sure thing")) && !Reachable(wound, tl).Any(x => x.Contains("sure thing"))
+              && Take(wound, tm, "d_mock", 1, Closed).Has(Closed),
+            "Trk_Iomedae_RefusalByCause: the recovery at the Wound does not answer the offence actually given.");
+        var foughtW = World(story, 5, "trickster.ever", Started, Latch, "iomedae.herald_fought");
+        check(Avail(heraldDream, foughtW) && !Reachable(heraldDream, foughtW).Any(x => x.Contains("He is gone")),
+            "Trk_Iomedae_Herald: a fight alone is told as his death.");
+
         // Trk_Iomedae_Worlds: the bridge world (she answered) joins commander_back; its pages play; the others in theirs.
         Scene Pg(string id) => S(P + "epilogue." + id);
         var bridgeW = World(story, 6, "trickster.ever", Started, Committed, Carried, "sacrifice", "ending.wound_closed", Held, P + "cost.buried_to_the_world");
@@ -328,7 +341,7 @@ internal static class IomedaeTricksterTests
               && Avail(Pg("lived"), openW) && Reachable(Pg("lived"), openW).Any(x => x.Contains("told a joke instead")),
             "Trk_Iomedae_Worlds: a committed Commander who lived without the bridge has no page (or the wrong one).");
         var lostW = World(story, 6, "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed");
-        var boastedDead = World(story, 6, "trickster.ever", Started, Declined, Carried, "sacrifice", "ending.wound_closed");
+        var boastedDead = World(story, 6, "trickster.ever", Started, Declined, P + "cost.boasted", Carried, "sacrifice", "ending.wound_closed");
         check(Avail(Pg("unanswered"), lostW) && !Avail(Pg("platform"), lostW) && Render(Pg("unanswered"), lostW).Contains("never raised")
               && Avail(Pg("unanswered"), boastedDead) && Render(Pg("unanswered"), boastedDead).Contains("offered her a bargain")
               && Pg("unanswered").Forbids.Contains(Active),
