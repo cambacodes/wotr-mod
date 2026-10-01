@@ -167,7 +167,7 @@ m(PULSE, "An experiment of a personal nature", '"You said you needed me for some
     nen("open", '''"I did. I do. It is an experiment." {n}She has cleared @DESK@ entirely, which you have never seen her do. On it there is one sheet of paper, one pencil and a stopwatch, set out with the precision of a surgeon's tray.{/n}
 "An experiment of a... personal nature." {n}She rubs her nose.{/n} "But no less exciting for that, mark my words."''',
         c("Continue", "design")),
-    nen("design", '''"The Encyclopedia requires an entry on attraction. Physical attraction. Between people." {n}She says it fast, like somebody jumping into cold water.{/n} "I have four thousand years of observations of other people's attraction, taken in taverns, temples and the backs of carts. They are very good observations. They are also all from the outside."
+    nen("design", '''"The Encyclopedia requires an entry on attraction. Physical attraction. Between people." {n}She says it fast, like somebody jumping into cold water.{/n} "I have more observations of other people's attraction than anyone living, taken in taverns, temples and the backs of carts. They are very good observations. They are also all from the outside."
 "The method is this. You will look at a series of objects, and I will take your pulse. A sword. A map. A bottle of wine, for comparison with my earlier work. Myself." {n}She says the last one in exactly the same voice as the others, and her ears go back.{/n} "The last one is a control."''',
         c('"A control."', "control"),
         c('[Flirt] "You want to know if I find you attractive."', "direct"),
@@ -336,7 +336,7 @@ m(F + "drezen.handed", "A report from the capital", '"You kept a report while I 
 
 m(PAGE_ONE, "Page one", '"You\'ve got a clean sheet. That\'s a bad sign."', [
     nen("open", '''"It is an extremely bad sign." {n}She is sitting very straight at @DESK@ with a single clean sheet in front of her and her hands folded on top of it, like a pupil waiting for an examination to begin.{/n}
-"There is one entry I have never written. In four thousand years I have described kings and bees and the correct way to kick a linnorm, and I have never written one line about the author." {n}She pushes the sheet toward you.{/n} "It would be vanity. So I shall dictate it, and you will write it, and then it will be your vanity and not mine."''',
+"There is one entry I have never written. I have described kings and bees and the correct way to kick a linnorm, and I have never written one line about the author." {n}She pushes the sheet toward you.{/n} "It would be vanity. So I shall dictate it, and you will write it, and then it will be your vanity and not mine."''',
         c("Continue", "pre", requires=(FOX_REVEALED,), forbids=(RIDDLE_DONE, VISITOR, ENIGMA_RESOLVED)),
         c("Continue", "post", requires=(RIDDLE_DONE,)),
         c("Continue", "visiting", requires=(VISITOR,), forbids=(RIDDLE_DONE,)),
@@ -423,7 +423,7 @@ m(LONG, "Longitudinal", '"How is the study going?"', [
 {n}You tell her what you think of the method. She writes that down too, under a heading of its own.{/n} "Objection from the subject, noted. Overruled. The subject is not on the ethics committee. There is no ethics committee. I have checked."''',
         c("Continue", "question")),
     nen("adjectives", '''"Things that serve no purpose." {n}She turns the sheet round and reads it to you, flatly, like an inventory.{/n} "You stand to one side of doors. You eat the crust of your bread first and give the soft part to whoever is nearest. You say 'good' to horses. You hum when you are lying, the same four notes."
-"Every scientist keeps such a column, for what does not fit. Mine was empty for four thousand years. Yours is on its second sheet." {n}She taps it.{/n} "I intend to find out what the column measures. I am not going to guess. Guessing is how people end up writing poetry."''',
+"Every scientist keeps such a column, for what does not fit. Mine was empty for as long as I have kept it. Yours is on its second sheet." {n}She taps it.{/n} "I intend to find out what the column measures. I am not going to guess. Guessing is how people end up writing poetry."''',
         c("Continue", "question")),
     nen("question", '''"I am going to ask you a question. I mean to ask this one. I have drafted it." {n}She takes a slip of paper from her sleeve and reads it.{/n}
 "When this war is over, what do you want?"
@@ -454,7 +454,7 @@ WHO_LIED = F + "who_are_you.lied"
 EDGE_SHIELDS = F + "edge.shields"
 
 m(RHYMES, "Crustacean, cogitation", '"Are you... writing poetry?"', [
-    nen("open", '''"I am conducting an experiment in whether I can write poetry." {n}She has a sheet covered in crossings-out, which is so unlike her that you look twice.{/n} "Not the same thing. Poetry is a result. I am only at the method."
+    nen("open", '''"I am conducting an experiment in whether I can write poetry." {n}She has a sheet covered in crossings-out.{/n} "Not the same thing. Poetry is a result. I am only at the method."
 "You will remember that I once discovered I had no poetic talent. Crustacean, cogitation. It was a very clean result. I have been troubled by it ever since, because the Encyclopedia requires an entry on love poetry and I cannot in good conscience write about a thing I have been proven unable to do."''',
         c("Continue", "method")),
     nen("method", '''"Method: I read the poems of Golarion's great love poets, all of them, in four evenings. Result: they are mostly about eyes." {n}She shuffles her pages.{/n} "Eyes like stars. Eyes like the sea. Eyes like two dark pools. One Taldan poet compares his lady's eyes to a pair of well-maintained siege engines, which I found the most honest of the lot."
@@ -494,7 +494,7 @@ m(WHO, "Who are you?", '"You\'ve been quiet since the Ruins."', [
 "That was the first time I ever heard you say it aloud where I could not pretend not to have heard. In a void, to a sphinx. I had been forgetting it very carefully for weeks." {n}She frowns.{/n} "It did not stay forgotten after that. I have had to forget it again every evening since. It is like bailing a boat."''',
         c("Continue", "question")),
     nen("lied", '''"You lied to the void." {n}She looks at you with something between horror and admiration.{/n} "To an entity that sees through masks, that solves people like riddles, that took my face off with one question. You lied to it."
-"And it did not take your face off. It let you go." {n}She writes that down, fast.{/n} "Hypothesis: a trickster's face is already a mask, all the way down, and the void could not find the bottom. That is either terrifying or the most interesting thing I have learned this year."''',
+"And it knew. It told you so, and asked again, the way it asked me." {n}She writes that down, fast.{/n} "Hypothesis: a trickster's face is already a mask, all the way down, and the void had to dig for the bottom. That is either terrifying or the most interesting thing I have learned this year."''',
         c("Continue", "question")),
     nen("silent", '''"You did not answer." {n}Her ears go forward.{/n} "And it did not let you off for that. It told you that sooner or later you would have to. I heard that part." {n}She shakes her head slowly.{/n} "I shouted my name at it like a fishwife, and you simply stood there and made it wait. Neither of us won. You lost more slowly. I am jealous. I will get over it."''',
         c("Continue", "question")),
@@ -510,7 +510,7 @@ m(WHO, "Who are you?", '"You\'ve been quiet since the Ruins."', [
         c("Continue", "end")),
     nen("nobody", '''"'Yet.'" {n}She seizes on the word like a scholar on a misplaced comma.{/n} "That is a hypothesis with a date on it. I approve. Most people's answer to 'who are you' is a finished sentence, and finished sentences are the enemy of science." {n}She taps her notebook.{/n} "When you know, tell me. I shall want to update the entry."''',
         c("Continue", "end")),
-    nen("end", '''"We shall find the masks. We shall open the way. And I shall stand in front of whatever it is and it will ask me again, and this time..." {n}She stops.{/n} "This time I do not know what I shall say. That is the first time in four thousand years I have walked toward an experiment without a hypothesis. It is very uncomfortable. I am looking forward to it enormously."''',
+    nen("end", '''"We shall find the masks. We shall open the way. And I shall stand in front of whatever it is and it will ask me again, and this time..." {n}She stops.{/n} "This time I do not know what I shall say. That is the first time I can remember walking toward an experiment without a hypothesis. It is very uncomfortable. I am looking forward to it enormously."''',
         c("[Leave her to think.]")),
 ], requires=(SCRIBE, FOX_REVEALED), forbids=(RIDDLE_DONE, ENIGMA_RESOLVED), delay=24, places=("hub",))
 
@@ -661,7 +661,7 @@ m(TEETH, "A test of the bite", '"You\'re looking at my mouth again."', [
         c("[Bite properly.]", "hard", flags=(BITTEN,)),
         c("[Kiss the inside of her arm instead.]", "kiss")),
     nen("gentle", '''{n}You take her arm in both hands and set your teeth against the soft inside of it, not hard, and hold. She stops counting at three. She makes a noise that is not a word in any language she has ever catalogued.{/n}
-"That," she says, when you let go, "was not moderate force. That was a completely different variable." {n}There is a faint pink crescent on her skin. She looks at it, and then at you, and her pupils are enormous.{/n} "I shall have to describe it. I do not have the words. I have four thousand years of words and none of them are the right ones. This is intolerable."''',
+"That," she says, when you let go, "was not moderate force. That was a completely different variable." {n}There is a faint pink crescent on her skin. She looks at it, and then at you, and her pupils are enormous.{/n} "I shall have to describe it. I do not have the words. I have more words than anyone alive and none of them are the right ones. This is intolerable."''',
         c("Continue", "record")),
     nen("hard", '''{n}You bite properly. She yelps, loud enough to turn a sentry's head, and snatches the arm back and looks at the marks, a clean double crescent, already reddening.{/n}
 "Considerable!" {n}She sounds delighted.{/n} "Considerable force! The soldiers were not boasting after all. Or you were not." {n}She rubs the arm, and does not stop looking at the marks, and her breathing has gone quick in a way that has nothing to do with pain.{/n} "I shall need to measure it. The radius. The depth. Keep your jaw where it is while I... no. Give me your jaw. I shall measure you."''',

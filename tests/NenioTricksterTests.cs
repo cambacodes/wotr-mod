@@ -150,7 +150,7 @@ internal static class NenioTricksterTests
         // farewell has been seen: cost.name_filed is Derived [riddle_done, enigma_resolved], and no choice sets it.
         check(!riddle.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))
               && story.Scenes.Where(s => s.Relationship == "nenio").Where(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Contains(NameFiled)))).All(s => s.Id.StartsWith(P + "after_enigma", StringComparison.Ordinal))
-              && story.Derived[P + "name_gone"].Length == 1 && story.Derived[P + "name_gone"][0].SequenceEqual(new[] { NameFiled })
+              && story.Derived[P + "name_gone"].Length == 2 && story.Derived[P + "name_gone"][1].OrderBy(f => f).SequenceEqual(new[] { "nenio.enigma_resolved", P + "riddle_done" })
               && story.SeenCues["nenio.enigma_resolved"].SequenceEqual(new[] { FoxFarewell }),
             "The name is filed before her native farewell, which still says it.");
         check(!story.Scenes.Where(s => s.Relationship == "nenio").Any(s => s.Nodes.Any(n => n.Choices.Any(c => c.Set.Any(f => f.StartsWith("trickster.wmt.use.", StringComparison.Ordinal))))),
@@ -167,7 +167,7 @@ internal static class NenioTricksterTests
         var afterEnigma = S(P + "after_enigma");
         var agedStake = Later(story, staked, 200);
         var farewellSeen = Later(story, With(staked, "nenio.enigma_resolved"), 13);
-        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && !farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
+        check(!agedStake.Has(P + "name_gone") && !Avail(afterEnigma, agedStake) && farewellSeen.Has(P + "name_gone") && Avail(afterEnigma, farewellSeen)
               && Program.Walk(afterEnigma, farewellSeen).Where(r => r.Has(afterEnigma.Id)).All(r => r.Has(NameFiled)),
             "The name is filed without her farewell, or the talk after the Enigma does not follow it.");
         var told = Take(riddle, fox, "told", 0, P + "riddle_declined");
@@ -219,7 +219,7 @@ internal static class NenioTricksterTests
               && night.Nodes.Single(n => n.Id == "count").Choices.Any(c => c.Forbids.Contains("nenio.fox_revealed")),
             "Trk_Nenio_Night: her tail is not gated on the kitsune reveal.");
         var sosiel = S(P + "react.sosiel_point_five");
-        check(sosiel.Reaction && sosiel.AnswerLists.SequenceEqual(new[] { "129b55b8b5d50974f84f7c607d894fd0" }) && sosiel.Requires.Contains(P + "first_night")
+        check(sosiel.Reaction && sosiel.AnswerLists.SequenceEqual(new[] { "129b55b8b5d50974f84f7c607d894fd0" }) && sosiel.Requires.Contains(P + "night") && !sosiel.Requires.Contains(P + "first_night")
               && sosiel.Forbids.Contains("sosiel.dead") && sosiel.Forbids.Contains("sosiel.kicked_out"),
             "Trk_Nenio_Night: Sosiel's reaction is not on his hub after the first night.");
 
