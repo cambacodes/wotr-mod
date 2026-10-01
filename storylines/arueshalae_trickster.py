@@ -80,7 +80,7 @@ EVERY_TIME = P + "said_every_time"
 IF_ASKED = P + "said_if_asked"
 LATE_COMMITTED = P + "late_committed"
 GIFT = P + "gift_held"                 # "Insurance": she set her profane gift in the Commander's wrist
-ELYSIUM_DONE = "arueshalae.elysium"   # StartedDialogs BestEnding (bound in arueshalae_treatment's world keys)
+ELYSIUM_DONE = "arueshalae.changed"   # StartedDialogs BestEnding (bound in arueshalae_treatment's world keys)
 GIFT_TORN = P + "cost.gift_torn"       # the gift carried life the wrong way along it, and tore out of the keeper
 IN_HIDING = "noct.defeated_not_dead"          # text-read only (ledger 2): never a scene or choice gate
 QUEEN_HIDING = P + "queen_in_hiding"          # Derived node-read alias of IN_HIDING (the second opinion's first page)
@@ -222,7 +222,7 @@ letter(P + "dead.starving", "Diagnosis", 3, [
           check={"Skill": "SkillLoreReligion", "DC": 16, "Success": "rite_holds", "Failure": "rite_fails"})),
     nar("thread", '''{n}The chaplain on duty has already given his answer, with the tiredness of a man who has given it before: he will not raise a demon. The rite calls a soul home to its body, and he will not stand over a succubus and call, and find out what answers. His books say her kind keep no soul apart from the flesh, so that nothing is set loose when they die, and that only a wish or a miracle is sure to bring one back; he has neither, and his bishop would not spend them on her if he had. It is not a question of diamonds.{/n}
 {n}You do not need him. You have something else. It is set in the inside of your wrist, where she kissed it: her gift, the thread a succubus leaves in a mortal she means to keep. Every bestiary in the crusade's library agrees that the gift is hers to take back, and that it tears something out of its keeper when it goes. Not one of them says what becomes of it when she dies, because nobody has ever asked a succubus for one as insurance. You felt for it at the hour of her death, and every hour since. It is cold, and faint, and still there.{/n}
-{n}So whatever ended on that field did not end all of her. That is the whole of your evidence, and the whole of your wager: the gift was made to carry her voice into you, and at your asking she tied its far end into herself, so that it would pull both ways if she died. You are betting on that pull. You put the inside of your wrist, the place where she kissed it, against her mouth.{/n}
+{n}So whatever ended on that field did not end all of her. That is the whole of your evidence, and the whole of your wager: a profane gift puts a life in its giver's keeping, the queen herself says so of hers, and at your asking Arueshalae tied this one the other way too, her life in yours. You are betting that a keeper may pull on what is kept. You put the inside of your wrist, the place where she kissed it, against her mouth.{/n}
 {n}The thread goes taut. Something pulls from the far end of it, from under your palm and from under your own skin at once, and it is not blood it wants. It takes the warmth out of your face and the ease out of your voice, the part of you that makes a room turn round when you walk into it, for as long as it takes to heal, and drags it down the thread into her; and the gift comes out of your wrist after it, like a splinter. Under your hand, stone goes to skin. The sprig slides out of her hands.{/n}
 {n}She wakes exactly as starved as she died, and her eyes find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,), flags=(GIFT_TORN,)),
@@ -275,7 +275,7 @@ hub(P + "insurance", "Insurance", 3, '"If you died tomorrow, what would the chap
       c('[Ask for the one thing of hers a mortal can carry] "Then give me something of you to hold on to. Your gift."', "gift"),
       c('"Then don\'t die."', abort=True)),
     a("gift", '''{n}She goes very still. It is the stillness of the old days, the one she has spent years unlearning, and she hears it in herself and looks away.{/n}
-"You know what that is." {n}It isn't a question.{/n} "My kind give it to the ones we mean to keep. A splinter of me, set in you. It lets me talk inside your head from the other side of the world. It lets me suggest things to you, and you'd think they were your own ideas. And when I take it back, it takes a piece of you with it: your looks, your voice, whatever it is that makes people listen to you. I gave it, in the old days, to people I meant to keep. I don't remember any of them being better for it."''',
+"You know what that is." {n}It isn't a question.{/n} "My kind give it to the ones we mean to keep. A splinter of me, set in you. It lets me talk inside your head from the other side of the world. It lets me suggest things to you, and you'd think they were your own ideas. And it's a bond: when the queen gives hers, she tells the mortal that his life is under her protection now, and she means it. And when I take it back, it takes a piece of you with it: your looks, your voice, whatever it is that makes people listen to you. I gave it, in the old days, to people I meant to keep. I don't remember any of them being better for it."''',
       c('[The physician\'s reasoning] "If it goes out when you do, I\'ve lost some sleep. If it doesn\'t, I\'ll know you\'re still somewhere I can reach."', "reason"),
       c('[Let it go] "Forget I asked."', abort=True)),
     a("reason", '''"And if it doesn't go out, what then? You'll whistle down it?" {n}She laughs, and it comes out wrong.{/n} "I don't know what it does when we die. I've never heard of anyone stupid enough to ask one of us for it as a precaution."
@@ -285,7 +285,7 @@ hub(P + "insurance", "Insurance", 3, '"If you died tomorrow, what would the chap
       c('[Take your wrist back] "Not on those terms."', abort=True)),
     a("given", '''{n}She puts her mouth to the inside of your wrist, where the pulse is. It is not a kiss, although from across the room it would look like one. Something cold goes in under the skin and stays there, a little to the left of the vein, like a sliver of ice that will not melt.{/n}
 {n}For a moment the whole of Drezen is louder and brighter and more interested in you. Then it settles, and the only thing left is a small cold point that you can find with your eyes shut.{/n}
-{n}Then, because you ask, she does the thing she says no succubus has ever had a reason to do. She bites her own lip until it bleeds, and draws the far end of the thread back through the blood and into herself, and ties it there, wincing, as if knotting a cord to her own heart.{/n}
+{n}You tell her the rest of the plan: the queen's gift puts a mortal's life in the succubus's keeping. You want this one tied the other way as well, her life in yours, so that if she dies there is a bond with something on the far end of it, and a keeper with a right to pull. Then, because you ask, she does the thing she says no succubus has ever had a reason to do. She bites her own lip until it bleeds, and draws the far end of the thread back through the blood and into herself, and ties it there, wincing, as if knotting a cord to her own heart.{/n}
 "There." {n}She lets go of you as if your hand were hot.{/n} "Now it runs both ways. If I die with that in you, it will pull. I don't know what it will pull, or how hard, or what it will take out of you on the way. I hope you're pleased with yourself, doctor. I've no idea whether it'll work, and I'd rather not find out."''', c()),
 ], ("trickster", "trickster.ever"), forbids=(GIFT, DEAD, EVIL_DEAD, RECRUITED, RETURNED, CLOSED, "arueshalae.kicked_out",
                                             "arueshalae.kicked_out_evil"), delay=24, chapters=(3, 5))
@@ -465,9 +465,11 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c("Continue", "question")),
     a("question", '''"So I have a question for you. Only one, and you can't answer it with a joke, because I'll know." {n}She lays the blade down on the step between you.{/n} "Will you still want me when I'm good? Or only when I'm hungry?"''',
       c('"Both. Always both."', "both", flags=(COMMITTED,)),
-      c('"Only the good days."', "saint", flags=(SAINT_ONLY, DECLINED)),
+      c('"Only the good days."', "saint", flags=(SAINT_ONLY, DECLINED), forbids=(ELYSIUM_DONE,)),
       c('[Let her keep her answer for now] "Then I\'ll ask again."', "not_yet", flags=(DECLINED,)),
-      c('"Neither."', "neither", flags=(CLOSED,))),
+      c('"Neither."', "neither", flags=(CLOSED,)),
+      c('"Only the good days."', "saint_e", flags=(SAINT_ONLY, DECLINED), requires=(ELYSIUM_DONE,))),
+    a("saint_e", '''{n}She lays the blade down very carefully.{/n} "The flowers came, and the hunger went quiet, and you still want me to keep my bad days in another room." {n}Her voice is gentle and does not move.{/n} "I can't. They're mine too, Commander, the way the scars are mine. No. Ask me again when you want the woman who has them."''', c()),
     a("both", '''"Both." {n}She closes her eyes.{/n} "I was afraid you'd say that. I hoped you would."
 {n}She reaches for your hand, stops an inch short, and leaves her fingers there, in the air, where you can see them not touching you.{/n} "Both. All right. Both."''', c()),
     a("saint", '''"Only the good days, then." {n}She nods, and something shutters in her face so smoothly you almost miss it.{/n} {n}She picks the blade back up and holds it the way she holds it at the rail, as if it might cut her.{/n} "The hunger is in the good days too. It's in the blessing, and the bread, and in your hand when you pass me the cup. I can't send it into the next room while you visit." {n}Very quietly:{/n} "No. I'm sorry. I am. If you ever find you can bear the rest of me, I'll be on these steps."''', c()),

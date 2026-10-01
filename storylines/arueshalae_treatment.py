@@ -24,7 +24,7 @@ T = "arueshalae.treatment."
 CURE = "trickster.religion_tier1"          # MainCharacterFacts: the chosen Lore (Religion) rank 1 trick
 LAB = "arueshalae.lab_seen"                # SelectedAnswers After_Lab/Answer_0022 (the supportive answer), variant read
 DREAM = "arueshalae.dream_woken"           # SelectedAnswers Nightmares/Answer_0006 (the dream kiss itself), variant read
-ELYSIUM = "arueshalae.elysium"             # StartedDialogs: the native Ch5 best ending (her touch no longer harms)
+ELYSIUM = "arueshalae.changed"             # Derived (Q11): native redemption seen (Q3/BackToReality Cue_0018) or the Ch5 best ending
 
 INTAKE = T + "intake"
 STUDIED = T + "studied"
@@ -324,7 +324,7 @@ session(RELAPSE_TWO, "Contraindications", 5, '"You look like you haven\'t slept.
 # --- The rite slips (Chapter 5): the cost, and her distance ---------------------------------------------------------
 
 session(SLIPPED, "A missed night", 5, '"You\'re awake. Don\'t get up."', [
-    nar("start", '''{n}The march from the Ivory Labyrinth ran late, and you fell asleep in your boots. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}
+    nar("start", '''{n}The march back from the last sortie ran late, and you fell asleep in your boots. You remember her coming to the tent. You remember reaching for her, half-asleep, and her not pulling away fast enough.{/n}
 {n}That was two nights ago. You lost the whole of the day after it: the council met without you, and the quartermaster signed for you, and nobody could rouse you. Your hands are still cold to the wrist and will not warm at the brazier. When you try to stand, the tent tilts.{/n}''',
         c("Continue", "her", requires=(CURED,)),
         c("Continue", "her_paid", forbids=(CURED,))),
@@ -480,4 +480,14 @@ session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching thi
 
 
 def integrate(payload):
-    """The treatment adds only scenes; its keys bind on demand through trickster_world."""
+    """The treatment adds only scenes; its keys bind on demand through trickster_world. Q11: her changed state reads both the
+    native redemption (BackToReality/Cue_0018 6b24754f: "The Abyss has relinquished its hold on me. I... I am not a monster
+    anymore!", key 7b75d992-a3eb-4608-85fe-f6d6b3350dc6) and the later best-ending dialogue."""
+    from storylines import trickster_world as _tw
+    kind, guid, _ = _tw.BINDINGS["arueshalae.elysium"]
+    value = [guid] if kind in _tw.LIST_KINDS else guid
+    if (payload.get(kind) or {}).get("arueshalae.elysium") not in (None, value):
+        raise ValueError("Conflicting binding: arueshalae.elysium")
+    payload.setdefault(kind, {})["arueshalae.elysium"] = value
+    payload.setdefault("SeenCues", {})["arueshalae.back_to_reality"] = ["6b24754fcea768342a30a1e18ce91b92"]
+    payload.setdefault("Derived", {})[ELYSIUM] = [["arueshalae.elysium"], ["arueshalae.back_to_reality"]]

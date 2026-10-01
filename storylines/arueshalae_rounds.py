@@ -49,11 +49,11 @@ def session(id, title, chapter, entry, nodes, requires, forbids=(), delay=0, las
 # --- The cat on the smithy roof ---------------------------------------------------------------------------------
 
 session(CAT, "Field observations", 3, '"You look pleased with yourself."', [
-    a("start", '''{n}She has straw in her hair and a long red scratch across the back of one hand, and she is so happy she is almost vibrating.{/n}
+    a("start", '''{n}She has straw in her hair and a long red scratch across the back of one hand, and she is trying very hard not to look pleased about either.{/n}
 "The cat. The one on the smithy roof. It came to me." {n}She says it the way you would announce the fall of a fortress.{/n} "I've been trying for weeks. I've been sitting under that roof every morning, being very still and very uninteresting, and it just looked at me. They know, you see. Animals always know what we are."''',
         c("Continue", "want", requires=(RX_WANT,)),
         c("Continue", "watch", forbids=(RX_WANT,))),
-    a("want", '''"It was on my list. Number two. I want the cat to like me. I told you, and I was ashamed of it, because it's such a small, stupid thing to want." {n}She turns the scratched hand over, admiring the scratch.{/n} "And then this morning I stopped trying. I just sat there and thought about the bakery on Tanner's Row, and the refugees, and your burnt onions, and it came down and sat on my knee as if I were furniture."''',
+    a("want", '''"It was on my list. Number two. I want the cat to like me. I told you, and I was ashamed of it, because it's such a small, stupid thing to want." {n}She turns the scratched hand over, admiring the scratch.{/n} "And then this morning I stopped trying. I just sat there and thought about the bakery on Tanner's Row, and the refugees, and it came down and sat on my knee as if I were furniture."''',
         c("Continue", "science")),
     a("watch", '''"I only noticed it because of your prescription. I was watching the smiths eat their bread at the forge door, and there it was on the roof, watching them too. Two of us, taking notes." {n}She turns the scratched hand over, admiring the scratch.{/n} "And this morning it came down and sat on my knee as if I were furniture. I didn't do anything. I think that's why."''',
         c("Continue", "science")),
@@ -264,7 +264,8 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
             p('''{n}The treatment ended the day the flowers came, and she discharged herself, loudly, in front of witnesses. The Commander kept the title of quack anyway. She said it was the only diagnosis {mf|he|she} had ever got right.{/n}''',
               requires=(ELYSIUM,), forbids=(SAINT_ONLY,)),
         ))],
-    requires=("trickster.ever", COMMITTED, INTAKE), forbids=(CLOSED, EVIL_DEAD, RECRUITED), last=6, Relationship="arueshalae"))
+    requires=("trickster.ever", COMMITTED, INTAKE), forbids=(CLOSED, EVIL_DEAD, RECRUITED, "sacrifice"), last=6, Relationship="arueshalae",
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 
 
 # --- Companion lines for the treatment (exactly Sosiel and Lann, each behind its reactor's guard) ---------------
