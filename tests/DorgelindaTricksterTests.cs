@@ -116,7 +116,8 @@ internal static class DorgelindaTricksterTests
         check(Choice(stocktake, "sign", 0).Crusade?.Resource == "Materials" && Choice(stocktake, "sign", 0).Crusade!.Amount == -100
               && stocktake.Chapters.SequenceEqual(new[] { 5 }) && stocktake.EntryMythic == "PlayerIsTrickster",
             "The stocktake is not the Chapter 5 Trickster signature with its frozen column.");
-        foreach (var s in own.Where(s => s != countersign && s != recount))
+        // PP5: the Chapter 4 crate (cold_iron_and_wool) is the one page read away from her desk; its own block checks its shape.
+        foreach (var s in own.Where(s => s != countersign && s != recount && s.Id != L + "cold_iron_and_wool"))
             check(s.AnswerLists.SequenceEqual(new[] { Hub }) && s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })
                   && !Rules.IsRemote(s) && s.Forbids.Contains("dorgelinda.closed"),
                 "A Dorgelinda scene is not at her own desk in Drezen: " + s.Id);
@@ -404,6 +405,42 @@ internal static class DorgelindaTricksterTests
         check(coda.RequiresAnyGroups.Length == 1 && coda.RequiresAnyGroups[0].Contains("dorgelinda.committed")
               && coda.RequiresAnyGroups[0].Contains(P + "late_committed") && coda.Forbids.Contains(P + "declined"),
             "The late commit is missing from her Last Call coda.");
+
+        // PP5 (Chapter 4): cold iron and wool. A crate she packed before the Abyss, opened at the first camp; no courier.
+        var wool = S(L + "cold_iron_and_wool");
+        check(Rules.IsRemote(wool) && wool.Kind == "letter" && wool.Chapters.SequenceEqual(new[] { 4 }) && wool.MinChapter == 4 && wool.MaxChapter == 4
+              && wool.Relationship == "dorgelinda" && wool.Requires.Contains("trickster.ever") && wool.Requires.Contains(P + "counted"),
+            "Cold iron and wool lost its shape (a Chapter 4 letter on her counted route).");
+        var counted4 = World(story, 4, "trickster.ever", P + "returned", P + "counted");
+        check(Rules.Available(story, wool, counted4), "Cold iron and wool does not open in the Abyss.");
+        foreach (int ch in new[] { 3, 5 })
+            check(!Rules.Available(story, wool, World(story, ch, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted")),
+                "Cold iron and wool opens outside the Abyss: Chapter " + ch);
+        check(!Rules.Available(story, wool, World(story, 4, "trickster.ever")), "The crate is packed for a Commander she never counted.");
+        check(!Rules.Available(story, wool, World(story, 4, "trickster.ever", P + "counted", "dorgelinda.closed")), "The crate ignores a closed route.");
+        var woolPages = new HashSet<string>();
+        var spent = Program.Walk(wool, counted4, (page, _) => woolPages.Add(page)).Where(r => r.Has(wool.Id)).ToList();
+        string[] woolWays = { L + "wool_shared", L + "wool_kept", L + "wool_traded" };
+        check(spent.Count == 3 && woolWays.All(f => spent.Count(r => r.Has(f)) == 1) && spent.All(r => !Rules.Available(story, wool, Later(story, r, 48))),
+            "The wool cannot go three ways, or the crate is opened twice.");
+        check(woolPages.Contains("note") && !woolPages.Contains("note_heel"), "The right heel is minded for boots she never fitted.");
+        var heelPages = new HashSet<string>();
+        Program.Walk(wool, World(story, 4, "trickster.ever", P + "returned", P + "counted", L + "fitted"), (page, _) => heelPages.Add(page));
+        check(heelPages.Contains("note_heel") && !heelPages.Contains("note"), "The fitted boots lose their heel line.");
+        // Chapter 5: receipts reads the wool back, each answer only for its own Commander, appended after the original three.
+        var column = receipts.Nodes.Single(n => n.Id == "column").Choices;
+        check(column.Count == 6 && column[0].Next == "pack" && column[1].Next == "thought" && column[2].Next == "miss"
+              && column.Skip(3).Select(c => c.Requires.Single()).SequenceEqual(woolWays), "The wool's answers were not appended to receipts.");
+        foreach (var r in spent)
+        {
+            var home = Later(story, r, 0, 5); home.Flags.Add("dorgelinda.present"); Rules.Complete(story, home);
+            check(Rules.Available(story, receipts, home), "Receipts does not follow the wool.");
+            var seen = new HashSet<string>();
+            var outcomes = Program.Walk(receipts, home, (page, _) => seen.Add(page));
+            string want = woolWays.Single(r.Has).Substring(L.Length);
+            check(seen.Contains(want) && woolWays.Count(w => seen.Contains(w.Substring(L.Length))) == 1 && outcomes.Any(o => o.Has(L + "welcomed")),
+                "Receipts reads the wrong wool: " + want);
+        }
 
         // Q9 (Sol INT): shared nodes recall no history the player may not have.
         foreach (var (sc, nd) in new[] { (receipts, "thought"), (commit, "ask"), (commit, "open"), (methods, "start"), (S(L + "the_right_size"), "complaint"),

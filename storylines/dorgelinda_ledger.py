@@ -76,6 +76,17 @@ CATHEDRAL = "dorgelinda.cathedral"                # Logistics_8-1/Cue_0075: "may
 MERRY_CITY = "dorgelinda.merry_city"              # c5 Coronation/Cue_0009 (Trickster, no Fool King crowned)
 KING_REVEL = "dorgelinda.king_revel"              # c5 Coronation/Cue_0018 (Trickster, King Thaberdine crowned)
 
+WOOL = L + "cold_iron_and_wool"            # PP5 Chapter 4 beat: the crate opened at the first camp in the Abyss
+WOOL_SHARED = L + "wool_shared"
+WOOL_KEPT = L + "wool_kept"
+WOOL_TRADED = L + "wool_traded"
+FITTED = L + "fitted"                       # the_right_size: boots made to the cord
+WOOL_CHOICES = (
+    c("[Hand the wool round the camp, a pair to each, and keep the note.]", flags=(WOOL_SHARED,)),
+    c("[Keep the lot. She tied the note to the top pair so that you would be the one to open it.]", flags=(WOOL_KEPT,)),
+    c("[Trade it. A dozen pair of dry socks is worth a great deal in a camp in the Abyss.]", flags=(WOOL_TRADED,),
+      alignment=("Chaotic", 1)),
+)
 HAND_TOLD = L + "hand_told"
 PEN_LIFTED = L + "pen_lifted"
 GRIP_HELD = L + "grip_held"
@@ -322,7 +333,25 @@ office(RECEIPTS, "Receipts", '"You kept my column open?"', [
 "Carried forward." {n}Every one of them says it.{/n} "Now. You went down there with whatever your party could carry and a pack of heroes. What came back? I want receipts."''',
       c('[Empty your pack onto her desk.]', "pack"),
       c('"I thought about your ledger down there."', "thought"),
-      c('"Did you miss me?"', "miss")),
+      c('"Did you miss me?"', "miss"),
+      # PP5: the wool from the arrowhead crate (Chapter 4, WOOL) comes back to her desk, as this Commander spent it.
+      c('"The wool in the arrowhead crate. I handed it round the camp."', "wool_shared", requires=(WOOL_SHARED,)),
+      c('"The wool in the arrowhead crate. I wore it. All twelve pair, in turn."', "wool_kept", requires=(WOOL_KEPT,)),
+      c('"The wool in the arrowhead crate. I traded it."', "wool_traded", requires=(WOOL_TRADED,))),
+    d("wool_shared", '''"Handed 'em round." {n}She nods, once, the way she nods at a manifest that adds up.{/n}
+"Good. That's what they were for. I'd have sent twenty if I'd thought you'd do the sensible thing with 'em." {n}She writes something short.{/n} "How many pair came back?"
+{n}You tell her. It is not many. She does not seem to have expected many.{/n}
+"Then the rest wore through on feet that walked out again. That I can write off." {n}She looks at your boots, then at you.{/n} "Your own feet. Dry?"''',
+      c('"Mostly."', "close", flags=(WELCOMED,))),
+    d("wool_kept", '''"Twelve pair. On one pair of feet." {n}She sniffs.{/n}
+"I sent 'em for the lot of you. I'll not pretend I didn't tie the note on top so it'd be you that opened it." {n}Her mouth twitches.{/n} "Well. Issued to the Commander's party, worn by the Commander. Can't fault the paperwork."
+{n}She glances down at your boots.{/n} "Feet dry?"''',
+      c('"Mostly."', "close", flags=(WELCOMED,))),
+    d("wool_traded", '''"You traded my socks." {n}She puts the pen down.{/n} "In the Abyss. To what?"
+{n}You tell her what a dozen pair of dry wool socks fetched in a camp in the Abyss, and from whom, and what it bought.{/n}
+{n}She listens with her jaw set, outraged on behalf of the wool. Then, against her will, the corner of her mouth goes.{/n}
+"That's a better rate than Nerosyan gives me." {n}She picks the pen back up.{/n} "Don't you dare tell my clerks. And next time I pack you socks, you wear the bloody socks."''',
+      c('"Next time."', "close", flags=(WELCOMED,))),
     d("pack", '''{n}You empty it: a demon's coin that is warm to the touch, a stub of candle from somewhere with no sun, a broken buckle, two cold-iron arrowheads, blunted, a scrap of silk that smells of something you do not want to name.{/n}
 {n}She sorts it with her good hand into two piles without being told which is which. The coin she does not touch. The arrowheads she picks up, turns in the lamplight, and sets upright, side by side, like soldiers.{/n}
 "Two. I'll count those." {n}She writes it.{/n} "That's a better rate of return than Nerosyan."''',
@@ -1357,6 +1386,31 @@ SCENES.append(scene(P + "epilogue.after_the_war", "", "DorgelindaEpilogue", 6, "
 SCENES.append(scene(P + "epilogue.ruled_off", "", "DorgelindaEpilogue", 6, "", [
     nar("page", """{n}The Logistics Council's last ledger balanced to the copper. One column in it, in the Commander's name, was ruled off in a hard straight line the full width of the page, the only line Dorgelinda Stranglehold ever drew in anger. She kept the dented tin cup on the shelf over her desk until she died, and never drank from it again.{/n}""")],
     requires=("trickster.ever", COMMITTED, CLOSED), last=6, Relationship="dorgelinda"))
+
+
+# --- 29. Cold iron and wool (Chapter 4, PP5). The party went down into the Abyss on the crusade's own stores (the stocktake's
+# "issued to the Commander's party"). No courier crosses the planes: she packed the crate before they left, and it is opened
+# at the first camp down there (the outpost the party sets up, c4 Nexus_Camp/HeraldLetsGo Cue_0018 ef9681784d2b00247b35f81e4cfbc167).
+# Her reason to write is her trade: the veteran-quartermaster argument is native (Logistics_2/Cue_0080 867f1304, about her);
+# her personal fitting scene (the_right_size) is authored. The
+# consequence is read by receipts (Chapter 5): the wool comes back to her desk as this Commander spent it.
+
+SCENES.append(scene(WOOL, "Cold iron and wool", "Dorgelinda", 4, "", [
+    nar("crate", '''{n}At camp in the Abyss you open one of the crates your party carried down from Drezen, because its tag says COLD IRON and the camp has already had one visitor that would not have cared for it. The arrowheads are there, packed in straw and counted. So, under them, where more straw ought to be, are socks: grey wool, regulation, rolled in twos the way the stores roll them. A dozen pair.{/n}
+{n}Tied round the top pair with a bit of string is a note in a big, square, one-handed hand.{/n}''',
+        c("Continue", "note_heel", requires=(FITTED,)),
+        c("Continue", "note", forbids=(FITTED,))),
+    d("note", '''"Commander.
+Cold iron's for the demons. Wool's for you lot. Wet feet'll put a soldier out of the line quicker than anythin' with horns, and I'll not have it said my stores sent you down there with one pair each.
+Twelve pair. I counted. If you come back with fewer I'll want to know whose feet they're on.
+D. Stranglehold, Logistics."''', *WOOL_CHOICES),
+    d("note_heel", '''"Commander.
+Cold iron's for the demons. Wool's for you lot. Wet feet'll put a soldier out of the line quicker than anythin' with horns, and I'll not have it said my stores sent you down there with one pair each.
+Twelve pair. I counted. If you come back with fewer I'll want to know whose feet they're on.
+D. Stranglehold, Logistics."
+{n}Under the signature, smaller, squeezed in as if she argued with herself about it first:{/n} "Mind the right heel."''', *WOOL_CHOICES),
+], requires=("trickster.ever", COUNTED), forbids=(CLOSED, WOOL), delay=24, last=4, optional=True,
+    Relationship="dorgelinda", Chapters=[4], Remote=True, Kind="letter"))
 
 
 # Her epilogue remembers what the weekly counts made of the line.
