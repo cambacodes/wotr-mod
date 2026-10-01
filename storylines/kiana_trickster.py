@@ -546,7 +546,8 @@ SCENES.append(scene("kiana.trickster.epilogue.commit", "The last line", "Epilogu
     Relationship="kiana"))
 
 # Q10 (HOW, R2-1; INT R2-3): the princess's question, asked in person at Arsinoe's counter on her presence hub once she and
-# the Commander are lovers and before her "kiana.morning" letter. The yes is the only producer of the late commitment.
+# the Commander are lovers and before her "kiana.morning" letter. The yes commits (kiana.committed, as the morning's yes
+# does, so the E9 walk and the committed endings see one commitment) and is the only producer of the late commitment.
 def question_choices():
     return (c('[Write yes under the question, and sign it.]', "yes"), c('[Write no, and sign that too.]', "no"))
 SCENES.append(scene("kiana.trickster.late_question", "The underlined question", "Kiana", 5, "", [
@@ -555,7 +556,7 @@ SCENES.append(scene("kiana.trickster.late_question", "The underlined question", 
       *question_choices()),
     k("yes", '''{n}You write it under the question and sign it. She reads it upside down before you have finished, takes the page, folds it into her bodice over her heart, and kisses you across the counter, hard enough that Arsinoe puts down her pen.{/n}
 "Then the guest stays. Come home when they let you. I've kept the chair."''',
-      c('[Keep her hand.]', flags=(LATE_YES,))),
+      c('[Keep her hand.]', flags=(LATE_YES, "kiana.committed"))),
     k("no", '''{n}You write it, and sign it. She reads it, nods, and folds the page very small.{/n}
 "Thank you. I'd rather have a no in ink than a yes I had to guess at. The princess keeps her castle. Don't you dare come to the opening night and look sorry."''',
       c('[Leave her the page.]', flags=(LATE_NO,))),
@@ -569,7 +570,7 @@ SCENES.append(scene("kiana.trickster.late_question_letter", "The underlined ques
       *question_choices()),
     k("yes", '''{n}Her reply comes back the same week: the page again, with your yes on it and, under that, one line in her hand.{/n}
 "Then the guest stays. Come home when they let you. I've kept the chair."''',
-      c('[Keep the page.]', flags=(LATE_YES,))),
+      c('[Keep the page.]', flags=(LATE_YES, "kiana.committed"))),
     k("no", '''{n}Her reply comes back the same week, very short.{/n}
 "Thank you for writing it down. I'd rather have a no in ink than a yes I had to guess at. The princess keeps her castle. Don't you dare come to the opening night and look sorry."''',
       c('[Keep the page.]', flags=(LATE_NO,))),

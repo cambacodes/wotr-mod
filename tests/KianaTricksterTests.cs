@@ -356,8 +356,10 @@ internal static class KianaTricksterTests
         check(!saidNo.Has("kiana.trickster.late_committed") && !Rules.Available(story, epCommit, saidNo)
               && Rules.Available(story, S("kiana.trickster.epilogue.late_no"), saidNo), "Q10: the late no does not reach its own ending.");
         var saidYes = answers.Single(r => r.Has("kiana.trickster.late_yes"));
-        check(!Pages(epCommit, saidYes).Contains("blank") && Pages(epCommit, saidYes).Contains("margin") && Pages(epCommit, saidYes).Contains("stage"),
-            "Q10: a written yes is asked again and may be refused.");
+        var yesEnd = Later(story, saidYes, 1); yesEnd.Chapter = 6;
+        check(yesEnd.Has("kiana.committed") && yesEnd.Has("kiana.trickster.late_committed") && !Rules.Available(story, epCommit, yesEnd)
+              && Rules.Available(story, S("kiana.ending_promised"), yesEnd),
+            "Q10: the in-person yes does not commit, or the epilogue asks it again.");
         foreach (var answered in new[] { saidYes, saidNo })
             check(!Rules.Available(story, S("kiana.morning"), Later(story, answered, 100)) && !Rules.Available(story, questionLetter, Later(story, answered, 100)),
                 "Q10: the question is asked twice.");
