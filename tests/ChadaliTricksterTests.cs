@@ -111,8 +111,8 @@ internal static class ChadaliTricksterTests
             "The payoff does not let the Commander plant the orange on the page (Council_5-1/Cue_0020), or leave the bag alone.");
         foreach (var hall in own.Where(s => !Rules.IsRemote(s)))
             check(hall.AnswerLists.SequenceEqual(new[] { List }) && hall.ContactUnit == null
-                  && hall.Chapters.All(c => c == 3 || c == 5) && hall.Forbids.Contains("chadali.lost_at_council"),
-                "A hall scene is not on her private list in Chapters 3/5 behind the sealed-hall guard: " + hall.Id);
+                  && hall.Chapters.All(c => c >= 3 && c <= 5) && hall.Forbids.Contains("chadali.lost_at_council"),
+                "A hall scene is not on her private list in Chapters 3-5 behind the sealed-hall guard: " + hall.Id);
         foreach (var remote in new[] { letter, lucky })
             check(Rules.IsRemote(remote) && remote.MinChapter == 5 && remote.MaxChapter == 5, "A sealed-hall letter is not a Chapter 5 letter: " + remote.Id);
         check(own.Count(Rules.IsRemote) == 3, "Chadali has letters beyond the spec's one-per-branch budget (orange, 'Lucky you', the late wager; one per branch).");
@@ -328,6 +328,51 @@ internal static class ChadaliTricksterTests
         check(motion.Forbids.Contains("chadali.lost_at_council") && motion.AnswerLists.SequenceEqual(new[] { List }),
             "Eritrice's Chadali reaction is not a hall scene behind Chadali's sealed-hall guard.");
         check(letter.Nodes.Any(n => n.Id == "postscript"), "Eritrice's postscript is missing from the orange letter.");
+        // PP6 (pacing): her book on Cobblehoof's errand, in the hall the night of the Chapter 4 session (Council_Lexicon2/Cue_0033),
+        // settled by the bag in Chapter 5 (will_it_hurt gains three answers after its own three); the Lexicon sitting may open that
+        // night too ([3, 5] -> [3, 4, 5]), where its key branch answers the session.
+        var fetch = Sc(F + "what_he_went_for");
+        check(story.SeenCues["chadali.cobblehoof_errand"].SequenceEqual(new[] { "507a2a7cccb1c26449838fbf28f2e3af" })
+              && fetch.Chapters.SequenceEqual(new[] { 4 }) && fetch.MinChapter == 4 && fetch.MaxChapter == 4 && !Rules.IsRemote(fetch)
+              && fetch.AnswerLists.SequenceEqual(new[] { List }) && fetch.Forbids.Contains("chadali.lost_at_council")
+              && fetch.Requires.Contains("chadali.started") && fetch.Requires.Contains("chadali.cobblehoof_errand"),
+            "The bag bet lost its shape (a Chapter 4 hall sitting after Cobblehoof's errand).");
+        var errand4 = World(story, 4, "trickster.ever", "chadali.started", "chadali.cobblehoof_errand");
+        check(Rules.Available(story, fetch, errand4), "The bag bet does not open the night of the session.");
+        check(!Rules.Available(story, fetch, World(story, 4, "trickster.ever", "chadali.started")), "The bag bet opens before Cobblehoof's errand.");
+        foreach (int ch in new[] { 3, 5 })
+            check(!Rules.Available(story, fetch, World(story, ch, "trickster.ever", "chadali.started", "chadali.cobblehoof_errand")),
+                "The bag bet opens outside Chapter 4: " + ch);
+        check(!Rules.Available(story, fetch, World(story, 4, "trickster.ever", "chadali.started", "chadali.cobblehoof_errand", "chadali.lost_at_council")),
+            "The bag bet ignores the sealed hall.");
+        string[] betWays = { F + "bag_bet_against", F + "bag_bet_partners", F + "bag_bet_declined" };
+        string[] betPages = { "bet_won", "bet_lost", "bet_declined" };
+        var bets = Program.Walk(fetch, errand4).Where(r => r.Has(fetch.Id)).ToList();
+        check(bets.Count == 3 && betWays.All(f => bets.Count(r => r.Has(f)) == 1) && bets.All(r => !Rules.Available(story, fetch, Later(story, r, 48))),
+            "The bag bet cannot go three ways, or is made twice.");
+        var hurtOpen = Sc(F + "will_it_hurt").Nodes.Single(n => n.Id == "start").Choices;
+        check(hurtOpen.Count == 6 && hurtOpen[0].Next == "promise" && hurtOpen[1].Next == "truth" && hurtOpen[2].Next == "looking"
+              && hurtOpen.Skip(3).Select(c => c.Requires.Single()).SequenceEqual(betWays), "The bet's settlement was not appended to will_it_hurt.");
+        foreach (var r in bets)
+        {
+            var home = Later(story, r, 0, 5); home.Flags.Add("council.cauldron_given"); Rules.Complete(story, home);
+            check(Rules.Available(story, Sc(F + "will_it_hurt"), home), "Will it hurt does not follow the bag bet.");
+            var pagesSeen = new HashSet<string>();
+            var outcomes = Program.Walk(Sc(F + "will_it_hurt"), home, (page, _) => pagesSeen.Add(page));
+            string want = betPages[Array.FindIndex(betWays, r.Has)];
+            check(pagesSeen.Contains(want) && betPages.Count(pagesSeen.Contains) == 1 && outcomes.Any(o => o.Has(F + "told_it_would_hurt"))
+                  && outcomes.Any(o => o.Has(F + "promised_no_force")), "Will it hurt settles the wrong bet, or loses its own answers: " + want);
+        }
+        var noBetPages = new HashSet<string>();
+        Program.Walk(Sc(F + "will_it_hurt"), World(story, 5, "trickster.ever", "chadali.started", "council.cauldron_given"), (page, _) => noBetPages.Add(page));
+        check(!betPages.Any(noBetPages.Contains), "A bet is settled that was never made.");
+        var lexicon = Sc(S + "an_interesting_way");
+        var lexPages = new HashSet<string>();
+        Program.Walk(lexicon, World(story, 4, "trickster.ever", "chadali.started", "chadali.lexicon_found", "eritrice.proposed_key"), (page, _) => lexPages.Add(page));
+        check(lexicon.Chapters.SequenceEqual(new[] { 3, 4, 5 }) && lexPages.Contains("key") && !lexPages.Contains("how"),
+            "The Lexicon sitting does not answer the key the night of the session.");
+        check(own.Where(s => !Rules.IsRemote(s) && s.Chapters.Contains(4)).Select(s => s.Id).OrderBy(x => x)
+                  .SequenceEqual(new[] { fetch.Id, lexicon.Id }.OrderBy(x => x)), "Chapter 4 holds more of the hall than the session's own night.");
         Console.WriteLine("PASS: Chadali Trickster (Trk_Chadali_*): coin, orange, second cookie, the seed, the sealed hall's letters, 'Lucky you' and the wagers.");
     }
 }

@@ -129,6 +129,8 @@ session(FORESEEN, "A dull future", '"Does Shyka frighten you?"', [
 
 
 # --- 3. An interesting way: the Lexicon, and the key. -------------------------------------------------------------------
+# PP6 (pacing, window only): the key branch answers the Chapter 4 session (Council_Lexicon2/Cue_0040, Cue_0046), and her hall list
+# is live that night, so the sitting may open in Chapter 4 too: [3, 5] -> [3, 4, 5].
 
 session(LEXICON, "Written in a very interesting way", '"Did you understand the Lexicon?"', [
     ch("start", '''"No!" {n}Cheerfully.{/n} "I didn't really understand any of it, but it's written in a very interesting way! If I told Eritrice so she'd write it down with the little squiggle."
@@ -153,7 +155,7 @@ session(LEXICON, "Written in a very interesting way", '"Did you understand the L
     ch("close", '''{n}She takes your hand and turns it over and looks at the palm, the way fortune-tellers do in the markets, though she does not pretend to read anything there.{/n}
 "I'll send you luck every morning. Double. I'll take it from Alichino's share. He won't notice; he never uses his."''',
       c("[Let her keep your hand a moment.]")),
-], requires=(STARTED, "chadali.lexicon_found"), forbids=(LEXICON,))
+], requires=(STARTED, "chadali.lexicon_found"), forbids=(LEXICON,), chapters=(3, 4, 5))
 
 
 # --- 4. A drinking song. -----------------------------------------------------------------------------------------------
