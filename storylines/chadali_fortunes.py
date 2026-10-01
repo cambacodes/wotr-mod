@@ -35,6 +35,7 @@ SEEN_CUES = {
     WORTHLESS: ["65e5e45942cacf946b3279cdd6a67af3"],
     NEEDLED: ["86822037eac848943abe4be795037ae7"],
     ERRAND: ["507a2a7cccb1c26449838fbf28f2e3af"],
+    "chadali.socoth_never_seen": ["fb1347793c15a9342af9eaf03060056d"],   # Epilogues/Cue_0570: "No one ever saw Socothbenoth again"
 }
 
 BAG = F + "will_it_hurt"
@@ -140,7 +141,7 @@ fortune(FAIR, "A great big fair", '"About your fair..."', [
       c('[Flirt] "Save me a lollipop."', "lollipop")),
     ch("souls", '''{n}The light goes out of her face, and comes back, and goes out again, as if she were fighting with a lamp.{/n}
 "He said that and then he said something else very fast. I heard the something else. I prefer the something else." {n}She crosses her arms.{/n}
-"You're doing it again. You're making me look at things. The bleeding, and the brick, and now the souls." {n}Her voice rises.{/n} "Why can't I have one nice thing without you holding it up to the light and showing me the crack?"''',
+"You're doing it again. You're making me look at things. Now it's the souls." {n}Her voice rises.{/n} "Why can't I have one nice thing without you holding it up to the light and showing me the crack?"''',
       c('"Because you\'d want to know. If it were your fair and your crack."', "know", flags=(SAW_THE_FAIR,)),
       c('"You can. I\'m sorry. Have your fair."', "fair_kept")),
     ch("know", '''{n}She glares at you. It is not a very good glare; she has not had much practice.{/n}
@@ -148,7 +149,7 @@ fortune(FAIR, "A great big fair", '"About your fair..."', [
 "Then no souls. No selling. Not one. If Alichino wants a stall, he can sell lollipops." {n}She nods, fiercely.{/n} "I'll tell Eritrice to write it down. She likes rules. She'll write it in red."''',
       c("Continue", "close")),
     ch("fair_kept", '''"Thank you." {n}She sniffs, and then smiles, and then does not smile.{/n}
-"No. You were right. You're always right about the cracks. It's horrible." {n}She sighs.{/n} "No souls at my fair. I'll watch the devil's stall myself. With a very big lollipop."''',
+"And there won't be any souls at it. Not because you said so. Because it's my fair, and I decide what's sold there." {n}Her chin comes up.{/n} "I'll watch the devil's stall myself. With a very big lollipop."''',
       c("Continue", "close", flags=(SAW_THE_FAIR,))),
     ch("puppy", '''"It would not!" {n}Offended.{/n} "I'd bring it a cookie. Nothing eats you when you've brought it a cookie. It's a law."
 "...It would eat the cookie first. Then it would think about eating me. And while it was thinking I'd scratch its ears, all three pairs, and it would forget." {n}She beams.{/n} "That's how I've survived everything so far."''',
@@ -343,7 +344,7 @@ fortune(RIGGED, "Rigged", '"Why are you looking at me like that?"', [
       c("[Promise to put up a sign.]")),
     ch("kept", '''{n}She looks at your hand, and at her own outstretched little finger, and slowly curls it back into her fist.{/n}
 "Then do it with your name on it." {n}Very quietly.{/n} "If you have to act, act. Just don't do it wearing my face. I'll never ask you not to feed them. I'm asking you not to pretend you're me while you do it."
-"That's the whole of it. That's all I've got left that's mine."''',
+"And I'll tell my priest myself who mended that roof, and he'll tell the whole shrine. I'm their patron. Not you."''',
       c('"With my name on it. I promise that much."', "stopped")),
 ], requires=(MORNING, "chadali.wagers.prayer_answered"), forbids=(RIGGED, "chadali.wagers.prayer_credited"))
 

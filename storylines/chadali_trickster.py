@@ -232,7 +232,10 @@ letter(P + "fought.lucky", "Lucky you", [
       c("[Eat one.]")),
     ch("needle", '''{n}The reply is short.{/n} "I'll hold you to that. I never forget a bet, and I never forget a promise, and this is both." {n}And then, in the corner, a small drawing of a needle, and beside it, crossed out several times and written again: a cookie.{/n}''',
       c("[Keep the letter.]")),
-    ch("shut", '''{n}No answer comes. A month later a parcel arrives with no note in it at all: a handful of cookies gone hard, and your coin, lying flat, tails up.{/n}''',
+    ch("shut", '''{n}No answer comes. A month later a parcel arrives with no note in it at all: a handful of cookies gone hard.{/n}''',
+      c("[Look at the bottom of the parcel.]", "shut_coin", requires=(PRIMED,)),
+      c("[Put the parcel away.]", forbids=(PRIMED,))),
+    ch("shut_coin", '''{n}Under the cookies lies your coin, flat, tails up.{/n}''',
       c("[Put the coin away.]")),
 ], requires=("trickster", LATCHED), forbids=(RETURNED,), delay=24, TricksterDevice=True, TricksterState=LOST)
 
@@ -276,7 +279,7 @@ SCENES.append(scene(P + "epilogue.lucky_night", "", "ChadaliEpilogue", 6, "", [
         paragraphs=(
             p("{n}It had fallen once, at the rift, the night the Commander called in her luck. She stood it back up herself the next morning, and would never say which face it had shown.{/n}", requires=("chadali.lastcall.called",)),
             p("{n}The Council went on meeting without her for a while, and then stopped. \"They pretend they never met,\" she said. \"I don't. I remember every one of them. I send them all cookies. Cobblehoof sends them back.\"{/n}", requires=("council.epilogue_ceased",)),
-            p("{n}At the Council's victory feast she sat at the head of the table beside the Commander, which nobody had voted for, and handed round cookies until Eritrice gave up and minuted it.{/n}", requires=("council.epilogue_feast",)),
+            p("{n}The Council never did work out whom it had forgotten to invite to its victory feast. Chadali left before the toasts with a tray of cookies under her arm, and never told them where she went.{/n}", requires=("council.epilogue_feast",)),
             p("{n}The Council went on convening, and she went on bringing cookies to it, and every session she left a chair empty beside her with a coin standing on its edge on the seat.{/n}", requires=("council.epilogue_convened",)),
             p("{n}The tree she swore came from the top of Axis took in the best corner of the citadel garden, and bore fruit in its second year. The gardener swore the oranges were ordinary. Nobody who ate one believed him.{/n}", requires=(ORANGE_TREE,)),
             p("{n}She never paid back the luck she had borrowed on the day of the coin. She said it was invested.{/n}", requires=(LUCK_LENT,), forbids=(LUCK_OWED, "chadali.lastcall.called")),

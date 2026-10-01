@@ -373,6 +373,22 @@ internal static class ChadaliTricksterTests
             "The Lexicon sitting does not answer the key the night of the session.");
         check(own.Where(s => !Rules.IsRemote(s) && s.Chapters.Contains(4)).Select(s => s.Id).OrderBy(x => x)
                   .SequenceEqual(new[] { fetch.Id, lexicon.Id }.OrderBy(x => x)), "Chapter 4 holds more of the hall than the session's own night.");
+        // PP6 Sol r1. CAN: the feast forgot the Commander (Epilogues/Cue_0569); Socothbenoth's favours stop where he vanishes
+        // (SocotGone, Cue_0570). INT: the unprimed refusal returns no coin it never gave.
+        var nightParas = pageNight.Nodes[0].Paragraphs;
+        check(nightParas.Where(p => p.Requires.Contains("council.epilogue_feast")).All(p => !p.Text.Contains("beside the Commander") && p.Text.Contains("forgotten to invite")),
+            "The victory feast seats the Commander that Cue_0569 forgot.");
+        check(story.SeenCues["chadali.socoth_never_seen"].SequenceEqual(new[] { "fb1347793c15a9342af9eaf03060056d" }), "Cue_0570 is not bound.");
+        check(nightParas.Where(p => p.Text.Contains("Socothbenoth") && (p.Text.Contains("No hard feelings") || p.Text.Contains("for the rest of his long existence")))
+                  .All(p => p.Forbids.Contains("socot.gone") && p.Forbids.Contains("chadali.socoth_never_seen")),
+            "Socothbenoth keeps sending favours after he vanished.");
+        check(nightParas.Count(p => p.AnyGroups.Any(g => g.Contains("socot.gone") && g.Contains("chadali.socoth_never_seen"))) == 2,
+            "Socothbenoth's absence has no paragraph: " + nightParas.Count(p => p.Text.Contains("Socothbenoth")));
+        var shut = lucky.Nodes.Single(n => n.Id == "shut");
+        check(!shut.Text.Contains("coin") && shut.Choices[0].Requires.Contains(P + "primed") && shut.Choices[0].Next == "shut_coin"
+              && shut.Choices[1].Forbids.Contains(P + "primed") && shut.Choices[1].Next == null,
+            "The refusal returns a coin the unprimed Commander never gave her.");
+        check(!Sc(F + "a_great_big_fair").Nodes.Any(n => n.Text.Contains("The bleeding, and the brick")), "The fair recalls conversations the player may not have had.");
         Console.WriteLine("PASS: Chadali Trickster (Trk_Chadali_*): coin, orange, second cookie, the seed, the sealed hall's letters, 'Lucky you' and the wagers.");
     }
 }

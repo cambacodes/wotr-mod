@@ -337,5 +337,15 @@ def integrate(payload):
     from story_format import p
     by_id = {s["Id"]: s for s in payload["Scenes"]}
     page = by_id["chadali.trickster.epilogue.lucky_night"]["Nodes"][0]
+    # Sol (PP6 audit): Socothbenoth's later favours only while he is still about; he vanishes in the Nocticula ending
+    # (SocotGone, Epilogues/Cue_0570), and the absent variants say so.
+    gone = ("socot.gone", "chadali.socoth_never_seen")
     page.setdefault("Paragraphs", []).extend(
-        p(text, requires=(flag, "council.epilogue_ceased") if flag == REMEMBERED else (flag,)) for flag, text in EPILOGUE_PARAGRAPHS)
+        p(text, requires=(flag, "council.epilogue_ceased") if flag == REMEMBERED else (flag,),
+          forbids=gone if flag in (SOCOTH_REFUSED, SOCOTH_OBLIGED) else ()) for flag, text in EPILOGUE_PARAGRAPHS)
+    page["Paragraphs"].extend([
+        p("{n}Socothbenoth never asked her for a favour again. Nobody saw him again at all. Chadali said she did not miss him, and baked his favourite anyway, once, and ate it herself.{/n}",
+          requires=(SOCOTH_REFUSED,), any_groups=[list(gone)]),
+        p("{n}Socothbenoth vanished still owing the Commander a favour. Chadali called it the luckiest debt anyone ever skipped out on, and kept the note of it in her cookie tin.{/n}",
+          requires=(SOCOTH_OBLIGED,), any_groups=[list(gone)]),
+    ])
