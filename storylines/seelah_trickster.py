@@ -64,6 +64,8 @@ REPLIED = "seelah.trickster.cost.rider_days"         # Q10 r2: the field chaplai
 TAKEN = "seelah.trickster.cost.seller_taken"          # Q10 r2: caught lift, the seller arrested, stones kept by order
 PAID = "seelah.trickster.cost.seller_paid"            # Q10 r2: caught lift, the seller paid off from the crusade chest
 RECONCILED = "seelah.trickster.reconciled"            # Q10 r2: her no answered by the second ask (declined stays as history)
+SELLER_HEARD = "seelah.trickster.seller_heard"         # Q10 r3: her word on the seller heard (tavern or visit twin)
+LATE_CODA = "seelah.trickster.late_coda"               # Q10 r3: Derived late commit qualified by romance (Last Call coda)
 FAILED = "seelah.presence.failed"                   # runtime: Fye's anchor failed; the visit twins take over
 OWN = ("seelah.closed", "inhuman")
 
@@ -82,6 +84,7 @@ DERIVED = {
     FINALLY_DEAD: [["revive.seelah.available"]],
     ROMANCE: [["seelah.kissed"], ["seelah.roof_kissed"], ["seelah.lovers"], [TAVERN_KISSED]],
     REJOINED: [[RETURNED, REVIVED]],
+    LATE_CODA: [[LATE_COMMITTED, ROMANCE]],
 }
 PRESENCES = {
     # A copy of her non-companion NPC blueprint at Fye's bar (the companion unit would offer recruitment). One presence
@@ -450,7 +453,7 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
     s_("no_death", '''{n}Her hand goes to the place under her collarbone where her purse hangs, the way it does when she thinks nobody is watching.{/n}
 "You've still got my list. In your coat. You've read every line of it, and you haven't given it back." She is not angry. That is worse. "I can't say yes to someone who's carrying every theft I ever did. Give it back, or let me take it, and then ask me."''',
       c('[Let her keep it] "Then I\'ll ask again, and I\'ll ask better."', flags=(DECLINED,))),
-], requires=("trickster.ever", RETURNED, STAY), forbids=("seelah.committed", DECLINED), delay=48,
+], requires=("trickster.ever", RETURNED, STAY), forbids=("seelah.committed", DECLINED, FRIENDS), delay=48,
    RequiresAnyGroups=[[ROMANCE, COURTED]])
 
 tavern("seelah.trickster.dismissed.second_ask", "Her way", '"Seelah. I\'m asking again. Better."', [
@@ -576,22 +579,28 @@ SELLER_NODES = [
       c("Continue", "paid", requires=(PAID,))),
     s_("concealed", '''"Your word. In front of the saints. To a man who robs the dead." {n}She folds the list very small.{/n}
 "It's your word, not mine, so I'll let it stand. I'm not going to make a liar of you to feel clean. But every pilgrim he sold a stone to, I'm going to find, and buy it back, a coin at a time. Don't you dare offer me the money."''',
-      c('"I won\'t."')),
+      c('"I won\'t."', flags=(SELLER_HEARD,))),
     s_("taken", '''{n}Her grin is slow, and very wide.{/n}
 "Tell Irabeth. You did it." {n}She crosses the line out, and writes "done" beside it, and then, after a moment, "not by me".{/n}
 "The court clerks will hate you for a year. Good. Iomedae's courts can stand to be reminded that the dead come first."''',
-      c('"They can hate me. It was your line."')),
+      c('"They can hate me. It was your line."', flags=(SELLER_HEARD,))),
     s_("paid", '''"You paid him." {n}She says it flatly, the way she would say you had stepped in something.{/n}
 "With the crusade's gold. To a man who prised stones off the Kenabres dead." {n}She does not cross the line out. She writes beside it, small: "and the Commander paid him".{/n}
 "I know why. I'm alive, so I can't even shout at you properly. I'm going to shout at you a little anyway."''',
-      c('"Shout. I earned it."')),
+      c('"Shout. I earned it."', flags=(SELLER_HEARD,))),
 ]
 SELLER_ANY = [[BROKER, TAKEN, PAID]]
 
 hub("seelah.trickster.dead.seller_word", "The last line", '"Seelah. About the relic-seller."', copy.deepcopy(SELLER_NODES),
     requires=(REVIVED, WOKE), forbids=(), delay=24, Chapters=[3, 4, 5], RequiresAnyGroups=SELLER_ANY)
 tavern("seelah.trickster.dead_no_unit.seller_word", "The last line", '"Seelah. About the relic-seller."', copy.deepcopy(SELLER_NODES),
-       requires=("trickster.ever", RETURNED, CORRESPONDENT, HOLDS), forbids=(REVIVED,), delay=24, RequiresAnyGroups=SELLER_ANY)
+       requires=("trickster.ever", RETURNED, CORRESPONDENT, HOLDS), forbids=(REVIVED, SELLER_HEARD), delay=24,
+       RequiresAnyGroups=SELLER_ANY)
+# Q10 r3: the failed-anchor twin; SELLER_HEARD keeps the pair exclusive.
+visit_twin("seelah.trickster.dead_no_unit.seller_word", "seelah.trickster.dead_no_unit.seller_word_visit", "The last line", [
+    ("{n}She has her list out, and she is looking at the last line.{/n}",
+     "{n}She is waiting in your quarters in the citadel, her list spread on your map table, and she is looking at the last line.{/n}"),
+])
 
 # --- Epilogue ------------------------------------------------------------------------------------------------------
 
@@ -660,13 +669,21 @@ IRABETH_BACK = {"irabeth_dead": "irabeth.trickster.returned"}
 SOSIEL_GONE = ("sosiel.dead", "sosiel.kicked_out")
 
 REACTIONS = [
-    reaction("Irabeth", "seelah.trickster.dead.react_irabeth", (RETURNED, REVIVED),
+    reaction("Irabeth", "seelah.trickster.dead.react_irabeth", (RETURNED, REVIVED, WOKE, KEEPS),
              '''{n}Irabeth puts down her pen, which is how you know she means it.{/n}
 "You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it."
 {n}She picks the pen up again.{/n}
 "A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. Seelah asked me why. I told her I didn't know. I'm asking you, and I can see you're not going to tell me. I'm going to pray about this. Then I'm going to buy her a drink and pray about that."''',
              answer_list=IRABETH_HUB, forbids=IRABETH_GONE + (TAKEN,), chapter=3, last=5, entry='"Seelah is back."',
              Chapters=[3, 5], ForbidOverrides=dict(IRABETH_BACK)),
+    # Q10 r3: the list given back at her waking; no vow to rob the Commander back (appended sibling).
+    reaction("Irabeth", "seelah.trickster.dead.react_irabeth_given", (RETURNED, REVIVED, WOKE, GIVEN_BACK),
+             '''{n}Irabeth puts down her pen, which is how you know she means it.{/n}
+"You robbed a paladin's corpse, Commander. She got up. And she came to the chapel with a list in her hand and asked me to witness a new line on it, which she will not let me read."
+{n}She picks the pen up again.{/n}
+"A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. I'm not going to ask. I'm going to pray about it, and then I'm going to buy her a drink."''',
+             answer_list=IRABETH_HUB, forbids=IRABETH_GONE + (TAKEN,), chapter=3, last=5,
+             entry='"Seelah is back, and she has her list."', Chapters=[3, 5], ForbidOverrides=dict(IRABETH_BACK)),
     # Q10 r2: the caught lift answered by an arrest; Irabeth has the seller in her cells (appended sibling).
     reaction("Irabeth", "seelah.trickster.dead.react_irabeth_taken", (RETURNED, REVIVED, TAKEN),
              '''{n}Irabeth puts down her pen, which is how you know she means it.{/n}

@@ -391,6 +391,9 @@ partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Pr
         page_p('''She would not live under a false name, and the Commander was officially dead. So she kept her own name, and her own door, and walked through it into the Commander's rooms every evening, openly, and told anyone who asked exactly where she was going.''', requires=(ON_RECORD,)),
         page_p('''It was Seelah who found the flask at the edge of the Wound. She said it was the easiest theft of her life.''', requires=(H2,)),
     ), declined=SE + "declined",
+    # Q10 r3: the qualified late commit (late_committed + her romance, seelah_trickster.LATE_CODA) also plays the coda;
+    # an unreconciled no stays excluded by the declined forbid, and the friend road by friends.
+    page_forbids=(SE + "friends",), page_commit_groups=[["seelah.committed"], [SE + "late_coda"]],
     deal=[[SE + "cost.holds_her_death"], [SE + "cost.keeps_it"], [SE + "cost.robbed_back"]],
     call=call('''[Call in the thief's promise] "Seelah, you swore you'd steal it back. Now's the time. Pick my pocket."''',
         '''{n}You feel it before you understand it: a light touch at your coat, a thief's apology, from a woman who is not here.{/n}''',
