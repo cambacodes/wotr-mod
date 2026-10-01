@@ -102,6 +102,16 @@ YARD_FAILED = YARD_PRESENCE + ".failed"        # runtime: the tailor's awning di
 LAIR_LATCHED = "arueshalae.lair_unplaced.latched"
 YARD_LATCHED = "arueshalae.awning_unplaced.latched"
 LATCHES = {LAIR_LATCHED: [LAIR_FAILED], YARD_LATCHED: [YARD_FAILED]}
+# The arcade staging that the tailor's-awning copies must not repeat (applied in integrate()).
+YARD_STAGING = (
+    ("She slides off the counter,", "She slides off the cutting table,"),
+    ("She is standing on the jeweller's counter, which puts her head above yours",
+     "She is standing on the tailor's cutting table, which puts her head above yours"),
+    ("She steps off the counter into your arms", "She steps off the table into your arms"),
+    ("the arcade drops away beneath your boots", "the awning drops away beneath your boots"),
+    ("stolen from the jeweller's back room", "stolen from the tailor's back room"),
+)
+SACRIFICE_GUARDED = (P + "epilogue.commit", P + "epilogue.kept", P + "epilogue.kept_fallen", P + "epilogue.fallen")
 NIGHT_DONE = P + "evil.dawn"
 # The arcade and its fallback use two different bodies (presences sharing a unit and area must exclude each other).
 DREZEN_PLACES = ((TAVERN_PRESENCE, "", (), EVIL_UNIT), (YARD_PRESENCE, "_yard", (TAVERN_FAILED,), EVIL_NPC))
@@ -756,6 +766,23 @@ def integrate(payload):
     """Register her revival, presences and derived keys. Scenes are added by expansion.py; world keys bind on demand."""
     payload.setdefault("Revivals", {}).update({k: dict(v) for k, v in REVIVALS.items()})
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    # PP2 (Sol r1, CAN cap): the tailor's-awning copies (_yard) are met where the jeweller is gone; stage them there.
+    # (Sol r1, INT) the Sosiel conversation needs his offer to have been made and him alive and in the crusade; the
+    # committed endings honour the binding sacrifice guard (as treatment.epilogue.together does).
+    for scene_ in payload["Scenes"]:
+        if scene_.get("Relationship") != "arueshalae":
+            continue
+        if scene_["Id"].endswith("_yard"):
+            scene_["Entry"] = scene_["Entry"].replace("the jeweller's counter", "the tailor's cutting table")
+            for node in scene_["Nodes"]:
+                for old, new in YARD_STAGING:
+                    node["Text"] = node["Text"].replace(old, new)
+        if scene_["Id"] == P + "returned.sosiel":
+            scene_["Requires"] = list(dict.fromkeys(scene_["Requires"] + [P + "react.sosiel_fed"]))
+            scene_["Forbids"] = list(dict.fromkeys(scene_["Forbids"] + ["sosiel.dead", "sosiel.kicked_out"]))
+        if scene_["Id"] in SACRIFICE_GUARDED and "sacrifice" not in scene_["Forbids"]:
+            scene_["Forbids"].append("sacrifice")
+            scene_.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
     latches = payload.setdefault("Latches", {})
     for key, sources in LATCHES.items():
         if latches.get(key, sources) != sources:

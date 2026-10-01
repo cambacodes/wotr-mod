@@ -333,7 +333,7 @@ SCENES.append(scene(P + "killed.late_curtain", "Wrong flowers", "Memory", 3, "",
     nar("walk", '''{n}The sexton walks back with you as far as the cemetery gate, very fast, holding the lantern high. At the gate he stops, and says, not looking at you, that he has buried a great many people in this ground and that none of them ever laughed at him before, and he would like it very much if the Commander did not bring him any more work of that kind. Then he goes home, and, you learn later, does not come out again for three days.{/n}''',
         c("[Go home]")),
     ], requires=("trickster", KILLED), forbids=(PRIMED, RET, DECLINED), last=5, Relationship=REL, Remote=True,
-    Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
+    Chapters=[3, 5], Areas=[DREZEN], TricksterDevice=True, TricksterState="killed_by_commander"))   # PP2 (Sol CAN): the Drezen cemetery
 
 
 # --- The third night (primed): the scroll read over her coffin. The device's operation, on the page. -----------------
@@ -358,7 +358,7 @@ SCENES.append(scene(P + "killed.third_night", "The third night", "Memory", 3, ""
     nar("home", '''{n}You walk the sexton back to the cemetery gate. He does not say anything. When you look back from the gate the lid is already a little askew, and the lilies on the grave have been rearranged, very neatly, by somebody with a strong opinion about flowers.{/n}''',
         c("[Go home]")),
     ], requires=("trickster.ever", PRIMED, KILLED), forbids=(LATE, RAISED, RET, DECLINED), delay=72, last=5, Relationship=REL,
-    Remote=True, Chapters=[3, 5], TricksterDevice=True, TricksterState="killed_by_commander"))
+    Remote=True, Chapters=[3, 5], Areas=[DREZEN], TricksterDevice=True, TricksterState="killed_by_commander"))   # PP2: the cemetery
 
 
 # --- The return, in person (R2-3): the veiled mourner at the end of Fye's bar. ---------------------------------------

@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pp2\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4700,
-  "unique_targets": 1026,
+  "binding_uses": 4716,
+  "unique_targets": 1036,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -454,6 +454,10 @@
       "path": "World/Crusade/RankUps/Logistics/Logistics_Officer/Answer_0008.jbp",
       "type": "BlueprintAnswer"
     },
+    "1ca6cf08fceeac141a0df689cecc784a": {
+      "path": "World/Dialogs/c0/CavesUnderKenabres/MeetCamelia/AnswersList_0009.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "91a0b72bdcd5809409760cb25ad7d8c3": {
       "path": "World/Dialogs/c1/GreyGarrison_ChapterEnd/Wardstone_BookEvent/Answer_0021.jbp",
       "type": "BlueprintAnswer"
@@ -464,6 +468,18 @@
     },
     "f21279d12e1c70449bd037e75d7fd4a7": {
       "path": "World/Dialogs/c1/KenabresBurning/DesnaTempleFinal/Cue_0020.jbp",
+      "type": "BlueprintCue"
+    },
+    "7c789226898962e43802ccf27dc88395": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/Arusha_DrezenPrison/AnswersList_0006.jbp",
+      "type": "BlueprintAnswersList"
+    },
+    "37899239473b1d5489109c6155245398": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/Arusha_DrezenPrison/Cue_0008.jbp",
+      "type": "BlueprintCue"
+    },
+    "cec49de78daa68e449e2b83cc664661e": {
+      "path": "World/Dialogs/c2_vs/DrezenSiege/Arusha_DrezenPrison/Cue_0045.jbp",
       "type": "BlueprintCue"
     },
     "c1d54aee5b5ca0246a9294ce35df9b66": {
@@ -485,6 +501,10 @@
     "fc57e59b63872994089e92771068f3ad": {
       "path": "World/Dialogs/c2_vs/DrezenSiege/Nurah_After_Battle/Cue_0034.jbp",
       "type": "BlueprintCue"
+    },
+    "f40abd195a8b1ea46945b47576fa732a": {
+      "path": "World/Dialogs/c2_vs/GargoyleAttack/Camelia/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
     },
     "dbf6695999d744747aeb2d4f20b21b50": {
       "path": "World/Dialogs/c3/AreeluLaboratory/SoulJar/Answer_0006.jbp",
@@ -2590,6 +2610,10 @@
       "path": "World/Dialogs/NPC_Common/Kaylessa/Forn_main/Answer_0039.jbp",
       "type": "BlueprintAnswer"
     },
+    "30fa5be33ddd7b144963473692af6942": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/AnswersList_0002.jbp",
+      "type": "BlueprintAnswersList"
+    },
     "c3e2b86fef76ee441bc66c86ef5f071a": {
       "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Answer_0028.jbp",
       "type": "BlueprintAnswer"
@@ -2606,8 +2630,24 @@
       "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0001.jbp",
       "type": "BlueprintCue"
     },
+    "1988bcd88fe35424ebf4371eec3f96c5": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0040.jbp",
+      "type": "BlueprintCue"
+    },
+    "1a44532f0f3f8a849b8c5284fd19ed40": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0053.jbp",
+      "type": "BlueprintCue"
+    },
     "462478faddd1eab45a4e55739d81e6f7": {
       "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0056.jbp",
+      "type": "BlueprintCue"
+    },
+    "0ab8f1a13d91d9e4d8ac8870ca4e576d": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0066.jbp",
+      "type": "BlueprintCue"
+    },
+    "c3ac44c65a5183e4f89fd2990a5fc58c": {
+      "path": "World/Dialogs/NPC_Common/Kaylessa/Kaylessa_main/Cue_0070.jbp",
       "type": "BlueprintCue"
     },
     "b3427ecfc15258f4ba50cbc71e32aac2": {

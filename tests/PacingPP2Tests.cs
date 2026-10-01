@@ -184,7 +184,26 @@ internal static class PacingPP2Tests
         check(curtain.Contains("Give her back tonight") && !curtain.Contains("three nights more"),
             "Camellia: the late curtain still bargains for three nights it then skips.");
 
+        // Sol r1 (CAN cap): both cemetery pages are delivered only in Drezen.
+        foreach (var id in new[] { "camellia.trickster.killed.late_curtain", "camellia.trickster.killed.third_night" })
+            check(S(id).Areas.SequenceEqual(new[] { Drezen }), "Camellia: " + id + " can open after a rest outside Drezen.");
+
         // ---- Near-miss: Arueshalae. ----
+        // Sol r1 (CAN cap): the tailor's-awning copies never stage the jeweller's counter or the arcade.
+        foreach (var yard in story.Scenes.Where(s => s.Relationship == "arueshalae" && s.Id.EndsWith("_yard", StringComparison.Ordinal)))
+            check(!(yard.Entry + string.Join(" ", yard.Nodes.Select(n => n.Text))).Contains("counter")
+                  && !string.Join(" ", yard.Nodes.Select(n => n.Text)).Contains("arcade"),
+                "Arueshalae: the awning copy " + yard.Id + " is staged at the jeweller's counter or arcade.");
+        var sosielTalk = S("arueshalae.trickster.returned.sosiel");
+        check(sosielTalk.Requires.Contains("arueshalae.trickster.react.sosiel_fed") && sosielTalk.Forbids.Contains("sosiel.dead")
+              && sosielTalk.Forbids.Contains("sosiel.kicked_out"),
+            "Arueshalae: the Sosiel conversation recalls an offer he never made, or a Sosiel who is gone.");
+        foreach (var id in new[] { "commit", "kept", "kept_fallen", "fallen" })
+        {
+            var page = S("arueshalae.trickster.epilogue." + id);
+            check(page.Forbids.Contains("sacrifice") && page.ForbidOverrides.TryGetValue("sacrifice", out var back) && back == "trickster.commander_back",
+                "Arueshalae: the " + id + " ending ignores the Commander's sacrifice.");
+        }
         var starving = S("arueshalae.trickster.dead.starving");
         // The route forbids a crusade fee as the device's price; the torn gift's loss is the flag its readers show
         // (her aftertaste, Sosiel's reaction, the epilogue): a voice gone thin that heals, the thread and the scar that don't.
