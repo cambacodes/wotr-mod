@@ -632,10 +632,10 @@ hub(T + "the_itch", "The places she cannot reach", '"She\'s asked for a spade?"'
 
 
 hub(T + "the_scabs", "The places she cannot reach", '"She\'s asked for a spade?"', [
-    teller("start", '''"A spade. A long-handled one. And a crusader to hold it." {n}He sounds as if he has been trying not to laugh for some time.{/n} "Your casters' frost cracked the scales along her back in the lair, she says, between the wings, where a dragon cannot reach with teeth or claws. The dead ones will not drop, the new ones are pushing up under them, and it itches. She has been rubbing against the tower until the stones come loose. The garrison on the north wall think it is an earthquake."''',
+    teller("start", '''"A spade. A long-handled one. And a crusader to hold it." {n}He sounds as if he has been trying not to laugh for some time.{/n} "The fight in her lair cracked the scales along her back, she says, between the wings, where a dragon cannot reach with teeth or claws. The dead ones will not drop, the new ones are pushing up under them, and it itches. She has been rubbing against the tower until the stones come loose. The garrison on the north wall think it is an earthquake."''',
         c("Continue", "climb")),
     nar("climb", '''{n}She is lying flat on the tower floor when you arrive, wings spread and pinned under their own weight like a tent that has fallen down, and she does not lift her head.{/n}
-{n}Between the wings, along her spine, a broad patch of scales is dead and frost-whitened, cracked and curled at the edges like old bark, some of them the size of shields. The skin showing between them is angry and pink, and under the dead plates you can see the edges of new ones coming in.{/n}''',
+{n}Between the wings, along her spine, a broad patch of scales is dead and dull, cracked and curled at the edges like old bark, some of them the size of shields. The skin showing between them is angry and pink, and under the dead plates you can see the edges of new ones coming in.{/n}''',
         c("Continue", "her")),
     dv("her", '''"Do not laugh." {n}Her voice is muffled by the floor.{/n} "If you laugh I will roll over, and then there will be a great deal less of you to laugh with. Climb up. Scrape. Do not stop until I say."''',
        c("[Climb up and start scraping.]", "scrape")),
