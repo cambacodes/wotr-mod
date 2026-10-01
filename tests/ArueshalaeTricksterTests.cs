@@ -122,7 +122,10 @@ internal static class ArueshalaeTricksterTests
               && Ch(starving, "plea", 0).Revive == "arueshalae"
               && Ch(starving, "plea", 1).Revive == "arueshalae" && Ch(starving, "plea", 0).Next == null && Ch(starving, "plea", 1).Next == null,
             "'Starving, not dead' is not a terminal Trickster recovery.");
-        var dead = World(story, 3, "", "trickster", "trickster.ever", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available");
+        // Q11: the unprepared wager is retired; without the gift tied in life, the diagnosis returns nobody.
+        var unprepared = Later(story, World(story, 3, "", "trickster", "trickster.ever", "trickster.religion_tier1", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available"), 30);
+        check(Program.Walk(starving, unprepared).All(r => !r.Has(P + "returned")), "An unprepared Commander still revives her by touch.");
+        var dead = World(story, 3, "", "trickster", "trickster.ever", P + "gift_held", "arueshalae_dead", "arueshalae_dead.latched", "revive.arueshalae.available");
         dead = Later(story, dead, 30);
         check(Avail(starving, dead), "Trk_Arueshalae_Dead: the diagnosis is not available.");
         var fed = First(starving, dead, "plea", 0);

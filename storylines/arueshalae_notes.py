@@ -81,7 +81,7 @@ hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me
 # --- "Teach me the trick" --------------------------------------------------------------------------------------
 
 hub(TEACH, "The one trick", 5, '"Teach me how you do it."', [
-    a("start", '''"The cure. The thing with your hand. Where you lift it off, as fast as it comes." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
+    a("start", '''"The cure. The candle. The way you name the first cold and give it somewhere to go." {n}She is standing very straight, as she does when she has rehearsed something.{/n}
 "If I could learn it, I could do it for myself. I could touch anyone, not just you. The baker's girl, the pikeman in the hospital, the Kenabres women on the bench. I could touch them and lift it off them as I took it." {n}Her voice wavers.{/n} "Teach me. Please. I learned so many cruel things so easily. Why should this be the one that's hard?"''',
         c("Continue", "try")),
     nar("try", '''{n}You try. You explain it as well as you can: the Trickster's lore, the naming of a condition, the treating of it. She listens as if her life depended on it. She takes your hand and tries to feel what you do, and turn it round, and do it herself.{/n}

@@ -192,14 +192,14 @@ def drezen_pair(id, title, entry, nodes, requires, forbids, delay):
 # --- 4. Dead in party: "Starving, not dead" (Revivals; remote: a dead retained companion has no clickable unit) ------
 
 letter(P + "dead.starving", "Diagnosis", 3, [
-    nar("start", '''{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face in gloves, and the novice who did it came away grey to the lips and cold to the elbow, and had to sit down on the step. Nobody has touched the rest of her since. They left her in her travelling clothes, with a sprig of something green laid between her hands with a pair of tongs.{/n}
+    nar("start", '''{n}They have laid Arueshalae out in the chapel with her wings folded. The chaplains washed her face in gloves, and the novice who did it will not go near her again, and sits on the step with his hands under his arms. Nobody has touched the rest of her since. They left her in her travelling clothes, with a sprig of something green laid between her hands with a pair of tongs.{/n}
 {n}Without the careful stillness she wore in life, she looks younger. And hungrier. The hollows under her cheekbones are deeper than they were at the last camp. You have seen that look on the faces of the Kenabres refugees queuing at the soup kettles.{/n}
 {n}She died of her wounds. But you know the other thing, the one that will be waiting for her if she ever opens her eyes again: a hunger held on a short chain for so long that it has worn her to the bone, and that will have her by the throat before she has finished her first breath.{/n}''',
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "treat", mythic="Trickster",
-          requires=("trickster.religion_tier1",), forbids=(GIFT,)),
+          requires=("trickster.religion_tier1", GIFT), forbids=(GIFT,)),   # Q11: retired (no device without preparation)
         c("[Let her rest.]", abort=True),
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "wake", mythic="Trickster",
-          forbids=("trickster.religion_tier1", GIFT)),
+          requires=(GIFT,), forbids=("trickster.religion_tier1", GIFT)),   # Q11: retired (no device without preparation)
         c('[Treat her like a patient] "You\'re not dead. You\'re starving. Eat."', "thread", mythic="Trickster",
           requires=(GIFT,))),
     nar("treat", '''{n}The chaplain on duty has already given his answer, with the tiredness of a man who has given it before: he will not raise a demon. The rite calls a soul home to its body, and he will not stand over a succubus and call, and find out what answers. His books say her kind keep no soul apart from the flesh, so that nothing is set loose when they die, and that only a wish or a miracle is sure to bring one back; he has neither, and his bishop would not spend them on her if he had. It is not a question of diamonds.{/n}
@@ -222,7 +222,7 @@ letter(P + "dead.starving", "Diagnosis", 3, [
           check={"Skill": "SkillLoreReligion", "DC": 16, "Success": "rite_holds", "Failure": "rite_fails"})),
     nar("thread", '''{n}The chaplain on duty has already given his answer, with the tiredness of a man who has given it before: he will not raise a demon. The rite calls a soul home to its body, and he will not stand over a succubus and call, and find out what answers. His books say her kind keep no soul apart from the flesh, so that nothing is set loose when they die, and that only a wish or a miracle is sure to bring one back; he has neither, and his bishop would not spend them on her if he had. It is not a question of diamonds.{/n}
 {n}You do not need him. You have something else. It is set in the inside of your wrist, where she kissed it: her gift, the thread a succubus leaves in a mortal she means to keep. Every bestiary in the crusade's library agrees that the gift is hers to take back, and that it tears something out of its keeper when it goes. Not one of them says what becomes of it when she dies, because nobody has ever asked a succubus for one as insurance. You felt for it at the hour of her death, and every hour since. It is cold, and faint, and still there.{/n}
-{n}So whatever ended on that field did not end all of her. That is the whole of your evidence, and the whole of your wager: the gift was made to carry her voice into you, and you are betting it will carry you into her. You put the inside of your wrist, the place where she kissed it, against her mouth.{/n}
+{n}So whatever ended on that field did not end all of her. That is the whole of your evidence, and the whole of your wager: the gift was made to carry her voice into you, and at your asking she tied its far end into herself, so that it would pull both ways if she died. You are betting on that pull. You put the inside of your wrist, the place where she kissed it, against her mouth.{/n}
 {n}The thread goes taut. Something pulls from the far end of it, from under your palm and from under your own skin at once, and it is not blood it wants. It takes the warmth out of your face and the ease out of your voice, the part of you that makes a room turn round when you walk into it, for as long as it takes to heal, and drags it down the thread into her; and the gift comes out of your wrist after it, like a splinter. Under your hand, stone goes to skin. The sprig slides out of her hands.{/n}
 {n}She wakes exactly as starved as she died, and her eyes find your throat before they find your face.{/n}''',
         c("Continue", "claimed", requires=(CLAIMED,), flags=(GIFT_TORN,)),
@@ -285,7 +285,8 @@ hub(P + "insurance", "Insurance", 3, '"If you died tomorrow, what would the chap
       c('[Take your wrist back] "Not on those terms."', abort=True)),
     a("given", '''{n}She puts her mouth to the inside of your wrist, where the pulse is. It is not a kiss, although from across the room it would look like one. Something cold goes in under the skin and stays there, a little to the left of the vein, like a sliver of ice that will not melt.{/n}
 {n}For a moment the whole of Drezen is louder and brighter and more interested in you. Then it settles, and the only thing left is a small cold point that you can find with your eyes shut.{/n}
-"There." {n}She lets go of you as if your hand were hot.{/n} "Now you're carrying a piece of a demon about, like a lucky tooth. I hope you're pleased with yourself, doctor. I've no idea whether it'll work, and I'd rather not find out."''', c()),
+{n}Then, because you ask, she does the thing she says no succubus has ever had a reason to do. She bites her own lip until it bleeds, and draws the far end of the thread back through the blood and into herself, and ties it there, wincing, as if knotting a cord to her own heart.{/n}
+"There." {n}She lets go of you as if your hand were hot.{/n} "Now it runs both ways. If I die with that in you, it will pull. I don't know what it will pull, or how hard, or what it will take out of you on the way. I hope you're pleased with yourself, doctor. I've no idea whether it'll work, and I'd rather not find out."''', c()),
 ], ("trickster", "trickster.ever"), forbids=(GIFT, DEAD, EVIL_DEAD, RECRUITED, RETURNED, CLOSED, "arueshalae.kicked_out",
                                             "arueshalae.kicked_out_evil"), delay=24, chapters=(3, 5))
 
@@ -613,6 +614,19 @@ SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
         ))],
     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, ALLY),
     RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN, REUNITED]], **EP))
+SCENES.append(scene(P + "epilogue.kept", "", "ArueshalaeEpilogue", 6, "", [
+    nar("page", '''{n}After the Worldwound was closed, Arueshalae stayed in Drezen, because the Commander was there, and because she had decided to.{/n}''',
+        paragraphs=(
+            p('''{n}She kept the stole the second company had bought her and the altar rail they knelt at, and she blessed their swords for years after there was nothing left to use them on, because they kept asking.{/n}''',
+              requires=(CHAPLAIN,)),
+            p('''{n}She kept her count of days in a soldier's tally book, and every morning she found the Commander's pulse first, before her own coffee, to be sure of what she had been given back.{/n}''',
+              requires=(AFTERTASTE,)),
+        ))],
+    requires=("trickster.ever", COMMITTED), forbids=(CLOSED, RECRUITED, EVIL_DEAD, "arueshalae.treatment.intake"),
+    RequiresAnyGroups=[[AFTERTASTE, CHAPLAIN]], **EP))
+SCENES.append(scene(P + "epilogue.kept_fallen", "", "ArueshalaeEpilogue", 6, "", [
+    nar("page", '''{n}After the Worldwound was closed, Arueshalae kept visiting. The Commander's window was never locked, and the city learned to count its sergeants after she had passed through a street. She never pretended to be anything but what she was, and the Commander never asked her to.{/n}''')],
+    requires=("trickster.ever", COMMITTED, EVIL_DEAD, REUNITED), forbids=(CLOSED, RECRUITED), **EP))
 SCENES.append(scene(P + "epilogue.declined", "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}Arueshalae never finished counting her week, and when anyone asked her about the Commander she said she was still deciding.{/n}''',
         paragraphs=(
