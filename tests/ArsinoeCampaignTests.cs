@@ -10,6 +10,13 @@ internal static class ArsinoeCampaignTests
         string[] chain = { "arsinoe_after_rain", "arsinoe_two_doors", "arsinoe_a_stone_in_hand",
             "arsinoe_the_first_cart", "arsinoe_what_she_asks", "arsinoe_where_she_stays", "arsinoe_the_window_opens" };
         var departure = story.Scenes.Single(s => s.Id == "arsinoe_before_the_road");
+        // PP5 (Chapter 4): the errand she gave at parting, kept in the Abyss (a memory; no courier crosses the planes).
+        var dull = story.Scenes.Single(s => s.Id == "arsinoe_one_dull_thing");
+        var dullPages = new HashSet<string>();
+        check(dull.Remote && dull.Kind == "memory" && dull.Chapters.SequenceEqual(new[] { 4 }) && dull.MinChapter == 4 && dull.MaxChapter == 4
+              && dull.Relationship == "arsinoe" && !dull.Requires.Any(f => f.StartsWith("trickster", StringComparison.Ordinal))
+              && dull.Requires.SequenceEqual(new[] { "arsinoe.departure_kept" }) && dull.Forbids.Contains("arsinoe.closed"),
+            "The Abyss errand lost its shape (remote memory, Chapter 4, path-neutral, after the parting).");
         var physical = chain.Select(id => story.Scenes.Single(s => s.Id == id)).Append(departure).ToArray();
         var visited = physical.ToDictionary(s => s.Id, _ => new HashSet<string>());
         var endings = story.Scenes.Where(s => s.Id.StartsWith("arsinoe_ending_", StringComparison.Ordinal)).ToArray();
@@ -111,11 +118,28 @@ internal static class ArsinoeCampaignTests
                             if (chapter == 3)
                             {
                                 check(Rules.Available(story, departure, result), "Chapter three cannot play its optional departure.");
-                                next.AddRange(Program.Walk(departure, result, (page, partial) =>
+                                var departed = Program.Walk(departure, result, (page, partial) =>
                                 {
                                     visited[departure.Id].Add(page);
                                     check(partial.Flags.SetEquals(result.Flags), "Departure writes a gift before it is accepted.");
-                                }));
+                                });
+                                next.AddRange(departed);
+                                // PP5: the Chapter 4 errand is optional, so both the kept and the unplayed histories reach Chapter 5.
+                                foreach (var left in departed.Where(d => d.Has("arsinoe.departure_kept")))
+                                {
+                                    check(!Rules.Available(story, dull, left), "The Abyss errand opens before the Abyss.");
+                                    var abyss = Program.Copy(left); abyss.Chapter = 4; abyss.Hour += dull.DelayHours;
+                                    check(Rules.Available(story, dull, abyss), "The Abyss errand does not follow the parting.");
+                                    var closedAbyss = Program.Copy(abyss); closedAbyss.Flags.Add("arsinoe.closed");
+                                    check(!Rules.Available(story, dull, closedAbyss), "The Abyss errand ignores a closed route.");
+                                    var kept = Program.Walk(dull, abyss, (page, _) => dullPages.Add(page)).Where(r => r.Has(dull.Id)).ToList();
+                                    check(kept.Count == 2 && kept.All(r => r.Has("arsinoe.dull_thing_kept")) && kept.All(r => !Rules.Available(story, dull, r))
+                                          && kept.All(r => r.Has("arsinoe.travel_cup")
+                                              ? r.Has("arsinoe.dull_thing.porridge") || r.Has("arsinoe.dull_thing.stone")
+                                              : r.Has("arsinoe.dull_thing.laugh") || r.Has("arsinoe.dull_thing.watch")),
+                                        "The Abyss errand answers the wrong parting, or replays.");
+                                    next.AddRange(kept);
+                                }
                             }
                             else check(!Rules.Available(story, departure, result), "Fresh chapter five invents a pre-Abyss goodbye.");
                         }
@@ -166,6 +190,13 @@ internal static class ArsinoeCampaignTests
         }
         foreach (var scene in physical)
             check(visited[scene.Id].SetEquals(scene.Nodes.Select(n => n.Id)), "Unreached campaign page: " + scene.Id);
+        check(dullPages.SetEquals(dull.Nodes.Select(n => n.Id)), "Unreached page of the Abyss errand.");
+        // Each kept thing is answered only by its own line in Chapter 5, appended after the original three.
+        var stays = story.Scenes.Single(s => s.Id == "arsinoe_where_she_stays").Nodes.Single(n => n.Id == "start").Choices;
+        check(stays.Count == 7 && stays[0].Next == "begin" && stays[1].Next == "miss" && stays[2].Next == "departure"
+              && stays.Skip(3).Select(c => c.Requires.Single()).SequenceEqual(new[] { "arsinoe.dull_thing.porridge", "arsinoe.dull_thing.stone",
+                  "arsinoe.dull_thing.laugh", "arsinoe.dull_thing.watch" }),
+            "The Abyss errand's answers were not appended, or read the wrong flag.");
     }
 
     private static List<Snapshot> Distinct(IEnumerable<Snapshot> states) => states

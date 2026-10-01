@@ -343,7 +343,7 @@
    "5": "ip",
    "6": "remote"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "9ee914535aa169240b3a840465a43d55 World/Crusade/RankUps/Diplomacy/Diplomacy_2/Cue_0008: Ch3 Drezen, the kitsune attache introduces herself",
    "3": "e14eb0fa8b4b4532ab8bbbaaabcf85d8 World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Diplomacy_02_AskedAboutDiplomacy(A86): Ch3 capital diplomacy officer",
@@ -475,7 +475,7 @@
    "5": "ip",
    "6": "remote"
   },
-  "exceptions": {},
+  "exceptions": {"6": "none: Threshold carries Last Call only (coordinator, 2026-10-01)"},
   "evidence": {
    "first_met": "0e83a74392bf2bb4b9a7db87b6e158ea World/Dialogs/NPC_Common/VendorArsinoe/Cue_0001: Drezen vendor greeting (unit Arsinoe a609ed9b2205d034bb3bb04d2a255681, Act_3 Drezen)",
    "3": "3f3fbb973a4ffee47956b4c7714c939a World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Arsinoe_Capital: her Drezen capital presence (also Q2 ArsinoeAtWedding/Cue_0001 1dddedb779416154c84609195b9bdfe5)",

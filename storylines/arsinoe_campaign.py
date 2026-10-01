@@ -446,6 +446,39 @@ s("arsinoe_before_the_road", "Something that travels well",
 ], "arsinoe_what_she_asks", delay=0, chapters=(3,))
 
 
+# PP5 (Chapter 4): she is in Drezen and the Commander is in the Abyss; no letter crosses. What travels is the errand she gave
+# at parting (arsinoe_before_the_road): "one dull thing" (the cup branch) or "find something you like, even there" (the
+# memory branch). Path-neutral (N-all): it reads only her ordinary route. Its consequence is read by where_she_stays (Ch5).
+DULL = "arsinoe.dull_thing_kept"
+DULL_PORRIDGE = "arsinoe.dull_thing.porridge"
+DULL_STONE = "arsinoe.dull_thing.stone"
+DULL_LAUGH = "arsinoe.dull_thing.laugh"
+DULL_WATCH = "arsinoe.dull_thing.watch"
+SCENES.append(scene("arsinoe_one_dull_thing", "One dull thing", "Arsinoe", 4, "", [
+    n("start", "Narrator", '''{n}You have found very little that is dull in the Abyss. Even at camp, you keep listening for something beyond the light, and most of what moves out there would like you dead.{/n}''',
+      c("Continue", "cup", requires=("arsinoe.travel_cup",)),
+      c("Continue", "memory", requires=("arsinoe.travel_memory",), forbids=("arsinoe.travel_cup",)),
+      portrait="Arsinoe"),
+    n("cup", "Narrator", '''{n}Arsinoe asked you for one dull thing. Something you ate. A place where you slept badly for an ordinary reason. "I should like to imagine you in a day that did not require a victory," she said, and put the matter in your hands as plainly as she would a receipt.{/n}
+{n}It takes you most of a week to find a dull thing down here, and when you do, you nearly miss it.{/n}''',
+      c('[Something you ate: the camp porridge, burned on the bottom every morning by a cook who will not be told.]', "kept",
+        flags=(DULL, DULL_PORRIDGE)),
+      c('[A place where you slept badly for an ordinary reason: a stone under your bedroll, three nights running, because you were too tired to move it.]',
+        "kept", flags=(DULL, DULL_STONE)),
+      portrait="Arsinoe"),
+    n("memory", "Narrator", '''{n}"Find something you like, even there," Arsinoe called after you from her step. "You may tell me about it when you can." In Drezen it sounded like an easy errand.{/n}
+{n}It takes you most of a week down here, and when you find it, you nearly miss it.{/n}''',
+      c('[Something you liked: one night when nothing came out of the dark, and somebody at the fire laughed at a bad joke for much longer than it deserved.]',
+        "kept", flags=(DULL, DULL_LAUGH)),
+      c('[Something you liked: a watch with nothing to report, which you had forgotten could happen.]', "kept",
+        flags=(DULL, DULL_WATCH)),
+      portrait="Arsinoe"),
+    n("kept", "Narrator", '''{n}It is not much to carry back across the planes. It weighs nothing at all. You find yourself turning it over at odd moments anyway, the way you might check a purse for a coin you mean to spend on someone else, and you keep it for Drezen.{/n}''',
+      c("[Keep it for her.]"), portrait="Arsinoe"),
+], requires=("arsinoe.departure_kept",), forbids=("arsinoe.closed", DULL), delay=24, last=4, optional=True,
+    Relationship="arsinoe", Chapters=[4], Remote=True, Kind="memory"))
+
+
 s("arsinoe_where_she_stays", "The road she has not taken",
   '"Have you time to walk with me?"', [
     n("start", "Arsinoe", '''"Yes. I have been sitting over a letter long enough to begin disliking the shape of the words. Walking should improve them."
@@ -457,7 +490,33 @@ s("arsinoe_where_she_stays", "The road she has not taken",
 "I have not accepted. I wanted to speak to you before I wrote my answer."''',
       c('"Is it the work you want, or the chance to begin again?"', "begin"),
       c('"What would you miss here?"', "miss"),
-      c('"You asked me to return when I could. I wanted to find you here."', "departure", requires=("arsinoe.departure_kept",))),
+      c('"You asked me to return when I could. I wanted to find you here."', "departure", requires=("arsinoe.departure_kept",)),
+      # PP5: the dull thing (or the liked thing) the Commander kept for her in the Abyss (arsinoe_one_dull_thing, Chapter 4).
+      c('"You asked for one dull thing from the Abyss. The camp porridge, burned on the bottom every morning."', "dull_porridge",
+        requires=(DULL_PORRIDGE,)),
+      c('"You asked for one dull thing from the Abyss. A stone under my bedroll, three nights running."', "dull_stone",
+        requires=(DULL_STONE,)),
+      c('"You told me to find something I liked down there. I found it: a bad joke at the fire."', "dull_laugh",
+        requires=(DULL_LAUGH,)),
+      c('"You told me to find something I liked down there. I found it: a watch with nothing to report."', "dull_watch",
+        requires=(DULL_WATCH,))),
+    n("dull_porridge", "Arsinoe", '''"Burned porridge." {n}She stops on the landing as if you had handed her something that might break.{/n} "Every morning? The same cook? And nobody dismissed him?"
+{n}You admit that nobody dismissed him.{/n}
+"Then you had a camp to come back to, and somebody who thought breakfast worth making. Even badly. Abadar knows I would have had words with him." {n}She takes your arm for the next step down, entirely unnecessarily.{/n}
+"Thank you. I shall imagine you eating it for weeks, and enjoy every spoonful more than you did."''',
+      c('"Is it the work you want, or the chance to begin again?"', "begin")),
+    n("dull_stone", "Arsinoe", '''"A stone." {n}She looks frankly delighted.{/n} "Under your bedroll. Three nights. And you were too tired to move it."
+{n}She laughs, catches herself, and then decides not to apologize for it.{/n}
+"That is the most ordinary thing anyone has ever brought me back from anywhere. People bring me silk. People bring me relics with three owners and no receipts." {n}She tucks her hand into the crook of your arm.{/n} "I shall think of your stone whenever someone at the council tells me the Abyss is beyond mortal understanding. It is not. It is lumpy."''',
+      c('"Is it the work you want, or the chance to begin again?"', "begin")),
+    n("dull_laugh", "Arsinoe", '''"A bad joke." {n}She weighs it with the gravity she gives a contract.{/n} "At a fire. In the Abyss. With nothing coming out of the dark."
+{n}She nods slowly.{/n}
+"A hearth, company, and a little time to waste. In the Abyss." {n}She sounds almost proud of you.{/n} "I am pleased you managed that much down there." {n}She smiles at you sidelong.{/n} "I am very glad you were there to laugh at it. Do not tell me the joke. I am sure it is dreadful."''',
+      c('"Is it the work you want, or the chance to begin again?"', "begin")),
+    n("dull_watch", "Arsinoe", '''"Nothing to report." {n}She repeats it the way another woman might repeat a line of poetry.{/n}
+"Do you know how rare that is? Even at my counter in Drezen, somebody usually comes through the door with a grievance. An uneventful watch means everyone did their duty. Abadar would approve." {n}She looks at you properly.{/n}
+"And you found one in the Abyss, and you kept it for me. That is a far better gift than anything I could have priced."''',
+      c('"Is it the work you want, or the chance to begin again?"', "begin")),
     n("departure", "Arsinoe", '''"And here I am, with a letter I have not answered. I did not slip off in the night. I should have had to leave the shop to Neral, and she would sell my stock at a loss out of spite."
 {n}She rests a hand against the dry stone at the side of the passage.{/n}
 "You asked me to be here, and I was. I have also been living, and this arrived while I was. A promise to come home is a fine thing, Commander. It is not a lease on me. If one day I go and you stay, I shall expect you to find something better to do than count the days."
