@@ -57,6 +57,7 @@ NO_FAST = T + "no_fast"
 HER_CALL = T + "her_call"
 NIGHT = T + "night"
 MORNING = T + "morning"
+DREZEN_AREA = "2570015799edf594daf2f076f2f975d8"   # DrezenCapital: the tower above the citadel
 # PP2 early beat (arueshalae_early, the Chapter 2 prison; path-neutral), read in "Night reading" only.
 EARLY_KEPT = "arueshalae.early.desna.kept"
 EARLY_DOUBTED = "arueshalae.early.desna.doubted"
@@ -424,7 +425,8 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
         c("Continue", "undress")),
     a("stars", '''"I know how to make a mortal want me. I learned it in the Upper City, and I hate remembering how." {n}She is standing with her back to the stars, and her hands have found each other behind her back again.{/n} "And every one of those ways ends with me counting what I took. I'm afraid that halfway through I'll start counting. I'm afraid I'll be good at this, the way I was good at it then." {n}She swallows.{/n} "So I brought us somewhere I've never done anything at all. Nothing here remembers me being good at it."''',
         c("Continue", "cure", requires=(CURE,)),
-        c("Continue", "uncured", forbids=(CURE,))),
+        c("Continue", "uncured", forbids=(CURE, CURED)),
+        c("Continue", "cure", requires=(CURED,), forbids=(CURE,))),   # PP2 post-cap: the rite already worked by Lore
     nar("cure", '''{n}Before the first kiss, you take the star-candle out of your coat. She watches you set it in a niche of the broken bell-wall, out of the wind, and kneel to it, and say the whole of the blessing over it, a quarter of an hour of the old Desnan words, until the wick takes and the little flame stands up straight. It will take one drain, once, until you sleep. She waits the whole quarter-hour with her arms round her knees, and does not once look away from your mouth.{/n}
 {n}Her first kiss is careful, almost a question, and the cold comes with it like a tide coming in, and the little flame in the niche takes it and goes out.{/n}
 {n}The rest is hers to take, and yours to pay, and you both know it. She kisses you again anyway, and you let it cost what it costs, and she watches your face the whole time, counting.{/n}''',
@@ -443,7 +445,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
     a("morning_after_paid", '''{n}Much later, she lies with her head on your chest, listening to your heart with the concentration of someone taking a pulse, while the stars turn overhead.{/n}
 "Still beating. Slower than it was." {n}You feel her count it against her cheek.{/n} "I took some of it. I felt myself take it, and I didn't stop, because you told me not to, and because I didn't want to. You'll be grey tomorrow, and I'll have done that, and I'll look at it all day." {n}She does not lift her head.{/n} "Don't talk. I'm taking notes. Desna's watching. Let her see what it cost."''',
         c("[Let her listen.]", flags=(NIGHT,))),
-], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,))
+], (COMMITTED, "trickster.ever"), forbids=(NIGHT,), delay=24, chapters=(5,), Areas=[DREZEN_AREA])   # PP2 post-cap: the citadel tower
 
 
 # --- The morning after: first light on the tower -----------------------------------------------------------------
@@ -468,7 +470,7 @@ session(MORNING, "Case notes, continued", 5, '"Good morning, doctor."', [
     a("recovering_e", '''"Recovering." {n}She writes it, and looks at the word, and crosses it out.{/n} "No. I don't know what this is. The Abyss let go of me, and the hunger went quiet, and I keep listening for it the way you listen for a dog that's stopped barking." {n}She leans over and kisses your mouth, slowly, for no reason at all, and does not count.{/n} "Write 'under observation.' I'm going to watch it for a long time before I believe it."''', c()),
     a("doctor_e", '''{n}She looks you over, frankly, from your hair to your bare feet.{/n} "The doctor isn't recovering from anything. The doctor's pink. The doctor slept like a baby on a bell-floor, and I lay awake all night beside a warm mortal and didn't take one thing." {n}She writes it anyway.{/n}
 "Doctor: insufferable. Patient: frightened of how good this is." {n}She kisses your forehead and then, because she can, your mouth.{/n} "Stay till the sun's up. Doctor's orders. Mine."''', c()),
-], (NIGHT, "trickster.ever"), forbids=(MORNING,), delay=6, chapters=(5,))
+], (NIGHT, "trickster.ever"), forbids=(MORNING,), delay=6, chapters=(5,), Areas=[DREZEN_AREA])   # PP2 post-cap: first light on the tower
 
 
 # Q11: after the native Elysium ending (BestEnding cues 0c5b3449, f3f59947: her touch no longer drains) every session

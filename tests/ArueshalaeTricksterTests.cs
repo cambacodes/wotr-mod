@@ -291,7 +291,8 @@ internal static class ArueshalaeTricksterTests
         check(First(again2, Later(story, later, 60), "roof", 0).Has("arueshalae.committed"), "The Commander's ask does not commit.");
         var night = S(T + "night");
         check(night.Requires.Contains("arueshalae.committed") && !Avail(night, Later(story, ready, 50)), "The night opens before any yes.");
-        check(Avail(night, Later(story, yes, 30)), "The night does not follow the yes.");
+        var yesHere = Later(story, yes, 30); yesHere.Area = Drezen;   // PP2: the tower is above Drezen's citadel
+        check(Avail(night, yesHere) && !Avail(night, Later(story, yes, 30)), "The night does not follow the yes in Drezen (or plays outside it).");
         foreach (var n in night.Nodes)
             check(!n.Text.Contains(" cot") && !n.Text.Contains("narrow bed"), "The night is staged on a cot: " + n.Id);
 

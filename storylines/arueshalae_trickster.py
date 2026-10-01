@@ -523,7 +523,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
       c('"Both. Always both."', "both", flags=(COMMITTED,)),
       c('"Only the good days."', "saint", flags=(SAINT_ONLY, DECLINED), forbids=(ELYSIUM_DONE,)),
       c('[Let her keep her answer for now] "Then I\'ll ask again."', "not_yet", flags=(DECLINED,)),
-      c('"Neither."', "neither", flags=(CLOSED,)),
+      c('"Neither."', "neither", flags=(CLOSED, P + "terms_refused")),   # PP2: her own refusal key, read by her Last Call coda (G5)
       c('"Only the good days."', "saint_e", flags=(SAINT_ONLY, DECLINED), requires=(ELYSIUM_DONE,))),
     a("saint_e", '''{n}She lays the blade down very carefully.{/n} "The Abyss let go of me, and the hunger went quiet, and you still want me to keep my bad days in another room." {n}Her voice is gentle and does not move.{/n} "I can't. They're mine too, Commander, the way the scars are mine. No. Ask me again when you want the woman who has them."''', c()),
     a("both", '''"Both." {n}She closes her eyes.{/n} "I was afraid you'd say that. I hoped you would."
