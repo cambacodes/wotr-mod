@@ -68,7 +68,7 @@ hub(T + "what_climbed_out", "The sound she makes now", '"You heard her come back
         c("Continue", "end")),
     teller("danger", '''"Two men of the north watch went up the ridge last night with torches, on a wager, to see her." {n}He does not smile.{/n} "She sent their helmets down to the north gate this morning, and nothing else. I did not ask her why. She told me anyway: 'The city may keep its walls. The ridge is mine. Anything that climbs it without being sent for is food.' I am told the watch has stopped making wagers."''',
         c("Continue", "end")),
-    teller("remember", '''"She remembers me." {n}His fingers stop on the cup.{/n} "She said my name when she passed me on the road, as though she were reading it off a list. Then she said, 'Not yet, old man. You still owe me the end of the one about the ring.' I had forgotten I had not finished it. She had not."''',
+    teller("remember", '''"She remembers me." {n}His fingers stop on the cup.{/n} "She said my name when she passed me on the road, as though she were reading it off a list. Then she said, 'Not yet, old man. You still owe me the end of a story.' I had forgotten I had not finished it. She had not."''',
         c("Continue", "end")),
     teller("end", '''"She will send for you when she has decided what you are for. Until then, I would not go up the ridge uninvited." {n}He lifts his blind face toward you.{/n} "I say that as a man who once did."''',
         c('"Noted."', flags=(HEARD,))),
@@ -95,7 +95,7 @@ hub(T + "first_climb", "The watchtower", '"She\'s sent for me, hasn\'t she?"', [
        c('"I didn\'t know it would work."', "didnt_know"),
        c('"I\'m sorry it was you."', "sorry", flags=(APOLOGISED,)),
        c('"It was a good joke. Admit it."', "good_joke", flags=(BOASTED,))),
-    dv("didnt_know", '''"No. You did not." {n}She sounds pleased, as if you had confessed to a vice she approved of.{/n} "You bet on it anyway, on a split in a hide and a wall of old skins, with other people's money, over a thing that was dead or nearly. That is the thing about you, crusader. There is a mean streak beneath the laughter. I have been wondering how long you would keep making it apologise."''',
+    dv("didnt_know", '''"No. You did not." {n}She sounds pleased, as if you had confessed to a vice she approved of.{/n} "You bet on it anyway, on a guess, with other people's money and other people's swords, over a thing that was dead or nearly. That is the thing about you, crusader. There is a mean streak beneath the laughter. I have been wondering how long you would keep making it apologise."''',
        c("Continue", "claim")),
     dv("sorry", '''{n}The eye narrows to a slit of orange.{/n} "Do not. A thing that apologises for what it did to me is asking me to forgive it, and I have not decided whether to eat it." {n}She breathes out; the fleeces in the arrow slits stir.{/n} "Keep your sorry. Give it to someone who needs it. I would rather have the part of you that told the story."''',
        c("Continue", "claim")),
@@ -409,7 +409,7 @@ hub(T + "what_happened_next", "The next part of the story", '"She wants the next
         c("Continue", "end")),
     dv("bard", '''"The good parts first." {n}She snorts, and a little flame licks the sill.{/n} "You are a liar with an appetite, crusader. You know exactly what I like and you serve it to me in the order I like it." {n}She settles.{/n} "It is disgusting. Do it again next time."''',
         c("Continue", "end")),
-    dv("about_her", '''{n}She lets you get a long way into it before she stops you.{/n} "Enough." {n}Her voice is very low.{/n} "You were supposed to tell me about the Abyss." {n}A long silence.{/n} "You did. You told me about the Abyss, and every so often you looked up the ridge. I heard the looking." {n}She closes her eye.{/n} "That is not an installment. That is interest. I did not ask for interest."''',
+    dv("about_her", '''{n}She lets you get a long way into it before she stops you.{/n} "Enough." {n}Her voice is very low.{/n} "You were supposed to tell me about the Abyss." {n}A long silence.{/n} "You did. You told me about the Abyss, and every so often you looked up the ridge. I heard the looking." {n}She closes her eye.{/n} "Do it again and I will come down that ridge and fetch you myself, in front of your generals."''',
         c("Continue", "end")),
     dv("end", '''"Go down. That will do for tonight. There is more you owe me, and I will have it." {n}Her tail shifts across the stair, over the scratched lines, one for each visit.{/n} "You will still be paying when you are old. That was the plan."''',
        c("[Go down the mountain.]", flags=(NEXT_TOLD,))),
@@ -555,7 +555,7 @@ hub(T + "the_ring", "The one about the ring", '"She wants the end of the story a
     nar("tower", '''{n}So you climb the ridge together, the blind elf and the Commander, and the old man sits down on a bone the size of a bench in front of a dragon who once kept him prisoner in her lair, and clears his throat.{/n}
 {n}She lies with her chin on the floor, her eye level with his face, close enough that her breath stirs his hair. She does not blink.{/n}''',
         c("Continue", "story")),
-    teller("story", '''"The gnome's name was Tartuccio," he says, and his voice turns shrill and sneering, the voice of someone else. "He rode into the Stolen Lands with the ring on his finger and a list of rivals in his pocket, and at the top of the list was an adventurer nobody had heard of. A dark horse." {n}The voice goes back to his own.{/n} "He meant to be a lord. He was very clever. He planned everything except the possibility that the dark horse might be the better story."''',
+    teller("story", '''"The gnome's name was Tartuccio," he says, and his voice turns shrill and sneering, the voice of someone else. "He rode into the Stolen Lands with the ring on his finger and a list of rivals in his pocket, and at the top of the list was an adventurer nobody had heard of. A dark horse." {n}The voice goes back to his own.{/n} "He meant to sell a wooden sword to King Irovetti for the price of a crown. He was very clever. He planned everything except the possibility that the dark horse might be the better story."''',
         c("Continue", "story_2")),
     teller("story_2", '''"He did not come back out of the Stolen Lands. The dark horse did, and became a baron, and then something the songs in Brevoy still disagree about." {n}He spreads his hands.{/n} "And the ring he thought would keep him safe from all the knives? It is in my bag, as it was in your lair, madam. It kept him safe from every knife but the one he was holding."''',
         c("Continue", "verdict")),
@@ -568,7 +568,7 @@ hub(T + "the_ring", "The one about the ring", '"She wants the end of the story a
        c("Continue", "end")),
     teller("end", '''{n}He is silent all the way down the ridge, his stick finding the stones one by one. At the bottom he stops.{/n} "Thank you for coming, Commander. I have told that story in the courts of three kingdoms, and I have never been so frightened telling it." {n}A pause.{/n} "Or so pleased with how it went. Do not tell her either of those things."''',
         c('"I won\'t."', flags=(RING,))),
-], requires=(CLIMBED,), forbids=(RING,), delay=48)
+], requires=(CLIMBED, "devarra.lair_story_heard"), forbids=(RING,), delay=48)   # only where the ring story was begun (GoodEnter/Cue_0028)
 
 
 # --- 16. The flight (after the first climb): she takes the Commander up over Drezen ------------------------------------
