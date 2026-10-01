@@ -11,7 +11,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "{n}Anevia looks at your hands before she looks at your face. No orders, no report, no object requiring an explanation. Her mouth quirks.{/n}\n\"Careful. Keep comin' up empty-handed and I'll start thinkin' you enjoy my company.\"\n{n}She moves a stack of papers off the adjoining chair with her good hand. The other has been guarding a cup that long ago stopped steaming.{/n}\n\"Sit, if you're sittin'. Standin' over people makes the guards nervous. They think somebody's about to be promoted.\"",
+          "Text": "{n}Anevia looks at your hands before she looks at your face. No orders, no report, no object requiring an explanation. Her mouth quirks.{/n}\n\"Careful. Keep comin' up empty-handed and I'll start thinkin' you enjoy my company.\"\n{n}She moves a stack of papers off the adjoining chair with one hand. The other guards a cup that long ago stopped steaming.{/n}\n\"Sit, if you're sittin'. Standin' over people makes the guards nervous. They think somebody's about to be promoted.\"",
           "Choices": [
             {
               "Text": "\"How is the leg?\"",
@@ -45,7 +45,7 @@
         {
           "Id": "leg",
           "Speaker": "Anevia",
-          "Text": "\"Still attached. High praise, considerin' the competition.\"\n{n}She stretches cautiously, testing the leg before committing any weight to it. The joke costs less effort than the movement.{/n}\n\"Everybody wants to know if it hurts. Nobody wants the answer after the first time. Can't blame 'em. There's a whole city hurtin' outside.\"\n{n}She watches a soldier pass with an armful of blankets.{/n}\n\"You got me out. I know that. But if we're going to be friends, do me a favor and don't make me spend the rest of my life bein' the woman you carried.\"",
+          "Text": "\"Good as the other one. Been testing it on the stairs. The stairs lost.\"\n{n}She gets up, steps lightly around the chair and returns to her seat without favoring either leg.{/n}\n\"The healers did their job. Now everybody else has to catch up. You should see the looks when I climb onto something.\"\n{n}Her amusement softens as she looks at you.{/n}\n\"I'm glad you were there under Kenabres. But if we're going to be friends, don't make every visit a check on the woman who needed gettin' out. I've got other talents. Some of 'em are even respectable.\"",
           "Choices": [
             {
               "Text": "\"Then tell me something I haven't rescued you from.\"",
@@ -503,7 +503,7 @@
         {
           "Id": "useful",
           "Speaker": "Irabeth",
-          "Text": "\"That is usually the kindest thing anyone can find to say about me.\"\n{n}There is no self-pity in her tone, only a worn familiarity. Then she sees your expression and winces.{/n}\n\"Forgive me. That was ungracious. You meant it kindly.\"\n{n}She resumes the seam, putting the needle through the leather with more force than it requires.{/n}\n\"It is possible to become tired of being useful. I have no right to resent it when I have worked so hard to be nothing else.\"",
+          "Text": "\"They have. Though I have just managed to sew the thumb shut.\"\n{n}She shows you the offending stitch, then cuts it. Her embarrassment gives way to a small, stubborn smile.{/n}\n\"A sword hilt, a frightened horse, an opponent's wrist. I generally know what to do with my hands. This needle is making a poor witness for me.\"\n{n}She holds the glove open between her fingers, inspecting the repaired thumb.{/n}\n\"I had hoped to make a better impression than a woman defeated by her own clothing.\"",
           "Choices": [
             {
               "Text": "\"You can be more than one thing.\"",
@@ -537,7 +537,7 @@
         {
           "Id": "ordinary",
           "Speaker": "Irabeth",
-          "Text": "\"Anevia can make me forget myself. At home, at least. She has an entire collection of impressions of senior officers that would get us both disciplined.\"\n{n}A smile briefly defeats her effort to remain solemn.{/n}\n\"I worry that I have begun to treat her as the place where I put everything I cannot carry on duty. She deserves a wife, not another wounded soldier to tend.\"\n{n}She pulls the thread tight and tests the seam.{/n}\n\"It is easier to admit that here. You do not have to live with the consequences of my being difficult.\"\n{n}Then, more quietly:{/n} \"At least, not all of them.\"",
+          "Text": "\"Anevia would have drawn a face on the thumb by now. Given it a name. Addressed all further complaints to it.\"\n{n}Irabeth looks at the glove and laughs despite herself.{/n}\n\"She knows how badly I want to win an argument with an inanimate object. She finds it endearing. I am still deciding whether to forgive her.\"\n{n}She draws the next stitch through neatly. This time she lets you watch.{/n}\n\"I nearly put it away when you arrived. I wanted you to find me doing something well. That has become a rather inconvenient ambition.\"\n{n}Her eyes meet yours.{/n}\n\"Anevia would notice that, too.\"",
           "Choices": [
             {
               "Text": "\"I don't need you to be impressive every moment.\"",
@@ -561,7 +561,7 @@
         {
           "Id": "tell",
           "Speaker": "Irabeth",
-          "Text": "\"I should.\"\n{n}She does not make the promise lightly enough to end the conversation with it.{/n}\n\"I know how this sounds. I stand before recruits and tell them that courage is doing what frightens us. Then I spend an evening avoiding a few words with the woman who knows me best.\"\n{n}She ties off the thread.{/n}\n\"Thank you for not mistaking that for wisdom.\"",
+          "Text": "\"Yes. I can already hear her asking whether I mended the glove or spent the evening looking at you.\"\n{n}Irabeth draws the final stitch through, then stops with the thread between her fingers.{/n}\n\"I would rather she heard it from me than had to make a joke to get an answer.\"\n{n}She cuts the thread.{/n}\n\"As for the glove, I shall insist on receiving some credit.\"\n{n}She looks down at the cut thread.{/n}\n\"But I keep waiting for Anevia to ask before I tell her anything difficult.\"",
           "Choices": [
             {
               "Text": "\"It sounds like something you can change.\"",
@@ -577,7 +577,7 @@
         {
           "Id": "end",
           "Speaker": "Irabeth",
-          "Text": "{n}The glove lies between you, repaired. Irabeth makes no immediate move to put it on.{/n}\n\"This was pleasant. I had forgotten that talking could leave me less tired.\"\n{n}A runner calls her name. Before she answers, she rests her hand against your forearm for a brief, deliberate moment.{/n}\n\"Another time. If you would like.\"\n{n}She is already fastening the glove when she turns away. You remember the warmth of her uncovered hand longer than you expected.{/n}",
+          "Text": "{n}Irabeth pulls the glove on and closes her fist. The seam holds. She turns her hand for you to see, plainly pleased.{/n}\n\"There. I retain command of at least one thumb.\"\n{n}A runner calls her name. She rises, but pauses beside your chair instead of answering at once.{/n}\n\"Next time, I shall choose something at which I have a chance of impressing you. You may choose how severely to judge it. Would you like that?\"\n{n}Her gloved fingers rest briefly against your forearm. She is smiling when she goes to the door.{/n}",
           "Choices": [
             {
               "Text": "\"I would.\"",
@@ -609,7 +609,7 @@
         {
           "Id": "start",
           "Speaker": "Anevia",
-          "Text": "{n}The little landing above the stores smells of old timber and rain. Anevia has checked it before inviting you. She checks it again once you arrive.{/n}\n\"Habit. Don't take it personally. If I ever stop lookin' at doors, check whether I've been replaced by a demon.\"\n{n}She has brought no reports. You notice it. She notices you noticing.{/n}\n\"Nothing to sign. No names to remember. Just me, I'm afraid.\"\n{n}Downstairs, someone drops a bucket and curses with inventive sincerity. Anevia laughs. The sound is freer here than it is at her post.{/n}",
+          "Text": "{n}The little landing above the stores smells of old timber and rain. Anevia checks the stairs, then the narrow window behind you.{/n}\n\"Habit. Don't take it personally. If I ever stop lookin' at doors, check whether I've been replaced by a demon.\"\n{n}She holds up a copper between finger and thumb.{/n}\n\"Nothing to sign tonight. You can try to catch me cheating instead.\"\n{n}The copper disappears. You follow her empty hand; she opens the other, equally empty, then lets the coin fall from a fold in her scarf. At your look she laughs and starts to repeat the trick. Halfway through, she catches you watching her smile instead of her fingers. The coin strikes the floor.{/n}\n\"Oh, that's dirty.\"\n{n}She retrieves it, still grinning.{/n}\n\"Just me, then. Apparently that's enough to keep you occupied.\"",
           "Choices": [
             {
               "Text": "\"That was what I came for.\"",
@@ -625,7 +625,7 @@
         {
           "Id": "want",
           "Speaker": "Anevia",
-          "Text": "\"I know. That's the trouble.\"\n{n}She leans her shoulder against the wall, facing you instead of the door.{/n}\n\"I've been lookin' forward to this. A stupid amount. I'll be sorting names or listening to somebody swear they've never seen a cultist in their life, and I'll think about what I could say to make you laugh.\"\n{n}Her smile turns rueful.{/n}\n\"That ain't an indictment of my marriage. Irabeth's still the woman I want coming home to me. I haven't stopped wanting her because you walked into a room.\"\n{n}Anevia twists the end of her scarf, releases it, then forces her hands to be still.{/n}\n\"I'd find this easier to explain if I had.\"",
+          "Text": "\"I noticed. Nearly cost me a copper.\"\n{n}She slips it into her pocket and leans against the wall, facing you.{/n}\n\"Had that trick since I was a girl. Guards used to pat me down and send me on my way while their mates laughed. I've done it with a knife pointed at me. You stand there looking pleased with yourself, and suddenly I've got butter fingers.\"\n{n}She shakes her head, enjoying the complaint.{/n}\n\"I've been thinking of things to show you. Places I'd like to take you. Then Beth comes through the door and I want to pull her down for a kiss, same as ever.\"\n{n}Her smile lingers, but her voice grows quieter.{/n}\n\"I know what I want when she's there. Turns out I know what I want when you're here, too.\"",
           "Choices": [
             {
               "Text": "\"I feel it too.\"",
@@ -659,7 +659,7 @@
         {
           "Id": "danger",
           "Speaker": "Anevia",
-          "Text": "\"An answer that doesn't make me the villain of my own life would be nice. Got one?\"\n{n}She shakes her head before you can speak.{/n}\n\"No. Don't. I know how to make an excuse sound convincing. I'd only resent you for giving me a good one.\"\n{n}She steps close enough that you can see a loose thread caught in the leather at her shoulder. She has no reason to come closer. She does not.{/n}\n\"I want to be looked at without someone waiting for the information I've brought. I want to do something because I want it. And yes, sometimes I think about you after I should've gone to sleep.\"\n{n}Her voice steadies as the admission becomes more dangerous.{/n}\n\"But I'm not going to tell you that Irabeth made me lonely enough to deserve this. She didn't.\"",
+          "Text": "\"I want to try that again and see if you can make me drop it twice.\"\n{n}Anevia takes out the copper. This time she sets it on the sill, where neither of you needs to watch it.{/n}\n\"I like the way you wait for me to do something outrageous. Makes me want to oblige. And I've been wondering what it'd take to get that look off your face.\"\n{n}She steps closer, studying your mouth. Her fingers catch a loose thread at her shoulder and wind it tight.{/n}\n\"A kiss, maybe. Or maybe you'd look even more pleased. That's been keeping me awake.\"\n{n}Below you, a latch clicks. She glances toward the stairs, then back.{/n}\n\"Beth doesn't know we're up here. She's never made me ask leave to enjoy myself. I know the difference between that and what I'm thinking about.\"",
           "Choices": [
             {
               "Text": "\"We should stop before this becomes something we have to hide.\"",
@@ -735,7 +735,7 @@
         {
           "Id": "start",
           "Speaker": "Irabeth",
-          "Text": "{n}Irabeth arrives without her sword belt. She notices your glance and looks faintly defensive.{/n}\n\"You asked to speak after my duties. I am trying to take you at your word.\"\n{n}There are marks at her wrists where armor has pressed against skin. She rubs one absently, then stops when she realizes she is doing it.{/n}\n\"I do not know what I expected when I came. Perhaps that you had a problem which would be easier to describe in private.\"\n{n}Her smile is small and embarrassed.{/n}\n\"It appears I am the problem.\"",
+          "Text": "{n}Irabeth arrives without her sword belt, carrying a small board with a worn grid scratched into it. She sets a pouch of wooden counters beside it.{/n}\n\"You asked to speak after my duties. I thought I should bring something that could not become a report.\"\n{n}She empties the pouch. Several counters have been replaced with buttons.{/n}\n\"The rules are simple. Cross the board before your opponent blocks you. It gets less simple when someone begins losing. Anevia keeps proposing amendments.\"\n{n}Her smile falters as she looks from the board to you.{/n}\n\"I do not know if this was what you had in mind. I wanted a reason to stay longer than a greeting.\"",
           "Choices": [
             {
               "Text": "\"You don't have to solve anything here.\"",
@@ -803,7 +803,7 @@
         {
           "Id": "still",
           "Speaker": "Irabeth",
-          "Text": "{n}For several minutes you speak about inconsequential things. Irabeth describes a recruit who saluted with a bowl of soup in his hand. She tries to sound disapproving and fails. You discover that when she is truly amused she briefly closes her eyes, as if the laughter were something warm against her face.{/n}\n\"I should spend more evenings like this with my wife.\"\n{n}She says it without standing.{/n}\n\"That was not intended to send you away. I am trying to be honest about something I do not yet know how to say.\"\n{n}Her bare hand lies near yours. The temptation to touch it is absurdly difficult to ignore.{/n}",
+          "Text": "{n}You sit over the little board while Irabeth explains the moves. She sets two counters side by side, leaving what appears to be an inviting gap. When you reach toward it, her smile gives the trap away.{/n}\n\"I would never offer such helpful advice to a recruit. You have been warned.\"\n{n}She waits while you reconsider. The pleasure she takes in your concentration is quite undisguised. Then your eyes meet across the board, and she leaves her own next move unfinished.{/n}\n\"I should have invited Anevia. She would enjoy watching me forget my own lesson.\"\n{n}She turns a counter between her fingers.{/n}\n\"But I wanted you to myself this evening. That is why I did not.\"",
           "Choices": [
             {
               "Text": "\"You want to be here. So do I.\"",
@@ -829,7 +829,7 @@
         {
           "Id": "admit",
           "Speaker": "Irabeth",
-          "Text": "\"Yes.\"\n{n}The single word seems to trouble her more than a speech would have.{/n}\n\"I have been trying to call it admiration. Then friendship. Then gratitude. Those things are true. They are not all of it.\"\n{n}She looks at your mouth and immediately meets your eyes again.{/n}\n\"I am not a young recruit mistaking kindness for a promise. I know what I am feeling. I also know that wanting something is not the same as having the right to take it.\"\n{n}Her hand moves, almost reaching for yours, then settles against her own knee.{/n}\n\"Please do not praise me for saying that. I have stayed here long enough to know how little saying it settles.\"",
+          "Text": "\"Yes. And I had intended to be a little less obvious about it.\"\n{n}She sets down the counter. A faint flush reaches the tips of her ears.{/n}\n\"I wanted to beat you. Then I wanted to find out whether you would lean across the board and demand another game. I have been imagining that rather vividly.\"\n{n}Her gaze travels to your mouth. This time she lets you catch her.{/n}\n\"In council I can argue with you and keep my mind on the argument. Here, with nothing at stake, I keep thinking about putting my hand on your neck.\"\n{n}She draws her hand back from the board.{/n}\n\"I have not said any of this to Anevia. I came here intending to play a game. I should have asked myself why I cared so much whether you would enjoy it.\"",
           "Choices": [
             {
               "Text": "\"I won't ask you to decide tonight.\"",
@@ -975,7 +975,7 @@
         {
           "Id": "night",
           "Speaker": "Anevia",
-          "Text": "{n}She returns to the door and lowers the latch. Before coming back, she stands with her hand against the wood, gathering herself. When she turns, the choice in her expression is unmistakable.{/n}\n\"No speeches. Not tonight. Just don't lie to me while we're doing this.\"\n{n}You draw her into your arms. For once she lets someone else mind the distance to the door. The candle burns down while the room grows quiet, and the rest of the night belongs to neither reports nor orders.{/n}\n{n}Later, she dresses in silence. She puts her scarf on twice before she is satisfied with how it sits. At the door she presses her forehead briefly to yours.{/n}\n\"I wanted that. Whatever happens, I won't make you carry the lie that I didn't.\"\n{n}Then she leaves to return to the woman who trusts her.{/n}",
+          "Text": "{n}She goes back to the door. Her hand rests on the wood, not the latch, and she leaves it unbarred: anybody could walk in, and she wants you to know she knows it. When she turns round, whatever she was arguing with herself about has been settled.{/n}\n\"No speeches. Not tonight. Just don't lie to me while we're doin' this.\"\n{n}She crosses the room in four steps and pulls the scarf from the chair to drop it on the floor, as though clearing the last piece of evidence. Her fingers are quick and not quite steady on your buckles; she swears at one, gives up on it and drags your shirt over your head instead. Her own laces she undoes herself, watching your face the whole time, and lets the dress fall.{/n}\n{n}She walks you backwards until the edge of the bed catches your knees, pushes you down onto it and follows, one knee either side of your hips. Her hands flatten on your chest. For a heartbeat she holds there, breathing hard, as if memorizing the moment for a report she will never file. Then she leans down, her hair falling around both your faces, and drags you up against her.{/n}\n{n}Later, she dresses in silence. She puts her scarf on twice before she is satisfied with how it sits. At the door she presses her forehead briefly to yours.{/n}\n\"I wanted that. Whatever happens, I won't make you carry the lie that I didn't.\"\n{n}Then she leaves to go home to the woman who trusts her.{/n}",
           "Choices": [
             {
               "Text": "[Let her leave.]",
@@ -1125,7 +1125,7 @@
         {
           "Id": "night",
           "Speaker": "Irabeth",
-          "Text": "{n}Irabeth takes off her gloves and sets them carefully together. Then she laughs at the absurdity of being orderly at such a moment. The laughter loosens something in both of you.{/n}\n\"Come here.\"\n{n}There is no command in it. You go to her willingly. She kisses you again, and this time she lets the unfinished sentence between you remain unfinished. The lamp is put out. You discover a quiet in which she does not have to be brave for anyone watching.{/n}\n{n}Later, before she leaves, she sits beside you in the darkness. Her hand finds yours without searching.{/n}\n\"It mattered to me. I do not know what I am going to do with that. But it mattered.\"\n{n}She does not ask for absolution, and you do not offer it.{/n}",
+          "Text": "{n}Irabeth takes off her gloves and sets them carefully together. Then she laughs at the absurdity of being orderly at such a moment. The laughter loosens something in both of you.{/n}\n\"Come here.\"\n{n}There is no command in it. You go to her. She kisses you again, harder, and her hands go to her own buckles: the sword belt onto the chair, the breastplate onto the floor with a noise that makes her wince and then laugh. She hauls her shirt over her head, catches you by the collar and pulls you down onto the bed with her, her weight rolling over yours and her knee sliding between your thighs.{/n}\n{n}Later, before she leaves, she sits beside you in the darkness. Her hand finds yours without searching.{/n}\n\"It mattered to me. I do not know what I am going to do with that. But it mattered.\"\n{n}She does not ask for absolution, and you do not offer it.{/n}",
           "Choices": [
             {
               "Text": "[Say good night.]",
@@ -1381,7 +1381,7 @@
         {
           "Id": "regret",
           "Speaker": "Irabeth",
-          "Text": "{n}She answers only after giving the question the attention it deserves.{/n}\n\"I wish I had been honest first. I cannot make myself wish that I had felt nothing.\"\n{n}The confession brings a little color to her ears.{/n}\n\"I wanted you to see me. You did. It was... good to be seen that way. I will not turn that into something ugly to make the rest of the story simpler.\"\n{n}Her voice becomes firm.{/n}\n\"But neither will I pretend that something good cannot be done badly.\"",
+          "Text": "\"No. I wish I had spoken to Anevia before I came to you. That is a different wish.\"\n{n}She watches your face, with none of the haste that made her turn away before.{/n}\n\"I remember reaching for you. How readily you came closer. I had spent so long wondering what you would do that, for a moment, I could think of nothing else.\"\n{n}Her fingers tighten on the windowsill.{/n}\n\"I would like to reach for you now. Instead I am standing here trying to rehearse an answer for my wife. She deserves to hear it before I find a prettier version.\"",
           "Choices": [
             {
               "Text": "\"What happens now?\"",
@@ -1534,12 +1534,12 @@
               "Abort": false
             }
           ],
-          "Portrait": ""
+          "Portrait": "TogetherReckoning"
         },
         {
           "Id": "hurt",
           "Speaker": "Irabeth",
-          "Text": "\"Were you unhappy with me?\"\n{n}The question costs Irabeth more than anger would have. Anevia answers at once.{/n}\n\"With bits of our life. With how little we were in it. Not with loving you. Never with that.\"\n\"You could have told me.\"\n\"So could you.\"\n{n}The words are sharp enough to make both women flinch. Anevia draws a breath.{/n}\n\"That's not an answer. I know. I'm sorry.\"\n{n}Irabeth looks down at her folded hands.{/n}\n\"I felt wanted without being needed to hold anything together. It was a relief. I told myself that relief was something I could take without taking anything from you.\"\n\"You took the choice,\" Anevia says. \"So did I.\"",
+          "Text": "\"Were you unhappy with me?\"\n{n}The question costs Irabeth more than anger would have. Anevia answers at once.{/n}\n\"I was happy to come home to you. I was happy up there on that landing, too. I thought if I kept the two apart, I could keep both.\"\n\"You could have told me.\"\n\"So could you.\"\n{n}Anevia presses her lips together, then looks directly at her wife.{/n}\n\"Sorry. That was cheap. I'm answering for me.\"\n{n}Irabeth lays her hands flat on the table.{/n}\n\"I liked being bold. Making the Commander wait for my next move. I kept wanting to see how far I could go.\"\n{n}She looks at you before turning back to Anevia.{/n}\n\"Then you asked about my evening, and I let you believe I had spent it alone. I found that much easier than looking you in the face now.\"\n\"You took the choice,\" Anevia says. \"So did I.\"",
           "Choices": [
             {
               "Text": "\"You don't have to decide tonight whether you can forgive anyone.\"",
@@ -2118,6 +2118,74 @@
               "Requires": [],
               "Forbids": [],
               "Abort": false
+            },
+            {
+              "Text": "\"I need to know when your plans change too. I can be the one left waiting.\"",
+              "Next": "waiting",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "waiting",
+          "Speaker": "Irabeth",
+          "Text": "\"Of course. I did not mean...\"\n{n}Anevia looks at her. Irabeth stops, then begins again.{/n}\n\"I suppose I thought you would always have something else to do.\"\n\"Beth.\"\n\"I can hear it now that I have said it.\"\n{n}Irabeth turns back to you, visibly resisting the urge to explain herself further.{/n}\n\"Tell me what you wanted us to do.\"",
+          "Choices": [
+            {
+              "Text": "\"Come and find me afterward. Even a shorter evening together matters to me.\"",
+              "Next": "find_me",
+              "Set": [
+                "ordinary.find_after"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Tell me not to wait. I would rather make another plan than keep watching the door.\"",
+              "Next": "release_wait",
+              "Set": [
+                "ordinary.release_wait"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "find_me",
+          "Speaker": "Anevia",
+          "Text": "\"Even if I can't explain what's kept me?\"\n{n}She asks without making it a joke.{/n}\n\"I can come home with a head full of things I can't tell you. Sometimes I go quiet because I'd rather that than spend the evening sayin' what I can't say.\"\n{n}Irabeth's expression shifts at something familiar in the description.{/n}\n\"You could tell us you wanted to stay,\" she says.\n\"Yes. Could've done that.\"\n{n}Anevia turns back to you.{/n}\n\"I can look for you. If you've gone to bed, I'll leave you to sleep. But I won't decide you wouldn't want me there just because the good part of the evening got away.\"",
+          "Choices": [
+            {
+              "Text": "\"That is what I am asking. We can eat before we have anything clever to say.\"",
+              "Next": "practical",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "release_wait",
+          "Speaker": "Irabeth",
+          "Text": "{n}Irabeth looks down at the unused place setting.{/n}\n\"I would have found that difficult to hear tonight.\"\n\"Better than not hearin' anything,\" Anevia says.\n\"Yes. Better than that.\"\n{n}Irabeth draws the plate toward her and begins to cut the bread.{/n}\n\"I don't want us all sitting in different rooms because each of us is trying not to be a burden. If I cannot come, I will say so. If I still want you to find me later, I will say that too.\"\n{n}She puts the bread where all three of you can reach it.{/n}\n\"And if you have already made another plan, I will try not to treat that as a verdict on how much you wanted to see me.\"",
+          "Choices": [
+            {
+              "Text": "\"We can miss one evening without losing the next one.\"",
+              "Next": "practical",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
             }
           ],
           "Portrait": ""
@@ -2149,7 +2217,7 @@
         {
           "Id": "practical",
           "Speaker": "Narrator",
-          "Text": "{n}The solution is disappointingly small for so much feeling. A message left in an agreed place. No confidential names on it. No aide required to carry romantic explanations between senior officers. If no message arrives, nobody waits hungry for hours to prove devotion.{/n}\n\"And we reschedule,\" Anevia says. \"Actually reschedule. Not 'soon', which in military language means sometime after the next catastrophe.\"\n{n}Irabeth nods.{/n}\n\"If it is always the same person's evening that disappears, we speak about that too.\"\n{n}Once the practical matters are settled, an awkward silence remains.{/n}",
+          "Text": "{n}Anevia finds a scrap of paper and writes: under the candle by the door.{/n}\n\"The aides move that whenever they leave reports,\" Irabeth says.\n{n}She takes an empty tea tin from the sideboard and sets it where all three of you can see it.{/n}\n\"Here. A note inside, the lid on.\"\n\"I'll try not to order more tea for it,\" Anevia says.\n{n}You agree to check the tin before leaving for an evening together. No confidential names on the note, and no one needs to wait for the others before eating.{/n}\n\"And we reschedule,\" Anevia says. \"Actually reschedule. Not 'soon', which in military language means sometime after the next catastrophe.\"\n{n}Irabeth nods.{/n}\n\"If it is always the same person's evening that disappears, we speak about that too.\"\n{n}Once the practical matters are settled, an awkward silence remains.{/n}",
           "Choices": [
             {
               "Text": "\"Are we still angry?\"",
@@ -2165,7 +2233,7 @@
         {
           "Id": "angry",
           "Speaker": "Anevia",
-          "Text": "\"A little.\"\n{n}Anevia looks almost relieved to admit it.{/n}\n\"I don't want to have to stop being angry the instant we find a sensible answer. Makes the whole thing feel like a performance review.\"\n\"Nor do I,\" Irabeth says. \"But I would still like supper.\"\n{n}You eat what is available. It is not the meal anyone had planned. Halfway through it, Anevia steals a particularly good piece from Irabeth's plate. Irabeth catches her wrist, removes the morsel, and gives it to you. Anevia's offended expression makes both of you laugh.{/n}\n{n}Nobody mistakes the laughter for proof that the quarrel never mattered. You have simply found that an argument can end without someone having to leave.{/n}",
+          "Text": "\"A little.\"\n{n}Anevia looks almost relieved to admit it.{/n}\n\"I don't want to have to stop being angry the instant we find a sensible answer. Makes the whole thing feel like a performance review.\"\n\"Nor do I,\" Irabeth says. \"But I would still like supper.\"\n{n}You eat what is available. It is not the meal anyone had planned. Halfway through it, Anevia steals a particularly good piece from Irabeth's plate. Irabeth catches her wrist, removes the morsel, and gives it to you. Anevia's offended expression makes both of you laugh.{/n}",
           "Choices": [
             {
               "Text": "[Keep the new arrangement.]",
@@ -2855,7 +2923,7 @@
         {
           "Id": "close",
           "Speaker": "Narrator",
-          "Text": "{n}At first the unfamiliarity makes all three of you careful. Then Anevia says something irreverent against Irabeth's cheek, and Irabeth laughs, and the care becomes easier to bear. You have room to ask, room to answer, room to pause without making a failure of the pause.{/n}\n{n}Anevia touches your face and waits for you to meet her eyes. Irabeth's hand rests warmly at your back. There is desire here, and nerves, and the small surprising joy of no longer needing to pretend that either is absent.{/n}\n\"Still all right?\" Irabeth asks.\n{n}You answer her. Anevia answers too. The lamp is turned low, and the rest of the evening passes beyond the reach of reports and explanations.{/n}",
+          "Text": "{n}At first the unfamiliarity makes all three of you careful. Then Anevia says something irreverent against Irabeth's cheek, Irabeth laughs, and the carefulness goes out of the room like a draught when a door shuts.{/n}\n{n}Anevia gets to your buttons first. She has spy's fingers and no patience, and she kisses you while she works, hard, tasting of the wine she said was only quite good. Behind you Irabeth's hands settle on your hips, big and warm, and her mouth finds the back of your neck.{/n}\n\"Still all right?\" Irabeth asks, low, against your skin.\n\"Beth,\" Anevia says, \"if you ask that one more time I'm puttin' you on report.\"\n{n}You answer her with your mouth on Anevia's. Irabeth's laugh shakes through both of you. Then the three of you are down on the cushions in a tangle of half-shed clothes, Anevia pulling you over her by the collar, Irabeth's weight settling warm along your back, and Anevia's heel hooks round your leg to keep you exactly where she wants you.{/n}",
           "Choices": [
             {
               "Text": "[Let the night remain private.]",
@@ -3190,7 +3258,7 @@
         {
           "Id": "end",
           "Speaker": "Narrator",
-          "Text": "{n}The Commander's ascent made ordinary plans seem very small. It did not make them meaningless. Anevia had asked not to be mourned before her time. Irabeth had asked that power never become an answer to a question she had not been allowed to ask.{/n}\n{n}Those requests survived the transformation. Whatever reach the Commander's new existence permitted, affection could not be commanded into permanence. The women kept their own choices, their own work, and the right to welcome or refuse a presence that the world had begun to treat as beyond refusal.{/n}\n{n}Among the grand claims later made about the Commander's nature, there was a quieter story. It concerned someone who had once learned, with considerable difficulty, to arrive when expected and speak honestly at a table meant for three. Whether told as a memory or a hope, it was a story neither woman allowed the worshipers to improve.{/n}",
+          "Text": "{n}The Commander's ascent made ordinary plans seem very small. It did not make them meaningless. Anevia regarded eternity as a poor excuse for missing supper. Irabeth was less amused by the prospect of every disagreement acquiring a congregation.{/n}\n{n}Neither mistook divinity for agreement. Whatever reach the Commander's new existence permitted, affection could not be commanded into permanence. The women kept their own choices, their own work, and the right to welcome or refuse a presence that the world had begun to treat as beyond refusal.{/n}\n{n}Among the grand claims later made about the Commander's nature, there was a quieter story. It concerned someone who had once learned, with considerable difficulty, to arrive when expected and speak honestly at a table meant for three. Whether told as a memory or a hope, it was a story neither woman allowed the worshipers to improve.{/n}",
           "Choices": [
             {
               "Text": "Continue",
@@ -3732,7 +3800,7 @@
         {
           "Id": "letter",
           "Speaker": "Narrator",
-          "Text": "{n}You put the folded page on the table. Anevia recognizes neither the paper nor the handwriting's hurried slant, but she understands its condition. She handles it as carefully as she would a report that cost someone's life to carry.{/n}\n{n}Irabeth reads it slowly. When she reaches the part about the repaired glove, she looks down at her own hands.{/n}\n\"You remembered that?\"\n{n}Anevia finishes first, then returns to the beginning.{/n}\n\"This is a very bad military report,\" she says. \"No useful intelligence at all.\"\n{n}She keeps the paper between her palms until she is ready to hand it to her wife.{/n}",
+          "Text": "{n}You put the folded page on the table. Anevia recognizes neither the paper nor the handwriting's hurried slant, but she understands its condition. She handles it as carefully as she would a report that cost someone's life to carry.{/n}\n{n}Irabeth reads it slowly, smoothing a crease with her thumb. She stops before the last line and looks at you.{/n}\n\"You kept this all that time?\"\n{n}Anevia finishes first, then returns to the beginning.{/n}\n\"This is a very bad military report,\" she says. \"No useful intelligence at all.\"\n{n}She keeps the paper between her palms until she is ready to hand it to her wife.{/n}",
           "Choices": [
             {
               "Text": "\"It was not written for the officers.\"",

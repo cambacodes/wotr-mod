@@ -158,6 +158,9 @@ namespace Tirabade
         // InteractionHub is this presence key (the generalized Nurah arrival hub). Greeting is the hub page's text.
         public string? Dialog;
         public string? Greeting;
+        // Hours that must pass after the latest timed Requires flag before the presence is wanted (0: at once), as
+        // Scene.DelayHours: someone who is away for a while does not stand at her mark in the meantime.
+        public int DelayHours;
     }
 
     // E16: one native opener (see Story.Openers).
@@ -782,7 +785,9 @@ namespace Tirabade
         public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
             && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
             && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has)
-            && presence.RequiresAnyGroups.All(group => group.Any(state.Has));
+            && presence.RequiresAnyGroups.All(group => group.Any(state.Has))
+            && (presence.DelayHours <= 0 || state.Hour - presence.Requires.Where(state.Times.ContainsKey).Select(k => state.Times[k])
+                .DefaultIfEmpty(state.Hour - presence.DelayHours).Max() >= presence.DelayHours);
 
         // E12: the steps the runtime takes for one presence. A spawned copy is never created twice for one record.
         public static PresenceStep[] PlanPresence(Presence presence, bool wanted, PresenceObservation seen)
@@ -1416,7 +1421,7 @@ namespace Tirabade
                         || p.At.Offset != null && (p.At.Offset.Length != 2 || p.At.Side != null)
                         || p.At.Offset == null && (p.At.Side != null && !new[] { "left", "right", "front", "behind" }.Contains(p.At.Side)
                             || p.At.Distance <= 0f || p.At.Distance > 10f))
-                    || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter
+                    || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter || p.DelayHours < 0
                     || p.RequiresAnyGroups == null || p.RequiresAnyGroups.Any(g => g == null || g.Length == 0)
                     || p.Requires.Concat(p.Forbids).Concat(p.RequiresAnyGroups.SelectMany(g => g)).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))

@@ -142,9 +142,15 @@ internal static class JannahTricksterTests
               && story.Derived[P + "presence_on"].Any(g => g.Contains("jannah.dead.latched") && g.Contains(Primed))
               && story.Derived[P + "presence_on"].Any(g => g.Length == 1 && g[0] == Returned),
             "Her presence is not the Chapter 5 copy at her canon cell locator, on in the kept-forms and returned worlds only.");
-        check(!story.Presences.Any(p => p.Key != "jannah.presence" && p.Value.At?.Locator == Locator),
+        check(!story.Presences.Any(p => !p.Key.StartsWith("jannah.presence", StringComparison.Ordinal) && p.Value.At?.Locator == Locator),
             "Another presence stands on her cell locator.");
-        foreach (var hub in own.Where(s => !Rules.IsRemote(s) && s.InteractionHub == "jannah.presence"))
+        // Q6 follow-up (INT/COX): the cell before her return and the cell after the wagon are her own presences on the same
+        // locator, never wanted together with each other or with the returned one.
+        var jp = story.Presences.Where(p => p.Key.StartsWith("jannah.presence", StringComparison.Ordinal)).ToList();
+        check(jp.Count == 3 && jp.All(p => p.Value.At?.Locator == Locator && p.Value.Dialog == "hub")
+              && jp.All(a => jp.All(b => a.Key == b.Key || Rules.PresencesExclusive(a.Value, b.Value))),
+            "Her cell presences are not three exclusive hubs on her cell locator.");
+        foreach (var hub in own.Where(s => !Rules.IsRemote(s) && s.InteractionHub != null && s.InteractionHub.StartsWith("jannah.presence", StringComparison.Ordinal)))
             check(hub.ContactUnit == Unit && hub.Areas.SequenceEqual(new[] { Drezen }) && hub.Forbids.Contains(Closed)
                   && hub.Requires.Contains("trickster.ever") && hub.Chapters.SequenceEqual(new[] { 5 }),
                 "A cell scene is not a Chapter 5 Trickster-path hub scene behind her closure: " + hub.Id);
@@ -216,10 +222,27 @@ internal static class JannahTricksterTests
         check(!Avail(letter, q3open), "Trk_Jannah_Q3: she writes from the cells in the middle of Seelah's Q3.");
         var inCells = Later(story, Take(letter, World(story, 5, "trickster", "trickster.ever", "jannah.free", "coronation.seen", "seelah.houndheart_seen"), "sign", 0, P + "alive.in_cells"), 12);
         // Q6 r5 (CAN): the duel of stories tells Houndheart, so it needs the Commander there (KnightCamp Cue_0011/Cue_0012).
+        // Q6 follow-up (INT): without it she plays the visitors' way (each tells her own bout); the route goes on, by the catch
+        // or by the wagon, and only letting her go closes it.
         var noHH = Later(story, Take(letter, World(story, 5, "trickster", "trickster.ever", "coronation.seen"), "sign", 0, P + "alive.in_cells"), 12);
+        var noHHPaths = Program.Walk(stories, noHH).ToList();
+        HashSet<string> Pages(Scene s, Snapshot w) { var seen = new HashSet<string>(); Program.Walk(s, w, (page, _) => seen.Add(page)); return seen; }
         check(story.SeenCues["seelah.houndheart_seen"].Contains("2100f41ae724734418dc74b15719543e")
-              && Program.Walk(stories, noHH).All(r => !r.Has(Returned)) && Ch(stories, "choose", 0).Requires.Contains("seelah.houndheart_seen"),
-            "The duel of stories recalls a Houndheart the Commander never saw.");
+              && Ch(stories, "choose", 0).Requires.Contains("seelah.houndheart_seen") && Ch(stories, "choose", 2).Forbids.Contains("seelah.houndheart_seen")
+              && !Pages(stories, noHH).Contains("rules") && !Pages(stories, noHH).Contains("your_tale") && Pages(stories, noHH).Contains("own_tale")
+              && Pages(stories, inCells).Contains("rules") && !Pages(stories, inCells).Contains("own_tale"),
+            "The duel of stories recalls a Houndheart the Commander never saw, or the visitors' way opens for one who saw it.");
+        check(noHHPaths.Any(r => r.Has(Returned) && r.Has(P + "alive.caught_her") && r.Has(P + "alive.visitors_way"))
+              && noHHPaths.Any(r => r.Has(P + "alive.posted") && !r.Has(Closed))
+              && noHHPaths.Where(r => r.Has(Closed)).All(r => r.Has(P + "gone") && !r.Has(P + "alive.posted"))
+              && Reaches(noHH, Committed),
+            "Trk_Jannah_NoHoundheart: a Commander who was never at Houndheart cannot win her out of the cell, lose to the wagon, or reach the commit.");
+        check(Ch(stories, "caught", 0).Requires.Contains("jannah.quasit_seen") && Ch(stories, "caught", 1).Forbids.Contains("jannah.quasit_seen")
+              && story.SeenCues["jannah.quasit_seen"].SequenceEqual(new[] { "da671fced713af6419502ca50bdeb94c" }),
+            "The shared catch remembers a quasit attempt the Commander may not have seen (KnightCamp Cue_0017).");
+        var visitorWorld = World(story, 5, "trickster.ever", Returned, P + "alive.caught_her", P + "alive.visitors_way", C + "forms");
+        check(Pages(houndheart, visitorWorld).Contains("told_visitor") && !Pages(houndheart, visitorWorld).Contains("told"),
+            "Houndheart tells a visitor that the two of them told the camp together.");
         // Q6 r5 (CAN): no invented Houndheart weather, wagons or fire anywhere in the living route.
         foreach (var s in own.Where(x => !x.Forbids.Contains("chapter_later")))
             foreach (var n in s.Nodes)
@@ -248,7 +271,8 @@ internal static class JannahTricksterTests
         check(blame.Count == 4 && blame[0].Set.Contains(C + "hh.honest") && blame[1].Set.Contains(C + "hh.lucky") && blame[2].Set.Contains(C + "hh.stand"),
             "Trk_Jannah_Houndheart: her shame does not meet three distinct answers and a lie she catches.");
         var hh = Later(story, Take(houndheart, formed, "blame", 0, C + "hh.honest"), 48);
-        check(Avail(walls, hh) && Rules.IsRemote(walls), "Trk_Jannah_Spine: the wall does not follow Houndheart.");
+        check(Avail(walls, hh) && !Rules.IsRemote(walls) && walls.InteractionHub == "jannah.presence" && !string.IsNullOrWhiteSpace(walls.Entry),
+            "Trk_Jannah_Spine: the wall does not follow Houndheart on her cell hub.");
         var freeze = walls.Nodes.Single(n => n.Id == "freeze").Choices;
         check(freeze.Count == 3 && freeze.All(c => c.Set.Length == 1), "Trk_Jannah_Wall: the pivot is not three answers, each recorded.");
         var walled = Later(story, Take(walls, hh, "freeze", 2, C + "walls.watched"), 24);
@@ -273,7 +297,7 @@ internal static class JannahTricksterTests
             check(paths.Any(r => r.Has(cause)) && paths.Where(r => r.Has(cause)).All(r => r.Has(P + "declined") && !r.Has(Committed) && !r.Has(Closed)),
                 "Trk_Jannah_Commit: the Commander's failure " + cause + " is not her no (with a later yes kept).");
         check(paths.Where(r => r.Has(Closed)).All(r => r.Has(P + "gone") && !r.Has(Committed)), "Trk_Jannah_Commit: a close other than the Commander's refusal.");
-        check(Avail(night, Later(story, won[0], 8)) && night.Nodes.Any(n => n.Id == "cut") && Rules.IsRemote(night),
+        check(Avail(night, Later(story, won[0], 8)) && night.Nodes.Any(n => n.Id == "cut") && !Rules.IsRemote(night) && night.InteractionHub == "jannah.presence",
             "Trk_Jannah_Night: the chalked circle does not follow the commit, or has no cut.");
         var nighted = Later(story, Program.Walk(night, Later(story, won[0], 8)).First(r => r.Has(night.Id)), 6);
         check(Avail(morning, nighted), "Trk_Jannah_Morning: the morning does not follow the night.");
@@ -399,6 +423,52 @@ internal static class JannahTricksterTests
               && new[] { P + "held_the_lie", P + "threw_the_bout", P + "shamed_her", P + "refused_the_yield" }
                   .All(f => dec.Nodes[0].Paragraphs.Count(q => q.Requires.SequenceEqual(new[] { f })) == 1),
             "The declined page blames a lie that may not have been told.");
+        // Q6 follow-up (INT/COX): no progression scene is a mod-menu read; her letter is her one Chapter 5 rest delivery (tier A),
+        // and the device's other pages are met in person in her cell.
+        var rest5 = story.Scenes.Where(s => s.Relationship == "jannah" && Rules.IsMailbagLetter(s) && s.Chapters.Contains(5)).Select(s => s.Id).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+        check(rest5.Contains(P + "alive.letter") && rest5.All(id => id == P + "alive.letter" || id == P + "killed.yield")
+              && letter.Forbids.Contains(Dead) && letter.Forbids.Contains(DeadKnown),
+            "Tier A: Jannah has more than one Chapter 5 rest delivery in a world (" + string.Join(", ", rest5) + ").");
+        foreach (var (scene, hubKey) in new[] { (stories, "jannah.presence.cells"), (wagon, "jannah.presence.back"), (walls, "jannah.presence"),
+                                                (night, "jannah.presence"), (chalk, "jannah.presence"), (challenge, "jannah.presence") })
+            check(!Rules.IsRemote(scene) && !scene.ManualOnly && scene.InteractionHub == hubKey && !string.IsNullOrWhiteSpace(scene.Entry),
+                "A progression scene is not met in person on her hub: " + scene.Id);
+        var cellsP = story.Presences["jannah.presence.cells"];
+        var backP = story.Presences["jannah.presence.back"];
+        var mainP = story.Presences["jannah.presence"];
+        var justIn = Take(letter, World(story, 5, "trickster", "trickster.ever", "jannah.free", "coronation.seen", "seelah.houndheart_seen"), "sign", 0, P + "alive.in_cells");
+        check(!Rules.PresenceWanted(cellsP, Later(story, justIn, 11)) && Rules.PresenceWanted(cellsP, inCells) && !Rules.PresenceWanted(mainP, inCells)
+              && !Rules.PresenceWanted(backP, inCells),
+            "Her cell presence does not wait for her letter's twelve hours, or another of her presences stands with it.");
+        check(!Rules.PresenceWanted(cellsP, Later(story, posted, 1)) && !Rules.PresenceWanted(backP, Later(story, posted, 35))
+              && Rules.PresenceWanted(backP, Later(story, posted, 36)) && !Rules.PresenceWanted(mainP, Later(story, posted, 36))
+              && Rules.PresenceWanted(mainP, Later(story, home, 1)) && !Rules.PresenceWanted(backP, Later(story, home, 1)),
+            "She stands in her cell while the wagon has her, or is not back in it when the wagon returns.");
+
+        // Q6 follow-up (COX, hard): the Last Call coda Requires her real committed flag. A woman refused at the muster, gone from
+        // the yard, or killed at the cage has no coda; reaching the wall (late_committed) is not a romance.
+        var coda = S("jannah.lastcall.page");
+        check(coda.Requires.Contains(Committed) && coda.RequiresAnyGroups.Length == 0 && coda.Forbids.Contains(P + "gone"),
+            "Her Last Call coda does not Require her committed flag.");
+        check(Avail(coda, World(story, 6, "trickster.ever", "lastcall.active", Committed, C + "walls")),
+            "Her Last Call coda does not play for a committed Jannah.");
+        foreach (var (why, flags) in new (string, string[])[]
+        {
+            ("refused at the muster", new[] { C + "walls", Closed, P + "gone" }),
+            ("gone from the chalk circle", new[] { C + "walls", P + "declined", P + "threw_the_bout", Closed, P + "gone" }),
+            ("left to the wagon", new[] { Closed, P + "gone" }),
+            ("killed at the cage", new[] { Dead, "jannah.dead.latched" }),
+            ("killed at the cage, Seelah told", new[] { DeadKnown, "jannah.dead.latched" }),
+            ("unfinished after the wall", new[] { C + "walls" }),
+        })
+            check(!Avail(coda, World(story, 6, new[] { "trickster.ever", "lastcall.active" }.Concat(flags).ToArray())),
+                "Her Last Call coda plays although she is " + why + ".");
+        var codaParas = coda.Nodes[0].Paragraphs;
+        check(codaParas.Where(q => q.Text.Contains("north wall", StringComparison.Ordinal)).All(q => q.Requires.Contains(C + "walls.saluted"))
+              && codaParas.Count(q => q.Requires.Contains("jannah.lastcall.called")) == 2
+              && !S("jannah.lastcall.call").Nodes.Any(n => n.Text.Contains(" a wall", StringComparison.Ordinal) || n.Text.Contains("north wall", StringComparison.Ordinal) || n.Text.Contains("Mivon words", StringComparison.Ordinal)),
+            "The Last Call call or coda recalls a wall salute the Commander never called.");
+
         Console.WriteLine("PASS: Jannah Trickster (Trk_Jannah_*): the forms at the cage, the ash, the unclaimed yield, blood and tale in six living worlds, the false catch and the wagon, "
                           + "the forms, Houndheart, the wall, her challenge, the chalk circle, the night, the pages, the reactors, the secret, Seelah's word, and "
                           + courtship.Length + " courtship beats.");
