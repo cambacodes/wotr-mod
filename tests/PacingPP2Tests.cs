@@ -215,7 +215,7 @@ internal static class PacingPP2Tests
         check(C(counting, "start", 0).Requires.Contains("arueshalae.trickster.react.sosiel_fed") && C(counting, "start", 1).Requires.Contains("arueshalae.trickster.react.lann_prisoner")
               && C(counting, "start", 2).Next == "you_alone" && C(counting, "start", 3).Next == "him_alone",
             "Arueshalae: the count recalls Sosiel's offer or Lann's word where those reactions never played.");
-        check(new[] { city, cityYard }.All(s => N(s, "price").Choices.Select(ch => ch.Next).SequenceEqual(new[] { "taste", "cultist", "refuse" })),
+        check(new[] { S("arueshalae.trickster.evil.reunion_city"), S("arueshalae.trickster.evil.reunion_city_yard") }.All(s => N(s, "price").Choices.Select(ch => ch.Next).SequenceEqual(new[] { "taste", "cultist", "refuse" })),
             "Arueshalae: the Drezen reunion offers a captive or courier nobody secured.");
         foreach (var id in new[] { "commit", "kept", "kept_fallen", "fallen" })
         {
