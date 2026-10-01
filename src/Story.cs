@@ -36,6 +36,9 @@ namespace Tirabade
         public List<NativeOpener> Openers = new List<NativeOpener>();
         // E14d: reviewed native epilogue cues replaced by an RRT epilogue scene's text when an earned condition holds.
         public Dictionary<string, NativeEpilogueEditSpec> NativeEpilogueEdits = new Dictionary<string, NativeEpilogueEditSpec>();
+        // E18: reviewed native gates (NativeGate.Reviewed), keyed by gate id. While When holds, the gated native checker reads
+        // false and the native content takes its own false branch. Never starts or completes a native etude.
+        public Dictionary<string, NativeGateSpec> NativeGates = new Dictionary<string, NativeGateSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E17 (native outcome bridge): the only native etudes a choice may start (Choice.StartEtude), each a GUID the story
@@ -242,6 +245,13 @@ namespace Tirabade
         public string Sequence = "";
         public string Key = "";
         public string Replacement = "";
+        public string[][] When = Array.Empty<string[]>();
+    }
+
+    public sealed class NativeGateSpec
+    {
+        public string Target = "";
+        public string Relationship = "";
         public string[][] When = Array.Empty<string[]>();
     }
 
@@ -1233,6 +1243,7 @@ namespace Tirabade
                 if (!IsTableScene(scene))
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
                 throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
@@ -1434,6 +1445,35 @@ namespace Tirabade
 
             }
         }
+
+        // E18: each gate is a reviewed gate id with its exact target, a known relationship, and When groups of known keys that
+        // each require the Trickster (a gate never changes a non-Trickster world).
+        private static void ValidateNativeGates(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeGates == null) throw new InvalidOperationException("NativeGates cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeGates)
+            {
+                var gate = pair.Value;
+                if (gate == null || !ReviewedNativeGates.TryGetValue(pair.Key, out var target) || gate.Target != target
+                    || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
+                    || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
+                        || !g.Contains("trickster.ever")))
+                    throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
+                        + "that each require trickster.ever): " + pair.Key);
+            }
+        }
+
+        // E18: the reviewed gate ids and their native targets (src/NativeGate.cs holds the audited contracts).
+        public static readonly Dictionary<string, string> ReviewedNativeGates = new Dictionary<string, string>
+        {
+            ["ivory_sanctum.red_dragon_spawn"] = "977818b761d048d49a0fe19a1c8fccc4",   // IvorySanctum_MainEtude: RedDragon_CR20 spawn branches
+            ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
+        };
+
+        // E18: a gate holds while its relationship is live and any When group holds.
+        public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)
+            && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
 
         // E14d: each edit names a whitelisted cue with its exact evidence, a 1-node epilogue replacement scene, and When groups
         // that each require the replacement relationship's CommittedFlag.

@@ -196,6 +196,10 @@ The script therefore launches the normal windowed game minimized. `-Windowed` ad
   The run also has no invalid-answer or empty-page errors, and it terminates within the step budget.
 - The terminal-choice and `Set`-flag bookkeeping (`RecordProgress`) actually lands in the save's unlockable flags.
 - RRT flags survive a real save and load cycle.
+- E18 native gates (`Story.NativeGates`, `src/NativeGate.cs`) wrapped their reviewed checkers on the real loaded blueprints:
+  `Init.NativeGates` lists each gate with its guard count (IvorySanctum_MainEtude 2/2, Golems_DragonEggs/Cue_0001 1/1), and a
+  live relationship with a missing guard fails the run. The gate's in-world effect (the Sanctum's absent-dragon branch) is not
+  driven: it needs a save at the Sanctum's first entry after the lair escape.
 
 ## What it does not prove
 

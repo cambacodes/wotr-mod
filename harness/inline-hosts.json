@@ -4,14 +4,14 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1074,
-  "resolved": 1074,
-  "inlineOnlyScenes": 282,
-  "inlineOnlyResolved": 282,
-  "answerListScenesWithoutContact": 647,
-  "answerListScenesWithoutContactResolved": 647,
-  "lists": 122,
-  "listsWithReachableHost": 121
+  "entryTargetScenes": 1083,
+  "resolved": 1083,
+  "inlineOnlyScenes": 289,
+  "inlineOnlyResolved": 289,
+  "answerListScenesWithoutContact": 656,
+  "answerListScenesWithoutContactResolved": 656,
+  "lists": 126,
+  "listsWithReachableHost": 125
  },
  "scenes": {
   "a_crossing": {
@@ -6016,6 +6016,25 @@
     "clicks": 0
    }
   },
+  "devarra.react.greybor.flown": {
+   "kind": "dialog",
+   "lists": [
+    "174d6c94b6725f44aad1d2a76993a926"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "174d6c94b6725f44aad1d2a76993a926": "RRT_entry.devarra.react.greybor.flown"
+   },
+   "resolved": true,
+   "host": {
+    "list": "174d6c94b6725f44aad1d2a76993a926",
+    "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
+    "dialogName": "GrimborMainDialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
   "devarra.react.greybor.repeat_work": {
    "kind": "dialog",
    "lists": [
@@ -6032,6 +6051,25 @@
     "dialog": "40a79e99680bd8c4a8ba77413ec372d9",
     "dialogName": "GrimborMainDialogue",
     "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "devarra.react.storyteller.flown": {
+   "kind": "dialog",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.react.storyteller.flown"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
     "clicks": 0
    }
   },
@@ -6234,6 +6272,25 @@
    "contact": null,
    "entry": {
     "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.first_snow"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
+  "devarra.tower.first_snow_free": {
+   "kind": "return-cue",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.first_snow_free"
    },
    "resolved": true,
    "host": {
@@ -6624,6 +6681,25 @@
     "clicks": 0
    }
   },
+  "devarra.tower.the_messenger_free": {
+   "kind": "return-cue",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.the_messenger_free"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
   "devarra.tower.the_old_hide": {
    "kind": "return-cue",
    "lists": [
@@ -6652,6 +6728,25 @@
    "contact": null,
    "entry": {
     "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.the_ring"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
+  "devarra.tower.the_scabs": {
+   "kind": "return-cue",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.the_scabs"
    },
    "resolved": true,
    "host": {
@@ -6747,6 +6842,25 @@
    "contact": null,
    "entry": {
     "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.under_the_wing"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2f5b7e0b76d3c5a42a431e1e33a8db09",
+    "dialog": "bf328bcec67a5014f9a56ee6220f3bcc",
+    "dialogName": "StoryTeller_MainDialogue",
+    "cue": "Cue_0593",
+    "clicks": 0
+   }
+  },
+  "devarra.tower.what_came_back": {
+   "kind": "return-cue",
+   "lists": [
+    "2f5b7e0b76d3c5a42a431e1e33a8db09"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2f5b7e0b76d3c5a42a431e1e33a8db09": "RRT_entry.devarra.tower.what_came_back"
    },
    "resolved": true,
    "host": {
@@ -6888,6 +7002,67 @@
     "dialogName": "StoryTeller_MainDialogue",
     "cue": "Cue_0593",
     "clicks": 0
+   }
+  },
+  "devarra.trickster.flight.clutch_left": {
+   "kind": "return-to-list",
+   "lists": [
+    "b265afc1afe5a4241b1d5d42a4148e75"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "b265afc1afe5a4241b1d5d42a4148e75": "RRT_entry.devarra.trickster.flight.clutch_left.b265afc1afe5a4241b1d5d42a4148e75"
+   },
+   "resolved": true,
+   "host": {
+    "list": "b265afc1afe5a4241b1d5d42a4148e75",
+    "dialog": "63f11843f40edd54795fcc0af3f6a20e",
+    "dialogName": "DragonEggs_Dialogue",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "devarra.trickster.flight.leash": {
+   "kind": "return-to-list",
+   "lists": [
+    "04d72f75c1e841747a55b780fccf37fe",
+    "d1f609c764422a24994568d850c99958",
+    "ab4a075bbc5d24048bf892697e75f2e3"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "04d72f75c1e841747a55b780fccf37fe": "RRT_entry.devarra.trickster.flight.leash.04d72f75c1e841747a55b780fccf37fe",
+    "d1f609c764422a24994568d850c99958": "RRT_entry.devarra.trickster.flight.leash.d1f609c764422a24994568d850c99958",
+    "ab4a075bbc5d24048bf892697e75f2e3": "RRT_entry.devarra.trickster.flight.leash.ab4a075bbc5d24048bf892697e75f2e3"
+   },
+   "resolved": true,
+   "host": {
+    "list": "04d72f75c1e841747a55b780fccf37fe",
+    "dialog": "0217459b6db720a4fad0734659ca778f",
+    "dialogName": "Golems_DragonEggs_Dialogue",
+    "cue": "Cue_0016",
+    "clicks": 3
+   }
+  },
+  "devarra.trickster.flight.pact": {
+   "kind": "return-cue",
+   "lists": [
+    "c8298f1630fd82046986d313ba35f601"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "c8298f1630fd82046986d313ba35f601": "RRT_entry.devarra.trickster.flight.pact"
+   },
+   "resolved": true,
+   "host": {
+    "list": "c8298f1630fd82046986d313ba35f601",
+    "dialog": "dc1304a6335d8fa4bb4aa21c81f0aa4d",
+    "dialogName": "StoryTellerAndDragonGoodEnter",
+    "cue": "Cue_0029",
+    "clicks": 11
    }
   },
   "dorgelinda.lastcall.call": {
@@ -21126,6 +21301,46 @@
     }
    ]
   },
+  "04d72f75c1e841747a55b780fccf37fe": {
+   "list": "04d72f75c1e841747a55b780fccf37fe",
+   "listName": "AnswersList_0020",
+   "hosts": [
+    {
+     "dialog": "0217459b6db720a4fad0734659ca778f",
+     "dialogName": "Golems_DragonEggs_Dialogue",
+     "cues": [
+      "507a09cabbd469f4684b36fd390f2681",
+      "c09845d3e839b614eae7c4251b5379fe"
+     ],
+     "cueNames": [
+      "Cue_0016",
+      "SequenceExit_0055"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 3,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0006",
+       "take": "Answer_0004"
+      },
+      {
+       "at": "Cue_0008",
+       "take": "Answer_0012"
+      }
+     ],
+     "answerDist": {
+      "3f7a4ce44d8157d4bb32ff8ebcab8bf0": 1,
+      "4027817fb8c73c549a826e07c6271f54": 3,
+      "4795e5ee3b2621f49961c51b473297ab": 2
+     }
+    }
+   ]
+  },
   "06184e4f0a65650488e36600d8274d26": {
    "list": "06184e4f0a65650488e36600d8274d26",
    "listName": "AnswersList_0005",
@@ -26595,6 +26810,54 @@
     }
    ]
   },
+  "ab4a075bbc5d24048bf892697e75f2e3": {
+   "list": "ab4a075bbc5d24048bf892697e75f2e3",
+   "listName": "AnswersList_0039",
+   "hosts": [
+    {
+     "dialog": "0217459b6db720a4fad0734659ca778f",
+     "dialogName": "Golems_DragonEggs_Dialogue",
+     "cues": [
+      "6943114090691b24b9f7444bd3294849"
+     ],
+     "cueNames": [
+      "Cue_0040"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 5,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0006",
+       "take": "Answer_0004"
+      },
+      {
+       "at": "Cue_0008",
+       "take": "Answer_0012"
+      },
+      {
+       "at": "Cue_0016",
+       "take": "Answer_0024"
+      },
+      {
+       "at": "Cue_0033",
+       "take": "Answer_0036"
+      }
+     ],
+     "answerDist": {
+      "2167cff2b7d46e84a8f3085809d2cc6a": 1,
+      "3f7a4ce44d8157d4bb32ff8ebcab8bf0": 3,
+      "4027817fb8c73c549a826e07c6271f54": 5,
+      "4795e5ee3b2621f49961c51b473297ab": 4,
+      "d72ca1c79148ba74f828831d79f4073c": 2
+     }
+    }
+   ]
+  },
   "aff2802d5af0f77408793b489334befc": {
    "list": "aff2802d5af0f77408793b489334befc",
    "listName": "AnswersList_0006",
@@ -26711,6 +26974,33 @@
       "6158d28a56bbf1a4b87cd65e3726979b": 1,
       "9ed72cb9889902a46b9269d1ff3b2031": 2,
       "bc05853e3b46a7941ba783f9b42f2e56": 1
+     }
+    }
+   ]
+  },
+  "b265afc1afe5a4241b1d5d42a4148e75": {
+   "list": "b265afc1afe5a4241b1d5d42a4148e75",
+   "listName": "AnswersList_0002",
+   "hosts": [
+    {
+     "dialog": "63f11843f40edd54795fcc0af3f6a20e",
+     "dialogName": "DragonEggs_Dialogue",
+     "cues": [
+      "b2bf1f68ffaafd147a464d74dcfc42b1",
+      "164c14743ee768f409a04f93a040e678",
+      "ddbf41ea731817c4dac45eb0747aa4f4"
+     ],
+     "cueNames": [
+      "Cue_0001",
+      "Cue_0007",
+      "SequenceExit_0011"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 0,
+     "path": [],
+     "answerDist": {
+      "2330b54637738fe4fb92b6cd80eb68f7": 1
      }
     }
    ]
@@ -27824,6 +28114,51 @@
       "d64de3158ea433647910df1de7b8e868": 1,
       "f5f12ba49904e9847bca6cb1ba2c4921": 2,
       "feef1d950dcc3d5418fe4d89012ab829": 3
+     }
+    }
+   ]
+  },
+  "d1f609c764422a24994568d850c99958": {
+   "list": "d1f609c764422a24994568d850c99958",
+   "listName": "AnswersList_0035",
+   "hosts": [
+    {
+     "dialog": "0217459b6db720a4fad0734659ca778f",
+     "dialogName": "Golems_DragonEggs_Dialogue",
+     "cues": [
+      "234c128b027999e4e933e6490d875edb",
+      "0e947f2cf7d84c642a1779e0ecba357a"
+     ],
+     "cueNames": [
+      "Cue_0033",
+      "SequenceExit_0059"
+     ],
+     "speaker": null,
+     "reachable": true,
+     "clicks": 4,
+     "path": [
+      {
+       "at": "Cue_0001",
+       "take": "continue"
+      },
+      {
+       "at": "Cue_0006",
+       "take": "Answer_0004"
+      },
+      {
+       "at": "Cue_0008",
+       "take": "Answer_0012"
+      },
+      {
+       "at": "Cue_0016",
+       "take": "Answer_0024"
+      }
+     ],
+     "answerDist": {
+      "3f7a4ce44d8157d4bb32ff8ebcab8bf0": 2,
+      "4027817fb8c73c549a826e07c6271f54": 4,
+      "4795e5ee3b2621f49961c51b473297ab": 3,
+      "d72ca1c79148ba74f828831d79f4073c": 1
      }
     }
    ]

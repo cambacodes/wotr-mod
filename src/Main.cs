@@ -264,6 +264,19 @@ namespace Tirabade
                     else nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!,
                         (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!);
                 }
+                // E18: a reviewed native gate needs its exact native evidence, or its relationship is disabled (the route would
+                // otherwise promise an outcome the native content no longer keeps).
+                var nativeGates = new List<(string Gate, NativeGateSpec Spec, BlueprintScriptableObject Owner, ConditionsChecker[] Checkers)>();
+                foreach (var pair in story.NativeGates)
+                {
+                    string? refusal;
+                    BlueprintScriptableObject? owner = null;
+                    ConditionsChecker[] checkers = Array.Empty<ConditionsChecker>();
+                    try { refusal = NativeGate.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out owner, out checkers); }
+                    catch (Exception ex) { refusal = ex.Message; }
+                    if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
+                    else nativeGates.Add((pair.Key, pair.Value, owner, checkers));
+                }
                 // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.
                 foreach (var pair in story.Presences)
                 {
@@ -546,6 +559,18 @@ namespace Tirabade
                     {
                         NativeEpilogueEdit.Attach(plan, Ref<BlueprintCueBaseReference>(plan.Replacement),
                             () => enabled && initialized && Game.Instance?.Player != null && Rules.WhenHolds(when, State()));
+                        return new object();
+                    });
+                }
+                foreach (var gate in nativeGates)
+                {
+                    if (degraded.Contains(gate.Spec.Relationship)) continue;
+                    string id = gate.Gate;
+                    Optional<object>("Native gate " + id, () =>
+                    {
+                        foreach (var checker in gate.Checkers)
+                            NativeGate.Attach(gate.Owner, checker, () => enabled && initialized && Game.Instance?.Player != null
+                                && Rules.NativeGateHolds(story, id, State()));
                         return new object();
                     });
                 }

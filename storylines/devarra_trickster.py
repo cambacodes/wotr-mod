@@ -80,16 +80,52 @@ LEFT_HUNGRY = P + "left_hungry"
 FAILED = "trickster.failed"
 ST_DEAD = "storyteller.dead"
 EGGS = ("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed")
+# --- Option A, "She flies" (Writer/handoffs/trickster/devarra-device-options.md; coordinator-approved 2026-10-01) ---------
+# The redesign. Nobody dies and nothing is raised: in canon she breaks off at 10% in her lair (WoundWormLair_Event_Mechanics
+# fa1e44ec, "dragon tries to fly away"; the escape cutscene starts RedDragonEscaped 23bea004) and dies only in the Ivory
+# Sanctum, where Xanthir's golems hold her clutch under their fists ("Get up and fight... Or else your eggs will be
+# destroyed!", Golems_DragonEggs/Cue_0001 b8dfb42d; "the behavioral schematic for controlling the dragon", Cue_0033 234c128b).
+# IvorySanctum_MainEtude 977818b7 spawns RedDragon_CR20 in front of the egg chamber on the first entry, so the leash must be
+# slipped BEFORE that entry: in the lair she buys the Commander's plan under her own tariff (StoryTellerAndDragonGoodEnter/
+# Cue_0002 546738b4 "impress me"), flies at the turn, and does not answer the call. The reviewed native gate (E18,
+# src/NativeGate.cs) then takes the Sanctum's own lair-kill branch (the replacement fight; the golems call an absent dragon,
+# Cue_0047 ea54d573), and the Commander lowers the fists with the golems' own password (Cue_0008 -> Cue_0016 -> Cue_0028).
+# A wrong password is the native Destruction branch: the eggs die, and she knows whom to blame.
+# Coordinator ruling (2026-10-01, recorded in the matrix row): the lair-kill, no-hunt and unprepared-escape worlds keep canon
+# fate as an entry condition. The moult device (dead.lair_story, dead.setup, dead.storytellers_version, dead.woken) is
+# retired by gating; its ids, nodes and choices stay for save safety, and its variant lines stay behind LEGACY gates (a save
+# that already returned her through the moult before the redesign).
+PACT = P + "flight.pact"                   # the Commander's story from cover, bought on her tariff (lair, before the fight)
+STRUCK = P + "flight.struck"               # the stone told she is on an errand, not late (golem master list)
+CLUTCH_LEFT = P + "flight.clutch_left"     # the eggs left in the chamber for her (DragonEggs list)
+FLOWN = P + "flown"                        # Derived: the pact, and she escaped (latched): the flight world
+LEASH = P + "leash_cut"                    # Derived: the flight world, and the golems deactivated (native Cue_0028)
+ESCAPE_SEEN = "devarra.escaped.latched"    # Latch of RedDragonEscaped (it reads Playing only, and its parent quest can end)
+GOLEMS_MET = "devarra.golems_met.latched"  # Latch of Golems_DragonEggs/Cue_0006 (the fists raised over the eggs, both worlds)
+COLLECTED = P + "clutch_collected"         # she took her eggs from the chamber herself
+DEBT = P + "debt_claimed"
+LEGACY = "devarra.dead.latched"            # a pre-redesign save: she died, and the moult returned her
+RETIRED = (P + "dead.lair_story", P + "dead.setup", P + "dead.storytellers_version", P + "dead.woken")
 # R2-6: read by Last Call only (epilogue pages set no flags), so it is bound here rather than on demand.
-DERIVED = {P + "late_committed": [["trickster.ever", TESTED]]}
+DERIVED = {P + "late_committed": [["trickster.ever", TESTED]],
+           FLOWN: [["trickster.ever", PACT, ESCAPE_SEEN], ["trickster.ever", PACT, ESCAPED]],
+           LEASH: [[FLOWN, "devarra.golems_deactivated"]]}
+LATCHES = {ESCAPE_SEEN: ["devarra.escaped"], GOLEMS_MET: ["devarra.golems_met"]}
+SEEN = {"devarra.golems_deactivated": ["450b4a857a418f24c87ca6ae3984e4ff"],    # Golems_DragonEggs/Cue_0028 "Deactivation command received."
+        "devarra.golems_met": ["24de2c3ecf95fc640a84a5211d90121d"]}            # Golems_DragonEggs/Cue_0006 (fists over the eggs)
+# E18 reviewed native gates: while she has flown on the pact, the Sanctum takes its own absent-dragon branches.
+GATE_WHEN = [["trickster.ever", FLOWN]]
+NATIVE_GATES = {"ivory_sanctum.red_dragon_spawn": dict(Target="977818b761d048d49a0fe19a1c8fccc4", Relationship="devarra", When=GATE_WHEN),
+                "golems_dragon_eggs.over_body": dict(Target="b8dfb42d03fc931409f2b80614cfa9de", Relationship="devarra", When=GATE_WHEN)}
 
 RELATIONSHIP = dict(
-    Title="Clutch-mother",
-    Description="A woundwyrm the Commander lied about has climbed out of her own carcass, and she is keeping count of her eggs.",
+    Title="The Woundwyrm's Tariff",
+    Description="A woundwyrm who sells lives for stories let the Commander buy two of them, hers and her clutch's. She is keeping count of what she was given, and of what it cost.",
     Objective="Survive Devarra's attention",
-    Guidance=("On the Trickster path, when Devarra lies dead before Xanthir Vang's golems in the Ivory Sanctum, tell them "
-              "what she really is. In her lair you can give her the ending of her own story before the blow. If she died "
-              "unnamed, the Storyteller knows her price. After that, she writes; the Storyteller carries the rest."),
+    Guidance=("On the Trickster path, in Devarra's lair, speak from cover before Greybor strikes and pay her tariff with a "
+              "better story. Then fight her, and when she breaks for the sky at the end, let her fly. In the Ivory Sanctum, "
+              "Xanthir's golems will call for her: find the word that makes them listen, and lower their fists before they "
+              "decide she is late. Afterwards she comes to you; the Storyteller carries the rest."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[DEAD_LAIR, DEAD_SANCTUM, "inhuman"], FailureFlags=[],
     UnavailableOverrides={DEAD_LAIR: RETURNED, DEAD_SANCTUM: RETURNED},
@@ -128,7 +164,7 @@ def letter(id, title, nodes, requires, forbids=(), delay=0, **extra):
                         Relationship="devarra", Chapters=[3, 5], Remote=True, **extra))
 
 
-# --- Primer A (physical, Chapter 3): the ending of her own story, told from cover before the blow ---------------------
+# --- LEGACY (retired by gating, Option A; ids kept for save safety). Primer A: the ending of her own story --------------
 # Directive 9 foresight on her own tariff. The injected answer is a sibling of native Answer_0032 ("I have an interesting
 # story for you, too!") with the same next cue (Cue_0012) and the same Chaotic shift, so the native fight follows.
 
@@ -151,7 +187,7 @@ SCENES.append(scene(P + "dead.lair_story", "What happened next", "Devarra", 3, '
     AnswerLists=[LAIR_LIST], NativeReturnCue=LAIR_RETURN, TricksterDevice=True, TricksterState="dead_lair"))
 
 
-# --- Primer B (physical, Chapter 3): the golems over the carcass, minutes old ---------------------------------------
+# --- LEGACY (retired by gating, Option A). Primer B: the golems over the carcass -------------------------------------
 # Only when the body lies in front of them (Cue_0001); the trick continues into Cue_0045, where the native answers still
 # decide the clutch. The payment is her tariff: the story is told over a body minutes dead, while she can still hear it.
 # The lair-death world (Cue_0047) gets no golem trick: that carcass is days old, and deaf.
@@ -169,7 +205,7 @@ SCENES.append(scene(P + "dead.setup", "No order about clutch-mothers", "Devarra"
     AnswerLists=[GOLEM_LIST], NativeReturnCue=GOLEM_RETURN, TricksterDevice=True))
 
 
-# --- Late fallback (physical, Chapters 3-5): she died unnamed. A real act now, on worse terms --------------------------
+# --- LEGACY (retired by gating, Option A). Late fallback: she died unnamed -------------------------------------------
 # host_reason: the Storyteller speaks; he is the only living person who bought his life under her tariff
 # (KTC_StorytellerIsBack/Cue_0006 "That was what saved me."), and he spent days blind in her lair with his hands on the
 # walls, so he knows the hides. He does not fake her ending: he tells the Commander what the walls were, the Commander
@@ -199,7 +235,7 @@ storyteller(P + "dead.storytellers_version", "A story for a carcass", '"You were
 ], requires=("trickster", LATCHED), forbids=(PRIMED, DECLINED), delay=24, TricksterDevice=True)
 
 
-# --- The return (remote, tier B). Device scene: the hide splits on the page ---------------------------------------
+# --- LEGACY (retired by gating, Option A). The moult return; reachable only by a pre-redesign save already primed -----
 
 letter(P + "dead.woken", "The hide splits", [
     nar("wake", '''{n}You do not leave it to luck. There is hunters' talk, the kind Greybor repeats and does not believe, that a wyrm caught in her shed dies wrong and slow; there are the old split hides on her lair wall; and nobody has ever waited to see. So you go to the one man in Drezen who has rendered a woundwyrm and will admit it: Ulrich Danz, the quartermaster's hide-man, who keeps a strip of grey new hide in a jar of brine and swears it was still warm a week after the beast that grew it was dead. His brine is not a cure, and he says so: a new hide already grown under the old one holds some life of its own, and his salt keeps that life from going out with the rest of her, for as long as the salt lasts and no longer, and only while the spine is unopened. Nobody has ever tried it on a whole dragon. His price is the coin, the first shed scale for his jar, and your name on his licence when the Treasury asks why the crusade is buying monster pickle. You pay it. You have two barrels worked into the split along her spine by men you pay not to ask why; a guard of your own, paid by the night; and the quartermaster's renderers kept off her, by order where an order will hold and by a lie about plague in the meat where it will not. If the brine fails, or the lie is found out, she rots like any other carcass, and you have spent good silver on a smell.{/n}
@@ -302,6 +338,148 @@ letter(P + "dead.woken", "The hide splits", [
 ], requires=("trickster.ever", PRIMED, LATCHED), forbids=(RETURNED, DECLINED), delay=72, TricksterDevice=True)   # the three days
 
 
+# --- Option A, 1. The pact (physical, Chapter 3): her tariff, paid from cover, before the native fight -----------------
+# The injected answer is a sibling of native Answer_0032 ("I have an interesting story for you, too!"), with the same next
+# cue (Cue_0012 "What? You again?") and the same Chaotic shift, so the native fight follows unchanged: she still fights, and
+# the escape at 10% is the native one. Authored (labelled): the Commander's reading of a wounded dragon who will not leave
+# the country where she is hunted (Obj4_FollowDragonblood 891b83e7: "The dragon was deeply wounded"); her own words about
+# the stone and the clutch, which repeat what the golems say in canon (Cue_0001, Cue_0047, Cue_0033).
+
+SCENES.append(scene(P + "flight.pact", "A better story", "Devarra", 3, '[Speak from cover, before the dwarf moves] "That story has a better ending. Mine."', [
+    nar("cover", '''{n}Greybor's hand closes on your arm: now, while she is thinking. You do not move. Instead you point him along the ledge to the left, where the rock runs out over her flank and the soft place under her wing: strike from there, when I step out. He goes, quiet as a cat, and the old elf's voice and the drip of the cave swallow whatever is said behind him.{/n}
+{n}You have had the whole of the old elf's story to look at her from behind the rocks, and you have spent it looking. The wounds of the Grimwood ambush are still open along her flank; she has licked them and not let them close. A woundwyrm this size has the whole Worldwound to heal in and a sky to do it under, and she is lying hurt in a hunted country, within reach of a crusade, with a meal in her claws she cannot be bothered to finish. Dragons do not stay for gold. They can always find more gold. Something of hers is close, and somebody else is holding it.{/n}''',
+        c('[Pay her tariff before the dwarf moves] "The old man\'s story is about a crook with a ring. Mine is about you."', "tariff"),
+        c('"Never mind."', abort=True)),
+    dv("tariff", '''"Another voice from the rocks." {n}She does not turn her head. The claw around the old elf's ankle does not loosen.{/n} "One of the little parasites who bled me in the forest. I know your smell. Come out and I will eat you second, after the storyteller. Or stay where you are and impress me, and I will decide how long you keep your legs."''',
+        c('[Tell it as a fable, loud enough for the dwarf to think you are stalling]', "fable"),
+        c('"Never mind."', abort=True)),
+    nar("fable", '''{n}You tell it the way the old elf tells his, with a voice for every part, pitched to carry to her and no further. Out on the ledge, Greybor will hear a voice from the rocks telling a hungry beast a fable to hold her still. That is what he is waiting for.{/n}
+"Once there was a dragon who was hunted, and wounded, and still would not leave the country where they hunted her. The hunters said she was stubborn. One of them said that somebody had something of hers. A dragon does not stay for gold. She stays for the one thing she cannot steal again."
+{n}The tail, which has been sweeping slowly across the stones all this while, stops.{/n}''',
+        c("Continue", "named")),
+    dv("named", '''"Go on." {n}Very quietly. The old elf, who cannot see her face, has stopped breathing.{/n} "No. I will tell this part, since you have been clever enough to earn it. In the house of ivory there is a chamber, and in it two stone things with a man's voice in their mouths, and under their fists there is a clutch that is mine. Xanthir's pupils put a charm on me with their schematics. When it calls, I go, and I fight what the stone points me at, or the fists close."
+{n}Her lip lifts off her teeth.{/n} "That is the story so far. Every ending I have found for it has me dead in it, and the eggs under the fists anyway. Tell me a better one, little parasite, or I start the eating with you."''',
+        c('[Tell her the ending] "The hunters come. The dragon fights them, because the dwarf is watching and she has to. When she is losing, she flies. When the stone calls her home, she does not go; she lies up where it cannot see her. Stone does not close its fists on a summons. It talks to intruders first. One of the hunters walks into that chamber as the intruder, and puts a hand in the stone\'s mouth while it is still talking."', "terms"),
+        c('"Never mind."', abort=True)),
+    dv("terms", '''{n}For a long breath she says nothing at all. Then, loudly, for the rocks and for the dwarf behind them:{/n} "A boring story! A crusader's story! I have heard better from my dinner."
+{n}And under the noise of her own scorn, low, for you alone:{/n} "I will lie still while it calls, as long as I can bear it. When I cannot, I go back to my eggs and fight whatever it points me at, and I will make sure it points me at you. If the fists close, I will come to your city and find the hunter who told me this, and I will not be quick. If they do not..." {n}The claw slides off the old elf's ankle.{/n} "Then you will have impressed me. Nobody has, in a hundred years. Your dwarf is bored. Come out and fight me properly, and make it look true. I will be very surprised to see you."''',
+        c('[Step out of cover, and let her play her part] "You heard her. She wants a fight."', mythic="Trickster", alignment=("Chaotic", 1), native_next=LAIR_NEXT,
+          flags=(PACT,)),
+        c('"Never mind."', abort=True)),
+], requires=("trickster",), forbids=(PACT, DEAD_LAIR, DEAD_SANCTUM, ESCAPED, PRIMED), last=3, Relationship="devarra", Chapters=[3],
+    AnswerLists=[LAIR_LIST], NativeReturnCue=LAIR_RETURN))
+
+
+# --- Option A, 2. The leash (physical, Chapter 3): the stone told she is on an errand ---------------------------------
+# On the golems' master lists (after the native password, Cue_0016 507a09ca), returning to the list, where the native
+# "Deactivation." (Cue_0028) lowers the fists. The wrong password never reaches these lists: it is the native Destruction.
+
+SCENES.append(scene(P + "flight.leash", "The lizard is on an errand", "Devarra", 3, '"First: the lizard. Report."', [
+    n("report", "Golem", '''{n}The magical mouth works, stops, and works again.{/n} "Lizard: called. Lizard: did not come. Lizard is late. Protocol when the lizard is late: the eggs are destroyed. Protocol is pending." {n}The fists over the straw do not move.{/n} "Master: confirm?"''',
+      c('[Lie to the stone] "Do not confirm. The lizard is on an errand for me. She is exactly where I sent her."', "amended",
+        flags=(STRUCK,)),
+      c('"Wait."', abort=True)),
+    n("amended", "Golem", '''"Amendment received. Lizard: on an errand for master. Lizard: not in breach." {n}The fists stay exactly where they are. Nothing in the amendment says to lower them, and nothing in the golem will do a thing it was not told.{/n} "Protocol: pending. Master: command?"''',
+      c("Continue")),
+], requires=("trickster.ever", FLOWN, "devarra.golems_calling"), forbids=(STRUCK, "eggs.destroyed"), last=3, Relationship="devarra",
+    Chapters=[3], AnswerLists=["04d72f75c1e841747a55b780fccf37fe", "d1f609c764422a24994568d850c99958", "ab4a075bbc5d24048bf892697e75f2e3"],
+    ReturnToList=True, ReturnText="{n}The fists hang over the eggs, waiting for a word.{/n}"))
+
+
+# --- Option A, 3. The clutch left for her (physical, Chapter 3): on the native egg list, returning to it ----------------
+
+SCENES.append(scene(P + "flight.clutch_left", "Their mother is coming", "Devarra", 3, '[Leave the eggs where they lie] "Nobody touches these. Their mother is coming."', [
+    nar("left", '''{n}You post nobody; a guard would be dinner. On the way out you wedge the door to the outer hall open with a dead cultist, wide enough for something the size of a house, and you leave the eggs warm in their straw in the shadow of the golems, ticking faintly as they cool and warm again, like a hearth at night.{/n}''',
+        c("[Leave them.]", flags=(CLUTCH_LEFT,)),
+        c('"Wait."', abort=True)),
+], requires=("trickster.ever", LEASH), forbids=(CLUTCH_LEFT, "eggs.destroyed", "eggs.project"),
+    last=3, Relationship="devarra", Chapters=[3], AnswerLists=["b265afc1afe5a4241b1d5d42a4148e75"],
+    ReturnToList=True, ReturnText="{n}The eggs lie where they are, warm in the straw.{/n}"))
+
+
+# --- Option A, 4. She comes for her eggs (remote, tier B: her only native unit is a hostile monster) --------------------
+
+letter(P + "flight.eggs", "What a dragon does with a promise", [
+    nar("road", '''{n}One night after the Ivory Sanctum the sentries on the east road lose four horses off the picket line, and nobody hears a thing until the last one screams.{/n}
+{n}When you come out of your tent she is lying across the road with her chin on an overturned cart, darker than the dark and bigger than she looked in the gorge. The lair is still on her: the torn web of one wing stiff with dried blood, the long gash under it where your party opened her to the ribs, a split along her jaw where somebody's blade turned on the bone. She flew on all of it. Her eyes find you before the sentries do.{/n}''',
+        c("Continue", "stone")),
+    dv("stone", '''"You fought me well. Too well, at the end; one of yours wanted my heart badly enough to forget whose plan it was." {n}Smoke threads from her nostrils.{/n} "Then I flew. And the charm called, the way it has called me all season, and for the first time I did not go. I lay on a mountain with my wounds open and let it call, night after night, and did not go."
+{n}The cart under her chin creaks.{/n} "That is the hardest thing I have ever done, and I did it on the word of a parasite who hid behind a rock."''',
+        c("Continue", "failed", requires=(FAILED,)),
+        c("Continue", "which_eggs", forbids=(FAILED,))),
+    dv("failed", '''"Your little tricks have stopped working, I hear. Good. What you did in that house was not a trick. It was a word said to a stone with a straight face, and those still work. So does my tariff."''',
+        c("Continue", "which_eggs")),
+    dv("which_eggs", '''{n}She lifts her chin off the cart. The whole camp holds its breath with her.{/n} "Now. My clutch."''',
+        c("Continue", "said_omelet", requires=("eggs.omelet",)),
+        c("Continue", "said_druids", requires=("eggs.druids",), forbids=("eggs.omelet",)),
+        c("Continue", "said_project", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet")),
+        c("Continue", "said_destroyed", requires=("eggs.destroyed",)),
+        c("Continue", "said_left", requires=(CLUTCH_LEFT, LEASH), forbids=EGGS),
+        c("Continue", "said_collected", requires=(LEASH,), forbids=EGGS + (CLUTCH_LEFT,))),
+    dv("said_omelet", '''"Your city ate my children with herbs." {n}She says it very quietly.{/n} "I lay on a mountain and did not answer the stone, so that a crusader could carry my eggs out from under its fists and down to his kitchens. Every citizen had a plate. I can smell it on your city's breath, and on the stones of its gate. Someone salted them."''',
+        c("Continue", "clutch")),
+    dv("said_druids", '''"You took them out from under the fists. Then you gave them to men who smelled of gold, and of lies." {n}Her claws close on the cart, and it splits.{/n} "I followed them for a day and a night and lost them at a river, and I do not lose things."''',
+        c("Continue", "clutch")),
+    dv("said_project", '''"They are in your vaults. I can hear them." {n}Her head turns, very slowly, toward Drezen, and stays there.{/n} "You cut the leash, and then you put a lock where the leash had been. Keep them warm, crusader. If they are cold when I come for them, Drezen will be warm enough."''',
+        c("Continue", "clutch")),
+    dv("said_destroyed", '''"Slop on a golem's fist." {n}Nothing in her voice moves at all.{/n} "You said you would be in that house before the stone knew I was late. You were. I lay on my mountain and did not go, and you were there, and my clutch is slop on the floor of that chamber anyway."''',
+        c("Continue", "clutch")),
+    dv("said_left", '''"They were where you left them. Warm." {n}Her breath goes out of her, long, and the picket fires lean away from it.{/n} "The stone stood over them with its hands down, like a beggar, and said nothing when I took them. And somebody had wedged the door open for me with a corpse. I noticed that."''',
+        c("Continue", "clutch")),
+    dv("said_collected", '''"They were where the stone had left them. Warm." {n}Her breath goes out of her, long, and the picket fires lean away from it.{/n} "Nobody had touched them. Nobody had guarded them, either. I took them up the mountain one at a time, in my mouth, and every time I went back I expected to find the fists closed."''',
+        c("Continue", "clutch")),
+    dv("clutch", '''{n}She waits. It is a very particular kind of waiting, and every horse left on the picket line understands it.{/n}''',
+        c('[Give her the cook] "Citadel kitchens, second door. He\'s the one who salted them."', "cook_given",
+          requires=("eggs.omelet",), alignment=("Evil", 3), flags=(RETURNED, STARTED, HUNGRY, COOK_GIVEN)),
+        c('"The city was starving. Eat demons. There are more of them."', "cook_refused",
+          requires=("eggs.omelet",), flags=(RETURNED, STARTED, HUNGRY, COOK_REFUSED)),
+        c('"Then go and take them back."', "take_back",
+          requires=("eggs.druids",), forbids=("eggs.omelet",), flags=(RETURNED, STARTED, HUNGRY, HUNTING)),
+        c('"They\'re safer where they are than with you."', "safer",
+          requires=("eggs.druids",), forbids=("eggs.omelet",), flags=(RETURNED, STARTED, HUNGRY, WITHHELD)),
+        c('"They\'ll be warm."', "warm",
+          requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet"), flags=(RETURNED, STARTED, HUNGRY, WITHHELD)),
+        c('[Tell her who built the fists] "Xanthir Vang made the golems. His students still breathe."', "xanthir",
+          requires=("eggs.destroyed",), alignment=("Evil", 1), flags=(RETURNED, STARTED, HUNGRY, XANTHIR)),
+        c('"I was there. I didn\'t stop it."', "marked",
+          requires=("eggs.destroyed",), flags=(RETURNED, STARTED, HUNGRY, MARKED)),
+        c('"Then the tariff is paid."', "paid",
+          requires=(LEASH,), forbids=EGGS, flags=(RETURNED, STARTED, HUNGRY, COLLECTED)),
+        c('"Then you owe me."', "owe",
+          requires=(LEASH,), forbids=EGGS, flags=(RETURNED, STARTED, HUNGRY, COLLECTED, DEBT))),
+    dv("cook_given", '''"Good. I will be quick with him." {n}She stands, and the cart falls over, and the whole road seems to tilt with her.{/n} "I will not be quick with anyone else."''',
+       c("[Watch her go.]")),
+    dv("cook_refused", '''{n}She considers you as though you were a door she had not decided whether to open.{/n} "Then I will be patient with your city. Dragons are very patient."''',
+       c("[Watch her go.]")),
+    dv("take_back", '''"Yes." {n}The word comes out of her with smoke on it.{/n} "That is the first sensible thing a crusader has ever said to me. Keep saying sensible things. It will keep you alive."''',
+       c("[Watch her go.]")),
+    dv("safer", '''{n}Something very old moves behind her eyes and goes back into the dark.{/n} "Safer. You say that to a mother." {n}She considers the word from every side, the way she considers food.{/n} "Say it again when you know me better. I would like to hear whether you still mean it."''',
+       c("[Watch her go.]")),
+    dv("warm", '''"They will." {n}It is not agreement. It is a sentence being passed.{/n} "Every night, crusader, I will be listening at your walls. If I hear them stop, I will not need you to tell me why."''',
+       c("[Watch her go.]")),
+    dv("xanthir", '''"Vang." {n}She tastes the name and puts it away somewhere safe, like a bone for later.{/n} "His students. Yes. I remember students; they run in the wrong direction. You have given me something, crusader. I will not forget which of us gave it."''',
+       c("[Watch her go.]")),
+    dv("marked", '''"Then you will watch the next thing too." {n}She says it almost kindly, which is the worst way she could have said it.{/n} "I have not picked it yet."''',
+       c("[Watch her go.]")),
+    dv("paid", '''"Paid." {n}She lifts her chin off the cart, and the cart rocks back onto its wheels.{/n} "You told me a story and I did not eat you. That was the tariff. Then you stood in front of Xanthir's stone with your hand in its mouth, for a dragon who would have eaten you the week before." {n}Her eye narrows.{/n} "That was not the tariff. That was something else, and I have not decided what it costs."''',
+       c("[Watch her go.]")),
+    dv("owe", '''"Owe." {n}She tastes the word as if it had gone off.{/n} "Dragons do not owe, crusader. Dragons are owed. A thing that lends to a dragon is a thing that has decided to be eaten later." {n}Smoke curls off her lip.{/n} "But I will remember who stood in that chamber. When I have decided what that is worth, you will be told. You will not like the coin."''',
+       c("[Watch her go.]")),
+], requires=("trickster.ever", FLOWN, GOLEMS_MET), forbids=(RETURNED, DEAD_LAIR, DEAD_SANCTUM), delay=48,   # two nights after the golems
+    RequiresAnyGroups=[[LEASH, "eggs.destroyed", "eggs.project"]])
+
+
+# --- Option A, reactions: Greybor (his kill given up, his name stained) and the Storyteller (her captive) -----------------
+
+SCENES.append(reaction("Greybor", "devarra.react.greybor.flown", (RETURNED, FLOWN),
+    '''{n}Greybor does not look up from the whetstone.{/n} "You sent me out along that ledge to wait for your story to end. I waited. I took it for stalling. I have been thinking about it since." {n}The stone goes down the edge once more, slowly.{/n} "She broke at the turn like a dragon who had been told when to break. Now there is a dragon on the ridge and a stain on my name for a job I did properly." {n}He looks up.{/n} "Lie to a client if you have to, Commander. Never lie to the knife. Next time you want a thing to live, say so before I draw."''',
+    answer_list=GREYBOR_LIST, relationship="devarra", forbids=("greybor.dead", "greybor.kicked_out"),
+    entry='"The dragon is back."', chapter=3, last=5, portrait="Greybor", Chapters=[3, 5]))
+SCENES.append(reaction("Storyteller", "devarra.react.storyteller.flown", (RETURNED, FLOWN),
+    '''"I was under her claw while you told it." {n}The blind elf turns his cup a quarter turn on the table.{/n} "A dragon who would not leave a country where she was hunted. I thought you were buying my life with it. You were buying hers, and mine came back as change: when she flew, she forgot to eat me." {n}He turns his face toward the ridge.{/n} "I ought to be grateful. I find I am only careful. Some stories should be allowed to end, Commander. You have never once let one."''',
+    answer_list=ST_HUB, relationship="devarra", forbids=(ST_DEAD,), entry='"About the dragon..."', chapter=3, last=5, Chapters=[3, 5]))
+
+
 # --- The test (physical, Chapters 3-5): her two demands, carried by the one messenger she does not eat --------------
 # host_reason: the Storyteller speaks every line; he is the witness who holds the Commander's story (ledger 9).
 
@@ -310,13 +488,16 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
         c("Continue", "late", requires=(LATE,)),
         c("Continue", "cook", requires=(COOK_GIVEN,), forbids=(LATE,)),
         c("Continue", "watch", requires=(MARKED,), forbids=(LATE, COOK_GIVEN)),
-        c("Continue", "tithe", forbids=(LATE, COOK_GIVEN, MARKED))),
+        c("Continue", "tithe", forbids=(LATE, COOK_GIVEN, MARKED, FLOWN)),
+        c("Continue", "tithe_free", requires=(FLOWN,), forbids=(LATE, COOK_GIVEN, MARKED))),
     teller("late", '''"She says you came to her late and through a stranger's mouth. She has added that to the bill." {n}He tilts his head.{/n} "I did not ask what the bill was in. One learns not to."''',
         c("Continue", "tithe")),
     teller("cook", '''"She says the cook was stringy." {n}He lets that sit a moment.{/n} "Your kitchens are short a man, and nobody in them will say why. They know."''',
-        c("Continue", "tithe")),
+        c("Continue", "tithe", forbids=(FLOWN,)),
+        c("Continue", "tithe_free", requires=(FLOWN,))),
     teller("watch", '''"She says she is still deciding what you will watch next. She said it twice, so that I would remember the exact words."''',
-        c("Continue", "tithe")),
+        c("Continue", "tithe", forbids=(FLOWN,)),
+        c("Continue", "tithe_free", requires=(FLOWN,))),
     teller("tithe", '''{n}He counts on his fingers.{/n} "The first: what is she to eat, now that she is awake and a mother and very, very hungry? She took four oxen from the east road on the way to ask. The drovers are complaining to your quartermaster. Your quartermaster is complaining to me, which is how I know I am now part of this."''',
         c('[Send her the cultists in the citadel cells] "Deskari\'s faithful. The ones who won\'t talk. And the carts to haul them."', "ending",
           alignment=("Evil", 2), crusade=("Materials", -100), flags=(RUTHLESS,)),
@@ -331,6 +512,18 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
           flags=(TESTED, TRUE)),
         c('[Flatter her] "The dragon eats the Commander, and it is the best meal of her life."', flags=(TESTED, FLATTERED)),
         c('"Tell her the story isn\'t finished. She\'ll get the end when there is one."', flags=(TESTED, KEPT_BACK))),
+    # Option A: the flight world's hunger and second question (she never died; the story she judges is the pact's).
+    teller("tithe_free", '''{n}He counts on his fingers.{/n} "The first: what is she to eat, now that she is off the stone's leash and very, very hungry, with the lair's wounds still closing on her? She took four oxen from the east road on the way to ask. The drovers are complaining to your quartermaster. Your quartermaster is complaining to me, which is how I know I am now part of this."''',
+        c('[Send her the cultists in the citadel cells] "Deskari\'s faithful. The ones who won\'t talk. And the carts to haul them."', "ending_free",
+          alignment=("Evil", 2), crusade=("Materials", -100), flags=(RUTHLESS,)),
+        c('"She\'s the bane of the Worldwound. Let her hunt it. Feed her from the outer farms until she finds her first demon."', "ending_free",
+          crusade=("Materials", -200), flags=(HUNTS,)),
+        c('"She\'ll eat when I say so."', "owned", flags=(CLOSED, "devarra.trickster.refused"))),
+    teller("ending_free", '''"The second question is older." {n}He turns his face toward the ridge.{/n} "You told her a story once, from behind a rock in her lair: a dragon who would not leave a hunted country, and a thief who reached the stone before it knew she was late. She says a story that stops at the thief keeping the bargain is not finished. She wants what happens next. She will judge it. I am to carry it up word for word, and I warn you: she has eaten better storytellers than either of us."''',
+        c('[Tell it true] "The dragon flew. The thief kept the bargain. Now they have to live within sight of each other, and neither of them knows how that ends."',
+          flags=(TESTED, TRUE)),
+        c('[Flatter her] "The dragon eats the thief, and it is the best meal of her life."', flags=(TESTED, FLATTERED)),
+        c('"Tell her the story isn\'t finished. She\'ll get the end when there is one."', flags=(TESTED, KEPT_BACK))),
 ], requires=("trickster.ever", RETURNED, HUNGRY), forbids=(CLOSED,), delay=48)
 
 
@@ -339,8 +532,9 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
 letter(P + "after.lair", "A tower above Drezen", [
     nar("climb", '''{n}The ruined watchtower on the ridge above Drezen has a new roof: a grey wing, folded. You climb because you were sent for: one line burned into the timber of the north gate at the height of a dragon's head, which the gatekeepers have not dared to plane off.{/n}
 {n}Inside, the floor is scattered with bones, sorted by size. She is lying around the broken stair with her head on the parapet, watching the city's lamps come on one by one.{/n}''',
-        c("Continue", "second_question", requires=(ST_DEAD,), forbids=(TESTED,)),
-        c("Continue", "verdict", requires=(TESTED,))),
+        c("Continue", "second_question", requires=(ST_DEAD,), forbids=(TESTED, FLOWN)),
+        c("Continue", "verdict", requires=(TESTED,)),
+        c("Continue", "second_question_free", requires=(ST_DEAD, FLOWN), forbids=(TESTED,))),
     dv("second_question", '''"There is nobody left to carry messages, so I will ask you myself." {n}She does not turn her head from the lamps.{/n} "You told me an ending once. A story that stops at the dragon getting up is not finished. What happens next? I will judge it. I have eaten better storytellers than you."''',
        c('[Tell it true] "The dragon gets up. The Commander who lied about her has to live with her. Neither of them knows how that ends."', "verdict",
          flags=(TESTED, TRUE)),
@@ -366,9 +560,10 @@ letter(P + "after.lair", "A tower above Drezen", [
        c("Continue", "terms")),
     dv("terms", '''"My tariff, then; you know I keep one. The tower is mine; nobody climbs it but you. My eggs, wherever they are, are my business before they are yours. And once a year, where I choose, I take one bite. A small one."
 {n}Her breath is very hot, and smells of the forge and of the Worldwound.{/n} "I do love to play with my food, crusader, and you have made yourself very interesting food."''',
-       c('[Bare your forearm] "Once a year. Not the sword arm."', "bitten", flags=(COMMITTED, BITTEN)),
+       c('[Bare your forearm] "Once a year. Not the sword arm."', "bitten", flags=(COMMITTED, BITTEN), forbids=(FLOWN,)),
        c('"No bites."', "no", flags=(CLOSED, "devarra.trickster.refused")),
-       c("[Leave her the tower, and her memory.]", "left", flags=(LEFT_HUNGRY,))),
+       c("[Leave her the tower, and her memory.]", "left", flags=(LEFT_HUNGRY,)),
+       c('[Bare your forearm] "Once a year. Not the sword arm."', "bitten_free", flags=(COMMITTED, BITTEN), requires=(FLOWN,))),
     dv("bitten", '''"Not the sword arm. I am not a savage." {n}She looks at your bare arm the way a jeweller looks at a stone she has already decided to buy, and then, deliberately, she looks away from it, back at the lamps of Drezen.{/n}
 "Not tonight. I have waited three days in a dead thing for this. I can wait a little longer, and so can you. Go down the mountain. Come back when I send for you."''',
        c("[Go down the mountain.]")),
@@ -376,22 +571,31 @@ letter(P + "after.lair", "A tower above Drezen", [
        c("[Go.]")),
     dv("left", '''"Go, then." {n}Her eyes are already back on the city.{/n} "I will still be hungry when you come back. You will come back."''',
        c("[Go.]")),
+    # Option A variants: she never died; the story she asks after is the pact's, and the wait was on a mountain, not in a corpse.
+    dv("second_question_free", '''"There is nobody left to carry messages, so I will ask you myself." {n}She does not turn her head from the lamps.{/n} "You told me a story from behind a rock once: a dragon who flew, and a thief who kept a bargain with a stone. A story that stops there is not finished. What happens next? I will judge it. I have eaten better storytellers than you."''',
+       c('[Tell it true] "The dragon flew. The thief kept the bargain. Now they have to live within sight of each other, and neither of them knows how that ends."', "verdict",
+         flags=(TESTED, TRUE)),
+       c('[Flatter her] "The dragon eats the thief, and it is the best meal of her life."', "verdict", flags=(TESTED, FLATTERED)),
+       c('"The story isn\'t finished. You\'ll get the end when there is one."', "verdict", flags=(TESTED, KEPT_BACK))),
+    dv("bitten_free", '''"Not the sword arm. I am not a savage." {n}She looks at your bare arm the way a jeweller looks at a stone she has already decided to buy, and then, deliberately, she looks away from it, back at the lamps of Drezen.{/n}
+"Not tonight. I lay on a mountain with my side open and let Xanthir's charm call me, on your word. I can wait a little longer for this, and so can you. Go down the mountain. Come back when I send for you."''',
+       c("[Go down the mountain.]")),
 ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, DECLINED), delay=48,
     RequiresAnyGroups=[[RUTHLESS, HUNTS, ST_DEAD], [TESTED, ST_DEAD]])
 
 
-# --- Reactions (doc 05 section 3.1 row 11: exactly Greybor and the Storyteller) --------------------------------------
+# --- Reactions (doc 05 section 3.1 row 11: exactly Greybor and the Storyteller). LEGACY: the moult world only ---------
 
 SCENES.append(reaction("Greybor", "devarra.react.greybor.repeat_work", (RETURNED,),
     '''{n}Greybor does not look up from the whetstone.{/n} "I was paid for that dragon. Then somebody kept the saws off her for three days and she climbed out of herself." {n}A shrug.{/n} "Repeat work is billed at the full rate. Tell her that, if she asks who set the ambush. She will."''',
-    answer_list=GREYBOR_LIST, relationship="devarra", forbids=("greybor.dead", "greybor.kicked_out"),
+    answer_list=GREYBOR_LIST, relationship="devarra", forbids=("greybor.dead", "greybor.kicked_out", FLOWN),
     entry='"The dragon is back."', chapter=3, last=5, portrait="Greybor"))
 SCENES.append(reaction("Storyteller", "devarra.react.storyteller.woken", (RETURNED,),
     '''"She held me in that lair for days, deciding how I would taste. I had my hands on those old hides the whole time and never once thought anyone would be fool enough to wait out a dead one." {n}The blind elf turns his face toward the ridge.{/n} "Some stories should be allowed to end, Commander. You have never once let one."''',
-    answer_list=ST_HUB, relationship="devarra", forbids=(ST_DEAD, STORY_SOLD), entry='"About the dragon..."', chapter=3, last=5))
+    answer_list=ST_HUB, relationship="devarra", forbids=(ST_DEAD, STORY_SOLD, FLOWN), entry='"About the dragon..."', chapter=3, last=5))
 SCENES.append(reaction("Storyteller", "devarra.react.storyteller.sold", (RETURNED, STORY_SOLD),
     '''"I told it the way you paid for. I did not promise to enjoy it." {n}The blind elf turns his face toward the ridge.{/n} "She held me in that lair for days, deciding how I would taste. Now she has a new body to be hungry in, and I bought her terms with your life story, and you bought the three days. Some stories should be allowed to end, Commander. You have never once let one."''',
-    answer_list=ST_HUB, relationship="devarra", forbids=(ST_DEAD,), entry='"About the dragon..."', chapter=3, last=5))
+    answer_list=ST_HUB, relationship="devarra", forbids=(ST_DEAD, FLOWN), entry='"About the dragon..."', chapter=3, last=5))
 
 
 # --- Epilogue pages (R2-6; ordered siblings) -------------------------------------------------------------------------
@@ -428,6 +632,16 @@ def integrate(payload):
     trickster_world; the late commit is bound here because no scene reads it yet."""
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
+    # Option A: the latches, the golem cues and the reviewed native gates; the moult device is retired by gating.
+    for key, sources in LATCHES.items():
+        payload.setdefault("Latches", {})[key] = list(sources)
+    for key, cues in SEEN.items():
+        payload.setdefault("SeenCues", {})[key] = list(cues)
+    for key, gate in NATIVE_GATES.items():
+        payload.setdefault("NativeGates", {})[key] = dict(gate, When=[list(g) for g in gate["When"]])
+    for s in payload["Scenes"]:
+        if s["Id"] in RETIRED and "trickster.ever" not in s["Forbids"]:
+            s["Forbids"].append("trickster.ever")
     # Q11 history gates (devarra_tower): Greybor's strike is named only where its native cue was seen; the Abyss vigil only
     # where the tower was climbed while the Chapter03 etude was still playing (it completes at ToNexus).
     payload.setdefault("SeenCues", {})["devarra.greybor_struck"] = ["5a083cd26e6c39b46b3eddcf648f87c8"]   # GoodEnter/Cue_0034
