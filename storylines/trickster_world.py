@@ -14,6 +14,11 @@ BINDINGS = {
     'anevia_away': ('Etudes', '6125c10886d6465091f4e092618ca55a', 'AneviaNotInDrezen (REAL blueprint; keep)'),
     'anevia_gone': ('Etudes', '09f46662bcd14a03a0874267e16d6e6f', 'AneviaGone'),
     'aranka.gave_song': ('SeenCues', 'f21279d12e1c70449bd037e75d7fd4a7', "c1/KenabresBurning/DesnaTempleFinal/Cue_0020 (Aranka: 'We call it Starward Gaze', string a"),
+    'aranka.kenabres_contest_won': ('SeenCues', 'dd66b8ab824c4b71864130c84bc72e15', 'c1/KenabresBurning/OraclePartyHouse/DesnaAdept2/Cue_15 (the bards contest won, she is outmatched; PP3 aranka.early.duet forbids it)'),
+    'aranka.kenabres_song_ballad': ('SelectedAnswers', 'da10a8e01f6c47508c69f65d26567551', 'DesnaAdept2/Answer_9 [Sing to the tune of a love ballad] (PP3 aranka.early.duet router)'),
+    'aranka.kenabres_song_march': ('SelectedAnswers', '44db38d17b9d41b396ab1c801929b2d9', 'DesnaAdept2/Answer_0006 [Sing to the tune of a battle march] (PP3 aranka.early.duet router)'),
+    'aranka.kenabres_song_tavern': ('SelectedAnswers', '953139a78ae142869340f88deb52d362', 'DesnaAdept2/Answer_0007 [Sing to the tune of a tavern song] (PP3 aranka.early.duet router)'),
+    'aranka.kenabres_voice_failed': ('SeenCues', '2c10c9d004184b7bbb22b6dd35f7fbc2', 'DesnaAdept2/Cue_0015 (the Commander voice fails in the bards contest; PP3 aranka.early.duet)'),
     'aranka.ran_failure': ('SeenCues', 'b18d250fa2fb4fdf9fe4eba04e9d1655', 'parent RanRomance failure cue (existing key)'),
     'aranka.ran_quest_complete': ('CompletedQuests', '1dacd3dfe1bf47c8a73074814e40b1c8', 'parent RanRomance quest (existing key)'),
     'aranka.ran_romance': ('Etudes', '2e98dbe685f045cdabf88b66e4cde9ff', 'parent RanRomance runtime blueprint (not in blueprints.zip; existing Story.json key from a'),
@@ -199,6 +204,7 @@ BINDINGS = {
     # so with Seelah dead or dismissed a dead Jannah read as alive. Bind the Deserter/Seelah cues that start each fate
     # (each StartEtude is unconditional in its cue); dialog history holds them regardless of Seelah. Condemned has no cue
     # (Seelah_BeforeQ3 moves her from prison when Chapter 5 starts; area DrezenCapital), so it is a latch below.
+    'jannah.asked_watch_service': ('SelectedAnswers', 'd01295db57dadba4a810bd3e4a3bfdfc', 'Ch1_SeelahMeetsFriends/Answer_0034 "Have you been serving in the Eagle Watch for long, Jannah?" (-> her Cue_0038 "Am I lucky, or what?"; PP3 jannah.early.laugh)'),
     'jannah.condemned.live': ('Etudes', '46f4524cec981c544964229e3e08c847', 'JannaInCondemned (area DrezenCapital, Seelah subtree: latch source only)'),
     'jannah.dead': ('SeenCues', ['199d4dbffb5a53a4cb73578307cbb4a9'], 'c3/MoltenScar/Deserter/Cue_0027 (starts JannaDead_SeelahDoesntKnow)'),
     'jannah.dead_known': ('SeenCues', ['166223b5a9284d34798dc42dcd4f7e1c'], 'Seelah/Cue_0105 (starts JannaDead_SeelahKnows)'),
@@ -302,6 +308,7 @@ BINDINGS = {
     'nurah.killing_mechanism': ('Etudes', '20927a9471c00814b808fd69e88879c7', 'NurahKilledInDrezen (started by NurahKilledAfterDrezen)'),
     'nurah.prison': ('Etudes', 'c922e0cbe25a0cf4dad4ce7a3ca81935', 'NuraInPrisonAfterDrezen'),
     'nurah.ran_off': ('Etudes', 'a86ab44f1a4d3f54fbeb51f5568bbb5c', 'NuraRanOffAfterDrezen'),
+    'nurah.siege_asked_to_stay': ('SelectedAnswers', '9f05ff7a6dafa8a41967ff6931723689', 'Nurah_After_Battle/Answer_0005 "Stay with me. I need you in my party!" (-> Cue_0010, the fear of hanging; PP3 nurah.early.hanging)'),
     'nurah.trickster_recruited': ('Etudes', 'a879a3a637a7eeb43b40677e4a8c4450', 'NurahRecruitedByTrickster'),
     'prologue.seelah_finished_lift': ('SeenCues', ['deb9827da749a5246b0263578bd68560', 'd94978ee21c6af642ad95578c3e2f8ea'], 'MeetSeelahAnevia Cue_0013 (failed lift, Seelah finishes it, SeelahFatigued) / Cue_0054 (failed lever, Seelah moves the boulder) (PP1 seelah.early.pack)'),
     'ramisa.met': ('SeenCues', 'dad3c081b47eef04b8618b704c748397', "c4/FleshMarket/HologramSlaver/Cue_0003 (Ramisa's first greeting, 'a true artist of the sla"),

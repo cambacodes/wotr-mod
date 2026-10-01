@@ -25,9 +25,11 @@ internal static class NurahHubTests
     internal static void Run(Story story, Action<bool, string> check)
     {
         // The registered continuation only: the Trickster route (nurah.trickster.*) meets her at her cell, in Ramisa's
-        // market or at an E12c presence, and has its own suite (tests/NurahTricksterTests.cs).
+        // market or at an E12c presence, and has its own suite (tests/NurahTricksterTests.cs). The pacing pass's early beats
+        // (nurah.early.*, inline on her siege dialog) have theirs too (tests/PacingPP3Tests.cs).
         var scenes = story.Scenes.Where(scene => scene.Relationship == "nurah"
-            && !scene.Id.StartsWith("nurah.trickster.", StringComparison.Ordinal)).ToArray();
+            && !scene.Id.StartsWith("nurah.trickster.", StringComparison.Ordinal)
+            && !scene.Id.StartsWith("nurah.early.", StringComparison.Ordinal)).ToArray();
         var physical = scenes.Where(scene => !Rules.IsRemote(scene)).ToArray();
         var remote = scenes.Where(Rules.IsRemote).ToArray();
         check(scenes.Length == 13 && physical.Length == 11 && remote.Length == 2,

@@ -1062,7 +1062,7 @@
    "4": "remote",
    "5": "ip"
   },
-  "exceptions": {},
+  "exceptions": {"4": "none: letters only, no Ch4 beat fits her route yet (coordinator, 2026-10-01; PP3 lint REVIEW accepted)"},
   "evidence": {
    "first_met": "71e631afb603f5949b13534a6cf8e1cc Seelah Q1 Ch1_CartRescue/Cue_0031 speaker CR4_DeserterJanna (Ch1 Kenabres)",
    "1": "6428870ef6820f040b09f6403c2c7e76 Seelah Q1 Ch1_SeelahMeetsFriends/Cue_0038 speaker DH_SeelasFriend_DeserterJanna ('Am I lucky, or what?')",

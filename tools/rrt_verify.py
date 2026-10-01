@@ -695,7 +695,9 @@ def validate(model):
                 and presence_relationship(s["InteractionHub"]) == s["Relationship"]):
             errs.append("Invalid interaction hub: " + sid)
         if (s["Relationship"] == "nurah" and not is_remote(s) and not is_epilogue(s) and not is_nurah_hub(s) and not is_presence_hub(s)
-                and not ((s["TricksterDevice"] or s.get("Reaction")) and s["InteractionHub"] is None and s["AnswerLists"])):
+                and not ((s["TricksterDevice"] or s.get("Reaction")) and s["InteractionHub"] is None and s["AnswerLists"])
+                and not (s["Owner"] == "Nurah" and s["InteractionHub"] is None and s.get("ContactUnit") is None and s["AnswerLists"]
+                         and (s["NativeReturnCue"] is not None or s.get("ReturnToList")))):   # PP3: her own inline beat (Story.cs E13)
             errs.append("Physical Nurah scene without hub (or a TricksterDevice on explicit AnswerLists): " + sid)
         if (s["EntryMythic"] is not None or s["EntryAlignment"] is not None) and (
                 is_remote(s) or s["InteractionHub"] is not None or is_epilogue(s)
