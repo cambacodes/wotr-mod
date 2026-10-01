@@ -210010,8 +210010,8 @@
       "RequiresAnyGroups": [
         [
           "targona.committed",
-          "targona.trickster.parent_romanced",
-          "targona.trickster.late_committed"
+          "targona.trickster.late_committed",
+          "targona.trickster.parent_romanced"
         ]
       ]
     },
@@ -424755,6 +424755,245 @@
       "NativeReturnCue": "a75d1c112c133734f96ae1f25fe17c05"
     },
     {
+      "Id": "wenduag.trickster.exile.ch5_hunt",
+      "Title": "Outside the walls",
+      "Owner": "Wenduag",
+      "MinChapter": 5,
+      "MaxChapter": 5,
+      "Entry": "",
+      "Nodes": [
+        {
+          "Id": "start",
+          "Speaker": "Narrator",
+          "Text": "{n}Nobody has seen her since you sent her away. The gate watch saw a hooded neather go out through the south postern that night and not come back; the cellar neathers say nothing, which in the cellars means something. Somewhere out in the burnt orchards beyond the walls, a hunter who was thrown out of your service is living off hares and her own temper.{/n}\n{n}If you want her back, nobody is going to bring her. You will have to go out and find her yourself, tonight, before she decides you are prey.{/n}",
+          "Choices": [
+            {
+              "Text": "[Go out through the postern alone, and read the ground the way she would.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false,
+              "Check": {
+                "Skill": "SkillLoreNature",
+                "DC": 22,
+                "Success": "found",
+                "Failure": "found_you"
+              }
+            },
+            {
+              "Text": "[Go out through the postern alone, and let her find you.]",
+              "Next": "found_you",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "[Leave her to the orchards.]",
+              "Next": null,
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": true
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "found",
+          "Speaker": "Narrator",
+          "Text": "{n}It takes most of the night. A snare in a hedge, set low and mean, the way she sets them. A hare's skin pegged out on a stump to dry. The smell of a fire put out with dirt, not water. You find her at the end of it, crouched on a stone wall above a dry ditch, watching you come with a spear across her knees. She has known you were coming for an hour. She let you keep going, to see if you would.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "found_you",
+          "Speaker": "Narrator",
+          "Text": "{n}You walk the dark orchards for an hour, and then the dark walks into you: a weight on your back, a forearm across your throat, and the cold of a knife under your ear before you hear a thing. It cuts as she settles it, a short shallow line, so that you will remember it.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "her",
+              "Set": [
+                "wenduag.trickster.cost.bled_outside"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": ""
+        },
+        {
+          "Id": "her",
+          "Speaker": "Wenduag",
+          "Text": "\"Look who came out of {mf|his|her} walls.\" {n}Wenduag's voice is flat and bright at once.{/n} \"You threw me out. In front of everybody. And now you come out alone, at night, into my orchards, where the strong one decides.\" {n}She tilts her head.{/n} \"Savamelekh never sent for me, after. Nobody did. I waited for somebody to come and make me an offer, and nobody came, and I hated you for that more than for the throwing out.\" {n}Her teeth show.{/n} \"So. You came. What are you offering?\"",
+          "Choices": [
+            {
+              "Text": "\"Nothing. I came because I want you back. On your terms.\"",
+              "Next": "terms",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"Savamelekh is still alive. Come back and hunt him with me.\"",
+              "Next": "sava",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [
+                "savamelekh.dead"
+              ],
+              "Abort": false
+            },
+            {
+              "Text": "\"I came to tell you that you were right, and I was wrong to throw you out.\"",
+              "Next": "wrong",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            },
+            {
+              "Text": "\"I came to tell you not to come back.\"",
+              "Next": "stay_dead",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "terms",
+          "Speaker": "Wenduag",
+          "Text": "\"My terms.\" {n}She considers you along the spear.{/n} \"You don't know what you're saying. My terms are that I don't come back as your dog. I come back to the cellars, and I go out through your gate when I please, and nobody stops me, and nobody counts me on a roll, and when you want me you come down the stair, alone, like tonight.\" {n}She stands up on the wall.{/n} \"And the first time you throw me out again, I'll be the one who comes looking.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "back",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "sava",
+          "Speaker": "Wenduag",
+          "Text": "{n}Her whole body goes tight, like a bowstring pulled.{/n} \"Alive. Out there, still calling his children.\" {n}She is quiet for a while.{/n} \"You're offering me him. Not his poison. Him.\" {n}She grins, slow and ugly.{/n} \"That's a better offer than the one I was waiting for. You're late with it. You'll pay for that, one day.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "back",
+              "Set": [
+                "wenduag.trickster.death_promised"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "wrong",
+          "Speaker": "Wenduag",
+          "Text": "{n}She stares at you as if you had spoken in a language she has only heard about.{/n} \"Wrong.\" {n}She tastes it.{/n} \"A {mf|master|mistress} who says *I was wrong* to a neather on a wall in the dark.\" {n}Then she laughs, and there is something unsteady in it.{/n} \"That's either the weakest thing I've ever heard or the strongest. I don't know which. I hate not knowing.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": "back",
+              "Set": [],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "back",
+          "Speaker": "Wenduag",
+          "Text": "{n}She drops off the wall and lands in front of you, close, and looks at you from boots to eyes, the long measuring look she gave you the first day.{/n}\n\"All right. I'll come back. Not tonight. Tomorrow, through the postern, when your sergeant has the watch, so he can see me walk in.\" {n}She turns away into the dark, and then stops.{/n} \"Go home, {mf|master|mistress}. You're out of your walls, and I'm not the only thing out here that bites.\"",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.trickster.returned",
+                "wenduag.started",
+                "wenduag.trickster.primed",
+                "wenduag.trickster.cost.late"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        },
+        {
+          "Id": "stay_dead",
+          "Speaker": "Wenduag",
+          "Text": "{n}She looks at you over the spear for a while.{/n} \"Then why did you come out?\" {n}She does not wait for the answer. She is gone into the orchards, and you walk back to your walls alone, and nobody at the postern asks where you have been.{/n}",
+          "Choices": [
+            {
+              "Text": "Continue",
+              "Next": null,
+              "Set": [
+                "wenduag.closed"
+              ],
+              "Requires": [],
+              "Forbids": [],
+              "Abort": false
+            }
+          ],
+          "Portrait": "Wenduag"
+        }
+      ],
+      "Requires": [
+        "trickster",
+        "wenduag.kicked_out",
+        "wenduag.kicked_out.latched"
+      ],
+      "Forbids": [
+        "wenduag.trickster.exile.ch5_hunt",
+        "wenduag.dead_any",
+        "wenduag.street_confronted",
+        "wenduag.trickster.returned",
+        "wenduag.trickster.bought",
+        "wenduag.trickster.late_bid_failed"
+      ],
+      "DelayHours": 24,
+      "Optional": false,
+      "Relationship": "wenduag",
+      "Chapters": [
+        5
+      ],
+      "Remote": true,
+      "Kind": "event",
+      "TricksterDevice": true,
+      "TricksterState": "exiled",
+      "Areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ]
+    },
+    {
       "Id": "wenduag.trickster.abyss.fall",
       "Title": "The best of his daughters",
       "Owner": "Wenduag",
@@ -424983,7 +425222,7 @@
         {
           "Id": "cairn",
           "Speaker": "Narrator",
-          "Text": "{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}\n{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}\n{n}Let him hear it, and stop sending for her.{/n}\n{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes your purse, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}",
+          "Text": "{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}\n{n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}\n{n}Let him hear it, and stop sending for her.{/n}\n{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}",
           "Choices": [
             {
               "Text": "[Leave the knife and nothing else.]",
@@ -424999,7 +425238,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             },
             {
               "Text": "[Leave the knife, and your own waterskin under her other hand.]",
@@ -425015,7 +425258,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             },
             {
               "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
@@ -425031,7 +425278,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             }
           ],
           "Portrait": ""
@@ -425039,7 +425290,7 @@
         {
           "Id": "cairn_known",
           "Speaker": "Narrator",
-          "Text": "{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}\n{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it, and stop sending for her.{/n}\n{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes your purse, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}",
+          "Text": "{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}\n{n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it, and stop sending for her.{/n}\n{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}",
           "Choices": [
             {
               "Text": "[Leave the knife and nothing else.]",
@@ -425054,7 +425305,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             },
             {
               "Text": "[Leave the knife, and your own waterskin under her other hand.]",
@@ -425069,7 +425324,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             },
             {
               "Text": "[Leave the knife, and scratch your mark into the underside of the top stone with it first.]",
@@ -425084,7 +425343,11 @@
               ],
               "Requires": [],
               "Forbids": [],
-              "Abort": false
+              "Abort": false,
+              "Crusade": {
+                "Resource": "Finances",
+                "Amount": -150
+              }
             }
           ],
           "Portrait": ""
@@ -429673,7 +429936,7 @@
         {
           "Id": "stronger",
           "Speaker": "Wenduag",
-          "Text": "{n}That pleases her. It pleases her enough that she laughs out loud, and a sentry further along the wall looks round and then pretends he hasn't.{/n}\n\"The stronger one. Yes. That's the only honest answer anyone's ever given me about anything.\" {n}She gets up.{/n} \"Don't ever tell me it was because you liked me. I'd have to kill you for lying.\" {n}She holds out her hand, and pulls you to your feet, and does not let go of it.{/n} \"One more gong. Come to bed.\"",
+          "Text": "{n}That pleases her. It pleases her enough that she laughs out loud, and a sentry further along the wall looks round and then pretends he hasn't.{/n}\n\"The stronger one. Yes. That's an honest answer. You chose the one who'd be useful to you, and you were right.\" {n}Her eyes narrow.{/n} \"Are you still? Or am I only strong while I'm pointed at your enemies?\" {n}She gets up.{/n} \"Don't answer that. I'll find out.\" {n}She holds out her hand, and pulls you to your feet, and does not let go of it.{/n} \"One more gong. Come to bed.\"",
           "Choices": [
             {
               "Text": "Continue",
@@ -434828,8 +435091,8 @@
     "nurah.dead_camellia": "739b9fe9b8998c641b4b3dfed40bc217",
     "nurah.killing_mechanism": "20927a9471c00814b808fd69e88879c7",
     "nurah.prison": "c922e0cbe25a0cf4dad4ce7a3ca81935",
-    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "chivarro.exiled": "806ece7bcf18a374e9ad1f7b9e3bc580",
+    "chivarro.removed": "065b611752b5c0045b6d1e0164b92bcc",
     "shamira.no_more_ch4": "9772be00ff3505440bb4937198c19c06",
     "shamira.crystals_told": "14a0d1887eeab174dbe3a77382123899",
     "fleshmarket.massacre": "bee15cff021828c4c92f09e8f771dbb2",

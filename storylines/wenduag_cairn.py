@@ -488,7 +488,7 @@ visit(W + "court.gongs", "Counted in gongs", [
     wd("saw", '''"Yes." {n}She nods, as if something has been settled.{/n} "Nobody ever chose me for what I'd do. They chose me in spite of it, or to use it, or they didn't choose me at all." {n}She stands, and stretches, and the bell down in the lower town stops.{/n} "One more gong, {mf|master|mistress}. Come to bed. It's cold up here, and you're the only uplander I know who's warm."''',
         c("Continue", flags=(W + "gongs.saw",))),
     wd("stronger", '''{n}That pleases her. It pleases her enough that she laughs out loud, and a sentry further along the wall looks round and then pretends he hasn't.{/n}
-"The stronger one. Yes. That's the only honest answer anyone's ever given me about anything." {n}She gets up.{/n} "Don't ever tell me it was because you liked me. I'd have to kill you for lying." {n}She holds out her hand, and pulls you to your feet, and does not let go of it.{/n} "One more gong. Come to bed."''',
+"The stronger one. Yes. That's an honest answer. You chose the one who'd be useful to you, and you were right." {n}Her eyes narrow.{/n} "Are you still? Or am I only strong while I'm pointed at your enemies?" {n}She gets up.{/n} "Don't answer that. I'll find out." {n}She holds out her hand, and pulls you to your feet, and does not let go of it.{/n} "One more gong. Come to bed."''',
         c("Continue", flags=(W + "gongs.stronger",))),
 ], requires=(COMMITTED,), optional=True)
 

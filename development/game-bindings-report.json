@@ -2,7 +2,7 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-trk-wenduag\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4204,
+  "binding_uses": 4205,
   "unique_targets": 900,
   "failures": [],
   "targets": {

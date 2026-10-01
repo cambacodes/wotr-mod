@@ -242,6 +242,16 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Exile: the late bid is not Chapter 4's fallback for an unbought exile.");
         var lateBought = Take(lateBid, scorned, "deal", 0, P + "bought", P + "cost.late");
 
+        // Trk_Wenduag_ExileCh5: an exile with no street is found in the orchards, in person, on the live path.
+        var hunt = S(P + "exile.ch5_hunt");
+        var exiledCh5 = World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched");
+        check(Avail(hunt, exiledCh5) && !Avail(hunt, World(story, 5, "trickster.ever", Kicked, "wenduag.kicked_out.latched"))
+              && !Avail(hunt, World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", Dead, "wenduag.street_confronted"))
+              && hunt.TricksterState == "exiled",
+            "Trk_Wenduag_ExileCh5: the Chapter 5 exile fallback is missing, off the live path, or plays after the street.");
+        var huntHome = Take(hunt, exiledCh5, "back", 0, Returned, Started);
+        check(Avail(trial, Later(huntHome, 24)), "Trk_Wenduag_ExileCh5: the courtship does not open after the orchard.");
+
         // Trk_Wenduag_Street: she falls in the street in Chapter 5; Brask; the catacombs; she digs.
         var street = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", P + "fall_agreed");
         check(Avail(streetFall, street) && streetFall.TricksterState == "street" && !Avail(streetFall, World(story, 5, "trickster", "trickster.ever", Kicked, Dead)),
@@ -327,7 +337,7 @@ internal static class WenduagTricksterTests
             }
             return min;
         }
-        check(Paid(abyssFall, fellUnbought) >= 100 && Paid(abyssFall, fellBought) == 0
+        check(Paid(abyssFall, fellUnbought) >= 250 && Paid(abyssFall, fellBought) == 150
               && Paid(streetFall, streetUnbought) >= 50,
             "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
         var regill = S(P + "react.regill_watch");

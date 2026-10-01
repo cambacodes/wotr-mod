@@ -646,6 +646,37 @@ inline(W + "crystal.bid", "Two masters", (4,), '"I was in Savamelekh\'s house, W
 ], [HUB], HUB_BACK, requires=("trickster", HEARD), forbids=(BOUGHT, CRYSTAL_DONE, NATIVE))
 
 
+page(W + "exile.ch5_hunt", "Outside the walls", [
+    nar("start", '''{n}Nobody has seen her since you sent her away. The gate watch saw a hooded neather go out through the south postern that night and not come back; the cellar neathers say nothing, which in the cellars means something. Somewhere out in the burnt orchards beyond the walls, a hunter who was thrown out of your service is living off hares and her own temper.{/n}
+{n}If you want her back, nobody is going to bring her. You will have to go out and find her yourself, tonight, before she decides you are prey.{/n}''',
+        c('[Go out through the postern alone, and read the ground the way she would.]',
+          check=dict(Skill="SkillLoreNature", DC=22, Success="found", Failure="found_you")),
+        c('[Go out through the postern alone, and let her find you.]', "found_you"),
+        c('[Leave her to the orchards.]', abort=True)),
+    nar("found", '''{n}It takes most of the night. A snare in a hedge, set low and mean, the way she sets them. A hare\'s skin pegged out on a stump to dry. The smell of a fire put out with dirt, not water. You find her at the end of it, crouched on a stone wall above a dry ditch, watching you come with a spear across her knees. She has known you were coming for an hour. She let you keep going, to see if you would.{/n}''',
+        c("Continue", "her")),
+    nar("found_you", '''{n}You walk the dark orchards for an hour, and then the dark walks into you: a weight on your back, a forearm across your throat, and the cold of a knife under your ear before you hear a thing. It cuts as she settles it, a short shallow line, so that you will remember it.{/n}''',
+        c("Continue", "her", flags=(W + "cost.bled_outside",))),
+    wd("her", '''"Look who came out of {mf|his|her} walls." {n}Wenduag\'s voice is flat and bright at once.{/n} "You threw me out. In front of everybody. And now you come out alone, at night, into my orchards, where the strong one decides." {n}She tilts her head.{/n} "Savamelekh never sent for me, after. Nobody did. I waited for somebody to come and make me an offer, and nobody came, and I hated you for that more than for the throwing out." {n}Her teeth show.{/n} "So. You came. What are you offering?"''',
+        c('"Nothing. I came because I want you back. On your terms."', "terms"),
+        c('"Savamelekh is still alive. Come back and hunt him with me."', "sava", forbids=(SAVA_DEAD,)),
+        c('"I came to tell you that you were right, and I was wrong to throw you out."', "wrong"),
+        c('"I came to tell you not to come back."', "stay_dead")),
+    wd("terms", '''"My terms." {n}She considers you along the spear.{/n} "You don\'t know what you\'re saying. My terms are that I don\'t come back as your dog. I come back to the cellars, and I go out through your gate when I please, and nobody stops me, and nobody counts me on a roll, and when you want me you come down the stair, alone, like tonight." {n}She stands up on the wall.{/n} "And the first time you throw me out again, I\'ll be the one who comes looking."''',
+        c("Continue", "back")),
+    wd("sava", '''{n}Her whole body goes tight, like a bowstring pulled.{/n} "Alive. Out there, still calling his children." {n}She is quiet for a while.{/n} "You\'re offering me him. Not his poison. Him." {n}She grins, slow and ugly.{/n} "That\'s a better offer than the one I was waiting for. You\'re late with it. You\'ll pay for that, one day."''',
+        c("Continue", "back", flags=(W + "death_promised",))),
+    wd("wrong", '''{n}She stares at you as if you had spoken in a language she has only heard about.{/n} "Wrong." {n}She tastes it.{/n} "A {mf|master|mistress} who says *I was wrong* to a neather on a wall in the dark." {n}Then she laughs, and there is something unsteady in it.{/n} "That\'s either the weakest thing I\'ve ever heard or the strongest. I don\'t know which. I hate not knowing."''',
+        c("Continue", "back")),
+    wd("back", '''{n}She drops off the wall and lands in front of you, close, and looks at you from boots to eyes, the long measuring look she gave you the first day.{/n}
+"All right. I\'ll come back. Not tonight. Tomorrow, through the postern, when your sergeant has the watch, so he can see me walk in." {n}She turns away into the dark, and then stops.{/n} "Go home, {mf|master|mistress}. You\'re out of your walls, and I\'m not the only thing out here that bites."''',
+        c("Continue", flags=(RETURNED, STARTED, PRIMED, LATE))),
+    wd("stay_dead", '''{n}She looks at you over the spear for a while.{/n} "Then why did you come out?" {n}She does not wait for the answer. She is gone into the orchards, and you walk back to your walls alone, and nobody at the postern asks where you have been.{/n}''',
+        c("Continue", flags=(CLOSED,))),
+], requires=("trickster", KICKED, KICKED_LATCH), forbids=(DEAD, STREET, RETURNED, BOUGHT, LATE_FAILED), delay=24, chapters=(5,),
+   kind="event", **device("exiled"))
+
+
 # --- 5. The falls (T): in Savamelekh's house (Lann's blow), and in the Drezen street. ---------------------------------------
 
 page(W + "abyss.fall", "The best of his daughters", [
@@ -685,11 +716,11 @@ page(W + "abyss.fall", "The best of his daughters", [
     nar("cairn", '''{n}Savamelekh's house is falling down around you: his children's blood on the floors, his hall half open to the burning sky of the Abyss. There is rubble enough for a hundred cairns. You carry her down into what was once a cellar, where the light does not reach, and lay her on the stone floor, and build.{/n}
 {n}Flat pieces of his own walls, set on edge so that they roof her rather than press on her. The head end packed loose. Her knife from the floor of his hall, wiped on your knee, closed into her right hand. Above you somewhere, his gang's survivors are dragging themselves away to tell whoever is left that the Commander's crusaders killed his favourite daughter, and that she died fighting for him.{/n}
 {n}Let him hear it, and stop sending for her.{/n}
-{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes your purse, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
+{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
         *cairn_close((LANN_ALONE,))),
     nar("cairn_known", '''{n}You build it anyway, in the cellar of Savamelekh's burning house, out of the pieces of his own walls: flat stones on edge, the head end loose, her knife closed into her right hand. Lann does not come to watch. He knows what you are doing, and he knows why, and he will not help you and he will not stop you.{/n}
 {n}Above you, his gang's survivors are dragging themselves away to tell whoever is left that his favourite daughter died fighting for him. Let him hear it, and stop sending for her.{/n}
-{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes your purse, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
+{n}Before the first stone you bind her side with the dressing from your pouch and get your own draught between her teeth. Then, when it is built, you go up into the burning street and find the one thing the Midnight Isles never run short of: someone who will carry anything anywhere for money. A tiefling with a barge and no questions takes a purse from the war chest, a sketch of the cellar, and your instructions: in two nights, a woman will push her way out of a heap of stones down there. Feed her, and take her through to Drezen by whatever doors your trade uses, and there will be the same again at the other end.{/n}''',
         *cairn_close((LANN_KNOWS,))),
 ], requires=("trickster.ever", DEAD, FELL), forbids=(ABYSS_CAIRN,), delay=2, chapters=(4,), kind="event", areas=(),
     RequiresAnyGroups=[[FALL_AGREED, "trickster"]],   # an unprepared rescue is a live Trickster act (ledger R2-2)
@@ -701,6 +732,7 @@ for _node in SCENES[-1]["Nodes"]:
         if any(f in (BARE, WATER, MARK) for f in _choice["Set"]):
             extra = [ABYSS_CAIRN, SECRET, PRIMED, PASSAGE] + ([LIED] if LANN_ALONE in _choice["Set"] else [])
             _choice["Set"] = list(dict.fromkeys(list(_choice["Set"]) + extra))
+            _choice["Crusade"] = dict(Resource="Finances", Amount=-150)   # the smuggler's purse, paid from the war chest
 _abyss = SCENES[-1]
 _abyss_late = [c_ for n_ in _abyss["Nodes"] if n_["Id"] in ("breath", "cough") for c_ in n_["Choices"]]
 for _choice in _abyss_late:
