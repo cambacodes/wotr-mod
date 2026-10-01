@@ -155,11 +155,11 @@ letter("vellexia.trickster.mirrored.speaks", "Compensation", [
 
 stores("vellexia.trickster.mirrored.fetch", "A mirror nobody will loot", '"Garms, what is that bottle doing on your counter?"', [
     nar("start", '''{n}"Sample," Wilcer Garms says, and pushes a bottle of Alushinyrran red and a folded note across the counter as if both might bite. "From a cambion named Orrel Vask, down at the rift camp. He moves furniture between the Upper City and anyone who pays. The note's for you."{/n}
-{n}A certain mirror, his note says, is still standing in a certain empty salon. The looters will not touch it, because it watches them. He can have it out through the Nexus portals within the week. He names a price, and then, in a second hand, a surcharge "for the eyes".{/n}''',
+{n}A certain mirror, his note says, is still standing in a certain empty salon. The looters will not touch it, because it watches them. He has had it crated at the rift camp for a week already, against the chance that somebody would pay. He names a price, and then, in a second hand, a surcharge "for the eyes".{/n}''',
       c('[Pay the haulers double to bring it out] "Double, if it arrives uncracked. It\'s a lady."', "paid",
         crusade=("Finances", -200)),
       c('[Let the Upper City keep its mirror] "Somebody else can look at her."', "left")),
-    nar("paid", '''{n}Vask's crate comes up the rift road on the ninth day, packed in straw that is warm to the touch. He will not unload it himself. His porters set it down in the corner of your stores and back away from it as if it had spoken.{/n}
+    nar("paid", '''{n}Vask's crate comes up from the rift camp the next morning, packed in straw that is warm to the touch. He will not unload it himself. His porters set it down in the corner of your stores and back away from it as if it had spoken.{/n}
 {n}Perhaps it had. None of them will say.{/n}''',
       c('"Put it in the stores. I\'ll deal with her."', flags=(PRIMED, LATE, STARTED))),
     nar("left", '''{n}You send Vask a single line: no. He sends back a single line of his own, which is his invoice for the letter.{/n}
@@ -254,9 +254,13 @@ stores("vellexia.trickster.mirrored.unmirror_stores", "Behind the lamp oil",
 
 letter("vellexia.trickster.sword.portrait", "The one with no hands", [
     nar("start", '''{n}The Nexus, the night she died. Her manor is being stripped before it is cold. Your people bring back an inventory, because you asked for one.{/n}''',
-      c("Continue", "freed", requires=("vellexia.slaves_freed",)),
+      c("Continue", "freed", requires=("vellexia.slaves_freed",), forbids=("vellexia.returned_picture",)),
       c("Continue", "gallery", forbids=("vellexia.slaves_freed", "vellexia.returned_picture")),
-      c("Continue", "bought_back", requires=("vellexia.returned_picture",), forbids=("vellexia.slaves_freed",))),
+      c("Continue", "bought_back", requires=("vellexia.returned_picture",), forbids=("vellexia.slaves_freed",)),
+      c("Continue", "freed_bought_back", requires=("vellexia.slaves_freed", "vellexia.returned_picture"))),
+    nar("freed_bought_back", '''{n}When she fell, every chair, lamp and footstool in her house stood up and walked out of the door on two legs. The inventory is very short.{/n}
+{n}One item did not walk. It was never anyone. She sent the unfinished portrait back to its artist, the afternoon you told her to; and then, it seems, she bought it back from him at twice his price, frame and stone and all, and hung it in the gallery where you first saw it, and never mentioned it. The hands are still bare underpaint. On the back, your chalk mark.{/n}''',
+      c("Continue", "choice")),
     nar("freed", '''{n}When she fell, every chair, lamp and footstool in her house stood up and walked out of the door on two legs. The inventory is very short.{/n}
 {n}One item did not walk. It was never anyone. The unfinished portrait still hangs in the gallery where you last saw it, the hands still bare underpaint, and on the back, your chalk mark.{/n}''',
       c("Continue", "choice")),
@@ -300,10 +304,10 @@ LIKENESS_FLAGS = (RETURNED, DIMINISHED, PRESUMED, KNOWN, STARTED)
 
 def likeness_nodes():
     return [
-        nar("spell", '''{n}It takes Orrel Vask eleven days to find the man who made it, and the price of a second warhorse to bring him up the rift road: a thin man with paint under his nails and a very good coat, the same artist who once sold Lady Vellexia a portrait that would reveal a part of her she had never seen. He looks at the canvas and goes grey.{/n}
+        nar("spell", '''{n}Orrel Vask, it turns out, has had the man who made it waiting in the rift camp for a week, meaning to sell him to whoever bought the portrait; he brings him up the hill within the hour, for the price of a second warhorse: a thin man with paint under his nails and a very good coat, the same artist who once sold Lady Vellexia a portrait that would reveal a part of her she had never seen. He looks at the canvas and goes grey.{/n}
 {n}"The older work under mine is a receptive charm," he says. "It keeps whatever looks into it longest. She looked into it every day from the morning it arrived; she told me so, to complain about it. I had set the last notch so that it would only show her what she liked." He turns the frame over. The pale stone in its silver wire is warm. "Something of her stayed in it. Not enough to wake. It fills the likeness the way water fills a cracked cup. If the charm is opened all the way, it does what the first maker wanted: a portrait that contradicts its subject. Its subject is dead." He looks at you. "I will not do it for crowns. Crowns I can get from anybody."{/n}
-{n}His fee is a sitting. Three days, you in his chair and the older charm open on the easel beside you, so that he can paint the part of you that you have never seen and keep it, and sell it when he likes, to whom he likes. You have heard what he thinks his customers' privacy is worth. You sit.{/n}
-{n}On the third evening he sets down his brush, turns her frame over, moves the catch to the first notch, and steps back as if from a fire. The canvas takes on the weight of flesh. Paint becomes a throat, a breath, a woman sitting up in the lamplight with her skirts still wet at the hem. He never reached the hands the first time. He does not reach them now.{/n}''',
+{n}His fee is a sitting. One night, you in his chair from dusk until the lamps gutter, with the older charm open on the easel beside you, so that he can paint the part of you that you have never seen and keep it, and sell it when he likes, to whom he likes. You have heard what he thinks his customers' privacy is worth. You sit.{/n}
+{n}In the small hours he sets down his brush, turns her frame over, moves the catch to the first notch, and steps back as if from a fire. The canvas takes on the weight of flesh. Paint becomes a throat, a breath, a woman sitting up in the lamplight with her skirts still wet at the hem. He never reached the hands the first time. He does not reach them now.{/n}''',
             c("Continue", "wake", flags=(SAT,))),
         glass("wake", '''"...Oh."
 {n}She lifts her hands. They are flawless, and nothing comes of them: no spark, no warmth, only paint-deep perfection.{/n}
@@ -637,15 +641,31 @@ MIRROR_PARAGRAPHS = (
 )
 
 SCENES.append(scene("vellexia.trickster.epilogue.commit", "Kept waiting", "Epilogue", 5, "", [
-    nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}
-{n}She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way she collected anything she had decided was hers, into a room whose furniture had been guests once and still watched. She locked the door behind them with the key on the inside, and put the key down the front of her dress, and laughed at the Commander's face.{/n}
-{n}She did not hurry. She took the Commander's coat off slowly and dropped it on a chair that flinched, unlaced her own gown with one hand while the other held the Commander's jaw so that {mf|he|she} had to watch, and let the silk fall. Then she pushed the Commander down onto her bed, followed {mf|him|her} down onto it, knees either side of {mf|his|her} hips, her hair falling round both their faces, her mouth at {mf|his|her} throat. "You kept me waiting," she said against it. "Now pay."{/n}
-{n}In the morning there was a bruise on the Commander's throat the exact shape of her mouth, and a note on the pillow in handwriting that sloped like a laugh: "Again. I have decided."{/n}''',
-      c(), paragraphs=(p("Daeran, who saw the bruise at breakfast the next week, said only that he had never known her to bill a guest in "
+    nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}''',
+      c(), paragraphs=(
+          # Q11 r3: her collection survives only where nothing walked out of her house.
+          p("She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
+            "she collected anything she had decided was hers, into a room whose furniture had been guests once and still watched. "
+            "She locked the door behind them, put the key down the front of her dress, and laughed at the Commander's face. She did "
+            "not hurry. She took the Commander's coat off slowly and dropped it on a chair that flinched.", forbids=(BARE, FREED)),
+          p("She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
+            "she collected anything she had decided was hers, into the one room of her new house she had finished: a bed, a lamp, "
+            "and walls with nothing on them that had ever been anyone. She locked the door behind them, put the key down the front "
+            "of her dress, and laughed at the Commander's face. She did not hurry. She took the Commander's coat off slowly and "
+            "dropped it on the bare floor, where it stayed a coat.", any_groups=[[BARE, FREED]]),
+          p("She unlaced her own gown with one hand while the other held the Commander's jaw so that {mf|he|she} had to watch, and "
+            "let the silk fall. Then she pushed the Commander down onto her bed, followed {mf|him|her} down onto it, knees either "
+            "side of {mf|his|her} hips, her hair falling round both their faces, her mouth at {mf|his|her} throat. \"You kept me "
+            "waiting,\" she said against it. \"Now pay.\""),
+          p("In the morning there was a bruise on the Commander's throat the exact shape of her mouth, and a note on the pillow in "
+            "handwriting that sloped like a laugh: \"Again. I have decided.\""),
+          p("Daeran, who saw the bruise at breakfast the next week, said only that he had never known her to bill a guest in "
                          "person, and asked whether the Commander would be needing a scarf.", forbids=DAERAN_GONE),
                        *TRICKSTER_PARAGRAPHS))],
-    requires=(LATE_COMMITTED,), forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept"),
-    last=99, Relationship="vellexia"))
+    requires=(LATE_COMMITTED,),
+    forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept", "sacrifice", "inhuman"),
+    # Q11 r3: a genuine sacrifice is mourned (ending_sacrifice) and nothing else; a Commander who came back keeps the romance.
+    ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=99, Relationship="vellexia"))
 
 
 # --- Reactions (05 section 3.1: exactly the Storyteller, Finnean and Daeran) -------------------------------------------

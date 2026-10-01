@@ -433,9 +433,40 @@ internal static class VellexiaTricksterTests
             "Trk_Vellexia_Provocation: a Commander with a living continuation is offered the insult too.");
 
         // Q11 Trk_Vellexia_LateCommitThreshold: the late commit stages its own threshold and morning.
-        var lateText = epCommit.Nodes[0].Text;
+        var lateText = epCommit.Nodes[0].Text + string.Concat(epCommit.Nodes[0].Paragraphs.Select(pp => pp.Text));
         check(lateText.Contains("knees either side") && lateText.Contains("let the silk fall") && lateText.Contains("bruise")
               && !lateText.Contains("by morning she had invented"), "Trk_Vellexia_LateCommitThreshold: the late commit fades before the threshold.");
+
+        // Q11 r3 Trk_Vellexia_LateCommitSacrifice: a genuine sacrifice is mourned and nothing else; a Commander who came back
+        // keeps the late romance; and the room follows what became of her collection.
+        var lateCourted = World(story, 5, "trickster.ever", P + "returned", P + "courting", "vellexia.return_kept", "vellexia.prediction_known",
+                                P + "unmirrored", P + "cost.bare_walls");
+        var lateDied = Program.Copy(lateCourted); lateDied.Flags.Add("sacrifice"); Rules.Complete(story, lateDied);
+        check(!Rules.Available(story, epCommit, lateDied) && Rules.Available(story, Ending("sacrifice"), lateDied),
+            "Trk_Vellexia_LateCommitSacrifice: a dead Commander is mourned and bedded at once.");
+        var lateBack = Program.Copy(lateDied); lateBack.Flags.Add("trickster.commander_back"); Rules.Complete(story, lateBack);
+        check(Rules.Available(story, epCommit, lateBack) && !Rules.Available(story, Ending("sacrifice"), lateBack),
+            "Trk_Vellexia_LateCommitSacrifice: the surviving Commander loses the late romance, or is mourned.");
+        var lateInhuman = Program.Copy(lateCourted); lateInhuman.Flags.Add("inhuman");
+        check(!Rules.Available(story, epCommit, lateInhuman), "Trk_Vellexia_LateCommitSacrifice: the late romance plays for an inhuman Commander.");
+        string RoomShown(Snapshot w) => string.Concat(epCommit.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => pp.Text));
+        check(RoomShown(lateCourted).Contains("walls with nothing on them") && !RoomShown(lateCourted).Contains("chair that flinched"),
+            "Trk_Vellexia_LateCommitSacrifice: the furniture she let go of is still watching.");
+        var lateFull = Program.Copy(lateCourted); lateFull.Flags.Remove(P + "cost.bare_walls");
+        check(RoomShown(lateFull).Contains("chair that flinched") && !RoomShown(lateFull).Contains("walls with nothing on them"),
+            "Trk_Vellexia_LateCommitSacrifice: the kept collection is gone from the room.");
+
+        // Q11 r3: the freed house and the picture she sent back and bought back.
+        var freedBought = World(story, 4, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.final_fight", "vellexia.dead",
+                                "vellexia.slaves_freed", "vellexia.returned_picture", P + "portrait_marked");
+        var freedBoughtPages = new HashSet<string>();
+        check(Program.Walk(portrait, freedBought, (pg, _) => freedBoughtPages.Add(pg)).Any(r => r.Has(P + "primed"))
+              && freedBoughtPages.Contains("freed_bought_back") && !freedBoughtPages.Contains("freed") && !freedBoughtPages.Contains("bought_back"),
+            "Q11: the freed gallery forgets the picture she bought back.");
+
+        // Q11 r3: the claim opens on her clerk's acceptance, whichever invitation opened it; no absence is invented.
+        check(!S("vellexia.the_claim_before_the_event").Nodes[0].Text.Contains("while you were gone"),
+            "Q11: the claim places Tessar's acceptance in an absence the Drezen twin never had.");
 
         // Q11 Trk_Vellexia_Ch5LetterCap (ledger: one Trickster-layer Chapter 5 letter): the only remote Trickster scenes in
         // Chapter 5 sit on mutually exclusive branches, and the old first call never follows the in-person visit.

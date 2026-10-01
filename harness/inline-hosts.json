@@ -4,8 +4,8 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1045,
-  "resolved": 1045,
+  "entryTargetScenes": 1046,
+  "resolved": 1046,
   "inlineOnlyScenes": 272,
   "inlineOnlyResolved": 272,
   "answerListScenesWithoutContact": 623,
@@ -2381,6 +2381,25 @@
    "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
    "entry": {
     "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.treatment.alushinyrra"
+   },
+   "resolved": true,
+   "host": {
+    "list": "03ebad9587cbea0438d901a0f8df44f1",
+    "dialog": "a718e45e4ea8f8a45acde516d72b6584",
+    "dialogName": "Dialogue_Arueshalae_Main",
+    "cue": "Cue_0004",
+    "clicks": 0
+   }
+  },
+  "arueshalae.treatment.alushinyrra_drezen": {
+   "kind": "dialog",
+   "lists": [
+    "03ebad9587cbea0438d901a0f8df44f1"
+   ],
+   "explicit": true,
+   "contact": "a352873d37ec6c54c9fa8f6da3a6b3e1",
+   "entry": {
+    "03ebad9587cbea0438d901a0f8df44f1": "RRT_entry.arueshalae.treatment.alushinyrra_drezen"
    },
    "resolved": true,
    "host": {

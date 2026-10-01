@@ -254,8 +254,8 @@ s("the_second_invitation", "The invitation after the dismissal", "[Consider the 
       c('"I will hear your quarrel. Spare me the flirtation tonight."', "evidence"),
       c('"I do not want another arrangement with you."', "refuse")),
     n("spared", "Vellexia", '''{n}For a moment her face does nothing at all. Then she smiles, slowly, and it is not a pleasant smile.{/n}
-"You did. You surprised me, one last time before the end of our brief affair, and I said so. I have not forgiven you for it. Being spared is a debt, and I loathe owing." {n}She turns a ring on her finger, slowly, the way another woman might test the edge of a knife.{/n}
-"Then Ilveris made himself useful. I expect to punish him for it, and I find I would rather have a witness who has already seen me lose."
+"You did. You surprised me, one last time before the end of our brief affair, and I thanked you for it, and I meant it, which I seldom do. I swore I would not come for you, and I have not. Do not mistake that for tenderness, darling; a promise kept is a matter of taste, and mine is excellent." {n}She turns a ring on her finger, slowly, the way another woman might test the edge of a knife.{/n}
+"Then Ilveris made himself useful. He is selling the story that he arranged my losing, and I intend to take him apart for it in front of everyone who bought it. I would rather do it with a witness who saw how I actually lost."
 "What has he done?"
 "He has sold a prediction about our affair. He says he knew to the hour how long it would hold my interest, and he says he arranged its ending. Every answer you gave me, he claims, was one he had prepared for me to despise. I should like to know whether he is lying before I decide which part of him to keep."''',
       c('"I will hear the evidence. I will not pretend our dates ended differently to improve your position."', "evidence"),
@@ -336,7 +336,7 @@ SCENES[-1]["Nodes"][0]["Text"] = (
 SCENES[-1]["Forbids"] = [*SCENES[-1]["Forbids"], "vellexia.the_second_invitation", "vellexia.case_opened"]
 
 s("the_claim_before_the_event", "What the account can prove", "[Open the echo shell to examine Tessar's account.]", [
-    n("start", "Vellexia", '''"You went somewhere my shell could not follow," Vellexia says as the glass clears, "and came back, which I shall count in your favour. Tessar did not wait for you. She accepted while you were gone. I find a promptly answered offer almost suspicious. Fortunately, the account is irritating enough to restore my faith in the enterprise."
+    n("start", "Vellexia", '''"She accepted," Vellexia says as the glass clears, "before I had finished deciding whether I wanted her to. I find a promptly answered offer almost suspicious. Fortunately, the account is irritating enough to restore my faith in the enterprise."
 {n}Three sheets lie on her table. She brings them into view one at a time, giving you time to read before moving the shell again.{/n}
 "These are her copies. She says the originals remain where Ilveris's creditors can inspect them. He requires patrons to deposit a stake before he will guarantee a prediction. The stake is returned when they accept his account of the result."
 "And if they disagree?"
@@ -704,7 +704,7 @@ s("the_question_after_business", "What she asks without a fee", "[Open the shell
 "What would you do?"
 "Ask you to put the shell down. Then discover whether you come to me before I have finished asking."
 {n}Her voice lowers. She describes the kiss she would like to give you, the pause afterward and the pleasure of finding you still close. Nothing reaches through the glass. Your own breath catches anyway.{/n}
-"Tell me what you want," she says. "I have spent enough of this evening listening to myself be brave."''',
+"Now tell me what you want," she says, "in detail, and quickly. I have shown you my throat for a whole evening. It is your turn, and I intend to bite."''',
       c('[Tell her how you would welcome her, and keep the private conversation between you.]', "desire"),
       c('"Tonight I want your voice and an unhurried conversation. The rest can wait."', "gentle")),
     n("desire", "Vellexia", '''{n}You tell her. She listens without the interruption you expected, then makes you repeat one part more slowly, twice. Her answer is a low laugh and a promise to make the next kiss worth resenting the glass between you.{/n}
