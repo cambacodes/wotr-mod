@@ -86,8 +86,8 @@ session(SONG, "The net-menders", 3, '"They stopped singing again."', [
 {n}You tell them she is the one who warned Kenabres before the attack, the one who was jailed for it; that she has been standing at their corner every night because she wants to learn their song.{/n}
 {n}There is a long silence. Then the old woman with a net in her lap shifts over on her bench, just enough, and starts the verse again from the top, slowly, for a beginner.{/n}''',
         c("Continue", "after")),
-    a("after", '''{n}Later, walking back through the dark, she hums it under her breath, over and over, as if afraid it will fall out of her.{/n}
-"It isn't about the lake at all. It's about mending the nets anyway." {n}She stops in the middle of the street.{/n} "They made room for me on the bench, Commander. They didn't know what I am, or they knew and didn't care, and I don't know which is more frightening. I'm going to go back tomorrow. And the day after. Until I know every verse."''',
+    a("after", '''{n}Later, walking back through the dark, she hums it under her breath, over and over, and gets the second line wrong every time, and starts again.{/n}
+"I only have the first verse. The old woman says I sing it like a sergeant." {n}She stops in the middle of the street.{/n} "They made room for me on the bench, Commander. They didn't know what I am, or they knew and didn't care, and I don't know which is more frightening. I'm going to go back tomorrow. And the day after. Until I know every verse."''',
         c("[Walk her home.]", flags=(SONG,))),
 ], (MEALTIMES,), delay=24, chapters=(3, 5))
 

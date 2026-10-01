@@ -478,6 +478,17 @@ internal static class ArueshalaeTricksterTests
         var atLastCall = Program.Copy(threshold); atLastCall.Flags.Add("lastcall.active");
         check(threshold.Has(P + "late_committed") && Avail(S(P + "epilogue.commit"), threshold) && Avail(lostPage, Later(story, atLastCall, 0)),
             "Trk_Arueshalae_ChronologyWalk: a treatment that reaches Threshold before the proposal has no late answer or Last Call coda.");
+        // Sol r3 (INT, post-cap): no living ending or coda for an unraised corpse or a dismissed companion.
+        foreach (var gone in new[] { "arueshalae_dead", "arueshalae.kicked_out" })
+        {
+            var goneW = Program.Copy(threshold); goneW.Flags.Add(gone);
+            var lostCall = Program.Copy(atLastCall); lostCall.Flags.Add(gone);
+            check(!story.Scenes.Where(sc => sc.Owner == "ArueshalaeEpilogue").Any(sc => Avail(sc, Later(story, goneW, 0)))
+                  && !Avail(lostPage, Later(story, lostCall, 0)),
+                "Trk_Arueshalae_ChronologyWalk: a living ending or coda plays with her " + gone + ".");
+            var committedLost = Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae.committed", T + "intake", gone), 10);
+            check(!Avail(S(T + "epilogue.together"), committedLost), "Trk_Arueshalae_NoLivingCoda: the daybook ending plays with her " + gone + ".");
+        }
         // No living text names an absent Sosiel as a witness of her count or her vigil.
         foreach (var id in new[] { T + "the_wound", P + "terms_again_chaplain" })
             check(!S(id).Nodes.Any(n => n.Text.Contains("Sosiel")), "Trk_Arueshalae_Sosiel: " + id + " needs Sosiel present without a guard.");

@@ -231,7 +231,7 @@ hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
     a("start", '''{n}She holds it out at once, back uppermost, as if she had been waiting for weeks for someone to ask. Across the knuckles, where the smithy cat caught her, there is a thin white line.{/n}
 "It scarred." {n}She says it the way another woman might say she was with child.{/n} "I asked, remember, whether succubi scar. I didn't know. I expected it to be gone in a day, the way everything else has gone."''',
         c("Continue", "mark")),
-    a("mark", '''"And this did." {n}She runs her thumb along it.{/n} "A cat did this, because it liked me, and it stayed. A smithy cat that I bought a fish for, and it leaves a mark on me that I can still find with my thumb a month later."
+    a("mark", '''"And this did." {n}She runs her thumb along it.{/n} "A cat did this, because it liked me, and it stayed. A smithy cat that I bought a fish for, and it leaves a mark on me that I can still find with my thumb."
 {n}She looks at you, her eyes very bright.{/n} "I wanted it to stay. Desna help me, I still do."''',
         c('"It isn\'t mad. It\'s the first thing you\'ve kept that nobody gave you a use for."', "keep", flags=(SCAR,)),
         c('[Spend a Scroll of Death Ward: have the chaplain read it over you at the shrine door, come back, and kiss the scar]', "kiss", flags=(SCAR,), forbids=(ELYSIUM,),

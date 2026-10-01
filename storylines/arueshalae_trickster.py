@@ -687,7 +687,7 @@ SCENES.append(scene(P + "epilogue.commit", "", "ArueshalaeEpilogue", 6, "", [
         paragraphs=(
             p('''{n}She answered it on the chapel steps in Drezen, with a blade across her knees and the second company's swords stacked in the vestry behind her: all of her, the hunger and the prayer in one knot, for as long as she could hold it. She held it. Nobody who knew her was surprised, except her.{/n}''',
               forbids=(EVIL_DEAD,), any_groups=[[CHAPLAIN, AFTERTASTE]]),
-            p('''{n}It was her question, in the end, not the Commander's. She asked it a month after Threshold, on the citadel wall at dusk, with her hands held out an inch from the Commander's, palms up, not touching; and the Commander took them, and said yes. She said afterwards that it was the first question she had ever asked without knowing the answer first.{/n}''',
+            p('''{n}It was her question, in the end, not the Commander's. She asked it a month after Threshold, on the citadel wall at dusk, with her hands held out an inch from the Commander's, palms up, not touching; and the Commander, who had stopped at the chapel on the way and come up the wall steps with the chaplain's ink still drying, took them, and said yes. She said afterwards that it was the first question she had ever asked without knowing the answer first.{/n}''',
               requires=("arueshalae.treatment.relapse_two",), forbids=(EVIL_DEAD, CHAPLAIN, AFTERTASTE)),
             p('''{n}The Commander's voice took the best part of a year to come back from the chapel, and the white scar on the wrist never went at all. She never asked whether it had been worth it.{/n}''',
               requires=(GIFT_TORN,)),
@@ -836,6 +836,13 @@ def integrate(payload):
         if scene_["Id"] in SACRIFICE_GUARDED and "sacrifice" not in scene_["Forbids"]:
             scene_["Forbids"].append("sacrifice")
             scene_.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
+        # Sol r3 (INT, post-cap): an ending page plays before relationship availability is checked, so every Arueshalae
+        # ending forbids her unraised death and both dismissals itself (the legacy return still lifts the death).
+        if scene_["Owner"] == "ArueshalaeEpilogue":
+            for flag in (DEAD, "arueshalae.kicked_out", "arueshalae.kicked_out_evil"):
+                if flag not in scene_["Forbids"]:
+                    scene_["Forbids"].append(flag)
+            scene_.setdefault("ForbidOverrides", {})[DEAD] = RETURNED
     latches = payload.setdefault("Latches", {})
     for key, sources in LATCHES.items():
         if latches.get(key, sources) != sources:
