@@ -276,7 +276,7 @@ internal static class MinaghoChivarroTricksterTests
         check(named.Has(P + "cost.palm_on_table") && walked.Count == 2, "Her refusal gate is not on every branch of the price.");
         check(Av(wonBack, Later(story, walked[0])) && !Av(house, Later(story, walked[0])), "Trk_Chivarro_PriceWalked failed.");
         var won = Done(wonBack, Later(story, walked[0]));
-        check(won.Single(r => r.Has(P + "tprev.name")).Has(P + "cost.won_back") && won.Any(r => r.Has(SentBack)), "The priced second ask is missing.");
+        check(won.Where(r => r.Has(P + "tprev.name")).All(r => r.Has(P + "cost.won_back")) && won.Count(r => r.Has(P + "tprev.name")) == 2 && won.Any(r => r.Has(SentBack)), "The priced second ask is missing.");
         check(Av(house, Later(story, named)), "The house does not follow the price.");
         var housed = Done(house, Later(story, named));
         check(housed.Count == 2 && housed.All(r => r.Has(P + "tprev.house")), "Who keeps the house: flags.");
@@ -401,6 +401,16 @@ internal static class MinaghoChivarroTricksterTests
         check(!epOwned.Nodes[0].Text.Contains("Minagho visited") && epOwned.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(MinIn)),
             "The owned page brings an unreturned Minagho to visit.");
         check(aloneChiv.Nodes.Any(n => n.Id == "threshold_clean" && !n.Text.Contains("cut")), "Chivarro alone assumes the Goat's wound.");
+        // Coordinator rulings (r5): the deposit is offered on Herrax's list as a plain question; an unprepared kill is told plainly
+        // (Herrax's letter, the Ledger's secret) and never undone; the red-silk meeting settles the house (no ninth letter).
+        check(deposit.Entry.Contains("what does your house sell") && rel.Guidance.Contains("ask Herrax what her house sells"), "The deposit is not discoverable.");
+        var unbought = S(P + "chivarro_dead.unbought");
+        var bareKill = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", "herrax.asked_kill_chivarro");
+        check(Av(unbought, bareKill) && Done(unbought, bareKill).All(r => r.Has("trickster.secret.chivarro_lost"))
+              && !Av(unbought, With(bareKill, Deposit)) && !Av(bought, bareKill), "The unprepared kill is not told plainly, or is undone.");
+        var wonWorld = World(story, 5, "trickster.ever", P + "chivarro_walked", ChIn);
+        check(Done(wonBack, wonWorld).Where(r => r.Has(P + "tprev.name")).All(r => r.Has(P + "tprev.house"))
+              && !Av(house, Later(story, Done(wonBack, wonWorld).First(r => r.Has(P + "tprev.name")))), "The red-silk path still sends the house letter.");
         var coda = S("minachiv.lastcall.page");
         check(coda.Requires.Contains(Complete) && !Av(coda, With(lateHouse, "trickster.lastcall.taken")),
             "The Last Call coda plays for a late page's Commander.");
