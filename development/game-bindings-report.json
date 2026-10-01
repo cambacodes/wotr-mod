@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pp10\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4721,
-  "unique_targets": 1039,
+  "binding_uses": 4727,
+  "unique_targets": 1044,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -953,6 +953,22 @@
     "3357022e6d1c5e047a0075a223606210": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
       "type": "BlueprintAnswer"
+    },
+    "cab33f23f9c1f284eab13e33fbdc3df0": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0034.jbp",
+      "type": "BlueprintCue"
+    },
+    "202dc8ba3e8715840af76156384bea2e": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0037.jbp",
+      "type": "BlueprintCue"
+    },
+    "f0a9e958a349a3147b6e441d0ce21699": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0038.jbp",
+      "type": "BlueprintCue"
+    },
+    "ce518077ca8432b4583e0240bbd797f7": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0039.jbp",
+      "type": "BlueprintCue"
     },
     "a70275fb77f483847a68fe01586091ec": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0053.jbp",
@@ -2709,6 +2725,10 @@
     "2f5b7e0b76d3c5a42a431e1e33a8db09": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/AnswersList_0004.jbp",
       "type": "BlueprintAnswersList"
+    },
+    "459bf324a71c81c4ba5f3eead9ba42bb": {
+      "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0629.jbp",
+      "type": "BlueprintCue"
     },
     "71fbdd5c766802f4eac6dfe0612a2d46": {
       "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0778.jbp",
