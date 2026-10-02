@@ -318,7 +318,10 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
         c('"Mine first."', "night_clay", flags=(COMMITTED, BEARER)),
         c('[Laugh]', "no")),
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
-    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT), forbids=(CLOSED, COMMITTED, DECLINED), delay=72)
+    # NM1 (Sol INT): a luck-chain "not yet" (missed.bowl) shares soana.trickster.declined; after her return it no longer
+    # bars the knot's own first ask (the return lifts it). The knot's own "not yet" is kept out by this scene's completion.
+    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT), forbids=(CLOSED, COMMITTED, DECLINED, "soana.trickster.returned.terms"), delay=72,
+    ForbidOverrides={DECLINED: RETURNED})
 
 at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has thawed."', [
     s("start", '''{n}She does not wait for you to reach the cave. She comes down the path to meet you with the knot already in her fist and a strip of fresh gut over her shoulder, and she takes your wrist before you can say anything at all.{/n}
