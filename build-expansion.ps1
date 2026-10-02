@@ -42,6 +42,11 @@ try {
     if ($LASTEXITCODE) { throw 'Chapter 0 (Prologue) tests failed' }
     & $pythonPath tools/pacing_lint.py --story development/Story.json --availability tools/pacing-availability.json
     if ($LASTEXITCODE) { throw 'Pacing lint failed: a hard violation, or an invalid tools/pacing-availability.json' }
+    # Harem smoothing metadata + form audit (doc 16 section 8c.3; data only). The form cap is reported, not enforced (ruling pending).
+    & $pythonPath -m unittest tests.test_harem_smoothing
+    if ($LASTEXITCODE) { throw 'Harem smoothing lint tests failed' }
+    & $pythonPath tools/harem_smoothing_lint.py --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Harem smoothing lint failed (tools/harem-smoothing.json)' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
     if ($LASTEXITCODE) { throw 'Narrator build failed' }
     & $dotnetPath run --project tests/RulesTests.csproj -c Release -- development/Story.json
