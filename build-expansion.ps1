@@ -42,6 +42,11 @@ try {
     if ($LASTEXITCODE) { throw 'Chapter 0 (Prologue) tests failed' }
     & $pythonPath tools/pacing_lint.py --story development/Story.json --availability tools/pacing-availability.json
     if ($LASTEXITCODE) { throw 'Pacing lint failed: a hard violation, or an invalid tools/pacing-availability.json' }
+    # Harem schedule lint (doc 16 section 8c.2): classification, protected schedule, packet rules walks (data only).
+    & $pythonPath -m unittest tests.test_harem_schedule
+    if ($LASTEXITCODE) { throw 'Harem schedule lint tests failed' }
+    & $pythonPath tools/harem_schedule_lint.py --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Harem schedule lint failed (tools/harem-schedule.json)' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
     if ($LASTEXITCODE) { throw 'Narrator build failed' }
     & $dotnetPath run --project tests/RulesTests.csproj -c Release -- development/Story.json
