@@ -28,13 +28,19 @@ internal static class TargonaOpeningTests
             "Targona finale memory uses a start marker or wrong endpoint.");
 
         foreach (string mode in modes)
-        foreach (bool romance in new[] { false, true })
+        foreach (bool parentRomance in new[] { false, true })
+        foreach (bool wardCommitted in new[] { false, true })   // polish (INT): the Trickster ward's earned commitment
         foreach (string currentPath in mode == "none" ? new[] { "angel", "trickster" } : new[] { mode })
         {
+            if (wardCommitted && currentPath != "trickster") continue;
+            bool romance = parentRomance || wardCommitted;
             var initial = new Snapshot { Chapter = 5, Area = scenes[0].Areas.Single(), Hour = 1000 };
             initial.Flags.UnionWith(new[] { "targona.free", "targona.ran_treatment_completed", "targona.ran_final_seen",
                 "targona.ran_" + mode, currentPath, "seelah.committed", "arueshalae.committed" });
-            if (romance) initial.Flags.Add("targona.ran_romance");
+            if (parentRomance) initial.Flags.Add("targona.ran_romance");
+            if (wardCommitted) initial.Flags.Add("targona.committed");
+            Rules.Complete(story, initial);
+            check(initial.Has("targona.correspondence_romanced") == romance, "Targona correspondence misreads the earned romance history.");
             var states = new List<Snapshot> { initial };
             for (int index = 0; index < scenes.Length; index++)
             {
@@ -63,12 +69,15 @@ internal static class TargonaOpeningTests
                             check(mode == "aeon" || mode == "trickster", "Targona invents Anograt for a different transformation history.");
                         if (node == "lover" || node == "romance")
                             check(romance, "Targona duplicates a romance after the parent friendship decision.");
+                        if (node == "friend")
+                            check(!romance, "Targona addresses an earned lover as a friend.");
                     }))
                     {
                         check(ready.Flags.IsSubsetOf(result.Flags), "Targona removes established history.");
                         check(native.All(f => result.Has(f) == ready.Has(f)), "Targona writes native or parent romance state.");
                         check(result.Has("seelah.committed") && result.Has("arueshalae.committed"), "Targona interferes with another romance.");
-                        check(!result.Has("targona.committed"), "Correspondence silently awards a new full commitment.");
+                        check(result.Has("targona.committed") == ready.Has("targona.committed"), "Correspondence silently awards or drops a full commitment.");
+                        check(result.Has("targona.ran_romance") == ready.Has("targona.ran_romance"), "Correspondence rewrites the parent romance history.");
                         check(!result.Has("targona.extra_ending") || currentPath == "trickster", "A non-Trickster uses the authored fate trick.");
                         check(result.AvailableContacts.Count == 0, "A letter invents a loaded Targona actor.");
                         foreach (var group in alternatives)
@@ -111,6 +120,21 @@ internal static class TargonaOpeningTests
             check(!Rules.Available(story, scene, wrong), "Targona extension begins before its chapter-five finale.");
             wrong = Program.Copy(ready); wrong.Area = "outside_drezen";
             check(!Rules.Available(story, scene, wrong), "Drezen correspondence invents delivery elsewhere.");
+        }
+
+        // Polish (INT): the visit and its answer open after the parent romance or the ward's commitment, never after neither.
+        foreach (var id in new[] { "targona.the_open_threshold", "targona.the_key_remains_hers" })
+        {
+            var later = story.Scenes.Single(s => s.Id == id);
+            foreach (var history in new[] { new string[0], new[] { "targona.ran_romance" }, new[] { "targona.committed" },
+                                            new[] { "targona.ran_romance", "targona.committed" } })
+            {
+                var ready = new Snapshot { Chapter = 5, Area = later.Areas.Single(), Hour = 100000 };
+                ready.Flags.UnionWith(later.Requires.Where(f => f != "targona.correspondence_romanced"));
+                ready.Flags.UnionWith(history); ready.Flags.Add("targona.ran_angel");
+                Rules.Complete(story, ready);
+                check(Rules.Available(story, later, ready) == (history.Length > 0), "Targona visit gate misreads the earned history: " + id);
+            }
         }
 
         var paper = scenes[2];
