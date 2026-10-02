@@ -83,6 +83,9 @@ from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
 from storylines import pacing_pp3
 from storylines import pacing_pp4
+from storylines import nm1_nocticula
+from storylines import nm1_delamere
+from storylines import nm1_nidalynn
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -464,6 +467,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(delamere_woods.SCENES))
     payload["Scenes"].extend(copy.deepcopy(delamere_fire.SCENES))
     delamere_trickster.integrate(payload)
+    nm1_delamere.integrate(payload)   # NM1: her visits at a rest, the spine folded into three deliveries
     # Kaylessa: a new relationship (kaylessa.md; 11-ROSTER-PLAN-2 §2): Shyka's timeline trade in the dead worlds, the amulet
     # swap in the living one, and the courtship under the tailor's awning (kaylessa_wasps, kaylessa_clearing).
     payload["Relationships"]["kaylessa"] = copy.deepcopy(kaylessa_trickster.RELATIONSHIP)
@@ -486,6 +490,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(nidalynn_kiln.SCENES))
     payload["Scenes"].extend(copy.deepcopy(nidalynn_salt.SCENES))
     nidalynn_trickster.integrate(payload)
+    nm1_nidalynn.integrate(payload)   # NM1: her visits on her own step (2/0/1 remote allocation)
     # Shamira: a new relationship (shamira.md hooks; 11-ROSTER-PLAN-2 §2 "Dreams for a body", revised 2026-09-29): at the
     # compulsory kill she flees into the one mind she was let into, the Commander's; a shell stolen in the Fleshmarkets, woken
     # on the Commander's dreams (shamira_mind); the game lost on purpose in her Harem (shamira_dream). Once she has a body she
@@ -602,6 +607,9 @@ def make_expansion(*, independent_tirabade=True):
     if all(rel in payload["Relationships"] for rel in ("nocticula", "nocticula.acquisition", "kiana")):
         payload["Scenes"].extend(copy.deepcopy(pacing_pp4.SCENES))
         pacing_pp4.integrate(payload)
+        # NM1: the acquired correspondence in two Chapter 5 deliveries (later letters folded into earlier ones) and the
+        # optional harbor join and acquired harbor deferred past the beta (retired by gating); after PP4's her_hand appendix.
+        nm1_nocticula.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)

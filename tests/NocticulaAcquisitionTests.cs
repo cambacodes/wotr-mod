@@ -8,6 +8,7 @@ internal static class NocticulaAcquisitionTests
     // Play selected addon effects through the shared walker; native events are explicit fixture boundaries.
     internal static void Run(Story story, Action<bool, string> check)
     {
+        story = Program.Unfolded(story);   // NM1: judged per letter; the folded deliveries are Nm1BudgetTests
         var scenes = story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                                              && !s.Id.StartsWith("nocticula.trickster.", StringComparison.Ordinal)).ToArray();
         if (scenes.Length == 0) return;

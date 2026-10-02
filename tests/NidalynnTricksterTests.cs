@@ -449,6 +449,46 @@ internal static class NidalynnTricksterTests
               && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("never paid")),
             "Trk_Nidalynn_Bill: her page says the bill was never paid after Devarra named it at the rift.");
 
+        // NM1 (Sol INT/BEL): after a rejection Devarra's collected bill reads as the Commander's alone; no kiln kept warm.
+        var apartNode = S(P + "epilogue.apart").Nodes[0];
+        var apartWorld = World(story, 6, "trickster.ever", P + "met", Closed, Bill, "devarra.lastcall.called");
+        var keptWorld = World(story, 6, "trickster.ever", P + "met", Committed, Bill, "devarra.lastcall.called");
+        check(!Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("banked high"))
+              && Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("alone"))
+              && Rules.VisibleParagraphs(S(P + "epilogue.salt").Nodes[0], keptWorld).Any(x => x.Text.Contains("banked high")),
+            "Trk_Nidalynn_ApartBill: a rejected Commander still has her kiln kept warm, or the partner lost it.");
+
+        // NM1 (coordinator ruling; ledger 2/0/1, her Chapter 4 letter stands): her visits are entries on her own step. At a rest
+        // only the device event and the grey stone (Chapter 3), the kiln letter (Chapter 4) and her welcome home (Chapter 5).
+        var restIds = mine.Where(Rules.IsMailbagLetter).Select(s => s.Id).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+        check(restIds.SequenceEqual(new[] { P + "door.home_from_the_dark", P + "eggs.straw", P + "eggs.vault", P + "hearth.grey_stone", P + "letter.from_the_kiln" }),
+            "Trk_Nidalynn_Allocation: a visit still arrives at a rest: " + string.Join(", ", restIds));
+        // The entry (the device event, then the grey stone) is two deliveries in whichever chapter it falls; after it, Chapter 5
+        // has only her welcome home.
+        var entry = new[] { P + "eggs.vault", P + "eggs.straw", P + "hearth.grey_stone" };
+        check(mine.Where(s => Rules.IsMailbagLetter(s) && s.Chapters.Contains(5) && !entry.Contains(s.Id)).Select(s => s.Id).SequenceEqual(new[] { P + "door.home_from_the_dark" })
+              && mine.Where(s => Rules.IsMailbagLetter(s) && s.Chapters.Contains(3) && !entry.Contains(s.Id)).Count() == 0,
+            "Trk_Nidalynn_Allocation: a courtship visit is still a rest delivery in Chapter 3 or 5.");
+        foreach (var id in new[] { "hearth.listening", "kiln.fire", "kiln.hatching", "kiln.whose", "door.own_form", "wall.wings", "ridge.first_flight",
+                                   "ridge.snowfield", "after.first_demon", "kiln.the_heel", "ridge.claimed_flight" })
+        {
+            var movedStep = S(P + id);
+            check(!Rules.IsRemote(movedStep) && movedStep.InteractionHub != null && !string.IsNullOrWhiteSpace(movedStep.Entry) && movedStep.Areas.SequenceEqual(new[] { Drezen }),
+                "Trk_Nidalynn_Allocation: a visit is not on her step: " + id);
+        }
+        foreach (var id in new[] { "kiln.feeding", "kiln.the_druids", "kiln.the_goat", "kiln.in_charge" })
+        {
+            var widowStep = S(P + id);
+            var chosenStep = S(P + id + ".chosen");
+            check(widowStep.InteractionHub == "nidalynn.presence" && widowStep.Forbids.Contains(P + "form_chosen") && widowStep.Forbids.Contains(chosenStep.Id)
+                  && chosenStep.InteractionHub == "nidalynn.presence.chosen" && chosenStep.Requires.Contains(P + "form_chosen") && chosenStep.Forbids.Contains(widowStep.Id)
+                  && chosenStep.ContactUnit == ChosenUnit && widowStep.Nodes.Count == chosenStep.Nodes.Count,
+                "Trk_Nidalynn_Allocation: a visit either side of her reveal has no step on both sides: " + id);
+        }
+        check(S(P + "wall.wings").InteractionHub == "nidalynn.presence.chosen" && S(P + "door.own_form").InteractionHub == "nidalynn.presence"
+              && S(P + "ridge.claimed_flight").InteractionHub == "nidalynn.presence",
+            "Trk_Nidalynn_Allocation: a visit stands on the wrong body's step.");
+
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))
         {

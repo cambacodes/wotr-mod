@@ -30,7 +30,18 @@ internal static class NurahTricksterTests
         Rules.Complete(story, later); return later;
     }
 
-    private static readonly string[] DeadRetired = { "nurah.trickster.dead.rumour", "nurah.trickster.dead.bill_of_sale", "nurah.trickster.dead.rumour_courier" };
+    // NM1: the runtime producer of <key>.failed (GuestPresence.Tick -> Rules.PresenceFailed -> Main's snapshot), applied to an
+    // observation of the loaded area instead of a hand-set flag.
+    private static Snapshot Observed(Story story, Snapshot state, string key, PresenceObservation seen)
+    {
+        var observed = Program.Copy(state);
+        var presence = story.Presences[key];
+        if (Rules.PresenceFailed(presence, Rules.PresenceWanted(presence, observed), seen)) observed.Flags.Add(Rules.PresenceFailedFlag(key));
+        Rules.Complete(story, observed);
+        return observed;
+    }
+
+    private static readonly string[] DeadRetired ={ "nurah.trickster.dead.rumour", "nurah.trickster.dead.bill_of_sale", "nurah.trickster.dead.rumour_courier" };
 
     internal static void Run(Story story, Action<bool, string> check)
     {
@@ -243,8 +254,10 @@ internal static class NurahTricksterTests
             "Trk_Nurah_DeadTerms: agreeing to the book commits the romance, or the book-only answer has no page.");
         // Q12 (Sol INT): her presence could not be placed: the same terms come to the Commander's rooms at night.
         var termsNight = S("nurah.trickster.terms_night");
-        var failedRaised = Program.Copy(deadSeen); failedRaised.Flags.Add("nurah.presence.raised.failed"); failedRaised.Times["nurah.presence.raised.failed"] = failedRaised.Hour - 1;
-        Rules.Complete(story, failedRaised);
+        // NM1 (Sol HOW): observed, not hand-set: the copy's locator is gone, so nothing could be spawned.
+        var failedRaised = Observed(story, deadSeen, "nurah.presence.raised",
+            new PresenceObservation { AreaLoaded = true, AnchorResolved = false });
+        check(failedRaised.Has("nurah.presence.raised.failed"), "A raised Nurah whose locator is gone is not reported as failed.");
         var failedLater = Later(story, failedRaised, 168);
         check(Rules.IsRemote(termsNight) && !Rules.Available(story, termsNight, deadSeen) && !Rules.Available(story, termsNight, failedRaised)
               && Rules.Available(story, termsNight, failedLater) && Commits(termsNight, failedLater) && termsNight.Forbids.Contains("nurah.trickster.terms") && terms.Forbids.Contains("nurah.trickster.terms_night")
@@ -284,6 +297,51 @@ internal static class NurahTricksterTests
             "Trk_Nurah_RanOffTerms.");
         check(Rules.PresenceWanted(story.Presences["nurah.presence"], ranSeen) && !Rules.PresenceWanted(story.Presences["nurah.presence.raised"], ranSeen),
             "The runaway is not placed for her terms.");
+        // NM1 (Sol INT/HOW): the runaway's locator resolves but no native Nurah stands in Drezen (absent or ambiguous). The
+        // runtime reports the failure, and only the observed failure opens the night terms, which still carry the commit.
+        var ranNight = S("nurah.trickster.ran_off.terms_night");
+        var anchorOnly = new PresenceObservation { AreaLoaded = true, AnchorResolved = true, NativeAlive = false };
+        var ranPlaced = Observed(story, ranSeen, "nurah.presence",
+            new PresenceObservation { AreaLoaded = true, AnchorResolved = true, NativeAlive = true, NativeHidden = true });
+        var ranMissing = Observed(story, ranSeen, "nurah.presence", anchorOnly);
+        var ranElsewhere = Program.Copy(ranSeen); ranElsewhere.Area = "00000000000000000000000000000000";
+        check(!ranPlaced.Has("nurah.presence.failed") && ranMissing.Has("nurah.presence.failed")
+              && !Observed(story, ranElsewhere, "nurah.presence", anchorOnly).Has("nurah.presence.failed")
+              && !Observed(story, ranSeen, "nurah.presence", new PresenceObservation { AreaLoaded = false }).Has("nurah.presence.failed"),
+            "Trk_Nurah_RanOffMissingActor: a resolved locator without her native actor is not reported (or is reported while she stands there).");
+        var ranMissingLater = Observed(story, Later(story, ranSeen, 168), "nurah.presence", anchorOnly);
+        check(!Rules.Available(story, ranNight, Later(story, ranPlaced, 168)) && Rules.Available(story, ranNight, ranMissingLater)
+              && Commits(ranNight, ranMissingLater) && !Rules.Available(story, ranTerms, Program.Walk(ranNight, ranMissingLater).First(r => r.Has("nurah.complete"))),
+            "Trk_Nurah_RanOffMissingActor: the observed failure does not open the night terms and their commitment.");
+        // NM1 (Sol COX): the worst early runaway (primed in Chapter 3, Camellia killed and back veiled at Fye's, her own
+        // placement failed) takes at most two Chapter 5 deliveries: the card on the pamphlet rides in the proofs packet.
+        var veiledDraft = S("nurah.trickster.react.camellia_veiled_draft");
+        var worst = Program.Copy(ran5);
+        foreach (var f in new[] { "camellia.killed", "camellia.trickster.returned" }) { worst.Flags.Add(f); worst.Times[f] = worst.Hour - 100; }
+        Rules.Complete(story, worst);
+        var worstCh5 = new HashSet<string>();
+        void Deliveries(Snapshot w)
+        {
+            foreach (var s in story.Scenes.Where(s => s.Id.StartsWith("nurah.", StringComparison.Ordinal) && Rules.IsRemote(s) && Rules.Available(story, s, w)))
+                worstCh5.Add(s.Id);
+        }
+        Deliveries(worst);
+        var packetPages = new HashSet<string>();
+        Program.Walk(proofs, worst, (page, _) => packetPages.Add(page));
+        var worstSeen = Program.Walk(proofs, worst).First(r => r.Has("nurah.trickster.veiled_draft_folded"));
+        Deliveries(Observed(story, Later(story, worstSeen, 72), "nurah.presence", anchorOnly));
+        var worstNight = Observed(story, Later(story, worstSeen, 168), "nurah.presence", anchorOnly);
+        Deliveries(worstNight);
+        Deliveries(Later(story, Program.Walk(ranNight, worstNight).First(r => r.Has("nurah.complete")), 72));
+        check(packetPages.Contains("card_draft") && !veiledDraft.Chapters.Contains(5) && !Rules.Available(story, veiledDraft, worst)
+              && worstCh5.SetEquals(new[] { proofs.Id, ranNight.Id }),
+            "Trk_Nurah_WorstRunawayBudget: the early runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", worstCh5));
+        // A card already delivered in Chapter 3 is not repeated in the packet.
+        var cardSeen = Program.Copy(worst); cardSeen.Flags.Add(veiledDraft.Id); Rules.Complete(story, cardSeen);
+        var cardSeenPages = new HashSet<string>();
+        Program.Walk(proofs, cardSeen, (page, _) => cardSeenPages.Add(page));
+        check(!cardSeenPages.Contains("card_draft") && Program.Walk(proofs, cardSeen).Any(r => r.Has("nurah.trickster.proofs_seen")),
+            "Trk_Nurah_WorstRunawayBudget: the Chapter 3 card is repeated in the packet, or the packet strands.");
 
         // Trk_Nurah_RanOffLate: the pedlar in Chapter 3; the commit falls to the epilogue page.
         var unprimed = World(story, 3, "trickster", "trickster.ever", "nurah.ran_off");

@@ -1463,7 +1463,7 @@ When you look back at her, she has noticed you noticing.{/n}
     n("close", "Nocticula", '''{n}She shifts just enough to make room. Your knee touches hers before either of you finds a more elaborate way of acknowledging that you chose the couch.
 Nocticula offers you a slice of pear. You take it from her fingers. She watches your mouth, then looks away first, which feels deliberate enough to be another kind of attention.{/n}
 "You are pleased with yourself," you say.
-"I invited somebody whose questions usually improve an evening. I have temporarily removed the objects about which he asks them."
+"I invited somebody whose questions usually improve an evening. I have temporarily removed the objects about which you ask them."
 "You remain."
 "I had noticed the flaw."
 {n}You kiss her. She lets the first kiss end, keeps her hand against your jaw, and decides how to begin the second. The difference is small and impossible to mistake.
@@ -1921,7 +1921,7 @@ The harbor was one opportunity, not a substitute for that larger design.{/n}
 "So can desire. Neither should be allowed to do all the thinking."
 {n}She crosses the threshold herself. Her hand closes at the back of your neck and draws you in for a kiss that is not a question.
 When she steps back, the unfinished room has a second doorway. A breeze passes between them, lifting the edge of a report. She catches it with her heel.{/n}
-"Come back with another answer I have not already considered," she says. "And occasionally with no answer at all. I do not wish to discover that the only thing we can enjoy together is being correct."''', c('[Choose the difficult company of a woman who remains formidable.]', flags=f("ambition_discussed", "future_rivals"))),
+"Come back with another answer I have not already considered," she says. "And occasionally with no answer at all. I do not wish to discover that the only thing we can enjoy together is being correct."''', c('[Take her hand.] "Then come back with a better argument."', flags=f("ambition_discussed", "future_rivals"))),
     n("power", "Nocticula", '''"There. An appetite you have not dressed as a sacrifice."
 {n}She comes close, studying you with an attention more intimate than the room's earlier invitations.{/n}
 "Then understand mine. Try to tame me, Commander, and discover which of us leaves the cage. I will want things which inconvenience you, and I will take them first and tell you afterwards, if I remember."

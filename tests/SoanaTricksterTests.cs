@@ -226,6 +226,16 @@ internal static class SoanaTricksterTests
         foreach (var r in Program.Walk(terms, Later(story, bought, 72), (id, _) => boughtPages.Add(id))) { }
         check(boughtPages.Contains("bought") && !boughtPages.Contains("dug"), "The terms misremember who dug.");
 
+        // NM1 (Sol INT): a luck-chain "not yet" (missed.bowl, the shared declined flag), then her death and return: the knot's own
+        // first ask still opens after the graveyard, commits, and its own "not yet" leads to the second ask, not to itself.
+        var compound = Program.Copy(atTerms);
+        foreach (var f in new[] { P + "declined", P + "luck_kept", P + "luck_tested" }) { compound.Flags.Add(f); compound.Times[f] = compound.Hour - 300; }
+        Rules.Complete(story, compound);
+        check(Rules.Available(story, terms, compound) && Reaches(compound, "soana.committed"),
+            "Trk_Soana_CompoundPostponement: a luck postponement bars the knot's first ask after her return.");
+        var compoundNo = Program.Walk(terms, compound).First(r => r.Has(terms.Id) && !r.Has("soana.committed") && !r.Has("soana.closed") && !r.Has(P + "friends"));
+        check(!Rules.Available(story, terms, Later(story, compoundNo, 200)) && Rules.Available(story, secondAsk, Later(story, compoundNo, 96)),
+            "Trk_Soana_CompoundPostponement: the knot's own 'not yet' repeats the first ask, or never reaches the second.");
         // Trk_Soana_TermsRefused: her soft no, then her second ask: the knot tied tighter (a scar, not a fee).
         var refused = Pick(terms, atTerms, P + "declined");
         check(!refused.Has("soana.committed") && !refused.Has("soana.closed"), "Trk_Soana_TermsRefused: her no closes or commits.");
@@ -327,6 +337,21 @@ internal static class SoanaTricksterTests
         check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { P + "epilogue.luck_late" }),
             "A luck never committed has no late page, or gets the killed branch's.");
         check(Endings(walked).SequenceEqual(new[] { P + "epilogue.unbound" }), "Walking away from the grave leaves the loose spirit unresolved.");
+        // NM1 (Sol COX, R2-6): her Last Call coda accepts the late commit of both fallback histories (the return never
+        // brought to terms, the luck never answered) beside the in-play commit; never a refusal, a friend or a postponement.
+        var coda = S("soana.lastcall.page");
+        Snapshot Called(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
+        var luckLate = Pick(sheBear, Later(story, lucky, 48), P + "luck_tested");
+        check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
+              && !Rules.Available(story, coda, End(lateBack)),
+            "Trk_Soana_LateLastCall: a late commit (resurrection or luck fallback) has no Last Call coda.");
+        var friendBack = Pick(terms, atTerms, P + "friends");
+        check(!Rules.Available(story, coda, Called(refused)) && !Rules.Available(story, coda, Called(walked)) && !Rules.Available(story, coda, Called(friendBack))
+              && walked.Has(P + "refused") && !lateBack.Has(P + "refused"),
+            "Trk_Soana_LateLastCall: a refusal, a friend or a postponement plays her Last Call coda.");
+        foreach (var closer in story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal)).SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
+                     .Where(c => c.Set.Contains("soana.closed")))
+            check(closer.Set.Contains(P + "refused"), "A Trickster-route closure does not keep her out of the Last Call coda: " + closer.Text);
         check(new[] { epKnot, epCommit, S(P + "epilogue.unbound") }.All(p => p.Nodes[0].Text.Contains("leash back"))
               && epDeclined.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "returned") && x.Text.Contains("leash back")),
             "A killed-branch ending leaves the leash in the Commander's hand.");

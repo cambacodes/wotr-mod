@@ -981,6 +981,15 @@ namespace Tirabade
         // E12b: the runtime observation a letter twin can wait on when an anchored copy could not be placed.
         public static string PresenceFailedFlag(string presenceKey) => presenceKey + ".failed";
 
+        // E12b (NM1): a wanted presence that cannot be delivered in its loaded area reports failure (<key>.failed). A
+        // reuse-native presence fails whenever no single live, friendly native actor stands in the area (absent, dead,
+        // hostile or ambiguous), whether or not its anchor resolved; a spawn-copy fails when its anchor is gone and no copy
+        // or native unit stands in for it. Transient: observed per tick, never saved.
+        public static bool PresenceFailed(Presence presence, bool wanted, PresenceObservation seen)
+            => wanted && seen.AreaLoaded && (presence.Mode == "reuse-native"
+                ? !seen.NativeAlive
+                : presence.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive);
+
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
 

@@ -345,7 +345,10 @@ partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
     deal=[[S + "cost.blood_given"], [S + "cost.guardian_paid"], [S + "cost.knot_bearer"], [S + "cost.leash_held"]],
     call=call('''[Call in the spirits' portion] "Wintersun spirits, you took a portion. The rest is mine to give. Later."''',
         '''{n}You smell pine and cold earth in the middle of the fire. The spirits of a wood a very long way off have a claim on part of you, and they turn toward the fire the way the woods turn toward spring: to see what is owed them.{/n}''',
-        (PILLAR_CHOICE, (PILLAR,), (), ())))
+        (PILLAR_CHOICE, (PILLAR,), (), ())),
+    # NM1 (Sol COX, R2-6): the late commit (resurrection or luck fallback) reaches her coda; a friend or a refusal on her
+    # Trickster route does not (refused is set beside each of its closures), and a postponement stays out by declined.
+    page_forbids=(S + "friends", S + "refused"), page_commit_groups=[["soana.committed"], [S + "late_committed"]])
 
 AK = "aranka.trickster."
 partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", "The Second Verse",

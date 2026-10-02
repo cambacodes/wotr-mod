@@ -8,6 +8,7 @@ internal static class NocticulaConcessionTests
     // Native disclosure is a fixture boundary; all inherited channel states come from played opening choices.
     internal static void Run(Story story, Action<bool, string> check)
     {
+        story = Program.Unfolded(story);   // NM1: judged per letter; the folded deliveries are Nm1BudgetTests
         string[] ids = {
             "noct.acq.borrowed_signature", "noct.acq.the_paid_address",
             "noct.acq.the_retained_copy", "noct.acq.an_answer_of_her_own"

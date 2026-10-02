@@ -115,7 +115,9 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
 "You'd let me. You'd actually let me go." {n}She slides down the pole until she is sitting.{/n} "That's what I can't bear about you. Everyone else tries to keep me or kill me. You just stand there with the door open, as if it were mine." {n}She wipes her eyes with the back of a clawed hand.{/n} "I'm not going. I'm just... I'm having a bad day. Can demons have bad days? I'm having one."''', c()),
     nar("wait", '''{n}You sit down on the floor of the tent, just out of her reach, and say nothing at all. It takes a long time. The nails go first; then, slowly, the wings; last of all, the second voice under her breath.{/n}
 {n}When she speaks again it is only her own voice, small and hoarse.{/n} "I watched them flog him. The deserter. Twelve strokes, and I counted every one, and I was sorry when they stopped." {n}She sits down opposite you, knees to her chest.{/n} "Desna sent me back to learn what dreams were, and I spent this morning wanting a man's back opened. Put it in the notes. 'Patient had a bad day. Doctor sat on the floor.' Don't you dare write down that it helped."''', c()),
-], (RELAPSE,), delay=48, chapters=(3, 4, 5))
+# NM1 (Sol CAN/INT): a Drezen account (the squad, the chapel): Drezen only, never at the Nexus in Chapter 4; and never
+# after BackToReality has released her (arueshalae.changed), when the pretence it rails against is over.
+], (RELAPSE,), forbids=("arueshalae.changed",), delay=48, chapters=(3, 5), Areas=[DREZEN_AREA])
 
 
 # --- After the yes: a first quarrel ---------------------------------------------------------------------------

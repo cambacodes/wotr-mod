@@ -23,6 +23,24 @@ internal static class Program
         AvailableContacts = new HashSet<string>(original.AvailableContacts)
     };
 
+    // NM1 (storylines/nm1_fold.py): the per-letter view of a story whose later rest deliveries were folded into earlier ones.
+    // Each folded host loses its copied guest nodes (`<key>.arrives` and `<key>.*`) and its hooked terminal choices end
+    // again, so a suite written per letter keeps judging each letter; the folded deliveries are judged by Nm1BudgetTests.
+    internal static Story Unfolded(Story original)
+    {
+        var options = new JsonSerializerOptions { IncludeFields = true };
+        var story = JsonSerializer.Deserialize<Story>(JsonSerializer.Serialize(original, options), options)!;
+        foreach (var scene in story.Scenes)
+        {
+            var keys = scene.Nodes.Where(n => n.Id.EndsWith(".arrives", StringComparison.Ordinal)).Select(n => n.Id.Substring(0, n.Id.Length - ".arrives".Length)).ToArray();
+            if (keys.Length == 0) continue;
+            scene.Nodes.RemoveAll(n => keys.Any(k => n.Id.StartsWith(k + ".", StringComparison.Ordinal)));
+            foreach (var choice in scene.Nodes.SelectMany(n => n.Choices).Where(c => c.Next != null && c.Next.EndsWith(".arrives", StringComparison.Ordinal)))
+                choice.Next = null;
+        }
+        return story;
+    }
+
     // A scene's minimal prerequisites: its Requires plus the first flag of each RequiresAnyGroups group (the original path).
     internal static IEnumerable<string> Prerequisites(Scene scene) => scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0]));
 
@@ -575,6 +593,7 @@ internal static class Program
                 NocticulaConcessionTests.Run(story, Check);
             NocticulaHarborJoinTests.Run(story, Check);
             NocticulaAcquiredHarborTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "noct.acq.epilogue.correspondence")) Nm1BudgetTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("noct.join.", StringComparison.Ordinal)).Select(s => s.Id));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                 && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
