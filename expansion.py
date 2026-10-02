@@ -85,6 +85,7 @@ from storylines import pacing_pp3
 from storylines import pacing_pp4
 from storylines import nm1_nocticula
 from storylines import nm1_delamere
+from storylines import nm1_nidalynn
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -489,6 +490,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(nidalynn_kiln.SCENES))
     payload["Scenes"].extend(copy.deepcopy(nidalynn_salt.SCENES))
     nidalynn_trickster.integrate(payload)
+    nm1_nidalynn.integrate(payload)   # NM1: her visits on her own step (2/0/1 remote allocation)
     # Shamira: a new relationship (shamira.md hooks; 11-ROSTER-PLAN-2 §2 "Dreams for a body", revised 2026-09-29): at the
     # compulsory kill she flees into the one mind she was let into, the Commander's; a shell stolen in the Fleshmarkets, woken
     # on the Commander's dreams (shamira_mind); the game lost on purpose in her Harem (shamira_dream). Once she has a body she
