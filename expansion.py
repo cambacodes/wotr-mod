@@ -83,6 +83,7 @@ from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
 from storylines import pacing_pp3
 from storylines import pacing_pp4
+from storylines import nm1_nocticula
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -602,6 +603,9 @@ def make_expansion(*, independent_tirabade=True):
     if all(rel in payload["Relationships"] for rel in ("nocticula", "nocticula.acquisition", "kiana")):
         payload["Scenes"].extend(copy.deepcopy(pacing_pp4.SCENES))
         pacing_pp4.integrate(payload)
+        # NM1: the acquired correspondence in two Chapter 5 deliveries (later letters folded into earlier ones) and the
+        # optional harbor join and acquired harbor deferred past the beta (retired by gating); after PP4's her_hand appendix.
+        nm1_nocticula.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
