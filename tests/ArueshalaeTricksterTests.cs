@@ -522,8 +522,8 @@ internal static class ArueshalaeTricksterTests
         var nm1WatchEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_watch");
         var nm1WantEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_want");
         check(!nm1Together.Text.Contains("Watch people eat")
-              && Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("Watch people eat")) && !Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("burnt onions"))
-              && Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("burnt onions")) && !Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("Watch people eat"))
+              && Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("Watch people eat")) && !Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("Number one was"))
+              && Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("Number one was")) && !Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("Watch people eat"))
               && !S(T + "the_eve").Nodes[0].Text.Contains("Watch people eat"),
             "Trk_Arueshalae_Prescription: the daybook or the eve quotes the other intake's prescription.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the Death Ward, the retired returns, the lair kill's closure, the chaplain, the treatment and her proposal, the arcade, and the retired court.");

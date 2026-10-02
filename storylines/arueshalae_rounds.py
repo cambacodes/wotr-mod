@@ -262,7 +262,7 @@ SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
         paragraphs=(
             # NM1 (Sol BEL): the first page is the prescription the Commander actually wrote at the intake.
             p('''{n}Its first page read: "Watch people eat. Three times a day."{/n}''', requires=(RX_WATCH,)),
-            p('''{n}Its first page was the first list: one thing a day that she wanted and that was not a person. The first of them, crossed out and written again, was burnt onions.{/n}''',
+            p('''{n}Its first page was the first list: one thing a day that she wanted and that was not a person. Number one was "nothing". Number two was the cat on the smithy roof, which still did not like her.{/n}''',
               requires=(RX_WANT,), forbids=(RX_WATCH,)),
             p('''{n}She took a river stone with a white band round it to the sea, and let it go, and came back and said that was the first dream she was certain was hers.{/n}''',
               requires=(TEMPLE_LETTER,)),
