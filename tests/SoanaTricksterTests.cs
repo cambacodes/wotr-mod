@@ -327,6 +327,21 @@ internal static class SoanaTricksterTests
         check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { P + "epilogue.luck_late" }),
             "A luck never committed has no late page, or gets the killed branch's.");
         check(Endings(walked).SequenceEqual(new[] { P + "epilogue.unbound" }), "Walking away from the grave leaves the loose spirit unresolved.");
+        // NM1 (Sol COX, R2-6): her Last Call coda accepts the late commit of both fallback histories (the return never
+        // brought to terms, the luck never answered) beside the in-play commit; never a refusal, a friend or a postponement.
+        var coda = S("soana.lastcall.page");
+        Snapshot Called(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
+        var luckLate = Pick(sheBear, Later(story, lucky, 48), P + "luck_tested");
+        check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
+              && !Rules.Available(story, coda, End(lateBack)),
+            "Trk_Soana_LateLastCall: a late commit (resurrection or luck fallback) has no Last Call coda.");
+        var friendBack = Pick(terms, atTerms, P + "friends");
+        check(!Rules.Available(story, coda, Called(refused)) && !Rules.Available(story, coda, Called(walked)) && !Rules.Available(story, coda, Called(friendBack))
+              && walked.Has(P + "refused") && !lateBack.Has(P + "refused"),
+            "Trk_Soana_LateLastCall: a refusal, a friend or a postponement plays her Last Call coda.");
+        foreach (var closer in story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal)).SelectMany(s => s.Nodes).SelectMany(n => n.Choices)
+                     .Where(c => c.Set.Contains("soana.closed")))
+            check(closer.Set.Contains(P + "refused"), "A Trickster-route closure does not keep her out of the Last Call coda: " + closer.Text);
         check(new[] { epKnot, epCommit, S(P + "epilogue.unbound") }.All(p => p.Nodes[0].Text.Contains("leash back"))
               && epDeclined.Nodes[0].Paragraphs.Any(x => x.Requires.Contains(P + "returned") && x.Text.Contains("leash back")),
             "A killed-branch ending leaves the leash in the Commander's hand.");
