@@ -32,6 +32,7 @@ import copy
 
 from story_format import c, n, scene
 from storylines import household_frictions as frictions
+from storylines import household_pair_seelah_wenduag as pair_seelah_wenduag
 from storylines import trickster_world
 
 REL = "household"
@@ -398,6 +399,7 @@ def integrate(payload):
         kind, guid, _ = trickster_world.BINDINGS[KING_GONE]
         payload.setdefault(kind, {})[KING_GONE] = [guid] if kind in trickster_world.LIST_KINDS else guid
     frictions.validate(set(PARTNERS))
+    pair_seelah_wenduag.validate(set(PARTNERS))   # doc 16 §8c.6 prerequisites (data only)
     payload.setdefault("Openers", []).extend(copy.deepcopy(OPENERS))
     payload["Scenes"].extend(copy.deepcopy(SCENES + ENTRIES + INVITATIONS))
     payload.setdefault("Glossary", {}).update({k: dict(v) for k, v in GLOSSARY.items()})
