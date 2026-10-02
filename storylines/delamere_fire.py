@@ -16,8 +16,8 @@
   ErastilFeature). That is read natively (SeenCues delamere.erastil_answered) and told only when the Commander heard it;
   otherwise Brother Haddo offers his church's reading of a stag's call, and says he cannot tell a sign from a stag in rut.
   Nothing claims the god answered anyone else. The Drezen chapel of Erastil and Brother Haddo are authored.
-- Delivery (quality pass Q6, COX): the optional beats are manual reads (ManualOnly: listed in her book, "choose Read"),
-  never rest deliveries, so they add nothing to the shared rest budget.
+- Delivery (NM1, coordinator allocation exception): the optional beats arrive at a rest like every other visit (Q6 had
+  made them manual reads from the mod menu, which a beta cannot rely on).
 - The names (optional): "I will count them later. All of them." (the waking) paid on the crypt wall where Zanedra's cult
   feasted (TombOfDelamere_BookEvent/Cue_0002; the farm boy, ZanedraInTemple).
 - Doe in fawn (optional): crusade poachers in her wood; whose law judges them (the crusade's, hers, or a Trickster's bluff).
@@ -129,7 +129,7 @@ visit(P + "woken.glory", "Her glory", [
         c("Continue", "quieted")),
     dl("quieted", '''"Let them sing it wrong." {n}She tries the words as if they were a new kind of bread.{/n} "In my day I would have had his lute off him and broken it over the fountain." {n}She walks a while.{/n} "The old woman knew me. Did you see? She knew me." {n}Her grip tightens on your arm.{/n} "That is enough. One is enough. I do not need a city to kneel. I have been knelt to. It is uncomfortable for everyone."''',
         c("[Walk her to the gate.]")),
-], requires=("trickster.ever", COUNTED), forbids=(CLOSED, PROCLAIMED, KEPT_QUIET), delay=48, optional=True, ManualOnly=True)
+], requires=("trickster.ever", COUNTED), forbids=(CLOSED, PROCLAIMED, KEPT_QUIET), delay=48, optional=True)
 
 
 # --- The jester (Chapter 5; optional): what the Commander has become ---------------------------------------------------
@@ -162,7 +162,7 @@ visit(P + "woken.jester", "Defenceless", [
         c("Continue", "end", flags=(JESTER_SEEN,))),
     dl("end", '''"Here is what I have decided, sitting on this block." {n}She slings her bow.{/n} "In the old stories the fox always wins, and the village always pays for it afterward. I have been the village. I will not be the village again." {n}She looks at you, long and level.{/n} "So play your tricks on demons, stag. Play them on the Horned One and his witches and the things in the Wound. And when you play one on my people, I will know, and I will come for my day early."''',
         c("[Nod.]")),
-], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, JESTER_SEEN), delay=48, chapters=(5, 5), optional=True, ManualOnly=True)
+], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, JESTER_SEEN), delay=48, chapters=(5, 5), optional=True)
 
 
 # --- A demon in her woods (Chapter 5; optional) ------------------------------------------------------------------------
@@ -200,7 +200,7 @@ visit(P + "woken.demon", "Be the stag again", [
         c("Continue", "burn")),
     dl("burn", '''"Help me drag it to the stones. We burn it where it can see the village it did not get." {n}She looks around the ring of tumbled stones, grey in the moonlight.{/n} "The Ash-Cutters built here. Their children played in this clearing. I used to walk through on my rounds and count them." {n}A pause.{/n} "One of them used to follow me for a mile, pretending to be a stag. He was very bad at it. He was better than you."''',
         c("[Help her drag it.]", flags=(DEMON_HUNTED,))),
-], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEMON_HUNTED), delay=48, chapters=(5, 5), optional=True, ManualOnly=True)
+], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEMON_HUNTED), delay=48, chapters=(5, 5), optional=True)
 
 
 # --- The prior's lessons (physical, Chapter 3, Kyado alive; optional) ----------------------------------------------------
@@ -298,7 +298,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
     nar("out", '''{n}She walks out past the three women. One of them, the youngest, reaches out without thinking and touches the hem of her grave-leathers as she goes by, the way you would touch a relic. Delamere stops, and looks at her, and puts a hand on her head for the space of a breath, and goes on.{/n}
 {n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} "Tonight I will pray again," she says. "Not louder. He is not deaf. I will only listen harder."''',
         c("[Walk with her as far as the gate.]", flags=(DEADEYE,))),
-], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEADEYE), delay=48, optional=True, ManualOnly=True)
+], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEADEYE), delay=48, optional=True)
 
 
 # --- The names (the crypt wall; optional): "I will count them later. All of them." (the waking, gone) ------------------
@@ -341,7 +341,7 @@ visit(P + "woken.names", "The names", [
     nar("sit", '''{n}You sit beside her in the stone dust under six hundred and four names. She does not pick the chisel up again. After a while she leans her shoulder against yours, and you can feel through it the slow ache of a woman who has been holding a chisel since before dawn, and does not intend to say so.{/n}
 {n}"Tomorrow," she says, to the wall. "Another fifty. Then another. By the new moon I will have them all, or all I am going to get." She lets her head drop onto your shoulder. "Wake me if I sleep. I have done enough of that in this room."{/n}''',
         c("[Stay until the lamp gutters.]", flags=(NAMES,))),
-], requires=("trickster.ever", TABLE), forbids=(CLOSED, NAMES), delay=48, optional=True, ManualOnly=True)
+], requires=("trickster.ever", TABLE), forbids=(CLOSED, NAMES), delay=48, optional=True)
 
 
 # --- The hide (after the commit; optional): the stag hide from the blind, cut to the leg she broke ------------------
@@ -380,7 +380,7 @@ visit(P + "woken.hide", "The hide", [
     dl("promise", '''"And hear the rest, so you do not mistake me. Knowing them is not sitting down with them. When I have looked each of them in the face, I will decide whether I eat at your fire, or at mine, with you coming to me. That is mine to choose. Not yours, and not theirs." {n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside her jerkin, over her heart, where a city woman would keep a letter.{/n} "I will keep the measure. In case you grow." {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}
 "You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh." {n}She goes.{/n}''',
         c("[Lace it looser, for the night.]", flags=(HIDE,))),
-], requires=("trickster.ever", COMMITTED), forbids=(CLOSED, HIDE), delay=48, optional=True, ManualOnly=True)
+], requires=("trickster.ever", COMMITTED), forbids=(CLOSED, HIDE), delay=48, optional=True)
 
 
 # --- Doe in fawn (optional): crusade poachers in her woods, and whose law judges them ------------------------------------
@@ -433,7 +433,7 @@ visit(P + "woken.poachers", "Doe in fawn", [
 "I did not ask you out here to judge three boys. I could have judged three boys in my sleep; I did it for twenty years. I asked you out here to see what you would say when your army and my woods wanted different things." {n}She looks at you across the little grave.{/n} "Now I know. Go home, stag. Take your meat."''',
         c("[Shoulder the doe.]")),
 ], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, POACHERS_PROVOST, POACHERS_HERS, POACHERS_TRICKED), delay=48,
-    optional=True, ManualOnly=True)
+    optional=True)
 
 
 # --- Path fit (13 directive update 2026-09-29 / ROUTE-BRIEF-R §2; recorded in PP10) ---------------------------------------

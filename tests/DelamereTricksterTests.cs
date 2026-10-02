@@ -267,6 +267,10 @@ internal static class DelamereTricksterTests
             "Driving families out is not the evil choice.");
         check(After(count, back, "unwilling", 2).First().Has(P + "village.refused"), "Refusing her is not recorded.");
         check(Program.Walk(count, back).Any(r => r.Has(P + "village.clans")), "The Trickster's forty villages cannot be argued.");
+        // NM1: the count's delivery carries the first meat; a save between them still gets the meat on its own.
+        check(given.Has(P + "first_meat") && !given.Has(P + "feasting_table") && !Rules.Available(story, meat, Later(story, given, 24)),
+            "Trk_Delamere_SpineFolded: the count does not carry the hunter eats last.");
+        given = World(story, 3, "trickster.ever", P + "returned", "delamere.started", P + "cost.limp", P + "cost.hunt_owed", P + "counted", P + "village.given");
         check(Rules.Available(story, meat, Later(story, given, 24)), "The hunter eats last does not follow the count.");
         var fed = After(meat, given, "law", 0).First();
         check(Rules.Available(story, table, Later(story, fed, 24)) && Rules.Available(story, lessons, Later(story, fed, 24)),
@@ -276,14 +280,23 @@ internal static class DelamereTricksterTests
             "Kyado's judgment is not the Commander's to speak.");
         var mourned = World(story, 3, "trickster.ever", P + "returned", P + "first_meat", "kyado.dead");
         check(After(table, mourned, "kyado_cairn", 0).First().Has(P + "kyado.mourned"), "A dead Kyado is not mourned.");
-        check(Rules.Available(story, whiteStag, Later(story, spoken, 24)) && !Rules.Available(story, red, Later(story, spoken, 24)),
+        // NM1: the table's delivery carries the white stag; a save between them still gets the white stag on its own.
+        check(spoken.Has(P + "white_stag_told") && !Rules.Available(story, whiteStag, Later(story, spoken, 24)),
+            "Trk_Delamere_SpineFolded: the feasting table does not carry the white stag.");
+        var tabled = World(story, 3, "trickster.ever", P + "returned", "delamere.started", P + "cost.limp", P + "cost.hunt_owed", P + "counted", P + "village.given",
+            P + "first_meat", P + "feasting_table", P + "kyado.spoken_for");
+        check(Rules.Available(story, whiteStag, Later(story, tabled, 24)) && !Rules.Available(story, red, Later(story, tabled, 24)),
             "The white stag does not come between the table and Red.");
-        var told = After(whiteStag, spoken, "week", 0).First();
+        var told = After(whiteStag, tabled, "week", 0).First();
         check(told.Has(P + "white_stag_told") && Rules.Available(story, red, Later(story, told, 24)), "Red does not follow the white stag.");
         var truth = After(red, told, "question", 0).First();
         var lie = After(red, told, "question", 1).First();
         check(truth.Has(P + "told_truth") && lie.Has(P + "lied_erastil") && After(red, told, "question", 2).First().Has(P + "told_both"),
             "The truth about who woke her is not the Commander's choice.");
+        // NM1: Red's delivery carries her woods; a save between them still gets her woods on its own.
+        check(!Rules.Available(story, woods, Later(story, truth, 24)), "Trk_Delamere_SpineFolded: Red does not carry her woods.");
+        var redSeen = Program.Copy(told); redSeen.Flags.Add(P + "red_blood"); redSeen.Flags.Add(P + "told_truth"); redSeen.Times[P + "red_blood"] = redSeen.Hour;
+        truth = Later(story, redSeen, 0);
         check(Rules.Available(story, woods, Later(story, truth, 24)), "My woods does not follow Red.");
         var offered = After(woods, truth, "want", 0).First();
         check(offered.Has(P + "second_hunt_offered") && !offered.Has("delamere.committed"), "Her proposal commits, or is not recorded.");
@@ -356,10 +369,29 @@ internal static class DelamereTricksterTests
               && Pages(dy, answered).Contains("stag_seen") && !Pages(dy, answered).Contains("stag_haddo")
               && seal[0].Forbids.Contains(P + "white_stag_told") && !dy.Nodes.Where(n => n.Id != "seal").Any(n => n.Text.Contains("Every time", StringComparison.Ordinal)),
             "Old Deadeye's house still tells an invented history of answered pilgrims.");
-        check(dy.ManualOnly && S(P + "woken.names").ManualOnly && S(P + "woken.poachers").ManualOnly && S(P + "woken.hide").ManualOnly,
-            "An optional beat is still a rest delivery.");
-        // Q6 r2 (COX): only the wakings arrive at a rest; every courtship visit is a manual read.
-        check(own.Where(s => Rules.IsRemote(s) && !s.TricksterDevice).All(s => s.ManualOnly), "A courtship visit is still a rest delivery.");
+        // NM1 (coordinator allocation exception; supersedes Q6 r2): no visit is a mod-menu read any more; every one arrives at a rest.
+        check(mine.All(s => !s.ManualOnly) && own.Where(s => Rules.IsRemote(s)).All(Rules.IsMailbagLetter),
+            "Trk_Delamere_RestDelivery: a Delamere visit is still read only from the mod menu.");
+        // NM1: the spine arrives as three deliveries, each carrying the next visit: the count with the first meat, the table with
+        // the white stag, Red with her woods. Every folded path reaches the next visit, nothing arrives twice, no page strands.
+        var spineCount = World(story, 3, "trickster", "trickster.ever", P + "returned", "delamere.started");
+        var firstDelivery = Program.Walk(count, spineCount);
+        check(firstDelivery.Count > 0 && firstDelivery.All(r => r.Has(P + "counted") && r.Has(P + "first_meat"))
+              && !Rules.Available(story, S(P + "woken.first_meat"), Later(story, firstDelivery[0], 200))
+              && Rules.Available(story, S(P + "woken.feasting_table"), Later(story, firstDelivery[0], 24)),
+            "Trk_Delamere_SpineFolded: the count does not carry the first meat, or it arrives twice.");
+        var secondDelivery = Program.Walk(S(P + "woken.feasting_table"), Later(story, firstDelivery[0], 24));
+        check(secondDelivery.Count > 0 && secondDelivery.All(r => r.Has(P + "feasting_table") && r.Has(P + "white_stag_told"))
+              && secondDelivery.All(r => !Rules.Available(story, S(P + "woken.white_stag"), Later(story, r, 200)))
+              && Rules.Available(story, S(P + "woken.red_blood"), Later(story, secondDelivery[0], 24)),
+            "Trk_Delamere_SpineFolded: the feasting table does not carry the white stag, or it arrives twice.");
+        var thirdDelivery = Program.Walk(S(P + "woken.red_blood"), Later(story, secondDelivery[0], 24));
+        check(thirdDelivery.Count > 0 && thirdDelivery.All(r => r.Has(P + "red_blood"))
+              && thirdDelivery.Any(r => r.Has(P + "second_hunt_offered")) && thirdDelivery.All(r => !Rules.Available(story, S(P + "woken.my_woods"), Later(story, r, 200))),
+            "Trk_Delamere_SpineFolded: Red does not carry her woods to the second hunt.");
+        // A save already between two visits still receives the next one on its own.
+        check(Rules.Available(story, S(P + "woken.first_meat"), Later(story, World(story, 3, "trickster", "trickster.ever", P + "returned", P + "counted"), 24)),
+            "Trk_Delamere_SpineFolded: a save between the count and the first meat loses the first meat.");
         // Q6 r2 (BEL): the limp is a kept cost the Commander can refuse; healing ends the hunt and has its own page.
         var healed = After(crypt, visited, "healed", 0).First();
         check(healed.Has(P + "leg_healed") && healed.Has("delamere.closed") && !healed.Has(P + "cost.limp") && !healed.Has(P + "cost.hunt_owed")
@@ -401,9 +433,9 @@ internal static class DelamereTricksterTests
         check(story.SeenCues["storyteller.supplies"].SequenceEqual(new[] { "459bf324a71c81c4ba5f3eead9ba42bb" })
               && !Rules.Available(story, bark, Later(story, World(story, 4, "trickster.ever", P + "returned", "delamere.started"), 25)),
             "Trk_Delamere_Bark: the bark comes before the Storyteller has offered to carry supplies.");
-        check(Rules.IsRemote(bark) && bark.Kind == "letter" && bark.Chapters.SequenceEqual(new[] { 4 }) && bark.ManualOnly && Rules.Available(story, bark, abyss)
+        check(Rules.IsRemote(bark) && bark.Kind == "letter" && bark.Chapters.SequenceEqual(new[] { 4 }) && !bark.ManualOnly && Rules.Available(story, bark, abyss)
               && !Rules.Available(story, bark, Later(story, World(story, 5, "trickster.ever", P + "returned", "delamere.started"), 25)),
-            "Trk_Delamere_Bark: the bark is not her one manual Chapter 4 letter.");
+            "Trk_Delamere_Bark: the bark is not her one Chapter 4 letter.");
         check(Pages(bark, abyss).Contains("letter_hills") && !Pages(bark, abyss).Contains("letter"),
             "Trk_Delamere_Bark: the letter says 'as you said' to a Commander who never said the witch went west.");
         var westAbyss = Later(story, World(story, 4, "trickster.ever", P + "returned", "delamere.started", "storyteller.supplies", P + "zanedra.told_fled"), 25);

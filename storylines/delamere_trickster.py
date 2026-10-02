@@ -155,10 +155,8 @@ def temple(id, title, entry, nodes, requires, forbids=(), delay=0, into=None, **
 
 def visit(id, title, nodes, requires, forbids=(), delay=0, chapters=(3, 5), kind="visit", into=None, **extra):
     """A rest-delivered page: she comes to the Commander (visit), or a letter she sends (letter)."""
-    # Q6 r2 (COX): only the device pages (the wakings) arrive at a rest; every other visit is a manual read (her book,
-    # "choose Read"), so Delamere stays inside the ledger's rest allocation on every branch.
-    if not extra.get("TricksterDevice"):
-        extra.setdefault("ManualOnly", True)
+    # NM1 (coordinator allocation exception): every visit arrives at a rest (Q6 r2 had made the courtship manual reads from
+    # the mod menu, which a beta cannot rely on); nm1_delamere folds the spine into three deliveries (pairs).
     (SCENES if into is None else into).append(scene(
         id, title, "Delamere", min(chapters), "", nodes, requires=requires, forbids=forbids, delay=delay,
         last=max(chapters), Relationship="delamere", Chapters=sorted(set(chapters)), Remote=True, Kind=kind, **extra))

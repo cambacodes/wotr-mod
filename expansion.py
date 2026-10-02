@@ -84,6 +84,7 @@ from storylines import pacing_pp1
 from storylines import pacing_pp3
 from storylines import pacing_pp4
 from storylines import nm1_nocticula
+from storylines import nm1_delamere
 from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
@@ -465,6 +466,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(delamere_woods.SCENES))
     payload["Scenes"].extend(copy.deepcopy(delamere_fire.SCENES))
     delamere_trickster.integrate(payload)
+    nm1_delamere.integrate(payload)   # NM1: her visits at a rest, the spine folded into three deliveries
     # Kaylessa: a new relationship (kaylessa.md; 11-ROSTER-PLAN-2 §2): Shyka's timeline trade in the dead worlds, the amulet
     # swap in the living one, and the courtship under the tailor's awning (kaylessa_wasps, kaylessa_clearing).
     payload["Relationships"]["kaylessa"] = copy.deepcopy(kaylessa_trickster.RELATIONSHIP)
