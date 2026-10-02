@@ -492,6 +492,40 @@ internal static class ArueshalaeTricksterTests
         // No living text names an absent Sosiel as a witness of her count or her vigil.
         foreach (var id in new[] { T + "the_wound", P + "terms_again_chaplain" })
             check(!S(id).Nodes.Any(n => n.Text.Contains("Sosiel")), "Trk_Arueshalae_Sosiel: " + id + " needs Sosiel present without a guard.");
+        // NM1 (Sol CAN/INT): the bad day is a Drezen account (the squad, the chapel), never at the Nexus in Chapter 4, and never
+        // after BackToReality has released her.
+        const string nm1DrezenArea = "2570015799edf594daf2f076f2f975d8";
+        var nm1BadDay = S(T + "bad_day");
+        check(nm1BadDay.Chapters.SequenceEqual(new[] { 3, 5 }) && nm1BadDay.Areas.SequenceEqual(new[] { nm1DrezenArea }) && nm1BadDay.Forbids.Contains("arueshalae.changed"),
+            "Trk_Arueshalae_BadDay: the chapel account plays outside Drezen, in the Abyss, or after her release.");
+        var nm1BadNeeds = Program.Prerequisites(nm1BadDay).ToArray();
+        var nm1BadOk = Later(story, World(story, 3, nm1DrezenArea, nm1BadNeeds), nm1BadDay.DelayHours + 1);
+        var nm1BadChanged = Program.Copy(nm1BadOk); nm1BadChanged.Flags.Add("arueshalae.changed");
+        var nm1BadNexus = Later(story, World(story, 4, "", nm1BadNeeds), nm1BadDay.DelayHours + 1);
+        check(Rules.Available(story, nm1BadDay, nm1BadOk) && !Rules.Available(story, nm1BadDay, nm1BadChanged) && !Rules.Available(story, nm1BadDay, nm1BadNexus),
+            "Trk_Arueshalae_BadDay: availability (Drezen yes; released or at the Nexus no).");
+        // NM1 (Sol INT): the native companion pages are reconciled with a committed Arueshalae (E14d).
+        var nm1WanderEdit = story.NativeEpilogueEdits["f76713034f4087a4f80495971c47ca7b"];
+        var nm1DreamEdit = story.NativeEpilogueEdits["78ae1bdc3b0824b4ca2ed618782f1faa"];
+        var nm1Ending = World(story, 6, "", "trickster.ever", "arueshalae.committed");
+        var nm1Uncommitted = World(story, 6, "", "trickster.ever");
+        var nm1Back = World(story, 6, "", "trickster.ever", "arueshalae.committed", "sacrifice", "trickster.commander_back");
+        var nm1StayedDead = World(story, 6, "", "trickster.ever", "arueshalae.committed", "sacrifice");
+        check(nm1WanderEdit.Replacement == T + "epilogue.native_wander" && Rules.WhenHolds(nm1WanderEdit.When, nm1Ending) && !Rules.WhenHolds(nm1WanderEdit.When, nm1Uncommitted)
+              && Rules.IsNativeReplacement(story, S(nm1WanderEdit.Replacement)) && !S(nm1WanderEdit.Replacement).Nodes[0].Text.Contains("roam"),
+            "Trk_Arueshalae_NativeEnding: the committed Arueshalae still wanders Golarion on the native page.");
+        check(nm1DreamEdit.Replacement == T + "epilogue.native_dreams" && Rules.WhenHolds(nm1DreamEdit.When, nm1Back) && !Rules.WhenHolds(nm1DreamEdit.When, nm1StayedDead)
+              && !Rules.WhenHolds(nm1DreamEdit.When, nm1Uncommitted),
+            "Trk_Arueshalae_NativeEnding: the native page keeps her beloved dead after the Commander came back (or replaces a real death).");
+        // NM1 (Sol BEL): the daybook's first page is the prescription the Commander actually wrote.
+        var nm1Together = S(T + "epilogue.together").Nodes[0];
+        var nm1WatchEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_watch");
+        var nm1WantEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_want");
+        check(!nm1Together.Text.Contains("Watch people eat")
+              && Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("Watch people eat")) && !Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("burnt onions"))
+              && Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("burnt onions")) && !Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("Watch people eat"))
+              && !S(T + "the_eve").Nodes[0].Text.Contains("Watch people eat"),
+            "Trk_Arueshalae_Prescription: the daybook or the eve quotes the other intake's prescription.");
         Console.WriteLine("PASS: Arueshalae Trickster (Trk_Arueshalae_*): the Death Ward, the retired returns, the lair kill's closure, the chaplain, the treatment and her proposal, the arcade, and the retired court.");
     }
 }

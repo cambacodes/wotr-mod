@@ -243,7 +243,7 @@ session(NIGHTMARE, "The other kind of dream", 5, '"I\'m sorry I woke you."', [
 
 session(EVE, "Before Threshold", 5, '"When it comes, then."', [
     a("start", '''{n}The camp is very quiet tonight. Everyone knows the end of this war is out there somewhere ahead of the column, and everybody who has anything to say about it is saying it, in low voices, in the dark. She has found you on the edge of the lines with a lantern and the daybook, which is nearly full now.{/n}
-"I've been reading it back. From the beginning. 'Watch people eat. Three times a day.'" {n}She laughs softly.{/n} "It seems a very long time ago. I was so sure it was a joke."''',
+"I've been reading it back. From the beginning. Your prescription, on the first page, in my worst hand." {n}She laughs softly.{/n} "It seems a very long time ago. I was so sure it was a joke."''',
         c("Continue", "fear")),
     a("fear", '''"I'm afraid of the end of it." {n}She says it simply, the way she used to name a mark's weakness to her sisters: a fact, laid on the table.{/n} "Not only of dying. Of what's at the bottom of the Wound. Of the Abyss seeing me come back and remembering what I am, and calling, and me answering." {n}She closes the book.{/n}
 "So I want to ask you something, and not as your patient. If it calls me, when we get there, and I start to go, what's the treatment?"''',
@@ -258,8 +258,12 @@ session(EVE, "Before Threshold", 5, '"When it comes, then."', [
 # --- The epilogue page of the treatment (a committed Arueshalae; no system effects) ------------------------------
 
 SCENES.append(scene(T + "epilogue.together", "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}After the Worldwound was closed, Arueshalae kept a daybook for the rest of a very long life, and its first page, in a hand that had only just learned to be careful, read: "Watch people eat. Three times a day."{/n}''',
+    nar("page", '''{n}After the Worldwound was closed, Arueshalae kept a daybook for the rest of a very long life, in a hand that had only just learned to be careful.{/n}''',
         paragraphs=(
+            # NM1 (Sol BEL): the first page is the prescription the Commander actually wrote at the intake.
+            p('''{n}Its first page read: "Watch people eat. Three times a day."{/n}''', requires=(RX_WATCH,)),
+            p('''{n}Its first page was the first list: one thing a day that she wanted and that was not a person. The first of them, crossed out and written again, was burnt onions.{/n}''',
+              requires=(RX_WANT,), forbids=(RX_WATCH,)),
             p('''{n}She took a river stone with a white band round it to the sea, and let it go, and came back and said that was the first dream she was certain was hers.{/n}''',
               requires=(TEMPLE_LETTER,)),
             p('''{n}She learned every verse of the net-menders' song, and the Kenabres women taught it to their granddaughters with a line in it that had not been there before, about a stranger at the corner of the square.{/n}''',
@@ -311,5 +315,33 @@ for _scene in SCENES:
         _scene["Areas"] = [DREZEN_AREA]
 
 
+# NM1 (Sol INT): the native companion pages for Arueshalae, reconciled with a committed Arueshalae (E14d). Cue_0462
+# (f76713034f4087a4f80495971c47ca7b, the war over and her wandering just begun, Q3 not completed) and Cue_0461
+# (78ae1bdc3b0824b4ca2ed618782f1faa, the dream world where her beloved was alive, after the sacrifice) are replaced while
+# she is committed (the second only when the Commander came back); outside those states the native page plays. Cue_0458
+# (Q3 completed, the cottage) has a continuation, which E14d does not edit.
+COMPANIONS = "fec3b6f28610c8a48a239f148ed3ed60"
+PAGE = "e83fff8e997db8e439bf12e09225696a"
+WANDER = T + "epilogue.native_wander"
+DREAMS = T + "epilogue.native_dreams"
+SCENES.append(scene(WANDER, "", "ArueshalaeEpilogue", 6, "", [
+    nar("page", '''{n}The war was over, and Arueshalae's wandering was over with it. Desna's riddle, "And what do you dream about?", she answered in Drezen, at a table too small for the Commander's elbows, a little differently every night, and she never once said the answer was finished.{/n}''', c())],
+    requires=("trickster.ever", COMMITTED), last=99, Relationship="arueshalae"))
+SCENES.append(scene(DREAMS, "", "ArueshalaeEpilogue", 6, "", [
+    nar("page", '''{n}She still went into the dream world, but less each year. The one she would have looked for there was alive, and snored, and stole the blankets, and she found she preferred that to any dream.{/n}''', c())],
+    requires=("trickster.ever", COMMITTED, "trickster.commander_back"), last=99, Relationship="arueshalae"))
+NATIVE_EPILOGUE_EDITS = {
+    "f76713034f4087a4f80495971c47ca7b": dict(Page=PAGE, Sequence=COMPANIONS, Key="fa1468ba-9679-4805-9dd4-c71997aa4e7f",
+                                             Replacement=WANDER, When=[[COMMITTED, "trickster.ever"]]),
+    "78ae1bdc3b0824b4ca2ed618782f1faa": dict(Page=PAGE, Sequence=COMPANIONS, Key="411ef2f1-5168-455f-99b0-ca33960678c5",
+                                             Replacement=DREAMS, When=[[COMMITTED, "trickster.ever", "trickster.commander_back"]]),
+}
+
+
 def integrate(payload):
-    """Scenes only; keys bind on demand through trickster_world."""
+    """Scenes only; keys bind on demand through trickster_world. NM1: the reconciled native companion pages (E14d)."""
+    edits = payload.setdefault("NativeEpilogueEdits", {})
+    for cue, edit in NATIVE_EPILOGUE_EDITS.items():
+        if cue in edits and edits[cue] != edit:
+            raise ValueError("arueshalae_rounds: conflicting native epilogue edit " + cue)
+        edits[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in edit.items()}
