@@ -47,6 +47,11 @@ try {
     if ($LASTEXITCODE) { throw 'Harem schedule lint tests failed' }
     & $pythonPath tools/harem_schedule_lint.py --story development/Story.json
     if ($LASTEXITCODE) { throw 'Harem schedule lint failed (tools/harem-schedule.json)' }
+    # Harem smoothing metadata + form audit (doc 16 section 8c.3; data only). The form cap is reported, not enforced (ruling pending).
+    & $pythonPath -m unittest tests.test_harem_smoothing
+    if ($LASTEXITCODE) { throw 'Harem smoothing lint tests failed' }
+    & $pythonPath tools/harem_smoothing_lint.py --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Harem smoothing lint failed (tools/harem-smoothing.json)' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
     if ($LASTEXITCODE) { throw 'Narrator build failed' }
     & $dotnetPath run --project tests/RulesTests.csproj -c Release -- development/Story.json
