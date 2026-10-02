@@ -1402,6 +1402,7 @@ hub(ONE_SHORT, "One short", '"She\'s counting again, isn\'t she?"', [
 EGG_BILL = "devarra.trickster.cost.egg_withheld"
 SMALLEST = T + "smallest_egg"
 N_CONFESSED = "nidalynn.trickster.confessed"
+N_STRAW = "nidalynn.trickster.egg.straw"   # NM1: the twelfth was left in the druids' straw and kept with a lie on the slate
 
 hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."', [
     teller("start", '''"The whole ridge heard it. A hatchling's first scream carries further than you would credit; I heard it in my bed, and I am a long way from the lower town." {n}He does not smile.{/n} "She came down in the night and lay along the east wall above the old kiln until the sky went grey, and looked at it, and did not go closer. The sentries did not dare wake you. This morning she told me to fetch you. She did not say your title. She said 'the thief'."''',
@@ -1409,17 +1410,19 @@ hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."
         c("Continue", "climb_free", requires=(FLOWN,))),
     dv("climb", '''{n}She does not lift her head from the sill when you come up the stair. Her eye is on the lower town, on one thin line of smoke under the east wall.{/n} "Twelve." {n}Her voice is very quiet.{/n} "I laid twelve, in the dark under the Sanctum, and I counted them every day that Xanthir's toys stood over them with their fists up. I died counting them. I got up counting them."''',
        c("Continue", "omelet", requires=("eggs.omelet",)),
-       c("Continue", "druids", requires=("eggs.druids",), forbids=("eggs.omelet",)),
+       c("Continue", "druids", requires=("eggs.druids",), forbids=("eggs.omelet", N_STRAW)),
        c("Continue", "vault", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet")),
        c("Continue", "destroyed", requires=("eggs.destroyed",)),
-       c("Continue", "eleven", forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed"))),
+       c("Continue", "eleven", forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed")),
+       c("Continue", "druids_straw", requires=("eggs.druids", N_STRAW), forbids=("eggs.omelet",))),
     dv("climb_free", '''{n}She does not lift her head from the sill when you come up the stair. Her eye is on the lower town, on one thin line of smoke under the east wall.{/n} "Twelve." {n}Her voice is very quiet.{/n} "I laid twelve, in the dark under the Sanctum, and I counted them every day that Xanthir's toys stood over them with their fists up. I knew how many lay under the fists the night the charm called me. I have counted them since."''',
        c("Continue", "omelet", requires=("eggs.omelet",)),
-       c("Continue", "druids", requires=("eggs.druids",), forbids=("eggs.omelet",)),
+       c("Continue", "druids", requires=("eggs.druids",), forbids=("eggs.omelet", N_STRAW)),
        c("Continue", "vault", requires=("eggs.project",), forbids=("eggs.druids", "eggs.omelet")),
        c("Continue", "destroyed", requires=("eggs.destroyed",)),
        c("Continue", "eleven", forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed", COLLECTED)),
-       c("Continue", "kept_eleven", requires=(COLLECTED,), forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed"))),
+       c("Continue", "kept_eleven", requires=(COLLECTED,), forbids=("eggs.omelet", "eggs.druids", "eggs.project", "eggs.destroyed")),
+       c("Continue", "druids_straw", requires=("eggs.druids", N_STRAW), forbids=("eggs.omelet",))),
     dv("kept_eleven", '''"Eleven on my mountain, in my fleeces, under my own chin." {n}Her claws close on the stone.{/n} "And one I found last night, screaming, in a lime-kiln, because you had it in your hearth, under a coat of ash, and called it a rock."''',
        c("Continue", "stole")),
     dv("omelet", '''"Eleven your city ate. I have smelled every one of them on its breath." {n}Her claws close on the stone.{/n} "And one it did not eat, because you had it in your hearth, under a coat of ash, and called it a rock."''',
@@ -1453,6 +1456,9 @@ hub(SMALLEST, "The smallest egg", '"She heard it too, didn\'t she? At the kiln."
        c("[Go down the mountain.]")),
     dv("named", '''"Good." {n}She puts her head back on the sill, and looks at the kiln's smoke again.{/n} "Go down. Tell the silver that the grey one knows, and is not coming. Not for the child." {n}A long, hot breath.{/n} "For the thief, one day."''',
        c("[Go down the mountain.]")),
+    # NM1: the druids' door (nidalynn eggs.straw): they left the smallest in the straw, and the Commander took it after.
+    dv("druids_straw", '''"Eleven the golden liars carried off in a handcart." {n}Her claws close on the stone.{/n} "And one they left behind in the straw for the bedding, and you carried it up under your coat, and put it in your hearth under a coat of ash, and called it a rock."''',
+       c("Continue", "stole")),
 ], requires=("trickster.ever", RETURNED, N_CONFESSED), forbids=(SMALLEST,), delay=24)
 
 
