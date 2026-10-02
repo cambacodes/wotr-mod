@@ -764,7 +764,7 @@ def integrate(payload):
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     rel["TricksterAccess"] = {k: dict(v) for k, v in RELATIONSHIP_PATCH["TricksterAccess"].items()}
     rel["Guidance"] += (" On the Trickster path, an imprisoned Nurah may find her pardon better than it looked; a dead "
-                        "one may turn up for sale in the Fleshmarkets of Alushinyrra; and one who ran may find you have "
+                        "one stays dead, and the Ledger says so; and one who ran may find you have "
                         "written in her book.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     # A printer was paid to keep the dedication: the early purse (chosen at the cell), or a pedlar's run bought and its
