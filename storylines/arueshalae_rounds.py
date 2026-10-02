@@ -323,18 +323,14 @@ for _scene in SCENES:
 COMPANIONS = "fec3b6f28610c8a48a239f148ed3ed60"
 PAGE = "e83fff8e997db8e439bf12e09225696a"
 WANDER = T + "epilogue.native_wander"
-DREAMS = T + "epilogue.native_dreams"
 SCENES.append(scene(WANDER, "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}The war was over, and Arueshalae's wandering was over with it. Desna's riddle, "And what do you dream about?", she answered in Drezen, at a table too small for the Commander's elbows, a little differently every night, and she never once said the answer was finished.{/n}''', c())],
     requires=("trickster.ever", COMMITTED), last=99, Relationship="arueshalae"))
-SCENES.append(scene(DREAMS, "", "ArueshalaeEpilogue", 6, "", [
-    nar("page", '''{n}She still went into the dream world, but less each year. The one she would have looked for there was alive, and snored, and stole the blankets, and she found she preferred that to any dream.{/n}''', c())],
-    requires=("trickster.ever", COMMITTED, "trickster.commander_back"), last=99, Relationship="arueshalae"))
+# Harness 2026-10-02: the Cue_0461 (78ae1bdc) dream-world edit failed the runtime cue-policy contract and degraded the
+# whole relationship in game, so it is withdrawn; only the Cue_0462 wander page is reconciled (known issue: dream page).
 NATIVE_EPILOGUE_EDITS = {
     "f76713034f4087a4f80495971c47ca7b": dict(Page=PAGE, Sequence=COMPANIONS, Key="fa1468ba-9679-4805-9dd4-c71997aa4e7f",
                                              Replacement=WANDER, When=[[COMMITTED, "trickster.ever"]]),
-    "78ae1bdc3b0824b4ca2ed618782f1faa": dict(Page=PAGE, Sequence=COMPANIONS, Key="411ef2f1-5168-455f-99b0-ca33960678c5",
-                                             Replacement=DREAMS, When=[[COMMITTED, "trickster.ever", "trickster.commander_back"]]),
 }
 
 

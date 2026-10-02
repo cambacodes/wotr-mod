@@ -506,7 +506,6 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_BadDay: availability (Drezen yes; released or at the Nexus no).");
         // NM1 (Sol INT): the native companion pages are reconciled with a committed Arueshalae (E14d).
         var nm1WanderEdit = story.NativeEpilogueEdits["f76713034f4087a4f80495971c47ca7b"];
-        var nm1DreamEdit = story.NativeEpilogueEdits["78ae1bdc3b0824b4ca2ed618782f1faa"];
         var nm1Ending = World(story, 6, "", "trickster.ever", "arueshalae.committed");
         var nm1Uncommitted = World(story, 6, "", "trickster.ever");
         var nm1Back = World(story, 6, "", "trickster.ever", "arueshalae.committed", "sacrifice", "trickster.commander_back");
@@ -514,9 +513,8 @@ internal static class ArueshalaeTricksterTests
         check(nm1WanderEdit.Replacement == T + "epilogue.native_wander" && Rules.WhenHolds(nm1WanderEdit.When, nm1Ending) && !Rules.WhenHolds(nm1WanderEdit.When, nm1Uncommitted)
               && Rules.IsNativeReplacement(story, S(nm1WanderEdit.Replacement)) && !S(nm1WanderEdit.Replacement).Nodes[0].Text.Contains("roam"),
             "Trk_Arueshalae_NativeEnding: the committed Arueshalae still wanders Golarion on the native page.");
-        check(nm1DreamEdit.Replacement == T + "epilogue.native_dreams" && Rules.WhenHolds(nm1DreamEdit.When, nm1Back) && !Rules.WhenHolds(nm1DreamEdit.When, nm1StayedDead)
-              && !Rules.WhenHolds(nm1DreamEdit.When, nm1Uncommitted),
-            "Trk_Arueshalae_NativeEnding: the native page keeps her beloved dead after the Commander came back (or replaces a real death).");
+        check(!story.NativeEpilogueEdits.ContainsKey("78ae1bdc3b0824b4ca2ed618782f1faa"),
+            "Trk_Arueshalae_NativeEnding: the withdrawn Cue_0461 edit (failed the runtime cue-policy contract) is back.");
         // NM1 (Sol BEL): the daybook's first page is the prescription the Commander actually wrote.
         var nm1Together = S(T + "epilogue.together").Nodes[0];
         var nm1WatchEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_watch");
