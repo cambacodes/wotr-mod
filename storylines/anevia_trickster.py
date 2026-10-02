@@ -708,6 +708,22 @@ TIRABADE_PARAGRAPH = p("They had both been lost once, one to Iz and one to the r
                        "routes that did not bear close inspection. At the Tirabade table there were three chairs, and "
                        "Anevia's rule for the third was the same as for every door: knock first.",
                        requires=(RETURNED, I_RET))
+# Sol pol INT: the registered "wife killed" ending, for an Anevia who came back but never renewed her terms. Her no at
+# the gate was "not like this", not never; exactly one of these (with the independent module's never-returned closure)
+# says where it was left. The muster and unsigned-letter paragraphs follow from PARAGRAPHS.
+WIFE_KILLED_RETURNED = (
+    p("Her last word at the gate had been \"Come back when you can knock,\" and she had meant both halves of it. The knock "
+      "she wanted was Iz, said plainly in the Commander's own voice, in the yard where Beth's knights could hear it. It "
+      "was never said there. She did not shut the gate, and she did not forgive a word of it.",
+      requires=(RETURNED, DECLINED), forbids=(PENANCE,)),
+    p("She called the muster what it was: the price of the gate, not of the door. She held to that. The lantern stayed on "
+      "her side of the line, the Commander still knew how to knock, and she never once said she would not answer.",
+      requires=(RETURNED, DECLINED, PENANCE)),
+    p("She came back as far as the Drezen gate with Beth's name still the first thing out of her mouth. Whatever passed "
+      "between them afterward, she never let Iz be told as an accident, and never let her coming back be mistaken for a "
+      "pardon.",
+      requires=(RETURNED,), forbids=(DECLINED,)),
+)
 
 
 def integrate(payload):
@@ -745,6 +761,8 @@ def integrate(payload):
         if s["Id"] in WITH_PARAGRAPHS:
             for node in s["Nodes"]:
                 if all(ch.get("Next") is None for ch in node["Choices"]):
+                    if s["Id"] == "anevia.ending_wife_killed":
+                        node.setdefault("Paragraphs", []).extend(dict(x) for x in WIFE_KILLED_RETURNED)
                     node.setdefault("Paragraphs", []).extend(dict(x) for x in PARAGRAPHS)
         if s.get("Relationship") == "tirabade" and s["Id"] in TIRABADE_ENDINGS:
             s.setdefault("ForbidOverrides", {}).update({"irabeth_dead": I_RET, "anevia_gone": RETURNED})
