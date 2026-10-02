@@ -22,6 +22,8 @@ ENTRY API (for the later pass; see table_entry, invitation, word_made_true)
 
 STANCE HOOKS (05 §2; none of the stance/enmity/attitude flags is set in this pass)
   <rel>.harem.eligible            Derived, for every romance route (below).
+  arueshalae.redeemed | arueshalae.corrupted   Derived (16 §3 / §8c item 1): her personality branch, for the pair rows
+      (3a/13/9-11 good: Require redeemed AND Forbid corrupted; 3b/9-11 lover: Require corrupted). See ARUESHALAE_BRANCH.
   <rel>.harem.stance.joined | .tolerated, <rel>.harem.joined_late, <rel>.harem.enmity.<other>   reserved.
   minagho_chivarro.harem.stance.<minagho|chivarro>.<joined|tolerated> (and enmity/attitude the same way)   reserved.
 """
@@ -88,6 +90,39 @@ EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],
                   # Wenduag: her native romance kept to the end (WenduagRomance_Finished, latched) makes her a partner.
                   "wenduag": [["wenduag.romance_finished.latched"]]}
 PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
+
+# Arueshalae's branch key (16 §3, §8c item 1; Writer/drafts/sol/review-harem-arueshalae-states). Two POSITIVE keys, never
+# absence: an unknown state selects neither (the fail-safe is silence, never the wrong personality). Story.Derived syntax:
+# an OR of AND-groups, completed to a fixed point by Rules.Complete. Existing sources only; nothing new is bound or set.
+#   redeemed: the native release (arueshalae.changed: BackToReality Cue_0018/Cue_0025 seen, or the Ch5 BestEnding started),
+#     and the route's authored good outcomes: the Aftertaste answer (good return), the legacy torn-gift return (the torn
+#     gift is set BEFORE the return, so both are required), and the chaplain appointment on the failed branch.
+#   corrupted: the native evil recruitment (EvilArushaRecruited, read while Playing), the legacy queen-paid return (the
+#     shared `returned` flag alone is ambiguous, so it pairs with the price), the legacy evil reunion, and the house call of
+#     the recruited fallen (any answer, a refusal included).
+# The two keys hold history and can BOTH be true (good history, then corruption). Corruption wins: every good consumer
+# Requires redeemed AND Forbids corrupted. "redeemed" names the good personality, not Desna's completed transformation:
+# touch and release rules keep reading arueshalae.changed. Classification grants no seat, romance, attitude or progression.
+# Known gap (reported): a merely recruited good Arueshalae with none of these outcomes stays unknown (no native good-
+# recruitment reader is bound), and an old good-return save holding only `returned` stays unknown until the Aftertaste.
+ARUESHALAE_REDEEMED = "arueshalae.redeemed"
+ARUESHALAE_CORRUPTED = "arueshalae.corrupted"
+_AP = "arueshalae.trickster."
+ARUESHALAE_BRANCH = {
+    ARUESHALAE_REDEEMED: [
+        ["arueshalae.changed"],
+        [_AP + "aftertaste"],
+        [_AP + "returned", _AP + "cost.gift_torn"],
+        [_AP + "cost.chaplain"],
+    ],
+    ARUESHALAE_CORRUPTED: [
+        ["arueshalae.evil_recruited"],
+        [_AP + "returned", _AP + "cost.nocticula_debt"],
+        [_AP + "returned", _AP + "cost.nocticula_favour"],
+        [_AP + "reunited"],
+        [_AP + "fallen.house_call"],
+    ],
+}
 
 SCENES = []
 ENTRIES = []          # table_entry() registrations (the later pass)
@@ -217,7 +252,7 @@ def secret(key, title, text, portrait="", witnesses=(), risk="low"):
 # --- Integration ------------------------------------------------------------------------------------------------------
 
 def derived(payload):
-    """<rel>.harem.eligible for every partner, and household.any_eligible."""
+    """<rel>.harem.eligible for every partner, household.any_eligible, and Arueshalae's branch keys."""
     rels = payload["Relationships"]
     have = payload.get("Derived", {})
     out = {}
@@ -230,6 +265,8 @@ def derived(payload):
         groups += EXTRA_ELIGIBLE.get(rel, [])
         out[eligible(rel)] = groups
     out[ANY] = [[eligible(rel)] for rel in PARTNERS]
+    if "arueshalae" in rels:
+        out.update(copy.deepcopy(ARUESHALAE_BRANCH))
     return out
 
 

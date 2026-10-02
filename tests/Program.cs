@@ -297,6 +297,7 @@ internal static class Program
         MailbagTests.Run(Check);
         BookTests.Run(story, Check);
         HouseholdTests.Run(story, Check);
+        ArueshalaeBranchTests.Run(story, Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
         ArankaContinuation();
