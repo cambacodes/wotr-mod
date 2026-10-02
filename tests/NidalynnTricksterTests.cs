@@ -449,6 +449,15 @@ internal static class NidalynnTricksterTests
               && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("never paid")),
             "Trk_Nidalynn_Bill: her page says the bill was never paid after Devarra named it at the rift.");
 
+        // NM1 (Sol INT/BEL): after a rejection Devarra's collected bill reads as the Commander's alone; no kiln kept warm.
+        var apartNode = S(P + "epilogue.apart").Nodes[0];
+        var apartWorld = World(story, 6, "trickster.ever", P + "met", Closed, Bill, "devarra.lastcall.called");
+        var keptWorld = World(story, 6, "trickster.ever", P + "met", Committed, Bill, "devarra.lastcall.called");
+        check(!Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("banked high"))
+              && Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("alone"))
+              && Rules.VisibleParagraphs(S(P + "epilogue.salt").Nodes[0], keptWorld).Any(x => x.Text.Contains("banked high")),
+            "Trk_Nidalynn_ApartBill: a rejected Commander still has her kiln kept warm, or the partner lost it.");
+
         // NM1 (coordinator ruling; ledger 2/0/1, her Chapter 4 letter stands): her visits are entries on her own step. At a rest
         // only the device event and the grey stone (Chapter 3), the kiln letter (Chapter 4) and her welcome home (Chapter 5).
         var restIds = mine.Where(Rules.IsMailbagLetter).Select(s => s.Id).OrderBy(x => x, StringComparer.Ordinal).ToArray();

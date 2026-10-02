@@ -453,7 +453,10 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. Once a year a scale the colour of eggshell was left on the Commander's windowsill, the way a creditor leaves a card. Nidalynn said that was only manners, and that dragons have excellent manners when they are owed something.{/n}''', requires=(DV_BILL,),
       forbids=("devarra.lastcall.called",)),
     # PP10 (Sol COX): Devarra named her bill at the rift (her Last Call coda), so the bill is being paid, not standing.
-    p('''{n}The grey dragon named her bill for the smallest egg at the rift, and it was not the hatchling and not the silver: it was a month of the Commander's every year, on her ridge. Nidalynn kept the kiln banked high every winter the Commander was away, and fed the Commander for a week when the Commander came back thinner, and said nothing about it at all.{/n}''', requires=(DV_BILL, "devarra.lastcall.called")),
+    p('''{n}The grey dragon named her bill for the smallest egg at the rift, and it was not the hatchling and not the silver: it was a month of the Commander's every year, on her ridge. Nidalynn kept the kiln banked high every winter the Commander was away, and fed the Commander for a week when the Commander came back thinner, and said nothing about it at all.{/n}''', requires=(DV_BILL, "devarra.lastcall.called"),
+      forbids=(CLOSED, LEFT_WITH_IT, LIE_KEPT)),   # NM1 (Sol INT/BEL): the kiln kept warm is a partner's, never after she left
+    p('''{n}The grey dragon named her bill for the smallest egg at the rift, and it was not the hatchling and not the silver: it was a month of the Commander's every year, on her ridge. The Commander paid it, every year, alone. Nobody in Drezen kept a fire for the Commander's return.{/n}''',
+      requires=(DV_BILL, "devarra.lastcall.called"), any_groups=[[CLOSED, LEFT_WITH_IT, LIE_KEPT]]),
 )
 
 epilogue("salt", '''{n}Nidalynn stayed in Drezen after the war, in the old lime-kiln below the east wall, which she roofed with slate and never once let cool. The refugees who stayed called her the widow long after she stopped looking like one, and brought her their disputes, their broken bones and their bread, and she fed every one of them before she let them talk.{/n}

@@ -52,7 +52,7 @@ MOVES = {
     "wall.wings": ("chosen", '"Where is she?"',
                    '''{n}"Learning," she says. "Come and watch at dusk. The east wall, above the kiln."{/n}''', []),
     "ridge.first_flight": ("chosen", '"Is she ready to fly?"',
-                           '''{n}"Any day," she says. "Not today." She sends you home.{/n}''', []),
+                           '''{n}"Any day," she says. "Not today." She sends you home. Three days pass.{/n}''', []),
     "kiln.the_heel": ("chosen", '"The loaf is still on the shelf."',
                       '''{n}She gets up without a word and goes down to the kiln, and you follow her.{/n}''',
                       [("She knows you have come in.", "She knows you have followed her in.")]),
