@@ -10,10 +10,10 @@ is the unnamed CR28M_BalorMythicFighter).
 """
 from story_format import c, n, scene
 from storylines.arueshalae_trickster import (AFTERTASTE, ALLY, CHAPLAIN, CLOSED, COMMITTED, DEAD, DEBT, DREZEN, EVIL_DEAD,
-                                             EVIL_UNIT, FAVOUR, HUB, P, RECRUITED, RETURNED, REUNITED, TAVERN_FAILED, DREZEN_PLACES,
-                                             TAVERN_PRESENCE, UNANSWERED, UNIT, YARD_PRESENCE)
+                                             EVIL_UNIT, FAVOUR, HUB, P, RECRUITED, RETURNED, REUNITED, SCROLL, TAVERN_FAILED,
+                                             DREZEN_PLACES, TAVERN_PRESENCE, UNANSWERED, UNIT, WARD_HELD, YARD_PRESENCE)
 from storylines.arueshalae_chapel import CENSER, COUNTING
-from storylines.arueshalae_treatment import CURE, CURED, ELYSIUM, INTAKE, MORNING, RELAPSE, RX_WANT, T, TOUCHED
+from storylines.arueshalae_treatment import CURE, CURED, DREZEN_AREA, ELYSIUM, INTAKE, MORNING, RELAPSE, RX_WANT, T, TOUCHED
 
 SCENES = []
 BAKERY = T + "the_bakery"
@@ -77,25 +77,27 @@ hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
 # --- The dose in the Abyss (Chapter 4) ---------------------------------------------------------------------
 
 hub(ABYSS_TOUCH, "The dose, adjusted", 5, '"You\'re thinking about the Abyss again."', [
-    a("start", '''{n}Back in Drezen, she brings it up without warning, and the night comes back whole: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}
-"Everything is worse here." {n}She is sitting as far from the camp's fire as she can and still be inside the pickets.{/n} "The air here tastes of it. Every scream from the dark tastes of it. It's like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}
-"I haven't asked. I've been very good. I haven't asked for your hand once since we crossed. I didn't think I could stop, here, if I started."''',
-        c('[Hold out your hand] "Doctor\'s orders. The dose is adjusted for altitude."', "take"),
-        c('"Then don\'t ask. I\'ll sit here instead."', "sit", flags=(ABYSS_TOUCH,))),
-    nar("take", '''{n}She stares at the hand. Then she takes it with both of hers, too hard, and the cold comes through you like a river breaking a dam.{/n}''',
+    a("start", '''{n}Back in Drezen, she brings it up without warning, sitting on the citadel steps with her wings drawn in, and the night comes back whole as she tells it: the camp at the edge of the Abyss, the pickets, the fire she would not sit near.{/n}
+"Everything was worse there. The air tasted of it. Every scream from the dark tasted of it. It was like being a drunk in a city made of wine." {n}She looks at your hand, and away, and back.{/n}
+"I never asked for your hand out there. Not once, from the crossing to the day we came back. I didn't think I could stop, there, if I started. And I've been home a week, and I still don't know whether I left it behind or carried it back with me in my skin."''',
+        c('[Hold out your hand] "Doctor\'s orders. The dose is adjusted for altitude."', "take", requires=(TOUCHED,), forbids=(TOUCHED,)),   # retired
+        c('"Then don\'t ask. I\'ll sit here instead."', "sit", flags=(ABYSS_TOUCH,)),
+        c('[Spend a Scroll of Death Ward: send a page for the chaplain, and hold out your hand once he has read it over you] "Doctor\'s orders. The dose is adjusted for altitude."',
+          "take", requires=(WARD_HELD,), remove_item=SCROLL)),
+    nar("take", '''{n}The chaplain comes down to the steps, breaks the seal, reads the ward over you, and goes back up without a word. She stares at the hand, and at the ash of the scroll on your sleeve. Then she takes it with both of hers, too hard, the way a drowning woman takes a rope.{/n}''',
         c("Continue", "cure", requires=(CURED,)),
         c("Continue", "paid", forbids=(CURED,))),
-    nar("cure", '''{n}It is not the gentle tide of Drezen. It is a flood. The star-candle you lit at dusk takes the first of it and goes out like a pinched wick, and the rest comes on with nothing to stop it, and for two long breaths you pay it straight, and she feels you paying and does not let go.{/n}
-{n}Then she does. She drops your hand as if it were a coal and sits there panting.{/n}''',
+    nar("cure", '''{n}Nothing comes out of you. The ward holds. But you can feel what she is doing on the other side of it: pulling, hard, the way she never pulled before the crossing, a flood throwing itself against a door that will not open. She feels the door, and does not let go. She keeps pulling.{/n}
+{n}Then she does let go. She drops your hand as if it were a coal and sits there panting.{/n}''',
         c("Continue", "after")),
-    nar("paid", '''{n}It is not the gentle cold of Drezen. It is a flood, and you have nothing to stop it with but your own stubbornness, and your vision goes grey at the edges almost at once. You hold on for one breath. For two.{/n}
-{n}She lets go before the third, and catches you as you fold, and holds you by the shoulders with her face white as salt.{/n}''',
+    nar("paid", '''{n}Nothing comes out of you. The ward holds. But you can feel her on the other side of it, pulling, a flood against a shut door, and she feels the door, and pulls harder, and keeps pulling, for one breath, for two.{/n}
+{n}She lets go before the third, and holds you by the shoulders with her face white as salt, as if you were the one who had nearly drowned.{/n}''',
         c("Continue", "after")),
-    a("after", '''"Too much. That was too much. I felt it, I felt how much I could take here, and I wanted all of it." {n}She is shaking.{/n}
-"You were right to adjust the dose, doctor. Adjust it down. Down to nothing, until we're home." {n}She sits back.{/n} "Or I'll take you. Here, in the dark, with the Abyss singing in my ears. I'll take you and I'll be glad, and then I'll never be anything else again."''',
-        c('"Down to nothing, until we\'re home."', "home", flags=(ABYSS_TOUCH,))),
-    a("sit", '''{n}You sit down next to her in the dark, at the edge of the pickets, not touching. After a while she starts to talk, very quietly, about the bakery and the cat and the net-menders' song, as if reciting a list of things to hold on to. You let her. You are what the Abyss cannot give her: someone sitting there who wants nothing.{/n}''', c()),
-    a("home", '''"Until we're home." {n}She smiles, and it is the smile of someone very tired.{/n} "Drezen isn't home. Nothing's home. I've never had one." {n}She shrugs.{/n} "But I know which way it is from here. That's new too."''', c()),
+    a("after", '''"Too much. I tried to take too much. There was a ward on you and I knew it, and I tried anyway. I brought it home with me, Commander. Whatever I was out there, it came back across the Wound in my skin, and I felt how much I could take, and I wanted all of it." {n}She is shaking.{/n}
+"You were right to adjust the dose, doctor. Adjust it down. Down to nothing, until it's gone out of me again." {n}She sits back.{/n} "Or one night I'll take you. Here, in Drezen, with the Abyss still singing in my ears. Ward or no ward, I'll find the minute it runs out, and I'll be glad, and then I'll never be anything else again."''',
+        c('"Down to nothing, until it passes."', "home", flags=(ABYSS_TOUCH,))),
+    a("sit", '''{n}You sit down next to her on the steps, not touching. After a while she starts to talk, very quietly, about the bakery and the cat and the net-menders' song, as if reciting a list of things to hold on to. You let her. You are what the Abyss never gave her: someone sitting there who wants nothing.{/n}''', c()),
+    a("home", '''"Until it passes." {n}She smiles, and it is the smile of someone very tired.{/n} "You say that as if you knew it would. I don't. But I'll count the days, and you'll ask me every morning, and one morning I'll say it has." {n}She shrugs.{/n} "Drezen isn't home. Nothing's ever been home. But I know which way it is from here. That's new too."''', c()),
 ], (TOUCHED,), delay=24, chapters=(5,))
 
 
@@ -119,16 +121,16 @@ hub(BAD_DAY, "Symptoms", 3, '"Arueshalae?"', [
 # --- After the yes: a first quarrel ---------------------------------------------------------------------------
 
 hub(QUARREL, "Second opinion", 5, '"You\'re angry with me."', [
-    a("start", '''"Yes. I am. You walked into that arrow as if it were weather, and I had to stand there and smell you bleed." {n}She has her arms folded and her chin up.{/n}
-"You went into the siege lines alone yesterday. Without telling anyone. Without telling me. You came back with an arrow in your shoulder and a joke about it." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take a life from anybody. And you walk out and offer yours to the first demon with a bow, as if it were a cheap thing."''',
+    a("start", '''"Yes. I am." {n}She has her arms folded and her chin up, and the quartermaster's ledger under one of them.{/n}
+"I counted the seals. Every seal I've watched the chaplain break over you since the procedure, every one of them so that I could hold your hand for seven minutes. And then I went to the scroll-sellers and asked the price, the way I used to price a mark's jewels." {n}Her voice shakes.{/n} "I have spent this whole war learning how not to take anything from anybody. And you've been paying for me by the minute, and you never once told me the sum."''',
         c("Continue", "fear")),
-    a("fear", '''"Do you know what I thought, when they brought you in? Not 'will they live'. I thought: if they die, I'll have to learn how to be without them, and I'm so bad at learning, I've been learning for years, I haven't got the time." {n}She is crying now, and furious about it.{/n}
-"So yes. I'm angry. I'm going to be angry for at least a day. And you're going to let me, and you're not going to make a joke about it, and tomorrow you're going to tell me before you do something stupid."''',
+    a("fear", '''"Do you know what I thought, when I added it up? Not 'how kind'. I thought: that's a sergeant's pay, gone in the time it takes a candle to drip. That's bread for a street of the refugee quarter. That's what Lady Vellexia's guests spent to sit at her table, and she ate them anyway." {n}She is crying now, and furious about it.{/n}
+"So yes. I'm angry. I'm going to be angry for at least a day. And you're going to let me, and you're not going to make a joke about it, and from now on you're going to tell me before you buy another, so that I can say no."''',
         c('"I\'ll tell you. Before. Every time."', "promise", flags=(QUARREL,)),
-        c('"I can\'t promise that. It\'s a war, and I\'m the Commander."', "cant", flags=(QUARREL,))),
-    a("promise", '''"Every time." {n}She glares at you through her tears.{/n} "You say that about everything. Every time. It's the most frightening thing you say." {n}Then she sits down next to you, hard, and leans her head on your good shoulder.{/n} "I'm still angry. This is me being angry. Don't move."''', c()),
-    a("cant", '''"No. I know you can't." {n}She wipes her face.{/n} "That's what makes it a real quarrel, I suppose. In the Upper City we never quarrelled. We just waited until someone was asleep." {n}She sits down, not next to you, but not far.{/n} "I'm going to be angry for two days, then. And afterwards I'll still be here. That's new too."''', c()),
-], (MORNING,), delay=48, chapters=(5,))
+        c('"No. It\'s my coin, and it\'s my hand. I\'ll spend both as I like."', "cant", flags=(QUARREL,))),
+    a("promise", '''"Every time." {n}She glares at you through her tears.{/n} "You say that about everything. Every time. It's the most frightening thing you say." {n}Then she sits down next to you, hard, and leans her head on your shoulder, on the cloth, the careful way.{/n} "I'm still angry. This is me being angry. Don't move."''', c()),
+    a("cant", '''"No. I know you won't." {n}She wipes her face.{/n} "That's what makes it a real quarrel, I suppose. In the Upper City we never quarrelled. We just waited until someone was asleep." {n}She sits down, not next to you, but not far.{/n} "I'm going to be angry for two days, then. And afterwards I'll still be here, and I'll still take your hand when you've paid for it, and I'll hate that I do. That's new too."''', c()),
+], (MORNING, CURED), delay=48, chapters=(5,))   # Sol r1 BEL: the quarrel is over the scrolls the player actually bought
 
 
 # --- The chaplain: a wedding ----------------------------------------------------------------------------
@@ -201,6 +203,9 @@ tavern(BOYS, "The boys", '"Your gang. At the lair."', [
 for _scene in SCENES:
     if _scene["Id"] in (BAKERY, ABYSS_TOUCH, HUNDRED, WEDDING) and ELYSIUM not in _scene["Forbids"]:
         _scene["Forbids"].append(ELYSIUM)
+    # Sol verify (2026-10-01): the Abyss is told on the citadel steps, with the chaplain within call: Drezen only.
+    if _scene["Id"] == ABYSS_TOUCH:
+        _scene["Areas"] = [DREZEN_AREA]
 
 
 def integrate(payload):
