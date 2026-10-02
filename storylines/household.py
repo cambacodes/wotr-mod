@@ -22,6 +22,8 @@ ENTRY API (for the later pass; see table_entry, invitation, word_made_true)
 
 STANCE HOOKS (05 §2; none of the stance/enmity/attitude flags is set in this pass)
   <rel>.harem.eligible            Derived, for every romance route (below).
+  arueshalae.redeemed | arueshalae.corrupted   Derived (16 §3 / §8c item 1): her personality branch, for the pair rows
+      (3a/13/9-11 good: Require redeemed AND Forbid corrupted; 3b/9-11 lover: Require corrupted). See ARUESHALAE_BRANCH.
   <rel>.harem.stance.joined | .tolerated, <rel>.harem.joined_late, <rel>.harem.enmity.<other>   reserved.
   minagho_chivarro.harem.stance.<minagho|chivarro>.<joined|tolerated> (and enmity/attitude the same way)   reserved.
 """
@@ -88,6 +90,53 @@ EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],
                   # Wenduag: her native romance kept to the end (WenduagRomance_Finished, latched) makes her a partner.
                   "wenduag": [["wenduag.romance_finished.latched"]]}
 PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
+
+# Arueshalae's branch key (16 §3, §8c item 1; Writer/drafts/sol/review-harem-arueshalae-states). Two POSITIVE keys, never
+# absence: an unknown state selects neither (the fail-safe is silence, never the wrong personality). Story.Derived syntax:
+# an OR of AND-groups, completed to a fixed point by Rules.Complete. Existing sources only; nothing new is bound or set.
+#   redeemed: the native release (arueshalae.changed: BackToReality Cue_0018/Cue_0025 seen, or the Ch5 BestEnding started),
+#     and the route's authored good outcomes: the Aftertaste answer (good return), the legacy torn-gift return (the torn
+#     gift is set BEFORE the return, so both are required), and the chaplain appointment on the failed branch.
+#   corrupted: the native evil recruitment (EvilArushaRecruited, read while Playing), the legacy queen-paid return (the
+#     shared `returned` flag alone is ambiguous, so it pairs with the price), the legacy evil reunion, and the house call of
+#     the recruited fallen (any answer, a refusal included).
+# The two keys hold history and can BOTH be true (good history, then corruption). Corruption wins: every good consumer
+# Requires redeemed AND Forbids corrupted. "redeemed" names the good personality, not Desna's completed transformation:
+# touch and release rules keep reading arueshalae.changed. Classification grants no seat, romance, attitude or progression.
+# Native good recruitment (coordinator ruling 2026-10-02): her two recruitment etudes, read-only, Playing only (never started
+# or completed here). ArueshalaeRecruitedInDrezen (Ch2 prison, Arusha_DrezenPrison Cue_0044/0061) and
+# ArueshalaeRecruitedFinally (Ch3 redoubt, Fortress_Arusha_End Cue_0039/0052) have no activation condition, no linked area
+# part and no chapter ancestor; nothing completes them but the ArueshalaeCompanion root (Arueshalae_Q3_Failer). Her fall
+# (Q2 Dream_Start Cue_0022 / Dream_End Cue_0013: StartEtude ArueshalaeIsEvil + Unrecruit) does NOT stop them, so the fall
+# itself is bound too (ArueshalaeIsEvil, Playing) and joins `corrupted`: a fallen Arueshalae who was once recruited good
+# reads corrupted (corruption wins), never redeemed only. Accepted gap: an old good-return save holding only `returned`
+# stays unknown until the Aftertaste.
+ARUESHALAE_REDEEMED = "arueshalae.redeemed"
+ARUESHALAE_CORRUPTED = "arueshalae.corrupted"
+ARUESHALAE_ETUDES = {
+    "arueshalae.recruited_drezen": "c2df9c6dd50caba4aade683908ac5ae3",    # ArueshalaeStates/ArueshalaeDrezen/ArueshalaeRecruitedInDrezen
+    "arueshalae.recruited_redoubt": "b3b87ce125827084cae26aaced267697",   # ArueshalaeStates/ArueshalaeRedoubtOutcomes/ArueshalaeRecruitedFinally
+    "arueshalae.fallen": "e85e8acd74d231e44ad7d6d2d5dab43c",              # ArueshalaeStates/ArueshalaeIsEvil (her fall; parent of EvilArusha*)
+}
+_AP = "arueshalae.trickster."
+ARUESHALAE_BRANCH = {
+    ARUESHALAE_REDEEMED: [
+        ["arueshalae.changed"],
+        [_AP + "aftertaste"],
+        [_AP + "returned", _AP + "cost.gift_torn"],
+        [_AP + "cost.chaplain"],
+        ["arueshalae.recruited_drezen"],
+        ["arueshalae.recruited_redoubt"],
+    ],
+    ARUESHALAE_CORRUPTED: [
+        ["arueshalae.evil_recruited"],
+        [_AP + "returned", _AP + "cost.nocticula_debt"],
+        [_AP + "returned", _AP + "cost.nocticula_favour"],
+        [_AP + "reunited"],
+        [_AP + "fallen.house_call"],
+        ["arueshalae.fallen"],
+    ],
+}
 
 SCENES = []
 ENTRIES = []          # table_entry() registrations (the later pass)
@@ -231,7 +280,7 @@ def secret(key, title, text, portrait="", witnesses=(), risk="low"):
 # --- Integration ------------------------------------------------------------------------------------------------------
 
 def derived(payload):
-    """<rel>.harem.eligible for every partner, and household.any_eligible."""
+    """<rel>.harem.eligible for every partner, household.any_eligible, and Arueshalae's branch keys."""
     rels = payload["Relationships"]
     have = payload.get("Derived", {})
     out = {}
@@ -244,6 +293,8 @@ def derived(payload):
         groups += EXTRA_ELIGIBLE.get(rel, [])
         out[eligible(rel)] = groups
     out[ANY] = [[eligible(rel)] for rel in PARTNERS]
+    if "arueshalae" in rels:
+        out.update(copy.deepcopy(ARUESHALAE_BRANCH))
     return out
 
 
@@ -337,6 +388,12 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting household derived key: " + key)
         payload["Derived"][key] = groups
+    if "arueshalae" in payload["Relationships"]:
+        etudes = payload.setdefault("Etudes", {})
+        for key, guid in ARUESHALAE_ETUDES.items():
+            if etudes.get(key, guid) != guid:
+                raise ValueError("Conflicting Arueshalae branch etude binding: " + key)
+            etudes[key] = guid
     if not trickster_world._bound(payload, KING_GONE):
         kind, guid, _ = trickster_world.BINDINGS[KING_GONE]
         payload.setdefault(kind, {})[KING_GONE] = [guid] if kind in trickster_world.LIST_KINDS else guid
