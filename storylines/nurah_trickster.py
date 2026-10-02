@@ -67,6 +67,9 @@ PRINTER = "nurah.trickster.cost.printer_paid"          # the early dedication, w
 PRINTER_PAID = "nurah.trickster.printer_paid"          # derived: that purse, or a pedlar's run bought and its printer paid
 P_CODA_ALIVE = "nurah.trickster.coda_alive"           # derived: committed and alive now (Last Call page)
 P_LATE_CODA = "nurah.trickster.late_coda"             # derived: a late branch's commit (Last Call page)
+VEILED_DRAFT_DUE = "nurah.trickster.veiled_draft_due"  # NM1 derived: an early runaway's dedication, with Camellia veiled at Fye's
+VEILED_DRAFT_FOLDED = "nurah.trickster.veiled_draft_folded"  # NM1: her card on the pamphlet rode in the proofs packet
+VEILED_DRAFT = "nurah.trickster.react.camellia_veiled_draft"  # the standalone card (Chapter 3 only since NM1)
 SECOND_EDITION = "nurah.trickster.cost.second_edition"# the pedlar met only in Chapter 5, after her first printing sold out
 DEATHS = ("nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism")
 CAMELLIA_KILL = "nurah.dead_camellia"
@@ -455,19 +458,23 @@ letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
        *PROOFS_CHOICES),
     # By post (Sol quality pass, BEL): her answer comes back by the next courier; nobody watches her read.
     nu("trusted", '''{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} "You left it blank. Trezbot never once left me a blank. Every line of his book had him in it before I'd picked up the pen. I have been staring at your gap for two days and I don't know what to do with it."
-"That is a compliment. Don't get used to it."''', c("[Put the letter away.]", forbids=(LATE,)),
+"That is a compliment. Don't get used to it."''', c("[Put the letter away.]", forbids=(LATE, VEILED_DRAFT_DUE)),
        c("Continue", "card", requires=(LATE, RETURNED, RUMOUR, CAMELLIA_KILL, "camellia.killed", "camellia.trickster.returned")),
        c("Continue", "ps", requires=(LATE,), forbids=("camellia.trickster.returned",)),
        c("Continue", "ps", requires=(LATE, "camellia.trickster.returned"), forbids=("camellia.killed",)),
        c("Continue", "ps", requires=(LATE, "camellia.trickster.returned", "camellia.killed"), forbids=(RETURNED,)),
-       c("Continue", "card_market", requires=(LATE, RETURNED, RUMOUR, "camellia.killed", "camellia.trickster.returned"), forbids=(CAMELLIA_KILL,))),
+       c("Continue", "card_market", requires=(LATE, RETURNED, RUMOUR, "camellia.killed", "camellia.trickster.returned"), forbids=(CAMELLIA_KILL,)),
+       c("Continue", "card_draft", requires=(VEILED_DRAFT_DUE,), forbids=(LATE, VEILED_DRAFT)),
+       c("[Put the letter away.]", requires=(VEILED_DRAFT_DUE, VEILED_DRAFT), forbids=(LATE,))),
     nu("signed", '''{n}Her answer comes back by the same courier two days later, on the back of the returned proof sheet.{/n} "Your name sits in the gap as if the page had been cut to fit it. Of course. And it will say exactly that, in every copy. You are going to hate how accurate I am."''',
-       c("[Put the letter away.]", forbids=(LATE,)),
+       c("[Put the letter away.]", forbids=(LATE, VEILED_DRAFT_DUE)),
        c("Continue", "card", requires=(LATE, RETURNED, RUMOUR, CAMELLIA_KILL, "camellia.killed", "camellia.trickster.returned")),
        c("Continue", "ps", requires=(LATE,), forbids=("camellia.trickster.returned",)),
        c("Continue", "ps", requires=(LATE, "camellia.trickster.returned"), forbids=("camellia.killed",)),
        c("Continue", "ps", requires=(LATE, "camellia.trickster.returned", "camellia.killed"), forbids=(RETURNED,)),
-       c("Continue", "card_market", requires=(LATE, RETURNED, RUMOUR, "camellia.killed", "camellia.trickster.returned"), forbids=(CAMELLIA_KILL,))),
+       c("Continue", "card_market", requires=(LATE, RETURNED, RUMOUR, "camellia.killed", "camellia.trickster.returned"), forbids=(CAMELLIA_KILL,)),
+       c("Continue", "card_draft", requires=(VEILED_DRAFT_DUE,), forbids=(LATE, VEILED_DRAFT)),
+       c("[Put the letter away.]", requires=(VEILED_DRAFT_DUE, VEILED_DRAFT), forbids=(LATE,))),
     # Q12 (Sol TRK/COX): a late branch never meets her in person, so the personal question rides in this packet: her
     # postscript, and the Commander's one-word answer. Only "Come." makes her a late commitment (late_committed). A returned
     # Camellia's card for the late-dead history is folded in here too, instead of a third delivery.
@@ -475,6 +482,10 @@ letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
         c("Continue", "ps")),
     nar("card_market", '''{n}Folded in with the proofs, in another hand and smelling of lilies, is a card the courier admits he was paid at Fye's tavern to carry:{/n} "You bought a soul out of a marilith's crate, darling. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself."''',
         c("Continue", "ps")),
+    # NM1 (Sol COX): an early runaway with Camellia veiled at Fye's takes her card on the pamphlet in this packet, not as a
+    # third Chapter 5 delivery.
+    nar("card_draft", '''{n}Folded in with the proofs, in another hand and smelling of lilies, is a card the courier admits he was handed at Fye's tavern on his way up to the citadel, by the lady at the far end of the bar:{/n} "Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later."''',
+        c("[Put the letter away.]", flags=(VEILED_DRAFT_FOLDED,))),
     nu("ps", '''{n}Under her answer, in a different ink, as if added after the courier had been told to wait:{/n} "P.S. Not about the book. The war will be over before I can set terms in person, and I am not doing this through a chaplain or a crate. So. When it's over I'm coming to Drezen. Not to your office. To you. I haven't forgiven a single thing and I don't intend to start; that's not what this is.
 "Write one word back. 'Come', or 'Don't'. If you write anything clever, I'll take it as 'Don't'."''',
        c('[Write back one word.] "Come."', flags=(LATE_YES,)),
@@ -717,7 +728,7 @@ REACTIONS += [
              remote=True, forbids=(LATE,), chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_draft", (GHOST, RAN_OFF, *VEILED),
              CARD + '''"Your runaway halfling's pamphlet is on the bar. Someone left it here for me, as a joke, I think. There is an insult to her on the first page, in her own hand. I read it three times. I would simply have eaten her, darling. Your way leaves so much more of her for later."''',
-             remote=True, forbids=(LATE,), chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
+             remote=True, forbids=(LATE, VEILED_DRAFT_FOLDED), chapter=3, last=5, Chapters=[3], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
 ]
 SCENES.extend(REACTIONS)
 
@@ -769,6 +780,11 @@ def integrate(payload):
     if derived.get(P_LATE_CODA, coda) != coda:
         raise ValueError("Conflicting derived key: " + P_LATE_CODA)
     derived[P_LATE_CODA] = coda
+    # NM1: the early runaway's dedication with a returned, veiled Camellia (her card rides in the proofs packet).
+    due = [[GHOST, RAN_OFF, "camellia.killed", "camellia.trickster.returned"]]
+    if derived.get(VEILED_DRAFT_DUE, due) != due:
+        raise ValueError("Conflicting derived key: " + VEILED_DRAFT_DUE)
+    derived[VEILED_DRAFT_DUE] = due
     # Her Last Call coda plays only for a Nurah alive now: committed and still in her cell (the prison etude stops on her
     # death), run off, or bought back; or a late branch. G5: the framework page reads this key, never her death flags.
     alive = [[COMPLETE, "nurah.prison"], [COMPLETE, RAN_OFF], [COMPLETE, RETURNED], [P_LATE_CODA]]

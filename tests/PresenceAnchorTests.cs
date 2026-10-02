@@ -41,6 +41,28 @@ internal static class PresenceAnchorTests
             "Spawned without a live anchor.");
         check(Rules.PlanPresence(p, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = true }).SequenceEqual(new[] { PresenceStep.Spawn }),
             "Resolved anchor did not spawn.");
+        // NM1: the runtime failure observation (GuestPresence.Tick reports Rules.PresenceFailed). A spawn-copy fails only without
+        // its anchor; a reuse-native presence also fails at a resolved anchor when no single live, friendly native actor stands there.
+        check(Rules.PresenceFailed(p, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false })
+              && !Rules.PresenceFailed(p, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = true })
+              && !Rules.PresenceFailed(p, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false, NativeAlive = true })
+              && !Rules.PresenceFailed(p, false, new PresenceObservation { AreaLoaded = true, AnchorResolved = false })
+              && !Rules.PresenceFailed(p, true, new PresenceObservation { AreaLoaded = false, AnchorResolved = false }),
+            "Spawn-copy failure observation changed.");
+        foreach (var native in new[] {
+            new Presence { Unit = p.Unit, Area = Capital, Mode = "reuse-native", At = new PresenceAnchor { Locator = "adee9a01-42a3-4850-b2d1-4a3dfcee9369" } },
+            new Presence { Unit = p.Unit, Area = Capital, Mode = "reuse-native" } })
+        {
+            var missing = new PresenceObservation { AreaLoaded = true, AnchorResolved = true, NativeAlive = false };
+            check(Rules.PresenceFailed(native, true, missing) && Rules.PlanPresence(native, true, missing).Length == 0,
+                "A reuse-native presence with a resolved anchor and no native actor is not reported as failed.");
+            check(Rules.PresenceFailed(native, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false }),
+                "A reuse-native presence with neither anchor nor actor is not reported as failed.");
+            check(!Rules.PresenceFailed(native, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = true, NativeAlive = true, NativeHidden = true })
+                  && !Rules.PresenceFailed(native, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false, NativeAlive = true })
+                  && !Rules.PresenceFailed(native, false, missing) && !Rules.PresenceFailed(native, true, new PresenceObservation { AreaLoaded = false }),
+                "A placeable, unwanted or unloaded reuse-native presence is reported as failed.");
+        }
         // Eligibility of the letter twin follows the runtime observation.
         var state = new Snapshot { Chapter = 5, Hour = 100 };
         var twin = story.Scenes.Single(s => s.Id == "irabeth.trickster.letter_twin");

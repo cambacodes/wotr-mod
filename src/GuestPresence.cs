@@ -198,15 +198,16 @@ namespace Tirabade
                 var seen = Observe(out var native, out var copy, out var record);
                 var steps = Rules.PlanPresence(Spec, wanted, seen);
                 Actor = !wanted ? null : copy != null && seen.CopyAlive && copy.IsInGame ? copy : native != null && native.IsInGame ? native : null;
-                // E12b: an anchored copy that cannot be placed is reported, and exposed as <key>.failed for the letter twin.
-                AnchorFailed = wanted && seen.AreaLoaded && Spec.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive;
+                // E12b: a wanted presence that cannot be placed (an anchored copy without its anchor, or a reuse-native
+                // presence without a usable native actor) is reported, and exposed as <key>.failed for the letter twin.
+                AnchorFailed = Rules.PresenceFailed(Spec, wanted, seen);
                 LastQuiet = CopyQuiet.None;
                 foreach (var step in steps) Execute(step, native, copy, record);
                 // E12d: every live copy (fresh, or spawned by an earlier build) is kept inert; never a native unit.
                 if (copy != null && seen.CopyAlive && !steps.Contains(PresenceStep.Remove)) LastQuiet |= Quiet(copy);
                 Status = !seen.AreaLoaded ? "area not loaded" : (wanted ? "wanted" : "not wanted")
                     + (seen.NativeAlive ? ", native present" + (seen.NativeHidden ? " (hidden)" : "") : "")
-                    + (seen.CopyFound ? ", copy present" : "") + (LastQuiet != CopyQuiet.None ? " (quieted: " + LastQuiet + ")" : "") + (AnchorFailed ? ", anchor not found (not spawned)" : "")
+                    + (seen.CopyFound ? ", copy present" : "") + (LastQuiet != CopyQuiet.None ? " (quieted: " + LastQuiet + ")" : "") + (AnchorFailed ? ", not placed (failed)" : "")
                     + (steps.Length > 0 ? " -> " + string.Join("+", steps) : "");
             }
             catch (Exception ex) { LastError = ex; Status = "error: " + ex.Message; }
