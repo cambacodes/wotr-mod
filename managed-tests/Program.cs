@@ -527,7 +527,9 @@ internal static class Program
                     "PlayerFinalChoice native members moved or replaced");
                 continue;
             }
+            // A native epilogue edit's replacement (E14d) is swapped in for its native cue on the native page, never appended.
             expected.AddRange(story.Scenes.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.EpilogueSequence == null
+                && !story.NativeEpilogueEdits.Values.Any(edit => edit.Replacement == s.Id)
                 && (s.Owner == "AeonEpilogue" ? sequenceIds[1] : sequenceIds[0]) == pair.Key)
                 .Select(s => Id("page." + s.Id + "." + s.Nodes[0].Id)));
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);

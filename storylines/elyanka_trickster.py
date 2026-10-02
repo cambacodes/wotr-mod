@@ -817,3 +817,8 @@ def integrate(payload):
             kind, guid, _ = trickster_world.BINDINGS[key]
             payload.setdefault(kind, {})[key] = [guid] if kind in trickster_world.LIST_KINDS and isinstance(guid, str) else guid
     payload.setdefault("PortraitFallbacks", {}).setdefault("Elyanka", PORTRAIT_GUID)
+
+# NM1 item 10 (ideal-run C13): a returned Seelah coexists; her death/departure forbids lift on her return.
+for _s in SCENES:
+    if _s.get("Id") == E + "react.seelah_rows":
+        _s.setdefault("ForbidOverrides", {}).update({"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"})

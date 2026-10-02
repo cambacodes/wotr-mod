@@ -739,3 +739,8 @@ SCENES.append(reaction("Regill", E + "react.regill_lie", ("trickster.ever", "reg
     answer_list=REGILL_HUB, chapter=5, last=5, entry='"About the Ustalavic priestess."', portrait="Regill",
     forbids=("regill.dead", "regill.kicked_out", "regill.plot_absent")))
 tag(E + "react.regill_lie", "T")
+
+# NM1 item 10 (ideal-run C13): a returned Seelah coexists; her death/departure forbids lift on her return.
+for _s in SCENES:
+    if _s.get("Id") == E + "beat.inquiry":
+        _s.setdefault("ForbidOverrides", {}).update({"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned"})

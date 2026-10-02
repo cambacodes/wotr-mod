@@ -211,5 +211,28 @@ internal static class LastCallTests
         var authored = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).ToHashSet();
         foreach (var entry in ledger.JournalEntries)
             check(entry.OpenWhen.SelectMany(g => g).All(authored.Contains), "A Ledger line opens on a flag nothing sets: " + entry.Id);
+        // NM1 (ideal-run C14): no call-in can strand the last joke. In every combination of the flags its choices read, some
+        // choice is selectable and resolves the debt (Devarra's refused bill used to leave none).
+        foreach (var callIn in story.Scenes.Where(s => s.Id.EndsWith(".lastcall.call", StringComparison.Ordinal)))
+        {
+            var choices = callIn.Nodes[0].Choices;
+            var keys = choices.SelectMany(ch => ch.Requires.Concat(ch.Forbids)).Concat(callIn.RequiresAnyGroups.SelectMany(g => g)).Distinct().ToArray();
+            check(keys.Length <= 14, "A call-in reads too many flags to enumerate: " + callIn.Id);
+            string resolvedFlag = callIn.Id.Replace(".lastcall.call", ".lastcall.resolved");
+            for (int mask = 0; mask < 1 << keys.Length; mask++)
+            {
+                var held = new Snapshot { Chapter = 6 };
+                for (int i = 0; i < keys.Length; i++) if ((mask & (1 << i)) != 0) held.Flags.Add(keys[i]);
+                // Only the worlds where the call-in itself is offered (a deal held, nothing it forbids).
+                if (!callIn.RequiresAnyGroups.All(g => g.Any(held.Has)) || callIn.Forbids.Any(held.Has) || !callIn.Requires.All(held.Has)) continue;
+                check(choices.Any(ch => Rules.Match(ch.Requires, ch.Forbids, held) && ch.Next == null && ch.Set.Contains(resolvedFlag)),
+                    "A call-in strands the last joke (no resolving choice) for " + callIn.Id + " with {" + string.Join(", ", held.Flags) + "}");
+            }
+        }
+        var devarraCall = Sc("devarra.lastcall.call");
+        var refusedBill = new Snapshot { Chapter = 6 }; refusedBill.Flags.UnionWith(new[] { "devarra.trickster.cost.egg_withheld", "devarra.trickster.refused" });
+        check(devarraCall.Nodes[0].Choices.Count(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)) == 1
+              && devarraCall.Nodes[0].Choices.Single(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)).Set.SequenceEqual(new[] { "devarra.lastcall.resolved" }),
+            "Devarra's refused bill still soft-locks the last joke, or her call-in is spoken anyway.");
     }
 }

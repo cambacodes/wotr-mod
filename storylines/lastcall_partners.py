@@ -842,7 +842,10 @@ partner("devarra", "devarra", "devarra.committed", "devarra.closed", "The Grey T
     deal=[[DV + "cost.egg_withheld"]],
     call=call('''[Call up the north ridge] "Devarra! You said you'd name your price at the edge of the world. This is the edge. Name it."''',
         '''{n}You shout it into the roar the way she says you climb: loudly, as if the mountain owed you the path. Nothing answers. Then, very far behind you, over a city you cannot see, something grey lifts off a ridge and does not hurry.{/n}''',
-        (PLAIN_CHOICE, (), (), (DV + "refused",))),
+        (PLAIN_CHOICE, (), (), (DV + "refused",)),
+        # NM1 (ideal-run C14): a refused Devarra still holds the bill; leaving the ridge unanswered resolves the call-in, so
+        # the last joke never waits on a call the Commander cannot make.
+        ("[Leave the north ridge unanswered. Whatever she is owed, she will come for it herself.]", None, (DV + "refused",), ())),
     ledger=("Devarra: the smallest egg", "I took a life out of a woundwyrm's clutch and paid her nothing for it. She has billed me a life. She has not said whose, or when. She says a bill that has not been collected is worth more than one that has, because it can still be called."))
 
 # Existing pages that must yield to Last Call (doc 04 backlog): Nocticula's favour page is called in on her Last Call page instead.
