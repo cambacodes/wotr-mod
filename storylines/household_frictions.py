@@ -32,11 +32,12 @@ FRICTIONS = [
          fails=dict(tolerated="whichever lost face", enmity="the other"),
          note=("Two of Baphomet's creditors at one table. Each thinks the other owes her. Both are right.")),
     dict(a="arueshalae", b="nocticula", status="verified", kind="power", form="a trade",
-         root=("Arueshalae left the queen of succubi, who keeps the summons debt over her (arueshalae_trickster.py:62 "
-               "cost.nocticula_debt; nocticula_trickster.py:431 court.arueshalae; 04 §3.7)."),
+         root=("Arueshalae left the queen of succubi, whose claim on every succubus she still feels (Nocticula_main/Cue_0523 "
+               "b84ef61b, 'This demon follows you around only because I allow it'; arueshalae_treatment.py queen). The old "
+               "summons debt and court.arueshalae are retired (2026-10-01); the claim, not a debt, is the root."),
          tools=("skill:persuasion_t3", "item:debt_paper", "favour:nocticula"),
          fails=dict(tolerated="arueshalae", enmity="nocticula"),
-         note=("The queen wants her rank acknowledged. The defector wants the debt burned. Neither wants the other's "
+         note=("The queen wants her rank acknowledged. The defector wants to stop kneeling without meaning to. Neither wants the other's "
                "chair.")),
     dict(a="arsinoe", b="nurah", status="verified", kind="law", form="an audit",
          root=("Arsinoe is a priestess-banker of Abadar (arsinoe_trickster.py:5, Council_5-1/Cue_0041); Nurah's route "

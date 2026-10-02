@@ -224,18 +224,14 @@ internal static class PacingPP2Tests
                 "Arueshalae: the " + id + " ending ignores the Commander's sacrifice.");
         }
         var starving = S("arueshalae.trickster.dead.starving");
-        // The route forbids a crusade fee as the device's price; the torn gift's loss is the flag its readers show
-        // (her aftertaste, Sosiel's reaction, the epilogue): a voice gone thin that heals, the thread and the scar that don't.
-        var thread = N(starving, "thread").Text;
-        check(new[] { 0, 1 }.All(i => C(starving, "thread", i).Set.Contains("arueshalae.trickster.cost.gift_torn") && C(starving, "thread", i).Crusade == null)
-              && thread.Contains("voice will come back thin") && !thread.Contains("makes a room turn round")
-              && story.Scenes.Count(s => s.Relationship == "arueshalae" && (s.Requires.Contains("arueshalae.trickster.cost.gift_torn")
-                  || s.Nodes.Any(n => n.Choices.Any(c => c.Requires.Contains("arueshalae.trickster.cost.gift_torn"))
-                                      || n.Paragraphs.Any(pp => pp.Requires.Contains("arueshalae.trickster.cost.gift_torn"))))) >= 3,
-            "Arueshalae: the torn gift narrates a loss its readers never show.");
-        var cure = N(S("arueshalae.treatment.night"), "cure").Text;
-        check(cure.Contains("say the whole of the blessing") && !cure.Contains("before she carried you up"),
-            "Arueshalae: the star-candle is still lit offstage before the flight.");
+        // Device redesign (2026-10-01): the gift thread is retired by gating (ids, nodes and indices kept); the legacy
+        // readers of a torn gift stay for saves that already hold it.
+        check(starving.Forbids.Contains("chapter_later") && new[] { 0, 1 }.All(i => C(starving, "thread", i).Set.Contains("arueshalae.trickster.cost.gift_torn") && C(starving, "thread", i).Crusade == null),
+            "Arueshalae: the retired gift thread lost its ids or flags, or is still live.");
+        var cureNode = N(S("arueshalae.treatment.night"), "cure");
+        check(cureNode.Text.Contains("the chaplain read at the foot of the stair") && !cureNode.Text.Contains("star-candle")
+              && C(S("arueshalae.treatment.night"), "start", 0).RemoveItem == "89e10c3f21fa50c4b8719e004c7628d3",
+            "Arueshalae: the tower night is still protected by the star-candle, or does not spend its scroll on the tower.");
         var letter = S("arueshalae.trickster.evil.reunion_letter");
         check(letter.Requires.Contains("arueshalae.lair_unplaced.latched") && letter.Requires.Contains("arueshalae.awning_unplaced.latched")
               && story.Latches["arueshalae.lair_unplaced.latched"].SequenceEqual(new[] { "arueshalae.presence.evil.failed" })
