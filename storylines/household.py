@@ -13,7 +13,7 @@ THE TABLE (10-HAREM-RESIDENCE.md P1: canon doors only, no new units, no invented
   The Crossroads is the Table's slot in the Trickster epilogue (08 §9), reserved: EPILOGUE_SLOT below, nothing written.
 
 ENTRY API (for the later pass; see table_entry, invitation, word_made_true)
-  table_entry(id, title, entry, nodes, pair=(rel_a, rel_b), trigger="<flag>")  a scene on the Table's hub, gated on the table
+  table_entry(id, title, entry, nodes, pair=(rel_a, rel_b), trigger="<flag>", delay=0, chapters=(3, 5))  a scene on the Table's hub, gated on the table
       being kept, both women's eligibility, no enmity between them, and a trigger flag that some earlier beat sets. Every
       entry needs a trigger: the hub never offers a scene just because two women exist.
   invitation(id, rel, sender, title, text, trigger)  a rest-delivered note (Kind "invitation": "[<Name> asks you to the
@@ -133,10 +133,20 @@ OPENERS = [
 ]
 
 
-def _table_scene(id, title, owner, entry, nodes, requires, forbids, relationship=REL, **extra):
-    """A physical scene on the Table menu (Rules.IsTableScene): no unit, no list; the menu queues it."""
-    return scene(id, title, owner, 3, entry, nodes, requires=requires, forbids=forbids, delay=0, last=5,
-                 Relationship=relationship, Chapters=[3, 5], Areas=[DREZEN], InteractionHub=TABLE_HUB, **extra)
+TABLE_CHAPTERS = (3, 5)   # the chapters with a Table opener (OPENERS): Ch3 and Ch5 Drezen; Ch4 has none
+
+
+def _table_scene(id, title, owner, entry, nodes, requires, forbids, relationship=REL, delay=0, chapters=TABLE_CHAPTERS,
+                 **extra):
+    """A physical scene on the Table menu (Rules.IsTableScene): no unit, no list; the menu queues it.
+    `delay` is DelayHours, measured from the newest Requires flag (src/Story.cs); 0 keeps the old behaviour.
+    `chapters` is the explicit Chapters list (default (3, 5)); e.g. chapters=(5,) for a Ch5-only entry."""
+    chapters = list(chapters)
+    if not chapters or len(set(chapters)) != len(chapters) or any(ch not in TABLE_CHAPTERS for ch in chapters):
+        raise ValueError("Table scene %s: chapters must be distinct values from %s, got %r" % (id, TABLE_CHAPTERS, chapters))
+    return scene(id, title, owner, min(chapters), entry, nodes, requires=requires, forbids=forbids, delay=delay,
+                 last=max(TABLE_CHAPTERS), Relationship=relationship, Chapters=chapters, Areas=[DREZEN],
+                 InteractionHub=TABLE_HUB, **extra)
 
 
 # --- The one system scene: the King offers the table (inline on his own list; no partner speaks) --------------------
@@ -176,9 +186,12 @@ def enmity(rel, other):
     return "%s.harem.enmity.%s" % (rel, other)
 
 
-def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(), relationship=None, **extra):
+def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(), relationship=None, delay=0,
+                chapters=TABLE_CHAPTERS, **extra):
     """Register a scene on the Table menu. pair=(rel_a, rel_b); trigger=a flag an earlier beat sets (required).
-    `entry` is the menu line (e.g. "[Seelah and Camellia, at the corner table]")."""
+    `entry` is the menu line (e.g. "[Seelah and Camellia, at the corner table]").
+    `delay` (DelayHours, default 0) spaces chained pair steps (16 §8c: ≥ 48 between steps, 8 for a morning beat).
+    `chapters` (default (3, 5)) narrows the chapters it can surface in, e.g. chapters=(5,) for a Ch5-only entry."""
     if not trigger:
         raise ValueError("A Table entry needs a trigger flag: " + id)
     a, b = pair
@@ -186,7 +199,8 @@ def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(),
         if rel not in PARTNERS:
             raise ValueError("Unknown household partner %s in %s" % (rel, id))
     body = _table_scene(id, title, PARTNERS[a][0], entry, nodes, requires=("trickster", KEPT, eligible(a), eligible(b), trigger) + tuple(requires),
-                        forbids=(enmity(a, b), enmity(b, a)) + tuple(forbids), relationship=relationship or REL, **extra)
+                        forbids=(enmity(a, b), enmity(b, a)) + tuple(forbids), relationship=relationship or REL, delay=delay,
+                        chapters=chapters, **extra)
     ENTRIES.append(body)
     return body
 
