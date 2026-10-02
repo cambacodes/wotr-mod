@@ -1,4 +1,4 @@
-"""Harem W0 (16 §8c): table_entry()/_table_scene() take a `delay` (DelayHours), default 0."""
+"""Harem W0 (16 §8c): table_entry()/_table_scene() take `delay` (DelayHours, default 0) and `chapters` (default (3, 5))."""
 from pathlib import Path
 import sys
 import unittest
@@ -32,6 +32,19 @@ class HouseholdDelayTests(unittest.TestCase):
         body = household._table_scene("test.delay.ts", "T", "Seelah", "[T]", NODES, ("a",), (), delay=8)
         self.assertEqual(body["DelayHours"], 8)
         self.assertEqual(household._table_scene("test.delay.ts0", "T", "Seelah", "[T]", NODES, ("a",), ())["DelayHours"], 0)
+
+    def test_default_chapters(self):
+        body = household.table_entry("test.ch.default", "T", "[T]", NODES, ("seelah", "konomi"), "test.trigger")
+        self.assertEqual((body["MinChapter"], body["MaxChapter"], body["Chapters"]), (3, 5, [3, 5]))
+
+    def test_chapter5_only(self):
+        body = household.table_entry("test.ch.5", "T", "[T]", NODES, ("seelah", "konomi"), "test.trigger", chapters=(5,))
+        self.assertEqual((body["MinChapter"], body["MaxChapter"], body["Chapters"]), (5, 5, [5]))
+
+    def test_bad_chapters_rejected(self):
+        for bad in ((), (4,), (3, 3), (2, 5)):
+            with self.assertRaises(ValueError):
+                household._table_scene("test.ch.bad", "T", "Seelah", "[T]", NODES, ("a",), (), chapters=bad)
 
 
 if __name__ == "__main__":
