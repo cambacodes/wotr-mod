@@ -55,6 +55,12 @@ def integrate(payload):
             deferred += 1
     if deferred < 3:
         raise ValueError("nm1: the harbor join and the acquired harbor were not found")
+    # The deferred harbor is not advertised (Sol INT): the guidance names what the correspondence actually leads to.
+    rel = payload["Relationships"]["nocticula"]
+    old = "After completing the Trickster correspondence and accepting the hosted meetings, rest in Drezen to hear Nocticula's harbor proposal. "
+    if old not in rel["Guidance"]:
+        raise ValueError("nm1: the Nocticula guidance changed")
+    rel["Guidance"] = rel["Guidance"].replace(old, "The Trickster correspondence ends in its own agreement, kept by letter. ")
     if EPILOGUE["Id"] in scenes:
         raise ValueError("nm1: duplicate " + EPILOGUE["Id"])
     payload["Scenes"].append(copy.deepcopy(EPILOGUE))

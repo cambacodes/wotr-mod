@@ -317,7 +317,8 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Make her say it twice.] \"I didn't hear you.\"", "twice"),
         c("[Leave the chair beside her empty.]", "refused_page")),
     nar("refused_page", '''{n}The Commander did not cross the room. Nocticula watched the refusal arrive, all the way to the door, and laughed, low, the way she laughed at a card played well against her.{/n}
-"Then keep your hands where I cannot see them," she said. "I shall find out what they do anyway." The chair beside hers stayed empty for the rest of the Commander's life, and nobody else was ever allowed to sit in it.{/n}''', c()),
+"Then keep your hands where I cannot see them," she said. "I shall find out what they do anyway."
+{n}The chair beside hers stayed empty for the rest of the Commander's life, and nobody else was ever allowed to sit in it.{/n}''', c()),
     nar("crossed", '''{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}
 {n}At the chair she laid one fingertip on the Commander's breastbone and held it there, not pressing, her mouth a breath away. "Kneel, or kiss me. Choose quickly. I bore easily."{/n}''',
         c("[Kiss her.]", "kissed"),
