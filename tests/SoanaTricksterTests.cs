@@ -226,6 +226,16 @@ internal static class SoanaTricksterTests
         foreach (var r in Program.Walk(terms, Later(story, bought, 72), (id, _) => boughtPages.Add(id))) { }
         check(boughtPages.Contains("bought") && !boughtPages.Contains("dug"), "The terms misremember who dug.");
 
+        // NM1 (Sol INT): a luck-chain "not yet" (missed.bowl, the shared declined flag), then her death and return: the knot's own
+        // first ask still opens after the graveyard, commits, and its own "not yet" leads to the second ask, not to itself.
+        var compound = Program.Copy(atTerms);
+        foreach (var f in new[] { P + "declined", P + "luck_kept", P + "luck_tested" }) { compound.Flags.Add(f); compound.Times[f] = compound.Hour - 300; }
+        Rules.Complete(story, compound);
+        check(Rules.Available(story, terms, compound) && Reaches(compound, "soana.committed"),
+            "Trk_Soana_CompoundPostponement: a luck postponement bars the knot's first ask after her return.");
+        var compoundNo = Program.Walk(terms, compound).First(r => r.Has(terms.Id) && !r.Has("soana.committed") && !r.Has("soana.closed") && !r.Has(P + "friends"));
+        check(!Rules.Available(story, terms, Later(story, compoundNo, 200)) && Rules.Available(story, secondAsk, Later(story, compoundNo, 96)),
+            "Trk_Soana_CompoundPostponement: the knot's own 'not yet' repeats the first ask, or never reaches the second.");
         // Trk_Soana_TermsRefused: her soft no, then her second ask: the knot tied tighter (a scar, not a fee).
         var refused = Pick(terms, atTerms, P + "declined");
         check(!refused.Has("soana.committed") && !refused.Has("soana.closed"), "Trk_Soana_TermsRefused: her no closes or commits.");
