@@ -10,6 +10,8 @@ Azata_Aranka_DesnaPriest 430cba78 has no dialog component), so her life as a Des
 invented here; the device is the Commander's own paid boast in a native Trickster venue, not Desna's luck. She keeps the
 billing, tours the camps every night and chooses whether to come back, and she can refuse, or be sent to a real stage.
 """
+import copy
+
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
@@ -286,8 +288,10 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
 "You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna. If you want your name near it, you'll add a verse to it yourself. Here. In front of all of them. And then I'm going to decide how badly you did it."''',
       c('[Sing it] "A second verse. Mine."', "duet")),
     a("duet", '''"You owe me a duet for this. And an apology. Mostly the duet."
-{n}She hands you the second verse, and takes the harmony herself, and for three minutes nobody in Drezen is at war. Nobody moves. A sapper by the gate takes his helmet off without knowing he has done it.{/n}
-{n}When it ends there is the kind of silence that is worth more than applause, and then the applause, and she soaks up every bit of it with her eyes closed.{/n}
+{n}She gives you the first note. You miss it. Her eyebrows go up, and then she finds whatever note you did hit, lays the harmony under it, and walks you back up to the tune a step at a time.{/n}
+"There you are! Again. I shall make a singer of you yet."
+{n}A sapper at the back beats time on his helmet. Two porters stop to listen; a third shoulders past them with a sack, complaining that the Knight-Commander has found another way to block the road. She takes the hard turn in the middle herself and leaves you the last rhyme.{/n}
+{n}The sapper starts clapping before the chord is finished. She holds it a little longer, eyes closed, and makes him wait.{/n}
 "My name goes first every time it's sung. Yours comes after. Quietly. Very quietly."''',
       c('[Take the harmony, not the credit] "Yours first. Mine after, quietly."', "signed"),
       c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
@@ -352,7 +356,8 @@ counter("aranka.trickster.verse.third_verse", "The third verse", '"You said you 
 "That one's yours to finish. Out loud. Alone."''',
       c('[Finish the verse alone] "...Everybody. Quiet. This line\'s mine."', "sung", flags=(KEPT, SANG_ALONE)),
       c('[Let the rhyme hang] "...I can\'t."', "refused", flags=(CLOSED,))),
-    nar("sung", '''{n}You finish it alone. Your voice cracks on the rhyme, and a sergeant at the back laughs out loud, and then stops laughing. By the end the crowd is silent in a way it has not been since the duet, and the story of the Knight-Commander answering a love song, badly, on @STAGE@, will outlive both of you in every barracks in Drezen.{/n}''',
+    nar("sung", '''{n}You finish it alone. Your voice cracks on the rhyme. A sergeant at the back laughs out loud, and Aranka turns her head and looks at him, once, and he stops. She keeps the beat for you with her heel and leaves the last word where it is, for you to reach.{/n}
+{n}When you reach it, somebody calls for it again. Aranka shakes her head so hard that the lute knocks against her knee. Then she puts it down on @STAGE@ and comes to you.{/n}''',
         c("Continue", "answer")),
     a("answer", '''{n}She is crying, and furious about it, and laughing.{/n} "That was terrible. That was the worst line anyone has ever sung to me. Say your name before it next time, loud, so they all know whose it is. And yes. Obviously yes."''',
       c("Continue", "threshold")),
@@ -413,12 +418,12 @@ letter("aranka.trickster.failure.second_verse", "A blot in the middle", [
 # --- State parent_done_non_azata: billed before she was asked (F05) ------------------------------------------------
 
 letter("aranka.trickster.touring.boast", "Court poet", [
-    nar("start", '''{n}Aranka is three camps away, singing for pikemen. You have not seen her since your story together reached its end, and she has not written. The crusade's printers, on the other hand, owe you a favour.{/n}''',
+    nar("start", '''{n}Aranka is at a pilgrims' camp near the first ford, singing for pikemen. You have not seen her since your story together reached its end, and she has not written. The crusade's printers, on the other hand, owe you a favour.{/n}''',
         c(TOURING_JOKE, "posters", mythic="Trickster", crusade=("Finances", -100)),
         c('[Let her keep her road.]', abort=True)),
     nar("posters", '''{n}By morning every wall in Drezen carries a poster: STARWARD GAZE, SUNG BY THE KNIGHT-COMMANDER'S COURT POET, TONIGHT. The paste is still wet. The printers spelled her name right on the first try, because you stood over them.{/n}
-{n}Aranka was three camps away and had agreed to nothing. The posters travel faster than she does, and she travels faster than the posters: by nightfall a woman in Desnan blue is sitting in the market reading one, and she will not say a word to anyone from the citadel.{/n}''',
-        c('"Put one up at the ford, too."', flags=(PRIMED, ANNOUNCED))),
+{n}Aranka has agreed to nothing. You send a mounted courier to the ford with a roll of posters, directions to her camp and orders to bring back her answer. By nightfall he is back without one, and Aranka is riding beside him. She dismounts at the citadel gate, reads the poster pasted to the gatepost, and will not say a word to anyone from the citadel.{/n}''',
+        c('"Let her read it. She can shout when she\'s ready."', flags=(PRIMED, ANNOUNCED))),
 ], requires=("trickster", ROMANCE, QUEST), forbids=(PRIMED, "azata", FAILURE), delay=0)
 
 counter("aranka.trickster.touring.arrives", "Court poet", '"You came."', [
@@ -446,8 +451,9 @@ VERSE_PARAGRAPHS = (
 
 
 def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
-    SCENES.append(scene(id, title, "Epilogue", 1, "", [nar("end", text, paragraphs=paragraphs)], requires=requires,
-                        forbids=(*forbids, KENABRES_ATTACKED), last=99, Relationship="aranka", **extra))
+    # Polish (R2-6): Chapter 6 only, in the data as well as through the native epilogue attachment.
+    SCENES.append(scene(id, title, "Epilogue", 6, "", [nar("end", text, paragraphs=paragraphs)], requires=requires,
+                        forbids=(*forbids, KENABRES_ATTACKED), last=6, Relationship="aranka", Chapters=[6], **extra))
 
 
 page("aranka.trickster.epilogue.commit", "The last night in Nerosyan",
@@ -507,6 +513,56 @@ REACTIONS = [
              entry='"Heard any good songs lately?"', RequiresAnyGroups=[[ROUND, CREDITED, DENIED]]),
 ]
 SCENES.extend(REACTIONS)
+
+
+# --- Chapter 5 twins (polish, R2-6 seven-day window) ------------------------------------------------------------------
+# After the Coronation the chain must fit inside a week, so the Chapter 3 beats keep their ids, prose and 72/48-hour
+# clocks but close at Chapter 3, and each gains an appended Chapter 5 twin on a 24-hour clock: a deep copy with the
+# same relationship, gates, device metadata, nodes, choice order, effects and venue. Shared progress flags (answered,
+# duet_sung, declined, kept) carry across the chapter boundary; each twin also Forbids its original's id, so a save that
+# finished the original in Chapter 5 before this split never replays it. Only travel lines that a day cannot carry change.
+LATE_DELAY = 24
+LATE_TEXT = {
+    # her letter: Marit rides the dawn wagon out to a camp a day away, and the driver carries the answer back
+    ("aranka.trickster.verse.her_letter", "known"): (
+        "Old Marit heard it in his tavern and begged a seat on the next supply wagon out to tell me. She says",
+        "Old Marit heard it in the King's tavern and rode the dawn supply wagon out to our camp at the first ford to tell me; its driver is carrying this back. Marit says"),
+    ("aranka.trickster.verse.her_letter", "unknown"): (
+        "Old Marit, one of our pilgrims, heard it in his tavern and begged a seat on the next supply wagon out to tell me. She says",
+        "Old Marit, one of our pilgrims, heard it in the King's tavern and rode the dawn supply wagon out to our camp at the first ford; its driver is carrying this back. Marit says"),
+    # the encore: one night at the ford, not a week of camps
+    ("aranka.trickster.verse.encore", "offer"): (
+        "\"I went round the camps these last few nights. I sang it in all of them. The pikemen at the ford made me sing it three times and then sang it back to me wrong. And every night I came back here. I haven't decided why.\"",
+        "\"I sang it at the ford last night. The pikemen made me sing it three times and then sang it back to me wrong. I could have slept there. I came back on a wagon full of turnips instead. I haven't decided why.\""),
+    # the touring arrival: the courier brought her in the night the posters went up, not two days before
+    ("aranka.trickster.touring.arrives", "start"): (
+        "{n}She is standing under one of the posters with it half torn off the wall in her fist. She has been in the market two days, reading every poster in the city, and has not let anyone fetch you.{/n}\n\"Court poet.",
+        "{n}She is standing by @SEAT@ with a poster half torn off the wall in her fist. The torn edge is still tacky with paste.{/n}\n\"Court poet!"),
+}
+
+
+def late_twin(source_id):
+    """Close a Chapter 3/5 beat at Chapter 3 and append its Chapter 5 twin (deep copy, 24-hour clock)."""
+    source = next(s for s in SCENES if s["Id"] == source_id)
+    twin = copy.deepcopy(source)
+    source.update(MinChapter=3, MaxChapter=3, Chapters=[3])
+    twin.update(Id=source_id + "_late", MinChapter=5, MaxChapter=5, Chapters=[5], DelayHours=LATE_DELAY)
+    twin["Forbids"].append(source_id)
+    base = source_id[:-len("_yard")] if source_id.endswith("_yard") else source_id
+    place = "yard" if source_id.endswith("_yard") else "fye"
+    for node in twin["Nodes"]:
+        change = LATE_TEXT.get((base, node["Id"]))
+        if change:
+            old, new = change
+            if old not in node["Text"]:
+                raise ValueError("late twin %s: the travel line moved in node %s" % (twin["Id"], node["Id"]))
+            node["Text"] = node["Text"].replace(old, fit(new, place))
+    SCENES.append(twin)
+
+
+for _id in ("verse.her_letter", "verse.duet", "verse.duet_yard", "verse.encore", "verse.encore_yard", "verse.third_verse",
+            "verse.third_verse_yard", "failure.second_verse", "touring.arrives", "touring.arrives_yard"):
+    late_twin("aranka.trickster." + _id)
 
 
 def integrate(payload):

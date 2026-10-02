@@ -413,6 +413,8 @@ CONSEQUENCES = {
     "nurah.trickster.prison.night_out_late": ("start", NIGHT_OUT),     # its Chapter 5 twin, deep-copied before this pass
     "aranka.trickster.verse.duet": ("duet", DUET_READER),
     "aranka.trickster.verse.duet_yard": ("duet", DUET_READER),          # the copy for a shuttered market
+    "aranka.trickster.verse.duet_late": ("duet", DUET_READER),          # the Chapter 5 twins (polish), copied before this pass
+    "aranka.trickster.verse.duet_yard_late": ("duet", DUET_READER),
     "jannah.trickster.alive.stories": ("start", STORIES_READER),
 }
 SKY_PAGES = ("nurah.trickster.epilogue.the_margin", "nurah.trickster.epilogue.book_only",

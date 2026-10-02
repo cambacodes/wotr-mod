@@ -30,7 +30,7 @@ internal static class PacingPP3Tests
     // The scenes allowed to read a PP3 flag: the named consequence readers, and the beats that route on or exclude another.
     private static readonly Dictionary<string, string[]> Readers = new()
     {
-        ["aranka.early.duet"] = new[] { "aranka.trickster.verse.duet", "aranka.trickster.verse.duet_yard" },
+        ["aranka.early.duet"] = new[] { "aranka.trickster.verse.duet", "aranka.trickster.verse.duet_yard", "aranka.trickster.verse.duet_late", "aranka.trickster.verse.duet_yard_late" },
         ["nurah.early.hands"] = new[] { "nurah.early.hanging", "nurah.trickster.prison.night_out", "nurah.trickster.prison.night_out_late" },
         ["nurah.early.hanging"] = new[] { "nurah.early.hands", "nurah.trickster.prison.night_out", "nurah.trickster.prison.night_out_late" },
         ["jannah.early.laugh"] = new[] { "jannah.early.bout", "jannah.trickster.alive.stories" },
@@ -176,7 +176,7 @@ internal static class PacingPP3Tests
             check(via.Count > 0 && (reaches == null || via.All(r => r.Has(reaches))), sceneId + "/" + newNode + ": the variant does not reach its ending.");
         }
         var plain = new Snapshot { Chapter = 3, Hour = 900 };
-        foreach (var duet in new[] { "aranka.trickster.verse.duet", "aranka.trickster.verse.duet_yard" })
+        foreach (var duet in new[] { "aranka.trickster.verse.duet", "aranka.trickster.verse.duet_yard", "aranka.trickster.verse.duet_late", "aranka.trickster.verse.duet_yard_late" })
             foreach (var v in new[] { "shared", "stolen", "hers", "declined" })
                 Reader(duet, "duet", "parlour_" + v, 2, new[] { "aranka.early.duet.seen", "aranka.early.duet." + v }, plain, "aranka.trickster.duet_sung");
         foreach (var night in new[] { "nurah.trickster.prison.night_out", "nurah.trickster.prison.night_out_late" })
