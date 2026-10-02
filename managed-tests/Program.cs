@@ -174,6 +174,25 @@ internal static class Program
             sequences.Add(guid, sequence);
             originalCues.Add(guid, sequence.Cues.ToArray());
         }
+        // NM1: the E14d native epilogue edits the story ships load their reviewed cue, page and sequence as the game does. The
+        // host cannot run Owlcat's element reporting, so each cue's checker is the empty AND (NativeEpilogueEditManagedTests).
+        foreach (var pair in story.NativeEpilogueEdits)
+        {
+            var editSequence = Seed<BlueprintCueSequence>(pair.Value.Sequence);
+            if (editSequence.Cues.Count == 0)
+                foreach (string cue in NativeReferences(native[pair.Value.Sequence], "Cues")) editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
+            var editPage = Seed<BlueprintBookPage>(pair.Value.Page);
+            if (editPage.Cues.Count == 0)
+                foreach (string cue in NativeReferences(native[pair.Value.Page], "Cues")) editPage.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
+            var editCue = Seed<BlueprintCue>(pair.Key);
+            editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
+            editCue.OnShow = new Kingmaker.ElementsSystem.ActionList { Actions = Array.Empty<Kingmaker.ElementsSystem.GameAction>() };
+            editCue.OnStop = new Kingmaker.ElementsSystem.ActionList { Actions = Array.Empty<Kingmaker.ElementsSystem.GameAction>() };
+            editCue.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = new List<BlueprintCueBaseReference>() };
+            editCue.Text = new Kingmaker.Localization.LocalizedString();
+            typeof(Kingmaker.Localization.LocalizedString).GetField("m_Key", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+                .SetValue(editCue.Text, (string)native[pair.Key]["Text"]!["m_Key"]!);
+        }
         foreach (string guid in story.Etudes.Values.Concat(story.CompletedEtudes.Values).Distinct())
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintEtude", StringComparison.Ordinal), "Wrong native etude type: " + guid);
