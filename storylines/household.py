@@ -103,10 +103,21 @@ PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
 # The two keys hold history and can BOTH be true (good history, then corruption). Corruption wins: every good consumer
 # Requires redeemed AND Forbids corrupted. "redeemed" names the good personality, not Desna's completed transformation:
 # touch and release rules keep reading arueshalae.changed. Classification grants no seat, romance, attitude or progression.
-# Known gap (reported): a merely recruited good Arueshalae with none of these outcomes stays unknown (no native good-
-# recruitment reader is bound), and an old good-return save holding only `returned` stays unknown until the Aftertaste.
+# Native good recruitment (coordinator ruling 2026-10-02): her two recruitment etudes, read-only, Playing only (never started
+# or completed here). ArueshalaeRecruitedInDrezen (Ch2 prison, Arusha_DrezenPrison Cue_0044/0061) and
+# ArueshalaeRecruitedFinally (Ch3 redoubt, Fortress_Arusha_End Cue_0039/0052) have no activation condition, no linked area
+# part and no chapter ancestor; nothing completes them but the ArueshalaeCompanion root (Arueshalae_Q3_Failer). Her fall
+# (Q2 Dream_Start Cue_0022 / Dream_End Cue_0013: StartEtude ArueshalaeIsEvil + Unrecruit) does NOT stop them, so the fall
+# itself is bound too (ArueshalaeIsEvil, Playing) and joins `corrupted`: a fallen Arueshalae who was once recruited good
+# reads corrupted (corruption wins), never redeemed only. Accepted gap: an old good-return save holding only `returned`
+# stays unknown until the Aftertaste.
 ARUESHALAE_REDEEMED = "arueshalae.redeemed"
 ARUESHALAE_CORRUPTED = "arueshalae.corrupted"
+ARUESHALAE_ETUDES = {
+    "arueshalae.recruited_drezen": "c2df9c6dd50caba4aade683908ac5ae3",    # ArueshalaeStates/ArueshalaeDrezen/ArueshalaeRecruitedInDrezen
+    "arueshalae.recruited_redoubt": "b3b87ce125827084cae26aaced267697",   # ArueshalaeStates/ArueshalaeRedoubtOutcomes/ArueshalaeRecruitedFinally
+    "arueshalae.fallen": "e85e8acd74d231e44ad7d6d2d5dab43c",              # ArueshalaeStates/ArueshalaeIsEvil (her fall; parent of EvilArusha*)
+}
 _AP = "arueshalae.trickster."
 ARUESHALAE_BRANCH = {
     ARUESHALAE_REDEEMED: [
@@ -114,6 +125,8 @@ ARUESHALAE_BRANCH = {
         [_AP + "aftertaste"],
         [_AP + "returned", _AP + "cost.gift_torn"],
         [_AP + "cost.chaplain"],
+        ["arueshalae.recruited_drezen"],
+        ["arueshalae.recruited_redoubt"],
     ],
     ARUESHALAE_CORRUPTED: [
         ["arueshalae.evil_recruited"],
@@ -121,6 +134,7 @@ ARUESHALAE_BRANCH = {
         [_AP + "returned", _AP + "cost.nocticula_favour"],
         [_AP + "reunited"],
         [_AP + "fallen.house_call"],
+        ["arueshalae.fallen"],
     ],
 }
 
@@ -360,6 +374,12 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting household derived key: " + key)
         payload["Derived"][key] = groups
+    if "arueshalae" in payload["Relationships"]:
+        etudes = payload.setdefault("Etudes", {})
+        for key, guid in ARUESHALAE_ETUDES.items():
+            if etudes.get(key, guid) != guid:
+                raise ValueError("Conflicting Arueshalae branch etude binding: " + key)
+            etudes[key] = guid
     if not trickster_world._bound(payload, KING_GONE):
         kind, guid, _ = trickster_world.BINDINGS[KING_GONE]
         payload.setdefault(kind, {})[KING_GONE] = [guid] if kind in trickster_world.LIST_KINDS else guid

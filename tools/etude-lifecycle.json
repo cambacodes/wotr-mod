@@ -3100,6 +3100,25 @@
     "conditional"
    ]
   },
+  "b3b87ce125827084cae26aaced267697": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeRecruitedFinally",
+    "ArueshalaeRedoubtOutcomes",
+    "ArueshalaeStates",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ArueshalaeRecruitedFinally",
+   "traits": [
+    "hold"
+   ]
+  },
   "b5c19cd01e364df99f6c946c7da14751": {
    "areas": {},
    "cascade_chapter": null,
@@ -3384,6 +3403,25 @@
    "name": "(parent mod / not in blueprints.zip)",
    "traits": [
     "parent_mod"
+   ]
+  },
+  "c2df9c6dd50caba4aade683908ac5ae3": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeRecruitedInDrezen",
+    "ArueshalaeDrezen",
+    "ArueshalaeStates",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ArueshalaeRecruitedInDrezen",
+   "traits": [
+    "hold"
    ]
   },
   "c33407f132b192643a438bd33797efa1": {
@@ -4012,6 +4050,24 @@
    "completed_by": [],
    "conditional": [],
    "name": "NocticulaDead",
+   "traits": [
+    "hold"
+   ]
+  },
+  "e85e8acd74d231e44ad7d6d2d5dab43c": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeIsEvil",
+    "ArueshalaeStates",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "ArueshalaeIsEvil",
    "traits": [
     "hold"
    ]

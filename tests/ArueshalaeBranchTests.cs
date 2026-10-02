@@ -42,10 +42,11 @@ internal static class ArueshalaeBranchTests
         // The groups, exactly (Story.Derived syntax: OR of AND-groups).
         string Groups(string key) => story.Derived.TryGetValue(key, out var g)
             ? string.Join(" | ", g.Select(a => string.Join("+", a))) : "<missing>";
-        check(Groups(Redeemed) == "arueshalae.changed | " + P + "aftertaste | " + P + "returned+" + P + "cost.gift_torn | " + P + "cost.chaplain",
+        check(Groups(Redeemed) == "arueshalae.changed | " + P + "aftertaste | " + P + "returned+" + P + "cost.gift_torn | " + P + "cost.chaplain"
+            + " | arueshalae.recruited_drezen | arueshalae.recruited_redoubt",
             "arueshalae.redeemed groups differ: " + Groups(Redeemed));
         check(Groups(Corrupted) == Recruited + " | " + P + "returned+" + P + "cost.nocticula_debt | " + P + "returned+" + P
-            + "cost.nocticula_favour | " + P + "reunited | " + P + "fallen.house_call", "arueshalae.corrupted groups differ: " + Groups(Corrupted));
+            + "cost.nocticula_favour | " + P + "reunited | " + P + "fallen.house_call | arueshalae.fallen", "arueshalae.corrupted groups differ: " + Groups(Corrupted));
 
         // The native sources are bound as the existing readers bind them (the assembled payload, before any pair prose).
         check(story.Derived.TryGetValue("arueshalae.changed", out var changed)
@@ -58,6 +59,13 @@ internal static class ArueshalaeBranchTests
             "The Ch5 BestEnding dialog is not bound to arueshalae.elysium.");
         check(story.Etudes.TryGetValue(Recruited, out var evil) && evil == "005c2284d7e5ac54c887bb3781e45d0c",
             "EvilArushaRecruited is not bound to arueshalae.evil_recruited.");
+        // Native good recruitment and the fall (read-only; ArueshalaeStates children with no activation condition, area or
+        // chapter cascade): RecruitedInDrezen, RecruitedFinally, and ArueshalaeIsEvil (started by her fall with Unrecruit).
+        foreach (var (key, guid) in new[] { ("arueshalae.recruited_drezen", "c2df9c6dd50caba4aade683908ac5ae3"),
+                     ("arueshalae.recruited_redoubt", "b3b87ce125827084cae26aaced267697"), ("arueshalae.fallen", "e85e8acd74d231e44ad7d6d2d5dab43c") })
+            check(story.Etudes.TryGetValue(key, out var g) && g == guid && !story.PermanentEtudes.Contains(key)
+                && Rules.EtudeHeld(story, key, true, false) && !Rules.EtudeHeld(story, key, false, true),
+                "Arueshalae branch etude " + key + " is not a Playing-only read of " + guid + ".");
         // The recruitment binder reads Playing only: Started-and-dormant or merely Completed never classifies her.
         check(Rules.EtudeHeld(story, Recruited, true, false) && !Rules.EtudeHeld(story, Recruited, false, false)
             && !Rules.EtudeHeld(story, Recruited, false, true), "arueshalae.evil_recruited is not a Playing-only read.");
@@ -106,6 +114,12 @@ internal static class ArueshalaeBranchTests
             ("native release, Cue_0018/0025 seen", new[] { "arueshalae.back_to_reality" }, true, false, "3a"),
             ("native BestEnding started", new[] { "arueshalae.elysium" }, true, false, "3a"),
             ("native evil recruitment Playing", new[] { Recruited }, false, true, "3b"),
+            ("native recruitment in Drezen (Ch2 prison)", new[] { "arueshalae.recruited_drezen" }, true, false, "3a"),
+            ("native recruitment at the redoubt (Ch3)", new[] { "arueshalae.recruited_redoubt" }, true, false, "3a"),
+            ("recruited good, then fell (not re-recruited)", new[] { "arueshalae.recruited_drezen", "arueshalae.fallen" }, true, true, "3b"),
+            ("recruited at the redoubt, fell, recruited evil", new[] { "arueshalae.recruited_redoubt", "arueshalae.fallen", Recruited }, true, true, "3b"),
+            ("fallen, never recruited good", new[] { "arueshalae.fallen" }, false, true, "3b"),
+            ("recruited good, fell, killed in the lair", new[] { "arueshalae.recruited_drezen", "arueshalae.fallen", EvilDead }, true, true, "3b"),
             ("legacy good return, torn gift", new[] { P + "returned", P + "cost.gift_torn", P + "cost.fed_on_you" }, true, false, "3a"),
             ("Aftertaste answered (fed on you)", new[] { P + "returned", P + "cost.fed_on_you", P + "aftertaste", P + "said_every_time" }, true, false, "3a"),
             ("Aftertaste answered (fed on a prisoner)", new[] { P + "returned", P + "cost.fed_on_prisoner", P + "aftertaste", P + "said_if_asked" }, true, false, "3a"),
