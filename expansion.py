@@ -80,6 +80,7 @@ from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
+from storylines import yaniel_radiance  # E10 party-only read: Radiance on the Commander, not in the shared stash
 from storylines import wenduag_trickster, wenduag_cairn
 from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
@@ -619,6 +620,8 @@ def make_expansion(*, independent_tirabade=True):
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    if "yaniel" in payload["Relationships"]:
+        yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)
     # and after the Trickster engine and world, whose late-commitment keys feed <rel>.harem.eligible.
     household.integrate(payload)

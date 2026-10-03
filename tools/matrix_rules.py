@@ -434,7 +434,7 @@ BINDING_SECTIONS = {"Etudes": "Etudes", "CompletedEtudes": "CompletedEtudes", "C
                     "SeenCues": "SeenCues", "SelectedAnswers": "SelectedAnswers", "StartedDialogs": "StartedDialogs",
                     "UnlockableFlags": "UnlockableFlags", "QuestObjectives": "QuestObjectives",
                     "InventoryItems": "InventoryItems", "StartedQuests": "StartedQuests", "Quests(started)": "StartedQuests",
-                    "MainCharacterFacts": "MainCharacterFacts"}
+                    "MainCharacterFacts": "MainCharacterFacts", "PartyItems": "PartyItems"}
 
 
 def rel_ids(c):

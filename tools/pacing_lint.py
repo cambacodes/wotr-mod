@@ -66,7 +66,7 @@ ROMANCE_ETUDES = {
 }
 # Story.json maps whose keys are native bindings (Rules.IsNativeFlag plus the permanent etudes).
 NATIVE_MAPS = ("Etudes", "CompletedEtudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs",
-               "UnlockableFlags", "QuestObjectives", "StartedQuests", "InventoryItems")
+               "UnlockableFlags", "QuestObjectives", "StartedQuests", "InventoryItems", "PartyItems")
 
 
 class SchemaError(Exception):

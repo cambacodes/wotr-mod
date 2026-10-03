@@ -19,6 +19,9 @@ namespace Tirabade
         public Dictionary<string, string> UnlockableFlags = new Dictionary<string, string>();
         public Dictionary<string, string[]> QuestObjectives = new Dictionary<string, string[]>();
         public Dictionary<string, string> InventoryItems = new Dictionary<string, string>();
+        // E10 (party-only): a BlueprintItem in the party inventory (Player.Inventory, which holds every party member's equipped
+        // items), never the shared stash. For scenes where an item must be on the Commander, e.g. a sword drawn or handed over.
+        public Dictionary<string, string> PartyItems = new Dictionary<string, string>();
         public Dictionary<string, string> StartedQuests = new Dictionary<string, string>();
         // E10: a BlueprintFeature (any fact) the main character holds, e.g. a mythic path trick the player chose.
         public Dictionary<string, string> MainCharacterFacts = new Dictionary<string, string>();
@@ -705,7 +708,7 @@ namespace Tirabade
 
         // E10 reader kinds.
         public static IEnumerable<string> ReaderKeys(Story story) => story.UnlockableFlags.Keys.Concat(story.QuestObjectives.Keys)
-            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys).Concat(story.MainCharacterFacts.Keys);
+            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys).Concat(story.MainCharacterFacts.Keys).Concat(story.PartyItems.Keys);
 
         public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
@@ -718,6 +721,7 @@ namespace Tirabade
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
             || story.StartedDialogs.ContainsKey(flag) || story.UnlockableFlags.ContainsKey(flag) || story.QuestObjectives.ContainsKey(flag)
             || story.InventoryItems.ContainsKey(flag) || story.StartedQuests.ContainsKey(flag) || story.MainCharacterFacts.ContainsKey(flag)
+            || story.PartyItems.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.retained_hostile" || flag == "konomi.return_contact_available"
@@ -1153,7 +1157,7 @@ namespace Tirabade
             foreach (var scene in story.Scenes)
                 if (scene.Kind != null && (Array.IndexOf(SceneKinds, scene.Kind) < 0 || !IsRemote(scene)))
                     throw new InvalidOperationException("Invalid scene kind (E15c: letter, visit, sending, memory, event, invitation; remote scenes only): " + scene.Id);
-            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
+            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.PartyItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");
             foreach (var pair in story.CompletedQuests)
@@ -1209,6 +1213,7 @@ namespace Tirabade
             foreach (var key in readers)
             {
                 string? guid = story.UnlockableFlags.TryGetValue(key, out var f) ? f : story.InventoryItems.TryGetValue(key, out var i) ? i
+                    : story.PartyItems.TryGetValue(key, out var pi) ? pi
                     : story.StartedQuests.TryGetValue(key, out var q) ? q : story.MainCharacterFacts.TryGetValue(key, out var mf) ? mf
                     : story.QuestObjectives.TryGetValue(key, out var o) && o?.Length == 2
                         && ObjectiveStates.Contains(o[1]) ? o[0] : null;

@@ -151,7 +151,7 @@ class Model:
         self.permanent_etudes = set(story.get("PermanentEtudes", []))
         nk = {}
         for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"):
+                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts"):
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
@@ -273,7 +273,7 @@ class Model:
     def is_persistent_native(self, f):
         sec = self.native.get(f)
         if sec is None: return False
-        if sec in ("UnlockableFlags", "InventoryItems", "QuestObjectives"): return False   # values can change back
+        if sec in ("UnlockableFlags", "InventoryItems", "PartyItems", "QuestObjectives"): return False   # values can change back
         if sec != "Etudes": return True
         return (f in self.permanent_etudes or f.endswith("_dead") or f.endswith("_gone") or f.startswith("ascend_")
                 or f in ("sacrifice", "true_lich"))
@@ -1488,6 +1488,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, g in story.get("UnlockableFlags", {}).items(): want.append((g, "BlueprintUnlockableFlag", "UnlockableFlags." + k))
         for k, v in story.get("QuestObjectives", {}).items(): want.append((v[0], "BlueprintQuestObjective", "QuestObjectives." + k))
         for k, g in story.get("InventoryItems", {}).items(): want.append((g, "BlueprintItem*", "InventoryItems." + k))
+        for k, g in story.get("PartyItems", {}).items(): want.append((g, "BlueprintItem*", "PartyItems." + k))
         for k, g in story.get("StartedQuests", {}).items(): want.append((g, "BlueprintQuest", "StartedQuests." + k))
         for k, g in story.get("MainCharacterFacts", {}).items(): want.append((g, "BlueprintFeature", "MainCharacterFacts." + k))
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
@@ -2121,7 +2122,7 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
     matrix = json.loads(Path(matrix_path).read_text(encoding="utf-8"))
     model = Model(story)
     guid_to_key = {}
-    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems"):
+    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems", "PartyItems"):
         for k, g in (story.get(sec) or {}).items(): guid_to_key.setdefault(str(g).lower(), k)
     for k, v in (story.get("QuestObjectives") or {}).items(): guid_to_key.setdefault(str(v[0]).lower(), k)
     for k, v in (story.get("SeenCues") or {}).items():

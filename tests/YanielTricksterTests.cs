@@ -46,11 +46,16 @@ internal static class YanielTricksterTests
         ["yaniel.radiance_ha6"] = "cf5c1a507825f184dacbc3abe14b9db1",
     };
 
+    private static string PartyKey(string form) => "yaniel.radiance_party." + form.Substring("yaniel.radiance_".Length);
+
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
+        // A held form is on the Commander in these worlds (E10 party-only read: yaniel_radiance); the stash-only world is
+        // YanielRadianceTests'.
+        foreach (var form in Forms.Keys.Where(flags.Contains)) state.Flags.Add(PartyKey(form));
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 300;
@@ -72,6 +77,7 @@ internal static class YanielTricksterTests
     {
         var now = Program.Copy(state);
         foreach (var key in keys) { now.Flags.Add(key); now.Times.Remove(key); }
+        foreach (var form in Forms.Keys.Where(keys.Contains)) { now.Flags.Add(PartyKey(form)); now.Times.Remove(PartyKey(form)); }   // carried
         Rules.Complete(story, now);
         foreach (var flag in now.Flags.Where(f => !now.Times.ContainsKey(f)).ToList()) now.Times[flag] = now.Hour;
         return now;
@@ -96,7 +102,7 @@ internal static class YanielTricksterTests
                     foreach (var effect in choice.Set)
                         if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                     if (choice.RemoveItem != null)
-                        foreach (var held in Forms.Where(f => f.Value == choice.RemoveItem).Select(f => f.Key)) next.Flags.Remove(held);
+                        foreach (var held in Forms.Where(f => f.Value == choice.RemoveItem).Select(f => f.Key)) { next.Flags.Remove(held); next.Flags.Remove(PartyKey(held)); }
                     var edge = new List<(string, int)>(path) { (id, i) };
                     if (choice.Next != null || choice.Check != null)
                         foreach (var target in Rules.NextNodes(choice)) Visit(target, Program.Copy(next), edge);

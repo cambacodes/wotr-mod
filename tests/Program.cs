@@ -69,7 +69,7 @@ internal static class Program
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                 // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
                 if (choice.RemoveItem != null && story != null)
-                    foreach (var held in story.InventoryItems.Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
+                    foreach (var held in story.InventoryItems.Concat(story.PartyItems).Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
                         next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
                     foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took);
@@ -258,6 +258,7 @@ internal static class Program
                 .Concat(story.UnlockableFlags.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintUnlockableFlag", Source = e.Key }))
                 .Concat(story.QuestObjectives.Select(e => new { Guid = e.Value[0], ExpectedType = "BlueprintQuestObjective", Source = e.Key }))
                 .Concat(story.InventoryItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
+                .Concat(story.PartyItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
                 .Concat(story.StartedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
                 .Concat(story.MainCharacterFacts.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintFeature", Source = e.Key }))
                 .Concat(story.RemovableItems.Select(guid => new { Guid = guid, ExpectedType = "BlueprintItem*", Source = "RemovableItems" }))
@@ -552,6 +553,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) GalfreyTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) YanielTricksterTests.Run(story, Check);
+            if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) YanielRadianceTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
