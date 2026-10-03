@@ -5,7 +5,7 @@ using Tirabade;
 
 // Shyka's page (Writer/handoffs/12-TRICKSTER-FORESIGHT.md §4 acceptance tests 1-14, §7, and §2.4a, the echoes): the Council
 // bargain Shyka may refuse, the price (one memory, or two, or the counteroffer), the memory page and its Chapter 5 fallback,
-// the east-gate misstep on exactly one surface, the Chapter 5 line, the witnesses, Last Call's paragraphs and the Ledger's
+// the east-gate misstep in one scene on two native lists, the Chapter 5 line, the witnesses, Last Call's paragraphs and the Ledger's
 // journal lines; then the echo and gap APIs: optional, appended, neutral (same outcomes with and without the page), at most
 // one echo per route per chapter, Trickster-only. Nothing outside the listed scenes reads trickster.foresight.*.
 internal static class ForesightTests
@@ -177,11 +177,11 @@ internal static class ForesightTests
         check(offer.Nodes.SelectMany(n => n.Choices).All(c => c.Set.All(f => f == Told)),
             "Foresight_OfferLine: the Chapter 5 line has an effect beyond reading the receipt.");
 
-        // 8 + §7.4. The misstep: exactly one surface, inline on Thaberdine's own lists, Chapters 3 and 5; Favors -50.
+        // 8 + §7.4. The misstep: one scene on two native lists, Chapters 3 and 5; Favors -50.
         var setters = story.Scenes.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(GateWatch))).ToArray();
         check(setters.Length == 1 && setters[0] == watch && watch.AnswerLists.OrderBy(x => x).SequenceEqual(new[] { KingC3, KingC5 }.OrderBy(x => x))
               && watch.ReturnToList && watch.InteractionHub == null && watch.MinChapter == 3 && watch.MaxChapter == 5 && watch.Chapters.SequenceEqual(new[] { 3, 5 }),
-            "Foresight_Gate: the fire watch is not exactly one inline surface on the King's lists in Chapters 3 and 5.");
+            "Foresight_Gate: the fire watch is not one scene on both of the King's lists in Chapters 3 and 5.");
         foreach (var ch in new[] { 3, 5 })
         {
             check(Avail(watch, World(story, ch, "trickster", "trickster.ever", Accepted, Promise, GateFire)), "Foresight_Gate: no fire watch in Chapter " + ch + " with gate_fire.");
@@ -190,11 +190,18 @@ internal static class ForesightTests
         }
         check(!Avail(watch, World(story, 4, "trickster", "trickster.ever", Accepted, Promise, GateFire)), "Foresight_Gate: a fire watch in Chapter 4.");
         var post = N(watch, "ask").Choices[0];
-        var posted = Program.Walk(watch, World(story, 3, "trickster", "trickster.ever", Accepted, Promise, GateFire));
-        check(post.Crusade?.Resource == "Favors" && post.Crusade?.Amount == -50 && N(watch, "ask").Choices[1].Abort
-              && posted.Count(o => o.Has(GateWatch)) == 1 && posted.Count(o => !o.Has(watch.Id) && !o.Has(GateWatch)) == 1
-              && posted.Where(o => o.Has(GateWatch)).All(o => !Avail(watch, o)),
-            "Foresight_Gate: posting the watch is not Favors -50 and gate_watch, or [Never mind] sets something.");
+        check(post.Crusade?.Resource == "Favors" && post.Crusade?.Amount == -50 && N(watch, "ask").Choices[1].Abort,
+            "Foresight_Gate: posting the watch is not Favors -50, or [Never mind] does not abort.");
+        foreach (var ch in new[] { 3, 5 })
+        {
+            var before = World(story, ch, "trickster", "trickster.ever", Accepted, Promise, GateFire);
+            var posted = Program.Walk(watch, before);
+            check(posted.Count(o => o.Has(GateWatch)) == 1
+                  && posted.Count(o => !o.Has(watch.Id) && !o.Has(GateWatch) && New(before, o).Count == 0) == 1
+                  && posted.Where(o => o.Has(GateWatch)).All(o => New(before, o).SetEquals(new[] { GateWatch, watch.Id })
+                      && !Avail(watch, o) && !Avail(watch, Later(o, 0, ch == 3 ? 5 : 3))),
+                "Foresight_Gate: Chapter " + ch + " does not produce one watch outcome shared by both visits, or [Never mind] sets something.");
+        }
 
         // 10. Last Call: exactly one report paragraph per paid combination on each Block A page; none without the page.
         string[][] combos = { new[] { Promise }, new[] { Square }, new[] { Caves }, new[] { Raised, Promise, Square }, new[] { Raised, Promise, Caves }, new[] { Raised, Square, Caves } };

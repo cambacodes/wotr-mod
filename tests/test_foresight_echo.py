@@ -3,8 +3,11 @@
 page, costs something, and continues with the host node's own choices. Run: python -m unittest tests.test_foresight_echo"""
 from pathlib import Path
 import copy
+import json
+import os
 import sys
 import unittest
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -42,6 +45,8 @@ class EchoApiTests(unittest.TestCase):
     def test_proposals_are_registered_but_not_exported(self):
         hosts = {e["rel"]: e["host"] for e in foresight.ECHOES}
         self.assertEqual(hosts, PROPOSED)
+        self.assertTrue(set(PROPOSED).isdisjoint(foresight.ALLOCATED))
+        self.assertEqual(foresight.active_echoes(), [])
         story = expansion.make_expansion()
         self.assertFalse(any(nd["Id"].startswith("echo.") for s in story["Scenes"] for nd in s["Nodes"]))
 
@@ -107,6 +112,60 @@ class EchoApiTests(unittest.TestCase):
         with self.assertRaises(ValueError):                     # no sense
             foresight.echo("d", "t.d", "start", "[D.]", foresight.variant("x"), sense="", wrong="w", misstep="z",
                            cost=("Favors", -1))
+
+
+class ForesightSurfaceTests(unittest.TestCase):
+    def test_one_fire_watch_on_both_chapter_lists(self):
+        story = expansion.make_expansion()
+        setters = [s for s in story["Scenes"] if any(foresight.GATE_WATCH in ch["Set"]
+                   for nd in s["Nodes"] for ch in nd["Choices"])]
+        self.assertEqual([s["Id"] for s in setters], [foresight.WATCH_SCENE])
+        watch = setters[0]
+        self.assertEqual(watch["AnswerLists"], ["1a17d8053a3be7f47a7908eb6706f2fe",
+                                              "6dccfd39947ef4242a8afbe36b21a46c"])
+        self.assertEqual(watch["Chapters"], [3, 5])
+        self.assertEqual((watch["MinChapter"], watch["MaxChapter"]), (3, 5))
+        self.assertTrue(watch["ReturnToList"])
+        self.assertFalse(watch.get("Remote"))
+        self.assertFalse(watch.get("InteractionHub"))
+        self.assertIn(foresight.GATE_FIRE, watch["Requires"])
+        self.assertIn(foresight.GATE_WATCH, watch["Forbids"])
+        self.assertIn("fool_king.gone", watch["Forbids"])
+        post, leave = watch["Nodes"][0]["Choices"]
+        self.assertEqual(post["Crusade"], {"Resource": "Favors", "Amount": -50})
+        self.assertTrue(leave["Abort"])
+        self.assertEqual(leave["Set"], [])
+
+
+GAME = Path(os.environ.get("RRT_GAME_DIR") or
+            r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure")
+
+
+@unittest.skipUnless((GAME / "blueprints.zip").exists(), "blueprints.zip not installed")
+class ForesightCanonTests(unittest.TestCase):
+    def test_commander_punchline_and_areelu_sacrifice_are_distinct(self):
+        localization = json.loads((GAME / "Wrath_Data/StreamingAssets/Localization/enGB.json")
+                                  .read_text(encoding="utf-8-sig"))["strings"]
+        with zipfile.ZipFile(GAME / "blueprints.zip") as blueprints:
+            def read(path):
+                return json.loads(blueprints.read(path))
+
+            base = "World/Dialogs/c6/SecondFloor/GrandFinal/"
+            commander = read(base + "Answer_0011.jbp")
+            areelu = read(base + "Answer_0055.jbp")
+            self.assertEqual(commander["AssetId"], "10e6b2a8c754dae4b81e55ad6d0918b2")
+            self.assertEqual(areelu["AssetId"], "91c5eca80c8779c4a8bd5754f5533cad")
+            self.assertIn("I'm the punchline!", localization[commander["Data"]["Text"]["m_Key"]])
+            self.assertIn("Use Areelu's life", localization[areelu["Data"]["Text"]["m_Key"]])
+            endings = "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/"
+            player_end = "!bp_" + read(endings + "Ending_PlayerSacrifice.jbp")["AssetId"]
+            areelu_end = "!bp_" + read(endings + "Ending_AreeluSacrificeTrickster.jbp")["AssetId"]
+            for answer, own, other in ((commander, player_end, areelu_end), (areelu, areelu_end, player_end)):
+                with self.subTest(answer=answer["AssetId"]):
+                    starts = [a["Etude"] for a in answer["Data"]["OnSelect"]["Actions"]
+                              if a["$type"].endswith(", StartEtude")]
+                    self.assertIn(own, starts)
+                    self.assertNotIn(other, starts)
 
 
 if __name__ == "__main__":

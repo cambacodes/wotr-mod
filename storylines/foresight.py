@@ -17,7 +17,8 @@ may require it (echo beats, echo-informed preparations, foresight-leaning device
 it opens the road and never walks it: every gated outcome keeps its own checks and costs. The page is read only through the
 public keys below, by the consumers listed in READERS and CONSUMERS (tests/ForesightTests.cs: Foresight_GateContract).
 Route echoes (§2.4a, §2.9) export only when the coordinator allocates the slot (ALLOCATED, 06 "Echo slots"); Devarra's
-and Terendelev's are registered as proposals. Each continues with the host node's own choices.
+and Terendelev's remain inactive proposals: colour never warrants allocation. A slot requires a documented, unresolved
+believability problem that the woman's existing canon clues cannot solve. Each continues with the host node's own choices.
 
 Scenes (Relationship "foresight", a framework: never a romance, never closed; Shyka is a non-romance ally):
   trickster.foresight.page          Ch3 or Ch5 (while Shyka is present), inline on Council_Shyka AnswersList_0003
@@ -205,6 +206,8 @@ SCENES.append(scene(PAGE_SCENE, "Shyka's page", "Shyka", 3, "[Offer Shyka someth
     _second("m2_second_s", "s", ("p", "c")),
     _second("m2_second_c", "c", ("p", "s")),
     *(_read_node(key) for key, _, _ in COMBOS),
+    # Commander sacrifice: GrandFinal/Answer_0011 10e6b2a8c754dae4b81e55ad6d0918b2.
+    # Answer_0055 91c5eca80c8779c4a8bd5754f5533cad sacrifices Areelu; it is not this glimpse.
     nar("g_punchline", '''{n}The page is not paper. It is the inside of your own eyelids, and Shyka turns it.{/n}
 {n}Threshold. You know it the way you know a room from a dream: the rift, the light, a sound like laughter coming up from underneath the world. A Commander who looks very like you is laughing at something enormous, and the joke lands, and it lands on the Commander, who goes down and does not get up. It is raining. The rain is wrong. It does not rain there; Shyka has put the rain in, the way a forger leaves one letter crooked so that the forgery can be found.{/n}
 "That one is yours," {n}says Shyka.{/n} "Mostly."''',
@@ -241,7 +244,7 @@ SCENES.append(scene(MEMORY_SCENE, "Shyka's handwriting", "Shyka", 3, "", [
     Remote=True, Kind="memory", Chapters=[3, 4, 5], RequiresAnyGroups=[list(COSTS)]))
 
 
-# --- 3. The misstep (§2.4, §7.4): exactly one surface, inline on Thaberdine's own tavern list --------------------------------
+# --- 3. The misstep (§2.4, §7.4): one scene on two native tavern lists, in Chapters 3 and 5 --------------------------------
 
 SCENES.append(scene(WATCH_SCENE, "A royal watch", "Thaberdine", 3,
     '"How many of your drinking companions could stand a night watch?"', [
@@ -382,7 +385,8 @@ ECHO_ENTRIES = set()
 # 12 §2.9 Echo discipline: the mod-wide budget and the registry axes. Allocation is the coordinator's (06 "Echo slots").
 ECHO_CAP_TOTAL, ECHO_CAP_ROUTE, ECHO_CAP_CHAPTER = 8, 1, 2
 # Mirror of 06-ROUTE-REGISTRY "Echo slots": route -> host scene of the ALLOCATED slot. A registered echo whose route and host
-# are not here stays inactive (kept in ECHOES as a proposal, absent from the export). Only the coordinator adds rows.
+# are not here stays inactive (kept in ECHOES as a proposal, absent from the export). Only the coordinator adds rows,
+# with a documented, unresolved believability problem that existing canon clues cannot solve, never merely for colour.
 ALLOCATED = {}
 SENSES = ("sight", "sound", "smell", "taste", "touch")
 
