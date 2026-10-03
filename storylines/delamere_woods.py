@@ -104,7 +104,7 @@ visit(P + "woken.count", "Fifty-three", [
         c('"No. They stay behind the walls. The woods aren\'t safe, and you\'re one bow."', "refused", flags=(COUNTED, VILLAGE_REFUSED))),
     dl("given", '''"Volunteers." {n}The word tastes strange to her.{/n} "In my day nobody volunteered to leave a hearth. We shall see what kind of village volunteers make." {n}She watches your quartermaster's clerk being sent for, and the first family already gathering its bundles by the gate, and something in her face eases.{/n} "Three families. Maybe four. It is enough to start a hearth. I will teach them the woods. The woods will teach them the rest."''',
         c("Continue", "leave")),
-    dl("forced", '''"Good." {n}No triumph in it. The satisfaction of a tool fitted to the hand it was made for.{/n} "I will choose at the new moon. They will hate me. They will live." {n}She is already looking over the camp again, and you can see her choosing: this family, not that one; the widow with three boys, yes; the old man who coughs, no.{/n} "You have not done an easy thing, stag. Nobody will thank you for it. That is how you know it was a real thing."''',
+    dl("forced", '''"Good." {n}No triumph in it. The satisfaction of a tool fitted to the hand it was made for.{/n} "I will choose at the new moon. They will hate me. They will live." {n}She is already looking over the camp again, and you can see her choosing: this family, not that one; the widow with three boys, yes; the old man who coughs, no.{/n} "You have not done an easy thing, stag. Nobody will thank you for it. Count the hearths smoking in those clearings at midwinter, and the children not buried in spring. That is all the thanks my law ever got."''',
         c("Continue", "leave")),
     dl("refused", '''"One bow." {n}She repeats it with something close to contempt, and then, slowly, something close to respect.{/n} "You say no to me to my face, and you do not dress it up. Good. The last man who told me no had brothers and knives." {n}She looks at the wall, the camp, the smoke.{/n} "Keep them, then. Keep your hive. But when the rot starts in it, and it will, remember who told you where to cut."''',
         c("Continue", "leave")),
@@ -335,7 +335,7 @@ The woods are quiet. The Horned One's people went west, as you said. I went afte
 They tell me you have gone down into the Abyss. They say it as if it were a place. I hunted in bad places when I was alive, and I have been dead, and I do not believe anywhere is worse than the one I lay in. Come back and tell me I am wrong.
 The woods are quiet. Some of the Horned One's people were still in these hills when you went down. I went after them. There are nine fewer. I left them in the trees on the west road so the others would see."''',
         c("Continue", "letter2")),
-    dl("letter2", '''"I have counted the days since you went. That is what I do. I do not want you to think it means anything. It is fifty-one.
+    dl("letter2", '''"I have counted the days since you went. That is what I do. I do not want you to think it means anything. I have not lost count once.
 You left with one good leg and one bad one. I gave you leave to limp on the bad one. I did not give you leave to lose the good one. Bring back both.
 Delamere, who was Blessed."''',
         c("[Keep the bark.]", flags=(BARK,)),
@@ -385,6 +385,10 @@ visit(P + "woken.my_woods", "My woods", [
 
 # --- 6. The second hunt: her yes is letting herself be caught (the commit) ------------------------------------------
 
+HOLLOW = '''{n}The hollow is a hunter's blind: a lean-to of cut boughs under an overhang of rock, screened with bracken, facing the water. Embers glow in a ring of stones. Stretched over the floor of it, still smelling of blood and woodsmoke, is a stag's hide, fresh, the pale hair on the belly side turned up.{/n}
+{n}She is standing on the far side of the fire with her bow unstrung in one hand, as if she had been waiting a long time and had only just stood up.{/n}'''
+
+
 def second_hunt(opening):
     """The hunt, the catch, the blind and the morning. `opening` is the first node (Kyado's list, or a page)."""
     return [opening,
@@ -405,11 +409,14 @@ def second_hunt(opening):
         nar("horn", '''{n}You take the horn from your belt.{/n}
 {n}It is cheating. You know it is cheating. It is the one call in these woods that she cannot let go unanswered: "When the stag calls, she answers." You lift it anyway, because you are what you are, and you give it everything, the three barks and the long broken roar, and it goes out over the black woods and the frozen clearings and the sleeping temple on its hill.{/n}
 {n}Somewhere below you, close, a woman swears in old Kellid. Then there is a light: a fire, uncovered, in a hollow where the stream bends.{/n}''',
-            c("Continue", "hollow", flags=(CALLED,))),
-        nar("hollow", '''{n}The hollow is a hunter's blind: a lean-to of cut boughs under an overhang of rock, screened with bracken, facing the water. Embers glow in a ring of stones. Stretched over the floor of it, still smelling of blood and woodsmoke, is a stag's hide, fresh, the pale hair on the belly side turned up.{/n}
-{n}She is standing on the far side of the fire with her bow unstrung in one hand, as if she had been waiting a long time and had only just stood up.{/n}''',
-            c("Continue", "called", requires=(CALLED,)),
-            c("Continue", "found", forbids=(CALLED,))),
+            c("Continue", "hollow_called", flags=(CALLED,))),
+        # Polish (Sol INT): the blind reached by trail or thought is always "found"; the horn's own path reaches "called"
+        # (hollow_called). called_her persists for the record, so it no longer selects the line on a later night's attempt.
+        # The old gated choice is retired (chapter_later is held from Chapter 2 on), its index kept.
+        nar("hollow", HOLLOW,
+            c("Continue", "called", requires=(CALLED,), forbids=("chapter_later",)),
+            c("Continue", "found")),
+        nar("hollow_called", HOLLOW, c("Continue", "called")),
         dl("called", '''"You blew the horn." {n}Her voice is thick with something that might be outrage and might not.{/n} "You cheat, stag. You cheat at everything. You called me with my own vow, the way a poacher calls a hind with a reed." {n}She tosses the bow down on the bracken.{/n} "I should run again, and make you do it properly. I find I do not want to."''',
             c("Continue", "stag_kill")),
         dl("found", '''"You found me." {n}She sounds, of all things, pleased.{/n} "Without the horn. I thought you would blow the horn. I thought you would stand in the middle of my woods and cheat, and I would have to decide whether to come." {n}She tosses the bow down on the bracken.{/n} "You walked well. On the outside of the foot, the way I showed you. I heard you coming for the last half mile and not before."''',
@@ -548,13 +555,17 @@ visit(P + "woken.day_owed", "The day owed", [
     nar("roofs", '''{n}You take to the roofs, because she will not expect a stag on the roofs. She is waiting on the second one.{/n}
 {n}She does not shoot. She does not need to. She simply steps out from behind a chimney and puts out one foot, and your bad leg does what it always does now, and you go down on the frozen tiles with the whole of Drezen spread out below you, asleep and white with frost.{/n}''',
         c("Continue", "caught_again")),
-    dl("caught_again", '''{n}She kneels over you, exactly as she did in the woods on the night she woke, one knee on your chest, the knife at your throat, and her breath is coming as hard as yours.{/n} "Easy, brother. You ran well." {n}Her voice is shaking, and it is not with cold.{/n} "Worse than the first time. You are getting slow. That is my doing."''',
+    dl("caught_again", '''{n}She kneels over you as she did on the night she woke, a knee pinning you to the tiles, the knife at your throat, and her breath is coming as hard as yours.{/n} "Easy, brother. You ran well." {n}Her voice is shaking, and it is not with cold.{/n} "Worse than the first time. You are getting slow. That is my doing."''',
         c('"Go on, then. Finish it."', "no_finish"),
-        c('"Not yet. Hunt me again."', "again"),
-        c("[Pull her down to you.]", "down")),
-    dl("no_finish", '''"No." {n}The knife goes back in its sheath.{/n} "I said it in the woods. I will say it every time. I will never finish it." {n}She bends down until her forehead rests on yours.{/n} "If I finish it, the hunt is over, and a hunt that is over lets its hunter lie down. I am not lying down again, stag. Not for a long time."''',
+        c('"Not yet. Hunt me again."', "again", requires=(SAID_AGAIN,)),
+        c("[Pull her down to you.]", "down"),
+        # Polish (Sol INT): the same answer for a Commander who said something else in the leaves (or an older save).
+        c('"Not yet. Hunt me again."', "again_new", forbids=(SAID_AGAIN,))),
+    dl("no_finish", '''"No." {n}The knife goes back in its sheath.{/n} "I said it the night I woke. I will say it every time. I will never finish it." {n}She bends down until her forehead rests on yours.{/n} "If I finish it, the hunt is over, and a hunt that is over lets its hunter lie down. I am not lying down again, stag. Not for a long time."''',
         c("Continue", "cold")),
     dl("again", '''{n}Her face does something complicated.{/n} "That is what you said the first time. In the leaves, with my arrow in you." {n}The knife goes back in its sheath.{/n} "You are a fool, and I have woken up in love with a fool, and I would not trade it for all of Sarkoris." {n}She bends down until her forehead rests on yours.{/n} "Again. Every frost, as long as your leg holds out. And longer."''',
+        c("Continue", "cold")),
+    dl("again_new", '''{n}Her face does something complicated.{/n} "In the leaves, with my arrow in you, you said something else. You have learned the right words since." {n}The knife goes back in its sheath.{/n} "You are a fool, and I have woken up in love with a fool, and I would not trade it for all of Sarkoris." {n}She bends down until her forehead rests on yours.{/n} "Again. Every frost, as long as your leg holds out. And longer."''',
         c("Continue", "cold")),
     nar("down", '''{n}You pull her down by the lacing of her leathers, and she comes, laughing into your mouth, the knife clattering away down the tiles into somebody's gutter. For a while the frost does not matter at all.{/n}''',
         c("Continue", "cold")),

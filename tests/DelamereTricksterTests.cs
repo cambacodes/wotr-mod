@@ -375,6 +375,17 @@ internal static class DelamereTricksterTests
         check(Rules.Available(story, huntPage, Later(story, World(story, 3, "trickster.ever", P + "second_hunt_offered", "kyado.dead"), 24))
               && Rules.Available(story, huntLate, Later(story, World(story, 5, "trickster.ever", P + "second_hunt_offered"), 24)),
             "The second hunt has no page when Kyado is dead, or in Chapter 5.");
+        // Trk_Delamere_HuntRetry (polish): horn, postpone, then a later night's tracking finds her; called_her from the first
+        // night does not make her accuse the Commander of the horn. The physical scene and both page twins.
+        foreach (var s in new[] { hunt, huntPage, huntLate })
+        {
+            var retry = World(story, s.Chapters[0], "trickster.ever", P + "second_hunt_offered", P + "called_her", "kyado.dead");
+            var hollow = s.Nodes.Single(n => n.Id == "hollow");
+            check(hollow.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, retry)).All(c => c.Next == "found")
+                  && Choice(s, "horn", 0).Next == "hollow_called" && s.Nodes.Single(n => n.Id == "hollow_called").Choices.All(c => c.Next == "called")
+                  && Choice(s, "trail", 0).Next == "hollow" && Choice(s, "thought", 0).Next == "hollow" && Pages(s, retry).Contains("found"),
+                "Trk_Delamere_HuntRetry: an earlier night's horn decides what she says after a clean track: " + s.Id);
+        }
         // Trk_Delamere_Lie: a lie about her god must be taken back in her woods.
         var liar = Later(story, After(woods, lie, "want", 0).First(), 24);
         check(After(hunt, liar, "the_lie", 0).First().Has("delamere.committed") || Program.Walk(hunt, liar).Any(r => r.Has(P + "confessed") && r.Has("delamere.committed")),
@@ -383,6 +394,14 @@ internal static class DelamereTricksterTests
         check(kept.Has("delamere.closed") && kept.Has(P + "kept_the_lie") && !kept.Has("delamere.committed"),
             "Trk_Delamere_Lie: keeping the lie is not a hard no.");
 
+        // Trk_Delamere_DayOwedRecall (polish): "that is what you said the first time" only for the Commander who said it.
+        foreach (var said in new[] { P + "stag_said_again", P + "stag_said_missed", P + "stag_said_finish", "" })
+        {
+            var frost = Later(story, World(story, 3, caught.Flags.Concat(said == "" ? new string[0] : new[] { said }).ToArray()), 72);
+            var recall = Pages(owed, frost);
+            check(said == P + "stag_said_again" ? recall.Contains("again") && !recall.Contains("again_new") : recall.Contains("again_new") && !recall.Contains("again"),
+                "Trk_Delamere_DayOwedRecall: the first frost misremembers the leaves for " + (said == "" ? "an older save" : said));
+        }
         // After the commit: the day owed, and what came of the count.
         check(Rules.Available(story, owed, Later(story, caught, 72)) && After(owed, caught, "cold", 0).First().Has(P + "first_frost"),
             "The day owed is not collected after the commit.");

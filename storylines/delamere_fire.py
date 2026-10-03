@@ -361,7 +361,7 @@ visit(P + "woken.hide", "The hide", [
         c("Continue", "tight")),
     dl("remember", '''"You will remember." {n}She pulls the first lace tight enough to make you hiss.{/n} "Every stair. Every frost. That is my mark on you and it is not going anywhere. But a mark is not a punishment. I did not break your leg to watch you fall over, jester. I broke it because you ran well and I had to stop you somehow."''',
         c("Continue", "tight")),
-    nar("tight", '''{n}When she is done she sits back on her heels and looks at her work. The brace runs from below your knee to the arch of your foot, laced up the outside with gut, and where it crosses the old wound she has stitched a small mark into the hide in red thread: an arrow, flying, with nothing in front of it.{/n}
+    nar("tight", '''{n}When she is done she sits back on her heels and looks at her work. The brace runs from below your knee to the arch of your foot, laced up the outside with gut, to carry the weight the torn thigh above it will not. Over the shin she has stitched a small mark into the hide in red thread: an arrow, flying, with nothing in front of it.{/n}
 {n}"Stand," she says. You stand. The ankle holds. She watches you walk to the window and back, and something in her face eases that you did not know was tight.{/n}''',
         c("Continue", "count")),
     dl("count", '''"Good. Now hear me, because there is a thing I have been meaning to say, and I say things badly indoors." {n}She stays on her knees on your floor. It does not make her look any smaller.{/n}
