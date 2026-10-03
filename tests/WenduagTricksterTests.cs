@@ -86,7 +86,7 @@ internal static class WenduagTricksterTests
 
         var rel = story.Relationships["wenduag"];
         var mine = story.Scenes.Where(s => s.Relationship == "wenduag").ToArray();
-        var pages = mine.Where(s => s.Owner == "WenduagEpilogue").ToArray();
+        var pages = mine.Where(s => s.Owner == "WenduagEpilogue" && !Rules.IsNativeReplacement(story, s)).ToArray();   // native-slide texts are not pages
         var stage = S(P + "killed.stage");
         var cairn = S(P + "killed.cairn");
         var back = S(P + "killed.back");
@@ -132,7 +132,7 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Bindings: the route starts an etude, spends a Word Made True or raises the dead (she was never dead).");
         check(mine.Where(s => s.Id.StartsWith(P + "early.", StringComparison.Ordinal)).All(s => !s.Requires.Contains("trickster") && !s.Requires.Contains("trickster.ever"))
               && mine.Where(s => !s.Id.StartsWith(P + "early.", StringComparison.Ordinal) && !s.Id.StartsWith("wenduag.lastcall", StringComparison.Ordinal))
-                  .All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
+                  .All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever") || s.Requires.Contains(Rules.TricksterNow)),
             "Path fit (v1): the early beats must be N-all and everything else Trickster-gated.");
         var presence = story.Presences["wenduag.presence"];
         check(story.Presences.Keys.Count(k => k.StartsWith("wenduag", StringComparison.Ordinal)) == 1 && presence.Mode == "spawn-copy"

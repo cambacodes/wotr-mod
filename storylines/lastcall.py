@@ -155,8 +155,7 @@ def last_joke(id, lists, heroic):
     debts = partners.open_debts()
     at_the_rift(id, "The last joke", '"That\'s everyone. Last call."', [nar("wound", LAST_JOKE_TEXT, *choices)],
                 requires=("trickster", "trickster.ever", OPEN), lists=lists,
-                forbids=("trickster.lastcall.last_joke.areelu" if heroic else "trickster.lastcall.last_joke",) + tuple(k for k, _ in debts),
-                ForbidOverrides={k: r for k, r in debts})
+                forbids=("trickster.lastcall.last_joke.areelu" if heroic else "trickster.lastcall.last_joke",) + tuple(debts))
 
 
 last_joke("trickster.lastcall.last_joke", SACRIFICE_LISTS, heroic=True)
@@ -265,6 +264,20 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting Last Call derived key: " + key)
         payload["Derived"][key] = groups
+    # Engine-q2 item 3: each partner coda plays only while her route is open (a return reopens it).
+    for key, (groups, routes) in partners.page_guards().items():
+        if any(rel not in payload["Relationships"] for rel in routes) or key in payload["Derived"]:
+            raise ValueError("Last Call coda guard: unknown route or conflicting key: " + key)
+        payload["Derived"][key] = groups
+        payload.setdefault("DerivedOpenRoutes", {})[key] = list(routes)
+    # Engine-q2 item 3: each call-in is due only while its partner's route is open (and its debt unresolved).
+    for key, (groups, routes, forbids) in partners.call_guards().items():
+        missing = [rel for rel in routes if rel not in payload["Relationships"]]
+        if missing or key in payload["Derived"]:
+            raise ValueError("Last Call call-in guard: unknown route or conflicting key: " + key)
+        payload["Derived"][key] = groups
+        payload.setdefault("DerivedOpenRoutes", {})[key] = list(routes)
+        payload.setdefault("DerivedForbids", {})[key] = list(forbids)
     # trickster_world.integrate expands only its own composites, so bind the native readers these composites stand on.
     for leaf in sorted({k for groups in derived().values() for g in groups for k in g}):
         if leaf in trickster_world.BINDINGS and not trickster_world._bound(payload, leaf):

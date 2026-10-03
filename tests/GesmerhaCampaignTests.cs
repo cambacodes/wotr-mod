@@ -185,7 +185,10 @@ internal static class GesmerhaCampaignTests
             terminal.Chapter = 5;
             terminal.Flags.UnionWith(native.Split('|', StringSplitOptions.RemoveEmptyEntries));
             var available = endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, terminal)).ToArray();
-            check(available.Length == (terminal.Has("gesmerha.closed") && !terminal.Has("gesmerha.dead") ? 0 : 1), "Gesmerha epilogue arbitration overlaps or loses played history: " + native);
+            // Earned presence (rubric Binding context (3)): beside an unreturned sacrifice only the mourning page may play, and it
+            // does not cover her own death or a changed Commander, so those overlaps leave the native slides alone.
+            bool mournedOut = terminal.Has("sacrifice") && new[] { "gesmerha.dead", "ascended", "inhuman", "demon", "devil" }.Any(terminal.Has);
+            check(available.Length == (terminal.Has("gesmerha.closed") && !terminal.Has("gesmerha.dead") || mournedOut ? 0 : 1), "Gesmerha epilogue arbitration overlaps or loses played history: " + native);
             foreach (var scene in available)
             {
                 foreach (var outcome in Program.Walk(scene, terminal, (page, _) => reached.Add(scene.Id + "/" + page)))

@@ -508,8 +508,8 @@ def integrate_gaps(payload):
 
 # --- Registration -----------------------------------------------------------------------------------------------------------
 
-DERIVED = {PAGE_TAKEN: [[ACCEPTED, "trickster.ever"]],
-           GATE_BELIEVED: [[GATE_WATCH, "trickster.ever"]],
+DERIVED = {PAGE_TAKEN: [[ACCEPTED, "trickster.ever", "trickster.now"]],
+           GATE_BELIEVED: [[GATE_WATCH, "trickster.ever", "trickster.now"]],
            GONE_SQUARE: [[ACCEPTED, COST_PROMISE, "trickster.ever"], [ACCEPTED, COST_SQUARE, "trickster.ever"]],
            GONE_CAVES: [[ACCEPTED, COST_CAVES, "trickster.ever"]]}
 PUBLIC = (PAGE_TAKEN, GATE_BELIEVED, GONE_SQUARE, GONE_CAVES)

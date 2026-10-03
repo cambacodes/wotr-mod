@@ -69,7 +69,7 @@ internal static class Program
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                 // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
                 if (choice.RemoveItem != null && story != null)
-                    foreach (var held in story.InventoryItems.Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
+                    foreach (var held in story.InventoryItems.Concat(story.PartyItems).Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
                         next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
                     foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took);
@@ -234,6 +234,13 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} Iomedae assertions.");
             return;
         }
+        if (args.Contains("--nidalynn"))
+        {
+            // One route's suite alone (polish: her checks run even when an earlier suite fails; the full run still calls it below).
+            NidalynnTricksterTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} Nidalynn assertions.");
+            return;
+        }
         if (args.Contains("--prerequisite-groups"))
         {
             PrerequisiteGroupsTests.Run(Check);
@@ -258,6 +265,7 @@ internal static class Program
                 .Concat(story.UnlockableFlags.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintUnlockableFlag", Source = e.Key }))
                 .Concat(story.QuestObjectives.Select(e => new { Guid = e.Value[0], ExpectedType = "BlueprintQuestObjective", Source = e.Key }))
                 .Concat(story.InventoryItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
+                .Concat(story.PartyItems.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintItem*", Source = e.Key }))
                 .Concat(story.StartedQuests.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintQuest", Source = e.Key }))
                 .Concat(story.MainCharacterFacts.Select(e => new { Guid = e.Value, ExpectedType = "BlueprintFeature", Source = e.Key }))
                 .Concat(story.RemovableItems.Select(guid => new { Guid = guid, ExpectedType = "BlueprintItem*", Source = "RemovableItems" }))
@@ -417,6 +425,10 @@ internal static class Program
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
+        ContactDisambiguationTests.Run(Check);
+        if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
+        TricksterOnlyNativeTests.Run(story, Check);
+        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);
         CountTests.Run(Check);
@@ -514,8 +526,10 @@ internal static class Program
             // 18-ETUDE-BINDING-AUDIT: each fixed native binding holds where its scenes are delivered.
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) EtudeBindingTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) CamelliaTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) CamelliaNativeSlideTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) AreeluAfterlogueTests.Run(story, Check);
             // Sol quality pass: Areelu's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "areelu" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
             if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) ChadaliTricksterTests.Run(story, Check);
@@ -552,6 +566,8 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) GalfreyTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) YanielTricksterTests.Run(story, Check);
+            if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) YanielRadianceTests.Run(story, Check);
+            if (story.Derived.ContainsKey("chivarro.dead_confirmed")) ChivarroDeathTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
@@ -702,6 +718,18 @@ internal static class Program
             Check(story.Scenes.Count == 34 && story.Relationships.Count == 1,
                 "Installed-legacy mode is only for the original standalone 34-scene story.");
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
+        // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
+        EarnedPresenceTests.Run(story, Check);
+        // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
+        CurrentPathTests.Run(Check);
+        CurrentPathTests.RunStory(story, Check);
+        // Engine-q2 item 2: a returned, committed partner's Failed objective is restored.
+        ObjectiveRestoreTests.Run(Check);
+        ObjectiveRestoreTests.RunStory(story, Check);
+        // Engine-q2 item 4: Konomi's death latch.
+        KonomiDeathLatchTests.Run(story, Check);
+        // Engine-q2 item 5: Galfrey's native Queen slides for a returned, re-crowned Queen.
+        if (story.Relationships.ContainsKey("galfrey")) GalfreyQueenSlideTests.Run(story, Check);
         KonomiTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();
