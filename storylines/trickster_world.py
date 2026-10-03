@@ -647,6 +647,9 @@ LATCHES = {'arueshalae.evil_dead.latched': ['arueshalae.evil_dead'],
  'kiana.soul_lost': ['kiana.possessed', 'kiana.soul_stolen_seen'],
  'kiana.widowed': ['seelah.elan_dead'],
  'konomi.dismissed.latched': ['konomi.dismissed'],
+ # Engine-q2 item 4: her death, recorded when first observed. konomi.retained_dead is a body check, true only while her
+ # capital scene is loaded, so the epilogues (read elsewhere) never saw it; konomi_trickster.LOST reads this latch.
+ 'konomi.dead.latched': ['konomi.retained_dead'],
  # PP5 r2: the missed contact recorded when first observed (the never-arrived setup's 96 hours run from it).
  'konomi.missed_contact.latched': ['konomi.missed_contact_available'],
  'mielarah.dead.latched': ['mielarah.dead'],

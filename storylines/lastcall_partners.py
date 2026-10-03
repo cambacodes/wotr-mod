@@ -245,7 +245,10 @@ partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepte
         '''{n}Somewhere in Drezen a diplomat sets down her pen mid-sentence, and smiles the way she smiles before she wins.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Konomi: terms not yet named", "The attaché of Nerosyan has terms, and has not said what they are. That is how diplomats keep you alive: by making you curious."),
-    page_commit_groups=[["konomi.committed"], [K + "late_committed"]])   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
+    page_commit_groups=[["konomi.committed"], [K + "late_committed"]],   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
+    # Engine-q2 item 4: a Konomi who died at her post and was never recalled has no coda and no call-in (konomi_trickster.LOST:
+    # her death latch, lifted by the dead.recalled rite). Her own route's key, not another route's closure (G5).
+    page_forbids=("konomi.dead.unreturned",), call_forbids=("konomi.dead.unreturned",))
 
 NO = "nocticula.trickster."
 partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at Her Right Hand",
