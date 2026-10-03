@@ -164,6 +164,8 @@ class Model:
         # E4 data-driven composites (OR of AND-groups).
         self.composites = {k: [list(g) for g in v] for k, v in (story.get("Derived") or {}).items()}
         self.derived |= set(self.composites)
+        # E4b: a guarded composite also needs each named relationship's route open (Rules.RouteOpen).
+        self.open_routes = {k: list(v) for k, v in (story.get("DerivedOpenRoutes") or {}).items()}
         # E14g count composites.
         self.counts = {k: (list(v.get("Of") or []), int(v.get("Min", 1))) for k, v in (story.get("Counts") or {}).items()}
         self.derived |= set(self.counts)
@@ -313,7 +315,8 @@ class Reach:
         if self.chaptered and ch == 0 and f in MYTHIC: return False
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
-        if f in self.m.composites: return any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
+        if f in self.m.composites:
+            return f not in self.m.open_routes and any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
         if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
         if f == "chapter_one": return ch == 1 if self.chaptered else False
         if f == "chapter_later": return (ch or 0) > 1
@@ -674,9 +677,12 @@ def validate(model):
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive.")) or not groups or any(not g for g in groups)
                 or any(x not in known for g in groups for x in g)):
             errs.append("Invalid derived key: " + k)
+    for k, guard in model.open_routes.items():
+        if k not in model.composites or not guard or len(set(guard)) != len(guard) or any(r not in model.rels for r in guard):
+            errs.append("Invalid DerivedOpenRoutes entry: " + k)
     def cyclic(k, path):
         if k in path: return True
-        return any(cyclic(x, path | {k}) for g in model.composites.get(k, []) for x in g if x in model.composites)
+        return any(cyclic(x, path | {k}) for x in composite_inputs(model, k) if x in model.composites)
     for k in model.composites:
         if cyclic(k, frozenset()): errs.append("Derived cycle through: " + k)
     for k, src in model.latches.items():
@@ -1632,16 +1638,44 @@ class SimState:
     def has(self, f): return f in self.flags
 
 
+def composite_inputs(model, k):
+    """Mirror of Rules.DerivedInputs: a composite's AND-group flags plus its route guards' closure inputs."""
+    out = [x for g in model.composites.get(k, []) for x in g]
+    for rel in model.open_routes.get(k, []):
+        r = model.rels.get(rel) or {}
+        out += [r.get("ClosedFlag")] + list(r.get("UnavailableFlags") or []) + list((r.get("UnavailableOverrides") or {}).values())
+    return [x for x in out if x]
+
+
+def route_open(model, rel, flags):
+    """Mirror of Rules.RouteOpen: not closed, and no unavailable flag held without its return override."""
+    r = model.rels.get(rel) or {}
+    ov = r.get("UnavailableOverrides") or {}
+    return r.get("ClosedFlag") not in flags and not any(
+        u in flags and not (ov.get(u) and ov[u] in flags) for u in (r.get("UnavailableFlags") or []))
+
+
+def composite_order(model):
+    """Mirror of Rules.DerivedOrder: every composite after the composites it reads."""
+    order, seen = [], set()
+    def visit(k):
+        if k in seen: return
+        seen.add(k)
+        for x in composite_inputs(model, k):
+            if x in model.composites: visit(x)
+        order.append(k)
+    for k in model.composites: visit(k)
+    return order
+
+
 def sim_complete(model, st):
-    """Mirror of Rules.Complete: latches, then Story.Derived composites."""
+    """Mirror of Rules.Complete: latches, then Story.Derived composites (in dependency order, with route guards)."""
     for k, src in model.latches.items():
         if any(x in st.flags for x in src): st.flags.add(k)
-    changed = True
-    while changed:
-        changed = False
-        for k, groups in model.composites.items():
-            if k not in st.flags and any(all(x in st.flags for x in g) for g in groups):
-                st.flags.add(k); changed = True
+    for k in composite_order(model):
+        if (k not in st.flags and any(all(x in st.flags for x in g) for g in model.composites[k])
+                and all(route_open(model, rel, st.flags) for rel in model.open_routes.get(k, []))):
+            st.flags.add(k)
     for k, (of, least) in model.counts.items():
         if k not in st.flags and sum(1 for x in of if x in st.flags) >= least: st.flags.add(k)
 
