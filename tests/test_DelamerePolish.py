@@ -5,7 +5,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from expansion import make_expansion
-from tools.rrt_verify import Model, SimState, sim_complete
+from tools.rrt_verify import Model, SimState, sim_available, sim_complete
 
 P = "delamere.trickster."
 
@@ -22,7 +22,7 @@ def page_text(node, flags):
         p["Text"] for p in node.get("Paragraphs", []) if matches(p, flags))])
 
 
-def play(scene, flags, *, choices=None, mobility="Success"):
+def play(scene, flags, *, choices=None, mobility="Success", checks=None):
     """Follow actual answer indices and check targets; default to the first open answer."""
     flags = set(flags)
     nodes = {node["Id"]: node for node in scene["Nodes"]}
@@ -42,8 +42,12 @@ def play(scene, flags, *, choices=None, mobility="Success"):
             raise AssertionError("No open answer: " + node_id)
         flags.update(answer["Set"])
         check = answer.get("Check")
-        node_id = (check[mobility if check["Skill"] == "SkillMobility" else "Success"]
-                   if check else answer["Next"])
+        if check:
+            outcome = (checks or {}).get(check["Skill"],
+                                        mobility if check["Skill"] == "SkillMobility" else "Success")
+            node_id = check[outcome]
+        else:
+            node_id = answer["Next"]
     return flags, "\n".join(text)
 
 
@@ -51,8 +55,8 @@ class DelamerePolishTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.story = make_expansion()
-        cls.scenes = {scene["Id"]: scene for scene in cls.story["Scenes"]}
         cls.model = Model(cls.story)
+        cls.scenes = cls.model.by_id
 
     def derive(self, flags):
         state = SimState(5, 5000)
@@ -120,17 +124,73 @@ class DelamerePolishTests(unittest.TestCase):
 
     def test_first_meat_in_both_folds_and_standalone(self):
         for count in ("woken.count", "woken.count_late"):
-            with self.subTest(count=count):
-                flags, text = play(self.scenes[P + count], set())
-                self.assertIn(P + "first_meat", flags)
-                _, standalone = play(self.scenes[P + "woken.first_meat"], flags)
-                for rendered in (text, standalone):
-                    if count.endswith("_late"):
-                        self.assertNotIn("Abyss already", rendered)
-                        self.assertIn("blood dripping from the haunches", rendered)
-                    else:
-                        self.assertIn("Abyss already", rendered)
-                        self.assertNotIn("blood dripping from the haunches", rendered)
+            for allocation in (0, 1):
+                with self.subTest(count=count, allocation=allocation):
+                    flags, folded = play(self.scenes[P + count], set(),
+                                         choices={"first_meat.law": allocation})
+                    self.assertIn(P + "first_meat", flags)
+                    _, standalone = play(self.scenes[P + "woken.first_meat"],
+                                         {P + "counted_after_the_abyss"} if count.endswith("_late") else set(),
+                                         choices={"law": allocation})
+                    for rendered in (folded, standalone):
+                        if count.endswith("_late"):
+                            self.assertNotIn("Abyss already", rendered)
+                            self.assertIn("blood dripping from the haunches", rendered)
+                        else:
+                            self.assertIn("Abyss already", rendered)
+                            self.assertNotIn("blood dripping from the haunches", rendered)
+                        if allocation == 0:
+                            self.assertIn("Kellid girl", rendered)
+                            self.assertNotIn("north-wall cook", rendered)
+                        else:
+                            self.assertIn("north-wall cook", rendered)
+                            self.assertIn("The camp gets the next one", rendered)
+                            self.assertNotIn("Kellid girl", rendered)
+
+    def test_brace_after_waking_and_commitment_with_or_without_kyado(self):
+        for dead in (False, True):
+            with self.subTest(dead=dead):
+                flags = self.derive({"trickster", "trickster.ever", "delamere.tomb_visited",
+                                     "delamere.tomb_book_locked_opened",
+                                     *({"kyado.dead"} if dead else set())})
+                waking = self.scenes[P + ("crypt.stag_alone" if dead else "crypt.stag")]
+                state = SimState(3, 5000)
+                state.flags.update(flags)
+                self.assertTrue(sim_available(self.model, waking, state))
+                flags, _ = play(waking, flags)
+                for scene in ("woken.count", "woken.feasting_table", "woken.red_blood",
+                              "woods.second_hunt_page" if dead else "woods.second_hunt"):
+                    flags = self.derive(flags)
+                    state.flags = flags.copy()
+                    state.hour += 200
+                    self.assertTrue(sim_available(self.model, self.scenes[P + scene], state), scene)
+                    flags, _ = play(self.scenes[P + scene], flags)
+                self.assertIn("delamere.committed", flags)
+                hide = self.scenes[P + "woken.hide"]
+                state.flags = self.derive(flags)
+                state.hour += 200
+                self.assertTrue(sim_available(self.model, hide, state))
+                _, text = play(hide, flags, choices={"what": 2 if dead else 0})
+                self.assertIn("Four nights", text)
+                self.assertEqual("sewed it to his knee" in text, not dead)
+                if dead:
+                    self.assertIn("I cut it. I stitched it", text)
+                    what = next(n for n in hide["Nodes"] if n["Id"] == "what")
+                    self.assertFalse(matches(what["Choices"][0], flags))
+                    self.assertEqual(what["Choices"][-1]["Next"], "made_alone")
+
+    def test_failed_poacher_bluff_returns_to_both_judgments(self):
+        scene = self.scenes[P + "woken.poachers"]
+        for judgment, outcome in ((0, "provost"), (1, "her_law")):
+            with self.subTest(judgment=judgment):
+                flags, text = play(scene, {P + "village.given"},
+                                   choices={"law": 2, "law_again": judgment},
+                                   checks={"CheckBluff": "Failure"})
+                self.assertIn("split ear", text)
+                self.assertIn("stealing turnips", text)
+                self.assertNotIn("He is right. It is a doe", text)
+                self.assertIn(P + "poachers." + outcome, flags)
+                self.assertNotIn(P + "poachers.tricked", flags)
 
     def test_immediate_refusal_from_every_waking(self):
         for waking in ("crypt.stag", "crypt.stag_alone", "crypt.stag_late", "drezen.stag"):

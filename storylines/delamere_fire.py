@@ -356,8 +356,9 @@ visit(P + "woken.hide", "The hide", [
         c("[Let her measure.]", "what")),
     dl("what", '''"The stag." {n}She unwraps the bundle. It is the hide from the blind, or a long strip of it, scraped and smoked and worked soft, the pale belly hair turned inward.{/n} "I kept the best of him for this. A hunter does not let a good hide rot, and I could not think of anyone else I wanted to wear it."
 "You walk on the outside of that foot now, the way I showed you, and it is too much for the ankle. It rolls. I have watched it roll on your stairs and on my hills. So." {n}She lays the hide against your shin.{/n} "A brace. Lace it tight in the morning, loose at night. It will not make you walk straight; you would not let the priests do that, and I would not have you let them. It will stop you falling on your face in front of your soldiers."''',
-        c('"You made this yourself?"', "made"),
-        c('"I thought the limp was the point. So I\'d remember."', "remember")),
+        c('"You made this yourself?"', "made", forbids=(KYADO_DEAD,)),
+        c('"I thought the limp was the point. So I\'d remember."', "remember"),
+        c('"You made this yourself?"', "made_alone", requires=(KYADO_DEAD,))),
     dl("made", '''"Who else? The boy cannot sew. He tried to mend his own habit once and sewed it to his knee." {n}She is lacing as she talks, quick and rough, the way she cut the arrow out.{/n} "Four nights. My eyes are not what they were. A needle is a harder thing to aim than an arrow."''',
         c("Continue", "tight")),
     dl("remember", '''"You will remember." {n}She pulls the first lace tight enough to make you hiss.{/n} "Every stair. Every frost. That is my mark on you and it is not going anywhere. But a mark is not a punishment. I did not break your leg to watch you fall over, jester. I broke it because you ran well and I had to stop you somehow."''',
@@ -381,6 +382,9 @@ visit(P + "woken.hide", "The hide", [
     dl("promise", '''"And hear the rest, so you do not mistake me. Knowing them is not sitting down with them. When I have looked each of them in the face, I will decide whether I eat at your fire, or at mine, with you coming to me. That is mine to choose. Not yours, and not theirs." {n}She picks up the knotted cord from the floor, winds it round her hand, and puts it away inside her jerkin, over her heart, where a city woman would keep a letter.{/n} "I will keep the measure. In case you grow." {n}She goes to the door, and stops, and looks at the brace on your leg with the small red arrow on it.{/n}
 "You wear my mark on your leg and my hide on your mark. In the old days that would have meant something, in the hills. I will not tell you what. You would only laugh." {n}She goes.{/n}''',
         c("[Lace it looser, for the night.]", flags=(HIDE,))),
+    # Authored: a prior who died before her waking cannot have helped with the brace.
+    dl("made_alone", '"I cut it. I stitched it. Whose hands did you think these were?" {n}She is lacing as she talks, quick and rough, the way she cut the arrow out.{/n} "Four nights. My eyes are not what they were. A needle is a harder thing to aim than an arrow."',
+        c("Continue", "tight")),
 ], requires=("trickster.ever", COMMITTED), forbids=(CLOSED, HIDE), delay=48, optional=True)
 
 
@@ -426,10 +430,11 @@ visit(P + "woken.poachers", "Doe in fawn", [
     dl("bluff_her", '''{n}She cuts them loose and sends them running up the hill for firewood, and only then turns to you, and her face is thunder.{/n} "You put a lie in my lord's mouth. In my wood. Over a dead doe." {n}She jabs a finger into your chest.{/n}
 "And it will work better than any law of mine ever did, because by tonight every tent in your army will know it, and by spring there will not be a doe in fawn taken between here and the river." {n}She shakes her head.{/n} "I hate you a little. Carry the fawn."''',
         c("Continue", "meat")),
-    nar("bluff_fail", '''{n}You try. You get as far as "Erastil's own doe" before the boy with the bad moustache, who is braver than he looks, says, "Beg pardon, Commander, but I'm from a farm, and that's a doe."{/n}
+    # Authored: the soldier recognizes a local doe, undermining the claim that Erastil sent her.
+    nar("bluff_fail", '''{n}You try. You get as far as "Erastil's own doe" before the boy with the bad moustache, who is braver than he looks, says, "Beg pardon, Commander, but I know that split ear. We caught her stealing turnips outside camp last week. She ran when we threw stones. Didn't look like a god's beast then."{/n}
 {n}Delamere closes her eyes, briefly, as though praying for patience from a god who has given her very little of it.{/n}''',
         c("Continue", "law_again")),
-    dl("law_again", '''"He is right. It is a doe." {n}She opens her eyes.{/n} "Do not play your jester's games over a dead mother, stag. Not in my wood. Answer me plainly. Whose law?"''',
+    dl("law_again", '''"You should have asked him about the turnips first." {n}She opens her eyes.{/n} "Do not play your jester's games over a dead mother, stag. Not in my wood. Answer me plainly. Whose law?"''',
         c('"Mine. The crusade has a provost and a whipping post. They answer to me, not to you."', "provost", flags=(POACHERS_PROVOST,)),
         c('"Yours. Your wood, your law. I won\'t stand between you."', "hers", flags=(POACHERS_HERS,))),
     nar("meat", '''{n}When they are gone she kneels by the doe and cuts the first strip of fat from along its spine for Old Deadeye, and says the low Kellid words over it. Then she takes the fawn in her two hands, very gently, and carries it up the hill to a place under an ash tree, and digs, with her knife, until there is a hole deep enough that the foxes will not have it.{/n}

@@ -184,9 +184,12 @@ visit(P + "woken.first_meat", "The hunter eats last", [
         c("Continue", "home")),
     dl("gone", '''{n}Something goes out of her face, and does not come back for the rest of the walk.{/n} "Then some city merchant hangs it on a wall and tells his friends it belonged to a dead witch." {n}She adjusts the haunch on her shoulder.{/n} "Well. It was only wood. I am the one who was blessed, not the bow." {n}She does not believe that. Neither do you.{/n}''',
         c("Continue", "home")),
-    nar("home", '''{n}You come down to the postern in the dusk with a boar between you and your leg on fire, and the guards stare at the pair of you as if you had come back from the Abyss already.{/n}
-{n}At the gate she hands her haunch to the first person she sees, a Kellid girl of perhaps ten, and shows her how to carry it.{/n}''',
-        c("[Limp home.]")),
+    nar("home", '''{n}You come down to the postern in the dusk with a boar between you and your leg on fire, and the guards stare at the pair of you as if you had come back from the Abyss already.{/n}''',
+        c("[Limp home.]"), paragraphs=[
+            # Authored: both haunches go where the Commander sent them; the late copy keeps the same allocation.
+            p("{n}At the south gate she hands her haunch to the first person she sees, a Kellid girl of perhaps ten, and shows her how to carry it. You set yours beside the camp's cooking fire.{/n}", requires=(MEAT_GATE,)),
+            p('{n}At the north-wall cookfire she drops her haunch onto the chopping block and takes yours off your shoulder to lay beside it. The north-wall cook stares at the meat, then reaches for his cleaver.{/n} "The camp gets the next one," she tells him. "See that your men remember it."', requires=(MEAT_TABLE,)),
+        ]),
 ], requires=("trickster.ever", COUNTED), forbids=(CLOSED, FIRST_MEAT), delay=24)
 
 
