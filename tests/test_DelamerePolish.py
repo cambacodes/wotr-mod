@@ -126,12 +126,14 @@ class DelamerePolishTests(unittest.TestCase):
         for count in ("woken.count", "woken.count_late"):
             for allocation in (0, 1):
                 with self.subTest(count=count, allocation=allocation):
+                    home = "home_late" if count.endswith("_late") else "home"
                     flags, folded = play(self.scenes[P + count], set(),
-                                         choices={"first_meat.law": allocation})
+                                         choices={"first_meat.law": allocation,
+                                                  "first_meat." + home: allocation + 1})
                     self.assertIn(P + "first_meat", flags)
                     _, standalone = play(self.scenes[P + "woken.first_meat"],
                                          {P + "counted_after_the_abyss"} if count.endswith("_late") else set(),
-                                         choices={"law": allocation})
+                                         choices={"law": allocation, home: allocation + 1})
                     for rendered in (folded, standalone):
                         if count.endswith("_late"):
                             self.assertNotIn("Abyss already", rendered)
@@ -146,6 +148,29 @@ class DelamerePolishTests(unittest.TestCase):
                             self.assertIn("north-wall cook", rendered)
                             self.assertIn("The camp gets the next one", rendered)
                             self.assertNotIn("Kellid girl", rendered)
+
+    def test_home_allocation_choices_in_every_copy(self):
+        for scene_id in ("woken.first_meat", "woken.count", "woken.count_late"):
+            nodes = {node["Id"]: node for node in self.scenes[P + scene_id]["Nodes"]}
+            prefix = "" if scene_id == "woken.first_meat" else "first_meat."
+            for suffix in ("", "_late"):
+                home = nodes[prefix + "home" + suffix]
+                for allocation, flags in enumerate((set(), {P + "meat.gate"}, {P + "meat.table"})):
+                    with self.subTest(scene=scene_id, suffix=suffix, flags=flags):
+                        self.assertFalse(home.get("Paragraphs"))
+                        self.assertEqual([i for i, answer in enumerate(home["Choices"])
+                                          if matches(answer, flags)], [allocation])
+                        self.assertEqual(home["Choices"][allocation]["Text"], "[Limp home.]")
+                        target = home["Choices"][allocation]["Next"]
+                        if allocation == 0:
+                            self.assertIsNone(target)
+                        else:
+                            expected = prefix + ("home_gate" if allocation == 1 else "home_table") + suffix
+                            self.assertEqual(target, expected)
+                            node = nodes[target]
+                            self.assertFalse(node.get("Paragraphs"))
+                            self.assertTrue(all(answer["Next"] is None for answer in node["Choices"]))
+                            self.assertIn("Kellid girl" if allocation == 1 else "north-wall cook", node["Text"])
 
     def test_brace_after_waking_and_commitment_with_or_without_kyado(self):
         for dead in (False, True):

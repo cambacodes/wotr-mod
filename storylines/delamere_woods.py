@@ -16,7 +16,7 @@ import copy
 
 from storylines.delamere_trickster import HUNT_POSTPONED   # polish r4: the late page remembers the postponed hunt
 
-from story_format import c, p, scene
+from story_format import c, scene
 from storylines.delamere_trickster import BARK_ANSWERED   # PP10: the Commander's answer cut into the bark (Chapter 4)
 from storylines.delamere_trickster import STORYTELLER_SUPPLIES, WOKE_DREZEN   # PP10: the bark's carrier; the Drezen waking
 from storylines.delamere_trickster import (BOW_HELD, BOW_ITEM, BOW_RETURNED, CAUGHT, CLOSED, COMMITTED, CURSED_BOW_HELD,
@@ -185,11 +185,9 @@ visit(P + "woken.first_meat", "The hunter eats last", [
     dl("gone", '''{n}Something goes out of her face, and does not come back for the rest of the walk.{/n} "Then some city merchant hangs it on a wall and tells his friends it belonged to a dead witch." {n}She adjusts the haunch on her shoulder.{/n} "Well. It was only wood. I am the one who was blessed, not the bow." {n}She does not believe that. Neither do you.{/n}''',
         c("Continue", "home")),
     nar("home", '''{n}You come down to the postern in the dusk with a boar between you and your leg on fire, and the guards stare at the pair of you as if you had come back from the Abyss already.{/n}''',
-        c("[Limp home.]"), paragraphs=[
-            # Authored: both haunches go where the Commander sent them; the late copy keeps the same allocation.
-            p("{n}At the south gate she hands her haunch to the first person she sees, a Kellid girl of perhaps ten, and shows her how to carry it. You set yours beside the camp's cooking fire.{/n}", requires=(MEAT_GATE,)),
-            p('{n}At the north-wall cookfire she drops her haunch onto the chopping block and takes yours off your shoulder to lay beside it. The north-wall cook stares at the meat, then reaches for his cleaver.{/n} "The camp gets the next one," she tells him. "See that your men remember it."', requires=(MEAT_TABLE,)),
-        ]),
+        c("[Limp home.]", forbids=(MEAT_GATE, MEAT_TABLE)),
+        c("[Limp home.]", "home_gate", requires=(MEAT_GATE,)),
+        c("[Limp home.]", "home_table", requires=(MEAT_TABLE,))),
 ], requires=("trickster.ever", COUNTED), forbids=(CLOSED, FIRST_MEAT), delay=24)
 
 
@@ -208,7 +206,22 @@ for _node in _first_meat["Nodes"]:
             _late_choice["Requires"].append(COUNT_LATE)
             _late_choice["Next"] = "home_late"
             _node["Choices"].append(_late_choice)
+for _choice in _home_late["Choices"]:
+    if _choice["Next"]:
+        _choice["Next"] += "_late"
 _first_meat["Nodes"].append(_home_late)
+
+# Authored: both haunches go where the Commander sent them; the late copies keep the same allocation.
+_first_meat["Nodes"].extend([
+    nar("home_gate", "{n}At the south gate she hands her haunch to the first person she sees, a Kellid girl of perhaps ten, and shows her how to carry it. You set yours beside the camp's cooking fire.{/n}",
+        c()),
+    nar("home_table", '{n}At the north-wall cookfire she drops her haunch onto the chopping block and takes yours off your shoulder to lay beside it. The north-wall cook stares at the meat, then reaches for his cleaver.{/n} "The camp gets the next one," she tells him. "See that your men remember it."',
+        c()),
+])
+for _node in _first_meat["Nodes"][-2:]:
+    _late_node = copy.deepcopy(_node)
+    _late_node["Id"] += "_late"
+    _first_meat["Nodes"].append(_late_node)
 
 
 # --- 3. The feasting table (her crypt, Zanedra, and the keeper who let them in) ---------------------------------------
