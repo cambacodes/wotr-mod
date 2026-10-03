@@ -35,7 +35,7 @@ def base():
                                       UnavailableOverrides={"her.dead": "her.returned"},
                                       TricksterAccess={"dead": dict(Returned="her.returned")})},
         "Scenes": [
-            dict(Id="her.device", Owner="Her", Relationship="her", Requires=["trickster.ever", "her.dead"], Forbids=[],
+            dict(Id="her.device", Owner="Her", Relationship="her", Requires=["trickster", "her.dead"], Forbids=[],
                  Nodes=[dict(Id="n", Choices=[dict(Set=["her.returned"], Requires=[], Forbids=[])])]),
             dict(Id="her.commit", Owner="Her", Relationship="her", Requires=[], Forbids=[],
                  Nodes=[dict(Id="n", Choices=[dict(Set=["her.committed"], Requires=[], Forbids=[])])]),
@@ -128,7 +128,7 @@ class LintRules(unittest.TestCase):
         s = base()
         s["NativeEpilogueEdits"]["cue"] = dict(Replacement="her.ending_together", When=[["her.committed"]], Variants=[])
         self.assertTrue(any(x.startswith("T2 native edit cue") for x in hard(s)))
-        s["NativeEpilogueEdits"]["cue"]["When"] = [["her.committed", "trickster.ever"]]
+        s["NativeEpilogueEdits"]["cue"]["When"] = [["her.committed", "trickster.now"]]
         self.assertEqual(hard(s), [])
 
     def test_t3_native_gate_needs_the_trickster_path(self):
@@ -136,6 +136,41 @@ class LintRules(unittest.TestCase):
         s["NativeGates"]["gate"] = dict(When=[["her.committed"]])
         self.assertTrue(any(x.startswith("T3 native gate gate") for x in hard(s)))
         s["NativeGates"]["gate"]["When"] = [["her.returned"]]
+        self.assertEqual(hard(s), [])
+
+    def test_t6a_canon_change_needs_the_current_path(self):
+        # Engine-q2: her commitment is not a Trickster act, so the run latch is the edit's only Trickster evidence.
+        s = base()
+        s["NativeEpilogueEdits"]["cue"] = dict(Replacement="her.ending_together", When=[["her.committed", "trickster.ever"]], Variants=[])
+        s["NativeGates"]["gate"] = dict(When=[["trickster.was", "her.committed"]])
+        s["NativeEpilogueSuppressions"] = {"sup": dict(When=[["trickster.ever", "her.committed", "!her.closed"]])}
+        s["NativeObjectiveSettlements"] = {"obj": dict(When=[["trickster.ever", "her.committed"]])}
+        s["Etudes"]["trickster.was"] = "g6"
+        found = hard(s)
+        for what in ("native edit cue", "native gate gate", "native suppression sup", "native settlement obj"):
+            self.assertTrue(any(x.startswith("T6a " + what) for x in found), what)
+        s["NativeEpilogueEdits"]["cue"]["When"] = [["her.committed", "trickster.now"]]
+        s["NativeGates"]["gate"]["When"] = [["trickster.now", "her.committed"]]
+        s["NativeEpilogueSuppressions"]["sup"]["When"] = [["trickster.now", "her.committed", "!her.closed"]]
+        s["NativeObjectiveSettlements"]["obj"]["When"] = [["trickster.now", "her.committed"]]
+        self.assertEqual(hard(s), [])
+
+    def test_t6a_a_trickster_act_keeps_the_latch(self):
+        # Her return was set by a device that needed the live power: a historical act, read with the run latch.
+        s = base()
+        s["NativeGates"]["gate"] = dict(When=[["trickster.ever", "her.returned"]])
+        self.assertEqual(hard(s), [])
+        # A key whose only Trickster source is the latch proves no act.
+        s["Derived"]["her.latch_only"] = [["trickster.ever", "her.committed"]]
+        s["NativeGates"]["gate"]["When"] = [["trickster.ever", "her.latch_only"]]
+        self.assertTrue(any(x.startswith("T6a native gate gate") for x in hard(s)))
+
+    def test_t6b_current_path_keys(self):
+        s = base()
+        key = sorted(ep.CURRENT_PATH_KEYS)[0]
+        s["Derived"][key] = [["trickster.ever", "her.committed"]]
+        self.assertTrue(any(x.startswith("T6b " + key) for x in hard(s)))
+        s["Derived"][key] = [["trickster.now", "her.committed"]]
         self.assertEqual(hard(s), [])
 
     def test_t4_revival_off_trickster(self):
@@ -190,6 +225,14 @@ class GeneratedStory(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.story = json.loads(STORY.read_text(encoding="utf-8"))
+
+    def test_current_path_reader(self):
+        story = json.loads(STORY.read_text(encoding="utf-8"))
+        self.assertEqual(story["Derived"].get(ep.TRICKSTER_NOW), [["trickster"]])
+        self.assertTrue({"trickster.failed", "dragon", "legend", "swarm"} <= set(story["DerivedForbids"][ep.TRICKSTER_NOW]))
+        leaky = [x["Id"] for x in story["Scenes"] if "trickster" in x["Requires"]
+                 and "trickster.failed" not in x["Requires"] + x["Forbids"]]
+        self.assertEqual(leaky, [])
 
     def test_lint_clean(self):
         self.assertEqual(hard(self.story), [])

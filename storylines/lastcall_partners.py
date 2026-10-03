@@ -38,6 +38,12 @@ def resolved(rel):
     return rel + ".lastcall.resolved"
 
 
+def callable_key(rel):
+    """Engine-q2 item 3: her call-in is due. Derived (call_guards): a deal she made, her route open (DerivedOpenRoutes:
+    Rules.RouteOpen, so a Trickster return lifts a death or departure) and not yet resolved (DerivedForbids)."""
+    return rel + ".lastcall.callable"
+
+
 MC = "minagho_chivarro.trickster.cost."
 
 # --- Debts owed to powers (doc 04 §3.7). The flask keeps the Commander alive; creditors only collect. A live power's call-in -
@@ -119,7 +125,7 @@ PARTNERS = []
 
 
 def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, page_forbids=(), deal=(), call=None,
-            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None):
+            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None, call_forbids=()):
     """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
     route's late_committed key); `commit` stays first."""
     PARTNERS.append(dict(key=key, rel=rel, commit=commit, closed=closed, title=title, opener=opener, paragraphs=paragraphs,
@@ -127,7 +133,9 @@ def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, 
                          call_commit=call_commit or [[commit]], ledger_title=ledger[0] if ledger else None,
                          ledger_text=ledger[1] if ledger else None,
                          page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None,
-                         page_forbid_overrides=dict(page_forbid_overrides or {})))
+                         page_forbid_overrides=dict(page_forbid_overrides or {}),
+                         # Engine-q2: keys that also withhold her call-in (Derived, read through callable_key's DerivedForbids).
+                         call_forbids=tuple(call_forbids)))
 
 
 def call(entry, text, *choices):
@@ -237,7 +245,10 @@ partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepte
         '''{n}Somewhere in Drezen a diplomat sets down her pen mid-sentence, and smiles the way she smiles before she wins.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Konomi: terms not yet named", "The attaché of Nerosyan has terms, and has not said what they are. That is how diplomats keep you alive: by making you curious."),
-    page_commit_groups=[["konomi.committed"], [K + "late_committed"]])   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
+    page_commit_groups=[["konomi.committed"], [K + "late_committed"]],   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
+    # Engine-q2 item 4: a Konomi who died at her post and was never recalled has no coda and no call-in (konomi_trickster.LOST:
+    # her death latch, lifted by the dead.recalled rite). Her own route's key, not another route's closure (G5).
+    page_forbids=("konomi.dead.unreturned",), call_forbids=("konomi.dead.unreturned",))
 
 NO = "nocticula.trickster."
 partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at Her Right Hand",
@@ -883,15 +894,45 @@ def call_in_scenes(factory):
         # Offered on any deal her route produced, whether or not the romance committed (ledger 05 row 11: every debt is
         # called in once). The coda still needs the commit.
         any_groups = [sorted({k for g in part["deal"] for k in g})]
+        # Engine-q2 item 3: the entry and its narration need her route open too (callable_key); before, only the answers
+        # were guarded, so a closed, dead or departed partner's call-in still showed at the rift.
         out.append(factory(part["rel"] + ".lastcall.call", "Last orders", spec["entry"], [node],
-                           requires=(), forbids=(resolved(part["rel"]),), any_groups=any_groups))
-        # G5 (doc 04 §5.2): the framework reads other routes' committed and cost flags only, never a closed, death or return flag.
+                           requires=(callable_key(part["rel"]),), forbids=(resolved(part["rel"]),), any_groups=any_groups))
+        # G5 (doc 04 §5.2): the framework reads other routes' committed and cost flags only, never a closed, death or return
+        # flag directly. Her route's closure is read once, through callable_key's DerivedOpenRoutes guard (the same
+        # Rules.RouteOpen her own scenes obey), so a return lifts it exactly as it lifts her route.
+    return out
+
+
+def page_guard_key(rel):
+    """Engine-q2 item 3 (scope extension): her coda's route guard. Derived [[trickster.ever]] with DerivedOpenRoutes [rel]
+    (Rules.RouteOpen), so a closed courtship or an unreturned death or departure has no coda, whatever stale commitment key
+    (a late_committed latch) the page also reads, and her earned return reopens it."""
+    return rel + ".lastcall.route_open"
+
+
+def page_guards():
+    """{page_guard_key: (Derived groups, DerivedOpenRoutes)} for every partner coda (generated centrally, not per route)."""
+    return {page_guard_key(part["rel"]): ([["trickster.ever"]], [part["rel"]]) for part in PARTNERS}
+
+
+def call_guards():
+    """Engine-q2 item 3: {callable_key: (Derived groups, DerivedOpenRoutes, DerivedForbids)} for every call-in. A debt whose
+    route has closed (or whose partner died or left with no return) is no longer callable, so it no longer holds the last
+    joke: nothing at the rift can be said to her, and the debt goes unspoken with her."""
+    out = {}
+    for part in PARTNERS:
+        if part["call"]:
+            deal = sorted({k for g in part["deal"] for k in g})
+            out[callable_key(part["rel"])] = ([[k] for k in deal], [part["rel"]], [resolved(part["rel"])] + list(part["call_forbids"]))
     return out
 
 
 def open_debts():
-    """(deal flag, resolved flag) for every call-in: the last joke Forbids each deal flag until its call-in is resolved."""
-    return [(k, resolved(part["rel"])) for part in PARTNERS if part["call"] for g in part["deal"] for k in g]
+    """The keys the last joke Forbids: each partner's callable_key (a deal held, her route open, her call-in unresolved).
+    Before engine-q2 this was every deal flag lifted by its resolved flag, which stranded the joke when her call-in could
+    never be offered (her route closed, or she died or left with no return)."""
+    return [callable_key(part["rel"]) for part in PARTNERS if part["call"]]
 
 
 def pages():
@@ -914,11 +955,11 @@ def pages():
             extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
                 n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
-                requires=("trickster.ever", ACTIVE), forbids=forbids, last=99, **extra)
+                requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"])), forbids=forbids, last=99, **extra)
         else:
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
                 n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
-                requires=("trickster.ever", ACTIVE, part["commit"]), forbids=forbids, last=99, **extra)
+                requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"]), part["commit"]), forbids=forbids, last=99, **extra)
         if part["key"] == "aranka":   # coordinator ruling 2026-10-02: her coda belongs to the ending (R2-6)
             page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))

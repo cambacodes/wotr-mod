@@ -42,7 +42,7 @@ DEFAULT_MATRIX = ROOT.parent / "Writer" / "handoffs" / "trickster-matrix.json"
 
 CHAPTERS = ("1", "2", "3", "4", "5", "6")
 MODES = ("ip", "remote")
-TRICKSTER_KEYS = {"trickster", "trickster.ever"}
+TRICKSTER_KEYS = {"trickster", "trickster.ever", "trickster.now"}
 GUID = re.compile(r"\b[0-9a-f]{32}\b")
 HAREM = re.compile(r"(^|\.)harem(\.|$)")
 

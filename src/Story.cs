@@ -62,6 +62,10 @@ namespace Tirabade
         // route open (Rules.RouteOpen: its ClosedFlag is not held and no UnavailableFlag blocks, so a Trickster return named in
         // UnavailableOverrides lifts a death or departure). Read from each relationship's own data; nothing is hand-coded.
         public Dictionary<string, string[]> DerivedOpenRoutes = new Dictionary<string, string[]>();
+        // Engine-q2 (current path): a Derived key listed here is also withheld while any named flag holds (a negated input).
+        // trickster.now = trickster AND NOT (trickster.failed, dragon, legend, swarm): the Commander is on the Trickster path
+        // right now. Read by DerivedInputs, so ordering, cycle checks and missing-binding propagation see the forbids too.
+        public Dictionary<string, string[]> DerivedForbids = new Dictionary<string, string[]>();
         // E14g: count composites, true when at least Min of Of hold; computed after Derived (groundwork).
         public Dictionary<string, CountSpec> Counts = new Dictionary<string, CountSpec>();
         // E15 (RRT book UI): data-driven paged books (the Ledger, guides) and in-game glossary tooltips ({g|RRT_...}).
@@ -678,6 +682,35 @@ namespace Tirabade
         public static bool Failed(Relationship relationship, Snapshot state) =>
             relationship.FailureFlags.Any(flag => Blocks(relationship, flag, state));
 
+        // Engine-q2 item 2: the flags that record a Trickster return for a relationship (UnavailableOverrides values and
+        // TricksterAccess Returned keys). Each lifts the loss it answers (Blocks), so Failed no longer holds once it does.
+        public static IEnumerable<string> ReturnFlags(Relationship relationship) =>
+            (relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>())
+                .Concat((relationship.TricksterAccess?.Values ?? (IEnumerable<TricksterAccess>)Array.Empty<TricksterAccess>())
+                    .Select(access => access.Returned).OfType<string>())
+                .Distinct();
+
+        // Engine-q2 item 2: the relationship objective's journal action. "fail": Started while a death or departure blocks the
+        // route (Main.Update, as before). "restore": Failed (an earlier death or departure), but a Trickster return now holds,
+        // the loss no longer blocks, the route is not closed and the commitment holds: the objective is reopened and completed
+        // (RecordProgress only completes Started objectives, so without this a returned, committed partner kept a Failed line).
+        public static string? ObjectiveStep(Relationship relationship, Snapshot state, bool started, bool failed)
+        {
+            if (started) return Failed(relationship, state) ? "fail" : null;
+            if (!failed || StillLost(relationship, state) || state.Has(relationship.ClosedFlag) || !state.Has(relationship.CommittedFlag))
+                return null;
+            return ReturnFlags(relationship).Any(state.Has) ? "restore" : null;
+        }
+
+        // The runtime "loss" (Main.BuildState) and its native inputs. It carries no return of its own (the trio route's
+        // UnavailableOverrides name its inputs), so a restore reads it through them: every held input must be answered.
+        public static readonly string[] LossInputs = { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" };
+
+        // Failed, except that "loss" counts as lifted when every held input is lifted by the relationship's own override.
+        private static bool StillLost(Relationship relationship, Snapshot state) => relationship.FailureFlags.Any(flag => flag == "loss"
+            ? LossInputs.Any(input => state.Has(input) && !(relationship.UnavailableOverrides.TryGetValue(input, out var back) && state.Has(back)))
+            : Blocks(relationship, flag, state));
+
         // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
         public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
         public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
@@ -747,7 +780,8 @@ namespace Tirabade
             // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
             // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
             foreach (var key in DerivedOrder(story))
-                if (!state.Has(key) && story.Derived[key].Any(group => group.All(state.Has)) && DerivedRoutesOpen(story, key, state))
+                if (!state.Has(key) && story.Derived[key].Any(group => group.All(state.Has)) && DerivedRoutesOpen(story, key, state)
+                    && !DerivedForbidden(story, key, state))
                     state.Flags.Add(key);
             foreach (var pair in story.Counts)
                 if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
@@ -778,6 +812,10 @@ namespace Tirabade
         public static bool RouteOpen(Relationship relationship, Snapshot state) => !state.Has(relationship.ClosedFlag)
             && !relationship.UnavailableFlags.Any(flag => Blocks(relationship, flag, state));
 
+        // Engine-q2: a DerivedForbids flag withholds its Derived key (the key is never set while the flag holds).
+        public static bool DerivedForbidden(Story story, string key, Snapshot state) =>
+            story.DerivedForbids.TryGetValue(key, out var forbids) && forbids.Any(state.Has);
+
         public static bool DerivedRoutesOpen(Story story, string key, Snapshot state) =>
             !story.DerivedOpenRoutes.TryGetValue(key, out var routes) || routes.All(rel => RouteOpen(story.Relationships[rel], state));
 
@@ -785,6 +823,7 @@ namespace Tirabade
         public static IEnumerable<string> DerivedInputs(Story story, string key)
         {
             var inputs = story.Derived[key].SelectMany(group => group);
+            if (story.DerivedForbids.TryGetValue(key, out var forbids)) inputs = inputs.Concat(forbids);
             if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
                 foreach (var rel in routes)
                 {
@@ -1608,7 +1647,7 @@ namespace Tirabade
                 if (gate == null || !ReviewedNativeGates.TryGetValue(pair.Key, out var target) || gate.Target != target
                     || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
                     || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
-                        || !g.Contains("trickster.ever")))
+                        || !OnTricksterPath(g)))
                     throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
@@ -1624,7 +1663,7 @@ namespace Tirabade
                 var spec = pair.Value;
                 if (spec == null || !ReviewedNativeObjectives.TryGetValue(pair.Key, out var target) || spec.Target != target
                     || spec.Relationship == null || !story.Relationships.ContainsKey(spec.Relationship) || spec.When == null || spec.When.Length == 0
-                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f)) || !g.Contains(TricksterPath)))
+                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f)) || !OnTricksterPath(g)))
                     throw new InvalidOperationException("Invalid native objective settlement (reviewed id and objective, known relationship, known "
                         + "When groups that each require trickster.ever): " + pair.Key);
             }
@@ -1690,7 +1729,7 @@ namespace Tirabade
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
                         || variant.When == null || variant.When.Length == 0 || variant.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
-                            || !g.Any(earned.Contains) || !g.Contains(TricksterPath))
+                            || !g.Any(earned.Contains) || !OnTricksterPath(g))
                         || used.Count(other => other == variant.Replacement) != 1)
                         throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement used once, known When groups "
                             + "that each require trickster.ever and its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
@@ -1706,7 +1745,7 @@ namespace Tirabade
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0
                     || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => f == null || !Known(f)) || !g.Any(earned.Contains)
-                        || !g.Contains(TricksterPath)))
+                        || !OnTricksterPath(g)))
                     throw new InvalidOperationException("Invalid native epilogue suppression (a GUID cue not also edited, its page and sequence, "
                         + "a relationship, known When groups that each require trickster.ever and its CommittedFlag or Trickster return flag): " + pair.Key);
             }
@@ -1715,6 +1754,20 @@ namespace Tirabade
         // Binding context (4), TRICKSTER-RUBRIC: every native edit, suppression and gate requires the Trickster path in every When
         // group, so it is inert on the other paths (canon stands there).
         public const string TricksterPath = "trickster.ever";
+
+        // Engine-q2 (GLOBAL current-path reader). trickster.ever is the run latch (TT-02: PlayerIsTrickster seen playing, or
+        // PlayerWasTrickster): a HISTORICAL fact, kept by a run that later leaves the path. trickster.now holds only while the
+        // Commander is CURRENTLY on the Trickster path (Story.Derived [[trickster]] with Story.DerivedForbids, expansion.py):
+        // - Chapter 4 KTC_Fail starts TricksterMythicPathFailed (trickster.failed) and Chapter04 then completes PlayerIsTrickster;
+        // - the Goddesses' Summit conversions (Gold Dragon Cue_0193, Legend Cue_0195, Swarm Cue_0371) start MythicPathFailed,
+        //   which starts TricksterMythicPathFailed for a former Trickster. PlayerIsDragon and PlayerIsLocust also complete
+        //   PlayerIsTrickster, but PlayerIsLegend does NOT: a Trickster turned Legend still has PlayerIsTrickster playing, so
+        //   the live `trickster` binding alone is not a current-path reader. trickster.now drops on the first of these signals
+        //   (trickster.failed, or a dragon/legend/swarm path etude playing) and never returns: each is permanent.
+        // A canon change counts as on the path with either key; earned_presence_lint T6 decides which one it must read.
+        public const string TricksterNow = "trickster.now";
+
+        public static bool OnTricksterPath(IEnumerable<string> group) => group.Contains(TricksterPath) || group.Contains(TricksterNow);
 
         // E14d: the flags that earn a native epilogue edit or suppression: the relationship's CommittedFlag, its Trickster
         // return flags (a fate the route undid) and (E14i) its R2-6 late commitment "<relationship>.trickster.late_committed"
@@ -1764,9 +1817,9 @@ namespace Tirabade
             if (!scene.TricksterDevice || relationship.TricksterAccess.Count == 0 || scene.Reaction
                 || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || scene.TricksterState != null && !relationship.TricksterAccess.ContainsKey(scene.TricksterState)
-                || !scene.Requires.Contains("trickster") && !scene.Requires.Contains("trickster.ever")
+                || !scene.Requires.Contains("trickster") && !scene.Requires.Contains("trickster.ever") && !scene.Requires.Contains(TricksterNow)
                 || !scene.Nodes.SelectMany(node => node.Choices).SelectMany(choice => choice.Set).Any(Records))
-                throw new InvalidOperationException("Invalid Trickster device (needs TricksterAccess, trickster or trickster.ever, "
+                throw new InvalidOperationException("Invalid Trickster device (needs TricksterAccess, trickster, trickster.now or trickster.ever, "
                     + "and a choice setting the return, primed or cost flag): " + scene.Id);
         }
 
@@ -1821,6 +1874,14 @@ namespace Tirabade
                 if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0
                     || pair.Value.Distinct().Count() != pair.Value.Length || pair.Value.Any(rel => rel == null || !story.Relationships.ContainsKey(rel)))
                     throw new InvalidOperationException("Invalid DerivedOpenRoutes entry (a Derived key; distinct known relationships): " + pair.Key);
+            // Engine-q2: a forbid list names a Derived key and distinct known flags, none of them read positively by the same key.
+            if (story.DerivedForbids == null) throw new InvalidOperationException("DerivedForbids cannot be null.");
+            foreach (var pair in story.DerivedForbids)
+                if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0 || pair.Value.Distinct().Count() != pair.Value.Length
+                    || pair.Value.Any(flag => string.IsNullOrWhiteSpace(flag) || flag == pair.Key
+                        || !authored.Contains(flag) && !native.Contains(flag) && !runtime.Contains(flag) && !story.Derived.ContainsKey(flag))
+                    || story.Derived[pair.Key].Any(group => group.Any(pair.Value.Contains)))
+                    throw new InvalidOperationException("Invalid DerivedForbids entry (a Derived key; distinct known flags it does not also require): " + pair.Key);
             var state = new Dictionary<string, int>();
             void Visit(string key, int depth)
             {

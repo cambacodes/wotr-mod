@@ -32,10 +32,13 @@ internal static class NativeDialogEditTests
         });
         Rows("81109ea8fb20dbc478cf67116740f4a1", "27bc5f6c94108a446b8273800f7da48b", new[]
         {
-            ("separated", new[] { "trickster.ever", "kiana.separated" }, true),
+            ("separated", new[] { "trickster", "trickster.ever", "kiana.separated" }, true),
             ("separated, off the Trickster path", new[] { "kiana.separated" }, false),
-            ("separated, then bereaved", new[] { "trickster.ever", "kiana.separated", "kiana.bereaved" }, false),
-            ("married", new[] { "trickster.ever" }, false),
+            // Engine-q2 (T6a): the separation is set on every path, so the edit reads the current path, not the run latch.
+            ("separated, the path failed in Chapter 4", new[] { "trickster.was", "trickster.ever", "trickster.failed", "kiana.separated" }, false),
+            ("separated, a Trickster turned Legend", new[] { "trickster", "trickster.ever", "trickster.failed", "legend", "kiana.separated" }, false),
+            ("separated, then bereaved", new[] { "trickster", "trickster.ever", "kiana.separated", "kiana.bereaved" }, false),
+            ("married", new[] { "trickster", "trickster.ever" }, false),
         });
         // 6b: a ransom or buy-back already brought the guests home; native Q3's bowl (Cue_0051) and the aftermath (variant 1) say so.
         void Selects(string cue, (string What, string[] Flags, int Variant)[] rows)
@@ -64,7 +67,10 @@ internal static class NativeDialogEditTests
         Selects("81109ea8fb20dbc478cf67116740f4a1", new[]
         {
             ("ransomed", new[] { "trickster.ever", Ransomed }, 1),
-            ("ransomed, then separated", new[] { "trickster.ever", Ransomed, "kiana.separated" }, 0),
+            ("ransomed, then separated", new[] { "trickster", "trickster.ever", Ransomed, "kiana.separated" }, 0),
+            // The ransom is a Trickster act (variant 1 keeps the latch); the separation line needs the current path.
+            ("ransomed, separated, the path since lost", new[] { "trickster.was", "trickster.ever", "trickster.failed", Ransomed, "kiana.separated" }, -1),
+            ("ransomed, the path since lost", new[] { "trickster.was", "trickster.ever", "trickster.failed", Ransomed }, 1),
             ("bought back", new[] { "trickster.ever", Bought }, 1),
             ("ransomed, off the Trickster path", new[] { Ransomed }, -1),
             ("native Q3 only", new[] { "trickster.ever" }, -1),

@@ -718,6 +718,16 @@ internal static class Program
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
         EarnedPresenceTests.Run(story, Check);
+        // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
+        CurrentPathTests.Run(Check);
+        CurrentPathTests.RunStory(story, Check);
+        // Engine-q2 item 2: a returned, committed partner's Failed objective is restored.
+        ObjectiveRestoreTests.Run(Check);
+        ObjectiveRestoreTests.RunStory(story, Check);
+        // Engine-q2 item 4: Konomi's death latch.
+        KonomiDeathLatchTests.Run(story, Check);
+        // Engine-q2 item 5: Galfrey's native Queen slides for a returned, re-crowned Queen.
+        if (story.Relationships.ContainsKey("galfrey")) GalfreyQueenSlideTests.Run(story, Check);
         KonomiTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();

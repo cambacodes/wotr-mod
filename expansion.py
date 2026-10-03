@@ -79,6 +79,7 @@ from storylines import herrax_trickster, herrax_house
 from storylines import terendelev_trickster, terendelev_watch
 from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
+from storylines import galfrey_queen_slide
 from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
@@ -559,6 +560,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(galfrey_kitrane.SCENES))
     galfrey_trickster.integrate(payload)
     galfrey_kitrane.integrate(payload)
+    galfrey_queen_slide.integrate(payload)   # engine-q2 item 5: the native Queen slide for a returned, re-crowned Galfrey
     # Horzalah: a new relationship (trickster/horzalah.md; 11-ROSTER-PLAN-2 §2, R4 build sheet): the ear in the gift box, a
     # con on her own Guild offered at the mercy node (or in the Greybor-less night, or when the Guild circles); the collar
     # on her terms; the courtship on her presence by the Storyteller and her letters by knife (horzalah_guild).
@@ -642,6 +644,7 @@ def make_expansion(*, independent_tirabade=True):
     rrt_portraits.integrate(payload)
     # E15c: what each rest-delivered scene is (letter, visit, sending, memory, event), after every route and Last Call.
     scene_kinds.integrate(payload)
+    trickster_now_setups(payload)
     normalize_trickster_access(payload)
     return payload
 
@@ -658,6 +661,21 @@ TRICKSTER_ETUDES = {
     # .../Chapter06_Extra/Ending_TricksterFull
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
 }
+
+
+# World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/TricksterMythicPathFailed (also trickster_world).
+TRICKSTER_FAILED = "256f3c081f21ed84fb3612465a76944b"
+
+
+def trickster_now_setups(payload):
+    """Engine-q2: a scene that Requires the live `trickster` (a device setup, the household, Last Call: the power used now)
+    also Forbids trickster.failed, so it reads the current path (trickster.now's native half). Without this a Trickster
+    who turns Legend at the Goddesses' Summit keeps PlayerIsTrickster playing and could still start new tricks. The
+    Forbid (not a trickster.now Requires) keeps every scene's availability a pure native read. After every route; a
+    scene that itself Requires trickster.failed (a reaction to the loss) is left alone."""
+    for s in payload["Scenes"]:
+        if "trickster" in s.get("Requires", []) and "trickster.failed" not in s.get("Requires", [])                 and "trickster.failed" not in s.setdefault("Forbids", []):
+            s["Forbids"].append("trickster.failed")
 
 
 def normalize_trickster_access(payload):
@@ -683,6 +701,22 @@ def trickster_engine(payload):
     payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | set(TRICKSTER_ETUDES))
     # TT-02: Chapter 4 can complete PlayerIsTrickster; the latch keeps device payoffs alive afterwards.
     payload.setdefault("Latches", {})["trickster.ever"] = ["trickster", "trickster.was"]
+    # Engine-q2: the GLOBAL current-path reader (Rules.TricksterNow in src/Story.cs holds the native evidence). trickster.now
+    # is the live PlayerIsTrickster minus every native signal that the run has left the path: TricksterMythicPathFailed
+    # (the Chapter 4 failure, and every Goddesses' Summit conversion through MythicPathFailed) and a Gold Dragon, Legend or
+    # Swarm path etude (PlayerIsLegend does not complete PlayerIsTrickster). Once dropped it never comes back.
+    # Who reads which (earned_presence_lint T6 enforces the canon-change half):
+    # - trickster.ever: HISTORICAL facts. Device payoffs and continuations (TT-02); every return flag and UnavailableOverrides
+    #   value (she came back through an act already done and paid for; leaving the path later never re-kills her, Binding
+    #   context 3); costs already paid (foresight.memory_gone.*); and native edits and gates whose When group also holds a
+    #   key that only a Trickster act sets (Devarra flown, the guests ransomed, a Trickster return).
+    # - trickster.now: PRESENT-TENSE power. A native edit, suppression, gate or settlement whose only Trickster evidence is
+    #   the path itself (T6a), and the foresight public keys that open gated outcomes later (earned_presence.CURRENT_PATH_KEYS,
+    #   T6b). Live setups keep `trickster` (TT-02) and Forbid trickster.failed (trickster_now_setups).
+    if payload["Etudes"].setdefault("trickster.failed", TRICKSTER_FAILED) != TRICKSTER_FAILED:
+        raise ValueError("Conflicting Trickster binding: trickster.failed")
+    payload.setdefault("Derived", {})["trickster.now"] = [["trickster"]]
+    payload.setdefault("DerivedForbids", {})["trickster.now"] = ["trickster.failed", "dragon", "legend", "swarm"]
     # TT-22: the Trickster "punchline" finale sets Ending_PlayerSacrifice (sacrifice), yet the native rewrite page
     # says this Commander "found a way of cheating death". Epilogues may lift their sacrifice forbid with it.
     payload.setdefault("Derived", {})["trickster.cheated_death"] = [

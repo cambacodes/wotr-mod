@@ -23,6 +23,13 @@ T4 revival: every choice that revives a unit (Choice.Revive) sits in a Trickster
 T5 lifted loss: every ForbidOverrides entry that lifts a woman's loss flag (a relationship UnavailableFlag, Commander path
     flags excepted) or "sacrifice" names a Trickster-implying key or a canon reading (as T1).
 
+T6 current path (engine-q2): trickster.ever is the run latch (the run WAS Trickster); trickster.now holds only while it
+    still IS. T6a: every When group of a native edit, suppression, gate or settlement Requires trickster.now, or holds a
+    key that only a Trickster act sets (implied with the latches trickster.ever/trickster.was NOT counted as evidence:
+    Devarra flown, the guests ransomed, a return). A canon change whose only Trickster evidence is the path latch would
+    still fire after a Chapter 4 failure or a Summit conversion. T6b: each storylines/earned_presence.CURRENT_PATH_KEYS key
+    that the build derives Requires trickster.now in every group (the foresight public keys' hook).
+
 EP5 her presence: a committed epilogue page (Requires the CommittedFlag or a *late_committed key; Aeon pages exempt)
     Forbids each of her loss flags that has an earned return (relationship UnavailableOverrides), lifted by that return,
     or Requires the flag or its return.
@@ -53,7 +60,9 @@ COMMANDER_PATHS = {"swarm", "true_lich", "devil", "demon", "lich", "legend", "dr
 class Trickster:
     """Does a key imply the mythic-Trickster path? Memoized, conservative on cycles and unknown keys."""
 
-    def __init__(self, story):
+    def __init__(self, story, roots=None, never=()):
+        self.roots = set(ep.TRICKSTER_ROOTS if roots is None else roots)
+        self.never = set(never)   # keys that prove nothing (T6: the run latches)
         self.derived = story.get("Derived") or {}
         self.latches = story.get("Latches") or {}
         self.memo = {}
@@ -77,7 +86,9 @@ class Trickster:
         if key in self.memo:
             return self.memo[key]
         self.memo[key] = False   # in progress: a cycle proves nothing
-        if key in ep.TRICKSTER_ROOTS or key in ep.NATIVE_TRICKSTER:
+        if key in self.never:
+            out = False
+        elif key in self.roots or key in ep.NATIVE_TRICKSTER:
             out = True
         elif key in self.derived:
             out = all(any(self.implies(k) for k in g) for g in self.derived[key])
@@ -195,6 +206,31 @@ def check(story, review=False):
         for flag, lift in sorted((s.get("ForbidOverrides") or {}).items()):
             if flag in losses and not trk.lift_ok(lift):
                 hard.append("T5 %s: ForbidOverrides %s -> %s lifts a loss off the Trickster path" % (s["Id"], flag, lift))
+
+    # T6: the current path. `act` proves a Trickster act without the run latches (the live power and trickster.now count).
+    act = Trickster(story, roots=[k for k in ep.TRICKSTER_ROOTS if k not in ep.TRICKSTER_LATCHES], never=ep.TRICKSTER_LATCHES)
+
+    def present(group):
+        pos = [k for k in group if not k.startswith("!")]
+        return ep.TRICKSTER_NOW in pos or any(act.implies(k) for k in pos if k not in ep.TRICKSTER_ROOTS)
+
+    changes = []
+    for cue, edit in sorted((story.get("NativeEpilogueEdits") or {}).items()):
+        for v in [edit] + list(edit.get("Variants") or []):
+            changes.append(("native edit %s / %s" % (cue, v.get("Replacement")), v.get("When") or []))
+    for kind, label in (("NativeEpilogueSuppressions", "native suppression"), ("NativeGates", "native gate"),
+                        ("NativeObjectiveSettlements", "native settlement")):
+        for name, spec in sorted((story.get(kind) or {}).items()):
+            changes.append(("%s %s" % (label, name), spec.get("When") or []))
+    for what, groups in changes:
+        for g in groups:
+            if trk.group_ok(g) and not present(g):
+                hard.append("T6a %s: When group %s has no Trickster evidence but the path latch; read %s (its event can "
+                            "come after the run leaves the path)" % (what, g, ep.TRICKSTER_NOW))
+    for key, why in sorted(ep.CURRENT_PATH_KEYS.items()):
+        for g in (story.get("Derived") or {}).get(key) or []:
+            if ep.TRICKSTER_NOW not in g:
+                hard.append("T6b %s: group %s does not read %s (%s)" % (key, g, ep.TRICKSTER_NOW, why))
 
     # EP5: her own loss with an earned return, on committed pages.
     for s in scenes:

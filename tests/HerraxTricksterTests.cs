@@ -178,7 +178,7 @@ internal static class HerraxTricksterTests
         var neverFell = World(story, 5, "trickster", "trickster.ever", "minagho_chivarro.committed");
         var nfNodes = new HashSet<string>(); Program.Walk(S(P + "late.next_move"), neverFell, (id, _) => nfNodes.Add(id));
         check(Avail(S(P + "late.next_move"), neverFell) && nfNodes.Contains("stranger_house") && !nfNodes.Contains("stranger")
-              && Program.Walk(S(P + "late.next_move"), neverFell).Where(r => r.Has(P + "promised")).All(r => r.Flags.Where(f => f.StartsWith("minagho_chivarro.", StringComparison.Ordinal)).SequenceEqual(new[] { "minagho_chivarro.committed" })),
+              && Program.Walk(S(P + "late.next_move"), neverFell).Where(r => r.Has(P + "promised")).All(r => r.Flags.Where(f => f.StartsWith("minagho_chivarro.", StringComparison.Ordinal) && !story.Derived.ContainsKey(f)).SequenceEqual(new[] { "minagho_chivarro.committed" })),
             "Trk_Herrax_NeverMadam: no courier where Chivarro never fell, or the courier treats her as the madam.");
         check(Avail(nextMove, unmet) && nextMove.TricksterDevice && nextMove.TricksterState == "not_started" && !Avail(owed, unmet),
             "Trk_Herrax_NoMadam: her courier does not find a Commander who never started.");

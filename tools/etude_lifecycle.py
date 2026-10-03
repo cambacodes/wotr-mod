@@ -159,6 +159,9 @@ def contexts(story):
     for dk, groups in (story.get("Derived") or {}).items():
         for k in {k for g in groups for k in g}:
             add(k, kind="derived", where="Derived." + dk, **anywhere)
+    for dk, flags in (story.get("DerivedForbids") or {}).items():
+        for k in flags:   # engine-q2: a negated Derived input (trickster.now)
+            add(k, kind="derived", where="DerivedForbids." + dk, **anywhere)
     for ck, c in (story.get("Counts") or {}).items():
         for k in c.get("Of") or []:
             add(k, kind="derived", where="Counts." + ck, **anywhere)

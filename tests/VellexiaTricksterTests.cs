@@ -654,7 +654,7 @@ internal static class VellexiaTricksterTests
         }
         var others = story.Relationships.Where(p => p.Key != "vellexia")
             .SelectMany(p => new[] { p.Value.ClosedFlag, p.Value.CommittedFlag, p.Value.StartedFlag }.Concat(p.Value.UnavailableFlags))
-            .Except(new[] { "inhuman", "swarm", "true_lich", "sacrifice", "ascended", "loss" }).ToHashSet();
+            .Except(new[] { "trickster.failed", "inhuman", "swarm", "true_lich", "sacrifice", "ascended", "loss" }).ToHashSet();
         foreach (var s in story.Scenes.Where(s => s.Relationship == "vellexia" && s.Id.StartsWith(P, StringComparison.Ordinal)))
             check(!s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g)).Any(others.Contains),
                 "TT-05/G5: a Vellexia Trickster scene gates on another romance: " + s.Id);
