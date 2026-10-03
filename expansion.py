@@ -81,6 +81,7 @@ from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
 from storylines import yaniel_radiance  # E10 party-only read: Radiance on the Commander, not in the shared stash
+from storylines import chivarro_death  # ChivarroKilled split: the confirmed death (the death trigger also completes Obj3)
 from storylines import wenduag_trickster, wenduag_cairn
 from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
@@ -622,6 +623,7 @@ def make_expansion(*, independent_tirabade=True):
     trickster_world.integrate(payload)
     if "yaniel" in payload["Relationships"]:
         yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
+    chivarro_death.integrate(payload)        # after the world bindings (chivarro.dead); read-only keys, no scene reads them yet
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)
     # and after the Trickster engine and world, whose late-commitment keys feed <rel>.harem.eligible.
     household.integrate(payload)

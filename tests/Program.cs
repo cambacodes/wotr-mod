@@ -554,6 +554,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) GalfreyTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) YanielTricksterTests.Run(story, Check);
             if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) YanielRadianceTests.Run(story, Check);
+            if (story.Derived.ContainsKey("chivarro.dead_confirmed")) ChivarroDeathTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
