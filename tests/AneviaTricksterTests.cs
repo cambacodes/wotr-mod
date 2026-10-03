@@ -146,6 +146,33 @@ internal static class AneviaTricksterTests
             check(killerOutcomes.All(r => !r.Has("anevia.committed")), "The killer reaches the commitment before the muster.");
         }
 
+        // Both Tirabades left at the Coronation (IrabethGone, Beth alive): no beat speaks of Beth as dead.
+        {
+            var bothLeft = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_gone", "closets.known", "socot.gone");
+            check(Rules.Available(story, setup, bothLeft), "Both left: the wardrobe setup is unavailable.");
+            var leftPrimed = Program.Walk(setup, bothLeft).Single(r => r.Has(Primed));
+            var leftPages = new HashSet<string>();
+            var leftBack = Program.Walk(wardrobe, Later(story, leftPrimed, 24), (page, _) => leftPages.Add(page));
+            check(leftBack.Count == 1 && leftBack[0].Has(Returned) && leftPages.Contains("beth_left")
+                  && !leftPages.Contains("beth_dead") && !leftPages.Contains("killer") && !leftPages.Contains("beth_back"),
+                "Both left: the wardrobe treats a living, departed Beth as dead or returned.");
+            var leftGateWorld = Later(story, leftBack[0], 48);
+            check(Rules.Available(story, gate, leftGateWorld), "Both left: the gate is unavailable.");
+            var gatePages = new HashSet<string>();
+            var leftGate = Program.Walk(gate, leftGateWorld, (page, _) => gatePages.Add(page));
+            check(gatePages.Contains("beth_left") && gatePages.Contains("told_left") && !gatePages.Contains("beth_widow")
+                  && !gatePages.Contains("told") && !gatePages.Contains("beth_back"),
+                "Both left: the gate treats a living, departed Beth as dead.");
+            var handTaken = leftGate.Single(r => r.Has("anevia.trickster.hand_taken"));
+            var commitWorld = Later(story, handTaken, 96);
+            check(Rules.Available(story, commit, commitWorld), "Both left: the commit is unavailable.");
+            var commitLeftPages = new HashSet<string>();
+            var leftCommit = Program.Walk(commit, commitWorld, (page, _) => commitLeftPages.Add(page));
+            check(commitLeftPages.Contains("left") && commitLeftPages.Contains("morning_left") && !commitLeftPages.Contains("widow")
+                  && !commitLeftPages.Contains("morning") && leftCommit.Any(r => r.Has("anevia.committed")),
+                "Both left: the commit treats a living, departed Beth as dead, or cannot commit.");
+        }
+
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
         var withBeth = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, Primed);
         check(Rules.Available(story, wardrobe, withBeth) && !Any(withBeth, fetched, confession), "Trk_Anevia_Coexistence_Primed failed.");
