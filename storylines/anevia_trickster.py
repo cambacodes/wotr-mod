@@ -44,6 +44,7 @@ I_LIED = "irabeth.trickster.cost.accounting_lied"
 I_UNDER = "irabeth.trickster.cost.under_orders"
 I_ASKED = "irabeth.trickster.asked_nevi"         # Irabeth asked Anevia herself (her commit's "talked", or the pen)
 KILLED = "anevia.irabeth_killed_by_commander"
+LEFT = "irabeth_gone"                            # native IrabethGone: both Tirabades left at the Coronation, Beth alive
 SAID = "anevia.trickster.said_it"                # Sol r1 BEL: the murder named to her face, and her penance paid
 PENANCE = "anevia.trickster.cost.muster_confession"
 OUTLIVED = ("socot.gone", "council.fought", "council.fought_nocta_allied")
@@ -83,14 +84,18 @@ def nar(id, text, *choices):
     return n(id, "Narrator", text, *choices, portrait="Anevia")
 
 
-def to_beth(back, widow, forbids=(), killer=None):
+def to_beth(back, widow, forbids=(), killer=None, left=None):
     """Continue to the Beth-first page that fits Irabeth's state: back from the dead, dead by the Commander's own
-    sword (when the scene has a page for it), or dead."""
+    sword (when the scene has a page for it), dead, or (left=) alive and gone with Anevia since the Coronation. The
+    left page is appended last so the older choice indices stay where they were."""
+    gone = (LEFT,) if left else ()
+    tail = (c("Continue", left, requires=(LEFT,), forbids=(*forbids, I_RET)),) if left else ()
     if killer is None:
-        return (c("Continue", back, requires=(I_RET,), forbids=forbids), c("Continue", widow, forbids=(*forbids, I_RET)))
+        return (c("Continue", back, requires=(I_RET,), forbids=forbids),
+                c("Continue", widow, forbids=(*forbids, I_RET, *gone)), *tail)
     return (c("Continue", back, requires=(I_RET,), forbids=forbids),
-            c("Continue", killer, requires=(KILLED,), forbids=(*forbids, I_RET)),
-            c("Continue", widow, forbids=(*forbids, I_RET, KILLED)))
+            c("Continue", killer, requires=(KILLED,), forbids=(*forbids, I_RET, *gone)),
+            c("Continue", widow, forbids=(*forbids, I_RET, KILLED, *gone)), *tail)
 
 
 # --- State gone_after_coronation: the wardrobe in Kenabres -----------------------------------------------------------
@@ -108,14 +113,14 @@ letter("anevia.trickster.gone.setup", "Don't", [
       c('[Knock on the back of the wardrobe]', "crate", requires=("anevia.socoth_absent",), forbids=("closets.door_kept",)),
       c('[Fold the note away] "Not yet."', abort=True)),
     n("socoth", "Socothbenoth", '''{n}You knock. Among the hangers, something laughs, and the laugh smells of attar of roses.{/n}
-"A widow's bedroom, three days' ride south, and she has told you in writing not to come? Oh, darling, you've brought me a present. Do you know how rarely anyone knocks? People simply barge through my closets as if they were corridors."
+"A spymaster's bedroom, three days' ride south, and she has told you in writing not to come? Oh, darling, you've brought me a present. Do you know how rarely anyone knocks? People simply barge through my closets as if they were corridors."
 {n}The voice comes from the dark at the back of the wardrobe, where there ought to be nothing but cedar.{/n}
 "My price is small. My side of the door stays open. Whatever is said in that room, I hear it: every sigh, every quarrel, every creak of the bed, if you're lucky. I'm not ashamed of wanting it, and you shouldn't be ashamed of paying it."''',
       c('[Pay it] "Done. Open the door."', "paid", mythic="Trickster", alignment=("Chaotic", 1), forbids=OUTLIVED,
         flags=(PRIMED, "anevia.started", LISTEN)),
       c('[Haggle] "One door. No audience. I\'ll owe you a story instead."', "haggled", mythic="Trickster",
         forbids=OUTLIVED, flags=(PRIMED, "anevia.started", WRONG))),
-    n("paid", "Socothbenoth", '''"Splendid. Give me a day to find the right wardrobe; a widow on the road doesn't sleep in the same room twice. When the door opens, walk in as if you owned the place."
+    n("paid", "Socothbenoth", '''"Splendid. Give me a day to find the right wardrobe; a spy on the road doesn't sleep in the same room twice. When the door opens, walk in as if you owned the place."
 {n}The laugh again, further off.{/n}
 "You don't, of course. I do."''',
       c('"A day, then."')),
@@ -163,16 +168,16 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
     a("candle", CANDLE,
       c("Continue", "wimple", requires=(WRONG,)),
       c("Continue", "stolen", requires=(STOLEN,)),
-      *to_beth("beth_back", "beth_dead", forbids=(WRONG, STOLEN), killer="killer")),
+      *to_beth("beth_back", "beth_dead", forbids=(WRONG, STOLEN), killer="killer", left="beth_left")),
     a("candle_crate", '''"Get out."
 {n}She doesn't move. Neither does the knife.{/n}
 "...No. Sit. On the crate, where I can see you. You've got till the candle's done. Then you go back in, and I'm nailin' the lid on and postin' you north as salt pork."''',
-      *to_beth("beth_back", "beth_dead", killer="killer")),
+      *to_beth("beth_back", "beth_dead", killer="killer", left="beth_left")),
     a("wimple", '''"You're late, you smell of incense, and there's a wimple on your head. I'm not gonna ask."
 {n}She asks with her eyebrows anyway.{/n}''',
-      *to_beth("beth_back", "beth_dead", killer="killer")),
+      *to_beth("beth_back", "beth_dead", killer="killer", left="beth_left")),
     nar("stolen", '''{n}The closet door sighs shut behind you. It will not open onto this room a second time; you know it the way you know the cold.{/n}''',
-      *to_beth("beth_back", "beth_dead", killer="killer")),
+      *to_beth("beth_back", "beth_dead", killer="killer", left="beth_left")),
     a("beth_back", '''"And don't tell me about Beth. I've had a letter. In her hand, sayin' she's back on watch in Drezen with a sword she's sworn to keep by her. I read it eleven times, and I still think it's a forgery."
 {n}She looks at the knife as if she has only just noticed it.{/n}
 "It's not a forgery. Is it."''',
@@ -224,6 +229,13 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
       c('"Two nights."')),
     nar("nail_crate", '''{n}You climb back into the crate. The first nail goes into the lid before you have finished folding your knees. Somewhere above, a voice you know tells a carter, very sweetly, that this one is going back north and that he is to hit every pothole on the road.{/n}''',
       c('"Two nights."')),
+    # Both left at the Coronation (Cue_0310): Beth is alive, broken by the Commander's betrayal, and on the road with her.
+    a("beth_left", '''"Keep your voice down. Beth's asleep through that wall. First time in three nights she's slept without the sword in her hand."
+{n}She does not look at the wall. She looks at you, the way she looks at a man she has already decided to report.{/n}
+"You came through furniture for me. For her you couldn't even keep faith in your own hall. Whatever you did to her in Drezen, she hasn't stood up straight since. I'm takin' her as far from Mendev as the roads go."''',
+      c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN,),
+        flags=(RETURNED, "anevia.started", NAILED)),
+      c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,))),
 ], requires=("trickster.ever", "anevia_gone", PRIMED), forbids=(RETURNED,), delay=24,
    TricksterDevice=True, TricksterState="gone")
 
@@ -296,14 +308,14 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
       c("Continue", "coats", requires=(THROWN,)),
       c("Continue", "joke", requires=(JOKE_TOLD,)),
       c("Continue", "one_truth", requires=(EXPOSED,)),
-      *to_beth("beth_back", "beth_widow", forbids=(THROWN, JOKE_TOLD, EXPOSED))),
+      *to_beth("beth_back", "beth_widow", forbids=(THROWN, JOKE_TOLD, EXPOSED), left="beth_left")),
     a("coats", '''"And the coats. Tell me the coats aren't listenin'."
 {n}She glances at the guardhouse door, which has no coats behind it, and does not relax.{/n}''',
-      *to_beth("beth_back", "beth_widow")),
+      *to_beth("beth_back", "beth_widow", left="beth_left")),
     a("joke", '''"You wrote me it was a joke. Beth read it over my shoulder and laughed till she cried. I didn't."''',
-      *to_beth("beth_back", "beth_widow")),
+      *to_beth("beth_back", "beth_widow", left="beth_left")),
     a("one_truth", '''"One true thing tonight. Just one. Then we'll see."''',
-      *to_beth("beth_back", "beth_widow")),
+      *to_beth("beth_back", "beth_widow", left="beth_left")),
     a("beth_widow", BETH_WIDOW, *GATE_CHOICES),
     a("beth_back", BETH_BACK, c("Continue", "beth_terms")),
     a("beth_terms", '''{n}She watches the gate a while longer. When she speaks again it is in her report voice, flat and exact, the one she uses for things she has already decided.{/n}
@@ -318,6 +330,15 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
     a("line", '''{n}She nods once, the way she nods at a report that says what she expected.{/n}
 "Good. Keep it that way till I say otherwise."''',
       c('"Understood."')),
+    # Both left at the Coronation: Beth is alive and waiting down the road; nothing here speaks of her as dead.
+    a("beth_left", '''"Beth's a day down the road, at an inn with a bad roof. She doesn't know I'm here. Or she does, and she's lettin' me pretend she doesn't. That's new. She never used to let anybody pretend anythin'."
+{n}She kicks at the mud line with the toe of her boot.{/n}
+"That's what you did to her. So before you say anythin' soft: she comes first. When she's ready to ride, I ride with her, and I won't be askin' you where to."''',
+      c('[Take her hand and wait] "Tell me about her. I\'m listening."', "told_left", flags=(GATE, "anevia.trickster.hand_taken")),
+      c('[Stay on your side of the line] "Your road. Your call."', "line", flags=(GATE, FRIENDS))),
+    a("told_left", '''{n}So she tells you. Not the war: the small things. That Beth snores like a siege engine and denies it under oath. That she still folds her socks in pairs and then in threes, every night, even in a room she will leave at dawn. That last night she woke shouting a knight's name, and then apologised to the wall.{/n}
+{n}Her hand stays in yours the whole time. She doesn't seem to notice. When she does, she doesn't let go.{/n}''',
+      c('"Same time next week?"')),
 ], requires=("trickster.ever", RETURNED), forbids=(GATE,), delay=48)
 
 TERMS_TEXT = '''"Here's how it goes. I don't come inside. You come out. No closets, no wardrobes, no demons breathin' in the coats. You knock on a real door, like a person."
@@ -332,8 +353,9 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
 "Guard asked me if I was a deserter. Told him I'm retired. He didn't believe me either."''',
       c("Continue", "share", requires=(I_RET, I_ASKED)),
       c("Continue", "widow_killed", requires=(KILLED,), forbids=(I_RET,)),
-      c("Continue", "widow", forbids=(I_RET, KILLED)),
-      c("Continue", "share_quiet", requires=(I_RET,), forbids=(I_ASKED,))),
+      c("Continue", "widow", forbids=(I_RET, KILLED, LEFT)),
+      c("Continue", "share_quiet", requires=(I_RET,), forbids=(I_ASKED,)),
+      c("Continue", "left", requires=(LEFT,), forbids=(I_RET, KILLED))),
     a("widow", '''"I buried her in my head a hundred times on the road. Every time, you were standin' at the graveside with your hands in your pockets like you knew somethin'."
 {n}She breathes out, and it smokes in the cold.{/n}
 "You didn't. Nobody did. That's what makes it bearable."''',
@@ -391,10 +413,11 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
       c("Continue", "threshold")),
     a("threshold", THRESHOLD,
       c("Continue", "morning_back", requires=(I_RET, I_ASKED), forbids=("irabeth.closed", "irabeth.trickster.friends")),
-      c("Continue", "morning", forbids=(I_RET,)),
+      c("Continue", "morning", forbids=(I_RET, LEFT)),
       c("Continue", "morning_quiet", requires=(I_RET,), forbids=(I_ASKED,)),
       c("Continue", "morning_quiet", requires=(I_RET, I_ASKED, "irabeth.closed")),
-      c("Continue", "morning_quiet", requires=(I_RET, I_ASKED, "irabeth.trickster.friends"), forbids=("irabeth.closed",))),
+      c("Continue", "morning_quiet", requires=(I_RET, I_ASKED, "irabeth.trickster.friends"), forbids=("irabeth.closed",)),
+      c("Continue", "morning_left", requires=(LEFT,), forbids=(I_RET,))),
     a("morning", '''{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}
 "If Beth ever walks back through that gate, she'll know the second she looks at me. I'd give a lot to have to make that speech."
 {n}She stands, and taps the door twice with her knuckles on the way out.{/n}
@@ -413,6 +436,16 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
     a("no", '''"Then we're done for tonight. I'm not sayin' never. I'm sayin' not like this. Come back when you can knock."
 {n}She picks up the lantern and walks back down the road without looking round. Spies never do.{/n}''',
       c('[Let her walk back to the road] "Then I\'ll learn to knock."', flags=(DECLINED,))),
+    a("left", '''"Beth asked me where I go at night. I told her the truth: the gate. She didn't say a word. She cleaned her sword instead, all of it, twice."
+{n}She breathes out, and it smokes in the cold.{/n}
+"I'm not askin' your leave and I'm not askin' hers. I'm tellin' you what it costs. Say what you came out here to say."''',
+      c('[Ask her to stay] "Stay. Not in there. Here, with me."', "terms"),
+      c('[Say nothing and wait] "..."', "terms")),
+    a("morning_left", '''{n}Grey light. She is already dressed and lacing her boots, the lantern relit.{/n}
+"Beth's gonna know the second she looks at me. She won't say it. That's worse."
+{n}She stands, and taps the door twice with her knuckles on the way out.{/n}
+"Same door. Knock. And when she's ready to ride, I'm gone with her. You knew that last night."''',
+      c('"Same door."')),
 ], requires=("trickster.ever", RETURNED, GATE), forbids=("anevia.committed", DECLINED), delay=96)
 
 # E12b letter twin: only if the smith anchor cannot be resolved, so the gate beats cannot be staged in person.
@@ -779,6 +812,22 @@ TIRABADE_PARAGRAPH = p("They had both been lost once, one to Iz and one to the r
                        "routes that did not bear close inspection. At the Tirabade table there were three chairs, and "
                        "Anevia's rule for the third was the same as for every door: knock first.",
                        requires=(RETURNED, I_RET))
+# Sol pol INT: the registered "wife killed" ending, for an Anevia who came back but never renewed her terms. Her no at
+# the gate was "not like this", not never; exactly one of these (with the independent module's never-returned closure)
+# says where it was left. The muster and unsigned-letter paragraphs follow from PARAGRAPHS.
+WIFE_KILLED_RETURNED = (
+    p("Her last word at the gate had been \"Come back when you can knock,\" and she had meant both halves of it. The knock "
+      "she wanted was Iz, said plainly in the Commander's own voice, in the yard where Beth's knights could hear it. It "
+      "was never said there. She did not shut the gate, and she did not forgive a word of it.",
+      requires=(RETURNED, DECLINED), forbids=(PENANCE,)),
+    p("She called the muster what it was: the price of the gate, not of the door. She held to that. The lantern stayed on "
+      "her side of the line, the Commander still knew how to knock, and she never once said she would not answer.",
+      requires=(RETURNED, DECLINED, PENANCE)),
+    p("She came back as far as the Drezen gate with Beth's name still the first thing out of her mouth. Whatever passed "
+      "between them afterward, she never let Iz be told as an accident, and never let her coming back be mistaken for a "
+      "pardon.",
+      requires=(RETURNED,), forbids=(DECLINED,)),
+)
 
 
 def integrate(payload):
@@ -826,6 +875,8 @@ def integrate(payload):
         if s["Id"] in WITH_PARAGRAPHS:
             for node in s["Nodes"]:
                 if all(ch.get("Next") is None for ch in node["Choices"]):
+                    if s["Id"] == "anevia.ending_wife_killed":
+                        node.setdefault("Paragraphs", []).extend(dict(x) for x in WIFE_KILLED_RETURNED)
                     node.setdefault("Paragraphs", []).extend(dict(x) for x in PARAGRAPHS)
         if s.get("Relationship") == "tirabade" and s["Id"] in TIRABADE_ENDINGS:
             s.setdefault("ForbidOverrides", {}).update({"irabeth_dead": I_RET, "anevia_gone": RETURNED})
