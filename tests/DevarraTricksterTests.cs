@@ -161,7 +161,8 @@ internal static class DevarraTricksterTests
         check(story.Latches["devarra.escaped.latched"].SequenceEqual(new[] { "devarra.escaped" }), "The escape is not latched.");
 
         // Trk_Devarra_SpawnGate: the E18 gates hold in her flight world only.
-        var devarraGates = story.NativeGates.Where(g => g.Value.Relationship == "devarra").ToDictionary(g => g.Key, g => g.Value);   // other routes gate too (Kiana)
+        var devarraGates = story.NativeGates.Where(g => g.Value.Relationship == "devarra" && g.Key != "dragon_eggs.dialog")   // other routes gate too (Kiana)
+            .ToDictionary(g => g.Key, g => g.Value);   // the egg dialog gate (engine queue 9c) is checked in NativeGateManagedTests.RunDevarra
         check(devarraGates.Keys.OrderBy(k => k).SequenceEqual(new[] { OverBody, Spawn })
               && devarraGates[Spawn].Target == "977818b761d048d49a0fe19a1c8fccc4" && devarraGates[OverBody].Target == "b8dfb42d03fc931409f2b80614cfa9de",
             "Trk_Devarra_SpawnGate: the reviewed gates are not the Sanctum spawn and the golems' carcass cue.");

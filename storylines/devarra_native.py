@@ -27,8 +27,35 @@ NATIVE_EPILOGUE_EDITS = {
 }
 
 
+# 9c (devarra.md, residual c): once she has taken her clutch (the flight return's "paid" / "owe", devarra.trickster.clutch_collected),
+# the native egg interaction (DragonEggs_Dialogue, opened by EnableEggDialog b88c5631) stays shut: an E18 gate on the dialog's own
+# condition. Warning-only. The eggs' native fates (omelet, druids, project, destroyed) already close it natively.
+NATIVE_GATES = {
+    "dragon_eggs.dialog": dict(Target="63f11843f40edd54795fcc0af3f6a20e", Relationship="devarra", When=[["trickster.ever", dt.COLLECTED]]),
+}
+
+# 9b (escalated 2): Greybor's Obj5A "Track down and kill the dragon in the Ivory Sanctum" (given by the RedDragon_Fly entrance cutscene)
+# completes only when the Sanctum dragon dies. In the flight world she is not there (the E18 spawn gate), so once the Commander has
+# stood in the egg chamber (Golems Cue_0006) the objective is failed: the hunt is over, nobody killed her. E19, failed never
+# completed (no experience, no "tell Irabeth the dragon is dead"); the quest stays open and the native interchapter ends it.
+NATIVE_OBJECTIVE_SETTLEMENTS = {
+    "greybor.dragon_hunt.sanctum": dict(Target="fde08188fb6cf654a80cc3f30c3fb5a8", Relationship="devarra",
+                                        When=[["trickster.ever", dt.FLOWN, dt.GOLEMS_MET]]),
+}
+
+
 def integrate(payload):
     payload["Scenes"].extend(copy.deepcopy(SCENES))
+    gates = payload.setdefault("NativeGates", {})
+    for key, gate in NATIVE_GATES.items():
+        if key in gates:
+            raise ValueError("devarra_native: conflicting native gate " + key)
+        gates[key] = dict(gate, When=[list(g) for g in gate["When"]])
+    settled = payload.setdefault("NativeObjectiveSettlements", {})
+    for key, spec in NATIVE_OBJECTIVE_SETTLEMENTS.items():
+        if key in settled:
+            raise ValueError("devarra_native: conflicting objective settlement " + key)
+        settled[key] = dict(spec, When=[list(g) for g in spec["When"]])
     edits = payload.setdefault("NativeEpilogueEdits", {})
     for cue, spec in NATIVE_EPILOGUE_EDITS.items():
         if cue in edits:

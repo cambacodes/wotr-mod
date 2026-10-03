@@ -92,6 +92,8 @@ namespace Tirabade
         private static object? recoveryPlayer;
         private static readonly List<SimpleBlueprint> registered = new List<SimpleBlueprint>();
         private static readonly Dictionary<string, BlueprintQuestObjective> objectives = new Dictionary<string, BlueprintQuestObjective>();
+        // E19: reviewed native objectives the route's world settles (failed while Started and the settlement holds).
+        private static readonly Dictionary<string, BlueprintQuestObjective> settlements = new Dictionary<string, BlueprintQuestObjective>();
         // E15: journal entries (the Trickster's Ledger), keyed "<relationship>/<entry id>".
         private static readonly Dictionary<string, KeyValuePair<JournalEntry, BlueprintQuestObjective>> journalEntries =
             new Dictionary<string, KeyValuePair<JournalEntry, BlueprintQuestObjective>>();
@@ -298,6 +300,13 @@ namespace Tirabade
                         warnings.Add("Native gate " + pair.Key + " skipped (the native content plays): " + (refusal ?? "no owner"));
                     else if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
                     else nativeGates.Add((pair.Key, pair.Value, owner, checkers));
+                }
+                // E19: a settlement needs its reviewed objective; a missing one only warns (the journal keeps its native step).
+                foreach (var pair in story.NativeObjectiveSettlements)
+                {
+                    var objective = Resolve<BlueprintQuestObjective>(pair.Value.Target, "Native objective settlement " + pair.Key);
+                    if (objective == null) warnings.Add("Native objective settlement " + pair.Key + " skipped (the objective stays as the game left it).");
+                    else settlements[pair.Key] = objective;
                 }
                 // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.
                 foreach (var pair in story.Presences)
@@ -1663,6 +1672,7 @@ namespace Tirabade
                     && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
             }
             TickJournalEntries(state);
+            SettleNativeObjectives(state);
             if (restPending && UseMailbag())
             {
                 // E8b: every deliverable letter arrives; the player chooses what to read from the list.
@@ -1749,6 +1759,27 @@ namespace Tirabade
                 + (click.LastError != null ? " (" + click.LastError.Message + ")" : "") : "")).ToArray();
 
         // E1: persist every latch the current snapshot observes. Idle-only, so native state is settled.
+        // E19: fail (never complete) a reviewed native objective that is still Started while its settlement holds on the Trickster
+        // path. Failing a FinishParent=false objective leaves its quest open; the game's own steps then end it as before.
+        private static void SettleNativeObjectives(Snapshot state)
+        {
+            foreach (var pair in settlements)
+            {
+                if (degraded.Contains(story.NativeObjectiveSettlements[pair.Key].Relationship) || !Rules.NativeObjectiveSettles(story, pair.Key, state)) continue;
+                try
+                {
+                    if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) != QuestObjectiveState.Started) continue;
+                    Game.Instance.Player.QuestBook.FailObjective(pair.Value);
+                    entry.Logger.Log("Native objective settled (failed): " + pair.Key);
+                }
+                catch (Exception ex)
+                {
+                    string warning = "Native objective settlement " + pair.Key + " failed: " + ex.Message;
+                    if (!warnings.Contains(warning)) warnings.Add(warning);
+                }
+            }
+        }
+
         private static void RecordLatches()
         {
             if (story.Latches.Count == 0) return;

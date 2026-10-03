@@ -44,6 +44,12 @@ namespace Tirabade
         private static readonly (string Quest, string State)[] ArsinoeQuests = { ("a1024628f074e4d4f9d2b15956975459", "Completed"), ("5a5a533c9ce630a48b877f9a194840cb", "None") };
         public const string ArsinoeEtude = "439e63fed37f52048887d98f99255e40";
         public const string ArsinoeNextCue = "281db1a5e0832dc46ac1276346336e93";
+        // Devarra (engine queue 9c): DragonEggs_Dialogue (c3/IvorySanctum/DragonEggs), the egg chamber's interaction dialog, opens only
+        // while EnableEggDialog (b88c5631) is unlocked: Conditions exactly [FlagUnlocked b88c5631, not negated, no specified values].
+        // Gated once she has taken her clutch (devarra.trickster.clutch_collected), the dialog does not open: no egg is left to examine,
+        // cook, sell or smash. Warning-only. The parent mod never names the dialog or the flag.
+        public const string DragonEggsDialog = "dragon_eggs.dialog";
+        public const string EnableEggDialog = "b88c56313ded5e0409bbd04334add635";
         public static Dictionary<string, string> Reviewed => Rules.ReviewedNativeGates;
 
         // Phase 1: the native evidence must match exactly, or the gate is refused (the caller degrades its relationship).
@@ -85,6 +91,18 @@ namespace Tirabade
                 checkers = new[] { answer.ShowConditions };
                 return null;
             }
+            if (gate == DragonEggsDialog)
+            {
+                if (!(blueprint is BlueprintDialog dialog)) return "DragonEggs_Dialogue missing";
+                var shown = dialog.Conditions?.Conditions;
+                if (dialog.Conditions == null || dialog.Conditions.Operation != Operation.And || shown == null || shown.Length != 1
+                    || !(shown[0] is FlagUnlocked flag) || flag.Not || flag.ExceptSpecifiedValues || (flag.SpecifiedValues?.Count ?? 0) != 0
+                    || FlagGuid(flag) != BlueprintGuid.Parse(EnableEggDialog))
+                    return "DragonEggs_Dialogue conditions differ from the reviewed policy";
+                owner = dialog;
+                checkers = new[] { dialog.Conditions };
+                return null;
+            }
             if (!(blueprint is BlueprintCue cue)) return "Golems_DragonEggs/Cue_0001 missing";
             var conditions = cue.Conditions?.Conditions;
             if (cue.Conditions == null || cue.Conditions.Operation != Operation.And || conditions == null || conditions.Length != 1
@@ -105,6 +123,9 @@ namespace Tirabade
 
         private static BlueprintGuid? QuestGuid(QuestStatus status) => ((BlueprintQuestReference?)typeof(QuestStatus).GetField("m_Quest",
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)!.GetValue(status))?.Guid;
+
+        private static BlueprintGuid? FlagGuid(FlagUnlocked flag) => ((BlueprintUnlockableFlagReference?)typeof(FlagUnlocked).GetField("m_ConditionFlag",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)!.GetValue(flag))?.Guid;
 
         private static bool IsDragon(EntityReference reference) => reference != null
             && reference.UniqueId == DragonSpawner && reference.SceneAssetGuid == SanctumScene;

@@ -37,6 +37,12 @@ internal static class TricksterOnlyNativeTests
             count++;
             check(!Rules.NativeGateHolds(story, pair.Key, World(pair.Value.When, false)), "Native gate " + pair.Key + " holds off the Trickster path.");
         }
+        foreach (var pair in story.NativeObjectiveSettlements)
+        {
+            count++;
+            check(!Rules.NativeObjectiveSettles(story, pair.Key, World(pair.Value.When, false)), "Native objective settlement " + pair.Key + " holds off the Trickster path.");
+            check(Rules.NativeObjectiveSettles(story, pair.Key, World(new[] { pair.Value.When[0] }, true)), "Native objective settlement " + pair.Key + " never holds.");
+        }
         check(count > 0, "No native edit, suppression or gate was checked.");
         // Validation refuses an edit group without the Trickster path.
         var copy = System.Text.Json.JsonSerializer.Deserialize<Story>(System.Text.Json.JsonSerializer.Serialize(story,

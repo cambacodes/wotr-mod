@@ -723,6 +723,7 @@ internal static class Program
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
         NativeGateManagedTests.RunArsinoe(story, Check);
+        NativeGateManagedTests.RunDevarra(story, Check);
         SpeakerManagedTests.Run(native, Check);
         ContinueBeforeManagedTests.Run(native, Id, Check);
         PresenceHubManagedTests.Run(Id, Check);

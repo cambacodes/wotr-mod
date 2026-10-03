@@ -45,6 +45,9 @@ namespace Tirabade
         // E18: reviewed native gates (NativeGate.Reviewed), keyed by gate id. While When holds, the gated native checker reads
         // false and the native content takes its own false branch. Never starts or completes a native etude.
         public Dictionary<string, NativeGateSpec> NativeGates = new Dictionary<string, NativeGateSpec>();
+        // E19: reviewed native objectives settled (failed, never completed) while When holds and the objective is still Started:
+        // a journal step the route's world made moot (Greybor's Obj5A after Devarra flew). Trickster only, warning-only.
+        public Dictionary<string, NativeGateSpec> NativeObjectiveSettlements = new Dictionary<string, NativeGateSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E17 (native outcome bridge): the only native etudes a choice may start (Choice.StartEtude), each a GUID the story
@@ -1338,6 +1341,7 @@ namespace Tirabade
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
                 throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
@@ -1562,16 +1566,46 @@ namespace Tirabade
             }
         }
 
+        // E19: a settlement names a reviewed objective, a known relationship and known When groups that each require trickster.ever.
+        private static void ValidateNativeObjectiveSettlements(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeObjectiveSettlements == null) throw new InvalidOperationException("NativeObjectiveSettlements cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeObjectiveSettlements)
+            {
+                var spec = pair.Value;
+                if (spec == null || !ReviewedNativeObjectives.TryGetValue(pair.Key, out var target) || spec.Target != target
+                    || spec.Relationship == null || !story.Relationships.ContainsKey(spec.Relationship) || spec.When == null || spec.When.Length == 0
+                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f)) || !g.Contains(TricksterPath)))
+                    throw new InvalidOperationException("Invalid native objective settlement (reviewed id and objective, known relationship, known "
+                        + "When groups that each require trickster.ever): " + pair.Key);
+            }
+        }
+
+        // E19: the reviewed settlements and their objectives. Each is failed (never completed: no experience, no follow-on objective).
+        // Greybor's DragonHunt Obj5A ("Track down and kill the dragon in the Ivory Sanctum", given by the RedDragon_Fly entrance
+        // cutscene, completed only by the Sanctum dragon's death trigger in IvorySanctum_MainEtude): FinishParent false, so the
+        // quest stays open and the native interchapter (MidnightFane_InterchapterQuestFail, DragonHunt_HiddenFail) ends it as before.
+        public static readonly Dictionary<string, string> ReviewedNativeObjectives = new Dictionary<string, string>
+        {
+            ["greybor.dragon_hunt.sanctum"] = "fde08188fb6cf654a80cc3f30c3fb5a8",
+        };
+
+        // E19: a settlement applies while its relationship is live and any When group holds.
+        public static bool NativeObjectiveSettles(Story story, string key, Snapshot state) => story.NativeObjectiveSettlements.TryGetValue(key, out var spec)
+            && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
+
         // E18: the reviewed gate ids and their native targets (src/NativeGate.cs holds the audited contracts).
         public static readonly Dictionary<string, string> ReviewedNativeGates = new Dictionary<string, string>
         {
             ["ivory_sanctum.red_dragon_spawn"] = "977818b761d048d49a0fe19a1c8fccc4",   // IvorySanctum_MainEtude: RedDragon_CR20 spawn branches
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
             ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
+            ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
         };
 
         // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
-        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer" };
+        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog" };
 
         // E18: a gate holds while its relationship is live and any When group holds.
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)

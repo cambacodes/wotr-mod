@@ -16,7 +16,7 @@ using Tirabade;
 // while the earned state holds (canon otherwise, including when the gate's relationship is degraded).
 internal static class NativeGateManagedTests
 {
-    public static IEnumerable<string> NativeIds => NativeGate.Reviewed.Values;
+    public static IEnumerable<string> NativeIds => NativeGate.Reviewed.Values.Concat(Rules.ReviewedNativeObjectives.Values);
 
     private static T Seed<T>(string guid) where T : SimpleBlueprint, new()
     {
@@ -98,6 +98,67 @@ internal static class NativeGateManagedTests
         answer.NextCue = new Kingmaker.DialogSystem.CueSelection { Cues = ((JArray)answerData["NextCue"]!["Cues"]!)
             .Select(v => CueRef(((string)v!).Replace("!bp_", ""))).ToList() };
         answer.OnSelect = new ActionList { Actions = Array.Empty<GameAction>() };
+        // Engine queue 9c: DragonEggs_Dialogue's own condition as the archive has it (FlagUnlocked EnableEggDialog).
+        string dialogId = Rules.ReviewedNativeGates[NativeGate.DragonEggsDialog];
+        var dialogData = native[dialogId];
+        check(Type(dialogData) == "BlueprintDialog", "DragonEggs_Dialogue is not a BlueprintDialog");
+        var dialog = Seed<BlueprintDialog>(dialogId);
+        dialog.Conditions = new ConditionsChecker { Operation = (Operation)Enum.Parse(typeof(Operation), (string)dialogData["Conditions"]!["Operation"]!),
+            Conditions = dialogData["Conditions"]!["Conditions"]!.Select(c => (Condition)Flag(c, check)).ToArray() };
+        // E19: the reviewed objectives load as the game loads them.
+        foreach (string objective in Rules.ReviewedNativeObjectives.Values)
+        {
+            check(Type(native[objective]) == "BlueprintQuestObjective", "Reviewed settlement target is not a BlueprintQuestObjective: " + objective);
+            Seed<Kingmaker.Blueprints.Quests.BlueprintQuestObjective>(objective);
+        }
+    }
+
+    private static FlagUnlocked Flag(JToken token, Action<bool, string> check)
+    {
+        check(Type(token) == "FlagUnlocked", "DragonEggs_Dialogue condition is not FlagUnlocked");
+        var flag = new FlagUnlocked { Not = (bool)token["Not"]!, ExceptSpecifiedValues = (bool)token["ExceptSpecifiedValues"]! };
+        var reference = new BlueprintUnlockableFlagReference();
+        typeof(BlueprintReferenceBase).GetField("deserializedGuid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+            .SetValue(reference, BlueprintGuid.Parse(((string)token["m_ConditionFlag"]!).Replace("!bp_", "")));
+        typeof(FlagUnlocked).GetField("m_ConditionFlag", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!.SetValue(flag, reference);
+        return flag;
+    }
+
+    // After Main.Build (engine queue 9b/9c): the egg dialog carries one guard around FlagUnlocked, warning-only, and both the gate and
+    // the Obj5A settlement hold only after her return (clutch collected) / in the flight world past the egg chamber, on the Trickster path.
+    public static void RunDevarra(Story story, Action<bool, string> check)
+    {
+        var dialog = (BlueprintDialog)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(Rules.ReviewedNativeGates[NativeGate.DragonEggsDialog]))!;
+        var guard = dialog.Conditions.Conditions.Length == 1 ? dialog.Conditions.Conditions[0] as NativeGate.Guard : null;
+        check(story.NativeGates.ContainsKey(NativeGate.DragonEggsDialog) == (guard != null), "The egg dialog gate attachment does not match Story.NativeGates.");
+        if (guard != null)
+            check(Original(guard).Conditions.Single() is FlagUnlocked flag && !flag.Not && ReferenceEquals(guard.Owner, dialog),
+                "The egg dialog gate lost FlagUnlocked EnableEggDialog or is not owned by the dialog.");
+        check(Rules.WarningOnlyNativeGates.Contains(NativeGate.DragonEggsDialog), "The egg dialog gate would degrade Devarra on refusal.");
+        // Drift: an extra condition is refused.
+        var drifted = new BlueprintDialog { AssetGuid = dialog.AssetGuid, name = "EggDialogDrift" };
+        drifted.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = new Condition[] { new FlagUnlocked { Not = true }, new FlagUnlocked() } };
+        check(NativeGate.Check(NativeGate.DragonEggsDialog, story.NativeGates[NativeGate.DragonEggsDialog], g => drifted, out _, out _) != null,
+            "A drifted egg dialog condition is accepted.");
+        const string T = "devarra.trickster.";
+        foreach (var (what, flags, gated, settled) in new (string, string[], bool, bool)[]
+        {
+            ("flight, before the chamber", new[] { "trickster.ever", T + "flight.pact", "devarra.escaped" }, false, false),
+            ("flight, golems met", new[] { "trickster.ever", T + "flight.pact", "devarra.escaped", "devarra.golems_met.latched" }, false, true),
+            ("flight, clutch collected", new[] { "trickster.ever", T + "flight.pact", "devarra.escaped", "devarra.golems_met.latched", T + "clutch_collected" }, true, true),
+            ("killed in the lair", new[] { "trickster.ever", "devarra.golems_met.latched" }, false, false),
+            ("off the Trickster path", new[] { T + "flight.pact", "devarra.escaped", "devarra.golems_met.latched", T + "clutch_collected" }, false, false),
+            ("collected, degraded", new[] { "trickster.ever", T + "flight.pact", "devarra.escaped", "devarra.golems_met.latched", T + "clutch_collected",
+                Rules.DegradedPrefix + "devarra" }, false, false),
+        })
+        {
+            var state = new Snapshot { Chapter = 3 };
+            state.Flags.UnionWith(flags);
+            Rules.Complete(story, state);
+            check(Rules.NativeGateHolds(story, NativeGate.DragonEggsDialog, state) == gated, "Egg dialog gate, " + what);
+            check(Rules.NativeObjectiveSettles(story, "greybor.dragon_hunt.sanctum", state) == settled, "Obj5A settlement, " + what);
+        }
+        Console.WriteLine("PASS: E18 egg dialog shut after Devarra takes her clutch; E19 Greybor's Obj5A failed in the flight world (Trickster only).");
     }
 
     private static QuestStatus Quest(JToken token)
