@@ -425,9 +425,9 @@ letter(P + "free.spent_light", "The last wand", [
 {n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}''',
         c('[Finish at dawn] Put the empty wands away.', "report_hand", forbids=(HERALD_KILLED,)),
         c('[Finish at dawn] Put the empty wands away.', "report_chapel", requires=(HERALD_KILLED,))),
-    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. He prays the names of the night at compline, as the Inheritor's chaplains do, and Heaven's healers have been asking after Drezen's wounded since the siege. Word of a Commander who emptied the stores for strangers travels. This time it reaches an angel with her own reasons to listen.{/n}''',
+    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. He prays the names of the night at compline, as the Inheritor's chaplains do. A celestial healer who has been visiting the wards carries a copy home to Heaven, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
-    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning, and he prays the names of the night at compline, more of them every week since the Hand fell. Heaven's healers have been asking after Drezen's wounded since the siege. Word of a Commander who emptied the stores for strangers travels. This time it reaches an angel with her own reasons to listen.{/n}''',
+    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning, and he prays the names of the night at compline, more of them every week since the Hand fell. A celestial healer who has been visiting the wards carries a copy home to Heaven, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
 ], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
 
@@ -517,14 +517,14 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
 
 ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
     t("start", '''{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}
-"Ask, then. But first promise me something. My brother's light, the part of him that is in you: never spend it on cheating death. I have sat beside enough dying men to know what you would be tempted to do with it. Not unnoticed, not for me, not for anyone. If I fall, let me go. My brother went. I would rather be where he is than be the reason you cheated."''',
+"Ask, then. But first promise me something. My brother's sword left something of him in you. I know what it is to pray for a miracle when no help is coming. Promise me you will never beg what remains of him to cheat death. Not unnoticed, not for me, not for anyone. If I fall, let me go. Do not make my brother answer for it."''',
       c('[Promise, and ask her] "I promise. Stay with me."', "promised", flags=(COMMITTED, SEALED)),
       c('[Refuse the promise] "I can\'t promise that."', "unpromised", flags=(CLOSED,))),
     t("promised", '''{n}She puts the last bandage on the pile and squares it with both hands, very neatly, the way she does when she is trying not to let them shake.{/n}
 "Then I will hold you to it. I am told that is what Tricksters hate most." {n}She almost smiles.{/n} "Yes."''',
       c("Continue", "threshold")),
     t("unpromised", '''"No. I did not think you could." {n}She goes on folding.{/n}
-"That light is what is left of my brother in this world, Commander. He was a blade of the host. He never once cheated anyone, not even Pharasma. I will not sit beside you and watch you make a thief of him. I am sorry."''',
+"He was my brother, Commander. What his sword left in you is yours to carry; I will not ask you to give it back. But I will not put that hope between us with his name on it. I am sorry."''',
       c('[Leave her the ward.]')),
     *night_nodes(),
 ], requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED), delay=72)
@@ -596,11 +596,12 @@ LIGHT_PARAGRAPHS = (
       "the whole time. She learned the names of the two men who died holding the ruin gate for her, and prayed for them at "
       "every compline, and would not let anyone call the black wing hers, though it folded to her now like a hand.",
       requires=(LONG,)),
-    p("The Commander kept the promise made in the quiet ward, never to spend her brother's light on cheating death. It was "
-      "harder than any vow they had broken, and Targona knew it, and said so, once.", requires=(SEALED,),
+    p("The Commander kept the promise made in the quiet ward. No plea for a miracle was ever addressed to Lariel. Targona "
+      "took the Commander's hand one evening beside the empty cots, and held it until the lamp burned low.", requires=(SEALED,),
       forbids=("targona.lastcall.called",)),
-    p("The Commander broke the promise made in the quiet ward, once, at the rift, and spent her brother's light after "
-      "all. She did not leave. She did not pretend it had not happened, either.", requires=(SEALED, "targona.lastcall.called")),
+    p("The Commander broke the promise made in the quiet ward, once, at the rift, begging what was left of her brother to "
+      "cheat death, and told her so afterwards. Nothing had answered. Targona stayed, and she did not pretend it had not "
+      "happened, and the Commander never once offered that unanswered plea as an excuse.", requires=(SEALED, "targona.lastcall.called")),
     p("She told Heaven the truth about the laboratory, as she had said she would, and she told it that the Commander "
       "had told it first. Heaven, she reported afterwards, was not amused. She was.", requires=(FORGIVEN,), forbids=(SEALED,)),
 )
@@ -633,16 +634,31 @@ page(P + "epilogue.commit", "When the ward was quiet",
 page(P + "epilogue.colleague", "The next cot",
      '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. She and the Commander worked the rows together on the bad nights, and argued about wands, and never once about anything else.{/n}
 {n}When the tents came down she went back to Heaven's healers, and a letter came to the Commander at midwinter, as correct as a report, asking after the drummer with the fever. At the bottom, in a smaller hand, she had written that the ward was quiet now, if anyone ever wanted to ask her anything that was not about wands.{/n}''',
-     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, DRAWN), paragraphs=WARD_PARAGRAPHS)
+     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, DRAWN, "sacrifice"), paragraphs=WARD_PARAGRAPHS,
+     **SACRIFICE_GUARD)
+
+# Polish (INT): the colleague's farewell when the Commander did not come back from the Threshold (no invitation to anyone).
+page(P + "epilogue.colleague_lost", "The list by the door",
+     '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. The Commander did not come back from the Threshold. A runner told her at the cots. She went on with the dressing in her hands, and only when it was tied did she ask him to say it again.{/n}
+{n}When the tents came down she went back to Heaven's healers. She left the chaplain a list of the men the Commander had sat up with on the bad nights, every name she could remember, and asked him to pray it at compline after she had gone.{/n}''',
+     requires=("trickster.ever", MET, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, DRAWN, "trickster.commander_back"),
+     paragraphs=WARD_PARAGRAPHS)
 
 page(P + "epilogue.ally", "The ward's other chair",
      '''{n}Targona forgave the Commander in front of the whole ward, and meant it, and never went further than that. She stayed in Drezen until the last cot was folded. When the Commander came to the infirmary, she handed over a basin or a roll of linen without being asked, and talked about the wounded, and about her brother, and never about the laboratory. People who saw them together took them for old comrades. In a way they were.{/n}''',
-     requires=("trickster.ever", FORGIVEN), forbids=(TESTED, MET, COMMITTED, CLOSED, DECLINED), paragraphs=LIGHT_PARAGRAPHS[:3])
+     requires=("trickster.ever", FORGIVEN), forbids=(TESTED, MET, COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS[:3],
+     **SACRIFICE_GUARD)
 
 page(P + "epilogue.declined", "The stool by the last cot",
      '''{n}When the last wounded soldier left the ward, Targona returned to the halls of Heaven. There had been a question between her and the Commander, and an answer kept for a quieter evening. The war ended before they found one.{/n}
 {n}She left the stool beside the last cot where it stood. The next man who could not sleep would need someone to sit with him.{/n}''',
-     requires=("trickster.ever", DECLINED), forbids=(COMMITTED,))
+     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED))
+
+# Polish (BEL): the quiet ward's refused promise is her answer, not a postponement.
+page(P + "epilogue.refused_promise", "The promise not made",
+     '''{n}When the last wounded soldier left the ward, Targona returned to the halls of Heaven. She had asked the Commander for one promise, about her brother, and had not been given it. She did not ask again, and she did not pretend the answer had been anything but an answer.{/n}
+{n}She sent the ward's last lamp back to the quartermaster with a note as correct as a report. At compline she prayed for the Commander, and for Lariel, and kept the two prayers apart.{/n}''',
+     requires=("trickster.ever", DECLINED, CLOSED), forbids=(COMMITTED,))
 
 page(P + "epilogue.furlough", "A wand that never ran down",
      '''{n}Targona never went back to Heaven's healers for longer than a visit. She kept a ward in Drezen with the Commander's name over the door.{/n}''',

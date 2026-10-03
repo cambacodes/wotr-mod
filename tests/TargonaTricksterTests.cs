@@ -435,7 +435,22 @@ internal static class TargonaTricksterTests
         check(back6.Has("trickster.commander_back") && Rules.Available(story, epFurlough, back6) && !Rules.Available(story, epSacrifice, back6),
             "A Commander who came back is mourned.");
         check(!Rules.Available(story, epSacrifice, wed6), "The sacrifice page plays without a sacrifice.");
-        foreach (var page in new[] { epCommit, epDeclined, epFurlough, epSacrifice })
+        // Polish: an unsurvived sacrifice gets no living-recipient letter; a refused promise is not a postponement.
+        var epColleague2 = S(P + "epilogue.colleague");
+        var epColleagueLost = S(P + "epilogue.colleague_lost");
+        var epRefused = S(P + "epilogue.refused_promise");
+        var metLost6 = World(story, 6, "trickster.ever", P + "met", "sacrifice");
+        check(!Rules.Available(story, epColleague2, metLost6) && Rules.Available(story, epColleagueLost, metLost6),
+            "The colleague's invitation reaches a Commander who died at the Threshold.");
+        var metBack6 = World(story, 6, "trickster.ever", P + "met", "sacrifice", "ending.trickster");
+        check(Rules.Available(story, epColleague2, metBack6) && !Rules.Available(story, epColleagueLost, metBack6),
+            "A Commander who came back loses the colleague's letter.");
+        check(!Rules.Available(story, epAlly, World(story, 6, "trickster.ever", P + "forgiven", "sacrifice")), "The ally page ignores the sacrifice.");
+        var refusedHistory = After(quiet, Later(story, declined, 72), "start", 1);
+        var refused6 = World(story, 6, refusedHistory.Flags.ToArray());
+        check(refusedHistory.Has(Closed) && !Rules.Available(story, epDeclined, refused6) && Rules.Available(story, epRefused, refused6)
+              && !Rules.Available(story, epRefused, no6), "A refused promise reads as an open question, or the open question reads as refused.");
+        foreach (var page in new[] { epCommit, epDeclined, epFurlough, epSacrifice, epColleague2, epColleagueLost, epAlly, epRefused })
             check(page.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0), "An epilogue page has effects: " + page.Id);
 
         // Reactions: exactly Seelah, Sosiel and Ember; guarded; never touching another relationship.
