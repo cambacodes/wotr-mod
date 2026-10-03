@@ -44,6 +44,7 @@ from storylines import nocticula_trickster
 from storylines import vellexia_trickster
 from storylines import nurah_trickster
 from storylines import kiana_trickster
+from storylines import kiana_native  # engine queue 8: Arsinoe's "any news" answer gated after a ransom (E18)
 from storylines import minagho_chivarro_trickster
 from storylines import soana_trickster
 from storylines import aranka_trickster
@@ -380,6 +381,7 @@ def make_expansion(*, independent_tirabade=True):
     if "kiana" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(kiana_trickster.SCENES))
         kiana_trickster.integrate(payload)
+        kiana_native.integrate(payload)
     if "minagho_chivarro" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_trickster.SCENES))
         minagho_chivarro_trickster.integrate(payload)

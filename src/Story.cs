@@ -1567,7 +1567,11 @@ namespace Tirabade
         {
             ["ivory_sanctum.red_dragon_spawn"] = "977818b761d048d49a0fe19a1c8fccc4",   // IvorySanctum_MainEtude: RedDragon_CR20 spawn branches
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
+            ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
         };
+
+        // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
+        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer" };
 
         // E18: a gate holds while its relationship is live and any When group holds.
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)

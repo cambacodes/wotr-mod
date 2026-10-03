@@ -89,6 +89,58 @@ internal static class NativeGateManagedTests
         var cue = Seed<BlueprintCue>(NativeGate.GolemsCue);
         cue.Conditions = new ConditionsChecker { Operation = (Operation)Enum.Parse(typeof(Operation), (string)cueData["Conditions"]!["Operation"]!),
             Conditions = cueData["Conditions"]!["Conditions"]!.Select(c => (Condition)Status(c)).ToArray() };
+        // Engine queue 8a: VendorArsinoe/Answer_0025 as the archive has it (two QuestStatus, one EtudeStatus; NextCue Cue_0026).
+        var answerData = native[NativeGate.ArsinoeAnswer];
+        check(Type(answerData) == "BlueprintAnswer", "VendorArsinoe/Answer_0025 is not a BlueprintAnswer");
+        var answer = Seed<BlueprintAnswer>(NativeGate.ArsinoeAnswer);
+        answer.ShowConditions = new ConditionsChecker { Operation = (Operation)Enum.Parse(typeof(Operation), (string)answerData["ShowConditions"]!["Operation"]!),
+            Conditions = answerData["ShowConditions"]!["Conditions"]!.Select(c => Type(c) == "QuestStatus" ? (Condition)Quest(c) : Status(c)).ToArray() };
+        answer.NextCue = new Kingmaker.DialogSystem.CueSelection { Cues = ((JArray)answerData["NextCue"]!["Cues"]!)
+            .Select(v => CueRef(((string)v!).Replace("!bp_", ""))).ToList() };
+        answer.OnSelect = new ActionList { Actions = Array.Empty<GameAction>() };
+    }
+
+    private static QuestStatus Quest(JToken token)
+    {
+        var status = new QuestStatus { Not = (bool)token["Not"]!,
+            State = (Kingmaker.AreaLogic.QuestSystem.QuestState)Enum.Parse(typeof(Kingmaker.AreaLogic.QuestSystem.QuestState), (string)token["State"]!) };
+        var reference = new BlueprintQuestReference();
+        typeof(BlueprintReferenceBase).GetField("deserializedGuid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+            .SetValue(reference, BlueprintGuid.Parse(((string)token["m_Quest"]!).Replace("!bp_", "")));
+        typeof(QuestStatus).GetField("m_Quest", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!.SetValue(status, reference);
+        return status;
+    }
+
+    private static BlueprintCueBaseReference CueRef(string guid)
+    {
+        var reference = new BlueprintCueBaseReference();
+        typeof(BlueprintReferenceBase).GetField("deserializedGuid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+            .SetValue(reference, BlueprintGuid.Parse(guid));
+        return reference;
+    }
+
+    // Engine queue 8a: after Build, Arsinoe's "any news" answer is gated exactly while the guests were ransomed or bought back.
+    public static void RunArsinoe(Story story, Action<bool, string> check)
+    {
+        var answer = (BlueprintAnswer)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NativeGate.ArsinoeAnswer))!;
+        var guard = answer.ShowConditions.Conditions.Length == 1 ? answer.ShowConditions.Conditions[0] as NativeGate.Guard : null;
+        check(story.NativeGates.ContainsKey(NativeGate.ArsinoeSouls) == (guard != null), "Arsinoe's answer gate attachment does not match Story.NativeGates.");
+        if (guard == null) return;
+        check(Original(guard).Conditions.Length == 3 && Original(guard).Conditions.Take(2).All(c => c is QuestStatus), "The Arsinoe gate lost the native conditions.");
+        check(Rules.WarningOnlyNativeGates.Contains(NativeGate.ArsinoeSouls), "The Arsinoe gate would degrade Kiana on refusal.");
+        foreach (var (what, flags, gated) in new (string, string[], bool)[]
+        {
+            ("nothing done", new[] { "trickster.ever" }, false),
+            ("ransomed", new[] { "trickster.ever", "kiana.trickster.guests_ransomed" }, true),
+            ("bought back", new[] { "trickster.ever", "kiana.trickster.guests_bought_back" }, true),
+            ("ransomed, degraded", new[] { "trickster.ever", "kiana.trickster.guests_ransomed", Rules.DegradedPrefix + "kiana" }, false),
+        })
+        {
+            var state = new Snapshot { Chapter = 4 };
+            state.Flags.UnionWith(flags);
+            check(Rules.NativeGateHolds(story, NativeGate.ArsinoeSouls, state) == gated, "Arsinoe gate, " + what);
+        }
+        Console.WriteLine("PASS: E18 Arsinoe's 'any news' answer (VendorArsinoe/Answer_0025) gated after a ransom or buy-back.");
     }
 
     private static bool NativeGateIsSpawnBranch(Conditional conditional) => (bool)typeof(NativeGate)

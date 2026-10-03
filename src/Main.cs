@@ -294,7 +294,9 @@ namespace Tirabade
                     ConditionsChecker[] checkers = Array.Empty<ConditionsChecker>();
                     try { refusal = NativeGate.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out owner, out checkers); }
                     catch (Exception ex) { refusal = ex.Message; }
-                    if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
+                    if ((refusal != null || owner == null) && Rules.WarningOnlyNativeGates.Contains(pair.Key))
+                        warnings.Add("Native gate " + pair.Key + " skipped (the native content plays): " + (refusal ?? "no owner"));
+                    else if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
                     else nativeGates.Add((pair.Key, pair.Value, owner, checkers));
                 }
                 // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.

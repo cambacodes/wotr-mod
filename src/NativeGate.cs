@@ -35,6 +35,15 @@ namespace Tirabade
         public const string SanctumScene = "1b3609da30e000d4da2f192527f56b0d";
         public const string DragonSpawner = "85c2f3d1-ab00-4d97-8c79-7f50afc946c8";
         public const string ReplacementGroup = "752bcb99-2c77-4f6f-8542-7806575f0e9c";
+        // Kiana (engine queue 8a): VendorArsinoe/Answer_0025 "Is there any news about the poor folk whose souls were stolen?" ->
+        // Cue_0026 (her search found nothing). ShowConditions: QuestStatus a1024628 Completed, QuestStatus 5a5a533c (Seelah's Q3)
+        // None, NOT EtudeStatus 439e63fe Playing. Gated (the guests ransomed or bought back on the Trickster), the answer is not
+        // offered: the list the game shows once Seelah's Q3 has started. The parent mod never names it. Warning-only.
+        public const string ArsinoeSouls = "arsinoe.souls_search_answer";
+        public const string ArsinoeAnswer = "41d9638f7d971164fab4efdbbbffbe70";
+        private static readonly (string Quest, string State)[] ArsinoeQuests = { ("a1024628f074e4d4f9d2b15956975459", "Completed"), ("5a5a533c9ce630a48b877f9a194840cb", "None") };
+        public const string ArsinoeEtude = "439e63fed37f52048887d98f99255e40";
+        public const string ArsinoeNextCue = "281db1a5e0832dc46ac1276346336e93";
         public static Dictionary<string, string> Reviewed => Rules.ReviewedNativeGates;
 
         // Phase 1: the native evidence must match exactly, or the gate is refused (the caller degrades its relationship).
@@ -59,6 +68,23 @@ namespace Tirabade
                 checkers = found.Select(conditional => conditional.ConditionsChecker).ToArray();
                 return null;
             }
+            if (gate == ArsinoeSouls)
+            {
+                if (!(blueprint is BlueprintAnswer answer)) return "VendorArsinoe/Answer_0025 missing";
+                var shown = answer.ShowConditions?.Conditions;
+                bool Quest(Condition c, int i) => c is QuestStatus q && !q.Not && QuestGuid(q) == BlueprintGuid.Parse(ArsinoeQuests[i].Quest)
+                    && q.State.ToString() == ArsinoeQuests[i].State;
+                if (answer.ShowConditions == null || answer.ShowConditions.Operation != Operation.And || shown == null || shown.Length != 3
+                    || !Quest(shown[0], 0) || !Quest(shown[1], 1)
+                    || !(shown[2] is EtudeStatus etude) || !etude.Not || !etude.Playing || etude.Started || etude.Completed || etude.NotStarted
+                    || etude.CompletionInProgress || !IsEtude(etude, ArsinoeEtude)
+                    || answer.NextCue?.Cues == null || answer.NextCue.Cues.Count != 1 || answer.NextCue.Cues[0].Guid != BlueprintGuid.Parse(ArsinoeNextCue)
+                    || answer.OnSelect?.Actions?.Length != 0)
+                    return "VendorArsinoe/Answer_0025 differs from the reviewed policy";
+                owner = answer;
+                checkers = new[] { answer.ShowConditions };
+                return null;
+            }
             if (!(blueprint is BlueprintCue cue)) return "Golems_DragonEggs/Cue_0001 missing";
             var conditions = cue.Conditions?.Conditions;
             if (cue.Conditions == null || cue.Conditions.Operation != Operation.And || conditions == null || conditions.Length != 1
@@ -76,6 +102,9 @@ namespace Tirabade
                 System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)!.GetValue(status);
             return reference != null && reference.Guid == BlueprintGuid.Parse(guid);
         }
+
+        private static BlueprintGuid? QuestGuid(QuestStatus status) => ((BlueprintQuestReference?)typeof(QuestStatus).GetField("m_Quest",
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)!.GetValue(status))?.Guid;
 
         private static bool IsDragon(EntityReference reference) => reference != null
             && reference.UniqueId == DragonSpawner && reference.SceneAssetGuid == SanctumScene;
