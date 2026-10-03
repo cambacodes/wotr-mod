@@ -26,6 +26,12 @@ namespace RRT.TestHarness
         };
         /// <summary>Metres from the Commander the copies stand at (one per quarter turn).</summary>
         public float Distance = 3f;
+        /// <summary>Optional scene entity id (a native locator in the loaded area): every copy spawns on it instead of beside the
+        /// Commander, as an E12b At.Locator presence would (engine queue 9d: Devarra's Huge dragon at TerendelevUndeadLocator).
+        /// The spike then also checks the spot: nearest walkable node, drift after the copy settles, and room for its body.</summary>
+        public string? Locator;
+        /// <summary>Largest accepted gap (m) between the locator and the nearest walkable node, and drift of the settled copy.</summary>
+        public float MaxWalkableGap = 1.5f;
         /// <summary>How long the copies are watched after their bark triggers are forced.</summary>
         public double ObserveSeconds = 20;
         public double EntrySeconds = 180;
@@ -34,6 +40,8 @@ namespace RRT.TestHarness
         public void Normalize()
         {
             EnterPoint = string.IsNullOrWhiteSpace(EnterPoint) ? null : ResidenceSpikePlan.Norm(EnterPoint!);
+            Locator = string.IsNullOrWhiteSpace(Locator) ? null : Locator!.Trim().ToLowerInvariant();
+            if (MaxWalkableGap <= 0f) MaxWalkableGap = 1.5f;
             Units = (Units ?? new List<string>()).Where(u => !string.IsNullOrWhiteSpace(u)).Select(ResidenceSpikePlan.Norm).Distinct().ToList();
             if (Units.Count == 0) throw new FormatException("presence.units needs at least one unit blueprint guid.");
             if (Distance < 1f) Distance = 1f;
@@ -63,6 +71,12 @@ namespace RRT.TestHarness
         public List<string> Barks = new List<string>();     // audible barks the copy played (voice event or text)
         public bool Removed;
         public string? Error;
+        // Locator mode (PresenceSpikePlan.Locator): where the copy was asked to stand and how the spot held it.
+        public float[]? Target;            // the locator's position (x, y, z)
+        public float? WalkableGap;         // metres from the target to the nearest walkable node
+        public float? Drift;               // metres the settled copy stands from the target
+        public float? Corpulence;          // the copy's body radius (m)
+        public List<string> Crowding = new List<string>();   // other live units inside the copy's body radius + 1 m
     }
 
     public sealed class PresenceSpikeResult
@@ -76,6 +90,10 @@ namespace RRT.TestHarness
         public List<string> Dialogs = new List<string>();
         public List<string> Notes = new List<string>();
         public string? Error;
+        public string? Locator;            // the plan's locator, when set
+        public string? LocatorError;       // the locator did not resolve in the loaded area
+        public float MaxWalkableGap = 1.5f;
+        public List<string> Screenshots = new List<string>();
         public double Ms;
         public bool Passed;
         public List<string> Findings = new List<string>();
@@ -108,6 +126,16 @@ namespace RRT.TestHarness
                 if (c.InCombat) Findings.Add(who + ": the copy entered combat");
                 if (c.Barks.Count > 0) Findings.Add(who + ": the copy barked: " + string.Join(", ", c.Barks.Take(5)));
                 if (!c.Removed) Findings.Add(who + ": the copy was not removed afterwards (cleanup)");
+            }
+            if (LocatorError != null) Findings.Add("locator " + Locator + ": " + LocatorError);
+            foreach (var c in Copies.Where(c => c.Spawned && Locator != null))
+            {
+                string who = c.UnitName ?? c.Unit ?? "?";
+                if (c.WalkableGap == null || c.WalkableGap > MaxWalkableGap)
+                    Findings.Add(who + ": the locator is " + (c.WalkableGap?.ToString("0.00") ?? "?") + " m from the walkable mesh");
+                if (c.Drift == null || c.Drift > MaxWalkableGap)
+                    Findings.Add(who + ": the settled copy drifted " + (c.Drift?.ToString("0.00") ?? "?") + " m from the locator");
+                if (c.Crowding.Count > 0) Findings.Add(who + ": no room for its body (" + string.Join(", ", c.Crowding.Take(5)) + ")");
             }
             if (Dialogs.Count > 0) Findings.Add("dialogs started while watching: " + string.Join("; ", Dialogs));
             Passed = Findings.Count == 0;

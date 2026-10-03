@@ -3,7 +3,7 @@
 New book events stage her invitations; native one-shot conversations stay intact.
 Pre-wedding courtship and restoration of inaccessible outcomes remain separate work.
 """
-from story_format import c, n, scene
+from story_format import c, n, p, scene
 
 RELATIONSHIP = dict(
     Title="The princess writes her own part",
@@ -314,3 +314,16 @@ ending("unfinished", '''{n}Their evenings never quite became the life Kiana had 
 {n}She finished the play. The princess's guest had several excellent lines, but no longer appeared in the final scene.{/n}''', requires=("kiana.attracted",), forbids=("kiana.committed", "kiana.closed", "kiana.future_settled"))
 ending("aeon", '''{n}In the history the Commander left behind, there was no borrowed castle and no folded page carried into the last battle. Kiana had other evenings to live.{/n}
 {n}In that other history, no one had yet asked Kiana how a princess might hide the moon.{/n}''', requires=("kiana.committed",), forbids=("kiana.closed",), owner="AeonEpilogue")
+
+
+# Earned presence (rubric Binding context (3)): a Commander who stepped into the Wound and prepared no return is mourned.
+SCENES.append(scene("kiana.ending_sacrifice", RELATIONSHIP["Title"], "Epilogue", 5, "", [
+    n("start", "Narrator", """{n}Kiana heard it from a crier under her window. She closed the window, finished the sentence she had been writing, and only then put down the pen.{/n}
+{n}The play opened that winter, because she had promised the company it would. In the last scene the princess lays a second place at her table and waits for her guest. Kiana wrote no knock at the door. The audience went on waiting for one long after the lamps were down, and some of them were angry about it, which she considered the only honest review she ever received.{/n}
+{n}On the nights she sat alone in the box she did not watch the stage. She watched the empty chair, and corrected its lines under her breath.{/n}""", c(),
+      portrait="Kiana", paragraphs=(
+          p("""{n}She had already given the crusade one husband. At the temple of Abadar she told the priests she would not be reading them another name: this debt was the gods', and she expected it paid with interest.{/n}""",
+            requires=("kiana.widowed",)),
+      )),
+], Relationship="kiana", last=99, requires=("sacrifice",), forbids=("kiana.closed",),
+    RequiresAnyGroups=[["kiana.committed", "kiana.lovers"]]))

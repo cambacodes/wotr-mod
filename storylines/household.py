@@ -13,7 +13,7 @@ THE TABLE (10-HAREM-RESIDENCE.md P1: canon doors only, no new units, no invented
   The Crossroads is the Table's slot in the Trickster epilogue (08 §9), reserved: EPILOGUE_SLOT below, nothing written.
 
 ENTRY API (for the later pass; see table_entry, invitation, word_made_true)
-  table_entry(id, title, entry, nodes, pair=(rel_a, rel_b), trigger="<flag>")  a scene on the Table's hub, gated on the table
+  table_entry(id, title, entry, nodes, pair=(rel_a, rel_b), trigger="<flag>", delay=0, chapters=(3, 5))  a scene on the Table's hub, gated on the table
       being kept, both women's eligibility, no enmity between them, and a trigger flag that some earlier beat sets. Every
       entry needs a trigger: the hub never offers a scene just because two women exist.
   invitation(id, rel, sender, title, text, trigger)  a rest-delivered note (Kind "invitation": "[<Name> asks you to the
@@ -21,7 +21,9 @@ ENTRY API (for the later pass; see table_entry, invitation, word_made_true)
   word_made_true(text, next=None, use="<id>", flags=())  a choice that spends one of the three uses (08 §10), with a debt.
 
 STANCE HOOKS (05 §2; none of the stance/enmity/attitude flags is set in this pass)
-  <rel>.harem.eligible            Derived, for every romance route (below).
+  <rel>.harem.eligible            Derived, for every romance route (below), and only while her route is open (open_routes).
+  arueshalae.redeemed | arueshalae.corrupted   Derived (16 §3 / §8c item 1): her personality branch, for the pair rows
+      (3a/13/9-11 good: Require redeemed AND Forbid corrupted; 3b/9-11 lover: Require corrupted). See ARUESHALAE_BRANCH.
   <rel>.harem.stance.joined | .tolerated, <rel>.harem.joined_late, <rel>.harem.enmity.<other>   reserved.
   minagho_chivarro.harem.stance.<minagho|chivarro>.<joined|tolerated> (and enmity/attitude the same way)   reserved.
 """
@@ -30,6 +32,7 @@ import copy
 
 from story_format import c, n, scene
 from storylines import household_frictions as frictions
+from storylines import household_pair_seelah_wenduag as pair_seelah_wenduag
 from storylines import trickster_world
 
 REL = "household"
@@ -89,6 +92,53 @@ EXTRA_ELIGIBLE = {"nocticula": [["noct.acq.renewed_agreement"]],
                   "wenduag": [["wenduag.romance_finished.latched"]]}
 PAIR_WOMEN = {"minagho_chivarro": ("minagho", "chivarro")}
 
+# Arueshalae's branch key (16 §3, §8c item 1; Writer/drafts/sol/review-harem-arueshalae-states). Two POSITIVE keys, never
+# absence: an unknown state selects neither (the fail-safe is silence, never the wrong personality). Story.Derived syntax:
+# an OR of AND-groups, completed to a fixed point by Rules.Complete. Existing sources only; nothing new is bound or set.
+#   redeemed: the native release (arueshalae.changed: BackToReality Cue_0018/Cue_0025 seen, or the Ch5 BestEnding started),
+#     and the route's authored good outcomes: the Aftertaste answer (good return), the legacy torn-gift return (the torn
+#     gift is set BEFORE the return, so both are required), and the chaplain appointment on the failed branch.
+#   corrupted: the native evil recruitment (EvilArushaRecruited, read while Playing), the legacy queen-paid return (the
+#     shared `returned` flag alone is ambiguous, so it pairs with the price), the legacy evil reunion, and the house call of
+#     the recruited fallen (any answer, a refusal included).
+# The two keys hold history and can BOTH be true (good history, then corruption). Corruption wins: every good consumer
+# Requires redeemed AND Forbids corrupted. "redeemed" names the good personality, not Desna's completed transformation:
+# touch and release rules keep reading arueshalae.changed. Classification grants no seat, romance, attitude or progression.
+# Native good recruitment (coordinator ruling 2026-10-02): her two recruitment etudes, read-only, Playing only (never started
+# or completed here). ArueshalaeRecruitedInDrezen (Ch2 prison, Arusha_DrezenPrison Cue_0044/0061) and
+# ArueshalaeRecruitedFinally (Ch3 redoubt, Fortress_Arusha_End Cue_0039/0052) have no activation condition, no linked area
+# part and no chapter ancestor; nothing completes them but the ArueshalaeCompanion root (Arueshalae_Q3_Failer). Her fall
+# (Q2 Dream_Start Cue_0022 / Dream_End Cue_0013: StartEtude ArueshalaeIsEvil + Unrecruit) does NOT stop them, so the fall
+# itself is bound too (ArueshalaeIsEvil, Playing) and joins `corrupted`: a fallen Arueshalae who was once recruited good
+# reads corrupted (corruption wins), never redeemed only. Accepted gap: an old good-return save holding only `returned`
+# stays unknown until the Aftertaste.
+ARUESHALAE_REDEEMED = "arueshalae.redeemed"
+ARUESHALAE_CORRUPTED = "arueshalae.corrupted"
+ARUESHALAE_ETUDES = {
+    "arueshalae.recruited_drezen": "c2df9c6dd50caba4aade683908ac5ae3",    # ArueshalaeStates/ArueshalaeDrezen/ArueshalaeRecruitedInDrezen
+    "arueshalae.recruited_redoubt": "b3b87ce125827084cae26aaced267697",   # ArueshalaeStates/ArueshalaeRedoubtOutcomes/ArueshalaeRecruitedFinally
+    "arueshalae.fallen": "e85e8acd74d231e44ad7d6d2d5dab43c",              # ArueshalaeStates/ArueshalaeIsEvil (her fall; parent of EvilArusha*)
+}
+_AP = "arueshalae.trickster."
+ARUESHALAE_BRANCH = {
+    ARUESHALAE_REDEEMED: [
+        ["arueshalae.changed"],
+        [_AP + "aftertaste"],
+        [_AP + "returned", _AP + "cost.gift_torn"],
+        [_AP + "cost.chaplain"],
+        ["arueshalae.recruited_drezen"],
+        ["arueshalae.recruited_redoubt"],
+    ],
+    ARUESHALAE_CORRUPTED: [
+        ["arueshalae.evil_recruited"],
+        [_AP + "returned", _AP + "cost.nocticula_debt"],
+        [_AP + "returned", _AP + "cost.nocticula_favour"],
+        [_AP + "reunited"],
+        [_AP + "fallen.house_call"],
+        ["arueshalae.fallen"],
+    ],
+}
+
 SCENES = []
 ENTRIES = []          # table_entry() registrations (the later pass)
 INVITATIONS = []
@@ -133,10 +183,20 @@ OPENERS = [
 ]
 
 
-def _table_scene(id, title, owner, entry, nodes, requires, forbids, relationship=REL, **extra):
-    """A physical scene on the Table menu (Rules.IsTableScene): no unit, no list; the menu queues it."""
-    return scene(id, title, owner, 3, entry, nodes, requires=requires, forbids=forbids, delay=0, last=5,
-                 Relationship=relationship, Chapters=[3, 5], Areas=[DREZEN], InteractionHub=TABLE_HUB, **extra)
+TABLE_CHAPTERS = (3, 5)   # the chapters with a Table opener (OPENERS): Ch3 and Ch5 Drezen; Ch4 has none
+
+
+def _table_scene(id, title, owner, entry, nodes, requires, forbids, relationship=REL, delay=0, chapters=TABLE_CHAPTERS,
+                 **extra):
+    """A physical scene on the Table menu (Rules.IsTableScene): no unit, no list; the menu queues it.
+    `delay` is DelayHours, measured from the newest Requires flag (src/Story.cs); 0 keeps the old behaviour.
+    `chapters` is the explicit Chapters list (default (3, 5)); e.g. chapters=(5,) for a Ch5-only entry."""
+    chapters = list(chapters)
+    if not chapters or len(set(chapters)) != len(chapters) or any(ch not in TABLE_CHAPTERS for ch in chapters):
+        raise ValueError("Table scene %s: chapters must be distinct values from %s, got %r" % (id, TABLE_CHAPTERS, chapters))
+    return scene(id, title, owner, min(chapters), entry, nodes, requires=requires, forbids=forbids, delay=delay,
+                 last=max(TABLE_CHAPTERS), Relationship=relationship, Chapters=chapters, Areas=[DREZEN],
+                 InteractionHub=TABLE_HUB, **extra)
 
 
 # --- The one system scene: the King offers the table (inline on his own list; no partner speaks) --------------------
@@ -176,9 +236,12 @@ def enmity(rel, other):
     return "%s.harem.enmity.%s" % (rel, other)
 
 
-def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(), relationship=None, **extra):
+def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(), relationship=None, delay=0,
+                chapters=TABLE_CHAPTERS, **extra):
     """Register a scene on the Table menu. pair=(rel_a, rel_b); trigger=a flag an earlier beat sets (required).
-    `entry` is the menu line (e.g. "[Seelah and Camellia, at the corner table]")."""
+    `entry` is the menu line (e.g. "[Seelah and Camellia, at the corner table]").
+    `delay` (DelayHours, default 0) spaces chained pair steps (16 §8c: ≥ 48 between steps, 8 for a morning beat).
+    `chapters` (default (3, 5)) narrows the chapters it can surface in, e.g. chapters=(5,) for a Ch5-only entry."""
     if not trigger:
         raise ValueError("A Table entry needs a trigger flag: " + id)
     a, b = pair
@@ -186,7 +249,8 @@ def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(),
         if rel not in PARTNERS:
             raise ValueError("Unknown household partner %s in %s" % (rel, id))
     body = _table_scene(id, title, PARTNERS[a][0], entry, nodes, requires=("trickster", KEPT, eligible(a), eligible(b), trigger) + tuple(requires),
-                        forbids=(enmity(a, b), enmity(b, a)) + tuple(forbids), relationship=relationship or REL, **extra)
+                        forbids=(enmity(a, b), enmity(b, a)) + tuple(forbids), relationship=relationship or REL, delay=delay,
+                        chapters=chapters, **extra)
     ENTRIES.append(body)
     return body
 
@@ -217,7 +281,7 @@ def secret(key, title, text, portrait="", witnesses=(), risk="low"):
 # --- Integration ------------------------------------------------------------------------------------------------------
 
 def derived(payload):
-    """<rel>.harem.eligible for every partner, and household.any_eligible."""
+    """<rel>.harem.eligible for every partner, household.any_eligible, and Arueshalae's branch keys."""
     rels = payload["Relationships"]
     have = payload.get("Derived", {})
     out = {}
@@ -230,7 +294,17 @@ def derived(payload):
         groups += EXTRA_ELIGIBLE.get(rel, [])
         out[eligible(rel)] = groups
     out[ANY] = [[eligible(rel)] for rel in PARTNERS]
+    if "arueshalae" in rels:
+        out.update(copy.deepcopy(ARUESHALAE_BRANCH))
     return out
+
+
+def open_routes(payload):
+    """<rel>.harem.eligible -> [rel] (Story.DerivedOpenRoutes, engine E4b): eligibility also needs her route open. A woman whose
+    route is closed (her ClosedFlag: a refusal, a breakup, a parting) or blocked by one of her own UnavailableFlags (death,
+    dismissal, departure) leaves the household; a Trickster return in her UnavailableOverrides lifts the block, exactly as it
+    reopens her own scenes (Rules.Blocks). Read from each relationship's data, so new routes are covered without code here."""
+    return {eligible(rel): [rel] for rel in PARTNERS if rel in payload["Relationships"]}
 
 
 def _line(text, requires=(), forbids=(), any_groups=()):
@@ -323,10 +397,22 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting household derived key: " + key)
         payload["Derived"][key] = groups
+    for key, rels in open_routes(payload).items():
+        have = payload.setdefault("DerivedOpenRoutes", {}).get(key)
+        if have is not None and have != rels:
+            raise ValueError("Conflicting household route guard: " + key)
+        payload["DerivedOpenRoutes"][key] = rels
+    if "arueshalae" in payload["Relationships"]:
+        etudes = payload.setdefault("Etudes", {})
+        for key, guid in ARUESHALAE_ETUDES.items():
+            if etudes.get(key, guid) != guid:
+                raise ValueError("Conflicting Arueshalae branch etude binding: " + key)
+            etudes[key] = guid
     if not trickster_world._bound(payload, KING_GONE):
         kind, guid, _ = trickster_world.BINDINGS[KING_GONE]
         payload.setdefault(kind, {})[KING_GONE] = [guid] if kind in trickster_world.LIST_KINDS else guid
     frictions.validate(set(PARTNERS))
+    pair_seelah_wenduag.validate(set(PARTNERS))   # doc 16 §8c.6 prerequisites (data only)
     payload.setdefault("Openers", []).extend(copy.deepcopy(OPENERS))
     payload["Scenes"].extend(copy.deepcopy(SCENES + ENTRIES + INVITATIONS))
     payload.setdefault("Glossary", {}).update({k: dict(v) for k, v in GLOSSARY.items()})

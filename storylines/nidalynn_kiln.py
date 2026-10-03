@@ -586,7 +586,7 @@ visit(P + "kiln.the_goat", "A goat in the snow", [
         c("[Go.]", flags=(GOAT_STANDS, CLOSED))),
     nd("end", '''{n}The young dragon, who has understood none of this, lays her bloody chin on your boot and goes to sleep.{/n}''',
         c("[Let her.]")),
-], requires=(RENOUNCED, HATCHED), forbids=(GOAT_PAID, GOAT_ASKED, GOAT_WOLVES, LIE_KEPT), delay=48, optional=True)
+], requires=(RENOUNCED, HATCHED), forbids=(GOAT_PAID, GOAT_ASKED, GOAT_WOLVES, LIE_KEPT, CLOSED), delay=48, optional=True)
 
 
 # --- 15. The wake (optional, the widow's step or her own): a Sarkorian burial, and her song ----------------------------

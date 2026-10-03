@@ -16,6 +16,7 @@ from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
 from storylines import aivu_campaign
+from storylines import earned_presence
 from storylines import konomi_private_absence
 from storylines import soana_later_progression, soana_late_campaign
 from storylines import tirabade_chronology
@@ -44,6 +45,7 @@ from storylines import nocticula_trickster
 from storylines import vellexia_trickster
 from storylines import nurah_trickster
 from storylines import kiana_trickster
+from storylines import kiana_native  # engine queue 8: Arsinoe's "any news" answer gated after a ransom (E18)
 from storylines import minagho_chivarro_trickster
 from storylines import soana_trickster
 from storylines import aranka_trickster
@@ -53,15 +55,18 @@ from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import camellia_trickster, camellia_masks, camellia_evenings, camellia_cards, camellia_days, camellia_last  # noqa: F401 (the others append to camellia_trickster.SCENES)
 from storylines import camellia_early  # noqa: F401 (PP2: the Prologue and Chapter 2 beats, appended to camellia_trickster.SCENES)
+from storylines import camellia_native  # E14d: her native departure slides replaced or hidden once the route keeps her
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
+from storylines import areelu_afterlogue  # E14i: her afterlogue line (Cue_0004 / Cue_0005) for a continuing romance
 from storylines import longcon
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
 from storylines import arueshalae_early   # PP2: the Chapter 2 prison beat (path-neutral)
 from storylines import devarra_trickster, devarra_tower
+from storylines import devarra_native  # E14i: DragonEggs/Cue_0007 in the flight world
 from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
 from storylines import kaylessa_early  # PP2: the Chapter 1 and 2 beats, appended to kaylessa_trickster.SCENES
@@ -74,11 +79,15 @@ from storylines import herrax_trickster, herrax_house
 from storylines import terendelev_trickster, terendelev_watch
 from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
+from storylines import galfrey_queen_slide
 from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
+from storylines import yaniel_radiance  # E10 party-only read: Radiance on the Commander, not in the shared stash
+from storylines import chivarro_death  # ChivarroKilled split: the confirmed death (the death trigger also completes Obj3)
 from storylines import wenduag_trickster, wenduag_cairn
+from storylines import wenduag_native  # E14d: Cue_0580 (she refuses to ascend) for a committed Wenduag
 from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
 from storylines import pacing_pp3
@@ -375,6 +384,7 @@ def make_expansion(*, independent_tirabade=True):
     if "kiana" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(kiana_trickster.SCENES))
         kiana_trickster.integrate(payload)
+        kiana_native.integrate(payload)
     if "minagho_chivarro" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_trickster.SCENES))
         minagho_chivarro_trickster.integrate(payload)
@@ -409,6 +419,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["camellia"] = copy.deepcopy(camellia_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(camellia_trickster.SCENES))
     camellia_trickster.integrate(payload)
+    camellia_native.integrate(payload)
     # Eritrice: a new relationship, opened only by the Trickster motion in her private audience (eritrice_trickster).
     payload["Relationships"]["eritrice"] = copy.deepcopy(eritrice_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(eritrice_trickster.SCENES))
@@ -421,6 +432,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["areelu"] = copy.deepcopy(areelu_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(areelu_trickster.SCENES))
     areelu_trickster.integrate(payload)
+    areelu_afterlogue.integrate(payload)
     # The Long Con (doc 15, PP8): a framework relationship (never closed, no romance), its Ch1 entry at Chaleb's pyre, the
     # Ch2 prisoner and citadel offer, the Areelu crossing (Relationship areelu) and the Ch3 talk with its consequences.
     payload["Scenes"].extend(copy.deepcopy(longcon.SCENES))
@@ -460,6 +472,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
     devarra_trickster.integrate(payload)
     devarra_tower.integrate(payload)
+    devarra_native.integrate(payload)
     # Delamere: a new relationship, opened only by the Trickster's stag call at her sarcophagus (delamere_trickster, 11 §2);
     # the courtship is delamere_woods and delamere_fire. Nothing is spawned for her (her native units share the undead prefab).
     payload["Relationships"]["delamere"] = copy.deepcopy(delamere_trickster.RELATIONSHIP)
@@ -547,6 +560,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(galfrey_kitrane.SCENES))
     galfrey_trickster.integrate(payload)
     galfrey_kitrane.integrate(payload)
+    galfrey_queen_slide.integrate(payload)   # engine-q2 item 5: the native Queen slide for a returned, re-crowned Galfrey
     # Horzalah: a new relationship (trickster/horzalah.md; 11-ROSTER-PLAN-2 §2, R4 build sheet): the ear in the gift box, a
     # con on her own Guild offered at the mercy node (or in the Greybor-less night, or when the Guild circles); the collar
     # on her terms; the courtship on her presence by the Storyteller and her letters by knife (horzalah_guild).
@@ -585,6 +599,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(wenduag_cairn.SCENES))
     wenduag_trickster.integrate(payload)
     wenduag_cairn.integrate(payload)
+    wenduag_native.integrate(payload)
     # Iomedae: a new relationship (trickster/iomedae.md, Build sheet R6; 11-ROSTER-PLAN-2 §2): veiled until the finale. The
     # courtship is her banner's memory and her herald (iomedae_banner), then her own voice after the Summit; the commit is a
     # formal disputation under her banner; the device is the banner carried into the Wound, which she may choose to answer.
@@ -613,8 +628,14 @@ def make_expansion(*, independent_tirabade=True):
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
+    # Earned presence (rubric Binding context (3)): no living postwar page beside an unreturned sacrifice. After every
+    # route and Last Call's pages, before trickster_world binds the keys the guards read.
+    earned_presence.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    if "yaniel" in payload["Relationships"]:
+        yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
+    chivarro_death.integrate(payload)        # after the world bindings (chivarro.dead); read-only keys, no scene reads them yet
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)
     # and after the Trickster engine and world, whose late-commitment keys feed <rel>.harem.eligible.
     household.integrate(payload)
@@ -623,6 +644,7 @@ def make_expansion(*, independent_tirabade=True):
     rrt_portraits.integrate(payload)
     # E15c: what each rest-delivered scene is (letter, visit, sending, memory, event), after every route and Last Call.
     scene_kinds.integrate(payload)
+    trickster_now_setups(payload)
     normalize_trickster_access(payload)
     return payload
 
@@ -639,6 +661,21 @@ TRICKSTER_ETUDES = {
     # .../Chapter06_Extra/Ending_TricksterFull
     "ending.trickster_full": "6ff418aeda24e6e48be844e6258e3c5a",
 }
+
+
+# World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/TricksterMythicPathFailed (also trickster_world).
+TRICKSTER_FAILED = "256f3c081f21ed84fb3612465a76944b"
+
+
+def trickster_now_setups(payload):
+    """Engine-q2: a scene that Requires the live `trickster` (a device setup, the household, Last Call: the power used now)
+    also Forbids trickster.failed, so it reads the current path (trickster.now's native half). Without this a Trickster
+    who turns Legend at the Goddesses' Summit keeps PlayerIsTrickster playing and could still start new tricks. The
+    Forbid (not a trickster.now Requires) keeps every scene's availability a pure native read. After every route; a
+    scene that itself Requires trickster.failed (a reaction to the loss) is left alone."""
+    for s in payload["Scenes"]:
+        if "trickster" in s.get("Requires", []) and "trickster.failed" not in s.get("Requires", [])                 and "trickster.failed" not in s.setdefault("Forbids", []):
+            s["Forbids"].append("trickster.failed")
 
 
 def normalize_trickster_access(payload):
@@ -664,6 +701,22 @@ def trickster_engine(payload):
     payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | set(TRICKSTER_ETUDES))
     # TT-02: Chapter 4 can complete PlayerIsTrickster; the latch keeps device payoffs alive afterwards.
     payload.setdefault("Latches", {})["trickster.ever"] = ["trickster", "trickster.was"]
+    # Engine-q2: the GLOBAL current-path reader (Rules.TricksterNow in src/Story.cs holds the native evidence). trickster.now
+    # is the live PlayerIsTrickster minus every native signal that the run has left the path: TricksterMythicPathFailed
+    # (the Chapter 4 failure, and every Goddesses' Summit conversion through MythicPathFailed) and a Gold Dragon, Legend or
+    # Swarm path etude (PlayerIsLegend does not complete PlayerIsTrickster). Once dropped it never comes back.
+    # Who reads which (earned_presence_lint T6 enforces the canon-change half):
+    # - trickster.ever: HISTORICAL facts. Device payoffs and continuations (TT-02); every return flag and UnavailableOverrides
+    #   value (she came back through an act already done and paid for; leaving the path later never re-kills her, Binding
+    #   context 3); costs already paid (foresight.memory_gone.*); and native edits and gates whose When group also holds a
+    #   key that only a Trickster act sets (Devarra flown, the guests ransomed, a Trickster return).
+    # - trickster.now: PRESENT-TENSE power. A native edit, suppression, gate or settlement whose only Trickster evidence is
+    #   the path itself (T6a), and the foresight public keys that open gated outcomes later (earned_presence.CURRENT_PATH_KEYS,
+    #   T6b). Live setups keep `trickster` (TT-02) and Forbid trickster.failed (trickster_now_setups).
+    if payload["Etudes"].setdefault("trickster.failed", TRICKSTER_FAILED) != TRICKSTER_FAILED:
+        raise ValueError("Conflicting Trickster binding: trickster.failed")
+    payload.setdefault("Derived", {})["trickster.now"] = [["trickster"]]
+    payload.setdefault("DerivedForbids", {})["trickster.now"] = ["trickster.failed", "dragon", "legend", "swarm"]
     # TT-22: the Trickster "punchline" finale sets Ending_PlayerSacrifice (sacrifice), yet the native rewrite page
     # says this Commander "found a way of cheating death". Epilogues may lift their sacrifice forbid with it.
     payload.setdefault("Derived", {})["trickster.cheated_death"] = [

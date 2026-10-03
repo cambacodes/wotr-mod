@@ -168,8 +168,8 @@ internal static class MinaghoChivarroContinuationTests
                 (new[] { "minagho.dead" }, "minagho_lost"),
                 (new[] { "chivarro.dead" }, "chivarro_lost"),
                 (new[] { "minagho.dead", "chivarro.dead", "ascended", "sacrifice", "inhuman" }, "both_lost"),
-                (new[] { "inhuman", "ascended", "sacrifice" }, "changed"),
-                (new[] { "ascended", "sacrifice" }, "ascent"),
+                (new[] { "inhuman", "ascended" }, "changed"),   // earned presence: a changed or risen Commander never also lies in the Wound
+                (new[] { "ascended" }, "ascent"),
                 (new[] { "sacrifice" }, "sacrifice"),
             })
             {

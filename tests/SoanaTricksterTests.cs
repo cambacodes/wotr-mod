@@ -45,6 +45,7 @@ internal static class SoanaTricksterTests
         var graveyard = S(P + "returned.graveyard");
         var terms = S(P + "returned.terms");
         var secondAsk = S(P + "returned.second_ask");
+        var accounting = S(P + "returned.accounting");
         var dice = S(P + "missed.dice_bowl");
         var crooked = S(P + "missed.crooked_luck");
         var lateLuck = S(P + "missed.late_luck");
@@ -68,6 +69,15 @@ internal static class SoanaTricksterTests
                 .OrderBy(r => !flags.Contains("soana.closed") && r.Has("soana.closed") ? 1 : 0).FirstOrDefault();
             check(hit != null, "No outcome of " + scene.Id + " sets " + string.Join(", ", flags));
             return hit ?? w;
+        }
+
+        // Polish r4: a save that returned her after the Commander's own kill, before the ruling that such a kill stands.
+        Snapshot Legacy(Snapshot w)
+        {
+            var e = Program.Copy(w);
+            foreach (var f in new[] { P + "returned", P + "cost.guardian_paid", P + "cost.leash_held" }) { e.Flags.Add(f); e.Times[f] = e.Hour; }
+            Rules.Complete(story, e);
+            return e;
         }
 
         // Plays every available Trickster Soana scene forward and reports whether a flag is ever held.
@@ -205,8 +215,12 @@ internal static class SoanaTricksterTests
         var bought = Pick(graveyard, back, P + "graveyard_kept", P + "cost.grave_bought");
         check(graveyard.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade?.Resource == "Finances" && c.Crusade.Amount == -100
               && c.Set.Contains(P + "cost.grave_bought")), "The diggers cost nothing.");
-        check(Rules.Available(story, terms, Later(story, dug, 72)) && !Rules.Available(story, terms, Later(story, dug, 71))
-              && Rules.Available(story, terms, Later(story, bought, 72)),
+        // Polish (Sol BEL): the accounting comes 72 h after the grave; her invitation there opens the terms 72 h later.
+        Snapshot Invite(Snapshot w) => Pick(accounting, Later(story, w, 72), P + "accounting_invited");
+        check(Rules.Available(story, accounting, Later(story, dug, 72)) && !Rules.Available(story, accounting, Later(story, dug, 71))
+              && !Rules.Available(story, terms, Later(story, dug, 300))
+              && Rules.Available(story, terms, Later(story, Invite(dug), 72)) && !Rules.Available(story, terms, Later(story, Invite(dug), 71))
+              && Rules.Available(story, terms, Later(story, Invite(bought), 72)),
             "Trk_Soana_Graveyard: the terms ignore their three days.");
         var walked = Pick(graveyard, back, "soana.closed", P + "cost.left_the_grave");
         var gravePages = new HashSet<string>();
@@ -216,14 +230,14 @@ internal static class SoanaTricksterTests
         check(!Reaches(walked, "soana.committed"), "Walking away from the grave still commits.");
 
         // Trk_Soana_Terms: her terms, the commit, the night and the morning.
-        var atTerms = Later(story, dug, 72);
+        var atTerms = Later(story, Invite(dug), 72);
         var bound = Pick(terms, atTerms, "soana.committed", P + "cost.knot_bearer");
         var visited = new HashSet<string>();
         foreach (var r in Program.Walk(terms, atTerms, (id, _) => visited.Add(id))) { }
         check(visited.IsSupersetOf(new[] { "start", "dug", "price", "bind", "no", "fool", "night", "morning" }),
             "Trk_Soana_Terms: a page of the terms is unreachable.");
         var boughtPages = new HashSet<string>();
-        foreach (var r in Program.Walk(terms, Later(story, bought, 72), (id, _) => boughtPages.Add(id))) { }
+        foreach (var r in Program.Walk(terms, Later(story, Invite(bought), 72), (id, _) => boughtPages.Add(id))) { }
         check(boughtPages.Contains("bought") && !boughtPages.Contains("dug"), "The terms misremember who dug.");
 
         // NM1 (Sol INT): a luck-chain "not yet" (missed.bowl, the shared declined flag), then her death and return: the knot's own
@@ -246,6 +260,11 @@ internal static class SoanaTricksterTests
         check(!Rules.Available(story, secondAsk, Later(story, World(story, 5, "trickster", "trickster.ever", P + "returned", P + "declined"), 200)),
             "The knot's second ask opens before its graveyard and first ask.");
         var paid = Pick(secondAsk, Later(story, refused, 96), "soana.committed", P + "cost.second_ask");
+        var askPages = new HashSet<string>();
+        Program.Walk(secondAsk, Later(story, refused, 96), (id, _) => askPages.Add(id));
+        check(askPages.IsSupersetOf(new[] { "cut", "night", "morning" }) && secondAsk.Nodes.Single(n => n.Id == "morning").Text.Contains("scar white")
+              && FullText(epKnot, paid).Contains("white scar") && !FullText(epKnot, bound).Contains("white scar"),
+            "The second ask's deeper cut is priced but never shown or remembered.");
         check(secondAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.second_ask")
               && c.Set.Contains("soana.committed")), "The second ask is a fee, or leaves no scar.");
         check(Play(secondAsk, Later(story, refused, 96)).Any(r => r.Has("soana.closed") && !r.Has("soana.committed")),
@@ -332,7 +351,12 @@ internal static class SoanaTricksterTests
         check(luckEnd.SequenceEqual(new[] { epLuck.Id }), "The bowl's commit ends on the wrong pages: " + string.Join(",", luckEnd));
         check(Endings(refused).SequenceEqual(new[] { epDeclined.Id }), "Her refusal ends on the wrong pages.");
         var lateBack = Pick(graveyard, back, P + "graveyard_kept");
-        check(Endings(lateBack).SequenceEqual(new[] { epCommit.Id }), "A return never committed has no late page.");
+        // Polish r2 (Sol BEL): the late commit continues her invitation (or a failed presence, R2-6); a bare return gets the
+        // unfinished page, never a romance.
+        var lateFailed = Program.Copy(lateBack); lateFailed.Flags.Add("soana.presence.failed"); Rules.Complete(story, lateFailed);
+        check(Endings(lateBack).SequenceEqual(new[] { P + "epilogue.unfinished" }) && Endings(lateFailed).SequenceEqual(new[] { P + "epilogue.unfinished" })
+              && Endings(Invite(dug)).SequenceEqual(new[] { epCommit.Id }),
+            "A return never courted gets a romance, or a courted one has no late page: " + string.Join(",", Endings(lateBack)));
         // Polish b9c: a living Soana whose luck was paid gets her own late page, never the killed branch's leash and graves.
         check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { P + "epilogue.luck_late" }),
             "A luck never committed has no late page, or gets the killed branch's.");
@@ -342,7 +366,7 @@ internal static class SoanaTricksterTests
         var coda = S("soana.lastcall.page");
         Snapshot Called(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
         var luckLate = Pick(sheBear, Later(story, lucky, 48), P + "luck_tested");
-        check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
+        check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(Invite(dug))) && !Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
               && !Rules.Available(story, coda, End(lateBack)),
             "Trk_Soana_LateLastCall: a late commit (resurrection or luck fallback) has no Last Call coda.");
         var friendBack = Pick(terms, atTerms, P + "friends");
@@ -395,7 +419,7 @@ internal static class SoanaTricksterTests
         Program.Walk(terms, atTerms, (id, _) => brandTerms.Add(id));
         var clayDug = Pick(graveyard, Later(story, spent, 48), P + "graveyard_kept", P + "cost.grave_dug");
         var clayTerms = new HashSet<string>();
-        var clayEnds = Program.Walk(terms, Later(story, clayDug, 72), (id, _) => clayTerms.Add(id));
+        var clayEnds = Program.Walk(terms, Later(story, Invite(clayDug), 72), (id, _) => clayTerms.Add(id));
         check(!brandTerms.Contains("price_clay") && clayTerms.IsSupersetOf(new[] { "price_clay", "bind_clay", "night_clay" })
               && !clayTerms.Contains("price") && clayEnds.Any(r => r.Has("soana.committed")),
             "The terms show clay shards to a Commander who never broke the medallion, or hide them from one who did.");
@@ -455,9 +479,9 @@ internal static class SoanaTricksterTests
         var oldRaised = Pick(knot, oldLover, P + "returned");
         check(!oldRaised.Has(P + "cost.knot_bearer"), "The old commitment counts as the knot's vow.");
         var oldDug = Pick(graveyard, Later(story, oldRaised, 48), P + "graveyard_kept", P + "cost.grave_dug");
-        var atRebind = Later(story, oldDug, 72);
+        var atRebind = Later(story, Invite(oldDug), 72);
         check(!Rules.Available(story, terms, atRebind) && Rules.Available(story, rebind, atRebind)
-              && !Rules.Available(story, rebind, Later(story, oldDug, 71)), "A committed lover has no road to the knot's vow.");
+              && !Rules.Available(story, rebind, Later(story, Invite(oldDug), 71)) && !Rules.Available(story, rebind, Later(story, oldDug, 300)), "A committed lover has no road to the knot's vow.");
         check(Reaches(oldRaised, P + "cost.knot_bearer"), "A committed lover cannot reach knot_bearer from the knot.");
         var rebindPages = new HashSet<string>();
         var rebindEnds = Program.Walk(rebind, atRebind, (id, _) => rebindPages.Add(id));
@@ -470,8 +494,8 @@ internal static class SoanaTricksterTests
         check(Endings(vowed).SequenceEqual(new[] { epKnot.Id }), "The rebound lover ends on the wrong pages: " + string.Join(",", Endings(vowed)));
         check(Endings(unvowed).SequenceEqual(new[] { P + "epilogue.unvowed" }) && Endings(oldRaised).SequenceEqual(new[] { P + "epilogue.unvowed" }),
             "A lover who returned her without the vow ends on the knot page, or on none.");
-        var ownKill = World(story, 3, "trickster", "trickster.ever", "soana.committed", "soana.dead", "soana.forest_dead");
-        var ownRebind = Later(story, Pick(graveyard, Later(story, Pick(knot, ownKill, P + "returned"), 48), P + "graveyard_kept"), 72);
+        var ownKill = World(story, 3, "trickster", "trickster.ever", "soana.committed", "soana.dead", "soana.forest_dead", "soana.killed_self_after_quest");
+        var ownRebind = Later(story, Invite(Pick(graveyard, Later(story, Legacy(ownKill), 48), P + "graveyard_kept")), 72);
         var ownPages = new HashSet<string>();
         Program.Walk(rebind, ownRebind, (id, _) => ownPages.Add(id));
         check(ownPages.Contains("own") && !ownPages.Contains("camellia"), "The rebinding blames Camellia for the Commander's own kill.");
@@ -554,7 +578,7 @@ internal static class SoanaTricksterTests
             "The terms gender the Commander.");
         string FullText(Scene page, Snapshot w) => page.Nodes[0].Text + "|" + string.Join("|", Rules.VisibleParagraphs(page.Nodes[0], End(w)).Select(x => x.Text));
         var cordEnd = FullText(epKnot, bound);
-        var clayBound = Pick(terms, Later(story, clayDug, 72), "soana.committed", P + "cost.knot_bearer");
+        var clayBound = Pick(terms, Later(story, Invite(clayDug), 72), "soana.committed", P + "cost.knot_bearer");
         var clayEnd = FullText(epKnot, clayBound);
         check(cordEnd.Contains("grey cord") && !cordEnd.Contains("clay") && clayEnd.Contains("halves of the clay knot")
               && !clayEnd.Contains("grey cord"),
@@ -582,7 +606,7 @@ internal static class SoanaTricksterTests
         check(pulvGrave.Contains("spirit") && !pulvGrave.Contains("orso"), "The graveyard keeps Orso alive after the medallion was pulverised.");
 
         // Q10 r4 (BEL): Corven is disclosed before any commitment off the registered courtship; friendship is an answer.
-        foreach (var (scene, at, node) in new[] { (terms, atTerms, "price"), (terms, Later(story, clayDug, 72), "price_clay"),
+        foreach (var (scene, at, node) in new[] { (terms, atTerms, "price"), (terms, Later(story, Invite(clayDug), 72), "price_clay"),
                                                    (bowl, Later(story, tested0, 72), "terms") })
         {
             check(scene.Nodes.Single(n => n.Id == node).Text.Contains("Corven") && scene.Nodes.Single(n => n.Id == node).Text.Contains("whether he lives"),
@@ -604,13 +628,187 @@ internal static class SoanaTricksterTests
         }
 
         // Q10 close-out (CAN): after the medallion was pulverised, the slack strand names no restored clay token.
-        var pulvTerms = Later(story, Pick(graveyard, Later(story, pulvBack, 48), P + "graveyard_kept", P + "cost.grave_dug"), 72);
+        var pulvTerms = Later(story, Invite(Pick(graveyard, Later(story, pulvBack, 48), P + "graveyard_kept", P + "cost.grave_dug")), 72);
         var pulvBound = Pick(terms, pulvTerms, P + "cost.knot_bearer");
         var pulvDead = End(pulvBound); pulvDead.Flags.Add("sacrifice"); Rules.Complete(story, pulvDead);
         var pulvSlack = FullText(slack, pulvDead);
         check(Endings(pulvBound).SequenceEqual(new[] { epKnot.Id }) && pages.Where(pg => Rules.Available(story, pg, pulvDead)).Select(pg => pg.Id).SequenceEqual(new[] { slack.Id })
               && pulvSlack.Contains("went slack") && !pulvSlack.Contains("clay"),
             "The pulverised history's sacrifice ending restores a clay token: " + pulvSlack);
+
+        // Polish (Sol INT/HOW): who held the leash when the Commander died at the Threshold. The full visible slack text follows
+        // the history: a rite already done in play, an offscreen taking-back before the march, or a leash still in the hand.
+        const string Struck = "leash struck her", Reclaimed = "taken the leash back while the Commander still lived",
+                     Closed = "gone to Drezen before the last march", Postponed = "tired of waiting", Slackened = "went slack";
+        string SlackText(Snapshot s) { var e = End(s); e.Flags.Add("sacrifice"); Rules.Complete(story, e); return FullText(slack, e); }
+        string[] Leash(string text) => new[] { Struck, Reclaimed, Closed, Postponed, Slackened }.Where(text.Contains).ToArray();
+        var termsFriend = Pick(terms, atTerms, P + "friends", P + "cost.leash_reclaimed");
+        var rebindRefused = Pick(rebind, atRebind, P + "rebind_declined", P + "cost.leash_reclaimed");
+        check(terms.Nodes.Single(n => n.Id == "friend").Text.Contains("pull goes out of your wrist")
+              && rebind.Nodes.Single(n => n.Id == "refuse").Text.Contains("pull goes out of your wrist"),
+            "The friendship or the refused rebinding does not show her taking the leash back.");
+        var legacyFriend = Program.Copy(termsFriend); legacyFriend.Flags.Remove(P + "cost.leash_reclaimed"); Rules.Complete(story, legacyFriend);
+        var legacyRefused = Program.Copy(rebindRefused); legacyRefused.Flags.Remove(P + "cost.leash_reclaimed"); Rules.Complete(story, legacyRefused);
+        var compoundLuckOnly = Program.Copy(lateBack);
+        foreach (var f in new[] { P + "declined", P + "luck_kept" }) { compoundLuckOnly.Flags.Add(f); compoundLuckOnly.Times[f] = compoundLuckOnly.Hour - 300; }
+        Rules.Complete(story, compoundLuckOnly);
+        foreach (var (name, w, expect) in new[] {
+                     ("terms friendship", termsFriend, Reclaimed), ("legacy terms friendship", legacyFriend, Reclaimed),
+                     ("rebinding refused", rebindRefused, Reclaimed), ("legacy rebinding refused", legacyRefused, Reclaimed),
+                     ("graveyard closure", walked, Closed), ("dug then closed", dugWalked, Closed), ("old lover left the grave", Pick(graveyard, oldGrave, "soana.closed", P + "cost.left_the_grave"), Closed),
+                     ("knot postponed", refused, Postponed), ("untouched return", lateBack, Struck), ("old lover never rebound", oldRaised, Struck),
+                     ("stale luck-only not yet", compoundLuckOnly, Struck), ("knot bearer", bound, Slackened), ("rebound lover", vowed, Slackened) })
+        {
+            var text = SlackText(w);
+            var e = End(w); e.Flags.Add("sacrifice"); Rules.Complete(story, e);
+            var onPages = pages.Where(pg => Rules.Available(story, pg, e)).Select(pg => pg.Id).ToArray();
+            check(onPages.SequenceEqual(new[] { slack.Id }) && Leash(text).SequenceEqual(new[] { expect }),
+                "The slack page misremembers the leash (" + name + "): " + string.Join(",", onPages) + " / " + string.Join(",", Leash(text)));
+            var back2 = Program.Copy(e); back2.Flags.Add("ending.trickster"); Rules.Complete(story, back2);
+            check(!Rules.Available(story, slack, back2), "The slack page outlives a Commander who came back: " + name);
+        }
+        check(!slack.Nodes[0].Text.Contains("she knew") && slack.Nodes[0].Text.Contains("riders"), "The slack page's opening claims a sensing every history lacks.");
+        // A friend with a stale luck-chain "not yet" ends on the friendship alone.
+        var friendStale = Program.Copy(termsFriend); friendStale.Flags.Add(P + "declined"); friendStale.Times[P + "declined"] = friendStale.Hour - 300;
+        Rules.Complete(story, friendStale);
+        check(Endings(friendStale).SequenceEqual(new[] { P + "epilogue.friends" })
+              && !FullText(S(P + "epilogue.friends"), friendStale).Contains("took her leash back"),
+            "A friend with a stale luck postponement gets two pages, or the leash is taken twice: " + string.Join(",", Endings(friendStale)));
+        // Ulbrig does not comment on a leash she has already taken back.
+        check(S(P + "react.ulbrig_knot").Forbids.Contains(P + "leash_reclaimed_before_threshold"), "Ulbrig sees a leash she has taken back.");
+        // Item 3: the paid diggers are ordered at the grave and arrive within the three days the terms enforce.
+        check(!graveyard.Nodes.Single(n => n.Id == "bought").Text.Contains("three days later")
+              && graveyard.Nodes.Single(n => n.Id == "bought").Choices[0].Text == "[Send the order]"
+              && !Rules.Available(story, accounting, Later(story, bought, 71)) && Rules.Available(story, accounting, Later(story, bought, 72)),
+            "The paid graves narrate a delivery the clock does not keep.");
+        var boughtWalkedEnd = string.Join("|", Rules.VisibleParagraphs(S(P + "epilogue.unbound").Nodes[0], End(boughtWalked)).Select(x => x.Text));
+        check(S(P + "epilogue.unbound").Nodes[0].Text.Contains("made no further visits") && boughtWalkedEnd.Contains("walked away all the same")
+              && !boughtWalkedEnd.Contains("before the diggers"),
+            "The unbound ending denies the grave visit, or times the diggers.");
+        check(graveyard.Nodes.Single(n => n.Id == "decide").Choices[1].Text.Contains("seen to"), "A Commander who paid for the graves claims to have dug them.");
+
+        // Polish (Sol BEL/INT/HOW): the accounting. The history decides the accusation; only an answer and the work earn her
+        // invitation; the friendship reclaims the leash; a refusal closes the route, and returning her buys nothing.
+        HashSet<string> AccPages(Snapshot w) { var seenAcc = new HashSet<string>(); Program.Walk(accounting, Later(story, w, 72), (id, _) => seenAcc.Add(id)); return seenAcc; }
+        var camelliaBackW = Pick(graveyard, Later(story, Pick(knot, killed, P + "returned"), 48), P + "graveyard_kept", P + "cost.grave_dug");
+        var ownBackW = Pick(graveyard, Later(story, Legacy(World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead",
+                                                                   "soana.killed_self_before_bear")), 48), P + "graveyard_kept", P + "cost.grave_bought");
+        var oldCamelliaW = oldDug;
+        var oldOwnW = Pick(graveyard, Later(story, Legacy(ownKill), 48), P + "graveyard_kept");
+        foreach (var (name, w, node) in new[] { ("camellia", camelliaBackW, "camellia"), ("own", ownBackW, "own"), ("unknown", dug, "unknown"),
+                                                ("camellia_lover", oldCamelliaW, "camellia_lover"), ("own_lover", oldOwnW, "own_lover") })
+        {
+            var seenAcc = AccPages(w);
+            var others = new[] { "camellia", "own", "unknown", "camellia_lover", "own_lover" }.Where(x => x != node);
+            check(seenAcc.Contains(node) && !others.Any(seenAcc.Contains) && seenAcc.IsSupersetOf(new[] { "evasive", "repeat", "answered", "judged", "friend", "dismiss" }),
+                "The accounting accuses the wrong history (" + name + "): " + string.Join(",", seenAcc));
+            var outs = Play(accounting, Later(story, w, 72));
+            check(outs.Where(r => r.Has(P + "accounting_invited")).All(r => r.Has(P + "accounting_answered") && r.Has(P + "cost.stream_cleared") && r.Has(P + "cost.nursery_guarded"))
+                  && outs.Any(r => r.Has(P + "accounting_invited")),
+                "The invitation comes without an answer or the work (" + name + ").");
+            var refusedAcc = outs.Where(r => r.Has(P + "accounting_refused")).ToList();
+            check(refusedAcc.Count > 0 && refusedAcc.All(r => r.Has("soana.closed") && r.Has(P + "refused") && !r.Has(P + "accounting_invited"))
+                  && refusedAcc.All(r => !Reaches(r, P + "cost.knot_bearer") && !Rules.Available(story, coda, Called(r))),
+                "Refusing the accounting leaves the vow or the coda open (" + name + ").");
+            var friendAcc = outs.Where(r => r.Has(P + "accounting_friend")).ToList();
+            check(friendAcc.Count > 0 && friendAcc.All(r => r.Has(P + "friends") && r.Has(P + "cost.leash_reclaimed") && r.Has(P + "cost.stream_cleared")
+                  && Endings(r).SequenceEqual(new[] { P + "epilogue.friends" }) && !Rules.Available(story, coda, Called(r))),
+                "The accounting friendship does not resolve the leash or end on the friendship alone (" + name + ").");
+            check(!Rules.Available(story, accounting, Later(story, Invite(w), 500)), "The accounting repeats after the invitation (" + name + ").");
+        }
+        check(AccPages(ownBackW).Contains("diggers") && !AccPages(dug).Contains("diggers") && AccPages(dug).Contains("work"),
+            "The paid diggers are shown at the wrong visit.");
+        check(oldOwnW.Has("soana.committed") && Play(accounting, Later(story, oldOwnW, 72)).Where(r => r.Has(P + "accounting_friend")).All(r => r.Has("soana.committed")),
+            "An old lover's friendship deletes the historical commitment.");
+        check(accounting.Nodes.Single(n => n.Id == "evasive").Choices.All(ch => !ch.Set.Contains(P + "accounting_answered")),
+            "The evasion is counted as an answer.");
+        check(!Rules.Available(story, accounting, Later(story, bound, 200)) && !Rules.Available(story, accounting, Later(story, vowed, 200)),
+            "A vow already taken is asked to answer again.");
+        // The late fallback carries the reckoning; the unvowed lover's renewed intimacy follows it; the coda knows it.
+        var commitLate = FullText(epCommit, lateBack);
+        var commitInvited = FullText(epCommit, Invite(dug));
+        check(Endings(Invite(dug)).SequenceEqual(new[] { epCommit.Id }) && commitLate.Contains("told them what her return had left undone")
+              && !commitLate.Contains("answered her by the graves") && commitInvited.Contains("answered her by the graves")
+              && !commitInvited.Contains("stopped them at the graves") && commitLate.Contains("new cord"),
+            "The late commit skips the reckoning, or repeats one already played: " + commitLate);
+        check(FullText(epCommit, Pick(graveyard, Later(story, Pick(knot, killed, P + "returned"), 48), P + "graveyard_kept")).Contains("given her to Camellia"),
+            "The late commit forgets Camellia.");
+        var unvowedOld = FullText(S(P + "epilogue.unvowed"), oldRaised);
+        var unvowedRefused = FullText(S(P + "epilogue.unvowed"), unvowed);
+        check(unvowedOld.Contains("old promises did not open the cave") && !unvowedOld.Contains("You had your chance")
+              && unvowedRefused.Contains("You had your chance") && !unvowedRefused.Contains("old promises"),
+            "The unvowed lover's ending skips or repeats the reckoning.");
+        // Polish r1 (Sol INT/BEL/HOW): a luck "not yet", then her death, return, accounting and the knot's friendship: the stale
+        // declined flag does not reopen the knot's second ask, and the friendship is the only ending.
+        var luckThenFriend = Pick(terms, compound, P + "friends", P + "cost.leash_reclaimed");
+        check(compound.Has(P + "accounting_invited") && !Rules.Available(story, secondAsk, Later(story, luckThenFriend, 300))
+              && !Reaches(luckThenFriend, P + "cost.knot_bearer") && Endings(luckThenFriend).SequenceEqual(new[] { P + "epilogue.friends" }),
+            "A friend with a stale luck postponement is asked for the knot again, or ends on two pages: " + string.Join(",", Endings(luckThenFriend)));
+        // Polish r1 (Sol CAN/INT): the pulverised medallion withered Orso without a BearDead etude; every registered living-Orso
+        // answer is shut by it, and each split has a dead-Orso answer for it (raw native readers: the registered tests build
+        // states without the Derived pass).
+        var guardianNodes = story.Scenes.Where(s => s.Relationship == "soana" && !s.Id.StartsWith(P, StringComparison.Ordinal)
+                                                    && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal))
+            .SelectMany(s => s.Nodes.Select(n => (s.Id, n))).Where(x => x.n.Choices.Any(ch => ch.Next == "bound")).ToList();
+        check(guardianNodes.Count >= 6 && guardianNodes.All(x =>
+                  x.n.Choices.Where(ch => ch.Next == "bound").All(ch => ch.Forbids.Contains("soana.bear_dead") && ch.Forbids.Contains("soana.medallion_pulverized"))
+                  && x.n.Choices.Any(ch => ch.Next == "dead" && ch.Requires.Contains("soana.medallion_pulverized") && ch.Forbids.Contains("soana.bear_dead"))),
+            "A registered living/dead Orso split keeps Orso alive after the medallion was pulverised: "
+            + string.Join(",", guardianNodes.Where(x => !x.n.Choices.Any(ch => ch.Requires.Contains("soana.medallion_pulverized"))).Select(x => x.Id)));
+        var pulvAlive = World(story, 3, "soana.after_quest", "soana.water_kept", "soana.fox_waited", "soana.old_defender", "soana.medallion_pulverized");
+        var gq = S("soana.guardian_question");
+        var gqPages = new HashSet<string>();
+        if (Rules.Available(story, gq, pulvAlive)) Program.Walk(gq, pulvAlive, (id, _) => gqPages.Add(id));
+        check(pulvAlive.Has("soana.guardian_dead") && gqPages.Contains("dead") && !gqPages.Contains("bound"),
+            "The pulverised history's guardian question keeps Orso alive: " + string.Join(",", gqPages));
+        // Polish r4 (ruling: a player-chosen kill stands): all six native kill answers (two attacks, two kills after the bear,
+        // two executions) close her route. No knot, no presence, no living page or coda; the closing page and the two
+        // witnesses' reactions instead. A save returned before the ruling keeps the own-kill accusation at the accounting.
+        var byHand = S(P + "epilogue.by_your_hand");
+        foreach (var key in new[] { "soana.killed_self_before_bear", "soana.killed_self_after_quest", "soana.killed_self_after_bear_a",
+                                    "soana.killed_self_after_bear_b", "soana.executed_after_bear_a", "soana.executed_after_bear_b" })
+        {
+            check(story.SelectedAnswers.ContainsKey(key), "Unbound native kill answer: " + key);
+            foreach (var lover in new[] { false, true })
+            {
+                var flags = new List<string> { "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key, "soana.medallion_held" };
+                if (lover) flags.Add("soana.committed");
+                var killer = World(story, 3, flags.ToArray());
+                var later = Later(story, killer, 500);
+                check(killer.Has("soana.killed_by_commander") && !Rules.Available(story, knot, killer) && !Rules.Available(story, knot, later)
+                      && !Reaches(killer, P + "returned") && Endings(killer).SequenceEqual(new[] { byHand.Id })
+                      && !Rules.Available(story, coda, Called(killer)) && !Ends(killer, "sacrifice").Any(id => id != byHand.Id),
+                    "The Commander's own kill is undone, or ends on a living page: " + key + (lover ? " (lover)" : "") + " -> " + string.Join(",", Endings(killer)));
+                var luckKiller = Program.Copy(killer); luckKiller.Flags.Add(P + "luck_kept"); luckKiller.Flags.Add(P + "luck_tested"); Rules.Complete(story, luckKiller);
+                check(Endings(luckKiller).SequenceEqual(new[] { byHand.Id }), "A luck lover killed by the Commander gets the wrong page: " + string.Join(",", Endings(luckKiller)));
+            }
+            var witnessed = FullText(byHand, World(story, 6, "trickster.ever", "soana.dead", "soana.forest_dead", key, "ulbrig.talked"));
+            check(witnessed.Contains("Camellia said") && witnessed.Contains("Ulbrig looked"), "Nobody answers the Commander's own kill: " + key);
+            var legacyGrave = Pick(graveyard, Later(story, Legacy(World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key)), 48), P + "graveyard_kept");
+            var legacyPages = AccPages(legacyGrave);
+            check(legacyPages.Contains("own") && !legacyPages.Contains("unknown"), "A legacy own-kill return is accused as unknown: " + key);
+        }
+        check(byHand.Nodes[0].Text.Contains("by the Commander's own hand") && !Rules.Available(story, byHand, Legacy(World(story, 6, "trickster.ever", "soana.dead", "soana.killed_self_after_quest"))),
+            "The own-kill page is missing, or mourns a Soana a legacy save returned.");
+        // The return still answers Camellia's kill and an unattributed death.
+        check(Rules.Available(story, knot, killed) && Rules.Available(story, knot, World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead")),
+            "The knot no longer answers Camellia's kill or an unattributed death.");
+        // Polish r3 (Sol CAN/INT/HOW): a luck lover later killed and never returned stays dead: no living page, no coda, her loss
+        // page instead; a failed presence alone is no courtship.
+        var luckLover = Pick(bowl, Later(story, tested0, 72), "soana.committed");
+        var luckKilled = Program.Copy(luckLover);
+        foreach (var f in new[] { "soana.dead", "soana.forest_dead", "soana.killed_by_camellia" }) { luckKilled.Flags.Add(f); luckKilled.Times[f] = luckKilled.Hour; }
+        Rules.Complete(story, luckKilled);
+        var luckKilledLateCall = Called(luckKilled);
+        check(Endings(luckKilled).SequenceEqual(new[] { P + "epilogue.luck_lost" }) && !Rules.Available(story, coda, luckKilledLateCall)
+              && !Ends(luckKilled, "sacrifice").Contains(slack.Id),
+            "A luck lover killed and never returned keeps a living ending or coda: " + string.Join(",", Endings(luckKilled)));
+        var luckReturned = Program.Copy(luckKilled); luckReturned.Flags.Add(P + "returned"); Rules.Complete(story, luckReturned);
+        check(Rules.Available(story, coda, Called(luckReturned)) && !Endings(luckReturned).Contains(P + "epilogue.luck_lost"),
+            "A returned luck lover loses her coda, or is mourned.");
+        string Coda(Snapshot s) { var e = Called(s); return string.Join("|", Rules.VisibleParagraphs(coda.Nodes.Last(), e).Select(x => x.Text)); }
+        check(Coda(bound).Contains("answer at her graves") && !Coda(lateBack).Contains("answer at her graves"),
+            "The Last Call coda misremembers the accounting.");
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }

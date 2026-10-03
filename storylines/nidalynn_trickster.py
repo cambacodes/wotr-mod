@@ -73,6 +73,10 @@ PRIMED = P + "primed"                              # one egg saved, by either de
 GOLEM = P + "egg.golems"
 VAULT = P + "egg.vault"
 STRAW = P + "egg.straw"                            # PP10: the twelfth the druids left in the straw, kept by the Commander
+# Polish (coordinator, 2026-10-03; Devarra polish): the debt is incurred the moment the Commander takes the twelfth egg, by
+# any device (the golems, the vault, the straw). Devarra reads it on her return; her own bill, named later at her tower,
+# stays devarra.trickster.cost.egg_withheld (its readers, her call-in and ledger, need the bill she has actually named).
+EGG_OWED = P + "egg_owed"
 STRAW_BURNED = P + "straw.burned"                  # PP10: the Commander let it go out with the bedding (her door never opens)
 QUARTERMASTER = P + "quartermaster_knew"           # PP10: the quartermaster wrote "disposed of" knowing it was a lie
 GIVEN = P + "eggs_given"                           # PP10: latch on eggs.druids (trickster_world LATCHES)
@@ -233,9 +237,16 @@ SCENES.append(scene(P + "eggs.lamp_black", "Out in the ash", "Nidalynn", 3, "[Lo
         c('"A souvenir."', "packed")),
     nar("packed", '''{n}Nobody believes you, and nobody asks again, because the golems are still standing over eleven eggs with their fists up, and that is a more pressing question.{/n}
 {n}At the bottom of your pack, wrapped in your cloak and grey with ash, something the golems failed to crush is still warm.{/n}''',
-        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM))),
+        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM, EGG_OWED))),
 ], requires=("trickster",), forbids=(PRIMED, CRUSHED, "eggs.destroyed", "eggs.project"), last=3, Relationship=REL,
     Chapters=[3], AnswerLists=[GOLEM_LIST], NativeReturnCue=GOLEM_RETURN, TricksterDevice=True, TricksterState="golems"))
+
+
+# Polish r2 (audit COX, ledger 05 §4: one Chapter 5 delivery): a Commander who takes the egg in Chapter 5 gets the grey
+# stone's nights inside the same page, so the late start is one rest delivery, not two. The old final choice is kept and
+# gated to the earlier chapters; the folded ending is appended.
+HEARTH_FOLD = '''{n}It lives in the ashes of your hearth after that, at the back, where the fire is hottest, and it looks like a stone that somebody has been careless with. Within the week your steward has burned his fingers on it twice and calls it "the Commander's rock" with a particular expression, and soon so does the whole citadel.{/n}
+{n}At night, when the house is quiet, the ashes around it shiver, and a cup on the mantel hums against the stone, and once, near midnight, you wake certain that someone is singing in the next room, very low, a long way off. Every morning the rock is a little colder. The hearth is as hot as your steward can make it. It is not enough.{/n}'''
 
 
 # --- The fallback (a page, Chapters 3 and 5): the same soot, in the citadel vault -------------------------------------
@@ -257,7 +268,9 @@ visit(P + "eggs.vault", "Coal", [
         c("Continue", "carry", flags=(CLERK,))),
     nar("carry", '''{n}The coal bucket is no good for the stairs; it tips. You take the egg out and carry it up in your hands, under your coat, against your chest, the way you would carry a lamp through wind.{/n}
 {n}It is much hotter than it looked. By the second landing the skin of both palms has gone white and tight, and by your own door it has started to blister. You do not put it down until it is in the ashes of your hearth, and then you sit on the floor and hold your hands in the washbasin, and the water goes warm.{/n}''',
-        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS))),
+        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS, EGG_OWED), forbids=(CH5,)),
+        c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(PRIMED, VAULT, PALMS, HEARTH, EGG_OWED))),
 ], requires=("trickster", CRATED), forbids=(PRIMED, CRUSHED, "eggs.druids", "eggs.omelet", "eggs.destroyed"), delay=24,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="vault")
 
@@ -294,7 +307,9 @@ I'll not burn a Commander's spoil without the Commander's word, so it is by the 
         c("Continue", "carry", flags=(QUARTERMASTER,))),
     nar("carry", '''{n}It goes up four flights under your coat, cold against your ribs, and into the ashes at the back of your hearth where the fire is hottest. You bank the coals over it with the poker until there is nothing to see but a grey stone that somebody has been careless with.{/n}
 {n}Then, because you have staked your name in chalk on a thing everybody else heard was empty, you sit up with it. Near midnight, so faintly that you could have imagined it, something inside it turns over. Once.{/n}''',
-        c("[Leave it in the ashes.]", flags=(STRAW, SLATE))),
+        c("[Leave it in the ashes.]", flags=(STRAW, SLATE, EGG_OWED), forbids=(CH5,)),
+        c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(STRAW, SLATE, HEARTH, EGG_OWED))),
 ], requires=("trickster", GIVEN), forbids=(PRIMED, CRUSHED, STRAW, STRAW_BURNED, "eggs.omelet", "eggs.destroyed"), delay=12,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="straw")   # Chapters 3 and 5: the quartermaster
     # keeps it by the stores' brazier pending the Commander's word, so a decree finished late, or a Commander away in the
@@ -430,10 +445,10 @@ ALIVE = dict(ForbidOverrides={"sacrifice": "trickster.commander_back"})   # Q9 (
 
 EPILOGUE_PARAGRAPHS = (
     p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. It hunted demons along the Worldwound's edge from its second year, because they were the only thing it had ever been fed that it truly hated, and it hated them with a thoroughness its mother would have recognised.{/n}''', requires=(FED_DEMONS,)),
-    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. It never lost its taste for goat. Three villages below Drezen kept a flock for it by arrangement, and were paid, and complained about the price every year on principle.{/n}''', requires=(FED_GOATS,)),
-    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. There were no rats in Drezen's undercroft for a generation. The cooks said it was the best thing the crusade ever did.{/n}''', requires=(FED_RATS,)),
+    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. It never lost its taste for goat. Wherever it denned, the nearest villages kept a flock for it by arrangement, and were paid, and complained about the price every year on principle.{/n}''', requires=(FED_GOATS,)),
+    p('''{n}The young dragon grew up black-red and ill-tempered, with a pale seam down its spine where the Wound had touched it in the egg. It never could pass a rat. The citadel cooks said the winter it cleared Drezen's undercroft was the best thing the crusade ever did.{/n}''', requires=(FED_RATS,)),
     p('''{n}The soldiers called it Soot, after the ash and soot it was hidden in. It never answered to the name, and it never let anyone else use one.{/n}''', requires=(NAME_SOOT,)),
-    p('''{n}The soldiers called it Pebble, after the joke, and the joke outlived the war. It never answered to the name. When it was the size of a barn it still came when she called it that, and bit whoever laughed.{/n}''', requires=(NAME_PEBBLE,)),
+    p('''{n}The soldiers called it Pebble, after the joke, and the joke outlived the war. It answered to the name from her mouth and from nobody else's. When it was the size of a barn it still came when she called it that, and bit whoever laughed.{/n}''', requires=(NAME_PEBBLE,)),
     p('''{n}It chose its own name in its tenth year, in Draconic, and told it to her and to no one else. She said it was a good name, and a long one, and that it had the word for "ash" in it.{/n}''', requires=(NAME_NONE,)),
     p('''{n}A Kellid woman in the refugee quarter wore a copper torc with a hare on it until she was very old, and told her grandchildren a Commander had bought it back from a jeweller at the full price, which nobody believed.{/n}''', requires=(TORC_BOUGHT,)),
     p('''{n}A jeweller in Drezen swore for years that a copper torc had walked off his counter on its own. The Kellid woman who wore it swore just as hard that she had never sold it.{/n}''', requires=(TORC_LIFTED,)),
@@ -442,53 +457,68 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}The Commander's palms stayed shiny and tight for the rest of the war, like a smith's, and never took a callus again. The only person who ever asked about them was told that a dragon's egg is a hot thing to carry and a hotter thing to put down.{/n}''', requires=(PALMS,)),
     p('''{n}The soldier from the ford took his twenty lashes and his month in the cells, and deserted in the spring, and was not seen in Drezen again. The kiln's sergeant said he had gone north to look for the grey one's tower. Nobody ever heard whether he found it.{/n}''', requires=(P + "spear.provost",)),
     p('''{n}The soldier from the ford lived out the war and a good deal longer, and never spoke of the night on the tanners' stair. He was the first man in Drezen to take his hat off when the young dragon flew over.{/n}''', requires=(P + "spear.freed",)),
-    p('''{n}The soldier from the ford came down to the kiln every week after that, with a pig's ear in his pocket, and sat on the step without saying much. The young dragon bit him only once, and he said it was fair, and that her mother had done worse.{/n}''', requires=(P + "spear.seen",)),
+    p('''{n}The soldier from the ford came down to the kiln every week after that, for as long as there was a dragon in it, with a pig's ear in his pocket, and sat on the step without saying much. The young dragon bit him only once, and he said it was fair, and that her mother had done worse.{/n}''', requires=(P + "spear.seen",)),
     p('''{n}The Kellid widow whose goat the young dragon ate lived near the wall for the rest of the war, where the wind did not come in. Her son grew up to be a drover, and would not have a goat in his herd, and said he could not remember why.{/n}''', requires=(P + "goat.asked",)),
-    p('''{n}Three wolves were blamed for the goat in the refugee quarter, and two sentries of the east wall were docked a week's pay for letting them over. The widow whose goat it was never said otherwise, to anyone, and moved to the far side of the quarter in the spring.{/n}''', requires=(P + "goat.wolves",), forbids=(GOAT_CORRECTED,)),
+    p('''{n}Three wolves were blamed for the goat in the refugee quarter, and two sentries of the east wall were flogged for letting them over. The widow whose goat it was never said otherwise, to anyone, and moved to the far side of the quarter in the spring.{/n}''', requires=(P + "goat.wolves",), forbids=(GOAT_CORRECTED,)),
     p('''{n}No wolves came over the east wall that winter, whatever the Commander had said for one morning. The two sentries kept their backs and their pay, and the Kellid widow whose goat it was had milk till the spring and a new goat after it, and told everyone in the quarter exactly what had eaten the old one.{/n}''', requires=(GOAT_CORRECTED,)),
-    p('''{n}The saddler whose name the Commander said at the fire below the east wall was never written down anywhere. Nine thousand, four hundred and some other names were never written down either. She kept them all, and taught the Commander one a night, when neither of them could sleep.{/n}''', requires=(P + "wake.name_said", COMMITTED)),
-    p('''{n}Ulbrig Olesk came down to the kiln every week of the war that he was in Drezen, and brought his own bread, and argued with her about horses until the embers went grey. Neither of them ever said what they talked about besides horses. The sergeant with the squint said it was mostly the dead.{/n}''', requires=(P + "ulbrig_met",)),
+    p('''{n}Ulbrig Olesk came down to the kiln every week that she kept it and he was in Drezen, and brought his own bread, and argued with her about horses until the embers went grey. Neither of them ever said what they talked about besides horses. The sergeant with the squint said it was mostly the dead.{/n}''', requires=(P + "ulbrig_met",)),
     p('''{n}The chaplain's report went to the see in Mendev and was read there, and argued over for a year, and filed. A copy of it is said to be in the archives still, with a note in a later hand in the margin: "And the woundwyrm? Enquire." Nobody ever did.{/n}''', requires=(P + "chaplain_prayed",)),
     p('''{n}Eleven young dragons grew up fat and furious in a valley three rivers east, under a gold one who pretended to be a stork. Every one of them flew over Drezen once, as if by accident, to look at the twelfth.{/n}''', requires=("eggs.druids",)),
-    p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. Once a year a scale the colour of eggshell was left on the Commander's windowsill, the way a creditor leaves a card. Nidalynn said that was only manners, and that dragons have excellent manners when they are owed something.{/n}''', requires=(DV_BILL,),
-      forbids=("devarra.lastcall.called",)),
-    # PP10 (Sol COX): Devarra named her bill at the rift (her Last Call coda), so the bill is being paid, not standing.
-    p('''{n}The grey dragon named her bill for the smallest egg at the rift, and it was not the hatchling and not the silver: it was a month of the Commander's every year, on her ridge. Nidalynn kept the kiln banked high every winter the Commander was away, and fed the Commander for a week when the Commander came back thinner, and said nothing about it at all.{/n}''', requires=(DV_BILL, "devarra.lastcall.called"),
-      forbids=(CLOSED, LEFT_WITH_IT, LIE_KEPT)),   # NM1 (Sol INT/BEL): the kiln kept warm is a partner's, never after she left
-    p('''{n}The grey dragon named her bill for the smallest egg at the rift, and it was not the hatchling and not the silver: it was a month of the Commander's every year, on her ridge. The Commander paid it, every year, alone. Nobody in Drezen kept a fire for the Commander's return.{/n}''',
-      requires=(DV_BILL, "devarra.lastcall.called"), any_groups=[[CLOSED, LEFT_WITH_IT, LIE_KEPT]]),
+)
+
+# Polish (audit INT/BEL/COX): the grey dragon's bill, recorded the same way on every page but her living partner's. It says
+# what Devarra asked (standing, or named at the rift: PP10, her Last Call coda) and nothing about who kept a fire for whom,
+# so a departure, a closure or a Commander who never came back reads true, and nobody else's welcome is spoken for.
+BILL_RECORD = (
+    p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. It was written against the Commander's name and no one else's; she had been particular about that.{/n}''',
+      requires=(DV_BILL,), forbids=("devarra.lastcall.called",)),
+    p('''{n}At the rift the grey dragon named her bill for the smallest egg, and it was not the hatchling and not the silver who raised her. It was a month of the Commander's every year, on her ridge.{/n}''',
+      requires=(DV_BILL, "devarra.lastcall.called")),
+)
+
+# Polish: the domestic payoffs are the living partner's alone (epilogue.salt, whose page already needs the Commander alive
+# or back). Never on a death page, a departure or a closure; flags never clear, so each forbids the ways she left as well.
+GONE = (CLOSED, LEFT_WITH_IT, LIE_KEPT)
+SALT_PARAGRAPHS = (
+    p('''{n}The saddler whose name the Commander said at the fire below the east wall was never written down anywhere. Nine thousand, four hundred and some other names were never written down either. She kept them all, and taught the Commander one a night, when neither of them could sleep.{/n}''',
+      requires=(P + "wake.name_said", COMMITTED), forbids=GONE),
+    p('''{n}The grey dragon's bill for the smallest egg was never paid, and never cancelled. Once a year a scale the colour of eggshell was left on the Commander's windowsill, the way a creditor leaves a card. Nidalynn said that was only manners, and that dragons have excellent manners when they are owed something.{/n}''',
+      requires=(DV_BILL, COMMITTED), forbids=("devarra.lastcall.called", *GONE)),
+    BILL_RECORD[1],   # named at the rift: the same record, then what it cost at home
+    p('''{n}Nidalynn kept the kiln banked high every winter the Commander was away on the ridge, and fed the Commander for a week when the Commander came back thinner. "Eat first," she said, every year, and put the bowl down. "Then tell me what she had you do."{/n}''',
+      requires=(COMMITTED, DV_BILL, "devarra.lastcall.called"), forbids=GONE),
 )
 
 epilogue("salt", '''{n}Nidalynn stayed in Drezen after the war, in the old lime-kiln below the east wall, which she roofed with slate and never once let cool. The refugees who stayed called her the widow long after she stopped looking like one, and brought her their disputes, their broken bones and their bread, and she fed every one of them before she let them talk.{/n}
 {n}She was never in a hurry. The Commander learned that it was not patience, exactly. It was that she had already decided, and she saw no reason to rush the part she was enjoying.{/n}''',
-         requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
+         requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), paragraphs=(*EPILOGUE_PARAGRAPHS, *SALT_PARAGRAPHS), **ALIVE)
 
 epilogue("late", '''{n}The war ended before the young dragon was ready to fly. It flew in the spring after Threshold, off the kiln roof, badly, and then well, and circled Drezen three times shrieking while the whole city came out to point.{/n}
 {n}That evening a tall woman with a white braid came up the citadel stair with a loaf of bread, a knife and a little salt folded in a paper, and put them on the Commander's table without a word, and sat down to wait. She was not in any hurry. She had waited for worse things, and much longer.{/n}''',
-         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, BREAD_KEPT, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, BREAD_KEPT, "sacrifice"), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD), **ALIVE)
 
 epilogue("heel", '''{n}The heel of the loaf stayed on the shelf in the kiln, wrapped in a cloth, long after it was stone-hard and good for nothing. She never moved it and never mentioned it.{/n}
 {n}People who knew them both said that the Commander came down to the kiln more evenings than not, and that the two of them sat by the fire and talked until late, and that it was the most patient courtship anyone in Drezen had ever seen, and that it was not clear to anyone, including the two of them, which of them was doing the courting.{/n}''',
-         requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **ALIVE)
+         requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD), **ALIVE)
 
-epilogue("wolves", '''{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the white-haired woman from the jeweller's steps went north with a young red-black dragon, and did not come back, and did not write.{/n}
+epilogue("wolves", '''{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the woman from the jeweller's steps went north with a young red-black dragon, and did not come back, and did not write.{/n}
 {n}On the kiln step she left a heel of bread and a pinch of salt, untouched, where the Commander would be sure to pass.{/n}''',
-         requires=(GOAT_STANDS,))
+         requires=(GOAT_STANDS,), forbids=(GIVEN_UP, LIE_KEPT, LEFT_WITH_IT))   # polish r3: one closure page each
 
 epilogue("unreturned", '''{n}When word came down from Threshold that the Commander would not be coming back, Nidalynn banked the kiln under the east wall and did not let it cool, that winter or any winter after. The young dragon was fed. The refugees were fed. She said the Commander's name at the fire the way she said the others, and every year on that night she set out bread and salt for one more than came, and ate her own share slowly, and was grateful, because she had said she would be.{/n}''',
          requires=("sacrifice",), forbids=("trickster.commander_back", CLOSED),
-         RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, BREAD_KEPT]], paragraphs=EPILOGUE_PARAGRAPHS)
+         RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, BREAD_KEPT]], paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("apart", '''{n}The widow was gone from the jeweller's steps by the end of the war. The refugees said she had gone north with a young dragon that would not stay in a city, and that whatever she had said to the Commander she had said in the kiln, where nobody could hear it.{/n}
 {n}Sometimes, when it snowed, a silver shape went over Drezen very high, and did not come down.{/n}''',
-         requires=(MET, CLOSED), forbids=(COMMITTED, LEFT_WITH_IT, LIE_KEPT, GIVEN_UP), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(MET, CLOSED), forbids=(COMMITTED, LEFT_WITH_IT, LIE_KEPT, GIVEN_UP, GOAT_STANDS), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("claimed", '''{n}The Commander kept a young woundwyrm in the kiln below the east wall for a season, and fed it, and called it the crusade's, and the crusade was proud of it for exactly as long as it took the creature to learn to fly.{/n}
 {n}On the day it flew it went to her, not to the Commander, and she went with it. The kiln was cold by evening. The Commander's claim was good in every court in Mendev, and there was not one court in Mendev that could have enforced it.{/n}''',
-         requires=(LEFT_WITH_IT,), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(LEFT_WITH_IT,), forbids=(GIVEN_UP, LIE_KEPT), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("lie", '''{n}The Commander never said, in front of anyone who mattered, where the dragon in the kiln had come from. The widow did not say it either. She left Drezen at the first thaw with a young dragon under her shawl, and on the jeweller's step where she had sat all winter she left a heel of bread and a pinch of salt, untouched, where anyone could see them.{/n}''',
-         requires=(LIE_KEPT,), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(LIE_KEPT,), forbids=(GIVEN_UP,), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("given", '''{n}The Commander gave the thing that came out of the rock to the chaplain's fire. The fire never got it. The old lime-kiln below the east wall lost its roof that night, all of a piece, and the lower town swears to this day that something silver went up out of the smoke, bigger than the sky over the tanners' stair, with something small and red held against its breast, and put out every torch in the lane as it passed.{/n}
 {n}The widow was not seen on the jeweller's steps again. The Kellid women who had shared her step said she had never been a widow, and never been with child; but refugees will say anything.{/n}''',

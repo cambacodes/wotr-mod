@@ -375,7 +375,9 @@ internal static class CamelliaTricksterTests
         }
 
         // --- Pages: the late commit, her refusal, and the kept page's sibling for a Commander on the roll of the dead. --
-        var pages = story.Scenes.Where(s => s.Relationship == "camellia" && s.Owner == "CamelliaEpilogue").Select(s => s.Id).ToArray();
+        // E14d native-slide replacements (camellia_native) are cue texts, not pages; CamelliaNativeSlideTests covers them.
+        var pages = story.Scenes.Where(s => s.Relationship == "camellia" && s.Owner == "CamelliaEpilogue" && !Rules.IsNativeReplacement(story, s))
+            .Select(s => s.Id).ToArray();
         check(pages.OrderBy(x => x).SequenceEqual(new[] { P + "epilogue.commit", P + "epilogue.commit_on_record", P + "epilogue.kept", P + "epilogue.kept_on_record", P + "epilogue.refused" }),
             "Camellia's epilogue pages do not match: " + string.Join(", ", pages));
         check(S(P + "epilogue.commit").Requires.Contains(P + "terms_named") && S(P + "epilogue.commit").Forbids.Contains(Committed),

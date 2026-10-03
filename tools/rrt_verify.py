@@ -16,7 +16,7 @@ Sections: A producers | B reachability per mythic world | C chapter/delay traps 
              --delivery, --rest-cadence, --chapter-days, --bag-size, --queue-cap, --sim-natives); also run per matrix supply
              profile in --matrix mode
 """
-import argparse, collections, difflib, hashlib, importlib, json, os, re, shutil, sys, time, zipfile
+import argparse, collections, contextlib, difflib, gc, hashlib, importlib, json, os, re, shutil, struct, sys, time, zipfile, zlib
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -51,6 +51,7 @@ HIST_WORDS = re.compile(r"dead|death|killed|kill|married|wedding|marri|elan|reje
                         r"condemned|complete|finished|sold|chosen|choice|betray|sacrific|lost|gone|ran_|ending|revived|"
                         r"banish|exile|spared|destroy|prison|fight", re.I)
 DEFAULT_LIMITS = dict(node_chars=1400, choice_chars=220, entry_chars=160)
+FREEZE_GC = False   # set by main()
 
 
 # --------------------------------------------------------------------------------------------- model
@@ -150,7 +151,7 @@ class Model:
         self.permanent_etudes = set(story.get("PermanentEtudes", []))
         nk = {}
         for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"):
+                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts"):
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
@@ -164,6 +165,10 @@ class Model:
         # E4 data-driven composites (OR of AND-groups).
         self.composites = {k: [list(g) for g in v] for k, v in (story.get("Derived") or {}).items()}
         self.derived |= set(self.composites)
+        # E4b: a guarded composite also needs each named relationship's route open (Rules.RouteOpen).
+        self.open_routes = {k: list(v) for k, v in (story.get("DerivedOpenRoutes") or {}).items()}
+        # Engine-q2: a composite is withheld while any of its DerivedForbids flags holds (trickster.now).
+        self.derived_forbids = {k: list(v) for k, v in (story.get("DerivedForbids") or {}).items()}
         # E14g count composites.
         self.counts = {k: (list(v.get("Of") or []), int(v.get("Min", 1))) for k, v in (story.get("Counts") or {}).items()}
         self.derived |= set(self.counts)
@@ -215,6 +220,52 @@ class Model:
                     c = self.nodes[sid][nid]["Choices"][i]
                     self.static_ctx[(sid, nid, i)] = frozenset((set(c["Requires"]) | set(c["Set"])) & self.persistent)
 
+    def walk_index(self):
+        """Per-scene static data for Reach._walk / Reach._must (built once per model; perf only, same semantics)."""
+        wi = getattr(self, "_walk_idx", None)
+        if wi is not None: return wi
+        wi = {}
+        for s in self.scenes:
+            sid = s["Id"]
+            sf = self.rels.get(s["Relationship"], {}).get("StartedFlag") if (not is_epilogue(s) and s["NativeReturnCue"] is None) else None
+            nodes = {}
+            for n in s["Nodes"]:
+                nodes.setdefault(n["Id"], None)
+            for nid in nodes:
+                n = self.nodes[sid][nid]
+                nodes[nid] = [(i, c, (sid, nid, i), bool(c["Requires"] or c["Forbids"]), c["Set"], completes(s, c), next_nodes(c))
+                              for i, c in enumerate(n["Choices"])]
+            gated = [(n["Id"], i, c) for n in s["Nodes"] for i, c in enumerate(n["Choices"]) if c["Forbids"] or c["Requires"]]
+            trace = None
+            if not gated:   # no gate on any choice: the walk is the same everywhere; record its visit order once
+                trace, keys, seen, stack = [sf] if sf else [], [], set(), [s["Nodes"][0]["Id"]] if s["Nodes"] else []
+                while stack:
+                    nid = stack.pop()
+                    if nid in seen or nid not in nodes: continue
+                    seen.add(nid)
+                    for i, c, key, _, sets, comp, nxt in nodes[nid]:
+                        keys.append(key); trace.extend(sets)
+                        if comp: trace.append(sid)
+                        stack.extend(nxt)
+                trace = (trace, keys)
+            reads = set(s["Requires"]) | {f for _, _, c in gated for f in c["Requires"]}   # flags _must reads for this scene
+            wi[sid] = (sf, [s["Nodes"][0]["Id"]] if s["Nodes"] else [], nodes, gated, trace, reads)
+        self._walk_idx = wi
+        return wi
+
+    def producer_groups(self):
+        """flag -> [(scene, [(choice key or None for a start, static context)])], producers grouped by scene (built once)."""
+        pg = getattr(self, "_prod_groups", None)
+        if pg is None:
+            pg = {}
+            for f, lst in self.producers.items():
+                by = {}
+                for (sid, nid, i) in lst:
+                    by.setdefault(sid, []).append((None if i == "start" else (sid, nid, i), self.static_ctx[(sid, nid, i)]))
+                pg[f] = list(by.items())
+            self._prod_groups = pg
+        return pg
+
     def unreadable(self, f, s, ch):
         """E3: native Etudes key f can never read as held for this use (s None = relationship level; ch 0 = any chapter)."""
         if self.lifecycle is None or self.native.get(f) != "Etudes": return False
@@ -226,7 +277,7 @@ class Model:
     def is_persistent_native(self, f):
         sec = self.native.get(f)
         if sec is None: return False
-        if sec in ("UnlockableFlags", "InventoryItems", "QuestObjectives"): return False   # values can change back
+        if sec in ("UnlockableFlags", "InventoryItems", "PartyItems", "QuestObjectives"): return False   # values can change back
         if sec != "Etudes": return True
         return (f in self.permanent_etudes or f.endswith("_dead") or f.endswith("_gone") or f.startswith("ascend_")
                 or f in ("sacrifice", "true_lich"))
@@ -313,7 +364,9 @@ class Reach:
         if self.chaptered and ch == 0 and f in MYTHIC: return False
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
-        if f in self.m.composites: return any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
+        if f in self.m.composites:
+            return (f not in self.m.open_routes and not any(self.possible(x, ch) for x in self.m.derived_forbids.get(f, []))
+                    and any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f]))
         if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
         if f == "chapter_one": return ch == 1 if self.chaptered else False
         if f == "chapter_later": return (ch or 0) > 1
@@ -347,6 +400,8 @@ class Reach:
         rec = m.revivals.get(s["Recovery"]) if s["Recovery"] else None
         if rec and not self.native_possible("revive.%s.available" % s["Recovery"], ch): return "recovery"
         for f in rel.get("UnavailableFlags", []):
+            # Every branch below only skips (continue) or blocks a forced flag, and all are side-effect free: test forced first.
+            if not self.forced(f, ch): continue
             if rec and f == rec.get("DeathFlag"): continue
             if s["AfterDeparture"] == "irabeth" and f == "irabeth_gone": continue
             ov = (rel.get("UnavailableOverrides") or {}).get(f)
@@ -356,7 +411,7 @@ class Reach:
             # so a world forced into the death reaches the relationship again once that state's return is possible.
             if any(r.get("DeathFlag") == f and r.get("Relationship") == s["Relationship"] for r in m.revivals.values())                     and any(f in (e.get("Detect") or []) and e.get("Returned") and self.possible(e["Returned"], ch)
                             for e in (rel.get("TricksterAccess") or {}).values()): continue
-            if self.forced(f, ch) and not m.unreadable(f, None, ch if self.chaptered else 0): return "unavailable-forced:" + f
+            if not m.unreadable(f, None, ch if self.chaptered else 0): return "unavailable-forced:" + f
         if s["Relationship"] == "tirabade" and self.chaptered and not is_remote(s) and ch == 4: return "tirabade-ch4"
         return None
 
@@ -380,7 +435,10 @@ class Reach:
             rewalk = [m.by_id[sid] for sid in self.reached if not self.chaptered or
                       (m.by_id[sid]["MinChapter"] <= ch <= m.by_id[sid]["MaxChapter"])]
             newf = []
-            for s in rewalk: newf += self._walk(s, ch)
+            wi = m.walk_index()
+            for s in rewalk:
+                # A scene without Requires/Forbids on any choice walks the same choices in every chapter: a re-walk adds nothing.
+                if wi[s["Id"]][3]: newf += self._walk(s, ch)
             for f in newf:
                 for sid in waiting.pop(f, ()): pass
             while queue:
@@ -410,26 +468,29 @@ class Reach:
                 queue = nxt
 
     def _walk(self, s, ch):
-        m = self.m
+        sid = s["Id"]
+        sf, start, nodes, _, trace, _ = self.m.walk_index()[sid]
+        held, dead, choices, choice_ok = self.held, self.dead_choices, self.choices, self.choice_ok
         new = []
-        if not is_epilogue(s) and s["NativeReturnCue"] is None:
-            sf = m.rels.get(s["Relationship"], {}).get("StartedFlag")
-            if sf and sf not in self.held: self.held.add(sf); new.append(sf)
-        nodes = m.nodes[s["Id"]]
-        seen, stack = set(), [s["Nodes"][0]["Id"]] if s["Nodes"] else []
+        if trace is not None:   # an ungated scene (dead choices are always gated ones): replay its recorded walk
+            for f in trace[0]:
+                if f not in held: held.add(f); new.append(f)
+            choices.update(trace[1])
+            return new
+        if sf and sf not in held: held.add(sf); new.append(sf)
+        seen, stack = set(), list(start)
         while stack:
             nid = stack.pop()
             if nid in seen or nid not in nodes: continue
             seen.add(nid)
-            for i, c in enumerate(nodes[nid]["Choices"]):
-                key = (s["Id"], nid, i)
-                if key in self.dead_choices or not self.choice_ok(s, c, ch): continue
-                self.choices.add(key)
-                for f in c["Set"]:
-                    if f not in self.held: self.held.add(f); new.append(f)
-                if completes(s, c) and s["Id"] not in self.held:
-                    self.held.add(s["Id"]); new.append(s["Id"])
-                stack.extend(next_nodes(c))
+            for i, c, key, gated, sets, comp, nxt in nodes[nid]:
+                if key in dead or (gated and not choice_ok(s, c, ch)): continue
+                choices.add(key)
+                for f in sets:
+                    if f not in held: held.add(f); new.append(f)
+                if comp and sid not in held:
+                    held.add(sid); new.append(sid)
+                stack.extend(nxt)
         return new
 
     # must-hold analysis ---------------------------------------------------------------------
@@ -437,34 +498,74 @@ class Reach:
         m = self.m
         forced_native = frozenset(self.w.true)
         P = m.persistent
-        prods = collections.defaultdict(list)
-        for f in self.held:
-            for (sid, nid, i) in m.producers.get(f, []):
-                if sid not in self.reached: continue
-                if i == "start" or (sid, nid, i) in self.choices:
-                    prods[f].append((sid, m.static_ctx[(sid, nid, i)]))
-        must_flag = {f: None for f in self.held}
+        F = m.forbidden_any
+        # prods[f]: (scene, B) per reached producing scene, B = the intersection of the static contexts of its live producers
+        # (the intersection over producers of (ms & P) | ctx regroups exactly as (ms & P) | (intersection of the ctx)).
+        # Only flags some reached scene (or one of its gated choices) Requires are ever read below; every flag they depend on is
+        # such a flag too (a must-set reads its producers' scene sets, which read their own Requires), so computing just these
+        # gives the same values for them, round by round, as computing every held flag.
+        held = self.held
+        wi = m.walk_index()
+        relevant = set()
+        for sid in self.reached: relevant |= wi[sid][5]
+        relevant &= held
+        prods = {}
+        reached_d, choices = self.reached, self.choices
+        groups_of = m.producer_groups()
+        for f in relevant:
+            lst = []
+            for sid, entries in groups_of.get(f, ()):
+                if sid not in reached_d: continue
+                B = None
+                for key, sctx in entries:
+                    if key is None or key in choices:
+                        B = sctx if B is None else (B & sctx)
+                if B is not None: lst.append((sid, B))
+            if lst: prods[f] = lst
+        must_flag = {f: None for f in relevant}
         reached = list(self.reached)
-        ms = {}
-        for _ in range(40):
-            for sid in reached:
-                s = m.by_id[sid]
-                base = (set(s["Requires"]) | forced_native) & m.forbidden_any
-                for r in s["Requires"]:
-                    mf = must_flag.get(r)
+        # The fixed point below is the same round-by-round (Jacobi) iteration as before: each round recomputes every scene's
+        # must-set from the previous round's must_flag, then every flag's must-set from those scene sets. Only entries whose
+        # inputs changed in the previous step are recomputed (the others would recompute to the same value).
+        static = self.__dict__.setdefault("_must_static", {})   # world-fixed part of each scene's must-set (kept across rounds)
+        reqs, users = {}, collections.defaultdict(set)
+        for sid in reached:
+            s = m.by_id[sid]
+            if sid not in static:
+                b = (set(s["Requires"]) | forced_native) & F
+                if len(s["RequiresAny"]) == 1 and s["RequiresAny"][0] in F: b.add(s["RequiresAny"][0])
+                static[sid] = b
+            reqs[sid] = [r for r in s["Requires"] if r in must_flag]
+            for r in reqs[sid]: users[r].add(sid)
+        flags_of = collections.defaultdict(set)
+        for f, lst in prods.items():
+            if f in must_flag:
+                for sid, _ in lst: flags_of[sid].add(f)
+        ms, msP = {}, {}
+        changed_flags = None
+        for it in range(40):
+            todo_s = reached if it == 0 else {sid for f in changed_flags for sid in users.get(f, ())}
+            changed_s = []
+            for sid in todo_s:
+                base = set(static[sid])
+                for r in reqs[sid]:
+                    mf = must_flag[r]
                     if mf: base |= mf
-                if len(s["RequiresAny"]) == 1 and s["RequiresAny"][0] in m.forbidden_any: base.add(s["RequiresAny"][0])
+                if it == 0 or ms[sid] != base:
+                    changed_s.append(sid); msP[sid] = base & P
                 ms[sid] = base
-            changed = False
-            for f in must_flag:
+            todo_f = must_flag if it == 0 else {f for sid in changed_s for f in flags_of.get(sid, ())}
+            changed_flags = set()
+            for f in todo_f:
                 acc = None
-                for sid, sctx in prods.get(f, ()):
-                    ctx = (ms[sid] & P) | sctx
+                for sid, B in prods.get(f, ()):
+                    ctx = (msP[sid] | B) if B else msP[sid]   # never mutated in place below
                     acc = ctx if acc is None else (acc & ctx)
-                acc = (acc or set()) | ({f} & m.forbidden_any)
+                    if not acc: break   # an empty intersection stays empty
+                acc = (acc or set()) | ({f} & F)
                 if must_flag[f] != acc:
-                    must_flag[f] = acc; changed = True
-            if not changed: break
+                    must_flag[f] = acc; changed_flags.add(f)
+            if not changed_flags: break
         self.must_flag, self.must_scene = must_flag, ms
         newly = False
         for sid in reached:
@@ -482,32 +583,68 @@ class Reach:
             rel = m.rels.get(s["Relationship"], {})
             if not is_epilogue(s) and rel.get("ClosedFlag") in mss and s["Recovery"] != "konomi" and s["AfterRecovery"] is None:
                 self.dead_scenes[sid] = "requires-chain holds relationship ClosedFlag '%s'" % rel["ClosedFlag"]; newly = True; continue
-            for n in s["Nodes"]:
-                for i, c in enumerate(n["Choices"]):
-                    key = (sid, n["Id"], i)
-                    if key in self.dead_choices or not (c["Forbids"] or c["Requires"]): continue
-                    ctx = mss | (set(c["Requires"]) & m.forbidden_any)
-                    for r in c["Requires"]:
-                        if must_flag.get(r): ctx = ctx | must_flag[r]
-                    if sid in ctx and not s["Owner"].endswith("Epilogue"):
-                        self.dead_choices[key] = "choice requires a flag only producible after this scene completes"; newly = True; continue
-                    bad = [f for f in c["Forbids"] if f in ctx and not m.unreadable(f, s, rch)]
-                    inscene = m.scene_sets[sid]
-                    bad2 = [f for f in c["Requires"] if f in s["Forbids"] and not s["ForbidOverrides"].get(f) and f not in inscene]
-                    if bad or bad2:
-                        self.dead_choices[key] = "choice forbids/requires contradiction: %s" % (bad or bad2)
-                        newly = True
+            inscene = m.scene_sets[sid]
+            for nid, i, c in m.walk_index()[sid][3]:
+                key = (sid, nid, i)
+                if key in self.dead_choices: continue
+                ctx = mss | (set(c["Requires"]) & F)
+                for r in c["Requires"]:
+                    if must_flag.get(r): ctx = ctx | must_flag[r]
+                if sid in ctx and not s["Owner"].endswith("Epilogue"):
+                    self.dead_choices[key] = "choice requires a flag only producible after this scene completes"; newly = True; continue
+                bad = [f for f in c["Forbids"] if f in ctx and not m.unreadable(f, s, rch)]
+                bad2 = [f for f in c["Requires"] if f in s["Forbids"] and not s["ForbidOverrides"].get(f) and f not in inscene]
+                if bad or bad2:
+                    self.dead_choices[key] = "choice forbids/requires contradiction: %s" % (bad or bad2)
+                    newly = True
         return newly
 
 
 # ------------------------------------------------------------------------------------- blueprint index
+_ZIPS = {}
+
+
+def blueprints_zip(game):
+    """One shared, read-only ZipFile per blueprints.zip (its central directory holds ~250k entries: parse it once per run)."""
+    p = Path(game) / "blueprints.zip"
+    if p not in _ZIPS: _ZIPS[p] = zipfile.ZipFile(p)
+    return _ZIPS[p]
+
+
+def zip_heads(z, infos, n):
+    """(info, first n bytes of the member) for each info: the same bytes as z.open(info).read(n), read straight from the
+    member's local entry with one raw inflater (much cheaper than a ZipExtFile per member); anything unusual falls back."""
+    with open(z.filename, "rb") as fh:
+        for info in infos:
+            h = None
+            if not info.flag_bits & 1 and info.compress_type in (zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED):
+                fh.seek(info.header_offset)
+                lh = fh.read(30)
+                if len(lh) == 30 and lh[:4] == b"PK\x03\x04":
+                    nlen, xlen = struct.unpack("<HH", lh[26:30])
+                    fh.seek(info.header_offset + 30 + nlen + xlen)
+                    if info.compress_type == zipfile.ZIP_STORED:
+                        h = fh.read(min(n, info.compress_size))
+                    else:
+                        d, out, left, tail = zlib.decompressobj(-15), b"", info.compress_size, b""
+                        while len(out) < n and (left > 0 or tail):
+                            chunk = fh.read(min(left, 4096)) if left > 0 else b""
+                            left -= len(chunk)
+                            if not chunk and not tail: break
+                            out += d.decompress(tail + chunk, n - len(out))
+                            tail = d.unconsumed_tail
+                            if d.eof: break
+                        h = out[:n]
+            if h is None:
+                with z.open(info) as zf: h = zf.read(n)
+            yield info, h
+
+
 def build_bp_index(game):
     rx = re.compile(rb'"AssetId"\s*:\s*"([0-9a-f]{32})".*?"\$type"\s*:\s*"([0-9a-f]{32}), (\w+)"', re.S)
     idx, typeids = {}, set()
-    with zipfile.ZipFile(game / "blueprints.zip") as z:
-        for info in z.infolist():
-            if not info.filename.endswith(".jbp"): continue
-            with z.open(info) as fh: h = fh.read(400)
+    with contextlib.nullcontext(blueprints_zip(game)) as z:
+        for info, h in zip_heads(z, [i for i in z.infolist() if i.filename.endswith(".jbp")], 400):
             mm = rx.search(h)
             if mm:
                 idx[mm.group(1).decode()] = (mm.group(3).decode(), info.filename)
@@ -569,26 +706,20 @@ def build_names(model):
     """Every New<T>(id) name Main.Build() registers, in order (mirrors src/Main.cs)."""
     names = []
     scenes = model.scenes
-    effects = []
-    for s in scenes:
-        for n in s["Nodes"]:
-            for c in n["Choices"]:
-                for f in c["Set"]:
-                    if f not in effects: effects.append(f)
-    keys = []
-    for k in [s["Id"] for s in scenes] + ["hour." + s["Id"] for s in scenes] + effects + ["hour." + e for e in effects] + \
-            [x for r in model.rels.values() for x in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"])]:
-        if k not in keys: keys.append(k)
+    effects = list(dict.fromkeys(f for s in scenes for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]))   # first-seen order
+    keys = list(dict.fromkeys([s["Id"] for s in scenes] + ["hour." + s["Id"] for s in scenes] + effects + ["hour." + e for e in effects] +
+                              [x for r in model.rels.values() for x in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"])]))
+    keyset = set(keys)
     flagkeys = list(keys)
     names += [("flag." + k, "BlueprintUnlockableFlag") for k in keys]
     extra_unguarded = ["konomi.return_meeting_retry", "nurah.private_meeting_retry"]
     names += [("flag." + k, "BlueprintUnlockableFlag") for k in extra_unguarded]
     for k in ["irabeth.return_meeting_retry", "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
               "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words"]:
-        if k not in keys: names.append(("flag." + k, "BlueprintUnlockableFlag"))
-    names += [("flag.served." + rid, "BlueprintUnlockableFlag") for rid in model.rels if "served." + rid not in keys]
+        if k not in keyset: names.append(("flag." + k, "BlueprintUnlockableFlag"))
+    names += [("flag.served." + rid, "BlueprintUnlockableFlag") for rid in model.rels if "served." + rid not in keyset]
     for k in model.latches:
-        names += [("flag." + x, "BlueprintUnlockableFlag") for x in (k, "hour." + k) if x not in keys]
+        names += [("flag." + x, "BlueprintUnlockableFlag") for x in (k, "hour." + k) if x not in keyset]
     names += [("etude.konomi.personal_return", "BlueprintEtude"), ("etude.irabeth.personal_return", "BlueprintEtude"),
               ("etude.nurah.private_meeting", "BlueprintEtude")]
     for rid in model.rels:
@@ -629,8 +760,9 @@ def build_names(model):
         names += [("page.%s.hub" % key, "BlueprintBookPage"), ("cue.%s.hub" % key, "BlueprintCue")]
         names += [("answer.%s.hub.%s" % (key, s["Id"]), "BlueprintAnswer") for s in scenes if s["InteractionHub"] == key]
         names += [("answer.%s.hub.leave" % key, "BlueprintAnswer"), ("dialog.%s.hub" % key, "BlueprintDialog")]
-    for cue in (model.story.get("NativeEpilogueEdits") or {}):   # E14d replacement cues
+    for cue, edit in (model.story.get("NativeEpilogueEdits") or {}).items():   # E14d replacement cues (Rules.NativeEditCueName)
         names.append(("native-edit." + cue, "BlueprintCue"))
+        names += [("native-edit.%s.%s" % (cue, v["Replacement"]), "BlueprintCue") for v in (edit.get("Variants") or [])]
     if any(is_nurah_hub(s) for s in scenes):
         names += [("page.nurah.arrival_hub", "BlueprintBookPage"), ("cue.nurah.arrival_hub", "BlueprintCue")]
         names += [("answer.nurah.arrival_hub." + s["Id"], "BlueprintAnswer") for s in scenes if is_nurah_hub(s)]
@@ -673,9 +805,16 @@ def validate(model):
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive.")) or not groups or any(not g for g in groups)
                 or any(x not in known for g in groups for x in g)):
             errs.append("Invalid derived key: " + k)
+    for k, fb in model.derived_forbids.items():
+        if (k not in model.composites or not fb or len(set(fb)) != len(fb) or k in fb or any(x not in known for x in fb)
+                or any(x in g for g in model.composites[k] for x in fb)):
+            errs.append("Invalid DerivedForbids entry: " + k)
+    for k, guard in model.open_routes.items():
+        if k not in model.composites or not guard or len(set(guard)) != len(guard) or any(r not in model.rels for r in guard):
+            errs.append("Invalid DerivedOpenRoutes entry: " + k)
     def cyclic(k, path):
         if k in path: return True
-        return any(cyclic(x, path | {k}) for g in model.composites.get(k, []) for x in g if x in model.composites)
+        return any(cyclic(x, path | {k}) for x in composite_inputs(model, k) if x in model.composites)
     for k in model.composites:
         if cyclic(k, frozenset()): errs.append("Derived cycle through: " + k)
     for k, src in model.latches.items():
@@ -713,7 +852,7 @@ def validate(model):
             sets = [f for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]]
             if (not s["TricksterDevice"] or not acc or s["Reaction"] or is_epilogue(s)
                     or (s["TricksterState"] is not None and s["TricksterState"] not in acc)
-                    or not ({"trickster", "trickster.ever"} & set(s["Requires"]))
+                    or not ({"trickster", "trickster.ever", "trickster.now"} & set(s["Requires"]))
                     or not any(f in rec or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f for f in sets)):
                 errs.append("Invalid Trickster device: " + sid)
         if s["Reaction"]:
@@ -856,6 +995,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     R = collections.OrderedDict()
     story = story_obj if story_obj is not None else json.loads(Path(story_path).read_text(encoding="utf-8"))
     model = Model(story)
+    if FREEZE_GC: gc.freeze()   # perf (CLI only): the parsed story is long-lived; keep the cyclic GC from rescanning it
     lines = []
     def P(*a):
         lines.append(" ".join(str(x) for x in a))
@@ -894,8 +1034,19 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     # ---- B. reachability per mythic world
     worlds = [mythic_world(m, model) for m in MYTHIC] + [mythic_world(None, model, "none")]
     reach = {}
+    committed_flags = {r["CommittedFlag"] for r in model.rels.values()}
+    reach_cache = {}   # (forced true, forced false) -> Reach: equal worlds give equal results (a World's name is only a label)
+    def cached_reach(w, light=False):
+        key = (frozenset(w.true), frozenset(w.false))
+        if key not in reach_cache:
+            rr = Reach(model, w)
+            if light:   # section H reads only reached/held; drop the rest so hundreds of cached worlds stay small
+                for k in ("why", "choices", "dead_scenes", "dead_choices", "must_flag", "must_scene", "_must_static"): delattr(rr, k)
+                rr.held = rr.held & committed_flags   # section H asks held only about CommittedFlags
+            reach_cache[key] = rr
+        return reach_cache[key]
     for w in worlds:
-        reach[w.name] = Reach(model, w)
+        reach[w.name] = cached_reach(w)
     any_reached = set().union(*[set(r.reached) for r in reach.values()])
     free_reached = set()
     for w in worlds:
@@ -973,12 +1124,12 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         res = dict(entry=bool(base_ent), committed=r["CommittedFlag"] in base.held, entry_scenes=len(base_ent),
                    total_scenes=len(rel_scenes), blocks_entry=[], blocks_commit=[])
         for f in sorted(cand_true):
-            rr = Reach(model, mythic_world("trickster", model, "tri+" + f, true={f}))
+            rr = cached_reach(mythic_world("trickster", model, "tri+" + f, true={f}), light=True)
             e = any(s["Id"] in rr.reached for s in rel_scenes)
             if not e: res["blocks_entry"].append(f + "=true")
             elif r["CommittedFlag"] not in rr.held and res["committed"]: res["blocks_commit"].append(f + "=true")
         for f in sorted(cand_false):
-            rr = Reach(model, mythic_world("trickster", model, "tri-" + f, false={f}))
+            rr = cached_reach(mythic_world("trickster", model, "tri-" + f, false={f}), light=True)
             e = any(s["Id"] in rr.reached for s in rel_scenes)
             if not e: res["blocks_entry"].append(f + "=missed")
             elif r["CommittedFlag"] not in rr.held and res["committed"]: res["blocks_commit"].append(f + "=missed")
@@ -1350,6 +1501,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, g in story.get("UnlockableFlags", {}).items(): want.append((g, "BlueprintUnlockableFlag", "UnlockableFlags." + k))
         for k, v in story.get("QuestObjectives", {}).items(): want.append((v[0], "BlueprintQuestObjective", "QuestObjectives." + k))
         for k, g in story.get("InventoryItems", {}).items(): want.append((g, "BlueprintItem*", "InventoryItems." + k))
+        for k, g in story.get("PartyItems", {}).items(): want.append((g, "BlueprintItem*", "PartyItems." + k))
         for k, g in story.get("StartedQuests", {}).items(): want.append((g, "BlueprintQuest", "StartedQuests." + k))
         for k, g in story.get("MainCharacterFacts", {}).items(): want.append((g, "BlueprintFeature", "MainCharacterFacts." + k))
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
@@ -1375,8 +1527,15 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
         for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
+            if e.get("Parent"):   # E14i: a common-dialog cue (its parent cue and dialog, no page or sequence)
+                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue|BlueprintAnswer|BlueprintDialog", "NativeEpilogueEdits.Parent." + g),
+                         (e.get("Dialog"), "BlueprintDialog", "NativeEpilogueEdits.Dialog." + g)]
+                continue
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
                      (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
+        for g, e in (story.get("NativeEpilogueSuppressions") or {}).items():   # E14d extension: hidden native cues
+            want += [(g, "BlueprintCue", "NativeEpilogueSuppressions"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueSuppressions." + g),
+                     (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueSuppressions." + g)]
         for k, p in (story.get("Presences") or {}).items():
             want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
             want.append((p.get("Area"), "BlueprintArea", "Presences." + k))
@@ -1395,7 +1554,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if not hit: bad.append(dict(guid=g, expected=t, where=where, actual=None))
             elif hit[0] == "?parent-literal":
                 parent_untyped.append(dict(guid=g, expected=t, where=where, source=hit[1]))
-            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES):
+            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES)                     and not ("|" in t and hit[0] in t.split("|")):
                 bad.append(dict(guid=g, expected=t, where=where, actual=hit[0], path=hit[1]))
         # hard-coded GUIDs in src/*.cs
         srcg = collections.defaultdict(set)
@@ -1407,7 +1566,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         # answer list tails (Count-1 insertion assumes trailing exit)
         tails = {}
         lists = sorted(set(g for g, t, _ in want if t == "BlueprintAnswersList"))
-        with zipfile.ZipFile(game / "blueprints.zip") as z:
+        with contextlib.nullcontext(blueprints_zip(game)) as z:
             for g in lists:
                 if g not in idx: tails[g] = "parent/unknown"; continue
                 d = json.loads(z.read(idx[g][1]))["Data"]
@@ -1424,10 +1583,14 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 exitish = (not cues) or bool(re.search(r"leave|farewell|goodbye|go now|that.s all|nothing|later|bye|excuse me|must go|have to go|must be going|until next time|another time|see you", txt, re.I))
                 tails[g] = ("exit-ok" if exitish else "LAST ANSWER IS NOT AN EXIT") + " [%s] %r cues=%d" % (Path(idx[last][1]).stem, txt, len(cues))
         # E5: a native continuation must belong to the dialog that owns the scene's answer list (same ParentAsset).
-        with zipfile.ZipFile(game / "blueprints.zip") as z:
+        with contextlib.nullcontext(blueprints_zip(game)) as z:
+            owner_memo, parent_memo = {}, {}   # both are pure functions of blueprints.zip: memoized per run
             def exit_owner(g):
                 """A BlueprintSequenceExit carries no ParentAsset; its owner is the cue sequence in the same folder whose
                 m_Exit names it (e.g. CultCamp_CultistFromEstrod/SequenceExit_0043 under CueSequence_0031)."""
+                if g not in owner_memo: owner_memo[g] = exit_owner_scan(g)
+                return owner_memo[g]
+            def exit_owner_scan(g):
                 folder = str(Path(idx[g][1]).parent).replace("\\", "/") + "/"
                 for name in z.namelist():
                     if name.startswith(folder) and "/CueSequence_" in name and ("!bp_" + g).encode() in z.read(name):
@@ -1435,6 +1598,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 return None
             def parent(g):
                 """The owning BlueprintDialog: ParentAsset names the immediate owner (a list's cue, a cue's dialog...)."""
+                if g not in parent_memo: parent_memo[g] = parent_walk(g)
+                return parent_memo[g]
+            def parent_walk(g):
                 seen = set()
                 while g in idx and g not in seen and idx[g][0] != "BlueprintDialog":
                     seen.add(g)
@@ -1462,7 +1628,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         P("  Target answer lists: %d; lists whose LAST answer is not a plain exit (Count-1 insertion assumption): %d" % (len(tails), len(nonexit)))
         for g, v in list(nonexit.items())[:15]: P("     -", g, v)
         # F2: every inline scene's NativeReturnCue meets the Main.cs return contract (tools/return_safety.py)
-        rs_fail, rs_known = return_safety.check(model.scenes, return_safety.ZipReader(game, idx),
+        rs_fail, rs_known = return_safety.check(model.scenes, return_safety.ZipReader(game, idx, blueprints_zip(game)),
                                                 return_safety.load_allowlist(return_safety.ALLOWLIST))
         R["return_safety"] = dict(failures=rs_fail, known=rs_known)
         return_safety.report(rs_fail, rs_known, sum(1 for s in model.scenes if s["NativeReturnCue"]), P)
@@ -1631,16 +1797,45 @@ class SimState:
     def has(self, f): return f in self.flags
 
 
+def composite_inputs(model, k):
+    """Mirror of Rules.DerivedInputs: a composite's AND-group flags plus its route guards' closure inputs."""
+    out = [x for g in model.composites.get(k, []) for x in g] + list(model.derived_forbids.get(k, []))
+    for rel in model.open_routes.get(k, []):
+        r = model.rels.get(rel) or {}
+        out += [r.get("ClosedFlag")] + list(r.get("UnavailableFlags") or []) + list((r.get("UnavailableOverrides") or {}).values())
+    return [x for x in out if x]
+
+
+def route_open(model, rel, flags):
+    """Mirror of Rules.RouteOpen: not closed, and no unavailable flag held without its return override."""
+    r = model.rels.get(rel) or {}
+    ov = r.get("UnavailableOverrides") or {}
+    return r.get("ClosedFlag") not in flags and not any(
+        u in flags and not (ov.get(u) and ov[u] in flags) for u in (r.get("UnavailableFlags") or []))
+
+
+def composite_order(model):
+    """Mirror of Rules.DerivedOrder: every composite after the composites it reads."""
+    order, seen = [], set()
+    def visit(k):
+        if k in seen: return
+        seen.add(k)
+        for x in composite_inputs(model, k):
+            if x in model.composites: visit(x)
+        order.append(k)
+    for k in model.composites: visit(k)
+    return order
+
+
 def sim_complete(model, st):
-    """Mirror of Rules.Complete: latches, then Story.Derived composites."""
+    """Mirror of Rules.Complete: latches, then Story.Derived composites (in dependency order, with route guards)."""
     for k, src in model.latches.items():
         if any(x in st.flags for x in src): st.flags.add(k)
-    changed = True
-    while changed:
-        changed = False
-        for k, groups in model.composites.items():
-            if k not in st.flags and any(all(x in st.flags for x in g) for g in groups):
-                st.flags.add(k); changed = True
+    for k in composite_order(model):
+        if (k not in st.flags and any(all(x in st.flags for x in g) for g in model.composites[k])
+                and all(route_open(model, rel, st.flags) for rel in model.open_routes.get(k, []))
+                and not any(x in st.flags for x in model.derived_forbids.get(k, []))):
+            st.flags.add(k)
     for k, (of, least) in model.counts.items():
         if k not in st.flags and sum(1 for x in of if x in st.flags) >= least: st.flags.add(k)
 
@@ -1690,12 +1885,20 @@ def sim_key(model, s):
     return (model.rels.get(s["Relationship"]) or {}).get("RotationKey") or s["Relationship"]
 
 
+def sim_letters(model):
+    """Rest-delivered letters in story order: remote, not ManualOnly, not epilogue (static per model; cached)."""
+    lt = getattr(model, "_sim_letters", None)
+    if lt is None:
+        lt = model._sim_letters = [s for s in model.scenes if is_remote(s) and not s["ManualOnly"] and not is_epilogue(s)]
+    return lt
+
+
 def sim_mailbag(model, st, skip=()):
     """Mirror of Rules.MailbagArrivals (E8b): every deliverable letter, one per rotation key (its first in story order);
     the simulated pursuing player reads them all. `skip` holds letters the player declines."""
     groups = collections.OrderedDict()
-    for s in model.scenes:
-        if not is_remote(s) or s["ManualOnly"] or is_epilogue(s) or s["Id"] in skip: continue
+    for s in sim_letters(model):
+        if s["Id"] in skip: continue
         if sim_available(model, s, st): groups.setdefault(sim_key(model, s), s)
     return list(groups.values())
 
@@ -1802,12 +2005,11 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
             if st.hour >= next_rest and rests_done < available_rests:
                 next_rest += step
                 rests_done += 1
-                for s in model.scenes:   # letters a pursuing player would decline are never requested
-                    if (is_remote(s) and not s["ManualOnly"] and not is_epilogue(s) and s["Id"] not in declined
+                for s in sim_letters(model):   # letters a pursuing player would decline are never requested
+                    if (s["Id"] not in declined
                             and sim_available(model, s, st) and not sim_wanted(sim_plan(model, s, st, rel_flags))):
                         declined.add(s["Id"])
-                waiting = [s for s in model.scenes if is_remote(s) and not s["ManualOnly"] and not is_epilogue(s)
-                           and s["Id"] not in declined and sim_available(model, s, st)]
+                waiting = [s for s in sim_letters(model) if s["Id"] not in declined and sim_available(model, s, st)]
                 for s in waiting: ever.setdefault(s["Id"], ch)
                 info["backlog_peak"] = max(info["backlog_peak"], len({(model.rels.get(s["Relationship"]) or {}).get("RotationKey") or s["Relationship"] for s in waiting}))
                 bag = sim_mailbag(model, st, declined) if delivery == "mailbag" else sim_bag(model, st, served, bag_size, (), cap, declined)
@@ -1962,7 +2164,7 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
     matrix = json.loads(Path(matrix_path).read_text(encoding="utf-8"))
     model = Model(story)
     guid_to_key = {}
-    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems"):
+    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems", "PartyItems"):
         for k, g in (story.get(sec) or {}).items(): guid_to_key.setdefault(str(g).lower(), k)
     for k, v in (story.get("QuestObjectives") or {}).items(): guid_to_key.setdefault(str(v[0]).lower(), k)
     for k, v in (story.get("SeenCues") or {}).items():
@@ -2150,6 +2352,8 @@ def main():
     if a.matrix:
         _, code = run_matrix(a.matrix, a.story, strict=a.strict, out_json=a.matrix_json, extra=matrix_rest_budget)
         sys.exit(code)
+    global FREEZE_GC
+    FREEZE_GC = True
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \

@@ -3,7 +3,7 @@
 The native marriage, actors and dispatchers are preserved.
 Scenes and all civilian events below are authored alternate developments.
 """
-from story_format import c, n, scene
+from story_format import c, n, p, scene
 
 DREZEN = "2570015799edf594daf2f076f2f975d8"
 ANEVIA = "b5e867e13503c6f41bb1316705efb4a2"
@@ -1425,10 +1425,15 @@ ending("ending_wife_absent", "News that did not arrive", '''{n}Irabeth was gone 
        requires=("anevia.lover", "irabeth_gone"),
        forbids=("irabeth_dead", "anevia_dead", "anevia_gone", "anevia.irabeth_killed_by_commander", "inhuman", "sacrifice", "ascended"))
 ending("ending_wife_killed", "The answer affection could not change", '''{n}The Commander had killed Irabeth. Nothing Anevia had once felt could turn that into a grief the two of them might share.{/n}
-{n}There were memories of earlier nights: Anevia reaching for a hand, or stopping mid-joke because she had started laughing at it herself. The Commander kept them. They did not add up to a forgiveness she had never given.{/n}
-{n}No further invitation came from Anevia. Her anger belonged to the woman who had loved Irabeth, and the Commander had no right to shrink it into a misunderstanding. Whatever other night they might once have had was gone.{/n}''',
+{n}There were memories of earlier nights: Anevia reaching for a hand, or stopping mid-joke because she had started laughing at it herself. The Commander kept them. They did not add up to a forgiveness she had never given.{/n}''',
        requires=("anevia.lover", "irabeth_dead", "anevia.irabeth_killed_by_commander"),
        forbids=("anevia_dead", "inhuman", "ascended"))
+# Sol pol INT: the permanent closure is true only of an Anevia who never came back; a returned one left a door ajar at
+# the gate ("Come back when you can knock"), so her variants are appended by anevia_trickster.integrate instead.
+SCENES[-1]["Nodes"][-1]["Paragraphs"] = [p(
+    "No further invitation came from Anevia. Her anger belonged to the woman who had loved Irabeth, and the Commander "
+    "had no right to shrink it into a misunderstanding. Whatever other night they might once have had was gone.",
+    forbids=("anevia.trickster.returned",))]
 
 ending("ending_death", "The afternoons that had happened", '''{n}Anevia's death left no finished version of the life she and the Commander had been building. There were real nights to remember, real fights, and a particular way she looked pleased a heartbeat before she decided whether to admit it. She had a gift for leaving even a short visit with something unfinished to laugh about next time.{/n}
 {n}The Commander remembered her work as well as her warmth. She had wanted answers for people other folk treated as names on a list. She had also wanted a room of her own, an afternoon nobody turned into a duty, and the right to be ridiculous without being loved less for it.{/n}

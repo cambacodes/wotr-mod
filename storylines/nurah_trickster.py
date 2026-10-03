@@ -70,6 +70,12 @@ P_LATE_CODA = "nurah.trickster.late_coda"             # derived: a late branch's
 VEILED_DRAFT_DUE = "nurah.trickster.veiled_draft_due"  # NM1 derived: an early runaway's dedication, with Camellia veiled at Fye's
 VEILED_DRAFT_FOLDED = "nurah.trickster.veiled_draft_folded"  # NM1: her card on the pamphlet rode in the proofs packet
 VEILED_DRAFT = "nurah.trickster.react.camellia_veiled_draft"  # the standalone card (Chapter 3 only since NM1)
+# Polish (2026-10-02, COX): a pardoned prisoner who then ran off, with Camellia veiled at Fye's. Her pardon card rides in
+# the runaway's next letter instead of arriving as a third Chapter 5 delivery; the standalone card forbids the runaway.
+VEILED_PARDON = "nurah.trickster.react.camellia_veiled_pardon"
+VEILED_PARDON_DUE = "nurah.trickster.veiled_pardon_due"        # derived: pardoned, released, ran off, Camellia veiled
+VEILED_PARDON_DONE = "nurah.trickster.veiled_pardon_done"      # derived: the standalone card read, or the folded one
+VEILED_PARDON_FOLDED = "nurah.trickster.veiled_pardon_folded"  # set on the folded card's answer
 SECOND_EDITION = "nurah.trickster.cost.second_edition"# the pedlar met only in Chapter 5, after her first printing sold out
 DEATHS = ("nurah.dead_drezen", "nurah.dead_camellia", "nurah.killing_mechanism")
 CAMELLIA_KILL = "nurah.dead_camellia"
@@ -363,6 +369,19 @@ letter("nurah.trickster.dead.rumour_courier", "Late collection", 5, [
    TricksterDevice=True, TricksterState="dead")
 
 
+# Polish (COX): Camellia's pardon card for a pardoned prisoner who has since run. Her courier is handed it at Fye's on
+# his way up, so it rides in the runaway's next letter; the original continuations are gated off while it is due and unread, and
+# re-offered (appended) once it is read, so every old index keeps its meaning.
+VEILED_PARDON_TEXT = '''{n}%s, in another hand and smelling of lilies, is a card the courier admits he was handed at Fye's tavern on his way up to the citadel, by the lady at the far end of the bar who never touches her wine.{/n}
+"You gave the little traitor a pardon, and then you let her walk off with it. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. She is out on the roads now, where anyone at all may make an offer for her. I would hate to be outbid."
+'''
+
+
+def veiled_pardon(carried, back, *continuations):
+    """The folded card node (portrait Camellia) and its routing choices for one start node."""
+    return n("card_pardon", "Narrator", VEILED_PARDON_TEXT % carried + back, *continuations, portrait="Camellia")
+
+
 # --- The ran-off branch: the dedication (F03) ------------------------------------------------------------------------
 
 cell("nurah.trickster.ran_off.dedication", "A dedication in her own hand",
@@ -371,7 +390,7 @@ cell("nurah.trickster.ran_off.dedication", "A dedication in her own hand",
        c("Continue", "write")),
     nar("write", '''{n}By candlelight, on the blank page after the title, you write in her own small stitched hand, practising the loops until they are hers: "To the Commander, who kept me because I had stopped being funny. N. D." You leave the manuscript on her bunk before the bell.{/n}''',
         c("[Leave it on her bunk.]", flags=(PRIMED, GHOST, "nurah.started")),
-        c("[Leave it on her bunk, and send a quartermaster's purse to the one licensed press at Nerosyan, which every pamphlet south of the Worldwound goes through, with the line and a page of her hand to set it by.]",
+        c("[Leave it on her bunk, and send a quartermaster's purse to the Nerosyan printer named on her title page, with the line and a page of her hand to set it by.]",
           crusade=("Finances", -250), flags=(PRIMED, GHOST, "nurah.started", PRINTER))),
 ], requires=("trickster", "nurah.prison"), forbids=(*DEATHS, RAN_OFF, GHOST), delay=0,
     EntryMythic="PlayerIsTrickster", EntryAlignment=dict(Direction="Chaotic", Value=1))
@@ -383,7 +402,8 @@ letter("nurah.trickster.ran_off.second_draft", "Two hundred copies", 3, [
         c('"Let the pedlar go."', abort=True)),
     nar("forged", '''{n}Two hundred copies, one night, one candle. By the fortieth you are forging her hand better than she does: "To the Commander, who kept me because I had stopped being funny. N. D." The pedlar leaves at dawn with the crate and no idea. The printer in the lower city keeps the line locked in his forme for the next edition, and a quartermaster's purse keeps him from remembering who asked.{/n}''',
         c("[Go to bed.]")),
-], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off")
+], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off",
+   Kind="event")
 
 # Chapter 5: a runaway first approached (or primed too late to answer) after the Abyss. Her first printing is gone; the
 # second is caught at the press, dearer, and she has had months on the road to get angry in.
@@ -395,14 +415,18 @@ letter("nurah.trickster.ran_off.second_draft_late", "Second printing", 5, [
         c('"Let the pedlar go."', abort=True)),
     nar("forged", '''{n}Three hundred copies and the proof sheets, two nights, a box of candles. The first hundred are hard going; her hand has changed on the road, grown quicker and meaner, and you have to learn it again from the pamphlet's own marginal corrections. By the second night you are forging her better than she writes: "To the Commander, who kept me because I had stopped being funny. N. D." The pedlar leaves with the crate and no idea. The Tymon printer gets the proof sheets back with the line set into them, and a quartermaster's purse heavy enough to make him forget who sent it.{/n}''',
         c("[Go to bed.]")),
-], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off")
+], requires=("trickster", RAN_OFF), forbids=(*DEATHS, GHOST), delay=0, TricksterDevice=True, TricksterState="ran_off",
+   Kind="event")
 
 
 def terms_by_post(id, chapter, opening, late=False):
     letter(id, "I am extremely funny", chapter, [
         nar("start", opening,
-            c("Continue", "pardoned", requires=(RELEASED,)), c("Continue", "letter", forbids=(RELEASED,), requires=(PRINTER_PAID,)),
-            c("Continue", "letter_one", forbids=(RELEASED, PRINTER_PAID))),
+            c("Continue", "pardoned", requires=(RELEASED,), forbids=(VEILED_PARDON_DUE,)),
+            c("Continue", "letter", forbids=(RELEASED,), requires=(PRINTER_PAID,)),
+            c("Continue", "letter_one", forbids=(RELEASED, PRINTER_PAID)),
+            c("Continue", "pardoned", requires=(RELEASED, VEILED_PARDON_DUE, VEILED_PARDON_DONE)),
+            c("Continue", "card_pardon", requires=(VEILED_PARDON_DUE,), forbids=(VEILED_PARDON_DONE,))),
         nu("pardoned", '''"You pardoned me, then opened the door, then followed me with THIS. Make up your mind."''',
            c("Continue", "letter", requires=(PRINTER_PAID,)), c("Continue", "letter_one", forbids=(PRINTER_PAID,))),
         nu("letter", '''"I did not write that. I checked every copy. I wrote it in every copy, apparently, in my own hand, better than I write it. I burned an edition, and the next one came off the press with the same line, because somebody had paid my printer to keep it locked in the forme. He is a very bad liar. The purse had a crusade quartermaster's knot on it. It is an insult in my own handwriting, Commander, and you paid good money to make it outlive us both.
@@ -430,6 +454,8 @@ def terms_by_post(id, chapter, opening, late=False):
              c("[Write nothing back.]"))]),
         nu("refused", '''"You've had it. It's printed in every copy I will ever make. That is all the room in my life you get. Don't write again."''',
            c("[Fold the letter away.]")),
+        veiled_pardon("Tucked behind the envelope", "{n}You set the card aside and slit the envelope.{/n}",
+                      c("Continue", "pardoned", requires=(RELEASED,), flags=(VEILED_PARDON_FOLDED,))),
     ], requires=("trickster.ever", PRIMED, GHOST, RAN_OFF), forbids=(ACCEPTED,), delay=48, TricksterDevice=True,
        TricksterState="ran_off")
 
@@ -444,7 +470,11 @@ terms_by_post("nurah.trickster.ran_off.terms_by_post_late", 5, late=True, openin
 
 letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
     nar("start", '''{n}A parcel of proofs, forty pages in a hand so small it looks like stitching.{/n}''',
-        c("Continue", "raised", requires=(RETURNED,)), c("Continue", "courier", forbids=(RETURNED,))),
+        c("Continue", "raised", requires=(RETURNED,), forbids=(VEILED_PARDON_DUE,)),
+        c("Continue", "courier", forbids=(RETURNED, VEILED_PARDON_DUE)),
+        c("Continue", "raised", requires=(RETURNED, VEILED_PARDON_DUE, VEILED_PARDON_DONE)),
+        c("Continue", "courier", requires=(VEILED_PARDON_DUE, VEILED_PARDON_DONE), forbids=(RETURNED,)),
+        c("Continue", "card_pardon", requires=(VEILED_PARDON_DUE,), forbids=(VEILED_PARDON_DONE,))),
     nar("raised", '''{n}They come wrapped in a chaplain's receipt: one resurrection, one halfling, name and hour and place as supplied. Someone has corrected the chaplain's spelling in the margin.{/n}''',
         c("Continue", "proofs")),
     nar("courier", '''{n}They come by a courier in no livery at all, who does not know what he carries and would rather not be told.{/n}''',
@@ -491,7 +521,11 @@ letter("nurah.trickster.after.proofs", "Chapter one, by post", 5, [
        c('[Write back one word.] "Come."', flags=(LATE_YES,)),
        c('[Write back.] "Send the book. Only the book."', flags=(BOOK,)),
        c("[Write nothing back.]")),
-], requires=("trickster.ever", ACCEPTED), forbids=(PROOFS,), delay=72, RequiresAnyGroups=[[RETURNED, RAN_OFF]])
+    veiled_pardon("Folded in with the proofs", "{n}You set the card aside and go back to the parcel.{/n}",
+                  c("Continue", "raised", requires=(RETURNED,), flags=(VEILED_PARDON_FOLDED,)),
+                  c("Continue", "courier", forbids=(RETURNED,), flags=(VEILED_PARDON_FOLDED,))),
+], requires=("trickster.ever", ACCEPTED), forbids=(PROOFS,), delay=72, RequiresAnyGroups=[[RETURNED, RAN_OFF]],
+   Kind="letter", Parcel=True)
 
 
 def terms_in_person(id, hub, arrival, threshold, morning, requires, forbids, done, partners):
@@ -657,8 +691,9 @@ SCENES.append(scene("nurah.trickster.epilogue.the_margin", "Author's terms", "Ep
         c(), paragraphs=EPILOGUE_PARAGRAPHS + (
             p("Her name went on the cover next to the Commander's, in the same typeface. She told everyone it had been her idea.",
               requires=("nurah.trickster.cost.coauthor",)),
-            p("The Drezen gaol kept her cell as she left it. She came back once, with the first bound copy, and left it on the "
-              "bunk for the next prisoner.", requires=(RELEASED,), forbids=(RETURNED, RAN_OFF)),
+            p("She went back to the cell once, with the first bound copy, and left it on the bunk for the next prisoner. On "
+              "the flyleaf she had written: 'For the next tenant. Insist on a better forger.'",
+              requires=(RELEASED,), forbids=(RETURNED, RAN_OFF)),
             p("She never went back to the River Kingdoms pedlars. She said she had outgrown crates.", requires=(RAN_OFF,)),
         ))],
     requires=("trickster.ever", COMPLETE), forbids=(CLOSED, *DEATHS, "sacrifice"), last=99, Relationship="nurah",
@@ -669,6 +704,42 @@ SCENES.append(scene("nurah.trickster.epilogue.refused", "No review", "Epilogue",
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
     requires=("trickster.ever", PROOFS, CLOSED), forbids=(COMPLETE, *DEATHS), last=99, Relationship="nurah",
     ForbidOverrides={d: RETURNED for d in DEATHS}))
+
+
+# Polish (2026-10-02): the closure written out. Every death of hers is a player answer (user rule, 11-ROSTER-PLAN-2 5.1 #2):
+# the siege verdict, the Commander's own blow in the cell, or "Nurah is yours." to Camellia. Her page says what that cost: the
+# book that was never written, and what was left of her in the gaol. An epilogue page is exempt from her unavailable flags.
+NIGHT_OUT = ("nurah.trickster.prison.night_out", "nurah.trickster.prison.night_out_late")  # she corrected the pardon there
+SCENES.append(scene("nurah.trickster.epilogue.unwritten", "The unwritten book", "Epilogue", 5, "", [
+    nar("start", '''{n}No book about the crusade from the wrong side ever came out of the River Kingdoms. Nurah Dendiwhar, who had been a slave, a secretary, a cultist and a traitor, and had meant to outlive all four, did not outlive the Commander's decision.{/n}''',
+        c(), paragraphs=(
+            p("She was put to death on the day Drezen was taken, by the Commander's verdict, while the smoke was still coming off "
+              "the walls. She called them all scum to the last, and was annoyed that nobody wrote it down.", requires=(EXEC_SIEGE,),
+              forbids=(EXEC_PRISON, CAMELLIA_KILL)),
+            p("She died in her cell, by the Commander's own blow. She spat at the Commander's feet first; the turnkey who "
+              "scrubbed the floor afterwards said it was the only clean thing she ever did in there.", requires=(EXEC_PRISON,),
+              forbids=(CAMELLIA_KILL,)),
+            p("The Commander gave her to Camellia, who had asked for her as one asks for a dish one has never tried. Camellia "
+              "spoke of that night only once afterwards, to say that it had not taken long.", requires=(CAMELLIA_KILL,)),
+            p("Among what she left in the cell was the pardon, folded small, with the 'Q' scraped clean, the seal set the right way "
+              "up and the date corrected, all in her own hand. Irabeth had it entered in the gaol ledger beside the sentence, and "
+              "asked the Commander nothing about either.", requires=(LEDGER,), forbids=("irabeth_dead",), any_groups=(NIGHT_OUT,)),
+            p("Among what she left in the cell was the pardon, folded small, with every fault in it corrected in her own hand. "
+              "Nobody in the gaol could say what it was for.", requires=(LEDGER, "irabeth_dead"), any_groups=(NIGHT_OUT,)),
+            p("Among what she left in the cell was the pardon the Commander had slid under the bars, as bad as the night it came: "
+              "the tail on the 'Q', the seal upside down, the date a day too late. Nobody had waited a day to check.",
+              requires=(LEDGER,), forbids=NIGHT_OUT),
+            p("Her manuscript was on the plank desk, its first page dedicated to the Commander in her own small stitched hand, in "
+              "words she had never written. No printer ever set it. The Commander kept it, and did not read past the dedication.",
+              requires=(GHOST,), forbids=(RAN_OFF,)),
+            p("The proofs of chapter one had a gap on the first page exactly one name wide. It was never filled in by anyone.",
+              requires=(PROOFS,), forbids=(SIGNED,)),
+            p("The proofs of chapter one had the Commander's name in the gap on the first page, in the Commander's own hand. It is "
+              "the only line of that book anyone ever read.", requires=(SIGNED,)),
+            p("She had set her author's terms in that cell, and the Commander had taken them, and her, and then said the other "
+              "word. If she had time to put that in a sentence, nobody found it.", requires=(COMPLETE,)),
+        ))],
+    requires=("trickster.ever",), forbids=(RETURNED,), last=99, Relationship="nurah", RequiresAnyGroups=[list(DEATHS)]))
 
 
 # --- Reactions (ledger 05 section 3.1: exactly Irabeth and Camellia) --------------------------------------------------
@@ -719,7 +790,8 @@ CARD = "{n}A folded card comes up with the evening dispatches, sent over from Fy
 REACTIONS += [
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_pardon", (LEDGER, RELEASED, *VEILED),
              CARD + '''"You gave the little traitor a pardon. How merciful of you. I have been dead, darling, so I know exactly what mercy is worth: it is worth what someone is willing to pay to take it back. I do hope nobody makes you an offer for her. I would hate to be outbid."''',
-             remote=True, chapter=3, last=5, Chapters=[3, 5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
+             remote=True, forbids=(RAN_OFF, VEILED_PARDON_FOLDED), chapter=3, last=5, Chapters=[3, 5], Kind="letter",
+             portrait="Camellia", Areas=[DREZEN]),
     reaction("Camellia", "nurah.trickster.react.camellia_veiled_market", (RETURNED, RUMOUR, *VEILED),
              CARD + '''"You bought a soul from that marilith in the Fleshmarkets. The whole bar is saying so, very quietly, with its back to me. You and I have both come back from somewhere we were put, darling. Tell your halfling that the first thing one wants afterwards is to be looked at. The second is to be feared. She will work out the third herself."''',
              remote=True, forbids=(CAMELLIA_KILL, LATE), chapter=5, last=5, Chapters=[5], Kind="letter", portrait="Camellia", Areas=[DREZEN]),
@@ -737,8 +809,8 @@ SCENES.extend(REACTIONS)
 # Buying her soul back from Ramisa and having the chaplains raise it is a raise, and the one-raise rule (06 registry: Irabeth's
 # chapel diamond is the only raise in the mod) forbids it. The dead branch's entries are RETIRED BY GATING (ids, nodes and
 # choice indices kept): each forbids chapter_later, which the runtime holds in every chapter from 2 on, so nothing can set
-# returned again. A dead Nurah's route is closed by her death (her UnavailableFlags), canon fate and an earned outcome (the
-# Chivarro / Arueshalae precedent). The prepared-in-life device stays: the forged pardon keeps her alive in her cell. Saves
+# returned again. A dead Nurah's route is closed by her death (her UnavailableFlags): every death of hers is the player's own
+# answer, so canon stands (user rule, 11-ROSTER-PLAN-2 5.1 #2); the closure has its own page (epilogue.unwritten). The prepared-in-life device stays: the forged pardon keeps her alive in her cell. Saves
 # that were already raised keep their later scenes (save compatibility). The Ledger says the loss plainly.
 DEAD_RETIRED = ("nurah.trickster.dead.rumour", "nurah.trickster.dead.bill_of_sale", "nurah.trickster.dead.rumour_courier")
 for _scene in SCENES:
@@ -785,6 +857,12 @@ def integrate(payload):
     if derived.get(VEILED_DRAFT_DUE, due) != due:
         raise ValueError("Conflicting derived key: " + VEILED_DRAFT_DUE)
     derived[VEILED_DRAFT_DUE] = due
+    # Polish (COX): the pardon card for a pardoned prisoner who has since run, and whether it has been read.
+    for key, groups in ((VEILED_PARDON_DUE, [[LEDGER, RELEASED, RAN_OFF, "camellia.killed", "camellia.trickster.returned"]]),
+                        (VEILED_PARDON_DONE, [[VEILED_PARDON], [VEILED_PARDON_FOLDED]])):
+        if derived.get(key, groups) != groups:
+            raise ValueError("Conflicting derived key: " + key)
+        derived[key] = groups
     # Her Last Call coda plays only for a Nurah alive now: committed and still in her cell (the prison etude stops on her
     # death), run off, or bought back; or a late branch. G5: the framework page reads this key, never her death flags.
     alive = [[COMPLETE, "nurah.prison"], [COMPLETE, RAN_OFF], [COMPLETE, RETURNED], [P_LATE_CODA]]

@@ -342,6 +342,48 @@ internal static class NurahTricksterTests
         Program.Walk(proofs, cardSeen, (page, _) => cardSeenPages.Add(page));
         check(!cardSeenPages.Contains("card_draft") && Program.Walk(proofs, cardSeen).Any(r => r.Has("nurah.trickster.proofs_seen")),
             "Trk_Nurah_WorstRunawayBudget: the Chapter 3 card is repeated in the packet, or the packet strands.");
+        // Polish (2026-10-02, COX): the same worst runaway, but pardoned in her cell before the native release. Camellia's
+        // pardon card is no longer a standalone Chapter 5 letter: it rides in the proofs packet, once, and both cards fold.
+        var veiledPardon = S("nurah.trickster.react.camellia_veiled_pardon");
+        var pardonedWorst = Program.Copy(worst);
+        foreach (var f in new[] { "nurah.trickster.cost.ledger_lie", "nurah.trickster.released" }) { pardonedWorst.Flags.Add(f); pardonedWorst.Times[f] = pardonedWorst.Hour - 100; }
+        Rules.Complete(story, pardonedWorst);
+        var pardonedCh5 = new HashSet<string>();
+        void PardonedDeliveries(Snapshot w)
+        {
+            foreach (var s in story.Scenes.Where(s => s.Id.StartsWith("nurah.", StringComparison.Ordinal) && Rules.IsRemote(s) && Rules.Available(story, s, w)))
+                pardonedCh5.Add(s.Id);
+        }
+        PardonedDeliveries(pardonedWorst);
+        var pardonedPages = new HashSet<string>();
+        Program.Walk(proofs, pardonedWorst, (page, _) => pardonedPages.Add(page));
+        var pardonedSeen = Program.Walk(proofs, pardonedWorst).Where(r => r.Has("nurah.trickster.veiled_pardon_folded")).ToList();
+        check(pardonedWorst.Has("nurah.trickster.veiled_pardon_due") && !Rules.Available(story, veiledPardon, pardonedWorst)
+              && pardonedPages.Contains("card_pardon") && pardonedPages.Contains("card_draft") && pardonedSeen.Count > 0
+              && pardonedSeen.All(r => r.Has("nurah.trickster.proofs_seen")),
+            "Trk_Nurah_PardonedRunawayCard: the pardon card is not folded into the proofs packet, or the packet strands: due="
+            + pardonedWorst.Has("nurah.trickster.veiled_pardon_due") + " standalone=" + Rules.Available(story, veiledPardon, pardonedWorst)
+            + " pages=" + string.Join(",", pardonedPages) + " folded=" + pardonedSeen.Count);
+        var pardonedNight = Observed(story, Later(story, pardonedSeen[0], 168), "nurah.presence", anchorOnly);
+        PardonedDeliveries(Observed(story, Later(story, pardonedSeen[0], 72), "nurah.presence", anchorOnly));
+        PardonedDeliveries(pardonedNight);
+        check(!Rules.Available(story, veiledPardon, pardonedNight) && Rules.Available(story, ranNight, pardonedNight) && Commits(ranNight, pardonedNight),
+            "Trk_Nurah_PardonedRunawayCard: the night terms lose their commitment after the folded card.");
+        PardonedDeliveries(Later(story, Program.Walk(ranNight, pardonedNight).First(r => r.Has("nurah.complete")), 72));
+        check(pardonedCh5.SetEquals(new[] { proofs.Id, ranNight.Id }),
+            "Trk_Nurah_PardonedRunawayBudget: the pardoned runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", pardonedCh5));
+        // Read in Chapter 3 already: no second copy, and the original continuation is offered again.
+        var pardonRead = Program.Copy(pardonedWorst); pardonRead.Flags.Add(veiledPardon.Id); Rules.Complete(story, pardonRead);
+        var pardonReadPages = new HashSet<string>();
+        Program.Walk(proofs, pardonRead, (page, _) => pardonReadPages.Add(page));
+        check(!pardonReadPages.Contains("card_pardon") && pardonReadPages.Contains("courier")
+              && Program.Walk(proofs, pardonRead).Any(r => r.Has("nurah.trickster.proofs_seen")),
+            "Trk_Nurah_PardonedRunawayCard: a card read in Chapter 3 is repeated, or the packet strands.");
+        // A prisoner who stays keeps the standalone card in either chapter.
+        var pardonedStays = World(story, 5, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.cost.ledger_lie", "nurah.trickster.released",
+            "camellia.killed", "camellia.trickster.returned");
+        pardonedStays.Area = veiledPardon.Areas[0];
+        check(Rules.Available(story, veiledPardon, pardonedStays), "The pardon card is lost for a pardoned prisoner who stays.");
 
         // Trk_Nurah_RanOffLate: the pedlar in Chapter 3; the commit falls to the epilogue page.
         var unprimed = World(story, 3, "trickster", "trickster.ever", "nurah.ran_off");
@@ -373,16 +415,28 @@ internal static class NurahTricksterTests
         // Round 5 (COX): the late reply carries the proofs itself, so the missed-primer runaway uses two Chapter 5 deliveries.
         check(lateAccepted.All(r => r.Has("nurah.trickster.proofs_seen")) && !Rules.Available(story, proofs, Later(story, lateAccepted[0], 72)),
             "The late reply does not carry the proofs, or the proofs arrive twice.");
+        // Polish (COX): pardoned before she ran, Camellia veiled: the late reply carries the pardon card too, and keeps every outcome.
+        var latePardoned = Program.Copy(lateReplyWorld);
+        foreach (var f in new[] { "nurah.trickster.cost.ledger_lie", "nurah.trickster.released", "camellia.killed", "camellia.trickster.returned" })
+        { latePardoned.Flags.Add(f); latePardoned.Times[f] = latePardoned.Hour - 100; }
+        Rules.Complete(story, latePardoned);
+        var latePardonedPages = new HashSet<string>();
+        Program.Walk(replyLate, latePardoned, (page, _) => latePardonedPages.Add(page));
+        var latePardonedAccepted = Program.Walk(replyLate, latePardoned).Where(r => r.Has("nurah.trickster.accepted")).ToList();
+        check(Rules.Available(story, replyLate, latePardoned) && latePardonedPages.Contains("card_pardon") && latePardonedPages.Contains("pardoned")
+              && latePardonedAccepted.Count == 18 && latePardonedAccepted.All(r => r.Has("nurah.trickster.veiled_pardon_folded"))
+              && latePardonedAccepted.Count(r => r.Has("nurah.trickster.late_yes")) == 6,
+            "Trk_Nurah_PardonedRunawayCard: the late reply drops the pardon card or an outcome.");
         var ch5Remote = new HashSet<string>();
         var budgetWalk = ranLate;
         foreach (var step in new[] { pedlarLate, replyLate })
         {
             var w = Later(story, budgetWalk, 72);
-            foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && !s.Reaction && Rules.Available(story, s, w)))
+            foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && Rules.Available(story, s, w)))
                 ch5Remote.Add(s.Id);
             budgetWalk = Program.Walk(step, w).First(r => r.Has("nurah.trickster.accepted") || r.Has("nurah.trickster.cost.ghostwritten"));
         }
-        foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && !s.Reaction && Rules.Available(story, s, Later(story, budgetWalk, 72))))
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "nurah" && Rules.IsRemote(s) && Rules.Available(story, s, Later(story, budgetWalk, 72))))
             ch5Remote.Add(s.Id);
         check(ch5Remote.Count <= 2, "The late runaway spends more than two Chapter 5 deliveries: " + string.Join(", ", ch5Remote));
         var lateRanSeen = Later(story, lateAccepted.First(r => r.Has("nurah.trickster.late_yes")), 72);
@@ -577,9 +631,27 @@ internal static class NurahTricksterTests
             check(!end.Has("nurah.trickster.coda_alive") && !end.Has("nurah.trickster.late_committed"), "Closed: dead, no raise: a coda key holds.");
             var alivePages = story.Scenes.Where(sc => sc.Relationship == "nurah" && sc.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                                                  && Rules.Available(story, sc, end)).Select(sc => sc.Id).ToArray();
-            check(alivePages.Length == 0, "Closed: dead, no raise: a page plays her alive: " + string.Join(", ", alivePages));
+            check(alivePages.SequenceEqual(new[] { "nurah.trickster.epilogue.unwritten" }),
+                "Closed: dead, no raise: the closure page is missing, or a page plays her alive: " + string.Join(", ", alivePages));
         }
         check(DeadRetired.All(id => S(id).Forbids.Contains("chapter_later")), "The Ramisa revival is not retired by gating.");
+        // Polish (2026-10-02): the closure page names the player's own choice and is never shown for a living or bought-back Nurah.
+        var unwritten = S("nurah.trickster.epilogue.unwritten");
+        check(!Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.prison"))
+              && !Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned"))
+              && !Rules.Available(story, unwritten, World(story, 6, "nurah.dead_drezen", "nurah.killing_mechanism"))
+              && unwritten.Nodes[0].Paragraphs.Count == 10, "The closure page opens outside a Trickster death world.");
+        // The pardon on the closure page is corrected only if she lived to correct it (prison.night_out), with Irabeth alive or dead.
+        string Rendered(params string[] extra) => string.Join(" ", Rules.VisibleParagraphs(unwritten.Nodes[0], World(story, 6, new[] {
+            "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.executed_from_prison", "nurah.trickster.cost.ledger_lie" }
+            .Concat(extra).ToArray())).Select(par => par.Text));
+        var unread = Rendered();
+        var corrected = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released");
+        var correctedNoBeth = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released", "irabeth_dead");
+        check(unread.Contains("a day too late") && !unread.Contains("corrected") && corrected.Contains("date corrected") && corrected.Contains("Irabeth")
+              && !corrected.Contains("a day too late") && correctedNoBeth.Contains("every fault in it corrected") && !correctedNoBeth.Contains("Irabeth")
+              && corrected.Contains("your blow") == false && corrected.Contains("Commander's own blow"),
+            "The closure page misstates what happened to the pardon: " + unread + " || " + corrected);
         var lostEntry = story.Books["trickster.ledger"].Entries.Single(e => e.Id == "lost.nurah");
         check(lostEntry.Requires.Contains("trickster.ever") && lostEntry.Forbids.Contains("nurah.trickster.returned")
               && lostEntry.AnyGroups.Length == 1 && Deaths.Concat(new[] { "nurah.dead_camellia" }).All(lostEntry.AnyGroups[0].Contains),

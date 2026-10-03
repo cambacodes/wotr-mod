@@ -124,8 +124,8 @@ def load_allowlist(path):
 
 class ZipReader:
     """Reads blueprint Data by guid from blueprints.zip; builds its own AssetId index unless given one (guid -> (type, member))."""
-    def __init__(self, game, index=None):
-        self.zip = zipfile.ZipFile(Path(game) / "blueprints.zip")
+    def __init__(self, game, index=None, zip_file=None):
+        self.zip = zip_file if zip_file is not None else zipfile.ZipFile(Path(game) / "blueprints.zip")
         self.index = index
         self.cache = {}
 

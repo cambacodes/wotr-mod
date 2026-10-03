@@ -513,8 +513,12 @@ internal static class ArueshalaeTricksterTests
         check(nm1WanderEdit.Replacement == T + "epilogue.native_wander" && Rules.WhenHolds(nm1WanderEdit.When, nm1Ending) && !Rules.WhenHolds(nm1WanderEdit.When, nm1Uncommitted)
               && Rules.IsNativeReplacement(story, S(nm1WanderEdit.Replacement)) && !S(nm1WanderEdit.Replacement).Nodes[0].Text.Contains("roam"),
             "Trk_Arueshalae_NativeEnding: the committed Arueshalae still wanders Golarion on the native page.");
-        check(!story.NativeEpilogueEdits.ContainsKey("78ae1bdc3b0824b4ca2ed618782f1faa"),
-            "Trk_Arueshalae_NativeEnding: the withdrawn Cue_0461 edit (failed the runtime cue-policy contract) is back.");
+        // Engine queue item 6: Cue_0461 is restored with the parent's continuation kept (managed: RunDreamPage), warning-only.
+        var nm1DreamEdit = story.NativeEpilogueEdits["78ae1bdc3b0824b4ca2ed618782f1faa"];
+        var nm1Dream = S(nm1DreamEdit.Replacement);
+        check(nm1DreamEdit.Replacement == T + "epilogue.native_dreams" && Rules.WhenHolds(nm1DreamEdit.When, nm1Back) && !Rules.WhenHolds(nm1DreamEdit.When, nm1StayedDead)
+              && !Rules.WhenHolds(nm1DreamEdit.When, nm1Uncommitted) && Rules.Available(story, nm1Dream, nm1Back) && !Rules.Available(story, nm1Dream, nm1StayedDead),
+            "Trk_Arueshalae_NativeEnding: the native page keeps her beloved dead after the Commander came back (or replaces a real death).");
         // NM1 (Sol BEL): the daybook's first page is the prescription the Commander actually wrote.
         var nm1Together = S(T + "epilogue.together").Nodes[0];
         var nm1WatchEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_watch");
