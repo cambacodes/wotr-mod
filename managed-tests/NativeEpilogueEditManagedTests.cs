@@ -29,6 +29,7 @@ internal static class NativeEpilogueEditManagedTests
     public static IEnumerable<string> NativeIds => NativeEpilogueEdit.Reviewed.Keys
         .Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Page)).Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Sequence))
         .Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Parent ?? "")).Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Dialog ?? ""))
+        .Concat(NativeEpilogueEdit.Reviewed.Values.SelectMany(e => e.AlsoParents ?? Array.Empty<string>()))
         .Concat(TirabadePageCues).Concat(AfterlogueLines).Append(NativeEpilogueEdit.Companions).Where(id => id.Length > 0).Distinct();
 
     private static T Seed<T>(string guid) where T : SimpleBlueprint, new()
@@ -57,25 +58,29 @@ internal static class NativeEpilogueEditManagedTests
         {
             var data = native[pair.Key];
             var onShow = (JArray)data["OnShow"]!["Actions"]!;
-            bool onShowReviewed = pair.Value.Image == null ? onShow.Count == 0
+            bool onShowReviewed = pair.Value.OnShow != null ? JsonShapes(onShow).SequenceEqual(pair.Value.OnShow)
+                : pair.Value.Image == null ? onShow.Count == 0
                 : onShow.Count == 1 && ((string)onShow[0]["$type"]!).EndsWith(", ChangeBookEventImage", StringComparison.Ordinal)
                     && (string)onShow[0]["m_Image"]!["AssetId"]! == pair.Value.Image;
             var continued = Refs((JObject)data["Continue"]!, "Cues");   // (E14i cues may also carry reviewed Answers)
             bool continueReviewed = pair.Value.Continue == null ? continued.Length == 0
                 : (string)data["Continue"]!["Strategy"]! == "First" && continued.SequenceEqual(pair.Value.Continue);
             check(ArchiveTextKey(data) == pair.Value.Key && !(bool)data["ShowOnce"]! && onShowReviewed
-                && ((JArray)data["OnStop"]!["Actions"]!).Count == 0 && ((JArray)data["Components"]!).Count == 0
+                && JsonShapes((JArray)data["OnStop"]!["Actions"]!).SequenceEqual(pair.Value.OnStop ?? Array.Empty<string>()) && ((JArray)data["Components"]!).Count == 0
                 && (((JArray)data["Answers"]!).Count == 0 || pair.Value.Answers != null) && continueReviewed,
                 "Reviewed native cue evidence drifted: " + pair.Key);
             if (pair.Value.Parent != null)   // E14i: listed once by its parent's Continue (First); the dialog opens on the parent
             {
                 var parentData = native[pair.Value.Parent];
                 string field = parentData["Continue"] != null ? "Continue" : parentData["NextCue"] != null ? "NextCue" : "FirstCue";
-                bool opens = field != "Continue" || Refs((JObject)native[pair.Value.Dialog!]["FirstCue"]!, "Cues").Count(c => c == pair.Value.Parent) == 1;
+                bool opens = field != "Continue" || pair.Value.AlsoParents != null || Refs((JObject)native[pair.Value.Dialog!]["FirstCue"]!, "Cues").Count(c => c == pair.Value.Parent) == 1;
                 check(pair.Value.Page == "" && pair.Value.Sequence == "" && (string)parentData[field]!["Strategy"]! == "First"
                       && Refs((JObject)parentData[field]!, "Cues").Count(c => c == pair.Key) == 1 && opens
                       && Refs(data, "Answers").SequenceEqual(pair.Value.Answers ?? Array.Empty<string>()),
                     "Reviewed dialog cue is not once in its parent's Continue, or the dialog no longer opens on the parent: " + pair.Key);
+                foreach (var also in pair.Value.AlsoParents ?? Array.Empty<string>())
+                    check((string)native[also]["Continue"]!["Strategy"]! == "First" && Refs((JObject)native[also]["Continue"]!, "Cues").Count(c => c == pair.Key) == 1,
+                        "Reviewed dialog cue is not once in a further parent's Continue: " + pair.Key + " / " + also);
                 continue;
             }
             check(Refs(native[pair.Value.Page], "Cues").Count(c => c == pair.Key) == 1, "Reviewed cue is not exactly once on its page: " + pair.Key);
@@ -375,22 +380,76 @@ internal static class NativeEpilogueEditManagedTests
         return own.Length > 0 ? own : (string?)text["Shared"]?["stringkey"] ?? "";
     }
 
+    // E14i (engine queue 6b): Kiana's JewelerFinal/Cue_0051, a mid-dialog cue with three parents and reviewed OnShow/OnStop actions.
+    // The archive shape is accepted; the replacement keeps the cutscene and the quest steps (same action objects), goes in right
+    // before the cue in all three parents, and plays only in the ransom / buy-back worlds on the Trickster path. A drifted action or
+    // a parent that no longer leads into the cue is refused, warning-only, and nothing is inserted.
+    public static void RunJewelerBowl(Story story, Dictionary<string, JObject> native, Func<string, BlueprintGuid> id, Action<bool, string> check)
+    {
+        const string Cue0051 = "4255f49c18c69aa4ab4d5582d0b6f39e";
+        if (!story.NativeEpilogueEdits.TryGetValue(Cue0051, out var spec)) { check(false, "Kiana's Cue_0051 edit is not shipped."); return; }
+        var evidence = NativeEpilogueEdit.Reviewed[Cue0051];
+        var parentIds = new[] { spec.Parent }.Concat(NativeEpilogueEdit.AlsoParentsOf(Cue0051)).ToArray();
+        check(parentIds.Length == 3 && !NativeEpilogueEdit.DegradesOnRefusal(Cue0051), "Cue_0051 is not reviewed with three parents, warning-only.");
+        BlueprintCue Shaped(string guid)
+        {
+            var cue = new BlueprintCue { AssetGuid = BlueprintGuid.Parse(guid), name = "BowlFixture_" + guid };
+            cue.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+            LoadArchiveShape(cue, native[guid], check);
+            return cue;
+        }
+        Dictionary<string, SimpleBlueprint> World()
+        {
+            var w = parentIds.Concat(new[] { Cue0051 }).ToDictionary(g => g, g => (SimpleBlueprint)Shaped(g));
+            w[spec.Dialog] = new BlueprintDialog { AssetGuid = BlueprintGuid.Parse(spec.Dialog), name = "BowlFixture_dialog" };
+            return w;
+        }
+        var world = World();
+        var cue0051 = (BlueprintCue)world[Cue0051];
+        check(cue0051.OnShow.Actions.Select(NativeEpilogueEdit.ActionShape).SequenceEqual(evidence.OnShow!)
+              && cue0051.OnStop.Actions.Select(NativeEpilogueEdit.ActionShape).SequenceEqual(evidence.OnStop!),
+            "Cue_0051's archive actions do not read as the reviewed shapes: " + string.Join(", ", cue0051.OnStop.Actions.Select(NativeEpilogueEdit.ActionShape)));
+        check(NativeEpilogueEdit.Check(Cue0051, spec, g => world.TryGetValue(g, out var bp) ? bp : null, null) == null, "The archive-shaped Cue_0051 is refused.");
+        Snapshot? current = null;
+        var group = new NativeEpilogueEdit.Group(spec, () => current, story);
+        var replacement = new BlueprintCue { AssetGuid = id(Rules.NativeEditCueName(Cue0051, spec, 0)), name = "BowlFixture_replacement" };
+        var plan = NativeEpilogueEdit.PrepareInDialog(Cue0051, spec, cue0051, world[spec.Parent], replacement, () => group.Selected() == 0, 0,
+            NativeEpilogueEdit.AlsoParentsOf(Cue0051).Select(g => world[g]).ToArray());
+        check(replacement.OnShow.Actions.SequenceEqual(cue0051.OnShow.Actions) && replacement.OnStop.Actions.SequenceEqual(cue0051.OnStop.Actions)
+              && replacement.Continue.Cues.Count == 0 && ReferenceEquals(replacement.Speaker, cue0051.Speaker),
+            "The bowl replacement does not keep Cue_0051's cutscene and quest steps, or does not speak as Seelah.");
+        NativeEpilogueEdit.AttachGroup(group, new[] { plan }, _ => Ref(replacement.AssetGuid.ToString()));
+        foreach (var parentId in parentIds)
+            check(((BlueprintCue)world[parentId]).Continue.Cues.Select(r => r.Guid).SequenceEqual(new[] { replacement.AssetGuid, cue0051.AssetGuid }),
+                "The bowl replacement is not right before Cue_0051 in parent " + parentId);
+        foreach (var (what, flags, plays) in new (string, string[], bool)[]
+        {
+            ("ransomed", new[] { "trickster.ever", "kiana.trickster.guests_ransomed" }, true),
+            ("bought back", new[] { "trickster.ever", "kiana.trickster.guests_bought_back" }, true),
+            ("robbed, never bought back", new[] { "trickster.ever", "kiana.trickster.cost.guests_robbed" }, false),
+            ("ransomed, off the Trickster path", new[] { "kiana.trickster.guests_ransomed" }, false),
+        })
+        {
+            current = new Snapshot { Chapter = 5 };
+            current.Flags.UnionWith(flags);
+            check((group.Selected() == 0) == plays, "Cue_0051 bowl, " + what);
+        }
+        // Drift: a changed quest step, or a further parent that no longer leads into the cue, is refused (the native line plays).
+        var drifted = World();
+        ((BlueprintCue)drifted[Cue0051]).OnStop = new ActionList { Actions = ((BlueprintCue)drifted[Cue0051]).OnStop.Actions.Take(4).ToArray() };
+        check(NativeEpilogueEdit.Check(Cue0051, spec, g => drifted.TryGetValue(g, out var bp) ? bp : null, null) != null, "Cue_0051 with a drifted OnStop is accepted.");
+        var orphan = World();
+        ((BlueprintCue)orphan[parentIds[2]]).Continue.Cues.Clear();
+        check(NativeEpilogueEdit.Check(Cue0051, spec, g => orphan.TryGetValue(g, out var bp) ? bp : null, null) != null, "Cue_0051 with a parent that no longer leads into it is accepted.");
+        Console.WriteLine("PASS: E14i Cue_0051 (Kiana's emptied bowl): three parents, the cutscene and quest steps kept, ransom/buy-back on the Trickster path only, drift refused warning-only.");
+    }
+
     // NM1 / E14d extension: a seeded native cue gets the archive's reviewed OnShow image action, its continuation (Strategy First)
     // and its text key, own or shared (a SharedStringAsset is a ScriptableObject, so it is created uninitialized).
     public static void LoadArchiveShape(BlueprintCue cue, JObject data, Action<bool, string> check)
     {
-        var actions = new List<GameAction>();
-        foreach (JObject action in (JArray)data["OnShow"]!["Actions"]!)
-        {
-            check(((string)action["$type"]!).EndsWith(", ChangeBookEventImage", StringComparison.Ordinal), "Unexpected native OnShow action on an E14d cue: " + cue.AssetGuid);
-            var change = new ChangeBookEventImage { Owner = cue, name = "$ChangeBookEventImage$archive" };
-            typeof(ChangeBookEventImage).GetField("m_Image", BindingFlags.Instance | BindingFlags.NonPublic)!
-                .SetValue(change, new SpriteLink { AssetId = (string)action["m_Image"]!["AssetId"]! });
-            cue.ElementsArray.Add(change);
-            actions.Add(change);
-        }
-        cue.OnShow = new ActionList { Actions = actions.ToArray() };
-        cue.OnStop = new ActionList { Actions = Array.Empty<GameAction>() };
+        cue.OnShow = new ActionList { Actions = ArchiveActions(cue, (JArray)data["OnShow"]!["Actions"]!, check) };
+        cue.OnStop = new ActionList { Actions = ArchiveActions(cue, (JArray)data["OnStop"]!["Actions"]!, check) };
         var continued = (JObject)data["Continue"]!;
         cue.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = ((JArray)continued["Cues"]!).Select(v => Ref(((string)v!).Replace("!bp_", ""))).ToList(),
             Strategy = (Kingmaker.DialogSystem.Strategy)Enum.Parse(typeof(Kingmaker.DialogSystem.Strategy), (string)continued["Strategy"]!) };
@@ -412,6 +471,56 @@ internal static class NativeEpilogueEditManagedTests
             typeof(LocalizedString).GetField("m_Key", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(asset.String, (string)shared["stringkey"]!);
             cue.Text.Shared = asset;
         }
+    }
+
+    // The archive's action shapes as NativeEpilogueEdit.ActionShape reads them: "Type:guid" of the first "!bp_" reference, or the type.
+    private static IEnumerable<string> JsonShapes(JArray actions) => actions.Cast<JObject>().Select(action =>
+    {
+        string type = ((string)action["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
+        var reference = action.Properties().Select(p => p.Value).OfType<JValue>().Select(v => v.Value as string)
+            .FirstOrDefault(s => s != null && s.StartsWith("!bp_", StringComparison.Ordinal));
+        return reference == null ? type : type + ":" + reference.Replace("!bp_", "");
+    });
+
+    // The archive's actions: ChangeBookEventImage (its sprite link), or (E14i, Kiana's Cue_0051) an action whose blueprint references
+    // ("!bp_<guid>" properties naming a reference field) are set as the game deserializes them. Other fields keep their defaults.
+    private static GameAction[] ArchiveActions(BlueprintCue cue, JArray list, Action<bool, string> check)
+    {
+        var actions = new List<GameAction>();
+        foreach (JObject action in list)
+        {
+            string typeName = ((string)action["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
+            if (typeName == "ChangeBookEventImage")
+            {
+                var change = new ChangeBookEventImage { Owner = cue, name = "$ChangeBookEventImage$archive" };
+                typeof(ChangeBookEventImage).GetField("m_Image", BindingFlags.Instance | BindingFlags.NonPublic)!
+                    .SetValue(change, new SpriteLink { AssetId = (string)action["m_Image"]!["AssetId"]! });
+                cue.ElementsArray.Add(change);
+                actions.Add(change);
+                continue;
+            }
+            var type = typeof(GameAction).Assembly.GetTypes().FirstOrDefault(t => t.Name == typeName && typeof(GameAction).IsAssignableFrom(t) && !t.IsAbstract);
+            check(type != null, "Unknown native action type on an E14i cue: " + typeName);
+            if (type == null) continue;
+            var created = (GameAction)Activator.CreateInstance(type)!;
+            created.Owner = cue;
+            created.name = "$" + typeName + "$archive";
+            foreach (var property in action.Properties())
+            {
+                if (!(property.Value is JValue value) || !(value.Value is string text) || !text.StartsWith("!bp_", StringComparison.Ordinal)) continue;
+                FieldInfo? field = null;
+                for (var t = type; t != null && field == null; t = t.BaseType)
+                    field = t.GetField(property.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
+                if (field == null || !typeof(BlueprintReferenceBase).IsAssignableFrom(field.FieldType)) continue;
+                var reference = (BlueprintReferenceBase)Activator.CreateInstance(field.FieldType)!;
+                typeof(BlueprintReferenceBase).GetField("deserializedGuid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+                    .SetValue(reference, BlueprintGuid.Parse(text.Replace("!bp_", "")));
+                field.SetValue(created, reference);
+            }
+            cue.ElementsArray.Add(created);
+            actions.Add(created);
+        }
+        return actions.ToArray();
     }
 
     private sealed class ArchiveCondition : Condition

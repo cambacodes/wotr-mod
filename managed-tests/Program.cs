@@ -223,6 +223,16 @@ internal static class Program
                         .Select(Reference<BlueprintCueBaseReference>).ToList() };
             }
             else Check(parentType == "BlueprintDialog" && pair.Value.Parent == pair.Value.Dialog, "Unexpected E14i parent type: " + parentType);
+            // E14i: further parents of a mid-dialog cue (Kiana's JewelerFinal/Cue_0051: Cue_0049, Cue_0050) load like the parent.
+            foreach (string also in NativeEpilogueEdit.AlsoParentsOf(pair.Key))
+            {
+                var alsoParent = Seed<BlueprintCue>(also);
+                if (alsoParent.Continue == null || alsoParent.Continue.Cues.Count == 0)
+                {
+                    alsoParent.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
+                    NativeEpilogueEditManagedTests.LoadArchiveShape(alsoParent, native[also], Check);
+                }
+            }
             var editCue = Seed<BlueprintCue>(pair.Key);
             editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
             NativeEpilogueEditManagedTests.LoadArchiveShape(editCue, native[pair.Key], Check);
@@ -461,6 +471,13 @@ internal static class Program
             Check(nativeAt >= variantNames.Length && editPageCues.Skip(nativeAt - variantNames.Length).Take(variantNames.Length).SequenceEqual(variantNames),
                 "E14d variants not attached in order right before their native cue: " + pair.Key);
             Check(!Warnings().Any(w => w.Contains(pair.Key)), "E14d edit warned or degraded: " + string.Join(" | ", Warnings().Where(w => w.Contains(pair.Key))));
+            foreach (string also in NativeEpilogueEdit.AlsoParentsOf(pair.Key))
+            {
+                var alsoCues = NativeEpilogueEdit.ParentSelection(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(also)))!.Cues.Select(r => r.Guid).ToList();
+                int alsoAt = alsoCues.IndexOf(BlueprintGuid.Parse(pair.Key));
+                Check(alsoAt >= variantNames.Length && alsoCues.Skip(alsoAt - variantNames.Length).Take(variantNames.Length).SequenceEqual(variantNames),
+                    "E14i variants not attached right before their native cue in a further parent: " + pair.Key + " / " + also);
+            }
         }
         // E14d extension: every shipped suppression passed its evidence check and guarded its native cue exactly once.
         foreach (var pair in story.NativeEpilogueSuppressions)
@@ -703,6 +720,7 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunDelivery(story, Check);
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
+        NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
         NativeGateManagedTests.RunArsinoe(story, Check);
         SpeakerManagedTests.Run(native, Check);

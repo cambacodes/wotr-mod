@@ -492,7 +492,8 @@ namespace Tirabade
                         Func<bool> applies = () => group.Selected() == variant;
                         if (nativeEditSources.TryGetValue(pair.Key, out var source))
                             nativeEditPlans.Add(source.Parent != null
-                                ? NativeEpilogueEdit.PrepareInDialog(pair.Key, pair.Value, source.Cue, source.Parent, replacement, applies, variant)
+                                ? NativeEpilogueEdit.PrepareInDialog(pair.Key, pair.Value, source.Cue, source.Parent, replacement, applies, variant,
+                                    NativeEpilogueEdit.AlsoParentsOf(pair.Key).Select(id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id))!).ToArray())
                                 : NativeEpilogueEdit.Prepare(pair.Key, pair.Value, source.Cue, source.Page!, replacement, applies, variant));
                         else
                         {
