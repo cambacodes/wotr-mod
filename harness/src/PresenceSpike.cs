@@ -90,6 +90,16 @@ namespace RRT.TestHarness
                 // ---- spawn one copy per candidate through RRT's GuestPresence ----------------------------------------------
                 var units = game.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>().Where(u => !u.Destroyed && !u.IsDisposed).ToList();
                 int seat = 0;
+                // Locator mode (engine queue 9d): every copy stands on the plan's native locator, as an E12b At.Locator presence.
+                Vector3? locatorAt = null;
+                res.Locator = sp.Locator;
+                res.MaxWalkableGap = sp.MaxWalkableGap;
+                if (sp.Locator != null)
+                {
+                    var entity = Kingmaker.EntitySystem.EntityService.Instance.GetEntity(sp.Locator);
+                    if (entity == null || entity.Destroyed) { res.LocatorError = "not found in " + area.name; yield break; }
+                    locatorAt = entity.Position;
+                }
                 foreach (var guid in sp.Units)
                 {
                     var bp = Bp<BlueprintUnit>(guid);
@@ -97,7 +107,18 @@ namespace RRT.TestHarness
                     if (units.Any(u => (u.OriginalBlueprint == bp || u.Blueprint == bp) && !u.State.IsDead)) { res.Skipped.Add(bp.name + ": a live unit of it is already in the area"); continue; }
                     var probe = new QuietCopyProbe { Unit = guid, UnitName = bp.name, NativeFaction = bp.Faction?.name, NativeAsks = bp.Visual?.Barks?.name };
                     res.Copies.Add(probe);
-                    var at = main.Position + Quaternion.Euler(0f, 90f * seat++, 0f) * Vector3.forward * sp.Distance;
+                    var at = locatorAt ?? main.Position + Quaternion.Euler(0f, 90f * seat, 0f) * Vector3.forward * sp.Distance;
+                    seat++;
+                    if (locatorAt != null)
+                    {
+                        probe.Target = new[] { at.x, at.y, at.z };
+                        try
+                        {
+                            var node = Kingmaker.View.ObstacleAnalyzer.GetNearestNode(at);
+                            if (node.node != null) probe.WalkableGap = Vector3.Distance(at, node.position);
+                        }
+                        catch (Exception ex) { res.Notes.Add(bp.name + ": walkable query threw " + ex.Message); }
+                    }
                     try
                     {
                         var guest = rrt!.NewSpawnCopyPresence(PresenceSpikeKey + seat, guid, areaGuid, at.x, at.y, at.z, 0f, bp);
@@ -121,6 +142,7 @@ namespace RRT.TestHarness
                 // ---- state, forced bark triggers, then a watch --------------------------------------------------------------
                 spikeBarks = new Dictionary<UnitEntityData, List<string>>();
                 var copies = new List<(UnitEntityData Unit, QuietCopyProbe Probe)>();
+                var shotAt = new List<(Vector3 Position, string Name)>();
                 foreach (var (guest, probe) in guests.Where(g => g.Probe.Spawned))
                 {
                     if (!(RrtBridge.PresenceActor(guest) is UnitEntityData copy))
@@ -137,6 +159,25 @@ namespace RRT.TestHarness
                     probe.Passive = copy.Passive;
                     probe.Asks = copy.Descriptor.Asks?.name ?? "(none)";
                     probe.AsksSilent = Silent(copy.View?.Asks);
+                    if (locatorAt != null)
+                    {
+                        probe.Drift = Vector3.Distance(copy.Position, locatorAt.Value);
+                        probe.Corpulence = copy.View?.Corpulence;
+                        float room = (probe.Corpulence ?? 0f) + 1f;
+                        foreach (var other in game.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>())
+                        {
+                            if (ReferenceEquals(other, copy) || !other.IsInGame || other.Destroyed || other.State.IsDead || other.View == null) continue;
+                            float gap = new Vector2(other.Position.x - copy.Position.x, other.Position.z - copy.Position.z).magnitude;
+                            if (gap < room + other.View.Corpulence) probe.Crowding.Add(other.CharacterName + " " + gap.ToString("0.0") + " m");
+                        }
+                        if (plan.Screenshots) shotAt.Add((copy.Position, "presence__" + probe.UnitName));
+                    }
+                }
+                foreach (var (position, name) in shotAt)
+                {
+                    try { game.UI.GetCameraRig().ScrollToImmediately(position); } catch (Exception ex) { res.Notes.Add("camera: " + ex.Message); }
+                    yield return null;
+                    yield return Shot(name, res.Screenshots, res.Notes.Add);
                 }
                 // Force the triggers a fight, a click and exploring would fire; a silent copy plays nothing audible.
                 foreach (var (copy, probe) in copies)
