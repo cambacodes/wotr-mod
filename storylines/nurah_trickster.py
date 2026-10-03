@@ -709,6 +709,7 @@ SCENES.append(scene("nurah.trickster.epilogue.refused", "No review", "Epilogue",
 # Polish (2026-10-02): the closure written out. Every death of hers is a player answer (user rule, 11-ROSTER-PLAN-2 5.1 #2):
 # the siege verdict, the Commander's own blow in the cell, or "Nurah is yours." to Camellia. Her page says what that cost: the
 # book that was never written, and what was left of her in the gaol. An epilogue page is exempt from her unavailable flags.
+NIGHT_OUT = ("nurah.trickster.prison.night_out", "nurah.trickster.prison.night_out_late")  # she corrected the pardon there
 SCENES.append(scene("nurah.trickster.epilogue.unwritten", "The unwritten book", "Epilogue", 5, "", [
     nar("start", '''{n}No book about the crusade from the wrong side ever came out of the River Kingdoms. Nurah Dendiwhar, who had been a slave, a secretary, a cultist and a traitor, and had meant to outlive all four, did not outlive the Commander's decision.{/n}''',
         c(), paragraphs=(
@@ -721,11 +722,13 @@ SCENES.append(scene("nurah.trickster.epilogue.unwritten", "The unwritten book", 
             p("The Commander gave her to Camellia, who had asked for her as one asks for a dish one has never tried. Camellia "
               "spoke of that night only once afterwards, to say that it had not taken long.", requires=(CAMELLIA_KILL,)),
             p("Among what she left in the cell was the pardon, folded small, with the 'Q' scraped clean, the seal set the right way "
-              "up and the date corrected to the day she was given it, all in her own hand. Irabeth had it entered in the gaol "
-              "ledger beside the sentence, and asked the Commander nothing about either.", requires=(LEDGER,),
-              forbids=("irabeth_dead",)),
+              "up and the date corrected, all in her own hand. Irabeth had it entered in the gaol ledger beside the sentence, and "
+              "asked the Commander nothing about either.", requires=(LEDGER,), forbids=("irabeth_dead",), any_groups=(NIGHT_OUT,)),
             p("Among what she left in the cell was the pardon, folded small, with every fault in it corrected in her own hand. "
-              "Nobody in the gaol could say what it was for.", requires=(LEDGER, "irabeth_dead")),
+              "Nobody in the gaol could say what it was for.", requires=(LEDGER, "irabeth_dead"), any_groups=(NIGHT_OUT,)),
+            p("Among what she left in the cell was the pardon the Commander had slid under the bars, as bad as the night it came: "
+              "the tail on the 'Q', the seal upside down, the date a day too late. Nobody had waited a day to check.",
+              requires=(LEDGER,), forbids=NIGHT_OUT),
             p("Her manuscript was on the plank desk, its first page dedicated to the Commander in her own small stitched hand, in "
               "words she had never written. No printer ever set it. The Commander kept it, and did not read past the dedication.",
               requires=(GHOST,), forbids=(RAN_OFF,)),

@@ -640,7 +640,18 @@ internal static class NurahTricksterTests
         check(!Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.prison"))
               && !Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned"))
               && !Rules.Available(story, unwritten, World(story, 6, "nurah.dead_drezen", "nurah.killing_mechanism"))
-              && unwritten.Nodes[0].Paragraphs.Count == 9, "The closure page opens outside a Trickster death world.");
+              && unwritten.Nodes[0].Paragraphs.Count == 10, "The closure page opens outside a Trickster death world.");
+        // The pardon on the closure page is corrected only if she lived to correct it (prison.night_out), with Irabeth alive or dead.
+        string Rendered(params string[] extra) => string.Join(" ", Rules.VisibleParagraphs(unwritten.Nodes[0], World(story, 6, new[] {
+            "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.executed_from_prison", "nurah.trickster.cost.ledger_lie" }
+            .Concat(extra).ToArray())).Select(par => par.Text));
+        var unread = Rendered();
+        var corrected = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released");
+        var correctedNoBeth = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released", "irabeth_dead");
+        check(unread.Contains("a day too late") && !unread.Contains("corrected") && corrected.Contains("date corrected") && corrected.Contains("Irabeth")
+              && !corrected.Contains("a day too late") && correctedNoBeth.Contains("every fault in it corrected") && !correctedNoBeth.Contains("Irabeth")
+              && corrected.Contains("your blow") == false && corrected.Contains("Commander's own blow"),
+            "The closure page misstates what happened to the pardon: " + unread + " || " + corrected);
         var lostEntry = story.Books["trickster.ledger"].Entries.Single(e => e.Id == "lost.nurah");
         check(lostEntry.Requires.Contains("trickster.ever") && lostEntry.Forbids.Contains("nurah.trickster.returned")
               && lostEntry.AnyGroups.Length == 1 && Deaths.Concat(new[] { "nurah.dead_camellia" }).All(lostEntry.AnyGroups[0].Contains),
