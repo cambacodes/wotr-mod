@@ -90,6 +90,7 @@ from storylines import rrt_ui
 from storylines import rrt_portraits
 from storylines import scene_kinds
 from storylines import lastcall
+from storylines import foresight   # 12-TRICKSTER-FORESIGHT: Shyka's page (after Last Call; its echoes need the routes)
 from storylines import household
 from storylines import gesmerha_campaign
 from storylines import gesmerha_late_campaign
@@ -613,6 +614,9 @@ def make_expansion(*, independent_tirabade=True):
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
+    # Shyka's page (12-TRICKSTER-FORESIGHT): the Council bargain, the memory, the misstep, the Ch5 line, the witnesses, Last
+    # Call's paragraphs and the Ledger's journal lines; then the routes' echoes and memory gaps (appended, optional).
+    foresight.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)

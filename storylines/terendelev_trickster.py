@@ -630,3 +630,29 @@ def integrate(payload):
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
     payload.setdefault("PortraitFallbacks", {}).setdefault("Terendelev", PORTRAIT_GUID)
+
+
+# --- Shyka's page: the echo and the memory gap (Writer/handoffs/12-TRICKSTER-FORESIGHT.md §2.4a, §2.9) -----------------
+# The echo (06 "Echo slots": proposed) is gated on the page and appended last at the ash of the late return: heat on the
+# hand from someone else's branch, water carried to the wrong end of the fire. The gamble that follows is untouched.
+# The gap is not optional: a Commander who sold the morning in the square to Shyka knows it only as told (12 §2.3), so the
+# memory page reaches her words through that, and rejoins at her promise. The original choices are gated off, never removed.
+from storylines import foresight as _foresight  # noqa: E402
+
+_foresight.echo(REL, P + "late.the_wound_calls", "ride",
+    "[Send the riders to the skull's jaw with the water skins.]",
+    _foresight.variant('''{n}Heat on the back of your hand, before you are near enough to feel any: the dry, even heat of a hearth, not a pyre. It comes off a crumb from the back of Shyka's page, one that belongs to some other Commander: a dragon's skull burning in a square hung with bunting, gold bones, and the warm end of it at the jaw.{/n}
+{n}So you send the riders to the jaw first, with every water skin you have, to cool a way in. The jaw end is cold ash and nothing. The water goes into it with a hiss like somebody laughing, and half of what the riders carried for the road home is gone before you understand that you are quenching the wrong end of the wrong fire.{/n}
+{n}The warmth was never at the jaw. It is at the heart of the skull, where the small flame has not gone out.{/n}''',
+        forbids=(_foresight.GONE_SQUARE,)),
+    _foresight.variant('''{n}Heat on the back of your hand, before you are near enough to feel any: the dry, even heat of a hearth. A crumb from the back of Shyka's page: a dragon's skull burning in a square hung with bunting, gold bones, the warm end at the jaw. You sold that square to Shyka, or a piece of it, to pay for the page. The bunting is the only part you are sure of, and it is wrong.{/n}
+{n}You send the riders to the jaw first anyway, with every water skin you have. The jaw end is cold ash and nothing, and half of what they carried for the road home hisses away into it before you call them off.{/n}
+{n}The warmth was never at the jaw. It is at the heart of the skull, where the small flame has not gone out.{/n}''',
+        requires=(_foresight.GONE_SQUARE,)),
+    sense="touch", wrong="gold bones in a square hung with bunting; the warm end at the jaw",
+    misstep="a wrong preparation spent: water carried to quench a fire that had to be reached", cost=("Materials", -50))
+
+_foresight.gap(REL, P + "memory.square", (("scale", 0), ("no_scale", 0)), "square",
+    '''{n}You know the festival square in Kenabres the way you know a story you have been told too often: bunting, fried dough, a crusader bleeding on the cobbles, an old prelate praying over the crusader and failing. Other people put it there for you afterwards. Where your own morning was there is a neat line of Shyka's handwriting, and you cannot get behind it.{/n}
+{n}But you know what she said. Half of Kenabres heard her say it, and the half that lived has told it to you, word for word, as if it were still yours to keep.{/n}''',
+    _foresight.GONE_SQUARE, choices=[c("[Say her words over to yourself.]", "promise")])
