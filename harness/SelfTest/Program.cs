@@ -490,6 +490,17 @@ internal static class Program
         Check(!talk.Passed && talk.Findings.Single().StartsWith("dialogs started"), "a dialog started while watching fails");
         var none = new PresenceSpikeResult { Area = "DrezenCapital", Skipped = { "Seelah_NPC_Level1: a live unit of it is already in the area" } }; none.Evaluate();
         Check(!none.Passed && none.Findings.Single().StartsWith("no copy was spawned"), "a spike that spawned nothing fails");
+        // Locator mode (engine queue 9d: Devarra's Huge dragon on TerendelevUndeadLocator).
+        var at = HarnessPlan.Parse("{\"spike\":\"presence\",\"presence\":{\"units\":[\"c4b5746d3d2511441ba18a894cecb328\"],\"locator\":\" D7AA4429-41bd-4d58-bb17-074863d847f7 \"}}");
+        Check(at.Presence!.Locator == "d7aa4429-41bd-4d58-bb17-074863d847f7" && at.Presence.Units.Single() == "c4b5746d3d2511441ba18a894cecb328"
+            && Math.Abs(at.Presence.MaxWalkableGap - 1.5f) < 0.001f, "a locator presence spike keeps its locator and unit");
+        PresenceSpikeResult OnSpot() { var s = Green(); s.Locator = "d7aa4429-41bd-4d58-bb17-074863d847f7"; s.Copies[0].WalkableGap = 0.2f; s.Copies[0].Drift = 0.3f; return s; }
+        var spot = OnSpot(); spot.Evaluate();
+        Check(spot.Passed, "a copy that stands on a walkable locator with room passes");
+        var off = OnSpot(); off.Copies[0].WalkableGap = 4f; off.Copies[0].Drift = 3f; off.Copies[0].Crowding.Add("Storyteller 2.0 m"); off.Evaluate();
+        Check(!off.Passed && new[] { "walkable mesh", "drifted", "no room" }.All(w => off.Findings.Any(f => f.Contains(w))), "an off-mesh, crowded locator fails");
+        var lost = OnSpot(); lost.LocatorError = "not found in DrezenCapital"; lost.Evaluate();
+        Check(!lost.Passed && lost.Findings.Any(f => f.StartsWith("locator d7aa4429")), "an unresolved locator fails");
 
         var r = new HarnessReport { Status = "complete", Plan = sp };
         r.Init.RrtModFound = true; r.Init.Initialized = true;

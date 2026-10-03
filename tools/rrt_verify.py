@@ -151,7 +151,7 @@ class Model:
         self.permanent_etudes = set(story.get("PermanentEtudes", []))
         nk = {}
         for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"):
+                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts"):
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
@@ -273,7 +273,7 @@ class Model:
     def is_persistent_native(self, f):
         sec = self.native.get(f)
         if sec is None: return False
-        if sec in ("UnlockableFlags", "InventoryItems", "QuestObjectives"): return False   # values can change back
+        if sec in ("UnlockableFlags", "InventoryItems", "PartyItems", "QuestObjectives"): return False   # values can change back
         if sec != "Etudes": return True
         return (f in self.permanent_etudes or f.endswith("_dead") or f.endswith("_gone") or f.startswith("ascend_")
                 or f in ("sacrifice", "true_lich"))
@@ -1488,6 +1488,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, g in story.get("UnlockableFlags", {}).items(): want.append((g, "BlueprintUnlockableFlag", "UnlockableFlags." + k))
         for k, v in story.get("QuestObjectives", {}).items(): want.append((v[0], "BlueprintQuestObjective", "QuestObjectives." + k))
         for k, g in story.get("InventoryItems", {}).items(): want.append((g, "BlueprintItem*", "InventoryItems." + k))
+        for k, g in story.get("PartyItems", {}).items(): want.append((g, "BlueprintItem*", "PartyItems." + k))
         for k, g in story.get("StartedQuests", {}).items(): want.append((g, "BlueprintQuest", "StartedQuests." + k))
         for k, g in story.get("MainCharacterFacts", {}).items(): want.append((g, "BlueprintFeature", "MainCharacterFacts." + k))
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
@@ -1513,8 +1514,15 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
         for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
+            if e.get("Parent"):   # E14i: a common-dialog cue (its parent cue and dialog, no page or sequence)
+                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue|BlueprintAnswer|BlueprintDialog", "NativeEpilogueEdits.Parent." + g),
+                         (e.get("Dialog"), "BlueprintDialog", "NativeEpilogueEdits.Dialog." + g)]
+                continue
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
                      (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
+        for g, e in (story.get("NativeEpilogueSuppressions") or {}).items():   # E14d extension: hidden native cues
+            want += [(g, "BlueprintCue", "NativeEpilogueSuppressions"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueSuppressions." + g),
+                     (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueSuppressions." + g)]
         for k, p in (story.get("Presences") or {}).items():
             want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
             want.append((p.get("Area"), "BlueprintArea", "Presences." + k))
@@ -1533,7 +1541,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if not hit: bad.append(dict(guid=g, expected=t, where=where, actual=None))
             elif hit[0] == "?parent-literal":
                 parent_untyped.append(dict(guid=g, expected=t, where=where, source=hit[1]))
-            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES):
+            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES)                     and not ("|" in t and hit[0] in t.split("|")):
                 bad.append(dict(guid=g, expected=t, where=where, actual=hit[0], path=hit[1]))
         # hard-coded GUIDs in src/*.cs
         srcg = collections.defaultdict(set)
@@ -2114,7 +2122,7 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
     matrix = json.loads(Path(matrix_path).read_text(encoding="utf-8"))
     model = Model(story)
     guid_to_key = {}
-    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems"):
+    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems", "PartyItems"):
         for k, g in (story.get(sec) or {}).items(): guid_to_key.setdefault(str(g).lower(), k)
     for k, v in (story.get("QuestObjectives") or {}).items(): guid_to_key.setdefault(str(v[0]).lower(), k)
     for k, v in (story.get("SeenCues") or {}).items():

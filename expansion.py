@@ -44,6 +44,7 @@ from storylines import nocticula_trickster
 from storylines import vellexia_trickster
 from storylines import nurah_trickster
 from storylines import kiana_trickster
+from storylines import kiana_native  # engine queue 8: Arsinoe's "any news" answer gated after a ransom (E18)
 from storylines import minagho_chivarro_trickster
 from storylines import soana_trickster
 from storylines import aranka_trickster
@@ -53,15 +54,18 @@ from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import camellia_trickster, camellia_masks, camellia_evenings, camellia_cards, camellia_days, camellia_last  # noqa: F401 (the others append to camellia_trickster.SCENES)
 from storylines import camellia_early  # noqa: F401 (PP2: the Prologue and Chapter 2 beats, appended to camellia_trickster.SCENES)
+from storylines import camellia_native  # E14d: her native departure slides replaced or hidden once the route keeps her
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
+from storylines import areelu_afterlogue  # E14i: her afterlogue line (Cue_0004 / Cue_0005) for a continuing romance
 from storylines import longcon
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
 from storylines import arueshalae_early   # PP2: the Chapter 2 prison beat (path-neutral)
 from storylines import devarra_trickster, devarra_tower
+from storylines import devarra_native  # E14i: DragonEggs/Cue_0007 in the flight world
 from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
 from storylines import kaylessa_early  # PP2: the Chapter 1 and 2 beats, appended to kaylessa_trickster.SCENES
@@ -78,7 +82,10 @@ from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
 from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_walls appends to yaniel_trickster.SCENES)
+from storylines import yaniel_radiance  # E10 party-only read: Radiance on the Commander, not in the shared stash
+from storylines import chivarro_death  # ChivarroKilled split: the confirmed death (the death trigger also completes Obj3)
 from storylines import wenduag_trickster, wenduag_cairn
+from storylines import wenduag_native  # E14d: Cue_0580 (she refuses to ascend) for a committed Wenduag
 from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
 from storylines import pacing_pp3
@@ -375,6 +382,7 @@ def make_expansion(*, independent_tirabade=True):
     if "kiana" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(kiana_trickster.SCENES))
         kiana_trickster.integrate(payload)
+        kiana_native.integrate(payload)
     if "minagho_chivarro" in payload["Relationships"]:
         payload["Scenes"].extend(copy.deepcopy(minagho_chivarro_trickster.SCENES))
         minagho_chivarro_trickster.integrate(payload)
@@ -409,6 +417,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["camellia"] = copy.deepcopy(camellia_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(camellia_trickster.SCENES))
     camellia_trickster.integrate(payload)
+    camellia_native.integrate(payload)
     # Eritrice: a new relationship, opened only by the Trickster motion in her private audience (eritrice_trickster).
     payload["Relationships"]["eritrice"] = copy.deepcopy(eritrice_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(eritrice_trickster.SCENES))
@@ -421,6 +430,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["areelu"] = copy.deepcopy(areelu_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(areelu_trickster.SCENES))
     areelu_trickster.integrate(payload)
+    areelu_afterlogue.integrate(payload)
     # The Long Con (doc 15, PP8): a framework relationship (never closed, no romance), its Ch1 entry at Chaleb's pyre, the
     # Ch2 prisoner and citadel offer, the Areelu crossing (Relationship areelu) and the Ch3 talk with its consequences.
     payload["Scenes"].extend(copy.deepcopy(longcon.SCENES))
@@ -460,6 +470,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
     devarra_trickster.integrate(payload)
     devarra_tower.integrate(payload)
+    devarra_native.integrate(payload)
     # Delamere: a new relationship, opened only by the Trickster's stag call at her sarcophagus (delamere_trickster, 11 §2);
     # the courtship is delamere_woods and delamere_fire. Nothing is spawned for her (her native units share the undead prefab).
     payload["Relationships"]["delamere"] = copy.deepcopy(delamere_trickster.RELATIONSHIP)
@@ -585,6 +596,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(wenduag_cairn.SCENES))
     wenduag_trickster.integrate(payload)
     wenduag_cairn.integrate(payload)
+    wenduag_native.integrate(payload)
     # Iomedae: a new relationship (trickster/iomedae.md, Build sheet R6; 11-ROSTER-PLAN-2 §2): veiled until the finale. The
     # courtship is her banner's memory and her herald (iomedae_banner), then her own voice after the Summit; the commit is a
     # formal disputation under her banner; the device is the banner carried into the Wound, which she may choose to answer.
@@ -615,6 +627,9 @@ def make_expansion(*, independent_tirabade=True):
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    if "yaniel" in payload["Relationships"]:
+        yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
+    chivarro_death.integrate(payload)        # after the world bindings (chivarro.dead); read-only keys, no scene reads them yet
     # The household (08): the Table, stance hooks and the Ledger's household sections. After Last Call (its Ledger book)
     # and after the Trickster engine and world, whose late-commitment keys feed <rel>.harem.eligible.
     household.integrate(payload)

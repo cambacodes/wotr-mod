@@ -74,6 +74,8 @@ namespace Tirabade
         private static readonly Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>> nativeObjectives =
             new Dictionary<string, KeyValuePair<BlueprintQuestObjective, QuestObjectiveState>>();
         private static readonly Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem> nativeItems = new Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem>();
+        // E10 (party-only): Story.PartyItems, read from Player.Inventory alone (ReadPartyItems).
+        private static readonly Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem> partyItems = new Dictionary<string, Kingmaker.Blueprints.Items.BlueprintItem>();
         private static readonly Dictionary<string, Kingmaker.Blueprints.Facts.BlueprintUnitFact> mainCharacterFacts = new Dictionary<string, Kingmaker.Blueprints.Facts.BlueprintUnitFact>();
         private static readonly Dictionary<string, BlueprintQuest> startedQuests = new Dictionary<string, BlueprintQuest>();
         // E12 returned presences, and the last status line logged for each.
@@ -90,6 +92,8 @@ namespace Tirabade
         private static object? recoveryPlayer;
         private static readonly List<SimpleBlueprint> registered = new List<SimpleBlueprint>();
         private static readonly Dictionary<string, BlueprintQuestObjective> objectives = new Dictionary<string, BlueprintQuestObjective>();
+        // E19: reviewed native objectives the route's world settles (failed while Started and the settlement holds).
+        private static readonly Dictionary<string, BlueprintQuestObjective> settlements = new Dictionary<string, BlueprintQuestObjective>();
         // E15: journal entries (the Trickster's Ledger), keyed "<relationship>/<entry id>".
         private static readonly Dictionary<string, KeyValuePair<JournalEntry, BlueprintQuestObjective>> journalEntries =
             new Dictionary<string, KeyValuePair<JournalEntry, BlueprintQuestObjective>>();
@@ -253,7 +257,7 @@ namespace Tirabade
                     else continueParents.Add(scene, parents!);
                 }
                 // E14d: native epilogue edits need their exact reviewed evidence, or their replacement relationship is disabled.
-                var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage Page)>();
+                var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage? Page, SimpleBlueprint? Parent)>();
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
                     var owners = Rules.EditVariants(pair.Value).Select(variant => story.Scenes.First(s => s.Id == variant.Replacement).Relationship).Distinct();
@@ -265,8 +269,22 @@ namespace Tirabade
                         foreach (var owner in owners) Degrade(owner, "native epilogue edit " + pair.Key + ": " + refusal);
                     else if (refusal != null)   // E14d extension: a non-degrading cue keeps its native text; no relationship is touched
                         warnings.Add("Native epilogue edit " + pair.Key + " skipped (the native cue plays): " + refusal);
+                    else if (!string.IsNullOrEmpty(pair.Value.Parent))   // E14i: a dialog cue, inserted into its parent's cue selection
+                        nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!, null,
+                            ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Parent))!);
                     else nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!,
-                        (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!);
+                        (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!, null);
+                }
+                // E14d extension: suppressions are warning-only. A refused cue keeps playing; no relationship is touched.
+                var nativeSuppressions = new List<(string Cue, NativeEpilogueSuppressionSpec Spec, BlueprintCue Original)>();
+                foreach (var pair in story.NativeEpilogueSuppressions)
+                {
+                    string? refusal;
+                    try { refusal = NativeEpilogueEdit.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)),
+                        ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("ced82f299d246f448b48afa0b630dd70")) as BlueprintCueSequence); }
+                    catch (Exception ex) { refusal = ex.Message; }
+                    if (refusal != null) warnings.Add("Native epilogue suppression " + pair.Key + " skipped (the native cue plays): " + refusal);
+                    else nativeSuppressions.Add((pair.Key, pair.Value, (BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!));
                 }
                 // E18: a reviewed native gate needs its exact native evidence, or its relationship is disabled (the route would
                 // otherwise promise an outcome the native content no longer keeps).
@@ -278,8 +296,17 @@ namespace Tirabade
                     ConditionsChecker[] checkers = Array.Empty<ConditionsChecker>();
                     try { refusal = NativeGate.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out owner, out checkers); }
                     catch (Exception ex) { refusal = ex.Message; }
-                    if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
+                    if ((refusal != null || owner == null) && Rules.WarningOnlyNativeGates.Contains(pair.Key))
+                        warnings.Add("Native gate " + pair.Key + " skipped (the native content plays): " + (refusal ?? "no owner"));
+                    else if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
                     else nativeGates.Add((pair.Key, pair.Value, owner, checkers));
+                }
+                // E19: a settlement needs its reviewed objective; a missing one only warns (the journal keeps its native step).
+                foreach (var pair in story.NativeObjectiveSettlements)
+                {
+                    var objective = Resolve<BlueprintQuestObjective>(pair.Value.Target, "Native objective settlement " + pair.Key);
+                    if (objective == null) warnings.Add("Native objective settlement " + pair.Key + " skipped (the objective stays as the game left it).");
+                    else settlements[pair.Key] = objective;
                 }
                 // E12: a presence needs its native unit, area and host lists, or its relationship is disabled.
                 foreach (var pair in story.Presences)
@@ -358,6 +385,9 @@ namespace Tirabade
                     else missingKeys.Add(pair.Key);
                 foreach (var pair in story.InventoryItems)
                     if (Resolve<Kingmaker.Blueprints.Items.BlueprintItem>(pair.Value, "Inventory item " + pair.Key) is Kingmaker.Blueprints.Items.BlueprintItem it) nativeItems.Add(pair.Key, it);
+                    else missingKeys.Add(pair.Key);
+                foreach (var pair in story.PartyItems)
+                    if (Resolve<Kingmaker.Blueprints.Items.BlueprintItem>(pair.Value, "Party item " + pair.Key) is Kingmaker.Blueprints.Items.BlueprintItem pit) partyItems.Add(pair.Key, pit);
                     else missingKeys.Add(pair.Key);
                 foreach (var pair in story.MainCharacterFacts)
                     if (Resolve<Kingmaker.Blueprints.Facts.BlueprintUnitFact>(pair.Value, "Main character fact " + pair.Key) is Kingmaker.Blueprints.Facts.BlueprintUnitFact mcf) mainCharacterFacts.Add(pair.Key, mcf);
@@ -458,7 +488,8 @@ namespace Tirabade
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
                     var variants = Rules.EditVariants(pair.Value);
-                    var group = new NativeEpilogueEdit.Group(pair.Value, () => enabled && initialized && Game.Instance?.Player != null ? State() : null);
+                    // E14d delivery: a variant also needs its replacement scene available on the same snapshot (Rules.Available).
+                    var group = new NativeEpilogueEdit.Group(pair.Value, () => enabled && initialized && Game.Instance?.Player != null ? State() : null, story);
                     nativeEditGroups[pair.Key] = group;
                     for (int v = 0; v < variants.Length; v++)
                     {
@@ -469,7 +500,10 @@ namespace Tirabade
                         replacement.Text = Text(name, scene.Nodes[0].Text);
                         Func<bool> applies = () => group.Selected() == variant;
                         if (nativeEditSources.TryGetValue(pair.Key, out var source))
-                            nativeEditPlans.Add(NativeEpilogueEdit.Prepare(pair.Key, pair.Value, source.Cue, source.Page, replacement, applies, variant));
+                            nativeEditPlans.Add(source.Parent != null
+                                ? NativeEpilogueEdit.PrepareInDialog(pair.Key, pair.Value, source.Cue, source.Parent, replacement, applies, variant,
+                                    NativeEpilogueEdit.AlsoParentsOf(pair.Key).Select(id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id))!).ToArray())
+                                : NativeEpilogueEdit.Prepare(pair.Key, pair.Value, source.Cue, source.Page!, replacement, applies, variant));
                         else
                         {
                             replacement.Conditions = Conditions();
@@ -573,6 +607,20 @@ namespace Tirabade
                     Optional<object>("Native epilogue edit " + cueEdits.Key, () =>
                     {
                         NativeEpilogueEdit.AttachGroup(group, plans, plan => Ref<BlueprintCueBaseReference>(plan.Replacement));
+                        return new object();
+                    });
+                }
+                // E14d extension: a verified suppression hides its native cue while its When holds (never while the mod is disabled
+                // or uninitialized, or while its relationship is degraded).
+                foreach (var suppression in nativeSuppressions)
+                {
+                    if (degraded.Contains(suppression.Spec.Relationship)) continue;
+                    var when = suppression.Spec.When;
+                    string relationship = suppression.Spec.Relationship;
+                    Optional<object>("Native epilogue suppression " + suppression.Cue, () =>
+                    {
+                        NativeEpilogueEdit.Suppress(suppression.Original, () => enabled && initialized && Game.Instance?.Player != null
+                            && !degraded.Contains(relationship) && Rules.WhenHolds(when, State()));
                         return new object();
                     });
                 }
@@ -1204,6 +1252,7 @@ namespace Tirabade
             ReadDialogHistory(player.Dialog, state);
             ReadNativeProgress(player.UnlockableFlags, player.QuestBook,
                 item => player.Inventory.Contains(item) || player.SharedStash?.Contains(item) == true, state);
+            ReadPartyItems(item => player.Inventory.Contains(item), state);
             ReadMainCharacterFacts(fact => player.MainCharacter.Value?.Descriptor?.Facts?.Contains(f => f.Blueprint == fact) == true, state);
             if (flags.ContainsKey("konomi.missed_letter_sent") && etudes.TryGetValue("konomi.present", out var office))
             {
@@ -1263,6 +1312,17 @@ namespace Tirabade
                 Read(pair.Key, () => quests.GetQuestState(pair.Value) is QuestState questState
                     && (questState == QuestState.Started || questState == QuestState.Completed));
             foreach (var pair in nativeItems) Read(pair.Key, () => holds(pair.Value));
+        }
+
+        // E10 (party-only): Story.PartyItems held in the party inventory (equipped items included), never the shared stash.
+        // A read that throws reads as "not held".
+        internal static void ReadPartyItems(Func<Kingmaker.Blueprints.Items.BlueprintItem, bool> inParty, Snapshot state)
+        {
+            foreach (var pair in partyItems)
+            {
+                try { if (inParty(pair.Value)) state.Flags.Add(pair.Key); }
+                catch (Exception ex) { if (readerWarnings.Add(pair.Key)) entry?.Logger.Log("Native reader '" + pair.Key + "' unavailable: " + ex.Message); }
+            }
         }
 
         // E10: facts (features, mythic tricks) held by the main character. A fact read that throws reads as "not held".
@@ -1612,6 +1672,7 @@ namespace Tirabade
                     && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
             }
             TickJournalEntries(state);
+            SettleNativeObjectives(state);
             if (restPending && UseMailbag())
             {
                 // E8b: every deliverable letter arrives; the player chooses what to read from the list.
@@ -1698,6 +1759,27 @@ namespace Tirabade
                 + (click.LastError != null ? " (" + click.LastError.Message + ")" : "") : "")).ToArray();
 
         // E1: persist every latch the current snapshot observes. Idle-only, so native state is settled.
+        // E19: fail (never complete) a reviewed native objective that is still Started while its settlement holds on the Trickster
+        // path. Failing a FinishParent=false objective leaves its quest open; the game's own steps then end it as before.
+        private static void SettleNativeObjectives(Snapshot state)
+        {
+            foreach (var pair in settlements)
+            {
+                if (degraded.Contains(story.NativeObjectiveSettlements[pair.Key].Relationship) || !Rules.NativeObjectiveSettles(story, pair.Key, state)) continue;
+                try
+                {
+                    if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) != QuestObjectiveState.Started) continue;
+                    Game.Instance.Player.QuestBook.FailObjective(pair.Value);
+                    entry.Logger.Log("Native objective settled (failed): " + pair.Key);
+                }
+                catch (Exception ex)
+                {
+                    string warning = "Native objective settlement " + pair.Key + " failed: " + ex.Message;
+                    if (!warnings.Contains(warning)) warnings.Add(warning);
+                }
+            }
+        }
+
         private static void RecordLatches()
         {
             if (story.Latches.Count == 0) return;

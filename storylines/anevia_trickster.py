@@ -725,14 +725,14 @@ native_slide(NATIVE_LEFT, LEFT_TOGETHER + " They had not got far enough to keep 
 
 NATIVE_EPILOGUE_EDITS = {
     TIRABADE_LEFT_SLIDE: dict(Page=TIRABADE_PAGE, Sequence=SPECIAL, Key="cc716238-3702-4913-977d-6189665672b7",
-                              Replacement=NATIVE_LEFT_COMMITTED, When=[[RETURNED, "anevia.committed"]], KeepNativeImage=True,
-                              Variants=[dict(Replacement=NATIVE_LEFT, When=[[RETURNED]], KeepNativeImage=True)]),
+                              Replacement=NATIVE_LEFT_COMMITTED, When=[["trickster.ever", RETURNED, "anevia.committed"]], KeepNativeImage=True,
+                              Variants=[dict(Replacement=NATIVE_LEFT, When=[["trickster.ever", RETURNED]], KeepNativeImage=True)]),
     TIRABADE_SLIDE: dict(Page=TIRABADE_PAGE, Sequence=SPECIAL, Key="4c278ba4-5217-4fae-afec-47c6f6597e00",
-                         Replacement=NATIVE_TOGETHER, When=[[RETURNED, "anevia.committed", I_RET]], KeepNativeImage=False,
-                         Variants=[dict(Replacement=NATIVE_BACK, When=[[RETURNED, I_RET]], KeepNativeImage=False),
-                                   dict(Replacement=NATIVE_WIDOW_COMMITTED, When=[[RETURNED, "anevia.committed"]], KeepNativeImage=True),
-                                   dict(Replacement=NATIVE_WIDOW, When=[[RETURNED]], KeepNativeImage=True),
-                                   dict(Replacement=I_NATIVE_SOUTH, When=[[I_RET]], KeepNativeImage=True)]),
+                         Replacement=NATIVE_TOGETHER, When=[["trickster.ever", RETURNED, "anevia.committed", I_RET]], KeepNativeImage=False,
+                         Variants=[dict(Replacement=NATIVE_BACK, When=[["trickster.ever", RETURNED, I_RET]], KeepNativeImage=False),
+                                   dict(Replacement=NATIVE_WIDOW_COMMITTED, When=[["trickster.ever", RETURNED, "anevia.committed"]], KeepNativeImage=True),
+                                   dict(Replacement=NATIVE_WIDOW, When=[["trickster.ever", RETURNED]], KeepNativeImage=True),
+                                   dict(Replacement=I_NATIVE_SOUTH, When=[["trickster.ever", I_RET]], KeepNativeImage=True)]),
 }
 
 

@@ -50,7 +50,7 @@ internal static class DevarraTricksterTests
         var firstClimb = S(T + "first_climb");
         var firstBite = S(T + "first_bite");
         var backUp = S(T + "back_up_the_mountain");
-        var pages = story.Scenes.Where(s => s.Relationship == "devarra" && s.Owner == "DevarraEpilogue").ToArray();
+        var pages = story.Scenes.Where(s => s.Relationship == "devarra" && s.Owner == "DevarraEpilogue" && !Rules.IsNativeReplacement(story, s)).ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "devarra" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "devarra" && !s.Reaction && s.Owner == "Devarra").ToArray();
         var tower = own.Where(s => s.Id.StartsWith(T, StringComparison.Ordinal)).ToArray();
@@ -161,9 +161,10 @@ internal static class DevarraTricksterTests
         check(story.Latches["devarra.escaped.latched"].SequenceEqual(new[] { "devarra.escaped" }), "The escape is not latched.");
 
         // Trk_Devarra_SpawnGate: the E18 gates hold in her flight world only.
-        check(story.NativeGates.Keys.OrderBy(k => k).SequenceEqual(new[] { OverBody, Spawn })
-              && story.NativeGates[Spawn].Target == "977818b761d048d49a0fe19a1c8fccc4" && story.NativeGates[OverBody].Target == "b8dfb42d03fc931409f2b80614cfa9de"
-              && story.NativeGates.Values.All(g => g.Relationship == "devarra"),
+        var devarraGates = story.NativeGates.Where(g => g.Value.Relationship == "devarra" && g.Key != "dragon_eggs.dialog")   // other routes gate too (Kiana)
+            .ToDictionary(g => g.Key, g => g.Value);   // the egg dialog gate (engine queue 9c) is checked in NativeGateManagedTests.RunDevarra
+        check(devarraGates.Keys.OrderBy(k => k).SequenceEqual(new[] { OverBody, Spawn })
+              && devarraGates[Spawn].Target == "977818b761d048d49a0fe19a1c8fccc4" && devarraGates[OverBody].Target == "b8dfb42d03fc931409f2b80614cfa9de",
             "Trk_Devarra_SpawnGate: the reviewed gates are not the Sanctum spawn and the golems' carcass cue.");
         check(Rules.NativeGateHolds(story, Spawn, flown) && Rules.NativeGateHolds(story, OverBody, flown) && Rules.NativeGateHolds(story, Spawn, flownLatched),
             "Trk_Devarra_SpawnGate: the Sanctum still spawns her after she flew on the pact.");

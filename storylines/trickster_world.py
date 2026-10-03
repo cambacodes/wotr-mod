@@ -700,7 +700,7 @@ def _keys(scene):
 
 def _bound(payload, key):
     kinds = ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-             "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts", "Latches", "Derived")
+             "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts", "Latches", "Derived")
     return any(key in (payload.get(k) or {}) for k in kinds)
 
 

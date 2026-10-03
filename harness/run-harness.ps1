@@ -30,6 +30,10 @@
   (Aggro, Pain, LowHealth, Selected, Discovery, CheckFail), watches them for 20 s, and fails on any audible bark, dialog
   start, combat, Player faction, party group or missing Passive flag. It then removes them. Nothing is saved.
   ./harness/run-harness.ps1 -Build -Saves '<copy of a Ch3 Drezen save>' -Spike Presence -NoRoundTrip -TimeoutMinutes 15
+  With -PresenceUnits and -PresenceLocator the spike copies those units onto a native locator instead (as an E12b At.Locator
+  presence) and also checks the spot: walkable mesh, drift, room for the body; -Screenshots frames each copy. Devarra's Huge
+  dragon (engine queue 9d):
+  ./harness/run-harness.ps1 -Build -Saves '<copy of a Ch5 Drezen save>' -Spike Presence -PresenceUnits c4b5746d3d2511441ba18a894cecb328 -PresenceLocator d7aa4429-41bd-4d58-bb17-074863d847f7 -Screenshots -NoRoundTrip -TimeoutMinutes 15
 
   -Probes installs the harness-only probe story (tools/build-harness-probes.py: development/Story.json plus
   storylines/harness_probes.py, e.g. the E-new 0 Prologue probe pacing.e0.probe) and its inline hosts in place of the shipped
@@ -62,6 +66,8 @@ param(
     [switch]$Inline,
     [int]$MaxInlineNavSteps = 40,
     [ValidateSet('Residence', 'Presence')][string]$Spike,
+    [string[]]$PresenceUnits = @(),
+    [string]$PresenceLocator,
     [switch]$Probes,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
@@ -217,6 +223,13 @@ $plan = [ordered]@{
 }
 # Opt-in only: without -Spike the plan (and so the run) is exactly as before.
 if ($Spike) { $plan.spike = $Spike.ToLowerInvariant() }
+if (($PresenceUnits.Count -gt 0 -or $PresenceLocator) -and $Spike -ne 'Presence') { throw '-PresenceUnits and -PresenceLocator need -Spike Presence.' }
+if ($Spike -eq 'Presence' -and ($PresenceUnits.Count -gt 0 -or $PresenceLocator)) {
+    $presence = [ordered]@{}
+    if ($PresenceUnits.Count -gt 0) { $presence.units = @($PresenceUnits) }
+    if ($PresenceLocator) { $presence.locator = $PresenceLocator }
+    $plan.presence = $presence
+}
 $planJson = $plan | ConvertTo-Json -Depth 5
 
 $launchArgs = @()
