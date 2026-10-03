@@ -80,6 +80,7 @@ OVERRIDES = {
     "minachiv.the_cost_in_daylight": "visit",
     "anevia.trickster.gone.confession": "visit",
     "aranka.trickster.failure.second_verse": "visit",
+    "aranka.trickster.failure.second_verse_late": "visit",      # its Chapter 5 twin (polish)
     "vellexia.trickster.mirrored.speaks": "visit",
     "vellexia.trickster.sword.late_portrait": "visit",
     # She speaks through her charm, or meets the Commander in Nocticula's dream harbour.

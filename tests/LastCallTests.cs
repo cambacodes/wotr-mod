@@ -160,7 +160,9 @@ internal static class LastCallTests
             var reads = s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g))
                 .Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)))
                 .Concat(s.Nodes.SelectMany(n => n.Paragraphs).SelectMany(p => p.Requires.Concat(p.Forbids).Concat(p.AnyGroups.SelectMany(g => g))));
-            check(!reads.Any(k => closers.Contains(k) && k != "trickster.lastcall.closed"), "G5: Last Call reads another route's closed flag: " + s.Id);
+            // Exception (coordinator ruling 2026-10-02, Aranka polish item 3): her coda forbids her own closed route explicitly.
+            check(!reads.Any(k => closers.Contains(k) && k != "trickster.lastcall.closed"
+                                  && !(s.Id == "aranka.lastcall.page" && k == "aranka.extension_closed")), "G5: Last Call reads another route's closed flag: " + s.Id);
             check(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("trickster.lastcall.", StringComparison.Ordinal) || f.EndsWith(".lastcall.called", StringComparison.Ordinal)
                                                                                      || f.EndsWith(".lastcall.resolved", StringComparison.Ordinal)),
                 "Last Call writes a flag outside its own namespace: " + s.Id);
