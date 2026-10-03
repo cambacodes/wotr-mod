@@ -53,14 +53,28 @@ def hard(story):
     return found
 
 
+def mixed_page():
+    s = page("irabeth.return_epilogue")
+    s["Nodes"] = [dict(Id="page", Text="", Paragraphs=[
+        dict(Text="The Commander visits her.", **copy.deepcopy(ep.GUARD)),
+        dict(Text="They take another journey.", **copy.deepcopy(ep.GUARD)),
+        dict(Text="She mourns the Commander.", Requires=[ep.SACRIFICE], Forbids=[ep.COMMANDER_BACK]),
+    ])]
+    return s
+
+
 class LintRules(unittest.TestCase):
     def setUp(self):
         self._absent = dict(ep.COMMANDER_ABSENT)
         ep.COMMANDER_ABSENT.clear()
+        self._paragraph_guarded = set(ep.PARAGRAPH_GUARDED)
+        ep.PARAGRAPH_GUARDED.clear()
 
     def tearDown(self):
         ep.COMMANDER_ABSENT.clear()
         ep.COMMANDER_ABSENT.update(self._absent)
+        ep.PARAGRAPH_GUARDED.clear()
+        ep.PARAGRAPH_GUARDED.update(self._paragraph_guarded)
 
     def test_clean_fixture(self):
         self.assertEqual(hard(base()), [])
@@ -108,6 +122,59 @@ class LintRules(unittest.TestCase):
         s = base()
         s["Scenes"][2]["Forbids"].remove("her.dead")
         self.assertTrue(any(x.startswith("EP5 her.ending_together") for x in hard(s)))
+
+    def test_ep6_mixed_page(self):
+        s = base()
+        s["Scenes"].append(mixed_page())
+        ep.PARAGRAPH_GUARDED.add("irabeth.return_epilogue")
+        self.assertEqual(hard(s), [])
+
+    def test_ep6_every_living_paragraph_needs_the_exact_guard(self):
+        for i in (0, 1):
+            for change in (dict(Forbids=[]), dict(ForbidOverrides={}),
+                           dict(ForbidOverrides={ep.SACRIFICE: "her.committed"})):
+                with self.subTest(paragraph=i, change=change):
+                    s = base()
+                    mixed = mixed_page()
+                    mixed["Nodes"][0]["Paragraphs"][i].update(change)
+                    s["Scenes"].append(mixed)
+                    ep.PARAGRAPH_GUARDED.add(mixed["Id"])
+                    found = hard(s)
+                    self.assertEqual(len(found), 1)
+                    self.assertTrue(found[0].startswith("EP6 irabeth.return_epilogue/page/paragraph[%d]" % i))
+
+    def test_ep6_node_text_needs_its_own_guard(self):
+        s = base()
+        mixed = mixed_page()
+        mixed["Nodes"][0]["Text"] = "The Commander arrives."
+        s["Scenes"].append(mixed)
+        ep.PARAGRAPH_GUARDED.add(mixed["Id"])
+        self.assertTrue(any(x.startswith("EP6 irabeth.return_epilogue/page: living text") for x in hard(s)))
+        mixed["Nodes"][0].update(copy.deepcopy(ep.GUARD))
+        self.assertEqual(hard(s), [])
+
+    def test_ep6_mourning_must_exist_and_only_play_while_dead(self):
+        for change, message in ((dict(Requires=[]), "no mourning paragraph"),
+                                (dict(Forbids=[]), "mourning text must Forbid"),
+                                (dict(Forbids=[ep.COMMANDER_BACK, ep.SACRIFICE]), "mourning text must Forbid")):
+            with self.subTest(change=change):
+                s = base()
+                mixed = mixed_page()
+                mixed["Nodes"][0]["Paragraphs"][2].update(change)
+                s["Scenes"].append(mixed)
+                ep.PARAGRAPH_GUARDED.add(mixed["Id"])
+                self.assertTrue(any(x.startswith("EP6 ") and message in x for x in hard(s)))
+
+    def test_ep6_scene_guard_cannot_hide_mourning(self):
+        s = base()
+        mixed = mixed_page()
+        mixed.update(copy.deepcopy(ep.GUARD))
+        s["Scenes"].append(mixed)
+        ep.PARAGRAPH_GUARDED.add(mixed["Id"])
+        self.assertTrue(any(x.startswith("EP6 ") and "blocking its mourning" in x for x in hard(s)))
+        mixed["Forbids"] = []
+        mixed["Owner"] = "Her"
+        self.assertTrue(any(x.startswith("EP6 ") and "not an epilogue" in x for x in hard(s)))
 
     def test_t1_return_device_off_trickster(self):
         s = base()
@@ -219,6 +286,38 @@ class GuardPass(unittest.TestCase):
         with self.assertRaises(ValueError):
             ep.integrate(s)
 
+    def test_queen_slides_drop_only_the_commander_guard(self):
+        from storylines import galfrey_queen_slide
+        s = base()
+        originals = copy.deepcopy(galfrey_queen_slide.SCENES)
+        s["Scenes"].extend(copy.deepcopy(originals))
+        for original in originals:
+            ep.COMMANDER_ABSENT[original["Id"]] = "native_queen"
+        added = ep.integrate(s)
+        for original, exported in zip(originals, s["Scenes"][-2:]):
+            with self.subTest(scene=original["Id"]):
+                self.assertNotIn(original["Id"], added)
+                expected = copy.deepcopy(original)
+                expected["Forbids"].remove(ep.SACRIFICE)
+                del expected["ForbidOverrides"][ep.SACRIFICE]
+                self.assertEqual(exported, expected)
+        self.assertEqual(galfrey_queen_slide.SCENES, originals)
+        self.assertEqual(hard(s), [])
+        self.assertEqual(ep.integrate(s), [])
+
+    def test_mixed_page_skips_scene_guard_only_when_valid(self):
+        s = base()
+        mixed = mixed_page()
+        s["Scenes"].append(mixed)
+        ep.PARAGRAPH_GUARDED.add(mixed["Id"])
+        before = copy.deepcopy(mixed)
+        self.assertEqual(ep.integrate(s), [])
+        self.assertEqual(mixed, before)
+        self.assertEqual(hard(s), [])
+        mixed["Nodes"][0]["Paragraphs"][1]["Forbids"] = []
+        with self.assertRaisesRegex(ValueError, r"irabeth.return_epilogue: page/paragraph\[1\]"):
+            ep.integrate(s)
+
 
 @unittest.skipUnless(STORY.exists(), "development/Story.json not generated")
 class GeneratedStory(unittest.TestCase):
@@ -236,6 +335,20 @@ class GeneratedStory(unittest.TestCase):
 
     def test_lint_clean(self):
         self.assertEqual(hard(self.story), [])
+
+    def test_queen_replacements_survive_an_unreturned_sacrifice(self):
+        from storylines import galfrey_queen_slide
+        by = {s["Id"]: s for s in self.story["Scenes"]}
+        for cue, (sid, _) in galfrey_queen_slide.REPLACEMENTS.items():
+            with self.subTest(scene=sid):
+                scene = by[sid]
+                self.assertIn(sid, ep.COMMANDER_ABSENT)
+                self.assertNotIn(ep.SACRIFICE, scene["Forbids"])
+                self.assertNotIn(ep.SACRIFICE, scene.get("ForbidOverrides") or {})
+                self.assertEqual(scene["Requires"], ["trickster.ever", galfrey_queen_slide.RETURNED, galfrey_queen_slide.CROWN])
+                edit = self.story["NativeEpilogueEdits"][cue]
+                self.assertEqual(edit["Replacement"], sid)
+                self.assertEqual(edit["When"], galfrey_queen_slide.WHEN)
 
     def test_off_trickster_canon_stands(self):
         """Worst-case off-Trickster world: every key that does not imply the Trickster path holds (native state and every

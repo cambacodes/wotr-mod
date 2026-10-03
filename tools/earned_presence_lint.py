@@ -5,7 +5,7 @@ Reads the generated Story.json. HARD rules (exit 1):
 
 EP1 living postwar page: every epilogue-family scene (Owner ends with "Epilogue": RRT pages, Last Call codas, native-slide
     replacements) Forbids "sacrifice" (bare, or lifted only by an alive witness), Requires an alive witness, Requires
-    "sacrifice" (a mourning page), or is listed in storylines/earned_presence.COMMANDER_ABSENT. This is the derived state
+    "sacrifice" (a mourning page), is listed in storylines/earned_presence.COMMANDER_ABSENT, or passes EP6. This is the derived state
     trickster.commander_dead = sacrifice AND NOT trickster.commander_back, written as a Forbid plus its override.
 EP2 mourning page: an epilogue page that Requires "sacrifice" (or a Derived key that implies it) Forbids
     trickster.commander_back (it never plays beside a Commander who came back), and does not Forbid "sacrifice" (a
@@ -33,6 +33,9 @@ T6 current path (engine-q2): trickster.ever is the run latch (the run WAS Tricks
 EP5 her presence: a committed epilogue page (Requires the CommittedFlag or a *late_committed key; Aeon pages exempt)
     Forbids each of her loss flags that has an earned return (relationship UnavailableOverrides), lifted by that return,
     or Requires the flag or its return.
+EP6 paragraph-guarded page: each present PARAGRAPH_GUARDED scene is an epilogue with no scene-level sacrifice Forbid.
+    Every non-mourning node text and paragraph Forbids sacrifice with ForbidOverrides {sacrifice: trickster.commander_back}.
+    At least one mourning paragraph Requires sacrifice; mourning text Forbids trickster.commander_back and not sacrifice.
 
 REVIEW (advisory, printed with --review): committed epilogue pages that neither Forbid nor Require one of her loss flags
 that has NO registered return (a native state whose meaning the route owns: e.g. konomi.retained_dead,
@@ -144,6 +147,12 @@ def check(story, review=False):
 
     # EP1 / EP2: postwar pages.
     for s in scenes:
+        if s["Id"] in ep.PARAGRAPH_GUARDED:
+            if not ep.is_epilogue(s):
+                hard.append("EP6 %s: PARAGRAPH_GUARDED scene is not an epilogue" % s["Id"])
+            for why in ep.paragraph_guard_errors(s):
+                hard.append("EP6 %s/%s" % (s["Id"], why))
+            continue
         if not ep.is_epilogue(s):
             continue
         req, forb = set(s.get("Requires") or []), s.get("Forbids") or []
