@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4928,
-  "unique_targets": 1114,
+  "binding_uses": 4938,
+  "unique_targets": 1120,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1118,8 +1118,24 @@
       "path": "World/Dialogs/c3/TempleOfDelamere/Kyado_main_dialogue/Cue_0109.jbp",
       "type": "BlueprintCue"
     },
+    "932854d52d8602d478c6b9932be94fd3": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0046.jbp",
+      "type": "BlueprintAnswer"
+    },
     "3357022e6d1c5e047a0075a223606210": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0048.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "6a5d2bcd0a6d09249bb3e62c2d1556c2": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0050.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "173de7e4c8e237d409e3e08f1461b6fb": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0059.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "8581caea128a3d84a901be70e26e6146": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0060.jbp",
       "type": "BlueprintAnswer"
     },
     "cab33f23f9c1f284eab13e33fbdc3df0": {
@@ -1138,8 +1154,16 @@
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0039.jbp",
       "type": "BlueprintCue"
     },
+    "1c9182d585e1d4d4c85c574695337ccb": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0040.jbp",
+      "type": "BlueprintCue"
+    },
     "a70275fb77f483847a68fe01586091ec": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0053.jbp",
+      "type": "BlueprintCue"
+    },
+    "15a598eac4625c84190a1574bc50597d": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Cue_0054.jbp",
       "type": "BlueprintCue"
     },
     "4a58ea0622eb9924abb1579306f5a395": {
