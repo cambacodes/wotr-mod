@@ -350,7 +350,10 @@ partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
         (PILLAR_CHOICE, (PILLAR,), (), ())),
     # NM1 (Sol COX, R2-6): the late commit (resurrection or luck fallback) reaches her coda; a friend or a refusal on her
     # Trickster route does not (refused is set beside each of its closures), and a postponement stays out by declined.
-    page_forbids=(S + "friends", S + "refused"), page_commit_groups=[["soana.committed"], [S + "late_committed"]])
+    # Polish (Sol INT, audit r3): a Soana killed and never returned has no living coda; her return lifts each loss flag.
+    page_forbids=(S + "friends", S + "refused", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead"),
+    page_forbid_overrides={f: S + "returned" for f in ("soana.dead", "soana.killed_by_camellia", "soana.forest_dead")},
+    page_commit_groups=[["soana.committed"], [S + "late_committed"]])
 
 AK = "aranka.trickster."
 partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", "The Second Verse",

@@ -699,7 +699,7 @@ SCENES.append(scene("soana.trickster.epilogue.luck", "The die in the bowl", "Epi
     nar("start", '''{n}The die stayed in Soana's bowl after the war, twenty up, and the she-bear who had carried the Commander's luck to the roads grew grey in the muzzle and very fat. The Commander came to Wintersun whenever the world allowed it, and some times when it did not.{/n}
 {n}Soana never admitted to missing anyone. She did keep the second blanket on the pallet, and she never once put it back on the shelf.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=(LUCK_KEPT, COMMITTED), forbids=(CLOSED, RETURNED, "soana.late_campaign_kept", "sacrifice"), last=99,
+    requires=(LUCK_KEPT, COMMITTED), forbids=(CLOSED, RETURNED, "soana.late_campaign_kept", "sacrifice", *LOSS), last=99,
     Relationship="soana", ForbidOverrides=dict(SACRIFICE_BACK)))
 
 # Polish (Sol BEL): the late fallback carries the same reckoning as play. Where the accounting was never played it happens
@@ -736,8 +736,17 @@ SCENES.append(scene("soana.trickster.epilogue.luck_late", "The rattle in the bow
     nar("start", '''{n}The war ended before Soana finished thinking. She finished afterwards, on her own terms. The year after the Worldwound closed she walked all the way to Drezen with the loaded die in her fist, found the Commander, and put it in their palm.{/n}
 "Your luck. It has rattled in my bowl since the snow and I am sick of the noise. Bring it back to Wintersun and keep it where I can hear it, and we will see how much of it is left."''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS)],
-    requires=(LATE_COMMITTED, LUCK_KEPT), forbids=(RETURNED, COMMITTED, CLOSED, DECLINED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
+    requires=(LATE_COMMITTED, LUCK_KEPT), forbids=(RETURNED, COMMITTED, CLOSED, DECLINED, FRIENDS, "sacrifice", *LOSS), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
+
+# Polish (Sol CAN, audit r3): the luck branch's Soana killed later and never returned stays dead; the living pages forbid
+# her loss, and this page ends that history (the registered loss pages read the registered chain only).
+SCENES.append(scene("soana.trickster.epilogue.luck_lost", "Twenty up, in a cold bowl", "Epilogue", 5, "", [
+    nar("start", '''{n}Soana died in her cave at Wintersun, and the forest died with her. When the crusade's people came to see to the body, her bone bowl was still beside the cold hearth with the loaded die in it, twenty up. Nobody had told the spirits the pledge was void.{/n}
+{n}The she-bear that had gone out on the Commander's luck came back to the cave mouth once, after the snow, and lay down there, and did not get up again.{/n}''',
+        c())],
+    requires=("trickster.ever", LUCK_KEPT), forbids=(RETURNED, "soana.late_campaign_kept", "soana.progression_kept"),
+    RequiresAnyGroups=[list(LOSS)], last=99, Relationship="soana"))
 
 UNBOUND = p("She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
              "It held, barely, for as long as she lived. The knot hung in her cave with one strand, and she bound nothing new "
@@ -746,8 +755,8 @@ UNBOUND = p("She took her leash back from the Commander's hand the day they part
 SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue", 5, "", [
     nar("start", '''{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}''',
         c(), paragraphs=(UNBOUND,))],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
-    ForbidOverrides=dict(SACRIFICE_BACK)))
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, FRIENDS, "sacrifice", *LOSS), last=99, Relationship="soana",
+    ForbidOverrides={**SACRIFICE_BACK, **{f: RETURNED for f in LOSS}}))
 
 # Polish (Sol BEL, audit r2): a return that never reached her invitation, a friendship, a refusal or a closure is not a late
 # romance. The late commit needs her invitation at the accounting (or a failed presence, R2-6); this page covers the rest.
@@ -799,8 +808,8 @@ SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", 
             p("The loaded die stayed in her bowl, twenty up, and the she-bear who had carried it to the roads grew fat and grey.",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
         ))],
-    requires=("trickster.ever", FRIENDS), forbids=(CLOSED, BEARER, "sacrifice"), last=99, Relationship="soana",
-    ForbidOverrides=dict(SACRIFICE_BACK)))
+    requires=("trickster.ever", FRIENDS), forbids=(CLOSED, BEARER, "sacrifice", *LOSS), last=99, Relationship="soana",
+    ForbidOverrides={**SACRIFICE_BACK, **{f: RETURNED for f in LOSS}}))
 
 # Q10: the Commander gave their life at the Threshold and stayed dead. Every Trickster page above describes a living
 # Commander, so this one page carries the knot, the leash and the die for that world.
@@ -832,7 +841,8 @@ SCENES.append(scene("soana.trickster.epilogue.slack", "The slack strand", "Epilo
               "time. The knot hung in her cave with one strand, and she did not ask again.",
               requires=(RETURNED, POSTPONED), forbids=(BEARER, CLOSED, FRIENDS, RECLAIMED_BEFORE)),
         ))],
-    requires=("trickster.ever", "sacrifice"), forbids=("trickster.commander_back", "soana.late_campaign_kept"),
+    requires=("trickster.ever", "sacrifice"), forbids=("trickster.commander_back", "soana.late_campaign_kept", *LOSS),
+    ForbidOverrides={f: RETURNED for f in LOSS},
     RequiresAnyGroups=[[RETURNED, LUCK_KEPT]], last=99, Relationship="soana"))
 
 
@@ -921,9 +931,8 @@ def integrate(payload):
         items.append(MEDALLION)
     # R2-6: the late commit reads the return (killed branch; also the presence-failure fallback) or the luck paid for.
     # Polish (Sol BEL, audit r2): the fallback continues a courtship the player chose: her invitation at the accounting, or
-    # the luck branch's answered test; a failed presence (R2-6) keeps the return's fallback.
+    # the luck branch's answered test. A failed presence alone is not courtship (audit r3): the return then ends unfinished.
     payload.setdefault("Derived", {})[LATE_COMMITTED] = [["trickster.ever", RETURNED, ACC_INVITED],
-                                                         ["trickster.ever", RETURNED, "soana.presence.failed"],
                                                          ["trickster.ever", LUCK_KEPT, TESTED]]
     # Polish (Sol INT): who held the leash when the Commander died. A save that completed the friendship or the refused
     # rebinding before the latch existed counts by those scenes' completion with their outcome flags.

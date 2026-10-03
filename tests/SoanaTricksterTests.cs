@@ -345,7 +345,7 @@ internal static class SoanaTricksterTests
         // Polish r2 (Sol BEL): the late commit continues her invitation (or a failed presence, R2-6); a bare return gets the
         // unfinished page, never a romance.
         var lateFailed = Program.Copy(lateBack); lateFailed.Flags.Add("soana.presence.failed"); Rules.Complete(story, lateFailed);
-        check(Endings(lateBack).SequenceEqual(new[] { P + "epilogue.unfinished" }) && Endings(lateFailed).SequenceEqual(new[] { epCommit.Id })
+        check(Endings(lateBack).SequenceEqual(new[] { P + "epilogue.unfinished" }) && Endings(lateFailed).SequenceEqual(new[] { P + "epilogue.unfinished" })
               && Endings(Invite(dug)).SequenceEqual(new[] { epCommit.Id }),
             "A return never courted gets a romance, or a courted one has no late page: " + string.Join(",", Endings(lateBack)));
         // Polish b9c: a living Soana whose luck was paid gets her own late page, never the killed branch's leash and graves.
@@ -768,6 +768,19 @@ internal static class SoanaTricksterTests
                   && !loverPages.Contains("unknown") && FullText(epCommit, failed).Contains("why they had killed her"),
                 "A native kill answer is not read as the Commander's own kill: " + key);
         }
+        // Polish r3 (Sol CAN/INT/HOW): a luck lover later killed and never returned stays dead: no living page, no coda, her loss
+        // page instead; a failed presence alone is no courtship.
+        var luckLover = Pick(bowl, Later(story, tested0, 72), "soana.committed");
+        var luckKilled = Program.Copy(luckLover);
+        foreach (var f in new[] { "soana.dead", "soana.forest_dead", "soana.killed_self_after_quest" }) { luckKilled.Flags.Add(f); luckKilled.Times[f] = luckKilled.Hour; }
+        Rules.Complete(story, luckKilled);
+        var luckKilledLateCall = Called(luckKilled);
+        check(Endings(luckKilled).SequenceEqual(new[] { P + "epilogue.luck_lost" }) && !Rules.Available(story, coda, luckKilledLateCall)
+              && !Ends(luckKilled, "sacrifice").Contains(slack.Id),
+            "A luck lover killed and never returned keeps a living ending or coda: " + string.Join(",", Endings(luckKilled)));
+        var luckReturned = Program.Copy(luckKilled); luckReturned.Flags.Add(P + "returned"); Rules.Complete(story, luckReturned);
+        check(Rules.Available(story, coda, Called(luckReturned)) && !Endings(luckReturned).Contains(P + "epilogue.luck_lost"),
+            "A returned luck lover loses her coda, or is mourned.");
         string Coda(Snapshot s) { var e = Called(s); return string.Join("|", Rules.VisibleParagraphs(coda.Nodes.Last(), e).Select(x => x.Text)); }
         check(Coda(bound).Contains("answer at her graves") && !Coda(lateBack).Contains("answer at her graves"),
             "The Last Call coda misremembers the accounting.");
