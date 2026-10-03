@@ -186,7 +186,34 @@ internal static class TargonaTricksterTests
         check(left.Count > 0 && left.All(o => o.Has(Closed) && !o.Has(Committed)), "Leaving before dawn does not close her route.");
 
         // Trk_Targona_Declined: her soft no, and the priced second ask.
-        var metOnly = World(story, 5, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent", P + "primed");
+        var metOnly = World(story, 5, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent", P + "primed", P + "free.spark");
+        // Polish r4 (BEL): the freed-state vigil waits on the stove's earned attraction; answering it as colleagues keeps friendship.
+        var stove = S(P + "free.the_stove");
+        var metNoSpark = World(story, 5, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent", P + "primed");
+        check(!Rules.Available(story, ward, metNoSpark) && Rules.Available(story, stove, metNoSpark), "The vigil opens without the stove.");
+        var stoveOut = Program.Walk(stove, metNoSpark).ToList();
+        check(stoveOut.Any(o => o.Has(P + "free.spark")) && stoveOut.Any(o => o.Has(P + "free.colleagues") && !o.Has(P + "free.spark"))
+              && stoveOut.All(o => !o.Has(Committed) && !o.Has(Closed)), "The stove forces or forbids the attraction.");
+        foreach (var answer in new[] { "truth", "lie", "hers" })
+        {
+            var stovePages = new HashSet<string>();
+            Program.Walk(stove, metNoSpark, (page, _) => stovePages.Add(page));
+            check(stovePages.Contains(answer), "The stove loses an answer: " + answer);
+        }
+        check(stoveOut.Where(o => o.Has(P + "free.colleagues")).All(o => !Rules.Available(story, ward, Later(story, o, 200))),
+            "Colleagues at the stove still reach the vigil.");
+        // r5: both orders stay open (the letters move to the ward after the meeting; see TargonaOpeningTests), and an angel
+        // already writing from the wayhouse greets the Commander as her correspondent, not as a stranger from Heaven.
+        check(Rules.Available(story, S("targona.unasked_question"), World(story, 5, "trickster", "trickster.ever", "targona.free",
+                  "targona.ran_treatment_completed", "targona.ran_final_seen", "targona.ran_none", P + "met"))
+              && Rules.Available(story, spent, World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.correspondence_opened")),
+            "One order of letters and ward closes the other.");
+        var wayhousePages = new HashSet<string>();
+        var wayhouseNight = World(story, 5, "trickster.ever", "targona.free", P + "cost.wand_unspent", "targona.ran_treatment_completed",
+            "targona.correspondence_opened");
+        Program.Walk(freeFurlough, wayhouseNight, (page, _) => wayhousePages.Add(page));
+        check(wayhousePages.Contains("greet_wayhouse") && !wayhousePages.Contains("greet_treated") && !wayhousePages.Contains("greet"),
+            "The wayhouse correspondent arrives as if from Heaven.");
         check(Rules.Available(story, ward, metOnly), "Trk_Targona_Declined: the ward is closed to the freed state.");
         var declined = After(ward, metOnly, "refused", 0);
         check(declined.Has(P + "declined") && !declined.Has(Committed) && !declined.Has(Closed), "Trk_Targona_Declined: flags.");
@@ -197,6 +224,24 @@ internal static class TargonaTricksterTests
               && Program.Walk(quiet, Later(story, declined, 72)).Any(o => o.Has(P + "night_kept")), "Her price is not paid, or no night follows.");
         var refused = After(quiet, Later(story, declined, 72), "start", 1);
         check(refused.Has(Closed) && !refused.Has(Committed), "Refusing her price does not close her route.");
+        // Polish r3 (INT/HOW): both live freed-state commitments, with their full flag histories, reach the right ending.
+        var firstYes = After(ward, metOnly, "dawn", 2);
+        foreach (var history in new[] { firstYes, sealedYes })
+        {
+            check(history.Has(Committed), "A freed-state commitment did not commit.");
+            var died = World(story, 6, history.Flags.Concat(new[] { "sacrifice" }).ToArray());
+            var cameBack = World(story, 6, history.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
+            var lived = World(story, 6, history.Flags.ToArray());
+            check(Rules.Available(story, S(P + "epilogue.sacrifice"), died) && !Rules.Available(story, epFurlough, died),
+                "An unsurvived sacrifice after a live commitment has no mourning page.");
+            check(Rules.Available(story, epFurlough, cameBack) && !Rules.Available(story, S(P + "epilogue.sacrifice"), cameBack)
+                  && Rules.Available(story, epFurlough, lived) && !Rules.Available(story, epDeclined, lived),
+                "A surviving committed Commander gets the wrong page.");
+        }
+        // Polish r3: the captives memory is delivered after their departure cue, so it never stages the cellar door.
+        check(S(P + "free.little_birds").Nodes.All(n => !n.Text.Contains("doorway", StringComparison.Ordinal) && !n.Text.Contains("Stop them", StringComparison.Ordinal))
+              && S(P + "free.little_birds").Nodes.Single(n => n.Id == "start").Choices.All(c => !c.Text.Contains("Stop them", StringComparison.Ordinal)),
+            "The delayed captives memory still stages the departure itself.");
 
         // Trk_Targona_Free: the wand that does not run down.
         var free = World(story, 5, "trickster", "trickster.ever", "targona.free", "trickster.umd_tier2");
@@ -300,8 +345,13 @@ internal static class TargonaTricksterTests
             var arrived = Program.Copy(After(freeFurlough, spawned, "why", 0));
             Rules.Complete(story, arrived);
             check(arrived.Has(P + "met") && Rules.PresenceWanted(presence, arrived), "Freed state: the arrival does not keep her at the cots.");
-            var wardNight = Later(story, arrived, 96);
-            check(Rules.Available(story, ward, wardNight), "Freed state: the ward does not follow the arrival.");
+            // Polish r4: the stove comes between the arrival and the vigil.
+            check(!Rules.Available(story, ward, Later(story, arrived, 200)) && Rules.Available(story, S(P + "free.the_stove"), Later(story, arrived, 48)),
+                "Freed state: the vigil skips the stove.");
+            var sparked = After(S(P + "free.the_stove"), Later(story, arrived, 48), "stove", 0);
+            Rules.Complete(story, sparked);
+            var wardNight = Later(story, sparked, 96);
+            check(sparked.Has(P + "free.spark") && Rules.Available(story, ward, wardNight), "Freed state: the ward does not follow the stove.");
             var freePages = new HashSet<string>();
             Program.Walk(ward, wardNight, (page, _) => freePages.Add(page));
             check(freePages.Contains("yes_free") && !freePages.Contains("yes") && freePages.Contains("refused_dawn"),
@@ -326,8 +376,33 @@ internal static class TargonaTricksterTests
 
         // Q6 r4 (TRK/BEL): the late romance needs her to have stayed because the Commander asked; a charitable welcome is a colleague.
         var epColleague = S(P + "epilogue.colleague");
+        // Play every stove answer through both exits, then read the colleague ending's conditional history.
+        const string PikemanLie = P + "free.pikeman_lied";
+        var stoveNight = After(spent, free, "night", 0);
+        var stoveArrival = After(freeFurlough, stoveNight, "why", 0);
+        var stoveReady = Later(story, stoveArrival, stove.DelayHours);
+        check(Rules.Available(story, stove, stoveReady), "The played wand night and arrival cannot reach the stove.");
+        foreach (int answer in new[] { 0, 1, 2 })
+        {
+            var outcomes = Program.WalkVia(stove, stoveReady, "start", answer);
+            check(outcomes.Count == 2 && outcomes.All(o => o.Has(PikemanLie) == (answer == 1)),
+                "The stove fails to record only the pikeman lie, on both exits.");
+            foreach (var colleague in outcomes.Where(o => o.Has(P + "free.colleagues")))
+            {
+                var ending = World(story, 6, colleague.Flags.ToArray());
+                check(Rules.Available(story, epColleague, ending), "The played stove colleague history loses its ending.");
+                var paragraphs = Rules.VisibleParagraphs(epColleague.Nodes[0], ending);
+                check(paragraphs.Any(p => p.Text.Contains("pikeman", StringComparison.Ordinal)) == (answer == 1),
+                    "The colleague ending erases or invents the disagreement over the dying pikeman.");
+                check(!epColleague.Nodes[0].Text.Contains("never once about anything else", StringComparison.Ordinal),
+                    "The colleague ending denies their moral disagreement.");
+            }
+        }
         var welcomed6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent");
-        var drawn6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "cost.wand_unspent");
+        var drawn6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "free.spark", P + "cost.wand_unspent");
+        var drawnOnly6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "cost.wand_unspent");
+        check(!drawnOnly6.Has(P + "late_committed") && Rules.Available(story, epColleague, drawnOnly6) && !Rules.Available(story, epCommit, drawnOnly6),
+            "An asked-for stay without the stove's attraction becomes a romance at the war's end.");
         check(!welcomed6.Has(P + "late_committed") && !Rules.Available(story, epCommit, welcomed6) && !Rules.Available(story, epFurlough, welcomed6)
               && Rules.Available(story, epColleague, welcomed6)
               && drawn6.Has(P + "late_committed") && Rules.Available(story, epCommit, drawn6) && !Rules.Available(story, epColleague, drawn6),
@@ -435,7 +510,22 @@ internal static class TargonaTricksterTests
         check(back6.Has("trickster.commander_back") && Rules.Available(story, epFurlough, back6) && !Rules.Available(story, epSacrifice, back6),
             "A Commander who came back is mourned.");
         check(!Rules.Available(story, epSacrifice, wed6), "The sacrifice page plays without a sacrifice.");
-        foreach (var page in new[] { epCommit, epDeclined, epFurlough, epSacrifice })
+        // Polish: an unsurvived sacrifice gets no living-recipient letter; a refused promise is not a postponement.
+        var epColleague2 = S(P + "epilogue.colleague");
+        var epColleagueLost = S(P + "epilogue.colleague_lost");
+        var epRefused = S(P + "epilogue.refused_promise");
+        var metLost6 = World(story, 6, "trickster.ever", P + "met", "sacrifice");
+        check(!Rules.Available(story, epColleague2, metLost6) && Rules.Available(story, epColleagueLost, metLost6),
+            "The colleague's invitation reaches a Commander who died at the Threshold.");
+        var metBack6 = World(story, 6, "trickster.ever", P + "met", "sacrifice", "ending.trickster");
+        check(Rules.Available(story, epColleague2, metBack6) && !Rules.Available(story, epColleagueLost, metBack6),
+            "A Commander who came back loses the colleague's letter.");
+        check(!Rules.Available(story, epAlly, World(story, 6, "trickster.ever", P + "forgiven", "sacrifice")), "The ally page ignores the sacrifice.");
+        var refusedHistory = After(quiet, Later(story, declined, 72), "start", 1);
+        var refused6 = World(story, 6, refusedHistory.Flags.ToArray());
+        check(refusedHistory.Has(Closed) && !Rules.Available(story, epDeclined, refused6) && Rules.Available(story, epRefused, refused6)
+              && !Rules.Available(story, epRefused, no6), "A refused promise reads as an open question, or the open question reads as refused.");
+        foreach (var page in new[] { epCommit, epDeclined, epFurlough, epSacrifice, epColleague2, epColleagueLost, epAlly, epRefused })
             check(page.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0), "An epilogue page has effects: " + page.Id);
 
         // Reactions: exactly Seelah, Sosiel and Ember; guarded; never touching another relationship.
