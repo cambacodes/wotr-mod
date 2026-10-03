@@ -579,6 +579,17 @@ internal static class ArankaTricksterTests
             "Anevia still mourns a returned Irabeth.");
         check(!Rules.Available(story, S(P + "react.woljif_billing"), World(story, 3, "trickster.ever", P + "duet_sung", "woljif.dead")),
             "A dead Woljif sells the fine print.");
+        // Audit polr4 (BEL, Directive 12): Woljif answers the night itself, after either intimate commitment, never the duet alone.
+        var roof = S(P + "react.woljif_roof");
+        check(roof.Requires.SequenceEqual(new[] { P + "night_kept" }) && roof.Forbids.SequenceEqual(new[] { "woljif.dead", "woljif.kicked_out" })
+              && !Rules.Available(story, roof, World(story, 3, "trickster.ever", P + "duet_sung", P + "answered"))
+              && Rules.Available(story, roof, committed) && Rules.Available(story, roof, thirdOut.First(r => r.Has(Kept)))
+              && !Rules.Available(story, roof, World(story, 5, "trickster.ever", P + "night_kept", "woljif.kicked_out")),
+            "Nobody in the camp answers her night, or Woljif answers it from the grave.");
+        // Audit polr4 (VOI): the proposal is sung, and the Commander's answer is the rhyme.
+        foreach (var s in new[] { third, S(third.Id + "_yard"), thirdL, S(third.Id + "_yard_late") })
+            check(s.Nodes[0].Text.Contains("sing me a reason, or sing me away") && s.Nodes[0].Choices[0].Text.Contains("every day"),
+                "The third verse is summarized, not sung: " + s.Id);
 
         // G5: no Aranka Trickster beat gates on another romance.
         var others = story.Relationships.Where(p => p.Key != "aranka")

@@ -371,9 +371,14 @@ counter("aranka.trickster.verse.encore", "An offer from Nerosyan", '"You came ba
 ], requires=("trickster.ever", DUET), forbids=(CLOSED, KEPT, DECLINED), delay=72)
 
 counter("aranka.trickster.verse.third_verse", "The third verse", '"You said you were writing something."', [
-    a("start", '''{n}She has cleared a space on @STAGE@, and the whole crowd is watching, and she has made sure of that. She sings the third verse without once looking at you: new, hers, and every line of it a question with your name folded into it. On the last line she stops short and leaves the rhyme hanging in the air, and waits.{/n}
-"That one's yours to finish. Out loud. Alone."''',
-      c('[Finish the verse alone] "...Everybody. Quiet. This line\'s mine."', "sung", flags=(KEPT, SANG_ALONE)),
+    a("start", '''{n}She has cleared a space on @STAGE@, and the whole crowd is watching, and she has made sure of that. She does not look at you once while she sings.{/n}
+"I have sung for the clouds and I've sung for the rain,
+I have walked every road there and back again.
+I have one verse left over and nowhere to stay,
+So sing me a reason, or sing me away."
+{n}She lifts her hand off the strings on the last word and lets it hang in the air, unanswered, and waits.{/n}
+"That one's yours to rhyme. Out loud. Alone."''',
+      c('[Finish the verse alone] "...Everybody, quiet. Then stay. I\'ll sing it out loud, and badly, every day."', "sung", flags=(KEPT, SANG_ALONE)),
       c('[Let the rhyme hang] "...I can\'t."', "refused", flags=(CLOSED,))),
     nar("sung", '''{n}You finish it alone. Your voice cracks on the rhyme. A sergeant at the back laughs out loud, and Aranka turns her head and looks at him, once, and he stops. She keeps the beat for you with her heel and leaves the last word where it is, for you to reach.{/n}
 {n}When you reach it, somebody calls for it again. Aranka shakes her head so hard that the lute knocks against her knee. Then she puts it down on @STAGE@ and comes to you.{/n}''',
@@ -490,7 +495,8 @@ page("aranka.trickster.epilogue.declined", "Two verses",
 
 # Q8 (Sol BEL): the hard no after the third verse was sung. The verse exists; only its last rhyme was never answered.
 page("aranka.trickster.epilogue.unanswered", "The hanging rhyme",
-     '''{n}Aranka sang the third verse for the rest of her life, in every hall that would have her. It was the best thing she ever wrote, and at its last line she always stopped short and left the rhyme hanging in the air, and let the hall sit in it a heartbeat too long, and went on to the next song without it. Nobody else was ever allowed to finish it. She threw a cup at the one tenor in Nerosyan who tried.{/n}''',
+     '''{n}For a few years Aranka sang the third verse in every hall that would have her, and at its last line she let the rhyme hang a heartbeat too long before she went on. Then one night in Nerosyan a tenor tried to finish it for her, flat, and she laughed, corrected his pitch from the stage, and sang it with his line in it after all.{/n}
+{n}She took the road again that spring, south and then west, collecting songs the way other pilgrims collect relics: a lullaby from a Mendevian ferryman, a drinking round from the Absalom docks, a hymn to Desna nobody in the north had heard. She did not travel alone for long. Starward Gaze stayed in her repertoire with three verses, and it was never again the last song of the night.{/n}''',
      requires=("trickster.ever", DECLINED, CLOSED), forbids=(KEPT,), paragraphs=VERSE_PARAGRAPHS)
 
 page("aranka.trickster.epilogue.verse", "Two names",
@@ -609,6 +615,14 @@ counter("aranka.trickster.failure.reckoning", "Necessary", '"You said you had so
       c('"Go, then."', flags=(CLOSED,))),
 ], requires=("trickster.ever", FAILURE, MOCKING, ANSWERED), forbids=(MORAL_REPAIRED, CLOSED, KENABRES_ATTACKED), delay=0,
     TricksterDevice=True, TricksterState=FAILURE)
+
+
+# Audit polr4 (BEL, Directive 12): a companion answers the night itself, not the song. Woljif (an allotted reactor, ledger
+# 05 3.1) runs the camp's rumours for coin; the fine for "the other noise" is exactly the kind of news he trades in.
+SCENES.append(reaction("Woljif", "aranka.trickster.react.woljif_roof", (NIGHT,),
+    '''"Chief. Word is somebody paid a fine this morning for singing on a roof after the bell. And for 'the other noise'." {n}Woljif studies the ceiling with great innocence.{/n} "I'm not saying I was running a book on whether the bard'd stick around. I'm saying if I was, I'd be rich today, and nobody else would."
+{n}Then the grin goes, just for a moment.{/n} "She came back for you, Chief. Every night, she came back. People like us don't get that much. Don't make her sorry she did."''',
+    answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5], entry='"You heard something."'))
 
 
 def integrate(payload):
