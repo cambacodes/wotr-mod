@@ -77,6 +77,24 @@ REBIND_DECLINED = "soana.trickster.rebind_declined"
 RECLAIMED = "soana.trickster.cost.leash_reclaimed"
 RECLAIMED_BEFORE = "soana.trickster.leash_reclaimed_before_threshold"
 POSTPONED = "soana.trickster.knot_proposal_postponed"   # Derived: the knot's own "not yet", never answered
+# Polish (Sol BEL): the accounting at her graves, between the grave test and any vow. She makes the Commander answer for
+# how she died, sets them to work for the dead forest's future, and decides for herself whether to invite more.
+ACCOUNTING = "soana.trickster.returned.accounting"
+ACC_ANSWERED = "soana.trickster.accounting_answered"
+ACC_INVITED = "soana.trickster.accounting_invited"
+ACC_FRIEND = "soana.trickster.accounting_friend"
+ACC_REFUSED = "soana.trickster.accounting_refused"
+STREAM = "soana.trickster.cost.stream_cleared"
+NURSERY = "soana.trickster.cost.nursery_guarded"
+OWN_KILL = "soana.killed_by_commander"              # Derived over the four native attack answers (SelectedAnswers below)
+OWN_KILL_ANSWERS = {
+    # [Attack] "I'm sick of your ravings, crone. Die!" (enGB be64dc8f / 7f2adcca)
+    "soana.killed_self_before_bear": "4ceb5651b76b5cd4ba4227fb8c905c17",    # SoanaBeforeBear/Answer_0018
+    "soana.killed_self_after_quest": "41427b1b6e18d2b46a8710deb79d4266",    # SoanaAfterQuest/Answer_0021
+    # [Kill the shaman] "I've had enough of you and this place! To the Abyss with you!" (Shared stringkey da81261d)
+    "soana.killed_self_after_bear_a": "fcf85a5f46511764ca2a85481a36cb2e",   # SoanaAfterBear/Answer_0013
+    "soana.killed_self_after_bear_b": "7fa80df7d9584c943808aa8a7b9a3120",   # SoanaAfterBear/Answer_0097
+}
 HEARD = "soana.heard_link"                            # Derived: SoanaAfterBear Cue_0015 or its twin Cue_0036 seen
 SACRIFICE_BACK = {"sacrifice": "trickster.commander_back"}
 DEFENDER = ["soana.old_defender", BEAR_DEAD]
@@ -258,7 +276,7 @@ at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', 
         c('[Send the order]', "decide")),
     s("decide", """{n}She leans on the spade and looks at you the way she looks at weather.{/n}
 "Hear me, hunter, because I will say it once. The dead forest I will bury with you or without you. That is the forest's business, and it does not buy you anything from me. My leash I will take back from your hand whatever you say; I do not leave my work in a stranger's fist. What you want from me is another matter, and I have not decided what I think of it."
-"Come back in three days. By then I will know my own mind. I always do, in the end.\"""",
+"Come back in three days. You will answer me for something then, before you ask me for anything else.\"""",
         c('"Three days, then."'),
         c('"Your graves are seen to. That\'s all I came for."', flags=(CLOSED, TRK_REFUSED,))),
     ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, GRAVE_KEPT), delay=48)
@@ -283,11 +301,11 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
         c("Continue", "price", forbids=(DUG, BOUGHT, SPENT)), c("Continue", "price_clay", requires=(SPENT,), forbids=(DUG, BOUGHT))),
     s("dug", '''"You dug. Badly, and too shallow at the head end, but you dug, with your own hands, in the cold. That is more than your friends in Drezen would have done. And you came back, which is worse. I find that troublesome."''',
         c("Continue", "price", forbids=(SPENT,)), c("Continue", "price_clay", requires=(SPENT,))),
-    s("bought", '''"Your diggers came, dug, ate my last smoked fish and left. Paying is easy for you people. It is the one thing you are good at. Remember that I noticed."''',
+    s("bought", '''"Your diggers came, dug, ate my last smoked fish and left. Then you put your own hands in my stream. I saw both, hunter. Do not try to pass one off as the other."''',
         c("Continue", "price", forbids=(SPENT,)), c("Continue", "price_clay", requires=(SPENT,))),
     s("price", '''{n}She opens her hand. In it lies the thing she sat plaiting on her stone by the graves while the digging went on: a cord of grey hair from her own braid, twisted with sinew and tied in the knot that is printed white on your palm. The end of her braid is ragged where the knife went through it.{/n}
 "Hear this first, because I will not say it in the furs. I had a husband. Corven. He laid a wreath of the first summer flowers on my head and I became his wife. He is gone, and I do not know where, or whether he lives. I will not dig him a grave to make room for you, and I will not pretend he never was. Take me with him in it, or do not take me."
-"I have decided. I want you anyway, hunter, which is a great nuisance, and I am too old to pretend otherwise for the sake of your pride."
+"I told you to come for me, and you came. I want you here tonight, hunter. Curse you, I have been thinking about it when I should have been counting seed."
 "Look at your hand. A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare palm, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. You wear this where the print is. When I die again, and I will, it is your life the knot comes looking for first."
 "That is not me haggling. That is what a knot is. I cannot make it sweeter, and I would not if I could."''',
         c('[Hold out your marked hand for the cord]', "bind"),
@@ -313,7 +331,7 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
         c('[Go]', flags=(RECLAIMED,))),
     s("price_clay", '''{n}She opens her hand. The two halves of the clay knot lie in it, the medallion you cracked at the brand; she picked them out of the ash of her own cave.{/n}
 "Hear this first, because I will not say it in the furs. I had a husband. Corven. He laid a wreath of the first summer flowers on my head and I became his wife. He is gone, and I do not know where, or whether he lives. I will not dig him a grave to make room for you, and I will not pretend he never was. Take me with him in it, or do not take me."
-"I have decided. I want you anyway, hunter, which is a great nuisance, and I am too old to pretend otherwise for the sake of your pride."
+"I told you to come for me, and you came. I want you here tonight, hunter. Curse you, I have been thinking about it when I should have been counting seed."
 "Look at it. A knot with one strand is not a knot. It is a piece of string. You are holding my leash in your bare hand, and it will pull you to pieces inside a year. If I am to take it back and keep it, the knot needs a second life at the other end. Mine is spoken for; you saw to that. So: yours. Carry the pieces. When I die again, and I will, it is your life the knot comes looking for first."
 "That is not me haggling. That is what a knot is. I cannot make it sweeter, and I would not if I could."''',
         c('[Hold out your hand for the pieces]', "bind_clay"),
@@ -327,7 +345,7 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
     # NM1 (Sol INT): a luck-chain "not yet" (missed.bowl) shares soana.trickster.declined; after her return it no longer
     # bars the knot's own first ask (the return lifts it). The knot's own "not yet" is kept out by this scene's completion.
-    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT), forbids=(CLOSED, COMMITTED, DECLINED, "soana.trickster.returned.terms"), delay=72,
+    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT, ACC_INVITED), forbids=(CLOSED, COMMITTED, DECLINED, FRIENDS, "soana.trickster.returned.terms"), delay=72,
     ForbidOverrides={DECLINED: RETURNED})
 
 at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has thawed."', [
@@ -344,20 +362,23 @@ at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has 
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
     # PP6 (Sol INT): the knot's second ask follows the knot's own first ask; a luck-chain "not yet" (missed.bowl) shares
     # soana.trickster.declined, so the graveyard test and the terms scene are required by name.
-    ], requires=("trickster.ever", RETURNED, DECLINED, GRAVE_KEPT, "soana.trickster.returned.terms"), forbids=(CLOSED, COMMITTED), delay=96)
+    # Polish (Sol INT): a luck "not yet" carried into the knot's friendship is not a postponed knot; the friend's leash is hers.
+    ], requires=("trickster.ever", RETURNED, DECLINED, GRAVE_KEPT, "soana.trickster.returned.terms"),
+    forbids=(CLOSED, COMMITTED, FRIENDS, RECLAIMED_BEFORE), delay=96)
 
 # Q10 r2: a lover committed before she died (the registered courtship, then the handover or the Commander's own kill)
 # still owes the knot its second strand. The terms and the second ask forbid soana.committed, so this is that vow.
 at_cave("soana.trickster.returned.rebind", "An old promise, a new knot", '"You said three days."', [
     s("start", '''{n}The grave is a low mound under the ferns. She has laid stones on it in a pattern you almost recognize. She does not get up.{/n}''',
-        c("Continue", "camellia", requires=(KILLED,)), c("Continue", "own", forbids=(KILLED,))),
-    s("camellia", '''"You courted me. You sat at my fire and ate my fish and called me beloved, and I let you. Then you stood outside my cave while your spirit talker opened my throat, because she asked nicely."
+        c("Continue", "camellia", requires=(KILLED,)), c("Continue", "own", requires=(OWN_KILL,), forbids=(KILLED,)),
+        c("Continue", "unknown", forbids=(KILLED, OWN_KILL))),
+    s("camellia", '''"You courted me. You sat at my fire and ate my fish and called me beloved, and I let you. Then you stood outside my cave while your spirit talker opened my throat, because she asked nicely. You answered me for that by the graves, and I have watched what your hands did afterwards."
 {n}She turns a stone on the mound with one finger, so the pattern comes right.{/n}
-"And then you came back and pulled me up out of the dark by my own knot. I have been trying for three days to decide which of those you meant. I think it was all of them. That is the worst thing about you."''',
+"You came back when I told you to come for me. I wanted you to. I am still angry about that, and I will be angry a long while yet."''',
         c("Continue", "price")),
-    s("own", '''"You courted me. You sat at my fire and ate my fish and called me beloved, and I let you. Then you killed me with your own hands, in my own cave."
+    s("own", '''"You courted me. You sat at my fire and ate my fish and called me beloved, and I let you. Then you killed me with your own hands, in my own cave. You answered me for that by the graves, and I have watched what your hands did afterwards."
 {n}She turns a stone on the mound with one finger, so the pattern comes right.{/n}
-"And then you came back and pulled me up out of the dark by my own knot. I have been trying for three days to decide which of those you meant. I think it was all of them. That is the worst thing about you."''',
+"You came back when I told you to come for me. I wanted you to. I am still angry about that, and I will be angry a long while yet."''',
         c("Continue", "price")),
     s("price", '''{n}She opens her hand. The knot is in it.{/n}
 "What we said before I died was said to a living woman with a whole knot. This one has one strand, and you are holding my leash in your bare hand. If I am to take it back and keep it, the other end needs a life on it. Yours. When I die again, it is your life the knot comes looking for first."
@@ -373,7 +394,106 @@ at_cave("soana.trickster.returned.rebind", "An old promise, a new knot", '"You s
     s("night", TERMS_NIGHT, c("Continue", "morning")),
     s("morning", TERMS_MORNING, c('[Go]')),
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
-    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT, COMMITTED), forbids=(CLOSED, BEARER, REBIND_DECLINED), delay=72)
+    # Polish: a death the save cannot attribute (no native attack answer, no Camellia etude) accuses nobody by name.
+    s("unknown", '''"What we said before I died was said to a living woman. You answered me by the graves, you stayed for the work, and you came back when I told you to."
+{n}She turns a stone on the mound with one finger, so the pattern comes right.{/n}
+"I wanted you to. Do not make me say it twice."''',
+        c("Continue", "price")),
+    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT, COMMITTED, ACC_INVITED), forbids=(CLOSED, BEARER, REBIND_DECLINED, FRIENDS), delay=72)
+
+
+# Polish (Sol BEL, the Q10 residual): between the grave test and any vow, the accounting. The Commander answers for how
+# she died (Camellia, their own hands, or a death the save cannot attribute), works for the dead forest's future under her
+# eye, and she decides whether to invite more. Returning her buys nothing; an old lover's vow is no exception.
+CLOSE_FLAGS = dict(flags=(CLOSED, TRK_REFUSED, ACC_REFUSED))
+
+
+def _history_choices():
+    return (c("Continue", "camellia", requires=(KILLED,), forbids=(COMMITTED,)),
+            c("Continue", "own", requires=(OWN_KILL,), forbids=(KILLED, COMMITTED)),
+            c("Continue", "unknown", forbids=(KILLED, OWN_KILL)),
+            c("Continue", "camellia_lover", requires=(KILLED, COMMITTED)),
+            c("Continue", "own_lover", requires=(OWN_KILL, COMMITTED), forbids=(KILLED,)))
+
+
+def _answers(admission):
+    return (c(admission, "answered", flags=(ACC_ANSWERED,)),
+            c('"I brought you back. Isn\'t that answer enough?"', "evasive"),
+            c('"I won\'t answer for it. I\'m leaving."', "dismiss", **CLOSE_FLAGS))
+
+
+ACC_DOWN = """{n}She leads you down to the water under the bare branches. She carries the seed bowl herself.{/n}"""
+ACC_DIGGERS = """{n}Your diggers from Drezen are at the far end of the row of graves, crusaders with good boots and bad manners, arguing about who has to carry the calf. Soana sends one back for it without raising her voice and watches until he picks it up. Then she turns her back on them and points you at the water.{/n}"""
+ACC_WORK = """{n}The thing in the upper channel is a stag, weeks dead and swollen with water. You get your arms under it and drag it up the bank, and when the leash pulls, your marked hand closes on the wet hide and will not open. Soana waits until it does. Then she points at the next snag.{/n}
+{n}The water runs brown, then clear. You drive the stakes into stony ground and weave dead branches between them, and she makes you pull the fence up and set it wider, twice. At last she kneels inside it and presses the seed into the wet earth one at a time, with her thumb.{/n}
+"They will need water carried when the stream runs low, and boots kept off them. I will be here.\""""
+
+at_cave(ACCOUNTING, "What you left alive", '"I came back, as you said."', [
+    nar("start", """{n}Soana is waiting by the last grave with her walking stick laid across the path at knee height. Behind her, against the rock, lie a bundle of split stakes and a clay bowl of seed. She does not move the stick.{/n}""",
+        *_history_choices()),
+    s("camellia", '''"You gave me to your spirit talker. Not a stag, not a hide to be split after the hunt. Me. An old woman in her own cave, and you let her have me because she asked."
+{n}Her knuckles whiten on the stick.{/n}
+"Was she hungry, hunter? Did that make it easy?"''',
+        *_answers('"She asked, and I let her kill you. I knew what I was giving her."')),
+    s("own", '''"You killed me in my own cave. You found your way back to my door easily enough. Now find your way back to that day."
+{n}She taps the frozen earth with the stick.{/n}
+"What was I to you, hunter? An old woman who would not do as she was told?"''',
+        *_answers('"I chose to kill you. That was my doing, no one else\'s."')),
+    s("unknown", '''"I died here. You came afterwards and pulled at my knot and told it what to do with my life. Now you will hear what I mean to do with it."''',
+        c('"Then say it. I\'m listening."', "answered", flags=(ACC_ANSWERED,)),
+        c('"I brought you back. Isn\'t that answer enough?"', "evasive"),
+        c('"Keep your cave. I\'m leaving."', "dismiss", **CLOSE_FLAGS)),
+    s("camellia_lover", '''"You came to this cave as my lover. I made room for you at my fire. Then you stood outside it while your spirit talker opened my throat."
+{n}She plants the stick between your boots.{/n}
+"When she asked you for me, did you remember what you had asked me for? Answer me, hunter."''',
+        *_answers('"I remembered. I gave you to her anyway. That was my choice."')),
+    s("own_lover", '''"You came to this cave as my lover. I made room for you at my fire. Then you killed me beside it, with your own hands."
+{n}She plants the stick between your boots.{/n}
+"Did you remember what you had asked me for, when you did it? Answer me, hunter."''',
+        *_answers('"I remembered. I killed you anyway. That was my choice."')),
+    s("evasive", '''"That answers the knot. I asked you."
+{n}She lifts the stick off the path and points it at the graves.{/n}
+"A thing can be done twice and mean two different things. Do not expect the second to bury the first."''',
+        c('"Bringing you back buys me nothing from you. Ask me again."', "repeat"),
+        c('"I\'m not staying to hear this."', "dismiss", **CLOSE_FLAGS)),
+    s("repeat", '''{n}Soana lays the stick across the path again, at the same height.{/n}
+"Then answer me. Not the knot. Me."''',
+        c('"She asked, and I let her kill you. I knew what I was giving her."', "answered", requires=(KILLED,), forbids=(COMMITTED,), flags=(ACC_ANSWERED,)),
+        c('"I chose to kill you. That was my doing, no one else\'s."', "answered", requires=(OWN_KILL,), forbids=(KILLED, COMMITTED), flags=(ACC_ANSWERED,)),
+        c('"Then say it. I\'m listening."', "answered", forbids=(KILLED, OWN_KILL), flags=(ACC_ANSWERED,)),
+        c('"I remembered. I gave you to her anyway. That was my choice."', "answered", requires=(KILLED, COMMITTED), flags=(ACC_ANSWERED,)),
+        c('"I remembered. I killed you anyway. That was my choice."', "answered", requires=(OWN_KILL, COMMITTED), forbids=(KILLED,), flags=(ACC_ANSWERED,)),
+        c('"I\'m not staying to hear this."', "dismiss", **CLOSE_FLAGS)),
+    s("answered", '''"Hm. So your tongue has one honest use."
+{n}She moves the stick aside.{/n}
+"The stream below the graves still runs. There is something rotting in its upper channel, and I have seed that wants clean water. I carried it in from beyond the dead ground; nothing in this wood is left to give me any."
+"Clear the channel. Then fence the bed below it, before your soldiers drag another cart across it. If there is to be a forest here again, it will start with something too small for a bloody hunter to notice."''',
+        c('[Take the stakes] "Show me where."', "down"),
+        c('"I\'ll do the work as your friend. Nothing more."', "down_friend"),
+        c('"You\'ve had enough of my time."', "dismiss", **CLOSE_FLAGS)),
+    nar("down", ACC_DOWN, c("Continue", "diggers", requires=(BOUGHT,)), c("Continue", "work", forbids=(BOUGHT,))),
+    nar("down_friend", ACC_DOWN, c("Continue", "diggers_friend", requires=(BOUGHT,)), c("Continue", "work_friend", forbids=(BOUGHT,))),
+    nar("diggers", ACC_DIGGERS, c("Continue", "work")),
+    nar("diggers_friend", ACC_DIGGERS, c("Continue", "work_friend")),
+    nar("work", ACC_WORK, c('[Set the last branch]', "judged", flags=(STREAM, NURSERY))),
+    nar("work_friend", ACC_WORK, c('[Set the last branch]', "friend", flags=(STREAM, NURSERY))),
+    s("judged", '''{n}She tests the fence with the head of her stick. It holds. She looks up at you.{/n}
+"You stayed when there was nothing here to conquer. You put your hands where I told you. I wanted to see if you could."
+"I have not forgotten what was done to me here, and I will not forget it because the water runs clear."
+{n}She tucks the seed bowl under her arm.{/n}
+"Come again in three days. Come for me, if that is what you came for. I want to see whether I want you at my fire when the work is done."''',
+        c('"I\'ll come for you."', flags=(ACC_INVITED,)),
+        c('"Keep the fire for a friend."', "friend"),
+        c('"There won\'t be another visit."', "dismiss", **CLOSE_FLAGS)),
+    s("friend", '''"A friend, then. I have a use for one who can lift a dead stag without making a speech about it."
+{n}She takes your marked hand, turns the palm up and opens her own with the knife. She presses the cut to the print and talks to the knot through her teeth. The pull goes out of your wrist. Her knees go; she catches herself on the stick, waits, and stands straight again.{/n}
+"There. My work is in my own hands again. Come when you have something to say. Bring water when you have not."''',
+        c('[Leave her by the seed bed]', flags=(FRIENDS, ACC_FRIEND, RECLAIMED))),
+    s("dismiss", '''"Go, then. My seed will not wait for your pride to ripen."
+{n}She turns to the water with the bowl under her arm.{/n}''',
+        c('[Go]')),
+    ], requires=("trickster.ever", RETURNED, GRAVE_KEPT),
+    forbids=(CLOSED, FRIENDS, BEARER, REBIND_DECLINED, ACC_INVITED, ACCOUNTING, "soana.trickster.returned.terms"), delay=72)
 
 
 # The portion comes due (audit: the recurring blood price must be witnessed, not only promised). The first winter after
@@ -570,10 +690,31 @@ SCENES.append(scene("soana.trickster.epilogue.luck", "The die in the bowl", "Epi
     requires=(LUCK_KEPT, COMMITTED), forbids=(CLOSED, RETURNED, "soana.late_campaign_kept", "sacrifice"), last=99,
     Relationship="soana", ForbidOverrides=dict(SACRIFICE_BACK)))
 
+# Polish (Sol BEL): the late fallback carries the same reckoning as play. Where the accounting was never played it happens
+# after the war, and only her own invitation brings the Commander back to her fire.
+_RECKON_TAIL = ("The visits after that were spent clearing the stream below the graves and fencing her seed bed while she "
+                "watched. She sent the Commander away when the work was done. On the next visit she told them to stay.")
+COMMIT_ACCOUNTING = (
+    p("When the Commander came to her cave after the war, she stopped them at the graves and asked why they had given "
+      "her to Camellia. They answered for it. She heard them out, then put a bundle of stakes in their hands. " + _RECKON_TAIL,
+      requires=(KILLED,), forbids=(ACC_INVITED,)),
+    p("When the Commander came to her cave after the war, she stopped them at the graves and asked why they had killed "
+      "her. They answered for it. She heard them out, then put a bundle of stakes in their hands. " + _RECKON_TAIL,
+      requires=(OWN_KILL,), forbids=(KILLED, ACC_INVITED)),
+    p("When the Commander came to her cave after the war, she stopped them at the graves, and they listened while she "
+      "told them what her return had left undone. " + _RECKON_TAIL,
+      forbids=(KILLED, OWN_KILL, ACC_INVITED)),
+    p("The Commander had answered her by the graves and worked beside the water. After the war they came back for the "
+      "woman who had told them to come for her, and she kept them carrying water through the dry months.",
+      requires=(ACC_INVITED,)),
+    p("The year after the Worldwound closed she held out a new cord, plaited from her own grey hair. The Commander gave "
+      "her the marked wrist. She tied their life to hers and pulled the cord tight. \"Your end, hunter. You know what "
+      "it holds now.\" She kept that wrist in her hand when she led them down into the furs."),
+)
+
 SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5, "", [
-    nar("start", '''{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She buried the dead forest one grave a day. The year after the Worldwound closed she walked all the way to Drezen with a knot in her fist, found the Commander, and tied it to their wrist without asking.{/n}
-"Your end. I held it alone once. I will not do that twice."''',
-        c(), paragraphs=EPILOGUE_PARAGRAPHS)],
+    nar("start", '''{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She buried the dead forest one grave a day, and carried seed from beyond the dead ground to the water below her cave.{/n}''',
+        c(), paragraphs=(*COMMIT_ACCOUNTING, *EPILOGUE_PARAGRAPHS))],
     requires=(LATE_COMMITTED, RETURNED), forbids=(COMMITTED, CLOSED, DECLINED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
@@ -611,15 +752,24 @@ SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue",
 
 # Q10 r2: a lover from before her death who returned her but never took the knot's second strand.
 SCENES.append(scene("soana.trickster.epilogue.unvowed", "One strand, old promises", "Epilogue", 5, "", [
-    nar("start", '''{n}Soana took her leash back from the Commander's hand alone, with one strand and her own blood, and it nearly killed her. She lived. She buried the dead forest one grave a day and bound what she could into what was left.{/n}
-{n}The Commander still came to her fire when the war allowed. She fed them, scolded them and took them to bed, and never once let them near the knot. "You had your chance at that," she said, and that was the end of it.{/n}''',
-        c())],
-    requires=("trickster.ever", RETURNED, COMMITTED), forbids=(BEARER, CLOSED, "sacrifice"), last=99, Relationship="soana",
+    nar("start", '''{n}Soana held her leash alone, with one strand and her own blood; taking it back nearly killed her. She lived. She buried the dead forest one grave a day and planted what she could beside the water.{/n}''',
+        c(), paragraphs=(
+            p("The Commander had answered her by the graves and worked where she pointed, and she had called them back "
+              "for herself. They still came to her fire when the war allowed. She fed them, scolded them and took them to "
+              "bed, and never once let them near the knot. \"You had your chance at that,\" she said, and that was the end of it.",
+              requires=(ACC_INVITED,)),
+            p("Their old promises did not open the cave to them again. When they came after the war she stopped them by "
+              "the graves, heard their answer for how she had died, and put the stakes in their hands. They cleared her "
+              "stream and fenced her seed bed over the visits that followed. Only when she called them back for herself "
+              "did they sit at her fire as her lover again. The knot stayed in her hands.",
+              forbids=(ACC_INVITED,)),
+        ))],
+    requires=("trickster.ever", RETURNED, COMMITTED), forbids=(BEARER, CLOSED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
 # Q10 r4: the Commander answered her Corven disclosure with friendship.
 SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", "Epilogue", 5, "", [
-    nar("start", '''{n}The Commander stayed Soana's friend, which she said was the most tiresome thing anyone had ever been to her, and kept a second cup by the fire for them anyway.{/n}''',
+    nar("start", '''{n}Soana kept a second cup by the fire for the Commander. She called them her friend, usually just before asking them to carry something heavy, and when anyone asked whether she liked their visits, she said the water pot did.{/n}''',
         c(), paragraphs=(
             p("She held her leash alone, with one strand and her own blood; taking it back had nearly killed her. "
               "She buried the dead forest one grave a day, and made the Commander dig every third one when they visited.",
@@ -627,7 +777,7 @@ SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", 
             p("The loaded die stayed in her bowl, twenty up, and the she-bear who had carried it to the roads grew fat and grey.",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
         ))],
-    requires=("trickster.ever", FRIENDS), forbids=(COMMITTED, CLOSED, "sacrifice"), last=99, Relationship="soana",
+    requires=("trickster.ever", FRIENDS), forbids=(CLOSED, BEARER, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
 # Q10: the Commander gave their life at the Threshold and stayed dead. Every Trickster page above describes a living
@@ -754,6 +904,13 @@ def integrate(payload):
     payload["Derived"][RECLAIMED_BEFORE] = [[RECLAIMED], [RETURNED, FRIENDS, "soana.trickster.returned.terms"],
                                             [RETURNED, REBIND_DECLINED, "soana.trickster.returned.rebind"]]
     payload["Derived"][POSTPONED] = [[RETURNED, DECLINED, "soana.trickster.returned.terms"]]
+    # Polish (Sol INT): the Commander's own kill, read from the native attack answers (SelectedAnswers), never inferred.
+    answers = payload.setdefault("SelectedAnswers", {})
+    for key, guid in OWN_KILL_ANSWERS.items():
+        if answers.get(key, guid) != guid:
+            raise ValueError("Conflicting binding: " + key)
+        answers[key] = guid
+    payload["Derived"][OWN_KILL] = [[key] for key in OWN_KILL_ANSWERS]
     by_id = {x["Id"]: x for x in payload["Scenes"]}
 
     # SOA-11: the loss pages belong to a Soana who stayed dead.

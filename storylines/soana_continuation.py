@@ -42,8 +42,10 @@ s("one_account", "A warning small enough to hear", '"I brought the account. It h
 "Bad work offends me even when I intend to refuse it."''', c('[Ask where a warning could actually be useful.]', "outcome")),
     n("outcome", "Soana", '''{n}She places one finger on the drawing of the crossing.{/n}
 "Before we go any further, tell me what you expect this thing to replace."''',
-      c('"Nothing holding Orso. We have no way here to release him safely. I want to test a warning that demands no captive."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead",)),
-      c('"It cannot take Orso\'s place. A warning at one crossing might still be worth having while you search."', "dead", requires=("soana.bear_dead",))),
+      c('"Nothing holding Orso. We have no way here to release him safely. I want to test a warning that demands no captive."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead", "soana.medallion_pulverized")),
+      c('"It cannot take Orso\'s place. A warning at one crossing might still be worth having while you search."', "dead", requires=("soana.bear_dead",)),
+      # Polish (Sol CAN): the medallion bitten to dust (SoanaBear/Cue_0023) withers Orso with no BearDead etude.
+      c('"It cannot take Orso\'s place. A warning at one crossing might still be worth having while you search."', "dead", requires=("soana.medallion_pulverized",), forbids=("soana.bear_dead",))),
     n("bound", "Soana", '''"A string and two scraps of wood. At least you have brought no beast on a leash."
 "I still object to the one you hold."
 {n}Her finger presses harder against the paper.{/n}
@@ -191,8 +193,10 @@ s("price_of_warning", "The keeper cannot hear everything", '"Has the warning ear
 "You might put that in the account as well."''', c('[Ask what happened to the food gathering.]', "outcome")),
     n("outcome", "Soana", '''"I gathered enough. I was late returning. The pot was cold, and I was hungry, and the forest continued to require attention without consulting my appetite."
 {n}She looks toward the cave mouth.{/n}''',
-      c('"Orso is still carrying what you bound to him. Our experiment has not reduced that burden."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead",)),
-      c('"Without Orso, you are trying to be everywhere. This cannot make one pair of hands enough."', "dead", requires=("soana.bear_dead",))),
+      c('"Orso is still carrying what you bound to him. Our experiment has not reduced that burden."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead", "soana.medallion_pulverized")),
+      c('"Without Orso, you are trying to be everywhere. This cannot make one pair of hands enough."', "dead", requires=("soana.bear_dead",)),
+      # Polish (Sol CAN): the medallion bitten to dust (SoanaBear/Cue_0023) withers Orso with no BearDead etude.
+      c('"Without Orso, you are trying to be everywhere. This cannot make one pair of hands enough."', "dead", requires=("soana.medallion_pulverized",), forbids=("soana.bear_dead",))),
     n("bound", "Soana", '''"No. Your string has given me something else to tend."
 "It has shown us how far a warning carries."
 "Had I told you at the start, you would have called it an excuse to keep him bound."
@@ -459,8 +463,10 @@ s("lower_bend", "A place she has not lost", '"You asked me to walk to the lower 
 "Off it goes. A leaf takes advice better than most visitors."
 {n}She leans back on one hand. The other lies loose in her lap.{/n}''', c('[Look toward the trees beyond the stream.]', "outcome")),
     n("outcome", "Soana", '''{n}A branch creaks somewhere beyond the water. Soana's head turns toward it before the sound has ended. She waits, listening, until the forest falls quiet again.{/n}''',
-      c('"You are listening for Orso."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead",)),
-      c('"It still sounds as though something large might come down that path."', "dead", requires=("soana.bear_dead",))),
+      c('"You are listening for Orso."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead", "soana.medallion_pulverized")),
+      c('"It still sounds as though something large might come down that path."', "dead", requires=("soana.bear_dead",)),
+      # Polish (Sol CAN): the medallion bitten to dust (SoanaBear/Cue_0023) withers Orso with no BearDead etude.
+      c('"It still sounds as though something large might come down that path."', "dead", requires=("soana.medallion_pulverized",), forbids=("soana.bear_dead",))),
     n("bound", "Soana", '''"Yes. He is still out there."
 {n}She keeps looking into the trees.{/n}
 "You have not frightened the thought away by sitting beside me. Nor will I spend the afternoon reciting it for you."
