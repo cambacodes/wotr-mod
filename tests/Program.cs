@@ -716,6 +716,8 @@ internal static class Program
             Check(story.Scenes.Count == 34 && story.Relationships.Count == 1,
                 "Installed-legacy mode is only for the original standalone 34-scene story.");
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
+        // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
+        EarnedPresenceTests.Run(story, Check);
         KonomiTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();

@@ -1036,10 +1036,16 @@ namespace Tirabade
             .Concat(edit.Variants ?? Array.Empty<NativeEpilogueVariant>()).ToArray();
 
         // E14d: the first variant whose When holds, or -1 (the native cue plays).
-        public static int SelectNativeEditVariant(NativeEpilogueVariant[] variants, Snapshot state)
+        public static int SelectNativeEditVariant(NativeEpilogueVariant[] variants, Snapshot state) =>
+            SelectNativeEditVariant(null, variants, state);
+
+        // Earned presence (rubric Binding context (3)): with the story, a variant is also skipped while one of its replacement
+        // scene's Forbids holds (ForbidOverrides honoured), so a page that stages a living Commander never replaces the
+        // native slide after an unreturned sacrifice; the next variant, or the native cue, plays instead.
+        public static int SelectNativeEditVariant(Story? story, NativeEpilogueVariant[] variants, Snapshot state)
         {
             for (int i = 0; i < variants.Length; i++)
-                if (WhenHolds(variants[i].When, state)) return i;
+                if (WhenHolds(variants[i].When, state) && !ReplacementForbidden(story, variants[i].Replacement, state)) return i;
             return -1;
         }
 
@@ -1072,6 +1078,12 @@ namespace Tirabade
 
         public static Scene?[] EditScenes(Story story, NativeEpilogueVariant[] variants) =>
             variants.Select(variant => story.Scenes.FirstOrDefault(scene => scene.Id == variant.Replacement)).ToArray();
+
+        public static bool ReplacementForbidden(Story? story, string replacement, Snapshot state)
+        {
+            var scene = story?.Scenes.FirstOrDefault(s => s.Id == replacement);
+            return scene != null && scene.Forbids.Any(flag => ForbidHolds(scene, flag, state));
+        }
 
         // E14d: the registered cue name (save reference) of a variant. Variant 0 keeps the original "native-edit.<cue>".
         public static string NativeEditCueName(string cue, NativeEpilogueEditSpec edit, int variant) => variant == 0

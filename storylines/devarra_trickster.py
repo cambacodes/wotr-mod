@@ -626,6 +626,17 @@ SCENES.append(scene(P + "epilogue.hungry", "", "DevarraEpilogue", 6, "", [
     nar("page", '''{n}The tower above Drezen kept its grey roof. Nobody knew what she was waiting for. On clear nights the sentries on the city wall could see her eyes up there, two coals in the dark, fixed on one particular window.{/n}''')],
     requires=("trickster.ever", LEFT_HUNGRY), forbids=(COMMITTED,), last=6, Relationship="devarra"))
 
+# Earned presence (rubric Binding context (3)): the Commander stepped into the Wound and prepared no return. The tariff
+# is not forgiven; the creditor collects what is left.
+SCENES.append(scene(P + "epilogue.sacrifice", "", "DevarraEpilogue", 6, "", [
+    nar("page", """{n}The war ended with the woundwyrm's tariff unpaid. The Commander had gone into the Wound and not come out, and a dragon who sold lives for stories was left holding a story with no life at the end of it.{/n}
+{n}She came to Drezen in the spring, as a creditor does, and landed on the Commander's roof hard enough to bring half of it down into the yard. Nobody came out barefoot to meet her. She waited until noon. Then she took the bite out of the house instead: the door that had never been locked, frame and lintel and all, and carried it back to the ridge.{/n}
+{n}It lies in her lair still, among the bones of better meals. She sleeps with her head on it. Nobody has been fool enough to ask why.{/n}""")],
+    requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, DECLINED, LEFT_HUNGRY, DEAD_LAIR, DEAD_SANCTUM),
+    RequiresAnyGroups=[[COMMITTED, TESTED]],
+    ForbidOverrides={DECLINED: COMMITTED, LEFT_HUNGRY: COMMITTED, DEAD_LAIR: RETURNED, DEAD_SANCTUM: RETURNED},
+    last=6, Relationship="devarra"))
+
 
 def integrate(payload):
     """World keys (death etudes, egg fates, the golem and lair cues, the latch, the Storyteller's death) bind on demand in

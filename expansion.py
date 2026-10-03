@@ -16,6 +16,7 @@ from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
 from storylines import aivu_campaign
+from storylines import earned_presence
 from storylines import konomi_private_absence
 from storylines import soana_later_progression, soana_late_campaign
 from storylines import tirabade_chronology
@@ -625,6 +626,9 @@ def make_expansion(*, independent_tirabade=True):
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
+    # Earned presence (rubric Binding context (3)): no living postwar page beside an unreturned sacrifice. After every
+    # route and Last Call's pages, before trickster_world binds the keys the guards read.
+    earned_presence.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
     if "yaniel" in payload["Relationships"]:

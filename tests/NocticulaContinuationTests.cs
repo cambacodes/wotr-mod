@@ -155,6 +155,13 @@ internal static class NocticulaContinuationTests
             for (int bit = 0; bit < outcomes.Length; bit++)
                 if ((mask & (1 << bit)) != 0) ending.Flags.Add(outcomes[bit]);
             var available = endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, ending)).ToArray();
+            // Earned presence (rubric Binding context (3)): beside an unreturned sacrifice her death, changed or risen pages (which
+            // have the Commander remembering) do not play, and the mourning page covers only a Commander who died plainly.
+            if (ending.Has("sacrifice") && (ending.Has("noct.dead") || ending.Has("inhuman") || ending.Has("ascended")))
+            {
+                check(available.Length == 0, "Nocticula page stages a living Commander after the sacrifice, mask " + mask);
+                continue;
+            }
             check(available.Length == 1, "Nocticula recollections overlap or disappear for outcome mask " + mask);
             string expected = ending.Has("noct.dead") ? "death" : ending.Has("inhuman") ? "changed"
                 : ending.Has("ascended") ? "ascent" : ending.Has("sacrifice") ? "sacrifice"
