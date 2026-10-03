@@ -49,9 +49,9 @@ internal static class SoanaLateCampaignTests
                 if (variant.Item1 == "inhuman") check(visits.All(v => !Rules.Available(story, v, changed)), "Transformation fixture still permits the blocked late romance.");
             }
             var overlapping = Program.Copy(state);
-            overlapping.Flags.UnionWith(new[] { "sacrifice", "ascended", "inhuman", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" });
+            overlapping.Flags.UnionWith(new[] { "ascended", "inhuman", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" });   // earned presence: her loss page has a living Commander
             Ending(overlapping, "unfinished_loss");
-            var ascended = Program.Copy(state); ascended.Flags.UnionWith(new[] { "ascended", "sacrifice" });
+            var ascended = Program.Copy(state); ascended.Flags.UnionWith(new[] { "ascended" });
             Ending(ascended, "unfinished_ascent");
             ascended.Flags.Add("inhuman"); Ending(ascended, "unfinished_change");
         }
@@ -138,7 +138,7 @@ internal static class SoanaLateCampaignTests
                 foreach (var variant in new[] { ("sacrifice", "sacrifice"), ("ascended", "beyond_the_forest"), ("inhuman", "unrecognizable_return"), ("soana.dead", "native_loss"), ("soana.killed_by_camellia", "native_loss"), ("soana.forest_dead", "native_loss") })
                 { var other = Program.Copy(complete); other.Flags.Add(variant.Item1); Ending(other, variant.Item2); }
                 var overlapping = Program.Copy(complete);
-                overlapping.Flags.UnionWith(new[] { "sacrifice", "ascended", "inhuman", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" });
+                overlapping.Flags.UnionWith(new[] { "ascended", "inhuman", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead" });   // earned presence: her loss page has a living Commander
                 Ending(overlapping, "native_loss");
                 var aeon = Get("ending_aeon");
                 check(aeon.Owner == "AeonEpilogue" && Rules.Available(story, aeon, complete), "Rewritten-world ending lacks its separate sequence.");

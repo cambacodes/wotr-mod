@@ -177,7 +177,10 @@ internal static class VellexiaCampaignTests
                 var result = Ending(changed).ToArray();
                 check(result.Length == 1 && result[0].Id == "vellexia.ending_" + suffix, "Vellexia special ending contradicts played history: " + flag);
                 changed.Flags.Add("vellexia.dead");
-                check(Ending(changed).Single().Id == (flag == "vellexia.mirrored" ? "vellexia.ending_mirror" : "vellexia.ending_dead"), "Vellexia native mirror/death precedence is false.");
+                // Earned presence (rubric Binding context (3)): her death page has the Commander remembering her; beside an
+                // unreturned sacrifice it does not play, and the native slides stand.
+                if (flag == "sacrifice") check(!Ending(changed).Any(), "Vellexia's death page stages a living Commander after the sacrifice.");
+                else check(Ending(changed).Single().Id == (flag == "vellexia.mirrored" ? "vellexia.ending_mirror" : "vellexia.ending_dead"), "Vellexia native mirror/death precedence is false.");
             }
         }
         check(Find("an_hour_that_counts").Nodes.Single(n => n.Id == "sealed").Choices.Any(c => c.Requires.Contains("vellexia.coin_given")), "Vellexia Trickster connection no longer reads historical gift.");

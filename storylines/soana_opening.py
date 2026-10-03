@@ -210,8 +210,10 @@ s("guardian_question", "What a protector may demand", '"You asked me to bring my
     n("start", "Narrator", '''{n}Soana sits beside the repaired water carrier. Her fingers have darkened the pale reed at the handle. The pot stands between her knees and the bare patch of stone beside her.{/n}
 "Sit. There is water. Get your question out before the cup grows moss."
 {n}She shifts the pot aside with her heel. The knife lies beside the awl, where she left it after the mending. Her eyes follow you as you sit.{/n}''',
-      c('"Orso still guards the forest. Can he ever leave the duty you bound him to?"', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead",)),
-      c('"Orso is dead. You spoke of finding another guardian. What would you do differently?"', "dead", requires=("soana.bear_dead",))),
+      c('"Orso still guards the forest. Can he ever leave the duty you bound him to?"', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead", "soana.medallion_pulverized")),
+      c('"Orso is dead. You spoke of finding another guardian. What would you do differently?"', "dead", requires=("soana.bear_dead",)),
+      # Polish (Sol CAN): the medallion bitten to dust (SoanaBear/Cue_0023) withers Orso with no BearDead etude.
+      c('"Orso is dead. You spoke of finding another guardian. What would you do differently?"', "dead", requires=("soana.medallion_pulverized",), forbids=("soana.bear_dead",))),
     n("bound", "Soana", '''"Grass feeds the deer. The deer feed the smilodons. Orso guards the wood. You have seen what prowls beyond it."
 "And you bound him to that duty."
 {n}Her shoulders rise beneath the worn cloth.{/n}

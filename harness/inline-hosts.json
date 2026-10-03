@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1113,
-  "resolved": 1113,
+  "entryTargetScenes": 1114,
+  "resolved": 1114,
   "inlineOnlyScenes": 310,
   "inlineOnlyResolved": 310,
-  "answerListScenesWithoutContact": 681,
-  "answerListScenesWithoutContactResolved": 681,
+  "answerListScenesWithoutContact": 682,
+  "answerListScenesWithoutContactResolved": 682,
   "lists": 143,
   "listsWithReachableHost": 142
  },
@@ -1521,6 +1521,25 @@
    "contact": null,
    "entry": {
     "e41585da330233143b34ef64d7d62d69": "RRT_entry.aranka.trickster.react.woljif_mocking"
+   },
+   "resolved": true,
+   "host": {
+    "list": "e41585da330233143b34ef64d7d62d69",
+    "dialog": "8a38eeddc0215a84ca441439bb96b8f4",
+    "dialogName": "DialogueWoljif_main",
+    "cue": "Cue_0001",
+    "clicks": 0
+   }
+  },
+  "aranka.trickster.react.woljif_roof": {
+   "kind": "dialog",
+   "lists": [
+    "e41585da330233143b34ef64d7d62d69"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "e41585da330233143b34ef64d7d62d69": "RRT_entry.aranka.trickster.react.woljif_roof"
    },
    "resolved": true,
    "host": {

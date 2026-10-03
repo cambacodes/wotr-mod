@@ -1,9 +1,9 @@
 {
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
-  "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pol-aranka\\development\\Story.json",
+  "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4911,
-  "unique_targets": 1104,
+  "binding_uses": 4928,
+  "unique_targets": 1114,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1202,6 +1202,22 @@
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/AnswersList_0039.jbp",
       "type": "BlueprintAnswersList"
     },
+    "fcf85a5f46511764ca2a85481a36cb2e": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Answer_0013.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "49c746fc3ea9f2f4cb3841eb0eb69ba1": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Answer_0030.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "91d7e849e995be24ca6f3886a14897e1": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Answer_0096.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "7fa80df7d9584c943808aa8a7b9a3120": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Answer_0097.jbp",
+      "type": "BlueprintAnswer"
+    },
     "353da9f2dae74074b8f1f280d6714c87": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0012.jbp",
       "type": "BlueprintCue"
@@ -1238,6 +1254,10 @@
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/AnswersList_0002.jbp",
       "type": "BlueprintAnswersList"
     },
+    "41427b1b6e18d2b46a8710deb79d4266": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Answer_0021.jbp",
+      "type": "BlueprintAnswer"
+    },
     "fef727987297e8d4eb34068688fdac27": {
       "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0015.jbp",
       "type": "BlueprintCue"
@@ -1249,6 +1269,10 @@
     "945035f8ed0d1474abcb700b985bc5a3": {
       "path": "World/Dialogs/c3/Wintersun/SoanaBear/Cue_0023.jbp",
       "type": "BlueprintCue"
+    },
+    "4ceb5651b76b5cd4ba4227fb8c905c17": {
+      "path": "World/Dialogs/c3/Wintersun/SoanaBeforeBear/Answer_0018.jbp",
+      "type": "BlueprintAnswer"
     },
     "a07f6d1f93531e048928c5c9de328a92": {
       "path": "World/Dialogs/c4/AirAdventures/AirAdventures_BookEvent.jbp",
@@ -3342,12 +3366,24 @@
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_KickedOut.jbp",
       "type": "BlueprintEtude"
     },
+    "e85e8acd74d231e44ad7d6d2d5dab43c": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil.jbp",
+      "type": "BlueprintEtude"
+    },
+    "c2df9c6dd50caba4aade683908ac5ae3": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeDrezen/ArueshalaeRecruitedInDrezen.jbp",
+      "type": "BlueprintEtude"
+    },
     "9104498b842e1584da9b3640cb9e4157": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil/EvilArushaKilled.jbp",
       "type": "BlueprintEtude"
     },
     "005c2284d7e5ac54c887bb3781e45d0c": {
       "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeIsEvil/EvilArushaRecruited.jbp",
+      "type": "BlueprintEtude"
+    },
+    "b3b87ce125827084cae26aaced267697": {
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeStates/ArueshalaeRedoubtOutcomes/ArueshalaeRecruitedFinally.jbp",
       "type": "BlueprintEtude"
     },
     "5eb05139c8b621a44b47c540aa4957d1": {
@@ -3853,6 +3889,10 @@
     "c0d0b565f4b725241b96c148000f1910": {
       "path": "World/Quests/c3/Wintersun/Wintersun_quest.jbp",
       "type": "BlueprintQuest"
+    },
+    "7ce588c0d2e296b41be4f754edbe60d3": {
+      "path": "World/Quests/c4/AvengeInsults/Obj3_ExiledChivarro.jbp",
+      "type": "BlueprintQuestObjective"
     },
     "820f28d6776755d47a2169e2851e15ca": {
       "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",

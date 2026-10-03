@@ -40,8 +40,27 @@ try {
     # E-new 0: chapter 0 in rrt_verify, the simulator and the matrix tests; harness probes never ship.
     & $pythonPath -m unittest tests.test_chapter_zero
     if ($LASTEXITCODE) { throw 'Chapter 0 (Prologue) tests failed' }
+    # Doc 16 section 8c.6: the Seelah x Wenduag prerequisite sheet lints clean, and its lint rejects the ruled-out defects.
+    & $pythonPath -m unittest tests.test_household_pair_seelah_wenduag
+    if ($LASTEXITCODE) { throw 'Seelah x Wenduag prerequisite sheet tests failed' }
     & $pythonPath tools/pacing_lint.py --story development/Story.json --availability tools/pacing-availability.json
     if ($LASTEXITCODE) { throw 'Pacing lint failed: a hard violation, or an invalid tools/pacing-availability.json' }
+    # Harem schedule lint (doc 16 section 8c.2): classification, protected schedule, packet rules walks (data only).
+    & $pythonPath -m unittest tests.test_harem_schedule
+    if ($LASTEXITCODE) { throw 'Harem schedule lint tests failed' }
+    & $pythonPath tools/harem_schedule_lint.py --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Harem schedule lint failed (tools/harem-schedule.json)' }
+    # Harem smoothing metadata + form audit (doc 16 section 8c.3; data only). The 08 section 5 form cap is enforced (rulings D1/D2, W0b).
+    & $pythonPath -m unittest tests.test_harem_smoothing
+    if ($LASTEXITCODE) { throw 'Harem smoothing lint tests failed' }
+    & $pythonPath tools/harem_smoothing_lint.py --story development/Story.json --strict-forms
+    if ($LASTEXITCODE) { throw 'Harem smoothing lint failed (tools/harem-smoothing.json)' }
+    # Earned presence (TRICKSTER-RUBRIC Binding context (3) and (4)): no living postwar page beside an unreturned sacrifice,
+    # and every canon change (return device, native slide edit, native gate, revival) only on the Trickster path.
+    & $pythonPath -m unittest tests.test_earned_presence
+    if ($LASTEXITCODE) { throw 'Earned presence lint tests failed' }
+    & $pythonPath tools/earned_presence_lint.py --story development/Story.json
+    if ($LASTEXITCODE) { throw 'Earned presence lint failed (storylines/earned_presence.py, tools/earned_presence_lint.py)' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
     if ($LASTEXITCODE) { throw 'Narrator build failed' }
     & $dotnetPath run --project tests/RulesTests.csproj -c Release -- development/Story.json

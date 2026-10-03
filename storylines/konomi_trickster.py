@@ -46,6 +46,12 @@ JOURNEY = "konomi.trickster.journey_paid"
 LATE_COMMITTED = "konomi.trickster.late_committed"
 DEAD = "konomi.retained_dead"
 CONFIRMED = "konomi.retained_return_confirmed"
+# Engine-q2 item 4: her confirmed death, persisted (trickster_world LATCHES), and the loss it leaves while no recall answers
+# it: Derived [[DEAD_LATCHED]] withheld by CONFIRMED (Story.DerivedForbids). Her living endings, her Last Call coda and her
+# call-in Forbid LOST; the dead.recalled rite (CONFIRMED) lifts it. A second death after a recall is not distinguished.
+DEAD_LATCHED = "konomi.dead.latched"
+LOST = "konomi.dead.unreturned"
+LOSS_PAGE = "konomi.ending_lost"
 KYADO_SAID_IT = "konomi.trickster.kyado_said_it"         # he said Cue_0109 to this Commander
 DRIVER = "konomi.trickster.cost.driver_paid"             # polish 9b: the loop road bought, and the minute sent
 LAMP = "konomi.trickster.cost.her_people"                # polish 9b: her people's rite; their price is silence
@@ -591,6 +597,16 @@ SCENES.append(scene("konomi.trickster.epilogue.sacrifice", "An account left open
     Relationship="konomi"))
 
 
+# Engine-q2 item 4: a committed Konomi who died at her post and was never recalled. Any path (her death is canon there; on
+# the Trickster path the recall was the road back, and it was not taken). Brief; it gets an independent prose pass.
+SCENES.append(scene(LOSS_PAGE, "Outstanding", "Epilogue", 5, "", [
+    nar("start", '''{n}Lady Konomi did not see the end of the war. She died at her post in Drezen, and the clerk who wrote the dispatch to Nerosyan spelled every one of her titles correctly, because he knew she would have checked.{/n}
+{n}Her ledger went home with her, exact to the copper. Every account the Commander held with her office was closed and signed in her own hand, except one line at the foot of the last page: "Consultations, the Commander. Outstanding." The Commander settled it with the court of Nerosyan at her rate, by the hour, and asked for a receipt. None was ever sent.{/n}''',
+      c())],
+    requires=(LOST,), RequiresAnyGroups=[["konomi.committed", LATE_COMMITTED]], forbids=("konomi.closed", "sacrifice"), last=99,
+    Relationship="konomi", ForbidOverrides={"sacrifice": "trickster.commander_back"}))
+
+
 # --- Reactions (05 section 3.1: exactly Regill and Kyado) ---------------------------------------------------------
 
 REACTIONS = [
@@ -733,3 +749,21 @@ def integrate(payload):
     buried["Requires"].append(BURIED)
     _node(buried, "start")["Text"] = PUBLIC_BURIED_TEXT
     payload["Scenes"].append(buried)
+
+    # Engine-q2 item 4: her confirmed death outlives the body check. Every page that stages her alive after the war Forbids
+    # LOST; only her loss page and the invitation copy (which stages nobody) read it otherwise. Last Call's coda and call-in
+    # read LOST in lastcall_partners (page_forbids, call_forbids).
+    # The latch row lives in trickster_world.LATCHES; its binder only expands its own composites, so bind it here too.
+    latch = payload.setdefault("Latches", {}).setdefault(DEAD_LATCHED, [DEAD])
+    if latch != [DEAD]:
+        raise ValueError("konomi_trickster: conflicting latch " + DEAD_LATCHED)
+    payload.setdefault("Derived", {})[LOST] = [[DEAD_LATCHED]]
+    payload.setdefault("DerivedForbids", {})[LOST] = [CONFIRMED]
+    for s in payload["Scenes"]:
+        if (s.get("Relationship") == "konomi" and s.get("Owner") == "Epilogue" and s["Id"] not in DEATH_SAFE
+                and LOST not in s["Forbids"]):
+            s["Forbids"].append(LOST)
+
+
+# Epilogue pages that do not stage a living Konomi: her loss page, and the copy of an invitation (names her, stages nobody).
+DEATH_SAFE = (LOSS_PAGE, "konomi.ending_missed_interrupted")

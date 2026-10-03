@@ -1,5 +1,5 @@
 """Seelah continuation draft; restoration and transformed contact access are separate work."""
-from story_format import c, n, scene
+from story_format import c, n, p, scene
 from storylines.seelah_progression import future_gate_nodes, farewell_gate_nodes
 
 SCENES = []
@@ -363,3 +363,20 @@ ending("unfinished", '''{n}Seelah remembered the evenings she had spent with the
 {n}Sometimes Seelah smiled over those evenings. She had never heard the Commander promise more. There were still people calling for help, and she took her sword down the road.{/n}''', requires=("seelah.courting",), forbids=("seelah.committed", "seelah.closed", "seelah_dead", "seelah_gone"))
 ending("aeon", '''{n}In a world spared the Worldwound, Seelah had other roads to travel and no memory of a crusade that never happened. She still drank too much at weddings, still won races she had no business winning, and still stopped in the street for any child who looked hungry enough to steal.{/n}
 {n}Some evenings, for no reason she could name, she kicked her pack aside at the fire and left half the blanket empty. Nobody came. She slept on her own side of it anyway, and in the morning she rolled it up and went on.{/n}''', requires=("seelah.committed",), forbids=("seelah.closed",), owner="AeonEpilogue")
+
+
+# Earned presence (rubric Binding context (3)): a Commander who stepped into the Wound and prepared no return is mourned,
+# not met by the fire. The living endings above now Forbid the sacrifice unless trickster.commander_back holds.
+SCENES.append(scene("seelah.ending_sacrifice", "A place beside the fire", "Epilogue", 5, "", [
+    n("start", "Narrator", """{n}Word came back from the Wound with the heralds, and the heralds had already decided it was glorious. Seelah let one of them say so. When he said it a second time she took the trumpet out of his hands and told him to go and help somebody.{/n}
+{n}There was no body to wait for. She took the chair the Commander had kept beside her fire, carried it out to the Kenabres road, and left it at the first shrine of Iomedae she passed, with a pair of ruined boots under it. The priests called it an offering. It was a complaint, and she meant the Inheritor to hear it.{/n}
+{n}Then she went where she was needed, because that was the promise they had actually made each other, and she would not let the Wound have that as well.{/n}""", c(),
+      portrait="Seelah", paragraphs=(
+          p("""{n}The purse stayed in her pack, tied badly on purpose, with the note still inside that she had meant to leave on a pillow after the war. Nobody ever asked her properly. She never untied it.{/n}""",
+            requires=("seelah.trickster.late_committed",)),
+      )),
+], Relationship="seelah", last=99, requires=("sacrifice",),
+    forbids=("seelah.closed", "seelah_dead", "seelah_gone", "seelah.trickster.declined", "seelah.trickster.friends"),
+    RequiresAnyGroups=[["seelah.committed", "seelah.lovers", "seelah.trickster.late_committed"]],
+    ForbidOverrides={"seelah_dead": "seelah.trickster.returned", "seelah_gone": "seelah.trickster.returned",
+                     "seelah.trickster.declined": "seelah.committed", "seelah.trickster.friends": "seelah.committed"}))

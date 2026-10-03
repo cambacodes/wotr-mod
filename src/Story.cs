@@ -19,6 +19,9 @@ namespace Tirabade
         public Dictionary<string, string> UnlockableFlags = new Dictionary<string, string>();
         public Dictionary<string, string[]> QuestObjectives = new Dictionary<string, string[]>();
         public Dictionary<string, string> InventoryItems = new Dictionary<string, string>();
+        // E10 (party-only): a BlueprintItem in the party inventory (Player.Inventory, which holds every party member's equipped
+        // items), never the shared stash. For scenes where an item must be on the Commander, e.g. a sword drawn or handed over.
+        public Dictionary<string, string> PartyItems = new Dictionary<string, string>();
         public Dictionary<string, string> StartedQuests = new Dictionary<string, string>();
         // E10: a BlueprintFeature (any fact) the main character holds, e.g. a mythic path trick the player chose.
         public Dictionary<string, string> MainCharacterFacts = new Dictionary<string, string>();
@@ -36,9 +39,15 @@ namespace Tirabade
         public List<NativeOpener> Openers = new List<NativeOpener>();
         // E14d: reviewed native epilogue cues replaced by an RRT epilogue scene's text when an earned condition holds.
         public Dictionary<string, NativeEpilogueEditSpec> NativeEpilogueEdits = new Dictionary<string, NativeEpilogueEditSpec>();
+        // E14d extension (suppression): reviewed native epilogue cues hidden while an earned condition holds, with no text of
+        // their own (a follow-on slide that the relationship's own pages contradict). Warning-only: a refusal never degrades.
+        public Dictionary<string, NativeEpilogueSuppressionSpec> NativeEpilogueSuppressions = new Dictionary<string, NativeEpilogueSuppressionSpec>();
         // E18: reviewed native gates (NativeGate.Reviewed), keyed by gate id. While When holds, the gated native checker reads
         // false and the native content takes its own false branch. Never starts or completes a native etude.
         public Dictionary<string, NativeGateSpec> NativeGates = new Dictionary<string, NativeGateSpec>();
+        // E19: reviewed native objectives settled (failed, never completed) while When holds and the objective is still Started:
+        // a journal step the route's world made moot (Greybor's Obj5A after Devarra flew). Trickster only, warning-only.
+        public Dictionary<string, NativeGateSpec> NativeObjectiveSettlements = new Dictionary<string, NativeGateSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E17 (native outcome bridge): the only native etudes a choice may start (Choice.StartEtude), each a GUID the story
@@ -49,6 +58,14 @@ namespace Tirabade
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
+        // E4b (household: closed routes leave eligibility): a Derived key listed here also needs every named relationship's
+        // route open (Rules.RouteOpen: its ClosedFlag is not held and no UnavailableFlag blocks, so a Trickster return named in
+        // UnavailableOverrides lifts a death or departure). Read from each relationship's own data; nothing is hand-coded.
+        public Dictionary<string, string[]> DerivedOpenRoutes = new Dictionary<string, string[]>();
+        // Engine-q2 (current path): a Derived key listed here is also withheld while any named flag holds (a negated input).
+        // trickster.now = trickster AND NOT (trickster.failed, dragon, legend, swarm): the Commander is on the Trickster path
+        // right now. Read by DerivedInputs, so ordering, cycle checks and missing-binding propagation see the forbids too.
+        public Dictionary<string, string[]> DerivedForbids = new Dictionary<string, string[]>();
         // E14g: count composites, true when at least Min of Of hold; computed after Derived (groundwork).
         public Dictionary<string, CountSpec> Counts = new Dictionary<string, CountSpec>();
         // E15 (RRT book UI): data-driven paged books (the Ledger, guides) and in-game glossary tooltips ({g|RRT_...}).
@@ -246,6 +263,31 @@ namespace Tirabade
         public string Key = "";
         public string Replacement = "";
         public string[][] When = Array.Empty<string[]>();
+        // E14d extension: this replacement keeps the native cue's reviewed OnShow image action (else the page picture shows).
+        public bool KeepNativeImage;
+        // E14d extension: further replacements of the same native cue, tried in order after this one (first match plays).
+        public NativeEpilogueVariant[] Variants = Array.Empty<NativeEpilogueVariant>();
+        // E14i: a cue of a common dialog, not a book page. Parent is the cue whose Continue (Strategy First) lists it, Dialog
+        // the dialog whose FirstCue holds Parent; Page and Sequence stay empty. The replacement keeps the native continuation.
+        public string Parent = "";
+        public string Dialog = "";
+    }
+
+    // E14d extension: a reviewed native cue hidden (never replaced) while When holds. Relationship owns the earned flags.
+    public sealed class NativeEpilogueSuppressionSpec
+    {
+        public string Page = "";
+        public string Sequence = "";
+        public string Key = "";
+        public string Relationship = "";
+        public string[][] When = Array.Empty<string[]>();
+    }
+
+    public sealed class NativeEpilogueVariant
+    {
+        public string Replacement = "";
+        public string[][] When = Array.Empty<string[]>();
+        public bool KeepNativeImage;
     }
 
     public sealed class NativeGateSpec
@@ -640,6 +682,35 @@ namespace Tirabade
         public static bool Failed(Relationship relationship, Snapshot state) =>
             relationship.FailureFlags.Any(flag => Blocks(relationship, flag, state));
 
+        // Engine-q2 item 2: the flags that record a Trickster return for a relationship (UnavailableOverrides values and
+        // TricksterAccess Returned keys). Each lifts the loss it answers (Blocks), so Failed no longer holds once it does.
+        public static IEnumerable<string> ReturnFlags(Relationship relationship) =>
+            (relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>())
+                .Concat((relationship.TricksterAccess?.Values ?? (IEnumerable<TricksterAccess>)Array.Empty<TricksterAccess>())
+                    .Select(access => access.Returned).OfType<string>())
+                .Distinct();
+
+        // Engine-q2 item 2: the relationship objective's journal action. "fail": Started while a death or departure blocks the
+        // route (Main.Update, as before). "restore": Failed (an earlier death or departure), but a Trickster return now holds,
+        // the loss no longer blocks, the route is not closed and the commitment holds: the objective is reopened and completed
+        // (RecordProgress only completes Started objectives, so without this a returned, committed partner kept a Failed line).
+        public static string? ObjectiveStep(Relationship relationship, Snapshot state, bool started, bool failed)
+        {
+            if (started) return Failed(relationship, state) ? "fail" : null;
+            if (!failed || StillLost(relationship, state) || state.Has(relationship.ClosedFlag) || !state.Has(relationship.CommittedFlag))
+                return null;
+            return ReturnFlags(relationship).Any(state.Has) ? "restore" : null;
+        }
+
+        // The runtime "loss" (Main.BuildState) and its native inputs. It carries no return of its own (the trio route's
+        // UnavailableOverrides name its inputs), so a restore reads it through them: every held input must be answered.
+        public static readonly string[] LossInputs = { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" };
+
+        // Failed, except that "loss" counts as lifted when every held input is lifted by the relationship's own override.
+        private static bool StillLost(Relationship relationship, Snapshot state) => relationship.FailureFlags.Any(flag => flag == "loss"
+            ? LossInputs.Any(input => state.Has(input) && !(relationship.UnavailableOverrides.TryGetValue(input, out var back) && state.Has(back)))
+            : Blocks(relationship, flag, state));
+
         // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
         public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
         public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
@@ -677,7 +748,7 @@ namespace Tirabade
 
         // E10 reader kinds.
         public static IEnumerable<string> ReaderKeys(Story story) => story.UnlockableFlags.Keys.Concat(story.QuestObjectives.Keys)
-            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys).Concat(story.MainCharacterFacts.Keys);
+            .Concat(story.InventoryItems.Keys).Concat(story.StartedQuests.Keys).Concat(story.MainCharacterFacts.Keys).Concat(story.PartyItems.Keys);
 
         public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
@@ -690,6 +761,7 @@ namespace Tirabade
             || story.SeenCues.ContainsKey(flag) || story.SelectedAnswers.ContainsKey(flag)
             || story.StartedDialogs.ContainsKey(flag) || story.UnlockableFlags.ContainsKey(flag) || story.QuestObjectives.ContainsKey(flag)
             || story.InventoryItems.ContainsKey(flag) || story.StartedQuests.ContainsKey(flag) || story.MainCharacterFacts.ContainsKey(flag)
+            || story.PartyItems.ContainsKey(flag)
             || flag == "inhuman" || flag == "ascended" || flag == "chapter_one" || flag == "chapter_later"
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.retained_hostile" || flag == "konomi.return_contact_available"
@@ -705,17 +777,12 @@ namespace Tirabade
         public static void Complete(Story story, Snapshot state)
         {
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
-            // Validate guarantees an acyclic graph, so this reaches its fixed point in at most Derived.Count passes.
-            for (bool changed = story.Derived.Count > 0; changed;)
-            {
-                changed = false;
-                foreach (var pair in story.Derived)
-                    if (!state.Has(pair.Key) && pair.Value.Any(group => group.All(state.Has)))
-                    {
-                        state.Flags.Add(pair.Key);
-                        changed = true;
-                    }
-            }
+            // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
+            // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
+            foreach (var key in DerivedOrder(story))
+                if (!state.Has(key) && story.Derived[key].Any(group => group.All(state.Has)) && DerivedRoutesOpen(story, key, state)
+                    && !DerivedForbidden(story, key, state))
+                    state.Flags.Add(key);
             foreach (var pair in story.Counts)
                 if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
             CompleteWordMadeTrue(state);
@@ -740,6 +807,49 @@ namespace Tirabade
             if (left > 0) state.Flags.Add("trickster.wmt.available");
         }
 
+        // E4b: a relationship's route is open while its ClosedFlag is not held and none of its UnavailableFlags blocks (Blocks:
+        // an authored UnavailableOverrides return lifts the flag). The same closure the relationship's own scenes obey.
+        public static bool RouteOpen(Relationship relationship, Snapshot state) => !state.Has(relationship.ClosedFlag)
+            && !relationship.UnavailableFlags.Any(flag => Blocks(relationship, flag, state));
+
+        // Engine-q2: a DerivedForbids flag withholds its Derived key (the key is never set while the flag holds).
+        public static bool DerivedForbidden(Story story, string key, Snapshot state) =>
+            story.DerivedForbids.TryGetValue(key, out var forbids) && forbids.Any(state.Has);
+
+        public static bool DerivedRoutesOpen(Story story, string key, Snapshot state) =>
+            !story.DerivedOpenRoutes.TryGetValue(key, out var routes) || routes.All(rel => RouteOpen(story.Relationships[rel], state));
+
+        // The flags a Derived key reads: its AND-groups, plus every closure input of its DerivedOpenRoutes relationships.
+        public static IEnumerable<string> DerivedInputs(Story story, string key)
+        {
+            var inputs = story.Derived[key].SelectMany(group => group);
+            if (story.DerivedForbids.TryGetValue(key, out var forbids)) inputs = inputs.Concat(forbids);
+            if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
+                foreach (var rel in routes)
+                {
+                    var relationship = story.Relationships[rel];
+                    inputs = inputs.Concat(new[] { relationship.ClosedFlag }).Concat(relationship.UnavailableFlags ?? Array.Empty<string>())
+                        .Concat(relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>());
+                }
+            return inputs;
+        }
+
+        // Derived keys, every key after the Derived keys it reads (Validate rejects cycles; the visited set keeps this finite).
+        public static List<string> DerivedOrder(Story story)
+        {
+            var order = new List<string>(story.Derived.Count);
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            void Visit(string key)
+            {
+                if (!seen.Add(key)) return;
+                foreach (var input in DerivedInputs(story, key))
+                    if (story.Derived.ContainsKey(input)) Visit(input);
+                order.Add(key);
+            }
+            foreach (var key in story.Derived.Keys) Visit(key);
+            return order;
+        }
+
         // Build: a missing native input makes dependent composites unavailable too (like "loss").
         // A latch is only lost when every source is missing: one surviving source can still record it.
         public static void PropagateMissing(Story story, HashSet<string> missing)
@@ -750,7 +860,7 @@ namespace Tirabade
             {
                 changed = false;
                 foreach (var pair in story.Derived)
-                    if (!missing.Contains(pair.Key) && pair.Value.SelectMany(group => group).Any(missing.Contains))
+                    if (!missing.Contains(pair.Key) && DerivedInputs(story, pair.Key).Any(missing.Contains))
                     {
                         missing.Add(pair.Key);
                         changed = true;
@@ -948,11 +1058,75 @@ namespace Tirabade
         public static bool ParagraphAlwaysShown(Scene scene, Paragraph paragraph) => paragraph.Requires.All(scene.Requires.Contains)
             && !paragraph.Forbids.Any() && paragraph.AnyGroups.All(group => group.Any(scene.Requires.Contains));
 
-        // E14d: an OR of AND-groups over the snapshot.
-        public static bool WhenHolds(string[][] when, Snapshot state) => when.Any(group => group.All(state.Has));
+        // E14d: an OR of AND-groups over the snapshot. A "!flag" member holds while the flag is absent (only native epilogue
+        // edits and suppressions may use it; every other When validates its members as plain known keys).
+        public static bool WhenHolds(string[][] when, Snapshot state) => when.Any(group => group.All(flag => WhenMember(flag, state)));
+
+        private static bool WhenMember(string flag, Snapshot state) =>
+            flag.StartsWith("!", StringComparison.Ordinal) ? !state.Has(flag.Substring(1)) : state.Has(flag);
 
         // E14d: scenes used as native-cue replacements are never attached as pages of their own.
-        public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values.Any(edit => edit.Replacement == scene.Id);
+        public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values
+            .Any(edit => EditVariants(edit).Any(variant => variant.Replacement == scene.Id));
+
+        // E14d: an edit's ordered variants; the spec's own Replacement/When is variant 0.
+        public static NativeEpilogueVariant[] EditVariants(NativeEpilogueEditSpec edit) => new[] {
+            new NativeEpilogueVariant { Replacement = edit.Replacement, When = edit.When, KeepNativeImage = edit.KeepNativeImage } }
+            .Concat(edit.Variants ?? Array.Empty<NativeEpilogueVariant>()).ToArray();
+
+        // E14d: the first variant whose When holds, or -1 (the native cue plays).
+        public static int SelectNativeEditVariant(NativeEpilogueVariant[] variants, Snapshot state) =>
+            SelectNativeEditVariant(null, variants, state);
+
+        // Earned presence (rubric Binding context (3)): with the story, a variant is also skipped while one of its replacement
+        // scene's Forbids holds (ForbidOverrides honoured), so a page that stages a living Commander never replaces the
+        // native slide after an unreturned sacrifice; the next variant, or the native cue, plays instead.
+        public static int SelectNativeEditVariant(Story? story, NativeEpilogueVariant[] variants, Snapshot state)
+        {
+            for (int i = 0; i < variants.Length; i++)
+                if (WhenHolds(variants[i].When, state) && !ReplacementForbidden(story, variants[i].Replacement, state)) return i;
+            return -1;
+        }
+
+        // E14d delivery (the live predicate, ported from the Wenduag polish's EditApplies): a variant plays only while its When
+        // holds AND its replacement scene is available on the same snapshot (Requires, Forbids with overrides, chapter window,
+        // degraded relationship), as an appended epilogue page is. `scenes` are the variants' replacement scenes, in order.
+        public static int SelectNativeEditVariant(Story story, NativeEpilogueVariant[] variants, Scene?[] scenes, Snapshot state)
+        {
+            for (int i = 0; i < variants.Length; i++)
+                if (WhenHolds(variants[i].When, state) && scenes[i] is Scene scene && Available(story, scene, state)) return i;
+            return -1;
+        }
+
+        // E12 contacts: the one usable unit of a blueprint, or null. A dead or destroyed original beside a route-saved living copy
+        // (spawn-copy presence) is ignored; any other unusable match, or a second usable one, makes the contact ambiguous.
+        public static T? SingleUsable<T>(IEnumerable<T> candidates, Func<T, bool> usable, Func<T, bool> ignorable) where T : class
+        {
+            T? found = null;
+            foreach (var candidate in candidates)
+            {
+                if (usable(candidate))
+                {
+                    if (found != null) return null;
+                    found = candidate;
+                }
+                else if (!ignorable(candidate)) return null;
+            }
+            return found;
+        }
+
+        public static Scene?[] EditScenes(Story story, NativeEpilogueVariant[] variants) =>
+            variants.Select(variant => story.Scenes.FirstOrDefault(scene => scene.Id == variant.Replacement)).ToArray();
+
+        public static bool ReplacementForbidden(Story? story, string replacement, Snapshot state)
+        {
+            var scene = story?.Scenes.FirstOrDefault(s => s.Id == replacement);
+            return scene != null && scene.Forbids.Any(flag => ForbidHolds(scene, flag, state));
+        }
+
+        // E14d: the registered cue name (save reference) of a variant. Variant 0 keeps the original "native-edit.<cue>".
+        public static string NativeEditCueName(string cue, NativeEpilogueEditSpec edit, int variant) => variant == 0
+            ? "native-edit." + cue : "native-edit." + cue + "." + EditVariants(edit)[variant].Replacement;
 
         // E12b: the planar offset (dx, dz) from an anchor facing `orientation` degrees (Unity: 0 = +z, clockwise), and the
         // orientation that faces the anchor from the placed unit.
@@ -1103,7 +1277,7 @@ namespace Tirabade
             foreach (var scene in story.Scenes)
                 if (scene.Kind != null && (Array.IndexOf(SceneKinds, scene.Kind) < 0 || !IsRemote(scene)))
                     throw new InvalidOperationException("Invalid scene kind (E15c: letter, visit, sending, memory, event, invitation; remote scenes only): " + scene.Id);
-            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.StartedQuests == null
+            if (story.UnlockableFlags == null || story.QuestObjectives == null || story.InventoryItems == null || story.PartyItems == null || story.StartedQuests == null
                 || story.MainCharacterFacts == null)
                 throw new InvalidOperationException("Native reader collections cannot be null.");
             foreach (var pair in story.CompletedQuests)
@@ -1159,6 +1333,7 @@ namespace Tirabade
             foreach (var key in readers)
             {
                 string? guid = story.UnlockableFlags.TryGetValue(key, out var f) ? f : story.InventoryItems.TryGetValue(key, out var i) ? i
+                    : story.PartyItems.TryGetValue(key, out var pi) ? pi
                     : story.StartedQuests.TryGetValue(key, out var q) ? q : story.MainCharacterFacts.TryGetValue(key, out var mf) ? mf
                     : story.QuestObjectives.TryGetValue(key, out var o) && o?.Length == 2
                         && ObjectiveStates.Contains(o[1]) ? o[0] : null;
@@ -1253,6 +1428,7 @@ namespace Tirabade
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
+            ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
                 throw new InvalidOperationException("RemovableItems must be distinct native item GUIDs.");
@@ -1471,42 +1647,146 @@ namespace Tirabade
                 if (gate == null || !ReviewedNativeGates.TryGetValue(pair.Key, out var target) || gate.Target != target
                     || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
                     || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
-                        || !g.Contains("trickster.ever")))
+                        || !OnTricksterPath(g)))
                     throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
         }
+
+        // E19: a settlement names a reviewed objective, a known relationship and known When groups that each require trickster.ever.
+        private static void ValidateNativeObjectiveSettlements(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeObjectiveSettlements == null) throw new InvalidOperationException("NativeObjectiveSettlements cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeObjectiveSettlements)
+            {
+                var spec = pair.Value;
+                if (spec == null || !ReviewedNativeObjectives.TryGetValue(pair.Key, out var target) || spec.Target != target
+                    || spec.Relationship == null || !story.Relationships.ContainsKey(spec.Relationship) || spec.When == null || spec.When.Length == 0
+                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f)) || !OnTricksterPath(g)))
+                    throw new InvalidOperationException("Invalid native objective settlement (reviewed id and objective, known relationship, known "
+                        + "When groups that each require trickster.ever): " + pair.Key);
+            }
+        }
+
+        // E19: the reviewed settlements and their objectives. Each is failed (never completed: no experience, no follow-on objective).
+        // Greybor's DragonHunt Obj5A ("Track down and kill the dragon in the Ivory Sanctum", given by the RedDragon_Fly entrance
+        // cutscene, completed only by the Sanctum dragon's death trigger in IvorySanctum_MainEtude): FinishParent false, so the
+        // quest stays open and the native interchapter (MidnightFane_InterchapterQuestFail, DragonHunt_HiddenFail) ends it as before.
+        public static readonly Dictionary<string, string> ReviewedNativeObjectives = new Dictionary<string, string>
+        {
+            ["greybor.dragon_hunt.sanctum"] = "fde08188fb6cf654a80cc3f30c3fb5a8",
+        };
+
+        // E19: a settlement applies while its relationship is live and any When group holds.
+        public static bool NativeObjectiveSettles(Story story, string key, Snapshot state) => story.NativeObjectiveSettlements.TryGetValue(key, out var spec)
+            && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
 
         // E18: the reviewed gate ids and their native targets (src/NativeGate.cs holds the audited contracts).
         public static readonly Dictionary<string, string> ReviewedNativeGates = new Dictionary<string, string>
         {
             ["ivory_sanctum.red_dragon_spawn"] = "977818b761d048d49a0fe19a1c8fccc4",   // IvorySanctum_MainEtude: RedDragon_CR20 spawn branches
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
+            ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
+            ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
         };
+
+        // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
+        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog" };
 
         // E18: a gate holds while its relationship is live and any When group holds.
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)
             && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
 
-        // E14d: each edit names a whitelisted cue with its exact evidence, a 1-node epilogue replacement scene, and When groups
-        // that each require the replacement relationship's CommittedFlag.
+        // E14d: each edit names a whitelisted cue with its exact evidence and ordered variants. Each variant is a 1-node
+        // epilogue replacement scene used once, with known When groups that each require the replacement relationship's
+        // CommittedFlag or one of its Trickster return flags (a fate the route undid: the native slide states it as final).
         private static void ValidateNativeEpilogueEdits(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
         {
             if (story.NativeEpilogueEdits == null) throw new InvalidOperationException("NativeEpilogueEdits cannot be null.");
-            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            bool Known(string flag) => EditWhenKnown(story, flag, authored, native, runtime);
+            var used = story.NativeEpilogueEdits.Values.Where(edit => edit != null)
+                .SelectMany(edit => EditVariants(edit).Select(variant => variant?.Replacement)).ToList();
             foreach (var pair in story.NativeEpilogueEdits)
             {
                 var edit = pair.Value;
-                var scene = story.Scenes.FirstOrDefault(s => s.Id == edit?.Replacement);
-                if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || scene == null
-                    || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
-                    || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
-                    || edit.When == null || edit.When.Length == 0 || edit.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
-                        || !g.Contains(story.Relationships[scene.Relationship].CommittedFlag))
-                    || story.NativeEpilogueEdits.Count(other => other.Value?.Replacement == edit.Replacement) != 1)
-                    throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement, known When groups that each "
-                        + "require its relationship's CommittedFlag): " + pair.Key);
+                if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || edit.Variants == null || edit.Variants.Any(variant => variant == null))
+                    throw new InvalidOperationException("Invalid native epilogue edit (null spec or variant, or a cue that is not a GUID): " + pair.Key);
+                // E14i: a dialog cue names its parent cue and dialog (GUIDs) and no page or sequence; it has no picture to keep.
+                bool inDialog = !string.IsNullOrEmpty(edit.Parent) || !string.IsNullOrEmpty(edit.Dialog);
+                if (inDialog && (!Guid.TryParseExact(edit.Parent ?? "", "N", out _) || !Guid.TryParseExact(edit.Dialog ?? "", "N", out _)
+                        || !string.IsNullOrEmpty(edit.Page) || !string.IsNullOrEmpty(edit.Sequence) || Rules.EditVariants(edit).Any(v => v.KeepNativeImage)))
+                    throw new InvalidOperationException("Invalid E14i native dialog edit (parent and dialog GUIDs, no page, sequence or kept image): " + pair.Key);
+                foreach (var variant in Rules.EditVariants(edit))
+                {
+                    var scene = story.Scenes.FirstOrDefault(s => s.Id == variant.Replacement);
+                    var relationship = scene != null && story.Relationships.TryGetValue(scene.Relationship, out var r) ? r : null;
+                    var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, scene!.Relationship, relationship);
+                    // E14i on a non-epilogue dialog cue (engine queue 8c/9a): a route state the relationship authored itself (e.g. Devarra's
+                    // flight, Kiana's separation) also earns the edit; the delivery predicate still reads the replacement scene.
+                    if (inDialog && relationship != null) earned.UnionWith(authored.Where(flag => flag.StartsWith(scene!.Relationship + ".", StringComparison.Ordinal)));
+                    if (scene == null || relationship == null
+                        || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
+                        || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
+                        || variant.When == null || variant.When.Length == 0 || variant.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
+                            || !g.Any(earned.Contains) || !OnTricksterPath(g))
+                        || used.Count(other => other == variant.Replacement) != 1)
+                        throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement used once, known When groups "
+                            + "that each require trickster.ever and its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
+                }
             }
+            if (story.NativeEpilogueSuppressions == null) throw new InvalidOperationException("NativeEpilogueSuppressions cannot be null.");
+            foreach (var pair in story.NativeEpilogueSuppressions)
+            {
+                var spec = pair.Value;
+                var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
+                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship, relationship);
+                if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
+                    || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
+                    || spec.Key == null || spec.When == null || spec.When.Length == 0
+                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => f == null || !Known(f)) || !g.Any(earned.Contains)
+                        || !OnTricksterPath(g)))
+                    throw new InvalidOperationException("Invalid native epilogue suppression (a GUID cue not also edited, its page and sequence, "
+                        + "a relationship, known When groups that each require trickster.ever and its CommittedFlag or Trickster return flag): " + pair.Key);
+            }
+        }
+
+        // Binding context (4), TRICKSTER-RUBRIC: every native edit, suppression and gate requires the Trickster path in every When
+        // group, so it is inert on the other paths (canon stands there).
+        public const string TricksterPath = "trickster.ever";
+
+        // Engine-q2 (GLOBAL current-path reader). trickster.ever is the run latch (TT-02: PlayerIsTrickster seen playing, or
+        // PlayerWasTrickster): a HISTORICAL fact, kept by a run that later leaves the path. trickster.now holds only while the
+        // Commander is CURRENTLY on the Trickster path (Story.Derived [[trickster]] with Story.DerivedForbids, expansion.py):
+        // - Chapter 4 KTC_Fail starts TricksterMythicPathFailed (trickster.failed) and Chapter04 then completes PlayerIsTrickster;
+        // - the Goddesses' Summit conversions (Gold Dragon Cue_0193, Legend Cue_0195, Swarm Cue_0371) start MythicPathFailed,
+        //   which starts TricksterMythicPathFailed for a former Trickster. PlayerIsDragon and PlayerIsLocust also complete
+        //   PlayerIsTrickster, but PlayerIsLegend does NOT: a Trickster turned Legend still has PlayerIsTrickster playing, so
+        //   the live `trickster` binding alone is not a current-path reader. trickster.now drops on the first of these signals
+        //   (trickster.failed, or a dragon/legend/swarm path etude playing) and never returns: each is permanent.
+        // A canon change counts as on the path with either key; earned_presence_lint T6 decides which one it must read.
+        public const string TricksterNow = "trickster.now";
+
+        public static bool OnTricksterPath(IEnumerable<string> group) => group.Contains(TricksterPath) || group.Contains(TricksterNow);
+
+        // E14d: the flags that earn a native epilogue edit or suppression: the relationship's CommittedFlag, its Trickster
+        // return flags (a fate the route undid) and (E14i) its R2-6 late commitment "<relationship>.trickster.late_committed"
+        // when the story derives one (the route's own commit-equivalent, e.g. Areelu's struck wager). Every When group must
+        // hold one of them positively.
+        private static HashSet<string> EarnedFlags(Story story, string id, Relationship relationship)
+        {
+            var earned = new HashSet<string>(new[] { relationship.CommittedFlag }
+                .Concat(relationship.TricksterAccess.Values.Select(access => access.Returned).OfType<string>()));
+            if (story.Derived.ContainsKey(id + ".trickster.late_committed")) earned.Add(id + ".trickster.late_committed");
+            return earned;
+        }
+
+        // E14d: a When member is a known key, or "!" and a known key.
+        private static bool EditWhenKnown(Story story, string flag, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            string key = flag.StartsWith("!", StringComparison.Ordinal) ? flag.Substring(1) : flag;
+            return key.Length > 0 && !key.StartsWith("!", StringComparison.Ordinal)
+                && (authored.Contains(key) || native.Contains(key) || runtime.Contains(key) || story.Derived.ContainsKey(key));
         }
 
         // E6: a reaction is one node of terminal choices; it never closes, and never touches another relationship's state.
@@ -1537,9 +1817,9 @@ namespace Tirabade
             if (!scene.TricksterDevice || relationship.TricksterAccess.Count == 0 || scene.Reaction
                 || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || scene.TricksterState != null && !relationship.TricksterAccess.ContainsKey(scene.TricksterState)
-                || !scene.Requires.Contains("trickster") && !scene.Requires.Contains("trickster.ever")
+                || !scene.Requires.Contains("trickster") && !scene.Requires.Contains("trickster.ever") && !scene.Requires.Contains(TricksterNow)
                 || !scene.Nodes.SelectMany(node => node.Choices).SelectMany(choice => choice.Set).Any(Records))
-                throw new InvalidOperationException("Invalid Trickster device (needs TricksterAccess, trickster or trickster.ever, "
+                throw new InvalidOperationException("Invalid Trickster device (needs TricksterAccess, trickster, trickster.now or trickster.ever, "
                     + "and a choice setting the return, primed or cost flag): " + scene.Id);
         }
 
@@ -1588,6 +1868,20 @@ namespace Tirabade
                     if (!authored.Contains(source) && !native.Contains(source) && !runtime.Contains(source) && !story.Derived.ContainsKey(source))
                         throw new InvalidOperationException("Derived key reads an unknown flag: " + pair.Key + "/" + source);
             }
+            // E4b: a route guard names Derived keys and known relationships, each at most once.
+            if (story.DerivedOpenRoutes == null) throw new InvalidOperationException("DerivedOpenRoutes cannot be null.");
+            foreach (var pair in story.DerivedOpenRoutes)
+                if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0
+                    || pair.Value.Distinct().Count() != pair.Value.Length || pair.Value.Any(rel => rel == null || !story.Relationships.ContainsKey(rel)))
+                    throw new InvalidOperationException("Invalid DerivedOpenRoutes entry (a Derived key; distinct known relationships): " + pair.Key);
+            // Engine-q2: a forbid list names a Derived key and distinct known flags, none of them read positively by the same key.
+            if (story.DerivedForbids == null) throw new InvalidOperationException("DerivedForbids cannot be null.");
+            foreach (var pair in story.DerivedForbids)
+                if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0 || pair.Value.Distinct().Count() != pair.Value.Length
+                    || pair.Value.Any(flag => string.IsNullOrWhiteSpace(flag) || flag == pair.Key
+                        || !authored.Contains(flag) && !native.Contains(flag) && !runtime.Contains(flag) && !story.Derived.ContainsKey(flag))
+                    || story.Derived[pair.Key].Any(group => group.Any(pair.Value.Contains)))
+                    throw new InvalidOperationException("Invalid DerivedForbids entry (a Derived key; distinct known flags it does not also require): " + pair.Key);
             var state = new Dictionary<string, int>();
             void Visit(string key, int depth)
             {
@@ -1597,7 +1891,7 @@ namespace Tirabade
                     return;
                 }
                 state[key] = 1;
-                foreach (var source in story.Derived[key].SelectMany(group => group).Where(story.Derived.ContainsKey)) Visit(source, depth + 1);
+                foreach (var source in DerivedInputs(story, key).Where(story.Derived.ContainsKey)) Visit(source, depth + 1);
                 state[key] = 2;
             }
             foreach (var key in story.Derived.Keys) Visit(key, 0);

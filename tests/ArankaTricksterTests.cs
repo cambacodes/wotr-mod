@@ -594,7 +594,7 @@ internal static class ArankaTricksterTests
         // G5: no Aranka Trickster beat gates on another romance.
         var others = story.Relationships.Where(p => p.Key != "aranka")
             .SelectMany(p => new[] { p.Value.ClosedFlag, p.Value.CommittedFlag, p.Value.StartedFlag }.Concat(p.Value.UnavailableFlags))
-            .Except(new[] { "inhuman", "swarm", "true_lich", "sacrifice", "ascended", "loss", "demon", "devil", "lich" }).ToHashSet();
+            .Except(new[] { "trickster.failed", "inhuman", "swarm", "true_lich", "sacrifice", "ascended", "loss", "demon", "devil", "lich" }).ToHashSet();
         foreach (var s in story.Scenes.Where(s => s.Id.StartsWith(P, StringComparison.Ordinal) && !s.Reaction))
             check(!s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g)).Any(others.Contains),
                 "G5: an Aranka Trickster scene gates on another romance: " + s.Id);

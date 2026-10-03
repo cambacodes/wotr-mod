@@ -138,7 +138,10 @@ internal static class GesmerhaLateCampaignTests
                 var altered = Program.Copy(state); altered.Flags.Add(flag);
                 check(Ending(altered).Single().Id == "gesmerha.late_ending_" + end, "Gesmerha special ending is false: " + flag);
                 altered.Flags.Add("gesmerha.dead");
-                check(Ending(altered).Single().Id == "gesmerha.late_ending_loss", "Gesmerha death loses precedence.");
+                // Earned presence (rubric Binding context (3)): her loss page has the Commander remembering her, so it does not
+                // play beside an unreturned sacrifice; with both dead the native slides stand.
+                if (flag == "sacrifice") check(!Ending(altered).Any(), "Gesmerha's loss page stages a living Commander after the sacrifice.");
+                else check(Ending(altered).Single().Id == "gesmerha.late_ending_loss", "Gesmerha death loses precedence.");
             }
         }
         foreach (var state in partial.Where(s => !s.Has("gesmerha.closed")))

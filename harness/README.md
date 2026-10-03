@@ -326,7 +326,8 @@ Failures are:
 - `StartDialogWithoutTarget` skips proximity and speaker presence, so a host is reachable even where its unit is absent.
   A host whose first cue needs a present speaker may still bark only.
 - Contact-unit scenes are driven as well, but their entries also need the contact present (`ContactAvailable`). A forced
-  run away from the unit usually ends in `skipped-inline`.
+  run whose `ContactUnit` is not in the save's `AvailableContacts` is `skipped-inline` (direct runs: `skipped-native`) with
+  a probe of the unit (copies loaded, in-game, scene loaded, view). Run such pages from a save that stands near the unit.
 - E16 native openers (`RRT_opener.*`, the Table menu) are not clicked. Table scenes open from the menu view, not from a list.
   `household.table.offered` (the offer itself) is an inline scene and is driven.
 - `household.any_eligible` and other derived keys cannot be forced from a save.

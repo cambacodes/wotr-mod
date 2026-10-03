@@ -50,8 +50,9 @@ internal static class AneviaTricksterTests
         var grief = new[] { S("anevia.a_grief_with_a_name"), S("anevia.ending_grief_unanswered"), S("anevia.ending_wife_killed") };
         bool Any(Snapshot w, params Scene[] scenes) => scenes.Any(s => Rules.Available(story, s, w));
 
-        // Hooks: the devices are letters (her room in Kenabres has no engine area); the gate beats are on her own hub.
-        check(new[] { setup, wardrobe, fetched, confession, letterTwin }.All(s => s.Remote), "An Anevia letter became physical.");
+        // Hooks: the devices are delivered at rest (her room in Kenabres has no engine area); their kind is checked below.
+        // The gate beats are on her own hub.
+        check(new[] { setup, wardrobe, fetched, confession, letterTwin }.All(s => s.Remote), "An Anevia rest-delivered device became physical.");
         check(new[] { setup, wardrobe, fetched, confession }.All(s => s.TricksterDevice && s.TricksterState == "gone"), "Device states mislabelled.");
         check(new[] { gate, commit, second }.All(s => s.AnswerLists.SequenceEqual(new[] { "33960c7f7af40cd43b7f801a76c87a0b" })
               && s.ContactUnit == Contact && !s.TricksterDevice), "Gate beats left her own hub.");
@@ -143,6 +144,33 @@ internal static class AneviaTricksterTests
             var killerOutcomes = Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
             check(commitPages.Contains("widow_killed") && commitPages.Contains("said") && !commitPages.Contains("widow"), "The commit forgets whose sword it was.");
             check(killerOutcomes.All(r => !r.Has("anevia.committed")), "The killer reaches the commitment before the muster.");
+        }
+
+        // Both Tirabades left at the Coronation (IrabethGone, Beth alive): no beat speaks of Beth as dead.
+        {
+            var bothLeft = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_gone", "closets.known", "socot.gone");
+            check(Rules.Available(story, setup, bothLeft), "Both left: the wardrobe setup is unavailable.");
+            var leftPrimed = Program.Walk(setup, bothLeft).Single(r => r.Has(Primed));
+            var leftPages = new HashSet<string>();
+            var leftBack = Program.Walk(wardrobe, Later(story, leftPrimed, 24), (page, _) => leftPages.Add(page));
+            check(leftBack.Count == 1 && leftBack[0].Has(Returned) && leftPages.Contains("beth_left")
+                  && !leftPages.Contains("beth_dead") && !leftPages.Contains("killer") && !leftPages.Contains("beth_back"),
+                "Both left: the wardrobe treats a living, departed Beth as dead or returned.");
+            var leftGateWorld = Later(story, leftBack[0], 48);
+            check(Rules.Available(story, gate, leftGateWorld), "Both left: the gate is unavailable.");
+            var gatePages = new HashSet<string>();
+            var leftGate = Program.Walk(gate, leftGateWorld, (page, _) => gatePages.Add(page));
+            check(gatePages.Contains("beth_left") && gatePages.Contains("told_left") && !gatePages.Contains("beth_widow")
+                  && !gatePages.Contains("told") && !gatePages.Contains("beth_back"),
+                "Both left: the gate treats a living, departed Beth as dead.");
+            var handTaken = leftGate.Single(r => r.Has("anevia.trickster.hand_taken"));
+            var commitWorld = Later(story, handTaken, 96);
+            check(Rules.Available(story, commit, commitWorld), "Both left: the commit is unavailable.");
+            var commitLeftPages = new HashSet<string>();
+            var leftCommit = Program.Walk(commit, commitWorld, (page, _) => commitLeftPages.Add(page));
+            check(commitLeftPages.Contains("left") && commitLeftPages.Contains("morning_left") && !commitLeftPages.Contains("widow")
+                  && !commitLeftPages.Contains("morning") && leftCommit.Any(r => r.Has("anevia.committed")),
+                "Both left: the commit treats a living, departed Beth as dead, or cannot commit.");
         }
 
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
@@ -320,6 +348,53 @@ internal static class AneviaTricksterTests
             "A stranger who killed her wife is offered her door.");
         var closure = World(story, 6, "irabeth_dead", Killed, "anevia.lover");
         check(Rules.Available(story, S("anevia.ending_wife_killed"), closure), "The closure page is gone for a lover who never came back.");
+        // Sol pol INT: the rendered "wife killed" ending says where each played history left her, never "gone" after a soft no.
+        const string Closed = "Whatever other night they might once have had was gone";
+        const string Unpaid = "It was never said there";
+        const string Paid = "the price of the gate, not of the door";
+        const string Neutral = "mistaken for a pardon";
+        const string Letters = "None of them was quite a no";
+        const string MusterSaid = "Nobody in Drezen ever said it sideways again";
+        string EndingText(Snapshot history, out int pageCount)
+        {
+            var end = Program.Copy(history); end.Chapter = 6; Rules.Complete(story, end);
+            var pages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, end)).ToList();
+            pageCount = pages.Count(s => s.Id == "anevia.ending_wife_killed") == 1 ? pages.Count : -pages.Count;
+            if (pages.Count != 1 || pages[0].Id != "anevia.ending_wife_killed") return "";
+            var node = pages[0].Nodes.Last();
+            return string.Join("\n", new[] { node.Text }.Concat(Rules.VisibleParagraphs(node, end).Select(x => x.Text)));
+        }
+        int VariantCount(string text) => new[] { Closed, Unpaid, Paid, Neutral }.Count(text.Contains);
+        // Refused at the penance (private admission only): the unpaid soft no and her letters, nothing closed or paid.
+        var refusedText = EndingText(killedNo, out var refusedPages);
+        check(refusedPages == 1 && refusedText.Contains(Unpaid) && refusedText.Contains(Letters) && VariantCount(refusedText) == 1
+              && !refusedText.Contains(MusterSaid) && !killedNo.Has("anevia.trickster.cost.muster_confession"),
+            "Wife-killed ending after her soft no: " + refusedText);
+        // Promised again at the second ask but never said at muster: still unpaid.
+        var promisedText = EndingText(promisedAgain, out var promisedPages);
+        check(promisedPages == 1 && promisedText.Contains(Unpaid) && promisedText.Contains(Letters) && VariantCount(promisedText) == 1
+              && !promisedText.Contains(MusterSaid), "Wife-killed ending after an unkept promise: " + promisedText);
+        // Said at muster, walked back to the road, never asked again: paid for the gate, not the door.
+        var paidText = EndingText(afterMuster, out var paidPages);
+        check(afterMuster.Has("anevia.trickster.declined") && !afterMuster.Has("anevia.committed") && paidPages == 1
+              && paidText.Contains(Paid) && paidText.Contains(MusterSaid) && VariantCount(paidText) == 1,
+            "Wife-killed ending after the paid muster: " + paidText);
+        // Never came back: the permanent closure stands alone. Came back without a soft no: the neutral line.
+        var closureText = EndingText(closure, out var closurePages);
+        check(closurePages == 1 && closureText.Contains(Closed) && VariantCount(closureText) == 1, "Closure page lost its closure: " + closureText);
+        foreach (var extra in new[] { "", "anevia.trickster.gate_seen", "anevia.trickster.friends" })
+        {
+            var back = World(story, 5, "trickster.ever", "irabeth_dead", "anevia_gone", Killed, "anevia.lover", Returned);
+            if (extra == "anevia.trickster.gate_seen") { back.Flags.Add(extra); back.Flags.Add("anevia.trickster.hand_taken"); }
+            else if (extra != "") back.Flags.Add(extra);
+            var backText = EndingText(back, out var backPages);
+            check(backPages == 1 && backText.Contains(Neutral) && VariantCount(backText) == 1,
+                "Wife-killed ending for a returned Anevia without a soft no (" + extra + "): " + backText);
+        }
+        // Presentation: the setup and the wardrobe are encounters delivered at rest, not correspondence.
+        check(Rules.KindOf(setup) == "visit" && Rules.KindOf(wardrobe) == "visit" && Rules.KindOf(confession) == "visit"
+              && Rules.KindOf(fetched) == "letter" && Rules.KindOf(letterTwin) == "letter",
+            "Anevia's devices are presented as the wrong kind (setup/wardrobe/confession visits; fetched and the twin letters).");
         // The kept closet opens onto her room once: setup finds the room and does not open it.
         check(!S("anevia.trickster.gone.setup").Nodes.Single(n => n.Id == "door_open").Text.Contains("swings inward"),
             "The kept closet opens onto her room twice.");
