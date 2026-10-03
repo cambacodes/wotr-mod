@@ -18,7 +18,7 @@ Fields:
 """
 
 FRICTIONS = [
-    dict(a="seelah", b="camellia", status="verified", kind="faith", form="a sermon interrupted",
+    dict(a="seelah", b="camellia", status="verified", kind="faith", form="a vigil for the dead",
          root=("Seelah is a paladin of Iomedae (seelah_trickster.py:112, her canon hub); Camellia kills the people who "
                "call her a friend (camellia_trickster.py:4, Camelia companion quest)."),
          tools=("skill:lore_religion", "item:camellia_confession", "word"),
@@ -31,7 +31,7 @@ FRICTIONS = [
          tools=("favour:baphomet_terms", "skill:trickery", "job:common_enemy"),
          fails=dict(tolerated="whichever lost face", enmity="the other"),
          note=("Two of Baphomet's creditors at one table. Each thinks the other owes her. Both are right.")),
-    dict(a="arueshalae", b="nocticula", status="verified", kind="power", form="a trade",
+    dict(a="arueshalae", b="nocticula", status="verified", kind="power", form="a renunciation before witnesses",
          root=("Arueshalae left the queen of succubi, whose claim on every succubus she still feels (Nocticula_main/Cue_0523 "
                "b84ef61b, 'This demon follows you around only because I allow it'; arueshalae_treatment.py queen). The old "
                "summons debt and court.arueshalae are retired (2026-10-01); the claim, not a debt, is the root."),
@@ -46,7 +46,7 @@ FRICTIONS = [
          fails=dict(tolerated="arsinoe", enmity="nurah"),
          note=("One of them keeps the crusade's accounts. The other has forged several of them. Arsinoe has not noticed "
                "yet.")),
-    dict(a="seelah", b="areelu", status="verified", kind="atrocity", form="a confession",
+    dict(a="seelah", b="areelu", status="verified", kind="atrocity", form="a restitution inspection",
          root=("Areelu opened the Worldwound; Seelah's objection is already written (areelu_trickster.py:756 "
                "areelu.trickster.react.seelah_objects)."),
          tools=("quest:reckoning", "item:worldwound_record"),   # atrocity: quest or item only, never a check, never "word"

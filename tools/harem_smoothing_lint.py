@@ -9,8 +9,10 @@ woman without one, unknown forms in the smoothing data, bad nearest-three, dupli
 variants not keyed on positive states, malformed enGB keys, a relationship the household does not know, and (with --story) any
 reserved smoothing/strain/mend name already present in Story.json (this unit produces none).
 
-The form cap (08 section 5: no form more than twice) is REPORTED, not enforced, because the current allocation fails it pending a
-coordinator ruling (design decision D1). --strict-forms makes it an error; the test pins the arithmetic so drift is visible.
+Form cap (08 section 5: no form more than twice across frictions, repairs, reservations and packets). Rulings D1/D2 (W0b): the
+vocabulary is expanded and the allocation passes; build-expansion.ps1 runs with --strict-forms, which fails on any form over the cap
+or any form outside the vocabulary. Counting (D2): mutually exclusive variants of one woman charge a form once, and a repair marked
+"retry": true is not charged. The test pins the arithmetic so drift is visible.
 """
 import argparse
 import json
@@ -164,7 +166,7 @@ def form_audit(data, frictions, packets=()):
     """Combined form counts. Returns (rows, totals); rows = [(form, friction, smoothing, reservations, packets, total)]."""
     vocab = list(data["forms"])
     fr = Counter(f["form"] for f in frictions)
-    sm = Counter(r["form"] for _, r in repairs(data))
+    sm = Counter(form for _, form in sorted({(w["id"], r["form"]) for w, r in repairs(data) if not r.get("retry")}))
     rs = Counter(x["form"] for x in data.get("extra_reservations", []))
     pk = Counter(p["form"] for p in packets)
     allforms = vocab + sorted((set(fr) | set(sm) | set(rs) | set(pk)) - set(vocab))
@@ -172,7 +174,7 @@ def form_audit(data, frictions, packets=()):
     cap = data["form_cap"]
     totals = dict(frictions=sum(fr.values()), smoothing=sum(sm.values()), combined=sum(fr.values()) + sum(sm.values()),
                   with_reservations=sum(fr.values()) + sum(sm.values()) + sum(rs.values()),
-                  packets=sum(pk.values()), capacity=cap * len(vocab),
+                  packets=sum(pk.values()), charged=sum(r[5] for r in rows), capacity=cap * len(vocab),
                   over_cap_forms=sum(1 for r in rows if r[0] in vocab and r[5] > cap),
                   unapproved_forms=[r[0] for r in rows if r[0] not in vocab])
     return rows, totals
@@ -186,8 +188,8 @@ def report(data, frictions, packets):
     for f, a, b, c, d, tot in rows:
         state = "UNAPPROVED FORM" if f not in data["forms"] else ("over by %d" % (tot - cap) if tot > cap else "ok")
         print("  %-40s %4d %4d %4d %4d %5d  %s" % (f, a, b, c, d, tot, state))
-    print("  combined %(combined)d, with reservations %(with_reservations)d, packets %(packets)d, capacity %(capacity)d, "
-          "forms over cap %(over_cap_forms)d" % t)
+    print("  combined %(combined)d, with reservations %(with_reservations)d, packets %(packets)d, charged %(charged)d, "
+          "capacity %(capacity)d, forms over cap %(over_cap_forms)d" % t)
     print("  not yet charged: friction rows %s, retries/later opportunities, the Seelah x Wenduag spar and rematch"
           % ", ".join(data.get("unassigned_friction_rows", [])))
     print("  status: %s" % data.get("form_cap_status", ""))
@@ -216,7 +218,7 @@ def main(argv=None):
     packets = load_json(SCHEDULE).get("packets", []) if SCHEDULE.is_file() else []
     t = report(data, frictions, packets)
     if a.strict_forms and (t["over_cap_forms"] or t["unapproved_forms"]):
-        errs.append("form cap exceeded (strict)")
+        errs.append("form audit failed (strict): %d forms over cap, unapproved %s" % (t["over_cap_forms"], t["unapproved_forms"]))
     n = sum(1 for _ in repairs(data))
     print("Smoothing metadata: %d women, %d repairs, %d errors" % (len(data["women"]), n, len(errs)))
     for e in errs:

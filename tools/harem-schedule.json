@@ -220,7 +220,7 @@
     {"order": "6.01", "ref": "LASTCALL", "row": null, "type": "last_call", "chapter": 6, "women": [], "status": "reserved", "count": 0, "reads": [], "note": "Existing Last Call lines read every docket independently; no new letter; no postponed Ch5 yes."}
   ],
   "packets": [
-    {"id": "K1", "name": "Wound reckoning", "form": "a confession", "children": ["S31.s", "S31.e", "S31.tg", "S31.g", "S31.td", "S31.n"], "venue": "ordinary Table scene (scene(), not table_entry())", "approved": false},
+    {"id": "K1", "name": "Wound reckoning", "form": "a restitution inspection", "children": ["S31.s", "S31.e", "S31.tg", "S31.g", "S31.td", "S31.n"], "venue": "ordinary Table scene (scene(), not table_entry())", "approved": false},
     {"id": "K2", "name": "Temple and trophies", "form": "an evidence hearing", "children": ["S37", "S38", "S45"], "venue": "ordinary household scene", "approved": false},
     {"id": "K3", "name": "Truce and protection", "form": "a negotiation", "children": ["S18.f", "S23", "S48"], "venue": "ordinary household scene", "approved": false}
   ],
