@@ -476,8 +476,10 @@ s("the_days_she_counted", "The days she counted", '"How did Hessa and Mava keep 
 "And put this in plainly. The clay medallion was another working. So was the brand on Orso. No fool is to read your account and think a damp rag across three sticks could undo that knot."
 {n}She points toward the thorn beside her stick.{/n}
 "Wood and ash here. A life there. Write it large if you must."''',
-        c('"The thorn did not release Orso. The binding and its cost remain."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead",)),
-        c('"The thorn did not bring Orso back, or supply a replacement guardian."', "dead", requires=("soana.bear_dead",))),
+        c('"The thorn did not release Orso. The binding and its cost remain."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead", "soana.medallion_pulverized")),
+        c('"The thorn did not bring Orso back, or supply a replacement guardian."', "dead", requires=("soana.bear_dead",)),
+        # Polish (Sol CAN): the medallion bitten to dust (SoanaBear/Cue_0023) withers Orso with no BearDead etude.
+        c('"The thorn did not bring Orso back, or supply a replacement guardian."', "dead", requires=("soana.medallion_pulverized",), forbids=("soana.bear_dead",))),
     n("bound", "Soana", '''"Yes. You still hate the binding. I still fear what comes into the wood if I break it. You can warm your hands at my fire without settling that quarrel."
 {n}Her jaw tightens. She keeps her knee beside yours.{/n}
 "I can silence this thorn with water. Nothing dies. I shall find what else can be done that way. But three sticks have not grown into a guardian because you and I sat looking at them."

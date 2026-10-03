@@ -396,8 +396,10 @@ s("what_followed_home", "What followed home", '"I came to see what the working l
 "Carry water. Ask a living person if their skins run dry. The shelf is shut, and it stays shut. I will not feed the forest to a memory of how things were done in Sarkoris."
 "And the forest's guardian?"
 {n}Her finger stops against the charcoal stain. She looks up sharply.{/n}''',
-        c('"Orso remains bound. This has not freed him."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead",)),
-        c('"Orso remains dead. This has not replaced him."', "dead", requires=("soana.bear_dead",))),
+        c('"Orso remains bound. This has not freed him."', "bound", requires=("soana.old_defender",), forbids=("soana.bear_dead", "soana.medallion_pulverized")),
+        c('"Orso remains dead. This has not replaced him."', "dead", requires=("soana.bear_dead",)),
+        # Polish (Sol CAN): the medallion bitten to dust (SoanaBear/Cue_0023) withers Orso with no BearDead etude.
+        c('"Orso remains dead. This has not replaced him."', "dead", requires=("soana.medallion_pulverized",), forbids=("soana.bear_dead",))),
     n("bound", "Soana", '''"No. Orso is still bound. You saw the knot. A bowl buried on the ridge has not loosened it."
 "I know."
 "Remember it when you are pleased with me. I will not watch my forest die so that hunters can praise my clean hands."
