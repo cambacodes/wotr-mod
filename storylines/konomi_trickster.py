@@ -46,9 +46,8 @@ JOURNEY = "konomi.trickster.journey_paid"
 LATE_COMMITTED = "konomi.trickster.late_committed"
 DEAD = "konomi.retained_dead"
 CONFIRMED = "konomi.retained_return_confirmed"
-# Engine-q2 item 4: her confirmed death, persisted (trickster_world LATCHES), and the loss it leaves while no recall answers
-# it: Derived [[DEAD_LATCHED]] withheld by CONFIRMED (Story.DerivedForbids). Her living endings, her Last Call coda and her
-# call-in Forbid LOST; the dead.recalled rite (CONFIRMED) lifts it. A second death after a recall is not distinguished.
+# Engine-q3: the first death latch remains save-compatible. Verified restoration lifts its loss; a later observed
+# death is persisted as a loss again, including away from the capital. Living endings, Last Call and call-ins forbid LOST.
 DEAD_LATCHED = "konomi.dead.latched"
 LOST = "konomi.dead.unreturned"
 LOSS_PAGE = "konomi.ending_lost"
@@ -750,15 +749,15 @@ def integrate(payload):
     _node(buried, "start")["Text"] = PUBLIC_BURIED_TEXT
     payload["Scenes"].append(buried)
 
-    # Engine-q2 item 4: her confirmed death outlives the body check. Every page that stages her alive after the war Forbids
+    # Engine-q3: her latest unreturned death outlives the body check. Every page that stages her alive after the war Forbids
     # LOST; only her loss page and the invitation copy (which stages nobody) read it otherwise. Last Call's coda and call-in
     # read LOST in lastcall_partners (page_forbids, call_forbids).
     # The latch row lives in trickster_world.LATCHES; its binder only expands its own composites, so bind it here too.
     latch = payload.setdefault("Latches", {}).setdefault(DEAD_LATCHED, [DEAD])
     if latch != [DEAD]:
         raise ValueError("konomi_trickster: conflicting latch " + DEAD_LATCHED)
-    payload.setdefault("Derived", {})[LOST] = [[DEAD_LATCHED]]
-    payload.setdefault("DerivedForbids", {})[LOST] = [CONFIRMED]
+    payload.setdefault("Derived", {})[LOST] = [[DEAD_LATCHED], ["konomi.death_unreturned"]]
+    payload.setdefault("DerivedForbids", {})[LOST] = ["konomi.death_restored"]
     for s in payload["Scenes"]:
         if (s.get("Relationship") == "konomi" and s.get("Owner") == "Epilogue" and s["Id"] not in DEATH_SAFE
                 and LOST not in s["Forbids"]):

@@ -58,20 +58,20 @@ internal static class NativeDialogEditTests
         const string Ransomed = "kiana.trickster.guests_ransomed", Bought = "kiana.trickster.guests_bought_back";
         Selects("4255f49c18c69aa4ab4d5582d0b6f39e", new[]
         {
-            ("ransomed", new[] { "trickster.ever", Ransomed }, 0),
-            ("bought back", new[] { "trickster.ever", "kiana.trickster.cost.guests_robbed", Bought }, 0),
+            ("ransomed", new[] { "trickster", "trickster.ever", Ransomed }, 0),
+            ("bought back", new[] { "trickster", "trickster.ever", "kiana.trickster.cost.guests_robbed", Bought }, 0),
             ("robbed, never bought back", new[] { "trickster.ever", "kiana.trickster.cost.guests_robbed" }, -1),
             ("no device (native Q3 only)", new[] { "trickster.ever" }, -1),
             ("ransomed, off the Trickster path", new[] { Ransomed }, -1),
         });
         Selects("81109ea8fb20dbc478cf67116740f4a1", new[]
         {
-            ("ransomed", new[] { "trickster.ever", Ransomed }, 1),
+            ("ransomed", new[] { "trickster", "trickster.ever", Ransomed }, 1),
             ("ransomed, then separated", new[] { "trickster", "trickster.ever", Ransomed, "kiana.separated" }, 0),
-            // The ransom is a Trickster act (variant 1 keeps the latch); the separation line needs the current path.
+            // Present-tense canon edits require the current path, including an earlier ransom.
             ("ransomed, separated, the path since lost", new[] { "trickster.was", "trickster.ever", "trickster.failed", Ransomed, "kiana.separated" }, -1),
-            ("ransomed, the path since lost", new[] { "trickster.was", "trickster.ever", "trickster.failed", Ransomed }, 1),
-            ("bought back", new[] { "trickster.ever", Bought }, 1),
+            ("ransomed, the path since lost", new[] { "trickster.was", "trickster.ever", "trickster.failed", Ransomed }, -1),
+            ("bought back", new[] { "trickster", "trickster.ever", Bought }, 1),
             ("ransomed, off the Trickster path", new[] { Ransomed }, -1),
             ("native Q3 only", new[] { "trickster.ever" }, -1),
         });

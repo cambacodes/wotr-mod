@@ -33,6 +33,7 @@ SCRATCH = HERE / "scratch"
 MYTHIC = ["trickster", "angel", "demon", "lich", "aeon", "azata", "devil", "dragon", "legend", "swarm"]
 CONTACT_EVIDENCE = {"konomi.retained_hostile", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead",
                     "konomi.return_contact_available", "konomi.return_correspondence_available",
+                    "konomi.death_unreturned", "konomi.death_restored",
                     "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                     "nurah.correspondence_available", "nurah.meeting_arrived"}
 CHECK_SKILLS = {"SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana",
@@ -883,8 +884,19 @@ def validate(model):
                 errs.append("Invalid forbid override %s/%s" % (sid, a))
         nodes = {}
         for n in s["Nodes"]:
-            if n["Id"] in nodes or not (n["Text"].strip() or n["Paragraphs"]) or not n["Choices"]: errs.append("Invalid node: %s/%s" % (sid, n["Id"]))
-            if n["Paragraphs"] and not is_epilogue(s): errs.append("Paragraphs outside an epilogue page: %s/%s" % (sid, n["Id"]))
+            paragraphs = n["Paragraphs"]
+            if paragraphs is None: errs.append("Paragraphs cannot be null: %s/%s" % (sid, n["Id"]))
+            if paragraphs and (
+                    any(p is None or not (p.get("Text") or "").strip()
+                        or any(p.get(k, []) is None for k in ("Requires", "Forbids", "AnyGroups"))
+                        or any(not g for g in p.get("AnyGroups", [])) for p in paragraphs)
+                    or not (n["Text"] or "").strip() and not any(
+                        all(f in s["Requires"] for f in p.get("Requires", [])) and not p.get("Forbids", [])
+                        and all(any(f in s["Requires"] for f in g) for g in p.get("AnyGroups", []))
+                        for p in paragraphs)):
+                errs.append("Invalid paragraphs (a textless node needs a paragraph its scene's Requires always show): %s/%s"
+                            % (sid, n["Id"]))
+            if n["Id"] in nodes or not ((n["Text"] or "").strip() or paragraphs) or not n["Choices"]: errs.append("Invalid node: %s/%s" % (sid, n["Id"]))
             nodes[n["Id"]] = n
         for n in s["Nodes"]:
             for c in n["Choices"]:

@@ -23,6 +23,69 @@ namespace Tirabade
             public bool Confirmed;
         }
 
+        // The latest observed life event survives unloading. A historical confirmation never hides a later death.
+        internal sealed class Lifecycle
+        {
+            public int Version = 1;
+            public string UnitId = "";
+            public bool Lost;
+            public bool ReturnSeen;
+        }
+        private const string LifecycleKey = "RanRomance.Tirabade.KonomiLifecycle";
+
+        private static Lifecycle? ReadLife()
+        {
+            if (!Game.Instance.Player.SettingsList.TryGetValue(LifecycleKey, out var value)) return null;
+            var life = value is string json ? JsonConvert.DeserializeObject<Lifecycle>(json) : null;
+            if (life == null || life.Version != 1 || string.IsNullOrWhiteSpace(life.UnitId))
+                throw new InvalidOperationException("Invalid Konomi lifecycle checkpoint.");
+            return life;
+        }
+
+        internal static Lifecycle? ObserveLife(Lifecycle? previous, Attempt? attempt, UnitEntityData? actor)
+        {
+            if (actor == null || actor.Destroyed || actor.DestroyMark || actor.IsDisposed
+                || actor.Blueprint.AssetGuid.ToString() != source.Blueprint) return previous;
+            if (previous != null && previous.UnitId != actor.UniqueId) return previous;
+            if (actor.State.IsDead || actor.State.IsFinallyDead)
+                return new Lifecycle { UnitId = actor.UniqueId, Lost = true,
+                    ReturnSeen = previous?.ReturnSeen == true || attempt?.Confirmed == true && attempt.UnitId == actor.UniqueId };
+            // Only the same retained actor with verified restoration can answer a recorded death.
+            if (attempt?.Confirmed == true && attempt.UnitId == actor.UniqueId && !(previous?.ReturnSeen == true && previous.Lost))
+                return new Lifecycle { UnitId = actor.UniqueId, Lost = false, ReturnSeen = true };
+            return previous;
+        }
+
+        private static Lifecycle? CurrentLife()
+        {
+            var previous = ReadLife();
+            var attempt = Read();
+            try { return ObserveLife(previous, attempt, TryObserve(out var actor, out _) ? actor : null); }
+            catch (Exception ex) { LastError = ex; return previous; }
+        }
+
+        internal static void RecordLifecycle()
+        {
+            try
+            {
+                var previous = ReadLife();
+                var current = CurrentLife();
+                if (current != null && (previous == null || current.UnitId != previous.UnitId || current.Lost != previous.Lost || current.ReturnSeen != previous.ReturnSeen))
+                    Game.Instance.Player.SettingsList[LifecycleKey] = JsonConvert.SerializeObject(current);
+            }
+            catch (Exception ex) { LastError = ex; }
+        }
+
+        internal static void ReadLifecycle(Snapshot state)
+        {
+            try
+            {
+                var life = CurrentLife();
+                if (life != null) state.Flags.Add(life.Lost ? "konomi.death_unreturned" : "konomi.death_restored");
+            }
+            catch (Exception ex) { LastError = ex; }
+        }
+
         private const string Key = "RanRomance.Tirabade.KonomiRecovery";
         private static readonly Source source = new Source(
             "2570015799edf594daf2f076f2f975d8", "DrezenCapital_Default_Mechanics",
@@ -38,7 +101,19 @@ namespace Tirabade
             return attempt;
         }
 
-        private static void Save(Attempt attempt) => Game.Instance.Player.SettingsList[Key] = JsonConvert.SerializeObject(attempt);
+        private static void Save(Attempt attempt)
+        {
+            // Confirmation is already a same-actor living observation in Apply. Persist its ordered event here,
+            // before the player can unload the capital; the idle observer later records any new death.
+            if (attempt.Confirmed)
+            {
+                var life = ReadLife();
+                if (life == null || !life.ReturnSeen)
+                    Game.Instance.Player.SettingsList[LifecycleKey] = JsonConvert.SerializeObject(
+                        new Lifecycle { UnitId = attempt.UnitId, ReturnSeen = true });
+            }
+            Game.Instance.Player.SettingsList[Key] = JsonConvert.SerializeObject(attempt);
+        }
 
         internal static string? RequestedAction() => Read()?.Request;
 

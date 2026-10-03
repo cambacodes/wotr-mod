@@ -437,9 +437,9 @@ internal static class SoanaTricksterTests
         // Q10 (INT): a Camellia raised from her retained death hears it on her hub; the veiled (killed) Camellia has no companion
         // hub and answers it in her own route at Fye's (camellia.kill_returned.soana).
         var camelliaBack = Later(story, World(story, 3, "trickster.ever", "soana.killed_by_camellia", "soana.dead", P + "returned",
-                                              "camellia.dead", "camellia.trickster.returned"), 24);
+                                              "camellia.trickster.returned"), 24);
         foreach (var id in new[] { P + "react.camellia_knot", P + "react.camellia_portion" })
-            check(S(id).ForbidOverrides.TryGetValue("camellia.dead", out var lift) && lift == "camellia.trickster.returned",
+            check(!S(id).ForbidOverrides.ContainsKey("camellia.dead"),
                 "A raised Camellia never hears of Soana: " + id);
         check(Rules.Available(story, S(P + "react.camellia_knot"), camelliaBack), "A raised Camellia never hears of the knot.");
         check(story.Scenes.Any(s => s.Relationship == "camellia" && s.Nodes.Any(n => n.Id == "soana"
