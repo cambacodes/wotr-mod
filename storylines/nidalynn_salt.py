@@ -295,7 +295,7 @@ visit(FIRST_DEMON, "What she hunts", [
         c("Continue", "end", forbids=(DV_BILL, DV_HUNTING))),
     nd("bill", '''"And the grey one's bill." {n}She does not look at the ridge, but her voice is careful.{/n} "I heard what she asked of you. A life, owed, to be named when she likes. I understand the bill; I'd not have written it so wide. A service, a risk, your own blood: that's fair dealing between dragons. If she names somebody else's child, she'll find me standing in front of it." {n}She puts her hand on yours.{/n} "When she names it, you come to me first. I'll not have her collect in the dark from somebody who's eaten my salt."''',
         c("Continue", "end")),
-    nd("druids", '''"And the grey one's still following the druids." {n}Her mouth thins.{/n} "My people. You pointed her at them. They're further north than she'll ever find, and they're patient, and one of them is a good deal bigger than she is." {n}She looks at you.{/n} "I haven't forgiven that. I'm not going to. I've only decided it's a smaller thing than the rest of you. Don't make me decide again."''',
+    nd("druids", '''"And the grey one's still following the druids." {n}Her mouth thins.{/n} "My people. You pointed her at them, and she's found the valley once already. The gold one can stand in front of a nest. He can't stand over eleven hunting-grounds once they're all on the wing." {n}She watches the young dragon down the lane, standing guard over what is left of the dretch.{/n} "The grey one's their mother. She has a right to be heard. She has no right to call them away to her tower, and that's what she'll try. If you hear where she goes next, you tell me, and I'll send word north before she gets there." {n}Then she looks at you.{/n} "I haven't forgiven you for sending her. I'm not going to. I've only decided it's a smaller thing than the rest of you. Don't make me decide again."''',
         c("Continue", "end")),
     nd("end", '''{n}The young dragon has come up the lane and put her head in Nidalynn's lap, heavily, and gone to sleep there, with the dretch's blood still on her chin. Nidalynn wipes it off with a corner of her sleeve without looking, as if she has done it a thousand times, and will do it a thousand more.{/n}''',
         c("[Sit on the step with them.]", flags=(FIRST_DEMON,))),
@@ -361,7 +361,7 @@ visit(BACK, "Home from the dark", [
         c("Continue", "end")),
     nd("end", '''{n}She gets up, and picks up her basket, and at the door she stops.{/n} "Sleep tonight. Properly. In a bed, not a chair." {n}She looks back at you.{/n} "I'll know if you don't. The laundress on the second floor tells me everything."''',
         c("[Sleep.]", flags=(BACK,))),
-], requires=(MET,), forbids=(BACK, LIE_KEPT, PROPOSED), delay=12, chapters=(5, 5))
+], requires=(MET, MET_EARLY), forbids=(BACK, LIE_KEPT, PROPOSED), delay=12, chapters=(5, 5))   # polish r2: reunion only
 
 
 # --- 10. The long night (after the kiss): what she's afraid of -----------------------------------------------------------

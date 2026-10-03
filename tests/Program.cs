@@ -234,6 +234,13 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} Iomedae assertions.");
             return;
         }
+        if (args.Contains("--nidalynn"))
+        {
+            // One route's suite alone (polish: her checks run even when an earlier suite fails; the full run still calls it below).
+            NidalynnTricksterTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} Nidalynn assertions.");
+            return;
+        }
         if (args.Contains("--prerequisite-groups"))
         {
             PrerequisiteGroupsTests.Run(Check);

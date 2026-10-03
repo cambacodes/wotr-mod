@@ -330,11 +330,12 @@ internal static class NidalynnTricksterTests
         check(ch5Met.All(r => r.Has(P + "met") && !r.Has(P + "met_before_abyss")), "Trk_Nidalynn_Reunion: a Chapter 5 first meeting is latched as before the Abyss.");
         var homeEarly = Later(story, ch3Met.First(), 13, 5);
         var homeNew = Later(story, ch5Met.First(), 13);
-        check(Avail(back, homeEarly) && Avail(back, homeNew), "Trk_Nidalynn_Reunion: the door after the Abyss does not open.");
-        check(Visited(back, homeEarly).Contains("look") && !Visited(back, homeEarly).Contains("look_new")
-              && Visited(back, homeNew).Contains("look_new") && !Visited(back, homeNew).Contains("look"),
-            "Trk_Nidalynn_Reunion: a Chapter 5 first meeting is greeted as a reunion, or the reunion as a stranger.");
-        check(!Visited(back, homeNew).Contains("news_egg") && Visited(back, homeNew).Contains("news_hearth"),
+        // Polish r2 (audit COX): the welcome home is a reunion only; a Chapter 5 first meeting already sat on her step.
+        check(Avail(back, homeEarly) && !Avail(back, homeNew), "Trk_Nidalynn_Reunion: the door after the Abyss does not open, or opens for a Chapter 5 first meeting.");
+        check(Visited(back, homeEarly).Contains("look") && !Visited(back, homeEarly).Contains("look_new"),
+            "Trk_Nidalynn_Reunion: the reunion is greeted as a stranger.");
+        var homeHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "hearth.grey_stone", P + "met", P + "met_before_abyss", "nidalynn.started"), 13, 5);
+        check(!Visited(back, homeHearth).Contains("news_egg") && Visited(back, homeHearth).Contains("news_hearth"),
             "Trk_Nidalynn_Reunion: the egg's kiln news reaches a Commander who never took it to the kiln.");
         check(!Avail(back, Later(story, World(story, 5, "trickster.ever", P + "primed", P + "met", P + "met_before_abyss", "nidalynn.started", P + "hatched", P + "proposed"), 13)),
             "Trk_Nidalynn_Reunion: the first night home plays after the first flight.");
@@ -449,14 +450,87 @@ internal static class NidalynnTricksterTests
               && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("never paid")),
             "Trk_Nidalynn_Bill: her page says the bill was never paid after Devarra named it at the rift.");
 
-        // NM1 (Sol INT/BEL): after a rejection Devarra's collected bill reads as the Commander's alone; no kiln kept warm.
-        var apartNode = S(P + "epilogue.apart").Nodes[0];
-        var apartWorld = World(story, 6, "trickster.ever", P + "met", Closed, Bill, "devarra.lastcall.called");
-        var keptWorld = World(story, 6, "trickster.ever", P + "met", Committed, Bill, "devarra.lastcall.called");
-        check(!Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("banked high"))
-              && Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("alone"))
-              && Rules.VisibleParagraphs(S(P + "epilogue.salt").Nodes[0], keptWorld).Any(x => x.Text.Contains("banked high")),
-            "Trk_Nidalynn_ApartBill: a rejected Commander still has her kiln kept warm, or the partner lost it.");
+        // Polish (audit INT/BEL/HOW, Trk_Nidalynn_Endings): every ending rendered whole, the page and its visible paragraphs in
+        // order, from walked routes. The grey dragon's bill is recorded once wherever it exists; the kiln kept warm, the bowl
+        // and the names taught at night belong to the living partner's page alone; a departure says nothing about anyone else.
+        string Render(Scene page, Snapshot w) => string.Join("\n", new[] { page.Nodes[0].Text }.Concat(Rules.VisibleParagraphs(page.Nodes[0], w).Select(x => x.Text)));
+        int Count(string text, string needle) { int n = 0, at = 0; while ((at = text.IndexOf(needle, at, StringComparison.Ordinal)) >= 0) { n++; at += needle.Length; } return n; }
+        Snapshot With(Snapshot s, params string[] flags) { var c = Program.Copy(s); c.Flags.UnionWith(flags); return Later(story, c, 1); }
+        string[] Shown(Snapshot w) => pages.Where(pg => Avail(pg, w)).Select(pg => pg.Id.Substring((P + "epilogue.").Length)).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+        const string Called = "devarra.lastcall.called";
+        const string Standing = "never paid", Named = "named her bill", Windowsill = "windowsill", Bowl = "Eat first", Banked = "banked high", Taught = "taught the Commander";
+        var endPage = new Func<string, Scene>(id => S(P + "epilogue." + id));
+        // The walk: the confession, Devarra's bill on her own hub, the claim given up, her face, the kiss, then the salt.
+        var dvBack = Later(story, With(confessed, "devarra.trickster.returned", "devarra.started"), 25);
+        check(Avail(smallest, dvBack), "Trk_Nidalynn_Endings: Devarra's bill cannot be walked from the confession.");
+        var billed = Program.Walk(smallest, dvBack).First(r => r.Has(Bill));
+        var bGiven = After(whose, Later(story, billed, 25), "choose", 0).First();
+        var bFaced = After(form, Later(story, bGiven, 25), "end", 0).First();
+        var bKissed = After(wings, Later(story, bFaced, 25), "almost", 0).First();
+        var bAsk = Later(story, bKissed, 49, 5);
+        var bRejected = After(flight, bAsk, "offer", 2).First();
+        var bYes = After(flight, bAsk, "offer", 0).First();
+        var bNotYet = After(flight, bAsk, "offer", 1).First();
+        var plainRejected = After(flight, Later(story, kissed, 49, 5), "offer", 2).First();
+        check(bRejected.Has(Closed) && bRejected.Has(Bill) && bYes.Has(Committed) && bYes.Has(Bill) && !plainRejected.Has(Bill),
+            "Trk_Nidalynn_Endings: the walked rejection, yes or no-bill states are wrong.");
+        Snapshot End(Snapshot s, params string[] extra) => With(Later(story, s, 200, 6), extra);
+
+        // Rejected after the bill: the departure page alone; the record once, standing or named; no fire kept, nobody's welcome.
+        foreach (var (state, called) in new[] { (bRejected, false), (bRejected, true) })
+        {
+            var w = called ? End(state, Called) : End(state);
+            var text = Render(endPage("apart"), w);
+            check(Shown(w).SequenceEqual(new[] { "apart" }) && Count(text, called ? Named : Standing) == 1 && Count(text, called ? Standing : Named) == 0
+                  && !text.Contains(Banked) && !text.Contains(Bowl) && !text.Contains(Windowsill) && !text.Contains(Taught)
+                  && !text.Contains("alone") && !text.Contains("Nobody in Drezen"),
+                "Trk_Nidalynn_Endings: the rejected Commander's ending keeps her fire, doubles the bill or speaks for other partners (called=" + called + "): " + text);
+            // A concurrent romance changes nothing on her page.
+            check(Render(endPage("apart"), With(w, "irabeth.committed", "irabeth.started")) == text,
+                "Trk_Nidalynn_Endings: another partner changes the rejected ending.");
+        }
+        var plainApart = Render(endPage("apart"), End(plainRejected, Called));
+        check(!plainApart.Contains(Standing) && !plainApart.Contains(Named), "Trk_Nidalynn_Endings: a bill nobody wrote appears on the departure.");
+
+        // Committed after the bill: her page; standing = the windowsill, named = the record and the bowl; nothing doubled.
+        var saltStanding = Render(endPage("salt"), End(bYes));
+        var saltNamed = Render(endPage("salt"), End(bYes, Called));
+        check(Shown(End(bYes, Called)).SequenceEqual(new[] { "salt" })
+              && Count(saltStanding, Standing) == 1 && saltStanding.Contains(Windowsill) && !saltStanding.Contains(Named) && !saltStanding.Contains(Bowl)
+              && Count(saltNamed, Named) == 1 && saltNamed.Contains(Bowl) && saltNamed.Contains(Banked) && !saltNamed.Contains(Standing)
+              && !Render(endPage("salt"), End(yes, Called)).Contains(Named),
+            "Trk_Nidalynn_Endings: her own page records the bill wrongly.");
+        // Returned from the sacrifice: the same living page; not returned: the unreturned page, with no nights and no bowl.
+        var cameBack = End(bYes, Called, "sacrifice", "trickster.commander_back", P + "wake.name_said");
+        var lost = End(bYes, Called, "sacrifice", P + "wake.name_said");
+        var lostText = Render(endPage("unreturned"), lost);
+        check(Shown(cameBack).SequenceEqual(new[] { "salt" }) && Render(endPage("salt"), cameBack).Contains(Bowl) && Render(endPage("salt"), cameBack).Contains(Taught)
+              && Shown(lost).SequenceEqual(new[] { "unreturned" }) && Count(lostText, Named) == 1
+              && !lostText.Contains(Bowl) && !lostText.Contains(Banked + " every winter the Commander was away") && !lostText.Contains(Taught) && !lostText.Contains(Windowsill),
+            "Trk_Nidalynn_Endings: a Commander who did not come back is fed, taught or visited on the windowsill: " + lostText);
+        check(!Render(endPage("unreturned"), End(bYes, "sacrifice")).Contains(Windowsill) && Count(Render(endPage("unreturned"), End(bYes, "sacrifice")), Standing) == 1,
+            "Trk_Nidalynn_Endings: the standing bill is not recorded plainly for the Commander who did not come back.");
+        // Not yet (the heel): the courtship page; the record once, no domestic payoff.
+        var heelText = Render(endPage("heel"), End(bNotYet, Called));
+        check(Shown(End(bNotYet, Called)).SequenceEqual(new[] { "heel" }) && Count(heelText, Named) == 1 && !heelText.Contains(Bowl) && !heelText.Contains(Taught),
+            "Trk_Nidalynn_Endings: the heel's ending takes the partner's payoff.");
+        // The claim kept to her flight, and the lie kept: departures; the record when the flags hold it, never her fire.
+        var leftWith = After(claimedFlight, Later(story, keptClaim, 49, 5), "go", 0).First();
+        foreach (var (id, state) in new[] { ("claimed", leftWith), ("lie", kept) })
+            foreach (var extra in new[] { new string[0], new[] { Bill }, new[] { Bill, Called }, new[] { Bill, Called, Committed, P + "wake.name_said" } })
+            {
+                var w = End(state, extra);
+                var text = Render(endPage(id), w);
+                check(Avail(endPage(id), w) && !Shown(w).Contains("salt") && !text.Contains(Bowl) && !text.Contains(Banked) && !text.Contains(Windowsill) && !text.Contains(Taught)
+                      && Count(text, Named) == (extra.Contains(Called) ? 1 : 0) && Count(text, Standing) == (extra.Contains(Bill) && !extra.Contains(Called) ? 1 : 0),
+                    "Trk_Nidalynn_Endings: the " + id + " departure keeps her fire or loses the record: " + string.Join(",", extra));
+            }
+        // The wolves and the fire: closures with no shared paragraphs, even with the commit and the wake still held.
+        var wolvesWorld = End(World(story, 6, "trickster.ever", P + "met", Committed, P + "goat.lie_kept", Closed, P + "wake.name_said", Bill, Called));
+        var givenWorld = End(burned, Bill, Called);
+        check(Avail(endPage("wolves"), wolvesWorld) && !Shown(wolvesWorld).Contains("salt") && endPage("wolves").Nodes[0].Paragraphs.Count == 0
+              && Avail(endPage("given"), givenWorld) && !Shown(givenWorld).Contains("salt") && endPage("given").Nodes[0].Paragraphs.Count == 0,
+            "Trk_Nidalynn_Endings: the wolves or the fire ending carries conditional paragraphs or sits beside her page.");
 
         // NM1 (coordinator ruling; ledger 2/0/1, her Chapter 4 letter stands): her visits are entries on her own step. At a rest
         // only the device event and the grey stone (Chapter 3), the kiln letter (Chapter 4) and her welcome home (Chapter 5).
@@ -488,6 +562,100 @@ internal static class NidalynnTricksterTests
         check(S(P + "wall.wings").InteractionHub == "nidalynn.presence.chosen" && S(P + "door.own_form").InteractionHub == "nidalynn.presence"
               && S(P + "ridge.claimed_flight").InteractionHub == "nidalynn.presence",
             "Trk_Nidalynn_Allocation: a visit stands on the wrong body's step.");
+
+        // Polish (coordinator, Trk_Nidalynn_EggOwed): every way the Commander keeps the twelfth egg sets the debt at once, so
+        // Devarra can count it on her return; only Devarra's own scene names the bill.
+        foreach (var taken in new[] { clean, carried.First(r => r.Has(P + "primed")), strawEgg })
+            check(taken.Has(P + "egg_owed") && !taken.Has(Bill), "Trk_Nidalynn_EggOwed: a kept egg does not owe Devarra at once, or names her bill.");
+        check(!burnt.Has(P + "egg_owed") && !mine.Concat(own).SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Any(c => c.Set.Contains(Bill)),
+            "Trk_Nidalynn_EggOwed: the egg sent out with the bedding still owes, or a Nidalynn scene names Devarra's bill.");
+
+        // Polish r3 (audit INT/BEL/HOW, Trk_Nidalynn_Closures): the wolves closure walked before and after the commit gives the
+        // wolves page alone, and after it her Last Call shout goes unanswered (the debt resolved, never called).
+        var goatW = S(P + "kiln.the_goat");
+        var goatC = S(P + "kiln.the_goat.chosen");
+        var callIn = S("nidalynn.lastcall.call");
+        var preGoat = Later(story, given, 49);
+        check(Avail(goatW, preGoat) && !Avail(goatW, Later(story, plainRejected, 49)) && !Avail(goatC, Later(story, plainRejected, 49)),
+            "Trk_Nidalynn_Closures: the goat does not play before the commit, or plays after she has already gone.");
+        var preStands = Program.WalkVia(goatW, preGoat, "after_wolves", 2);
+        var postGoat = Later(story, yes, 49);
+        check(Avail(goatC, postGoat), "Trk_Nidalynn_Closures: the goat does not play after the commit.");
+        var postStands = Program.WalkVia(goatC, postGoat, "after_wolves", 2);
+        check(preStands.Count > 0 && postStands.Count > 0 && preStands.Concat(postStands).All(r => r.Has(Closed) && r.Has(P + "goat.lie_kept")),
+            "Trk_Nidalynn_Closures: keeping the wolves story does not close her.");
+        foreach (var r in preStands.Concat(postStands))
+        {
+            var w = End(r, Bill, Called);
+            check(Shown(w).SequenceEqual(new[] { "wolves" }) && !Render(endPage("wolves"), w).Contains("white-haired"),
+                "Trk_Nidalynn_Closures: the wolves closure gets more than its own page: " + string.Join(", ", Shown(w)));
+        }
+        check(!Avail(callIn, End(preStands.First())), "Trk_Nidalynn_Closures: a Commander who never ate the salt is offered her call-in.");
+        var callAfter = Program.Walk(callIn, End(postStands.First()));
+        var callKept = Program.Walk(callIn, End(yes));
+        check(callAfter.Count > 0 && callAfter.All(r => !r.Has("nidalynn.lastcall.called") && r.Has("nidalynn.lastcall.resolved"))
+              && callKept.Count > 0 && callKept.All(r => r.Has("nidalynn.lastcall.called")),
+            "Trk_Nidalynn_Closures: her shout is answered after she left over the wolves, or not answered while she stays.");
+        // Exclusivity over every closure combination the route can hold (each closure flag comes with nidalynn.closed).
+        var closureFlags = new[] { Committed, P + "kissed", P + "bread_kept", P + "left_with_it", P + "lie_kept", P + "given_to_the_crowd", P + "goat.lie_kept", "sacrifice", "trickster.commander_back" };
+        for (int mask = 0; mask < (1 << closureFlags.Length); mask++)
+        {
+            var held = closureFlags.Where((f, i) => (mask & (1 << i)) != 0).ToList();
+            if (held.Contains("trickster.commander_back") && !held.Contains("sacrifice")) continue;
+            var closes = held.Any(f => f == P + "left_with_it" || f == P + "lie_kept" || f == P + "given_to_the_crowd" || f == P + "goat.lie_kept");
+            foreach (var closed in closes ? new[] { true } : new[] { false, true })
+            {
+                var flags = new List<string> { "trickster.ever", P + "met" };
+                flags.AddRange(held);
+                if (closed) flags.Add(Closed);
+                var w = World(story, 6, flags.ToArray());
+                check(Shown(w).Length <= 1, "Trk_Nidalynn_Closures: two endings at once: " + string.Join(", ", Shown(w)) + " for " + string.Join(", ", flags));
+            }
+        }
+
+        // Polish r2 (audit COX, Trk_Nidalynn_LateStart): a Commander who takes the egg in Chapter 5 gets one rest delivery in
+        // Chapter 5, worst branch: the vault or the straw page folds the grey stone's nights in; the welcome home never plays.
+        foreach (var (late, entryWorld) in new[] {
+            (vault, World(story, 5, "trickster", "trickster.ever", "irabeth.chapter_five", "eggs.seen", "eggs.project")),
+            (straw, World(story, 5, "trickster", "trickster.ever", "irabeth.chapter_five", "eggs.seen", "eggs.project", "eggs.druids")) })
+        {
+            var start = Later(story, entryWorld, 25);
+            check(Avail(late, start), "Trk_Nidalynn_LateStart: no Chapter 5 door: " + late.Id);
+            var kept5 = Program.Walk(late, start).Where(r => r.Has(P + "primed") || r.Has(P + "egg.straw")).ToList();
+            check(kept5.Count > 0 && kept5.All(r => r.Has(P + "hearth.grey_stone")) && Visited(late, start).Contains("nights"),
+                "Trk_Nidalynn_LateStart: the Chapter 5 page does not fold the grey stone in: " + late.Id);
+            // Walk every Nidalynn scene forward through Chapter 5 and count what arrives at a rest.
+            var delivered = new HashSet<string> { late.Id };
+            var frontier = kept5.Take(2).ToList();
+            var seenStates = new HashSet<string>();
+            for (int depth = 0; depth < 16 && frontier.Count > 0; depth++)
+            {
+                var next = new List<Snapshot>();
+                foreach (var from in frontier)
+                {
+                    var w = Later(story, from, 200, 5);
+                    foreach (var s in mine.Where(x => !x.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Avail(x, w)))
+                    {
+                        if (Rules.IsMailbagLetter(s)) delivered.Add(s.Id);
+                        foreach (var r in Program.Walk(s, w).Take(3))
+                            if (seenStates.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                    }
+                }
+                frontier = next.Take(60).ToList();
+            }
+            check(delivered.SequenceEqual(new[] { late.Id }),
+                "Trk_Nidalynn_LateStart: a Chapter 5 start gets more than one rest delivery: " + string.Join(", ", delivered));
+        }
+        check(Ch(vault, "carry", 0).Forbids.Contains("irabeth.chapter_five") && Ch(straw, "carry", 0).Forbids.Contains("irabeth.chapter_five")
+              && Ch(vault, "carry", 0).Set.Take(3).SequenceEqual(new[] { P + "primed", P + "egg.vault", P + "cost.palms" }),
+            "Trk_Nidalynn_LateStart: the Chapter 3 ending of the vault or the straw changed.");
+
+        // Polish r2 (audit BEL): the chosen-form twins never speak the widow's costume in the present tense.
+        foreach (var twin in mine.Where(s => s.Id.EndsWith(".chosen", StringComparison.Ordinal)))
+            check(!twin.Nodes.Any(n => n.Text.Contains("I wear a belly")) , "Trk_Nidalynn_Twins: her own face still wears the widow's belly: " + twin.Id);
+        check(S(P + "kiln.the_goat").Nodes.Single(n => n.Id == "after_wolves").Text.Contains("I wear a belly")
+              && S(P + "kiln.the_goat.chosen").Nodes.Single(n => n.Id == "after_wolves").Text.Contains("I wore a belly"),
+            "Trk_Nidalynn_Twins: the goat's twins say the wrong thing about the costume.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))
