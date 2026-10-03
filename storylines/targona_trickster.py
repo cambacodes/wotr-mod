@@ -546,16 +546,16 @@ NAMES_UNASKED = P + "free.names_unasked"
 NAMES_HEARD = P + "free.names_heard"
 
 SCENES.append(scene(P + "free.little_birds", "Heaven's blood", "Targona", 4, "", [
-    nar("start", '''{n}The young aasimar women leave Latverk's cellar together, many of them scarred, toward the shelter you promised them at your camp. Heaven's blood, and they walk like soldiers who have stopped expecting help.{/n}
+    nar("start", '''{n}Word comes from your camp a few hours after you sent them out of Latverk's cellar: the first of the young aasimar women have come in, many of them scarred, looking for the shelter you promised. Heaven's blood, the runner says, and they walk like soldiers who have stopped expecting help.{/n}
 {n}You think of Targona behind the quartermaster's stores in Drezen, stopping at every cot as if the man in it were the only one.{/n}''',
-        c("[Stop them at the door and ask each her name. Write the names down for the ward behind Wilcer's stores.]", "asked"),
-        c("[Go after them with what healing you carry, and spend it on the wounds that are still open.]", "tended"),
-        c("[Let them go. The path is safe, the camp is waiting, and the cellar is no place to linger.]", "unasked")),
-    nar("asked", '''{n}The first two give theirs warily; the rest more easily, once they see you write each one down and ask for nothing else. Some are Golarion names, from villages you know. One will not give hers, and you write down that one would not, so that she is a line on the page all the same.{/n}''',
+        c("[Send word back: ask each of them her name, and write the names down for the ward behind Wilcer's stores.]", "asked"),
+        c("[Go back to the camp tonight and sit with the worst of them while the healers work.]", "tended"),
+        c("[Send word to give them food and a fire, and leave them be.]", "unasked")),
+    nar("asked", '''{n}The camp clerk does it at the fire, with your note in his hand. The first two give theirs warily; the rest more easily, once they see him write each one down and ask for nothing else. Some are Golarion names, from villages you know. One will not give hers, and he writes down that one would not, so that she is a line on the page all the same. The list reaches you folded inside a dispatch.{/n}''',
         c("[Fold the list into your pack.]", flags=(NAMES, NAMES_ASKED))),
-    nar("tended", '''{n}It is not much: what a Commander carries into the Abyss, a wand with a few charges and the potions you can spare. You spend it in the cellar doorway on the wounds that are still open, and they let you, the way soldiers let a stranger, watching your hands. When it is gone you show them the path again, and they go.{/n}''',
+    nar("tended", '''{n}You go back after dark, and give the war one night it will not thank you for. The camp's healers have the wounds in hand. What is left is the sitting. You sit with the worst of them, a girl with a burned arm who will not sleep, and talk about nothing until she does. The others watch your hands the way soldiers watch a stranger's. By morning you are gone again, and the war has not waited for you.{/n}''',
         c("[Go back to the war.]", flags=(NAMES, NAMES_TENDED))),
-    nar("unasked", '''{n}You let them go. They do not look back, and you do not ask them to. By nightfall you are three streets away with the war in your hands again, and you do not know a single one of their names.{/n}''',
+    nar("unasked", '''{n}You send word for food and a fire, and nothing more. You do not go back, and nobody asks you to. By nightfall you are three streets away with the war in your hands again, and you do not know a single one of their names.{/n}''',
         c("[Walk on.]", flags=(NAMES, NAMES_UNASKED))),
 ], requires=("trickster.ever", MET, SENT_SEEN), forbids=(CLOSED, NAMES), delay=6, last=4, optional=True,
     Relationship="targona", Chapters=[4], Remote=True, Kind="memory"))   # no Areas: Story.Available (src/Story.cs:585) applies them to remote scenes too
@@ -564,19 +564,19 @@ SCENES.append(scene(P + "free.the_names", "What was there", "Targona", 5, '"I br
     t("start", '''{n}She is changing a dressing when you come in, and she finishes it before she looks up.{/n}
 "You are back. Everyone says so, and nobody says what was there." {n}She ties the bandage off.{/n} "Tell me one thing that was there. Not a battle. I hear the battles from the men."''',
       c("[Give her the list of names.]", "list", requires=(NAMES_ASKED,)),
-      c("[Tell her about the aasimar women in Latverk's cellar, and the healing you spent on them.]", "tended", requires=(NAMES_TENDED,)),
-      c("[Tell her about the aasimar women in Latverk's cellar, and how you let them go.]", "unasked", requires=(NAMES_UNASKED,)),
+      c("[Tell her about the aasimar women from Latverk's cellar, and the night you sat with them.]", "tended", requires=(NAMES_TENDED,)),
+      c("[Tell her about the aasimar women from Latverk's cellar, and how you left them be.]", "unasked", requires=(NAMES_UNASKED,)),
       c('"Not today. It will keep."', abort=True)),
     t("list", '''{n}You tell her where you met them, and what Latverk was. She takes the page and reads it standing, all of it, and the line for the one who would not give her name as carefully as the rest.{/n}
 "Aasimar." {n}Her hand tightens on the page.{/n} "Heaven's blood, kept in Latverk's house. I know something of being kept." {n}She folds the page once and puts it inside her habit.{/n} "I will say them at compline with the ward's dead and the ward's living, every night until I hear they are home. And the one who would not give it. She has a name. Iomedae knows it, even if we do not."
-{n}She looks at you then, properly.{/n} "You asked. Down there, with the war at your back, you stopped and asked. Thank you for stopping for them."''',
+{n}She looks at you then, properly.{/n} "Down there, with the war at your back, you thought to ask. Thank you for stopping for them."''',
       c('"Remember it, then."', flags=(NAMES_HEARD,))),
-    t("tended", '''"You spent your healing on them, in the Abyss, where you might have needed it the next hour." {n}She wrings out a cloth and is quiet a while.{/n} "You eased their suffering. May Iomedae bless you for it."
+    t("tended", '''"You went back for them, in the Abyss, and gave them a night you could not spare." {n}She wrings out a cloth and is quiet a while.{/n} "You eased their suffering. May Iomedae bless you for it."
 {n}Then, lower:{/n} "Did you ask their names?"
 {n}You tell her you did not.{/n}
 "Then I will pray for the aasimar women of Latverk's cellar, and Iomedae will know which ones I mean." {n}She lays the cloth over the basin's rim.{/n} "Next time, ask. It costs nothing, and in a place like that it may be the only thing anyone gives them that is theirs."''',
       c('"Next time."', flags=(NAMES_HEARD,))),
-    t("unasked", '''"You let them go." {n}She does not stop working.{/n} "On a safe path, to your camp. That was not nothing, Commander, and I will not pretend it was." {n}She tucks the blanket's corner under the cot.{/n}
+    t("unasked", '''"Food and a fire, and they were left in peace." {n}She does not stop working.{/n} "That was not nothing, Commander, and I will not pretend it was." {n}She tucks the blanket's corner under the cot.{/n}
 "They have endured enough strangers, and they will meet more before they are home." {n}She smooths the blanket flat with her palm.{/n} "I will pray for them at compline without names. Iomedae will know them. I wish I could have greeted them by name."''',
       c('"I should have asked."', flags=(NAMES_HEARD,))),
 ], requires=("trickster.ever", MET, NAMES), forbids=(CLOSED, NAMES_HEARD), delay=24, last=5, optional=True,
@@ -671,7 +671,8 @@ page(P + "epilogue.sacrifice", "The name over the door",
      '''{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}
 {n}She told her healers in Heaven that she would finish her work in Drezen first. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
      requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, DECLINED, "trickster.commander_back"),
-     paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]])
+     paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
+     ForbidOverrides={DECLINED: COMMITTED})   # polish r3: the quiet ward's second ask keeps `declined` beside the commit
 
 
 # --- Reactions (ledger 05 section 3.1 row 39: exactly Seelah, Sosiel and Ember) -------------------------------------

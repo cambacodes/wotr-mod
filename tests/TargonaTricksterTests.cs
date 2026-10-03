@@ -197,6 +197,24 @@ internal static class TargonaTricksterTests
               && Program.Walk(quiet, Later(story, declined, 72)).Any(o => o.Has(P + "night_kept")), "Her price is not paid, or no night follows.");
         var refused = After(quiet, Later(story, declined, 72), "start", 1);
         check(refused.Has(Closed) && !refused.Has(Committed), "Refusing her price does not close her route.");
+        // Polish r3 (INT/HOW): both live freed-state commitments, with their full flag histories, reach the right ending.
+        var firstYes = After(ward, metOnly, "dawn", 2);
+        foreach (var history in new[] { firstYes, sealedYes })
+        {
+            check(history.Has(Committed), "A freed-state commitment did not commit.");
+            var died = World(story, 6, history.Flags.Concat(new[] { "sacrifice" }).ToArray());
+            var cameBack = World(story, 6, history.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
+            var lived = World(story, 6, history.Flags.ToArray());
+            check(Rules.Available(story, S(P + "epilogue.sacrifice"), died) && !Rules.Available(story, epFurlough, died),
+                "An unsurvived sacrifice after a live commitment has no mourning page.");
+            check(Rules.Available(story, epFurlough, cameBack) && !Rules.Available(story, S(P + "epilogue.sacrifice"), cameBack)
+                  && Rules.Available(story, epFurlough, lived) && !Rules.Available(story, epDeclined, lived),
+                "A surviving committed Commander gets the wrong page.");
+        }
+        // Polish r3: the captives memory is delivered after their departure cue, so it never stages the cellar door.
+        check(S(P + "free.little_birds").Nodes.All(n => !n.Text.Contains("doorway", StringComparison.Ordinal) && !n.Text.Contains("Stop them", StringComparison.Ordinal))
+              && S(P + "free.little_birds").Nodes.Single(n => n.Id == "start").Choices.All(c => !c.Text.Contains("Stop them", StringComparison.Ordinal)),
+            "The delayed captives memory still stages the departure itself.");
 
         // Trk_Targona_Free: the wand that does not run down.
         var free = World(story, 5, "trickster", "trickster.ever", "targona.free", "trickster.umd_tier2");
