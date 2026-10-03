@@ -255,7 +255,7 @@ namespace Tirabade
                     else continueParents.Add(scene, parents!);
                 }
                 // E14d: native epilogue edits need their exact reviewed evidence, or their replacement relationship is disabled.
-                var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage? Page, BlueprintCue? Parent)>();
+                var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage? Page, SimpleBlueprint? Parent)>();
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
                     var owners = Rules.EditVariants(pair.Value).Select(variant => story.Scenes.First(s => s.Id == variant.Replacement).Relationship).Distinct();
@@ -267,9 +267,9 @@ namespace Tirabade
                         foreach (var owner in owners) Degrade(owner, "native epilogue edit " + pair.Key + ": " + refusal);
                     else if (refusal != null)   // E14d extension: a non-degrading cue keeps its native text; no relationship is touched
                         warnings.Add("Native epilogue edit " + pair.Key + " skipped (the native cue plays): " + refusal);
-                    else if (!string.IsNullOrEmpty(pair.Value.Parent))   // E14i: a common-dialog cue, inserted into its parent's Continue
+                    else if (!string.IsNullOrEmpty(pair.Value.Parent))   // E14i: a dialog cue, inserted into its parent's cue selection
                         nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!, null,
-                            (BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Parent))!);
+                            ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Parent))!);
                     else nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!,
                         (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!, null);
                 }

@@ -60,18 +60,21 @@ internal static class NativeEpilogueEditManagedTests
             bool onShowReviewed = pair.Value.Image == null ? onShow.Count == 0
                 : onShow.Count == 1 && ((string)onShow[0]["$type"]!).EndsWith(", ChangeBookEventImage", StringComparison.Ordinal)
                     && (string)onShow[0]["m_Image"]!["AssetId"]! == pair.Value.Image;
-            var continued = Refs((JObject)data["Continue"]!, "Cues");
+            var continued = Refs((JObject)data["Continue"]!, "Cues");   // (E14i cues may also carry reviewed Answers)
             bool continueReviewed = pair.Value.Continue == null ? continued.Length == 0
                 : (string)data["Continue"]!["Strategy"]! == "First" && continued.SequenceEqual(pair.Value.Continue);
             check(ArchiveTextKey(data) == pair.Value.Key && !(bool)data["ShowOnce"]! && onShowReviewed
                 && ((JArray)data["OnStop"]!["Actions"]!).Count == 0 && ((JArray)data["Components"]!).Count == 0
-                && ((JArray)data["Answers"]!).Count == 0 && continueReviewed,
+                && (((JArray)data["Answers"]!).Count == 0 || pair.Value.Answers != null) && continueReviewed,
                 "Reviewed native cue evidence drifted: " + pair.Key);
             if (pair.Value.Parent != null)   // E14i: listed once by its parent's Continue (First); the dialog opens on the parent
             {
-                check(pair.Value.Page == "" && pair.Value.Sequence == "" && (string)native[pair.Value.Parent]["Continue"]!["Strategy"]! == "First"
-                      && Refs((JObject)native[pair.Value.Parent]["Continue"]!, "Cues").Count(c => c == pair.Key) == 1
-                      && Refs((JObject)native[pair.Value.Dialog!]["FirstCue"]!, "Cues").Count(c => c == pair.Value.Parent) == 1,
+                var parentData = native[pair.Value.Parent];
+                string field = parentData["Continue"] != null ? "Continue" : parentData["NextCue"] != null ? "NextCue" : "FirstCue";
+                bool opens = field != "Continue" || Refs((JObject)native[pair.Value.Dialog!]["FirstCue"]!, "Cues").Count(c => c == pair.Value.Parent) == 1;
+                check(pair.Value.Page == "" && pair.Value.Sequence == "" && (string)parentData[field]!["Strategy"]! == "First"
+                      && Refs((JObject)parentData[field]!, "Cues").Count(c => c == pair.Key) == 1 && opens
+                      && Refs(data, "Answers").SequenceEqual(pair.Value.Answers ?? Array.Empty<string>()),
                     "Reviewed dialog cue is not once in its parent's Continue, or the dialog no longer opens on the parent: " + pair.Key);
                 continue;
             }
@@ -391,6 +394,14 @@ internal static class NativeEpilogueEditManagedTests
         var continued = (JObject)data["Continue"]!;
         cue.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = ((JArray)continued["Cues"]!).Select(v => Ref(((string)v!).Replace("!bp_", ""))).ToList(),
             Strategy = (Kingmaker.DialogSystem.Strategy)Enum.Parse(typeof(Kingmaker.DialogSystem.Strategy), (string)continued["Strategy"]!) };
+        cue.Answers.Clear();
+        foreach (var answer in ((JArray?)data["Answers"] ?? new JArray()).Select(v => ((string)v!).Replace("!bp_", "")))
+        {
+            var reference = new BlueprintAnswerBaseReference();
+            typeof(BlueprintReferenceBase).GetField("deserializedGuid", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)!
+                .SetValue(reference, BlueprintGuid.Parse(answer));
+            cue.Answers.Add(reference);
+        }
         cue.Text = new LocalizedString();
         var text = (JObject)data["Text"]!;
         typeof(LocalizedString).GetField("m_Key", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(cue.Text, (string?)text["m_Key"] ?? "");

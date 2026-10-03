@@ -205,12 +205,24 @@ internal static class Program
             if (dialog.FirstCue == null || dialog.FirstCue.Cues.Count == 0)
                 dialog.FirstCue = new Kingmaker.DialogSystem.CueSelection { Cues = NativeReferences((JObject)native[pair.Value.Dialog]["FirstCue"]!, "Cues")
                     .Select(Reference<BlueprintCueBaseReference>).ToList() };
-            var parent = Seed<BlueprintCue>(pair.Value.Parent);
-            if (parent.Continue == null || parent.Continue.Cues.Count == 0)
+            string parentType = ((string)native[pair.Value.Parent]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
+            if (parentType == "BlueprintCue")
             {
-                parent.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
-                NativeEpilogueEditManagedTests.LoadArchiveShape(parent, native[pair.Value.Parent], Check);
+                var parent = Seed<BlueprintCue>(pair.Value.Parent);
+                if (parent.Continue == null || parent.Continue.Cues.Count == 0)
+                {
+                    parent.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
+                    NativeEpilogueEditManagedTests.LoadArchiveShape(parent, native[pair.Value.Parent], Check);
+                }
             }
+            else if (parentType == "BlueprintAnswer")   // E14i: an answer's NextCue lists the cue (Devarra's DragonEggs/Answer_0004)
+            {
+                var answer = Seed<BlueprintAnswer>(pair.Value.Parent);
+                if (answer.NextCue == null || answer.NextCue.Cues.Count == 0)
+                    answer.NextCue = new Kingmaker.DialogSystem.CueSelection { Cues = NativeReferences((JObject)native[pair.Value.Parent]["NextCue"]!, "Cues")
+                        .Select(Reference<BlueprintCueBaseReference>).ToList() };
+            }
+            else Check(parentType == "BlueprintDialog" && pair.Value.Parent == pair.Value.Dialog, "Unexpected E14i parent type: " + parentType);
             var editCue = Seed<BlueprintCue>(pair.Key);
             editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
             NativeEpilogueEditManagedTests.LoadArchiveShape(editCue, native[pair.Key], Check);
@@ -444,7 +456,7 @@ internal static class Program
             // E14i: a dialog edit's variants sit in its parent cue's Continue, right before the native cue.
             var editPageCues = (string.IsNullOrEmpty(pair.Value.Parent)
                 ? ((BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!).Cues
-                : ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Parent))!).Continue.Cues).Select(r => r.Guid).ToList();
+                : NativeEpilogueEdit.ParentSelection(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Parent)))!.Cues).Select(r => r.Guid).ToList();
             int nativeAt = editPageCues.IndexOf(BlueprintGuid.Parse(pair.Key));
             Check(nativeAt >= variantNames.Length && editPageCues.Skip(nativeAt - variantNames.Length).Take(variantNames.Length).SequenceEqual(variantNames),
                 "E14d variants not attached in order right before their native cue: " + pair.Key);

@@ -50,7 +50,7 @@ internal static class DevarraTricksterTests
         var firstClimb = S(T + "first_climb");
         var firstBite = S(T + "first_bite");
         var backUp = S(T + "back_up_the_mountain");
-        var pages = story.Scenes.Where(s => s.Relationship == "devarra" && s.Owner == "DevarraEpilogue").ToArray();
+        var pages = story.Scenes.Where(s => s.Relationship == "devarra" && s.Owner == "DevarraEpilogue" && !Rules.IsNativeReplacement(story, s)).ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "devarra" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "devarra" && !s.Reaction && s.Owner == "Devarra").ToArray();
         var tower = own.Where(s => s.Id.StartsWith(T, StringComparison.Ordinal)).ToArray();

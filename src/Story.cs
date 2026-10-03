@@ -1601,6 +1601,9 @@ namespace Tirabade
                     var scene = story.Scenes.FirstOrDefault(s => s.Id == variant.Replacement);
                     var relationship = scene != null && story.Relationships.TryGetValue(scene.Relationship, out var r) ? r : null;
                     var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, scene!.Relationship, relationship);
+                    // E14i on a non-epilogue dialog cue (engine queue 8c/9a): a route state the relationship authored itself (e.g. Devarra's
+                    // flight, Kiana's separation) also earns the edit; the delivery predicate still reads the replacement scene.
+                    if (inDialog && relationship != null) earned.UnionWith(authored.Where(flag => flag.StartsWith(scene!.Relationship + ".", StringComparison.Ordinal)));
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null

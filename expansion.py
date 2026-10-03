@@ -65,6 +65,7 @@ from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_ro
 from storylines import arueshalae_hours, arueshalae_notes
 from storylines import arueshalae_early   # PP2: the Chapter 2 prison beat (path-neutral)
 from storylines import devarra_trickster, devarra_tower
+from storylines import devarra_native  # E14i: DragonEggs/Cue_0007 in the flight world
 from storylines import delamere_trickster, delamere_woods, delamere_fire
 from storylines import kaylessa_trickster, kaylessa_wasps, kaylessa_clearing
 from storylines import kaylessa_early  # PP2: the Chapter 1 and 2 beats, appended to kaylessa_trickster.SCENES
@@ -469,6 +470,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(devarra_tower.SCENES))
     devarra_trickster.integrate(payload)
     devarra_tower.integrate(payload)
+    devarra_native.integrate(payload)
     # Delamere: a new relationship, opened only by the Trickster's stag call at her sarcophagus (delamere_trickster, 11 §2);
     # the courtship is delamere_woods and delamere_fire. Nothing is spawned for her (her native units share the undead prefab).
     payload["Relationships"]["delamere"] = copy.deepcopy(delamere_trickster.RELATIONSHIP)
