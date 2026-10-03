@@ -53,6 +53,7 @@ from storylines import dorgelinda_trickster, dorgelinda_ledger
 from storylines import hepzamirah_trickster, hepzamirah_flesh
 from storylines import camellia_trickster, camellia_masks, camellia_evenings, camellia_cards, camellia_days, camellia_last  # noqa: F401 (the others append to camellia_trickster.SCENES)
 from storylines import camellia_early  # noqa: F401 (PP2: the Prologue and Chapter 2 beats, appended to camellia_trickster.SCENES)
+from storylines import camellia_native  # E14d: her native departure slides replaced or hidden once the route keeps her
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
@@ -409,6 +410,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["camellia"] = copy.deepcopy(camellia_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(camellia_trickster.SCENES))
     camellia_trickster.integrate(payload)
+    camellia_native.integrate(payload)
     # Eritrice: a new relationship, opened only by the Trickster motion in her private audience (eritrice_trickster).
     payload["Relationships"]["eritrice"] = copy.deepcopy(eritrice_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(eritrice_trickster.SCENES))

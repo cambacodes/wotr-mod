@@ -514,6 +514,7 @@ internal static class Program
             // 18-ETUDE-BINDING-AUDIT: each fixed native binding holds where its scenes are delivered.
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) EtudeBindingTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) CamelliaTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) CamelliaNativeSlideTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
             // Sol quality pass: Areelu's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).

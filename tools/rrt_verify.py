@@ -1515,6 +1515,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
                      (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
+        for g, e in (story.get("NativeEpilogueSuppressions") or {}).items():   # E14d extension: hidden native cues
+            want += [(g, "BlueprintCue", "NativeEpilogueSuppressions"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueSuppressions." + g),
+                     (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueSuppressions." + g)]
         for k, p in (story.get("Presences") or {}).items():
             want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
             want.append((p.get("Area"), "BlueprintArea", "Presences." + k))

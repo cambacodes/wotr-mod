@@ -88,6 +88,46 @@ internal static class NativeEpilogueEditTests
                 Nodes = new List<Node> { new Node { Id = "start", Text = "x", Choices = new List<Choice> { new Choice { Set = new[] { "anevia.trickster.returned" } } } } } });
             s.NativeEpilogueEdits[Cue0409].Variants[1].When = new[] { new[] { "anevia.trickster.returned" } };
         });
+
+        // E14d extension: "!flag" members (absent flag) and suppressions (a native cue hidden, no text of its own).
+        var negated = VariantFixture();
+        negated.NativeEpilogueEdits[Cue0409].Variants[1].When = new[] { new[] { "wenduag.trickster.returned", "!sacrifice" } };
+        Rules.Validate(negated);
+        var probe = new Snapshot { Chapter = 6 };
+        probe.Flags.Add("wenduag.trickster.returned");
+        check(Rules.WhenHolds(negated.NativeEpilogueEdits[Cue0409].Variants[1].When, probe), "A !flag member does not hold while the flag is absent.");
+        probe.Flags.Add("sacrifice");
+        check(!Rules.WhenHolds(negated.NativeEpilogueEdits[Cue0409].Variants[1].When, probe), "A !flag member holds while the flag is present.");
+        InvalidVariant("a group earned only by a negated commitment", s => s.NativeEpilogueEdits[Cue0409].Variants[0].When = new[] { new[] { "!wenduag.committed" } });
+        InvalidVariant("negated unknown flag", s => s.NativeEpilogueEdits[Cue0409].Variants[0].When = new[] { new[] { "wenduag.committed", "!never.written" } });
+        InvalidVariant("double negation", s => s.NativeEpilogueEdits[Cue0409].Variants[0].When = new[] { new[] { "wenduag.committed", "!!sacrifice" } });
+        Story Suppressed()
+        {
+            var s = VariantFixture();
+            s.NativeEpilogueSuppressions["3617a648c06a45d1807fde65aedafb06"] = new NativeEpilogueSuppressionSpec { Page = "503164ff04ac64543ba42561ea9f970f",
+                Sequence = "fec3b6f28610c8a48a239f148ed3ed60", Key = "de512bb2-4d4d-4ca2-b20d-9b2d6384c802", Relationship = "wenduag",
+                When = new[] { new[] { "wenduag.committed", "!sacrifice" } } };
+            return s;
+        }
+        Rules.Validate(Suppressed());
+        void InvalidSuppression(string what, Action<Story> mutate)
+        {
+            var bad = Suppressed();
+            mutate(bad);
+            bool rejected = false;
+            try { Rules.Validate(bad); } catch (InvalidOperationException) { rejected = true; }
+            check(rejected, "Invalid native epilogue suppression accepted: " + what);
+        }
+        const string Cue16 = "3617a648c06a45d1807fde65aedafb06";
+        InvalidSuppression("unknown relationship", s => s.NativeEpilogueSuppressions[Cue16].Relationship = "nobody");
+        InvalidSuppression("When without commitment or return", s => s.NativeEpilogueSuppressions[Cue16].When = new[] { new[] { "sacrifice" } });
+        InvalidSuppression("empty When", s => s.NativeEpilogueSuppressions[Cue16].When = Array.Empty<string[]>());
+        InvalidSuppression("empty group", s => s.NativeEpilogueSuppressions[Cue16].When = new[] { Array.Empty<string>() });
+        InvalidSuppression("unknown flag", s => s.NativeEpilogueSuppressions[Cue16].When = new[] { new[] { "wenduag.committed", "never.written" } });
+        InvalidSuppression("page not a GUID", s => s.NativeEpilogueSuppressions[Cue16].Page = "BookPage_0347");
+        InvalidSuppression("cue also edited", s => { var spec = s.NativeEpilogueSuppressions[Cue16]; s.NativeEpilogueSuppressions.Clear();
+            s.NativeEpilogueSuppressions[Cue0409] = spec; });
+        InvalidSuppression("null spec", s => s.NativeEpilogueSuppressions[Cue16] = null!);
     }
 
     // Wenduag's cue with two extra variants: committed (no sacrifice), and returned (fate defied, uncommitted, keeps the image).

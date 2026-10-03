@@ -268,6 +268,17 @@ namespace Tirabade
                     else nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!,
                         (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!);
                 }
+                // E14d extension: suppressions are warning-only. A refused cue keeps playing; no relationship is touched.
+                var nativeSuppressions = new List<(string Cue, NativeEpilogueSuppressionSpec Spec, BlueprintCue Original)>();
+                foreach (var pair in story.NativeEpilogueSuppressions)
+                {
+                    string? refusal;
+                    try { refusal = NativeEpilogueEdit.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)),
+                        ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("ced82f299d246f448b48afa0b630dd70")) as BlueprintCueSequence); }
+                    catch (Exception ex) { refusal = ex.Message; }
+                    if (refusal != null) warnings.Add("Native epilogue suppression " + pair.Key + " skipped (the native cue plays): " + refusal);
+                    else nativeSuppressions.Add((pair.Key, pair.Value, (BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!));
+                }
                 // E18: a reviewed native gate needs its exact native evidence, or its relationship is disabled (the route would
                 // otherwise promise an outcome the native content no longer keeps).
                 var nativeGates = new List<(string Gate, NativeGateSpec Spec, BlueprintScriptableObject Owner, ConditionsChecker[] Checkers)>();
@@ -573,6 +584,20 @@ namespace Tirabade
                     Optional<object>("Native epilogue edit " + cueEdits.Key, () =>
                     {
                         NativeEpilogueEdit.AttachGroup(group, plans, plan => Ref<BlueprintCueBaseReference>(plan.Replacement));
+                        return new object();
+                    });
+                }
+                // E14d extension: a verified suppression hides its native cue while its When holds (never while the mod is disabled
+                // or uninitialized, or while its relationship is degraded).
+                foreach (var suppression in nativeSuppressions)
+                {
+                    if (degraded.Contains(suppression.Spec.Relationship)) continue;
+                    var when = suppression.Spec.When;
+                    string relationship = suppression.Spec.Relationship;
+                    Optional<object>("Native epilogue suppression " + suppression.Cue, () =>
+                    {
+                        NativeEpilogueEdit.Suppress(suppression.Original, () => enabled && initialized && Game.Instance?.Player != null
+                            && !degraded.Contains(relationship) && Rules.WhenHolds(when, State()));
                         return new object();
                     });
                 }

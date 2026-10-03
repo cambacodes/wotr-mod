@@ -36,6 +36,9 @@ namespace Tirabade
         public List<NativeOpener> Openers = new List<NativeOpener>();
         // E14d: reviewed native epilogue cues replaced by an RRT epilogue scene's text when an earned condition holds.
         public Dictionary<string, NativeEpilogueEditSpec> NativeEpilogueEdits = new Dictionary<string, NativeEpilogueEditSpec>();
+        // E14d extension (suppression): reviewed native epilogue cues hidden while an earned condition holds, with no text of
+        // their own (a follow-on slide that the relationship's own pages contradict). Warning-only: a refusal never degrades.
+        public Dictionary<string, NativeEpilogueSuppressionSpec> NativeEpilogueSuppressions = new Dictionary<string, NativeEpilogueSuppressionSpec>();
         // E18: reviewed native gates (NativeGate.Reviewed), keyed by gate id. While When holds, the gated native checker reads
         // false and the native content takes its own false branch. Never starts or completes a native etude.
         public Dictionary<string, NativeGateSpec> NativeGates = new Dictionary<string, NativeGateSpec>();
@@ -250,6 +253,16 @@ namespace Tirabade
         public bool KeepNativeImage;
         // E14d extension: further replacements of the same native cue, tried in order after this one (first match plays).
         public NativeEpilogueVariant[] Variants = Array.Empty<NativeEpilogueVariant>();
+    }
+
+    // E14d extension: a reviewed native cue hidden (never replaced) while When holds. Relationship owns the earned flags.
+    public sealed class NativeEpilogueSuppressionSpec
+    {
+        public string Page = "";
+        public string Sequence = "";
+        public string Key = "";
+        public string Relationship = "";
+        public string[][] When = Array.Empty<string[]>();
     }
 
     public sealed class NativeEpilogueVariant
@@ -959,8 +972,12 @@ namespace Tirabade
         public static bool ParagraphAlwaysShown(Scene scene, Paragraph paragraph) => paragraph.Requires.All(scene.Requires.Contains)
             && !paragraph.Forbids.Any() && paragraph.AnyGroups.All(group => group.Any(scene.Requires.Contains));
 
-        // E14d: an OR of AND-groups over the snapshot.
-        public static bool WhenHolds(string[][] when, Snapshot state) => when.Any(group => group.All(state.Has));
+        // E14d: an OR of AND-groups over the snapshot. A "!flag" member holds while the flag is absent (only native epilogue
+        // edits and suppressions may use it; every other When validates its members as plain known keys).
+        public static bool WhenHolds(string[][] when, Snapshot state) => when.Any(group => group.All(flag => WhenMember(flag, state)));
+
+        private static bool WhenMember(string flag, Snapshot state) =>
+            flag.StartsWith("!", StringComparison.Ordinal) ? !state.Has(flag.Substring(1)) : state.Has(flag);
 
         // E14d: scenes used as native-cue replacements are never attached as pages of their own.
         public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values
@@ -1523,7 +1540,7 @@ namespace Tirabade
         private static void ValidateNativeEpilogueEdits(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
         {
             if (story.NativeEpilogueEdits == null) throw new InvalidOperationException("NativeEpilogueEdits cannot be null.");
-            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            bool Known(string flag) => EditWhenKnown(story, flag, authored, native, runtime);
             var used = story.NativeEpilogueEdits.Values.Where(edit => edit != null)
                 .SelectMany(edit => EditVariants(edit).Select(variant => variant?.Replacement)).ToList();
             foreach (var pair in story.NativeEpilogueEdits)
@@ -1535,8 +1552,7 @@ namespace Tirabade
                 {
                     var scene = story.Scenes.FirstOrDefault(s => s.Id == variant.Replacement);
                     var relationship = scene != null && story.Relationships.TryGetValue(scene.Relationship, out var r) ? r : null;
-                    var earned = relationship == null ? new HashSet<string>() : new HashSet<string>(new[] { relationship.CommittedFlag }
-                        .Concat(relationship.TricksterAccess.Values.Select(access => access.Returned).OfType<string>()));
+                    var earned = relationship == null ? new HashSet<string>() : EarnedFlags(relationship);
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
@@ -1547,6 +1563,32 @@ namespace Tirabade
                             + "that each require its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
                 }
             }
+            if (story.NativeEpilogueSuppressions == null) throw new InvalidOperationException("NativeEpilogueSuppressions cannot be null.");
+            foreach (var pair in story.NativeEpilogueSuppressions)
+            {
+                var spec = pair.Value;
+                var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
+                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(relationship);
+                if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
+                    || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
+                    || spec.Key == null || spec.When == null || spec.When.Length == 0
+                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => f == null || !Known(f)) || !g.Any(earned.Contains)))
+                    throw new InvalidOperationException("Invalid native epilogue suppression (a GUID cue not also edited, its page and sequence, "
+                        + "a relationship, known When groups that each require its CommittedFlag or Trickster return flag): " + pair.Key);
+            }
+        }
+
+        // E14d: the flags that earn a native epilogue edit or suppression: the relationship's CommittedFlag and its Trickster
+        // return flags (a fate the route undid). Every When group must hold one of them positively.
+        private static HashSet<string> EarnedFlags(Relationship relationship) => new HashSet<string>(new[] { relationship.CommittedFlag }
+            .Concat(relationship.TricksterAccess.Values.Select(access => access.Returned).OfType<string>()));
+
+        // E14d: a When member is a known key, or "!" and a known key.
+        private static bool EditWhenKnown(Story story, string flag, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            string key = flag.StartsWith("!", StringComparison.Ordinal) ? flag.Substring(1) : flag;
+            return key.Length > 0 && !key.StartsWith("!", StringComparison.Ordinal)
+                && (authored.Contains(key) || native.Contains(key) || runtime.Contains(key) || story.Derived.ContainsKey(key));
         }
 
         // E6: a reaction is one node of terminal choices; it never closes, and never touches another relationship's state.

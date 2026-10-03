@@ -176,41 +176,27 @@ internal static class Program
         }
         // NM1: the E14d native epilogue edits the story ships load their reviewed cue, page and sequence as the game does. The
         // host cannot run Owlcat's element reporting, so each cue's checker is the empty AND (NativeEpilogueEditManagedTests).
-        foreach (var pair in story.NativeEpilogueEdits)
+        // E14d extension: suppressed cues (NativeEpilogueSuppressions) load the same way.
+        foreach (var target in story.NativeEpilogueEdits.Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))
+            .Concat(story.NativeEpilogueSuppressions.Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))))
         {
-            var editSequence = Seed<BlueprintCueSequence>(pair.Value.Sequence);
+            var editSequence = Seed<BlueprintCueSequence>(target.Sequence);
             // CueSequence_Special also holds the parent's native pair page, which ParentEndingIntegrationTests seeds as a fixture;
             // there only the edit's own page is loaded, so that page stays exactly once in the sequence.
-            if (pair.Value.Sequence == NativeEpilogueEdit.Special)
+            if (target.Sequence == NativeEpilogueEdit.Special)
             {
-                if (!editSequence.Cues.Any(r => r.Guid == BlueprintGuid.Parse(pair.Value.Page)))
-                    editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(pair.Value.Page));
+                if (!editSequence.Cues.Any(r => r.Guid == BlueprintGuid.Parse(target.Page)))
+                    editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(target.Page));
             }
             else if (editSequence.Cues.Count == 0)
-                foreach (string cue in NativeReferences(native[pair.Value.Sequence], "Cues")) editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
-            var editPage = Seed<BlueprintBookPage>(pair.Value.Page);
+                foreach (string cue in NativeReferences(native[target.Sequence], "Cues")) editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
+            var editPage = Seed<BlueprintBookPage>(target.Page);
             if (editPage.Cues.Count == 0)
-                foreach (string cue in NativeReferences(native[pair.Value.Page], "Cues")) editPage.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
-            var editCue = Seed<BlueprintCue>(pair.Key);
+                foreach (string cue in NativeReferences(native[target.Page], "Cues")) editPage.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
+            var editCue = Seed<BlueprintCue>(target.Cue);
             editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
-            // E14d extension: a reviewed OnShow image action (Cue_0311) is loaded as the archive has it.
-            var editActions = new List<Kingmaker.ElementsSystem.GameAction>();
-            foreach (JObject action in (JArray)native[pair.Key]["OnShow"]!["Actions"]!)
-            {
-                Check(((string)action["$type"]!).EndsWith(", ChangeBookEventImage", StringComparison.Ordinal), "Unexpected native OnShow action on an E14d cue: " + pair.Key);
-                var change = new Kingmaker.Designers.EventConditionActionSystem.Actions.ChangeBookEventImage { Owner = editCue, name = "$ChangeBookEventImage$archive" };
-                typeof(Kingmaker.Designers.EventConditionActionSystem.Actions.ChangeBookEventImage)
-                    .GetField("m_Image", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
-                    .SetValue(change, new Kingmaker.ResourceLinks.SpriteLink { AssetId = (string)action["m_Image"]!["AssetId"]! });
-                editCue.ElementsArray.Add(change);
-                editActions.Add(change);
-            }
-            editCue.OnShow = new Kingmaker.ElementsSystem.ActionList { Actions = editActions.ToArray() };
-            editCue.OnStop = new Kingmaker.ElementsSystem.ActionList { Actions = Array.Empty<Kingmaker.ElementsSystem.GameAction>() };
-            editCue.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = new List<BlueprintCueBaseReference>() };
-            editCue.Text = new Kingmaker.Localization.LocalizedString();
-            typeof(Kingmaker.Localization.LocalizedString).GetField("m_Key", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
-                .SetValue(editCue.Text, (string)native[pair.Key]["Text"]!["m_Key"]!);
+            // The archive's reviewed OnShow image action, continuation and text key (own or shared), as the game loads them.
+            NativeEpilogueEditManagedTests.LoadArchiveShape(editCue, native[target.Cue], Check);
         }
         foreach (string guid in story.Etudes.Values.Concat(story.CompletedEtudes.Values).Distinct())
         {
@@ -444,6 +430,14 @@ internal static class Program
                 "E14d variants not attached in order right before their native cue: " + pair.Key);
             Check(!Warnings().Any(w => w.Contains(pair.Key)), "E14d edit warned or degraded: " + string.Join(" | ", Warnings().Where(w => w.Contains(pair.Key))));
         }
+        // E14d extension: every shipped suppression passed its evidence check and guarded its native cue exactly once.
+        foreach (var pair in story.NativeEpilogueSuppressions)
+        {
+            var suppressed = (BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!;
+            Check(suppressed.Conditions.Conditions.Length == 1 && suppressed.Conditions.Conditions[0].GetType().Name == "Guard",
+                "E14d suppression did not guard its native cue: " + pair.Key);
+            Check(!Warnings().Any(w => w.Contains(pair.Key)), "E14d suppression warned: " + string.Join(" | ", Warnings().Where(w => w.Contains(pair.Key))));
+        }
         foreach (var latch in story.Latches.Keys)
             Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + latch)) is BlueprintUnlockableFlag
                 && ResourcesLibrary.TryGetBlueprint(Id("flag.hour." + latch)) is BlueprintUnlockableFlag, "Latch flag not registered: " + latch);
@@ -673,6 +667,7 @@ internal static class Program
         ParagraphManagedTests.Run(Id, Check);
         NativeEpilogueEditManagedTests.Run(native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
+        if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
         SpeakerManagedTests.Run(native, Check);
         ContinueBeforeManagedTests.Run(native, Id, Check);

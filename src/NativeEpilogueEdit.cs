@@ -31,8 +31,11 @@ namespace Tirabade
             public readonly string Page, Sequence, Key;
             public readonly string? Image;            // the reviewed OnShow ChangeBookEventImage asset, or null for no OnShow
             public readonly bool DegradeOnRefusal;     // false: a refusal skips the edit and warns, the native cue plays
-            internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true)
-            { Page = page; Sequence = sequence; Key = key; Image = image; DegradeOnRefusal = degradeOnRefusal; }
+            // E14d extension: the reviewed continuation (Strategy First), or null for none. On a book page the continued cue plays
+            // right after the original (DialogController.PlayBasicCue); a replacement never continues, so it hides that too.
+            public readonly string[]? Continue;
+            internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true, string[]? continueTo = null)
+            { Page = page; Sequence = sequence; Key = key; Image = image; DegradeOnRefusal = degradeOnRefusal; Continue = continueTo; }
         }
 
         // Whitelist, verified in blueprints.zip: ShowOnce false, cues without OnStop, answers, continuation or components,
@@ -44,7 +47,8 @@ namespace Tirabade
         public static readonly Dictionary<string, Evidence> Reviewed = new Dictionary<string, Evidence>
         {
             ["86bf0569a9029ae4b8c9d300a41e5739"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "0dfe0435-8149-466d-bf0c-88d648651c3a"), // Wenduag Cue_0409
-            ["36a07840d25540eeac6b1c6631196bcc"] = new Evidence("503164ff04ac64543ba42561ea9f970f", Companions, "af56e46e-7e82-4e22-9951-8ddc37dd015f"), // Camellia Cue_38_master
+            ["36a07840d25540eeac6b1c6631196bcc"] = new Evidence("503164ff04ac64543ba42561ea9f970f", Companions, "af56e46e-7e82-4e22-9951-8ddc37dd015f",
+                degradeOnRefusal: false), // Camellia Cue_38_master (warning-only, with the other Camellia slides below)
             ["78ae1bdc3b0824b4ca2ed618782f1faa"] = new Evidence("e83fff8e997db8e439bf12e09225696a", Companions, "411ef2f1-5168-455f-99b0-ca33960678c5"), // Arueshalae Cue_0461
             ["f76713034f4087a4f80495971c47ca7b"] = new Evidence("e83fff8e997db8e439bf12e09225696a", Companions, "fa1468ba-9679-4805-9dd4-c71997aa4e7f"), // Arueshalae Cue_0462 (NM1)
             // Tirabade BookPage_0307 Cue_0311 (IrabethDead + AneviaGone Playing): "No one ever saw her again." Its OnShow swaps
@@ -56,7 +60,23 @@ namespace Tirabade
             // never escape their nightmares of the Fifth Crusade." Same image action and page; the parent never names it.
             ["ccd140dbf2603734aa323261c2445bec"] = new Evidence("ae1f824fe248d9f4aac7d39ec2e12140", Special, "cc716238-3702-4913-977d-6189665672b7",
                 image: "f96ad5fa9c59d7549adff4c90f0703ab", degradeOnRefusal: false),
+            // Camellia, Epilogues/BookPage_0347 (CompanionInParty Camelia_Companion, dead allowed, Ex not): her departure slides.
+            // Lead cues (exactly one plays in every native state): Cue_0392 / Cue_0544 (TE with companions, Q3 completed or not),
+            // Cue_28 (romance, no sacrifice), Cue_38_master (romance, sacrifice), Cue_0386 (no romance; continues into Cue_0387,
+            // the dagger at the Commander's heart). Follow-ons: Cue_16 (Mireya in Varisia, every non-TE state), Cue_0391 (true
+            // romance: came back, left again), Cue_0390 (Mireya's lovers; shared text f25c5ed1). The parent mod names none of
+            // them, the page or its sequence (aranka-*.cs, RanRomance.dll strings). Every one is warning-only.
+            ["84f892d388bba01489145ecd631f23a2"] = new Evidence(CamelliaPage, Companions, "8f73fe38-c791-4d7e-9bd0-553f1f0b07aa",
+                image: "df4a5da19a0a64542929dc8409b29bbe", degradeOnRefusal: false),                                             // Cue_0392
+            ["c1b1da84c12d3ac448ec65b4342ce77f"] = new Evidence(CamelliaPage, Companions, "d494dcd7-7f4f-4b8b-a8d7-7dcb41998909", degradeOnRefusal: false), // Cue_0544
+            ["4ed8e9723359441dae10ad3068d3f2c7"] = new Evidence(CamelliaPage, Companions, "aee7c6bf-fbe1-4288-83e7-3ff3bd4545ad", degradeOnRefusal: false), // Cue_28
+            ["5011dfa46fbb0464ab624d78bcfbd483"] = new Evidence(CamelliaPage, Companions, "4dd21f1d-4280-4598-851d-bbc6bbf2f3e4", degradeOnRefusal: false,
+                continueTo: new[] { "f23fb3dacf91b3e4b9d3a85937d323bf" }),                                                         // Cue_0386 -> Cue_0387
+            ["3617a648c06a45d1807fde65aedafb06"] = new Evidence(CamelliaPage, Companions, "de512bb2-4d4d-4ca2-b20d-9b2d6384c802", degradeOnRefusal: false), // Cue_16
+            ["430ce9767d3ede2479ff9d6aee432304"] = new Evidence(CamelliaPage, Companions, "4819461c-331c-4872-a077-49115a7c9ad7", degradeOnRefusal: false), // Cue_0391
+            ["e9a183135b8289544a3144dcf8151920"] = new Evidence(CamelliaPage, Companions, "f31377a1-a78e-47f2-bc10-1721eac2f9c1", degradeOnRefusal: false), // Cue_0390
         };
+        public const string CamelliaPage = "503164ff04ac64543ba42561ea9f970f";   // Epilogues/BookPage_0347
 
         public static bool DegradesOnRefusal(string cueId) => !Reviewed.TryGetValue(cueId, out var evidence) || evidence.DegradeOnRefusal;
 
@@ -104,19 +124,37 @@ namespace Tirabade
         // when the evidence says so; otherwise the native cue plays).
         public static string? Check(string cueId, NativeEpilogueEditSpec spec, Func<string, SimpleBlueprint?> resolve, BlueprintCueSequence? aeon)
         {
-            if (!Reviewed.TryGetValue(cueId, out var evidence) || evidence.Page != spec.Page || evidence.Sequence != spec.Sequence || evidence.Key != spec.Key)
-                return "not a reviewed native cue";
-            if (evidence.Image == null && Rules.EditVariants(spec).Any(variant => variant.KeepNativeImage))
+            if (Reviewed.TryGetValue(cueId, out var reviewed) && reviewed.Image == null && Rules.EditVariants(spec).Any(variant => variant.KeepNativeImage))
                 return "a variant keeps a native image the reviewed cue does not have";
+            return CheckEvidence(cueId, spec.Page, spec.Sequence, spec.Key, resolve, aeon);
+        }
+
+        // E14d extension: a suppression is checked against the same reviewed evidence (it has no variants).
+        public static string? Check(string cueId, NativeEpilogueSuppressionSpec spec, Func<string, SimpleBlueprint?> resolve, BlueprintCueSequence? aeon)
+            => CheckEvidence(cueId, spec.Page, spec.Sequence, spec.Key, resolve, aeon);
+
+        // A cue's text key: its own, or (a shared string, e.g. Cue_0390) the shared asset's. LocalizedString.Key is m_Key only.
+        public static string? TextKey(Kingmaker.Localization.LocalizedString? text) =>
+            text == null ? null : !string.IsNullOrEmpty(text.Key) ? text.Key : text.Shared?.String?.Key;
+
+        private static string? CheckEvidence(string cueId, string pageId, string sequenceId, string key, Func<string, SimpleBlueprint?> resolve,
+            BlueprintCueSequence? aeon)
+        {
+            if (!Reviewed.TryGetValue(cueId, out var evidence) || evidence.Page != pageId || evidence.Sequence != sequenceId || evidence.Key != key)
+                return "not a reviewed native cue";
             if (!(resolve(cueId) is BlueprintCue cue)) return "cue missing";
-            if (!(resolve(spec.Page) is BlueprintBookPage page)) return "page missing";
-            if (!(resolve(spec.Sequence) is BlueprintCueSequence sequence)) return "sequence missing";
-            if (cue.Text?.Key != spec.Key) return "cue text key changed (patch drift)";
+            if (!(resolve(pageId) is BlueprintBookPage page)) return "page missing";
+            if (!(resolve(sequenceId) is BlueprintCueSequence sequence)) return "sequence missing";
+            if (TextKey(cue.Text) != key) return "cue text key changed (patch drift)";
             var onShow = cue.OnShow?.Actions;
             bool onShowReviewed = evidence.Image == null ? onShow?.Length == 0
                 : onShow?.Length == 1 && ImageOf(onShow[0]) == evidence.Image;
+            var continued = cue.Continue?.Cues;
+            bool continueReviewed = evidence.Continue == null ? continued?.Count == 0
+                : continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
+                    && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.Continue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
             if (cue.ShowOnce || cue.ShowOnceCurrentDialog || cue.Conditions == null || cue.ComponentsArray.Length != 0
-                || !onShowReviewed || cue.OnStop?.Actions?.Length != 0 || cue.Continue?.Cues?.Count != 0 || cue.Answers?.Count != 0)
+                || !onShowReviewed || cue.OnStop?.Actions?.Length != 0 || !continueReviewed || cue.Answers?.Count != 0)
                 return "cue behavior differs from the reviewed policy";
             if (page.Cues.Count(reference => reference.Guid == cue.AssetGuid) != 1) return "cue is not exactly once on its page";
             if (sequence.Cues.Count(reference => reference.Guid == page.AssetGuid) != 1) return "page is not exactly once in its sequence";
@@ -163,6 +201,9 @@ namespace Tirabade
         }
 
         public static void Guard(BlueprintCue original, Func<bool> anySelected) => ParentEndingGuard.Attach(original, anySelected);
+
+        // E14d extension: a suppression only guards the native cue (hidden, with its continuation, while `suppressed` holds).
+        public static void Suppress(BlueprintCue original, Func<bool> suppressed) => ParentEndingGuard.Attach(original, suppressed);
 
         // Phase 3 for one cue's variants (plans in variant order, all of them): guard the original by "a variant is selected"
         // (false while the group is disabled), insert every variant right before it, then enable the group. If an insert
