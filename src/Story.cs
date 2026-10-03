@@ -370,7 +370,7 @@ namespace Tirabade
         public string Portrait = "";
         public string Text = "";
         public List<Choice> Choices = new List<Choice>();
-        // E14c: epilogue pages only. Conditional paragraphs appended after the node text, in order (the native BookPage idiom).
+        // E14c: conditional paragraphs on narrator and speaker nodes. Paragraphs appended after the node text, in order (the native BookPage idiom).
         public List<Paragraph> Paragraphs = new List<Paragraph>();
         // E14f: who speaks this node's cue in a native dialog: a BlueprintUnit GUID, or Speaker "conversant" for the dialog's
         // conversant. Only inline cues (NativeReturnCue, ReturnToList, ContinueBefore) use it; book pages stay narrated.
@@ -766,6 +766,7 @@ namespace Tirabade
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.retained_hostile" || flag == "konomi.return_contact_available"
             || flag == "konomi.return_correspondence_available"
+            || flag == "konomi.death_unreturned" || flag == "konomi.death_restored"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
             || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived";
 
@@ -1307,11 +1308,13 @@ namespace Tirabade
                 .Concat(relationshipFlags));
             var derivedFlags = new HashSet<string>(story.Presences.Where(p => p.Value?.At != null).Select(p => PresenceFailedFlag(p.Key)).Concat(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
                 "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys)));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
@@ -1555,11 +1558,10 @@ namespace Tirabade
                 {
                     if (node.Paragraphs == null) throw new InvalidOperationException("Paragraphs cannot be null: " + scene.Id + "/" + node.Id);
                     bool paragraphs = node.Paragraphs.Count > 0;
-                    if (paragraphs && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
-                        || node.Paragraphs.Any(p => p == null || string.IsNullOrWhiteSpace(p.Text) || p.Requires == null || p.Forbids == null
+                    if (paragraphs && (node.Paragraphs.Any(p => p == null || string.IsNullOrWhiteSpace(p.Text) || p.Requires == null || p.Forbids == null
                             || p.AnyGroups == null || p.AnyGroups.Any(g => g == null || g.Length == 0))
                         || string.IsNullOrWhiteSpace(node.Text) && !node.Paragraphs.Any(p => ParagraphAlwaysShown(scene, p))))
-                        throw new InvalidOperationException("Invalid paragraphs (epilogue pages only; a textless node needs a paragraph its scene's Requires always show): "
+                        throw new InvalidOperationException("Invalid paragraphs (a textless node needs a paragraph its scene's Requires always show): "
                             + scene.Id + "/" + node.Id);
                     if (node.SpeakerUnit != null && (!Guid.TryParseExact(node.SpeakerUnit, "N", out var speaker) || speaker == Guid.Empty
                         || node.Speaker == "conversant"))
@@ -1647,7 +1649,10 @@ namespace Tirabade
                 if (gate == null || !ReviewedNativeGates.TryGetValue(pair.Key, out var target) || gate.Target != target
                     || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
                     || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
-                        || !OnTricksterPath(g)))
+                        || !OnTricksterPath(g))
+                    || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana"
+                        || gate.When.Any(g => !g.Contains("trickster.now")
+                            || !g.Contains("kiana.trickster.guests_ransomed") && !g.Contains("kiana.trickster.guests_bought_back"))))
                     throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
@@ -1688,11 +1693,12 @@ namespace Tirabade
             ["ivory_sanctum.red_dragon_spawn"] = "977818b761d048d49a0fe19a1c8fccc4",   // IvorySanctum_MainEtude: RedDragon_CR20 spawn branches
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
             ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
+            ["kiana.q3_recovery"] = "2b4a5c01a192d1f4aa8c9d32aa149727",           // FinalResolve, paired with Cue_0032 and its native completion
             ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
         };
 
         // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
-        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog" };
+        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog", "kiana.q3_recovery" };
 
         // E18: a gate holds while its relationship is live and any When group holds.
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)

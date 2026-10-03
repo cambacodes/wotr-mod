@@ -361,7 +361,7 @@ internal static class CamelliaTricksterTests
         var witnessed = Take(S(P + "bond.witness"), Later(story, shelved, 100), "lied_after", 0, P + "bond.witness_lied");
         check(Avail(S(P + "bond.not_today"), Later(story, witnessed, 100)), "Not today does not follow the witness.");
 
-        // --- The other routes' Camellia reactions: her retained death is lifted by her return (G6(b)). ----------------
+        // --- The nine authorized other-route reactions read Camellia's current death (engine-q3). ----------------
         foreach (var id in new[] { "jerribeth.trickster.reaction.camellia", "jerribeth.trickster.reaction.camellia_host",
             "nurah.trickster.react.camellia_pardon", "nurah.trickster.react.camellia_market", "nurah.trickster.react.camellia_supper",
             "nurah.trickster.react.camellia_draft", "soana.trickster.react.camellia_portion", "soana.trickster.react.camellia_knot",
@@ -369,8 +369,10 @@ internal static class CamelliaTricksterTests
         {
             var s = story.Scenes.SingleOrDefault(x => x.Id == id);
             if (s == null) continue;
-            check(!s.Forbids.Contains(Dead) || s.ForbidOverrides.TryGetValue(Dead, out var lift) && lift == Returned,
-                "A Camellia reaction does not lift her retained death on her return: " + id);
+            check(s.Forbids.Contains(Dead) && !s.ForbidOverrides.ContainsKey(Dead),
+                "A Camellia reaction overrides her current death: " + id);
+            check(Rules.ForbidHolds(s, Dead, World(story, 5, Dead, Returned))
+                && !Rules.ForbidHolds(s, Dead, World(story, 5, Returned)), "A later death leaks into a foreign reaction: " + id);
             check(!s.ForbidOverrides.ContainsKey(Killed), "A foreign reaction claims the veiled Camellia's presence hub: " + id);
         }
 

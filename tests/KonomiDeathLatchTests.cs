@@ -4,7 +4,7 @@ using Tirabade;
 
 // Engine-q2 item 4: a committed Konomi who died at her post is remembered dead. konomi.retained_dead is a body check (true
 // only while her capital scene is loaded); konomi.dead.latched records it, and konomi.dead.unreturned (the latch, withheld by
-// her dead.recalled return) keeps her living endings, her Last Call coda and her call-in dark and plays her loss page.
+// current verified restoration) keeps her living endings, her Last Call coda and her call-in dark and plays her loss page.
 internal static class KonomiDeathLatchTests
 {
     private const string Latched = "konomi.dead.latched", Lost = "konomi.dead.unreturned", Confirmed = "konomi.retained_return_confirmed";
@@ -23,8 +23,8 @@ internal static class KonomiDeathLatchTests
             return state;
         }
         check(story.Latches.TryGetValue(Latched, out var sources) && sources.SequenceEqual(new[] { "konomi.retained_dead" })
-              && story.Derived.TryGetValue(Lost, out var groups) && groups.Length == 1 && groups[0].SequenceEqual(new[] { Latched })
-              && story.DerivedForbids.TryGetValue(Lost, out var lift) && lift.SequenceEqual(new[] { Confirmed }),
+              && story.Derived.TryGetValue(Lost, out var groups) && groups.Length == 2 && groups[0].SequenceEqual(new[] { Latched }) && groups[1].SequenceEqual(new[] { "konomi.death_unreturned" })
+              && story.DerivedForbids.TryGetValue(Lost, out var lift) && lift.SequenceEqual(new[] { "konomi.death_restored" }),
             "Konomi death latch: the latch or its unreturned key is not bound to the body check and her recall.");
 
         // The body check latches the first time it is observed, and the latch outlives it.
@@ -41,7 +41,9 @@ internal static class KonomiDeathLatchTests
         var loss = Sc(LossPage);
         var dead = World("konomi.committed", Latched);
         var alive = World("konomi.committed");
-        var recalled = World("konomi.committed", Latched, Confirmed);
+        var again = World("konomi.committed", Latched, Confirmed, "konomi.death_unreturned");
+        check(!Rules.Available(story, ending, again) && Rules.Available(story, loss, again), "A second death is suppressed by the first return.");
+        var recalled = World("konomi.committed", Latched, Confirmed, "konomi.death_restored");
         check(!Rules.Available(story, ending, dead) && Rules.Available(story, loss, dead), "Konomi death latch: a dead Konomi keeps her living ending, or loses her loss page.");
         check(Rules.Available(story, ending, alive) && !Rules.Available(story, loss, alive), "Konomi death latch: a living Konomi gets the loss page.");
         check(Rules.Available(story, ending, recalled) && !Rules.Available(story, loss, recalled), "Konomi death latch: the recall does not lift her death.");
@@ -56,7 +58,7 @@ internal static class KonomiDeathLatchTests
         var lastCall = new[] { "trickster", "trickster.ever", "lastcall.active", "trickster.lastcall.open", "konomi.committed",
                                "konomi.trickster.cost.debt_owed" };
         var callDead = World(lastCall.Concat(new[] { Latched }).ToArray());
-        var callBack = World(lastCall.Concat(new[] { Latched, Confirmed }).ToArray());
+        var callBack = World(lastCall.Concat(new[] { Latched, Confirmed, "konomi.death_restored" }).ToArray());
         check(!Rules.Available(story, coda, callDead) && Rules.Available(story, coda, callBack),
             "Konomi death latch: her Last Call coda ignores her death or her recall.");
         check(!callDead.Has("konomi.lastcall.callable") && callBack.Has("konomi.lastcall.callable")

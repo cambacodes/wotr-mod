@@ -630,9 +630,9 @@ namespace Tirabade
                     string id = gate.Gate;
                     Optional<object>("Native gate " + id, () =>
                     {
-                        foreach (var checker in gate.Checkers)
-                            NativeGate.Attach(gate.Owner, checker, () => enabled && initialized && Game.Instance?.Player != null
-                                && Rules.NativeGateHolds(story, id, State()));
+                        bool Holds() => enabled && initialized && Game.Instance?.Player != null && Rules.NativeGateHolds(story, id, State());
+                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, Holds);
+                        else foreach (var checker in gate.Checkers) NativeGate.Attach(gate.Owner, checker, Holds);
                         return new object();
                     });
                 }
@@ -794,7 +794,11 @@ namespace Tirabade
                     answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
                 }
             }
-            if (inline) return;
+            if (inline)
+            {
+                foreach (var node in scene.Nodes) BuildInlineParagraphs((BlueprintCue)local[node.Id], node, scene.Id + "." + node.Id);
+                return;
+            }
             var dialog = New<BlueprintDialog>("dialog." + scene.Id);
             dialog.Type = DialogType.Book;
             dialog.Conditions = Conditions();
@@ -916,6 +920,7 @@ namespace Tirabade
                         ConfigureNativeEffects(answer, choice, warnings.Add);
                         local[node.Id].Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
                     }
+                foreach (var node in scene.Nodes) BuildInlineParagraphs(local[node.Id], node, prefix + "." + node.Id);
                 var entryAnswer = New<BlueprintAnswer>("entry." + prefix);
                 InitializeAnswer(entryAnswer);
                 entryAnswer.Text = Text("entry." + prefix, scene.Entry);
@@ -943,6 +948,28 @@ namespace Tirabade
             cue.Speaker = InlineSpeaker(node, new DialogSpeaker { NoSpeaker = false, MoveCamera = false });
             cue.Conditions = Conditions(new RouteCondition { Scene = scene });
             cue.OnShow = Actions(new RouteAction { Choice = node.Choices[0], Complete = scene });
+            BuildInlineParagraphs(cue, node, scene.Id + ".continue");
+        }
+
+        // Continue First skips hidden paragraphs; an unconditional tail keeps the original answers and continuation.
+        private static void BuildInlineParagraphs(BlueprintCue cue, Node node, string id)
+        {
+            if (node.Paragraphs.Count == 0) return;
+            CueSetup(out var tail, "cue." + id + ".paragraph_answers", "");
+            tail.Speaker = cue.Speaker;
+            tail.Answers.AddRange(cue.Answers);
+            tail.Continue = cue.Continue;
+            cue.Answers.Clear();
+            var following = new List<BlueprintCueBaseReference> { Ref<BlueprintCueBaseReference>(tail) };
+            for (int p = node.Paragraphs.Count - 1; p >= 0; p--)
+            {
+                CueSetup(out var paragraph, "cue." + id + ".p" + p, node.Paragraphs[p].Text);
+                paragraph.Speaker = cue.Speaker;
+                paragraph.Conditions = Conditions(new ParagraphCondition { Paragraph = node.Paragraphs[p] });
+                paragraph.Continue = new CueSelection { Strategy = Strategy.First, Cues = following.ToList() };
+                following.Insert(0, Ref<BlueprintCueBaseReference>(paragraph));
+            }
+            cue.Continue = new CueSelection { Strategy = Strategy.First, Cues = following };
         }
 
         // E14f: a named unit (its portrait/name, camera untouched), the dialog's conversant, or the scene's default.
@@ -1289,6 +1316,7 @@ namespace Tirabade
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+            KonomiRecovery.ReadLifecycle(state);
             // Latches and data-driven composites read the completed native picture.
             Rules.Complete(story, state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
@@ -1817,6 +1845,8 @@ namespace Tirabade
 
         private static void RecordLatches()
         {
+            KonomiRecovery.RecordLifecycle();
+            InvalidateState();
             if (story.Latches.Count == 0) return;
             var state = State();
             int hour = (int)Game.Instance.Player.GameTime.TotalHours;

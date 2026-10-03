@@ -76,6 +76,62 @@ internal static class KonomiRecoveryTests
         check(Inspect() == null, "Second Konomi representation was silently ignored");
         state.AllEntityData.Remove(duplicate);
 
+        // Reproduce ordered life events using the exact retained actor and the persisted JSON records.
+        var lifecycleType = service.GetNestedType("Lifecycle", BindingFlags.NonPublic)!;
+        object? life = null;
+        object? restoration = null;
+        object? Observe(UnitEntityData? observed)
+        {
+            var result = service.GetMethod("ObserveLife", statics)!.Invoke(null, new[] { life, restoration, observed });
+            // Round-trip every event as native SettingsList storage does, including loss while the scene is unloaded.
+            return result == null ? null : JsonConvert.DeserializeObject(JsonConvert.SerializeObject(result), lifecycleType);
+        }
+        bool Lost() => life != null && (bool)lifecycleType.GetField("Lost", instance)!.GetValue(life)!;
+        life = Observe(actor);
+        check(Lost(), "First observed death was not persisted");
+        life = Observe(null);
+        check(Lost(), "Unloading the capital erased a death");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
+        Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", false);
+        life = Observe(actor);
+        check(Lost(), "Unverified living observation erased the loss");
+        restoration = Activator.CreateInstance(attemptType)!;
+        Set(restoration, attemptType, "UnitId", actorId);
+        Set(restoration, attemptType, "Confirmed", true);
+        life = Observe(actor);
+        check(!Lost(), "Verified restoration did not answer the first death");
+        life = Observe(null);
+        check(!Lost(), "Unloading erased verified restoration");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
+        Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", true);
+        life = Observe(actor);
+        check(Lost(), "Second death was hidden by the permanent confirmation");
+        life = Observe(null);
+        check(Lost(), "Second death was not persisted away from the capital");
+        // Return-first observations still lose her on a later death; repeated death before the recall permits the first return.
+        life = null;
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
+        Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", false);
+        life = Observe(actor);
+        check(!Lost(), "Return-first observation is not restored");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
+        life = Observe(actor);
+        check(Lost(), "Return then death is not a loss");
+        life = null; restoration = null;
+        life = Observe(actor); life = Observe(actor);
+        check(Lost(), "Repeated initial death was lost");
+        restoration = Activator.CreateInstance(attemptType)!;
+        Set(restoration, attemptType, "UnitId", "wrong-identity"); Set(restoration, attemptType, "Confirmed", true);
+        life = Observe(actor);
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
+        life = Observe(actor);
+        check(Lost(), "Wrong-actor confirmation erases loss");
+        Set(restoration, attemptType, "UnitId", actorId);
+        life = Observe(actor);
+        check(!Lost(), "Repeated death blocked the first verified return");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
+        Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", true);
+
         object Attempt()
         {
             var value = Activator.CreateInstance(attemptType)!;
@@ -166,6 +222,12 @@ internal static class KonomiRecoveryTests
             service.GetMethod("Save", statics)!.Invoke(null, new[] { attempt });
             const string key = "RanRomance.Tirabade.KonomiRecovery";
             check(player.SettingsList[key] is string, "Recovery checkpoint is not saved as a native SettingsList JSON string");
+            check(player.SettingsList["RanRomance.Tirabade.KonomiLifecycle"] is string,
+                "Verified restoration is not persisted before unloading");
+            var lifecycleSnapshot = new Tirabade.Snapshot();
+            service.GetMethod("ReadLifecycle", statics)!.Invoke(null, new object[] { lifecycleSnapshot });
+            check(lifecycleSnapshot.Has("konomi.death_restored") && !lifecycleSnapshot.Has("konomi.death_unreturned"),
+                "Saved restoration does not reach the unloaded snapshot");
             bool Proof() => (bool)service.GetMethod("HasVerifiedReturn", statics)!.Invoke(null, new object[] { actor })!;
             check(!Proof(), "Confirmed old proof authorized a currently dead actor");
             Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);

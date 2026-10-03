@@ -144,6 +144,26 @@ namespace Tirabade
                 onStop: new[] { "SetObjectiveStatus:83527eddea019674cb123a6a52bdf169", "SetObjectiveStatus:e12c3a03f692c6e428540247d182f59a",
                     "GiveObjective:5b1e04caadc42114281d29db76c19c4f", "CompleteEtude:392fd757d64a8b549bb8be47b37f0ed8",
                     "StartEtude:371fabce16975d34f87a4ae783bcaef4" }),
+
+            // Engine-q3: both aftermath answers and all Arsinoe/Seelah siblings, verified in blueprints.zip.
+            ["a819e8c85ef23324bb0d8117bb9d7df3"] = new Evidence("", "", "1aef0e95-dc1e-49fa-9852-3fba13bd5e20", degradeOnRefusal: false,
+                parent: "245ec8482e1f37b4a8702e54430c5aa7", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "716683517058beb4ead374bd16b22ff0" }),
+            ["df45181e1968f26459f9e8bc2b995a34"] = new Evidence("", "", "0c8edca3-4bab-4535-a37b-ea3d3186213b", degradeOnRefusal: false,
+                parent: "245ec8482e1f37b4a8702e54430c5aa7", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "0e50ec24099196a42b7089ffecdc46b2" }),
+            ["0e50ec24099196a42b7089ffecdc46b2"] = new Evidence("", "", "0568c8c8-7e85-4fc3-ba62-309d2bebee00", degradeOnRefusal: false,
+                parent: "df45181e1968f26459f9e8bc2b995a34", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "de9d02036b213594fa780c6025f14004" }, alsoParents: Array.Empty<string>()),
+            ["4cd264ce0432bb94a8e80a551190150d"] = new Evidence("", "", "b873d838-c522-4d2f-83e0-b017070b6102", degradeOnRefusal: false,
+                parent: "f575d21b1fabec74da1e54484573206b", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "f6c3d20a92890d84c9020d37d56cc75b" }, alsoParents: Array.Empty<string>()),
+            ["73815b731281fdc47bbc59aba42b2126"] = new Evidence("", "", "afe4a854-e6c9-442f-8755-cc08e4fd140c", degradeOnRefusal: false,
+                parent: "af455979c98c7484c9e74360b4645c62", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "e9a5a4c03ea016f47b29d91b2ff3a00c" }, alsoParents: new[] { "5f8060efbd1909c4c92fb77036909d2c", "b34bbc351cd28354fb832e451ac0f8e8", "f462d972dad84fa43b98c2399eb4ff17", "6a8058648f4937d42ad846c811dc6c69" }, onShow: new[] { "PlayCutscene:a4b3b03e1d0e1b64db85061f7f53ecd0" }),
+            ["e9a5a4c03ea016f47b29d91b2ff3a00c"] = new Evidence("", "", "6ba1cb04-8e0b-40c5-ac6d-6cf64ff0e094", degradeOnRefusal: false,
+                parent: "73815b731281fdc47bbc59aba42b2126", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "2b133bf7ac66d6241a69a53dce2bf05f" }, alsoParents: Array.Empty<string>()),
+            ["2b133bf7ac66d6241a69a53dce2bf05f"] = new Evidence("", "", "c2e4632d-2c47-43cf-bebb-0f8dbbab495b", degradeOnRefusal: false,
+                parent: "e9a5a4c03ea016f47b29d91b2ff3a00c", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "b3e6076282402a1489b6f226567cf8fa" }, alsoParents: Array.Empty<string>()),
+            ["b3e6076282402a1489b6f226567cf8fa"] = new Evidence("", "", "3cb6cfc5-ab5e-4ddb-a7d1-8ce3775b987f", degradeOnRefusal: false,
+                parent: "2b133bf7ac66d6241a69a53dce2bf05f", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "aeccec94d6e3246488d7f13577a8380d" }, alsoParents: Array.Empty<string>()),
+            ["aeccec94d6e3246488d7f13577a8380d"] = new Evidence("", "", "58ee4b07-0488-4fab-a286-d50f786fe135", degradeOnRefusal: false,
+                parent: "b3e6076282402a1489b6f226567cf8fa", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: Array.Empty<string>(), onStop: new[] { "PlayCutscene:fef1b52002b9af642a8e5169802c3b68", "Conditional", "Conditional", "Conditional" }),
         };
 
         // E14i: a reviewed action's shape, "Type:guid" (the first blueprint reference the action holds), or the type alone.
@@ -349,7 +369,8 @@ namespace Tirabade
             // Reviewed OnShow / OnStop (Cue_0051's cutscene and quest steps) run from whichever of the two cues plays.
             Reviewed.TryGetValue(cueId, out var reviewed);
             replacement.OnShow = new ActionList { Actions = reviewed.OnShow != null && original.OnShow?.Actions != null ? original.OnShow.Actions.ToArray() : Array.Empty<GameAction>() };
-            replacement.OnStop = new ActionList { Actions = reviewed.OnStop != null && original.OnStop?.Actions != null ? original.OnStop.Actions.ToArray() : Array.Empty<GameAction>() };
+            replacement.OnStop = reviewed.OnStop != null && original.OnStop?.Actions != null
+                ? original.OnStop : new ActionList { Actions = Array.Empty<GameAction>() };
             replacement.Experience = original.Experience;
             replacement.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = original.Continue.Cues.ToList(), Strategy = original.Continue.Strategy };
             replacement.Answers.Clear();

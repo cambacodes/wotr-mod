@@ -575,7 +575,7 @@ internal static class NurahTricksterTests
               && !Rules.Available(story, S("nurah.trickster.react.camellia_supper"), veiledSupper)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_market"), veiledSupper), "The veiled Camellia's supper card.");
         var raisedCamellia = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
-                                   "nurah.trickster.larva_rumour", "camellia.dead", "camellia.trickster.returned");
+                                   "nurah.trickster.larva_rumour", "camellia.trickster.returned");
         check(Rules.Available(story, S("nurah.trickster.react.camellia_supper"), raisedCamellia)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), raisedCamellia), "The raised Camellia's supper line.");
         var plainSupper = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned", "nurah.trickster.larva_rumour");

@@ -362,9 +362,9 @@ internal static class JerribethTricksterTests
             check(open.Count == 1 && Words(open[0]).Contains("repugnant spectacle") == heard && Words(open[0]).Contains("stockade") == host,
                 "Camellia's reaction claims a Sanctum memory the player never heard, or misses the one they did (heard " + heard + ", host " + host + ").");
         }
-        foreach (var r in reactions.Where(x => x.Owner == "Camellia" && x.Forbids.Contains("camellia.dead")))
-            check(r.ForbidOverrides.TryGetValue("camellia.dead", out var lift) && lift == "camellia.trickster.returned",
-                "A Camellia reaction does not lift her retained death on her return: " + r.Id);
+        foreach (var r in reactions.Where(x => new[] { "jerribeth.trickster.reaction.camellia", "jerribeth.trickster.reaction.camellia_host" }.Contains(x.Id)))
+            check(!r.ForbidOverrides.ContainsKey("camellia.dead"),
+                "A named Camellia reaction overrides her current death: " + r.Id);
 
         // CAN/BEL (Sol r0, r1): the tenant letter is a Drezen letter (Chapters 3, 5) or its Nexus twin (Chapter 4), never both.
         // At the Nexus the Golarion vessels are ordered and the host only promised; he is taken on the first Drezen rest of

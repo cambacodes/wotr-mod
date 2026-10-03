@@ -466,7 +466,7 @@ internal static class MinaghoChivarroTricksterTests
               && !Av(S(P + "react.camellia_bill"), World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.dead")), "Camellia's reaction guard.");
         // A returned Camellia whose body died otherwise reacts on her hub; a killed one returns veiled at Fye's, with no hub to react on.
         var camellia = S(P + "react.camellia_bill");
-        check(Av(camellia, World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.dead", "camellia.trickster.returned"))
+        check(Av(camellia, World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.trickster.returned"))
               && !camellia.ForbidOverrides.ContainsKey("camellia.killed")
               && !Av(camellia, World(story, 5, "trickster.ever", RetC, "chivarro.dead", "camellia.killed", "camellia.dead", "camellia.trickster.returned")),
             "Camellia's reaction ignores her return, or claims the veiled Camellia's missing hub.");

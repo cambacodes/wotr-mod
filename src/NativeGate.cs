@@ -60,6 +60,8 @@ namespace Tirabade
             checkers = Array.Empty<ConditionsChecker>();
             if (!Reviewed.TryGetValue(gate, out var target) || spec.Target != target) return "not a reviewed native gate";
             var blueprint = resolve(target);
+            if (gate == NativeQ3Recovery.Gate)
+                return NativeQ3Recovery.Check(resolve, out owner);
             if (gate == SanctumSpawn)
             {
                 if (!(blueprint is BlueprintEtude etude)) return "IvorySanctum_MainEtude missing";
