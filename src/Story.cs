@@ -1004,6 +1004,19 @@ namespace Tirabade
             return -1;
         }
 
+        // E14d delivery (the live predicate, ported from the Wenduag polish's EditApplies): a variant plays only while its When
+        // holds AND its replacement scene is available on the same snapshot (Requires, Forbids with overrides, chapter window,
+        // degraded relationship), as an appended epilogue page is. `scenes` are the variants' replacement scenes, in order.
+        public static int SelectNativeEditVariant(Story story, NativeEpilogueVariant[] variants, Scene?[] scenes, Snapshot state)
+        {
+            for (int i = 0; i < variants.Length; i++)
+                if (WhenHolds(variants[i].When, state) && scenes[i] is Scene scene && Available(story, scene, state)) return i;
+            return -1;
+        }
+
+        public static Scene?[] EditScenes(Story story, NativeEpilogueVariant[] variants) =>
+            variants.Select(variant => story.Scenes.FirstOrDefault(scene => scene.Id == variant.Replacement)).ToArray();
+
         // E14d: the registered cue name (save reference) of a variant. Variant 0 keeps the original "native-edit.<cue>".
         public static string NativeEditCueName(string cue, NativeEpilogueEditSpec edit, int variant) => variant == 0
             ? "native-edit." + cue : "native-edit." + cue + "." + EditVariants(edit)[variant].Replacement;

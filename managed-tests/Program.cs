@@ -689,6 +689,7 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);
+        NativeEpilogueEditManagedTests.RunDelivery(story, Check);
         NativeGateManagedTests.Run(story, Check);
         SpeakerManagedTests.Run(native, Check);
         ContinueBeforeManagedTests.Run(native, Id, Check);

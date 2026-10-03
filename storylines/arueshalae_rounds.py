@@ -325,7 +325,10 @@ PAGE = "e83fff8e997db8e439bf12e09225696a"
 WANDER = T + "epilogue.native_wander"
 SCENES.append(scene(WANDER, "", "ArueshalaeEpilogue", 6, "", [
     nar("page", '''{n}The war was over, and Arueshalae's wandering was over with it. Desna's riddle, "And what do you dream about?", she answered in Drezen, at a table too small for the Commander's elbows, a little differently every night, and she never once said the answer was finished.{/n}''', c())],
-    requires=("trickster.ever", COMMITTED), last=99, Relationship="arueshalae"))
+    requires=("trickster.ever", COMMITTED), last=99, Relationship="arueshalae",
+    # E14d delivery (engine queue item 5): the live predicate also reads these, so the wander page never plays for a closed or
+    # fallen Arueshalae, or after a sacrifice the Commander did not come back from (dead / dismissed: the scene's own forbids).
+    forbids=(CLOSED, "arueshalae.corrupted", "sacrifice"), ForbidOverrides={"sacrifice": "trickster.commander_back"}))
 # Harness 2026-10-02: the Cue_0461 (78ae1bdc) dream-world edit failed the runtime cue-policy contract and degraded the
 # whole relationship in game, so it is withdrawn; only the Cue_0462 wander page is reconciled (known issue: dream page).
 NATIVE_EPILOGUE_EDITS = {

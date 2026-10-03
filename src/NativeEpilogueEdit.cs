@@ -116,11 +116,15 @@ namespace Tirabade
         {
             private readonly NativeEpilogueVariant[] variants;
             private readonly Func<Snapshot?> observe;
+            private readonly Story? story;          // E14d delivery: with the story, a variant also needs its scene available
+            private readonly Scene?[] scenes;
             private bool enabled;
-            public Group(NativeEpilogueEditSpec spec, Func<Snapshot?> observe)
+            public Group(NativeEpilogueEditSpec spec, Func<Snapshot?> observe, Story? story = null)
             {
                 variants = Rules.EditVariants(spec);
                 this.observe = observe;
+                this.story = story;
+                scenes = story == null ? Array.Empty<Scene?>() : Rules.EditScenes(story, variants);
             }
             public int Count => variants.Length;
             public bool Enabled => enabled;
@@ -129,7 +133,8 @@ namespace Tirabade
             {
                 if (!enabled) return -1;
                 var state = observe();
-                return state == null ? -1 : Rules.SelectNativeEditVariant(variants, state);
+                return state == null ? -1 : story == null ? Rules.SelectNativeEditVariant(variants, state)
+                    : Rules.SelectNativeEditVariant(story, variants, scenes, state);
             }
         }
 

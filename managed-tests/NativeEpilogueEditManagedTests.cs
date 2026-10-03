@@ -278,6 +278,47 @@ internal static class NativeEpilogueEditManagedTests
         Console.WriteLine("PASS: E14d Tirabade slides (Cue_0310, Cue_0311): native and RRT cues together, one per state, with the right picture.");
     }
 
+    // E14d delivery: Arueshalae's real Cue_0462 edit (native_wander) through the live Group, built with the story as Main
+    // builds it. A variant plays only while its When holds AND its scene is available on the same snapshot.
+    public static void RunDelivery(Story story, Action<bool, string> check)
+    {
+        const string Cue0462 = "f76713034f4087a4f80495971c47ca7b";
+        if (!story.NativeEpilogueEdits.TryGetValue(Cue0462, out var spec)) { check(false, "Arueshalae's Cue_0462 edit is not shipped."); return; }
+        Snapshot? current = null;
+        var live = new NativeEpilogueEdit.Group(spec, () => current, story);
+        var whenOnly = new NativeEpilogueEdit.Group(spec, () => current);
+        check(live.Selected() == -1, "A delivery group selects before it is attached.");
+        live.Enable(); whenOnly.Enable();
+        var basis = new[] { "trickster.ever", "arueshalae.committed" };
+        var rows = new (string What, string[] Flags, bool Plays)[]
+        {
+            ("committed, alive", basis, true),
+            ("committed, dead", basis.Append("arueshalae_dead").ToArray(), false),
+            ("committed, dead, returned", basis.Concat(new[] { "arueshalae_dead", "arueshalae.trickster.returned" }).ToArray(), true),
+            ("committed, dismissed", basis.Append("arueshalae.kicked_out").ToArray(), false),
+            ("committed, closed", basis.Append("arueshalae.closed").ToArray(), false),
+            ("committed, fallen", basis.Append("arueshalae.corrupted").ToArray(), false),
+            ("committed, unsurvived sacrifice", basis.Append("sacrifice").ToArray(), false),
+            ("committed, sacrifice, the Commander back", basis.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray(), true),
+            ("committed, relationship degraded", basis.Append(Rules.DegradedPrefix + "arueshalae").ToArray(), false),
+            ("uncommitted", new[] { "trickster.ever" }, false),
+        };
+        foreach (var row in rows)
+        {
+            current = new Snapshot { Chapter = 6 };
+            current.Flags.UnionWith(row.Flags);
+            check((live.Selected() == 0) == row.Plays, "E14d delivery, Arueshalae " + row.What + ": the wander page " + (row.Plays ? "does not play" : "plays"));
+        }
+        current = new Snapshot { Chapter = 6 };
+        current.Flags.UnionWith(basis.Append("arueshalae_dead"));
+        check(whenOnly.Selected() == 0 && live.Selected() == -1, "The delivery predicate is not what separates the live group from When alone.");
+        current = null;
+        check(live.Selected() == -1, "A delivery group selects with the mod disabled.");
+        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "src", "Main.cs"));
+        check(mainSource.Contains("Game.Instance?.Player != null ? State() : null, story);"), "Main no longer builds its E14d groups with the story (delivery predicate).");
+        Console.WriteLine("PASS: E14d delivery predicate (Arueshalae Cue_0462): When and scene availability on one snapshot.");
+    }
+
     // The archive's text key: its own m_Key, or (a shared string, e.g. Camellia's Cue_0390) the shared asset's string key.
     private static string ArchiveTextKey(JObject data)
     {
