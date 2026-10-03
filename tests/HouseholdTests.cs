@@ -44,6 +44,85 @@ internal static class HouseholdTests
         if (story.Derived.ContainsKey("aranka.trickster.late_committed"))
             check(story.Derived["aranka.harem.eligible"].Any(g => g.Length == 1 && g[0] == "aranka.trickster.late_committed"),
                 "Aranka's late commitment does not make her eligible.");
+        // Closed routes leave the household (E4b, Story.DerivedOpenRoutes): eligibility also needs her route open, read from her
+        // own relationship data. Her ClosedFlag (a refusal, a breakup, a parting) or one of her UnavailableFlags (death,
+        // dismissal, departure) withdraws it; a Trickster return in her UnavailableOverrides restores it.
+        check(partners.All(rel => story.DerivedOpenRoutes.TryGetValue(rel + ".harem.eligible", out var routes) && routes.SequenceEqual(new[] { rel })),
+            "A partner's eligibility is not guarded by her own route.");
+        var stillOpen = partners.Where(rel => State(story, 3, "trickster", Committed(rel), story.Relationships[rel].ClosedFlag).Has(rel + ".harem.eligible")).ToList();
+        check(stillOpen.Count == 0, "A partner whose route is closed is still eligible: " + string.Join(",", stillOpen));
+        var badReturn = partners.Where(rel => !story.Relationships[rel].UnavailableFlags.All(flag =>
+                !State(story, 3, "trickster", Committed(rel), flag).Has(rel + ".harem.eligible")
+                && (!story.Relationships[rel].UnavailableOverrides.TryGetValue(flag, out var back)
+                    || State(story, 3, "trickster", Committed(rel), flag, back).Has(rel + ".harem.eligible")))).ToList();
+        check(badReturn.Count == 0, "An unavailable state does not withdraw eligibility, or its return does not restore it: " + string.Join(",", badReturn));
+        // Arsinoe: the yes, then the goodbye (the Arsinoe polish finding).
+        var arsinoeYes = State(story, 3, "trickster", "trickster.ever", "arsinoe.committed");
+        var arsinoeBye = State(story, 3, "trickster", "trickster.ever", "arsinoe.committed", "arsinoe.closed", "arsinoe.parted", "arsinoe.future_spoken");
+        check(arsinoeYes.Has("arsinoe.harem.eligible") && !arsinoeBye.Has("arsinoe.harem.eligible") && !arsinoeBye.Has("household.any_eligible"),
+            "Arsinoe stays a household partner after saying goodbye.");
+        if (story.Derived.ContainsKey("arsinoe.trickster.late_committed"))
+        {
+            var late = story.Derived["arsinoe.trickster.late_committed"].First();
+            check(State(story, 3, late.Concat(new[] { "trickster" }).ToArray()).Has("arsinoe.harem.eligible")
+                && !State(story, 3, late.Concat(new[] { "trickster", "arsinoe.closed", "arsinoe.parted" }).ToArray()).Has("arsinoe.harem.eligible"),
+                "Arsinoe's late yes survives her closed route.");
+        }
+        // Seelah: parted (seelah.parted beside seelah.closed) leaves; dead or gone leaves; her Trickster return restores her.
+        check(!State(story, 3, "trickster", "seelah.committed", "seelah.closed", "seelah.parted").Has("seelah.harem.eligible")
+            && !State(story, 3, "trickster", "seelah.committed", "seelah_dead").Has("seelah.harem.eligible")
+            && State(story, 3, "trickster", "seelah.committed", "seelah_dead", "seelah.trickster.returned").Has("seelah.harem.eligible")
+            && !State(story, 3, "trickster", "seelah.committed", "seelah_gone").Has("seelah.harem.eligible")
+            && State(story, 3, "trickster", "seelah.committed", "seelah_gone", "seelah.trickster.returned").Has("seelah.harem.eligible"),
+            "Seelah's parting, death or return does not move her household eligibility.");
+        // Anevia: a refusal closes her; gone leaves her until the Trickster brings her back; dead (no return) stays out.
+        check(!State(story, 3, "trickster", "anevia.committed", "anevia.closed", "anevia.local_declined").Has("anevia.harem.eligible")
+            && !State(story, 3, "trickster", "anevia.committed", "anevia_gone").Has("anevia.harem.eligible")
+            && State(story, 3, "trickster", "anevia.committed", "anevia_gone", "anevia.trickster.returned").Has("anevia.harem.eligible")
+            && !State(story, 3, "trickster", "anevia.committed", "anevia_dead", "anevia.trickster.returned").Has("anevia.harem.eligible"),
+            "Anevia's refusal, departure or return does not move her household eligibility.");
+        // Soana (a return device): dead leaves, returned restores; returned but refused (soana.closed) leaves again.
+        check(!State(story, 3, "trickster", "soana.committed", "soana.dead").Has("soana.harem.eligible")
+            && State(story, 3, "trickster", "soana.committed", "soana.dead", "soana.trickster.returned").Has("soana.harem.eligible")
+            && State(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited").Has("soana.harem.eligible")
+            && !State(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.trickster.returned", "soana.trickster.accounting_invited", "soana.closed", "soana.trickster.refused").Has("soana.harem.eligible"),
+            "Soana's death, return or refusal does not move her household eligibility.");
+        // Terendelev (a return device): her commitment holds; sending her home (terendelev.closed) ends it.
+        check(State(story, 3, "trickster", "terendelev.committed").Has("terendelev.harem.eligible")
+            && !State(story, 3, "trickster", "terendelev.committed", "terendelev.closed", "terendelev.trickster.guardian").Has("terendelev.harem.eligible"),
+            "Terendelev stays a household partner after her route closes.");
+        // The Guest List follows: a parted woman has no chair.
+        var seelahParted = State(story, 3, "trickster", "seelah.committed", "seelah.closed", "seelah.parted");
+        check(!Rules.BookVisible(story.Books["trickster.ledger"], seelahParted).Any(e => e.Id == "guest.seelah"), "A parted partner keeps her Guest List chair.");
+        bool Guest(string rel, params string[] flags) =>
+            Rules.BookVisible(story.Books["trickster.ledger"], State(story, 3, new[] { "trickster", "trickster.ever" }.Concat(flags).ToArray())).Any(e => e.Id == "guest." + rel);
+        // Every guest entry reads the guarded key, so the open-route guard reaches the Guest List for every partner.
+        check(story.Books["trickster.ledger"].Entries.Where(e => e.Section == "Guest List").All(e => e.Requires.SequenceEqual(new[] { e.Id.Substring(6) + ".harem.eligible" })),
+            "A Guest List entry is not gated by its partner's guarded eligibility.");
+        // Shamira (COX audit): closed hides, killed hides, her earned return shows her again.
+        check(Guest("shamira", "shamira.committed") && !Guest("shamira", "shamira.committed", "shamira.closed")
+            && !Guest("shamira", "shamira.committed", "shamira.killed") && Guest("shamira", "shamira.committed", "shamira.killed", "shamira.trickster.returned")
+            && !Guest("shamira", "shamira.committed", "shamira.killed", "shamira.trickster.returned", "shamira.closed", "shamira.trickster.cost.kept_captive"),
+            "Shamira's Guest List chair ignores her closed route, her death or her return.");
+        // Nenio (COX audit): closed hides, dead hides, returned shows; dissolved has no return and stays hidden.
+        check(Guest("nenio", "nenio.committed") && !Guest("nenio", "nenio.committed", "nenio.closed")
+            && !Guest("nenio", "nenio.committed", "nenio.dead") && Guest("nenio", "nenio.committed", "nenio.dead", "nenio.trickster.returned")
+            && !Guest("nenio", "nenio.committed", "nenio.dissolved", "nenio.trickster.returned"),
+            "Nenio's Guest List chair ignores her closed route, her death or her return.");
+        // Engine contract (E4b): a guard only withholds; a Derived closure input settles first; a missing input propagates.
+        var guarded = new Story();
+        guarded.Relationships["r"] = new Relationship { ClosedFlag = "r.closed", CommittedFlag = "r.c", UnavailableFlags = new[] { "r.dead" },
+            UnavailableOverrides = new Dictionary<string, string> { ["r.dead"] = "r.back" } };
+        guarded.Derived["r.ok"] = new[] { new[] { "r.c" } };
+        guarded.Derived["r.dead"] = new[] { new[] { "r.killed" } };
+        guarded.DerivedOpenRoutes["r.ok"] = new[] { "r" };
+        check(!State(guarded, 3).Has("r.ok") && State(guarded, 3, "r.c").Has("r.ok") && !State(guarded, 3, "r.c", "r.killed").Has("r.ok")
+            && State(guarded, 3, "r.c", "r.killed", "r.back").Has("r.ok") && !State(guarded, 3, "r.c", "r.closed").Has("r.ok"),
+            "DerivedOpenRoutes does not withhold a key on a closed or blocked route, or does not honour the return.");
+        var missing = new HashSet<string> { "r.killed" };
+        Rules.PropagateMissing(guarded, missing);
+        check(missing.Contains("r.ok"), "A guarded key does not inherit a missing closure input.");
+
         // Stance, enmity and joined-late flags are reserved: nothing in this pass sets them.
         var setters = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).ToList();
         check(!setters.Any(f => f.Contains(".harem.stance.") || f.Contains(".harem.enmity.") || f.EndsWith(".harem.joined_late", StringComparison.Ordinal)),

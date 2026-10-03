@@ -58,6 +58,10 @@ namespace Tirabade
         public Dictionary<string, string[]> Latches = new Dictionary<string, string[]>();
         // E4: data-driven composite flags, an OR of AND-groups over any known flag, computed in State() after latches.
         public Dictionary<string, string[][]> Derived = new Dictionary<string, string[][]>();
+        // E4b (household: closed routes leave eligibility): a Derived key listed here also needs every named relationship's
+        // route open (Rules.RouteOpen: its ClosedFlag is not held and no UnavailableFlag blocks, so a Trickster return named in
+        // UnavailableOverrides lifts a death or departure). Read from each relationship's own data; nothing is hand-coded.
+        public Dictionary<string, string[]> DerivedOpenRoutes = new Dictionary<string, string[]>();
         // E14g: count composites, true when at least Min of Of hold; computed after Derived (groundwork).
         public Dictionary<string, CountSpec> Counts = new Dictionary<string, CountSpec>();
         // E15 (RRT book UI): data-driven paged books (the Ledger, guides) and in-game glossary tooltips ({g|RRT_...}).
@@ -740,17 +744,11 @@ namespace Tirabade
         public static void Complete(Story story, Snapshot state)
         {
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
-            // Validate guarantees an acyclic graph, so this reaches its fixed point in at most Derived.Count passes.
-            for (bool changed = story.Derived.Count > 0; changed;)
-            {
-                changed = false;
-                foreach (var pair in story.Derived)
-                    if (!state.Has(pair.Key) && pair.Value.Any(group => group.All(state.Has)))
-                    {
-                        state.Flags.Add(pair.Key);
-                        changed = true;
-                    }
-            }
+            // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
+            // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
+            foreach (var key in DerivedOrder(story))
+                if (!state.Has(key) && story.Derived[key].Any(group => group.All(state.Has)) && DerivedRoutesOpen(story, key, state))
+                    state.Flags.Add(key);
             foreach (var pair in story.Counts)
                 if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
             CompleteWordMadeTrue(state);
@@ -775,6 +773,44 @@ namespace Tirabade
             if (left > 0) state.Flags.Add("trickster.wmt.available");
         }
 
+        // E4b: a relationship's route is open while its ClosedFlag is not held and none of its UnavailableFlags blocks (Blocks:
+        // an authored UnavailableOverrides return lifts the flag). The same closure the relationship's own scenes obey.
+        public static bool RouteOpen(Relationship relationship, Snapshot state) => !state.Has(relationship.ClosedFlag)
+            && !relationship.UnavailableFlags.Any(flag => Blocks(relationship, flag, state));
+
+        public static bool DerivedRoutesOpen(Story story, string key, Snapshot state) =>
+            !story.DerivedOpenRoutes.TryGetValue(key, out var routes) || routes.All(rel => RouteOpen(story.Relationships[rel], state));
+
+        // The flags a Derived key reads: its AND-groups, plus every closure input of its DerivedOpenRoutes relationships.
+        public static IEnumerable<string> DerivedInputs(Story story, string key)
+        {
+            var inputs = story.Derived[key].SelectMany(group => group);
+            if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
+                foreach (var rel in routes)
+                {
+                    var relationship = story.Relationships[rel];
+                    inputs = inputs.Concat(new[] { relationship.ClosedFlag }).Concat(relationship.UnavailableFlags ?? Array.Empty<string>())
+                        .Concat(relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>());
+                }
+            return inputs;
+        }
+
+        // Derived keys, every key after the Derived keys it reads (Validate rejects cycles; the visited set keeps this finite).
+        public static List<string> DerivedOrder(Story story)
+        {
+            var order = new List<string>(story.Derived.Count);
+            var seen = new HashSet<string>(StringComparer.Ordinal);
+            void Visit(string key)
+            {
+                if (!seen.Add(key)) return;
+                foreach (var input in DerivedInputs(story, key))
+                    if (story.Derived.ContainsKey(input)) Visit(input);
+                order.Add(key);
+            }
+            foreach (var key in story.Derived.Keys) Visit(key);
+            return order;
+        }
+
         // Build: a missing native input makes dependent composites unavailable too (like "loss").
         // A latch is only lost when every source is missing: one surviving source can still record it.
         public static void PropagateMissing(Story story, HashSet<string> missing)
@@ -785,7 +821,7 @@ namespace Tirabade
             {
                 changed = false;
                 foreach (var pair in story.Derived)
-                    if (!missing.Contains(pair.Key) && pair.Value.SelectMany(group => group).Any(missing.Contains))
+                    if (!missing.Contains(pair.Key) && DerivedInputs(story, pair.Key).Any(missing.Contains))
                     {
                         missing.Add(pair.Key);
                         changed = true;
@@ -1767,6 +1803,12 @@ namespace Tirabade
                     if (!authored.Contains(source) && !native.Contains(source) && !runtime.Contains(source) && !story.Derived.ContainsKey(source))
                         throw new InvalidOperationException("Derived key reads an unknown flag: " + pair.Key + "/" + source);
             }
+            // E4b: a route guard names Derived keys and known relationships, each at most once.
+            if (story.DerivedOpenRoutes == null) throw new InvalidOperationException("DerivedOpenRoutes cannot be null.");
+            foreach (var pair in story.DerivedOpenRoutes)
+                if (!story.Derived.ContainsKey(pair.Key) || pair.Value == null || pair.Value.Length == 0
+                    || pair.Value.Distinct().Count() != pair.Value.Length || pair.Value.Any(rel => rel == null || !story.Relationships.ContainsKey(rel)))
+                    throw new InvalidOperationException("Invalid DerivedOpenRoutes entry (a Derived key; distinct known relationships): " + pair.Key);
             var state = new Dictionary<string, int>();
             void Visit(string key, int depth)
             {
@@ -1776,7 +1818,7 @@ namespace Tirabade
                     return;
                 }
                 state[key] = 1;
-                foreach (var source in story.Derived[key].SelectMany(group => group).Where(story.Derived.ContainsKey)) Visit(source, depth + 1);
+                foreach (var source in DerivedInputs(story, key).Where(story.Derived.ContainsKey)) Visit(source, depth + 1);
                 state[key] = 2;
             }
             foreach (var key in story.Derived.Keys) Visit(key, 0);
