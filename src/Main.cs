@@ -82,6 +82,7 @@ namespace Tirabade
         private static readonly Dictionary<string, BlueprintDialog> presenceHubs = new Dictionary<string, BlueprintDialog>();
         private static readonly Dictionary<string, NurahInteraction> presenceClicks = new Dictionary<string, NurahInteraction>();
         private static readonly List<NativeEpilogueEdit.Plan> nativeEditPlans = new List<NativeEpilogueEdit.Plan>();
+        private static readonly Dictionary<string, NativeEpilogueEdit.Group> nativeEditGroups = new Dictionary<string, NativeEpilogueEdit.Group>();
         private static readonly Dictionary<string, string> presenceStatus = new Dictionary<string, string>(StringComparer.Ordinal);
         private static readonly Dictionary<string, BlueprintUnit> revivalUnits = new Dictionary<string, BlueprintUnit>();
         private static readonly Dictionary<string, BlueprintUnit> contactUnits = new Dictionary<string, BlueprintUnit>();
@@ -255,12 +256,15 @@ namespace Tirabade
                 var nativeEditSources = new Dictionary<string, (BlueprintCue Cue, BlueprintBookPage Page)>();
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
-                    var owner = story.Scenes.First(s => s.Id == pair.Value.Replacement).Relationship;
+                    var owners = Rules.EditVariants(pair.Value).Select(variant => story.Scenes.First(s => s.Id == variant.Replacement).Relationship).Distinct();
                     string? refusal;
                     try { refusal = NativeEpilogueEdit.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)),
                         ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse("ced82f299d246f448b48afa0b630dd70")) as BlueprintCueSequence); }
                     catch (Exception ex) { refusal = ex.Message; }
-                    if (refusal != null) Degrade(owner, "native epilogue edit " + pair.Key + ": " + refusal);
+                    if (refusal != null && NativeEpilogueEdit.DegradesOnRefusal(pair.Key))
+                        foreach (var owner in owners) Degrade(owner, "native epilogue edit " + pair.Key + ": " + refusal);
+                    else if (refusal != null)   // E14d extension: a non-degrading cue keeps its native text; no relationship is touched
+                        warnings.Add("Native epilogue edit " + pair.Key + " skipped (the native cue plays): " + refusal);
                     else nativeEditSources[pair.Key] = ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!,
                         (BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!);
                 }
@@ -453,19 +457,26 @@ namespace Tirabade
                 // E14d: every replacement cue is registered (save names); only verified edits get their native presentation.
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
-                    var scene = story.Scenes.First(s => s.Id == pair.Value.Replacement);
-                    var replacement = New<BlueprintCue>("native-edit." + pair.Key);
-                    replacement.Text = Text("native-edit." + pair.Key, scene.Nodes[0].Text);
-                    var when = pair.Value.When;
-                    Func<bool> applies = () => enabled && initialized && Game.Instance?.Player != null && Rules.WhenHolds(when, State());
-                    if (nativeEditSources.TryGetValue(pair.Key, out var source))
-                        nativeEditPlans.Add(NativeEpilogueEdit.Prepare(pair.Key, pair.Value, source.Cue, source.Page, replacement, applies));
-                    else
+                    var variants = Rules.EditVariants(pair.Value);
+                    var group = new NativeEpilogueEdit.Group(pair.Value, () => enabled && initialized && Game.Instance?.Player != null ? State() : null);
+                    nativeEditGroups[pair.Key] = group;
+                    for (int v = 0; v < variants.Length; v++)
                     {
-                        replacement.Conditions = Conditions();
-                        replacement.OnShow = Actions();
-                        replacement.OnStop = Actions();
-                        replacement.Continue = Cues();
+                        int variant = v;
+                        var scene = story.Scenes.First(s => s.Id == variants[variant].Replacement);
+                        string name = Rules.NativeEditCueName(pair.Key, pair.Value, variant);
+                        var replacement = New<BlueprintCue>(name);
+                        replacement.Text = Text(name, scene.Nodes[0].Text);
+                        Func<bool> applies = () => group.Selected() == variant;
+                        if (nativeEditSources.TryGetValue(pair.Key, out var source))
+                            nativeEditPlans.Add(NativeEpilogueEdit.Prepare(pair.Key, pair.Value, source.Cue, source.Page, replacement, applies, variant));
+                        else
+                        {
+                            replacement.Conditions = Conditions();
+                            replacement.OnShow = Actions();
+                            replacement.OnStop = Actions();
+                            replacement.Continue = Cues();
+                        }
                     }
                 }
 
@@ -550,15 +561,18 @@ namespace Tirabade
                     var anchor = BlueprintGuid.Parse(pair.Key.ContinueBefore!.Cue);
                     foreach (var parent in pair.Value) InsertContinueBefore(parent, line, anchor);
                 }
-                foreach (var plan in nativeEditPlans)
+                // E14d: all variants of a cue or none. Skipped while any variant's relationship is degraded (the native cue plays).
+                // The original is guarded first, by "a variant is selected", which stays false until every variant is inserted
+                // right before it, in order, and the group is enabled.
+                foreach (var cueEdits in nativeEditPlans.GroupBy(plan => plan.CueId))
                 {
-                    var relationship = story.Scenes.First(s => s.Id == plan.Spec.Replacement).Relationship;
-                    if (degraded.Contains(relationship)) continue;
-                    var when = plan.Spec.When;
-                    Optional<object>("Native epilogue edit " + plan.CueId, () =>
+                    var group = nativeEditGroups[cueEdits.Key];
+                    var plans = cueEdits.OrderBy(plan => plan.Variant).ToArray();
+                    if (plans.Any(plan => degraded.Contains(
+                        story.Scenes.First(s => s.Id == Rules.EditVariants(plan.Spec)[plan.Variant].Replacement).Relationship))) continue;
+                    Optional<object>("Native epilogue edit " + cueEdits.Key, () =>
                     {
-                        NativeEpilogueEdit.Attach(plan, Ref<BlueprintCueBaseReference>(plan.Replacement),
-                            () => enabled && initialized && Game.Instance?.Player != null && Rules.WhenHolds(when, State()));
+                        NativeEpilogueEdit.AttachGroup(group, plans, plan => Ref<BlueprintCueBaseReference>(plan.Replacement));
                         return new object();
                     });
                 }

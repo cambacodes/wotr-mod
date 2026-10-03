@@ -629,8 +629,9 @@ def build_names(model):
         names += [("page.%s.hub" % key, "BlueprintBookPage"), ("cue.%s.hub" % key, "BlueprintCue")]
         names += [("answer.%s.hub.%s" % (key, s["Id"]), "BlueprintAnswer") for s in scenes if s["InteractionHub"] == key]
         names += [("answer.%s.hub.leave" % key, "BlueprintAnswer"), ("dialog.%s.hub" % key, "BlueprintDialog")]
-    for cue in (model.story.get("NativeEpilogueEdits") or {}):   # E14d replacement cues
+    for cue, edit in (model.story.get("NativeEpilogueEdits") or {}).items():   # E14d replacement cues (Rules.NativeEditCueName)
         names.append(("native-edit." + cue, "BlueprintCue"))
+        names += [("native-edit.%s.%s" % (cue, v["Replacement"]), "BlueprintCue") for v in (edit.get("Variants") or [])]
     if any(is_nurah_hub(s) for s in scenes):
         names += [("page.nurah.arrival_hub", "BlueprintBookPage"), ("cue.nurah.arrival_hub", "BlueprintCue")]
         names += [("answer.nurah.arrival_hub." + s["Id"], "BlueprintAnswer") for s in scenes if is_nurah_hub(s)]

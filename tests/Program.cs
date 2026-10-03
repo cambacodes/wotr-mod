@@ -488,6 +488,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) TirabadeNativeSlideTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) JerribethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) KonomiTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) NocticulaTricksterTests.Run(story, Check);

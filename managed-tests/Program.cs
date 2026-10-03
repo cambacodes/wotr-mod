@@ -179,14 +179,33 @@ internal static class Program
         foreach (var pair in story.NativeEpilogueEdits)
         {
             var editSequence = Seed<BlueprintCueSequence>(pair.Value.Sequence);
-            if (editSequence.Cues.Count == 0)
+            // CueSequence_Special also holds the parent's native pair page, which ParentEndingIntegrationTests seeds as a fixture;
+            // there only the edit's own page is loaded, so that page stays exactly once in the sequence.
+            if (pair.Value.Sequence == NativeEpilogueEdit.Special)
+            {
+                if (!editSequence.Cues.Any(r => r.Guid == BlueprintGuid.Parse(pair.Value.Page)))
+                    editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(pair.Value.Page));
+            }
+            else if (editSequence.Cues.Count == 0)
                 foreach (string cue in NativeReferences(native[pair.Value.Sequence], "Cues")) editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
             var editPage = Seed<BlueprintBookPage>(pair.Value.Page);
             if (editPage.Cues.Count == 0)
                 foreach (string cue in NativeReferences(native[pair.Value.Page], "Cues")) editPage.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
             var editCue = Seed<BlueprintCue>(pair.Key);
             editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
-            editCue.OnShow = new Kingmaker.ElementsSystem.ActionList { Actions = Array.Empty<Kingmaker.ElementsSystem.GameAction>() };
+            // E14d extension: a reviewed OnShow image action (Cue_0311) is loaded as the archive has it.
+            var editActions = new List<Kingmaker.ElementsSystem.GameAction>();
+            foreach (JObject action in (JArray)native[pair.Key]["OnShow"]!["Actions"]!)
+            {
+                Check(((string)action["$type"]!).EndsWith(", ChangeBookEventImage", StringComparison.Ordinal), "Unexpected native OnShow action on an E14d cue: " + pair.Key);
+                var change = new Kingmaker.Designers.EventConditionActionSystem.Actions.ChangeBookEventImage { Owner = editCue, name = "$ChangeBookEventImage$archive" };
+                typeof(Kingmaker.Designers.EventConditionActionSystem.Actions.ChangeBookEventImage)
+                    .GetField("m_Image", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!
+                    .SetValue(change, new Kingmaker.ResourceLinks.SpriteLink { AssetId = (string)action["m_Image"]!["AssetId"]! });
+                editCue.ElementsArray.Add(change);
+                editActions.Add(change);
+            }
+            editCue.OnShow = new Kingmaker.ElementsSystem.ActionList { Actions = editActions.ToArray() };
             editCue.OnStop = new Kingmaker.ElementsSystem.ActionList { Actions = Array.Empty<Kingmaker.ElementsSystem.GameAction>() };
             editCue.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = new List<BlueprintCueBaseReference>() };
             editCue.Text = new Kingmaker.Localization.LocalizedString();
@@ -414,6 +433,17 @@ internal static class Program
         NurahHubIntegrationTests.Run(story, Check);
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
+        // E14d: every shipped native epilogue edit passed its evidence check on the archive-shaped cue and attached all of its
+        // variants, in order, right before the native cue; none was skipped or degraded a relationship.
+        foreach (var pair in story.NativeEpilogueEdits)
+        {
+            var variantNames = Rules.EditVariants(pair.Value).Select((v, i) => Id(Rules.NativeEditCueName(pair.Key, pair.Value, i))).ToArray();
+            var editPageCues = ((BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!).Cues.Select(r => r.Guid).ToList();
+            int nativeAt = editPageCues.IndexOf(BlueprintGuid.Parse(pair.Key));
+            Check(nativeAt >= variantNames.Length && editPageCues.Skip(nativeAt - variantNames.Length).Take(variantNames.Length).SequenceEqual(variantNames),
+                "E14d variants not attached in order right before their native cue: " + pair.Key);
+            Check(!Warnings().Any(w => w.Contains(pair.Key)), "E14d edit warned or degraded: " + string.Join(" | ", Warnings().Where(w => w.Contains(pair.Key))));
+        }
         foreach (var latch in story.Latches.Keys)
             Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + latch)) is BlueprintUnlockableFlag
                 && ResourcesLibrary.TryGetBlueprint(Id("flag.hour." + latch)) is BlueprintUnlockableFlag, "Latch flag not registered: " + latch);
@@ -529,7 +559,7 @@ internal static class Program
             }
             // A native epilogue edit's replacement (E14d) is swapped in for its native cue on the native page, never appended.
             expected.AddRange(story.Scenes.Where(s => s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && s.EpilogueSequence == null
-                && !story.NativeEpilogueEdits.Values.Any(edit => edit.Replacement == s.Id)
+                && !Rules.IsNativeReplacement(story, s)
                 && (s.Owner == "AeonEpilogue" ? sequenceIds[1] : sequenceIds[0]) == pair.Key)
                 .Select(s => Id("page." + s.Id + "." + s.Nodes[0].Id)));
             Check(pair.Value.Cues.Select(reference => reference.Guid).SequenceEqual(expected), "Native epilogue references changed: " + pair.Key);
@@ -642,6 +672,7 @@ internal static class Program
         ReturnToListManagedTests.Run(native, Id, Check);
         ParagraphManagedTests.Run(Id, Check);
         NativeEpilogueEditManagedTests.Run(native, Id, Check);
+        if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
         SpeakerManagedTests.Run(native, Check);
         ContinueBeforeManagedTests.Run(native, Id, Check);

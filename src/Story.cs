@@ -246,6 +246,17 @@ namespace Tirabade
         public string Key = "";
         public string Replacement = "";
         public string[][] When = Array.Empty<string[]>();
+        // E14d extension: this replacement keeps the native cue's reviewed OnShow image action (else the page picture shows).
+        public bool KeepNativeImage;
+        // E14d extension: further replacements of the same native cue, tried in order after this one (first match plays).
+        public NativeEpilogueVariant[] Variants = Array.Empty<NativeEpilogueVariant>();
+    }
+
+    public sealed class NativeEpilogueVariant
+    {
+        public string Replacement = "";
+        public string[][] When = Array.Empty<string[]>();
+        public bool KeepNativeImage;
     }
 
     public sealed class NativeGateSpec
@@ -952,7 +963,25 @@ namespace Tirabade
         public static bool WhenHolds(string[][] when, Snapshot state) => when.Any(group => group.All(state.Has));
 
         // E14d: scenes used as native-cue replacements are never attached as pages of their own.
-        public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values.Any(edit => edit.Replacement == scene.Id);
+        public static bool IsNativeReplacement(Story story, Scene scene) => story.NativeEpilogueEdits.Values
+            .Any(edit => EditVariants(edit).Any(variant => variant.Replacement == scene.Id));
+
+        // E14d: an edit's ordered variants; the spec's own Replacement/When is variant 0.
+        public static NativeEpilogueVariant[] EditVariants(NativeEpilogueEditSpec edit) => new[] {
+            new NativeEpilogueVariant { Replacement = edit.Replacement, When = edit.When, KeepNativeImage = edit.KeepNativeImage } }
+            .Concat(edit.Variants ?? Array.Empty<NativeEpilogueVariant>()).ToArray();
+
+        // E14d: the first variant whose When holds, or -1 (the native cue plays).
+        public static int SelectNativeEditVariant(NativeEpilogueVariant[] variants, Snapshot state)
+        {
+            for (int i = 0; i < variants.Length; i++)
+                if (WhenHolds(variants[i].When, state)) return i;
+            return -1;
+        }
+
+        // E14d: the registered cue name (save reference) of a variant. Variant 0 keeps the original "native-edit.<cue>".
+        public static string NativeEditCueName(string cue, NativeEpilogueEditSpec edit, int variant) => variant == 0
+            ? "native-edit." + cue : "native-edit." + cue + "." + EditVariants(edit)[variant].Replacement;
 
         // E12b: the planar offset (dx, dz) from an anchor facing `orientation` degrees (Unity: 0 = +z, clockwise), and the
         // orientation that faces the anchor from the placed unit.
@@ -1488,24 +1517,35 @@ namespace Tirabade
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)
             && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
 
-        // E14d: each edit names a whitelisted cue with its exact evidence, a 1-node epilogue replacement scene, and When groups
-        // that each require the replacement relationship's CommittedFlag.
+        // E14d: each edit names a whitelisted cue with its exact evidence and ordered variants. Each variant is a 1-node
+        // epilogue replacement scene used once, with known When groups that each require the replacement relationship's
+        // CommittedFlag or one of its Trickster return flags (a fate the route undid: the native slide states it as final).
         private static void ValidateNativeEpilogueEdits(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
         {
             if (story.NativeEpilogueEdits == null) throw new InvalidOperationException("NativeEpilogueEdits cannot be null.");
             bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            var used = story.NativeEpilogueEdits.Values.Where(edit => edit != null)
+                .SelectMany(edit => EditVariants(edit).Select(variant => variant?.Replacement)).ToList();
             foreach (var pair in story.NativeEpilogueEdits)
             {
                 var edit = pair.Value;
-                var scene = story.Scenes.FirstOrDefault(s => s.Id == edit?.Replacement);
-                if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || scene == null
-                    || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
-                    || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
-                    || edit.When == null || edit.When.Length == 0 || edit.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
-                        || !g.Contains(story.Relationships[scene.Relationship].CommittedFlag))
-                    || story.NativeEpilogueEdits.Count(other => other.Value?.Replacement == edit.Replacement) != 1)
-                    throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement, known When groups that each "
-                        + "require its relationship's CommittedFlag): " + pair.Key);
+                if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || edit.Variants == null || edit.Variants.Any(variant => variant == null))
+                    throw new InvalidOperationException("Invalid native epilogue edit (null spec or variant, or a cue that is not a GUID): " + pair.Key);
+                foreach (var variant in Rules.EditVariants(edit))
+                {
+                    var scene = story.Scenes.FirstOrDefault(s => s.Id == variant.Replacement);
+                    var relationship = scene != null && story.Relationships.TryGetValue(scene.Relationship, out var r) ? r : null;
+                    var earned = relationship == null ? new HashSet<string>() : new HashSet<string>(new[] { relationship.CommittedFlag }
+                        .Concat(relationship.TricksterAccess.Values.Select(access => access.Returned).OfType<string>()));
+                    if (scene == null || relationship == null
+                        || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
+                        || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
+                        || variant.When == null || variant.When.Length == 0 || variant.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
+                            || !g.Any(earned.Contains))
+                        || used.Count(other => other == variant.Replacement) != 1)
+                        throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement used once, known When groups "
+                            + "that each require its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
+                }
             }
         }
 
