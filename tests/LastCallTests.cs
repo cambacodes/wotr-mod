@@ -27,6 +27,9 @@ internal static class LastCallTests
     private static Snapshot Done(Story story, Snapshot state)
     {
         var next = Program.Copy(state);
+        // Derived keys are recomputed from scratch each time the runtime builds its state (engine-q2: a resolved debt's
+        // callable guard must drop, and Complete only adds keys).
+        next.Flags.ExceptWith(story.Derived.Keys);
         Rules.Complete(story, next);
         return next;
     }
@@ -161,6 +164,8 @@ internal static class LastCallTests
                 .Concat(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids)))
                 .Concat(s.Nodes.SelectMany(n => n.Paragraphs).SelectMany(p => p.Requires.Concat(p.Forbids).Concat(p.AnyGroups.SelectMany(g => g))));
             // Exception (coordinator ruling 2026-10-02, Aranka polish item 3): her coda forbids her own closed route explicitly.
+            // Engine-q2 item 3: a call-in reads her route's closure only through its own <rel>.lastcall.callable guard
+            // (Derived + DerivedOpenRoutes [her route] = Rules.RouteOpen), never a closed, death or return flag directly.
             check(!reads.Any(k => closers.Contains(k) && k != "trickster.lastcall.closed"
                                   && !(s.Id == "aranka.lastcall.page" && k == "aranka.extension_closed")), "G5: Last Call reads another route's closed flag: " + s.Id);
             check(s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("trickster.lastcall.", StringComparison.Ordinal) || f.EndsWith(".lastcall.called", StringComparison.Ordinal)
@@ -174,12 +179,51 @@ internal static class LastCallTests
         foreach (var coda in codas)
         foreach (var para in coda.Nodes.SelectMany(n => n.Paragraphs).Where(p => p.Text.Contains("far end") || p.Text.Contains("other side") || p.Text.Contains("apart")))
             check(para.Requires.Concat(para.AnyGroups.SelectMany(g => g)).Any(k => k.Contains(".cost.")), "An 'apart' paragraph is not keyed to a failure: " + coda.Id);
-        // Every call-in needs her commit and a deal she made; no call-in is offered before last orders or after the joke.
+        // Every call-in needs a deal she made and her route open; no call-in is offered before last orders or after the joke.
         foreach (var call in calls)
+        {
+            string rel = call.Id.Substring(0, call.Id.Length - ".lastcall.call".Length), due = rel + ".lastcall.callable";
+            check(call.Requires.Contains(due) && story.DerivedOpenRoutes.TryGetValue(due, out var routes) && routes.SequenceEqual(new[] { rel })
+                  && story.DerivedForbids.TryGetValue(due, out var settled) && settled.First() == rel + ".lastcall.resolved"
+                  && story.Derived[due].Select(g => g.Single()).OrderBy(k => k).SequenceEqual(call.RequiresAnyGroups.Single().OrderBy(k => k))
+                  && joke.Forbids.Contains(due) && jokeAreelu.Forbids.Contains(due),
+                "Engine-q2: a call-in is not guarded by its partner's open route, or the last joke does not wait on it: " + call.Id);
             check(call.Requires.Contains(Open) && call.Forbids.Contains(Taken) && call.RequiresAnyGroups.Length == 1 && call.AnswerLists.Length == 5
                   && call.Forbids.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))
                   && call.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))),
                 "A call-in is not a ledger line of the open ledger, or one of its answers leaves the debt unresolved: " + call.Id);
+        }
+        // Engine-q2 item 3: a closed or departed partner's call-in is not offered and does not strand the last joke; her
+        // Trickster return reopens it; a resolved debt no longer holds the joke.
+        var ready = new[] { "trickster", "trickster.ever", Open, Primed, Bottle, "lastcall.flask_taken", "lastcall.flask_held",
+                            "anevia.committed", "anevia.trickster.cost.socoth_listening" };
+        var aneviaCall = Sc("anevia.lastcall.call");
+        foreach (var (what, extra, offered) in new (string, string[], bool)[] {
+            ("open", new string[0], true), ("closed", new[] { "anevia.closed" }, false), ("departed", new[] { "anevia_gone" }, false),
+            ("departed and returned", new[] { "anevia_gone", "anevia.trickster.returned" }, true), ("dead", new[] { "anevia_dead" }, false),
+            ("resolved", new[] { "anevia.lastcall.resolved" }, false) })
+        {
+            var w = Done(story, World(story, 6, ready.Concat(extra).ToArray()));
+            check(Av(aneviaCall, w) == offered, "Engine-q2: Anevia's call-in, " + what + ": offered " + !offered + ".");
+            check(Av(joke, w) == !offered, "Engine-q2: the last joke, Anevia " + what + ": " + (offered ? "offered over an open debt" : "stranded by a debt nobody can call in") + ".");
+        }
+        // Engine-q2 item 3 (scope extension): every Last Call scene that names a partner (a coda or a call-in) carries her
+        // central route guard, <rel>.lastcall.route_open or <rel>.lastcall.callable: a Derived key whose DerivedOpenRoutes is
+        // exactly her route (Rules.RouteOpen), so her closure, death or departure hides it and her earned return shows it.
+        foreach (var s in framework.Where(s => !s.Id.StartsWith("trickster.", StringComparison.Ordinal)))
+        {
+            var guards = s.Requires.Where(k => k.EndsWith(".lastcall.route_open", StringComparison.Ordinal) || k.EndsWith(".lastcall.callable", StringComparison.Ordinal)).ToArray();
+            check(guards.Length == 1 && story.DerivedOpenRoutes.TryGetValue(guards[0], out var guardRoutes) && guardRoutes.Length == 1
+                  && story.Relationships.ContainsKey(guardRoutes[0]) && guards[0].StartsWith(guardRoutes[0] + ".lastcall.", StringComparison.Ordinal),
+                "Engine-q2: a Last Call scene naming a partner is not gated on her open route: " + s.Id);
+        }
+        var targonaPage = Sc("targona.lastcall.page");
+        foreach (var (what, extra, plays) in new (string, string[], bool)[] {
+            ("committed", new string[0], true), ("closed courtship, stale late commitment", new[] { "targona.closed", "targona.trickster.late_committed" }, false),
+            ("dead in the laboratory", new[] { "targona.dead_lab" }, false),
+            ("dead, then returned", new[] { "targona.dead_lab", "targona.trickster.returned" }, true) })
+            check(Av(targonaPage, World(story, 6, new[] { "trickster", "trickster.ever", Active, "targona.committed" }.Concat(extra).ToArray())) == plays,
+                "Engine-q2: Targona's Last Call coda, " + what + ": plays " + !plays + ".");
         // Sequencing: the last joke waits until every open debt's call-in is resolved.
         var many = Done(story, World(story, 6, "trickster", "trickster.ever", Open, Primed, Bottle, "lastcall.flask_taken", "lastcall.flask_held",
                                     "arsinoe.trickster.cost.lien", "seelah.trickster.cost.keeps_it"));
