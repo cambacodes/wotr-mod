@@ -68,6 +68,38 @@ internal static class TargonaOpeningTests
             s = Advance(s, Tp + "free.the_stove", o => o.Has(Tp + "free.spark"));
             return Advance(s, Tp + "after.ward", o => o.Has("targona.committed"));
         }
+        // The wand night may precede the parent romance and her arrival may follow the visit.
+        // Neither stove exit turns that existing lover into a colleague or a first-time courtship.
+        void CheckParentEndings(Snapshot arrival, string order)
+        {
+            check(arrival.Has(Tp + "parent_romanced") && arrival.Has(Met) && !arrival.Has("targona.committed"),
+                "The mixed ending history does not preserve the played parent romance: " + order);
+            foreach (bool spark in new[] { false, true })
+            {
+                var stove = Advance(arrival, Tp + "free.the_stove",
+                    o => o.Has(Tp + (spark ? "free.spark" : "free.colleagues")));
+                foreach (string fate in new[] { "alive", "returned", "lost" })
+                foreach (bool lastCall in new[] { false, true })
+                {
+                    if (fate == "lost" && lastCall) continue; // An active Last Call has earned the return.
+                    var ending = Program.Copy(stove); ending.Chapter = 6;
+                    ending.Flags.ExceptWith(story.Derived.Keys);
+                    if (fate != "alive") ending.Flags.Add("sacrifice");
+                    if (fate == "returned" || lastCall) ending.Flags.Add("ending.trickster");
+                    if (lastCall) ending.Flags.Add("trickster.lastcall.taken");
+                    Rules.Complete(story, ending);
+                    var pages = story.Scenes.Where(sc => (sc.Relationship == "targona" && sc.Owner == "Epilogue"
+                        || sc.Id == "targona.lastcall.page") && Rules.Available(story, sc, ending))
+                        .Select(sc => sc.Id).ToHashSet();
+                    var expected = new HashSet<string> { Tp + "epilogue." + (fate == "lost" ? "sacrifice" : "furlough") };
+                    if (lastCall) expected.Add("targona.lastcall.page");
+                    check(pages.SetEquals(expected), "The parent lover gets inconsistent endings: " + order + "/" + spark
+                        + "/" + fate + "/" + lastCall + " => " + string.Join(", ", pages));
+                    check(ending.Has("targona.ran_romance") && !ending.Has("targona.committed"),
+                        "Selecting an ending rewrites the earned relationship: " + order);
+                }
+            }
+        }
         var endStates = new List<(string Order, Snapshot State)>();
 
         foreach (string mode in modes)
@@ -90,6 +122,7 @@ internal static class TargonaOpeningTests
             if (parentRomance) initial.Flags.Add("targona.ran_romance");
             Rules.Complete(story, initial);
             if (order == "wardMet" || order == "wardCommitted") initial = Chain(initial, order == "wardCommitted");
+            if (parentRomance && order == "wardMet") CheckParentEndings(initial, order);
             check(initial.Has(Corr) == (parentRomance || order == "wardCommitted"), "Targona correspondence misreads the earned romance history.");
             var historyNodes = new HashSet<string>();
             var states = new List<Snapshot> { initial };
@@ -237,7 +270,9 @@ internal static class TargonaOpeningTests
                     {
                         check(visit.Has(Tp + "cost.wand_unspent") && visit.Has("targona.ran_romance") && !visit.Has(Met),
                             "The mixed history did not keep arrival pending until after the visit.");
-                        ReadReply(Advance(visit, Tp + "free.furlough", o => o.Has(Met)));
+                        var arrival = Advance(visit, Tp + "free.furlough", o => o.Has(Met));
+                        ReadReply(arrival);
+                        CheckParentEndings(arrival, order);
                     }
                 }
             }

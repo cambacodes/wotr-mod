@@ -697,14 +697,14 @@ page(P + "epilogue.commit", "When the ward was quiet",
      '''{n}Targona did not go back to Heaven when the war ended. She stayed in Drezen's field infirmary until the last cot was folded, and on the morning the tents came down she found the Commander and asked the question herself, because, she said, she had waited for the ward to be quiet, and it finally was.{/n}
 {n}She did not wait for the answer in words. She took the Commander up the ladder into the empty drying loft, where the last of the bandages still hung in rows from the rafters, and said, "I have tended every body in this city. I want one that is mine to want." She pulled the plain smock over her head and let it fall, and spread her wings so that the linen swayed all down the row, and drew the Commander down onto the blanket under them and settled astride, and bent to kiss the Commander with her hair falling round both their faces.{/n}
 {n}In the morning Wilcer Garms found a feather on the ladder and wrote something in his ledger. When the new infirmary opened, in a street near the Commander's house, she hung that feather over the door.{/n}''',
-     requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
+     requires=("trickster.ever",), forbids=(COMMITTED, PARENT_ROMANCED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
      RequiresAnyGroups=[[TESTED, SPARK]], **SACRIFICE_GUARD)
 
 # Q6 r4 (TRK/BEL): a freed angel who stayed only for the wounded is a colleague, not a lover, when the war ends first.
 page(P + "epilogue.colleague", "The next cot",
      '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. She and the Commander worked the rows together on the bad nights, and argued about wands.{/n}
 {n}When the tents came down she went back to Heaven's healers, and a letter came to the Commander at midwinter, as correct as a report, asking after the drummer with the fever. At the bottom, in a smaller hand, she had written that the ward was quiet now, if anyone ever wanted to ask her anything that was not about wands.{/n}''',
-     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, LATE_COMMITTED, "sacrifice"),
+     requires=("trickster.ever", MET), forbids=(COMMITTED, PARENT_ROMANCED, CLOSED, DECLINED, LATE_COMMITTED, "sacrifice"),
      paragraphs=WARD_PARAGRAPHS + (
          p("Neither forgot the dying pikeman who had asked whether his company held. Targona still said he had deserved "
            "the truth; the Commander still called the lie a mercy. On nights when another man asked a question neither "
@@ -716,7 +716,7 @@ page(P + "epilogue.colleague", "The next cot",
 page(P + "epilogue.colleague_lost", "The list by the door",
      '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. The Commander did not come back from the Threshold. A runner told her at the cots. She went on with the dressing in her hands, and only when it was tied did she ask him to say it again.{/n}
 {n}When the tents came down she went back to Heaven's healers. She left the chaplain a list of the men the Commander had sat up with on the bad nights, every name she could remember, and asked him to pray it at compline after she had gone.{/n}''',
-     requires=("trickster.ever", MET, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, LATE_COMMITTED, "trickster.commander_back"),
+     requires=("trickster.ever", MET, "sacrifice"), forbids=(COMMITTED, PARENT_ROMANCED, CLOSED, DECLINED, LATE_COMMITTED, "trickster.commander_back"),
      paragraphs=WARD_PARAGRAPHS)
 
 page(P + "epilogue.ally", "The ward's other chair",
@@ -738,7 +738,7 @@ page(P + "epilogue.refused_promise", "The promise not made",
 page(P + "epilogue.furlough", "A wand that never ran down",
      '''{n}Targona never went back to Heaven's healers for longer than a visit. She kept a ward in Drezen with the Commander's name over the door.{/n}''',
      requires=("trickster.ever",), forbids=(CLOSED, DECLINED, "sacrifice"), paragraphs=WARD_PARAGRAPHS + LIGHT_PARAGRAPHS,
-     RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
+     RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, PARENT_ROMANCED]],
      ForbidOverrides={DECLINED: COMMITTED, "sacrifice": "trickster.commander_back"})
 
 # The Commander's sacrifice at the Threshold, with no way back (native Epilogues/Cue_0116 records the death): no reunion.
@@ -746,7 +746,7 @@ page(P + "epilogue.sacrifice", "The name over the door",
      '''{n}The Commander did not come back from the Threshold. Targona heard it in the infirmary, from a runner who did not know what he was telling her, and she finished binding the arm in front of her before she sat down.{/n}
 {n}She told her healers in Heaven that she would finish her work in Drezen first. She kept the ward in Drezen with the Commander's name over the door until the last cot was folded, and prayed for the Commander at every compline, and when her superiors in Heaven asked her where she wished to be sent next, she said: wherever the dying are, and nobody sits with them.{/n}''',
      requires=("trickster.ever", "sacrifice"), forbids=(CLOSED, DECLINED, "trickster.commander_back"),
-     paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED]],
+     paragraphs=LIGHT_PARAGRAPHS[:3], RequiresAnyGroups=[[COMMITTED, LATE_COMMITTED, PARENT_ROMANCED]],
      ForbidOverrides={DECLINED: COMMITTED})   # polish r3: the quiet ward's second ask keeps `declined` beside the commit
 
 
