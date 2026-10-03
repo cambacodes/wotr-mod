@@ -356,13 +356,22 @@ internal static class JerribethTricksterTests
         foreach (bool host in new[] { false, true })
         {
             var w = World(story, 3, "trickster.ever", "jerribeth.met", Dead, Returned);
+            w.Flags.Add("camellia.trickster.returned");
             if (heard) w.Flags.Add(Saw);
             if (host) w.Flags.Add("jerribeth.trickster.cost.host");
             var open = reactions.Where(r => r.Owner == "Camellia" && Rules.Available(story, r, w)).ToList();
             check(open.Count == 1 && Words(open[0]).Contains("repugnant spectacle") == heard && Words(open[0]).Contains("stockade") == host,
                 "Camellia's reaction claims a Sanctum memory the player never heard, or misses the one they did (heard " + heard + ", host " + host + ").");
+            foreach (var absent in new[] { "camellia.dead", "camellia.killed", "camellia.kicked_out" })
+            {
+                w.Flags.Add(absent);
+                check(reactions.Where(r => r.Owner == "Camellia").All(r => !Rules.Available(story, r, w)),
+                    "A Camellia reaction plays while she is absent, despite the legacy return flag: " + absent);
+                w.Flags.Remove(absent);
+            }
+            check(Rules.Available(story, open[0], w), "A Camellia reaction stays hidden after her current absence clears.");
         }
-        foreach (var r in reactions.Where(x => new[] { "jerribeth.trickster.reaction.camellia", "jerribeth.trickster.reaction.camellia_host" }.Contains(x.Id)))
+        foreach (var r in reactions.Where(x => x.Owner == "Camellia"))
             check(!r.ForbidOverrides.ContainsKey("camellia.dead"),
                 "A named Camellia reaction overrides her current death: " + r.Id);
 

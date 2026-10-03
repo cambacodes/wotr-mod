@@ -837,12 +837,14 @@ def integrate(payload):
             scene_["Forbids"].append("sacrifice")
             scene_.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
         # Sol r3 (INT, post-cap): an ending page plays before relationship availability is checked, so every Arueshalae
-        # ending forbids her unraised death and both dismissals itself (the legacy return still lifts the death).
+        # ending forbids her unraised death and both dismissals itself. Native wander/dream edits read current death;
+        # only the other endings keep the legacy return override.
         if scene_["Owner"] == "ArueshalaeEpilogue":
             for flag in (DEAD, "arueshalae.kicked_out", "arueshalae.kicked_out_evil"):
                 if flag not in scene_["Forbids"]:
                     scene_["Forbids"].append(flag)
-            scene_.setdefault("ForbidOverrides", {})[DEAD] = RETURNED
+            if scene_["Id"] not in ("arueshalae.treatment.epilogue.native_wander", "arueshalae.treatment.epilogue.native_dreams"):
+                scene_.setdefault("ForbidOverrides", {})[DEAD] = RETURNED
     latches = payload.setdefault("Latches", {})
     for key, sources in LATCHES.items():
         if latches.get(key, sources) != sources:
