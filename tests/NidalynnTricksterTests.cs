@@ -563,6 +563,13 @@ internal static class NidalynnTricksterTests
               && S(P + "ridge.claimed_flight").InteractionHub == "nidalynn.presence",
             "Trk_Nidalynn_Allocation: a visit stands on the wrong body's step.");
 
+        // Polish (coordinator, Trk_Nidalynn_EggOwed): every way the Commander keeps the twelfth egg sets the debt at once, so
+        // Devarra can count it on her return; only Devarra's own scene names the bill.
+        foreach (var taken in new[] { clean, carried.First(r => r.Has(P + "primed")), strawEgg })
+            check(taken.Has(P + "egg_owed") && !taken.Has(Bill), "Trk_Nidalynn_EggOwed: a kept egg does not owe Devarra at once, or names her bill.");
+        check(!burnt.Has(P + "egg_owed") && !mine.Concat(own).SelectMany(s => s.Nodes).SelectMany(n => n.Choices).Any(c => c.Set.Contains(Bill)),
+            "Trk_Nidalynn_EggOwed: the egg sent out with the bedding still owes, or a Nidalynn scene names Devarra's bill.");
+
         // Polish r3 (audit INT/BEL/HOW, Trk_Nidalynn_Closures): the wolves closure walked before and after the commit gives the
         // wolves page alone, and after it her Last Call shout goes unanswered (the debt resolved, never called).
         var goatW = S(P + "kiln.the_goat");
@@ -640,7 +647,7 @@ internal static class NidalynnTricksterTests
                 "Trk_Nidalynn_LateStart: a Chapter 5 start gets more than one rest delivery: " + string.Join(", ", delivered));
         }
         check(Ch(vault, "carry", 0).Forbids.Contains("irabeth.chapter_five") && Ch(straw, "carry", 0).Forbids.Contains("irabeth.chapter_five")
-              && Ch(vault, "carry", 0).Set.SequenceEqual(new[] { P + "primed", P + "egg.vault", P + "cost.palms" }),
+              && Ch(vault, "carry", 0).Set.Take(3).SequenceEqual(new[] { P + "primed", P + "egg.vault", P + "cost.palms" }),
             "Trk_Nidalynn_LateStart: the Chapter 3 ending of the vault or the straw changed.");
 
         // Polish r2 (audit BEL): the chosen-form twins never speak the widow's costume in the present tense.

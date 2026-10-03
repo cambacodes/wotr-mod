@@ -73,6 +73,10 @@ PRIMED = P + "primed"                              # one egg saved, by either de
 GOLEM = P + "egg.golems"
 VAULT = P + "egg.vault"
 STRAW = P + "egg.straw"                            # PP10: the twelfth the druids left in the straw, kept by the Commander
+# Polish (coordinator, 2026-10-03; Devarra polish): the debt is incurred the moment the Commander takes the twelfth egg, by
+# any device (the golems, the vault, the straw). Devarra reads it on her return; her own bill, named later at her tower,
+# stays devarra.trickster.cost.egg_withheld (its readers, her call-in and ledger, need the bill she has actually named).
+EGG_OWED = P + "egg_owed"
 STRAW_BURNED = P + "straw.burned"                  # PP10: the Commander let it go out with the bedding (her door never opens)
 QUARTERMASTER = P + "quartermaster_knew"           # PP10: the quartermaster wrote "disposed of" knowing it was a lie
 GIVEN = P + "eggs_given"                           # PP10: latch on eggs.druids (trickster_world LATCHES)
@@ -233,7 +237,7 @@ SCENES.append(scene(P + "eggs.lamp_black", "Out in the ash", "Nidalynn", 3, "[Lo
         c('"A souvenir."', "packed")),
     nar("packed", '''{n}Nobody believes you, and nobody asks again, because the golems are still standing over eleven eggs with their fists up, and that is a more pressing question.{/n}
 {n}At the bottom of your pack, wrapped in your cloak and grey with ash, something the golems failed to crush is still warm.{/n}''',
-        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM))),
+        c("[Turn back to the golems.]", flags=(PRIMED, GOLEM, EGG_OWED))),
 ], requires=("trickster",), forbids=(PRIMED, CRUSHED, "eggs.destroyed", "eggs.project"), last=3, Relationship=REL,
     Chapters=[3], AnswerLists=[GOLEM_LIST], NativeReturnCue=GOLEM_RETURN, TricksterDevice=True, TricksterState="golems"))
 
@@ -264,9 +268,9 @@ visit(P + "eggs.vault", "Coal", [
         c("Continue", "carry", flags=(CLERK,))),
     nar("carry", '''{n}The coal bucket is no good for the stairs; it tips. You take the egg out and carry it up in your hands, under your coat, against your chest, the way you would carry a lamp through wind.{/n}
 {n}It is much hotter than it looked. By the second landing the skin of both palms has gone white and tight, and by your own door it has started to blister. You do not put it down until it is in the ashes of your hearth, and then you sit on the floor and hold your hands in the washbasin, and the water goes warm.{/n}''',
-        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS), forbids=(CH5,)),
+        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS, EGG_OWED), forbids=(CH5,)),
         c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
-    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(PRIMED, VAULT, PALMS, HEARTH))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(PRIMED, VAULT, PALMS, HEARTH, EGG_OWED))),
 ], requires=("trickster", CRATED), forbids=(PRIMED, CRUSHED, "eggs.druids", "eggs.omelet", "eggs.destroyed"), delay=24,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="vault")
 
@@ -303,9 +307,9 @@ I'll not burn a Commander's spoil without the Commander's word, so it is by the 
         c("Continue", "carry", flags=(QUARTERMASTER,))),
     nar("carry", '''{n}It goes up four flights under your coat, cold against your ribs, and into the ashes at the back of your hearth where the fire is hottest. You bank the coals over it with the poker until there is nothing to see but a grey stone that somebody has been careless with.{/n}
 {n}Then, because you have staked your name in chalk on a thing everybody else heard was empty, you sit up with it. Near midnight, so faintly that you could have imagined it, something inside it turns over. Once.{/n}''',
-        c("[Leave it in the ashes.]", flags=(STRAW, SLATE), forbids=(CH5,)),
+        c("[Leave it in the ashes.]", flags=(STRAW, SLATE, EGG_OWED), forbids=(CH5,)),
         c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
-    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(STRAW, SLATE, HEARTH))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(STRAW, SLATE, HEARTH, EGG_OWED))),
 ], requires=("trickster", GIVEN), forbids=(PRIMED, CRUSHED, STRAW, STRAW_BURNED, "eggs.omelet", "eggs.destroyed"), delay=12,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="straw")   # Chapters 3 and 5: the quartermaster
     # keeps it by the stores' brazier pending the Commander's word, so a decree finished late, or a Commander away in the
