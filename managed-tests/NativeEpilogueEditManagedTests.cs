@@ -79,9 +79,10 @@ internal static class NativeEpilogueEditManagedTests
             check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
-                && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa")),
+                && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa"
+                && pair.Key != "4bb3706172f1ed54ca11db96254c4638")),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
-            + "lines and Arueshalae's Cue_0461 are warning-only).");
+            + "lines, Arueshalae's Cue_0461 and Wenduag's Cue_0580 are warning-only).");
         // Attach on the Wenduag cue with fixture objects shaped like the archive.
         const string cueId = "86bf0569a9029ae4b8c9d300a41e5739";
         var evidence = NativeEpilogueEdit.Reviewed[cueId];

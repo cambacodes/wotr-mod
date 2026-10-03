@@ -90,6 +90,11 @@ namespace Tirabade
             ["3617a648c06a45d1807fde65aedafb06"] = new Evidence(CamelliaPage, Companions, "de512bb2-4d4d-4ca2-b20d-9b2d6384c802", degradeOnRefusal: false), // Cue_16
             ["430ce9767d3ede2479ff9d6aee432304"] = new Evidence(CamelliaPage, Companions, "4819461c-331c-4872-a077-49115a7c9ad7", degradeOnRefusal: false), // Cue_0391
             ["e9a183135b8289544a3144dcf8151920"] = new Evidence(CamelliaPage, Companions, "f31377a1-a78e-47f2-bc10-1721eac2f9c1", degradeOnRefusal: false), // Cue_0390
+            // Wenduag, BookPage_0349 Cue_0580 (TE with companions, her Q3 not done): "Wenduag refused to ascend with the Commander."
+            // RanRomance's AranEpil replaces its second condition (etude 6eddba95 not playing); the checker object, OnShow and Continue
+            // are untouched, and the edit wraps whatever checker the cue has. Warning-only (engine queue 7b).
+            ["4bb3706172f1ed54ca11db96254c4638"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "7d53ebcc-5fe2-4066-b52f-eb54fa081512",
+                degradeOnRefusal: false),
             // E14i: Areelu's afterlogue (World/Dialogs/Epilogues_afterlogues, a Common dialog, not a book page). Cue_0001 lists, Strategy
             // First: Cue_0002, Cue_28, Cue_0003, Cue_0006, Cue_0004, Cue_29, Cue_0005; each continues into Cue_0007 (her account to
             // Pharasma), which a replacement keeps. Cue_0004 (not redeemed, not dead): the cottage. Cue_0005 (the fallback): "my life

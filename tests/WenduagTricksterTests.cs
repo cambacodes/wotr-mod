@@ -86,7 +86,7 @@ internal static class WenduagTricksterTests
 
         var rel = story.Relationships["wenduag"];
         var mine = story.Scenes.Where(s => s.Relationship == "wenduag").ToArray();
-        var pages = mine.Where(s => s.Owner == "WenduagEpilogue").ToArray();
+        var pages = mine.Where(s => s.Owner == "WenduagEpilogue" && !Rules.IsNativeReplacement(story, s)).ToArray();   // native-slide texts are not pages
         var stage = S(P + "killed.stage");
         var cairn = S(P + "killed.cairn");
         var back = S(P + "killed.back");

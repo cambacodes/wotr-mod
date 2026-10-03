@@ -419,6 +419,7 @@ internal static class Program
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
         ContactDisambiguationTests.Run(Check);
+        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);
         CountTests.Run(Check);

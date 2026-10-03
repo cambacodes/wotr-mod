@@ -83,6 +83,7 @@ from storylines import yaniel_trickster, yaniel_walls  # noqa: F401 (yaniel_wall
 from storylines import yaniel_radiance  # E10 party-only read: Radiance on the Commander, not in the shared stash
 from storylines import chivarro_death  # ChivarroKilled split: the confirmed death (the death trigger also completes Obj3)
 from storylines import wenduag_trickster, wenduag_cairn
+from storylines import wenduag_native  # E14d: Cue_0580 (she refuses to ascend) for a committed Wenduag
 from storylines import iomedae_trickster, iomedae_banner
 from storylines import pacing_pp1
 from storylines import pacing_pp3
@@ -591,6 +592,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(wenduag_cairn.SCENES))
     wenduag_trickster.integrate(payload)
     wenduag_cairn.integrate(payload)
+    wenduag_native.integrate(payload)
     # Iomedae: a new relationship (trickster/iomedae.md, Build sheet R6; 11-ROSTER-PLAN-2 §2): veiled until the finale. The
     # courtship is her banner's memory and her herald (iomedae_banner), then her own voice after the Summit; the commit is a
     # formal disputation under her banner; the device is the banner carried into the Wound, which she may choose to answer.
