@@ -94,6 +94,10 @@ OWN_KILL_ANSWERS = {
     # [Kill the shaman] "I've had enough of you and this place! To the Abyss with you!" (Shared stringkey da81261d)
     "soana.killed_self_after_bear_a": "fcf85a5f46511764ca2a85481a36cb2e",   # SoanaAfterBear/Answer_0013
     "soana.killed_self_after_bear_b": "7fa80df7d9584c943808aa8a7b9a3120",   # SoanaAfterBear/Answer_0097
+    # [Execute the shaman] (enGB cf94657c "...a connection with a spirit from the Abyss can only lead to evil." / 6b7c9f4d
+    # "You must answer for your evil deeds."); both cue chains lead to combat with her (audit r2).
+    "soana.executed_after_bear_a": "49c746fc3ea9f2f4cb3841eb0eb69ba1",      # SoanaAfterBear/Answer_0030
+    "soana.executed_after_bear_b": "91d7e849e995be24ca6f3886a14897e1",      # SoanaAfterBear/Answer_0096
 }
 HEARD = "soana.heard_link"                            # Derived: SoanaAfterBear Cue_0015 or its twin Cue_0036 seen
 SACRIFICE_BACK = {"sacrifice": "trickster.commander_back"}
@@ -354,12 +358,19 @@ at_cave("soana.trickster.returned.second_ask", "Tied tighter", '"The ground has 
 {n}She sets the edge of her knife against the inside of your wrist, where the pulse is, and waits.{/n}''',
         c("Continue", "price")),
     s("price", '''"Deeper than last time would have been. It will scar white and it will ache every winter you live, and every time it aches you will know whose it is. Hold out your hand or take it back. I will not ask a third time."''',
-        c('[Hold out your wrist] "Mine first."', "night", forbids=(SPENT,), flags=(COMMITTED, BEARER, SECOND)),
+        c('[Hold out your wrist] "Mine first."', "cut", forbids=(SPENT,), flags=(COMMITTED, BEARER, SECOND)),
         c('[Take your hand back] "No. Not like this."', flags=(CLOSED, TRK_REFUSED,)),
-        c('[Hold out your wrist] "Mine first."', "night_clay", requires=(SPENT,), flags=(COMMITTED, BEARER, SECOND))),
+        c('[Hold out your wrist] "Mine first."', "cut", requires=(SPENT,), flags=(COMMITTED, BEARER, SECOND))),
     s("night", TERMS_NIGHT, c("Continue", "morning")),
-    s("morning", TERMS_MORNING, c('[Go]')),
+    s("morning", '''{n}The fire has gone to ash and the frost has come in over the cave mouth as far as the furs. Her end of the knot is gone from her wrist; yours is still tied, and under it the cut has closed into a hard ridge, already paler than the skin around it.{/n}
+{n}Soana is outside already, feeding the spirits from a bowl. She does not turn around.{/n}
+"That will scar white. Every winter it aches, you will know whose it is. Now go and fight your war, hunter, and do not die before I do. It would be very inconvenient."''',
+        c('[Go]')),
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
+    # Polish (Sol BEL, audit r2): the deeper cut she priced is shown, and it heals as she said it would.
+    s("cut", '''{n}She does not hurry. The knife goes in along the inside of your wrist, deeper than any binding needs, and she draws it the length of her thumb while you watch. Blood runs down into your palm and over the white print. She presses the cut shut with her thumb and holds it there until your pulse beats against her hand.{/n}
+"Now it is written in you, hunter. Not on you."''',
+        c("Continue", "night", forbids=(SPENT,)), c("Continue", "night_clay", requires=(SPENT,))),
     # PP6 (Sol INT): the knot's second ask follows the knot's own first ask; a luck-chain "not yet" (missed.bowl) shares
     # soana.trickster.declined, so the graveyard test and the terms scene are required by name.
     # Polish (Sol INT): a luck "not yet" carried into the knot's friendship is not a postponed knot; the friend's leash is hers.
@@ -662,7 +673,8 @@ inline("soana.trickster.missed.second_ask", "The other die", 5, '"About your bow
 # --- Epilogue pages (no mythic, alignment or crusade effects) ---------------------------------------------------------
 
 EPILOGUE_PARAGRAPHS = (
-    p("She took the Commander's half of the knot back only once, to retie it, and she pulled it tighter.", requires=(SECOND,)),
+    p("The cut she made at the second asking healed into a white scar inside the Commander's wrist. It ached every winter, "
+      "as she had promised, and she never once asked whether it did.", requires=(SECOND,)),
     p("The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept "
       "getting up. The scouts stopped reporting it. It had become ordinary.", requires=(CATCHUP,)),
     p("For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad "
@@ -735,6 +747,16 @@ SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue
     nar("start", '''{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}''',
         c(), paragraphs=(UNBOUND,))],
     requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
+    ForbidOverrides=dict(SACRIFICE_BACK)))
+
+# Polish (Sol BEL, audit r2): a return that never reached her invitation, a friendship, a refusal or a closure is not a late
+# romance. The late commit needs her invitation at the accounting (or a failed presence, R2-6); this page covers the rest.
+SCENES.append(scene("soana.trickster.epilogue.unfinished", "Left unsaid", "Epilogue", 5, "", [
+    nar("start", '''{n}The Commander did not come back to Wintersun before the war ended, and Soana did not send for them. The spring after the Worldwound closed she walked to Drezen, took her leash back from the Commander's palm with a single strand and her own blood, and went home the same day.{/n}
+{n}She buried the dead forest one grave a day and planted what she could beside the water. Travellers who asked the old woman in the cave about the Commander were told about a hunter who had held a dead woman to her own words, and then stopped coming before she had said what she meant to say to them.{/n}''',
+        c())],
+    requires=("trickster.ever", RETURNED),
+    forbids=(LATE_COMMITTED, COMMITTED, CLOSED, DECLINED, FRIENDS, BEARER, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
 SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue", 5, "", [
@@ -898,7 +920,11 @@ def integrate(payload):
     if MEDALLION not in items:
         items.append(MEDALLION)
     # R2-6: the late commit reads the return (killed branch; also the presence-failure fallback) or the luck paid for.
-    payload.setdefault("Derived", {})[LATE_COMMITTED] = [["trickster.ever", RETURNED], ["trickster.ever", LUCK_KEPT]]
+    # Polish (Sol BEL, audit r2): the fallback continues a courtship the player chose: her invitation at the accounting, or
+    # the luck branch's answered test; a failed presence (R2-6) keeps the return's fallback.
+    payload.setdefault("Derived", {})[LATE_COMMITTED] = [["trickster.ever", RETURNED, ACC_INVITED],
+                                                         ["trickster.ever", RETURNED, "soana.presence.failed"],
+                                                         ["trickster.ever", LUCK_KEPT, TESTED]]
     # Polish (Sol INT): who held the leash when the Commander died. A save that completed the friendship or the refused
     # rebinding before the latch existed counts by those scenes' completion with their outcome flags.
     payload["Derived"][RECLAIMED_BEFORE] = [[RECLAIMED], [RETURNED, FRIENDS, "soana.trickster.returned.terms"],

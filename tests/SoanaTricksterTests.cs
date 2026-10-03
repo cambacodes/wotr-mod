@@ -251,6 +251,11 @@ internal static class SoanaTricksterTests
         check(!Rules.Available(story, secondAsk, Later(story, World(story, 5, "trickster", "trickster.ever", P + "returned", P + "declined"), 200)),
             "The knot's second ask opens before its graveyard and first ask.");
         var paid = Pick(secondAsk, Later(story, refused, 96), "soana.committed", P + "cost.second_ask");
+        var askPages = new HashSet<string>();
+        Program.Walk(secondAsk, Later(story, refused, 96), (id, _) => askPages.Add(id));
+        check(askPages.IsSupersetOf(new[] { "cut", "night", "morning" }) && secondAsk.Nodes.Single(n => n.Id == "morning").Text.Contains("scar white")
+              && FullText(epKnot, paid).Contains("white scar") && !FullText(epKnot, bound).Contains("white scar"),
+            "The second ask's deeper cut is priced but never shown or remembered.");
         check(secondAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.second_ask")
               && c.Set.Contains("soana.committed")), "The second ask is a fee, or leaves no scar.");
         check(Play(secondAsk, Later(story, refused, 96)).Any(r => r.Has("soana.closed") && !r.Has("soana.committed")),
@@ -337,7 +342,12 @@ internal static class SoanaTricksterTests
         check(luckEnd.SequenceEqual(new[] { epLuck.Id }), "The bowl's commit ends on the wrong pages: " + string.Join(",", luckEnd));
         check(Endings(refused).SequenceEqual(new[] { epDeclined.Id }), "Her refusal ends on the wrong pages.");
         var lateBack = Pick(graveyard, back, P + "graveyard_kept");
-        check(Endings(lateBack).SequenceEqual(new[] { epCommit.Id }), "A return never committed has no late page.");
+        // Polish r2 (Sol BEL): the late commit continues her invitation (or a failed presence, R2-6); a bare return gets the
+        // unfinished page, never a romance.
+        var lateFailed = Program.Copy(lateBack); lateFailed.Flags.Add("soana.presence.failed"); Rules.Complete(story, lateFailed);
+        check(Endings(lateBack).SequenceEqual(new[] { P + "epilogue.unfinished" }) && Endings(lateFailed).SequenceEqual(new[] { epCommit.Id })
+              && Endings(Invite(dug)).SequenceEqual(new[] { epCommit.Id }),
+            "A return never courted gets a romance, or a courted one has no late page: " + string.Join(",", Endings(lateBack)));
         // Polish b9c: a living Soana whose luck was paid gets her own late page, never the killed branch's leash and graves.
         check(Endings(Pick(sheBear, Later(story, lucky, 48), P + "luck_tested")).SequenceEqual(new[] { P + "epilogue.luck_late" }),
             "A luck never committed has no late page, or gets the killed branch's.");
@@ -347,7 +357,7 @@ internal static class SoanaTricksterTests
         var coda = S("soana.lastcall.page");
         Snapshot Called(Snapshot s) { var e = End(s); e.Flags.Add("lastcall.active"); Rules.Complete(story, e); return e; }
         var luckLate = Pick(sheBear, Later(story, lucky, 48), P + "luck_tested");
-        check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
+        check(Rules.Available(story, coda, Called(bound)) && Rules.Available(story, coda, Called(Invite(dug))) && !Rules.Available(story, coda, Called(lateBack)) && Rules.Available(story, coda, Called(luckLate))
               && !Rules.Available(story, coda, End(lateBack)),
             "Trk_Soana_LateLastCall: a late commit (resurrection or luck fallback) has no Last Call coda.");
         var friendBack = Pick(terms, atTerms, P + "friends");
@@ -742,6 +752,22 @@ internal static class SoanaTricksterTests
         if (Rules.Available(story, gq, pulvAlive)) Program.Walk(gq, pulvAlive, (id, _) => gqPages.Add(id));
         check(pulvAlive.Has("soana.guardian_dead") && gqPages.Contains("dead") && !gqPages.Contains("bound"),
             "The pulverised history's guardian question keeps Orso alive: " + string.Join(",", gqPages));
+        // Polish r2 (Sol INT/HOW): all six native kill answers (two attacks, two kills after the bear, two executions) are the
+        // Commander's own kill: the accounting accuses them by name and the late page remembers it.
+        foreach (var key in new[] { "soana.killed_self_before_bear", "soana.killed_self_after_quest", "soana.killed_self_after_bear_a",
+                                    "soana.killed_self_after_bear_b", "soana.executed_after_bear_a", "soana.executed_after_bear_b" })
+        {
+            check(story.SelectedAnswers.ContainsKey(key), "Unbound native kill answer: " + key);
+            var killer = World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key);
+            var killerGrave = Pick(graveyard, Later(story, Pick(knot, killer, P + "returned"), 48), P + "graveyard_kept");
+            var pagesK = AccPages(killerGrave);
+            var lover = World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", "soana.committed", key);
+            var loverPages = AccPages(Pick(graveyard, Later(story, Pick(knot, lover, P + "returned"), 48), P + "graveyard_kept"));
+            var failed = Program.Copy(killerGrave); failed.Flags.Add("soana.presence.failed"); Rules.Complete(story, failed);
+            check(killer.Has("soana.killed_by_commander") && pagesK.Contains("own") && !pagesK.Contains("unknown") && loverPages.Contains("own_lover")
+                  && !loverPages.Contains("unknown") && FullText(epCommit, failed).Contains("why they had killed her"),
+                "A native kill answer is not read as the Commander's own kill: " + key);
+        }
         string Coda(Snapshot s) { var e = Called(s); return string.Join("|", Rules.VisibleParagraphs(coda.Nodes.Last(), e).Select(x => x.Text)); }
         check(Coda(bound).Contains("answer at her graves") && !Coda(lateBack).Contains("answer at her graves"),
             "The Last Call coda misremembers the accounting.");
