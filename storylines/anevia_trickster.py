@@ -632,6 +632,77 @@ epilogue("anevia.trickster.epilogue.nailed_wardrobe_unforgiven", (RETURNED, "ane
          (I_RET, "anevia.closed", "ascended", "inhuman"), RequiresAnyGroups=[[TERMS, KEY]])
 
 
+# E14d extension: the native Tirabade slide BookPage_0307 Cue_0311 (IrabethDead + AneviaGone Playing, which the Trickster
+# never ends): "Now alone, Anevia left - quietly, unnoticed, leaving no notes or traces. No one ever saw her again." A
+# returned Anevia (or a returned Irabeth, irabeth_trickster.NATIVE_SOUTH) contradicts it, committed or not. The first
+# variant whose When holds replaces it; otherwise the native slide plays. With Beth back the page keeps its pair picture;
+# while Beth is dead (or Anevia stays away) the native cue's own image change runs, as on the native departure cues.
+TIRABADE_SLIDE = "3a3e561c6b05a284d93eb3bff7b712a6"    # World/Dialogs/Epilogues/Cue_0311
+TIRABADE_PAGE = "ae1f824fe248d9f4aac7d39ec2e12140"     # World/Dialogs/Epilogues/BookPage_0307
+SPECIAL = "f8d7f50e3bb88c143834d234c0b24474"           # World/Dialogs/Epilogues/CueSequence_Special
+NATIVE_TOGETHER = "anevia.trickster.epilogue.native_tirabade_together"
+NATIVE_BACK = "anevia.trickster.epilogue.native_tirabade_back"
+NATIVE_WIDOW_COMMITTED = "anevia.trickster.epilogue.native_tirabade_widow_committed"
+NATIVE_WIDOW = "anevia.trickster.epilogue.native_tirabade_widow"
+I_NATIVE_SOUTH = "irabeth.trickster.epilogue.native_tirabade_south"   # irabeth_trickster.py
+
+LEFT_A_WIDOW = "Anevia left Drezen at the Coronation a widow, quietly, leaving no notes or traces. She did not stay a widow."
+LEFT_ALONE = ("Now alone, Anevia left Drezen quietly, unnoticed, leaving no notes or traces. It was not enough to lose the "
+              "Commander, who found her anyway, by a road no one else would have thought to take.")
+
+
+def native_slide(id, text, requires):
+    SCENES.append(scene(id, "", "AneviaEpilogue", 6, "", [nar("page", "{n}" + text + "{/n}", c())],
+                        requires=requires, last=99, Relationship="anevia"))
+
+
+native_slide(NATIVE_TOGETHER, LEFT_A_WIDOW + " Irabeth came back from Iz, and Anevia came back as far as the Drezen gate, "
+             "and in time through a door beside it, one she knocked on first. The Tirabades kept their own house and their "
+             "own counsel. What Anevia shared with the Commander, she shared on her own terms, and Beth always came first.",
+             (RETURNED, "anevia.committed", I_RET))
+native_slide(NATIVE_BACK, LEFT_A_WIDOW + " Irabeth came back from Iz, and Anevia came back as far as the Drezen gate, though "
+             "rarely any further. Whatever else the Tirabades lost to the Fifth Crusade, they did not lose each other, and "
+             "Anevia never let the Commander forget how close it had come.",
+             (RETURNED, I_RET))
+native_slide(NATIVE_WIDOW_COMMITTED, LEFT_ALONE + " She came back as far as the Drezen gate, and in time through a door "
+             "beside it, but only on her own terms, and Beth's name was always the first thing said between them.",
+             (RETURNED, "anevia.committed"))
+native_slide(NATIVE_WIDOW, LEFT_ALONE + " She came back as far as the Drezen gate to tell the Commander what she thought of "
+             "that, to the Commander's face. Where she went after that was her own decision, and she made sure everyone knew it.",
+             (RETURNED,))
+
+# The other departure cue on the same page, Cue_0310 (IrabethGone + AneviaGone: both left at the Coronation after the
+# Commander's betrayal): "...She barely resisted when Anevia came to take her as far away from Mendev as possible, but they
+# could never escape their nightmares of the Fifth Crusade." The wardrobe reaches that Anevia too (its setup needs only
+# anevia_gone). Irabeth has no Trickster return from that departure, so only Anevia's return changes the slide. Beth is
+# alive but gone from Drezen with her, so the native departure picture stays.
+TIRABADE_LEFT_SLIDE = "ccd140dbf2603734aa323261c2445bec"   # World/Dialogs/Epilogues/Cue_0310
+NATIVE_LEFT_COMMITTED = "anevia.trickster.epilogue.native_tirabade_left_committed"
+NATIVE_LEFT = "anevia.trickster.epilogue.native_tirabade_left"
+LEFT_TOGETHER = ("The Commander's betrayal and the humiliation she had suffered in Drezen eroded Irabeth's fighting spirit, "
+                 "and Anevia meant to take her as far away from Mendev as she could.")
+native_slide(NATIVE_LEFT_COMMITTED, LEFT_TOGETHER + " They had not got far enough to keep the Commander out of "
+             "her wardrobe. Anevia came back as far as the Drezen gate, and in time through a door beside it, on her "
+             "own terms. She never forgave the betrayal, and Beth always came first.",
+             (RETURNED, "anevia.committed"))
+native_slide(NATIVE_LEFT, LEFT_TOGETHER + " They had not got far enough to keep the Commander out of her "
+             "wardrobe. Anevia came back as far as the Drezen gate to say what she thought of that, and then she went back "
+             "to her wife. Neither of them ever escaped the nightmares of the Fifth Crusade, and she never pretended otherwise.",
+             (RETURNED,))
+
+NATIVE_EPILOGUE_EDITS = {
+    TIRABADE_LEFT_SLIDE: dict(Page=TIRABADE_PAGE, Sequence=SPECIAL, Key="cc716238-3702-4913-977d-6189665672b7",
+                              Replacement=NATIVE_LEFT_COMMITTED, When=[[RETURNED, "anevia.committed"]], KeepNativeImage=True,
+                              Variants=[dict(Replacement=NATIVE_LEFT, When=[[RETURNED]], KeepNativeImage=True)]),
+    TIRABADE_SLIDE: dict(Page=TIRABADE_PAGE, Sequence=SPECIAL, Key="4c278ba4-5217-4fae-afec-47c6f6597e00",
+                         Replacement=NATIVE_TOGETHER, When=[[RETURNED, "anevia.committed", I_RET]], KeepNativeImage=False,
+                         Variants=[dict(Replacement=NATIVE_BACK, When=[[RETURNED, I_RET]], KeepNativeImage=False),
+                                   dict(Replacement=NATIVE_WIDOW_COMMITTED, When=[[RETURNED, "anevia.committed"]], KeepNativeImage=True),
+                                   dict(Replacement=NATIVE_WIDOW, When=[[RETURNED]], KeepNativeImage=True),
+                                   dict(Replacement=I_NATIVE_SOUTH, When=[[I_RET]], KeepNativeImage=True)]),
+}
+
+
 REACTIONS = [
     reaction("Konomi", "anevia.trickster.gone.react_konomi", (RETURNED, PRIMED),
              '''{n}Lady Konomi does not look up from her ledger. She turns it round so that you can read the line she has just written.{/n}
@@ -718,6 +789,16 @@ def integrate(payload):
     rel["Guidance"] += (" On the Trickster path, an Anevia who has left the crusade can still be reached, though not by "
                         "any ordinary door. After her return, look for her outside the Drezen gate, by the smithy.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    # E14d extension: the native Tirabade slide. Irabeth's own variant joins only when her route (and its scene) is built.
+    present = {s["Id"] for s in payload["Scenes"]}
+    edits = payload.setdefault("NativeEpilogueEdits", {})
+    for cue, edit in NATIVE_EPILOGUE_EDITS.items():
+        if cue in edits:
+            raise ValueError("anevia_trickster: conflicting native epilogue edit " + cue)
+        built = {k: ([list(g) for g in v] if k == "When" else v) for k, v in edit.items() if k != "Variants"}
+        built["Variants"] = [{k: ([list(g) for g in v] if k == "When" else v) for k, v in variant.items()}
+                             for variant in edit["Variants"] if variant["Replacement"] in present]
+        edits[cue] = built
     ours = {s["Id"] for s in SCENES}
     tirabade = payload["Relationships"]["tirabade"]
     tirabade.setdefault("UnavailableOverrides", {}).update({"irabeth_dead": I_RET, "anevia_gone": RETURNED})

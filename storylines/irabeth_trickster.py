@@ -723,6 +723,15 @@ SCENES.append(scene("irabeth.trickster.epilogue.off_the_record", "Off the record
                      "sacrifice": "trickster.commander_back"}))
 
 
+# E14d extension: her variant of the native Tirabade slide Cue_0311 (anevia_trickster.NATIVE_EPILOGUE_EDITS): Beth is back
+# from Iz and Anevia never came back to Drezen ("No one ever saw her again" no longer holds). Anevia's own variants win
+# once she has returned.
+NATIVE_SOUTH = "irabeth.trickster.epilogue.native_tirabade_south"
+SCENES.append(scene(NATIVE_SOUTH, "", "IrabethEpilogue", 6, "", [
+    nar("page", '''{n}Anevia left Drezen at the Coronation a widow, quietly, leaving no notes or traces. She did not stay one for long: Irabeth came back from Iz, and the word went down the south road after her. Anevia never came back to Drezen, and nobody who knew her expected her to. But the Tirabades were not lost to each other, and a letter in Irabeth's square, slow hand went south with every courier until the Wound was closed.{/n}''', c())],
+    requires=(RETURNED,), last=99, Relationship="irabeth"))
+
+
 REACTIONS = [
     reaction("Seelah", "irabeth.trickster.dead.react_seelah", (RETURNED, "irabeth.trickster.seelah_prayed"),
              '''{n}Seelah does not sit down. She stands with her arms folded, and her holy symbol is in her fist.{/n}
