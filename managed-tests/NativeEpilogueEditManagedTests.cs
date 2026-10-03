@@ -88,9 +88,15 @@ internal static class NativeEpilogueEditManagedTests
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
                 && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa"
-                && pair.Key != "4bb3706172f1ed54ca11db96254c4638")),
+                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
             + "lines, Arueshalae's Cue_0461 and Wenduag's Cue_0580 are warning-only).");
+        // Engine-q2 item 5: Galfrey's two Queen slides share one text, one sequence, and are warning-only.
+        var queen = NativeEpilogueEdit.Reviewed.Where(pair => pair.Value.Sequence == NativeEpilogueEdit.QueenSequence).ToArray();
+        check(queen.Select(pair => pair.Key).OrderBy(k => k).SequenceEqual(new[] { "becde70692b74ab4eba1d0cf82d2958f", "f5906acda82efd5468cb72aff2e68f7e" })
+              && queen.All(pair => pair.Value.Key == "e61f5ab8-ec4c-439f-b035-802558deebe0" && !pair.Value.DegradeOnRefusal
+                  && ((string)((JArray)native[pair.Key]["Conditions"]!["Conditions"]!)[0]["m_Etude"]!).EndsWith("a4f20ae9f6a6c3d4ba204721589470a2", StringComparison.Ordinal)),
+            "Galfrey's Queen slides (Cue_0259, Cue_0502) are not the reviewed GalfreyDead pair on CueSequence_Queen.");
         // Attach on the Wenduag cue with fixture objects shaped like the archive.
         const string cueId = "86bf0569a9029ae4b8c9d300a41e5739";
         var evidence = NativeEpilogueEdit.Reviewed[cueId];

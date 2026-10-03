@@ -79,6 +79,7 @@ from storylines import herrax_trickster, herrax_house
 from storylines import terendelev_trickster, terendelev_watch
 from storylines import eliandra_trickster, eliandra_stars
 from storylines import galfrey_trickster, galfrey_kitrane
+from storylines import galfrey_queen_slide
 from storylines import horzalah_trickster, horzalah_guild
 from storylines import elyanka_trickster, elyanka_hearse
 from storylines import melazmera_trickster, melazmera_hoard
@@ -559,6 +560,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Scenes"].extend(copy.deepcopy(galfrey_kitrane.SCENES))
     galfrey_trickster.integrate(payload)
     galfrey_kitrane.integrate(payload)
+    galfrey_queen_slide.integrate(payload)   # engine-q2 item 5: the native Queen slide for a returned, re-crowned Galfrey
     # Horzalah: a new relationship (trickster/horzalah.md; 11-ROSTER-PLAN-2 §2, R4 build sheet): the ear in the gift box, a
     # con on her own Guild offered at the mercy node (or in the Greybor-less night, or when the Guild circles); the collar
     # on her terms; the courtship on her presence by the Storyteller and her letters by knife (horzalah_guild).

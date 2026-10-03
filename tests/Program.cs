@@ -726,6 +726,8 @@ internal static class Program
         ObjectiveRestoreTests.RunStory(story, Check);
         // Engine-q2 item 4: Konomi's death latch.
         KonomiDeathLatchTests.Run(story, Check);
+        // Engine-q2 item 5: Galfrey's native Queen slides for a returned, re-crowned Queen.
+        if (story.Relationships.ContainsKey("galfrey")) GalfreyQueenSlideTests.Run(story, Check);
         KonomiTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();

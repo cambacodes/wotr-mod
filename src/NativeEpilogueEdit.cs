@@ -67,7 +67,8 @@ namespace Tirabade
         // mutates it (reference/canon-review/aranka-*.cs and the parent DLL's UTF-16 strings): Cue_0461 failed live because
         // the parent sets its Continue.
         public const string Companions = "fec3b6f28610c8a48a239f148ed3ed60";
-        public const string Special = "f8d7f50e3bb88c143834d234c0b24474";   // CueSequence_Special (the Tirabade pair page)
+        public const string Special = "f8d7f50e3bb88c143834d234c0b24474";
+        public const string QueenSequence = "bb9d36fd37d74bf4792931d6052a7d44";   // CueSequence_Queen (Galfrey's realm slides)   // CueSequence_Special (the Tirabade pair page)
         public static readonly Dictionary<string, Evidence> Reviewed = new Dictionary<string, Evidence>
         {
             ["86bf0569a9029ae4b8c9d300a41e5739"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "0dfe0435-8149-466d-bf0c-88d648651c3a"), // Wenduag Cue_0409
@@ -107,6 +108,14 @@ namespace Tirabade
             // are untouched, and the edit wraps whatever checker the cue has. Warning-only (engine queue 7b).
             ["4bb3706172f1ed54ca11db96254c4638"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "7d53ebcc-5fe2-4066-b52f-eb54fa081512",
                 degradeOnRefusal: false),
+            // Galfrey (engine-q2 item 5): Epilogues/CueSequence_Queen bb9d36fd, BookPage_0255 Cue_0259 and BookPage_0258 Cue_0502
+            // (GalfreyDead Playing; one shared text e61f5ab8, "Queen Galfrey died leaving no direct heir..."). ShowOnce false, no
+            // OnShow/OnStop, answers, continuation or components. The parent mod names neither cue, page nor the sequence
+            // (aranka-*.cs, aranka-native.json, every Mods DLL's strings, checked 2026-10-03). Warning-only.
+            ["f5906acda82efd5468cb72aff2e68f7e"] = new Evidence("6c50623b48ba8204686e2e426ac00425", QueenSequence, "e61f5ab8-ec4c-439f-b035-802558deebe0",
+                degradeOnRefusal: false),                                                                                        // Cue_0259
+            ["becde70692b74ab4eba1d0cf82d2958f"] = new Evidence("d9cc48a31f994c64f88c5dec322805a4", QueenSequence, "e61f5ab8-ec4c-439f-b035-802558deebe0",
+                degradeOnRefusal: false),                                                                                        // Cue_0502
             // E14i: Areelu's afterlogue (World/Dialogs/Epilogues_afterlogues, a Common dialog, not a book page). Cue_0001 lists, Strategy
             // First: Cue_0002, Cue_28, Cue_0003, Cue_0006, Cue_0004, Cue_29, Cue_0005; each continues into Cue_0007 (her account to
             // Pharasma), which a replacement keeps. Cue_0004 (not redeemed, not dead): the cottage. Cue_0005 (the fallback): "my life
