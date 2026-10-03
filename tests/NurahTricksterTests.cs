@@ -631,9 +631,16 @@ internal static class NurahTricksterTests
             check(!end.Has("nurah.trickster.coda_alive") && !end.Has("nurah.trickster.late_committed"), "Closed: dead, no raise: a coda key holds.");
             var alivePages = story.Scenes.Where(sc => sc.Relationship == "nurah" && sc.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                                                  && Rules.Available(story, sc, end)).Select(sc => sc.Id).ToArray();
-            check(alivePages.Length == 0, "Closed: dead, no raise: a page plays her alive: " + string.Join(", ", alivePages));
+            check(alivePages.SequenceEqual(new[] { "nurah.trickster.epilogue.unwritten" }),
+                "Closed: dead, no raise: the closure page is missing, or a page plays her alive: " + string.Join(", ", alivePages));
         }
         check(DeadRetired.All(id => S(id).Forbids.Contains("chapter_later")), "The Ramisa revival is not retired by gating.");
+        // Polish (2026-10-02): the closure page names the player's own choice and is never shown for a living or bought-back Nurah.
+        var unwritten = S("nurah.trickster.epilogue.unwritten");
+        check(!Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.prison"))
+              && !Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned"))
+              && !Rules.Available(story, unwritten, World(story, 6, "nurah.dead_drezen", "nurah.killing_mechanism"))
+              && unwritten.Nodes[0].Paragraphs.Count == 9, "The closure page opens outside a Trickster death world.");
         var lostEntry = story.Books["trickster.ledger"].Entries.Single(e => e.Id == "lost.nurah");
         check(lostEntry.Requires.Contains("trickster.ever") && lostEntry.Forbids.Contains("nurah.trickster.returned")
               && lostEntry.AnyGroups.Length == 1 && Deaths.Concat(new[] { "nurah.dead_camellia" }).All(lostEntry.AnyGroups[0].Contains),

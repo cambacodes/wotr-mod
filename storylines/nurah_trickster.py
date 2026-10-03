@@ -706,6 +706,39 @@ SCENES.append(scene("nurah.trickster.epilogue.refused", "No review", "Epilogue",
     ForbidOverrides={d: RETURNED for d in DEATHS}))
 
 
+# Polish (2026-10-02): the closure written out. Every death of hers is a player answer (user rule, 11-ROSTER-PLAN-2 5.1 #2):
+# the siege verdict, the Commander's own blow in the cell, or "Nurah is yours." to Camellia. Her page says what that cost: the
+# book that was never written, and what was left of her in the gaol. An epilogue page is exempt from her unavailable flags.
+SCENES.append(scene("nurah.trickster.epilogue.unwritten", "The unwritten book", "Epilogue", 5, "", [
+    nar("start", '''{n}No book about the crusade from the wrong side ever came out of the River Kingdoms. Nurah Dendiwhar, who had been a slave, a secretary, a cultist and a traitor, and had meant to outlive all four, did not outlive the Commander's decision.{/n}''',
+        c(), paragraphs=(
+            p("She was put to death on the day Drezen was taken, by the Commander's verdict, while the smoke was still coming off "
+              "the walls. She called them all scum to the last, and was annoyed that nobody wrote it down.", requires=(EXEC_SIEGE,),
+              forbids=(EXEC_PRISON, CAMELLIA_KILL)),
+            p("She died in her cell, by the Commander's own blow. She spat at the Commander's feet first; the turnkey who "
+              "scrubbed the floor afterwards said it was the only clean thing she ever did in there.", requires=(EXEC_PRISON,),
+              forbids=(CAMELLIA_KILL,)),
+            p("The Commander gave her to Camellia, who had asked for her as one asks for a dish one has never tried. Camellia "
+              "spoke of that night only once afterwards, to say that it had not taken long.", requires=(CAMELLIA_KILL,)),
+            p("Among what she left in the cell was the pardon, folded small, with the 'Q' scraped clean, the seal set the right way "
+              "up and the date corrected to the day she was given it, all in her own hand. Irabeth had it entered in the gaol "
+              "ledger beside the sentence, and asked the Commander nothing about either.", requires=(LEDGER,),
+              forbids=("irabeth_dead",)),
+            p("Among what she left in the cell was the pardon, folded small, with every fault in it corrected in her own hand. "
+              "Nobody in the gaol could say what it was for.", requires=(LEDGER, "irabeth_dead")),
+            p("Her manuscript was on the plank desk, its first page dedicated to the Commander in her own small stitched hand, in "
+              "words she had never written. No printer ever set it. The Commander kept it, and did not read past the dedication.",
+              requires=(GHOST,), forbids=(RAN_OFF,)),
+            p("The proofs of chapter one had a gap on the first page exactly one name wide. It was never filled in by anyone.",
+              requires=(PROOFS,), forbids=(SIGNED,)),
+            p("The proofs of chapter one had the Commander's name in the gap on the first page, in the Commander's own hand. It is "
+              "the only line of that book anyone ever read.", requires=(SIGNED,)),
+            p("She had set her author's terms in that cell, and the Commander had taken them, and her, and then said the other "
+              "word. If she had time to put that in a sentence, nobody found it.", requires=(COMPLETE,)),
+        ))],
+    requires=("trickster.ever",), forbids=(RETURNED,), last=99, Relationship="nurah", RequiresAnyGroups=[list(DEATHS)]))
+
+
 # --- Reactions (ledger 05 section 3.1: exactly Irabeth and Camellia) --------------------------------------------------
 
 IRA = dict(forbids=("irabeth_dead",), ForbidOverrides={"irabeth_dead": "irabeth.trickster.returned"})
@@ -773,8 +806,8 @@ SCENES.extend(REACTIONS)
 # Buying her soul back from Ramisa and having the chaplains raise it is a raise, and the one-raise rule (06 registry: Irabeth's
 # chapel diamond is the only raise in the mod) forbids it. The dead branch's entries are RETIRED BY GATING (ids, nodes and
 # choice indices kept): each forbids chapter_later, which the runtime holds in every chapter from 2 on, so nothing can set
-# returned again. A dead Nurah's route is closed by her death (her UnavailableFlags), canon fate and an earned outcome (the
-# Chivarro / Arueshalae precedent). The prepared-in-life device stays: the forged pardon keeps her alive in her cell. Saves
+# returned again. A dead Nurah's route is closed by her death (her UnavailableFlags): every death of hers is the player's own
+# answer, so canon stands (user rule, 11-ROSTER-PLAN-2 5.1 #2); the closure has its own page (epilogue.unwritten). The prepared-in-life device stays: the forged pardon keeps her alive in her cell. Saves
 # that were already raised keep their later scenes (save compatibility). The Ledger says the loss plainly.
 DEAD_RETIRED = ("nurah.trickster.dead.rumour", "nurah.trickster.dead.bill_of_sale", "nurah.trickster.dead.rumour_courier")
 for _scene in SCENES:
