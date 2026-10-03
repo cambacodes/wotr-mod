@@ -408,3 +408,15 @@ ending("unfinished", '''{n}For a time, Jerribeth continued to attend to the far 
 {n}She never quite decided whether the unfinished conversation irritated her more than a disappointing answer would have done.{/n}''', requires=("jerribeth.attracted",), forbids=("jerribeth.committed", "jerribeth.closed", "jerribeth.unavailable"))
 ending("aeon", '''{n}The history that might have joined Jerribeth and the Commander had no place in the world's new account of itself. Somewhere in the Abyss, an illusion acquired a narrow seam along its horizon.{/n}
 {n}Whether its creator remembered an audience, or merely imagined one, she left the imperfection where it was.{/n}''', requires=("jerribeth.committed",), forbids=("jerribeth.closed",), owner="AeonEpilogue")
+
+
+# Earned presence (rubric Binding context (3)): a Commander who stepped into the Wound and prepared no return is mourned.
+SCENES.append(scene("jerribeth.ending_sacrifice", "The guest who knocked", "Epilogue", 5, "", [
+    n("start", "Narrator", """{n}The correspondence charm went cold at the hour the Wound closed. Jerribeth knew before the heralds did, and spent the night trying to make it warm again by every means she had, several of which would have had her burned in Drezen's square if anyone there had known her name.{/n}
+{n}Nothing answered. She did not grieve where anyone could see; she was a demon, and she did not concede that she could. She kept the account she had always kept, in the hand nobody else could read: every evening promised, every evening come. The difference was final now, and she hated that more than the death.{/n}
+{n}She told a priest once, when he was unwise enough to offer her comfort, that she had never before been left holding a debt she could not collect, and that she meant to find out whom in the Boneyard to bill. He did not sleep well for a month.{/n}""", c(),
+      portrait="Jerribeth"),
+], Relationship="jerribeth", last=99, requires=("sacrifice",),
+    forbids=("jerribeth.closed", "jerribeth.unavailable", "jerribeth.trickster.declined"),
+    RequiresAnyGroups=[["jerribeth.committed", "jerribeth.trickster.late_committed"]],
+    ForbidOverrides={"jerribeth.unavailable": "jerribeth.trickster.returned", "jerribeth.trickster.declined": "jerribeth.committed"}))

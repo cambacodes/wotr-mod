@@ -151,7 +151,7 @@ class Model:
         self.permanent_etudes = set(story.get("PermanentEtudes", []))
         nk = {}
         for sec in ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
-                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"):
+                    "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts"):
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
@@ -165,6 +165,10 @@ class Model:
         # E4 data-driven composites (OR of AND-groups).
         self.composites = {k: [list(g) for g in v] for k, v in (story.get("Derived") or {}).items()}
         self.derived |= set(self.composites)
+        # E4b: a guarded composite also needs each named relationship's route open (Rules.RouteOpen).
+        self.open_routes = {k: list(v) for k, v in (story.get("DerivedOpenRoutes") or {}).items()}
+        # Engine-q2: a composite is withheld while any of its DerivedForbids flags holds (trickster.now).
+        self.derived_forbids = {k: list(v) for k, v in (story.get("DerivedForbids") or {}).items()}
         # E14g count composites.
         self.counts = {k: (list(v.get("Of") or []), int(v.get("Min", 1))) for k, v in (story.get("Counts") or {}).items()}
         self.derived |= set(self.counts)
@@ -273,7 +277,7 @@ class Model:
     def is_persistent_native(self, f):
         sec = self.native.get(f)
         if sec is None: return False
-        if sec in ("UnlockableFlags", "InventoryItems", "QuestObjectives"): return False   # values can change back
+        if sec in ("UnlockableFlags", "InventoryItems", "PartyItems", "QuestObjectives"): return False   # values can change back
         if sec != "Etudes": return True
         return (f in self.permanent_etudes or f.endswith("_dead") or f.endswith("_gone") or f.startswith("ascend_")
                 or f in ("sacrifice", "true_lich"))
@@ -360,7 +364,9 @@ class Reach:
         if self.chaptered and ch == 0 and f in MYTHIC: return False
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
-        if f in self.m.composites: return any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
+        if f in self.m.composites:
+            return (f not in self.m.open_routes and not any(self.possible(x, ch) for x in self.m.derived_forbids.get(f, []))
+                    and any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f]))
         if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
         if f == "chapter_one": return ch == 1 if self.chaptered else False
         if f == "chapter_later": return (ch or 0) > 1
@@ -799,9 +805,16 @@ def validate(model):
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive.")) or not groups or any(not g for g in groups)
                 or any(x not in known for g in groups for x in g)):
             errs.append("Invalid derived key: " + k)
+    for k, fb in model.derived_forbids.items():
+        if (k not in model.composites or not fb or len(set(fb)) != len(fb) or k in fb or any(x not in known for x in fb)
+                or any(x in g for g in model.composites[k] for x in fb)):
+            errs.append("Invalid DerivedForbids entry: " + k)
+    for k, guard in model.open_routes.items():
+        if k not in model.composites or not guard or len(set(guard)) != len(guard) or any(r not in model.rels for r in guard):
+            errs.append("Invalid DerivedOpenRoutes entry: " + k)
     def cyclic(k, path):
         if k in path: return True
-        return any(cyclic(x, path | {k}) for g in model.composites.get(k, []) for x in g if x in model.composites)
+        return any(cyclic(x, path | {k}) for x in composite_inputs(model, k) if x in model.composites)
     for k in model.composites:
         if cyclic(k, frozenset()): errs.append("Derived cycle through: " + k)
     for k, src in model.latches.items():
@@ -839,7 +852,7 @@ def validate(model):
             sets = [f for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]]
             if (not s["TricksterDevice"] or not acc or s["Reaction"] or is_epilogue(s)
                     or (s["TricksterState"] is not None and s["TricksterState"] not in acc)
-                    or not ({"trickster", "trickster.ever"} & set(s["Requires"]))
+                    or not ({"trickster", "trickster.ever", "trickster.now"} & set(s["Requires"]))
                     or not any(f in rec or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f for f in sets)):
                 errs.append("Invalid Trickster device: " + sid)
         if s["Reaction"]:
@@ -1488,6 +1501,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for k, g in story.get("UnlockableFlags", {}).items(): want.append((g, "BlueprintUnlockableFlag", "UnlockableFlags." + k))
         for k, v in story.get("QuestObjectives", {}).items(): want.append((v[0], "BlueprintQuestObjective", "QuestObjectives." + k))
         for k, g in story.get("InventoryItems", {}).items(): want.append((g, "BlueprintItem*", "InventoryItems." + k))
+        for k, g in story.get("PartyItems", {}).items(): want.append((g, "BlueprintItem*", "PartyItems." + k))
         for k, g in story.get("StartedQuests", {}).items(): want.append((g, "BlueprintQuest", "StartedQuests." + k))
         for k, g in story.get("MainCharacterFacts", {}).items(): want.append((g, "BlueprintFeature", "MainCharacterFacts." + k))
         for k, v in model.revivals.items(): want.append((v["Unit"], "BlueprintUnit", "Revivals." + k))
@@ -1513,8 +1527,15 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for g in story.get("RemovableItems") or []: want.append((g, "BlueprintItem*", "RemovableItems"))
         for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
+            if e.get("Parent"):   # E14i: a common-dialog cue (its parent cue and dialog, no page or sequence)
+                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue|BlueprintAnswer|BlueprintDialog", "NativeEpilogueEdits.Parent." + g),
+                         (e.get("Dialog"), "BlueprintDialog", "NativeEpilogueEdits.Dialog." + g)]
+                continue
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
                      (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
+        for g, e in (story.get("NativeEpilogueSuppressions") or {}).items():   # E14d extension: hidden native cues
+            want += [(g, "BlueprintCue", "NativeEpilogueSuppressions"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueSuppressions." + g),
+                     (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueSuppressions." + g)]
         for k, p in (story.get("Presences") or {}).items():
             want.append((p.get("Unit"), "BlueprintUnit", "Presences." + k))
             want.append((p.get("Area"), "BlueprintArea", "Presences." + k))
@@ -1533,7 +1554,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if not hit: bad.append(dict(guid=g, expected=t, where=where, actual=None))
             elif hit[0] == "?parent-literal":
                 parent_untyped.append(dict(guid=g, expected=t, where=where, source=hit[1]))
-            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES):
+            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES)                     and not ("|" in t and hit[0] in t.split("|")):
                 bad.append(dict(guid=g, expected=t, where=where, actual=hit[0], path=hit[1]))
         # hard-coded GUIDs in src/*.cs
         srcg = collections.defaultdict(set)
@@ -1776,16 +1797,45 @@ class SimState:
     def has(self, f): return f in self.flags
 
 
+def composite_inputs(model, k):
+    """Mirror of Rules.DerivedInputs: a composite's AND-group flags plus its route guards' closure inputs."""
+    out = [x for g in model.composites.get(k, []) for x in g] + list(model.derived_forbids.get(k, []))
+    for rel in model.open_routes.get(k, []):
+        r = model.rels.get(rel) or {}
+        out += [r.get("ClosedFlag")] + list(r.get("UnavailableFlags") or []) + list((r.get("UnavailableOverrides") or {}).values())
+    return [x for x in out if x]
+
+
+def route_open(model, rel, flags):
+    """Mirror of Rules.RouteOpen: not closed, and no unavailable flag held without its return override."""
+    r = model.rels.get(rel) or {}
+    ov = r.get("UnavailableOverrides") or {}
+    return r.get("ClosedFlag") not in flags and not any(
+        u in flags and not (ov.get(u) and ov[u] in flags) for u in (r.get("UnavailableFlags") or []))
+
+
+def composite_order(model):
+    """Mirror of Rules.DerivedOrder: every composite after the composites it reads."""
+    order, seen = [], set()
+    def visit(k):
+        if k in seen: return
+        seen.add(k)
+        for x in composite_inputs(model, k):
+            if x in model.composites: visit(x)
+        order.append(k)
+    for k in model.composites: visit(k)
+    return order
+
+
 def sim_complete(model, st):
-    """Mirror of Rules.Complete: latches, then Story.Derived composites."""
+    """Mirror of Rules.Complete: latches, then Story.Derived composites (in dependency order, with route guards)."""
     for k, src in model.latches.items():
         if any(x in st.flags for x in src): st.flags.add(k)
-    changed = True
-    while changed:
-        changed = False
-        for k, groups in model.composites.items():
-            if k not in st.flags and any(all(x in st.flags for x in g) for g in groups):
-                st.flags.add(k); changed = True
+    for k in composite_order(model):
+        if (k not in st.flags and any(all(x in st.flags for x in g) for g in model.composites[k])
+                and all(route_open(model, rel, st.flags) for rel in model.open_routes.get(k, []))
+                and not any(x in st.flags for x in model.derived_forbids.get(k, []))):
+            st.flags.add(k)
     for k, (of, least) in model.counts.items():
         if k not in st.flags and sum(1 for x in of if x in st.flags) >= least: st.flags.add(k)
 
@@ -2114,7 +2164,7 @@ def run_matrix(matrix_path, story_path, strict=False, out_json=None, extra=None)
     matrix = json.loads(Path(matrix_path).read_text(encoding="utf-8"))
     model = Model(story)
     guid_to_key = {}
-    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems"):
+    for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SelectedAnswers", "StartedDialogs", "UnlockableFlags", "InventoryItems", "PartyItems"):
         for k, g in (story.get(sec) or {}).items(): guid_to_key.setdefault(str(g).lower(), k)
     for k, v in (story.get("QuestObjectives") or {}).items(): guid_to_key.setdefault(str(v[0]).lower(), k)
     for k, v in (story.get("SeenCues") or {}).items():

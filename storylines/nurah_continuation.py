@@ -1349,14 +1349,13 @@ She sets the paper tube on your knee and waits to see whether you will look thro
 "A preference is useful. It tells you which answer to celebrate if it arrives. It does not carry the message for you."
 {n}She leans over to place the packet beyond your reach, then remains close enough to turn the movement into a kiss on your jaw.{/n}''', c('[Let the inquiry find its own answer.]', "done", flags=f("friedhelm_recalled"))),
     n("sold", "Nurah", '''"He would. That is one reason I would charge him more than he could afford."
-{n}She does not pretend to have forgotten what happened to Friedhelm after his return. Her mouth tightens at the memory of the master's gratitude, then eases into a colder smile.{/n}
+{n}Her mouth tightens, then eases into a colder smile.{/n}
 "He thought paying us had bought the right to be pleased with himself. I disliked the way he enjoyed it."
 "You took the payment."
 "Yes. You were there."
-{n}The answer stays between you. Nurah has no new story in which the reward became a rescue, and she offers none.
-She turns the sale record facedown beside the other papers.{/n}
-"If you want to argue about the man, choose a night when I have not spent the afternoon reading collectors congratulate themselves. If you want to know whether I can still be bought, bring an interesting price. I reserve the pleasure of disappointing you."
-{n}Her eyes stay on yours. The challenge is familiar, intimate, and entirely without repentance.{/n}''', c('[Keep the remembered choice in its actual terms.]', "done", flags=f("friedhelm_recalled"))),
+{n}She turns the sale record facedown beside the other papers.{/n}
+"If you want to argue about the man, pick a night when I have not spent the afternoon reading collectors congratulate themselves. If you want to know whether I can still be bought, bring an interesting price. I would enjoy disappointing you."
+{n}She takes the paper tube off your knee, and her hand stays there after the paper is gone.{/n}''', c('[Keep the remembered choice in its actual terms.]', "done", flags=f("friedhelm_recalled"))),
     n("done", "Nurah", '''{n}Nurah puts the packet in a drawer you have left empty for it. She notices the space and glances back at you.{/n}
 "You have been expecting me to leave things."
 "You already do."

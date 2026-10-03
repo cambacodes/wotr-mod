@@ -19,7 +19,7 @@ internal static class NativeReaderManagedTests
     private const BindingFlags PrivateStatic = BindingFlags.NonPublic | BindingFlags.Static;
 
     public static IEnumerable<string> NativeIds(Story story) => new[] { Flag, Item, Quest, Objective }
-        .Concat(story.UnlockableFlags.Values).Concat(story.InventoryItems.Values).Concat(story.StartedQuests.Values).Concat(story.MainCharacterFacts.Values)
+        .Concat(story.UnlockableFlags.Values).Concat(story.InventoryItems.Values).Concat(story.PartyItems.Values).Concat(story.StartedQuests.Values).Concat(story.MainCharacterFacts.Values)
         .Concat(story.QuestObjectives.Values.Select(v => v[0]));
 
     private static T Seed<T>(string guid) where T : SimpleBlueprint, new()
@@ -39,6 +39,7 @@ internal static class NativeReaderManagedTests
             "Reader fixture GUIDs have unexpected archive types.");
         foreach (var guid in story.UnlockableFlags.Values) check(Is(guid, "BlueprintUnlockableFlag"), "UnlockableFlags binding is not a BlueprintUnlockableFlag: " + guid);
         foreach (var guid in story.InventoryItems.Values) check(IsItem(guid), "InventoryItems binding is not a BlueprintItem: " + guid);
+        foreach (var guid in story.PartyItems.Values) check(IsItem(guid), "PartyItems binding is not a BlueprintItem: " + guid);
         foreach (var guid in story.StartedQuests.Values) check(Is(guid, "BlueprintQuest"), "StartedQuests binding is not a BlueprintQuest: " + guid);
         foreach (var guid in story.MainCharacterFacts.Values) check(Is(guid, "BlueprintFeature"), "MainCharacterFacts binding is not a BlueprintFeature: " + guid);
         foreach (var value in story.QuestObjectives.Values) check(Is(value[0], "BlueprintQuestObjective"), "QuestObjectives binding is not an objective: " + value[0]);
@@ -93,6 +94,23 @@ internal static class NativeReaderManagedTests
             quests.Clear(); foreach (var p in saved.Item3) quests.Add(p.Key, p.Value);
             objectives.Clear(); foreach (var p in saved.Item4) objectives.Add(p.Key, p.Value);
         }
+        // E10 (party-only): every PartyItems binding is resolved by Build, and ReadPartyItems reports only what the party predicate
+        // holds (Main passes Player.Inventory alone, never the shared stash: an item only in the stash reads as not held).
+        var party = (Dictionary<string, BlueprintItem>)main.GetField("partyItems", PrivateStatic)!.GetValue(null)!;
+        check(story.PartyItems.Keys.All(party.ContainsKey), "A PartyItems binding was not resolved by Build.");
+        var readParty = main.GetMethod("ReadPartyItems", PrivateStatic)!;
+        foreach (bool inParty in new[] { false, true })
+        {
+            var state = new Snapshot();
+            readParty.Invoke(null, new object[] { new Func<BlueprintItem, bool>(_ => inParty), state });
+            check(story.PartyItems.Keys.All(k => state.Has(k) == inParty), "The party-only item reader misreports: " + inParty);
+        }
+        var throwing = new Snapshot();
+        readParty.Invoke(null, new object[] { new Func<BlueprintItem, bool>(_ => throw new InvalidOperationException("fixture")), throwing });
+        check(!story.PartyItems.Keys.Any(throwing.Has), "A throwing party read reports the item as held.");
+        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "src", "Main.cs"));
+        check(mainSource.Contains("ReadPartyItems(item => player.Inventory.Contains(item), state);"),
+            "Main.BuildState no longer reads PartyItems from the party inventory alone.");
         // MainCharacterFacts: every bound fact is resolved by Build, and the reader reports exactly what the unit holds.
         var facts = (System.Collections.IDictionary)main.GetField("mainCharacterFacts", PrivateStatic)!.GetValue(null)!;
         check(story.MainCharacterFacts.Keys.All(facts.Contains), "A MainCharacterFacts binding was not resolved by Build.");

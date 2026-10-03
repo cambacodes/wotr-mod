@@ -44,8 +44,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 GUID = re.compile(r"^[0-9a-f]{32}$")
 KINDS = {"Etudes", "CompletedEtudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs",
-         "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts"}
-RUNTIME = {"trickster.ever", "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
+         "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts"}
+RUNTIME = {"trickster.ever", "trickster.now", "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
            # runtime contact evidence (Rules.Validate contactEvidence)
            "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile",
            "konomi.return_contact_available", "konomi.return_correspondence_available",
@@ -74,7 +74,7 @@ def story_keys(path):
     story = json.loads(Path(path).read_text(encoding="utf-8"))
     keys = set()
     for sec in ("Etudes", "CompletedEtudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs",
-                "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts", "Latches", "Derived"):
+                "UnlockableFlags", "QuestObjectives", "InventoryItems", "PartyItems", "StartedQuests", "MainCharacterFacts", "Latches", "Derived"):
         keys |= set((story.get(sec) or {}).keys())
     for s in story.get("Scenes", []):
         keys.add(s["Id"])
@@ -173,7 +173,7 @@ def check_character(c, matrix, known, allow_todo):
             req = list(o.get("requires") or [])
             if role == "setup" and "trickster" not in req:
                 probs.append((where, "setup must require live 'trickster'"))
-            if role == "fallback_setup" and not ({"trickster", "trickster.ever"} & set(req)):
+            if role == "fallback_setup" and not ({"trickster", "trickster.ever", "trickster.now"} & set(req)):
                 probs.append((where, "fallback_setup must require 'trickster' or 'trickster.ever'"))
             if role == "payoff":
                 if "trickster.ever" not in req:

@@ -38,6 +38,12 @@ def resolved(rel):
     return rel + ".lastcall.resolved"
 
 
+def callable_key(rel):
+    """Engine-q2 item 3: her call-in is due. Derived (call_guards): a deal she made, her route open (DerivedOpenRoutes:
+    Rules.RouteOpen, so a Trickster return lifts a death or departure) and not yet resolved (DerivedForbids)."""
+    return rel + ".lastcall.callable"
+
+
 MC = "minagho_chivarro.trickster.cost."
 
 # --- Debts owed to powers (doc 04 §3.7). The flask keeps the Commander alive; creditors only collect. A live power's call-in -
@@ -119,7 +125,7 @@ PARTNERS = []
 
 
 def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, page_forbids=(), deal=(), call=None,
-            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None):
+            call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None, call_forbids=()):
     """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
     route's late_committed key); `commit` stays first."""
     PARTNERS.append(dict(key=key, rel=rel, commit=commit, closed=closed, title=title, opener=opener, paragraphs=paragraphs,
@@ -127,7 +133,9 @@ def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, 
                          call_commit=call_commit or [[commit]], ledger_title=ledger[0] if ledger else None,
                          ledger_text=ledger[1] if ledger else None,
                          page_commit_groups=[list(g) for g in page_commit_groups] if page_commit_groups else None,
-                         page_forbid_overrides=dict(page_forbid_overrides or {})))
+                         page_forbid_overrides=dict(page_forbid_overrides or {}),
+                         # Engine-q2: keys that also withhold her call-in (Derived, read through callable_key's DerivedForbids).
+                         call_forbids=tuple(call_forbids)))
 
 
 def call(entry, text, *choices):
@@ -237,7 +245,10 @@ partner("konomi", "konomi", "konomi.committed", "konomi.closed", "Terms, Accepte
         '''{n}Somewhere in Drezen a diplomat sets down her pen mid-sentence, and smiles the way she smiles before she wins.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
     ledger=("Konomi: terms not yet named", "The attaché of Nerosyan has terms, and has not said what they are. That is how diplomats keep you alive: by making you curious."),
-    page_commit_groups=[["konomi.committed"], [K + "late_committed"]])   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
+    page_commit_groups=[["konomi.committed"], [K + "late_committed"]],   # PP5 r2 (Sol COX, R2-6): the late yes reaches her coda
+    # Engine-q2 item 4: a Konomi who died at her post and was never recalled has no coda and no call-in (konomi_trickster.LOST:
+    # her death latch, lifted by the dead.recalled rite). Her own route's key, not another route's closure (G5).
+    page_forbids=("konomi.dead.unreturned",), call_forbids=("konomi.dead.unreturned",))
 
 NO = "nocticula.trickster."
 partner("nocticula", "nocticula", "noct.complete", "noct.closed", "The Chair at Her Right Hand",
@@ -341,6 +352,8 @@ partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
         page_p('''The knot still held, retied, one end in Soana and the other round the Commander's wrist where the knot had marked it. On hungry nights it pulled. The Commander learned to sleep through it, which Soana said was the most romantic thing anyone had ever done for her.''', requires=(S + "cost.guardian_paid", S + "cost.knot_bearer")),
         page_p('''The spirits came for their portion, and Soana stood between them and the Commander, and paid them in her own blood. She did not say it was for love. She said it was her wood and her debt, which is how Soana says it.''', requires=(called("soana"),)),
         page_p('''She kept the die in the bowl by her hearth, the one the Commander had left there, and rolled it when she could not decide something. It only ever came up one way, which was the lead in it, and she said that was the point: it saved her the trouble of pretending she had not already decided.''', requires=(S + "cost.die_in_her_bowl",)),
+        # Polish (Sol BEL): the returned Soana took the Commander back only after the accounting at her graves.
+        page_p('''She had made the Commander answer at her graves for how she died before she let {mf|him|her} back to her fire. Bringing her back had bought no welcome. The welcome came later, after dirty work by the water, in her own sharp voice.''', requires=(S + "returned", S + "accounting_invited")),
     ), declined=S + "declined",
     deal=[[S + "cost.blood_given"], [S + "cost.guardian_paid"], [S + "cost.knot_bearer"], [S + "cost.leash_held"]],
     call=call('''[Call in the spirits' portion] "Wintersun spirits, you took a portion. The rest is mine to give. Later."''',
@@ -348,7 +361,10 @@ partner("soana", "soana", "soana.committed", "soana.closed", "The Knot",
         (PILLAR_CHOICE, (PILLAR,), (), ())),
     # NM1 (Sol COX, R2-6): the late commit (resurrection or luck fallback) reaches her coda; a friend or a refusal on her
     # Trickster route does not (refused is set beside each of its closures), and a postponement stays out by declined.
-    page_forbids=(S + "friends", S + "refused"), page_commit_groups=[["soana.committed"], [S + "late_committed"]])
+    # Polish (Sol INT, audit r3): a Soana killed and never returned has no living coda; her return lifts each loss flag.
+    page_forbids=(S + "friends", S + "refused", "soana.dead", "soana.killed_by_camellia", "soana.forest_dead"),
+    page_forbid_overrides={f: S + "returned" for f in ("soana.dead", "soana.killed_by_camellia", "soana.forest_dead")},
+    page_commit_groups=[["soana.committed"], [S + "late_committed"]])
 
 AK = "aranka.trickster."
 partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", "The Second Verse",
@@ -356,13 +372,18 @@ partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", 
     (
         page_p('''She sang the second verse at the rift, or swore afterwards that she had, from two hundred miles away, loud enough for the Wound to learn the words. Nobody could prove otherwise. The crusade sang it back to her all that winter.''', requires=(called("aranka"),)),
         page_p('''The Commander had denied the thief's verse was {mf|his|hers}. Aranka sang it herself, then, in every tavern on the road, and named the thief in the last line, and the Commander had to sit at the back of each of those taverns and applaud. It took a year. She said it was a very short sentence for the crime.''', requires=(AK + "cost.denied",)),
-        page_p('''The posters the Commander had put up at every ford were still there. She had them framed.''', requires=(AK + "cost.announced",)),
+        page_p('''She kept the poster she had torn off the wall in Drezen, and had it framed, tear and all.''', requires=(AK + "cost.announced",)),
     ), declined=AK + "declined",
     deal=[[AK + "cost.credited"], [AK + "cost.announced"], [AK + "cost.denied"]],
     call=call('''[Call in the second verse] "Aranka! Second verse! Loud enough for the Wound to learn the words!"''',
         '''{n}Nothing answers but the fire. But you would swear, for the rest of your life, that under the roar someone was singing, off-key and with great emotion, and that the rift paused to listen.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Aranka: a verse unsung", "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you."))
+    ledger=("Aranka: a verse unsung", "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you."),
+    # Coordinator ruling 2026-10-02 (Aranka polish, item 3; R2-6): her late postwar yes reaches the coda, and the coda
+    # explicitly forbids her closed route, the Kenabres attack, an unrecovered sacrifice and an unrepaired parent failure.
+    page_commit_groups=[["aranka.extension_kept"], [AK + "late_committed"]],
+    page_forbids=("aranka.extension_closed", "aranka.kenabres_attacked", "sacrifice", "aranka.ran_failure"),
+    page_forbid_overrides={"sacrifice": "trickster.commander_back", "aranka.ran_failure": AK + "moral_repaired"})
 
 G = "gesmerha.trickster."
 partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work on the Bench",
@@ -609,8 +630,11 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
     page_commit_groups=[["nidalynn.committed"], [NI + "late_committed"]],   # Q9 (Sol INT): the late yes reaches her coda
     deal=[[NI + "cost.salt_eaten"]],
     call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',
-        '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}''',
-        (PLAIN_CHOICE, (), (), ())),
+        '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed.{/n}''',
+        ("[Listen. Very far off, over a city you cannot see, something answers.]", (), (), (NI + "goat.lie_kept",)),
+        # polish r3 (audit INT): she left over the wolves and said she would not eat at that fire again; nothing comes.
+        # (The only closure after the salt is the wolves story, so G5 holds: her own cost flag, never nidalynn.closed.)
+        ("[Listen. Nothing comes back over the snow.]", None, (NI + "goat.lie_kept",), ())),
     ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. Among the Windstep that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
 
 SH = "shamira.trickster."
@@ -870,21 +894,53 @@ def call_in_scenes(factory):
         # Offered on any deal her route produced, whether or not the romance committed (ledger 05 row 11: every debt is
         # called in once). The coda still needs the commit.
         any_groups = [sorted({k for g in part["deal"] for k in g})]
+        # Engine-q2 item 3: the entry and its narration need her route open too (callable_key); before, only the answers
+        # were guarded, so a closed, dead or departed partner's call-in still showed at the rift.
         out.append(factory(part["rel"] + ".lastcall.call", "Last orders", spec["entry"], [node],
-                           requires=(), forbids=(resolved(part["rel"]),), any_groups=any_groups))
-        # G5 (doc 04 §5.2): the framework reads other routes' committed and cost flags only, never a closed, death or return flag.
+                           requires=(callable_key(part["rel"]),), forbids=(resolved(part["rel"]),), any_groups=any_groups))
+        # G5 (doc 04 §5.2): the framework reads other routes' committed and cost flags only, never a closed, death or return
+        # flag directly. Her route's closure is read once, through callable_key's DerivedOpenRoutes guard (the same
+        # Rules.RouteOpen her own scenes obey), so a return lifts it exactly as it lifts her route.
+    return out
+
+
+def page_guard_key(rel):
+    """Engine-q2 item 3 (scope extension): her coda's route guard. Derived [[trickster.ever]] with DerivedOpenRoutes [rel]
+    (Rules.RouteOpen), so a closed courtship or an unreturned death or departure has no coda, whatever stale commitment key
+    (a late_committed latch) the page also reads, and her earned return reopens it."""
+    return rel + ".lastcall.route_open"
+
+
+def page_guards():
+    """{page_guard_key: (Derived groups, DerivedOpenRoutes)} for every partner coda (generated centrally, not per route)."""
+    return {page_guard_key(part["rel"]): ([["trickster.ever"]], [part["rel"]]) for part in PARTNERS}
+
+
+def call_guards():
+    """Engine-q2 item 3: {callable_key: (Derived groups, DerivedOpenRoutes, DerivedForbids)} for every call-in. A debt whose
+    route has closed (or whose partner died or left with no return) is no longer callable, so it no longer holds the last
+    joke: nothing at the rift can be said to her, and the debt goes unspoken with her."""
+    out = {}
+    for part in PARTNERS:
+        if part["call"]:
+            deal = sorted({k for g in part["deal"] for k in g})
+            out[callable_key(part["rel"])] = ([[k] for k in deal], [part["rel"]], [resolved(part["rel"])] + list(part["call_forbids"]))
     return out
 
 
 def open_debts():
-    """(deal flag, resolved flag) for every call-in: the last joke Forbids each deal flag until its call-in is resolved."""
-    return [(k, resolved(part["rel"])) for part in PARTNERS if part["call"] for g in part["deal"] for k in g]
+    """The keys the last joke Forbids: each partner's callable_key (a deal held, her route open, her call-in unresolved).
+    Before engine-q2 this was every deal flag lifted by its resolved flag, which stranded the joke when her call-in could
+    never be offered (her route closed, or she died or left with no return)."""
+    return [callable_key(part["rel"]) for part in PARTNERS if part["call"]]
 
 
 def pages():
     """Block B. Every page belongs to the framework relationship (lastcall), as do the call-ins: the routes' own suites keep
     judging their routes, and LastCallTests judges these. `Partner` names the route each page codas, for placement.
-    G5: a page reads its partner's committed, declined and cost flags, never her closed, death or return flags."""
+    G5: a page reads its partner's committed, declined and cost flags, never her closed, death or return flags.
+    Exception (coordinator ruling 2026-10-02, Aranka polish item 3): Aranka's page forbids her closed flag, the Kenabres
+    attack, sacrifice and the parent failure explicitly (page_forbids/page_forbid_overrides), and plays in Chapter 6 only."""
     out = []
     for part in PARTNERS:
         forbids = ((part["declined"],) if part["declined"] else ()) + part["page_forbids"]
@@ -899,10 +955,12 @@ def pages():
             extra["RequiresAnyGroups"] = [sorted({k for g in part["page_commit_groups"] for k in g}, key=lambda k: k != part["commit"])]
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
                 n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
-                requires=("trickster.ever", ACTIVE), forbids=forbids, last=99, **extra)
+                requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"])), forbids=forbids, last=99, **extra)
         else:
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
                 n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
-                requires=("trickster.ever", ACTIVE, part["commit"]), forbids=forbids, last=99, **extra)
+                requires=("trickster.ever", ACTIVE, page_guard_key(part["rel"]), part["commit"]), forbids=forbids, last=99, **extra)
+        if part["key"] == "aranka":   # coordinator ruling 2026-10-02: her coda belongs to the ending (R2-6)
+            page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))
     return out

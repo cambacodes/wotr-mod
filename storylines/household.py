@@ -21,7 +21,7 @@ ENTRY API (for the later pass; see table_entry, invitation, word_made_true)
   word_made_true(text, next=None, use="<id>", flags=())  a choice that spends one of the three uses (08 §10), with a debt.
 
 STANCE HOOKS (05 §2; none of the stance/enmity/attitude flags is set in this pass)
-  <rel>.harem.eligible            Derived, for every romance route (below).
+  <rel>.harem.eligible            Derived, for every romance route (below), and only while her route is open (open_routes).
   arueshalae.redeemed | arueshalae.corrupted   Derived (16 §3 / §8c item 1): her personality branch, for the pair rows
       (3a/13/9-11 good: Require redeemed AND Forbid corrupted; 3b/9-11 lover: Require corrupted). See ARUESHALAE_BRANCH.
   <rel>.harem.stance.joined | .tolerated, <rel>.harem.joined_late, <rel>.harem.enmity.<other>   reserved.
@@ -299,6 +299,14 @@ def derived(payload):
     return out
 
 
+def open_routes(payload):
+    """<rel>.harem.eligible -> [rel] (Story.DerivedOpenRoutes, engine E4b): eligibility also needs her route open. A woman whose
+    route is closed (her ClosedFlag: a refusal, a breakup, a parting) or blocked by one of her own UnavailableFlags (death,
+    dismissal, departure) leaves the household; a Trickster return in her UnavailableOverrides lifts the block, exactly as it
+    reopens her own scenes (Rules.Blocks). Read from each relationship's data, so new routes are covered without code here."""
+    return {eligible(rel): [rel] for rel in PARTNERS if rel in payload["Relationships"]}
+
+
 def _line(text, requires=(), forbids=(), any_groups=()):
     return dict(Text=text, Requires=list(requires), Forbids=list(forbids), AnyGroups=[list(g) for g in any_groups])
 
@@ -389,6 +397,11 @@ def integrate(payload):
         if have is not None and have != groups:
             raise ValueError("Conflicting household derived key: " + key)
         payload["Derived"][key] = groups
+    for key, rels in open_routes(payload).items():
+        have = payload.setdefault("DerivedOpenRoutes", {}).get(key)
+        if have is not None and have != rels:
+            raise ValueError("Conflicting household route guard: " + key)
+        payload["DerivedOpenRoutes"][key] = rels
     if "arueshalae" in payload["Relationships"]:
         etudes = payload.setdefault("Etudes", {})
         for key, guid in ARUESHALAE_ETUDES.items():
