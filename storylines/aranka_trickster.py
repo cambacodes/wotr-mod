@@ -58,6 +58,7 @@ FAILURE = "aranka.ran_failure"
 ROMANCE = "aranka.ran_romance"
 QUEST = "aranka.ran_quest_complete"
 GAVE_SONG = "aranka.gave_song"
+CONTEST_WON = "aranka.kenabres_contest_won"   # SeenCues DesnaAdept2/Cue_15 dd66b8ab: "you've outmatched me, I admit it!" (PP3)
 CROWNED = "fool_king.crowned"
 TABLET_TRUE = "fool_king.tablet_true"  # SeenCue FoolKing_Tavern/Cue_0038: the tablet's letters repeat his words
 KING_GONE = "fool_king.gone"
@@ -281,19 +282,23 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
     a("vandal", '''"You! Oh, you wonderful vandal."
 {n}She presses both hands to her cheeks, and then remembers she is angry and puts them back on the lute.{/n}
 "There is no rhyme for Thaberdine. I tried, you know. Afterwards. I sat up two nights. There wasn't one, until you, and now there is, and it's 'tambourine', and I will never get it out of my head as long as I live."''',
-      c('[Sing it] "Second verse. The good one."', "duet")),
+      c('[Sing it] "Second verse. The good one."', "duet", forbids=(CONTEST_WON,)),
+      c('[Sing it] "Second verse. The good one."', "duet_rival", requires=(CONTEST_WON,))),
     a("denied", '''"The Desnans, you said." {n}She does not smile.{/n} "I am the Desnans. Three camps and a ferryman pointed me at you, Commander, and the ferryman did an impression."
 "So. You never heard it. Sing it for me, then. The second verse. If you can't, I'll know you lied once. If you can, I'll know you lied twice."''',
-      c('[Sing it] "Second verse. The good one."', "duet")),
+      c('[Sing it] "Second verse. The good one."', "duet", forbids=(CONTEST_WON,)),
+      c('[Sing it] "Second verse. The good one."', "duet_rival", requires=(CONTEST_WON,))),
     a("mocking", '''{n}She sees you coming and lifts the lute off @SEAT@ to make room beside her.{/n}
 "You came back. Good! I've been trying to decide whether the banner should trip you once or twice. Twice is funnier, but you have to breathe somewhere."
 {n}She tries the phrase, stops, and shakes her head.{/n}
 "I have never sung Starward Gaze with words of yours in it. Tonight it gets a second verse, and you're going to make it up, here, out of the one where you lose: the banner, the trip, the demons laughing, all of it turned round. Then I'll take the harmony, and we'll see whose song it is."
 "Come on, join in! This time I'll catch you before the fall. In the song, at least."''',
-      c('[Sing it] "The banner verse, turned round. From the top."', "duet")),
+      c('[Sing it] "The banner verse, turned round. From the top."', "duet", forbids=(CONTEST_WON,)),
+      c('[Sing it] "The banner verse, turned round. From the top."', "duet_rival", requires=(CONTEST_WON,))),
     a("posters", '''"You put me on a poster before you put me in a letter." {n}She presses a torn corner of one into your palm: KNIGHT-COMMANDER'S COURT POET, and half of TONIGHT.{/n}
 "You billed a song, Commander, so now you will have to earn the billing. Starward Gaze came to us from the true servants of Desna. If you want your name near it, you'll add a verse to it yourself. Here. In front of all of them. And then I'm going to decide how badly you did it."''',
-      c('[Sing it] "A second verse. Mine."', "duet")),
+      c('[Sing it] "A second verse. Mine."', "duet", forbids=(CONTEST_WON,)),
+      c('[Sing it] "A second verse. Mine."', "duet_rival", requires=(CONTEST_WON,))),
     a("duet", '''"You owe me a duet for this. And an apology. Mostly the duet."
 {n}She gives you the first note. You miss it. Her eyebrows go up, and then she finds whatever note you did hit, lays the harmony under it, and walks you back up to the tune a step at a time.{/n}
 "There you are! Again. I shall make a singer of you yet."
@@ -309,6 +314,13 @@ counter("aranka.trickster.verse.duet", "Second verse, the good one", '"You wante
 {n}She tells the crowd both names anyway, hers twice and loud, yours once and into her sleeve.{/n}
 "I'm singing it in every camp between here and the river. Every night. I'll decide each morning whether to come back and tell you how it went."''',
       c('"I\'ll be here."', flags=(DUET, VAIN))),
+    # Audit pol3 (VOI): the bard who outsang her in the Count's parlour (Cue_15) is no pupil; she makes it a contest again.
+    a("duet_rival", '''"You owe me a duet for this. And an apology. Mostly the duet."
+{n}She looks at you properly, and you watch her place you: the Count's parlour, the bard who outsang her with the demons hardly cold on the carpet.{/n} "Oh, it's you! Then you take the tune, and don't you dare show off."
+{n}You take the tune. She shows off. She climbs over your line in the second verse, throws in a run nobody wrote, and dares you with her eyebrows to follow it. A sapper at the back beats time on his helmet; a porter with a sack complains that the Knight-Commander has found another way to block the road. On the last rhyme she gives you the note and takes the harmony a third above it, so that nobody can say afterwards whose note it was.{/n}
+"My name goes first every time it's sung. You had your victory in Kenabres. This one's mine."''',
+      c('[Take the harmony, not the credit] "Yours first. Mine after, quietly."', "signed"),
+      c('[Argue the billing] "Put mine first. It\'s my verse."', "billing")),
 ], requires=("trickster.ever", ANSWERED), forbids=(CLOSED, DUET), delay=72)
 
 

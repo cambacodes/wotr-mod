@@ -271,6 +271,20 @@ internal static class ArankaTricksterTests
             check(new[] { "vandal", "denied", "mocking", "posters" }.Count(pages.Contains) == 1, "Two duet openings play at once: " + variant);
         }
 
+        // Audit pol3 (VOI): the bard who won the Count's contest (DesnaAdept2/Cue_15) duets as a rival, never as a pupil.
+        foreach (var opening in new[] { (string?)null, P + "cost.denied", P + "cost.mocking_verse", P + "cost.announced" })
+        {
+            var w = Program.Copy(answered); w.Flags.Add("aranka.kenabres_contest_won");
+            if (opening != null) w.Flags.Add(opening);
+            var pages = new HashSet<string>();
+            var outs = Program.Walk(duet, w, (page, _) => pages.Add(page));
+            check(pages.Contains("duet_rival") && !pages.Contains("duet") && outs.Any(r => r.Has(P + "duet_sung")),
+                "The contest winner is taught to sing: " + (opening ?? "vandal"));
+        }
+        var plainPages = new HashSet<string>();
+        Program.Walk(duet, answered, (page, _) => plainPages.Add(page));
+        check(plainPages.Contains("duet") && !plainPages.Contains("duet_rival"), "The rivals' duet plays without the won contest.");
+
         // Trk_Aranka_Commit / Declined / Nerosyan, and the night after the yes.
         var ready = World(story, 5, "trickster.ever", P + "duet_sung", "aranka.extension_started", P + "answered");
         check(Rules.Available(story, encoreL, ready) && !Rules.Available(story, encore, ready), "Trk_Aranka_Commit: the encore is unavailable.");

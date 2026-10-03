@@ -356,7 +356,7 @@ partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", 
     (
         page_p('''She sang the second verse at the rift, or swore afterwards that she had, from two hundred miles away, loud enough for the Wound to learn the words. Nobody could prove otherwise. The crusade sang it back to her all that winter.''', requires=(called("aranka"),)),
         page_p('''The Commander had denied the thief's verse was {mf|his|hers}. Aranka sang it herself, then, in every tavern on the road, and named the thief in the last line, and the Commander had to sit at the back of each of those taverns and applaud. It took a year. She said it was a very short sentence for the crime.''', requires=(AK + "cost.denied",)),
-        page_p('''The posters the Commander had put up at every ford were still there. She had them framed.''', requires=(AK + "cost.announced",)),
+        page_p('''She kept the poster she had torn off the wall in Drezen, and had it framed, tear and all.''', requires=(AK + "cost.announced",)),
     ), declined=AK + "declined",
     deal=[[AK + "cost.credited"], [AK + "cost.announced"], [AK + "cost.denied"]],
     call=call('''[Call in the second verse] "Aranka! Second verse! Loud enough for the Wound to learn the words!"''',
