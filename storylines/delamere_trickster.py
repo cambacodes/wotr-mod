@@ -140,8 +140,8 @@ RELATIONSHIP = dict(
     Objective="Stay ahead of Delamere",
     Guidance=("On the Trickster path, ask Kyado at the Temple of Delamere what hangs over her sarcophagus, then go down "
               "to her with him. If he is dead, or later in the war, or if her remains were taken to Drezen, the horn can "
-              "still be sounded. If you never found her temple, a pilgrim may bring you the road to it in Chapter 5; the rest you "
-              "must walk yourself. After she wakes she finds you herself, a day or so apart; she does not come on command."),
+              "still be sounded. If you never found her temple, a pilgrim may bring you the road to it in Chapter 5: "
+              "leave the Drezen road at the crossroads below the city, find the temple on the map yourself, and go down to her stone. After she wakes she finds you herself, a day or so apart; she does not come on command."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[], FailureFlags=[],
     TricksterAccess={
