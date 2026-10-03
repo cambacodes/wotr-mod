@@ -591,7 +591,7 @@ visit(P + "woken.day_owed", "The day owed", [
     nar("roofs", '''{n}You take to the roofs, because she will not expect a stag on the roofs. She is waiting on the second one.{/n}
 {n}She does not shoot. She does not need to. She simply steps out from behind a chimney and puts out one foot, and your bad leg does what it always does now, and you go down on the frozen tiles with the whole of Drezen spread out below you, asleep and white with frost.{/n}''',
         c("Continue", "caught_again", requires=(RAN_FAR,)),
-        c("Continue", "caught_again_short", requires=(RAN_SHORT,))),
+        c("Continue", "caught_again_short", forbids=(RAN_FAR,))),
     dl("caught_again", '''{n}She kneels over you as she did on the night she woke, a knee pinning you to the tiles, the knife at your throat, and her breath is coming as hard as yours.{/n} "Easy, brother. You ran well." {n}Her voice is shaking, and it is not with cold.{/n} "Worse than the first time. You are getting slow. That is my doing."''',
         c('"Go on, then. Finish it."', "no_finish"),
         c('"Not yet. Hunt me again."', "again", requires=(SAID_AGAIN,)),
