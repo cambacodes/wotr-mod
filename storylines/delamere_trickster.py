@@ -6,9 +6,12 @@ Canon (blueprints.zip / enGB):
   should hunt it... Delamere tracked that stag for three days and three nights... she made its antlers into a bow and its
   hide into armor" (Kyado_main_dialogue/Cue_0039 0a935738); her rule of fifty-three souls to a village (Cue_0038 67995417);
   cities corrupt the soul (Cue_0034 91cf4db8). Kyado keeps Rathimus's scrolls and reads foreign scripts (Cue_0020 a97f6700).
-- Her own words (DelamereInTomb): the stag hunt "Three daysss we vied with each other in ssstealth and ssspeed... I did not
-  eat the meat, but inssstead I offered it up to Erasssstil" (Cue_0034); "I wasss known... Feared... Ressspected...
-  Loved..." (Cue_0032); undeath is "an abomination... A betrayal by Erassstil" (Cue_0040 50a96c40).
+- Her own words (DelamereInTomb): the white stag, the three-day hunt, the meat offered to Erastil, the antler bow and
+  hide breastplate, "Three daysss we vied with each other in ssstealth and ssspeed" (Cue_0042 20f0dfa4, key 72acddf8);
+  her priestess identity, hatred of cities, village protection and "I wasss known... Feared... Ressspected... Loved..."
+  (Cue_0039 ac70a123, key 5ca0f649); her refusal to be ordered about, "I am not your dog" (Cue_0032 7bf73785, key
+  9b82bfb5); undeath is "an abomination... A betrayal by Erassstil" (Cue_0040 50a96c40, key dbe025e2). These are her
+  Lich-era lines: characterization evidence only, never memories of a binding the living woman never had.
 - The tomb: "I guard the eternal sleep of Delamere. Cursed be any who dare to destroy me." (TombOfDelamere_BookEvent/
   Cue_0019 0120467b). The invisible archer: taking her relics from a forced tomb, the Commander is "pierced by twenty-five
   inches of sturdy wood" and hears a hunting horn in the distance (Cue_0052 d8bed82b); closing the lid, "the sound of a
@@ -68,6 +71,19 @@ OPENED_KNIFE_CRACK = "delamere.tomb_opened_knife_crack"   # PP10: Cue_0039 ce518
 OPENED_PRAYER = "delamere.tomb_opened_prayer"      # PP10: Cue_0034 cab33f23, the Kellid prayer; the seal crumbles, the lid slides open
 OPENED_DISPELLED = "delamere.tomb_opened_dispelled"   # PP10: Cue_0037 202dc8ba, the spells broken; the seal crumbles
 CURSED_BOW_HELD = "delamere.cursed_bow_held"       # InventoryItems CursedDelameresBowItem
+# Polish (Sol CAN/HOW): the brute-force opening (Answer_0023 "splits the seal with a single powerful strike" -> BookPage_0043)
+# and both native closings, each proof on its own that the seal is broken. Added beside the older witnesses, never renamed.
+OPENED_BRUTEFORCE = "delamere.tomb_opened_bruteforce"   # SeenCues Cue_0040 1c9182d5 "Inside the sarcophagus lie the remains of a female archer"
+CLOSED_FORCED = "delamere.tomb_closed_forced"           # SeenCues Cue_0054 15a598ea "As soon as the Commander heaves the lid back into place"
+CLOSE_PEACEFUL_SELECTED = "delamere.tomb_close_peaceful_selected"   # SelectedAnswers Answer_0046 932854d5 (touches the relics, closes the lid)
+CLOSE_FORCED_SELECTED = "delamere.tomb_close_forced_selected"       # SelectedAnswers Answer_0050 6a5d2bcd (leaves the relics, closes the lid)
+# Polish r4 (Sol INT): the Book locks itself. Answer_0060 (page 0028) and Answer_0059 (page 0043), "Close.", are shown only
+# after a relic disposition; the Book's own Conditions are NOT(either selected), and both switch the sarcophagus off. A living
+# waking in the crypt needs this lock, so the corpse Book can never play over the woman who got up out of it.
+BOOK_LOCKED_OPENED = "delamere.tomb_book_locked_opened"   # SelectedAnswers Answer_0060 8581caea
+BOOK_LOCKED_FORCED = "delamere.tomb_book_locked_forced"   # SelectedAnswers Answer_0059 173de7e4
+BOOK_LOCKED = "delamere.tomb_book_locked"                 # Derived: either lock
+MOVE_ORDERED = "delamere.remains_move_ordered"            # Derived: Cue_0057 / Cue_0053 (Answer_0045 / Answer_0049, "moved to Drezen")
 
 RETURNED = P + "returned"
 DECLINED = P + "declined"
@@ -85,6 +101,10 @@ SAID_AGAIN = P + "stag_said_again"
 SAID_MISSED = P + "stag_said_missed"
 SAID_FINISH = P + "stag_said_finish"
 LEG_HEALED = P + "leg_healed"                 # Q6 r2 (BEL): the Commander had a priest straighten the leg, ending the hunt
+LIVING_WAKE = P + "living_wake"               # polish: the call succeeded and she breathes (set on the roar's own choices)
+LIVING_WOKEN = P + "living_woken"             # polish: Derived, any history in which she has woken living (the tomb gate's When)
+HUNT_POSTPONED = P + "second_hunt_postponed"   # polish r4: the Commander reached the blind and let her run
+TEMPLE_DISCOVERED = P + "temple_discovered"   # polish: the pilgrim's road to her temple (Chapter 5, no prior contact)
 # The courtship (delamere_woods) sets these; the epilogues and reactions read them.
 SECOND_HUNT = P + "second_hunt_offered"
 STORYTELLER_SUPPLIES = "storyteller.supplies"   # PP10: SeenCues, the Storyteller's portal supplies (the bark's carrier)
@@ -99,7 +119,15 @@ DERIVED = {
     # 05 §2.5 voice note: a household is a village she can count (fifty-three, everyone known by name), never a city.
     "delamere.harem.voice.a_village_not_a_city": [[COMMITTED], [LATE_COMMITTED]],
     TOMB_OPENED: [[ERASTIL_ANSWERED], [OPENED_FORCED], [OPENED_PEACEFUL], [RELICS_TAKEN],   # relics are taken only from an open stone
-                  [OPENED_KNIFE], [OPENED_KNIFE_CRACK], [OPENED_PRAYER], [OPENED_DISPELLED]],   # PP10: the knife openings; a lid closed again stays a broken seal
+                  [OPENED_KNIFE], [OPENED_KNIFE_CRACK], [OPENED_PRAYER], [OPENED_DISPELLED],   # PP10: the knife openings; a lid closed again stays a broken seal
+                  [OPENED_BRUTEFORCE], [CLOSED_FORCED], [CLOSE_PEACEFUL_SELECTED], [CLOSE_FORCED_SELECTED],   # polish: brute force and the closings
+                  [BOOK_LOCKED_OPENED], [BOOK_LOCKED_FORCED]],   # polish r4: the Book locks only after an opened stone
+    BOOK_LOCKED: [[BOOK_LOCKED_OPENED], [BOOK_LOCKED_FORCED]],
+    # Polish r4 (BEL): the crusade has been told to carry her to Drezen; she wakes there (drezen.stag), not in the crypt.
+    MOVE_ORDERED: [[OPENED_PEACEFUL], [OPENED_FORCED]],
+    # Polish (Sol INT/BEL), prepared for the coordinator's E18 tomb gate: the native corpse book must not play once she lives.
+    # living_wake is set on the successful call itself; the third group recognises an older save's immediate refusal (grave).
+    LIVING_WOKEN: [[LIVING_WAKE], [RETURNED], [DECLINED, CLOSED, LIMP]],
 }
 BINDINGS = {
     "UnlockableFlags": {RELICS_TAKEN: "3de8e7db06d4b9043bddfa77888ecfa5"},     # GotDelamereLoot
@@ -111,17 +139,23 @@ BINDINGS = {
                  # "When I return to Golarion, I will buy some travel necessities", 19609f8b; shown while Chapter04 plays).
                  STORYTELLER_SUPPLIES: "459bf324a71c81c4ba5f3eead9ba42bb",
                  OPENED_KNIFE: "f0a9e958a349a3147b6e441d0ce21699", OPENED_KNIFE_CRACK: "ce518077ca8432b4583e0240bbd797f7",
-                 OPENED_PRAYER: "cab33f23f9c1f284eab13e33fbdc3df0", OPENED_DISPELLED: "202dc8ba3e8715840af76156384bea2e"},
+                 OPENED_PRAYER: "cab33f23f9c1f284eab13e33fbdc3df0", OPENED_DISPELLED: "202dc8ba3e8715840af76156384bea2e",
+                 OPENED_BRUTEFORCE: "1c9182d585e1d4d4c85c574695337ccb", CLOSED_FORCED: "15a598eac4625c84190a1574bc50597d"},
 }
+BINDINGS["SelectedAnswers"].update({CLOSE_PEACEFUL_SELECTED: "932854d52d8602d478c6b9932be94fd3",
+                                    CLOSE_FORCED_SELECTED: "6a5d2bcd0a6d09249bb3e62c2d1556c2",
+                                    BOOK_LOCKED_OPENED: "8581caea128a3d84a901be70e26e6146",
+                                    BOOK_LOCKED_FORCED: "173de7e4c8e237d409e3e08f1461b6fb"})
 
 RELATIONSHIP = dict(
     Title="The Stag's Hunt",
     Description=("Delamere the Blessed slept under her temple for centuries with an arrow on the string. I blew a horn "
                  "over her and ran. She caught me, and I still walk crooked from it. The hunt, she says, is not finished."),
     Objective="Stay ahead of Delamere",
-    Guidance=("On the Trickster path, ask Kyado at the Temple of Delamere what hangs over her sarcophagus, then go down "
-              "to her with him. If he is dead, or later in the war, or if her remains were taken to Drezen, the horn can "
-              "still be sounded. After she wakes she finds you herself, a day or so apart; she does not come on command."),
+    Guidance=("On the Trickster path, ask Kyado at the Temple of Delamere what hangs over her sarcophagus. Open her "
+              "sarcophagus yourself, deal with her relics and close the book on it, then go down to her with him. If he is dead, or later in the war, or if her remains were taken to Drezen, the horn can "
+              "still be sounded. If you never found her temple, a pilgrim may bring you the road to it in Chapter 5: "
+              "leave the Drezen road at the crossroads below the city, find the temple on the map yourself, open her stone, and come back to it with the horn. After she wakes she finds you herself, a day or so apart; she does not come on command."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[], FailureFlags=[],
     TricksterAccess={
@@ -238,9 +272,9 @@ PLACES = {
 
 # Chapter 5, when nobody knows where Kyado is: the same crypt, after the war has been through it.
 PLACES["late"] = dict(PLACES["alone"],
-    open=nar("start", '''{n}The war has been through the Temple of Delamere and gone. The doors stand open. Somebody has stabled horses in the nave and left again; somebody else has left an offering of three withered turnips on the altar, which can only have been one person.{/n}''',
+    open=nar("start", '''{n}You come up to the Temple of Delamere with a lantern and the old huntress's name in your head. The nave is cold. The roads that once brought pilgrims here have been bad for years, and the war is never more than a day's ride away. Beyond the nave, the cellar stair goes down into the dark.{/n}''',
         c("Continue", "stair")),
-    stair='''{n}You go down the crypt stair alone, with a lantern. Kyado's broom leans at the bottom where he left it; dust has had a long time to settle on the handle. The carved stag on the far wall jumps in your light and settles.{/n}''')
+    stair='''{n}You go down the crypt stair alone, with a lantern. The carved stag on the far wall jumps in your light and settles.{/n}''')
 
 
 def waking(place):
@@ -261,7 +295,7 @@ def waking(place):
                          c("Continue", "taken_cursed", requires=(CURSED_BOW_HELD,), forbids=(BOW_RETURNED, BOW_HELD)),
                          c("Continue", "taken_gone", forbids=(BOW_RETURNED, BOW_HELD, CURSED_BOW_HELD))))
     crypt_nodes = [
-        nar("body_open", '''{n}You have looked on her once before. You set your shoulder to the lid until the whole of her lies open to the light, as you last saw her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head the horn hangs on its iron peg, exactly where it has hung since the Kellids closed her in.{/n}''',
+        nar("body_open", '''{n}The seal lies broken, as you left it. You set your shoulder to the lid and push until the stone grinds aside and the light falls in on her: a tall woman gone to leather and bone, a dark mane of hair spread on the stone, old grave-leathers laced over her ribs. Above her head, on its iron peg, hangs the horn.{/n}''',
             c("Continue", "in_hands", forbids=(RELICS_TAKEN,)),
             c("Continue", "given_back", requires=(RELICS_TAKEN, BOW_RETURNED)),
             c("Continue", "taken_held", requires=(RELICS_TAKEN, BOW_HELD), forbids=(BOW_RETURNED,)),
@@ -312,8 +346,9 @@ def waking(place):
         nar("roar", '''{n}You fill your chest and give it everything: three short barks from the belly, and then the long one, broken in the middle and rising, the sound a stag makes in the autumn hills when it wants the whole valley to know it is ready to fight anything that comes.{/n}
 {n}It hits the walls and does not stop there. It goes up and out, and somewhere far off in the dark, over woods that have not heard that call in a very long time, something answers.{/n}
 {n}Then the silence. Then, very close, a breath.{/n}''',
-            *((c("Continue", "rise", requires=(TOMB_OPENED,)), c("Continue", "rise_sealed", forbids=(TOMB_OPENED,))) if crypt
-              else (c("Continue", "rise"),))),
+            *((c("Continue", "rise", requires=(TOMB_OPENED,), flags=(LIVING_WAKE,)),
+               c("Continue", "rise_sealed", forbids=(TOMB_OPENED,), flags=(LIVING_WAKE,))) if crypt
+              else (c("Continue", "rise", flags=(LIVING_WAKE, WOKE_DREZEN)),))),
         nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
 {n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
             c("Continue", "draw_antler", forbids=(YEW_BOW,)),
@@ -396,7 +431,7 @@ def waking(place):
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_KYADO))),
         "alone": dl("home_alone", '''"This is my temple. It has been swept, after a fashion, by somebody who is not here." {n}She looks at the broom at the foot of the stair for a while, and does not ask.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_ALONE))),
-        "late": dl("home_late", '''"This is my temple. Horses in it." {n}She sniffs the air coming down the stair, and her lip curls.{/n} "Horses in my nave, and turnips on my altar. What has become of the world while I slept?" {n}She stands, and sways, and stands again.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
+        "late": dl("home_late", '''"This is my temple." {n}She sniffs the cold air coming down the stair: no smoke, no bread, no dogs.{/n} "Nobody has kept it. Somebody will." {n}She stands, and sways, and stands again.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_ALONE))),
         "drezen": dl("home_drezen", '''"I woke in a city." {n}She says it the way you would say you woke in a latrine.{/n} "Where is my temple? No. Do not tell me; I will find it. It is in the woods, where it belongs, and I am going there tonight, before this place gets into my lungs." {n}She stands.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_DREZEN))),
@@ -408,22 +443,40 @@ def waking(place):
 
 
 GATE_CRYPT = dict(RequiresAnyGroups=[[TOMB_VISITED, INITIATED]])
+CRYPT_FORBIDS = (RETURNED, DECLINED, REMAINS, MOVE_ORDERED)   # polish r4: an order to carry her to Drezen leaves the crypt to the chapel
 
 temple(P + "crypt.stag", "The stag's call", '"Bring your lamp, Kyado. We\'re going down to Delamere."', waking("kyado"),
-       requires=("trickster", "trickster.ever"), forbids=(RETURNED, DECLINED, REMAINS),
+       requires=("trickster", "trickster.ever", BOOK_LOCKED), forbids=CRYPT_FORBIDS,
        TricksterDevice=True, TricksterState="crypt", **GATE_CRYPT)
 
 visit(P + "crypt.stag_alone", "The stag's call", waking("alone"),
-      requires=("trickster", "trickster.ever", KYADO_DEAD), forbids=(RETURNED, DECLINED, REMAINS), chapters=(3, 5),
+      requires=("trickster", "trickster.ever", KYADO_DEAD, BOOK_LOCKED), forbids=CRYPT_FORBIDS, chapters=(3, 5),
       TricksterDevice=True, TricksterState="crypt", RequiresAnyGroups=[[TOMB_VISITED, CRYPT_KNOWN]])
 
 visit(P + "crypt.stag_late", "The stag's call", waking("late"),
-      requires=("trickster", "trickster.ever"), forbids=(RETURNED, DECLINED, REMAINS, KYADO_DEAD),
+      requires=("trickster", "trickster.ever", BOOK_LOCKED), forbids=CRYPT_FORBIDS + (KYADO_DEAD,),
       chapters=(5, 5), TricksterDevice=True, TricksterState="crypt", RequiresAnyGroups=[[TOMB_VISITED, CRYPT_KNOWN]])
 
 visit(P + "drezen.stag", "The stag's call", waking("drezen"),
       requires=("trickster", "trickster.ever", REMAINS), forbids=(RETURNED, DECLINED), chapters=(3, 5),
       TricksterDevice=True, TricksterState="drezen")
+
+
+# --- The pilgrim's road (polish, Sol INT/HOW): a Commander who never found her temple -------------------------------------
+# Chapter 5, no contact with her temple, her prior or her remains. Authored: the pilgrim, his father's pilgrimage and the
+# valley's offering custom. He gives a reason and a road, nothing more: no lore, no key, no waking. The waking still needs
+# the Commander at her stone (the native tomb book, delamere.tomb_visited), the gate stag_late already reads.
+visit(P + "discovery.pilgrim", "The pilgrim's road", [
+    n("start", "Narrator", '''{n}An old man is waiting at the edge of your fire when the camp settles: Sarkorian by his speech, one of the families from the camps outside Drezen, with a stag beaten out of tin on the clasp of his cloak. He has come to ask the crusade for one thing before he is too old to ask it: an escort to the Temple of Delamere.{/n}
+"The Blessed's grave, Commander. Under the temple, down the cellar stair. My father took me there when I was small, before the rift. Every family in the valley left her the first of its hunting." {n}He covers the clasp with two fingers.{/n} "Nobody goes now. The roads went bad, and then the temple went bad; there were people in it who were not praying to Erastil. But she is still down there. A huntress like that does not leave."''',
+      c('"Tell my scouts the road."', "road"),
+      c('"Feed him. I will hear the rest another night."', abort=True)),
+    n("road", "Narrator", '''{n}He gives your scout the turnings one by one: leave the Drezen road at the crossroads below the city, then the ford, the split oak, the hill with the cairn on it. He makes the man say each one back to him. Then he sits down by the fire as if his legs have finished their part.{/n}
+"You will want to know who is standing behind the doors before you knock," {n}he says.{/n} "I never did. I was a boy. Boys think the gods keep the doors."''',
+      c("[Have the scout write the turnings down. You will ride out and find the place yourself.]", flags=(TEMPLE_DISCOVERED,)),
+      c('"Not now. Keep him fed."', abort=True)),
+], requires=("trickster", "trickster.ever"),
+    forbids=(CLOSED, RETURNED, DECLINED, REMAINS, TOMB_VISITED, CRYPT_KNOWN, KYADO_DEAD, TEMPLE_DISCOVERED), chapters=(5, 5))
 
 
 # --- Reactions (Kyado, her prior; Ulbrig, a Kellid; Woljif, who once prayed to her in her temple, Cue_0146) ------------
@@ -487,16 +540,23 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}The families she drove out of Drezen's camps built their villages in the old Sarkorian clearings below her temple, the ones who lived to build them. They feared her, as her own people had feared her. They also never starved, and not one of their villages burned in the demon raids that followed the war. Their grandchildren still argue over which of those things matters more.{/n}''', requires=(VILLAGE_FORCED,)),
     p('''{n}Drezen kept its refugees behind its walls, as the Commander had wanted. She never forgave the city for it, and she never forgave the Commander, and she came to the city anyway, every market day, and sold her meat at the gate at a price that was an insult to everyone who paid it.{/n}''', requires=(VILLAGE_REFUSED,)),
     p('''{n}Every barracks in Drezen had an elder after the war, chosen by her, and every elder knew the names of fifty-three people and no more. The city clerks thought it was a joke of the Commander's. It was, and it worked, and she never once admitted either.{/n}''', requires=(VILLAGE_CLANS,)),
-    p('''{n}Kyado stayed on as prior of her temple, and swept, and was told every day that he swept badly, and grew old and grey there in the end, as he had once said he hoped to. When he died she buried him herself, under the stag carved on the crypt wall, and she did not let anyone else touch the spade.{/n}''', requires=(KYADO_SPOKEN,)),
+    p('''{n}Kyado stayed on as prior of her temple, and swept, and was told every day that he swept badly, and grew old and grey there in the end, as he had once said he hoped to. When he died she buried him herself, under the stag carved on the crypt wall, and she did not let anyone else touch the spade.{/n}''', requires=(KYADO_SPOKEN,), forbids=(KYADO_DEAD,)),
     p('''{n}Drezen never forgot the morning its Commander stood in the market and named her. Pilgrims came to her woods for the rest of her second life, and she hated every one of them, and fed every one of them, and sent them home with a hare and a scolding.{/n}''', requires=(PROCLAIMED,)),
     p('''{n}Drezen never learned who the tall Kellid woman at the market was. The minstrels went on singing her wrong. She preferred it.{/n}''', requires=(KEPT_QUIET,)),
     p('''{n}The names on the crypt wall reached nine hundred before she was done. The last she cut was a farm boy's, three valleys over from her temple; she walked there the first spring after the war to ask it, and found an old woman who still remembered him, and carried the name home.{/n}''', requires=(NAMES,)),
     p('''{n}The crusade's provost flogged three men for a doe in fawn in the spring of the war. It was the only time the crusade's law and hers agreed about anything, and she reminded the Commander of it at every quarrel after.{/n}''', requires=(POACHERS_PROVOST,)),
-    p('''{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,)),
+    p('''{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,),
+      any_groups=((VILLAGE_GIVEN, VILLAGE_FORCED),)),
+    # Polish r4 (Sol BEL): no village was founded; the three dug at Drezen's camps instead.
+    p('''{n}Three Mendevian veterans stayed on in Drezen after the war, in the camp by the river whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,),
+      forbids=(VILLAGE_GIVEN, VILLAGE_FORCED)),
     p('''{n}The soldiers' story of Erastil's own doe outlived the crusade. Hunters in Mendev still let a doe in fawn pass, and some of them still look over their shoulders when they do it. She never corrected the story. She said it was the most useful lie ever told in her lord's name, and that she would answer to him for it herself, since the jester would only make him laugh.{/n}''', requires=(POACHERS_TRICKED,)),
     # PP10: the answer to her bark from the Abyss.
     p('''{n}For the rest of her second life she kept a strip of birch bark in her quiver, behind the arrows, with a few words cut into the back of it by a knife held badly somewhere in the Abyss: "Still counting. Both legs, so far." She never let it near a fire, though she had said herself that a letter should be something you can burn.{/n}''', requires=(BARK_ANSWERED,)),
-    p('''{n}Kyado lived in the temple's stable for a year and said the prior's prayers from the doorway, as she had sentenced him to. On the first day of the second year she carried his bedroll back inside herself, and said nothing about it, then or ever.{/n}''', requires=(KYADO_JUDGED,)),
+    p('''{n}Kyado lived in the temple's stable for a year and said the prior's prayers from the doorway, as she had sentenced him to. On the first day of the second year she carried his bedroll back inside herself, and said nothing about it, then or ever.{/n}''', requires=(KYADO_JUDGED,), forbids=(KYADO_DEAD,)),
+    # Authored: an earlier judgment cannot keep Kyado alive after a native death.
+    p('''{n}Kyado was dead. Delamere kept his broom by the temple door. When pilgrims asked who had swept there before her, she gave his name, and told them to wipe their boots.{/n}''', requires=(KYADO_DEAD,),
+      any_groups=((KYADO_SPOKEN, KYADO_JUDGED),)),
 )
 
 epilogue("caught", '''{n}Delamere the Blessed hunted the woods below her temple for years after the war, and the Worldwound's edge beyond them, and the demons that crossed into her woods learned what the marauders of old Sarkoris had learned before them.{/n}
@@ -504,9 +564,12 @@ epilogue("caught", '''{n}Delamere the Blessed hunted the woods below her temple 
          requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}At the first frost after Threshold she came for her day in the middle of the Commander's own victory feast, through a window, and took them out over the rooftops in front of half the crusade. Nobody at that table ever forgot it.{/n}''', requires=(FIRST_FROST,)),))
 
-epilogue("late", '''{n}The war ended before she could run her second hunt, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and dropped the meat on the table in front of the Commander's guests.{/n}
+epilogue("late", '''{n}The war ended before the second hunt was run to its end, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and dropped the meat on the table in front of the Commander's guests.{/n}
 "My woods," she said. "Tonight. I will not make it easy." {n}She did not. The Commander caught her all the same, a little before dawn, in a blind below her temple where the embers were still warm, and she let herself be caught, and after that nobody asked the Commander where they went at the first frost every year.{/n}''',
-         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), **SURVIVED, paragraphs=(
+             # Polish r4 (Sol BEL): the Commander who reached her blind and let her run.
+             p('''{n}She had stood in that blind once already, in the war, with the embers between them, and been told to run. "Another new moon," she had said. It came after Threshold, and she ran faster, as she had promised, and it did her no good at all.{/n}''', requires=(HUNT_POSTPONED,)),
+         ) + EPILOGUE_PARAGRAPHS)
 
 epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. Delamere heard it at her temple from a Mendevian runner, and sent him away with a hare for his trouble, and went down into the crypt alone.{/n}
 {n}She did not weep; she had used that up. At the first frost she took the old horn down from its peg and carried it up to the ridge above Drezen, where she had once made a fire and waited for a stag with a limp, and she sat there until dawn with the horn across her knees, and did not blow it. The hunters say she goes up every year. They say the day she was owed is the only debt she ever forgave.{/n}''',
@@ -515,20 +578,43 @@ epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. 
 
 epilogue("apart", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law. The villages near her feared her and sent her their disputes, and she judged them as she had judged them in old Sarkoris, hard and without appeal.{/n}
 {n}The Commander went on walking crooked. She never came to claim the day she was owed. The hunters say she keeps it anyway, the way you keep an arrow you have not decided where to put.{/n}''',
-         requires=(RETURNED, CLOSED), forbids=(COMMITTED, LEG_HEALED), paragraphs=EPILOGUE_PARAGRAPHS + (
+         requires=(RETURNED, CLOSED), forbids=(COMMITTED, LEG_HEALED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied.{/n}''', requires=(LIAR,)),
              p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
 
-epilogue("never", '''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}
-{n}The Commander walked crooked for the rest of their life, and never told anyone why.{/n}''',
-         requires=(DECLINED, CLOSED), forbids=(RETURNED,))
+# Authored: the successful call records Drezen before refusal; both refusal pages keep that location.
+REFUSAL_PARAGRAPHS = (
+    p('''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}''', forbids=(WOKE_DREZEN,)),
+    p('''{n}The woman who woke in Drezen left the city for the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}''', requires=(WOKE_DREZEN,)),
+)
+
+epilogue("never", "", requires=(DECLINED, CLOSED), forbids=(RETURNED, "sacrifice"), **SURVIVED,
+         paragraphs=REFUSAL_PARAGRAPHS + (
+             p('''{n}The Commander walked crooked for the rest of their life, and never told anyone why.{/n}'''),))
 
 epilogue("healed", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law, and the villages near her feared her and brought her their quarrels. The Commander walked straight for the rest of a long life, on a leg a chaplain had sung whole in a single evening.{/n}
 {n}She never came to the Commander's window at the first frost. The one time they met again, at a market in the lower town, she looked at the Commander's legs, and nodded once, as a hunter nods to a beast that got away clean, and went on with her business.{/n}''',
-         requires=(LEG_HEALED,), forbids=(COMMITTED,))
+         requires=(LEG_HEALED,), forbids=(COMMITTED, "sacrifice"), **SURVIVED)
 
 epilogue("unfinished", '''{n}Delamere the Blessed kept to the woods below her temple after the war. Now and then, on a cold night, the sentries on Drezen's wall heard a stag roar in the hills, far too close to the city, and in the morning there were tracks under the Commander's window that no stag had made.{/n}''',
-         requires=(RETURNED,), forbids=(COMMITTED, CLOSED, LATE_COMMITTED), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(RETURNED,), forbids=(COMMITTED, CLOSED, LATE_COMMITTED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS)
+
+# Polish r4 (Sol COX/INT, Binding context (3)): the Commander died at the Threshold and did not come back. No living-Commander
+# page plays; these three keep what she earned (her second life, her law, her woods) and close the Commander's side.
+epilogue("apart_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law. The villages near her feared her and sent her their disputes, and she judged them as she had judged them in old Sarkoris, hard and without appeal.{/n}
+{n}The news from the Threshold reached her late, with a pedlar. She heard him out, and asked whether they had found the body, and when he said no she nodded, as if that settled a point of law. She never went up to the ridge above Drezen. The hunters say the day she was owed died with the stag that owed it, and that she did not grieve a debt she had already written off.{/n}''',
+         requires=("sacrifice", RETURNED, CLOSED), forbids=(COMMITTED, "trickster.commander_back"), paragraphs=EPILOGUE_PARAGRAPHS + (
+             p('''{n}"It walked straight to its death," she said once, of the Commander, to nobody in particular. "Better than limping to it, the priests would say. I would have taken the limp."{/n}''', requires=(LEG_HEALED,)),
+             p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied, and death did not change her mind.{/n}''', requires=(LIAR,)),
+             p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
+
+epilogue("never_sacrifice", "", requires=("sacrifice", DECLINED, CLOSED), forbids=(RETURNED, "trickster.commander_back"),
+         paragraphs=REFUSAL_PARAGRAPHS + (
+             p('''{n}The Commander did not come back from the Threshold, and took the limp and its reason down with them.{/n}'''),))
+
+epilogue("unfinished_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war. The Commander did not come back from the Threshold. On the first cold night after the news, the sentries on Drezen's wall heard a stag roar in the hills, once, far too close to the city, and in the morning there were tracks under the Commander's empty window, going round and round, and then going away. They did not come again.{/n}''',
+         requires=("sacrifice", RETURNED), forbids=(COMMITTED, CLOSED, LATE_COMMITTED, "trickster.commander_back"),
+         paragraphs=EPILOGUE_PARAGRAPHS)
 
 
 def integrate(payload):
@@ -559,4 +645,7 @@ def integrate(payload):
         if have is not None and have != [list(g) for g in groups]:
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+    # A closed hunt keeps its history, but grants no late commitment or household presence.
+    for key in (LATE_COMMITTED, "delamere.harem.eligible", "delamere.harem.voice.a_village_not_a_city"):
+        payload.setdefault("DerivedForbids", {})[key] = [CLOSED]
 
