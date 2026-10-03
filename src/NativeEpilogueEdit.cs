@@ -34,12 +34,17 @@ namespace Tirabade
             // E14d extension: the reviewed continuation (Strategy First), or null for none. On a book page the continued cue plays
             // right after the original (DialogController.PlayBasicCue); a replacement never continues, so it hides that too.
             public readonly string[]? Continue;
+            // E14d extension (Cue_0461): the continuation the parent mod sets at load (RanRomance SlideArue: Aranka's slide), also
+            // accepted (Strategy First); a replacement of such a cue keeps whatever continuation the cue has, so the parent's
+            // slide still follows it. 252ccf6: refusing that continuation degraded the relationship in game.
+            public readonly string[]? ParentContinue;
             // E14i: a cue of a common dialog: Parent lists it in its Continue (Strategy First), Dialog's FirstCue holds Parent.
             // Page and Sequence are then empty.
             public readonly string? Parent, Dialog;
             internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true, string[]? continueTo = null,
-                string? parent = null, string? dialog = null)
+                string? parent = null, string? dialog = null, string[]? parentContinue = null)
             {
+                ParentContinue = parentContinue;
                 Page = page; Sequence = sequence; Key = key; Image = image; DegradeOnRefusal = degradeOnRefusal; Continue = continueTo;
                 Parent = parent; Dialog = dialog;
             }
@@ -56,7 +61,10 @@ namespace Tirabade
             ["86bf0569a9029ae4b8c9d300a41e5739"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "0dfe0435-8149-466d-bf0c-88d648651c3a"), // Wenduag Cue_0409
             ["36a07840d25540eeac6b1c6631196bcc"] = new Evidence("503164ff04ac64543ba42561ea9f970f", Companions, "af56e46e-7e82-4e22-9951-8ddc37dd015f",
                 degradeOnRefusal: false), // Camellia Cue_38_master (warning-only, with the other Camellia slides below)
-            ["78ae1bdc3b0824b4ca2ed618782f1faa"] = new Evidence("e83fff8e997db8e439bf12e09225696a", Companions, "411ef2f1-5168-455f-99b0-ca33960678c5"), // Arueshalae Cue_0461
+            // Arueshalae Cue_0461 (the dream world): RanRomance's SlideArue sets its Continue to Aranka's slide 959237a3 (aranka-SlideArue.cs),
+            // which the cue keeps under a replacement. Warning-only.
+            ["78ae1bdc3b0824b4ca2ed618782f1faa"] = new Evidence("e83fff8e997db8e439bf12e09225696a", Companions, "411ef2f1-5168-455f-99b0-ca33960678c5",
+                degradeOnRefusal: false, parentContinue: new[] { "959237a34dfe436eb8f088b4be259daa" }),
             ["f76713034f4087a4f80495971c47ca7b"] = new Evidence("e83fff8e997db8e439bf12e09225696a", Companions, "fa1468ba-9679-4805-9dd4-c71997aa4e7f"), // Arueshalae Cue_0462 (NM1)
             // Tirabade BookPage_0307 Cue_0311 (IrabethDead + AneviaGone Playing): "No one ever saw her again." Its OnShow swaps
             // the pair picture for f96ad5fa, as the other departure cue (Cue_0310) does. The parent never names the cue, its
@@ -202,9 +210,11 @@ namespace Tirabade
             bool onShowReviewed = evidence.Image == null ? onShow?.Length == 0
                 : onShow?.Length == 1 && ImageOf(onShow[0]) == evidence.Image;
             var continued = cue.Continue?.Cues;
-            bool continueReviewed = evidence.Continue == null ? continued?.Count == 0
+            bool continueReviewed = (evidence.Continue == null ? continued?.Count == 0
                 : continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
-                    && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.Continue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
+                    && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.Continue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id))))
+                || evidence.ParentContinue != null && continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
+                    && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.ParentContinue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
             if (cue.ShowOnce || cue.ShowOnceCurrentDialog || cue.Conditions == null || cue.ComponentsArray.Length != 0
                 || !onShowReviewed || cue.OnStop?.Actions?.Length != 0 || !continueReviewed || cue.Answers?.Count != 0)
                 return "cue behavior differs from the reviewed policy";
@@ -228,7 +238,10 @@ namespace Tirabade
                 ? new ActionList { Actions = original.OnShow.Actions.ToArray() }
                 : new ActionList { Actions = Array.Empty<GameAction>() };
             replacement.OnStop = new ActionList { Actions = Array.Empty<GameAction>() };
-            replacement.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = new List<BlueprintCueBaseReference>() };
+            // A cue the parent mod continues (ParentContinue) keeps its continuation under the replacement; any other never continues.
+            replacement.Continue = Reviewed.TryGetValue(cueId, out var reviewed) && reviewed.ParentContinue != null && original.Continue?.Cues != null
+                ? new Kingmaker.DialogSystem.CueSelection { Cues = original.Continue.Cues.ToList(), Strategy = original.Continue.Strategy }
+                : new Kingmaker.DialogSystem.CueSelection { Cues = new List<BlueprintCueBaseReference>() };
             replacement.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = new Condition[] {
                 new Applies { Original = original.Conditions, ReplacementApplies = replacementApplies } } };
             return new Plan { CueId = cueId, Spec = spec, Variant = variant, Original = original, Page = page, Replacement = replacement,

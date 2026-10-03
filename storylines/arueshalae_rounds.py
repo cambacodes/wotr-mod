@@ -329,11 +329,20 @@ SCENES.append(scene(WANDER, "", "ArueshalaeEpilogue", 6, "", [
     # E14d delivery (engine queue item 5): the live predicate also reads these, so the wander page never plays for a closed or
     # fallen Arueshalae, or after a sacrifice the Commander did not come back from (dead / dismissed: the scene's own forbids).
     forbids=(CLOSED, "arueshalae.corrupted", "sacrifice"), ForbidOverrides={"sacrifice": "trickster.commander_back"}))
-# Harness 2026-10-02: the Cue_0461 (78ae1bdc) dream-world edit failed the runtime cue-policy contract and degraded the
-# whole relationship in game, so it is withdrawn; only the Cue_0462 wander page is reconciled (known issue: dream page).
+# Harness 2026-10-02: the Cue_0461 (78ae1bdc) dream-world edit failed the runtime cue-policy contract (RanRomance's SlideArue
+# sets its Continue to Aranka's slide) and degraded the whole relationship in game. Engine queue item 6 restores it: the
+# reviewed evidence accepts the parent's continuation and the replacement keeps it (Aranka's slide still follows), and the
+# edit is warning-only (a refusal keeps the native dream page; nothing degrades).
+DREAMS = T + "epilogue.native_dreams"
+SCENES.append(scene(DREAMS, "", "ArueshalaeEpilogue", 6, "", [
+    nar("page", '''{n}She still went into the dream world, but less each year. The one she would have looked for there was alive, and snored, and stole the blankets, and she found she preferred that to any dream.{/n}''', c())],
+    requires=("trickster.ever", COMMITTED, "trickster.commander_back"), last=99, Relationship="arueshalae",
+    forbids=(CLOSED, "arueshalae.corrupted")))
 NATIVE_EPILOGUE_EDITS = {
     "f76713034f4087a4f80495971c47ca7b": dict(Page=PAGE, Sequence=COMPANIONS, Key="fa1468ba-9679-4805-9dd4-c71997aa4e7f",
                                              Replacement=WANDER, When=[[COMMITTED, "trickster.ever"]]),
+    "78ae1bdc3b0824b4ca2ed618782f1faa": dict(Page=PAGE, Sequence=COMPANIONS, Key="411ef2f1-5168-455f-99b0-ca33960678c5",
+                                             Replacement=DREAMS, When=[[COMMITTED, "trickster.ever", "trickster.commander_back"]]),
 }
 
 

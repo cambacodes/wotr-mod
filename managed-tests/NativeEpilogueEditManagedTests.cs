@@ -79,9 +79,9 @@ internal static class NativeEpilogueEditManagedTests
             check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
-                && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null)),
+                && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa")),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
-            + "lines are warning-only).");
+            + "lines and Arueshalae's Cue_0461 are warning-only).");
         // Attach on the Wenduag cue with fixture objects shaped like the archive.
         const string cueId = "86bf0569a9029ae4b8c9d300a41e5739";
         var evidence = NativeEpilogueEdit.Reviewed[cueId];
@@ -276,6 +276,50 @@ internal static class NativeEpilogueEditManagedTests
                 "Tirabade slide, " + row.What + ": wrong picture action [" + string.Join(", ", images) + "]");
         }
         Console.WriteLine("PASS: E14d Tirabade slides (Cue_0310, Cue_0311): native and RRT cues together, one per state, with the right picture.");
+    }
+
+    // Engine queue item 6: Arueshalae's Cue_0461 (the dream world) as the game has it after RanRomance loads: SlideArue sets its
+    // Continue to Aranka's slide 959237a3 (aranka-SlideArue.cs). 252ccf6 refused that shape and degraded the relationship; the
+    // evidence now accepts it, the replacement keeps that continuation, and any other continuation is refused warning-only.
+    public static void RunDreamPage(Story story, Dictionary<string, JObject> native, Func<string, BlueprintGuid> id, Action<bool, string> check)
+    {
+        const string Cue0461 = "78ae1bdc3b0824b4ca2ed618782f1faa", Aranka = "959237a34dfe436eb8f088b4be259daa";
+        if (!story.NativeEpilogueEdits.TryGetValue(Cue0461, out var spec)) { check(false, "Arueshalae's Cue_0461 edit is not shipped."); return; }
+        var evidence = NativeEpilogueEdit.Reviewed[Cue0461];
+        check(!evidence.DegradeOnRefusal && evidence.ParentContinue?.SequenceEqual(new[] { Aranka }) == true, "Cue_0461 evidence is not warning-only with the parent's continuation.");
+        string[] Refs(JObject data, string field) => ((JArray)data[field]!).Select(v => ((string)v!).Replace("!bp_", "")).ToArray();
+        BlueprintCue Shaped(params string[] continued)
+        {
+            var cue = new BlueprintCue { AssetGuid = BlueprintGuid.Parse(Cue0461), name = "DreamFixture_cue" };
+            cue.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+            LoadArchiveShape(cue, native[Cue0461], check);
+            cue.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = continued.Select(Ref).ToList(), Strategy = Kingmaker.DialogSystem.Strategy.First };
+            return cue;
+        }
+        var page = new BlueprintBookPage { AssetGuid = BlueprintGuid.Parse(evidence.Page), name = "DreamFixture_page" };
+        page.Cues.AddRange(Refs(native[evidence.Page], "Cues").Select(Ref));
+        var sequence = new BlueprintCueSequence { AssetGuid = BlueprintGuid.Parse(evidence.Sequence), name = "DreamFixture_seq" };
+        sequence.Cues.AddRange(Refs(native[evidence.Sequence], "Cues").Select(Ref));
+        foreach (var (what, continued, accepted) in new (string, string[], bool)[]
+        {
+            ("with the parent's slide (RanRomance loaded)", new[] { Aranka }, true),
+            ("bare archive (no parent continuation)", Array.Empty<string>(), true),
+            ("another continuation (drift)", new[] { "0123456789abcdef0123456789abcdef" }, false),
+        })
+        {
+            var cue = Shaped(continued);
+            SimpleBlueprint? Resolve(string g) => g == Cue0461 ? cue : g == evidence.Page ? page : g == evidence.Sequence ? (SimpleBlueprint)sequence : null;
+            var refusal = NativeEpilogueEdit.Check(Cue0461, spec, Resolve, null);
+            check((refusal == null) == accepted, "Cue_0461 " + what + ": " + (refusal ?? "accepted"));
+            if (refusal != null) continue;
+            var replacement = new BlueprintCue { AssetGuid = id(Rules.NativeEditCueName(Cue0461, spec, 0)), name = "DreamFixture_replacement" };
+            NativeEpilogueEdit.Prepare(Cue0461, spec, cue, page, replacement, () => true);
+            check(replacement.Continue.Cues.Select(r => r.Guid).SequenceEqual(continued.Select(BlueprintGuid.Parse))
+                  && replacement.Continue.Strategy == Kingmaker.DialogSystem.Strategy.First,
+                "Cue_0461 " + what + ": the replacement does not keep the cue's continuation (Aranka's slide must still follow).");
+        }
+        check(!NativeEpilogueEdit.DegradesOnRefusal(Cue0461), "A refused Cue_0461 would degrade Arueshalae (252ccf6).");
+        Console.WriteLine("PASS: Cue_0461 dream page: the parent's continuation is accepted and kept; drift is refused warning-only.");
     }
 
     // E14d delivery: Arueshalae's real Cue_0462 edit (native_wander) through the live Group, built with the story as Main
