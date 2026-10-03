@@ -31,6 +31,7 @@ from storylines.delamere_trickster import (BOW_RETURNED, CLOSED, COMMITTED, ERAS
 from storylines.delamere_trickster import temple as _temple, visit as _visit
 from storylines.delamere_trickster import KYADO_DEAD   # PP10: the jester's line from Kyado, alive or in his daybook
 from storylines.delamere_woods import CONFESSED, COUNTED, FIRST_MEAT, LIED, TABLE
+from storylines.delamere_trickster import VILLAGE_CLANS, VILLAGE_FORCED, VILLAGE_GIVEN, VILLAGE_REFUSED   # polish r4: the poachers' sentence
 
 SCENES = []
 
@@ -150,9 +151,9 @@ visit(P + "woken.jester", "Defenceless", [
         c('"No. You\'re the only one I can\'t fool."', "no"),
         c('[Thievery: while she talks, lift the skinning knife from her belt]', check=dict(Skill="SkillThievery", DC=26, Success="lifted", Failure="caught", CommanderOnly=True))),
     dl("yes", '''"Yes." {n}She considers that, frowning, as though you had told her the depth of a ford.{/n} "Honest, at least. I was defenceless the night you blew the horn. My own vow opened my hand for you. I did not choose it."
-{n}She stands.{/n} "But I chose the rest. The fire, the woods, the wall. Mark that, fox. You caught me by a trick once. Everything after that, I walked into on my own feet, looking where I was going."''',
+{n}She stands.{/n} "But I chose the rest. The count, the meat, every day since. Mark that, fox. You caught me by a trick once. Everything after that, I walked into on my own feet, looking where I was going."''',
         c("Continue", "end", flags=(JESTER_SEEN,))),
-    dl("no", '''"Liar." {n}But she looks pleased, which she hides badly, as always.{/n} "You fooled me with a horn. You would fool me again tomorrow if it would make you laugh." {n}She stands.{/n} "But you tell me when you have done it. That is the thing I did not expect. The fox in the stories never tells."''',
+    dl("no", '''"Liar." {n}But she looks pleased, which she hides badly, as always.{/n} "You fooled me with a horn. You would fool me again tomorrow if it would make you laugh." {n}She stands.{/n} "But you came back afterwards, and stood where I could see you. That is the thing I did not expect. The fox in the stories never comes back to the henhouse by daylight."''',
         c("Continue", "end", flags=(JESTER_SEEN,))),
     nar("lifted", '''{n}It comes away from her belt as if it were glad to go. She is still talking. You wait until she stops, and then you hold it up between two fingers, handle first, the way you would return a dropped glove.{/n}''',
         c("Continue", "lifted2")),
@@ -408,9 +409,14 @@ visit(P + "woken.poachers", "Doe in fawn", [
         c("Continue", "meat")),
     dl("hers", '''{n}She is quiet. The soldiers are very quiet.{/n} "My law." {n}She walks down the line of them, and stops in front of the boy with the bad moustache, and takes his right hand from behind the tree and holds it up to the light, as if she were looking at a fish.{/n}
 "This one shot her. I watched him. The other two carried." {n}She lets the hand drop.{/n} "Hear me, all three. The law says the fingers. But the law was made for villages, and you are not a village; you are a war, and a war needs its fingers. So."''',
-        c("Continue", "sentence")),
-    dl("sentence", '''"You will dig." {n}She points up the hill, to the clearing below the temple where the volunteers' longhouses stand, or will stand.{/n} "Every day for one season, when your captain can spare you, you will come to my village and dig its ditches and fell its timber, and you will eat at its fires, last. When you go back to your war, you will know the name of every child in it, and you will think of their faces every time you see a doe."
+        c("Continue", "sentence", forbids=(VILLAGE_REFUSED, VILLAGE_CLANS)),
+        # Polish r4 (Sol BEL): no village below her temple unless the count gave her one; then the work is at Drezen's camps.
+        c("Continue", "sentence_camp", forbids=(VILLAGE_GIVEN, VILLAGE_FORCED))),
+    dl("sentence", '''"You will dig." {n}She points up the hill, to the clearing below the temple where her village's first longhouses are going up.{/n} "Every day for one season, when your captain can spare you, you will come to my village and dig its ditches and fell its timber, and you will eat at its fires, last. When you go back to your war, you will know the name of every child in it, and you will think of their faces every time you see a doe."
 {n}She cuts them loose.{/n} "If you do not come, I will come for the fingers. I know where your tents are. I have been in them."''',
+        c("Continue", "meat")),
+    dl("sentence_camp", '''"You will dig." {n}She points down the valley, to the smoke over Drezen's camps.{/n} "Your Commander keeps my people behind the walls, in the mud by the river, in tents that leak. Every day for one season, when your captain can spare you, you will go to those tents and dig their ditches and cut their firewood, and you will eat at their fires, last. When you go back to your war, you will know the name of every child there, and you will think of their faces every time you see a doe."
+{n}She cuts them loose.{/n} "If you do not go, I will come for the fingers. I know where your tents are. I have been in them."''',
         c("Continue", "meat")),
     nar("bluff", '''{n}You walk down the line of them slowly, the way a magistrate walks, and stop in front of the boy with the bad moustache, and let your voice drop to a whisper that carries.{/n} "That is Delamere the Blessed. Erastil's own. And that doe was his. He sends one like her into every wood where his priestess walks, in fawn, to see who will take her." {n}You let that sit.{/n} "The last man who did lost his hands to the frost that winter. Both of them. Nobody could say why."''',
         c("Continue", "bluffed")),

@@ -545,7 +545,11 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}Drezen never learned who the tall Kellid woman at the market was. The minstrels went on singing her wrong. She preferred it.{/n}''', requires=(KEPT_QUIET,)),
     p('''{n}The names on the crypt wall reached nine hundred before she was done. The last she cut was a farm boy's, three valleys over from her temple; she walked there the first spring after the war to ask it, and found an old woman who still remembered him, and carried the name home.{/n}''', requires=(NAMES,)),
     p('''{n}The crusade's provost flogged three men for a doe in fawn in the spring of the war. It was the only time the crusade's law and hers agreed about anything, and she reminded the Commander of it at every quarrel after.{/n}''', requires=(POACHERS_PROVOST,)),
-    p('''{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,)),
+    p('''{n}Three Mendevian veterans settled below her temple after the war, in the village whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,),
+      any_groups=((VILLAGE_GIVEN, VILLAGE_FORCED),)),
+    # Polish r4 (Sol BEL): no village was founded; the three dug at Drezen's camps instead.
+    p('''{n}Three Mendevian veterans stayed on in Drezen after the war, in the camp by the river whose ditches they had dug. The one with the bad moustache married a cooper's widow there, and named his first daughter for the doe.{/n}''', requires=(POACHERS_HERS,),
+      forbids=(VILLAGE_GIVEN, VILLAGE_FORCED)),
     p('''{n}The soldiers' story of Erastil's own doe outlived the crusade. Hunters in Mendev still let a doe in fawn pass, and some of them still look over their shoulders when they do it. She never corrected the story. She said it was the most useful lie ever told in her lord's name, and that she would answer to him for it herself, since the jester would only make him laugh.{/n}''', requires=(POACHERS_TRICKED,)),
     # PP10: the answer to her bark from the Abyss.
     p('''{n}For the rest of her second life she kept a strip of birch bark in her quiver, behind the arrows, with a few words cut into the back of it by a knife held badly somewhere in the Abyss: "Still counting. Both legs, so far." She never let it near a fire, though she had said herself that a letter should be something you can burn.{/n}''', requires=(BARK_ANSWERED,)),
@@ -571,20 +575,37 @@ epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. 
 
 epilogue("apart", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law. The villages near her feared her and sent her their disputes, and she judged them as she had judged them in old Sarkoris, hard and without appeal.{/n}
 {n}The Commander went on walking crooked. She never came to claim the day she was owed. The hunters say she keeps it anyway, the way you keep an arrow you have not decided where to put.{/n}''',
-         requires=(RETURNED, CLOSED), forbids=(COMMITTED, LEG_HEALED), paragraphs=EPILOGUE_PARAGRAPHS + (
+         requires=(RETURNED, CLOSED), forbids=(COMMITTED, LEG_HEALED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied.{/n}''', requires=(LIAR,)),
              p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
 
 epilogue("never", '''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}
 {n}The Commander walked crooked for the rest of their life, and never told anyone why.{/n}''',
-         requires=(DECLINED, CLOSED), forbids=(RETURNED,))
+         requires=(DECLINED, CLOSED), forbids=(RETURNED, "sacrifice"), **SURVIVED)
 
 epilogue("healed", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law, and the villages near her feared her and brought her their quarrels. The Commander walked straight for the rest of a long life, on a leg a chaplain had sung whole in a single evening.{/n}
 {n}She never came to the Commander's window at the first frost. The one time they met again, at a market in the lower town, she looked at the Commander's legs, and nodded once, as a hunter nods to a beast that got away clean, and went on with her business.{/n}''',
-         requires=(LEG_HEALED,), forbids=(COMMITTED,))
+         requires=(LEG_HEALED,), forbids=(COMMITTED, "sacrifice"), **SURVIVED)
 
 epilogue("unfinished", '''{n}Delamere the Blessed kept to the woods below her temple after the war. Now and then, on a cold night, the sentries on Drezen's wall heard a stag roar in the hills, far too close to the city, and in the morning there were tracks under the Commander's window that no stag had made.{/n}''',
-         requires=(RETURNED,), forbids=(COMMITTED, CLOSED, LATE_COMMITTED), paragraphs=EPILOGUE_PARAGRAPHS)
+         requires=(RETURNED,), forbids=(COMMITTED, CLOSED, LATE_COMMITTED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS)
+
+# Polish r4 (Sol COX/INT, Binding context (3)): the Commander died at the Threshold and did not come back. No living-Commander
+# page plays; these three keep what she earned (her second life, her law, her woods) and close the Commander's side.
+epilogue("apart_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law. The villages near her feared her and sent her their disputes, and she judged them as she had judged them in old Sarkoris, hard and without appeal.{/n}
+{n}The news from the Threshold reached her late, with a pedlar. She heard him out, and asked whether they had found the body, and when he said no she nodded, as if that settled a point of law. She never went up to the ridge above Drezen. The hunters say the day she was owed died with the stag that owed it, and that she did not grieve a debt she had already written off.{/n}''',
+         requires=("sacrifice", RETURNED, CLOSED), forbids=(COMMITTED, "trickster.commander_back"), paragraphs=EPILOGUE_PARAGRAPHS + (
+             p('''{n}"It walked straight to its death," she said once, of the Commander, to nobody in particular. "Better than limping to it, the priests would say. I would have taken the limp."{/n}''', requires=(LEG_HEALED,)),
+             p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied, and death did not change her mind.{/n}''', requires=(LIAR,)),
+             p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
+
+epilogue("never_sacrifice", '''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}
+{n}The Commander did not come back from the Threshold, and took the limp and its reason down with them.{/n}''',
+         requires=("sacrifice", DECLINED, CLOSED), forbids=(RETURNED, "trickster.commander_back"))
+
+epilogue("unfinished_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war. The Commander did not come back from the Threshold. On the first cold night after the news, the sentries on Drezen's wall heard a stag roar in the hills, once, far too close to the city, and in the morning there were tracks under the Commander's empty window, going round and round, and then going away. They did not come again.{/n}''',
+         requires=("sacrifice", RETURNED), forbids=(COMMITTED, CLOSED, LATE_COMMITTED, "trickster.commander_back"),
+         paragraphs=EPILOGUE_PARAGRAPHS)
 
 
 def integrate(payload):

@@ -148,7 +148,7 @@ internal static class DelamereTricksterTests
         check(reactions.Where(r => r.Owner != "Kyado").All(r => !Rules.Available(story, r, Later(story, anyReturned, 100))
                                                            && !Rules.Available(story, r, Later(story, World(story, 3, "trickster.ever", P + "returned", P + "cost.limp", "ulbrig.in_party"), 100))),
             "A retired reactor (Ulbrig, Woljif) still speaks.");
-        check(pages.Length == 7 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 10 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Length == 3
               && story.Derived[P + "late_committed"].All(g => g.Contains("trickster.ever") && g.Contains(P + "second_hunt_offered"))
@@ -478,6 +478,44 @@ internal static class DelamereTricksterTests
               && !Rules.Available(story, epSac, wed6), "A sacrificed Commander still runs at the first frost.");
         var lateLost6 = World(story, 6, "trickster.ever", P + "second_hunt_offered", P + "told_truth", "sacrifice");
         check(!Rules.Available(story, epLate, lateLost6) && Rules.Available(story, epSac, lateLost6), "The late page survives an unreversed sacrifice.");
+        // Trk_Delamere_TerminalSurvival (polish r4, Sol COX/INT/HOW): the closed and unfinished pages need a surviving (or
+        // returned) Commander; an unreversed sacrifice gets its own page; no living-Commander page plays after one.
+        var terminal = new (string Page, string Lost, string[] Flags)[]
+        {
+            ("apart", "apart_sacrifice", new[] { "trickster.ever", P + "returned", "delamere.started", "delamere.closed" }),
+            ("healed", "apart_sacrifice", new[] { "trickster.ever", P + "returned", "delamere.started", "delamere.closed", P + "leg_healed" }),
+            ("never", "never_sacrifice", new[] { "trickster.ever", P + "declined", "delamere.closed" }),
+            ("unfinished", "unfinished_sacrifice", new[] { "trickster.ever", P + "returned", "delamere.started" }),
+        };
+        foreach (var t in terminal)
+        {
+            var page = S(P + "epilogue." + t.Page); var lostPage = S(P + "epilogue." + t.Lost);
+            var alive = World(story, 6, t.Flags);
+            var lost = World(story, 6, t.Flags.Concat(new[] { "sacrifice" }).ToArray());
+            var backT = World(story, 6, t.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());
+            check(Rules.Available(story, page, alive) && !Rules.Available(story, lostPage, alive)
+                  && !Rules.Available(story, page, lost) && Rules.Available(story, lostPage, lost)
+                  && (!backT.Has("trickster.commander_back") || Rules.Available(story, page, backT) && !Rules.Available(story, lostPage, backT)),
+                "Trk_Delamere_TerminalSurvival: a living-Commander page outlives an unreversed sacrifice, or the sacrifice has no page: " + t.Page);
+            foreach (var ep in pages.Where(x => Rules.Available(story, x, lost)))
+                check(ep.Id.EndsWith("sacrifice", StringComparison.Ordinal),
+                    "Trk_Delamere_TerminalSurvival: a living-Commander page plays after an unreversed sacrifice: " + ep.Id + " (" + t.Page + ")");
+        }
+        // Trk_Delamere_PoachersVillage (polish r4, Sol BEL): the sentence and its page follow the count's actual outcome.
+        var poach = S(P + "woken.poachers");
+        check(Choice(poach, "hers", 0).Next == "sentence" && Choice(poach, "hers", 0).Forbids.Contains(P + "village.refused") && Choice(poach, "hers", 0).Forbids.Contains(P + "village.clans")
+              && Choice(poach, "hers", 1).Next == "sentence_camp" && Choice(poach, "hers", 1).Forbids.Contains(P + "village.given") && Choice(poach, "hers", 1).Forbids.Contains(P + "village.forced")
+              && !poach.Nodes.Single(n => n.Id == "sentence").Text.Contains("will stand", StringComparison.Ordinal)
+              && S(P + "epilogue.caught").Nodes[0].Paragraphs.Count(par => par.Requires.Contains(P + "poachers.her_law")) == 2
+              && S(P + "epilogue.caught").Nodes[0].Paragraphs.Where(par => par.Requires.Contains(P + "poachers.her_law"))
+                   .All(par => par.Text.Contains("below her temple") ? par.AnyGroups.Any(g => g.Contains(P + "village.given") && g.Contains(P + "village.forced"))
+                                                                     : par.Forbids.Contains(P + "village.given") && par.Forbids.Contains(P + "village.forced")),
+            "Trk_Delamere_PoachersVillage: the soldiers dig (or settle in) a village the count never founded.");
+        // Trk_Delamere_JesterRecall (polish r4, Sol BEL): the jester page recalls only what its gate guarantees.
+        var jest = S(P + "woken.jester");
+        check(!jest.Nodes.Single(n => n.Id == "yes").Text.Contains("the wall", StringComparison.Ordinal)
+              && !jest.Nodes.Single(n => n.Id == "no").Text.Contains("you tell me when you have done it", StringComparison.Ordinal),
+            "Trk_Delamere_JesterRecall: the jester recalls beats that may not have happened, or credits a liar with confessing.");
 
         // Quality pass Q6 (CAN): the god answered the Commander at her seal only if the Commander heard it; otherwise Haddo guesses.
         var dy = S(P + "woken.old_deadeye");
