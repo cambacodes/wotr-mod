@@ -210,6 +210,13 @@ internal static class NocticulaAcquiredHarborTests
             string[] outcomes = { "noct.dead", "inhuman", "ascended", "sacrifice" };
             for (int bit = 0; bit < outcomes.Length; bit++) if ((mask & (1 << bit)) != 0) state.Flags.Add(outcomes[bit]);
             var available = endings.Where(s => s.Owner == "Epilogue" && Rules.Available(story, s, state)).ToArray();
+            // Earned presence (rubric Binding context (3)): beside an unreturned sacrifice her death, changed or risen pages
+            // (the Commander remembering) do not play; the mourning page covers only a Commander who died plainly.
+            if (state.Has("sacrifice") && (state.Has("noct.dead") || state.Has("inhuman") || state.Has("ascended")))
+            {
+                check(available.Length == 0, "Acquired ending stages a living Commander after the sacrifice.");
+                continue;
+            }
             string expected = state.Has("noct.dead") ? "death" : state.Has("inhuman") ? "changed"
                 : state.Has("ascended") ? "ascent" : state.Has("sacrifice") ? "sacrifice"
                 : state.Has("noct.chosen_company") ? "company" : state.Has("noct.chosen_alliance") ? "alliance" : "limit";

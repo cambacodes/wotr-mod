@@ -88,7 +88,10 @@ internal static class IrabethIndependentTests
             var independent = Program.Copy(state); independent.Flags.Add("tirabade.group_closed");
             foreach (var pair in new[] { ("irabeth_dead", "loss"), ("irabeth_gone", "loss"), ("swarm", "changed"), ("true_lich", "changed"), ("inhuman", "changed"), ("ascended", "ascent"), ("sacrifice", "sacrifice") })
             { var changed = Program.Copy(independent); changed.Flags.Add(pair.Item1); Ending(changed, pair.Item2); }
-            var overlap = Program.Copy(independent); overlap.Flags.UnionWith(new[] { "irabeth_dead", "irabeth_gone", "inhuman", "ascended", "sacrifice" }); Ending(overlap, "loss");
+            var overlap = Program.Copy(independent); overlap.Flags.UnionWith(new[] { "irabeth_dead", "irabeth_gone", "inhuman", "ascended", "sacrifice" });
+            // Earned presence (rubric Binding context (3)): with the Commander dead in the Wound no Irabeth page stages them alive.
+            check(!ends.Any(e => Rules.Available(story, e, overlap)), "An Irabeth ending stages a living Commander after an unreturned sacrifice.");
+            overlap.Flags.Remove("sacrifice"); Ending(overlap, "loss");
             overlap.Flags.Remove("irabeth_dead"); overlap.Flags.Remove("irabeth_gone"); Ending(overlap, "changed");
             overlap.Flags.Remove("inhuman"); Ending(overlap, "ascent");
             var aeon = Get("ending_aeon");

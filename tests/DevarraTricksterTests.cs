@@ -128,7 +128,7 @@ internal static class DevarraTricksterTests
               && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Greybor", "Storyteller" })
               && reactions.All(r => r.Requires.Contains(P + "flown") ^ r.Forbids.Contains(P + "flown")),
             "The reactions are not exactly Greybor and the Storyteller, split cleanly between the flight and the legacy worlds.");
-        check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
+        check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "tested" }),
             "The late commit is not derived from the tested story.");

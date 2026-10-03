@@ -458,7 +458,7 @@ namespace Tirabade
                 foreach (var pair in story.NativeEpilogueEdits)
                 {
                     var variants = Rules.EditVariants(pair.Value);
-                    var group = new NativeEpilogueEdit.Group(pair.Value, () => enabled && initialized && Game.Instance?.Player != null ? State() : null);
+                    var group = new NativeEpilogueEdit.Group(pair.Value, () => enabled && initialized && Game.Instance?.Player != null ? State() : null, story);
                     nativeEditGroups[pair.Key] = group;
                     for (int v = 0; v < variants.Length; v++)
                     {
