@@ -1,11 +1,11 @@
 """Delamere: the beats around the fire (delamere_woods holds the spine; delamere_trickster the device).
 
 - The white stag (required, between the feasting table and "Red"): the device told in her own voice. The stag hunt is
-  Kyado's canon (Kyado_main_dialogue/Cue_0039) and her own (DelamereInTomb/Cue_0034: "Three daysss we vied with each other
+  Kyado's canon (Kyado_main_dialogue/Cue_0039) and her own (DelamereInTomb/Cue_0042 20f0dfa4: "Three daysss we vied with each other
   in ssstealth and ssspeed... I did not eat the meat"); her death at full draw on an unfinished hunt is authored, and is
   the reading the tomb's invisible archer gives (TombOfDelamere_BookEvent/Cue_0052, Cue_0054).
 - Her glory (optional): "Can it be that my glory hasss faded?" (DelamereInTomb/Cue_0020); "I wasss known... Feared...
-  Ressspected... Loved..." (Cue_0032).
+  Ressspected... Loved..." (Cue_0039 ac70a123).
 - The jester (optional, Chapter 5): her reaction to the Trickster the Commander has become, through Kyado's own reading of
   the path: "anyone who treats everything seriously finds themselves defenseless before you, like a child"
   (Kyado_main_dialogue/Cue_0109 509eac82).

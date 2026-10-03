@@ -1,8 +1,9 @@
 """Delamere, after the waking: the courtship between the stag and the huntress (delamere_trickster holds the device).
 
 Every beat engages her canon: the fifty-three souls to a village and her contempt for cities (Kyado_main_dialogue/Cue_0034,
-Cue_0038), the stag she hunted three days and whose meat she gave to Erastil (DelamereInTomb/Cue_0034), her pride and
-her fear of undeath (Cue_0032, Cue_0040), the feasting table Zanedra's cult made of her sarcophagus
+Cue_0038), the stag she hunted three days and whose meat she gave to Erastil (DelamereInTomb/Cue_0042 20f0dfa4), her
+pride, her priesthood and her hatred of cities (Cue_0039 ac70a123), her refusal to be ordered about (Cue_0032 7bf73785)
+and her fear of undeath (Cue_0040 50a96c40), the feasting table Zanedra's cult made of her sarcophagus
 (TombOfDelamere_BookEvent/Cue_0002), Kyado's fear and his broken oath to her temple (Kyado_main_dialogue/Cue_0057).
 
 Delivery: pages that arrive at a rest (she finds the Commander: a huntress can find anyone with a limp), one letter in

@@ -197,7 +197,10 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_Seal: the open Drezen stone breaks a seal.");
         foreach (var opened in new[] { "delamere.erastil_answered", "delamere.tomb_opened_forced", "delamere.tomb_opened_peaceful",
                                        "delamere.tomb_opened_knife", "delamere.tomb_opened_knife_crack",
-                                       "delamere.tomb_opened_prayer", "delamere.tomb_opened_dispelled" })
+                                       "delamere.tomb_opened_prayer", "delamere.tomb_opened_dispelled",
+                                       // Polish (Sol CAN/HOW): brute force (Cue_0040) and the native closings (Cue_0054, Answer_0046/0050).
+                                       "delamere.tomb_opened_bruteforce", "delamere.tomb_closed_forced",
+                                       "delamere.tomb_close_peaceful_selected", "delamere.tomb_close_forced_selected" })
         {
             var o = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", opened);
             var op = Pages(crypt, o);
@@ -208,6 +211,33 @@ internal static class DelamereTricksterTests
             foreach (var n in s.Nodes)
                 check(!n.Text.Contains("breastplate", StringComparison.Ordinal) && !n.Text.Contains("stag-hide over", StringComparison.Ordinal),
                     "Her relic armour is described on her, though the Commander may hold it: " + s.Id + "/" + n.Id);
+
+        // Trk_Delamere_NativeOpenings (polish): the witnesses are the native GUIDs of the brute-force history and both closings.
+        check(story.SeenCues.TryGetValue("delamere.tomb_opened_bruteforce", out var brute) && brute.SequenceEqual(new[] { "1c9182d585e1d4d4c85c574695337ccb" })
+              && story.SeenCues.TryGetValue("delamere.tomb_closed_forced", out var lidBack) && lidBack.SequenceEqual(new[] { "15a598eac4625c84190a1574bc50597d" })
+              && story.SelectedAnswers.TryGetValue("delamere.tomb_close_peaceful_selected", out var reverent) && reverent == "932854d52d8602d478c6b9932be94fd3"
+              && story.SelectedAnswers.TryGetValue("delamere.tomb_close_forced_selected", out var untouched) && untouched == "6a5d2bcd0a6d09249bb3e62c2d1556c2"
+              && story.SeenCues["delamere.tomb_opened_forced"].SequenceEqual(new[] { "a70275fb77f483847a68fe01586091ec" }),
+            "Trk_Delamere_NativeOpenings: the brute-force and closing witnesses are not bound to their native GUIDs (or the old witness moved).");
+        // Brute force, no loot: Cue_0040 then Answer_0050 / Cue_0054. The opened stone, the bow still in her hands, no relics flag.
+        var bruteNoLoot = World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.tomb_opened_bruteforce",
+            "delamere.tomb_close_forced_selected", "delamere.tomb_closed_forced");
+        var bruteNoLootPages = Pages(crypt, bruteNoLoot);
+        check(bruteNoLootPages.Contains("body_open") && bruteNoLootPages.Contains("in_hands") && bruteNoLootPages.Contains("rise")
+              && !bruteNoLootPages.Contains("body_sealed") && !bruteNoLootPages.Contains("rise_sealed") && !bruteNoLoot.Has("delamere.relics_taken"),
+            "Trk_Delamere_NativeOpenings: a forced-then-closed tomb is shown sealed, or loses her bow.");
+        check(!crypt.Nodes.Single(n => n.Id == "body_open").Text.Contains("once before", StringComparison.Ordinal),
+            "Trk_Delamere_NativeOpenings: the opened stone claims a sighting the Commander may never have had.");
+
+        // Trk_Delamere_LivingWoken (polish): the successful call records that she lives, before any later refusal.
+        foreach (var s in new[] { crypt, alone, late, drezen })
+            check(s.Nodes.Single(n => n.Id == "roar").Choices.All(c => c.Set.Contains(P + "living_wake"))
+                  && s.Nodes.Where(n => n.Id == "fumble" || n.Id == "lift").SelectMany(n => n.Choices).All(c => !c.Set.Contains(P + "living_wake")),
+                "Trk_Delamere_LivingWoken: the call's success does not record her waking, or a failure does: " + s.Id);
+        check(Later(story, After(crypt, visited, "grave", 0).First(), 0).Has(P + "living_woken") && Later(story, After(crypt, visited, "healed", 0).First(), 0).Has(P + "living_woken")
+              && World(story, 3, "trickster.ever", P + "declined", "delamere.closed", P + "cost.limp").Has(P + "living_woken")
+              && !World(story, 3, "trickster", "trickster.ever", "delamere.tomb_visited", "delamere.started").Has(P + "living_woken"),
+            "Trk_Delamere_LivingWoken: a living waking (or an old save's refusal at the grave) is not recognised, or contact alone counts.");
 
         // Trk_Delamere_Unvisited: the initiated key, the sealed tomb.
         var initiated = World(story, 3, "trickster", "trickster.ever", "kyado.initiated");
@@ -227,6 +257,35 @@ internal static class DelamereTricksterTests
         var chapter5 = World(story, 5, "trickster", "trickster.ever", "delamere.tomb_visited");
         check(Rules.Available(story, late, chapter5) && !Rules.Available(story, crypt, chapter5), "Trk_Delamere_Late: the Chapter 5 waking is shut.");
         check(Reaches(After(late, chapter5, "home_late", 0).First(), "delamere.committed"), "Trk_Delamere_Late: no road to the commit.");
+        foreach (var node in late.Nodes.Where(n => n.Id == "start" || n.Id == "stair" || n.Id == "home_late"))
+            check(!node.Text.Contains("turnip", StringComparison.OrdinalIgnoreCase) && !node.Text.Contains("Horses", StringComparison.Ordinal)
+                  && !node.Text.Contains("broom", StringComparison.Ordinal),
+                "Trk_Delamere_Late: the Chapter 5 crypt asserts who was there before (Kyado, horses): " + node.Id);
+
+        // Trk_Delamere_Pilgrim (polish): a Chapter 5 Trickster who never found her temple gets a reason and a road, not a waking.
+        var pilgrim = S(P + "discovery.pilgrim");
+        var zero = World(story, 5, "trickster", "trickster.ever");
+        check(Rules.IsRemote(pilgrim) && pilgrim.Relationship == "delamere" && pilgrim.Chapters.SequenceEqual(new[] { 5 }) && !pilgrim.TricksterDevice
+              && Rules.Available(story, pilgrim, zero) && !Rules.Available(story, late, zero) && !Rules.Available(story, alone, zero),
+            "Trk_Delamere_Pilgrim: the missed temple has no clue in Chapter 5, or the clue is itself a waking.");
+        check(!Rules.Available(story, pilgrim, World(story, 3, "trickster", "trickster.ever"))
+              && !Rules.Available(story, pilgrim, chapter5) && !Rules.Available(story, pilgrim, World(story, 5, "trickster", "trickster.ever", "kyado.crypt_door_seen"))
+              && !Rules.Available(story, pilgrim, World(story, 5, "trickster", "trickster.ever", "delamere.remains_finished"))
+              && !Rules.Available(story, pilgrim, World(story, 5, "trickster.ever", "trickster.failed")),
+            "Trk_Delamere_Pilgrim: the pilgrim comes to a Commander who already knows the way, outside Chapter 5, or off the path.");
+        check(Choice(pilgrim, "start", 1).Abort && Choice(pilgrim, "road", 1).Abort && Choice(pilgrim, "start", 0).Set.Length == 0,
+            "Trk_Delamere_Pilgrim: putting him off closes the clue, or listening alone records anything.");
+        var roadKnown = After(pilgrim, zero, "road", 0).First();
+        check(roadKnown.Has(P + "temple_discovered") && !roadKnown.Has("delamere.started") && !roadKnown.Has(P + "primed")
+              && !roadKnown.Has("delamere.crypt_known") && !roadKnown.Has("delamere.closed")
+              && !Rules.Available(story, pilgrim, Later(story, roadKnown, 24)),
+            "Trk_Delamere_Pilgrim: the road grants more than the road (or comes again).");
+        check(!own.Any(s => s.TricksterDevice && Rules.Available(story, s, Later(story, roadKnown, 24))),
+            "Trk_Delamere_Pilgrim: the road alone launches a waking; the Commander must still reach her stone.");
+        var arrived = Later(story, roadKnown, 24); arrived.Flags.Add("delamere.tomb_visited"); Rules.Complete(story, arrived);
+        check(Rules.Available(story, late, arrived) && Pages(late, arrived).Contains("body_sealed") && Pages(late, arrived).Contains("rise_sealed")
+              && Reaches(After(late, arrived, "home_late", 0).First(), "delamere.committed"),
+            "Trk_Delamere_Pilgrim: reaching her stone by the pilgrim's road does not lead to the late waking and the commit.");
 
         // Trk_Delamere_Drezen: the remains in Drezen; she wakes in a city and runs you through it.
         var remains = World(story, 3, "trickster", "trickster.ever", "delamere.remains_finished", "delamere.tomb_visited");
@@ -497,7 +556,7 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_Jester: a dead Kyado talks to her about the Commander.");
 
         // Every page beat opens from its own gates.
-        foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))
+        foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice && x.Id != P + "discovery.pilgrim"))   // the pilgrim: Trk_Delamere_Pilgrim
         {
             var needs = s.Requires.Concat(s.RequiresAnyGroups.Select(g => g[0])).ToArray();
             var w = World(story, s.Chapters[0], new[] { "trickster", "trickster.ever", P + "returned", "delamere.started" }.Concat(needs).ToArray());
