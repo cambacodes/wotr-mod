@@ -449,14 +449,87 @@ internal static class NidalynnTricksterTests
               && !Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("never paid")),
             "Trk_Nidalynn_Bill: her page says the bill was never paid after Devarra named it at the rift.");
 
-        // NM1 (Sol INT/BEL): after a rejection Devarra's collected bill reads as the Commander's alone; no kiln kept warm.
-        var apartNode = S(P + "epilogue.apart").Nodes[0];
-        var apartWorld = World(story, 6, "trickster.ever", P + "met", Closed, Bill, "devarra.lastcall.called");
-        var keptWorld = World(story, 6, "trickster.ever", P + "met", Committed, Bill, "devarra.lastcall.called");
-        check(!Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("banked high"))
-              && Rules.VisibleParagraphs(apartNode, apartWorld).Any(x => x.Text.Contains("alone"))
-              && Rules.VisibleParagraphs(S(P + "epilogue.salt").Nodes[0], keptWorld).Any(x => x.Text.Contains("banked high")),
-            "Trk_Nidalynn_ApartBill: a rejected Commander still has her kiln kept warm, or the partner lost it.");
+        // Polish (audit INT/BEL/HOW, Trk_Nidalynn_Endings): every ending rendered whole, the page and its visible paragraphs in
+        // order, from walked routes. The grey dragon's bill is recorded once wherever it exists; the kiln kept warm, the bowl
+        // and the names taught at night belong to the living partner's page alone; a departure says nothing about anyone else.
+        string Render(Scene page, Snapshot w) => string.Join("\n", new[] { page.Nodes[0].Text }.Concat(Rules.VisibleParagraphs(page.Nodes[0], w).Select(x => x.Text)));
+        int Count(string text, string needle) { int n = 0, at = 0; while ((at = text.IndexOf(needle, at, StringComparison.Ordinal)) >= 0) { n++; at += needle.Length; } return n; }
+        Snapshot With(Snapshot s, params string[] flags) { var c = Program.Copy(s); c.Flags.UnionWith(flags); return Later(story, c, 1); }
+        string[] Shown(Snapshot w) => pages.Where(pg => Avail(pg, w)).Select(pg => pg.Id.Substring((P + "epilogue.").Length)).OrderBy(x => x, StringComparer.Ordinal).ToArray();
+        const string Called = "devarra.lastcall.called";
+        const string Standing = "never paid", Named = "named her bill", Windowsill = "windowsill", Bowl = "Eat first", Banked = "banked high", Taught = "taught the Commander";
+        var endPage = new Func<string, Scene>(id => S(P + "epilogue." + id));
+        // The walk: the confession, Devarra's bill on her own hub, the claim given up, her face, the kiss, then the salt.
+        var dvBack = Later(story, With(confessed, "devarra.trickster.returned", "devarra.started"), 25);
+        check(Avail(smallest, dvBack), "Trk_Nidalynn_Endings: Devarra's bill cannot be walked from the confession.");
+        var billed = Program.Walk(smallest, dvBack).First(r => r.Has(Bill));
+        var bGiven = After(whose, Later(story, billed, 25), "choose", 0).First();
+        var bFaced = After(form, Later(story, bGiven, 25), "end", 0).First();
+        var bKissed = After(wings, Later(story, bFaced, 25), "almost", 0).First();
+        var bAsk = Later(story, bKissed, 49, 5);
+        var bRejected = After(flight, bAsk, "offer", 2).First();
+        var bYes = After(flight, bAsk, "offer", 0).First();
+        var bNotYet = After(flight, bAsk, "offer", 1).First();
+        var plainRejected = After(flight, Later(story, kissed, 49, 5), "offer", 2).First();
+        check(bRejected.Has(Closed) && bRejected.Has(Bill) && bYes.Has(Committed) && bYes.Has(Bill) && !plainRejected.Has(Bill),
+            "Trk_Nidalynn_Endings: the walked rejection, yes or no-bill states are wrong.");
+        Snapshot End(Snapshot s, params string[] extra) => With(Later(story, s, 200, 6), extra);
+
+        // Rejected after the bill: the departure page alone; the record once, standing or named; no fire kept, nobody's welcome.
+        foreach (var (state, called) in new[] { (bRejected, false), (bRejected, true) })
+        {
+            var w = called ? End(state, Called) : End(state);
+            var text = Render(endPage("apart"), w);
+            check(Shown(w).SequenceEqual(new[] { "apart" }) && Count(text, called ? Named : Standing) == 1 && Count(text, called ? Standing : Named) == 0
+                  && !text.Contains(Banked) && !text.Contains(Bowl) && !text.Contains(Windowsill) && !text.Contains(Taught)
+                  && !text.Contains("alone") && !text.Contains("Nobody in Drezen"),
+                "Trk_Nidalynn_Endings: the rejected Commander's ending keeps her fire, doubles the bill or speaks for other partners (called=" + called + "): " + text);
+            // A concurrent romance changes nothing on her page.
+            check(Render(endPage("apart"), With(w, "irabeth.committed", "irabeth.started")) == text,
+                "Trk_Nidalynn_Endings: another partner changes the rejected ending.");
+        }
+        var plainApart = Render(endPage("apart"), End(plainRejected, Called));
+        check(!plainApart.Contains(Standing) && !plainApart.Contains(Named), "Trk_Nidalynn_Endings: a bill nobody wrote appears on the departure.");
+
+        // Committed after the bill: her page; standing = the windowsill, named = the record and the bowl; nothing doubled.
+        var saltStanding = Render(endPage("salt"), End(bYes));
+        var saltNamed = Render(endPage("salt"), End(bYes, Called));
+        check(Shown(End(bYes, Called)).SequenceEqual(new[] { "salt" })
+              && Count(saltStanding, Standing) == 1 && saltStanding.Contains(Windowsill) && !saltStanding.Contains(Named) && !saltStanding.Contains(Bowl)
+              && Count(saltNamed, Named) == 1 && saltNamed.Contains(Bowl) && saltNamed.Contains(Banked) && !saltNamed.Contains(Standing)
+              && !Render(endPage("salt"), End(yes, Called)).Contains(Named),
+            "Trk_Nidalynn_Endings: her own page records the bill wrongly.");
+        // Returned from the sacrifice: the same living page; not returned: the unreturned page, with no nights and no bowl.
+        var cameBack = End(bYes, Called, "sacrifice", "trickster.commander_back", P + "wake.name_said");
+        var lost = End(bYes, Called, "sacrifice", P + "wake.name_said");
+        var lostText = Render(endPage("unreturned"), lost);
+        check(Shown(cameBack).SequenceEqual(new[] { "salt" }) && Render(endPage("salt"), cameBack).Contains(Bowl) && Render(endPage("salt"), cameBack).Contains(Taught)
+              && Shown(lost).SequenceEqual(new[] { "unreturned" }) && Count(lostText, Named) == 1
+              && !lostText.Contains(Bowl) && !lostText.Contains(Banked + " every winter the Commander was away") && !lostText.Contains(Taught) && !lostText.Contains(Windowsill),
+            "Trk_Nidalynn_Endings: a Commander who did not come back is fed, taught or visited on the windowsill: " + lostText);
+        check(!Render(endPage("unreturned"), End(bYes, "sacrifice")).Contains(Windowsill) && Count(Render(endPage("unreturned"), End(bYes, "sacrifice")), Standing) == 1,
+            "Trk_Nidalynn_Endings: the standing bill is not recorded plainly for the Commander who did not come back.");
+        // Not yet (the heel): the courtship page; the record once, no domestic payoff.
+        var heelText = Render(endPage("heel"), End(bNotYet, Called));
+        check(Shown(End(bNotYet, Called)).SequenceEqual(new[] { "heel" }) && Count(heelText, Named) == 1 && !heelText.Contains(Bowl) && !heelText.Contains(Taught),
+            "Trk_Nidalynn_Endings: the heel's ending takes the partner's payoff.");
+        // The claim kept to her flight, and the lie kept: departures; the record when the flags hold it, never her fire.
+        var leftWith = After(claimedFlight, Later(story, keptClaim, 49, 5), "go", 0).First();
+        foreach (var (id, state) in new[] { ("claimed", leftWith), ("lie", kept) })
+            foreach (var extra in new[] { new string[0], new[] { Bill }, new[] { Bill, Called }, new[] { Bill, Called, Committed, P + "wake.name_said" } })
+            {
+                var w = End(state, extra);
+                var text = Render(endPage(id), w);
+                check(Avail(endPage(id), w) && !Shown(w).Contains("salt") && !text.Contains(Bowl) && !text.Contains(Banked) && !text.Contains(Windowsill) && !text.Contains(Taught)
+                      && Count(text, Named) == (extra.Contains(Called) ? 1 : 0) && Count(text, Standing) == (extra.Contains(Bill) && !extra.Contains(Called) ? 1 : 0),
+                    "Trk_Nidalynn_Endings: the " + id + " departure keeps her fire or loses the record: " + string.Join(",", extra));
+            }
+        // The wolves and the fire: closures with no shared paragraphs, even with the commit and the wake still held.
+        var wolvesWorld = End(World(story, 6, "trickster.ever", P + "met", Committed, P + "goat.lie_kept", Closed, P + "wake.name_said", Bill, Called));
+        var givenWorld = End(burned, Bill, Called);
+        check(Avail(endPage("wolves"), wolvesWorld) && !Shown(wolvesWorld).Contains("salt") && endPage("wolves").Nodes[0].Paragraphs.Count == 0
+              && Avail(endPage("given"), givenWorld) && !Shown(givenWorld).Contains("salt") && endPage("given").Nodes[0].Paragraphs.Count == 0,
+            "Trk_Nidalynn_Endings: the wolves or the fire ending carries conditional paragraphs or sits beside her page.");
 
         // NM1 (coordinator ruling; ledger 2/0/1, her Chapter 4 letter stands): her visits are entries on her own step. At a rest
         // only the device event and the grey stone (Chapter 3), the kiln letter (Chapter 4) and her welcome home (Chapter 5).
