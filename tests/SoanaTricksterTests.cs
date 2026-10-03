@@ -611,6 +611,57 @@ internal static class SoanaTricksterTests
         check(Endings(pulvBound).SequenceEqual(new[] { epKnot.Id }) && pages.Where(pg => Rules.Available(story, pg, pulvDead)).Select(pg => pg.Id).SequenceEqual(new[] { slack.Id })
               && pulvSlack.Contains("went slack") && !pulvSlack.Contains("clay"),
             "The pulverised history's sacrifice ending restores a clay token: " + pulvSlack);
+
+        // Polish (Sol INT/HOW): who held the leash when the Commander died at the Threshold. The full visible slack text follows
+        // the history: a rite already done in play, an offscreen taking-back before the march, or a leash still in the hand.
+        const string Struck = "leash struck her", Reclaimed = "taken the leash back while the Commander still lived",
+                     Closed = "gone to Drezen before the last march", Postponed = "tired of waiting", Slackened = "went slack";
+        string SlackText(Snapshot s) { var e = End(s); e.Flags.Add("sacrifice"); Rules.Complete(story, e); return FullText(slack, e); }
+        string[] Leash(string text) => new[] { Struck, Reclaimed, Closed, Postponed, Slackened }.Where(text.Contains).ToArray();
+        var termsFriend = Pick(terms, atTerms, P + "friends", P + "cost.leash_reclaimed");
+        var rebindRefused = Pick(rebind, atRebind, P + "rebind_declined", P + "cost.leash_reclaimed");
+        check(terms.Nodes.Single(n => n.Id == "friend").Text.Contains("pull goes out of your wrist")
+              && rebind.Nodes.Single(n => n.Id == "refuse").Text.Contains("pull goes out of your wrist"),
+            "The friendship or the refused rebinding does not show her taking the leash back.");
+        var legacyFriend = Program.Copy(termsFriend); legacyFriend.Flags.Remove(P + "cost.leash_reclaimed"); Rules.Complete(story, legacyFriend);
+        var legacyRefused = Program.Copy(rebindRefused); legacyRefused.Flags.Remove(P + "cost.leash_reclaimed"); Rules.Complete(story, legacyRefused);
+        var compoundLuckOnly = Program.Copy(lateBack);
+        foreach (var f in new[] { P + "declined", P + "luck_kept" }) { compoundLuckOnly.Flags.Add(f); compoundLuckOnly.Times[f] = compoundLuckOnly.Hour - 300; }
+        Rules.Complete(story, compoundLuckOnly);
+        foreach (var (name, w, expect) in new[] {
+                     ("terms friendship", termsFriend, Reclaimed), ("legacy terms friendship", legacyFriend, Reclaimed),
+                     ("rebinding refused", rebindRefused, Reclaimed), ("legacy rebinding refused", legacyRefused, Reclaimed),
+                     ("graveyard closure", walked, Closed), ("dug then closed", dugWalked, Closed), ("old lover left the grave", Pick(graveyard, oldGrave, "soana.closed", P + "cost.left_the_grave"), Closed),
+                     ("knot postponed", refused, Postponed), ("untouched return", lateBack, Struck), ("old lover never rebound", oldRaised, Struck),
+                     ("stale luck-only not yet", compoundLuckOnly, Struck), ("knot bearer", bound, Slackened), ("rebound lover", vowed, Slackened) })
+        {
+            var text = SlackText(w);
+            var e = End(w); e.Flags.Add("sacrifice"); Rules.Complete(story, e);
+            var onPages = pages.Where(pg => Rules.Available(story, pg, e)).Select(pg => pg.Id).ToArray();
+            check(onPages.SequenceEqual(new[] { slack.Id }) && Leash(text).SequenceEqual(new[] { expect }),
+                "The slack page misremembers the leash (" + name + "): " + string.Join(",", onPages) + " / " + string.Join(",", Leash(text)));
+            var back2 = Program.Copy(e); back2.Flags.Add("ending.trickster"); Rules.Complete(story, back2);
+            check(!Rules.Available(story, slack, back2), "The slack page outlives a Commander who came back: " + name);
+        }
+        check(!slack.Nodes[0].Text.Contains("she knew") && slack.Nodes[0].Text.Contains("riders"), "The slack page's opening claims a sensing every history lacks.");
+        // A friend with a stale luck-chain "not yet" ends on the friendship alone.
+        var friendStale = Program.Copy(termsFriend); friendStale.Flags.Add(P + "declined"); friendStale.Times[P + "declined"] = friendStale.Hour - 300;
+        Rules.Complete(story, friendStale);
+        check(Endings(friendStale).SequenceEqual(new[] { P + "epilogue.friends" })
+              && !FullText(S(P + "epilogue.friends"), friendStale).Contains("took her leash back"),
+            "A friend with a stale luck postponement gets two pages, or the leash is taken twice: " + string.Join(",", Endings(friendStale)));
+        // Ulbrig does not comment on a leash she has already taken back.
+        check(S(P + "react.ulbrig_knot").Forbids.Contains(P + "leash_reclaimed_before_threshold"), "Ulbrig sees a leash she has taken back.");
+        // Item 3: the paid diggers are ordered at the grave and arrive within the three days the terms enforce.
+        check(!graveyard.Nodes.Single(n => n.Id == "bought").Text.Contains("three days later")
+              && graveyard.Nodes.Single(n => n.Id == "bought").Choices[0].Text == "[Send the order]"
+              && !Rules.Available(story, terms, Later(story, bought, 71)) && Rules.Available(story, terms, Later(story, bought, 72)),
+            "The paid graves narrate a delivery the clock does not keep.");
+        var boughtWalkedEnd = string.Join("|", Rules.VisibleParagraphs(S(P + "epilogue.unbound").Nodes[0], End(boughtWalked)).Select(x => x.Text));
+        check(S(P + "epilogue.unbound").Nodes[0].Text.Contains("made no further visits") && boughtWalkedEnd.Contains("walked away all the same")
+              && !boughtWalkedEnd.Contains("before the diggers"),
+            "The unbound ending denies the grave visit, or times the diggers.");
+        check(graveyard.Nodes.Single(n => n.Id == "decide").Choices[1].Text.Contains("seen to"), "A Commander who paid for the graves claims to have dug them.");
         Console.WriteLine("PASS: Soana Trickster (Trk_Soana_*): portion, knot, grave, terms, crooked luck and its courtship.");
     }
 }

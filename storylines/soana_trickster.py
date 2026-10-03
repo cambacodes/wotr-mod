@@ -72,6 +72,11 @@ BAITED = "soana.trickster.cost.knot_recut"
 CREED = "soana.heard_creed"                          # SeenCues SoanaAfterBear/Cue_0012 (her creed)
 BOUND_AGAIN = "soana.trickster.rebind"
 REBIND_DECLINED = "soana.trickster.rebind_declined"
+# Polish (Sol INT): the leash is taken back in play (terms friendship, rebinding refused). The latch records the rite; the
+# Derived reader also counts a save that finished either scene before the latch existed.
+RECLAIMED = "soana.trickster.cost.leash_reclaimed"
+RECLAIMED_BEFORE = "soana.trickster.leash_reclaimed_before_threshold"
+POSTPONED = "soana.trickster.knot_proposal_postponed"   # Derived: the knot's own "not yet", never answered
 HEARD = "soana.heard_link"                            # Derived: SoanaAfterBear Cue_0015 or its twin Cue_0036 seen
 SACRIFICE_BACK = {"sacrifice": "trickster.commander_back"}
 DEFENDER = ["soana.old_defender", BEAR_DEAD]
@@ -249,13 +254,13 @@ at_cave("soana.trickster.returned.graveyard", "What the knot cost", '"Soana."', 
         c('[Leave her with her graves]', flags=(CLOSED, TRK_REFUSED, LEFT))),
     nar("dug", """{n}The ground is frozen for the first hand's depth and roots all the way down after that. You dig until the light goes, one-handed half the time, because the other hand keeps closing on nothing when the leash pulls. Soana does not help. She sits on a stone and tells you when you are doing it wrong, which is often, and when the hind and her calf finally go in she says something over them in a language that sounds like branches knocking.{/n}""",
         c('[Wipe your hands]', "decide")),
-    nar("bought", """{n}The diggers come from Drezen three days later, crusaders with good boots and bad manners. They dig fast and deep and argue about who has to carry the calf. Soana watches them from the cave mouth the whole time with an expression you would not wish on an enemy.{/n}""",
-        c('[Pay them off]', "decide")),
+    nar("bought", """{n}You write the order on a leaf torn from your dispatch book: diggers from Drezen, as many as will come, paid from the crusade's chest before they set out. Soana watches you press the seal. She does not offer you the spade again. She drives it into the half-dug hole beside the hind, and there it stays.{/n}""",
+        c('[Send the order]', "decide")),
     s("decide", """{n}She leans on the spade and looks at you the way she looks at weather.{/n}
 "Hear me, hunter, because I will say it once. The dead forest I will bury with you or without you. That is the forest's business, and it does not buy you anything from me. My leash I will take back from your hand whatever you say; I do not leave my work in a stranger's fist. What you want from me is another matter, and I have not decided what I think of it."
 "Come back in three days. By then I will know my own mind. I always do, in the end.\"""",
         c('"Three days, then."'),
-        c('"I dug your graves. That\'s all I came for."', flags=(CLOSED, TRK_REFUSED,))),
+        c('"Your graves are seen to. That\'s all I came for."', flags=(CLOSED, TRK_REFUSED,))),
     ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, GRAVE_KEPT), delay=48)
 
 TERMS_NIGHT = '''{n}She lays the grey cord across your marked palm and winds it round your wrist, then round her own, and pulls it tight enough to hurt. The fire is low. She does not let go of the cord.{/n}
@@ -302,8 +307,10 @@ at_cave("soana.trickster.returned.terms", "The second strand", '"It has been thr
     s("night", TERMS_NIGHT, c("Continue", "morning")),
     s("morning", TERMS_MORNING, c('[Go]')),
     s("friend", '''{n}She looks at you for a long breath, then snorts.{/n}
-"A friend. Hm. Then I take my leash back alone, with one strand and my own blood, and you may come and eat my fish and be useless at my graves. Do not look at me like that. Corven had friends too. He never once told them where I kept the mead."''',
-        c('[Go]')),
+"A friend. Hm. Corven had friends too. He never once told them where I kept the mead."
+{n}She takes your marked hand without asking and turns the palm up. Her knife opens her own palm along an old white line; she presses the cut to the print on yours and talks to the knot through her teeth, in the language that sounds like branches knocking. The pull goes out of your wrist. Soana sits down hard on the stone by the grave and keeps hold of your hand until her own stops shaking. Then she pushes it away.{/n}
+"Mine again. You may come and eat my fish and be useless at my graves. Do not look at me like that."''',
+        c('[Go]', flags=(RECLAIMED,))),
     s("price_clay", '''{n}She opens her hand. The two halves of the clay knot lie in it, the medallion you cracked at the brand; she picked them out of the ash of her own cave.{/n}
 "Hear this first, because I will not say it in the furs. I had a husband. Corven. He laid a wreath of the first summer flowers on my head and I became his wife. He is gone, and I do not know where, or whether he lives. I will not dig him a grave to make room for you, and I will not pretend he never was. Take me with him in it, or do not take me."
 "I have decided. I want you anyway, hunter, which is a great nuisance, and I am too old to pretend otherwise for the sake of your pride."
@@ -359,8 +366,10 @@ at_cave("soana.trickster.returned.rebind", "An old promise, a new knot", '"You s
         c('"No. Not this. Not my life on your knot."', "refuse", flags=(REBIND_DECLINED,)),
         c('[Hold out your hand] "Mine first."', "night_clay", requires=(SPENT,), flags=(BEARER, BOUND_AGAIN))),
     s("refuse", '''{n}She closes her fist over the knot.{/n}
-"Then I take my leash back alone, with one strand and my own blood, and it may kill me, and that will be your doing too. You may still come to my fire. You may not hold my leash, and you will not hold anything else of mine that matters."''',
-        c('[Go]')),
+"Then I hold it alone."
+{n}She takes your marked hand and opens her own palm with the knife. Her blood runs between your fingers while she talks to the knot, low and fast, and the pull goes out of your wrist. Her knees give; she sinks onto the edge of the mound and keeps her fist shut until she can stand again.{/n}
+"There. That was your doing too, and it did not kill me, so do not flatter yourself. You may still come to my fire. You will keep your hands off my knot, and off anything else of mine that matters."''',
+        c('[Go]', flags=(RECLAIMED,))),
     s("night", TERMS_NIGHT, c("Continue", "morning")),
     s("morning", TERMS_MORNING, c('[Go]')),
     s("night_clay", TERMS_NIGHT_CLAY, c("Continue", "morning")),
@@ -584,15 +593,15 @@ UNBOUND = p("She took her leash back from the Commander's hand the day they part
 SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue", 5, "", [
     nar("start", '''{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}''',
         c(), paragraphs=(UNBOUND,))],
-    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, "sacrifice"), last=99, Relationship="soana",
+    requires=("trickster.ever", DECLINED), forbids=(COMMITTED, CLOSED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
 
 SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue", 5, "", [
-    nar("start", '''{n}The Commander never went back to Wintersun. Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}
+    nar("start", '''{n}The Commander made no further visits to Wintersun. Before the army's last march Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}
 {n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told about a hunter who had held a dead woman to her own words. She did not say it kindly.{/n}''',
         c(), paragraphs=(
             p("\"Dug my graves with their own hands,\" she would add. \"Badly. And still walked away.\"", requires=(DUG,)),
-            p("\"Paid Drezen to dig my graves,\" she would add, \"and walked away before the diggers had eaten my fish.\"",
+            p("\"Paid Drezen to dig my graves,\" she would add. \"The diggers ate my fish, and the one who paid them walked away all the same.\"",
               requires=(BOUGHT,)),
             p("\"Would not lift a spade for my dead,\" she would add. \"Turned round at my door and walked away.\"",
               requires=(LEFT,)),
@@ -612,7 +621,7 @@ SCENES.append(scene("soana.trickster.epilogue.unvowed", "One strand, old promise
 SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", "Epilogue", 5, "", [
     nar("start", '''{n}The Commander stayed Soana's friend, which she said was the most tiresome thing anyone had ever been to her, and kept a second cup by the fire for them anyway.{/n}''',
         c(), paragraphs=(
-            p("She took her leash back from the Commander's hand alone, with one strand and her own blood. It nearly killed her. "
+            p("She held her leash alone, with one strand and her own blood; taking it back had nearly killed her. "
               "She buried the dead forest one grave a day, and made the Commander dig every third one when they visited.",
               requires=(RETURNED,)),
             p("The loaded die stayed in her bowl, twenty up, and the she-bear who had carried it to the roads grew fat and grey.",
@@ -624,19 +633,32 @@ SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", 
 # Q10: the Commander gave their life at the Threshold and stayed dead. Every Trickster page above describes a living
 # Commander, so this one page carries the knot, the leash and the die for that world.
 SCENES.append(scene("soana.trickster.epilogue.slack", "The slack strand", "Epilogue", 5, "", [
-    nar("start", '''{n}The Commander did not come back from the Threshold. Soana did not hear it from the riders. She was out at the cave mouth with a bowl of salt when it happened, and she knew.{/n}''',
+    nar("start", '''{n}The Commander did not come back from the Threshold. The riders brought the word to Wintersun a fortnight later, and Soana made the messenger tell it twice, the second time slower. Then she sent him back down the path and sat by the cold fire.{/n}''',
         c(), paragraphs=(
-            p("The knot on her wrist went slack all at once, the way a line goes slack when the fish is gone. Her end had been "
+            p("She had known before the riders came. The knot on her wrist went slack the night it happened, the way a line "
+              "goes slack when the fish is gone. Her end had been "
               "tied to the Commander's life, and that life had gone first, as she had told them it would. She cut the dead strand "
               "off with her knife, tied it round her own throat, and went on binding the Wintersun woods "
               "for twenty years more out of spite. She never said the Commander's name to anyone. She said \"the hunter\", and "
               "everyone knew.", requires=(RETURNED, BEARER)),
-            p("The leash came back to her the night the Commander's hand stopped holding it: all of it at once, like a dropped "
-              "rope. She caught it, went down on her knees under the weight, and held. It nearly killed her. It did not.",
-              requires=(RETURNED,), forbids=(BEARER,)),
+            p("She had known before the riders came. The leash struck her the night the Commander's hand stopped holding it, "
+              "all of its weight at once and nothing at the other end. She went down on her knees, caught it and held. It "
+              "nearly killed her. It did not.",
+              requires=(RETURNED,), forbids=(BEARER, RECLAIMED_BEFORE, CLOSED, POSTPONED)),
             p("Out on the Wintersun road, the she-bear that had stood up on the Commander's luck all winter lay down in the "
               "ferns that night and did not get up. Soana took the die out of the bowl and buried it with her, twenty up.",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
+            p("She had taken the leash back while the Commander still lived, and no strand of it ran to the Threshold. Nothing "
+              "pulled when they died. She sat until the messenger was out of sight, then went out to her graves.",
+              requires=(RETURNED, RECLAIMED_BEFORE), forbids=(BEARER,)),
+            p("She had gone to Drezen before the last march and taken the leash back from the Commander's palm herself, with "
+              "a single strand and most of her own blood. Nothing pulled when they died. When the messenger asked whether the "
+              "Commander had been her friend, she said, \"The dead do not need you improving them.\"",
+              requires=(RETURNED, CLOSED), forbids=(BEARER, RECLAIMED_BEFORE)),
+            p("She had tired of waiting for the Commander's answer before the army marched. She went to Drezen, took the "
+              "leash back from their palm with her own blood, and walked home. Their death gave her nothing back a second "
+              "time. The knot hung in her cave with one strand, and she did not ask again.",
+              requires=(RETURNED, POSTPONED), forbids=(BEARER, CLOSED, FRIENDS, RECLAIMED_BEFORE)),
         ))],
     requires=("trickster.ever", "sacrifice"), forbids=("trickster.commander_back", "soana.late_campaign_kept"),
     RequiresAnyGroups=[[RETURNED, LUCK_KEPT]], last=99, Relationship="soana"))
@@ -669,7 +691,7 @@ REACTIONS = [
              answer_list=EMBER_HUB, forbids=EMBER_GONE, chapter=5, last=5, delay=24, entry='"About the Wintersun bears..."'),
     reaction("Ulbrig", "soana.trickster.react.ulbrig_knot", (LEASH, "ulbrig.talked"),
              '''"I asked you once what these new powers want in return, warchief. Now we know. That one wanted a hand on a demon's leash: yours, by the look of that palm. Every power must have a name, and a price that's fair. I'd call that fair, just about. Mind it doesn't pull you over in your sleep."''',
-             answer_list=ULBRIG_HUB, forbids=ULBRIG_GONE, chapter=3, last=5, delay=24, entry='"About Soana..."'),
+             answer_list=ULBRIG_HUB, forbids=(*ULBRIG_GONE, RECLAIMED_BEFORE), chapter=3, last=5, delay=24, entry='"About Soana..."'),
     reaction("Ulbrig", "soana.trickster.react.ulbrig_luck", (CATCHUP, "ulbrig.talked"),
              '''"The Wintersun crone's beasts are fighting demons on the road again, warchief. A she-bear with her guts hanging out stood up three times, the scouts say. Spirits don't do that for free. What did you give them? And what will they want next?"''',
              answer_list=ULBRIG_HUB, forbids=ULBRIG_GONE, chapter=5, last=5, delay=24, entry='"About the Wintersun beasts..."'),
@@ -727,6 +749,11 @@ def integrate(payload):
         items.append(MEDALLION)
     # R2-6: the late commit reads the return (killed branch; also the presence-failure fallback) or the luck paid for.
     payload.setdefault("Derived", {})[LATE_COMMITTED] = [["trickster.ever", RETURNED], ["trickster.ever", LUCK_KEPT]]
+    # Polish (Sol INT): who held the leash when the Commander died. A save that completed the friendship or the refused
+    # rebinding before the latch existed counts by those scenes' completion with their outcome flags.
+    payload["Derived"][RECLAIMED_BEFORE] = [[RECLAIMED], [RETURNED, FRIENDS, "soana.trickster.returned.terms"],
+                                            [RETURNED, REBIND_DECLINED, "soana.trickster.returned.rebind"]]
+    payload["Derived"][POSTPONED] = [[RETURNED, DECLINED, "soana.trickster.returned.terms"]]
     by_id = {x["Id"]: x for x in payload["Scenes"]}
 
     # SOA-11: the loss pages belong to a Soana who stayed dead.
