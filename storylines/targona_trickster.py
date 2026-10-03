@@ -60,6 +60,7 @@ MET = P + "met"
 HERALD_KILLED = "herald.killed"     # HeraldKilled 348dfb40 (ImportantNPCs_fate): the Hand is dead; reports go to the chapel
 SPARK = P + "free.spark"           # polish r4: the stove; mutual attraction, earned (gates the freed-state commitment)
 COLLEAGUES = P + "free.colleagues"  # polish r4: the stove answered as colleagues
+PIKEMAN_LIED = P + "free.pikeman_lied"  # authored: the Commander lied to the dying pikeman; she objected
 DRAWN = P + "drawn"                 # Q6 r4: in the freed state she stays because the Commander asked her to, not only for the wounded
 FORGIVEN = P + "forgiven"
 DECLINED = P + "declined"
@@ -477,7 +478,7 @@ ward(P + "free.the_stove", "What he asked her", '"Targona."', [
 {n}She has not answered him yet. When she sees you she rises and draws you two steps away, to the stove, and speaks low.{/n}
 "He wants to hear that they held. I will not tell him that. I do not tell lies, Commander, not even kind ones at the end. And I would rather you did not tell it either, with me standing beside you."''',
       c('[Tell him the truth yourself] "Then I\'ll tell him. He should hear it from his commander."', "truth"),
-      c('[Lie to him] "He has an hour. He can spend it believing they held."', "lie"),
+      c('[Lie to him] "He has an hour. He can spend it believing they held."', "lie", flags=(PIKEMAN_LIED,)),
       c('[Leave it to her] "Then you answer him. I\'ll sit on the other side."', "hers")),
     nar("truth", '''{n}You kneel by the cot and tell him: the wall was lost at dusk, his company came off it in order, and the men who carried him down are the reason there is a company left to come off it. You tell him his sergeant asked after him.{/n}
 {n}He takes it the way soldiers do, with a long breath, and asks you to send the sergeant his knife. Targona holds his other hand. He dies before the second bell, and she closes his eyes.{/n}''',
@@ -701,10 +702,15 @@ page(P + "epilogue.commit", "When the ward was quiet",
 
 # Q6 r4 (TRK/BEL): a freed angel who stayed only for the wounded is a colleague, not a lover, when the war ends first.
 page(P + "epilogue.colleague", "The next cot",
-     '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. She and the Commander worked the rows together on the bad nights, and argued about wands, and never once about anything else.{/n}
+     '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. She and the Commander worked the rows together on the bad nights, and argued about wands.{/n}
 {n}When the tents came down she went back to Heaven's healers, and a letter came to the Commander at midwinter, as correct as a report, asking after the drummer with the fever. At the bottom, in a smaller hand, she had written that the ward was quiet now, if anyone ever wanted to ask her anything that was not about wands.{/n}''',
-     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, LATE_COMMITTED, "sacrifice"), paragraphs=WARD_PARAGRAPHS,
-     **SACRIFICE_GUARD)
+     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, LATE_COMMITTED, "sacrifice"),
+     paragraphs=WARD_PARAGRAPHS + (
+         p("Neither forgot the dying pikeman who had asked whether his company held. Targona still said he had deserved "
+           "the truth; the Commander still called the lie a mercy. On nights when another man asked a question neither "
+           "wanted to answer, they argued again. Then she handed the Commander a basin, and they went back to the cots together.",
+           requires=(PIKEMAN_LIED,)),
+     ), **SACRIFICE_GUARD)
 
 # Polish (INT): the colleague's farewell when the Commander did not come back from the Threshold (no invitation to anyone).
 page(P + "epilogue.colleague_lost", "The list by the door",

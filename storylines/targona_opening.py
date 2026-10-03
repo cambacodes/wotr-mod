@@ -382,11 +382,12 @@ Two days later the courier brings a note. She reached the wayhouse before midnig
 
 
 s("the_key_remains_hers", "The key remains hers", [
-    n("start", "Narrator", '''{n}Targona's next letter comes back by the eastern courier, sealed with a thumbprint of candle wax because she has no seal of her own any more.{/n}''',
-      c("Read her answer after the intimate evening.", "desire", requires=("targona.visit_desire",)),
-      c("Read her answer after the tender evening.", "tender", requires=("targona.visit_tender",)),
-      c("Read her answer after you chose to pause.", "pause", requires=("targona.visit_pause",)),
-      c("Read her answer to your letter.", "correspondence", requires=("targona.visit_correspondence",))),
+    n("start", "Narrator", '''{n}Targona's next letter is sealed with a thumbprint of candle wax because she has no seal of her own any more.{/n}''',
+      c("Read her answer after the intimate evening.", "desire", requires=("targona.visit_desire",), forbids=(MET,)),
+      c("Read her answer after the tender evening.", "tender", requires=("targona.visit_tender",), forbids=(MET,)),
+      c("Read her answer after you chose to pause.", "pause", requires=("targona.visit_pause",), forbids=(MET,)),
+      c("Read her answer to your letter.", "correspondence", requires=("targona.visit_correspondence",), forbids=(MET,)),
+      c("Read her letter from the ward.", "start_ward", requires=(MET,))),
     n("desire", "Narrator", '''{n}A small brass key is tied to the page with red thread: the key to the wayhouse's side gate, which the porter locks at compline.{/n}
 "I had it copied in the village. A blade of Iomedae, bribing a locksmith. I confessed it the same evening and did the penance, and I would do it again.
 "I have been thinking about your stair. I want you. I want the warmth of you against me, and the sound you make when you stop trying to be clever. I have written that sentence three times and burned two of them, and I am sending the third before I lose my nerve.
@@ -407,5 +408,33 @@ She has added a small sketch of the courtyard, with the way in and out marked in
     n("correspondence", "Narrator", '''{n}Targona's letter contains a short account of an uneventful afternoon and a question about a story you once sent her.{/n}
 "We did not meet that evening. I am not sorry. I think I needed one more letter first. Tell me the ending of the story you started last time; you stopped just when the bridge was about to fall, and I have been worrying about the bridge."
 She sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.''',
+      c("Reply with an ordinary detail and keep the conversation open.", flags=("targona.key_unpressured",))),
+    # Authored: a pending wand-night arrival can move her to the existing Drezen ward after the wayhouse visit.
+    n("start_ward", "Narrator", '''{n}A runner has brought it from the infirmary behind Wilcer's stores. The wax is still soft. Targona has crossed out the wayhouse address and written DREZEN beneath it.{/n}''',
+      c("Read her answer after the intimate evening.", "desire_ward", requires=("targona.visit_desire",)),
+      c("Read her answer after the tender evening.", "tender_ward", requires=("targona.visit_tender",)),
+      c("Read her answer after you chose to pause.", "pause_ward", requires=("targona.visit_pause",)),
+      c("Read her answer to your letter.", "correspondence_ward", requires=("targona.visit_correspondence",))),
+    n("desire_ward", "Narrator", '''{n}A small brass key is tied to the page with red thread. Beneath it she has written: THE DRYING LOFT, ABOVE THE WARD.{/n}
+"The wayhouse key would do you little good now. Wilcer had a lock fitted to the loft hatch. I had this copy made in the lower town, and confessed it the same evening. I would do it again.
+"I have been thinking about your stair. I want you. I want the warmth of you against me, and the sound you make when you stop trying to be clever. I have written that sentence three times and burned two of them, and I am sending the third before I lose my nerve.
+"I remember dressing by your window before light, with the eastern road still ahead of me. Now I can see your window from the cots. Come up when the chaplain takes the rows. I want to wake beside you and have only a ladder to climb down."
+{n}She has left the last line blank.{/n}''',
+      c("Write back that you want her, and that the key had better not rust.", flags=("targona.key_reciprocal",)),
+      c("Write back that you want to see her, whatever the night turns into.", flags=("targona.key_unpressured",))),
+    n("tender_ward", "Narrator", '''{n}A small brass key is folded into the letter, with a tag naming the drying loft above Drezen's ward. Beneath it, in Targona's hand, is written: ONLY IF I ASK.{/n}
+"I have not stopped thinking about our evening on the wall. I want another one. This time you can find me behind Wilcer's stores, with my sleeves still wet from the basins. I want to kiss you before either of us says anything clever.
+"When the chaplain takes the rows, come up to the loft with me. After that I do not know. I find I like not knowing."
+{n}The line beneath her note is left open.{/n}''',
+      c("Reply that you want her, and that you will be waiting.", flags=("targona.key_reciprocal",)),
+      c("Reply that you want her company, and leave the rest for another day.", flags=("targona.key_unpressured",))),
+    n("pause_ward", "Narrator", '''{n}The letter contains no key. Targona writes that she was pleased you let the wayhouse evening end without asking her to turn it into a promise.{/n}
+"I still want you. I was glad you did not hurry me. There was fever at the wayhouse that week, and I would have gone back before the bell. Now the fever is here in Drezen, and so am I. Come to the cots when you can. When the chaplain takes my place, I would like another walk with you."
+{n}She has sketched the way from Wilcer's stores to the courtyard.{/n}''',
+      c("Tell her you want another evening, whenever the wounded can spare her.", flags=("targona.key_unpressured",)),
+      c("Tell her you want to kiss her again when she asks.", flags=("targona.key_reciprocal",))),
+    n("correspondence_ward", "Narrator", '''{n}Targona's letter describes an afternoon in Drezen's infirmary. She ran out of clean linen before she ran out of patients.{/n}
+"We did not meet that evening. I am not sorry. I think I needed one more letter first. You can bring the next one to the cots yourself, now. Tell me the ending of the story you started last time; you stopped just when the bridge was about to fall, and I have been worrying about the bridge."
+{n}She sends a recipe for a sweet she learned at the wayhouse. She has asked the infirmary cook to try it, if he can find the honey.{/n}''',
       c("Reply with an ordinary detail and keep the conversation open.", flags=("targona.key_unpressured",))),
 ], "targona.the_open_threshold", requires=("targona.correspondence_romanced",))

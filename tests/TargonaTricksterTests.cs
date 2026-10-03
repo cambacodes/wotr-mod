@@ -376,6 +376,28 @@ internal static class TargonaTricksterTests
 
         // Q6 r4 (TRK/BEL): the late romance needs her to have stayed because the Commander asked; a charitable welcome is a colleague.
         var epColleague = S(P + "epilogue.colleague");
+        // Play every stove answer through both exits, then read the colleague ending's conditional history.
+        const string PikemanLie = P + "free.pikeman_lied";
+        var stoveNight = After(spent, free, "night", 0);
+        var stoveArrival = After(freeFurlough, stoveNight, "why", 0);
+        var stoveReady = Later(story, stoveArrival, stove.DelayHours);
+        check(Rules.Available(story, stove, stoveReady), "The played wand night and arrival cannot reach the stove.");
+        foreach (int answer in new[] { 0, 1, 2 })
+        {
+            var outcomes = Program.WalkVia(stove, stoveReady, "start", answer);
+            check(outcomes.Count == 2 && outcomes.All(o => o.Has(PikemanLie) == (answer == 1)),
+                "The stove fails to record only the pikeman lie, on both exits.");
+            foreach (var colleague in outcomes.Where(o => o.Has(P + "free.colleagues")))
+            {
+                var ending = World(story, 6, colleague.Flags.ToArray());
+                check(Rules.Available(story, epColleague, ending), "The played stove colleague history loses its ending.");
+                var paragraphs = Rules.VisibleParagraphs(epColleague.Nodes[0], ending);
+                check(paragraphs.Any(p => p.Text.Contains("pikeman", StringComparison.Ordinal)) == (answer == 1),
+                    "The colleague ending erases or invents the disagreement over the dying pikeman.");
+                check(!epColleague.Nodes[0].Text.Contains("never once about anything else", StringComparison.Ordinal),
+                    "The colleague ending denies their moral disagreement.");
+            }
+        }
         var welcomed6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent");
         var drawn6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "free.spark", P + "cost.wand_unspent");
         var drawnOnly6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "cost.wand_unspent");

@@ -5,6 +5,23 @@ using Tirabade;
 
 internal static class TargonaOpeningTests
 {
+#if TARGONA_TESTS
+    private static int Main(string[] args)
+    {
+        var story = System.Text.Json.JsonSerializer.Deserialize<Story>(System.IO.File.ReadAllText(args.Single()),
+            new System.Text.Json.JsonSerializerOptions { IncludeFields = true })!;
+        Rules.Validate(story);
+        var failures = new HashSet<string>();
+        int checks = 0;
+        void Check(bool result, string message) { checks++; if (!result) failures.Add(message); }
+        Run(story, Check);
+        TargonaTricksterTests.Run(story, Check);
+        foreach (var failure in failures) Console.Error.WriteLine(failure);
+        Console.WriteLine($"Targona: {checks} assertions, {failures.Count} failures.");
+        return failures.Count == 0 ? 0 : 1;
+    }
+#endif
+
     internal static void Run(Story story, Action<bool, string> check)
     {
         string[] ids = { "unasked_question", "second_margin", "the_folded_room", "an_unpromised_future", "the_unscheduled_door", "what_she_keeps" };
@@ -44,7 +61,8 @@ internal static class TargonaOpeningTests
         }
         Snapshot Chain(Snapshot s, bool full)
         {
-            s = Advance(s, Tp + "free.spent_light", o => o.Has(Tp + "cost.wand_unspent"));
+            if (!s.Has(Tp + "cost.wand_unspent"))
+                s = Advance(s, Tp + "free.spent_light", o => o.Has(Tp + "cost.wand_unspent"));
             s = Advance(s, Tp + "free.furlough", o => o.Has(Met));
             if (!full) return s;
             s = Advance(s, Tp + "free.the_stove", o => o.Has(Tp + "free.spark"));
@@ -55,14 +73,21 @@ internal static class TargonaOpeningTests
         foreach (string mode in modes)
         foreach (bool parentRomance in new[] { false, true })
         foreach (string currentPath in mode == "none" ? new[] { "angel", "trickster" } : new[] { mode })
-        foreach (string order in currentPath == "trickster" && !parentRomance
-                     ? new[] { "none", "wardMet", "wardCommitted", "lettersFirst" } : new[] { "none" })
+        foreach (string order in currentPath == "trickster"
+                     ? parentRomance ? new[] { "none", "wardMet", "wardCommitted", "lettersFirst", "delayedArrival" }
+                                     : new[] { "none", "wardMet", "wardCommitted", "lettersFirst" }
+                     : new[] { "none" })
         {
             var initial = new Snapshot { Chapter = 5, Area = scenes[0].Areas.Single(), Hour = 1000 };
-            initial.Flags.UnionWith(new[] { "targona.free", "targona.ran_treatment_completed", "targona.ran_final_seen",
-                "targona.ran_" + mode, currentPath, "seelah.committed", "arueshalae.committed" });
-            if (parentRomance) initial.Flags.Add("targona.ran_romance");
+            initial.Flags.UnionWith(new[] { "targona.free", "targona.ran_" + mode, currentPath,
+                "seelah.committed", "arueshalae.committed" });
             if (order != "none") initial.Flags.UnionWith(new[] { "trickster.ever", "chapter_later" });
+            Rules.Complete(story, initial);
+            // The wand night precedes completion of the parent romance; arrival may remain pending.
+            if (parentRomance && order != "none")
+                initial = Advance(initial, Tp + "free.spent_light", o => o.Has(Tp + "cost.wand_unspent"));
+            initial.Flags.UnionWith(new[] { "targona.ran_treatment_completed", "targona.ran_final_seen" });
+            if (parentRomance) initial.Flags.Add("targona.ran_romance");
             Rules.Complete(story, initial);
             if (order == "wardMet" || order == "wardCommitted") initial = Chain(initial, order == "wardCommitted");
             check(initial.Has(Corr) == (parentRomance || order == "wardCommitted"), "Targona correspondence misreads the earned romance history.");
@@ -80,10 +105,10 @@ internal static class TargonaOpeningTests
                     var ready = Program.Copy(prior);
                     if (chained)
                     {
-                        // The reverse order: a friendship letter has been read; the wand night and the courtship still open.
+                        // The reverse order: the first letter has been read; arrival and the ward courtship still open.
                         check(prior.Has("targona.correspondence_opened"), "Targona reverse order did not read the first letter.");
                         ready = Chain(ready, true);
-                        check(ready.Has("targona.committed") && ready.Has(Corr), "Reading a friendship letter blocks the ward courtship.");
+                        check(ready.Has("targona.committed") && ready.Has(Corr), "Reading correspondence blocks the ward courtship.");
                     }
                     else if (index > 0)
                     {
@@ -139,11 +164,13 @@ internal static class TargonaOpeningTests
                 check(historyNodes.Contains("targona.unasked_question/romance") && historyNodes.Contains("targona.what_she_keeps/lover"),
                     "The ward commitment does not reach the lover letters.");
             if (order == "lettersFirst")
-                check(historyNodes.Contains("targona.unasked_question/friend") && historyNodes.Contains("targona.an_unpromised_future/question_ward")
+                check(historyNodes.Contains("targona.unasked_question/" + (parentRomance ? "romance" : "friend"))
+                      && historyNodes.Contains("targona.an_unpromised_future/question_ward")
                       && historyNodes.Contains("targona.what_she_keeps/lover"), "The reverse order does not move her letters to the ward and the lover page.");
             if (order == "wardMet")
-                check(historyNodes.Contains("targona.unasked_question/friend_ward") && historyNodes.Contains("targona.what_she_keeps/friend"),
-                    "A ward colleague does not get ward-located friendship letters.");
+                check(historyNodes.Contains("targona.unasked_question/" + (parentRomance ? "romance" : "friend_ward"))
+                      && historyNodes.Contains("targona.what_she_keeps/" + (parentRomance ? "lover" : "friend")),
+                    "The ward meeting misreads the parent romance history.");
             endStates.AddRange(states.Select(s => (order, s)));
         }
 
@@ -151,6 +178,40 @@ internal static class TargonaOpeningTests
         var threshold = story.Scenes.Single(s => s.Id == "targona.the_open_threshold");
         var evening = story.Scenes.Single(s => s.Id == "targona.ward_evening");
         var eveningNodes = new HashSet<string>();
+        var followup = story.Scenes.Single(s => s.Id == "targona.the_key_remains_hers");
+        var visitNodes = new HashSet<string>();
+        var replyNodes = new HashSet<string>();
+        string[] replies = { "desire", "tender", "pause", "correspondence" };
+        void ReadReply(Snapshot visit)
+        {
+            var ready = Program.Copy(visit); Rules.Complete(story, ready);
+            if (ready.Hour == ready.Times[threshold.Id])
+                check(!Rules.Available(story, followup, ready), "The final reply ignores its delay.");
+            ready.Hour = Math.Max(ready.Hour, ready.Times[threshold.Id] + followup.DelayHours);
+            check(Rules.Available(story, followup, ready), "The played visit cannot reach the final reply.");
+            string reply = replies.Single(r => ready.Has("targona.visit_" + r));
+            bool moved = ready.Has(Met);
+            var pages = new HashSet<string>();
+            foreach (var outcome in Program.Walk(followup, ready, (node, _) =>
+            {
+                replyNodes.Add(node); pages.Add(node);
+                string text = followup.Nodes.Single(n => n.Id == node).Text;
+                if (moved)
+                    check(!text.Contains("eastern courier", StringComparison.Ordinal)
+                          && !text.Contains("key to the wayhouse", StringComparison.Ordinal)
+                          && !text.Contains("when the road is quiet", StringComparison.Ordinal),
+                        "The final ward reply uses her old wayhouse address: " + node);
+            }))
+            {
+                check(outcome.Has(followup.Id) && !Rules.Available(story, followup, outcome), "The final reply does not finish once.");
+                check(outcome.Has("targona.key_reciprocal") != outcome.Has("targona.key_unpressured"), "The final reply loses or mixes its response.");
+                check(native.All(f => outcome.Has(f) == ready.Has(f))
+                      && outcome.Has("targona.committed") == ready.Has("targona.committed")
+                      && outcome.Has("seelah.committed") && outcome.Has("arueshalae.committed"), "The final reply rewrites established relationships.");
+            }
+            check(pages.SetEquals(moved ? new[] { "start", "start_ward", reply + "_ward" } : new[] { "start", reply }),
+                "The final reply does not match its visit outcome and current address: " + reply + "/" + moved);
+        }
         foreach (var (order, end) in endStates)
         {
             var later = Program.Copy(end); later.Hour += 200; Rules.Complete(story, later);
@@ -161,8 +222,28 @@ internal static class TargonaOpeningTests
             check(Rules.Available(story, evening, present) == (lover && ward), "The ward evening opens for the wrong history: " + order);
             if (lover && ward)
                 foreach (var o in Program.Walk(evening, present, (node, _) => eveningNodes.Add(node)))
-                    check(o.Has("targona.committed") && !o.Has("targona.closed"), "The ward evening rewrites the commitment.");
+                    check(o.Has("targona.committed") == present.Has("targona.committed")
+                          && o.Has("targona.ran_romance") == present.Has("targona.ran_romance")
+                          && !o.Has("targona.closed"), "The ward evening rewrites the commitment.");
+            if (lover && !ward)
+            {
+                var visits = Program.Walk(threshold, later, (node, _) => visitNodes.Add(node)).Where(o => o.Has(threshold.Id)).ToList();
+                foreach (var reply in replies)
+                    if (later.Has("trickster")) check(visits.Any(o => o.Has("targona.visit_" + reply)), "The visit loses its " + reply + " branch.");
+                foreach (var visit in visits)
+                {
+                    ReadReply(visit);
+                    if (order == "delayedArrival")
+                    {
+                        check(visit.Has(Tp + "cost.wand_unspent") && visit.Has("targona.ran_romance") && !visit.Has(Met),
+                            "The mixed history did not keep arrival pending until after the visit.");
+                        ReadReply(Advance(visit, Tp + "free.furlough", o => o.Has(Met)));
+                    }
+                }
+            }
         }
+        check(visitNodes.SetEquals(threshold.Nodes.Select(n => n.Id)), "The played visits leave unreachable prose.");
+        check(replyNodes.SetEquals(followup.Nodes.Select(n => n.Id)), "The played final replies leave unreachable prose.");
         check(evening.ContactUnit == "81297c673b63b60448ef88a10db6bc78" && evening.InteractionHub == "targona.presence" && !Rules.IsRemote(evening),
             "The ward evening is delivered as a letter instead of in person.");
         var eveningStart = evening.Nodes.Single(n => n.Id == "start").Choices;
