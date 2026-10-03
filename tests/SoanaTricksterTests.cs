@@ -71,6 +71,15 @@ internal static class SoanaTricksterTests
             return hit ?? w;
         }
 
+        // Polish r4: a save that returned her after the Commander's own kill, before the ruling that such a kill stands.
+        Snapshot Legacy(Snapshot w)
+        {
+            var e = Program.Copy(w);
+            foreach (var f in new[] { P + "returned", P + "cost.guardian_paid", P + "cost.leash_held" }) { e.Flags.Add(f); e.Times[f] = e.Hour; }
+            Rules.Complete(story, e);
+            return e;
+        }
+
         // Plays every available Trickster Soana scene forward and reports whether a flag is ever held.
         bool Reaches(Snapshot start, string flag)
         {
@@ -486,7 +495,7 @@ internal static class SoanaTricksterTests
         check(Endings(unvowed).SequenceEqual(new[] { P + "epilogue.unvowed" }) && Endings(oldRaised).SequenceEqual(new[] { P + "epilogue.unvowed" }),
             "A lover who returned her without the vow ends on the knot page, or on none.");
         var ownKill = World(story, 3, "trickster", "trickster.ever", "soana.committed", "soana.dead", "soana.forest_dead", "soana.killed_self_after_quest");
-        var ownRebind = Later(story, Invite(Pick(graveyard, Later(story, Pick(knot, ownKill, P + "returned"), 48), P + "graveyard_kept")), 72);
+        var ownRebind = Later(story, Invite(Pick(graveyard, Later(story, Legacy(ownKill), 48), P + "graveyard_kept")), 72);
         var ownPages = new HashSet<string>();
         Program.Walk(rebind, ownRebind, (id, _) => ownPages.Add(id));
         check(ownPages.Contains("own") && !ownPages.Contains("camellia"), "The rebinding blames Camellia for the Commander's own kill.");
@@ -682,10 +691,10 @@ internal static class SoanaTricksterTests
         // invitation; the friendship reclaims the leash; a refusal closes the route, and returning her buys nothing.
         HashSet<string> AccPages(Snapshot w) { var seenAcc = new HashSet<string>(); Program.Walk(accounting, Later(story, w, 72), (id, _) => seenAcc.Add(id)); return seenAcc; }
         var camelliaBackW = Pick(graveyard, Later(story, Pick(knot, killed, P + "returned"), 48), P + "graveyard_kept", P + "cost.grave_dug");
-        var ownBackW = Pick(graveyard, Later(story, Pick(knot, World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead",
-                                                                   "soana.killed_self_before_bear"), P + "returned"), 48), P + "graveyard_kept", P + "cost.grave_bought");
+        var ownBackW = Pick(graveyard, Later(story, Legacy(World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead",
+                                                                   "soana.killed_self_before_bear")), 48), P + "graveyard_kept", P + "cost.grave_bought");
         var oldCamelliaW = oldDug;
-        var oldOwnW = Pick(graveyard, Later(story, Pick(knot, ownKill, P + "returned"), 48), P + "graveyard_kept");
+        var oldOwnW = Pick(graveyard, Later(story, Legacy(ownKill), 48), P + "graveyard_kept");
         foreach (var (name, w, node) in new[] { ("camellia", camelliaBackW, "camellia"), ("own", ownBackW, "own"), ("unknown", dug, "unknown"),
                                                 ("camellia_lover", oldCamelliaW, "camellia_lover"), ("own_lover", oldOwnW, "own_lover") })
         {
@@ -752,27 +761,43 @@ internal static class SoanaTricksterTests
         if (Rules.Available(story, gq, pulvAlive)) Program.Walk(gq, pulvAlive, (id, _) => gqPages.Add(id));
         check(pulvAlive.Has("soana.guardian_dead") && gqPages.Contains("dead") && !gqPages.Contains("bound"),
             "The pulverised history's guardian question keeps Orso alive: " + string.Join(",", gqPages));
-        // Polish r2 (Sol INT/HOW): all six native kill answers (two attacks, two kills after the bear, two executions) are the
-        // Commander's own kill: the accounting accuses them by name and the late page remembers it.
+        // Polish r4 (ruling: a player-chosen kill stands): all six native kill answers (two attacks, two kills after the bear,
+        // two executions) close her route. No knot, no presence, no living page or coda; the closing page and the two
+        // witnesses' reactions instead. A save returned before the ruling keeps the own-kill accusation at the accounting.
+        var byHand = S(P + "epilogue.by_your_hand");
         foreach (var key in new[] { "soana.killed_self_before_bear", "soana.killed_self_after_quest", "soana.killed_self_after_bear_a",
                                     "soana.killed_self_after_bear_b", "soana.executed_after_bear_a", "soana.executed_after_bear_b" })
         {
             check(story.SelectedAnswers.ContainsKey(key), "Unbound native kill answer: " + key);
-            var killer = World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key);
-            var killerGrave = Pick(graveyard, Later(story, Pick(knot, killer, P + "returned"), 48), P + "graveyard_kept");
-            var pagesK = AccPages(killerGrave);
-            var lover = World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", "soana.committed", key);
-            var loverPages = AccPages(Pick(graveyard, Later(story, Pick(knot, lover, P + "returned"), 48), P + "graveyard_kept"));
-            var failed = Program.Copy(killerGrave); failed.Flags.Add("soana.presence.failed"); Rules.Complete(story, failed);
-            check(killer.Has("soana.killed_by_commander") && pagesK.Contains("own") && !pagesK.Contains("unknown") && loverPages.Contains("own_lover")
-                  && !loverPages.Contains("unknown") && FullText(epCommit, failed).Contains("why they had killed her"),
-                "A native kill answer is not read as the Commander's own kill: " + key);
+            foreach (var lover in new[] { false, true })
+            {
+                var flags = new List<string> { "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key, "soana.medallion_held" };
+                if (lover) flags.Add("soana.committed");
+                var killer = World(story, 3, flags.ToArray());
+                var later = Later(story, killer, 500);
+                check(killer.Has("soana.killed_by_commander") && !Rules.Available(story, knot, killer) && !Rules.Available(story, knot, later)
+                      && !Reaches(killer, P + "returned") && Endings(killer).SequenceEqual(new[] { byHand.Id })
+                      && !Rules.Available(story, coda, Called(killer)) && !Ends(killer, "sacrifice").Any(id => id != byHand.Id),
+                    "The Commander's own kill is undone, or ends on a living page: " + key + (lover ? " (lover)" : "") + " -> " + string.Join(",", Endings(killer)));
+                var luckKiller = Program.Copy(killer); luckKiller.Flags.Add(P + "luck_kept"); luckKiller.Flags.Add(P + "luck_tested"); Rules.Complete(story, luckKiller);
+                check(Endings(luckKiller).SequenceEqual(new[] { byHand.Id }), "A luck lover killed by the Commander gets the wrong page: " + string.Join(",", Endings(luckKiller)));
+            }
+            var witnessed = FullText(byHand, World(story, 6, "trickster.ever", "soana.dead", "soana.forest_dead", key, "ulbrig.talked"));
+            check(witnessed.Contains("Camellia said") && witnessed.Contains("Ulbrig looked"), "Nobody answers the Commander's own kill: " + key);
+            var legacyGrave = Pick(graveyard, Later(story, Legacy(World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key)), 48), P + "graveyard_kept");
+            var legacyPages = AccPages(legacyGrave);
+            check(legacyPages.Contains("own") && !legacyPages.Contains("unknown"), "A legacy own-kill return is accused as unknown: " + key);
         }
+        check(byHand.Nodes[0].Text.Contains("by the Commander's own hand") && !Rules.Available(story, byHand, Legacy(World(story, 6, "trickster.ever", "soana.dead", "soana.killed_self_after_quest"))),
+            "The own-kill page is missing, or mourns a Soana a legacy save returned.");
+        // The return still answers Camellia's kill and an unattributed death.
+        check(Rules.Available(story, knot, killed) && Rules.Available(story, knot, World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead")),
+            "The knot no longer answers Camellia's kill or an unattributed death.");
         // Polish r3 (Sol CAN/INT/HOW): a luck lover later killed and never returned stays dead: no living page, no coda, her loss
         // page instead; a failed presence alone is no courtship.
         var luckLover = Pick(bowl, Later(story, tested0, 72), "soana.committed");
         var luckKilled = Program.Copy(luckLover);
-        foreach (var f in new[] { "soana.dead", "soana.forest_dead", "soana.killed_self_after_quest" }) { luckKilled.Flags.Add(f); luckKilled.Times[f] = luckKilled.Hour; }
+        foreach (var f in new[] { "soana.dead", "soana.forest_dead", "soana.killed_by_camellia" }) { luckKilled.Flags.Add(f); luckKilled.Times[f] = luckKilled.Hour; }
         Rules.Complete(story, luckKilled);
         var luckKilledLateCall = Called(luckKilled);
         check(Endings(luckKilled).SequenceEqual(new[] { P + "epilogue.luck_lost" }) && !Rules.Available(story, coda, luckKilledLateCall)

@@ -257,7 +257,12 @@ SCENES.append(scene("soana.trickster.killed.knot", "The knot never checked", "So
 {n}She sits up on the cold floor of her cave, an old dwarf woman in rags, and looks at her hands as if somebody had returned them to her with the fingers in the wrong order. Then she looks at yours.{/n}
 "I was finished. I had earned it. And now you are holding my leash in a hand that has never held anything but a sword. It will pull. At night, mostly. Do not let go of it until I take it back, and I have not decided when that will be.\"""",
         c('"You can hate me standing up."')),
-    ], requires=("trickster", "trickster.ever"), forbids=(RETURNED, CLOSED), delay=0, last=5, Relationship="soana",
+    # Polish r4 (coordinator ruling; user rule "a player-chosen kill stands"): a Commander who killed her with their own
+    # hands (any of the six native attack/kill/execution answers) gets no return: canon stands and her route closes
+    # (epilogue.by_your_hand, with Camellia's and Ulbrig's words on it). The knot answers Camellia's kill or an unattributed death.
+    # The own-kill nodes downstream (accounting own/own_lover, rebind own, the clay token) stay for saves that returned her
+    # before this ruling; new play cannot reach them.
+    ], requires=("trickster", "trickster.ever"), forbids=(RETURNED, CLOSED, OWN_KILL), delay=0, last=5, Relationship="soana",
     Chapters=[3, 5], Remote=True, TricksterDevice=True, TricksterState="killed",
     RequiresAnyGroups=[[DEAD, KILLED]]))
 
@@ -745,7 +750,7 @@ SCENES.append(scene("soana.trickster.epilogue.luck_lost", "Twenty up, in a cold 
     nar("start", '''{n}Soana died in her cave at Wintersun, and the forest died with her. When the crusade's people came to see to the body, her bone bowl was still beside the cold hearth with the loaded die in it, twenty up. Nobody had told the spirits the pledge was void.{/n}
 {n}The she-bear that had gone out on the Commander's luck came back to the cave mouth once, after the snow, and lay down there, and did not get up again.{/n}''',
         c())],
-    requires=("trickster.ever", LUCK_KEPT), forbids=(RETURNED, "soana.late_campaign_kept", "soana.progression_kept"),
+    requires=("trickster.ever", LUCK_KEPT), forbids=(RETURNED, "soana.late_campaign_kept", "soana.progression_kept", OWN_KILL),
     RequiresAnyGroups=[list(LOSS)], last=99, Relationship="soana"))
 
 UNBOUND = p("She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
@@ -767,6 +772,27 @@ SCENES.append(scene("soana.trickster.epilogue.unfinished", "Left unsaid", "Epilo
     requires=("trickster.ever", RETURNED),
     forbids=(LATE_COMMITTED, COMMITTED, CLOSED, DECLINED, FRIENDS, BEARER, "sacrifice"), last=99, Relationship="soana",
     ForbidOverrides=dict(SACRIFICE_BACK)))
+
+# Polish r4: the Commander's own kill stands. One closing page for every such history the registered loss pages do not
+# already end (they read the registered chain); no trick, no return, no living word from her.
+SCENES.append(scene("soana.trickster.epilogue.by_your_hand", "The hunter's kill", "Epilogue", 5, "", [
+    nar("start", '''{n}Soana died in her cave at Wintersun by the Commander's own hand, and the forest died with her. Nothing in the trees answered for her afterwards; whatever she had held in her knot went where such things go when the hand on the leash is gone.{/n}
+{n}The crusade's report called it a necessary execution. The Sarkorians who passed the dead wood called it the place where the bloody hunter came, and they did not lower their voices when they said it.{/n}''',
+        c(), paragraphs=(
+            p("Her clay medallion went into the Commander's pack with the rest of the loot, and stayed there.",
+              requires=("soana.medallion_held",)),
+            # The two witnesses with a stake (the reactions live here: her relationship is closed by her death).
+            p("\"You killed the old woman yourself,\" Camellia said, when the news reached camp, and tilted her head as if "
+              "listening for something that had stopped. \"I asked you so nicely for her, my friend, and you simply took her. "
+              "I suppose I ought to admire it. I find I only want to know how it felt.\"",
+              forbids=("camellia.dead", "camellia.killed", "camellia.kicked_out")),
+            p("Ulbrig looked at the Commander's hands, not their face, when the scouts brought word that the Wintersun wood had "
+              "gone grey from the roots up. \"She bound a demon to a bear and called it keeping, warchief. I'd not have done it "
+              "her way. But a forest with nobody left to speak for it is a hungry thing, and it knows whose boots walked out of it.\"",
+              requires=("ulbrig.talked",), forbids=("ulbrig.dead", "ulbrig.kicked_out")),
+        ))],
+    requires=("trickster.ever", OWN_KILL), forbids=(RETURNED, "soana.late_campaign_kept", "soana.progression_kept"),
+    RequiresAnyGroups=[list(LOSS)], last=99, Relationship="soana"))
 
 SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue", 5, "", [
     nar("start", '''{n}The Commander made no further visits to Wintersun. Before the army's last march Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}
