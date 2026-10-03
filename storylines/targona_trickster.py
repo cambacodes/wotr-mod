@@ -58,6 +58,8 @@ LAB_LINE = P + "told_in_lab"
 RETURNED = P + "returned"
 MET = P + "met"
 HERALD_KILLED = "herald.killed"     # HeraldKilled 348dfb40 (ImportantNPCs_fate): the Hand is dead; reports go to the chapel
+SPARK = P + "free.spark"           # polish r4: the stove; mutual attraction, earned (gates the freed-state commitment)
+COLLEAGUES = P + "free.colleagues"  # polish r4: the stove answered as colleagues
 DRAWN = P + "drawn"                 # Q6 r4: in the freed state she stays because the Commander asked her to, not only for the wounded
 FORGIVEN = P + "forgiven"
 DECLINED = P + "declined"
@@ -429,7 +431,7 @@ letter(P + "free.spent_light", "The last wand", [
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
     nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning, and he prays the names of the night at compline, more of them every week since the Hand fell. A celestial healer who has been visiting the wards carries a copy home to Heaven, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
-], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
+], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD, "targona.correspondence_opened"), delay=0)
 
 ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wards."', [
     nar("start", '''{n}Wilcer Garms clears his throat. "There's an angel in the wards, Commander. I didn't requisition her."{/n}
@@ -461,6 +463,38 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
       c("[Leave her to the rows.]")),
 ], requires=("trickster.ever", WAND, FREE), forbids=(MET, CLOSED), delay=0)
 
+
+# Polish r4 (BEL): one in-person beat between her arrival and the vigil in which the attraction is mutual and earned, through
+# a disagreement over a dying man. Both the charitable welcome and the asked-for stay reach it; either answer may stay
+# friendship. The freed-state ward (and the late commitment) needs SPARK.
+ward(P + "free.the_stove", "What he asked her", '"Targona."', [
+    t("start", '''{n}A pikeman from the east wall is dying on the third cot, and he knows it. He has asked Targona the same question three times: whether his company held. It did not. They came off the wall at dusk with half their number left on the stones, and the whole ward heard the drums.{/n}
+{n}She has not answered him yet. When she sees you she rises and draws you two steps away, to the stove, and speaks low.{/n}
+"He wants to hear that they held. I will not tell him that. I do not tell lies, Commander, not even kind ones at the end. And I would rather you did not tell it either, with me standing beside you."''',
+      c('[Tell him the truth yourself] "Then I\'ll tell him. He should hear it from his commander."', "truth"),
+      c('[Lie to him] "He has an hour. He can spend it believing they held."', "lie"),
+      c('[Leave it to her] "Then you answer him. I\'ll sit on the other side."', "hers")),
+    nar("truth", '''{n}You kneel by the cot and tell him: the wall was lost at dusk, his company came off it in order, and the men who carried him down are the reason there is a company left to come off it. You tell him his sergeant asked after him.{/n}
+{n}He takes it the way soldiers do, with a long breath, and asks you to send the sergeant his knife. Targona holds his other hand. He dies before the second bell, and she closes his eyes.{/n}''',
+        c("Continue", "stove")),
+    nar("lie", '''{n}You kneel by the cot and tell him they held: the line never broke, and his sergeant is up on the wall now, cursing the cold. He smiles, and asks you to send the sergeant his knife.{/n}
+{n}Targona does not contradict you in front of him. She holds his other hand, and her face does not change, and he dies before the second bell believing you. She closes his eyes.{/n}''',
+        c("Continue", "stove_lie")),
+    nar("hers", '''{n}She kneels and tells him, without softening it and without hurrying: the wall was lost, his company came off it, and he was carried down by men who would not leave him. Then she asks him whom he wants to be remembered to. You hold his other hand while he decides.{/n}
+{n}He dies before the second bell with three names said and his hand in yours. She closes his eyes.{/n}''',
+        c("Continue", "stove")),
+    t("stove", '''{n}Afterwards she stands by the stove with her hands held out to it, though they are not cold.{/n}
+"Thank you." {n}She does not look at you yet.{/n} "I have sat with a great many men at the end. I did not know how much I wanted someone on the other side of the cot who would not leave me to be the only one telling them the truth."
+{n}The kettle begins to tick. You both reach for it, and your hand closes over hers on the handle, and neither of you moves.{/n}
+"Oh," she says, quite quietly, the way she might note a fever she had missed. Then she looks at you, and there is colour in her face, and she does not take her hand away.''',
+      c("[Leave your hand where it is.]", flags=(SPARK,)),
+      c("[Take the kettle, and leave her to the ward.]", flags=(COLLEAGUES,))),
+    t("stove_lie", '''{n}Afterwards she stands by the stove with her hands held out to it, though they are not cold.{/n}
+"He died happy. I know." {n}Her voice is low and very even.{/n} "I am angry with you, Commander. You took the last true thing anyone could have given him and gave him a pleasant story instead, and I stood there and let you."
+{n}She turns. She is closer than you thought.{/n} "And I do not want you to go. I have been trying to work out how both of those can be true at once, and I cannot, so I am telling you both."''',
+      c('[Stay] "Then be angry with me here."', flags=(SPARK,)),
+      c("[Go, and leave her to the ward.]", flags=(COLLEAGUES,))),
+], requires=("trickster.ever", MET), forbids=(CLOSED, COMMITTED, SPARK, COLLEAGUES), delay=48)
 
 # --- Shared: the ward (the commit, both states; R2-1) ---------------------------------------------------------------
 
@@ -513,7 +547,7 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
       c("Continue", "threshold")),
     *night_nodes(),
 ], requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED), delay=96,
-   RequiresAnyGroups=[[TESTED, MET]])
+   RequiresAnyGroups=[[TESTED, SPARK]])   # polish r4: the freed state needs the stove's earned attraction
 
 ward(P + "after.quiet_ward", "A quiet ward", '"The ward is quiet."', [
     t("start", '''{n}The ward is quiet. The sergeant has gone back to his company on the east wall. Targona is folding bandages, and she does not stop when you come in.{/n}
@@ -610,8 +644,9 @@ LIGHT_PARAGRAPHS = (
 # The wand night belongs to the freed state only; the death-return ward never had it.
 WARD_PARAGRAPHS = (
     p("The wounded who passed through it still told new arrivals about the night the Commander worked the rows with a "
-      "wand that never ran down. Afterwards its wands ran down like anyone's, and she rationed every charge, and never once "
-      "sent for the Commander to do it again.", requires=(WAND,), forbids=(CHARGES,)),
+      "wand that never ran down. On the bad nights she sent for the Commander, and the Commander came when the war allowed. "
+      "When it did not, her wands ran down like anyone's, and she rationed every charge, and prayed for the Commander at "
+      "compline with the rest of the ward's absent.", requires=(WAND,), forbids=(CHARGES,)),
     p("Three empty wands hung on a nail by its door, from the night the Commander emptied the stores for strangers. "
       "The treasurer's bill for them hung beside them, receipted, and she would not let anyone take either down.",
       requires=(CHARGES,)),
@@ -628,20 +663,20 @@ page(P + "epilogue.commit", "When the ward was quiet",
 {n}She did not wait for the answer in words. She took the Commander up the ladder into the empty drying loft, where the last of the bandages still hung in rows from the rafters, and said, "I have tended every body in this city. I want one that is mine to want." She pulled the plain smock over her head and let it fall, and spread her wings so that the linen swayed all down the row, and drew the Commander down onto the blanket under them and settled astride, and bent to kiss the Commander with her hair falling round both their faces.{/n}
 {n}In the morning Wilcer Garms found a feather on the ladder and wrote something in his ledger. When the new infirmary opened, in a street near the Commander's house, she hung that feather over the door.{/n}''',
      requires=("trickster.ever",), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"), paragraphs=LIGHT_PARAGRAPHS,
-     RequiresAnyGroups=[[TESTED, DRAWN]], **SACRIFICE_GUARD)
+     RequiresAnyGroups=[[TESTED, SPARK]], **SACRIFICE_GUARD)
 
 # Q6 r4 (TRK/BEL): a freed angel who stayed only for the wounded is a colleague, not a lover, when the war ends first.
 page(P + "epilogue.colleague", "The next cot",
      '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. She and the Commander worked the rows together on the bad nights, and argued about wands, and never once about anything else.{/n}
 {n}When the tents came down she went back to Heaven's healers, and a letter came to the Commander at midwinter, as correct as a report, asking after the drummer with the fever. At the bottom, in a smaller hand, she had written that the ward was quiet now, if anyone ever wanted to ask her anything that was not about wands.{/n}''',
-     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, DRAWN, "sacrifice"), paragraphs=WARD_PARAGRAPHS,
+     requires=("trickster.ever", MET), forbids=(COMMITTED, CLOSED, DECLINED, LATE_COMMITTED, "sacrifice"), paragraphs=WARD_PARAGRAPHS,
      **SACRIFICE_GUARD)
 
 # Polish (INT): the colleague's farewell when the Commander did not come back from the Threshold (no invitation to anyone).
 page(P + "epilogue.colleague_lost", "The list by the door",
      '''{n}Targona stayed in Drezen's field infirmary until the last cot was folded, for the wounded, as she had said. The Commander did not come back from the Threshold. A runner told her at the cots. She went on with the dressing in her hands, and only when it was tied did she ask him to say it again.{/n}
 {n}When the tents came down she went back to Heaven's healers. She left the chaplain a list of the men the Commander had sat up with on the bad nights, every name she could remember, and asked him to pray it at compline after she had gone.{/n}''',
-     requires=("trickster.ever", MET, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, DRAWN, "trickster.commander_back"),
+     requires=("trickster.ever", MET, "sacrifice"), forbids=(COMMITTED, CLOSED, DECLINED, LATE_COMMITTED, "trickster.commander_back"),
      paragraphs=WARD_PARAGRAPHS)
 
 page(P + "epilogue.ally", "The ward's other chair",

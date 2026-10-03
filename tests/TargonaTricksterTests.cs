@@ -186,7 +186,29 @@ internal static class TargonaTricksterTests
         check(left.Count > 0 && left.All(o => o.Has(Closed) && !o.Has(Committed)), "Leaving before dawn does not close her route.");
 
         // Trk_Targona_Declined: her soft no, and the priced second ask.
-        var metOnly = World(story, 5, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent", P + "primed");
+        var metOnly = World(story, 5, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent", P + "primed", P + "free.spark");
+        // Polish r4 (BEL): the freed-state vigil waits on the stove's earned attraction; answering it as colleagues keeps friendship.
+        var stove = S(P + "free.the_stove");
+        var metNoSpark = World(story, 5, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent", P + "primed");
+        check(!Rules.Available(story, ward, metNoSpark) && Rules.Available(story, stove, metNoSpark), "The vigil opens without the stove.");
+        var stoveOut = Program.Walk(stove, metNoSpark).ToList();
+        check(stoveOut.Any(o => o.Has(P + "free.spark")) && stoveOut.Any(o => o.Has(P + "free.colleagues") && !o.Has(P + "free.spark"))
+              && stoveOut.All(o => !o.Has(Committed) && !o.Has(Closed)), "The stove forces or forbids the attraction.");
+        foreach (var answer in new[] { "truth", "lie", "hers" })
+        {
+            var stovePages = new HashSet<string>();
+            Program.Walk(stove, metNoSpark, (page, _) => stovePages.Add(page));
+            check(stovePages.Contains(answer), "The stove loses an answer: " + answer);
+        }
+        check(stoveOut.Where(o => o.Has(P + "free.colleagues")).All(o => !Rules.Available(story, ward, Later(story, o, 200))),
+            "Colleagues at the stove still reach the vigil.");
+        // Polish r4: one Chapter 5 address. The ward's angel does not also write from the eastern wayhouse, and vice versa.
+        check(!Rules.Available(story, S("targona.unasked_question"), World(story, 5, "trickster", "trickster.ever", "targona.free",
+                  "targona.ran_treatment_completed", "targona.ran_final_seen", "targona.ran_none", P + "met"))
+              && Rules.Available(story, S("targona.unasked_question"), World(story, 5, "trickster", "trickster.ever", "targona.free",
+                  "targona.ran_treatment_completed", "targona.ran_final_seen", "targona.ran_none"))
+              && !Rules.Available(story, spent, World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.correspondence_opened")),
+            "Targona is at the Drezen ward and the eastern wayhouse at once.");
         check(Rules.Available(story, ward, metOnly), "Trk_Targona_Declined: the ward is closed to the freed state.");
         var declined = After(ward, metOnly, "refused", 0);
         check(declined.Has(P + "declined") && !declined.Has(Committed) && !declined.Has(Closed), "Trk_Targona_Declined: flags.");
@@ -318,8 +340,13 @@ internal static class TargonaTricksterTests
             var arrived = Program.Copy(After(freeFurlough, spawned, "why", 0));
             Rules.Complete(story, arrived);
             check(arrived.Has(P + "met") && Rules.PresenceWanted(presence, arrived), "Freed state: the arrival does not keep her at the cots.");
-            var wardNight = Later(story, arrived, 96);
-            check(Rules.Available(story, ward, wardNight), "Freed state: the ward does not follow the arrival.");
+            // Polish r4: the stove comes between the arrival and the vigil.
+            check(!Rules.Available(story, ward, Later(story, arrived, 200)) && Rules.Available(story, S(P + "free.the_stove"), Later(story, arrived, 48)),
+                "Freed state: the vigil skips the stove.");
+            var sparked = After(S(P + "free.the_stove"), Later(story, arrived, 48), "stove", 0);
+            Rules.Complete(story, sparked);
+            var wardNight = Later(story, sparked, 96);
+            check(sparked.Has(P + "free.spark") && Rules.Available(story, ward, wardNight), "Freed state: the ward does not follow the stove.");
             var freePages = new HashSet<string>();
             Program.Walk(ward, wardNight, (page, _) => freePages.Add(page));
             check(freePages.Contains("yes_free") && !freePages.Contains("yes") && freePages.Contains("refused_dawn"),
@@ -345,7 +372,10 @@ internal static class TargonaTricksterTests
         // Q6 r4 (TRK/BEL): the late romance needs her to have stayed because the Commander asked; a charitable welcome is a colleague.
         var epColleague = S(P + "epilogue.colleague");
         var welcomed6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "cost.wand_unspent");
-        var drawn6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "cost.wand_unspent");
+        var drawn6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "free.spark", P + "cost.wand_unspent");
+        var drawnOnly6 = World(story, 6, "trickster.ever", "targona.free", P + "met", P + "drawn", P + "cost.wand_unspent");
+        check(!drawnOnly6.Has(P + "late_committed") && Rules.Available(story, epColleague, drawnOnly6) && !Rules.Available(story, epCommit, drawnOnly6),
+            "An asked-for stay without the stove's attraction becomes a romance at the war's end.");
         check(!welcomed6.Has(P + "late_committed") && !Rules.Available(story, epCommit, welcomed6) && !Rules.Available(story, epFurlough, welcomed6)
               && Rules.Available(story, epColleague, welcomed6)
               && drawn6.Has(P + "late_committed") && Rules.Available(story, epCommit, drawn6) && !Rules.Available(story, epColleague, drawn6),

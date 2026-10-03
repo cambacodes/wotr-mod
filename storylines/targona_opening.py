@@ -36,12 +36,12 @@ BLOCKED = ("targona.closed", "targona.dead_lab", "targona.dead_lair", "targona.c
            "legend", "dragon", "targona.ran_lich", "targona.ran_demon", "targona.ran_devil", "targona.ran_legend", "targona.ran_dragon")
 
 
-def s(id, title, nodes, previous=None, delay=24, requires=()):
+def s(id, title, nodes, previous=None, delay=24, requires=(), forbids=()):
     for page in nodes:
         page["Portrait"] = "TargonaCorrespondence"
     SCENES.append(scene("targona." + id, title, "Targona", 5, "Read Targona's correspondence", nodes,
                         requires=("targona.free", "targona.ran_treatment_completed", "targona.ran_final_seen") + ((previous,) if previous else ()) + tuple(requires),
-                        forbids=BLOCKED, delay=delay, optional=True, Relationship="targona",
+                        forbids=BLOCKED + tuple(forbids), delay=delay, optional=True, Relationship="targona",
                         Remote=True, ManualOnly=True, Areas=["2570015799edf594daf2f076f2f975d8"], Chapters=[5], RequiresAny=ALLOWED))
 
 
@@ -81,7 +81,7 @@ The last line comes out less polished.
 "If you tire of this, say so and we'll quarrel about something else. I'd rather have a blunt friend than a polite one."
 You leave a clean strip at the bottom of the page and label it ROOM FOR A COMPLAINT ABOUT ANYTHING BUT THE WAR.
 {n}Her drawing goes back with the letter, uncertain hinges and first arrow intact.{/n}''', c("Send your reply with the next personal correspondence.", flags=("targona.correspondence_opened",))),
-], delay=0)
+], delay=0, forbids=("targona.trickster.met",))   # polish r4: one Chapter 5 address; the Trickster ward's angel is in Drezen
 
 
 s("second_margin", "An uplifting account", [
