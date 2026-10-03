@@ -456,9 +456,9 @@ visit(P + "discovery.pilgrim", "The pilgrim's road", [
 "The Blessed's grave, Commander. Under the temple, down the cellar stair. My father took me there when I was small, before the rift. Every family in the valley left her the first of its hunting." {n}He covers the clasp with two fingers.{/n} "Nobody goes now. The roads went bad, and then the temple went bad; there were people in it who were not praying to Erastil. But she is still down there. A huntress like that does not leave."''',
       c('"Tell my scouts the road."', "road"),
       c('"Feed him. I will hear the rest another night."', abort=True)),
-    n("road", "Narrator", '''{n}He gives your scout the turnings from the Drezen road one by one, the ford, the split oak, the hill with the cairn on it, and makes the man say each one back to him. Then he sits down by the fire as if his legs have finished their part.{/n}
+    n("road", "Narrator", '''{n}He gives your scout the turnings one by one: leave the Drezen road at the crossroads below the city, then the ford, the split oak, the hill with the cairn on it. He makes the man say each one back to him. Then he sits down by the fire as if his legs have finished their part.{/n}
 "You will want to know who is standing behind the doors before you knock," {n}he says.{/n} "I never did. I was a boy. Boys think the gods keep the doors."''',
-      c("[Mark the road to her temple on your map.]", flags=(TEMPLE_DISCOVERED,)),
+      c("[Have the scout write the turnings down. You will ride out and find the place yourself.]", flags=(TEMPLE_DISCOVERED,)),
       c('"Not now. Keep him fed."', abort=True)),
 ], requires=("trickster", "trickster.ever"),
     forbids=(CLOSED, RETURNED, DECLINED, REMAINS, TOMB_VISITED, CRYPT_KNOWN, KYADO_DEAD, TEMPLE_DISCOVERED), chapters=(5, 5))

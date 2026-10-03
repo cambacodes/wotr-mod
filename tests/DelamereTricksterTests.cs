@@ -282,6 +282,11 @@ internal static class DelamereTricksterTests
             "Trk_Delamere_Pilgrim: the road grants more than the road (or comes again).");
         check(!own.Any(s => s.TricksterDevice && Rules.Available(story, s, Later(story, roadKnown, 24))),
             "Trk_Delamere_Pilgrim: the road alone launches a waking; the Commander must still reach her stone.");
+        // Arrival is the native observation itself: delamere.tomb_visited is only ever the StartedDialogs read of the tomb Book
+        // (96993dc6), never a flag any Delamere scene sets. The map-to-crypt walk from a missed-temple save is a live E2E item.
+        check(story.StartedDialogs.TryGetValue("delamere.tomb_visited", out var tombBook) && tombBook == "96993dc62aebc38469f890b857173117"
+              && !mine.SelectMany(s => s.Nodes).SelectMany(nd => nd.Choices).Any(c => c.Set.Contains("delamere.tomb_visited")),
+            "Trk_Delamere_Pilgrim: arrival at her stone is not the native tomb Book's own start.");
         var arrived = Later(story, roadKnown, 24); arrived.Flags.Add("delamere.tomb_visited"); Rules.Complete(story, arrived);
         check(Rules.Available(story, late, arrived) && Pages(late, arrived).Contains("body_sealed") && Pages(late, arrived).Contains("rise_sealed")
               && Reaches(After(late, arrived, "home_late", 0).First(), "delamere.committed"),
