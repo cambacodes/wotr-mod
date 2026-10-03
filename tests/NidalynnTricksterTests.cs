@@ -330,11 +330,12 @@ internal static class NidalynnTricksterTests
         check(ch5Met.All(r => r.Has(P + "met") && !r.Has(P + "met_before_abyss")), "Trk_Nidalynn_Reunion: a Chapter 5 first meeting is latched as before the Abyss.");
         var homeEarly = Later(story, ch3Met.First(), 13, 5);
         var homeNew = Later(story, ch5Met.First(), 13);
-        check(Avail(back, homeEarly) && Avail(back, homeNew), "Trk_Nidalynn_Reunion: the door after the Abyss does not open.");
-        check(Visited(back, homeEarly).Contains("look") && !Visited(back, homeEarly).Contains("look_new")
-              && Visited(back, homeNew).Contains("look_new") && !Visited(back, homeNew).Contains("look"),
-            "Trk_Nidalynn_Reunion: a Chapter 5 first meeting is greeted as a reunion, or the reunion as a stranger.");
-        check(!Visited(back, homeNew).Contains("news_egg") && Visited(back, homeNew).Contains("news_hearth"),
+        // Polish r2 (audit COX): the welcome home is a reunion only; a Chapter 5 first meeting already sat on her step.
+        check(Avail(back, homeEarly) && !Avail(back, homeNew), "Trk_Nidalynn_Reunion: the door after the Abyss does not open, or opens for a Chapter 5 first meeting.");
+        check(Visited(back, homeEarly).Contains("look") && !Visited(back, homeEarly).Contains("look_new"),
+            "Trk_Nidalynn_Reunion: the reunion is greeted as a stranger.");
+        var homeHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "hearth.grey_stone", P + "met", P + "met_before_abyss", "nidalynn.started"), 13, 5);
+        check(!Visited(back, homeHearth).Contains("news_egg") && Visited(back, homeHearth).Contains("news_hearth"),
             "Trk_Nidalynn_Reunion: the egg's kiln news reaches a Commander who never took it to the kiln.");
         check(!Avail(back, Later(story, World(story, 5, "trickster.ever", P + "primed", P + "met", P + "met_before_abyss", "nidalynn.started", P + "hatched", P + "proposed"), 13)),
             "Trk_Nidalynn_Reunion: the first night home plays after the first flight.");
@@ -561,6 +562,50 @@ internal static class NidalynnTricksterTests
         check(S(P + "wall.wings").InteractionHub == "nidalynn.presence.chosen" && S(P + "door.own_form").InteractionHub == "nidalynn.presence"
               && S(P + "ridge.claimed_flight").InteractionHub == "nidalynn.presence",
             "Trk_Nidalynn_Allocation: a visit stands on the wrong body's step.");
+
+        // Polish r2 (audit COX, Trk_Nidalynn_LateStart): a Commander who takes the egg in Chapter 5 gets one rest delivery in
+        // Chapter 5, worst branch: the vault or the straw page folds the grey stone's nights in; the welcome home never plays.
+        foreach (var (late, entryWorld) in new[] {
+            (vault, World(story, 5, "trickster", "trickster.ever", "irabeth.chapter_five", "eggs.seen", "eggs.project")),
+            (straw, World(story, 5, "trickster", "trickster.ever", "irabeth.chapter_five", "eggs.seen", "eggs.project", "eggs.druids")) })
+        {
+            var start = Later(story, entryWorld, 25);
+            check(Avail(late, start), "Trk_Nidalynn_LateStart: no Chapter 5 door: " + late.Id);
+            var kept5 = Program.Walk(late, start).Where(r => r.Has(P + "primed") || r.Has(P + "egg.straw")).ToList();
+            check(kept5.Count > 0 && kept5.All(r => r.Has(P + "hearth.grey_stone")) && Visited(late, start).Contains("nights"),
+                "Trk_Nidalynn_LateStart: the Chapter 5 page does not fold the grey stone in: " + late.Id);
+            // Walk every Nidalynn scene forward through Chapter 5 and count what arrives at a rest.
+            var delivered = new HashSet<string> { late.Id };
+            var frontier = kept5.Take(2).ToList();
+            var seenStates = new HashSet<string>();
+            for (int depth = 0; depth < 16 && frontier.Count > 0; depth++)
+            {
+                var next = new List<Snapshot>();
+                foreach (var from in frontier)
+                {
+                    var w = Later(story, from, 200, 5);
+                    foreach (var s in mine.Where(x => !x.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Avail(x, w)))
+                    {
+                        if (Rules.IsMailbagLetter(s)) delivered.Add(s.Id);
+                        foreach (var r in Program.Walk(s, w).Take(3))
+                            if (seenStates.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
+                    }
+                }
+                frontier = next.Take(60).ToList();
+            }
+            check(delivered.SequenceEqual(new[] { late.Id }),
+                "Trk_Nidalynn_LateStart: a Chapter 5 start gets more than one rest delivery: " + string.Join(", ", delivered));
+        }
+        check(Ch(vault, "carry", 0).Forbids.Contains("irabeth.chapter_five") && Ch(straw, "carry", 0).Forbids.Contains("irabeth.chapter_five")
+              && Ch(vault, "carry", 0).Set.SequenceEqual(new[] { P + "primed", P + "egg.vault", P + "cost.palms" }),
+            "Trk_Nidalynn_LateStart: the Chapter 3 ending of the vault or the straw changed.");
+
+        // Polish r2 (audit BEL): the chosen-form twins never speak the widow's costume in the present tense.
+        foreach (var twin in mine.Where(s => s.Id.EndsWith(".chosen", StringComparison.Ordinal)))
+            check(!twin.Nodes.Any(n => n.Text.Contains("I wear a belly")) , "Trk_Nidalynn_Twins: her own face still wears the widow's belly: " + twin.Id);
+        check(S(P + "kiln.the_goat").Nodes.Single(n => n.Id == "after_wolves").Text.Contains("I wear a belly")
+              && S(P + "kiln.the_goat.chosen").Nodes.Single(n => n.Id == "after_wolves").Text.Contains("I wore a belly"),
+            "Trk_Nidalynn_Twins: the goat's twins say the wrong thing about the costume.");
 
         // Every page beat opens from its own gates.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && !x.TricksterDevice))

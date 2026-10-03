@@ -238,6 +238,13 @@ SCENES.append(scene(P + "eggs.lamp_black", "Out in the ash", "Nidalynn", 3, "[Lo
     Chapters=[3], AnswerLists=[GOLEM_LIST], NativeReturnCue=GOLEM_RETURN, TricksterDevice=True, TricksterState="golems"))
 
 
+# Polish r2 (audit COX, ledger 05 §4: one Chapter 5 delivery): a Commander who takes the egg in Chapter 5 gets the grey
+# stone's nights inside the same page, so the late start is one rest delivery, not two. The old final choice is kept and
+# gated to the earlier chapters; the folded ending is appended.
+HEARTH_FOLD = '''{n}It lives in the ashes of your hearth after that, at the back, where the fire is hottest, and it looks like a stone that somebody has been careless with. Within the week your steward has burned his fingers on it twice and calls it "the Commander's rock" with a particular expression, and soon so does the whole citadel.{/n}
+{n}At night, when the house is quiet, the ashes around it shiver, and a cup on the mantel hums against the stone, and once, near midnight, you wake certain that someone is singing in the next room, very low, a long way off. Every morning the rock is a little colder. The hearth is as hot as your steward can make it. It is not enough.{/n}'''
+
+
 # --- The fallback (a page, Chapters 3 and 5): the same soot, in the citadel vault -------------------------------------
 # The clutch was crated to Drezen (DragonEggsProjectGained) and waits for the druids or the cooks. Worse terms: the vault
 # clerk, and an egg that has to be carried out hot.
@@ -257,7 +264,9 @@ visit(P + "eggs.vault", "Coal", [
         c("Continue", "carry", flags=(CLERK,))),
     nar("carry", '''{n}The coal bucket is no good for the stairs; it tips. You take the egg out and carry it up in your hands, under your coat, against your chest, the way you would carry a lamp through wind.{/n}
 {n}It is much hotter than it looked. By the second landing the skin of both palms has gone white and tight, and by your own door it has started to blister. You do not put it down until it is in the ashes of your hearth, and then you sit on the floor and hold your hands in the washbasin, and the water goes warm.{/n}''',
-        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS))),
+        c("[Leave it in the ashes.]", flags=(PRIMED, VAULT, PALMS), forbids=(CH5,)),
+        c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(PRIMED, VAULT, PALMS, HEARTH))),
 ], requires=("trickster", CRATED), forbids=(PRIMED, CRUSHED, "eggs.druids", "eggs.omelet", "eggs.destroyed"), delay=24,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="vault")
 
@@ -294,7 +303,9 @@ I'll not burn a Commander's spoil without the Commander's word, so it is by the 
         c("Continue", "carry", flags=(QUARTERMASTER,))),
     nar("carry", '''{n}It goes up four flights under your coat, cold against your ribs, and into the ashes at the back of your hearth where the fire is hottest. You bank the coals over it with the poker until there is nothing to see but a grey stone that somebody has been careless with.{/n}
 {n}Then, because you have staked your name in chalk on a thing everybody else heard was empty, you sit up with it. Near midnight, so faintly that you could have imagined it, something inside it turns over. Once.{/n}''',
-        c("[Leave it in the ashes.]", flags=(STRAW, SLATE))),
+        c("[Leave it in the ashes.]", flags=(STRAW, SLATE), forbids=(CH5,)),
+        c("[Leave it in the ashes.]", "nights", requires=(CH5,))),
+    nar("nights", HEARTH_FOLD, c("[Bank the fire.]", flags=(STRAW, SLATE, HEARTH))),
 ], requires=("trickster", GIVEN), forbids=(PRIMED, CRUSHED, STRAW, STRAW_BURNED, "eggs.omelet", "eggs.destroyed"), delay=12,
     kind="event", owner="Commander", TricksterDevice=True, TricksterState="straw")   # Chapters 3 and 5: the quartermaster
     # keeps it by the stores' brazier pending the Commander's word, so a decree finished late, or a Commander away in the

@@ -68,6 +68,21 @@ MOVES = {
 }
 
 
+# Polish r2 (audit BEL): node text that only the chosen-form twin changes, (node, old, new); the widow keeps the original.
+CHOSEN_EDITS = {
+    "kiln.the_goat": [("after_wolves", "I wear a belly and a shawl, and nobody pays for it but me. That's a costume.",
+                       "I wore a belly and a shawl all winter, and nobody paid for it but me. That was a costume.")],
+}
+
+
+def _chosen_edits(twin, key):
+    for node_id, old, new in CHOSEN_EDITS.get(key, ()):
+        node = next(n for n in twin["Nodes"] if n["Id"] == node_id)
+        if node["Text"].count(old) != 1:
+            raise ValueError("nm1_nidalynn: %s/%s changed (%s)" % (twin["Id"], node_id, old))
+        node["Text"] = node["Text"].replace(old, new)
+
+
 def _place(scene, hub, unit, entry, prefix, edits):
     scene["Remote"] = False
     scene.pop("Kind", None)
@@ -103,6 +118,7 @@ def integrate(payload):
         if where == "either":
             twin = copy.deepcopy(scene)
             twin["Id"] = scene["Id"] + ".chosen"
+            _chosen_edits(twin, key)
             twin["Requires"] = list(scene["Requires"]) + [FORM]
             twin["Forbids"] = list(scene["Forbids"]) + [scene["Id"], twin["Id"]]
             scene["Forbids"] = list(scene["Forbids"]) + [FORM, twin["Id"]]

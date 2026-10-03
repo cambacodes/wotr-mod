@@ -361,7 +361,7 @@ visit(BACK, "Home from the dark", [
         c("Continue", "end")),
     nd("end", '''{n}She gets up, and picks up her basket, and at the door she stops.{/n} "Sleep tonight. Properly. In a bed, not a chair." {n}She looks back at you.{/n} "I'll know if you don't. The laundress on the second floor tells me everything."''',
         c("[Sleep.]", flags=(BACK,))),
-], requires=(MET,), forbids=(BACK, LIE_KEPT, PROPOSED), delay=12, chapters=(5, 5))
+], requires=(MET, MET_EARLY), forbids=(BACK, LIE_KEPT, PROPOSED), delay=12, chapters=(5, 5))   # polish r2: reunion only
 
 
 # --- 10. The long night (after the kiss): what she's afraid of -----------------------------------------------------------
