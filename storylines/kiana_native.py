@@ -19,7 +19,9 @@ SCENES = [scene(AFTERMATH, "", "KianaEpilogue", 3, "", [
       "moment, and she is the one who lets go first. Whatever they had been to one another, they were not that now, and "
       "neither of them pretended otherwise in front of a crowd.{/n}")],
     # No seelah.elan_dead forbid: that etude is Playing-only in Drezen (E3), and the aftermath dialog itself needs Elan alive.
-    requires=("trickster.ever", "kiana.separated"), forbids=("kiana.bereaved",), last=99, Relationship="kiana")]
+    # Engine-q2: trickster.now, not the run latch. kiana.separated is set on every path, so the path is this edit's only
+    # Trickster evidence, and the aftermath can play after a Chapter 4 failure or a Summit conversion (T6a).
+    requires=("trickster.now", "kiana.separated"), forbids=("kiana.bereaved",), last=99, Relationship="kiana")]
 
 # 6b (kiana.md, Polish residual 2): a ransom or a buy-back already brought every guest home (Arsinoe broke the stones in the ward),
 # so native Q3 would recover them a second time. Read only, warning-only, Trickster only.
@@ -48,7 +50,7 @@ SCENES += [
 NATIVE_EPILOGUE_EDITS = {
     "81109ea8fb20dbc478cf67116740f4a1": dict(Parent="27bc5f6c94108a446b8273800f7da48b", Dialog="27bc5f6c94108a446b8273800f7da48b",
                                              Key="b261aab4-14ff-41e7-bd72-21aeeab7df44", Replacement=AFTERMATH,
-                                             When=[["trickster.ever", "kiana.separated"]], KeepNativeImage=False,
+                                             When=[["trickster.now", "kiana.separated"]], KeepNativeImage=False,
                                              Variants=[dict(Replacement=AFTERMATH_HOME, When=HOME_WORLDS, KeepNativeImage=False)]),
     CUE_0051: dict(Parent="800706e8e47847f4e88e2c3c586706de", Dialog="fa5e885aaa9840f419939176d38d176b",
                    Key="8e4494ff-5209-44e1-9e80-98a8b9d2a6a9", Replacement=BOWL, When=HOME_WORLDS, KeepNativeImage=False, Variants=[]),

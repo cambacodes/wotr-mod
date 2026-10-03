@@ -167,6 +167,8 @@ class Model:
         self.derived |= set(self.composites)
         # E4b: a guarded composite also needs each named relationship's route open (Rules.RouteOpen).
         self.open_routes = {k: list(v) for k, v in (story.get("DerivedOpenRoutes") or {}).items()}
+        # Engine-q2: a composite is withheld while any of its DerivedForbids flags holds (trickster.now).
+        self.derived_forbids = {k: list(v) for k, v in (story.get("DerivedForbids") or {}).items()}
         # E14g count composites.
         self.counts = {k: (list(v.get("Of") or []), int(v.get("Min", 1))) for k, v in (story.get("Counts") or {}).items()}
         self.derived |= set(self.counts)
@@ -363,7 +365,8 @@ class Reach:
         if f in w.true: return True
         if f in self.m.latches: return any(self.forced(x, ch) for x in self.m.latches[f])
         if f in self.m.composites:
-            return f not in self.m.open_routes and any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f])
+            return (f not in self.m.open_routes and not any(self.possible(x, ch) for x in self.m.derived_forbids.get(f, []))
+                    and any(all(self.forced(x, ch) for x in g) for g in self.m.composites[f]))
         if f in self.m.counts: return sum(1 for x in self.m.counts[f][0] if self.forced(x, ch)) >= self.m.counts[f][1]
         if f == "chapter_one": return ch == 1 if self.chaptered else False
         if f == "chapter_later": return (ch or 0) > 1
@@ -802,6 +805,10 @@ def validate(model):
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive.")) or not groups or any(not g for g in groups)
                 or any(x not in known for g in groups for x in g)):
             errs.append("Invalid derived key: " + k)
+    for k, fb in model.derived_forbids.items():
+        if (k not in model.composites or not fb or len(set(fb)) != len(fb) or k in fb or any(x not in known for x in fb)
+                or any(x in g for g in model.composites[k] for x in fb)):
+            errs.append("Invalid DerivedForbids entry: " + k)
     for k, guard in model.open_routes.items():
         if k not in model.composites or not guard or len(set(guard)) != len(guard) or any(r not in model.rels for r in guard):
             errs.append("Invalid DerivedOpenRoutes entry: " + k)
@@ -845,7 +852,7 @@ def validate(model):
             sets = [f for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]]
             if (not s["TricksterDevice"] or not acc or s["Reaction"] or is_epilogue(s)
                     or (s["TricksterState"] is not None and s["TricksterState"] not in acc)
-                    or not ({"trickster", "trickster.ever"} & set(s["Requires"]))
+                    or not ({"trickster", "trickster.ever", "trickster.now"} & set(s["Requires"]))
                     or not any(f in rec or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f for f in sets)):
                 errs.append("Invalid Trickster device: " + sid)
         if s["Reaction"]:
@@ -1792,7 +1799,7 @@ class SimState:
 
 def composite_inputs(model, k):
     """Mirror of Rules.DerivedInputs: a composite's AND-group flags plus its route guards' closure inputs."""
-    out = [x for g in model.composites.get(k, []) for x in g]
+    out = [x for g in model.composites.get(k, []) for x in g] + list(model.derived_forbids.get(k, []))
     for rel in model.open_routes.get(k, []):
         r = model.rels.get(rel) or {}
         out += [r.get("ClosedFlag")] + list(r.get("UnavailableFlags") or []) + list((r.get("UnavailableOverrides") or {}).values())
@@ -1826,7 +1833,8 @@ def sim_complete(model, st):
         if any(x in st.flags for x in src): st.flags.add(k)
     for k in composite_order(model):
         if (k not in st.flags and any(all(x in st.flags for x in g) for g in model.composites[k])
-                and all(route_open(model, rel, st.flags) for rel in model.open_routes.get(k, []))):
+                and all(route_open(model, rel, st.flags) for rel in model.open_routes.get(k, []))
+                and not any(x in st.flags for x in model.derived_forbids.get(k, []))):
             st.flags.add(k)
     for k, (of, least) in model.counts.items():
         if k not in st.flags and sum(1 for x in of if x in st.flags) >= least: st.flags.add(k)

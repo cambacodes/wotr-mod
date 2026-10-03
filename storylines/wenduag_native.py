@@ -22,12 +22,14 @@ SCENES = [scene(ASCENT, "", "WenduagEpilogue", 6, "", [
       "taken, and she would not wear it. She walked her path alone, as she said, for solitude brings strength. It was "
       "noticed that the path ran through the Commander's door every night, and that she never once explained this.{/n}",
       portrait="Wenduag")],
-    requires=("trickster.ever", "wenduag.committed"), forbids=FORBIDS, last=99, Relationship="wenduag",
+    # Engine-q2 (T6a): trickster.now. Her commitment is not provably a Trickster act, so the path is this edit's only
+    # Trickster evidence; a run that left the path at a Chapter 4 failure or a Summit conversion keeps the native slide.
+    requires=("trickster.now", "wenduag.committed"), forbids=FORBIDS, last=99, Relationship="wenduag",
     ForbidOverrides={"sacrifice": "trickster.commander_back"})]
 
 NATIVE_EPILOGUE_EDITS = {
     CUE_0580: dict(Page=PAGE, Sequence=COMPANIONS, Key="7d53ebcc-5fe2-4066-b52f-eb54fa081512", Replacement=ASCENT,
-                   When=[["wenduag.committed", "trickster.ever", "!wenduag.closed"]], KeepNativeImage=False, Variants=[]),
+                   When=[["wenduag.committed", "trickster.now", "!wenduag.closed"]], KeepNativeImage=False, Variants=[]),
 }
 
 

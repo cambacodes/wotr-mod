@@ -13,7 +13,9 @@ internal static class TricksterOnlyNativeTests
         {
             var state = new Snapshot { Chapter = 6 };
             state.Flags.UnionWith(when.SelectMany(g => g).Where(f => !f.StartsWith("!", StringComparison.Ordinal)));
-            if (trickster) state.Flags.Add(Rules.TricksterPath); else state.Flags.Remove(Rules.TricksterPath);
+            // Engine-q2: trickster.now (the current path) counts as the Trickster path too; off the path neither holds.
+            if (trickster) state.Flags.UnionWith(new[] { Rules.TricksterPath, Rules.TricksterNow });
+            else { state.Flags.Remove(Rules.TricksterPath); state.Flags.Remove(Rules.TricksterNow); }
             return state;
         }
         int count = 0;
@@ -21,7 +23,7 @@ internal static class TricksterOnlyNativeTests
             foreach (var variant in Rules.EditVariants(pair.Value))
             {
                 count++;
-                check(variant.When.All(g => g.Contains(Rules.TricksterPath)), "Native edit " + pair.Key + " / " + variant.Replacement + " has a When group without trickster.ever.");
+                check(variant.When.All(Rules.OnTricksterPath), "Native edit " + pair.Key + " / " + variant.Replacement + " has a When group without trickster.ever or trickster.now.");
                 check(!Rules.WhenHolds(variant.When, World(variant.When, false)), "Native edit " + pair.Key + " / " + variant.Replacement + " holds off the Trickster path.");
                 check(Rules.SelectNativeEditVariant(Rules.EditVariants(pair.Value), World(variant.When, false)) == -1,
                     "Native edit " + pair.Key + " selects a variant off the Trickster path.");
@@ -29,7 +31,7 @@ internal static class TricksterOnlyNativeTests
         foreach (var pair in story.NativeEpilogueSuppressions)
         {
             count++;
-            check(pair.Value.When.All(g => g.Contains(Rules.TricksterPath)) && !Rules.WhenHolds(pair.Value.When, World(pair.Value.When, false)),
+            check(pair.Value.When.All(Rules.OnTricksterPath) && !Rules.WhenHolds(pair.Value.When, World(pair.Value.When, false)),
                 "Native suppression " + pair.Key + " holds off the Trickster path.");
         }
         foreach (var pair in story.NativeGates)
@@ -48,7 +50,7 @@ internal static class TricksterOnlyNativeTests
         var copy = System.Text.Json.JsonSerializer.Deserialize<Story>(System.Text.Json.JsonSerializer.Serialize(story,
             new System.Text.Json.JsonSerializerOptions { IncludeFields = true }), new System.Text.Json.JsonSerializerOptions { IncludeFields = true })!;
         var edit = copy.NativeEpilogueEdits.First().Value;
-        edit.When = edit.When.Select(g => g.Where(f => f != Rules.TricksterPath).ToArray()).ToArray();
+        edit.When = edit.When.Select(g => g.Where(f => f != Rules.TricksterPath && f != Rules.TricksterNow).ToArray()).ToArray();
         bool refused = false;
         try { Rules.Validate(copy); } catch (InvalidOperationException) { refused = true; }
         check(refused, "Validation accepted a native edit whose When group lacks trickster.ever.");

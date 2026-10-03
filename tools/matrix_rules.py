@@ -270,7 +270,7 @@ def validate_rules(matrix, ar, story=None):
                         state_name = o.get("trickster_state") or o.get("TricksterState")
                         if state_name and state_name not in access:
                             out.append(("FATAL", where, "trickster_state %r is not a trickster_access key %s" % (state_name, sorted(access))))
-                        if not ({"trickster", "trickster.ever"} & req):
+                        if not ({"trickster", "trickster.ever", "trickster.now"} & req):
                             out.append(("FATAL", where, "trickster_device must require 'trickster' or 'trickster.ever'"))
                         sets = set(o.get("sets") or []) | {f for ch in chs for f in ch.get("sets") or []}
                         if not any(f in returned or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f for f in sets):

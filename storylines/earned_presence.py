@@ -63,7 +63,22 @@ COMMANDER_ABSENT = {
 
 # The mythic-Trickster path (Binding context (4)): a canon change must require one of these, directly or through a
 # Derived/Latch/authored key whose every source does. The four Trickster finales exist only on the Trickster path.
-TRICKSTER_ROOTS = ("trickster", "trickster.ever", "trickster.was")
+TRICKSTER_ROOTS = ("trickster", "trickster.ever", "trickster.was", "trickster.now")
+
+# Engine-q2: the GLOBAL current-path reader (expansion.trickster_engine; Rules.TricksterNow). trickster.ever and
+# trickster.was record that the run WAS Trickster; trickster.now holds only while it still IS (it drops at a Chapter 4
+# failure or a Goddesses' Summit conversion). earned_presence_lint T6:
+# T6a: a native canon change (edit, suppression, gate, settlement) whose When group has no Trickster evidence besides the
+#      path latch reads trickster.now (its event can come after the run leaves the path; canon stands off the path).
+# T6b: each key below, when the build derives it, reads trickster.now in every group. The foresight public keys
+#      (claude/shyka, foresight.py, unmerged here) are the hook: the page's gated outcomes are canon changes made later,
+#      so they need the current path; the prices already paid (foresight.memory_gone.*) stay on trickster.ever.
+TRICKSTER_NOW = "trickster.now"
+TRICKSTER_LATCHES = ("trickster.ever", "trickster.was")
+CURRENT_PATH_KEYS = {
+    "foresight.page_taken": "Shyka's page opens gated outcomes in later chapters: a canon change made after the bargain",
+    "foresight.gate_believed": "the gate watch acts on the page's knowledge at a later native event",
+}
 NATIVE_TRICKSTER = ("ending.trickster", "ending.trickster_full", "ending.trickster_allplanes", "ending.trickster_allplanes_fw")
 
 
