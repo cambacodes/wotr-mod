@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4922,
-  "unique_targets": 1113,
+  "binding_uses": 4928,
+  "unique_targets": 1114,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -3889,6 +3889,10 @@
     "c0d0b565f4b725241b96c148000f1910": {
       "path": "World/Quests/c3/Wintersun/Wintersun_quest.jbp",
       "type": "BlueprintQuest"
+    },
+    "7ce588c0d2e296b41be4f754edbe60d3": {
+      "path": "World/Quests/c4/AvengeInsults/Obj3_ExiledChivarro.jbp",
+      "type": "BlueprintQuestObjective"
     },
     "820f28d6776755d47a2169e2851e15ca": {
       "path": "World/Quests/c4/RaptureOfRupture/RaptureOfRupture.jbp",
