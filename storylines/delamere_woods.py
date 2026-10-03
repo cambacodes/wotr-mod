@@ -190,6 +190,24 @@ visit(P + "woken.first_meat", "The hunter eats last", [
 ], requires=("trickster.ever", COUNTED), forbids=(CLOSED, FIRST_MEAT), delay=24)
 
 
+# Authored: the late count carries this hunt after the Abyss, including a standalone hunt between deliveries.
+_first_meat = SCENES[-1]
+_home_late = copy.deepcopy(next(node for node in _first_meat["Nodes"] if node["Id"] == "home"))
+_home_late["Id"] = "home_late"
+_home_late["Text"] = _home_late["Text"].replace(
+    "the guards stare at the pair of you as if you had come back from the Abyss already",
+    "the guards watch the blood dripping from the haunches onto their clean paving")
+for _node in _first_meat["Nodes"]:
+    for _choice in list(_node["Choices"]):
+        if _choice["Next"] == "home":
+            _late_choice = copy.deepcopy(_choice)
+            _choice["Forbids"].append(COUNT_LATE)
+            _late_choice["Requires"].append(COUNT_LATE)
+            _late_choice["Next"] = "home_late"
+            _node["Choices"].append(_late_choice)
+_first_meat["Nodes"].append(_home_late)
+
+
 # --- 3. The feasting table (her crypt, Zanedra, and the keeper who let them in) ---------------------------------------
 
 visit(P + "woken.feasting_table", "The feasting table", [
@@ -556,7 +574,8 @@ visit(P + "woken.day_owed", "The day owed", [
         c("Continue", "roofs")),
     nar("roofs", '''{n}You take to the roofs, because she will not expect a stag on the roofs. She is waiting on the second one.{/n}
 {n}She does not shoot. She does not need to. She simply steps out from behind a chimney and puts out one foot, and your bad leg does what it always does now, and you go down on the frozen tiles with the whole of Drezen spread out below you, asleep and white with frost.{/n}''',
-        c("Continue", "caught_again")),
+        c("Continue", "caught_again", requires=(RAN_FAR,)),
+        c("Continue", "caught_again_short", requires=(RAN_SHORT,))),
     dl("caught_again", '''{n}She kneels over you as she did on the night she woke, a knee pinning you to the tiles, the knife at your throat, and her breath is coming as hard as yours.{/n} "Easy, brother. You ran well." {n}Her voice is shaking, and it is not with cold.{/n} "Worse than the first time. You are getting slow. That is my doing."''',
         c('"Go on, then. Finish it."', "no_finish"),
         c('"Not yet. Hunt me again."', "again", requires=(SAID_AGAIN,)),
@@ -571,6 +590,15 @@ visit(P + "woken.day_owed", "The day owed", [
         c("Continue", "cold")),
     nar("down", '''{n}You pull her down by the lacing of her leathers, and she comes, laughing into your mouth, the knife clattering away down the tiles into somebody's gutter. For a while the frost does not matter at all.{/n}''',
         c("Continue", "cold")),
-    dl("cold", '''{n}Somewhere below, a watchman's lantern is swinging round to find the noise.{/n} "Up. You are barefoot on a roof in the first frost, and my arrow's bone is in your leg, and I will not carry you." {n}She stands, and gives you her hand, and hauls you up.{/n} "Next year I will count to ninety. You are getting slow."''',
+    dl("cold", '''{n}Somewhere below, a watchman's lantern is swinging round to find the noise.{/n} "Up. You are barefoot on a roof in the first frost, and my arrow's bone is in your leg, and I will not carry you." {n}She stands, and gives you her hand, and hauls you up.{/n} "Next year I will count to ninety. Stay quick, stag."''',
         c("[Limp home with her.]", flags=(FIRST_FROST,))),
 ], requires=("trickster.ever", COMMITTED, HUNT_OWED), forbids=(CLOSED, FIRST_FROST), delay=72)
+
+# Authored: a stag caught on the third stride has improved by reaching the roofs, despite her arrow.
+_frost = SCENES[-1]
+_caught_short = copy.deepcopy(next(node for node in _frost["Nodes"] if node["Id"] == "caught_again"))
+_caught_short["Id"] = "caught_again_short"
+_caught_short["Text"] = _caught_short["Text"].replace(
+    "Worse than the first time. You are getting slow. That is my doing.",
+    "Further than three strides this time. On that leg, too. You have learned to run on my arrow.")
+_frost["Nodes"].append(_caught_short)

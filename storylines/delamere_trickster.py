@@ -348,7 +348,7 @@ def waking(place):
 {n}Then the silence. Then, very close, a breath.{/n}''',
             *((c("Continue", "rise", requires=(TOMB_OPENED,), flags=(LIVING_WAKE,)),
                c("Continue", "rise_sealed", forbids=(TOMB_OPENED,), flags=(LIVING_WAKE,))) if crypt
-              else (c("Continue", "rise", flags=(LIVING_WAKE,)),))),
+              else (c("Continue", "rise", flags=(LIVING_WAKE, WOKE_DREZEN)),))),
         nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
 {n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
             c("Continue", "draw_antler", forbids=(YEW_BOW,)),
@@ -582,9 +582,15 @@ epilogue("apart", '''{n}Delamere the Blessed kept to the woods below her temple 
              p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied.{/n}''', requires=(LIAR,)),
              p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
 
-epilogue("never", '''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}
-{n}The Commander walked crooked for the rest of their life, and never told anyone why.{/n}''',
-         requires=(DECLINED, CLOSED), forbids=(RETURNED, "sacrifice"), **SURVIVED)
+# Authored: the successful call records Drezen before refusal; both refusal pages keep that location.
+REFUSAL_PARAGRAPHS = (
+    p('''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}''', forbids=(WOKE_DREZEN,)),
+    p('''{n}The woman who woke in Drezen left the city for the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}''', requires=(WOKE_DREZEN,)),
+)
+
+epilogue("never", "", requires=(DECLINED, CLOSED), forbids=(RETURNED, "sacrifice"), **SURVIVED,
+         paragraphs=REFUSAL_PARAGRAPHS + (
+             p('''{n}The Commander walked crooked for the rest of their life, and never told anyone why.{/n}'''),))
 
 epilogue("healed", '''{n}Delamere the Blessed kept to the woods below her temple after the war, and to the old law, and the villages near her feared her and brought her their quarrels. The Commander walked straight for the rest of a long life, on a leg a chaplain had sung whole in a single evening.{/n}
 {n}She never came to the Commander's window at the first frost. The one time they met again, at a market in the lower town, she looked at the Commander's legs, and nodded once, as a hunter nods to a beast that got away clean, and went on with her business.{/n}''',
@@ -602,9 +608,9 @@ epilogue("apart_sacrifice", '''{n}Delamere the Blessed kept to the woods below h
              p('''{n}She prayed to Erastil every night of her second life, on her knees, and he never once answered her. The Commander had once told her he had. She did not forget which of them had lied, and death did not change her mind.{/n}''', requires=(LIAR,)),
              p('''{n}"Caught, and so owned," she told the one bard who dared ask her about the Commander. "That is how a hunter thinks about a hind. I had thought better of that one." She did not say more, and the bard did not ask.{/n}''', requires=(CLAIMED,)),))
 
-epilogue("never_sacrifice", '''{n}The woman who woke in the Temple of Delamere walked away into the woods that night with her grave-dust still on her and was not seen again by anyone who could put a name to her. The Kellid villages that grew up below her temple after the war told stories of a huntress who judged their quarrels from the tree line and never came into the light.{/n}
-{n}The Commander did not come back from the Threshold, and took the limp and its reason down with them.{/n}''',
-         requires=("sacrifice", DECLINED, CLOSED), forbids=(RETURNED, "trickster.commander_back"))
+epilogue("never_sacrifice", "", requires=("sacrifice", DECLINED, CLOSED), forbids=(RETURNED, "trickster.commander_back"),
+         paragraphs=REFUSAL_PARAGRAPHS + (
+             p('''{n}The Commander did not come back from the Threshold, and took the limp and its reason down with them.{/n}'''),))
 
 epilogue("unfinished_sacrifice", '''{n}Delamere the Blessed kept to the woods below her temple after the war. The Commander did not come back from the Threshold. On the first cold night after the news, the sentries on Drezen's wall heard a stag roar in the hills, once, far too close to the city, and in the morning there were tracks under the Commander's empty window, going round and round, and then going away. They did not come again.{/n}''',
          requires=("sacrifice", RETURNED), forbids=(COMMITTED, CLOSED, LATE_COMMITTED, "trickster.commander_back"),
