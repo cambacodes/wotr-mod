@@ -1014,6 +1014,23 @@ namespace Tirabade
             return -1;
         }
 
+        // E12 contacts: the one usable unit of a blueprint, or null. A dead or destroyed original beside a route-saved living copy
+        // (spawn-copy presence) is ignored; any other unusable match, or a second usable one, makes the contact ambiguous.
+        public static T? SingleUsable<T>(IEnumerable<T> candidates, Func<T, bool> usable, Func<T, bool> ignorable) where T : class
+        {
+            T? found = null;
+            foreach (var candidate in candidates)
+            {
+                if (usable(candidate))
+                {
+                    if (found != null) return null;
+                    found = candidate;
+                }
+                else if (!ignorable(candidate)) return null;
+            }
+            return found;
+        }
+
         public static Scene?[] EditScenes(Story story, NativeEpilogueVariant[] variants) =>
             variants.Select(variant => story.Scenes.FirstOrDefault(scene => scene.Id == variant.Replacement)).ToArray();
 

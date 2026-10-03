@@ -418,6 +418,7 @@ internal static class Program
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
+        ContactDisambiguationTests.Run(Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);
         CountTests.Run(Check);
