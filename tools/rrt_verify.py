@@ -1515,7 +1515,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
             if e.get("Parent"):   # E14i: a common-dialog cue (its parent cue and dialog, no page or sequence)
-                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue", "NativeEpilogueEdits.Parent." + g),
+                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue|BlueprintAnswer|BlueprintDialog", "NativeEpilogueEdits.Parent." + g),
                          (e.get("Dialog"), "BlueprintDialog", "NativeEpilogueEdits.Dialog." + g)]
                 continue
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
@@ -1541,7 +1541,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
             if not hit: bad.append(dict(guid=g, expected=t, where=where, actual=None))
             elif hit[0] == "?parent-literal":
                 parent_untyped.append(dict(guid=g, expected=t, where=where, source=hit[1]))
-            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES):
+            elif hit[0] != t and not (t == "BlueprintArea" and hit[0].startswith("BlueprintArea")) and not (t.endswith("*") and hit[0].startswith(t[:-1]))                     and not (t == "BlueprintCueBase" and hit[0] in CUE_BASE_TYPES)                     and not ("|" in t and hit[0] in t.split("|")):
                 bad.append(dict(guid=g, expected=t, where=where, actual=hit[0], path=hit[1]))
         # hard-coded GUIDs in src/*.cs
         srcg = collections.defaultdict(set)

@@ -18,7 +18,8 @@ SCENES = [scene(AFTERMATH, "", "KianaEpilogue", 3, "", [
     n("arms", "Narrator", "{n}Elan and Kiana face each other, both alive, both whole. Kiana takes his hands and holds them a "
       "moment, and she is the one who lets go first. Whatever they had been to one another, they were not that now, and "
       "neither of them pretended otherwise in front of a crowd.{/n}")],
-    requires=("kiana.separated",), forbids=("kiana.bereaved", "seelah.elan_dead"), last=99, Relationship="kiana")]
+    # No seelah.elan_dead forbid: that etude is Playing-only in Drezen (E3), and the aftermath dialog itself needs Elan alive.
+    requires=("kiana.separated",), forbids=("kiana.bereaved",), last=99, Relationship="kiana")]
 NATIVE_EPILOGUE_EDITS = {
     "81109ea8fb20dbc478cf67116740f4a1": dict(Parent="27bc5f6c94108a446b8273800f7da48b", Dialog="27bc5f6c94108a446b8273800f7da48b",
                                              Key="b261aab4-14ff-41e7-bd72-21aeeab7df44", Replacement=AFTERMATH,
