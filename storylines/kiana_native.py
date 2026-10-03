@@ -19,11 +19,11 @@ SCENES = [scene(AFTERMATH, "", "KianaEpilogue", 3, "", [
       "moment, and she is the one who lets go first. Whatever they had been to one another, they were not that now, and "
       "neither of them pretended otherwise in front of a crowd.{/n}")],
     # No seelah.elan_dead forbid: that etude is Playing-only in Drezen (E3), and the aftermath dialog itself needs Elan alive.
-    requires=("kiana.separated",), forbids=("kiana.bereaved",), last=99, Relationship="kiana")]
+    requires=("trickster.ever", "kiana.separated"), forbids=("kiana.bereaved",), last=99, Relationship="kiana")]
 NATIVE_EPILOGUE_EDITS = {
     "81109ea8fb20dbc478cf67116740f4a1": dict(Parent="27bc5f6c94108a446b8273800f7da48b", Dialog="27bc5f6c94108a446b8273800f7da48b",
                                              Key="b261aab4-14ff-41e7-bd72-21aeeab7df44", Replacement=AFTERMATH,
-                                             When=[["kiana.separated"]], KeepNativeImage=False, Variants=[]),
+                                             When=[["trickster.ever", "kiana.separated"]], KeepNativeImage=False, Variants=[]),
 }
 
 NATIVE_GATES = {

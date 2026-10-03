@@ -1608,10 +1608,10 @@ namespace Tirabade
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
                         || variant.When == null || variant.When.Length == 0 || variant.When.Any(g => g == null || g.Length == 0 || g.Any(f => !Known(f))
-                            || !g.Any(earned.Contains))
+                            || !g.Any(earned.Contains) || !g.Contains(TricksterPath))
                         || used.Count(other => other == variant.Replacement) != 1)
                         throw new InvalidOperationException("Invalid native epilogue edit (1-node epilogue replacement used once, known When groups "
-                            + "that each require its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
+                            + "that each require trickster.ever and its relationship's CommittedFlag or Trickster return flag): " + pair.Key + " / " + variant.Replacement);
                 }
             }
             if (story.NativeEpilogueSuppressions == null) throw new InvalidOperationException("NativeEpilogueSuppressions cannot be null.");
@@ -1623,11 +1623,16 @@ namespace Tirabade
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0
-                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => f == null || !Known(f)) || !g.Any(earned.Contains)))
+                    || spec.When.Any(g => g == null || g.Length == 0 || g.Any(f => f == null || !Known(f)) || !g.Any(earned.Contains)
+                        || !g.Contains(TricksterPath)))
                     throw new InvalidOperationException("Invalid native epilogue suppression (a GUID cue not also edited, its page and sequence, "
-                        + "a relationship, known When groups that each require its CommittedFlag or Trickster return flag): " + pair.Key);
+                        + "a relationship, known When groups that each require trickster.ever and its CommittedFlag or Trickster return flag): " + pair.Key);
             }
         }
+
+        // Binding context (4), TRICKSTER-RUBRIC: every native edit, suppression and gate requires the Trickster path in every When
+        // group, so it is inert on the other paths (canon stands there).
+        public const string TricksterPath = "trickster.ever";
 
         // E14d: the flags that earn a native epilogue edit or suppression: the relationship's CommittedFlag, its Trickster
         // return flags (a fate the route undid) and (E14i) its R2-6 late commitment "<relationship>.trickster.late_committed"

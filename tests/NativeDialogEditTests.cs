@@ -28,12 +28,14 @@ internal static class NativeDialogEditTests
             ("pact struck, she did not escape", new[] { "trickster.ever", "devarra.trickster.flight.pact" }, false),
             ("escaped without the pact", new[] { "trickster.ever", "devarra.escaped" }, false),
             ("the dragon killed", new[] { "trickster.ever" }, false),
+            ("flight, off the Trickster path", new[] { "devarra.trickster.flight.pact", "devarra.escaped" }, false),
         });
         Rows("81109ea8fb20dbc478cf67116740f4a1", "27bc5f6c94108a446b8273800f7da48b", new[]
         {
-            ("separated", new[] { "kiana.separated" }, true),
-            ("separated, then bereaved", new[] { "kiana.separated", "kiana.bereaved" }, false),
-            ("married", new string[0], false),
+            ("separated", new[] { "trickster.ever", "kiana.separated" }, true),
+            ("separated, off the Trickster path", new[] { "kiana.separated" }, false),
+            ("separated, then bereaved", new[] { "trickster.ever", "kiana.separated", "kiana.bereaved" }, false),
+            ("married", new[] { "trickster.ever" }, false),
         });
         check(story.Scenes.Single(s => s.Id == "devarra.trickster.native.eggs_flown").Nodes[0].Text.Contains("flew") && 
               !story.Scenes.Single(s => s.Id == "devarra.trickster.native.eggs_flown").Nodes[0].Text.Contains("killed"),
