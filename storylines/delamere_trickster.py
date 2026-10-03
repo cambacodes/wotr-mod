@@ -645,4 +645,7 @@ def integrate(payload):
         if have is not None and have != [list(g) for g in groups]:
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+    # A closed hunt keeps its history, but grants no late commitment or household presence.
+    for key in (LATE_COMMITTED, "delamere.harem.eligible", "delamere.harem.voice.a_village_not_a_city"):
+        payload.setdefault("DerivedForbids", {})[key] = [CLOSED]
 

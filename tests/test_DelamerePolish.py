@@ -5,6 +5,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from expansion import make_expansion
+from tools.rrt_verify import Model, SimState, sim_complete
 
 P = "delamere.trickster."
 
@@ -51,6 +52,52 @@ class DelamerePolishTests(unittest.TestCase):
     def setUpClass(cls):
         cls.story = make_expansion()
         cls.scenes = {scene["Id"]: scene for scene in cls.story["Scenes"]}
+        cls.model = Model(cls.story)
+
+    def derive(self, flags):
+        state = SimState(5, 5000)
+        state.flags.update(flags)
+        sim_complete(self.model, state)
+        return state.flags
+
+    def test_open_route_derives_late_commitment_and_household(self):
+        for truth in ("told_truth", "told_both", "confessed"):
+            with self.subTest(truth=truth):
+                flags = self.derive({"trickster.ever", P + "second_hunt_offered", P + truth})
+                self.assertTrue({P + "late_committed", "delamere.harem.eligible",
+                                 "delamere.harem.voice.a_village_not_a_city"} <= flags)
+        flags = self.derive({"delamere.committed"})
+        self.assertIn("delamere.harem.eligible", flags)
+        self.assertIn("delamere.harem.voice.a_village_not_a_city", flags)
+
+    def test_second_hunt_closure_withholds_commitment_and_household(self):
+        for hunt in ("woods.second_hunt", "woods.second_hunt_page", "woods.second_hunt_late"):
+            for truth in ("told_truth", "told_both", "confessed"):
+                with self.subTest(hunt=hunt, truth=truth):
+                    flags, _ = play(self.scenes[P + hunt],
+                                    {"trickster.ever", P + "second_hunt_offered", P + truth},
+                                    choices={"choice": 2})
+                    self.assertIn("delamere.closed", flags)
+                    flags = self.derive(flags)
+                    self.assertNotIn(P + "late_committed", flags)
+                    self.assertNotIn("delamere.harem.eligible", flags)
+                    self.assertNotIn("delamere.harem.voice.a_village_not_a_city", flags)
+
+    def test_every_closure_withholds_both_household_sources(self):
+        for scene in self.scenes.values():
+            if scene.get("Relationship") != "delamere":
+                continue
+            for node in scene["Nodes"]:
+                for index, choice in enumerate(node["Choices"]):
+                    if "delamere.closed" not in choice["Set"]:
+                        continue
+                    with self.subTest(scene=scene["Id"], node=node["Id"], choice=index):
+                        flags = self.derive({"trickster.ever", "delamere.committed",
+                                             P + "second_hunt_offered", P + "told_truth",
+                                             *choice["Set"]})
+                        self.assertNotIn(P + "late_committed", flags)
+                        self.assertNotIn("delamere.harem.eligible", flags)
+                        self.assertNotIn("delamere.harem.voice.a_village_not_a_city", flags)
 
     def test_mobility_outcomes_through_first_frost(self):
         waking = self.scenes[P + "crypt.stag"]
