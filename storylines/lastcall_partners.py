@@ -362,7 +362,12 @@ partner("aranka", "aranka", "aranka.extension_kept", "aranka.extension_closed", 
     call=call('''[Call in the second verse] "Aranka! Second verse! Loud enough for the Wound to learn the words!"''',
         '''{n}Nothing answers but the fire. But you would swear, for the rest of your life, that under the roar someone was singing, off-key and with great emotion, and that the rift paused to listen.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Aranka: a verse unsung", "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you."))
+    ledger=("Aranka: a verse unsung", "Aranka is owed a second verse, and the whole crusade knows the tune. A song that isn't finished can't bury you."),
+    # Coordinator ruling 2026-10-02 (Aranka polish, item 3; R2-6): her late postwar yes reaches the coda, and the coda
+    # explicitly forbids her closed route, the Kenabres attack, an unrecovered sacrifice and an unrepaired parent failure.
+    page_commit_groups=[["aranka.extension_kept"], [AK + "late_committed"]],
+    page_forbids=("aranka.extension_closed", "aranka.kenabres_attacked", "sacrifice", "aranka.ran_failure"),
+    page_forbid_overrides={"sacrifice": "trickster.commander_back", "aranka.ran_failure": AK + "moral_repaired"})
 
 G = "gesmerha.trickster."
 partner("gesmerha", "gesmerha", "gesmerha.committed", "gesmerha.closed", "Work on the Bench",
@@ -884,7 +889,9 @@ def open_debts():
 def pages():
     """Block B. Every page belongs to the framework relationship (lastcall), as do the call-ins: the routes' own suites keep
     judging their routes, and LastCallTests judges these. `Partner` names the route each page codas, for placement.
-    G5: a page reads its partner's committed, declined and cost flags, never her closed, death or return flags."""
+    G5: a page reads its partner's committed, declined and cost flags, never her closed, death or return flags.
+    Exception (coordinator ruling 2026-10-02, Aranka polish item 3): Aranka's page forbids her closed flag, the Kenabres
+    attack, sacrifice and the parent failure explicitly (page_forbids/page_forbid_overrides), and plays in Chapter 6 only."""
     out = []
     for part in PARTNERS:
         forbids = ((part["declined"],) if part["declined"] else ()) + part["page_forbids"]
@@ -904,5 +911,7 @@ def pages():
             page = scene(part["key"] + ".lastcall.page", part["title"], "Epilogue", 1, "", [
                 n("page", "Narrator", part["opener"], paragraphs=part["paragraphs"])],
                 requires=("trickster.ever", ACTIVE, part["commit"]), forbids=forbids, last=99, **extra)
+        if part["key"] == "aranka":   # coordinator ruling 2026-10-02: her coda belongs to the ending (R2-6)
+            page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))
     return out

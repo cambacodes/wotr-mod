@@ -91,6 +91,9 @@ internal static class ArankaTricksterTests
         var thirdL = L(third);
         var secondVerseL = L(secondVerse);
         var arrivesL = L(arrives);
+        var reckoning = S(P + "failure.reckoning");
+        var reckoningYard = S(P + "failure.reckoning_yard");
+        const string Repaired = P + "moral_repaired";
         var setups = new[] { tavern, tavern5, anyTavern, mocking, mocking5, mockingAny, boast };
         List<Snapshot> Play(Scene scene, Snapshot w) => Program.Walk(scene, w);
         Snapshot After(Scene scene, Snapshot w, string node, int choice)
@@ -164,10 +167,11 @@ internal static class ArankaTricksterTests
                 "The yard copy drifted from its counter scene: " + y.Id);
         }
         var rel = story.Relationships["aranka"];
-        check(rel.UnavailableOverrides["aranka.ran_failure"] == P + "returned" && rel.TricksterAccess.Count == 3
+        check(rel.UnavailableOverrides["aranka.ran_failure"] == Repaired && rel.TricksterAccess.Count == 3
+              && rel.TricksterAccess["aranka.ran_failure"].Returned == Repaired
               && rel.TricksterAccess["aranka.ran_failure"].Detect.SequenceEqual(new[] { "aranka.ran_failure" })
               && rel.CommittedFlag == Kept && rel.ClosedFlag == Closed, "Aranka's relationship patch is wrong.");
-        foreach (var s in new[] { mocking, mocking5, mockingAny, secondVerse, secondVerseL })
+        foreach (var s in new[] { mocking, mocking5, mockingAny, secondVerse, secondVerseL, reckoning, reckoningYard })
             check(s.TricksterDevice && s.TricksterState == "aranka.ran_failure", "A failure-state scene is not an ER-2 device: " + s.Id);
         check(story.Presences.TryGetValue("aranka.presence", out var presence) && presence.Unit == Unit && presence.Mode == "spawn-copy"
               && presence.At?.NearUnit == Market && presence.Dialog == "hub" && presence.Forbids.Contains(Closed)
@@ -293,9 +297,37 @@ internal static class ArankaTricksterTests
         var led = After(mocking, failed, "after", 0);
         check(led.Has(P + "primed") && led.Has(P + "cost.mocking_verse"), "Trk_Aranka_ParentFailure: flags.");
         check(Rules.Available(story, secondVerse, Later(story, led, 72)), "Trk_Aranka_ParentFailure: her letter is missing.");
-        var forgiven = After(secondVerse, Later(story, led, 72), "start", 0);
-        check(forgiven.Has(P + "returned") && Rules.Available(story, duet, Later(story, forgiven, 72)) && Reaches(forgiven, Kept),
-            "Trk_Aranka_ParentFailure: the return does not lift the failure.");
+        var invited = After(secondVerse, Later(story, led, 72), "start", 0);
+        // Coordinator ruling 2026-10-02 (item 1): the song only brings her to Drezen; her moral objection is answered in person.
+        check(invited.Has(P + "returned") && invited.Has(P + "answered") && !invited.Has(Repaired)
+              && !Rules.Available(story, duet, Later(story, invited, 72)) && Rules.Available(story, reckoning, invited)
+              && !Rules.Available(story, secondVerse, Later(story, invited, 72)) && !Rules.Available(story, secondVerseL, Later(story, invited, 72)),
+            "Trk_Aranka_ParentFailure: the song alone lifts the failure, or the reckoning is missing.");
+        var buy = reckoning.Nodes[0].Choices[0];
+        check(buy.Crusade?.Resource == "Finances" && buy.Crusade.Amount == -200 && buy.Next == "bought"
+              && reckoning.Nodes.Single(n => n.Id == "bought").Choices[0].Set.SequenceEqual(new[] { P + "returned", Repaired, P + "cost.provisions_bought" })
+              && reckoning.Nodes.Single(n => n.Id == "unchanged").Choices[0].Set.SequenceEqual(new[] { Closed }) && reckoning.Nodes[0].Choices[2].Abort,
+            "The reckoning lost its price, its repair or its refusal.");
+        var forgiven = After(reckoning, invited, "bought", 0);
+        check(forgiven.Has(Repaired) && Rules.Available(story, duet, Later(story, forgiven, 72)) && Reaches(forgiven, Kept)
+              && !Rules.Available(story, reckoning, forgiven), "Trk_Aranka_ParentFailure: the reckoning does not lift the failure.");
+        var unchanged = After(reckoning, invited, "unchanged", 0);
+        check(unchanged.Has(Closed) && !Rules.Available(story, duet, Later(story, unchanged, 500)) && !Reaches(unchanged, Kept),
+            "An unchanged justification does not close her route.");
+        var deferred = Play(reckoning, invited).First(r => !r.Has(Repaired) && !r.Has(Closed));
+        check(Rules.Available(story, reckoning, Later(story, deferred, 24)), "Deferring the reckoning closes it.");
+        // Old saves (approved policy): the legacy returned flag, alone or with an earned yes, waits for the reckoning.
+        foreach (var legacy in new[] { new[] { P + "returned" }, new[] { P + "returned", Kept, P + "duet_sung" } })
+        {
+            var old = World(story, 3, new[] { "trickster", "trickster.ever", "aranka.ran_failure", P + "primed", P + "cost.mocking_verse",
+                P + "answered", "aranka.extension_started" }.Concat(legacy).ToArray());
+            check(Rules.Available(story, reckoning, old) && !Rules.Available(story, duet, old) && !Rules.Available(story, encore, old)
+                  && !Rules.Available(story, epVerse, Ending(story, old)) && !Rules.Available(story, epCommit, Ending(story, old)),
+                "A legacy returned save resumes courtship without the reckoning: " + string.Join("+", legacy));
+            var mended = After(reckoning, old, "bought", 0);
+            check(legacy.Contains(Kept) ? Rules.Available(story, epVerse, Ending(story, mended)) : Rules.Available(story, duet, Later(story, mended, 72)),
+                "The reckoning does not restore a legacy save: " + string.Join("+", legacy));
+        }
         var failedLate = World(story, 5, "trickster", "trickster.ever", "aranka.ran_failure", "coronation.after");
         check(Rules.Available(story, mockingAny, failedLate) && mockingAny.Nodes[0].Choices[0].Crusade?.Amount == -150,
             "The failure fallback is missing after the Coronation.");
@@ -393,6 +425,24 @@ internal static class ArankaTricksterTests
         check(Rules.Available(story, epNerosyan, Ending(story, released)) && !Rules.Available(story, epVerse, Ending(story, released))
               && !Rules.Available(story, epCommit, Ending(story, released)), "The stage page is missing, or the Commander is credited as her lover.");
 
+        // Coordinator ruling 2026-10-02 (item 3): her Last Call coda takes the late yes too, in Chapter 6, with explicit guards.
+        var coda = S("aranka.lastcall.page");
+        var lateCall = World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered");
+        check(coda.MinChapter == 6 && coda.MaxChapter == 6 && Rules.Available(story, coda, lateCall) && !lateCall.Has(Kept)
+              && !Rules.Available(story, coda, World(story, 5, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered")),
+            "The late yes loses her Last Call coda, or the coda plays before the ending.");
+        foreach (var (block, lift) in new[] { (P + "declined", Kept), (Closed, (string?)null), ("aranka.kenabres_attacked", null),
+                                              ("sacrifice", "trickster.commander_back"), ("aranka.ran_failure", Repaired) })
+        {
+            var w = World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block);
+            check(!Rules.Available(story, coda, w), "Her coda ignores " + block);
+            if (lift != null)
+                check(Rules.Available(story, coda, World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block, lift)),
+                    "Her coda stays shut after " + lift);
+        }
+        check(!Rules.Available(story, coda, World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", Kept, Closed)),
+            "A closed route keeps her coda through a kept flag.");
+
         // Polish (item 6): the post-Coronation chain from real choices, with derived placement and a 168-hour deadline.
         // Native facts only; contacts are granted only after the presence plan spawns her copy; every beat is the named choice.
         var market = story.Presences["aranka.presence"];
@@ -432,6 +482,13 @@ internal static class ArankaTricksterTests
         void Chain(string label, Snapshot answeredAt, int t0, bool marketAnchor)
         {
             check(Rules.PresenceWanted(market, answeredAt), label + ": her presence is not wanted after her answer.");
+            if (answeredAt.Has("aranka.ran_failure"))
+            {
+                var unmended = Place(Later(story, answeredAt, 24), marketAnchor, true);
+                check(!Rules.Available(story, Venue(duet, unmended), unmended), label + ": the duet opens before the reckoning.");
+                var facing = Place(answeredAt, marketAnchor, true);
+                answeredAt = Pick(facing.Has(FyeGone) ? reckoningYard : reckoning, facing, "bought", 0);
+            }
             var tooEarly = Place(Later(story, answeredAt, 23), marketAnchor, true);
             check(!Rules.Available(story, Venue(duet, tooEarly), tooEarly), label + ": the duet comes before its day.");
             var duetAt = Place(Later(story, answeredAt, 24), marketAnchor, true);
