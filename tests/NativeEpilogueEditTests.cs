@@ -128,6 +128,43 @@ internal static class NativeEpilogueEditTests
         InvalidSuppression("cue also edited", s => { var spec = s.NativeEpilogueSuppressions[Cue16]; s.NativeEpilogueSuppressions.Clear();
             s.NativeEpilogueSuppressions[Cue0409] = spec; });
         InvalidSuppression("null spec", s => s.NativeEpilogueSuppressions[Cue16] = null!);
+
+        // E14i: a common-dialog cue (Parent + Dialog, no page or sequence, no kept picture), and the R2-6 late commitment.
+        Story InDialog()
+        {
+            var s = VariantFixture();
+            var e = s.NativeEpilogueEdits[Cue0409];
+            s.NativeEpilogueEdits.Remove(Cue0409);
+            e.Page = ""; e.Sequence = ""; e.Parent = "5b567bdd747e497cb9f6984b1ca1dfc8"; e.Dialog = "57e18f5158904030a84a772fb361ceb4";
+            e.Variants = e.Variants.Take(1).ToArray();
+            s.NativeEpilogueEdits["825786e8c5db4511ae30950bb286f0e9"] = e;
+            s.Derived["wenduag.trickster.late_committed"] = new[] { new[] { "sacrifice" } };
+            return s;
+        }
+        Rules.Validate(InDialog());
+        void InvalidDialog(string what, Action<NativeEpilogueEditSpec> mutate)
+        {
+            var bad = InDialog();
+            mutate(bad.NativeEpilogueEdits["825786e8c5db4511ae30950bb286f0e9"]);
+            bool rejected = false;
+            try { Rules.Validate(bad); } catch (InvalidOperationException) { rejected = true; }
+            check(rejected, "Invalid E14i dialog edit accepted: " + what);
+        }
+        InvalidDialog("a page as well", e => e.Page = "503164ff04ac64543ba42561ea9f970f");
+        InvalidDialog("a sequence as well", e => e.Sequence = "fec3b6f28610c8a48a239f148ed3ed60");
+        InvalidDialog("parent not a GUID", e => e.Parent = "Cue_0001");
+        InvalidDialog("no dialog", e => e.Dialog = "");
+        InvalidDialog("a kept picture", e => e.KeepNativeImage = true);
+        var late = InDialog();
+        late.NativeEpilogueEdits["825786e8c5db4511ae30950bb286f0e9"].When = new[] { new[] { "wenduag.trickster.late_committed", "!sacrifice" } };
+        Rules.Validate(late);
+        var unearned = InDialog();
+        unearned.Derived.Remove("wenduag.trickster.late_committed");
+        unearned.Derived["wenduag.late"] = new[] { new[] { "sacrifice" } };
+        unearned.NativeEpilogueEdits["825786e8c5db4511ae30950bb286f0e9"].When = new[] { new[] { "wenduag.late" } };
+        bool refused = false;
+        try { Rules.Validate(unearned); } catch (InvalidOperationException) { refused = true; }
+        check(refused, "A derived key other than <relationship>.trickster.late_committed earned a native edit.");
     }
 
     // Wenduag's cue with two extra variants: committed (no sacrifice), and returned (fate defied, uncommitted, keeps the image).

@@ -253,6 +253,10 @@ namespace Tirabade
         public bool KeepNativeImage;
         // E14d extension: further replacements of the same native cue, tried in order after this one (first match plays).
         public NativeEpilogueVariant[] Variants = Array.Empty<NativeEpilogueVariant>();
+        // E14i: a cue of a common dialog, not a book page. Parent is the cue whose Continue (Strategy First) lists it, Dialog
+        // the dialog whose FirstCue holds Parent; Page and Sequence stay empty. The replacement keeps the native continuation.
+        public string Parent = "";
+        public string Dialog = "";
     }
 
     // E14d extension: a reviewed native cue hidden (never replaced) while When holds. Relationship owns the earned flags.
@@ -1548,11 +1552,16 @@ namespace Tirabade
                 var edit = pair.Value;
                 if (edit == null || !Guid.TryParseExact(pair.Key, "N", out _) || edit.Variants == null || edit.Variants.Any(variant => variant == null))
                     throw new InvalidOperationException("Invalid native epilogue edit (null spec or variant, or a cue that is not a GUID): " + pair.Key);
+                // E14i: a dialog cue names its parent cue and dialog (GUIDs) and no page or sequence; it has no picture to keep.
+                bool inDialog = !string.IsNullOrEmpty(edit.Parent) || !string.IsNullOrEmpty(edit.Dialog);
+                if (inDialog && (!Guid.TryParseExact(edit.Parent ?? "", "N", out _) || !Guid.TryParseExact(edit.Dialog ?? "", "N", out _)
+                        || !string.IsNullOrEmpty(edit.Page) || !string.IsNullOrEmpty(edit.Sequence) || Rules.EditVariants(edit).Any(v => v.KeepNativeImage)))
+                    throw new InvalidOperationException("Invalid E14i native dialog edit (parent and dialog GUIDs, no page, sequence or kept image): " + pair.Key);
                 foreach (var variant in Rules.EditVariants(edit))
                 {
                     var scene = story.Scenes.FirstOrDefault(s => s.Id == variant.Replacement);
                     var relationship = scene != null && story.Relationships.TryGetValue(scene.Relationship, out var r) ? r : null;
-                    var earned = relationship == null ? new HashSet<string>() : EarnedFlags(relationship);
+                    var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, scene!.Relationship, relationship);
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
@@ -1568,7 +1577,7 @@ namespace Tirabade
             {
                 var spec = pair.Value;
                 var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
-                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(relationship);
+                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship, relationship);
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0
@@ -1578,10 +1587,17 @@ namespace Tirabade
             }
         }
 
-        // E14d: the flags that earn a native epilogue edit or suppression: the relationship's CommittedFlag and its Trickster
-        // return flags (a fate the route undid). Every When group must hold one of them positively.
-        private static HashSet<string> EarnedFlags(Relationship relationship) => new HashSet<string>(new[] { relationship.CommittedFlag }
-            .Concat(relationship.TricksterAccess.Values.Select(access => access.Returned).OfType<string>()));
+        // E14d: the flags that earn a native epilogue edit or suppression: the relationship's CommittedFlag, its Trickster
+        // return flags (a fate the route undid) and (E14i) its R2-6 late commitment "<relationship>.trickster.late_committed"
+        // when the story derives one (the route's own commit-equivalent, e.g. Areelu's struck wager). Every When group must
+        // hold one of them positively.
+        private static HashSet<string> EarnedFlags(Story story, string id, Relationship relationship)
+        {
+            var earned = new HashSet<string>(new[] { relationship.CommittedFlag }
+                .Concat(relationship.TricksterAccess.Values.Select(access => access.Returned).OfType<string>()));
+            if (story.Derived.ContainsKey(id + ".trickster.late_committed")) earned.Add(id + ".trickster.late_committed");
+            return earned;
+        }
 
         // E14d: a When member is a known key, or "!" and a known key.
         private static bool EditWhenKnown(Story story, string flag, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)

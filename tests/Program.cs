@@ -517,6 +517,7 @@ internal static class Program
             if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) CamelliaNativeSlideTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) AreeluAfterlogueTests.Run(story, Check);
             // Sol quality pass: Areelu's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "areelu" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
             if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) ChadaliTricksterTests.Run(story, Check);

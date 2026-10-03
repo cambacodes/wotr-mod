@@ -57,6 +57,7 @@ from storylines import camellia_native  # E14d: her native departure slides repl
 from storylines import targona_trickster
 from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
+from storylines import areelu_afterlogue  # E14i: her afterlogue line (Cue_0004 / Cue_0005) for a continuing romance
 from storylines import longcon
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
@@ -423,6 +424,7 @@ def make_expansion(*, independent_tirabade=True):
     payload["Relationships"]["areelu"] = copy.deepcopy(areelu_trickster.RELATIONSHIP)
     payload["Scenes"].extend(copy.deepcopy(areelu_trickster.SCENES))
     areelu_trickster.integrate(payload)
+    areelu_afterlogue.integrate(payload)
     # The Long Con (doc 15, PP8): a framework relationship (never closed, no romance), its Ch1 entry at Chaleb's pyre, the
     # Ch2 prisoner and citadel offer, the Areelu crossing (Relationship areelu) and the Ch3 talk with its consequences.
     payload["Scenes"].extend(copy.deepcopy(longcon.SCENES))

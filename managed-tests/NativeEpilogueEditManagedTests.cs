@@ -21,9 +21,15 @@ internal static class NativeEpilogueEditManagedTests
     private static readonly string[] TirabadePageCues = { "cba964e33d0a0704d847629be452b359", "2d6b09c6508010e49b882741add89dcf",
         "ccd140dbf2603734aa323261c2445bec", Cue0311 };
 
+    // E14i: the afterlogue's Cue_0001 continuation list (its seven account lines), read with their own checkers.
+    private static readonly string[] AfterlogueLines = { "0fd42edf36604d5fa9563711dc124aca", "5afdbd2e61264e8fa227fd153bf21efb",
+        "aa857d545e124ce9a5148221e07194b9", "2a4aab21bd184c91a39cdde39b3f3b88", "825786e8c5db4511ae30950bb286f0e9", "172325d4df134fdd98e831b93e6d857c",
+        "1b53c189b767412f921b8294b980a51c" };
+
     public static IEnumerable<string> NativeIds => NativeEpilogueEdit.Reviewed.Keys
         .Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Page)).Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Sequence))
-        .Concat(TirabadePageCues).Append(NativeEpilogueEdit.Companions).Distinct();
+        .Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Parent ?? "")).Concat(NativeEpilogueEdit.Reviewed.Values.Select(e => e.Dialog ?? ""))
+        .Concat(TirabadePageCues).Concat(AfterlogueLines).Append(NativeEpilogueEdit.Companions).Where(id => id.Length > 0).Distinct();
 
     private static T Seed<T>(string guid) where T : SimpleBlueprint, new()
     {
@@ -61,12 +67,21 @@ internal static class NativeEpilogueEditManagedTests
                 && ((JArray)data["OnStop"]!["Actions"]!).Count == 0 && ((JArray)data["Components"]!).Count == 0
                 && ((JArray)data["Answers"]!).Count == 0 && continueReviewed,
                 "Reviewed native cue evidence drifted: " + pair.Key);
+            if (pair.Value.Parent != null)   // E14i: listed once by its parent's Continue (First); the dialog opens on the parent
+            {
+                check(pair.Value.Page == "" && pair.Value.Sequence == "" && (string)native[pair.Value.Parent]["Continue"]!["Strategy"]! == "First"
+                      && Refs((JObject)native[pair.Value.Parent]["Continue"]!, "Cues").Count(c => c == pair.Key) == 1
+                      && Refs((JObject)native[pair.Value.Dialog!]["FirstCue"]!, "Cues").Count(c => c == pair.Value.Parent) == 1,
+                    "Reviewed dialog cue is not once in its parent's Continue, or the dialog no longer opens on the parent: " + pair.Key);
+                continue;
+            }
             check(Refs(native[pair.Value.Page], "Cues").Count(c => c == pair.Key) == 1, "Reviewed cue is not exactly once on its page: " + pair.Key);
             check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
-                && pair.Value.Page != NativeEpilogueEdit.CamelliaPage)),
-            "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310 and the Camellia BookPage_0347 slides are warning-only).");
+                && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null)),
+            "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
+            + "lines are warning-only).");
         // Attach on the Wenduag cue with fixture objects shaped like the archive.
         const string cueId = "86bf0569a9029ae4b8c9d300a41e5739";
         var evidence = NativeEpilogueEdit.Reviewed[cueId];
@@ -324,10 +339,11 @@ internal static class NativeEpilogueEditManagedTests
             Func<bool> holds;
             switch (type)
             {
-                case "EtudeStatus":
+                case "EtudeStatus":   // the fixture's etudes are Playing (started and not completed), so Started|Playing reads the same
                     check((bool)condition["Playing"]! && !(bool)condition["Completed"]! && !(bool)condition["NotStarted"]! && !(bool)condition["CompletionInProgress"]!,
-                        "Camellia native checker reads an etude state other than Playing: " + where);
+                        "Native checker reads an etude state other than Playing (or Started): " + where);
                     string etude = Target("m_Etude"); holds = () => playing(etude); break;
+                case "FlagInRange": string flag = Target("m_Flag"); holds = () => playing(flag); break;   // the fixture holds the flag in range
                 case "CueSeen": string cue = Target("m_Cue"); holds = () => seen(cue); break;
                 case "QuestStatus":
                     check((string)condition["State"]! == "Completed", "Camellia native checker reads a quest state other than Completed: " + where);
@@ -452,5 +468,100 @@ internal static class NativeEpilogueEditManagedTests
         check(semidivine.OnShow.Actions.Select(NativeEpilogueEdit.ImageOf).SequenceEqual(new[] { "df4a5da19a0a64542929dc8409b29bbe" }),
             "The kept semidivine slide lost the native picture action.");
         Console.WriteLine("PASS: E14d Camellia slides (BookPage_0347): archive checkers, replacements and suppressions, one lead per state.");
+    }
+
+    // E14i: the afterlogue dialog's Cue_0001 with the archive's seven account lines (Strategy First) and their own checkers; the
+    // shipped Areelu lines are prepared and attached as Main does (PrepareInDialog, AttachGroup). The selected line is what
+    // CueSelection.Select would pick: the first in Continue order whose checker passes. The replacement speaks as the original
+    // and continues into Cue_0007 exactly as the original does.
+    public static void RunAfterlogue(Story story, Dictionary<string, JObject> native, Func<string, BlueprintGuid> id, Action<bool, string> check)
+    {
+        string[] Refs(JObject data, string field) => ((JArray)data[field]!).Select(v => ((string)v!).Replace("!bp_", "")).ToArray();
+        string parentId = NativeEpilogueEdit.AfterlogueFirst, dialogId = NativeEpilogueEdit.AfterlogueDialog;
+        check(Refs((JObject)native[parentId]["Continue"]!, "Cues").SequenceEqual(AfterlogueLines), "Afterlogue Cue_0001 continuation drifted.");
+        var playing = new HashSet<string>();
+        Snapshot? current = null;
+        var parent = new BlueprintCue { AssetGuid = BlueprintGuid.Parse(parentId), name = "AfterlogueFixture_parent" };
+        parent.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+        LoadArchiveShape(parent, native[parentId], check);
+        var dialog = new BlueprintDialog { AssetGuid = BlueprintGuid.Parse(dialogId), name = "AfterlogueFixture_dialog" };
+        dialog.FirstCue = new Kingmaker.DialogSystem.CueSelection { Cues = Refs((JObject)native[dialogId]["FirstCue"]!, "Cues").Select(Ref).ToList() };
+        var cues = new Dictionary<string, BlueprintCue>();
+        var byGuid = new Dictionary<BlueprintGuid, (BlueprintCue Cue, string Name, Func<bool> Native)>();
+        foreach (var guid in AfterlogueLines)
+        {
+            var cue = new BlueprintCue { AssetGuid = BlueprintGuid.Parse(guid), name = "AfterlogueFixture_" + guid };
+            var nativeCheck = ArchiveChecker((JObject)native[guid]["Conditions"]!, playing.Contains, _ => false, _ => false, check, guid);
+            cue.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+            LoadArchiveShape(cue, native[guid], check);
+            cue.Speaker = new Kingmaker.DialogSystem.DialogSpeaker();
+            cues[guid] = cue;
+            byGuid[cue.AssetGuid] = (cue, guid, nativeCheck);
+        }
+        var fixtures = new Dictionary<string, SimpleBlueprint> { [parentId] = parent, [dialogId] = dialog };
+        foreach (var pair in cues) fixtures[pair.Key] = pair.Value;
+        SimpleBlueprint? Resolve(string g) => fixtures.TryGetValue(g, out var bp) ? bp : null;
+        var edits = story.NativeEpilogueEdits.Where(p => p.Value.Parent == parentId).ToArray();
+        check(edits.Select(p => p.Key).OrderBy(k => k).SequenceEqual(new[] { "1b53c189b767412f921b8294b980a51c", "825786e8c5db4511ae30950bb286f0e9" }),
+            "The afterlogue edits are not exactly Cue_0004 and Cue_0005.");
+        // A drifted parent (no longer continuing into the cue) is refused, warning-only.
+        var drifted = new BlueprintCue { AssetGuid = parent.AssetGuid, name = "AfterlogueFixture_drift" };
+        drifted.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+        LoadArchiveShape(drifted, native[parentId], check);
+        drifted.Continue.Cues.RemoveAll(r => r.Guid == BlueprintGuid.Parse(edits[0].Key));
+        check(NativeEpilogueEdit.Check(edits[0].Key, edits[0].Value, g => g == parentId ? drifted : Resolve(g), null) != null
+              && !NativeEpilogueEdit.DegradesOnRefusal(edits[0].Key), "A drifted afterlogue parent is accepted, or its refusal degrades.");
+        foreach (var edit in edits)
+        {
+            check(NativeEpilogueEdit.Check(edit.Key, edit.Value, Resolve, null) == null, "The archive-shaped afterlogue cue is refused: " + edit.Key);
+            var variants = Rules.EditVariants(edit.Value);
+            var group = new NativeEpilogueEdit.Group(edit.Value, () => current);
+            var plans = new List<NativeEpilogueEdit.Plan>();
+            var replacements = new Dictionary<NativeEpilogueEdit.Plan, BlueprintCue>();
+            for (int v = 0; v < variants.Length; v++)
+            {
+                int variant = v;
+                var replacement = new BlueprintCue { AssetGuid = id(Rules.NativeEditCueName(edit.Key, edit.Value, variant)), name = "AfterlogueFixture_" + edit.Key + "_v" + variant };
+                var plan = NativeEpilogueEdit.PrepareInDialog(edit.Key, edit.Value, cues[edit.Key], parent, replacement, () => group.Selected() == variant, variant);
+                foreach (var condition in replacement.Conditions.Conditions)
+                { condition.Owner = replacement; condition.name = "$Applies$fixture" + variant; replacement.ElementsArray.Add(condition); }
+                check(replacement.Continue.Cues.Select(r => r.Guid).SequenceEqual(new[] { BlueprintGuid.Parse(NativeEpilogueEdit.AfterlogueAccount) })
+                      && replacement.Continue.Strategy == Kingmaker.DialogSystem.Strategy.First && ReferenceEquals(replacement.Speaker, cues[edit.Key].Speaker)
+                      && replacement.OnShow.Actions.Length == 0 && replacement.Answers.Count == 0,
+                    "An afterlogue replacement does not speak as the original or does not continue into Cue_0007: " + edit.Key);
+                plans.Add(plan);
+                replacements[plan] = replacement;
+                byGuid[replacement.AssetGuid] = (replacement, variants[variant].Replacement, byGuid[cues[edit.Key].AssetGuid].Native);
+            }
+            NativeEpilogueEdit.AttachGroup(group, plans, plan => Ref(replacements[plan].AssetGuid.ToString()));
+        }
+        foreach (var cue in cues.Values)
+            foreach (var condition in cue.Conditions.Conditions) { condition.Owner = cue; if (!cue.ElementsArray.Contains(condition)) cue.ElementsArray.Add(condition); }
+        string Selected() => parent.Continue.Cues.Select(reference => byGuid[reference.Guid])
+            .FirstOrDefault(entry => entry.Native() && entry.Cue.Conditions.Conditions.All(c => c.Check())).Name ?? "(none)";
+        const string Dead = "936af39436c74953b43a4165bfbcc9f9", Redeemed = "127e8a018a0840b080c276b4704e58a2", T = "areelu.trickster.";
+        var common = new[] { "trickster.ever", T + "wager_struck", T + "bet_offered", T + "wager_on_screen", T + "late_committed" };
+        var rewritten = common.Concat(new[] { "areelu.sacrifice_trickster", "areelu.dead_fight", T + "graft_drawn", T + "survives", T + "rewritten",
+            "areelu.died_at_finale" }).ToArray();
+        var spared = common.Concat(new[] { "sacrifice", "ending.trickster", "trickster.cheated_death", T + "survives" }).ToArray();
+        var rows = new (string What, string[] Etudes, string[]? Flags, string Plays)[]
+        {
+            ("rewrite, late-committed", new[] { Dead }, rewritten, "areelu.trickster.afterlogue.mortal"),
+            ("rewrite, mod disabled", new[] { Dead }, null, "1b53c189b767412f921b8294b980a51c"),
+            ("rewrite, closed", new[] { Dead }, rewritten.Append("areelu.closed").ToArray(), "1b53c189b767412f921b8294b980a51c"),
+            ("punchline, she lives", new string[0], spared, "areelu.trickster.afterlogue.spared"),
+            ("punchline, mod disabled", new string[0], null, "825786e8c5db4511ae30950bb286f0e9"),
+            ("punchline, declined", new string[0], spared.Append(T + "declined").ToArray(), "825786e8c5db4511ae30950bb286f0e9"),
+            ("redeemed, flags of a live romance", new[] { Redeemed }, spared, "aa857d545e124ce9a5148221e07194b9"),
+        };
+        foreach (var row in rows)
+        {
+            playing.Clear();
+            playing.UnionWith(row.Etudes);
+            if (row.Flags == null) current = null;
+            else { current = new Snapshot { Chapter = 6 }; current.Flags.UnionWith(row.Flags); }
+            check(Selected() == row.Plays, "Afterlogue, " + row.What + ": plays " + Selected() + ", expected " + row.Plays);
+        }
+        Console.WriteLine("PASS: E14i afterlogue lines (Cue_0004, Cue_0005): archive checkers, Strategy First, replacement continues into Cue_0007.");
     }
 }

@@ -177,7 +177,7 @@ internal static class Program
         // NM1: the E14d native epilogue edits the story ships load their reviewed cue, page and sequence as the game does. The
         // host cannot run Owlcat's element reporting, so each cue's checker is the empty AND (NativeEpilogueEditManagedTests).
         // E14d extension: suppressed cues (NativeEpilogueSuppressions) load the same way.
-        foreach (var target in story.NativeEpilogueEdits.Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))
+        foreach (var target in story.NativeEpilogueEdits.Where(p => string.IsNullOrEmpty(p.Value.Parent)).Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))
             .Concat(story.NativeEpilogueSuppressions.Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))))
         {
             var editSequence = Seed<BlueprintCueSequence>(target.Sequence);
@@ -197,6 +197,23 @@ internal static class Program
             editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
             // The archive's reviewed OnShow image action, continuation and text key (own or shared), as the game loads them.
             NativeEpilogueEditManagedTests.LoadArchiveShape(editCue, native[target.Cue], Check);
+        }
+        // E14i: a common-dialog edit loads its dialog (FirstCue), its parent cue (Continue as the archive has it) and the cue.
+        foreach (var pair in story.NativeEpilogueEdits.Where(p => !string.IsNullOrEmpty(p.Value.Parent)))
+        {
+            var dialog = Seed<BlueprintDialog>(pair.Value.Dialog);
+            if (dialog.FirstCue == null || dialog.FirstCue.Cues.Count == 0)
+                dialog.FirstCue = new Kingmaker.DialogSystem.CueSelection { Cues = NativeReferences((JObject)native[pair.Value.Dialog]["FirstCue"]!, "Cues")
+                    .Select(Reference<BlueprintCueBaseReference>).ToList() };
+            var parent = Seed<BlueprintCue>(pair.Value.Parent);
+            if (parent.Continue == null || parent.Continue.Cues.Count == 0)
+            {
+                parent.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
+                NativeEpilogueEditManagedTests.LoadArchiveShape(parent, native[pair.Value.Parent], Check);
+            }
+            var editCue = Seed<BlueprintCue>(pair.Key);
+            editCue.Conditions = new Kingmaker.ElementsSystem.ConditionsChecker { Operation = Kingmaker.ElementsSystem.Operation.And, Conditions = Array.Empty<Kingmaker.ElementsSystem.Condition>() };
+            NativeEpilogueEditManagedTests.LoadArchiveShape(editCue, native[pair.Key], Check);
         }
         foreach (string guid in story.Etudes.Values.Concat(story.CompletedEtudes.Values).Distinct())
         {
@@ -424,7 +441,10 @@ internal static class Program
         foreach (var pair in story.NativeEpilogueEdits)
         {
             var variantNames = Rules.EditVariants(pair.Value).Select((v, i) => Id(Rules.NativeEditCueName(pair.Key, pair.Value, i))).ToArray();
-            var editPageCues = ((BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!).Cues.Select(r => r.Guid).ToList();
+            // E14i: a dialog edit's variants sit in its parent cue's Continue, right before the native cue.
+            var editPageCues = (string.IsNullOrEmpty(pair.Value.Parent)
+                ? ((BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!).Cues
+                : ((BlueprintCue)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Parent))!).Continue.Cues).Select(r => r.Guid).ToList();
             int nativeAt = editPageCues.IndexOf(BlueprintGuid.Parse(pair.Key));
             Check(nativeAt >= variantNames.Length && editPageCues.Skip(nativeAt - variantNames.Length).Take(variantNames.Length).SequenceEqual(variantNames),
                 "E14d variants not attached in order right before their native cue: " + pair.Key);
@@ -668,6 +688,7 @@ internal static class Program
         NativeEpilogueEditManagedTests.Run(native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
+        if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
         SpeakerManagedTests.Run(native, Check);
         ContinueBeforeManagedTests.Run(native, Id, Check);

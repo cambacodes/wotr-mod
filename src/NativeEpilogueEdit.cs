@@ -34,8 +34,15 @@ namespace Tirabade
             // E14d extension: the reviewed continuation (Strategy First), or null for none. On a book page the continued cue plays
             // right after the original (DialogController.PlayBasicCue); a replacement never continues, so it hides that too.
             public readonly string[]? Continue;
-            internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true, string[]? continueTo = null)
-            { Page = page; Sequence = sequence; Key = key; Image = image; DegradeOnRefusal = degradeOnRefusal; Continue = continueTo; }
+            // E14i: a cue of a common dialog: Parent lists it in its Continue (Strategy First), Dialog's FirstCue holds Parent.
+            // Page and Sequence are then empty.
+            public readonly string? Parent, Dialog;
+            internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true, string[]? continueTo = null,
+                string? parent = null, string? dialog = null)
+            {
+                Page = page; Sequence = sequence; Key = key; Image = image; DegradeOnRefusal = degradeOnRefusal; Continue = continueTo;
+                Parent = parent; Dialog = dialog;
+            }
         }
 
         // Whitelist, verified in blueprints.zip: ShowOnce false, cues without OnStop, answers, continuation or components,
@@ -75,7 +82,18 @@ namespace Tirabade
             ["3617a648c06a45d1807fde65aedafb06"] = new Evidence(CamelliaPage, Companions, "de512bb2-4d4d-4ca2-b20d-9b2d6384c802", degradeOnRefusal: false), // Cue_16
             ["430ce9767d3ede2479ff9d6aee432304"] = new Evidence(CamelliaPage, Companions, "4819461c-331c-4872-a077-49115a7c9ad7", degradeOnRefusal: false), // Cue_0391
             ["e9a183135b8289544a3144dcf8151920"] = new Evidence(CamelliaPage, Companions, "f31377a1-a78e-47f2-bc10-1721eac2f9c1", degradeOnRefusal: false), // Cue_0390
+            // E14i: Areelu's afterlogue (World/Dialogs/Epilogues_afterlogues, a Common dialog, not a book page). Cue_0001 lists, Strategy
+            // First: Cue_0002, Cue_28, Cue_0003, Cue_0006, Cue_0004, Cue_29, Cue_0005; each continues into Cue_0007 (her account to
+            // Pharasma), which a replacement keeps. Cue_0004 (not redeemed, not dead): the cottage. Cue_0005 (the fallback): "my life
+            // ended along with it". The parent mod names none of them (aranka-*.cs, RanRomance.dll strings). Warning-only.
+            ["825786e8c5db4511ae30950bb286f0e9"] = new Evidence("", "", "cd04e9ab-c34b-49ce-b0a7-25f064571101", degradeOnRefusal: false,
+                continueTo: new[] { AfterlogueAccount }, parent: AfterlogueFirst, dialog: AfterlogueDialog),                         // Cue_0004
+            ["1b53c189b767412f921b8294b980a51c"] = new Evidence("", "", "102a4671-6e9d-45b6-a801-32d1706c9698", degradeOnRefusal: false,
+                continueTo: new[] { AfterlogueAccount }, parent: AfterlogueFirst, dialog: AfterlogueDialog),                         // Cue_0005
         };
+        public const string AfterlogueDialog = "57e18f5158904030a84a772fb361ceb4";   // Epilogues_afterlogues_dialogue
+        public const string AfterlogueFirst = "5b567bdd747e497cb9f6984b1ca1dfc8";    // Epilogues_afterlogues/Cue_0001
+        public const string AfterlogueAccount = "f5e9e257be4241108316b2c0da0dff4b";  // Epilogues_afterlogues/Cue_0007
         public const string CamelliaPage = "503164ff04ac64543ba42561ea9f970f";   // Epilogues/BookPage_0347
 
         public static bool DegradesOnRefusal(string cueId) => !Reviewed.TryGetValue(cueId, out var evidence) || evidence.DegradeOnRefusal;
@@ -87,6 +105,7 @@ namespace Tirabade
             internal int Variant;
             internal BlueprintCue Original = null!;
             internal BlueprintBookPage Page = null!;
+            internal BlueprintCue? ParentCue;   // E14i: the dialog cue whose Continue holds the original (Page is then null)
             internal BlueprintCue Replacement = null!;
             public ConditionsChecker OriginalChecker = null!;
         }
@@ -126,7 +145,35 @@ namespace Tirabade
         {
             if (Reviewed.TryGetValue(cueId, out var reviewed) && reviewed.Image == null && Rules.EditVariants(spec).Any(variant => variant.KeepNativeImage))
                 return "a variant keeps a native image the reviewed cue does not have";
+            if (!string.IsNullOrEmpty(spec.Parent) || !string.IsNullOrEmpty(spec.Dialog) || reviewed.Parent != null)
+                return CheckInDialog(cueId, spec, resolve);
             return CheckEvidence(cueId, spec.Page, spec.Sequence, spec.Key, resolve, aeon);
+        }
+
+        // E14i: a common-dialog cue. The parent continues into it exactly once (Strategy First), the dialog opens on the parent,
+        // and the cue has the reviewed shape: no OnShow, OnStop, answers or components, and exactly its reviewed continuation.
+        private static string? CheckInDialog(string cueId, NativeEpilogueEditSpec spec, Func<string, SimpleBlueprint?> resolve)
+        {
+            if (!Reviewed.TryGetValue(cueId, out var evidence) || evidence.Parent == null || evidence.Parent != spec.Parent
+                || evidence.Dialog != spec.Dialog || evidence.Key != spec.Key || !string.IsNullOrEmpty(spec.Page) || !string.IsNullOrEmpty(spec.Sequence))
+                return "not a reviewed native dialog cue";
+            if (!(resolve(cueId) is BlueprintCue cue)) return "cue missing";
+            if (!(resolve(evidence.Parent) is BlueprintCue parent)) return "parent cue missing";
+            if (!(resolve(evidence.Dialog!) is BlueprintDialog dialog)) return "dialog missing";
+            if (TextKey(cue.Text) != spec.Key) return "cue text key changed (patch drift)";
+            var continued = cue.Continue?.Cues;
+            bool continueReviewed = evidence.Continue == null ? continued?.Count == 0
+                : continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
+                    && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.Continue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
+            if (cue.ShowOnce || cue.ShowOnceCurrentDialog || cue.Conditions == null || cue.ComponentsArray.Length != 0 || cue.OnShow?.Actions?.Length != 0
+                || cue.OnStop?.Actions?.Length != 0 || !continueReviewed || cue.Answers?.Count != 0)
+                return "cue behavior differs from the reviewed policy";
+            if (parent.Continue?.Cues == null || parent.Continue.Strategy != Kingmaker.DialogSystem.Strategy.First
+                || parent.Continue.Cues.Count(reference => reference?.Guid == cue.AssetGuid) != 1)
+                return "parent no longer continues First into the cue exactly once";
+            if (dialog.FirstCue?.Cues == null || dialog.FirstCue.Cues.Count(reference => reference?.Guid == parent.AssetGuid) != 1)
+                return "dialog no longer opens on the parent cue";
+            return null;
         }
 
         // E14d extension: a suppression is checked against the same reviewed evidence (it has no variants).
@@ -183,6 +230,28 @@ namespace Tirabade
                 OriginalChecker = original.Conditions };
         }
 
+        // E14i phase 2: a replacement for a common-dialog cue speaks as the original (speaker, listener, animation) and keeps its
+        // reviewed continuation, so the dialog goes on exactly as it would have (Cue_0007 and Pharasma's verdict).
+        public static Plan PrepareInDialog(string cueId, NativeEpilogueEditSpec spec, BlueprintCue original, BlueprintCue parent, BlueprintCue replacement,
+            Func<bool> replacementApplies, int variant = 0)
+        {
+            replacement.Speaker = original.Speaker;
+            replacement.TurnSpeaker = original.TurnSpeaker;
+            replacement.Animation = original.Animation;
+            ListenerField?.SetValue(replacement, ListenerField.GetValue(original));
+            replacement.ShowOnce = false;
+            replacement.ShowOnceCurrentDialog = false;
+            replacement.OnShow = new ActionList { Actions = Array.Empty<GameAction>() };
+            replacement.OnStop = new ActionList { Actions = Array.Empty<GameAction>() };
+            replacement.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = original.Continue.Cues.ToList(), Strategy = original.Continue.Strategy };
+            replacement.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = new Condition[] {
+                new Applies { Original = original.Conditions, ReplacementApplies = replacementApplies } } };
+            return new Plan { CueId = cueId, Spec = spec, Variant = variant, Original = original, Page = null!, ParentCue = parent,
+                Replacement = replacement, OriginalChecker = original.Conditions };
+        }
+
+        private static readonly FieldInfo? ListenerField = typeof(BlueprintCue).GetField("m_Listener", BindingFlags.Instance | BindingFlags.NonPublic);
+
         // Phase 3: insert the replacement before the original and guard the original. Refuses if the page moved meanwhile.
         public static void Attach(Plan plan, BlueprintCueBaseReference replacementReference, Func<bool> replacementApplies)
         {
@@ -194,6 +263,15 @@ namespace Tirabade
         // v0, v1, ..., original. The original is then guarded once (Guard) by "some attached variant is selected".
         public static void Insert(Plan plan, BlueprintCueBaseReference replacementReference)
         {
+            if (plan.ParentCue != null)   // E14i: into the parent's Continue, right before the original (Strategy First picks it first)
+            {
+                var continued = plan.ParentCue.Continue.Cues;
+                int at = continued.FindIndex(reference => reference.Guid == plan.Original.AssetGuid);
+                if (at < 0 || continued.Any(reference => reference.Guid == plan.Replacement.AssetGuid))
+                    throw new InvalidOperationException("Native dialog cue changed before attachment: " + plan.CueId);
+                continued.Insert(at, replacementReference);
+                return;
+            }
             int index = plan.Page.Cues.FindIndex(reference => reference.Guid == plan.Original.AssetGuid);
             if (index < 0 || plan.Page.Cues.Any(reference => reference.Guid == plan.Replacement.AssetGuid))
                 throw new InvalidOperationException("Native epilogue page changed before attachment: " + plan.CueId);
