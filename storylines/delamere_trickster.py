@@ -77,6 +77,13 @@ OPENED_BRUTEFORCE = "delamere.tomb_opened_bruteforce"   # SeenCues Cue_0040 1c91
 CLOSED_FORCED = "delamere.tomb_closed_forced"           # SeenCues Cue_0054 15a598ea "As soon as the Commander heaves the lid back into place"
 CLOSE_PEACEFUL_SELECTED = "delamere.tomb_close_peaceful_selected"   # SelectedAnswers Answer_0046 932854d5 (touches the relics, closes the lid)
 CLOSE_FORCED_SELECTED = "delamere.tomb_close_forced_selected"       # SelectedAnswers Answer_0050 6a5d2bcd (leaves the relics, closes the lid)
+# Polish r4 (Sol INT): the Book locks itself. Answer_0060 (page 0028) and Answer_0059 (page 0043), "Close.", are shown only
+# after a relic disposition; the Book's own Conditions are NOT(either selected), and both switch the sarcophagus off. A living
+# waking in the crypt needs this lock, so the corpse Book can never play over the woman who got up out of it.
+BOOK_LOCKED_OPENED = "delamere.tomb_book_locked_opened"   # SelectedAnswers Answer_0060 8581caea
+BOOK_LOCKED_FORCED = "delamere.tomb_book_locked_forced"   # SelectedAnswers Answer_0059 173de7e4
+BOOK_LOCKED = "delamere.tomb_book_locked"                 # Derived: either lock
+MOVE_ORDERED = "delamere.remains_move_ordered"            # Derived: Cue_0057 / Cue_0053 (Answer_0045 / Answer_0049, "moved to Drezen")
 
 RETURNED = P + "returned"
 DECLINED = P + "declined"
@@ -113,7 +120,11 @@ DERIVED = {
     "delamere.harem.voice.a_village_not_a_city": [[COMMITTED], [LATE_COMMITTED]],
     TOMB_OPENED: [[ERASTIL_ANSWERED], [OPENED_FORCED], [OPENED_PEACEFUL], [RELICS_TAKEN],   # relics are taken only from an open stone
                   [OPENED_KNIFE], [OPENED_KNIFE_CRACK], [OPENED_PRAYER], [OPENED_DISPELLED],   # PP10: the knife openings; a lid closed again stays a broken seal
-                  [OPENED_BRUTEFORCE], [CLOSED_FORCED], [CLOSE_PEACEFUL_SELECTED], [CLOSE_FORCED_SELECTED]],   # polish: brute force and the closings
+                  [OPENED_BRUTEFORCE], [CLOSED_FORCED], [CLOSE_PEACEFUL_SELECTED], [CLOSE_FORCED_SELECTED],   # polish: brute force and the closings
+                  [BOOK_LOCKED_OPENED], [BOOK_LOCKED_FORCED]],   # polish r4: the Book locks only after an opened stone
+    BOOK_LOCKED: [[BOOK_LOCKED_OPENED], [BOOK_LOCKED_FORCED]],
+    # Polish r4 (BEL): the crusade has been told to carry her to Drezen; she wakes there (drezen.stag), not in the crypt.
+    MOVE_ORDERED: [[OPENED_PEACEFUL], [OPENED_FORCED]],
     # Polish (Sol INT/BEL), prepared for the coordinator's E18 tomb gate: the native corpse book must not play once she lives.
     # living_wake is set on the successful call itself; the third group recognises an older save's immediate refusal (grave).
     LIVING_WOKEN: [[LIVING_WAKE], [RETURNED], [DECLINED, CLOSED, LIMP]],
@@ -132,17 +143,19 @@ BINDINGS = {
                  OPENED_BRUTEFORCE: "1c9182d585e1d4d4c85c574695337ccb", CLOSED_FORCED: "15a598eac4625c84190a1574bc50597d"},
 }
 BINDINGS["SelectedAnswers"].update({CLOSE_PEACEFUL_SELECTED: "932854d52d8602d478c6b9932be94fd3",
-                                    CLOSE_FORCED_SELECTED: "6a5d2bcd0a6d09249bb3e62c2d1556c2"})
+                                    CLOSE_FORCED_SELECTED: "6a5d2bcd0a6d09249bb3e62c2d1556c2",
+                                    BOOK_LOCKED_OPENED: "8581caea128a3d84a901be70e26e6146",
+                                    BOOK_LOCKED_FORCED: "173de7e4c8e237d409e3e08f1461b6fb"})
 
 RELATIONSHIP = dict(
     Title="The Stag's Hunt",
     Description=("Delamere the Blessed slept under her temple for centuries with an arrow on the string. I blew a horn "
                  "over her and ran. She caught me, and I still walk crooked from it. The hunt, she says, is not finished."),
     Objective="Stay ahead of Delamere",
-    Guidance=("On the Trickster path, ask Kyado at the Temple of Delamere what hangs over her sarcophagus, then go down "
-              "to her with him. If he is dead, or later in the war, or if her remains were taken to Drezen, the horn can "
+    Guidance=("On the Trickster path, ask Kyado at the Temple of Delamere what hangs over her sarcophagus. Open her "
+              "sarcophagus yourself, deal with her relics and close the book on it, then go down to her with him. If he is dead, or later in the war, or if her remains were taken to Drezen, the horn can "
               "still be sounded. If you never found her temple, a pilgrim may bring you the road to it in Chapter 5: "
-              "leave the Drezen road at the crossroads below the city, find the temple on the map yourself, and go down to her stone. After she wakes she finds you herself, a day or so apart; she does not come on command."),
+              "leave the Drezen road at the crossroads below the city, find the temple on the map yourself, open her stone, and come back to it with the horn. After she wakes she finds you herself, a day or so apart; she does not come on command."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
     UnavailableFlags=[], FailureFlags=[],
     TricksterAccess={
@@ -430,17 +443,18 @@ def waking(place):
 
 
 GATE_CRYPT = dict(RequiresAnyGroups=[[TOMB_VISITED, INITIATED]])
+CRYPT_FORBIDS = (RETURNED, DECLINED, REMAINS, MOVE_ORDERED)   # polish r4: an order to carry her to Drezen leaves the crypt to the chapel
 
 temple(P + "crypt.stag", "The stag's call", '"Bring your lamp, Kyado. We\'re going down to Delamere."', waking("kyado"),
-       requires=("trickster", "trickster.ever"), forbids=(RETURNED, DECLINED, REMAINS),
+       requires=("trickster", "trickster.ever", BOOK_LOCKED), forbids=CRYPT_FORBIDS,
        TricksterDevice=True, TricksterState="crypt", **GATE_CRYPT)
 
 visit(P + "crypt.stag_alone", "The stag's call", waking("alone"),
-      requires=("trickster", "trickster.ever", KYADO_DEAD), forbids=(RETURNED, DECLINED, REMAINS), chapters=(3, 5),
+      requires=("trickster", "trickster.ever", KYADO_DEAD, BOOK_LOCKED), forbids=CRYPT_FORBIDS, chapters=(3, 5),
       TricksterDevice=True, TricksterState="crypt", RequiresAnyGroups=[[TOMB_VISITED, CRYPT_KNOWN]])
 
 visit(P + "crypt.stag_late", "The stag's call", waking("late"),
-      requires=("trickster", "trickster.ever"), forbids=(RETURNED, DECLINED, REMAINS, KYADO_DEAD),
+      requires=("trickster", "trickster.ever", BOOK_LOCKED), forbids=CRYPT_FORBIDS + (KYADO_DEAD,),
       chapters=(5, 5), TricksterDevice=True, TricksterState="crypt", RequiresAnyGroups=[[TOMB_VISITED, CRYPT_KNOWN]])
 
 visit(P + "drezen.stag", "The stag's call", waking("drezen"),
