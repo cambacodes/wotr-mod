@@ -17,6 +17,7 @@ internal static class NativeEpilogueEditManagedTests
 {
     // E14d extension: the Tirabade page BookPage_0307 and its four native cues (Cue_0308, Cue_0566, Cue_0310, Cue_0311).
     private const string Cue0311 = "3a3e561c6b05a284d93eb3bff7b712a6";
+    private const string Cue0310 = "ccd140dbf2603734aa323261c2445bec";
     private static readonly string[] TirabadePageCues = { "cba964e33d0a0704d847629be452b359", "2d6b09c6508010e49b882741add89dcf",
         "ccd140dbf2603734aa323261c2445bec", Cue0311 };
 
@@ -60,8 +61,8 @@ internal static class NativeEpilogueEditManagedTests
             check(Refs(native[pair.Value.Page], "Cues").Count(c => c == pair.Key) == 1, "Reviewed cue is not exactly once on its page: " + pair.Key);
             check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
         }
-        check(NativeEpilogueEdit.Reviewed.Where(pair => pair.Key != Cue0311).All(pair => pair.Value.DegradeOnRefusal)
-              && !NativeEpilogueEdit.Reviewed[Cue0311].DegradeOnRefusal, "E14d refusal policy changed (only Cue_0311 is warning-only).");
+        check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310)),
+            "E14d refusal policy changed (only the Tirabade Cue_0311 and Cue_0310 are warning-only).");
         // Attach on the Wenduag cue with fixture objects shaped like the archive.
         const string cueId = "86bf0569a9029ae4b8c9d300a41e5739";
         var evidence = NativeEpilogueEdit.Reviewed[cueId];
@@ -177,29 +178,41 @@ internal static class NativeEpilogueEditManagedTests
             .SetValue(drifted.OnShow.Actions[0], new SpriteLink { AssetId = "0123456789abcdef0123456789abcdef" });
         check(NativeEpilogueEdit.Check(Cue0311, spec, g => g == Cue0311 ? drifted : Resolve(g), null) != null
               && !NativeEpilogueEdit.DegradesOnRefusal(Cue0311), "A drifted Cue_0311 image is accepted, or its refusal degrades a relationship.");
-        var original = cues[Cue0311];
-        var variants = Rules.EditVariants(spec);
-        var group = new NativeEpilogueEdit.Group(spec, () => current);
-        var plans = new List<NativeEpilogueEdit.Plan>();
-        var replacements = new Dictionary<NativeEpilogueEdit.Plan, BlueprintCue>();
-        // Each page entry: its cue, its name, and the native checker its own conditions wrap (a variant wraps Cue_0311's).
+        // Each page entry: its cue, its name, and the native checker its own conditions wrap (a variant wraps its cue's).
         var byGuid = new Dictionary<BlueprintGuid, (BlueprintCue Cue, string Name, Func<bool> Native)>();
         foreach (var pair in cues) byGuid[pair.Value.AssetGuid] = (pair.Value, pair.Key, nativeCheckers[pair.Key]);
-        for (int v = 0; v < variants.Length; v++)
+        var edited = story.NativeEpilogueEdits.Where(pair => pair.Value.Page == evidence.Page).OrderBy(pair => pair.Key, StringComparer.Ordinal).ToArray();
+        check(edited.Select(pair => pair.Key).SequenceEqual(new[] { Cue0311, Cue0310 }.OrderBy(k => k, StringComparer.Ordinal)),
+            "The Tirabade page edits are not exactly Cue_0310 and Cue_0311.");
+        foreach (var edit in edited)
         {
-            int variant = v;
-            var replacement = new BlueprintCue { AssetGuid = id(Rules.NativeEditCueName(Cue0311, spec, variant)), name = "TirabadeFixture_v" + variant };
-            var plan = NativeEpilogueEdit.Prepare(Cue0311, spec, original, page, replacement, () => group.Selected() == variant, variant);
-            foreach (var condition in replacement.Conditions.Conditions)
-            { condition.Owner = replacement; condition.name = "$Applies$fixture" + variant; replacement.ElementsArray.Add(condition); }
-            plans.Add(plan);
-            replacements[plan] = replacement;
-            byGuid[replacement.AssetGuid] = (replacement, variants[variant].Replacement, nativeCheckers[Cue0311]);
+            string cueId = edit.Key;
+            var original = cues[cueId];
+            var variants = Rules.EditVariants(edit.Value);
+            check(NativeEpilogueEdit.Check(cueId, edit.Value, Resolve, null) == null, "The archive-shaped Tirabade cue is refused: " + cueId);
+            var group = new NativeEpilogueEdit.Group(edit.Value, () => current);
+            var plans = new List<NativeEpilogueEdit.Plan>();
+            var replacements = new Dictionary<NativeEpilogueEdit.Plan, BlueprintCue>();
+            for (int v = 0; v < variants.Length; v++)
+            {
+                int variant = v;
+                var replacement = new BlueprintCue { AssetGuid = id(Rules.NativeEditCueName(cueId, edit.Value, variant)), name = "TirabadeFixture_" + cueId + "_v" + variant };
+                var plan = NativeEpilogueEdit.Prepare(cueId, edit.Value, original, page, replacement, () => group.Selected() == variant, variant);
+                foreach (var condition in replacement.Conditions.Conditions)
+                { condition.Owner = replacement; condition.name = "$Applies$fixture" + variant; replacement.ElementsArray.Add(condition); }
+                plans.Add(plan);
+                replacements[plan] = replacement;
+                byGuid[replacement.AssetGuid] = (replacement, variants[variant].Replacement, nativeCheckers[cueId]);
+            }
+            check(group.Selected() == -1, "A variant group selects before it is attached.");
+            NativeEpilogueEdit.AttachGroup(group, plans, plan => Ref(replacements[plan].AssetGuid.ToString()));
+            check(original.Conditions.Conditions.Length == 1 && original.Conditions.Conditions[0].GetType().Name == "Guard",
+                "Tirabade cue is not guarded exactly once: " + cueId);
         }
-        check(group.Selected() == -1, "A variant group selects before it is attached.");
-        NativeEpilogueEdit.AttachGroup(group, plans, plan => Ref(replacements[plan].AssetGuid.ToString()));
-        check(page.Cues.Select(r => byGuid[r.Guid].Name).SequenceEqual(TirabadePageCues.Take(3).Concat(variants.Select(v => v.Replacement)).Append(Cue0311)),
-            "Cue_0311 variants are not inserted in order right before the native cue.");
+        Func<string, string[]> variantsOf = cueId => Rules.EditVariants(story.NativeEpilogueEdits[cueId]).Select(v => v.Replacement).ToArray();
+        check(page.Cues.Select(r => byGuid[r.Guid].Name).SequenceEqual(TirabadePageCues.Take(2).Concat(variantsOf(Cue0310)).Append(TirabadePageCues[2])
+                .Concat(variantsOf(Cue0311)).Append(Cue0311)),
+            "Tirabade variants are not inserted in order right before their native cues.");
         string[] Shown() => page.Cues.Select(reference => byGuid[reference.Guid])
             .Where(entry => entry.Native() && entry.Cue.Conditions.Conditions.All(c => c.Check())).Select(entry => entry.Name).ToArray();
         const string IrabethDead = "b14e13f9359585e498fcd81ab95d4d7e", AneviaGone = "09f46662bcd14a03a0874267e16d6e6f",
@@ -223,7 +236,12 @@ internal static class NativeEpilogueEditManagedTests
             // Other native states keep their own cue: Cue_0311's checker fails there, so no variant can show.
             ("both stayed, Irabeth encouraged (return flags present)", new[] { Encouraged }, new[] { "trickster.ever", Returned, IrabethReturned, Committed },
                 TirabadePageCues[0], null),
-            ("both left at the Coronation", new[] { IrabethGone, AneviaGone }, new[] { "trickster.ever", Returned }, TirabadePageCues[2], Image),
+            ("both left at the Coronation, nothing returned", new[] { IrabethGone, AneviaGone }, new[] { "trickster.ever" }, Cue0310, Image),
+            ("both left, mod disabled after Anevia's return", new[] { IrabethGone, AneviaGone }, null, Cue0310, Image),
+            ("both left, Anevia returned, uncommitted", new[] { IrabethGone, AneviaGone }, new[] { "trickster.ever", Returned },
+                "anevia.trickster.epilogue.native_tirabade_left", Image),
+            ("both left, Anevia returned, committed", new[] { IrabethGone, AneviaGone }, new[] { "trickster.ever", Returned, Committed },
+                "anevia.trickster.epilogue.native_tirabade_left_committed", Image),
         };
         foreach (var row in rows)
         {
@@ -238,8 +256,6 @@ internal static class NativeEpilogueEditManagedTests
             check(row.Picture == null ? images.Length == 0 : images.Length == 1 && images[0] == row.Picture,
                 "Tirabade slide, " + row.What + ": wrong picture action [" + string.Join(", ", images) + "]");
         }
-        check(original.Conditions.Conditions.Length == 1 && original.Conditions.Conditions[0].GetType().Name == "Guard",
-            "Cue_0311 is not guarded exactly once.");
-        Console.WriteLine("PASS: E14d Tirabade slide: native and RRT cues together, one per state, with the right picture.");
+        Console.WriteLine("PASS: E14d Tirabade slides (Cue_0310, Cue_0311): native and RRT cues together, one per state, with the right picture.");
     }
 }

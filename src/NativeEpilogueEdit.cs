@@ -52,6 +52,10 @@ namespace Tirabade
             // page or CueSequence_Special.
             ["3a3e561c6b05a284d93eb3bff7b712a6"] = new Evidence("ae1f824fe248d9f4aac7d39ec2e12140", Special, "4c278ba4-5217-4fae-afec-47c6f6597e00",
                 image: "f96ad5fa9c59d7549adff4c90f0703ab", degradeOnRefusal: false),
+            // Tirabade BookPage_0307 Cue_0310 (IrabethGone + AneviaGone Playing, both left at the Coronation): "...they could
+            // never escape their nightmares of the Fifth Crusade." Same image action and page; the parent never names it.
+            ["ccd140dbf2603734aa323261c2445bec"] = new Evidence("ae1f824fe248d9f4aac7d39ec2e12140", Special, "cc716238-3702-4913-977d-6189665672b7",
+                image: "f96ad5fa9c59d7549adff4c90f0703ab", degradeOnRefusal: false),
         };
 
         public static bool DegradesOnRefusal(string cueId) => !Reviewed.TryGetValue(cueId, out var evidence) || evidence.DegradeOnRefusal;

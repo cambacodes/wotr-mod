@@ -671,7 +671,29 @@ native_slide(NATIVE_WIDOW, LEFT_ALONE + " She came back as far as the Drezen gat
              "that, to the Commander's face. Where she went after that was her own decision, and she made sure everyone knew it.",
              (RETURNED,))
 
+# The other departure cue on the same page, Cue_0310 (IrabethGone + AneviaGone: both left at the Coronation after the
+# Commander's betrayal): "...She barely resisted when Anevia came to take her as far away from Mendev as possible, but they
+# could never escape their nightmares of the Fifth Crusade." The wardrobe reaches that Anevia too (its setup needs only
+# anevia_gone). Irabeth has no Trickster return from that departure, so only Anevia's return changes the slide. Beth is
+# alive but gone from Drezen with her, so the native departure picture stays.
+TIRABADE_LEFT_SLIDE = "ccd140dbf2603734aa323261c2445bec"   # World/Dialogs/Epilogues/Cue_0310
+NATIVE_LEFT_COMMITTED = "anevia.trickster.epilogue.native_tirabade_left_committed"
+NATIVE_LEFT = "anevia.trickster.epilogue.native_tirabade_left"
+LEFT_TOGETHER = ("The Commander's betrayal and the humiliation she had suffered in Drezen eroded Irabeth's fighting spirit, "
+                 "and Anevia meant to take her as far away from Mendev as she could.")
+native_slide(NATIVE_LEFT_COMMITTED, LEFT_TOGETHER + " They had not got far enough to keep the Commander out of "
+             "her wardrobe. Anevia came back as far as the Drezen gate, and in time through a door beside it, on her "
+             "own terms. She never forgave the betrayal, and Beth always came first.",
+             (RETURNED, "anevia.committed"))
+native_slide(NATIVE_LEFT, LEFT_TOGETHER + " They had not got far enough to keep the Commander out of her "
+             "wardrobe. Anevia came back as far as the Drezen gate to say what she thought of that, and then she went back "
+             "to her wife. Neither of them ever escaped the nightmares of the Fifth Crusade, and she never pretended otherwise.",
+             (RETURNED,))
+
 NATIVE_EPILOGUE_EDITS = {
+    TIRABADE_LEFT_SLIDE: dict(Page=TIRABADE_PAGE, Sequence=SPECIAL, Key="cc716238-3702-4913-977d-6189665672b7",
+                              Replacement=NATIVE_LEFT_COMMITTED, When=[[RETURNED, "anevia.committed"]], KeepNativeImage=True,
+                              Variants=[dict(Replacement=NATIVE_LEFT, When=[[RETURNED]], KeepNativeImage=True)]),
     TIRABADE_SLIDE: dict(Page=TIRABADE_PAGE, Sequence=SPECIAL, Key="4c278ba4-5217-4fae-afec-47c6f6597e00",
                          Replacement=NATIVE_TOGETHER, When=[[RETURNED, "anevia.committed", I_RET]], KeepNativeImage=False,
                          Variants=[dict(Replacement=NATIVE_BACK, When=[[RETURNED, I_RET]], KeepNativeImage=False),

@@ -90,5 +90,54 @@ internal static class TirabadeNativeSlideTests
         check(Rules.NativeEditCueName(Cue0311, edit, 0) == "native-edit." + Cue0311
               && Rules.NativeEditCueName(Cue0311, edit, 4) == "native-edit." + Cue0311 + "." + South,
             "Trk_Tirabade_NativeSlide: variant cue names changed (save references).");
+        RunLeft(story, check);
+    }
+
+    // Cue_0310 (IrabethGone + AneviaGone, both left at the Coronation after the Commander's betrayal): only Anevia's return
+    // changes it (Irabeth has no Trickster return from that departure); Beth stays alive and away, so the native picture stays.
+    private const string Cue0310 = "ccd140dbf2603734aa323261c2445bec";
+    private const string Left = "anevia.trickster.epilogue.native_tirabade_left";
+    private const string LeftCommitted = "anevia.trickster.epilogue.native_tirabade_left_committed";
+
+    private static void RunLeft(Story story, Action<bool, string> check)
+    {
+        check(story.NativeEpilogueEdits.TryGetValue(Cue0310, out var edit), "Trk_Tirabade_NativeSlideLeft: Cue_0310 is not replaced.");
+        if (edit == null) return;
+        var variants = Rules.EditVariants(edit);
+        check(edit.Page == "ae1f824fe248d9f4aac7d39ec2e12140" && edit.Sequence == "f8d7f50e3bb88c143834d234c0b24474"
+              && edit.Key == "cc716238-3702-4913-977d-6189665672b7"
+              && variants.Select(v => v.Replacement).SequenceEqual(new[] { LeftCommitted, Left }) && variants.All(v => v.KeepNativeImage),
+            "Trk_Tirabade_NativeSlideLeft: Cue_0310 evidence, variant order or picture changed.");
+        check(!story.Relationships["irabeth"].TricksterAccess.Values.Any(access => access.Detect.Contains("irabeth_gone")),
+            "Trk_Tirabade_NativeSlideLeft: Irabeth gained a return from IrabethGone; Cue_0310 needs her variant.");
+        string? Selected(Snapshot state)
+        {
+            int i = Rules.SelectNativeEditVariant(variants, state);
+            return i < 0 ? null : variants[i].Replacement;
+        }
+        var rows = new (string What, Snapshot World, string? Expected)[]
+        {
+            ("both left, nothing returned", World("trickster.ever", "irabeth_gone", "anevia_gone"), null),
+            ("both left, Anevia committed before she left", World("trickster.ever", "irabeth_gone", "anevia_gone", Committed), null),
+            ("both left, Anevia returned, uncommitted", World("trickster.ever", "irabeth_gone", "anevia_gone", Returned), Left),
+            ("both left, Anevia returned and closed", World("trickster.ever", "irabeth_gone", "anevia_gone", Returned, "anevia.closed"), Left),
+            ("both left, Anevia returned, committed", World("trickster.ever", "irabeth_gone", "anevia_gone", Returned, Committed), LeftCommitted),
+        };
+        foreach (var row in rows)
+            check(Selected(row.World) == row.Expected, "Trk_Tirabade_NativeSlideLeft: " + row.What + " selects "
+                + (Selected(row.World) ?? "the native slide") + ", expected " + (row.Expected ?? "the native slide") + ".");
+        Scene S(string id) => story.Scenes.Single(s => s.Id == id);
+        foreach (var id in new[] { Left, LeftCommitted })
+        {
+            var scene = S(id);
+            string text = scene.Nodes[0].Text;
+            check(scene.Relationship == "anevia" && Rules.IsNativeReplacement(story, scene) && scene.Nodes.Count == 1
+                  && text.Contains("betrayal") && text.Length < 520 && !text.Contains("Kenabres"),
+                "Trk_Tirabade_NativeSlideLeft: replacement owner, shape or canon frame is wrong: " + id);
+        }
+        // Must-remain-true: the resentment never evaporates; her terms and Beth first when committed; no door when not.
+        check(S(LeftCommitted).Nodes[0].Text.Contains("own terms") && S(LeftCommitted).Nodes[0].Text.Contains("never forgave the betrayal")
+              && S(LeftCommitted).Nodes[0].Text.Contains("Beth always came first") && !S(Left).Nodes[0].Text.Contains("door"),
+            "Trk_Tirabade_NativeSlideLeft: the committed slide drops her terms, Beth or the grudge, or the uncommitted one gains a door.");
     }
 }
