@@ -455,7 +455,7 @@ EPILOGUE_PARAGRAPHS = (
     p('''{n}The soldier from the ford lived out the war and a good deal longer, and never spoke of the night on the tanners' stair. He was the first man in Drezen to take his hat off when the young dragon flew over.{/n}''', requires=(P + "spear.freed",)),
     p('''{n}The soldier from the ford came down to the kiln every week after that, for as long as there was a dragon in it, with a pig's ear in his pocket, and sat on the step without saying much. The young dragon bit him only once, and he said it was fair, and that her mother had done worse.{/n}''', requires=(P + "spear.seen",)),
     p('''{n}The Kellid widow whose goat the young dragon ate lived near the wall for the rest of the war, where the wind did not come in. Her son grew up to be a drover, and would not have a goat in his herd, and said he could not remember why.{/n}''', requires=(P + "goat.asked",)),
-    p('''{n}Three wolves were blamed for the goat in the refugee quarter, and two sentries of the east wall were docked a week's pay for letting them over. The widow whose goat it was never said otherwise, to anyone, and moved to the far side of the quarter in the spring.{/n}''', requires=(P + "goat.wolves",), forbids=(GOAT_CORRECTED,)),
+    p('''{n}Three wolves were blamed for the goat in the refugee quarter, and two sentries of the east wall were flogged for letting them over. The widow whose goat it was never said otherwise, to anyone, and moved to the far side of the quarter in the spring.{/n}''', requires=(P + "goat.wolves",), forbids=(GOAT_CORRECTED,)),
     p('''{n}No wolves came over the east wall that winter, whatever the Commander had said for one morning. The two sentries kept their backs and their pay, and the Kellid widow whose goat it was had milk till the spring and a new goat after it, and told everyone in the quarter exactly what had eaten the old one.{/n}''', requires=(GOAT_CORRECTED,)),
     p('''{n}Ulbrig Olesk came down to the kiln every week that she kept it and he was in Drezen, and brought his own bread, and argued with her about horses until the embers went grey. Neither of them ever said what they talked about besides horses. The sergeant with the squint said it was mostly the dead.{/n}''', requires=(P + "ulbrig_met",)),
     p('''{n}The chaplain's report went to the see in Mendev and was read there, and argued over for a year, and filed. A copy of it is said to be in the archives still, with a note in a later hand in the margin: "And the woundwyrm? Enquire." Nobody ever did.{/n}''', requires=(P + "chaplain_prayed",)),
@@ -497,9 +497,9 @@ epilogue("heel", '''{n}The heel of the loaf stayed on the shelf in the kiln, wra
 {n}People who knew them both said that the Commander came down to the kiln more evenings than not, and that the two of them sat by the fire and talked until late, and that it was the most patient courtship anyone in Drezen had ever seen, and that it was not clear to anyone, including the two of them, which of them was doing the courting.{/n}''',
          requires=(BREAD_KEPT,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD), **ALIVE)
 
-epilogue("wolves", '''{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the white-haired woman from the jeweller's steps went north with a young red-black dragon, and did not come back, and did not write.{/n}
+epilogue("wolves", '''{n}No wolves ever came over the east wall that winter, and the two sentries who were flogged for them never learned what had. At the thaw the woman from the jeweller's steps went north with a young red-black dragon, and did not come back, and did not write.{/n}
 {n}On the kiln step she left a heel of bread and a pinch of salt, untouched, where the Commander would be sure to pass.{/n}''',
-         requires=(GOAT_STANDS,))
+         requires=(GOAT_STANDS,), forbids=(GIVEN_UP, LIE_KEPT, LEFT_WITH_IT))   # polish r3: one closure page each
 
 epilogue("unreturned", '''{n}When word came down from Threshold that the Commander would not be coming back, Nidalynn banked the kiln under the east wall and did not let it cool, that winter or any winter after. The young dragon was fed. The refugees were fed. She said the Commander's name at the fire the way she said the others, and every year on that night she set out bread and salt for one more than came, and ate her own share slowly, and was grateful, because she had said she would be.{/n}''',
          requires=("sacrifice",), forbids=("trickster.commander_back", CLOSED),
@@ -507,14 +507,14 @@ epilogue("unreturned", '''{n}When word came down from Threshold that the Command
 
 epilogue("apart", '''{n}The widow was gone from the jeweller's steps by the end of the war. The refugees said she had gone north with a young dragon that would not stay in a city, and that whatever she had said to the Commander she had said in the kiln, where nobody could hear it.{/n}
 {n}Sometimes, when it snowed, a silver shape went over Drezen very high, and did not come down.{/n}''',
-         requires=(MET, CLOSED), forbids=(COMMITTED, LEFT_WITH_IT, LIE_KEPT, GIVEN_UP), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
+         requires=(MET, CLOSED), forbids=(COMMITTED, LEFT_WITH_IT, LIE_KEPT, GIVEN_UP, GOAT_STANDS), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("claimed", '''{n}The Commander kept a young woundwyrm in the kiln below the east wall for a season, and fed it, and called it the crusade's, and the crusade was proud of it for exactly as long as it took the creature to learn to fly.{/n}
 {n}On the day it flew it went to her, not to the Commander, and she went with it. The kiln was cold by evening. The Commander's claim was good in every court in Mendev, and there was not one court in Mendev that could have enforced it.{/n}''',
-         requires=(LEFT_WITH_IT,), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
+         requires=(LEFT_WITH_IT,), forbids=(GIVEN_UP, LIE_KEPT), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("lie", '''{n}The Commander never said, in front of anyone who mattered, where the dragon in the kiln had come from. The widow did not say it either. She left Drezen at the first thaw with a young dragon under her shawl, and on the jeweller's step where she had sat all winter she left a heel of bread and a pinch of salt, untouched, where anyone could see them.{/n}''',
-         requires=(LIE_KEPT,), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
+         requires=(LIE_KEPT,), forbids=(GIVEN_UP,), paragraphs=(*EPILOGUE_PARAGRAPHS, *BILL_RECORD))
 
 epilogue("given", '''{n}The Commander gave the thing that came out of the rock to the chaplain's fire. The fire never got it. The old lime-kiln below the east wall lost its roof that night, all of a piece, and the lower town swears to this day that something silver went up out of the smoke, bigger than the sky over the tanners' stair, with something small and red held against its breast, and put out every torch in the lane as it passed.{/n}
 {n}The widow was not seen on the jeweller's steps again. The Kellid women who had shared her step said she had never been a widow, and never been with child; but refugees will say anything.{/n}''',

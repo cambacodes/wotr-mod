@@ -563,6 +563,49 @@ internal static class NidalynnTricksterTests
               && S(P + "ridge.claimed_flight").InteractionHub == "nidalynn.presence",
             "Trk_Nidalynn_Allocation: a visit stands on the wrong body's step.");
 
+        // Polish r3 (audit INT/BEL/HOW, Trk_Nidalynn_Closures): the wolves closure walked before and after the commit gives the
+        // wolves page alone, and after it her Last Call shout goes unanswered (the debt resolved, never called).
+        var goatW = S(P + "kiln.the_goat");
+        var goatC = S(P + "kiln.the_goat.chosen");
+        var callIn = S("nidalynn.lastcall.call");
+        var preGoat = Later(story, given, 49);
+        check(Avail(goatW, preGoat) && !Avail(goatW, Later(story, plainRejected, 49)) && !Avail(goatC, Later(story, plainRejected, 49)),
+            "Trk_Nidalynn_Closures: the goat does not play before the commit, or plays after she has already gone.");
+        var preStands = Program.WalkVia(goatW, preGoat, "after_wolves", 2);
+        var postGoat = Later(story, yes, 49);
+        check(Avail(goatC, postGoat), "Trk_Nidalynn_Closures: the goat does not play after the commit.");
+        var postStands = Program.WalkVia(goatC, postGoat, "after_wolves", 2);
+        check(preStands.Count > 0 && postStands.Count > 0 && preStands.Concat(postStands).All(r => r.Has(Closed) && r.Has(P + "goat.lie_kept")),
+            "Trk_Nidalynn_Closures: keeping the wolves story does not close her.");
+        foreach (var r in preStands.Concat(postStands))
+        {
+            var w = End(r, Bill, Called);
+            check(Shown(w).SequenceEqual(new[] { "wolves" }) && !Render(endPage("wolves"), w).Contains("white-haired"),
+                "Trk_Nidalynn_Closures: the wolves closure gets more than its own page: " + string.Join(", ", Shown(w)));
+        }
+        check(!Avail(callIn, End(preStands.First())), "Trk_Nidalynn_Closures: a Commander who never ate the salt is offered her call-in.");
+        var callAfter = Program.Walk(callIn, End(postStands.First()));
+        var callKept = Program.Walk(callIn, End(yes));
+        check(callAfter.Count > 0 && callAfter.All(r => !r.Has("nidalynn.lastcall.called") && r.Has("nidalynn.lastcall.resolved"))
+              && callKept.Count > 0 && callKept.All(r => r.Has("nidalynn.lastcall.called")),
+            "Trk_Nidalynn_Closures: her shout is answered after she left over the wolves, or not answered while she stays.");
+        // Exclusivity over every closure combination the route can hold (each closure flag comes with nidalynn.closed).
+        var closureFlags = new[] { Committed, P + "kissed", P + "bread_kept", P + "left_with_it", P + "lie_kept", P + "given_to_the_crowd", P + "goat.lie_kept", "sacrifice", "trickster.commander_back" };
+        for (int mask = 0; mask < (1 << closureFlags.Length); mask++)
+        {
+            var held = closureFlags.Where((f, i) => (mask & (1 << i)) != 0).ToList();
+            if (held.Contains("trickster.commander_back") && !held.Contains("sacrifice")) continue;
+            var closes = held.Any(f => f == P + "left_with_it" || f == P + "lie_kept" || f == P + "given_to_the_crowd" || f == P + "goat.lie_kept");
+            foreach (var closed in closes ? new[] { true } : new[] { false, true })
+            {
+                var flags = new List<string> { "trickster.ever", P + "met" };
+                flags.AddRange(held);
+                if (closed) flags.Add(Closed);
+                var w = World(story, 6, flags.ToArray());
+                check(Shown(w).Length <= 1, "Trk_Nidalynn_Closures: two endings at once: " + string.Join(", ", Shown(w)) + " for " + string.Join(", ", flags));
+            }
+        }
+
         // Polish r2 (audit COX, Trk_Nidalynn_LateStart): a Commander who takes the egg in Chapter 5 gets one rest delivery in
         // Chapter 5, worst branch: the vault or the straw page folds the grey stone's nights in; the welcome home never plays.
         foreach (var (late, entryWorld) in new[] {

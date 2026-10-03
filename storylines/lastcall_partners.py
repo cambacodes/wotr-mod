@@ -619,8 +619,10 @@ partner("nidalynn", "nidalynn", "nidalynn.committed", "nidalynn.closed", "Of Her
     page_commit_groups=[["nidalynn.committed"], [NI + "late_committed"]],   # Q9 (Sol INT): the late yes reaches her coda
     deal=[[NI + "cost.salt_eaten"]],
     call=call('''[Call across the snow] "Nidalynn! I've your salt in me yet. Come and see."''',
-        '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed, and then, very far off, over a city you cannot see, something answers.{/n}''',
-        (PLAIN_CHOICE, (), (), ())),
+        '''{n}You have heard her hum it at the kiln: the long rising herding-shout that brought Reudger's mares home across the grass. You put her name at the end of it. You give it everything you have left. It goes out over the rift and is swallowed.{/n}''',
+        ("[Listen. Very far off, over a city you cannot see, something answers.]", (), (), ("nidalynn.closed", NI + "goat.lie_kept")),
+        # polish r3 (audit INT): she left over the wolves and said she would not eat at that fire again; nothing comes.
+        ("[Listen. Nothing comes back over the snow.]", None, ("nidalynn.closed",), ())),
     ledger=("Nidalynn: salt, eaten", "I ate a silver dragon's salt at a lime-kiln. Among the Windstep that makes me of her fire until the salt is out of my blood, and she says it never comes out. The debt runs both ways. So she says."))
 
 SH = "shamira.trickster."
