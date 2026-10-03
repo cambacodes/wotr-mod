@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RRT-pol-delamere\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4895,
-  "unique_targets": 1111,
+  "binding_uses": 4897,
+  "unique_targets": 1113,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -1128,6 +1128,14 @@
     },
     "6a5d2bcd0a6d09249bb3e62c2d1556c2": {
       "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0050.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "173de7e4c8e237d409e3e08f1461b6fb": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0059.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "8581caea128a3d84a901be70e26e6146": {
+      "path": "World/Dialogs/c3/TempleOfDelamere/TombOfDelamere_BookEvent/Answer_0060.jbp",
       "type": "BlueprintAnswer"
     },
     "cab33f23f9c1f284eab13e33fbdc3df0": {
