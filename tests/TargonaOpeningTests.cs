@@ -156,11 +156,18 @@ internal static class TargonaOpeningTests
             var later = Program.Copy(end); later.Hour += 200; Rules.Complete(story, later);
             bool ward = later.Has(Met), lover = later.Has(Corr);
             check(Rules.Available(story, threshold, later) == (lover && !ward), "The wayhouse visit opens for the wrong history: " + order);
-            check(Rules.Available(story, evening, later) == (lover && ward), "The ward evening opens for the wrong history: " + order);
+            check(!Rules.Available(story, evening, later), "The in-person ward evening opens without her at the cots: " + order);
+            var present = Program.Copy(later); present.AvailableContacts.Add("81297c673b63b60448ef88a10db6bc78");
+            check(Rules.Available(story, evening, present) == (lover && ward), "The ward evening opens for the wrong history: " + order);
             if (lover && ward)
-                foreach (var o in Program.Walk(evening, later, (node, _) => eveningNodes.Add(node)))
-                    check(o.Has("targona.committed") && !o.Has("targona.closed") && o.AvailableContacts.Count == 0, "The ward evening rewrites the commitment.");
+                foreach (var o in Program.Walk(evening, present, (node, _) => eveningNodes.Add(node)))
+                    check(o.Has("targona.committed") && !o.Has("targona.closed"), "The ward evening rewrites the commitment.");
         }
+        check(evening.ContactUnit == "81297c673b63b60448ef88a10db6bc78" && evening.InteractionHub == "targona.presence" && !Rules.IsRemote(evening),
+            "The ward evening is delivered as a letter instead of in person.");
+        var eveningStart = evening.Nodes.Single(n => n.Id == "start").Choices;
+        check(eveningStart.Single(c => c.Next == "paid").Crusade?.Resource == "Finances" && eveningStart.Single(c => c.Next == "paid").Crusade!.Amount == -100
+              && eveningStart.Single(c => c.Next == "cover").Crusade == null, "The novices are not paid for, or the lie costs coin.");
         check(eveningNodes.SetEquals(evening.Nodes.Select(n => n.Id)), "The ward evening has unreachable prose.");
 
         foreach (var scene in scenes)

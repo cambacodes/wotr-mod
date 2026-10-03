@@ -409,31 +409,3 @@ She has added a small sketch of the courtyard, with the way in and out marked in
 She sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.''',
       c("Reply with an ordinary detail and keep the conversation open.", flags=("targona.key_unpressured",))),
 ], "targona.the_open_threshold", requires=("targona.correspondence_romanced",))
-
-
-# r5: the visit's ward variant. The angel of the Trickster ward lives a hundred paces from the Commander's door; what the
-# two of them lack is not a road but an hour. Append-only: a new scene after what_she_keeps, for ward histories only.
-s("ward_evening", "An hour off the rows", [
-    n("start", "Narrator", '''{n}This letter has come a hundred paces, from the ward behind Wilcer's stores, folded small enough to pass through a runner's fist.{/n}
-"Commander. The chaplain says I have not had an evening off the rows since I came to Drezen. He is right, and he said it in front of the men, which was unkind of him and accurate.
-"I would like one. With you. Not in the loft, where I can hear the third cot coughing through the floor. Somewhere the ward cannot find me for an hour.
-"But I will not leave the rows uncovered, and I will not ask the chaplain, because he will say yes and then look at me all week. If you can find a way, find it. If you cannot, I will see you at the cots, and that is not nothing either."''',
-      c("[Trickster] Find her rows a keeper she cannot argue with.", "cover", requires=("trickster",)),
-      c("Pay the chaplain's two novices to sit the rows, and tell her exactly what it cost.", "paid"),
-      c("Put the letter aside until you can answer it properly.", abort=True)),
-    n("cover", "Narrator", '''{n}By supper the whole of Drezen knows that the Queen's chaplains will inspect the infirmary at dawn. Nobody can say who said so. By the first bell there are more volunteers scrubbing the floor behind Wilcer's stores than there are wounded in it, and every one of them is watching the cots so as to be seen watching them.{/n}
-"There is no inspection," Targona says, when she finds you at the foot of the wall stair. It is not a question. "You lied to the chaplain."
-"I lied to Drezen. The chaplain happened to hear it."
-{n}She looks back at the lit canvas, at the scrubbing, at the men sitting up in their cots to watch the show, and something in her face gives way.{/n} "Every cot is watched better tonight than any night since I came. I will have to confess it. I will not be sorry."''',
-      c("Continue", "wall")),
-    n("paid", "Narrator", '''{n}You pay the chaplain's two novices a week's wages to sit the rows until the second bell, and you write it down for her: their names, the sum, the hour they stop. She reads it at the foot of the wall stair.{/n}
-"You paid them more than they are worth," she says. "They will be insufferable." {n}She folds the paper into her sleeve.{/n} "Thank you for telling me the price."''',
-      c("Continue", "wall")),
-    n("wall", "Narrator", '''{n}The wall walk above the stores is empty at this hour. Below, the ward's canvas glows like a lantern, and from up here you cannot hear the coughing.{/n}
-"An hour," she says. "I have not had an hour that was not somebody's since the laboratory." {n}She stands at the parapet with her hands on the stone, and then they are not on the stone; they are on your coat, and she is kissing you as if the hour were already half spent.{/n}
-{n}There is a watchtower door at the end of the walk, and a guardroom behind it with a brazier nobody has lit. She lights it. Then she pulls her plain habit over her head and lets it fall, and her wings open in the small room and brush the rafters, and she pulls you down with her onto the bench beside the brazier, her mouth at your throat, her hands already at your belt.{/n}''',
-      c("[Let the hour run.]", "bell")),
-    n("bell", "Narrator", '''{n}At the second bell she is dressed and on the stair before you have found your other boot. At the foot she stops, turns back, and kisses you once more, hard.{/n}
-"Next time I will ask for two hours," she says, "and I will not need a lie or a purse to get them. I will simply take them." {n}Then she goes back to the rows.{/n}''',
-      c("Go back to your war.", flags=("targona.ward_evening_kept",))),
-], "targona.what_she_keeps", requires=("targona.correspondence_romanced", MET))

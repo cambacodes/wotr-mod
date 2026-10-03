@@ -501,6 +501,35 @@ ward(P + "free.the_stove", "What he asked her", '"Targona."', [
       c("[Go, and leave her to the ward.]", flags=(COLLEAGUES,))),
 ], requires=("trickster.ever", MET), forbids=(CLOSED, COMMITTED, SPARK, COLLEAGUES), delay=48)
 
+# r5/r6: the visit's ward variant, in person (her presence hub). The angel of the Trickster ward lives a hundred paces from the
+# Commander's door; what the two of them lack is not a road but an hour. Follows the correspondence's what_she_keeps for a
+# ward lover; the wayhouse visit (the_open_threshold) forbids `met`.
+SCENES.append(scene("targona.ward_evening", "An hour off the rows", "Targona", 5, '"Targona. Your note."', [
+    nar("start", '''{n}At the cots she presses a folded note into your hand and goes back to her basin before you can open it. It is written as carefully as any of her letters, though she wrote it twenty paces from you.{/n}
+"Commander. The chaplain says I have not had an evening off the rows since I came to Drezen. He is right, and he said it in front of the men, which was unkind of him and accurate.
+"I would like one. With you. Not in the loft, where I can hear the third cot coughing through the floor. Somewhere the ward cannot find me for an hour.
+"But I will not leave the rows uncovered, and I will not ask the chaplain, because he will say yes and then look at me all week. If you can find a way, find it. If you cannot, I will see you at the cots, and that is not nothing either."''',
+      c("[Trickster] Find her rows a keeper she cannot argue with.", "cover", requires=("trickster",)),
+      c("Pay the chaplain's two novices to sit the rows, and tell her exactly what it cost.", "paid", crusade=("Finances", -100)),
+      c("Put the letter aside until you can answer it properly.", abort=True)),
+    nar("cover", '''{n}By supper the whole of Drezen knows that the Queen's chaplains will inspect the infirmary at dawn. Nobody can say who said so. By the first bell there are more volunteers scrubbing the floor behind Wilcer's stores than there are wounded in it, and every one of them is watching the cots so as to be seen watching them.{/n}
+"There is no inspection," Targona says, when she finds you at the foot of the wall stair. It is not a question. "You lied to the chaplain."
+"I lied to Drezen. The chaplain happened to hear it."
+{n}She looks back at the lit canvas, at the scrubbing, at the men sitting up in their cots to watch the show, and something in her face gives way.{/n} "Every cot is watched better tonight than any night since I came. I will have to confess it. I will not be sorry."''',
+      c("Continue", "wall")),
+    nar("paid", '''{n}You pay the chaplain's two novices a hundred from the war chest to sit the rows until the second bell, which is a great deal more than a week's wages, and you write it down for her: their names, the sum, the hour they stop. She reads it at the foot of the wall stair.{/n}
+"You paid them more than they are worth," she says. "They will be insufferable." {n}She folds the paper into her sleeve.{/n} "Thank you for telling me the price."''',
+      c("Continue", "wall")),
+    nar("wall", '''{n}The wall walk above the stores is empty at this hour. Below, the ward's canvas glows like a lantern, and from up here you cannot hear the coughing.{/n}
+"An hour," she says. "I have not had an hour that was not somebody's since the laboratory." {n}She stands at the parapet with her hands on the stone, and then they are not on the stone; they are on your coat, and she is kissing you as if the hour were already half spent.{/n}
+{n}There is a watchtower door at the end of the walk, and a guardroom behind it with a brazier nobody has lit. She lights it. Then she pulls her plain habit over her head and lets it fall, and her wings open in the small room and brush the rafters, and she pulls you down with her onto the bench beside the brazier, her mouth at your throat, her hands already at your belt.{/n}''',
+      c("[Let the hour run.]", "bell")),
+    nar("bell", '''{n}At the second bell she is dressed and on the stair before you have found your other boot. At the foot she stops, turns back, and kisses you once more, hard.{/n}
+"Next time I will ask for two hours," she says, "and I will not need a lie or a purse to get them. I will simply take them." {n}Then she goes back to the rows.{/n}''',
+      c("Go back to your war.", flags=("targona.ward_evening_kept",))),
+], requires=("trickster.ever", MET, "targona.what_she_keeps", CORR_ROMANCED), forbids=(CLOSED, DEAD, CONDEMNED, "targona.dead_lair"),
+    delay=24, last=5, optional=True, Relationship="targona", Areas=[DREZEN], Chapters=[5], ContactUnit=UNIT, InteractionHub=HUB))
+
 # --- Shared: the ward (the commit, both states; R2-1) ---------------------------------------------------------------
 
 def night_nodes(prefix=""):
