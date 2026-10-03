@@ -212,6 +212,20 @@ internal static class DelamereTricksterTests
                   && !Rules.Available(story, s, W("delamere.tomb_visited", "delamere.tomb_book_locked_forced", "delamere.tomb_opened_forced"))
                   && W("delamere.tomb_book_locked_forced").Has("delamere.tomb_opened"),
                 "Trk_Delamere_BookLocked: a crypt waking opens while the native Book can still play, or after the order to move her to Drezen: " + s.Id);
+            // New-game histories: lore, initiation and an opened lid never substitute for closing the native Book.
+            var unlocked = W("delamere.tomb_visited", "kyado.initiated", P + "primed", "delamere.tomb_opened_bruteforce");
+            check(!unlocked.Has("delamere.tomb_book_locked") && !Reaches(unlocked, P + "living_wake", ch)
+                  && !Reaches(unlocked, P + "living_woken", ch),
+                "Trk_Delamere_BookLocked: a new game reaches a living waking without locking the native Book: " + s.Id);
+            foreach (var nativeLock in new[] { "delamere.tomb_book_locked_opened", "delamere.tomb_book_locked_forced" })
+            {
+                var locked = W("delamere.tomb_visited", nativeLock);
+                var outcomes = Program.Walk(s, locked);
+                check(locked.Has("delamere.tomb_book_locked") && outcomes.Any(r => r.Has(P + "living_wake"))
+                      && outcomes.Where(r => r.Has(P + "living_wake")).All(r => r.Has("delamere.tomb_book_locked")
+                          && Later(story, r, 0).Has(P + "living_woken")),
+                    "Trk_Delamere_BookLocked: a locked Book loses the waking, or a living outcome loses its lock: " + s.Id + " / " + nativeLock);
+            }
         }
         check(!drezen.Nodes.Any(n => n.Id == "rise_sealed") && Pages(drezen, World(story, 3, "trickster", "trickster.ever", "delamere.remains_finished", "delamere.tomb_visited")).Contains("rise"),
             "Trk_Delamere_Seal: the open Drezen stone breaks a seal.");
@@ -501,6 +515,22 @@ internal static class DelamereTricksterTests
                 check(ep.Id.EndsWith("sacrifice", StringComparison.Ordinal),
                     "Trk_Delamere_TerminalSurvival: a living-Commander page plays after an unreversed sacrifice: " + ep.Id + " (" + t.Page + ")");
         }
+        // Trk_Delamere_KyadoSurvival: native death overrides either earlier judgment in every shared epilogue.
+        check(story.UnlockableFlags["kyado.dead"] == "8c8b748a66ebad84f9b4cbcd73c2aab9",
+            "Trk_Delamere_KyadoSurvival: Kyado's death is not bound to the native flag.");
+        foreach (var page in pages.Where(ep => ep.Nodes[0].Paragraphs.Any(par => par.Requires.Contains(P + "kyado.spoken_for"))))
+            foreach (var judgment in new[] { P + "kyado.spoken_for", P + "kyado.judged" })
+            {
+                var node = page.Nodes[0];
+                var living = World(story, 6, "trickster.ever", judgment);
+                var dead = World(story, 6, "trickster.ever", judgment, "kyado.dead");
+                var survival = node.Paragraphs.Single(par => par.Requires.Contains(judgment));
+                var obituary = node.Paragraphs.Single(par => par.Requires.Contains("kyado.dead"));
+                check(Rules.VisibleParagraphs(node, living).Contains(survival) && !Rules.VisibleParagraphs(node, living).Contains(obituary)
+                      && !Rules.VisibleParagraphs(node, dead).Contains(survival) && Rules.VisibleParagraphs(node, dead).Contains(obituary)
+                      && !Rules.VisibleParagraphs(node, World(story, 6, "trickster.ever", "kyado.dead")).Contains(obituary),
+                    "Trk_Delamere_KyadoSurvival: an earlier judgment promises survival after Kyado dies, or his death loses its page: " + page.Id + " / " + judgment);
+            }
         // Trk_Delamere_PoachersVillage (polish r4, Sol BEL): the sentence and its page follow the count's actual outcome.
         var poach = S(P + "woken.poachers");
         check(Choice(poach, "hers", 0).Next == "sentence" && Choice(poach, "hers", 0).Forbids.Contains(P + "village.refused") && Choice(poach, "hers", 0).Forbids.Contains(P + "village.clans")
