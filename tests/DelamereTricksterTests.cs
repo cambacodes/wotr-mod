@@ -391,6 +391,14 @@ internal static class DelamereTricksterTests
                   && Choice(s, "trail", 0).Next == "hollow" && Choice(s, "thought", 0).Next == "hollow" && Pages(s, retry).Contains("found"),
                 "Trk_Delamere_HuntRetry: an earlier night's horn decides what she says after a clean track: " + s.Id);
         }
+        // Trk_Delamere_HuntPostponed (polish r4): letting her run is recorded, and the late page remembers it.
+        var postponed = After(hunt, offered, "choice", 1).First();
+        var latePage = S(P + "epilogue.late");
+        check(postponed.Has(P + "second_hunt_postponed") && !postponed.Has("delamere.committed")
+              && Choice(huntPage, "choice", 1).Set.Contains(P + "second_hunt_postponed") && Choice(huntLate, "choice", 1).Set.Contains(P + "second_hunt_postponed")
+              && latePage.Nodes[0].Paragraphs.Any(par => par.Requires.Contains(P + "second_hunt_postponed"))
+              && !latePage.Nodes[0].Text.Contains("before she could run", StringComparison.Ordinal),
+            "Trk_Delamere_HuntPostponed: the late page forgets that the Commander reached her blind and let her run.");
         // Trk_Delamere_Lie: a lie about her god must be taken back in her woods.
         var liar = Later(story, After(woods, lie, "want", 0).First(), 24);
         check(After(hunt, liar, "the_lie", 0).First().Has("delamere.committed") || Program.Walk(hunt, liar).Any(r => r.Has(P + "confessed") && r.Has("delamere.committed")),

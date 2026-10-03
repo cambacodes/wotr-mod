@@ -14,6 +14,8 @@ about who woke her.
 """
 import copy
 
+from storylines.delamere_trickster import HUNT_POSTPONED   # polish r4: the late page remembers the postponed hunt
+
 from story_format import c, p, scene
 from storylines.delamere_trickster import BARK_ANSWERED   # PP10: the Commander's answer cut into the bark (Chapter 4)
 from storylines.delamere_trickster import STORYTELLER_SUPPLIES, WOKE_DREZEN   # PP10: the bark's carrier; the Drezen waking
@@ -436,7 +438,7 @@ def second_hunt(opening):
             c("[Stand in the empty blind until the fire goes out.]")),
         nar("choice", '''{n}Between you there is a ring of embers, and a fresh hide, and the long cold breath of the woods. She has not moved. She will not move, you understand, unless you do; she has run as far tonight as she means to run.{/n}''',
             c("[Step through the embers and catch her by the wrist.]", "caught", flags=(COMMITTED, CAUGHT)),
-            c('"Not tonight. Run, Delamere. I\'ll hunt you again another new moon."', "not_tonight"),
+            c('"Not tonight. Run, Delamere. I\'ll hunt you again another new moon."', "not_tonight", flags=(HUNT_POSTPONED,)),
             c('"You\'ll come back to Drezen with me. Tonight. You\'re mine now; I caught you."', "claimed", flags=(CLAIMED, CLOSED))),
         dl("not_tonight", '''{n}Surprise, and then something like respect.{/n} "A hunter who lets the hind go when she has stopped running." {n}She picks up her bow.{/n} "My father did that once, with a doe in fawn. He said it was the only kill he was ever proud of not making." {n}She steps back into the dark.{/n} "Another new moon, then. I will run faster."''',
             c("[Let her go.]", abort=True)),

@@ -96,6 +96,7 @@ SAID_FINISH = P + "stag_said_finish"
 LEG_HEALED = P + "leg_healed"                 # Q6 r2 (BEL): the Commander had a priest straighten the leg, ending the hunt
 LIVING_WAKE = P + "living_wake"               # polish: the call succeeded and she breathes (set on the roar's own choices)
 LIVING_WOKEN = P + "living_woken"             # polish: Derived, any history in which she has woken living (the tomb gate's When)
+HUNT_POSTPONED = P + "second_hunt_postponed"   # polish r4: the Commander reached the blind and let her run
 TEMPLE_DISCOVERED = P + "temple_discovered"   # polish: the pilgrim's road to her temple (Chapter 5, no prior contact)
 # The courtship (delamere_woods) sets these; the epilogues and reactions read them.
 SECOND_HUNT = P + "second_hunt_offered"
@@ -542,9 +543,12 @@ epilogue("caught", '''{n}Delamere the Blessed hunted the woods below her temple 
          requires=(COMMITTED,), forbids=(CLOSED, "sacrifice"), **SURVIVED, paragraphs=EPILOGUE_PARAGRAPHS + (
              p('''{n}At the first frost after Threshold she came for her day in the middle of the Commander's own victory feast, through a window, and took them out over the rooftops in front of half the crusade. Nobody at that table ever forgot it.{/n}''', requires=(FIRST_FROST,)),))
 
-epilogue("late", '''{n}The war ended before she could run her second hunt, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and dropped the meat on the table in front of the Commander's guests.{/n}
+epilogue("late", '''{n}The war ended before the second hunt was run to its end, and she did not hold that against the war. In the first spring after Threshold she walked into the Commander's hall with her bow unstrung on her back and a haunch of venison over her shoulder, and dropped the meat on the table in front of the Commander's guests.{/n}
 "My woods," she said. "Tonight. I will not make it easy." {n}She did not. The Commander caught her all the same, a little before dawn, in a blind below her temple where the embers were still warm, and she let herself be caught, and after that nobody asked the Commander where they went at the first frost every year.{/n}''',
-         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), paragraphs=EPILOGUE_PARAGRAPHS, **SURVIVED)
+         requires=(LATE_COMMITTED,), forbids=(COMMITTED, CLOSED, "sacrifice"), **SURVIVED, paragraphs=(
+             # Polish r4 (Sol BEL): the Commander who reached her blind and let her run.
+             p('''{n}She had stood in that blind once already, in the war, with the embers between them, and been told to run. "Another new moon," she had said. It came after Threshold, and she ran faster, as she had promised, and it did her no good at all.{/n}''', requires=(HUNT_POSTPONED,)),
+         ) + EPILOGUE_PARAGRAPHS)
 
 epilogue("sacrifice", '''{n}The Commander did not come back from the Threshold. Delamere heard it at her temple from a Mendevian runner, and sent him away with a hare for his trouble, and went down into the crypt alone.{/n}
 {n}She did not weep; she had used that up. At the first frost she took the old horn down from its peg and carried it up to the ridge above Drezen, where she had once made a fire and waited for a stag with a limp, and she sat there until dawn with the horn across her knees, and did not blow it. The hunters say she goes up every year. They say the day she was owed is the only debt she ever forgave.{/n}''',
