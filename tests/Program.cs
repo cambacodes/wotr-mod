@@ -721,6 +721,9 @@ internal static class Program
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
         CurrentPathTests.Run(Check);
         CurrentPathTests.RunStory(story, Check);
+        // Engine-q2 item 2: a returned, committed partner's Failed objective is restored.
+        ObjectiveRestoreTests.Run(Check);
+        ObjectiveRestoreTests.RunStory(story, Check);
         KonomiTests.Run(story, Check);
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();

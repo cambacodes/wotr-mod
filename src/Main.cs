@@ -1668,8 +1668,13 @@ namespace Tirabade
             TickPresences(state);
             foreach (var pair in objectives)
             {
-                if (Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value) == QuestObjectiveState.Started
-                    && Rules.Failed(story.Relationships[pair.Key], state)) Game.Instance.Player.QuestBook.FailObjective(pair.Value);
+                var objectiveState = Game.Instance.Player.QuestBook.GetObjectiveState(pair.Value);
+                switch (Rules.ObjectiveStep(story.Relationships[pair.Key], state, objectiveState == QuestObjectiveState.Started,
+                    objectiveState == QuestObjectiveState.Failed))
+                {
+                    case "fail": Game.Instance.Player.QuestBook.FailObjective(pair.Value); break;
+                    case "restore": RestoreObjective(pair.Key, pair.Value); break;
+                }
             }
             TickJournalEntries(state);
             SettleNativeObjectives(state);
@@ -1731,6 +1736,36 @@ namespace Tirabade
             if (flags.ContainsKey(Rules.ServedPrefix + scene.Relationship))
                 Set(Rules.ServedPrefix + scene.Relationship, Math.Max(1, (int)Game.Instance.Player.GameTime.TotalHours + 1));
             Game.Instance.DialogController.StartDialogWithoutTarget(dialogs[scene.Id], null);
+        }
+
+        // Engine-q2 item 2: a Trickster return answered the death or departure that failed this objective, and the partner is
+        // committed. Reopen the quest at this objective (QuestBook.ResetQuest: the native ResetQuest action's call) and complete
+        // it, as RecordProgress would have. Warning-only: a refused or drifted quest shape keeps the Failed line, logs once,
+        // and is not retried this session.
+        private static readonly HashSet<string> restoreRefused = new HashSet<string>(StringComparer.Ordinal);
+
+        private static void RestoreObjective(string relationship, BlueprintQuestObjective objective)
+        {
+            if (restoreRefused.Contains(relationship)) return;
+            var book = Game.Instance.Player.QuestBook;
+            try
+            {
+                var quest = objective.Quest;
+                if (quest == null) throw new InvalidOperationException("the objective has no quest");
+                book.ResetQuest(quest, objective, new[] { objective });
+                if (book.GetObjectiveState(objective) == QuestObjectiveState.None) book.GiveObjective(objective);
+                if (book.GetObjectiveState(objective) == QuestObjectiveState.Started) book.CompleteObjective(objective);
+                var after = book.GetObjectiveState(objective);
+                if (after != QuestObjectiveState.Completed) throw new InvalidOperationException("objective state " + after + " after restore");
+                entry.Logger.Log("Objective restored after a Trickster return: " + relationship);
+            }
+            catch (Exception ex)
+            {
+                restoreRefused.Add(relationship);
+                string warning = "Objective restore for " + relationship + " refused (warning only): " + ex.Message;
+                if (!warnings.Contains(warning)) warnings.Add(warning);
+                entry.Logger.Log(warning);
+            }
         }
 
         // E12: place, unhide, spawn or remove returned presences for the loaded area. Idle only; each change is logged once.

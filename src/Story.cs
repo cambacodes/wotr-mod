@@ -682,6 +682,35 @@ namespace Tirabade
         public static bool Failed(Relationship relationship, Snapshot state) =>
             relationship.FailureFlags.Any(flag => Blocks(relationship, flag, state));
 
+        // Engine-q2 item 2: the flags that record a Trickster return for a relationship (UnavailableOverrides values and
+        // TricksterAccess Returned keys). Each lifts the loss it answers (Blocks), so Failed no longer holds once it does.
+        public static IEnumerable<string> ReturnFlags(Relationship relationship) =>
+            (relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>())
+                .Concat((relationship.TricksterAccess?.Values ?? (IEnumerable<TricksterAccess>)Array.Empty<TricksterAccess>())
+                    .Select(access => access.Returned).OfType<string>())
+                .Distinct();
+
+        // Engine-q2 item 2: the relationship objective's journal action. "fail": Started while a death or departure blocks the
+        // route (Main.Update, as before). "restore": Failed (an earlier death or departure), but a Trickster return now holds,
+        // the loss no longer blocks, the route is not closed and the commitment holds: the objective is reopened and completed
+        // (RecordProgress only completes Started objectives, so without this a returned, committed partner kept a Failed line).
+        public static string? ObjectiveStep(Relationship relationship, Snapshot state, bool started, bool failed)
+        {
+            if (started) return Failed(relationship, state) ? "fail" : null;
+            if (!failed || StillLost(relationship, state) || state.Has(relationship.ClosedFlag) || !state.Has(relationship.CommittedFlag))
+                return null;
+            return ReturnFlags(relationship).Any(state.Has) ? "restore" : null;
+        }
+
+        // The runtime "loss" (Main.BuildState) and its native inputs. It carries no return of its own (the trio route's
+        // UnavailableOverrides name its inputs), so a restore reads it through them: every held input must be answered.
+        public static readonly string[] LossInputs = { "irabeth_dead", "anevia_dead", "irabeth_gone", "anevia_gone", "sacrifice" };
+
+        // Failed, except that "loss" counts as lifted when every held input is lifted by the relationship's own override.
+        private static bool StillLost(Relationship relationship, Snapshot state) => relationship.FailureFlags.Any(flag => flag == "loss"
+            ? LossInputs.Any(input => state.Has(input) && !(relationship.UnavailableOverrides.TryGetValue(input, out var back) && state.Has(back)))
+            : Blocks(relationship, flag, state));
+
         // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
         public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
         public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
