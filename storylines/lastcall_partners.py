@@ -419,7 +419,7 @@ partner("seelah", "seelah", "seelah.committed", "seelah.closed", "The Thief's Pr
 
 T = "targona.trickster."
 partner("targona", "targona", "targona.committed", "targona.closed", "The Quiet Ward",
-    '''Targona did not go back to Heaven when the war ended. She stayed in Drezen's infirmary until the last cot was folded, and then she opened another, in a street near the Commander's house, with the Commander's name over the door and no way for {mf|him|her} to be useful in it.''',
+    '''Targona did not go back to Heaven when the war ended. She stayed in Drezen's infirmary until the last cot was folded, and then she opened another, in a street near the Commander's house, with the Commander's name over the door and a stool kept by the worst cot. On the bad nights the Commander sat there and held whatever hand needed holding, and Targona did not once pretend that was not useful.''',
     (
         page_p('''The Commander kept the promise at the rift. {mf|He|She} did not ask Lariel for a miracle, and told Targona so afterwards. She took {mf|his|her} hand and held it while the ward's first bell rang. Then she put a second chair by her desk, and it was never empty for long.''', requires=(T + "cost.light_sealed",), forbids=(called("targona"),)),
         page_p('''At the rift the Commander begged what was left of Lariel to cheat death, and broke the one promise Targona had asked of {mf|him|her}. Nothing answered. {mf|He|She} told her that too. "You promised me," she said. "I believed you." She stayed in the ward and went on tending its wounded. For a year she carried her own lamp, even when the Commander offered to take it.''', requires=(called("targona"), T + "cost.light_sealed")),

@@ -554,7 +554,7 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
       c('[Sit with him until dawn] Sit down on the stool beside the cot.', "dawn"),
       c('[Ask her now] "Ask you now."', "refused"),
       c('[Leave before dawn] "I have a war to run."', "left", flags=(LEFT, CLOSED))),
-    t("dawn", '''{n}You hold his hand when he cannot breathe, and talk to him about nothing when he can. Towards the fourth hour he asks for his mother, and you answer him as if you were her. Targona comes and goes and does not interrupt.{/n}
+    t("dawn", '''{n}You hold his hand when he cannot breathe, and talk to him about nothing when he can. Towards the fourth hour he asks for his mother. You do not pretend to be her. You ask what she used to say to him, and he gives you half a Mendevian night-prayer, the words worn smooth; every time he wakes after that, you say it back to him. Targona comes and goes and does not interrupt.{/n}
 {n}Dawn comes grey through the canvas. The sergeant is asleep, truly asleep, the grey gone out of his lips. Targona puts her hand on his forehead, then takes it away and looks at you.{/n}
 "Now you may ask."''',
       c('[Ask her] "Stay with me. Not for a season."', "yes", forbids=(MET,), flags=(COMMITTED,)),
@@ -576,7 +576,7 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
       c("Continue", "threshold")),
     t("yes_free", '''{n}She does not answer at once. She washes her hands in the basin, slowly, and watches the water cloud.{/n}
 "The morning after your wand night I came to Drezen to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers." {n}She dries her hands on her smock.{/n}
-"Tonight you had no wand. You had a stool, and his hand, and a mother's voice that is not yours. I have judged you at every cot in this ward since, and I keep finding the same thing, and I am tired of pretending it is still a question." {n}She sets the cloth down and comes closer.{/n}
+"Tonight you had no wand. You had a stool, and his hand, and his mother's prayer in your mouth, and not once did you pretend to be her. I have judged you at every cot in this ward since, and I keep finding the same thing, and I am tired of pretending it is still a question." {n}She sets the cloth down and comes closer.{/n}
 "I will write to my healers and tell them it will be more than a season. Yes, Commander. Not for a season."''',
       c("Continue", "threshold")),
     *night_nodes(),
