@@ -237,11 +237,12 @@ def her_letter_choices(*extra):
 
 
 letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
-    nar("start", '''{n}There is no King left to sing to, and no tavern of his to sing in. So you climb onto a table in the worst camp tavern in Drezen instead, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}
-{n}The beer buys you the room. It takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By noon the carters on the north road have it, and most of the people who learn it from them never knew it without the verse.{/n}''',
+    nar("start", '''{n}There is no King left to sing to, and no tavern of his to sing in. The worst camp tavern in Drezen is full of sappers and quartermasters, and the one Desnan song half of them know is Starward Gaze, hummed wherever the words run out. Nobody in the room has heard of Thaberdine.{/n}''',
         c(JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
-        c('"...On second thought, buy them one round and let them sing what they like."', abort=True)),
-    nar("reply", '''{n}That evening a letter comes back down the north road with a returning carter, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
+        c('[Leave them to their beer.]', abort=True)),
+    nar("reply", '''{n}You climb onto a table, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}
+{n}The beer buys you the room. The verse takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By noon the carters on the north road have it, and most of the people who learn it from them never knew it without the verse.{/n}
+{n}That evening a letter comes back down the north road with a returning carter, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
         c("Continue", "reply_known", requires=(GAVE_SONG,)),
         c("Continue", "reply_unknown", forbids=(GAVE_SONG,))),
     a("reply_known", '''"Somebody has changed my song! The carters came into our camp this noon singing Starward Gaze with a verse I never wrote, and they all swear it was always sung that way, and it wasn't, and it's better, which is the worst part!"
@@ -401,10 +402,10 @@ tavern("aranka.trickster.failure.mocking_verse_c5", "The verse where you lose", 
 
 letter("aranka.trickster.failure.mocking_verse_any", "Louder on the rhyme", [
     nar("start", '''{n}The camp's favourite song about you is the one Aranka wrote after everything between you went wrong: the Knight-Commander trips over their own banner, and the demons laugh too hard to fight. The sappers sing it when they think you can't hear.{/n}
-{n}There is no King's tavern left to lead it in. So you walk into the worst camp tavern in Drezen, pay for every mug in the house, and climb onto a table.{/n}''',
+{n}There is no King's tavern left to lead it in. The worst camp tavern in Drezen is full tonight, and somebody at the back is already humming the banner verse under his breath.{/n}''',
         c(FAILURE_JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
-        c('[Walk out again.]', abort=True)),
-    nar("reply", '''{n}You lead it until dawn, and trip over an imaginary banner on every rhyme. By noon the carters have taken it up the north road, and it means something else now.{/n}
+        c('[Leave them to it.]', abort=True)),
+    nar("reply", '''{n}You pay for every mug in the house, climb onto a table and lead it until dawn, tripping over an imaginary banner on every rhyme. By noon the carters have taken it up the north road, and it means something else now.{/n}
 {n}That evening a letter comes back down the north road, in a round hand you know, with a blot in the middle as if the writer stopped for a long while.{/n}''',
         c("Continue", "her_reply")),
     a("her_reply", '''"You sang the verse where you lose. Out loud, on purpose! The carter who brought this tried to show me the fall and nearly put his boot in our supper."

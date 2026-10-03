@@ -244,6 +244,15 @@ internal static class ArankaTricksterTests
             "Trk_Aranka_NoKing: a second letter follows the fallback, or the Chapter 5 duet does not follow a day later.");
         check(!Rules.Available(story, anyTavern, World(story, 3, "trickster", "trickster.ever")),
             "The fallback opens while the King is still singing.");
+        // Audit pol2 (BEL/INT, R2-2): the fallbacks stage the opportunity only; the paid act is narrated after its answer,
+        // and walking away costs and records nothing.
+        foreach (var fallback in new[] { anyTavern, mockingAny })
+        {
+            var leave = fallback.Nodes[0].Choices[1];
+            check(fallback.Nodes[0].Choices.Count == 2 && leave.Abort && leave.Crusade == null && leave.Set.Length == 0
+                  && !fallback.Nodes[0].Text.Contains("every mug") && fallback.Nodes.Single(n => n.Id == "reply").Text.Contains("every mug"),
+                "A fallback narrates the paid act before the Commander chooses it: " + fallback.Id);
+        }
         var herLetterSet = herLetter.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).ToHashSet();
         check(!herLetterSet.Contains(P + "cost.late") && !herLetterSet.Contains(P + "primed"), "Her ordinary letter records the late cost.");
 
