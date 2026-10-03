@@ -32,6 +32,7 @@ SEEN_CUES = {"targona.ran_final_seen": [
     "62c24328ae744ee98fabd219dbe74c92", "ec76729da60441a1b2028f340743c0a8",
 ]}
 ALLOWED = ["targona.ran_none", "targona.ran_angel", "targona.ran_azata", "targona.ran_aeon", "targona.ran_trickster"]
+MET = "targona.trickster.met"   # r5: the Trickster ward's angel lives in Drezen; her letters come from the ward, not the wayhouse
 BLOCKED = ("targona.closed", "targona.dead_lab", "targona.dead_lair", "targona.condemned", "swarm", "demon", "lich", "devil",
            "legend", "dragon", "targona.ran_lich", "targona.ran_demon", "targona.ran_devil", "targona.ran_legend", "targona.ran_dragon")
 
@@ -71,7 +72,8 @@ The last sentence is underlined once, as though she has decided you may laugh at
       c("Continue the letter.", "personal")),
     n("personal", "Narrator", '''{n}The folded room is small enough to cover with one hand. You leave it open while you finish.{/n}''',
       c('Write: "I miss you. Send me the hard letters too. I\'d rather have those than none."', "romance", requires=("targona.correspondence_romanced",)),
-      c('Write: "You don\'t have to make it easy to read. I\'ll read it anyway."', "friend", forbids=("targona.correspondence_romanced",))),
+      c('Write: "You don\'t have to make it easy to read. I\'ll read it anyway."', "friend", forbids=("targona.correspondence_romanced", MET)),
+      c('Write: "You don\'t have to make it easy to read. I\'ll read it anyway."', "friend_ward", requires=(MET,), forbids=("targona.correspondence_romanced",))),
     n("romance", "Narrator", '''{n}You write down the way she looks when she has decided to say a thing before she has found the words for it, and how you once leaned in to hear her though her voice was perfectly clear.{/n}
 "I want another evening with you. An ordinary one, with nothing in it that needs binding or praying over. And I'll take the hard letters as well. You needn't pay for one with the other."
 The last line comes out less polished.
@@ -81,7 +83,11 @@ The last line comes out less polished.
 "If you tire of this, say so and we'll quarrel about something else. I'd rather have a blunt friend than a polite one."
 You leave a clean strip at the bottom of the page and label it ROOM FOR A COMPLAINT ABOUT ANYTHING BUT THE WAR.
 {n}Her drawing goes back with the letter, uncertain hinges and first arrow intact.{/n}''', c("Send your reply with the next personal correspondence.", flags=("targona.correspondence_opened",))),
-], delay=0, forbids=("targona.trickster.met",))   # polish r4: one Chapter 5 address; the Trickster ward's angel is in Drezen
+    n("friend_ward", "Narrator", '''{n}Her ward behind Wilcer's stores is a hundred paces from your door, and still the two of you are writing to each other: you are never in it when she is awake, and she is never out of it. You write that you want to hear about it anyway: who came in off the walls today, what the chaplain burns in the stove, whether the soup is as bad as the barracks'. You start a list of questions and cross it out before it turns into orders.{/n}
+"If you tire of this, say so and we'll quarrel about something else. I'd rather have a blunt friend than a polite one."
+You leave a clean strip at the bottom of the page and label it ROOM FOR A COMPLAINT ABOUT ANYTHING BUT THE WAR.
+{n}Her drawing goes back with the letter, uncertain hinges and first arrow intact. A runner carries it the hundred paces.{/n}''', c("Send your reply with the next personal correspondence.", flags=("targona.correspondence_opened",))),
+], delay=0)
 
 
 s("second_margin", "An uplifting account", [
@@ -151,7 +157,7 @@ At the bottom you add a practical improvement: the new door wants a small handle
 ], "targona.second_margin")
 
 
-s("an_unpromised_future", "A tale for the wayhouse", [
+s("an_unpromised_future", "A tale for the fever ward", [
     n("start", "Narrator", '''{n}Targona's reply includes the paper door. She has added a handle shaped like a very small wing, and written OPEN HERE beside it in unnecessarily large letters.{/n}
 "The chaplain asked what the handle was for. I told him it was for opening the door, and then heard myself say it the way I would say it to a recruit, and laughed at myself.
 "He carried it to the man whose fever keeps him awake. The man opened it six times before he would give it back. I am glad I made the handle."
@@ -180,14 +186,22 @@ s("an_unpromised_future", "A tale for the wayhouse", [
 "He wrote back asking me to take out the line where I say I hated the room. He said it took something from the courage of the survivors. I told him the line was about the room and not about them, and that if he struck it I would come to his shop and read it to him aloud. He has kept it.
 "A sergeant of the Mendevian line wrote to me afterwards. He said it made him less ashamed of how angry he still is about the Worldwound. I answered him the same day. Another reader asked why an angel needs so many words. I have not answered him. I prayed for patience instead, and that prayer has not been answered either.
 "I am glad I sent it. I am gladder that I do not have to send another."
-{n}At the bottom she has begun a question meant only for you.{/n}''', c("Read the private question.", "question")),
+{n}At the bottom she has begun a question meant only for you.{/n}''', c("Read the private question.", "question", forbids=(MET,)),
+      c("Read the private question.", "question_ward", requires=(MET,))),
     n("private", "Narrator", '''"I refused him. He was courteous and disappointed, and then he printed another man's account in the place mine would have gone. It gives me one paragraph. It says that the angel Targona gave herself to the Architect's barrier of her own will, so that her light might shelter the camps, and that her sacrifice was accepted in Heaven. It is beautifully written. Every word of it is a gift to Areelu.
 "I was so angry I broke a basin. One of the good ones. The sister who keeps the linen made me sweep it up myself, which was just.
-"There are men in the Mendevian camps who will read it and believe that what was done to them near that laboratory was an angel's holy choice. It was not. It was Areelu's, and she chose it for all of us. When my duties next take me into the city, I will go to his shop and ask him, before Iomedae, to print a correction. I will not shout. I will not need to.
+"There are men in the Mendevian camps who will read it and believe that what was done to them near that laboratory was an angel's holy choice. It was not. It was Areelu's, and she chose it for all of us. When my duties next allow, I will go to his shop and ask him, before Iomedae, to print a correction. I will not shout. I will not need to.
 "I still will not give him my pages. But I will not let him give her mine."
-{n}She has left the next question on a line of its own.{/n}''', c("Read the private question.", "question")),
+{n}She has left the next question on a line of its own.{/n}''', c("Read the private question.", "question", forbids=(MET,)),
+      c("Read the private question.", "question_ward", requires=(MET,))),
     n("question", "Narrator", '''"I meant to put the drawing away and finish my account. Then the men asked whether the little door had a room behind it. I had made a handle fit for a fortress gate and furnished nothing at all. They were right to ask.
 "So: a task, and I want your help with it. The men in the wayhouse ask me for stories at night, when the fever is bad and nobody can sleep. They do not want the lives of the saints; they have heard those. They want a soldier who wakes in the enemy's house and gets out. I mean to write them one. Awake, with a sword by the door, and Iomedae's name in her mouth.
+"Tell me how she gets out, or whom she lets in, if she would rather hold the room. You have got out of worse places than I have; your reports say so, in a very modest voice."
+{n}There is a lightly drawn rectangle below the words, waiting for something to be put inside it.{/n}''',
+      c('Suggest a scene in which she chooses to leave.', flags=("targona.story_leaving",)),
+      c('Suggest a scene in which she chooses who may enter.', flags=("targona.story_receiving",))),
+    n("question_ward", "Narrator", '''"I meant to put the drawing away and finish my account. Then the men asked whether the little door had a room behind it. I had made a handle fit for a fortress gate and furnished nothing at all. They were right to ask.
+"So: a task, and I want your help with it. The men in the ward ask me for stories at night, when the fever is bad and nobody can sleep. They do not want the lives of the saints; they have heard those. They want a soldier who wakes in the enemy's house and gets out. I mean to write them one. Awake, with a sword by the door, and Iomedae's name in her mouth.
 "Tell me how she gets out, or whom she lets in, if she would rather hold the room. You have got out of worse places than I have; your reports say so, in a very modest voice."
 {n}There is a lightly drawn rectangle below the words, waiting for something to be put inside it.{/n}''',
       c('Suggest a scene in which she chooses to leave.', flags=("targona.story_leaving",)),
@@ -364,7 +378,7 @@ Two days later the courier brings a note. She reached the wayhouse before midnig
 {n}She tells you which of the city lights she can see from the terrace, and which she has mistaken for stars, and which is the lamp in the infirmary where a boy with a fever is waiting for morning.{/n}''',
       c("End the evening with affection and leave the next choice open.", flags=("targona.visit_tender",)),
       c("Ask if she would like that second kiss now.", "kiss")),
-], "targona.what_she_keeps", delay=0, requires=("targona.correspondence_romanced",))
+], "targona.what_she_keeps", delay=0, requires=("targona.correspondence_romanced",), forbids=(MET,))
 
 
 s("the_key_remains_hers", "The key remains hers", [
@@ -395,3 +409,31 @@ She has added a small sketch of the courtyard, with the way in and out marked in
 She sends a recipe for a sweet she has recently learned to make. The measurements are exact. The instruction to wait before adding the last ingredient has been underlined twice.''',
       c("Reply with an ordinary detail and keep the conversation open.", flags=("targona.key_unpressured",))),
 ], "targona.the_open_threshold", requires=("targona.correspondence_romanced",))
+
+
+# r5: the visit's ward variant. The angel of the Trickster ward lives a hundred paces from the Commander's door; what the
+# two of them lack is not a road but an hour. Append-only: a new scene after what_she_keeps, for ward histories only.
+s("ward_evening", "An hour off the rows", [
+    n("start", "Narrator", '''{n}This letter has come a hundred paces, from the ward behind Wilcer's stores, folded small enough to pass through a runner's fist.{/n}
+"Commander. The chaplain says I have not had an evening off the rows since I came to Drezen. He is right, and he said it in front of the men, which was unkind of him and accurate.
+"I would like one. With you. Not in the loft, where I can hear the third cot coughing through the floor. Somewhere the ward cannot find me for an hour.
+"But I will not leave the rows uncovered, and I will not ask the chaplain, because he will say yes and then look at me all week. If you can find a way, find it. If you cannot, I will see you at the cots, and that is not nothing either."''',
+      c("[Trickster] Find her rows a keeper she cannot argue with.", "cover", requires=("trickster",)),
+      c("Pay the chaplain's two novices to sit the rows, and tell her exactly what it cost.", "paid"),
+      c("Put the letter aside until you can answer it properly.", abort=True)),
+    n("cover", "Narrator", '''{n}By supper the whole of Drezen knows that the Queen's chaplains will inspect the infirmary at dawn. Nobody can say who said so. By the first bell there are more volunteers scrubbing the floor behind Wilcer's stores than there are wounded in it, and every one of them is watching the cots so as to be seen watching them.{/n}
+"There is no inspection," Targona says, when she finds you at the foot of the wall stair. It is not a question. "You lied to the chaplain."
+"I lied to Drezen. The chaplain happened to hear it."
+{n}She looks back at the lit canvas, at the scrubbing, at the men sitting up in their cots to watch the show, and something in her face gives way.{/n} "Every cot is watched better tonight than any night since I came. I will have to confess it. I will not be sorry."''',
+      c("Continue", "wall")),
+    n("paid", "Narrator", '''{n}You pay the chaplain's two novices a week's wages to sit the rows until the second bell, and you write it down for her: their names, the sum, the hour they stop. She reads it at the foot of the wall stair.{/n}
+"You paid them more than they are worth," she says. "They will be insufferable." {n}She folds the paper into her sleeve.{/n} "Thank you for telling me the price."''',
+      c("Continue", "wall")),
+    n("wall", "Narrator", '''{n}The wall walk above the stores is empty at this hour. Below, the ward's canvas glows like a lantern, and from up here you cannot hear the coughing.{/n}
+"An hour," she says. "I have not had an hour that was not somebody's since the laboratory." {n}She stands at the parapet with her hands on the stone, and then they are not on the stone; they are on your coat, and she is kissing you as if the hour were already half spent.{/n}
+{n}There is a watchtower door at the end of the walk, and a guardroom behind it with a brazier nobody has lit. She lights it. Then she pulls her plain habit over her head and lets it fall, and her wings open in the small room and brush the rafters, and she pulls you down with her onto the bench beside the brazier, her mouth at your throat, her hands already at your belt.{/n}''',
+      c("[Let the hour run.]", "bell")),
+    n("bell", "Narrator", '''{n}At the second bell she is dressed and on the stair before you have found your other boot. At the foot she stops, turns back, and kisses you once more, hard.{/n}
+"Next time I will ask for two hours," she says, "and I will not need a lie or a purse to get them. I will simply take them." {n}Then she goes back to the rows.{/n}''',
+      c("Go back to your war.", flags=("targona.ward_evening_kept",))),
+], "targona.what_she_keeps", requires=("targona.correspondence_romanced", MET))

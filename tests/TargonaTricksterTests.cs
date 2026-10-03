@@ -202,13 +202,18 @@ internal static class TargonaTricksterTests
         }
         check(stoveOut.Where(o => o.Has(P + "free.colleagues")).All(o => !Rules.Available(story, ward, Later(story, o, 200))),
             "Colleagues at the stove still reach the vigil.");
-        // Polish r4: one Chapter 5 address. The ward's angel does not also write from the eastern wayhouse, and vice versa.
-        check(!Rules.Available(story, S("targona.unasked_question"), World(story, 5, "trickster", "trickster.ever", "targona.free",
+        // r5: both orders stay open (the letters move to the ward after the meeting; see TargonaOpeningTests), and an angel
+        // already writing from the wayhouse greets the Commander as her correspondent, not as a stranger from Heaven.
+        check(Rules.Available(story, S("targona.unasked_question"), World(story, 5, "trickster", "trickster.ever", "targona.free",
                   "targona.ran_treatment_completed", "targona.ran_final_seen", "targona.ran_none", P + "met"))
-              && Rules.Available(story, S("targona.unasked_question"), World(story, 5, "trickster", "trickster.ever", "targona.free",
-                  "targona.ran_treatment_completed", "targona.ran_final_seen", "targona.ran_none"))
-              && !Rules.Available(story, spent, World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.correspondence_opened")),
-            "Targona is at the Drezen ward and the eastern wayhouse at once.");
+              && Rules.Available(story, spent, World(story, 5, "trickster", "trickster.ever", "targona.free", "targona.correspondence_opened")),
+            "One order of letters and ward closes the other.");
+        var wayhousePages = new HashSet<string>();
+        var wayhouseNight = World(story, 5, "trickster.ever", "targona.free", P + "cost.wand_unspent", "targona.ran_treatment_completed",
+            "targona.correspondence_opened");
+        Program.Walk(freeFurlough, wayhouseNight, (page, _) => wayhousePages.Add(page));
+        check(wayhousePages.Contains("greet_wayhouse") && !wayhousePages.Contains("greet_treated") && !wayhousePages.Contains("greet"),
+            "The wayhouse correspondent arrives as if from Heaven.");
         check(Rules.Available(story, ward, metOnly), "Trk_Targona_Declined: the ward is closed to the freed state.");
         var declined = After(ward, metOnly, "refused", 0);
         check(declined.Has(P + "declined") && !declined.Has(Committed) && !declined.Has(Closed), "Trk_Targona_Declined: flags.");

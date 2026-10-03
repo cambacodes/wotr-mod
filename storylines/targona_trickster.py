@@ -421,17 +421,17 @@ letter(P + "free.spent_light", "The last wand", [
         c('"Leave the rationing to the surgeons."', abort=True)),
     nar("night", '''{n}You take the wand yourself and work down the rows all night. By dawn every cot has had its charge. The wand has not lost one.{/n}
 {n}You call in favours to keep it that way. The surgeons and chaplains who saw the night will name the wounded and the hands that tended them, and leave the count of charges out of every report. An ordinary night's reputation, bought with an extraordinary night's work.{/n}
-{n}The infirmary chaplain's letters carry the names of the living, a request for clean linen, and the news that the Commander sat up until dawn. One goes home with a celestial healer who has been visiting the wards, and is put into an angel's hands in Heaven. The work reaches her. The wonder does not.{/n}''',
+{n}The infirmary chaplain's letters carry the names of the living, a request for clean linen, and the news that the Commander sat up until dawn. One goes home with a celestial healer who has been visiting the wards, and is put into an angel's hands. The work reaches her. The wonder does not.{/n}''',
         c('[Finish at dawn] Put the wand away. It is still full.', flags=(PRIMED, WAND))),
     nar("night_spent", '''{n}You take the wand yourself and work down the rows all night. It runs dry before midnight. Wilcer Garms opens the stores and signs out a second one against the war chest without being asked, and then a third, and the crusade's treasurer will hear about it by noon.{/n}
 {n}By dawn every cot has had its charge, and three empty wands lie on the table by the door.{/n}''',
         c('[Finish at dawn] Put the empty wands away.', "report_hand", forbids=(HERALD_KILLED,)),
         c('[Finish at dawn] Put the empty wands away.', "report_chapel", requires=(HERALD_KILLED,))),
-    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. He prays the names of the night at compline, as the Inheritor's chaplains do. A celestial healer who has been visiting the wards carries a copy home to Heaven, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
+    nar("report_hand", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning. He prays the names of the night at compline, as the Inheritor's chaplains do. A celestial healer who has been visiting the wards carries a copy away with her, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
-    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning, and he prays the names of the night at compline, more of them every week since the Hand fell. A celestial healer who has been visiting the wards carries a copy home to Heaven, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
+    nar("report_chapel", '''{n}The infirmary chaplain writes it into his weekly report, as he writes everything: three wands, one Commander, no deaths by morning, and he prays the names of the night at compline, more of them every week since the Hand fell. A celestial healer who has been visiting the wards carries a copy away with her, and puts it into the hands of an angel with her own reasons to read it.{/n}''',
         c('[Let the report go up.]', flags=(PRIMED, WAND, CHARGES))),
-], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD, "targona.correspondence_opened"), delay=0)
+], requires=("trickster", FREE), forbids=(WAND, PARENT_ROMANCED, DEAD), delay=0)
 
 ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wards."', [
     nar("start", '''{n}Wilcer Garms clears his throat. "There's an angel in the wards, Commander. I didn't requisition her."{/n}
@@ -439,8 +439,13 @@ ward(P + "free.furlough", "Greetings, my rescuer", '"There\'s an angel in the wa
         c("Continue", "greet_lab", requires=(LAB_LINE,), forbids=(TREATED, SLEEP)),        # the legacy scroll primer only
 
         c("Continue", "greet", forbids=(LAB_LINE, TREATED)),
-        c("Continue", "greet_treated", requires=(TREATED,)),
-        c("Continue", "greet_lab_sleep", requires=(LAB_LINE, SLEEP), forbids=(TREATED,))),
+        c("Continue", "greet_treated", requires=(TREATED,), forbids=("targona.correspondence_opened",)),
+        c("Continue", "greet_lab_sleep", requires=(LAB_LINE, SLEEP), forbids=(TREATED,)),
+        # r5: she was already writing to the Commander from the wayhouse on the eastern road when the chaplain's letter came.
+        c("Continue", "greet_wayhouse", requires=(TREATED, "targona.correspondence_opened"))),
+    t("greet_wayhouse", '''"Commander. Greetings, my rescuer, and my correspondent." {n}She does not smile.{/n}
+"I have been writing to you from the wayhouse on the eastern road, about doors and cups and a sergeant called Meret. Then someone worked these rows all night with a healer's wand and would not stop, and the chaplain's letter found me at the wayhouse. I walked in to see whether it was the same hand that writes to me."''',
+      c('[Explain] "They were dying. I had a wand, and the night."', "why")),
     t("greet_treated", '''"Commander. Greetings, my rescuer, and my physician." {n}She does not smile.{/n}
 "You have treated this wing, and argued with it, and sat with me while it was dressed. I thought I knew what kind of soul you were. Then someone worked these rows all night with a healer's wand and would not stop, and word of it reached me in the halls of Heaven, and I came down to see whether it was the same one."''',
       c('[Explain] "They were dying. I had a wand, and the night."', "why")),
@@ -541,7 +546,7 @@ ward(P + "after.ward", "Sit with this man", '"Is it quiet tonight?"', [
 "Yes, Commander. Not for a season."''',
       c("Continue", "threshold")),
     t("yes_free", '''{n}She does not answer at once. She washes her hands in the basin, slowly, and watches the water cloud.{/n}
-"The morning after your wand night I came down to Drezen to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers." {n}She dries her hands on her smock.{/n}
+"The morning after your wand night I came to Drezen to judge you. I told my healers so. A season, I said, to see what kind of soul sits up all night with strangers." {n}She dries her hands on her smock.{/n}
 "Tonight you had no wand. You had a stool, and his hand, and a mother's voice that is not yours. I have judged you at every cot in this ward since, and I keep finding the same thing, and I am tired of pretending it is still a question." {n}She sets the cloth down and comes closer.{/n}
 "I will write to my healers and tell them it will be more than a season. Yes, Commander. Not for a season."''',
       c("Continue", "threshold")),
