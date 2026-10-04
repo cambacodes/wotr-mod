@@ -1973,6 +1973,11 @@ namespace Tirabade
                     // E14i on a non-epilogue dialog cue (engine queue 8c/9a): a route state the relationship authored itself (e.g. Devarra's
                     // flight, Kiana's separation) also earns the edit; the delivery predicate still reads the replacement scene.
                     if (inDialog && relationship != null) earned.UnionWith(authored.Where(flag => flag.StartsWith(scene!.Relationship + ".", StringComparison.Ordinal)));
+                    // eng7-l03: Cue_0311 must retain paid survival even when Beth refuses reconciliation.
+                    // These existing facts earn only this historical slide; they grant no route/presence eligibility.
+                    if (pair.Key == "3a3e561c6b05a284d93eb3bff7b712a6" && scene?.Relationship == "irabeth")
+                        earned.UnionWith(new[] { "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record" });
+                    // eng7-l03 end
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null

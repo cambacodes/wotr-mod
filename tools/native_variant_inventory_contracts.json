@@ -1,0 +1,587 @@
+{
+  "SchemaVersion": 1,
+  "Item": "E-Q7-28",
+  "Finding": "anevia:002",
+  "Authored": true,
+  "Policy": "Original cue checker AND ordered When AND actual scene Available. The missing snapshot survived flag is represented by existing paid dig/raise facts; no new gate or eligibility is granted.",
+  "LegacyOrder": {
+    "3a3e561c6b05a284d93eb3bff7b712a6": [
+      "anevia.trickster.epilogue.native_tirabade_together",
+      "anevia.trickster.epilogue.native_tirabade_back",
+      "anevia.trickster.epilogue.native_tirabade_widow_committed",
+      "anevia.trickster.epilogue.native_tirabade_widow",
+      "irabeth.trickster.epilogue.native_tirabade_south"
+    ],
+    "ccd140dbf2603734aa323261c2445bec": [
+      "anevia.trickster.epilogue.native_tirabade_left_committed",
+      "anevia.trickster.epilogue.native_tirabade_left"
+    ]
+  },
+  "Cases": [
+    {
+      "Name": "unearned native widow",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone"
+      ],
+      "Original": true,
+      "Expected": null
+    },
+    {
+      "Name": "commitment without either return",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.committed"
+      ],
+      "Original": true,
+      "Expected": null
+    },
+    {
+      "Name": "Anevia returned, dead Beth, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_widow"
+    },
+    {
+      "Name": "Anevia committed, dead Beth, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.committed",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_widow"
+    },
+    {
+      "Name": "returned Anevia remains closed after sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.closed",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_widow"
+    },
+    {
+      "Name": "both returned, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.returned",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_pair"
+    },
+    {
+      "Name": "Beth returned, Anevia still away, sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.returned",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "irabeth.trickster.epilogue.native_tirabade_south"
+    },
+    {
+      "Name": "irabeth.trickster.cost.dug_out refused, Anevia away",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.closed"
+      ],
+      "Original": true,
+      "Expected": "irabeth.trickster.epilogue.native_tirabade_survived_away"
+    },
+    {
+      "Name": "irabeth.trickster.cost.dug_out refused, Anevia returned",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.cost.dug_out",
+        "anevia.trickster.returned",
+        "irabeth.closed"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_survived_pair"
+    },
+    {
+      "Name": "irabeth.trickster.cost.dug_out refused, Anevia away, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.closed",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement"
+    },
+    {
+      "Name": "irabeth.trickster.cost.dug_out refused, Anevia returned, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.cost.dug_out",
+        "anevia.trickster.returned",
+        "irabeth.closed",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_pair"
+    },
+    {
+      "Name": "irabeth.trickster.raised_on_record refused, Anevia away",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.closed"
+      ],
+      "Original": true,
+      "Expected": "irabeth.trickster.epilogue.native_tirabade_survived_away"
+    },
+    {
+      "Name": "irabeth.trickster.raised_on_record refused, Anevia returned",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.raised_on_record",
+        "anevia.trickster.returned",
+        "irabeth.closed"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_survived_pair"
+    },
+    {
+      "Name": "irabeth.trickster.raised_on_record refused, Anevia away, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.closed",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement"
+    },
+    {
+      "Name": "irabeth.trickster.raised_on_record refused, Anevia returned, unreturned sacrifice",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "irabeth.trickster.raised_on_record",
+        "anevia.trickster.returned",
+        "irabeth.closed",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_pair"
+    },
+    {
+      "Name": "sacrifice with earned Commander return: native punchline",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.committed",
+        "sacrifice",
+        "ending.trickster"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_widow_committed"
+    },
+    {
+      "Name": "refused Beth, sacrifice with earned Commander return: native punchline",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.closed",
+        "sacrifice",
+        "ending.trickster"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_survived_pair"
+    },
+    {
+      "Name": "sacrifice with earned Commander return: Iomedae appointment",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.committed",
+        "sacrifice",
+        "iomedae.appointment_kept"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_widow_committed"
+    },
+    {
+      "Name": "refused Beth, sacrifice with earned Commander return: Iomedae appointment",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.closed",
+        "sacrifice",
+        "iomedae.appointment_kept"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_survived_pair"
+    },
+    {
+      "Name": "sacrifice with earned Commander return: Iomedae rescue",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.committed",
+        "sacrifice",
+        "iomedae.trickster.rescued"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_widow_committed"
+    },
+    {
+      "Name": "refused Beth, sacrifice with earned Commander return: Iomedae rescue",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.closed",
+        "sacrifice",
+        "iomedae.trickster.rescued"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_survived_pair"
+    },
+    {
+      "Name": "sacrifice with earned Commander return: Last Call paid flask",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.committed",
+        "sacrifice",
+        "trickster.lastcall.taken",
+        "ending.wound_closed",
+        "trickster.lastcall.pillar.bottle"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_widow_committed"
+    },
+    {
+      "Name": "refused Beth, sacrifice with earned Commander return: Last Call paid flask",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.closed",
+        "sacrifice",
+        "trickster.lastcall.taken",
+        "ending.wound_closed",
+        "trickster.lastcall.pillar.bottle"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_survived_pair"
+    },
+    {
+      "Name": "flask taken without bottle earns no Commander return",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "sacrifice",
+        "trickster.lastcall.taken",
+        "ending.wound_closed"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_widow"
+    },
+    {
+      "Name": "off Trickster native widow",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth_dead",
+        "anevia_gone"
+      ],
+      "Original": true,
+      "Expected": null
+    },
+    {
+      "Name": "off Trickster malformed authored history is inert",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.raised_on_record"
+      ],
+      "Original": true,
+      "Expected": null
+    },
+    {
+      "Name": "historical paid returns survive a later loss of power",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "irabeth.trickster.raised_on_record",
+        "trickster.failed",
+        "legend",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_bereavement_pair"
+    },
+    {
+      "Name": "original Cue0311 ineligible (Beth never native-dead)",
+      "Target": "3a3e561c6b05a284d93eb3bff7b712a6",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "sacrifice"
+      ],
+      "Original": false,
+      "Expected": null
+    },
+    {
+      "Name": "native Coronation departure",
+      "Target": "ccd140dbf2603734aa323261c2445bec",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_gone",
+        "anevia_gone"
+      ],
+      "Original": true,
+      "Expected": null
+    },
+    {
+      "Name": "Coronation Anevia returned, sacrifice",
+      "Target": "ccd140dbf2603734aa323261c2445bec",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_gone",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "sacrifice"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_left_bereavement"
+    },
+    {
+      "Name": "Coronation Anevia returned, living Commander",
+      "Target": "ccd140dbf2603734aa323261c2445bec",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_gone",
+        "anevia_gone",
+        "anevia.trickster.returned"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_left"
+    },
+    {
+      "Name": "Coronation commitment, genuine Commander return",
+      "Target": "ccd140dbf2603734aa323261c2445bec",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_gone",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "anevia.committed",
+        "sacrifice",
+        "ending.trickster"
+      ],
+      "Original": true,
+      "Expected": "anevia.trickster.epilogue.native_tirabade_left_committed"
+    },
+    {
+      "Name": "off Trickster Coronation departure",
+      "Target": "ccd140dbf2603734aa323261c2445bec",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth_gone",
+        "anevia_gone"
+      ],
+      "Original": true,
+      "Expected": null
+    },
+    {
+      "Name": "Coronation original ineligible (Beth native-dead)",
+      "Target": "ccd140dbf2603734aa323261c2445bec",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "irabeth_dead",
+        "anevia_gone",
+        "anevia.trickster.returned",
+        "sacrifice"
+      ],
+      "Original": false,
+      "Expected": null
+    },
+    {
+      "Name": "native encouraged service",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "native.history.irabeth.encouraged"
+      ],
+      "Original": true,
+      "Expected": null,
+      "NativePlaying": [
+        "8b0924efc23df3540b4d8b5fbffd522f"
+      ]
+    },
+    {
+      "Name": "native broken retirement",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Chapter": 6,
+      "Flags": [
+        "trickster",
+        "trickster.ever",
+        "native.history.irabeth.broken"
+      ],
+      "Original": true,
+      "Expected": null,
+      "NativePlaying": [
+        "7a038ff7b70e91844954407b18e8feb6"
+      ]
+    }
+  ]
+}

@@ -7207,6 +7207,100 @@
     {
       "check": "L1",
       "route": "anevia",
+      "scene": "anevia.trickster.epilogue.native_tirabade_bereavement_pair",
+      "node": "page",
+      "slot": "text",
+      "subject": "irabeth",
+      "excerpt": "{n}Irabeth outlived Iz, and Anevia returned to Drezen on her own terms. The Commander's death at the Worldwound changed neither fact. Anevia kept Beth's name ou",
+      "missing_condition": "RouteOpen(irabeth): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "irabeth.closed",
+          false
+        ],
+        [
+          "lit",
+          "irabeth_gone",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "irabeth.trickster.returned",
+            true
+          ],
+          [
+            "lit",
+            "irabeth_dead",
+            false
+          ]
+        ]
+      ],
+      "fingerprint": "a4bf9f49771950f3bf7c5763a934d524438c3463c51e482963ea68d4319d256a"
+    },
+    {
+      "check": "L1",
+      "route": "anevia",
+      "scene": "anevia.trickster.epilogue.native_tirabade_bereavement_widow",
+      "node": "page",
+      "slot": "text",
+      "subject": "irabeth",
+      "excerpt": "{n}Anevia had returned to Drezen, but Beth had not come back from Iz. When the Commander died closing the Worldwound, she heard the news among people who knew her name. She left again when she",
+      "missing_condition": "RouteOpen(irabeth): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "irabeth.closed",
+          false
+        ],
+        [
+          "lit",
+          "irabeth_gone",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "irabeth.trickster.returned",
+            true
+          ],
+          [
+            "lit",
+            "irabeth_dead",
+            false
+          ]
+        ]
+      ],
+      "fingerprint": "3f7618ad07f11666ab99c60036f3a28203e8a10d11b54031fdd44ea61776f7e9"
+    },
+    {
+      "check": "L1",
+      "route": "anevia",
       "scene": "anevia.trickster.epilogue.native_tirabade_left",
       "node": "page",
       "slot": "text",
@@ -7254,6 +7348,53 @@
     {
       "check": "L1",
       "route": "anevia",
+      "scene": "anevia.trickster.epilogue.native_tirabade_left_bereavement",
+      "node": "page",
+      "slot": "text",
+      "subject": "irabeth",
+      "excerpt": "{n}Anevia returned to Drezen after taking Irabeth away from the Commander's betrayal. The Commander died closing the Worldwound before their grievances were settled. The Tirabades kept their lives an",
+      "missing_condition": "RouteOpen(irabeth): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "irabeth.closed",
+          false
+        ],
+        [
+          "lit",
+          "irabeth_gone",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "irabeth.trickster.returned",
+            true
+          ],
+          [
+            "lit",
+            "irabeth_dead",
+            false
+          ]
+        ]
+      ],
+      "fingerprint": "c0a33835b96f8f24e3aa84663d6ba40f96354e125008f52de9488283bdd560ba"
+    },
+    {
+      "check": "L1",
+      "route": "anevia",
       "scene": "anevia.trickster.epilogue.native_tirabade_left_committed",
       "node": "page",
       "slot": "text",
@@ -7297,6 +7438,53 @@
         ]
       ],
       "fingerprint": "8115cec181111ecac29c29c79b3f9d45a96653c34efdb7d4f4710d7a20d89774"
+    },
+    {
+      "check": "L1",
+      "route": "anevia",
+      "scene": "anevia.trickster.epilogue.native_tirabade_survived_pair",
+      "node": "page",
+      "slot": "text",
+      "subject": "irabeth",
+      "excerpt": "{n}Irabeth survived Iz. Anevia returned to Drezen on her own terms, but Beth never reconciled with the Commander. Anevia spoke of the rescue when she chose; she",
+      "missing_condition": "RouteOpen(irabeth): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "irabeth.closed",
+          false
+        ],
+        [
+          "lit",
+          "irabeth_gone",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "irabeth.trickster.returned",
+            true
+          ],
+          [
+            "lit",
+            "irabeth_dead",
+            false
+          ]
+        ]
+      ],
+      "fingerprint": "5e79faba6c23079acca771e33929237ec07afa8ece7372bc0c52ae2ac0d9bc5b"
     },
     {
       "check": "L1",
@@ -44100,6 +44288,100 @@
         ]
       ],
       "fingerprint": "047ebe0eb7e4f6c8d4a71f5f9f638e11fd44add720fca2d804a546c876dafa1c"
+    },
+    {
+      "check": "L1",
+      "route": "irabeth",
+      "scene": "irabeth.trickster.epilogue.native_tirabade_survived_away",
+      "node": "page",
+      "slot": "text",
+      "subject": "anevia",
+      "excerpt": "abeth survived Iz, but never reconciled with the Commander. Anevia had gone south. News of Beth's survival followed her, and the Tirabades kept their distance from Drezen.{/n}",
+      "missing_condition": "RouteOpen(anevia): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "anevia.closed",
+          false
+        ],
+        [
+          "lit",
+          "anevia_dead",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "anevia.trickster.returned",
+            true
+          ],
+          [
+            "lit",
+            "anevia_gone",
+            false
+          ]
+        ]
+      ],
+      "fingerprint": "ea98d647fe11f77a0d77a1df70a5d36de4a65a0b577f874df8437d32aa6cd063"
+    },
+    {
+      "check": "L1",
+      "route": "irabeth",
+      "scene": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement",
+      "node": "page",
+      "slot": "text",
+      "subject": "anevia",
+      "excerpt": "{n}Irabeth survived Iz. Anevia had gone south, and news of Beth's survival followed her. The Commander later died closing the Worldwound, with no reconciliation between them.{/n}",
+      "missing_condition": "RouteOpen(anevia): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "anevia.closed",
+          false
+        ],
+        [
+          "lit",
+          "anevia_dead",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "anevia.trickster.returned",
+            true
+          ],
+          [
+            "lit",
+            "anevia_gone",
+            false
+          ]
+        ]
+      ],
+      "fingerprint": "45a57738c3007b66908e3799466197081aeea357a516c354b58b3226c3639487"
     },
     {
       "check": "L1",

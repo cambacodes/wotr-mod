@@ -233,6 +233,17 @@ internal static class Program
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         NativeWorldReconciliationInventoryTests.Run(story, Check);
         NativeGateContractParityTests.Run(story, Check);
+        // eng7-l03: focused inventory acceptance; the full gate calls the same suites below.
+        if (args.Contains("--eng7-l03-native"))
+        {
+            NativeContradictionInventoryTests.Run(story, Check);
+            NativeVariantCoverageInventoryTests.Run(story, Check);
+            TirabadeNativeSlideTests.Run(story, Check);
+            LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
+            Console.WriteLine($"PASS: {checks} eng7-l03 native inventory and selection assertions.");
+            return;
+        }
+        // eng7-l03 end
         if (args.Contains("--wenduag-echo"))
         {
             WenduagTricksterTests.Run(story, Check);
@@ -446,6 +457,12 @@ internal static class Program
         ContactDisambiguationTests.Run(Check);
         if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
         TricksterOnlyNativeTests.Run(story, Check);
+        // eng7-l03: mapped native inventory and historical selection acceptance.
+        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
+            NativeContradictionInventoryTests.Run(story, Check);
+        if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
+            NativeVariantCoverageInventoryTests.Run(story, Check);
+        // eng7-l03 end
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);

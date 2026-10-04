@@ -333,3 +333,46 @@ def verify_world_targets(payload, found):
                     or spec.get("TitleKey") and text_key(data.get("Title")) != spec["TitleKey"]):
                 raise ValueError(error)
 # eng7-l04 end
+
+
+# eng7-l03: reviewed inventory joins the existing registry; uncovered evidence
+# stays a failing review entry, never an executable declaration or a new selector.
+def inventory(payload, expectations, backlog):
+    item = next(i for i in backlog["items"] if i["id"] == expectations["Item"])
+    rows = expectations["Findings"]
+    ids = [r["Id"] for r in rows]
+    if len(ids) != len(set(ids)) or set(ids) != set(item["finding_ids"]):
+        raise ValueError("Native inventory: missing, duplicate or unexpected mapped finding")
+    fixtures = expectations["Fixtures"]
+    mapped = {f["id"]: f for f in backlog["findings"]}
+    registry = {r["Target"]: r for r in payload.get("NativeOverrides", [])}
+    known = _known(payload)
+    results = []
+    for row in rows:
+        finding = mapped[row["Id"]]
+        if row["Route"] != finding["route"] or row["Scene"] != finding["scene"]:
+            raise ValueError("Native inventory: finding provenance drift " + row["Id"])
+        if not row["Targets"] or not set(finding.get("native_target_guids", [])).issubset(row["Targets"]):
+            raise ValueError("Native inventory: omitted cited GUID " + row["Id"])
+        if not row["Dependency"] or any(not g or not {"trickster.now", "trickster.ever"}.intersection(g)
+                                         for g in row["Dependency"]):
+            raise ValueError("Native inventory: missing earned Trickster dependency " + row["Id"])
+        unknown = {f.removeprefix("!") for g in row["Dependency"] for f in g} - known
+        if unknown:
+            raise ValueError(f"Native inventory: unknown dependency {row['Id']}: {sorted(unknown)}")
+        for guid in row["Targets"]:
+            fixture = fixtures.get(guid)
+            if fixture is None or not fixture.get("Data") or not fixture.get("Path"):
+                raise ValueError("Native inventory: missing serialized fixture " + guid)
+            declaration = registry.get(guid)
+            spec = payload[declaration["Field"]][declaration["RuntimeKey"]] if declaration else None
+            # AnswerLists and Herrax's question are context: the conflicting reply,
+            # rather than the legitimate question, requires replacement.
+            context = fixture["Type"] == "BlueprintAnswersList" or (
+                row["Route"] == "herrax" and fixture["Type"] == "BlueprintAnswer")
+            results.append(dict(Finding=row["Id"], Route=row["Route"], Target=guid, Path=fixture["Path"],
+                Dependency=row["Dependency"], Status="context" if context else "registered_unevaluated" if spec else "FAIL_UNCOVERED",
+                Spec=copy.deepcopy(spec), Source=declaration["Source"] if declaration else None))
+    if not set(expectations["Siblings"]).issubset(fixtures):
+        raise ValueError("Native inventory: missing sibling fixture")
+    return results
