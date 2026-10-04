@@ -363,6 +363,11 @@ def check(story, review=False):
                     and f not in ov]
             if miss:
                 notes.append("REVIEW %s: committed page neither Forbids nor Requires her loss flag(s) %s" % (s["Id"], miss))
+    # eng7-l07: own consumers and return provenance extend EP5; q6a retains L1/L4/L6 ownership.
+    from tools import own_life_lint, return_provenance_lint
+    hard.extend(own_life_lint.check(story))
+    hard.extend(return_provenance_lint.check(story))
+    # eng7-l07 end
     return hard, notes
 
 

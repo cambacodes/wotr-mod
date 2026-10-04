@@ -230,6 +230,19 @@ internal static class Program
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        // eng7-l07: required on the full expansion run; keep special-mode output contracts intact.
+        if (args.Contains("--eng7-l07") || !args.Any(a => a.StartsWith("--", StringComparison.Ordinal)))
+        {
+            OwnLifeInventoryTests.Run(story, Check);
+            ReturnProvenanceInventoryTests.Run(story, Check);
+            CurrentActInventoryTests.Run(story, Check);
+            if (args.Contains("--eng7-l07"))
+            {
+                Console.WriteLine($"PASS: {checks} eng7-l07 assertions.");
+                return;
+            }
+        }
+        // eng7-l07 end
         if (args.Contains("--wenduag-echo"))
         {
             WenduagTricksterTests.Run(story, Check);
@@ -635,6 +648,16 @@ internal static class Program
         {
             if (playedContinuations.Contains(scene.Id)) continue;
             var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
+            // eng7-l07: these are declared prerequisite fixtures, not provenance proof.
+            // The ordered inventory suite separately plays and verifies the coffin producer.
+            if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
+                state.Flags.Add("camellia.trickster.cost.knows_you_tried");
+            if (scene.Relationship == "camellia" || scene.Id == "minagho_chivarro.trickster.reunion.wardrobe")
+            {
+                if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+                Rules.Complete(story, state);
+            }
+            // eng7-l07 end
             if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
                 state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");

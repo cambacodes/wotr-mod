@@ -173,6 +173,14 @@ PRESENCE_RETURN_IN_PROGRESS = {
         },
     },
 }
+# eng7-l07: the paid coffin ritual puts the actor in reach before her returned agreement.
+# It lifts only the native execution's losses; no new revival opportunity is added.
+PRESENCE_RETURN_IN_PROGRESS["camellia"] = {
+    flag: {"Flag": "camellia.trickster.raised",
+           "Reason": "The third-night coffin ritual produces the living veiled actor before her agreement."}
+    for flag in ("camellia.killed", "camellia.dead")
+}
+# eng7-l07 end
 PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
 
 
