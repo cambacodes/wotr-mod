@@ -273,8 +273,12 @@ internal static class Program
         // eng7-l06 end
         Rules.Validate(story);
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
-        NativeWorldReconciliationInventoryTests.Run(story, Check);
-        NativeGateContractParityTests.Run(story, Check);
+        // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
+        if (!args.Contains("--bindings"))
+        {
+            NativeWorldReconciliationInventoryTests.Run(story, Check);
+            NativeGateContractParityTests.Run(story, Check);
+        }
         // eng7-l03: focused inventory acceptance; the full gate calls the same suites below.
         if (args.Contains("--eng7-l03-native"))
         {
