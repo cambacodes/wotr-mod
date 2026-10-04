@@ -227,7 +227,11 @@ internal static class GesmerhaTricksterTests
         check(Endings(committed).SequenceEqual(new[] { P + "epilogue.bench" }), "The commit ends on the wrong pages: " + string.Join(",", Endings(committed)));
         check(Endings(sat).SequenceEqual(new[] { P + "epilogue.bench" }), "The second ask ends on the wrong pages.");
         check(Endings(seen).SequenceEqual(new[] { P + "epilogue.commit" }), "Trk_Gesmerha_EpilogueCommit: a finished yard has no late commit page.");
-        var failed = Program.Copy(returned); failed.Flags.Add("gesmerha.presence.failed"); Rules.Complete(story, failed);
+        // eng7-l06: the finale consumes saved evidence from an eligible failed placement, not a Threshold observation.
+        var failed = Program.Copy(returned); failed.Area = story.Presences["gesmerha.presence"].Area;
+        check(Rules.RecordPresenceFailure(story, "gesmerha.presence", failed,
+            new PresenceObservation { AreaLoaded = true, AnchorResolved = false }), "Failed placement was not eligible.");
+        failed.Flags.Add(story.PresenceFailureReceipts["gesmerha.presence"].Flag); Rules.Complete(story, failed);
         check(Endings(failed).SequenceEqual(new[] { P + "epilogue.commit" }), "A failed presence has no late commit page.");
         check(Endings(declined).SequenceEqual(new[] { P + "epilogue.refusal" }), "Her refusal ends on the wrong pages.");
         check(Endings(finished).SequenceEqual(new[] { P + "epilogue.finished" }), "The Commander's no ends on the wrong pages.");
