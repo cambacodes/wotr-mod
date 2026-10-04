@@ -650,6 +650,10 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l11: reviewed native reaction inheritance; no new scenes or outcomes.
+    from tools.hub_attachment_lint import integrate as attach_presence_reactions
+    attach_presence_reactions(payload)
+    # end eng7-l11
     return payload
 
 
