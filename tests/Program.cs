@@ -310,6 +310,21 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
+        // eng7-l10: required inventory regressions, including retirement and mutation controls.
+        if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("nenio"))
+            NenioBodyCustodyTests.Run(story, Check);
+        if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("wenduag"))
+        {
+            WenduagNativeMomentInventoryTests.Run(story, Check);
+            PresencePlacementManifestTests.Run(story, Check);
+        }
+        if (args.Contains("--eng7-l10"))
+        {
+            WenduagEchoRulesTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} eng7-l10 assertions.");
+            return;
+        }
+        // end eng7-l10
         FairRestTests.Run(Check);
         PostBagTests.Run(Check);
         MailbagTests.Run(Check);
@@ -574,6 +589,10 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) MelazmeraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) WenduagTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) WenduagEchoRulesTests.Run(story, Check);
+            // eng7-l10: E-Q7-30 retirement is tested negatively above; these saved pages
+            // must not enter the generic fixture that expects every page to open.
+            playedContinuations.UnionWith(new[] { "wenduag.trickster.abyss.fall", "wenduag.trickster.street.fall" });
+            // end eng7-l10
             if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);

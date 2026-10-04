@@ -168,6 +168,12 @@ def integrate(payload):
     for suffix, flag in (("abyss.fall", "ready"), ("abyss.back", "ready"),
                          ("lann.truth", "rescued"), ("lann.found_out", "rescued")):
         scenes[W + suffix].setdefault("Forbids", []).append(E + flag)
+    # eng7-l10: E-Q7-30 retire unsupported post-rest casualty actions. Native death has
+    # already completed; preparation cannot retroactively earn custody. Keep all saved
+    # IDs, nodes, answers and targets. The reviewed immediate echo pickup stays active.
+    for suffix in ("abyss.fall", "street.fall"):
+        scenes[W + suffix].setdefault("Forbids", []).append("trickster.ever")
+    # end eng7-l10
     # Prevent every inherited return device from claiming this interrupted original.
     for item in scenes.values():
         if item.get("TricksterDevice"):
