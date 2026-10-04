@@ -115,6 +115,8 @@ namespace Tirabade
         private static KonomiMeeting? konomiMeeting;
         private static IrabethMeeting? irabethMeeting;
         private static NurahMeeting? nurahMeeting;
+        private static WenduagEcho? wenduagEcho;
+        private static readonly List<NurahInteraction> wenduagEchoClicks = new List<NurahInteraction>();
         private static NurahInteraction? nurahInteraction;
         private static BlueprintDialog? nurahHub;
         private static ParentEndingIntegration? parentEndings;
@@ -442,6 +444,15 @@ namespace Tirabade
                 var konomiEtude = New<BlueprintEtude>("etude.konomi.personal_return");
                 var irabethEtude = New<BlueprintEtude>("etude.irabeth.personal_return");
                 var nurahEtude = New<BlueprintEtude>("etude.nurah.private_meeting");
+                var wenduagBlueprints = new WenduagEcho.Blueprints {
+                    Saved = New<BlueprintEtude>("etude.wenduag.echo.custody"),
+                    Sequence = New<Kingmaker.AreaLogic.Cutscenes.Cutscene>("cutscene.wenduag.echo.interruption"),
+                    End = New<Kingmaker.AreaLogic.Cutscenes.Gate>("gate.wenduag.echo.end"),
+                    Hit = New<Kingmaker.AreaLogic.Cutscenes.CommandAction>("command.wenduag.echo.hit"),
+                    Incapacitate = New<Kingmaker.AreaLogic.Cutscenes.CommandAction>("command.wenduag.echo.incapacitate")
+                };
+                if (!flags.ContainsKey("trickster.foresight.accepted"))
+                    flags.Add("trickster.foresight.accepted", New<BlueprintUnlockableFlag>("flag.trickster.foresight.accepted"));
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes)
                     if (scene.ReturnToList) BuildReturnToList(scene);
@@ -469,6 +480,9 @@ namespace Tirabade
                 if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
                 foreach (var pair in story.Presences.Where(p => p.Value.Dialog == "hub"))
                     presenceHubs[pair.Key] = BuildPresenceHub(pair.Key, pair.Value);
+                if (story.Scenes.Any(Rules.IsWenduagEchoHub))
+                    presenceHubs["wenduag.echo"] = BuildPresenceHub("wenduag.echo", new Presence {
+                        Greeting = "{n}The torn belt lies beside the hunter.{/n}" });
                 if (story.Scenes.Any(Rules.IsMailbagLetter)) mailbagDialog = BuildMailbag();
                 // E15: the RRT book surfaces (mailbag v2, the letter archive, data books) and the glossary tooltips.
                 BuildBooks();
@@ -525,6 +539,24 @@ namespace Tirabade
                 konomiMeeting = Optional("Konomi meeting", () => new KonomiMeeting(konomiEtude, CurrentKonomiVisit, Get<SimpleBlueprint>));
                 irabethMeeting = Optional("Irabeth meeting", () => new IrabethMeeting(irabethEtude, CurrentIrabethVisit, Get<SimpleBlueprint>));
                 nurahMeeting = Optional("Nurah meeting", () => new NurahMeeting(nurahEtude, CurrentNurahVisit, Get<SimpleBlueprint>));
+                if (story.Scenes.Any(Rules.IsWenduagEchoHub))
+                {
+                    wenduagEcho = Optional("Wenduag echo (warning only, native death retained)", () =>
+                        new WenduagEcho(wenduagBlueprints, Get<SimpleBlueprint>, () => enabled && initialized && Game.Instance?.Player != null ? State() : null));
+                    if (wenduagEcho != null)
+                        foreach (string key in new[] { "wenduag.echo", "wenduag.presence" })
+                        {
+                            string hubKey = key;
+                            if (!presenceHubs.TryGetValue(hubKey, out var hub)) continue;
+                            var click = new NurahInteraction(() => wenduagEcho.ContactActor(hubKey == "wenduag.echo"
+                                    && State().Has(WenduagEcho.E + "casualty_available")),
+                                () => Game.Instance?.Player?.MainCharacter.Value, hub,
+                                () => enabled && initialized && Idle() && story.Scenes.Where(s => s.InteractionHub == hubKey)
+                                    .Any(s => Rules.Available(story, s, State())),
+                                (dialog, target, user) => Game.Instance.DialogController.StartDialogWithUnit(dialog, target, user));
+                            wenduagEchoClicks.Add(click);
+                        }
+                }
                 if (nurahHub != null && nurahMeeting != null)
                     nurahInteraction = Optional("Nurah hub", () => new NurahInteraction(nurahMeeting, nurahHub, CanOpenNurahHub));
                 foreach (var presence in presences)
@@ -846,7 +878,9 @@ namespace Tirabade
                 }
                 else warn("Mythic-choice achievement counter unavailable for " + choice.Mythic + "; the requirement is kept without it.");
             }
-            if (choice.Crusade != null)
+            bool echoPayment = story.Scenes.Where(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal))
+                .Any(s => s.Nodes.Any(n => n.Choices.Contains(choice)));
+            if (choice.Crusade != null && !echoPayment)
             {
                 int amount = Math.Abs(choice.Crusade.Amount);
                 var resources = choice.Crusade.Resource == "Finances" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(amount)
@@ -1358,6 +1392,9 @@ namespace Tirabade
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             KonomiRecovery.ReadLifecycle(state);
+            wenduagEcho?.Observe(state);
+            if (wenduagEcho == null && (state.Has(WenduagEcho.E + "rescued") || state.Has(WenduagEcho.E + "returned")))
+                state.Flags.Add(WenduagEcho.E + "unavailable");
             // Latches and data-driven composites read the completed native picture.
             Rules.Complete(story, state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
@@ -1718,6 +1755,8 @@ namespace Tirabade
             irabethMeeting?.Tick();
             nurahMeeting?.Tick();
             nurahInteraction?.Tick();
+            wenduagEcho?.Tick();
+            foreach (var click in wenduagEchoClicks) click.Tick();
             foreach (var click in presenceClicks.Values) click.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
@@ -1804,7 +1843,7 @@ namespace Tirabade
             pending = null;
             pendingPlayer = null;
             if (!Rules.Available(story, scene, State()) || Game.Instance?.Player == null) return;
-            Set(story.Relationships[scene.Relationship].StartedFlag);
+            if (!scene.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal)) Set(story.Relationships[scene.Relationship].StartedFlag);
             var objective = objectives[scene.Relationship];
             if (Game.Instance.Player.QuestBook.GetObjectiveState(objective) == QuestObjectiveState.None) Game.Instance.Player.QuestBook.GiveObjective(objective);
             // Remember when each relationship last received a letter so the next rest serves someone else first.
@@ -1850,6 +1889,7 @@ namespace Tirabade
             foreach (var presence in presences)
             {
                 bool wanted = !degraded.Contains(Rules.PresenceRelationship(presence.Key)!)
+                    && !(Rules.PresenceRelationship(presence.Key) == "wenduag" && wenduagEcho?.OwnsOriginal == true)
                     && Rules.PresenceWanted(presence.Spec, state);
                 presence.Tick(wanted);
                 string line = presence.Report(wanted);
@@ -2055,7 +2095,7 @@ namespace Tirabade
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
-                        && Rules.ChoiceAvailable(Choice, State()));
+                        && Rules.ChoiceAvailable(Choice, State()) && EchoPaymentAvailable(Choice));
         }
 
         // E8b: a mailbag entry is listed while its letter is in the bag and still available.
@@ -2141,6 +2181,14 @@ namespace Tirabade
             public override void RunAction() { if (Payment != null) Payment.Apply(() => base.RunAction()); else if (!KingdomMissing(name)) base.RunAction(); }
         }
 
+        private static bool EchoPaymentAvailable(Choice choice)
+        {
+            if (choice.Crusade == null || !story.Scenes.Any(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal)
+                && s.Nodes.Any(n => n.Choices.Contains(choice)))) return true;
+            var kingdom = Game.HasInstance ? Game.Instance.State?.PlayerState?.Kingdom : null;
+            return kingdom != null && kingdom.Resources.Finances >= Math.Abs(choice.Crusade.Amount);
+        }
+
         public sealed class RouteAction : GameAction
         {
             public Scene? Start;
@@ -2175,6 +2223,15 @@ namespace Tirabade
                         if (!Rules.Match(Choice.Requires, Choice.Forbids, State())) return;
                     }
                     else if (!Rules.ChoiceAvailable(Choice, State())) return;
+                    var echoScene = Continuation ?? Complete ?? story.Scenes.FirstOrDefault(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal)
+                        && s.Nodes.Any(n => n.Choices.Contains(Choice)));
+                    if (echoScene?.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal) == true)
+                    {
+                        // Keep terminal payment, custody and story writes in one main-thread action.
+                        if (!EchoPaymentAvailable(Choice) || wenduagEcho == null) return;
+                        wenduagEcho.ApplyChoice(echoScene, Choice, () => RecordProgress(Choice, Complete));
+                        return;
+                    }
                     if (Choice.Revive != null)
                     {
                         if (Complete == null || !Rules.Available(story, Complete, State())) return;

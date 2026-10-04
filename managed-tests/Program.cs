@@ -130,7 +130,7 @@ internal static class Program
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
             SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check);
@@ -356,6 +356,7 @@ internal static class Program
             expandedOriginal = sequences[sequenceIds[0]].Cues.ToArray();
             expandedEpilogue.Cues.AddRange(expandedOriginal);
         }
+        if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Seed(native, Check);
         var entry = new UnityModManager.ModEntry(new UnityModManager.ModInfo { Id = "ManagedBuildTests", Version = "1.0.0", ManagerVersion = "0.27.11" }, modDirectory);
         string? invalidReturnKind = Environment.GetEnvironmentVariable("RRT_TEST_NATIVE_RETURN");
         bool invalidNativeReturn = !string.IsNullOrEmpty(invalidReturnKind);
@@ -669,7 +670,7 @@ internal static class Program
                     Check(answer.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition shown && ReferenceEquals(shown.Choice, choice) && ReferenceEquals(shown.Owner, answer), "Choice lost its visibility guard or owner: " + nodeId);
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
-                    int nativeEffects = (choice.Crusade != null ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
+                    int nativeEffects = (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
                     Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
                         && answer.OnSelect.Actions[choice.Crusade == null ? 0 : 1] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
                     if (choice.Crusade != null)
@@ -742,6 +743,7 @@ internal static class Program
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
+        if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Run(Check);
         NativeGateManagedTests.RunArsinoe(story, Check);
         NativeGateManagedTests.RunDevarra(story, Check);
         SpeakerManagedTests.Run(native, Check);

@@ -35,7 +35,9 @@ CONTACT_EVIDENCE = {"konomi.retained_hostile", "konomi.missed_contact_available"
                     "konomi.return_contact_available", "konomi.return_correspondence_available",
                     "konomi.death_unreturned", "konomi.death_restored",
                     "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
-                    "nurah.correspondence_available", "nurah.meeting_arrived"}
+                    "nurah.correspondence_available", "nurah.meeting_arrived"} | {
+                        "wenduag.trickster.echo.abyss." + suffix for suffix in
+                        ("adapter_available", "casualty_available", "return_available", "valid", "unavailable")}
 CHECK_SKILLS = {"SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana",
                 "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception",
                 "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate"}
@@ -96,6 +98,14 @@ def is_nurah_hub(s):
             and "nurah.meeting_accepted" in s["Requires"] and "nurah.meeting_arrived" in s["Requires"])
 
 
+def is_wenduag_echo_hub(s):
+    return (s["InteractionHub"] == "wenduag.echo" and s["Relationship"] == "wenduag"
+            and s["Owner"] == "Wenduag" and not is_remote(s) and s["ContactUnit"] == "ae766624c03058440a036de90a7f2009"
+            and {"trickster.now", "foresight.page_taken"} <= set(s["Requires"])
+            and (s["Id"] == "wenduag.trickster.echo.abyss.pickup" and "wenduag.trickster.echo.abyss.casualty_available" in s["Requires"]
+                 or s["Id"] == "wenduag.trickster.echo.abyss.return" and "wenduag.trickster.echo.abyss.return_available" in s["Requires"]))
+
+
 def presence_relationship(key):
     """E12: "<rel>.presence" or "<rel>.presence.<name>" -> rel."""
     mm = re.match(r"^(.+?)\.presence(?:\.[a-z0-9_]+)?$", key or "")
@@ -118,7 +128,7 @@ def is_table_scene(s):
 def entry_targets(s):
     if is_remote(s) or is_epilogue(s) or s.get("ContinueBefore"): return []
     if s["InteractionHub"] is not None:
-        if is_nurah_hub(s) or is_presence_hub(s) or is_table_scene(s): return []
+        if is_nurah_hub(s) or is_presence_hub(s) or is_table_scene(s) or is_wenduag_echo_hub(s): return []
         raise ValueError("Unrecognized authored interaction hub: " + s["Id"])
     if s["AnswerLists"]: return list(s["AnswerLists"])
     if s["Relationship"] == "tirabade":
@@ -195,6 +205,9 @@ class Model:
             if not is_epilogue(s) and s["NativeReturnCue"] is None and s["Relationship"] in self.rels:
                 self.producers[self.rels[s["Relationship"]]["StartedFlag"]].append((s["Id"], None, "start"))
         self.authored = set(self.producers) | {s["Id"] for s in self.scenes}
+        # TODO-shyka: no paid-page producer is present on the integration branch.
+        if "foresight.page_taken" in self.composites:
+            self.authored.add("trickster.foresight.accepted")
         for r in self.rels.values():
             self.authored |= {r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"]}
         self.nodes = {s["Id"]: {n["Id"]: n for n in s["Nodes"]} for s in self.scenes}
@@ -876,7 +889,7 @@ def validate(model):
             tg = entry_targets(s)
         except ValueError as e:
             errs.append(str(e)); tg = []
-        if s["InteractionHub"] is not None and not is_nurah_hub(s) and not is_table_scene(s) and not (
+        if s["InteractionHub"] is not None and not is_nurah_hub(s) and not is_table_scene(s) and not is_wenduag_echo_hub(s) and not (
                 is_presence_hub(s) and ((st.get("Presences") or {}).get(s["InteractionHub"]) or {}).get("Dialog") == "hub"
                 and presence_relationship(s["InteractionHub"]) == s["Relationship"]):
             errs.append("Invalid interaction hub: " + sid)
@@ -900,7 +913,8 @@ def validate(model):
             if (not s["TricksterDevice"] or not acc or s["Reaction"] or is_epilogue(s)
                     or (s["TricksterState"] is not None and s["TricksterState"] not in acc)
                     or not ({"trickster", "trickster.ever", "trickster.now"} & set(s["Requires"]))
-                    or not any(f in rec or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f for f in sets)):
+                    or not any(f in rec or ".trickster.primed" in f or ".trickster.returned" in f or ".trickster.cost." in f
+                               or f in {"wenduag.trickster.echo.abyss.rescued", "wenduag.trickster.echo.abyss.cost.used_lann"} for f in sets)):
                 errs.append("Invalid Trickster device: " + sid)
         if s["Reaction"]:
             own = rels.get(s["Relationship"], {})

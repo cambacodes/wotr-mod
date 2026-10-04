@@ -30,6 +30,10 @@ party slot, no presence), the way Galfrey's Kitrane does after the native death 
 return flag, which the relationship's UnavailableOverrides honour. The native death record is the trick's cover story: to
 Drezen, to Savamelekh and to every native system she is dead, and the device needs exactly that. Her living self is the spawned
 presence copy in Drezen (wenduag_cairn.PRESENCES) and the rest-delivered scenes.
+These are the inherited cairn devices.
+The authored Chapter 4 echo in wenduag_echo is a separate, paid interruption of Lann's native death sequence.
+WenduagEcho keeps the living original in persistent custody and serves its existing claim hub without a presence copy.
+Its returned history remains recorded; runtime validity governs continuing access, including remote scenes and endings.
 
 Cost: Lann's trust (he spoke his real eulogy over her, or believed his own blow killed her). The Commander can pay it first
 (lann.truth) or when Lann names what he is owed (lann.found_out). Damaged, never ended.
