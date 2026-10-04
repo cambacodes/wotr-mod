@@ -141,7 +141,7 @@ beat(LABYRINTH, "Behind every door", '"Show me your house."', [
     hx("asset_yours", '''{n}She glances at you, and her mouth curves.{/n} "You'll recognise them, of course. You sent them to me yourself, out of the butcher Dyunk's pens: 'Go to the Ten Thousand Delights.' They wept all the way up my stairs. I've never had stock delivered so cheaply."''',
        c("Continue", "asset_choice")),
     hx("asset_empty", '''{n}The next door opens on a clean room, whitewashed, almost a convent cell, with a bench along one wall and nobody on it.{/n}
-"My white room." {n}Herrax lifts the lamp, and looks at the empty bench the way another woman might look at an empty jewel case.{/n} "The butcher Dyunk had a pen of aasimar girls in the Fleshmarkets this season. I meant them to sit there. They went elsewhere." {n}She lowers the lamp.{/n} "The room waits. Rooms in my house always get filled, lover. The only question is what with."''',
+"My white room." {n}Herrax lifts the lamp, and looks at the empty bench the way another woman might look at an empty jewel case.{/n} "The butcher Dyunk had a pen of aasimar girls in the Fleshmarkets this season. I meant them to sit there. They have not come to my house." {n}She lowers the lamp.{/n} "The room waits. Rooms in my house always get filled, lover. The only question is what with."''',
        c("[Walk on.]", "dais")),
     hx("asset_choice", '''{n}One of the girls looks up at the sound of a new voice. Herrax meets her eyes, gently, and the girl looks down again.{/n}''',
        c('"You\'re going to break them."', "break"),

@@ -390,7 +390,7 @@ internal static class SoanaTricksterTests
 
         // Reactions: exactly Camellia, Ember and Ulbrig, each with its availability guard.
         var reactions = story.Scenes.Where(s => s.Reaction && s.Id.StartsWith(P, StringComparison.Ordinal)).ToArray();
-        check(reactions.Length == 6 && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Camellia", "Ember", "Ulbrig" }),
+        check(reactions.Length == 7 && reactions.Count(r => r.Id.EndsWith(".history_neutral", StringComparison.Ordinal)) == 1 && reactions.Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Camellia", "Ember", "Ulbrig" }),
             "The reactors are not exactly Camellia, Ember and Ulbrig.");
         foreach (var r in reactions.Where(r => r.Owner == "Ulbrig"))
             check(r.Requires.Contains("ulbrig.talked") && r.Forbids.Contains("ulbrig.dead") && r.Forbids.Contains("ulbrig.kicked_out"),
