@@ -294,7 +294,7 @@ internal static class KianaTricksterTests
 
         // Reactions: Arsinoe, Anevia, Irabeth only; Anevia's lift with her return, Irabeth's with hers.
         var reactions = story.Scenes.Where(s => s.Relationship == "kiana" && s.Reaction).ToArray();
-        check(reactions.Length == 12 && reactions.All(r => r.Owner == "Arsinoe" || r.Owner == "Anevia" || r.Owner == "Irabeth"),
+        check(reactions.Length == 13 && reactions.Count(r => r.Id.EndsWith(".history_neutral", StringComparison.Ordinal)) == 1 && reactions.All(r => r.Owner == "Arsinoe" || r.Owner == "Anevia" || r.Owner == "Irabeth"),
             "Kiana reactions changed.");
         var aneviaDog = S("kiana.trickster.awake.react_anevia");
         var dogWorld = World(story, 5, "trickster", "trickster.ever", "kiana.trickster.returned", "kiana.trickster.dog_saved", "anevia_gone");
@@ -312,11 +312,21 @@ internal static class KianaTricksterTests
         // Q10 (INT): after either ransom Arsinoe answers for the recovered patients on her own hub; Q3 settles it natively.
         var home = S("kiana.trickster.react_arsinoe_souls_home");
         check(home.AnswerLists.SequenceEqual(new[] { ArsinoeHub }), "Q10: the souls-home answer left Arsinoe's hub.");
+        // eng7-l02: both paid recoveries speak, with/without the actual native locating vision.
+        var homeNeutral = S(home.Id + ".history_neutral");
         foreach (var payPath in new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" })
-            check(Rules.Available(story, home, World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", payPath)), "Q10: Arsinoe is silent after " + payPath);
-        check(!Rules.Available(story, home, World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.guests_robbed"))
-              && !Rules.Available(story, home, World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.guests_ransomed", "seelah.souls_returned")),
-            "Q10: Arsinoe reports souls home that never came home, or after Q3.");
+        {
+            var recovered = World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", payPath);
+            check(Rules.Available(story, homeNeutral, recovered) && !Rules.Available(story, home, recovered), "Q7-10: missing vision misread after " + payPath);
+            foreach (var pair in story.SeenCues.Where(p => p.Value.Contains("a473e5412ffd0f54fbf395770a80a008"))) recovered.Flags.Add(pair.Key);
+            Rules.Complete(story, recovered);
+            check(Rules.Available(story, home, recovered) && !Rules.Available(story, homeNeutral, recovered), "Q7-10: witnessed vision ignored after " + payPath);
+        }
+        foreach (var variant in new[] { home, homeNeutral })
+            check(!Rules.Available(story, variant, World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.guests_robbed"))
+                  && !Rules.Available(story, variant, World(story, 5, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.guests_ransomed", "seelah.souls_returned")),
+                "Q10: Arsinoe reports souls home that never came home, or after Q3.");
+        // eng7-l02 end
         // Q10 (CAN): Sunhammer's witnessed death (JewelerFinal Cue_0042/0043) cancels the favour everywhere.
         var promised = S("kiana.ending_promised").Nodes[0];
         var deadEnd = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.sunhammer_favour", "kiana.committed", "kiana.sunhammer_dead");

@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1123,
-  "resolved": 1123,
+  "entryTargetScenes": 1125,
+  "resolved": 1125,
   "inlineOnlyScenes": 316,
   "inlineOnlyResolved": 316,
-  "answerListScenesWithoutContact": 691,
-  "answerListScenesWithoutContactResolved": 691,
+  "answerListScenesWithoutContact": 693,
+  "answerListScenesWithoutContactResolved": 693,
   "lists": 143,
   "listsWithReachableHost": 142
  },
@@ -14615,6 +14615,25 @@
     "clicks": 0
    }
   },
+  "kiana.trickster.react_arsinoe_souls_home.history_neutral": {
+   "kind": "dialog",
+   "lists": [
+    "ecaf5cfe8087a4f45a2269974f4885c9"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "ecaf5cfe8087a4f45a2269974f4885c9": "RRT_entry.kiana.trickster.react_arsinoe_souls_home.history_neutral"
+   },
+   "resolved": true,
+   "host": {
+    "list": "ecaf5cfe8087a4f45a2269974f4885c9",
+    "dialog": "d5adc0bbbad5f054098b527cf9cc64f1",
+    "dialogName": "VendorArsinoe_dialogue",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
   "kiana.wedding.cast": {
    "kind": "return-to-list",
    "lists": [
@@ -19400,6 +19419,25 @@
    "contact": null,
    "entry": {
     "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.soana.trickster.react.ulbrig_knot"
+   },
+   "resolved": true,
+   "host": {
+    "list": "0a50c9c878844ed4a69b8d6131304c5e",
+    "dialog": "20b70c9bb93940b9a21a488f1721f41c",
+    "dialogName": "Shifter_CompanionDialogue",
+    "cue": "Cue_0005",
+    "clicks": 0
+   }
+  },
+  "soana.trickster.react.ulbrig_knot.history_neutral": {
+   "kind": "dialog",
+   "lists": [
+    "0a50c9c878844ed4a69b8d6131304c5e"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "0a50c9c878844ed4a69b8d6131304c5e": "RRT_entry.soana.trickster.react.ulbrig_knot.history_neutral"
    },
    "resolved": true,
    "host": {

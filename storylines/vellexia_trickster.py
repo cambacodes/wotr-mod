@@ -259,10 +259,10 @@ letter("vellexia.trickster.sword.portrait", "The one with no hands", [
       c("Continue", "gallery", forbids=("vellexia.slaves_freed", "vellexia.returned_picture")),
       c("Continue", "bought_back", requires=("vellexia.returned_picture",), forbids=("vellexia.slaves_freed",)),
       c("Continue", "freed_bought_back", requires=("vellexia.slaves_freed", "vellexia.returned_picture"))),
-    nar("freed_bought_back", '''{n}When she fell, every chair, lamp and footstool in her house stood up and walked out of the door on two legs. The inventory is very short.{/n}
+    nar("freed_bought_back", '''{n}By the time the inventory was taken, the people she had made into chairs, lamps and footstools were free. The inventory is very short.{/n}
 {n}One item did not walk. It was never anyone. She sent the unfinished portrait back to its artist, the afternoon you told her to; and then, it seems, she bought it back from him at twice his price, frame and stone and all, and hung it in the gallery where you first saw it, and never mentioned it. The hands are still bare underpaint. On the back, your chalk mark.{/n}''',
       c("Continue", "choice")),
-    nar("freed", '''{n}When she fell, every chair, lamp and footstool in her house stood up and walked out of the door on two legs. The inventory is very short.{/n}
+    nar("freed", '''{n}By the time the inventory was taken, the people she had made into chairs, lamps and footstools were free. The inventory is very short.{/n}
 {n}One item did not walk. It was never anyone. The unfinished portrait still hangs in the gallery where you last saw it, the hands still bare underpaint, and on the back, your chalk mark.{/n}''',
       c("Continue", "choice")),
     nar("gallery", '''{n}The inventory runs to eleven pages of furniture that watches the looters work. Near the bottom, in a clerk's cramped hand: one portrait, unfinished, hands unpainted, chalk mark on reverse. Gallery.{/n}''',

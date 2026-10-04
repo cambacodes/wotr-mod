@@ -14191,7 +14191,7 @@
           ]
         ]
       ],
-      "fingerprint": "138f59565f8e85f038d6e695d5fa1d54437a4567a4d7afeab2c24480a1e9e82a"
+      "fingerprint": "6f7e74542e1d3c051e3782e42132e1f7ed376455bbde8f49d2a6cf4a2938e25d"
     },
     {
       "check": "L1",
@@ -57331,7 +57331,7 @@
           false
         ]
       ],
-      "fingerprint": "c8c3681f8ef479e8e948cb49cc71d91e4d2f762ed5c79859b31b9ae8e7e07080"
+      "fingerprint": "bfdf17e621efdba779ae47a2f7b15a58d05b1d8c7f7979b1398e644b57b744de"
     },
     {
       "check": "L1",
@@ -57345,7 +57345,55 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "eab71111b66301511c2e53c8026d237b1304fb8113c22f365bedf3b1add149e7"
+      "fingerprint": "4873cd41002e4f28573696e0a394ebd5426ed316e5ad3c39025ee5b5ba5439b0"
+    },
+    {
+      "check": "L1",
+      "route": "kiana",
+      "scene": "kiana.trickster.react_arsinoe_souls_home.history_neutral",
+      "node": "start",
+      "slot": "text",
+      "subject": "arsinoe",
+      "excerpt": "Speaker: Arsinoe",
+      "missing_condition": "RouteOpen(arsinoe): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "arsinoe.closed",
+          false
+        ],
+        [
+          "lit",
+          "arsinoe.victims_revived",
+          false
+        ],
+        [
+          "lit",
+          "swarm",
+          false
+        ],
+        [
+          "lit",
+          "true_lich",
+          false
+        ]
+      ],
+      "fingerprint": "24044ff2928957e0e0bc7e4a9208f271e5abcefbf81c3b8e055b655de6bed2f1"
+    },
+    {
+      "check": "L1",
+      "route": "kiana",
+      "scene": "kiana.trickster.react_arsinoe_souls_home.history_neutral",
+      "node": "start",
+      "slot": "text",
+      "subject": "arsinoe:physical",
+      "excerpt": "Speaker: Arsinoe",
+      "missing_condition": "physical arsinoe: matching guarded presence, ContactUnit or household participant",
+      "required_condition": [
+        "or"
+      ],
+      "fingerprint": "840ae77ab4905eb7c68b97843995872180d59f54fe8dc25f7ed4601c222e450c"
     },
     {
       "check": "L1",
@@ -67578,7 +67626,7 @@
           ]
         ]
       ],
-      "fingerprint": "47ab0f990968eafffe720ac2f79c8f1eb5a913acf6ba293593ff457c2df9ac69"
+      "fingerprint": "667faa33bf77ae7c44e18a4ff445e775b598f776dd0ed2341341a9f27e647c32"
     },
     {
       "check": "L1",
@@ -84940,7 +84988,7 @@
           ]
         ]
       ],
-      "fingerprint": "df431a93d45fad8b814745712fcdaa6943723fd93544c4e286427406915246b6"
+      "fingerprint": "f83b1911922692d15d2c3fa299455815a9003c2fdc1f524d67861183f7c195c2"
     },
     {
       "check": "L1",
@@ -84954,7 +85002,79 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "6a99d9f06f022d173b9a937eaea52efba850c3abe213a1cca940051dad05d056"
+      "fingerprint": "3f855c62a42c2262c9891a36cb32e83efb4420a8cf8b08e99ed2ef1004ec7fcf"
+    },
+    {
+      "check": "L1",
+      "route": "soana",
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "node": "start",
+      "slot": "paragraph[3]",
+      "subject": "camellia",
+      "excerpt": "\"You killed the old woman yourself,\" Camellia said, when the news reached camp, and tilted her head as if listening for something that had stopped. \"I suppose I ought to admire it. I find I only",
+      "missing_condition": "RouteOpen(camellia): closed/departed/dead-unreturned losses with registered earned returns",
+      "required_condition": [
+        "and",
+        [
+          "lit",
+          "camellia.closed",
+          false
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "camellia.dead",
+            false
+          ],
+          [
+            "lit",
+            "camellia.trickster.returned",
+            true
+          ]
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "camellia.kicked_out",
+            false
+          ],
+          [
+            "lit",
+            "camellia.trickster.killed_held",
+            true
+          ]
+        ],
+        [
+          "or",
+          [
+            "lit",
+            "camellia.killed",
+            false
+          ],
+          [
+            "lit",
+            "camellia.trickster.returned",
+            true
+          ]
+        ]
+      ],
+      "fingerprint": "69c3a1c9200d615e782129e7e938f2469ae48327bf1f132b4e6940ff839ac833"
+    },
+    {
+      "check": "L1",
+      "route": "soana",
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "node": "start",
+      "slot": "paragraph[3]",
+      "subject": "camellia:physical",
+      "excerpt": "\"You killed the old woman yourself,\" Camellia said, when the news reached camp, and tilted her head as if listening for something that had stopped. \"I suppose I ought to admire it. I find I only",
+      "missing_condition": "physical camellia: matching guarded presence, ContactUnit or household participant",
+      "required_condition": [
+        "or"
+      ],
+      "fingerprint": "33bafe98438ecb0d620be3360a9d38d498a30ccc018f8f550066ef5f52c6e92d"
     },
     {
       "check": "L1",
