@@ -48,6 +48,8 @@ namespace Tirabade
         // E19: reviewed native objectives settled (failed, never completed) while When holds and the objective is still Started:
         // a journal step the route's world made moot (Greybor's Obj5A after Devarra flew). Trickster only, warning-only.
         public Dictionary<string, NativeGateSpec> NativeObjectiveSettlements = new Dictionary<string, NativeGateSpec>();
+        // eng7-l04: registry-backed object/action and journal reconciliation; no new save flags.
+        public Dictionary<string, NativeWorldSpec> NativeWorldReconciliations = new Dictionary<string, NativeWorldSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E17 (native outcome bridge): the only native etudes a choice may start (Choice.StartEtude), each a GUID the story
@@ -312,6 +314,15 @@ namespace Tirabade
         public string Relationship = "";
         public string[][] When = Array.Empty<string[]>();
     }
+
+    // eng7-l04: authored journal text keeps the original localized fields and quest identities.
+    public sealed class NativeWorldSpec
+    {
+        public string Target = "", Relationship = "", DescriptionKey = "", Description = "", TitleKey = "", Title = "";
+        public string[][] When = Array.Empty<string[]>();
+    }
+
+    public enum Q3RecoveryOutcome { Native, Partial, Full } // eng7-l04
 
     public sealed class TricksterAccess
     {
@@ -1584,6 +1595,8 @@ namespace Tirabade
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
+            // eng7-l04: Main.Load and the offline suite use the identical target/state contracts.
+            ValidateNativeWorld(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
@@ -1808,13 +1821,84 @@ namespace Tirabade
                     || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
                     || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
                         || !OnTricksterPath(g))
-                    || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana"
-                        || gate.When.Any(g => !g.Contains("trickster.now")
-                            || !g.Contains("kiana.trickster.guests_ransomed") && !g.Contains("kiana.trickster.guests_bought_back"))))
+                    // eng7-l04: partial groups never use the full-patient adapter branch.
+                    || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana" || gate.When.Any(g => !Q3RecoveryGroupSupported(g))))
                     throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
         }
+
+        // eng7-l04 begin: shared reviewed contracts, also read by the Python export validator.
+        public static readonly string[] Q3RecoveryFullOutcomes = new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" };
+        public static readonly string[] Q3RecoveryPartialRequirements = new[] { "trickster.now", "kiana.trickster.returned", "kiana.trickster.cost.guests_robbed" };
+        public static bool Q3RecoveryGroupSupported(string[] group) => group != null && group.Contains("trickster.now")
+            && (Q3RecoveryFullOutcomes.Any(group.Contains) || Q3RecoveryPartialRequirements.All(group.Contains));
+        public static Q3RecoveryOutcome Q3RecoverySelection(Story story, Snapshot state)
+        {
+            if (!NativeGateHolds(story, "kiana.q3_recovery", state) || !state.Has("trickster.now")) return Q3RecoveryOutcome.Native;
+            var groups = story.NativeGates["kiana.q3_recovery"].When.Where(g => Q3RecoveryGroupSupported(g) && g.All(state.Has)).ToArray();
+            if (groups.Any(g => Q3RecoveryFullOutcomes.Any(g.Contains))) return Q3RecoveryOutcome.Full;
+            return groups.Length > 0 ? Q3RecoveryOutcome.Partial : Q3RecoveryOutcome.Native;
+        }
+        // Partial rescue is Kiana's earlier release, not payment for the other patients. Native Q3 remains their road home.
+        public static bool Q3RecoverySkipsPatients(Q3RecoveryOutcome outcome) => outcome == Q3RecoveryOutcome.Full;
+
+        public static readonly Dictionary<string, string> ReviewedNativeWorldTargets = new Dictionary<string, string>
+        {
+            ["a6e26159152a54c47a70ec91495499cf"] = "etude:HIDE-OBJECTS",
+            ["0544675ba14e81e48bb0965823c33efe"] = "etude:RETIRE-PRISONER",
+            ["067bd492b3a377d4e9112d929ec62fdb"] = "script-zone:RETIRE-ESCAPE",
+            ["5a5a533c9ce630a48b877f9a194840cb"] = "quest:JOURNAL",
+            ["7ac73c0b5de939b4b824a0aac54ba5f2"] = "objective:JOURNAL",
+            ["83527eddea019674cb123a6a52bdf169"] = "objective:JOURNAL",
+            ["5b1e04caadc42114281d29db76c19c4f"] = "objective:JOURNAL",
+            ["ba857f1c903988f47a70a9d6a2d861fa"] = "objective:JOURNAL",
+        };
+        public static readonly Dictionary<string, string> ReviewedNativeJournalKeys = new Dictionary<string, string>
+        {
+            ["5a5a533c9ce630a48b877f9a194840cb"] = "b46d5fa9-4ea9-4e7a-9997-b95c458bd095:",
+            ["7ac73c0b5de939b4b824a0aac54ba5f2"] = "ef5f2b7e-8e8c-4338-a8c1-acce1e65618f:e4e4c32c-68d4-4542-93bb-2ea6fc09e4b8",
+            ["83527eddea019674cb123a6a52bdf169"] = "e07e3559-8973-46ee-8c3f-85326d63c8aa:8f8bb69c-77fb-4b1a-af7a-589fa79bcb17",
+            ["5b1e04caadc42114281d29db76c19c4f"] = "884bf99f-bd1e-42ea-ac54-996fe4e8dddb:fe6c829a-52b3-489e-814f-b9cbe22a8cd6",
+            ["ba857f1c903988f47a70a9d6a2d861fa"] = "247343ee-0c87-4495-9857-310cc31fa663:",
+        };
+        public static readonly string[] BurialRequirements = new[] { "trickster.now", "eliandra.trickster.buried" };
+        public static readonly string[] RecruitmentRequirements = new[] { "trickster.now", "minagho_chivarro.trickster.minagho_in" };
+        public static bool NativeWorldGroupSupported(string target, string relationship, string[] group)
+        {
+            if (!ReviewedNativeWorldTargets.TryGetValue(target, out var contract) || group == null) return false;
+            if (contract.EndsWith(":JOURNAL", StringComparison.Ordinal)) return relationship == "kiana" && group.Contains("trickster.now")
+                && Q3RecoveryFullOutcomes.Any(group.Contains);
+            if (contract == "etude:HIDE-OBJECTS") return relationship == "eliandra" && BurialRequirements.All(group.Contains);
+            return relationship == "minagho_chivarro" && RecruitmentRequirements.All(group.Contains);
+        }
+        public static bool NativeWorldHolds(Story story, string target, Snapshot state) => story.NativeWorldReconciliations.TryGetValue(target, out var spec)
+            && !state.Has(DegradedPrefix + spec.Relationship) && state.Has("trickster.now")
+            && spec.When.Any(g => NativeWorldGroupSupported(target, spec.Relationship, g) && g.All(state.Has));
+        public static string? NativeJournalText(Story story, string target, bool title, Snapshot state)
+        {
+            if (!NativeWorldHolds(story, target, state) || !ReviewedNativeWorldTargets[target].EndsWith(":JOURNAL", StringComparison.Ordinal)) return null;
+            var spec = story.NativeWorldReconciliations[target];
+            return title ? (spec.TitleKey.Length == 0 ? null : spec.Title) : spec.Description;
+        }
+        private static void ValidateNativeWorld(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeWorldReconciliations == null) throw new InvalidOperationException("NativeWorldReconciliations cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeWorldReconciliations)
+            {
+                var spec = pair.Value;
+                if (spec == null || pair.Key != spec.Target || !ReviewedNativeWorldTargets.TryGetValue(pair.Key, out var contract)
+                    || spec.Relationship == null || !story.Relationships.ContainsKey(spec.Relationship) || spec.When == null || spec.When.Length == 0
+                    || spec.When.Any(g => !NativeWorldGroupSupported(pair.Key, spec.Relationship, g) || g.Any(f => !Known(f)))
+                    || contract.EndsWith(":JOURNAL", StringComparison.Ordinal) && (string.IsNullOrWhiteSpace(spec.DescriptionKey)
+                        || !ReviewedNativeJournalKeys.TryGetValue(pair.Key, out var keys) || spec.DescriptionKey + ":" + spec.TitleKey != keys
+                        || string.IsNullOrWhiteSpace(spec.Description) || spec.TitleKey == null || spec.Title == null
+                        || (spec.TitleKey.Length > 0) != (spec.Title.Length > 0)))
+                    throw new InvalidOperationException("Invalid native world reconciliation: " + pair.Key);
+            }
+        }
+        // eng7-l04 end
 
         // E19: a settlement names a reviewed objective, a known relationship and known When groups that each require trickster.ever.
         private static void ValidateNativeObjectiveSettlements(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)

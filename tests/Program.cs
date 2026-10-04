@@ -230,6 +230,9 @@ internal static class Program
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
+        NativeWorldReconciliationInventoryTests.Run(story, Check);
+        NativeGateContractParityTests.Run(story, Check);
         if (args.Contains("--wenduag-echo"))
         {
             WenduagTricksterTests.Run(story, Check);

@@ -651,7 +651,12 @@ def make_expansion(*, independent_tirabade=True):
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
     native_facts.integrate(payload)
+    # eng7-l04: extend the existing reconciliation registry; validate adapter parity before return/export.
+    from tools.native_gate_contract_lint import validate as validate_native_gate_contract
+    native_overrides.integrate_world(payload)
     native_overrides.finalize(payload)
+    validate_native_gate_contract(payload)
+    # eng7-l04 end
     return payload
 
 
@@ -734,5 +739,8 @@ if __name__ == "__main__":
     output = ROOT / "development/Story.json"
     output.parent.mkdir(exist_ok=True)
     payload = make_expansion()
+    # eng7-l04: publish only after GUID/type, action-shape, journal and adapter validation.
+    from storylines.native_overrides import finalize as finalize_native_overrides
+    finalize_native_overrides(payload)
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"INCOMPLETE DEVELOPMENT EXPORT: {len(payload['Scenes'])} scenes -> {output}")
