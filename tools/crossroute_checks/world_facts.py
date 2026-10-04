@@ -46,6 +46,16 @@ NONASSERTION = re.compile(r"\b(?:if|unless|whether|might|would|could|should|will
 
 def asserted(pattern, text):
     for match in re.finditer(pattern, text, re.I):
+        # eng7-l12: a hand closed around a stone / eyes closed beside a scar
+        # are not statements that the planar Wound closed. A following 'or
+        # failed to' explicitly leaves the finale unresolved.
+        tail = match.group() + text[match.end():match.end()+25]
+        if re.search(r"\bclosed\s+(?:her|his|their|your)\s+eyes\b|\bclosed\s+it\s+round\b", tail, re.I):
+            continue
+        if re.match(r"\s*,?\s*or\s+failed\s+to\b", text[match.end():], re.I):
+            continue
+        if re.search(r"\bold wound from Kenabres\b", match.group(), re.I):
+            continue
         # Qualifiers apply to the assertion's own clause. 'She never regretted
         # it' after an asserted closure does not erase the closure claim.
         prefix = re.split(r"[,;:]", text[:match.start()])[-1][-65:]

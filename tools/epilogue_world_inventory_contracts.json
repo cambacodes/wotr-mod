@@ -1,0 +1,28 @@
+{
+  "authored": "eng7-l12: neutral finale wording; original paragraph claims require their actual native fact. No native edits or outcome prices.",
+  "evidence": {
+    "ending.wound_closed": "World/Etudes/Common/WrathOfTheRighteous/Chapter06_Extra/Ending_WoundClosed.jbp: 10cf0442f31a4796af8b28281f35e944",
+    "crossroads": "Ending_Trickster_AllPlanes f7343e290a8d4ed887af8f04d1b3446b / AllPlanesAndFW 5f63f6d43c9b465f822db70af7d69b92; Epilogues/Cue_0569 99e4689d8527c824da642c18507bf813, enGB 5be7521a-f3b3-485c-bb78-ca73673ed4cc",
+    "kenabres": "DLC6_Start_KTC/Cue_0008 fc65929e0c9e4a9fa03309418c2d29bb; enGB 61f3a312-a927-4614-8dba-2ba45bc7753b: city rebuilding, not a completed cathedral restoration",
+    "aeon": "CueSequence_AeonFinalWorld ced82f299d246f448b48afa0b630dd70; Cue_0024 924904a1b8400324894cb6119b44325b unmarried Irabeth; Cue_0021 f8a5d88cf76a2134e8e3f3b8a617e2c1 dead Anevia"
+  },
+  "neutral_phrases": {
+    "until the Wound was closed": "until the fighting at Threshold ended",
+    "until the Worldwound was closed": "until the fighting at Threshold ended",
+    "after the Wound was closed": "after the fighting at Threshold ended",
+    "After the Worldwound was closed": "After the fighting at Threshold ended",
+    "after the Worldwound closed": "after the fighting at Threshold ended",
+    "after the Wound closed": "after the fighting at Threshold ended",
+    "When the Wound closed,": "After Threshold,",
+    "when the Wound closed": "when the fighting at Threshold ended",
+    "the night the Wound closed": "the night the fighting at Threshold ended",
+    "the day the Wound closed": "the day the fighting at Threshold ended",
+    "the week the Wound closed": "the week the fighting at Threshold ended",
+    "the hour the Wound closed": "the hour the Commander died at Threshold",
+    "She went into the Wound to close it, and it closed.": "She went into the Wound and did not come back.",
+    "a long time after it closed": "a long time after the fighting ended",
+    "When the Wound closed on its key": "When the Wound took its key",
+    "The Worldwound closed on its key, as the witch had designed it, and the key did not come back.": "The Worldwound took its key, and the key did not come back.",
+    "that the Wound had closed on what was given": "that the Commander had not returned"
+  }
+}

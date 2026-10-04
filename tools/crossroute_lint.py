@@ -123,7 +123,34 @@ def markdown_report(result):
         values = [counts.get("L%d" % n, 0) for n in range(1, 7)]
         lines.append("| %s | %s | %d |" % (route, " | ".join(map(str, values)), sum(values)))
     lines.append("| **Total** | %s | %d |" % (" | ".join(str(result["counts"]["L%d" % n]) for n in range(1, 7)), len(result["findings"])))
-    lines += ["", "Full findings, excerpts and missing conditions: `tools/crossroute_lint_baseline.json`.", "", CALIBRATION.rstrip()]
+    lines += ["", "Full findings, excerpts and missing conditions: `tools/crossroute_lint_baseline.json`.", "",
+              # eng7-l12: preserve q6a's calibration as historical evidence;
+              # every remaining debt row has its own route/scene/block referral.
+              "## eng7-l12 disposition", "",
+              "E-Q7-15: authored venue contracts cover physical Remote/manual reads, travelling hubs, visitors and Threshold callbacks. "
+              "L3 cutaways, recollections, origins, similes and explicit wardrobe travel are distinguished from present staging; unrelated staging in the same block still fails.", "",
+              "E-Q7-16: native closed-Wound paragraphs and disjoint neutral alternatives preserve earned endings in Crossroads worlds. "
+              "Kenabres evidence establishes city rebuilding, not a cathedral. Aeon Irabeth remains unmarried and Anevia dead. "
+              "The separately cited Chadali-spoke paragraph and Horzalah inline c6_retry copies are absent in 4a28a03; no obsolete content was reintroduced.", "",
+              "E-Q7-05: living continuation contracts cover every sibling, including mourning/allowlisted pages. "
+              "Unreturned sacrifice selects bereavement; existing earned Commander returns retain the living alternative. Historical costs remain. "
+              "No new device, price, commitment or repair gate was added.", "",
+              "L2/L3/L5/L6 are zero. Remaining L1/L4 rows below are route-prose follow-ups, not approved outcomes. "
+              "Appended neutral/bereavement alternatives retain applicable L1/L4 debt, so their fingerprints are separately enumerated. "
+              "No remaining row is dismissed as a false positive without evidence.", "",
+              "## Remaining finding referrals", "",
+              "Each row maps one baseline fingerprint to the exact consumer and the guard still needing route-owner review. "
+              "Resolve the stated guard or supply history-neutral prose; preserve deliberate kills, closures and existing prices.", "",
+              "| Finding fingerprint | Class | Route | Scene / node / block | Follow-up |",
+              "| --- | --- | --- | --- | --- |"]
+    for f in result["findings"]:
+        block = "%s / %s / %s" % (f["scene"], f["node"], f["slot"])
+        detail = "%s: %s" % (f["subject"], f["missing_condition"])
+        lines.append("| `%s` | %s route-prose follow-up | %s | %s | %s |" %
+                     (f["fingerprint"], f["check"], f["route"], block, detail.replace("|", "\\|")))
+    lines += ["", "## Historical q6a calibration", "",
+              "The following calibration describes the input before eng7-l12 repairs; its reported L3/L5 examples are now resolved. "
+              "It remains here as the original evidence and proof-limit record.", "", CALIBRATION.rstrip()]
     return "\n".join(lines) + "\n"
 
 
