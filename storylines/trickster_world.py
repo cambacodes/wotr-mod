@@ -707,6 +707,15 @@ def _bound(payload, key):
     return any(key in (payload.get(k) or {}) for k in kinds)
 
 
+# eng7-l02: Areelu participates in either of these native ascent outcomes.
+BINDINGS.pop('areelu.ascended')
+DERIVED['areelu.ascended'] = [['ascend_areelu'], ['ascend_all']]
+# Both opening greetings establish the Threshold meeting, regardless of the Gift.
+BINDINGS['noct.threshold_met'] = ('SeenCues',
+    ['7d07492b12cf5bd4bb1c88113d5831ab', 'a35709909c999024b98f0142f66c4420'],
+    'NocticulaThreshold/Cue_0002 or Cue_0001')
+# eng7-l02 end
+
 def integrate(payload):
     """Bind every world key read by a registered scene (transitively through Derived/Latches). Never overrides an
     existing binding: the registered routes' own keys win, and a conflicting GUID is an error."""

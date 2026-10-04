@@ -1,0 +1,1665 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-10",
+  "witnesses": [
+    {
+      "flag": "native.history.arueshalae.first_dream",
+      "reader": "SeenCues",
+      "value": [
+        "57ebbd804c32df74a866bba2f79b3acb"
+      ],
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q1/DreamVisit_1-1/Cue_0002.jbp",
+          "guid": "57ebbd804c32df74a866bba2f79b3acb",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.ulbrig.powers_price",
+      "reader": "SeenCues",
+      "value": [
+        "97d61a5c383b41639aacc800dc703252"
+      ],
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/DLC4_Shifter/Shifter_CompanionDialogue/Cue_6.jbp",
+          "guid": "97d61a5c383b41639aacc800dc703252",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.nenio.bite_boast",
+      "reader": "SelectedAnswers",
+      "value": "20a557207800252419c55049322943c4",
+      "historical": false,
+      "first_chapter": 1,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/Answer_0132.jbp",
+          "guid": "20a557207800252419c55049322943c4",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.nenio.named_self",
+      "reader": "SelectedAnswers",
+      "value": "9051b7f03a183094591ca0f729817283",
+      "historical": false,
+      "first_chapter": 2,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Answer_0013.jbp",
+          "guid": "9051b7f03a183094591ca0f729817283",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.nenio.lied_galfrey",
+      "reader": "SelectedAnswers",
+      "value": "a70db7009a08bd94aab35660299712b6",
+      "historical": false,
+      "first_chapter": 2,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Answer_0014.jbp",
+          "guid": "a70db7009a08bd94aab35660299712b6",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.nenio.lied_deskari",
+      "reader": "SelectedAnswers",
+      "value": "2b4e81f903934de4ca5f58baa3b9e87e",
+      "historical": false,
+      "first_chapter": 2,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Answer_0015.jbp",
+          "guid": "2b4e81f903934de4ca5f58baa3b9e87e",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.nenio.refused_void",
+      "reader": "SelectedAnswers",
+      "value": "778303b3cff06cc4fba3a3645313eb5c",
+      "historical": false,
+      "first_chapter": 2,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Nenio/Q1MoreThanNothing/FoxReveal/Answer_0009.jbp",
+          "guid": "778303b3cff06cc4fba3a3645313eb5c",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.kaylessa.letter_sent",
+      "reader": "Etudes",
+      "value": "78fb64bf32f3f194ab077315650adf10",
+      "historical": true,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Kaylessa/KaylessaTomb.jbp",
+          "guid": "78fb64bf32f3f194ab077315650adf10",
+          "type": "BlueprintEtude"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.kaylessa.message_resolved",
+      "reader": "QuestObjectives",
+      "value": [
+        "e4b225860f1f1c947a6df5c80acf9872",
+        "Completed"
+      ],
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Quests/c1/HuntingKaylessa/Obj6_SendMessage.jbp",
+          "guid": "e4b225860f1f1c947a6df5c80acf9872",
+          "type": "BlueprintQuestObjective"
+        },
+        {
+          "path": "Kingdom/CrusadeProjects/KTCProjects/Kaylessa_Letter.jbp",
+          "guid": "472666a07cd05b441b0d8c57f50de13d",
+          "type": "BlueprintKingdomProject",
+          "required_tokens": [
+            "e4b225860f1f1c947a6df5c80acf9872",
+            "SetObjectiveStatus",
+            "Complete"
+          ]
+        },
+        {
+          "path": "Kingdom/CrusadeProjects/KTCProjects/Kaylessa_Conceal.jbp",
+          "guid": "522283d432a29e84596bb05fae99287e",
+          "type": "BlueprintKingdomProject",
+          "required_tokens": [
+            "e4b225860f1f1c947a6df5c80acf9872",
+            "SetObjectiveStatus",
+            "Complete"
+          ]
+        }
+      ]
+    },
+    {
+      "flag": "native.history.minagho.prison_brand_heard",
+      "reader": "SeenCues",
+      "value": [
+        "c5f918382f54e4342b40334c2d9f854f"
+      ],
+      "historical": false,
+      "first_chapter": 5,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c5/LabyrinthOfBaphometh/Prison_Baph/Cue_0123.jbp",
+          "guid": "c5f918382f54e4342b40334c2d9f854f",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.eggs.golem_wrong_password",
+      "reader": "SeenCues",
+      "value": [
+        "07404e9374e3d004db0f6397f1a7f2b6"
+      ],
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 3,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Cue_0017.jbp",
+          "guid": "07404e9374e3d004db0f6397f1a7f2b6",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.eggs.commanded_destruction",
+      "reader": "SelectedAnswers",
+      "value": "6f9afd4cc981ce3468fb9b7ec5aa3082",
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 3,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Answer_0022.jbp",
+          "guid": "6f9afd4cc981ce3468fb9b7ec5aa3082",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.eggs.watched_crushing",
+      "reader": "SelectedAnswers",
+      "value": "dcea2a05e317aa04285fadd6185d531e",
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 3,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c3/IvorySanctum/Golems_DragonEggs/Answer_0005.jbp",
+          "guid": "dcea2a05e317aa04285fadd6185d531e",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.camellia.soana_murder_request",
+      "reader": "SeenCues",
+      "value": [
+        "f505392f3d7c18348b178da457b4272e",
+        "b2e418443ec73974faa09a5496564d03",
+        "2fb85dd5779e8c141b15ec119d889fd3"
+      ],
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionDialogues/Camelia/Cue_0136.jbp",
+          "guid": "f505392f3d7c18348b178da457b4272e",
+          "type": "BlueprintCue"
+        },
+        {
+          "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0065.jbp",
+          "guid": "b2e418443ec73974faa09a5496564d03",
+          "type": "BlueprintCue"
+        },
+        {
+          "path": "World/Dialogs/c3/Wintersun/SoanaAfterBear/Cue_0069.jbp",
+          "guid": "2fb85dd5779e8c141b15ec119d889fd3",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.nocticula.permitted_city_return",
+      "reader": "SeenCues",
+      "value": [
+        "30469883ce1583743a6b4228d24778bc"
+      ],
+      "historical": false,
+      "first_chapter": 4,
+      "last_chapter": 4,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c4/Nocticula_main/Cue_0022.jbp",
+          "guid": "30469883ce1583743a6b4228d24778bc",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.fool_king.accepted",
+      "reader": "SeenCues",
+      "value": [
+        "fb5dd1021f76e314ba12a1a2067886cd"
+      ],
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Trickster"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c3/Mythic_Trickster/KTC_FoolKingArrives/Cue_0022.jbp",
+          "guid": "fb5dd1021f76e314ba12a1a2067886cd",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.fool_king.rejected",
+      "reader": "SelectedAnswers",
+      "value": "6d30d2b547164d14e919e23d7813ed14",
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Trickster"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c3/Mythic_Trickster/KTC_FoolKingArrives/Answer_0006.jbp",
+          "guid": "6d30d2b547164d14e919e23d7813ed14",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.fool_king.rejected_after_claim",
+      "reader": "SelectedAnswers",
+      "value": "81b075f17dabe9e4598f8fed92b3cf5b",
+      "historical": false,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Trickster"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c3/Mythic_Trickster/KTC_FoolKingArrives/Answer_0020.jbp",
+          "guid": "81b075f17dabe9e4598f8fed92b3cf5b",
+          "type": "BlueprintAnswer"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.fool_king.crowned",
+      "reader": "Etudes",
+      "value": "cc76b7abcda591f438d0f24972dafddc",
+      "historical": true,
+      "first_chapter": 3,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Trickster"
+      ],
+      "sources": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/PlayerIsTrickster/FoolKing/FoolKingCoronated.jbp",
+          "guid": "cc76b7abcda591f438d0f24972dafddc",
+          "type": "BlueprintEtude"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.vellexia.slaves_released_before_kill",
+      "reader": "SeenCues",
+      "value": [
+        "6906a289597ab6e41873e79b71f96c95"
+      ],
+      "historical": false,
+      "first_chapter": 4,
+      "last_chapter": 4,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Third_Date/Cue_0095.jbp",
+          "guid": "6906a289597ab6e41873e79b71f96c95",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.arsinoe.souls_vision_heard",
+      "reader": "SeenCues",
+      "value": [
+        "a473e5412ffd0f54fbf395770a80a008"
+      ],
+      "historical": false,
+      "first_chapter": 5,
+      "last_chapter": 5,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ktc_ElanCalls/Cue_0019.jbp",
+          "guid": "a473e5412ffd0f54fbf395770a80a008",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.galfrey.native_romance_finished",
+      "reader": "Etudes",
+      "value": "133f3b1b38f04fa44be3200b786e437f",
+      "historical": true,
+      "first_chapter": 6,
+      "last_chapter": 6,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Galfrey/GalfreyRomance/GalfreyRomance_Finished.jbp",
+          "guid": "133f3b1b38f04fa44be3200b786e437f",
+          "type": "BlueprintEtude"
+        }
+      ]
+    },
+    {
+      "flag": "native.history.minagho.hideout_terror",
+      "reader": "SeenCues",
+      "value": [
+        "99854f97811aa0b4eac54ccd352decbc"
+      ],
+      "historical": false,
+      "first_chapter": 4,
+      "last_chapter": 4,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c4/Minagho_Desperation/MinaghoAfterCombat/Cue_0029.jbp",
+          "guid": "99854f97811aa0b4eac54ccd352decbc",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "ascend_areelu",
+      "reader": "Etudes",
+      "value": "63279a971792474ba0439b9f75795a7a",
+      "historical": true,
+      "first_chapter": 6,
+      "last_chapter": 6,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAreelu.jbp",
+          "guid": "63279a971792474ba0439b9f75795a7a",
+          "type": "BlueprintEtude"
+        },
+        {
+          "path": "World/Dialogs/c6/TrueEnding/TE_Final/Answer_0013.jbp",
+          "guid": "c0bb8e8c3857c4f40be231dae47e6e9b",
+          "type": "BlueprintAnswer",
+          "required_tokens": [
+            "63279a971792474ba0439b9f75795a7a",
+            "StartEtude"
+          ]
+        }
+      ]
+    },
+    {
+      "flag": "ascend_all",
+      "reader": "Etudes",
+      "value": "07ad18ffb08145b69522f8eee0230857",
+      "historical": true,
+      "first_chapter": 6,
+      "last_chapter": 6,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/TrueEnding/TE_AscendAll.jbp",
+          "guid": "07ad18ffb08145b69522f8eee0230857",
+          "type": "BlueprintEtude"
+        },
+        {
+          "path": "World/Dialogs/c6/TrueEnding/TE_Final/Answer_0011.jbp",
+          "guid": "740b184110b75cd4783b216e69b476ee",
+          "type": "BlueprintAnswer",
+          "required_tokens": [
+            "07ad18ffb08145b69522f8eee0230857",
+            "StartEtude"
+          ]
+        }
+      ]
+    },
+    {
+      "flag": "noct.threshold_met",
+      "reader": "SeenCues",
+      "value": [
+        "7d07492b12cf5bd4bb1c88113d5831ab",
+        "a35709909c999024b98f0142f66c4420"
+      ],
+      "historical": false,
+      "first_chapter": 6,
+      "last_chapter": 6,
+      "producer_paths": [
+        "Any"
+      ],
+      "sources": [
+        {
+          "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0002.jbp",
+          "guid": "7d07492b12cf5bd4bb1c88113d5831ab",
+          "type": "BlueprintCue"
+        },
+        {
+          "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0001.jbp",
+          "guid": "a35709909c999024b98f0142f66c4420",
+          "type": "BlueprintCue"
+        }
+      ]
+    },
+    {
+      "flag": "chivarro.searching",
+      "reader": "Etudes",
+      "value": "71f85264d9064074f9cf74999ecbffa9",
+      "historical": false,
+      "first_chapter": 4,
+      "last_chapter": 4,
+      "producer_paths": [
+        "Azata"
+      ],
+      "sources": [
+        {
+          "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+          "guid": "71f85264d9064074f9cf74999ecbffa9",
+          "type": "BlueprintEtude"
+        },
+        {
+          "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Answer_0098.jbp",
+          "guid": "d12f5b2ef1b7e4c4db92a58a23fa4178",
+          "type": "BlueprintAnswer",
+          "required_tokens": [
+            "PlayerIsAzata",
+            "!bp_",
+            "1d466fd4271fdc14ea1c077760c63ca5"
+          ]
+        }
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "id": "areelu:006",
+      "scene": "areelu.trickster.finale.ascended",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "arueshalae:007",
+      "scene": "arueshalae.treatment.nightmare",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "devarra:001",
+      "scene": "devarra.tower.the_messenger_free",
+      "status": "no_change_needed",
+      "evidence": "Current messenger has no egg/failed branch"
+    },
+    {
+      "id": "eritrice:013",
+      "scene": "eritrice.council.the_motion_to_expel_voted",
+      "status": "no_change_needed",
+      "evidence": "Current handled branch has no paid undertaking, Crusade payment or adjournment promise"
+    },
+    {
+      "id": "galfrey:009",
+      "scene": "galfrey.lastcall.page",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "herrax:003",
+      "scene": "herrax.house.the_glowworm",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "herrax:005",
+      "scene": "herrax.house.labyrinth",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "horzalah:024",
+      "scene": "horzalah.trickster.beat.storyteller",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "iomedae:004",
+      "scene": "iomedae.trickster.dream.mortal",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "kaylessa:004",
+      "scene": "kaylessa.wasps.last_words",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "kiana:008",
+      "scene": "kiana.trickster.react_arsinoe_souls_home",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "minagho-and-chivarro:003",
+      "scene": "minagho_chivarro.trickster.spared.brand",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "minagho-and-chivarro:022",
+      "scene": "minachiv.two_answers",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "minagho-and-chivarro:023",
+      "scene": "minachiv.her_own_arrival",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "nenio:031",
+      "scene": "nenio.folio.teeth",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "nenio:032",
+      "scene": "nenio.folio.teeth_visitor",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "nenio:033",
+      "scene": "nenio.folio.teeth_arcade",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "nenio:037",
+      "scene": "nenio.folio.who_are_you",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "nenio:038",
+      "scene": "nenio.folio.who_are_you_visitor",
+      "status": "no_change_needed",
+      "evidence": "Current who_are_you declares places=(hub,) only; historical visitor and arcade scenes do not ship"
+    },
+    {
+      "id": "nenio:039",
+      "scene": "nenio.folio.who_are_you_arcade",
+      "status": "no_change_needed",
+      "evidence": "Current who_are_you declares places=(hub,) only; historical visitor and arcade scenes do not ship"
+    },
+    {
+      "id": "nocticula:001",
+      "scene": "nocticula.trickster.defeated.late_shadow",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "soana:001",
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "soana:002",
+      "scene": "soana.trickster.react.ulbrig_knot",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "vellexia:001",
+      "scene": "vellexia.trickster.sword.portrait",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    },
+    {
+      "id": "vellexia:002",
+      "scene": "vellexia.trickster.sword.portrait",
+      "status": "resolved",
+      "evidence": "Native witness and consumer acceptance below"
+    }
+  ],
+  "producer_requirements": [
+    {
+      "scene": "minachiv.two_answers",
+      "predicate": "minachiv.reunion_history",
+      "first_chapter": 4,
+      "current_path": "Trickster",
+      "producer_paths": [
+        "Azata"
+      ],
+      "earned_alternative": "minagho_chivarro.trickster.reunited"
+    },
+    {
+      "scene": "minachiv.her_own_arrival",
+      "predicate": "minachiv.reunion_history",
+      "first_chapter": 4,
+      "current_path": "Trickster",
+      "producer_paths": [
+        "Azata"
+      ],
+      "earned_alternative": "minagho_chivarro.trickster.reunited"
+    }
+  ],
+  "cases": [
+    {
+      "name": "ascent_areelu",
+      "observations": {
+        "Etudes": [
+          "63279a971792474ba0439b9f75795a7a"
+        ]
+      },
+      "present": [
+        "areelu.ascended"
+      ],
+      "absent": [],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "ascent_all",
+      "observations": {
+        "Etudes": [
+          "07ad18ffb08145b69522f8eee0230857"
+        ]
+      },
+      "present": [
+        "areelu.ascended"
+      ],
+      "absent": [],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "ascent_alone",
+      "observations": {
+        "Etudes": [
+          "08e47548e25945e286fe77b896884b32"
+        ]
+      },
+      "present": [],
+      "absent": [
+        "areelu.ascended"
+      ],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "ascent_companions",
+      "observations": {
+        "Etudes": [
+          "9fc5161813f1497f8eaad1563ac54211"
+        ]
+      },
+      "present": [],
+      "absent": [
+        "areelu.ascended"
+      ],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "eggs.golem_wrong_password",
+      "observations": {
+        "SeenCues": [
+          "07404e9374e3d004db0f6397f1a7f2b6"
+        ]
+      },
+      "present": [
+        "native.history.eggs.golem_wrong_password"
+      ],
+      "absent": [
+        "native.history.eggs.commanded_destruction",
+        "native.history.eggs.watched_crushing"
+      ],
+      "scene": "devarra.tower.the_messenger_free",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "wrong password"
+    },
+    {
+      "name": "eggs.commanded_destruction",
+      "observations": {
+        "SelectedAnswers": [
+          "6f9afd4cc981ce3468fb9b7ec5aa3082"
+        ]
+      },
+      "present": [
+        "native.history.eggs.commanded_destruction"
+      ],
+      "absent": [
+        "native.history.eggs.golem_wrong_password",
+        "native.history.eggs.watched_crushing"
+      ],
+      "scene": "devarra.tower.the_messenger_free",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "wrong password"
+    },
+    {
+      "name": "eggs.watched_crushing",
+      "observations": {
+        "SelectedAnswers": [
+          "dcea2a05e317aa04285fadd6185d531e"
+        ]
+      },
+      "present": [
+        "native.history.eggs.watched_crushing"
+      ],
+      "absent": [
+        "native.history.eggs.golem_wrong_password",
+        "native.history.eggs.commanded_destruction"
+      ],
+      "scene": "devarra.tower.the_messenger_free",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "wrong password"
+    },
+    {
+      "name": "soana_request_0",
+      "observations": {
+        "SeenCues": [
+          "f505392f3d7c18348b178da457b4272e"
+        ]
+      },
+      "present": [
+        "native.history.camellia.soana_murder_request"
+      ],
+      "absent": [],
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "I asked you so nicely",
+      "omits": ""
+    },
+    {
+      "name": "soana_request_1",
+      "observations": {
+        "SeenCues": [
+          "b2e418443ec73974faa09a5496564d03"
+        ]
+      },
+      "present": [
+        "native.history.camellia.soana_murder_request"
+      ],
+      "absent": [],
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "I asked you so nicely",
+      "omits": ""
+    },
+    {
+      "name": "soana_request_2",
+      "observations": {
+        "SeenCues": [
+          "2fb85dd5779e8c141b15ec119d889fd3"
+        ]
+      },
+      "present": [
+        "native.history.camellia.soana_murder_request"
+      ],
+      "absent": [],
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "I asked you so nicely",
+      "omits": ""
+    },
+    {
+      "name": "soana_no_request",
+      "observations": {},
+      "present": [],
+      "absent": [
+        "native.history.camellia.soana_murder_request"
+      ],
+      "scene": "soana.trickster.epilogue.by_your_hand",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "I asked you so nicely"
+    },
+    {
+      "name": "ulbrig.powers_price_heard",
+      "observations": {
+        "SeenCues": [
+          "97d61a5c383b41639aacc800dc703252"
+        ]
+      },
+      "present": [
+        "native.history.ulbrig.powers_price"
+      ],
+      "absent": [],
+      "scene": "soana.trickster.react.ulbrig_knot",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "I asked you once",
+      "omits": ""
+    },
+    {
+      "name": "ulbrig.powers_price_absent",
+      "observations": {
+        "StartedDialogs": [
+          "20b70c9bb93940b9a21a488f1721f41c"
+        ]
+      },
+      "present": [],
+      "absent": [
+        "native.history.ulbrig.powers_price"
+      ],
+      "scene": "soana.trickster.react.ulbrig_knot.history_neutral",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "I asked you once"
+    },
+    {
+      "name": "arueshalae.first_dream_heard",
+      "observations": {
+        "SeenCues": [
+          "57ebbd804c32df74a866bba2f79b3acb"
+        ]
+      },
+      "present": [
+        "native.history.arueshalae.first_dream"
+      ],
+      "absent": [],
+      "scene": "arueshalae.treatment.nightmare",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "goddess showed me",
+      "omits": ""
+    },
+    {
+      "name": "arueshalae.first_dream_absent",
+      "observations": {},
+      "present": [],
+      "absent": [
+        "native.history.arueshalae.first_dream"
+      ],
+      "scene": "arueshalae.treatment.nightmare",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "goddess showed me"
+    },
+    {
+      "name": "nocticula.permitted_city_return_heard",
+      "observations": {
+        "SeenCues": [
+          "30469883ce1583743a6b4228d24778bc"
+        ]
+      },
+      "present": [
+        "native.history.nocticula.permitted_city_return"
+      ],
+      "absent": [],
+      "scene": "herrax.house.the_glowworm",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "Lady let walk out",
+      "omits": ""
+    },
+    {
+      "name": "nocticula.permitted_city_return_absent",
+      "observations": {},
+      "present": [],
+      "absent": [
+        "native.history.nocticula.permitted_city_return"
+      ],
+      "scene": "herrax.house.the_glowworm",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "Lady let walk out"
+    },
+    {
+      "name": "arsinoe.souls_vision_heard_heard",
+      "observations": {
+        "SeenCues": [
+          "a473e5412ffd0f54fbf395770a80a008"
+        ]
+      },
+      "present": [
+        "native.history.arsinoe.souls_vision_heard"
+      ],
+      "absent": [],
+      "scene": "kiana.trickster.react_arsinoe_souls_home",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "Gravestone Rock",
+      "omits": ""
+    },
+    {
+      "name": "arsinoe.souls_vision_heard_absent",
+      "observations": {},
+      "present": [],
+      "absent": [
+        "native.history.arsinoe.souls_vision_heard"
+      ],
+      "scene": "kiana.trickster.react_arsinoe_souls_home.history_neutral",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "Gravestone Rock"
+    },
+    {
+      "name": "dyunk_unresolved",
+      "observations": {},
+      "present": [],
+      "absent": [],
+      "scene": "herrax.house.labyrinth",
+      "node": "asset_empty",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "went elsewhere"
+    },
+    {
+      "name": "fool_king.accepted",
+      "observations": {
+        "SeenCues": [
+          "fb5dd1021f76e314ba12a1a2067886cd"
+        ]
+      },
+      "present": [
+        "native.history.fool_king.accepted"
+      ],
+      "absent": [
+        "native.history.fool_king.resident"
+      ],
+      "scene": "horzalah.trickster.beat.storyteller",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "king of fools"
+    },
+    {
+      "name": "fool_king.rejected",
+      "observations": {
+        "SelectedAnswers": [
+          "6d30d2b547164d14e919e23d7813ed14"
+        ]
+      },
+      "present": [
+        "native.history.fool_king.rejected"
+      ],
+      "absent": [
+        "native.history.fool_king.resident"
+      ],
+      "scene": "horzalah.trickster.beat.storyteller",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "king of fools"
+    },
+    {
+      "name": "fool_king.rejected_after_claim",
+      "observations": {
+        "SelectedAnswers": [
+          "81b075f17dabe9e4598f8fed92b3cf5b"
+        ]
+      },
+      "present": [
+        "native.history.fool_king.rejected_after_claim"
+      ],
+      "absent": [
+        "native.history.fool_king.resident"
+      ],
+      "scene": "horzalah.trickster.beat.storyteller",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "king of fools"
+    },
+    {
+      "name": "fool_king.crowned",
+      "observations": {
+        "Etudes": [
+          "cc76b7abcda591f438d0f24972dafddc"
+        ]
+      },
+      "present": [
+        "native.history.fool_king.crowned"
+      ],
+      "absent": [],
+      "scene": "horzalah.trickster.beat.storyteller",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "king of fools",
+      "omits": ""
+    },
+    {
+      "name": "fool_king_gone",
+      "observations": {
+        "Etudes": [
+          "cc76b7abcda591f438d0f24972dafddc",
+          "10f5e03534e6fe74fbc8a94dc2e2c15c"
+        ]
+      },
+      "present": [],
+      "absent": [
+        "native.history.fool_king.resident"
+      ],
+      "scene": "horzalah.trickster.beat.storyteller",
+      "node": "start",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": "king of fools"
+    },
+    {
+      "name": "bite_boast",
+      "observations": {
+        "SelectedAnswers": [
+          "20a557207800252419c55049322943c4"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.teeth",
+      "node": "open",
+      "targets": [
+        "direct"
+      ],
+      "excluded": [
+        "direct.history_neutral"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "bite_neutral",
+      "observations": {},
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.teeth",
+      "node": "open",
+      "targets": [
+        "direct.history_neutral"
+      ],
+      "excluded": [
+        "direct"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "nenio.named_self",
+      "observations": {
+        "SelectedAnswers": [
+          "9051b7f03a183094591ca0f729817283"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.who_are_you",
+      "node": "open",
+      "targets": [
+        "named"
+      ],
+      "excluded": [
+        "lied",
+        "silent"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "nenio.lied_galfrey",
+      "observations": {
+        "SelectedAnswers": [
+          "a70db7009a08bd94aab35660299712b6"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.who_are_you",
+      "node": "open",
+      "targets": [
+        "lied"
+      ],
+      "excluded": [
+        "named",
+        "silent"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "nenio.lied_deskari",
+      "observations": {
+        "SelectedAnswers": [
+          "2b4e81f903934de4ca5f58baa3b9e87e"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.who_are_you",
+      "node": "open",
+      "targets": [
+        "lied"
+      ],
+      "excluded": [
+        "named",
+        "silent"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "nenio.refused_void",
+      "observations": {
+        "SelectedAnswers": [
+          "778303b3cff06cc4fba3a3645313eb5c"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.who_are_you",
+      "node": "open",
+      "targets": [
+        "silent"
+      ],
+      "excluded": [
+        "named",
+        "lied"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "void_history_absent",
+      "observations": {},
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.who_are_you",
+      "node": "open",
+      "targets": [
+        "question"
+      ],
+      "excluded": [
+        "named",
+        "lied",
+        "silent"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "bite_boast_visitor",
+      "observations": {
+        "SelectedAnswers": [
+          "20a557207800252419c55049322943c4"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.teeth_visitor",
+      "node": "open",
+      "targets": [
+        "direct"
+      ],
+      "excluded": [
+        "direct.history_neutral"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "bite_neutral_visitor",
+      "observations": {},
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.teeth_visitor",
+      "node": "open",
+      "targets": [
+        "direct.history_neutral"
+      ],
+      "excluded": [
+        "direct"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "bite_boast_arcade",
+      "observations": {
+        "SelectedAnswers": [
+          "20a557207800252419c55049322943c4"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.teeth_arcade",
+      "node": "open",
+      "targets": [
+        "direct"
+      ],
+      "excluded": [
+        "direct.history_neutral"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "bite_neutral_arcade",
+      "observations": {},
+      "present": [],
+      "absent": [],
+      "scene": "nenio.folio.teeth_arcade",
+      "node": "open",
+      "targets": [
+        "direct.history_neutral"
+      ],
+      "excluded": [
+        "direct"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "kaylessa_letter_False",
+      "observations": {
+        "QuestObjectives": [
+          "e4b225860f1f1c947a6df5c80acf9872:Completed"
+        ],
+        "Etudes": [
+          "78fb64bf32f3f194ab077315650adf10"
+        ]
+      },
+      "present": [
+        "native.history.kaylessa.letter_sent"
+      ],
+      "absent": [],
+      "scene": "kaylessa.wasps.last_words",
+      "node": "start",
+      "targets": [
+        "tomb"
+      ],
+      "excluded": [
+        "nocame"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "kaylessa_letter_True",
+      "observations": {
+        "QuestObjectives": [
+          "e4b225860f1f1c947a6df5c80acf9872:Completed"
+        ],
+        "CompletedEtudes": [
+          "78fb64bf32f3f194ab077315650adf10"
+        ]
+      },
+      "present": [
+        "native.history.kaylessa.letter_sent"
+      ],
+      "absent": [],
+      "scene": "kaylessa.wasps.last_words",
+      "node": "start",
+      "targets": [
+        "tomb"
+      ],
+      "excluded": [
+        "nocame"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "kaylessa_conceal",
+      "observations": {
+        "QuestObjectives": [
+          "e4b225860f1f1c947a6df5c80acf9872:Completed"
+        ]
+      },
+      "present": [],
+      "absent": [
+        "native.history.kaylessa.letter_sent"
+      ],
+      "scene": "kaylessa.wasps.last_words",
+      "node": "nocame",
+      "targets": [
+        "sold"
+      ],
+      "excluded": [
+        "unsent"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "kaylessa_unresolved",
+      "observations": {},
+      "present": [],
+      "absent": [],
+      "scene": "kaylessa.wasps.last_words",
+      "node": "nocame",
+      "targets": [
+        "unsent"
+      ],
+      "excluded": [
+        "sold"
+      ],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "minagho.hideout_terror",
+      "observations": {
+        "SeenCues": [
+          "99854f97811aa0b4eac54ccd352decbc"
+        ]
+      },
+      "present": [
+        "native.history.minagho.hideout_terror"
+      ],
+      "absent": [
+        "native.history.minagho.prison_brand_heard"
+      ],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "minagho.prison_brand_heard",
+      "observations": {
+        "SeenCues": [
+          "c5f918382f54e4342b40334c2d9f854f"
+        ]
+      },
+      "present": [
+        "native.history.minagho.prison_brand_heard"
+      ],
+      "absent": [
+        "native.history.minagho.hideout_terror"
+      ],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "vellexia_release_False_bought_False",
+      "observations": {
+        "Etudes": [
+          "72e423c719ed9d44fa432a6b9629babd",
+          "89965a2b67b792f438bf935fdb6ab96b"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "vellexia.trickster.sword.portrait",
+      "node": "freed",
+      "targets": [],
+      "excluded": [],
+      "contains": "By the time the inventory",
+      "omits": "When she fell"
+    },
+    {
+      "name": "vellexia_release_False_bought_True",
+      "observations": {
+        "Etudes": [
+          "72e423c719ed9d44fa432a6b9629babd",
+          "89965a2b67b792f438bf935fdb6ab96b"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "vellexia.trickster.sword.portrait",
+      "node": "freed_bought_back",
+      "targets": [],
+      "excluded": [],
+      "contains": "By the time the inventory",
+      "omits": "When she fell"
+    },
+    {
+      "name": "vellexia_release_True_bought_False",
+      "observations": {
+        "Etudes": [
+          "72e423c719ed9d44fa432a6b9629babd",
+          "89965a2b67b792f438bf935fdb6ab96b"
+        ],
+        "SeenCues": [
+          "6906a289597ab6e41873e79b71f96c95"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "vellexia.trickster.sword.portrait",
+      "node": "freed",
+      "targets": [],
+      "excluded": [],
+      "contains": "By the time the inventory",
+      "omits": "When she fell"
+    },
+    {
+      "name": "vellexia_release_True_bought_True",
+      "observations": {
+        "Etudes": [
+          "72e423c719ed9d44fa432a6b9629babd",
+          "89965a2b67b792f438bf935fdb6ab96b"
+        ],
+        "SeenCues": [
+          "6906a289597ab6e41873e79b71f96c95"
+        ]
+      },
+      "present": [],
+      "absent": [],
+      "scene": "vellexia.trickster.sword.portrait",
+      "node": "freed_bought_back",
+      "targets": [],
+      "excluded": [],
+      "contains": "By the time the inventory",
+      "omits": "When she fell"
+    },
+    {
+      "name": "threshold_7d07492b12cf5bd4bb1c88113d5831ab",
+      "observations": {
+        "SeenCues": [
+          "7d07492b12cf5bd4bb1c88113d5831ab"
+        ]
+      },
+      "present": [
+        "noct.threshold_met"
+      ],
+      "absent": [],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "threshold_a35709909c999024b98f0142f66c4420",
+      "observations": {
+        "SeenCues": [
+          "a35709909c999024b98f0142f66c4420"
+        ]
+      },
+      "present": [
+        "noct.threshold_met"
+      ],
+      "absent": [],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    },
+    {
+      "name": "threshold_unmet",
+      "observations": {},
+      "present": [],
+      "absent": [
+        "noct.threshold_met"
+      ],
+      "scene": "",
+      "node": "",
+      "targets": [],
+      "excluded": [],
+      "contains": "",
+      "omits": ""
+    }
+  ]
+}

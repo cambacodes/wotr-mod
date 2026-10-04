@@ -303,7 +303,7 @@ SPARED_TERMS = mg("terms", '''"What kind of idiot lets their enemy slip away? An
 physical(P + "spared.brand", "It stopped bleeding", "Minagho", PRES_SPARED, MIN_UNIT, [
     *varied("start", mg, '''{n}She has taken one of the crusade's daggers off the quartermaster's rack and is sitting on a crate with it across her knees. Nobody saw her come through Drezen. That is the point.{/n}
 "You let me go. Nobody lets me go. So either you are a fool, or you have a use for me, and I came to find out which before the Goat's collectors find me first." {n}She touches the mark on her brow and looks at her fingertips, and does not tell you what she sees there.{/n}''',
-            [("terrified", mg, '"I ran from you in that cursed cell. I kept running until I could not. I am tired of running from you, Golarian."', "minagho.terrified")],
+            [("terrified", mg, '"I ran from you in that cursed hideout. I kept running until I could not. I am tired of running from you, Golarian."', "minagho.terrified")],
             SPARED_OPEN),
     SPARED_TERMS,
 ], requires=("trickster.ever", "minagho.spared.latched"), RequiresAnyGroups=[[PRIMED, "trickster"]], forbids=("minagho.dead", DECL_M),

@@ -428,6 +428,9 @@ internal static class Program
         ReactionTests.Run(Check);
         TricksterAccessTests.Run(Check);
         NativeReaderTests.Run(Check);
+        // eng7-l02: required native fact inventory acceptance.
+        NativeFactInventoryTests.Run(story, Check);
+        // eng7-l02 end
         EpilogueAfterTests.Run(Check);
         NativeCostTests.Run(Check);
         EntryEffectTests.Run(Check);

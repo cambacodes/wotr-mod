@@ -59,7 +59,12 @@ internal static class MinaghoChivarroContinuationTests
             var initial = new Snapshot { Chapter = 5, Hour = 1000, Area = capital };
             initial.Flags.UnionWith(new[] { "seelah.committed", "jerribeth.committed", "committed", "closed" });
             initial.Flags.UnionWith(story.CompletedQuests.Where(p => p.Value == "5cd5f22437a1465180b45c080899577a").Select(p => p.Key));
-            ReadEtude(initial, "71f85264d9064074f9cf74999ecbffa9");
+            // eng7-l02: a current Trickster plays the authored reunion; native searching is Azata-only.
+            if (fixture.Item4)
+                initial.Flags.UnionWith(NativeFactInventoryTests.EarnReunion(story, check).Flags);
+            else ReadEtude(initial, "71f85264d9064074f9cf74999ecbffa9");
+            Rules.Complete(story, initial);
+            // eng7-l02 end
             foreach (var guid in fixture.Item3) ReadEtude(initial, guid);
             ObserveCue(initial, fixture.Item2);
             if (fixture.Item4) { initial.Flags.Add("trickster"); ObserveCue(initial, "a8f7a881cc6d427b91cbbee14f43e0ee"); }
@@ -67,7 +72,9 @@ internal static class MinaghoChivarroContinuationTests
             var originalNative = initial.Flags.Where(native.Contains).ToHashSet();
             if (fixture.Item1 is "dragon" or "legend" or "sanctuary")
                 check(!visits.Single(s => s.Id == "minachiv.the_remaining_customers").Nodes[0].Text.Contains("pursuers are dead", StringComparison.Ordinal), "Captured or uncertain parent pursuers are falsely remembered as dead.");
-            check(!initial.Flags.Any(f => f.StartsWith(prefix, StringComparison.Ordinal)), "Fixture fabricated addon history.");
+            // eng7-l02: the played brand producer also sets the existing shared started flag.
+            check(!initial.Flags.Any(f => f.StartsWith(prefix, StringComparison.Ordinal) && f != "minachiv.reunion_history"
+                && !(fixture.Item4 && f == "minachiv.started")), "Fixture fabricated addon history.");
             check(Rules.Available(story, visits[0], initial), "Actual parent terminal rejected: " + fixture.Item1);
             check(endings.All(e => !Rules.Available(story, e, initial)), "Unplayed continuation steals a parent-only ending.");
             foreach (var blocker in new[] { "minagho.dead", "chivarro.dead", "inhuman", "minachiv.closed" })
@@ -75,7 +82,7 @@ internal static class MinaghoChivarroContinuationTests
                 var blocked = Program.Copy(initial); blocked.Flags.Add(blocker);
                 check(!Rules.Available(story, visits[0], blocked), "Initial meeting ignores known blocker " + blocker);
             }
-            foreach (var missing in new[] { "minagho.ran_complete", "minagho.book_three_finished", "chivarro.searching" })
+            foreach (var missing in new[] { "minagho.ran_complete", "minagho.book_three_finished", "minachiv.reunion_history" })
             {
                 var absent = Program.Copy(initial); absent.Flags.Remove(missing);
                 check(!Rules.Available(story, visits[0], absent), "Parent start uses timers/dialog start instead of " + missing);
@@ -114,7 +121,7 @@ internal static class MinaghoChivarroContinuationTests
                             var blocked = Program.Copy(state); blocked.Flags.Add(flag);
                             check(!Rules.Available(story, scene, blocked) && !Rules.ContactAvailable(story, scene, blocked), "Remote life guard fails: " + flag);
                         }
-                        foreach (var missing in new[] { "minagho.ran_complete", "minagho.book_three_finished", "chivarro.searching" })
+                        foreach (var missing in new[] { "minagho.ran_complete", "minagho.book_three_finished", "minachiv.reunion_history" })
                         {
                             var blocked = Program.Copy(state); blocked.Flags.Remove(missing);
                             check(!Rules.ContactAvailable(story, scene, blocked), "Remote parent-history guard is entry-only: " + missing);

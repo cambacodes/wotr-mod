@@ -61,6 +61,7 @@ from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
 from storylines import areelu_afterlogue  # E14i: her afterlogue line (Cue_0004 / Cue_0005) for a continuing romance
 from storylines import longcon
+from storylines import native_facts
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
@@ -650,6 +651,7 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    native_facts.integrate(payload)  # q6b/eng7-l02: verified native history readers (needs the game's blueprints.zip)
     return payload
 
 
