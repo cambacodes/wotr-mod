@@ -2,8 +2,8 @@
   "scope": "Offline external GUID/type bindings requested by the actual C# story rules; no Unity execution or save round trip",
   "story": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\development\\Story.json",
   "game": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure",
-  "binding_uses": 4939,
-  "unique_targets": 1121,
+  "binding_uses": 4949,
+  "unique_targets": 1124,
   "failures": [],
   "targets": {
     "c669b34a7b9c2cb42bf6deb5d8d1606f": {
@@ -2366,6 +2366,10 @@
       "path": "World/Dialogs/Companions/CompanionDialogues/Lann/AnswersList_0003.jbp",
       "type": "BlueprintAnswersList"
     },
+    "dd70b574d7afd99409b5c664b8c5bfe4": {
+      "path": "World/Dialogs/Companions/CompanionDialogues/Lann/Cue_0002.jbp",
+      "type": "BlueprintCue"
+    },
     "1ab909cc3a6194840b1475b99547c263": {
       "path": "World/Dialogs/Companions/CompanionDialogues/Nenio/AnswersList_0015.jbp",
       "type": "BlueprintAnswersList"
@@ -2885,6 +2889,14 @@
     "52eeccb144a04ff79650f08eacff9a17": {
       "path": "World/Dialogs/Epilogues_afterlogues/Answer_0028.jbp",
       "type": "BlueprintAnswer"
+    },
+    "ddbcf384507535043a1ad5ad8ad8ea15": {
+      "path": "World/Dialogs/Interchapters/c4-c5/Answer_0003.jbp",
+      "type": "BlueprintAnswer"
+    },
+    "09f9a3762723ced47b25f953ddbc9e32": {
+      "path": "World/Dialogs/Interchapters/c4-c5/c4-c5_interchapter.jbp",
+      "type": "BlueprintDialog"
     },
     "33960c7f7af40cd43b7f801a76c87a0b": {
       "path": "World/Dialogs/NPC_Common/Anevia/AnswersList_0003.jbp",

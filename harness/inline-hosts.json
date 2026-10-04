@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1114,
-  "resolved": 1114,
-  "inlineOnlyScenes": 310,
-  "inlineOnlyResolved": 310,
-  "answerListScenesWithoutContact": 682,
-  "answerListScenesWithoutContactResolved": 682,
+  "entryTargetScenes": 1117,
+  "resolved": 1117,
+  "inlineOnlyScenes": 312,
+  "inlineOnlyResolved": 312,
+  "answerListScenesWithoutContact": 685,
+  "answerListScenesWithoutContactResolved": 685,
   "lists": 143,
   "listsWithReachableHost": 142
  },
@@ -21229,6 +21229,44 @@
     "clicks": 0
    }
   },
+  "wenduag.trickster.echo.abyss.prepare": {
+   "kind": "return-cue",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.echo.abyss.prepare"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.echo.abyss.trust": {
+   "kind": "return-cue",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.echo.abyss.trust"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
   "wenduag.trickster.exile.bid_hub": {
    "kind": "return-cue",
    "lists": [
@@ -21378,6 +21416,25 @@
     "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
     "dialogName": "Lann_Main_dialog",
     "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.react.regill_echo": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.wenduag.trickster.react.regill_echo"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },

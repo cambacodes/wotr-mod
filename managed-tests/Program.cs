@@ -672,8 +672,8 @@ internal static class Program
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
                     int nativeEffects = (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
                     Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
-                        && answer.OnSelect.Actions[choice.Crusade == null ? 0 : 1] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
-                    if (choice.Crusade != null)
+                        && answer.OnSelect.Actions[choice.Crusade == null || scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 0 : 1] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                    if (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal))
                     {
                         var payment = answer.OnSelect.Actions[0] is Tirabade.Main.GuardedRemoveCrusadeResources remove ? remove.Payment
                             : ((Tirabade.Main.GuardedAddCrusadeResources)answer.OnSelect.Actions[0]).Payment;
