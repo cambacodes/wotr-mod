@@ -114,7 +114,7 @@ RELATIONSHIP = dict(
               "envoy of the Whispering Way arrives at the gate asking for the executor of the late Knight Commander. "
               "Receive her, as yourself or as your own executor."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[], FailureFlags=[], UnavailableOverrides={},
+    UnavailableFlags=[LEFT_FREE], FailureFlags=[], UnavailableOverrides={},
 )
 
 SEEN_CUES = {FUNERAL_KING: ["d1c14400d70bf0d4b947283f16f65009"],

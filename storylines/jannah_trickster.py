@@ -153,7 +153,7 @@ RELATIONSHIP = dict(
               "If she lives, look for her in Chapter 5 in the old cells under the Drezen citadel, where she has put "
               "herself. She fights her own duels, and she may throw one."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[DEAD, DEAD_KNOWN], FailureFlags=[],
+    UnavailableFlags=[DEAD, DEAD_KNOWN, GONE], FailureFlags=[],
     UnavailableOverrides={DEAD: RETURNED, DEAD_KNOWN: RETURNED},
     TricksterAccess={
         "killed": dict(detect=[DEAD], device=P + "killed.yield", returned=RETURNED),
@@ -980,3 +980,15 @@ def integrate(payload):
     answers[SEELAH_KILLED_AT_CAGE] = SEELAH_KILLED_ANSWER
     # The unit's own BlueprintPortrait (CR4_DeserterJanna m_Portrait) until custom art ships; a custom PNG always wins.
     payload.setdefault("PortraitFallbacks", {}).setdefault("Jannah", "550a859fc62244ceadeb40d79ca4d261")
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'jannah.trickster.alive.stories',
+    'jannah.trickster.alive.wagon',
+    'jannah.trickster.cage.ash',
+    'jannah.trickster.killed.yield',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

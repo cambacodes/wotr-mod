@@ -180,7 +180,7 @@ internal static class NidalynnTricksterTests
         check(Avail(hearth, Later(story, met, 25)) && !Avail(kiln, Later(story, met, 25)), "The hearth does not come before the kiln.");
         var agreed = Program.Walk(hearth, Later(story, met, 25)).First(r => r.Has(P + "kiln_agreed"));
         check(agreed.Has(P + "revealed"), "She does not tell the Commander what she is before the kiln.");
-        var fisted = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "met", "nidalynn.started", P + "cost.hand"), 25);
+        var fisted = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "met", "nidalynn.started", P + "cost.hand"), 25);
         check(Program.Walk(hearth, fisted).Any(r => r.Has(P + "hand_set")), "Trk_Nidalynn_Fist: she does not set the hand.");
         var fired = After(kiln, Later(story, agreed, 25), "knocking", 0).First();
         check(fired.Has(P + "kiln") && Avail(hatching, Later(story, fired, 49)), "The kiln does not lead to the hatching.");
@@ -256,11 +256,11 @@ internal static class NidalynnTricksterTests
               && smallest.Nodes.Single(n => n.Id == "pay").Choices.All(c => c.Set.Contains(Bill)),
             "Trk_Nidalynn_Bill: Devarra's bill is not on her hub, or can be refused.");
         var shortScene = S("devarra.tower.one_short");
-        var dvPrimed = Later(story, World(story, 3, "trickster.ever", "devarra.trickster.returned", "devarra.started", P + "primed"), 25);
+        var dvPrimed = Later(story, World(story, 3, "trickster", "trickster.ever", "devarra.trickster.returned", "devarra.started", P + "primed"), 25);
         check(shortScene.Relationship == "devarra" && Avail(shortScene, dvPrimed) && Program.Walk(shortScene, dvPrimed).All(r => r.Has("devarra.tower.one_short"))
               && shortScene.Nodes.SelectMany(n => n.Choices).All(c => !c.Set.Any(f => f.EndsWith(".closed", StringComparison.Ordinal))),
             "Trk_Nidalynn_Custody: Devarra has no beat when her twelfth egg is taken, or it closes something.");
-        var dv = Later(story, World(story, 3, "trickster.ever", "devarra.trickster.returned", "devarra.started", "nidalynn.trickster.confessed"), 25);
+        var dv = Later(story, World(story, 3, "trickster", "trickster.ever", "devarra.trickster.returned", "devarra.started", "nidalynn.trickster.confessed"), 25);
         check(Avail(smallest, dv) && Program.Walk(smallest, dv).All(r => r.Has(Bill)), "Trk_Nidalynn_Bill: the bill never lands.");
         foreach (var s in mine)
             check(!s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)).Any(k => k.StartsWith("devarra.", StringComparison.Ordinal)),
@@ -279,16 +279,16 @@ internal static class NidalynnTricksterTests
         // PP10 (Sol COX): the Chapter 4 kiln letter travels with the Storyteller's portal supplies, once he has offered them.
         var kilnLetter = S(P + "letter.from_the_kiln");
         check(kilnLetter.Requires.Contains("storyteller.supplies") && story.SeenCues["storyteller.supplies"].SequenceEqual(new[] { "459bf324a71c81c4ba5f3eead9ba42bb" })
-              && !Avail(kilnLetter, Later(story, World(story, 4, "trickster.ever", P + "met", "nidalynn.started", P + "kiln"), 25))
-              && Avail(kilnLetter, Later(story, World(story, 4, "trickster.ever", P + "met", "nidalynn.started", P + "kiln", "storyteller.supplies"), 25))
+              && !Avail(kilnLetter, Later(story, World(story, 4, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "kiln"), 25))
+              && Avail(kilnLetter, Later(story, World(story, 4, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "kiln", "storyteller.supplies"), 25))
               && kilnLetter.Nodes[0].Text.Contains("Storyteller"),
             "Trk_Nidalynn_Letter: the kiln letter reaches the Abyss with no carrier.");
         check(pages.Length == 9 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "kissed" })
-              && !World(story, 6, "trickster.ever", P + "met", P + "form_chosen").Has(P + "late_committed")
-              && !World(story, 6, "trickster.ever", P + "met", P + "form_chosen").Has("nidalynn.harem.eligible")
-              && World(story, 6, "trickster.ever", P + "met", P + "form_chosen", P + "kissed").Has(P + "late_committed")
+              && !World(story, 6, "trickster", "trickster.ever", P + "met", P + "form_chosen").Has(P + "late_committed")
+              && !World(story, 6, "trickster", "trickster.ever", P + "met", P + "form_chosen").Has("nidalynn.harem.eligible")
+              && World(story, 6, "trickster", "trickster.ever", P + "met", P + "form_chosen", P + "kissed").Has(P + "late_committed")
               && story.Derived["nidalynn.harem.eligible"].Length == 2 && story.Derived.ContainsKey("nidalynn.harem.voice.fed_at_the_fire"),
             "The late commit or the household eligibility is not declared.");
         var produced = new HashSet<string>(mine.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Concat(mine.Select(s => s.Id)));
@@ -304,8 +304,8 @@ internal static class NidalynnTricksterTests
             Program.Walk(s, w, (id, st) => ids.Add(id));
             return ids;
         }
-        var golemHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "egg.golems", P + "met", "nidalynn.started"), 25);
-        var vaultHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "egg.vault", P + "cost.palms", P + "met", "nidalynn.started"), 25);
+        var golemHearth = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "egg.golems", P + "met", "nidalynn.started"), 25);
+        var vaultHearth = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "egg.vault", P + "cost.palms", P + "met", "nidalynn.started"), 25);
         check(Visited(hearth, golemHearth).Contains("why") && !Visited(hearth, golemHearth).Contains("why_vault")
               && Visited(hearth, vaultHearth).Contains("why_vault") && !Visited(hearth, vaultHearth).Contains("why"),
             "Trk_Nidalynn_History: the hearth asks the wrong Commander about the golems or the vault.");
@@ -314,7 +314,7 @@ internal static class NidalynnTricksterTests
         check(Program.WalkVia(widow, vaultStep, "rock", 3).All(r => r.Has(P + "told_egg")) && Program.WalkVia(widow, vaultStep, "rock", 3).Count > 0
               && Program.WalkVia(widow, vaultStep, "rock", 1).Count == 0,
             "Trk_Nidalynn_History: the vault's Commander tells the widow about the golems.");
-        var vaultLane = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "egg.vault", P + "met", "nidalynn.started", P + "kiln"), 49);
+        var vaultLane = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "egg.vault", P + "met", "nidalynn.started", P + "kiln"), 49);
         var vaultConfessions = Visited(hatching, vaultLane);
         check(vaultConfessions.Contains("confess_vault") && !vaultConfessions.Contains("confess")
               && Program.Walk(hatching, vaultLane).Any(r => r.Has(P + "confessed") && r.Has(P + "hatched")),
@@ -334,15 +334,15 @@ internal static class NidalynnTricksterTests
         check(Avail(back, homeEarly) && !Avail(back, homeNew), "Trk_Nidalynn_Reunion: the door after the Abyss does not open, or opens for a Chapter 5 first meeting.");
         check(Visited(back, homeEarly).Contains("look") && !Visited(back, homeEarly).Contains("look_new"),
             "Trk_Nidalynn_Reunion: the reunion is greeted as a stranger.");
-        var homeHearth = Later(story, World(story, 3, "trickster.ever", P + "primed", P + "hearth.grey_stone", P + "met", P + "met_before_abyss", "nidalynn.started"), 13, 5);
+        var homeHearth = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "hearth.grey_stone", P + "met", P + "met_before_abyss", "nidalynn.started"), 13, 5);
         check(!Visited(back, homeHearth).Contains("news_egg") && Visited(back, homeHearth).Contains("news_hearth"),
             "Trk_Nidalynn_Reunion: the egg's kiln news reaches a Commander who never took it to the kiln.");
-        check(!Avail(back, Later(story, World(story, 5, "trickster.ever", P + "primed", P + "met", P + "met_before_abyss", "nidalynn.started", P + "hatched", P + "proposed"), 13)),
+        check(!Avail(back, Later(story, World(story, 5, "trickster", "trickster.ever", P + "primed", P + "met", P + "met_before_abyss", "nidalynn.started", P + "hatched", P + "proposed"), 13)),
             "Trk_Nidalynn_Reunion: the first night home plays after the first flight.");
 
         // Q9 (Sol VOI): the wolves story makes innocents pay; she will not raise the hatchling on it. Correct it, or she goes.
         var goat = S(P + "kiln.the_goat");
-        var goatWorld = Later(story, World(story, 3, "trickster.ever", P + "met", "nidalynn.started", P + "cost.claim_given_up", P + "hatched"), 49);
+        var goatWorld = Later(story, World(story, 3, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "cost.claim_given_up", P + "hatched"), 49);
         var wolves = Program.WalkVia(goat, goatWorld, "her", 2);
         check(wolves.Any(r => r.Has(P + "goat.corrected") && !r.Has(Closed)) && wolves.Any(r => r.Has(P + "goat.lie_kept") && r.Has(Closed))
               && wolves.All(r => r.Has(P + "goat.corrected") || r.Has(Closed)),
@@ -355,7 +355,7 @@ internal static class NidalynnTricksterTests
         var women = S(P + "steps.the_widows_time");
         foreach (var node in women.Nodes)
             check(!node.Text.Contains("or she is not") && !node.Text.Contains("either way"), "Trk_Nidalynn_Staging: the narrator shows an authoring alternative: " + node.Id);
-        var leftWorld = Later(story, World(story, 5, "trickster.ever", P + "met", "nidalynn.started", P + "form_chosen", P + "steps.torcs", P + "torc.left"), 25);
+        var leftWorld = Later(story, World(story, 5, "trickster", "trickster.ever", P + "met", "nidalynn.started", P + "form_chosen", P + "steps.torcs", P + "torc.left"), 25);
         check(Visited(women, leftWorld).Contains("torc_left") && !Visited(women, leftWorld).Contains("torc"),
             "Trk_Nidalynn_Staging: the girl wears a torc the Commander left in the jeweller's tray.");
 
@@ -363,7 +363,7 @@ internal static class NidalynnTricksterTests
         // Commander back, and a page keeps her when the Commander did not come back.
         foreach (var s in own.Where(x => Rules.IsRemote(x) && x.Kind != "letter"))
             check(s.Areas.SequenceEqual(new[] { Drezen }), "Trk_Nidalynn_Area: a Drezen visit plays outside Drezen: " + s.Id);
-        var awayWorld = Later(story, World(story, 3, "trickster.ever", P + "primed"), 13);
+        var awayWorld = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed"), 13);
         awayWorld.Area = "00000000000000000000000000000000";
         check(!Avail(stone, awayWorld), "Trk_Nidalynn_Area: the hearth page plays away from Drezen.");
         var coda = S("nidalynn.lastcall.page");
@@ -372,10 +372,10 @@ internal static class NidalynnTricksterTests
         foreach (var id in new[] { "salt", "late", "heel" })
             check(S(P + "epilogue." + id).Forbids.Contains("sacrifice") && S(P + "epilogue." + id).ForbidOverrides["sacrifice"] == "trickster.commander_back",
                 "Trk_Nidalynn_Sacrifice: a living page plays for a Commander who did not come back: " + id);
-        check(Avail(S(P + "epilogue.unreturned"), World(story, 6, "trickster.ever", Committed, "sacrifice")),
+        check(Avail(S(P + "epilogue.unreturned"), World(story, 6, "trickster", "trickster.ever", Committed, "sacrifice")),
             "Trk_Nidalynn_Sacrifice: no page for the Commander who did not come back.");
 
-        check(Avail(S(P + "epilogue.wolves"), World(story, 6, "trickster.ever", Committed, P + "goat.lie_kept", Closed))
+        check(Avail(S(P + "epilogue.wolves"), World(story, 6, "trickster", "trickster.ever", Committed, P + "goat.lie_kept", Closed))
               && S("nidalynn.lastcall.page").Forbids.Contains(P + "goat.lie_kept"),
             "Trk_Nidalynn_Goat: leaving over the wolves story has no page, or the Last Call coda still plays.");
 
@@ -424,7 +424,7 @@ internal static class NidalynnTricksterTests
         check(Visited(hearth, strawHearth).Contains("why_straw") && !Visited(hearth, strawHearth).Contains("why") && !Visited(hearth, strawHearth).Contains("why_vault")
               && Program.Walk(hearth, strawHearth).Any(r => r.Has(P + "kiln_agreed")),
             "Trk_Nidalynn_Straw: the hearth asks the straw's Commander about the golems or the vault, or never reaches the kiln.");
-        var strawLane = Later(story, World(story, 3, "trickster.ever", P + "egg.straw", P + "cost.slate", P + "hearth.grey_stone", P + "met", "nidalynn.started", P + "kiln", P + "quartermaster_knew"), 49);
+        var strawLane = Later(story, World(story, 3, "trickster", "trickster.ever", P + "egg.straw", P + "cost.slate", P + "hearth.grey_stone", P + "met", "nidalynn.started", P + "kiln", P + "quartermaster_knew"), 49);
         var strawConfessions = Visited(hatching, strawLane);
         check(strawConfessions.Contains("confess_straw") && !strawConfessions.Contains("confess") && !strawConfessions.Contains("confess_vault")
               && strawConfessions.Contains("quartermaster") && !strawConfessions.Contains("clerk")
@@ -432,7 +432,7 @@ internal static class NidalynnTricksterTests
             "Trk_Nidalynn_Straw: the lane hears the wrong confession, or the quartermaster who saw keeps quiet.");
         check(!Visited(hatching, lane).Contains("quartermaster") && !Visited(hatching, lane).Contains("confess_straw"),
             "Trk_Nidalynn_Straw: the golems' Commander hears the quartermaster or confesses the straw.");
-        var strawWhose = Later(story, World(story, 3, "trickster.ever", P + "egg.straw", P + "met", "nidalynn.started", P + "confessed", P + "hatched"), 25);
+        var strawWhose = Later(story, World(story, 3, "trickster", "trickster.ever", P + "egg.straw", P + "met", "nidalynn.started", P + "confessed", P + "hatched"), 25);
         check(Visited(whose, strawWhose).Contains("whose_straw") && !Visited(whose, strawWhose).Contains("whose")
               && Program.WalkVia(whose, strawWhose, "choose", 2).Count == 0 && Program.WalkVia(whose, strawWhose, "choose", 3).All(r => r.Has(P + "claimed"))
               && Program.WalkVia(whose, strawWhose, "choose", 3).Count > 0 && !Visited(whose, Later(story, confessed, 25)).Contains("whose_straw"),
@@ -442,8 +442,8 @@ internal static class NidalynnTricksterTests
 
         // PP10 (Sol COX): the grey dragon's bill on her page agrees with Devarra's Last Call coda: standing, or named at the rift.
         var saltNode = S(P + "epilogue.salt").Nodes.Last();
-        var billWorld = World(story, 6, "trickster.ever", Committed, Bill);
-        var calledWorld = World(story, 6, "trickster.ever", Committed, Bill, "devarra.lastcall.called");
+        var billWorld = World(story, 6, "trickster", "trickster.ever", Committed, Bill);
+        var calledWorld = World(story, 6, "trickster", "trickster.ever", Committed, Bill, "devarra.lastcall.called");
         check(Rules.VisibleParagraphs(saltNode, billWorld).Any(t => t.Text.Contains("never paid"))
               && !Rules.VisibleParagraphs(saltNode, billWorld).Any(t => t.Text.Contains("named her bill"))
               && Rules.VisibleParagraphs(saltNode, calledWorld).Any(t => t.Text.Contains("named her bill"))
@@ -526,7 +526,7 @@ internal static class NidalynnTricksterTests
                     "Trk_Nidalynn_Endings: the " + id + " departure keeps her fire or loses the record: " + string.Join(",", extra));
             }
         // The wolves and the fire: closures with no shared paragraphs, even with the commit and the wake still held.
-        var wolvesWorld = End(World(story, 6, "trickster.ever", P + "met", Committed, P + "goat.lie_kept", Closed, P + "wake.name_said", Bill, Called));
+        var wolvesWorld = End(World(story, 6, "trickster", "trickster.ever", P + "met", Committed, P + "goat.lie_kept", Closed, P + "wake.name_said", Bill, Called));
         var givenWorld = End(burned, Bill, Called);
         check(Avail(endPage("wolves"), wolvesWorld) && !Shown(wolvesWorld).Contains("salt") && endPage("wolves").Nodes[0].Paragraphs.Count == 0
               && Avail(endPage("given"), givenWorld) && !Shown(givenWorld).Contains("salt") && endPage("given").Nodes[0].Paragraphs.Count == 0,

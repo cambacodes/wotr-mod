@@ -22,8 +22,9 @@ integrate() applies that guard to every epilogue-family scene (Owner ...Epilogue
 replacements) that does not carry it, unless the page is listed in COMMANDER_ABSENT: a page that mourns the Commander
 (Requires "sacrifice"), or one that never stages the Commander alive after the war and so stays true after the death.
 PARAGRAPH_GUARDED pages mix living and mourning text and are exempt only after their individual guards are verified.
-tools/earned_presence_lint.py checks the result from the generated Story.json (rules EP1-EP6, T1-T6).
+tools/earned_presence_lint.py checks the result from the generated Story.json (rules EP1-EP6, T1-T7, P1).
 """
+import re
 
 SACRIFICE = "sacrifice"
 COMMANDER_BACK = "trickster.commander_back"
@@ -153,6 +154,42 @@ def paragraph_guard_errors(scene):
 # so their pages carry their own death guards and are not given a per-woman Forbid mechanically.
 GROUP_RELATIONSHIPS = ("tirabade", "minagho_chivarro")
 
+# Engine-q5: these departures concern someone else, correspondence, or a dream rather than a physical partner.
+DEPARTURE_EXEMPTIONS = {
+    ("konomi", "konomi.private_departed"): "Her private romance continues by post; her physical presence explicitly forbids this flag.",
+    ("nocticula", "noct.ilvara_exiled"): "Ilvara is the hearing's subject, not Nocticula.",
+    ("dorgelinda", "dorgelinda.ledger.driver_sent_home"): "The convoy driver leaves, not Dorgelinda.",
+    ("kaylessa", "kaylessa.trickster.wasp_sent_home"): "The wasp is dismissed, not Kaylessa.",
+    ("galfrey", "galfrey.trickster.envoy.sent_home"): "The envoy leaves, not Galfrey.",
+    ("iomedae", "iomedae.trickster.sent_away"): "Declines the banner dream; no physical Iomedae has arrived.",
+}
+PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
+
+
+def presence_relationship(key):
+    match = re.fullmatch(r"(.+?)\.presence(?:\.[a-z0-9_]+)?", key)
+    return match[1] if match else None
+
+
+def presence_guard(relationship):
+    return relationship + ".presence.route_open"
+
+
+def integrate_presences(payload):
+    """All physical relationship presences use Rules.RouteOpen, including its earned-return overrides."""
+    for name, presence in (payload.get("Presences") or {}).items():
+        rel = presence_relationship(name)
+        if rel not in payload["Relationships"]:
+            continue
+        key = presence_guard(rel)
+        for field, value in (("Derived", [list(g) for g in PRESENCE_CHAPTERS]), ("DerivedOpenRoutes", [rel])):
+            entries = payload.setdefault(field, {})
+            if key in entries and entries[key] != value:
+                raise ValueError("Conflicting presence route guard: " + key)
+            entries[key] = value
+        if key not in (presence.get("Requires") or []):
+            presence["Requires"] = [*(presence.get("Requires") or []), key]
+
 
 def committed_page(scene, relationship):
     requires = scene.get("Requires") or []
@@ -181,6 +218,7 @@ def her_missing_guards(scene, relationship, derived=None):
 def integrate(payload):
     """Guard living postwar pages, validate paragraph exemptions, and remove the two realm slides' Commander guards.
     Returns the guarded scene ids for the build log and the tests."""
+    integrate_presences(payload)
     from storylines import trickster_world   # the route composites not yet bound into the payload
     derived = {**trickster_world.DERIVED, **(payload.get("Derived") or {})}
     added = []

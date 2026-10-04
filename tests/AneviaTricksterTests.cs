@@ -105,7 +105,7 @@ internal static class AneviaTricksterTests
         check(crate.Crusade?.Resource == "Materials" && crate.Crusade.Amount == -100, "The crate is free.");
 
         // Trk_Anevia_Gone_Return and the wardrobe variants.
-        var primed = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Primed);
+        var primed = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Primed);
         check(Rules.Available(story, wardrobe, primed) && !Any(primed, fetched, confession, gate), "Trk_Anevia_Gone_Return: wrong scenes.");
         foreach (var cost in new[] { "", "anevia.trickster.cost.wrong_door", "anevia.trickster.cost.stolen_door", "anevia.trickster.cost.crated",
                                      "anevia.trickster.cost.socoth_listening" })
@@ -137,7 +137,7 @@ internal static class AneviaTricksterTests
             var back = Program.Walk(wardrobe, killer, (page, _) => pages.Add(page));
             check(back.Count == 1 && back[0].Has(Returned) && pages.Contains("killer") && !pages.Contains("beth_dead")
                   && pages.Contains("owned") == owned, "The wardrobe forgets who killed Beth.");
-            var ask = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen");
+            var ask = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen");
             ask.Times["anevia.trickster.gate_seen"] = ask.Hour - 96;
             var commitPages = new HashSet<string>();
             Program.Walk(commit, ask, (page, _) => commitPages.Add(page));
@@ -174,21 +174,21 @@ internal static class AneviaTricksterTests
         }
 
         // Trk_Anevia_Coexistence_*: at most one return; Irabeth's state never gates the wardrobe.
-        var withBeth = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, Primed);
+        var withBeth = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, Primed);
         check(Rules.Available(story, wardrobe, withBeth) && !Any(withBeth, fetched, confession), "Trk_Anevia_Coexistence_Primed failed.");
-        var bethClosed = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", "irabeth.closed", Primed);
+        var bethClosed = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", "irabeth.closed", Primed);
         check(Rules.Available(story, wardrobe, bethClosed) && !Any(bethClosed, fetched, confession), "Trk_Anevia_Coexistence_Closed failed.");
-        var both = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, "irabeth.trickster.blow_rewritten",
+        var both = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, "irabeth.trickster.blow_rewritten",
                          Killed, Returned, "anevia.lover");
         check(Rules.Available(story, gate, both) && !Any(both, returns) && !Any(both, grief), "Trk_Anevia_Coexistence_Returned failed.");
 
         // Trk_Anevia_GriefGuard: no grief over a wife who has come back.
-        var guard = World(story, 5, "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned, "anevia.lover");
-        check(!Any(guard, grief) && !Any(World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned, "anevia.lover"), grief),
+        var guard = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned, "anevia.lover");
+        check(!Any(guard, grief) && !Any(World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned, "anevia.lover"), grief),
             "Trk_Anevia_GriefGuard: a grief page for a living wife.");
 
         // Trk_Anevia_Fetched: Irabeth rides south for her; the bargain is told.
-        var fetch = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, "irabeth.trickster.cost.under_orders");
+        var fetch = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", IrabethReturned, "irabeth.trickster.cost.under_orders");
         check(Rules.Available(story, fetched, fetch) && !Any(fetch, wardrobe, confession), "Trk_Anevia_Fetched: wrong device.");
         var fetchPages = new HashSet<string>();
         var brought = Program.Walk(fetched, fetch, (page, _) => fetchPages.Add(page));
@@ -204,7 +204,7 @@ internal static class AneviaTricksterTests
             "Anevia's terms for Beth depend on the joke.");
 
         // Trk_Anevia_Confession / _Lie: after the rewritten blow she wants the version that hurts.
-        var rewritten = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, IrabethReturned, "irabeth.trickster.blow_rewritten");
+        var rewritten = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Killed, IrabethReturned, "irabeth.trickster.blow_rewritten");
         check(Rules.Available(story, confession, rewritten) && !Any(rewritten, fetched, wardrobe), "Trk_Anevia_Confession: wrong device.");
         var told = Program.Walk(confession, rewritten);
         check(told.Count == 1 && told[0].Has(Returned) && told[0].Has("anevia.trickster.cost.accounting") && !told[0].Has("anevia.trickster.cost.lie_exposed"),
@@ -218,7 +218,7 @@ internal static class AneviaTricksterTests
         foreach (bool listening in new[] { false, true })
         {
             bool bethBack = beth > 0, bethAsked = beth == 2;
-            var ask = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned, "anevia.trickster.gate_seen");
+            var ask = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Returned, "anevia.trickster.gate_seen");
             if (bethBack) ask.Flags.Add(IrabethReturned);
             if (bethAsked) ask.Flags.Add("irabeth.trickster.asked_nevi");
             if (listening) ask.Flags.Add("anevia.trickster.cost.socoth_listening");
@@ -244,9 +244,9 @@ internal static class AneviaTricksterTests
             check(finals.Any(r => r.Has("anevia.committed") && r.Has("anevia.trickster.cost.her_key")) && finals.Any(r => r.Has("anevia.closed") && !r.Has("anevia.committed"))
                   && asked.Contains("night"), "Second ask: no key, no hard no, or no night.");
         }
-        check(!Rules.Available(story, letterTwin, World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned)),
+        check(!Rules.Available(story, letterTwin, World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Returned)),
             "The letter twin opens while the gate presence can be placed.");
-        var failedAnchor = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned, "anevia.presence.failed");
+        var failedAnchor = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Returned, "anevia.presence.failed");
         var byPost = Program.Walk(letterTwin, Later(story, failedAnchor, 96));
         check(byPost.Count > 0 && byPost.All(r => !r.Has("anevia.committed") && r.Has("anevia.trickster.gate_seen")),
             "The letter twin commits by post instead of leaving it for a real door.");
@@ -258,14 +258,14 @@ internal static class AneviaTricksterTests
         // Trk_Tirabade_TableAgain: both back, three chairs; the shared route commits on its own flag.
         var table = S("tirabade.trickster.table_again");
         var chairs = S("tirabade.trickster.third_chair");
-        var reunited = World(story, 5, "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned);
+        var reunited = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned);
         check(Rules.Available(story, table, reunited), "Trk_Tirabade_TableAgain: table unavailable.");
         var third = Program.Walk(table, reunited).Single(r => r.Has("tirabade.trickster.third_chair"));
         var dealt = Program.Walk(chairs, Later(story, third, 72));
         check(dealt.Any(r => r.Has("committed")) && dealt.Any(r => r.Has("tirabade.trickster.declined") && !r.Has("committed")),
             "The third chair does not commit the shared route, or has no soft no.");
         check(!Rules.Available(story, chairs, Later(story, third, 71)), "Third chair mistimed.");
-        var accounting = World(story, 5, "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned, Killed, "irabeth.trickster.blow_rewritten");
+        var accounting = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", IrabethReturned, Returned, Killed, "irabeth.trickster.blow_rewritten");
         var accountingPages = new HashSet<string>();
         var accounted = Program.Walk(table, accounting, (page, _) => accountingPages.Add(page));
         check(accountingPages.Contains("accounting") && accounted.Where(r => r.Has("tirabade.trickster.third_chair")).All(r => r.Has("anevia.trickster.cost.accounting")),
@@ -275,7 +275,7 @@ internal static class AneviaTricksterTests
         foreach (string outcome in new[] { "", "anevia.committed", "anevia.trickster.declined", "anevia.closed", "anevia.trickster.friends", "anevia.trickster.gate_seen" })
         foreach (string beth in new[] { "", IrabethReturned, Killed })
         {
-            var end = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.trickster.cost.wardrobe_nailed");
+            var end = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.trickster.cost.wardrobe_nailed");
             if (lover) end.Flags.Add("anevia.lover");
             if (outcome != "") end.Flags.Add(outcome);
             if (beth != "") end.Flags.Add(beth);
@@ -287,20 +287,20 @@ internal static class AneviaTricksterTests
                 check(Rules.VisibleParagraphs(pages[0].Nodes.Last(), end).Length >= 1, "Returned Anevia's page has none of her paragraphs: " + pages[0].Id);
         }
         // Sol INT: the Commander killed Beth, Anevia came back and chose the Commander anyway; the closure page does not deny it.
-        var unforgiven = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Killed, "anevia.lover", "anevia.committed",
+        var unforgiven = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, Killed, "anevia.lover", "anevia.committed",
                                "anevia.trickster.terms_kept");
         var unforgivenPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, unforgiven)).ToList();
         check(unforgivenPages.Count == 1 && unforgivenPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_unforgiven"
               && Rules.VisibleParagraphs(unforgivenPages[0].Nodes.Last(), unforgiven).Any(t => t.Text.Contains("beside that grave")),
             "The recommitted Anevia gets the ending that denies her night: " + string.Join(",", unforgivenPages.Select(s => s.Id)));
         // Sol r1 INT: the renewed widow (Beth dead, not by the Commander) keeps her night too.
-        var widowRenewed = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.lover", "anevia.committed",
+        var widowRenewed = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, "anevia.lover", "anevia.committed",
                                  "anevia.trickster.terms_kept");
         var widowPages = story.Scenes.Where(s => s.Relationship == "anevia" && s.Owner == "Epilogue" && Rules.Available(story, s, widowRenewed)).ToList();
         check(widowPages.Count == 1 && widowPages[0].Id == "anevia.trickster.epilogue.nailed_wardrobe_widow",
             "The renewed widow gets a page that denies her night: " + string.Join(",", widowPages.Select(s => s.Id)));
         // Sol r1 BEL: after the Commander killed Beth, the door has a price paid in public, and the second ask cannot skip it.
-        var penanceWorld = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen",
+        var penanceWorld = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Killed, Returned, "anevia.trickster.gate_seen",
                                  "anevia.lover");
         penanceWorld.Times["anevia.trickster.gate_seen"] = penanceWorld.Hour - 96;
         var penancePages = new HashSet<string>();
@@ -321,7 +321,7 @@ internal static class AneviaTricksterTests
         var later = Program.Walk(second, Later(story, afterMuster, 96), (page, _) => laterPages.Add(page));
         check(later.Any(r => r.Has("anevia.committed")) && !laterPages.Contains("say_it"), "After the muster the second ask cannot open the door.");
         // Sol r4 INT: a Trickster commitment does not restart the registered courtship from its first scenes.
-        var committedAtGate = World(story, 5, "trickster.ever", "anevia_gone", "irabeth_dead", Returned, IrabethReturned, "anevia.committed",
+        var committedAtGate = World(story, 5, "trickster", "trickster.ever", "anevia_gone", "irabeth_dead", Returned, IrabethReturned, "anevia.committed",
                                     "anevia.trickster.terms_kept", "anevia_away");
         check(!Rules.Available(story, S("anevia.unborrowed_hour"), Later(story, committedAtGate, 500))
               && !Rules.Available(story, S("anevia.a_question_at_home"), Later(story, committedAtGate, 500)),
@@ -384,7 +384,7 @@ internal static class AneviaTricksterTests
         check(closurePages == 1 && closureText.Contains(Closed) && VariantCount(closureText) == 1, "Closure page lost its closure: " + closureText);
         foreach (var extra in new[] { "", "anevia.trickster.gate_seen", "anevia.trickster.friends" })
         {
-            var back = World(story, 5, "trickster.ever", "irabeth_dead", "anevia_gone", Killed, "anevia.lover", Returned);
+            var back = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Killed, "anevia.lover", Returned);
             if (extra == "anevia.trickster.gate_seen") { back.Flags.Add(extra); back.Flags.Add("anevia.trickster.hand_taken"); }
             else if (extra != "") back.Flags.Add(extra);
             var backText = EndingText(back, out var backPages);

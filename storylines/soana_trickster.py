@@ -987,3 +987,12 @@ def integrate(payload):
             scene_.setdefault("ForbidOverrides", {}).update(SACRIFICE_BACK)
             # A Commander who came back holds `sacrifice` too: the living portion paragraph must not drop out for them.
             _paragraphs(scene_, (dict(PORTION_ALIVE, Forbids=[], AnyGroups=[["trickster.commander_back"]]),))
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'soana.trickster.missed.crooked_luck',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

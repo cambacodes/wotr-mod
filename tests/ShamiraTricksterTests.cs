@@ -381,8 +381,8 @@ internal static class ShamiraTricksterTests
         // and Woljif reactions of the first build are retired by gating: none is ever available beside the flag that triggers it.
         var retiredReactions = reactions.Where(r => r.Owner == "Daeran" || r.Owner == "Regill" || r.Owner == "Woljif").ToArray();
         check(reactions.Length == 7 && reactions.All(r => r.Nodes.Count == 1) && retiredReactions.Length == 3
-              && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster.ever", Returned, Heard, Embodied, NeverAlone, P + "fuel_set", P + "cost.barracks" })))
-              && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster.ever", Returned, Heard })))
+              && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster", "trickster.ever", Returned, Heard, Embodied, NeverAlone, P + "fuel_set", P + "cost.barracks" })))
+              && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster", "trickster.ever", Returned, Heard })))
               && reactions.Except(retiredReactions).Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Arueshalae", "Shyka" }),
             "The live reactions are not Shyka and Arueshalae, or a retired reactor still speaks.");
         check(pages.Length == 11 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Alignment == null))),
@@ -485,8 +485,8 @@ internal static class ShamiraTricksterTests
         check(new[] { table, awning }.All(pr => !pr.Forbids.Contains(P + "night_alone.asked")), "Trk_Shamira_Presence: the night alone removes her from the table.");
         // Sol INT (G6(b)): an Arueshalae who died and came back on her own road reacts again; a dead one does not.
         var walking = S(P + "react.arueshalae_walking");
-        var aw = World(story, 5, "trickster.ever", Embodied, "arueshalae_dead");
-        check(!Avail(walking, aw) && Avail(walking, World(story, 5, "trickster.ever", Embodied, "arueshalae_dead", "arueshalae.trickster.returned")),
+        var aw = World(story, 5, "trickster", "trickster.ever", Embodied, "arueshalae_dead");
+        check(!Avail(walking, aw) && Avail(walking, World(story, 5, "trickster", "trickster.ever", Embodied, "arueshalae_dead", "arueshalae.trickster.returned")),
             "Trk_Shamira_Reactions: a returned Arueshalae is still treated as dead.");
         // Sol INT: the pages of a life after the war play only for a Commander who has one.
         var keptPage = S(P + "epilogue.kept");
@@ -500,7 +500,7 @@ internal static class ShamiraTricksterTests
 
         // Sol INT: the Harem remembers the crystals only where she took them; the awning twins stage no absent King.
         var whereSeen = new HashSet<string>();
-        Program.Walk(harem, World(story, 5, "trickster.ever", Embodied, P + "visited", P + "game_proposed"), (id, _) => whereSeen.Add(id));
+        Program.Walk(harem, World(story, 5, "trickster", "trickster.ever", Embodied, P + "visited", P + "game_proposed"), (id, _) => whereSeen.Add(id));
         check(whereSeen.Contains("where_first") && !whereSeen.Contains("where_crystals"), "Trk_Shamira_Harem: a crystal interrogation is recalled that never happened.");
         foreach (var twinScene in own.Where(s => s.InteractionHub == "shamira.presence.awning"))
             check(!twinScene.Nodes.Any(n => n.Text.Contains("King's") || n.Text.Contains("tavern table") || n.Text.Contains("back door")),

@@ -150,7 +150,7 @@ internal static class YanielTricksterTests
 
         // Shape and hooks (Trk_Yaniel_Bindings; tools/verify-game-bindings.py resolves every GUID against blueprints.zip).
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.SequenceEqual(new[] { Killed }) && rel.UnavailableOverrides.Count == 0
+              && rel.UnavailableFlags.SequenceEqual(new[] { Killed, P + "left_free" }) && rel.UnavailableOverrides.Count == 0
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "doubt", "hope", "late" }),
             "Yaniel's relationship does not match the plan (the kill stands; doubt, hope and late access).");
         check(story.SeenCues["yaniel.fane_doubt"].SequenceEqual(new[] { DoubtCue }) && story.SeenCues["yaniel.fane_hope"].SequenceEqual(new[] { HopeCue })

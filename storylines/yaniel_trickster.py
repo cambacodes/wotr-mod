@@ -136,7 +136,7 @@ RELATIONSHIP = dict(
               "cut manacle instead, and make her keep the sword. If the Fane passes without it, she will come to the walls of "
               "Drezen in Chapter 5. Killing her in the Fane ends this for good."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[KILLED], FailureFlags=[], UnavailableOverrides={},
+    UnavailableFlags=[KILLED, LEFT_FREE], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
         "doubt": dict(detect=["!" + KILLED], device=Y + "fane.swap", returned=SWAPPED),
         "hope": dict(detect=["!" + KILLED], device=Y + "fane.swap_hope", returned=SWAPPED),

@@ -257,7 +257,7 @@ internal static class ArankaTricksterTests
         check(!herLetterSet.Contains(P + "cost.late") && !herLetterSet.Contains(P + "primed"), "Her ordinary letter records the late cost.");
 
         // Trk_Aranka_Duet: the billing, both ways; every opening variant is exclusive.
-        var answered = World(story, 3, "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
+        var answered = World(story, 3, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
         check(Rules.Available(story, duet, answered), "Trk_Aranka_Duet: unavailable.");
         var signed = After(duet, answered, "signed", 0);
         check(signed.Has(P + "duet_sung") && Play(duet, answered).Any(r => r.Has(P + "cost.vain")), "Trk_Aranka_Duet: flags.");
@@ -286,7 +286,7 @@ internal static class ArankaTricksterTests
         check(plainPages.Contains("duet") && !plainPages.Contains("duet_rival"), "The rivals' duet plays without the won contest.");
 
         // Trk_Aranka_Commit / Declined / Nerosyan, and the night after the yes.
-        var ready = World(story, 5, "trickster.ever", P + "duet_sung", "aranka.extension_started", P + "answered");
+        var ready = World(story, 5, "trickster", "trickster.ever", P + "duet_sung", "aranka.extension_started", P + "answered");
         check(Rules.Available(story, encoreL, ready) && !Rules.Available(story, encore, ready), "Trk_Aranka_Commit: the encore is unavailable.");
         var stay = encore.Nodes.Single(n => n.Id == "choice").Choices[0];
         check(stay.Set.SequenceEqual(new[] { Kept }) && encoreL.Nodes.Single(n => n.Id == "choice").Choices[0].Set.SequenceEqual(new[] { Kept }),
@@ -405,14 +405,14 @@ internal static class ArankaTricksterTests
             var yThirdOut = Play(Y(third), yThird);
             check(yThirdOut.Any(r => r.Has(Kept) && r.Has(P + "cost.sang_alone")) && yThirdOut.Any(r => r.Has(Closed) && !r.Has(Kept)),
                 "Stall-less proposal verse or hard no missing (chapter " + chapter + ").");
-            var yBilled = Yard(chapter, "trickster.ever", "aranka.ran_romance", "aranka.ran_quest_complete", P + "primed", P + "cost.announced");
+            var yBilled = Yard(chapter, "trickster", "trickster.ever", "aranka.ran_romance", "aranka.ran_quest_complete", P + "primed", P + "cost.announced");
             check(Rules.Available(story, Y(arrives), Later(story, yBilled, posted)) && !Rules.Available(story, M(arrives), Later(story, yBilled, posted)),
                 "Fye-less touring arrival missing (chapter " + chapter + ").");
         }
         check(!Rules.Available(story, S(duet.Id + "_yard"), answered), "The yard copy opens while Fye is serving.");
 
         // Epilogue pages (R2-6): the late commit, her no, the credit, the stage.
-        var lateWorld = World(story, 6, "trickster.ever", P + "duet_sung", P + "answered", P + "cost.credited");
+        var lateWorld = World(story, 6, "trickster", "trickster.ever", P + "duet_sung", P + "answered", P + "cost.credited");
         check(lateWorld.Has(P + "late_committed") && Rules.Available(story, epCommit, lateWorld) && Rules.Available(story, epVerse, lateWorld)
               && !Rules.Available(story, epCommit, Ending(story, committed)) && Rules.Available(story, epVerse, Ending(story, committed)),
             "The late commit or the credit page is missing.");
@@ -424,7 +424,7 @@ internal static class ArankaTricksterTests
             check(pg.MinChapter == 6 && pg.MaxChapter == 6 && pg.Chapters.SequenceEqual(new[] { 6 }), "An epilogue page leaves Chapter 6: " + pg.Id);
             foreach (var chapter in new[] { 1, 2, 3, 4, 5 })
             {
-                var early = World(story, chapter, "trickster.ever", P + "duet_sung", P + "answered", P + "declined", Kept, Closed,
+                var early = World(story, chapter, "trickster", "trickster.ever", P + "duet_sung", P + "answered", P + "declined", Kept, Closed,
                     P + "gone_to_nerosyan", P + "cost.credited");
                 check(!Rules.Available(story, pg, early), "An epilogue page plays before the ending: " + pg.Id + " in chapter " + chapter);
             }
@@ -432,7 +432,7 @@ internal static class ArankaTricksterTests
         // Q8 (Sol TRK): a Commander who attacked the adepts in Kenabres killed her; no tavern, letter, presence or page follows.
         var murdered = World(story, 3, "trickster", "trickster.ever", "aranka.kenabres_attacked");
         check(!Rules.Available(story, tavern, murdered) && !Rules.Available(story, anyTavern, World(story, 5, "trickster", "trickster.ever", "aranka.kenabres_attacked", "coronation.after"))
-              && !Rules.Available(story, epVerse, World(story, 6, "trickster.ever", Kept, "aranka.kenabres_attacked"))
+              && !Rules.Available(story, epVerse, World(story, 6, "trickster", "trickster.ever", Kept, "aranka.kenabres_attacked"))
               && story.SelectedAnswers["aranka.kenabres_attacked"] == "3259064c6a1ac284c80ecc7d3fad6135",
             "A living Aranka follows her death in Kenabres.");
         // Q8 (Sol BEL): the third verse sung and its rhyme left hanging has its own page, never "never written".
@@ -440,8 +440,8 @@ internal static class ArankaTricksterTests
         check(!Rules.Available(story, epDeclined, Ending(story, hardNo)) && Rules.Available(story, S(P + "epilogue.unanswered"), Ending(story, hardNo))
               && !Rules.Available(story, S(P + "epilogue.unanswered"), Ending(story, declined)), "The hard no after the third verse reads as never written.");
         // Q8 (Sol BEL/CAN): the touring and mocking primers never hear the tambourine verse.
-        check(!Rules.Available(story, S(P + "react.anevia_verse"), World(story, 3, "trickster.ever", P + "primed", P + "cost.announced"))
-              && !Rules.Available(story, S(P + "react.lann_verse"), World(story, 3, "trickster.ever", P + "answered", P + "cost.mocking_verse", P + "cost.credited")),
+        check(!Rules.Available(story, S(P + "react.anevia_verse"), World(story, 3, "trickster", "trickster.ever", P + "primed", P + "cost.announced"))
+              && !Rules.Available(story, S(P + "react.lann_verse"), World(story, 3, "trickster", "trickster.ever", P + "answered", P + "cost.mocking_verse", P + "cost.credited")),
             "A reaction sings a verse the Commander never wrote.");
         var sheet = tavern.Nodes.Single(n => n.Id == "sheet").Text;
         check(!sheet.Contains("crown"), "The King swears on a crown he may not have.");
@@ -450,20 +450,20 @@ internal static class ArankaTricksterTests
 
         // Coordinator ruling 2026-10-02 (item 3): her Last Call coda takes the late yes too, in Chapter 6, with explicit guards.
         var coda = S("aranka.lastcall.page");
-        var lateCall = World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered");
+        var lateCall = World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered");
         check(coda.MinChapter == 6 && coda.MaxChapter == 6 && Rules.Available(story, coda, lateCall) && !lateCall.Has(Kept)
-              && !Rules.Available(story, coda, World(story, 5, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered")),
+              && !Rules.Available(story, coda, World(story, 5, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered")),
             "The late yes loses her Last Call coda, or the coda plays before the ending.");
         foreach (var (block, lift) in new[] { (P + "declined", Kept), (Closed, (string?)null), ("aranka.kenabres_attacked", null),
                                               ("sacrifice", "trickster.commander_back"), ("aranka.ran_failure", Repaired) })
         {
-            var w = World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block);
+            var w = World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block);
             check(!Rules.Available(story, coda, w), "Her coda ignores " + block);
             if (lift != null)
-                check(Rules.Available(story, coda, World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block, lift)),
+                check(Rules.Available(story, coda, World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", block, lift)),
                     "Her coda stays shut after " + lift);
         }
-        check(!Rules.Available(story, coda, World(story, 6, "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", Kept, Closed)),
+        check(!Rules.Available(story, coda, World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "duet_sung", P + "answered", Kept, Closed)),
             "A closed route keeps her coda through a kept flag.");
 
         // Polish (item 6): the post-Coronation chain from real choices, with derived placement and a 168-hour deadline.
@@ -562,7 +562,7 @@ internal static class ArankaTricksterTests
         check(!Rules.Available(story, duetL, stranded) && !Rules.Available(story, S(duet.Id + "_yard_late"), stranded),
             "Walk: a duet plays with no copy of her placed.");
         // A save that finished the original duet in Chapter 5 before the split: no replay; the encore twin follows.
-        var oldSave = World(story, 5, "trickster.ever", P + "answered", "aranka.extension_started", P + "duet_sung", duet.Id);
+        var oldSave = World(story, 5, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "duet_sung", duet.Id);
         check(!Rules.Available(story, duetL, oldSave) && Rules.Available(story, encoreL, oldSave), "An old Chapter 5 duet replays, or strands the encore.");
 
         // Reactions: exactly Anevia, Woljif and Lann (ledger 05 3.1), with their guards.
@@ -571,20 +571,20 @@ internal static class ArankaTricksterTests
             "Aranka's reactors changed.");
         var anevia = S(P + "react.anevia_verse");
         var aneviaAlone = S(P + "react.anevia_verse_alone");
-        var widowed = World(story, 3, "trickster.ever", P + "primed", P + "cost.round_bought", "irabeth_dead");
+        var widowed = World(story, 3, "trickster", "trickster.ever", P + "primed", P + "cost.round_bought", "irabeth_dead");
         check(!Rules.Available(story, anevia, widowed) && Rules.Available(story, aneviaAlone, widowed)
-              && Rules.Available(story, anevia, World(story, 3, "trickster.ever", P + "primed", P + "cost.round_bought")), "Anevia's Beth line plays over Irabeth's grave.");
-        var returnedBeth = World(story, 3, "trickster.ever", P + "primed", P + "cost.round_bought", "irabeth_dead", "irabeth.trickster.returned");
+              && Rules.Available(story, anevia, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "cost.round_bought")), "Anevia's Beth line plays over Irabeth's grave.");
+        var returnedBeth = World(story, 3, "trickster", "trickster.ever", P + "primed", P + "cost.round_bought", "irabeth_dead", "irabeth.trickster.returned");
         check(Rules.Available(story, anevia, returnedBeth) && !Rules.Available(story, aneviaAlone, returnedBeth),
             "Anevia still mourns a returned Irabeth.");
-        check(!Rules.Available(story, S(P + "react.woljif_billing"), World(story, 3, "trickster.ever", P + "duet_sung", "woljif.dead")),
+        check(!Rules.Available(story, S(P + "react.woljif_billing"), World(story, 3, "trickster", "trickster.ever", P + "duet_sung", "woljif.dead")),
             "A dead Woljif sells the fine print.");
         // Audit polr4 (BEL, Directive 12): Woljif answers the night itself, after either intimate commitment, never the duet alone.
         var roof = S(P + "react.woljif_roof");
         check(roof.Requires.SequenceEqual(new[] { P + "night_kept" }) && roof.Forbids.SequenceEqual(new[] { "woljif.dead", "woljif.kicked_out" })
-              && !Rules.Available(story, roof, World(story, 3, "trickster.ever", P + "duet_sung", P + "answered"))
+              && !Rules.Available(story, roof, World(story, 3, "trickster", "trickster.ever", P + "duet_sung", P + "answered"))
               && Rules.Available(story, roof, committed) && Rules.Available(story, roof, thirdOut.First(r => r.Has(Kept)))
-              && !Rules.Available(story, roof, World(story, 5, "trickster.ever", P + "night_kept", "woljif.kicked_out")),
+              && !Rules.Available(story, roof, World(story, 5, "trickster", "trickster.ever", P + "night_kept", "woljif.kicked_out")),
             "Nobody in the camp answers her night, or Woljif answers it from the grave.");
         // Audit polr4 (VOI): the proposal is sung, and the Commander's answer is the rhyme.
         foreach (var s in new[] { third, S(third.Id + "_yard"), thirdL, S(third.Id + "_yard_late") })

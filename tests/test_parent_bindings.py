@@ -3,7 +3,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
-import tempfile
+from tests.temp_directory import temporary_directory
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
@@ -12,7 +12,7 @@ from parent_bindings import load_parent_bindings
 
 class ParentBindingTests(unittest.TestCase):
     def test_evidence_pin_and_identity(self):
-        with tempfile.TemporaryDirectory() as directory:
+        with temporary_directory() as directory:
             root = Path(directory)
             assembly = root / "fixture.dll"
             assembly.write_bytes(b"test-only assembly identity")

@@ -233,7 +233,7 @@ internal static class IrabethTricksterTests
         foreach (string answer in new[] { "irabeth.trickster.answered_her", "irabeth.trickster.answered_crusade" })
         foreach (bool lied in new[] { false, true })
         {
-            var ask = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", answer, "anevia_gone");
+            var ask = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", answer, "anevia_gone");
             if (lied) ask.Flags.Add("irabeth.trickster.cost.accounting_lied");
             ask.Times["irabeth.trickster.back_on_duty"] = ask.Hour - 72;
             check(Rules.Available(story, commit, ask) && !Rules.Available(story, second, ask), "Trk_Irabeth_Commit: commit unavailable.");
@@ -283,7 +283,7 @@ internal static class IrabethTricksterTests
 
         // Sol r1 BEL: after the Commander's own blade, her test comes before any yes.
         var watch = S("irabeth.trickster.killed.the_watch");
-        var struckDown = World(story, 5, "trickster.ever", "irabeth_dead", Killed, Returned, "irabeth.trickster.back_on_duty",
+        var struckDown = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Killed, Returned, "irabeth.trickster.back_on_duty",
                                "irabeth.trickster.cost.remembers_the_blow", "irabeth.trickster.answered_her", "anevia_gone");
         struckDown.Times["irabeth.trickster.back_on_duty"] = struckDown.Hour - 72;
         // Q12 (Sol BEL): with no lover's history, she must want the Commander (the roll of the dead) before her test.
@@ -303,7 +303,7 @@ internal static class IrabethTricksterTests
         check(!blowPages.Contains("threshold"), "The killed history reaches the rescue's threshold.");
 
         // Sol INT: a wife who never left Drezen. Irabeth asks her in person, not by the south-road courier.
-        var home = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her");
+        var home = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.answered_her");
         home.Times["irabeth.trickster.back_on_duty"] = home.Hour - 72;
         var homePages = new HashSet<string>();
         var homeNo = Program.Walk(commit, home, (page, _) => homePages.Add(page)).Single(r => r.Has("irabeth.trickster.declined"));
@@ -315,12 +315,12 @@ internal static class IrabethTricksterTests
             "The pen goes south to a wife four streets away.");
 
         // Sol COX: the shared finale's surviving Commander never gets the mourning page.
-        var survived = World(story, 6, "trickster.ever", "ending.trickster", "sacrifice", "irabeth.lover");
+        var survived = World(story, 6, "trickster", "trickster.ever", "ending.trickster", "sacrifice", "irabeth.lover");
         check(survived.Has("trickster.commander_back") && !Rules.Available(story, S("irabeth.ending_sacrifice"), survived)
               && Rules.Available(story, S("irabeth.ending_unfinished"), survived), "A living Commander is mourned.");
 
         // back_on_duty: the test between return and commit; physical only after the return.
-        var justBack = World(story, 5, "trickster.ever", "irabeth_dead", Returned);
+        var justBack = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned);
         justBack.Times[Returned] = justBack.Hour - 23;
         check(!Rules.Available(story, duty, justBack) && Rules.Available(story, duty, Later(story, justBack, 1)), "Test beat mistimed.");
         check(Program.Walk(duty, Later(story, justBack, 1)).All(r => r.Has("irabeth.trickster.back_on_duty")), "Test beat does not record.");
@@ -333,18 +333,18 @@ internal static class IrabethTricksterTests
         // Registered route: her pre-Iz private scenes stay closed; her endings return with her (G6).
         var registered = story.Scenes.Where(s => s.Relationship == "irabeth" && !s.Id.StartsWith("irabeth.trickster.", StringComparison.Ordinal)
                                                  && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToList();
-        var dead = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.personal_ready");
+        var dead = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.personal_ready");
         check(registered.All(s => !Rules.Available(story, s, dead)), "A pre-Iz scene reopens for the returned Irabeth.");
-        var end = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.trickster.cost.under_orders", Vell);
+        var end = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.trickster.cost.under_orders", Vell);
         check(Rules.Available(story, S("irabeth.ending_unfinished"), end) && !Rules.Available(story, S("irabeth.ending_loss"), end)
               && !Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), end), "G6 epilogue arbitration wrong for a lover.");
         check(Rules.VisibleParagraphs(S("irabeth.ending_unfinished").Nodes[0], end).Length == 1, "Under-orders paragraph missing on her ending.");
-        var endFriend = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.cost.under_orders", Vell);
+        var endFriend = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.cost.under_orders", Vell);
         check(Rules.Available(story, S("irabeth.trickster.epilogue.under_orders"), endFriend)
               && !story.Scenes.Where(s => s.Id.StartsWith("irabeth.ending_", StringComparison.Ordinal)).Any(s => Rules.Available(story, s, endFriend)),
             "Returned non-lover gets no page or two pages.");
         // Sol r4 INT: an early lover who dies at Iz, returns and recommits gets the recommitted page, not "unfinished".
-        var recommitted = World(story, 6, "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.committed", Vell);
+        var recommitted = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.lover", "irabeth.committed", Vell);
         var recommittedPages = story.Scenes.Where(s => s.Relationship == "irabeth" && s.Owner == "Epilogue" && Rules.Available(story, s, recommitted)).ToList();
         check(recommittedPages.Count == 1 && recommittedPages[0].Id == "irabeth.trickster.epilogue.off_the_record",
             "The recommitted lover gets the unfinished ending: " + string.Join(",", recommittedPages.Select(s => s.Id)));
@@ -375,7 +375,7 @@ internal static class IrabethTricksterTests
         var irabethCommit = S("irabeth.trickster.commit");
         foreach (bool lie in new[] { false, true })
         {
-            var ask = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
+            var ask = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
                             "irabeth.trickster.answered_her", "anevia_gone", AneviaReturned, "anevia.trickster.shares_beth");
             if (lie) ask.Flags.Add("irabeth.trickster.cost.accounting_lied");
             ask.Times["irabeth.trickster.back_on_duty"] = ask.Hour - 72;
@@ -391,7 +391,7 @@ internal static class IrabethTricksterTests
             check(outcomes.Any(r => r.Has("irabeth.trickster.declined") && !r.Has("irabeth.committed")), "Her no is gone once Nevi is home.");
         }
         // Anevia back but silent: no intimate choice, and Irabeth's no names the silence.
-        var silent = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
+        var silent = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty",
                            "irabeth.trickster.answered_her", "anevia_gone", AneviaReturned);
         silent.Times["irabeth.trickster.back_on_duty"] = silent.Hour - 72;
         var silentPages = new HashSet<string>();
@@ -406,14 +406,14 @@ internal static class IrabethTricksterTests
                                    "irabeth.after_the_shared_answer" })
             check(S(id).ForbidOverrides.TryGetValue("anevia_gone", out var lifted) && lifted == AneviaReturned, "G6(b) anevia_gone override missing: " + id);
 
-        var together = World(story, 6, "trickster.ever", "irabeth_dead", "anevia_gone", Returned, AneviaReturned, "committed");
+        var together = World(story, 6, "trickster", "trickster.ever", "irabeth_dead", "anevia_gone", Returned, AneviaReturned, "committed");
         var shared = story.Scenes.Where(s => s.Owner == "Epilogue" && (s.Relationship == "anevia" || s.Relationship == "irabeth" || s.Relationship == "tirabade")
                                              && Rules.Available(story, s, together)).ToList();
         check(shared.Count == 1 && shared[0].Id == "ending_promised" && Rules.VisibleParagraphs(shared[0].Nodes.Last(), together).Length >= 1,
             "The shared Tirabade ending does not own the committed trio's epilogue.");
 
         var second = S("irabeth.trickster.second_ask");
-        var declined = World(story, 5, "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.declined",
+        var declined = World(story, 5, "trickster", "trickster.ever", "irabeth_dead", Returned, "irabeth.trickster.back_on_duty", "irabeth.trickster.declined",
                              "anevia_gone", AneviaReturned, "anevia.trickster.shares_beth");
         declined.Times["irabeth.trickster.declined"] = declined.Hour - 96;
         var asked = new HashSet<string>();

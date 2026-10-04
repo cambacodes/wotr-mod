@@ -1209,3 +1209,18 @@ def integrate(payload):
                 raise ValueError("Conflicting world binding %s: %r vs %r" % (key, have, value))
             payload[kind][key] = value
     payload.setdefault("PortraitFallbacks", {}).setdefault("Mielarah", PORTRAIT_GUID)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'mielarah.trickster.raid.ashore',
+    'mielarah.trickster.raid.elbow',
+    'mielarah.trickster.raid.rope',
+    'mielarah.trickster.raid.whisper',
+    'mielarah.trickster.raid.wind',
+    'mielarah.trickster.storm.survivor',
+    'mielarah.trickster.storm.word',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

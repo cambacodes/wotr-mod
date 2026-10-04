@@ -260,7 +260,7 @@ internal static class NenioTricksterTests
             "Trk_Nenio_Away: the probation has no refusal, or no road to the commit.");
         check(Avail(hypVisitor, Later(story, Take(S(F + "demons_visitor"), Later(story, probation, 24), "hand", 0), 24)),
             "Trk_Nenio_Away: the question does not come to the market.");
-        check(!own.Any(s => Avail(s, World(story, 5, "trickster.ever", "trickster.failed", "nenio.dead"))) && !Avail(price, World(story, 5, "trickster.ever", "nenio.dead", "revive.nenio.available")),
+        check(!own.Any(s => Avail(s, World(story, 5, "trickster.ever", "trickster.failed", "nenio.dead"))) && !Avail(price, World(story, 5, "trickster.ever", "trickster.failed", "nenio.dead", "revive.nenio.available")),
             "Trk_Nenio_PathFailed: a loss device opens after the path is lost.");
         check(!own.Any(s => Avail(s, World(story, 5, "trickster", "trickster.ever", "nenio.dissolved", "nenio.asked_to_leave"))),
             "Trk_Nenio_Dissolved: a scene opens after 'Farewell, Nenio.'.");
@@ -309,17 +309,17 @@ internal static class NenioTricksterTests
         check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void" })
               && pages.All(s => s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))),
             "Nenio's pages are not the article, the late yes, the void and the closed page.");
-        var ch6 = World(story, 6, "trickster.ever", Started, Committed, NameFiled);
+        var ch6 = World(story, 6, "trickster", "trickster.ever", Started, Committed, NameFiled);
         check(Avail(S(P + "epilogue.article"), ch6) && !Avail(S(P + "epilogue.commit"), ch6), "Pages: the committed page is not the article.");
-        check(Avail(S(P + "epilogue.commit"), World(story, 6, "trickster.ever", Started)), "Pages: the war's end has no late yes.");
+        check(Avail(S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Started)), "Pages: the war's end has no late yes.");
         // Sol COX: the Last Call H2 survival (the bottle, the Wound closed) keeps her romance pages (ledger row 16).
         var h2 = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
-        var h2Committed = World(story, 6, new[] { "trickster.ever", Started, Committed }.Concat(h2).ToArray());
-        var h2Late = World(story, 6, new[] { "trickster.ever", Started }.Concat(h2).ToArray());
+        var h2Committed = World(story, 6, new[] { "trickster", "trickster.ever", Started, Committed }.Concat(h2).ToArray());
+        var h2Late = World(story, 6, new[] { "trickster", "trickster.ever", Started }.Concat(h2).ToArray());
         check(h2Committed.Has("trickster.commander_back") && !h2Committed.Has("trickster.cheated_death")
               && Avail(S(P + "epilogue.article"), h2Committed) && Avail(S(P + "epilogue.commit"), h2Late),
             "The Last Call H2 survival loses Nenio's romance pages.");
-        check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed")),
+        check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, "sacrifice", "ending.wound_closed")),
             "A Commander who burned closing the Wound still gets the article.");
 
         // Sol TRK: the Sphinx's servant collects in person in Chapter 5, in front of her: paid, paid in the Sphinx's own coin
@@ -345,15 +345,15 @@ internal static class NenioTricksterTests
         // Sol r3 INT: the native dissolution is never overridden by a happy page.
         foreach (var epPage in new[] { "epilogue.article", "epilogue.commit", "epilogue.void" })
             check(S(P + epPage).Forbids.Contains("nenio.dissolved"), "Sol r3 INT: " + epPage + " ignores nenio.dissolved.");
-        check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, "nenio.dissolved")),
+        check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, "nenio.dissolved")),
             "Sol r3 INT: committed-then-dissolved gets the living article.");
         foreach (var loss in new[] { "nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out" })
-            check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, loss))
-                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster.ever", Started, Committed, loss, Returned))
-                  && !Avail(S(P + "epilogue.commit"), World(story, 6, "trickster.ever", Started, loss))
-                  && !Avail(S(P + "epilogue.closed"), World(story, 6, "trickster.ever", Started, Closed, loss)),
+            check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss))
+                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss, Returned))
+                  && !Avail(S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Started, loss))
+                  && !Avail(S(P + "epilogue.closed"), World(story, 6, "trickster", "trickster.ever", Started, Closed, loss)),
                 "Sol r4 INT: a living epilogue plays over an unrecovered loss: " + loss);
-        check(!Avail(S(P + "epilogue.closed"), World(story, 6, "trickster.ever", Started, Closed, "nenio.dissolved")), "Sol r4 INT: the closed page after the dissolution.");
+        check(!Avail(S(P + "epilogue.closed"), World(story, 6, "trickster", "trickster.ever", Started, Closed, "nenio.dissolved")), "Sol r4 INT: the closed page after the dissolution.");
         check(!Avail(debt, With(owing, P + "debt.paid")), "The debt can be collected twice.");
         var article = S(P + "epilogue.article");
         var owedPara = article.Nodes[0].Paragraphs.Single(pp => pp.Requires.SequenceEqual(new[] { Owes }));

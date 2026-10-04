@@ -4,7 +4,7 @@ import io
 import json
 from pathlib import Path
 import sys
-import tempfile
+from tests.temp_directory import temporary_directory
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -109,7 +109,7 @@ class PacingCountTests(unittest.TestCase):
         report = self.report()
         alpha = {row["character"]: row for row in report["characters"]}["Alpha"]
         self.assertEqual(alpha["starts"]["1"], {"ip": 2})
-        with tempfile.TemporaryDirectory() as directory:
+        with temporary_directory() as directory:
             story = Path(directory) / "story.json"
             story.write_text(json.dumps(self.story), encoding="utf-8")
             code, text = run("--story", str(story), "--availability", str(FIXTURES / "availability-ok.json"),
@@ -195,7 +195,7 @@ class PacingHardRuleTests(unittest.TestCase):
 
     def test_hard_exit_code(self):
         self.choice["Set"].append("alpha.committed")
-        with tempfile.TemporaryDirectory() as directory:
+        with temporary_directory() as directory:
             story = Path(directory) / "story.json"
             story.write_text(json.dumps(self.story), encoding="utf-8")
             code, text = run("--story", str(story), "--availability", str(FIXTURES / "availability-ok.json"),

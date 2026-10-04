@@ -152,13 +152,13 @@ internal static class ArueshalaeTricksterTests
 
         // --- Legacy (saves that already hold the old return): Aftertaste / Terms / TermsRefusal / TermsAgain ------
         var aftertaste = S(P + "returned.aftertaste");
-        var returned3 = Later(story, World(story, 3, Drezen, "trickster.ever", P + "returned", P + "cost.fed_on_you"), 30);
+        var returned3 = Later(story, World(story, 3, Drezen, "trickster", "trickster.ever", P + "returned", P + "cost.fed_on_you"), 30);
         check(Avail(aftertaste, returned3), "Trk_Arueshalae_Aftertaste: not available after the return.");
         var tasted = First(aftertaste, returned3, "test", 0);
         check(tasted.Has(P + "aftertaste") && tasted.Has(P + "said_every_time"), "Trk_Arueshalae_Aftertaste: the test does not record her answer.");
         var terms = S(P + "terms");
         check(!Avail(terms, Later(story, tasted, 100)), "Trk_Arueshalae_Aftertaste: the commit opens in Chapter 3.");
-        var ch5Returned = Later(story, World(story, 5, Drezen, "trickster.ever", P + "returned", P + "aftertaste"), 100);
+        var ch5Returned = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "returned", P + "aftertaste"), 100);
         check(Avail(terms, ch5Returned), "Trk_Arueshalae_TermsCommit: terms not available in Chapter 5.");
         check(First(terms, ch5Returned, "question", 0).Has("arueshalae.committed"), "Trk_Arueshalae_TermsCommit: 'Both' does not commit.");
         var notYet = First(terms, ch5Returned, "question", 2);
@@ -185,8 +185,8 @@ internal static class ArueshalaeTricksterTests
         check(!own.Any(sc => Avail(sc, killed)) && !Reaches(killed, "arueshalae.committed", 5, Drezen)
               && !Reaches(killed, P + "returned", 5, Lair),
             "Trk_Arueshalae_EvilKilled: the lair kill does not close her route (a scene, a return or a commit still opens).");
-        var deadCommitted = Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae.evil_dead", "arueshalae.committed", "lastcall.active"), 10);
-        check(!Avail(lostPage, deadCommitted) && !Avail(lostPage, Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae_dead",
+        var deadCommitted = Later(story, World(story, 6, Drezen, "trickster", "trickster.ever", "arueshalae.evil_dead", "arueshalae.committed", "lastcall.active"), 10);
+        check(!Avail(lostPage, deadCommitted) && !Avail(lostPage, Later(story, World(story, 6, Drezen, "trickster", "trickster.ever", "arueshalae_dead",
                   "arueshalae.committed", "lastcall.active"), 10)),
             "Trk_Arueshalae_NoLivingCoda: a dead branch still gets her living Last Call coda.");
 
@@ -194,7 +194,7 @@ internal static class ArueshalaeTricksterTests
         var reunion = S(P + "evil.reunion");
         check(reunion.InteractionHub == "arueshalae.presence.evil" && reunion.ContactUnit == EvilUnit && reunion.Areas.SequenceEqual(new[] { Lair }),
             "The reunion is not on the lair presence.");
-        var back = Later(story, World(story, 5, Lair, "trickster.ever", "arueshalae.evil_dead", P + "returned", P + "cost.nocticula_debt"), 30);
+        var back = Later(story, World(story, 5, Lair, "trickster", "trickster.ever", "arueshalae.evil_dead", P + "returned", P + "cost.nocticula_debt"), 30);
         check(Avail(reunion, back), "Trk_Arueshalae_EvilReunion: not available.");
         check(Ch(reunion, "price", 2).Set.Contains(P + "cost.fed_on_demon") && Ch(reunion, "price", 2).Requires.Contains(P + "cost.late")
               && Ch(reunion, "price", 4).Set.Contains(P + "cost.fed_on_demon") && Ch(reunion, "price", 4).Forbids.Contains(P + "cost.late")
@@ -211,7 +211,7 @@ internal static class ArueshalaeTricksterTests
         allFailed.Flags.Add("arueshalae.presence.evil_drezen.failed"); allFailed.Flags.Add("arueshalae.presence.evil_awning.failed");
         check(Avail(letterTwin, Later(story, allFailed, 130)), "Trk_Arueshalae_EvilReunionLetter: no letter when every anchor fails.");
         var evilTerms = S(P + "evil.terms");
-        var reunitedW = Later(story, World(story, 5, Drezen, "trickster.ever", "arueshalae.evil_dead", P + "returned", P + "reunited", P + "cost.nocticula_debt"), 60);
+        var reunitedW = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.evil_dead", P + "returned", P + "reunited", P + "cost.nocticula_debt"), 60);
         check(Avail(evilTerms, reunitedW) && evilTerms.InteractionHub == "arueshalae.presence.evil_drezen", "Trk_Arueshalae_EvilTermsCommit: not available at the arcade.");
         var open = First(evilTerms, reunitedW, "ask", 0);
         check(open.Has("arueshalae.committed") && open.Has(P + "cost.open_door"), "Trk_Arueshalae_EvilTermsCommit: the open door does not commit.");
@@ -227,7 +227,7 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_Failed: the appointment is not available.");
         var appointed = First(chaplain, failed, "sword", 0);
         check(appointed.Has(P + "cost.chaplain") && appointed.Has("arueshalae.started"), "Trk_Arueshalae_Failed: the job does not stick.");
-        var ch5Chaplain = Later(story, World(story, 5, Drezen, "trickster.ever", P + "cost.chaplain"), 100);
+        var ch5Chaplain = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "cost.chaplain"), 100);
         check(First(terms, ch5Chaplain, "question", 3).Has("arueshalae.closed"), "Trk_Arueshalae_FailedTermsNeither: 'Neither' does not close.");
         check(!First(terms, ch5Chaplain, "question", 1).Has("arueshalae.committed") && First(terms, ch5Chaplain, "question", 1).Has(P + "declined"),
             "Trk_Arueshalae_FailedTermsCommit: 'only the good days' commits her to an answer she refuses (R2-1).");
@@ -241,7 +241,7 @@ internal static class ArueshalaeTricksterTests
             "The reading has no Lore (Religion) check for a Commander without the trick.");
         var alive = World(story, 3, Drezen, "trickster", "trickster.ever", T + "studied");
         check(Avail(intake, alive) && intake.EntryMythic == "PlayerIsTrickster", "The treatment's intake is not open after the reading.");
-        check(!Avail(intake, World(story, 3, Drezen, "trickster.ever")), "The intake opens without the live Trickster path.");
+        check(!Avail(intake, World(story, 3, Drezen, "trickster", "trickster.ever")), "The intake opens without the live Trickster path.");
         var patient = First(intake, alive, "her", 0);
         check(patient.Has(T + "intake") && patient.Has("arueshalae.started"), "The intake does not start the relationship.");
         var warded = Program.Copy(patient); warded.Flags.Add(Ward);
@@ -279,7 +279,7 @@ internal static class ArueshalaeTricksterTests
         var readingChoices = S(T + "studied").Nodes.Single(n => n.Id == "why").Choices;
         check(readingChoices[0].Check!.DC < readingChoices[1].Check!.DC && readingChoices[1].Check!.DC == 15, "The lore does not merely lower the reading's DC.");
         var slip = S(T + "rite_slipped");
-        var slipW = Later(story, World(story, 5, Drezen, "trickster.ever", T + "intake", T + "touched", T + "kitchen"), 60);
+        var slipW = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", T + "touched", T + "kitchen"), 60);
         check(Avail(slip, slipW) && slip.Nodes.Single(n => n.Id == "distance").Choices.All(c => c.Set.Contains("arueshalae.trickster.cost.drained")),
             "The missed rite is not a priced, visible cost with her distance to answer.");
         check(S(T + "relapse_two").Requires.Contains(T + "rite_slipped"), "The second relapse does not follow the missed rite.");
@@ -287,7 +287,7 @@ internal static class ArueshalaeTricksterTests
         var ask = proposal.Nodes.Single(n => n.Id == "ask");
         check(ask.Choices.Count == 4 && ask.Choices.All(c => c.Crusade == null && c.Alignment == null),
             "The proposal is not hers alone (yes / the saint / not yet / no, no price).");
-        var ready = Later(story, World(story, 5, Drezen, "trickster.ever", T + "intake", T + "relapse_two", T + "her_call"), 100);
+        var ready = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", T + "relapse_two", T + "her_call"), 100);
         check(Avail(proposal, ready), "The proposal is not available after the second relapse.");
         var yes = First(proposal, ready, "ask", 0);
         check(yes.Has("arueshalae.committed"), "Her proposal does not commit on yes.");
@@ -315,7 +315,7 @@ internal static class ArueshalaeTricksterTests
 
         // --- Nocticula's court.arueshalae: retired by gating (ruling 5; nothing produces the favour any more) --------
         var court = S("nocticula.trickster.court.arueshalae");
-        var owed = Later(story, World(story, 5, Drezen, "trickster.ever", "arueshalae.started", P + "returned", P + "cost.nocticula_favour", "noct.started"), 30);
+        var owed = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.started", P + "returned", P + "cost.nocticula_favour", "noct.started"), 30);
         check(Rules.IsRemote(court) && court.Relationship == "nocticula" && Retired(court) && !Avail(court, owed),
             "Trk_Nocticula_CourtArueshalae_Retired: the court still collects a favour nothing produces.");
         check(court.Nodes.Select(n => n.Id).SequenceEqual(new[] { "seal", "letter", "her_side", "chose", "night", "raised" }),
@@ -333,8 +333,8 @@ internal static class ArueshalaeTricksterTests
         foreach (var id in new[] { T + "abyss_dose", T + "old_name" })
         {
             var scene = S(id);
-            var ch4 = Later(story, World(story, 4, Drezen, "trickster.ever", T + "intake", T + "touched"), 100);
-            var ch5 = Later(story, World(story, 5, Drezen, "trickster.ever", T + "intake", T + "touched"), 100);
+            var ch4 = Later(story, World(story, 4, Drezen, "trickster", "trickster.ever", T + "intake", T + "touched"), 100);
+            var ch5 = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", T + "touched"), 100);
             check(!Avail(scene, ch4), "A physical Abyss-memory scene is offered in Chapter 4, where the hub cannot play it: " + id);
             check(Avail(scene, ch5), "The Abyss-memory scene is not available in Chapter 5, where it is told: " + id);
         }
@@ -384,7 +384,7 @@ internal static class ArueshalaeTricksterTests
               && !Rules.Available(story, S(P + "fallen.lock"), Later(story, notTonight[0], 10)),
             "'Not tonight' does not keep a reachable yes.");
         check(Rules.Available(story, S(P + "epilogue.fallen"), Later(story, doorOpen[0], 100, 6))
-              && !Rules.Available(story, S(T + "epilogue.together"), Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae.committed", T + "intake", "arueshalae.evil_recruited"), 1)),
+              && !Rules.Available(story, S(T + "epilogue.together"), Later(story, World(story, 6, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "intake", "arueshalae.evil_recruited"), 1)),
             "The recruited fallen commit has no ending, or reads the redeemed daybook ending.");
         var morning = S(T + "morning");
         var elysium = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "night", "arueshalae.elysium"), 10);
@@ -411,11 +411,11 @@ internal static class ArueshalaeTricksterTests
             "The late referral has no in-person reunion when the lair presence fails.");
         // HOW (Sol r4): chronological witnesses. The proposal waits the fast's 168 hours from the hour the relapse was earned
         // (not from a backdated fixture); a closed chaplain gets no Last Call continuation.
-        var earned = World(story, 5, Drezen, "trickster.ever", T + "intake", T + "relapse_two", T + "her_call");
+        var earned = World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", T + "relapse_two", T + "her_call");
         earned.Times[T + "relapse_two"] = earned.Hour; earned.Times[T + "her_call"] = earned.Hour;
         check(!Avail(proposal, Later(story, earned, 167)) && Avail(proposal, Later(story, earned, 168)),
             "Trk_Arueshalae_Chronology: the proposal does not open exactly at the fast's seventh day.");
-        var chapW = Later(story, World(story, 5, Drezen, "trickster.ever", P + "cost.chaplain"), 100);
+        var chapW = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "cost.chaplain"), 100);
         var refusedTerms = Program.WalkVia(terms, chapW, "question", 3);
         var againChap = S(P + "terms_again_chaplain");
         var deferredChap = Program.WalkVia(terms, chapW, "question", 2);
@@ -428,7 +428,7 @@ internal static class ArueshalaeTricksterTests
         }
         check(refusedAgain.Count > 0, "Trk_Arueshalae_LastCallClosed: the chaplain's second refusal is unreachable.");
         // CAN (Sol r4): after her release the chaplain's yes is about the appointment, not a hunger she fights.
-        var chapReleased = Later(story, World(story, 5, Drezen, "trickster.ever", P + "cost.chaplain", P + "declined", "arueshalae.back_to_reality"), 200);
+        var chapReleased = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", P + "cost.chaplain", P + "declined", "arueshalae.back_to_reality"), 200);
         var yesPages = new HashSet<string>();
         Program.Walk(againChap, chapReleased, (page, _) => yesPages.Add(page));
         check(Avail(againChap, chapReleased) && yesPages.Contains("yes_e") && !yesPages.Contains("yes"),
@@ -486,7 +486,7 @@ internal static class ArueshalaeTricksterTests
             check(!story.Scenes.Where(sc => sc.Owner == "ArueshalaeEpilogue").Any(sc => Avail(sc, Later(story, goneW, 0)))
                   && !Avail(lostPage, Later(story, lostCall, 0)),
                 "Trk_Arueshalae_ChronologyWalk: a living ending or coda plays with her " + gone + ".");
-            var committedLost = Later(story, World(story, 6, Drezen, "trickster.ever", "arueshalae.committed", T + "intake", gone), 10);
+            var committedLost = Later(story, World(story, 6, Drezen, "trickster", "trickster.ever", "arueshalae.committed", T + "intake", gone), 10);
             check(!Avail(S(T + "epilogue.together"), committedLost), "Trk_Arueshalae_NoLivingCoda: the daybook ending plays with her " + gone + ".");
         }
         // No living text names an absent Sosiel as a witness of her count or her vigil.
@@ -506,10 +506,10 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_BadDay: availability (Drezen yes; released or at the Nexus no).");
         // NM1 (Sol INT): the native companion pages are reconciled with a committed Arueshalae (E14d).
         var nm1WanderEdit = story.NativeEpilogueEdits["f76713034f4087a4f80495971c47ca7b"];
-        var nm1Ending = World(story, 6, "", "trickster.ever", "arueshalae.committed");
-        var nm1Uncommitted = World(story, 6, "", "trickster.ever");
-        var nm1Back = World(story, 6, "", "trickster.ever", "arueshalae.committed", "sacrifice", "trickster.commander_back");
-        var nm1StayedDead = World(story, 6, "", "trickster.ever", "arueshalae.committed", "sacrifice");
+        var nm1Ending = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed");
+        var nm1Uncommitted = World(story, 6, "", "trickster", "trickster.ever");
+        var nm1Back = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", "sacrifice", "trickster.commander_back");
+        var nm1StayedDead = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", "sacrifice");
         check(nm1WanderEdit.Replacement == T + "epilogue.native_wander" && Rules.WhenHolds(nm1WanderEdit.When, nm1Ending) && !Rules.WhenHolds(nm1WanderEdit.When, nm1Uncommitted)
               && Rules.IsNativeReplacement(story, S(nm1WanderEdit.Replacement)) && !S(nm1WanderEdit.Replacement).Nodes[0].Text.Contains("roam"),
             "Trk_Arueshalae_NativeEnding: the committed Arueshalae still wanders Golarion on the native page.");
@@ -521,8 +521,8 @@ internal static class ArueshalaeTricksterTests
             "Trk_Arueshalae_NativeEnding: the native page keeps her beloved dead after the Commander came back (or replaces a real death).");
         // NM1 (Sol BEL): the daybook's first page is the prescription the Commander actually wrote.
         var nm1Together = S(T + "epilogue.together").Nodes[0];
-        var nm1WatchEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_watch");
-        var nm1WantEnd = World(story, 6, "", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_want");
+        var nm1WatchEnd = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_watch");
+        var nm1WantEnd = World(story, 6, "", "trickster", "trickster.ever", "arueshalae.committed", T + "intake", T + "rx_want");
         check(!nm1Together.Text.Contains("Watch people eat")
               && Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("Watch people eat")) && !Rules.VisibleParagraphs(nm1Together, nm1WatchEnd).Any(x => x.Text.Contains("Number one was"))
               && Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("Number one was")) && !Rules.VisibleParagraphs(nm1Together, nm1WantEnd).Any(x => x.Text.Contains("Watch people eat"))

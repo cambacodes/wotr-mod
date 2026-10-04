@@ -527,3 +527,12 @@ def integrate(payload):
     start["Choices"].append(c('"I came back, as I said I would."', "first_met", requires=(FIRSTMET,),
                               forbids=("gesmerha.reunion_kept", CATCHUP)))
     first["Nodes"].append(dict(FIRST_MET_NODE, Portrait="Gesmerha"))
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'gesmerha.trickster.dead.unfinished_work',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

@@ -902,3 +902,13 @@ def integrate(payload):
     if "nenio" in revivals and revivals["nenio"] != REVIVALS["nenio"]:
         raise ValueError("Conflicting revival: nenio")
     revivals.update({k: dict(v) for k, v in REVIVALS.items()})
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'nenio.trickster.away.correction_arcade',
+    'nenio.trickster.away.correction_visitor',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

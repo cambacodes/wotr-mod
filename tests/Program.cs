@@ -718,6 +718,7 @@ internal static class Program
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
         EarnedPresenceTests.Run(story, Check);
+        EngineQ5Tests.Run(story, Check);
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
         CurrentPathTests.Run(Check);
         CurrentPathTests.RunStory(story, Check);
