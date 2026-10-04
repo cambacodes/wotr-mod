@@ -650,6 +650,11 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l12: assembled staging/finale/block corrections (after all appenders).
+    from storylines import engine_q7_l12
+    from storylines import native_facts
+    native_facts.integrate(payload)  # eng7-l12: q6b reader wiring for finale inventory.
+    engine_q7_l12.integrate(payload)
     return payload
 
 
