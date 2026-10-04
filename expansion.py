@@ -636,6 +636,8 @@ def make_expansion(*, independent_tirabade=True):
     # route and Last Call's pages, before trickster_world binds the keys the guards read.
     earned_presence.integrate(payload)
     trickster_engine(payload)
+    # eng7-l05: wire current participants before binding their transitive native inputs.
+    trickster_world.integrate_participant_inventory(payload)
     trickster_world.integrate(payload)
     if "yaniel" in payload["Relationships"]:
         yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
