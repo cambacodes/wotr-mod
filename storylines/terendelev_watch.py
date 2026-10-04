@@ -14,6 +14,7 @@ the north turret, her watch-post, where the courtship ends in the one night she 
 import copy
 
 from story_format import c, n, reaction, scene
+from storylines import foresight
 from storylines.terendelev_trickster import (
     AEON, AREELU_TOLD, PARENT_EMBODIED, CLAW, CLAW_HELD, CLOSED, COMMITTED, DREZEN, GROUNDED, HUB, HUB_FAILED, HUB_FB, HUMAN, LATE, P,
     QUEEN_FELL, REL, RETURNED, SCALE_HELD, TAILOR, TIEFLING, WOUND_OPEN)
@@ -884,6 +885,36 @@ SCENES.append(scene(P + "watch.road", "The road out of Iz", "Terendelev", 5, "",
        c("[Help her back up onto the mare.]", flags=(ROAD,))),
 ], requires=("trickster.ever", RETURNED), forbids=(CLOSED, AEON, LATE, FIRST_NIGHT), delay=4, last=5, Relationship=REL, Chapters=[5],
     Remote=True, Kind="visit", ManualOnly=True))
+
+
+# Both presence hubs use the same sold-memory variants; old answers keep their indices.
+for suffix in ("", "_awning"):
+    foresight.gap(REL, P + "watch.proof" + suffix, (("fear", 0),), "try",
+        """{n}She speaks the words again, low, with her palm flat over the dressing. The pain goes quiet, at once, completely, like a dog called to heel.{/n}
+{n}The bleeding does not stop. Under her hand the dressing darkens, slowly, as it always does.{/n}""",
+        foresight.GONE_SQUARE)
+    foresight.gap(REL, P + "after.first_night" + suffix, (("start", 1),), "turnips",
+        '''"Neither. That is the beauty of it." {n}She almost laughs.{/n} "They will be back tomorrow, and the turnips will be worse, and they will both be alive to be angry about it. I sat here all night listening to that. I cannot tell you how beautiful it was."''',
+        foresight.GONE_SQUARE)
+
+
+# The remaining laugh comparisons also describe the Commander's senses, rather than Terendelev's own memory.
+for _beat, _node, _via, _old, _new in (
+    ("after.first_night", "nothing", ("sums", 0),
+     "She laughs, and this time it is the laugh from the square, bright as a bell in cold air;",
+     "She laughs, bright as a bell in cold air;"),
+    ("after.first_night", "breakfast", ("sums", 1),
+     "And then she is laughing, the laugh from the square, bright as a bell in cold air,",
+     "And then she is laughing, bright as a bell in cold air,"),
+    ("watch.market", "ice", ("child", 0),
+     "Then Terendelev laughs, the bright, melodious laugh from the square,",
+     "Then Terendelev laughs, bright and melodious,"),
+):
+    for _suffix in ("", "_awning"):
+        _host = P + _beat + _suffix
+        _scene = next(s for s in SCENES if s["Id"] == _host)
+        _text = next(nd["Text"] for nd in _scene["Nodes"] if nd["Id"] == _node)
+        foresight.gap(REL, _host, (_via,), _node, _text.replace(_old, _new), foresight.GONE_SQUARE)
 
 
 def integrate(payload):

@@ -53,8 +53,8 @@ PAGE_SCENE = P + "page"
 MEMORY_SCENE = P + "memory"
 WATCH_SCENE = P + "fire_watch"
 OFFER_SCENE = P + "offer_line"
-# The public keys routes may read, and only through echo() and gap(), never in their own gates (12 §2.4a): Derived, each
-# holding only on a Trickster run (trickster.ever).
+# Public keys for echo(), gap(), and registered CONSUMERS (12 §2.4a).
+# PAGE_TAKEN and GATE_BELIEVED require the current path; sold memories persist on trickster.ever.
 PAGE_TAKEN = "foresight.page_taken"                          # the page was taken
 GATE_BELIEVED = "foresight.gate_believed"                    # the page's false fire was believed (the drunks were posted)
 GONE_SQUARE = "foresight.memory_gone.square_morning"         # Terendelev's promise or the festival square was paid
@@ -255,7 +255,7 @@ SCENES.append(scene(WATCH_SCENE, "A royal watch", "Thaberdine", 3,
     king("posted", '''"The east gate! Every night!" {n}He announces it to the room, which cheers without knowing why.{/n} "A royal watch, against a royal fire that hasn't happened. I like it. Very forward-looking. The beer goes on your tab, mind; watching is thirsty work. And when nothing burns, I'll tell everyone it was us that stopped it."
 {n}By the next morning the soldiers on the east gate have heard that the Commander has posted the town's drunks on their gate, and they are telling anyone who will listen what that says about their Commander's trust in them.{/n}''',
         c("Continue", flags=(GATE_WATCH,))),
-], requires=("trickster.ever", GATE_FIRE), forbids=(GATE_WATCH, "fool_king.gone"), last=5, optional=True, Relationship=REL,
+], requires=("trickster.now", GATE_FIRE), forbids=(GATE_WATCH, "fool_king.gone"), last=5, optional=True, Relationship=REL,
     Chapters=[3, 5], AnswerLists=[KING_C3, KING_C5], ReturnToList=True,
     ReturnText="{n}Thaberdine has already found something else to toast.{/n}"))
 
@@ -308,7 +308,7 @@ SCENES.append(scene(OFFER_SCENE, "The page, settled", "Shyka", 5, '"Before you a
         c("[Go on.]", forbids=(KAYLESSA_PRICE,))),
     shy("count", '''"You have taken from us twice now: once a branch, once a page. We are keeping count, little key. So is the other you."''',
         c("[Go on.]")),
-], requires=("trickster.ever", ACCEPTED), forbids=("shyka.gone",), last=5, optional=True, Relationship=REL, Chapters=[5],
+], requires=("trickster.now", ACCEPTED), forbids=("shyka.gone",), last=5, optional=True, Relationship=REL, Chapters=[5],
     AnswerLists=[OFFER_LIST], NativeReturnCue=OFFER_BACK, EntryMythic="PlayerIsTrickster", RequiresAnyGroups=[list(COSTS)]))
 
 
@@ -364,7 +364,7 @@ def _unread(key):
 # §7.3: the unread receipt comes first (no rest and no Chapter 5 line ever delivered it), then the report, then Shyka.
 LASTCALL_PARAGRAPHS = tuple(_unread(key) for key, _, _ in COMBOS) + tuple(_report(key) for key, _, _ in COMBOS) + (
     p('''Shyka, whose essence went into the Wound with the rest of the Council's, came to the Commander's table afterwards wearing the Commander's own face, and recited the lost morning aloud, word for word, as a story about somebody else. The Commander listened politely, and laughed in the right places, and asked at the end who it had happened to. I record the question. I do not record the answer, because Shyka did not give one.''',
-      requires=("trickster.ever", ACCEPTED, SHYKA_ESSENCE)),
+      requires=("trickster.now", ACCEPTED, SHYKA_ESSENCE)),
 )
 LASTCALL_PAGES = ("trickster.lastcall.page.interrupted", "trickster.lastcall.page.heroic")
 
@@ -387,7 +387,7 @@ ECHO_CAP_TOTAL, ECHO_CAP_ROUTE, ECHO_CAP_CHAPTER = 8, 1, 2
 # Mirror of 06-ROUTE-REGISTRY "Echo slots": route -> host scene of the ALLOCATED slot. A registered echo whose route and host
 # are not here stays inactive (kept in ECHOES as a proposal, absent from the export). Only the coordinator adds rows,
 # with a documented, unresolved believability problem that existing canon clues cannot solve, never merely for colour.
-ALLOCATED = {}
+ALLOCATED = {"wenduag": "wenduag.trickster.echo.abyss.prepare"}
 SENSES = ("sight", "sound", "smell", "taste", "touch")
 
 
@@ -396,7 +396,7 @@ def variant(text, requires=(), forbids=()):
     return dict(Text=text.strip(), Requires=tuple(requires), Forbids=tuple(forbids))
 
 
-def echo(rel, host, node, entry, *variants, sense, wrong, misstep, cost):
+def echo(rel, host, node, entry, *variants, sense, wrong, misstep, cost, existing=False):
     """Register one route echo (12 §2.4a, §2.9): an answer `entry` (an ACTION, never speech about foresight), appended LAST
     to node `node` of scene `host`, selectable only on a Trickster run where the page was taken (foresight.page_taken). It
     leads to a one-node beat in the chosen variant's text, whose choices are copies of the host node's own choices: the
@@ -405,7 +405,8 @@ def echo(rel, host, node, entry, *variants, sense, wrong, misstep, cost):
     `sense` (one of SENSES, or "a + b"), `wrong` (the wrong detail) and `misstep` (the mechanic of the misreading) are the
     registry axes of 06 "Echo slots"; no two echoes share a sense and a misstep. `cost` is the misreading's real price, a
     crusade resource change on the entry answer, e.g. ("Finances", -100). Enforced at integrate(): at most 8 echoes
-    mod-wide, 1 per route, 2 per chapter; unique entries; mutually exclusive variants. Echoes never set a flag."""
+    mod-wide, 1 per route, 2 per chapter; unique entries; mutually exclusive variants. Injected echoes never set a flag.
+    existing=True registers an already-authored scene without adding choices, checks or costs."""
     if not variants:
         raise ValueError("echo %s/%s: no variants" % (host, node))
     if entry in ECHO_ENTRIES:
@@ -416,7 +417,7 @@ def echo(rel, host, node, entry, *variants, sense, wrong, misstep, cost):
         raise ValueError("echo %s repeats a sense and misstep (12 §2.9)" % host)
     ECHO_ENTRIES.add(entry)
     ECHOES.append(dict(rel=rel, host=host, node=node, entry=entry, variants=list(variants), sense=sense, wrong=wrong,
-                       misstep=misstep, cost=cost))
+                       misstep=misstep, cost=cost, existing=existing))
 
 
 def _chapters(s):
@@ -433,7 +434,7 @@ def active_echoes():
 
 def integrate_echoes(payload):
     scenes = {s["Id"]: s for s in payload["Scenes"]}
-    active = active_echoes()
+    active = [e for e in active_echoes() if not e["existing"] or e["host"] in scenes]
     if len(active) > ECHO_CAP_TOTAL:
         raise ValueError("12 §2.9: %d route echoes, the cap is %d" % (len(active), ECHO_CAP_TOTAL))
     per_route, per_chapter = {}, {}
@@ -452,6 +453,18 @@ def integrate_echoes(payload):
             for b in range(a + 1, len(e["variants"])):
                 if not _exclusive(e["variants"][a], e["variants"][b]):
                     raise ValueError("echo %s: variants %d and %d can both show" % (e["host"], a, b))
+        if e["existing"]:
+            if target["Entry"] != e["entry"] or not {"trickster.now", PAGE_TAKEN}.issubset(target["Requires"]):
+                raise ValueError("echo %s: existing entry needs the current path and paid page" % e["host"])
+            host = next(nd for nd in target["Nodes"] if nd["Id"] == e["node"])
+            if len(e["variants"]) != 1 or host["Text"] != e["variants"][0]["Text"]:
+                raise ValueError("echo %s: existing registration must match its authored beat" % e["host"])
+            choices = [ch for nd in target["Nodes"] for ch in nd["Choices"]]
+            if not any(ch.get("Crusade") == dict(Resource=e["cost"][0], Amount=e["cost"][1]) for ch in choices):
+                raise ValueError("echo %s: existing misstep cost is missing" % e["host"])
+            for choice in choices:
+                choice["Requires"] = list(dict.fromkeys(choice["Requires"] + ["trickster.now", PAGE_TAKEN]))
+            continue
         host = next(nd for nd in target["Nodes"] if nd["Id"] == e["node"])
         if any(str(ch.get("Next") or "").startswith("echo.") for ch in host["Choices"]):
             raise ValueError("echo %s/%s: the node already carries an echo" % (e["host"], e["node"]))
@@ -460,7 +473,7 @@ def integrate_echoes(payload):
             node_id = "echo.%d" % v
             if any(nd["Id"] == node_id for nd in target["Nodes"]):
                 raise ValueError("echo %s: node id %s taken" % (e["host"], node_id))
-            host["Choices"].append(c(e["entry"], node_id, requires=("trickster.ever", PAGE_TAKEN) + var["Requires"],
+            host["Choices"].append(c(e["entry"], node_id, requires=("trickster.now", PAGE_TAKEN) + var["Requires"],
                                      forbids=var["Forbids"], crusade=e["cost"]))
             target["Nodes"].append(dict(Id=node_id, Speaker="Narrator", Text=var["Text"], Choices=copy.deepcopy(original),
                                         Portrait=host.get("Portrait", "")))
@@ -508,8 +521,8 @@ def integrate_gaps(payload):
 
 # --- Registration -----------------------------------------------------------------------------------------------------------
 
-DERIVED = {PAGE_TAKEN: [[ACCEPTED, "trickster.ever", "trickster.now"]],
-           GATE_BELIEVED: [[GATE_WATCH, "trickster.ever", "trickster.now"]],
+DERIVED = {PAGE_TAKEN: [["trickster.now", ACCEPTED]],
+           GATE_BELIEVED: [["trickster.now", GATE_WATCH]],
            GONE_SQUARE: [[ACCEPTED, COST_PROMISE, "trickster.ever"], [ACCEPTED, COST_SQUARE, "trickster.ever"]],
            GONE_CAVES: [[ACCEPTED, COST_CAVES, "trickster.ever"]]}
 PUBLIC = (PAGE_TAKEN, GATE_BELIEVED, GONE_SQUARE, GONE_CAVES)

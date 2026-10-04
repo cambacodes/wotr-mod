@@ -10,6 +10,16 @@ using Tirabade;
 // one echo per route per chapter, Trickster-only. Nothing outside the listed scenes reads trickster.foresight.*.
 internal static class ForesightTests
 {
+#if FORESIGHT_ACCEPTANCE
+    // Compile with StartupObject=ForesightTests for a focused gate; normal RulesTests keeps its existing entry point.
+    private static void Main(string[] args)
+    {
+        var story = System.Text.Json.JsonSerializer.Deserialize<Story>(System.IO.File.ReadAllText(args.Single()),
+            new System.Text.Json.JsonSerializerOptions { IncludeFields = true })!;
+        Run(story, (passed, message) => { if (!passed) throw new Exception(message); });
+    }
+#endif
+
     private const string P = "trickster.foresight.";
     private const string Accepted = P + "accepted", Raised = P + "raised", GateFire = P + "gate_fire", GateWatch = P + "gate_watch";
     private const string Promise = P + "cost.promise", Square = P + "cost.square", Caves = P + "cost.caves";
@@ -75,7 +85,7 @@ internal static class ForesightTests
               && !story.Derived.ContainsKey("foresight.harem.eligible")
               && ours.All(s => s.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith(P, StringComparison.Ordinal))),
             "Foresight_Ally: the page is not a framework relationship, or it sets something outside trickster.foresight.* (Shyka is no romance).");
-        check(ours.Length == 7 && ours.All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever")),
+        check(ours.Length == 7 && ours.All(s => s.Requires.Contains("trickster") || s.Requires.Contains("trickster.ever") || s.Requires.Contains("trickster.now")),
             "Foresight_TricksterOnly: a foresight scene is not gated on the Trickster.");
         check(page.AnswerLists.SequenceEqual(new[] { ShykaList }) && page.NativeReturnCue == ShykaBack && page.EntryMythic == "PlayerIsTrickster"
               && Rules.MythicNames.Contains(page.EntryMythic) && page.Chapters.SequenceEqual(new[] { 3, 5 }) && page.MaxChapter == 5,
@@ -264,7 +274,7 @@ internal static class ForesightTests
         // 6. The gate contract (user rule 2026-10-03; replaces Foresight_NeverGates): the page is the lock-in gate of the
         // fate-bending timeline. trickster.foresight.* is read only by the page's own scenes and Last Call's pages; routes read
         // only the four public foresight.* keys, and only as listed consumers: echo and gap choices, or a scene registered in
-        // foresight.CONSUMERS (none yet; the household stance is W0c's). Every consumer is tested with the page and without it.
+        // foresight.CONSUMERS (household stance and Wenduag pilot). Every consumer is tested with the page and without it.
         var consumers = new Dictionary<string, string>();   // scene id -> public key required at scene level (CONSUMERS)
         foreach (var s in story.Scenes.Where(s => !Readers.Contains(s.Id)))
         {
@@ -273,13 +283,51 @@ internal static class ForesightTests
                 consumers[s.Id] = k;
             foreach (var node in s.Nodes)
                 foreach (var c in node.Choices.Where(c => c.Requires.Any(k => k.StartsWith("foresight.", StringComparison.Ordinal))))
-                    check(c.Next != null && (c.Next.StartsWith("echo.", StringComparison.Ordinal) || c.Next.StartsWith("gap.", StringComparison.Ordinal)),
+                    check(s.Id == "wenduag.trickster.echo.abyss.prepare" || c.Next != null && (c.Next.StartsWith("echo.", StringComparison.Ordinal) || c.Next.StartsWith("gap.", StringComparison.Ordinal)),
                         "Foresight_GateContract: " + s.Id + "/" + node.Id + " reads the page in an unlisted choice.");
         }
-        check(consumers.Count == 0, "Foresight_GateContract: an unlisted scene is gated on the page: " + string.Join(", ", consumers.Keys));
+        check(consumers.Count > 0 && consumers.All(kv => kv.Value == PageTaken &&
+                  (kv.Key.StartsWith("household.", StringComparison.Ordinal) || kv.Key.StartsWith("wenduag.trickster.echo.abyss.", StringComparison.Ordinal))),
+            "Foresight_GateContract: an unlisted scene is gated on the page: " + string.Join(", ", consumers.Keys));
+        foreach (var id in consumers.Keys)
+        {
+            var consumer = S(id);
+            var held = World(story, consumer.MinChapter, consumer.Requires.Concat(consumer.RequiresAny)
+                .Concat(consumer.RequiresAnyGroups.Select(g => g[0]))
+                .Where(k => !story.Derived.ContainsKey(k)).Concat(new[] { "trickster", Accepted, Promise, GateFire, "seelah.committed" }).ToArray());
+            held.Area = consumer.Areas.FirstOrDefault() ?? "";
+            held.Flags.ExceptWith(consumer.Forbids);
+            held.AvailableContacts.UnionWith(consumer.Participants.SelectMany(r =>
+                story.Scenes.Where(sc => sc.Relationship == r && sc.ContactUnit != null).Select(sc => sc.ContactUnit!)));
+            if (consumer.ContactUnit != null) held.AvailableContacts.Add(consumer.ContactUnit);
+            if (consumer.ContactUnit != null) held.SceneContacts.Add(consumer.Id);
+            // Fill independent earned requirements before testing only the page/path gate.
+            held.Flags.UnionWith(consumer.Requires.Where(k => k != PageTaken && k != "household.stance_eligible"));
+            foreach (var f in held.Flags) held.Times[f] = 0;
+            Rules.Complete(story, held);
+            var bare = Program.Copy(held);
+            bare.Flags.Remove(Accepted);
+            bare.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+            Rules.Complete(story, bare);
+            check(Rules.Match(consumer.Requires.Where(k => k != PageTaken && k != "household.stance_eligible"),
+                              consumer.Forbids, bare),
+                "Foresight_GateContract: page-free control lost an independent prerequisite: " + id);
+            check(Avail(consumer, held) && !Avail(consumer, bare),
+                "Foresight_GateContract: consumer unavailable with page or available without it: " + id);
+            foreach (var path in new[] { "legend", "dragon", "swarm", "trickster.failed" })
+            {
+                var former = Program.Copy(held);
+                former.Flags.Add("trickster.was");
+                former.Flags.Add(path);
+                former.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+                Rules.Complete(story, former);
+                check(!Avail(consumer, former), "Foresight_PathChanged: consumer remains available on " + path + ": " + id);
+            }
+        }
         check(story.Derived.Where(d => d.Value.SelectMany(g => g).Any(k => k.StartsWith(P, StringComparison.Ordinal))).Select(d => d.Key).OrderBy(k => k)
                   .SequenceEqual(new[] { GateBelieved, GoneCaves, GoneSquare, PageTaken }.OrderBy(k => k))
-              && new[] { PageTaken, GateBelieved, GoneSquare, GoneCaves }.All(k => story.Derived[k].All(g => g.Contains("trickster.ever"))),
+              && new[] { PageTaken, GateBelieved }.All(k => story.Derived[k].All(g => g.Contains("trickster.now")))
+              && new[] { GoneSquare, GoneCaves }.All(k => story.Derived[k].All(g => g.Contains("trickster.ever") && !g.Contains("trickster.now"))),
             "Foresight_GateContract: a Derived key outside the public four reads the page, or a public key holds off-Trickster.");
         // With and without, for every gated consumer: the page's own gated scenes, then each echo and gap choice.
         var withPage = World(story, 5, "trickster", "trickster.ever", Accepted, Promise, GateFire, memory.Id);
@@ -301,7 +349,51 @@ internal static class ForesightTests
                         "Foresight_GateContract: " + s.Id + "/" + node.Id + " is selectable without the page, or never with it.");
                 }
 
-        // Off-Trickster: nothing fires. A world with the page's flags but no Trickster derives nothing and shows nothing.
+        // New-save sequence: take the page, post the watch, then leave the path.
+        var watched = Program.WalkVia(watch, Later(success.First(), 12), "ask", 0).First();
+        var purchased = Later(watched, 0, 4, Essence);
+        var cavePurchase = Later(Program.WalkVia(page, ch3, "m1_pick", 2).First(), 0, 4);
+        var pilot = S(Rules.WenduagEchoPrefix + "prepare");
+        purchased = Later(purchased, 0, null, "lann.in_party", Rules.WenduagEchoPrefix + "adapter_available");
+        check(purchased.Has(PageTaken) && purchased.Has(GateBelieved) && purchased.Has(GoneSquare) && Avail(pilot, purchased),
+            "Foresight_PathChanged: continuing Chapter 4 Trickster control lost page/history.");
+        foreach (var path in new[] { "legend", "dragon", "swarm", "trickster.failed" })
+        {
+            var formerCaves = Program.Copy(cavePurchase);
+            formerCaves.Flags.Remove("trickster");
+            formerCaves.Flags.Add("trickster.was");
+            formerCaves.Flags.Add(path);
+            formerCaves.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+            Rules.Complete(story, formerCaves);
+            check(formerCaves.Has(GoneCaves) && !formerCaves.Has(PageTaken)
+                  && formerCaves.Times[Caves] == cavePurchase.Times[Caves],
+                "Foresight_PathChanged: caves payment/history vanishes after " + path);
+            var former = Program.Copy(purchased);
+            former.Flags.Remove("trickster");
+            former.Flags.Add("trickster.was");
+            former.Flags.Add(path);
+            former.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+            Rules.Complete(story, former);
+            check(former.Has("trickster.ever") && former.Has(Accepted) && former.Has(Promise) && former.Has(GateWatch)
+                  && former.Times[Accepted] == purchased.Times[Accepted] && former.Times[Promise] == purchased.Times[Promise]
+                  && former.Has(GoneSquare) && !former.Has(PageTaken) && !former.Has(GateBelieved)
+                  && !Avail(pilot, former) && !Avail(page, Later(former, 0, 3)) && !Avail(watch, Later(former, 0, 5)) && !Avail(offer, Later(former, 0, 5)),
+                "Foresight_PathChanged: new outcomes survive path loss or historical payment/timestamps vanish: " + path);
+            var ending = Later(former, 0, 6);
+            check(interrupted.Nodes[0].Paragraphs.Where(p => p.Requires.Contains(Essence)).All(p => !Shown(p, ending))
+                  && reports.All(r => r.Count(p => Shown(p, ending)) == 1),
+                "Foresight_PathChanged: Shyka visits off-path or the historical report disappears: " + path);
+            foreach (var scene in story.Scenes)
+                foreach (var choice in scene.Nodes.SelectMany(n => n.Choices).Where(c => c.Requires.Contains(PageTaken)))
+                {
+                    var echoFormer = Program.Copy(former);
+                    echoFormer.Flags.UnionWith(choice.Requires.Where(k => k != PageTaken && k != "trickster.now"));
+                    check(!Rules.Match(choice.Requires, choice.Forbids, echoFormer),
+                        "Foresight_PathChanged: echo selectable after path loss: " + scene.Id);
+                }
+        }
+
+        // Never-Trickster control: unearned page flags derive no public keys.
         var off = World(story, 5, Accepted, Promise, Square, Caves, Raised, GateFire, GateWatch, memory.Id);
         check(!off.Has(PageTaken) && !off.Has(GateBelieved) && !off.Has(GoneSquare) && !off.Has(GoneCaves)
               && ours.All(s => !Avail(s, off) && !Avail(s, Later(off, 0, 3)))
@@ -313,8 +405,9 @@ internal static class ForesightTests
         // Only coordinator-allocated echoes are exported (foresight.ALLOCATED, 06 "Echo slots"); tests/test_foresight_echo.py
         // exercises the API with allocations. Every exported echo is checked here.
         // 12 §2.9 budget: at most 8 route echoes mod-wide, 1 per route, 2 per chapter across the roster.
-        var perChapter = hosts.SelectMany(h => (h.Chapters.Length > 0 ? h.Chapters : Enumerable.Range(h.MinChapter, h.MaxChapter - h.MinChapter + 1)).Select(ch => ch));
-        check(hosts.Length <= 8 && hosts.GroupBy(h => h.Relationship).All(g => g.Count() <= 1) && perChapter.GroupBy(x => x).All(g => g.Count() <= 2),
+        var budgetHosts = hosts.Concat(new[] { pilot }).ToArray();
+        var perChapter = budgetHosts.SelectMany(h => (h.Chapters.Length > 0 ? h.Chapters : Enumerable.Range(h.MinChapter, h.MaxChapter - h.MinChapter + 1)).Select(ch => ch));
+        check(budgetHosts.Length <= 8 && budgetHosts.GroupBy(h => h.Relationship).All(g => g.Count() <= 1) && perChapter.GroupBy(x => x).All(g => g.Count() <= 2),
             "Foresight_EchoBudget: more than 8 route echoes, more than one for a route, or more than two in a chapter.");
         var entries = new List<string>();
         foreach (var host in hosts)
@@ -325,17 +418,17 @@ internal static class ForesightTests
             var own = hostNode.Choices.Take(hostNode.Choices.Count - echoChoices.Count).ToList();
             entries.Add(echoChoices[0].Text);
             check(hostNode.Choices.Skip(own.Count).All(echoChoices.Contains) && echoChoices.All(c => c.Set.Length == 0 && !c.Abort && c.Check == null
-                      && c.Requires.Contains(PageTaken) && c.Requires.Contains("trickster.ever") && c.Crusade != null && c.Crusade.Amount < 0),
+                      && c.Requires.Contains(PageTaken) && c.Requires.Contains("trickster.now") && c.Crusade != null && c.Crusade.Amount < 0),
                 "Foresight_Echo: an echo in " + host.Id + " is not appended last, costs nothing, or sets, checks or skips anything.");
             string Sig(Choice c) => string.Join("|", c.Text, c.Next, c.Abort, string.Join(",", c.Set), string.Join(",", c.Requires), string.Join(",", c.Forbids),
                 c.Check == null ? "" : c.Check.Skill + c.Check.DC + c.Check.Success + c.Check.Failure, c.NativeNext, c.Mythic, c.Crusade?.Amount);
             check(echoNodes.All(e => e.Choices.Select(Sig).SequenceEqual(own.Select(Sig))) && echoNodes.All(e => e.Text.Length < 1200 && e.Text.Contains("Shyka's page")),
                 "Foresight_Echo: an echo in " + host.Id + " does not continue with the host node's own choices, or runs long.");
-            var keys = echoChoices.SelectMany(c => c.Requires.Concat(c.Forbids)).Where(k => k != PageTaken && k != "trickster.ever").Distinct().ToArray();
+            var keys = echoChoices.SelectMany(c => c.Requires.Concat(c.Forbids)).Where(k => k != PageTaken && k != "trickster.now").Distinct().ToArray();
             for (int mask = 0; mask < 1 << keys.Length; mask++)
             {
                 var held = new Snapshot();
-                held.Flags.Add(PageTaken); held.Flags.Add("trickster.ever");
+                held.Flags.Add(PageTaken); held.Flags.Add("trickster.now");
                 for (int i = 0; i < keys.Length; i++) if ((mask & (1 << i)) != 0) held.Flags.Add(keys[i]);
                 check(echoChoices.Count(c => Rules.Match(c.Requires, c.Forbids, held)) == 1, "Foresight_Echo: echo variants in " + host.Id + " overlap or leave a gap.");
             }
@@ -364,8 +457,32 @@ internal static class ForesightTests
               && new HashSet<string>(Program.Walk(square, sqBase).Select(o => Key(o, sqBase.Flags))).SetEquals(paidOut.Select(o => Key(o, sqPaid.Flags))),
             "Foresight_GapNeutral: the sold morning still plays as remembered, or changes the memory page's outcomes.");
 
-        // Every route still works without the page: no route scene requires a foresight key to be available (checked above),
-        // every echo and gap is neutral, and the page's own scenes are optional.
+        foreach (string suffix in new[] { "", "_awning" })
+            foreach (string? sold in new string?[] { null, Promise, Square, Caves })
+                foreach (string beat in new[] { "watch.proof", "after.first_night", "watch.market" })
+                {
+                    var flags = new List<string> { "trickster", "terendelev.trickster.returned" };
+                    if (beat != "after.first_night") flags.Add("terendelev.trickster.first_night_seen");
+                    if (sold != null) flags.AddRange(new[] { Accepted, sold });
+                    var world = World(story, 5, flags.ToArray());
+                    var host = S("terendelev.trickster." + beat + suffix);
+                    var seen = new List<string>();
+                    var result = Program.Walk(host, world, (id, _) => seen.Add(id));
+                    var targets = beat == "watch.proof" ? new[] { "try" }
+                        : beat == "watch.market" ? new[] { "ice" } : new[] { "turnips", "nothing", "breakfast" };
+                    foreach (var target in targets)
+                    {
+                        bool gap = sold == Promise || sold == Square;
+                        check(seen.Contains(gap ? "gap." + target : target) && !seen.Contains(gap ? target : "gap." + target),
+                            "Foresight_GapWatch: sold memory selected the wrong wording: " + host.Id + "/" + target);
+                    }
+                    var bare = World(story, 5, flags.Where(f => f != Accepted && f != sold).ToArray());
+                    check(new HashSet<string>(result.Select(o => Key(o, world.Flags)))
+                              .SetEquals(Program.Walk(host, bare).Select(o => Key(o, bare.Flags))),
+                        "Foresight_GapWatch: memory wording changed outcomes: " + host.Id);
+                }
+
+        // Earned gates remain legitimate; the page itself stays optional.
         check(ours.Where(s => !s.Reaction).All(s => s.Optional), "Foresight_Optional: a foresight scene is not optional.");
         Console.WriteLine("PASS: Shyka's page (12): the bargain and its prices, the memory and its fallback, the misstep, the Chapter 5 line, the witnesses, Last Call, the Ledger, the gate contract, off-Trickster, the echo budget and the gap.");
     }

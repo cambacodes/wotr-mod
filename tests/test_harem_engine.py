@@ -65,7 +65,10 @@ class HouseholdEngine(unittest.TestCase):
         rrt_verify.sim_complete(model, state)
         offer = model.by_id['household.table.offered']
         self.assertFalse(rrt_verify.sim_available(model, offer, state))
-        state.flags.add(household.PAGE_TAKEN)
+        state.flags.update([
+            "trickster.foresight.accepted",
+            "trickster.foresight.cost.promise",
+        ])
         rrt_verify.sim_complete(model, state)
         self.assertTrue(rrt_verify.sim_available(model, offer, state))
         state.flags.remove('trickster')
