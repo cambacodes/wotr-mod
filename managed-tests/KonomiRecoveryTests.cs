@@ -117,6 +117,13 @@ internal static class KonomiRecoveryTests
         Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
         life = Observe(actor);
         check(Lost(), "Return then death is not a loss");
+        life = Observe(null);
+        check(Lost(), "Unloading erased death after a confirmed recall");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
+        Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", false);
+        life = Observe(actor);
+        check(Lost(), "An old confirmed recall erased a later saved death");
+        Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
         life = null; restoration = null;
         life = Observe(actor); life = Observe(actor);
         check(Lost(), "Repeated initial death was lost");
@@ -230,6 +237,16 @@ internal static class KonomiRecoveryTests
                 "Saved restoration does not reach the unloaded snapshot");
             bool Proof() => (bool)service.GetMethod("HasVerifiedReturn", statics)!.Invoke(null, new object[] { actor })!;
             check(!Proof(), "Confirmed old proof authorized a currently dead actor");
+            life = Observe(actor);
+            player.SettingsList["RanRomance.Tirabade.KonomiLifecycle"] = JsonConvert.SerializeObject(life);
+            lifecycleSnapshot = new Tirabade.Snapshot();
+            service.GetMethod("ReadLifecycle", statics)!.Invoke(null, new object[] { lifecycleSnapshot });
+            check(lifecycleSnapshot.Has("konomi.death_unreturned") && !lifecycleSnapshot.Has("konomi.death_restored"),
+                "Persisted death after recall did not survive native SettingsList storage");
+            service.GetMethod("Save", statics)!.Invoke(null, new[] { attempt });
+            lifecycleSnapshot = new Tirabade.Snapshot();
+            service.GetMethod("ReadLifecycle", statics)!.Invoke(null, new object[] { lifecycleSnapshot });
+            check(lifecycleSnapshot.Has("konomi.death_unreturned"), "Repeated confirmed checkpoint erased the later death");
             Set(actor.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
             Set(actor.State, typeof(UnitState), "<IsFinallyDead>k__BackingField", false);
             check(Proof() && spawner.HasDied, "Verified same-actor life requires erasing native HasDied history");

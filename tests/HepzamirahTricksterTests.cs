@@ -340,6 +340,23 @@ internal static class HepzamirahTricksterTests
         check(Choice(hunt, "where", 1).Check?.Skill == "SkillStealth" && Play(hunt, Later(story, nights, 48)).Any(r => r.Has(P + "cost.followed")),
             "Following her against her term costs nothing.");
 
+        // Every hunt terminal withholds the same physical contact, even when the snapshot retains the old body.
+        var terminals = Play(hunt, Later(story, nights, 48));
+        check(terminals.Count == 4, "Hunt fixture must walk all four terminals.");
+        foreach (var terminal in terminals)
+        {
+            var visits = yard.Where(s => s.Id != hunt.Id && Rules.Available(story, s, Later(story, terminal, 121))).ToArray();
+            check(visits.Length > 0, "Hunt fixture has no ordinary visits to check.");
+            foreach (int hours in new[] { 0, 24, 119, 120, 121 })
+            {
+                var at = Later(story, terminal, hours);
+                check(Rules.PresenceWanted(story.Presences["hepzamirah.presence"], at) == (hours >= 120), "Hunt presence interval: " + hours);
+                foreach (var visit in visits)
+                    check(Rules.ContactAvailable(story, visit, at) == (hours >= 120)
+                        && Rules.Available(story, visit, at) == (hours >= 120), "Stale hunt contact: " + visit.Id + "/" + hours);
+            }
+        }
+
         // No other route's flag is required, closed or forbidden by her scenes; her closure touches nobody else.
         foreach (var s in story.Scenes.Where(s => s.Relationship != "hepzamirah"))
             check(!s.Requires.Contains("hepzamirah.closed") && !s.Forbids.Contains("hepzamirah.closed"), "Another route reads Hepzamirah's closure: " + s.Id);

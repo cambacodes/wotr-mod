@@ -322,6 +322,7 @@ internal static class TargonaTricksterTests
         check(birdPages.SetEquals(birds.Nodes.Select(n => n.Id)) && namePages.SetEquals(names.Nodes.Select(n => n.Id)),
             "Unreached page of Heaven's blood or of her answer.");
 
+        presence = story.Presences["targona.presence"];
         // Sol quality pass (INT 58): the freed state reaches her with no contact supplied by the fixture. The wand night
         // alone must make her copy wanted and spawnable; only then does the contact exist, and the hub walks to the commit.
         foreach (var trick in new[] { true, false })

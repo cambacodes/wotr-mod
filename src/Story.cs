@@ -185,6 +185,16 @@ namespace Tirabade
         // Hours that must pass after the latest timed Requires flag before the presence is wanted (0: at once), as
         // Scene.DelayHours: someone who is away for a while does not stand at her mark in the meantime.
         public int DelayHours;
+        // Shared with physical contact: optional timed events can withhold a presence or expire a witness.
+        public ContactWindow[] ContactWindows = Array.Empty<ContactWindow>();
+    }
+
+    public sealed class ContactWindow
+    {
+        public string Flag = "";
+        public int MinAgeHours;
+        public int? MaxAgeHours;
+        public string[] SupersededBy = Array.Empty<string>();
     }
 
     // E16: one native opener (see Story.Openers).
@@ -806,7 +816,10 @@ namespace Tirabade
             if (!ParticipantsAvailable(story, scene, state)) return false;
             if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
-            return (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit))
+            var contacts = scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit });
+            return story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+                .All(p => ContactWindowsAvailable(p.ContactWindows, state))
+                && (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit))
                 && scene.AdditionalContactUnits.All(state.AvailableContacts.Contains)
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
@@ -983,11 +996,21 @@ namespace Tirabade
 
         public const string ServedPrefix = "served.";
 
+        // An unproduced optional event has no effect. Once produced, timed windows require saved timestamps;
+        // missing, negative or future evidence fails closed. Superseding flags retire that witness.
+        public static bool ContactWindowsAvailable(IEnumerable<ContactWindow> windows, Snapshot state) => windows.All(window =>
+            !state.Has(window.Flag) || !window.SupersededBy.Any(state.Has)
+                && ((window.MinAgeHours == 0 && window.MaxAgeHours == null)
+                    || state.Times.TryGetValue(window.Flag, out int at) && at >= 0 && at <= state.Hour
+                        && (long)state.Hour - at >= window.MinAgeHours
+                        && (window.MaxAgeHours == null || (long)state.Hour - at <= window.MaxAgeHours)));
+
         // E12: the presence is wanted in this snapshot (area, chapter window, Requires, Forbids).
         public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
             && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
             && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has)
             && presence.RequiresAnyGroups.All(group => group.Any(state.Has))
+            && ContactWindowsAvailable(presence.ContactWindows, state)
             && (presence.DelayHours <= 0 || state.Hour - presence.Requires.Where(state.Times.ContainsKey).Select(k => state.Times[k])
                 .DefaultIfEmpty(state.Hour - presence.DelayHours).Max() >= presence.DelayHours);
 
@@ -1738,6 +1761,11 @@ namespace Tirabade
                             || p.At.Distance <= 0f || p.At.Distance > 10f))
                     || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter || p.DelayHours < 0
                     || p.RequiresAnyGroups == null || p.RequiresAnyGroups.Any(g => g == null || g.Length == 0)
+                    || p.ContactWindows == null || p.ContactWindows.Any(w => w == null || string.IsNullOrWhiteSpace(w.Flag) || !Known(w.Flag)
+                        || w.MinAgeHours < 0 || w.MaxAgeHours < w.MinAgeHours
+                        || w.SupersededBy == null || w.SupersededBy.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f) || f == w.Flag)
+                        || w.SupersededBy.Distinct().Count() != w.SupersededBy.Length)
+                    || p.ContactWindows.Select(w => w.Flag).Distinct().Count() != p.ContactWindows.Length
                     || p.Requires.Concat(p.Forbids).Concat(p.RequiresAnyGroups.SelectMany(g => g)).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))
                     || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key))
@@ -1859,7 +1887,7 @@ namespace Tirabade
             {
                 var spec = pair.Value;
                 var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
-                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship, relationship);
+                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship!, relationship);
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0

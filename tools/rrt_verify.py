@@ -826,6 +826,10 @@ def validate(model):
                     or b in r.get("UnavailableFlags", []) or any(x["ClosedFlag"] == b for x in rels.values())):
                 errs.append("Invalid unavailable override %s/%s" % (k, a))
     known = model.authored | set(model.native) | model.builtin_derived | set(model.latches) | set(model.composites)
+    for key, p in (st.get("Presences") or {}).items():
+        windows = p.get("ContactWindows", [])
+        if not contact_windows_valid(windows, known):
+            errs.append("Invalid presence contact windows: " + key)
     for k, groups in model.composites.items():
         if (not k or k in model.authored or k in model.native or k in model.builtin_derived or k in model.latches
                 or k.startswith(("rrt.degraded.", "served.", "hour.", "revive.")) or not groups or any(not g for g in groups)
@@ -1598,8 +1602,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
                 want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue|BlueprintAnswer|BlueprintDialog", "NativeEpilogueEdits.Parent." + g),
                          (e.get("Dialog"), "BlueprintDialog", "NativeEpilogueEdits.Dialog." + g)]
                 continue
-            want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g),
-                     (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueEdits." + g)]
+            want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g)]
+            if e.get("Sequence"):
+                want.append((e["Sequence"], "BlueprintCueSequence", "NativeEpilogueEdits." + g))
         for g, e in (story.get("NativeEpilogueSuppressions") or {}).items():   # E14d extension: hidden native cues
             want += [(g, "BlueprintCue", "NativeEpilogueSuppressions"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueSuppressions." + g),
                      (e.get("Sequence"), "BlueprintCueSequence", "NativeEpilogueSuppressions." + g)]
@@ -1911,6 +1916,56 @@ def sim_complete(model, st):
             st.flags.add(k)
 
 
+def contact_windows_valid(windows, known):
+    if not isinstance(windows, list): return False
+    flags = []
+    for window in windows:
+        if not isinstance(window, dict): return False
+        flag = window.get("Flag")
+        minimum, maximum = window.get("MinAgeHours", 0), window.get("MaxAgeHours")
+        superseded = window.get("SupersededBy", [])
+        if (not flag or flag not in known or type(minimum) is not int or minimum < 0
+                or maximum is not None and (type(maximum) is not int or maximum < minimum)
+                or not isinstance(superseded, list) or any(f not in known or f == flag for f in superseded)
+                or len(set(superseded)) != len(superseded)): return False
+        flags.append(flag)
+    return len(set(flags)) == len(flags)
+
+
+def contact_windows_available(windows, st):
+    """Mirror Rules.ContactWindowsAvailable, including missing/future timestamp rejection."""
+    for window in windows:
+        if window["Flag"] not in st.flags: continue
+        if any(f in st.flags for f in window.get("SupersededBy", [])): return False
+        minimum, maximum = window.get("MinAgeHours", 0), window.get("MaxAgeHours")
+        if minimum == 0 and maximum is None: continue
+        at = st.times.get(window["Flag"])
+        if at is None or at < 0 or at > st.hour or st.hour - at < minimum: return False
+        if maximum is not None and st.hour - at > maximum: return False
+    return True
+
+
+def presence_wanted(p, st, area):
+    """Mirror Rules.PresenceWanted for timestamp and stale-contact fixtures."""
+    if (area != p["Area"] or not p.get("MinChapter", 1) <= st.chapter <= p.get("MaxChapter", 6)
+            or not all(f in st.flags for f in p.get("Requires", []))
+            or any(f in st.flags for f in p.get("Forbids", []))
+            or not all(any(f in st.flags for f in g) for g in p.get("RequiresAnyGroups", []))
+            or not contact_windows_available(p.get("ContactWindows", []), st)): return False
+    delay = p.get("DelayHours", 0)
+    last = max([st.times[f] for f in p.get("Requires", []) if f in st.times] or [st.hour - delay])
+    return st.hour - last >= delay
+
+
+def contact_windows_for_scene(model, s, st, area=None):
+    units = {s.get("ContactUnit"), *s.get("AdditionalContactUnits", [])}
+    # Simulated availability assumes the player is in a bound area, as it does for native contacts.
+    areas = [area] if area is not None else s.get("Areas", [])
+    return all(contact_windows_available(p.get("ContactWindows", []), st)
+               for p in (model.story.get("Presences") or {}).values()
+               if p["Unit"] in units and (not areas or p["Area"] in areas))
+
+
 def sim_available(model, s, st):
     """Mirror of Rules.Available with every contact present and the player in the right area (Recovery scenes excluded)."""
     ch = st.chapter
@@ -1948,6 +2003,7 @@ def sim_available(model, s, st):
         if any(f in st.flags and overrides.get(f) not in st.flags for f in woman.get("UnavailableFlags", [])): return False
     if is_epilogue(s): return True
     if s["Recovery"] is not None: return False
+    if not contact_windows_for_scene(model, s, st): return False
     rel = model.rels.get(s["Relationship"], {})
     if rel.get("ClosedFlag") in st.flags and s["AfterRecovery"] is None: return False
     detects = device_detects(rel, s) if s["TricksterDevice"] else set()

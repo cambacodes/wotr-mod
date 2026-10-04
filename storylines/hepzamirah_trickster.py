@@ -137,6 +137,7 @@ PRESENCES = {
     # and the epilogue page carries the commit (no letter twin: the Chapter 5 letter cap).
     PRESENCE: dict(Unit=BODY_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=SMITH, Side="right", Distance=2.5),
                    Requires=["trickster.ever", RET], Forbids=[CLOSED], MinChapter=5, MaxChapter=5, AnswerLists=[],
+                   ContactWindows=[dict(Flag=P + "bond.the_hunt", MinAgeHours=120)],
                    Dialog="hub",
                    Greeting="{n}Hepzamirah has taken the corner of the smith's yard where the heat of the forge is worst. "
                             "She does not turn her head. The milk-white eye is on your side.{/n} \"Clown.\""),

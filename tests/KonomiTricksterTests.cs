@@ -61,7 +61,7 @@ internal static class KonomiTricksterTests
               && presence.Mode == "reuse-native" && presence.At?.Locator == "e6a7de2a-ce6f-4413-b24d-06daf1990e4c"
               && presence.Requires.Contains("konomi.trickster.presence_on"), "Konomi presence missing.");
         var joke = late.Nodes[0].Choices[0];
-        check(joke.Mythic == "PlayerIsTrickster" && joke.Alignment?.Direction == "Chaotic" && joke.Alignment.Value == 1,
+        check(joke.Mythic == "PlayerIsTrickster" && joke.Alignment?.Direction == "Chaotic" && joke.Alignment?.Value == 1,
             "The shout after the carriage lost its price.");
         var bluff = recess.Nodes.Single(n => n.Id == "price").Choices[0].Check;
         check(bluff != null && bluff.Skill == "CheckBluff" && bluff.DC == 30 && bluff.Success == "read" && bluff.Failure == "outfoxed",
@@ -87,7 +87,7 @@ internal static class KonomiTricksterTests
         // Polish 9b: no word made true. The minute goes to the Chancellor and the driver is bought, on the page, at a price.
         var bought = late.Nodes.Single(n => n.Id == "driver").Choices[2];
         check(pages.Contains("driver") && shouted[0].Has("konomi.trickster.cost.driver_paid") && bought.Crusade?.Resource == "Finances"
-              && bought.Crusade.Amount == -150 && bought.Next == "gate", "The road loops by itself again.");
+              && bought.Crusade?.Amount == -150 && bought.Next == "gate", "The road loops by itself again.");
         var driverChoices = late.Nodes.Single(n => n.Id == "driver").Choices;
         check(driverChoices.Count == 4 && driverChoices[0].Forbids.Contains("konomi.dismissed") && driverChoices[1].Forbids.Contains("konomi.dismissed")
               && driverChoices[3].Abort, "PP5: the driver's choices were reordered instead of retired and appended.");
@@ -139,7 +139,7 @@ internal static class KonomiTricksterTests
         var recessed = World(story, 5, "trickster.ever", "konomi.dismissed", "konomi.office_completed", "konomi.trickster.recessed");
         check(Rules.Available(story, terms, recessed), "Trk_Konomi_Terms: terms unavailable.");
         var price = terms.Nodes.Single(n => n.Id == "price").Choices;
-        check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade.Amount == -500 && price[1].Crusade?.Amount == -500,
+        check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade?.Amount == -500 && price[1].Crusade?.Amount == -500,
             "The letter to Nerosyan lost its price.");
         var settled = Program.Walk(terms, recessed);
         check(settled.All(r => !r.Has("konomi.committed")), "Trk_Konomi_Terms: commit on the beat that bills the crown.");
@@ -214,7 +214,7 @@ internal static class KonomiTricksterTests
         var farewellDead = World(story, 3, "trickster", "trickster.ever", "konomi.farewell", "konomi.retained_dead", "revive.konomi.available");
         check(Rules.Available(story, recalled, farewellDead), "Trk_Konomi_Dead: her completed farewell locks out the recovery from a retained death.");
         var rider = recalled.Nodes[0].Choices[0];
-        check(rider.Crusade?.Resource == "Finances" && rider.Crusade.Amount == -300 && rider.Set.Contains("konomi.trickster.cost.recalled")
+        check(rider.Crusade?.Resource == "Finances" && rider.Crusade?.Amount == -300 && rider.Set.Contains("konomi.trickster.cost.recalled")
               && rider.Set.Contains("konomi.trickster.primed"), "Trk_Konomi_Dead: the rider lost its price.");
         var recallPages = new HashSet<string>();
         var recalls = Program.Walk(recalled, dead, (page, _) => recallPages.Add(page));

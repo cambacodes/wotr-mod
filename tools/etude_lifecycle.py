@@ -84,7 +84,8 @@ def _name(names, g):
 
 def build(story, game=GAME):
     etudes, names, completes = _index(game)
-    guids = {}
+    # Engine-q4: classify this shared binding even before a route export first uses it.
+    guids = {"1d466fd4271fdc14ea1c077760c63ca5": ["minagho.freed_by_azata"]}
     for sec in ("Etudes", "CompletedEtudes"):
         for key, g in (story.get(sec) or {}).items():
             guids.setdefault(g, []).append(key)

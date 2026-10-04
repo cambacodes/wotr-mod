@@ -103,11 +103,11 @@ internal static class IrabethTricksterTests
         var struck = lists.Where(r => r.Has(Vell) && !r.Has("irabeth.trickster.cost.second_diamond")).ToList();
         check(struck.Count == 1 && lists.Any(r => r.Has("irabeth.trickster.declined") && !r.Has(Vell)), "Raise list: no strike, or no letting her rest.");
         var call = raiseList.Nodes.Single(n => n.Id == "call").Choices.Single();
-        check(call.Crusade?.Resource == "Favors" && call.Crusade.Amount == -100, "Striking the boy's name is free.");
+        check(call.Crusade?.Resource == "Favors" && call.Crusade?.Amount == -100, "Striking the boy's name is free.");
         // Sol r1: the boy's death is never the compulsory price; a second diamond calls both, at the treasury's cost.
         var both = raiseList.Nodes.Single(n => n.Id == "call_both").Choices.Single();
         check(lists.Count(r => r.Has("irabeth.trickster.cost.second_diamond") && r.Has(Vell)) == 1 && both.Crusade?.Resource == "Finances"
-              && both.Crusade.Amount == -600, "No costly way to call both knights.");
+              && both.Crusade?.Amount == -600, "No costly way to call both knights.");
         check(story.Scenes.Where(s => s.Id.StartsWith("irabeth.trickster.", StringComparison.Ordinal))
                   .SelectMany(s => s.Nodes).All(n => !n.Choices.Any(ch => ch.Revive != null)), "A revive by fiat crept back in.");
         var primed = Program.Copy(listed); primed.Flags.Add(Vell); primed.Times[Vell] = primed.Hour - 24; Rules.Complete(story, primed);
@@ -141,8 +141,8 @@ internal static class IrabethTricksterTests
         check(Rules.Available(story, lateOrder, unprimed) && !Rules.Available(story, relieved, unprimed),
             "Trk_Irabeth_DeadAtIz_Unprimed: fallback unavailable, or report before any setup.");
         var toast = lateOrder.Nodes.Single(n => n.Id == "cup").Choices[0];
-        check(toast.Crusade?.Resource == "Favors" && toast.Crusade.Amount == -150 && toast.Alignment?.Direction == "Chaotic"
-              && toast.Alignment.Value == 1 && toast.Mythic == "PlayerIsTrickster", "The late toast lost its price.");
+        check(toast.Crusade?.Resource == "Favors" && toast.Crusade?.Amount == -150 && toast.Alignment?.Direction == "Chaotic"
+              && toast.Alignment?.Value == 1 && toast.Mythic == "PlayerIsTrickster", "The late toast lost its price.");
         var toastPages = new HashSet<string>();
         var toasts = Program.Walk(lateOrder, unprimed, (page, _) => toastPages.Add(page));
         var toasted = toasts.First(r => r.Has("irabeth.trickster.primed") && r.Has(Vell));
@@ -183,7 +183,7 @@ internal static class IrabethTricksterTests
             "Trk_Irabeth_Killed: the honest account is not kept.");
         check(lie.Count == 1 && lie[0].Has(Returned) && !lie[0].Has("irabeth.accounting_kept"), "Trk_Irabeth_Killed_Lie failed.");
         check(stands.Count == 1 && !stands[0].Has(Returned) && !Any(stands[0], blow, lateStep), "Trk_Irabeth_Killed_BlowStands failed.");
-        check(stands[0].Has("irabeth.trickster.blow_stands") && presence.Forbids.Contains("irabeth.trickster.blow_stands"),
+        check(stands[0].Has("irabeth.trickster.blow_stands") && presence?.Forbids.Contains("irabeth.trickster.blow_stands") == true,
             "She stays on watch after the blow was let stand.");
 
         // Trk_Irabeth_Killed_Late: no drill -> the raise list, with the kill entered in the chapel's book in the Commander's words.
@@ -198,7 +198,7 @@ internal static class IrabethTricksterTests
         var entered = lateStep.Nodes.Single(n => n.Id == "record").Choices;
         check(onRecord.Has("irabeth.trickster.cost.late") && !onRecord.Has(Vell) && onRecord.Has("irabeth.trickster.cost.remembers_the_blow")
               && !Rules.Match(entered[0].Requires, entered[0].Forbids, undrilled)
-              && entered[1].Crusade?.Resource == "Finances" && entered[1].Crusade.Amount == -600, "The raise on the record is free, or strikes the boy.");
+              && entered[1].Crusade?.Resource == "Finances" && entered[1].Crusade?.Amount == -600, "The raise on the record is free, or strikes the boy.");
         var raisedBack = Later(story, onRecord, 24);
         check(Rules.Available(story, blow, raisedBack), "Blow unrecoverable after the raise on the record.");
         var raisedPages = new HashSet<string>();
