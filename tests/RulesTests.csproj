@@ -1,5 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+    <!-- Nested build/temp folders left by tools must never be compiled into the suite (duplicate attribute errors). -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);**/obj/**;**/bin/**;**/*Temp*/**;**/.tmp/**;**/tmp*/**;**/*Artifacts*/**;**/.engine-*/**</DefaultItemExcludes>
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
