@@ -230,6 +230,18 @@ internal static class Program
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        // eng7-l01: optional focused checks; the full runner below is still mandatory.
+        if (args.Contains("--inventory-mutations"))
+        {
+            InventoryFixtureMutationTests.RunMutationSentinels(Check);
+            return;
+        }
+        if (args.Contains("--inventory-fixtures"))
+        {
+            InventoryFixtureMutationTests.Run(story, Check);
+            return;
+        }
+        // eng7-l01 end
         if (args.Contains("--wenduag-echo"))
         {
             WenduagTricksterTests.Run(story, Check);
@@ -740,6 +752,10 @@ internal static class Program
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
         EarnedPresenceTests.Run(story, Check);
+        // eng7-l01: mandatory delivery acceptance in the standard integrated runner.
+        if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.unprimed"))
+            InventoryFixtureMutationTests.Run(story, Check);
+        // eng7-l01 end
         EngineQ5Tests.Run(story, Check);
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
         CurrentPathTests.Run(Check);
