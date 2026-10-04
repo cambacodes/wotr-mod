@@ -25,6 +25,36 @@ internal static class Program
         AvailableContacts = new HashSet<string>(original.AvailableContacts)
     };
 
+    // eng7-l08: ledger reader used by actual route walkers, including known failing inventories.
+    // Each supplied ID must have completed in this one history. Native observations remain fixtures.
+    private static readonly HashSet<string> eng7L08ReportedHistories = new();
+    internal static void Eng7L08Allocation(Story source, Action<bool, string> check, string name,
+        string character, int chapter, Snapshot state, IEnumerable<string> completed, bool expectedFailure)
+    {
+        using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine("tools", "remote_allocation_contracts.json")));
+        var allocation = doc.RootElement.GetProperty("allocations").EnumerateArray()
+            .Single(a => a.GetProperty("character").GetString() == character);
+        var relationships = allocation.GetProperty("relationships").EnumerateArray().Select(e => e.GetString()).ToHashSet();
+        var owners = allocation.GetProperty("owners").EnumerateArray().Select(e => e.GetString()).ToHashSet();
+        var prefixes = allocation.GetProperty("prefixes").EnumerateArray().Select(e => e.GetString()!).ToArray();
+        var ids = completed.ToArray();
+        check(ids.Distinct().Count() == ids.Length && ids.All(state.Has), "Incomplete/repeated allocation trace " + name);
+        var pages = ids.Select(id => source.Scenes.Single(s => s.Id == id)).Where(s => Rules.IsRemote(s)
+            && (relationships.Contains(s.Relationship) || owners.Contains(s.Owner)
+                || prefixes.Any(p => s.Id.StartsWith(p, StringComparison.Ordinal)))).ToArray();
+        check(pages.All(s => s.MinChapter <= chapter && s.MaxChapter >= chapter
+            && (s.Chapters.Length == 0 || s.Chapters.Contains(chapter))), "Wrong chapter in allocation trace " + name);
+        int limit = allocation.GetProperty("limits").GetProperty(chapter.ToString()).GetInt32();
+        string ledger = allocation.GetProperty("ledger_row").GetString()!;
+        bool failure = pages.Length > limit;
+        check(failure == expectedFailure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        if (eng7L08ReportedHistories.Add(character + "/" + chapter + "/" + name))
+            Console.WriteLine("eng7-l08 allocation " + JsonSerializer.Serialize(new {
+                name, character, chapter, deliveries = ids, count = pages.Length, limit, ledger_row = ledger,
+                failure, evidence = "native_fixture_and_executed_choices" }));
+    }
+    // end eng7-l08
+
     // NM1 (storylines/nm1_fold.py): the per-letter view of a story whose later rest deliveries were folded into earlier ones.
     // Each folded host loses its copied guest nodes (`<key>.arrives` and `<key>.*`) and its hooked terminal choices end
     // again, so a suite written per letter keeps judging each letter; the folded deliveries are judged by Nm1BudgetTests.
@@ -513,6 +543,9 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
+            // eng7-l08: required producer-history timing acceptance.
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.fetched_gate")) TimelineInventoryTests.Run(story, Check);
+            // end eng7-l08
             if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) TirabadeNativeSlideTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) JerribethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) KonomiTricksterTests.Run(story, Check);

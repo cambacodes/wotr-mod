@@ -413,6 +413,25 @@ internal static class WenduagTricksterTests
         check(Ch(neathers, "ask", 0).Alignment?.Direction == "Evil" && Ch(neathers, "ask", 2).Alignment?.Direction == "Good" && neathers.Optional
               && !claim.Requires.Any(r => r.Contains("neathers") || r.Contains("hunt") || r.Contains("stinger")),
             "Trk_Wenduag_Optional: the culling is not a moral pivot, or an optional beat gates the claim.");
+        // eng7-l08: inventory the actual completing choices above, never union alternate roads.
+        void Allocation(string name, int chapter, Snapshot result, bool failed, params Scene[] played)
+            => Program.Eng7L08Allocation(story, check, name, "Wenduag", chapter, result, played.Select(s => s.Id), failed);
+        var cellar = S(P + "killed.cellar");
+        var cellarAt = Later(home, 24);
+        check(Avail(cellar, cellarAt), "Earned cellar physical visit is unavailable");
+        var cellarDone = Program.Walk(cellar, cellarAt).First(r => r.Has(cellar.Id));
+        Allocation("killed", 3, cellarDone, false, cairn, back, cellar);
+        var stoneAt = Later(At(buried, 4), 24);
+        check(Avail(stone, stoneAt), "Stone allocation witness is unavailable");
+        Allocation("stone", 4, Program.Walk(stone, stoneAt).First(r => r.Has(stone.Id)), true, stone);
+        Allocation("champion", 4, Program.Walk(champion, exiled).First(r => r.Has(champion.Id)), true, champion);
+        Allocation("late-bid", 4, lateBought, true, lateBid);
+        Allocation("abyss", 4, abyssCairn, true, abyssFall);
+        Allocation("abyss-return", 5, abyssHome, false, abyssBack);
+        Allocation("orchard", 5, huntHome, false, hunt);
+        Allocation("street", 5, streetHome, true, streetFall, streetBack);
+        Allocation("killed-courtship", 5, after, false, trial, gate, claim, bed, morning);
+        // end eng7-l08
         Console.WriteLine("PASS: Wenduag Trickster (Trk_Wenduag_*): the staged blow and the cairn, the return and the closing no, the Commander's kills that stand, "
             + "the outbid on the traitor hub, the exile answers and the late bid, the falls in Savamelekh's house and the street (bought and unbought), "
             + "Lann's price, the native romance first, the chain to the claim and the cairn, " + pages.Length + " pages, Last Call and the household.");

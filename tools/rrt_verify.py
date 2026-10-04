@@ -1548,6 +1548,24 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     P("\nEarned presence: %d hard" % len(presence_hard))
     for failure in presence_hard:
         P("     - HARD", failure)
+    # eng7-l08: reviewed timing/delivery/obligation inventories. Route-owned
+    # prose and unresolved delivery contracts remain explicit REVIEW entries;
+    # malformed contracts and supplied executed-trace failures are HARD.
+    import timeline_contract_lint, remote_allocation_lint, obligation_flow_lint
+    sys.path.insert(0, str(MOD))
+    for key, report in (
+            ("timeline_contracts", timeline_contract_lint.lint(story)),
+            ("remote_allocation", remote_allocation_lint.lint(story)),
+            ("obligation_flow", obligation_flow_lint.lint(story, drafts=obligation_flow_lint.load_drafts()))):
+        R[key] = report
+        P("\neng7-l08", key, "%d hard; %d review" % (len(report["hard"]), len(report["review"])))
+        for finding in report["review"]:
+            P("     - REVIEW", json.dumps(finding, sort_keys=True))
+        for finding in report["hard"]:
+            P("     - HARD", finding)
+        for finding in report.get("unbound_forbids", []):
+            P("     - REVIEW unbound negative read", json.dumps(finding, sort_keys=True))
+    # end eng7-l08
     # E3: native etude lifecycle (tools/etude_lifecycle.py, 18-ETUDE-BINDING-AUDIT). HARD: a Playing-only binding read where
     # its etude cannot be Playing (another area, a remote letter, a relationship/Derived use, after a chapter cascade).
     R["etude_lifecycle"] = etude_lifecycle_report(story, model, P)
@@ -2565,6 +2583,10 @@ def main():
         + len(R.get("earned_presence", {}).get("hard", [])) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
+    # eng7-l08: count contract errors alongside the existing hard gates.
+    hard += sum(len(R.get(key, {}).get("hard", [])) for key in
+                ("timeline_contracts", "remote_allocation", "obligation_flow"))
+    # end eng7-l08
     print("\nHARD FAILURES: %d  (report: %s)" % (hard, a.text))
     if a.strict and hard: sys.exit(1)
 
