@@ -634,6 +634,10 @@ def make_expansion(*, independent_tirabade=True):
     foresight.integrate(payload)
     # Earned presence (rubric Binding context (3)): no living postwar page beside an unreturned sacrifice. After every
     # route and Last Call's pages, before trickster_world binds the keys the guards read.
+    # eng7-l03: append historical native-slide variants before the standard presence guards.
+    from storylines import tirabade_native_variants
+    tirabade_native_variants.integrate(payload)
+    # eng7-l03 end
     earned_presence.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
@@ -650,6 +654,12 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l03: consume q6b's read-only facts and reviewed-registry build contracts.
+    # The imported facilities were present but neither was finalized in the export.
+    from storylines import native_facts, native_overrides
+    native_facts.integrate(payload)
+    native_overrides.finalize(payload)
+    # eng7-l03 end
     return payload
 
 
