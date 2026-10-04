@@ -650,6 +650,12 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-f1: finish the native registry export after every state producer is registered.
+    # The existing reader migration test also requires the verified, read-only history catalog.
+    from storylines import native_facts, native_overrides
+    native_facts.integrate(payload)
+    native_overrides.finalize(payload)
+    # end eng7-f1
     return payload
 
 
