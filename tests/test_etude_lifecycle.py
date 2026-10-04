@@ -137,6 +137,19 @@ class StoryTests(unittest.TestCase):
         self.assertEqual(h, [])
         self.assertTrue(all(r["traits"] != ["unclassified"] for r in rows), [r["key"] for r in rows if r["traits"] == ["unclassified"]])
 
+    def test_minagho_freed_by_azata_is_classified(self):
+        guid = "1d466fd4271fdc14ea1c077760c63ca5"
+        entry = self.table[guid]
+        self.assertEqual(entry["traits"], ["hold"])
+        self.assertEqual(entry["name"], "MinaghoSetFreeByAzata")
+        self.assertEqual(entry["chain"], ["MinaghoSetFreeByAzata", "Minagho", "ImportantNPCs_fate", "WrathOfTheRighteous"])
+        self.assertEqual(entry["areas"], {})
+        self.assertIsNone(entry["cascade_chapter"])
+        # No area/chapter parent retires this release; the normal Playing reader remains valid outside the Abyss.
+        st = story(scene("freed", requires=["minagho.freed_by_azata"], remote=True),
+                   etudes={"minagho.freed_by_azata": guid})
+        self.assertEqual(el.check(st, self.table)[1], [])
+
     def test_audited_bindings(self):
         s = self.story
         self.assertIn("hepzamirah.dead", s["PermanentEtudes"])

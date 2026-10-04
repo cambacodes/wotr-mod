@@ -421,6 +421,7 @@ internal static class Program
         NativeCostTests.Run(Check);
         EntryEffectTests.Run(Check);
         PresenceTests.Run(Check);
+        ContactWindowTests.Run(Check);
         NativeEpilogueTests.Run(Check);
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
@@ -647,6 +648,11 @@ internal static class Program
             if (scene.Id.StartsWith("seelah.late_", StringComparison.Ordinal))
                 state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
             if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
+            // Prerequisite-only fixtures still need real temporal evidence for held contact witnesses.
+            var contacts = scene.AdditionalContactUnits.Append(scene.ContactUnit);
+            foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+                .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
+                state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
             Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
             if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
                 Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);

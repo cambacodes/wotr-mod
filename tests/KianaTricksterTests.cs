@@ -62,9 +62,9 @@ internal static class KianaTricksterTests
               && presence.Mode == "spawn-copy" && presence.At?.NearUnit == Arsinoe && presence.Dialog == "hub", "Kiana presence missing.");
         check(temple.AdditionalContactUnits.SequenceEqual(new[] { Kyana }), "Q10: the pivot plays without Kiana's own actor.");
         var terms = gem.Nodes.Single(n => n.Id == "terms").Choices;
-        check(terms[0].Mythic == "PlayerIsTrickster" && terms[0].Alignment?.Direction == "Chaotic" && terms[0].Alignment.Value == 1,
+        check(terms[0].Mythic == "PlayerIsTrickster" && terms[0].Alignment?.Direction == "Chaotic" && terms[0].Alignment?.Value == 1,
             "The appraisal lost its price.");
-        check(terms[2].Crusade?.Resource == "Finances" && terms[2].Crusade.Amount == -1000, "Sunhammer's price is free.");
+        check(terms[2].Crusade?.Resource == "Finances" && terms[2].Crusade?.Amount == -1000, "Sunhammer's price is free.");
         var straight = gem.Nodes.Single(n => n.Id == "appraisal").Choices;
         var bluff = straight.Single(ch => ch.Forbids.Contains("trickster.arcana_tier3")).Check;
         var knowing = straight.Single(ch => ch.Requires.Contains("trickster.arcana_tier3")).Check;

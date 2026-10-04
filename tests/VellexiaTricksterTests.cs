@@ -193,7 +193,7 @@ internal static class VellexiaTricksterTests
         check(Rules.Available(story, fetch, unfetched) && !Rules.Available(story, speaks, unfetched), "Trk_Vellexia_MirroredFetch: no fetch.");
         var fetched = Play(fetch, unfetched);
         var paid = fetched.Single(r => r.Has(P + "primed"));
-        check(paid.Has(P + "cost.late") && fetch.Nodes[0].Choices[0].Crusade?.Resource == "Finances" && fetch.Nodes[0].Choices[0].Crusade.Amount == -200,
+        check(paid.Has(P + "cost.late") && fetch.Nodes[0].Choices[0].Crusade?.Resource == "Finances" && fetch.Nodes[0].Choices[0].Crusade?.Amount == -200,
             "Trk_Vellexia_MirroredFetch: the haulers are free.");
         check(Rules.Available(story, unmirror, Later(story, paid, 24)), "Trk_Vellexia_MirroredFetch: the fetched mirror cannot be read.");
 
@@ -228,7 +228,7 @@ internal static class VellexiaTricksterTests
             check(!s.Nodes.Any(n => n.Text.Contains("Sparks come off your fingers") || n.Text.Contains("You say her spell backwards")),
                 "Trk_Vellexia_NoPowerUnmaking: the Trickster's power still does the unmaking in " + s.Id);
         check(unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => ch.Next == "nice" || ch.Next == "no_sparks")
-                  .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade.Amount < 0),
+                  .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade?.Amount < 0),
             "Trk_Vellexia_NoPowerUnmaking: the house is not bought.");
         check(likeness.Nodes.Single(n => n.Id == "spell").Choices.All(ch => ch.Set.Contains(P + "cost.sat_for_painter")),
             "Trk_Vellexia_NoPowerUnmaking: the painter's sitting costs the Commander nothing.");
@@ -559,7 +559,7 @@ internal static class VellexiaTricksterTests
         check(!Rules.Available(story, invitation, World(story, 5, "trickster", "trickster.ever", "vellexia.greeted")),
             "Trk_Vellexia_NeverVisited: a Commander she has met boasts of a stranger.");
         var boast = invitation.Nodes[0].Choices[0];
-        check(boast.Mythic == "PlayerIsTrickster" && boast.Crusade?.Resource == "Finances" && boast.Crusade.Amount == -100,
+        check(boast.Mythic == "PlayerIsTrickster" && boast.Crusade?.Resource == "Finances" && boast.Crusade?.Amount == -100,
             "The wine-factor is not paid.");
         var invited = Play(invitation, never).Single(r => r.Has(P + "entry"));
         check(new[] { "primed", "cost.predicted" }.All(f => invited.Has(P + f)) && invited.Has("vellexia.prediction_known"),

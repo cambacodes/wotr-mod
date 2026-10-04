@@ -180,15 +180,15 @@ internal static class Program
         foreach (var target in story.NativeEpilogueEdits.Where(p => string.IsNullOrEmpty(p.Value.Parent)).Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))
             .Concat(story.NativeEpilogueSuppressions.Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))))
         {
-            var editSequence = Seed<BlueprintCueSequence>(target.Sequence);
+            var editSequence = string.IsNullOrEmpty(target.Sequence) ? null : Seed<BlueprintCueSequence>(target.Sequence);
             // CueSequence_Special also holds the parent's native pair page, which ParentEndingIntegrationTests seeds as a fixture;
             // there only the edit's own page is loaded, so that page stays exactly once in the sequence.
             if (target.Sequence == NativeEpilogueEdit.Special)
             {
-                if (!editSequence.Cues.Any(r => r.Guid == BlueprintGuid.Parse(target.Page)))
+                if (!editSequence!.Cues.Any(r => r.Guid == BlueprintGuid.Parse(target.Page)))
                     editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(target.Page));
             }
-            else if (editSequence.Cues.Count == 0)
+            else if (editSequence != null && editSequence.Cues.Count == 0)
                 foreach (string cue in NativeReferences(native[target.Sequence], "Cues")) editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
             var editPage = Seed<BlueprintBookPage>(target.Page);
             if (editPage.Cues.Count == 0)
@@ -716,6 +716,7 @@ internal static class Program
         ReturnToListManagedTests.Run(native, Id, Check);
         ParagraphManagedTests.Run(Id, Check);
         NativeEpilogueEditManagedTests.Run(native, Id, Check);
+        NativeEpilogueEditManagedTests.RunQ4(native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);

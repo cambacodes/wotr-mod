@@ -13,7 +13,7 @@ using Tirabade;
 
 // E14d: the reviewed native cues match their evidence in blueprints.zip, and the edit selects exactly one of
 // replacement/original, keeping the native checker and falling back to the native text.
-internal static class NativeEpilogueEditManagedTests
+internal static partial class NativeEpilogueEditManagedTests
 {
     // E14d extension: the Tirabade page BookPage_0307 and its four native cues (Cue_0308, Cue_0566, Cue_0310, Cue_0311).
     private const string Cue0311 = "3a3e561c6b05a284d93eb3bff7b712a6";
@@ -84,11 +84,11 @@ internal static class NativeEpilogueEditManagedTests
                 continue;
             }
             check(Refs(native[pair.Value.Page], "Cues").Count(c => c == pair.Key) == 1, "Reviewed cue is not exactly once on its page: " + pair.Key);
-            check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
+            if (pair.Value.Sequence.Length > 0) check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
                 && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa"
-                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
+                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Key != "dbec675b71e9d5f4d96055f4bb31762e" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
             + "lines, Arueshalae's Cue_0461 and Wenduag's Cue_0580 are warning-only).");
         // Engine-q2 item 5: Galfrey's two Queen slides share one text, one sequence, and are warning-only.
@@ -627,7 +627,7 @@ internal static class NativeEpilogueEditManagedTests
                 "e9a183135b8289544a3144dcf8151920" }), "BookPage_0347 cues drifted.");
         check(pageCues.All(c => NativeEpilogueEdit.Reviewed.TryGetValue(c, out var e) && e.Page == pageId && !e.DegradeOnRefusal),
             "A Camellia slide is not reviewed warning-only evidence.");
-        const string TE1 = "6f95e268d337ddc45be43a11587bc0b6", TE2 = "aca88b6a3cc90c047925bbc0572c10dc", Q3 = "72d7618aeec2e134db7e9728e9fea90a",
+        const string TE1 = "6f95e268d337ddc45be43a11587bc0b6", Q3 = "72d7618aeec2e134db7e9728e9fea90a",
             RomDefault = "0f98398a5ddf32e4cb8200f56e4cfbfc", RomTrue = "1454cf86d07cfdf4f8b5daee625cdc5b", Sacrifice = "381a296094804761af0893d2e70dc2df";
         var playing = new HashSet<string>(); var seen = new HashSet<string>(); var completed = new HashSet<string>();
         var etudesRead = new HashSet<string>();

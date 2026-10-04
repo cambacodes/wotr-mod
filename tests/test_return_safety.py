@@ -6,7 +6,7 @@ import json
 import os
 from pathlib import Path
 import sys
-import tempfile
+from tests.writable_temp import writable_temp
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -100,7 +100,7 @@ class ReturnSafetyAllowlistTests(unittest.TestCase):
                 self.assertEqual(len(failures), 1, failures)
 
     def test_allowlist_entries_need_reason_and_todo(self):
-        with tempfile.TemporaryDirectory() as tmp:
+        with writable_temp() as tmp:
             path = Path(tmp) / "allow.json"
             path.write_text(json.dumps({"x.inline": self.entry(todo="")}), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "lacks todo"):
@@ -127,7 +127,7 @@ class ReturnSafetyGameTests(unittest.TestCase):
         self.assertIn("cue.Conditions", bad)
 
     def test_story_fixture_through_the_cli(self):
-        with tempfile.TemporaryDirectory() as tmp:
+        with writable_temp() as tmp:
             story = Path(tmp) / "Story.json"
             story.write_text(json.dumps({"Scenes": [scene(cue="b618fff15d921894e84b9b2fe9efaa39", lists=(self.REVEAL_LIST,),
                                                           sid="areelu.reveal")]}), encoding="utf-8")

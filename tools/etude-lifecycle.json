@@ -554,6 +554,23 @@
     "hold"
    ]
   },
+  "1d466fd4271fdc14ea1c077760c63ca5": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "MinaghoSetFreeByAzata",
+    "Minagho",
+    "ImportantNPCs_fate",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "MinaghoSetFreeByAzata",
+   "traits": [
+    "hold"
+   ]
+  },
   "1e6ca1514807446ea2fddd65e4f5bcc8": {
    "areas": {},
    "cascade_chapter": null,

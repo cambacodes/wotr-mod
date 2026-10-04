@@ -117,7 +117,7 @@ internal static class NurahTricksterTests
                   && s.Chapters.SequenceEqual(new[] { 5 }) && s.TricksterDevice && s.TricksterState == "prison" && s.Forbids.Contains("nurah.ran_off"),
                 "A Chapter 5 cell twin is malformed: " + s.Id);
         var price = rumour.Nodes.Single(n => n.Id == "offer").Choices;
-        check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade.Amount == -500 && price[1].Mythic == "PlayerIsTrickster",
+        check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade?.Amount == -500 && price[1].Mythic == "PlayerIsTrickster",
             "Ramisa's price lost its cost.");
 
         // Trk_Nurah_Prison: the pardon in person, primed and lied into the ledger; the night out a day later.
