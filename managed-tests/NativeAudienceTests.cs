@@ -58,7 +58,7 @@ internal static class NativeAudienceTests
                     "Inline cue Continue would override its authored answers: " + key);
                 check(cue.OnShow.Actions.Length == 0 && cue.OnStop.Actions.Length == 0,
                     "Inline node writes progress or starts another dialog outside a selected choice: " + key);
-                check(cue.Answers.Count == node.Choices.Count,
+                check(cue.Answers.Count == node.Choices.Count + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0),
                     "Inline cue changed the authored choice count: " + key);
                 if (node.SpeakerUnit != null)
                     // E14f: a named unit speaks (its portrait and name, camera untouched).
@@ -84,15 +84,15 @@ internal static class NativeAudienceTests
                         "Inline choice ID or ordering changed: " + answerKey);
                     // E5/E11: the only actions after the RouteAction are the choice's own native effects (the mythic-choice
                     // counter, a crusade resource change, an item removal), each present only when authored.
-                    var effects = answer!.OnSelect.Actions.Skip(1).ToArray();
-                    check(answer.OnSelect.Actions.Length >= 1 && answer.OnSelect.Actions[0] is Main.RouteAction
+                    var effects = answer!.OnSelect.Actions.Where(a => !(a is Main.RouteAction)).ToArray();
+                    check(answer.OnSelect.Actions.Length >= 1 && answer.OnSelect.Actions[choice.Crusade == null ? 0 : 1] is Main.RouteAction
                         && effects.Count(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources) == (choice.Crusade != null ? 1 : 0)
                         && effects.All(a => a is Kingmaker.Kingdom.Blueprints.AddCrusadeResources || a is Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.RemoveItemFromPlayer && choice.RemoveItem != null
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.StartEtude && choice.StartEtude != null
                             || a is Kingmaker.Designers.EventConditionActionSystem.Actions.IncrementFlagValue && choice.Mythic != null),
                         "Inline choice lost its sole authored RouteAction: " + answerKey);
-                    var action = (Main.RouteAction)answer.OnSelect.Actions[0];
+                    var action = answer.OnSelect.Actions.OfType<Main.RouteAction>().Single();
                     bool terminal = choice.Next == null && choice.Check == null;
                     check(action.Start == null && ReferenceEquals(action.Choice, choice)
                         && ReferenceEquals(action.Owner, answer),

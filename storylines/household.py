@@ -29,9 +29,11 @@ STANCE HOOKS (05 §2; none of the stance/enmity/attitude flags is set in this pa
 """
 
 import copy
+import importlib.util
 
 from story_format import c, n, scene
 from storylines import household_frictions as frictions
+from storylines import harem_caps
 from storylines import household_pair_seelah_wenduag as pair_seelah_wenduag
 from storylines import trickster_world
 
@@ -40,6 +42,11 @@ STARTED = "household.started"
 CLOSED = "household.closed"          # never set: the household is not a romance and cannot be refused
 KEPT = "household.table.kept"        # CommittedFlag: the Commander accepted the table
 ANY = "household.any_eligible"
+PAGE_TAKEN = "foresight.page_taken"  # Shyka's public key, produced from accepted + trickster.now on claude/shyka.
+STANCE_ELIGIBLE = "household.stance_eligible"
+REST_ALLOWANCES = {"household.pair": 1, "household.protected": 2}
+# Cross-branch consumer contract, merged into foresight.CONSUMERS when that module is present.
+CONSUMERS = {"household.table.offered": PAGE_TAKEN, "household.table.offered_c5": PAGE_TAKEN}
 KING_GONE = "fool_king.gone"         # trickster_world binding: no King, no tavern list, no door (the UMM button still opens the Ledger)
 
 DREZEN = "2570015799edf594daf2f076f2f975d8"
@@ -177,9 +184,9 @@ def relationship():
 # The native openers: "[The corner table]" on the King's list in each tavern state, once the table is kept.
 OPENERS = [
     dict(Id="household.table.c3", Relationship=REL, AnswerList=KING_C3, Text="[The corner table]", View="table",
-         Requires=["trickster", KEPT], Forbids=[], MinChapter=3, MaxChapter=4),
+         Requires=["trickster", KEPT, STANCE_ELIGIBLE], Forbids=[], MinChapter=3, MaxChapter=4),
     dict(Id="household.table.c5", Relationship=REL, AnswerList=KING_C5, Text="[The corner table]", View="table",
-         Requires=["trickster", KEPT], Forbids=[], MinChapter=5, MaxChapter=5),
+         Requires=["trickster", KEPT, STANCE_ELIGIBLE], Forbids=[], MinChapter=5, MaxChapter=5),
 ]
 
 
@@ -194,6 +201,8 @@ def _table_scene(id, title, owner, entry, nodes, requires, forbids, relationship
     chapters = list(chapters)
     if not chapters or len(set(chapters)) != len(chapters) or any(ch not in TABLE_CHAPTERS for ch in chapters):
         raise ValueError("Table scene %s: chapters must be distinct values from %s, got %r" % (id, TABLE_CHAPTERS, chapters))
+    CONSUMERS[id] = PAGE_TAKEN
+    requires = tuple(dict.fromkeys(tuple(requires) + (PAGE_TAKEN, STANCE_ELIGIBLE)))
     return scene(id, title, owner, min(chapters), entry, nodes, requires=requires, forbids=forbids, delay=delay,
                  last=max(TABLE_CHAPTERS), Relationship=relationship, Chapters=chapters, Areas=[DREZEN],
                  InteractionHub=TABLE_HUB, **extra)
@@ -216,7 +225,7 @@ def _offered(id, chapter, hub, back, opening, requires=(), forbids=()):
               c('"Keep it for me, Your Majesty. Whoever asks for me gets a chair."', "kept"),
               c('"Another time."', abort=True)),
         _king("kept", KEPT_TEXT, c("Continue", flags=(STARTED, KEPT))),
-    ], requires=("trickster", ANY) + tuple(requires), forbids=(KEPT,) + tuple(forbids), delay=0, last=chapter,
+    ], requires=("trickster", ANY, PAGE_TAKEN, STANCE_ELIGIBLE) + tuple(requires), forbids=(KEPT,) + tuple(forbids), delay=0, last=chapter,
         optional=True, Relationship=REL, AnswerLists=[hub], NativeReturnCue=back)
 
 
@@ -248,7 +257,18 @@ def table_entry(id, title, entry, nodes, pair, trigger, requires=(), forbids=(),
     for rel in pair:
         if rel not in PARTNERS:
             raise ValueError("Unknown household partner %s in %s" % (rel, id))
-    body = _table_scene(id, title, PARTNERS[a][0], entry, nodes, requires=("trickster", KEPT, eligible(a), eligible(b), trigger) + tuple(requires),
+    overrides = dict(extra.pop("ForbidOverrides", {}))
+    overrides.update({enmity(a, b): "%s.harem.reconciled.%s" % (a, b),
+                      enmity(b, a): "%s.harem.reconciled.%s" % (b, a)})
+    extra.setdefault("RestAllowance", "household.pair")
+    extra["Pair"] = list(pair)
+    extra["Participants"] = list(pair)
+    extra["ForbidOverrides"] = overrides
+    named_seats = {"minagho_chivarro": ("minagho", "chivarro"), "tirabade": ("anevia", "irabeth")}
+    qualifiers = set(extra.get("ParticipantWomen", ()))
+    physical_eligible = [eligible(rel) for rel in pair if not qualifiers.intersection(named_seats.get(rel, ()))]
+    CONSUMERS[id] = PAGE_TAKEN
+    body = _table_scene(id, title, PARTNERS[a][0], entry, nodes, requires=("trickster", KEPT, PAGE_TAKEN, STANCE_ELIGIBLE, trigger) + tuple(physical_eligible) + tuple(requires),
                         forbids=(enmity(a, b), enmity(b, a)) + tuple(forbids), relationship=relationship or REL, delay=delay,
                         chapters=chapters, **extra)
     ENTRIES.append(body)
@@ -259,8 +279,9 @@ def invitation(id, rel, sender, title, text, trigger, requires=(), forbids=(), c
     """A rest-delivered invitation to the Table (Kind "invitation"). Its reply sets `trigger`."""
     body = scene(id, title, sender, chapter, "", [
         n("start", sender, text, c('"I\'ll be there."', flags=(trigger,)), portrait=PARTNERS[rel][0]),
-    ], requires=("trickster", KEPT, eligible(rel)) + tuple(requires), forbids=tuple(forbids) + (trigger,), delay=delay,
-        last=last, Relationship=REL, Remote=True, Kind="invitation", Sender=sender)
+    ], requires=("trickster", KEPT, PAGE_TAKEN, STANCE_ELIGIBLE, eligible(rel)) + tuple(requires), forbids=tuple(forbids) + (trigger,), delay=delay,
+        last=last, Relationship=REL, Remote=True, Kind="invitation", Sender=sender, Participants=[rel])
+    CONSUMERS[id] = PAGE_TAKEN
     INVITATIONS.append(body)
     return body
 
@@ -294,6 +315,13 @@ def derived(payload):
         groups += EXTRA_ELIGIBLE.get(rel, [])
         out[eligible(rel)] = groups
     out[ANY] = [[eligible(rel)] for rel in PARTNERS]
+    out[STANCE_ELIGIBLE] = [[PAGE_TAKEN, "trickster.now"]]
+    for rel in PARTNERS:
+        others = _others(rel)
+        if not others:
+            continue
+        out[rel + ".harem.enmity_any"] = [[enmity(rel, other)] for other in others]
+        out[rel + ".harem.reconciled_any"] = [["%s.harem.reconciled.%s" % (rel, other)] for other in others]
     if "arueshalae" in rels:
         out.update(copy.deepcopy(ARUESHALAE_BRANCH))
     return out
@@ -392,6 +420,27 @@ def secret_entries():
 
 def integrate(payload):
     payload["Relationships"][REL] = relationship()
+    pending = payload.setdefault("PendingHooks", [])
+    for key in [PAGE_TAKEN] + [flag for rel in PARTNERS for other in _others(rel)
+                             for flag in (enmity(rel, other), "%s.harem.reconciled.%s" % (rel, other))]:
+        if key not in pending:
+            pending.append(key)
+    # Native Cue_0055, Velexia_Third_Date: Vellexia is the patron; Jerribeth defects from her.
+    # Read-only history, never an etude or an authored substitute for the native cue.
+    payload.setdefault("SeenCues", {})["jerribeth.harem.vellexia_defection_seen"] = ["e0ee422a413a5f94ea90bede3096ee56"]
+    payload.setdefault("RestAllowances", {}).update(REST_ALLOWANCES)
+    seat_women = payload.setdefault("SeatWomen", {})
+    for seat, women in {"minagho_chivarro": ("minagho", "chivarro"), "tirabade": ("anevia", "irabeth")}.items():
+        seat_relationship = payload["Relationships"][seat]
+        for woman in women:
+            unavailable = [key for key in seat_relationship["UnavailableFlags"] if key.startswith((woman + ".", woman + "_"))]
+            seat_women[woman] = dict(Relationship=seat, UnavailableFlags=unavailable,
+                                    UnavailableOverrides={key: value for key, value in seat_relationship.get("UnavailableOverrides", {}).items()
+                                                          if key in unavailable})
+    # Foresight integrates after household on its branch. Register before its gate-contract audit runs.
+    if importlib.util.find_spec("storylines.foresight") is not None:
+        from storylines import foresight
+        foresight.CONSUMERS.update(CONSUMERS)
     for key, groups in derived(payload).items():
         have = payload.setdefault("Derived", {}).get(key)
         if have is not None and have != groups:
@@ -415,6 +464,7 @@ def integrate(payload):
     pair_seelah_wenduag.validate(set(PARTNERS))   # doc 16 §8c.6 prerequisites (data only)
     payload.setdefault("Openers", []).extend(copy.deepcopy(OPENERS))
     payload["Scenes"].extend(copy.deepcopy(SCENES + ENTRIES + INVITATIONS))
+    harem_caps.apply(payload)
     payload.setdefault("Glossary", {}).update({k: dict(v) for k, v in GLOSSARY.items()})
     ledger = payload.setdefault("Books", {}).get("trickster.ledger")
     if ledger is None:

@@ -20,6 +20,8 @@ internal static class Program
     {
         Chapter = original.Chapter, Hour = original.Hour, Area = original.Area,
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
+        RestSpent = new Dictionary<string, int>(original.RestSpent),
+        CrusadeResources = original.CrusadeResources == null ? null : new Dictionary<string, int>(original.CrusadeResources),
         AvailableContacts = new HashSet<string>(original.AvailableContacts)
     };
 
@@ -305,6 +307,7 @@ internal static class Program
         MailbagTests.Run(Check);
         BookTests.Run(story, Check);
         HouseholdTests.Run(story, Check);
+        HouseholdEngineTests.Run(story, Check);
         ArueshalaeBranchTests.Run(story, Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
@@ -345,7 +348,7 @@ internal static class Program
         var known = new HashSet<string>(story.Scenes.Select(s => s.Id)
             .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag }))
             .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
-            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
+            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
         foreach (var scene in story.Scenes)

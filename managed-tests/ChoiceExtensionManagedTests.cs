@@ -113,7 +113,8 @@ internal static class ChoiceExtensionManagedTests
         var pay = Answer("more", 1);
         var spend = pay.OnSelect.Actions.OfType<Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources>().SingleOrDefault();
         var removal = pay.OnSelect.Actions.OfType<RemoveItemFromPlayer>().SingleOrDefault();
-        check(pay.OnSelect.Actions[0] is Main.RouteAction && spend != null && removal != null, "Cost answer lacks its route action or native costs.");
+        check(pay.OnSelect.Actions[0] is Main.GuardedRemoveCrusadeResources payment && pay.OnSelect.Actions[1] is Main.RouteAction progress
+            && payment.Payment != null && ReferenceEquals(payment.Payment, progress.Payment) && spend != null && removal != null, "Cost answer lacks its route action or native costs.");
         var spent = (Kingmaker.Kingdom.KingdomResourcesAmount)typeof(Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources)
             .GetField("m_ResourcesAmount", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)!.GetValue(spend);
         check(spent.Equals(Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(500)), "Crusade cost has the wrong amount or resource.");
@@ -137,6 +138,7 @@ internal static class ChoiceExtensionManagedTests
             try { action.RunAction(); } catch (Exception ex) { thrown = ex; }
             check(thrown == null, "A crusade effect threw with no crusade state: " + thrown?.GetType().Name + " " + thrown?.Message);
         }
+        check(!((Main.GuardedRemoveCrusadeResources)spend!).Payment!.Applied, "Missing kingdom minted a payment witness.");
         check(Kingmaker.Game.HasInstance == hadGame, "The no-kingdom guard created a Game instance as a side effect.");
         check(Enum.GetNames(typeof(Kingmaker.Kingdom.KingdomResource)).Except(new[] { "None" }).SequenceEqual(Rules.CrusadeResources),
             "Rules.CrusadeResources differs from Kingmaker.Kingdom.KingdomResource.");

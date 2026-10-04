@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Kingmaker.AreaLogic.QuestSystem;
 using Kingmaker.Blueprints;
 using Kingmaker.DialogSystem.Blueprints;
 using Tirabade;
@@ -30,6 +31,14 @@ internal static class HouseholdManagedTests
         }
         check(story.Openers.Any(o => o.View == "table"), "No opener leads to the Table.");
 
+        foreach (var allowance in story.RestAllowances)
+        {
+            var flag = ResourcesLibrary.TryGetBlueprint(id("flag." + Rules.RestSpentPrefix + allowance.Key)) as BlueprintUnlockableFlag;
+            check(flag != null, "Rest allowance has no stable native save flag: " + allowance.Key);
+            var manager = new UnlockableFlagsManager();
+            manager.UnlockedFlags.Add(flag!, allowance.Value);
+            check(manager.GetFlagValue(flag!) == allowance.Value, "Native flag container lost the spent allowance: " + allowance.Key);
+        }
         check(views.Contains("table"), "The Table view was not built.");
         var view = views["table"]!;
         var lists = ((List<BlueprintCueBase>)view.GetType().GetField("ListPages")!.GetValue(view)!).Cast<BlueprintBookPage>().ToList();

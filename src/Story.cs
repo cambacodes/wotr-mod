@@ -62,6 +62,10 @@ namespace Tirabade
         // route open (Rules.RouteOpen: its ClosedFlag is not held and no UnavailableFlag blocks, so a Trickster return named in
         // UnavailableOverrides lifts a death or departure). Read from each relationship's own data; nothing is hand-coded.
         public Dictionary<string, string[]> DerivedOpenRoutes = new Dictionary<string, string[]>();
+        // Pending cross-branch hooks are read-only and false until their Derived producer is integrated.
+        public string[] PendingHooks = Array.Empty<string>();
+        public Dictionary<string, int> RestAllowances = new Dictionary<string, int>();
+        public Dictionary<string, SeatWoman> SeatWomen = new Dictionary<string, SeatWoman>();
         // Engine-q2 (current path): a Derived key listed here is also withheld while any named flag holds (a negated input).
         // trickster.now = trickster AND NOT (trickster.failed, dragon, legend, swarm): the Commander is on the Trickster path
         // right now. Read by DerivedInputs, so ordering, cycle checks and missing-binding propagation see the forbids too.
@@ -248,6 +252,8 @@ namespace Tirabade
     {
         public string[] Of = Array.Empty<string>();
         public int Min = 1;
+        // Optional chapter scope keeps household start caps from becoming permanent campaign bans.
+        public int[] Chapters = Array.Empty<int>();
     }
 
     public sealed class ContinueSpec
@@ -304,6 +310,13 @@ namespace Tirabade
         public string? Returned;
     }
 
+    public sealed class SeatWoman
+    {
+        public string Relationship = "";
+        public string[] UnavailableFlags = Array.Empty<string>();
+        public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
+    }
+
     public sealed class Scene
     {
         public string Id = "";
@@ -324,6 +337,12 @@ namespace Tirabade
         public string? Sender;
         public bool ManualOnly;
         public string? InteractionHub;
+        // A narrated visit may be explicitly hosted at the Table, without entering the mailbag.
+        public bool TableHosted;
+        public string? RestAllowance;
+        public string[] Pair = Array.Empty<string>();
+        public string[] Participants = Array.Empty<string>();
+        public string[] ParticipantWomen = Array.Empty<string>();
         public string? Recovery;
         public string? AfterRecovery;
         public string? AfterDeparture;
@@ -532,6 +551,8 @@ namespace Tirabade
         public HashSet<string> Flags = new HashSet<string>(StringComparer.Ordinal);
         public HashSet<string> AvailableContacts = new HashSet<string>(StringComparer.Ordinal);
         public Dictionary<string, int> Times = new Dictionary<string, int>();
+        public Dictionary<string, int> RestSpent = new Dictionary<string, int>();
+        public Dictionary<string, int>? CrusadeResources;
         public bool Has(string flag) => Flags.Contains(flag);
     }
 
@@ -628,6 +649,7 @@ namespace Tirabade
             if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state))) return false;
             if (scene.RequiresAny.Length > 0 && !scene.RequiresAny.Any(state.Has)) return false;
             if (!scene.RequiresAnyGroups.All(group => group.Any(state.Has))) return false;
+            if (!RestAllowanceAvailable(story, scene, state) || !ParticipantsAvailable(story, scene, state)) return false;
             if (!ContactAvailable(story, scene, state)) return false;
             if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return true;
             var relationship = story.Relationships[scene.Relationship];
@@ -651,6 +673,63 @@ namespace Tirabade
             int last = scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(group => group).Where(state.Has))
                 .Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
             return state.Hour - last >= scene.DelayHours;
+        }
+
+        public const string RestSpentPrefix = "rrt.rest.spent.";
+
+        public static bool RestAllowanceAvailable(Story story, Scene scene, Snapshot state) => scene.RestAllowance == null
+            || story.RestAllowances.TryGetValue(scene.RestAllowance, out int limit)
+                && (!state.RestSpent.TryGetValue(scene.RestAllowance, out int spent) || spent < limit);
+
+        // Call before recording completion; replaying an already completed scene never spends again.
+        public static bool SpendRestAllowance(Story story, Scene scene, Snapshot state)
+        {
+            if (state.Has(scene.Id)) return false;
+            if (!RestAllowanceAvailable(story, scene, state)) return false;
+            if (scene.RestAllowance != null)
+                state.RestSpent[scene.RestAllowance] = (state.RestSpent.TryGetValue(scene.RestAllowance, out int used) ? used : 0) + 1;
+            return true;
+        }
+
+        public static void RestFinished(Snapshot state, bool succeeded)
+        {
+            if (succeeded) state.RestSpent.Clear();
+        }
+
+        public static bool ParticipantsAvailable(Story story, Scene scene, Snapshot state) => scene.Participants.All(id => {
+            var named = scene.ParticipantWomen.Where(woman => story.SeatWomen[woman].Relationship == id).ToArray();
+            var otherWomen = story.SeatWomen.Where(pair => pair.Value.Relationship == id && !named.Contains(pair.Key))
+                .SelectMany(pair => pair.Value.UnavailableFlags);
+            var eligible = id + ".harem.eligible";
+            return !state.Has(DegradedPrefix + id) && RouteOpen(story.Relationships[id], state, named.Length == 0 ? null : otherWomen)
+                && (named.Length == 0 ? state.Has(eligible) : story.Derived.TryGetValue(eligible, out var groups)
+                    && groups.Any(group => group.All(state.Has)) && !DerivedForbidden(story, eligible, state));
+        })
+            && scene.ParticipantWomen.All(id => {
+                var woman = story.SeatWomen[id];
+                return !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
+                    && !woman.UnavailableFlags.Any(flag => state.Has(flag)
+                        && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
+            });
+
+        public static bool ChoiceAvailable(Choice choice, Snapshot state) => Match(choice.Requires, choice.Forbids, state)
+            && (choice.Crusade == null || choice.Crusade.Amount >= 0 || state.CrusadeResources != null
+                && state.CrusadeResources.TryGetValue(choice.Crusade.Resource, out int funds) && (long)funds + choice.Crusade.Amount >= 0);
+
+        // Witness the actual native balance change, rather than an action merely being requested.
+        public static bool ApplyCrusadeChange(CrusadeChoice cost, Func<int?> read, Action apply, Action<string> warn)
+        {
+            try
+            {
+                int? before = read();
+                if (before == null || cost.Amount < 0 && (long)before.Value + cost.Amount < 0)
+                { warn("Crusade payment skipped: missing kingdom or insufficient " + cost.Resource); return false; }
+                apply();
+                if (read() == (long)before.Value + cost.Amount) return true;
+                warn("Crusade change was not applied: " + cost.Resource);
+            }
+            catch (Exception ex) { warn("Crusade change failed: " + ex.Message); }
+            return false;
         }
 
         // A held Forbid blocks unless the scene's authored ForbidOverride for it is also held (E3: native keys too).
@@ -724,6 +803,7 @@ namespace Tirabade
         // Remote conversations need live-state guards too, without reapplying authored closure or delays.
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
         {
+            if (!ParticipantsAvailable(story, scene, state)) return false;
             if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             return (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit))
@@ -752,7 +832,7 @@ namespace Tirabade
 
         public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
-        private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal)
+        private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal) || key.StartsWith(RestSpentPrefix, StringComparison.Ordinal)
             || key.StartsWith(ServedPrefix, StringComparison.Ordinal) || key.StartsWith("hour.", StringComparison.Ordinal)
             || key.StartsWith("revive.", StringComparison.Ordinal);
 
@@ -785,7 +865,8 @@ namespace Tirabade
                     && !DerivedForbidden(story, key, state))
                     state.Flags.Add(key);
             foreach (var pair in story.Counts)
-                if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
+                if (!state.Has(pair.Key) && (pair.Value.Chapters.Length == 0 || pair.Value.Chapters.Contains(state.Chapter))
+                    && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
             CompleteWordMadeTrue(state);
         }
 
@@ -810,8 +891,8 @@ namespace Tirabade
 
         // E4b: a relationship's route is open while its ClosedFlag is not held and none of its UnavailableFlags blocks (Blocks:
         // an authored UnavailableOverrides return lifts the flag). The same closure the relationship's own scenes obey.
-        public static bool RouteOpen(Relationship relationship, Snapshot state) => !state.Has(relationship.ClosedFlag)
-            && !relationship.UnavailableFlags.Any(flag => Blocks(relationship, flag, state));
+        public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null) => !state.Has(relationship.ClosedFlag)
+            && !relationship.UnavailableFlags.Any(flag => !(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state));
 
         // Engine-q2: a DerivedForbids flag withholds its Derived key (the key is never set while the flag holds).
         public static bool DerivedForbidden(Story story, string key, Snapshot state) =>
@@ -887,13 +968,13 @@ namespace Tirabade
             scene.Sender ?? (scene.Owner == "Together" ? "Anevia and Irabeth" : scene.Owner);
 
         public static Scene? NextRemote(Story story, Snapshot state) => story.Scenes
-            .FirstOrDefault(scene => IsRemote(scene) && !scene.ManualOnly
+            .FirstOrDefault(scene => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly
                 && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state));
 
         // Fair rest delivery (GLOBAL-03): the relationship served least recently goes first, then the one whose
         // chapter window closes soonest; within a relationship, authored order is kept.
         public static Scene? NextRemote(Story story, Snapshot state, IReadOnlyDictionary<string, int> lastServedHour) => story.Scenes
-            .Where(scene => IsRemote(scene) && !scene.ManualOnly
+            .Where(scene => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly
                 && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state))
             .GroupBy(scene => scene.Relationship)
             .OrderBy(group => lastServedHour.TryGetValue(group.Key, out int hour) ? hour : int.MinValue)
@@ -1178,7 +1259,7 @@ namespace Tirabade
             int Served(string relationship) => lastServedHour.TryGetValue(relationship, out int hour) ? hour : int.MinValue;
             var order = story.Scenes.Select((scene, index) => (scene, index)).ToDictionary(pair => pair.scene, pair => pair.index);
             return story.Scenes
-                .Where(scene => IsRemote(scene) && !scene.ManualOnly && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                .Where(scene => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     && !queued.Contains(scene) && queued.Count(other => other.Relationship == scene.Relationship) < cap
                     && Available(story, scene, state))
                 .GroupBy(scene => RotationKey(story, scene.Relationship))
@@ -1190,7 +1271,7 @@ namespace Tirabade
         }
 
         // E8b: a scene the mailbag can deliver (a rest letter or memory; manual reads and epilogue pages never arrive by post).
-        public static bool IsMailbagLetter(Scene scene) => IsRemote(scene) && !scene.ManualOnly
+        public static bool IsMailbagLetter(Scene scene) => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly
             && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
 
         // E8b: the letters one rest adds to the mailbag: every deliverable remote scene (not manual, not an epilogue page),
@@ -1248,12 +1329,13 @@ namespace Tirabade
         // opened by a native opener on Thaberdine's tavern list; the chosen scene is queued and plays after the menu closes.
         public const string TableHub = "household.table";
         public const int TablePerPage = 6;
-        public static bool IsTableScene(Scene scene) => scene.InteractionHub == TableHub && !IsRemote(scene)
+        public static bool IsTableScene(Scene scene) => scene.InteractionHub == TableHub && (!IsRemote(scene) || scene.TableHosted && scene.Kind == "visit")
             && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0 && scene.ContactUnit == null;
 
-        // The Table menu: the table scenes available now, in authored order (the menu pages them TablePerPage at a time).
+        // The Table menu prioritizes protected deadlines; ties retain authored order and the player selects an entry.
         public static List<Scene> TableEntries(Story story, Snapshot state) =>
-            story.Scenes.Where(scene => IsTableScene(scene) && Available(story, scene, state)).ToList();
+            story.Scenes.Where(scene => IsTableScene(scene) && Available(story, scene, state))
+                .OrderBy(scene => scene.RestAllowance == "household.protected" ? ((scene.Chapters.Length > 0 ? scene.Chapters.Max() : scene.MaxChapter) == state.Chapter ? 0 : 1) : 2).ToList();
 
         public static bool OpenerShown(NativeOpener opener, Snapshot state) =>
             state.Chapter >= opener.MinChapter && state.Chapter <= opener.MaxChapter && Match(opener.Requires, opener.Forbids, state);
@@ -1319,8 +1401,8 @@ namespace Tirabade
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
-                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
-                throw new InvalidOperationException("The " + DegradedPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
+                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(RestSpentPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
+                throw new InvalidOperationException("The " + DegradedPrefix + ", " + RestSpentPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")
@@ -1354,12 +1436,18 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid latch (sources must be native or runtime-derived keys; the key must be new): " + pair.Key);
             // A latch is an ordinary authored flag once recorded.
             authoredFlags.UnionWith(story.Latches.Keys);
+            if (story.PendingHooks == null || story.PendingHooks.Distinct().Count() != story.PendingHooks.Length
+                || story.PendingHooks.Any(key => string.IsNullOrWhiteSpace(key) || IsReservedKey(key)))
+                throw new InvalidOperationException("Invalid pending read-only hook.");
+            derivedFlags.UnionWith(story.PendingHooks.Where(key => !story.Derived.ContainsKey(key) && !authoredFlags.Contains(key) && !nativeKeys.Contains(key)));
             ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence);
             if (story.Counts == null) throw new InvalidOperationException("Counts cannot be null.");
             foreach (var pair in story.Counts)
                 if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key) || derivedFlags.Contains(pair.Key)
                     || contactEvidence.Contains(pair.Key) || story.Derived.ContainsKey(pair.Key) || IsReservedKey(pair.Key) || pair.Value?.Of == null
                     || pair.Value.Of.Length == 0 || pair.Value.Of.Distinct().Count() != pair.Value.Of.Length || pair.Value.Min < 1 || pair.Value.Min > pair.Value.Of.Length
+                    || pair.Value.Chapters == null || pair.Value.Chapters.Distinct().Count() != pair.Value.Chapters.Length
+                    || pair.Value.Chapters.Any(chapter => chapter < 0 || chapter > 6)
                     || pair.Value.Of.Any(f => !authoredFlags.Contains(f) && !nativeKeys.Contains(f) && !derivedFlags.Contains(f) && !story.Derived.ContainsKey(f)))
                     throw new InvalidOperationException("Invalid count composite (new key; 1 <= Min <= |Of|; distinct known sources, no other counts): " + pair.Key);
             foreach (var pair in story.StartedDialogs)
@@ -1426,6 +1514,31 @@ namespace Tirabade
                     || opener.Requires.Concat(opener.Forbids).Any(key => string.IsNullOrWhiteSpace(key) || !authoredFlags.Contains(key)
                         && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)))
                     throw new InvalidOperationException("Invalid native opener (distinct id, relationship, list GUID, text, view, chapters, known keys): " + opener?.Id);
+            if (story.RestAllowances == null || story.RestAllowances.Any(pair => string.IsNullOrWhiteSpace(pair.Key) || pair.Value < 1))
+                throw new InvalidOperationException("Rest allowances need named positive limits.");
+            if (story.SeatWomen == null) throw new InvalidOperationException("SeatWomen cannot be null.");
+            foreach (var pair in story.SeatWomen)
+                if (string.IsNullOrWhiteSpace(pair.Key) || pair.Value == null || !story.Relationships.ContainsKey(pair.Value.Relationship)
+                    || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null
+                    || pair.Value.UnavailableFlags.Distinct().Count() != pair.Value.UnavailableFlags.Length
+                    || pair.Value.UnavailableFlags.Concat(pair.Value.UnavailableOverrides.Values).Any(key =>
+                        !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key))
+                    || pair.Value.UnavailableOverrides.Keys.Any(key => !pair.Value.UnavailableFlags.Contains(key)))
+                    throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
+            foreach (var scene in story.Scenes)
+            {
+                if (scene.RestAllowance != null && !story.RestAllowances.ContainsKey(scene.RestAllowance))
+                    throw new InvalidOperationException("Unknown rest allowance: " + scene.Id);
+                if (scene.TableHosted && (!IsRemote(scene) || scene.Kind != "visit" || !IsTableScene(scene)))
+                    throw new InvalidOperationException("TableHosted requires a Table visit: " + scene.Id);
+                if (scene.Participants == null || scene.ParticipantWomen == null || scene.Pair == null
+                    || scene.Participants.Distinct().Count() != scene.Participants.Length || scene.ParticipantWomen.Distinct().Count() != scene.ParticipantWomen.Length
+                    || scene.Participants.Any(id => !story.Relationships.ContainsKey(id))
+                    || scene.ParticipantWomen.Any(id => !story.SeatWomen.ContainsKey(id) || !scene.Participants.Contains(story.SeatWomen[id].Relationship))
+                    || scene.Pair.Length > 0 && (scene.Pair.Length != 2 || scene.Pair.Distinct().Count() != 2
+                        || !scene.Pair.OrderBy(id => id).SequenceEqual(scene.Participants.OrderBy(id => id))))
+                    throw new InvalidOperationException("Invalid pair participants: " + scene.Id);
+            }
             foreach (var scene in story.Scenes.Where(s => s.InteractionHub == TableHub))
                 if (!IsTableScene(scene))
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
@@ -1469,10 +1582,10 @@ namespace Tirabade
                 // E3: the overridden key may be an authored flag or a native binding (never both, never runtime-derived
                 // or a closure). The override value must be authored: never native, runtime-derived or a closure.
                 foreach (var pair in scene.ForbidOverrides)
-                    if (!scene.Forbids.Contains(pair.Key) || authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key)
-                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) || IsReservedKey(pair.Value) || pair.Key == pair.Value
+                    if (!scene.Forbids.Contains(pair.Key) || (authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key) && !story.PendingHooks.Contains(pair.Key))
+                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) && !story.PendingHooks.Contains(pair.Value) || IsReservedKey(pair.Value) || pair.Key == pair.Value
                         || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key || r.ClosedFlag == pair.Value)
-                        || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Value))
+                        || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) && !story.PendingHooks.Contains(pair.Key) || derivedFlags.Contains(pair.Value) && !story.PendingHooks.Contains(pair.Value))
                         throw new InvalidOperationException("Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
                 if (string.IsNullOrWhiteSpace(scene.Id) || !ids.Add(scene.Id)) throw new InvalidOperationException("Duplicate or empty scene: " + scene.Id);
                 if (!story.Relationships.ContainsKey(scene.Relationship)) throw new InvalidOperationException("Unknown relationship: " + scene.Relationship);
