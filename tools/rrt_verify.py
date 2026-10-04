@@ -1541,6 +1541,11 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for x in drift[:6]: P("     drift:", x)
     R["lint"] = lint
     # E2: gate lints on the raw story (tools/gate_lint.py): one-flag groups, scenes relying on the tirabade default
+    # eng7-l04: adapter parity is separate from q6a's cross-route L1-L6 checks.
+    from tools.native_gate_contract_lint import check as check_native_gate_contract
+    R["native_gate_contract"] = check_native_gate_contract(story)
+    for failure in R["native_gate_contract"]:
+        P("     - HARD", failure)
     R["gate_lint"] = gate_lint.check(story)
     gate_lint.report(R["gate_lint"], P)
     presence_hard, _ = earned_presence_lint.check(story)
@@ -2559,7 +2564,8 @@ def main():
     FREEZE_GC = True
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
-    hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
+    # eng7-l04: fail strict verification for unsupported adapter declarations.
+    hard = len(R.get("native_gate_contract", [])) + len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
         + sum(len(v) for v in R.get("gate_lint", {}).values()) + len(R.get("etude_lifecycle", {}).get("hard", [])) \
         + len(R.get("earned_presence", {}).get("hard", [])) \

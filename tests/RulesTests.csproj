@@ -6,8 +6,12 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <!-- eng7-l04: exercise the production visibility lease without Unity in the rules suite. -->
+  <PropertyGroup><DefineConstants>$(DefineConstants);RRT_RULES_TESTS</DefineConstants></PropertyGroup>
   <ItemGroup>
     <Compile Include="../src/Story.cs" Link="Story.cs" />
+    <!-- eng7-l04 -->
+    <Compile Include="../src/NativeWorldReconciliation.cs" Link="NativeWorldReconciliation.cs" />
     <Compile Include="../src/RecoveryAttempt.cs" Link="RecoveryAttempt.cs" />
     <Compile Include="../src/TerendelevDeliveryAttempt.cs" Link="TerendelevDeliveryAttempt.cs" />
   </ItemGroup>

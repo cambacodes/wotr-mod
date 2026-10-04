@@ -68,6 +68,10 @@ namespace Tirabade
             Wrap(cue, cue.OnStop, original => original.Skip(1).Concat(completion.Action.Actions).ToArray(), holds);
         }
 
+        // eng7-l04: the reviewed partial group describes Kiana alone; it must never skip the whole native recovery.
+        public static void Attach(BlueprintScriptableObject owner, Func<Q3RecoveryOutcome> outcome)
+            => Attach(owner, () => Rules.Q3RecoverySkipsPatients(outcome()));
+
         private static void Wrap(BlueprintScriptableObject owner, ActionList list, Func<GameAction[], GameAction[]> earned, Func<bool> holds)
         {
             if (list.Actions.Length == 1 && list.Actions[0] is Branch existing) { existing.Holds = holds; return; }

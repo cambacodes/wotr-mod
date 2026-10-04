@@ -120,6 +120,8 @@ namespace Tirabade
         private static NurahInteraction? nurahInteraction;
         private static BlueprintDialog? nurahHub;
         private static ParentEndingIntegration? parentEndings;
+        // eng7-l04: read-only earned-state selection, including area reload visibility.
+        private static NativeWorldReconciliation? nativeWorld;
         // Relationships whose native dependencies failed to resolve. Their blueprints stay registered for save safety,
         // but they offer no entries, letters or endings until the dependency is available again.
         private static readonly HashSet<string> degraded = new HashSet<string>(StringComparer.Ordinal);
@@ -145,6 +147,8 @@ namespace Tirabade
                     }
                     enabled = value;
                     if (!value) CancelPending();
+                    // eng7-l04: release only visibility owned by the reconciliation adapter.
+                    nativeWorld?.Tick();
                     konomiMeeting?.Tick();
                     irabethMeeting?.Tick();
                     nurahMeeting?.Tick();
@@ -665,11 +669,17 @@ namespace Tirabade
                     Optional<object>("Native gate " + id, () =>
                     {
                         bool Holds() => enabled && initialized && Game.Instance?.Player != null && Rules.NativeGateHolds(story, id, State());
-                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, Holds);
+                        // eng7-l04: a partial recovery leaves the other patients' native actions intact.
+                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, () => Holds()
+                            ? Rules.Q3RecoverySelection(story, State()) : Q3RecoveryOutcome.Native);
                         else foreach (var checker in gate.Checkers) NativeGate.Attach(gate.Owner, checker, Holds);
                         return new object();
                     });
                 }
+                // eng7-l04: registry targets validate independently and refuse to canon on evidence drift.
+                nativeWorld = new NativeWorldReconciliation(story,
+                    () => enabled && initialized && Game.Instance?.Player != null ? State() : null,
+                    id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), message => entry.Logger.Log(message));
                 if (epilogue == null) warnings.Add("Epilogue pages are not shown: the RanRomance parent epilogue is missing.");
                 initialized = true;
                 entry.Logger.Log("Registered " + story.Scenes.Count + " scenes. Existing dialogue answers and finish actions preserved."
@@ -1758,6 +1768,9 @@ namespace Tirabade
             wenduagEcho?.Tick();
             foreach (var click in wenduagEchoClicks) click.Tick();
             foreach (var click in presenceClicks.Values) click.Tick();
+            // eng7-l04: refresh earned object visibility after reload and release it when disabled.
+            if (Game.Instance?.Player != null && !Game.Instance.IsLoadingSave && !Game.Instance.IsUnloading
+                && !LoadingProcess.Instance.IsLoadingInProcess) nativeWorld?.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();

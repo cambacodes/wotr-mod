@@ -19,11 +19,11 @@ earned_presence T6 check decides whether historical Trickster evidence suffices.
 register_legacy migrates reviewed route dictionaries without changing their
 runtime representation. finalize validates GUIDs/types against blueprints.zip,
 state names and the runtime whitelist. Unsupported actions/targets fail at build
-time with a safe alternative. In particular answer text and journal text cannot
-be safely replaced by this runtime; journal reconciliation currently supports
-only the existing E19 SETTLE-FAILED contract, which grants no completion or XP.
+time with a safe alternative. Answer text remains unsupported. eng7-l04 extends
+the same registry with eight reviewed object/action/journal targets; JOURNAL
+selects localized fields at read time and never changes progression or XP.
 
-Runtime safety stays in NativeEpilogueEdit/NativeGate: complementary original
+Runtime safety stays in NativeEpilogueEdit/NativeGate/NativeWorldReconciliation: complementary original
 conditions, the same snapshot, preserved reviewed OnShow/OnStop/continuations,
 and refusal on drift. The archive alone cannot establish parent-mod compatibility
 (Arueshalae Cue_0461). Add a reviewed runtime contract before declaring a new
@@ -40,6 +40,30 @@ ROOT = Path(__file__).resolve().parents[1]
 TYPES = dict(cue="BlueprintCue", slide="BlueprintCue", answer="BlueprintAnswer",
              objective="BlueprintQuestObjective", dialog="BlueprintDialog", etude="BlueprintEtude")
 FIELDS = ("NativeEpilogueEdits", "NativeEpilogueSuppressions", "NativeGates", "NativeObjectiveSettlements")
+
+# eng7-l04: extend the q6b registry with reviewed world/journal target types.
+TYPES.update(quest="BlueprintQuest", **{"script-zone": "BlueprintScriptZone"})
+FIELDS += ("NativeWorldReconciliations",)
+
+
+@lru_cache(maxsize=1)
+def world_contracts():
+    rules = (ROOT / "src/Story.cs").read_text(encoding="utf-8-sig")
+    body = rules.split(" ReviewedNativeWorldTargets =", 1)[1].split("};", 1)[0]
+    return dict(re.findall(r'\["([a-f0-9]{32})"\]\s*=\s*"([^"\n]+)"', body))
+
+
+def world_group_supported(target, relationship, group):
+    from tools.native_gate_contract_lint import requirements
+    if not isinstance(group, list) or not all(isinstance(flag, str) for flag in group):
+        return False
+    contract = world_contracts().get(target, "")
+    if contract.endswith(":JOURNAL"):
+        return relationship == "kiana" and "trickster.now" in group and any(flag in group for flag in requirements()[0])
+    if contract == "etude:HIDE-OBJECTS":
+        return relationship == "eliandra" and {"trickster.now", "eliandra.trickster.buried"}.issubset(group)
+    return contract in {"etude:RETIRE-PRISONER", "script-zone:RETIRE-ESCAPE"} and relationship == "minagho_chivarro" and {
+        "trickster.now", "minagho_chivarro.trickster.minagho_in"}.issubset(group)
 
 
 @lru_cache(maxsize=1)
@@ -60,6 +84,11 @@ def _delivery(target, target_type, action, key, spec):
                    "or an E18 answer ShowConditions gate; add its runtime policy first")
     if target_type not in TYPES:
         raise ValueError(f"NativeOverride {target}: unsupported type {target_type}; {alternative}")
+    # eng7-l04: only an exact reviewed type/action pair may reach the new adapter.
+    if action in {"HIDE-OBJECTS", "RETIRE-PRISONER", "RETIRE-ESCAPE", "JOURNAL"}:
+        if world_contracts().get(target) != target_type + ":" + action or spec.get("Target") != target:
+            raise ValueError(f"NativeOverride {target}: no reviewed world target contract")
+        return "NativeWorldReconciliations", target
     if action in {"REPLACE", "SLIDE-SWAP"}:
         if target_type not in {"cue", "slide"} or (action == "SLIDE-SWAP" and target_type != "slide"):
             raise ValueError(f"NativeOverride {target}: {action} cannot safely alter {target_type}; {alternative}. "
@@ -141,6 +170,9 @@ def _known(payload):
 
 def finalize(payload, archive=None):
     """Build gate: no unregistered legacy edits, invalid states or unsafe GUIDs."""
+    # eng7-l04: reject unsupported Q3 declarations before publication.
+    from tools.native_gate_contract_lint import validate
+    validate(payload)
     registered = {(row["Field"], row["RuntimeKey"]) for row in payload.get("NativeOverrides", [])}
     missing = [(field, key) for field in FIELDS for key in payload.get(field, {}) if (field, key) not in registered]
     if missing:
@@ -158,6 +190,10 @@ def finalize(payload, archive=None):
             groups = variant.get("When", [])
             if not groups or any(not group or not {"trickster.now", "trickster.ever"}.intersection(group) for group in groups):
                 raise ValueError(f"NativeOverride {target}: every When group requires trickster.now/ever")
+            # eng7-l04: journal changes require full payment; burial/recruitment use only existing earned states.
+            if row["Field"] == "NativeWorldReconciliations" and any(
+                    not world_group_supported(target, spec.get("Relationship"), group) for group in groups):
+                raise ValueError(f"NativeOverride {target}: unsupported earned world state")
             for group in groups:
                 for state in group:
                     if not isinstance(state, str) or state.removeprefix("!") not in known:
@@ -174,6 +210,8 @@ def finalize(payload, archive=None):
         if spec.get("Parent"):
             expected.setdefault(spec["Parent"], "Blueprint*")
     found = find_bindings(archive or game_dir() / "blueprints.zip", expected)
+    # eng7-l04: native-action/object evidence and localization fields must match as well as GUID/type.
+    verify_world_targets(payload, found)
     for row in payload.get("NativeOverrides", []):
         spec = payload[row["Field"]][row["RuntimeKey"]]
         if spec.get("Parent") and found[spec["Parent"]]["type"] not in {"BlueprintCue", "BlueprintAnswer", "BlueprintDialog"}:
@@ -185,3 +223,113 @@ def finalize(payload, archive=None):
         row["Relationships"] = sorted({scenes[v["Replacement"]]["Relationship"] for v in [spec] + spec.get("Variants", [])}
                                       if row["Field"] == "NativeEpilogueEdits" else {spec["Relationship"]})
     return found
+
+
+# eng7-l04 begin: declarations for E-Q7-32, preserving every native ID and quest action.
+BURIAL = "a6e26159152a54c47a70ec91495499cf"
+PRISON = "0544675ba14e81e48bb0965823c33efe"
+ESCAPE = "067bd492b3a377d4e9112d929ec62fdb"
+CORPSE_IDS = ("36388267-9dfb-410c-ac7c-e6a96538ce7b", "8ea39933-3fd6-43fa-9d82-b1dbe03ccadf",
+              "6cacdba8-376e-41ff-9728-5eeff69e5021", "61dd594e-2a0e-47f5-86b5-937dccccce52")
+BURIAL_SCENE = "42332f3087ee8e34b8fd90aa34d64614"
+PRISON_SCENE = "1c9b1a8d692860647848123dc61f3baa"
+
+# Authored journal variants describe only the paid release already made in kiana_trickster.
+# The original quest/objective IDs, completion actions, unrecovered histories and XP remain native.
+JOURNALS = {
+    "5a5a533c9ce630a48b877f9a194840cb": (
+        "b46d5fa9-4ea9-4e7a-9997-b95c458bd095", "", "",
+        "The wedding guests are home. Arsinoe broke the ransomed soul stones in Drezen, but Sunhammer is still at large. "
+        "Seelah means to find the jeweler who sold her friends to the demons and make him answer for it."),
+    "7ac73c0b5de939b4b824a0aac54ba5f2": (
+        "ef5f2b7e-8e8c-4338-a8c1-acce1e65618f", "e4e4c32c-68d4-4542-93bb-2ea6fc09e4b8", "Find Sunhammer's hideout",
+        "Arsinoe's vision points to a cave beneath a cliff in the southern Worldwound, on the edge of the Winged Wood. "
+        "The guests' souls have already been returned, but the cave may lead Seelah and the Commander to Sunhammer."),
+    "83527eddea019674cb123a6a52bdf169": (
+        "e07e3559-8973-46ee-8c3f-85326d63c8aa", "8f8bb69c-77fb-4b1a-af7a-589fa79bcb17", "Confront Sunhammer and recover the stolen jewelry",
+        "The cave is a Baphomite hideout. Sunhammer kept the wedding jewelry after selling the soul stones back to Drezen. "
+        "Seelah intends to retrieve the empty settings and settle accounts with the jeweler."),
+    "5b1e04caadc42114281d29db76c19c4f": (
+        "884bf99f-bd1e-42ea-ac54-996fe4e8dddb", "fe6c829a-52b3-489e-814f-b9cbe22a8cd6", "Return the jewelry to Drezen",
+        "Seelah has the empty settings. The souls they held were freed in Drezen after the Commander paid for their return. "
+        "Bring the jewelry to the infirmary and meet the families whose wedding Sunhammer ruined."),
+    "ba857f1c903988f47a70a9d6a2d861fa": (
+        "247343ee-0c87-4495-9857-310cc31fa663", "", "",
+        "Jannah, the convicted deserter, wants to join her friends in pursuing Sunhammer. The wedding guests have been "
+        "freed, but the jeweler who stole their souls has yet to answer for it."),
+}
+
+
+def integrate_world(payload):
+    """Wire every mapped E-Q7-32 site through the existing native registry."""
+    rows = [(BURIAL, "eliandra", "HIDE-OBJECTS", [["trickster.now", "eliandra.trickster.buried"]]),
+            (PRISON, "minagho_chivarro", "RETIRE-PRISONER", [["trickster.now", "minagho_chivarro.trickster.minagho_in"]]),
+            (ESCAPE, "minagho_chivarro", "RETIRE-ESCAPE", [["trickster.now", "minagho_chivarro.trickster.minagho_in"]])]
+    for target, relationship, action, when in rows:
+        declare(payload, source=__name__ + ".eng7_l04", target=target, target_type="script-zone" if target == ESCAPE else "etude",
+                action=action, spec=dict(Target=target, Relationship=relationship, When=when))
+    for target, (description_key, title_key, title, description) in JOURNALS.items():
+        declare(payload, source=__name__ + ".eng7_l04", target=target,
+                target_type="quest" if target == "5a5a533c9ce630a48b877f9a194840cb" else "objective", action="JOURNAL",
+                spec=dict(Target=target, Relationship="kiana", When=[["trickster.now", "kiana.trickster.guests_ransomed"],
+                          ["trickster.now", "kiana.trickster.guests_bought_back"]], DescriptionKey=description_key,
+                          Description=description, TitleKey=title_key, Title=title))
+
+
+def _walk(value):
+    if isinstance(value, dict):
+        yield value
+        for child in value.values():
+            yield from _walk(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _walk(child)
+
+
+def verify_world_targets(payload, found):
+    for target, spec in payload.get("NativeWorldReconciliations", {}).items():
+        data = found[target]["data"]
+        error = f"NativeOverride {target}: native world evidence differs from reviewed contract"
+        if target == BURIAL:
+            displays = [row for row in _walk(data.get("Components")) if row.get("$type", "").endswith(", HideMapObject")
+                        and row.get("MapObject", {}).get("MapObject", {}).get("_entity_id") in CORPSE_IDS]
+            if (data.get("m_LinkedAreaPart") != "!bp_72672fb14139b1443a6700473cce04d7" or len(displays) != 4
+                    or {row["MapObject"]["MapObject"]["_entity_id"] for row in displays} != set(CORPSE_IDS)
+                    or any(row.get("Unhide") is not True or row["MapObject"].get("$type", "").split(", ")[-1] != "MapObjectFromScene"
+                           or row["MapObject"]["MapObject"].get("SceneAssetGuid") != BURIAL_SCENE for row in displays)):
+                raise ValueError(error)
+        elif target == PRISON:
+            triggers = [row for row in data.get("Components", []) if row.get("$type", "").endswith(", EtudePlayTrigger")
+                        and any(s.get("_entity_id") == "9bf297f2-559f-4823-8471-c9761999538a" for a in row.get("Actions", {}).get("Actions", [])
+                                for s in a.get("Spawners", []))]
+            if len(triggers) != 1:
+                raise ValueError(error)
+            trigger = triggers[0]
+            actions = trigger["Actions"]["Actions"]
+            conditions = trigger.get("Conditions", {})
+            status = conditions.get("Conditions", [{}])[0]
+            if (len(actions) != 2 or conditions.get("Operation") != "And" or len(conditions.get("Conditions", [])) != 1
+                    or status.get("$type", "").split(", ")[-1] != "EtudeStatus" or status.get("m_Etude") != "!bp_eff0ca2318f96c049b5c9e6785eac196"
+                    or not status.get("Playing") or any(status.get(k) for k in ("Not", "NotStarted", "Started", "Completed", "CompletionInProgress"))
+                    or actions[0].get("$type", "").split(", ")[-1] != "Spawn" or actions[0].get("RespawnIfDead") is not False
+                    or actions[0].get("ActionsOnSpawn", {}).get("Actions") != [] or len(actions[0].get("Spawners", [])) != 1
+                    or actions[0]["Spawners"][0].get("SceneAssetGuid") != PRISON_SCENE
+                    or actions[1].get("$type", "").split(", ")[-1] != "ScriptZoneActivate" or actions[1].get("UseEvaluator") is not False
+                    or actions[1].get("ScriptZoneEvaluator") is not None
+                    or actions[1].get("ScriptZone", {}).get("_entity_id") != "b8efebdc-2c24-40e6-b189-04fc39ad52a8"
+                    or actions[1]["ScriptZone"].get("SceneAssetGuid") != PRISON_SCENE):
+                raise ValueError(error)
+        elif target == ESCAPE:
+            actions = data.get("EnterActions", {}).get("Actions", [])
+            if (data.get("TriggerConditions") != dict(Operation="And", Conditions=[]) or data.get("ExitActions", {}).get("Actions") != []
+                    or len(actions) != 1 or actions[0].get("$type", "").split(", ")[-1] != "PlayCutscene"
+                    or actions[0].get("m_Cutscene") != "!bp_ee638b3fc29d95848aee5bdb74821aaf"
+                    or actions[0].get("PutInQueue") is not False or actions[0].get("CheckExistence") is not True
+                    or actions[0].get("Parameters", {}).get("Parameters") != []):
+                raise ValueError(error)
+        else:
+            if (text_key(data.get("Description")) != spec.get("DescriptionKey") or not spec.get("Description")
+                    or bool(spec.get("TitleKey")) != bool(spec.get("Title"))
+                    or spec.get("TitleKey") and text_key(data.get("Title")) != spec["TitleKey"]):
+                raise ValueError(error)
+# eng7-l04 end
