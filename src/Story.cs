@@ -45,6 +45,9 @@ namespace Tirabade
         // E18: reviewed native gates (NativeGate.Reviewed), keyed by gate id. While When holds, the gated native checker reads
         // false and the native content takes its own false branch. Never starts or completes a native etude.
         public Dictionary<string, NativeGateSpec> NativeGates = new Dictionary<string, NativeGateSpec>();
+        // eng7-f1: state-scoped DisplayText replacements keep the native answer identity and behavior.
+        public Dictionary<string, NativeAnswerEditSpec> NativeAnswerEdits = new Dictionary<string, NativeAnswerEditSpec>();
+        // end eng7-f1
         // E19: reviewed native objectives settled (failed, never completed) while When holds and the objective is still Started:
         // a journal step the route's world made moot (Greybor's Obj5A after Devarra flew). Trickster only, warning-only.
         public Dictionary<string, NativeGateSpec> NativeObjectiveSettlements = new Dictionary<string, NativeGateSpec>();
@@ -313,6 +316,19 @@ namespace Tirabade
         public string[][] When = Array.Empty<string[]>();
     }
 
+    // eng7-f1: reviewed answer presentation only; no authored continuation or effect fields.
+    public sealed class NativeAnswerEditSpec
+    {
+        public string AnswerList = "", Key = "", Relationship = "", Text = "";
+        public string[][] When = Array.Empty<string[]>();
+    }
+    public sealed class NativeAnswerPolicy
+    {
+        public readonly string AnswerList, Key, NextCue, SeenCue;
+        public NativeAnswerPolicy(string list, string key, string next, string seen)
+        { AnswerList = list; Key = key; NextCue = next; SeenCue = seen; }
+    }
+    // end eng7-f1
     public sealed class TricksterAccess
     {
         public string[] Detect = Array.Empty<string>();
@@ -1584,6 +1600,9 @@ namespace Tirabade
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
+            // eng7-f1
+            ValidateNativeAnswers(story, authoredFlags, nativeKeys, derivedFlags);
+            // end eng7-f1
             ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
@@ -1844,6 +1863,32 @@ namespace Tirabade
         // E19: a settlement applies while its relationship is live and any When group holds.
         public static bool NativeObjectiveSettles(Story story, string key, Snapshot state) => story.NativeObjectiveSettlements.TryGetValue(key, out var spec)
             && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
+
+        // eng7-f1: all four policy fields are checked against both archive and runtime, never inferred from prose.
+        public static readonly Dictionary<string, NativeAnswerPolicy> ReviewedNativeAnswers = new Dictionary<string, NativeAnswerPolicy>
+        {
+            ["901c1edd8887dfa4b9f108e106f38423"] = new NativeAnswerPolicy("99ab39af138f60f468c5ea9ab3ab5249", "74e73e62-e594-4200-8f0b-51c206c927d7", "258d1dd41728c4e4b874106425286d06", "ef5a2485bffeb7745af5d7fa7ca82b0e"),
+            ["01a184d01ff707748b6377c38d2912e5"] = new NativeAnswerPolicy("99ab39af138f60f468c5ea9ab3ab5249", "b6aadd42-09ba-48cd-86fa-4f3ef5ba83bf", "258d1dd41728c4e4b874106425286d06", "cb2e13e1ded36e5419d746ed92162a91"),
+            ["22ced28b5ecb08348b35daa51ab112b1"] = new NativeAnswerPolicy("31b874c1cdd33054d8925793772901eb", "ef6faada-c7c6-4c63-b1d6-f19a00da9c17", "1748505b610131747ae2f80f2286a19a", ""),
+        };
+        private static void ValidateNativeAnswers(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeAnswerEdits == null) throw new InvalidOperationException("NativeAnswerEdits cannot be null.");
+            foreach (var pair in story.NativeAnswerEdits)
+            {
+                var spec = pair.Value;
+                if (spec == null || !ReviewedNativeAnswers.TryGetValue(pair.Key, out var policy)
+                    || spec.AnswerList != policy.AnswerList || spec.Key != policy.Key || spec.Relationship != "kiana"
+                    || !story.Relationships.ContainsKey(spec.Relationship) || string.IsNullOrWhiteSpace(spec.Text)
+                    || spec.When == null || spec.When.Length == 0 || spec.When.Any(g => g == null || g.Length == 0
+                        || !g.Contains(TricksterNow) || !g.Contains("kiana.trickster.guests_ransomed") && !g.Contains("kiana.trickster.guests_bought_back")
+                        || g.Any(f => !EditWhenKnown(story, f, authored, native, runtime))))
+                    throw new InvalidOperationException("Invalid reviewed native answer edit: " + pair.Key);
+            }
+        }
+        public static bool NativeAnswerHolds(Story story, string target, Snapshot state) => story.NativeAnswerEdits.TryGetValue(target, out var spec)
+            && !state.Has(DegradedPrefix + spec.Relationship) && WhenHolds(spec.When, state);
+        // end eng7-f1
 
         // E18: the reviewed gate ids and their native targets (src/NativeGate.cs holds the audited contracts).
         public static readonly Dictionary<string, string> ReviewedNativeGates = new Dictionary<string, string>

@@ -290,19 +290,40 @@ namespace Tirabade
                 }
                 // E18: a reviewed native gate needs its exact native evidence, or its relationship is disabled (the route would
                 // otherwise promise an outcome the native content no longer keeps).
+                // eng7-f1: Q3 is an action-list plan, not a condition-checker gate (its Checkers array is empty).
+                NativeQ3Recovery.Plan? q3Recovery = null;
+                // end eng7-f1
                 var nativeGates = new List<(string Gate, NativeGateSpec Spec, BlueprintScriptableObject Owner, ConditionsChecker[] Checkers)>();
                 foreach (var pair in story.NativeGates)
                 {
                     string? refusal;
                     BlueprintScriptableObject? owner = null;
                     ConditionsChecker[] checkers = Array.Empty<ConditionsChecker>();
-                    try { refusal = NativeGate.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out owner, out checkers); }
+                    try
+                    {
+                        refusal = NativeGate.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out owner, out checkers);
+                        // eng7-f1: retain the verified action sites for the specialized two-branch contract.
+                        if (refusal == null && pair.Key == NativeQ3Recovery.Gate)
+                            refusal = NativeQ3Recovery.Prepare(id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), out q3Recovery);
+                        // end eng7-f1
+                    }
                     catch (Exception ex) { refusal = ex.Message; }
                     if ((refusal != null || owner == null) && Rules.WarningOnlyNativeGates.Contains(pair.Key))
                         warnings.Add("Native gate " + pair.Key + " skipped (the native content plays): " + (refusal ?? "no owner"));
                     else if (refusal != null || owner == null) Degrade(pair.Value.Relationship, "native gate " + pair.Key + ": " + (refusal ?? "no owner"));
                     else nativeGates.Add((pair.Key, pair.Value, owner, checkers));
                 }
+                // eng7-f1: whitelist and behavior checks precede registration; drift keeps native wording.
+                var nativeAnswers = new List<(string Target, NativeAnswerEditSpec Spec, BlueprintAnswer Answer)>();
+                foreach (var pair in story.NativeAnswerEdits)
+                {
+                    string? refusal;
+                    try { refusal = NativeAnswerEdit.Check(pair.Key, pair.Value, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id))); }
+                    catch (Exception ex) { refusal = ex.Message; }
+                    if (refusal != null) warnings.Add("Native answer edit " + pair.Key + " skipped (native text plays): " + refusal);
+                    else nativeAnswers.Add((pair.Key, pair.Value, (BlueprintAnswer)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Key))!));
+                }
+                // end eng7-f1
                 // E19: a settlement needs its reviewed objective; a missing one only warns (the journal keeps its native step).
                 foreach (var pair in story.NativeObjectiveSettlements)
                 {
@@ -665,11 +686,22 @@ namespace Tirabade
                     Optional<object>("Native gate " + id, () =>
                     {
                         bool Holds() => enabled && initialized && Game.Instance?.Player != null && Rules.NativeGateHolds(story, id, State());
-                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, Holds);
+                        // eng7-f1: the captured action plan supplies both sites, unlike a generic checker loop.
+                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(q3Recovery!, Holds);
+                        // end eng7-f1
                         else foreach (var checker in gate.Checkers) NativeGate.Attach(gate.Owner, checker, Holds);
                         return new object();
                     });
                 }
+                // eng7-f1: registered text is scoped to the same live snapshot and degradation contract as native gates.
+                foreach (var answer in nativeAnswers)
+                {
+                    string target = answer.Target;
+                    var text = Text("native-answer." + target, answer.Spec.Text);
+                    NativeAnswerEdit.Attach(answer.Answer, text, () => enabled && initialized && Game.Instance?.Player != null
+                        && !degraded.Contains(answer.Spec.Relationship) && Rules.NativeAnswerHolds(story, target, State()));
+                }
+                // end eng7-f1
                 if (epilogue == null) warnings.Add("Epilogue pages are not shown: the RanRomance parent epilogue is missing.");
                 initialized = true;
                 entry.Logger.Log("Registered " + story.Scenes.Count + " scenes. Existing dialogue answers and finish actions preserved."

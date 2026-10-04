@@ -440,6 +440,9 @@ internal static class Program
         ContactDisambiguationTests.Run(Check);
         if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
         TricksterOnlyNativeTests.Run(story, Check);
+        // eng7-f1
+        NativeAnswerEditsTests.Run(story, Check);
+        // end eng7-f1
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);

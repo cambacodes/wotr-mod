@@ -6,7 +6,7 @@ worlds (the list the game already shows once Seelah's Q3 has started). Read only
 """
 import copy
 
-from storylines.native_overrides import register_legacy
+from storylines.native_overrides import declare, register_legacy
 
 from story_format import n, scene
 
@@ -121,7 +121,26 @@ NATIVE_GATES = {
 }
 
 
+# eng7-f1: authored paid-history wording, findings 020/021/027. Sunhammer still faces
+# the native outcomes; the paid rescue is neither repeated nor granted by this edit.
+NATIVE_ANSWER_EDITS = {
+    "901c1edd8887dfa4b9f108e106f38423": dict(AnswerList="99ab39af138f60f468c5ea9ab3ab5249",
+        Key="74e73e62-e594-4200-8f0b-51c206c927d7", Relationship="kiana", When=HOME_WORLDS,
+        Text='"We brought the wedding guests home. Now we find Elan and stop Sunhammer."'),
+    "01a184d01ff707748b6377c38d2912e5": dict(AnswerList="99ab39af138f60f468c5ea9ab3ab5249",
+        Key="b6aadd42-09ba-48cd-86fa-4f3ef5ba83bf", Relationship="kiana", When=HOME_WORLDS,
+        Text='"The guests are safe. Now we make Sunhammer answer for this."'),
+    "22ced28b5ecb08348b35daa51ab112b1": dict(AnswerList="31b874c1cdd33054d8925793772901eb",
+        Key="ef6faada-c7c6-4c63-b1d6-f19a00da9c17", Relationship="kiana", When=HOME_WORLDS,
+        Text='"Their souls are free. Repay what you stole from their families, and I\'ll let you go."'),
+}
+# end eng7-f1
+
 def integrate(payload):
     """Register the gates and the aftermath line (after kiana_trickster)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
     register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, gates=NATIVE_GATES)
+    # eng7-f1
+    for target, spec in NATIVE_ANSWER_EDITS.items():
+        declare(payload, source=__name__, target=target, target_type="answer", action="REPLACE", spec=spec)
+    # end eng7-f1
