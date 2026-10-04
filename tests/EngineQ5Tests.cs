@@ -52,6 +52,9 @@ internal static class EngineQ5Tests
             {
                 var departed = new HashSet<string>(flags) { lost };
                 departed.ExceptWith(relationship.UnavailableOverrides.Values);
+                // An override that is itself derived (Wenduag's returned_available) is withheld by dropping the flags it derives from.
+                foreach (string overrideKey in relationship.UnavailableOverrides.Values)
+                    if (story.Derived.TryGetValue(overrideKey, out var sources)) departed.ExceptWith(sources.SelectMany(g => g));
                 var absentState = World(departed);
                 check(!Rules.PresenceWanted(presence, absentState), "Unreturned partner stands after " + lost + ": " + pair.Key);
                 if (Rules.Blocks(relationship, lost, absentState))
