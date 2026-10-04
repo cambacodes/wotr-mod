@@ -42,7 +42,7 @@ STARTED = "household.started"
 CLOSED = "household.closed"          # never set: the household is not a romance and cannot be refused
 KEPT = "household.table.kept"        # CommittedFlag: the Commander accepted the table
 ANY = "household.any_eligible"
-PAGE_TAKEN = "foresight.page_taken"  # Shyka's public key, produced from accepted + trickster.now on claude/shyka.
+PAGE_TAKEN = "foresight.page_taken"  # Shyka's paid page, available only on the current Trickster path.
 STANCE_ELIGIBLE = "household.stance_eligible"
 REST_ALLOWANCES = {"household.pair": 1, "household.protected": 2}
 # Cross-branch consumer contract, merged into foresight.CONSUMERS when that module is present.
@@ -437,7 +437,7 @@ def integrate(payload):
             seat_women[woman] = dict(Relationship=seat, UnavailableFlags=unavailable,
                                     UnavailableOverrides={key: value for key, value in seat_relationship.get("UnavailableOverrides", {}).items()
                                                           if key in unavailable})
-    # Foresight integrates after household on its branch. Register before its gate-contract audit runs.
+    # Register the merged Shyka stance consumers for the gate-contract audit.
     if importlib.util.find_spec("storylines.foresight") is not None:
         from storylines import foresight
         foresight.CONSUMERS.update(CONSUMERS)

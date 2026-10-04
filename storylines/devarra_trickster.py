@@ -659,6 +659,25 @@ def integrate(payload):
     payload.setdefault("Etudes", {})["devarra.chapter_three"] = "15e0048c7daf0ac4999c2313b58df0e3"        # Chapter03
 
 
+# --- Shyka's page: the echo (Writer/handoffs/12-TRICKSTER-FORESIGHT.md §2.4a, §2.9; 06 "Echo slots": proposed) -------------
+# Gated on the page and appended last to the cover node: a smell from someone else's branch, a wrong hour kept, Greybor's
+# surcharge. The pact itself is untouched: its choices follow, with every word of her tariff still to be paid.
+from storylines import foresight as _foresight  # noqa: E402
+
+_foresight.echo("devarra", P + "flight.pact", "cover",
+    "[Hold Greybor on the rock a breath longer. Wait for something.]",
+    _foresight.variant('''{n}Wet straw. You smell it before you know you are smelling it, under the sulphur and the old blood of the cave: wet straw and cold, the way a barn smells in snow. It is a crumb off the back of Shyka's page, where other people's branches stuck to it: a red dragon on her side in a snowfield, a dwarf working his axe free of her, eggs in straw, cracked. Nothing in this cave is straw. Nothing falls here but water.{/n}
+{n}You wait for it anyway. You keep Greybor's hand pinned on the rock one breath too long, then another, for a cue that is not coming, and the old elf's story runs on without you. Greybor does not forgive waiting. He shows you two fingers, which in his trade means the price of the job has just gone up, and he will collect it in Drezen.{/n}
+{n}When you let the smell go there is only what was always in front of you: a dragon who is hurt, and hunted, and will not leave.{/n}''',
+        forbids=(_foresight.GATE_BELIEVED,)),
+    _foresight.variant('''{n}Wet straw. You smell it under the sulphur and the old blood of the cave: wet straw and cold, the way a barn smells in snow. A crumb off the back of Shyka's page: a red dragon on her side in a snowfield, a dwarf working his axe free, eggs in straw, cracked. You believed one of those crumbs once, about a fire at Drezen's east gate, and the soldiers on that gate have not stopped talking about it.{/n}
+{n}You wait for this one anyway. You keep Greybor's hand pinned on the rock one breath too long, then another, and the old elf's story runs on without you. Greybor shows you two fingers: the price of the job has just gone up.{/n}
+{n}When you let the smell go there is only what was always in front of you: a dragon who is hurt, and hunted, and will not leave.{/n}''',
+        requires=(_foresight.GATE_BELIEVED,)),
+    sense="smell", wrong="snow, straw and cracked eggs in a cave of water and bone",
+    misstep="a wrong hour kept: the ambush held for a cue that never comes", cost=("Finances", -100))
+
+
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
 _LIVE_PRODUCERS = {
     'devarra.trickster.dead.woken',

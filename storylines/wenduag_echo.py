@@ -3,13 +3,14 @@ Approved pilot-echo-wenduag-v2 and its eight design-review defects govern this u
 Native evidence: MongrelsDefeated/Cue_0001 and LannQ2_WenduagAttackAndDie.
 The hook interrupts a second attack, never resurrects a dead actor or buys affection.
 WenduagEcho.cs retains the original UniqueId and supplies observational availability.
-TODO-shyka: the paid page producer lives on the unmerged Shyka branch.
+Shyka's paid page is required through the public foresight key.
 TODO destination: WenduagEcho.TODO_VerifiedCellarPosition needs the navigation check
 described in tests/wenduag-echo-acceptance.md before return can become available.
 """
 import copy
 
 from story_format import c, n, p, scene
+from storylines import foresight
 
 E = "wenduag.trickster.echo.abyss."
 W = "wenduag.trickster."
@@ -18,7 +19,7 @@ LANN = "cb29621d99b902e4da6f5d232352fbda"
 HUB = "66385ad77fa743e4bb1234078dbd804c"
 BACK = "dd70b574d7afd99409b5c664b8c5bfe4"
 DREZEN = "2570015799edf594daf2f076f2f975d8"
-PAGE = "foresight.page_taken"
+PAGE = foresight.PAGE_TAKEN
 RUNTIME = tuple(E + s for s in (
     "adapter_available", "casualty_available", "return_available", "valid", "unavailable"))
 CLOSURES = ("wenduag.killed", "wenduag.kicked_out", "wenduag.closed",
@@ -124,6 +125,14 @@ Next time you ask me about somebody I grew up with, I'll want to know what you'r
     forbids=(E + "trust_paid",) + LANN_GONE, AnswerLists=[HUB], NativeReturnCue=BACK)]
 
 
+# Register the allocated pilot in the shared budget without injecting a second echo.
+foresight.echo("wenduag", SCENES[0]["Id"], "start", SCENES[0]["Entry"],
+    foresight.variant(SCENES[0]["Nodes"][0]["Text"]),
+    sense="sight + sound", wrong="white stair, water",
+    misstep="paid runner searches the wrong place", cost=("Finances", -50), existing=True)
+foresight.CONSUMERS.update({item["Id"]: PAGE for item in SCENES})
+
+
 def _variant(scene, source, target, text, flag=E + "returned"):
     """Keep old answers and targets; append an exclusive authored branch."""
     original = next(node for node in scene["Nodes"] if node["Id"] == source)
@@ -142,9 +151,6 @@ def _variant(scene, source, target, text, flag=E + "returned"):
 
 def integrate(payload):
     """Registered through wenduag_cairn.integrate; expansion.py is outside this unit's allow list."""
-    # TODO-shyka: paid ownership is never inferred from dialog start or an old save.
-    if "foresight.page_taken" not in payload.setdefault("Derived", {}):
-        payload["Derived"][PAGE] = [["trickster.now", "trickster.foresight.accepted"]]
     payload["Derived"][E + "returned_available"] = [[W + "returned"]]
     payload.setdefault("DerivedForbids", {})[E + "returned_available"] = [E + "unavailable"]
     for key in (W + "with_you", W + "partner", W + "late_committed", "wenduag.harem.voice.pack"):
