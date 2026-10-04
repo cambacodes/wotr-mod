@@ -1078,7 +1078,9 @@ namespace Tirabade
         // through RouteAction, exactly as a native-list entry does) and a leave answer.
         private static BlueprintDialog BuildPresenceHub(string key, Presence presence)
         {
-            var scenes = story.Scenes.Where(scene => scene.InteractionHub == key).ToArray();
+            // eng7-l11: include reviewed reactions from the native speaker list.
+            var scenes = Rules.PresenceHubScenes(story, key);
+            // end eng7-l11
             var page = New<BlueprintBookPage>("page." + key + ".hub");
             page.ShowOnce = false;
             page.Conditions = Conditions();
@@ -1093,9 +1095,9 @@ namespace Tirabade
                 var answer = New<BlueprintAnswer>("answer." + key + ".hub." + scene.Id);
                 InitializeAnswer(answer);
                 answer.Text = Text(answer.name, scene.Entry.Length > 0 ? scene.Entry : scene.Title);
-                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
-                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
-                answer.OnSelect = Actions(new RouteAction { Start = scene });
+                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene, PresenceHub = key } /* eng7-l11 */);
+                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene, PresenceHub = key } /* eng7-l11 */);
+                answer.OnSelect = Actions(new RouteAction { Start = scene, PresenceHub = key } /* eng7-l11 */);
                 if (scene.EntryMythic != null || scene.EntryAlignment != null)
                     ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
                 page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
@@ -1183,7 +1185,9 @@ namespace Tirabade
             if (degraded.Contains(relationship)) return false;
             var state = State();
             return Rules.PresenceWanted(presence.Spec, state)
-                && story.Scenes.Any(scene => scene.InteractionHub == presence.Key && Rules.Available(story, scene, state));
+                // eng7-l11
+                && Rules.PresenceHubScenes(story, presence.Key).Any(scene => Rules.PresenceHubAvailable(story, presence.Key, scene, state));
+                // end eng7-l11
         }
 
         // Harness hook (E12c): click a presence the way the player would; true when its hub dialog started.
@@ -2084,6 +2088,9 @@ namespace Tirabade
         public sealed class RouteCondition : Condition
         {
             public Scene? Scene;
+            // eng7-l11
+            public string? PresenceHub;
+            // end eng7-l11
             public Choice? Choice;
             public Scene? Continuation;
             public bool ContactLost;
@@ -2091,7 +2098,9 @@ namespace Tirabade
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
                 && (PaymentNode != null ? !PaymentNode.Choices.Any(choice => Rules.ChoiceAvailable(choice, State()))
-                    : Scene != null ? Rules.Available(story, Scene, State())
+                    // eng7-l11
+                    : Scene != null ? PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Scene, State()) : Rules.Available(story, Scene, State())
+                    // end eng7-l11
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
@@ -2192,6 +2201,9 @@ namespace Tirabade
         public sealed class RouteAction : GameAction
         {
             public Scene? Start;
+            // eng7-l11
+            public string? PresenceHub;
+            // end eng7-l11
             public Scene? Complete;
             public Scene? Continuation;
             public Choice? Choice;
@@ -2204,7 +2216,9 @@ namespace Tirabade
                 if (!enabled || !initialized) return;
                 if (Start != null)
                 {
-                    if (Rules.Available(story, Start, State())) Queue(Start);
+                    // eng7-l11
+                    if (PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Start, State()) : Rules.Available(story, Start, State())) Queue(Start);
+                    // end eng7-l11
                     return;
                 }
                 if (Choice != null)

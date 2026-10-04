@@ -447,6 +447,10 @@ internal static class Program
         SceneAnchorTests.Run(Check);
         PresenceAnchorTests.Run(Check);
         PresenceHubTests.Run(Check);
+        // eng7-l11
+        PresenceReactionHubInventoryTests.Run(story, Check);
+        ContactInventoryOracleTests.Run(story, Check);
+        // end eng7-l11
         // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);

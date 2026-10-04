@@ -4,6 +4,18 @@ using System.Linq;
 
 namespace Tirabade
 {
+    // eng7-l11: read-only actor observations shared by NativeContact and its oracle.
+    public sealed class NativeContactObservation
+    {
+        public string Id = "", Storage = "";
+        public float[] Position = Array.Empty<float>();
+        public bool ContextReady, Destroyed, DestroyMark, Disposed, Dead, FinallyDead, CurrentStorage, SceneLoaded;
+        public bool ViewPresent, ViewMatches, ViewSceneLoaded, ViewActive, InGame, Suppressed, Conscious, Enemy;
+        public bool Ignorable => Destroyed || DestroyMark || Disposed || Dead || FinallyDead;
+        public bool Usable => ContextReady && !Ignorable && CurrentStorage && SceneLoaded && ViewPresent && ViewMatches
+            && ViewSceneLoaded && ViewActive && InGame && !Suppressed && Conscious && !Enemy;
+    }
+    // end eng7-l11
     public sealed class Story
     {
         public List<Scene> Scenes = new List<Scene>();
@@ -182,6 +194,9 @@ namespace Tirabade
         // InteractionHub is this presence key (the generalized Nurah arrival hub). Greeting is the hub page's text.
         public string? Dialog;
         public string? Greeting;
+        // eng7-l11: reviewed existing reactions also offered by this visitor hub.
+        public string[] ReactionScenes = Array.Empty<string>();
+        // end eng7-l11
         // Hours that must pass after the latest timed Requires flag before the presence is wanted (0: at once), as
         // Scene.DelayHours: someone who is away for a while does not stand at her mark in the meantime.
         public int DelayHours;
@@ -1378,6 +1393,17 @@ namespace Tirabade
             state.Chapter >= opener.MinChapter && state.Chapter <= opener.MaxChapter && Match(opener.Requires, opener.Forbids, state);
 
         // E12c: a physical scene offered in a presence's click-to-talk hub (InteractionHub = the exact presence key).
+        // eng7-l11: the same scene ID completes once across native and visitor entries.
+        public static Scene[] PresenceHubScenes(Story story, string key) => story.Scenes
+            .Where(scene => scene.InteractionHub == key)
+            .Concat(story.Presences[key].ReactionScenes.Select(id => story.Scenes.Single(scene => scene.Id == id)))
+            .Distinct().ToArray();
+
+        public static bool PresenceHubAvailable(Story story, string key, Scene scene, Snapshot state) =>
+            story.Presences.TryGetValue(key, out var presence)
+            && PresenceHubScenes(story, key).Contains(scene) && Available(story, scene, state)
+            && (scene.InteractionHub == key || PresenceWanted(presence, state) && state.AvailableContacts.Contains(presence.Unit));
+        // end eng7-l11
         public static bool IsPresenceHubScene(Scene scene) => scene.InteractionHub != null
             && PresenceRelationship(scene.InteractionHub) != null && scene.InteractionHub != "nurah.arrival"
             && !IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0
@@ -1767,6 +1793,13 @@ namespace Tirabade
                 var p = pair.Value;
                 if (p?.At != null && authored.Contains(PresenceFailedFlag(pair.Key)))
                     throw new InvalidOperationException("The runtime presence observation cannot be authored: " + PresenceFailedFlag(pair.Key));
+                // eng7-l11: reject malformed inheritance before any dialog is built.
+                if (p == null || p.ReactionScenes == null || p.ReactionScenes.Distinct().Count() != p.ReactionScenes.Length
+                    || p.ReactionScenes.Any(id => !story.Scenes.Any(s => s.Id == id && s.Reaction && !IsRemote(s)
+                        && s.InteractionHub == null && s.AnswerLists.Length > 0))
+                    || p.ReactionScenes.Length > 0 && p.Dialog != "hub")
+                    throw new InvalidOperationException("Invalid presence reaction attachments: " + pair.Key);
+                // end eng7-l11
                 string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
