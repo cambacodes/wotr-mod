@@ -11,6 +11,6 @@
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <!-- The harness DLL is copied next to the exe; game assemblies are resolved from GameDir at run time. -->
     <ProjectReference Include="..\RRT.TestHarness.csproj" />
-    <Reference Include="$(GameDir)Wrath_Data\Managed\Newtonsoft.Json.dll" Private="false" />
+    <Reference Include="$(GameDir)Wrath_Data\Managed\*.dll" Exclude="$(GameDir)Wrath_Data\Managed\System*.dll;$(GameDir)Wrath_Data\Managed\mscorlib.dll;$(GameDir)Wrath_Data\Managed\netstandard.dll" Private="false" />
   </ItemGroup>
 </Project>

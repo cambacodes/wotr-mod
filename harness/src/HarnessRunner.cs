@@ -233,38 +233,6 @@ namespace RRT.TestHarness
             catch { return false; }
         }
 
-        // E18 live row: every gate in Story.NativeGates whose relationship is live must have wrapped its reviewed checkers on the
-        // real loaded blueprints (IvorySanctum_MainEtude: both RedDragon_CR20 spawn branches; Golems_DragonEggs/Cue_0001).
-        static List<string> NativeGateRows(object? story, List<string> degraded)
-        {
-            var rows = new List<string>();
-            if (story == null) return rows;
-            if (!(story.GetType().GetField("NativeGates")?.GetValue(story) is IDictionary gates)) return rows;
-            static bool IsGuard(object? c) => c?.GetType().FullName == "Tirabade.NativeGate+Guard";
-            static IEnumerable<object> Conditions(object? checker) =>
-                (checker?.GetType().GetField("Conditions")?.GetValue(checker) as IEnumerable)?.Cast<object>() ?? Enumerable.Empty<object>();
-            foreach (DictionaryEntry pair in gates)
-            {
-                string id = (string)pair.Key;
-                string target = (string)(pair.Value.GetType().GetField("Target")?.GetValue(pair.Value) ?? "");
-                string relationship = (string)(pair.Value.GetType().GetField("Relationship")?.GetValue(pair.Value) ?? "");
-                var bp = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(target));
-                int guards = 0, expected = 0;
-                if (bp is Kingmaker.AreaLogic.Etudes.BlueprintEtude etude)
-                {
-                    expected = 2;
-                    foreach (var trigger in etude.ComponentsArray.OfType<Kingmaker.Designers.EventConditionActionSystem.Events.EtudePlayTrigger>())
-                        foreach (var action in trigger.Actions.Actions.OfType<Kingmaker.Designers.EventConditionActionSystem.Actions.Conditional>())
-                            guards += Conditions(action.ConditionsChecker).Count(IsGuard);
-                }
-                else if (bp is BlueprintCue cue) { expected = 1; guards = Conditions(cue.Conditions).Count(IsGuard); }
-                bool live = !degraded.Contains(relationship);
-                rows.Add((live && guards != expected ? "MISSING " : "") + id + " -> " + target + ": " + guards + "/" + expected + " guards"
-                    + (live ? "" : " (relationship degraded: canon expected)"));
-            }
-            return rows;
-        }
-
         void RecordInit()
         {
             var init = report.Init;
@@ -294,7 +262,7 @@ namespace RRT.TestHarness
                     }
                     init.DialogCount = rrt.Dialogs.Count;
                     persistentFlagKeys = new HashSet<string>(rrt.Flags.Keys.Cast<string>(), StringComparer.Ordinal);
-                    init.NativeGates = NativeGateRows(rrt.Story, init.Degraded);
+                    init.NativeGates = NativeGateRows.Read(rrt.Story, init.Degraded, id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)));
                 }
                 LogCapture.PatchFinalizer(harmony, asm.GetType("Tirabade.Main+RouteCondition") is Type rc ? AccessTools.Method(rc, "CheckCondition") : null, init.ReflectionProblems, "RouteCondition.CheckCondition");
                 LogCapture.PatchFinalizer(harmony, asm.GetType("Tirabade.Main+RouteAction") is Type ra ? AccessTools.Method(ra, "RunAction") : null, init.ReflectionProblems, "RouteAction.RunAction");
@@ -336,7 +304,7 @@ namespace RRT.TestHarness
                 yield break;
             }
 
-            // -Spike Presence (opt-in): the E12d quiet-copy check replaces scene driving for this save.
+            // -Spike Presence (opt-in): the quiet-copy check or mesh probe replaces scene driving for this save.
             if (plan.PresenceSpike)
             {
                 capture.Context = prefix + "spike";
