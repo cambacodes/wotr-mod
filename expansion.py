@@ -16,7 +16,7 @@ from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
 from storylines import aivu_campaign
-from storylines import earned_presence
+from storylines import earned_presence, native_overrides, native_facts
 from storylines import konomi_private_absence
 from storylines import soana_later_progression, soana_late_campaign
 from storylines import tirabade_chronology
@@ -650,6 +650,8 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    native_facts.integrate(payload)
+    native_overrides.finalize(payload)
     return payload
 
 
