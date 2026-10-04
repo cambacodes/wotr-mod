@@ -157,6 +157,28 @@ namespace Tirabade
                 degradeOnRefusal: false, onStop: new[] { "StartEtude:90f2e0f1cdc263b41b2e625bf228b226" },
                 onStopSignature: "StartEtude:90f2e0f1cdc263b41b2e625bf228b226:False:True"),
 
+            // eng7-f6a begin: extracted graft and returned Beth; preserve every native action/continuation.
+            ["5b567bdd747e497cb9f6984b1ca1dfc8"] = new Evidence("", "", "7e3fd30b-9eed-4980-8fd9-1af519d90b99", degradeOnRefusal: false,
+                parent: "57e18f5158904030a84a772fb361ceb4", dialog: "57e18f5158904030a84a772fb361ceb4",
+                continueTo: new[] { "0fd42edf36604d5fa9563711dc124aca", "5afdbd2e61264e8fa227fd153bf21efb", "aa857d545e124ce9a5148221e07194b9", "2a4aab21bd184c91a39cdde39b3f3b88", "825786e8c5db4511ae30950bb286f0e9", "172325d4df134fdd98e831b93e6d857c", "1b53c189b767412f921b8294b980a51c" }),
+            ["a9510daab8a04163933d9ecaeffac563"] = new Evidence("", "", "ea881b36-bb48-4232-9787-0491c91cb01e", degradeOnRefusal: false,
+                parent: "71d8a418ce148c647af24e7344cf6497", dialog: "e3fcab126b91a414b821f7390d23b40d", alsoParents: Array.Empty<string>(),
+                answers: new[] { "04659d8a1ca2a0a438f655c63ceedc3a" },
+                onShow: new[] { "Conditional", "Conditional" }),
+            ["f8d2b851faecddf448fe18db41e17120"] = new Evidence("", "", "59491c63-89e0-4924-ba8b-b89d7bd8e9b1", degradeOnRefusal: false,
+                parent: "5127f768a916c4a449992d5240e2f35a", dialog: "e3fcab126b91a414b821f7390d23b40d", alsoParents: Array.Empty<string>(),
+                continueTo: new[] { "7488e96d702143f4db013dae875b84aa" }),
+            ["1c8a6796436a7164fa9d63ec79e0395a"] = new Evidence("", "", "2dd1fdaf-2faf-4af3-b5d5-565064e2b599", degradeOnRefusal: false,
+                parent: "71ebf92472f64ff478674e5beb142a07", dialog: "e3fcab126b91a414b821f7390d23b40d", alsoParents: Array.Empty<string>(),
+                continueTo: new[] { "7488e96d702143f4db013dae875b84aa" }),
+            ["0fa64f1d24f706d41b09dee83acf621d"] = new Evidence("", "", "06df2f80-e5b5-44fb-8e3b-46355ecef58a", degradeOnRefusal: false,
+                parent: "91c5eca80c8779c4a8bd5754f5533cad", dialog: "f125dc501dc6e984385332e67f324f01",
+                continueTo: new[] { "b4f0abc3dd93ab04f9517079fca09790", "8a50fd9c430a80c498da5c09366ff5fc" }),
+            ["ec1219cf3a664baab8987200e0fe1aa7"] = new Evidence("", "", "f0c8aaa0-bdc0-468a-9301-9815c5ac52c0", degradeOnRefusal: false,
+                parent: "97efeec1d2aa45a4cab6111d14767825", dialog: "de4cc2dd71694b842be37b75d1705b83", alsoParents: Array.Empty<string>(),
+                continueTo: new[] { "922db7269f6420f419d64ae5f119cac8" }),
+            // eng7-f6a end
+
             // Engine-q3: both aftermath answers and all Arsinoe/Seelah siblings, verified in blueprints.zip.
             ["a819e8c85ef23324bb0d8117bb9d7df3"] = new Evidence("", "", "1aef0e95-dc1e-49fa-9852-3fba13bd5e20", degradeOnRefusal: false,
                 parent: "245ec8482e1f37b4a8702e54430c5aa7", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "716683517058beb4ead374bd16b22ff0" }),
@@ -392,6 +414,11 @@ namespace Tirabade
                 ? original.OnStop : new ActionList { Actions = Array.Empty<GameAction>() };
             replacement.Experience = original.Experience;
             replacement.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = original.Continue.Cues.ToList(), Strategy = original.Continue.Strategy };
+            // eng7-f6a begin: the introduction is itself the parent of the existing fate edits.
+            // Main prepares all cues before attaching children; share this reviewed list so those insertions
+            // reach both introductions, including the already-shipped cottage and mortal variants.
+            if (cueId == AfterlogueFirst) replacement.Continue.Cues = original.Continue.Cues;
+            // eng7-f6a end
             replacement.Answers.Clear();
             replacement.Answers.AddRange(original.Answers);   // the reviewed answer lists: the dialog goes on exactly as it would have
             replacement.Conditions = new ConditionsChecker { Operation = Operation.And, Conditions = new Condition[] {

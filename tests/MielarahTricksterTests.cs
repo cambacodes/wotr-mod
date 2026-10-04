@@ -77,7 +77,10 @@ internal static class MielarahTricksterTests
         var wheel = S(D + "wheel");
         var quarterdeck = S(D + "quarterdeck");
         var morning = S(D + "morning");
-        var pages = story.Scenes.Where(s => s.Relationship == "mielarah" && s.Owner == "MielarahEpilogue").ToArray();
+        // eng7-f6a: native adventure replacements are text carriers, not additional postwar pages.
+        var pages = story.Scenes.Where(s => s.Relationship == "mielarah" && s.Owner == "MielarahEpilogue"
+            && !Rules.IsNativeReplacement(story, s)).ToArray();
+        // eng7-f6a end
         var reactions = story.Scenes.Where(s => s.Relationship == "mielarah" && s.Reaction).ToArray();
         var own = story.Scenes.Where(s => s.Relationship == "mielarah" && !s.Reaction && s.Owner == "Mielarah").ToArray();
         var deck = own.Where(s => s.Id.StartsWith(D, StringComparison.Ordinal)).ToArray();

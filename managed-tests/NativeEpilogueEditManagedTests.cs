@@ -759,6 +759,14 @@ internal static partial class NativeEpilogueEditManagedTests
         var fixtures = new Dictionary<string, SimpleBlueprint> { [parentId] = parent, [dialogId] = dialog };
         foreach (var pair in cues) fixtures[pair.Key] = pair.Value;
         SimpleBlueprint? Resolve(string g) => fixtures.TryGetValue(g, out var bp) ? bp : null;
+        // eng7-f6a begin: prepare the corrected parent BEFORE attaching its existing child edits, as Main does.
+        var correctedIntro = new BlueprintCue { AssetGuid = id("native-edit." + parentId), name = "AfterlogueFixture_corrected_intro" };
+        var introSpec = story.NativeEpilogueEdits[parentId];
+        check(NativeEpilogueEdit.Check(parentId, introSpec, Resolve, null) == null, "F6a introduction policy rejected");
+        NativeEpilogueEdit.PrepareInDialog(parentId, introSpec, parent, dialog, correctedIntro, () => true);
+        check(ReferenceEquals(correctedIntro.Continue.Cues, parent.Continue.Cues),
+            "F6a introduction copied the fate list before child replacements were attached");
+        // eng7-f6a end
         var edits = story.NativeEpilogueEdits.Where(p => p.Value.Parent == parentId).ToArray();
         check(edits.Select(p => p.Key).OrderBy(k => k).SequenceEqual(new[] { "1b53c189b767412f921b8294b980a51c", "825786e8c5db4511ae30950bb286f0e9" }),
             "The afterlogue edits are not exactly Cue_0004 and Cue_0005.");
@@ -819,6 +827,10 @@ internal static partial class NativeEpilogueEditManagedTests
             if (row.Flags == null) current = null;
             else { current = new Snapshot { Chapter = 6 }; current.Flags.UnionWith(row.Flags); }
             check(Selected() == row.Plays, "Afterlogue, " + row.What + ": plays " + Selected() + ", expected " + row.Plays);
+            // eng7-f6a: traverse the prepared replacement's actual continuation, not just the original parent.
+            string corrected = correctedIntro.Continue.Cues.Select(reference => byGuid[reference.Guid])
+                .FirstOrDefault(entry => entry.Native() && entry.Cue.Conditions.Conditions.All(c => c.Check())).Name ?? "(none)";
+            check(corrected == row.Plays, "F6a corrected introduction lost a fate continuation: " + row.What);
         }
         Console.WriteLine("PASS: E14i afterlogue lines (Cue_0004, Cue_0005): archive checkers, Strategy First, replacement continues into Cue_0007.");
     }
