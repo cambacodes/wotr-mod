@@ -650,6 +650,10 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l09: the nine audited Camellia cuts retain local mornings and callbacks.
+    from storylines import camellia_intimate_aftermath
+    camellia_intimate_aftermath.integrate(payload)
+    # end eng7-l09
     return payload
 
 
