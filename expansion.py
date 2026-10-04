@@ -638,6 +638,10 @@ def make_expansion(*, independent_tirabade=True):
     from storylines import tirabade_native_variants
     tirabade_native_variants.integrate(payload)
     # eng7-l03 end
+    # eng7-f6c begin: only the assigned native dependencies and morale wording.
+    from storylines import engine_f6c
+    engine_f6c.integrate(payload)
+    # eng7-f6c end
     earned_presence.integrate(payload)
     trickster_engine(payload)
     # eng7-l05: wire current participants before binding their transitive native inputs.
@@ -700,6 +704,9 @@ def make_expansion(*, independent_tirabade=True):
             presence = payload["Presences"][name]
             presence["Requires"] = list(dict.fromkeys([*presence.get("Requires", []), "trickster.now"]))
     # eng7-l07 end
+    # eng7-f6c begin: append employment paragraphs after the existing epilogue appenders.
+    engine_f6c.reconcile_employment(payload)
+    # eng7-f6c end
     native_overrides.finalize(payload)
     validate_native_gate_contract(payload)
     return payload

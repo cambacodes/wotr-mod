@@ -87,6 +87,12 @@ class NativeInventoryTests(unittest.TestCase):
         report, _ = render_inventory(self.payload, self.expected, self.backlog, coverage)
         rows = [line for line in report.splitlines() if line.startswith("| irabeth:002") and cue in line]
         self.assertEqual(len(rows), 1)
+        # eng7-f6c: the shipped morale edit is now registered. A bare native
+        # preservation result still cannot green an export with the edit removed.
+        missing = copy.deepcopy(self.payload)
+        missing["NativeOverrides"] = [r for r in missing["NativeOverrides"] if r["Target"] != cue]
+        report, _ = render_inventory(missing, self.expected, self.backlog, coverage)
+        rows = [line for line in report.splitlines() if line.startswith("| irabeth:002") and cue in line]
         self.assertIn("FAIL_UNCOVERED", rows[0])
 
     def test_variant_fixtures_consume_known_q6b_readers_and_paid_flags(self):

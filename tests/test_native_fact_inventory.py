@@ -88,7 +88,10 @@ class NativeFactInventoryTests(unittest.TestCase):
     def test_export_retains_every_old_id_index_and_answer_target(self):
         # Compare the assembled route layout before E-Q7-10 wiring with the export.
         # Canon reader changes do not affect IDs. New scenes/nodes/answers append.
-        with patch.object(native_facts, 'integrate', lambda payload: None):
+        # eng7-f6c: the native morale edits consume these readers too. Keep the
+        # readers while disabling only the E-Q7-10 layout wiring under comparison.
+        with patch.object(native_facts, 'inventory_consumers', lambda payload: None), \
+                patch('tools.native_fact_inventory.verify_inventory', lambda payload, archive: None):
             before = expansion.make_expansion()
         after = self.payload['Scenes']
         self.assertEqual([s['Id'] for s in before['Scenes']], [s['Id'] for s in after[:len(before['Scenes'])]])

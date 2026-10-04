@@ -40,6 +40,13 @@ ALIVE_WITNESSES = (COMMANDER_BACK, "trickster.cheated_death", "lastcall.active",
 # Pages that may play after an unreturned sacrifice because they never stage the Commander alive after the war.
 # Pages that Require "sacrifice", or a key that implies it (the mourning pages), are exempt without a listing.
 COMMANDER_ABSENT = {
+    # eng7-f6c begin: native histories stay true after the Commander's death.
+    # Guild careers and the Tirabades' service/retirement stage no living Commander.
+    "horzalah.native.eng7_f6c.guild": "independent",
+    "horzalah.native.eng7_f6c.trio": "independent",
+    "irabeth.native.eng7_f6c.service": "independent",
+    "irabeth.native.eng7_f6c.retired": "independent",
+    # eng7-f6c end
     # The trio's loss pages: the future the war took, told without the Commander in the room.
     "ending_loss": "independent",
     "tirabade.negotiated_ending_loss": "independent",

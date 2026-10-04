@@ -56,6 +56,16 @@ def check(model, blocks, proof):
             speaking = b.slot == "text" and pattern.fullmatch(b.node.get("Speaker", ""))
             if not match and not speaking:
                 continue
+            # eng7-f6c begin: faith survives closure of the goddess's courtship.
+            # A prayer names its recipient without placing her in the room.
+            # Every mention must be devotional; a second, physical mention or
+            # her own speaking cue still needs the ordinary presence proof.
+            if (woman == "iomedae" and not speaking
+                    and not staged(b.text, pattern, b.node.get("Speaker") == "Narrator") and all(
+                    re.search(r"\b(?:pray|prays|prayed|praying|prayers?)\s+to\s*$", b.text[:m.start()], re.I)
+                    for m in pattern.finditer(b.text))):
+                continue
+            # eng7-f6c end
             excerpt = excerpt_at(b.text, match) if match else "Speaker: " + b.node.get("Speaker", "")
             guard = route_guard(model, route, woman)
             guarded = proof.implies(b.context, guard)

@@ -50,6 +50,13 @@ namespace Tirabade
         // cook, sell or smash. Warning-only. The parent mod never names the dialog or the flag.
         public const string DragonEggsDialog = "dragon_eggs.dialog";
         public const string EnableEggDialog = "b88c56313ded5e0409bbd04334add635";
+        // eng7-f6c begin: Cue_0765 has no actions or continuation. Only its
+        // checker is wrapped; the sequence, native GUID and ShowOnce stay intact.
+        public const string TerendelevFuneral = "terendelev.funeral_introduction";
+        public const string TerendelevFuneralSequence = "a52fcdb99e9bfca459613b989a9760f9";
+        public const string TerendelevScaleAnswer = "53173097d471d3a45bc31e770e2f35f2";
+        public const string TerendelevScale = "816f244523b5455a85ae06db452d4330";
+        // eng7-f6c end
         public static Dictionary<string, string> Reviewed => Rules.ReviewedNativeGates;
 
         // Phase 1: the native evidence must match exactly, or the gate is refused (the caller degrades its relationship).
@@ -105,6 +112,30 @@ namespace Tirabade
                 checkers = new[] { dialog.Conditions };
                 return null;
             }
+            // eng7-f6c begin: drift refuses the hide; no once-only cue is cloned.
+            if (gate == TerendelevFuneral)
+            {
+                if (!(blueprint is BlueprintCue funeral)) return "Storyteller/Cue_0765 missing";
+                var shown = funeral.Conditions?.Conditions;
+                if (!funeral.ShowOnce || funeral.ShowOnceCurrentDialog || funeral.ComponentsArray.Length != 0
+                    || NativeEpilogueEdit.TextKey(funeral.Text) != "59d62299-340d-4994-ab9a-1c62e6cc1376"
+                    || funeral.OnShow?.Actions?.Length != 0 || funeral.OnStop?.Actions?.Length != 0
+                    || funeral.Answers?.Count != 0 || funeral.Continue?.Cues?.Count != 0
+                    || funeral.AlignmentShift == null || funeral.AlignmentShift.Value != 0
+                    || funeral.Conditions == null || funeral.Conditions.Operation != Operation.And
+                    || shown == null || shown.Length != 2
+                    || !(shown[0] is AnswerSelected answer) || !answer.Not || answer.CurrentDialog
+                    || answer.Answer?.AssetGuid != BlueprintGuid.Parse(TerendelevScaleAnswer)
+                    || !(shown[1] is ItemsEnough items) || items.Not || items.Money || items.Quantity != 1
+                    || items.ItemToCheck?.AssetGuid != BlueprintGuid.Parse(TerendelevScale)
+                    || !(resolve(TerendelevFuneralSequence) is BlueprintCueSequence sequence)
+                    || sequence.Cues == null || sequence.Cues.Count(reference => reference?.Guid == funeral.AssetGuid) != 1)
+                    return "Storyteller/Cue_0765 differs from the reviewed action-free funeral policy";
+                owner = funeral;
+                checkers = new[] { funeral.Conditions };
+                return null;
+            }
+            // eng7-f6c end
             if (!(blueprint is BlueprintCue cue)) return "Golems_DragonEggs/Cue_0001 missing";
             var conditions = cue.Conditions?.Conditions;
             if (cue.Conditions == null || cue.Conditions.Operation != Operation.And || conditions == null || conditions.Length != 1

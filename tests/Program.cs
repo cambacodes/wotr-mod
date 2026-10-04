@@ -280,6 +280,8 @@ internal static class Program
         {
             NativeContradictionInventoryTests.Run(story, Check);
             NativeVariantCoverageInventoryTests.Run(story, Check);
+            EngineF6cNativeTests.Run(story, Check); // eng7-f6c: append comprehensive cases after legacy native negatives
+            NativeContradictionInventoryTests.WriteEvidence(); // eng7-f6c
             TirabadeNativeSlideTests.Run(story, Check);
             LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
             Console.WriteLine($"PASS: {checks} eng7-l03 native inventory and selection assertions.");
@@ -562,7 +564,11 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
             NativeContradictionInventoryTests.Run(story, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
+        { // eng7-f6c
             NativeVariantCoverageInventoryTests.Run(story, Check);
+            EngineF6cNativeTests.Run(story, Check);
+            NativeContradictionInventoryTests.WriteEvidence();
+        } // eng7-f6c
         // eng7-l03 end
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);

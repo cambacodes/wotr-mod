@@ -2192,6 +2192,9 @@ namespace Tirabade
             ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
             ["kiana.q3_recovery"] = "2b4a5c01a192d1f4aa8c9d32aa149727",           // FinalResolve, paired with Cue_0032 and its native completion
             ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
+            // eng7-f6c begin: the action-free, once-only funeral introduction.
+            ["terendelev.funeral_introduction"] = "21b10801b6c2b194d92506a137ef1307",
+            // eng7-f6c end
         };
 
         // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
@@ -2426,7 +2429,10 @@ namespace Tirabade
                         || !scene.AnswerLists.SequenceEqual(new[] { "871af36f2ab2b1f40b5de77976c54276" })
                         || !new[] { "irabeth.return_reply", "irabeth.return_meeting_accepted", "irabeth.return_meeting_arrived" }.All(scene.Requires.Contains)
                         || scene.DelayHours < 12
-                    : !IsRemote(scene) || scene.ContactUnit != null || scene.AnswerLists.Length != 0
+                    // eng7-f6c: request at the native quartermaster desk; reply remains remote.
+                    : (reply ? !IsRemote(scene) || scene.ContactUnit != null || scene.AnswerLists.Length != 0
+                        : IsRemote(scene) || scene.ContactUnit != "8692bff6041c47a0b13158d5977f291b"
+                            || !scene.AnswerLists.SequenceEqual(new[] { "fa57cf97ea01bf34e9a30f6ad444381e" }))
                         || !scene.Requires.Contains("irabeth.return_correspondence_available")
                         || (reply && (!new[] { "irabeth.return_request", "irabeth.return_request_sent" }.All(scene.Requires.Contains)
                             || !scene.Forbids.Contains("irabeth.return_meeting_accepted") || scene.DelayHours < 48))))
