@@ -135,19 +135,115 @@ def render(payload, records, strings):
     return "\n".join(lines) + "\n"
 
 
+# eng7-l03: deterministic mapped inventory supplements the lexical review queue.
+# It consumes q6b's registry and C#'s real Available-aware selector evidence.
+def render_inventory(payload, expectations, backlog, coverage=None):
+    from storylines.native_overrides import inventory
+    rows = inventory(payload, expectations, backlog)
+    evaluations = {r["Target"]: r for r in (coverage or {}).get("Evaluations", [])}
+    lines = ["# Reviewed native dependency inventory (E-Q7-09 / E-Q7-28)", "",
+        "Authored contracts; native identifiers, actions and continuations remain unchanged. "
+        "FAIL entries are unresolved dependencies, not permission to hide a native outcome. "
+        "Route writers own replacement prose. Lexical sibling candidates follow below.", "",
+        "| Finding | Native GUID / path | Earned dependency | Evaluation |", "|---|---|---|---|"]
+    failures = 0
+    for row in rows:
+        evaluation = evaluations.get(row["Target"])
+        status = row["Status"]
+        # An unchanged-native negative case proves preservation, not reconciliation.
+        # Never let it turn an unregistered mapped dependency (e.g. morale) green.
+        if evaluation and row["Spec"] and status != "context":
+            status = "PASS_EVALUATED" if evaluation["Passed"] else "FAIL_SELECTION"
+        if status.startswith("FAIL") or status == "registered_unevaluated":
+            failures += 1
+        dependency = " OR ".join(" + ".join(g) for g in row["Dependency"])
+        lines.append(f"| {row['Finding']} | `{row['Target']}` / `{row['Path']}` | {dependency} | {status} |")
+    lines += ["", f"Mapped dependency coverage: **{failures} failing/unevaluated entries**.", "",
+              "## Registered delivery contracts", ""]
+    specs = {r["Target"]: r["Spec"] for r in rows if r["Spec"]}
+    for target, spec in sorted(specs.items()):
+        lines.append(f"- `{target}`: `{json.dumps(spec, sort_keys=True)}`")
+    lines += ["", "## Existing repairs (H-14)", "",
+              "These repairs already use q6b's registry; they do not cover the remaining body-state/Q3 siblings. "
+              "Serialized native actions/continuations are checked against the archive, and the existing "
+              "NativeDialogEdit/AreeluAfterlogue regressions remain in the full rules gate.", ""]
+    registered = {r["Target"]: r for r in payload.get("NativeOverrides", [])}
+    for target in expectations.get("ExistingRepairs", []):
+        row = registered.get(target)
+        if row is None:
+            failures += 1
+            lines.append(f"- `{target}`: FAIL_UNCOVERED existing repair.")
+        else:
+            spec = payload[row["Field"]][row["RuntimeKey"]]
+            lines.append(f"- `{target}` / `{expectations['Fixtures'][target]['Path']}` / `{row['Source']}`: "
+                         f"registered unchanged delivery; `{json.dumps(spec, sort_keys=True)}`.")
+    lines += ["",
+              "## Native selection cases", ""]
+    for evaluation in (coverage or {}).get("Evaluations", []):
+        for case in evaluation["Cases"]:
+            lines.append(f"- `{evaluation['Target']}` / {case['Name']}: original={case['Original']}; "
+                         f"selected=`{case['Selected'] or 'native'}`; expected=`{case['Expected'] or 'native'}`; "
+                         f"{'PASS' if case['Passed'] else 'FAIL_SELECTION'}.")
+    lines += ["", "## Authored outcome consumers (current export)", "",
+              "Review every listed ending alongside the native originals; the mapped dependency column alone "
+              "is not the full outcome partition. These are actual scene predicates, including late commitment, "
+              "refusal, closure, morale and sacrifice. Listing a scene does not declare its native contradiction resolved.", ""]
+    for route in sorted({r["Route"] for r in rows}):
+        relationship = "minagho_chivarro" if route == "minagho-and-chivarro" else route
+        lines += [f"### {route}", ""]
+        for scene in payload["Scenes"]:
+            if scene.get("Relationship") != relationship or not scene.get("Owner", "").endswith("Epilogue"):
+                continue
+            gates = {key: scene.get(key, []) for key in ("Requires", "RequiresAny", "RequiresAnyGroups", "Forbids")}
+            gates["ForbidOverrides"] = scene.get("ForbidOverrides", {})
+            lines.append(f"- `{scene['Id']}`: chapters {scene['MinChapter']}–{scene['MaxChapter']}; "
+                         f"`{json.dumps(gates, sort_keys=True)}`.")
+    lines += ["", "## Uncovered native siblings and outcomes", "",
+              "Every cue/answer in each cited dialogue directory and every cue on the cited epilogue pages is "
+              "enumerated, including lines without lexical death terms. Unmapped entries require review; "
+              "they are not automatically contradictions.", ""]
+    registered = {r["Target"] for r in payload.get("NativeOverrides", [])}
+    for guid in expectations["Siblings"]:
+        fixture = expectations["Fixtures"][guid]
+        status = "registered (see When/availability)" if guid in registered else "UNCOVERED_REVIEW"
+        lines.append(f"- `{guid}` — {fixture['Type']}; `{fixture['Path']}`; {status}.")
+    lines += ["", "## Route follow-ups", ""]
+    failing = {r["Finding"] for r in rows if r["Status"] == "FAIL_UNCOVERED"}
+    for finding in expectations["Findings"]:
+        if finding["Id"] in failing:
+            lines.append(f"- {finding['Id']} / `{finding['Scene']}`: {finding['Fix']}")
+        if finding.get("SnapshotStateAbsent"):
+            lines.append(f"- {finding['Id']}: snapshot `{finding['SnapshotStateAbsent']}` is absent here; "
+                         "contracts use the current paid dig/raise evidence without inventing a reconciliation flag.")
+    return "\n".join(lines) + "\n", failures
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--story", type=Path, default=ROOT / "development/Story.json")
     parser.add_argument("--game", type=Path, default=game_dir())
     parser.add_argument("--output", type=Path, default=ROOT / "tools/native_contradictions_report.md")
+    # eng7-l03
+    parser.add_argument("--inventory", type=Path, default=ROOT / "tools/native_inventory_expectations.json")
+    parser.add_argument("--coverage", type=Path, help="C# RulesTests selector evidence for this exact story export")
+    parser.add_argument("--strict-inventory", action="store_true", help="fail on uncovered/unevaluated mapped dependencies")
     args = parser.parse_args()
     payload = json.loads(args.story.read_text(encoding="utf-8-sig"))
+    coverage = json.loads(args.coverage.read_text()) if args.coverage else None
+    if coverage:
+        import hashlib
+        if coverage.get("StorySha256") != hashlib.sha256(args.story.read_bytes()).hexdigest():
+            raise ValueError("Native inventory: stale selector evidence for another story export")
+    inventory, failures = render_inventory(payload, json.loads(args.inventory.read_text()),
+                                          json.loads((ROOT / "tools/engine_backlog.json").read_text()), coverage)
     strings = json.loads((args.game / "Wrath_Data/StreamingAssets/Localization/enGB.json").read_text(encoding="utf-8-sig"))["strings"]
     with ZipFile(args.game / "blueprints.zip") as archive:
         report = render(payload, iter_records(archive, ("World/Dialogs/",)), strings)
-    args.output.write_text(report, encoding="utf-8")
+    args.output.write_text(inventory + "\n---\n\n" + report, encoding="utf-8")
     print(f"REPORT ONLY: native contradiction candidates -> {args.output}")
+    print(f"Native dependency coverage: {failures} failing/unevaluated entries")
+    return int(args.strict_inventory and failures > 0)
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
