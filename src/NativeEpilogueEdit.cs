@@ -50,12 +50,14 @@ namespace Tirabade
             // E14i: the cue's reviewed OnShow / OnStop actions ("Type:guid" of each, in order; ActionShape). The replacement runs the same
             // action objects, so the quest goes on exactly as it would have (only one of the two cues ever plays). Null: none allowed.
             public readonly string[]? OnShow, OnStop;
+            public readonly bool TextOnly; // eng7-f6b: preserve native cue history and sequence positions.
             // Optional full engine-q3 action signature, including evaluator/options on reviewed native outcomes.
             public readonly string? OnStopSignature;
             internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true, string[]? continueTo = null,
                 string? parent = null, string? dialog = null, string[]? parentContinue = null, string[]? answers = null,
-                string[]? alsoParents = null, string[]? onShow = null, string[]? onStop = null, string? onStopSignature = null)
+                string[]? alsoParents = null, string[]? onShow = null, string[]? onStop = null, string? onStopSignature = null, bool textOnly = false)
             {
+                TextOnly = textOnly; // eng7-f6b
                 ParentContinue = parentContinue;
                 Answers = answers;
                 AlsoParents = alsoParents; OnShow = onShow; OnStop = onStop; OnStopSignature = onStopSignature;
@@ -176,6 +178,48 @@ namespace Tirabade
                 parent: "2b133bf7ac66d6241a69a53dce2bf05f", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "aeccec94d6e3246488d7f13577a8380d" }, alsoParents: Array.Empty<string>()),
             ["aeccec94d6e3246488d7f13577a8380d"] = new Evidence("", "", "58ee4b07-0488-4fab-a286-d50f786fe135", degradeOnRefusal: false,
                 parent: "b3e6076282402a1489b6f226567cf8fa", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: Array.Empty<string>(), onStop: new[] { "PlayCutscene:fef1b52002b9af642a8e5169802c3b68", "Conditional", "Conditional", "Conditional" }),
+            // eng7-f6b: kiana:009, original history and all native outcomes retained.
+            ["82213327a06db644fb2b5bb1410d4654"] = new Evidence("", "", "6962fab7-3d93-4c05-92fa-ca0c914d4e4d", degradeOnRefusal: false, parent: "def14993a63a830478c3d6d6b031338c", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: new[] { "e9976f5d65ebc0641a13d93b6aa190de" }, textOnly: true, continueTo: new[] { "a473e5412ffd0f54fbf395770a80a008" }),
+            // eng7-f6b: kiana:010, original history and all native outcomes retained.
+            ["3f29d60b9a30bbb49bc9d56eaae1f643"] = new Evidence("", "", "5d8e7c45-94d1-4c1a-9b5c-7987b289d282", degradeOnRefusal: false, parent: "d30553a00d511b8439e9cfdca0564d86", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "fbbdcb4cfc822034997dea227819b768" }),
+            // eng7-f6b: kiana:011, original history and all native outcomes retained.
+            ["5fa8ed029a93b4348b82ec659e6839a0"] = new Evidence("", "", "60a2a08c-7b89-429f-8956-30184ad2712e", degradeOnRefusal: false, parent: "cd580fd11d9081f45816e3a8eda2ebf9", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "be25aa4b776039042b4de208aa557e78" }),
+            // eng7-f6b: kiana:012, original history and all native outcomes retained.
+            ["f750317f25d754b41b465a9533216338"] = new Evidence("", "", "452340b8-848b-4057-8a4a-17435357540d", degradeOnRefusal: false, parent: "be25aa4b776039042b4de208aa557e78", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "e6db3ebdb4328724aad3327ec335b5ac" }, onStop: new[] { "GiveObjective:7ac73c0b5de939b4b824a0aac54ba5f2", "UnlockLocation:963fa1715f85c114182d9ac91ee32bc3" }),
+            // eng7-f6b: kiana:013, original history and all native outcomes retained.
+            ["81f0222e6856efd4bbdbd5dea796716a"] = new Evidence("", "", "baa20a60-7931-4084-b510-bf166145a1f2", degradeOnRefusal: false, parent: "8768fb1e6ba190f479377c6f29979af2", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "cabdc1a734774754385b14bc2d850baa" }),
+            // eng7-f6b: kiana:014, original history and all native outcomes retained.
+            ["a473e5412ffd0f54fbf395770a80a008"] = new Evidence("", "", "9e3e8d42-8f1c-4cb9-9dfb-d4c5712ff6d1", degradeOnRefusal: false, parent: "82213327a06db644fb2b5bb1410d4654", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "124ca3b348b3dff429ef708e5b24788a" }),
+            // eng7-f6b: kiana:015, original history and all native outcomes retained.
+            ["124ca3b348b3dff429ef708e5b24788a"] = new Evidence("", "", "d895a05d-ad4f-4d2d-9c28-70880a010585", degradeOnRefusal: false, parent: "a473e5412ffd0f54fbf395770a80a008", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "086a160e51ef79c4d98750203cb4b641" }, answers: new[] { "a5888720b68047b48b9791bed94e22c8" }),
+            // eng7-f6b: kiana:016, original history and all native outcomes retained.
+            ["613485017b96c3840a2f9eea886deff1"] = new Evidence("", "", "8b555c03-fe28-4d02-85be-b25b99bcd0b0", degradeOnRefusal: false, parent: "d6e5897cc65cb334d8da8c46ef400d1c", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "be25aa4b776039042b4de208aa557e78" }),
+            // eng7-f6b: kiana:017, original history and all native outcomes retained.
+            ["086a160e51ef79c4d98750203cb4b641"] = new Evidence("", "", "87e38061-27ad-44e8-ad6b-2f52b7429fc6", degradeOnRefusal: false, parent: "124ca3b348b3dff429ef708e5b24788a", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "a5888720b68047b48b9791bed94e22c8" }),
+            // eng7-f6b: kiana:018, original history and all native outcomes retained.
+            ["d759f7956ba304442b74a842ff6b14d5"] = new Evidence("", "", "a03f71db-e5e0-4f72-b29a-9834b4a48165", degradeOnRefusal: false, parent: "d6e68640b972e8e4e9ea460235fcc914", dialog: "e17e0900947b47b47aacd875f6490626", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "a5888720b68047b48b9791bed94e22c8" }),
+            // eng7-f6b: kiana:019, original history and all native outcomes retained.
+            ["ff03c12b165989e479d7c80e9ce7a8f9"] = new Evidence("", "", "ec2188d1-671b-4077-8c5f-79fc07598302", degradeOnRefusal: false, parent: "c207f647111ab6e46adeef6cad2ae929", dialog: "189401b80979be0439f3e3cb9f053d1e", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "693ae9bdb9203044085a59679a27bb75" }),
+            // eng7-f6b: kiana:022, original history and all native outcomes retained.
+            ["cb2e13e1ded36e5419d746ed92162a91"] = new Evidence("", "", "b8064d2c-fba2-4fa6-8a6f-b6dadab2aee7", degradeOnRefusal: false, parent: "dc3a376f09759574f997995e8f07689a", dialog: "e35b026526a45204d8eeefa22a7f5a57", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "563d9ab3629492b458369e281f28b033" }, answers: new[] { "99ab39af138f60f468c5ea9ab3ab5249" }),
+            // eng7-f6b: kiana:023, original history and all native outcomes retained.
+            ["e65e4b85197e6aa42a40d34abcea889c"] = new Evidence("", "", "a4e4b388-60b7-4030-9aaf-4f06f807f1e4", degradeOnRefusal: false, parent: "563d9ab3629492b458369e281f28b033", dialog: "e35b026526a45204d8eeefa22a7f5a57", alsoParents: Array.Empty<string>(), textOnly: true, onShow: new[] { "PlayCutscene:2d5376d710f74b34b9176b8fe9a89624" }),
+            // eng7-f6b: kiana:024, original history and all native outcomes retained.
+            ["be05eef615c2eac44ac30ec0a2e49603"] = new Evidence("", "", "697942a5-46b2-4c85-975c-602efa20836b", degradeOnRefusal: false, parent: "5bf8f4fc37225f544b9244b683287899", dialog: "e35b026526a45204d8eeefa22a7f5a57", alsoParents: Array.Empty<string>(), textOnly: true),
+            // eng7-f6b: kiana:025, original history and all native outcomes retained.
+            ["5736cff83ea67644bb11346947b1eb2f"] = new Evidence("", "", "ba2425dd-420f-4ff6-abaa-2b5f0ae95741", degradeOnRefusal: false, parent: "b0369d1b8d8ba2d40a5eec0401ea7407", dialog: "9907442d488449a4fb33e182f3f732af", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "10eb3a708933ebc4c865ed9ae6e72805" }, onStop: new[] { "PlayCutscene:32cc6baa05173fd4bb19116dbe6af27a" }),
+            // eng7-f6b: kiana:026, original history and all native outcomes retained.
+            ["dd9956385abff89418d83075e1b7774c"] = new Evidence("", "", "8fbff9f7-a739-4a19-b5cd-8102b2299891", degradeOnRefusal: false, parent: "c0db5a85736dae247835254af7a2bd37", dialog: "9907442d488449a4fb33e182f3f732af", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "3ee9e83c44122854695c81669afcc819" }),
+            // eng7-f6b: kiana:028, original history and all native outcomes retained.
+            ["75220bf8ab5be034ea55b84d24c58de2"] = new Evidence("", "", "43e11168-7f70-4aa8-b527-b657268d390f", degradeOnRefusal: false, parent: "ff5c54635748e334990879498eb5429b", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "beeb8ac59d51cd743bfa5f79d61f84d6" }),
+            // eng7-f6b: kiana:029, original history and all native outcomes retained.
+            ["096dd0fc12adbaf438bca7c7c9ebb4ba"] = new Evidence("", "", "cbbe11fe-01ff-4ba9-8f1f-2b2a9b4940a6", degradeOnRefusal: false, parent: "f967c3e0543a53846852152359ad90ee", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "d793e32a89c78224f976782512faa1aa" }),
+            // eng7-f6b: kiana:030, original history and all native outcomes retained.
+            ["3bdbd8728bc75bf4eadae1152a34f26b"] = new Evidence("", "", "cd9de62b-2a56-4220-b057-6c1a3ea86b25", degradeOnRefusal: false, parent: "04c5a2a333bf6e34eaf1982ed7a58fa0", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: Array.Empty<string>(), textOnly: true, answers: new[] { "beeb8ac59d51cd743bfa5f79d61f84d6" }),
+            // eng7-f6b: kiana:031, original history and all native outcomes retained.
+            ["01a1c98b38a78fd4abeaa0c09f3a5be9"] = new Evidence("", "", "9abb4bcf-bb04-4a8c-bd1c-4cbcb3de1e3e", degradeOnRefusal: false, parent: "f9abfcd9d014f5944b25dd1b3acc841d", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: new[] { "e1f90a4d95282304a857fae8184b9d16" }, textOnly: true, continueTo: new[] { "b0a2d2d2f5c091445a3c21a4ba6ed36f" }),
+            // eng7-f6b: kiana:032, original history and all native outcomes retained.
+            ["aebbc1845e827dd4da4e28014e7b4162"] = new Evidence("", "", "1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c", degradeOnRefusal: false, parent: "6a197b1557eb815458304ec649228fb8", dialog: "6a197b1557eb815458304ec649228fb8", alsoParents: Array.Empty<string>(), textOnly: true, continueTo: new[] { "cdc3d76b9c6dea74e8773f9eb291aa31" }),
         };
 
         // E14i: a reviewed action's shape, "Type:guid" (the first blueprint reference the action holds), or the type alone.
@@ -269,7 +313,9 @@ namespace Tirabade
             if (!(resolve(cueId) is BlueprintCue cue)) return "cue missing";
             var parent = resolve(evidence.Parent);
             var selection = ParentSelection(parent);
-            if (selection == null) return "parent cue, answer or dialog missing";
+            // eng7-f6b: text-only delivery never inserts into or mutates a sequence.
+            var parentCues = evidence.TextOnly ? TextParentCues(parent) : selection?.Cues;
+            if (parentCues == null) return "parent cue, answer or dialog missing";
             if (!(resolve(evidence.Dialog!) is BlueprintDialog dialog)) return "dialog missing";
             if (TextKey(cue.Text) != spec.Key) return "cue text key changed (patch drift)";
             var continued = cue.Continue?.Cues;
@@ -282,24 +328,36 @@ namespace Tirabade
                 || !continueReviewed || cue.Answers == null
                 || !cue.Answers.Select(reference => reference?.Guid).SequenceEqual((evidence.Answers ?? Array.Empty<string>()).Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id))))
                 return "cue behavior differs from the reviewed policy";
-            if (selection.Cues == null || selection.Strategy != Kingmaker.DialogSystem.Strategy.First
-                || selection.Cues.Count(reference => reference?.Guid == cue.AssetGuid) != 1)
+            if ((!evidence.TextOnly && selection?.Strategy != Kingmaker.DialogSystem.Strategy.First)
+                || parentCues.Count(reference => reference?.Guid == cue.AssetGuid) != 1)
                 return "parent no longer leads First into the cue exactly once";
             // Further parents (a mid-dialog cue): each also leads First into the cue exactly once.
             foreach (var also in evidence.AlsoParents ?? Array.Empty<string>())
             {
-                var alsoSelection = ParentSelection(resolve(also));
-                if (alsoSelection?.Cues == null || alsoSelection.Strategy != Kingmaker.DialogSystem.Strategy.First
-                    || alsoSelection.Cues.Count(reference => reference?.Guid == cue.AssetGuid) != 1)
+                var alsoParent = resolve(also);
+                var alsoSelection = ParentSelection(alsoParent);
+                var alsoCues = evidence.TextOnly ? TextParentCues(alsoParent) : alsoSelection?.Cues; // eng7-f6b
+                if (alsoCues == null || (!evidence.TextOnly && alsoSelection?.Strategy != Kingmaker.DialogSystem.Strategy.First)
+                    || alsoCues.Count(reference => reference?.Guid == cue.AssetGuid) != 1)
                     return "a further parent no longer leads First into the cue exactly once";
             }
             // A parent cue must open the dialog (unless the cue sits mid-dialog with further parents); a parent dialog must be the
             // dialog; a parent answer is reviewed by its own NextCue.
-            if (parent is BlueprintCue && evidence.AlsoParents == null && (dialog.FirstCue?.Cues == null || dialog.FirstCue.Cues.Count(reference => reference?.Guid == parent.AssetGuid) != 1))
+            if (!evidence.TextOnly && parent is BlueprintCue && evidence.AlsoParents == null && (dialog.FirstCue?.Cues == null || dialog.FirstCue.Cues.Count(reference => reference?.Guid == parent.AssetGuid) != 1))
                 return "dialog no longer opens on the parent cue";
             if (parent is BlueprintDialog && !ReferenceEquals(parent, dialog)) return "parent dialog is not the reviewed dialog";
             return null;
         }
+
+        // eng7-f6b: inspected membership only; these lists are never changed by text delivery.
+        public static List<BlueprintCueBaseReference>? TextParentCues(SimpleBlueprint? parent) => parent switch
+        {
+            BlueprintCueSequence sequence => sequence.Cues,
+            BlueprintSequenceExit exit => exit.Continue?.Cues,
+            _ => ParentSelection(parent)?.Cues,
+        };
+        public static bool IsTextOnly(string target) => Reviewed.TryGetValue(target, out var evidence) && evidence.TextOnly;
+        // eng7-f6b end
 
         // E14i: the selection that lists a dialog cue: a cue's Continue, an answer's NextCue or a dialog's FirstCue.
         public static Kingmaker.DialogSystem.CueSelection? ParentSelection(SimpleBlueprint? parent) => parent switch

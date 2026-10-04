@@ -279,6 +279,7 @@ internal static class Program
         if (args.Contains("--eng7-l03-native"))
         {
             NativeContradictionInventoryTests.Run(story, Check);
+            KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
             NativeVariantCoverageInventoryTests.Run(story, Check);
             TirabadeNativeSlideTests.Run(story, Check);
             LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
@@ -564,6 +565,10 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
             NativeVariantCoverageInventoryTests.Run(story, Check);
         // eng7-l03 end
+        // eng7-f1
+        NativeAnswerEditsTests.Run(story, Check);
+        KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
+        // end eng7-f1
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);

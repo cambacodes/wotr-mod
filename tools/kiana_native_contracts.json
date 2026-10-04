@@ -1,0 +1,340 @@
+{
+  "82213327a06db644fb2b5bb1410d4654": {
+    "Finding": "kiana:009",
+    "Parent": "def14993a63a830478c3d6d6b031338c",
+    "AlsoParents": [
+      "e9976f5d65ebc0641a13d93b6aa190de"
+    ],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "6962fab7-3d93-4c05-92fa-ca0c914d4e4d",
+    "Continue": [
+      "a473e5412ffd0f54fbf395770a80a008"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": [
+      "BlueprintCue"
+    ]
+  },
+  "3f29d60b9a30bbb49bc9d56eaae1f643": {
+    "Finding": "kiana:010",
+    "Parent": "d30553a00d511b8439e9cfdca0564d86",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "5d8e7c45-94d1-4c1a-9b5c-7987b289d282",
+    "Continue": [
+      "fbbdcb4cfc822034997dea227819b768"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "5fa8ed029a93b4348b82ec659e6839a0": {
+    "Finding": "kiana:011",
+    "Parent": "cd580fd11d9081f45816e3a8eda2ebf9",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "60a2a08c-7b89-429f-8956-30184ad2712e",
+    "Continue": [
+      "be25aa4b776039042b4de208aa557e78"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": []
+  },
+  "f750317f25d754b41b465a9533216338": {
+    "Finding": "kiana:012",
+    "Parent": "be25aa4b776039042b4de208aa557e78",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "452340b8-848b-4057-8a4a-17435357540d",
+    "Continue": [
+      "e6db3ebdb4328724aad3327ec335b5ac"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [
+      "GiveObjective:7ac73c0b5de939b4b824a0aac54ba5f2",
+      "UnlockLocation:963fa1715f85c114182d9ac91ee32bc3"
+    ],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "81f0222e6856efd4bbdbd5dea796716a": {
+    "Finding": "kiana:013",
+    "Parent": "8768fb1e6ba190f479377c6f29979af2",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "baa20a60-7931-4084-b510-bf166145a1f2",
+    "Continue": [],
+    "Answers": [
+      "cabdc1a734774754385b14bc2d850baa"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": []
+  },
+  "a473e5412ffd0f54fbf395770a80a008": {
+    "Finding": "kiana:014",
+    "Parent": "82213327a06db644fb2b5bb1410d4654",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "9e3e8d42-8f1c-4cb9-9dfb-d4c5712ff6d1",
+    "Continue": [
+      "124ca3b348b3dff429ef708e5b24788a"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "124ca3b348b3dff429ef708e5b24788a": {
+    "Finding": "kiana:015",
+    "Parent": "a473e5412ffd0f54fbf395770a80a008",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "d895a05d-ad4f-4d2d-9c28-70880a010585",
+    "Continue": [
+      "086a160e51ef79c4d98750203cb4b641"
+    ],
+    "Answers": [
+      "a5888720b68047b48b9791bed94e22c8"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "613485017b96c3840a2f9eea886deff1": {
+    "Finding": "kiana:016",
+    "Parent": "d6e5897cc65cb334d8da8c46ef400d1c",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "8b555c03-fe28-4d02-85be-b25b99bcd0b0",
+    "Continue": [
+      "be25aa4b776039042b4de208aa557e78"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": []
+  },
+  "086a160e51ef79c4d98750203cb4b641": {
+    "Finding": "kiana:017",
+    "Parent": "124ca3b348b3dff429ef708e5b24788a",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "87e38061-27ad-44e8-ad6b-2f52b7429fc6",
+    "Continue": [],
+    "Answers": [
+      "a5888720b68047b48b9791bed94e22c8"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "d759f7956ba304442b74a842ff6b14d5": {
+    "Finding": "kiana:018",
+    "Parent": "d6e68640b972e8e4e9ea460235fcc914",
+    "AlsoParents": [],
+    "Dialog": "e17e0900947b47b47aacd875f6490626",
+    "Key": "a03f71db-e5e0-4f72-b29a-9834b4a48165",
+    "Continue": [],
+    "Answers": [
+      "a5888720b68047b48b9791bed94e22c8"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": []
+  },
+  "ff03c12b165989e479d7c80e9ce7a8f9": {
+    "Finding": "kiana:019",
+    "Parent": "c207f647111ab6e46adeef6cad2ae929",
+    "AlsoParents": [],
+    "Dialog": "189401b80979be0439f3e3cb9f053d1e",
+    "Key": "ec2188d1-671b-4077-8c5f-79fc07598302",
+    "Continue": [],
+    "Answers": [
+      "693ae9bdb9203044085a59679a27bb75"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "cb2e13e1ded36e5419d746ed92162a91": {
+    "Finding": "kiana:022",
+    "Parent": "dc3a376f09759574f997995e8f07689a",
+    "AlsoParents": [],
+    "Dialog": "e35b026526a45204d8eeefa22a7f5a57",
+    "Key": "b8064d2c-fba2-4fa6-8a6f-b6dadab2aee7",
+    "Continue": [
+      "563d9ab3629492b458369e281f28b033"
+    ],
+    "Answers": [
+      "99ab39af138f60f468c5ea9ab3ab5249"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "e65e4b85197e6aa42a40d34abcea889c": {
+    "Finding": "kiana:023",
+    "Parent": "563d9ab3629492b458369e281f28b033",
+    "AlsoParents": [],
+    "Dialog": "e35b026526a45204d8eeefa22a7f5a57",
+    "Key": "a4e4b388-60b7-4030-9aaf-4f06f807f1e4",
+    "Continue": [],
+    "Answers": [],
+    "OnShow": [
+      "PlayCutscene:2d5376d710f74b34b9176b8fe9a89624"
+    ],
+    "OnStop": [],
+    "ParentType": "BlueprintCueSequence",
+    "AlsoParentTypes": []
+  },
+  "be05eef615c2eac44ac30ec0a2e49603": {
+    "Finding": "kiana:024",
+    "Parent": "5bf8f4fc37225f544b9244b683287899",
+    "AlsoParents": [],
+    "Dialog": "e35b026526a45204d8eeefa22a7f5a57",
+    "Key": "697942a5-46b2-4c85-975c-602efa20836b",
+    "Continue": [],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCueSequence",
+    "AlsoParentTypes": []
+  },
+  "5736cff83ea67644bb11346947b1eb2f": {
+    "Finding": "kiana:025",
+    "Parent": "b0369d1b8d8ba2d40a5eec0401ea7407",
+    "AlsoParents": [],
+    "Dialog": "9907442d488449a4fb33e182f3f732af",
+    "Key": "ba2425dd-420f-4ff6-abaa-2b5f0ae95741",
+    "Continue": [
+      "10eb3a708933ebc4c865ed9ae6e72805"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [
+      "PlayCutscene:32cc6baa05173fd4bb19116dbe6af27a"
+    ],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": []
+  },
+  "dd9956385abff89418d83075e1b7774c": {
+    "Finding": "kiana:026",
+    "Parent": "c0db5a85736dae247835254af7a2bd37",
+    "AlsoParents": [],
+    "Dialog": "9907442d488449a4fb33e182f3f732af",
+    "Key": "8fbff9f7-a739-4a19-b5cd-8102b2299891",
+    "Continue": [
+      "3ee9e83c44122854695c81669afcc819"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": []
+  },
+  "75220bf8ab5be034ea55b84d24c58de2": {
+    "Finding": "kiana:028",
+    "Parent": "ff5c54635748e334990879498eb5429b",
+    "AlsoParents": [],
+    "Dialog": "ff5c54635748e334990879498eb5429b",
+    "Key": "43e11168-7f70-4aa8-b527-b657268d390f",
+    "Continue": [],
+    "Answers": [
+      "beeb8ac59d51cd743bfa5f79d61f84d6"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintDialog",
+    "AlsoParentTypes": [],
+    "SpeakerSource": "e9a5a4c03ea016f47b29d91b2ff3a00c",
+    "InheritedSpeaker": "54be53f0b35bf3c4592a97ae335fe765"
+  },
+  "096dd0fc12adbaf438bca7c7c9ebb4ba": {
+    "Finding": "kiana:029",
+    "Parent": "f967c3e0543a53846852152359ad90ee",
+    "AlsoParents": [],
+    "Dialog": "ff5c54635748e334990879498eb5429b",
+    "Key": "cbbe11fe-01ff-4ba9-8f1f-2b2a9b4940a6",
+    "Continue": [],
+    "Answers": [
+      "d793e32a89c78224f976782512faa1aa"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": [],
+    "SpeakerSource": "e9a5a4c03ea016f47b29d91b2ff3a00c",
+    "InheritedSpeaker": "54be53f0b35bf3c4592a97ae335fe765"
+  },
+  "3bdbd8728bc75bf4eadae1152a34f26b": {
+    "Finding": "kiana:030",
+    "Parent": "04c5a2a333bf6e34eaf1982ed7a58fa0",
+    "AlsoParents": [],
+    "Dialog": "ff5c54635748e334990879498eb5429b",
+    "Key": "cd9de62b-2a56-4220-b057-6c1a3ea86b25",
+    "Continue": [],
+    "Answers": [
+      "beeb8ac59d51cd743bfa5f79d61f84d6"
+    ],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintAnswer",
+    "AlsoParentTypes": [],
+    "SpeakerSource": "e9a5a4c03ea016f47b29d91b2ff3a00c",
+    "InheritedSpeaker": "54be53f0b35bf3c4592a97ae335fe765"
+  },
+  "01a1c98b38a78fd4abeaa0c09f3a5be9": {
+    "Finding": "kiana:031",
+    "Parent": "f9abfcd9d014f5944b25dd1b3acc841d",
+    "AlsoParents": [
+      "e1f90a4d95282304a857fae8184b9d16"
+    ],
+    "Dialog": "ff5c54635748e334990879498eb5429b",
+    "Key": "9abb4bcf-bb04-4a8c-bd1c-4cbcb3de1e3e",
+    "Continue": [
+      "b0a2d2d2f5c091445a3c21a4ba6ed36f"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintCue",
+    "AlsoParentTypes": [
+      "BlueprintSequenceExit"
+    ],
+    "SpeakerSource": "e9a5a4c03ea016f47b29d91b2ff3a00c",
+    "InheritedSpeaker": "54be53f0b35bf3c4592a97ae335fe765"
+  },
+  "aebbc1845e827dd4da4e28014e7b4162": {
+    "Finding": "kiana:032",
+    "Parent": "6a197b1557eb815458304ec649228fb8",
+    "AlsoParents": [],
+    "Dialog": "6a197b1557eb815458304ec649228fb8",
+    "Key": "1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c",
+    "Continue": [
+      "cdc3d76b9c6dea74e8773f9eb291aa31"
+    ],
+    "Answers": [],
+    "OnShow": [],
+    "OnStop": [],
+    "ParentType": "BlueprintDialog",
+    "AlsoParentTypes": []
+  }
+}

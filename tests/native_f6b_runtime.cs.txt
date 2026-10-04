@@ -1,0 +1,148 @@
+// eng7-f6b: actual installed managed types; no game/harness execution.
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Kingmaker.Blueprints;
+using Kingmaker.DialogSystem;
+using Kingmaker.DialogSystem.Blueprints;
+using Kingmaker.ElementsSystem;
+using Kingmaker.Localization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Tirabade;
+
+class F6bBootstrap
+{
+    static int Main(string[] args)
+    {
+        AppDomain.CurrentDomain.AssemblyResolve += (_, request) => {
+            foreach (var path in new[] { args[0] + "/Wrath_Data/Managed/", args[0] + "/Wrath_Data/Managed/UnityModManager/" }) {
+                var file = path + new AssemblyName(request.Name).Name + ".dll";
+                if (File.Exists(file)) return Assembly.LoadFrom(file);
+            }
+            return null;
+        };
+        typeof(F6bBootstrap).Assembly.GetType("F6bRuntime")!.GetMethod("Run", BindingFlags.Static | BindingFlags.NonPublic)!
+            .Invoke(null, new object[] { args[1], args[2] });
+        Console.WriteLine("PASS eng7-f6b: 21 installed cue policies, text selection, native history/actions/sequences and drift refusal");
+        return 0;
+    }
+}
+class F6bRuntime
+{
+    static readonly BindingFlags Fields = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+    static void Check(bool ok, string why) { if (!ok) throw new Exception(why); }
+    static string Kind(JObject data) => ((string)data["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
+    static object New(JObject data) => Activator.CreateInstance(typeof(BlueprintCue).Assembly.GetTypes().Single(t => t.Name == Kind(data)))!;
+    static object Reference(Type type, string id)
+    {
+        var value = Activator.CreateInstance(type)!;
+        typeof(BlueprintReferenceBase).GetField("deserializedGuid", Fields)!.SetValue(value, BlueprintGuid.Parse(id.Replace("!bp_", "")));
+        return value;
+    }
+    static BlueprintCueBaseReference Ref(string id) => (BlueprintCueBaseReference)Reference(typeof(BlueprintCueBaseReference), id);
+    static LocalizedString Text(JObject data) => new LocalizedString { Key = (string)data["m_Key"]! };
+    static void Populate(object value, JObject data)
+    {
+        foreach (var property in data.Properties()) {
+            var field = value.GetType().GetField(property.Name, Fields);
+            if (field == null || property.Value.Type == JTokenType.Null) continue;
+            if (typeof(BlueprintReferenceBase).IsAssignableFrom(field.FieldType))
+                field.SetValue(value, Reference(field.FieldType, (string)property.Value!));
+            else if (field.FieldType.IsEnum || field.FieldType == typeof(bool) || field.FieldType == typeof(int) || field.FieldType == typeof(string))
+                field.SetValue(value, property.Value.ToObject(field.FieldType));
+        }
+    }
+    static ConditionsChecker Checker(JObject data)
+    {
+        Condition Map(JObject item) {
+            var condition = (Condition)New(item); Populate(condition, item);
+            var nested = condition.GetType().GetField("ConditionsChecker", Fields);
+            if (nested != null) nested.SetValue(condition, Checker((JObject)item["ConditionsChecker"]!));
+            return condition;
+        }
+        return new ConditionsChecker { Operation = (Operation)Enum.Parse(typeof(Operation), (string)data["Operation"]!),
+            Conditions = ((JArray)data["Conditions"]!).Cast<JObject>().Select(Map).ToArray() };
+    }
+    static ActionList Actions(BlueprintScriptableObject owner, JObject data)
+    {
+        GameAction Map(JObject item) {
+            var action = (GameAction)New(item); Populate(action, item); action.Owner = owner;
+            if (item["Parameters"] is JObject parameters) {
+                var field = action.GetType().GetField("Parameters", Fields)!;
+                var value = Activator.CreateInstance(field.FieldType)!;
+                var entries = value.GetType().GetField("Parameters", Fields)!;
+                Check(((JArray)parameters["Parameters"]!).Count == 0, "Unreviewed cutscene parameters");
+                entries.SetValue(value, Array.CreateInstance(entries.FieldType.GetElementType()!, 0));
+                field.SetValue(action, value);
+            }
+            return action;
+        }
+        return new ActionList { Actions = ((JArray)data["Actions"]!).Cast<JObject>().Select(Map).ToArray() };
+    }
+    static CueSelection Selection(JObject data) => new CueSelection { Strategy = (Strategy)Enum.Parse(typeof(Strategy), (string)data["Strategy"]!),
+        Cues = ((JArray)data["Cues"]!).Select(g => Ref((string)g!)).ToList() };
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    static void Run(string nativeFile, string storyFile)
+    {
+        var native = JsonConvert.DeserializeObject<Dictionary<string, JObject>>(File.ReadAllText(nativeFile))!;
+        var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyFile))!;
+        var world = new Dictionary<string, SimpleBlueprint>();
+        foreach (var pair in native) {
+            var value = (SimpleBlueprint)New(pair.Value);
+            value.AssetGuid = BlueprintGuid.Parse(pair.Key); value.name = pair.Key;
+            if (value is BlueprintCue cue) {
+                cue.Text = Text((JObject)pair.Value["Text"]!);
+                cue.Conditions = Checker((JObject)pair.Value["Conditions"]!);
+                cue.Continue = Selection((JObject)pair.Value["Continue"]!);
+                cue.OnShow = Actions(cue, (JObject)pair.Value["OnShow"]!);
+                cue.OnStop = Actions(cue, (JObject)pair.Value["OnStop"]!);
+                cue.Answers.AddRange(((JArray)pair.Value["Answers"]!).Select(g => (BlueprintAnswerBaseReference)
+                    Reference(typeof(BlueprintAnswerBaseReference), (string)g!)));
+            } else if (value is BlueprintAnswer answer) answer.NextCue = Selection((JObject)pair.Value["NextCue"]!);
+            else if (value is BlueprintDialog dialog) dialog.FirstCue = Selection((JObject)pair.Value["FirstCue"]!);
+            else if (value is BlueprintCueSequence sequence) sequence.Cues = ((JArray)pair.Value["Cues"]!).Select(g => Ref((string)g!)).ToList();
+            else if (value is BlueprintSequenceExit exit) exit.Continue = Selection((JObject)pair.Value["Continue"]!);
+            world[pair.Key] = value;
+        }
+        SimpleBlueprint? Resolve(string id) => world.TryGetValue(id, out var bp) ? bp : null;
+        foreach (var pair in story.NativeEpilogueEdits.Where(p => NativeEpilogueEdit.IsTextOnly(p.Key))) {
+            Check(NativeEpilogueEdit.Check(pair.Key, pair.Value, Resolve, null) == null, "Installed native policy refused: " + pair.Key);
+            var cue = (BlueprintCue)world[pair.Key];
+            var checker = cue.Conditions; var show = cue.OnShow; var stop = cue.OnStop; var continued = cue.Continue;
+            var answers = cue.Answers.ToArray(); var text = cue.Text;
+            var policy = NativeEpilogueEdit.Reviewed[pair.Key];
+            var parents = new[] { policy.Parent! }.Concat(policy.AlsoParents!).Select(p => NativeEpilogueEdit.TextParentCues(world[p])!).ToArray();
+            var before = parents.Select(p => p.ToArray()).ToArray();
+            var variants = Rules.EditVariants(pair.Value); var scenes = Rules.EditScenes(story, variants);
+            foreach (string outcome in new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back", "kiana.trickster.returned" }) {
+                var state = new Snapshot { Chapter = 5, Hour = 100000, Area = "2570015799edf594daf2f076f2f975d8" };
+                state.Flags.UnionWith(new[] { "trickster", outcome, "kiana.separated", "kiana.bereaved" });
+                Rules.Complete(story, state);
+                int selected = Rules.SelectNativeEditVariant(story, variants, scenes, state);
+                string? expected = selected < 0 ? null : scenes[selected]!.Nodes[0].Text;
+                NativeCueTextEdit.Attach(cue, () => expected);
+                Check(NativeCueTextEdit.Display(cue, "original") == (expected ?? "original"), "Text selection differs");
+                Check(NativeCueTextEdit.SuppressVoice(cue) == (expected != null), "Contradictory native voice-over remains active");
+                NativeCueTextEdit.Attach(cue, () => null);
+                Check(NativeCueTextEdit.Display(cue, "original") == "original", "Unearned/disabled text did not stay native");
+                Check(!NativeCueTextEdit.SuppressVoice(cue), "Unearned/disabled voice-over was suppressed");
+                NativeCueTextEdit.Attach(cue, () => throw new Exception("snapshot/localization failure"));
+                Check(NativeCueTextEdit.Display(cue, "original") == "original", "Observation failure did not stay native");
+                Check(!NativeCueTextEdit.SuppressVoice(cue), "Observation failure suppressed canon voice-over");
+            }
+            Check(ReferenceEquals(cue.Conditions, checker) && ReferenceEquals(cue.OnShow, show) && ReferenceEquals(cue.OnStop, stop)
+                && ReferenceEquals(cue.Continue, continued) && ReferenceEquals(cue.Text, text) && cue.Answers.SequenceEqual(answers),
+                "Text delivery mutated native behavior or localization");
+            Check(cue.AssetGuid.ToString() == pair.Key, "CueSeen identity changed");
+            for (int i = 0; i < parents.Length; i++) Check(parents[i].SequenceEqual(before[i]), "Native sequence order changed");
+            cue.OnStop = new ActionList { Actions = new GameAction[] { new Kingmaker.Designers.EventConditionActionSystem.Actions.CompleteEtude() } };
+            Check(NativeEpilogueEdit.Check(pair.Key, pair.Value, Resolve, null) != null, "Drifted outcome policy accepted");
+            cue.OnStop = stop;
+        }
+        NativeCueTextEdit.Clear();
+    }
+}

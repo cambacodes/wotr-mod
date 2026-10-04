@@ -1669,7 +1669,9 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
         for g in story.get("StartableEtudes") or []: want.append((g, "BlueprintEtude", "StartableEtudes"))
         for g, e in (story.get("NativeEpilogueEdits") or {}).items():
             if e.get("Parent"):   # E14i: a common-dialog cue (its parent cue and dialog, no page or sequence)
-                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), "BlueprintCue|BlueprintAnswer|BlueprintDialog", "NativeEpilogueEdits.Parent." + g),
+                # eng7-f6b: two text-only native cues retain their reviewed sequence parents.
+                from tools.kiana_native_policy import parent_type
+                want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Parent"), parent_type(g, e), "NativeEpilogueEdits.Parent." + g),
                          (e.get("Dialog"), "BlueprintDialog", "NativeEpilogueEdits.Dialog." + g)]
                 continue
             want += [(g, "BlueprintCue", "NativeEpilogueEdits"), (e.get("Page"), "BlueprintBookPage", "NativeEpilogueEdits." + g)]

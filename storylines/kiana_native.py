@@ -6,7 +6,7 @@ worlds (the list the game already shows once Seelah's Q3 has started). Read only
 """
 import copy
 
-from storylines.native_overrides import register_legacy
+from storylines.native_overrides import declare, register_legacy
 
 from story_format import n, scene
 
@@ -121,7 +121,112 @@ NATIVE_GATES = {
 }
 
 
+# eng7-f1: authored paid-history wording, findings 020/021/027. Sunhammer still faces
+# the native outcomes; the paid rescue is neither repeated nor granted by this edit.
+NATIVE_ANSWER_EDITS = {
+    "901c1edd8887dfa4b9f108e106f38423": dict(AnswerList="99ab39af138f60f468c5ea9ab3ab5249",
+        Key="74e73e62-e594-4200-8f0b-51c206c927d7", Relationship="kiana", When=HOME_WORLDS,
+        Text='"We brought the wedding guests home. Now we find Elan and stop Sunhammer."'),
+    "01a184d01ff707748b6377c38d2912e5": dict(AnswerList="99ab39af138f60f468c5ea9ab3ab5249",
+        Key="b6aadd42-09ba-48cd-86fa-4f3ef5ba83bf", Relationship="kiana", When=HOME_WORLDS,
+        Text='"The guests are safe. Now we make Sunhammer answer for this."'),
+    "22ced28b5ecb08348b35daa51ab112b1": dict(AnswerList="31b874c1cdd33054d8925793772901eb",
+        Key="ef6faada-c7c6-4c63-b1d6-f19a00da9c17", Relationship="kiana", When=HOME_WORLDS,
+        Text='"Their souls are free. Repay what you stole from their families, and I\'ll let you go."'),
+}
+# end eng7-f1
+
+# eng7-f6b begin: authored DLC reconciliation of Kiana 009-032.
+# A released soul stays released; Elan's choices and all native consequences stand.
+# Text-only runtime delivery preserves original CueSeen/SelectedAnswers and sequence positions.
+SCENES.append(scene('kiana.native.q3_reconcile_009_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"All right, here\'s the deal." {n}Seelah gets straight to the point.{/n} "The wedding guests are home, thanks to you. But Sunhammer is still out there. We have a lead on his hideout, and I mean to make sure he never does this again."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['82213327a06db644fb2b5bb1410d4654'] = dict(Parent='def14993a63a830478c3d6d6b031338c', Dialog='e17e0900947b47b47aacd875f6490626', Key='6962fab7-3d93-4c05-92fa-ca0c914d4e4d', Replacement='kiana.native.q3_reconcile_009_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_010_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '{n}A shadow crosses Elan\'s face.{/n} "Kiana is awake. They all are. I can leave the hospital without wondering whether she\'ll still be breathing when I get back. But that bastard is still free. I want to find him."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_010_single', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '{n}Elan rubs his eyes.{/n} "Kiana is awake. I keep going back to hear her speak, just to be sure. The others are still lying there, though. We can\'t leave their souls with those monsters."')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['3f29d60b9a30bbb49bc9d56eaae1f643'] = dict(Parent='d30553a00d511b8439e9cfdca0564d86', Dialog='e17e0900947b47b47aacd875f6490626', Key='5d8e7c45-94d1-4c1a-9b5c-7987b289d282', Replacement='kiana.native.q3_reconcile_010_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_010_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_011_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"I\'ll leave at once and watch the cave. We can meet there." {n}Elan\'s jaw tightens.{/n} "Kiana is home. Sunhammer must have thought that would be the end of it. He was wrong."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_011_single', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"I\'ll leave at once and watch the cave. We can meet there." {n}Elan sighs.{/n} "Kiana got out. The other guests deserve the same chance. I can\'t sit beside her bed and forget them."')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['5fa8ed029a93b4348b82ec659e6839a0'] = dict(Parent='cd580fd11d9081f45816e3a8eda2ebf9', Dialog='e17e0900947b47b47aacd875f6490626', Key='60a2a08c-7b89-429f-8956-30184ad2712e', Replacement='kiana.native.q3_reconcile_011_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_011_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_012_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"You got the victims home. Now I\'m itching to give my blade a taste of those soul-stealing cultists! We\'ll find Sunhammer and bring back what he stole."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['f750317f25d754b41b465a9533216338'] = dict(Parent='be25aa4b776039042b4de208aa557e78', Dialog='e17e0900947b47b47aacd875f6490626', Key='452340b8-848b-4057-8a4a-17435357540d', Replacement='kiana.native.q3_reconcile_012_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_013_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Suit yourself. But I\'m not leaving Sunhammer free to do this to another wedding."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['81f0222e6856efd4bbdbd5dea796716a'] = dict(Parent='8768fb1e6ba190f479377c6f29979af2', Dialog='e17e0900947b47b47aacd875f6490626', Key='baa20a60-7931-4084-b510-bf166145a1f2', Replacement='kiana.native.q3_reconcile_013_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_014_full', "", "KianaEpilogue", 5, "", [n("line", 'Arsinoe', '"The divination I attempted while the souls were missing pointed to a cave beneath a rock shaped like a gravestone, on the outskirts of the Winged Wood. The forest has been burning since the demons set it alight. The souls are home now, but that cave may still lead us to Sunhammer. I cannot tell you what awaits beneath the rock."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['a473e5412ffd0f54fbf395770a80a008'] = dict(Parent='82213327a06db644fb2b5bb1410d4654', Dialog='e17e0900947b47b47aacd875f6490626', Key='9e3e8d42-8f1c-4cb9-9dfb-d4c5712ff6d1', Replacement='kiana.native.q3_reconcile_014_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_015_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Anyway, Elan and I have decided to go there, find Sunhammer, and rough up any demon or cultist that gets in our way! We owe those families more than a bill for their freedom. We\'d love to have your help."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['124ca3b348b3dff429ef708e5b24788a'] = dict(Parent='a473e5412ffd0f54fbf395770a80a008', Dialog='e17e0900947b47b47aacd875f6490626', Key='d895a05d-ad4f-4d2d-9c28-70880a010585', Replacement='kiana.native.q3_reconcile_015_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_016_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '{n}Seelah hesitates, then shakes her head.{/n} "You saved them, {name}. I won\'t forget that. But Sunhammer is still free, and you\'re telling me to let him stay that way. I can\'t. Farewell. Come on, Elan ; we have a journey to prepare for."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['613485017b96c3840a2f9eea886deff1'] = dict(Parent='d6e5897cc65cb334d8da8c46ef400d1c', Dialog='e17e0900947b47b47aacd875f6490626', Key='8b555c03-fe28-4d02-85be-b25b99bcd0b0', Replacement='kiana.native.q3_reconcile_016_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_017_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"She\'s awake, and I still catch myself watching to make sure she\'s breathing." {n}Elan draws a long breath.{/n} "I want Sunhammer stopped before anyone else has to sit beside a bed like that. Forgive me. I\'m tired."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_017_single', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"Kiana is awake, but the other beds are still full. Every time I visit her, I have to walk past them." {n}Elan draws a long breath.{/n} "We have to get the others back. Forgive me. I\'m tired."')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['086a160e51ef79c4d98750203cb4b641'] = dict(Parent='124ca3b348b3dff429ef708e5b24788a', Dialog='e17e0900947b47b47aacd875f6490626', Key='87e38061-27ad-44e8-ad6b-2f52b7429fc6', Replacement='kiana.native.q3_reconcile_017_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_017_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_018_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '{n}Elan\'s eyes burn.{/n} "A soldier fights better when there\'s a reason. You brought Kiana home. I won\'t let Sunhammer walk away from what he did to her. I will find him."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_018_single', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '{n}Elan\'s eyes burn.{/n} "A soldier fights better when there\'s a reason. Kiana is home, but the people who came to our wedding are still prisoners. I will get them back."')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['d759f7956ba304442b74a842ff6b14d5'] = dict(Parent='d6e68640b972e8e4e9ea460235fcc914', Dialog='e17e0900947b47b47aacd875f6490626', Key='a03f71db-e5e0-4f72-b29a-9834b4a48165', Replacement='kiana.native.q3_reconcile_018_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_018_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_019_full', "", "KianaEpilogue", 5, "", [n("line", 'Jannah', '"Commander..." {n}Jannah hesitates, then lifts her head.{/n} "I know you brought the wedding guests home. I want to help find Sunhammer and the cultists who did this. Let me come with you and Seelah. Please ; give me another chance!"')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['ff03c12b165989e479d7c80e9ce7a8f9'] = dict(Parent='c207f647111ab6e46adeef6cad2ae929', Dialog='189401b80979be0439f3e3cb9f053d1e', Key='ec2188d1-671b-4077-8c5f-79fc07598302', Replacement='kiana.native.q3_reconcile_019_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_022_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"Greetings, Commander." {n}Elan salutes, calm and composed.{/n} "I kept watch, as you instructed. Sunhammer is here. I saw the wedding jewelry ; the stones are gone, but he kept the settings. The cave is well guarded. We\'ll have to fight our way inside."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['cb2e13e1ded36e5419d746ed92162a91'] = dict(Parent='dc3a376f09759574f997995e8f07689a', Dialog='e35b026526a45204d8eeefa22a7f5a57', Key='b8064d2c-fba2-4fa6-8a6f-b6dadab2aee7', Replacement='kiana.native.q3_reconcile_022_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_023_full', "", "KianaEpilogue", 5, "", [n("line", 'Jannah', '{n}Jannah struggles to catch her breath.{/n} "Thank goodness you\'re here! Elan and I were watching the cave when he saw Sunhammer carrying the wedding jewelry. He wanted the jeweler\'s head. I told him Kiana was safe, told him to wait for you ; he wouldn\'t listen. He rushed in alone and told me to stay here. He should never have gone in alone..."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_023_single', "", "KianaEpilogue", 5, "", [n("line", 'Jannah', '{n}Jannah struggles to catch her breath.{/n} "Thank goodness you\'re here! Elan saw Sunhammer carrying the soul jewelry and rushed after him. I told him to wait for you. Kiana was home, but the others weren\'t ; that was all he would say. He told me to stay here. He should never have gone in alone..."')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['e65e4b85197e6aa42a40d34abcea889c'] = dict(Parent='563d9ab3629492b458369e281f28b033', Dialog='e35b026526a45204d8eeefa22a7f5a57', Key='a4e4b388-60b7-4030-9aaf-4f06f807f1e4', Replacement='kiana.native.q3_reconcile_023_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_023_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_024_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"One more thing ; Darek Sunhammer is here. I saw him by the cave entrance, turning the stolen jewelry over in his hands. The stones were gone, but he still seemed pleased with his work. He must be someone of consequence in this cult. We should expect a fight."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['be05eef615c2eac44ac30ec0a2e49603'] = dict(Parent='5bf8f4fc37225f544b9244b683287899', Dialog='e35b026526a45204d8eeefa22a7f5a57', Key='697942a5-46b2-4c85-975c-602efa20836b', Replacement='kiana.native.q3_reconcile_024_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_025_full', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"Traps... so many traps. I saw Sunhammer with the jewelry. I wanted to kill him... didn\'t look at the door." {n}Elan convulses and groans.{/n} "Kiana\'s home. Tell her... I\'m sorry. Seelah, don\'t let him do this again..." {n}Another spasm passes through him. Then he lies still.{/n}')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_025_single', "", "KianaEpilogue", 5, "", [n("line", 'Elan', '"Traps... so many traps. I saw Sunhammer with the jewelry. The others\' souls... I ran after him. Didn\'t look at the door." {n}Elan convulses and groans.{/n} "Kiana\'s home. Tell her... I\'m sorry. Save the others, Seelah..." {n}Another spasm passes through him. Then he lies still.{/n}')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['5736cff83ea67644bb11346947b1eb2f'] = dict(Parent='b0369d1b8d8ba2d40a5eec0401ea7407', Dialog='9907442d488449a4fb33e182f3f732af', Key='ba2425dd-420f-4ff6-abaa-2b5f0ae95741', Replacement='kiana.native.q3_reconcile_025_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_025_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_026_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Don\'t say that! Kiana was safe, but he couldn\'t let go of what Sunhammer did to her. He wanted the bastard dead. He should have waited for us..."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+SCENES.append(scene('kiana.native.q3_reconcile_026_single', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Don\'t say that! Kiana was safe, but his other friends were still prisoners. He saw Sunhammer with those stones and couldn\'t stand to wait. He should have waited for us..."')],
+    requires=("trickster.now", kt.RETURNED), forbids=(kt.RANSOMED, kt.BOUGHT), last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['dd9956385abff89418d83075e1b7774c'] = dict(Parent='c0db5a85736dae247835254af7a2bd37', Dialog='9907442d488449a4fb33e182f3f732af', Key='8fbff9f7-a739-4a19-b5cd-8102b2299891', Replacement='kiana.native.q3_reconcile_026_full', When=HOME_WORLDS, KeepNativeImage=False, Variants=[dict(Replacement='kiana.native.q3_reconcile_026_single', When=[["trickster.now", kt.RETURNED, "!" + kt.RANSOMED, "!" + kt.BOUGHT]], KeepNativeImage=False)])
+SCENES.append(scene('kiana.native.q3_reconcile_028_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '{n}Seelah sits with her hands clasped, staring at the floor.{/n} "There you are, {name}. Arsinoe is gathering the families. They\'ve been awake since you brought the stones home. I should be glad. I am glad. I just..." {n}She looks down at her hands again.{/n}')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['75220bf8ab5be034ea55b84d24c58de2'] = dict(Parent='ff5c54635748e334990879498eb5429b', Dialog='ff5c54635748e334990879498eb5429b', Key='43e11168-7f70-4aa8-b527-b657268d390f', Replacement='kiana.native.q3_reconcile_028_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_029_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Ugh, where do I even start? There\'s something I have to ask you, {name}. Curl is awake with the rest of them. What if Sunhammer was telling the truth, and Curl really did work with the cultists? What will you do to him?"')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['096dd0fc12adbaf438bca7c7c9ebb4ba'] = dict(Parent='f967c3e0543a53846852152359ad90ee', Dialog='ff5c54635748e334990879498eb5429b', Key='cbbe11fe-01ff-4ba9-8f1f-2b2a9b4940a6', Replacement='kiana.native.q3_reconcile_029_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_030_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Not long. Arsinoe wants to examine everyone again and have their families there when we return the jewelry. She\'ll call us when they\'re ready."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['3bdbd8728bc75bf4eadae1152a34f26b'] = dict(Parent='04c5a2a333bf6e34eaf1982ed7a58fa0', Dialog='ff5c54635748e334990879498eb5429b', Key='cd9de62b-2a56-4220-b057-6c1a3ea86b25', Replacement='kiana.native.q3_reconcile_030_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_031_full', "", "KianaEpilogue", 5, "", [n("line", 'Seelah', '"Everyone is home. Elan is alive. Jannah came through for us. When I took my oath, I swore to guard the honor of my fellows, have faith in them, and learn the weight of my sword... I tried. But I can\'t stop thinking about what Sunhammer said before he died. He was being spiteful, right? Poison, not truth."')],
+    requires=("trickster.now",), RequiresAnyGroups=[[kt.RANSOMED, kt.BOUGHT]], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['01a1c98b38a78fd4abeaa0c09f3a5be9'] = dict(Parent='f9abfcd9d014f5944b25dd1b3acc841d', Dialog='ff5c54635748e334990879498eb5429b', Key='9abb4bcf-bb04-4a8c-bd1c-4cbcb3de1e3e', Replacement='kiana.native.q3_reconcile_031_full', When=HOME_WORLDS, KeepNativeImage=False)
+SCENES.append(scene('kiana.native.q3_reconcile_032_full', "", "KianaEpilogue", 5, "", [n("line", 'Kiana', '{n}Kiana clasps her hands against her chest.{/n} "We had already parted. I thought the worst thing left was telling him why." {n}She swallows.{/n} "Now he\'s dead. Elan... you bloody fool."')],
+    requires=("trickster.now", "kiana.separated"), RequiresAnyGroups=[["kiana.bereaved", "seelah.elan_dead"]], Areas=[kt.DREZEN], last=5, Relationship="kiana"))
+NATIVE_EPILOGUE_EDITS['aebbc1845e827dd4da4e28014e7b4162'] = dict(Parent='6a197b1557eb815458304ec649228fb8', Dialog='6a197b1557eb815458304ec649228fb8', Key='1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c', Replacement='kiana.native.q3_reconcile_032_full', When=[["trickster.now", "kiana.separated", "kiana.bereaved"], ["trickster.now", "kiana.separated", "seelah.elan_dead"]], KeepNativeImage=False)
+# eng7-f6b: 010 sibling, same native question/answer identity and hospital history.
+NATIVE_ANSWER_EDITS["5d02b3f1d1f6774419ea9fd3795596e8"] = dict(
+    AnswerList="a5888720b68047b48b9791bed94e22c8", Key="12e922e5-7d4c-4e06-a130-765d91876379",
+    Relationship="kiana", When=HOME_WORLDS, Text='"How did the infirmary hold out while we were gone?"')
+# eng7-f6b end
+
 def integrate(payload):
     """Register the gates and the aftermath line (after kiana_trickster)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
     register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, gates=NATIVE_GATES)
+    # eng7-f1
+    for target, spec in NATIVE_ANSWER_EDITS.items():
+        declare(payload, source=__name__, target=target, target_type="answer", action="REPLACE", spec=spec)
+    # end eng7-f1

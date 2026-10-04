@@ -672,6 +672,7 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-f6b: retain the integration finalization and F1 answer export.
     native_facts.integrate(payload)  # q6b/eng7-l02: verified native history readers
     # eng7-l04: native-world reconciliation and adapter parity.
     from tools.native_gate_contract_lint import validate as validate_native_gate_contract
