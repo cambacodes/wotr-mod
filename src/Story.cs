@@ -2233,6 +2233,12 @@ namespace Tirabade
                     if (pair.Key == "3a3e561c6b05a284d93eb3bff7b712a6" && scene?.Relationship == "irabeth")
                         earned.UnionWith(new[] { "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record" });
                     // eng7-l03 end
+                    // eng7-f6a begin: exact native dependencies, never new return eligibility.
+                    if (pair.Key == "ec1219cf3a664baab8987200e0fe1aa7" && scene?.Relationship == "anevia")
+                        earned.Add("irabeth.trickster.returned");
+                    if (pair.Key == "dbec675b71e9d5f4d96055f4bb31762e" && scene?.Relationship == "mielarah")
+                        earned.UnionWith(new[] { "mielarah.trickster.primed.self", "mielarah.trickster.primed.minder", "mielarah.voyage_begun" });
+                    // eng7-f6a end
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null

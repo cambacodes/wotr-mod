@@ -638,6 +638,10 @@ def make_expansion(*, independent_tirabade=True):
     from storylines import tirabade_native_variants
     tirabade_native_variants.integrate(payload)
     # eng7-l03 end
+    # eng7-f6a begin: additive native corrections before the standard presence guards.
+    from storylines import native_reconciliation_f6a
+    native_reconciliation_f6a.integrate(payload)
+    # eng7-f6a end
     earned_presence.integrate(payload)
     trickster_engine(payload)
     # eng7-l05: wire current participants before binding their transitive native inputs.

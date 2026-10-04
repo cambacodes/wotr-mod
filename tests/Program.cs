@@ -278,6 +278,9 @@ internal static class Program
         // eng7-l03: focused inventory acceptance; the full gate calls the same suites below.
         if (args.Contains("--eng7-l03-native"))
         {
+            // eng7-f6a begin
+            NativeReconciliationF6aTests.Run(story, Check);
+            // eng7-f6a end
             NativeContradictionInventoryTests.Run(story, Check);
             NativeVariantCoverageInventoryTests.Run(story, Check);
             TirabadeNativeSlideTests.Run(story, Check);
@@ -558,6 +561,10 @@ internal static class Program
         PresenceTransitionInventoryTests.Run(story, Check); // eng7-l05
         if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
         TricksterOnlyNativeTests.Run(story, Check);
+        // eng7-f6a begin
+        if (story.NativeEpilogueEdits.ContainsKey("5b567bdd747e497cb9f6984b1ca1dfc8"))
+            NativeReconciliationF6aTests.Run(story, Check);
+        // eng7-f6a end
         // eng7-l03: mapped native inventory and historical selection acceptance.
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
             NativeContradictionInventoryTests.Run(story, Check);
