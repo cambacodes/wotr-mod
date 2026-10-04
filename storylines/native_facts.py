@@ -222,6 +222,11 @@ def integrate(payload, archive=None):
     inventory_consumers(payload)
     from tools.native_fact_inventory import verify_inventory
     verify_inventory(payload, archive)
+    # eng7-f6d begin: native history consumers precede these appended text-only
+    # Terendelev corrections, so every existing scene retains its saved order.
+    from storylines import terendelev_native
+    terendelev_native.integrate(payload)
+    # eng7-f6d end
     # eng7-l02 end
 
 

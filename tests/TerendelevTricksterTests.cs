@@ -68,7 +68,7 @@ internal static class TerendelevTricksterTests
         var road = S(P + "watch.road");
         var own = story.Scenes.Where(s => s.Relationship == "terendelev" && !s.Reaction && !s.Id.StartsWith("terendelev.continuation", StringComparison.Ordinal)).ToArray();
         var hub = own.Where(s => s.InteractionHub != null).ToArray();
-        var pages = own.Where(s => s.Owner == "TerendelevEpilogue").ToArray();
+        var pages = own.Where(s => s.Id.StartsWith(P + "epilogue.", StringComparison.Ordinal)).ToArray(); // eng7-f6d: native dialogue text records have their own suite.
         var reactions = story.Scenes.Where(s => s.Relationship == "terendelev" && s.Reaction).ToArray();
 
         // Plays one scene and returns the outcomes holding every flag in `with` and none in `without`.

@@ -2593,6 +2593,9 @@ def main():
         + len(R.get("memory_callbacks", {}).get("hard", [])) + len(R.get("transaction_exits", {}).get("hard", [])) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
+    # eng7-f6d begin: dormant mechanical defects fail strict verification too.
+    hard += len(R.get("drafts", {}).get("contracts", []))
+    # eng7-f6d end
     # eng7-l08: count contract errors alongside the existing hard gates.
     hard += sum(len(R.get(key, {}).get("hard", [])) for key in
                 ("timeline_contracts", "remote_allocation", "obligation_flow"))

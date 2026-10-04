@@ -103,6 +103,13 @@ PATH_FATE_AUDIT = {
 }
 
 SCENES = []
+# eng7-f6d begin: reuse the living Queen at a real contact; no spawn/return.
+HUB = "galfrey.continuation.presence"
+PRESENCES = {HUB: dict(Unit="e46927657a79db64ea30758db3f42bb9", Area="2570015799edf594daf2f076f2f975d8",
+    Mode="reuse-native", Requires=["galfrey.native_active"],
+    Forbids=["galfrey.dead", "galfrey.killed_by_commander"],
+    MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub")}
+# eng7-f6d end
 
 
 def path_scene(path, opening, extra_requires=(), extra_forbids=()):
@@ -112,7 +119,7 @@ def path_scene(path, opening, extra_requires=(), extra_forbids=()):
         "The space between orders",
         "Galfrey",
         5,
-        "start",
+        '"May I keep you company while you work?"',
         [
             n("start", "Galfrey", opening,
               c('"I will answer as your partner, not as your commander."', "boundary"),
@@ -139,8 +146,8 @@ def path_scene(path, opening, extra_requires=(), extra_forbids=()):
         delay=24,
         optional=True,
         Relationship="galfrey",
-        Chapters=[5],
-        # Chapter/state timing has source support; unit contact and reservation remain unverified.
+        Chapters=[5], Areas=[PRESENCES[HUB]["Area"]],
+        ContactUnit=PRESENCES[HUB]["Unit"], InteractionHub=HUB,  # eng7-f6d
     ))
 
 
@@ -168,3 +175,11 @@ path_scene("Dragon", '''{n}Galfrey's gaze lingers on the traces of power your tr
 "You have become something the old laws cannot easily describe. I need to know you still understand a promise between two people."''')
 path_scene("Legend", '''{n}The room feels smaller without the mythic storm around you. Galfrey notices the quiet and reaches for your hand, not your title.{/n}
 "Whatever remains after the war, I want it chosen in daylight. I will not have my life decided for me as a reward."''')
+
+
+# eng7-f6d: draft-only binding; expansion.py does not import this module.
+def integrate(payload):
+    from copy import deepcopy
+    payload.setdefault("Etudes", {}).update(ETUDES)
+    payload.setdefault("SeenCues", {}).update(deepcopy(SEEN_CUES))
+    payload.setdefault("Presences", {}).update(deepcopy(PRESENCES))

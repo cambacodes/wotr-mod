@@ -80,6 +80,13 @@ def add(id, title, nodes, previous=None, delay=24):
     ))
 
 
+# eng7-f6d begin: exact surviving native actor, reused only after the existing
+# meeting proof. This is a dormant contact adapter, never a rescue producer.
+HUB = "targona.trickster_acq.presence"
+PRESENCES = {HUB: dict(Unit="81297c673b63b60448ef88a10db6bc78", Area="2570015799edf594daf2f076f2f975d8",
+    Mode="reuse-native", Requires=["targona.free", "targona.path_meeting_actor_verified"],
+    Forbids=list(BLOCKED), MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub")}
+# eng7-f6d end
 SCENES = []
 add("the_second_letter", "The second letter", [
     n("start", "Narrator", '''{n}The next personal packet contains a page in Targona's hand, folded around a copy of your reply. The earlier decision remains plain: you did not begin the RanRomance courtship, and neither this letter nor the old ending rewrites it.{/n}
@@ -295,8 +302,7 @@ def add_meeting(path, lines):
     SCENES.append(scene(f"targona.trickster_acq.meeting_{key}", f"The meeting Targona chose: {path}", "Targona", 5,
         "Meet Targona at the verified public stop", nodes,
         requires=("targona.free", "targona.ran_treatment_completed", "targona.ran_nonromance_seen", PATH_FLAGS[path], f"targona.path.{key}.meeting_pending", "targona.path_meeting_actor_verified"),
-        # Actor binding is intentionally omitted until a valid spawn/contact
-        # producer is authored. "Targona" is not a native ContactUnit GUID.
+        ContactUnit=PRESENCES[HUB]["Unit"], InteractionHub=HUB,  # eng7-f6d
         forbids=BLOCKED, delay=24, optional=True, Relationship="targona.trickster_acq",
         Areas=["2570015799edf594daf2f076f2f975d8"], Chapters=[5], RequiresAny=list(HISTORY)))
 
@@ -344,8 +350,7 @@ def add_spar(path, text):
     SCENES.append(scene(f"targona.trickster_acq.spar_{key}", f"The bout Targona chose: {path}", "Targona", 5,
         "Meet Targona for practice", nodes,
         requires=("targona.free", "targona.ran_treatment_completed", "targona.ran_nonromance_seen", PATH_FLAGS[path], f"targona.path.{key}.spar_pending", "targona.path_meeting_actor_verified"),
-        # Actor binding is intentionally omitted until a valid spawn/contact
-        # producer is authored. "Targona" is not a native ContactUnit GUID.
+        ContactUnit=PRESENCES[HUB]["Unit"], InteractionHub=HUB,  # eng7-f6d
         forbids=BLOCKED, delay=24, optional=True, Relationship="targona.trickster_acq",
         Areas=["2570015799edf594daf2f076f2f975d8"], Chapters=[5], RequiresAny=list(HISTORY)))
 
@@ -623,7 +628,8 @@ def validate_cross_scene_transitions():
             ("start", "apart"), ("apart", f"targona.path.{key}.ending_unfinished")])
         assert "targona.trickster_acq.closed" in apart
 
-    assert not any("ContactUnit" in book for book in SCENES)
+    assert all(book.get("ContactUnit") == PRESENCES[HUB]["Unit"]
+               for book in SCENES if not book.get("Remote"))  # eng7-f6d
     all_flags = [flag for book in SCENES for flag in book["Requires"] + book["Forbids"]]
     all_flags.extend(flag for book in SCENES for page in book["Nodes"]
                      for option in page["Choices"] for flag in option.get("Set", []))
@@ -635,3 +641,12 @@ def validate_cross_scene_transitions():
 
 
 validate_cross_scene_transitions()
+
+
+# eng7-f6d: isolated draft source registration; no production scenes are added.
+def integrate(payload):
+    from copy import deepcopy
+    payload.setdefault("Etudes", {}).update(ETUDES)
+    payload.setdefault("CompletedQuests", {}).update(COMPLETED_QUESTS)
+    payload.setdefault("SeenCues", {}).update(deepcopy(SEEN_CUES))
+    payload.setdefault("Presences", {}).update(deepcopy(PRESENCES))

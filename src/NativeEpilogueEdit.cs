@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Kingmaker.Blueprints;
 using Kingmaker.Designers.EventConditionActionSystem.Actions;
+using Kingmaker.Designers.EventConditionActionSystem.Conditions; // eng7-f6d
 using Kingmaker.DialogSystem.Blueprints;
 using Kingmaker.ElementsSystem;
 using Kingmaker.ResourceLinks;
@@ -148,6 +149,11 @@ namespace Tirabade
                     "GiveObjective:5b1e04caadc42114281d29db76c19c4f", "CompleteEtude:392fd757d64a8b549bb8be47b37f0ed8",
                     "StartEtude:371fabce16975d34f87a4ae783bcaef4" }),
 
+            // eng7-f6d begin: scale investigation keeps the original Conditional/GiveObjective and continuation.
+            ["c68d9b3a2b887f645ac539f996a63a92"] = new Evidence("", "", "222096f4-434d-4e8c-99c5-67c070fb21c8", degradeOnRefusal: false,
+                parent: "31665b38d6922ef4ab4cb83afa8245fe", dialog: "bf328bcec67a5014f9a56ee6220f3bcc",
+                continueTo: new[] { "71fbdd5c766802f4eac6dfe0612a2d46" }, onStop: new[] { "Conditional" }),
+            // eng7-f6d end
             // Engine-q4: StoryTeller_MainDialogue/Cue_0785, Answer_0784. Its answer list stays native.
             ["ca71b79bc9a45b741bcc6599ef017fe7"] = new Evidence("", "", "da750b86-b8b0-4a2f-a6d4-fea3512327b0", degradeOnRefusal: false,
                 parent: "fd39fd84212de2047b6b887c9a9cf28e", dialog: "bf328bcec67a5014f9a56ee6220f3bcc", answers: new[] { "33501a1edc26b2c4285096b9214c5414" }),
@@ -276,6 +282,9 @@ namespace Tirabade
             bool continueReviewed = evidence.Continue == null ? continued?.Count == 0
                 : continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
                     && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.Continue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
+            // eng7-f6d: a changed quest action must refuse this text-only edit.
+            if (cueId == "c68d9b3a2b887f645ac539f996a63a92" && !ScaleInquiryActions(cue.OnStop))
+                return "scale inquiry quest action differs from the reviewed policy";
             if (cue.ShowOnce || cue.ShowOnceCurrentDialog || cue.Conditions == null || cue.ComponentsArray.Length != 0 || !ActionsReviewed(cue.OnShow, evidence.OnShow)
                 || !ActionsReviewed(cue.OnStop, evidence.OnStop)
                 || evidence.OnStopSignature != null && NativeQ3Recovery.Shape(cue.OnStop) != evidence.OnStopSignature
@@ -300,6 +309,25 @@ namespace Tirabade
             if (parent is BlueprintDialog && !ReferenceEquals(parent, dialog)) return "parent dialog is not the reviewed dialog";
             return null;
         }
+
+        // eng7-f6d begin: the exact native quest grant is shared, never rewritten.
+        private static bool ScaleInquiryActions(ActionList? list)
+        {
+            BlueprintGuid? Ref(object value, string field) => (value.GetType().GetField(field,
+                BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)?.GetValue(value) as BlueprintReferenceBase)?.Guid;
+            if (list?.Actions?.Length != 1 || !(list.Actions[0] is Conditional conditional)) return false;
+            var conditions = conditional.ConditionsChecker;
+            return conditions?.Operation == Operation.And && conditions.Conditions?.Length == 2
+                && conditions.Conditions[0] is ObjectiveStatus objective && !objective.Not && objective.State.ToString() == "None"
+                && Ref(objective, "m_QuestObjective") == BlueprintGuid.Parse("0a5a445b8462c2541b59f8d680650313")
+                && conditions.Conditions[1] is EtudeStatus chapter && chapter.Not && chapter.Playing
+                && !chapter.NotStarted && !chapter.Started && !chapter.CompletionInProgress && !chapter.Completed
+                && Ref(chapter, "m_Etude") == BlueprintGuid.Parse("0b51051031abb4e4a818928b9cd181ee")
+                && conditional.IfTrue?.Actions?.Length == 1 && conditional.IfTrue.Actions[0] is GiveObjective grant
+                && Ref(grant, "m_Objective") == BlueprintGuid.Parse("0a5a445b8462c2541b59f8d680650313")
+                && conditional.IfFalse?.Actions?.Length == 0;
+        }
+        // eng7-f6d end
 
         // E14i: the selection that lists a dialog cue: a cue's Continue, an answer's NextCue or a dialog's FirstCue.
         public static Kingmaker.DialogSystem.CueSelection? ParentSelection(SimpleBlueprint? parent) => parent switch

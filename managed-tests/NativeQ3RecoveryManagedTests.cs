@@ -43,6 +43,16 @@ internal static class NativeQ3RecoveryManagedTests
         Condition Map(JObject item)
         {
             if (Type(item) == "OrAndLogic") return new OrAndLogic { Not = (bool)item["Not"]!, ConditionsChecker = Checker((JObject)item["ConditionsChecker"]!) };
+            // eng7-f6d begin: Storyteller Cue_0777 keeps the original objective-none test.
+            if (Type(item) == "ObjectiveStatus")
+            {
+                var objective = new ObjectiveStatus { Not = (bool)item["Not"]! };
+                var state = typeof(ObjectiveStatus).GetField("State", Fields)!;
+                state.SetValue(objective, Enum.Parse(state.FieldType, (string)item["State"]!));
+                Reference(objective, item, "m_QuestObjective");
+                return objective;
+            }
+            // eng7-f6d end
             if (Type(item) != "EtudeStatus") throw new InvalidOperationException("Unreviewed Q3 condition: " + Type(item));
             var status = new EtudeStatus { Not = (bool)item["Not"]!, NotStarted = (bool)item["NotStarted"]!, Started = (bool)item["Started"]!,
                 Playing = (bool)item["Playing"]!, CompletionInProgress = (bool)item["CompletionInProgress"]!, Completed = (bool)item["Completed"]! };
@@ -73,6 +83,8 @@ internal static class NativeQ3RecoveryManagedTests
                     entries.SetValue(parameters, Array.CreateInstance(entries.FieldType.GetElementType()!, 0));
                     parameterField.SetValue(play, parameters);
                     action = play; break;
+                // eng7-f6d: preserve the Storyteller's quest grant as an actual game action.
+                case "GiveObjective": action = new GiveObjective(); Reference(action, item, "m_Objective"); break;
                 case "StartEtude": action = new StartEtude(); Reference(action, item, "Etude"); break;
                 case "CompleteEtude": action = new CompleteEtude(); Reference(action, item, "Etude"); break;
                 default: throw new InvalidOperationException("Unreviewed Q3 action: " + Type(item));
