@@ -650,6 +650,10 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l02: q6b's verified history table, after every consumer has been assembled.
+    from storylines import native_facts
+    native_facts.integrate(payload)
+    # eng7-l02 end
     return payload
 
 
