@@ -53,6 +53,14 @@ internal static class NativeQ3RecoveryManagedTests
                 return objective;
             }
             // eng7-f6d end
+            // Native cue conditions reached by the F6 epilogue edits (archive shape: Not, m_Cue, CurrentDialog).
+            if (Type(item) == "CueSeen")
+            {
+                var seen = new CueSeen { Not = (bool)item["Not"]! };
+                typeof(CueSeen).GetField("CurrentDialog", Fields)?.SetValue(seen, (bool?)item["CurrentDialog"] ?? false);
+                Reference(seen, item, "m_Cue");
+                return seen;
+            }
             if (Type(item) != "EtudeStatus") throw new InvalidOperationException("Unreviewed Q3 condition: " + Type(item));
             var status = new EtudeStatus { Not = (bool)item["Not"]!, NotStarted = (bool)item["NotStarted"]!, Started = (bool)item["Started"]!,
                 Playing = (bool)item["Playing"]!, CompletionInProgress = (bool)item["CompletionInProgress"]!, Completed = (bool)item["Completed"]! };
