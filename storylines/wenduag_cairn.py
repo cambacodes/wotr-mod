@@ -615,3 +615,5 @@ def integrate(payload):
         if have is not None and have != [list(g) for g in groups]:
             raise ValueError("Conflicting derived key: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+    from storylines import wenduag_echo
+    wenduag_echo.integrate(payload)

@@ -111,8 +111,9 @@ internal static class WenduagTricksterTests
 
         // Trk_Wenduag_Bindings: the relationship, its overrides and access, and the native reads.
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { Dead, Killed, Kicked, "wenduag.hello_attacked", "wenduag.hello_sent_away", "wenduag.q3_killed", "wenduag.q3_sent_away" }.OrderBy(f => f))
-              && rel.UnavailableOverrides[Killed] == Returned && rel.UnavailableOverrides[Dead] == Returned && rel.UnavailableOverrides[Kicked] == Returned
+              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { Dead, Killed, Kicked, "wenduag.hello_attacked", "wenduag.hello_sent_away", "wenduag.q3_killed", "wenduag.q3_sent_away", Rules.WenduagEchoPrefix + "unavailable" }.OrderBy(f => f))
+              && rel.UnavailableOverrides[Killed] == Rules.WenduagEchoPrefix + "returned_available"
+              && rel.UnavailableOverrides[Dead] == rel.UnavailableOverrides[Killed] && rel.UnavailableOverrides[Kicked] == rel.UnavailableOverrides[Killed]
               && !rel.UnavailableOverrides.ContainsKey("wenduag.q3_killed") && !rel.UnavailableOverrides.ContainsKey("wenduag.hello_attacked"),
             "Trk_Wenduag_Bindings: the relationship does not match the build sheet (three overridden losses, four closures of the Commander's own).");
         check(story.Etudes[Killed] == "85ee36dae8f3317448fa5b950543b3ad" && story.Etudes[Dead] == "1129a007a909f5c4f860cd0909cd10e0"
@@ -345,7 +346,9 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
         var regill = S(P + "react.regill_watch");
         check(regill.Reaction && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
-              && mine.Count(s => s.Reaction) == 4,
+              && mine.Count(s => s.Reaction) == 5
+              && S(P + "react.regill_echo").Requires.Contains(Rules.WenduagEchoPrefix + "returned")
+              && regill.Forbids.Contains(Rules.WenduagEchoPrefix + "returned"),
             "Trk_Wenduag_Reactors: the allocated reactors (Lann, Irabeth, Regill) are not all present and guarded.");
         check(S(P + "react.irabeth_traitor").Requires.Contains(P + "brask_knows") && S(P + "react.irabeth_suspicion").Forbids.Contains(P + "brask_knows"),
             "Trk_Wenduag_Reactors: Irabeth names an eyewitness the Bluff never produced.");

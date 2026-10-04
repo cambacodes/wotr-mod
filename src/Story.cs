@@ -531,12 +531,24 @@ namespace Tirabade
         public string Area = "";
         public HashSet<string> Flags = new HashSet<string>(StringComparer.Ordinal);
         public HashSet<string> AvailableContacts = new HashSet<string>(StringComparer.Ordinal);
+        // A custody pickup exception belongs to one scene, never to the shared blueprint contact set.
+        public HashSet<string> SceneContacts = new HashSet<string>(StringComparer.Ordinal);
         public Dictionary<string, int> Times = new Dictionary<string, int>();
-        public bool Has(string flag) => Flags.Contains(flag);
+        public bool Has(string flag) => Flags.Contains(flag)
+            && (flag != "wenduag.trickster.returned" || !Flags.Contains(Rules.WenduagEchoPrefix + "unavailable"));
     }
 
     public static class Rules
     {
+        public const string WenduagEchoPrefix = "wenduag.trickster.echo.abyss.";
+        public static readonly string[] WenduagEchoRuntime = new[] { "adapter_available", "casualty_available", "return_available", "valid", "unavailable" }
+            .Select(suffix => WenduagEchoPrefix + suffix).ToArray();
+        public static bool IsWenduagEchoHub(Scene scene) => scene.InteractionHub == "wenduag.echo"
+            && scene.Relationship == "wenduag" && scene.Owner == "Wenduag" && !IsRemote(scene)
+            && scene.ContactUnit == "ae766624c03058440a036de90a7f2009"
+            && scene.Requires.Contains(TricksterNow) && scene.Requires.Contains("foresight.page_taken")
+            && (scene.Id == WenduagEchoPrefix + "pickup" && scene.Requires.Contains(WenduagEchoPrefix + "casualty_available")
+                || scene.Id == WenduagEchoPrefix + "return" && scene.Requires.Contains(WenduagEchoPrefix + "return_available"));
         public const string NurahCapital = "2570015799edf594daf2f076f2f975d8";
         public const string NurahContact = "f999fc37ddb225640b7f98c0a05d6948";
         public static readonly string[] CheckSkills = { "SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana", "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception", "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate" };
@@ -726,7 +738,8 @@ namespace Tirabade
         {
             if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
-            return (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit))
+            return (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit)
+                    || scene.Id == WenduagEchoPrefix + "pickup" && scene.ContactUnit == "ae766624c03058440a036de90a7f2009" && state.SceneContacts.Contains(scene.Id))
                 && scene.AdditionalContactUnits.All(state.AvailableContacts.Contains)
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
@@ -768,7 +781,7 @@ namespace Tirabade
             || flag == "konomi.return_correspondence_available"
             || flag == "konomi.death_unreturned" || flag == "konomi.death_restored"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
-            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived";
+            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag);
 
         // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
         public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
@@ -976,7 +989,8 @@ namespace Tirabade
 
         // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
         // E15: book entries visible now, in section order then authored order.
-        public static bool BookEntryVisible(BookEntry entry, Snapshot state) => entry.Requires.All(state.Has)
+        public static bool BookEntryVisible(BookEntry entry, Snapshot state) =>
+            !(entry.Id == "owed.wenduag" && state.Has(WenduagEchoPrefix + "returned")) && entry.Requires.All(state.Has)
             && !entry.Forbids.Any(state.Has) && entry.AnyGroups.All(group => group.Any(state.Has));
 
         public static List<BookEntry> BookVisible(BookSpec book, Snapshot state)
@@ -1214,7 +1228,7 @@ namespace Tirabade
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.ContinueBefore != null) return Array.Empty<string>();
             if (scene.InteractionHub != null)
             {
-                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene) || IsTableScene(scene)) return Array.Empty<string>();
+                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene) || IsTableScene(scene) || IsWenduagEchoHub(scene)) return Array.Empty<string>();
                 throw new InvalidOperationException("Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
             }
             if (scene.AnswerLists.Length > 0) return scene.AnswerLists;
@@ -1306,17 +1320,20 @@ namespace Tirabade
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
+            // TODO-shyka: save-compatible paid-page flag, deliberately without a producer in this tree.
+            if (story.Derived.ContainsKey("foresight.page_taken")) authoredFlags.Add("trickster.foresight.accepted");
             var derivedFlags = new HashSet<string>(story.Presences.Where(p => p.Value?.At != null).Select(p => PresenceFailedFlag(p.Key)).Concat(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
                 "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys)));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
+            contactEvidence.UnionWith(WenduagEchoRuntime);
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
                 .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
@@ -1444,7 +1461,7 @@ namespace Tirabade
             var ids = new HashSet<string>();
             foreach (var scene in story.Scenes)
             {
-                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !IsTableScene(scene) && !(IsPresenceHubScene(scene)
+                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !IsTableScene(scene) && !IsWenduagEchoHub(scene) && !(IsPresenceHubScene(scene)
                     && story.Presences.TryGetValue(scene.InteractionHub, out var hubPresence) && hubPresence?.Dialog == "hub"
                     && PresenceRelationship(scene.InteractionHub) == scene.Relationship))
                     throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
@@ -1819,7 +1836,8 @@ namespace Tirabade
             var records = new HashSet<string>(relationship.TricksterAccess.Values.Select(entry => entry.Returned).OfType<string>()
                 .Concat(relationship.UnavailableOverrides.Values));
             bool Records(string flag) => records.Contains(flag) || flag.Contains(".trickster.primed")
-                || flag.Contains(".trickster.returned") || flag.Contains(".trickster.cost.");
+                || flag.Contains(".trickster.returned") || flag.Contains(".trickster.cost.")
+                || flag == WenduagEchoPrefix + "rescued" || flag == WenduagEchoPrefix + "cost.used_lann";
             if (!scene.TricksterDevice || relationship.TricksterAccess.Count == 0 || scene.Reaction
                 || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || scene.TricksterState != null && !relationship.TricksterAccess.ContainsKey(scene.TricksterState)

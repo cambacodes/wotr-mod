@@ -20,7 +20,8 @@ internal static class Program
     {
         Chapter = original.Chapter, Hour = original.Hour, Area = original.Area,
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
-        AvailableContacts = new HashSet<string>(original.AvailableContacts)
+        AvailableContacts = new HashSet<string>(original.AvailableContacts),
+        SceneContacts = new HashSet<string>(original.SceneContacts)
     };
 
     // NM1 (storylines/nm1_fold.py): the per-letter view of a story whose later rest deliveries were folded into earlier ones.
@@ -226,6 +227,12 @@ internal static class Program
     {
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        if (args.Contains("--wenduag-echo"))
+        {
+            WenduagTricksterTests.Run(story, Check);
+            WenduagEchoRulesTests.Run(story, Check);
+            return;
+        }
         NurahContactEvidenceTests.Run(Check);
         if (args.Contains("--iomedae"))
         {
@@ -351,7 +358,7 @@ internal static class Program
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
-                Check(known.Contains(flag) || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived",
+                Check(known.Contains(flag) || Rules.WenduagEchoRuntime.Contains(flag) || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived",
                     "Unknown condition " + flag + " in " + scene.Id);
             foreach (var node in scene.Nodes)
                 Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
@@ -559,6 +566,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) ElyankaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) MelazmeraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) WenduagTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) WenduagEchoRulesTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
@@ -620,6 +628,8 @@ internal static class Program
         {
             if (playedContinuations.Contains(scene.Id)) continue;
             var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
+            if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
+                state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
             state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
