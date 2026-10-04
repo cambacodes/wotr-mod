@@ -50,6 +50,12 @@ PRODUCER_CONTRACT = {
     },
 }
 
+# eng7-f6d begin: no new actor or jealousy history is granted by this adapter.
+HUB = "wenduag.vellexia_network.presence"
+PRESENCES = {HUB: dict(Unit=WENDUAG_UNIT, Area=VELLEXIA_MANOR, Mode="reuse-native",
+    Requires=[RECEPTION_HISTORY], Forbids=list(RELATIONSHIP["UnavailableFlags"]),
+    MinChapter=4, MaxChapter=4, AnswerLists=[], Dialog="hub")}
+# eng7-f6d end
 SCENES = [scene(
     "wenduag.vellexia_network.reception",
     "A useful sort of jealousy",
@@ -125,7 +131,7 @@ She returns her attention to the room. Her jealousy has been acknowledged, but i
     last=4,
     optional=True,
     Relationship="wenduag.vellexia_network",
-    ContactUnit=WENDUAG_UNIT,
+    ContactUnit=WENDUAG_UNIT, InteractionHub=HUB,  # eng7-f6d
     AdditionalContactUnits=[VELLEXIA_UNIT],
     Chapters=[4],
     Areas=[VELLEXIA_MANOR],
@@ -148,3 +154,9 @@ if __name__ == "__main__":
     assert "wenduag.vellexia_network.conversation_accepted" in flags
     assert RELATIONSHIP["CommittedFlag"] not in flags
     assert "wenduag.vellexia_network.followup_possible" not in flags
+
+
+# eng7-f6d: only the dormant contact contract; no production registration.
+def integrate(payload):
+    from copy import deepcopy
+    payload.setdefault("Presences", {}).update(deepcopy(PRESENCES))

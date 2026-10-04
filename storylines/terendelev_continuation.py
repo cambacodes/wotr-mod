@@ -35,6 +35,14 @@ SEEN_CUES = {
     "terendelev.continuation.bound_rejection_seen": ["f0233d7ac79b4557b0f8f5f18a077940"],
 }
 SCENES = []
+# eng7-f6d begin: dormant physical delivery uses the exact existing parent actor.
+# Reuse never materializes an actor or grants the outstanding confirmation proof.
+HUB = "terendelev.continuation.presence"
+PRESENCES = {HUB: dict(Unit=TERENDELEV_CONTACT, Area=DREZEN, Mode="reuse-native",
+    Requires=["terendelev.continuation.returned_actor_confirmed"],
+    Forbids=["terendelev.continuation.closed", "terendelev.trickster.returned"],
+    MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub")}
+# eng7-f6d end
 
 RELATIONSHIP = dict(
     Title="A promise under an open sky",
@@ -64,6 +72,7 @@ def add(id, title, owner, nodes, requires, forbids=(), delay=12, remote=False, *
         requires=contact_requirements, forbids=tuple(forbids) + ("terendelev.continuation.closed", TRICKSTER_RETURNED),
         delay=delay, optional=True, Relationship="terendelev", Remote=remote,
         ContactUnit=None if remote else TERENDELEV_CONTACT,
+        **({} if remote else dict(InteractionHub=HUB)),
         Areas=[DREZEN], Chapters=[5], **extra))
 
 
@@ -345,17 +354,17 @@ Terendelev does not answer before the builders do.{/n}''',
 
 {n}The builders agree to put the return date in writing after the repair inspection. They cannot promise the work will be finished before the next storm, but they can promise to keep the rooms available and to tell the family when the plan changes.{/n}
 
-Terendelev asks Asla to read the written terms back to the builders. The phrasing is plain enough to expose what the committee has not agreed to pay.{/n}''', c('[Make the missing labor and lodging cost part of the public schedule.]', flags=f("inspection.outcome.lodging"))),
+Terendelev asks Asla to read the written terms back to the builders. The phrasing is plain enough to expose what the committee has not agreed to pay.{/n}''', c('[Make the missing labor and lodging cost part of the public schedule.]', "end", flags=f("inspection.outcome.lodging"))),
     n("residents", "Narrator", '''{n}The residents choose two repairs to fund first. A widow with a leaking roof votes for the foundation work because the house beside hers leans toward her wall. She has been waiting for someone to call her concern more than a private inconvenience.{/n}
 
 {n}The committee's builders object that their own order is safer. Terendelev asks them to show the load calculations. She does not announce that the residents are right before she has read them.{/n}
 
-The figures explain why the foundation should be stabilized before new roofing begins. The first schedule was written for speed, not safety.{/n}''', c('[Reorder the work and let the residents monitor the schedule.]', flags=f("inspection.outcome.residents"))),
+The figures explain why the foundation should be stabilized before new roofing begins. The first schedule was written for speed, not safety.{/n}''', c('[Reorder the work and let the residents monitor the schedule.]', "end", flags=f("inspection.outcome.residents"))),
     n("uncertainty", "Narrator", '''{n}The builders admit that they have not opened the wall. Until they do, no one can say whether the beam can be reinforced or whether the roof must be removed entirely.{/n}
 
 {n}Terendelev asks them to record that uncertainty. She is willing to evacuate a household for a night if the exposed beam gives way. She will not tell the family the house is safe because a confident answer would be easier to hear.{/n}
 
-The residents ask for an observer to remain through the first cut. The builders accept after the committee agrees to pay for the extra day.{/n}''', c('[Approve the inspection with a named observer and a stop-work rule.]', flags=f("inspection.outcome.uncertain"))),
+The residents ask for an observer to remain through the first cut. The builders accept after the committee agrees to pay for the extra day.{/n}''', c('[Approve the inspection with a named observer and a stop-work rule.]', "end", flags=f("inspection.outcome.uncertain"))),
     n("end", "Terendelev", '''{n}By dusk, the residents have copies of the revised schedule. It names who will pay for lodging, what work begins first, and when the next inspection will occur.{/n}
 
 Terendelev watches the last family carry a small stove across the square. She does not call the outcome a victory. One home may still need to be rebuilt, and the people who have left it do not know when they will return.
@@ -452,17 +461,17 @@ add("kenabres_vigil", "The names that survived her", "Terendelev", [
 
 {n}She chooses a place in the second row. When a family asks whether she remembers their son, she says she remembers the street, but not the boy. She does not invent a comforting detail to close the silence.{/n}
 
-The mother thanks her for answering honestly and continues with the next name.{/n}''', c('[Stay beside her without answering for her.]', flags=f("vigil.honest"))),
+The mother thanks her for answering honestly and continues with the next name.{/n}''', c('[Stay beside her without answering for her.]', "end", flags=f("vigil.honest"))),
     n("terms", "Terendelev", '''"Tell them I will come as myself," she says. "If they want a speaker, they can ask someone who knows what happened after I died. I will not make the word survivor carry more than it can."{/n}
 
 {n}The organizer accepts the limit. One committee member complains that a quiet vigil cannot become a public statement. Terendelev tells him that remembrance is not a petition and does not need to produce a decision.{/n}
 
-She looks to you, checking that you will not use the moment to endorse the rebuilding plan.{/n}''', c('[Agree that the vigil should remain separate from the petition.]', flags=f("vigil.separate"))),
+She looks to you, checking that you will not use the moment to endorse the rebuilding plan.{/n}''', c('[Agree that the vigil should remain separate from the petition.]', "end", flags=f("vigil.separate"))),
     n("blame", "Terendelev", '''"You will let me answer for myself," she says. "If I ask you to stay, stay. If I ask you to leave, leave. I do not want you to defend my survival as if it were an argument I have to win."{/n}
 
 {n}She squeezes your hand once, then lets go before anyone can read it as a public declaration.{/n}
 
-At the vigil, an old man says she should have died with the others. Terendelev does not answer immediately. When she does, she says she knows why he wants a reason that fits the loss. She cannot give him one.{/n}''', c('[Let the silence remain before the next family reads.]', flags=f("vigil.silence"))),
+At the vigil, an old man says she should have died with the others. Terendelev does not answer immediately. When she does, she says she knows why he wants a reason that fits the loss. She cannot give him one.{/n}''', c('[Let the silence remain before the next family reads.]', "end", flags=f("vigil.silence"))),
     n("end", "Terendelev", '''{n}After the last name, Terendelev stays to help fold the chairs. No one makes a speech about her courage. No one asks her to bless a plan.{/n}
 
 She walks with you through the square, where the lamps have been lit in a line that leaves no one in darkness. Her shoulder brushes yours once; she does not take your hand until the crowd has thinned.
@@ -495,17 +504,17 @@ add("private_aftercare", "The morning after choosing", "Terendelev", [
 
 You admit that you also wanted to make the night last because the future feels uncertain. She nods, taking the truth without accepting it as a reason to hurry.{/n}
 
-"I want to be touched again," she says. "I also want breakfast before the kitchen closes. If we can manage both without turning one into proof of the other, I will be impressed."{/n}''', c('[Kiss her, then help her find something to eat.]', flags=f("aftercare.desire"))),
+"I want to be touched again," she says. "I also want breakfast before the kitchen closes. If we can manage both without turning one into proof of the other, I will be impressed."{/n}''', c('[Kiss her, then help her find something to eat.]', "end", flags=f("aftercare.desire"))),
     n("checkin", "Terendelev", '''"Nothing I have not already told you," she says. "I liked the questions. I liked that you waited when I paused. I did not like being watched for a sign that you had passed a test."{/n}
 
 {n}You tell her that you sometimes looked for that sign because you feared getting it wrong. She says she understands the fear and does not want to be responsible for soothing it every time you touch her.{/n}
 
-"I can tell you what I want. You can ask. We can both change our minds. That is not a test with a secret correct answer."{/n}''', c('[Thank her, and ask what would feel good now.]', flags=f("aftercare.checkin"))),
+"I can tell you what I want. You can ask. We can both change our minds. That is not a test with a secret correct answer."{/n}''', c('[Thank her, and ask what would feel good now.]', "end", flags=f("aftercare.checkin"))),
     n("time", "Terendelev", '''"Good," she says. "I would like more mornings. I cannot promise that the ones we get will be ordinary, and I do not want you to fill the uncertainty with a vow neither of us can keep."{/n}
 
 {n}She takes your hand and turns the silver cord around your wrist. The knot has slipped loose during the night.{/n}
 
-"We can tie it again. Or leave it loose. I would rather have you ask than guess what the old promise demands."{/n}''', c('[Ask whether she wants to tie it again or leave it loose.]', flags=f("aftercare.time"))),
+"We can tie it again. Or leave it loose. I would rather have you ask than guess what the old promise demands."{/n}''', c('[Ask whether she wants to tie it again or leave it loose.]', "end", flags=f("aftercare.time"))),
     n("end", "Terendelev", '''{n}Terendelev chooses breakfast first. She pulls on the familiar clothes she wore the evening before, then pauses when she notices the silver cord in your hand.{/n}
 
 "Leave it loose," she says. "I want to remember that it can come undone without either of us disappearing."{/n}
@@ -590,14 +599,18 @@ add("escape_boundary", "A rule that can be tested", "Memory", [
 {n}You have arranged a small change to the replica: a dated description of the rebuilt tower, carried into the memory by the same channel used for ordinary contact. No spell will be cast on her. No demand will be made of the people in the copy. The experiment can be stopped if the city begins to distort.{/n}
 
 "I want to see what happens when this place learns something new," she says. "I do not want to find out by watching someone else suffer for it."{/n}''',
-      c('[Introduce the new description and ask her to compare it with the tower.]', "result_pending", flags=f("escape.test.requested"), requires=f("escape.theory", "escape.test.authorized")),
-      c('[Delay until another witness can confirm the record.]', "wait", flags=f("escape.test.wait"))),
+      c('[Introduce the new description and ask her to compare it with the tower.]', "result_pending", flags=f("escape.test.requested"), requires=f("escape.theory", "escape.test.authorized"), forbids=f("escape.test.requested")),
+      c('[Delay until another witness can confirm the record.]', "wait", flags=f("escape.test.wait")),
+      # eng7-f6d: reopen the pending request without issuing a second test.
+      c('[Check whether the test result has arrived.]', "result_pending", requires=f("escape.test.requested"))),
     n("result_pending", "Narrator", '''{n}You send the dated description through the channel and wait for the registered test observer to report what actually happened. The manuscript does not assume the memory changed just because the plan was attempted.{/n}
 
 "No crossing while we do not know the result," Terendelev says. "If it changes, tell me exactly how. If nothing happens, say that. If it becomes unsafe, end the test and do not call the damage a door."{/n}''',
       c('[Review an observed boundary change, if the test handler confirms it.]', "changed", requires=f("boundary.result.changed")),
       c('[Review an observed unchanged result, if the test handler confirms it.]', "unchanged", requires=f("boundary.result.unchanged")),
-      c('[Review an unsafe result, if the test handler confirms it.]', "unsafe", requires=f("boundary.result.unsafe"))),
+      c('[Review an unsafe result, if the test handler confirms it.]', "unsafe", requires=f("boundary.result.unsafe")),
+      # eng7-f6d: absence of an observer result must leave a selectable wait.
+      c('[Wait for the result.]', abort=True)),
     n("changed", "Narrator", '''{n}The registered observer confirms that the copy changed after the dated account arrived. You compare the recorded before-and-after details with Terendelev; the change is evidence that the boundary can register new information, not evidence of a traversable opening.{/n}
 
 "A change is not a door," she says. "Now we know that the place can answer. We still do not know what it would do to anyone who crossed."{/n}''', c('[Record the limited result and continue only with her agreement.]', flags=f("escape.test.observed", "boundary.result.recorded"))),
@@ -611,7 +624,7 @@ add("escape_boundary", "A rule that can be tested", "Memory", [
 
 {n}When the account arrives, the dates agree and the descriptions do not. The second resident remembers rain against the eastern wall; the first remembers a clear sky. Both place the new stone after the attack.{/n}
 
-{n}The evidence is stronger because it preserves a real disagreement. Terendelev can compare a fixed reconstruction with facts that do not depend on a single memory.{/n}''', c('[Return to the scale with the corroborated record.]', flags=f("escape.theory", "escape.test.authorized"))),
+{n}The evidence is stronger because it preserves a real disagreement. Terendelev can compare a fixed reconstruction with facts that do not depend on a single memory.{/n}''', c('[Return to the scale with the corroborated record.]', flags=f("escape.theory", "escape.test.authorized"), abort=True)),
 ], requires=BOUND + f("escape.accepted"), forbids=(PARENT_LICH_BIND,), delay=48, remote=True)
 
 # The parent-ending branches below offer investigation, not inherited romance.
@@ -660,7 +673,7 @@ You can revisit the cave only if the original native collectible and its action 
 {n}The registered caller must verify the cost, persist the one-use attempt, and wait for an explicit voluntary answer. Until that caller and response handler exist, this page cannot appear in game.{/n}''', c('[Send the single invitation only after the registered handler is installed.]', flags=f("native.invitation.requested"))),
     n("wait", "Narrator", '''{n}You do not guess. The scale may have been consumed, and the claw may have been collected, lost, or never touched. Each possibility means something different.{/n}
 
-{n}The native quest record remains intact while the investigation waits for a live inventory and cave-state check.{/n}''', c('[Leave the lead unresolved until the game can verify the evidence.]', flags=f("native.pending"))),
+{n}The native quest record remains intact while the investigation waits for a live inventory and cave-state check.{/n}''', c('[Leave the lead unresolved until the game can verify the evidence.]', flags=f("native.pending"), abort=True)),
 ], requires=("trickster", "terendelev.continuation.native_quest_verified", "terendelev.continuation.native_original_clue_verified", "terendelev.continuation.native_ravener_outcome_verified"), forbids=(PARENT_LICH_BIND,), remote=True)
 
 add("trickster_identity_review", "The part of her the scale cannot prove", "Memory", [
@@ -789,7 +802,7 @@ add("scale_evening", "A voice across the dark", "Memory", [
 
 {n}She asks you to describe the garden after rain. You describe the smell of stone and the cold metal of the fountain. She corrects you about the tree nearest the wall: it was a pear tree, not an apple. She says the fruit was terrible.{/n}
 
-"When I return, if I return, I want to stand somewhere ordinary. I want to be annoyed by a bad meal and tired after a walk. I do not want every moment to become a ceremony because it might be the last one."{/n}''', c('[Promise to make room for ordinary days, without promising they will arrive.]', flags=f("intimacy.shared"))),
+"When I return, if I return, I want to stand somewhere ordinary. I want to be annoyed by a bad meal and tired after a walk. I do not want every moment to become a ceremony because it might be the last one."{/n}''', c('[Promise to make room for ordinary days, without promising they will arrive.]', "end", flags=f("intimacy.shared"))),
     n("argument", "Terendelev", '''"You miss losing arguments to me?" she asks.
 
 {n}You tell her that you miss the moments when disagreement did not threaten the whole relationship. She laughs softly.{/n}
@@ -798,12 +811,12 @@ add("scale_evening", "A voice across the dark", "Memory", [
 
 "You say that now."
 
-"I am sure you will remind me later."{/n}''', c('[Tell her you want the real disagreement, not its remembered shape.]', flags=f("intimacy.shared"))),
+"I am sure you will remind me later."{/n}''', c('[Tell her you want the real disagreement, not its remembered shape.]', "end", flags=f("intimacy.shared"))),
     n("future", "Terendelev", '''"I fear it too," she says. "I will not tell you that love makes the danger noble. I am not a lesson about hope. I am a person in a place I did not choose, and I would like to leave it if I can do so without losing what remains of me."
 
 {n}Her voice catches once, then steadies.{/n}
 
-"There is still something I want. That does not make the risk worth any price. It means I want to be included when we decide what the price is."{/n}''', c('[Agree that her desire belongs in the decision alongside her fear.]', flags=f("intimacy.shared"))),
+"There is still something I want. That does not make the risk worth any price. It means I want to be included when we decide what the price is."{/n}''', c('[Agree that her desire belongs in the decision alongside her fear.]', "end", flags=f("intimacy.shared"))),
     n("end", "Terendelev", '''{n}The scale warms in your hand. Terendelev asks you to keep it beside you for a little longer. The dark between you does not close, but her voice no longer sounds quite so far away.{/n}
 
 "I want to kiss you," she says, with a wry edge to her voice. "It is inconvenient that I cannot reach you. You may tell the Storyteller I am holding that against the laws of the world, not against you."{/n}
@@ -841,6 +854,7 @@ def integrate(payload):
                 raise ValueError("Conflicting Terendelev source binding: " + key)
             target[key] = deepcopy(value)
     relationships = payload.setdefault("Relationships", {})
-    if "terendelev" in relationships and relationships["terendelev"] != RELATIONSHIP:
-        raise ValueError("Conflicting Terendelev relationship registration")
-    relationships["terendelev"] = deepcopy(RELATIONSHIP)
+    # eng7-f6d: continuation shares her identity; never overwrite the live route's
+    # journal/closure metadata during isolated draft integration.
+    relationships.setdefault("terendelev", deepcopy(RELATIONSHIP))
+    payload.setdefault("Presences", {}).update(deepcopy(PRESENCES))

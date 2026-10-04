@@ -2191,11 +2191,16 @@ namespace Tirabade
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
             ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
             ["kiana.q3_recovery"] = "2b4a5c01a192d1f4aa8c9d32aa149727",           // FinalResolve, paired with Cue_0032 and its native completion
+            // eng7-f6d begin: Storyteller funeral and obsolete trapped-voice question.
+            ["terendelev.scale_funeral"] = "21b10801b6c2b194d92506a137ef1307",
+            ["terendelev.trapped_future"] = "fd39fd84212de2047b6b887c9a9cf28e",
+            // eng7-f6d end
             ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
         };
 
         // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
-        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog", "kiana.q3_recovery" };
+        // eng7-f6d: Storyteller corrections refuse safely on native blueprint drift.
+        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog", "kiana.q3_recovery", "terendelev.scale_funeral", "terendelev.trapped_future" };
 
         // E18: a gate holds while its relationship is live and any When group holds.
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)

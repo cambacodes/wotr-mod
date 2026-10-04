@@ -1,4 +1,4 @@
-"""eng7-l09: authoring failures remain separate from shipped strict failures."""
+"""eng7-f6d: dormant mechanical contracts are strict; draft prose stays advisory."""
 import unittest
 from tools import draft_contract_lint as lint
 
@@ -8,15 +8,71 @@ class DraftContractTests(unittest.TestCase):
     def setUpClass(cls):
         cls.inventory = lint.inventory()
 
-    def test_mapped_delivery_and_graph_findings(self):
-        rows = lint.check(self.inventory)
-        for path in ("angel", "azata", "aeon", "trickster", "demon", "devil", "dragon", "legend"):
-            codes = {r["code"] for r in rows if r["scene"] == "galfrey." + path + ".the_space_between_orders"}
-            self.assertTrue({"no-physical-attachment", "literal-node-entry"}.issubset(codes))
-        for scene in ("inspection_day", "kenabres_vigil", "private_aftercare", "scale_evening"):
-            self.assertTrue(any(r["scene"] == "terendelev.continuation." + scene and r["code"] == "unreachable-producer" for r in rows), scene)
-        self.assertTrue(any(r["scene"] == "terendelev.continuation.escape_boundary" and r["code"] == "deferred-once-completion" for r in rows))
-        self.assertTrue(any(r["module"] == "terendelev_continuation" and r["code"] == "integration_error" for r in rows))
+    # eng7-f6d begin: repaired drafts are now a mandatory mechanical gate.
+    def test_all_dormant_contracts_are_clean(self):
+        self.assertEqual(lint.check(self.inventory), [])
+
+    def test_completion_branches_and_deferred_waits(self):
+        scenes = {s["Id"]: s for s in self.inventory["terendelev_continuation"]["scenes"]}
+        for name in ("inspection_day", "kenabres_vigil", "private_aftercare", "scale_evening"):
+            scene = scenes["terendelev.continuation." + name]
+            incoming = [c for n in scene["Nodes"] for c in n["Choices"] if c.get("Next") == "end"]
+            self.assertEqual(len(incoming), 3, name)
+            broken = __import__("copy").deepcopy(scene)
+            for node in broken["Nodes"]:
+                for choice in node["Choices"]:
+                    if choice.get("Next") == "end": choice["Next"] = None
+            self.assertTrue(any(r["code"] == "unreachable-producer" for r in lint.check_scene(broken)))
+        for name in ("escape_boundary", "trickster_native_lead"):
+            wait = next(n for n in scenes["terendelev.continuation." + name]["Nodes"] if n["Id"] == "wait")
+            self.assertTrue(wait["Choices"][0]["Abort"], name)
+        pending = next(n for n in scenes["terendelev.continuation.escape_boundary"]["Nodes"] if n["Id"] == "result_pending")
+        self.assertTrue(any(c["Abort"] and not c["Requires"] for c in pending["Choices"]))
+
+    def test_physical_attachments_preserve_proofs_and_exact_actor(self):
+        import importlib
+        from tools.game_blueprints import find_bindings, game_dir
+        units = {}
+        for name in ("terendelev_continuation", "targona_trickster_acquisition",
+                     "galfrey_all_path_continuation", "wenduag_relationship_network"):
+            module = importlib.import_module("storylines." + name)
+            for scene in module.SCENES:
+                if scene.get("Remote"): continue
+                presence = module.PRESENCES[scene["InteractionHub"]]
+                self.assertEqual(scene["ContactUnit"], presence["Unit"])
+                self.assertEqual(presence["Mode"], "reuse-native")
+                self.assertTrue(set(presence["Requires"]).issubset(scene["Requires"]))
+                units[presence["Unit"]] = "BlueprintUnit"
+        self.assertEqual(len(find_bindings(game_dir() / "blueprints.zip", units)), 4)
+
+    def test_integration_preserves_live_relationship_and_dormancy(self):
+        import copy, expansion
+        from storylines import terendelev_continuation as draft
+        payload = expansion.make_expansion()
+        before = copy.deepcopy(payload["Relationships"]["terendelev"])
+        draft.integrate(payload)
+        self.assertEqual(payload["Relationships"]["terendelev"], before)
+        prefixes = ("terendelev.continuation.", "targona.trickster_acq.", "wenduag.vellexia_network.")
+        self.assertFalse(any(s["Id"].startswith(prefixes) for s in payload["Scenes"]))
+        self.assertFalse(any(s["Id"].endswith(".the_space_between_orders") for s in payload["Scenes"]))
+
+    def test_strict_verifier_rejects_a_dormant_contract_regression(self):
+        import contextlib, io, tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        from tools import rrt_verify as verify
+        for rows in ([], [dict(code="missing-target", scene="draft", location="lost")]):
+            report = dict(validate_errors=[], no_producer_required=[],
+                          runtime=dict(duplicate_names=[], retry_dups=[]), drafts=dict(contracts=rows))
+            with tempfile.TemporaryDirectory(prefix="rrt-eng7-f6d-strict-") as temp:
+                args = ["rrt_verify.py", "--strict", "--text", str(Path(temp) / "report.txt")]
+                with patch.object(verify.sys, "argv", args), patch.object(verify, "run", return_value=(report, "")), contextlib.redirect_stdout(io.StringIO()):
+                    if rows:
+                        with self.assertRaises(SystemExit) as failed: verify.main()
+                        self.assertEqual(failed.exception.code, 1)
+                    else:
+                        verify.main()
+    # eng7-f6d end
 
     def test_valid_dormant_graph_and_retired_stub(self):
         scene = {"Id": "dormant", "Remote": True, "Entry": '"Speak."', "Nodes": [

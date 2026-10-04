@@ -376,6 +376,7 @@ internal static class Program
         }
         // E18: the reviewed native gate targets, shaped like the archive, loaded before Build as the game would load them.
         NativeGateManagedTests.Seed(native, Check);
+        TerendelevNativeManagedTests.Seed(native, Check); // eng7-f6d
         NativeQ3RecoveryManagedTests.Seed(native, Check);
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
@@ -743,6 +744,7 @@ internal static class Program
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
+        TerendelevNativeManagedTests.Run(story, native, Check); // eng7-f6d
         if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Run(Check);
         NativeGateManagedTests.RunArsinoe(story, Check);
         NativeGateManagedTests.RunDevarra(story, Check);
