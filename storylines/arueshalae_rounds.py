@@ -348,8 +348,5 @@ NATIVE_EPILOGUE_EDITS = {
 
 def integrate(payload):
     """Scenes only; keys bind on demand through trickster_world. NM1: the reconciled native companion pages (E14d)."""
-    edits = payload.setdefault("NativeEpilogueEdits", {})
-    for cue, edit in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits and edits[cue] != edit:
-            raise ValueError("arueshalae_rounds: conflicting native epilogue edit " + cue)
-        edits[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in edit.items()}
+    from storylines.native_overrides import register_legacy
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS)

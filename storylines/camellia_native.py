@@ -18,6 +18,8 @@ native text and no relationship is touched (the 252ccf6 lesson). Save names: nat
 """
 import copy
 
+from storylines.native_overrides import register_legacy
+
 from story_format import n, scene
 
 from storylines import camellia_trickster as ct
@@ -93,9 +95,4 @@ NATIVE_EPILOGUE_SUPPRESSIONS = {
 def integrate(payload):
     """Register the scenes and the edits (after camellia_trickster.integrate)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
-    for field, specs in (("NativeEpilogueEdits", NATIVE_EPILOGUE_EDITS), ("NativeEpilogueSuppressions", NATIVE_EPILOGUE_SUPPRESSIONS)):
-        have = payload.setdefault(field, {})
-        for cue, spec in specs.items():
-            if cue in have:
-                raise ValueError("camellia_native: conflicting " + field + " " + cue)
-            have[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in spec.items()}
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, suppressions=NATIVE_EPILOGUE_SUPPRESSIONS)

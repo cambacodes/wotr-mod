@@ -18,6 +18,8 @@ nothing that closes or burns the romance. Warning-only: a drifted cue keeps its 
 """
 import copy
 
+from storylines.native_overrides import register_legacy
+
 from story_format import n, scene
 
 from storylines import areelu_trickster as at
@@ -62,8 +64,4 @@ NATIVE_EPILOGUE_EDITS = {
 def integrate(payload):
     """Register the lines and the E14i edits (after areelu_trickster)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
-    edits = payload.setdefault("NativeEpilogueEdits", {})
-    for cue, spec in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits:
-            raise ValueError("areelu_afterlogue: conflicting native epilogue edit " + cue)
-        edits[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in spec.items()}
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS)

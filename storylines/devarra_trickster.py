@@ -648,8 +648,8 @@ def integrate(payload):
         payload.setdefault("Latches", {})[key] = list(sources)
     for key, cues in SEEN.items():
         payload.setdefault("SeenCues", {})[key] = list(cues)
-    for key, gate in NATIVE_GATES.items():
-        payload.setdefault("NativeGates", {})[key] = dict(gate, When=[list(g) for g in gate["When"]])
+    from storylines.native_overrides import register_legacy
+    register_legacy(payload, __name__, gates=NATIVE_GATES)
     for s in payload["Scenes"]:
         if s["Id"] in RETIRED and "trickster.ever" not in s["Forbids"]:
             s["Forbids"].append("trickster.ever")
