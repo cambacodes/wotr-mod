@@ -822,3 +822,13 @@ def integrate(payload):
         elif not s["Owner"].endswith("Epilogue") and "irabeth_dead" not in s["Forbids"] \
                 and "irabeth_dead" not in s.get("Requires", []):
             s["Forbids"].append("irabeth_dead")
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'irabeth.trickster.dead.relieved_not_dismissed',
+    'irabeth.trickster.killed.blow_missed',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

@@ -178,6 +178,68 @@ def walk_packet(packet, by_ref, errors):
     return states
 
 
+def delayed_clock_errors(scene, story):
+    """Every selectable OR alternative must bring a timestamp, unless an unconditional Requires already does."""
+    if not scene.get("DelayHours"):
+        return []
+    timestamped = set(story.get("Latches", {})) | {s["Id"] for s in story.get("Scenes", [])}
+    timestamped |= {flag for s in story.get("Scenes", []) for n in s.get("Nodes", [])
+                    for c in n.get("Choices", []) for flag in c.get("Set", [])}
+    if any(flag in timestamped for flag in scene.get("Requires", [])):
+        return []
+    if any(group and all(flag in timestamped for flag in group) for group in scene.get("RequiresAnyGroups", [])):
+        return []
+    return ["K8: %s delayed step has no timestamped clock on every AnyGroups alternative" % scene["Id"]]
+
+
+def scene_load_errors(story, data):
+    """Caps apply to authored household registrations only; protected discoveries are structural."""
+    errors = []
+    scenes = [s for s in story.get("Scenes", []) if s.get("HouseholdCategory")]
+    for s in scenes:
+        category = s["HouseholdCategory"]
+        if category not in ("protected", "pair", "mend", "dynamic", "letter"):
+            errors.append("K8: %s has an unknown household category" % s["Id"])
+        expected = "household.protected" if category == "protected" else "household.pair" if category in ("pair", "mend") else None
+        if s.get("RestAllowance") != expected:
+            errors.append("K8: %s category/RestAllowance mismatch" % s["Id"])
+        if category == "protected" and any('.cap.' in f for f in s.get("Forbids", [])):
+            errors.append("K8: protected discovery %s has a Counts cap" % s["Id"])
+        errors.extend(delayed_clock_errors(s, story))
+    for chapter, caps in data.get("load_caps", {}).items():
+        chapter = int(chapter)
+        arcs, starts, carried = {}, set(), set()
+        for s in scenes:
+            if s["HouseholdCategory"] != "pair" or chapter not in s.get("Chapters", range(s["MinChapter"], s["MaxChapter"] + 1)):
+                continue
+            arc = s.get("HouseholdArc")
+            if not arc:
+                errors.append("K8: optional step %s needs an arc id" % s["Id"])
+                continue
+            arcs.setdefault(arc, set()).add(s["HouseholdWitness"])
+        for s in scenes:
+            if not s.get("HouseholdArcStart"):
+                continue
+            arc = s.get("HouseholdArc")
+            chapters = s.get("Chapters") or range(s["MinChapter"], s["MaxChapter"] + 1)
+            if chapter in chapters:
+                starts.add(arc)
+            if any(ch < chapter for ch in chapters):
+                carried.add(arc)
+        # Earlier starts consume their remaining steps even when this chapter allows additional new starts.
+        maximum = sum(len(arcs[arc]) for arc in carried if arc in arcs)
+        maximum += sum(sorted((len(steps) for arc, steps in arcs.items() if arc not in carried), reverse=True)[:caps.get("arcs", 0)])
+        if any(arc not in starts | carried for arc in arcs):
+            errors.append("K8: Ch%d optional arc has no registered start" % chapter)
+        if chapter == 3:
+            mends = {s["HouseholdWitness"] for s in scenes if s["HouseholdCategory"] == "mend"
+                     and chapter in (s.get("Chapters") or range(s["MinChapter"], s["MaxChapter"] + 1))}
+            maximum += min(len(mends), caps.get("mend", 0))
+        if maximum > caps.get("optional", 0):
+            errors.append("K8: Ch%d optional step sum %d exceeds %d" % (chapter, maximum, caps['optional']))
+    return errors
+
+
 # --- the checks ---------------------------------------------------------------------------------------------------------
 
 def lint(data, story=None, doc11_text=None):
@@ -267,8 +329,8 @@ def lint(data, story=None, doc11_text=None):
         if e["type"] in ("atrocity",) and not e.get("witness"):
             errors.append("K4: %s atrocity docket needs a witness for its unilateral acknowledgment" % e["ref"])
     cnt = data["expected_counts"]
-    primary = len(ch5)
-    ideal = primary - sum(1 for e in ch5 if e.get("keys") == ["arueshalae.corrupted"])
+    primary = sum(e.get("count", 0) for e in ch5)
+    ideal = primary - sum(e.get("count", 0) for e in ch5 if e.get("keys") == ["arueshalae.corrupted"])
     saving = sum(len(p["children"]) - 1 for p in data["packets"])
     s52 = 1 if "S52" in by_ref and by_ref["S52"].get("conditional") else 0
     computed = dict(ch5_primary=primary, ideal_redeemed=ideal, ideal_redeemed_no_s52=ideal - s52,
@@ -311,6 +373,16 @@ def lint(data, story=None, doc11_text=None):
                     errors.append("K6: %s reads %s, which Story.json neither produces nor binds" % (e["ref"], f))
         produced = sorted(f for f in known if f.startswith(PROTECTED_PREFIX))
         notes.append("household.protected.* producers in Story.json: %d (expected 0 until the pair builds land)" % len(produced))
+
+    if by_ref.get("S46", {}).get("status") != "retired" or by_ref.get("S46", {}).get("count") != 0:
+        errors.append("K4: S46 must stay retired with count 0")
+    for entry in sched:
+        if entry.get("retry", 0) not in (0, 1):
+            errors.append("K4: %s has more than one retry" % entry["ref"])
+    if by_ref.get("DYN", {}).get("cap") != 3 or not by_ref.get("DYN", {}).get("protected_discoveries_uncapped"):
+        errors.append("K4: optional dynamic cap is 3; protected discoveries stay uncapped")
+    if story is not None:
+        errors.extend(scene_load_errors(story, data))
 
     # K7 proofs
     states = 0

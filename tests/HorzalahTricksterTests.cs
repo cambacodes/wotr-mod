@@ -130,7 +130,7 @@ internal static class HorzalahTricksterTests
         // Shape and hooks (Trk_Horzalah_Bindings: the build sheet's keys are bound as listed; tools/verify-game-bindings.py
         // resolves every GUID against blueprints.zip).
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.SequenceEqual(new[] { Dead }) && rel.UnavailableOverrides.Count == 0
+              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, P + "left_free" }) && rel.UnavailableOverrides.Count == 0
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "late", "mercy", "unmet" }),
             "Horzalah's relationship does not match the plan (her death stands; mercy, unmet and late access).");
         check(story.SelectedAnswers["horzalah.killed"] == "5de3ea4370854d229e047d95980006c9"

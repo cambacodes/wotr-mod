@@ -461,7 +461,6 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
 # CAN (Sol): Camellia recalls her Sanctum remark only when the player heard it (SeenCues JerribetnFinal/Cue_0039). The
 # unwitnessed lines comment on the returned demon without claiming a shared history; each pair is mutually exclusive.
 _CAM_GONE = ("camellia.killed", CAMELLIA_DEAD, "camellia.kicked_out")
-_CAM_LIFT = dict(ForbidOverrides={CAMELLIA_DEAD: CAMELLIA_RETURNED})   # as camellia_trickster.FOREIGN_REACTIONS does
 REACTIONS = [
     reaction("Camellia", "jerribeth.trickster.reaction.camellia", (RETURNED,),
              '''{n}Camellia is arranging the dried flowers in her room. She does not look up.{/n}
@@ -483,14 +482,14 @@ REACTIONS = [
 {n}She snips a stem, considers it, and throws it away.{/n}
 "Which did you want, Commander: the spectacle, or the use?"''',
              answer_list=CAMELLIA_HUB, forbids=(*_CAM_GONE, HOST, "jerribeth.trickster.reaction.camellia"),
-             chapter=3, last=5, entry='"The Lady of the Sun is back."', **_CAM_LIFT),
+             chapter=3, last=5, entry='"The Lady of the Sun is back."'),
     reaction("Camellia", "jerribeth.trickster.reaction.camellia_host_saw", (RETURNED, HOST, CAMELLIA_SAW),
              '''{n}Camellia is arranging the dried flowers in her room. She does not look up.{/n}
 "At the Sanctum I called her pinning a repugnant spectacle. And useful. Now she pins things in you. And you have promised her a man from the stockade to wear."
 {n}She snips a stem, considers it, and smiles at it.{/n}
 "I would have chosen someone more interesting. Next time, ask me."''',
              answer_list=CAMELLIA_HUB, forbids=(*_CAM_GONE, "jerribeth.trickster.reaction.camellia_host"),
-             chapter=3, last=5, entry='"The Lady of the Sun is back."', **_CAM_LIFT),
+             chapter=3, last=5, entry='"The Lady of the Sun is back."'),
     reaction("Woljif", "jerribeth.trickster.reaction.woljif", (MET_BY_TOAST,),
              '''"Chief. You drank to a demon's loyalty in front of the whole court of the crown, and now my ears itch."
 {n}He scratches one, hard, and looks at his fingers as if he expects something to be on them.{/n}
@@ -1028,3 +1027,13 @@ def integrate(payload):
             for choice in node["Choices"]:
                 if "jerribeth.closed" in choice["Set"] and PARTED not in choice["Set"]:
                     choice["Set"] = [*choice["Set"], PARTED]
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'jerribeth.trickster.dead.tenant',
+    'jerribeth.trickster.dead.tenant_nexus',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

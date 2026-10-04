@@ -130,7 +130,7 @@ internal static class Program
             // E14f speaker units: the game resolves them from the archive like any unit, so seed every node's SpeakerUnit.
             .Concat(story.Scenes.SelectMany(s => s.Nodes).Select(n => n.SpeakerUnit).OfType<string>()).Distinct().ToArray();
         var nurahNativeBindings = NurahMeetingTests.NativeBlueprintBindings();
-        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
+        var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
             SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check);
@@ -180,15 +180,15 @@ internal static class Program
         foreach (var target in story.NativeEpilogueEdits.Where(p => string.IsNullOrEmpty(p.Value.Parent)).Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))
             .Concat(story.NativeEpilogueSuppressions.Select(p => (Cue: p.Key, p.Value.Page, p.Value.Sequence))))
         {
-            var editSequence = Seed<BlueprintCueSequence>(target.Sequence);
+            var editSequence = string.IsNullOrEmpty(target.Sequence) ? null : Seed<BlueprintCueSequence>(target.Sequence);
             // CueSequence_Special also holds the parent's native pair page, which ParentEndingIntegrationTests seeds as a fixture;
             // there only the edit's own page is loaded, so that page stays exactly once in the sequence.
             if (target.Sequence == NativeEpilogueEdit.Special)
             {
-                if (!editSequence.Cues.Any(r => r.Guid == BlueprintGuid.Parse(target.Page)))
+                if (!editSequence!.Cues.Any(r => r.Guid == BlueprintGuid.Parse(target.Page)))
                     editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(target.Page));
             }
-            else if (editSequence.Cues.Count == 0)
+            else if (editSequence != null && editSequence.Cues.Count == 0)
                 foreach (string cue in NativeReferences(native[target.Sequence], "Cues")) editSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
             var editPage = Seed<BlueprintBookPage>(target.Page);
             if (editPage.Cues.Count == 0)
@@ -356,6 +356,7 @@ internal static class Program
             expandedOriginal = sequences[sequenceIds[0]].Cues.ToArray();
             expandedEpilogue.Cues.AddRange(expandedOriginal);
         }
+        if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Seed(native, Check);
         var entry = new UnityModManager.ModEntry(new UnityModManager.ModInfo { Id = "ManagedBuildTests", Version = "1.0.0", ManagerVersion = "0.27.11" }, modDirectory);
         string? invalidReturnKind = Environment.GetEnvironmentVariable("RRT_TEST_NATIVE_RETURN");
         bool invalidNativeReturn = !string.IsNullOrEmpty(invalidReturnKind);
@@ -375,6 +376,7 @@ internal static class Program
         }
         // E18: the reviewed native gate targets, shaped like the archive, loaded before Build as the game would load them.
         NativeGateManagedTests.Seed(native, Check);
+        NativeQ3RecoveryManagedTests.Seed(native, Check);
         Type main = typeof(Tirabade.Main);
         main.GetField("entry", PrivateStatic)!.SetValue(null, entry);
         main.GetField("story", PrivateStatic)!.SetValue(null, story);
@@ -631,12 +633,12 @@ internal static class Program
                 Check(page!.Cues.Count == kindLine + (string.IsNullOrWhiteSpace(node.Text) ? 0 : 1) + node.Paragraphs.Count && page.Cues.All(c => c.Get() is BlueprintCue), "Missing page cue: " + nodeId);
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
-                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
                 bool plainEnding = ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                     && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
                     && node.Choices[0].Set.Length == 0 && node.Choices[0].Text == "Continue"
                     && !node.Choices[0].Abort && node.Choices[0].Revive == null;
-                Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1)), "Wrong choice count: " + nodeId);
+                Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1) + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0)), "Wrong choice count: " + nodeId);
                 foreach (var reference in page.Answers) Check(reference.Get() is BlueprintAnswer, "Unresolved generated answer: " + nodeId);
                 if (plainEnding)
                 {
@@ -645,9 +647,18 @@ internal static class Program
                     Check(leave.OnSelect.Actions.Length == 0 && leave.NextCue.Cues.Count == 0, "Plain ending mutates progress or continues: " + nodeId);
                     continue;
                 }
+                if (node.Choices.Any(choice => choice.Crusade?.Amount < 0))
+                {
+                    var paymentExit = (BlueprintAnswer)page.Answers.Last().Get();
+                    Check(paymentExit.AssetGuid == Id("answer." + nodeId + ".payment_unavailable")
+                        && paymentExit.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition fallback
+                        && ReferenceEquals(fallback.PaymentNode, node) && paymentExit.OnSelect.Actions.Length == 0
+                        && paymentExit.SelectConditions.Conditions.Length == 0 && paymentExit.NextCue.Cues.Count == 0,
+                        "Paid-only page has no unconditional, mutation-free exit: " + nodeId);
+                }
                 if (continuation != null)
                 {
-                    var leave = (BlueprintAnswer)page.Answers.Last().Get();
+                    var leave = (BlueprintAnswer)page.Answers[node.Choices.Count].Get();
                     Check(leave.AssetGuid == Id("answer." + nodeId + ".contact_lost"), "Contact exit changes stable answer identities: " + nodeId);
                     Check(leave.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition lost && lost.ContactLost && ReferenceEquals(lost.Continuation, scene), "Missing contact-loss exit guard: " + nodeId);
                     Check(leave.SelectConditions.Conditions.Length == 0 && leave.OnSelect.Actions.Length == 0 && leave.NextCue.Cues.Count == 0, "Contact exit can block, mutate progress or continue: " + nodeId);
@@ -659,9 +670,16 @@ internal static class Program
                     Check(answer.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition shown && ReferenceEquals(shown.Choice, choice) && ReferenceEquals(shown.Owner, answer), "Choice lost its visibility guard or owner: " + nodeId);
                     Check(answer.SelectConditions.Conditions.Single() is Tirabade.Main.RouteCondition selected && ReferenceEquals(selected.Choice, choice) && ReferenceEquals(selected.Owner, answer), "Choice lost its selection guard or owner: " + nodeId);
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
-                    int nativeEffects = (choice.Crusade != null ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
+                    int nativeEffects = (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
                     Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
-                        && answer.OnSelect.Actions[0] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                        && answer.OnSelect.Actions[choice.Crusade == null || scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal) ? 0 : 1] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                    if (choice.Crusade != null && !scene.Id.StartsWith(Rules.WenduagEchoPrefix, StringComparison.Ordinal))
+                    {
+                        var payment = answer.OnSelect.Actions[0] is Tirabade.Main.GuardedRemoveCrusadeResources remove ? remove.Payment
+                            : ((Tirabade.Main.GuardedAddCrusadeResources)answer.OnSelect.Actions[0]).Payment;
+                        Check(payment != null && ReferenceEquals(payment, action.Payment) && ReferenceEquals(payment.Cost, choice.Crusade),
+                            "Paid progress has no resource-action witness: " + nodeId);
+                    }
                     Check((answer.MythicRequirement.ToString() == (choice.Mythic ?? "None")) && (answer.AlignmentShift?.Value ?? 0) == (choice.Alignment?.Value ?? 0), "Choice native mythic/alignment drifted: " + nodeId);
                     Check(action != null && ReferenceEquals(action.Choice, choice) && ReferenceEquals(action.Owner, answer), "Choice lost its effects or action owner: " + nodeId);
                     Check(ReferenceEquals(((Tirabade.Main.RouteCondition)answer.ShowConditions.Conditions.Single()).Continuation, continuation)
@@ -715,13 +733,17 @@ internal static class Program
         ReturnToListManagedTests.Run(native, Id, Check);
         ParagraphManagedTests.Run(Id, Check);
         NativeEpilogueEditManagedTests.Run(native, Id, Check);
+        NativeEpilogueEditManagedTests.RunQ4(native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);
+        NativeEpilogueEditManagedTests.RunKianaSiblings(story, native, Id, Check);
+        NativeQ3RecoveryManagedTests.Run(story, Id, Check);
         NativeEpilogueEditManagedTests.RunDelivery(story, Check);
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
         NativeGateManagedTests.Run(story, Check);
+        if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Run(Check);
         NativeGateManagedTests.RunArsinoe(story, Check);
         NativeGateManagedTests.RunDevarra(story, Check);
         SpeakerManagedTests.Run(native, Check);

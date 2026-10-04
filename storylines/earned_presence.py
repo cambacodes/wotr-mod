@@ -21,8 +21,10 @@ AND-groups without negation, so the key is written on a page as one Forbid with 
 integrate() applies that guard to every epilogue-family scene (Owner ...Epilogue: RRT pages, Last Call codas, native-slide
 replacements) that does not carry it, unless the page is listed in COMMANDER_ABSENT: a page that mourns the Commander
 (Requires "sacrifice"), or one that never stages the Commander alive after the war and so stays true after the death.
-tools/earned_presence_lint.py checks the result from the generated Story.json (rules EP1-EP4, T1-T5).
+PARAGRAPH_GUARDED pages mix living and mourning text and are exempt only after their individual guards are verified.
+tools/earned_presence_lint.py checks the result from the generated Story.json (rules EP1-EP6, T1-T7, P1).
 """
+import re
 
 SACRIFICE = "sacrifice"
 COMMANDER_BACK = "trickster.commander_back"
@@ -56,10 +58,17 @@ COMMANDER_ABSENT = {
     "jannah.trickster.epilogue.gone": "independent",
     "terendelev.trickster.epilogue.rest": "independent",
     "irabeth.trickster.epilogue.native_tirabade_south": "independent",
+    # Native Queen-slide replacements describe her reign without staging a living Commander (engine-q2 item 5).
+    "galfrey.native.queen_reclaimed": "native_queen",
+    "galfrey.native.queen_reclaimed_twin": "native_queen",
     # Both women dead: two absences behind an answered invitation; nobody is staged at the table.
     "minachiv.ending_both_lost": "independent",
     "minachiv.ending_both_lost_completed": "independent",
 }
+
+# Route pages registered here may be absent from a partial build. When present, every non-mourning text block must
+# carry GUARD, and at least one paragraph must mourn the unreturned sacrifice. EP6 checks the exported page too.
+PARAGRAPH_GUARDED = {"irabeth.return_epilogue"}
 
 # The mythic-Trickster path (Binding context (4)): a canon change must require one of these, directly or through a
 # Derived/Latch/authored key whose every source does. The four Trickster finales exist only on the Trickster path.
@@ -116,9 +125,105 @@ def guarded(scene, derived=None):
     return False
 
 
+def paragraph_guard_errors(scene):
+    """Conservatively treat every non-mourning node text or paragraph as living; no prose heuristics or silent exemptions."""
+    errors = []
+    mourns = False
+    if SACRIFICE in (scene.get("Forbids") or []):
+        errors.append("scene Forbids 'sacrifice', blocking its mourning paragraphs")
+    for node in scene.get("Nodes") or []:
+        blocks = [(node.get("Id"), node)] if (node.get("Text") or "").strip() else []
+        blocks += [("%s/paragraph[%d]" % (node.get("Id"), i), p)
+                   for i, p in enumerate(node.get("Paragraphs") or [])]
+        for label, block in blocks:
+            forbids = block.get("Forbids") or []
+            if SACRIFICE in (block.get("Requires") or []):
+                mourns |= block is not node
+                if COMMANDER_BACK not in forbids or SACRIFICE in forbids:
+                    errors.append("%s: mourning text must Forbid %s and must not Forbid 'sacrifice'"
+                                  % (label, COMMANDER_BACK))
+            elif (SACRIFICE not in forbids
+                  or (block.get("ForbidOverrides") or {}).get(SACRIFICE) != COMMANDER_BACK):
+                errors.append("%s: living text needs Forbid 'sacrifice' + override %s" % (label, COMMANDER_BACK))
+    if not mourns:
+        errors.append("no mourning paragraph Requires 'sacrifice'")
+    return errors
+
+
 # Relationships with two women: each page names which of them is present (Chivarro's alone page plays with Minagho dead),
 # so their pages carry their own death guards and are not given a per-woman Forbid mechanically.
 GROUP_RELATIONSHIPS = ("tirabade", "minagho_chivarro")
+
+# Engine-q5: these departures concern someone else, correspondence, or a dream rather than a physical partner.
+DEPARTURE_EXEMPTIONS = {
+    ("konomi", "konomi.private_departed"): "Her private romance continues by post; her physical presence explicitly forbids this flag.",
+    ("nocticula", "noct.ilvara_exiled"): "Ilvara is the hearing's subject, not Nocticula.",
+    ("dorgelinda", "dorgelinda.ledger.driver_sent_home"): "The convoy driver leaves, not Dorgelinda.",
+    ("kaylessa", "kaylessa.trickster.wasp_sent_home"): "The wasp is dismissed, not Kaylessa.",
+    ("galfrey", "galfrey.trickster.envoy.sent_home"): "The envoy leaves, not Galfrey.",
+    ("iomedae", "iomedae.trickster.sent_away"): "Declines the banner dream; no physical Iomedae has arrived.",
+}
+# Coordinator ruling: a paid return may put her in reach of the scene that completes it.
+# This lifts only the named loss for physical presence; relationship and household guards are unchanged.
+PRESENCE_RETURN_IN_PROGRESS = {
+    "aranka": {
+        "aranka.ran_failure": {
+            "Flag": "aranka.trickster.answered",
+            "Reason": "The paid second verse brings her to Drezen; the physical reckoning earns moral repair.",
+        },
+    },
+}
+PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
+
+
+def presence_relationship(key):
+    match = re.fullmatch(r"(.+?)\.presence(?:\.[a-z0-9_]+)?", key)
+    return match[1] if match else None
+
+
+def presence_guard(relationship):
+    return relationship + ".presence.route_open"
+
+
+def presence_guard_fields(rel, relationship):
+    """Compile only listed returns into presence guards, using existing DerivedForbids."""
+    key = presence_guard(rel)
+    fields = {"Derived": {key: [list(g) for g in PRESENCE_CHAPTERS]}}
+    progress = PRESENCE_RETURN_IN_PROGRESS.get(rel)
+    if not progress:
+        fields["DerivedOpenRoutes"] = {key: [rel]}
+        return fields
+    blockers = [relationship["ClosedFlag"]]
+    forbids = fields["DerivedForbids"] = {}
+    for flag in relationship.get("UnavailableFlags") or []:
+        blocked = key + ".blocked." + flag
+        fields["Derived"][blocked] = [[flag]]
+        blockers.append(blocked)
+        lifts = list(dict.fromkeys(filter(None, [
+            (relationship.get("UnavailableOverrides") or {}).get(flag),
+            (progress.get(flag) or {}).get("Flag"),
+        ])))
+        if lifts:
+            forbids[blocked] = lifts
+    forbids[key] = blockers
+    return fields
+
+
+def integrate_presences(payload):
+    """Physical presences obey route closure, with only documented paid returns in progress."""
+    for name, presence in (payload.get("Presences") or {}).items():
+        rel = presence_relationship(name)
+        if rel not in payload["Relationships"]:
+            continue
+        key = presence_guard(rel)
+        for field, guards in presence_guard_fields(rel, payload["Relationships"][rel]).items():
+            entries = payload.setdefault(field, {})
+            for guard, value in guards.items():
+                if guard in entries and entries[guard] != value:
+                    raise ValueError("Conflicting presence route guard: " + guard)
+                entries[guard] = value
+        if key not in (presence.get("Requires") or []):
+            presence["Requires"] = [*(presence.get("Requires") or []), key]
 
 
 def committed_page(scene, relationship):
@@ -146,13 +251,25 @@ def her_missing_guards(scene, relationship, derived=None):
 
 
 def integrate(payload):
-    """Append the commander_dead guard to every unguarded postwar page (append-only: Forbids and one override).
+    """Guard living postwar pages, validate paragraph exemptions, and remove the two realm slides' Commander guards.
     Returns the guarded scene ids for the build log and the tests."""
+    integrate_presences(payload)
     from storylines import trickster_world   # the route composites not yet bound into the payload
     derived = {**trickster_world.DERIVED, **(payload.get("Derived") or {})}
     added = []
     for s in payload["Scenes"]:
-        if not is_epilogue(s) or s["Id"] in COMMANDER_ABSENT or guarded(s, derived):
+        if not is_epilogue(s):
+            continue
+        # These two realm slides inherited an explicit Commander guard; their subject is Galfrey's reign.
+        if COMMANDER_ABSENT.get(s["Id"]) == "native_queen":
+            s["Forbids"] = [f for f in s.get("Forbids") or [] if f != SACRIFICE]
+            s["ForbidOverrides"] = {f: lift for f, lift in (s.get("ForbidOverrides") or {}).items() if f != SACRIFICE}
+        if s["Id"] in PARAGRAPH_GUARDED:
+            errors = paragraph_guard_errors(s)
+            if errors:
+                raise ValueError("Earned presence: %s: %s" % (s["Id"], "; ".join(errors)))
+            continue
+        if s["Id"] in COMMANDER_ABSENT or guarded(s, derived):
             continue
         # Routes share Forbids lists and ForbidOverrides dicts between pages (**EP); copy before appending.
         overrides = dict(s.get("ForbidOverrides") or {})

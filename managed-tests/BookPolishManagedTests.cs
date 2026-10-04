@@ -56,7 +56,7 @@ internal static class BookPolishManagedTests
         check(Title(lp).StartsWith(expected, StringComparison.Ordinal) && IsLetter(lp) && FirstCue(lp).Contains(expected),
             "E15c letter page is not headed, flagged and introduced as a letter: " + letter.Id + " first cue '" + FirstCue(lp) + "'.");
         check(!IsLetter(vp) && Title(vp) == visit!.Title && !FirstCue(vp).Contains("Letter from"),
-            "E15c a remote visit is styled as a letter: " + visit.Id + ".");
+            "E15c a remote visit is styled as a letter: " + visit!.Id + ".");
         check(!IsLetter(sp) && FirstCue(sp).Contains("A sending from " + Rules.SenderOf(sending!)),
             "E15c a sending is not introduced as one: " + sending!.Id + ".");
         check(Title(pp) == person!.Title && !IsLetter(pp), "E15b in-person page changed title or was styled as a letter: " + person.Id + ".");

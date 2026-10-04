@@ -34,6 +34,7 @@ internal static class JannahTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
         state.Flags.UnionWith(flags);
+        if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -117,7 +118,7 @@ internal static class JannahTricksterTests
 
         // Shape and hooks.
         check(rel.StartedFlag == "jannah.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, DeadKnown })
+              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, DeadKnown, P + "gone" })
               && rel.UnavailableOverrides[Dead] == Returned && rel.UnavailableOverrides[DeadKnown] == Returned
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "alive", "killed", "killed_known" }),
             "Jannah's relationship does not match the plan (killed/killed_known/alive access; the return lifts both deaths).");
@@ -177,7 +178,7 @@ internal static class JannahTricksterTests
         var killed3 = World(story, 3, "trickster", "trickster.ever", Dead, Primed);
         check(Avail(ash, Later(story, killed3, 6)) && ash.TricksterDevice && Rules.IsRemote(ash) && ash.Optional,
             "Trk_Jannah_Killed: the ash is not the optional memory of the blow.");
-        var killed5 = World(story, 5, "trickster.ever", Dead, Primed);
+        var killed5 = World(story, 5, "trickster", "trickster.ever", Dead, Primed);
         check(Avail(yield, killed5) && yield.TricksterDevice && !Avail(letter, World(story, 5, "trickster", "trickster.ever", Dead, "coronation.seen")),
             "Trk_Jannah_Killed: the yield does not wait in her cell, or the living world's letter opens over her death.");
         var claim = yield.Nodes.Single(n => n.Id == "claim").Choices;
@@ -187,8 +188,8 @@ internal static class JannahTricksterTests
         var back = Take(yield, killed5, "claim", 0, Returned);
         check(Reaches(back, Committed), "Trk_Jannah_Killed: no road from the yield to the commit.");
         check(Take(ash, Later(story, killed3, 6), "fall", 1, P + "ash.said_sentence").Has(P + "cost.left_in_ash"), "Trk_Jannah_Killed: the ash costs nothing.");
-        check(Through(yield, World(story, 5, "trickster.ever", Dead, Primed, P + "ash.said_sentence"), "claim", 1).Any(), "Trk_Jannah_Killed: the spoken sentence closes the yield.");
-        check(Avail(yield, World(story, 5, "trickster.ever", DeadKnown, Primed)) && Reaches(Take(yield, World(story, 5, "trickster.ever", DeadKnown, Primed), "claim", 1, Returned), Committed),
+        check(Through(yield, World(story, 5, "trickster", "trickster.ever", Dead, Primed, P + "ash.said_sentence"), "claim", 1).Any(), "Trk_Jannah_Killed: the spoken sentence closes the yield.");
+        check(Avail(yield, World(story, 5, "trickster", "trickster.ever", DeadKnown, Primed)) && Reaches(Take(yield, World(story, 5, "trickster", "trickster.ever", DeadKnown, Primed), "claim", 1, Returned), Committed),
             "Trk_Jannah_KilledKnown: Seelah's knowing closes the road.");
 
         // Trk_Jannah_KilledUnprimed / PathFailed: canon fate stands.
@@ -240,7 +241,7 @@ internal static class JannahTricksterTests
         check(Ch(stories, "caught", 0).Requires.Contains("jannah.quasit_seen") && Ch(stories, "caught", 1).Forbids.Contains("jannah.quasit_seen")
               && story.SeenCues["jannah.quasit_seen"].SequenceEqual(new[] { "da671fced713af6419502ca50bdeb94c" }),
             "The shared catch remembers a quasit attempt the Commander may not have seen (KnightCamp Cue_0017).");
-        var visitorWorld = World(story, 5, "trickster.ever", Returned, P + "alive.caught_her", P + "alive.visitors_way", C + "forms");
+        var visitorWorld = World(story, 5, "trickster", "trickster.ever", Returned, P + "alive.caught_her", P + "alive.visitors_way", C + "forms");
         check(Pages(houndheart, visitorWorld).Contains("told_visitor") && !Pages(houndheart, visitorWorld).Contains("told"),
             "Houndheart tells a visitor that the two of them told the camp together.");
         // Q6 r5 (CAN): no invented Houndheart weather, wagons or fire anywhere in the living route.
@@ -276,7 +277,7 @@ internal static class JannahTricksterTests
         var freeze = walls.Nodes.Single(n => n.Id == "freeze").Choices;
         check(freeze.Count == 3 && freeze.All(c => c.Set.Length == 1), "Trk_Jannah_Wall: the pivot is not three answers, each recorded.");
         var walled = Later(story, Take(walls, hh, "freeze", 2, C + "walls.watched"), 24);
-        check(Avail(challenge, walled) && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", C + "walls")),
+        check(Avail(challenge, walled) && Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", C + "walls")),
             "Trk_Jannah_Spine: the challenge does not follow the wall, or the war's end has no late yes.");
 
         // Trk_Jannah_Commit: her public rematch decides only her record; afterwards she chooses; the Commander's public yield.
@@ -303,7 +304,7 @@ internal static class JannahTricksterTests
         check(Avail(morning, nighted), "Trk_Jannah_Morning: the morning does not follow the night.");
 
         // Trk_Jannah_Lie: the false catch named at the challenge; kept, she fights and then says no; the circle in the yard after.
-        var liar = World(story, 5, "trickster.ever", Returned, "jannah.started", FirstLoss, P + "alive.false_blood",
+        var liar = World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", FirstLoss, P + "alive.false_blood",
                          "trickster.secret.jannah_false_blood", C + "forms", C + "houndheart", C + "walls");
         check(Avail(challenge, liar) && Program.Walk(challenge, liar).Any(r => r.Has(P + "confessed") && r.Has(Committed)),
             "Trk_Jannah_Lie: confessing does not lead to the bout and her yes.");
@@ -324,7 +325,7 @@ internal static class JannahTricksterTests
             "Trk_Jannah_Lie: the circle is not a yes (walked into with the truth) or a parting (left).");
         foreach (var (cause, index) in new[] { (P + "threw_the_bout", 1), (P + "shamed_her", 2), (P + "refused_the_yield", 3) })
         {
-            var failed = World(story, 5, "trickster.ever", Returned, P + "declined", cause, C + "walls");
+            var failed = World(story, 5, "trickster", "trickster.ever", Returned, P + "declined", cause, C + "walls");
             check(Avail(chalk, failed) && Through(chalk, failed, "open", index).All(r => r.Has(Committed)),
                 "Trk_Jannah_Circle: no later yes after " + cause);
         }
@@ -334,10 +335,10 @@ internal static class JannahTricksterTests
         // Pages: effect-free Chapter 6 pages.
         check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null))),
             "The pages are not four effect-free Chapter 6 pages.");
-        check(Avail(pages.Single(p => p.Id == P + "epilogue.first_blood"), World(story, 6, "trickster.ever", Committed))
-              && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster.ever", Committed, C + "walls"))
-              && Avail(pages.Single(p => p.Id == P + "epilogue.declined"), World(story, 6, "trickster.ever", P + "declined"))
-              && Avail(pages.Single(p => p.Id == P + "epilogue.gone"), World(story, 6, "trickster.ever", P + "gone", Closed)),
+        check(Avail(pages.Single(p => p.Id == P + "epilogue.first_blood"), World(story, 6, "trickster", "trickster.ever", Committed))
+              && !Avail(pages.Single(p => p.Id == P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Committed, C + "walls"))
+              && Avail(pages.Single(p => p.Id == P + "epilogue.declined"), World(story, 6, "trickster", "trickster.ever", P + "declined"))
+              && Avail(pages.Single(p => p.Id == P + "epilogue.gone"), World(story, 6, "trickster", "trickster.ever", P + "gone", Closed)),
             "The pages do not follow the commit, the late yes, her no and her leaving.");
 
         // Reactions: Irabeth and the King (the allocated pair), and Seelah (a named stake), each behind its guard.
@@ -354,11 +355,11 @@ internal static class JannahTricksterTests
         // Q6 r5 (CAN): Irabeth's appeal account is the Condemned history only (ktc_DeserterJoins/Cue_0013-0014).
         check(S(P + "react.irabeth_wagon").Requires.Contains("jannah.condemned") && S(P + "react.irabeth_wagon_free").Forbids.Contains("jannah.condemned"),
             "Irabeth recalls an appeal Jannah never made.");
-        var seelahKnown = World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself");
+        var seelahKnown = World(story, 5, "trickster", "trickster.ever", Returned, DeadKnown, C + "seelah.herself");
         check(Avail(S(P + "react.seelah_known"), seelahKnown) && !Avail(S(P + "react.seelah_unknown"), seelahKnown)
-              && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.kept"))
-              && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself", "seelah_dead"))
-              && Avail(S(P + "react.seelah_known"), World(story, 5, "trickster.ever", Returned, DeadKnown, C + "seelah.herself", "seelah_dead", "seelah.trickster.returned")),
+              && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster", "trickster.ever", Returned, DeadKnown, C + "seelah.kept"))
+              && !Avail(S(P + "react.seelah_known"), World(story, 5, "trickster", "trickster.ever", Returned, DeadKnown, C + "seelah.herself", "seelah_dead"))
+              && Avail(S(P + "react.seelah_known"), World(story, 5, "trickster", "trickster.ever", Returned, DeadKnown, C + "seelah.herself", "seelah_dead", "seelah.trickster.returned")),
             "Seelah speaks before Jannah faced her, over her own death, or not after her own return.");
 
         // The Ledger secret: the false catch, unknown to her until she names it.
@@ -381,13 +382,13 @@ internal static class JannahTricksterTests
             "The courtship is missing beats, or a beat is not a Trickster-path scene.");
         var deep = new[]
         {
-            World(story, 5, "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls",
+            World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls",
                   C + "mivon", C + "mivon.truth"),
-            World(story, 5, "trickster.ever", Returned, "jannah.started", "jannah.joined", "jannah.condemned", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls"),
-            World(story, 5, "trickster.ever", Returned, "jannah.started", P + "alive.posted", P + "cost.story_lost", P + "cost.posting", C + "forms"),
-            World(story, 5, "trickster.ever", Returned, "jannah.started", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls",
+            World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", "jannah.joined", "jannah.condemned", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls"),
+            World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", P + "alive.posted", P + "cost.story_lost", P + "cost.posting", C + "forms"),
+            World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", P + "alive.caught_her", FirstLoss, C + "forms", C + "houndheart", C + "walls",
                   Committed, P + "bout.commander_first", P + "circle_night"),
-            World(story, 5, "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls",
+            World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", Dead, "jannah.dead.latched", Primed, P + "cost.temple_scar", FirstLoss, C + "forms", C + "houndheart", C + "walls",
                   Committed, P + "bout.her_first", P + "cost.public_yield", P + "circle_night"),
         };
         foreach (var beat in courtship)
@@ -400,8 +401,8 @@ internal static class JannahTricksterTests
         check(!letter.Nodes.Single(n => n.Id == "joined").Text.Contains("parole", StringComparison.Ordinal),
             "The joined letter invents a parole term.");
         // Quality pass Q6 (BEL): the night names a lost record only if she lost one.
-        var nightLost = World(story, 5, "trickster.ever", Returned, "jannah.started", Committed, P + "bout.commander_first", FirstLoss);
-        var nightKept = World(story, 5, "trickster.ever", Returned, "jannah.started", Committed, P + "bout.her_first", P + "cost.public_yield");
+        var nightLost = World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", Committed, P + "bout.commander_first", FirstLoss);
+        var nightKept = World(story, 5, "trickster", "trickster.ever", Returned, "jannah.started", Committed, P + "bout.her_first", P + "cost.public_yield");
         HashSet<string> NightPages(Snapshot w) { var seen = new HashSet<string>(); Program.Walk(night, w, (page, _) => seen.Add(page)); return seen; }
         check(Avail(night, nightLost) && NightPages(nightLost).Contains("record_lost") && !NightPages(nightLost).Contains("record_kept")
               && Avail(night, nightKept) && NightPages(nightKept).Contains("record_kept") && !NightPages(nightKept).Contains("record_lost")
@@ -450,7 +451,7 @@ internal static class JannahTricksterTests
         var coda = S("jannah.lastcall.page");
         check(coda.Requires.Contains(Committed) && coda.RequiresAnyGroups.Length == 0 && coda.Forbids.Contains(P + "gone"),
             "Her Last Call coda does not Require her committed flag.");
-        check(Avail(coda, World(story, 6, "trickster.ever", "lastcall.active", Committed, C + "walls")),
+        check(Avail(coda, World(story, 6, "trickster", "trickster.ever", "lastcall.active", Committed, C + "walls")),
             "Her Last Call coda does not play for a committed Jannah.");
         foreach (var (why, flags) in new (string, string[])[]
         {
@@ -461,12 +462,12 @@ internal static class JannahTricksterTests
             ("killed at the cage, Seelah told", new[] { DeadKnown, "jannah.dead.latched" }),
             ("unfinished after the wall", new[] { C + "walls" }),
         })
-            check(!Avail(coda, World(story, 6, new[] { "trickster.ever", "lastcall.active" }.Concat(flags).ToArray())),
+            check(!Avail(coda, World(story, 6, new[] { "trickster", "trickster.ever", "lastcall.active" }.Concat(flags).ToArray())),
                 "Her Last Call coda plays although she is " + why + ".");
         // Played through: each muster refusal, then its chalk-circle yes, then Chapter 6 with Last Call (declined stays set).
         foreach (var (cause, index) in new[] { (P + "held_the_lie", 0), (P + "threw_the_bout", 1), (P + "shamed_her", 2), (P + "refused_the_yield", 3) })
         {
-            var before = cause == P + "held_the_lie" ? Later(story, no, 72) : World(story, 5, "trickster.ever", Returned, P + "declined", cause, C + "walls");
+            var before = cause == P + "held_the_lie" ? Later(story, no, 72) : World(story, 5, "trickster", "trickster.ever", Returned, P + "declined", cause, C + "walls");
             foreach (var reconciled in Through(chalk, before, "open", index))
             {
                 var end = World(story, 6, reconciled.Flags.Where(f => f != "chapter_later").Concat(new[] { "lastcall.active" }).ToArray());

@@ -676,3 +676,13 @@ _foresight.echo("devarra", P + "flight.pact", "cover",
         requires=(_foresight.GATE_BELIEVED,)),
     sense="smell", wrong="snow, straw and cracked eggs in a cave of water and bone",
     misstep="a wrong hour kept: the ambush held for a cue that never comes", cost=("Finances", -100))
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'devarra.trickster.dead.woken',
+    'devarra.trickster.flight.eggs',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

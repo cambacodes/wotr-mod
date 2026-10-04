@@ -117,7 +117,7 @@ internal static class NurahTricksterTests
                   && s.Chapters.SequenceEqual(new[] { 5 }) && s.TricksterDevice && s.TricksterState == "prison" && s.Forbids.Contains("nurah.ran_off"),
                 "A Chapter 5 cell twin is malformed: " + s.Id);
         var price = rumour.Nodes.Single(n => n.Id == "offer").Choices;
-        check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade.Amount == -500 && price[1].Mythic == "PlayerIsTrickster",
+        check(price[0].Crusade?.Resource == "Finances" && price[0].Crusade?.Amount == -500 && price[1].Mythic == "PlayerIsTrickster",
             "Ramisa's price lost its cost.");
 
         // Trk_Nurah_Prison: the pardon in person, primed and lied into the ledger; the night out a day later.
@@ -134,7 +134,7 @@ internal static class NurahTricksterTests
         check(Rules.Available(story, pardonR, recruited) && !Rules.Available(story, pardon, recruited), "Trk_Nurah_PrisonRecruited.");
 
         // Trk_Nurah_NightOut / NightOutRefused: the return beat and her hard no.
-        var primed = World(story, 3, "trickster.ever", "nurah.prison", "nurah.trickster.primed", "nurah.trickster.cost.ledger_lie");
+        var primed = World(story, 3, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.primed", "nurah.trickster.cost.ledger_lie");
         check(Rules.Available(story, night, primed), "Trk_Nurah_NightOut: unavailable.");
         var chaos = After(night, primed, "start", 1);
         check(chaos.Has("nurah.trickster.released") && chaos.Has("nurah.trickster.accepted") && chaos.Has("nurah.trickster.temper_chaos"),
@@ -147,7 +147,7 @@ internal static class NurahTricksterTests
                 .Any(s => Rules.Available(story, s, Later(story, owned, 500))), "A Nurah scene survives her ownership refusal.");
 
         // Trk_Nurah_PrisonProofs / PrisonTerms / PrisonTermsRefused.
-        var released = World(story, 3, "trickster.ever", "nurah.prison", "nurah.trickster.released", "nurah.trickster.accepted");
+        var released = World(story, 3, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.released", "nurah.trickster.accepted");
         check(Rules.Available(story, pProofs, released) && !Rules.Available(story, proofs, released), "Trk_Nurah_PrisonProofs.");
         var seen = After(pProofs, released, "start", 1);
         check(seen.Has("nurah.trickster.proofs_seen") && seen.Has("nurah.trickster.cost.signed_proofs"), "Trk_Nurah_PrisonProofs: flags.");
@@ -187,13 +187,13 @@ internal static class NurahTricksterTests
         check(!Rules.Available(story, rumour, executed) && !Rules.Available(story, courier, executed), "Trk_Nurah_Executed: availability (no raise).");
         var audience = After(rumour, executed, "offer", 1);
         check(audience.Has("nurah.trickster.cost.ramisa_audience") && !audience.Has("nurah.trickster.cost.ramisa_fee"), "Trk_Nurah_Executed: flags.");
-        var dead = World(story, 4, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism");
+        var dead = World(story, 4, "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism");
         check(!Rules.Available(story, rumour, dead), "Trk_Nurah_AfterFailure: the market deal without live Trickster power.");
 
         // Trk_Nurah_BillOfSale / CamelliaBill.
         foreach (var camellia in new[] { false, true })
         {
-            var w = World(story, 4, "trickster.ever", "nurah.trickster.primed", "nurah.trickster.larva_rumour", "nurah.trickster.cost.ramisa_audience",
+            var w = World(story, 4, "trickster", "trickster.ever", "nurah.trickster.primed", "nurah.trickster.larva_rumour", "nurah.trickster.cost.ramisa_audience",
                           "nurah.dead_drezen", "nurah.killing_mechanism");
             if (camellia) { w.Flags.Add("nurah.dead_camellia"); w.Times["nurah.dead_camellia"] = w.Hour - 200; }
             check(!Rules.Available(story, bill, w), "Trk_Nurah_BillOfSale: the retired bill still opens.");
@@ -240,7 +240,7 @@ internal static class NurahTricksterTests
             "Trk_Nurah_LateCourier: the returned Camellia's card costs the late-dead history a third delivery.");
 
         // Trk_Nurah_DeadProofs / DeadTerms / DeadTermsRefused: in person, at the raised presence.
-        var returned = World(story, 5, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned",
+        var returned = World(story, 5, "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned",
                              "nurah.trickster.released", "nurah.trickster.accepted");
         check(Rules.Available(story, proofs, returned) && !Rules.Available(story, terms, returned), "Trk_Nurah_DeadProofs.");
         var deadSeen = Later(story, After(proofs, returned, "proofs", 0), 72);
@@ -450,27 +450,27 @@ internal static class NurahTricksterTests
         check(lateRanEnd.Has("nurah.trickster.coda_alive") && ending.Has("nurah.trickster.coda_alive") && !lateRanEnd.Has("nurah.complete"),
             "A late branch does not reach the coda key.");
         // Round 5 (INT): committed in the cell, then executed natively: no living coda; bought back: the coda again.
-        var wedThenExecuted = World(story, 6, "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.dead_drezen", "nurah.killing_mechanism");
+        var wedThenExecuted = World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.dead_drezen", "nurah.killing_mechanism");
         check(!wedThenExecuted.Has("nurah.trickster.coda_alive"), "An executed Nurah gets the Last Call coda.");
         var wedThenBought = Program.Copy(wedThenExecuted); wedThenBought.Flags.Add("nurah.trickster.returned"); Rules.Complete(story, wedThenBought);
         check(wedThenBought.Has("nurah.trickster.coda_alive")
-              && World(story, 6, "trickster.ever", "nurah.complete", "nurah.prison").Has("nurah.trickster.coda_alive"), "A living committed Nurah loses the coda.");
+              && World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.prison").Has("nurah.trickster.coda_alive"), "A living committed Nurah loses the coda.");
         var refusedLate = Program.Walk(terms, deadSeen).First(r => r.Has("nurah.closed"));
         var refusedEnd = Program.Copy(refusedLate); refusedEnd.Chapter = 6; Rules.Complete(story, refusedEnd);
         check(!refusedEnd.Has("nurah.trickster.coda_alive") && !refusedEnd.Has("nurah.complete"), "A refusal reaches the coda key.");
         // Sol round 2 (TRK): proofs seen in the cell and then an execution never commit her, unless she is bought back.
-        var executedAfterProofs = World(story, 6, "trickster.ever", "nurah.trickster.released", "nurah.trickster.accepted",
+        var executedAfterProofs = World(story, 6, "trickster", "trickster.ever", "nurah.trickster.released", "nurah.trickster.accepted",
                                         "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism");
         var epMargin = S("nurah.trickster.epilogue.the_margin");
         check(!executedAfterProofs.Has("nurah.trickster.late_committed") && !Rules.Available(story, epCommit, executedAfterProofs)
-              && !Rules.Available(story, epRefused, World(story, 6, "trickster.ever", "nurah.trickster.proofs_seen", "nurah.closed", "nurah.dead_drezen")),
+              && !Rules.Available(story, epRefused, World(story, 6, "trickster", "trickster.ever", "nurah.trickster.proofs_seen", "nurah.closed", "nurah.dead_drezen")),
             "An executed Nurah is narrated alive without the bargain.");
-        var boughtBack6 = World(story, 6, "trickster.ever", "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism",
+        var boughtBack6 = World(story, 6, "trickster", "trickster.ever", "nurah.trickster.proofs_seen", "nurah.dead_drezen", "nurah.killing_mechanism",
                                 "nurah.trickster.returned");
         // Round 3 (INT): proofs with her terms never answered are a published book, not a romance; only the late branches,
         // which can never reach her in-person terms, commit on the page.
         var epUnanswered = S("nurah.trickster.epilogue.unanswered");
-        var cell6 = World(story, 6, "trickster.ever", "nurah.prison", "nurah.trickster.released", "nurah.trickster.proofs_seen");
+        var cell6 = World(story, 6, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.released", "nurah.trickster.proofs_seen");
         foreach (var w in new[] { boughtBack6, cell6 })
             check(!w.Has("nurah.trickster.late_committed") && !Rules.Available(story, epCommit, w) && Rules.Available(story, epUnanswered, w),
                 "Unanswered terms are decided as a romance.");
@@ -478,8 +478,8 @@ internal static class NurahTricksterTests
             "The unanswered page plays for an executed Nurah or a late branch.");
         // Round 3 (CAN): no postwar reunion after an unsurvived sacrifice; a bereaved page instead; the return keeps it.
         var epBereaved = S("nurah.trickster.epilogue.bereaved");
-        var lost = World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off", "sacrifice");
-        var back = World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off", "sacrifice", "ending.trickster");
+        var lost = World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.ran_off", "sacrifice");
+        var back = World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.ran_off", "sacrifice", "ending.trickster");
         check(!Rules.Available(story, epMargin, lost) && Rules.Available(story, epBereaved, lost)
               && Rules.Available(story, epMargin, back) && !Rules.Available(story, epBereaved, back), "The sacrifice reunites or mourns wrongly.");
         var lateLost = Program.Copy(ending); lateLost.Flags.Add("sacrifice"); Rules.Complete(story, lateLost);
@@ -490,12 +490,12 @@ internal static class NurahTricksterTests
               && bylines.Where(q => !q.Requires.Contains("nurah.trickster.cost.coauthor")).All(q => q.Forbids.Contains("nurah.trickster.cost.coauthor")),
             "The first-page byline contradicts the co-author cover.");
         // Sol round 2 (INT): an in-play commitment has its own page, without Last Call; one publication date throughout.
-        foreach (var w in new[] { World(story, 6, "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.prison"),
-                                  World(story, 6, "trickster.ever", "nurah.complete", "nurah.ran_off"),
-                                  World(story, 6, "trickster.ever", "nurah.complete", "nurah.dead_drezen", "nurah.trickster.returned") })
+        foreach (var w in new[] { World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.trickster.released", "nurah.prison"),
+                                  World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.ran_off"),
+                                  World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.dead_drezen", "nurah.trickster.returned") })
             check(Rules.Available(story, epMargin, w) && !Rules.Available(story, epCommit, w) && !w.Has("trickster.lastcall.active"),
                 "A committed Nurah has no page of her own.");
-        check(!Rules.Available(story, epMargin, World(story, 6, "trickster.ever", "nurah.complete", "nurah.dead_drezen")),
+        check(!Rules.Available(story, epMargin, World(story, 6, "trickster", "trickster.ever", "nurah.complete", "nurah.dead_drezen")),
             "The committed page narrates an executed Nurah.");
         check(epCommit.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
               && epMargin.Nodes[0].Text.Contains("Two years after the Threshold", StringComparison.Ordinal)
@@ -524,7 +524,7 @@ internal static class NurahTricksterTests
               && callChoices.Single(c => c.Requires.Contains("nurah.trickster.cost.bill_in_your_name")).Set.Contains("trickster.lastcall.nurah_story_sold"),
             "The duplicate bill's call-in does not sell the story on screen.");
         // Primed in Chapter 3, released too late for the Chapter 3 reply: the Chapter 5 reply picks it up.
-        var primedRan5 = World(story, 5, "trickster.ever", "nurah.ran_off", "nurah.trickster.primed", "nurah.trickster.cost.ghostwritten");
+        var primedRan5 = World(story, 5, "trickster", "trickster.ever", "nurah.ran_off", "nurah.trickster.primed", "nurah.trickster.cost.ghostwritten");
         check(!Rules.Available(story, reply, primedRan5) && Rules.Available(story, replyLate, primedRan5), "A Chapter 3 dedication has no Chapter 5 reply.");
 
         // Sol quality pass (TRK): the early dedication pays a printer only when the player chooses it; the reply tells which.
@@ -544,7 +544,8 @@ internal static class NurahTricksterTests
 
         // Sol quality pass (CAN/INT): Chapter 5 cell twins, reached only through the unhidden actor at her cell.
         var cell5 = World(story, 5, "trickster", "trickster.ever", "nurah.prison");
-        check(Rules.PresenceWanted(cellPresence, cell5) && !Rules.Available(story, lateCell[0], cell5), "The cell twin opens without her actor.");
+        check(!Rules.PresenceWanted(cellPresence, cell5) && !Rules.Available(story, lateCell[0], cell5),
+            "The blocked prison route stages an RRT presence or opens without the native actor.");
         cell5.AvailableContacts.Add("f999fc37ddb225640b7f98c0a05d6948");
         check(Rules.Available(story, lateCell[0], cell5) && !Rules.Available(story, pardon, cell5), "Trk_Nurah_Prison5: the late pardon.");
         var pardoned5 = After(lateCell[0], cell5, "read", 0);
@@ -569,25 +570,25 @@ internal static class NurahTricksterTests
             "Nurah reactions: wrong reactors or delivery.");
         // Sol quality pass (INT): a Camellia killed by the Commander and back on her own route is the veiled copy at Fye's, with no
         // companion hub, so her lines come as cards; a Camellia raised from a retained death keeps her companion-hub lines.
-        var veiledSupper = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
+        var veiledSupper = World(story, 5, "trickster", "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
                                  "nurah.trickster.larva_rumour", "camellia.killed", "camellia.trickster.returned");
         check(Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), veiledSupper)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_supper"), veiledSupper)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_market"), veiledSupper), "The veiled Camellia's supper card.");
-        var raisedCamellia = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
-                                   "nurah.trickster.larva_rumour", "camellia.dead", "camellia.trickster.returned");
+        var raisedCamellia = World(story, 5, "trickster", "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
+                                   "nurah.trickster.larva_rumour", "camellia.trickster.returned");
         check(Rules.Available(story, S("nurah.trickster.react.camellia_supper"), raisedCamellia)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), raisedCamellia), "The raised Camellia's supper line.");
-        var plainSupper = World(story, 5, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned", "nurah.trickster.larva_rumour");
+        var plainSupper = World(story, 5, "trickster", "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned", "nurah.trickster.larva_rumour");
         check(!Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), plainSupper), "A living Camellia sends a card.");
         foreach (var id in new[] { "pardon", "market", "supper", "draft" })
             check(S("nurah.trickster.react.camellia_veiled_" + id).Requires.Contains("camellia.killed")
                   && S("nurah.trickster.react.camellia_veiled_" + id).Requires.Contains("camellia.trickster.returned"), "A card without the veiled state: " + id);
-        var raisedWorld = World(story, 5, "trickster.ever", "nurah.dead_drezen", "nurah.trickster.returned", "irabeth_dead");
+        var raisedWorld = World(story, 5, "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.trickster.returned", "irabeth_dead");
         check(!Rules.Available(story, S("nurah.trickster.react.irabeth_raised"), raisedWorld), "A dead Irabeth reacts.");
         raisedWorld.Flags.Add("irabeth.trickster.returned");
         check(Rules.Available(story, S("nurah.trickster.react.irabeth_raised"), raisedWorld), "A returned Irabeth is silent.");
-        var supper = World(story, 4, "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned", "nurah.trickster.larva_rumour");
+        var supper = World(story, 4, "trickster", "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned", "nurah.trickster.larva_rumour");
         check(Rules.Available(story, S("nurah.trickster.react.camellia_supper"), supper) && !Rules.Available(story, S("nurah.trickster.react.camellia_market"), supper),
             "Camellia's supper variant is wrong.");
         foreach (var r in reactions)
@@ -627,7 +628,7 @@ internal static class NurahTricksterTests
                                                     && Rules.Available(story, sc, w)).Select(sc => sc.Id).ToArray();
                 check(open.Length == 0, "Closed: dead, no raise: Chapter " + ch + " still opens " + string.Join(", ", open));
             }
-            var end = World(story, 6, deaths.Concat(new[] { "trickster.ever" }).ToArray());
+            var end = World(story, 6, deaths.Concat(new[] { "trickster", "trickster.ever" }).ToArray());
             check(!end.Has("nurah.trickster.coda_alive") && !end.Has("nurah.trickster.late_committed"), "Closed: dead, no raise: a coda key holds.");
             var alivePages = story.Scenes.Where(sc => sc.Relationship == "nurah" && sc.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                                                  && Rules.Available(story, sc, end)).Select(sc => sc.Id).ToArray();
@@ -637,13 +638,13 @@ internal static class NurahTricksterTests
         check(DeadRetired.All(id => S(id).Forbids.Contains("chapter_later")), "The Ramisa revival is not retired by gating.");
         // Polish (2026-10-02): the closure page names the player's own choice and is never shown for a living or bought-back Nurah.
         var unwritten = S("nurah.trickster.epilogue.unwritten");
-        check(!Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.prison"))
-              && !Rules.Available(story, unwritten, World(story, 6, "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned"))
+        check(!Rules.Available(story, unwritten, World(story, 6, "trickster", "trickster.ever", "nurah.prison"))
+              && !Rules.Available(story, unwritten, World(story, 6, "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.trickster.returned"))
               && !Rules.Available(story, unwritten, World(story, 6, "nurah.dead_drezen", "nurah.killing_mechanism"))
               && unwritten.Nodes[0].Paragraphs.Count == 10, "The closure page opens outside a Trickster death world.");
         // The pardon on the closure page is corrected only if she lived to correct it (prison.night_out), with Irabeth alive or dead.
         string Rendered(params string[] extra) => string.Join(" ", Rules.VisibleParagraphs(unwritten.Nodes[0], World(story, 6, new[] {
-            "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.executed_from_prison", "nurah.trickster.cost.ledger_lie" }
+            "trickster", "trickster.ever", "nurah.dead_drezen", "nurah.killing_mechanism", "nurah.executed_from_prison", "nurah.trickster.cost.ledger_lie" }
             .Concat(extra).ToArray())).Select(par => par.Text));
         var unread = Rendered();
         var corrected = Rendered("nurah.trickster.prison.night_out", "nurah.trickster.released");

@@ -24,7 +24,7 @@ internal static class GalfreyQueenSlideTests
                 ("dead, no return", new[] { "trickster", "trickster.ever", "galfrey.dead" }, false),
                 ("off the Trickster path", new[] { "galfrey.dead", "galfrey.trickster.returned", "galfrey.trickster.crown_reclaimed" }, false),
                 ("closed", new[] { "trickster", "trickster.ever", "galfrey.dead", "galfrey.trickster.returned", "galfrey.trickster.crown_reclaimed", "galfrey.closed" }, false),
-                ("the Commander dead in the Wound", new[] { "trickster", "trickster.ever", "galfrey.dead", "galfrey.trickster.returned", "galfrey.trickster.crown_reclaimed", "sacrifice" }, false) })
+                ("the Commander dead in the Wound", new[] { "trickster", "trickster.ever", "galfrey.dead", "galfrey.trickster.returned", "galfrey.trickster.crown_reclaimed", "sacrifice" }, true) })   // the slide never stages the Commander (COMMANDER_ABSENT): her reign outlives an unreturned sacrifice
             {
                 var state = new Snapshot { Chapter = 6, Hour = 30000 };
                 state.Flags.UnionWith(flags);

@@ -20,6 +20,8 @@ internal static class Program
     {
         Chapter = original.Chapter, Hour = original.Hour, Area = original.Area,
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
+        RestSpent = new Dictionary<string, int>(original.RestSpent),
+        CrusadeResources = original.CrusadeResources == null ? null : new Dictionary<string, int>(original.CrusadeResources),
         AvailableContacts = new HashSet<string>(original.AvailableContacts)
     };
 
@@ -226,6 +228,12 @@ internal static class Program
     {
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        if (args.Contains("--wenduag-echo"))
+        {
+            WenduagTricksterTests.Run(story, Check);
+            WenduagEchoRulesTests.Run(story, Check);
+            return;
+        }
         NurahContactEvidenceTests.Run(Check);
         if (args.Contains("--iomedae"))
         {
@@ -305,6 +313,7 @@ internal static class Program
         MailbagTests.Run(Check);
         BookTests.Run(story, Check);
         HouseholdTests.Run(story, Check);
+        HouseholdEngineTests.Run(story, Check);
         ArueshalaeBranchTests.Run(story, Check);
         PrerequisiteGroupsTests.Run(Check);
         TargonaContinuation();
@@ -345,13 +354,13 @@ internal static class Program
         var known = new HashSet<string>(story.Scenes.Select(s => s.Id)
             .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag }))
             .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
-            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
+            .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
-                Check(known.Contains(flag) || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived",
+                Check(known.Contains(flag) || Rules.WenduagEchoRuntime.Contains(flag) || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived",
                     "Unknown condition " + flag + " in " + scene.Id);
             foreach (var node in scene.Nodes)
                 Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
@@ -421,6 +430,7 @@ internal static class Program
         NativeCostTests.Run(Check);
         EntryEffectTests.Run(Check);
         PresenceTests.Run(Check);
+        ContactWindowTests.Run(Check);
         NativeEpilogueTests.Run(Check);
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
@@ -561,6 +571,7 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) ElyankaTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) MelazmeraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) WenduagTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) WenduagEchoRulesTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
@@ -622,6 +633,8 @@ internal static class Program
         {
             if (playedContinuations.Contains(scene.Id)) continue;
             var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
+            if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
+                state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
             if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
             state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
@@ -649,6 +662,11 @@ internal static class Program
             if (scene.Id.StartsWith("seelah.late_", StringComparison.Ordinal))
                 state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
             if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
+            // Prerequisite-only fixtures still need real temporal evidence for held contact witnesses.
+            var contacts = scene.AdditionalContactUnits.Append(scene.ContactUnit);
+            foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+                .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
+                state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
             Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
             if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
                 Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
@@ -720,6 +738,7 @@ internal static class Program
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
         EarnedPresenceTests.Run(story, Check);
+        EngineQ5Tests.Run(story, Check);
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
         CurrentPathTests.Run(Check);
         CurrentPathTests.RunStory(story, Check);

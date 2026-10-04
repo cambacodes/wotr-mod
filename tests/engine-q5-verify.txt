@@ -1,0 +1,1538 @@
+# rrt_verify report (development): 2855 scenes, 47 relationships, 717 native bindings
+
+## Validate port (structural subset of Rules.Validate): 0 errors
+
+## A. Flags referenced with NO producer (no choice Set, no scene completion, not native/derived): 3
+  - aivu.closed                                   used 22 x {'Forbids': 22}  e.g. aivu.a_city_with_wings
+  - ember.closed                                  used 27 x {'Forbids': 27}  e.g. ember.paper_bird
+  - mielarah.expelled                             used 1 x {'UnavailableFlags': 1}  e.g. rel:mielarah
+  => of which REQUIRED somewhere (hard dead gates): 0 []
+  Relationship Closed/Committed flags that NOTHING sets (route can never close/commit; journal objective never completes): ['ember.ClosedFlag=ember.closed', 'aivu.ClosedFlag=aivu.closed', 'longcon.ClosedFlag=longcon.abandoned', 'lastcall.ClosedFlag=trickster.lastcall.closed', 'household.ClosedFlag=household.closed']
+
+## B. Scenes unreachable on EVERY mythic path (fixed point, chaptered): 390 of 2855
+  [aivu] 3
+     - aivu.ending_power_changed                               requires:aivu.started
+     - aivu.ending_dragon_distance                             requires:aivu.started
+     - aivu.ending_swarm_loss                                  requires:aivu.started
+  [anevia] 1
+     - anevia.trickster.gone.commit_letter                     chapter
+  [aranka] 9
+     - aranka.trickster.verse.duet_yard                        chapter
+     - aranka.trickster.verse.encore_yard                      chapter
+     - aranka.trickster.verse.third_verse_yard                 chapter
+     - aranka.trickster.touring.arrives_yard                   chapter
+     - aranka.trickster.verse.duet_yard_late                   chapter
+     - aranka.trickster.verse.encore_yard_late                 chapter
+     - aranka.trickster.verse.third_verse_yard_late            chapter
+     - aranka.trickster.touring.arrives_yard_late              chapter
+     - aranka.trickster.failure.reckoning_yard                 chapter
+  [areelu] 3
+     - areelu.trickster.react.seelah_objects                   forbid-forced:trickster.ever
+     - areelu.trickster.report.afterword                       forbid-forced:trickster.ever
+     - areelu.trickster.finale.not_burned                      requires:iomedae.appointment_kept
+  [arsinoe] 1
+     - arsinoe_ending_swarm                                    requires:swarm
+  [arueshalae] 38
+     - arueshalae.trickster.dead.starving                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.returned.aftertaste                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.insurance                          CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.diagnosis                     CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.late_referral                 CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.second_opinion                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.reunion                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.reunion_letter                chapter
+     - arueshalae.trickster.evil.reunion_city                  chapter
+     - arueshalae.trickster.evil.reunion_city_yard             chapter
+     - arueshalae.trickster.evil.terms                         CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.terms_yard                    chapter
+     - arueshalae.trickster.terms_again                        CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.window                        CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.window_yard                   chapter
+     - arueshalae.trickster.epilogue.kept_fallen               CHAPTER-TRAP (reachable if chapters ignored) / requires:arueshalae.trickster.reunited
+     - arueshalae.trickster.epilogue.ally                      CHAPTER-TRAP (reachable if chapters ignored) / requires:arueshalae.trickster.ally
+     - arueshalae.trickster.react.sosiel_fed                   CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.react.lann_prisoner                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.react.lann_deal                    CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.react.sosiel_evil                  CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.react.sosiel_gift                  CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.returned.counting                  CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.sergeant                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - arueshalae.trickster.evil.sergeant_yard                 chapter
+     ... +13 more
+  [camellia] 1
+     - camellia.trickster.killed.performance_letter            chapter
+  [delamere] 2
+     - delamere.trickster.react.ulbrig_huntress                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - delamere.trickster.react.woljif_limp                    CHAPTER-TRAP (reachable if chapters ignored) / chapter
+  [devarra] 5
+     - devarra.trickster.dead.lair_story                       chapter
+     - devarra.trickster.dead.setup                            chapter
+     - devarra.trickster.dead.storytellers_version             chapter
+     - devarra.trickster.dead.woken                            chapter
+     - devarra.react.storyteller.sold                          chapter
+  [galfrey] 28
+     - galfrey.trickster.epilogue.alive_buried                 requires:iomedae.trickster.buried_alive
+     - galfrey.trickster.after.first_morning_stall             chapter
+     - galfrey.trickster.kitrane.coffin_stall                  chapter
+     - galfrey.trickster.kitrane.elixir_stall                  chapter
+     - galfrey.trickster.kitrane.hands_stall                   chapter
+     - galfrey.trickster.kitrane.hulrun_stall                  chapter
+     - galfrey.trickster.kitrane.irabeth_stall                 chapter
+     - galfrey.trickster.kitrane.iz_stall                      chapter
+     - galfrey.trickster.kitrane.crows_stall                   chapter
+     - galfrey.trickster.kitrane.ford_stall                    chapter
+     - galfrey.trickster.kitrane.ford_after_stall              chapter
+     - galfrey.trickster.kitrane.envoy_stall                   chapter
+     - galfrey.trickster.kitrane.king_stall                    chapter
+     - galfrey.trickster.kitrane.letter_stall                  chapter
+     - galfrey.trickster.kitrane.conversation_stall            chapter
+     - galfrey.trickster.kitrane.mendev_stall                  chapter
+     - galfrey.trickster.kitrane.reel_stall                    chapter
+     - galfrey.trickster.commit.oath_stall                     chapter
+     - galfrey.trickster.commit.answer_stall                   chapter
+     - galfrey.trickster.commit.release_stall                  chapter
+     - galfrey.trickster.kitrane.table_stall                   chapter
+     - galfrey.trickster.kitrane.crown_stall                   chapter
+     - galfrey.trickster.kitrane.seelah_stall                  chapter
+     - galfrey.trickster.kitrane.storyteller_stall             chapter
+     - galfrey.trickster.kitrane.sergeant_stall                chapter
+     ... +3 more
+  [gesmerha] 4
+     - gesmerha.ending_demon                                   requires:demon
+     - gesmerha.ending_devil                                   requires:devil
+     - gesmerha.late_ending_demon                              requires:demon
+     - gesmerha.late_ending_devil                              requires:devil
+  [horzalah] 4
+     - horzalah.trickster.test.the_gift_night                  chapter
+     - horzalah.trickster.commit.collar_night                  chapter
+     - horzalah.trickster.commit.her_move_night                chapter
+     - horzalah.trickster.react.wenduag_cheek                  dead:requires-chain holds relationship ClosedFlag 'horzalah.closed'
+  [jannah] 7
+     - jannah.trickster.cage.forms                             CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - jannah.trickster.cage.terms                             CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - jannah.trickster.cage.ash                               CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - jannah.trickster.killed.yield                           CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - jannah.circle.salt                                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - jannah.circle.once                                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - jannah.circle.the_board                                 CHAPTER-TRAP (reachable if chapters ignored) / chapter
+  [jerribeth] 1
+     - jerribeth.trickster.visit_letter                        chapter
+  [kiana] 4
+     - kiana.later_incident                                    chapter
+     - kiana.uncertain_reports                                 dead:requires-chain holds forbidden 'seelah.elan_dead'
+     - kiana.trickster.after.letter                            chapter
+     - kiana.trickster.late_question_letter                    chapter
+  [konomi] 13
+     - konomi.retained_inquiry                                 chapter
+     - konomi.retained_attempt                                 chapter
+     - konomi.fate_post                                        chapter
+     - konomi.fate_reply                                       chapter
+     - konomi.private_meeting                                  chapter
+     - konomi.ending_dismissed_apart                           requires:konomi.private_declined
+     - konomi.ending_distance_changed_open                     requires:inhuman
+     - konomi.the_unintroduced_letter                          chapter
+     - konomi.the_answer_she_addressed                         dead:requires-chain holds forbidden 'konomi.trickster.cost.accredited'
+     - konomi.ending_missed_declined                           requires:konomi.missed_declined
+     - konomi.trickster.dismissed.arrival                      dead:requires-chain holds forbidden 'konomi.trickster.back_from_the_road'
+     - konomi.trickster.never_arrived.audience_letter          chapter
+     - konomi.ending_public_buried                             requires:iomedae.trickster.buried_alive
+  [lastcall] 41
+     - tirabade.lastcall.page                                  CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     - arsinoe.lastcall.page                                   requires:lastcall.active
+     - irabeth.lastcall.page                                   requires:lastcall.active
+     - anevia.lastcall.page                                    requires:lastcall.active
+     - jerribeth.lastcall.page                                 requires:lastcall.active
+     - konomi.lastcall.page                                    requires:lastcall.active
+     - nocticula.lastcall.page                                 requires:lastcall.active
+     - vellexia.lastcall.page                                  requires:lastcall.active
+     - nurah.lastcall.page                                     requires:lastcall.active
+     - kiana.lastcall.page                                     requires:lastcall.active
+     - minachiv.lastcall.page                                  requires:lastcall.active
+     - soana.lastcall.page                                     requires:lastcall.active
+     - aranka.lastcall.page                                    requires:lastcall.active
+     - gesmerha.lastcall.page                                  requires:lastcall.active
+     - seelah.lastcall.page                                    requires:lastcall.active
+     - dorgelinda.lastcall.page                                requires:lastcall.active
+     - hepzamirah.lastcall.page                                CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     - targona.lastcall.page                                   requires:lastcall.active
+     - camellia.lastcall.page                                  CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     - eritrice.lastcall.page                                  CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     - chadali.lastcall.page                                   CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     - arueshalae.lastcall.page                                requires:lastcall.active
+     - devarra.lastcall.page                                   requires:lastcall.active
+     - delamere.lastcall.page                                  CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     - mielarah.lastcall.page                                  CHAPTER-TRAP (reachable if chapters ignored) / requires:lastcall.active
+     ... +16 more
+  [mielarah] 24
+     - mielarah.trickster.raid.wind                            chapter
+     - mielarah.trickster.raid.whisper                         chapter
+     - mielarah.trickster.react.woljif_yard                    chapter
+     - mielarah.deck.cargo.arcade                              chapter
+     - mielarah.deck.nearest.arcade                            chapter
+     - mielarah.deck.best_job.arcade                           chapter
+     - mielarah.deck.special_cargo.arcade                      chapter
+     - mielarah.deck.correction.arcade                         chapter
+     - mielarah.deck.market.arcade                             chapter
+     - mielarah.deck.wheel.arcade                              chapter
+     - mielarah.deck.quarterdeck.arcade                        chapter
+     - mielarah.deck.morning.arcade                            chapter
+     - mielarah.deck.captains.arcade                           chapter
+     - mielarah.deck.supper.arcade                             chapter
+     - mielarah.deck.stowaway.arcade                           chapter
+     - mielarah.deck.oskel.arcade                              chapter
+     - mielarah.deck.stern.arcade                              chapter
+     - mielarah.deck.last_night.arcade                         chapter
+     - mielarah.deck.fourth.arcade                             chapter
+     - mielarah.deck.other_voyage.arcade                       chapter
+     - mielarah.deck.after_no.arcade                           chapter
+     - mielarah.deck.wounded.arcade                            chapter
+     - mielarah.deck.the_place.arcade                          chapter
+     - mielarah.deck.names.arcade                              chapter
+  [minagho_chivarro] 7
+     - minagho_chivarro.trickster.minagho_dead.brand_letter    chapter
+     - minagho_chivarro.trickster.spared.brand_letter          chapter
+     - minagho_chivarro.trickster.chivarro_dead.the_bill_letter chapter
+     - minagho_chivarro.trickster.after.the_price_of_her_name_letter chapter
+     - minagho_chivarro.trickster.after.before_the_last_road_letter chapter
+     - minagho_chivarro.trickster.alone.chivarro_letter        chapter
+     - minagho_chivarro.trickster.alone.minagho_letter         chapter
+  [nenio] 25
+     - nenio.trickster.debt.collected_arcade                   chapter
+     - nenio.trickster.dead.market_arcade                      chapter
+     - nenio.trickster.killed.stranger_arcade                  chapter
+     - nenio.trickster.away.correction_arcade                  chapter
+     - nenio.trickster.commit.hypothesis_arcade                chapter
+     - nenio.trickster.commit.result_arcade                    chapter
+     - nenio.trickster.commit.replication_arcade               chapter
+     - nenio.trickster.morning_arcade                          chapter
+     - nenio.folio.demons_arcade                               chapter
+     - nenio.folio.architect_arcade                            chapter
+     - nenio.folio.pulse_arcade                                chapter
+     - nenio.folio.slips_arcade                                chapter
+     - nenio.folio.drezen.report                               chapter
+     - nenio.folio.drezen.handed_arcade                        chapter
+     - nenio.folio.page_one_arcade                             chapter
+     - nenio.folio.volume_one_arcade                           chapter
+     - nenio.folio.longitudinal_arcade                         chapter
+     - nenio.folio.rhymes_arcade                               chapter
+     - nenio.folio.edge_arcade                                 chapter
+     - nenio.folio.inquisitors_arcade                          chapter
+     - nenio.folio.market_arcade                               chapter
+     - nenio.folio.void_days_arcade                            chapter
+     - nenio.folio.teeth_arcade                                chapter
+     - nenio.folio.kenabres_box_arcade                         chapter
+     - nenio.folio.sphinx_list_arcade                          chapter
+  [nidalynn] 1
+     - nidalynn.trickster.react.woljif.small_one               CHAPTER-TRAP (reachable if chapters ignored) / chapter
+  [nocticula] 103
+     - noct.unlit_quay.acquired.new                            CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.unlit_quay.acquired.refused                        CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.unlit_quay.acquired.prior                          CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.sixth_passenger.acquired.new                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.sixth_passenger.acquired.refused                   CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.sixth_passenger.acquired.prior                     CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.lamp_measure.acquired.new                          CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.lamp_measure.acquired.refused                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.lamp_measure.acquired.prior                        CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.captains_reply.acquired.new                        CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.captains_reply.acquired.refused                    CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.captains_reply.acquired.prior                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.new.absent                   CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.new.original                 CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.new.renewed                  CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.refused.absent               CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.refused.original             CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.refused.renewed              CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.prior.absent                 CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.prior.original               CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.her_own_face.acquired.prior.renewed                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.white_shoes.acquired.new                           CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.white_shoes.acquired.refused                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.white_shoes.acquired.prior                         CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.demonstration.acquired.new                         CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     ... +78 more
+  [nocticula.acquisition] 3
+     - noct.join.an_unfinished_map                             CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.join.the_room_she_makes                            CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - noct.join.a_chosen_shore                                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+  [nurah] 11
+     - nurah.trickster.dead.rumour                             CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.dead.bill_of_sale                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.dead.rumour_courier                     CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.terms                                   CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.terms_night                             chapter
+     - nurah.trickster.ran_off.terms_night                     chapter
+     - nurah.trickster.react.irabeth_raised                    CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.react.camellia_market                   CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.react.camellia_supper                   CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.react.camellia_veiled_market            CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - nurah.trickster.react.camellia_veiled_supper            CHAPTER-TRAP (reachable if chapters ignored) / chapter
+  [seelah] 14
+     - seelah.fate_life                                        chapter
+     - seelah.fate_return                                      dead:requires-chain holds forbidden 'seelah.trickster.returned'
+     - seelah.trickster.dead.wakes                             dead:requires-chain holds forbidden 'seelah_dead'
+     - seelah.trickster.dismissed.back_for_the_papers_letter   chapter
+     - seelah.trickster.after.stay_or_go_visit                 chapter
+     - seelah.trickster.after.courtship_visit                  chapter
+     - seelah.trickster.dismissed.commit_visit                 chapter
+     - seelah.trickster.dismissed.second_ask_visit             chapter
+     - seelah.trickster.dead.seller_word                       chapter
+     - seelah.trickster.dead_no_unit.seller_word_visit         chapter
+     - seelah.trickster.dead.react_irabeth                     chapter
+     - seelah.trickster.dead.react_irabeth_given               chapter
+     - seelah.trickster.dead.react_sosiel                      chapter
+     - seelah.trickster.dead.react_sosiel_kept                 chapter
+  [shamira] 5
+     - shamira.trickster.react.daeran_sleep                    dead:requires-chain holds forbidden 'shamira.trickster.embodied'
+     - shamira.trickster.react.regill_barracks                 dead:requires-chain holds forbidden 'shamira.trickster.fuel_set'
+     - shamira.trickster.react.woljif_voice                    dead:requires-chain holds forbidden 'shamira.trickster.heard'
+     - shamira.trickster.mind.heist_alone                      dead:requires-chain holds forbidden 'shamira.plan_known'
+     - shamira.trickster.after.eve                             dead:requires-chain holds forbidden 'shamira.trickster.cost.never_alone'
+  [targona] 6
+     - targona.trickster.dead.setup                            CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - targona.trickster.dead.setup_open                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - targona.trickster.dead.setup_sleep                      CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - targona.trickster.dead.late_light                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - targona.trickster.dead.late_crypt                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - targona.trickster.dead.long_sleep                       CHAPTER-TRAP (reachable if chapters ignored) / chapter
+  [terendelev] 24
+     - terendelev.trickster.after.first_night_awning           chapter
+     - terendelev.trickster.watch.proof_awning                 chapter
+     - terendelev.trickster.watch.wings_awning                 chapter
+     - terendelev.trickster.watch.kenabres_awning              chapter
+     - terendelev.trickster.watch.deskari_awning               chapter
+     - terendelev.trickster.watch.galfrey_awning               chapter
+     - terendelev.trickster.watch.keepsakes_awning             chapter
+     - terendelev.trickster.commit_awning                      chapter
+     - terendelev.trickster.commit.release_awning              chapter
+     - terendelev.trickster.night.watch_awning                 chapter
+     - terendelev.trickster.watch.infirmary_awning             chapter
+     - terendelev.trickster.watch.market_awning                chapter
+     - terendelev.trickster.watch.what_are_you_awning          chapter
+     - terendelev.trickster.watch.letter_awning                chapter
+     - terendelev.trickster.watch.listener_awning              chapter
+     - terendelev.trickster.watch.morning_awning               chapter
+     - terendelev.trickster.watch.war_table_awning             chapter
+     - terendelev.trickster.watch.refugees_awning              chapter
+     - terendelev.trickster.react.daeran.cousin                CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - terendelev.trickster.react.regill.unsanctioned          CHAPTER-TRAP (reachable if chapters ignored) / chapter
+     - terendelev.trickster.watch.mountains_awning             chapter
+     - terendelev.trickster.watch.faith_awning                 chapter
+     - terendelev.trickster.watch.scales_awning                chapter
+     - terendelev.trickster.watch.irabeth_awning               chapter
+  [tirabade] 1
+     - tirabade.trickster.third_chair                          dead:requires-chain needs this scene's own completion
+  [vellexia] 1
+     - vellexia.trickster.after.visit_quarters                 chapter
+
+## B2. Per mythic path: relationship entry / committed-flag reachability (E=entry scene reachable, C=CommittedFlag reachable, X=ClosedFlag)
+  relationship          trickster angel     demon     lich      aeon      azata     devil     dragon    legend    swarm     none      
+  tirabade              ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ---       ECX       
+  seelah                ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       
+  konomi                ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       
+  jerribeth             ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       
+  kiana                 ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       
+  ember                 EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       
+  soana                 ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ---       ECX       
+  arsinoe               ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ---       ECX       
+  targona               ECX       E--       ---       ---       E--       E--       ---       ---       ---       ---       E--       
+  gesmerha              ECX       ECX       ---       ECX       ECX       ECX       ---       ECX       ECX       ---       ECX       
+  vellexia              ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ---       ECX       
+  aivu                  ---       ---       ---       ---       ---       EC-       ---       ---       ---       ---       ---       
+  aranka                ECX       EC-       ---       ---       EC-       EC-       ---       EC-       EC-       ---       EC-       
+  anevia                ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       E--       ECX       
+  irabeth               ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ECX       ---       ECX       
+  minagho_chivarro      ECX       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       ---       EC-       
+  nocticula             ECX       ECX       ECX       ECX       ECX       ECX       ECX       ---       ---       ---       ECX       
+  nocticula.acquisition ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  nurah                 ECX       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       ---       EC-       
+  dorgelinda            ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  hepzamirah            ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  camellia              ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  eritrice              ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  areelu                ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  longcon               EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       EC-       
+  chadali               ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  arueshalae            ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  devarra               ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  delamere              ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  kaylessa              ECX       E--       E--       E--       E--       E--       E--       E--       E--       ---       E--       
+  mielarah              ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  nidalynn              ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  shamira               ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  jannah                ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  nenio                 ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  herrax                ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  terendelev            ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  eliandra              ECX       ---       ---       ---       E--       E--       ---       E--       E--       ---       E--       
+  galfrey               ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  horzalah              ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  elyanka               ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  melazmera             ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  yaniel                ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  wenduag               ECX       E--       E--       E--       E--       E--       E--       E--       E--       E--       E--       
+  iomedae               ECX       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  lastcall              EC-       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+  household             EC-       ---       ---       ---       ---       ---       ---       ---       ---       ---       ---       
+
+  Choices dead on every path (forbid/requires contradiction inside own chain): 115
+     - anevia.trickster.gone.muster/gate/0 choice forbids/requires contradiction: ['anevia.irabeth_killed_by_commander']
+     - anevia.trickster.gone.muster/gate/1 choice forbids/requires contradiction: ['anevia.irabeth_killed_by_commander']
+     - areelu.trickster.report.visitors/start/3 choice forbids/requires contradiction: ['trickster.ever']
+     - areelu.trickster.wager.collect/drawn/0 choice forbids/requires contradiction: ['areelu.trickster.cauldron_full']
+     - arueshalae.treatment.abyss_dose/start/0 choice forbids/requires contradiction: ['arueshalae.treatment.touched']
+     - arueshalae.treatment.abyss_dose/take/1 choice forbids/requires contradiction: ['arueshalae.treatment.cure_works']
+     - arueshalae.treatment.night/stars/0 choice forbids/requires contradiction: ['trickster.religion_tier1']
+     - arueshalae.treatment.night/stars/1 choice forbids/requires contradiction: ['trickster.religion_tier1', 'arueshalae.treatment.cure_works']
+     - arueshalae.treatment.night/stars/2 choice forbids/requires contradiction: ['trickster.religion_tier1']
+     - arueshalae.treatment.old_name/offer/1 choice forbids/requires contradiction: ['arueshalae.treatment.touched']
+     - arueshalae.treatment.rite_slipped/start/1 choice forbids/requires contradiction: ['arueshalae.treatment.cure_works']
+     - arueshalae.treatment.the_dance/dance/1 choice forbids/requires contradiction: ['arueshalae.treatment.cure_works']
+     - arueshalae.treatment.the_dance/start/0 choice forbids/requires contradiction: ['arueshalae.treatment.touched']
+     - arueshalae.treatment.touched/explain/0 choice forbids/requires contradiction: ['trickster.religion_tier1']
+     - arueshalae.treatment.touched/explain/1 choice forbids/requires contradiction: ['trickster.religion_tier1']
+     - arueshalae.trickster.fallen.house_call/price/0 choice forbids/requires contradiction: ['arueshalae.trickster.cost.fed_on_you']
+     - arueshalae.trickster.fallen.roof/choose/0 choice forbids/requires contradiction: ['trickster.religion_tier1']
+     - arueshalae.trickster.fallen.roof/choose/1 choice forbids/requires contradiction: ['arueshalae.trickster.fallen.warded']
+     - delamere.trickster.woken.old_deadeye/seal/0 choice forbids/requires contradiction: ['delamere.trickster.white_stag_told']
+     - hepzamirah.trickster.ghost.body/flesh/1 choice forbids/requires contradiction: ['hepzamirah.trickster.cost.late']
+     - herrax.letters.the_courier/reply/2 choice forbids/requires contradiction: ['minagho_chivarro.trickster.chivarro_deposit', 'minagho_chivarro.trickster.cost.herrax_favor']
+     - herrax.trickster.late.next_move/promised/2 choice forbids/requires contradiction: ['minagho_chivarro.trickster.chivarro_deposit', 'minagho_chivarro.trickster.cost.herrax_favor']
+     - herrax.trickster.owed.night/promised/2 choice forbids/requires contradiction: ['minagho_chivarro.trickster.chivarro_deposit', 'minagho_chivarro.trickster.cost.herrax_favor']
+     - irabeth.trickster.dead.late_order/toast/0 choice forbids/requires contradiction: ['irabeth_dead']
+     - irabeth.trickster.killed.late_step/record/0 choice forbids/requires contradiction: ['irabeth_dead']
+     - irabeth.trickster.killed.late_step/start/0 choice forbids/requires contradiction: ['irabeth_dead']
+     - irabeth.trickster.nevi_reply/start/0 choice forbids/requires contradiction: ['irabeth.trickster.pen_sent']
+     - irabeth.trickster.second_ask/sent/0 choice forbids/requires contradiction: ['irabeth.trickster.back_on_duty']
+     - irabeth.trickster.second_ask/sent_gate/1 choice forbids/requires contradiction: ['irabeth.trickster.back_on_duty']
+     - irabeth.trickster.second_ask/sent_home/0 choice forbids/requires contradiction: ['irabeth.trickster.back_on_duty']
+     - jannah.trickster.circle_night/close/0 choice forbids/requires contradiction: ['jannah.committed']
+     - jannah.trickster.circle_night/close/1 choice forbids/requires contradiction: ['jannah.committed']
+     - jannah.trickster.circle_night/close/2 choice forbids/requires contradiction: ['jannah.committed']
+     - jerribeth.future/fate_short/0 choice forbids/requires contradiction: ['jerribeth.trickster.forfeit_named']
+     - jerribeth.future/promise/2 choice forbids/requires contradiction: ['jerribeth.trickster.forfeit_named']
+     - jerribeth.future/promise/4 choice forbids/requires contradiction: ['jerribeth.trickster.forfeit_named']
+     - jerribeth.future/short_future/2 choice forbids/requires contradiction: ['jerribeth.trickster.forfeit_named']
+     - kaylessa.clearing.once_when_it_counts/start/1 choice forbids/requires contradiction: ['kaylessa.wasps.soldier']
+     - kiana.a_place_afterward/history/3 choice forbids/requires contradiction: ['seelah.elan_dead']
+     - kiana.bakery_stairs/history/3 choice forbids/requires contradiction: ['seelah.elan_dead']
+  Other choices never selectable inside otherwise-reachable scenes (no path found; see why): 299
+     - seelah.borrowed_saw/hasty_start/0                       req [] forb []
+     - seelah.borrowed_saw/hasty_start/1                       req [] forb []
+     - seelah.borrowed_saw/agreement/0                         req [] forb []
+     - konomi.return_first_words/map/0                         req ['konomi.return_distinction'] forb []
+     - konomi.return_first_words/map/1                         req ['konomi.return_patient_reading'] forb []
+     - konomi.return_first_words/method_ledger/0               req [] forb []
+     - konomi.return_first_words/method_patient/0              req [] forb []
+     - konomi.return_first_words/account/5                     req ['konomi.private_meeting'] forb ['konomi.closed', 'konomi.farewell', 'konomi.private_parted', 'konomi.lovers', 'konomi.missed_private_access']
+     - konomi.return_second_visit/next/5                       req ['konomi.private_meeting'] forb ['konomi.closed', 'konomi.farewell', 'konomi.private_parted', 'konomi.lovers', 'konomi.missed_private_access']
+     - konomi.private_reunion/absence_now/0                    req ['legend'] forb []
+     - konomi.private_reunion/absence_her_days/0               req ['legend'] forb []
+     - konomi.private_reunion/absence_legend/0                 req [] forb []
+     - konomi.private_reunion/absence_mortal/0                 req [] forb []
+     - konomi.private_reunion/missed_absence_now/0             req ['legend'] forb []
+     - jerribeth.future/future_entry/2                         req ['jerribeth.settlement_kept', 'trickster.ever'] forb []
+     - jerribeth.future/start/1                                req ['trickster'] forb []
+     - jerribeth.future/fate/0                                 req [] forb []
+     - jerribeth.future/promise/3                              req ['jerribeth.trickster.forfeit_named', 'jerribeth.trickster.returned'] forb []
+     - jerribeth.future/promise/5                              req ['jerribeth.trickster.forfeit_named', 'jerribeth.trickster.returned'] forb []
+     - jerribeth.future/promise/6                              req ['jerribeth.trickster.forfeit_named'] forb ['jerribeth.trickster.returned']
+     - jerribeth.future/promise/7                              req ['jerribeth.trickster.forfeit_named'] forb ['jerribeth.trickster.returned']
+     - jerribeth.future/future_conclusion/2                    req ['jerribeth.settlement_kept', 'jerribeth.late_start'] forb []
+     - jerribeth.future/her_terms/0                            req [] forb ['jerribeth.trickster.cost.toast_grudge']
+     - jerribeth.future/her_terms/1                            req [] forb []
+     - jerribeth.future/her_terms/2                            req [] forb []
+
+## H. Trickster access per relationship (world = trickster etude playing; variants force a native state true or false)
+  tirabade          entry=True  committed(committed)=True  scenes 54/55 reachable
+       entry blocked by: anevia_dead=true, irabeth_gone=true, true_lich=true
+       commit blocked by: anevia_away=true, anevia_gone=true, irabeth_away=true, irabeth_dead=true
+  seelah            entry=True  committed(seelah.committed)=True  scenes 50/65 reachable
+  konomi            entry=True  committed(konomi.committed)=True  scenes 69/78 reachable
+  jerribeth         entry=True  committed(jerribeth.committed)=True  scenes 36/51 reachable
+  kiana             entry=True  committed(kiana.committed)=True  scenes 33/53 reachable
+  ember             entry=True  committed(ember.trusted_friend)=True  scenes 24/24 reachable
+       entry blocked by: ember.absent=true, ember_dead=true, ember_gone=true, ember.present=missed
+       commit blocked by: ember.native_devastated=true
+  soana             entry=True  committed(soana.committed)=True  scenes 46/46 reachable
+  arsinoe           entry=True  committed(arsinoe.committed)=True  scenes 24/24 reachable
+       entry blocked by: arsinoe.victims_revived=true, true_lich=true, arsinoe.capital=missed
+  targona           entry=True  committed(targona.committed)=True  scenes 26/32 reachable
+       entry blocked by: targona.condemned=true, targona.dead_lab=true, targona.dead_lair=true, targona.free=missed
+       commit blocked by: trickster.failed=true
+  gesmerha          entry=True  committed(gesmerha.committed)=True  scenes 39/39 reachable
+  vellexia          entry=True  committed(vellexia.committed)=True  scenes 42/43 reachable
+       commit blocked by: vellexia.native_coercion=true
+  aivu              entry=False committed(aivu.trusted)=False scenes 0/20 reachable
+       entry blocked by: aivu.absent=true, aivu.detached=true, true_lich=true, aivu.native_rescue_complete=missed
+  aranka            entry=True  committed(aranka.extension_kept)=True  scenes 37/46 reachable
+       entry blocked by: aranka.devil_contract=true, aranka.devil_deception=true, aranka.kenabres_attacked=true
+  anevia            entry=True  committed(anevia.committed)=True  scenes 37/38 reachable
+       entry blocked by: anevia_dead=true, true_lich=true
+  irabeth           entry=True  committed(irabeth.committed)=True  scenes 46/46 reachable
+       entry blocked by: true_lich=true
+       commit blocked by: irabeth_gone=true
+  minagho_chivarro  entry=True  committed(minachiv.complete)=True  scenes 54/61 reachable
+  nocticula         entry=True  committed(noct.complete)=True  scenes 37/116 reachable
+  nocticula.acquisition entry=True  committed(noct.acq.renewed_agreement)=True  scenes 10/13 reachable
+       entry blocked by: trickster.failed=true
+       commit blocked by: noct.acq.council_fight=true, noct.acq.audience_question=missed
+  nurah             entry=True  committed(nurah.complete)=True  scenes 38/49 reachable
+       entry blocked by: nurah.dead_camellia=true, nurah.dead_drezen=true, nurah.killing_mechanism=true, nurah.parent_lich=true
+  dorgelinda        entry=True  committed(dorgelinda.committed)=True  scenes 47/47 reachable
+       entry blocked by: trickster.failed=true
+       commit blocked by: dorgelinda.present=missed
+  hepzamirah        entry=True  committed(hepzamirah.committed)=True  scenes 49/49 reachable
+       entry blocked by: trickster.failed=true
+       commit blocked by: hepzamirah.dead=missed
+  camellia          entry=True  committed(camellia.committed)=True  scenes 85/86 reachable
+       commit blocked by: trickster.failed=true
+  eritrice          entry=True  committed(eritrice.committed)=True  scenes 49/49 reachable
+       entry blocked by: trickster.failed=true
+  areelu            entry=True  committed(areelu.committed)=True  scenes 19/20 reachable
+       commit blocked by: trickster.failed=true
+  longcon           entry=True  committed(longcon.talk_done)=True  scenes 16/17 reachable
+       entry blocked by: CalebFooled=missed
+  chadali           entry=True  committed(chadali.committed)=True  scenes 57/57 reachable
+       entry blocked by: trickster.failed=true
+  arueshalae        entry=True  committed(arueshalae.committed)=True  scenes 62/98 reachable
+       entry blocked by: arueshalae.evil_dead=true, arueshalae.kicked_out=true, arueshalae.kicked_out_evil=true, arueshalae_dead=true
+       commit blocked by: trickster.failed=true
+  devarra           entry=True  committed(devarra.committed)=True  scenes 54/59 reachable
+       entry blocked by: devarra.dead_lair=true, devarra.dead_sanctum=true, devarra.escaped=true, trickster.failed=true
+  delamere          entry=True  committed(delamere.committed)=True  scenes 29/31 reachable
+       entry blocked by: trickster.failed=true
+  kaylessa          entry=True  committed(kaylessa.committed)=True  scenes 49/49 reachable
+       commit blocked by: trickster.failed=true
+  mielarah          entry=True  committed(mielarah.committed)=True  scenes 44/68 reachable
+       entry blocked by: mielarah.killed_at_colyphyr=true
+  nidalynn          entry=True  committed(nidalynn.committed)=True  scenes 39/40 reachable
+       entry blocked by: eggs.destroyed=true, trickster.failed=true
+  shamira           entry=True  committed(shamira.committed)=True  scenes 36/41 reachable
+       entry blocked by: trickster.failed=true
+       commit blocked by: shamira.killed=missed
+  jannah            entry=True  committed(jannah.committed)=True  scenes 48/55 reachable
+       entry blocked by: jannah.dead=true, jannah.dead_known=true
+       commit blocked by: trickster.failed=true
+  nenio             entry=True  committed(nenio.committed)=True  scenes 60/85 reachable
+       entry blocked by: nenio.dissolved=true, trickster.failed=true
+  herrax            entry=True  committed(herrax.committed)=True  scenes 60/60 reachable
+       commit blocked by: trickster.failed=true, herrax.coin_held=missed, herrax.madam=missed, herrax.met=missed, herrax.rokhorn_confessed=missed
+  terendelev        entry=True  committed(terendelev.committed)=True  scenes 40/64 reachable
+       entry blocked by: terendelev.aeon_spared=true, trickster.failed=true
+       commit blocked by: terendelev.continuation.returned_finale_seen=true, terendelev.parent_lich_bind=true
+  eliandra          entry=True  committed(eliandra.committed)=True  scenes 57/57 reachable
+       entry blocked by: eliandra.dead=true
+       commit blocked by: trickster.failed=true, eliandra.met_ch5=missed
+  galfrey           entry=True  committed(galfrey.committed)=True  scenes 57/84 reachable
+       entry blocked by: galfrey.killed_by_commander=true
+       commit blocked by: trickster.failed=true
+  horzalah          entry=True  committed(horzalah.committed)=True  scenes 47/51 reachable
+       commit blocked by: trickster.failed=true
+  elyanka           entry=True  committed(elyanka.committed)=True  scenes 31/31 reachable
+       entry blocked by: trickster.failed=true, iz.done=missed
+  melazmera         entry=True  committed(melazmera.committed)=True  scenes 36/36 reachable
+       entry blocked by: trickster.failed=true
+  yaniel            entry=True  committed(yaniel.committed)=True  scenes 33/33 reachable
+       entry blocked by: trickster.failed=true
+       commit blocked by: iz.done=missed
+  wenduag           entry=True  committed(wenduag.committed)=True  scenes 43/43 reachable
+       entry blocked by: wenduag.hello_attacked=true, wenduag.hello_sent_away=true, wenduag.q3_killed=true, wenduag.q3_sent_away=true
+  iomedae           entry=True  committed(iomedae.committed)=True  scenes 33/33 reachable
+       entry blocked by: trickster.failed=true
+       commit blocked by: iomedae.key_dies_revealed=missed
+  lastcall          entry=True  committed(trickster.lastcall.taken)=True  scenes 39/41 reachable
+       entry blocked by: trickster.failed=true
+  household         entry=True  committed(household.table.kept)=True  scenes 3/3 reachable
+       entry blocked by: trickster.failed=true
+
+## H2. Roster matrix (ROSTER.md) x Story.json
+  character              relationship       reg?   T-ent  T-end  notes
+  Anevia                 anevia             yes    True   True   anevia_dead=true; true_lich=true
+  Irabeth                irabeth            yes    True   True   true_lich=true; commit:irabeth_gone=true
+  Seelah                 seelah             yes    True   True   
+  Konomi                 konomi             yes    True   True   
+  Jerribeth              jerribeth          yes    True   True   
+  Kiana                  kiana              yes    True   True   
+  Vellexia               vellexia           yes    True   True   commit:vellexia.native_coercion=true
+  Arsinoe                arsinoe            yes    True   True   arsinoe.victims_revived=true; true_lich=true; arsinoe.capital=missed
+  Gesmerha               gesmerha           yes    True   True   
+  Minagho                minagho_chivarro   yes    True   True   
+  Chivarro               minagho_chivarro   yes    True   True   
+  Nocticula              nocticula          yes    True   True   
+  Nurah                  nurah              yes    True   True   nurah.dead_camellia=true; nurah.dead_drezen=true; nurah.killing_mechanism=true; nurah.parent_lich=true
+  Targona                targona            yes    True   True   targona.condemned=true; targona.dead_lab=true; targona.dead_lair=true; targona.free=missed; commit:trickster.failed=true
+  Terendelev             terendelev         yes    True   True   terendelev.aeon_spared=true; trickster.failed=true; commit:terendelev.continuation.returned_finale_seen=true; commit:terendelev.parent_lich_bind=true
+  Aranka                 aranka             yes    True   True   aranka.devil_contract=true; aranka.devil_deception=true; aranka.kenabres_attacked=true
+  Arueshalae             arueshalae         yes    True   True   arueshalae.evil_dead=true; arueshalae.kicked_out=true; arueshalae.kicked_out_evil=true; arueshalae_dead=true; commit:trickster.failed=true
+  Camellia               camellia           yes    True   True   commit:trickster.failed=true
+  Wenduag                wenduag            yes    True   True   wenduag.hello_attacked=true; wenduag.hello_sent_away=true; wenduag.q3_killed=true; wenduag.q3_sent_away=true
+  Galfrey                galfrey            yes    True   True   galfrey.killed_by_commander=true; commit:trickster.failed=true
+  Soana                  soana              yes    True   True   
+  Areelu                 areelu             yes    True   True   commit:trickster.failed=true
+  Ember                  ember              yes    True   True   ember.absent=true; ember_dead=true; ember_gone=true; ember.present=missed; commit:ember.native_devastated=true
+  Aivu                   aivu               yes    False  False  aivu.absent=true; aivu.detached=true; true_lich=true; aivu.native_rescue_complete=missed
+  Jannah Aldori          jannah             yes    True   True   jannah.dead=true; jannah.dead_known=true; commit:trickster.failed=true
+  Yaniel                 yaniel             yes    True   True   trickster.failed=true; commit:iz.done=missed
+  Delamere               delamere           yes    True   True   trickster.failed=true
+  Elyanka Camilary       elyanka            yes    True   True   trickster.failed=true; iz.done=missed
+  Herrax                 herrax             yes    True   True   commit:trickster.failed=true; commit:herrax.coin_held=missed; commit:herrax.madam=missed
+  Mielarah               mielarah           yes    True   True   mielarah.killed_at_colyphyr=true
+  Shamira                shamira            yes    True   True   trickster.failed=true; commit:shamira.killed=missed
+  Hepzamirah             hepzamirah         yes    True   True   trickster.failed=true; commit:hepzamirah.dead=missed
+  Iomedae                iomedae            yes    True   True   trickster.failed=true; commit:iomedae.key_dies_revealed=missed
+  Eliandra               eliandra           yes    True   True   eliandra.dead=true; commit:trickster.failed=true; commit:eliandra.met_ch5=missed
+  Devarra                devarra            yes    True   True   devarra.dead_lair=true; devarra.dead_sanctum=true; devarra.escaped=true; trickster.failed=true
+  Melazmera              melazmera          yes    True   True   trickster.failed=true
+  Nidalynn               nidalynn           yes    True   True   eggs.destroyed=true; trickster.failed=true
+
+## C. Chapter-window / delay traps
+  Chapter traps (reachable only if chapter order ignored): 174 ['tirabade.lastcall.page', 'noct.unlit_quay.acquired.new', 'noct.unlit_quay.acquired.refused', 'noct.unlit_quay.acquired.prior', 'noct.sixth_passenger.acquired.new', 'noct.sixth_passenger.acquired.refused', 'noct.sixth_passenger.acquired.prior', 'noct.lamp_measure.acquired.new', 'noct.lamp_measure.acquired.refused', 'noct.lamp_measure.acquired.prior', 'noct.captains_reply.acquired.new', 'noct.captains_reply.acquired.refused', 'noct.captains_reply.acquired.prior', 'noct.her_own_face.acquired.new.absent', 'noct.her_own_face.acquired.new.original', 'noct.her_own_face.acquired.new.renewed', 'noct.her_own_face.acquired.refused.absent', 'noct.her_own_face.acquired.refused.original', 'noct.her_own_face.acquired.refused.renewed', 'noct.her_own_face.acquired.prior.absent']
+  Scenes in a single-chapter window whose minimum in-window delay chain is >= 120h: 364
+     - ch5  960h kiana.later_incident                          chain len 18
+     - ch5  960h kiana.a_place_afterward                       chain len 17
+     - ch5  912h kiana.unborrowed_evening                      chain len 16
+     - ch5  864h kiana.yard_evening                            chain len 15
+     - ch5  816h kiana.borrowed_name                           chain len 14
+     - ch5  768h kiana.kept_evening                            chain len 13
+     - ch5  600h kiana.working_room                            chain len 12
+     - ch5  552h kiana.ink_after                               chain len 11
+     - ch5  528h minachiv.before_the_last_road                 chain len 23
+     - ch5  504h minachiv.what_she_will_take                   chain len 22
+     - ch5  504h kiana.first_readers                           chain len 10
+     - ch3  504h soana.after_the_last_visitor                  chain len 16
+     - ch5  480h minachiv.the_cost_in_daylight                 chain len 21
+     - ch5  456h minachiv.when_the_door_opens                  chain len 19
+     - ch5  456h minachiv.after_the_last_lamp                  chain len 20
+  Rest-letter delivery: NextRemote picks the FIRST available remote scene in list order. Relationship priority order: ['tirabade', 'seelah', 'konomi', 'jerribeth', 'kiana', 'ember', 'vellexia', 'soana', 'anevia', 'irabeth', 'arsinoe', 'gesmerha', 'minagho_chivarro', 'nocticula', 'nocticula.acquisition', 'nurah', 'household', 'aranka', 'dorgelinda', 'hepzamirah', 'targona', 'camellia', 'eritrice', 'areelu', 'longcon', 'chadali', 'arueshalae', 'devarra', 'delamere', 'kaylessa', 'mielarah', 'nidalynn', 'shamira', 'jannah', 'nenio', 'herrax', 'terendelev', 'eliandra', 'galfrey', 'horzalah', 'elyanka', 'melazmera', 'yaniel', 'wenduag', 'iomedae', 'lastcall']
+     ch1 competing remote scenes by relationship: {}
+     ch2 competing remote scenes by relationship: {'longcon': 2}
+     ch3 competing remote scenes by relationship: {'seelah': 12, 'konomi': 28, 'jerribeth': 9, 'ember': 8, 'nurah': 4, 'soana': 1, 'aranka': 5, 'gesmerha': 2, 'targona': 3, 'camellia': 4, 'longcon': 6, 'arueshalae': 1, 'devarra': 3, 'delamere': 15, 'kaylessa': 5, 'nidalynn': 3, 'shamira': 1, 'jannah': 1, 'nenio': 5, 'terendelev': 1, 'eliandra': 1, 'galfrey': 1, 'yaniel': 1, 'wenduag': 3, 'iomedae': 6}
+     ch4 competing remote scenes by relationship: {'tirabade': 3, 'seelah': 4, 'konomi': 2, 'jerribeth': 17, 'vellexia': 3, 'soana': 1, 'anevia': 1, 'irabeth': 1, 'arsinoe': 1, 'gesmerha': 1, 'nurah': 2, 'dorgelinda': 1, 'targona': 1, 'devarra': 1, 'delamere': 1, 'mielarah': 10, 'nidalynn': 1, 'shamira': 1, 'nenio': 1, 'terendelev': 1, 'eliandra': 1, 'galfrey': 2, 'melazmera': 6, 'yaniel': 1, 'wenduag': 4, 'iomedae': 2}
+     ch5 competing remote scenes by relationship: {'seelah': 12, 'konomi': 31, 'jerribeth': 30, 'kiana': 31, 'vellexia': 14, 'irabeth': 6, 'arsinoe': 1, 'minagho_chivarro': 39, 'nocticula': 103, 'nocticula.acquisition': 9, 'nurah': 11, 'anevia': 5, 'tirabade': 2, 'household': 1, 'soana': 1, 'aranka': 5, 'gesmerha': 1, 'hepzamirah': 3, 'targona': 3, 'camellia': 4, 'eritrice': 3, 'areelu': 2, 'longcon': 6, 'chadali': 3, 'arueshalae': 4, 'devarra': 3, 'delamere': 21, 'kaylessa': 9, 'mielarah': 12, 'nidalynn': 4, 'shamira': 14, 'jannah': 1, 'nenio': 5, 'herrax': 9, 'terendelev': 2, 'eliandra': 1, 'galfrey': 7, 'horzalah': 10, 'elyanka': 25, 'melazmera': 23, 'wenduag': 15, 'iomedae': 10, 'lastcall': 1}
+
+## E9. Rest budget [default]: Trickster full-roster simulation, E8b mailbag (every deliverable letter at each rest, one per rotation key; the player reads them all). Load = delivery moments needed / rests available
+  Chapter lengths in in-game days (ESTIMATES, calibrate against real Trickster runs): ch0 1, ch1 2, ch2 6, ch3 30, ch4 12, ch5 40, ch6 1
+  Physical scenes and manual reads are visited daily at no rest cost; native progress keys (required somewhere, forbidden
+  nowhere, not loss/departure) turn true at the first chapter a scene needs them; each scene follows its committing path, else a path that completes without
+  closing anything; scenes that would only abort or close (partings, refusals) are declined and cost nothing.
+
+  RESTS NEEDED vs AVAILABLE
+  chapter    days  available       used      needed  letters   missed  peak waiting   load
+  ch0           1          1          0           0        0        0             0   0.00
+  ch1           2          3          0           0        0        0             0   0.00
+  ch2           6          9          1           1        1        0             1   0.11
+  ch3          30         45          7           7       12        0             3   0.16
+  ch4          12         18          6           6       18        0            10   0.33
+  ch5          40         60         23          23       55        0            10   0.38
+  ch6           1          1          0           0        0        0             0   0.00
+
+  relationship             committed day    letters per chapter        scenes that missed their window
+  tirabade                 NO        -      -                          -
+                             stops at abyss_dream
+  seelah                   yes       52     ch4:4                      -
+  konomi                   NO        -      -                          -
+                             stops at konomi.private_history
+  jerribeth                yes       61     ch5:8                      -
+  kiana                    yes       64     ch5:4                      -
+  ember                    NO        -      -                          -
+                             stops at ember.a_late_afternoon needs ember.present
+  soana                    NO        -      ch4:1                      -
+                             stops at soana.trickster.killed.knot
+  arsinoe                  yes       25     ch4:1 ch5:1                -
+  targona                  NO        -      -                          -
+                             stops at targona.trickster.after.ward
+  gesmerha                 yes       20     ch4:1                      -
+  vellexia                 yes       56     ch5:3                      -
+  aivu                     NO        -      -                          -
+                             stops at aivu.a_city_with_wings needs azata
+  aranka                   yes       20     ch3:1                      -
+  anevia                   yes       54     ch4:1                      -
+  irabeth                  NO        -      -                          -
+                             stops at irabeth.a_road_she_would_choose needs irabeth.instruction_tested
+  minagho_chivarro         yes       57     ch5:1                      -
+  nocticula                NO        -      -                          -
+                             stops at nocticula.trickster.court.vellexia needs vellexia.trickster.presumed_dead
+  nocticula.acquisition    yes       54     ch5:2                      -
+  nurah                    NO        -      -                          -
+                             stops at nurah.borrowed_name needs nurah.correspondence_available
+  dorgelinda               yes       59     -                          -
+  hepzamirah               NO        -      -                          -
+                             stops at hepzamirah.trickster.body.hounds needs hepzamirah.trickster.returned
+  camellia                 yes       55     -                          -
+  eritrice                 yes       18     -                          -
+  areelu                   NO        -      ch5:1                      -
+                             stops at areelu.trickster.react.nenio_two_drafts
+  longcon                  yes       10     ch2:1                      -
+  chadali                  yes       26     -                          -
+  arueshalae               NO        -      -                          -
+                             stops at arueshalae.trickster.terms
+  devarra                  NO        -      -                          -
+                             stops at devarra.react.greybor.repeat_work needs devarra.trickster.returned
+  delamere                 NO        -      ch5:1                      -
+                             stops at delamere.trickster.temple.horn_lore
+  kaylessa                 yes       66     ch5:5                      -
+  mielarah                 yes       60     ch5:2                      -
+  nidalynn                 NO        -      -                          -
+                             stops at nidalynn.trickster.hearth.grey_stone
+  shamira                  NO        -      ch3:1                      -
+                             stops at shamira.trickster.after.city needs shamira.trickster.embodied
+  jannah                   NO        -      -                          -
+                             stops at jannah.trickster.alive.letter
+  nenio                    yes       13     ch3:1                      -
+  herrax                   NO        -      ch5:1                      -
+                             stops at herrax.trickster.madam.sell_the_night
+  terendelev               NO        -      ch3:1 ch4:1                -
+                             stops at terendelev.trickster.after.first_night needs terendelev.trickster.returned
+  eliandra                 yes       70     -                          -
+  galfrey                  yes       58     ch3:1 ch4:1                -
+  horzalah                 yes       57     ch5:3                      -
+  elyanka                  NO        -      -                          -
+                             stops at elyanka.trickster.react.regill_writ
+  melazmera                yes       56     ch4:5 ch5:20               -
+  yaniel                   NO        -      ch3:1 ch4:1                -
+                             stops at yaniel.trickster.commit.vigil
+  wenduag                  NO        -      -                          -
+                             stops at wenduag.trickster.early.yaniel
+  iomedae                  NO        -      ch3:6 ch4:2 ch5:3          -
+                             stops at iomedae.trickster.dream.eve
+  lastcall                 NO        -      -                          -
+                             stops at aranka.lastcall.call needs trickster.lastcall.open
+  household                yes       10     -                          -
+  => 23/47 relationships reach CommittedFlag; 0 scenes missed their window; chapters over budget: none
+
+  Etude bindings read only while IsPlaying (NOT permanent in State()) but used as gates: 183; name looks like one-time history: 85
+     HIST anevia.irabeth_killed_by_commander     {'Forbids': 14, 'Requires': 7, 'choice.Requires': 11, 'choice.Forbids': 14}  e.g. anevia.a_grief_with_a_name
+     HIST aranka.ran_reverie_partner             {'choice.Requires': 1}  e.g. aranka.no_encore_needed/remember/0
+     HIST aranka.ran_romance                     {'Requires': 15, 'Forbids': 5, 'choice.Requires': 4, 'choice.Forbids': 4}  e.g. aranka.the_wrong_refrain
+     HIST areelu.dead_fight                      {'Forbids': 16}  e.g. areelu.trickster.report.rooms
+     HIST areelu.sacrifice_before                {'Forbids': 16}  e.g. areelu.trickster.report.rooms
+     HIST areelu.sacrifice_trickster             {'Requires': 2, 'Forbids': 16}  e.g. areelu.trickster.finale.rewrite
+     HIST areelu.sacrifice_wound                 {'Forbids': 16}  e.g. areelu.trickster.report.rooms
+     HIST arsinoe.victims_revived                {'UnavailableFlags': 1}  e.g. rel:arsinoe
+     HIST camellia.dead                          {'Forbids': 52, 'Requires': 1, 'UnavailableFlags': 1}  e.g. jerribeth.trickster.reaction.camellia
+     HIST camellia.killed                        {'Forbids': 70, 'choice.Requires': 12, 'choice.Forbids': 7, 'Requires': 32, 'UnavailableFlags': 1}  e.g. jerribeth.trickster.reaction.camellia
+     HIST chivarro.dead                          {'Forbids': 88, 'Requires': 8, 'UnavailableFlags': 1}  e.g. minachiv.two_answers
+     HIST daeran.dead                            {'choice.Forbids': 6, 'choice.Requires': 2, 'Forbids': 13}  e.g. nocticula.trickster.defeated.morning/start/1
+     HIST delamere.remains_finished              {'Forbids': 5, 'Requires': 1}  e.g. delamere.trickster.temple.horn_lore
+     HIST devarra.dead_lair                      {'Forbids': 4, 'UnavailableFlags': 1}  e.g. devarra.trickster.dead.lair_story
+     HIST devarra.dead_sanctum                   {'Forbids': 4, 'choice.Requires': 2, 'choice.Forbids': 1, 'UnavailableFlags': 1}  e.g. devarra.trickster.dead.lair_story
+     HIST eggs.destroyed                         {'choice.Requires': 10, 'choice.Forbids': 11, 'Forbids': 5, 'RequiresAnyGroups': 1}  e.g. devarra.trickster.dead.woken/which_eggs/3
+     HIST eliandra.dead                          {'Forbids': 54, 'UnavailableFlags': 1}  e.g. eliandra.trickster.ch3.chiefs_ground
+     HIST ember.killed_in_kenabres               {'Forbids': 1}  e.g. hepzamirah.trickster.react.ember
+     HIST ending.wound_closed                    {'Forbids': 1, 'Requires': 1, 'choice.Requires': 1, 'choice.Forbids': 1}  e.g. arsinoe.trickster.epilogue.foreclosure
+     HIST fool_king.gone                         {'choice.Forbids': 3, 'Forbids': 9, 'choice.Requires': 1, 'RequiresAnyGroups': 26}  e.g. arsinoe.trickster.cauldron.collection/pledge/0
+     HIST galfrey.dead                           {'Forbids': 15, 'choice.Forbids': 5, 'choice.Requires': 8, 'Requires': 6, 'UnavailableFlags': 1, 'FailureFlags': 1}  e.g. irabeth.trickster.dead.react_galfrey
+     HIST galfrey.killed_by_commander            {'Forbids': 5, 'choice.Forbids': 15, 'choice.Requires': 5, 'UnavailableFlags': 1, 'FailureFlags': 1}  e.g. irabeth.trickster.dead.react_galfrey
+     HIST gesmerha.dead                          {'Forbids': 40, 'Requires': 2, 'UnavailableFlags': 1}  e.g. gesmerha.unbought_work
+     HIST greybor.dead                           {'Forbids': 13}  e.g. hepzamirah.trickster.react.greybor
+     HIST herald.killed                          {'choice.Forbids': 1, 'choice.Requires': 1}  e.g. targona.trickster.free.spent_light/night_spent/0
+     HIST hulrun.dead                            {'choice.Forbids': 4, 'choice.Requires': 2, 'Forbids': 4}  e.g. galfrey.trickster.iz.eulogy/start/0
+     HIST irabeth.sacrificed                     {'RequiresAnyGroups': 1}  e.g. irabeth.trickster.dead.react_galfrey
+     HIST jerribeth.patron_lost                  {'Forbids': 2, 'choice.Forbids': 2, 'choice.Requires': 2}  e.g. jerribeth.patron
+     HIST kaylessa.dead                          {'Forbids': 8, 'Requires': 3, 'UnavailableFlags': 1}  e.g. kaylessa.trickster.reveal.promise
+     HIST lann.dead                              {'Forbids': 20, 'choice.Forbids': 4, 'choice.Requires': 2}  e.g. gesmerha.react.lann_afternoon
+     HIST mielarah.dead                          {'Forbids': 1, 'UnavailableFlags': 1}  e.g. mielarah.trickster.epilogue.committed
+     HIST minagho.dead                           {'Forbids': 93, 'Requires': 9, 'RequiresAnyGroups': 1, 'choice.Forbids': 7, 'choice.Requires': 13, 'UnavailableFlags': 1}  e.g. minachiv.two_answers
+     HIST minagho.ran_cult                       {'choice.Requires': 2}  e.g. minachiv.minaghos_unfinished_sentence/history/1
+     HIST minagho.ran_demon                      {'choice.Forbids': 9, 'choice.Requires': 4, 'Forbids': 6}  e.g. minachiv.the_unhired_evening/want/0
+     HIST minagho.ran_dragon                     {'choice.Requires': 2}  e.g. minachiv.minaghos_unfinished_sentence/history/2
+     HIST minagho.ran_legend                     {'choice.Requires': 2}  e.g. minachiv.minaghos_unfinished_sentence/history/3
+     HIST minagho.ran_redemption                 {'choice.Requires': 2}  e.g. minachiv.minaghos_unfinished_sentence/history/0
+     HIST minagho.ran_romance                    {'choice.Requires': 1, 'choice.Forbids': 1}  e.g. minachiv.two_answers/asking/0
+     HIST minagho.ran_sanctuary                  {'choice.Requires': 1}  e.g. minachiv.minaghos_unfinished_sentence/history/4
+     HIST nenio.dead                             {'Forbids': 9, 'choice.Forbids': 1, 'Requires': 2, 'UnavailableFlags': 1}  e.g. nocticula.trickster.reaction.nenio
+     HIST nenio.killed_by_commander              {'Forbids': 9, 'choice.Forbids': 1, 'Requires': 2, 'UnavailableFlags': 1}  e.g. nocticula.trickster.reaction.nenio
+     HIST noct.acq.council_fight                 {'Forbids': 118, 'Requires': 4}  e.g. noct.unlit_quay
+     HIST noct.acq.gift_refused                  {'RequiresAnyGroups': 1}  e.g. noct.acq.audience_patronage
+     HIST noct.dead                              {'Forbids': 142, 'Requires': 8, 'choice.Forbids': 2, 'choice.Requires': 3, 'UnavailableFlags': 1}  e.g. noct.unlit_quay
+     HIST noct.parent_rejected                   {'Forbids': 26, 'Requires': 1, 'choice.Requires': 5, 'choice.Forbids': 10}  e.g. noct.unlit_quay
+     HIST nurah.dead_camellia                    {'Forbids': 30, 'RequiresAnyGroups': 4, 'choice.Forbids': 11, 'choice.Requires': 9, 'Requires': 2, 'UnavailableFlags': 1}  e.g. nurah.borrowed_name
+     HIST nurah.dead_drezen                      {'Forbids': 28, 'RequiresAnyGroups': 4, 'UnavailableFlags': 1}  e.g. nurah.borrowed_name
+     HIST nurah.killing_mechanism                {'Forbids': 28, 'RequiresAnyGroups': 4, 'UnavailableFlags': 1}  e.g. nurah.borrowed_name
+     HIST nurah.prison                           {'Forbids': 15, 'Requires': 9, 'UnavailableFlags': 1}  e.g. nurah.borrowed_name
+     HIST nurah.ran_off                          {'Forbids': 9, 'Requires': 9, 'RequiresAnyGroups': 1}  e.g. nurah.trickster.prison.pardon_late
+     HIST regill.dead                            {'Forbids': 18}  e.g. konomi.trickster.dismissed.react_regill
+     HIST seelah.ending_bad                      {'choice.Requires': 5, 'choice.Forbids': 10, 'Forbids': 2, 'Requires': 1}  e.g. seelah.road/future_quest/1
+     HIST seelah.ending_moderate                 {'choice.Requires': 5, 'choice.Forbids': 5, 'Forbids': 1, 'Requires': 1}  e.g. seelah.road/future_quest/2
+     HIST shamira.killed                         {'choice.Requires': 1, 'choice.Forbids': 1, 'Requires': 4, 'Forbids': 8, 'UnavailableFlags': 1}  e.g. arsinoe.trickster.cauldron.lease/start/0
+     HIST shyka.gone                             {'Forbids': 4, 'RequiresAnyGroups': 1}  e.g. kaylessa.trickster.dead.borrow
+     HIST soana.dead                             {'Forbids': 49, 'RequiresAny': 2, 'choice.Requires': 2, 'choice.Forbids': 2, 'RequiresAnyGroups': 3, 'UnavailableFlags': 1}  e.g. soana.threshold
+     HIST soana.killed_by_camellia               {'Forbids': 49, 'RequiresAny': 2, 'choice.Requires': 7, 'choice.Forbids': 12, 'RequiresAnyGroups': 3, 'Requires': 1, 'UnavailableFlags': 1}  e.g. soana.threshold
+     HIST socot.gone                             {'Forbids': 3, 'RequiresAnyGroups': 1, 'choice.Forbids': 14, 'choice.Requires': 9}  e.g. arsinoe.trickster.cauldron_seen.react_socothbenoth
+     HIST sosiel.dead                            {'Forbids': 18}  e.g. seelah.trickster.dead.react_sosiel
+     HIST targona.condemned                      {'Forbids': 12, 'UnavailableFlags': 1}  e.g. targona.unasked_question
+     HIST targona.dead_lab                       {'Forbids': 13, 'Requires': 4, 'UnavailableFlags': 1}  e.g. targona.unasked_question
+     HIST targona.dead_lair                      {'Forbids': 9, 'UnavailableFlags': 1}  e.g. targona.unasked_question
+     HIST targona.free                           {'Requires': 10, 'Forbids': 3}  e.g. targona.unasked_question
+     HIST targona.ran_aeon                       {'RequiresAny': 8, 'choice.Requires': 2, 'choice.Forbids': 2}  e.g. targona.unasked_question
+     HIST targona.ran_angel                      {'RequiresAny': 8}  e.g. targona.unasked_question
+     HIST targona.ran_azata                      {'RequiresAny': 8}  e.g. targona.unasked_question
+     HIST targona.ran_demon                      {'Forbids': 8}  e.g. targona.unasked_question
+     HIST targona.ran_devil                      {'Forbids': 8}  e.g. targona.unasked_question
+     HIST targona.ran_dragon                     {'Forbids': 8}  e.g. targona.unasked_question
+     HIST targona.ran_legend                     {'Forbids': 8}  e.g. targona.unasked_question
+     HIST targona.ran_lich                       {'Forbids': 8}  e.g. targona.unasked_question
+     HIST targona.ran_none                       {'RequiresAny': 8}  e.g. targona.unasked_question
+     HIST targona.ran_trickster                  {'RequiresAny': 8, 'choice.Requires': 2, 'choice.Forbids': 4}  e.g. targona.unasked_question
+     HIST terendelev.aeon_spared                 {'Forbids': 56, 'UnavailableFlags': 1}  e.g. terendelev.trickster.memory.square
+     HIST ulbrig.dead                            {'Forbids': 10}  e.g. gesmerha.react.ulbrig_night
+     HIST vellexia.dead                          {'Forbids': 32, 'Requires': 9, 'UnavailableFlags': 1}  e.g. vellexia.unfinished_likeness
+     HIST vellexia.early_fight                   {'Forbids': 29, 'RequiresAny': 1, 'UnavailableFlags': 1}  e.g. vellexia.unfinished_likeness
+     HIST vellexia.final_fight                   {'Forbids': 29, 'RequiresAny': 1, 'UnavailableFlags': 1}  e.g. vellexia.unfinished_likeness
+     HIST vellexia.slaves_freed                  {'choice.Forbids': 8, 'choice.Requires': 8}  e.g. vellexia.trickster.mirrored.unmirror/start/0
+     HIST wenduag.chosen                         {'choice.Requires': 1, 'choice.Forbids': 1}  e.g. wenduag.trickster.court.gongs/father/0
+     HIST wenduag.dead_any                       {'Forbids': 5, 'Requires': 4, 'UnavailableFlags': 1}  e.g. wenduag.trickster.exile.champion
+     HIST wenduag.killed                         {'Forbids': 7, 'Requires': 4, 'choice.Requires': 1, 'choice.Forbids': 2, 'UnavailableFlags': 1}  e.g. minagho_chivarro.trickster.react.wenduag
+     HIST woljif.dead                            {'Forbids': 27}  e.g. anevia.trickster.gone.react_woljif
+     HIST yaniel.freed                           {'RequiresAnyGroups': 2, 'choice.Requires': 2, 'choice.Forbids': 2}  e.g. wenduag.trickster.early.yaniel
+     HIST yaniel.killed                          {'RequiresAnyGroups': 2}  e.g. wenduag.trickster.early.yaniel
+          CalebFooled                            {'Requires': 2}  e.g. longcon.tell_them
+          aivu.absent                            {'Forbids': 26, 'Requires': 1, 'UnavailableFlags': 1}  e.g. aivu.a_city_with_wings
+          aivu.detached                          {'Forbids': 27, 'Requires': 1, 'UnavailableFlags': 1}  e.g. aivu.a_city_with_wings
+          anevia_away                            {'Forbids': 46}  e.g. table
+          aranka.devil_contract                  {'Forbids': 10, 'UnavailableFlags': 1}  e.g. aranka.the_wrong_refrain
+          aranka.devil_deception                 {'Forbids': 10, 'UnavailableFlags': 1}  e.g. aranka.the_wrong_refrain
+          areelu.ascended                        {'Requires': 1}  e.g. areelu.trickster.finale.ascended
+          areelu.incinerated                     {'Forbids': 16}  e.g. areelu.trickster.report.rooms
+          arsinoe.capital                        {'Requires': 21}  e.g. arsinoe_city_on_paper
+          arueshalae.evil_recruited              {'Forbids': 63, 'Requires': 7, 'choice.Forbids': 12, 'choice.Requires': 6}  e.g. arueshalae.trickster.insurance
+          arueshalae.kicked_out                  {'Forbids': 19, 'choice.Forbids': 6, 'choice.Requires': 2, 'UnavailableFlags': 1}  e.g. arueshalae.trickster.dead.starving
+          arueshalae.kicked_out_evil             {'Forbids': 19, 'choice.Forbids': 4, 'choice.Requires': 4, 'UnavailableFlags': 1}  e.g. arueshalae.trickster.dead.starving
+          broken                                 {'choice.Requires': 7, 'choice.Forbids': 6}  e.g. i_respite/start/1
+          camellia.kicked_out                    {'Forbids': 35, 'UnavailableFlags': 1}  e.g. jerribeth.trickster.reaction.camellia
+          camellia.romance                       {'choice.Requires': 1, 'choice.Forbids': 1}  e.g. camellia.trickster.masks.a_dance_with_a_knife_in_it/teach/0
+          captain.kerz                           {'RequiresAnyGroups': 2, 'choice.Requires': 2, 'choice.Forbids': 2}  e.g. mielarah.trickster.charter.letter
+          captain.nocticula                      {'RequiresAnyGroups': 2}  e.g. mielarah.trickster.charter.letter
+          chapter.six                            {'choice.Forbids': 1, 'choice.Requires': 1}  e.g. horzalah.trickster.guild.kept/pivot/0
+          chivarro.searching                     {'Requires': 23, 'Forbids': 2}  e.g. minachiv.two_answers
+          council.fought                         {'choice.Forbids': 4, 'choice.Requires': 1, 'Forbids': 8, 'RequiresAnyGroups': 1}  e.g. arsinoe.trickster.cauldron.lease/leased/0
+          council.fought_nocta_allied            {'Forbids': 8, 'choice.Forbids': 5, 'RequiresAnyGroups': 1, 'choice.Requires': 1}  e.g. arsinoe.trickster.cauldron_seen.react_socothbenoth
+          daeran.kicked_out                      {'choice.Forbids': 4, 'choice.Requires': 2, 'Forbids': 13}  e.g. nocticula.trickster.defeated.morning/start/1
+          devarra.chapter_three                  {'choice.Forbids': 1, 'choice.Requires': 1}  e.g. devarra.tower.first_climb/leave/0
+          devarra.escaped                        {'choice.Requires': 1, 'choice.Forbids': 1, 'Forbids': 1}  e.g. devarra.trickster.dead.woken/camp/3
+          dorgelinda.present                     {'Requires': 5}  e.g. dorgelinda.trickster.office.stocktake
+          eggs.druids                            {'choice.Requires': 12, 'choice.Forbids': 21, 'Forbids': 1, 'Requires': 2}  e.g. devarra.trickster.dead.woken/which_eggs/1
+          eggs.omelet                            {'choice.Requires': 10, 'choice.Forbids': 30, 'Forbids': 2}  e.g. devarra.trickster.dead.woken/which_eggs/0
+          eggs.project                           {'choice.Requires': 10, 'choice.Forbids': 11, 'Forbids': 2, 'RequiresAnyGroups': 1}  e.g. devarra.trickster.dead.woken/which_eggs/2
+          ember.absent                           {'Forbids': 31, 'Requires': 1, 'UnavailableFlags': 1}  e.g. ember.paper_bird
+          ember.native_devastated                {'Forbids': 17, 'Requires': 5}  e.g. ember.something_you_cannot_do
+          ember.native_good                      {'choice.Requires': 1, 'Requires': 1, 'Forbids': 2}  e.g. ember.where_she_is_needed/start/0
+          ember.native_law                       {'choice.Requires': 1, 'Requires': 1, 'Forbids': 1}  e.g. ember.where_she_is_needed/start/1
+          ember.present                          {'Requires': 27, 'choice.Requires': 1, 'choice.Forbids': 4}  e.g. ember.drawing
+          encouraged                             {'choice.Requires': 2, 'choice.Forbids': 1}  e.g. i_respite/start/2
+          fleshmarket.massacre                   {'choice.Requires': 12, 'choice.Forbids': 12}  e.g. shamira.trickster.killed.setup/ha_market/0
+          fool_king.crowned                      {'choice.Requires': 3, 'choice.Forbids': 2, 'Requires': 3, 'Forbids': 2}  e.g. kiana.trickster.no_wedding.postponed/desk/0
+          galfrey.final                          {'Requires': 7}  e.g. galfrey.trickster.epilogue.alive
+          galfrey.romance_active                 {'choice.Requires': 15, 'choice.Forbids': 14, 'Requires': 2, 'Forbids': 4}  e.g. galfrey.early.kitrane/like/0
+          gesmerha.capital_guest                 {'Requires': 3}  e.g. gesmerha.the_voice_at_court
+          gesmerha.illusions                     {'RequiresAny': 21, 'choice.Requires': 3}  e.g. gesmerha.unbought_work
+          gesmerha.marhevok_rules                {'choice.Requires': 2, 'choice.Forbids': 2, 'Forbids': 1}  e.g. gesmerha.unbought_work/office/0
+          gesmerha.post_resolution_contact       {'Requires': 6}  e.g. gesmerha.the_things_still_here
+          gesmerha.truth                         {'RequiresAny': 21, 'choice.Requires': 3, 'choice.Forbids': 3}  e.g. gesmerha.unbought_work
+          greybor.away                           {'Forbids': 4}  e.g. melazmera.trickster.ch5.message
+          greybor.in_party                       {'Requires': 9}  e.g. horzalah.trickster.react.greybor_witness
+          greybor.kicked_out                     {'Forbids': 13}  e.g. hepzamirah.trickster.react.greybor
+          herrax.madam                           {'Requires': 41, 'choice.Requires': 1, 'choice.Forbids': 1}  e.g. herrax.trickster.madam.schedule
+          hulrun.away_c5                         {'choice.Forbids': 2, 'choice.Requires': 2, 'Forbids': 4}  e.g. galfrey.trickster.iz.eulogy/start/0
+          irabeth.chapter_five                   {'choice.Forbids': 9, 'choice.Requires': 9}  e.g. irabeth.the_question_outside_duty/widow_yes/0
+          irabeth.chapter_three                  {'choice.Requires': 5}  e.g. irabeth.the_question_outside_duty/widow_yes/0
+          irabeth_away                           {'Forbids': 53, 'Requires': 2, 'RequiresAnyGroups': 2}  e.g. table
+          iz.sock_raised                         {'RequiresAnyGroups': 1, 'choice.Requires': 3, 'choice.Forbids': 3}  e.g. iomedae.trickster.order.banner
+          kaylessa.tomb                          {'choice.Requires': 4, 'choice.Forbids': 4, 'Requires': 1}  e.g. kaylessa.wasps.last_words/start/3
+          konomi.foreign_help_playing            {'choice.Requires': 4, 'choice.Forbids': 4}  e.g. konomi.political_account/situation/0
+          konomi.in_office                       {'Requires': 3}  e.g. arsinoe.trickster.cauldron_seen.react_konomi
+          konomi.present                         {'choice.Requires': 1, 'choice.Forbids': 2, 'Requires': 26, 'Forbids': 28}  e.g. konomi.return_second_visit/laugh/0
+          kyado.in_drezen                        {'Requires': 3}  e.g. konomi.trickster.dismissed.react_kyado
+          lann.in_party                          {'Requires': 10}  e.g. gesmerha.react.lann_afternoon
+          lann.kicked_out                        {'Forbids': 20, 'choice.Forbids': 4, 'choice.Requires': 2}  e.g. gesmerha.react.lann_afternoon
+          lann.plot_absent                       {'Forbids': 7}  e.g. dorgelinda.react.lann.countersign
+          minagho.terrified                      {'choice.Requires': 1, 'choice.Forbids': 4}  e.g. minagho_chivarro.trickster.spared.brand/start/0
+          neathholm.evening                      {'Requires': 1}  e.g. anevia.early.watch
+          nenio.kicked_out                       {'Forbids': 9, 'choice.Forbids': 1, 'RequiresAnyGroups': 3, 'UnavailableFlags': 1}  e.g. nocticula.trickster.reaction.nenio
+          nenio.sent_away                        {'Forbids': 9, 'choice.Forbids': 6, 'RequiresAnyGroups': 3, 'choice.Requires': 5, 'UnavailableFlags': 1}  e.g. nocticula.trickster.reaction.nenio
+          noct.acq.gift_broken                   {'RequiresAnyGroups': 1}  e.g. noct.acq.audience_patronage
+          noct.acq.gift_renewed                  {'Forbids': 6, 'Requires': 3, 'RequiresAnyGroups': 1, 'choice.Requires': 3, 'choice.Forbids': 6}  e.g. noct.her_own_face.acquired.new.absent
+          noct.fooled                            {'choice.Requires': 4, 'choice.Forbids': 8, 'Requires': 1}  e.g. nocticula.trickster.defeated.shadow/start/1
+          noct.gift                              {'Requires': 27, 'Forbids': 4, 'choice.Requires': 3, 'choice.Forbids': 3}  e.g. noct.unlit_quay
+          noct.parent_active                     {'Requires': 25, 'Forbids': 1, 'choice.Requires': 5, 'choice.Forbids': 5}  e.g. noct.unlit_quay
+          noct.parent_laulieh                    {'choice.Requires': 4}  e.g. noct.another_place/note/0
+          noct.parent_laulieh_departure          {'choice.Requires': 4}  e.g. noct.another_place/note/1
+          noct.will_attend                       {'choice.Requires': 4, 'choice.Forbids': 4}  e.g. shamira.trickster.after.city/lady_unsure/0
+          nurah.parent_chaos                     {'choice.Forbids': 8, 'choice.Requires': 4}  e.g. nurah.invitation_reply/start/0
+          nurah.parent_evil                      {'choice.Forbids': 8, 'choice.Requires': 4}  e.g. nurah.invitation_reply/start/0
+          nurah.parent_good                      {'choice.Requires': 4, 'choice.Forbids': 8}  e.g. nurah.invitation_reply/start/0
+          nurah.parent_lich                      {'Forbids': 13, 'UnavailableFlags': 1}  e.g. nurah.borrowed_name
+          nurah.parent_queen                     {'choice.Requires': 1}  e.g. nurah.the_borrowed_audience/start/3
+          nurah.parent_romance                   {'Requires': 13}  e.g. nurah.borrowed_name
+          nurah.trickster_recruited              {'Forbids': 1, 'Requires': 2, 'choice.Forbids': 1, 'choice.Requires': 1}  e.g. nurah.trickster.prison.pardon
+          regill.in_party                        {'Requires': 10}  e.g. dorgelinda.react.regill.countersign
+          regill.kicked_out                      {'Forbids': 18}  e.g. konomi.trickster.dismissed.react_regill
+          regill.left_plot                       {'Forbids': 12}  e.g. konomi.trickster.dismissed.react_regill
+          regill.plot_absent                     {'Forbids': 6}  e.g. dorgelinda.react.regill.countersign
+          seelah.in_party                        {'Requires': 5, 'choice.Requires': 1, 'choice.Forbids': 1}  e.g. kiana.seelah
+          shamira.crystals_told                  {'choice.Requires': 14, 'choice.Forbids': 18}  e.g. shamira.trickster.killed.voice_letter/n_l_permitted/0
+          shamira.no_more_ch4                    {'Forbids': 2}  e.g. shamira.trickster.ch4.read
+          soana.after_quest                      {'Requires': 26}  e.g. soana.threshold
+          soana.old_defender                     {'RequiresAny': 26, 'choice.Requires': 6}  e.g. soana.threshold
+          sosiel.kicked_out                      {'Forbids': 18}  e.g. seelah.trickster.dead.react_sosiel
+          terendelev.parent_lich_bind            {'Forbids': 7}  e.g. terendelev.trickster.bones.restitution
+          trickster.failed                       {'Forbids': 372, 'choice.Requires': 21, 'choice.Forbids': 21, 'RequiresAnyGroups': 2, 'UnavailableFlags': 2}  e.g. seelah.fate_life
+          ulbrig.in_party                        {'Requires': 8}  e.g. gesmerha.react.ulbrig_night
+          ulbrig.kicked_out                      {'Forbids': 10}  e.g. gesmerha.react.ulbrig_night
+          wenduag.in_party                       {'Requires': 5, 'Forbids': 5}  e.g. horzalah.trickster.react.wenduag_morning
+          wenduag.kicked_out                     {'Forbids': 8, 'Requires': 5, 'UnavailableFlags': 1}  e.g. minagho_chivarro.trickster.react.wenduag
+          wenduag.redeemed                       {'RequiresAnyGroups': 1}  e.g. wenduag.trickster.court.trial
+          wenduag.traitor                        {'Requires': 2}  e.g. wenduag.trickster.traitor.bid
+          woljif.kicked_out                      {'Forbids': 27}  e.g. anevia.trickster.gone.react_woljif
+
+## D. Cross-route forbid conflicts (flag produced by route A, forbidden by route B)
+  anevia           -> irabeth          flags ['anevia.closed', 'anevia.lover', 'anevia.trickster.returned', 'anevia.trickster.shares_beth', 'tirabade.group_closed']  (1 scenes, 15 choice gates)
+  anevia           -> lastcall         flags ['anevia.trickster.cost.socoth_listening', 'anevia.trickster.cost.stolen_door', 'anevia.trickster.cost.wrong_door', 'anevia.trickster.declined']  (1 scenes, 5 choice gates)
+  anevia           -> tirabade         flags ['anevia.closed', 'anevia.courtship_requested', 'anevia.lover', 'anevia.trickster.cost.accounting', 'tirabade.group_closed']  (63 scenes, 17 choice gates)
+  aranka           -> lastcall         flags ['aranka.extension_closed', 'aranka.trickster.declined']  (1 scenes, 0 choice gates)
+  areelu           -> lastcall         flags ['areelu.trickster.declined']  (1 scenes, 0 choice gates)
+  areelu           -> yaniel           flags ['areelu.started']  (0 scenes, 1 choice gates)
+  arueshalae       -> lastcall         flags ['arueshalae.trickster.ally', 'arueshalae.trickster.declined', 'arueshalae.trickster.terms_refused']  (1 scenes, 0 choice gates)
+  arueshalae       -> nocticula        flags ['arueshalae.committed']  (0 scenes, 1 choice gates)
+  arueshalae       -> shamira          flags ['arueshalae.trickster.returned']  (0 scenes, 8 choice gates)
+  camellia         -> lastcall         flags ['camellia.trickster.declined']  (1 scenes, 0 choice gates)
+  camellia         -> nurah            flags ['camellia.trickster.returned']  (0 scenes, 2 choice gates)
+  chadali          -> lastcall         flags ['chadali.trickster.declined']  (1 scenes, 0 choice gates)
+  delamere         -> lastcall         flags ['delamere.trickster.declined']  (1 scenes, 0 choice gates)
+  devarra          -> lastcall         flags ['devarra.trickster.declined', 'devarra.trickster.left_hungry', 'devarra.trickster.refused']  (1 scenes, 1 choice gates)
+  devarra          -> nidalynn         flags ['devarra.trickster.cost.egg_withheld', 'devarra.trickster.hunting_druids', 'devarra.trickster.returned']  (0 scenes, 13 choice gates)
+  dorgelinda       -> konomi           flags ['dorgelinda.trickster.primed']  (0 scenes, 2 choice gates)
+  dorgelinda       -> lastcall         flags ['dorgelinda.ledger.line_ruled', 'dorgelinda.trickster.declined']  (1 scenes, 0 choice gates)
+  elyanka          -> lastcall         flags ['elyanka.trickster.declined']  (1 scenes, 0 choice gates)
+  eritrice         -> lastcall         flags ['eritrice.trickster.declined']  (1 scenes, 0 choice gates)
+  galfrey          -> terendelev       flags ['galfrey.trickster.returned']  (0 scenes, 10 choice gates)
+  gesmerha         -> lastcall         flags ['gesmerha.parted', 'gesmerha.trickster.cost.likeness_cut', 'gesmerha.trickster.declined']  (1 scenes, 1 choice gates)
+  hepzamirah       -> horzalah         flags ['hepzamirah.trickster.returned']  (0 scenes, 6 choice gates)
+  hepzamirah       -> melazmera        flags ['hepzamirah.trickster.returned']  (0 scenes, 1 choice gates)
+  hepzamirah       -> minagho_chivarro flags ['hepzamirah.trickster.primed']  (0 scenes, 4 choice gates)
+  herrax           -> lastcall         flags ['herrax.trickster.declined']  (1 scenes, 0 choice gates)
+  horzalah         -> lastcall         flags ['horzalah.trickster.declined']  (1 scenes, 0 choice gates)
+  horzalah         -> minagho_chivarro flags ['horzalah.trickster.returned']  (0 scenes, 6 choice gates)
+  horzalah         -> nocticula        flags ['horzalah.trickster.left_free', 'horzalah.trickster.threatened']  (0 scenes, 3 choice gates)
+  horzalah         -> wenduag          flags ['horzalah.trickster.react.wenduag_ally', 'horzalah.trickster.react.wenduag_cheek', 'horzalah.trickster.react.wenduag_gift', 'horzalah.trickster.react.wenduag_morning']  (4 scenes, 0 choice gates)
+  iomedae          -> lastcall         flags ['iomedae.trickster.declined']  (1 scenes, 0 choice gates)
+  irabeth          -> anevia           flags ['irabeth.closed', 'irabeth.future_friends', 'irabeth.lover', 'irabeth.trickster.asked_nevi', 'irabeth.trickster.blow_rewritten', 'irabeth.trickster.cost.under_orders']  (8 scenes, 50 choice gates)
+  irabeth          -> aranka           flags ['irabeth.trickster.returned']  (1 scenes, 0 choice gates)
+  irabeth          -> galfrey          flags ['irabeth.trickster.returned']  (0 scenes, 4 choice gates)
+  irabeth          -> jannah           flags ['irabeth.trickster.returned']  (0 scenes, 1 choice gates)
+  irabeth          -> lastcall         flags ['irabeth.trickster.declined']  (1 scenes, 0 choice gates)
+  irabeth          -> longcon          flags ['irabeth.trickster.returned']  (3 scenes, 0 choice gates)
+  irabeth          -> terendelev       flags ['irabeth.trickster.returned']  (0 scenes, 2 choice gates)
+  irabeth          -> tirabade         flags ['irabeth.closed', 'irabeth.courtship_requested', 'irabeth.future_friends', 'irabeth.lover', 'irabeth.trickster.blow_rewritten', 'tirabade.group_closed']  (63 scenes, 17 choice gates)
+  jannah           -> lastcall         flags ['jannah.trickster.declined', 'jannah.trickster.gone']  (1 scenes, 0 choice gates)
+  jerribeth        -> lastcall         flags ['jerribeth.trickster.cost.tenant', 'jerribeth.trickster.cost.toast', 'jerribeth.trickster.declined', 'jerribeth.trickster.parted']  (1 scenes, 3 choice gates)
+  jerribeth        -> vellexia         flags ['vellexia.introduced']  (0 scenes, 1 choice gates)
+  kaylessa         -> camellia         flags ['kaylessa.trickster.returned']  (0 scenes, 2 choice gates)
+  kiana            -> arsinoe          flags ['kiana.trickster.cost.guests_robbed', 'kiana.trickster.guests_bought_back']  (0 scenes, 4 choice gates)
+  kiana            -> lastcall         flags ['kiana.parting', 'kiana.uncertain']  (1 scenes, 0 choice gates)
+  konomi           -> arsinoe          flags ['konomi.trickster.cost.recalled']  (0 scenes, 5 choice gates)
+  konomi           -> lastcall         flags ['konomi.trickster.declined']  (1 scenes, 0 choice gates)
+  longcon          -> minagho_chivarro flags ['longcon.sting_exposed']  (0 scenes, 7 choice gates)
+  melazmera        -> lastcall         flags ['melazmera.trickster.declined']  (1 scenes, 0 choice gates)
+  mielarah         -> lastcall         flags ['mielarah.trickster.declined']  (1 scenes, 0 choice gates)
+  minagho_chivarro -> hepzamirah       flags ['minagho_chivarro.trickster.debt.collectors']  (0 scenes, 4 choice gates)
+  minagho_chivarro -> herrax           flags ['minagho_chivarro.trickster.chivarro_deposit', 'minagho_chivarro.trickster.cost.herrax_favor', 'minagho_chivarro.trickster.reunited']  (2 scenes, 18 choice gates)
+  minagho_chivarro -> household        flags ['minagho_chivarro.trickster.chivarro_deposit']  (1 scenes, 0 choice gates)
+  minagho_chivarro -> lastcall         flags ['minagho_chivarro.trickster.declined']  (1 scenes, 0 choice gates)
+  minagho_chivarro -> yaniel           flags ['minachiv.complete']  (0 scenes, 1 choice gates)
+  nenio            -> lastcall         flags ['nenio.trickster.declined']  (1 scenes, 0 choice gates)
+  nidalynn         -> devarra          flags ['nidalynn.trickster.confessed', 'nidalynn.trickster.egg.straw', 'nidalynn.trickster.eggs.vault']  (1 scenes, 3 choice gates)
+  nidalynn         -> lastcall         flags ['nidalynn.trickster.goat.lie_kept', 'nidalynn.trickster.refused']  (1 scenes, 1 choice gates)
+  nocticula        -> arueshalae       flags ['nocticula.trickster.favour_called.arueshalae']  (0 scenes, 4 choice gates)
+  nocticula        -> lastcall         flags ['nocticula.trickster.declined']  (1 scenes, 0 choice gates)
+  nocticula        -> nocticula.acquisition flags ['noct.closed', 'noct.complete']  (4 scenes, 0 choice gates)
+  nocticula        -> shamira          flags ['nocticula.trickster.secret_known.shamira']  (0 scenes, 19 choice gates)
+  nocticula.acquisition -> nocticula        flags ['noct.acq.closed', 'noct.join.closed', 'noct.join.harbor_variant_ready', 'noct.join.history_new', 'noct.join.history_prior', 'noct.join.history_refused']  (134 scenes, 4 choice gates)
+  nurah            -> camellia         flags ['nurah.trickster.returned']  (0 scenes, 2 choice gates)
+  nurah            -> lastcall         flags ['nurah.trickster.cost.ramisa_audience']  (0 scenes, 1 choice gates)
+  seelah           -> galfrey          flags ['seelah.trickster.returned']  (0 scenes, 8 choice gates)
+  seelah           -> jannah           flags ['seelah.trickster.returned']  (0 scenes, 3 choice gates)
+  seelah           -> lastcall         flags ['seelah.trickster.declined', 'seelah.trickster.friends']  (1 scenes, 0 choice gates)
+  seelah           -> yaniel           flags ['seelah.trickster.returned']  (0 scenes, 2 choice gates)
+  shamira          -> nocticula        flags ['shamira.trickster.cast_out', 'shamira.trickster.declined', 'shamira.trickster.embodied']  (1 scenes, 0 choice gates)
+  soana            -> lastcall         flags ['soana.trickster.declined', 'soana.trickster.friends', 'soana.trickster.refused']  (1 scenes, 0 choice gates)
+  targona          -> lastcall         flags ['targona.trickster.cost.light_sealed', 'targona.trickster.declined']  (1 scenes, 1 choice gates)
+  terendelev       -> galfrey          flags ['terendelev.trickster.returned']  (0 scenes, 4 choice gates)
+  terendelev       -> lastcall         flags ['terendelev.trickster.declined']  (1 scenes, 0 choice gates)
+  tirabade         -> anevia           flags ['a_affair', 'anevia.closed', 'anevia.courtship_requested', 'closed', 'committed', 'i_affair']  (49 scenes, 9 choice gates)
+  tirabade         -> irabeth          flags ['a_affair', 'anevia.closed', 'closed', 'committed', 'i_affair', 'irabeth.closed']  (49 scenes, 2 choice gates)
+  tirabade         -> lastcall         flags ['committed', 'tirabade.trickster.declined']  (3 scenes, 0 choice gates)
+  vellexia         -> lastcall         flags ['vellexia.farewell_friends', 'vellexia.farewell_slow', 'vellexia.parted', 'vellexia.trickster.declined', 'vellexia.trickster.kept_as_mirror']  (1 scenes, 0 choice gates)
+  vellexia         -> nocticula        flags ['vellexia.trickster.cost.diminished', 'vellexia.trickster.kept_as_mirror']  (0 scenes, 3 choice gates)
+  yaniel           -> lastcall         flags ['yaniel.trickster.declined']  (1 scenes, 0 choice gates)
+
+## D2. Coexistence: scenes/endings/choices whose gates depend on ANOTHER relationship's loss/closure or romance state
+  244 gate uses. By (kind, route -> other):
+     FORBIDS-OTHER-ROMANCE          anevia             -> tirabade                     x23  e.g. anevia.unborrowed_hour [committed]
+     FORBIDS-OTHER-ROMANCE          irabeth            -> tirabade                     x14  e.g. irabeth.a_name_on_the_list [committed]
+     FORBIDS-OTHER-ROMANCE          lastcall           -> tirabade                     x2   e.g. irabeth.lastcall.page [committed]
+     FORBIDS-OTHER-ROMANCE          areelu             -> iomedae                      x2   e.g. areelu.trickster.finale.prior_lien [iomedae.appointment_kept]
+     FORBIDS-OTHER-ROMANCE          lastcall           -> vellexia                     x1   e.g. vellexia.lastcall.page [vellexia.trickster.kept_as_mirror]
+     FORBIDS-OTHER-ROMANCE          lastcall           -> nidalynn                     x1   e.g. nidalynn.lastcall.page [nidalynn.trickster.goat.lie_kept]
+     FORBIDS-OTHER-ROMANCE          jannah             -> seelah                       x1   e.g. jannah.trickster.alive.letter [seelah.q3_started]
+     FORBIDS-OTHER-ROMANCE          lastcall           -> iomedae                      x1   e.g. trickster.lastcall.page.bottle [iomedae.appointment_kept]
+     REQUIRES-OTHER-LOSS            anevia             -> irabeth,tirabade             x7   e.g. anevia.a_grief_with_a_name [irabeth_dead]
+     REQUIRES-OTHER-LOSS            longcon            -> irabeth,tirabade             x7   e.g. longcon.the_talk_sergeant [irabeth_dead]
+     REQUIRES-OTHER-LOSS            irabeth            -> anevia,tirabade              x5   e.g. irabeth.after_the_answer_was_lost [anevia_dead]
+     REQUIRES-OTHER-LOSS            nurah              -> camellia                     x4   e.g. nurah.trickster.react.camellia_veiled_pardon [camellia.killed]
+     REQUIRES-OTHER-LOSS            kiana              -> seelah                       x2   e.g. kiana.widow [seelah.elan_dead]
+     REQUIRES-OTHER-LOSS            household          -> minagho_chivarro             x2   e.g. minagho_chivarro.trickster.chivarro_dead.unbought [chivarro.dead]
+     REQUIRES-OTHER-LOSS            wenduag            -> yaniel                       x2   e.g. wenduag.trickster.early.yaniel [yaniel.killed]
+     REQUIRES-OTHER-LOSS            anevia             -> tirabade                     x1   e.g. anevia.an_invitation_afterward [tirabade.group_closed]
+     REQUIRES-OTHER-LOSS            irabeth            -> tirabade                     x1   e.g. irabeth.after_the_shared_answer [tirabade.group_closed]
+     REQUIRES-OTHER-LOSS            nocticula          -> vellexia                     x1   e.g. nocticula.trickster.court.vellexia [vellexia.trickster.presumed_dead]
+     REQUIRES-OTHER-LOSS            nocticula          -> shamira                      x1   e.g. nocticula.trickster.court.shamira [shamira.killed]
+     REQUIRES-OTHER-LOSS            aranka             -> irabeth,tirabade             x1   e.g. aranka.trickster.react.anevia_verse_alone [irabeth_dead]
+     REQUIRES-OTHER-LOSS            lastcall           -> jannah                       x1   e.g. jannah.lastcall.call [jannah.trickster.cost.story_lost]
+     choice-forbids-other-romance   anevia             -> irabeth,tirabade             x3   e.g. anevia.a_question_at_home/desire/0 [irabeth.lover]
+     choice-forbids-other-romance   nocticula          -> vellexia                     x2   e.g. nocticula.trickster.court.vellexia/start/1 [vellexia.trickster.kept_as_mirror]
+     choice-forbids-other-romance   irabeth            -> anevia,tirabade              x1   e.g. irabeth.anevias_answer/other/2 [anevia.lover]
+     choice-forbids-other-romance   nocticula          -> arueshalae                   x1   e.g. nocticula.trickster.court.arueshalae/her_side/1 [arueshalae.committed]
+     choice-forbids-other-romance   yaniel             -> minagho_chivarro             x1   e.g. yaniel.trickster.ch5.minagho/ask/1 [minachiv.complete]
+     choice-forbids-other-romance   yaniel             -> areelu                       x1   e.g. yaniel.trickster.beat.areelu/wanted/1 [areelu.started]
+     choice-forbids-other-romance   lastcall           -> nidalynn                     x1   e.g. nidalynn.lastcall.call/call/0 [nidalynn.trickster.goat.lie_kept]
+     choice-requires-other-loss     kiana              -> seelah                       x16  e.g. kiana.guest_table/history/0 [seelah.elan_dead]
+     choice-requires-other-loss     galfrey            -> seelah                       x16  e.g. galfrey.trickster.kitrane.seelah/start/1 [seelah_dead]
+     choice-requires-other-loss     irabeth            -> anevia,tirabade              x15  e.g. irabeth.a_name_on_the_list/interest/1 [anevia_dead]
+     choice-requires-other-loss     galfrey            -> irabeth,tirabade             x14  e.g. galfrey.trickster.iz.offer/command/1 [irabeth_dead]
+     choice-requires-other-loss     terendelev         -> galfrey                      x11  e.g. terendelev.trickster.late.the_wound_calls/absent/0 [galfrey.dead]
+     choice-requires-other-loss     anevia             -> irabeth,tirabade             x10  e.g. anevia.trickster.gone.wardrobe/candle/5 [irabeth_gone]
+     choice-requires-other-loss     shamira            -> nocticula,nocticula.acquisition x10  e.g. shamira.trickster.after.city/talk/3 [noct.defeated_not_dead]
+     choice-requires-other-loss     shamira            -> arueshalae                   x10  e.g. shamira.trickster.after.visit/arueshalae/3 [arueshalae.evil_dead]
+     choice-requires-other-loss     nurah              -> camellia                     x6   e.g. nurah.trickster.after.proofs/trusted/1 [camellia.killed]
+     choice-requires-other-loss     jannah             -> seelah                       x6   e.g. jannah.circle.seelah/open/0 [seelah_dead]
+     choice-requires-other-loss     camellia           -> nurah                        x4   e.g. camellia.trickster.kills_answered.oath/start/0 [nurah.dead_camellia]
+     choice-requires-other-loss     terendelev         -> irabeth,tirabade             x4   e.g. terendelev.trickster.watch.irabeth/start/1 [irabeth_dead]
+     choice-requires-other-loss     yaniel             -> seelah                       x4   e.g. yaniel.trickster.visit.niche/morning2/1 [seelah_dead]
+     choice-requires-other-loss     lastcall           -> nocticula,nocticula.acquisition x4   e.g. nocticula.lastcall.call/call/1 [noct.dead]
+     choice-requires-other-loss     anevia             -> irabeth                      x3   e.g. anevia.a_question_at_home/desire/4 [irabeth.closed]
+     choice-requires-other-loss     jannah             -> irabeth,tirabade             x3   e.g. jannah.trickster.morning/told/3 [irabeth_dead]
+     choice-requires-other-loss     konomi             -> galfrey                      x2   e.g. konomi.trickster.dismissed.late/minute/2 [galfrey.dead]
+     choice-requires-other-loss     camellia           -> kaylessa                     x2   e.g. camellia.trickster.kills_answered.oath/start/3 [kaylessa.camellia_killed]
+     choice-requires-other-loss     eritrice           -> chadali                      x2   e.g. eritrice.trickster.council.minutes_letter/letter/1 [chadali.lost_at_council]
+     choice-requires-other-loss     chadali            -> eritrice                     x2   e.g. chadali.trickster.council.orange_letter/letter/2 [eritrice.lost_at_council]
+     choice-requires-other-loss     herrax             -> nocticula,nocticula.acquisition x2   e.g. herrax.letters.the_courier/b_healers2/2 [noct.defeated_not_dead]
+     choice-requires-other-loss     irabeth            -> anevia                       x1   e.g. irabeth.anevias_answer/other/1 [anevia.closed]
+     choice-requires-other-loss     arsinoe            -> shamira                      x1   e.g. arsinoe.trickster.cauldron.lease/start/0 [shamira.killed]
+     choice-requires-other-loss     arsinoe            -> kiana                        x1   e.g. arsinoe.trickster.cauldron.collection/start/2 [kiana.soul_lost]
+     choice-requires-other-loss     minagho_chivarro   -> herrax                       x1   e.g. minagho_chivarro.trickster.chivarro_dead.bought/start/0 [herrax.told_chivarro_dead]
+     choice-requires-other-loss     hepzamirah         -> horzalah                     x1   e.g. hepzamirah.trickster.flesh.sister/sister_state/0 [horzalah.dead]
+     choice-requires-other-loss     melazmera          -> hepzamirah                   x1   e.g. melazmera.trickster.ch4.hunt/truce/0 [hepzamirah.dead]
+     choice-requires-other-loss     yaniel             -> minagho_chivarro             x1   e.g. yaniel.trickster.ch4.shackle/start/1 [minagho.dead]
+     choice-requires-other-loss     lastcall           -> kiana                        x1   e.g. kiana.lastcall.call/call/1 [kiana.sunhammer_dead]
+
+## D3. Epilogue scenes not guarded against their relationship's ClosedFlag / UnavailableFlags (Story.cs:205 skips those checks)
+  315 of 569 epilogue scenes lack at least one guard. By relationship: {'tirabade': 4, 'seelah': 4, 'konomi': 18, 'jerribeth': 1, 'vellexia': 3, 'aivu': 3, 'soana': 6, 'anevia': 21, 'irabeth': 4, 'lastcall': 45, 'arsinoe': 18, 'gesmerha': 10, 'ember': 3, 'minagho_chivarro': 8, 'nocticula': 36, 'nurah': 5, 'kiana': 19, 'aranka': 3, 'dorgelinda': 5, 'targona': 7, 'camellia': 5, 'eritrice': 3, 'areelu': 2, 'chadali': 3, 'arueshalae': 3, 'devarra': 5, 'delamere': 1, 'kaylessa': 4, 'mielarah': 3, 'nidalynn': 4, 'shamira': 8, 'jannah': 3, 'terendelev': 6, 'eliandra': 7, 'galfrey': 11, 'horzalah': 7, 'elyanka': 4, 'melazmera': 3, 'yaniel': 6, 'wenduag': 1, 'iomedae': 2, 'nocticula.acquisition': 1}
+     - ending_ascend                                 tirabade         missing forbids ['swarm', 'true_lich']
+     - ending_aeon                                   tirabade         missing forbids ['closed', 'anevia_dead', 'irabeth_dead', 'anevia_gone', 'irabeth_gone', 'swarm', 'true_lich']
+     - seelah.ending_aeon                            seelah           missing forbids ['seelah_dead', 'seelah_gone']
+     - konomi.ending_public                          konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_private                         konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_ascended                        konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_unfinished                      konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_aeon                            konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_distance                        konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_distance_open                   konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_distance_ascended_open          konomi           missing forbids ['konomi.retained_dead']
+     - jerribeth.ending_aeon                         jerribeth        missing forbids ['jerribeth.unavailable']
+     - ending_ascend_promised                        tirabade         missing forbids ['swarm', 'true_lich']
+     - vellexia.ending_mirror                        vellexia         missing forbids ['vellexia.closed', 'vellexia.dead', 'vellexia.early_fight', 'vellexia.final_fight']
+     - vellexia.ending_coercion                      vellexia         missing forbids ['vellexia.closed', 'vellexia.early_fight', 'vellexia.final_fight']
+     - vellexia.ending_aeon                          vellexia         missing forbids ['vellexia.closed', 'vellexia.dead', 'vellexia.early_fight', 'vellexia.final_fight']
+     - aivu.ending_sacrifice                         aivu             missing forbids ['aivu.closed']
+     - aivu.ending_ascended                          aivu             missing forbids ['aivu.closed', 'true_lich', 'legend', 'dragon']
+     - aivu.ending_rewritten                         aivu             missing forbids ['aivu.closed', 'aivu.absent', 'aivu.detached', 'devil', 'swarm', 'true_lich', 'legend', 'dragon']
+     - konomi.ending_distance_lived                  konomi           missing forbids ['konomi.retained_dead']
+     - konomi.ending_distance_open_lived             konomi           missing forbids ['konomi.retained_dead']
+     - soana.ending_aeon                             soana            missing forbids ['soana.closed', 'soana.dead', 'soana.killed_by_camellia', 'soana.forest_dead']
+     - anevia.ending_kept                            anevia           missing forbids ['swarm', 'true_lich']
+     - anevia.ending_open                            anevia           missing forbids ['swarm', 'true_lich']
+     - anevia.ending_unfinished                      anevia           missing forbids ['swarm', 'true_lich']
+
+## E. Lints
+  Duplicate entry text on the same native answer list: 82
+     - 33960c7f7af40cd43b7f801a76c87a0b | "there was something i wanted to speak with you about." ['anevia.unborrowed_hour', 'anevia.a_question_at_home', 'anevia.one_truth', 'anevia.her_own_answer', 'anevia.a_place_of_our_own', 'anevia.an_invitation_afterward', 'anevia.borrowed_signature', 'anevia.the_paper_seller', 'anevia.the_woman_with_the_basket', 'anevia.the_counting_room', 'anevia.what_the_warning_cost', 'anevia.the_evening_without_a_case', 'anevia.departure_note', 'anevia.the_life_she_lived', 'anevia.a_key_that_is_hers', 'anevia.the_last_ordinary_thing', 'anevia.a_grief_with_a_name']
+     - 871af36f2ab2b1f40b5de77976c54276 | "there was something i wanted to speak with you about." ['anevia.beths_question', 'anevia.beths_answer']
+     - 2729c49e2bf20c64caa4f54b352e03f6 | "before i leave, there is another question." ['noct.acq.audience_missed', 'noct.acq.audience_rejected', 'noct.acq.audience_patronage']
+     - 871af36f2ab2b1f40b5de77976c54276 | "knight-captain?" ['irabeth.trickster.dead.relieved_not_dismissed', 'irabeth.trickster.killed.blow_missed']
+     - 417fa384f3250634bb71859fbc913453 | "irabeth is back." ['irabeth.trickster.dead.react_seelah', 'irabeth.trickster.killed.react_seelah', 'irabeth.trickster.killed.react_seelah_raised']
+     - 871af36f2ab2b1f40b5de77976c54276 | "anything to report, knight-captain?" ['irabeth.trickster.dead.react_galfrey', 'irabeth.trickster.dead.react_kitrane', 'irabeth.trickster.killed.react_kitrane', 'nurah.trickster.react.irabeth_night']
+     - 0dc8b8604bb33c846a63f3eb62443674 | "about the war council i missed." ['anevia.trickster.gone.react_konomi', 'anevia.trickster.gone.react_konomi_closet']
+     - e41585da330233143b34ef64d7d62d69 | "you heard about anevia." ['anevia.trickster.gone.react_woljif', 'anevia.trickster.gone.react_woljif_crate', 'anevia.trickster.gone.react_woljif_fetched', 'anevia.trickster.gone.react_woljif_confession']
+     - 0dc8b8604bb33c846a63f3eb62443674 | "the tirabades are back." ['anevia.trickster.gone.react_konomi_fetched', 'anevia.trickster.gone.react_konomi_confession']
+     - 589d83230bbbfd04bb1220ee4fef1ce1 | "the lady of the sun is back." ['jerribeth.trickster.reaction.camellia', 'jerribeth.trickster.reaction.camellia_host', 'jerribeth.trickster.reaction.camellia_saw', 'jerribeth.trickster.reaction.camellia_host_saw']
+  RRT entry answers injected per native answer list (each evaluates ShowConditions+SelectConditions -> State()): {'871af36f2ab2b1f40b5de77976c54276': 101, '33960c7f7af40cd43b7f801a76c87a0b': 78, '03ebad9587cbea0438d901a0f8df44f1': 62, '589d83230bbbfd04bb1220ee4fef1ce1': 59, '2f5b7e0b76d3c5a42a431e1e33a8db09': 55, 'e649f211c6b002a49a0c633061877927': 52, '417fa384f3250634bb71859fbc913453': 49, 'd07bffc320b9127459c40869ab3e8ee4': 44}
+  Portrait keys without Scenes/<key>.png (page shows native/blank picture): 76 keys, 10933 nodes {'conversant': 790, 'Camellia': 729, 'Shamira': 657, 'Nenio': 647, 'Delamere': 599, 'Mielarah': 545, 'Seelah': 521, 'Galfrey': 517, 'Arueshalae': 480, 'Terendelev': 457, 'Jannah': 417, 'Kaylessa': 396, 'Areelu': 359, 'Nidalynn': 357, 'Soana': 321}
+  Overlong (node>1400, choice>220, entry>160 chars): {'node': 241, 'entry': 2, 'choice': 9}; empty: 2
+     - ('node', 'noct.empty_chair/edris', 2667)
+     - ('node', 'noct.empty_chair.acquired.new/edris', 2667)
+     - ('node', 'noct.empty_chair.acquired.refused/edris', 2667)
+     - ('node', 'noct.empty_chair.acquired.prior/edris', 2667)
+     - ('node', 'arsinoe_the_window_opens/night', 2437)
+     - ('node', 'noct.second_door.acquired.new/power', 2218)
+     - ('node', 'noct.second_door.acquired.refused/power', 2218)
+     - ('node', 'noct.second_door.acquired.prior/power', 2218)
+  Formatting by source file (non-zero):
+     ?(generated id)                        {'double-space': 9, 'unbalanced-{n}': 7, 'odd-quotes': 26}
+     arsinoe_trickster.py                   {'odd-quotes': 1}
+     camellia_trickster.py                  {'unbalanced-{n}': 5, 'odd-quotes': 4}
+     earned_presence.py                     {'odd-quotes': 6}
+     elyanka_hearse.py                      {'odd-quotes': 4}
+     galfrey_trickster.py                   {'unbalanced-{n}': 1}
+     household.py                           {'odd-quotes': 6}
+     jerribeth.py                           {'unbalanced-{n}': 1}
+     konomi_ordinary_expansion.py           {'odd-quotes': 1}
+     nurah_trickster.py                     {'odd-quotes': 11}
+     scene_kinds.py                         {'odd-quotes': 1}
+     targona_opening.py                     {'odd-quotes': 12}
+     targona_trickster.py                   {'odd-quotes': 1}
+     tirabade_after_roads.py                {'unbalanced-{n}': 1}
+     tirabade_later.py                      {'unbalanced-{n}': 2}
+  Narration-tag lint by source file (lines that read as narration but lack {n}...{/n}):
+     ?(generated id)                        {'unquoted-prose-in-speaker-node': 407, 'attribution-outside-{n}': 987, 'untagged-narration-in-narrator-node': 2}  e.g. ['noct.unlit_quay.acquired.new/decline_undertaking: She takes back the embroidered cloth.']
+     camellia_trickster.py                  {'attribution-outside-{n}': 119, 'unquoted-prose-in-speaker-node': 4}  e.g. ['soana.one_account/start: "A hunter\'s rattle," she says. "With more writing."']
+     shamira_mind.py                        {'attribution-outside-{n}': 79, 'unquoted-prose-in-speaker-node': 38}  e.g. ['noct.sixth_passenger/measure: "There," you say. "They are paying for something they do not call cargo."']
+     gesmerha_campaign.py                   {'attribution-outside-{n}': 66}  e.g. ['gesmerha.unbought_work/start: "You are allowed to ask," she adds. "I have had three people tell me today that it would m']
+     aivu_campaign.py                       {'attribution-outside-{n}': 66}  e.g. ['aivu.someone_elses_turn/talked: "I told Nessa I can come with you next time you look at the roofs," he says. "From the str']
+     household.py                           {'attribution-outside-{n}': 60}  e.g. ['kiana.last_page/keep: "You may sit down," she says at last, with the exhausted dignity of a woman defeated by he']
+     arsinoe_continuation.py                {'unquoted-prose-in-speaker-node': 38, 'attribution-outside-{n}': 7}  e.g. ['arsinoe_your_hours/game: The first round goes quickly. You take an opening she appears to have missed, and discover']
+     nocticula_trickster.py                 {'unquoted-prose-in-speaker-node': 30, 'attribution-outside-{n}': 11}  e.g. ['noct.acq.the_missing_line/fine: You trace the folded edge instead of the line Nocticula withheld. The difference catches u']
+     aranka_continuation.py                 {'unquoted-prose-in-speaker-node': 3, 'attribution-outside-{n}': 36}  e.g. ['aranka.the_wrong_refrain/song: The traveler turns below.']
+     scene_kinds.py                         {'untagged-narration-in-narrator-node': 6, 'attribution-outside-{n}': 29, 'unquoted-prose-in-speaker-node': 3}  e.g. ['targona.the_unscheduled_door/leaving: She carries the parcel with her, because it is hers. On a bench by the muster gate she unp']
+     lastcall_partners.py                   {'attribution-outside-{n}': 38}  e.g. ['minachiv.the_second_address/start: "There," she says. "A second address. Or part of one."']
+     targona_opening.py                     {'untagged-narration-in-narrator-node': 20, 'attribution-outside-{n}': 10}  e.g. ['targona.second_margin/account: The lines are struck through so hard that the nib has torn the sheet.']
+     earned_presence.py                     {'attribution-outside-{n}': 27}  e.g. ['konomi.parting/end: "I shall miss you," she says. "I shall also be angry about it, probably in writing. Neithe']
+     jerribeth_trickster.py                 {'attribution-outside-{n}': 27}  e.g. ['jerribeth.refuge/stay: "I thought you might be there," she says. "You may be pleased about that after I have gone']
+     ember_campaign.py                      {'attribution-outside-{n}': 26}  e.g. ['ember.the_empty_basket/room: "The comb was beneath that platform," he tells Ember. "Before you ask, I didn\'t put it the']
+     herrax_trickster.py                    {'unquoted-prose-in-speaker-node': 25, 'attribution-outside-{n}': 1}  e.g. ["herrax.letters.the_courier/letter: Rokhorn has been told that if he reads this, I'll take the other side of his face to match"]
+     arsinoe_campaign.py                    {'unquoted-prose-in-speaker-node': 10, 'attribution-outside-{n}': 15}  e.g. ['arsinoe_the_unprofitable_hour/game: The first round is quick. The second develops an awkward middle in which both of you would']
+     nocticula_acquired_harbor.py           {'unquoted-prose-in-speaker-node': 5, 'attribution-outside-{n}': 16}  e.g. ['noct.unlit_quay/decline_undertaking: She takes back the embroidered cloth.']
+     yaniel_radiance.py                     {'attribution-outside-{n}': 19}  e.g. ['yaniel.trickster.late.wall/struck: "You," {n}she says.{/n} "You drew on me in the Fane. A paladin of Iomedae caught your arm,']
+     areelu_trickster.py                    {'attribution-outside-{n}': 18}  e.g. ['ember.missing_cloth/wait: "I\'ll do that door tomorrow," she says. "There won\'t be anybody waiting here for a perform']
+     story.py                               {'attribution-outside-{n}': 17}  e.g. ['table/room: "All right," she says. "We can learn."']
+     anevia_trickster.py                    {'attribution-outside-{n}': 12, 'unquoted-prose-in-speaker-node': 4}  e.g. ['anevia.a_question_at_home/time: "I want to see what you\'d do if you picked," she says. "Not what you think I\'d like. Kenab']
+     konomi.py                              {'attribution-outside-{n}': 15}  e.g. ['konomi.letter/start: "The opening is good," she says. "The conclusion attempts to conceal an invitation inside ']
+     vellexia_trickster.py                  {'attribution-outside-{n}': 12}  e.g. ['vellexia.the_voice_after_the_abyss/start: "You have become inconveniently difficult to reach," she says. "I considered taking offens']
+     gesmerha_late_campaign.py              {'attribution-outside-{n}': 11}  e.g. ['gesmerha.the_voice_at_court/lover: "Do you still want me here?" you ask.']
+     melazmera_trickster.py                 {'attribution-outside-{n}': 11}  e.g. ['melazmera.trickster.ch4.hunt/arrive_known: "You held it out," {n}she says, before she has even sat down.{/n} "In my cave. I had my cl']
+     tirabade_after_roads.py                {'attribution-outside-{n}': 9}  e.g. ['three_borrowed_names/recovered: "I left with the load I planned," she says. "I came back expecting another. Now I\'m answer']
+     elyanka_hearse.py                      {'untagged-narration-in-narrator-node': 7, 'attribution-outside-{n}': 2}  e.g. ['targona.unasked_question/drawing: The last sentence is underlined once, as though she has decided you may laugh at that much']
+     shamira_trickster.py                   {'unquoted-prose-in-speaker-node': 9}  e.g. ['shamira.early.telmer_letter/dead: They know you let me go. The cauldron-masters who are left think I sold them to you. I tol']
+     eliandra_stars.py                      {'attribution-outside-{n}': 8}  e.g. ['eliandra.trickster.ch5.self_offering/refused: "You refused it for me," she says, without turning round. "You meant it kindly, and it was']
+     seelah_trickster.py                    {'attribution-outside-{n}': 7}  e.g. ['seelah.trickster.in_party.lift_lesson/lesson: "The trick\'s not the hand," she says, and gives it back. "It\'s the apology. Everybody watc']
+     seelah.py                              {'attribution-outside-{n}': 6}  e.g. ['seelah.boots/rest: "I used to think heroes spent their evenings doing something impressive," she says at last']
+     jerribeth.py                           {'attribution-outside-{n}': 6}  e.g. ['jerribeth.future/interest: "Paid in full," {n}she says, and she sounds, for once, entirely satisfied.{/n} "Now we may']
+     tirabade_independent_bridge.py         {'attribution-outside-{n}': 6}  e.g. ['tirabade.negotiated_table/start: "We each have a relationship with you," she says. "We have not yet asked what we might wan']
+     tirabade_reckoning.py                  {'attribution-outside-{n}': 5}  e.g. ['three_stolen_roads/after: "Wanted us to buy something useless," she says. "Managed another report."']
+     aivu_opening.py                        {'attribution-outside-{n}': 5}  e.g. ['aivu.the_roof_below/listen: "I thought the whole wall was falling," he says. "Then I thought it was a demon. Then I th']
+     galfrey_trickster.py                   {'attribution-outside-{n}': 5}  e.g. ['irabeth.the_seized_wagon/officer: "I asked whether he expected me to smelt it myself," she says. "That was the laugh."']
+     konomi_trickster.py                    {'attribution-outside-{n}': 5}  e.g. ['konomi.trickster.dismissed.private/threshold: "The next evening," she says, "is this one."']
+     pacing_pp1.py                          {'attribution-outside-{n}': 4}  e.g. ['seelah.wager/dance: "That part was intentional," she says, laughing. "Ask anyone."']
+     tirabade_campaign.py                   {'attribution-outside-{n}': 4}  e.g. ['three_yard/start: "Tessa," she introduces herself. "I keep the yard. Afternoon fee pays for the lane, not ad']
+     seelah_later.py                        {'attribution-outside-{n}': 3, 'unquoted-prose-in-speaker-node': 1}  e.g. ['seelah.door/night: "If I knock that lamp over, we\'re blaming the bedpost," she says.']
+     konomi_private_absence.py              {'attribution-outside-{n}': 4}  e.g. ['konomi.private_reunion/absence_oldwonder: "There," she says at last. "I have something I can imagine."']
+     kiana_trickster.py                     {'attribution-outside-{n}': 4}  e.g. ['kiana.date/threshold: "Act three," {n}she says against your mouth.{/n} "The princess dismisses the guards, and t']
+     arsinoe_opening.py                     {'attribution-outside-{n}': 4}  e.g. ['arsinoe_printers_view/start: "Please finish that first," she says.']
+     vellexia_campaign.py                   {'attribution-outside-{n}': 4}  e.g. ['vellexia.the_second_invitation/evidence: "He had it printed," she says. "Before the evening, he claims."']
+     arsinoe_trickster.py                   {'attribution-outside-{n}': 4}  e.g. ['arsinoe.trickster.cauldron.collection/threshold: "You are staring, Commander. Good," {n}she says, and settles astride you, knees braced on ']
+     gesmerha_trickster.py                  {'attribution-outside-{n}': 2, 'unquoted-prose-in-speaker-node': 2}  e.g. ['gesmerha.the_things_still_here/hand: "There you are," she says softly.']
+     irabeth_trickster.py                   {'attribution-outside-{n}': 2, 'unquoted-prose-in-speaker-node': 2}  e.g. ['irabeth.trickster.dead.raise_list/roster: "She wrote that herself," he says. "I know the hand." He reads it twice, the way she would']
+     hepzamirah_trickster.py                {'unquoted-prose-in-speaker-node': 4}  e.g. ['hepzamirah.trickster.ghost.body/terms: Then I consider the alternative: a dead princess who walks through walls, talks, and knows']
+     wenduag_trickster.py                   {'attribution-outside-{n}': 4}  e.g. ['wenduag.trickster.abyss.fall/alone: "I never wanted it to be me," he says, to nobody. "I always thought, if anyone, it would b']
+     elyanka_trickster.py                   {'attribution-outside-{n}': 2, 'unquoted-prose-in-speaker-node': 1}  e.g. ['seelah.late_race/watching: "The hoop has to stay," she says before anyone asks. "That was the rule."']
+     konomi_private_consequence.py          {'attribution-outside-{n}': 3}  e.g. ['konomi.private_last_visit/night: "The lamp stays lit," she says against your mouth. "I intend to remember this properly."']
+     pacing_pp4.py                          {'attribution-outside-{n}': 3}  e.g. ['noct.acq.audience_missed/leverage: "The Council," she says. "Before your private ambitions acquire another chapter."']
+     aranka_trickster.py                    {'unquoted-prose-in-speaker-node': 3}  e.g. ['aranka.trickster.verse.third_verse/start: I have walked every road there and back again.']
+     targona_trickster.py                   {'attribution-outside-{n}': 3}  e.g. ['targona.ward_evening/paid: "You paid them more than they are worth," she says. "They will be insufferable." {n}She fo']
+     arueshalae_trickster.py                {'attribution-outside-{n}': 2}  e.g. ['arueshalae.treatment.intake/diagnosis: "Starvation," you tell her. "I\'d write it on the chart, if you had a chart."']
+     jannah_circle.py                       {'attribution-outside-{n}': 2}  e.g. ['jannah.trickster.challenge/you_up: "The wrong way, and in front of everybody," she says, to you, not to them. "Good. Nobody c']
+     lastcall.py                            {'untagged-narration-in-narrator-node': 2}  e.g. ['trickster.lastcall.page.interrupted/page: The report should have ended there. I had written the ending, I had underlined it, and I h']
+     iomedae_trickster.py                   {'untagged-narration-in-narrator-node': 2}  e.g. ['trickster.lastcall.page.bottle/page: The Commander carried {mf|his|her} own death in a hip flask for the rest of {mf|his|her} l']
+     jannah_trickster.py                    {'attribution-outside-{n}': 1}  e.g. ['seelah.kept/supper: "I was thinking about kissing you," she says. "Apparently I can\'t do that and eat at the s']
+     tirabade_later.py                      {'attribution-outside-{n}': 1}  e.g. ['three_outing/anevia_dance: "Better than the drink," she says, then reaches back for you.{/n}']
+     kiana_consequences.py                  {'attribution-outside-{n}': 1}  e.g. ['kiana.guest_table/widowed: "The dog has been getting more expensive," he says.']
+     jerribeth_fate.py                      {'attribution-outside-{n}': 1}  e.g. ['jerribeth.fate_envelope/purpose: "I can wait," you say.']
+     soana_later_progression.py             {'attribution-outside-{n}': 1}  e.g. ['soana.the_inherited_debt/oath: "Would you have helped her if she had no mark?" you ask.']
+     soana_late_campaign.py                 {'attribution-outside-{n}': 1}  e.g. ['soana.past_the_firelight/tested: "Soana," you tell the dark. "Call me something rude. Anything. You have never once run sho']
+     minagho_chivarro_trickster.py          {'attribution-outside-{n}': 1}  e.g. ['minagho_chivarro.trickster.alone.chivarro_morning/start: "Rent," she says, before you can speak. "And interest. I charge interest, honey; I was a m']
+     soana_trickster.py                     {'attribution-outside-{n}': 1}  e.g. ['soana.trickster.handover.winter_portion/shared: "Stupid," she says again, more quietly, and does not let go of the rag\'s end for a while.']
+  Invented proper names (not in native enGB localization) used in >1 relationship: 23
+     - Chancellor     ['dorgelinda', 'konomi']
+     - Dema           ['anevia', 'irabeth']
+     - Deren          ['aranka', 'ember']
+     - Edris          ['arsinoe', 'kiana', 'nocticula']
+     - Finders        ['areelu', 'seelah']
+     - Hessa          ['jerribeth', 'soana']
+     - Highness       ['hepzamirah', 'kiana']
+     - Mera           ['nocticula', 'seelah']
+     - Meret          ['nocticula', 'soana', 'targona']
+     - Neris          ['aranka', 'nocticula.acquisition']
+     - Nessa          ['aivu', 'ember', 'tirabade']
+     - Pella          ['aivu', 'ember', 'irabeth']
+     - Ressa          ['anevia', 'tirabade']
+     - Rovan          ['aranka', 'kiana']
+     - Salven         ['nocticula', 'nocticula.acquisition']
+     - Sella          ['aranka', 'gesmerha', 'irabeth', 'konomi']
+     - Tanner         ['arueshalae', 'kiana']
+     - Tessa          ['ember', 'tirabade']
+     - Thievery       ['delamere', 'iomedae', 'shamira', 'yaniel']
+     - Toildays       ['anevia', 'camellia']
+     - Vessa          ['ember', 'nocticula']
+     - Vhal           ['nocticula', 'nurah']
+     - Vyre           ['delamere', 'yaniel']
+  Unregistered storyline modules (not imported by expansion.py): ['aranka_path_acquisition', 'areelu_afterlogue', 'arueshalae_early', 'camellia_early', 'camellia_last', 'camellia_native', 'chivarro_death', 'devarra_native', 'galfrey_all_path_continuation', 'harness_probes', 'household_frictions', 'household_pair_seelah_wenduag', 'kaylessa_early', 'kiana_native', 'lastcall_ledger', 'lastcall_partners', 'nm1_fold', 'targona_trickster_acquisition', 'terendelev_continuation', 'wenduag_native', 'wenduag_relationship_network', 'yaniel_radiance', 'yaniel_walls']
+  vs installed-game-copy: 42 RRT blueprint names registered then but NOT now (saves referencing them fail to resolve); 911 answer slots whose text/Set changed at the same index
+     removed: answer.areelu.trickster.report.promise.filed.continue
+     removed: answer.areelu.trickster.report.promise.kept.continue
+     removed: answer.irabeth.trickster.dead.react_galfrey.start.contact_lost
+     removed: answer.jerribeth.trickster.epilogue.commit.signed.continue
+     removed: answer.nocticula.trickster.epilogue.commit.kissed.continue
+     removed: answer.nocticula.trickster.epilogue.commit.knelt.continue
+     drift: seelah.boots/company/0
+     drift: seelah.wager/walk/1
+     drift: seelah.promise/keep/0
+     drift: seelah.promise/supper/0
+     drift: seelah.promise/supper/1
+     drift: seelah.promise/supper/2
+  vs released-0.1-installed-34-scenes: 0 RRT blueprint names registered then but NOT now (saves referencing them fail to resolve); 0 answer slots whose text/Set changed at the same index
+
+## E2. Gate lints (handoff 17): 0 hard (singleton groups 0, implicit tirabade relationship 0)
+
+Earned presence: 0 hard
+
+## E3. Etude lifecycle (254 etude bindings; read = what Main.BuildState reads): 0 HARD, 119 WARN; classes {'hold': 112, 'conditional': 56, 'parent_mod': 36, 'self_completed': 12, 'area': 9, 'conditional/self_completed': 8, 'area/conditional': 7, 'area/conditional/self_completed': 5, 'area/cascade': 2, 'cascade': 1, 'self_completed/event_cascade': 1, 'event_cascade': 1, 'area/conditional/event_cascade': 1, 'area/self_completed': 1, 'conditional/self_completed/event_cascade': 1, 'conditional/event_cascade': 1}
+  warn anevia_gone @ tirabade.UnavailableFlags: dormant while an ActivationCondition fails (AneviaGone: EtudeStatus)
+  warn anevia_gone @ anevia.UnavailableFlags: dormant while an ActivationCondition fails (AneviaGone: EtudeStatus)
+  warn anevia_gone @ anevia.TricksterAccess.gone: TricksterAccess detect of a Playing-only etude (conditional): the device's matrix state assumes its history
+  warn arueshalae.kicked_out @ arueshalae.UnavailableFlags: dormant while an ActivationCondition fails (ArueshalaeNotInParty_KickedOut: CompanionInParty)
+  warn arueshalae.kicked_out_evil @ arueshalae.UnavailableFlags: dormant while an ActivationCondition fails (ArueshalaeEvilNotInParty_KickedOut: CompanionInParty)
+  warn arueshalae_dead @ arueshalae.UnavailableFlags: dormant while an ActivationCondition fails (ArueshalaeNotInParty_Dead: CompanionInParty)
+  warn arueshalae_dead @ arueshalae.TricksterAccess.dead: TricksterAccess detect of a Playing-only etude (conditional): the device's matrix state assumes its history
+  warn camellia.dead @ camellia.UnavailableFlags: dormant while an ActivationCondition fails (CamelliaNotInParty_Dead: CompanionInParty, UnitIsDead)
+  warn camellia.dead @ camellia.TricksterAccess.killed_by_commander: TricksterAccess detect of a Playing-only etude (conditional): the device's matrix state assumes its history
+  warn camellia.dead @ camellia.TricksterAccess.dead_otherwise: TricksterAccess detect of a Playing-only etude (conditional): the device's matrix state assumes its history
+  warn camellia.kicked_out @ camellia.UnavailableFlags: dormant while an ActivationCondition fails (CamelliaNotInParty_KickedOut: CompanionInParty)
+  warn demon @ targona.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDemon: UnitClass)
+  warn demon @ aranka.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDemon: UnitClass)
+  warn devil @ targona.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDevil: UnitClass)
+  warn devil @ aivu.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDevil: UnitClass)
+  warn devil @ aranka.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDevil: UnitClass)
+  warn dorgelinda.present @ dorgelinda.TricksterAccess.dorgelinda.present: TricksterAccess detect of a Playing-only etude (area/conditional/self_completed): the device's matrix state assumes its history
+  warn dragon @ aivu.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDragon: UnitClass)
+  warn dragon @ nocticula.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDragon: UnitClass)
+  warn dragon @ nocticula.acquisition.UnavailableFlags: dormant while an ActivationCondition fails (PlayerIsDragon: UnitClass)
+  warn dragon @ DerivedForbids.trickster.now: dormant while an ActivationCondition fails (PlayerIsDragon: UnitClass)
+  warn ember.absent @ ember.UnavailableFlags: dormant while an ActivationCondition fails (EmberNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus)
+  warn ember_dead @ ember.UnavailableFlags: dormant while an ActivationCondition fails (EmberNotInParty_Dead: CompanionInParty, UnitIsDead)
+  warn ember_gone @ ember.UnavailableFlags: dormant while an ActivationCondition fails (EmberNotInParty_KickedOut: CompanionInParty)
+  warn galfrey.final @ Derived.galfrey.trickster.partner: dormant while an ActivationCondition fails (Galfrey_Final: EtudeStatus)
+  warn galfrey.final @ Derived.galfrey.trickster.lived: dormant while an ActivationCondition fails (Galfrey_Final: EtudeStatus)
+  warn galfrey.final @ Derived.galfrey.harem.voice.a_face_in_the_crowd: dormant while an ActivationCondition fails (Galfrey_Final: EtudeStatus)
+  warn galfrey.final @ Derived.galfrey.harem.eligible: dormant while an ActivationCondition fails (Galfrey_Final: EtudeStatus)
+  warn greybor.away @ Derived.horzalah.q3_lapsed: dormant while an ActivationCondition fails (GreyborNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus)
+  warn greybor.away @ Derived.melazmera.greybor_gone: dormant while an ActivationCondition fails (GreyborNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus)
+  warn greybor.dead @ Derived.horzalah.q3_lapsed: dormant while an ActivationCondition fails (GreyborNotInParty_Dead: CompanionInParty)
+  warn greybor.dead @ Derived.melazmera.greybor_gone: dormant while an ActivationCondition fails (GreyborNotInParty_Dead: CompanionInParty)
+  warn greybor.kicked_out @ Derived.horzalah.q3_lapsed: dormant while an ActivationCondition fails (GreyborNotInParty_KickedOut: CompanionInParty)
+  warn greybor.kicked_out @ Derived.melazmera.greybor_gone: dormant while an ActivationCondition fails (GreyborNotInParty_KickedOut: CompanionInParty)
+  warn hepzamirah.dead @ hepzamirah.trickster.colyphyr.offer: Playing-only in its area c876d5303f4a19f4a80b0cc9b313db6f; a native-list/contact scene with no Areas (area unproven)
+  warn hepzamirah.dead @ hepzamirah.TricksterAccess.ghost: TricksterAccess detect of a Playing-only etude (area/cascade): the device's matrix state assumes its history
+  warn hulrun.away_c5 @ galfrey.trickster.react.hulrun.door: Playing-only in its area 2570015799edf594daf2f076f2f975d8; a native-list/contact scene with no Areas (area unproven)
+  warn hulrun.away_c5 @ galfrey.trickster.react.hulrun.ledger: Playing-only in its area 2570015799edf594daf2f076f2f975d8; a native-list/contact scene with no Areas (area unproven)
+  warn irabeth_gone @ tirabade.UnavailableFlags: dormant while an ActivationCondition fails (IrabethGone: EtudeStatus)
+  warn irabeth_gone @ irabeth.UnavailableFlags: dormant while an ActivationCondition fails (IrabethGone: EtudeStatus)
+  ... 79 more warnings (rrt_verify_report.json etude_lifecycle.warn)
+  key                                      binding        read              lifecycle                                    etude / ruling
+  CalebFooled                              Etudes         Playing           hold                                         CalebFooled
+  aeon                                     Etudes         Playing           conditional/self_completed                   PlayerIsAeon
+  aivu.absent                              Etudes         Playing           self_completed                               NoDragon
+  aivu.detached                            Etudes         Playing           hold                                         AzataIsland_DevilDetachDragon
+  anevia.irabeth_killed_by_commander       Etudes         Playing           hold                                         IrabethKilledByPlayer
+  anevia_away                              Etudes         Playing           area/conditional                             AneviaNotInDrezen
+  anevia_dead                              Etudes         Playing|Completed hold                                         AneviaDead
+  anevia_gone                              Etudes         Playing|Completed conditional                                  AneviaGone
+  angel                                    Etudes         Playing           conditional/self_completed                   PlayerIsAngel
+  aranka.devil_contract                    Etudes         Playing           hold                                         AzataDevilDecision_Contract
+  aranka.devil_deception                   Etudes         Playing           hold                                         AzataDevilDecision_Deception
+  aranka.ran_reverie_partner               Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  aranka.ran_romance                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  areelu.ascended                          Etudes         Playing           hold                                         TE_AscendAreelu
+  areelu.dead_fight                        Etudes         Playing           hold                                         Ending_AreeluDead
+  areelu.incinerated                       Etudes         Playing           hold                                         AreeluIncinerated
+  areelu.sacrifice_before                  Etudes         Playing           hold                                         Ending_AreeluSacrificeBefore
+  areelu.sacrifice_trickster               Etudes         Playing           hold                                         Ending_AreeluSacrificeTrickster
+  areelu.sacrifice_wound                   Etudes         Playing           hold                                         Ending_AreeluSacrifice
+  arsinoe.capital                          Etudes         Playing           area/conditional                             Arsinoe_Capital
+  arsinoe.victims_revived                  Etudes         Playing           area/conditional/self_completed              VictimsRevived [reviewed]
+  arueshalae.evil_dead                     Etudes         Playing|Completed hold                                         EvilArushaKilled
+  arueshalae.evil_recruited                Etudes         Playing           hold                                         EvilArushaRecruited
+  arueshalae.fallen                        Etudes         Playing           hold                                         ArueshalaeIsEvil
+  arueshalae.kicked_out                    Etudes         Playing           conditional                                  ArueshalaeNotInParty_KickedOut
+  arueshalae.kicked_out_evil               Etudes         Playing           conditional                                  ArueshalaeEvilNotInParty_KickedOut
+  arueshalae.recruited_drezen              Etudes         Playing           hold                                         ArueshalaeRecruitedInDrezen
+  arueshalae.recruited_redoubt             Etudes         Playing           hold                                         ArueshalaeRecruitedFinally
+  arueshalae_dead                          Etudes         Playing|Completed conditional                                  ArueshalaeNotInParty_Dead
+  ascend_all                               Etudes         Playing|Completed hold                                         TE_AscendAll
+  ascend_alone                             Etudes         Playing|Completed hold                                         TE_AscendAlone
+  ascend_areelu                            Etudes         Playing|Completed hold                                         TE_AscendAreelu
+  ascend_companions                        Etudes         Playing|Completed hold                                         TE_AscendCompanions
+  azata                                    Etudes         Playing           conditional/self_completed                   PlayerIsAzata
+  broken                                   Etudes         Playing           hold                                         IrabethBroken_Chapter03
+  camellia.dead                            Etudes         Playing           conditional                                  CamelliaNotInParty_Dead
+  camellia.kicked_out                      Etudes         Playing           conditional                                  CamelliaNotInParty_KickedOut
+  camellia.killed                          Etudes         Playing           hold                                         CamelliaState_Killed
+  camellia.romance                         Etudes         Playing           conditional/self_completed                   CamelliaRomance [reviewed]
+  captain.kerz                             Etudes         Playing           hold                                         CaptainKerz
+  captain.nocticula                        Etudes         Playing           hold                                         CaptainNocticula
+  chapter.six                              Etudes         Playing           hold                                         Chapter06
+  chivarro.dead                            Etudes         Playing           hold                                         ChivarroKilled
+  chivarro.exiled                          Etudes         Playing           area                                         ChivarroWasTeleportedAway [reviewed]
+  chivarro.removed                         Etudes         Playing           hold                                         ChivarroRemovedFormPower
+  chivarro.searching                       Etudes         Playing           hold                                         ChivarroHappyEnd
+  coronation.after                         Etudes         Playing           cascade                                      KTCs_AfterCoronation
+  council.fought                           Etudes         Playing           hold                                         FightAgainstCouncil
+  council.fought_nocta_allied              Etudes         Playing           hold                                         FightAgainstCouncilNoctaAllied
+  daeran.dead                              Etudes         Playing           conditional                                  DaeranNotInParty_Dead
+  daeran.kicked_out                        Etudes         Playing           conditional                                  DaeranNotInParty_KickedOut
+  delamere.remains_finished                Etudes         Playing           hold                                         DelameresRemainsFinished
+  demon                                    Etudes         Playing           conditional/self_completed                   PlayerIsDemon
+  devarra.chapter_three                    Etudes         Playing           self_completed                               Chapter03
+  devarra.dead_lair                        Etudes         Playing           hold                                         RedDragonDead
+  devarra.dead_sanctum                     Etudes         Playing           hold                                         RedDragonKilledInIvorySanctum
+  devarra.escaped                          Etudes         Playing           hold                                         RedDragonEscaped
+  devil                                    Etudes         Playing           conditional                                  PlayerIsDevil
+  dorgelinda.present                       Etudes         Playing           area/conditional/self_completed              LogisticsOfficer_InDrezen
+  dragon                                   Etudes         Playing           conditional                                  PlayerIsDragon
+  eggs.destroyed                           Etudes         Playing           hold                                         DragonEggsDestroyed
+  eggs.druids                              Etudes         Playing           hold                                         DragonsInEducationFinished
+  eggs.omelet                              Etudes         Playing           hold                                         UnprecedentedOmeletFinished
+  eggs.project                             Etudes         Playing           hold                                         DragonEggsProjectGained
+  eliandra.dead                            Etudes         Playing           hold                                         EliandraDead
+  eliandra.research_stolen                 Etudes         Playing           hold                                         Pulura_MutasafenStoleProject
+  ember.absent                             Etudes         Playing           conditional                                  EmberNotInParty_AccordingToThePlot
+  ember.killed_in_kenabres                 Etudes         Playing           hold                                         EmberKilledInKenabres
+  ember.native_devastated                  Etudes         Playing           conditional                                  EmberEnd_Evil
+  ember.native_good                        Etudes         Playing           conditional                                  EmberEnd_Good
+  ember.native_law                         Etudes         Playing           conditional                                  EmberEnd_Law
+  ember.present                            Etudes         Playing           conditional                                  EmberInParty
+  ember_dead                               Etudes         Playing|Completed conditional                                  EmberNotInParty_Dead
+  ember_gone                               Etudes         Playing|Completed conditional                                  EmberNotInParty_KickedOut
+  encouraged                               Etudes         Playing           hold                                         IrabethEncouraged_Chapter03
+  ending.trickster                         Etudes         Playing|Completed hold                                         Ending_Trickster
+  ending.trickster_allplanes               Etudes         Playing|Completed hold                                         Ending_Trickster_AllPlanes
+  ending.trickster_allplanes_fw            Etudes         Playing|Completed hold                                         Ending_Trickster_AllPlanesAndFW
+  ending.trickster_full                    Etudes         Playing|Completed hold                                         Ending_TricksterFull
+  ending.wound_closed                      Etudes         Playing           hold                                         Ending_WoundClosed
+  fleshmarket.massacre                     Etudes         Playing           hold                                         FleshMarketMassacre
+  fool_king.crowned                        Etudes         Playing           hold                                         FoolKingCoronated
+  fool_king.gone                           Etudes         Playing           area/conditional                             FoolKingGone [reviewed]
+  galfrey.dead                             Etudes         Playing           hold                                         GalfreyDead
+  galfrey.final                            Etudes         Playing           conditional                                  Galfrey_Final
+  galfrey.kc_after_fane                    Etudes         Playing|Completed hold                                         PlayerIsKnightCommanderAfterFane
+  galfrey.killed_by_commander              Etudes         Playing           hold                                         GalfreyKilledByCommander
+  galfrey.romance_active                   Etudes         Playing           self_completed/event_cascade                 GalfreyRomance_Active
+  galfrey.romance_finished                 Etudes         Playing|Completed event_cascade                                GalfreyRomance_Finished
+  gesmerha.capital_guest                   Etudes         Playing           area/conditional                             KTC_WintersunHelp_BlindCarver
+  gesmerha.dead                            Etudes         Playing           hold                                         BlindCarver_Dead
+  gesmerha.illusions                       Etudes         Playing           hold                                         Illusions_upgrade
+  gesmerha.marhevok_rules                  Etudes         Playing           self_completed                               Marhevok_StayLeader [reviewed]
+  gesmerha.post_resolution_contact         Etudes         Playing           area                                         WinterSunAfterFinalDIalog_Leader
+  gesmerha.truth                           Etudes         Playing           hold                                         Illusions_removed
+  greybor.away                             Etudes         Playing           conditional                                  GreyborNotInParty_AccordingToThePlot
+  greybor.dead                             Etudes         Playing           conditional                                  GreyborNotInParty_Dead
+  greybor.in_party                         Etudes         Playing           conditional                                  GreyborInParty
+  greybor.kicked_out                       Etudes         Playing           conditional                                  GreyborNotInParty_KickedOut
+  hepzamirah.dead                          Etudes         Playing|Completed area/cascade                                 ColyphyrHepzamirahDead
+  herald.killed                            Etudes         Playing           hold                                         HeraldKilled
+  herrax.madam                             Etudes         Playing           hold                                         ChivarroRemovedFormPower
+  hulrun.away_c5                           Etudes         Playing           area/conditional                             HurlunNotInDrezenChapter5
+  hulrun.dead                              Etudes         Playing           hold                                         HurlunDead
+  irabeth.chapter_five                     Etudes         Playing           self_completed                               Chapter05
+  irabeth.chapter_three                    Etudes         Playing           self_completed                               Chapter03
+  irabeth.sacrificed                       Etudes         Playing           hold                                         IrabethSacrificedHerselfSavingGalfrey
+  irabeth_away                             Etudes         Playing           area/conditional/event_cascade               IrabethNotInDrezenCh5_WithGalfrey [reviewed]
+  irabeth_dead                             Etudes         Playing|Completed hold                                         IrabethDead
+  irabeth_gone                             Etudes         Playing|Completed conditional                                  IrabethGone
+  iz.anemora_dead.live                     Etudes         Playing           area                                         ManuscriptsAnemoraDead
+  iz.deskari_killed.live                   Etudes         Playing           hold                                         DeskariKilledInIz
+  iz.left_early.live                       Etudes         Playing           area                                         DidntVisitedEvents
+  iz.manuscripts.live                      Etudes         Playing           area                                         GalfreyGoesToManuscripts
+  iz.monster_dead.live                     Etudes         Playing           area                                         MonsterDead
+  iz.sock_raised                           Etudes         Playing           hold                                         TricksterBanner
+  jannah.condemned.live                    Etudes         Playing           area/conditional                             JannaInCondemned
+  jerribeth.patron_lost                    Etudes         Playing           hold                                         VellexiaKilled
+  jerribeth.unavailable                    Etudes         Playing|Completed hold                                         JerribethDead
+  kaylessa.dead                            Etudes         Playing           hold                                         Kaylessa_dead
+  kaylessa.forn_dead                       Etudes         Playing|Completed hold                                         FornIsDead
+  kaylessa.tomb                            Etudes         Playing           hold                                         KaylessaTomb
+  kiana.possessed                          Etudes         Playing           conditional                                  KianaIsPosessed
+  konomi.foreign_help_playing              Etudes         Playing           hold                                         ApprovedHelpFromAnotherCountryDiplomacy7(A8A0103)
+  konomi.in_office                         Etudes         Playing           area/conditional/self_completed              DiplomacyOfficer_InDrezen [reviewed]
+  konomi.present                           Etudes         Playing           area/conditional/self_completed              DiplomacyOfficer_InDrezen [reviewed]
+  kyado.in_drezen                          Etudes         Playing           hold                                         KyadoTraderInDrezen
+  lann.dead                                Etudes         Playing           conditional                                  LannNotInParty_Dead
+  lann.in_party                            Etudes         Playing           conditional                                  LannInParty
+  lann.kicked_out                          Etudes         Playing           conditional                                  LannNotInParty_KickedOut
+  lann.plot_absent                         Etudes         Playing           conditional                                  LannNotInParty_AccordingToThePlot
+  legend                                   Etudes         Playing           conditional                                  PlayerIsLegend
+  lich                                     Etudes         Playing           conditional/self_completed                   PlayerIsLich
+  longcon.chapter_five                     Etudes         Playing           self_completed                               Chapter05
+  longcon.chapter_three                    Etudes         Playing           self_completed                               Chapter03
+  melazmera.ch5                            Etudes         Playing           self_completed                               Chapter05
+  melazmera_dead                           Etudes         Playing|Completed area/cascade                                 ColyphyrMelazmeraDead
+  mielarah.dead                            Etudes         Playing           hold                                         TumberdDead
+  minagho.dead                             Etudes         Playing           hold                                         MinaghoDead
+  minagho.fled_fane                        Etudes         Playing           hold                                         MinaghoFleeFromFane
+  minagho.ran_banner                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_conscience                   Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_cult                         Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_demon                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_dragon                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_freed                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_legend                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_redemption                   Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_romance                      Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.ran_sanctuary                    Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  minagho.spared_c4                        Etudes         Playing           hold                                         MinaghoSetFreeInC4
+  minagho.terrified                        Etudes         Playing           hold                                         MinaghoTerrified
+  neathholm.evening                        Etudes         Playing           area/self_completed                          FreeTime
+  nenio.dead                               Etudes         Playing           conditional                                  NenioNotInParty_Dead
+  nenio.kicked_out                         Etudes         Playing           conditional                                  NenioNotInParty_KickedOut
+  nenio.killed_by_commander                Etudes         Playing           hold                                         KilledByPlayer
+  nenio.sent_away                          Etudes         Playing           hold                                         Nenio_GoAway
+  noct.acq.council_fight                   Etudes         Playing           hold                                         FightAgaintsNoctaCouncilAllied
+  noct.acq.gift_broken                     Etudes         Playing           hold                                         Nocticula_GiftBroken
+  noct.acq.gift_refused                    Etudes         Playing           hold                                         TakeNotProfaneGift
+  noct.acq.gift_renewed                    Etudes         Playing           self_completed                               ProfaneGiftNew
+  noct.dead                                Etudes         Playing           hold                                         NocticulaDead
+  noct.fooled                              Etudes         Playing           hold                                         NoctaFooled
+  noct.gift                                Etudes         Playing           self_completed                               ProfaneGift
+  noct.parent_active                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  noct.parent_initial                      Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  noct.parent_laulieh                      Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  noct.parent_laulieh_departure            Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  noct.parent_rejected                     Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  noct.will_attend                         Etudes         Playing           hold                                         NoctaWillAttendTheCouncil
+  nurah.dead_camellia                      Etudes         Playing           hold                                         NurahKilledByCamellia
+  nurah.dead_drezen                        Etudes         Playing           hold                                         NurahKilledAfterDrezen
+  nurah.killing_mechanism                  Etudes         Playing           area                                         NurahKilledInDrezen [reviewed]
+  nurah.parent_chaos                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  nurah.parent_evil                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  nurah.parent_good                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  nurah.parent_lich                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  nurah.parent_queen                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  nurah.parent_romance                     Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  nurah.prison                             Etudes         Playing           conditional/self_completed                   NuraInPrisonAfterDrezen
+  nurah.ran_off                            Etudes         Playing           hold                                         NuraRanOffAfterDrezen
+  nurah.trickster_recruited                Etudes         Playing           hold                                         NurahRecruitedByTrickster
+  regill.dead                              Etudes         Playing           conditional                                  RegillNotInParty_Dead
+  regill.in_party                          Etudes         Playing           conditional                                  RegillInParty
+  regill.kicked_out                        Etudes         Playing           conditional                                  RegillNotInParty_KickedOut
+  regill.left_plot                         Etudes         Playing           conditional                                  RegillNotInParty_AccordingToThePlot
+  regill.plot_absent                       Etudes         Playing           conditional                                  RegillNotInParty_AccordingToThePlot
+  sacrifice                                Etudes         Playing|Completed hold                                         Ending_PlayerSacrifice
+  seelah.elan_dead                         Etudes         Playing|Completed area/conditional                             Elan_Dead
+  seelah.ending_bad                        Etudes         Playing           conditional                                  Seelah_BadEnding
+  seelah.ending_moderate                   Etudes         Playing           conditional                                  Seelah_ModerateEnding
+  seelah.in_party                          Etudes         Playing           conditional                                  SeelahInParty
+  seelah_dead                              Etudes         Playing|Completed conditional                                  SeelahNotInParty_Dead
+  seelah_gone                              Etudes         Playing|Completed conditional                                  SeelahNotInParty_KickedOut
+  shamira.crystals_told                    Etudes         Playing           hold                                         ShamiraKnowsAboutCrystalls
+  shamira.killed                           Etudes         Playing           hold                                         ShamiraKilled
+  shamira.no_more_ch4                      Etudes         Playing           hold                                         ShamiraNoMoreDialogues
+  shyka.gone                               Etudes         Playing           hold                                         ShykaIsGone
+  soana.after_quest                        Etudes         Playing           area                                         SoanaAfterQuest
+  soana.bear_dead.live                     Etudes         Playing           area                                         BearDead
+  soana.dead                               Etudes         Playing           hold                                         SoanaDead
+  soana.forest_dead                        Etudes         Playing|Completed hold                                         Wintersun_ForestDead
+  soana.killed_by_camellia                 Etudes         Playing           hold                                         SoanaKilledByCamellia
+  soana.old_defender                       Etudes         Playing           self_completed                               Wintersun_OldDefender
+  socot.gone                               Etudes         Playing           hold                                         SocotGone
+  sosiel.dead                              Etudes         Playing           conditional                                  SosielNotInParty_Dead
+  sosiel.kicked_out                        Etudes         Playing           conditional                                  SosielNotInParty_KickedOut
+  storyteller.dead_dlc                     Etudes         Playing           hold                                         DLC1_StorytellerDead
+  storyteller.dead_main                    Etudes         Playing           hold                                         StorytellerDead
+  swarm                                    Etudes         Playing           conditional                                  PlayerIsLocust
+  targona.condemned                        Etudes         Playing           hold                                         TargonaCondemnedAreeluLab
+  targona.dead_lab                         Etudes         Playing           hold                                         TargonaIsWasKilledInAreeluLab
+  targona.dead_lair                        Etudes         Playing           hold                                         TargonaDiedInMutasafenLair
+  targona.free                             Etudes         Playing           hold                                         TargonaIsFreeInAreeluLab
+  targona.ran_aeon                         Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_angel                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_azata                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_demon                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_devil                        Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_dragon                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_late_change                  Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_legend                       Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_lich                         Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_none                         Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_romance                      Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  targona.ran_trickster                    Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  terendelev.aeon_spared                   Etudes         Playing           hold                                         TerendelevWasNotKilled
+  terendelev.parent_lich_bind              Etudes         Playing           parent_mod                                   (parent mod / not in blueprints.zip)
+  trickster                                Etudes         Playing           conditional/self_completed                   PlayerIsTrickster
+  trickster.failed                         Etudes         Playing           conditional                                  TricksterMythicPathFailed
+  trickster.was                            Etudes         Playing|Completed hold                                         PlayerWasTrickster
+  true_lich                                Etudes         Playing|Completed conditional                                  MythicLich_TrueLich
+  ulbrig.dead                              Etudes         Playing           conditional                                  UlbrigNotInParty_Dead
+  ulbrig.in_party                          Etudes         Playing           conditional                                  UlbrigInParty
+  ulbrig.kicked_out                        Etudes         Playing           conditional                                  UlbrigNotInParty_KickedOut
+  vellexia.dead                            Etudes         Playing           hold                                         VellexiaKilled
+  vellexia.early_fight                     Etudes         Playing           hold                                         Vellexia_FightBeforeThirdDate
+  vellexia.final_fight                     Etudes         Playing           hold                                         Vellexia_FightOnThirdDate
+  vellexia.slaves_freed                    Etudes         Playing           hold                                         VellexiasSlavesFreed
+  wenduag.chosen                           Etudes         Playing           hold                                         Venduag_Chosen
+  wenduag.dead_any                         Etudes         Playing           conditional                                  WenduagNotInParty_Dead
+  wenduag.in_party                         Etudes         Playing           conditional                                  WenduagInParty
+  wenduag.kicked_out                       Etudes         Playing           conditional                                  WenduagNotInParty_KickedOut
+  wenduag.killed                           Etudes         Playing           hold                                         WenduagKilled
+  wenduag.redeemed                         Etudes         Playing           hold                                         WenduagRedeemed
+  wenduag.romance_active                   Etudes         Playing           conditional/self_completed/event_cascade     WenduagRomance_Active
+  wenduag.romance_finished                 Etudes         Playing           conditional/event_cascade                    WenduagRomance_Finished
+  wenduag.traitor                          Etudes         Playing           conditional                                  WenduagTraitor
+  woljif.dead                              Etudes         Playing           conditional                                  WoljifNotInParty_Dead
+  woljif.kicked_out                        Etudes         Playing           conditional                                  WoljifNotInParty_KickedOut
+  yaniel.freed                             Etudes         Playing           conditional                                  Yaniel_Freed
+  yaniel.killed                            Etudes         Playing           hold                                         Yaniel_Killed
+  konomi.office_completed                  CompletedEtudes Completed         area/conditional/self_completed              DiplomacyOfficer_InDrezen [reviewed]
+  noct.acq.original_gift_completed         CompletedEtudes Completed         self_completed                               ProfaneGift
+
+## G. Build()/State() mirrors
+  New<T> registrations: 98225 (flags 13543). Duplicate names (=> New throws 'Blueprint collision', Build aborts): 0 []
+  SHA256 GuidFor collisions between distinct names: 0; unguarded retry flags also authored (flags.Add dup => Build aborts): []
+  State() per call: 13543 UnlockableFlag reads, 252 etude facts, 15 quests, 298 seen-cue sets, 40 contact-unit scans (each walks game.State.Units), 5 revival scans
+  Worst native answer list carries 101 RRT entries -> up to 202 State() snapshots each time that list is shown (Show+Select)
+
+## F. Native GUID bindings vs blueprints.zip (236661 blueprints indexed in 10.7s; 201 parent-mod GUIDs)
+  Checked 1198 (guid,type) pairs: 0 failures; 0 resolved only as a GUID literal in parent source (type unverified): []
+  Hard-coded GUIDs in src/*.cs not found in blueprints.zip or parent: 30 [('3e2b5ea054cd5b2479e7f13134363ef4', ['IrabethMeeting.cs', 'KonomiMeeting.cs', 'NurahMeeting.cs']), ('fae9dfc53a7c46f5ba7e87643f391b7e', ['IrabethMeeting.cs']), ('b460e4d8f74f48e28dc474568382ff24', ['KonomiMeeting.cs']), ('959237a34dfe436eb8f088b4be259daa', ['NativeEpilogueEdit.cs']), ('f96ad5fa9c59d7549adff4c90f0703ab', ['NativeEpilogueEdit.cs']), ('df4a5da19a0a64542929dc8409b29bbe', ['NativeEpilogueEdit.cs']), ('1b3609da30e000d4da2f192527f56b0d', ['NativeGate.cs']), ('19fab8d8b0254e3c8d66fa56ff1a0c84', ['NurahMeeting.cs']), ('26789d87b5a44ba988079b4842bad81c', ['ParentEndingIntegration.cs']), ('e0551b6120c94d70aa9d10a5fcc4ec86', ['ParentEndingIntegration.cs'])]
+  RRT GuidFor() ids colliding with native/parent blueprints: 0
+  Target answer lists: 143; lists whose LAST answer is not a plain exit (Count-1 insertion assumption): 75
+     - 001686714a5c2384ba09686b45bd033f LAST ANSWER IS NOT AN EXIT [Answer_0040] '"I don\'t want to break something that\'s working."' cues=2
+     - 04d72f75c1e841747a55b780fccf37fe LAST ANSWER IS NOT AN EXIT [Answer_0025] '[Attack the golems]' cues=1
+     - 06184e4f0a65650488e36600d8274d26 LAST ANSWER IS NOT AN EXIT [Answer_0007] '"To arms! It\'s time for the final battle for Drezen!"' cues=1
+     - 07bc8bac6a8c8074183e6abb6ce56847 LAST ANSWER IS NOT AN EXIT [Answer_0034] '"I won\'t do it."' cues=1
+     - 09a3f2100af13ae429e1dedf27e32a80 LAST ANSWER IS NOT AN EXIT [Answer_0045] '"I have no more questions."' cues=1
+     - 09b8d5eb5dae3634d9dc3d8c7bdd6e9d LAST ANSWER IS NOT AN EXIT [Answer_0008] '[Attack] "You\'ll pay for everything!"' cues=1
+     - 0f4612672dd4d3e4d84575b23ffdddb3 LAST ANSWER IS NOT AN EXIT [Answer_0019] '"All right, you can stay. You might still be useful to me."' cues=1
+     - 129b55b8b5d50974f84f7c607d894fd0 LAST ANSWER IS NOT AN EXIT [Answer_0042] '"Thank you for talking to me."' cues=1
+     - 13487ef288faa30459888cdcce979b51 LAST ANSWER IS NOT AN EXIT [Answer_0074] '[Devour Galfrey] "You\'ve survived just to become food for th' cues=2
+     - 16994192cfa484744bd10852b8dc806f LAST ANSWER IS NOT AN EXIT [Answer_0006] '"This is what I\'ve been striving for all this time, and I wo' cues=1
+     - 170fd7a11f66c88428bc27bfba3a569f LAST ANSWER IS NOT AN EXIT [Answer_0026] '[Attack] "Death to deserters!"' cues=1
+     - 174d6c94b6725f44aad1d2a76993a926 LAST ANSWER IS NOT AN EXIT [Answer_0011] '' cues=1
+     - 190fda58a169c9340b626f1a503c696f LAST ANSWER IS NOT AN EXIT [Answer_0016] '[Attack] "I\'m not about to make a deal with a demon. Die!"' cues=1
+     - 199a940b97b11664aace4101733cd963 LAST ANSWER IS NOT AN EXIT [Answer_0088] '"Spare me your wisdom."' cues=1
+     - 1ca6cf08fceeac141a0df689cecc784a LAST ANSWER IS NOT AN EXIT [Answer_0022] '"We need to keep moving. There must be a way back to the sur' cues=1
+
+## F2. Native return safety (Main.cs:226-239): 221 inline scenes, 0 hard failures, 0 allowlisted known failures
+
+## I. [TypeId] lint over src/*.cs: 3 attributes, 0 problems
+
+runtime 342.0s

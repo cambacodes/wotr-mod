@@ -13,7 +13,7 @@ using Tirabade;
 
 // E14d: the reviewed native cues match their evidence in blueprints.zip, and the edit selects exactly one of
 // replacement/original, keeping the native checker and falling back to the native text.
-internal static class NativeEpilogueEditManagedTests
+internal static partial class NativeEpilogueEditManagedTests
 {
     // E14d extension: the Tirabade page BookPage_0307 and its four native cues (Cue_0308, Cue_0566, Cue_0310, Cue_0311).
     private const string Cue0311 = "3a3e561c6b05a284d93eb3bff7b712a6";
@@ -84,11 +84,11 @@ internal static class NativeEpilogueEditManagedTests
                 continue;
             }
             check(Refs(native[pair.Value.Page], "Cues").Count(c => c == pair.Key) == 1, "Reviewed cue is not exactly once on its page: " + pair.Key);
-            check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
+            if (pair.Value.Sequence.Length > 0) check(Refs(native[pair.Value.Sequence], "Cues").Count(c => c == pair.Value.Page) == 1, "Reviewed page is not once in its sequence: " + pair.Key);
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
                 && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa"
-                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
+                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Key != "dbec675b71e9d5f4d96055f4bb31762e" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
             + "lines, Arueshalae's Cue_0461 and Wenduag's Cue_0580 are warning-only).");
         // Engine-q2 item 5: Galfrey's two Queen slides share one text, one sequence, and are warning-only.
@@ -337,8 +337,8 @@ internal static class NativeEpilogueEditManagedTests
         Console.WriteLine("PASS: Cue_0461 dream page: the parent's continuation is accepted and kept; drift is refused warning-only.");
     }
 
-    // E14d delivery: Arueshalae's real Cue_0462 edit (native_wander) through the live Group, built with the story as Main
-    // builds it. A variant plays only while its When holds AND its scene is available on the same snapshot.
+    // E14d delivery: Arueshalae's native wander/dream edits through live Groups, built with the story as Main builds them.
+    // A variant plays only while its When holds AND its scene is available on the same snapshot.
     public static void RunDelivery(Story story, Action<bool, string> check)
     {
         const string Cue0462 = "f76713034f4087a4f80495971c47ca7b";
@@ -346,14 +346,17 @@ internal static class NativeEpilogueEditManagedTests
         Snapshot? current = null;
         var live = new NativeEpilogueEdit.Group(spec, () => current, story);
         var whenOnly = new NativeEpilogueEdit.Group(spec, () => current);
+        var dream = new NativeEpilogueEdit.Group(story.NativeEpilogueEdits["78ae1bdc3b0824b4ca2ed618782f1faa"], () => current, story);
         check(live.Selected() == -1, "A delivery group selects before it is attached.");
-        live.Enable(); whenOnly.Enable();
+        live.Enable(); whenOnly.Enable(); dream.Enable();
         var basis = new[] { "trickster.ever", "arueshalae.committed" };
         var rows = new (string What, string[] Flags, bool Plays)[]
         {
             ("committed, alive", basis, true),
+            ("committed, alive, the Commander back", basis.Append("trickster.commander_back").ToArray(), true),
             ("committed, dead", basis.Append("arueshalae_dead").ToArray(), false),
-            ("committed, dead, returned", basis.Concat(new[] { "arueshalae_dead", "arueshalae.trickster.returned" }).ToArray(), true),
+            ("committed, dead, legacy returned flag", basis.Concat(new[] { "arueshalae_dead", "arueshalae.trickster.returned" }).ToArray(), false),
+            ("committed, dead, legacy returned flag, the Commander back", basis.Concat(new[] { "arueshalae_dead", "arueshalae.trickster.returned", "trickster.commander_back" }).ToArray(), false),
             ("committed, dismissed", basis.Append("arueshalae.kicked_out").ToArray(), false),
             ("committed, closed", basis.Append("arueshalae.closed").ToArray(), false),
             ("committed, fallen", basis.Append("arueshalae.corrupted").ToArray(), false),
@@ -367,15 +370,53 @@ internal static class NativeEpilogueEditManagedTests
             current = new Snapshot { Chapter = 6 };
             current.Flags.UnionWith(row.Flags);
             check((live.Selected() == 0) == row.Plays, "E14d delivery, Arueshalae " + row.What + ": the wander page " + (row.Plays ? "does not play" : "plays"));
+            check((dream.Selected() == 0) == (row.Plays && current.Has("trickster.commander_back")),
+                "E14d delivery, Arueshalae " + row.What + ": the dream page does not respect current availability and the Commander's return.");
         }
         current = new Snapshot { Chapter = 6 };
         current.Flags.UnionWith(basis.Append("arueshalae_dead"));
         check(whenOnly.Selected() == 0 && live.Selected() == -1, "The delivery predicate is not what separates the live group from When alone.");
         current = null;
-        check(live.Selected() == -1, "A delivery group selects with the mod disabled.");
+        check(live.Selected() == -1 && dream.Selected() == -1, "A delivery group selects with the mod disabled.");
         var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "src", "Main.cs"));
         check(mainSource.Contains("Game.Instance?.Player != null ? State() : null, story);"), "Main no longer builds its E14d groups with the story (delivery predicate).");
-        Console.WriteLine("PASS: E14d delivery predicate (Arueshalae Cue_0462): When and scene availability on one snapshot.");
+        Console.WriteLine("PASS: E14d delivery predicate (Arueshalae Cue_0462 and Cue_0461): When and scene availability on one snapshot.");
+    }
+
+    public static void RunKianaSiblings(Story story, Dictionary<string, JObject> native, Func<string, BlueprintGuid> id, Action<bool, string> check)
+    {
+        var aftermath = new[] { "a819e8c85ef23324bb0d8117bb9d7df3", "df45181e1968f26459f9e8bc2b995a34",
+            "0e50ec24099196a42b7089ffecdc46b2", "4cd264ce0432bb94a8e80a551190150d" };
+        var doubt = new[] { "73815b731281fdc47bbc59aba42b2126", "e9a5a4c03ea016f47b29d91b2ff3a00c",
+            "2b133bf7ac66d6241a69a53dce2bf05f", "b3e6076282402a1489b6f226567cf8fa", NativeQ3Recovery.Verdict };
+        foreach (string cueId in aftermath.Concat(doubt))
+        {
+            var spec = story.NativeEpilogueEdits[cueId];
+            Snapshot? state = null;
+            var group = new NativeEpilogueEdit.Group(spec, () => state, story); group.Enable();
+            foreach (string device in new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" })
+            foreach (bool separated in new[] { false, true })
+            foreach (bool trickster in new[] { false, true })
+            {
+                state = new Snapshot { Chapter = 5 }; state.Flags.Add(device); state.Flags.Add("trickster.ever");
+                if (trickster) state.Flags.Add("trickster"); else state.Flags.Add("legend");
+                if (separated) state.Flags.Add("kiana.separated");
+                Rules.Complete(story, state);
+                int expected = !trickster ? -1 : aftermath.Contains(cueId) ? separated ? 0 : 1 : 0;
+                check(group.Selected() == expected, "Kiana sibling variant selection: " + cueId + "/" + device + "/" + separated + "/" + trickster);
+            }
+            var original = new BlueprintCue { AssetGuid = BlueprintGuid.Parse(cueId), name = "KianaSiblingFixture" };
+            LoadArchiveShape(original, native[cueId], check);
+            original.Conditions = new ConditionsChecker { Conditions = Array.Empty<Condition>() };
+            var parent = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(spec.Parent));
+            var replacement = new BlueprintCue { AssetGuid = id("kiana.sibling.fixture." + cueId), name = "KianaSiblingReplacement" };
+            NativeEpilogueEdit.PrepareInDialog(cueId, spec, original, parent, replacement, () => true);
+            check(replacement.Continue.Cues.Select(c => c.Guid).SequenceEqual(original.Continue.Cues.Select(c => c.Guid))
+                && replacement.Speaker == original.Speaker && replacement.OnShow.Actions.SequenceEqual(original.OnShow.Actions)
+                && ReferenceEquals(replacement.OnStop, original.OnStop) == (NativeEpilogueEdit.Reviewed[cueId].OnStop != null)
+                && !NativeEpilogueEdit.DegradesOnRefusal(cueId), "Kiana sibling lost its presentation, continuation, native actions or warning policy: " + cueId);
+        }
+        Console.WriteLine("PASS: both Kiana aftermath answers and Arsinoe's 0028-0032 preserve native presentation and choose earned Trickster variants.");
     }
 
     // The archive's text key: its own m_Key, or (a shared string, e.g. Camellia's Cue_0390) the shared asset's string key.
@@ -430,8 +471,8 @@ internal static class NativeEpilogueEditManagedTests
                 "The bowl replacement is not right before Cue_0051 in parent " + parentId);
         foreach (var (what, flags, plays) in new (string, string[], bool)[]
         {
-            ("ransomed", new[] { "trickster.ever", "kiana.trickster.guests_ransomed" }, true),
-            ("bought back", new[] { "trickster.ever", "kiana.trickster.guests_bought_back" }, true),
+            ("ransomed", new[] { "trickster.now", "trickster.ever", "kiana.trickster.guests_ransomed" }, true),
+            ("bought back", new[] { "trickster.now", "trickster.ever", "kiana.trickster.guests_bought_back" }, true),
             ("robbed, never bought back", new[] { "trickster.ever", "kiana.trickster.cost.guests_robbed" }, false),
             ("ransomed, off the Trickster path", new[] { "kiana.trickster.guests_ransomed" }, false),
         })
@@ -496,6 +537,11 @@ internal static class NativeEpilogueEditManagedTests
         foreach (JObject action in list)
         {
             string typeName = ((string)action["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
+            if (typeName == "Conditional" || typeName == "PlayCutscene")
+            {
+                actions.AddRange(NativeQ3RecoveryManagedTests.Actions(cue, new JArray(action)).Actions);
+                continue;
+            }
             if (typeName == "ChangeBookEventImage")
             {
                 var change = new ChangeBookEventImage { Owner = cue, name = "$ChangeBookEventImage$archive" };
@@ -581,7 +627,7 @@ internal static class NativeEpilogueEditManagedTests
                 "e9a183135b8289544a3144dcf8151920" }), "BookPage_0347 cues drifted.");
         check(pageCues.All(c => NativeEpilogueEdit.Reviewed.TryGetValue(c, out var e) && e.Page == pageId && !e.DegradeOnRefusal),
             "A Camellia slide is not reviewed warning-only evidence.");
-        const string TE1 = "6f95e268d337ddc45be43a11587bc0b6", TE2 = "aca88b6a3cc90c047925bbc0572c10dc", Q3 = "72d7618aeec2e134db7e9728e9fea90a",
+        const string TE1 = "6f95e268d337ddc45be43a11587bc0b6", Q3 = "72d7618aeec2e134db7e9728e9fea90a",
             RomDefault = "0f98398a5ddf32e4cb8200f56e4cfbfc", RomTrue = "1454cf86d07cfdf4f8b5daee625cdc5b", Sacrifice = "381a296094804761af0893d2e70dc2df";
         var playing = new HashSet<string>(); var seen = new HashSet<string>(); var completed = new HashSet<string>();
         var etudesRead = new HashSet<string>();

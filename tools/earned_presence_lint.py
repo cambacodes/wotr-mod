@@ -5,7 +5,7 @@ Reads the generated Story.json. HARD rules (exit 1):
 
 EP1 living postwar page: every epilogue-family scene (Owner ends with "Epilogue": RRT pages, Last Call codas, native-slide
     replacements) Forbids "sacrifice" (bare, or lifted only by an alive witness), Requires an alive witness, Requires
-    "sacrifice" (a mourning page), or is listed in storylines/earned_presence.COMMANDER_ABSENT. This is the derived state
+    "sacrifice" (a mourning page), is listed in storylines/earned_presence.COMMANDER_ABSENT, or passes EP6. This is the derived state
     trickster.commander_dead = sacrifice AND NOT trickster.commander_back, written as a Forbid plus its override.
 EP2 mourning page: an epilogue page that Requires "sacrifice" (or a Derived key that implies it) Forbids
     trickster.commander_back (it never plays beside a Commander who came back), and does not Forbid "sacrifice" (a
@@ -29,10 +29,18 @@ T6 current path (engine-q2): trickster.ever is the run latch (the run WAS Tricks
     Devarra flown, the guests ransomed, a return). A canon change whose only Trickster evidence is the path latch would
     still fire after a Chapter 4 failure or a Summit conversion. T6b: each storylines/earned_presence.CURRENT_PATH_KEYS key
     that the build derives Requires trickster.now in every group (the foresight public keys' hook).
+T7 return/device producers and revivals require trickster.now, or live trickster with trickster.failed forbidden.
+    Earned return consumers retain historical trickster.ever; authored flags and latches cannot prove current power.
+P1 every physical relationship presence requires the generated route guard.
+    Only PRESENCE_RETURN_IN_PROGRESS may lift a loss before reconciliation, with a reason.
+    Departure flags set by routes must be UnavailableFlags or have a documented exemption.
 
 EP5 her presence: a committed epilogue page (Requires the CommittedFlag or a *late_committed key; Aeon pages exempt)
     Forbids each of her loss flags that has an earned return (relationship UnavailableOverrides), lifted by that return,
     or Requires the flag or its return.
+EP6 paragraph-guarded page: each present PARAGRAPH_GUARDED scene is an epilogue with no scene-level sacrifice Forbid.
+    Every non-mourning node text and paragraph Forbids sacrifice with ForbidOverrides {sacrifice: trickster.commander_back}.
+    At least one mourning paragraph Requires sacrifice; mourning text Forbids trickster.commander_back and not sacrifice.
 
 REVIEW (advisory, printed with --review): committed epilogue pages that neither Forbid nor Require one of her loss flags
 that has NO registered return (a native state whose meaning the route owns: e.g. konomi.retained_dead,
@@ -44,7 +52,7 @@ sits in a scene whose Requires (or RequiresAnyGroups group, all members) or whos
 
 Usage: python tools/earned_presence_lint.py [--story development/Story.json] [--review]
 """
-import argparse, json, sys
+import argparse, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -118,8 +126,104 @@ def loss_flags(rel):
     return [f for f in rel.get("UnavailableFlags") or [] if f not in COMMANDER_PATHS]
 
 
+def live_context(story, scene, choice=None):
+    """Earned flags and latches describe past acts, so only live native/Derived evidence proves a new act."""
+    def live(key, seen=()):
+        if key == ep.TRICKSTER_NOW:
+            return True
+        groups = (story.get("Derived") or {}).get(key)
+        if not groups or key in seen:
+            return False
+        return all(any(live(k, (*seen, key)) for k in g) for g in groups)
+
+    requires = [*(scene.get("Requires") or []), *((choice or {}).get("Requires") or [])]
+    forbids = [*(scene.get("Forbids") or []), *((choice or {}).get("Forbids") or [])]
+    if any(live(k) for k in requires):
+        return True
+    if "trickster" in requires and "trickster.failed" in forbids:
+        return True
+    return any(g and all(live(k) or k == "trickster" and "trickster.failed" in forbids for k in g)
+               for g in scene.get("RequiresAnyGroups") or [])
+
+
+def return_producers(story):
+    """Resolve return composites to their authored producers; native readings need no new act."""
+    keys = set()
+    def visit(key):
+        if not key or key in keys:
+            return
+        keys.add(key)
+        for group in (story.get("Derived") or {}).get(key) or []:
+            for source in group:
+                visit(source)
+        for source in (story.get("Latches") or {}).get(key) or []:
+            visit(source)
+    for progress in ep.PRESENCE_RETURN_IN_PROGRESS.values():
+        for entry in progress.values():
+            visit(entry.get("Flag"))
+    for rel in (story.get("Relationships") or {}).values():
+        for key in (rel.get("UnavailableOverrides") or {}).values():
+            visit(key)
+        for access in (rel.get("TricksterAccess") or {}).values():
+            visit(access.get("Returned"))
+            visit(access.get("Device"))
+    return keys
+
+
+DEPARTURE_FLAG = re.compile(r"(?:^|[._])(?:left_free|gone(?:_to_[a-z0-9_]+)?|departed|expelled|banished|dismissed|sent_home|sent_away|exiled|ran_off)$")
+DEVICE_COMPLETION_FLAG = re.compile(r"(?:^|[._])device[._](?:done|complete|completed)$")
+
+
+def producer_presence_errors(story):
+    """T7 producers use current power; P1 physical partners obey RouteOpen and register departures."""
+    hard = []
+    producers = return_producers(story)
+    rels = story.get("Relationships") or {}
+    trk = Trickster(story)
+    for rel, progress in ep.PRESENCE_RETURN_IN_PROGRESS.items():
+        if rel not in rels:
+            continue   # a partial build may omit this route
+        for flag, entry in progress.items():
+            reason = entry.get("Reason")
+            if (flag not in rels[rel].get("UnavailableFlags", [])
+                    or not isinstance(reason, str) or not reason.strip()
+                    or not trk.implies(entry.get("Flag"))):
+                hard.append("P1 %s: return in progress for %s needs a registered loss, Trickster-earned flag and reason"
+                            % (rel, flag))
+    for s in story.get("Scenes") or []:
+        if (s["Id"] in producers or s.get("TricksterDevice")) and not live_context(story, s):
+            hard.append("T7 %s: device completion needs trickster.now or trickster with trickster.failed forbidden" % s["Id"])
+        for n in s.get("Nodes") or []:
+            for i, c in enumerate(n.get("Choices") or []):
+                flags = {f for f in c.get("Set") or [] if f in producers or DEVICE_COMPLETION_FLAG.search(f)}
+                if (flags or c.get("Revive")) and not live_context(story, s, c):
+                    hard.append("T7 %s/%s/choice[%d]: return producer %s needs the current Trickster path"
+                                % (s["Id"], n.get("Id"), i, sorted(flags) or "Revive"))
+                rel = s.get("Relationship") or "tirabade"
+                for flag in c.get("Set") or []:
+                    if (DEPARTURE_FLAG.search(flag) and flag not in (rels.get(rel) or {}).get("UnavailableFlags", [])
+                            and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()):
+                        hard.append("P1 %s: departure %s must be in %s.UnavailableFlags or allowlisted with a reason"
+                                    % (s["Id"], flag, rel))
+    for name, p in (story.get("Presences") or {}).items():
+        rel = ep.presence_relationship(name)
+        if rel not in rels:
+            continue
+        key = ep.presence_guard(rel)
+        expected = ep.presence_guard_fields(rel, rels[rel])
+        guard_keys = expected["Derived"]
+        valid = key in (p.get("Requires") or [])
+        for field in ("Derived", "DerivedOpenRoutes", "DerivedForbids"):
+            for guard in guard_keys:
+                valid &= (story.get(field) or {}).get(guard) == expected.get(field, {}).get(guard)
+        if not valid:
+            hard.append("P1 %s: partner presence needs the central %s route guard; only documented returns may lift a loss"
+                        % (name, key))
+    return hard
+
+
 def check(story, review=False):
-    hard, notes = [], []
+    hard, notes = producer_presence_errors(story), []
     scenes = story.get("Scenes") or []
     by_id = {s["Id"]: s for s in scenes}
     rels = story.get("Relationships") or {}
@@ -144,6 +248,12 @@ def check(story, review=False):
 
     # EP1 / EP2: postwar pages.
     for s in scenes:
+        if s["Id"] in ep.PARAGRAPH_GUARDED:
+            if not ep.is_epilogue(s):
+                hard.append("EP6 %s: PARAGRAPH_GUARDED scene is not an epilogue" % s["Id"])
+            for why in ep.paragraph_guard_errors(s):
+                hard.append("EP6 %s/%s" % (s["Id"], why))
+            continue
         if not ep.is_epilogue(s):
             continue
         req, forb = set(s.get("Requires") or []), s.get("Forbids") or []

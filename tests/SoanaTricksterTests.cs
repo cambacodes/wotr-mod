@@ -169,7 +169,7 @@ internal static class SoanaTricksterTests
         check(Rules.Available(story, bearA, claimed) && Rules.Available(story, bearB, claimed),
             "Trk_Soana_HandoverAfterBearA: the bear lists do not offer the portion.");
         Pick(bearA, claimed, P + "primed", P + "cost.blood_given");
-        check(!Rules.Available(story, bearA, World(story, 3, "trickster.ever", "camellia.claimed_soana_a")),
+        check(!Rules.Available(story, bearA, World(story, 3, "trickster.ever", "trickster.failed", "camellia.claimed_soana_a")),
             "The handover joke is a new trick and needs the live path.");
 
         // Trk_Soana_Killed: Camellia bled her; the knot read the other way.
@@ -206,7 +206,7 @@ internal static class SoanaTricksterTests
             "Trk_Soana_KilledAfterFailure: the knot outlives the path.");
 
         // Trk_Soana_Graveyard: the test at the grave.
-        var back = World(story, 5, "trickster.ever", "soana.dead", P + "returned");
+        var back = World(story, 5, "trickster", "trickster.ever", "soana.dead", P + "returned");
         check(Rules.Available(story, graveyard, back) && !Rules.Available(story, terms, back),
             "Trk_Soana_Graveyard: the grave is closed, or the terms skip it.");
         var awayFromCave = Program.Copy(back); awayFromCave.Area = Drezen;
@@ -274,10 +274,10 @@ internal static class SoanaTricksterTests
 
         // Trk_Soana_WinterPortion: the blood bargain comes due in person, in Chapter 5, and the Commander may pay it.
         var winter = S(P + "handover.winter_portion");
-        var bled = World(story, 5, "trickster.ever", P + "cost.blood_given", "soana.after_quest");
+        var bled = World(story, 5, "trickster", "trickster.ever", P + "cost.blood_given", "soana.after_quest");
         check(Rules.Available(story, winter, Later(story, bled, 72)),
             "Trk_Soana_WinterPortion: the portion never comes due.");
-        check(!Rules.Available(story, winter, World(story, 5, "trickster.ever", "soana.after_quest")),
+        check(!Rules.Available(story, winter, World(story, 5, "trickster", "trickster.ever", "soana.after_quest")),
             "The portion comes due without a bargain.");
         check(Play(winter, Later(story, bled, 72)).Any(r => r.Has(P + "cost.portion_shared")),
             "The Commander cannot pay the portion.");
@@ -323,7 +323,7 @@ internal static class SoanaTricksterTests
             "The missed branch has no priced second ask.");
         check(bowlAsk.Nodes.SelectMany(n => n.Choices).Any(c => c.Crusade == null && c.Set.Contains(P + "cost.pair_given")
               && c.Set.Contains("soana.committed")), "The bowl's second ask does not put the Commander's other die in her keeping (a narrative price: no crusade effect, no claim on combat luck).");
-        check(!Rules.Available(story, sheBear, World(story, 5, "trickster.ever", "soana.after_quest", "soana.old_defender", "soana.progression_kept")),
+        check(!Rules.Available(story, sheBear, World(story, 5, "trickster", "trickster.ever", "soana.after_quest", "soana.old_defender", "soana.progression_kept")),
             "The missed courtship opens for a Commander who kept the registered visits.");
 
         // Trk_Soana_MissedLate: no die was planted; it is thrown now, dearer.
@@ -339,8 +339,8 @@ internal static class SoanaTricksterTests
         // Trk_Soana_MissedAfterFailure: no die and no live trick.
         check(!Any(World(story, 5, "trickster.ever", "trickster.failed", "soana.after_quest", "soana.old_defender"), crooked, lateLuck),
             "Trk_Soana_MissedAfterFailure: a lost path still throws the die.");
-        check(Rules.Available(story, crooked, World(story, 5, "trickster.ever", "trickster.failed", "soana.after_quest", "soana.old_defender",
-              P + "primed_dice")), "A die planted as a Trickster stops paying out after a lost path (ledger 18).");
+        check(!Rules.Available(story, crooked, World(story, 5, "trickster.ever", "trickster.failed", "soana.after_quest", "soana.old_defender",
+              P + "primed_dice")), "A planted die completes a return after the path failed.");
 
         // Epilogue pages: one Soana page per history; the loss pages belong to a Soana who stayed dead.
         Snapshot End(Snapshot s) { var e = Program.Copy(s); e.Chapter = 6; Rules.Complete(story, e); return e; }
@@ -400,7 +400,7 @@ internal static class SoanaTricksterTests
         foreach (var r in reactions.Where(r => r.Owner == "Camellia"))
             check(r.Forbids.Contains("camellia.dead") && r.Forbids.Contains("camellia.killed") && r.Forbids.Contains("camellia.kicked_out"),
                 "Camellia speaks after she is gone: " + r.Id);
-        check(Rules.Available(story, S(P + "react.camellia_knot"), Later(story, World(story, 3, "trickster.ever",
+        check(Rules.Available(story, S(P + "react.camellia_knot"), Later(story, World(story, 3, "trickster", "trickster.ever",
               "soana.killed_by_camellia", "soana.dead", P + "returned"), 24)), "Camellia never hears the woman she bled is walking.");
         // Q10 (INT): the knot recalls her words only for a Commander who heard them; otherwise her wall tells it.
         HashSet<string> KnotPages(Snapshot w) { var pagesSeen = new HashSet<string>(); Program.Walk(knot, w, (id, _) => pagesSeen.Add(id)); return pagesSeen; }
@@ -436,10 +436,10 @@ internal static class SoanaTricksterTests
 
         // Q10 (INT): a Camellia raised from her retained death hears it on her hub; the veiled (killed) Camellia has no companion
         // hub and answers it in her own route at Fye's (camellia.kill_returned.soana).
-        var camelliaBack = Later(story, World(story, 3, "trickster.ever", "soana.killed_by_camellia", "soana.dead", P + "returned",
-                                              "camellia.dead", "camellia.trickster.returned"), 24);
+        var camelliaBack = Later(story, World(story, 3, "trickster", "trickster.ever", "soana.killed_by_camellia", "soana.dead", P + "returned",
+                                              "camellia.trickster.returned"), 24);
         foreach (var id in new[] { P + "react.camellia_knot", P + "react.camellia_portion" })
-            check(S(id).ForbidOverrides.TryGetValue("camellia.dead", out var lift) && lift == "camellia.trickster.returned",
+            check(!S(id).ForbidOverrides.ContainsKey("camellia.dead"),
                 "A raised Camellia never hears of Soana: " + id);
         check(Rules.Available(story, S(P + "react.camellia_knot"), camelliaBack), "A raised Camellia never hears of the knot.");
         check(story.Scenes.Any(s => s.Relationship == "camellia" && s.Nodes.Any(n => n.Id == "soana"
@@ -501,7 +501,7 @@ internal static class SoanaTricksterTests
         check(ownPages.Contains("own") && !ownPages.Contains("camellia"), "The rebinding blames Camellia for the Commander's own kill.");
 
         // Q10 r2 (INT): the shared portion's paragraphs follow the Commander's fate.
-        var portionWorld = World(story, 6, "trickster.ever", "soana.late_campaign_kept", "soana.committed", P + "cost.blood_given",
+        var portionWorld = World(story, 6, "trickster", "trickster.ever", "soana.late_campaign_kept", "soana.committed", P + "cost.blood_given",
                                  P + "cost.portion_shared");
         string Visible(string sceneId, Snapshot w) => string.Join("|", Rules.VisibleParagraphs(S(sceneId).Nodes.Last(), w).Select(x => x.Text));
         var deadWorld = Program.Copy(portionWorld); deadWorld.Flags.Add("sacrifice"); Rules.Complete(story, deadWorld);
@@ -782,13 +782,13 @@ internal static class SoanaTricksterTests
                 var luckKiller = Program.Copy(killer); luckKiller.Flags.Add(P + "luck_kept"); luckKiller.Flags.Add(P + "luck_tested"); Rules.Complete(story, luckKiller);
                 check(Endings(luckKiller).SequenceEqual(new[] { byHand.Id }), "A luck lover killed by the Commander gets the wrong page: " + string.Join(",", Endings(luckKiller)));
             }
-            var witnessed = FullText(byHand, World(story, 6, "trickster.ever", "soana.dead", "soana.forest_dead", key, "ulbrig.talked"));
+            var witnessed = FullText(byHand, World(story, 6, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key, "ulbrig.talked"));
             check(witnessed.Contains("Camellia said") && witnessed.Contains("Ulbrig looked"), "Nobody answers the Commander's own kill: " + key);
             var legacyGrave = Pick(graveyard, Later(story, Legacy(World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead", key)), 48), P + "graveyard_kept");
             var legacyPages = AccPages(legacyGrave);
             check(legacyPages.Contains("own") && !legacyPages.Contains("unknown"), "A legacy own-kill return is accused as unknown: " + key);
         }
-        check(byHand.Nodes[0].Text.Contains("by the Commander's own hand") && !Rules.Available(story, byHand, Legacy(World(story, 6, "trickster.ever", "soana.dead", "soana.killed_self_after_quest"))),
+        check(byHand.Nodes[0].Text.Contains("by the Commander's own hand") && !Rules.Available(story, byHand, Legacy(World(story, 6, "trickster", "trickster.ever", "soana.dead", "soana.killed_self_after_quest"))),
             "The own-kill page is missing, or mourns a Soana a legacy save returned.");
         // The return still answers Camellia's kill and an unattributed death.
         check(Rules.Available(story, knot, killed) && Rules.Available(story, knot, World(story, 3, "trickster", "trickster.ever", "soana.dead", "soana.forest_dead")),

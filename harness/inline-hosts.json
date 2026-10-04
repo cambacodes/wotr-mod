@@ -4,12 +4,12 @@
   "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1120,
-  "resolved": 1120,
-  "inlineOnlyScenes": 314,
-  "inlineOnlyResolved": 314,
-  "answerListScenesWithoutContact": 688,
-  "answerListScenesWithoutContactResolved": 688,
+  "entryTargetScenes": 1117,
+  "resolved": 1117,
+  "inlineOnlyScenes": 312,
+  "inlineOnlyResolved": 312,
+  "answerListScenesWithoutContact": 685,
+  "answerListScenesWithoutContactResolved": 685,
   "lists": 143,
   "listsWithReachableHost": 142
  },
@@ -20492,124 +20492,6 @@
     "clicks": 0
    }
   },
-  "trickster.foresight.fire_watch": {
-   "kind": "return-to-list",
-   "lists": [
-    "1a17d8053a3be7f47a7908eb6706f2fe",
-    "6dccfd39947ef4242a8afbe36b21a46c"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "1a17d8053a3be7f47a7908eb6706f2fe": "RRT_entry.trickster.foresight.fire_watch.1a17d8053a3be7f47a7908eb6706f2fe",
-    "6dccfd39947ef4242a8afbe36b21a46c": "RRT_entry.trickster.foresight.fire_watch.6dccfd39947ef4242a8afbe36b21a46c"
-   },
-   "resolved": true,
-   "host": {
-    "list": "1a17d8053a3be7f47a7908eb6706f2fe",
-    "dialog": "ed8dabf271ef7ea4797bf7073c2e437a",
-    "dialogName": "FoolKing_Tavern_Dialogue",
-    "cue": "Cue_0008",
-    "clicks": 2
-   }
-  },
-  "trickster.foresight.noticed.anevia": {
-   "kind": "dialog",
-   "lists": [
-    "33960c7f7af40cd43b7f801a76c87a0b"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "33960c7f7af40cd43b7f801a76c87a0b": "RRT_entry.trickster.foresight.noticed.anevia"
-   },
-   "resolved": true,
-   "host": {
-    "list": "33960c7f7af40cd43b7f801a76c87a0b",
-    "dialog": "de4cc2dd71694b842be37b75d1705b83",
-    "dialogName": "Dialogue_AneviaMain",
-    "cue": "Cue_0001",
-    "clicks": 0
-   }
-  },
-  "trickster.foresight.noticed.king": {
-   "kind": "return-to-list",
-   "lists": [
-    "1a17d8053a3be7f47a7908eb6706f2fe",
-    "6dccfd39947ef4242a8afbe36b21a46c"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "1a17d8053a3be7f47a7908eb6706f2fe": "RRT_entry.trickster.foresight.noticed.king.1a17d8053a3be7f47a7908eb6706f2fe",
-    "6dccfd39947ef4242a8afbe36b21a46c": "RRT_entry.trickster.foresight.noticed.king.6dccfd39947ef4242a8afbe36b21a46c"
-   },
-   "resolved": true,
-   "host": {
-    "list": "1a17d8053a3be7f47a7908eb6706f2fe",
-    "dialog": "ed8dabf271ef7ea4797bf7073c2e437a",
-    "dialogName": "FoolKing_Tavern_Dialogue",
-    "cue": "Cue_0008",
-    "clicks": 2
-   }
-  },
-  "trickster.foresight.noticed.seelah": {
-   "kind": "dialog",
-   "lists": [
-    "417fa384f3250634bb71859fbc913453"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "417fa384f3250634bb71859fbc913453": "RRT_entry.trickster.foresight.noticed.seelah"
-   },
-   "resolved": true,
-   "host": {
-    "list": "417fa384f3250634bb71859fbc913453",
-    "dialog": "ed7b39d0716d25c439f2b93c409da883",
-    "dialogName": "Seelah_Main_dialog",
-    "cue": "Cue_0002",
-    "clicks": 0
-   }
-  },
-  "trickster.foresight.offer_line": {
-   "kind": "return-cue",
-   "lists": [
-    "d3d0efb4dfcc1964c923d7b2d6e0dc77"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "d3d0efb4dfcc1964c923d7b2d6e0dc77": "RRT_entry.trickster.foresight.offer_line"
-   },
-   "resolved": true,
-   "host": {
-    "list": "d3d0efb4dfcc1964c923d7b2d6e0dc77",
-    "dialog": "e35f4932430278242b58682b14327087",
-    "dialogName": "Shyka_Offer_Dialogue",
-    "cue": "Cue_0010",
-    "clicks": 2
-   }
-  },
-  "trickster.foresight.page": {
-   "kind": "return-cue",
-   "lists": [
-    "e7236a1fe9273ba498b96b9616b3f379"
-   ],
-   "explicit": true,
-   "contact": null,
-   "entry": {
-    "e7236a1fe9273ba498b96b9616b3f379": "RRT_entry.trickster.foresight.page"
-   },
-   "resolved": true,
-   "host": {
-    "list": "e7236a1fe9273ba498b96b9616b3f379",
-    "dialog": "83bc68f21e533a74da6312ffe443252a",
-    "dialogName": "Council_Shyka_Dialogue",
-    "cue": "Cue_0001",
-    "clicks": 0
-   }
-  },
   "trickster.lastcall.bottle.king": {
    "kind": "return-cue",
    "lists": [
@@ -21347,6 +21229,44 @@
     "clicks": 0
    }
   },
+  "wenduag.trickster.echo.abyss.prepare": {
+   "kind": "return-cue",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.echo.abyss.prepare"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.echo.abyss.trust": {
+   "kind": "return-cue",
+   "lists": [
+    "66385ad77fa743e4bb1234078dbd804c"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "66385ad77fa743e4bb1234078dbd804c": "RRT_entry.wenduag.trickster.echo.abyss.trust"
+   },
+   "resolved": true,
+   "host": {
+    "list": "66385ad77fa743e4bb1234078dbd804c",
+    "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
+    "dialogName": "Lann_Main_dialog",
+    "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
   "wenduag.trickster.exile.bid_hub": {
    "kind": "return-cue",
    "lists": [
@@ -21496,6 +21416,25 @@
     "dialog": "054c1b209de5c9042a02d6736cd3b2ac",
     "dialogName": "Lann_Main_dialog",
     "cue": "Cue_0002",
+    "clicks": 0
+   }
+  },
+  "wenduag.trickster.react.regill_echo": {
+   "kind": "dialog",
+   "lists": [
+    "2366a8db6481070439fee222c0c52e45"
+   ],
+   "explicit": true,
+   "contact": null,
+   "entry": {
+    "2366a8db6481070439fee222c0c52e45": "RRT_entry.wenduag.trickster.react.regill_echo"
+   },
+   "resolved": true,
+   "host": {
+    "list": "2366a8db6481070439fee222c0c52e45",
+    "dialog": "03519ce01d6363449a9dfd01e162ef0b",
+    "dialogName": "Regill_Main_dialog",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },

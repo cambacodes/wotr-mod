@@ -115,6 +115,8 @@ namespace Tirabade
         private static KonomiMeeting? konomiMeeting;
         private static IrabethMeeting? irabethMeeting;
         private static NurahMeeting? nurahMeeting;
+        private static WenduagEcho? wenduagEcho;
+        private static readonly List<NurahInteraction> wenduagEchoClicks = new List<NurahInteraction>();
         private static NurahInteraction? nurahInteraction;
         private static BlueprintDialog? nurahHub;
         private static ParentEndingIntegration? parentEndings;
@@ -434,12 +436,23 @@ namespace Tirabade
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 foreach (string key in story.Relationships.Keys.Select(key => Rules.ServedPrefix + key))
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
+                foreach (string key in story.RestAllowances.Keys.Select(key => Rules.RestSpentPrefix + key))
+                    flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 // E1: each latch is an ordinary authored flag (with its hour) recorded by Update().
                 foreach (string key in story.Latches.Keys.SelectMany(key => new[] { key, "hour." + key }))
                     if (!flags.ContainsKey(key)) flags.Add(key, New<BlueprintUnlockableFlag>("flag." + key));
                 var konomiEtude = New<BlueprintEtude>("etude.konomi.personal_return");
                 var irabethEtude = New<BlueprintEtude>("etude.irabeth.personal_return");
                 var nurahEtude = New<BlueprintEtude>("etude.nurah.private_meeting");
+                var wenduagBlueprints = new WenduagEcho.Blueprints {
+                    Saved = New<BlueprintEtude>("etude.wenduag.echo.custody"),
+                    Sequence = New<Kingmaker.AreaLogic.Cutscenes.Cutscene>("cutscene.wenduag.echo.interruption"),
+                    End = New<Kingmaker.AreaLogic.Cutscenes.Gate>("gate.wenduag.echo.end"),
+                    Hit = New<Kingmaker.AreaLogic.Cutscenes.CommandAction>("command.wenduag.echo.hit"),
+                    Incapacitate = New<Kingmaker.AreaLogic.Cutscenes.CommandAction>("command.wenduag.echo.incapacitate")
+                };
+                if (!flags.ContainsKey("trickster.foresight.accepted"))
+                    flags.Add("trickster.foresight.accepted", New<BlueprintUnlockableFlag>("flag.trickster.foresight.accepted"));
                 foreach (var relationship in story.Relationships) BuildJournal(relationship.Key, relationship.Value);
                 foreach (var scene in story.Scenes)
                     if (scene.ReturnToList) BuildReturnToList(scene);
@@ -467,6 +480,9 @@ namespace Tirabade
                 if (story.Scenes.Any(Rules.IsNurahHubScene)) nurahHub = BuildNurahHub();
                 foreach (var pair in story.Presences.Where(p => p.Value.Dialog == "hub"))
                     presenceHubs[pair.Key] = BuildPresenceHub(pair.Key, pair.Value);
+                if (story.Scenes.Any(Rules.IsWenduagEchoHub))
+                    presenceHubs["wenduag.echo"] = BuildPresenceHub("wenduag.echo", new Presence {
+                        Greeting = "{n}The torn belt lies beside the hunter.{/n}" });
                 if (story.Scenes.Any(Rules.IsMailbagLetter)) mailbagDialog = BuildMailbag();
                 // E15: the RRT book surfaces (mailbag v2, the letter archive, data books) and the glossary tooltips.
                 BuildBooks();
@@ -523,6 +539,24 @@ namespace Tirabade
                 konomiMeeting = Optional("Konomi meeting", () => new KonomiMeeting(konomiEtude, CurrentKonomiVisit, Get<SimpleBlueprint>));
                 irabethMeeting = Optional("Irabeth meeting", () => new IrabethMeeting(irabethEtude, CurrentIrabethVisit, Get<SimpleBlueprint>));
                 nurahMeeting = Optional("Nurah meeting", () => new NurahMeeting(nurahEtude, CurrentNurahVisit, Get<SimpleBlueprint>));
+                if (story.Scenes.Any(Rules.IsWenduagEchoHub))
+                {
+                    wenduagEcho = Optional("Wenduag echo (warning only, native death retained)", () =>
+                        new WenduagEcho(wenduagBlueprints, Get<SimpleBlueprint>, () => enabled && initialized && Game.Instance?.Player != null ? State() : null));
+                    if (wenduagEcho != null)
+                        foreach (string key in new[] { "wenduag.echo", "wenduag.presence" })
+                        {
+                            string hubKey = key;
+                            if (!presenceHubs.TryGetValue(hubKey, out var hub)) continue;
+                            var click = new NurahInteraction(() => wenduagEcho.ContactActor(hubKey == "wenduag.echo"
+                                    && State().Has(WenduagEcho.E + "casualty_available")),
+                                () => Game.Instance?.Player?.MainCharacter.Value, hub,
+                                () => enabled && initialized && Idle() && story.Scenes.Where(s => s.InteractionHub == hubKey)
+                                    .Any(s => Rules.Available(story, s, State())),
+                                (dialog, target, user) => Game.Instance.DialogController.StartDialogWithUnit(dialog, target, user));
+                            wenduagEchoClicks.Add(click);
+                        }
+                }
                 if (nurahHub != null && nurahMeeting != null)
                     nurahInteraction = Optional("Nurah hub", () => new NurahInteraction(nurahMeeting, nurahHub, CanOpenNurahHub));
                 foreach (var presence in presences)
@@ -630,9 +664,9 @@ namespace Tirabade
                     string id = gate.Gate;
                     Optional<object>("Native gate " + id, () =>
                     {
-                        foreach (var checker in gate.Checkers)
-                            NativeGate.Attach(gate.Owner, checker, () => enabled && initialized && Game.Instance?.Player != null
-                                && Rules.NativeGateHolds(story, id, State()));
+                        bool Holds() => enabled && initialized && Game.Instance?.Player != null && Rules.NativeGateHolds(story, id, State());
+                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, Holds);
+                        else foreach (var checker in gate.Checkers) NativeGate.Attach(gate.Owner, checker, Holds);
                         return new object();
                     });
                 }
@@ -734,7 +768,7 @@ namespace Tirabade
                 var page = local[node.Id];
                 var answers = page is BlueprintBookPage book ? book.Answers : ((BlueprintCue)page).Answers;
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
-                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
                 // Preserve saved terminal answer IDs while building authored ending branches normally.
                 if (ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                     && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
@@ -793,8 +827,13 @@ namespace Tirabade
                     leave.ShowConditions = Conditions(new RouteCondition { Continuation = scene, ContactLost = true });
                     answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
                 }
+                AddPaymentExit(scene, node, answers, nativeReturn);
             }
-            if (inline) return;
+            if (inline)
+            {
+                foreach (var node in scene.Nodes) BuildInlineParagraphs((BlueprintCue)local[node.Id], node, scene.Id + "." + node.Id);
+                return;
+            }
             var dialog = New<BlueprintDialog>("dialog." + scene.Id);
             dialog.Type = DialogType.Book;
             dialog.Conditions = Conditions();
@@ -804,6 +843,18 @@ namespace Tirabade
             dialog.StartActions = Actions();
             dialog.FinishActions = Actions(new RouteAction { StopSpeech = true });
             dialogs.Add(scene.Id, dialog);
+        }
+
+        // A funds-dependent page keeps an exit even if its only purchase is unavailable.
+        private static void AddPaymentExit(Scene scene, Node node, List<BlueprintAnswerBaseReference> answers, BlueprintCue? nativeReturn, string? prefix = null)
+        {
+            if (!node.Choices.Any(choice => choice.Crusade?.Amount < 0)) return;
+            var leave = New<BlueprintAnswer>("answer." + (prefix ?? scene.Id) + "." + node.Id + ".payment_unavailable");
+            InitializeAnswer(leave);
+            leave.Text = Text(leave.name, "[Leave.]");
+            leave.ShowConditions = Conditions(new RouteCondition { PaymentNode = node });
+            if (nativeReturn != null) leave.NextCue = Cues(nativeReturn);
+            answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
         }
 
         // E5: whitelisted native effects on an injected answer, shaped exactly like native answers
@@ -827,7 +878,9 @@ namespace Tirabade
                 }
                 else warn("Mythic-choice achievement counter unavailable for " + choice.Mythic + "; the requirement is kept without it.");
             }
-            if (choice.Crusade != null)
+            bool echoPayment = story.Scenes.Where(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal))
+                .Any(s => s.Nodes.Any(n => n.Choices.Contains(choice)));
+            if (choice.Crusade != null && !echoPayment)
             {
                 int amount = Math.Abs(choice.Crusade.Amount);
                 var resources = choice.Crusade.Resource == "Finances" ? Kingmaker.Kingdom.KingdomResourcesAmount.FromFinances(amount)
@@ -844,7 +897,15 @@ namespace Tirabade
                     change = new GuardedRemoveCrusadeResources();
                     Field(change, "m_ResourcesAmount", resources);
                 }
-                answer.OnSelect = Actions((answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).Concat(new[] { change }).ToArray());
+                var progress = (answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).OfType<RouteAction>().SingleOrDefault();
+                if (progress != null)
+                {
+                    var payment = new CrusadePayment { Cost = choice.Crusade, Choice = choice, Continuation = progress.Continuation, Complete = progress.Complete };
+                    progress.Payment = payment;
+                    if (change is GuardedAddCrusadeResources add) add.Payment = payment;
+                    if (change is GuardedRemoveCrusadeResources remove) remove.Payment = payment;
+                }
+                answer.OnSelect = Actions(new[] { change }.Concat(answer.OnSelect?.Actions ?? Array.Empty<GameAction>()).ToArray());
             }
             if (choice.RemoveItem != null)
             {
@@ -891,6 +952,7 @@ namespace Tirabade
             foreach (string list in scene.AnswerLists)
             {
                 string prefix = scene.Id + "." + list;
+                var continuation = scene.Participants.Length > 0 ? scene : null;
                 CueSetup(out var returnCue, "cue." + prefix + ".return", scene.ReturnText ?? "{n}The moment passes. The conversation resumes.{/n}");
                 var listReference = new BlueprintAnswerBaseReference();
                 Field(listReference, "deserializedGuid", BlueprintGuid.Parse(list));
@@ -909,13 +971,27 @@ namespace Tirabade
                         var answer = New<BlueprintAnswer>("answer." + prefix + "." + node.Id + "." + i);
                         InitializeAnswer(answer);
                         answer.Text = Text(answer.name, choice.Text);
-                        answer.ShowConditions = Conditions(new RouteCondition { Choice = choice });
-                        answer.SelectConditions = Conditions(new RouteCondition { Choice = choice });
-                        answer.OnSelect = Actions(new RouteAction { Choice = choice, Complete = choice.Next == null && !choice.Abort ? scene : null });
+                        answer.ShowConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
+                        answer.SelectConditions = Conditions(new RouteCondition { Choice = choice, Continuation = continuation });
+                        answer.OnSelect = Actions(new RouteAction { Choice = choice, Continuation = continuation, Complete = choice.Next == null && !choice.Abort ? scene : null });
                         answer.NextCue = Cues(choice.Next != null ? local[choice.Next] : returnCue);
                         ConfigureNativeEffects(answer, choice, warnings.Add);
                         local[node.Id].Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
                     }
+                foreach (var node in scene.Nodes)
+                {
+                    if (continuation != null)
+                    {
+                        var leave = New<BlueprintAnswer>("answer." + prefix + "." + node.Id + ".contact_lost");
+                        InitializeAnswer(leave);
+                        leave.Text = Text(leave.name, "[Leave.]");
+                        leave.ShowConditions = Conditions(new RouteCondition { Continuation = scene, ContactLost = true });
+                        leave.NextCue = Cues(returnCue);
+                        local[node.Id].Answers.Add(Ref<BlueprintAnswerBaseReference>(leave));
+                    }
+                    AddPaymentExit(scene, node, local[node.Id].Answers, returnCue, prefix);
+                    BuildInlineParagraphs(local[node.Id], node, prefix + "." + node.Id);
+                }
                 var entryAnswer = New<BlueprintAnswer>("entry." + prefix);
                 InitializeAnswer(entryAnswer);
                 entryAnswer.Text = Text("entry." + prefix, scene.Entry);
@@ -943,6 +1019,28 @@ namespace Tirabade
             cue.Speaker = InlineSpeaker(node, new DialogSpeaker { NoSpeaker = false, MoveCamera = false });
             cue.Conditions = Conditions(new RouteCondition { Scene = scene });
             cue.OnShow = Actions(new RouteAction { Choice = node.Choices[0], Complete = scene });
+            BuildInlineParagraphs(cue, node, scene.Id + ".continue");
+        }
+
+        // Continue First skips hidden paragraphs; an unconditional tail keeps the original answers and continuation.
+        private static void BuildInlineParagraphs(BlueprintCue cue, Node node, string id)
+        {
+            if (node.Paragraphs.Count == 0) return;
+            CueSetup(out var tail, "cue." + id + ".paragraph_answers", "");
+            tail.Speaker = cue.Speaker;
+            tail.Answers.AddRange(cue.Answers);
+            tail.Continue = cue.Continue;
+            cue.Answers.Clear();
+            var following = new List<BlueprintCueBaseReference> { Ref<BlueprintCueBaseReference>(tail) };
+            for (int p = node.Paragraphs.Count - 1; p >= 0; p--)
+            {
+                CueSetup(out var paragraph, "cue." + id + ".p" + p, node.Paragraphs[p].Text);
+                paragraph.Speaker = cue.Speaker;
+                paragraph.Conditions = Conditions(new ParagraphCondition { Paragraph = node.Paragraphs[p] });
+                paragraph.Continue = new CueSelection { Strategy = Strategy.First, Cues = following.ToList() };
+                following.Insert(0, Ref<BlueprintCueBaseReference>(paragraph));
+            }
+            cue.Continue = new CueSelection { Strategy = Strategy.First, Cues = following };
         }
 
         // E14f: a named unit (its portrait/name, camera untouched), the dialog's conversant, or the scene's default.
@@ -1231,6 +1329,10 @@ namespace Tirabade
             var player = Game.Instance.Player;
             var state = new Snapshot { Chapter = player.Chapter, Hour = (int)player.GameTime.TotalHours,
                 Area = Game.Instance.CurrentlyLoadedArea?.AssetGuid.ToString() ?? "" };
+            foreach (var key in story.RestAllowances.Keys)
+                state.RestSpent[key] = player.UnlockableFlags.GetFlagValue(flags[Rules.RestSpentPrefix + key]);
+            var kingdom = Game.HasInstance ? Game.Instance.State?.PlayerState?.Kingdom : null;
+            if (kingdom != null) state.CrusadeResources = Rules.CrusadeResources.ToDictionary(key => key, key => CrusadeBalance(kingdom.Resources, key));
             foreach (var flag in flags)
             {
                 int value = player.UnlockableFlags.GetFlagValue(flag.Value);
@@ -1289,6 +1391,10 @@ namespace Tirabade
             if (new[] { "ascend_all", "ascend_alone", "ascend_areelu", "ascend_companions" }.Any(state.Has)) state.Flags.Add("ascended");
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+            KonomiRecovery.ReadLifecycle(state);
+            wenduagEcho?.Observe(state);
+            if (wenduagEcho == null && (state.Has(WenduagEcho.E + "rescued") || state.Has(WenduagEcho.E + "returned")))
+                state.Flags.Add(WenduagEcho.E + "unavailable");
             // Latches and data-driven composites read the completed native picture.
             Rules.Complete(story, state);
             foreach (var relationship in degraded) state.Flags.Add(Rules.DegradedPrefix + relationship);
@@ -1361,6 +1467,12 @@ namespace Tirabade
 
         private static void RecordProgress(Choice? choice, Scene? complete)
         {
+            if (complete != null && !State().Has(complete.Id))
+            {
+                var spend = State();
+                if (!Rules.SpendRestAllowance(story, complete, spend)) return;
+                if (complete.RestAllowance != null) Set(Rules.RestSpentPrefix + complete.RestAllowance, spend.RestSpent[complete.RestAllowance]);
+            }
             foreach (var key in (choice?.Set ?? Array.Empty<string>()).Concat(complete == null ? Array.Empty<string>() : new[] { complete.Id }))
             {
                 if (Game.Instance.Player.UnlockableFlags.GetFlagValue(flags[key]) > 0) continue;
@@ -1643,6 +1755,8 @@ namespace Tirabade
             irabethMeeting?.Tick();
             nurahMeeting?.Tick();
             nurahInteraction?.Tick();
+            wenduagEcho?.Tick();
+            foreach (var click in wenduagEchoClicks) click.Tick();
             foreach (var click in presenceClicks.Values) click.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
@@ -1729,7 +1843,7 @@ namespace Tirabade
             pending = null;
             pendingPlayer = null;
             if (!Rules.Available(story, scene, State()) || Game.Instance?.Player == null) return;
-            Set(story.Relationships[scene.Relationship].StartedFlag);
+            if (!scene.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal)) Set(story.Relationships[scene.Relationship].StartedFlag);
             var objective = objectives[scene.Relationship];
             if (Game.Instance.Player.QuestBook.GetObjectiveState(objective) == QuestObjectiveState.None) Game.Instance.Player.QuestBook.GiveObjective(objective);
             // Remember when each relationship last received a letter so the next rest serves someone else first.
@@ -1775,6 +1889,7 @@ namespace Tirabade
             foreach (var presence in presences)
             {
                 bool wanted = !degraded.Contains(Rules.PresenceRelationship(presence.Key)!)
+                    && !(Rules.PresenceRelationship(presence.Key) == "wenduag" && wenduagEcho?.OwnsOriginal == true)
                     && Rules.PresenceWanted(presence.Spec, state);
                 presence.Tick(wanted);
                 string line = presence.Report(wanted);
@@ -1817,6 +1932,8 @@ namespace Tirabade
 
         private static void RecordLatches()
         {
+            KonomiRecovery.RecordLifecycle();
+            InvalidateState();
             if (story.Latches.Count == 0) return;
             var state = State();
             int hour = (int)Game.Instance.Player.GameTime.TotalHours;
@@ -1889,7 +2006,7 @@ namespace Tirabade
                 foreach (var scene in story.Scenes.Where(s => s.Relationship == pair.Key && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Rules.Available(story, s, state)))
                 {
                     GUILayout.Label(scene.Title + (scene.ManualOnly ? " | choose Read below" : Rules.IsRemote(scene) ? " | available at your next rest" : " | speak to " + (scene.Owner == "Together" ? "Anevia or Irabeth" : scene.Owner)));
-                    if (Rules.IsRemote(scene) && Idle() && GUILayout.Button("Read: " + scene.Title)) Queue(scene);
+                    if (Rules.IsRemote(scene) && !scene.TableHosted && Idle() && GUILayout.Button("Read: " + scene.Title)) Queue(scene);
                 }
                 if (state.Has(pair.Value.ClosedFlag)) GUILayout.Label(pair.Key == "nocticula" ? "The harbor undertaking has ended." : "This relationship has ended.");
                 else if (state.Has(pair.Value.CommittedFlag)) GUILayout.Label("You have chosen a relationship. Later meetings follow campaign progress.");
@@ -1970,13 +2087,15 @@ namespace Tirabade
             public Choice? Choice;
             public Scene? Continuation;
             public bool ContactLost;
+            public Node? PaymentNode;
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
-                && (Scene != null ? Rules.Available(story, Scene, State())
+                && (PaymentNode != null ? !PaymentNode.Choices.Any(choice => Rules.ChoiceAvailable(choice, State()))
+                    : Scene != null ? Rules.Available(story, Scene, State())
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
-                        && Rules.Match(Choice.Requires, Choice.Forbids, State()));
+                        && Rules.ChoiceAvailable(Choice, State()) && EchoPaymentAvailable(Choice));
         }
 
         // E8b: a mailbag entry is listed while its letter is in the bag and still available.
@@ -2025,14 +2144,49 @@ namespace Tirabade
             return true;
         }
 
+        internal static int CrusadeBalance(Kingmaker.Kingdom.KingdomResourcesAmount resources, string key) =>
+            key == "Finances" ? resources.Finances : key == "Materials" ? resources.Materials : resources.Favors;
+
+        public sealed class CrusadePayment
+        {
+            public CrusadeChoice Cost = null!;
+            public Scene? Complete;
+            public Choice? Choice;
+            public Scene? Continuation;
+            public bool Applied;
+            public void Apply(Action effect)
+            {
+                Applied = false;
+                if (KingdomMissing(Cost.Resource)) return;
+                if (Complete != null && State().Has(Complete.Id)) return;
+                if (Choice != null && !Rules.ChoiceAvailable(Choice, State())
+                    || Continuation != null && !Rules.ContactAvailable(story, Continuation, State())) return;
+                Applied = Rules.ApplyCrusadeChange(Cost, () => {
+                    var kingdom = Game.HasInstance ? Game.Instance.State?.PlayerState?.Kingdom : null;
+                    return kingdom == null ? (int?)null : CrusadeBalance(kingdom.Resources, Cost.Resource);
+                }, effect, message => entry?.Logger.Log(message));
+                InvalidateState();
+            }
+        }
+
         public sealed class GuardedAddCrusadeResources : Kingmaker.Kingdom.Blueprints.AddCrusadeResources
         {
-            public override void RunAction() { if (!KingdomMissing(name)) base.RunAction(); }
+            public CrusadePayment? Payment;
+            public override void RunAction() { if (Payment != null) Payment.Apply(() => base.RunAction()); else if (!KingdomMissing(name)) base.RunAction(); }
         }
 
         public sealed class GuardedRemoveCrusadeResources : Kingmaker.Kingdom.Blueprints.RemoveCrusadeResources
         {
-            public override void RunAction() { if (!KingdomMissing(name)) base.RunAction(); }
+            public CrusadePayment? Payment;
+            public override void RunAction() { if (Payment != null) Payment.Apply(() => base.RunAction()); else if (!KingdomMissing(name)) base.RunAction(); }
+        }
+
+        private static bool EchoPaymentAvailable(Choice choice)
+        {
+            if (choice.Crusade == null || !story.Scenes.Any(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal)
+                && s.Nodes.Any(n => n.Choices.Contains(choice)))) return true;
+            var kingdom = Game.HasInstance ? Game.Instance.State?.PlayerState?.Kingdom : null;
+            return kingdom != null && kingdom.Resources.Finances >= Math.Abs(choice.Crusade.Amount);
         }
 
         public sealed class RouteAction : GameAction
@@ -2042,6 +2196,7 @@ namespace Tirabade
             public Scene? Continuation;
             public Choice? Choice;
             public bool StopSpeech;
+            public CrusadePayment? Payment;
             public override string GetCaption() => "Three at the Table story action";
             public override void RunAction()
             {
@@ -2055,7 +2210,28 @@ namespace Tirabade
                 if (Choice != null)
                 {
                     if (Continuation != null && !Rules.ContactAvailable(story, Continuation, State())) return;
-                    if (!Rules.Match(Choice.Requires, Choice.Forbids, State())) return;
+                    if (Payment != null)
+                    {
+                        bool applied = Payment.Applied;
+                        Payment.Applied = false;
+                        if (!applied)
+                        {
+                            entry?.Logger.Log("Paid answer interrupted: resource change was not verified.");
+                            if (Game.HasInstance) Game.Instance.DialogController?.StopDialog();
+                            return;
+                        }
+                        if (!Rules.Match(Choice.Requires, Choice.Forbids, State())) return;
+                    }
+                    else if (!Rules.ChoiceAvailable(Choice, State())) return;
+                    var echoScene = Continuation ?? Complete ?? story.Scenes.FirstOrDefault(s => s.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal)
+                        && s.Nodes.Any(n => n.Choices.Contains(Choice)));
+                    if (echoScene?.Id.StartsWith(WenduagEcho.E, StringComparison.Ordinal) == true)
+                    {
+                        // Keep terminal payment, custody and story writes in one main-thread action.
+                        if (!EchoPaymentAvailable(Choice) || wenduagEcho == null) return;
+                        wenduagEcho.ApplyChoice(echoScene, Choice, () => RecordProgress(Choice, Complete));
+                        return;
+                    }
                     if (Choice.Revive != null)
                     {
                         if (Complete == null || !Rules.Available(story, Complete, State())) return;
@@ -2126,6 +2302,7 @@ namespace Tirabade
             private static void Prefix(RestController __instance)
             {
                 if (!initialized || !enabled || !__instance.Status.RestSucceeded || Game.Instance?.Player == null) return;
+                foreach (var key in story.RestAllowances.Keys) Set(Rules.RestSpentPrefix + key, 0);
                 restPending = true;
                 pendingPlayer = Game.Instance.Player;
             }

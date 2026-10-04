@@ -884,3 +884,20 @@ def integrate(payload):
         for flag in DEATHS:
             if flag in s["Forbids"]:
                 overrides[flag] = RETURNED
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'nurah.trickster.dead.bill_of_sale',
+    'nurah.trickster.prison.night_out',
+    'nurah.trickster.prison.night_out_late',
+    'nurah.trickster.prison.proofs',
+    'nurah.trickster.prison.proofs_late',
+    'nurah.trickster.prison.terms',
+    'nurah.trickster.prison.terms_late',
+    'nurah.trickster.ran_off.terms_by_post',
+    'nurah.trickster.ran_off.terms_by_post_late',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

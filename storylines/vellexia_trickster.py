@@ -842,3 +842,18 @@ def integrate(payload):
         _forbid(s, KEPT)
         _paragraphs(s, TRICKSTER_PARAGRAPHS)
     _forbid(_scene(by_id, "vellexia.ending_interrupted"), LATE_COMMITTED)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'vellexia.trickster.mirrored.fetch',
+    'vellexia.trickster.mirrored.speaks',
+    'vellexia.trickster.mirrored.unmirror',
+    'vellexia.trickster.mirrored.unmirror_stores',
+    'vellexia.trickster.sword.likeness',
+    'vellexia.trickster.sword.likeness_stores',
+    'vellexia.trickster.sword.portrait',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

@@ -37,6 +37,7 @@ internal static class GalfreyTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
         state.Flags.UnionWith(flags);
+        if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Disguised);
         Rules.Complete(story, state);
@@ -176,7 +177,7 @@ internal static class GalfreyTricksterTests
 
         // Trk_Galfrey_Kitrane: planted, read at the bed, framed for her; the return at +48 h; the oath refused.
         var bed = World(story, 5, "trickster", "trickster.ever", "galfrey.dying_seen", "galfrey.early.kitrane.mooted");
-        check(Rules.Available(story, offer, bed) && !Rules.Available(story, offer, World(story, 5, "trickster.ever", "galfrey.dying_seen")),
+        check(Rules.Available(story, offer, bed) && !Rules.Available(story, offer, World(story, 5, "trickster.ever", "trickster.failed", "galfrey.dying_seen")),
             "Trk_Galfrey_Kitrane: the offer is shut at the bed, or opens without the live Trickster.");
         var watch = offer.Nodes.Single(n => n.Id == "watch").Choices.Where(c => c.Check != null).ToList();
         check(watch.Count == 2 && watch.All(c => c.Check!.Skill == "SkillPerception") && watch.Single(c => c.Check!.DC == 18).Requires.Contains(P + "kitrane_planted")
@@ -231,7 +232,7 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_RefusedThenYes: the blind return is not 96 hours after the Coronation and the eulogy.");
         var letDie = One(offer, bed, new[] { P + "let_die", Closed }, Taken);
         check(!Rules.Available(story, ret, Later(story, Died(letDie, "coronation.after", "coronation.seen"), 200))
-              && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, letDie.Flags.Concat(new[] { "trickster.ever", Dead }).ToArray())),
+              && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, letDie.Flags.Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray())),
             "Trk_Galfrey_RefusedThenYes: letting her die as the Queen does not close her route and give her page.");
 
         // Trk_Galfrey_Offscreen: the Commander never came; planted and briefed, she writes; otherwise the cortege at Drezen.
@@ -250,7 +251,7 @@ internal static class GalfreyTricksterTests
         var cortege = S(P + "iz.cortege");
         var unplanted = World(story, 5, "trickster", "trickster.ever", "iz.left_early", Dead);
         check(!Rules.Available(story, cortege, Later(story, unplanted, -150)) && Rules.Available(story, cortege, Later(story, unplanted, 0))
-              && !Rules.Available(story, cortege, World(story, 5, "trickster.ever", "iz.left_early", Dead))
+              && !Rules.Available(story, cortege, World(story, 5, "trickster.ever", "trickster.failed", "iz.left_early", Dead))
               && !cortege.Requires.Contains(P + "kitrane_planted") && !cortege.Requires.Contains(P + "crows_briefed")
               && cortege.Areas.SequenceEqual(new[] { Drezen }),
             "Trk_Galfrey_Cortege: the unprepared offscreen death has no late recovery in Drezen, or one an ex-Trickster can start.");
@@ -285,7 +286,7 @@ internal static class GalfreyTricksterTests
         check(bierNodes.Contains("flare_told") && !bierNodes.Contains("flare") && metNodes.Contains("flare") && !metNodes.Contains("flare_told"),
             "Trk_Galfrey_Cortege: the Commander remembers a war-camp meeting that never happened.");
         var bierRefused = Program.Walk(cortege, unplanted).First(r => r.Has(P + "let_die"));
-        var bierEpi = World(story, 6, bierRefused.Flags.Concat(new[] { "trickster.ever" }).ToArray());
+        var bierEpi = World(story, 6, bierRefused.Flags.Concat(new[] { "trickster", "trickster.ever" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.queen_bier"), bierEpi) && !Rules.Available(story, S(P + "epilogue.queen"), bierEpi),
             "Trk_Galfrey_Cortege: her refusal on the bier gets the deathbed page.");
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s,
@@ -334,8 +335,8 @@ internal static class GalfreyTricksterTests
         One(ford, Later(story, crowsOrder, 30), new[] { P + "ride.trial" }, P + "ride.refused_order");
 
         // Trk_Galfrey_NativeFirst: she lived, the native romance ran to the end: no device, one page, a partner.
-        var native = World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.romance_finished", "galfrey.final");
-        check(!World(story, 6, "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final").Has(P + "partner"),
+        var native = World(story, 6, "trickster", "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.romance_finished", "galfrey.final");
+        check(!World(story, 6, "trickster", "trickster.ever", "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final").Has(P + "partner"),
             "Trk_Galfrey_NativeFirst: an unfinished native courtship counts as a partner.");
         check(!own.Where(s => s.TricksterDevice).Any(s => Rules.Available(story, s, World(story, 5, "trickster", "trickster.ever",
                   "iz.fought_with_galfrey", "galfrey.romance_active", "galfrey.final", "coronation.after", "coronation.seen"))),
@@ -390,10 +391,10 @@ internal static class GalfreyTricksterTests
         check(native.Has(P + "partner") && native.Has("galfrey.harem.eligible")
               && pages.Count(s => Rules.Available(story, s, native)) == 1 && Rules.Available(story, S(P + "epilogue.native"), native),
             "Trk_Galfrey_NativeFirst: the native world does not count her once, with exactly one page.");
-        check(!World(story, 6, "trickster.ever", "galfrey.romance_active", Dead).Has(P + "partner"),
+        check(!World(story, 6, "trickster", "trickster.ever", "galfrey.romance_active", Dead).Has(P + "partner"),
             "Trk_Galfrey_NativeFirst: a dead Queen counts as a partner through the native romance.");
         // The bottle world: the Commander died at Threshold and came back (trickster.commander_back): the shared life, not the loss.
-        var bottle = World(story, 6, night.Flags.Concat(new[] { "trickster.ever", Dead, "sacrifice", "trickster.commander_back" }).ToArray());
+        var bottle = World(story, 6, night.Flags.Concat(new[] { "trickster", "trickster.ever", Dead, "sacrifice", "trickster.commander_back" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.kitrane"), bottle) && !Rules.Available(story, S(P + "epilogue.widow"), bottle)
               && pages.Count(s => Rules.Available(story, s, bottle)) == 1,
             "Trk_Galfrey_Pages: the bottle-survival world does not get exactly the shared-life page.");
@@ -417,12 +418,12 @@ internal static class GalfreyTricksterTests
             check(!visited.Contains("hulrun") && !visited.Contains("sign_hulrun") && visited.Contains("chaplain"),
                 "Trk_Galfrey_Vigil: Hulrun is in the chapel although " + gone + ".");
         }
-        var lost = World(story, 6, night.Flags.Concat(new[] { "trickster.ever", Dead, "sacrifice" }).ToArray());
+        var lost = World(story, 6, night.Flags.Concat(new[] { "trickster", "trickster.ever", Dead, "sacrifice" }).ToArray());
         check(Rules.Available(story, S(P + "epilogue.widow"), lost) && !Rules.Available(story, S(P + "epilogue.kitrane"), lost),
             "Trk_Galfrey_Pages: a Commander lost at Threshold still gets the shared-life page.");
         foreach (var w in new[] { night, sworn, letDie })
         {
-            var epi = World(story, 6, w.Flags.Concat(new[] { "trickster.ever", Dead }).ToArray());
+            var epi = World(story, 6, w.Flags.Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray());
             check(pages.Count(s => Rules.Available(story, s, epi)) == 1, "Trk_Galfrey_Pages: a world reaches more or fewer than one Galfrey page.");
         }
 

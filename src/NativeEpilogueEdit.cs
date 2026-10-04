@@ -50,20 +50,23 @@ namespace Tirabade
             // E14i: the cue's reviewed OnShow / OnStop actions ("Type:guid" of each, in order; ActionShape). The replacement runs the same
             // action objects, so the quest goes on exactly as it would have (only one of the two cues ever plays). Null: none allowed.
             public readonly string[]? OnShow, OnStop;
+            // Optional full engine-q3 action signature, including evaluator/options on reviewed native outcomes.
+            public readonly string? OnStopSignature;
             internal Evidence(string page, string sequence, string key, string? image = null, bool degradeOnRefusal = true, string[]? continueTo = null,
                 string? parent = null, string? dialog = null, string[]? parentContinue = null, string[]? answers = null,
-                string[]? alsoParents = null, string[]? onShow = null, string[]? onStop = null)
+                string[]? alsoParents = null, string[]? onShow = null, string[]? onStop = null, string? onStopSignature = null)
             {
                 ParentContinue = parentContinue;
                 Answers = answers;
-                AlsoParents = alsoParents; OnShow = onShow; OnStop = onStop;
+                AlsoParents = alsoParents; OnShow = onShow; OnStop = onStop; OnStopSignature = onStopSignature;
                 Page = page; Sequence = sequence; Key = key; Image = image; DegradeOnRefusal = degradeOnRefusal; Continue = continueTo;
                 Parent = parent; Dialog = dialog;
             }
         }
 
-        // Whitelist, verified in blueprints.zip: ShowOnce false, cues without OnStop, answers, continuation or components,
-        // and OnShow empty or exactly the reviewed image action. Before adding a cue, check that the RanRomance parent never
+        // Whitelist, verified in blueprints.zip: ShowOnce false, no components, and the reviewed parent, text,
+        // answer lists, continuation and action shapes. Reviewed OnStop actions run from the selected cue only.
+        // Before adding a cue, check that the RanRomance parent never
         // mutates it (reference/canon-review/aranka-*.cs and the parent DLL's UTF-16 strings): Cue_0461 failed live because
         // the parent sets its Continue.
         public const string Companions = "fec3b6f28610c8a48a239f148ed3ed60";
@@ -144,6 +147,35 @@ namespace Tirabade
                 onStop: new[] { "SetObjectiveStatus:83527eddea019674cb123a6a52bdf169", "SetObjectiveStatus:e12c3a03f692c6e428540247d182f59a",
                     "GiveObjective:5b1e04caadc42114281d29db76c19c4f", "CompleteEtude:392fd757d64a8b549bb8be47b37f0ed8",
                     "StartEtude:371fabce16975d34f87a4ae783bcaef4" }),
+
+            // Engine-q4: StoryTeller_MainDialogue/Cue_0785, Answer_0784. Its answer list stays native.
+            ["ca71b79bc9a45b741bcc6599ef017fe7"] = new Evidence("", "", "da750b86-b8b0-4a2f-a6d4-fea3512327b0", degradeOnRefusal: false,
+                parent: "fd39fd84212de2047b6b887c9a9cf28e", dialog: "bf328bcec67a5014f9a56ee6220f3bcc", answers: new[] { "33501a1edc26b2c4285096b9214c5414" }),
+            // AirAdventures/BookPage_0435/Cue_0482: a standalone adventure page, not an epilogue sequence.
+            // The authored rescue changes the account, while TumberdDead still starts from the selected cue's OnStop.
+            ["dbec675b71e9d5f4d96055f4bb31762e"] = new Evidence("b8d5d14d96bedab44873aa0520304e73", "", "b5c3d293-f547-4848-895b-03b2bdba5a95",
+                degradeOnRefusal: false, onStop: new[] { "StartEtude:90f2e0f1cdc263b41b2e625bf228b226" },
+                onStopSignature: "StartEtude:90f2e0f1cdc263b41b2e625bf228b226:False:True"),
+
+            // Engine-q3: both aftermath answers and all Arsinoe/Seelah siblings, verified in blueprints.zip.
+            ["a819e8c85ef23324bb0d8117bb9d7df3"] = new Evidence("", "", "1aef0e95-dc1e-49fa-9852-3fba13bd5e20", degradeOnRefusal: false,
+                parent: "245ec8482e1f37b4a8702e54430c5aa7", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "716683517058beb4ead374bd16b22ff0" }),
+            ["df45181e1968f26459f9e8bc2b995a34"] = new Evidence("", "", "0c8edca3-4bab-4535-a37b-ea3d3186213b", degradeOnRefusal: false,
+                parent: "245ec8482e1f37b4a8702e54430c5aa7", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "0e50ec24099196a42b7089ffecdc46b2" }),
+            ["0e50ec24099196a42b7089ffecdc46b2"] = new Evidence("", "", "0568c8c8-7e85-4fc3-ba62-309d2bebee00", degradeOnRefusal: false,
+                parent: "df45181e1968f26459f9e8bc2b995a34", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "de9d02036b213594fa780c6025f14004" }, alsoParents: Array.Empty<string>()),
+            ["4cd264ce0432bb94a8e80a551190150d"] = new Evidence("", "", "b873d838-c522-4d2f-83e0-b017070b6102", degradeOnRefusal: false,
+                parent: "f575d21b1fabec74da1e54484573206b", dialog: "27bc5f6c94108a446b8273800f7da48b", continueTo: new[] { "f6c3d20a92890d84c9020d37d56cc75b" }, alsoParents: Array.Empty<string>()),
+            ["73815b731281fdc47bbc59aba42b2126"] = new Evidence("", "", "afe4a854-e6c9-442f-8755-cc08e4fd140c", degradeOnRefusal: false,
+                parent: "af455979c98c7484c9e74360b4645c62", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "e9a5a4c03ea016f47b29d91b2ff3a00c" }, alsoParents: new[] { "5f8060efbd1909c4c92fb77036909d2c", "b34bbc351cd28354fb832e451ac0f8e8", "f462d972dad84fa43b98c2399eb4ff17", "6a8058648f4937d42ad846c811dc6c69" }, onShow: new[] { "PlayCutscene:a4b3b03e1d0e1b64db85061f7f53ecd0" }),
+            ["e9a5a4c03ea016f47b29d91b2ff3a00c"] = new Evidence("", "", "6ba1cb04-8e0b-40c5-ac6d-6cf64ff0e094", degradeOnRefusal: false,
+                parent: "73815b731281fdc47bbc59aba42b2126", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "2b133bf7ac66d6241a69a53dce2bf05f" }, alsoParents: Array.Empty<string>()),
+            ["2b133bf7ac66d6241a69a53dce2bf05f"] = new Evidence("", "", "c2e4632d-2c47-43cf-bebb-0f8dbbab495b", degradeOnRefusal: false,
+                parent: "e9a5a4c03ea016f47b29d91b2ff3a00c", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "b3e6076282402a1489b6f226567cf8fa" }, alsoParents: Array.Empty<string>()),
+            ["b3e6076282402a1489b6f226567cf8fa"] = new Evidence("", "", "3cb6cfc5-ab5e-4ddb-a7d1-8ce3775b987f", degradeOnRefusal: false,
+                parent: "2b133bf7ac66d6241a69a53dce2bf05f", dialog: "ff5c54635748e334990879498eb5429b", continueTo: new[] { "aeccec94d6e3246488d7f13577a8380d" }, alsoParents: Array.Empty<string>()),
+            ["aeccec94d6e3246488d7f13577a8380d"] = new Evidence("", "", "58ee4b07-0488-4fab-a286-d50f786fe135", degradeOnRefusal: false,
+                parent: "b3e6076282402a1489b6f226567cf8fa", dialog: "ff5c54635748e334990879498eb5429b", alsoParents: Array.Empty<string>(), onStop: new[] { "PlayCutscene:fef1b52002b9af642a8e5169802c3b68", "Conditional", "Conditional", "Conditional" }),
         };
 
         // E14i: a reviewed action's shape, "Type:guid" (the first blueprint reference the action holds), or the type alone.
@@ -245,7 +277,9 @@ namespace Tirabade
                 : continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
                     && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.Continue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
             if (cue.ShowOnce || cue.ShowOnceCurrentDialog || cue.Conditions == null || cue.ComponentsArray.Length != 0 || !ActionsReviewed(cue.OnShow, evidence.OnShow)
-                || !ActionsReviewed(cue.OnStop, evidence.OnStop) || !continueReviewed || cue.Answers == null
+                || !ActionsReviewed(cue.OnStop, evidence.OnStop)
+                || evidence.OnStopSignature != null && NativeQ3Recovery.Shape(cue.OnStop) != evidence.OnStopSignature
+                || !continueReviewed || cue.Answers == null
                 || !cue.Answers.Select(reference => reference?.Guid).SequenceEqual((evidence.Answers ?? Array.Empty<string>()).Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id))))
                 return "cue behavior differs from the reviewed policy";
             if (selection.Cues == null || selection.Strategy != Kingmaker.DialogSystem.Strategy.First
@@ -291,7 +325,8 @@ namespace Tirabade
                 return "not a reviewed native cue";
             if (!(resolve(cueId) is BlueprintCue cue)) return "cue missing";
             if (!(resolve(pageId) is BlueprintBookPage page)) return "page missing";
-            if (!(resolve(sequenceId) is BlueprintCueSequence sequence)) return "sequence missing";
+            var sequence = string.IsNullOrEmpty(sequenceId) ? null : resolve(sequenceId) as BlueprintCueSequence;
+            if (!string.IsNullOrEmpty(sequenceId) && sequence == null) return "sequence missing";
             if (TextKey(cue.Text) != key) return "cue text key changed (patch drift)";
             var onShow = cue.OnShow?.Actions;
             bool onShowReviewed = evidence.Image == null ? onShow?.Length == 0
@@ -303,16 +338,19 @@ namespace Tirabade
                 || evidence.ParentContinue != null && continued != null && cue.Continue!.Strategy == Kingmaker.DialogSystem.Strategy.First
                     && continued.Select(reference => reference?.Guid).SequenceEqual(evidence.ParentContinue.Select(id => (BlueprintGuid?)BlueprintGuid.Parse(id)));
             if (cue.ShowOnce || cue.ShowOnceCurrentDialog || cue.Conditions == null || cue.ComponentsArray.Length != 0
-                || !onShowReviewed || cue.OnStop?.Actions?.Length != 0 || !continueReviewed || cue.Answers?.Count != 0)
+                || !onShowReviewed || !ActionsReviewed(cue.OnStop, evidence.OnStop)
+                || evidence.OnStopSignature != null && NativeQ3Recovery.Shape(cue.OnStop) != evidence.OnStopSignature
+                || !continueReviewed || cue.Answers?.Count != 0)
                 return "cue behavior differs from the reviewed policy";
             if (page.Cues.Count(reference => reference.Guid == cue.AssetGuid) != 1) return "cue is not exactly once on its page";
-            if (sequence.Cues.Count(reference => reference.Guid == page.AssetGuid) != 1) return "page is not exactly once in its sequence";
+            if (sequence != null && sequence.Cues.Count(reference => reference.Guid == page.AssetGuid) != 1) return "page is not exactly once in its sequence";
             if (aeon != null && aeon.Cues.Any(reference => reference.Guid == page.AssetGuid)) return "page is in the Aeon sequence";
             return null;
         }
 
         // Phase 2 (registration): the replacement cue carries the native cue's presentation and a combined checker. A variant
         // that keeps the native image runs the native cue's own reviewed OnShow actions; any other shows the page's picture.
+        // A reviewed OnStop is shared intact so an adventure page keeps its native outcome.
         public static Plan Prepare(string cueId, NativeEpilogueEditSpec spec, BlueprintCue original, BlueprintBookPage page, BlueprintCue replacement,
             Func<bool> replacementApplies, int variant = 0)
         {
@@ -324,7 +362,8 @@ namespace Tirabade
             replacement.OnShow = variants[variant].KeepNativeImage && original.OnShow?.Actions != null
                 ? new ActionList { Actions = original.OnShow.Actions.ToArray() }
                 : new ActionList { Actions = Array.Empty<GameAction>() };
-            replacement.OnStop = new ActionList { Actions = Array.Empty<GameAction>() };
+            replacement.OnStop = Reviewed.TryGetValue(cueId, out var stopEvidence) && stopEvidence.OnStop != null && original.OnStop?.Actions != null
+                ? original.OnStop : new ActionList { Actions = Array.Empty<GameAction>() };
             // A cue the parent mod continues (ParentContinue) keeps its continuation under the replacement; any other never continues.
             replacement.Continue = Reviewed.TryGetValue(cueId, out var reviewed) && reviewed.ParentContinue != null && original.Continue?.Cues != null
                 ? new Kingmaker.DialogSystem.CueSelection { Cues = original.Continue.Cues.ToList(), Strategy = original.Continue.Strategy }
@@ -349,7 +388,8 @@ namespace Tirabade
             // Reviewed OnShow / OnStop (Cue_0051's cutscene and quest steps) run from whichever of the two cues plays.
             Reviewed.TryGetValue(cueId, out var reviewed);
             replacement.OnShow = new ActionList { Actions = reviewed.OnShow != null && original.OnShow?.Actions != null ? original.OnShow.Actions.ToArray() : Array.Empty<GameAction>() };
-            replacement.OnStop = new ActionList { Actions = reviewed.OnStop != null && original.OnStop?.Actions != null ? original.OnStop.Actions.ToArray() : Array.Empty<GameAction>() };
+            replacement.OnStop = reviewed.OnStop != null && original.OnStop?.Actions != null
+                ? original.OnStop : new ActionList { Actions = Array.Empty<GameAction>() };
             replacement.Experience = original.Experience;
             replacement.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = original.Continue.Cues.ToList(), Strategy = original.Continue.Strategy };
             replacement.Answers.Clear();

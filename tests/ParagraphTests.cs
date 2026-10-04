@@ -57,7 +57,12 @@ internal static class ParagraphTests
         Invalid("textless page that can be empty", noGuard);
         var letter = Page("Some text.");
         letter.Owner = "Memory"; letter.Remote = true;
-        Invalid("paragraphs on a letter", letter);
+        Rules.Validate(Wrap(letter));
+        check(Rules.VisibleParagraphs(letter.Nodes[0], state).Length == 3, "Non-epilogue paragraphs use different visibility rules.");
+        var ordinary = Page("Some text.");
+        ordinary.Owner = "Anevia"; ordinary.Nodes[0].Speaker = "Anevia";
+        ordinary.AnswerLists = new[] { "0123456789abcdef0123456789abcdef" };
+        Rules.Validate(Wrap(ordinary));
         var blank = Page("Some text.");
         blank.Nodes[0].Paragraphs[1].Text = " ";
         Invalid("blank paragraph", blank);

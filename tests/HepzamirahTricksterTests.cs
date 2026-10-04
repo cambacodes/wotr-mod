@@ -120,9 +120,9 @@ internal static class HepzamirahTricksterTests
               && Choice(body, "terms", 2).Alignment?.Direction == "Evil",
             "Mutasafen's coin and threat cost nothing.");
         check(Choice(body, "rename", 0).Set.Contains(P + "returned"), "The rename does not return her.");
-        // Q8 (Sol HOW): the payoff of a corner already stolen is selectable without the live path (no mythic answer gate).
+        // The answers retain their authored presentation; ENGINE-Q5 puts the live requirement on the producer scene.
         check(body.Nodes.SelectMany(n => n.Choices).All(c => c.Mythic == null),
-            "The lodger's payoff answers need the live path, so a lost path strands her in the chair.");
+            "The lodger's answers acquired an unnecessary mythic bracket.");
         foreach (var s in yard)
             check(s.ContactUnit == Body && s.Areas.SequenceEqual(new[] { Drezen }) && !Rules.IsRemote(s) && s.Chapters.SequenceEqual(new[] { 5 })
                   && s.Forbids.Contains("hepzamirah.closed"),
@@ -205,7 +205,7 @@ internal static class HepzamirahTricksterTests
             "Trk_Hepzamirah_LeftToRot: leaving her to rot does not close the route.");
 
         // Trk_Hepzamirah_Deal*: Mutasafen's three prices; the foresight is only a variant.
-        var ghost = World(story, 5, "trickster.ever", P + "primed");
+        var ghost = World(story, 5, "trickster", "trickster.ever", P + "primed");
         check(Rules.Available(story, body, ghost), "Trk_Hepzamirah_NoForesight: the body needs the letter or the boast.");
         check(After(body, ghost, "terms", 0).All(r => r.Has(P + "cost.blood_sample") && r.Has(P + "returned")),
             "Trk_Hepzamirah_DealBlood: the blood does not buy the body.");
@@ -213,12 +213,12 @@ internal static class HepzamirahTricksterTests
             "Trk_Hepzamirah_DealCoin: the coin does not buy the body.");
         check(After(body, ghost, "terms", 2).All(r => r.Has(P + "cost.mutasafen_grudge") && r.Has(P + "returned")),
             "Trk_Hepzamirah_DealThreat: the threat does not buy the body.");
-        check(Rules.Available(story, body, World(story, 5, "trickster.ever", P + "primed", "hepzamirah.mutasafen_letter", "hepzamirah.mutasafen_secret")),
+        check(Rules.Available(story, body, World(story, 5, "trickster", "trickster.ever", P + "primed", "hepzamirah.mutasafen_letter", "hepzamirah.mutasafen_secret")),
             "The foresight gates the body instead of colouring it.");
         check(Play(body, ghost).All(r => !r.Has("hepzamirah.committed")), "The return scene commits.");
 
         // The courtship by the forge: the first morning, then the pick; the commit needs both and the courier.
-        var back = World(story, 5, "trickster.ever", P + "primed", P + "returned");
+        var back = World(story, 5, "trickster", "trickster.ever", P + "primed", P + "returned");
         check(Rules.Available(story, morning, Later(story, back, 12)) && !Rules.Available(story, pick, Later(story, back, 12))
               && !Rules.Available(story, terms, Later(story, back, 200)),
             "The first morning does not open the courtship, or the pick or the terms skip it.");
@@ -226,7 +226,7 @@ internal static class HepzamirahTricksterTests
             "The courier does not follow the return two days later.");
 
         // Trk_Hepzamirah_Courier: her test of the Commander.
-        var fed = World(story, 5, "trickster.ever", P + "primed", P + "returned", F + "first_morning", F + "the_pick", P + "armed");
+        var fed = World(story, 5, "trickster", "trickster.ever", P + "primed", P + "returned", F + "first_morning", F + "the_pick", P + "armed");
         check(Rules.Available(story, hounds, fed) && !Rules.Available(story, terms, fed),
             "Trk_Hepzamirah_Courier: the courier is shut, or the terms skip it.");
         var tested = After(hounds, fed, "joke", 0).First();
@@ -246,7 +246,7 @@ internal static class HepzamirahTricksterTests
             "The named producer is not terms/sealed[0].");
         check(Play(terms, ready).Any(r => r.Has("hepzamirah.closed") && !r.Has("hepzamirah.committed")),
             "Trk_Hepzamirah_Refused: her hard no is not reachable.");
-        var refused = World(story, 6, "trickster.ever", P + "primed", P + "returned", P + "courier_seen", "hepzamirah.closed");
+        var refused = World(story, 6, "trickster", "trickster.ever", P + "primed", P + "returned", P + "courier_seen", "hepzamirah.closed");
         check(!Rules.Available(story, S(P + "epilogue.commit"), refused) && !Rules.Available(story, S(P + "epilogue.leavable"), refused)
               && Rules.Available(story, S(P + "epilogue.refused"), refused),
             "Trk_Hepzamirah_Refused: the refused page does not replace the others.");
@@ -254,28 +254,28 @@ internal static class HepzamirahTricksterTests
             "Her refusal leaves a yard scene open.");
 
         // Trk_Hepzamirah_EmberDead: Ember hosts nothing; she only speaks if she is there.
-        var emberDead = World(story, 5, "trickster.ever", P + "primed", P + "returned", P + "courier_seen", F + "first_morning", F + "the_pick", "ember_dead");
+        var emberDead = World(story, 5, "trickster", "trickster.ever", P + "primed", P + "returned", P + "courier_seen", F + "first_morning", F + "the_pick", "ember_dead");
         check(Rules.Available(story, terms, emberDead) && !Rules.Available(story, S(F + "flowers"), emberDead),
             "Trk_Hepzamirah_EmberDead: the terms depend on Ember, or her flowers come without her.");
-        check(Rules.Available(story, S(P + "epilogue.commit"), World(story, 6, "trickster.ever", P + "courier_seen")),
+        check(Rules.Available(story, S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", P + "courier_seen")),
             "The epilogue commit does not carry a world where the terms were never heard.");
 
         // Q8 (Sol COX): a Last Call bottle survivor (commander_back without cheated_death) keeps her ending pages.
-        var bottle = World(story, 6, "trickster.ever", P + "courier_seen", "sacrifice", "trickster.commander_back");
+        var bottle = World(story, 6, "trickster", "trickster.ever", P + "courier_seen", "sacrifice", "trickster.commander_back");
         check(Rules.Available(story, S(P + "epilogue.commit"), bottle)
-              && Rules.Available(story, S(P + "epilogue.leavable"), World(story, 6, "trickster.ever", P + "courier_seen", "hepzamirah.committed", "sacrifice", "trickster.commander_back"))
-              && !Rules.Available(story, S(P + "epilogue.leavable_on_record"), World(story, 6, "trickster.ever", "hepzamirah.committed", "sacrifice", "trickster.commander_back"))
-              && Rules.Available(story, S(P + "epilogue.leavable_on_record"), World(story, 6, "trickster.ever", "hepzamirah.committed", "sacrifice")),
+              && Rules.Available(story, S(P + "epilogue.leavable"), World(story, 6, "trickster", "trickster.ever", P + "courier_seen", "hepzamirah.committed", "sacrifice", "trickster.commander_back"))
+              && !Rules.Available(story, S(P + "epilogue.leavable_on_record"), World(story, 6, "trickster", "trickster.ever", "hepzamirah.committed", "sacrifice", "trickster.commander_back"))
+              && Rules.Available(story, S(P + "epilogue.leavable_on_record"), World(story, 6, "trickster", "trickster.ever", "hepzamirah.committed", "sacrifice")),
             "A surviving Commander loses Hepzamirah's ending, or a dead one keeps it.");
 
-        // Trk_Hepzamirah_PathFailed: a new steal needs the live path; the payoff survives it.
+        // ENGINE-Q5: stealing the corner and completing the body both require the live path.
         var failed = WorldIn(story, Labyrinth, 5, "trickster.was", "trickster.ever", "trickster.failed", "hepzamirah.dead", "hepzamirah.ghost_dispersed");
         check(!Any(failed, second, first, late), "Trk_Hepzamirah_PathFailed: a steal opens without the live path.");
-        check(Rules.Available(story, body, World(story, 5, "trickster.ever", "trickster.failed", P + "primed")),
-            "A lost path strands a primed Hepzamirah in the chair.");
+        check(!Rules.Available(story, body, World(story, 5, "trickster.ever", "trickster.failed", P + "primed")),
+            "A new body completes after the path failed.");
 
         // The nights: only after the commit, and the cut lands at the start of the act (Directive 12).
-        var lovers = World(story, 5, "trickster.ever", P + "primed", P + "returned", P + "courier_seen", F + "first_morning", F + "the_pick", "hepzamirah.committed");
+        var lovers = World(story, 5, "trickster", "trickster.ever", P + "primed", P + "returned", P + "courier_seen", F + "first_morning", F + "the_pick", "hepzamirah.committed");
         var dawn = S(B + "morning");
         check(Rules.Available(story, dawn, Later(story, lovers, 6)) && !Rules.Available(story, dawn, fed), "The morning after comes before the night.");
         var threshold = terms.Nodes.Single(n => n.Id == "threshold");
@@ -291,7 +291,7 @@ internal static class HepzamirahTricksterTests
                 "Her nights narrate past the cut: " + banned);
 
         // Every courtship beat is reachable on its own path, in order.
-        var armed = World(story, 5, "trickster.ever", P + "primed", P + "returned", F + "first_morning", F + "the_pick", P + "armed", "ember.present");
+        var armed = World(story, 5, "trickster", "trickster.ever", P + "primed", P + "returned", F + "first_morning", F + "the_pick", P + "armed", "ember.present");
         foreach (var id in new[] { "chaplains", "mirror_open", "rent", "sister", "the_corner", "drill", "the_market", "the_nexus", "flowers" })
         {
             if (id == "mirror_open") continue;
@@ -339,6 +339,23 @@ internal static class HepzamirahTricksterTests
         var hunt = S(B + "the_hunt");
         check(Choice(hunt, "where", 1).Check?.Skill == "SkillStealth" && Play(hunt, Later(story, nights, 48)).Any(r => r.Has(P + "cost.followed")),
             "Following her against her term costs nothing.");
+
+        // Every hunt terminal withholds the same physical contact, even when the snapshot retains the old body.
+        var terminals = Play(hunt, Later(story, nights, 48));
+        check(terminals.Count == 4, "Hunt fixture must walk all four terminals.");
+        foreach (var terminal in terminals)
+        {
+            var visits = yard.Where(s => s.Id != hunt.Id && Rules.Available(story, s, Later(story, terminal, 121))).ToArray();
+            check(visits.Length > 0, "Hunt fixture has no ordinary visits to check.");
+            foreach (int hours in new[] { 0, 24, 119, 120, 121 })
+            {
+                var at = Later(story, terminal, hours);
+                check(Rules.PresenceWanted(story.Presences["hepzamirah.presence"], at) == (hours >= 120), "Hunt presence interval: " + hours);
+                foreach (var visit in visits)
+                    check(Rules.ContactAvailable(story, visit, at) == (hours >= 120)
+                        && Rules.Available(story, visit, at) == (hours >= 120), "Stale hunt contact: " + visit.Id + "/" + hours);
+            }
+        }
 
         // No other route's flag is required, closed or forbidden by her scenes; her closure touches nobody else.
         foreach (var s in story.Scenes.Where(s => s.Relationship != "hepzamirah"))

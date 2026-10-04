@@ -193,7 +193,7 @@ internal static class VellexiaTricksterTests
         check(Rules.Available(story, fetch, unfetched) && !Rules.Available(story, speaks, unfetched), "Trk_Vellexia_MirroredFetch: no fetch.");
         var fetched = Play(fetch, unfetched);
         var paid = fetched.Single(r => r.Has(P + "primed"));
-        check(paid.Has(P + "cost.late") && fetch.Nodes[0].Choices[0].Crusade?.Resource == "Finances" && fetch.Nodes[0].Choices[0].Crusade.Amount == -200,
+        check(paid.Has(P + "cost.late") && fetch.Nodes[0].Choices[0].Crusade?.Resource == "Finances" && fetch.Nodes[0].Choices[0].Crusade?.Amount == -200,
             "Trk_Vellexia_MirroredFetch: the haulers are free.");
         check(Rules.Available(story, unmirror, Later(story, paid, 24)), "Trk_Vellexia_MirroredFetch: the fetched mirror cannot be read.");
 
@@ -209,12 +209,12 @@ internal static class VellexiaTricksterTests
         check(!Any(declined, speaks, fetch, unmirror, unmirrorStores), "Trk_Vellexia_Declined: a declined mirror is still offered.");
         check(!Reaches(declined, "vellexia.committed"), "Trk_Vellexia_Declined: a declined mirror still commits.");
 
-        // Trk_Vellexia_PathFailed: the mirror was the Trickster's native act; its payoff survives the lost path, without sparks.
+        // ENGINE-Q5: fetching and unmaking the mirror complete devices and require the live path.
         var failed = World(story, 5, "trickster.was", "trickster.ever", "trickster.failed", "vellexia.mirrored", "vellexia.dead");
-        check(Rules.Available(story, fetch, failed), "Trk_Vellexia_PathFailed: no fetch after the lost path.");
-        var failedPrimed = Play(fetch, failed).Single(r => r.Has(P + "primed"));
+        check(!Rules.Available(story, fetch, failed), "Trk_Vellexia_PathFailed: a fetch completes after the lost path.");
+        var failedPrimed = Program.Copy(failed); failedPrimed.Flags.Add(P + "primed");
         var failedReady = Later(story, failedPrimed, 24);
-        check(Rules.Available(story, unmirror, failedReady), "Trk_Vellexia_PathFailed: no unmirroring after the lost path.");
+        check(!Rules.Available(story, unmirror, failedReady), "Trk_Vellexia_PathFailed: unmirroring completes after the lost path.");
         var failedGlass = unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => Rules.Match(ch.Requires, ch.Forbids, failedReady)).ToList();
         check(failedGlass.All(ch => ch.Mythic == null) && failedGlass.Count(ch => !ch.Abort) == 2,
             "Trk_Vellexia_PathFailedUnmirror: a lost Trickster still sees the mythic bracket, or loses the twins.");
@@ -228,7 +228,7 @@ internal static class VellexiaTricksterTests
             check(!s.Nodes.Any(n => n.Text.Contains("Sparks come off your fingers") || n.Text.Contains("You say her spell backwards")),
                 "Trk_Vellexia_NoPowerUnmaking: the Trickster's power still does the unmaking in " + s.Id);
         check(unmirror.Nodes.Single(n => n.Id == "glass").Choices.Where(ch => ch.Next == "nice" || ch.Next == "no_sparks")
-                  .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade.Amount < 0),
+                  .All(ch => ch.Crusade?.Resource == "Finances" && ch.Crusade?.Amount < 0),
             "Trk_Vellexia_NoPowerUnmaking: the house is not bought.");
         check(likeness.Nodes.Single(n => n.Id == "spell").Choices.All(ch => ch.Set.Contains(P + "cost.sat_for_painter")),
             "Trk_Vellexia_NoPowerUnmaking: the painter's sitting costs the Commander nothing.");
@@ -269,7 +269,7 @@ internal static class VellexiaTricksterTests
         check(Rules.Available(story, likeness, Later(story, bought, 24)), "Trk_Vellexia_EarlyFight: the bought canvas cannot be read.");
 
         // Trk_Vellexia_Likeness: unfinished; the Storyteller's guess, her own words as foresight.
-        var canvas = World(story, 5, "trickster.ever", "vellexia.final_fight", "vellexia.dead", P + "primed");
+        var canvas = World(story, 5, "trickster", "trickster.ever", "vellexia.final_fight", "vellexia.dead", P + "primed");
         check(Rules.Available(story, likeness, canvas) && !Rules.Available(story, likenessStores, canvas), "Trk_Vellexia_Likeness: unavailable.");
         var woken = Play(likeness, canvas);
         check(woken.Count > 0 && woken.All(r => new[] { "returned", "cost.diminished", "presumed_dead" }.All(f => r.Has(P + f))
@@ -282,7 +282,7 @@ internal static class VellexiaTricksterTests
         check(!plain.Contains("foresight") && foresight.Contains("foresight"), "The Cue_0136 foresight is not gated on hearing it.");
 
         // Trk_Vellexia_LikenessStorytellerDead.
-        var dlcDead = World(story, 5, "trickster.ever", "vellexia.final_fight", "vellexia.dead", P + "primed", "storyteller.dead_dlc");
+        var dlcDead = World(story, 5, "trickster", "trickster.ever", "vellexia.final_fight", "vellexia.dead", P + "primed", "storyteller.dead_dlc");
         check(Rules.Available(story, likenessStores, dlcDead) && !Rules.Available(story, likeness, dlcDead),
             "Trk_Vellexia_LikenessStorytellerDead: the dead Storyteller still reads.");
 
@@ -332,7 +332,7 @@ internal static class VellexiaTricksterTests
         var partedCommitted = Correspond(parted, "farewell");
         check(partedCommitted != null && !partedCommitted.Has("vellexia.dismissed_native"),
             "Trk_Vellexia_FarewellContinues: the passionate farewell never reaches a commitment.");
-        check(!Rules.Available(story, secondInvitation, World(story, 4, "trickster.ever", "vellexia.greeted", "vellexia.native_finished",
+        check(!Rules.Available(story, secondInvitation, World(story, 4, "trickster", "trickster.ever", "vellexia.greeted", "vellexia.native_finished",
                   "vellexia.prediction_known")), "Q11: the correspondence opens with no native ending of the affair.");
 
         // Q11 Trk_Vellexia_PeacefulNight: the peaceful lovers invite her to Drezen, and the night follows the commit.
@@ -374,7 +374,7 @@ internal static class VellexiaTricksterTests
 
         // Q11 Trk_Vellexia_LateLastCall: the late commit reaches its Last Call coda; friendship and the slow answer do not.
         var lastCall = S("vellexia.lastcall.page");
-        var lateCall = World(story, 5, "trickster.ever", "lastcall.active", P + "returned", P + "courting", "vellexia.return_kept");
+        var lateCall = World(story, 5, "trickster", "trickster.ever", "lastcall.active", P + "returned", P + "courting", "vellexia.return_kept");
         check(lateCall.Has(P + "late_committed") && Rules.Available(story, lastCall, lateCall),
             "Trk_Vellexia_LateLastCall: the late commit has no Last Call page.");
         foreach (var refusal in new[] { "vellexia.farewell_slow", "vellexia.farewell_friends", P + "kept_as_mirror" })
@@ -382,7 +382,7 @@ internal static class VellexiaTricksterTests
             var refused = Program.Copy(lateCall); refused.Flags.Add(refusal);
             check(!Rules.Available(story, lastCall, refused), "Trk_Vellexia_LateLastCall: a refused romance gets the coda: " + refusal);
         }
-        check(!Rules.Available(story, lastCall, World(story, 5, "trickster.ever", "lastcall.active", P + "returned", "vellexia.renewed_company")),
+        check(!Rules.Available(story, lastCall, World(story, 5, "trickster", "trickster.ever", "lastcall.active", P + "returned", "vellexia.renewed_company")),
             "Trk_Vellexia_LateLastCall: friendship gets the lovers' coda.");
 
         // Q11 COX: Chapter 4 carries one of her shell calls, the second invitation (R2-5 allowance); the rest wait for Drezen.
@@ -427,7 +427,7 @@ internal static class VellexiaTricksterTests
                 "Trk_Vellexia_Provocation: the visit calls a living guest dead or a prophet.");
             check(Reaches(answered.First(r => r.Has(P + "courting")), "vellexia.committed"), "Trk_Vellexia_Provocation: no road to the commit.");
         }
-        check(!Rules.Available(story, provocation, World(story, 5, "trickster.ever", "vellexia.greeted")),
+        check(!Rules.Available(story, provocation, World(story, 5, "trickster.ever", "trickster.failed", "vellexia.greeted")),
             "Trk_Vellexia_Provocation: the insult is carried without a live Trickster.");
         // Q11 r5 Trk_Vellexia_Unpaid: the shell taken and the seller's claim read in the manor (seal_agreed, prediction_known),
         // then the native dates abandoned: she bills the walked-out evening through the shell she gave, and comes to collect.
@@ -455,7 +455,7 @@ internal static class VellexiaTricksterTests
 
         // Q11 r3 Trk_Vellexia_LateCommitSacrifice: a genuine sacrifice is mourned and nothing else; a Commander who came back
         // keeps the late romance; and the room follows what became of her collection.
-        var lateCourted = World(story, 5, "trickster.ever", P + "returned", P + "courting", "vellexia.return_kept", "vellexia.prediction_known",
+        var lateCourted = World(story, 5, "trickster", "trickster.ever", P + "returned", P + "courting", "vellexia.return_kept", "vellexia.prediction_known",
                                 P + "unmirrored", P + "cost.bare_walls");
         var lateDied = Program.Copy(lateCourted); lateDied.Flags.Add("sacrifice"); Rules.Complete(story, lateDied);
         check(!Rules.Available(story, epCommit, lateDied) && Rules.Available(story, Ending("sacrifice"), lateDied),
@@ -505,18 +505,18 @@ internal static class VellexiaTricksterTests
         string Visible(Scene sc, Snapshot w) => string.Concat(sc.Nodes[0].Paragraphs.Where(pp => Rules.ParagraphVisible(pp, w)).Select(pp => pp.Text));
         foreach (var ended in new[] { "vellexia.closed", "sacrifice", "inhuman" })
         {
-            var w = World(story, 6, "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", ended);
+            var w = World(story, 6, "trickster", "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", ended);
             check(!Visible(Ending("closed"), w).Contains("gloves") && !Visible(Ending("sacrifice"), w).Contains("gloves")
                   && !Visible(Ending("changed"), w).Contains("gloves") && Visible(Ending("closed"), w).Contains("never finished"),
                 "Q11 r4: the glove ritual outlives the relationship (" + ended + "), or the unfinished hands are forgotten.");
         }
-        var gloved = World(story, 6, "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", "vellexia.farewell_lovers");
+        var gloved = World(story, 6, "trickster", "trickster.ever", P + "returned", P + "cost.diminished", "vellexia.prediction_known", "vellexia.farewell_lovers");
         check(Visible(Ending("lovers"), gloved).Contains("gloves"), "Q11 r4: the lovers lose the glove ritual.");
         foreach (var (history, bill, notBill) in new[] {
             (P + "unmirrored", "looking-glass", "her hands"), (P + "cost.diminished", "her hands", "looking-glass"),
             (P + "cost.predicted", "prophecy", "looking-glass"), (P + "provoked", "the insult", "looking-glass") })
         {
-            var w = World(story, 6, "trickster.ever", "lastcall.active", "vellexia.committed", "vellexia.lastcall.called", history);
+            var w = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "vellexia.committed", "vellexia.lastcall.called", history);
             check(Visible(lcPage, w).Contains(bill) && !Visible(lcPage, w).Contains(notBill),
                 "Q11 r4: the Last Call bill narrates another history: " + history);
         }
@@ -559,7 +559,7 @@ internal static class VellexiaTricksterTests
         check(!Rules.Available(story, invitation, World(story, 5, "trickster", "trickster.ever", "vellexia.greeted")),
             "Trk_Vellexia_NeverVisited: a Commander she has met boasts of a stranger.");
         var boast = invitation.Nodes[0].Choices[0];
-        check(boast.Mythic == "PlayerIsTrickster" && boast.Crusade?.Resource == "Finances" && boast.Crusade.Amount == -100,
+        check(boast.Mythic == "PlayerIsTrickster" && boast.Crusade?.Resource == "Finances" && boast.Crusade?.Amount == -100,
             "The wine-factor is not paid.");
         var invited = Play(invitation, never).Single(r => r.Has(P + "entry"));
         check(new[] { "primed", "cost.predicted" }.All(f => invited.Has(P + f)) && invited.Has("vellexia.prediction_known"),
@@ -621,12 +621,12 @@ internal static class VellexiaTricksterTests
         var swordEnd = Program.Copy(woken[0]); swordEnd.Flags.Add("vellexia.farewell_friends"); Rules.Complete(story, swordEnd);
         check(!Rules.Available(story, Ending("hostility"), swordEnd) && !Rules.Available(story, Ending("dead"), swordEnd)
               && Rules.Available(story, Ending("friends"), swordEnd), "A painted-back Vellexia ends in hostility or grief.");
-        var mirrorStands = World(story, 5, "trickster.ever", "vellexia.mirrored", "vellexia.dead", "vellexia.prediction_known", P + "declined");
+        var mirrorStands = World(story, 5, "trickster", "trickster.ever", "vellexia.mirrored", "vellexia.dead", "vellexia.prediction_known", P + "declined");
         check(Rules.Available(story, Ending("mirror"), mirrorStands) && !Rules.Available(story, Ending("dead"), mirrorStands),
             "A declined mirror loses its canon ending.");
 
         // Trk_Vellexia_EpilogueCommit / ...Kept (R2-6).
-        var late = World(story, 5, "trickster.ever", P + "returned", P + "courting", "vellexia.return_kept", "vellexia.prediction_known");
+        var late = World(story, 5, "trickster", "trickster.ever", P + "returned", P + "courting", "vellexia.return_kept", "vellexia.prediction_known");
         check(late.Has(P + "late_committed") && Rules.Available(story, epCommit, late) && !Rules.Available(story, Ending("interrupted"), late),
             "Trk_Vellexia_EpilogueCommit: the late commit is missing, or the interrupted ending also plays.");
         var lateKept = Program.Copy(late); lateKept.Flags.Add(P + "kept_as_mirror");

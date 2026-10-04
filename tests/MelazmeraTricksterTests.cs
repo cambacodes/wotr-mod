@@ -130,7 +130,7 @@ internal static class MelazmeraTricksterTests
 
         // Trk_Melazmera_Bindings: the build sheet's keys, bound as listed (tools/verify-game-bindings.py resolves every GUID).
         check(rel.StartedFlag == "melazmera.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.SequenceEqual(new[] { Dead }) && rel.UnavailableOverrides.Count == 0
+              && rel.UnavailableFlags.SequenceEqual(new[] { Dead, P + "left_free" }) && rel.UnavailableOverrides.Count == 0
               && rel.TricksterAccess.Keys.SequenceEqual(new[] { "alive" }) && rel.TricksterAccess["alive"].Device == P + "ch4.salt",
             "Melazmera's relationship does not match the plan (the kill stands; one device, the salt).");
         check(story.SeenCues[Told].OrderBy(g => g).SequenceEqual(new[] { "87aeec42d8aa3544093e3ff144a12e06", "ee90b60ecefa31f44aeb8a58c1e5ebab" })
@@ -204,7 +204,7 @@ internal static class MelazmeraTricksterTests
             "The hunt remembers the failed salt wrongly (the offered ring against the closed fist).");
         // The harpy's news tells the Queen's six native outcomes apart.
         var queenBeat = S(P + "beat.queen");
-        Snapshot QW(string f) => World(story, 5, Drezen, "trickster.ever", Returned, Message, "melazmera.queen_contract_offered", f);
+        Snapshot QW(string f) => World(story, 5, Drezen, "trickster", "trickster.ever", Returned, Message, "melazmera.queen_contract_offered", f);
         bool Reaches(string f, string node) => Paths(queenBeat, QW(f)).Any(o => o.path.Any(e => e.node == node));
         check(Reaches("melazmera.fq_betrayed", "turned") && !Reaches("melazmera.fq_retreated", "turned") && Reaches("melazmera.fq_retreated", "withdrew")
               && Reaches("melazmera.fq_sulked", "withdrew") && Reaches("melazmera.fq_attacked", "fought") && Reaches("melazmera.fq_refused", "fought")
@@ -220,14 +220,14 @@ internal static class MelazmeraTricksterTests
 
         // Trk_Melazmera_Window: salted in Chapter 4 and never met there: she comes to the window in Drezen in Chapter 5.
         var window = S(P + "ch5.hunt_window");
-        var ch5salted = World(story, 5, Drezen, "trickster.ever", Salted, Seal, Ch5);
+        var ch5salted = World(story, 5, Drezen, "trickster", "trickster.ever", Salted, Seal, Ch5);
         ch5salted.Times[Ch5] = ch5salted.Hour;
         check(!Avail(window, ch5salted) && Avail(window, Later(story, ch5salted, 40)) && !Avail(window, Later(story, ch5salted, 40, "abyss"))
               && Take(window, Later(story, ch5salted, 40), "leaves", 0, Returned).Has(Started)
               && !window.Nodes.Any(n => n.Text.Contains("camp") || n.Text.Contains("cook-pot")),
             "Trk_Melazmera_Window: a salted Commander who reaches Chapter 5 unmet is not found at the window in Drezen.");
         var afterWindow = Take(window, Later(story, ch5salted, 40), "leaves", 0, Returned);
-        var viaWindow = Take(msgB, Later(story, World(story, 5, Drezen, "trickster.ever", Returned, "greybor.in_party", Ch5), 1), "start", 0, Carried);
+        var viaWindow = Take(msgB, Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", Returned, "greybor.in_party", Ch5), 1), "start", 0, Carried);
         check(afterWindow.Has(Returned) && viaWindow.Has(Carried),
             "Trk_Melazmera_Window: the window meeting does not lead into her Chapter 5 message.");
         // Chapter 5 night visits stage the citadel: never at a rest outside Drezen.
@@ -239,8 +239,8 @@ internal static class MelazmeraTricksterTests
         // choice at the lair (11 §5 ruling #2, §5.1; matrix user_decision killed_at_colyphyr), not a fate to defy.
         var killed = World(story, 4, Colyphyr, "trickster", "trickster.ever", Told, "melazmera_dead");
         check(killed.Has(Dead) && !own.Any(s => Avail(s, killed))
-              && !own.Any(s => Avail(s, World(story, 5, Drezen, "trickster.ever", Returned, Message, Fed, Dead)))
-              && !pages.Any(s => Avail(s, World(story, 6, Drezen, "trickster.ever", Returned, Committed, Dead))),
+              && !own.Any(s => Avail(s, World(story, 5, Drezen, "trickster", "trickster.ever", Returned, Message, Fed, Dead)))
+              && !pages.Any(s => Avail(s, World(story, 6, Drezen, "trickster", "trickster.ever", Returned, Committed, Dead))),
             "Trk_Melazmera_KillStands: a scene or page survives the canon kill.");
         var mistaken = Take(hunt, rest2, "mistake", 0, Mistake, Closed);
         check(!own.Any(s => Avail(s, Later(story, mistaken, 200, Drezen, 5)))
@@ -248,9 +248,9 @@ internal static class MelazmeraTricksterTests
             "Trk_Melazmera_KillStands: [It was a mistake] does not close the route onto its own page.");
 
         // Chapter 4 after the hunt: the Queen asks, the old cave, the stones through the roof.
-        check(Avail(queenAfter, World(story, 4, Colyphyr, "trickster.ever", Salted, P + "queen_promised")) && queenAfter.AnswerLists.SequenceEqual(new[] { QueenHub })
-              && queenAfter.ReturnToList && !Avail(queenAfter, World(story, 4, Colyphyr, "trickster.ever", Salted, "melazmera.fq_betrayed"))
-              && Take(queenAfter, World(story, 4, Colyphyr, "trickster.ever", Salted, P + "queen_promised"), "shining", 0).Has(P + "queen_crowned"),
+        check(Avail(queenAfter, World(story, 4, Colyphyr, "trickster", "trickster.ever", Salted, P + "queen_promised")) && queenAfter.AnswerLists.SequenceEqual(new[] { QueenHub })
+              && queenAfter.ReturnToList && !Avail(queenAfter, World(story, 4, Colyphyr, "trickster", "trickster.ever", Salted, "melazmera.fq_betrayed"))
+              && Take(queenAfter, World(story, 4, Colyphyr, "trickster", "trickster.ever", Salted, P + "queen_promised"), "shining", 0).Has(P + "queen_crowned"),
             "The Queen's follow-up is not on her hub, or asks after she has turned on the Commander.");
         check(Avail(oldHoard, Later(story, met, 10)) && !Avail(oldHoard, Later(story, met, 10, Drezen)),
             "The old cave by daylight is not a Colyphyr rest visit after the hunt.");
@@ -262,20 +262,20 @@ internal static class MelazmeraTricksterTests
             "The second stone does not answer the first two days later.");
 
         // Trk_Melazmera_Message: Greybor paid in advance, or a stone through the shutter; both open her hunger.
-        var c5 = World(story, 5, Drezen, "trickster.ever", Returned, Seal, Salted, "greybor.in_party", Ch5);
+        var c5 = World(story, 5, Drezen, "trickster", "trickster.ever", Returned, Seal, Salted, "greybor.in_party", Ch5);
         check(Avail(msgB, c5) && !Avail(msgA, c5) && msgB.AnswerLists.SequenceEqual(new[] { GreyborList }) && msgB.Reaction
-              && Avail(msgA, World(story, 5, Drezen, "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", Ch5))
-              && !Avail(msgB, World(story, 5, Drezen, "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", Ch5)),
+              && Avail(msgA, World(story, 5, Drezen, "trickster", "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", Ch5))
+              && !Avail(msgB, World(story, 5, Drezen, "trickster", "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", Ch5)),
             "Trk_Melazmera_Message: Greybor does not carry her stone in Chapter 5 (the swamp queen remembered where he turned her down).");
         var carried = Take(msgB, c5, "start", 0, Carried);
         check(Avail(read, carried) && !Avail(letter, Later(story, carried, 100)) && Take(read, carried, "words", 0).Has(Message)
               && !Avail(msgB, Later(story, carried, 1)),
             "Trk_Melazmera_Message: the carried stone is not read at the next rest, once, instead of the window twin.");
-        var noGrey = World(story, 5, Drezen, "trickster.ever", Returned, Seal, "greybor.dead", Ch5);
+        var noGrey = World(story, 5, Drezen, "trickster", "trickster.ever", Returned, Seal, "greybor.dead", Ch5);
         noGrey.Times[Ch5] = noGrey.Hour;
         check(!Avail(msgA, noGrey) && !Avail(msgB, noGrey) && !Avail(letter, noGrey) && !Avail(letter, Later(story, noGrey, 50))
               && Avail(letter, Later(story, noGrey, 80)) && Take(letter, Later(story, noGrey, 80), "words", 0).Has(Message)
-              && !Avail(letter, Later(story, World(story, 5, Drezen, "trickster.ever", Returned, Seal, "greybor.dead"), 80)),
+              && !Avail(letter, Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", Returned, Seal, "greybor.dead"), 80)),
             "Trk_Melazmera_NoGreybor: without Greybor, the stone through the shutter does not carry her message 72 hours into Chapter 5.");
 
         // Trk_Melazmera_Secret: her hunger; only the cultists set the Ledger secret; the herd costs Favors.
@@ -335,12 +335,12 @@ internal static class MelazmeraTricksterTests
             "The heap does not stage the threshold up to the start of the act.");
 
         // Reactors: Greybor on Colyphyr (he turned the contract down), Nenio on the specimen.
-        check(Avail(coly, World(story, 4, Colyphyr, "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen"))
-              && !Avail(coly, World(story, 4, Colyphyr, "trickster.ever", Returned, "greybor.in_party"))
-              && !Avail(coly, World(story, 4, Colyphyr, "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", "greybor.dead")),
+        check(Avail(coly, World(story, 4, Colyphyr, "trickster", "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen"))
+              && !Avail(coly, World(story, 4, Colyphyr, "trickster", "trickster.ever", Returned, "greybor.in_party"))
+              && !Avail(coly, World(story, 4, Colyphyr, "trickster", "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", "greybor.dead")),
             "Greybor's Colyphyr reaction does not need him there when the Queen's contract was offered, alive.");
-        check(Avail(nenio, World(story, 5, Drezen, "trickster.ever", Fed)) && !Avail(nenio, World(story, 5, Drezen, "trickster.ever", Fed, "nenio.dead"))
-              && Avail(nenio, World(story, 5, Drezen, "trickster.ever", Fed, "nenio.dead", "nenio.trickster.returned")),
+        check(Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed)) && !Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed, "nenio.dead"))
+              && Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed, "nenio.dead", "nenio.trickster.returned")),
             "Nenio's reaction is not guarded by her own death and return.");
 
         // The night visits: after her message, never while she is tired of the Commander (the crown) unless committed after.
@@ -365,7 +365,7 @@ internal static class MelazmeraTricksterTests
 
         // The crew's payment names Greybor only where he carried her stone; the copper is recorded and read.
         var crew = S(P + "beat.crew");
-        Snapshot CW(params string[] f) => World(story, 5, Drezen, new[] { "trickster.ever", Returned, Message, "melazmera.ate_sailors" }.Concat(f).ToArray());
+        Snapshot CW(params string[] f) => World(story, 5, Drezen, new[] { "trickster", "trickster.ever", Returned, Message, "melazmera.ate_sailors" }.Concat(f).ToArray());
         var viaGrey = Paths(crew, CW(Carried)).Where(o => o.path.Contains(("ate", 0))).ToList();
         var viaStone = Paths(crew, CW("greybor.dead")).Where(o => o.path.Contains(("ate", 1))).ToList();
         check(viaGrey.Count > 0 && viaGrey.All(o => o.state.Has(P + "beat.crew_paid")) && viaStone.Count > 0 && viaStone.All(o => o.state.Has(P + "beat.crew_paid"))
@@ -388,7 +388,7 @@ internal static class MelazmeraTricksterTests
               && Paths(shared, Later(story, Take(commit, ready, "crown3", 0, Declined), 30)).Any(o => o.path.Any(e => e.node == "challenge")),
             "The shared hunt assigns the Commander an experimental motive the player never gave.");
         check(Reaches(P + "queen_crowned", "crowned") && Reaches(P + "queen_refused_crown", "denied")
-              && !Paths(queenBeat, World(story, 5, Drezen, "trickster.ever", Returned, Message, "melazmera.queen_contract_offered", P + "queen_promised", P + "queen_crowned"))
+              && !Paths(queenBeat, World(story, 5, Drezen, "trickster", "trickster.ever", Returned, Message, "melazmera.queen_contract_offered", P + "queen_promised", P + "queen_crowned"))
                     .Any(o => o.path.Any(e => e.node == "promised")),
             "The harpy's news forgets how the crown was settled.");
 

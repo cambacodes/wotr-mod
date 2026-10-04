@@ -16,9 +16,13 @@
             "a negotiation", "a private rehearsal", "a precedence drill", "a watch handover", "a craft lesson",
             "a route-plotting exercise", "a trap reversal", "a menu composition", "a wrestling escape", "a drawing of lots",
             "a procurement", "an observance placement", "a corrective errand", "a restitution inspection",
-            "a vigil for the dead", "a renunciation before witnesses"],
+            "a vigil for the dead", "a renunciation before witnesses",
+            "a refereed bout",
+            "a supply diversion",
+            "a carried undertaking",
+            "a trail erasure"],
   "form_cap": 2,
-  "form_cap_status": "passes (W0b, rulings D1/D2): 28 forms x 2 = 56 slots, 42 charged (38 frictions + repairs, 1 reservation, 3 packets), 14 spare; enforced by --strict-forms in build-expansion.ps1. The not-yet-charged rows below need 16 slots (rematch = retry, uncharged), so at least one more form is due when their build sheets are written, fewer if rows 18 and 23 ride on packet K3.",
+  "form_cap_status": "Binding census charged; six open build sheets await allocations among the approved spare forms.",
   "tags": ["possessive", "competitive", "communal", "indifferent"],
   "doc16_tags": {
     "possessive": ["anevia", "seelah", "kiana", "kaylessa", "delamere"],
@@ -347,9 +351,23 @@
   ],
   "extra_reservations": [
     {"id": "trust_confession", "form": "a confession", "source": "08 section 3 trust obligation (design reservation, not in FRICTIONS)"}
-  ],
-  "unassigned_friction_rows": ["1", "2", "3b", "5", "9", "12", "14", "16", "17", "18", "19", "22", "23", "24", "27"],
-  "expected_audit": {"frictions": 5, "smoothing": 33, "combined": 38, "with_reservations": 39, "packets": 3, "charged": 42, "capacity": 56, "over_cap_forms": 0},
+  ,
+    {"id": "row.1", "form": "a trap reversal", "source": "16 section 2.3 binding census"},
+    {"id": "row.2", "form": "a refereed bout", "source": "16 section 2.3 binding census"},
+    {"id": "row.3b", "form": "an evidence hearing", "source": "16 section 2.3 binding census"},
+    {"id": "row.5", "form": "a precedence drill", "source": "16 section 2.3 binding census"},
+    {"id": "row.9", "form": "a route-plotting exercise", "source": "16 section 2.3 binding census"},
+    {"id": "row.12", "form": "a craft lesson", "source": "16 section 2.3 binding census"},
+    {"id": "row.14", "form": "an observance placement", "source": "16 section 2.3 binding census"},
+    {"id": "row.16", "form": "a corrective errand", "source": "16 section 2.3 binding census"},
+    {"id": "row.17", "form": "a performance at the Fool King's court", "source": "16 section 2.3 binding census"},
+    {"id": "row.19", "form": "a drawing of lots", "source": "16 section 2.3 binding census"},
+    {"id": "row.22", "form": "a vigil for the dead", "source": "16 section 2.3 binding census"},
+    {"id": "row.24", "form": "a refereed bout", "source": "16 section 2.3 binding census"},
+    {"id": "row.27", "form": "a renunciation before witnesses", "source": "16 section 2.3 binding census"},
+    {"id": "row.49", "form": "a watch handover", "source": "16 section 2.3 binding census"}],
+  "unassigned_friction_rows": ["36", "39", "40", "42", "43", "44"],
+  "expected_audit": {"frictions": 5, "smoothing": 33, "combined": 38, "with_reservations": 53, "packets": 3, "charged": 56, "capacity": 64, "over_cap_forms": 0},
   "design_decisions": [
     "D1 RESOLVED (coordinator, 2026-10-02): expand 08 section 5 to at least 20 forms and keep the global cap of two. W0b adopted 17 forms (28 total; 08 section 5 holds mechanism, distinction and grounding) and reallocated 16 repair forms, 3 friction forms and packet K1; motives and actions unchanged.",
     "D2 RESOLVED: mutually exclusive variants of one woman charge a form once (the audit dedupes woman + form); a repair marked \"retry\": true is not charged. Arueshalae's two variants use different forms, so both forms are still charged.",
@@ -358,5 +376,6 @@
     "D5 RESOLVED (W0b): 06 section 1a now records terms for every route, so the former S/P rows (Wenduag, Jannah, Gesmerha, Targona, Yaniel, Herrax, Eliandra, Terendelev, Elyanka, Iomedae, Melazmera, Nenio) read R with 06 <slug>.terms.",
     "D6 Venue proof per woman (own-house, travelling, remote or epilogue-only partners such as Herrax, Minagho/Chivarro) before any physical Table repair; King-gone and end-of-Ch5 retry windows need an explicit venue.",
     "D7 Suggested DCs (Kaylessa LoreNature 20, Camellia Mobility 22, Wenduag Athletics 24, Jannah Mobility 22, Horzalah Perception 24) are tuning proposals; the check-to-outcome mapping must be specified per build sheet."
-  ]
+  ],
+  "packet_friction_rows": {"18": "K3", "23": "K3"}
 }

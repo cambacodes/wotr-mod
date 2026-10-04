@@ -928,3 +928,15 @@ def integrate(payload):
     payload.setdefault("PortraitFallbacks", {}).setdefault("Galfrey", PORTRAIT_GUID)
     # A completed native romance and the Iz branch taken stay true once observed.
     payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | {FINISHED, KC_KEPT})   # MANU is latched in Iz (trickster_world LATCHES), not a permanent etude
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'galfrey.trickster.iz.eulogy',
+    'galfrey.trickster.iz.road',
+    'galfrey.trickster.return.kitrane',
+    'galfrey.trickster.return.kitrane_scarred',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

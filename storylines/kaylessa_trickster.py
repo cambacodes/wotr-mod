@@ -135,7 +135,7 @@ RELATIONSHIP = dict(
               "she never died, the hunter Forn will come to you in Chapter 5 to ask a favour; let him think he has it. "
               "She sets the rules, and she may leave."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[DEAD, "inhuman"], FailureFlags=[],
+    UnavailableFlags=[DEAD, "inhuman", LEFT], FailureFlags=[],
     UnavailableOverrides={DEAD: RETURNED},
     TricksterAccess={
         "dead": dict(detect=[DEAD], device=P + "dead.borrow", returned=RETURNED),
@@ -895,3 +895,13 @@ def integrate(payload):
     for key, guid in (("Kaylessa", "f1d4b8ee52d14783a73cf6dea090ed41"), ("Forn", "d35dce02ae4c478b92cb92a9d35342f3"),
                       ("Shyka", "94e05a227c144fcaa0a37b1aa28110a1")):
         fallbacks.setdefault(key, guid)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'kaylessa.trickster.alive.amulet_swap',
+    'kaylessa.trickster.dead.soldier',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

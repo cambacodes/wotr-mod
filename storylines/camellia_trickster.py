@@ -159,7 +159,7 @@ DERIVED = {
     P + "killed_held": [[KILLED]],   # authored twin of camellia.killed for the kicked_out override (Q8)
 }
 # Other routes' Camellia reactions sit on her companion hub. A Camellia raised from a retained death is back in the party
-# and on that hub, so they lift her death once she has returned. The veiled Camellia at Fye's has no native hub (her
+# and on that hub once her current death state clears. The veiled Camellia at Fye's has no native hub (her
 # presence is an RRT hub, which only hosts her own relationship's scenes), so her killed state stays closed to them.
 FOREIGN_REACTIONS = (
     "jerribeth.trickster.reaction.camellia", "jerribeth.trickster.reaction.camellia_host",
@@ -683,8 +683,8 @@ SCENES.append(reaction("Regill", P + "react.regill_dug", (INVESTIGATED, "regill.
 
 
 def integrate(payload):
-    """Register the relationship's own keys, its presence, its revival and derived keys; lift her retained death on the
-    other routes' Camellia reactions (condition-only, G6(b))."""
+    """Register the relationship's own keys, its presence, its revival and derived keys; keep current death blocking the
+    nine other-route Camellia reactions (condition-only, engine-q3)."""
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     seen = payload.setdefault("SeenCues", {})
     for key, cues in SEEN_CUES.items():
@@ -706,4 +706,17 @@ def integrate(payload):
         if scene_ is None:
             continue
         if DEAD in scene_["Forbids"]:
-            scene_.setdefault("ForbidOverrides", {})[DEAD] = RET
+            # CamelliaNotInParty_Dead reads current life, not her historical kill.
+            # Resurrection clears it; a later death must block these nine hub reactions again.
+            scene_.setdefault("ForbidOverrides", {}).pop(DEAD, None)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'camellia.trickster.killed.performance',
+    'camellia.trickster.killed.performance_letter',
+    'camellia.trickster.killed.third_night',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

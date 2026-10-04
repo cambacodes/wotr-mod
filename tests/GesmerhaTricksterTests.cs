@@ -20,6 +20,7 @@ internal static class GesmerhaTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000 };
         state.Flags.UnionWith(flags);
+        if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -123,7 +124,7 @@ internal static class GesmerhaTricksterTests
         check(!Rules.Available(story, commission, paid), "The commission is paid twice.");
         check(!Rules.Available(story, commission, World(story, 3, Wintersun, "trickster", "gesmerha.took_risk", "gesmerha.dead")),
             "A dead woman is offered a commission.");
-        check(!Rules.Available(story, commission, World(story, 3, Wintersun, "trickster.ever", "gesmerha.took_risk")),
+        check(!Rules.Available(story, commission, World(story, 3, Wintersun, "trickster.ever", "trickster.failed", "gesmerha.took_risk")),
             "The commission is a new trick and needs the live path.");
 
         // Trk_Gesmerha_DeadPrimed: the ambush played as canon; the letter from Wintersun.
@@ -161,11 +162,11 @@ internal static class GesmerhaTricksterTests
         // Trk_Gesmerha_DeadAfterFailure: a lost path loses the new trick; canon stands.
         check(!Any(World(story, 3, Wintersun, "trickster.ever", "trickster.failed", "gesmerha.dead", "gesmerha.dead.latched"), pyre, payoff),
             "Trk_Gesmerha_DeadAfterFailure: an unprimed lost path still raises her.");
-        check(Rules.Available(story, payoff, World(story, 5, Drezen, "trickster.ever", "trickster.failed", "gesmerha.dead",
-              "gesmerha.dead.latched", P + "primed")), "A primer paid as a Trickster stops paying out after a lost path (ledger 18).");
+        check(!Rules.Available(story, payoff, World(story, 5, Drezen, "trickster.ever", "trickster.failed", "gesmerha.dead",
+              "gesmerha.dead.latched", P + "primed")), "A primed return completes after the path failed.");
 
         // Trk_Gesmerha_Yard: the middle beat and her test.
-        var returned = World(story, 5, Drezen, "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", P + "returned");
+        var returned = World(story, 5, Drezen, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", P + "returned");
         check(Rules.Available(story, yard, returned) && !Rules.Available(story, bench, returned),
             "Trk_Gesmerha_Yard: the yard is shut, or the bench skips it.");
         var away = Program.Copy(returned); away.Area = Wintersun;
@@ -173,7 +174,7 @@ internal static class GesmerhaTricksterTests
         var yardPages = Pages(yard, returned);
         check(yardPages.IsSupersetOf(new[] { "start", "hold", "pulled", "after", "not_yet" }) && !yardPages.Contains("lie_first"),
             "Trk_Gesmerha_Yard: a page of the yard is unreachable, or the late price applies to a paid-in-advance return.");
-        var lateBack = World(story, 5, Drezen, "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", P + "returned", P + "cost.late");
+        var lateBack = World(story, 5, Drezen, "trickster", "trickster.ever", "gesmerha.dead", "gesmerha.dead.latched", P + "returned", P + "cost.late");
         check(Pages(yard, lateBack).Contains("lie_first") && Play(yard, lateBack).All(r => !r.Has(P + "statue_new")),
             "A carver bought at her pyre may still carve something new before the lie comes down.");
         var seen = Pick(yard, returned, P + "yard_seen", P + "statue_true", P + "held_still");
@@ -333,7 +334,7 @@ internal static class GesmerhaTricksterTests
                 "Last Call assumes a statue the Commander did not choose.");
         }
         // A living carver who took the advance in Wintersun and committed on the registered route: the birch waits years.
-        var livingPaid = World(story, 6, Wintersun, "trickster.ever", "gesmerha.campaign_kept", "gesmerha.committed", "gesmerha.lover",
+        var livingPaid = World(story, 6, Wintersun, "trickster", "trickster.ever", "gesmerha.campaign_kept", "gesmerha.committed", "gesmerha.lover",
             "gesmerha.reunion_kept", P + "commissioned", P + "cost.advance_paid");
         var livingLc = LcVisible(livingPaid);
         check(livingLc.Count(x => x.Text.Contains("birch")) == 1 && livingLc.All(x => !x.Text.Contains("face")),
@@ -574,7 +575,7 @@ internal static class GesmerhaTricksterTests
             "A mourning page implies a postwar meeting.");
 
         // Sol round 2 (INT): an early commit followed by the late parting gets no Last Call coda.
-        var earlyThenLate = World(story, 5, Wintersun, "gesmerha.wintersun_resolved", "gesmerha.truth", "gesmerha.post_resolution_contact", "trickster.ever",
+        var earlyThenLate = World(story, 5, Wintersun, "gesmerha.wintersun_resolved", "gesmerha.truth", "gesmerha.post_resolution_contact", "trickster", "trickster.ever",
             "gesmerha.campaign_kept", "gesmerha.lover", "gesmerha.committed", "gesmerha.late_arrived", "gesmerha.private_evening_kept", "gesmerha.late_lovers");
         var parted = Pick(S("gesmerha.the_work_left_finished"), Later(story, earlyThenLate, 48), "gesmerha.closed", "gesmerha.parted");
         var partedEnd = End(parted); partedEnd.Flags.Add("lastcall.active"); Rules.Complete(story, partedEnd);

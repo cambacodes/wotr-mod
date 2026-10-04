@@ -111,8 +111,9 @@ internal static class WenduagTricksterTests
 
         // Trk_Wenduag_Bindings: the relationship, its overrides and access, and the native reads.
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { Dead, Killed, Kicked, "wenduag.hello_attacked", "wenduag.hello_sent_away", "wenduag.q3_killed", "wenduag.q3_sent_away" }.OrderBy(f => f))
-              && rel.UnavailableOverrides[Killed] == Returned && rel.UnavailableOverrides[Dead] == Returned && rel.UnavailableOverrides[Kicked] == Returned
+              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { Dead, Killed, Kicked, "wenduag.hello_attacked", "wenduag.hello_sent_away", "wenduag.q3_killed", "wenduag.q3_sent_away", Rules.WenduagEchoPrefix + "unavailable" }.OrderBy(f => f))
+              && rel.UnavailableOverrides[Killed] == Rules.WenduagEchoPrefix + "returned_available"
+              && rel.UnavailableOverrides[Dead] == rel.UnavailableOverrides[Killed] && rel.UnavailableOverrides[Kicked] == rel.UnavailableOverrides[Killed]
               && !rel.UnavailableOverrides.ContainsKey("wenduag.q3_killed") && !rel.UnavailableOverrides.ContainsKey("wenduag.hello_attacked"),
             "Trk_Wenduag_Bindings: the relationship does not match the build sheet (three overridden losses, four closures of the Commander's own).");
         check(story.Etudes[Killed] == "85ee36dae8f3317448fa5b950543b3ad" && story.Etudes[Dead] == "1129a007a909f5c4f860cd0909cd10e0"
@@ -157,7 +158,7 @@ internal static class WenduagTricksterTests
               && Ch(stage, "clean", 0).NativeNext == "fbf606cbf933aa04691bc7cfbe23292a" && Ch(stage, "deep", 0).NativeNext == "fbf606cbf933aa04691bc7cfbe23292a",
             "Trk_Wenduag_Stage: the staged blow is not hosted on the kill list, or does not continue into Cue_0049 (her request, Lann's eulogy, the blow).");
         var w3 = World(story, 3, "trickster", "trickster.ever");
-        check(Avail(stage, w3) && !Avail(stage, World(story, 3, "trickster.ever")) && !Avail(stage, World(story, 5, "trickster", "trickster.ever")),
+        check(Avail(stage, w3) && !Avail(stage, World(story, 3, "trickster.ever", "trickster.failed")) && !Avail(stage, World(story, 5, "trickster", "trickster.ever")),
             "Trk_Wenduag_Stage: the staged blow is offered off the live Trickster path, or outside Chapter 3.");
         var staged = Take(stage, w3, "clean", 0, P + "staged", P + "primed", P + "stroke_clean");
         var stagedDeep = Take(stage, w3, "deep", 0, P + "staged", P + "cost.stroke_deep");
@@ -204,7 +205,7 @@ internal static class WenduagTricksterTests
         // Trk_Wenduag_TraitorBid: the outbid on the L path's traitor hub; failure is the late path, never a retry.
         var traitorW = World(story, 3, "trickster", "trickster.ever", "wenduag.traitor", "wenduag.in_party");
         check(bid.AnswerLists.SequenceEqual(new[] { "9bad7ea452d30254997b153473954cc1" }) && bid.NativeReturnCue == "daeb0e0796521c042bdd6baebbce7ade"
-              && Avail(bid, traitorW) && !Avail(bid, World(story, 3, "trickster.ever", "wenduag.traitor"))
+              && Avail(bid, traitorW) && !Avail(bid, World(story, 3, "trickster.ever", "trickster.failed", "wenduag.traitor"))
               && Ch(bid, "offer", 0).Check?.DC == 26 && Ch(bid, "offer", 1).Check?.Skill == "CheckIntimidate",
             "Trk_Wenduag_TraitorBid: the outbid is not on the traitor hub, or its checks are wrong.");
         var bought = Take(bid, traitorW, "after", 0, P + "bought", P + "primed");
@@ -245,7 +246,7 @@ internal static class WenduagTricksterTests
         // Trk_Wenduag_ExileCh5: an exile with no street is found in the orchards, in person, on the live path.
         var hunt = S(P + "exile.ch5_hunt");
         var exiledCh5 = World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched");
-        check(Avail(hunt, exiledCh5) && !Avail(hunt, World(story, 5, "trickster.ever", Kicked, "wenduag.kicked_out.latched"))
+        check(Avail(hunt, exiledCh5) && !Avail(hunt, World(story, 5, "trickster.ever", "trickster.failed", Kicked, "wenduag.kicked_out.latched"))
               && !Avail(hunt, World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", Dead, "wenduag.street_confronted"))
               && hunt.TricksterState == "exiled",
             "Trk_Wenduag_ExileCh5: the Chapter 5 exile fallback is missing, off the live path, or plays after the street.");
@@ -345,7 +346,9 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Payment: an unprepared rescue has an outcome that pays nothing.");
         var regill = S(P + "react.regill_watch");
         check(regill.Reaction && regill.Requires.Contains("regill.in_party") && regill.Forbids.Contains("regill.dead")
-              && mine.Count(s => s.Reaction) == 4,
+              && mine.Count(s => s.Reaction) == 5
+              && S(P + "react.regill_echo").Requires.Contains(Rules.WenduagEchoPrefix + "returned")
+              && regill.Forbids.Contains(Rules.WenduagEchoPrefix + "returned"),
             "Trk_Wenduag_Reactors: the allocated reactors (Lann, Irabeth, Regill) are not all present and guarded.");
         check(S(P + "react.irabeth_traitor").Requires.Contains(P + "brask_knows") && S(P + "react.irabeth_suspicion").Forbids.Contains(P + "brask_knows"),
             "Trk_Wenduag_Reactors: Irabeth names an eyewitness the Bluff never produced.");
@@ -355,11 +358,11 @@ internal static class WenduagTricksterTests
         check(believed.Count == 0 && paras.Count(x => x.Requires.Contains(P + "lann.disbelieved")) == 1,
             "Trk_Wenduag_Pages: Lann's believed-lie paragraph can play after he disbelieved it.");
 
-        // Trk_Wenduag_PathFailed: an unprepared rescue is a live Trickster act; a bought fall still pays off after the path fails.
-        check(!Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell"))
-              && Avail(abyssFall, World(story, 4, "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought", P + "fall_agreed"))
-              && !Avail(streetFall, World(story, 5, "trickster.ever", Kicked, Dead, "wenduag.street_confronted")),
-            "Trk_Wenduag_PathFailed: an unprepared rescue appears after the Trickster path failed.");
+        // ENGINE-Q5: a prepared rescue is still a new act when performed after the path fails.
+        check(!Avail(abyssFall, World(story, 4, "trickster.ever", "trickster.failed", Dead, "wenduag.abyss_fell"))
+              && !Avail(abyssFall, World(story, 4, "trickster.ever", "trickster.failed", Dead, "wenduag.abyss_fell", P + "bought", P + "fall_agreed"))
+              && !Avail(streetFall, World(story, 5, "trickster.ever", "trickster.failed", Kicked, Dead, "wenduag.street_confronted")),
+            "Trk_Wenduag_PathFailed: a rescue appears after the Trickster path failed.");
         check(Ch(abyssFall, "price", 0).Crusade?.Amount == -100 && Ch(streetFall, "yields_late", 0).Crusade?.Amount == -50,
             "Trk_Wenduag_PathFailed: an unprepared rescue costs nothing.");
 
@@ -387,14 +390,14 @@ internal static class WenduagTricksterTests
             "Trk_Wenduag_Lann: lying to Lann a second time is not an Evil shift, or it closes her route.");
 
         // Trk_Wenduag_Pages: one page per ending; no page for a live native romance.
-        var ep = World(story, 6, "trickster.ever", Committed, P + "claim.given", P + "lann.paid");
+        var ep = World(story, 6, "trickster", "trickster.ever", Committed, P + "claim.given", P + "lann.paid");
         check(pages.Count(pg => Avail(pg, ep)) == 1 && Avail(S(P + "epilogue.pack"), ep),
             "Trk_Wenduag_Pages: the committed ending does not show exactly its own page.");
-        check(Avail(S(P + "epilogue.dead"), World(story, 6, "trickster.ever", Closed, P + "cairn_built", P + "stay_dead_ordered"))
-              && !Avail(S(P + "epilogue.dead"), World(story, 6, "trickster.ever", Closed, P + "cairn_built", P + "court.claim_refused"))
-              && Avail(S(P + "epilogue.refused"), World(story, 6, "trickster.ever", Closed, P + "court.claim_refused"))
-              && Avail(S(P + "epilogue.unclaimed"), World(story, 6, "trickster.ever", Started))
-              && !pages.Any(pg => Avail(pg, World(story, 6, "trickster.ever", "wenduag.romance_finished.latched"))),
+        check(Avail(S(P + "epilogue.dead"), World(story, 6, "trickster", "trickster.ever", Closed, P + "cairn_built", P + "stay_dead_ordered"))
+              && !Avail(S(P + "epilogue.dead"), World(story, 6, "trickster", "trickster.ever", Closed, P + "cairn_built", P + "court.claim_refused"))
+              && Avail(S(P + "epilogue.refused"), World(story, 6, "trickster", "trickster.ever", Closed, P + "court.claim_refused"))
+              && Avail(S(P + "epilogue.unclaimed"), World(story, 6, "trickster", "trickster.ever", Started))
+              && !pages.Any(pg => Avail(pg, World(story, 6, "trickster", "trickster.ever", "wenduag.romance_finished.latched"))),
             "Trk_Wenduag_Pages: a stayed-dead or unclaimed Wenduag has no page, or the native romance gets an RRT page.");
 
         // Trk_Wenduag_Household: the Last Call coda and household eligibility (committed, or her native romance kept to the end).

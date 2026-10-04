@@ -62,6 +62,10 @@ namespace Tirabade
         // route open (Rules.RouteOpen: its ClosedFlag is not held and no UnavailableFlag blocks, so a Trickster return named in
         // UnavailableOverrides lifts a death or departure). Read from each relationship's own data; nothing is hand-coded.
         public Dictionary<string, string[]> DerivedOpenRoutes = new Dictionary<string, string[]>();
+        // Pending cross-branch hooks are read-only and false until their Derived producer is integrated.
+        public string[] PendingHooks = Array.Empty<string>();
+        public Dictionary<string, int> RestAllowances = new Dictionary<string, int>();
+        public Dictionary<string, SeatWoman> SeatWomen = new Dictionary<string, SeatWoman>();
         // Engine-q2 (current path): a Derived key listed here is also withheld while any named flag holds (a negated input).
         // trickster.now = trickster AND NOT (trickster.failed, dragon, legend, swarm): the Commander is on the Trickster path
         // right now. Read by DerivedInputs, so ordering, cycle checks and missing-binding propagation see the forbids too.
@@ -181,6 +185,16 @@ namespace Tirabade
         // Hours that must pass after the latest timed Requires flag before the presence is wanted (0: at once), as
         // Scene.DelayHours: someone who is away for a while does not stand at her mark in the meantime.
         public int DelayHours;
+        // Shared with physical contact: optional timed events can withhold a presence or expire a witness.
+        public ContactWindow[] ContactWindows = Array.Empty<ContactWindow>();
+    }
+
+    public sealed class ContactWindow
+    {
+        public string Flag = "";
+        public int MinAgeHours;
+        public int? MaxAgeHours;
+        public string[] SupersededBy = Array.Empty<string>();
     }
 
     // E16: one native opener (see Story.Openers).
@@ -248,6 +262,8 @@ namespace Tirabade
     {
         public string[] Of = Array.Empty<string>();
         public int Min = 1;
+        // Optional chapter scope keeps household start caps from becoming permanent campaign bans.
+        public int[] Chapters = Array.Empty<int>();
     }
 
     public sealed class ContinueSpec
@@ -304,6 +320,13 @@ namespace Tirabade
         public string? Returned;
     }
 
+    public sealed class SeatWoman
+    {
+        public string Relationship = "";
+        public string[] UnavailableFlags = Array.Empty<string>();
+        public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
+    }
+
     public sealed class Scene
     {
         public string Id = "";
@@ -324,6 +347,12 @@ namespace Tirabade
         public string? Sender;
         public bool ManualOnly;
         public string? InteractionHub;
+        // A narrated visit may be explicitly hosted at the Table, without entering the mailbag.
+        public bool TableHosted;
+        public string? RestAllowance;
+        public string[] Pair = Array.Empty<string>();
+        public string[] Participants = Array.Empty<string>();
+        public string[] ParticipantWomen = Array.Empty<string>();
         public string? Recovery;
         public string? AfterRecovery;
         public string? AfterDeparture;
@@ -370,7 +399,7 @@ namespace Tirabade
         public string Portrait = "";
         public string Text = "";
         public List<Choice> Choices = new List<Choice>();
-        // E14c: epilogue pages only. Conditional paragraphs appended after the node text, in order (the native BookPage idiom).
+        // E14c: conditional paragraphs on narrator and speaker nodes. Paragraphs appended after the node text, in order (the native BookPage idiom).
         public List<Paragraph> Paragraphs = new List<Paragraph>();
         // E14f: who speaks this node's cue in a native dialog: a BlueprintUnit GUID, or Speaker "conversant" for the dialog's
         // conversant. Only inline cues (NativeReturnCue, ReturnToList, ContinueBefore) use it; book pages stay narrated.
@@ -531,12 +560,26 @@ namespace Tirabade
         public string Area = "";
         public HashSet<string> Flags = new HashSet<string>(StringComparer.Ordinal);
         public HashSet<string> AvailableContacts = new HashSet<string>(StringComparer.Ordinal);
+        // A custody pickup exception belongs to one scene, never to the shared blueprint contact set.
+        public HashSet<string> SceneContacts = new HashSet<string>(StringComparer.Ordinal);
         public Dictionary<string, int> Times = new Dictionary<string, int>();
-        public bool Has(string flag) => Flags.Contains(flag);
+        public Dictionary<string, int> RestSpent = new Dictionary<string, int>();
+        public Dictionary<string, int>? CrusadeResources;
+        public bool Has(string flag) => Flags.Contains(flag)
+            && (flag != "wenduag.trickster.returned" || !Flags.Contains(Rules.WenduagEchoPrefix + "unavailable"));
     }
 
     public static class Rules
     {
+        public const string WenduagEchoPrefix = "wenduag.trickster.echo.abyss.";
+        public static readonly string[] WenduagEchoRuntime = new[] { "adapter_available", "casualty_available", "return_available", "valid", "unavailable" }
+            .Select(suffix => WenduagEchoPrefix + suffix).ToArray();
+        public static bool IsWenduagEchoHub(Scene scene) => scene.InteractionHub == "wenduag.echo"
+            && scene.Relationship == "wenduag" && scene.Owner == "Wenduag" && !IsRemote(scene)
+            && scene.ContactUnit == "ae766624c03058440a036de90a7f2009"
+            && scene.Requires.Contains(TricksterNow) && scene.Requires.Contains("foresight.page_taken")
+            && (scene.Id == WenduagEchoPrefix + "pickup" && scene.Requires.Contains(WenduagEchoPrefix + "casualty_available")
+                || scene.Id == WenduagEchoPrefix + "return" && scene.Requires.Contains(WenduagEchoPrefix + "return_available"));
         public const string NurahCapital = "2570015799edf594daf2f076f2f975d8";
         public const string NurahContact = "f999fc37ddb225640b7f98c0a05d6948";
         public static readonly string[] CheckSkills = { "SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana", "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception", "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate" };
@@ -628,6 +671,7 @@ namespace Tirabade
             if (!scene.Requires.All(state.Has) || scene.Forbids.Any(flag => ForbidHolds(scene, flag, state))) return false;
             if (scene.RequiresAny.Length > 0 && !scene.RequiresAny.Any(state.Has)) return false;
             if (!scene.RequiresAnyGroups.All(group => group.Any(state.Has))) return false;
+            if (!RestAllowanceAvailable(story, scene, state) || !ParticipantsAvailable(story, scene, state)) return false;
             if (!ContactAvailable(story, scene, state)) return false;
             if (scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) return true;
             var relationship = story.Relationships[scene.Relationship];
@@ -651,6 +695,63 @@ namespace Tirabade
             int last = scene.Requires.Concat(scene.RequiresAnyGroups.SelectMany(group => group).Where(state.Has))
                 .Where(state.Times.ContainsKey).Select(k => state.Times[k]).DefaultIfEmpty(state.Hour - scene.DelayHours).Max();
             return state.Hour - last >= scene.DelayHours;
+        }
+
+        public const string RestSpentPrefix = "rrt.rest.spent.";
+
+        public static bool RestAllowanceAvailable(Story story, Scene scene, Snapshot state) => scene.RestAllowance == null
+            || story.RestAllowances.TryGetValue(scene.RestAllowance, out int limit)
+                && (!state.RestSpent.TryGetValue(scene.RestAllowance, out int spent) || spent < limit);
+
+        // Call before recording completion; replaying an already completed scene never spends again.
+        public static bool SpendRestAllowance(Story story, Scene scene, Snapshot state)
+        {
+            if (state.Has(scene.Id)) return false;
+            if (!RestAllowanceAvailable(story, scene, state)) return false;
+            if (scene.RestAllowance != null)
+                state.RestSpent[scene.RestAllowance] = (state.RestSpent.TryGetValue(scene.RestAllowance, out int used) ? used : 0) + 1;
+            return true;
+        }
+
+        public static void RestFinished(Snapshot state, bool succeeded)
+        {
+            if (succeeded) state.RestSpent.Clear();
+        }
+
+        public static bool ParticipantsAvailable(Story story, Scene scene, Snapshot state) => scene.Participants.All(id => {
+            var named = scene.ParticipantWomen.Where(woman => story.SeatWomen[woman].Relationship == id).ToArray();
+            var otherWomen = story.SeatWomen.Where(pair => pair.Value.Relationship == id && !named.Contains(pair.Key))
+                .SelectMany(pair => pair.Value.UnavailableFlags);
+            var eligible = id + ".harem.eligible";
+            return !state.Has(DegradedPrefix + id) && RouteOpen(story.Relationships[id], state, named.Length == 0 ? null : otherWomen)
+                && (named.Length == 0 ? state.Has(eligible) : story.Derived.TryGetValue(eligible, out var groups)
+                    && groups.Any(group => group.All(state.Has)) && !DerivedForbidden(story, eligible, state));
+        })
+            && scene.ParticipantWomen.All(id => {
+                var woman = story.SeatWomen[id];
+                return !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
+                    && !woman.UnavailableFlags.Any(flag => state.Has(flag)
+                        && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
+            });
+
+        public static bool ChoiceAvailable(Choice choice, Snapshot state) => Match(choice.Requires, choice.Forbids, state)
+            && (choice.Crusade == null || choice.Crusade.Amount >= 0 || state.CrusadeResources != null
+                && state.CrusadeResources.TryGetValue(choice.Crusade.Resource, out int funds) && (long)funds + choice.Crusade.Amount >= 0);
+
+        // Witness the actual native balance change, rather than an action merely being requested.
+        public static bool ApplyCrusadeChange(CrusadeChoice cost, Func<int?> read, Action apply, Action<string> warn)
+        {
+            try
+            {
+                int? before = read();
+                if (before == null || cost.Amount < 0 && (long)before.Value + cost.Amount < 0)
+                { warn("Crusade payment skipped: missing kingdom or insufficient " + cost.Resource); return false; }
+                apply();
+                if (read() == (long)before.Value + cost.Amount) return true;
+                warn("Crusade change was not applied: " + cost.Resource);
+            }
+            catch (Exception ex) { warn("Crusade change failed: " + ex.Message); }
+            return false;
         }
 
         // A held Forbid blocks unless the scene's authored ForbidOverride for it is also held (E3: native keys too).
@@ -724,9 +825,14 @@ namespace Tirabade
         // Remote conversations need live-state guards too, without reapplying authored closure or delays.
         public static bool ContactAvailable(Story story, Scene scene, Snapshot state)
         {
+            if (!ParticipantsAvailable(story, scene, state)) return false;
             if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
-            return (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit))
+            var contacts = scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit });
+            return story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+                .All(p => ContactWindowsAvailable(p.ContactWindows, state))
+                && (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit)
+                    || scene.Id == WenduagEchoPrefix + "pickup" && scene.ContactUnit == "ae766624c03058440a036de90a7f2009" && state.SceneContacts.Contains(scene.Id))
                 && scene.AdditionalContactUnits.All(state.AvailableContacts.Contains)
                 && state.Chapter >= scene.MinChapter && state.Chapter <= scene.MaxChapter
                 && (scene.Chapters.Length == 0 || scene.Chapters.Contains(state.Chapter))
@@ -752,7 +858,7 @@ namespace Tirabade
 
         public static readonly string[] ObjectiveStates = { "Started", "Completed", "Failed" };
 
-        private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal)
+        private static bool IsReservedKey(string key) => key.StartsWith(DegradedPrefix, StringComparison.Ordinal) || key.StartsWith(RestSpentPrefix, StringComparison.Ordinal)
             || key.StartsWith(ServedPrefix, StringComparison.Ordinal) || key.StartsWith("hour.", StringComparison.Ordinal)
             || key.StartsWith("revive.", StringComparison.Ordinal);
 
@@ -766,8 +872,9 @@ namespace Tirabade
             || flag == "konomi.missed_contact_available" || flag == "konomi.missed_contact_invalidated"
             || flag == "konomi.retained_dead" || flag == "konomi.retained_hostile" || flag == "konomi.return_contact_available"
             || flag == "konomi.return_correspondence_available"
+            || flag == "konomi.death_unreturned" || flag == "konomi.death_restored"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
-            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived";
+            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag);
 
         // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
         public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
@@ -784,7 +891,8 @@ namespace Tirabade
                     && !DerivedForbidden(story, key, state))
                     state.Flags.Add(key);
             foreach (var pair in story.Counts)
-                if (!state.Has(pair.Key) && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
+                if (!state.Has(pair.Key) && (pair.Value.Chapters.Length == 0 || pair.Value.Chapters.Contains(state.Chapter))
+                    && pair.Value.Of.Count(state.Has) >= pair.Value.Min) state.Flags.Add(pair.Key);
             CompleteWordMadeTrue(state);
         }
 
@@ -809,8 +917,8 @@ namespace Tirabade
 
         // E4b: a relationship's route is open while its ClosedFlag is not held and none of its UnavailableFlags blocks (Blocks:
         // an authored UnavailableOverrides return lifts the flag). The same closure the relationship's own scenes obey.
-        public static bool RouteOpen(Relationship relationship, Snapshot state) => !state.Has(relationship.ClosedFlag)
-            && !relationship.UnavailableFlags.Any(flag => Blocks(relationship, flag, state));
+        public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null) => !state.Has(relationship.ClosedFlag)
+            && !relationship.UnavailableFlags.Any(flag => !(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state));
 
         // Engine-q2: a DerivedForbids flag withholds its Derived key (the key is never set while the flag holds).
         public static bool DerivedForbidden(Story story, string key, Snapshot state) =>
@@ -886,13 +994,13 @@ namespace Tirabade
             scene.Sender ?? (scene.Owner == "Together" ? "Anevia and Irabeth" : scene.Owner);
 
         public static Scene? NextRemote(Story story, Snapshot state) => story.Scenes
-            .FirstOrDefault(scene => IsRemote(scene) && !scene.ManualOnly
+            .FirstOrDefault(scene => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly
                 && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state));
 
         // Fair rest delivery (GLOBAL-03): the relationship served least recently goes first, then the one whose
         // chapter window closes soonest; within a relationship, authored order is kept.
         public static Scene? NextRemote(Story story, Snapshot state, IReadOnlyDictionary<string, int> lastServedHour) => story.Scenes
-            .Where(scene => IsRemote(scene) && !scene.ManualOnly
+            .Where(scene => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly
                 && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && Available(story, scene, state))
             .GroupBy(scene => scene.Relationship)
             .OrderBy(group => lastServedHour.TryGetValue(group.Key, out int hour) ? hour : int.MinValue)
@@ -901,11 +1009,21 @@ namespace Tirabade
 
         public const string ServedPrefix = "served.";
 
+        // An unproduced optional event has no effect. Once produced, timed windows require saved timestamps;
+        // missing, negative or future evidence fails closed. Superseding flags retire that witness.
+        public static bool ContactWindowsAvailable(IEnumerable<ContactWindow> windows, Snapshot state) => windows.All(window =>
+            !state.Has(window.Flag) || !window.SupersededBy.Any(state.Has)
+                && ((window.MinAgeHours == 0 && window.MaxAgeHours == null)
+                    || state.Times.TryGetValue(window.Flag, out int at) && at >= 0 && at <= state.Hour
+                        && (long)state.Hour - at >= window.MinAgeHours
+                        && (window.MaxAgeHours == null || (long)state.Hour - at <= window.MaxAgeHours)));
+
         // E12: the presence is wanted in this snapshot (area, chapter window, Requires, Forbids).
         public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
             && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
             && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has)
             && presence.RequiresAnyGroups.All(group => group.Any(state.Has))
+            && ContactWindowsAvailable(presence.ContactWindows, state)
             && (presence.DelayHours <= 0 || state.Hour - presence.Requires.Where(state.Times.ContainsKey).Select(k => state.Times[k])
                 .DefaultIfEmpty(state.Hour - presence.DelayHours).Max() >= presence.DelayHours);
 
@@ -975,7 +1093,8 @@ namespace Tirabade
 
         // E14c: a paragraph shows when its requires hold, no forbid holds and every any-group has a member.
         // E15: book entries visible now, in section order then authored order.
-        public static bool BookEntryVisible(BookEntry entry, Snapshot state) => entry.Requires.All(state.Has)
+        public static bool BookEntryVisible(BookEntry entry, Snapshot state) =>
+            !(entry.Id == "owed.wenduag" && state.Has(WenduagEchoPrefix + "returned")) && entry.Requires.All(state.Has)
             && !entry.Forbids.Any(state.Has) && entry.AnyGroups.All(group => group.Any(state.Has));
 
         public static List<BookEntry> BookVisible(BookSpec book, Snapshot state)
@@ -1177,7 +1296,7 @@ namespace Tirabade
             int Served(string relationship) => lastServedHour.TryGetValue(relationship, out int hour) ? hour : int.MinValue;
             var order = story.Scenes.Select((scene, index) => (scene, index)).ToDictionary(pair => pair.scene, pair => pair.index);
             return story.Scenes
-                .Where(scene => IsRemote(scene) && !scene.ManualOnly && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
+                .Where(scene => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                     && !queued.Contains(scene) && queued.Count(other => other.Relationship == scene.Relationship) < cap
                     && Available(story, scene, state))
                 .GroupBy(scene => RotationKey(story, scene.Relationship))
@@ -1189,7 +1308,7 @@ namespace Tirabade
         }
 
         // E8b: a scene the mailbag can deliver (a rest letter or memory; manual reads and epilogue pages never arrive by post).
-        public static bool IsMailbagLetter(Scene scene) => IsRemote(scene) && !scene.ManualOnly
+        public static bool IsMailbagLetter(Scene scene) => IsRemote(scene) && !scene.TableHosted && !scene.ManualOnly
             && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
 
         // E8b: the letters one rest adds to the mailbag: every deliverable remote scene (not manual, not an epilogue page),
@@ -1213,7 +1332,7 @@ namespace Tirabade
             if (IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.ContinueBefore != null) return Array.Empty<string>();
             if (scene.InteractionHub != null)
             {
-                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene) || IsTableScene(scene)) return Array.Empty<string>();
+                if (IsNurahHubScene(scene) || IsPresenceHubScene(scene) || IsTableScene(scene) || IsWenduagEchoHub(scene)) return Array.Empty<string>();
                 throw new InvalidOperationException("Unrecognized authored interaction hub: " + scene.Id + "/" + scene.InteractionHub);
             }
             if (scene.AnswerLists.Length > 0) return scene.AnswerLists;
@@ -1247,12 +1366,13 @@ namespace Tirabade
         // opened by a native opener on Thaberdine's tavern list; the chosen scene is queued and plays after the menu closes.
         public const string TableHub = "household.table";
         public const int TablePerPage = 6;
-        public static bool IsTableScene(Scene scene) => scene.InteractionHub == TableHub && !IsRemote(scene)
+        public static bool IsTableScene(Scene scene) => scene.InteractionHub == TableHub && (!IsRemote(scene) || scene.TableHosted && scene.Kind == "visit")
             && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0 && scene.ContactUnit == null;
 
-        // The Table menu: the table scenes available now, in authored order (the menu pages them TablePerPage at a time).
+        // The Table menu prioritizes protected deadlines; ties retain authored order and the player selects an entry.
         public static List<Scene> TableEntries(Story story, Snapshot state) =>
-            story.Scenes.Where(scene => IsTableScene(scene) && Available(story, scene, state)).ToList();
+            story.Scenes.Where(scene => IsTableScene(scene) && Available(story, scene, state))
+                .OrderBy(scene => scene.RestAllowance == "household.protected" ? ((scene.Chapters.Length > 0 ? scene.Chapters.Max() : scene.MaxChapter) == state.Chapter ? 0 : 1) : 2).ToList();
 
         public static bool OpenerShown(NativeOpener opener, Snapshot state) =>
             state.Chapter >= opener.MinChapter && state.Chapter <= opener.MaxChapter && Match(opener.Requires, opener.Forbids, state);
@@ -1305,19 +1425,24 @@ namespace Tirabade
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
                 .Concat(relationshipFlags));
+            // TODO-shyka: save-compatible paid-page flag, deliberately without a producer in this tree.
+            if (story.Derived.ContainsKey("foresight.page_taken")) authoredFlags.Add("trickster.foresight.accepted");
             var derivedFlags = new HashSet<string>(story.Presences.Where(p => p.Value?.At != null).Select(p => PresenceFailedFlag(p.Key)).Concat(new[] { "loss", "ascended", "inhuman", "chapter_one", "chapter_later",
                 "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys)));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
+                "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
+            contactEvidence.UnionWith(WenduagEchoRuntime);
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
-                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
-                throw new InvalidOperationException("The " + DegradedPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
+                .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(RestSpentPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
+                throw new InvalidOperationException("The " + DegradedPrefix + ", " + RestSpentPrefix + " and " + ServedPrefix + " prefixes are reserved for runtime state.");
             if (authoredFlags.Any(contactEvidence.Contains)
                 || story.Scenes.Any(scene => scene.Id == "konomi.retained_return_confirmed")
                 || relationshipFlags.Contains("konomi.retained_return_confirmed")
@@ -1351,12 +1476,18 @@ namespace Tirabade
                     throw new InvalidOperationException("Invalid latch (sources must be native or runtime-derived keys; the key must be new): " + pair.Key);
             // A latch is an ordinary authored flag once recorded.
             authoredFlags.UnionWith(story.Latches.Keys);
+            if (story.PendingHooks == null || story.PendingHooks.Distinct().Count() != story.PendingHooks.Length
+                || story.PendingHooks.Any(key => string.IsNullOrWhiteSpace(key) || IsReservedKey(key)))
+                throw new InvalidOperationException("Invalid pending read-only hook.");
+            derivedFlags.UnionWith(story.PendingHooks.Where(key => !story.Derived.ContainsKey(key) && !authoredFlags.Contains(key) && !nativeKeys.Contains(key)));
             ValidateDerived(story, authoredFlags, nativeKeys, derivedFlags, contactEvidence);
             if (story.Counts == null) throw new InvalidOperationException("Counts cannot be null.");
             foreach (var pair in story.Counts)
                 if (string.IsNullOrWhiteSpace(pair.Key) || authoredFlags.Contains(pair.Key) || nativeKeys.Contains(pair.Key) || derivedFlags.Contains(pair.Key)
                     || contactEvidence.Contains(pair.Key) || story.Derived.ContainsKey(pair.Key) || IsReservedKey(pair.Key) || pair.Value?.Of == null
                     || pair.Value.Of.Length == 0 || pair.Value.Of.Distinct().Count() != pair.Value.Of.Length || pair.Value.Min < 1 || pair.Value.Min > pair.Value.Of.Length
+                    || pair.Value.Chapters == null || pair.Value.Chapters.Distinct().Count() != pair.Value.Chapters.Length
+                    || pair.Value.Chapters.Any(chapter => chapter < 0 || chapter > 6)
                     || pair.Value.Of.Any(f => !authoredFlags.Contains(f) && !nativeKeys.Contains(f) && !derivedFlags.Contains(f) && !story.Derived.ContainsKey(f)))
                     throw new InvalidOperationException("Invalid count composite (new key; 1 <= Min <= |Of|; distinct known sources, no other counts): " + pair.Key);
             foreach (var pair in story.StartedDialogs)
@@ -1423,6 +1554,31 @@ namespace Tirabade
                     || opener.Requires.Concat(opener.Forbids).Any(key => string.IsNullOrWhiteSpace(key) || !authoredFlags.Contains(key)
                         && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key)))
                     throw new InvalidOperationException("Invalid native opener (distinct id, relationship, list GUID, text, view, chapters, known keys): " + opener?.Id);
+            if (story.RestAllowances == null || story.RestAllowances.Any(pair => string.IsNullOrWhiteSpace(pair.Key) || pair.Value < 1))
+                throw new InvalidOperationException("Rest allowances need named positive limits.");
+            if (story.SeatWomen == null) throw new InvalidOperationException("SeatWomen cannot be null.");
+            foreach (var pair in story.SeatWomen)
+                if (string.IsNullOrWhiteSpace(pair.Key) || pair.Value == null || !story.Relationships.ContainsKey(pair.Value.Relationship)
+                    || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null
+                    || pair.Value.UnavailableFlags.Distinct().Count() != pair.Value.UnavailableFlags.Length
+                    || pair.Value.UnavailableFlags.Concat(pair.Value.UnavailableOverrides.Values).Any(key =>
+                        !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key))
+                    || pair.Value.UnavailableOverrides.Keys.Any(key => !pair.Value.UnavailableFlags.Contains(key)))
+                    throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
+            foreach (var scene in story.Scenes)
+            {
+                if (scene.RestAllowance != null && !story.RestAllowances.ContainsKey(scene.RestAllowance))
+                    throw new InvalidOperationException("Unknown rest allowance: " + scene.Id);
+                if (scene.TableHosted && (!IsRemote(scene) || scene.Kind != "visit" || !IsTableScene(scene)))
+                    throw new InvalidOperationException("TableHosted requires a Table visit: " + scene.Id);
+                if (scene.Participants == null || scene.ParticipantWomen == null || scene.Pair == null
+                    || scene.Participants.Distinct().Count() != scene.Participants.Length || scene.ParticipantWomen.Distinct().Count() != scene.ParticipantWomen.Length
+                    || scene.Participants.Any(id => !story.Relationships.ContainsKey(id))
+                    || scene.ParticipantWomen.Any(id => !story.SeatWomen.ContainsKey(id) || !scene.Participants.Contains(story.SeatWomen[id].Relationship))
+                    || scene.Pair.Length > 0 && (scene.Pair.Length != 2 || scene.Pair.Distinct().Count() != 2
+                        || !scene.Pair.OrderBy(id => id).SequenceEqual(scene.Participants.OrderBy(id => id))))
+                    throw new InvalidOperationException("Invalid pair participants: " + scene.Id);
+            }
             foreach (var scene in story.Scenes.Where(s => s.InteractionHub == TableHub))
                 if (!IsTableScene(scene))
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
@@ -1441,7 +1597,7 @@ namespace Tirabade
             var ids = new HashSet<string>();
             foreach (var scene in story.Scenes)
             {
-                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !IsTableScene(scene) && !(IsPresenceHubScene(scene)
+                if (scene.InteractionHub != null && !IsNurahHubScene(scene) && !IsTableScene(scene) && !IsWenduagEchoHub(scene) && !(IsPresenceHubScene(scene)
                     && story.Presences.TryGetValue(scene.InteractionHub, out var hubPresence) && hubPresence?.Dialog == "hub"
                     && PresenceRelationship(scene.InteractionHub) == scene.Relationship))
                     throw new InvalidOperationException("Invalid interaction hub (the Nurah arrival contract, or a physical scene of the presence's "
@@ -1466,10 +1622,10 @@ namespace Tirabade
                 // E3: the overridden key may be an authored flag or a native binding (never both, never runtime-derived
                 // or a closure). The override value must be authored: never native, runtime-derived or a closure.
                 foreach (var pair in scene.ForbidOverrides)
-                    if (!scene.Forbids.Contains(pair.Key) || authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key)
-                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) || IsReservedKey(pair.Value) || pair.Key == pair.Value
+                    if (!scene.Forbids.Contains(pair.Key) || (authoredFlags.Contains(pair.Key) == nativeKeys.Contains(pair.Key) && !story.PendingHooks.Contains(pair.Key))
+                        || !authoredFlags.Contains(pair.Value) && !story.Derived.ContainsKey(pair.Value) && !story.PendingHooks.Contains(pair.Value) || IsReservedKey(pair.Value) || pair.Key == pair.Value
                         || story.Relationships.Values.Any(r => r.ClosedFlag == pair.Key || r.ClosedFlag == pair.Value)
-                        || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) || derivedFlags.Contains(pair.Value))
+                        || nativeKeys.Contains(pair.Value) || derivedFlags.Contains(pair.Key) && !story.PendingHooks.Contains(pair.Key) || derivedFlags.Contains(pair.Value) && !story.PendingHooks.Contains(pair.Value))
                         throw new InvalidOperationException("Invalid authored forbid override: " + scene.Id + "/" + pair.Key);
                 if (string.IsNullOrWhiteSpace(scene.Id) || !ids.Add(scene.Id)) throw new InvalidOperationException("Duplicate or empty scene: " + scene.Id);
                 if (!story.Relationships.ContainsKey(scene.Relationship)) throw new InvalidOperationException("Unknown relationship: " + scene.Relationship);
@@ -1555,11 +1711,10 @@ namespace Tirabade
                 {
                     if (node.Paragraphs == null) throw new InvalidOperationException("Paragraphs cannot be null: " + scene.Id + "/" + node.Id);
                     bool paragraphs = node.Paragraphs.Count > 0;
-                    if (paragraphs && (!scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
-                        || node.Paragraphs.Any(p => p == null || string.IsNullOrWhiteSpace(p.Text) || p.Requires == null || p.Forbids == null
+                    if (paragraphs && (node.Paragraphs.Any(p => p == null || string.IsNullOrWhiteSpace(p.Text) || p.Requires == null || p.Forbids == null
                             || p.AnyGroups == null || p.AnyGroups.Any(g => g == null || g.Length == 0))
                         || string.IsNullOrWhiteSpace(node.Text) && !node.Paragraphs.Any(p => ParagraphAlwaysShown(scene, p))))
-                        throw new InvalidOperationException("Invalid paragraphs (epilogue pages only; a textless node needs a paragraph its scene's Requires always show): "
+                        throw new InvalidOperationException("Invalid paragraphs (a textless node needs a paragraph its scene's Requires always show): "
                             + scene.Id + "/" + node.Id);
                     if (node.SpeakerUnit != null && (!Guid.TryParseExact(node.SpeakerUnit, "N", out var speaker) || speaker == Guid.Empty
                         || node.Speaker == "conversant"))
@@ -1623,6 +1778,11 @@ namespace Tirabade
                             || p.At.Distance <= 0f || p.At.Distance > 10f))
                     || p.MinChapter < 1 || p.MaxChapter > 6 || p.MinChapter > p.MaxChapter || p.DelayHours < 0
                     || p.RequiresAnyGroups == null || p.RequiresAnyGroups.Any(g => g == null || g.Length == 0)
+                    || p.ContactWindows == null || p.ContactWindows.Any(w => w == null || string.IsNullOrWhiteSpace(w.Flag) || !Known(w.Flag)
+                        || w.MinAgeHours < 0 || w.MaxAgeHours < w.MinAgeHours
+                        || w.SupersededBy == null || w.SupersededBy.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f) || f == w.Flag)
+                        || w.SupersededBy.Distinct().Count() != w.SupersededBy.Length)
+                    || p.ContactWindows.Select(w => w.Flag).Distinct().Count() != p.ContactWindows.Length
                     || p.Requires.Concat(p.Forbids).Concat(p.RequiresAnyGroups.SelectMany(g => g)).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))
                     || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key))
@@ -1647,7 +1807,10 @@ namespace Tirabade
                 if (gate == null || !ReviewedNativeGates.TryGetValue(pair.Key, out var target) || gate.Target != target
                     || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
                     || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
-                        || !OnTricksterPath(g)))
+                        || !OnTricksterPath(g))
+                    || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana"
+                        || gate.When.Any(g => !g.Contains("trickster.now")
+                            || !g.Contains("kiana.trickster.guests_ransomed") && !g.Contains("kiana.trickster.guests_bought_back"))))
                     throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
@@ -1688,11 +1851,12 @@ namespace Tirabade
             ["ivory_sanctum.red_dragon_spawn"] = "977818b761d048d49a0fe19a1c8fccc4",   // IvorySanctum_MainEtude: RedDragon_CR20 spawn branches
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
             ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
+            ["kiana.q3_recovery"] = "2b4a5c01a192d1f4aa8c9d32aa149727",           // FinalResolve, paired with Cue_0032 and its native completion
             ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
         };
 
         // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
-        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog" };
+        public static readonly HashSet<string> WarningOnlyNativeGates = new HashSet<string> { "arsinoe.souls_search_answer", "dragon_eggs.dialog", "kiana.q3_recovery" };
 
         // E18: a gate holds while its relationship is live and any When group holds.
         public static bool NativeGateHolds(Story story, string gate, Snapshot state) => story.NativeGates.TryGetValue(gate, out var spec)
@@ -1740,7 +1904,7 @@ namespace Tirabade
             {
                 var spec = pair.Value;
                 var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
-                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship, relationship);
+                var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship!, relationship);
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0
@@ -1813,7 +1977,8 @@ namespace Tirabade
             var records = new HashSet<string>(relationship.TricksterAccess.Values.Select(entry => entry.Returned).OfType<string>()
                 .Concat(relationship.UnavailableOverrides.Values));
             bool Records(string flag) => records.Contains(flag) || flag.Contains(".trickster.primed")
-                || flag.Contains(".trickster.returned") || flag.Contains(".trickster.cost.");
+                || flag.Contains(".trickster.returned") || flag.Contains(".trickster.cost.")
+                || flag == WenduagEchoPrefix + "rescued" || flag == WenduagEchoPrefix + "cost.used_lann";
             if (!scene.TricksterDevice || relationship.TricksterAccess.Count == 0 || scene.Reaction
                 || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal)
                 || scene.TricksterState != null && !relationship.TricksterAccess.ContainsKey(scene.TricksterState)

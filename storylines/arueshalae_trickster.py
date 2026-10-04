@@ -837,12 +837,14 @@ def integrate(payload):
             scene_["Forbids"].append("sacrifice")
             scene_.setdefault("ForbidOverrides", {})["sacrifice"] = "trickster.commander_back"
         # Sol r3 (INT, post-cap): an ending page plays before relationship availability is checked, so every Arueshalae
-        # ending forbids her unraised death and both dismissals itself (the legacy return still lifts the death).
+        # ending forbids her unraised death and both dismissals itself. Native wander/dream edits read current death;
+        # only the other endings keep the legacy return override.
         if scene_["Owner"] == "ArueshalaeEpilogue":
             for flag in (DEAD, "arueshalae.kicked_out", "arueshalae.kicked_out_evil"):
                 if flag not in scene_["Forbids"]:
                     scene_["Forbids"].append(flag)
-            scene_.setdefault("ForbidOverrides", {})[DEAD] = RETURNED
+            if scene_["Id"] not in ("arueshalae.treatment.epilogue.native_wander", "arueshalae.treatment.epilogue.native_dreams"):
+                scene_.setdefault("ForbidOverrides", {})[DEAD] = RETURNED
     latches = payload.setdefault("Latches", {})
     for key, sources in LATCHES.items():
         if latches.get(key, sources) != sources:
@@ -855,3 +857,12 @@ def integrate(payload):
         if have is not None and have != [list(g) for g in groups]:
             raise ValueError("Conflicting binding: " + key)
         payload["Derived"][key] = [list(g) for g in groups]
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'arueshalae.trickster.evil.second_opinion',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

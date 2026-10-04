@@ -609,3 +609,12 @@ SCENES.append(scene("nocticula.trickster.court.shamira", "Something behind your 
         c("[Say nothing more.]", native_next=REPORTED, flags=(SECRET_SHAMIRA,))),
 ], requires=("trickster", "shamira.killed", SHAMIRA_IN), forbids=(SECRET_SHAMIRA,) + SHAMIRA_OUT, last=5, optional=True,
    Relationship="nocticula", Chapters=[5], AnswerLists=[AUDIENCE_LIST], NativeReturnCue=AUDIENCE_YOU))
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'nocticula.trickster.defeated.call_in',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
