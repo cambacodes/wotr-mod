@@ -650,6 +650,19 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l07: loss-specific return and own-life contracts, after every consumer is assembled.
+    from tools import return_provenance_lint, own_life_lint
+    return_provenance_lint.integrate(payload)
+    own_life_lint.integrate(payload)
+    current_acts = json.loads((ROOT / "tools/current_act_inventory_contracts.json").read_text(encoding="utf-8"))
+    for scene in payload["Scenes"]:
+        if scene["Id"] in current_acts["wire_live"]:
+            scene["Requires"] = list(dict.fromkeys([*scene.get("Requires", []), "trickster.now"]))
+    for name in current_acts["live_presences"]:
+        if name in payload.get("Presences", {}):
+            presence = payload["Presences"][name]
+            presence["Requires"] = list(dict.fromkeys([*presence.get("Requires", []), "trickster.now"]))
+    # eng7-l07 end
     return payload
 
 
