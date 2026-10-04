@@ -333,7 +333,8 @@ def check(story, review=False):
         for v in [edit] + list(edit.get("Variants") or []):
             changes.append(("native edit %s / %s" % (cue, v.get("Replacement")), v.get("When") or []))
     for kind, label in (("NativeEpilogueSuppressions", "native suppression"), ("NativeGates", "native gate"),
-                        ("NativeObjectiveSettlements", "native settlement")):
+                        ("NativeObjectiveSettlements", "native settlement"),
+                        ("NativeAnswerEdits", "native answer edit")):  # eng7-f1: same current-path discipline
         for name, spec in sorted((story.get(kind) or {}).items()):
             changes.append(("%s %s" % (label, name), spec.get("When") or []))
     for what, groups in changes:

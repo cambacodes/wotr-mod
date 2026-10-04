@@ -286,6 +286,7 @@ internal static class Program
             NativeReconciliationF6aTests.Run(story, Check);
             // eng7-f6a end
             NativeContradictionInventoryTests.Run(story, Check);
+            KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
             NativeVariantCoverageInventoryTests.Run(story, Check);
             TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
             TirabadeNativeSlideTests.Run(story, Check);
@@ -577,6 +578,10 @@ internal static class Program
             NativeVariantCoverageInventoryTests.Run(story, Check);
         // eng7-l03 end
         TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
+        // eng7-f1
+        NativeAnswerEditsTests.Run(story, Check);
+        KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
+        // end eng7-f1
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);

@@ -1,0 +1,130 @@
+// eng7-f1: offline native policy and two-site attachment tests, using installed managed types.
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.CompilerServices;
+using Kingmaker.Blueprints;
+using Kingmaker.Designers.EventConditionActionSystem.Events;
+using Kingmaker.Designers.EventConditionActionSystem.Conditions;
+using Kingmaker.DialogSystem;
+using Kingmaker.DialogSystem.Blueprints;
+using Kingmaker.ElementsSystem;
+using Kingmaker.Localization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Tirabade;
+
+class F1Bootstrap
+{
+    static int Main(string[] args)
+    {
+        AppDomain.CurrentDomain.AssemblyResolve += (_, request) => {
+            foreach (var path in new[] { args[0] + "/Wrath_Data/Managed/", args[0] + "/Wrath_Data/Managed/UnityModManager/" }) {
+                var file = path + new AssemblyName(request.Name).Name + ".dll";
+                if (File.Exists(file)) return Assembly.LoadFrom(file);
+            }
+            return null;
+        };
+        typeof(F1Bootstrap).Assembly.GetType("F1Runtime")!.GetMethod("Run", BindingFlags.Static | BindingFlags.NonPublic)!
+            .Invoke(null, new object[] { args[1] });
+        Console.WriteLine("PASS eng7-f1 runtime answer policies, native identities and Q3 2/2 branches");
+        return 0;
+    }
+}
+class F1Runtime
+{
+    static void Check(bool ok, string message) { if (!ok) throw new Exception(message); }
+    static T Ref<T>(string id) where T : BlueprintReferenceBase, new()
+    {
+        var result = new T();
+        typeof(BlueprintReferenceBase).GetField("deserializedGuid", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)!
+            .SetValue(result, BlueprintGuid.Parse(id.Replace("!bp_", "")));
+        return result;
+    }
+    static LocalizedString Text(string key)
+    {
+        var result = new LocalizedString();
+        typeof(LocalizedString).GetField("m_Key", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(result, key);
+        return result;
+    }
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    static void Run(string filename)
+    {
+        var native = JsonConvert.DeserializeObject<Dictionary<string, JObject>>(File.ReadAllText(filename))!;
+        SimpleBlueprint? Resolve(string id) => F1NativeFixtures.World.TryGetValue(id, out var bp) ? bp : null;
+        F1NativeFixtures.Seed(native, Check);
+        var spec = new NativeGateSpec { Target = NativeQ3Recovery.FinalResolve, Relationship = "kiana",
+            When = new[] { new[] { "trickster.now", "kiana.trickster.guests_ransomed" } } };
+        Check(NativeGate.Check(NativeQ3Recovery.Gate, spec, Resolve, out var owner, out var checkers) == null && owner != null,
+            "Q3 declaration does not match NativeGate.Check");
+        Check(checkers.Length == 0, "Q3 must use the specialized action plan, not a generic checker loop");
+        Check(NativeQ3Recovery.Prepare(Resolve, out var plan) == null && plan != null, "Q3 action plan was not prepared");
+        NativeQ3Recovery.Attach(plan!, () => true);
+        var trigger = owner!.ComponentsArray.OfType<EtudePlayTrigger>().Single();
+        var cue = (BlueprintCue)Resolve(NativeQ3Recovery.Verdict)!;
+        var spawn = (NativeQ3Recovery.Branch)trigger.Actions.Actions.Single();
+        var revive = (NativeQ3Recovery.Branch)cue.OnStop.Actions.Single();
+        Check(ReferenceEquals(spawn.Owner, owner) && ReferenceEquals(revive.Owner, cue) && spawn.Holds != null && revive.Holds != null,
+            "Q3 attachment is not 2/2 bound action branches");
+        Check(spawn.Earned.SequenceEqual(spawn.Original.Take(2)) && revive.Earned.Take(3).SequenceEqual(revive.Original.Skip(1))
+            && revive.Earned.Last().GetType().Name == "CompleteEtude", "Q3 lost outcomes, intro or native completion");
+        foreach (var branch in new[] { spawn, revive }) {
+            branch.Holds = () => false;
+            Check(ReferenceEquals(branch.Selected(), branch.Original), "Q3 disabled/unearned does not preserve canon");
+            branch.Holds = () => throw new Exception("observation failure");
+            Check(ReferenceEquals(branch.Selected(), branch.Original), "Q3 observation failure does not preserve canon");
+        }
+        // Refusal between preflight and attach must leave BOTH sites intact.
+        F1NativeFixtures.World.Clear(); F1NativeFixtures.Seed(native, Check);
+        Check(NativeQ3Recovery.Prepare(Resolve, out plan) == null, "Q3 reset failed");
+        owner = Resolve(NativeQ3Recovery.FinalResolve) as BlueprintScriptableObject;
+        trigger = owner!.ComponentsArray.OfType<EtudePlayTrigger>().Single();
+        var originalTrigger = trigger.Actions.Actions;
+        cue = (BlueprintCue)Resolve(NativeQ3Recovery.Verdict)!;
+        cue.OnStop.Actions = cue.OnStop.Actions.ToArray();
+        bool refused = false;
+        try { NativeQ3Recovery.Attach(plan!, () => true); } catch (InvalidOperationException) { refused = true; }
+        Check(refused && ReferenceEquals(trigger.Actions.Actions, originalTrigger), "Q3 drift partially attached a branch");
+        foreach (var pair in Rules.ReviewedNativeAnswers) {
+            string id = pair.Key; var policy = pair.Value; var data = native[id];
+            var answer = new BlueprintAnswer { AssetGuid = BlueprintGuid.Parse(id), name = id };
+            // Deserialize every field the runtime whitelist inspects, including native defaults.
+            foreach (string field in new[] { "ShowOnce", "ShowOnceCurrentDialog", "ShowCheck", "Experience", "DebugMode",
+                "CharacterSelection", "RequireValidCue", "AddToHistory", "FakeChecks", "AlignmentShift", "MythicRequirement", "AlignmentRequirement" }) {
+                var info = answer.GetType().GetField(field)!; info.SetValue(answer, data[field]!.ToObject(info.FieldType));
+            }
+            answer.Text = Text((string)data["Text"]!["m_Key"]!);
+            answer.OnSelect = new ActionList { Actions = Array.Empty<GameAction>() };
+            answer.ShowConditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+            if (policy.SeenCue.Length > 0) {
+                var seen = new CueSeen();
+                typeof(CueSeen).GetField("m_Cue", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(seen, Ref<BlueprintCueBaseReference>(policy.SeenCue));
+                answer.ShowConditions.Conditions = new Condition[] { seen };
+            }
+            answer.SelectConditions = new ConditionsChecker { Operation = Operation.And, Conditions = Array.Empty<Condition>() };
+            answer.NextCue = new CueSelection { Strategy = Strategy.First, Cues = new List<BlueprintCueBaseReference> { Ref<BlueprintCueBaseReference>(policy.NextCue) } };
+            var list = new BlueprintAnswersList { AssetGuid = BlueprintGuid.Parse(policy.AnswerList), name = policy.AnswerList };
+            foreach (var item in native[policy.AnswerList]["Answers"]!) list.Answers.Add(Ref<BlueprintAnswerBaseReference>((string)item!));
+            F1NativeFixtures.World[id] = answer; F1NativeFixtures.World[policy.AnswerList] = list;
+            var edit = new NativeAnswerEditSpec { AnswerList = policy.AnswerList, Key = policy.Key, Relationship = "kiana", Text = "authored", When = spec.When };
+            Check(NativeAnswerEdit.Check(id, edit, Resolve) == null, "Archive answer failed runtime policy: " + id);
+            var continuation = answer.NextCue; var actions = answer.OnSelect; var show = answer.ShowConditions; var text = answer.Text;
+            bool paid = false;
+            NativeAnswerEdit.Attach(answer, () => "authored paid history", () => paid);
+            Check(NativeAnswerEdit.Display(answer, "native") == "native", "Unpaid answer wording changed");
+            paid = true;
+            Check(NativeAnswerEdit.Display(answer, "native") == "authored paid history", "Paid answer not replaced");
+            Check(ReferenceEquals(answer.NextCue, continuation) && ReferenceEquals(answer.OnSelect, actions)
+                && ReferenceEquals(answer.ShowConditions, show) && ReferenceEquals(answer.Text, text) && answer.AddToHistory,
+                "Answer edit changed native policy or identity/history");
+            NativeAnswerEdit.Attach(answer, () => "authored paid history", () => throw new Exception("observation"));
+            Check(NativeAnswerEdit.Display(answer, "native") == "native", "Answer observation failure changed canon");
+            answer.AddToHistory = false;
+            Check(NativeAnswerEdit.Check(id, edit, Resolve) != null, "History drift accepted"); answer.AddToHistory = true;
+            answer.NextCue.Cues.Clear();
+            Check(NativeAnswerEdit.Check(id, edit, Resolve) != null, "Continuation drift accepted");
+        }
+    }
+}

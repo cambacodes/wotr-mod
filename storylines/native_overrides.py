@@ -19,9 +19,9 @@ earned_presence T6 check decides whether historical Trickster evidence suffices.
 register_legacy migrates reviewed route dictionaries without changing their
 runtime representation. finalize validates GUIDs/types against blueprints.zip,
 state names and the runtime whitelist. Unsupported actions/targets fail at build
-time with a safe alternative. Answer text remains unsupported. eng7-l04 extends
-the same registry with eight reviewed object/action/journal targets; JOURNAL
-selects localized fields at read time and never changes progression or XP.
+time with a safe alternative. eng7-f6b retains F1 state-scoped answer DisplayText
+replacements and eng7-l04 reviewed object/action/journal targets. JOURNAL selects
+localized fields at read time and never changes progression or XP.
 
 Runtime safety stays in NativeEpilogueEdit/NativeGate/NativeWorldReconciliation: complementary original
 conditions, the same snapshot, preserved reviewed OnShow/OnStop/continuations,
@@ -35,11 +35,17 @@ from pathlib import Path
 import re
 
 from tools.game_blueprints import find_bindings, game_dir, text_key
+# eng7-f1: the runtime answer policy is the sole whitelist.
+from tools.native_answer_policy import contracts as answer_contracts, check as check_answer
+from tools import native_q3_policy
+# end eng7-f1
 
 ROOT = Path(__file__).resolve().parents[1]
 TYPES = dict(cue="BlueprintCue", slide="BlueprintCue", answer="BlueprintAnswer",
              objective="BlueprintQuestObjective", dialog="BlueprintDialog", etude="BlueprintEtude")
-FIELDS = ("NativeEpilogueEdits", "NativeEpilogueSuppressions", "NativeGates", "NativeObjectiveSettlements")
+# eng7-f1: answer presentation is registered alongside existing native reconciliations.
+FIELDS = ("NativeEpilogueEdits", "NativeEpilogueSuppressions", "NativeGates", "NativeObjectiveSettlements", "NativeAnswerEdits")
+# end eng7-f1
 
 # eng7-l04: extend the q6b registry with reviewed world/journal target types.
 TYPES.update(quest="BlueprintQuest", **{"script-zone": "BlueprintScriptZone"})
@@ -89,6 +95,17 @@ def _delivery(target, target_type, action, key, spec):
         if world_contracts().get(target) != target_type + ":" + action or spec.get("Target") != target:
             raise ValueError(f"NativeOverride {target}: no reviewed world target contract")
         return "NativeWorldReconciliations", target
+    # eng7-f1: text-only native answer identity is retained by DisplayText, with no authored actions.
+    if action == "REPLACE" and target_type == "answer":
+        policy = answer_contracts().get(target)
+        if policy is None:
+            raise ValueError(f"NativeOverride {target}: no reviewed safe native answer-policy contract")
+        if spec.get("AnswerList") != policy["AnswerList"] or spec.get("Key") != policy["Key"]:
+            raise ValueError(f"NativeOverride {target}: answer list/key differs from runtime contract")
+        if set(spec) != {"AnswerList", "Key", "Relationship", "Text", "When"}:
+            raise ValueError(f"NativeOverride {target}: text-only answer contract forbids behavior fields")
+        return "NativeAnswerEdits", target
+    # end eng7-f1
     if action in {"REPLACE", "SLIDE-SWAP"}:
         if target_type not in {"cue", "slide"} or (action == "SLIDE-SWAP" and target_type != "slide"):
             raise ValueError(f"NativeOverride {target}: {action} cannot safely alter {target_type}; {alternative}. "
@@ -172,6 +189,7 @@ def finalize(payload, archive=None):
     """Build gate: no unregistered legacy edits, invalid states or unsafe GUIDs."""
     # eng7-l04: reject unsupported Q3 declarations before publication.
     from tools.native_gate_contract_lint import validate
+    from tools import kiana_native_policy  # eng7-f6b
     validate(payload)
     registered = {(row["Field"], row["RuntimeKey"]) for row in payload.get("NativeOverrides", [])}
     missing = [(field, key) for field in FIELDS for key in payload.get(field, {}) if (field, key) not in registered]
@@ -179,12 +197,29 @@ def finalize(payload, archive=None):
         raise ValueError(f"NativeOverrides: unregistered native edits {missing}; use register_legacy/declare")
     known = _known(payload)
     scenes = {s["Id"]: s for s in payload.get("Scenes", [])}
-    expected = {}
+    expected = kiana_native_policy.expected()  # eng7-f6b: include every inspected parent
     for row in payload.get("NativeOverrides", []):
         target = row["Target"]
         spec = payload[row["Field"]][row["RuntimeKey"]]
         _delivery(target, row["TargetType"], row["Action"], row["RuntimeKey"], spec)
         expected[target] = TYPES[row["TargetType"]]
+        # eng7-f1: validate both Q3 action attachment sites and the native completion command.
+        if row["RuntimeKey"] == "kiana.q3_recovery":
+            expected.update(native_q3_policy.TYPES)
+        # end eng7-f1
+        # eng7-f1: the only earned histories reviewed for these Kiana answer rewrites.
+        if row["Field"] == "NativeAnswerEdits":
+            if (spec.get("Relationship") != "kiana" or "kiana" not in payload.get("Relationships", {})
+                or not isinstance(spec.get("Text"), str) or not spec["Text"].strip()
+                or any("trickster.now" not in g or not {"kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back"}.intersection(g)
+                       for g in spec.get("When", []))):
+                raise ValueError(f"NativeOverride {target}: answer replacement requires current Trickster and paid guest recovery")
+            policy = answer_contracts()[target]
+            expected[policy["AnswerList"]] = "BlueprintAnswersList"
+            expected[policy["NextCue"]] = "BlueprintCue"
+            if policy["SeenCue"]:
+                expected[policy["SeenCue"]] = "BlueprintCue"
+        # end eng7-f1
         variants = [spec] + spec.get("Variants", [])
         for variant in variants:
             groups = variant.get("When", [])
@@ -214,7 +249,21 @@ def finalize(payload, archive=None):
     verify_world_targets(payload, found)
     for row in payload.get("NativeOverrides", []):
         spec = payload[row["Field"]][row["RuntimeKey"]]
-        if spec.get("Parent") and found[spec["Parent"]]["type"] not in {"BlueprintCue", "BlueprintAnswer", "BlueprintDialog"}:
+        # eng7-f1
+        if row["RuntimeKey"] == "kiana.q3_recovery":
+            native_q3_policy.check(spec, found)
+        # end eng7-f1
+        # eng7-f1: reject behavior drift at export as well as at runtime.
+        if row["Field"] == "NativeAnswerEdits":
+            check_answer(row["Target"], spec, found)
+        # end eng7-f1
+        # eng7-f6b: sequence membership is supported only for reviewed in-place text delivery.
+        if row["Target"] in kiana_native_policy.contracts():
+            kiana_native_policy.check(row["Target"], spec, found)
+        allowed_parents = {"BlueprintCue", "BlueprintAnswer", "BlueprintDialog"}
+        if row["Target"] in kiana_native_policy.contracts():
+            allowed_parents.update({"BlueprintCueSequence", "BlueprintSequenceExit"})
+        if spec.get("Parent") and found[spec["Parent"]]["type"] not in allowed_parents:
             raise ValueError(f"NativeOverride {row['Target']}: unsafe parent type {found[spec['Parent']]['type']}")
         if spec.get("Key") and text_key(found[row["Target"]]["data"].get("Text")) != spec["Key"]:
             raise ValueError(f"NativeOverride {row['Target']}: localization key differs from archive")
