@@ -6,8 +6,9 @@ using Tirabade;
 // Shyka's page (Writer/handoffs/12-TRICKSTER-FORESIGHT.md §4 acceptance tests 1-14, §7, and §2.4a, the echoes): the Council
 // bargain Shyka may refuse, the price (one memory, or two, or the counteroffer), the memory page and its Chapter 5 fallback,
 // the east-gate misstep in one scene on two native lists, the Chapter 5 line, the witnesses, Last Call's paragraphs and the Ledger's
-// journal lines; then the echo and gap APIs: optional, appended, neutral (same outcomes with and without the page), at most
-// one echo per route per chapter, Trickster-only. Nothing outside the listed scenes reads trickster.foresight.*.
+// journal lines; injected echoes are optional, appended and neutral. Allocated existing pilots retain their authored chains.
+// Every allocated echo counts in the budget: one per route, two per chapter, Trickster-only.
+// Nothing outside the listed scenes reads trickster.foresight.*; registered consumers read the public page key.
 internal static class ForesightTests
 {
 #if FORESIGHT_ACCEPTANCE
@@ -47,13 +48,118 @@ internal static class ForesightTests
         line.Requires.All(s.Has) && !line.Forbids.Any(s.Has) && line.AnyGroups.All(g => g.Any(s.Has));
 
     private static IEnumerable<string> Reads(Scene s) =>
-        s.Requires.Concat(s.Forbids).Concat(s.RequiresAnyGroups.SelectMany(g => g)).Concat(s.ForbidOverrides.Keys).Concat(s.ForbidOverrides.Values)
+        s.Requires.Concat(s.Forbids).Concat(s.RequiresAny).Concat(s.RequiresAnyGroups.SelectMany(g => g)).Concat(s.ForbidOverrides.Keys).Concat(s.ForbidOverrides.Values)
             .Concat(s.Nodes.SelectMany(n => n.Choices.SelectMany(c => c.Requires.Concat(c.Forbids))))
             .Concat(s.Nodes.SelectMany(n => n.Paragraphs.SelectMany(p => p.Requires.Concat(p.Forbids).Concat(p.AnyGroups.SelectMany(g => g)))));
 
     private static string Key(Snapshot s, IEnumerable<string> ignore) =>
         string.Join(",", s.Flags.Where(f => !ignore.Contains(f) && !f.StartsWith(P, StringComparison.Ordinal)
                                              && !f.StartsWith("foresight.", StringComparison.Ordinal)).OrderBy(f => f, StringComparer.Ordinal));
+
+    private static IEnumerable<string> SceneReads(Scene s) =>
+        s.Requires.Concat(s.Forbids).Concat(s.RequiresAny).Concat(s.RequiresAnyGroups.SelectMany(g => g))
+            .Concat(s.ForbidOverrides.Keys).Concat(s.ForbidOverrides.Values);
+
+    private static IEnumerable<string> ParagraphReads(Paragraph p) =>
+        p.Requires.Concat(p.Forbids).Concat(p.AnyGroups.SelectMany(g => g));
+
+    private static bool PublicKey(string key) => key.StartsWith("foresight.", StringComparison.Ordinal);
+
+    private static void GateContract(Story story, IReadOnlyDictionary<string, string> consumers, Action<bool, string> check)
+    {
+        foreach (var s in story.Scenes.Where(s => !Readers.Contains(s.Id)))
+        {
+            check(!Reads(s).Any(k => k.StartsWith(P, StringComparison.Ordinal)),
+                "Foresight_GateContract: " + s.Id + " reads trickster.foresight.*.");
+            var publicReads = SceneReads(s).Concat(s.Nodes.SelectMany(n => n.Paragraphs.SelectMany(ParagraphReads)))
+                .Where(PublicKey).Distinct().ToArray();
+            check(publicReads.All(k => consumers.TryGetValue(s.Id, out var registered) && registered == k),
+                "Foresight_GateContract: unregistered scene or paragraph consumer: " + s.Id);
+            foreach (var node in s.Nodes)
+                foreach (var c in node.Choices.Where(c => c.Requires.Any(PublicKey)))
+                    check(consumers.TryGetValue(s.Id, out var registered) && c.Requires.Where(PublicKey).All(k => k == registered)
+                          || c.Next != null && (c.Next.StartsWith("echo.", StringComparison.Ordinal) || c.Next.StartsWith("gap.", StringComparison.Ordinal)),
+                        "Foresight_GateContract: " + s.Id + "/" + node.Id + " reads the page in an unlisted choice.");
+        }
+        foreach (var pair in consumers)
+        {
+            var consumer = story.Scenes.SingleOrDefault(s => s.Id == pair.Key);
+            check(consumer != null && pair.Value == PageTaken,
+                "Foresight_GateContract: missing consumer or unsupported public gate: " + pair.Key);
+            if (consumer == null || pair.Value != PageTaken) continue;
+            bool sceneGate = SceneReads(consumer).Contains(pair.Value);
+            var paragraphs = consumer.Nodes.SelectMany(n => n.Paragraphs).Where(p => ParagraphReads(p).Contains(pair.Value)).ToArray();
+            check(sceneGate || paragraphs.Length > 0, "Foresight_GateContract: registered consumer has no gate: " + pair.Key);
+            foreach (var paragraph in paragraphs.Cast<Paragraph?>().DefaultIfEmpty(null))
+            {
+                var requires = consumer.Requires.Concat(consumer.RequiresAny)
+                    .Concat(consumer.RequiresAnyGroups.Select(g => g[0]))
+                    .Concat(paragraph?.Requires ?? Array.Empty<string>())
+                    .Concat(paragraph?.AnyGroups.Select(g => g[0]) ?? Enumerable.Empty<string>());
+                var held = World(story, consumer.MinChapter, requires.Where(k => !story.Derived.ContainsKey(k))
+                    .Concat(new[] { "trickster", Accepted, Promise, GateFire, "seelah.committed" }).ToArray());
+                held.Area = consumer.Areas.FirstOrDefault() ?? "";
+                held.Flags.ExceptWith(consumer.Forbids.Concat(paragraph?.Forbids ?? Array.Empty<string>()));
+                held.AvailableContacts.UnionWith(consumer.Participants.SelectMany(r =>
+                    story.Scenes.Where(sc => sc.Relationship == r && sc.ContactUnit != null).Select(sc => sc.ContactUnit!)));
+                if (consumer.ContactUnit != null) { held.AvailableContacts.Add(consumer.ContactUnit); held.SceneContacts.Add(consumer.Id); }
+                // Fill independent earned requirements before changing only the paid page and current path.
+                held.Flags.UnionWith(requires.Where(k => k != pair.Value && k != "household.stance_eligible"));
+                foreach (var f in held.Flags) held.Times[f] = 0;
+                Rules.Complete(story, held);
+                var bare = Program.Copy(held);
+                bare.Flags.Remove(Accepted);
+                bare.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+                Rules.Complete(story, bare);
+                check(Rules.Match(consumer.Requires.Where(k => k != pair.Value && k != "household.stance_eligible"), consumer.Forbids, bare),
+                    "Foresight_GateContract: page-free control lost an independent prerequisite: " + pair.Key);
+                check(Rules.Available(story, consumer, held) && (paragraph == null || Shown(paragraph, held))
+                      && (sceneGate ? !Rules.Available(story, consumer, bare) : paragraph != null && !Shown(paragraph, bare)),
+                    "Foresight_GateContract: consumer unavailable with page or available without it: " + pair.Key);
+                foreach (var path in new[] { "legend", "dragon", "swarm", "trickster.failed" })
+                {
+                    var former = Program.Copy(held);
+                    former.Flags.Add("trickster.was");
+                    former.Flags.Add(path);
+                    former.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+                    Rules.Complete(story, former);
+                    check(!Rules.Available(story, consumer, former) || !sceneGate && paragraph != null && !Shown(paragraph, former),
+                        "Foresight_PathChanged: consumer remains available on " + path + ": " + pair.Key);
+                }
+            }
+        }
+    }
+
+    private static void GateContractFixtures(Story story, Dictionary<string, string> consumers, Action<bool, string> check)
+    {
+        var fixtures = new[]
+        {
+            new Scene { Id = "acceptance.fate.preparation", Relationship = "foresight", MinChapter = 3,
+                Requires = new[] { "trickster.now", PageTaken, "acceptance.prepared" }, Optional = true },
+            new Scene { Id = "acceptance.fate.ending", Relationship = "foresight", MinChapter = 6, MaxChapter = 6, EpilogueSequence = "PlayerFinalChoice",
+                Nodes = new List<Node> { new Node { Id = "start", Paragraphs = new List<Paragraph> {
+                    new Paragraph { Text = "Paid ending.", Requires = new[] { "trickster.now", PageTaken, "acceptance.prepared" } } } } } }
+        };
+        story.Scenes.AddRange(fixtures);
+        try
+        {
+            foreach (var fixture in fixtures) consumers.Add(fixture.Id, PageTaken);
+            GateContract(story, consumers, check);
+            foreach (var fixture in fixtures)
+            {
+                consumers.Remove(fixture.Id);
+                var errors = new List<string>();
+                GateContract(story, consumers, (passed, message) => { if (!passed) errors.Add(message); });
+                check(errors.Count == 1 && errors[0].Contains("unregistered scene or paragraph consumer: " + fixture.Id),
+                    "Foresight_GateContract: an unregistered consumer was accepted: " + fixture.Id);
+                consumers.Add(fixture.Id, PageTaken);
+            }
+        }
+        finally
+        {
+            foreach (var fixture in fixtures) { story.Scenes.Remove(fixture); consumers.Remove(fixture.Id); }
+        }
+    }
 
     internal static void Run(Story story, Action<bool, string> check)
     {
@@ -271,58 +377,13 @@ internal static class ForesightTests
               && page.Entry != S("kaylessa.trickster.dead.borrow").Entry,
             "Foresight_KaylessaDistinct: the page and Kaylessa's trade share a flag or an entry.");
 
-        // 6. The gate contract (user rule 2026-10-03; replaces Foresight_NeverGates): the page is the lock-in gate of the
-        // fate-bending timeline. trickster.foresight.* is read only by the page's own scenes and Last Call's pages; routes read
-        // only the four public foresight.* keys, and only as listed consumers: echo and gap choices, or a scene registered in
-        // foresight.CONSUMERS (household stance and Wenduag pilot). Every consumer is tested with the page and without it.
-        var consumers = new Dictionary<string, string>();   // scene id -> public key required at scene level (CONSUMERS)
-        foreach (var s in story.Scenes.Where(s => !Readers.Contains(s.Id)))
+        // Exported acceptance metadata comes directly from foresight.CONSUMERS; the runtime ignores it.
+        using (var export = System.Text.Json.JsonDocument.Parse(System.IO.File.ReadAllText(Environment.GetCommandLineArgs().Last())))
         {
-            check(!Reads(s).Any(k => k.StartsWith(P, StringComparison.Ordinal)), "Foresight_GateContract: " + s.Id + " reads trickster.foresight.*.");
-            foreach (var k in s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)).Where(k => k.StartsWith("foresight.", StringComparison.Ordinal)))
-                consumers[s.Id] = k;
-            foreach (var node in s.Nodes)
-                foreach (var c in node.Choices.Where(c => c.Requires.Any(k => k.StartsWith("foresight.", StringComparison.Ordinal))))
-                    check(s.Id == "wenduag.trickster.echo.abyss.prepare" || c.Next != null && (c.Next.StartsWith("echo.", StringComparison.Ordinal) || c.Next.StartsWith("gap.", StringComparison.Ordinal)),
-                        "Foresight_GateContract: " + s.Id + "/" + node.Id + " reads the page in an unlisted choice.");
-        }
-        check(consumers.Count > 0 && consumers.All(kv => kv.Value == PageTaken &&
-                  (kv.Key.StartsWith("household.", StringComparison.Ordinal) || kv.Key.StartsWith("wenduag.trickster.echo.abyss.", StringComparison.Ordinal))),
-            "Foresight_GateContract: an unlisted scene is gated on the page: " + string.Join(", ", consumers.Keys));
-        foreach (var id in consumers.Keys)
-        {
-            var consumer = S(id);
-            var held = World(story, consumer.MinChapter, consumer.Requires.Concat(consumer.RequiresAny)
-                .Concat(consumer.RequiresAnyGroups.Select(g => g[0]))
-                .Where(k => !story.Derived.ContainsKey(k)).Concat(new[] { "trickster", Accepted, Promise, GateFire, "seelah.committed" }).ToArray());
-            held.Area = consumer.Areas.FirstOrDefault() ?? "";
-            held.Flags.ExceptWith(consumer.Forbids);
-            held.AvailableContacts.UnionWith(consumer.Participants.SelectMany(r =>
-                story.Scenes.Where(sc => sc.Relationship == r && sc.ContactUnit != null).Select(sc => sc.ContactUnit!)));
-            if (consumer.ContactUnit != null) held.AvailableContacts.Add(consumer.ContactUnit);
-            if (consumer.ContactUnit != null) held.SceneContacts.Add(consumer.Id);
-            // Fill independent earned requirements before testing only the page/path gate.
-            held.Flags.UnionWith(consumer.Requires.Where(k => k != PageTaken && k != "household.stance_eligible"));
-            foreach (var f in held.Flags) held.Times[f] = 0;
-            Rules.Complete(story, held);
-            var bare = Program.Copy(held);
-            bare.Flags.Remove(Accepted);
-            bare.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
-            Rules.Complete(story, bare);
-            check(Rules.Match(consumer.Requires.Where(k => k != PageTaken && k != "household.stance_eligible"),
-                              consumer.Forbids, bare),
-                "Foresight_GateContract: page-free control lost an independent prerequisite: " + id);
-            check(Avail(consumer, held) && !Avail(consumer, bare),
-                "Foresight_GateContract: consumer unavailable with page or available without it: " + id);
-            foreach (var path in new[] { "legend", "dragon", "swarm", "trickster.failed" })
-            {
-                var former = Program.Copy(held);
-                former.Flags.Add("trickster.was");
-                former.Flags.Add(path);
-                former.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
-                Rules.Complete(story, former);
-                check(!Avail(consumer, former), "Foresight_PathChanged: consumer remains available on " + path + ": " + id);
-            }
+            var consumers = export.RootElement.GetProperty("ForesightConsumers").EnumerateObject()
+                .ToDictionary(item => item.Name, item => item.Value.GetString()!);
+            GateContract(story, consumers, check);
+            GateContractFixtures(story, consumers, check);
         }
         check(story.Derived.Where(d => d.Value.SelectMany(g => g).Any(k => k.StartsWith(P, StringComparison.Ordinal))).Select(d => d.Key).OrderBy(k => k)
                   .SequenceEqual(new[] { GateBelieved, GoneCaves, GoneSquare, PageTaken }.OrderBy(k => k))

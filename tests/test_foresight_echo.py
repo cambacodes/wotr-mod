@@ -113,17 +113,57 @@ class EchoApiTests(unittest.TestCase):
             foresight.echo("d", "t.d", "start", "[D.]", foresight.variant("x"), sense="", wrong="w", misstep="z",
                            cost=("Favors", -1))
 
+    def test_normalized_registry_axes(self):
+        foresight.ECHOES[:] = []
+        foresight.ECHO_ENTRIES.clear()
+        self._register("a", "t.a", "[A.]", sense=" Sight + SOUND + sight ",
+                       misstep=" Paid runner searches the WRONG-place! ")
+        for sense, misstep in (
+            ("sound + sight", "paid runner searches the wrong place"),
+            ("sound, sight.", "paid   runner searches the wrong place"),
+            ("SOUND / Sight / sound", "PAID runner searches the wrong_place."),
+        ):
+            with self.subTest(sense=sense, misstep=misstep):
+                with self.assertRaisesRegex(ValueError, "repeats a sense and misstep"):
+                    self._register("b", "t.b", "[B.]", sense=sense, misstep=misstep)
+        self.assertEqual(len(foresight.ECHOES), 1)
+        self.assertNotIn("[B.]", foresight.ECHO_ENTRIES)
+
+    def test_integrate_rechecks_normalized_registry_axes(self):
+        foresight.ECHOES[:] = []
+        foresight.ECHO_ENTRIES.clear()
+        self._register("a", "t.a", "[A.]", sense="sight + sound", misstep="wrong place")
+        self._register("b", "t.b", "[B.]", sense="touch", misstep="different")
+        foresight.ECHOES[1].update(sense=" SOUND / Sight / sound ", misstep=" Wrong-place! ")
+        foresight.ALLOCATED.update(a="t.a", b="t.b")
+        hosts = [_host("t." + rel, rel, 3) for rel in "ab"]
+        original = copy.deepcopy(hosts)
+        with self.assertRaisesRegex(ValueError, "repeats a sense and misstep"):
+            foresight.integrate_echoes(_payload(hosts))
+        self.assertEqual(hosts, original)
+
 
 class ForesightSurfaceTests(unittest.TestCase):
     def test_registered_consumer_contract_matches_export(self):
         story = expansion.make_expansion()
         consumers = {s["Id"]: foresight.PAGE_TAKEN for s in story["Scenes"] if foresight.PAGE_TAKEN in s["Requires"]}
         self.assertEqual(consumers, foresight.CONSUMERS)
+        self.assertEqual(story["ForesightConsumers"], foresight.CONSUMERS)
         self.assertEqual(story["Derived"]["household.stance_eligible"], [[foresight.PAGE_TAKEN, "trickster.now"]])
         for key in (foresight.PAGE_TAKEN, foresight.GATE_BELIEVED):
             self.assertTrue(all("trickster.now" in group for group in story["Derived"][key]))
         for key in (foresight.GONE_SQUARE, foresight.GONE_CAVES):
             self.assertTrue(all("trickster.ever" in group and "trickster.now" not in group for group in story["Derived"][key]))
+
+    def test_late_consumer_registration_is_serialized(self):
+        story = expansion.make_expansion()
+        consumer = "acceptance.fate.late_registration"
+        try:
+            foresight.CONSUMERS[consumer] = foresight.PAGE_TAKEN
+            exported = json.loads(json.dumps(story))
+            self.assertEqual(exported["ForesightConsumers"][consumer], foresight.PAGE_TAKEN)
+        finally:
+            foresight.CONSUMERS.pop(consumer, None)
 
     def test_existing_pilot_keeps_choices_and_misstep_price(self):
         from storylines import wenduag_echo
@@ -207,6 +247,15 @@ GAME = Path(os.environ.get("RRT_GAME_DIR") or
 
 @unittest.skipUnless((GAME / "blueprints.zip").exists(), "blueprints.zip not installed")
 class ForesightCanonTests(unittest.TestCase):
+    def test_chadali_chance_cue_identity(self):
+        localization = json.loads((GAME / "Wrath_Data/StreamingAssets/Localization/enGB.json")
+                                  .read_text(encoding="utf-8-sig"))["strings"]
+        with zipfile.ZipFile(GAME / "blueprints.zip") as blueprints:
+            cue = json.loads(blueprints.read("World/Dialogs/c3/Mythic_Trickster/Council_Chadali/Cue_0012.jbp"))
+        self.assertEqual(cue["AssetId"], "dc4fa93063e42c44981850d65914402e")
+        self.assertTrue(cue["Data"]["$type"].endswith(", BlueprintCue"))
+        self.assertIn("I am chance!", localization[cue["Data"]["Text"]["m_Key"]])
+
     def test_areelu_child_uses_commander_gender(self):
         localization = json.loads((GAME / "Wrath_Data/StreamingAssets/Localization/enGB.json")
                                   .read_text(encoding="utf-8-sig"))["strings"]

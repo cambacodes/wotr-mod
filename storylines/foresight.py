@@ -29,6 +29,7 @@ Scenes (Relationship "foresight", a framework: never a romance, never closed; Sh
   + Last Call Block A paragraphs (Areelu's report), and the Ledger's "What I no longer remember" journal lines.
 """
 import copy
+import re
 
 from story_format import c, n, p, reaction, scene
 
@@ -396,6 +397,13 @@ def variant(text, requires=(), forbids=()):
     return dict(Text=text.strip(), Requires=tuple(requires), Forbids=tuple(forbids))
 
 
+def _echo_axes(sense, misstep):
+    """Compare sensory sets and missteps without case, spacing or punctuation differences."""
+    senses = re.findall(r"[^\W_]+", sense.casefold())
+    mechanic = re.findall(r"[^\W_]+", misstep.casefold())
+    return tuple(sorted(set(senses))), tuple(mechanic)
+
+
 def echo(rel, host, node, entry, *variants, sense, wrong, misstep, cost, existing=False):
     """Register one route echo (12 §2.4a, §2.9): an answer `entry` (an ACTION, never speech about foresight), appended LAST
     to node `node` of scene `host`, selectable only on a Trickster run where the page was taken (foresight.page_taken). It
@@ -411,9 +419,10 @@ def echo(rel, host, node, entry, *variants, sense, wrong, misstep, cost, existin
         raise ValueError("echo %s/%s: no variants" % (host, node))
     if entry in ECHO_ENTRIES:
         raise ValueError("echo entry reused (sameness): " + entry)
-    if not all(part.strip() in SENSES for part in sense.split("+")) or not wrong.strip() or not misstep.strip():
+    senses, mechanic = _echo_axes(sense, misstep)
+    if not senses or not set(senses).issubset(SENSES) or not wrong.strip() or not mechanic:
         raise ValueError("echo %s: sense, wrong detail and misstep are required (12 §2.9)" % host)
-    if any((e["sense"], e["misstep"]) == (sense, misstep) for e in ECHOES):
+    if any(_echo_axes(e["sense"], e["misstep"]) == (senses, mechanic) for e in ECHOES):
         raise ValueError("echo %s repeats a sense and misstep (12 §2.9)" % host)
     ECHO_ENTRIES.add(entry)
     ECHOES.append(dict(rel=rel, host=host, node=node, entry=entry, variants=list(variants), sense=sense, wrong=wrong,
@@ -433,6 +442,12 @@ def active_echoes():
 
 
 def integrate_echoes(payload):
+    axes = set()
+    for e in ECHOES:
+        key = _echo_axes(e["sense"], e["misstep"])
+        if key in axes:
+            raise ValueError("echo %s repeats a sense and misstep (12 §2.9)" % e["host"])
+        axes.add(key)
     scenes = {s["Id"]: s for s in payload["Scenes"]}
     active = [e for e in active_echoes() if not e["existing"] or e["host"] in scenes]
     if len(active) > ECHO_CAP_TOTAL:
@@ -530,8 +545,9 @@ LATCHES = {SHYKA_ESSENCE: [SIPHON_SHYKA]}
 # Every scene that may read trickster.foresight.* (12 §2.8, Foresight_NeverGates). Echo choices read only PAGE_TAKEN.
 READERS = {PAGE_SCENE, MEMORY_SCENE, WATCH_SCENE, OFFER_SCENE, P + "noticed.anevia", P + "noticed.seelah", P + "noticed.king",
            *LASTCALL_PAGES}
-# Gated consumers outside this module (12 §4 table): scene id -> the public key it requires. Each must have a with/without
-# test in tests/ForesightTests.cs. Echo and gap choices are consumers by construction (registered through echo()/gap()).
+# Gated consumers outside this module: scene id -> the public key required by the scene or its paragraphs.
+# Exported as acceptance metadata; tests/ForesightTests.cs checks each with/without the page and after path loss.
+# Echo and gap choices are consumers by construction (registered through echo()/gap()).
 CONSUMERS = {}
 # Path fit (v1): every scene here is T (the page is Trickster-only; the Council is the Trickster's).
 PATH_FIT = {s["Id"]: "T" for s in SCENES}
@@ -552,3 +568,5 @@ def integrate(payload):
     payload["Relationships"]["lastcall"].setdefault("JournalEntries", []).extend(copy.deepcopy(JOURNAL))
     integrate_echoes(payload)
     integrate_gaps(payload)
+    # Later integrations also register consumers; serialize the completed registry.
+    payload["ForesightConsumers"] = CONSUMERS
