@@ -525,7 +525,7 @@ beat(P + "kitrane.reel", "The market reel", '"There\'s music in the square."', [
         c("[Kiss her in front of the whole market.]", "kissed", flags=(REEL,)),
         c('[Flirt] "Then I\'ll save it for somewhere they can\'t whistle."', "saved", flags=(REEL,))),
     nar("kissed", '''{n}They whistle. They go back to their eels. The fiddler strikes up again, something slower, and a pikeman with a bruised foot shouts something about officers that makes Kitrane laugh into your mouth.{/n}
-{n}"There," she says when she can. "Nobody wrote it down." {n}She does not let go of you for some time.{/n}''',
+"There," she says when she can. "Nobody wrote it down." {n}She does not let go of you for some time.{/n}''',
         c("[Stay for the next dance.]")),
     ki("saved", '''"Somewhere they cannot whistle." {n}Her mouth curves slowly.{/n} "You are a very careful strategist, Commander. I have always admired it in you. I am beginning to find it maddening." {n}She lets go of your arm at last, and retrieves her sword-belt, and buckles it on without looking at it.{/n} "Choose the ground well. I intend to hold you to it."''',
         c("[Leave her flushed and laughing.]")),

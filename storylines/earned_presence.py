@@ -173,7 +173,27 @@ PRESENCE_RETURN_IN_PROGRESS = {
         },
     },
 }
+# eng7-l06: authored acquisition declarations; only existing device payments are read.
+from tools.presence_exception_schema import guard_fields as _contact_guard_fields
+
+PRESENCE_BOOTSTRAPS = {
+    "nenio": {  # eng7-l06: the existing field-report correction stages her probationary visit.
+        loss: {"Flag": "nenio.trickster.primed_away", "Reason": "She returns to correct the paid field report; probation still awaits her answer."}
+        for loss in ("nenio.sent_away", "nenio.kicked_out")
+    },
+    "camellia": {
+        loss: {"Flag": "camellia.trickster.raised", "Reason": "The paid coffin ritual stages her physical reckoning."}
+        for loss in ("camellia.killed", "camellia.dead")
+    },
+    "irabeth": {"irabeth_dead": {
+        "Flag": "irabeth.trickster.presence_on",
+        "Reason": "Her existing paid or dug-out return history stages the reporting actor before reconciliation."}},
+    "kaylessa": {"kaylessa.dead": {
+        "Flag": "kaylessa.trickster.presence_on",
+        "Reason": "The paid Council bargain or sending brings her to the physical arrival."}},
+}
 PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
+# eng7-l06 end
 
 
 def presence_relationship(key):
@@ -185,38 +205,37 @@ def presence_guard(relationship):
     return relationship + ".presence.route_open"
 
 
-def presence_guard_fields(rel, relationship):
-    """Compile only listed returns into presence guards, using existing DerivedForbids."""
-    key = presence_guard(rel)
-    fields = {"Derived": {key: [list(g) for g in PRESENCE_CHAPTERS]}}
-    progress = PRESENCE_RETURN_IN_PROGRESS.get(rel)
-    if not progress:
-        fields["DerivedOpenRoutes"] = {key: [rel]}
-        return fields
-    blockers = [relationship["ClosedFlag"]]
-    forbids = fields["DerivedForbids"] = {}
-    for flag in relationship.get("UnavailableFlags") or []:
-        blocked = key + ".blocked." + flag
-        fields["Derived"][blocked] = [[flag]]
-        blockers.append(blocked)
-        lifts = list(dict.fromkeys(filter(None, [
-            (relationship.get("UnavailableOverrides") or {}).get(flag),
-            (progress.get(flag) or {}).get("Flag"),
-        ])))
-        if lifts:
-            forbids[blocked] = lifts
-    forbids[key] = blockers
-    return fields
+# eng7-l06
+def presence_guard_fields(rel, relationship, declaration=None):
+    return _contact_guard_fields(rel, relationship, declaration)
 
 
 def integrate_presences(payload):
-    """Physical presences obey route closure, with only documented paid returns in progress."""
+    """Serialize per-person contact exceptions; relationship and household guards stay earned."""
+    declarations = payload.setdefault("PresenceExceptions", {})
     for name, presence in (payload.get("Presences") or {}).items():
         rel = presence_relationship(name)
         if rel not in payload["Relationships"]:
             continue
-        key = presence_guard(rel)
-        for field, guards in presence_guard_fields(rel, payload["Relationships"][rel]).items():
+        progress = PRESENCE_BOOTSTRAPS.get(rel) or PRESENCE_RETURN_IN_PROGRESS.get(rel)
+        absent = {}
+        if rel == "minagho_chivarro":
+            other = "minagho.dead" if name.endswith(".chivarro") else "chivarro.dead"
+            absent[other] = "This contact is the other woman's already-authored solo presence."
+            progress = ({"minagho.dead": {
+                "Flag": "minagho_chivarro.trickster.collateral_delivered",
+                "Reason": "Baphomet's paid delivery stages Minagho's corpse before she answers."}}
+                if name.endswith(".minagho") else {})
+        if name == "nurah.presence.cell":
+            progress = {"nurah.prison": {"Flag": "trickster.now",
+                "Reason": "A living prisoner can receive the existing pardon in her cell before release."}}
+        declaration = None
+        if progress or absent:
+            key = name + ".route_open" if absent or name == "nurah.presence.cell" else presence_guard(rel)
+            declaration = {"Guard": key, "Overrides": progress or {}, "AbsentLosses": absent}
+            declarations[name] = declaration
+        key = (declaration or {}).get("Guard", presence_guard(rel))
+        for field, guards in presence_guard_fields(rel, payload["Relationships"][rel], declaration).items():
             entries = payload.setdefault(field, {})
             for guard, value in guards.items():
                 if guard in entries and entries[guard] != value:
@@ -224,7 +243,7 @@ def integrate_presences(payload):
                 entries[guard] = value
         if key not in (presence.get("Requires") or []):
             presence["Requires"] = [*(presence.get("Requires") or []), key]
-
+# eng7-l06 end
 
 def committed_page(scene, relationship):
     requires = scene.get("Requires") or []

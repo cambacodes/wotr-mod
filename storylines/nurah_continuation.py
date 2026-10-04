@@ -80,7 +80,7 @@ The messenger shifts his weight. He tells you he was paid to wait until sunset. 
 Vhal proposes an authorial appearance before a small group of subscribers visiting Drezen. Nurah is to approve selected passages, authenticate a handful of documents, and permit her earlier biography to be republished with an additional dedication. There is money. There are introductions. There is a promise that the Commander's association with the project will be treated discreetly.
 Nurah has circled discreetly and written: She has already printed your name.
 The collector's local representative is an editor named Reth Carrow. He will receive revisions and arrange the subscribers' evening. Nurah proposes meeting you first, privately, to decide what to do with him. She has enclosed a smaller note for the courier to deliver if you agree.
-It gives no place yet. She wants a way into Drezen that does not walk her past soldiers who remember the siege, and she means to walk it once herself before she trusts it.
+It gives no place yet. She wants a way into Drezen that does not walk her past soldiers who remember the siege, and she means to walk it once herself before she trusts it.{/n}
 "Do not send me an honor guard," she adds. "If I wanted a row of men discussing whether I deserve to live, I would attend a temple. Name me a door nobody salutes. If I find a sentry on it, I shall assume you put him there to watch me, and I shall be right, and you will not see me again."
 {n}The courier has a blank sheet, a clean reed pen, and the patient look of a man determined not to ask why the author of the book hates it.{/n}''',
       c('[Send her a door nobody salutes, and an invitation to use it.]', "sent"),
@@ -104,7 +104,7 @@ Whatever Nurah does to Vhal now, she will do it without you, and she will probab
 
 
 visit("invitation_reply", "The answer in the margin", [
-    n("start", "Narrator", '''{n}The reply arrives in the hands of a different courier, an older woman carrying a basket of mended gloves. She produces Nurah's letter from beneath a patchwork mitten and waits while you check the seal.
+    n("start", "Narrator", '''{n}The reply arrives in the hands of a different courier, an older woman carrying a basket of mended gloves. She produces Nurah's letter from beneath a patchwork mitten and waits while you check the seal.{/n}
 "She said you might be suspicious," the woman says. "I told her I would charge extra if the suspicion involved a search."
 Nurah has written on the back of your own invitation. She has struck out a sentence about discretion and replaced it with something more specific: nobody is to announce her name to a room full of strangers.
 "A cloak is not a miracle," the reply begins. "I have walked your stair. The fourth step from the top squeals; I have put candle-wax on it, and if it squeals again I shall know somebody scraped the wax off, and who. I will use your door on one condition: nobody makes the meeting into a spectacle. That includes you, on the evenings you have had a very clever idea.
@@ -300,7 +300,7 @@ You turn the copied entry so Sava can see the heading and point out the change. 
 "You were going to fold it into the other one."
 {n}Nurah grins, caught and unashamed.{/n}
 "Then we had better both be careful. I will ask the first question. You may watch whether he looks at you or the door."''', c('[Let Nurah control the first question and retain the unexposed flaw.]', "witness", flags=f("nurah_leads_interview"))),
-    n("witness", "Narrator", '''{n}Sava lays her proof flat again. A name remains faintly visible beneath the removed footnote: Bressa. Nurah has stopped smiling.
+    n("witness", "Narrator", '''{n}Sava lays her proof flat again. A name remains faintly visible beneath the removed footnote: Bressa. Nurah has stopped smiling.{/n}
 "The sentence was longer in the first copy," Sava says. "It described a woman sent back along the road to recover a case of papers. She was missing when the rest reached the next camp."
 "Missing," Nurah repeats.
 "That is what it said."
@@ -356,7 +356,7 @@ Nurah objects. Sava begins wrapping the bundle. The halfling lets the objection 
 
 
 visit("the_borrowed_audience", "An audience in borrowed clothes", [
-    n("start", "Narrator", '''{n}At the next appointment Nurah takes one look at your clothes and makes a noise of profound disappointment.
+    n("start", "Narrator", '''{n}At the next appointment Nurah takes one look at your clothes and makes a noise of profound disappointment.{/n}
 "You look like the Commander," she says.
 "A difficult habit to break."
 "We are not trying to convince Carrow you are somebody else. We are trying to convince him you are a particular kind of fool. There is a difference."
@@ -1368,7 +1368,7 @@ At the door she pauses to pull on her gloves. One finger has a small split in th
 
 
 visit("a_margin_for_you", "A margin for you", [
-    n("start", "Nurah", '''{n}You have the glove when Nurah arrives. She inspects the repaired seam, turns it inside out, and finds no concealed proclamation. Her disappointment is theatrical.
+    n("start", "Nurah", '''{n}You have the glove when Nurah arrives. She inspects the repaired seam, turns it inside out, and finds no concealed proclamation. Her disappointment is theatrical.{/n}
 "A lost opportunity. You could have declared my fingers a protectorate."
 "Would you have objected?"
 "To the administrative burden. I have plans for them."

@@ -1,0 +1,420 @@
+{
+  "schema": 1,
+  "item": "E-Q7-17",
+  "source": "/work/Writer/handoffs/05-ROUND2-LEDGER-AND-RULES.md \u00a7\u00a7R2-5,4.2",
+  "allocations": [
+    {
+      "character": "Irabeth",
+      "relationships": [
+        "irabeth"
+      ],
+      "owners": [
+        "Irabeth"
+      ],
+      "prefixes": [
+        "irabeth.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 1,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2 Irabeth tier A; R2-5 Chapter 4 whitelist"
+    },
+    {
+      "character": "Shamira",
+      "relationships": [
+        "shamira",
+        "shamira_barracks"
+      ],
+      "owners": [
+        "Shamira"
+      ],
+      "prefixes": [
+        "shamira.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 2,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2 Shamira tier B; R2-5 Chapter 4 whitelist"
+    },
+    {
+      "character": "Wenduag",
+      "relationships": [
+        "wenduag"
+      ],
+      "owners": [
+        "Wenduag"
+      ],
+      "prefixes": [
+        "wenduag.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 1,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2 Wenduag tier A; R2-5 Chapter 4 whitelist"
+    }
+  ],
+  "framework_allocations": {
+    "Memory": {
+      "4": 2
+    },
+    "Table": "separate framework pages; never exempt a woman's alias"
+  },
+  "findings": [
+    {
+      "finding": "irabeth:009",
+      "scene": "irabeth.return_own_invitation",
+      "source": [],
+      "current_site": "irabeth.return_request + irabeth.return_reply",
+      "evidence": "The named own-invitation is absent; the current departure class still has two distinct Chapter 5 pages."
+    },
+    {
+      "finding": "shamira:014",
+      "scene": "shamira.trickster.mind.barracks_inquiry",
+      "source": [],
+      "current_site": "shamira.trickster.mind.barracks_after",
+      "evidence": "Current source moves the surgeon to the physical Shamira hub; the cited auxiliary remote inquiry is absent."
+    },
+    {
+      "finding": "shamira:016",
+      "scene": "shamira.trickster.mind.barracks_inquiry",
+      "source": [],
+      "current_site": "shamira.trickster.mind.barracks_after",
+      "evidence": "Current source moves the surgeon to the physical Shamira hub; the cited auxiliary remote inquiry is absent."
+    },
+    {
+      "finding": "wenduag:048",
+      "scene": "wenduag.trickster.killed.cellar",
+      "source": []
+    },
+    {
+      "finding": "wenduag:049",
+      "scene": "wenduag.trickster.ch4.stone",
+      "source": [
+        "storylines/wenduag_trickster.py:1048"
+      ]
+    },
+    {
+      "finding": "wenduag:050",
+      "scene": "wenduag.trickster.exile.champion",
+      "source": [
+        "storylines/wenduag_trickster.py:1049"
+      ]
+    },
+    {
+      "finding": "wenduag:051",
+      "scene": "wenduag.trickster.exile.late_bid",
+      "source": []
+    },
+    {
+      "finding": "wenduag:052",
+      "scene": "wenduag.trickster.abyss.fall",
+      "source": [
+        "storylines/wenduag_trickster.py:1047"
+      ]
+    },
+    {
+      "finding": "wenduag:053",
+      "scene": "wenduag.trickster.court.trial",
+      "source": []
+    }
+  ],
+  "audit_sequences": [
+    {
+      "name": "killed",
+      "character": "Wenduag",
+      "chapter": 3,
+      "deliveries": [
+        "wenduag.trickster.killed.cairn",
+        "wenduag.trickster.killed.back",
+        "wenduag.trickster.killed.cellar"
+      ]
+    },
+    {
+      "name": "abyss",
+      "character": "Wenduag",
+      "chapter": 4,
+      "deliveries": [
+        "wenduag.trickster.abyss.fall"
+      ]
+    },
+    {
+      "name": "stone",
+      "character": "Wenduag",
+      "chapter": 4,
+      "deliveries": [
+        "wenduag.trickster.ch4.stone"
+      ]
+    },
+    {
+      "name": "champion",
+      "character": "Wenduag",
+      "chapter": 4,
+      "deliveries": [
+        "wenduag.trickster.exile.champion"
+      ]
+    },
+    {
+      "name": "late-bid",
+      "character": "Wenduag",
+      "chapter": 4,
+      "deliveries": [
+        "wenduag.trickster.exile.late_bid"
+      ]
+    },
+    {
+      "name": "street-courtship",
+      "character": "Wenduag",
+      "chapter": 5,
+      "deliveries": [
+        "wenduag.trickster.street.fall",
+        "wenduag.trickster.street.back",
+        "wenduag.trickster.court.trial",
+        "wenduag.trickster.court.gate",
+        "wenduag.trickster.court.stinger",
+        "wenduag.trickster.court.claim",
+        "wenduag.trickster.court.cairn",
+        "wenduag.trickster.court.morning",
+        "wenduag.trickster.court.vellexia",
+        "wenduag.trickster.court.yaniel",
+        "wenduag.trickster.court.neathers",
+        "wenduag.trickster.court.hunt",
+        "wenduag.trickster.court.gongs"
+      ]
+    },
+    {
+      "name": "orchard-courtship",
+      "character": "Wenduag",
+      "chapter": 5,
+      "deliveries": [
+        "wenduag.trickster.exile.ch5_hunt",
+        "wenduag.trickster.court.trial",
+        "wenduag.trickster.court.gate",
+        "wenduag.trickster.court.stinger",
+        "wenduag.trickster.court.claim",
+        "wenduag.trickster.court.cairn",
+        "wenduag.trickster.court.morning",
+        "wenduag.trickster.court.vellexia",
+        "wenduag.trickster.court.yaniel",
+        "wenduag.trickster.court.neathers",
+        "wenduag.trickster.court.hunt",
+        "wenduag.trickster.court.gongs"
+      ]
+    },
+    {
+      "name": "abyss-return-courtship",
+      "character": "Wenduag",
+      "chapter": 5,
+      "deliveries": [
+        "wenduag.trickster.abyss.back",
+        "wenduag.trickster.court.trial",
+        "wenduag.trickster.court.gate",
+        "wenduag.trickster.court.stinger",
+        "wenduag.trickster.court.claim",
+        "wenduag.trickster.court.cairn",
+        "wenduag.trickster.court.morning",
+        "wenduag.trickster.court.vellexia",
+        "wenduag.trickster.court.yaniel",
+        "wenduag.trickster.court.neathers",
+        "wenduag.trickster.court.hunt",
+        "wenduag.trickster.court.gongs"
+      ]
+    },
+    {
+      "name": "killed-return-courtship",
+      "character": "Wenduag",
+      "chapter": 5,
+      "deliveries": [
+        "wenduag.trickster.killed.back",
+        "wenduag.trickster.court.trial",
+        "wenduag.trickster.court.gate",
+        "wenduag.trickster.court.stinger",
+        "wenduag.trickster.court.claim",
+        "wenduag.trickster.court.cairn",
+        "wenduag.trickster.court.morning",
+        "wenduag.trickster.court.vellexia",
+        "wenduag.trickster.court.yaniel",
+        "wenduag.trickster.court.neathers",
+        "wenduag.trickster.court.hunt",
+        "wenduag.trickster.court.gongs"
+      ]
+    },
+    {
+      "name": "departure",
+      "character": "Irabeth",
+      "chapter": 5,
+      "deliveries": [
+        "irabeth.return_request",
+        "irabeth.return_reply"
+      ]
+    },
+    {
+      "name": "primed-harem-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "primed-harem-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "primed-harem_fallback-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "primed-harem_fallback-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "letter-harem-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "letter-harem-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "letter-harem_fallback-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "letter-harem_fallback-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "late-harem-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "late-harem-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "late-harem_fallback-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "late-harem_fallback-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "unextracted-harem-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "unextracted-harem-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "unextracted-harem_fallback-ally",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    },
+    {
+      "name": "unextracted-harem_fallback-hard-refusal",
+      "character": "Shamira",
+      "chapter": 5,
+      "deliveries": [
+        "shamira.trickster.mind.first_night",
+        "shamira.trickster.mind.dream",
+        "shamira.trickster.mind.barracks_after"
+      ]
+    }
+  ]
+}

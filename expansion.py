@@ -16,7 +16,7 @@ from storylines import kiana_reconciliation, gesmerha_opening
 from storylines import vellexia_opening, konomi_ordinary_expansion
 from storylines import aivu_opening
 from storylines import aivu_campaign
-from storylines import earned_presence
+from storylines import earned_presence, native_overrides, native_facts
 from storylines import konomi_private_absence
 from storylines import soana_later_progression, soana_late_campaign
 from storylines import tirabade_chronology
@@ -61,7 +61,6 @@ from storylines import eritrice_trickster, eritrice_minutes, eritrice_council
 from storylines import areelu_trickster
 from storylines import areelu_afterlogue  # E14i: her afterlogue line (Cue_0004 / Cue_0005) for a continuing romance
 from storylines import longcon
-from storylines import native_facts
 from storylines import chadali_trickster, chadali_wagers, chadali_fortunes, chadali_sessions, chadali_hours
 from storylines import arueshalae_trickster, arueshalae_treatment, arueshalae_rounds, arueshalae_chapel
 from storylines import arueshalae_hours, arueshalae_notes
@@ -635,9 +634,31 @@ def make_expansion(*, independent_tirabade=True):
     foresight.integrate(payload)
     # Earned presence (rubric Binding context (3)): no living postwar page beside an unreturned sacrifice. After every
     # route and Last Call's pages, before trickster_world binds the keys the guards read.
+    # eng7-l03: append historical native-slide variants before the standard presence guards.
+    from storylines import tirabade_native_variants
+    tirabade_native_variants.integrate(payload)
+    # eng7-l03 end
     earned_presence.integrate(payload)
     trickster_engine(payload)
+    # eng7-l05: wire current participants before binding their transitive native inputs.
+    trickster_world.integrate_participant_inventory(payload)
     trickster_world.integrate(payload)
+    # eng7-l06: preserve Gesmerha's promised finale fallback after an observed, earned Drezen placement failure.
+    failure_receipt = "gesmerha.presence.failure_observed"
+    payload.setdefault("PresenceFailureReceipts", {})["gesmerha.presence"] = {
+        "Flag": failure_receipt, "Requires": ["gesmerha.trickster.returned"]}
+    for page in payload["Scenes"]:
+        if page["Id"] in {"gesmerha.trickster.epilogue.commit", "gesmerha.trickster.epilogue.commit_mourned",
+                          "gesmerha.trickster.epilogue.unvisited", "gesmerha.trickster.epilogue.unvisited_mourned"}:
+            for field in ("Requires", "Forbids"):
+                page[field] = [failure_receipt if f == "gesmerha.presence.failed" else f for f in page.get(field, [])]
+            if "RequiresAnyGroups" in page:
+                page["RequiresAnyGroups"] = [[failure_receipt if f == "gesmerha.presence.failed" else f for f in g]
+                                            for g in page["RequiresAnyGroups"]]
+    payload["Derived"]["gesmerha.trickster.late_committed"] = [
+        [failure_receipt if f == "gesmerha.presence.failed" else f for f in group]
+        for group in payload["Derived"]["gesmerha.trickster.late_committed"]]
+    # eng7-l06 end
     if "yaniel" in payload["Relationships"]:
         yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
     chivarro_death.integrate(payload)        # after the world bindings (chivarro.dead); read-only keys, no scene reads them yet
@@ -651,7 +672,36 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
-    native_facts.integrate(payload)  # q6b/eng7-l02: verified native history readers (needs the game's blueprints.zip)
+    native_facts.integrate(payload)  # q6b/eng7-l02: verified native history readers
+    # eng7-l04: native-world reconciliation and adapter parity.
+    from tools.native_gate_contract_lint import validate as validate_native_gate_contract
+    native_overrides.integrate_world(payload)
+    # eng7-l09: the nine audited Camellia cuts retain local mornings and callbacks.
+    from storylines import camellia_intimate_aftermath
+    camellia_intimate_aftermath.integrate(payload)
+    # end eng7-l09
+    # eng7-l11: reviewed native reaction inheritance; no new scenes or outcomes.
+    from tools.hub_attachment_lint import integrate as attach_presence_reactions
+    attach_presence_reactions(payload)
+    # end eng7-l11
+    # eng7-l12: assembled staging/finale/block corrections (after all appenders).
+    from storylines import engine_q7_l12
+    engine_q7_l12.integrate(payload)
+    # eng7-l07: loss-specific return and own-life contracts, after every consumer is assembled.
+    from tools import return_provenance_lint, own_life_lint
+    return_provenance_lint.integrate(payload)
+    own_life_lint.integrate(payload)
+    current_acts = json.loads((ROOT / "tools/current_act_inventory_contracts.json").read_text(encoding="utf-8"))
+    for scene in payload["Scenes"]:
+        if scene["Id"] in current_acts["wire_live"]:
+            scene["Requires"] = list(dict.fromkeys([*scene.get("Requires", []), "trickster.now"]))
+    for name in current_acts["live_presences"]:
+        if name in payload.get("Presences", {}):
+            presence = payload["Presences"][name]
+            presence["Requires"] = list(dict.fromkeys([*presence.get("Requires", []), "trickster.now"]))
+    # eng7-l07 end
+    native_overrides.finalize(payload)
+    validate_native_gate_contract(payload)
     return payload
 
 

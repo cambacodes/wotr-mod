@@ -1209,7 +1209,7 @@ s("a_road_she_would_choose", "A road without an assignment",
 "That is an excellent reason to distrust attractive handwriting."
 "Only when it describes a bridge," Sella replies. "Otherwise it depends on what you want from the writer."
 {n}Irabeth glances at you and discovers you already looking at her.{/n}
-"We are here for roads," she says, less firmly than she intended.{/n}''', c('[Make room for the drawings.]', "drawings")),
+"We are here for roads," she says, less firmly than she intended.''', c('[Make room for the drawings.]', "drawings")),
     n("drawings", "Narrator", '''{n}Sella spreads three routes across the table. One follows a broad road between settled towns. It has inns, tolls and long views of cultivated land. Another turns into hills above a lake, with fewer stopping places and a stretch that becomes unpleasant after heavy rain. The third promises an impressive ruin and offers almost no useful information about the way home.{/n}
 {n}Irabeth puts the third aside.{/n}
 {n}"I have seen enough impressive ruins without arranging a holiday around another."{/n}

@@ -4,6 +4,21 @@ using System.Linq;
 
 namespace Tirabade
 {
+    // eng7-l11: read-only actor observations shared by NativeContact and its oracle.
+    public sealed class NativeContactObservation
+    {
+        public string Id = "", Storage = "";
+        public float[] Position = Array.Empty<float>();
+        public bool ContextReady, Destroyed, DestroyMark, Disposed, Dead, FinallyDead, CurrentStorage, SceneLoaded;
+        public bool ViewPresent, ViewMatches, ViewSceneLoaded, ViewActive, InGame, Suppressed, Conscious, Enemy;
+        public bool Ignorable => Destroyed || DestroyMark || Disposed || Dead || FinallyDead;
+        public bool Usable => UsableFor(false);
+        // eng7-integ: managed unhide shares the contact oracle and relaxes visibility only.
+        public bool UsableFor(bool allowHidden) => ContextReady && !Ignorable && CurrentStorage && SceneLoaded
+            && (allowHidden && !InGame || ViewPresent && ViewMatches && ViewSceneLoaded && (allowHidden || ViewActive && InGame))
+            && !Suppressed && Conscious && !Enemy;
+    }
+    // end eng7-l11
     public sealed class Story
     {
         public List<Scene> Scenes = new List<Scene>();
@@ -34,6 +49,11 @@ namespace Tirabade
         public string[] PermanentEtudes = Array.Empty<string>();
         // E12 (GLOBAL-07-lite): returned presences, keyed "<relationship>.presence".
         public Dictionary<string, Presence> Presences = new Dictionary<string, Presence>();
+        // eng7-l06: serialized acquisition guards, distinct from relationship/household availability.
+        public Dictionary<string, PresenceException> PresenceExceptions = new Dictionary<string, PresenceException>();
+        // eng7-l06: permanent receipts of eligible, observed placement failure; never inferred by travel.
+        public Dictionary<string, PresenceFailureReceipt> PresenceFailureReceipts = new Dictionary<string, PresenceFailureReceipt>();
+        // eng7-l06 end
         // E16 (the household, 08 §2.2 / 10 §P1): native openers. An answer injected into a native answer list that, when
         // chosen, lets the native dialog end and then opens an RRT view (e.g. "table", "book.trickster.ledger").
         public List<NativeOpener> Openers = new List<NativeOpener>();
@@ -48,6 +68,8 @@ namespace Tirabade
         // E19: reviewed native objectives settled (failed, never completed) while When holds and the objective is still Started:
         // a journal step the route's world made moot (Greybor's Obj5A after Devarra flew). Trickster only, warning-only.
         public Dictionary<string, NativeGateSpec> NativeObjectiveSettlements = new Dictionary<string, NativeGateSpec>();
+        // eng7-l04: registry-backed object/action and journal reconciliation; no new save flags.
+        public Dictionary<string, NativeWorldSpec> NativeWorldReconciliations = new Dictionary<string, NativeWorldSpec>();
         // E11: the only items a choice may remove (Choice.RemoveItem), each a native BlueprintItem GUID.
         public string[] RemovableItems = Array.Empty<string>();
         // E17 (native outcome bridge): the only native etudes a choice may start (Choice.StartEtude), each a GUID the story
@@ -163,11 +185,31 @@ namespace Tirabade
     // E12: a character made present in an area while Requires hold and no Forbid holds. "reuse-native" unhides and
     // (optionally) moves the existing native unit when it exists alive and friendly; "spawn-copy" spawns one copy of the
     // native blueprint at Position when no live unit of that blueprint is in the area, and removes it when unwanted.
+    // eng7-l06
+    public sealed class PresenceFailureReceipt
+    {
+        public string Flag = "";
+        public string[] Requires = Array.Empty<string>();
+    }
+    public sealed class PresenceBootstrap
+    {
+        public string Flag = "";
+        public string Reason = "";
+    }
+    public sealed class PresenceException
+    {
+        public string Guard = "";
+        public Dictionary<string, PresenceBootstrap> Overrides = new Dictionary<string, PresenceBootstrap>();
+        public Dictionary<string, string> AbsentLosses = new Dictionary<string, string>();
+    }
+    // eng7-l06 end
     public sealed class Presence
     {
         public string Unit = "";
         public string Area = "";
         public string Mode = "reuse-native";
+        // eng7-l05: opt in only for the inventoried hidden capital actors; saves original native placement.
+        public bool ManageNative;
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
         public int MinChapter = 1;
@@ -182,6 +224,9 @@ namespace Tirabade
         // InteractionHub is this presence key (the generalized Nurah arrival hub). Greeting is the hub page's text.
         public string? Dialog;
         public string? Greeting;
+        // eng7-l11: reviewed existing reactions also offered by this visitor hub.
+        public string[] ReactionScenes = Array.Empty<string>();
+        // end eng7-l11
         // Hours that must pass after the latest timed Requires flag before the presence is wanted (0: at once), as
         // Scene.DelayHours: someone who is away for a while does not stand at her mark in the meantime.
         public int DelayHours;
@@ -226,13 +271,21 @@ namespace Tirabade
         public float Orientation;
     }
 
-    public enum PresenceStep { None, Unhide, Move, Hide, Spawn, Remove, Forget, Blocked }
+    public enum PresenceStep { None, Unhide, Move, Hide, Spawn, Remove, Forget, Blocked, Adopt, RestoreNative, RecordNativeContact } // eng7-l05: append only
 
     // What the runtime observed for one presence in the loaded area (pure input to Rules.PlanPresence).
     public sealed class PresenceObservation
     {
         public bool AreaLoaded;
         public bool AnchorResolved = true;   // E12b: the At anchor was found alive in the loaded area
+        // eng7-l05: loaded actor evidence shared with NativeContact. Defaults retain legacy pure fixtures.
+        public int NativeCount;
+        public bool NativeUsable = true;
+        public bool NativeManageable = true;
+        public bool RecordedNative;
+        public bool RecordedNativeContact; // eng7-l05: a retired copy cannot replace a subsequently lost native.
+        public bool CopyUsable = true;
+        public bool ContactAmbiguous;
         public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
         public bool NativeHidden;      // that unit is out of game (hidden by native state)
         public bool NativeAtPosition = true;
@@ -313,6 +366,15 @@ namespace Tirabade
         public string[][] When = Array.Empty<string[]>();
     }
 
+    // eng7-l04: authored journal text keeps the original localized fields and quest identities.
+    public sealed class NativeWorldSpec
+    {
+        public string Target = "", Relationship = "", DescriptionKey = "", Description = "", TitleKey = "", Title = "";
+        public string[][] When = Array.Empty<string[]>();
+    }
+
+    public enum Q3RecoveryOutcome { Native, Partial, Full } // eng7-l04
+
     public sealed class TricksterAccess
     {
         public string[] Detect = Array.Empty<string>();
@@ -322,6 +384,8 @@ namespace Tirabade
 
     public sealed class SeatWoman
     {
+        // eng7-l05: optional current membership for individually named pair participants.
+        public string[] Requires = Array.Empty<string>();
         public string Relationship = "";
         public string[] UnavailableFlags = Array.Empty<string>();
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
@@ -358,6 +422,9 @@ namespace Tirabade
         public string? AfterDeparture;
         public string? ContactUnit;
         public string[] AdditionalContactUnits = Array.Empty<string>();
+        // eng7-l06: nominated solo consequences may read an absent partner, never their own loss.
+        public string[] AbsentPartnerFlags = Array.Empty<string>();
+        // eng7-l06 end
         public int MinChapter = 1;
         public int MaxChapter = 5;
         public int DelayHours;
@@ -398,6 +465,9 @@ namespace Tirabade
         public string Speaker = "Narrator";
         public string Portrait = "";
         public string Text = "";
+        // eng7-l09: liabilities incurred on entry survive payment and contact exits.
+        public string[] EnterSet = Array.Empty<string>();
+        // end eng7-l09
         public List<Choice> Choices = new List<Choice>();
         // E14c: conditional paragraphs on narrator and speaker nodes. Paragraphs appended after the node text, in order (the native BookPage idiom).
         public List<Paragraph> Paragraphs = new List<Paragraph>();
@@ -729,10 +799,23 @@ namespace Tirabade
         })
             && scene.ParticipantWomen.All(id => {
                 var woman = story.SeatWomen[id];
-                return !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
+                // eng7-l05: historical pair commitment alone does not establish this woman's current membership.
+                return woman.Requires.All(state.Has) && !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
                     && !woman.UnavailableFlags.Any(flag => state.Has(flag)
                         && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
             });
+
+        // eng7-l09: shared runtime/test contract for incurred transaction state.
+        public static void EnterNode(Node node, Snapshot state)
+        {
+            foreach (string flag in node.EnterSet)
+                if (state.Flags.Add(flag)) state.Times[flag] = state.Hour;
+        }
+
+        public static bool PaymentExitAvailable(Node node, Snapshot state)
+            => node.Choices.Any(choice => choice.Crusade?.Amount < 0)
+                && !node.Choices.Any(choice => ChoiceAvailable(choice, state));
+        // end eng7-l09
 
         public static bool ChoiceAvailable(Choice choice, Snapshot state) => Match(choice.Requires, choice.Forbids, state)
             && (choice.Crusade == null || choice.Crusade.Amount >= 0 || state.CrusadeResources != null
@@ -762,7 +845,10 @@ namespace Tirabade
         // ER-2: a TricksterDevice scene also ignores the unavailable flags its TricksterAccess state detects, and nothing else.
         public static bool Blocks(Relationship relationship, string flag, Snapshot state, Scene? scene = null) => state.Has(flag)
             && !(relationship.UnavailableOverrides.TryGetValue(flag, out var returned) && state.Has(returned))
-            && !(scene != null && scene.TricksterDevice && DeviceDetects(relationship, scene).Contains(flag));
+            && !(scene != null && scene.TricksterDevice && DeviceDetects(relationship, scene).Contains(flag))
+            // eng7-l06: validated against the individual contact declaration, not a pair commitment.
+            && !(scene != null && scene.AbsentPartnerFlags.Contains(flag));
+            // eng7-l06 end
 
         // The unavailable flags a device scene is built to serve: its TricksterAccess state's detect keys ("!" = absent, ignored).
         public static IEnumerable<string> DeviceDetects(Relationship relationship, Scene scene)
@@ -829,7 +915,10 @@ namespace Tirabade
             if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             var contacts = scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit });
-            return story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+            // eng7-l05: a failed nominated hub cannot advertise a generic native actor at another placement.
+            return (scene.InteractionHub == null || !story.Presences.ContainsKey(scene.InteractionHub)
+                    || !state.Has(PresenceFailedFlag(scene.InteractionHub)))
+                && story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
                 .All(p => ContactWindowsAvailable(p.ContactWindows, state))
                 && (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit)
                     || scene.Id == WenduagEchoPrefix + "pickup" && scene.ContactUnit == "ae766624c03058440a036de90a7f2009" && state.SceneContacts.Contains(scene.Id))
@@ -1018,10 +1107,11 @@ namespace Tirabade
                         && (long)state.Hour - at >= window.MinAgeHours
                         && (window.MaxAgeHours == null || (long)state.Hour - at <= window.MaxAgeHours)));
 
+        // eng7-l05: observedFailure may exclude only the presence's own transient failure when observing demand.
         // E12: the presence is wanted in this snapshot (area, chapter window, Requires, Forbids).
-        public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
+        public static bool PresenceWanted(Presence presence, Snapshot state, string? observedFailure = null) => state.Area == presence.Area
             && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
-            && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has)
+            && presence.Requires.All(state.Has) && !presence.Forbids.Any(flag => flag != observedFailure && state.Has(flag)) // eng7-l05
             && presence.RequiresAnyGroups.All(group => group.Any(state.Has))
             && ContactWindowsAvailable(presence.ContactWindows, state)
             && (presence.DelayHours <= 0 || state.Hour - presence.Requires.Where(state.Times.ContainsKey).Select(k => state.Times[k])
@@ -1034,7 +1124,7 @@ namespace Tirabade
             var steps = new List<PresenceStep>();
             if (presence.Mode == "reuse-native")
             {
-                if (wanted && seen.NativeAlive)
+                if (wanted && seen.NativeAlive && seen.NativeManageable && seen.NativeCount <= 1) // eng7-l05
                 {
                     if (seen.NativeHidden) steps.Add(PresenceStep.Unhide);
                     if ((presence.Position != null || presence.At != null && seen.AnchorResolved) && !seen.NativeAtPosition) steps.Add(PresenceStep.Move);
@@ -1043,9 +1133,42 @@ namespace Tirabade
                 else if (!wanted && seen.Recorded) steps.Add(PresenceStep.Forget);
                 return steps.ToArray();
             }
+            // eng7-l05: resolve only our recorded copy and explicitly managed native blueprint.
+            if (!wanted && seen.RecordedNative)
+                return new[] { seen.NativeAlive ? PresenceStep.RestoreNative : PresenceStep.Forget };
+            if (wanted && presence.Mode == "spawn-copy")
+            {
+                if (seen.NativeCount > 1) return new[] { PresenceStep.Blocked };
+                bool nativeReady = seen.NativeAlive && seen.NativeUsable && !seen.NativeHidden
+                    && (!presence.ManageNative || seen.AnchorResolved && seen.NativeAtPosition); // eng7-l05
+                bool manageable = presence.ManageNative && seen.NativeAlive && seen.NativeManageable && seen.AnchorResolved;
+                if (manageable)
+                {
+                    if (seen.CopyFound)
+                    {
+                        steps.Add(PresenceStep.Remove);
+                        if (!seen.NativeHidden && seen.NativeAtPosition) steps.Add(PresenceStep.RecordNativeContact);
+                    }
+                    if ((seen.NativeHidden || !seen.NativeAtPosition) && !seen.RecordedNative) steps.Add(PresenceStep.Adopt);
+                    if (seen.NativeHidden) steps.Add(PresenceStep.Unhide);
+                    if (!seen.NativeAtPosition) steps.Add(PresenceStep.Move);
+                    if (steps.Count == 0 && !seen.RecordedNative && !seen.RecordedNativeContact)
+                        steps.Add(PresenceStep.RecordNativeContact); // eng7-l05: remember contact without touching a native.
+                    return steps.ToArray();
+                }
+                if (nativeReady)
+                {
+                    if (seen.CopyFound) return new[] { PresenceStep.Remove, PresenceStep.RecordNativeContact }; // eng7-l05
+                    if (!seen.RecordedNative && !seen.RecordedNativeContact) return new[] { PresenceStep.RecordNativeContact }; // eng7-l05
+                    return Array.Empty<PresenceStep>();
+                }
+                // A hidden, hostile, suppressed or unloaded living twin prevents safe duplication.
+                if (seen.NativeCount > 0 || seen.NativeAlive || seen.RecordedNativeContact || seen.RecordedNative) return new[] { PresenceStep.Blocked }; // eng7-l05
+            }
+            // end eng7-l05
             if (wanted)
             {
-                if (seen.CopyFound) { if (!seen.CopyAlive) steps.Add(PresenceStep.Blocked); }
+                if (seen.CopyFound) { if (!seen.CopyAlive || !seen.CopyUsable) steps.Add(PresenceStep.Blocked); } // eng7-l05
                 else if (seen.NativeAlive) { if (seen.Recorded) steps.Add(PresenceStep.Forget); }
                 else if (seen.Submitted) steps.Add(PresenceStep.Blocked);
                 else if (!seen.AnchorResolved) steps.Add(PresenceStep.Blocked);   // E12b: never spawn without a live anchor
@@ -1273,15 +1396,47 @@ namespace Tirabade
 
         // E12b: the runtime observation a letter twin can wait on when an anchored copy could not be placed.
         public static string PresenceFailedFlag(string presenceKey) => presenceKey + ".failed";
+        // eng7-l06: append-only observation history, analogous to a latch. It survives area changes and reloads.
+        // Only eligible failures write it; later contact neither erases history nor substitutes for yard_seen/refusal.
+        public static string PresenceFailureSaveKey(string name) => "RanRomance.Tirabade.Presence." + name + ".FailureObserved";
+        public static bool RecordPresenceFailure(Story story, string name, Snapshot state, PresenceObservation seen) =>
+            story.PresenceFailureReceipts.TryGetValue(name, out var receipt)
+            && receipt.Requires.All(state.Has) && story.Presences.TryGetValue(name, out var presence)
+            && PresenceFailed(presence, PresenceWanted(presence, state), seen);
+
+        public static void ValidatePresenceFailureReceipts(Story story, HashSet<string> authored, HashSet<string> native)
+        {
+            if (story.PresenceFailureReceipts == null) throw new InvalidOperationException("PresenceFailureReceipts cannot be null.");
+            foreach (var pair in story.PresenceFailureReceipts)
+            {
+                var receipt = pair.Value;
+                string rel = PresenceRelationship(pair.Key) ?? "";
+                if (!story.Presences.ContainsKey(pair.Key) || receipt == null || receipt.Flag != rel + ".presence.failure_observed"
+                    || receipt.Requires == null || receipt.Requires.Length == 0 || receipt.Requires.Distinct().Count() != receipt.Requires.Length
+                    || authored.Contains(receipt.Flag) || native.Contains(receipt.Flag) || story.Derived.ContainsKey(receipt.Flag)
+                    || receipt.Requires.Any(f => !authored.Contains(f) && !native.Contains(f) && !story.Derived.ContainsKey(f))
+                    || !receipt.Requires.Any(f => ReturnFlags(story.Relationships[rel]).Contains(f)))
+                    throw new InvalidOperationException("Invalid earned presence failure receipt: " + pair.Key);
+            }
+        }
+        // eng7-l06 end
 
         // E12b (NM1): a wanted presence that cannot be delivered in its loaded area reports failure (<key>.failed). A
         // reuse-native presence fails whenever no single live, friendly native actor stands in the area (absent, dead,
         // hostile or ambiguous), whether or not its anchor resolved; a spawn-copy fails when its anchor is gone and no copy
         // or native unit stands in for it. Transient: observed per tick, never saved.
         public static bool PresenceFailed(Presence presence, bool wanted, PresenceObservation seen)
-            => wanted && seen.AreaLoaded && (presence.Mode == "reuse-native"
-                ? !seen.NativeAlive
-                : presence.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive);
+        {
+            // eng7-l05: the same usable contact and repair plan drive hubs and failure twins.
+            if (!wanted || !seen.AreaLoaded) return false;
+            var plan = PlanPresence(presence, wanted, seen);
+            if (plan.Contains(PresenceStep.Blocked) || seen.ContactAmbiguous && !plan.Contains(PresenceStep.Remove)) return true;
+            bool moving = plan.Contains(PresenceStep.Unhide) || plan.Contains(PresenceStep.Move);
+            bool native = seen.NativeAlive && seen.NativeUsable && !seen.NativeHidden
+                && (!presence.ManageNative || seen.AnchorResolved && seen.NativeAtPosition); // eng7-l05
+            bool copy = seen.CopyFound && seen.CopyAlive && seen.CopyUsable;
+            return !native && !copy && !moving && !plan.Contains(PresenceStep.Spawn);
+        }
 
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
@@ -1378,6 +1533,17 @@ namespace Tirabade
             state.Chapter >= opener.MinChapter && state.Chapter <= opener.MaxChapter && Match(opener.Requires, opener.Forbids, state);
 
         // E12c: a physical scene offered in a presence's click-to-talk hub (InteractionHub = the exact presence key).
+        // eng7-l11: the same scene ID completes once across native and visitor entries.
+        public static Scene[] PresenceHubScenes(Story story, string key) => story.Scenes
+            .Where(scene => scene.InteractionHub == key)
+            .Concat(story.Presences[key].ReactionScenes.Select(id => story.Scenes.Single(scene => scene.Id == id)))
+            .Distinct().ToArray();
+
+        public static bool PresenceHubAvailable(Story story, string key, Scene scene, Snapshot state) =>
+            story.Presences.TryGetValue(key, out var presence)
+            && PresenceHubScenes(story, key).Contains(scene) && Available(story, scene, state)
+            && (scene.InteractionHub == key || PresenceWanted(presence, state) && state.AvailableContacts.Contains(presence.Unit));
+        // end eng7-l11
         public static bool IsPresenceHubScene(Scene scene) => scene.InteractionHub != null
             && PresenceRelationship(scene.InteractionHub) != null && scene.InteractionHub != "nurah.arrival"
             && !IsRemote(scene) && !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) && scene.AnswerLists.Length == 0
@@ -1424,6 +1590,7 @@ namespace Tirabade
             }
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
+                .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet)) // eng7-l09
                 .Concat(relationshipFlags));
             // TODO-shyka: save-compatible paid-page flag, deliberately without a producer in this tree.
             if (story.Derived.ContainsKey("foresight.page_taken")) authoredFlags.Add("trickster.foresight.accepted");
@@ -1433,6 +1600,9 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
+            // eng7-l06: saved runtime receipts are known inputs, never authored choice effects.
+            derivedFlags.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
+            // eng7-l06 end
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "konomi.death_unreturned", "konomi.death_restored",
@@ -1544,6 +1714,10 @@ namespace Tirabade
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
             ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags);
+            // eng7-l06
+            ValidatePresenceExceptionGuards(story);
+            ValidatePresenceFailureReceipts(story, authoredFlags, nativeKeys);
+            // eng7-l06 end
             // E16: openers have distinct ids, a native list GUID, text, a view, a chapter window and read only known keys.
             if (story.Openers == null) throw new InvalidOperationException("Openers cannot be null.");
             foreach (var opener in story.Openers)
@@ -1559,9 +1733,9 @@ namespace Tirabade
             if (story.SeatWomen == null) throw new InvalidOperationException("SeatWomen cannot be null.");
             foreach (var pair in story.SeatWomen)
                 if (string.IsNullOrWhiteSpace(pair.Key) || pair.Value == null || !story.Relationships.ContainsKey(pair.Value.Relationship)
-                    || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null
+                    || pair.Value.Requires == null || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null // eng7-l05
                     || pair.Value.UnavailableFlags.Distinct().Count() != pair.Value.UnavailableFlags.Length
-                    || pair.Value.UnavailableFlags.Concat(pair.Value.UnavailableOverrides.Values).Any(key =>
+                    || pair.Value.Requires.Concat(pair.Value.UnavailableFlags).Concat(pair.Value.UnavailableOverrides.Values).Any(key => // eng7-l05
                         !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key))
                     || pair.Value.UnavailableOverrides.Keys.Any(key => !pair.Value.UnavailableFlags.Contains(key)))
                     throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
@@ -1584,6 +1758,8 @@ namespace Tirabade
                     throw new InvalidOperationException("A Table scene is physical, with no native list and no contact unit: " + scene.Id);
             ValidateNativeEpilogueEdits(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeGates(story, authoredFlags, nativeKeys, derivedFlags);
+            // eng7-l04: Main.Load and the offline suite use the identical target/state contracts.
+            ValidateNativeWorld(story, authoredFlags, nativeKeys, derivedFlags);
             ValidateNativeObjectiveSettlements(story, authoredFlags, nativeKeys, derivedFlags);
             if (story.RemovableItems == null || story.RemovableItems.Any(guid => !Guid.TryParseExact(guid, "N", out var item) || item == Guid.Empty)
                 || story.RemovableItems.Distinct().Count() != story.RemovableItems.Length)
@@ -1757,6 +1933,90 @@ namespace Tirabade
         }
 
         // E12: presences name a relationship, a native unit and area, a mode, known gates and (for copies) a position.
+        // eng7-l06: mirror tools/presence_exception_schema.py; declarations cannot silently lift other losses.
+        public static string PresenceGuard(Story story, string name) => story.PresenceExceptions.TryGetValue(name, out var declaration)
+            ? declaration.Guard : PresenceRelationship(name) + ".presence.route_open";
+
+        public static bool PresenceLossLifted(Story story, string name, string loss, Snapshot state) =>
+            story.PresenceExceptions.TryGetValue(name, out var declaration)
+            && (declaration.AbsentLosses.ContainsKey(loss) || declaration.Overrides.TryGetValue(loss, out var entry)
+                && state.Has(entry.Flag));
+
+        private static bool BootstrapEarned(Story story, string key, HashSet<string>? visiting = null)
+        {
+            if (new[] { "trickster", TricksterNow, "trickster.ever", "trickster.was" }.Contains(key)) return true;
+            var seen = visiting == null ? new HashSet<string>() : new HashSet<string>(visiting);
+            if (!seen.Add(key)) return false;
+            bool Proof(string source) => BootstrapEarned(story, source, seen);
+            if (story.Derived.TryGetValue(key, out var groups)) return groups.All(g => g.Any(Proof));
+            if (story.Latches.TryGetValue(key, out var sources)) return sources.All(Proof);
+            var producers = story.Scenes.SelectMany(s => s.Nodes.SelectMany(n => n.Choices)
+                .Where(c => c.Set.Contains(key)).Select(c => (scene: s, choice: c))).ToArray();
+            return producers.Length > 0 && producers.All(p => p.scene.Requires.Concat(p.choice.Requires).Any(Proof)
+                || p.scene.RequiresAnyGroups.Any(g => g.Length > 0 && g.All(Proof)));
+        }
+
+        public static void ValidatePresenceExceptionGuards(Story story)
+        {
+            if (story.PresenceExceptions == null) throw new InvalidOperationException("PresenceExceptions cannot be null.");
+            if (!story.Derived.ContainsKey(TricksterNow) && story.PresenceExceptions.Count == 0) return; // legacy fixtures
+            void Fail(string name) => throw new InvalidOperationException("Presence exception guard differs from declaration: " + name);
+            foreach (var name in story.PresenceExceptions.Keys)
+                if (!story.Presences.ContainsKey(name)) Fail(name);
+            foreach (var pair in story.Presences)
+            {
+                string rel = PresenceRelationship(pair.Key)!;
+                var relationship = story.Relationships[rel];
+                string guard = PresenceGuard(story, pair.Key);
+                if (!pair.Value.Requires.Contains(guard) || !story.Derived.TryGetValue(guard, out var groups)
+                    || groups.Length != 2 || !groups[0].SequenceEqual(new[] { "chapter_one" })
+                    || !groups[1].SequenceEqual(new[] { "chapter_later" })) Fail(pair.Key);
+                if (!story.PresenceExceptions.TryGetValue(pair.Key, out var declaration))
+                {
+                    if (!story.DerivedOpenRoutes.TryGetValue(guard, out var routes) || !routes.SequenceEqual(new[] { rel })
+                        || story.DerivedForbids.ContainsKey(guard)) Fail(pair.Key);
+                    continue;
+                }
+                if (string.IsNullOrWhiteSpace(guard) || !guard.StartsWith(rel + ".presence.", StringComparison.Ordinal)
+                    || declaration.Overrides == null || declaration.AbsentLosses == null || story.DerivedOpenRoutes.ContainsKey(guard)) Fail(pair.Key);
+                foreach (var entry in declaration.Overrides!)
+                    if (!relationship.UnavailableFlags.Contains(entry.Key) || entry.Value == null
+                        || string.IsNullOrWhiteSpace(entry.Value.Flag) || string.IsNullOrWhiteSpace(entry.Value.Reason)
+                        || !BootstrapEarned(story, entry.Value.Flag)
+                        || new[] { "trickster", TricksterNow, "trickster.ever", "trickster.was" }.Contains(entry.Value.Flag)
+                            && !(pair.Key == "nurah.presence.cell" && entry.Key == "nurah.prison" && entry.Value.Flag == TricksterNow)) Fail(pair.Key);
+                foreach (var entry in declaration.AbsentLosses!)
+                    if (rel != "minagho_chivarro" || entry.Key != (pair.Key.EndsWith(".chivarro", StringComparison.Ordinal)
+                        ? "minagho.dead" : "chivarro.dead") || string.IsNullOrWhiteSpace(entry.Value)) Fail(pair.Key);
+                var blockers = new List<string> { relationship.ClosedFlag };
+                foreach (string loss in relationship.UnavailableFlags)
+                {
+                    if (declaration.AbsentLosses.ContainsKey(loss)) continue;
+                    string blocked = guard + ".blocked." + loss;
+                    blockers.Add(blocked);
+                    if (!story.Derived.TryGetValue(blocked, out var lossGroups) || lossGroups.Length != 1
+                        || !lossGroups[0].SequenceEqual(new[] { loss }) || story.DerivedOpenRoutes.ContainsKey(blocked)) Fail(pair.Key);
+                    var lifts = new List<string>();
+                    if (relationship.UnavailableOverrides.TryGetValue(loss, out var returned)) lifts.Add(returned);
+                    if (declaration.Overrides.TryGetValue(loss, out var entry))
+                    {
+                        lifts.Add(entry.Flag);
+                    }
+                    if (lifts.Count == 0 ? story.DerivedForbids.ContainsKey(blocked)
+                        : !story.DerivedForbids.TryGetValue(blocked, out var have) || !have.SequenceEqual(lifts.Distinct())) Fail(pair.Key);
+                }
+                if (!story.DerivedForbids.TryGetValue(guard, out var final) || !final.SequenceEqual(blockers)) Fail(pair.Key);
+            }
+            foreach (var scene in story.Scenes.Where(s => s.AbsentPartnerFlags.Length > 0))
+            {
+                if (scene.AbsentPartnerFlags.Distinct().Count() != scene.AbsentPartnerFlags.Length
+                    || scene.ContactUnit == null || scene.InteractionHub == null
+                    || !story.Presences.TryGetValue(scene.InteractionHub, out var contact) || contact.Unit != scene.ContactUnit
+                    || !story.PresenceExceptions.TryGetValue(scene.InteractionHub, out var declaration)
+                    || scene.AbsentPartnerFlags.Any(f => !declaration.AbsentLosses.ContainsKey(f))) Fail(scene.Id);
+            }
+        }
+        // eng7-l06 end
         private static void ValidatePresences(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
         {
             if (story.Presences == null) throw new InvalidOperationException("Presences cannot be null.");
@@ -1767,9 +2027,17 @@ namespace Tirabade
                 var p = pair.Value;
                 if (p?.At != null && authored.Contains(PresenceFailedFlag(pair.Key)))
                     throw new InvalidOperationException("The runtime presence observation cannot be authored: " + PresenceFailedFlag(pair.Key));
+                // eng7-l11: reject malformed inheritance before any dialog is built.
+                if (p == null || p.ReactionScenes == null || p.ReactionScenes.Distinct().Count() != p.ReactionScenes.Length
+                    || p.ReactionScenes.Any(id => !story.Scenes.Any(s => s.Id == id && s.Reaction && !IsRemote(s)
+                        && s.InteractionHub == null && s.AnswerLists.Length > 0))
+                    || p.ReactionScenes.Length > 0 && p.Dialog != "hub")
+                    throw new InvalidOperationException("Invalid presence reaction attachments: " + pair.Key);
+                // end eng7-l11
                 string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
+                    || p.ManageNative && p.Mode != "spawn-copy" // eng7-l05: managed fallback is explicitly opted in.
                     || p.Mode == "spawn-copy" && (p.Position == null && p.At == null || p.Requires.Length == 0)
                     || p.At != null && ((p.At.NearUnit == null) == (p.At.Locator == null)
                         || p.At.NearUnit != null && !GuidOk(p.At.NearUnit) || p.At.Locator != null && string.IsNullOrWhiteSpace(p.At.Locator)
@@ -1808,13 +2076,84 @@ namespace Tirabade
                     || gate.Relationship == null || !story.Relationships.ContainsKey(gate.Relationship) || gate.When == null || gate.When.Length == 0
                     || gate.When.Any(g => g == null || g.Length == 0 || g.Any(f => string.IsNullOrWhiteSpace(f) || !Known(f))
                         || !OnTricksterPath(g))
-                    || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana"
-                        || gate.When.Any(g => !g.Contains("trickster.now")
-                            || !g.Contains("kiana.trickster.guests_ransomed") && !g.Contains("kiana.trickster.guests_bought_back"))))
+                    // eng7-l04: partial groups never use the full-patient adapter branch.
+                    || pair.Key == "kiana.q3_recovery" && (gate.Relationship != "kiana" || gate.When.Any(g => !Q3RecoveryGroupSupported(g))))
                     throw new InvalidOperationException("Invalid native gate (reviewed id and target, known relationship, known When groups "
                         + "that each require trickster.ever): " + pair.Key);
             }
         }
+
+        // eng7-l04 begin: shared reviewed contracts, also read by the Python export validator.
+        public static readonly string[] Q3RecoveryFullOutcomes = new[] { "kiana.trickster.guests_ransomed", "kiana.trickster.guests_bought_back" };
+        public static readonly string[] Q3RecoveryPartialRequirements = new[] { "trickster.now", "kiana.trickster.returned", "kiana.trickster.cost.guests_robbed" };
+        public static bool Q3RecoveryGroupSupported(string[] group) => group != null && group.Contains("trickster.now")
+            && (Q3RecoveryFullOutcomes.Any(group.Contains) || Q3RecoveryPartialRequirements.All(group.Contains));
+        public static Q3RecoveryOutcome Q3RecoverySelection(Story story, Snapshot state)
+        {
+            if (!NativeGateHolds(story, "kiana.q3_recovery", state) || !state.Has("trickster.now")) return Q3RecoveryOutcome.Native;
+            var groups = story.NativeGates["kiana.q3_recovery"].When.Where(g => Q3RecoveryGroupSupported(g) && g.All(state.Has)).ToArray();
+            if (groups.Any(g => Q3RecoveryFullOutcomes.Any(g.Contains))) return Q3RecoveryOutcome.Full;
+            return groups.Length > 0 ? Q3RecoveryOutcome.Partial : Q3RecoveryOutcome.Native;
+        }
+        // Partial rescue is Kiana's earlier release, not payment for the other patients. Native Q3 remains their road home.
+        public static bool Q3RecoverySkipsPatients(Q3RecoveryOutcome outcome) => outcome == Q3RecoveryOutcome.Full;
+
+        public static readonly Dictionary<string, string> ReviewedNativeWorldTargets = new Dictionary<string, string>
+        {
+            ["a6e26159152a54c47a70ec91495499cf"] = "etude:HIDE-OBJECTS",
+            ["0544675ba14e81e48bb0965823c33efe"] = "etude:RETIRE-PRISONER",
+            ["067bd492b3a377d4e9112d929ec62fdb"] = "script-zone:RETIRE-ESCAPE",
+            ["5a5a533c9ce630a48b877f9a194840cb"] = "quest:JOURNAL",
+            ["7ac73c0b5de939b4b824a0aac54ba5f2"] = "objective:JOURNAL",
+            ["83527eddea019674cb123a6a52bdf169"] = "objective:JOURNAL",
+            ["5b1e04caadc42114281d29db76c19c4f"] = "objective:JOURNAL",
+            ["ba857f1c903988f47a70a9d6a2d861fa"] = "objective:JOURNAL",
+        };
+        public static readonly Dictionary<string, string> ReviewedNativeJournalKeys = new Dictionary<string, string>
+        {
+            ["5a5a533c9ce630a48b877f9a194840cb"] = "b46d5fa9-4ea9-4e7a-9997-b95c458bd095:",
+            ["7ac73c0b5de939b4b824a0aac54ba5f2"] = "ef5f2b7e-8e8c-4338-a8c1-acce1e65618f:e4e4c32c-68d4-4542-93bb-2ea6fc09e4b8",
+            ["83527eddea019674cb123a6a52bdf169"] = "e07e3559-8973-46ee-8c3f-85326d63c8aa:8f8bb69c-77fb-4b1a-af7a-589fa79bcb17",
+            ["5b1e04caadc42114281d29db76c19c4f"] = "884bf99f-bd1e-42ea-ac54-996fe4e8dddb:fe6c829a-52b3-489e-814f-b9cbe22a8cd6",
+            ["ba857f1c903988f47a70a9d6a2d861fa"] = "247343ee-0c87-4495-9857-310cc31fa663:",
+        };
+        public static readonly string[] BurialRequirements = new[] { "trickster.now", "eliandra.trickster.buried" };
+        public static readonly string[] RecruitmentRequirements = new[] { "trickster.now", "minagho_chivarro.trickster.minagho_in" };
+        public static bool NativeWorldGroupSupported(string target, string relationship, string[] group)
+        {
+            if (!ReviewedNativeWorldTargets.TryGetValue(target, out var contract) || group == null) return false;
+            if (contract.EndsWith(":JOURNAL", StringComparison.Ordinal)) return relationship == "kiana" && group.Contains("trickster.now")
+                && Q3RecoveryFullOutcomes.Any(group.Contains);
+            if (contract == "etude:HIDE-OBJECTS") return relationship == "eliandra" && BurialRequirements.All(group.Contains);
+            return relationship == "minagho_chivarro" && RecruitmentRequirements.All(group.Contains);
+        }
+        public static bool NativeWorldHolds(Story story, string target, Snapshot state) => story.NativeWorldReconciliations.TryGetValue(target, out var spec)
+            && !state.Has(DegradedPrefix + spec.Relationship) && state.Has("trickster.now")
+            && spec.When.Any(g => NativeWorldGroupSupported(target, spec.Relationship, g) && g.All(state.Has));
+        public static string? NativeJournalText(Story story, string target, bool title, Snapshot state)
+        {
+            if (!NativeWorldHolds(story, target, state) || !ReviewedNativeWorldTargets[target].EndsWith(":JOURNAL", StringComparison.Ordinal)) return null;
+            var spec = story.NativeWorldReconciliations[target];
+            return title ? (spec.TitleKey.Length == 0 ? null : spec.Title) : spec.Description;
+        }
+        private static void ValidateNativeWorld(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
+        {
+            if (story.NativeWorldReconciliations == null) throw new InvalidOperationException("NativeWorldReconciliations cannot be null.");
+            bool Known(string flag) => authored.Contains(flag) || native.Contains(flag) || runtime.Contains(flag) || story.Derived.ContainsKey(flag);
+            foreach (var pair in story.NativeWorldReconciliations)
+            {
+                var spec = pair.Value;
+                if (spec == null || pair.Key != spec.Target || !ReviewedNativeWorldTargets.TryGetValue(pair.Key, out var contract)
+                    || spec.Relationship == null || !story.Relationships.ContainsKey(spec.Relationship) || spec.When == null || spec.When.Length == 0
+                    || spec.When.Any(g => !NativeWorldGroupSupported(pair.Key, spec.Relationship, g) || g.Any(f => !Known(f)))
+                    || contract.EndsWith(":JOURNAL", StringComparison.Ordinal) && (string.IsNullOrWhiteSpace(spec.DescriptionKey)
+                        || !ReviewedNativeJournalKeys.TryGetValue(pair.Key, out var keys) || spec.DescriptionKey + ":" + spec.TitleKey != keys
+                        || string.IsNullOrWhiteSpace(spec.Description) || spec.TitleKey == null || spec.Title == null
+                        || (spec.TitleKey.Length > 0) != (spec.Title.Length > 0)))
+                    throw new InvalidOperationException("Invalid native world reconciliation: " + pair.Key);
+            }
+        }
+        // eng7-l04 end
 
         // E19: a settlement names a reviewed objective, a known relationship and known When groups that each require trickster.ever.
         private static void ValidateNativeObjectiveSettlements(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
@@ -1889,6 +2228,11 @@ namespace Tirabade
                     // E14i on a non-epilogue dialog cue (engine queue 8c/9a): a route state the relationship authored itself (e.g. Devarra's
                     // flight, Kiana's separation) also earns the edit; the delivery predicate still reads the replacement scene.
                     if (inDialog && relationship != null) earned.UnionWith(authored.Where(flag => flag.StartsWith(scene!.Relationship + ".", StringComparison.Ordinal)));
+                    // eng7-l03: Cue_0311 must retain paid survival even when Beth refuses reconciliation.
+                    // These existing facts earn only this historical slide; they grant no route/presence eligibility.
+                    if (pair.Key == "3a3e561c6b05a284d93eb3bff7b712a6" && scene?.Relationship == "irabeth")
+                        earned.UnionWith(new[] { "irabeth.trickster.cost.dug_out", "irabeth.trickster.raised_on_record" });
+                    // eng7-l03 end
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null

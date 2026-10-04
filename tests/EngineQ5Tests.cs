@@ -14,9 +14,10 @@ internal static class EngineQ5Tests
             string rel = Rules.PresenceRelationship(pair.Key)!;
             var relationship = story.Relationships[rel];
             var presence = pair.Value;
-            string guard = rel + ".presence.route_open";
+            string guard = Rules.PresenceGuard(story, pair.Key);  // eng7-l06
             check(presence.Requires.Contains(guard)
-                && (rel == "aranka"
+                // eng7-l06: the exported declaration is validated generically by Rules.Validate.
+                && (story.PresenceExceptions.ContainsKey(pair.Key)
                     ? !story.DerivedOpenRoutes.ContainsKey(guard) && story.DerivedForbids.ContainsKey(guard)
                     : story.DerivedOpenRoutes.TryGetValue(guard, out var routes) && routes.SequenceEqual(new[] { rel })),
                 "Missing central presence route guard: " + pair.Key);
@@ -24,6 +25,13 @@ internal static class EngineQ5Tests
                 .Concat(relationship.UnavailableOverrides.Values).ToHashSet();
             flags.ExceptWith(presence.Forbids);
             flags.Remove(relationship.ClosedFlag);
+            // eng7-l07: current altered-presence policy reads a native live-path input;
+            // do not inject trickster.now into a later failed-path snapshot.
+            if (presence.Requires.Contains(Rules.TricksterNow))
+            {
+                flags.Remove(Rules.TricksterNow);
+                flags.Add("trickster");
+            }
 
             Snapshot World(IEnumerable<string> held)
             {
@@ -38,7 +46,9 @@ internal static class EngineQ5Tests
                 Requires = presence.Requires.Where(k => k != guard).ToArray(), Forbids = presence.Forbids,
                 RequiresAnyGroups = presence.RequiresAnyGroups, DelayHours = presence.DelayHours };
             check(Rules.PresenceWanted(presence, ready)
-                == (Rules.PresenceWanted(original, ready) && Rules.RouteOpen(relationship, ready)),
+                == (Rules.PresenceWanted(original, ready) && !ready.Has(relationship.ClosedFlag)
+                    && !relationship.UnavailableFlags.Any(f => Rules.Blocks(relationship, f, ready)
+                        && !Rules.PresenceLossLifted(story, pair.Key, f, ready))),
                 "Presence ignores its route state: " + pair.Key);
             var closed = new HashSet<string>(flags) { relationship.ClosedFlag };
             var closedState = World(closed);
@@ -52,12 +62,16 @@ internal static class EngineQ5Tests
             {
                 var departed = new HashSet<string>(flags) { lost };
                 departed.ExceptWith(relationship.UnavailableOverrides.Values);
+                // eng7-l07: without the paid coffin ritual, no bootstrap actor is owed.
+                if (rel == "camellia") departed.Remove("camellia.trickster.raised");
                 // An override that is itself derived (Wenduag's returned_available) is withheld by dropping the flags it derives from.
                 foreach (string overrideKey in relationship.UnavailableOverrides.Values)
                     if (story.Derived.TryGetValue(overrideKey, out var sources)) departed.ExceptWith(sources.SelectMany(g => g));
                 var absentState = World(departed);
-                check(!Rules.PresenceWanted(presence, absentState), "Unreturned partner stands after " + lost + ": " + pair.Key);
-                if (Rules.Blocks(relationship, lost, absentState))
+                // eng7-l06: paid bootstraps/absent partners concern contact only; ordinary losses still withhold it.
+                if (!Rules.PresenceLossLifted(story, pair.Key, lost, absentState))
+                    check(!Rules.PresenceWanted(presence, absentState), "Unreturned partner stands after " + lost + ": " + pair.Key);
+                if (Rules.Blocks(relationship, lost, absentState) && !Rules.PresenceLossLifted(story, pair.Key, lost, absentState))
                     check(!absentState.Has(guard), "A loss fails to withhold the central guard: " + pair.Key);
                 if (relationship.UnavailableOverrides.TryGetValue(lost, out string? returned))
                 {

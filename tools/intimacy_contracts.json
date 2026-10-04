@@ -1,0 +1,152 @@
+[
+  {
+    "scene": "camellia.trickster.bond.not_today",
+    "outcome": "not_today",
+    "cut": "night",
+    "morning": "morning.not_today",
+    "flag": "camellia.trickster.encounter.not_today.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast",
+    "callback_node": "encounter.not_today"
+  },
+  {
+    "scene": "camellia.trickster.cards.two_lies_again",
+    "outcome": "all",
+    "cut": "all",
+    "morning": "morning.all",
+    "flag": "camellia.trickster.encounter.all.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast",
+    "callback_node": "encounter.all"
+  },
+  {
+    "scene": "camellia.trickster.cards.two_lies_again",
+    "outcome": "mine",
+    "cut": "mine",
+    "morning": "morning.mine",
+    "flag": "camellia.trickster.encounter.mine.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast",
+    "callback_node": "encounter.mine"
+  },
+  {
+    "scene": "camellia.trickster.day.the_second_dance",
+    "outcome": "knife_off",
+    "cut": "end",
+    "morning": "morning.knife_off",
+    "flag": "camellia.trickster.encounter.knife_off.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast",
+    "callback_node": "encounter.knife_off"
+  },
+  {
+    "scene": "camellia.trickster.day.the_second_dance",
+    "outcome": "knife_on",
+    "cut": "end",
+    "morning": "morning.knife_on",
+    "flag": "camellia.trickster.encounter.knife_on.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast",
+    "callback_node": "encounter.knife_on"
+  },
+  {
+    "scene": "camellia.trickster.bond.not_today_camp",
+    "outcome": "not_today",
+    "cut": "night",
+    "morning": "morning.not_today",
+    "flag": "camellia.trickster.encounter.not_today.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_camp",
+    "callback_node": "encounter.not_today"
+  },
+  {
+    "scene": "camellia.trickster.cards.two_lies_again_camp",
+    "outcome": "all",
+    "cut": "all",
+    "morning": "morning.all",
+    "flag": "camellia.trickster.encounter.all.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_camp",
+    "callback_node": "encounter.all"
+  },
+  {
+    "scene": "camellia.trickster.cards.two_lies_again_camp",
+    "outcome": "mine",
+    "cut": "mine",
+    "morning": "morning.mine",
+    "flag": "camellia.trickster.encounter.mine.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_camp",
+    "callback_node": "encounter.mine"
+  },
+  {
+    "scene": "camellia.trickster.day.the_second_dance_camp",
+    "outcome": "knife_off",
+    "cut": "end",
+    "morning": "morning.knife_off",
+    "flag": "camellia.trickster.encounter.knife_off.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_camp",
+    "callback_node": "encounter.knife_off"
+  },
+  {
+    "scene": "camellia.trickster.day.the_second_dance_camp",
+    "outcome": "knife_on",
+    "cut": "end",
+    "morning": "morning.knife_on",
+    "flag": "camellia.trickster.encounter.knife_on.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_camp",
+    "callback_node": "encounter.knife_on"
+  },
+  {
+    "scene": "camellia.trickster.bond.not_today_alive",
+    "outcome": "not_today",
+    "cut": "night",
+    "morning": "morning.not_today",
+    "flag": "camellia.trickster.encounter.not_today.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_alive",
+    "callback_node": "encounter.not_today"
+  },
+  {
+    "scene": "camellia.trickster.cards.two_lies_again_alive",
+    "outcome": "all",
+    "cut": "all",
+    "morning": "morning.all",
+    "flag": "camellia.trickster.encounter.all.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_alive",
+    "callback_node": "encounter.all"
+  },
+  {
+    "scene": "camellia.trickster.cards.two_lies_again_alive",
+    "outcome": "mine",
+    "cut": "mine",
+    "morning": "morning.mine",
+    "flag": "camellia.trickster.encounter.mine.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_alive",
+    "callback_node": "encounter.mine"
+  },
+  {
+    "scene": "camellia.trickster.day.the_second_dance_alive",
+    "outcome": "knife_off",
+    "cut": "end",
+    "morning": "morning.knife_off",
+    "flag": "camellia.trickster.encounter.knife_off.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_alive",
+    "callback_node": "encounter.knife_off"
+  },
+  {
+    "scene": "camellia.trickster.day.the_second_dance_alive",
+    "outcome": "knife_on",
+    "cut": "end",
+    "morning": "morning.knife_on",
+    "flag": "camellia.trickster.encounter.knife_on.morning",
+    "flags": [],
+    "callback_scene": "camellia.trickster.evening.breakfast_alive",
+    "callback_node": "encounter.knife_on"
+  }
+]

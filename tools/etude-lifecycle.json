@@ -106,6 +106,25 @@
     "hold"
    ]
   },
+  "0456318ba95f7b746828075e04a83d67": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WoljifNotInParty_AccordingToThePlot",
+    "WoljifCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WoljifNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "WoljifNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
+   ]
+  },
   "047d71e3e928d454bbd168497ee7c17f": {
    "ancestors_completed": [],
    "areas": {},
@@ -3411,6 +3430,25 @@
     "hold"
    ]
   },
+  "c1327dad3c1897f46aa7a4717d513f24": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "WoljifInParty",
+    "WoljifCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "WoljifInParty: CompanionInParty"
+   ],
+   "name": "WoljifInParty",
+   "traits": [
+    "conditional"
+   ]
+  },
   "c27a359a6e4e44b9b9cd9c0e54a1dd41": {
    "areas": {},
    "cascade_chapter": null,
@@ -3481,6 +3519,25 @@
    "traits": [
     "conditional",
     "event_cascade"
+   ]
+  },
+  "c3ddb9898f4aaa34486d4d0b12e14ab8": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeInParty",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "ArueshalaeInParty: CompanionInParty"
+   ],
+   "name": "ArueshalaeInParty",
+   "traits": [
+    "conditional"
    ]
   },
   "c6165efcd5571c442ae38d7c0601f2df": {
@@ -3741,6 +3798,25 @@
    "name": "EmberKilledInKenabres",
    "traits": [
     "hold"
+   ]
+  },
+  "d3b2b184eccf2b44b898f93e75fe8614": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "ArueshalaeNotInParty_AccordingToThePlot",
+    "ArueshalaeCompanion",
+    "Companions",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [
+    "ArueshalaeNotInParty_AccordingToThePlot: CompanionInParty, EtudeStatus"
+   ],
+   "name": "ArueshalaeNotInParty_AccordingToThePlot",
+   "traits": [
+    "conditional"
    ]
   },
   "d3b47e973d65c6c46af1cce815d1f6ce": {

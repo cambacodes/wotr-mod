@@ -25,6 +25,36 @@ internal static class Program
         AvailableContacts = new HashSet<string>(original.AvailableContacts)
     };
 
+    // eng7-l08: ledger reader used by actual route walkers, including known failing inventories.
+    // Each supplied ID must have completed in this one history. Native observations remain fixtures.
+    private static readonly HashSet<string> eng7L08ReportedHistories = new();
+    internal static void Eng7L08Allocation(Story source, Action<bool, string> check, string name,
+        string character, int chapter, Snapshot state, IEnumerable<string> completed, bool expectedFailure)
+    {
+        using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine("tools", "remote_allocation_contracts.json")));
+        var allocation = doc.RootElement.GetProperty("allocations").EnumerateArray()
+            .Single(a => a.GetProperty("character").GetString() == character);
+        var relationships = allocation.GetProperty("relationships").EnumerateArray().Select(e => e.GetString()).ToHashSet();
+        var owners = allocation.GetProperty("owners").EnumerateArray().Select(e => e.GetString()).ToHashSet();
+        var prefixes = allocation.GetProperty("prefixes").EnumerateArray().Select(e => e.GetString()!).ToArray();
+        var ids = completed.ToArray();
+        check(ids.Distinct().Count() == ids.Length && ids.All(state.Has), "Incomplete/repeated allocation trace " + name);
+        var pages = ids.Select(id => source.Scenes.Single(s => s.Id == id)).Where(s => Rules.IsRemote(s)
+            && (relationships.Contains(s.Relationship) || owners.Contains(s.Owner)
+                || prefixes.Any(p => s.Id.StartsWith(p, StringComparison.Ordinal)))).ToArray();
+        check(pages.All(s => s.MinChapter <= chapter && s.MaxChapter >= chapter
+            && (s.Chapters.Length == 0 || s.Chapters.Contains(chapter))), "Wrong chapter in allocation trace " + name);
+        int limit = allocation.GetProperty("limits").GetProperty(chapter.ToString()).GetInt32();
+        string ledger = allocation.GetProperty("ledger_row").GetString()!;
+        bool failure = pages.Length > limit;
+        check(failure == expectedFailure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        if (eng7L08ReportedHistories.Add(character + "/" + chapter + "/" + name))
+            Console.WriteLine("eng7-l08 allocation " + JsonSerializer.Serialize(new {
+                name, character, chapter, deliveries = ids, count = pages.Length, limit, ledger_row = ledger,
+                failure, evidence = "native_fixture_and_executed_choices" }));
+    }
+    // end eng7-l08
+
     // NM1 (storylines/nm1_fold.py): the per-letter view of a story whose later rest deliveries were folded into earlier ones.
     // Each folded host loses its copied guest nodes (`<key>.arrives` and `<key>.*`) and its hooked terminal choices end
     // again, so a suite written per letter keeps judging each letter; the folded deliveries are judged by Nm1BudgetTests.
@@ -60,6 +90,7 @@ internal static class Program
         {
             Check(path.Add(id), "Cycle without a terminal answer: " + scene.Id + "/" + id);
             var node = scene.Nodes.Single(n => n.Id == id);
+            Rules.EnterNode(node, state); // eng7-l09: runtime OnShow precedes choice availability.
             visit?.Invoke(id, state);
             var choices = node.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).ToList();
             Check(choices.Count > 0, "Page has no selectable answers: " + scene.Id + "/" + id);
@@ -229,7 +260,57 @@ internal static class Program
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
+        // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
+        if (args.Contains("--eng7-l06"))
+        {
+            Rules.Validate(story);
+            PresenceBootstrapInventoryTests.Run(story, Check);
+            PresenceExceptionExportTests.Run(story, Check);
+            PresenceFailureReceiptTests.Run(story, Check);
+            Console.WriteLine("PASS: eng7-l06 (" + checks + " checks)");
+            return;
+        }
+        // eng7-l06 end
         Rules.Validate(story);
+        // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
+        NativeWorldReconciliationInventoryTests.Run(story, Check);
+        NativeGateContractParityTests.Run(story, Check);
+        // eng7-l03: focused inventory acceptance; the full gate calls the same suites below.
+        if (args.Contains("--eng7-l03-native"))
+        {
+            NativeContradictionInventoryTests.Run(story, Check);
+            NativeVariantCoverageInventoryTests.Run(story, Check);
+            TirabadeNativeSlideTests.Run(story, Check);
+            LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
+            Console.WriteLine($"PASS: {checks} eng7-l03 native inventory and selection assertions.");
+            return;
+        }
+        // eng7-l03 end
+        // eng7-l07: required on the full expansion run; keep special-mode output contracts intact.
+        if (args.Contains("--eng7-l07") || !args.Any(a => a.StartsWith("--", StringComparison.Ordinal)))
+        {
+            OwnLifeInventoryTests.Run(story, Check);
+            ReturnProvenanceInventoryTests.Run(story, Check);
+            CurrentActInventoryTests.Run(story, Check);
+            if (args.Contains("--eng7-l07"))
+            {
+                Console.WriteLine($"PASS: {checks} eng7-l07 assertions.");
+                return;
+            }
+        }
+        // eng7-l07 end
+        // eng7-l01: optional focused checks; the full runner below is still mandatory.
+        if (args.Contains("--inventory-mutations"))
+        {
+            InventoryFixtureMutationTests.RunMutationSentinels(Check);
+            return;
+        }
+        if (args.Contains("--inventory-fixtures"))
+        {
+            InventoryFixtureMutationTests.Run(story, Check);
+            return;
+        }
+        // eng7-l01 end
         if (args.Contains("--wenduag-echo"))
         {
             WenduagTricksterTests.Run(story, Check);
@@ -310,6 +391,34 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
+        // eng7-l05: focused acceptance remains runnable independently of unrelated inventory gates.
+        if (args.Contains("--presence-transition-inventory"))
+        {
+            PresenceTransitionInventoryTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} presence transition inventory assertions.");
+            return;
+        }
+        if (args.Contains("--participant-inventory"))
+        {
+            ParticipantInventoryTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} participant inventory assertions.");
+            return;
+        }
+        // eng7-l10: required inventory regressions, including retirement and mutation controls.
+        if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("nenio"))
+            NenioBodyCustodyTests.Run(story, Check);
+        if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("wenduag"))
+        {
+            WenduagNativeMomentInventoryTests.Run(story, Check);
+            PresencePlacementManifestTests.Run(story, Check);
+        }
+        if (args.Contains("--eng7-l10"))
+        {
+            WenduagEchoRulesTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} eng7-l10 assertions.");
+            return;
+        }
+        // end eng7-l10
         FairRestTests.Run(Check);
         PostBagTests.Run(Check);
         MailbagTests.Run(Check);
@@ -359,6 +468,9 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+        // eng7-l06: saved placement receipts are runtime-produced conditions.
+        known.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
+        // eng7-l06 end
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
@@ -441,8 +553,17 @@ internal static class Program
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
         ContactDisambiguationTests.Run(Check);
+        // eng7-l05
+        ParticipantInventoryTests.Run(story, Check);
+        PresenceTransitionInventoryTests.Run(story, Check); // eng7-l05
         if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
         TricksterOnlyNativeTests.Run(story, Check);
+        // eng7-l03: mapped native inventory and historical selection acceptance.
+        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
+            NativeContradictionInventoryTests.Run(story, Check);
+        if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
+            NativeVariantCoverageInventoryTests.Run(story, Check);
+        // eng7-l03 end
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
         SpeakerTests.Run(Check);
         ContinueBeforeTests.Run(Check);
@@ -450,6 +571,10 @@ internal static class Program
         SceneAnchorTests.Run(Check);
         PresenceAnchorTests.Run(Check);
         PresenceHubTests.Run(Check);
+        // eng7-l11
+        PresenceReactionHubInventoryTests.Run(story, Check);
+        ContactInventoryOracleTests.Run(story, Check);
+        // end eng7-l11
         // __E14_RULES__
         StartedDialogTests.Run(Check);
         ContactContinuationTests.Run(Check);
@@ -514,8 +639,14 @@ internal static class Program
             ArsinoeCampaignTests.Run(story, Check);
             ArsinoeAssembledTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
+            // eng7-l09
+            TransactionExitInventoryTests.Run(story, Check);
+            // end eng7-l09
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
+            // eng7-l08: required producer-history timing acceptance.
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.fetched_gate")) TimelineInventoryTests.Run(story, Check);
+            // end eng7-l08
             if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) TirabadeNativeSlideTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) JerribethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) KonomiTricksterTests.Run(story, Check);
@@ -577,6 +708,10 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) MelazmeraTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) WenduagTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) WenduagEchoRulesTests.Run(story, Check);
+            // eng7-l10: E-Q7-30 retirement is tested negatively above; these saved pages
+            // must not enter the generic fixture that expects every page to open.
+            playedContinuations.UnionWith(new[] { "wenduag.trickster.abyss.fall", "wenduag.trickster.street.fall" });
+            // end eng7-l10
             if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
@@ -638,6 +773,16 @@ internal static class Program
         {
             if (playedContinuations.Contains(scene.Id)) continue;
             var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
+            // eng7-l07: these are declared prerequisite fixtures, not provenance proof.
+            // The ordered inventory suite separately plays and verifies the coffin producer.
+            if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
+                state.Flags.Add("camellia.trickster.cost.knows_you_tried");
+            if (scene.Relationship == "camellia" || scene.Id == "minagho_chivarro.trickster.reunion.wardrobe")
+            {
+                if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+                Rules.Complete(story, state);
+            }
+            // eng7-l07 end
             if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
                 state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
@@ -743,7 +888,16 @@ internal static class Program
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
         EarnedPresenceTests.Run(story, Check);
+        // eng7-l12: staging, native finale facts and paragraph survival.
+        LocationInventoryTests.Run(story, Check);
+        WorldFactInventoryTests.Run(story, Check);
+        CommanderParagraphInventoryTests.Run(story, Check);
         EngineQ5Tests.Run(story, Check);
+        // eng7-l06
+        PresenceBootstrapInventoryTests.Run(story, Check);
+        PresenceExceptionExportTests.Run(story, Check);
+        PresenceFailureReceiptTests.Run(story, Check);
+        // eng7-l06 end
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
         CurrentPathTests.Run(Check);
         CurrentPathTests.RunStory(story, Check);
@@ -764,6 +918,10 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "jerribeth.invitation")) CheckJerribethCampaign();
         if (story.Scenes.Any(s => s.Id == "kiana.invitation")) CheckKianaCampaign();
         if (story.Scenes.Any(s => s.Id == "ember.drawing")) CheckEmberOpening();
+        // eng7-l01: mandatory delivery acceptance in the standard integrated runner.
+        if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.unprimed"))
+            InventoryFixtureMutationTests.Run(story, Check);
+        // eng7-l01 end
         Console.WriteLine($"PASS: {checks} assertions covering the original campaign, independent-relationship rules, authored expansion campaign scenarios and {story.Scenes.Count(s => s.Relationship != "tirabade")} draft expansion scenes. Unity execution and real save persistence are not covered.");
     }
 

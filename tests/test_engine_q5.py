@@ -105,7 +105,7 @@ class PhysicalPresenceTests(unittest.TestCase):
                     s["DerivedOpenRoutes"][key] = ["someone_else"]
                 else:
                     s["Derived"][key] = [["her.returned"]]
-                self.assertTrue(any(x.startswith("P1 her.presence:") for x in lint.producer_presence_errors(s)))
+                self.assertTrue(any(x.startswith("P1") and "her.presence" in x for x in lint.producer_presence_errors(s)))
 
     def test_departures_need_registration_or_reason(self):
         s = fixture()
@@ -166,21 +166,22 @@ class ReturnInProgressTests(unittest.TestCase):
                 self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(s)))
 
     def test_exception_needs_reason_registered_loss_and_live_producer(self):
-        from unittest.mock import patch
+        # eng7-l06: mutate the serialized contract; module globals cannot influence standalone readers.
         s = self.story()
         for mutation in ("no_reason", "blank_reason", "unregistered_loss", "non_trickster_flag"):
-            progress = copy.deepcopy(ep.PRESENCE_RETURN_IN_PROGRESS)
-            entry = progress["aranka"]["aranka.ran_failure"]
+            bad = copy.deepcopy(s)
+            progress = bad["PresenceExceptions"]["aranka.presence"]["Overrides"]
+            entry = progress["aranka.ran_failure"]
             if mutation == "no_reason":
                 entry.pop("Reason")
             elif mutation == "blank_reason":
                 entry["Reason"] = " "
             elif mutation == "unregistered_loss":
-                progress["aranka"]["aranka.unregistered"] = progress["aranka"].pop("aranka.ran_failure")
+                progress["aranka.unregistered"] = progress.pop("aranka.ran_failure")
             else:
                 entry["Flag"] = "chapter_later"
-            with self.subTest(mutation=mutation), patch.dict(ep.PRESENCE_RETURN_IN_PROGRESS, progress, clear=True):
-                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(s)))
+            with self.subTest(mutation=mutation):
+                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(bad)))
         s["Scenes"][0]["Requires"] = ["trickster.ever"]
         self.assertTrue(any(x.startswith("T7") for x in lint.producer_presence_errors(s)))
 

@@ -617,3 +617,47 @@ def integrate(payload):
         payload["Derived"][key] = [list(g) for g in groups]
     from storylines import wenduag_echo
     wenduag_echo.integrate(payload)
+
+# eng7-l08: E-Q7-17 / wenduag:048,053. The cited visits use the
+# existing Wenduag actor and hub instead of consuming more rest pages.
+# Her copy stays at that same place for the post-commit visits, and is also
+# available in Chapter 3 for the already-earned cellar visit. No return,
+# payment, refusal, native-romance or commitment conditions change.
+_delivery_visits = {
+    W + "court." + name for name in
+    ("trial", "gate", "stinger", "cairn", "morning", "vellexia", "yaniel",
+     "neathers", "hunt", "gongs")
+}
+for _delivery_scene in SCENES:
+    if _delivery_scene["Id"] in _delivery_visits or _delivery_scene["Id"] == W + "killed.cellar":
+        _delivery_scene.pop("Remote", None)
+        _delivery_scene.pop("Kind", None)
+        _delivery_scene["ContactUnit"] = UNIT
+        _delivery_scene["InteractionHub"] = PRESENCE
+        _delivery_scene["AnswerLists"] = []
+        _delivery_scene["Entry"] = _delivery_scene["Title"]
+PRESENCES[PRESENCE]["MinChapter"] = 3
+PRESENCES[PRESENCE]["Forbids"] = [f for f in PRESENCES[PRESENCE]["Forbids"] if f != COMMITTED]
+# end eng7-l08
+
+# eng7-l08: the same visits on a recruited native Wenduag use her verified three native
+# hubs. Keep the presence and native-list contracts separate (Rules validates
+# them separately); both variants record the original completion ID.
+for _delivery_source in list(SCENES):
+    if _delivery_source["Id"] not in _delivery_visits:
+        continue
+    _native_visit = copy.deepcopy(_delivery_source)
+    _native_visit["Id"] = _delivery_source["Id"] + ".native_visit"
+    _native_visit.pop("ContactUnit", None)
+    _native_visit.pop("InteractionHub", None)
+    _native_visit["AnswerLists"] = list(HUB_LISTS)
+    _native_visit["Requires"].append(IN_PARTY)
+    if _delivery_source["Id"] not in _native_visit["Forbids"]:
+        _native_visit["Forbids"].append(_delivery_source["Id"])
+    for _delivery_node in _native_visit["Nodes"]:
+        for _delivery_answer in _delivery_node["Choices"]:
+            if not _delivery_answer.get("Next") and not _delivery_answer.get("Check") and not _delivery_answer.get("Abort"):
+                if _delivery_source["Id"] not in _delivery_answer.setdefault("Set", []):
+                    _delivery_answer["Set"].append(_delivery_source["Id"])
+    SCENES.append(_native_visit)
+# end eng7-l08

@@ -56,6 +56,10 @@ internal static class IrabethDepartureCampaignTests
                         "Postponed reply invents a decision.");
                     continue;
                 }
+                // eng7-l08: both evidence paths and both reply decisions retain the same tier-A overrun.
+                Program.Eng7L08Allocation(story, check, "departure/" + (answer.Has("irabeth.return_meeting_declined") ? "declined" : "accepted"),
+                    "Irabeth", 5, answer, new[] { request.Id, reply.Id }, true);
+                // end eng7-l08
                 if (answer.Has("irabeth.return_meeting_declined"))
                 {
                     answer.Hour += 1000;

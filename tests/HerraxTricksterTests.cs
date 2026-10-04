@@ -381,10 +381,10 @@ internal static class HerraxTricksterTests
         // Sol INT: Arueshalae recalls her sermon in the hall only if the Commander heard it.
         var heardMorning = S(P + "react.arueshalae_morning");
         var unheardMorning = S(P + "react.arueshalae_morning_unheard");
-        var morningWorld = World(story, 4, "trickster.ever", P + "morning_served");
+        var morningWorld = World(story, 4, "trickster.ever", "arueshalae.in_party", P + "morning_served"); // eng7-l05: current reactor recruitment.
         check(!Avail(heardMorning, morningWorld) && Avail(unheardMorning, morningWorld)
-              && Avail(heardMorning, World(story, 4, "trickster.ever", P + "morning_served", "herrax.sermon_heard"))
-              && !Avail(unheardMorning, World(story, 4, "trickster.ever", P + "morning_served", "herrax.sermon_heard")),
+              && Avail(heardMorning, World(story, 4, "trickster.ever", "arueshalae.in_party", P + "morning_served", "herrax.sermon_heard"))
+              && !Avail(unheardMorning, World(story, 4, "trickster.ever", "arueshalae.in_party", P + "morning_served", "herrax.sermon_heard")),
             "Trk_Herrax_Sermon: Arueshalae recalls a warning the Commander never heard.");
 
         // Sol INT: telling Herrax about Rokhorn's offer has her answer in the packet.

@@ -70,7 +70,7 @@ PRESENCES = {
     # smith, whose yard she borrows. The copy has no dialog component; Dialog "hub" makes it talkable. If the smith is
     # absent the anchor fails, gesmerha.presence.failed is raised and the epilogue page carries the commit (no letter twin:
     # the Chapter 5 letter cap).
-    "gesmerha.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=SMITH, Side="left", Distance=2.5),
+    "gesmerha.presence": dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=SMITH, Side="left", Distance=2.5),
                               Requires=["trickster.ever", RETURNED], Forbids=[CLOSED],
                               MinChapter=3, MaxChapter=5, AnswerLists=[], Dialog="hub",
                               Greeting="{n}Gesmerha has taken the corner of the smith's yard farthest from the forge. "

@@ -86,11 +86,14 @@ internal static class HouseholdEngineTests
         check(!Rules.Available(story, noEligibility, State()), "A1: a route without harem eligibility was staged.");
         var realSolo = Entry("test.minagho", null); realSolo.Pair = Array.Empty<string>();
         realSolo.Participants = new[] { "minagho_chivarro" }; realSolo.ParticipantWomen = new[] { "minagho" };
-        var separated = State(); separated.Flags.UnionWith(new[] { "minachiv.complete", "chivarro.dead" }); Rules.Complete(story, separated);
+        var separated = State(); separated.Flags.UnionWith(new[] { "minachiv.complete", "minagho_chivarro.trickster.minagho_in",
+            "minagho_chivarro.trickster.chivarro_in", "chivarro.dead" }); Rules.Complete(story, separated);
         check(Rules.Available(story, realSolo, separated), "A4: native Chivarro death withdrew a Minagho-only scene.");
         realSolo.ParticipantWomen = new[] { "chivarro" };
         check(!Rules.Available(story, realSolo, separated), "A4: native-dead Chivarro appeared without a return.");
         separated.Flags.Add("minagho_chivarro.trickster.returned_chivarro");
+        // eng7-l05: current readers are recomputed in a fresh runtime observation after an earned return.
+        separated.Flags.ExceptWith(story.Derived.Keys); Rules.Complete(story, separated);
         check(Rules.Available(story, realSolo, separated), "A4: Chivarro's native-death return did not restore her visit.");
         story.SeatWomen["minagho"] = new SeatWoman { Relationship = "minagho_chivarro", UnavailableFlags = new[] { "minagho.absent" } };
         story.SeatWomen["chivarro"] = new SeatWoman { Relationship = "minagho_chivarro", UnavailableFlags = new[] { "chivarro.absent" },

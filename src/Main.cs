@@ -120,6 +120,8 @@ namespace Tirabade
         private static NurahInteraction? nurahInteraction;
         private static BlueprintDialog? nurahHub;
         private static ParentEndingIntegration? parentEndings;
+        // eng7-l04: read-only earned-state selection, including area reload visibility.
+        private static NativeWorldReconciliation? nativeWorld;
         // Relationships whose native dependencies failed to resolve. Their blueprints stay registered for save safety,
         // but they offer no entries, letters or endings until the dependency is available again.
         private static readonly HashSet<string> degraded = new HashSet<string>(StringComparer.Ordinal);
@@ -145,6 +147,8 @@ namespace Tirabade
                     }
                     enabled = value;
                     if (!value) CancelPending();
+                    // eng7-l04: release only visibility owned by the reconciliation adapter.
+                    nativeWorld?.Tick();
                     konomiMeeting?.Tick();
                     irabethMeeting?.Tick();
                     nurahMeeting?.Tick();
@@ -426,7 +430,8 @@ namespace Tirabade
                 }
 
                 // ---------- Phase 2: register every save-referenced blueprint, unconditionally ----------
-                var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct().ToArray();
+                var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set)
+                    .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet)).Distinct().ToArray(); // eng7-l09
                 var keys = story.Scenes.Select(s => s.Id).Concat(story.Scenes.Select(s => "hour." + s.Id))
                     .Concat(effects).Concat(effects.Select(key => "hour." + key))
                     .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag })).Distinct();
@@ -665,11 +670,17 @@ namespace Tirabade
                     Optional<object>("Native gate " + id, () =>
                     {
                         bool Holds() => enabled && initialized && Game.Instance?.Player != null && Rules.NativeGateHolds(story, id, State());
-                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, Holds);
+                        // eng7-l04: a partial recovery leaves the other patients' native actions intact.
+                        if (id == NativeQ3Recovery.Gate) NativeQ3Recovery.Attach(gate.Owner, () => Holds()
+                            ? Rules.Q3RecoverySelection(story, State()) : Q3RecoveryOutcome.Native);
                         else foreach (var checker in gate.Checkers) NativeGate.Attach(gate.Owner, checker, Holds);
                         return new object();
                     });
                 }
+                // eng7-l04: registry targets validate independently and refuse to canon on evidence drift.
+                nativeWorld = new NativeWorldReconciliation(story,
+                    () => enabled && initialized && Game.Instance?.Player != null ? State() : null,
+                    id => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(id)), message => entry.Logger.Log(message));
                 if (epilogue == null) warnings.Add("Epilogue pages are not shown: the RanRomance parent epilogue is missing.");
                 initialized = true;
                 entry.Logger.Log("Registered " + story.Scenes.Count + " scenes. Existing dialogue answers and finish actions preserved."
@@ -718,7 +729,7 @@ namespace Tirabade
                 string id = scene.Id + "." + node.Id;
                 var cue = New<BlueprintCue>("cue." + id);
                 cue.Conditions = Conditions();
-                cue.OnShow = Actions();
+                cue.OnShow = inline && node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 cue.OnStop = Actions();
                 cue.Speaker = inline ? InlineSpeaker(node, nativeReturn != null && node.Speaker == scene.Owner ? nativeReturn.Speaker : null)
                     : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
@@ -734,7 +745,7 @@ namespace Tirabade
                 var page = New<BlueprintBookPage>("page." + id);
                 page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
-                page.OnShow = Actions();
+                page.OnShow = node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 page.Title = Text("title." + id, BookPolish.PageTitle(scene));
                 // E15c: the scene's first page says what it is ("Letter from Seelah", "A sending from Jerribeth", "A memory").
                 if (ReferenceEquals(node, scene.Nodes[0]) && BookPolish.KindLine(scene) is string kindLine)
@@ -848,6 +859,7 @@ namespace Tirabade
         // A funds-dependent page keeps an exit even if its only purchase is unavailable.
         private static void AddPaymentExit(Scene scene, Node node, List<BlueprintAnswerBaseReference> answers, BlueprintCue? nativeReturn, string? prefix = null)
         {
+            // eng7-l09: this abort has no completion or flag-clearing action; incurred EnterSet survives it.
             if (!node.Choices.Any(choice => choice.Crusade?.Amount < 0)) return;
             var leave = New<BlueprintAnswer>("answer." + (prefix ?? scene.Id) + "." + node.Id + ".payment_unavailable");
             InitializeAnswer(leave);
@@ -962,6 +974,7 @@ namespace Tirabade
                 {
                     CueSetup(out var cue, "cue." + prefix + "." + node.Id, node.Text);
                     cue.Speaker = InlineSpeaker(node, null);
+                    if (node.EnterSet.Length > 0) cue.OnShow = Actions(new RouteAction { EntryNode = node }); // eng7-l09
                     local.Add(node.Id, cue);
                 }
                 foreach (var node in scene.Nodes)
@@ -1078,7 +1091,9 @@ namespace Tirabade
         // through RouteAction, exactly as a native-list entry does) and a leave answer.
         private static BlueprintDialog BuildPresenceHub(string key, Presence presence)
         {
-            var scenes = story.Scenes.Where(scene => scene.InteractionHub == key).ToArray();
+            // eng7-l11: include reviewed reactions from the native speaker list.
+            var scenes = Rules.PresenceHubScenes(story, key);
+            // end eng7-l11
             var page = New<BlueprintBookPage>("page." + key + ".hub");
             page.ShowOnce = false;
             page.Conditions = Conditions();
@@ -1093,9 +1108,9 @@ namespace Tirabade
                 var answer = New<BlueprintAnswer>("answer." + key + ".hub." + scene.Id);
                 InitializeAnswer(answer);
                 answer.Text = Text(answer.name, scene.Entry.Length > 0 ? scene.Entry : scene.Title);
-                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
-                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
-                answer.OnSelect = Actions(new RouteAction { Start = scene });
+                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene, PresenceHub = key } /* eng7-l11 */);
+                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene, PresenceHub = key } /* eng7-l11 */);
+                answer.OnSelect = Actions(new RouteAction { Start = scene, PresenceHub = key } /* eng7-l11 */);
                 if (scene.EntryMythic != null || scene.EntryAlignment != null)
                     ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
                 page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
@@ -1183,7 +1198,9 @@ namespace Tirabade
             if (degraded.Contains(relationship)) return false;
             var state = State();
             return Rules.PresenceWanted(presence.Spec, state)
-                && story.Scenes.Any(scene => scene.InteractionHub == presence.Key && Rules.Available(story, scene, state));
+                // eng7-l11
+                && Rules.PresenceHubScenes(story, presence.Key).Any(scene => Rules.PresenceHubAvailable(story, presence.Key, scene, state));
+                // end eng7-l11
         }
 
         // Harness hook (E12c): click a presence the way the player would; true when its hub dialog started.
@@ -1371,6 +1388,11 @@ namespace Tirabade
             if (IrabethCorrespondenceAvailable()) state.Flags.Add("irabeth.return_correspondence_available");
             foreach (var presence in presences)
                 if (presence.AnchorFailed) state.Flags.Add(Rules.PresenceFailedFlag(presence.Key));
+            // eng7-l06: restore observed failure history independently of the currently loaded area.
+            foreach (var presence in presences)
+                if (presence.FailureObserved && story.PresenceFailureReceipts.TryGetValue(presence.Key, out var receipt))
+                    state.Flags.Add(receipt.Flag);
+            // eng7-l06 end
             if (irabethMeeting?.Arrived() == true) state.Flags.Add("irabeth.return_meeting_arrived");
             if (nurahMeeting?.CorrespondenceAvailable() == true) state.Flags.Add("nurah.correspondence_available");
             if (nurahMeeting?.ArrivedActor() != null)
@@ -1393,6 +1415,9 @@ namespace Tirabade
             if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             KonomiRecovery.ReadLifecycle(state);
             wenduagEcho?.Observe(state);
+            if (state.Has("wenduag.trickster.returned")
+                && presences.Any(p => Rules.PresenceRelationship(p.Key) == "wenduag" && p.ReturnedActorLost))
+                state.Flags.Add(WenduagEcho.E + "unavailable");
             if (wenduagEcho == null && (state.Has(WenduagEcho.E + "rescued") || state.Has(WenduagEcho.E + "returned")))
                 state.Flags.Add(WenduagEcho.E + "unavailable");
             // Latches and data-driven composites read the completed native picture.
@@ -1758,6 +1783,9 @@ namespace Tirabade
             wenduagEcho?.Tick();
             foreach (var click in wenduagEchoClicks) click.Tick();
             foreach (var click in presenceClicks.Values) click.Tick();
+            // eng7-l04: refresh earned object visibility after reload and release it when disabled.
+            if (Game.Instance?.Player != null && !Game.Instance.IsLoadingSave && !Game.Instance.IsUnloading
+                && !LoadingProcess.Instance.IsLoadingInProcess) nativeWorld?.Tick();
             if (!enabled) return;
             if (narrationPlayer != null && !ReferenceEquals(narrationPlayer, Game.Instance?.Player)) StopNarration();
             if (pendingPlayer != null && !ReferenceEquals(pendingPlayer, Game.Instance?.Player)) CancelPending();
@@ -1886,12 +1914,15 @@ namespace Tirabade
         private static void TickPresences(Snapshot state)
         {
             if (presences.Count == 0) return;
-            foreach (var presence in presences)
+            // Restore retired phases before adopting the same native actor for the next phase.
+            foreach (var presence in presences.OrderBy(p => Rules.PresenceWanted(p.Spec, state)))
             {
                 bool wanted = !degraded.Contains(Rules.PresenceRelationship(presence.Key)!)
                     && !(Rules.PresenceRelationship(presence.Key) == "wenduag" && wenduagEcho?.OwnsOriginal == true)
                     && Rules.PresenceWanted(presence.Spec, state);
-                presence.Tick(wanted);
+                // eng7-l06: eligibility comes from computed earned state; Tick alone witnesses loaded-area failure.
+                presence.Tick(wanted, story, state);
+                // eng7-l06 end
                 string line = presence.Report(wanted);
                 if (!presenceStatus.TryGetValue(presence.Key, out var last) || last != line)
                 {
@@ -2084,14 +2115,19 @@ namespace Tirabade
         public sealed class RouteCondition : Condition
         {
             public Scene? Scene;
+            // eng7-l11
+            public string? PresenceHub;
+            // end eng7-l11
             public Choice? Choice;
             public Scene? Continuation;
             public bool ContactLost;
             public Node? PaymentNode;
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
-                && (PaymentNode != null ? !PaymentNode.Choices.Any(choice => Rules.ChoiceAvailable(choice, State()))
-                    : Scene != null ? Rules.Available(story, Scene, State())
+                && (PaymentNode != null ? Rules.PaymentExitAvailable(PaymentNode, State()) /* eng7-l09 */
+                    // eng7-l11
+                    : Scene != null ? PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Scene, State()) : Rules.Available(story, Scene, State())
+                    // end eng7-l11
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
@@ -2192,19 +2228,32 @@ namespace Tirabade
         public sealed class RouteAction : GameAction
         {
             public Scene? Start;
+            // eng7-l11
+            public string? PresenceHub;
+            // end eng7-l11
             public Scene? Complete;
             public Scene? Continuation;
             public Choice? Choice;
             public bool StopSpeech;
             public CrusadePayment? Payment;
+            public Node? EntryNode; // eng7-l09
             public override string GetCaption() => "Three at the Table story action";
             public override void RunAction()
             {
                 if (StopSpeech) { StopNarration(); return; }
                 if (!enabled || !initialized) return;
+                // eng7-l09: record failure before any generated insufficient-funds exit.
+                if (EntryNode != null)
+                {
+                    RecordProgress(new Choice { Set = EntryNode.EnterSet }, null);
+                    return;
+                }
+                // end eng7-l09
                 if (Start != null)
                 {
-                    if (Rules.Available(story, Start, State())) Queue(Start);
+                    // eng7-l11
+                    if (PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Start, State()) : Rules.Available(story, Start, State())) Queue(Start);
+                    // end eng7-l11
                     return;
                 }
                 if (Choice != null)

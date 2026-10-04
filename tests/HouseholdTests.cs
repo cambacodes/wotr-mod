@@ -98,7 +98,8 @@ internal static class HouseholdTests
         bool Guest(string rel, params string[] flags) =>
             Rules.BookVisible(story.Books["trickster.ledger"], State(story, 3, new[] { "trickster", "trickster.ever" }.Concat(flags).ToArray())).Any(e => e.Id == "guest." + rel);
         // Every guest entry reads the guarded key, so the open-route guard reaches the Guest List for every partner.
-        check(story.Books["trickster.ledger"].Entries.Where(e => e.Section == "Guest List").All(e => e.Requires.SequenceEqual(new[] { e.Id.Substring(6) + ".harem.eligible" })),
+        check(story.Books["trickster.ledger"].Entries.Where(e => e.Section == "Guest List").All(e => e.Requires.Contains((e.Id.StartsWith("guest.minagho_chivarro", StringComparison.Ordinal)
+                ? "minagho_chivarro" : e.Id.Substring(6)) + ".harem.eligible")),
             "A Guest List entry is not gated by its partner's guarded eligibility.");
         // Shamira (COX audit): closed hides, killed hides, her earned return shows her again.
         check(Guest("shamira", "shamira.committed") && !Guest("shamira", "shamira.committed", "shamira.closed")
@@ -196,7 +197,7 @@ internal static class HouseholdTests
         List<string> Lines(string id, Snapshot state) =>
             ledger.Entries.Single(e => e.Id == id).Lines.Where(p => Rules.ParagraphVisible(p, state)).Select(p => p.Text).ToList();
         bool Visible(string id, Snapshot state) => Rules.BookVisible(ledger, state).Any(e => e.Id == id);
-        check(ledger.Entries.Count(e => e.Section == "Guest List") == 41, "The Guest List does not have one entry per partner.");
+        check(ledger.Entries.Count(e => e.Section == "Guest List") == 43, "The Guest List does not retain every partner and the two solo pair variants.");
         check(!Visible("guest.seelah", none) && Visible("guest.seelah", seelah), "A Guest List entry does not follow eligibility.");
         check(Lines("guest.seelah", seelah).SequenceEqual(new[] { "{n}Not yet at the table.{/n}" }), "An unstanced guest is not 'not yet at the table'.");
         check(Lines("guest.seelah", State(story, 3, Committed("seelah"), "seelah.harem.stance.joined")).SequenceEqual(new[] { "{n}At the table.{/n}" }),
@@ -208,7 +209,7 @@ internal static class HouseholdTests
             "A tolerated guest is not 'at the table, apart' from the one woman she will not speak to.");
         var both = State(story, 3, "committed", Committed("anevia"));
         check(Visible("guest.tirabade", both) && !Visible("guest.anevia", both), "Anevia is listed apart from Anevia and Irabeth together.");
-        var pair = Lines("guest.minagho_chivarro", State(story, 3, "minachiv.complete", "minagho_chivarro.harem.stance.minagho.joined"));
+        var pair = Lines("guest.minagho_chivarro", State(story, 3, "minachiv.complete", "minachiv.future_two", "minagho_chivarro.harem.stance.minagho.joined"));
         check(pair.Contains("{n}Minagho: at the table.{/n}") && pair.Contains("{n}Chivarro: not yet at the table.{/n}"), "The canon pair does not have a seat each.");
         var seating = ledger.Entries.Where(e => e.Section == "Seating Notes" && e.Id != "seating.word_made_true").ToList();
         check(seating.Count == 5 && seating.All(e => e.Requires.Length == 2 && e.Requires.All(r => r.EndsWith(".harem.eligible", StringComparison.Ordinal))),

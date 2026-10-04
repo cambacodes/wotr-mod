@@ -85,7 +85,7 @@ internal static class CamelliaTricksterTests
         // --- Shape: the relationship, the revival, the presence. ------------------------------------------------------
         check(rel.StartedFlag == "camellia.started" && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
               && rel.UnavailableFlags.SequenceEqual(new[] { Killed, Dead, "camellia.kicked_out" })
-              && rel.UnavailableOverrides.Count == 3 && rel.UnavailableOverrides[Killed] == Returned && rel.UnavailableOverrides[Dead] == Returned
+              && rel.UnavailableOverrides.Count == 3 && rel.UnavailableOverrides[Killed] == P + "cost.knows_you_tried" && rel.UnavailableOverrides[Dead] == P + "coffin_life"
               // Q8 (Sol INT): the native Q3 kill co-holds kicked_out; only a kick-out WITHOUT the kill stays closure.
               && rel.UnavailableOverrides["camellia.kicked_out"] == P + "killed_held"
               && story.Derived[P + "killed_held"].Single().SequenceEqual(new[] { Killed })
@@ -199,10 +199,12 @@ internal static class CamelliaTricksterTests
         check(Avail(overacting, body_) && !Avail(performance, body_), "Trk_Camellia_DeadOtherwise: the body should hear it's overacting.");
         check(overacting.Recovery == "camellia" && Ch(overacting, "waking", 0).Revive == "camellia", "Her price does not raise her.");
         var raised = Take(overacting, body_, "waking", 0, Returned, P + "cost.spirits_owed", "camellia.started");
+        // eng7-l07: the selected native resurrection clears the live companion death observation.
+        raised.Flags.Remove(Dead);
         Take(overacting, body_, "refused", 0, P + "declined", Closed);
 
         // Trk_Camellia_Terms (killed branch; the lesson is its prerequisite)
-        var termsWorld = World(story, 3, "trickster", "trickster.ever", Killed, Returned, P + "beat.lesson");
+        var termsWorld = World(story, 3, "trickster", "trickster.ever", Killed, Returned, P + "cost.knows_you_tried", P + "beat.lesson");
         check(Avail(terms, termsWorld) && !Avail(test, termsWorld), "Trk_Camellia_Terms: her price should come before her test.");
         var named = Take(terms, termsWorld, "price", 1, P + "cost.marked", P + "terms_named");
         check(Avail(test, Later(story, named, 100)), "Trk_Camellia_Terms: the test does not open after her price.");
@@ -212,7 +214,7 @@ internal static class CamelliaTricksterTests
             "Her price is not the Commander's blood or the Commander's name.");
 
         // Trk_Camellia_Commit / Trk_Camellia_CommitRefused
-        var commitWorld = World(story, 5, "trickster", "trickster.ever", Killed, Returned, P + "cost.marked", P + "terms_named");
+        var commitWorld = World(story, 5, "trickster", "trickster.ever", Killed, Returned, P + "cost.knows_you_tried", P + "cost.marked", P + "terms_named");
         check(Avail(test, commitWorld), "Trk_Camellia_Commit: the test is not available.");
         var yes = Ch(test, "yes", 0);
         check(yes.Set.SequenceEqual(new[] { Committed }) && yes.Next == "threshold", "The named commit producer is not test/yes[0].");
@@ -266,9 +268,9 @@ internal static class CamelliaTricksterTests
 
         // Trk_Camellia_AneviaBody: the spirits' due arrives as Anevia's report.
         // Her killing is her nature after her return, not a price anyone paid: Anevia reports it once the lesson is taught.
-        var owed = World(story, 3, "trickster", "trickster.ever", Dead, Returned, P + "beat.lesson");
+        var owed = World(story, 3, "trickster", "trickster.ever", Returned, P + "beat.lesson");
         check(Avail(body, owed), "Trk_Camellia_AneviaBody: Anevia should report the body.");
-        check(!Avail(body, World(story, 3, "trickster", "trickster.ever", Dead, Returned)), "The body turns up before her return has settled.");
+        check(!Avail(body, World(story, 3, "trickster", "trickster.ever", Returned)), "The body turns up before her return has settled.");
         Take(body, owed, "start", 1, P + "cost.covered_murder");
         check(body.AnswerLists.SequenceEqual(new[] { "33960c7f7af40cd43b7f801a76c87a0b" }) && body.Reaction
               && body.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned", "Anevia's report is not on her own hub, lifted by her return.");
@@ -355,7 +357,7 @@ internal static class CamelliaTricksterTests
             "Nobody in the party notices the commit (Directive 12: a companion reaction to the intimacy).");
         check(test.Nodes.Any(n => n.Id == "threshold") && Ch(test, "threshold", 0).Next == "morning",
             "The night after her answer does not cut at the start of the act and wake to the morning.");
-        var together = World(story, 5, "trickster", "trickster.ever", Killed, Returned, Committed);
+        var together = World(story, 5, "trickster", "trickster.ever", Killed, Returned, P + "cost.knows_you_tried", Committed);
         check(Avail(S(P + "bond.shelf"), together), "The shelf does not follow the commit.");
         var shelved = Take(S(P + "bond.shelf"), together, "kept", 0, P + "bond.shelf", P + "bond.list_kept");
         var witnessed = Take(S(P + "bond.witness"), Later(story, shelved, 100), "lied_after", 0, P + "bond.witness_lied");
@@ -417,8 +419,8 @@ internal static class CamelliaTricksterTests
         // Q8 (Sol INT): a commitment followed by her native death or dismissal, with no return, has no kept page.
         check(!Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed))
               && !Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, "camellia.kicked_out"))
-              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned))
-              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, P + "cost.knows_you_tried"))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, P + "cost.knows_you_tried", "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
         // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
         check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
@@ -428,7 +430,7 @@ internal static class CamelliaTricksterTests
         var lc = new[] { "trickster.ever", "lastcall.active", Committed };
         check(Avail(coda!, World(story, 6, lc)) && !Avail(coda!, World(story, 6, lc.Append(Killed).ToArray()))
               && !Avail(coda!, World(story, 6, lc.Append(Dead).ToArray())) && !Avail(coda!, World(story, 6, lc.Append("camellia.kicked_out").ToArray()))
-              && Avail(coda!, World(story, 6, lc.Concat(new[] { Killed, Returned, "camellia.kicked_out" }).ToArray()))
+              && Avail(coda!, World(story, 6, lc.Concat(new[] { Killed, Returned, P + "cost.knows_you_tried", "camellia.kicked_out" }).ToArray()))
               && !Avail(coda!, World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "terms_named")),
             "The Last Call coda plays for a Camellia killed or dismissed after committing, or without her commitment.");
         // Q8 (Sol INT): the veiled widow sits at Fye's bar only once the third night has given her back.

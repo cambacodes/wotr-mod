@@ -405,7 +405,7 @@ internal static class MielarahTricksterTests
             "Her Last Call coda does not need her commitment, or does not answer the herald's debt apart from his notice.");
         // INT: Lann's line is recalled only after the Bad Luck exchange (Cue_0079); otherwise he asks it on her deck.
         var bestJob = S(D + "best_job");
-        var flyReady = World(story, 5, "trickster", "trickster.ever", P + "landfall", "mielarah.started", P + "contact", D + "docked", D + "reckoned");
+        var flyReady = World(story, 5, "trickster", "trickster.ever", P + "landfall", "mielarah.started", P + "contact", D + "docked", D + "reckoned", "lann.in_party"); // eng7-l05: the two positive variants require current Lann recruitment.
         var lannNodes = new HashSet<string>();
         Program.Walk(bestJob, flyReady, (node, _) => lannNodes.Add(node));
         var heardNodes = new HashSet<string>();

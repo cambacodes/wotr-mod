@@ -660,7 +660,7 @@ watch(P + "watch.war_table", "The Wound's weather", '"You wanted to see the war 
        c("Continue", "blood")),
     te("quiet", '''{n}She looks up at you sharply, and then, slowly, begins to laugh.{/n} "Not where it is loud. Where it is holding its breath, because that is where the knife is." {n}She shakes her head.{/n} "Three centuries I stood between Kenabres and the Wound and never once thought to ask where the Wound was hiding. I only ever asked where it was coming from." {n}She puts her hand back on the map.{/n} "Very well. Every night, at the second bell. It will hurt. I do not mind, if it is used cleverly."''',
        c("Continue", "blood")),
-    nar("blood", '''{n}When she takes her hand off the map there is a single drop of blood on the parchment beside the ford, from her nose. She wipes her lip with the back of her wrist and looks at the drop with a kind of detached interest.{/n} "Your colour," she says. "I keep forgetting it is not mine."{/n}''',
+    nar("blood", '''{n}When she takes her hand off the map there is a single drop of blood on the parchment beside the ford, from her nose. She wipes her lip with the back of her wrist and looks at the drop with a kind of detached interest.{/n} "Your colour," she says. "I keep forgetting it is not mine."''',
         c("[Give her your handkerchief.]")),
     te("no", '''{n}She looks at you across the map for the space of a breath, and something in her face you cannot read.{/n} "No. Not a map." {n}She takes her hand back.{/n} "Kenabres used me for one, you know. Every night for a hundred years: where are the demons, Terendelev, how many, how soon. I never minded. I was their dragon." {n}A pause.{/n} "It is a strange thing, to be told I am not something. I think I like it. I will tell the scouts what I felt tonight, all the same. Once. As a gift, not a duty."''',
        c("[Walk her out of the war room.]")),
@@ -923,3 +923,13 @@ def integrate(payload):
         if have is not None and have != value:
             raise ValueError("Conflicting presence: " + key)
         payload["Presences"][key] = dict(value)
+
+
+# eng7-l09 / E-Q7-26: her memory remains hers; the Commander supplies no sold senses.
+for _suffix in ("", "_awning"):
+    if not any(s["Id"] == P + "watch.third_bell" + _suffix for s in SCENES):
+        continue  # The remote third-bell host currently has no awning twin.
+    foresight.gap(REL, P + "watch.third_bell" + _suffix, (("talk", 1),), "gate",
+        '{n}You tell her what the survivors say of the festival preparations. The morning itself is gone; their accounts cannot give it back.{/n} "The bunting," {n}she murmurs.{/n} "I helped put it up. They could never reach the top of the gate."',
+        foresight.GONE_SQUARE)
+# end eng7-l09
