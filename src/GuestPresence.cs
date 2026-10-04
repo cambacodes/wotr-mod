@@ -45,6 +45,11 @@ namespace Tirabade
         }
 
         internal string SaveKey => SavePrefix + Key;
+        // eng7-l06: separate from actor records, which are discarded when placement stops being wanted.
+        internal string FailureSaveKey => Rules.PresenceFailureSaveKey(Key);
+        internal bool FailureObserved => Game.Instance.Player.SettingsList.TryGetValue(FailureSaveKey, out var value)
+            && value is string text && text == "1";
+        // eng7-l06 end
 
         internal PresenceRecord? Read()
         {
@@ -191,7 +196,7 @@ namespace Tirabade
         }
 
         // Main thread, idle only. Never throws.
-        internal void Tick(bool wanted)
+        internal void Tick(bool wanted, Story? receiptStory = null, Snapshot? receiptState = null)  // eng7-l06
         {
             try
             {
@@ -201,6 +206,11 @@ namespace Tirabade
                 // E12b: a wanted presence that cannot be placed (an anchored copy without its anchor, or a reuse-native
                 // presence without a usable native actor) is reported, and exposed as <key>.failed for the letter twin.
                 AnchorFailed = Rules.PresenceFailed(Spec, wanted, seen);
+                // eng7-l06: the completed snapshot supplies earned prerequisites; this tick supplies real observation.
+                if (wanted && receiptStory != null && receiptState != null
+                    && Rules.RecordPresenceFailure(receiptStory, Key, receiptState, seen))
+                    Game.Instance.Player.SettingsList[FailureSaveKey] = "1";
+                // eng7-l06 end
                 LastQuiet = CopyQuiet.None;
                 foreach (var step in steps) Execute(step, native, copy, record);
                 // E12d: every live copy (fresh, or spawned by an earlier build) is kept inert; never a native unit.

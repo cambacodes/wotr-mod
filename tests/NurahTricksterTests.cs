@@ -544,8 +544,10 @@ internal static class NurahTricksterTests
 
         // Sol quality pass (CAN/INT): Chapter 5 cell twins, reached only through the unhidden actor at her cell.
         var cell5 = World(story, 5, "trickster", "trickster.ever", "nurah.prison");
-        check(!Rules.PresenceWanted(cellPresence, cell5) && !Rules.Available(story, lateCell[0], cell5),
-            "The blocked prison route stages an RRT presence or opens without the native actor.");
+        // eng7-l06: an unreleased living prisoner can stage the cell; talking still needs the observed actor.
+        cell5.AvailableContacts.Clear();
+        check(Rules.PresenceWanted(cellPresence, cell5) && !Rules.Available(story, lateCell[0], cell5),
+            "The earned cell cannot stage, or opens without the native actor.");
         cell5.AvailableContacts.Add("f999fc37ddb225640b7f98c0a05d6948");
         check(Rules.Available(story, lateCell[0], cell5) && !Rules.Available(story, pardon, cell5), "Trk_Nurah_Prison5: the late pardon.");
         var pardoned5 = After(lateCell[0], cell5, "read", 0);

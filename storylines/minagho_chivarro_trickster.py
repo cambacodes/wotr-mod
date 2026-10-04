@@ -388,10 +388,11 @@ COLLECTORS = [
        c("[Let the carts go.]")),
 ]
 physical(P + "debt.collectors", "What the ledger says", "Minagho", PRES_MIN, MIN_UNIT, COLLECTORS,
-         requires=("trickster.ever", DEBT, MIN_IN, RET_M), forbids=(MET, CLOSED), delay=120)
+         requires=("trickster.ever", DEBT, MIN_IN, RET_M), forbids=(MET, CLOSED), delay=120, AbsentPartnerFlags=["chivarro.dead"])  # eng7-l06
 physical(P + "debt.collectors_spared", "What the ledger says", "Minagho", PRES_SPARED, MIN_UNIT, copy.deepcopy(COLLECTORS),
          requires=("trickster.ever", DEBT, MIN_IN, "minagho.spared.latched"),
-         forbids=(MET, CLOSED, "minagho.dead", P + "debt.collectors"), delay=120)
+         forbids=(MET, CLOSED, "minagho.dead", P + "debt.collectors"), delay=120,
+         AbsentPartnerFlags=["chivarro.dead"])  # eng7-l06
 
 
 # === Chivarro: through the wrong wardrobe (F01) and the house always collects (F24) =================================

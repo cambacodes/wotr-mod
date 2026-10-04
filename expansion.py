@@ -641,6 +641,22 @@ def make_expansion(*, independent_tirabade=True):
     earned_presence.integrate(payload)
     trickster_engine(payload)
     trickster_world.integrate(payload)
+    # eng7-l06: preserve Gesmerha's promised finale fallback after an observed, earned Drezen placement failure.
+    failure_receipt = "gesmerha.presence.failure_observed"
+    payload.setdefault("PresenceFailureReceipts", {})["gesmerha.presence"] = {
+        "Flag": failure_receipt, "Requires": ["gesmerha.trickster.returned"]}
+    for page in payload["Scenes"]:
+        if page["Id"] in {"gesmerha.trickster.epilogue.commit", "gesmerha.trickster.epilogue.commit_mourned",
+                          "gesmerha.trickster.epilogue.unvisited", "gesmerha.trickster.epilogue.unvisited_mourned"}:
+            for field in ("Requires", "Forbids"):
+                page[field] = [failure_receipt if f == "gesmerha.presence.failed" else f for f in page.get(field, [])]
+            if "RequiresAnyGroups" in page:
+                page["RequiresAnyGroups"] = [[failure_receipt if f == "gesmerha.presence.failed" else f for f in g]
+                                            for g in page["RequiresAnyGroups"]]
+    payload["Derived"]["gesmerha.trickster.late_committed"] = [
+        [failure_receipt if f == "gesmerha.presence.failed" else f for f in group]
+        for group in payload["Derived"]["gesmerha.trickster.late_committed"]]
+    # eng7-l06 end
     if "yaniel" in payload["Relationships"]:
         yaniel_radiance.integrate(payload)   # after the world bindings: its gates move from radiance_held to the party-only read
     chivarro_death.integrate(payload)        # after the world bindings (chivarro.dead); read-only keys, no scene reads them yet

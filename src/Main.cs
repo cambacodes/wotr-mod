@@ -1381,6 +1381,11 @@ namespace Tirabade
             if (IrabethCorrespondenceAvailable()) state.Flags.Add("irabeth.return_correspondence_available");
             foreach (var presence in presences)
                 if (presence.AnchorFailed) state.Flags.Add(Rules.PresenceFailedFlag(presence.Key));
+            // eng7-l06: restore observed failure history independently of the currently loaded area.
+            foreach (var presence in presences)
+                if (presence.FailureObserved && story.PresenceFailureReceipts.TryGetValue(presence.Key, out var receipt))
+                    state.Flags.Add(receipt.Flag);
+            // eng7-l06 end
             if (irabethMeeting?.Arrived() == true) state.Flags.Add("irabeth.return_meeting_arrived");
             if (nurahMeeting?.CorrespondenceAvailable() == true) state.Flags.Add("nurah.correspondence_available");
             if (nurahMeeting?.ArrivedActor() != null)
@@ -1904,7 +1909,9 @@ namespace Tirabade
                 bool wanted = !degraded.Contains(Rules.PresenceRelationship(presence.Key)!)
                     && !(Rules.PresenceRelationship(presence.Key) == "wenduag" && wenduagEcho?.OwnsOriginal == true)
                     && Rules.PresenceWanted(presence.Spec, state);
-                presence.Tick(wanted);
+                // eng7-l06: eligibility comes from computed earned state; Tick alone witnesses loaded-area failure.
+                presence.Tick(wanted, story, state);
+                // eng7-l06 end
                 string line = presence.Report(wanted);
                 if (!presenceStatus.TryGetValue(presence.Key, out var last) || last != line)
                 {

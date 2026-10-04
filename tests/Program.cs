@@ -229,6 +229,17 @@ internal static class Program
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
+        // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
+        if (args.Contains("--eng7-l06"))
+        {
+            Rules.Validate(story);
+            PresenceBootstrapInventoryTests.Run(story, Check);
+            PresenceExceptionExportTests.Run(story, Check);
+            PresenceFailureReceiptTests.Run(story, Check);
+            Console.WriteLine("PASS: eng7-l06 (" + checks + " checks)");
+            return;
+        }
+        // eng7-l06 end
         Rules.Validate(story);
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         NativeWorldReconciliationInventoryTests.Run(story, Check);
@@ -373,6 +384,9 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+        // eng7-l06: saved placement receipts are runtime-produced conditions.
+        known.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
+        // eng7-l06 end
         foreach (var scene in story.Scenes)
         {
             foreach (var flag in scene.Requires.Concat(scene.RequiresAny).Concat(scene.RequiresAnyGroups.SelectMany(group => group)).Concat(scene.Forbids).Concat(scene.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Requires.Concat(c.Forbids))))
@@ -764,6 +778,11 @@ internal static class Program
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
         EarnedPresenceTests.Run(story, Check);
         EngineQ5Tests.Run(story, Check);
+        // eng7-l06
+        PresenceBootstrapInventoryTests.Run(story, Check);
+        PresenceExceptionExportTests.Run(story, Check);
+        PresenceFailureReceiptTests.Run(story, Check);
+        // eng7-l06 end
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
         CurrentPathTests.Run(Check);
         CurrentPathTests.RunStory(story, Check);

@@ -58,6 +58,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 from storylines import earned_presence as ep   # noqa: E402
+# eng7-l06: validation reads export data, never a generation-time module mutation.
+from tools import presence_exception_schema, presence_dependency_lint, presence_failure_lint
+# eng7-l06 end
 
 NATIVE_KINDS = ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
                 "UnlockableFlags", "QuestObjectives", "InventoryItems", "StartedQuests", "MainCharacterFacts")
@@ -158,8 +161,9 @@ def return_producers(story):
                 visit(source)
         for source in (story.get("Latches") or {}).get(key) or []:
             visit(source)
-    for progress in ep.PRESENCE_RETURN_IN_PROGRESS.values():
-        for entry in progress.values():
+    # eng7-l06
+    for declaration in (story.get("PresenceExceptions") or {}).values():
+        for entry in declaration.get("Overrides", {}).values():
             visit(entry.get("Flag"))
     for rel in (story.get("Relationships") or {}).values():
         for key in (rel.get("UnavailableOverrides") or {}).values():
@@ -180,16 +184,11 @@ def producer_presence_errors(story):
     producers = return_producers(story)
     rels = story.get("Relationships") or {}
     trk = Trickster(story)
-    for rel, progress in ep.PRESENCE_RETURN_IN_PROGRESS.items():
-        if rel not in rels:
-            continue   # a partial build may omit this route
-        for flag, entry in progress.items():
-            reason = entry.get("Reason")
-            if (flag not in rels[rel].get("UnavailableFlags", [])
-                    or not isinstance(reason, str) or not reason.strip()
-                    or not trk.implies(entry.get("Flag"))):
-                hard.append("P1 %s: return in progress for %s needs a registered loss, Trickster-earned flag and reason"
-                            % (rel, flag))
+    # eng7-l06: every pending return must have an existing current-Trickster producer (cell acquisition is native).
+    for name, declaration in (story.get("PresenceExceptions") or {}).items():
+        for flag, entry in declaration.get("Overrides", {}).items():
+            if not trk.implies(entry.get("Flag")):
+                hard.append("P1 %s: bootstrap %s needs a Trickster-earned producer" % (name, flag))
     for s in story.get("Scenes") or []:
         if (s["Id"] in producers or s.get("TricksterDevice")) and not live_context(story, s):
             hard.append("T7 %s: device completion needs trickster.now or trickster with trickster.failed forbidden" % s["Id"])
@@ -205,20 +204,10 @@ def producer_presence_errors(story):
                             and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()):
                         hard.append("P1 %s: departure %s must be in %s.UnavailableFlags or allowlisted with a reason"
                                     % (s["Id"], flag, rel))
-    for name, p in (story.get("Presences") or {}).items():
-        rel = ep.presence_relationship(name)
-        if rel not in rels:
-            continue
-        key = ep.presence_guard(rel)
-        expected = ep.presence_guard_fields(rel, rels[rel])
-        guard_keys = expected["Derived"]
-        valid = key in (p.get("Requires") or [])
-        for field in ("Derived", "DerivedOpenRoutes", "DerivedForbids"):
-            for guard in guard_keys:
-                valid &= (story.get(field) or {}).get(guard) == expected.get(field, {}).get(guard)
-        if not valid:
-            hard.append("P1 %s: partner presence needs the central %s route guard; only documented returns may lift a loss"
-                        % (name, key))
+    # eng7-l06: dependency checking is separate from q6a's L1 consumer-presence lint.
+    hard.extend(presence_exception_schema.errors(story))
+    hard.extend(presence_failure_lint.check(story))
+    hard.extend(presence_dependency_lint.check(story, presence_dependency_lint.OWNED_ROUTES))
     return hard
 
 

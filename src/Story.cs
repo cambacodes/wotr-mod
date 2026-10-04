@@ -34,6 +34,11 @@ namespace Tirabade
         public string[] PermanentEtudes = Array.Empty<string>();
         // E12 (GLOBAL-07-lite): returned presences, keyed "<relationship>.presence".
         public Dictionary<string, Presence> Presences = new Dictionary<string, Presence>();
+        // eng7-l06: serialized acquisition guards, distinct from relationship/household availability.
+        public Dictionary<string, PresenceException> PresenceExceptions = new Dictionary<string, PresenceException>();
+        // eng7-l06: permanent receipts of eligible, observed placement failure; never inferred by travel.
+        public Dictionary<string, PresenceFailureReceipt> PresenceFailureReceipts = new Dictionary<string, PresenceFailureReceipt>();
+        // eng7-l06 end
         // E16 (the household, 08 §2.2 / 10 §P1): native openers. An answer injected into a native answer list that, when
         // chosen, lets the native dialog end and then opens an RRT view (e.g. "table", "book.trickster.ledger").
         public List<NativeOpener> Openers = new List<NativeOpener>();
@@ -165,6 +170,24 @@ namespace Tirabade
     // E12: a character made present in an area while Requires hold and no Forbid holds. "reuse-native" unhides and
     // (optionally) moves the existing native unit when it exists alive and friendly; "spawn-copy" spawns one copy of the
     // native blueprint at Position when no live unit of that blueprint is in the area, and removes it when unwanted.
+    // eng7-l06
+    public sealed class PresenceFailureReceipt
+    {
+        public string Flag = "";
+        public string[] Requires = Array.Empty<string>();
+    }
+    public sealed class PresenceBootstrap
+    {
+        public string Flag = "";
+        public string Reason = "";
+    }
+    public sealed class PresenceException
+    {
+        public string Guard = "";
+        public Dictionary<string, PresenceBootstrap> Overrides = new Dictionary<string, PresenceBootstrap>();
+        public Dictionary<string, string> AbsentLosses = new Dictionary<string, string>();
+    }
+    // eng7-l06 end
     public sealed class Presence
     {
         public string Unit = "";
@@ -369,6 +392,9 @@ namespace Tirabade
         public string? AfterDeparture;
         public string? ContactUnit;
         public string[] AdditionalContactUnits = Array.Empty<string>();
+        // eng7-l06: nominated solo consequences may read an absent partner, never their own loss.
+        public string[] AbsentPartnerFlags = Array.Empty<string>();
+        // eng7-l06 end
         public int MinChapter = 1;
         public int MaxChapter = 5;
         public int DelayHours;
@@ -773,7 +799,10 @@ namespace Tirabade
         // ER-2: a TricksterDevice scene also ignores the unavailable flags its TricksterAccess state detects, and nothing else.
         public static bool Blocks(Relationship relationship, string flag, Snapshot state, Scene? scene = null) => state.Has(flag)
             && !(relationship.UnavailableOverrides.TryGetValue(flag, out var returned) && state.Has(returned))
-            && !(scene != null && scene.TricksterDevice && DeviceDetects(relationship, scene).Contains(flag));
+            && !(scene != null && scene.TricksterDevice && DeviceDetects(relationship, scene).Contains(flag))
+            // eng7-l06: validated against the individual contact declaration, not a pair commitment.
+            && !(scene != null && scene.AbsentPartnerFlags.Contains(flag));
+            // eng7-l06 end
 
         // The unavailable flags a device scene is built to serve: its TricksterAccess state's detect keys ("!" = absent, ignored).
         public static IEnumerable<string> DeviceDetects(Relationship relationship, Scene scene)
@@ -1284,6 +1313,30 @@ namespace Tirabade
 
         // E12b: the runtime observation a letter twin can wait on when an anchored copy could not be placed.
         public static string PresenceFailedFlag(string presenceKey) => presenceKey + ".failed";
+        // eng7-l06: append-only observation history, analogous to a latch. It survives area changes and reloads.
+        // Only eligible failures write it; later contact neither erases history nor substitutes for yard_seen/refusal.
+        public static string PresenceFailureSaveKey(string name) => "RanRomance.Tirabade.Presence." + name + ".FailureObserved";
+        public static bool RecordPresenceFailure(Story story, string name, Snapshot state, PresenceObservation seen) =>
+            story.PresenceFailureReceipts.TryGetValue(name, out var receipt)
+            && receipt.Requires.All(state.Has) && story.Presences.TryGetValue(name, out var presence)
+            && PresenceFailed(presence, PresenceWanted(presence, state), seen);
+
+        public static void ValidatePresenceFailureReceipts(Story story, HashSet<string> authored, HashSet<string> native)
+        {
+            if (story.PresenceFailureReceipts == null) throw new InvalidOperationException("PresenceFailureReceipts cannot be null.");
+            foreach (var pair in story.PresenceFailureReceipts)
+            {
+                var receipt = pair.Value;
+                string rel = PresenceRelationship(pair.Key) ?? "";
+                if (!story.Presences.ContainsKey(pair.Key) || receipt == null || receipt.Flag != rel + ".presence.failure_observed"
+                    || receipt.Requires == null || receipt.Requires.Length == 0 || receipt.Requires.Distinct().Count() != receipt.Requires.Length
+                    || authored.Contains(receipt.Flag) || native.Contains(receipt.Flag) || story.Derived.ContainsKey(receipt.Flag)
+                    || receipt.Requires.Any(f => !authored.Contains(f) && !native.Contains(f) && !story.Derived.ContainsKey(f))
+                    || !receipt.Requires.Any(f => ReturnFlags(story.Relationships[rel]).Contains(f)))
+                    throw new InvalidOperationException("Invalid earned presence failure receipt: " + pair.Key);
+            }
+        }
+        // eng7-l06 end
 
         // E12b (NM1): a wanted presence that cannot be delivered in its loaded area reports failure (<key>.failed). A
         // reuse-native presence fails whenever no single live, friendly native actor stands in the area (absent, dead,
@@ -1444,6 +1497,9 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
                 .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
+            // eng7-l06: saved runtime receipts are known inputs, never authored choice effects.
+            derivedFlags.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
+            // eng7-l06 end
             var contactEvidence = new HashSet<string>(new[] { "konomi.missed_contact_available", "konomi.missed_contact_invalidated",
                 "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available",
                 "konomi.death_unreturned", "konomi.death_restored",
@@ -1555,6 +1611,10 @@ namespace Tirabade
                 || story.Relationships.Values.Any(r => r.RotationKey != null && string.IsNullOrWhiteSpace(r.RotationKey)))
                 throw new InvalidOperationException("Invalid post-bag settings (PostBagSize 1-10, QueueCapPerRelationship >= 1, non-blank RotationKey).");
             ValidatePresences(story, authoredFlags, nativeKeys, derivedFlags);
+            // eng7-l06
+            ValidatePresenceExceptionGuards(story);
+            ValidatePresenceFailureReceipts(story, authoredFlags, nativeKeys);
+            // eng7-l06 end
             // E16: openers have distinct ids, a native list GUID, text, a view, a chapter window and read only known keys.
             if (story.Openers == null) throw new InvalidOperationException("Openers cannot be null.");
             foreach (var opener in story.Openers)
@@ -1770,6 +1830,90 @@ namespace Tirabade
         }
 
         // E12: presences name a relationship, a native unit and area, a mode, known gates and (for copies) a position.
+        // eng7-l06: mirror tools/presence_exception_schema.py; declarations cannot silently lift other losses.
+        public static string PresenceGuard(Story story, string name) => story.PresenceExceptions.TryGetValue(name, out var declaration)
+            ? declaration.Guard : PresenceRelationship(name) + ".presence.route_open";
+
+        public static bool PresenceLossLifted(Story story, string name, string loss, Snapshot state) =>
+            story.PresenceExceptions.TryGetValue(name, out var declaration)
+            && (declaration.AbsentLosses.ContainsKey(loss) || declaration.Overrides.TryGetValue(loss, out var entry)
+                && state.Has(entry.Flag));
+
+        private static bool BootstrapEarned(Story story, string key, HashSet<string>? visiting = null)
+        {
+            if (new[] { "trickster", TricksterNow, "trickster.ever", "trickster.was" }.Contains(key)) return true;
+            var seen = visiting == null ? new HashSet<string>() : new HashSet<string>(visiting);
+            if (!seen.Add(key)) return false;
+            bool Proof(string source) => BootstrapEarned(story, source, seen);
+            if (story.Derived.TryGetValue(key, out var groups)) return groups.All(g => g.Any(Proof));
+            if (story.Latches.TryGetValue(key, out var sources)) return sources.All(Proof);
+            var producers = story.Scenes.SelectMany(s => s.Nodes.SelectMany(n => n.Choices)
+                .Where(c => c.Set.Contains(key)).Select(c => (scene: s, choice: c))).ToArray();
+            return producers.Length > 0 && producers.All(p => p.scene.Requires.Concat(p.choice.Requires).Any(Proof)
+                || p.scene.RequiresAnyGroups.Any(g => g.Length > 0 && g.All(Proof)));
+        }
+
+        public static void ValidatePresenceExceptionGuards(Story story)
+        {
+            if (story.PresenceExceptions == null) throw new InvalidOperationException("PresenceExceptions cannot be null.");
+            if (!story.Derived.ContainsKey(TricksterNow) && story.PresenceExceptions.Count == 0) return; // legacy fixtures
+            void Fail(string name) => throw new InvalidOperationException("Presence exception guard differs from declaration: " + name);
+            foreach (var name in story.PresenceExceptions.Keys)
+                if (!story.Presences.ContainsKey(name)) Fail(name);
+            foreach (var pair in story.Presences)
+            {
+                string rel = PresenceRelationship(pair.Key)!;
+                var relationship = story.Relationships[rel];
+                string guard = PresenceGuard(story, pair.Key);
+                if (!pair.Value.Requires.Contains(guard) || !story.Derived.TryGetValue(guard, out var groups)
+                    || groups.Length != 2 || !groups[0].SequenceEqual(new[] { "chapter_one" })
+                    || !groups[1].SequenceEqual(new[] { "chapter_later" })) Fail(pair.Key);
+                if (!story.PresenceExceptions.TryGetValue(pair.Key, out var declaration))
+                {
+                    if (!story.DerivedOpenRoutes.TryGetValue(guard, out var routes) || !routes.SequenceEqual(new[] { rel })
+                        || story.DerivedForbids.ContainsKey(guard)) Fail(pair.Key);
+                    continue;
+                }
+                if (string.IsNullOrWhiteSpace(guard) || !guard.StartsWith(rel + ".presence.", StringComparison.Ordinal)
+                    || declaration.Overrides == null || declaration.AbsentLosses == null || story.DerivedOpenRoutes.ContainsKey(guard)) Fail(pair.Key);
+                foreach (var entry in declaration.Overrides!)
+                    if (!relationship.UnavailableFlags.Contains(entry.Key) || entry.Value == null
+                        || string.IsNullOrWhiteSpace(entry.Value.Flag) || string.IsNullOrWhiteSpace(entry.Value.Reason)
+                        || !BootstrapEarned(story, entry.Value.Flag)
+                        || new[] { "trickster", TricksterNow, "trickster.ever", "trickster.was" }.Contains(entry.Value.Flag)
+                            && !(pair.Key == "nurah.presence.cell" && entry.Key == "nurah.prison" && entry.Value.Flag == TricksterNow)) Fail(pair.Key);
+                foreach (var entry in declaration.AbsentLosses!)
+                    if (rel != "minagho_chivarro" || entry.Key != (pair.Key.EndsWith(".chivarro", StringComparison.Ordinal)
+                        ? "minagho.dead" : "chivarro.dead") || string.IsNullOrWhiteSpace(entry.Value)) Fail(pair.Key);
+                var blockers = new List<string> { relationship.ClosedFlag };
+                foreach (string loss in relationship.UnavailableFlags)
+                {
+                    if (declaration.AbsentLosses.ContainsKey(loss)) continue;
+                    string blocked = guard + ".blocked." + loss;
+                    blockers.Add(blocked);
+                    if (!story.Derived.TryGetValue(blocked, out var lossGroups) || lossGroups.Length != 1
+                        || !lossGroups[0].SequenceEqual(new[] { loss }) || story.DerivedOpenRoutes.ContainsKey(blocked)) Fail(pair.Key);
+                    var lifts = new List<string>();
+                    if (relationship.UnavailableOverrides.TryGetValue(loss, out var returned)) lifts.Add(returned);
+                    if (declaration.Overrides.TryGetValue(loss, out var entry))
+                    {
+                        lifts.Add(entry.Flag);
+                    }
+                    if (lifts.Count == 0 ? story.DerivedForbids.ContainsKey(blocked)
+                        : !story.DerivedForbids.TryGetValue(blocked, out var have) || !have.SequenceEqual(lifts.Distinct())) Fail(pair.Key);
+                }
+                if (!story.DerivedForbids.TryGetValue(guard, out var final) || !final.SequenceEqual(blockers)) Fail(pair.Key);
+            }
+            foreach (var scene in story.Scenes.Where(s => s.AbsentPartnerFlags.Length > 0))
+            {
+                if (scene.AbsentPartnerFlags.Distinct().Count() != scene.AbsentPartnerFlags.Length
+                    || scene.ContactUnit == null || scene.InteractionHub == null
+                    || !story.Presences.TryGetValue(scene.InteractionHub, out var contact) || contact.Unit != scene.ContactUnit
+                    || !story.PresenceExceptions.TryGetValue(scene.InteractionHub, out var declaration)
+                    || scene.AbsentPartnerFlags.Any(f => !declaration.AbsentLosses.ContainsKey(f))) Fail(scene.Id);
+            }
+        }
+        // eng7-l06 end
         private static void ValidatePresences(Story story, HashSet<string> authored, HashSet<string> native, HashSet<string> runtime)
         {
             if (story.Presences == null) throw new InvalidOperationException("Presences cannot be null.");

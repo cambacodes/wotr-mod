@@ -173,9 +173,11 @@ class Model:
             for k in story.get(sec, {}): nk.setdefault(k, sec)
         self.native = nk
         self.revivals = story.get("Revivals", {})
-        self.derived = {k + ".failed" for k, p in (story.get("Presences") or {}).items() if p.get("At")} | \
+        # eng7-l06: durable placement receipts are observed runtime inputs.
+        self.derived = {r["Flag"] for r in (story.get("PresenceFailureReceipts") or {}).values()} | {k + ".failed" for k, p in (story.get("Presences") or {}).items() if p.get("At")} | \
                        {"loss", "ascended", "inhuman", "chapter_one", "chapter_later"} | CONTACT_EVIDENCE | \
                        {"revive.%s.available" % k for k in self.revivals}
+        # eng7-l06 end
         produced_hooks = {flag for scene in self.scenes for node in scene["Nodes"] for choice in node["Choices"] for flag in choice["Set"]}
         self.derived |= set(story.get("PendingHooks", [])) - set(story.get("Derived", {})) - set(self.native) - produced_hooks
         self.builtin_derived = set(self.derived)
