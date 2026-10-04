@@ -63,7 +63,7 @@ def norm_scene(s):
              DelayHours=0, Optional=False, Requires=[], RequiresAny=[], RequiresAnyGroups=[], Forbids=[],
              ForbidOverrides={}, Nodes=[], Entry="", Title="", Reaction=False, TricksterDevice=False, TricksterState=None,
              EpilogueAfter=None, EntryMythic=None, EntryAlignment=None, EpilogueSequence=None, ReturnToList=False, ReturnText=None,
-             ContinueBefore=None)
+             ContinueBefore=None, RestAllowance=None, TableHosted=False, Participants=[], ParticipantWomen=[], Pair=[])
     d.update({k: v for k, v in s.items() if v is not None or k in ("NativeReturnCue",)})
     for n in d["Nodes"]:
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", ""); n.setdefault("Paragraphs", [])
@@ -109,10 +109,16 @@ def is_presence_hub(s):
             and not s["AnswerLists"] and s["NativeReturnCue"] is None and not s.get("ReturnToList") and not s.get("ContinueBefore"))
 
 
+def is_table_scene(s):
+    return (s.get("InteractionHub") == "household.table" and not is_epilogue(s)
+            and (not is_remote(s) or s.get("TableHosted") and s.get("Kind") == "visit")
+            and not s["AnswerLists"] and s["ContactUnit"] is None)
+
+
 def entry_targets(s):
     if is_remote(s) or is_epilogue(s) or s.get("ContinueBefore"): return []
     if s["InteractionHub"] is not None:
-        if is_nurah_hub(s) or is_presence_hub(s): return []
+        if is_nurah_hub(s) or is_presence_hub(s) or is_table_scene(s): return []
         raise ValueError("Unrecognized authored interaction hub: " + s["Id"])
     if s["AnswerLists"]: return list(s["AnswerLists"])
     if s["Relationship"] == "tirabade":
@@ -159,6 +165,8 @@ class Model:
         self.derived = {k + ".failed" for k, p in (story.get("Presences") or {}).items() if p.get("At")} | \
                        {"loss", "ascended", "inhuman", "chapter_one", "chapter_later"} | CONTACT_EVIDENCE | \
                        {"revive.%s.available" % k for k in self.revivals}
+        produced_hooks = {flag for scene in self.scenes for node in scene["Nodes"] for choice in node["Choices"] for flag in choice["Set"]}
+        self.derived |= set(story.get("PendingHooks", [])) - set(story.get("Derived", {})) - set(self.native) - produced_hooks
         self.builtin_derived = set(self.derived)
         # E1 latches: authored flags the runtime records from native sources (never set by a choice).
         self.latches = {k: list(v) for k, v in (story.get("Latches") or {}).items()}
@@ -718,6 +726,7 @@ def build_names(model):
     for k in ["irabeth.return_meeting_retry", "irabeth.return_meeting_accepted", "hour.irabeth.return_meeting_accepted",
               "irabeth.return_meeting_declined", "irabeth.return_reply", "irabeth.return_first_words"]:
         if k not in keyset: names.append(("flag." + k, "BlueprintUnlockableFlag"))
+    names += [("flag.rrt.rest.spent." + key, "BlueprintUnlockableFlag") for key in model.story.get("RestAllowances", {})]
     names += [("flag.served." + rid, "BlueprintUnlockableFlag") for rid in model.rels if "served." + rid not in keyset]
     for k in model.latches:
         names += [("flag." + x, "BlueprintUnlockableFlag") for x in (k, "hour." + k) if x not in keyset]
@@ -736,6 +745,9 @@ def build_names(model):
                 names.append(("cue." + pre + ".return", "BlueprintCue"))
                 names += [("cue.%s.%s" % (pre, n["Id"]), "BlueprintCue") for n in s["Nodes"]]
                 names += [("answer.%s.%s.%d" % (pre, n["Id"], i), "BlueprintAnswer") for n in s["Nodes"] for i in range(len(n["Choices"]))]
+                names += [("answer.%s.%s.contact_lost" % (pre, n["Id"]), "BlueprintAnswer") for n in s["Nodes"] if s.get("Participants")]
+                names += [("answer.%s.%s.payment_unavailable" % (pre, n["Id"]), "BlueprintAnswer")
+                          for n in s["Nodes"] if any(c.get("Crusade", {}).get("Amount", 0) < 0 for c in n["Choices"] if c.get("Crusade"))]
                 names.append(("entry." + pre, "BlueprintAnswer"))
             continue
         for n in s["Nodes"]:
@@ -753,8 +765,10 @@ def build_names(model):
             for i, c in enumerate(ch):
                 names.append(("answer.%s.%s.%d" % (s["Id"], n["Id"], i), "BlueprintAnswer"))
                 if c["Check"]: names.append(("check.%s.%s.%d" % (s["Id"], n["Id"], i), "BlueprintCheck"))
-            if not ending and (s["ContactUnit"] is not None or is_remote(s)):
+            if not ending and (s["ContactUnit"] is not None or is_remote(s) or s.get("Participants") or s.get("ParticipantWomen")):
                 names.append(("answer.%s.%s.contact_lost" % (s["Id"], n["Id"]), "BlueprintAnswer"))
+            if not ending and any(c.get("Crusade", {}).get("Amount", 0) < 0 for c in ch if c.get("Crusade")):
+                names.append(("answer.%s.%s.payment_unavailable" % (s["Id"], n["Id"]), "BlueprintAnswer"))
         if s["NativeReturnCue"] is None: names.append(("dialog." + s["Id"], "BlueprintDialog"))
     for key, p in (model.story.get("Presences") or {}).items():   # E12c presence hubs (Main.BuildPresenceHub)
         if p.get("Dialog") != "hub": continue
@@ -780,6 +794,17 @@ def validate(model):
     errs = []
     st, rels = model.story, model.rels
     ids = set()
+    pending = st.get("PendingHooks", [])
+    reserved = ("rrt.degraded.", "rrt.rest.spent.", "served.", "hour.", "revive.")
+    if len(pending) != len(set(pending)) or any(not key or key.startswith(reserved) for key in pending):
+        errs.append("Invalid pending read-only hook")
+    if any(not key or value < 1 for key, value in st.get("RestAllowances", {}).items()):
+        errs.append("Rest allowances need named positive limits")
+    for key, woman in st.get("SeatWomen", {}).items():
+        if (not key or woman.get("Relationship") not in rels
+                or len(woman.get("UnavailableFlags", [])) != len(set(woman.get("UnavailableFlags", [])))
+                or any(flag not in woman.get("UnavailableFlags", []) for flag in woman.get("UnavailableOverrides", {}))):
+            errs.append("Invalid seat woman: " + key)
     relflags = set()
     for k, r in rels.items():
         for f in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"]):
@@ -813,6 +838,13 @@ def validate(model):
     for k, guard in model.open_routes.items():
         if k not in model.composites or not guard or len(set(guard)) != len(guard) or any(r not in model.rels for r in guard):
             errs.append("Invalid DerivedOpenRoutes entry: " + k)
+    for key, (sources, least) in model.counts.items():
+        chapters = st["Counts"][key].get("Chapters", [])
+        if (not key or key in model.authored or key in model.native or key in model.builtin_derived or key in model.composites
+                or key.startswith(reserved) or not sources or len(sources) != len(set(sources))
+                or not 1 <= least <= len(sources) or any(flag not in known for flag in sources)
+                or len(chapters) != len(set(chapters)) or any(chapter < 0 or chapter > 6 for chapter in chapters)):
+            errs.append("Invalid count composite: " + key)
     def cyclic(k, path):
         if k in path: return True
         return any(cyclic(x, path | {k}) for x in composite_inputs(model, k) if x in model.composites)
@@ -826,11 +858,21 @@ def validate(model):
     hexre = re.compile(r"^[0-9a-fA-F]{32}$")
     for s in model.scenes:
         sid = s["Id"]
+        participants, women, pair = (s.get(key, []) for key in ("Participants", "ParticipantWomen", "Pair"))
+        if (len(participants) != len(set(participants)) or len(women) != len(set(women))
+                or any(rel not in rels for rel in participants)
+                or any(wid not in st.get("SeatWomen", {}) or st["SeatWomen"][wid]["Relationship"] not in participants for wid in women)
+                or pair and (len(pair) != 2 or len(set(pair)) != 2 or sorted(pair) != sorted(participants))):
+            errs.append("Invalid pair participants: " + sid)
+        if s.get("RestAllowance") and s["RestAllowance"] not in st.get("RestAllowances", {}):
+            errs.append("Unknown rest allowance: " + sid)
+        if s.get("TableHosted") and (not is_remote(s) or s["Kind"] != "visit" or not is_table_scene(s)):
+            errs.append("TableHosted requires a Table visit: " + sid)
         try:
             tg = entry_targets(s)
         except ValueError as e:
             errs.append(str(e)); tg = []
-        if s["InteractionHub"] is not None and not is_nurah_hub(s) and not (
+        if s["InteractionHub"] is not None and not is_nurah_hub(s) and not is_table_scene(s) and not (
                 is_presence_hub(s) and ((st.get("Presences") or {}).get(s["InteractionHub"]) or {}).get("Dialog") == "hub"
                 and presence_relationship(s["InteractionHub"]) == s["Relationship"]):
             errs.append("Invalid interaction hub: " + sid)
@@ -878,8 +920,10 @@ def validate(model):
         if not s["Nodes"] or s["MinChapter"] > s["MaxChapter"]: errs.append("Invalid scene: " + sid)
         for a, b in s["ForbidOverrides"].items():
             closed = {r["ClosedFlag"] for r in rels.values()}
-            if (a not in s["Forbids"] or (a in model.authored) == (a in model.native) or a in model.builtin_derived
-                    or (b not in model.authored and b not in model.latches and b not in model.composites) or b in model.native or b in model.builtin_derived
+            if (a not in s["Forbids"] or (a in model.authored) == (a in model.native) and a not in pending
+                    or a in model.builtin_derived and a not in pending
+                    or (b not in model.authored and b not in model.latches and b not in model.composites and b not in pending)
+                    or b in model.native or b in model.builtin_derived and b not in pending
                     or a == b or a in closed or b in closed):
                 errs.append("Invalid forbid override %s/%s" % (sid, a))
         nodes = {}
@@ -1215,7 +1259,7 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     R["delay_chains"] = [dict(hours=h, chapter=c, scene=sid, chain=p) for h, c, sid, p in long_chains]
     P("  Scenes in a single-chapter window whose minimum in-window delay chain is >= 120h: %d" % len(long_chains))
     for h, c, sid, p in long_chains[:15]: P("     - ch%d %4dh %-45s chain len %d" % (c, h, sid, len(p)))
-    remote = [s for s in model.scenes if is_remote(s) and not s["ManualOnly"] and not is_epilogue(s)]
+    remote = [s for s in model.scenes if is_remote(s) and not s.get("TableHosted") and not s["ManualOnly"] and not is_epilogue(s)]
     comp = {}
     for ch in range(1, 6):
         comp[ch] = collections.Counter(s["Relationship"] for s in remote if s["MinChapter"] <= ch <= s["MaxChapter"] and (not s["Chapters"] or ch in s["Chapters"]))
@@ -1229,6 +1273,17 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     rb = simulate_rest_budget(model, **(REST_OPTIONS or {}))
     print_rest_budget(rb, P)
     R["rest_budget"] = rb
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+    from tools import harem_rest_sim
+    schedule_path = harem_rest_sim.SCHEDULE
+    if schedule_path.is_file() and "household" in model.rels:
+        data = json.loads(schedule_path.read_text(encoding="utf-8"))
+        R["household_budget"] = []
+        for rematch in (False, True):
+            result = harem_rest_sim.simulate(model.story, data, rb, conditional=True, rematch=rematch)
+            harem_rest_sim.report(result, P)
+            R["household_budget"].append(result)
+        P("  NOTE: ER-H3 conditional day-24 load only. Native S9 fixture / gate-time proof remains required.")
     # volatile etudes used as history
     vol = []
     for f, where in refs.items():
@@ -1805,6 +1860,7 @@ REST_OPTIONS = {}       # set from the command line (--delivery, --rest-cadence,
 class SimState:
     def __init__(self, chapter, hour):
         self.chapter, self.hour, self.flags, self.times = chapter, hour, set(), {}
+        self.rest_spent = {}
 
     def has(self, f): return f in self.flags
 
@@ -1843,13 +1899,16 @@ def sim_complete(model, st):
     """Mirror of Rules.Complete: latches, then Story.Derived composites (in dependency order, with route guards)."""
     for k, src in model.latches.items():
         if any(x in st.flags for x in src): st.flags.add(k)
+    st.flags -= set(model.composites) | set(model.counts)
     for k in composite_order(model):
         if (k not in st.flags and any(all(x in st.flags for x in g) for g in model.composites[k])
                 and all(route_open(model, rel, st.flags) for rel in model.open_routes.get(k, []))
                 and not any(x in st.flags for x in model.derived_forbids.get(k, []))):
             st.flags.add(k)
     for k, (of, least) in model.counts.items():
-        if k not in st.flags and sum(1 for x in of if x in st.flags) >= least: st.flags.add(k)
+        chapters = model.story["Counts"][k].get("Chapters", [])
+        if (not chapters or st.chapter in chapters) and k not in st.flags and sum(1 for x in of if x in st.flags) >= least:
+            st.flags.add(k)
 
 
 def sim_available(model, s, st):
@@ -1863,6 +1922,30 @@ def sim_available(model, s, st):
         if f in st.flags and not (ov and ov in st.flags): return False
     if s["RequiresAny"] and not any(f in st.flags for f in s["RequiresAny"]): return False
     if not all(any(f in st.flags for f in g) for g in s["RequiresAnyGroups"]): return False
+    allowance = s.get("RestAllowance")
+    if allowance and st.rest_spent.get(allowance, 0) >= model.story.get("RestAllowances", {}).get(allowance, 0): return False
+    for participant in s.get("Participants", []):
+        named = [wid for wid in s.get("ParticipantWomen", []) if model.story["SeatWomen"][wid]["Relationship"] == participant]
+        absent = {flag for wid, woman in model.story.get("SeatWomen", {}).items()
+                  if woman["Relationship"] == participant and named and wid not in named
+                  for flag in woman.get("UnavailableFlags", [])}
+        relationship = model.rels[participant]
+        if relationship["ClosedFlag"] in st.flags or "rrt.degraded." + participant in st.flags: return False
+        if any(flag in st.flags and flag not in absent
+               and relationship.get("UnavailableOverrides", {}).get(flag) not in st.flags
+               for flag in relationship.get("UnavailableFlags", [])): return False
+        eligible = participant + ".harem.eligible"
+        if eligible in model.composites:
+            if named:
+                if (not any(all(flag in st.flags for flag in group) for group in model.composites[eligible])
+                        or any(flag in st.flags for flag in model.derived_forbids.get(eligible, []))): return False
+            elif eligible not in st.flags: return False
+        elif eligible not in st.flags: return False
+    for wid in s.get("ParticipantWomen", []):
+        woman = model.story["SeatWomen"][wid]
+        if model.rels[woman["Relationship"]]["ClosedFlag"] in st.flags: return False
+        overrides = woman.get("UnavailableOverrides", {})
+        if any(f in st.flags and overrides.get(f) not in st.flags for f in woman.get("UnavailableFlags", [])): return False
     if is_epilogue(s): return True
     if s["Recovery"] is not None: return False
     rel = model.rels.get(s["Relationship"], {})
@@ -1884,7 +1967,7 @@ def sim_bag(model, st, served, size, queued=(), cap=10 ** 9, skip=()):
     def key(rel): return (model.rels.get(rel) or {}).get("RotationKey") or rel
     groups = collections.OrderedDict()
     for s in model.scenes:
-        if not is_remote(s) or s["ManualOnly"] or is_epilogue(s) or s in queued or s["Id"] in skip: continue
+        if not is_remote(s) or s.get("TableHosted") or s["ManualOnly"] or is_epilogue(s) or s in queued or s["Id"] in skip: continue
         if sum(1 for q in queued if q["Relationship"] == s["Relationship"]) >= cap: continue
         if sim_available(model, s, st): groups.setdefault(key(s["Relationship"]), []).append(s)
     ranked = sorted(groups.values(), key=lambda g: (min(x["MaxChapter"] for x in g), max(served.get(x["Relationship"], -10 ** 9) for x in g)))
@@ -1901,7 +1984,7 @@ def sim_letters(model):
     """Rest-delivered letters in story order: remote, not ManualOnly, not epilogue (static per model; cached)."""
     lt = getattr(model, "_sim_letters", None)
     if lt is None:
-        lt = model._sim_letters = [s for s in model.scenes if is_remote(s) and not s["ManualOnly"] and not is_epilogue(s)]
+        lt = model._sim_letters = [s for s in model.scenes if is_remote(s) and not s.get("TableHosted") and not s["ManualOnly"] and not is_epilogue(s)]
     return lt
 
 
@@ -1954,6 +2037,9 @@ def sim_play(model, s, st, rel_flags, plan=None):
             if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
         if c["Abort"]: return False
     if path and path[-1].get("Check") is None and path[-1]["Next"] is None:
+        if s.get("RestAllowance") and s["Id"] not in st.flags:
+            key = s["RestAllowance"]
+            st.rest_spent[key] = st.rest_spent.get(key, 0) + 1
         st.flags.add(s["Id"]); st.times[s["Id"]] = st.hour
         return True
     return False
@@ -1983,9 +2069,10 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
     native_on.update(natives or {})   # --sim-natives: extra native keys forced true from a chapter
     rel_flags = {"committed": {r["CommittedFlag"] for r in model.rels.values()}, "closed": {r["ClosedFlag"] for r in model.rels.values()}}
     by_rel = collections.OrderedDict((rk, [s for s in model.scenes if s["Relationship"] == rk and not is_epilogue(s)
-                                           and (not is_remote(s) or s["ManualOnly"])]) for rk in model.rels)
+                                           and not is_table_scene(s) and (not is_remote(s) or s["ManualOnly"])]) for rk in model.rels)
     if model.prologue: days.setdefault(0, SIM_PROLOGUE_DAYS)   # E-new 0: the Prologue, only when a scene opens there
     st = SimState(min(days), 0)
+    eligible_at = {}
     served, played, ever, commit_at, delivered, declined = {}, set(), {}, {}, collections.Counter(), set()
     per_rel_ch = collections.defaultdict(collections.Counter)
     chapters = []
@@ -1998,6 +2085,23 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
         step = cadence.get(ch) or (hours / rests_per_chapter[ch] if rests_per_chapter and rests_per_chapter.get(ch) else SIM_REST_CADENCE)
         available_rests = rests_per_chapter.get(ch) if rests_per_chapter and rests_per_chapter.get(ch) else int(hours // step)
         info = dict(chapter=ch, days=days[ch], rests_available=available_rests, rests_used=0, letters=0, missed=0, backlog_peak=0)
+        info["table_beats"] = 0
+        table_spent = collections.Counter()
+        def visit_table():
+            if ch not in (3, 5): return
+            # The player may select every offered entry, until its own key's allowance is spent.
+            for table in sorted((s for s in model.scenes if is_table_scene(s)),
+                                key=lambda s: 0 if s.get("RestAllowance") == "household.protected" and (max(s["Chapters"]) if s["Chapters"] else s["MaxChapter"]) == ch
+                                else 1 if s.get("RestAllowance") == "household.protected" else 2):
+                if not sim_available(model, table, st): continue
+                plan = sim_plan(model, table, st, rel_flags)
+                if not sim_wanted(plan): continue
+                ever.setdefault(table["Id"], ch)
+                if sim_play(model, table, st, rel_flags, plan):
+                    played.add(table["Id"])
+                    info["table_beats"] += 1
+                    if table.get("RestAllowance"): table_spent[table["RestAllowance"]] += 1
+                sim_complete(model, st)
         start, next_rest, next_visit, rests_done = st.hour, st.hour + step, st.hour, 0
         end = start + hours
         while st.hour < end:
@@ -2014,9 +2118,11 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
                         if sim_play(model, s, st, rel_flags, plan): played.add(s["Id"])
                         sim_complete(model, st)
                         break
+                visit_table()
             if st.hour >= next_rest and rests_done < available_rests:
                 next_rest += step
                 rests_done += 1
+                st.rest_spent.clear()
                 for s in sim_letters(model):   # letters a pursuing player would decline are never requested
                     if (s["Id"] not in declined
                             and sim_available(model, s, st) and not sim_wanted(sim_plan(model, s, st, rel_flags))):
@@ -2034,8 +2140,12 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
                     per_rel_ch[s["Relationship"]][ch] += 1
                     info["letters"] += 1
                     sim_complete(model, st)
+                visit_table()
             for rk, r in model.rels.items():
                 if r["CommittedFlag"] in st.flags and rk not in commit_at: commit_at[rk] = st.hour
+            for key in model.composites:
+                if key.endswith(".harem.eligible") and key in st.flags:
+                    eligible_at.setdefault(key[:-len(".harem.eligible")], st.hour)
             # Jump to the next event (a daily visit round or a rest); nothing else changes in between.
             targets = [next_visit, end] + ([next_rest] if rests_done < available_rests else [])
             st.hour = max(st.hour + 1, int(-(-min(targets) // 1)))
@@ -2050,6 +2160,9 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
         else:
             info["rests_needed"] = info["rests_used"] + -(-info["missed"] // max(1, bag_size))
             info["load"] = round((info["letters"] + info["missed"]) / float(max(1, info["rests_available"] * bag_size)), 2)
+        table_needed = max((-(-count // model.story["RestAllowances"][key]) for key, count in table_spent.items()), default=0)
+        info["rests_needed"] = max(info["rests_needed"], table_needed)
+        info["load"] = round(info["rests_needed"] / float(max(1, info["rests_available"])), 2)
         chapters.append(info)
     rels = []
     for rk, r in model.rels.items():
@@ -2073,7 +2186,9 @@ def simulate_rest_budget(model, chapter_days=None, cadence=None, bag_size=3, cap
                                      " (declined: only aborts or closes)" if dec else "")
         rels.append(dict(relationship=rk, committed=rk in commit_at, day=(commit_at[rk] // 24 + 1) if rk in commit_at else None,
                          letters={("ch%d" % c): n for c, n in sorted(per_rel_ch[rk].items())}, missed=missed, over_caps=over, blocked=why))
-    return dict(label=label, chapter_days=days, bag_size=bag_size, queue_cap=cap, delivery=delivery, chapters=chapters, relationships=rels)
+    return dict(eligible_hours=eligible_at,
+                final_flags=sorted(st.flags), played=sorted(played), commit_hours=commit_at,
+                label=label, chapter_days=days, bag_size=bag_size, queue_cap=cap, delivery=delivery, chapters=chapters, relationships=rels)
 
 
 def print_rest_budget(res, P):
@@ -2086,7 +2201,7 @@ def print_rest_budget(res, P):
           % (res["label"], res["bag_size"], res["queue_cap"]))
     P("  Chapter lengths in in-game days (ESTIMATES, calibrate against real Trickster runs): %s"
       % ", ".join("ch%d %s" % (c, d) for c, d in sorted(days.items())))
-    P("  Physical scenes and manual reads are visited daily at no rest cost; native progress keys (required somewhere, forbidden")
+    P("  Table scenes spend their authored per-rest allowances; other physical scenes and manual reads are visited daily; native progress keys (required somewhere, forbidden")
     P("  nowhere, not loss/departure) turn true at the first chapter a scene needs them; each scene follows its committing path, else a path that completes without")
     P("  closing anything; scenes that would only abort or close (partings, refusals) are declined and cost nothing.")
     P("\n  RESTS NEEDED vs AVAILABLE")

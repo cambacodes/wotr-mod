@@ -632,12 +632,12 @@ internal static class Program
                 Check(page!.Cues.Count == kindLine + (string.IsNullOrWhiteSpace(node.Text) ? 0 : 1) + node.Paragraphs.Count && page.Cues.All(c => c.Get() is BlueprintCue), "Missing page cue: " + nodeId);
                 bool ending = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 Check(page.ShowOnce == ending && !page.ShowOnceCurrentDialog, "Wrong native page history policy: " + nodeId);
-                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene)) ? scene : null;
+                var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
                 bool plainEnding = ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                     && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
                     && node.Choices[0].Set.Length == 0 && node.Choices[0].Text == "Continue"
                     && !node.Choices[0].Abort && node.Choices[0].Revive == null;
-                Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1)), "Wrong choice count: " + nodeId);
+                Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1) + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0)), "Wrong choice count: " + nodeId);
                 foreach (var reference in page.Answers) Check(reference.Get() is BlueprintAnswer, "Unresolved generated answer: " + nodeId);
                 if (plainEnding)
                 {
@@ -646,9 +646,18 @@ internal static class Program
                     Check(leave.OnSelect.Actions.Length == 0 && leave.NextCue.Cues.Count == 0, "Plain ending mutates progress or continues: " + nodeId);
                     continue;
                 }
+                if (node.Choices.Any(choice => choice.Crusade?.Amount < 0))
+                {
+                    var paymentExit = (BlueprintAnswer)page.Answers.Last().Get();
+                    Check(paymentExit.AssetGuid == Id("answer." + nodeId + ".payment_unavailable")
+                        && paymentExit.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition fallback
+                        && ReferenceEquals(fallback.PaymentNode, node) && paymentExit.OnSelect.Actions.Length == 0
+                        && paymentExit.SelectConditions.Conditions.Length == 0 && paymentExit.NextCue.Cues.Count == 0,
+                        "Paid-only page has no unconditional, mutation-free exit: " + nodeId);
+                }
                 if (continuation != null)
                 {
-                    var leave = (BlueprintAnswer)page.Answers.Last().Get();
+                    var leave = (BlueprintAnswer)page.Answers[node.Choices.Count].Get();
                     Check(leave.AssetGuid == Id("answer." + nodeId + ".contact_lost"), "Contact exit changes stable answer identities: " + nodeId);
                     Check(leave.ShowConditions.Conditions.Single() is Tirabade.Main.RouteCondition lost && lost.ContactLost && ReferenceEquals(lost.Continuation, scene), "Missing contact-loss exit guard: " + nodeId);
                     Check(leave.SelectConditions.Conditions.Length == 0 && leave.OnSelect.Actions.Length == 0 && leave.NextCue.Cues.Count == 0, "Contact exit can block, mutate progress or continue: " + nodeId);
@@ -662,7 +671,14 @@ internal static class Program
                     var action = answer.OnSelect.Actions.OfType<Tirabade.Main.RouteAction>().Single();
                     int nativeEffects = (choice.Crusade != null ? 1 : 0) + (choice.RemoveItem != null ? 1 : 0) + (choice.StartEtude != null ? 1 : 0);
                     Check(answer.OnSelect.Actions.Length - 1 - nativeEffects is 0 or 1 && (choice.Mythic != null || answer.OnSelect.Actions.Length == 1 + nativeEffects)
-                        && answer.OnSelect.Actions[0] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                        && answer.OnSelect.Actions[choice.Crusade == null ? 0 : 1] is Tirabade.Main.RouteAction, "Choice carries unexpected native actions: " + nodeId);
+                    if (choice.Crusade != null)
+                    {
+                        var payment = answer.OnSelect.Actions[0] is Tirabade.Main.GuardedRemoveCrusadeResources remove ? remove.Payment
+                            : ((Tirabade.Main.GuardedAddCrusadeResources)answer.OnSelect.Actions[0]).Payment;
+                        Check(payment != null && ReferenceEquals(payment, action.Payment) && ReferenceEquals(payment.Cost, choice.Crusade),
+                            "Paid progress has no resource-action witness: " + nodeId);
+                    }
                     Check((answer.MythicRequirement.ToString() == (choice.Mythic ?? "None")) && (answer.AlignmentShift?.Value ?? 0) == (choice.Alignment?.Value ?? 0), "Choice native mythic/alignment drifted: " + nodeId);
                     Check(action != null && ReferenceEquals(action.Choice, choice) && ReferenceEquals(action.Owner, answer), "Choice lost its effects or action owner: " + nodeId);
                     Check(ReferenceEquals(((Tirabade.Main.RouteCondition)answer.ShowConditions.Conditions.Single()).Continuation, continuation)

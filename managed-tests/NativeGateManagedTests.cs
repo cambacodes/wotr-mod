@@ -200,6 +200,7 @@ internal static class NativeGateManagedTests
         {
             var state = new Snapshot { Chapter = 4 };
             state.Flags.UnionWith(flags);
+            Rules.Complete(story, state);
             check(Rules.NativeGateHolds(story, NativeGate.ArsinoeSouls, state) == gated, "Arsinoe gate, " + what);
         }
         Console.WriteLine("PASS: E18 Arsinoe's 'any news' answer (VendorArsinoe/Answer_0025) gated after a ransom or buy-back.");

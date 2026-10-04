@@ -28,6 +28,24 @@ internal static class NativeCostTests
 
     internal static void Run(Action<bool, string> check)
     {
+        var funds = new Snapshot();
+        var paid = Fixture().Scenes[0].Nodes[0].Choices[0];
+        funds.Flags.UnionWith(paid.Requires);
+        check(!Rules.ChoiceAvailable(paid, funds), "Payment selectable with missing kingdom.");
+        funds.CrusadeResources = new Dictionary<string, int> { ["Finances"] = 499 };
+        check(!Rules.ChoiceAvailable(paid, funds), "Payment selectable with insufficient funds.");
+        funds.CrusadeResources["Finances"] = 500;
+        check(Rules.ChoiceAvailable(paid, funds), "Exact funds cannot pay.");
+        int balance = 500, calls = 0, warnings = 0;
+        bool Apply(Func<int?> read, Action action) => Rules.ApplyCrusadeChange(paid.Crusade!, read, action, _ => warnings++);
+        check(!Apply(() => null, () => calls++) && calls == 0, "Missing kingdom fabricated a payment.");
+        check(!Apply(() => 499, () => calls++) && calls == 0, "Insufficient funds ran native removal.");
+        check(!Apply(() => balance, () => calls++) && warnings == 3, "Skipped native effect created a paid witness.");
+        check(Apply(() => balance, () => { calls++; balance -= 500; }) && balance == 0, "Successful removal had no paid witness.");
+        check(!Apply(() => balance, () => calls++), "A second request reused the first payment.");
+        balance = 500;
+        check(!Apply(() => balance, () => throw new InvalidOperationException("fixture failure")), "Native exception created a witness.");
+        check(!Apply(() => balance, () => balance -= 499), "Partial resource change counted as paid.");
         Rules.Validate(Fixture());
         check(Rules.CrusadeResources.SequenceEqual(new[] { "Finances", "Materials", "Favors" }), "Crusade resource names changed.");
         // A scene-level requirement also gates the removal.

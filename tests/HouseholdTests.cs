@@ -17,6 +17,7 @@ internal static class HouseholdTests
     {
         var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 1000 };
         foreach (var flag in flags) state.Flags.Add(flag);
+        state.Flags.Add("foresight.page_taken");
         Rules.Complete(story, state);
         return state;
     }
