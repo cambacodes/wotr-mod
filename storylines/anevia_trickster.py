@@ -840,14 +840,14 @@ def integrate(payload):
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     # E14d extension: the native Tirabade slide. Irabeth's own variant joins only when her route (and its scene) is built.
     present = {s["Id"] for s in payload["Scenes"]}
-    edits = payload.setdefault("NativeEpilogueEdits", {})
+    from storylines.native_overrides import register_legacy
+    edits = {}
     for cue, edit in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits:
-            raise ValueError("anevia_trickster: conflicting native epilogue edit " + cue)
         built = {k: ([list(g) for g in v] if k == "When" else v) for k, v in edit.items() if k != "Variants"}
         built["Variants"] = [{k: ([list(g) for g in v] if k == "When" else v) for k, v in variant.items()}
                              for variant in edit["Variants"] if variant["Replacement"] in present]
         edits[cue] = built
+    register_legacy(payload, __name__, edits=edits)
     ours = {s["Id"] for s in SCENES}
     tirabade = payload["Relationships"]["tirabade"]
     tirabade.setdefault("UnavailableOverrides", {}).update({"irabeth_dead": I_RET, "anevia_gone": RETURNED})

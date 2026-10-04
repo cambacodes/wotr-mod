@@ -7,6 +7,8 @@ while the flight world holds and its scene is available. Read only, warning-only
 """
 import copy
 
+from storylines.native_overrides import register_legacy
+
 from story_format import n, scene
 
 from storylines import devarra_trickster as dt
@@ -46,18 +48,5 @@ NATIVE_OBJECTIVE_SETTLEMENTS = {
 
 def integrate(payload):
     payload["Scenes"].extend(copy.deepcopy(SCENES))
-    gates = payload.setdefault("NativeGates", {})
-    for key, gate in NATIVE_GATES.items():
-        if key in gates:
-            raise ValueError("devarra_native: conflicting native gate " + key)
-        gates[key] = dict(gate, When=[list(g) for g in gate["When"]])
-    settled = payload.setdefault("NativeObjectiveSettlements", {})
-    for key, spec in NATIVE_OBJECTIVE_SETTLEMENTS.items():
-        if key in settled:
-            raise ValueError("devarra_native: conflicting objective settlement " + key)
-        settled[key] = dict(spec, When=[list(g) for g in spec["When"]])
-    edits = payload.setdefault("NativeEpilogueEdits", {})
-    for cue, spec in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits:
-            raise ValueError("devarra_native: conflicting native edit " + cue)
-        edits[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in spec.items()}
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, gates=NATIVE_GATES,
+                    settlements=NATIVE_OBJECTIVE_SETTLEMENTS)

@@ -9,6 +9,8 @@ pack page's own forbids). Save name: native-edit.4bb3706172f1ed54ca11db96254c463
 """
 import copy
 
+from storylines.native_overrides import register_legacy
+
 from story_format import n, scene
 
 CUE_0580 = "4bb3706172f1ed54ca11db96254c4638"    # World/Dialogs/Epilogues/Cue_0580
@@ -36,8 +38,4 @@ NATIVE_EPILOGUE_EDITS = {
 def integrate(payload):
     """Register the scene and the edit (after the Wenduag route)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
-    edits = payload.setdefault("NativeEpilogueEdits", {})
-    for cue, spec in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits:
-            raise ValueError("wenduag_native: conflicting native epilogue edit " + cue)
-        edits[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in spec.items()}
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS)

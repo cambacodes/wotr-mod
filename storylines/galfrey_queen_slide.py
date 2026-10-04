@@ -11,6 +11,8 @@ already done (earned_presence_lint T6a). Kept apart from the route files so it m
 """
 import copy
 
+from storylines.native_overrides import register_legacy
+
 from story_format import n, scene
 
 CUE_0259 = "f5906acda82efd5468cb72aff2e68f7e"   # World/Dialogs/Epilogues/Cue_0259 on BookPage_0255
@@ -48,8 +50,4 @@ def integrate(payload):
     if "galfrey" not in payload["Relationships"]:
         return
     payload["Scenes"].extend(copy.deepcopy(SCENES))
-    edits = payload.setdefault("NativeEpilogueEdits", {})
-    for cue, spec in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits:
-            raise ValueError("galfrey_queen_slide: conflicting native epilogue edit " + cue)
-        edits[cue] = {k: ([list(g) for g in v] if k == "When" else v) for k, v in spec.items()}
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS)

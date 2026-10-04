@@ -6,6 +6,8 @@ worlds (the list the game already shows once Seelah's Q3 has started). Read only
 """
 import copy
 
+from storylines.native_overrides import register_legacy
+
 from story_format import n, scene
 
 from storylines import kiana_trickster as kt
@@ -122,14 +124,4 @@ NATIVE_GATES = {
 def integrate(payload):
     """Register the gates and the aftermath line (after kiana_trickster)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
-    edits = payload.setdefault("NativeEpilogueEdits", {})
-    for cue, spec in NATIVE_EPILOGUE_EDITS.items():
-        if cue in edits:
-            raise ValueError("kiana_native: conflicting native edit " + cue)
-        edits[cue] = {k: ([list(g) for g in v] if k == "When" else
-                          [dict(x, When=[list(g) for g in x["When"]]) for x in v] if k == "Variants" else v) for k, v in spec.items()}
-    gates = payload.setdefault("NativeGates", {})
-    for key, gate in NATIVE_GATES.items():
-        if key in gates:
-            raise ValueError("kiana_native: conflicting native gate " + key)
-        gates[key] = dict(gate, When=[list(g) for g in gate["When"]])
+    register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, gates=NATIVE_GATES)
