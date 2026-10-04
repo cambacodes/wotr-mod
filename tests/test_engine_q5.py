@@ -122,5 +122,68 @@ class PhysicalPresenceTests(unittest.TestCase):
             self.assertTrue(any("departure her.left_free" in x for x in lint.producer_presence_errors(s)))
 
 
+class ReturnInProgressTests(unittest.TestCase):
+    def story(self):
+        rel = {"ClosedFlag": "aranka.closed",
+               "UnavailableFlags": ["aranka.ran_failure", "aranka.dead", "aranka.gone"],
+               "UnavailableOverrides": {"aranka.ran_failure": "aranka.trickster.moral_repaired"}}
+        s = {"Relationships": {"aranka": rel}, "Derived": {},
+             "Presences": {"aranka.presence": {"Requires": []}, "aranka.presence.yard": {"Requires": []}},
+             "Scenes": [{"Id": "aranka.reply", "Relationship": "aranka", "Requires": ["trickster.now"],
+                         "Nodes": [{"Choices": [{"Set": ["aranka.trickster.answered"]}]}]}]}
+        ep.integrate_presences(s)
+        return s
+
+    def test_only_documented_loss_is_lifted_and_integration_is_idempotent(self):
+        s = self.story()
+        before = copy.deepcopy(s)
+        ep.integrate_presences(s)
+        self.assertEqual(s, before)
+        self.assertFalse(lint.producer_presence_errors(s))
+        rel = s["Relationships"]["aranka"]
+        self.assertEqual(rel["UnavailableOverrides"], {"aranka.ran_failure": "aranka.trickster.moral_repaired"})
+        key = ep.presence_guard("aranka")
+        loss = key + ".blocked.aranka.ran_failure"
+        self.assertEqual(s["DerivedForbids"][loss],
+                         ["aranka.trickster.moral_repaired", "aranka.trickster.answered"])
+        self.assertNotIn(key, s.get("DerivedOpenRoutes", {}))
+        for flag in ("aranka.dead", "aranka.gone"):
+            self.assertNotIn(key + ".blocked." + flag, s["DerivedForbids"])
+
+    def test_unlisted_lift_and_missing_loss_or_closure_fail_p1(self):
+        key = ep.presence_guard("aranka")
+        for mutation in ("unlisted_lift", "missing_loss", "missing_closure", "route_guard"):
+            with self.subTest(mutation=mutation):
+                s = self.story()
+                if mutation == "unlisted_lift":
+                    s["DerivedForbids"][key + ".blocked.aranka.dead"] = ["aranka.trickster.answered"]
+                elif mutation == "missing_loss":
+                    s["DerivedForbids"][key].remove(key + ".blocked.aranka.dead")
+                elif mutation == "missing_closure":
+                    s["DerivedForbids"][key].remove("aranka.closed")
+                else:
+                    s["DerivedOpenRoutes"] = {key: ["aranka"]}
+                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(s)))
+
+    def test_exception_needs_reason_registered_loss_and_live_producer(self):
+        from unittest.mock import patch
+        s = self.story()
+        for mutation in ("no_reason", "blank_reason", "unregistered_loss", "non_trickster_flag"):
+            progress = copy.deepcopy(ep.PRESENCE_RETURN_IN_PROGRESS)
+            entry = progress["aranka"]["aranka.ran_failure"]
+            if mutation == "no_reason":
+                entry.pop("Reason")
+            elif mutation == "blank_reason":
+                entry["Reason"] = " "
+            elif mutation == "unregistered_loss":
+                progress["aranka"]["aranka.unregistered"] = progress["aranka"].pop("aranka.ran_failure")
+            else:
+                entry["Flag"] = "chapter_later"
+            with self.subTest(mutation=mutation), patch.dict(ep.PRESENCE_RETURN_IN_PROGRESS, progress, clear=True):
+                self.assertTrue(any(x.startswith("P1") for x in lint.producer_presence_errors(s)))
+        s["Scenes"][0]["Requires"] = ["trickster.ever"]
+        self.assertTrue(any(x.startswith("T7") for x in lint.producer_presence_errors(s)))
+
+
 if __name__ == "__main__":
     unittest.main()

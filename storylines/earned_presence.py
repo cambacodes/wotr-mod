@@ -163,6 +163,16 @@ DEPARTURE_EXEMPTIONS = {
     ("galfrey", "galfrey.trickster.envoy.sent_home"): "The envoy leaves, not Galfrey.",
     ("iomedae", "iomedae.trickster.sent_away"): "Declines the banner dream; no physical Iomedae has arrived.",
 }
+# Coordinator ruling: a paid return may put her in reach of the scene that completes it.
+# This lifts only the named loss for physical presence; relationship and household guards are unchanged.
+PRESENCE_RETURN_IN_PROGRESS = {
+    "aranka": {
+        "aranka.ran_failure": {
+            "Flag": "aranka.trickster.answered",
+            "Reason": "The paid second verse brings her to Drezen; the physical reckoning earns moral repair.",
+        },
+    },
+}
 PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
 
 
@@ -175,18 +185,43 @@ def presence_guard(relationship):
     return relationship + ".presence.route_open"
 
 
+def presence_guard_fields(rel, relationship):
+    """Compile only listed returns into presence guards, using existing DerivedForbids."""
+    key = presence_guard(rel)
+    fields = {"Derived": {key: [list(g) for g in PRESENCE_CHAPTERS]}}
+    progress = PRESENCE_RETURN_IN_PROGRESS.get(rel)
+    if not progress:
+        fields["DerivedOpenRoutes"] = {key: [rel]}
+        return fields
+    blockers = [relationship["ClosedFlag"]]
+    forbids = fields["DerivedForbids"] = {}
+    for flag in relationship.get("UnavailableFlags") or []:
+        blocked = key + ".blocked." + flag
+        fields["Derived"][blocked] = [[flag]]
+        blockers.append(blocked)
+        lifts = list(dict.fromkeys(filter(None, [
+            (relationship.get("UnavailableOverrides") or {}).get(flag),
+            (progress.get(flag) or {}).get("Flag"),
+        ])))
+        if lifts:
+            forbids[blocked] = lifts
+    forbids[key] = blockers
+    return fields
+
+
 def integrate_presences(payload):
-    """All physical relationship presences use Rules.RouteOpen, including its earned-return overrides."""
+    """Physical presences obey route closure, with only documented paid returns in progress."""
     for name, presence in (payload.get("Presences") or {}).items():
         rel = presence_relationship(name)
         if rel not in payload["Relationships"]:
             continue
         key = presence_guard(rel)
-        for field, value in (("Derived", [list(g) for g in PRESENCE_CHAPTERS]), ("DerivedOpenRoutes", [rel])):
+        for field, guards in presence_guard_fields(rel, payload["Relationships"][rel]).items():
             entries = payload.setdefault(field, {})
-            if key in entries and entries[key] != value:
-                raise ValueError("Conflicting presence route guard: " + key)
-            entries[key] = value
+            for guard, value in guards.items():
+                if guard in entries and entries[guard] != value:
+                    raise ValueError("Conflicting presence route guard: " + guard)
+                entries[guard] = value
         if key not in (presence.get("Requires") or []):
             presence["Requires"] = [*(presence.get("Requires") or []), key]
 

@@ -51,6 +51,7 @@ internal static class ArankaTricksterTests
     {
         var end = Program.Copy(state);
         end.Chapter = 6;
+        end.Flags.ExceptWith(story.Derived.Keys);
         Rules.Complete(story, end);
         return end;
     }
@@ -59,6 +60,7 @@ internal static class ArankaTricksterTests
     {
         var later = Program.Copy(state);
         later.Hour += hours;
+        later.Flags.ExceptWith(story.Derived.Keys);
         Rules.Complete(story, later);
         return later;
     }
@@ -474,6 +476,7 @@ internal static class ArankaTricksterTests
             var at = Program.Copy(w);
             at.AvailableContacts.Clear();
             at.Flags.Remove(FyeGone);
+            at.Flags.ExceptWith(story.Derived.Keys);
             Rules.Complete(story, at);
             bool wanted = Rules.PresenceWanted(market, at);
             var plan = Rules.PlanPresence(market, wanted, new PresenceObservation { AreaLoaded = true, AnchorResolved = marketAnchor });
@@ -498,6 +501,8 @@ internal static class ArankaTricksterTests
             var hit = Program.WalkVia(scene, w, node, choice).FirstOrDefault();
             check(hit != null, "Walk: no path through " + scene.Id + "/" + node + "/" + choice);
             if (hit == null) return w;
+            // Main observes a fresh snapshot each tick; Derived flags are computed, never saved.
+            hit.Flags.ExceptWith(story.Derived.Keys);
             Rules.Complete(story, hit);
             return hit;
         }
@@ -507,10 +512,37 @@ internal static class ArankaTricksterTests
             check(Rules.PresenceWanted(market, answeredAt), label + ": her presence is not wanted after her answer.");
             if (answeredAt.Has("aranka.ran_failure"))
             {
+                var rel = story.Relationships["aranka"];
+                check(answeredAt.Has(P + "answered") && answeredAt.Has(P + "returned")
+                    && answeredAt.Has(P + "cost.mocking_verse") && !answeredAt.Has(Repaired)
+                    && !Rules.RouteOpen(rel, answeredAt), label + ": her paid reply bypasses moral repair.");
+                Snapshot Fresh(params string[] added) => Native(story, answeredAt.Chapter,
+                    answeredAt.Flags.Where(k => !story.Derived.ContainsKey(k)).Concat(added).ToArray());
+                check(!Fresh(Kept).Has("aranka.harem.eligible"),
+                    label + ": presence during repair opens household eligibility.");
+                foreach (var blocked in rel.UnavailableFlags.Where(f => f != "aranka.ran_failure").Append(Closed))
+                {
+                    var lost = Fresh(blocked);
+                    var lostYard = Fresh(blocked, FyeGone);
+                    check(!Rules.PresenceWanted(market, lost) && !Rules.PresenceWanted(yard!, lostYard),
+                        label + ": paid reply lifts another closure: " + blocked);
+                }
                 var unmended = Place(Later(story, answeredAt, 24), marketAnchor, true);
                 check(!Rules.Available(story, Venue(duet, unmended), unmended), label + ": the duet opens before the reckoning.");
                 var facing = Place(answeredAt, marketAnchor, true);
-                answeredAt = Pick(facing.Has(FyeGone) ? reckoningYard : reckoning, facing, "bought", 0);
+                var encounter = facing.Has(FyeGone) ? reckoningYard : reckoning;
+                var deferred = Pick(encounter, facing, "start", 2);
+                check(!deferred.Has(Repaired) && Rules.PresenceWanted(market, deferred)
+                    && !Rules.RouteOpen(rel, deferred), label + ": deferring changes the repair requirements.");
+                var refused = Pick(encounter, facing, "unchanged", 0);
+                var refusedFresh = Native(story, refused.Chapter,
+                    refused.Flags.Where(k => !story.Derived.ContainsKey(k)).ToArray());
+                check(refusedFresh.Has(Closed) && !Rules.PresenceWanted(market, refusedFresh),
+                    label + ": refusing the reckoning leaves her physical presence.");
+                answeredAt = Pick(encounter, facing, "bought", 0);
+                check(answeredAt.Has(Repaired) && answeredAt.Has(P + "cost.provisions_bought")
+                    && Rules.RouteOpen(rel, answeredAt) && Fresh(Kept).Has("aranka.harem.eligible"),
+                    label + ": the paid reckoning does not reopen the full route.");
             }
             var tooEarly = Place(Later(story, answeredAt, 23), marketAnchor, true);
             check(!Rules.Available(story, Venue(duet, tooEarly), tooEarly), label + ": the duet comes before its day.");
@@ -542,7 +574,15 @@ internal static class ArankaTricksterTests
             Chain("King, fresh" + venueLabel, Pick(herLetterL, Later(story, primed, 24), "unknown", 0), t0, anchor);
             // King, failure: the verse where the Commander loses, then her letter a day later.
             var failWorld = Native(story, 5, "trickster", "trickster.ever", "aranka.ran_failure", "fool_king.crowned", "coronation.after");
+            check(!Rules.PresenceWanted(market, failWorld) && !Rules.PresenceWanted(yard!, failWorld)
+                && !Rules.Available(story, reckoning, Place(failWorld, anchor, true)),
+                "King, unpaid failure" + venueLabel + ": she returns before the paid verse.");
             var led5 = Pick(mocking5, failWorld, "after", 0);
+            var awaitingReply = Later(story, led5, 24);
+            check(led5.Has(P + "cost.mocking_verse") && !awaitingReply.Has(P + "answered")
+                && !Rules.PresenceWanted(market, awaitingReply)
+                && !Rules.Available(story, reckoning, Place(awaitingReply, anchor, true)),
+                "King, unanswered failure" + venueLabel + ": the primer alone brings her back.");
             check(Rules.MailbagArrivals(story, Later(story, led5, 24)).Contains(secondVerseL), "Walk: her failure letter misses its day.");
             Chain("King, failure" + venueLabel, Pick(secondVerseL, Later(story, led5, 24), "start", 0), failWorld.Hour, anchor);
             // No King: the reply is folded into the fallback.

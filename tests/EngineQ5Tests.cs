@@ -16,7 +16,9 @@ internal static class EngineQ5Tests
             var presence = pair.Value;
             string guard = rel + ".presence.route_open";
             check(presence.Requires.Contains(guard)
-                && story.DerivedOpenRoutes.TryGetValue(guard, out var routes) && routes.SequenceEqual(new[] { rel }),
+                && (rel == "aranka"
+                    ? !story.DerivedOpenRoutes.ContainsKey(guard) && story.DerivedForbids.ContainsKey(guard)
+                    : story.DerivedOpenRoutes.TryGetValue(guard, out var routes) && routes.SequenceEqual(new[] { rel })),
                 "Missing central presence route guard: " + pair.Key);
             var flags = presence.Requires.Where(k => k != guard).Concat(presence.RequiresAnyGroups.Select(g => g[0]))
                 .Concat(relationship.UnavailableOverrides.Values).ToHashSet();
