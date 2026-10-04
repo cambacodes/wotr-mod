@@ -52,6 +52,7 @@ The `run-harness.ps1` options are:
 - `-TimeoutMinutes` sets the run timeout (default 45).
 - `-Spike Residence` runs the P2 residence feasibility spike instead of driving scenes. See [Residence spike](#residence-spike--spike-residence).
 - `-Spike Presence` runs the E12d quiet-copy check instead of driving scenes. See [Presence spike](#presence-spike--spike-presence).
+- `-Spike Presence -PresenceProbe "x,y,z" -ProbeRadius N` searches for walkable points near those coordinates in the saved area.
 - `-Probes` installs the harness-only probe story instead of `development/Story.json`: `tools/build-harness-probes.py` appends
   `storylines/harness_probes.py` (e.g. `pacing.e0.probe`, the E-new 0 Prologue attachment) and resolves its inline hosts into
   `harness/probes/` (gitignored). Probes are never registered in `expansion.py` and never ship; `tests/test_chapter_zero.py`
@@ -200,6 +201,9 @@ The script therefore launches the normal windowed game minimized. `-Windowed` ad
   `Init.NativeGates` lists each gate with its guard count (IvorySanctum_MainEtude 2/2, Golems_DragonEggs/Cue_0001 1/1), and a
   live relationship with a missing guard fails the run. The gate's in-world effect (the Sanctum's absent-dragon branch) is not
   driven: it needs a save at the Sanctum's first entry after the lair escape.
+  Answer and dialog gates also report their condition guards.
+  Q3 recovery reports `2/2 action branches`, checking the FinalResolve trigger and Cue_0032's OnStop separately.
+  Missing blueprints, either missing Q3 wrapper, wrong-owner or unbound Q3 branches, and missing condition guards fail live rows.
 
 ## What it does not prove
 
@@ -371,6 +375,22 @@ to stay in the loaded area; `units`, `distance`, `observeSeconds`, `entrySeconds
 ```powershell
 ./harness/run-harness.ps1 -Build -Saves '<copy of a Ch3 Drezen save>' -Spike Presence -NoRoundTrip -TimeoutMinutes 15
 ```
+
+To find coordinates when a locator is missing, use the mesh probe with a save already in the intended area:
+
+```powershell
+./harness/run-harness.ps1 -Saves '<save in the intended Drezen cellar>' -Spike Presence -PresenceProbe "12.5,0,-8" -ProbeRadius 10 -NoRoundTrip
+```
+
+The coordinates above are an example, not a verified cellar position.
+Probe mode stays in the saved area, skips the automatic Drezen entry, and spawns no copies.
+Use three finite coordinates with a decimal point and commas between coordinates; the radius must be positive and finite, and defaults to 10 m.
+It cannot be combined with `-PresenceLocator` or `-PresenceUnits`.
+The probe searches loaded pathfinding graphs, ignores unwalkable nodes, and uses the closest point on each mesh node or the position of other walkable nodes.
+`Saves[i].PresenceSpike.Probe` records the query position, radius, and up to twenty distinct points sorted by 3D distance, including coordinates and distances in metres.
+The script also prints these points when collecting the report.
+An empty search, unavailable graphs or a query error fails the spike and is recorded in its findings.
+The offline self-test covers probe parsing, ordering, radius filtering and report verdicts; querying a loaded area still needs a live run.
 
 ## Residence spike (`-Spike Residence`)
 

@@ -66,13 +66,14 @@ namespace RRT.TestHarness
         /// <summary>
         /// Opt-in feasibility spike, run after each save loads instead of driving scenes. "residence": the P2 harem residence
         /// spike (enter the Council Chamber, record its mechanics, spawn one presence copy there). "presence": the E12d quiet
-        /// copy check (spawn companion copies in Drezen, force their barks, watch them). Null: a normal run.
+        /// copy check (spawn companion copies in Drezen, force their barks, watch them), or a mesh query in the saved area.
+        /// Null: a normal run.
         /// Omitted from the report when null, so a normal run's report is unchanged.
         /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? Spike;
         /// <summary>Settings of the residence spike; filled with defaults when Spike is "residence".</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikePlan? Residence;
-        /// <summary>Settings of the presence (quiet copy) spike; filled with defaults when Spike is "presence".</summary>
+        /// <summary>Settings of the presence quiet-copy spike or mesh probe; filled with defaults when Spike is "presence".</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public PresenceSpikePlan? Presence;
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
 

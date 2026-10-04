@@ -45,7 +45,9 @@ internal static class Program
         Run("forced runs satisfy DelayHours by backdating hour.* times", DelayForcingChecks);
         Run("residence spike: plan, verdicts, report shape", ResidenceSpikeChecks);
         Run("residence spike: presence engine reflection vs built RRT DLL", () => ResidenceSpikeReflection(rrtDll));
+        Run("native gate attachment rows", () => NativeGateChecks.Run(rrtDll, Check));
         Run("presence spike: plan, verdicts, report shape", PresenceSpikeChecks);
+        Run("presence spike: mesh probe parsing, nearest points and verdicts", MeshProbeChecks);
         Run("skipped-forbidden runs are skips, not failures", ForbiddenSkipChecks);
         Run("presence spike: quiet-copy reflection vs built RRT DLL", () => PresenceSpikeReflection(rrtDll));
         Console.WriteLine(failures == 0 ? "SELF-TEST PASSED" : "SELF-TEST FAILED: " + failures + " check(s)");
@@ -511,6 +513,56 @@ internal static class Program
         Check((string?)j["Plan"]?["Spike"] == "Presence" && j["Saves"]?[0]?["PresenceSpike"]?["Copies"] != null, "the presence spike result is in the report");
         r.Saves[0].PresenceSpike = g; r.ComputeSummary();
         Check(r.Summary.Passed, "a green presence spike leaves the summary green");
+    }
+
+    static void MeshProbeChecks()
+    {
+        var plan = HarnessPlan.Parse(@"{""spike"":""presence"",""presence"":{""probe"":"" -1.5, 2,3 "",""probeRadius"":5,""units"":[]}}");
+        var coordinates = plan.Presence!.ProbeCoordinates!;
+        Check(coordinates.SequenceEqual(new[] { -1.5f, 2f, 3f }) && plan.Presence.ProbeRadius == 5f, "mesh query parses signed decimal coordinates and radius without needing copy units");
+        var oldCulture = System.Globalization.CultureInfo.CurrentCulture;
+        try
+        {
+            System.Globalization.CultureInfo.CurrentCulture = System.Globalization.CultureInfo.GetCultureInfo("fr-FR");
+            Check(HarnessPlan.Parse(@"{""spike"":""presence"",""presence"":{""probe"":""1.25,2,3""}}").Presence!.ProbeCoordinates![0] == 1.25f, "probe coordinates use invariant culture");
+        }
+        finally { System.Globalization.CultureInfo.CurrentCulture = oldCulture; }
+        foreach (var settings in new[] { @"""probe"":""1,2""", @"""probe"":""1,2,3,4""", @"""probe"":""NaN,2,3""", @"""probe"":""Infinity,2,3""",
+            @"""probe"":""1,2,3"",""probeRadius"":0", @"""probe"":""1,2,3"",""probeRadius"":-1", @"""probe"":""1,2,3"",""probeRadius"":""NaN""",
+            @"""probe"":""1,2,3"",""locator"":""locator""" })
+        {
+            bool rejected = false;
+            try { HarnessPlan.Parse("{\"spike\":\"presence\",\"presence\":{" + settings + "}}"); }
+            catch (FormatException) { rejected = true; }
+            Check(rejected, "invalid probe settings rejected: " + settings);
+        }
+        var probe = new WalkableProbe { Position = new[] { 0f, 0f, 0f }, Radius = 25f };
+        for (int x = 30; x >= 1; x--) probe.Consider(x, 0f, 0f);
+        probe.Consider(1f, 0f, 0f);
+        probe.Consider(float.NaN, 0f, 0f);
+        Check(probe.Points.Count == 20 && probe.Points.Select(p => p.Distance).SequenceEqual(Enumerable.Range(1, 20).Select(x => (double)x)), "nearest twenty are sorted, distinct, finite and within radius regardless of enumeration order");
+        var edge = new WalkableProbe { Position = new[] { 0f, 0f, 0f }, Radius = 5f };
+        edge.Consider(3f, 4f, 0f);
+        edge.Consider(0f, 0f, 6f);
+        Check(edge.Points.Count == 1 && edge.Points[0].Distance == 5, "radius uses 3D distance and includes its boundary");
+        var result = new PresenceSpikeResult { Probe = probe };
+        result.Evaluate();
+        Check(result.Passed && result.Copies.Count == 0, "a successful mesh query does not require spawned copies");
+        var report = new HarnessReport { Status = "complete", Plan = plan };
+        report.Init.RrtModFound = true; report.Init.Initialized = true;
+        report.Saves.Add(new SaveReport { Save = "cellar", LoadOk = true, PresenceSpike = result });
+        report.ComputeSummary();
+        var json = JObject.Parse(report.ToJson());
+        Check(report.Summary.Passed && (double?)json["Saves"]?[0]?["PresenceSpike"]?["Probe"]?["Points"]?[0]?["Distance"] == 1, "nearest coordinates and distances appear in a passing report");
+        result.Probe = new WalkableProbe { Position = coordinates, Radius = 5f };
+        result.Evaluate(); report.ComputeSummary();
+        Check(!result.Passed && !report.Summary.Passed && result.Findings.Single().Contains("no walkable points"), "an empty query fails the result and summary");
+        result.Probe.Error = "no pathfinding graphs";
+        result.Evaluate();
+        Check(!result.Passed && result.Findings.Single().Contains("no pathfinding graphs"), "graph lookup failures remain visible");
+        result.Probe = probe; result.Error = "query threw";
+        result.Evaluate();
+        Check(!result.Passed && result.Findings.Single() == "query threw", "partial results do not hide a query error");
     }
 
     static void ForbiddenSkipChecks()

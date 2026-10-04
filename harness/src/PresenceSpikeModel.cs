@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json;
 
 namespace RRT.TestHarness
 {
@@ -30,6 +32,10 @@ namespace RRT.TestHarness
         /// Commander, as an E12b At.Locator presence would (engine queue 9d: Devarra's Huge dragon at TerendelevUndeadLocator).
         /// The spike then also checks the spot: nearest walkable node, drift after the copy settles, and room for its body.</summary>
         public string? Locator;
+        /// <summary>Optional x,y,z mesh query in the saved area; replaces the quiet-copy spike and never spawns units.</summary>
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? Probe;
+        public float ProbeRadius = 10f;
+        [JsonIgnore] public float[]? ProbeCoordinates;
         /// <summary>Largest accepted gap (m) between the locator and the nearest walkable node, and drift of the settled copy.</summary>
         public float MaxWalkableGap = 1.5f;
         /// <summary>How long the copies are watched after their bark triggers are forced.</summary>
@@ -39,11 +45,24 @@ namespace RRT.TestHarness
 
         public void Normalize()
         {
+            ProbeCoordinates = null;
+            if (Probe != null)
+            {
+                var parts = Probe.Split(',');
+                var coordinates = new float[3];
+                if (parts.Length != 3 || parts.Where((part, i) => !float.TryParse(part, NumberStyles.Float, CultureInfo.InvariantCulture, out coordinates[i])
+                    || float.IsNaN(coordinates[i]) || float.IsInfinity(coordinates[i])).Any())
+                    throw new FormatException("presence.probe needs three finite coordinates: x,y,z (decimal point, commas between coordinates).");
+                ProbeCoordinates = coordinates;
+                if (!string.IsNullOrWhiteSpace(Locator)) throw new FormatException("presence.probe cannot be combined with presence.locator.");
+            }
+            if (ProbeRadius <= 0f || float.IsNaN(ProbeRadius) || float.IsInfinity(ProbeRadius))
+                throw new FormatException("presence.probeRadius must be finite and greater than zero.");
             EnterPoint = string.IsNullOrWhiteSpace(EnterPoint) ? null : ResidenceSpikePlan.Norm(EnterPoint!);
             Locator = string.IsNullOrWhiteSpace(Locator) ? null : Locator!.Trim().ToLowerInvariant();
             if (MaxWalkableGap <= 0f) MaxWalkableGap = 1.5f;
             Units = (Units ?? new List<string>()).Where(u => !string.IsNullOrWhiteSpace(u)).Select(ResidenceSpikePlan.Norm).Distinct().ToList();
-            if (Units.Count == 0) throw new FormatException("presence.units needs at least one unit blueprint guid.");
+            if (Units.Count == 0 && ProbeCoordinates == null) throw new FormatException("presence.units needs at least one unit blueprint guid.");
             if (Distance < 1f) Distance = 1f;
             if (ObserveSeconds < 1) ObserveSeconds = 1;
             if (EntrySeconds < 10) EntrySeconds = 10;
@@ -86,6 +105,7 @@ namespace RRT.TestHarness
         public string? NotIdle;
         public List<string> Skipped = new List<string>();
         public List<QuietCopyProbe> Copies = new List<QuietCopyProbe>();
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public WalkableProbe? Probe;
         /// <summary>Dialogs that started while the copies were watched (none should: the harness opens none).</summary>
         public List<string> Dialogs = new List<string>();
         public List<string> Notes = new List<string>();
@@ -101,7 +121,8 @@ namespace RRT.TestHarness
         /// <summary>
         /// Passes when at least one copy spawned, and every spawned copy exists, is not Player faction, is not in the party
         /// group, is passive, has silent asks, never entered combat, played no audible bark and was removed afterwards, and no
-        /// dialog started while the copies were watched. Findings lists every failed check.
+        /// dialog started while the copies were watched. A mesh probe instead needs walkable points and no query error.
+        /// Findings lists every failed check.
         /// </summary>
         public void Evaluate()
         {
@@ -110,7 +131,12 @@ namespace RRT.TestHarness
             if (EntryError != null) Findings.Add("entry: " + EntryError);
             if (NotIdle != null) Findings.Add("not idle: " + NotIdle);
             var spawned = Copies.Where(c => c.Spawned).ToList();
-            if (Error == null && EntryError == null && NotIdle == null && spawned.Count == 0)
+            if (Probe != null)
+            {
+                if (Probe.Error != null) Findings.Add("mesh probe: " + Probe.Error);
+                if (Probe.Points.Count == 0 && Probe.Error == null) Findings.Add("mesh probe: no walkable points within " + Probe.Radius + " m");
+            }
+            if (Probe == null && Error == null && EntryError == null && NotIdle == null && spawned.Count == 0)
                 Findings.Add("no copy was spawned" + (Skipped.Count > 0 ? "; skipped " + string.Join("; ", Skipped) : "")
                     + string.Concat(Copies.Where(c => c.EngineStatus != null).Select(c => "; " + c.UnitName + ": " + c.EngineStatus)));
             foreach (var c in Copies)

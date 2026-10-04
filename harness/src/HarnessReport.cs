@@ -148,7 +148,7 @@ namespace RRT.TestHarness
         public RoundTripResult RoundTrip = new RoundTripResult();
         /// <summary>-Spike Residence only (omitted otherwise): the P2 residence feasibility spike for this save.</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikeResult? Residence;
-        /// <summary>-Spike Presence only (omitted otherwise): the E12d quiet-copy check for this save.</summary>
+        /// <summary>-Spike Presence only (omitted otherwise): the quiet-copy check or walkable mesh probe for this save.</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public PresenceSpikeResult? PresenceSpike;
         public List<CapturedLog> Exceptions = new List<CapturedLog>();
         public double TotalMs;

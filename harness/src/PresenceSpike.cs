@@ -57,17 +57,8 @@ namespace RRT.TestHarness
             var guests = new List<(object Guest, QuietCopyProbe Probe)>();
             try
             {
-                var problems = rrt == null ? new List<string> { "RRT bridge not available" } : RrtBridge.Validate(rrt.Assembly, RrtBridge.PresenceSpikeExpectations);
-                if (problems.Count > 0) { res.Error = "spike reflection: " + string.Join("; ", problems); yield break; }
-                if (!barkPatched)
-                {
-                    barkPatched = true;
-                    try { harmony.Patch(AccessTools.Method(typeof(UnitAsksComponent.Bark), "Play"), prefix: new HarmonyMethod(typeof(HarnessRunner), nameof(SpikeBarkPrefix))); }
-                    catch (Exception ex) { res.Error = "could not observe barks: " + ex.Message; yield break; }
-                }
-
                 // ---- Drezen: stay when already there, else load the enter point ------------------------------------------
-                if (sp.EnterPoint != null && ResidenceSpikePlan.Norm(game.CurrentlyLoadedArea?.AssetGuid.ToString() ?? "") != PresenceSpikePlan.DrezenCapital)
+                if (sp.ProbeCoordinates == null && sp.EnterPoint != null && ResidenceSpikePlan.Norm(game.CurrentlyLoadedArea?.AssetGuid.ToString() ?? "") != PresenceSpikePlan.DrezenCapital)
                 {
                     var enter = Bp<BlueprintAreaEnterPoint>(sp.EnterPoint);
                     if (enter == null) { res.EntryError = "enter point " + sp.EnterPoint + " is not a BlueprintAreaEnterPoint"; yield break; }
@@ -85,6 +76,29 @@ namespace RRT.TestHarness
                 var area = game.CurrentlyLoadedArea!;
                 string areaGuid = ResidenceSpikePlan.Norm(area.AssetGuid.ToString());
                 res.Area = area.name + " " + areaGuid;
+                if (sp.ProbeCoordinates != null)
+                {
+                    var query = res.Probe = new WalkableProbe { Position = sp.ProbeCoordinates, Radius = sp.ProbeRadius };
+                    var graphs = AstarPath.active?.data?.graphs;
+                    if (graphs == null) { query.Error = "no pathfinding graphs in the saved area"; yield break; }
+                    var position = new Vector3(query.Position[0], query.Position[1], query.Position[2]);
+                    foreach (var graph in graphs)
+                        graph?.GetNodes((Action<Pathfinding.GraphNode>)(node =>
+                        {
+                            if (!node.Walkable) return;
+                            var point = node is Pathfinding.MeshNode mesh ? mesh.ClosestPointOnNode(position) : (Vector3)node.position;
+                            query.Consider(point.x, point.y, point.z);
+                        }));
+                    yield break;
+                }
+                var problems = rrt == null ? new List<string> { "RRT bridge not available" } : RrtBridge.Validate(rrt.Assembly, RrtBridge.PresenceSpikeExpectations);
+                if (problems.Count > 0) { res.Error = "spike reflection: " + string.Join("; ", problems); yield break; }
+                if (!barkPatched)
+                {
+                    barkPatched = true;
+                    try { harmony.Patch(AccessTools.Method(typeof(UnitAsksComponent.Bark), "Play"), prefix: new HarmonyMethod(typeof(HarnessRunner), nameof(SpikeBarkPrefix))); }
+                    catch (Exception ex) { res.Error = "could not observe barks: " + ex.Message; yield break; }
+                }
                 var main = game.Player.MainCharacter.Value;
 
                 // ---- spawn one copy per candidate through RRT's GuestPresence ----------------------------------------------

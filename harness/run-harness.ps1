@@ -35,6 +35,10 @@
   dragon (engine queue 9d):
   ./harness/run-harness.ps1 -Build -Saves '<copy of a Ch5 Drezen save>' -Spike Presence -PresenceUnits c4b5746d3d2511441ba18a894cecb328 -PresenceLocator d7aa4429-41bd-4d58-bb17-074863d847f7 -Screenshots -NoRoundTrip -TimeoutMinutes 15
 
+  -PresenceProbe "x,y,z" -ProbeRadius N searches the saved area's walkable mesh instead of spawning copies.
+  It prints the twenty nearest distinct points within N metres (default 10), also stored in PresenceSpike.Probe.
+  Probe mode stays in the saved area and cannot be combined with -PresenceUnits or -PresenceLocator.
+
   -Probes installs the harness-only probe story (tools/build-harness-probes.py: development/Story.json plus
   storylines/harness_probes.py, e.g. the E-new 0 Prologue probe pacing.e0.probe) and its inline hosts in place of the shipped
   ones. Probes never ship. ./harness/run-harness.ps1 -Saves '<copy of a Prologue save>' -Probes -Inline -SceneFilter @('pacing.e0.')
@@ -68,6 +72,8 @@ param(
     [ValidateSet('Residence', 'Presence')][string]$Spike,
     [string[]]$PresenceUnits = @(),
     [string]$PresenceLocator,
+    [string]$PresenceProbe,
+    [float]$ProbeRadius = 10,
     [switch]$Probes,
     [switch]$Build,
     [int]$TimeoutMinutes = 45,
@@ -223,11 +229,27 @@ $plan = [ordered]@{
 }
 # Opt-in only: without -Spike the plan (and so the run) is exactly as before.
 if ($Spike) { $plan.spike = $Spike.ToLowerInvariant() }
-if (($PresenceUnits.Count -gt 0 -or $PresenceLocator) -and $Spike -ne 'Presence') { throw '-PresenceUnits and -PresenceLocator need -Spike Presence.' }
-if ($Spike -eq 'Presence' -and ($PresenceUnits.Count -gt 0 -or $PresenceLocator)) {
+if (($PresenceUnits.Count -gt 0 -or $PresenceLocator -or $PSBoundParameters.ContainsKey('PresenceProbe') -or $PSBoundParameters.ContainsKey('ProbeRadius')) -and $Spike -ne 'Presence') {
+    throw '-PresenceUnits, -PresenceLocator, -PresenceProbe and -ProbeRadius need -Spike Presence.'
+}
+if ($PSBoundParameters.ContainsKey('ProbeRadius') -and !$PSBoundParameters.ContainsKey('PresenceProbe')) { throw '-ProbeRadius needs -PresenceProbe.' }
+if ($PSBoundParameters.ContainsKey('PresenceProbe')) {
+    if ($PresenceLocator -or $PresenceUnits.Count -gt 0) { throw '-PresenceProbe cannot be combined with -PresenceLocator or -PresenceUnits.' }
+    $coordinates = @($PresenceProbe.Split(','))
+    if ($coordinates.Count -ne 3) { throw '-PresenceProbe needs three finite coordinates: x,y,z.' }
+    foreach ($coordinate in $coordinates) {
+        $value = [float]0
+        if (![float]::TryParse($coordinate, [Globalization.NumberStyles]::Float, [Globalization.CultureInfo]::InvariantCulture, [ref]$value) -or [float]::IsNaN($value) -or [float]::IsInfinity($value)) {
+            throw '-PresenceProbe needs three finite coordinates: x,y,z.'
+        }
+    }
+    if ($ProbeRadius -le 0 -or [float]::IsNaN($ProbeRadius) -or [float]::IsInfinity($ProbeRadius)) { throw '-ProbeRadius must be finite and greater than zero.' }
+}
+if ($Spike -eq 'Presence' -and ($PresenceUnits.Count -gt 0 -or $PresenceLocator -or $PSBoundParameters.ContainsKey('PresenceProbe'))) {
     $presence = [ordered]@{}
     if ($PresenceUnits.Count -gt 0) { $presence.units = @($PresenceUnits) }
     if ($PresenceLocator) { $presence.locator = $PresenceLocator }
+    if ($PSBoundParameters.ContainsKey('PresenceProbe')) { $presence.probe = $PresenceProbe; $presence.probeRadius = $ProbeRadius }
     $plan.presence = $presence
 }
 $planJson = $plan | ConvertTo-Json -Depth 5
@@ -421,6 +443,13 @@ try {
                 if (@($rs.NativeActions).Count) { Say ("      native actions: {0}" -f (@($rs.NativeActions) -join '; ')) Yellow }
                 Say ("      copy {0}: spawned={1} view={2} rendered={3} walked={4} m dialog={5} removed={6}" -f $pr.UnitName, $pr.Spawned, $pr.ViewActive, $pr.Rendered, $pr.PathMovedMetres, $pr.DialogStarted, $pr.Removed)
                 foreach ($f in @($rs.Findings)) { Say "      - $f" Yellow }
+            }
+            if ($sv.PSObject.Properties['PresenceSpike'] -and $sv.PresenceSpike -and $sv.PresenceSpike.PSObject.Properties['Probe'] -and $sv.PresenceSpike.Probe) {
+                $probe = $sv.PresenceSpike.Probe
+                Say ("    walkable probe: {0}, radius {1} m, area {2}" -f ($probe.Position -join ','), $probe.Radius, $sv.PresenceSpike.Area) Cyan
+                foreach ($point in @($probe.Points)) {
+                    Say ("      {0} ({1:N3} m)" -f (($point.Position | ForEach-Object { $_.ToString('R', [Globalization.CultureInfo]::InvariantCulture) }) -join ','), $point.Distance)
+                }
             }
         }
         Say ("Runs {0}/{1} passed, choices {2}, relevant exceptions {3}, oracle failures {4}" -f $s.RunsPassed, $s.Runs, $s.Choices, $s.RelevantExceptions, $s.OracleFailures)
