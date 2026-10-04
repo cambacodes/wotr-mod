@@ -22,6 +22,9 @@ try {
 
     & $pythonPath expansion.py
     if ($LASTEXITCODE) { throw 'Expansion generation failed' }
+    # ENGINE-Q6A: cross-route audit debt is reported; existing findings do not fail packaging.
+    & $pythonPath tools/crossroute_lint.py --story development/Story.json
+    # Report mode returns zero even with findings. Strict baseline enforcement is opt-in.
     $validatedStoryHash = (Get-FileHash -LiteralPath 'development/Story.json').Hash
     & $dotnetPath build src/Tirabade.csproj -c Release --nologo -v quiet "-p:GameDir=$GameDir/"
     if ($LASTEXITCODE) { throw 'Expansion assembly build failed' }
