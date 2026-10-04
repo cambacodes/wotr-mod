@@ -30,7 +30,7 @@ class MemoryCallbackTests(unittest.TestCase):
     def test_all_prices_heard_and_unheard(self):
         from storylines import foresight as f
         scenes = {s["Id"]: s for s in self.story["Scenes"]}
-        for contract in json.loads(lint.CONTRACTS.read_text()):
+        for contract in json.loads(lint.CONTRACTS.read_text(encoding="utf-8")):
             if contract["scene"] not in scenes:
                 continue
             nodes = {n["Id"]: n for n in scenes[contract["scene"]]["Nodes"]}
@@ -59,7 +59,7 @@ class MemoryCallbackTests(unittest.TestCase):
                             self.assertEqual(text, nodes[contract["node"]]["Text"])
 
     def test_guard_continuation_and_twin_mutations(self):
-        contracts = json.loads(lint.CONTRACTS.read_text())
+        contracts = json.loads(lint.CONTRACTS.read_text(encoding="utf-8"))
         for contract in contracts:
             if not any(s["Id"] == contract["scene"] for s in self.story["Scenes"]):
                 continue

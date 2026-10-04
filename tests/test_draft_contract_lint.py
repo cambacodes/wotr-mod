@@ -48,7 +48,7 @@ class DraftContractTests(unittest.TestCase):
         manuscript = {"Scenes": [s for d in self.inventory.values() for s in d.get("scenes", [])]}
         player = player_text_lint.check(manuscript, draft=True)["review"]
         structure = text_structure_lint.check(manuscript, draft=True)
-        findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text())["findings"]
+        findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text(encoding="utf-8"))["findings"]
         for f in findings:
             if f.get("item_id") not in {"E-Q7-20", "E-Q7-21"} or not f["snapshot_evidence"].get("draft_finding"):
                 continue

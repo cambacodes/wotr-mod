@@ -42,7 +42,7 @@ THERAPY = re.compile(r'\b(?:permission|consent|boundar(?:y|ies)|you may refuse|a
 
 
 def check(story, exceptions=None, draft=False):
-    policy = json.loads(EXCEPTIONS.read_text()) if exceptions is None else exceptions
+    policy = json.loads(EXCEPTIONS.read_text(encoding="utf-8")) if exceptions is None else exceptions
     rows, counts = [], {}
     for sid, location, text, speaker, kind in surfaces(story):
         for term in THERAPY.finditer(text):

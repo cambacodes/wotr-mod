@@ -89,9 +89,9 @@ class ObligationFlowTests(unittest.TestCase):
         report = lint.lint({"Scenes": []}, self.contracts, drafts=self.story)
         self.assertEqual(report["findings"][0]["status"], "dead_obligation")
         root = Path(__file__).resolve().parents[1]
-        backlog = json.loads((root / "tools/engine_backlog.json").read_text())
+        backlog = json.loads((root / "tools/engine_backlog.json").read_text(encoding="utf-8"))
         expected = next(i["finding_ids"] for i in backlog["items"] if i["id"] == "E-Q7-23")
-        self.assertCountEqual(expected, [c["finding"] for c in json.loads(lint.DEFAULT.read_text())["obligations"]])
+        self.assertCountEqual(expected, [c["finding"] for c in json.loads(lint.DEFAULT.read_text(encoding="utf-8"))["obligations"]])
 
 
 if __name__ == "__main__":

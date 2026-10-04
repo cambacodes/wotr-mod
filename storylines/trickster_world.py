@@ -721,7 +721,7 @@ def integrate_participant_inventory(payload):
     import copy
     import json
     from pathlib import Path
-    contract = json.loads((Path(__file__).resolve().parents[1] / "tools/participant_inventory_contracts.json").read_text())
+    contract = json.loads((Path(__file__).resolve().parents[1] / "tools/participant_inventory_contracts.json").read_text(encoding="utf-8"))
     payload.setdefault("Etudes", {}).update(contract["bindings"])
     for key, spec in contract["readers"].items():
         payload.setdefault("Derived", {})[key] = spec["groups"]

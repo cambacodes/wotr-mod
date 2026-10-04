@@ -114,7 +114,7 @@ def index(story):
 
 
 def lint(story, contracts=None, drafts=None):
-    contracts = contracts or json.loads(DEFAULT.read_text())
+    contracts = contracts or json.loads(DEFAULT.read_text(encoding="utf-8"))
     result = {"hard": [], "review": [], "findings": [], "unbound_forbids": []}
     shipped = index(story)
     draft_index = index(drafts or {})
@@ -168,7 +168,7 @@ def main(argv=None):
     if args.drafts:
         import sys
         sys.path.insert(0, str(DEFAULT.parents[1]))
-    report = lint(json.loads(Path(args.story).read_text()), drafts=load_drafts() if args.drafts else None)
+    report = lint(json.loads(Path(args.story).read_text(encoding="utf-8")), drafts=load_drafts() if args.drafts else None)
     print(json.dumps(report, indent=2))
     return bool(report["hard"])
 

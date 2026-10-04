@@ -7,7 +7,7 @@ from .common import OR, lit, finding, postwar, ep
 LIVING = re.compile(r"\b(?:you (?:stand|sit|take|touch|kiss|walk|hold|return|wake|smile|laugh|reach|enter|lie|are)|your (?:hand|lips|mouth|arms|bed)|Commander (?:stands|sits|takes|touches|returns|walks|holds))\b", re.I)
 # eng7-l12: explicit block contracts also cover third-person living futures
 # which a second-person action heuristic cannot recognise.
-CONTRACTS = json.loads((Path(__file__).resolve().parents[1] / "commander_block_contracts.json").read_text())["continuations"]
+CONTRACTS = json.loads((Path(__file__).resolve().parents[1] / "commander_block_contracts.json").read_text(encoding="utf-8"))["continuations"]
 
 
 def check(model, blocks, proof):

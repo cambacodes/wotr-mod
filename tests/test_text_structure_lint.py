@@ -12,7 +12,7 @@ class TextStructureTests(unittest.TestCase):
         rows = lint.check(story)
         self.assertFalse(rows["hard"], rows["hard"])
         surfaces = {(sid, location): text for sid, location, text, _, _ in lint.surfaces(story)}
-        findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text())["findings"]
+        findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text(encoding="utf-8"))["findings"]
         for finding in findings:
             if finding.get("item_id") != "E-Q7-20" or finding["snapshot_evidence"].get("draft_finding"):
                 continue

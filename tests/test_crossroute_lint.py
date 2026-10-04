@@ -311,12 +311,12 @@ class ReportingTests(unittest.TestCase):
                 self.assertEqual(lint.main(args + ["--strict"]), 1)
                 self.assertEqual(lint.main(args + ["--write-baseline"]), 0)
                 self.assertEqual(lint.main(args + ["--strict"]), 0)
-                data = json.loads(story.read_text())
+                data = json.loads(story.read_text(encoding="utf-8"))
                 data["Scenes"][0]["Nodes"][0]["Text"] += " A different unguarded beat."
                 story.write_text(json.dumps(data))
                 self.assertEqual(lint.main(args + ["--strict"]), 1)
-            self.assertIn("L1", text.read_text())
-            self.assertTrue(json.loads(report.read_text())["new_findings"])
+            self.assertIn("L1", text.read_text(encoding="utf-8"))
+            self.assertTrue(json.loads(report.read_text(encoding="utf-8"))["new_findings"])
 
     def test_deterministic_order_and_no_baseline_self_approval(self):
         s = fixture("Seelah's name is written on the page.")

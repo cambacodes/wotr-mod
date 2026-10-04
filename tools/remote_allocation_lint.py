@@ -58,7 +58,7 @@ def count_history(story, allocation, chapter, deliveries):
 
 
 def lint(story, contracts=None, histories=None):
-    contracts = contracts or json.loads(DEFAULT.read_text())
+    contracts = contracts or json.loads(DEFAULT.read_text(encoding="utf-8"))
     result = {"hard": [], "review": [], "histories": [], "findings": []}
     allocations = {a["character"]: a for a in contracts["allocations"]}
     for name, a in allocations.items():
@@ -87,8 +87,8 @@ def main(argv=None):
     ap.add_argument("--story", default=str(DEFAULT.parents[1] / "development/Story.json"))
     ap.add_argument("--histories", type=Path, help="completed delivery traces from route walkers")
     args = ap.parse_args(argv)
-    histories = json.loads(args.histories.read_text()) if args.histories else None
-    report = lint(json.loads(Path(args.story).read_text()), histories=histories)
+    histories = json.loads(args.histories.read_text(encoding="utf-8")) if args.histories else None
+    report = lint(json.loads(Path(args.story).read_text(encoding="utf-8")), histories=histories)
     print(json.dumps(report, indent=2))
     return bool(report["hard"])
 

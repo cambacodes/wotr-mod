@@ -14,8 +14,8 @@ class HaremInventory(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
-        cls.schedule = json.loads(sim.SCHEDULE.read_text())
-        cls.scenarios = json.loads((ROOT / 'tools/harem_inventory_scenarios.json').read_text())
+        cls.schedule = json.loads(sim.SCHEDULE.read_text(encoding="utf-8"))
+        cls.scenarios = json.loads((ROOT / 'tools/harem_inventory_scenarios.json').read_text(encoding="utf-8"))
         cls.route_run = e9.simulate_rest_budget(e9.Model(cls.story))
 
     def test_missing_build_sheets_and_native_walk_block_certification(self):

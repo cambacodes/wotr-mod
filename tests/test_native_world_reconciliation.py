@@ -26,7 +26,7 @@ class NativeWorldInventoryTests(unittest.TestCase):
         for target in targets:
             self.assertEqual(rows[target]["Evidence"], self.found[target]["path"])
             self.assertTrue(rows[target]["Authored"])
-        source = (ROOT / "src/NativeWorldReconciliation.cs").read_text()
+        source = (ROOT / "src/NativeWorldReconciliation.cs").read_text(encoding="utf-8")
         ids = re.findall(r'"([a-f0-9-]{36})"', source.split("CorpseIds =", 1)[1].split("};", 1)[0])
         self.assertEqual(tuple(ids), registry.CORPSE_IDS)
 

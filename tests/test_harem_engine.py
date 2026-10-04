@@ -101,7 +101,7 @@ class HouseholdEngine(unittest.TestCase):
         story = json.loads((ROOT / 'development/Story.json').read_text(encoding='utf-8-sig'))
         key = 'jerribeth.harem.vellexia_defection_seen'
         self.assertEqual(story['SeenCues'][key], ['e0ee422a413a5f94ea90bede3096ee56'])
-        schedule = json.loads((ROOT / 'tools/harem-schedule.json').read_text())
+        schedule = json.loads((ROOT / 'tools/harem-schedule.json').read_text(encoding="utf-8"))
         row = next(row for row in schedule['schedule'] if row['ref'] == 'S28')
         self.assertIn(key, row['reads'])
         model = rrt_verify.Model(story)

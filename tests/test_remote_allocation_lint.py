@@ -9,7 +9,7 @@ from tools import remote_allocation_lint as lint
 
 class RemoteAllocationTests(unittest.TestCase):
     def setUp(self):
-        self.contracts = json.loads(lint.DEFAULT.read_text())
+        self.contracts = json.loads(lint.DEFAULT.read_text(encoding="utf-8"))
         self.allocations = {a["character"]: a for a in self.contracts["allocations"]}
 
     def scene(self, sid, who="Wenduag", chapter=5, relationship=None, remote=True, owner=None):
@@ -70,7 +70,7 @@ class RemoteAllocationTests(unittest.TestCase):
 
     def test_mapped_findings_and_every_audited_road_registered(self):
         root = Path(__file__).resolve().parents[1]
-        backlog = json.loads((root / "tools/engine_backlog.json").read_text())
+        backlog = json.loads((root / "tools/engine_backlog.json").read_text(encoding="utf-8"))
         expected = next(i["finding_ids"] for i in backlog["items"] if i["id"] == "E-Q7-17")
         self.assertCountEqual(expected, [c["finding"] for c in self.contracts["findings"]])
         sequences = self.contracts["audit_sequences"]

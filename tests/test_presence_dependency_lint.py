@@ -7,7 +7,7 @@ from tools.presence_dependency_lint import check, OWNED_ROUTES
 
 class PresenceDependencyTests(unittest.TestCase):
     def test_export_and_mutations(self):
-        story = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text())
+        story = json.loads((Path(__file__).resolve().parents[1] / "development/Story.json").read_text(encoding="utf-8"))
         self.assertEqual([], check(story, OWNED_ROUTES))
         for name in ("camellia.presence", "irabeth.presence", "kaylessa.presence",
                      "minagho_chivarro.presence.minagho", "nurah.presence.cell"):

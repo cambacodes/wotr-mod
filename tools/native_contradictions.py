@@ -229,13 +229,13 @@ def main():
     parser.add_argument("--strict-inventory", action="store_true", help="fail on uncovered/unevaluated mapped dependencies")
     args = parser.parse_args()
     payload = json.loads(args.story.read_text(encoding="utf-8-sig"))
-    coverage = json.loads(args.coverage.read_text()) if args.coverage else None
+    coverage = json.loads(args.coverage.read_text(encoding="utf-8")) if args.coverage else None
     if coverage:
         import hashlib
         if coverage.get("StorySha256") != hashlib.sha256(args.story.read_bytes()).hexdigest():
             raise ValueError("Native inventory: stale selector evidence for another story export")
-    inventory, failures = render_inventory(payload, json.loads(args.inventory.read_text()),
-                                          json.loads((ROOT / "tools/engine_backlog.json").read_text()), coverage)
+    inventory, failures = render_inventory(payload, json.loads(args.inventory.read_text(encoding="utf-8")),
+                                          json.loads((ROOT / "tools/engine_backlog.json").read_text(encoding="utf-8")), coverage)
     strings = json.loads((args.game / "Wrath_Data/StreamingAssets/Localization/enGB.json").read_text(encoding="utf-8-sig"))["strings"]
     with ZipFile(args.game / "blueprints.zip") as archive:
         report = render(payload, iter_records(archive, ("World/Dialogs/",)), strings)

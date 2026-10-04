@@ -8,7 +8,7 @@ CONTRACTS = Path(__file__).with_name("memory_callback_contracts.json")
 
 
 def check(story, contracts=None):
-    contracts = json.loads(CONTRACTS.read_text()) if contracts is None else contracts
+    contracts = json.loads(CONTRACTS.read_text(encoding="utf-8")) if contracts is None else contracts
     scenes = {s["Id"]: s for s in story["Scenes"]}
     hard, executed, absent = [], [], []
     for contract in contracts:

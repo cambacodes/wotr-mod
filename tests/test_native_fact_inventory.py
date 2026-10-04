@@ -14,10 +14,10 @@ class NativeFactInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.payload = expansion.make_expansion()
-        cls.spec = json.loads(EXPECTATIONS.read_text())
+        cls.spec = json.loads(EXPECTATIONS.read_text(encoding="utf-8"))
 
     def test_each_mapped_finding_has_current_evidence(self):
-        backlog = json.loads(Path('tools/engine_backlog.json').read_text())
+        backlog = json.loads(Path('tools/engine_backlog.json').read_text(encoding="utf-8"))
         expected = {f['id'] for f in backlog['findings'] if f.get('item_id') == 'E-Q7-10'}
         self.assertEqual(expected, {f['id'] for f in self.spec['findings']})
         scenes = {s['Id']: s for s in self.payload['Scenes']}

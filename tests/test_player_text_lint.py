@@ -38,7 +38,7 @@ class PlayerTextTests(unittest.TestCase):
         import expansion
         story = expansion.make_expansion()
         rows = lint.check(story)["review"]
-        findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text())["findings"]
+        findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text(encoding="utf-8"))["findings"]
         for finding in findings:
             if finding.get("item_id") == "E-Q7-21" and finding["route"] == "arsinoe":
                 node = finding["problem"].split()[1]

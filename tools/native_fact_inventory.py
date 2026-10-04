@@ -14,7 +14,7 @@ EXPECTATIONS = Path(__file__).with_name('native_fact_inventory_expectations.json
 
 
 def verify_inventory(payload, archive=None, expectations=None):
-    spec = expectations or json.loads(EXPECTATIONS.read_text())
+    spec = expectations or json.loads(EXPECTATIONS.read_text(encoding="utf-8"))
     for witness in spec['witnesses']:
         name, reader, expected = witness['flag'], witness['reader'], witness['value']
         if payload.get(reader, {}).get(name) != expected:

@@ -87,15 +87,15 @@ class TimelineContractTests(unittest.TestCase):
 
     def test_every_mapped_finding_has_a_contract(self):
         root = Path(__file__).resolve().parents[1]
-        backlog = json.loads((root / "tools/engine_backlog.json").read_text())
+        backlog = json.loads((root / "tools/engine_backlog.json").read_text(encoding="utf-8"))
         expected = next(i["finding_ids"] for i in backlog["items"] if i["id"] == "E-Q7-18")
-        contracts = json.loads(lint.DEFAULT.read_text())["contracts"]
+        contracts = json.loads(lint.DEFAULT.read_text(encoding="utf-8"))["contracts"]
         self.assertCountEqual(expected, [c["finding"] for c in contracts])
 
     def test_shipped_binding_schedules_and_mutated_waits(self):
         from expansion import make_expansion
         story = make_expansion()
-        contracts = json.loads(lint.DEFAULT.read_text())
+        contracts = json.loads(lint.DEFAULT.read_text(encoding="utf-8"))
         for schedule in contracts["schedules"]:
             witness = lint.replay_schedule(story, schedule)
             self.assertEqual(witness["hour"], 168, witness)

@@ -196,7 +196,7 @@ def producer_floors(story):
 
 
 def lint(story, contracts=None):
-    contracts = contracts or json.loads(DEFAULT.read_text())
+    contracts = contracts or json.loads(DEFAULT.read_text(encoding="utf-8"))
     scenes = {s["Id"]: s for s in story.get("Scenes", [])}
     floors, traces = producer_floors(story)
     result = {"hard": [], "review": [], "findings": [], "schedules": []}
@@ -257,7 +257,7 @@ def main(argv=None):
     ap.add_argument("--story", default=str(DEFAULT.parents[1] / "development/Story.json"))
     ap.add_argument("--contracts", type=Path, default=DEFAULT)
     args = ap.parse_args(argv)
-    report = lint(json.loads(Path(args.story).read_text()), json.loads(args.contracts.read_text()))
+    report = lint(json.loads(Path(args.story).read_text(encoding="utf-8")), json.loads(args.contracts.read_text(encoding="utf-8")))
     print(json.dumps(report, indent=2))
     return bool(report["hard"])
 

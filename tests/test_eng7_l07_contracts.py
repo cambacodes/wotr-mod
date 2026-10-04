@@ -83,7 +83,7 @@ class InventoryContracts(unittest.TestCase):
                         self.assertTrue(return_provenance_lint.check(story))
 
     def test_current_acts_consume_t7_and_keep_independent_or_gate(self):
-        data = json.loads((ROOT / 'tools/current_act_inventory_contracts.json').read_text())
+        data = json.loads((ROOT / 'tools/current_act_inventory_contracts.json').read_text(encoding="utf-8"))
         for sid in data['new_acts']:
             scene = next(s for s in self.story['Scenes'] if s['Id'] == sid)
             self.assertTrue(earned_presence_lint.live_context(self.story, scene), sid)

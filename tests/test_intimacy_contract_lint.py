@@ -19,7 +19,7 @@ class IntimacyContractTests(unittest.TestCase):
         import itertools
         import json
         scenes = {s["Id"]: s for s in self.story["Scenes"]}
-        for contract in json.loads(lint.CONTRACTS.read_text()):
+        for contract in json.loads(lint.CONTRACTS.read_text(encoding="utf-8")):
             host = scenes[contract["scene"]]
             prior = sorted({f for n in host["Nodes"] for c in n["Choices"] for f in c.get("Requires", []) + c.get("Forbids", [])
                             if not f.startswith("camellia.trickster.encounter.")})
@@ -31,7 +31,7 @@ class IntimacyContractTests(unittest.TestCase):
 
     def test_deleting_morning_or_reader_fails_each_contract(self):
         import json
-        contracts = json.loads(lint.CONTRACTS.read_text())
+        contracts = json.loads(lint.CONTRACTS.read_text(encoding="utf-8"))
         for contract in contracts:
             for mutation in ("morning", "callback"):
                 sid = contract["scene"] if mutation == "morning" else contract["callback_scene"]
