@@ -464,3 +464,12 @@ def integrate(payload):
         payload["SeenCues"][key] = list(cues)
     for key, groups in DERIVED.items():
         payload.setdefault("Derived", {})[key] = [list(g) for g in groups]
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'dorgelinda.trickster.audit.open',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

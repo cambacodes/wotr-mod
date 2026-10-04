@@ -1027,3 +1027,13 @@ def integrate(payload):
             for choice in node["Choices"]:
                 if "jerribeth.closed" in choice["Set"] and PARTED not in choice["Set"]:
                     choice["Set"] = [*choice["Set"], PARTED]
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'jerribeth.trickster.dead.tenant',
+    'jerribeth.trickster.dead.tenant_nexus',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

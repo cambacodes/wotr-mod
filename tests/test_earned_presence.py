@@ -35,7 +35,7 @@ def base():
                                       UnavailableOverrides={"her.dead": "her.returned"},
                                       TricksterAccess={"dead": dict(Returned="her.returned")})},
         "Scenes": [
-            dict(Id="her.device", Owner="Her", Relationship="her", Requires=["trickster", "her.dead"], Forbids=[],
+            dict(Id="her.device", Owner="Her", Relationship="her", Requires=["trickster", "her.dead"], Forbids=["trickster.failed"],
                  Nodes=[dict(Id="n", Choices=[dict(Set=["her.returned"], Requires=[], Forbids=[])])]),
             dict(Id="her.commit", Owner="Her", Relationship="her", Requires=[], Forbids=[],
                  Nodes=[dict(Id="n", Choices=[dict(Set=["her.committed"], Requires=[], Forbids=[])])]),
@@ -245,6 +245,7 @@ class LintRules(unittest.TestCase):
         s["Scenes"][1]["Nodes"][0]["Choices"][0]["Revive"] = "her"
         self.assertTrue(any(x.startswith("T4 her.commit") for x in hard(s)))
         s["Scenes"][1]["Requires"] = ["trickster"]
+        s["Scenes"][1]["Forbids"] = ["trickster.failed"]
         self.assertEqual(hard(s), [])
 
     def test_t5_lifted_loss_off_trickster(self):

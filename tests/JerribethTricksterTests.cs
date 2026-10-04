@@ -161,7 +161,7 @@ internal static class JerribethTricksterTests
         var failed = World(story, 4, "trickster.was", "trickster.failed", "jerribeth.met", Dead);
         check(!Any(failed, tenant, backdated), "Trk_Jerribeth_Dead_PathFailed_Unprimed: a device survives the lost path.");
         var failedPrimed = World(story, 5, "trickster.was", "trickster.failed", "jerribeth.met", Dead, Primed);
-        check(Rules.Available(story, tenant, failedPrimed) && !Rules.Available(story, backdated, failedPrimed),
+        check(!Any(failedPrimed, tenant, backdated),
             "Trk_Jerribeth_Dead_PathFailed_Primed failed.");
 
         // Trk_Jerribeth_NeverMet / _King.
@@ -293,7 +293,7 @@ internal static class JerribethTricksterTests
         }
 
         // Registered edit 4: price and evening for the tenant.
-        var tenantState = World(story, 3, "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.trickster.cost.tenant",
+        var tenantState = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.trickster.cost.tenant",
                                 "jerribeth.trickster.cost.host", "jerribeth.trickster.cost.late", "jerribeth.guise", "jerribeth.price");
         var pricePages = new HashSet<string>();
         var prices = Program.Walk(S("jerribeth.price"), tenantState, (page, _) => pricePages.Add(page));
@@ -312,21 +312,21 @@ internal static class JerribethTricksterTests
             "JER-08: the Chapter 3 letters are not the eight: " + string.Join(",", ch3Letters));
 
         // Epilogues: G6 overrides, the late commit, and the paragraphs.
-        var endLodger = World(story, 6, "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.committed",
+        var endLodger = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.committed",
                               "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.lodger", "jerribeth.trickster.cost.forfeit");
         var together = S("jerribeth.ending_together");
         check(Rules.Available(story, together, endLodger), "G6: the returned tenant has no ending.");
         check(together.Nodes.Where(n => n.Paragraphs.Count > 0).All(n => Rules.VisibleParagraphs(n, endLodger).Length == 2),
             "Tenant paragraphs missing on her ending.");
-        var late2 = World(story, 6, "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers");
+        var late2 = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers");
         check(Rules.Available(story, epCommit, late2) && !Rules.Available(story, S("jerribeth.ending_unfinished"), late2),
             "Trk_Jerribeth_EpilogueCommit failed.");
-        var refused = World(story, 6, "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", "jerribeth.closed",
+        var refused = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", "jerribeth.closed",
                             "jerribeth.trickster.no_forfeit");
         var apart = S("jerribeth.ending_apart");
         check(!Rules.Available(story, epCommit, refused) && Rules.Available(story, apart, refused)
               && Rules.VisibleParagraphs(apart.Nodes[0], refused).Length == 1, "Trk_Jerribeth_EpilogueCommit_Refused failed.");
-        var deadNoReturn = World(story, 6, "trickster.ever", "jerribeth.met", Dead, "jerribeth.commission", "jerribeth.lovers");
+        var deadNoReturn = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", Dead, "jerribeth.commission", "jerribeth.lovers");
         check(!Rules.Available(story, epCommit, deadNoReturn), "The late commit brings a dead Jerribeth to the door.");
         var canon = World(story, 6, "jerribeth.met", "jerribeth.attracted");
         check(Rules.Available(story, S("jerribeth.ending_unfinished"), canon), "Off the path, the unfinished ending is lost.");
@@ -334,7 +334,7 @@ internal static class JerribethTricksterTests
         // Reactions: Camellia and Woljif only.
         var reactions = story.Scenes.Where(s => s.Relationship == "jerribeth" && s.Reaction).ToArray();
         check(reactions.Length == 7 && reactions.All(r => r.Owner == "Camellia" || r.Owner == "Woljif"), "Jerribeth reactions changed.");
-        var hostWorld = World(story, 3, "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.trickster.cost.host");
+        var hostWorld = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Returned, "jerribeth.trickster.cost.host");
         check(Rules.Available(story, S("jerribeth.trickster.reaction.camellia_host"), hostWorld)
               && !Rules.Available(story, S("jerribeth.trickster.reaction.camellia"), hostWorld), "Camellia's host line misrouted.");
         var levyWorld = toastOut.Single(r => r.Has(Toasted));
@@ -355,7 +355,7 @@ internal static class JerribethTricksterTests
         foreach (bool heard in new[] { false, true })
         foreach (bool host in new[] { false, true })
         {
-            var w = World(story, 3, "trickster.ever", "jerribeth.met", Dead, Returned);
+            var w = World(story, 3, "trickster", "trickster.ever", "jerribeth.met", Dead, Returned);
             w.Flags.Add("camellia.trickster.returned");
             if (heard) w.Flags.Add(Saw);
             if (host) w.Flags.Add("jerribeth.trickster.cost.host");
@@ -458,7 +458,7 @@ internal static class JerribethTricksterTests
                                      new[] { "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.host", Forfeit },
                                      new[] { "jerribeth.trickster.cost.toast", Forfeit }, new[] { Forfeit } })
         {
-            var w = World(story, 6, deal.Concat(new[] { "trickster.ever" }).ToArray());
+            var w = World(story, 6, deal.Concat(new[] { "trickster", "trickster.ever" }).ToArray());
             var lines = callIn.Nodes[0].Choices.Where(ch => Shown(ch, w)).ToList();
             bool tenantDeal = deal.Contains("jerribeth.trickster.cost.tenant");
             check(lines.Count == 1 && lines[0].Text.Contains("tenant") == tenantDeal && lines[0].Text.Contains("toasted") == (!tenantDeal && deal.Contains("jerribeth.trickster.cost.toast")),
@@ -686,7 +686,7 @@ internal static class JerribethTricksterTests
                                                 ("lodger", new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.lodger" }),
                                                 ("host", new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", Host }) })
         {
-            var w = World(story, 6, new[] { "trickster.ever", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" }
+            var w = World(story, 6, new[] { "trickster", "trickster.ever", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" }
                 .Concat(label2 == "toasted" ? new string[0] : new[] { "jerribeth.met" }).Concat(extra).ToArray());
             check(Rules.Available(story, epCommit, w), "The late commit is missing for " + label2);
             var offer = epCommit.Nodes[0];
@@ -698,7 +698,7 @@ internal static class JerribethTricksterTests
 
         // COX + HOW (R2-6): the late history (commission reached, no campaign commitment) has its Last Call coda; a parted or
         // declined history has none, and the committed history does not read the late line.
-        var lateLc = World(story, 6, "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", Taken, "ending.trickster");
+        var lateLc = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.commission", "jerribeth.lovers", Taken, "ending.trickster");
         check(lateLc.Has("jerribeth.trickster.late_committed") && lateLc.Has("lastcall.active") && Rules.Available(story, epCommit, lateLc)
               && Rules.Available(story, lcPage, lateLc) && Visible(lcPage, lateLc, "no contract yet") == 1,
             "The late-commit history has no Last Call coda, or the coda claims a signed contract.");

@@ -211,8 +211,8 @@ internal static class DevarraTricksterTests
         check(paid.Has(P + "returned") && paid.Has("devarra.started") && paid.Has(P + "cost.woken_hungry") && paid.Has(P + "clutch_collected"),
             "Trk_Devarra_Return: the collected clutch does not return her.");
         check(Reaches(paid, "devarra.committed"), "Trk_Devarra_Return: no road to the commit.");
-        check(Rules.Available(story, eggs, Later(story, World(story, 3, "trickster.ever", "trickster.failed", P + "flight.pact", "devarra.escaped.latched",
-            "devarra.golems_met.latched", "devarra.golems_deactivated"), 48)), "A pact made as a Trickster does not pay off after the path failed.");
+        check(!Rules.Available(story, eggs, Later(story, World(story, 3, "trickster.ever", "trickster.failed", P + "flight.pact", "devarra.escaped.latched",
+            "devarra.golems_met.latched", "devarra.golems_deactivated"), 48)), "A new return completes after the path failed.");
 
         check(!Rules.Available(story, eggs, Later(story, World(story, 3, "trickster", "trickster.ever", P + "flight.pact", "devarra.escaped.latched",
             "devarra.golems_met.latched"), 48)), "Trk_Devarra_Return: she claims her eggs while the fists are still raised over them.");
@@ -239,7 +239,7 @@ internal static class DevarraTricksterTests
         check(cook.Has(P + "cook_given") && Choice(eggs, "clutch", 0).Alignment?.Direction == "Evil", "Giving her the cook is not an evil choice.");
 
         // Trk_Devarra_Test: her two demands, carried by the Storyteller, in her flight world.
-        var hungry = World(story, 5, "trickster.ever", P + "flight.pact", "devarra.escaped.latched", P + "returned", P + "cost.woken_hungry", "devarra.started");
+        var hungry = World(story, 5, "trickster", "trickster.ever", P + "flight.pact", "devarra.escaped.latched", P + "returned", P + "cost.woken_hungry", "devarra.started");
         check(hungry.Has(P + "flown") && Rules.Available(story, tithe, hungry), "Trk_Devarra_Test: the tithe is shut.");
         var tested = After(tithe, hungry, "ending_free", 0).First();
         check(tested.Has(P + "tested") && tested.Has(P + "ending_true") && !tested.Has("devarra.committed"),
@@ -250,7 +250,7 @@ internal static class DevarraTricksterTests
         check(owned.Has("devarra.closed") && !Reaches(owned, "devarra.committed"), "Presuming to own her is not a hard no.");
 
         // Trk_Devarra_Commit and Trk_Devarra_Refusal.
-        var ready = World(story, 5, "trickster.ever", P + "flight.pact", "devarra.escaped.latched", P + "returned", P + "ruthless", P + "tested",
+        var ready = World(story, 5, "trickster", "trickster.ever", P + "flight.pact", "devarra.escaped.latched", P + "returned", P + "ruthless", P + "tested",
             P + "ending_true", "devarra.started");
         check(Rules.Available(story, lair, ready), "Trk_Devarra_Commit: the commit is shut.");
         var bitten = After(lair, ready, "terms", 3).First();
@@ -261,7 +261,7 @@ internal static class DevarraTricksterTests
         var leftHungry = After(lair, ready, "terms", 2).First();
         check(leftHungry.Has(P + "left_hungry") && Rules.Available(story, backUp, Later(story, leftHungry, 72)),
             "Leaving her the tower does not let the Commander climb back.");
-        var noTeller = World(story, 5, "trickster.ever", P + "flight.pact", "devarra.escaped.latched", P + "returned", "storyteller.dead_main", "devarra.started");
+        var noTeller = World(story, 5, "trickster", "trickster.ever", P + "flight.pact", "devarra.escaped.latched", P + "returned", "storyteller.dead_main", "devarra.started");
         check(Rules.Available(story, lair, noTeller), "The commit is shut when the Storyteller cannot carry the test.");
         check(After(lair, noTeller, "second_question_free", 0).First().Has(P + "tested"), "Her own second question does not test.");
 
@@ -400,7 +400,7 @@ internal static class DevarraTricksterTests
             "The egg bill has no Last Call collection.");
 
         // Legacy: a save that returned her through the moult before the redesign keeps its own lines.
-        var legacy = World(story, 5, "trickster.ever", "devarra.dead_sanctum", "devarra.dead.latched", P + "primed", P + "returned", P + "cost.woken_hungry", "devarra.started");
+        var legacy = World(story, 5, "trickster", "trickster.ever", "devarra.dead_sanctum", "devarra.dead.latched", P + "primed", P + "returned", P + "cost.woken_hungry", "devarra.started");
         check(!legacy.Has(P + "flown") && Rules.Available(story, tithe, legacy), "A legacy save loses its continuation.");
         check(Program.Walk(tithe, legacy, (id, _) => check(!id.EndsWith("_free", StringComparison.Ordinal), "A legacy save hears the flight world: " + id)).Count > 0,
             "The legacy tithe does not play.");

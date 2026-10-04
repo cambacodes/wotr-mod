@@ -1039,3 +1039,19 @@ def integrate(payload):
         if key in trickster_world.BINDINGS and not trickster_world._bound(payload, key):
             kind, guid, _ = trickster_world.BINDINGS[key]
             payload.setdefault(kind, {})[key] = [guid] if kind in trickster_world.LIST_KINDS and isinstance(guid, str) else guid
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'wenduag.trickster.abyss.back',
+    'wenduag.trickster.abyss.fall',
+    'wenduag.trickster.ch4.stone',
+    'wenduag.trickster.exile.champion',
+    'wenduag.trickster.killed.back',
+    'wenduag.trickster.killed.cairn',
+    'wenduag.trickster.street.back',
+    'wenduag.trickster.street.fall',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

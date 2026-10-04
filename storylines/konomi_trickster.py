@@ -766,3 +766,15 @@ def integrate(payload):
 
 # Epilogue pages that do not stage a living Konomi: her loss page, and the copy of an invitation (names her, stages nobody).
 DEATH_SAFE = (LOSS_PAGE, "konomi.ending_missed_interrupted")
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'konomi.trickster.dead.consultation',
+    'konomi.trickster.dismissed.recess',
+    'konomi.trickster.never_arrived.audience',
+    'konomi.trickster.never_arrived.audience_letter',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

@@ -772,3 +772,15 @@ def integrate(payload):
             fo = by_id[id].setdefault("ForbidOverrides", {})
             fo["seelah_dead"] = RETURNED
             fo["seelah_gone"] = RETURNED
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'seelah.trickster.dead.effects_arrival',
+    'seelah.trickster.dead.effects_reply',
+    'seelah.trickster.dismissed.back_for_the_papers',
+    'seelah.trickster.dismissed.back_for_the_papers_letter',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

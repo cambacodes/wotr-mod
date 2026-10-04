@@ -207,7 +207,7 @@ internal static class SeelahTricksterTests
         check(!Any(After(story, letGo, 500), devices), "A return survives her being let go.");
 
         // Trk_Seelah_Commit: a romance, then her choice; the threshold, the cut, the morning.
-        var courted = World(story, 5, "trickster.ever", "seelah_gone", Returned, "seelah.trickster.stay_decided",
+        var courted = World(story, 5, "trickster", "trickster.ever", "seelah_gone", Returned, "seelah.trickster.stay_decided",
             "seelah.trickster.stays_near", "seelah.started", "seelah.kissed");
         check(courted.Has("seelah.romance") && Rules.Available(story, commit, courted) && !Rules.Available(story, second, courted),
             "Trk_Seelah_Commit: commit unavailable, or a second ask before any no.");
@@ -217,7 +217,7 @@ internal static class SeelahTricksterTests
               && !pages.Contains("morning_far"), "Trk_Seelah_Commit: the committing branches or the morning are wrong.");
 
         // Trk_Seelah_Refusal: without a romance she offers friendship or the door; her no opens one priced ask.
-        var friends = World(story, 5, "trickster.ever", "seelah_gone", Returned, "seelah.trickster.stay_decided", "seelah.trickster.goes_far",
+        var friends = World(story, 5, "trickster", "trickster.ever", "seelah_gone", Returned, "seelah.trickster.stay_decided", "seelah.trickster.goes_far",
             "seelah.trickster.courted");
         var answers = Program.Walk(commit, friends);
         check(Rules.Available(story, commit, friends) && answers.All(r => !r.Has("seelah.committed"))
@@ -246,7 +246,7 @@ internal static class SeelahTricksterTests
               && !Rules.Available(story, S("seelah.trickster.epilogue.refused"), AtLastCall(reconciled)),
             "The second ask's yes loses Seelah's Last Call coda, or still plays her refusal.");
         check(!Rules.Available(story, coda, AtLastCall(asked.Single(r => r.Has("seelah.closed")))), "Her goodbye still gets the coda.");
-        var death = World(story, 5, "trickster.ever", "seelah_dead", Returned, "seelah.trickster.correspondent",
+        var death = World(story, 5, "trickster", "trickster.ever", "seelah_dead", Returned, "seelah.trickster.correspondent",
             "seelah.trickster.cost.holds_her_death", "seelah.trickster.stay_decided", "seelah.trickster.courted");
         var noPages = new HashSet<string>();
         Program.Walk(commit, death, (page, _) => noPages.Add(page));

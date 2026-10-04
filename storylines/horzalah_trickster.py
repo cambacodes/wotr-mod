@@ -119,7 +119,7 @@ RELATIONSHIP = dict(
               "kill her. If Greybor never brings you there, she will come for your head herself. Looking at her scar in "
               "Yozz's hall in Alushinyrra, or hearing her father speak of her in his prison, may help her listen."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[DEAD], FailureFlags=[], UnavailableOverrides={},
+    UnavailableFlags=[DEAD, LEFT_FREE], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
         "mercy": dict(detect=["!" + DEAD], device=H + "mercy.gift", returned=PRIMED),
         "unmet": dict(detect=["!" + DEAD], device=H + "unmet.knife", returned=PRIMED),

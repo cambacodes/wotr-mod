@@ -23,6 +23,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import return_safety  # noqa: E402  (F2: the Main.cs native return contract)
 import gate_lint  # noqa: E402  (E2: gate-writing lints, handoff 17)
+import earned_presence_lint  # noqa: E402  (ENGINE-Q5: live return producers and physical route guards)
 import etude_lifecycle  # noqa: E402  (E3: native etude lifecycle, 18-ETUDE-BINDING-AUDIT)
 # The mod root is, in order: $RRT_ROOT, the repository this script lives in (tools/..), or the default checkout.
 MOD = Path(os.environ["RRT_ROOT"]) if os.environ.get("RRT_ROOT") else (
@@ -1542,6 +1543,11 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     # E2: gate lints on the raw story (tools/gate_lint.py): one-flag groups, scenes relying on the tirabade default
     R["gate_lint"] = gate_lint.check(story)
     gate_lint.report(R["gate_lint"], P)
+    presence_hard, _ = earned_presence_lint.check(story)
+    R["earned_presence"] = dict(hard=presence_hard)
+    P("\nEarned presence: %d hard" % len(presence_hard))
+    for failure in presence_hard:
+        P("     - HARD", failure)
     # E3: native etude lifecycle (tools/etude_lifecycle.py, 18-ETUDE-BINDING-AUDIT). HARD: a Playing-only binding read where
     # its etude cannot be Playing (another area, a remote letter, a relationship/Derived use, after a chapter cascade).
     R["etude_lifecycle"] = etude_lifecycle_report(story, model, P)
@@ -2556,6 +2562,7 @@ def main():
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
         + sum(len(v) for v in R.get("gate_lint", {}).values()) + len(R.get("etude_lifecycle", {}).get("hard", [])) \
+        + len(R.get("earned_presence", {}).get("hard", [])) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
     print("\nHARD FAILURES: %d  (report: %s)" % (hard, a.text))

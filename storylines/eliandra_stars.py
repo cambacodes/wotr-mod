@@ -620,3 +620,13 @@ def integrate(payload):
         if have is not None and have != value:
             raise ValueError("Conflicting presence: " + key)
         payload["Presences"][key] = copy.deepcopy(value)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'eliandra.trickster.ch5.self_offering',
+    'eliandra.trickster.ch5.self_offering_mark',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

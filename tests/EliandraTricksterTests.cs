@@ -35,6 +35,7 @@ internal static class EliandraTricksterTests
     {
         var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
         state.Flags.UnionWith(flags);
+        if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
         Rules.Complete(story, state);
@@ -237,7 +238,7 @@ internal static class EliandraTricksterTests
         // offering, the first mile and the star-heart are hosted on her Drezen presence, which stands from the meeting on, and
         // the terms and the rite have Drezen twins for a Commander who left the shrine before asking.
         var metOnly = World(story, 5, "trickster", "trickster.ever", Met);
-        check(Rules.PresenceWanted(tavern, metOnly) && tavern.Requires.SequenceEqual(new[] { "trickster.ever", Met }),
+        check(Rules.PresenceWanted(tavern, metOnly) && tavern.Requires.SequenceEqual(new[] { "trickster.ever", Met, "eliandra.presence.route_open" }),
             "Lifecycle: her presence does not stand in Drezen from the meeting on.");
         check(new[] { self, mile, heart }.All(s => s.InteractionHub == "eliandra.presence" && s.AnswerLists.Length == 0 && s.NativeReturnCue == null)
               && shrine.All(s => s.DelayHours == 0),

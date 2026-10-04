@@ -632,6 +632,8 @@ def integrate(payload):
     rel.setdefault("UnavailableOverrides", {}).update(RELATIONSHIP_PATCH["UnavailableOverrides"])
     if KENABRES_ATTACKED not in rel["UnavailableFlags"]:
         rel["UnavailableFlags"].append(KENABRES_ATTACKED)
+    if NEROSYAN not in rel["UnavailableFlags"]:
+        rel["UnavailableFlags"].append(NEROSYAN)
     answers = payload.setdefault("SelectedAnswers", {})
     if answers.get(KENABRES_ATTACKED, KENABRES_ATTACK_ANSWER) != KENABRES_ATTACK_ANSWER:
         raise ValueError("Conflicting binding: " + KENABRES_ATTACKED)
@@ -646,3 +648,21 @@ def integrate(payload):
                         "spice trader's stall in the Drezen market, in Chapter 3 or Chapter 5.")
     payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
     payload.setdefault("Derived", {})[NO_KING] = [[KING_GONE]]
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'aranka.trickster.failure.reckoning',
+    'aranka.trickster.failure.reckoning_yard',
+    'aranka.trickster.failure.second_verse',
+    'aranka.trickster.failure.second_verse_late',
+    'aranka.trickster.touring.arrives',
+    'aranka.trickster.touring.arrives_late',
+    'aranka.trickster.touring.arrives_yard',
+    'aranka.trickster.touring.arrives_yard_late',
+    'aranka.trickster.verse.her_letter',
+    'aranka.trickster.verse.her_letter_late',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

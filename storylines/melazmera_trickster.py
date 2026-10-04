@@ -119,7 +119,7 @@ RELATIONSHIP = dict(
               "rest on Colyphyr while the dragon is out hunting. Never touch the crown. Rest on the island once more, and she "
               "will come to you."),
     StartedFlag=STARTED, ClosedFlag=CLOSED, CommittedFlag=COMMITTED,
-    UnavailableFlags=[DEAD], FailureFlags=[], UnavailableOverrides={},
+    UnavailableFlags=[DEAD, LEFT_FREE], FailureFlags=[], UnavailableOverrides={},
     TricksterAccess={
         "alive": dict(detect=["!" + DEAD], device=M + "ch4.salt", returned=RETURNED),
     },
@@ -866,3 +866,14 @@ def integrate(payload):
                 raise ValueError("Conflicting binding: " + key)
             payload[kind][key] = value
     payload.setdefault("PortraitFallbacks", {}).setdefault("Melazmera", PORTRAIT_GUID)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'melazmera.trickster.ch4.hunt',
+    'melazmera.trickster.ch4.hunt_found',
+    'melazmera.trickster.ch5.hunt_window',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

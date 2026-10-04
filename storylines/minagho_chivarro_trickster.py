@@ -983,3 +983,30 @@ def integrate(payload):
         if s["Owner"].endswith("Epilogue") and CHAIN not in s["Forbids"]:
             # The registered endings narrate RanRomance visits a Trickster-chain Commander never had; the chain's own pages play.
             s["Forbids"].append(CHAIN)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'minagho_chivarro.trickster.alone.chivarro',
+    'minagho_chivarro.trickster.alone.chivarro_letter',
+    'minagho_chivarro.trickster.alone.chivarro_morning',
+    'minagho_chivarro.trickster.alone.chivarro_when_it_scars',
+    'minagho_chivarro.trickster.alone.minagho',
+    'minagho_chivarro.trickster.alone.minagho_letter',
+    'minagho_chivarro.trickster.alone.minagho_morning',
+    'minagho_chivarro.trickster.alone.minagho_spared',
+    'minagho_chivarro.trickster.alone.minagho_spared_morning',
+    'minagho_chivarro.trickster.alone.minagho_when_it_scars',
+    'minagho_chivarro.trickster.chivarro_dead.bought',
+    'minagho_chivarro.trickster.chivarro_dead.the_bill',
+    'minagho_chivarro.trickster.chivarro_dead.the_bill_letter',
+    'minagho_chivarro.trickster.minagho_dead.brand',
+    'minagho_chivarro.trickster.minagho_dead.brand_letter',
+    'minagho_chivarro.trickster.minagho_dead.collateral',
+    'minagho_chivarro.trickster.react.baphomet',
+    'minagho_chivarro.trickster.spared.brand',
+    'minagho_chivarro.trickster.spared.brand_letter',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

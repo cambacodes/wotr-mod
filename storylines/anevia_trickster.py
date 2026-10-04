@@ -884,3 +884,14 @@ def integrate(payload):
                 if all(ch.get("Next") is None for ch in node["Choices"]):
                     node.setdefault("Paragraphs", []).append(dict(TIRABADE_PARAGRAPH))
 
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'anevia.trickster.gone.confession',
+    'anevia.trickster.gone.fetched',
+    'anevia.trickster.gone.wardrobe',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

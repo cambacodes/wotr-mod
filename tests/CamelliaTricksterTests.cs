@@ -136,13 +136,13 @@ internal static class CamelliaTricksterTests
         var cold = Later(story, World(story, 3, "trickster", "trickster.ever", Killed, P + "primed"), 100);
         Take(third, cold, "unbargained", 0, P + "raised", P + "cost.bargain_late", P + "spirits_bargained");
         check(Ch(third, "unbargained", 0).Alignment?.Direction == "Evil", "The late bargain at the coffin is not dearer (Evil 1).");
-        // Q8 (Sol TRK/HOW): after the path is lost, a primer alone buys nothing; only a bargain already struck pays out.
+        // ENGINE-Q5: priming or paying a bargain does not perform the later return off the live path.
         var failedPrimed = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed"), 100);
-        check(Avail(third, failedPrimed) && Program.Walk(third, failedPrimed).All(r => !r.Has(P + "raised"))
+        check(!Avail(third, failedPrimed)
               && Ch(third, "unbargained", 0).Requires.Contains("trickster"),
             "A lost path still opens a new bargain over her coffin.");
         var failedPaid = Later(story, World(story, 3, "trickster.ever", "trickster.failed", Killed, P + "primed", P + "spirits_bargained"), 100);
-        check(Program.Walk(third, failedPaid).Any(r => r.Has(P + "raised")), "A bargain bought on the live path does not pay out after it.");
+        check(!Avail(third, failedPaid), "A paid bargain performs a return after the path failed.");
         // Q8 (Sol BEL): the scratching belongs to the prepared branch only.
         check(!third.Nodes.Single(n => n.Id == "coffin").Text.Contains("scratching") && third.Nodes.Single(n => n.Id == "dug").Text.Contains("scratching")
               && !third.Nodes.Single(n => n.Id == "unbargained").Text.Contains("scratching"),
@@ -202,7 +202,7 @@ internal static class CamelliaTricksterTests
         Take(overacting, body_, "refused", 0, P + "declined", Closed);
 
         // Trk_Camellia_Terms (killed branch; the lesson is its prerequisite)
-        var termsWorld = World(story, 3, "trickster.ever", Killed, Returned, P + "beat.lesson");
+        var termsWorld = World(story, 3, "trickster", "trickster.ever", Killed, Returned, P + "beat.lesson");
         check(Avail(terms, termsWorld) && !Avail(test, termsWorld), "Trk_Camellia_Terms: her price should come before her test.");
         var named = Take(terms, termsWorld, "price", 1, P + "cost.marked", P + "terms_named");
         check(Avail(test, Later(story, named, 100)), "Trk_Camellia_Terms: the test does not open after her price.");
@@ -212,7 +212,7 @@ internal static class CamelliaTricksterTests
             "Her price is not the Commander's blood or the Commander's name.");
 
         // Trk_Camellia_Commit / Trk_Camellia_CommitRefused
-        var commitWorld = World(story, 5, "trickster.ever", Killed, Returned, P + "cost.marked", P + "terms_named");
+        var commitWorld = World(story, 5, "trickster", "trickster.ever", Killed, Returned, P + "cost.marked", P + "terms_named");
         check(Avail(test, commitWorld), "Trk_Camellia_Commit: the test is not available.");
         var yes = Ch(test, "yes", 0);
         check(yes.Set.SequenceEqual(new[] { Committed }) && yes.Next == "threshold", "The named commit producer is not test/yes[0].");
@@ -228,35 +228,35 @@ internal static class CamelliaTricksterTests
                   .Any(s => s.TricksterDevice && Avail(s, kicked)), "Trk_Camellia_KickedOut: a dismissal must stay closed.");
 
         // Trk_Camellia_Oath (Nurah pair only; the Kaylessa pair waits for her route)
-        var oathWorld = World(story, 5, "trickster.ever", "nurah.trickster.returned", "nurah.dead_camellia");
+        var oathWorld = World(story, 5, "trickster", "trickster.ever", "nurah.trickster.returned", "nurah.dead_camellia");
         check(Avail(oathCamp, oathWorld), "Trk_Camellia_Oath: the living Camellia should hear about her kill that didn't take.");
-        check(!Avail(oathCamp, World(story, 5, "trickster.ever", "nurah.trickster.returned")),
+        check(!Avail(oathCamp, World(story, 5, "trickster", "trickster.ever", "nurah.trickster.returned")),
             "Trk_Camellia_Oath: a Nurah the Commander executed is not Camellia's kill.");
         Take(oathCamp, oathWorld, "loophole", 0, P + "oath_loophole");
         check(oath.Nodes.Single(n => n.Id == "start").Choices.Count(c => c.Next == "nurah") == 1, "The oath does not route Nurah first.");
         check(Ch(oathCamp, "ask", 1).Alignment?.Direction == "Evil", "Feeding her someone else is not an Evil act.");
         // Trk_Camellia_OathSoana, and exclusivity: with both of her kills returned, exactly one route is offered (Nurah).
-        var soanaWorld = World(story, 5, "trickster.ever", "soana.trickster.returned", "soana.killed_by_camellia");
+        var soanaWorld = World(story, 5, "trickster", "trickster.ever", "soana.trickster.returned", "soana.killed_by_camellia");
         check(Avail(oathCamp, soanaWorld), "Trk_Camellia_OathSoana: the Soana kill that didn't take does not open the oath.");
         foreach (var w in new[] { oathWorld, soanaWorld,
-                                  World(story, 5, "trickster.ever", "nurah.trickster.returned", "nurah.dead_camellia", "soana.trickster.returned", "soana.killed_by_camellia"),
-                                  World(story, 5, "trickster.ever", "nurah.dead_camellia", "soana.trickster.returned", "soana.killed_by_camellia") })
+                                  World(story, 5, "trickster", "trickster.ever", "nurah.trickster.returned", "nurah.dead_camellia", "soana.trickster.returned", "soana.killed_by_camellia"),
+                                  World(story, 5, "trickster", "trickster.ever", "nurah.dead_camellia", "soana.trickster.returned", "soana.killed_by_camellia") })
         {
             var shown = oathCamp.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, w)).ToList();
             check(Avail(oathCamp, w) && shown.Count == 1, "The oath does not offer exactly one route for its world.");
         }
-        check(!Avail(oathCamp, World(story, 5, "trickster.ever", "soana.killed_by_camellia")),
+        check(!Avail(oathCamp, World(story, 5, "trickster", "trickster.ever", "soana.killed_by_camellia")),
             "Trk_Camellia_OathSoana: a Soana still dead is not a kill that didn't take.");
         // Trk_Camellia_OathKaylessa (closed with the Kaylessa route, its producer): her kill alone does not open the oath; her
         // return does, and the Kaylessa branch steps aside for an earlier pair (exactly one route per world).
-        check(!Avail(oathCamp, World(story, 5, "trickster.ever", "kaylessa.camellia_killed")),
+        check(!Avail(oathCamp, World(story, 5, "trickster", "trickster.ever", "kaylessa.camellia_killed")),
             "The oath opened on a Kaylessa kill that is still dead.");
-        var kaylessaWorld = World(story, 5, "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed");
+        var kaylessaWorld = World(story, 5, "trickster", "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed");
         check(Avail(oathCamp, kaylessaWorld), "Trk_Camellia_OathKaylessa: the Kaylessa kill that didn't take does not open the oath.");
         foreach (var w in new[] { kaylessaWorld,
-                                  World(story, 5, "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed", "nurah.trickster.returned", "nurah.dead_camellia"),
-                                  World(story, 5, "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed", "soana.trickster.returned", "soana.killed_by_camellia"),
-                                  World(story, 5, "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed", "nurah.dead_camellia") })
+                                  World(story, 5, "trickster", "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed", "nurah.trickster.returned", "nurah.dead_camellia"),
+                                  World(story, 5, "trickster", "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed", "soana.trickster.returned", "soana.killed_by_camellia"),
+                                  World(story, 5, "trickster", "trickster.ever", "kaylessa.trickster.returned", "kaylessa.camellia_killed", "nurah.dead_camellia") })
         {
             var shown = oathCamp.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, w)).ToList();
             check(Avail(oathCamp, w) && shown.Count == 1, "The oath does not offer exactly one route for a world with Kaylessa's return.");
@@ -266,9 +266,9 @@ internal static class CamelliaTricksterTests
 
         // Trk_Camellia_AneviaBody: the spirits' due arrives as Anevia's report.
         // Her killing is her nature after her return, not a price anyone paid: Anevia reports it once the lesson is taught.
-        var owed = World(story, 3, "trickster.ever", Dead, Returned, P + "beat.lesson");
+        var owed = World(story, 3, "trickster", "trickster.ever", Dead, Returned, P + "beat.lesson");
         check(Avail(body, owed), "Trk_Camellia_AneviaBody: Anevia should report the body.");
-        check(!Avail(body, World(story, 3, "trickster.ever", Dead, Returned)), "The body turns up before her return has settled.");
+        check(!Avail(body, World(story, 3, "trickster", "trickster.ever", Dead, Returned)), "The body turns up before her return has settled.");
         Take(body, owed, "start", 1, P + "cost.covered_murder");
         check(body.AnswerLists.SequenceEqual(new[] { "33960c7f7af40cd43b7f801a76c87a0b" }) && body.Reaction
               && body.ForbidOverrides["anevia_gone"] == "anevia.trickster.returned", "Anevia's report is not on her own hub, lifted by her return.");
@@ -351,11 +351,11 @@ internal static class CamelliaTricksterTests
         var quarters = S(P + "react.regill_quarters");
         check(quarters.Reaction && quarters.Requires.Contains(Committed) && quarters.Requires.Contains("regill.in_party")
               && quarters.AnswerLists.SequenceEqual(new[] { "2366a8db6481070439fee222c0c52e45" })
-              && Avail(quarters, World(story, 5, "trickster.ever", Committed, "regill.in_party")),
+              && Avail(quarters, World(story, 5, "trickster", "trickster.ever", Committed, "regill.in_party")),
             "Nobody in the party notices the commit (Directive 12: a companion reaction to the intimacy).");
         check(test.Nodes.Any(n => n.Id == "threshold") && Ch(test, "threshold", 0).Next == "morning",
             "The night after her answer does not cut at the start of the act and wake to the morning.");
-        var together = World(story, 5, "trickster.ever", Killed, Returned, Committed);
+        var together = World(story, 5, "trickster", "trickster.ever", Killed, Returned, Committed);
         check(Avail(S(P + "bond.shelf"), together), "The shelf does not follow the commit.");
         var shelved = Take(S(P + "bond.shelf"), together, "kept", 0, P + "bond.shelf", P + "bond.list_kept");
         var witnessed = Take(S(P + "bond.witness"), Later(story, shelved, 100), "lied_after", 0, P + "bond.witness_lied");
@@ -386,13 +386,13 @@ internal static class CamelliaTricksterTests
             "The late commit page does not rest on her named price.");
         // Q8 (Sol INT): a Last Call bottle survivor (commander_back, no cheated_death) keeps her pages; a dead Commander gets the
         // memorial sibling, for the commit and for the late commit alike.
-        var alive6 = World(story, 6, "trickster.ever", Committed, "sacrifice", "trickster.commander_back");
-        var dead6 = World(story, 6, "trickster.ever", Committed, "sacrifice");
+        var alive6 = World(story, 6, "trickster", "trickster.ever", Committed, "sacrifice", "trickster.commander_back");
+        var dead6 = World(story, 6, "trickster", "trickster.ever", Committed, "sacrifice");
         check(Avail(S(P + "epilogue.kept"), alive6) && !Avail(S(P + "epilogue.kept_on_record"), alive6)
               && !Avail(S(P + "epilogue.kept"), dead6) && Avail(S(P + "epilogue.kept_on_record"), dead6),
             "Her kept page and its memorial do not follow whether the Commander lived.");
-        var lateAlive = World(story, 6, "trickster.ever", P + "terms_named", "sacrifice", "trickster.commander_back");
-        var lateDead = World(story, 6, "trickster.ever", P + "terms_named", "sacrifice");
+        var lateAlive = World(story, 6, "trickster", "trickster.ever", P + "terms_named", "sacrifice", "trickster.commander_back");
+        var lateDead = World(story, 6, "trickster", "trickster.ever", P + "terms_named", "sacrifice");
         check(Avail(S(P + "epilogue.commit"), lateAlive) && !Avail(S(P + "epilogue.commit_on_record"), lateAlive)
               && !Avail(S(P + "epilogue.commit"), lateDead) && Avail(S(P + "epilogue.commit_on_record"), lateDead),
             "The late commit narrates a life with a dead Commander, or loses a living one.");
@@ -415,10 +415,10 @@ internal static class CamelliaTricksterTests
         foreach (var id in new[] { "masks.the_funeral_i_would_like", "evening.a_table_for_strangers" })
             check(S(P + id).Areas.SequenceEqual(new[] { Drezen }), "A Drezen courtship scene travels with the companion hub: " + id);
         // Q8 (Sol INT): a commitment followed by her native death or dismissal, with no return, has no kept page.
-        check(!Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed))
-              && !Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, "camellia.kicked_out"))
-              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned))
-              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
+        check(!Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed))
+              && !Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, "camellia.kicked_out"))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned))
+              && Avail(S(P + "epilogue.kept"), World(story, 6, "trickster", "trickster.ever", Committed, Killed, Returned, "camellia.kicked_out")),
             "The kept page outlives her death or dismissal.");
         // Q8 (Sol INT): the presence-failure letter waits 96 hours past the physical twin's 72; a refused test closes the coda.
         check(letter.DelayHours == 168, "The fallback letter arrives before its physical twin has had its 96 hours.");
@@ -429,7 +429,7 @@ internal static class CamelliaTricksterTests
         check(Avail(coda!, World(story, 6, lc)) && !Avail(coda!, World(story, 6, lc.Append(Killed).ToArray()))
               && !Avail(coda!, World(story, 6, lc.Append(Dead).ToArray())) && !Avail(coda!, World(story, 6, lc.Append("camellia.kicked_out").ToArray()))
               && Avail(coda!, World(story, 6, lc.Concat(new[] { Killed, Returned, "camellia.kicked_out" }).ToArray()))
-              && !Avail(coda!, World(story, 6, "trickster.ever", "lastcall.active", P + "terms_named")),
+              && !Avail(coda!, World(story, 6, "trickster", "trickster.ever", "lastcall.active", P + "terms_named")),
             "The Last Call coda plays for a Camellia killed or dismissed after committing, or without her commitment.");
         // Q8 (Sol INT): the veiled widow sits at Fye's bar only once the third night has given her back.
         check(story.Presences["camellia.presence"].Requires.Contains(P + "raised"), "The veiled copy sits in the tavern while she is still underground.");

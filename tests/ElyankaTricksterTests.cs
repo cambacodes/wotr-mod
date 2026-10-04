@@ -93,7 +93,8 @@ internal static class ElyankaTricksterTests
         var hearse = S(P + "visit.hearse");
 
         // Trk_Elyanka_Bindings: the relationship and the funeral reads; no Lich key, no presence, no crowded hub.
-        check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed && rel.UnavailableFlags.Length == 0,
+        check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
+              && rel.UnavailableFlags.SequenceEqual(new[] { P + "left_free" }),
             "Elyanka's relationship does not match the plan (no fate to defy: no UnavailableFlags).");
         check(story.SeenCues["elyanka.funeral.king"].SequenceEqual(new[] { "d1c14400d70bf0d4b947283f16f65009" })
               && story.SeenCues["elyanka.funeral.partisans_a"].SequenceEqual(new[] { "59ac2148b08ee7a47912253362ab0b27" })

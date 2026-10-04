@@ -227,10 +227,10 @@ internal static class DorgelindaTricksterTests
         check(Rules.Available(story, recount, World(story, 3, "trickster", "dorgelinda.fellows_tribunal", "dorgelinda.present")),
             "Trk_Dorgelinda_Exclusive: the recount is shut at its tribunal.");
 
-        // Trk_Dorgelinda_FailedPath: a Chapter 3 primer survives a lost path; a new trick needs the live one.
+        // ENGINE-Q5: even a primed audit completes a new device and needs the live path.
         var failed = World(story, 3, "trickster.ever", "trickster.failed", P + "primed", "dorgelinda.present");
-        check(Rules.Available(story, open, failed) && !Any(failed, recount, countersign),
-            "Trk_Dorgelinda_FailedPath: the audit is shut, or a device opens without the live path.");
+        check(!Any(failed, open, recount, countersign),
+            "Trk_Dorgelinda_FailedPath: a device completes without the live path.");
         var failed5 = World(story, 5, "trickster.ever", "trickster.failed", "dorgelinda.present");
         check(!Any(failed5, stocktake, open), "Trk_Dorgelinda_FailedPath_Ch5: a lost path still signs the stocktake.");
 
@@ -272,9 +272,9 @@ internal static class DorgelindaTricksterTests
             check(Rules.Available(story, beat, s3), "The weekly counts break their chain at " + beat.Id);
             s3 = Play(beat, s3).First();
         }
-        check(!Rules.Available(story, warehouse, World(story, 3, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "cost.abyss_signed")),
+        check(!Rules.Available(story, warehouse, World(story, 3, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "cost.abyss_signed")),
             "Bartley's warehouse opens on a run with no tribunal.");
-        check(!Rules.Available(story, vrock, World(story, 3, "trickster.ever", "dorgelinda.present", "dorgelinda.fellows_tribunal", P + "returned", P + "counted", P + "cost.late")),
+        check(!Rules.Available(story, vrock, World(story, 3, "trickster", "trickster.ever", "dorgelinda.present", "dorgelinda.fellows_tribunal", P + "returned", P + "counted", P + "cost.late")),
             "The vrock's driver opens without the rider.");
         var wh = Play(warehouse, counted3);
         check(wh.Any(r => r.Has(L + "potions_ours")) && wh.Any(r => r.Has(L + "potions_bartley")), "The potions cannot go either way.");
@@ -284,14 +284,14 @@ internal static class DorgelindaTricksterTests
             P + "returned", P + "counted");
         check(Rules.Available(story, receipts, counted5) && Rules.Available(story, weight, counted5),
             "The Chapter 5 counts do not open after the Abyss.");
-        check(!Rules.Available(story, receipts, World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "cost.abyss_signed")),
+        check(!Rules.Available(story, receipts, World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "cost.abyss_signed")),
             "The Abyss receipts open for a Commander she only met in Chapter 5.");
         check(!Rules.Available(story, revels, counted5)
-              && Rules.Available(story, revels, World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.merry_city")),
+              && Rules.Available(story, revels, World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.merry_city")),
             "The King's bill does not wait for the Trickster's coronation.");
         var fed = Play(rations, Later(story, Play(receipts, counted5).First(), 72));
         check(fed.Count > 0 && Rules.Available(story, faith, Later(story, fed.First(), 72)), "Faith does not follow the rations.");
-        var lovers = World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "methods_heard", P + "hands_clean",
+        var lovers = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", P + "methods_heard", P + "hands_clean",
             "dorgelinda.committed");
         check(Rules.Available(story, night, Later(story, lovers, 12)), "The night does not follow the commit.");
         var nights = Play(night, Later(story, lovers, 12));
@@ -324,8 +324,8 @@ internal static class DorgelindaTricksterTests
         var columns = Play(others, Later(story, mornings.First(), 24));
         check(columns.Any(r => r.Has(L + "terms_kept")) && columns.Any(r => r.Has(L + "unblessed")) && columns.Any(r => r.Has(L + "narrowed") && !r.Has("dorgelinda.closed"))
               && columns.Any(r => r.Has("dorgelinda.closed")), "Her answer to the other columns is not a real choice.");
-        check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster.ever", "dorgelinda.committed", "dorgelinda.closed"))
-              && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster.ever", "dorgelinda.committed", "dorgelinda.closed")),
+        check(Rules.Available(story, S(P + "epilogue.ruled_off"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", "dorgelinda.closed"))
+              && !Rules.Available(story, S(P + "epilogue.committed"), World(story, 6, "trickster", "trickster.ever", "dorgelinda.committed", "dorgelinda.closed")),
             "Her ruled-off line has no page, or the committed page still plays.");
         var committedPage = S(P + "epilogue.committed").Nodes[0];
         foreach (var flag in new[] { L + "true_books_sent", L + "clean_copy_sent", L + "her_name_sent", L + "receipt_signed" })
@@ -358,7 +358,7 @@ internal static class DorgelindaTricksterTests
         check(Reaches(reviewed.First(), "dorgelinda.committed"), "Trk_Dorgelinda_TribunalBooks: no road to the commit.");
 
         // Q9 r2 (Sol CAN): a conscience kept at the council (Logistics_8-2, the warehouses refilled) is a surplus-era question.
-        var conscienceWorld = World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.conscience_kept");
+        var conscienceWorld = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.conscience_kept");
         Program.Walk(methods, conscienceWorld, (id, st) => check(id != "start", "The conscience branch replays the shortage pitch."));
         check(Program.WalkVia(methods, conscienceWorld, "start_surplus", 0).All(r => r.Has(P + "hands_clean")),
             "The surplus-era second book cannot be burned.");
@@ -368,13 +368,13 @@ internal static class DorgelindaTricksterTests
 
         // Q9 (Sol CAN): the King is billed only when the Fool King was crowned.
         check(Choice(revels, "bill", 1).Requires.Contains("dorgelinda.king_revel"), "The no-King city can bill a King.");
-        var merryOnly = World(story, 5, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.merry_city");
+        var merryOnly = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.merry_city");
         Program.Walk(revels, merryOnly, (id, st) => check(id != "king" && id != "crowned", "The no-King cellar reaches the King: " + id));
 
         // Q9 (Sol BEL): the plague ward never thanks the Commander for a rope spared after an execution verdict.
         var ward = S(L + "the_plague_ward");
         check(story.Derived["dorgelinda.verdict_hanged"].Length == 2, "The derived hanging verdict is missing.");
-        var hangedWard = World(story, 3, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.fellows_tribunal",
+        var hangedWard = World(story, 3, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted", "dorgelinda.fellows_tribunal",
             "dorgelinda.verdict_hanged_wenduag", L + "the_warehouse", L + "potions_ours");
         Program.Walk(ward, hangedWard, (id, st) => check(id != "rope" && id != "wait", "The ward spares a hanged man's rope: " + id));
         check(Program.WalkVia(ward, hangedWard, "outside", 2).Count > 0 && Program.WalkVia(ward, hangedWard, "outside", 3).Count > 0,
@@ -383,7 +383,7 @@ internal static class DorgelindaTricksterTests
         // Q9 (Sol BEL): walking out of the quarrel stays walked out; the repair is a later, explicit choice.
         var quarrel = S(L + "hammer_and_tongs");
         var coldCounts = S(L + "cold_counts");
-        var walked = Program.WalkVia(quarrel, World(story, 5, "trickster.ever", "dorgelinda.present", "dorgelinda.committed", L + "other_columns"), "seal", 1);
+        var walked = Program.WalkVia(quarrel, World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", "dorgelinda.committed", L + "other_columns"), "seal", 1);
         check(walked.Count > 0 && walked.All(r => r.Has(L + "quarrel_cold") && !r.Has(L + "quarrel_mended")),
             "Leaving the quarrel still mends it.");
         check(!Rules.Available(story, coldCounts, Later(story, walked.First(), 48)) && Rules.Available(story, coldCounts, Later(story, walked.First(), 168)),
@@ -395,7 +395,7 @@ internal static class DorgelindaTricksterTests
         // Q9 (Sol INT): the smaller yes comes after the one morning, and keeps her after-the-war talk to herself.
         check(others.Requires.Contains(L + "morning_count") && !Rules.Available(story, others, Later(story, nights.First(), 24)),
             "Her other columns can come before the morning the smaller yes forbids.");
-        var narrowed = World(story, 5, "trickster.ever", "dorgelinda.present", "dorgelinda.committed", L + "after_hours", L + "morning_count", L + "narrowed");
+        var narrowed = World(story, 5, "trickster", "trickster.ever", "dorgelinda.present", "dorgelinda.committed", L + "after_hours", L + "morning_count", L + "narrowed");
         Program.Walk(afterWar, narrowed, (id, st) => check(id != "after" && id != "where", "The smaller yes still tells her after: " + id));
 
         // Q9 (Sol COX): the bottled-death return keeps her closing page, and the late commit reaches her Last Call coda.
@@ -411,13 +411,13 @@ internal static class DorgelindaTricksterTests
         check(Rules.IsRemote(wool) && wool.Kind == "letter" && wool.Chapters.SequenceEqual(new[] { 4 }) && wool.MinChapter == 4 && wool.MaxChapter == 4
               && wool.Relationship == "dorgelinda" && wool.Requires.Contains("trickster.ever") && wool.Requires.Contains(P + "counted"),
             "Cold iron and wool lost its shape (a Chapter 4 letter on her counted route).");
-        var counted4 = World(story, 4, "trickster.ever", P + "returned", P + "counted");
+        var counted4 = World(story, 4, "trickster", "trickster.ever", P + "returned", P + "counted");
         check(Rules.Available(story, wool, counted4), "Cold iron and wool does not open in the Abyss.");
         foreach (int ch in new[] { 3, 5 })
-            check(!Rules.Available(story, wool, World(story, ch, "trickster.ever", "dorgelinda.present", P + "returned", P + "counted")),
+            check(!Rules.Available(story, wool, World(story, ch, "trickster", "trickster.ever", "dorgelinda.present", P + "returned", P + "counted")),
                 "Cold iron and wool opens outside the Abyss: Chapter " + ch);
-        check(!Rules.Available(story, wool, World(story, 4, "trickster.ever")), "The crate is packed for a Commander she never counted.");
-        check(!Rules.Available(story, wool, World(story, 4, "trickster.ever", P + "counted", "dorgelinda.closed")), "The crate ignores a closed route.");
+        check(!Rules.Available(story, wool, World(story, 4, "trickster", "trickster.ever")), "The crate is packed for a Commander she never counted.");
+        check(!Rules.Available(story, wool, World(story, 4, "trickster", "trickster.ever", P + "counted", "dorgelinda.closed")), "The crate ignores a closed route.");
         var woolPages = new HashSet<string>();
         var spent = Program.Walk(wool, counted4, (page, _) => woolPages.Add(page)).Where(r => r.Has(wool.Id)).ToList();
         string[] woolWays = { L + "wool_shared", L + "wool_kept", L + "wool_traded" };
@@ -425,7 +425,7 @@ internal static class DorgelindaTricksterTests
             "The wool cannot go three ways, or the crate is opened twice.");
         check(woolPages.Contains("note") && !woolPages.Contains("note_heel"), "The right heel is minded for boots she never fitted.");
         var heelPages = new HashSet<string>();
-        Program.Walk(wool, World(story, 4, "trickster.ever", P + "returned", P + "counted", L + "fitted"), (page, _) => heelPages.Add(page));
+        Program.Walk(wool, World(story, 4, "trickster", "trickster.ever", P + "returned", P + "counted", L + "fitted"), (page, _) => heelPages.Add(page));
         check(heelPages.Contains("note_heel") && !heelPages.Contains("note"), "The fitted boots lose their heel line.");
         // Chapter 5: receipts reads the wool back, each answer only for its own Commander, appended after the original three.
         var column = receipts.Nodes.Single(n => n.Id == "column").Choices;

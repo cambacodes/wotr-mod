@@ -129,7 +129,7 @@ internal static class NocticulaTricksterTests
         check(lateShadow.Nodes[0].Choices[0].Mythic == "PlayerIsTrickster", "The boot on her shadow is not a [Trickster] answer.");
 
         // Trk_Nocticula_CallInLate: only the Evil 2 "Agreed." is offered.
-        var lateCall = World(story, 6, "trickster.ever", Dead, Fight, Primed, Late);
+        var lateCall = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Primed, Late);
         var lateOutcomes = Program.Walk(callIn, lateCall).Where(r => r.Has(callIn.Id)).ToList();
         pages.Clear();
         Program.Walk(callIn, lateCall, (page, _) => pages.Add(page));
@@ -143,14 +143,14 @@ internal static class NocticulaTricksterTests
               && !Rules.Available(story, stalemate, paid), "Trk_Nocticula_CallInLate: continuations.");
 
         // Trk_Nocticula_CallInRefused: mutual blackmail.
-        var onTime = World(story, 6, "trickster.ever", Dead, Fight, Primed);
+        var onTime = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Primed);
         var refused = Program.Walk(callIn, onTime).Single(r => r.Has(Refused));
         check(refused.Has(Returned) && !Rules.Available(story, stalemate, refused) && Rules.Available(story, stalemate, With(story, refused, "noct.complete")) && !Rules.Available(story, favour, refused),
             "Trk_Nocticula_CallInRefused failed.");
         check(Program.Walk(callIn, onTime).Any(r => !r.Has(callIn.Id) && !r.Has(Returned)), "The call-in cannot be left for later.");
 
         // Trk_Nocticula_Commit / _CommitDeclined: her test, her yes, her no.
-        var returned = World(story, 6, "trickster.ever", Dead, Fight, Returned, Paid);
+        var returned = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Returned, Paid);
         check(Rules.Available(story, chair, returned) && Rules.Available(story, epCommit, returned), "Trk_Nocticula_Commit: availability.");
         var chaired = Program.Walk(chair, returned);
         var yes = chaired.Where(r => r.Has("noct.complete")).ToList();
@@ -177,9 +177,9 @@ internal static class NocticulaTricksterTests
 
         // Trk_Nocticula_FavourUnderLastCall, _Unpriced, _Unjoked.
         // Trk_Nocticula_FavourUnderLastCall waits for the finale (no lastcall.active producer yet; PROGRESS backlog).
-        var primedOnly = World(story, 6, "trickster.ever", Dead, Fight, Primed);
+        var primedOnly = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Primed);
         check(Rules.Available(story, unpriced, primedOnly) && !Rules.Available(story, unjoked, primedOnly), "Trk_Nocticula_Unpriced failed.");
-        var neither = World(story, 6, "trickster.ever", Dead, Fight);
+        var neither = World(story, 6, "trickster", "trickster.ever", Dead, Fight);
         check(Rules.Available(story, unjoked, neither) && !Any(neither, unpriced, b1, fooledPage), "Trk_Nocticula_Unjoked failed.");
 
         // Trk_Nocticula_SilentAfterCouncil: no harbor dream, no letter, between the Council and Threshold.
@@ -239,8 +239,8 @@ internal static class NocticulaTricksterTests
         check(!Rules.Available(story, clue, World(story, 5, "trickster.was", "trickster.failed", Dead, Fight)), "The clue without the live path.");
 
         // Reactions: exactly Daeran and Nenio.
-        check(Rules.Available(story, daeran, With(story, World(story, 5, "trickster.ever"), "nocticula.trickster.impersonated"))
-              && !Rules.Available(story, daeran, World(story, 5, "trickster.ever", "nocticula.trickster.impersonated", "daeran.dead")),
+        check(Rules.Available(story, daeran, With(story, World(story, 5, "trickster", "trickster.ever"), "nocticula.trickster.impersonated"))
+              && !Rules.Available(story, daeran, World(story, 5, "trickster", "trickster.ever", "nocticula.trickster.impersonated", "daeran.dead")),
             "Daeran's reaction.");
         check(Rules.Available(story, nenio, joked[0]) && !Rules.Available(story, nenio, With(story, joked[0], "nenio.dissolved")),
             "Nenio's reaction.");
@@ -285,33 +285,33 @@ internal static class NocticulaTricksterTests
         foreach (var (road, flag) in new (string, string?)[] { ("m_floor", PrimedShadow), ("m_late", Late), ("m_base", null) })
         {
             var seen = new HashSet<string>();
-            var w6 = World(story, 6, "trickster.ever", Returned, Paid);
+            var w6 = World(story, 6, "trickster", "trickster.ever", Returned, Paid);
             Program.Walk(epCommit, flag == null ? w6 : With(story, w6, flag), (id, _) => seen.Add(id));
             check(seen.Contains(road) && seen.Count(x => x.StartsWith("m_", StringComparison.Ordinal)) == 1 && seen.Contains("refused_page"),
                 "The late commit's reason on the " + road + " road is not its own, or there is no refusal.");
         }
         // Sol INT/COX: pages of a life after the war only for a Commander who has one; the harbor's permanent loss never over one.
-        var dead6 = World(story, 6, "trickster.ever", Returned, Paid, Primed, "sacrifice");
+        var dead6 = World(story, 6, "trickster", "trickster.ever", Returned, Paid, Primed, "sacrifice");
         var back6 = With(story, dead6, "trickster.commander_back");
         check(!Rules.Available(story, b1, dead6) && Rules.Available(story, b1, back6) && !Rules.Available(story, epCommit, dead6)
               && Rules.Available(story, S("nocticula.trickster.defeated.epilogue.unanswered"), dead6)
               && !Rules.Available(story, S("nocticula.trickster.defeated.epilogue.unanswered"), back6),
             "Nocticula's pages ignore the Commander's death or survival.");
-        var harborLoss = World(story, 6, "trickster.ever", "noct.complete", "sacrifice");
+        var harborLoss = World(story, 6, "trickster", "trickster.ever", "noct.complete", "sacrifice");
         check(Rules.Available(story, S("noct.ending_sacrifice"), harborLoss) && !Rules.Available(story, S("noct.ending_sacrifice"), With(story, harborLoss, "trickster.commander_back"))
               && story.Scenes.Where(s => s.Id.StartsWith("noct.ending_sacrifice", StringComparison.Ordinal)).All(s => s.Forbids.Contains("trickster.commander_back"))
               && Rules.Available(story, S("noct.ending_company"), With(story, harborLoss, "noct.chosen_company", "trickster.commander_back")),
             "The harbor's sacrifice ending plays over a Commander who came back, or the living ending does not.");
         // Sol COX: on the late road (one Chapter 6 rest) the morning after is inside the chair; the remote morning is not needed.
-        var lateChair = World(story, 6, "trickster.ever", Dead, Fight, Returned, Paid, Late);
+        var lateChair = World(story, 6, "trickster", "trickster.ever", Dead, Fight, Returned, Paid, Late);
         var lateSeen = new HashSet<string>(); Program.Walk(chair, lateChair, (id, _) => lateSeen.Add(id));
         check(lateSeen.Contains("morning_late_paid") && !Rules.Available(story, morning, With(story, lateChair, "nocticula.trickster.said_yes"))
               && !chair.Nodes.Single(n => n.Id == "refusal").Text.Contains("Areelu"),
             "The late road needs a second Chapter 6 rest for the morning, or her refusal waits on Areelu's death.");
         // Ledger 05 row 11: the fourth court (Horzalah), Nocticula's read of the Guild's box.
         var courtH = S("nocticula.trickster.court.horzalah");
-        var hWorld = World(story, 6, "trickster.ever", "horzalah.trickster.returned");
-        check(Rules.Available(story, courtH, hWorld) && !Rules.Available(story, courtH, World(story, 6, "trickster.ever"))
+        var hWorld = World(story, 6, "trickster", "trickster.ever", "horzalah.trickster.returned");
+        check(Rules.Available(story, courtH, hWorld) && !Rules.Available(story, courtH, World(story, 6, "trickster", "trickster.ever"))
               && !Rules.Available(story, courtH, With(story, hWorld, Fight)) && Rules.Available(story, courtH, With(story, hWorld, Fight, Returned))
               && courtH.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).All(f => f.StartsWith("nocticula.", StringComparison.Ordinal)),
             "Nocticula's Horzalah court is missing, speaks between the Council and Threshold, or touches Horzalah's flags.");
@@ -346,7 +346,7 @@ internal static class NocticulaTricksterTests
         check(new[] { mirror, mirrorKept }.All(s => s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Alignment == null)),
             "A mirror page sets a flag.");
         // The favour is visible the morning after: Daeran reads the unnamed debt when she was paid and he is present.
-        var morningPaid = World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Paid);
+        var morningPaid = World(story, 6, "trickster", "trickster.ever", "nocticula.trickster.said_yes", Paid);
         pages.Clear();
         Program.Walk(morning, morningPaid, (page, _) => pages.Add(page));
         check(pages.Contains("daeran"), "The morning after hides the unnamed favour from Daeran.");
@@ -357,7 +357,7 @@ internal static class NocticulaTricksterTests
             check(!pages.Contains("daeran") && outs.Any(r => r.Has(morning.Id)), "The morning after strands or shows an absent Daeran: " + gone);
         }
         pages.Clear();
-        Program.Walk(morning, World(story, 6, "trickster.ever", "nocticula.trickster.said_yes", Refused), (page, _) => pages.Add(page));
+        Program.Walk(morning, World(story, 6, "trickster", "trickster.ever", "nocticula.trickster.said_yes", Refused), (page, _) => pages.Add(page));
         check(!pages.Contains("daeran") && !pages.Contains("note_paid") && !pages.Contains("note_paid_alone"), "Daeran or the note reads a favour that was refused.");
         check(morning.Nodes[0].Choices[0].Text == "[Buckle your armour over the marks.]" && morning.Nodes[0].Choices[0].Next == null,
             "The morning's choice 0 moved (save slot).");

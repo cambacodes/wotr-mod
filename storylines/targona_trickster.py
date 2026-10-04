@@ -828,3 +828,14 @@ def integrate(payload):
     if derived.get(CORR_ROMANCED, corr) != corr:
         raise ValueError("Conflicting derived key: " + CORR_ROMANCED)
     derived[CORR_ROMANCED] = corr
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'targona.trickster.dead.long_sleep',
+    'targona.trickster.dead.one_soul',
+    'targona.trickster.free.furlough',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

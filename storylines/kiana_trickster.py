@@ -791,3 +791,14 @@ def integrate(payload):
         c("Continue", "rider", requires=(ROBBED, BOUGHT, "konomi.trickster.cost.recalled"), forbids=(Q3,)),
     ])
     collection["Nodes"].extend(dict(x) for x in ARSINOE_WEDDING)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'kiana.trickster.after.letter',
+    'kiana.trickster.after.temple',
+    'kiana.trickster.aftermath.letter_waited',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]

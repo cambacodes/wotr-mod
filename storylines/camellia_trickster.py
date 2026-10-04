@@ -709,3 +709,14 @@ def integrate(payload):
             # CamelliaNotInParty_Dead reads current life, not her historical kill.
             # Resurrection clears it; a later death must block these nine hub reactions again.
             scene_.setdefault("ForbidOverrides", {}).pop(DEAD, None)
+
+
+# Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
+_LIVE_PRODUCERS = {
+    'camellia.trickster.killed.performance',
+    'camellia.trickster.killed.performance_letter',
+    'camellia.trickster.killed.third_night',
+}
+for _q5_producer in SCENES:
+    if _q5_producer["Id"] in _LIVE_PRODUCERS:
+        _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
