@@ -6,6 +6,8 @@ internal static class Bootstrap
 {
     private static int Main(string[] args)
     {
+        // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
+        AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         if (args.Length != 2)
         {
             Console.Error.WriteLine("Usage: ManagedBuildTests.exe <game directory> <story.json>");

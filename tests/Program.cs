@@ -226,6 +226,8 @@ internal static class Program
 
     private static void Main(string[] args)
     {
+        // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
+        AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
         if (args.Contains("--wenduag-echo"))
