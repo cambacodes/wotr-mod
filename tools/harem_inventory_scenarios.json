@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-36",
+  "source": "HAREM-STATUS W0c; 16-HOUSEHOLD-DYNAMICS v8.1 section 4",
+  "campaign_ceilings": {"ideal": 81, "worst": 122},
+  "chapter_ceilings": {
+    "2": {"ideal": 2, "worst": 2},
+    "3": {"ideal": 9, "worst": 9},
+    "4": {"ideal": 5, "worst": 5},
+    "5": {"ideal": 65, "worst": 106},
+    "6": {"ideal": 0, "worst": 0}
+  },
+  "chapter5_min_table_rests": 20,
+  "chapter5_worst_retries": 30,
+  "protected_discoveries_uncapped": true,
+  "expected_schedule_counts": {
+    "ch5_primary": 48, "ideal_redeemed": 47, "ideal_redeemed_no_s52": 46,
+    "consolidated": 38, "consolidated_no_s52": 37, "packet_saving": 9
+  },
+  "expected_form_census": {"frictions": 5, "smoothing": 33, "combined": 38, "with_reservations": 53, "packets": 3, "charged": 56, "capacity": 64, "over_cap_forms": 0},
+  "row_scene_ids": {},
+  "data_blockers": [
+    "Per-pair build sheets and emitted schedule scenes are absent; reservations are not delivered scenes.",
+    "Tier-3 S9 native eligibility/gate-hour walk is not supplied.",
+    "First-wins enmity has reserved readers but no serialized choice producers to exercise."
+  ],
+  "scenarios": [
+    {"id": "native-walk-missing", "conditional": false, "expected_status": "data_blocked"},
+    {"id": "conditional-ideal", "conditional": true, "rematch": false, "fallback": false, "late_s06": false, "expected_status": "conditional"},
+    {"id": "conditional-fallback-rematch", "conditional": true, "rematch": true, "fallback": true, "late_s06": true, "expected_status": "conditional", "expected_deadline_misses": {"5": ["reserved.dynamic.2"]}}
+  ]
+}

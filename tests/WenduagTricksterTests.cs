@@ -212,20 +212,14 @@ internal static class WenduagTricksterTests
         var failedBid = Take(bid, traitorW, "no", 0, P + "bid_failed");
         check(!Avail(bid, bought) && !Avail(bid, failedBid), "Trk_Wenduag_TraitorBid: the bid can be retried.");
 
-        // Trk_Wenduag_Abyss: she falls in his house (Lann's blow); bought, the Commander claims her from Lann; she follows his smell home.
+        // eng7-l10: delayed fall actions are unsupported and retired (E-Q7-30).
         var fellBought = World(story, 4, "trickster", "trickster.ever", Dead, "wenduag.abyss_fell", P + "bought", P + "fall_agreed");
-        check(Avail(abyssFall, fellBought) && abyssFall.TricksterDevice && abyssFall.TricksterState == "abyss"
-              && !Avail(abyssFall, World(story, 4, "trickster", "trickster.ever", Dead)),
-            "Trk_Wenduag_Abyss: the fall in Savamelekh's house does not play on MongrelsDefeated/Cue_0001.");
-        var abyssCairn = Take(abyssFall, fellBought, "cairn", 0, P + "abyss_cairn", P + "lann.alone", P + "cost.lied_to_lann", "trickster.secret.wenduag_cairn");
-        var abyssKnown = Take(abyssFall, fellBought, "cairn_known", 0, P + "abyss_cairn", P + "lann.knows");
-        check(!abyssKnown.Has(P + "cost.lied_to_lann"), "Trk_Wenduag_Abyss: a Lann who saw her breathing is recorded as lied to.");
         var fellUnbought = World(story, 4, "trickster", "trickster.ever", Dead, "wenduag.abyss_fell");
-        var abyssLate = Take(abyssFall, fellUnbought, "cairn", 0, P + "abyss_cairn", P + "cost.unplanned", P + "abyss_passage");
-        var inDrezen = At(Later(abyssCairn, 48), 5);
-        check(!Avail(abyssBack, At(Later(abyssCairn, 47), 5)) && Avail(abyssBack, inDrezen) && !Avail(abyssBack, Later(abyssCairn, 48)),
-            "Trk_Wenduag_Abyss: the return does not wait 48 hours and Chapter 5.");
-        var abyssHome = Take(abyssBack, inDrezen, "dug", 0, Returned, Started);
+        check(!Avail(abyssFall, fellBought) && !Avail(abyssFall, fellUnbought),
+            "Trk_Wenduag_Abyss: retired rest replay reopened a completed native encounter.");
+        check(!Avail(abyssBack, At(Later(fellBought, 500), 5)) && !Avail(abyssBack, At(Later(fellUnbought, 500), 5)),
+            "Trk_Wenduag_Abyss: elapsed time alone earned custody/return.");
+        // end eng7-l10
 
         // Trk_Wenduag_Exile: the dismissal made a bid (both lists); the champion's report; the late bid.
         var inParty = World(story, 3, "trickster", "trickster.ever", "wenduag.in_party");
@@ -256,19 +250,17 @@ internal static class WenduagTricksterTests
         Take(hunt, World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", P + "bought"), "bought_before", 0);
         Take(hunt, World(story, 5, "trickster", "trickster.ever", Kicked, "wenduag.kicked_out.latched", P + "late_bid_failed"), "laughed_before", 0);
 
-        // Trk_Wenduag_Street: she falls in the street in Chapter 5; Brask; the catacombs; she digs.
+        // eng7-l10: the street's completed morning cannot be replayed to buy burial.
         var street = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", P + "fall_agreed");
-        check(Avail(streetFall, street) && streetFall.TricksterState == "street" && !Avail(streetFall, World(story, 5, "trickster", "trickster.ever", Kicked, Dead)),
-            "Trk_Wenduag_Street: the street fall does not play on the street's Cue_0025.");
-        var streetCairn = Take(streetFall, street, "catacomb", 0, P + "street_cairn", "trickster.secret.wenduag_cairn");
-        var streetLann = Take(streetFall, World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted", P + "bought", P + "fall_agreed", "wenduag.street_lann"),
-            "catacomb_lann", 0, P + "street_cairn", P + "cost.lied_to_lann");
         var streetUnbought = World(story, 5, "trickster", "trickster.ever", Kicked, Dead, "wenduag.street_confronted");
-        var brask = Take(streetFall, streetUnbought, "pull_rank_hard", 0, P + "brask_knows", P + "cost.watch", P + "cost.unplanned");
-        check(Ch(streetFall, "pull_rank_hard", 0).Crusade?.Resource == "Favors" && Ch(streetFall, "pull_rank_hard", 0).Crusade?.Amount == -150
+        check(!Avail(streetFall, street) && !Avail(streetFall, streetUnbought),
+            "Trk_Wenduag_Street: retired morning replay reopened a completed native encounter.");
+        check(!Avail(streetBack, Later(street, 500)) && !Avail(streetBack, Later(streetUnbought, 500)),
+            "Trk_Wenduag_Street: elapsed time alone earned custody/return.");
+        check(Ch(streetFall, "pull_rank_hard", 0).Crusade?.Amount == -150
               && Ch(streetFall, "pull_rank", 0).Crusade?.Amount == -100,
-            "Trk_Wenduag_Street: the watch's bill is not the build sheet's Favors cost.");
-        var streetHome = Take(streetBack, Later(streetCairn, 48), "dug", 0, Returned, Started);
+            "Trk_Wenduag_Street: retired choices lost their saved cost contract.");
+        // end eng7-l10
 
         // Trk_Wenduag_Crystal: the W path's outbid after Savamelekh's crystal; the native romance owns her.
         var heard = World(story, 4, "trickster", "trickster.ever", "wenduag.in_party", "wenduag.heard_savamelekh");
@@ -413,8 +405,29 @@ internal static class WenduagTricksterTests
         check(Ch(neathers, "ask", 0).Alignment?.Direction == "Evil" && Ch(neathers, "ask", 2).Alignment?.Direction == "Good" && neathers.Optional
               && !claim.Requires.Any(r => r.Contains("neathers") || r.Contains("hunt") || r.Contains("stinger")),
             "Trk_Wenduag_Optional: the culling is not a moral pivot, or an optional beat gates the claim.");
+        // eng7-l08: inventory the actual completing choices above, never union alternate roads.
+        void Allocation(string name, int chapter, Snapshot result, bool failed, params Scene[] played)
+            => Program.Eng7L08Allocation(story, check, name, "Wenduag", chapter, result, played.Select(s => s.Id), failed);
+        var cellar = S(P + "killed.cellar");
+        var cellarAt = Later(home, 24);
+        check(Avail(cellar, cellarAt), "Earned cellar physical visit is unavailable");
+        var cellarDone = Program.Walk(cellar, cellarAt).First(r => r.Has(cellar.Id));
+        Allocation("killed", 3, cellarDone, false, cairn, back, cellar);
+        var stoneAt = Later(At(buried, 4), 24);
+        check(Avail(stone, stoneAt), "Stone allocation witness is unavailable");
+        Allocation("stone", 4, Program.Walk(stone, stoneAt).First(r => r.Has(stone.Id)), true, stone);
+        Allocation("champion", 4, Program.Walk(champion, exiled).First(r => r.Has(champion.Id)), true, champion);
+        Allocation("late-bid", 4, lateBought, true, lateBid);
+        // eng7-integ: retired native-fall replays cannot supply completed allocation traces.
+        check(!Avail(abyssFall, fellBought) && !Avail(abyssBack, At(fellBought, 5)),
+            "Retired Abyss roads cannot earn a delivery allocation.");
+        Allocation("orchard", 5, huntHome, false, hunt);
+        check(!Avail(streetFall, street) && !Avail(streetBack, street),
+            "Retired street roads cannot earn a delivery allocation.");
+        Allocation("killed-courtship", 5, after, false, trial, gate, claim, bed, morning);
+        // end eng7-l08
         Console.WriteLine("PASS: Wenduag Trickster (Trk_Wenduag_*): the staged blow and the cairn, the return and the closing no, the Commander's kills that stand, "
-            + "the outbid on the traitor hub, the exile answers and the late bid, the falls in Savamelekh's house and the street (bought and unbought), "
+            + "the outbid on the traitor hub, the exile answers and the late bid, the retired fall replays in Savamelekh's house and the street (prepared and unprepared), "
             + "Lann's price, the native romance first, the chain to the claim and the cairn, " + pages.Length + " pages, Last Call and the household.");
     }
 }

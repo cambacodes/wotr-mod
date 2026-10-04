@@ -407,7 +407,7 @@ s("three_counterclaim", "What he can afford to say", "Together",
 {n}She counts it again, then writes the unpaid amount on her own account.{/n}
 "Wenna has work. We can manage the next booking, but it will be smaller. If I pursue him for the rest, I lose more time. If I don't, he keeps it."
 {n}Wenna puts a hand on the back of her chair.{/n}
-"We can decide tomorrow. Tonight we know which account is ours."{/n}
+"We can decide tomorrow. Tonight we know which account is ours."
 {n}Ista folds the withdrawal slowly, pressing each crease with her thumb.{/n}''', c('[Help them collect their papers.]', "leave", flags=("three_counterclaim.partial",))),
     n("circulate", "Narrator", '''{n}Malven withdraws his offer of immediate repayment. Ista looks at Wenna before accepting that cost. They will have to postpone a booking while the deposit remains in dispute.{/n}
 {n}He still signs the denial of the household guarantee. You keep your own statement narrow: you did not authorize it, promise payment, or offer favors to customers. Irabeth and Anevia sign separately beneath their own denials.{/n}

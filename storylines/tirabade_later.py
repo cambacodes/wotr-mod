@@ -69,7 +69,7 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
     n("your_turn", "Irabeth", '''{n}Irabeth points out where she found resistance and waits while you try. When your hand slips, she steadies the box instead of taking the tools away.{/n}
 "Again. There is no one waiting on the other side of a door."
 {n}Anevia rests her chin on her folded arms and watches. It takes longer than you hoped, but eventually the lock opens.{/n}
-"Good," Irabeth says, with enough pleasure that you look up from the hasp.{/n}''', c('[Set the second lock aside.]', "last")),
+"Good," Irabeth says, with enough pleasure that you look up from the hasp.''', c('[Set the second lock aside.]', "last")),
     n("last", "Anevia", '''{n}Anevia takes the final lock with the air of someone about to restore the proper order of things. It does not open.{/n}
 {n}She tries again. Irabeth reaches into her pocket and sets a key beside the box.{/n}
 "That one sticks. I meant to tell you before we came out."
@@ -146,7 +146,7 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
 {n}Anevia takes your hand. Her movements are small and assured; when another couple comes too close, she turns the collision into a change of direction and grins at you.{/n}
 "See? Completely planned."
 {n}Irabeth waits at the edge of the room, holding Anevia's cup. As the tune ends, Anevia leans toward her to reclaim it and steals a brief kiss instead.{/n}
-"Better than the drink," she says, then reaches back for you.{/n}''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.anevia_dance",))),
+"Better than the drink," she says, then reaches back for you.''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.anevia_dance",))),
     n("listen", "Anevia", '''{n}Anevia settles beside you. Irabeth stays standing close enough that you can hear her humming the melody.{/n}
 "She knows all the words," Anevia murmurs. "Won't sing 'em unless you catch her at the right moment."
 "You are not going to make this the right moment by announcing it."

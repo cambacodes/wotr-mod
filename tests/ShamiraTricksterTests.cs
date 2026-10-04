@@ -399,19 +399,63 @@ internal static class ShamiraTricksterTests
         // Sol INT/COX: through actual rest delivery, the first post-Council rest brings the first night with the Council in it,
         // and the whole primed road reaches the commit with at most four required Chapter 5 pages (the folds) before her
         // presence takes over; the folded pages never arrive.
+
+        // eng7-l08: delivery accounting follows the woman after refusal too,
+        // including consequence relationships; a rotation alias is no exemption.
+        var refusalRuns = new HashSet<string>();
+        bool ShamiraDelivery(Scene s) => s.Relationship == "shamira" || s.Relationship == "shamira_barracks"
+            || s.Owner == "Shamira";
+        void RefusalDeliveries(Snapshot beforeGame, IEnumerable<string> alreadyDelivered, string roadName)
+        {
+            if (!beforeGame.Has(P + "cost.barracks")) return;
+            foreach (string placement in new[] { P + "harem", P + "harem_awning" })
+            foreach (int refusal in new[] { 1, 2 })
+            {
+                var at = Program.Copy(beforeGame);
+                if (placement.EndsWith("_awning", StringComparison.Ordinal))
+                    at.Flags.Add("fool_king.gone"); // explicit native gone world; no fabricated placement-failure flag
+                Rules.Complete(story, at);
+                var game = S(placement);
+                if (!Avail(game, at)) continue; // the alternate placement is tested only in its own valid native world
+                foreach (var refused in Through(game, at, "search", refusal))
+                {
+                    refusalRuns.Add(roadName + "/" + placement + "/" + refusal);
+                    var after = Program.Copy(refused);
+                    var deliveries = alreadyDelivered.ToList();
+                    for (int rest = 0; rest < 8; rest++)
+                    {
+                        after = Later(story, after, 26);
+                        foreach (var page in Rules.MailbagArrivals(story, after).Where(ShamiraDelivery).ToList())
+                        {
+                            // Closure is retained: the consequence may belong to a separate relationship.
+                            var outcome = Program.Walk(page, after).FirstOrDefault(s => s.Has(page.Id));
+                            if (outcome != null) { deliveries.Add(page.Id); after = outcome; Rules.Complete(story, after); }
+                        }
+                    }
+                    Program.Eng7L08Allocation(story, check, roadName + "/" + placement + "/refusal " + refusal,
+                        "Shamira", 5, after, deliveries, false);
+                    check(deliveries.Count <= 2, "05-ROUND2-LEDGER-AND-RULES §4.2 Shamira tier B: "
+                        + roadName + "/" + placement + "/refusal " + refusal + ": " + string.Join(",", deliveries));
+                    check(!after.Has(Committed), "Refused Shamira gained an unearned commitment during later rests");
+                }
+            }
+        }
+        // end eng7-l08
         var deliveredIds = new List<string>();
         var road = World(story, 5, "trickster", "trickster.ever", Killed, Primed, "shamira.started", "shamira.cauldron_shown.latched");
         road = Through(voice, road, "choose", 0).First();
         for (int rest = 0; rest < 30 && !road.Has(Committed); rest++)
         {
             road = AtHerTable(story, Later(story, road, 26));
-            var bag = Rules.MailbagArrivals(story, road).Where(s => s.Relationship == "shamira").ToList();
+            var bag = Rules.MailbagArrivals(story, road).Where(ShamiraDelivery).ToList();
             foreach (var letter in bag)
             {
                 var outcome = Program.Walk(letter, road).Where(r => r.Has(letter.Id) && !r.Has(Closed)).OrderByDescending(r => r.Flags.Count).FirstOrDefault();
                 if (outcome == null) continue;
                 deliveredIds.Add(letter.Id); road = AtHerTable(story, outcome);
             }
+            // eng7-l08: continue both refusal histories beyond this game.
+            RefusalDeliveries(road, deliveredIds, "primed");
             foreach (var beat in own.Where(s => s.InteractionHub == "shamira.presence" && Avail(s, road)).ToList())
             {
                 var outcome = Program.Walk(beat, road).Where(r => r.Has(beat.Id) && !r.Has(Closed) && !r.Has(P + "ally")).OrderByDescending(r => r.Has(Committed)).FirstOrDefault();
@@ -423,22 +467,38 @@ internal static class ShamiraTricksterTests
               && !deliveredIds.Intersect(folded).Any() && !deliveredIds.Contains(P + "mind.council"),
             "Trk_Shamira_Delivery: the Council beat is lost to delivery order, or a folded page arrives (" + string.Join(",", deliveredIds) + ").");
         check(deliveredIds.Count <= 2, "Trk_Shamira_Delivery: more than two Chapter 5 pages on the way to the commit (" + string.Join(",", deliveredIds) + ").");
+        // eng7-l08: every promised refusal case must actually execute.
+        check(refusalRuns.Count(x => x.StartsWith("primed/", StringComparison.Ordinal)) == 4, "Primed Shamira refusal histories were not executed");
         // The same cap on the letter road (her first words by letter) and the late road (she drowns), all pages counted.
         foreach (var (roadName, startFlags, entry) in new (string, string[], string)[] {
             ("letter", new[] { "trickster", "trickster.ever", Killed, Primed, "shamira.started", "shamira.cauldron_shown.latched" }, P + "killed.voice_letter"),
-            ("late", new[] { "trickster", "trickster.ever", Killed }, P + "killed.drowning") })
+            ("late", new[] { "trickster", "trickster.ever", Killed }, P + "killed.drowning"),
+            // eng7-l08: the actual pre-kill, body-chosen-alone road; not a seeded shell.
+            ("unextracted", new[] { "trickster", "trickster.ever", "shamira.plan_known", "shamira.let_in.submitted" }, P + "mind.first_night") })
         {
             var r0 = World(story, 5, startFlags);
+            // eng7-l08: play the prepared theft before the native kill/cauldron observation.
+            if (roadName == "unextracted")
+            {
+                r0 = Program.WalkVia(setup, r0, "veil", 1).First(r => r.Has(P + "shell_chosen_alone"));
+                r0.Flags.Add(Killed); r0.Times[Killed] = r0.Hour;
+                r0.Flags.Add("shamira.cauldron_shown"); r0.Times["shamira.cauldron_shown"] = r0.Hour;
+                Rules.Complete(story, r0);
+                r0 = Through(voice, r0, "choose", 0).First();
+            }
+            // end eng7-l08
             var got = new List<string>();
             for (int rest = 0; rest < 30 && !r0.Has(Committed); rest++)
             {
                 r0 = AtHerTable(story, Later(story, r0, 26));
-                foreach (var letter in Rules.MailbagArrivals(story, r0).Where(s => s.Relationship == "shamira").ToList())
+                foreach (var letter in Rules.MailbagArrivals(story, r0).Where(ShamiraDelivery).ToList())
                 {
                     var outcome = Program.Walk(letter, r0).Where(r => r.Has(letter.Id) && !r.Has(Closed)).OrderByDescending(r => r.Flags.Count).FirstOrDefault();
                     if (outcome == null) continue;
                     got.Add(letter.Id); r0 = AtHerTable(story, outcome);
                 }
+                // eng7-l08: count post-refusal consequence deliveries too.
+                RefusalDeliveries(r0, got, roadName);
                 foreach (var beat in own.Where(s => s.InteractionHub == "shamira.presence" && Avail(s, r0)).ToList())
                 {
                     var outcome = Program.Walk(beat, r0).Where(r => r.Has(beat.Id) && !r.Has(Closed) && !r.Has(P + "ally")).OrderByDescending(r => r.Has(Committed)).FirstOrDefault();
@@ -447,6 +507,8 @@ internal static class ShamiraTricksterTests
             }
             check(r0.Has(Committed) && got.Count <= 2 && got.FirstOrDefault() == entry,
                 "Trk_Shamira_Delivery_" + roadName + ": " + string.Join(",", got) + (r0.Has(Committed) ? "" : " (no commit)"));
+            // eng7-l08: both placements and both refusals must execute on this road.
+            check(refusalRuns.Count(x => x.StartsWith(roadName + "/", StringComparison.Ordinal)) == 4, roadName + " Shamira refusal histories were not executed");
         }
 
         // Sol CAN/HOW: the diamond as the Council actually left it: Nirvana only, the Council's essences, or Shyka's taking.

@@ -12,6 +12,8 @@
     <Compile Include="../src/Story.cs" Link="Story.cs" />
     <!-- eng7-l04 -->
     <Compile Include="../src/NativeWorldReconciliation.cs" Link="NativeWorldReconciliation.cs" />
+    <!-- eng7-l11: game-free contact inventory oracle, shared with the harness. -->
+    <Compile Include="../harness/Probes/ContactInventoryProbe.cs" Link="ContactInventoryProbe.cs" />
     <Compile Include="../src/RecoveryAttempt.cs" Link="RecoveryAttempt.cs" />
     <Compile Include="../src/TerendelevDeliveryAttempt.cs" Link="TerendelevDeliveryAttempt.cs" />
   </ItemGroup>

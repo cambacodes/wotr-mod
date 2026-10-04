@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-33",
+  "scope": "Offline placement inventory. Pending is not verified walkability and does not authorize coordinates.",
+  "evidence_source": "/work/Writer/handoffs/LOOP-3-HANDOFF.md:2026-10-04 ~04:10 LIVE HARNESS",
+  "probe_contract": {
+    "chapter": 5,
+    "requires": [
+      "walkable",
+      "approachable",
+      "clickable",
+      "occupancy_clear",
+      "after_reload"
+    ],
+    "max_walkable_gap": 1.5,
+    "max_drift": 1.5
+  },
+  "native_targets": [
+    {
+      "guid": "23eabf5b6364d4a4e86202dc5d27600b",
+      "type": "BlueprintUnit",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Vendor_Tiefling.jbp",
+      "sha256": "ee346c0c34dfde1978bb01d3ffefa9793da38f969536babcd19b2ace91f2aee1"
+    },
+    {
+      "guid": "2570015799edf594daf2f076f2f975d8",
+      "type": "BlueprintArea",
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
+      "sha256": "574ba60cdc4fbe184e5adabb445e91fa5820f37c2e6af76232562fcc7afa0be6"
+    },
+    {
+      "guid": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "type": "BlueprintUnit",
+      "path": "Units/NPC/Unique/Act_2_SwordOfValor/Warcamp/QueenGalfreyDisguised.jbp",
+      "sha256": "9f5738cb940f333721b18d6189507adfdb8b11e24567eb67913d5ff336e9ca6e"
+    },
+    {
+      "guid": "ae766624c03058440a036de90a7f2009",
+      "type": "BlueprintUnit",
+      "path": "Units/Companions/Wenduag/Wenduag_Companion.jbp",
+      "sha256": "8b292f2670119aba71a08200080e00066e6929562ad6c09d4c20450d85a4b125"
+    },
+    {
+      "guid": "bad9f602b81a80047ac470b01ebe65a9",
+      "type": "BlueprintUnit",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/ExoticCapitalTrader.jbp",
+      "sha256": "ee07258e5735c0880c0cf7500bb51e0b55bebea7be46b2af10e4b0772710b8ba"
+    },
+    {
+      "guid": "c4b5746d3d2511441ba18a894cecb328",
+      "type": "BlueprintUnit",
+      "path": "QA/Unused/Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/MythicDragon_Ch5/RedDragon_Sanctum 1.jbp",
+      "sha256": "1b7e26c3ee54323607522ee729d3606a8e2ed8073bd2b794e4854a5d2888a021"
+    }
+  ],
+  "entries": [
+    {
+      "id": "wenduag.cellar",
+      "route": "wenduag",
+      "kind": "destination",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "ae766624c03058440a036de90a7f2009",
+      "consumer": "wenduag.trickster.echo.abyss.return",
+      "at": null,
+      "remainder": "No cellar position found. Coordinator must supply Ch5 save, loaded scene, mesh/approach/click/occupancy and reload evidence. Runtime destination remains null."
+    },
+    {
+      "id": "wenduag.street",
+      "route": "wenduag",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "ae766624c03058440a036de90a7f2009",
+      "consumer": "wenduag.presence",
+      "at": {
+        "Locator": "f8cfa132-6536-4fc5-a2be-1c49b0165202",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "remainder": "Ch3 probe failed walkable mesh; Ch5 save/probe still required. Exterior exile locator is not a cellar destination."
+    },
+    {
+      "id": "devarra.locator",
+      "route": "devarra",
+      "kind": "probe_only",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "c4b5746d3d2511441ba18a894cecb328",
+      "consumer": null,
+      "at": {
+        "Locator": "d7aa4429-41bd-4d58-bb17-074863d847f7",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "remainder": "Ch3 probe failed walkable mesh; Ch5 save/probe still required. This locator is a harness probe, not an exported Devarra presence."
+    },
+    {
+      "id": "galfrey.presence",
+      "route": "galfrey",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "consumer": "galfrey.presence",
+      "at": {
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "left",
+        "Distance": 2.5
+      },
+      "remainder": "Blueprint identity/type checked offline. Coordinator must validate live Ch5 anchor, approach/click, hub title, failure/fallback and reload."
+    },
+    {
+      "id": "galfrey.presence.stall",
+      "route": "galfrey",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
+      "consumer": "galfrey.presence.stall",
+      "at": {
+        "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+        "Side": "right",
+        "Distance": 2.5
+      },
+      "remainder": "Blueprint identity/type checked offline. Coordinator must validate live Ch5 anchor, approach/click, hub title, failure/fallback and reload."
+    },
+    {
+      "id": "galfrey.sergeant",
+      "route": "galfrey",
+      "kind": "remote_event",
+      "chapter": 3,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": null,
+      "consumer": "galfrey.trickster.ch3.standing_orders",
+      "at": null,
+      "remainder": "Current scene is remote and declares no placed sergeant. Live handoff placement question is unresolved; do not invent a unit/position."
+    },
+    {
+      "id": "chadali.fallback",
+      "route": "chadali",
+      "kind": "remote_event",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": null,
+      "consumer": "chadali.trickster.fought.lucky",
+      "at": null,
+      "remainder": "Current branch has no Chadali presence/fallback declaration; sealed-hall delivery is a letter. Old fallback live check cannot establish current placement."
+    }
+  ]
+}

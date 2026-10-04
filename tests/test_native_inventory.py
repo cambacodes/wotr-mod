@@ -17,8 +17,8 @@ class NativeInventoryTests(unittest.TestCase):
     def setUpClass(cls):
         import expansion
         cls.payload = expansion.make_expansion()
-        cls.expected = json.loads((ROOT / "tools/native_inventory_expectations.json").read_text(encoding="utf-8"))
-        cls.backlog = json.loads((ROOT / "tools/engine_backlog.json").read_text(encoding="utf-8"))
+        cls.expected = json.loads((ROOT / "tools/native_inventory_expectations.json").read_text())
+        cls.backlog = json.loads((ROOT / "tools/engine_backlog.json").read_text())
 
     def test_all_45_findings_and_cited_guids_are_accounted_for(self):
         rows = inventory(self.payload, self.expected, self.backlog)
@@ -62,7 +62,7 @@ class NativeInventoryTests(unittest.TestCase):
     def test_serialized_native_fixtures_match_archive_and_localization(self):
         fixtures = self.expected["Fixtures"]
         native = find_bindings(game_dir() / "blueprints.zip", {g: f["Type"] for g, f in fixtures.items()})
-        strings = json.loads((game_dir() / "Wrath_Data/StreamingAssets/Localization/enGB.json").read_text(encoding="utf-8"))["strings"]
+        strings = json.loads((game_dir() / "Wrath_Data/StreamingAssets/Localization/enGB.json").read_text())["strings"]
         for guid, fixture in fixtures.items():
             actual = native[guid]
             self.assertEqual(fixture["Path"], actual["path"], guid)
@@ -92,7 +92,7 @@ class NativeInventoryTests(unittest.TestCase):
     def test_variant_fixtures_consume_known_q6b_readers_and_paid_flags(self):
         from storylines.native_overrides import _known
         known = _known(self.payload)
-        contracts = json.loads((ROOT / "tools/native_variant_inventory_contracts.json").read_text(encoding="utf-8"))
+        contracts = json.loads((ROOT / "tools/native_variant_inventory_contracts.json").read_text())
         for row in contracts["Cases"]:
             self.assertFalse(set(row["Flags"]) - known, row["Name"])
 

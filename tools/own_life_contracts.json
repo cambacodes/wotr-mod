@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-06",
+  "people": {
+    "camellia": {
+      "relationship": "camellia",
+      "key": "camellia.life.available",
+      "losses": {
+        "camellia.killed": "camellia.trickster.cost.knows_you_tried",
+        "camellia.dead": "camellia.trickster.coffin_life",
+        "camellia.kicked_out": "camellia.trickster.killed_held"
+      }
+    },
+    "minagho": {
+      "relationship": "minagho_chivarro",
+      "key": "minagho.life.available",
+      "losses": {
+        "minagho.dead": "minagho_chivarro.trickster.returned_minagho"
+      }
+    },
+    "chivarro": {
+      "relationship": "minagho_chivarro",
+      "key": "chivarro.life.available",
+      "losses": {
+        "chivarro.dead": "minagho_chivarro.trickster.returned_chivarro"
+      }
+    },
+    "devarra": {
+      "relationship": "devarra",
+      "key": "devarra.life.available",
+      "losses": {
+        "devarra.dead_lair": "devarra.trickster.returned",
+        "devarra.dead_sanctum": "devarra.trickster.returned",
+        "inhuman": null
+      }
+    },
+    "wenduag": {
+      "relationship": "wenduag",
+      "key": "wenduag.life.available",
+      "losses": {
+        "wenduag.killed": "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.dead_any": "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.kicked_out": "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.q3_killed": null,
+        "wenduag.q3_sent_away": null,
+        "wenduag.hello_sent_away": null,
+        "wenduag.hello_attacked": null,
+        "wenduag.trickster.echo.abyss.unavailable": null
+      }
+    }
+  },
+  "sites": [
+    {
+      "relationship": "anevia",
+      "scene": "anevia.ending_parted",
+      "node": "end",
+      "paragraph": 9,
+      "Forbids": [
+        "anevia.closed"
+      ]
+    },
+    {
+      "relationship": "anevia",
+      "scene": "anevia.ending_parted",
+      "node": "end",
+      "paragraph": 11,
+      "Forbids": [
+        "anevia.closed"
+      ]
+    },
+    {
+      "relationship": "anevia",
+      "scene": "anevia.ending_parted",
+      "node": "end",
+      "paragraph": 12,
+      "Forbids": [
+        "anevia.closed"
+      ]
+    },
+    {
+      "relationship": "camellia",
+      "scene": "camellia.trickster.epilogue.refused",
+      "node": "page",
+      "paragraph": 2,
+      "Requires": [
+        "camellia.life.available"
+      ]
+    },
+    {
+      "relationship": "devarra",
+      "scene": "devarra.trickster.epilogue.hungry",
+      "Requires": [
+        "devarra.life.available"
+      ],
+      "Forbids": [
+        "devarra.closed"
+      ]
+    },
+    {
+      "relationship": "devarra",
+      "scene": "devarra.trickster.epilogue.woken",
+      "Requires": [
+        "devarra.life.available"
+      ],
+      "Forbids": [
+        "devarra.closed"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.alone.minagho_when_it_scars",
+      "Requires": [
+        "minagho.life.available"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.pair",
+      "Requires": [
+        "minagho.life.available",
+        "chivarro.life.available"
+      ],
+      "Forbids": [
+        "minachiv.closed"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.minagho",
+      "Requires": [
+        "minagho.life.available"
+      ],
+      "Forbids": [
+        "minachiv.closed"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.chivarro",
+      "Requires": [
+        "chivarro.life.available"
+      ],
+      "Forbids": [
+        "minachiv.closed"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.chivarro",
+      "node": "end",
+      "paragraph": 2,
+      "Requires": [
+        "minagho.life.available"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.owned",
+      "node": "end",
+      "paragraph": 0,
+      "Requires": [
+        "minagho.life.available"
+      ]
+    },
+    {
+      "relationship": "wenduag",
+      "scene": "wenduag.trickster.epilogue.unclaimed",
+      "Requires": [
+        "wenduag.life.available"
+      ]
+    },
+    {
+      "relationship": "wenduag",
+      "scene": "wenduag.trickster.epilogue.refused",
+      "Requires": [
+        "wenduag.life.available"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.owned",
+      "Requires": [
+        "chivarro.life.available"
+      ]
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.commit",
+      "Requires": [
+        "chivarro.life.available"
+      ]
+    }
+  ],
+  "rewires": [
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.reunion.wardrobe",
+      "node": "press",
+      "choices": [
+        0,
+        1
+      ],
+      "from": "minagho_chivarro.trickster.minagho_in",
+      "to": "minagho.life.arrived"
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.chivarro",
+      "node": "end",
+      "paragraph": 0,
+      "from": "minagho_chivarro.trickster.minagho_in",
+      "to": "minagho.life.arrived"
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.commit",
+      "node": "start",
+      "choices": [
+        0,
+        1,
+        2
+      ],
+      "from": "minagho_chivarro.trickster.tprev.house",
+      "to": "minagho.life.house"
+    },
+    {
+      "relationship": "minagho_chivarro",
+      "scene": "minagho_chivarro.trickster.epilogue.commit",
+      "node": "start",
+      "choices": [
+        1,
+        2
+      ],
+      "from": "minagho_chivarro.trickster.reunited",
+      "to": "minagho.life.reunited"
+    }
+  ],
+  "derived": {
+    "minagho.life.arrived": [
+      [
+        "minagho_chivarro.trickster.minagho_in",
+        "minagho.life.available"
+      ]
+    ],
+    "minagho.life.house": [
+      [
+        "minagho_chivarro.trickster.tprev.house",
+        "minagho.life.available"
+      ]
+    ],
+    "minagho.life.reunited": [
+      [
+        "minagho_chivarro.trickster.reunited",
+        "minagho.life.available"
+      ]
+    ]
+  },
+  "no_change_needed": {
+    "wenduag:028": "presence.route_open is already required and uses every terminal loss",
+    "wenduag:029": "EP5 already guards all relationship losses",
+    "wenduag:030": "obsolete native_service replaced by guarded native_ascent",
+    "wenduag:031": "obsolete native_return absent; no leaking replacement",
+    "wenduag:034": "harem.eligible already uses DerivedOpenRoutes",
+    "wenduag:035": "lastcall.route_open already uses DerivedOpenRoutes"
+  },
+  "finding_ids": [
+    "anevia:003",
+    "anevia:004",
+    "camellia:008",
+    "devarra:005",
+    "devarra:006",
+    "minagho-and-chivarro:024",
+    "minagho-and-chivarro:025",
+    "minagho-and-chivarro:026",
+    "minagho-and-chivarro:027",
+    "minagho-and-chivarro:028",
+    "minagho-and-chivarro:029",
+    "wenduag:028",
+    "wenduag:029",
+    "wenduag:030",
+    "wenduag:031",
+    "wenduag:032",
+    "wenduag:033",
+    "wenduag:034",
+    "wenduag:035"
+  ]
+}

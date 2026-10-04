@@ -740,7 +740,7 @@ IN_PERSON = [
     nar("tenant_free", '''{n}You reach for her, and she lets you find her, ridge and hinge and the cold edge of a wing, in a room that is only real because you both agree it is. She lowers herself onto you with a sound in your skull like pages turning very fast.{/n}''',
       c("Continue", "tenant_morning_free")),
     nar("tenant_morning_free", '''{n}You wake alone, as you went to sleep. Your hands still remember the shape of something that was never in the room.{/n}
-{n}Behind your left eye, something neat and patient is unusually quiet. Then: "You reached. Tenants are not supposed to be reached for. I shall have to renegotiate."''',
+{n}Behind your left eye, something neat and patient is unusually quiet. Then: "You reached. Tenants are not supposed to be reached for. I shall have to renegotiate."{/n}''',
       c(_KEEP[0], "end", forbids=("jerribeth.short_future_chosen",), flags=("jerribeth.chosen_future",)),
       c(_KEEP[0], "short_end", requires=("jerribeth.short_future_chosen",))),
     nar("tenant_morning", '''{n}You wake alone, as you went to sleep. There are no marks on your wrists. You can still feel exactly where they would be.{/n}

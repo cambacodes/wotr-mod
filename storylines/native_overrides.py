@@ -333,8 +333,6 @@ def verify_world_targets(payload, found):
                     or spec.get("TitleKey") and text_key(data.get("Title")) != spec["TitleKey"]):
                 raise ValueError(error)
 # eng7-l04 end
-
-
 # eng7-l03: reviewed inventory joins the existing registry; uncovered evidence
 # stays a failing review entry, never an executable declaration or a new selector.
 def inventory(payload, expectations, backlog):

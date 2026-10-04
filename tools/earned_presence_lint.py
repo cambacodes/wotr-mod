@@ -235,6 +235,21 @@ def check(story, review=False):
                 hard.append("EP3 alive witness %s: group %s does not imply trickster.commander_back once 'sacrifice' "
                             "holds" % (w, g))
 
+    # eng7-l12: paragraph contracts apply even to mourning/allowlisted pages.
+    from storylines.engine_q7_l12 import DEAD, inventory
+    contracts = inventory("commander_block_contracts.json")["continuations"]
+    dead_defined = ((story.get("Derived") or {}).get(DEAD) == [[ep.SACRIFICE]]
+                    and (story.get("DerivedForbids") or {}).get(DEAD) == [ep.COMMANDER_BACK])
+    for scene in scenes:
+        if not ep.is_epilogue(scene) or (ep.guarded(scene, story.get("Derived")) and not ep.mourning(scene, story.get("Derived"))):
+            continue
+        for node in scene.get("Nodes") or []:
+            for index, paragraph in enumerate(node.get("Paragraphs") or []):
+                if any(paragraph.get("Text", "").startswith(c["prefix"]) for c in contracts):
+                    if not (dead_defined and DEAD in (paragraph.get("Forbids") or [])):
+                        hard.append("EP6 %s/%s/paragraph[%d]: living continuation lacks earned Commander survival" %
+                                    (scene["Id"], node["Id"], index))
+
     # EP1 / EP2: postwar pages.
     for s in scenes:
         if s["Id"] in ep.PARAGRAPH_GUARDED:
@@ -352,6 +367,11 @@ def check(story, review=False):
                     and f not in ov]
             if miss:
                 notes.append("REVIEW %s: committed page neither Forbids nor Requires her loss flag(s) %s" % (s["Id"], miss))
+    # eng7-l07: own consumers and return provenance extend EP5; q6a retains L1/L4/L6 ownership.
+    from tools import own_life_lint, return_provenance_lint
+    hard.extend(own_life_lint.check(story))
+    hard.extend(return_provenance_lint.check(story))
+    # eng7-l07 end
     return hard, notes
 
 

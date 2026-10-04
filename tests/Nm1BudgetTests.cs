@@ -86,6 +86,16 @@ internal static class Nm1BudgetTests
               && !Rules.Available(story, page, World(6, "trickster.ever"))
               && page.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0 && c.Crusade == null && c.Mythic == null && c.Alignment == null),
             "NM1_Nocticula_Page: the correspondence has no closing page, or it plays for the wrong history.");
+        // eng7-l01: Last Call reads completed state, including the derived route guard.
+        var coda = S("nocticula.lastcall.page");
+        var codaWorld = World(6, "trickster.ever", "noct.complete", "trickster.lastcall.taken", "ending.trickster");
+        Rules.Complete(story, codaWorld);
+        check(codaWorld.Has("lastcall.active") && codaWorld.Has("nocticula.lastcall.route_open")
+              && Rules.Available(story, coda, codaWorld), "NM1_Nocticula_Coda: completed Last Call cannot select the coda.");
+        var fatalWorld = World(6, "trickster.ever", "noct.complete", "sacrifice");
+        Rules.Complete(story, fatalWorld);
+        check(!Rules.Available(story, coda, fatalWorld), "NM1_Nocticula_Coda: unreturned sacrifice receives the coda.");
+        // eng7-l01 end
         Console.WriteLine("PASS: NM1 budget (Nocticula's correspondence in two deliveries, the harbor deferred, its closing page).");
     }
 }

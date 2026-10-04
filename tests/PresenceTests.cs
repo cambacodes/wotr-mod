@@ -45,7 +45,7 @@ internal static class PresenceTests
         PresenceStep[] Plan(bool wanted, PresenceObservation seen) => Rules.PlanPresence(p, wanted, seen);
         check(Plan(true, new PresenceObservation()).Length == 0, "Acted without the area loaded.");
         check(Plan(true, new PresenceObservation { AreaLoaded = true }).SequenceEqual(new[] { PresenceStep.Spawn }), "No spawn for a wanted absent guest.");
-        check(Plan(true, new PresenceObservation { AreaLoaded = true, NativeAlive = true }).Length == 0, "Spawned beside a live native unit.");
+        check(Plan(true, new PresenceObservation { AreaLoaded = true, NativeAlive = true }).SequenceEqual(new[] { PresenceStep.RecordNativeContact }), "Spawned beside a live native unit.");
         check(Plan(true, new PresenceObservation { AreaLoaded = true, Recorded = true, Submitted = true }).SequenceEqual(new[] { PresenceStep.Blocked }),
             "A submitted copy that vanished was spawned again.");
         check(Plan(true, new PresenceObservation { AreaLoaded = true, Recorded = true, Submitted = true, CopyFound = true, CopyAlive = true }).Length == 0,

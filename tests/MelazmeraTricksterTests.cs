@@ -213,8 +213,9 @@ internal static class MelazmeraTricksterTests
 
         // Trk_Melazmera_Found: salted and gone from Colyphyr: she finds the camp in the Abyss after 36 hours.
         var away = Later(story, salted, 12, Drezen);
-        check(!Avail(found, away) && Avail(found, Later(story, salted, 40, "abyss")) && !Avail(found, Later(story, salted, 40, "abyss", 5))
-              && Take(found, Later(story, salted, 40, "abyss"), "leaves", 0, Returned).Has(Started)
+        // eng7-l12: off-island fallback is read at the Nexus, never on Colyphyr.
+        check(!Avail(found, away) && Avail(found, Later(story, salted, 40, "7847c3e3537104f4694167af0b9fcd0e")) && !Avail(found, Later(story, salted, 40, "7847c3e3537104f4694167af0b9fcd0e", 5))
+              && Take(found, Later(story, salted, 40, "7847c3e3537104f4694167af0b9fcd0e"), "leaves", 0, Returned).Has(Started)
               && !found.Nodes.Any(n => n.Choices.Any(c => c.Requires.Contains("hepzamirah.dead"))),
             "Trk_Melazmera_Found: the hunt does not find a Commander who left Colyphyr (Chapter 4, off the island's etudes).");
 

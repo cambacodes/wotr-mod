@@ -1,0 +1,22 @@
+{
+  "authored": "eng7-l12: venue corrections for existing physical scenes; Remote also obeys Areas on manual reads.",
+  "venues": [
+    {"scene": "hepzamirah.trickster.ghost.body", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [5]},
+    {"scene": "hepzamirah.trickster.body.hounds", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [5]},
+    {"scene": "melazmera.trickster.react.nenio_specimen", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [5]},
+    {"scene": "melazmera.trickster.ch4.hunt_found", "areas": ["7847c3e3537104f4694167af0b9fcd0e"], "chapters": [4]},
+    {"scene": "delamere.trickster.woken.white_stag", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [3, 5]},
+    {"scene": "delamere.trickster.woken.feasting_table", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [3, 5]},
+    {"scene": "galfrey.trickster.ch3.standing_orders", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [3]},
+    {"scene": "horzalah.trickster.react.wenduag_morning", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [5]},
+    {"scene": "minagho_chivarro.trickster.reunion.wardrobe", "areas": ["2570015799edf594daf2f076f2f975d8"], "chapters": [5]},
+    {"scene": "nocticula.trickster.defeated.chair", "areas": ["10c4b0e2af186ba46ab4d238d00a40a8", "22c6a99913fe5bb46b2e6011aaf93368"], "chapters": [6]}
+  ],
+  "branch_contracts": {
+    "horzalah.trickster.late.at_night": "Drezen or Threshold quarters/watch; aftermath and ending recollections must not insist on a citadel in Chapter 6.",
+    "nenio.folio.volume_one_visitor": "Both give/give_new stay in Drezen; no visitor recruitment implemented.",
+    "nenio.folio.volume_one_arcade": "Both give/give_new stay in Drezen; no visitor recruitment implemented.",
+    "nenio.lastcall.page": "Visitor observes from Drezen; native companion's distance remains neutral (can attend Threshold).",
+    "nenio.lastcall.call": "Distance neutral for native-companion and visitor worlds."
+  }
+}

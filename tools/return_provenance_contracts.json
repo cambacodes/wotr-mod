@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-11",
+  "generic": "camellia.trickster.returned",
+  "completed": "camellia.trickster.cost.knows_you_tried",
+  "producer_inputs": [
+    "camellia.killed",
+    "camellia.trickster.raised"
+  ],
+  "available": "camellia.trickster.veiled_available",
+  "overrides": {
+    "camellia.killed": "camellia.trickster.cost.knows_you_tried",
+    "camellia.dead": "camellia.trickster.coffin_life"
+  },
+  "derived": {
+    "camellia.trickster.coffin_life": [
+      [
+        "camellia.killed",
+        "camellia.trickster.cost.knows_you_tried"
+      ]
+    ],
+    "camellia.trickster.veiled_available": [
+      [
+        "camellia.killed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.life.available"
+      ]
+    ]
+  },
+  "producers": [
+    "camellia.trickster.killed.performance",
+    "camellia.trickster.killed.performance_letter"
+  ],
+  "veiled_scenes": [
+    "camellia.trickster.react.regill_grave",
+    "nurah.trickster.react.camellia_veiled_pardon",
+    "nurah.trickster.react.camellia_veiled_market",
+    "nurah.trickster.react.camellia_veiled_supper",
+    "nurah.trickster.react.camellia_veiled_draft"
+  ],
+  "dispatch_scenes": [
+    "nurah.trickster.after.proofs"
+  ],
+  "due_keys": [
+    "nurah.trickster.veiled_draft_due",
+    "nurah.trickster.veiled_pardon_due"
+  ],
+  "evidence": {
+    "native_execution": "cd23b87c16ea40149862a262d690114b: starts cf3639c5cf057034fa766dd5f421d2ed (killed) and 6f8232943eadc914da5d60121e6ce612 (kicked_out); unrelated to battlefield return",
+    "retained_death": "dead.overacting/waking choice[0] revives camellia, clearing the live native death; it does not complete a coffin return",
+    "save_compatibility": "Existing cost.knows_you_tried is set only by the three coffin-acceptance choices; battlefield revival never sets it. Reuse it as completed-return evidence so genuine older coffin saves remain eligible without inferring provenance from generic returned."
+  },
+  "finding_ids": [
+    "camellia:001",
+    "camellia:004",
+    "camellia:005",
+    "camellia:006",
+    "camellia:007",
+    "camellia:009",
+    "camellia:010",
+    "camellia:011",
+    "camellia:012",
+    "camellia:013",
+    "camellia:014",
+    "camellia:015",
+    "camellia:016",
+    "camellia:017",
+    "camellia:018",
+    "camellia:019",
+    "camellia:020"
+  ]
+}

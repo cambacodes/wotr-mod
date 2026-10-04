@@ -430,7 +430,8 @@ namespace Tirabade
                 }
 
                 // ---------- Phase 2: register every save-referenced blueprint, unconditionally ----------
-                var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct().ToArray();
+                var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set)
+                    .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet)).Distinct().ToArray(); // eng7-l09
                 var keys = story.Scenes.Select(s => s.Id).Concat(story.Scenes.Select(s => "hour." + s.Id))
                     .Concat(effects).Concat(effects.Select(key => "hour." + key))
                     .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag })).Distinct();
@@ -728,7 +729,7 @@ namespace Tirabade
                 string id = scene.Id + "." + node.Id;
                 var cue = New<BlueprintCue>("cue." + id);
                 cue.Conditions = Conditions();
-                cue.OnShow = Actions();
+                cue.OnShow = inline && node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 cue.OnStop = Actions();
                 cue.Speaker = inline ? InlineSpeaker(node, nativeReturn != null && node.Speaker == scene.Owner ? nativeReturn.Speaker : null)
                     : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
@@ -744,7 +745,7 @@ namespace Tirabade
                 var page = New<BlueprintBookPage>("page." + id);
                 page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
-                page.OnShow = Actions();
+                page.OnShow = node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 page.Title = Text("title." + id, BookPolish.PageTitle(scene));
                 // E15c: the scene's first page says what it is ("Letter from Seelah", "A sending from Jerribeth", "A memory").
                 if (ReferenceEquals(node, scene.Nodes[0]) && BookPolish.KindLine(scene) is string kindLine)
@@ -858,6 +859,7 @@ namespace Tirabade
         // A funds-dependent page keeps an exit even if its only purchase is unavailable.
         private static void AddPaymentExit(Scene scene, Node node, List<BlueprintAnswerBaseReference> answers, BlueprintCue? nativeReturn, string? prefix = null)
         {
+            // eng7-l09: this abort has no completion or flag-clearing action; incurred EnterSet survives it.
             if (!node.Choices.Any(choice => choice.Crusade?.Amount < 0)) return;
             var leave = New<BlueprintAnswer>("answer." + (prefix ?? scene.Id) + "." + node.Id + ".payment_unavailable");
             InitializeAnswer(leave);
@@ -972,6 +974,7 @@ namespace Tirabade
                 {
                     CueSetup(out var cue, "cue." + prefix + "." + node.Id, node.Text);
                     cue.Speaker = InlineSpeaker(node, null);
+                    if (node.EnterSet.Length > 0) cue.OnShow = Actions(new RouteAction { EntryNode = node }); // eng7-l09
                     local.Add(node.Id, cue);
                 }
                 foreach (var node in scene.Nodes)
@@ -1088,7 +1091,9 @@ namespace Tirabade
         // through RouteAction, exactly as a native-list entry does) and a leave answer.
         private static BlueprintDialog BuildPresenceHub(string key, Presence presence)
         {
-            var scenes = story.Scenes.Where(scene => scene.InteractionHub == key).ToArray();
+            // eng7-l11: include reviewed reactions from the native speaker list.
+            var scenes = Rules.PresenceHubScenes(story, key);
+            // end eng7-l11
             var page = New<BlueprintBookPage>("page." + key + ".hub");
             page.ShowOnce = false;
             page.Conditions = Conditions();
@@ -1103,9 +1108,9 @@ namespace Tirabade
                 var answer = New<BlueprintAnswer>("answer." + key + ".hub." + scene.Id);
                 InitializeAnswer(answer);
                 answer.Text = Text(answer.name, scene.Entry.Length > 0 ? scene.Entry : scene.Title);
-                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene });
-                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene });
-                answer.OnSelect = Actions(new RouteAction { Start = scene });
+                answer.ShowConditions = Conditions(new RouteCondition { Scene = scene, PresenceHub = key } /* eng7-l11 */);
+                answer.SelectConditions = Conditions(new RouteCondition { Scene = scene, PresenceHub = key } /* eng7-l11 */);
+                answer.OnSelect = Actions(new RouteAction { Start = scene, PresenceHub = key } /* eng7-l11 */);
                 if (scene.EntryMythic != null || scene.EntryAlignment != null)
                     ConfigureNativeEffects(answer, new Choice { Mythic = scene.EntryMythic, Alignment = scene.EntryAlignment }, warnings.Add);
                 page.Answers.Add(Ref<BlueprintAnswerBaseReference>(answer));
@@ -1193,7 +1198,9 @@ namespace Tirabade
             if (degraded.Contains(relationship)) return false;
             var state = State();
             return Rules.PresenceWanted(presence.Spec, state)
-                && story.Scenes.Any(scene => scene.InteractionHub == presence.Key && Rules.Available(story, scene, state));
+                // eng7-l11
+                && Rules.PresenceHubScenes(story, presence.Key).Any(scene => Rules.PresenceHubAvailable(story, presence.Key, scene, state));
+                // end eng7-l11
         }
 
         // Harness hook (E12c): click a presence the way the player would; true when its hub dialog started.
@@ -1408,6 +1415,9 @@ namespace Tirabade
             if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             KonomiRecovery.ReadLifecycle(state);
             wenduagEcho?.Observe(state);
+            if (state.Has("wenduag.trickster.returned")
+                && presences.Any(p => Rules.PresenceRelationship(p.Key) == "wenduag" && p.ReturnedActorLost))
+                state.Flags.Add(WenduagEcho.E + "unavailable");
             if (wenduagEcho == null && (state.Has(WenduagEcho.E + "rescued") || state.Has(WenduagEcho.E + "returned")))
                 state.Flags.Add(WenduagEcho.E + "unavailable");
             // Latches and data-driven composites read the completed native picture.
@@ -1904,7 +1914,8 @@ namespace Tirabade
         private static void TickPresences(Snapshot state)
         {
             if (presences.Count == 0) return;
-            foreach (var presence in presences)
+            // Restore retired phases before adopting the same native actor for the next phase.
+            foreach (var presence in presences.OrderBy(p => Rules.PresenceWanted(p.Spec, state)))
             {
                 bool wanted = !degraded.Contains(Rules.PresenceRelationship(presence.Key)!)
                     && !(Rules.PresenceRelationship(presence.Key) == "wenduag" && wenduagEcho?.OwnsOriginal == true)
@@ -2104,14 +2115,19 @@ namespace Tirabade
         public sealed class RouteCondition : Condition
         {
             public Scene? Scene;
+            // eng7-l11
+            public string? PresenceHub;
+            // end eng7-l11
             public Choice? Choice;
             public Scene? Continuation;
             public bool ContactLost;
             public Node? PaymentNode;
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
-                && (PaymentNode != null ? !PaymentNode.Choices.Any(choice => Rules.ChoiceAvailable(choice, State()))
-                    : Scene != null ? Rules.Available(story, Scene, State())
+                && (PaymentNode != null ? Rules.PaymentExitAvailable(PaymentNode, State()) /* eng7-l09 */
+                    // eng7-l11
+                    : Scene != null ? PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Scene, State()) : Rules.Available(story, Scene, State())
+                    // end eng7-l11
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
                     : Choice != null && (Continuation == null || Rules.ContactAvailable(story, Continuation, State()))
@@ -2212,19 +2228,32 @@ namespace Tirabade
         public sealed class RouteAction : GameAction
         {
             public Scene? Start;
+            // eng7-l11
+            public string? PresenceHub;
+            // end eng7-l11
             public Scene? Complete;
             public Scene? Continuation;
             public Choice? Choice;
             public bool StopSpeech;
             public CrusadePayment? Payment;
+            public Node? EntryNode; // eng7-l09
             public override string GetCaption() => "Three at the Table story action";
             public override void RunAction()
             {
                 if (StopSpeech) { StopNarration(); return; }
                 if (!enabled || !initialized) return;
+                // eng7-l09: record failure before any generated insufficient-funds exit.
+                if (EntryNode != null)
+                {
+                    RecordProgress(new Choice { Set = EntryNode.EnterSet }, null);
+                    return;
+                }
+                // end eng7-l09
                 if (Start != null)
                 {
-                    if (Rules.Available(story, Start, State())) Queue(Start);
+                    // eng7-l11
+                    if (PresenceHub != null ? Rules.PresenceHubAvailable(story, PresenceHub, Start, State()) : Rules.Available(story, Start, State())) Queue(Start);
+                    // end eng7-l11
                     return;
                 }
                 if (Choice != null)

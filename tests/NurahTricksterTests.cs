@@ -231,7 +231,7 @@ internal static class NurahTricksterTests
             "Trk_Nurah_LateCourier: the proofs alone still decide a romance, or the late branch has no author-only or unanswered end.");
         // Q12 (Sol COX): the late-dead history with a returned, Commander-killed Camellia takes her card in the proofs packet.
         var veiledLate = Program.Copy(lateProofs);
-        foreach (var f in new[] { "camellia.killed", "camellia.trickster.returned" }) { veiledLate.Flags.Add(f); veiledLate.Times[f] = veiledLate.Hour - 100; }
+        foreach (var f in new[] { "camellia.killed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried" }) { veiledLate.Flags.Add(f); veiledLate.Times[f] = veiledLate.Hour - 100; }
         Rules.Complete(story, veiledLate);
         var cardPages = new HashSet<string>();
         Program.Walk(proofs, veiledLate, (page, _) => cardPages.Add(page));
@@ -317,7 +317,7 @@ internal static class NurahTricksterTests
         // placement failed) takes at most two Chapter 5 deliveries: the card on the pamphlet rides in the proofs packet.
         var veiledDraft = S("nurah.trickster.react.camellia_veiled_draft");
         var worst = Program.Copy(ran5);
-        foreach (var f in new[] { "camellia.killed", "camellia.trickster.returned" }) { worst.Flags.Add(f); worst.Times[f] = worst.Hour - 100; }
+        foreach (var f in new[] { "camellia.killed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried" }) { worst.Flags.Add(f); worst.Times[f] = worst.Hour - 100; }
         Rules.Complete(story, worst);
         var worstCh5 = new HashSet<string>();
         void Deliveries(Snapshot w)
@@ -381,7 +381,7 @@ internal static class NurahTricksterTests
             "Trk_Nurah_PardonedRunawayCard: a card read in Chapter 3 is repeated, or the packet strands.");
         // A prisoner who stays keeps the standalone card in either chapter.
         var pardonedStays = World(story, 5, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.cost.ledger_lie", "nurah.trickster.released",
-            "camellia.killed", "camellia.trickster.returned");
+            "camellia.killed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried");
         pardonedStays.Area = veiledPardon.Areas[0];
         check(Rules.Available(story, veiledPardon, pardonedStays), "The pardon card is lost for a pardoned prisoner who stays.");
 
@@ -417,7 +417,7 @@ internal static class NurahTricksterTests
             "The late reply does not carry the proofs, or the proofs arrive twice.");
         // Polish (COX): pardoned before she ran, Camellia veiled: the late reply carries the pardon card too, and keeps every outcome.
         var latePardoned = Program.Copy(lateReplyWorld);
-        foreach (var f in new[] { "nurah.trickster.cost.ledger_lie", "nurah.trickster.released", "camellia.killed", "camellia.trickster.returned" })
+        foreach (var f in new[] { "nurah.trickster.cost.ledger_lie", "nurah.trickster.released", "camellia.killed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried" })
         { latePardoned.Flags.Add(f); latePardoned.Times[f] = latePardoned.Hour - 100; }
         Rules.Complete(story, latePardoned);
         var latePardonedPages = new HashSet<string>();
@@ -573,7 +573,7 @@ internal static class NurahTricksterTests
         // Sol quality pass (INT): a Camellia killed by the Commander and back on her own route is the veiled copy at Fye's, with no
         // companion hub, so her lines come as cards; a Camellia raised from a retained death keeps her companion-hub lines.
         var veiledSupper = World(story, 5, "trickster", "trickster.ever", "nurah.dead_camellia", "nurah.dead_drezen", "nurah.trickster.returned",
-                                 "nurah.trickster.larva_rumour", "camellia.killed", "camellia.trickster.returned");
+                                 "nurah.trickster.larva_rumour", "camellia.killed", "camellia.trickster.returned", "camellia.trickster.cost.knows_you_tried");
         check(Rules.Available(story, S("nurah.trickster.react.camellia_veiled_supper"), veiledSupper)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_supper"), veiledSupper)
               && !Rules.Available(story, S("nurah.trickster.react.camellia_veiled_market"), veiledSupper), "The veiled Camellia's supper card.");

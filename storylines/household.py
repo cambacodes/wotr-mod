@@ -470,3 +470,21 @@ def integrate(payload):
     if ledger is None:
         raise ValueError("The household sections need the Ledger book (lastcall.integrate runs first)")
     ledger["Entries"].extend(guest_entries() + seating_entries() + secret_entries())
+
+    # eng7-l05: per-woman membership keeps a solo commitment from advertising an absent partner.
+    for woman in ("minagho", "chivarro"):
+        seat_women[woman]["Requires"] = ["participant." + woman + ".available"]
+    ledger = payload["Books"]["trickster.ledger"]
+    pair_entry = next(e for e in ledger["Entries"] if e["Id"] == "guest.minagho_chivarro")
+    pair_entry["Requires"].extend(["participant.minagho.available", "participant.chivarro.available"])
+    for woman, other in (("minagho", "chivarro"), ("chivarro", "minagho")):
+        entry = copy.deepcopy(pair_entry)
+        entry["Id"] = "guest.minagho_chivarro." + woman
+        entry["Portrait"] = woman.capitalize()
+        entry["Title"] = woman.capitalize()
+        entry["Text"] = "{n}%s. A chair at the {g|RRT_Table}Table{/g}, if she wants it.{/n}" % woman.capitalize()
+        entry["Requires"] = [eligible("minagho_chivarro"), "participant." + woman + ".available"]
+        entry["Forbids"].append("participant." + other + ".available")
+        entry["Lines"] = [line for line in entry["Lines"] if line["Text"].startswith("{n}" + woman.capitalize())]
+        ledger["Entries"].append(entry)
+    # end eng7-l05

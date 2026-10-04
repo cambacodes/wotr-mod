@@ -51,10 +51,10 @@ GREETING = ("{n}In the corner of the King's tavern, with her back to the wall an
             "stories and cannot think why.{/n}")
 PRESENCE_FORBIDS = [CLOSED, KEPT, CAST_OUT, ALLY]   # Sol r6: the night alone no longer removes her (either outcome)
 PRESENCES = {
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FOOL_KING, Side="right", Distance=2.5),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=FOOL_KING, Side="right", Distance=2.5),
               Requires=["trickster.ever", EMBODIED], Forbids=PRESENCE_FORBIDS + [HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="behind", Distance=2.5),
+    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=TAILOR, Side="behind", Distance=2.5),
                   Requires=["trickster.ever", EMBODIED], Forbids=list(PRESENCE_FORBIDS), MinChapter=5, MaxChapter=5,
                   RequiresAnyGroups=[[HUB_FAILED, KING_GONE]], AnswerLists=[], Dialog="hub",
                   Greeting=("{n}In the shade of the tailor's awning, out of the worst of the street, a tall red-haired woman "

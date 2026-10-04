@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "item": "E-Q7-23",
+  "obligations": [
+    {
+      "finding": "eritrice:006",
+      "scene": "eritrice.council.a_sound_proposition",
+      "flag": "eritrice.council.aid_first",
+      "source": [
+        "storylines/eritrice_council.py:35"
+      ],
+      "draft": false,
+      "problem": "The starving branch sets eritrice.council.aid_first, but the generated payload has no consumer for it. No subsequent Council scene hears the promised first item, including the promised unilateral vote if members leave.",
+      "fix": "Add a playable disposition of the aid motion, gated by aid_first, with the vote and its consequence recorded. A refusal or defeated motion is sufficient; success is not required. Test the accepted promise through its next eligible sitting and outcome."
+    },
+    {
+      "finding": "eritrice:009",
+      "scene": "eritrice.council.a_lie_for_the_chair",
+      "flag": "eritrice.council.refused_to_lie_for_her",
+      "source": [
+        "storylines/eritrice_council.py:501"
+      ],
+      "draft": false,
+      "problem": "The refuse branch promises Eritrice's own protective motion and defeat. refused_to_lie_for_her has no consumer anywhere in the generated payload, and that confrontation never occurs.",
+      "fix": "Deliver her objection and its actual disposition at eligible Council business, then record and acknowledge the result. Test refusal through this follow-up without requiring the agree branch or closing Chadali's romance."
+    },
+    {
+      "finding": "terendelev:031",
+      "scene": "terendelev.continuation.scale_invitation",
+      "flag": "terendelev.continuation.escape.more_evidence",
+      "source": [
+        "storylines/terendelev_continuation.py:519",
+        "storylines/terendelev_continuation.py:816"
+      ],
+      "draft": true,
+      "problem": "DRAFT/UNREGISTERED: uncertain sets escape.more_evidence and completes the scene. Nothing consumes that flag to resume the investigation. The text promises another visit; the scene cannot replay. The available escape_boundary wait path also completes without running its test.",
+      "fix": "S: make this an abort-and-revisit outcome with an evidence follow-up, or connect it to a reachable second-account scene that returns to the theory check. Test recovery from the failed check."
+    },
+    {
+      "finding": "terendelev:042",
+      "scene": "terendelev.continuation.trickster_new_courtship",
+      "flag": "terendelev.continuation.new.courtship.deferred",
+      "source": [
+        "storylines/terendelev_continuation.py:725",
+        "storylines/terendelev_continuation.py:818"
+      ],
+      "draft": true,
+      "problem": "DRAFT/UNREGISTERED: later completes the scene while setting only new.courtship.deferred. There is no consumer or renewed offer, so the supposedly open question can never be answered and new.courtship.open cannot subsequently be earned.",
+      "fix": "S: make the deferred terminal abort without completing the offer, or add a delayed follow-up that consumes deferred and offers the same real choices. Test defer \u2192 return \u2192 accept."
+    },
+    {
+      "finding": "wenduag:020",
+      "scene": "secret.wenduag_cairn",
+      "flag": "known.lann",
+      "source": [
+        "storylines/wenduag_trickster.py:1005"
+      ],
+      "draft": false,
+      "problem": "The controlling known.lann flag has no producer or derived binding. This line remains after lann.truth, lann.found_out and the branch where Lann explicitly detects her breathing. The lowercase internal identifier also reaches the player.",
+      "fix": "Derive knowledge from the relevant paid, discovered and witnessed states, and display Lann's proper name. Test every revelation outcome."
+    }
+  ],
+  "negative_exemptions": {}
+}

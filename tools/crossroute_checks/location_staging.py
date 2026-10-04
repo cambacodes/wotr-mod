@@ -29,12 +29,12 @@ PLACES = {
     "Ivory Sanctum": (r"Ivory Sanctum", ("982abcee3e7b25f459bef22ea22b3ab5", "9e7095c1bbd7444e9c91808c8d0ae620", "cb3fb43244053f04e910689a6481128e"), (3, 5)),
     "Alushinyrra": (r"Alushinyrra", ("8217b05e37078414981d994151f0ffb1", "180cdb4b48d561f4cb4ef9a066727960", "4f849f5683145d0489db4077e0d7eccf"), (4,)),
 }
-HISTORY = re.compile(r"\b(?:remembers?|recalls?|remembered|recalled|once|used to|had been|had stood|dream|vision|portrait|painting|map of|letter from|report from|when we|when you|before we|before you|since|has pencilled|send up a complaint)\b", re.I)
+HISTORY = re.compile(r"\b(?:remembers?|recalls?|remembered|recalled|once|used to|had been|had stood|must have gone|you tell her about|dream|vision|portrait|painting|map of|letter from|report from|when we|when you|before we|before you|since|has pencilled|send up a complaint)\b", re.I)
 MENTAL = re.compile(r"\b(?:being read|being searched|mind['’]s eye|inside your mind|in your thoughts|in her thoughts|in your memory)\b", re.I)
 # An authored, explicit journey is a location variant: the scene begins where
 # its ordinary gates allow and then stages the destination. This is DLC-tier
 # travel (Binding context 4), not permission for a bare off-location room.
-TRAVEL = re.compile(r"\b(?:room folds shut around.{0,110}opens again somewhere|you step through.{0,70}(?:portal|rift).{0,90}(?:arrive|emerge))\b", re.I | re.S)
+TRAVEL = re.compile(r"\b(?:room folds shut around.{0,110}opens again somewhere|you step through.{0,70}(?:portal|rift).{0,90}(?:arrive|emerge)|you step into the wardrobe.{0,180}open it again onto the Council chamber|through the purple door.{0,180}out of your own wardrobe)\b", re.I | re.S)
 
 
 def staged(text, name):
@@ -43,6 +43,15 @@ def staged(text, name):
     paragraphs = re.findall(r"\{n\}(.*?)\{/n\}", text, re.S) or [text]
     lines = [line for paragraph in paragraphs if not MENTAL.search(paragraph) for line in sentences(paragraph)]
     for line in lines:
+        # eng7-l12: remote cutaways and a traveller's origin do not relocate
+        # the Commander. Keep checking the rest of the block independently.
+        if (re.search(r"\bSomewhere\b.{0,65}\b(?:Drezen|Alushinyrra)\b", line, re.I)
+                or re.search(r"\bfrom the camps outside Drezen\b", line, re.I)
+                or re.search(r"\bas close to a royal seal as anything in Drezen gets\b", line, re.I)
+                or re.search(r"\b(?:a mirror stands|mirror stands)\b.{0,90}\bempty salon\b", line, re.I)
+                or re.search(r"\bThe rest of that ear is on a shelf in Alushinyrra\b", line, re.I)
+                or TRAVEL.search(line)):
+            continue
         if not re.search(r"\b(?:" + place + r")\b", line, re.I) or HISTORY.search(line):
             continue
         if (re.search(r"\b(?:here in|here at|in|inside|at|outside|above|beneath|through|over|across|under|back in|back at)\s+(?:the\s+)?(?:" + place + r")\b", line, re.I)

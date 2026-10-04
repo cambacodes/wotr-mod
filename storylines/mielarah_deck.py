@@ -378,7 +378,7 @@ deck(D + "market", "Nearest, in Drezen", '"Something happened in the market."', 
     mi("worked_out", '''{n}And then something else crosses her face, slowly, like the shadow of a cloud crossing a deck.{/n}
 "A man at my elbow. Chosen by you. For the curse to take instead of me." {n}She is not looking at the officer any more. She is looking at you.{/n} "You've done this before. You did it in the Bad Luck, with a pencil in my hand, and you told me it was to steady the crew."
 "Oskel." {n}Her voice is almost gentle.{/n} "You lied to me about Oskel. I sat in my cabin and asked you twice, and you lied twice, and I chose to believe you because I wanted to." {n}She breathes out.{/n} "Thank you for showing me. I would never have been sure, otherwise."''',
-       c("Continue", "boy", flags=(SECRET_KNOWN,))),
+       c("Continue", "boy", flags=(SECRET_KNOWN, MEANT))),
     mi("escort", '''{n}The officer looks at you as though you had announced you would take a walk inside a burning barn. Then he salutes, and goes, and the crowd goes with him, slowly, looking back.{/n}
 "You'll walk beside me." {n}She has not moved.{/n} "In the market. Every time. The nearest thing to me in the square, with the scaffolds and the cart horses and the cornices." {n}Her voice has gone thin.{/n} "You know what you are volunteering for. You're the only person alive who does."
 "I'll moor higher all the same. I'll come down when the square is empty, and I'll send for you first, and you'll come, because you've said you will, and I'll spend every minute of it listening for the spade." {n}She looks at the boot under the timber.{/n} "That's what it costs me. Remember it."''',

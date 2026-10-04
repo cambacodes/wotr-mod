@@ -59,7 +59,9 @@ internal static class ArsinoeTricksterTests
             var results = Program.Walk(lease, start, (page, partial) =>
             {
                 pages.Add(page);
-                check(partial.Flags.SetEquals(start.Flags) || page == "leased" || page == "discount" || page == "grudge",
+                // eng7-l09: the initial payment and failed-check liability are deliberately recorded before signing.
+                var transactionFlags = new[] { "arsinoe.trickster.cost.rent_paid", "arsinoe.trickster.cost.rent_raised", "arsinoe.trickster.cost.rent_surcharge_paid" };
+                check(partial.Flags.Except(transactionFlags).ToHashSet().SetEquals(start.Flags) || page == "leased" || page == "discount" || page == "grudge",
                     "Lease writes history before it is signed: " + page);
             });
             check(pages.Contains("shamira") == shamira, "Shamira's essence node ignores ShamiraKilled.");

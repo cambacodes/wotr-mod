@@ -656,3 +656,14 @@ _foresight.gap(REL, P + "memory.square", (("scale", 0), ("no_scale", 0)), "squar
     '''{n}You know the festival square in Kenabres the way you know a story you have been told too often: bunting, fried dough, a crusader bleeding on the cobbles, an old prelate praying over the crusader and failing. Other people put it there for you afterwards. Where your own morning was there is a neat line of Shyka's handwriting, and you cannot get behind it.{/n}
 {n}But you know what she said. Half of Kenabres heard her say it, and the half that lived has told it to you, word for word, as if it were still yours to keep.{/n}''',
     _foresight.GONE_SQUARE, choices=[c("[Say her words over to yourself.]", "promise")])
+
+
+# eng7-l09 / E-Q7-26: sold-square callbacks on both earned restitution hosts.
+for _host in (P + "bones.restitution", P + "bones.restitution_irabeth"):
+    _foresight.gap(REL, _host, (("call", 0), ("call", 1)), "voice",
+        '{n}The fire leans toward you. A voice comes out of it that has no throat to come from, hoarse with smoke and very tired.{/n} "Who calls me that? There is no Kenabres. There is only this place, and the task, and the dark between."',
+        _foresight.GONE_SQUARE)
+    _foresight.gap(REL, _host, (("shift", 0),), "wings",
+        '{n}She looks down at the bones she came out of.{/n} "My wings are in that fire." {n}Her voice steadies.{/n} "Well. I came out of it, and they did not. I will take that bargain for now."',
+        _foresight.GONE_SQUARE)
+# end eng7-l09

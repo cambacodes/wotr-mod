@@ -16,6 +16,9 @@ internal static class NativeFactInventoryTests
             ? values.EnumerateArray().Select(v => v.GetString()!).ToHashSet() : new HashSet<string>();
         var state = new Snapshot { Chapter = 5, Hour = 10000,
             CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Materials"] = 10000, ["Favors"] = 10000 } };
+        // eng7-integ: Main supplies chapter observations before completing derived readers.
+        state.Flags.Add("chapter_later");
+        if (Rules.ChapterFlag(state.Chapter) is string chapter) state.Flags.Add(chapter);
         var cues = In("SeenCues"); var answers = In("SelectedAnswers");
         var playing = In("Etudes"); var completed = In("CompletedEtudes");
         foreach (var pair in story.SeenCues) if (pair.Value.Any(cues.Contains)) state.Flags.Add(pair.Key);

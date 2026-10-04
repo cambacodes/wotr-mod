@@ -25,6 +25,13 @@ internal static class EngineQ5Tests
                 .Concat(relationship.UnavailableOverrides.Values).ToHashSet();
             flags.ExceptWith(presence.Forbids);
             flags.Remove(relationship.ClosedFlag);
+            // eng7-l07: current altered-presence policy reads a native live-path input;
+            // do not inject trickster.now into a later failed-path snapshot.
+            if (presence.Requires.Contains(Rules.TricksterNow))
+            {
+                flags.Remove(Rules.TricksterNow);
+                flags.Add("trickster");
+            }
 
             Snapshot World(IEnumerable<string> held)
             {
@@ -55,6 +62,8 @@ internal static class EngineQ5Tests
             {
                 var departed = new HashSet<string>(flags) { lost };
                 departed.ExceptWith(relationship.UnavailableOverrides.Values);
+                // eng7-l07: without the paid coffin ritual, no bootstrap actor is owed.
+                if (rel == "camellia") departed.Remove("camellia.trickster.raised");
                 // An override that is itself derived (Wenduag's returned_available) is withheld by dropping the flags it derives from.
                 foreach (string overrideKey in relationship.UnavailableOverrides.Values)
                     if (story.Derived.TryGetValue(overrideKey, out var sources)) departed.ExceptWith(sources.SelectMany(g => g));

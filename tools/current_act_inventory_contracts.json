@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-08",
+  "checker": "q6a L6 and earned_presence_lint T6/T7; no duplicate path lint",
+  "new_acts": [
+    "iomedae.trickster.platform.bare",
+    "iomedae.trickster.iz.night",
+    "iomedae.trickster.disputation",
+    "mielarah.trickster.raid.ashore",
+    "wenduag.trickster.killed.back",
+    "wenduag.trickster.abyss.back",
+    "wenduag.trickster.street.fall",
+    "wenduag.trickster.street.back"
+  ],
+  "wire_live": [
+    "iomedae.trickster.platform.bare",
+    "iomedae.trickster.iz.night",
+    "iomedae.trickster.disputation"
+  ],
+  "live_presences": [
+    "wenduag.presence"
+  ],
+  "native_edits": [
+    "4bb3706172f1ed54ca11db96254c4638"
+  ],
+  "obsolete_scenes": [
+    "wenduag.trickster.epilogue.native_service",
+    "wenduag.trickster.epilogue.native_return"
+  ],
+  "obsolete_gates": [
+    "wenduag.epilogue.greybor_contract",
+    "wenduag.epilogue.ember_orphanage"
+  ],
+  "history_policy": "Only the nominated altered Wenduag copy and new acts require current power. An already completed return remains a historical earned fact after failure or conversion; no price is refunded.",
+  "no_change_needed": {
+    "mielarah:001": "ashore_drezen absent; current ashore Requires trickster.now",
+    "wenduag:002": "killed.back already Requires trickster.now",
+    "wenduag:003": "abyss.back already Requires trickster.now",
+    "wenduag:004": "street.fall already Requires trickster.now independently of its OR gate",
+    "wenduag:005": "street.back already Requires trickster.now",
+    "wenduag:007": "native_service absent; native_ascent and its edit already require trickster.now",
+    "wenduag:008": "native_return absent; native_ascent and its edit already require trickster.now",
+    "wenduag:009": "both obsolete NativeGates absent"
+  },
+  "finding_ids": [
+    "iomedae:001",
+    "iomedae:002",
+    "iomedae:003",
+    "mielarah:001",
+    "wenduag:002",
+    "wenduag:003",
+    "wenduag:004",
+    "wenduag:005",
+    "wenduag:006",
+    "wenduag:007",
+    "wenduag:008",
+    "wenduag:009"
+  ]
+}

@@ -35,7 +35,8 @@ internal static class GalfreyTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
+        // eng7-l12: Chapter 3 standing orders are delivered in the Drezen camp.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 3 || chapter == 5 ? Drezen : "" };
         state.Flags.UnionWith(flags);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");

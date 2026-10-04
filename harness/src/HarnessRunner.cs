@@ -465,24 +465,7 @@ namespace RRT.TestHarness
             }
         }
 
-        /// <summary>Why a contact unit is not observed: copies loaded, and the first copy's in-game, view and scene state.</summary>
-        static string ContactProbe(string guid)
-        {
-            try
-            {
-                string id = InlineHosts.Norm(guid);
-                var units = Game.Instance.State.Units.Where(u => u.Blueprint != null && InlineHosts.Norm(u.Blueprint.AssetGuid.ToString()) == id
-                    || u.OriginalBlueprint != null && InlineHosts.Norm(u.OriginalBlueprint.AssetGuid.ToString()) == id).ToList();
-                if (units.Count == 0) return "no such unit loaded";
-                var u0 = units[0];
-                var view = u0.View;
-                return units.Count + " loaded; first: inGame=" + u0.IsInGame + " suppressed=" + u0.Suppressed + " dead=" + u0.State.IsDead
-                    + " sceneLoaded=" + (u0.HoldingState?.IsSceneLoaded.ToString() ?? "null")
-                    + " view=" + (view == null ? "null" : view.gameObject.activeInHierarchy ? "active" : "inactive");
-            }
-            catch (Exception ex) { return "probe failed: " + ex.GetType().Name; }
-        }
-
+        // eng7-l11: contact evidence is captured for every matching actor by ScenarioDriver.
         static string ForbiddenNote(SceneRun run) => "the save holds its Forbids " + string.Join(", ", run.ForbiddenHeld);
 
         static bool RunPassed(SceneRun run) =>
@@ -541,10 +524,23 @@ namespace RRT.TestHarness
                     unforceable.Add("chapter " + chapter + " outside " + RrtBridge.SceneMinChapter(scene) + ".." + RrtBridge.SceneMaxChapter(scene));
                 // Nor the contact: a ContactUnit page needs that actor physically loaded and observed here (Rules.ContactAvailable,
                 // NativeContact.IsAvailable). StartDialogWithoutTarget opens the host anyway, so an absent contact is a skip.
-                var contact = RrtBridge.SceneContactUnit(scene);
-                if (contact != null && !RrtBridge.ToData(before).AvailableContacts.Contains(contact))
-                    unforceable.Add("contact " + contact + " not available here (" + ContactProbe(contact) + ")");
             }
+            // eng7-l11: native-present is not necessarily usable; a rejected usable contact fails.
+            var primary = RrtBridge.SceneContactUnit(scene);
+            var additional = (string[])scene.GetType().GetField("AdditionalContactUnits")!.GetValue(scene)!;
+            foreach (var contact in additional.Concat(primary == null ? Array.Empty<string>() : new[] { primary }).Distinct())
+            {
+                try
+                {
+                    var probe = CaptureContact(contact, before, unforceable.Count == 0);
+                    var evidence = Newtonsoft.Json.JsonConvert.SerializeObject(probe);
+                    Entry.Mod.Logger.Log("Contact inventory " + run.Scene + ": " + evidence);
+                    if (probe.Verdict == "contact-oracle-failure") run.OracleFailures.Add("Expected contact disagrees with NativeContact: " + evidence);
+                    if (!probe.ExpectedUsable) unforceable.Add("contact " + contact + " not usable here (" + evidence + ")");
+                }
+                catch (Exception ex) { run.OracleFailures.Add("Contact inventory failed: " + ex.Message); }
+            }
+            // end eng7-l11
             // A pre-start page (e.g. chadali.trickster.council.orange) Forbids its relationship's started flag: marking it
             // started would hide the very page under test, so MarkStarted skips a started flag the scene forbids.
             var forbids = RrtBridge.SceneForbids(scene);

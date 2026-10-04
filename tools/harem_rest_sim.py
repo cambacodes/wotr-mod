@@ -9,6 +9,7 @@ import json
 import math
 from pathlib import Path
 import sys
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
@@ -206,6 +207,66 @@ def report(result, emit=print):
          (result['pair_complete'], result['pair_eligibility'], len(result['blocked']), result['paragraphs']))
 
 
+# eng7-l11: acceptance inventory consumes W0c contracts; reservations never prove delivery.
+def inventory_acceptance(story, data, expectations, walk=None):
+    from tools import harem_schedule_lint as schedule_lint, harem_smoothing_lint as smoothing_lint
+    errors, _ = schedule_lint.lint(data, story)
+    blockers = []
+    for key, expected in expectations['expected_schedule_counts'].items():
+        if data['expected_counts'].get(key) != expected:
+            errors.append('schedule census changed: ' + key)
+    for profile in ('ideal', 'worst'):
+        total = sum(row[profile] for row in expectations['chapter_ceilings'].values())
+        if total != expectations['campaign_ceilings'][profile]:
+            errors.append('campaign ceiling does not equal chapter ceilings: ' + profile)
+    caps = data['load_caps']['5']
+    rests = max(math.ceil(data['expected_counts']['consolidated'] / story['RestAllowances']['household.protected']),
+                math.ceil((caps['optional'] + caps['mend']) / story['RestAllowances']['household.pair']))
+    if rests != expectations['chapter5_min_table_rests']:
+        errors.append('Chapter 5 Table allowance arithmetic changed')
+    smoothing = smoothing_lint.load_json(smoothing_lint.DEFAULT_DATA)
+    _, _, frictions = smoothing_lint.household_maps()
+    _, census = smoothing_lint.form_audit(smoothing, frictions, data['packets'])
+    for key, expected in expectations['expected_form_census'].items():
+        if census[key] != expected:
+            errors.append('form census changed: ' + key)
+    if census['unapproved_forms'] or census['over_cap_forms']:
+        errors.append('form cap or vocabulary violated')
+    by_id = {scene['Id']: scene for scene in story['Scenes']}
+    active = [row for row in data['schedule'] if row.get('count') and row.get('status') != 'retired']
+    for row in active:
+        ids = expectations['row_scene_ids'].get(row['ref'], [])
+        if not ids:
+            blockers.append('build-sheet scene missing: ' + row['ref'])
+        for sid in ids:
+            scene = by_id.get(sid)
+            if not scene or not scene.get('HouseholdCategory'):
+                errors.append('row bound to an absent or unregistered scene: ' + row['ref'] + '/' + sid)
+            elif scene.get('HouseholdCategory') == 'protected' and scene.get('RestAllowance') != 'household.protected':
+                errors.append('protected row has wrong allowance: ' + sid)
+    enmity_producers = [scene['Id'] for scene in story['Scenes'] for node in scene['Nodes']
+                       for choice in node['Choices'] if any('.harem.enmity.' in flag for flag in choice.get('Set', []))]
+    if not enmity_producers:
+        blockers.append('first-wins acceptance: no serialized enmity producers (consume q6a L1-L6 when landed)')
+    # Existing E9 automatically schedules earliest native progress. Always label that assumption.
+    route_run = e9.simulate_rest_budget(e9.Model(story))
+    if not walk:
+        blockers.append('Tier-3 S9 native eligibility/gate-hour walk missing')
+    else:
+        arrivals, gates = walk.get('eligibility_hours', {}), walk.get('gate_hours', {})
+        for woman in sorted({w for row in active for w in row['women']}):
+            if woman not in arrivals and data['seat_women'].get(woman) not in arrivals:
+                blockers.append('native eligibility timestamp missing: ' + woman)
+        for key in sorted({key for row in active for key in row.get('reads', [])}):
+            if key not in gates:
+                blockers.append('native gate timestamp missing: ' + key)
+    return dict(status='failed' if errors else 'data_blocked' if blockers else 'ready_for_native_walk',
+                errors=errors, blockers=blockers, form_census=census, chapter5_min_table_rests=rests,
+                active_rows=len(active), actual_table_beats={row['chapter']: row['table_beats'] for row in route_run['chapters']},
+                native_progress_assumed=True, certified=False)
+# end eng7-l11
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument('--story', default=str(ROOT / 'development/Story.json'))
@@ -213,6 +274,9 @@ def main(argv=None):
     parser.add_argument('--conditional', action='store_true', help='Explicitly assume the full roster eligible by Ch5 day 24; no reachability proof')
     parser.add_argument('--sim-natives', help='E9 key:chapter progress export')
     parser.add_argument('--reproducer', help='Write a full in-memory roster fixture to this allowed output path')
+    # eng7-l11
+    parser.add_argument('--inventory', action='store_true', help='Report missing build-sheet/native inputs; never certify reservations')
+    # end eng7-l11
     args = parser.parse_args(argv)
     story = json.loads(Path(args.story).read_text(encoding='utf-8-sig'))
     data = json.loads(SCHEDULE.read_text(encoding='utf-8'))
@@ -221,10 +285,19 @@ def main(argv=None):
     natives = dict((key, int(chapter)) for key, chapter in (item.split(':') for item in args.sim_natives.split(','))) if args.sim_natives else {}
     route_run = e9.simulate_rest_budget(model, natives=natives)
     walk = json.loads(Path(args.walk).read_text(encoding='utf-8')) if args.walk else {}
+    # eng7-l11
+    if args.inventory:
+        expectations = json.loads((ROOT / 'tools/harem_inventory_scenarios.json').read_text(encoding='utf-8'))
+        result = inventory_acceptance(story, data, expectations, walk)
+        print(json.dumps(result, indent=2))
+        return 1 if result['errors'] or result['blockers'] else 0
+    # end eng7-l11
     if args.reproducer:
         target = Path(args.reproducer).resolve()
-        if not target.is_relative_to(ROOT / 'tests'):
-            parser.error('--reproducer must write under tests/')
+        # eng7-l11: audit artifacts belong outside the checkout.
+        if not target.is_relative_to(Path(tempfile.gettempdir()).resolve()) or target.is_relative_to(ROOT):
+            parser.error('--reproducer must write in the system temporary directory, outside the repository')
+        # end eng7-l11
         target.write_text(json.dumps(fixture, ensure_ascii=False, indent=2), encoding='utf-8')
     passed = True
     for rematch in (False, True):

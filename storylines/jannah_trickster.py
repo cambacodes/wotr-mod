@@ -166,7 +166,7 @@ PRESENCES = {
     # A copy of her own unit at her own canon Drezen mark: the last cell of the old gaol, where Janna_Prison translocates
     # her in Chapter 3 (that native placement runs in Chapter 3 only; this one is Chapter 5 only). No other presence uses
     # this locator; a later route that does must stand at least 2 m off it.
-    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(Locator=LOCATOR, Offset=[0.0, 0.0]),
+    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(Locator=LOCATOR, Offset=[0.0, 0.0]),
                    Requires=["trickster.ever", PRESENCE_ON], Forbids=[CLOSED, GONE], MinChapter=5, MaxChapter=5,
                    AnswerLists=[], Dialog="hub",
                    Greeting="{n}In the last cell of the old gaol, with its door standing open, a half-elf in a patched "
@@ -174,14 +174,14 @@ PRESENCES = {
                             "scratched a circle into the floor stones with its point, three paces across, and she keeps "
                             "her boots out of it.{/n}"),
     # Living worlds, after her letter and before blood and tale is settled. Off while she rides the wagon.
-    CELLS_PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(Locator=LOCATOR, Offset=[0.0, 0.0]),
+    CELLS_PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(Locator=LOCATOR, Offset=[0.0, 0.0]),
                          Requires=["trickster.ever", IN_CELLS], Forbids=[CLOSED, GONE, POSTED, PRESENCE_ON], MinChapter=5, MaxChapter=5,
                          AnswerLists=[], Dialog="hub", DelayHours=12,
                          Greeting="{n}The last cell of the old gaol has its door standing open; the turnkey has given up on the "
                                   "lock. A half-elf in a patched gambeson sits on the bunk with her back to the wall and her boots "
                                   "on the blanket, and does not get up.{/n}"),
     # The lost tale: back from the Condemned wagon's ford (36 hours after it left), in the same cell.
-    BACK_PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(Locator=LOCATOR, Offset=[0.0, 0.0]),
+    BACK_PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(Locator=LOCATOR, Offset=[0.0, 0.0]),
                         Requires=["trickster.ever", POSTED], Forbids=[CLOSED, GONE, PRESENCE_ON], MinChapter=5, MaxChapter=5,
                         AnswerLists=[], Dialog="hub", DelayHours=36,
                         Greeting="{n}The last cell of the old gaol is occupied again. Its occupant is grey with road dust, and "

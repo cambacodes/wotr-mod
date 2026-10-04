@@ -1,0 +1,751 @@
+{
+  "schema": 1,
+  "item": "E-Q7-18",
+  "source": "/work/Writer/handoffs/05-ROUND2-LEDGER-AND-RULES.md \u00a7R2-6 and Anevia action row",
+  "units": "game hours; month=30 days is a conservative claim floor, never a new wait",
+  "contracts": [
+    {
+      "finding": "anevia:009",
+      "scene": "anevia.trickster.gone.fetched",
+      "source": [
+        "storylines/anevia_trickster.py:245",
+        "storylines/anevia_trickster.py:762",
+        "storylines/anevia_trickster.py:768"
+      ],
+      "claim": "",
+      "origins": [
+        "coronation.seen"
+      ],
+      "problem": "The itinerary now totals 198 hours to the first commitment and 204 through the second ask: Irabeth's return 48, fetched 96, gate 48, commit 6, second ask 6. The binding ledger R2-6 caps the post-Coronation portion at 168 hours. AneviaTricksterTests explicitly overrides that limit to 204 for both called and raised histories. The source's hx4 comment cites the 504-hour overall cap but does not satisfy the separate 168-hour cap. This also drifts from the spec's 24-hour fetched delay.",
+      "fix": "Keep the credible road journey, but remove redundant waiting after the letter already places both women outside Drezen. A fetched-specific 12-hour gate appointment and presence delay gives 48+96+12+6+6=168. Restore an unconditional 168-hour post-Coronation assertion and update the spec's implementation notes to match the resulting itinerary.",
+      "maximum_hours": 168
+    },
+    {
+      "finding": "anevia:010",
+      "scene": "anevia.trickster.gone.commit",
+      "source": [
+        "storylines/anevia_trickster.py:351",
+        "storylines/anevia_trickster.py:469"
+      ],
+      "claim": "",
+      "origins": [
+        "anevia.trickster.primed"
+      ],
+      "problem": "The unrecovered-widow branch can now reach commitment and its sexual threshold 78 hours after a paid or kept-closet entry: wardrobe 24, gate 48, commit 6. The binding Anevia action row requires the intervening mourning beat of at least 168 hours; the spec implements that pacing with a 96-hour commit delay and a 168-hour total. The source shortened commit and second ask to six hours without a closing implementation-note override of that mourning requirement. The fallback letter likewise changed from 96 to 48 hours.",
+      "fix": "Give the unrecovered-widow branch its required mourning schedule rather than applying the six-hour appointment universally. Fit later refusal recovery through the earned epilogue fallback where necessary. Add earliest-time tests for widow commitment and document every deliberate delay departure in the spec.",
+      "minimum_hours": 168
+    },
+    {
+      "finding": "camellia:022",
+      "scene": "camellia.lastcall.page",
+      "source": [
+        "storylines/camellia_native.py:54",
+        "storylines/camellia_trickster.py:624",
+        "storylines/camellia_trickster.py:632"
+      ],
+      "claim": "three days alone",
+      "origins": [
+        "camellia.killed"
+      ],
+      "problem": "The paragraph merges cost.late and cost.bargain_late. late_curtain has zero delay and does not establish three days since death. For bargain_late, performance/how_coffin explicitly says she knew nothing until waking with blood in her mouth, contradicting remembered payment sounds.",
+      "fix": "Split the two histories. Mention three nights only for the third-night branch, and describe the payment as something she learned after waking rather than heard while dead.",
+      "minimum_hours": 72
+    },
+    {
+      "finding": "camellia:023",
+      "scene": "camellia.lastcall.call",
+      "source": [],
+      "claim": "every dark of the moon",
+      "origins": [
+        "camellia.trickster.cost.blood_bargain",
+        "camellia.trickster.cost.spirits_owed"
+      ],
+      "problem": "The call-in can immediately follow a newly earned Chapter 5 bargain. Its gate establishes the bargain, not repeated monthly payments, so the line invents an established payment history.",
+      "fix": "Refer to the blood already given and the outstanding promise, or gate a repeated-payment variant on an actual elapsed payment history.",
+      "minimum_hours": 720
+    },
+    {
+      "finding": "camellia:024",
+      "scene": "camellia.lastcall.page",
+      "source": [
+        "storylines/camellia_native.py:54",
+        "storylines/camellia_trickster.py:624",
+        "storylines/camellia_trickster.py:632"
+      ],
+      "claim": "all winter",
+      "origins": [
+        "camellia.trickster.cost.blood_bargain",
+        "camellia.trickster.cost.spirits_owed"
+      ],
+      "problem": "The called paragraph requires only camellia.lastcall.called. A late Chapter 5 bargain followed by Last Call earns the debt but does not establish a winter of payments.",
+      "fix": "Use wording valid for a newly incurred debt, or distinguish established and late bargains with earned temporal variants.",
+      "calendar": "season has no serialized calendar witness"
+    },
+    {
+      "finding": "camellia:025",
+      "scene": "camellia.trickster.evening.the_chaplains_census",
+      "source": [
+        "storylines/camellia_evenings.py:20"
+      ],
+      "claim": "for a week",
+      "origins": [
+        "camellia.trickster.returned"
+      ],
+      "problem": "The census can follow the battlefield return after 24 hours to spirits_due and another 24 hours to this scene. Nothing establishes the claimed week of prayers.",
+      "fix": "Remove the fixed duration or require the corresponding elapsed time from the resurrection.",
+      "minimum_hours": 168
+    },
+    {
+      "finding": "camellia:026",
+      "scene": "camellia.trickster.cards.two_lies_again",
+      "source": [
+        "storylines/camellia_cards.py:19"
+      ],
+      "claim": "for months",
+      "origins": [
+        "camellia.trickster.masks.game"
+      ],
+      "problem": "The first game and killed-return courtship can both occur during a short Chapter 5 sequence. This scene waits only 72 hours after its latest prerequisite and does not require months since the first game.",
+      "fix": "Say she has wanted another game since the first one, or gate the months variant on the first game's timestamp.",
+      "minimum_hours": 1440
+    },
+    {
+      "finding": "camellia:027",
+      "scene": "camellia.trickster.cards.two_lies_again_camp",
+      "source": [],
+      "claim": "for months",
+      "origins": [
+        "camellia.trickster.masks.game"
+      ],
+      "problem": "The battlefield-returned branch can reach this scene within weeks of the first game, without a chapter transition or months-long interval.",
+      "fix": "Remove the fixed duration or verify elapsed time from the first game.",
+      "minimum_hours": 1440
+    },
+    {
+      "finding": "camellia:028",
+      "scene": "camellia.trickster.cards.two_lies_again_alive",
+      "source": [],
+      "claim": "for months",
+      "origins": [
+        "camellia.trickster.masks.game"
+      ],
+      "problem": "A living courtship begun entirely in Chapter 5 can reach this scene in substantially less than a month. Earlier Chapter 3 runs do not validate this late-start history.",
+      "fix": "Use a duration-independent callback, or supply a timestamp-gated months variant.",
+      "minimum_hours": 1440
+    },
+    {
+      "finding": "camellia:029",
+      "scene": "camellia.trickster.day.the_anniversary",
+      "source": [
+        "storylines/camellia_days.py:13"
+      ],
+      "claim": "monthly anniversary",
+      "origins": [
+        "camellia.killed"
+      ],
+      "problem": "The gate measures 96 hours from the shelf, not a month from death. In particular, the Chapter 5 graveside reunion can lead through the test and shelf to this scene about twelve days after death.",
+      "fix": "Anchor availability to the observed death timestamp with a month-long interval, or make this an explicitly premature invented observance.",
+      "minimum_hours": 720
+    },
+    {
+      "finding": "camellia:030",
+      "scene": "camellia.trickster.day.the_anniversary_camp",
+      "source": [],
+      "claim": "monthly anniversary",
+      "origins": [
+        "camellia.dead"
+      ],
+      "problem": "The battlefield-return chain can reach this scene approximately thirteen days after the death: return, due, lesson, terms, test, shelf, then the 96-hour delay.",
+      "fix": "Measure the anniversary from the death observation, or explicitly acknowledge that she is celebrating early.",
+      "minimum_hours": 720
+    },
+    {
+      "finding": "eliandra:031",
+      "scene": "eliandra.trickster.ch5.night_after",
+      "source": [],
+      "claim": "handful of days",
+      "origins": [
+        "eliandra.met_ch5"
+      ],
+      "problem": "All shrine scenes have zero delay, and this scene can follow the first meeting and rite during the same visit without the optional overnight planning passage. It asserts relationship time the played branch need not contain.",
+      "fix": "Say she is a woman the Commander scarcely knows, or condition the duration on genuinely elapsed time.",
+      "minimum_hours": 48
+    },
+    {
+      "finding": "eliandra:032",
+      "scene": "eliandra.trickster.drezen.dark_sky",
+      "source": [],
+      "claim": "first night of the winter",
+      "origins": [
+        "eliandra.trickster.cost.lights_given"
+      ],
+      "problem": "The scene is available 24 hours after route prerequisites, throughout Chapter 5, with no calendar condition or narrated seasonal jump. It can declare the start of winter during a spring or summer run.",
+      "fix": "Make this the first clear display since the offering, rather than the first night of a fixed season.",
+      "calendar": "season has no serialized calendar witness"
+    },
+    {
+      "finding": "eliandra:033",
+      "scene": "eliandra.trickster.drezen.dark_sky_mark",
+      "source": [],
+      "claim": "first night of the winter",
+      "origins": [
+        "eliandra.trickster.cost.lights_given"
+      ],
+      "problem": "The fallback repeats the season claim without a calendar gate.",
+      "fix": "Make this the first clear display since the offering.",
+      "calendar": "season has no serialized calendar witness"
+    },
+    {
+      "finding": "eritrice:012",
+      "scene": "eritrice.council.just_imagine",
+      "source": [
+        "storylines/eritrice_council.py:45"
+      ],
+      "claim": "tomorrow",
+      "origins": [
+        "eritrice.council.a_serious_matter"
+      ],
+      "problem": "The scene opens after a_serious_matter with a 24-hour delay, rather than an observed scheduled final session. It can precede the Alushinyrra business needed for the Council climax. Its entry and nodes start, ask, truth, lie, unknown, truth_plain and lie_plain repeatedly present the native confrontation as tomorrow despite no corresponding timing gate.",
+      "fix": "Use 'the next session' consistently across the entry and all seven nodes, or bind a genuine scheduling event and enforce its window. Test availability before and after the Shamira expedition without advancing the native confrontation by narration alone.",
+      "maximum_hours": 24
+    },
+    {
+      "finding": "herrax:008",
+      "scene": "herrax.house.eve",
+      "source": [
+        "storylines/herrax_house.py:41"
+      ],
+      "claim": "Tomorrow",
+      "origins": [
+        "herrax.trickster.bait_taken",
+        "herrax.trickster.cost.con_blown"
+      ],
+      "problem": "eve remains available after the punishment's 24-hour delay has elapsed. The player can read this promise and immediately select madam.the_night, which says \"It's time\" and performs the punishment. The same stale future assumption appears in the entry \"Tomorrow night.\" and the sold-branch question \"Where do you want me, tomorrow?\"",
+      "fix": "Make all three references compatible with a punishment that is already available, using the appointed arena night rather than an unconditional tomorrow, or make the scheduled date and scene availability agree. Test eve followed immediately by the_night after the 24-hour threshold.",
+      "maximum_hours": 24
+    },
+    {
+      "finding": "herrax:009",
+      "scene": "herrax.house.eve",
+      "source": [
+        "storylines/herrax_house.py:41"
+      ],
+      "claim": "since yesterday",
+      "origins": [
+        "herrax.trickster.cost.con_blown"
+      ],
+      "problem": "The blown-sale branch becomes available only six hours after the sale. A morning failure followed by an afternoon visit produces a false previous-day recollection.",
+      "fix": "Replace \"since yesterday\" with \"since he shouted it\", or implement a genuine previous-day gate. Add a same-day failed-sale visit to the timing checks.",
+      "minimum_hours": 24
+    },
+    {
+      "finding": "mielarah:016",
+      "scene": "mielarah.deck.names",
+      "source": [
+        "storylines/mielarah_deck.py:842",
+        "storylines/mielarah_deck.py:845"
+      ],
+      "claim": "week after",
+      "origins": [
+        "mielarah.trickster.primed.pattern"
+      ],
+      "problem": "On the unread charter history she first learns the rule in nearest/none_unread. best_job, correction, market and names can then be reached after 24 + 24 + 24 + 12 hours, only 84 hours later. Her completed account of the following week's research can therefore play before that week exists.",
+      "fix": "Remove the elapsed-week claim for this history, or enforce its elapsed time from pattern_self_discovered before offering that account.",
+      "minimum_hours": 168,
+      "history_branch": "nearest/none_unread (first-discovery alternative; not earlier charter knowledge)"
+    },
+    {
+      "finding": "mielarah:017",
+      "scene": "mielarah.deck.names.arcade",
+      "source": [],
+      "claim": "week after",
+      "origins": [
+        "mielarah.trickster.primed.pattern"
+      ],
+      "problem": "The arcade copy has the same premature research history after a Chapter 5 first discovery, with only 84 hours required by the implemented chain.",
+      "fix": "Apply the history-aware research wording or discovery-based timing guard to both placements.",
+      "minimum_hours": 168,
+      "history_branch": "nearest/none_unread (first-discovery alternative; not earlier charter knowledge)"
+    },
+    {
+      "finding": "mielarah:021",
+      "scene": "mielarah.trickster.epilogue.late",
+      "source": [],
+      "claim": "year",
+      "origins": [
+        "mielarah.trickster.declined"
+      ],
+      "problem": "The opener dates this encounter to the spring after Threshold, but the refusal can occur at any point in Chapter 5. Neither the scene's gates nor that seasonal date establish a year since the wheel refusal.",
+      "fix": "Use an undated duration, or deliberately place the encounter a year after the refusal rather than at an unspecified first spring after Threshold.",
+      "minimum_hours": 8760
+    },
+    {
+      "finding": "nenio:006",
+      "scene": "nenio.trickster.away.field_report",
+      "source": [],
+      "claim": "Three weeks pass",
+      "origins": [
+        "nenio.away.latched"
+      ],
+      "problem": "The choice advances no game time and immediately sets primed_away. Physical probation can follow 48 hours later while every other route's calendar still records only those 48 hours. The claimed three-week absence is absent from the shared timeline.",
+      "fix": "Remove the asserted three-week jump, or implement a timed continuation that actually waits for it. Test elapsed time through the correct-report branch.",
+      "minimum_hours": 504
+    },
+    {
+      "finding": "nenio:011",
+      "scene": "nenio.trickster.killed.stranger_visitor",
+      "source": [],
+      "claim": "fortnight ago",
+      "origins": [
+        "nenio.trickster.visitor"
+      ],
+      "problem": "This first meeting becomes available 48 hours after recreation and arrival. The new Nenio can claim a week of market observations after two days.",
+      "fix": "Replace the fixed week with duration-neutral impatience, or require a full week after arrival.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:012",
+      "scene": "nenio.trickster.killed.stranger_arcade",
+      "source": [],
+      "claim": "fortnight ago",
+      "origins": [
+        "nenio.trickster.visitor"
+      ],
+      "problem": "The fallback first meeting becomes available 48 hours after recreation and arrival, before the claimed week exists.",
+      "fix": "Use duration-neutral wording or a full-week arrival gate.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:015",
+      "scene": "nenio.folio.volume_one_visitor",
+      "source": [],
+      "claim": "three weeks",
+      "origins": [
+        "nenio.trickster.returned"
+      ],
+      "problem": "The recreated visitor can reach this farewell four days after recreation: market introduction, page one, then the 48-hour volume delay. Three weeks of investigation are unearned.",
+      "fix": "Say she has looked for a loophole without specifying three weeks, or gate the statement on 504 hours since recreation.",
+      "minimum_hours": 504
+    },
+    {
+      "finding": "nenio:016",
+      "scene": "nenio.folio.volume_one_arcade",
+      "source": [],
+      "claim": "three weeks",
+      "origins": [
+        "nenio.trickster.returned"
+      ],
+      "problem": "The arcade recreation can reach the same claim four days after being made.",
+      "fix": "Remove the fixed duration or enforce the three-week recreation clock.",
+      "minimum_hours": 504
+    },
+    {
+      "finding": "nenio:019",
+      "scene": "nenio.folio.market_visitor",
+      "source": [],
+      "claim": "taken weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "This observation becomes available 48 hours after the new scribe relationship. A newly recreated stranger can claim weeks of studying the Commander after two days of acquaintance.",
+      "fix": "Use duration-neutral wording, or require the stated weeks since the first meeting.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:020",
+      "scene": "nenio.folio.market_arcade",
+      "source": [],
+      "claim": "taken weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "The arcade census makes the same premature claim after its 48-hour scribe delay.",
+      "fix": "Remove the fixed span or enforce it from the actual first meeting.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:021",
+      "scene": "nenio.folio.kenabres_box_visitor",
+      "source": [],
+      "claim": "some weeks",
+      "origins": [
+        "nenio.folio.stranger.kenabres_said"
+      ],
+      "problem": "The box can be discussed three days after the recreated stranger's first meeting and Kenabres remark.",
+      "fix": "Change this to thinking since their meeting, or require several weeks from kenabres_said.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:022",
+      "scene": "nenio.folio.kenabres_box_arcade",
+      "source": [],
+      "claim": "some weeks",
+      "origins": [
+        "nenio.folio.stranger.kenabres_said"
+      ],
+      "problem": "The fallback box likewise opens three days after the remark it claims to have considered for weeks.",
+      "fix": "Use the actual elapsed history or enforce a suitable remark-based delay.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:023",
+      "scene": "nenio.folio.kenabres_box_visitor",
+      "source": [],
+      "claim": "dictation for weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "The truth branch accuses the Commander of weeks of concealment when the relationship can be only three days old.",
+      "fix": "Replace weeks with 'since you took the pencil', preserving the accusation without inventing its duration.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:024",
+      "scene": "nenio.folio.kenabres_box_arcade",
+      "source": [],
+      "claim": "dictation for weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "The same three-day relationship is expanded into weeks of concealment. It also retains the crate staging in the step-based fallback.",
+      "fix": "Use duration-neutral concealment language and the appropriate place token.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:025",
+      "scene": "nenio.folio.kenabres_box_visitor",
+      "source": [],
+      "claim": "weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "The how node repeats the unsupported weeks after the truth node, so fixing only the opening would leave the false history intact.",
+      "fix": "Replace this with the period since the Commander became her scribe.",
+      "minimum_hours": 336,
+      "node": "how"
+    },
+    {
+      "finding": "nenio:026",
+      "scene": "nenio.folio.kenabres_box_arcade",
+      "source": [],
+      "claim": "weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "The fallback how node repeats the same unsupported duration.",
+      "fix": "Use the actual scribe history without asserting weeks.",
+      "minimum_hours": 336,
+      "node": "how"
+    },
+    {
+      "finding": "nenio:027",
+      "scene": "nenio.folio.kenabres_judgment_visitor",
+      "source": [],
+      "claim": "weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "Judgment can arrive six days after the new first meeting. The following accusation specifically describes holding the pencil and letting this Nenio be pleased, rather than the intervening months when she was dead.",
+      "fix": "Refer to the silence since her return, or enforce the weeks of acquaintance the accusation requires.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:028",
+      "scene": "nenio.folio.kenabres_judgment_arcade",
+      "source": [],
+      "claim": "weeks",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "The arcade judgment also turns six days of acquaintance into weeks of shared dictation.",
+      "fix": "Use return-relative wording or an actual multiweek acquaintance gate.",
+      "minimum_hours": 336
+    },
+    {
+      "finding": "nenio:029",
+      "scene": "nenio.folio.sphinx_list_visitor",
+      "source": [],
+      "claim": "every night for a week",
+      "origins": [
+        "nenio.trickster.returned"
+      ],
+      "problem": "The preparation scene needs only 48 hours after scribe acquisition. A newly recreated Nenio can make this claim three days after recreation.",
+      "fix": "Remove the fixed week or require seven nights after the return.",
+      "minimum_hours": 168
+    },
+    {
+      "finding": "nenio:030",
+      "scene": "nenio.folio.sphinx_list_arcade",
+      "source": [],
+      "claim": "every night for a week",
+      "origins": [
+        "nenio.trickster.returned"
+      ],
+      "problem": "The fallback preparation scene has the same insufficient elapsed time.",
+      "fix": "Use duration-neutral wording or the same seven-night return gate.",
+      "minimum_hours": 168
+    },
+    {
+      "finding": "nenio:047",
+      "scene": "nenio.lastcall.page",
+      "source": [
+        "storylines/nenio_trickster.py:793",
+        "storylines/nenio_trickster.py:800",
+        "storylines/nenio_trickster.py:810"
+      ],
+      "claim": "all year",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "A Nenio recreated and first met in Chapter 5 can receive this paragraph after a short acquaintance. It invents a year of shared questioning.",
+      "fix": "Refer to asking her questions during their study without asserting a year.",
+      "minimum_hours": 8760
+    },
+    {
+      "finding": "nenio:048",
+      "scene": "nenio.lastcall.call",
+      "source": [
+        "storylines/nenio_trickster.py:325",
+        "storylines/nenio_trickster.py:329"
+      ],
+      "claim": "all through the war",
+      "origins": [
+        "nenio.trickster.scribe"
+      ],
+      "problem": "This also applies to a newly recreated Chapter 5 stranger or a late probation return. Those versions of Nenio did not question the Commander throughout the war.",
+      "fix": "Use their actual dictation relationship as the callback, or select a long-companion variant from recorded history."
+    },
+    {
+      "finding": "seelah:004",
+      "scene": "seelah.late_afterglow",
+      "source": [
+        "storylines/seelah_late_campaign.py:316"
+      ],
+      "claim": "all week",
+      "origins": [
+        "seelah.late_race_kept"
+      ],
+      "problem": "The scene opens 24 hours after late_race_kept. On the losing branch, Tavia chooses the song at the race and Seelah learns it there, so the earliest valid continuation falsely claims a week's history.",
+      "fix": "Replace 'all week' with 'ever since the race', preserving the existing delay.",
+      "minimum_hours": 168
+    }
+  ],
+  "schedules": [
+    {
+      "name": "paid-widow",
+      "finding": "anevia:010",
+      "native": [
+        "trickster",
+        "irabeth_dead",
+        "anevia_gone",
+        "coronation.after",
+        "closets.known"
+      ],
+      "resources": {
+        "Favors": 1000,
+        "Finances": 1000,
+        "Materials": 1000
+      },
+      "origins": [
+        "anevia.trickster.primed"
+      ],
+      "minimum_hours": 168,
+      "steps": [
+        {
+          "scene": "anevia.trickster.gone.setup",
+          "want": [
+            "anevia.trickster.primed",
+            "anevia.trickster.cost.socoth_listening"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.wardrobe",
+          "want": [
+            "anevia.trickster.returned"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.gate",
+          "want": [
+            "anevia.trickster.gate_seen"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.commit",
+          "want": [
+            "anevia.committed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "kept-closet-widow",
+      "finding": "anevia:010",
+      "native": [
+        "trickster",
+        "irabeth_dead",
+        "anevia_gone",
+        "coronation.after",
+        "closets.known",
+        "socot.gone"
+      ],
+      "resources": {
+        "Favors": 1000,
+        "Finances": 1000,
+        "Materials": 1000
+      },
+      "origins": [
+        "anevia.trickster.primed"
+      ],
+      "minimum_hours": 168,
+      "steps": [
+        {
+          "scene": "anevia.trickster.gone.setup",
+          "want": [
+            "anevia.trickster.primed",
+            "anevia.trickster.cost.stolen_door"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.wardrobe",
+          "want": [
+            "anevia.trickster.returned"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.gate",
+          "want": [
+            "anevia.trickster.gate_seen"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.commit",
+          "want": [
+            "anevia.committed"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "called-fetched",
+      "finding": "anevia:009",
+      "native": [
+        "trickster",
+        "irabeth_dead",
+        "anevia_gone",
+        "coronation.after",
+        "closets.known"
+      ],
+      "resources": {
+        "Favors": 1000,
+        "Finances": 1000,
+        "Materials": 1000
+      },
+      "origins": [
+        "coronation.seen"
+      ],
+      "maximum_hours": 168,
+      "steps": [
+        {
+          "scene": "irabeth.trickster.dead.late_order",
+          "want": [
+            "irabeth.trickster.primed",
+            "irabeth.trickster.cost.vell"
+          ]
+        },
+        {
+          "scene": "irabeth.trickster.dead.relieved_not_dismissed",
+          "want": [
+            "irabeth.trickster.returned"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched",
+          "want": [
+            "anevia.trickster.returned"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched_gate",
+          "want": [
+            "anevia.trickster.gate_seen"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched_commit",
+          "want": [
+            "anevia.trickster.declined"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched_second_ask",
+          "want": [
+            "anevia.committed",
+            "anevia.trickster.cost.her_key"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "raised-fetched",
+      "finding": "anevia:009",
+      "native": [
+        "trickster",
+        "irabeth_dead",
+        "anevia_gone",
+        "coronation.after",
+        "closets.known",
+        "anevia.irabeth_killed_by_commander"
+      ],
+      "resources": {
+        "Favors": 1000,
+        "Finances": 1000,
+        "Materials": 1000
+      },
+      "origins": [
+        "coronation.seen"
+      ],
+      "maximum_hours": 168,
+      "steps": [
+        {
+          "scene": "irabeth.trickster.killed.late_step",
+          "want": [
+            "irabeth.trickster.raised_on_record"
+          ]
+        },
+        {
+          "scene": "irabeth.trickster.killed.blow_missed",
+          "want": [
+            "irabeth.trickster.returned",
+            "irabeth.trickster.cost.under_orders"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched",
+          "want": [
+            "anevia.trickster.returned"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched_gate",
+          "want": [
+            "anevia.trickster.gate_seen"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched_commit",
+          "want": [
+            "anevia.trickster.declined"
+          ]
+        },
+        {
+          "scene": "anevia.trickster.gone.fetched_second_ask",
+          "want": [
+            "anevia.committed",
+            "anevia.trickster.cost.her_key"
+          ]
+        }
+      ]
+    }
+  ]
+}

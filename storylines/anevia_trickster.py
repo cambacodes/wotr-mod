@@ -895,3 +895,26 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+# eng7-l08: authored timing variants for the fetched road (E-Q7-18,
+# anevia:009). The letters put both women outside Drezen after four days of
+# travel; the remaining meetings are appointments. The widow's original
+# 24 + 48 + 96 hour mourning schedule (anevia:010) remains intact.
+import copy as _timing_copy
+_fetched_id = "anevia.trickster.gone.fetched"
+next(s for s in SCENES if s["Id"] == _fetched_id)["DelayHours"] = 96
+for _old_id, _new_id, _hours in (
+        ("anevia.trickster.gone.gate", "anevia.trickster.gone.fetched_gate", 12),
+        ("anevia.trickster.gone.commit", "anevia.trickster.gone.fetched_commit", 6),
+        ("anevia.trickster.gone.second_ask", "anevia.trickster.gone.fetched_second_ask", 6)):
+    _appointment = _timing_copy.deepcopy(next(s for s in SCENES if s["Id"] == _old_id))
+    _appointment["Id"] = _new_id
+    _appointment["DelayHours"] = _hours
+    _appointment["Requires"].append(_fetched_id)
+    _appointment["Forbids"].append(_old_id)
+    for _node in _appointment["Nodes"]:
+        for _answer in _node["Choices"]:
+            if not _answer.get("Next") and not _answer.get("Check") and not _answer.get("Abort"):
+                _answer.setdefault("Set", []).append(_old_id)
+    SCENES.append(_appointment)
+# end eng7-l08

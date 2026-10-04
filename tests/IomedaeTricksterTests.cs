@@ -213,8 +213,8 @@ internal static class IomedaeTricksterTests
             "Trk_Iomedae_Summit: the Summit precedent is not a late door (or not in her unit's voice).");
 
         // Trk_Iomedae_Plan: the bare platform (before Iz), the herald's fate in her own voice.
-        var plan = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen");
-        check(Avail(bare, plan) && !Avail(bare, World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done"))
+        var plan = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen");
+        check(Avail(bare, plan) && !Avail(bare, World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done"))
               && Take(bare, plan, "wager", 0, P + "plan.wager").Has(P + "plan.wager"),
             "Trk_Iomedae_Plan: the wager is not conceived on the bare platform before Iz.");
         check(Avail(heraldDream, World(story, 5, "trickster.ever", Started, Latch, "iomedae.herald_saved"))
@@ -223,8 +223,8 @@ internal static class IomedaeTricksterTests
             "Trk_Iomedae_Herald: her herald's fate is not answered in her own voice after the Summit.");
 
         // Trk_Iomedae_Banner: back in hand at Iz, she speaks through it and calls the disputation; the word pays off.
-        var iz = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", Held, P + "tested", P + "test.please");
-        check(Avail(izNight, Later(iz, 0, area: "00000000000000000000000000000000")) && !Avail(izNight, World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen"))
+        var iz = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", Held, P + "tested", P + "test.please");
+        check(Avail(izNight, Later(iz, 0, area: "00000000000000000000000000000000")) && !Avail(izNight, World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen"))
               && Take(izNight, iz, "form", 0, Called).Has(P + "first_spoken")
               && Reachable(izNight, iz).Any(x => x.Contains("wax")) && !Reachable(izNight, iz).Any(x => x.Contains("my god's name")),
             "Trk_Iomedae_Banner: the banner in hand does not carry her voice and the call, or she recalls the wrong word.");
@@ -247,7 +247,7 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Disputation: the commit (her concession aloud), SkillLoreReligion DC 24 or plain, and every refusal
         // player-caused (the boast, the mocked madness, the lie about the theft); never after a yes or a no.
-        var ready = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called);
+        var ready = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called);
         check(!Avail(disp, Later(ready, 0, area: "00000000000000000000000000000000")) && disp.Areas.SequenceEqual(new[] { Drezen }) && disp.DelayHours == 24
               && disp.Chapters.SequenceEqual(new[] { 5 }),
             "Trk_Iomedae_Disputation: the disputation plays away from the platform, or outside Chapter 5.");
@@ -263,11 +263,11 @@ internal static class IomedaeTricksterTests
         var boast = Take(disp, ready, "refuse", 0, Declined, P + "cost.boasted");
         check(!boast.Has(Committed) && !boast.Has(Closed) && !Avail(disp, Later(boast, 30)) && !Avail(disp, Later(yes, 30)),
             "Trk_Iomedae_Disputation: the boast is not a soft no (declined, not closed), or the disputation replays.");
-        var mad = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called, "iomedae.reproached");
+        var mad = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called, "iomedae.reproached");
         check(Take(disp, mad, "mocked", 0, Declined).Has(P + "cost.madness_mocked") && Take(disp, mad, "will", 0, Committed).Has(P + "answered.madness")
               && Paths(disp, ready).All(o => !o.path.Any(e => e.node == "madness")),
             "Trk_Iomedae_Disputation: the Trickster ultimate is not a fourth objection (answered, or mocked), or it is raised without it.");
-        var thief = World(story, 5, "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Order, P + "cost.banner_stolen", Called);
+        var thief = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Order, P + "cost.banner_stolen", Called);
         check(Take(disp, thief, "lied", 0, Declined).Has(P + "cost.lied") && Take(disp, thief, "will", 0, Committed).Has(P + "answered.theft"),
             "Trk_Iomedae_Disputation: a stolen banner is not answered for (or the lie does not end it).");
 

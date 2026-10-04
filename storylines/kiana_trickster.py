@@ -73,7 +73,7 @@ PRESENCES = {
     # anchor: if the native unit is not in the capital, nothing is placed and the beat plays on Arsinoe's hub regardless.
     # Q10: a spawned copy at Arsinoe's counter (E12b NearUnit), so the pivot needs Kiana's own actor. If Arsinoe is not in
     # the capital the anchor fails, kiana.presence.failed is raised, and the letter twin carries the pivot.
-    "kiana.presence": dict(Unit=KYANA, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=ARSINOE, Side="right", Distance=2.5),
+    "kiana.presence": dict(Unit=KYANA, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=ARSINOE, Side="right", Distance=2.5),
                            Requires=["trickster.ever"], RequiresAnyGroups=[[RETURNED, MET]], Forbids=["kiana.closed"],
                            MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
                            Greeting="{n}Kiana is perched on the end of Arsinoe's counter in a borrowed robe and her wedding "

@@ -23,7 +23,8 @@ internal static class NocticulaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = "2570015799edf594daf2f076f2f975d8", Hour = 5000 };
+        // eng7-l12: Chapter 6 shadow/chair encounters take place at Threshold.
+        var state = new Snapshot { Chapter = chapter, Area = chapter == 6 ? "10c4b0e2af186ba46ab4d238d00a40a8" : "2570015799edf594daf2f076f2f975d8", Hour = 5000 };
         state.Flags.UnionWith(flags);
         if (chapter > 1) state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
