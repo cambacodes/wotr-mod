@@ -398,6 +398,9 @@ namespace Tirabade
         public string Speaker = "Narrator";
         public string Portrait = "";
         public string Text = "";
+        // eng7-l09: liabilities incurred on entry survive payment and contact exits.
+        public string[] EnterSet = Array.Empty<string>();
+        // end eng7-l09
         public List<Choice> Choices = new List<Choice>();
         // E14c: conditional paragraphs on narrator and speaker nodes. Paragraphs appended after the node text, in order (the native BookPage idiom).
         public List<Paragraph> Paragraphs = new List<Paragraph>();
@@ -733,6 +736,18 @@ namespace Tirabade
                     && !woman.UnavailableFlags.Any(flag => state.Has(flag)
                         && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
             });
+
+        // eng7-l09: shared runtime/test contract for incurred transaction state.
+        public static void EnterNode(Node node, Snapshot state)
+        {
+            foreach (string flag in node.EnterSet)
+                if (state.Flags.Add(flag)) state.Times[flag] = state.Hour;
+        }
+
+        public static bool PaymentExitAvailable(Node node, Snapshot state)
+            => node.Choices.Any(choice => choice.Crusade?.Amount < 0)
+                && !node.Choices.Any(choice => ChoiceAvailable(choice, state));
+        // end eng7-l09
 
         public static bool ChoiceAvailable(Choice choice, Snapshot state) => Match(choice.Requires, choice.Forbids, state)
             && (choice.Crusade == null || choice.Crusade.Amount >= 0 || state.CrusadeResources != null
@@ -1424,6 +1439,7 @@ namespace Tirabade
             }
             var authoredFlags = new HashSet<string>(story.Scenes.Select(s => s.Id)
                 .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set))
+                .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet)) // eng7-l09
                 .Concat(relationshipFlags));
             // TODO-shyka: save-compatible paid-page flag, deliberately without a producer in this tree.
             if (story.Derived.ContainsKey("foresight.page_taken")) authoredFlags.Add("trickster.foresight.accepted");

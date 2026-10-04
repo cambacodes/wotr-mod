@@ -29,6 +29,11 @@ import etude_lifecycle  # noqa: E402  (E3: native etude lifecycle, 18-ETUDE-BIND
 MOD = Path(os.environ["RRT_ROOT"]) if os.environ.get("RRT_ROOT") else (
     HERE.parent if (HERE.parent / "expansion.py").exists() else Path(r"C:\Users\Z\Documents\Projects\RanRomanceTirabade"))
 GAME = Path(os.environ.get("RRT_GAME_DIR") or r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure")
+# eng7-l09: authoring checks share the player-text/draft contracts.
+sys.path.insert(0, str(MOD))
+from tools import player_text_lint, text_structure_lint, draft_contract_lint
+from tools import intimacy_contract_lint, memory_callback_lint, transaction_exit_lint
+# end eng7-l09
 SCRATCH = HERE / "scratch"
 
 MYTHIC = ["trickster", "angel", "demon", "lich", "aeon", "azata", "devil", "dragon", "legend", "swarm"]
@@ -72,6 +77,7 @@ def norm_scene(s):
         n.setdefault("Speaker", "Narrator"); n.setdefault("Portrait", ""); n.setdefault("Text", ""); n.setdefault("Paragraphs", [])
         n.setdefault("SpeakerUnit", None)
         n.setdefault("Choices", [])
+        n.setdefault("EnterSet", []) # eng7-l09
         for c in n["Choices"]:
             for k, v in dict(Text="Continue", Next=None, Abort=False, Revive=None, Check=None, Set=[], Requires=[],
                              Forbids=[], Mythic=None, NativeNext=None, Alignment=None, Crusade=None, RemoveItem=None,
@@ -198,6 +204,10 @@ class Model:
         self.producers = collections.defaultdict(list)
         for s in self.scenes:
             for n in s["Nodes"]:
+                # eng7-l09: entry is a producer even when no payment is selectable.
+                for f in n.get("EnterSet", []):
+                    self.producers[f].append((s["Id"], n["Id"], "enter"))
+                # end eng7-l09
                 for i, c in enumerate(n["Choices"]):
                     for f in c["Set"]:
                         self.producers[f].append((s["Id"], n["Id"], i))
@@ -223,6 +233,8 @@ class Model:
         forb |= {r["ClosedFlag"] for r in self.rels.values()}
         forb |= {s["Id"] for s in self.scenes}   # a completed scene can never run again (Available checks state.Has(scene.Id))
         self.scene_sets = {s["Id"]: {f for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]} for s in self.scenes}
+        for s in self.scenes: # eng7-l09
+            self.scene_sets[s["Id"]].update(f for n in s["Nodes"] for f in n.get("EnterSet", []))
         self.choice_req_scenes = collections.defaultdict(set)
         for s in self.scenes:
             for n in s["Nodes"]:
@@ -239,6 +251,8 @@ class Model:
         for f, lst in self.producers.items():
             for (sid, nid, i) in lst:
                 if i == "start": self.static_ctx[(sid, nid, i)] = frozenset()
+                elif i == "enter": # eng7-l09
+                    self.static_ctx[(sid, nid, i)] = frozenset(set(self.nodes[sid][nid]["EnterSet"]) & self.persistent)
                 else:
                     c = self.nodes[sid][nid]["Choices"][i]
                     self.static_ctx[(sid, nid, i)] = frozenset((set(c["Requires"]) | set(c["Set"])) & self.persistent)
@@ -256,7 +270,8 @@ class Model:
                 nodes.setdefault(n["Id"], None)
             for nid in nodes:
                 n = self.nodes[sid][nid]
-                nodes[nid] = [(i, c, (sid, nid, i), bool(c["Requires"] or c["Forbids"]), c["Set"], completes(s, c), next_nodes(c))
+                # eng7-l09: entry effects also belong to each outgoing reachability edge.
+                nodes[nid] = [(i, c, (sid, nid, i), bool(c["Requires"] or c["Forbids"]), list(dict.fromkeys(n.get("EnterSet", []) + c["Set"])), completes(s, c), next_nodes(c))
                               for i, c in enumerate(n["Choices"])]
             gated = [(n["Id"], i, c) for n in s["Nodes"] for i, c in enumerate(n["Choices"]) if c["Forbids"] or c["Requires"]]
             trace = None
@@ -266,6 +281,10 @@ class Model:
                     nid = stack.pop()
                     if nid in seen or nid not in nodes: continue
                     seen.add(nid)
+                    # eng7-l09
+                    keys.append((sid, nid, "enter"))
+                    trace.extend(self.nodes[sid][nid].get("EnterSet", []))
+                    # end eng7-l09
                     for i, c, key, _, sets, comp, nxt in nodes[nid]:
                         keys.append(key); trace.extend(sets)
                         if comp: trace.append(sid)
@@ -506,6 +525,11 @@ class Reach:
             nid = stack.pop()
             if nid in seen or nid not in nodes: continue
             seen.add(nid)
+            # eng7-l09: OnShow precedes affordability and all answer gates.
+            choices.add((sid, nid, "enter"))
+            for f in self.m.nodes[sid][nid].get("EnterSet", []):
+                if f not in held: held.add(f); new.append(f)
+            # end eng7-l09
             for i, c, key, gated, sets, comp, nxt in nodes[nid]:
                 if key in dead or (gated and not choice_ok(s, c, ch)): continue
                 choices.add(key)
@@ -730,6 +754,7 @@ def build_names(model):
     names = []
     scenes = model.scenes
     effects = list(dict.fromkeys(f for s in scenes for n in s["Nodes"] for c in n["Choices"] for f in c["Set"]))   # first-seen order
+    effects.extend(f for s in scenes for n in s["Nodes"] for f in n.get("EnterSet", []) if f not in effects) # eng7-l09
     keys = list(dict.fromkeys([s["Id"] for s in scenes] + ["hour." + s["Id"] for s in scenes] + effects + ["hour." + e for e in effects] +
                               [x for r in model.rels.values() for x in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"])]))
     keyset = set(keys)
@@ -1749,9 +1774,28 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     for x in tbad: P("  -", x)
     R.pop("_typeids", None)
 
-    # ---- drafts
-    if drafts:
-        R["drafts"] = check_drafts(story, P, game)
+    # eng7-l09: always inspect authoring data; dormant drafts never enter shipped scores.
+    R["player_text"] = player_text_lint.check(story)
+    R["text_structure"] = text_structure_lint.check(story)
+    R["intimacy_contracts"] = intimacy_contract_lint.check(story)
+    R["memory_callbacks"] = memory_callback_lint.check(story)
+    R["transaction_exits"] = dict(hard=transaction_exit_lint.check(story))
+    R["drafts"] = check_drafts(story, P, game)
+    R["drafts"]["player_text"] = {}
+    R["drafts"]["text_structure"] = {}
+    for module, data in sorted(R["drafts"]["modules"].items()):
+        manuscript = {"Scenes": data.get("scenes", [])}
+        R["drafts"]["player_text"][module] = player_text_lint.check(manuscript, draft=True)
+        R["drafts"]["text_structure"][module] = text_structure_lint.check(manuscript, draft=True)
+    P("\neng7-l09 authoring: %d player-text reviews, %d shipped structural errors, %d draft contract diagnostics"
+      % (len(R["player_text"]["review"]), len(R["text_structure"]["hard"]), len(R["drafts"]["contracts"])))
+    for row in R["text_structure"]["hard"]:
+        P("  STRUCTURE", row["scene"], row["location"], row["code"], row["start"], row["end"])
+    P("eng7-l09 contracts: intimacy %d hard / %d traversed; memory %d hard / %d incoming; transactions %d hard"
+      % (len(R["intimacy_contracts"]["hard"]), len(R["intimacy_contracts"]["executed"]),
+         len(R["memory_callbacks"]["hard"]), len(R["memory_callbacks"]["executed"]),
+         len(R["transaction_exits"]["hard"])))
+    # end eng7-l09
 
     P("\nruntime %.1fs" % (time.time() - t0))
     text = "\n".join(lines)
@@ -1810,68 +1854,11 @@ def previous_exports():
     return out
 
 
+# eng7-l09: draft diagnostics are isolated and independent of native delivery deferrals.
 def check_drafts(story, P, game):
-    """Import each unregistered storyline from a scratch COPY (never in-place), validate structurally and
-    run producer/reachability checks as if registered."""
-    work = SCRATCH / "draftcopy"
-    if work.exists(): shutil.rmtree(work)
-    work.mkdir(parents=True)
-    for name in ("story.py", "story_format.py", "expansion.py"):
-        shutil.copy2(MOD / name, work / name)
-    shutil.copytree(MOD / "storylines", work / "storylines", ignore=shutil.ignore_patterns("__pycache__"))
-    if (MOD / "reference/expansion").is_dir():
-        shutil.copytree(MOD / "reference/expansion", work / "reference/expansion")
-    sys.dont_write_bytecode = True
-    sys.path.insert(0, str(work))
-    unreg = sorted(p.stem for p in (MOD / "storylines").glob("*.py") if p.stem not in registered_modules(MOD))
-    res = {}
-    P("\n## DRAFTS (unregistered modules, imported from a scratch copy)")
-    base_ids = {s["Id"] for s in story["Scenes"]}
-    for name in unreg:
-        r = dict()
-        try:
-            mod = importlib.import_module("storylines." + name)
-            scenes = getattr(mod, "SCENES", None)
-            if scenes is None:
-                r["status"] = "no SCENES attribute (exports: %s)" % [k for k in dir(mod) if k.isupper()]
-                res[name] = r; P("  %-40s %s" % (name, r["status"])); continue
-            merged = json.loads(json.dumps(story))
-            for k in ("ETUDES", "COMPLETED_QUESTS", "SEEN_CUES"):
-                sec = {"ETUDES": "Etudes", "COMPLETED_QUESTS": "CompletedQuests", "SEEN_CUES": "SeenCues"}[k]
-                if hasattr(mod, k): merged.setdefault(sec, {}).update(getattr(mod, k))
-            relname = None
-            if hasattr(mod, "RELATIONSHIP"):
-                rid = scenes[0].get("Relationship") if scenes else None
-                if rid: merged["Relationships"].setdefault(rid, getattr(mod, "RELATIONSHIP")); relname = rid
-            clash = [s["Id"] for s in scenes if s["Id"] in base_ids]
-            merged["Scenes"] = [s for s in merged["Scenes"] if s["Id"] not in {x["Id"] for x in scenes}] + json.loads(json.dumps(scenes))
-            if hasattr(mod, "integrate"):
-                try: mod.integrate(merged); r["integrate"] = "ok"
-                except Exception as e: r["integrate"] = "FAILED: %r" % e
-            m = Model(merged)
-            errs = [e for e in validate(m) if any(s["Id"] in e for s in scenes) or "relationship" in e.lower()]
-            ids = {s["Id"] for s in scenes}
-            refs = m.all_referenced()
-            nop = sorted(f for f, w in refs.items() if f not in m.producers and f not in m.native and f not in m.derived
-                         and any(x[0].split("/")[0] in ids for x in w) and any(k in ("Requires", "choice.Requires", "RequiresAnyGroups") for _, k in w))
-            reached = set()
-            tri = None
-            for mth in MYTHIC:
-                rr = Reach(m, mythic_world(mth, m))
-                reached |= set(rr.reached) & ids
-                if mth == "trickster": tri = set(rr.reached) & ids
-            r.update(scenes=len(scenes), validate_errors=errs, required_without_producer=nop, reachable_any_path=len(reached),
-                     reachable_trickster=len(tri or ()), id_clash_with_registered=clash, relationship=sorted({s.get("Relationship", "tirabade") for s in scenes}))
-            r["status"] = "ok" if not errs else "validate-errors"
-            P("  %-40s scenes %3d  validate-errs %2d  reachable(any) %3d  reachable(trickster) %3d  dead-required-flags %s%s"
-              % (name, len(scenes), len(errs), len(reached), len(tri or ()), nop[:5], ("  ID-CLASH %s" % clash[:3]) if clash else ""))
-            for e in errs[:4]: P("       !", e)
-        except Exception as e:
-            r["status"] = "IMPORT/BUILD FAILED: %r" % e
-            P("  %-40s %s" % (name, r["status"]))
-        res[name] = r
-    sys.path.remove(str(work))
-    return res
+    data = draft_contract_lint.inventory(MOD)
+    return dict(contracts=draft_contract_lint.check(data), modules=data)
+# end eng7-l09
 
 
 # ----------------------------------------------------------------------------- E9 rest-budget simulator
@@ -2083,6 +2070,10 @@ def sim_plan(model, s, st, rel_flags):
     def best(node, held, gained, depth):
         if node not in nodes or depth > 24: return (1, 9, 1, depth), []
         found = None
+        # eng7-l09: planning sees the same incurred liabilities as the runtime.
+        entries = set(nodes[node].get("EnterSet", []))
+        gained, held = gained | (entries - held), held | entries
+        # end eng7-l09
         for c in nodes[node]["Choices"]:
             if not all(f in held for f in c["Requires"]) or any(f in held for f in c["Forbids"]): continue
             now, got = held | set(c["Set"]), gained | (set(c["Set"]) - held)
@@ -2108,7 +2099,12 @@ def sim_play(model, s, st, rel_flags, plan=None):
         sf = model.rels.get(s["Relationship"], {}).get("StartedFlag")
         if sf and sf not in st.flags: st.flags.add(sf); st.times[sf] = st.hour
     _, path = plan or sim_plan(model, s, st, rel_flags)
+    # eng7-l09: replay node entry separately from selectable answer effects.
+    entry_by_choice = {id(c): n.get("EnterSet", []) for n in s["Nodes"] for c in n["Choices"]}
     for c in path:
+        for f in entry_by_choice[id(c)]:
+            if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
+        # end eng7-l09
         for f in c["Set"]:
             if f not in st.flags: st.flags.add(f); st.times[f] = st.hour
         if c["Abort"]: return False
@@ -2525,14 +2521,18 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--story", default=str(MOD / "development/Story.json"))
     ap.add_argument("--game", default=str(GAME))
-    ap.add_argument("--json", default=str(HERE / "rrt_verify_report.json"))
-    ap.add_argument("--text", default=str(HERE / "rrt_verify_report.txt"))
+    # eng7-l09: default reports belong outside the source tree.
+    import tempfile
+    report_dir = Path(tempfile.gettempdir())
+    report_stem = "rrt_verify_report-" + MOD.name # eng7-l09: separate parallel worktrees.
+    ap.add_argument("--json", default=str(report_dir / (report_stem + ".json")))
+    ap.add_argument("--text", default=str(report_dir / (report_stem + ".txt"))) # eng7-l09
     ap.add_argument("--no-zip", action="store_true")
     ap.add_argument("--drafts", action="store_true")
     ap.add_argument("--quiet", action="store_true")
     ap.add_argument("--strict", action="store_true", help="exit 1 on hard failures (for build gates)")
     ap.add_argument("--matrix", help="TT-20: check a trickster-matrix.json against the story (report; --strict fails on registered rows)")
-    ap.add_argument("--matrix-json", default=str(HERE / "rrt_verify_report.matrix.json"))
+    ap.add_argument("--matrix-json", default=str(report_dir / (report_stem + ".matrix.json"))) # eng7-l09
     ap.add_argument("--rest-cadence", help="E9: hours of travel per rest, one value or per chapter '3:16,5:12' (default 16)")
     ap.add_argument("--chapter-days", help="E9: in-game days per chapter, e.g. '3:30,4:12,5:40' (defaults are estimates)")
     ap.add_argument("--delivery", choices=["mailbag", "postbag"], default="mailbag",
@@ -2559,10 +2559,13 @@ def main():
     FREEZE_GC = True
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
+    # eng7-l09: include shipped structure and declared callback/transaction contracts in the strict total.
     hard = len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
         + sum(len(v) for v in R.get("gate_lint", {}).values()) + len(R.get("etude_lifecycle", {}).get("hard", [])) \
         + len(R.get("earned_presence", {}).get("hard", [])) \
+        + len(R.get("text_structure", {}).get("hard", [])) + len(R.get("intimacy_contracts", {}).get("hard", [])) \
+        + len(R.get("memory_callbacks", {}).get("hard", [])) + len(R.get("transaction_exits", {}).get("hard", [])) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
     print("\nHARD FAILURES: %d  (report: %s)" % (hard, a.text))

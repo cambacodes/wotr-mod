@@ -307,3 +307,25 @@ def integrate(payload):
     for scene_ in payload["Scenes"]:
         if scene_["Id"] in ("arsinoe_ending_kept", "arsinoe_ending_open", "arsinoe_ending_promised"):
             scene_["Nodes"][0].setdefault("Paragraphs", []).append(dict(COLLECTOR))
+
+
+# eng7-l09 / E-Q7-19: preserve the original 500 + failed-haggle 200 transaction.
+_RENT_PAID = "arsinoe.trickster.cost.rent_paid"
+_RENT_RAISED = "arsinoe.trickster.cost.rent_raised"
+_SURCHARGE_PAID = "arsinoe.trickster.cost.rent_surcharge_paid"
+_lease = next(s for s in SCENES if s["Id"] == LEASE)
+_nodes = {nd["Id"]: nd for nd in _lease["Nodes"]}
+_nodes["terms"]["Choices"][0]["Set"].append(_RENT_PAID)
+_nodes["terms"]["Choices"][0]["Forbids"].append(_RENT_PAID)
+_nodes["raised"]["EnterSet"] = [_RENT_RAISED]
+_nodes["raised"]["Choices"][0]["Set"].append(_SURCHARGE_PAID)
+for _choice in _nodes["start"]["Choices"]:
+    _choice["Forbids"].extend((_RENT_PAID, _RENT_RAISED))
+_nodes["start"]["Choices"].extend((
+    c("Continue", "raised", requires=(_RENT_RAISED,), forbids=(_SURCHARGE_PAID,)),
+    c("Continue", "rent", requires=(_RENT_PAID,), forbids=(_RENT_RAISED,)),
+    c("Continue", "leased", requires=(_SURCHARGE_PAID,)),
+))
+for _choice in _nodes["rent"]["Choices"]:
+    _choice["Forbids"].append(_RENT_RAISED)
+# end eng7-l09

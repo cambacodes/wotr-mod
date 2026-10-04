@@ -426,7 +426,8 @@ namespace Tirabade
                 }
 
                 // ---------- Phase 2: register every save-referenced blueprint, unconditionally ----------
-                var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).Distinct().ToArray();
+                var effects = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set)
+                    .Concat(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet)).Distinct().ToArray(); // eng7-l09
                 var keys = story.Scenes.Select(s => s.Id).Concat(story.Scenes.Select(s => "hour." + s.Id))
                     .Concat(effects).Concat(effects.Select(key => "hour." + key))
                     .Concat(story.Relationships.Values.SelectMany(r => new[] { r.StartedFlag, r.ClosedFlag, r.CommittedFlag })).Distinct();
@@ -718,7 +719,7 @@ namespace Tirabade
                 string id = scene.Id + "." + node.Id;
                 var cue = New<BlueprintCue>("cue." + id);
                 cue.Conditions = Conditions();
-                cue.OnShow = Actions();
+                cue.OnShow = inline && node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 cue.OnStop = Actions();
                 cue.Speaker = inline ? InlineSpeaker(node, nativeReturn != null && node.Speaker == scene.Owner ? nativeReturn.Speaker : null)
                     : new DialogSpeaker { NoSpeaker = true, MoveCamera = false };
@@ -734,7 +735,7 @@ namespace Tirabade
                 var page = New<BlueprintBookPage>("page." + id);
                 page.ShowOnce = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
                 page.Conditions = scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) ? Conditions(new RouteCondition { Scene = scene }) : Conditions();
-                page.OnShow = Actions();
+                page.OnShow = node.EnterSet.Length > 0 ? Actions(new RouteAction { EntryNode = node }) : Actions(); // eng7-l09
                 page.Title = Text("title." + id, BookPolish.PageTitle(scene));
                 // E15c: the scene's first page says what it is ("Letter from Seelah", "A sending from Jerribeth", "A memory").
                 if (ReferenceEquals(node, scene.Nodes[0]) && BookPolish.KindLine(scene) is string kindLine)
@@ -848,6 +849,7 @@ namespace Tirabade
         // A funds-dependent page keeps an exit even if its only purchase is unavailable.
         private static void AddPaymentExit(Scene scene, Node node, List<BlueprintAnswerBaseReference> answers, BlueprintCue? nativeReturn, string? prefix = null)
         {
+            // eng7-l09: this abort has no completion or flag-clearing action; incurred EnterSet survives it.
             if (!node.Choices.Any(choice => choice.Crusade?.Amount < 0)) return;
             var leave = New<BlueprintAnswer>("answer." + (prefix ?? scene.Id) + "." + node.Id + ".payment_unavailable");
             InitializeAnswer(leave);
@@ -962,6 +964,7 @@ namespace Tirabade
                 {
                     CueSetup(out var cue, "cue." + prefix + "." + node.Id, node.Text);
                     cue.Speaker = InlineSpeaker(node, null);
+                    if (node.EnterSet.Length > 0) cue.OnShow = Actions(new RouteAction { EntryNode = node }); // eng7-l09
                     local.Add(node.Id, cue);
                 }
                 foreach (var node in scene.Nodes)
@@ -2090,7 +2093,7 @@ namespace Tirabade
             public Node? PaymentNode;
             protected override string GetConditionCaption() => "Three at the Table availability";
             protected override bool CheckCondition() => enabled && initialized && Game.Instance?.Player != null
-                && (PaymentNode != null ? !PaymentNode.Choices.Any(choice => Rules.ChoiceAvailable(choice, State()))
+                && (PaymentNode != null ? Rules.PaymentExitAvailable(PaymentNode, State()) /* eng7-l09 */
                     : Scene != null ? Rules.Available(story, Scene, State())
                     : ContactLost ? Continuation != null && !Rules.ContactAvailable(story, Continuation, State())
                     : Choice == null && Continuation != null ? Rules.ContactAvailable(story, Continuation, State())
@@ -2197,11 +2200,19 @@ namespace Tirabade
             public Choice? Choice;
             public bool StopSpeech;
             public CrusadePayment? Payment;
+            public Node? EntryNode; // eng7-l09
             public override string GetCaption() => "Three at the Table story action";
             public override void RunAction()
             {
                 if (StopSpeech) { StopNarration(); return; }
                 if (!enabled || !initialized) return;
+                // eng7-l09: record failure before any generated insufficient-funds exit.
+                if (EntryNode != null)
+                {
+                    RecordProgress(new Choice { Set = EntryNode.EnterSet }, null);
+                    return;
+                }
+                // end eng7-l09
                 if (Start != null)
                 {
                     if (Rules.Available(story, Start, State())) Queue(Start);

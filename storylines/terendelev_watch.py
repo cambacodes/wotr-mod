@@ -923,3 +923,13 @@ def integrate(payload):
         if have is not None and have != value:
             raise ValueError("Conflicting presence: " + key)
         payload["Presences"][key] = dict(value)
+
+
+# eng7-l09 / E-Q7-26: her memory remains hers; the Commander supplies no sold senses.
+for _suffix in ("", "_awning"):
+    if not any(s["Id"] == P + "watch.third_bell" + _suffix for s in SCENES):
+        continue  # The remote third-bell host currently has no awning twin.
+    foresight.gap(REL, P + "watch.third_bell" + _suffix, (("talk", 1),), "gate",
+        '{n}You tell her what the survivors say of the festival preparations. The morning itself is gone; their accounts cannot give it back.{/n} "The bunting," {n}she murmurs.{/n} "I helped put it up. They could never reach the top of the gate."',
+        foresight.GONE_SQUARE)
+# end eng7-l09
