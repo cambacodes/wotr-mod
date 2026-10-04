@@ -153,6 +153,7 @@ namespace Tirabade
             return done;
         }
 
+        // eng7-l05: the uniquely recorded unit is the only copy we may retire.
         internal PresenceObservation Observe(out UnitEntityData? native, out UnitEntityData? copy, out PresenceRecord? record)
         {
             native = copy = null;
@@ -172,20 +173,29 @@ namespace Tirabade
             // EvilArueshalae_Companion) reports the pretended blueprint as Blueprint once its facts activate, so our copy and
             // natives are matched by OriginalBlueprint as well (Rules.IsPresenceUnit).
             string blueprintId = Blueprint.AssetGuid.ToString();
-            var units = game.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>()
+            var units = game.State.Units
                 .Where(unit => Rules.IsPresenceUnit(blueprintId, unit.OriginalBlueprint?.AssetGuid.ToString(), unit.Blueprint?.AssetGuid.ToString())
                     && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed).ToArray();
             copy = copyId == null ? null : units.FirstOrDefault(unit => unit.UniqueId == copyId);
             seen.CopyFound = copy != null;
             seen.CopyAlive = copy != null && !copy.State.IsDead && !copy.State.IsFinallyDead;
-            var natives = units.Where(unit => unit.UniqueId != copyId && !unit.State.IsDead && !unit.State.IsFinallyDead
-                && (commander == null || !unit.IsEnemy(commander))).Take(2).ToArray();
-            if (natives.Length == 1)
+            // eng7-l05: living unusable twins stay ambiguous, including actors in unloaded storage.
+            seen.CopyUsable = copy != null && NativeContact.Usable(copy);
+            var natives = units.Where(unit => unit.UniqueId != copyId && !NativeContact.Ignorable(unit)).ToArray();
+            seen.NativeCount = natives.Length;
+            seen.RecordedNative = record?.NativeUnitId != null;
+            seen.RecordedNativeContact = record?.NativeContactId != null; // eng7-l05
+            native = seen.RecordedNative ? natives.FirstOrDefault(unit => unit.UniqueId == record!.NativeUnitId)
+                : natives.Length == 1 ? natives[0] : null;
+            seen.ContactAmbiguous = Rules.SingleUsable(units, actor => NativeContact.Usable(actor), NativeContact.Ignorable) == null
+                && units.Any(actor => NativeContact.Usable(actor));
+            if (native != null)
             {
-                native = natives[0];
-                seen.NativeAlive = true;
+                seen.NativeAlive = commander != null && !native.IsEnemy(commander);
+                seen.NativeUsable = NativeContact.Usable(native);
+                seen.NativeManageable = NativeContact.Usable(native, allowHidden: true);
                 seen.NativeHidden = !native.IsInGame;
-                seen.NativeAtPosition = Spec.Position == null && Spec.At == null || !seen.AnchorResolved || (native.Position - Target).sqrMagnitude <= 2.25f;
+                seen.NativeAtPosition = Spec.Position == null && Spec.At == null || seen.AnchorResolved && (native.Position - Target).sqrMagnitude <= 2.25f; // eng7-l05
             }
             return seen;
         }
@@ -193,24 +203,43 @@ namespace Tirabade
         // Main thread, idle only. Never throws.
         internal void Tick(bool wanted)
         {
+            bool demanded = wanted; // eng7-l05: retain accurate demand even if observation throws.
             try
             {
+                LastError = null; // eng7-l05
+                // eng7-l05: a presence that forbids its own failure must still observe demand. Otherwise the
+                // primary clears the flag on its next tick and oscillates with its earned alternate placement.
+                if (!wanted && Spec.Forbids.Contains(Rules.PresenceFailedFlag(Key)))
+                {
+                    var state = Main.State();
+                    demanded = !state.Has(Rules.DegradedPrefix + Rules.PresenceRelationship(Key))
+                        && Rules.PresenceWanted(Spec, state, Rules.PresenceFailedFlag(Key));
+                }
                 var seen = Observe(out var native, out var copy, out var record);
                 var steps = Rules.PlanPresence(Spec, wanted, seen);
-                Actor = !wanted ? null : copy != null && seen.CopyAlive && copy.IsInGame ? copy : native != null && native.IsInGame ? native : null;
+                Actor = null; // eng7-l05: publish only the post-transition usable contact.
                 // E12b: a wanted presence that cannot be placed (an anchored copy without its anchor, or a reuse-native
                 // presence without a usable native actor) is reported, and exposed as <key>.failed for the letter twin.
-                AnchorFailed = Rules.PresenceFailed(Spec, wanted, seen);
+                AnchorFailed = Rules.PresenceFailed(Spec, demanded, seen);
                 LastQuiet = CopyQuiet.None;
                 foreach (var step in steps) Execute(step, native, copy, record);
                 // E12d: every live copy (fresh, or spawned by an earlier build) is kept inert; never a native unit.
                 if (copy != null && seen.CopyAlive && !steps.Contains(PresenceStep.Remove)) LastQuiet |= Quiet(copy);
+                // eng7-l05: no stale actor/failure between a spawn, unhide, retirement and hub attachment.
+                seen = Observe(out native, out copy, out record);
+                AnchorFailed = Rules.PresenceFailed(Spec, demanded, seen);
+                if (wanted && !AnchorFailed)
+                {
+                    var candidates = Game.Instance.State.Units.Where(unit => Rules.IsPresenceUnit(Spec.Unit,
+                        unit.OriginalBlueprint?.AssetGuid.ToString(), unit.Blueprint?.AssetGuid.ToString()));
+                    Actor = Rules.SingleUsable(candidates, unit => NativeContact.Usable(unit), NativeContact.Ignorable);
+                }
                 Status = !seen.AreaLoaded ? "area not loaded" : (wanted ? "wanted" : "not wanted")
                     + (seen.NativeAlive ? ", native present" + (seen.NativeHidden ? " (hidden)" : "") : "")
                     + (seen.CopyFound ? ", copy present" : "") + (LastQuiet != CopyQuiet.None ? " (quieted: " + LastQuiet + ")" : "") + (AnchorFailed ? ", not placed (failed)" : "")
                     + (steps.Length > 0 ? " -> " + string.Join("+", steps) : "");
             }
-            catch (Exception ex) { LastError = ex; Status = "error: " + ex.Message; }
+            catch (Exception ex) { Actor = null; AnchorFailed = demanded; LastError = ex; Status = "error: " + ex.Message; } // eng7-l05
         }
 
         private void Execute(PresenceStep step, UnitEntityData? native, UnitEntityData? copy, PresenceRecord? record)
@@ -218,8 +247,23 @@ namespace Tirabade
             var game = Game.Instance;
             switch (step)
             {
+                // eng7-l05: persist native ownership and its pre-placement state before touching it.
+                case PresenceStep.RecordNativeContact:
+                    Write(new PresenceRecord { Key = Key, NativeContactId = native!.UniqueId });
+                    break;
+                case PresenceStep.Adopt:
+                    Write(new PresenceRecord { Key = Key, NativeUnitId = native!.UniqueId,
+                        NativeWasInGame = native.IsInGame, NativePosition = new PresencePosition {
+                            X = native.Position.x, Y = native.Position.y, Z = native.Position.z, Orientation = native.Orientation } });
+                    break;
+                case PresenceStep.RestoreNative:
+                    var prior = record!.NativePosition!;
+                    native!.Translocate(new Vector3(prior.X, prior.Y, prior.Z), prior.Orientation);
+                    native.IsInGame = record.NativeWasInGame;
+                    Write(null);
+                    break;
                 case PresenceStep.Unhide:
-                    Write(new PresenceRecord { Key = Key, Unhidden = true });
+                    if (Read()?.NativeUnitId == null) Write(new PresenceRecord { Key = Key, Unhidden = true });
                     native!.IsInGame = true;
                     break;
                 case PresenceStep.Move:
@@ -260,8 +304,15 @@ namespace Tirabade
         public string? UnitId;
         public bool Submitted;
         public bool Unhidden;
+        // eng7-l05: additive v1 save fields; old copy/unhide records retain their meaning.
+        public string? NativeUnitId;
+        public string? NativeContactId; // eng7-l05: no native state was changed by copy retirement.
+        public bool NativeWasInGame;
+        public PresencePosition? NativePosition;
 
-        public bool Valid(string key) => Version == 1 && Key == key && (!Submitted || Guid.TryParse(UnitId, out _));
+        public bool Valid(string key) => Version == 1 && Key == key && (!Submitted || Guid.TryParse(UnitId, out _))
+            && (NativeContactId == null || !Submitted && !string.IsNullOrWhiteSpace(NativeContactId))
+            && (NativeUnitId == null || !Submitted && !string.IsNullOrWhiteSpace(NativeUnitId) && NativePosition != null); // eng7-l05
 
         public static PresenceRecord? Parse(string json, string key)
         {

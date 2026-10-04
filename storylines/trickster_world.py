@@ -707,6 +707,107 @@ def _bound(payload, key):
     return any(key in (payload.get(k) or {}) for k in kinds)
 
 
+
+# eng7-l05: E-Q7-04 current readers and nominated consumer wiring. History flags remain history.
+def integrate_participant_inventory(payload):
+    import copy
+    import json
+    from pathlib import Path
+    contract = json.loads((Path(__file__).resolve().parents[1] / "tools/participant_inventory_contracts.json").read_text())
+    payload.setdefault("Etudes", {}).update(contract["bindings"])
+    for key, spec in contract["readers"].items():
+        payload.setdefault("Derived", {})[key] = spec["groups"]
+        if spec["forbids"]:
+            payload.setdefault("DerivedForbids", {})[key] = spec["forbids"]
+        if spec["routes"]:
+            payload.setdefault("DerivedOpenRoutes", {})[key] = spec["routes"]
+    def require(block, *keys):
+        block["Requires"] = list(dict.fromkeys([*block.get("Requires", []), *keys]))
+    def forbid(block, *keys):
+        block["Forbids"] = list(dict.fromkeys([*block.get("Forbids", []), *keys]))
+    for entry in contract["consumers"]:
+        matches = [s for s in payload["Scenes"] if s["Id"] == entry["scene"]
+                   or entry.get("include_twins") and s["Id"].startswith(entry["scene"] + "_")]
+        if not matches:
+            raise ValueError("Missing participant consumer: " + entry["scene"])
+        for scene in matches:
+            key = entry.get("reader_override", entry["reader"])
+            kind = entry["kind"]
+            if kind == "scene":
+                require(scene, key)
+            elif kind == "replace_choice":
+                for node in scene["Nodes"]:
+                    for choice in node["Choices"]:
+                        for field in ("Requires", "Forbids"):
+                            choice[field] = [key if f == entry["old"] else f for f in choice[field]]
+            elif kind == "choice":
+                node = next(n for n in scene["Nodes"] if n["Id"] == entry["node"])
+                for choice in node["Choices"]:
+                    if choice.get("Next") in entry["targets"]:
+                        require(choice, key)
+                # Append a mutually exclusive absence continuation; retain every old index.
+                node["Choices"].append(dict(Text="Continue", Next=entry["fallback"], Set=[], Requires=[], Forbids=[key], Abort=False))
+                for choice in node["Choices"][:-1]:
+                    if choice.get("Next") == entry["fallback"]:
+                        require(choice, key)  # obsolete native-loss fallbacks cannot overlap the current absence edge
+            elif kind == "variant":
+                node = next(n for n in scene["Nodes"] if n["Id"] == entry["node"])
+                choice = node["Choices"][entry["index"]]
+                twin = copy.deepcopy(choice)
+                require(choice, key)
+                twin["Next"] = entry["variant"]
+                forbid(twin, key)
+                node["Choices"].append(twin)
+                original = next(n for n in scene["Nodes"] if n["Id"] == entry["target"])
+                variant = copy.deepcopy(original)
+                variant["Id"] = entry["variant"]
+                variant["Text"] = variant["Text"].replace(entry["remove"], "")
+                scene["Nodes"].append(variant)
+            elif kind == "remembered":
+                start = scene["Nodes"][0]
+                for choice in start["Choices"]:
+                    require(choice, key)
+                start["Choices"].append(dict(Text="Continue", Next="remembered", Set=[], Requires=[], Forbids=[key], Abort=False))
+                scene["Nodes"].append(dict(Id="remembered", Speaker="Wenduag", Portrait="Wenduag",
+                    Text='"The blond one from the Isles." {n}Wenduag sniffs at the empty window.{/n} "I remember her. Nothing left to hunt here, though."',
+                    Choices=[dict(Text="Continue", Next=None, Set=[], Requires=[], Forbids=[], Abort=False)]))
+            elif kind == "paragraph":
+                found = []
+                for node in scene["Nodes"]:
+                    for paragraph in list(node.get("Paragraphs", [])):
+                        if entry["match"] not in paragraph.get("Requires", []):
+                            continue
+                        found.append(paragraph)
+                        previous = copy.deepcopy(paragraph)
+                        require(paragraph, key, *entry.get("extra", []))
+                        paragraph["Forbids"] = [f for f in paragraph["Forbids"] if f != entry.get("remove_forbid")]
+                        if entry.get("alternate"):
+                            # Complementary variants reuse the same historical precondition.
+                            for i, guard in enumerate([key, *entry.get("extra", [])]):
+                                alternate = copy.deepcopy(previous)
+                                alternate["Text"] = entry["alternate"]
+                                alternate["Forbids"] = [f for f in alternate["Forbids"] if f != entry.get("remove_forbid")]
+                                require(alternate, *[key, *entry.get("extra", [])][:i])
+                                forbid(alternate, guard)
+                                node["Paragraphs"].append(alternate)
+                if not found:
+                    raise ValueError("Missing participant paragraph: " + entry["scene"] + "/" + entry["match"])
+    presence = payload["Presences"]["hepzamirah.presence"]
+    presence.setdefault("ContactWindows", []).append(dict(Flag="hepzamirah.trickster.cost.confined", MinAgeHours=72))
+    hounds = next(s for s in payload["Scenes"] if s["Id"] == "hepzamirah.trickster.body.hounds")
+    forbid(hounds, "hepzamirah.trickster.cost.confined")
+    hounds.setdefault("ForbidOverrides", {})["hepzamirah.trickster.cost.confined"] = "hepzamirah.trickster.flesh.released"
+    # Last Call's historical futures do not make an absent member pay or share a house.
+    page = next(s for s in payload["Scenes"] if s["Id"] == "minachiv.lastcall.page")
+    for node in page["Nodes"]:
+        for paragraph in node.get("Paragraphs", []):
+            if "minachiv.future_two" in paragraph["Requires"]:
+                require(paragraph, "participant.minagho.available", "participant.chivarro.available")
+            elif "minachiv.future_chivarro" in paragraph["Requires"]:
+                require(paragraph, "participant.chivarro.available")
+# end eng7-l05
+
+
 def integrate(payload):
     """Bind every world key read by a registered scene (transitively through Derived/Latches). Never overrides an
     existing binding: the registered routes' own keys win, and a conflicting GUID is an error."""

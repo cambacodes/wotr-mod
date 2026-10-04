@@ -168,6 +168,8 @@ namespace Tirabade
         public string Unit = "";
         public string Area = "";
         public string Mode = "reuse-native";
+        // eng7-l05: opt in only for the inventoried hidden capital actors; saves original native placement.
+        public bool ManageNative;
         public string[] Requires = Array.Empty<string>();
         public string[] Forbids = Array.Empty<string>();
         public int MinChapter = 1;
@@ -226,13 +228,21 @@ namespace Tirabade
         public float Orientation;
     }
 
-    public enum PresenceStep { None, Unhide, Move, Hide, Spawn, Remove, Forget, Blocked }
+    public enum PresenceStep { None, Unhide, Move, Hide, Spawn, Remove, Forget, Blocked, Adopt, RestoreNative, RecordNativeContact } // eng7-l05: append only
 
     // What the runtime observed for one presence in the loaded area (pure input to Rules.PlanPresence).
     public sealed class PresenceObservation
     {
         public bool AreaLoaded;
         public bool AnchorResolved = true;   // E12b: the At anchor was found alive in the loaded area
+        // eng7-l05: loaded actor evidence shared with NativeContact. Defaults retain legacy pure fixtures.
+        public int NativeCount;
+        public bool NativeUsable = true;
+        public bool NativeManageable = true;
+        public bool RecordedNative;
+        public bool RecordedNativeContact; // eng7-l05: a retired copy cannot replace a subsequently lost native.
+        public bool CopyUsable = true;
+        public bool ContactAmbiguous;
         public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
         public bool NativeHidden;      // that unit is out of game (hidden by native state)
         public bool NativeAtPosition = true;
@@ -322,6 +332,8 @@ namespace Tirabade
 
     public sealed class SeatWoman
     {
+        // eng7-l05: optional current membership for individually named pair participants.
+        public string[] Requires = Array.Empty<string>();
         public string Relationship = "";
         public string[] UnavailableFlags = Array.Empty<string>();
         public Dictionary<string, string> UnavailableOverrides = new Dictionary<string, string>();
@@ -729,7 +741,8 @@ namespace Tirabade
         })
             && scene.ParticipantWomen.All(id => {
                 var woman = story.SeatWomen[id];
-                return !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
+                // eng7-l05: historical pair commitment alone does not establish this woman's current membership.
+                return woman.Requires.All(state.Has) && !state.Has(story.Relationships[woman.Relationship].ClosedFlag)
                     && !woman.UnavailableFlags.Any(flag => state.Has(flag)
                         && !(woman.UnavailableOverrides.TryGetValue(flag, out var back) && state.Has(back)));
             });
@@ -829,7 +842,10 @@ namespace Tirabade
             if (scene.ContactUnit == null && (!IsRemote(scene) || scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal))) return true;
             var recovery = scene.Recovery == null ? null : story.Revivals[scene.Recovery];
             var contacts = scene.AdditionalContactUnits.Concat(scene.ContactUnit == null ? Array.Empty<string>() : new[] { scene.ContactUnit });
-            return story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+            // eng7-l05: a failed nominated hub cannot advertise a generic native actor at another placement.
+            return (scene.InteractionHub == null || !story.Presences.ContainsKey(scene.InteractionHub)
+                    || !state.Has(PresenceFailedFlag(scene.InteractionHub)))
+                && story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
                 .All(p => ContactWindowsAvailable(p.ContactWindows, state))
                 && (scene.ContactUnit == null || state.AvailableContacts.Contains(scene.ContactUnit)
                     || scene.Id == WenduagEchoPrefix + "pickup" && scene.ContactUnit == "ae766624c03058440a036de90a7f2009" && state.SceneContacts.Contains(scene.Id))
@@ -1018,10 +1034,11 @@ namespace Tirabade
                         && (long)state.Hour - at >= window.MinAgeHours
                         && (window.MaxAgeHours == null || (long)state.Hour - at <= window.MaxAgeHours)));
 
+        // eng7-l05: observedFailure may exclude only the presence's own transient failure when observing demand.
         // E12: the presence is wanted in this snapshot (area, chapter window, Requires, Forbids).
-        public static bool PresenceWanted(Presence presence, Snapshot state) => state.Area == presence.Area
+        public static bool PresenceWanted(Presence presence, Snapshot state, string? observedFailure = null) => state.Area == presence.Area
             && state.Chapter >= presence.MinChapter && state.Chapter <= presence.MaxChapter
-            && presence.Requires.All(state.Has) && !presence.Forbids.Any(state.Has)
+            && presence.Requires.All(state.Has) && !presence.Forbids.Any(flag => flag != observedFailure && state.Has(flag)) // eng7-l05
             && presence.RequiresAnyGroups.All(group => group.Any(state.Has))
             && ContactWindowsAvailable(presence.ContactWindows, state)
             && (presence.DelayHours <= 0 || state.Hour - presence.Requires.Where(state.Times.ContainsKey).Select(k => state.Times[k])
@@ -1034,7 +1051,7 @@ namespace Tirabade
             var steps = new List<PresenceStep>();
             if (presence.Mode == "reuse-native")
             {
-                if (wanted && seen.NativeAlive)
+                if (wanted && seen.NativeAlive && seen.NativeManageable && seen.NativeCount <= 1) // eng7-l05
                 {
                     if (seen.NativeHidden) steps.Add(PresenceStep.Unhide);
                     if ((presence.Position != null || presence.At != null && seen.AnchorResolved) && !seen.NativeAtPosition) steps.Add(PresenceStep.Move);
@@ -1043,9 +1060,42 @@ namespace Tirabade
                 else if (!wanted && seen.Recorded) steps.Add(PresenceStep.Forget);
                 return steps.ToArray();
             }
+            // eng7-l05: resolve only our recorded copy and explicitly managed native blueprint.
+            if (!wanted && seen.RecordedNative)
+                return new[] { seen.NativeAlive ? PresenceStep.RestoreNative : PresenceStep.Forget };
+            if (wanted && presence.Mode == "spawn-copy")
+            {
+                if (seen.NativeCount > 1) return new[] { PresenceStep.Blocked };
+                bool nativeReady = seen.NativeAlive && seen.NativeUsable && !seen.NativeHidden
+                    && (!presence.ManageNative || seen.AnchorResolved && seen.NativeAtPosition); // eng7-l05
+                bool manageable = presence.ManageNative && seen.NativeAlive && seen.NativeManageable && seen.AnchorResolved;
+                if (manageable)
+                {
+                    if (seen.CopyFound)
+                    {
+                        steps.Add(PresenceStep.Remove);
+                        if (!seen.NativeHidden && seen.NativeAtPosition) steps.Add(PresenceStep.RecordNativeContact);
+                    }
+                    if ((seen.NativeHidden || !seen.NativeAtPosition) && !seen.RecordedNative) steps.Add(PresenceStep.Adopt);
+                    if (seen.NativeHidden) steps.Add(PresenceStep.Unhide);
+                    if (!seen.NativeAtPosition) steps.Add(PresenceStep.Move);
+                    if (steps.Count == 0 && !seen.RecordedNative && !seen.RecordedNativeContact)
+                        steps.Add(PresenceStep.RecordNativeContact); // eng7-l05: remember contact without touching a native.
+                    return steps.ToArray();
+                }
+                if (nativeReady)
+                {
+                    if (seen.CopyFound) return new[] { PresenceStep.Remove, PresenceStep.RecordNativeContact }; // eng7-l05
+                    if (!seen.RecordedNative && !seen.RecordedNativeContact) return new[] { PresenceStep.RecordNativeContact }; // eng7-l05
+                    return Array.Empty<PresenceStep>();
+                }
+                // A hidden, hostile, suppressed or unloaded living twin prevents safe duplication.
+                if (seen.NativeCount > 0 || seen.NativeAlive || seen.RecordedNativeContact || seen.RecordedNative) return new[] { PresenceStep.Blocked }; // eng7-l05
+            }
+            // end eng7-l05
             if (wanted)
             {
-                if (seen.CopyFound) { if (!seen.CopyAlive) steps.Add(PresenceStep.Blocked); }
+                if (seen.CopyFound) { if (!seen.CopyAlive || !seen.CopyUsable) steps.Add(PresenceStep.Blocked); } // eng7-l05
                 else if (seen.NativeAlive) { if (seen.Recorded) steps.Add(PresenceStep.Forget); }
                 else if (seen.Submitted) steps.Add(PresenceStep.Blocked);
                 else if (!seen.AnchorResolved) steps.Add(PresenceStep.Blocked);   // E12b: never spawn without a live anchor
@@ -1279,9 +1329,17 @@ namespace Tirabade
         // hostile or ambiguous), whether or not its anchor resolved; a spawn-copy fails when its anchor is gone and no copy
         // or native unit stands in for it. Transient: observed per tick, never saved.
         public static bool PresenceFailed(Presence presence, bool wanted, PresenceObservation seen)
-            => wanted && seen.AreaLoaded && (presence.Mode == "reuse-native"
-                ? !seen.NativeAlive
-                : presence.At != null && !seen.AnchorResolved && !seen.CopyFound && !seen.NativeAlive);
+        {
+            // eng7-l05: the same usable contact and repair plan drive hubs and failure twins.
+            if (!wanted || !seen.AreaLoaded) return false;
+            var plan = PlanPresence(presence, wanted, seen);
+            if (plan.Contains(PresenceStep.Blocked) || seen.ContactAmbiguous && !plan.Contains(PresenceStep.Remove)) return true;
+            bool moving = plan.Contains(PresenceStep.Unhide) || plan.Contains(PresenceStep.Move);
+            bool native = seen.NativeAlive && seen.NativeUsable && !seen.NativeHidden
+                && (!presence.ManageNative || seen.AnchorResolved && seen.NativeAtPosition); // eng7-l05
+            bool copy = seen.CopyFound && seen.CopyAlive && seen.CopyUsable;
+            return !native && !copy && !moving && !plan.Contains(PresenceStep.Spawn);
+        }
 
         public static string RotationKey(Story story, string relationship) =>
             story.Relationships.TryGetValue(relationship, out var r) && !string.IsNullOrWhiteSpace(r.RotationKey) ? r.RotationKey! : relationship;
@@ -1559,9 +1617,9 @@ namespace Tirabade
             if (story.SeatWomen == null) throw new InvalidOperationException("SeatWomen cannot be null.");
             foreach (var pair in story.SeatWomen)
                 if (string.IsNullOrWhiteSpace(pair.Key) || pair.Value == null || !story.Relationships.ContainsKey(pair.Value.Relationship)
-                    || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null
+                    || pair.Value.Requires == null || pair.Value.UnavailableFlags == null || pair.Value.UnavailableOverrides == null // eng7-l05
                     || pair.Value.UnavailableFlags.Distinct().Count() != pair.Value.UnavailableFlags.Length
-                    || pair.Value.UnavailableFlags.Concat(pair.Value.UnavailableOverrides.Values).Any(key =>
+                    || pair.Value.Requires.Concat(pair.Value.UnavailableFlags).Concat(pair.Value.UnavailableOverrides.Values).Any(key => // eng7-l05
                         !authoredFlags.Contains(key) && !nativeKeys.Contains(key) && !derivedFlags.Contains(key) && !story.Derived.ContainsKey(key))
                     || pair.Value.UnavailableOverrides.Keys.Any(key => !pair.Value.UnavailableFlags.Contains(key)))
                     throw new InvalidOperationException("Invalid seat woman: " + pair.Key);
@@ -1770,6 +1828,7 @@ namespace Tirabade
                 string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null
+                    || p.ManageNative && p.Mode != "spawn-copy" // eng7-l05: managed fallback is explicitly opted in.
                     || p.Mode == "spawn-copy" && (p.Position == null && p.At == null || p.Requires.Length == 0)
                     || p.At != null && ((p.At.NearUnit == null) == (p.At.Locator == null)
                         || p.At.NearUnit != null && !GuidOk(p.At.NearUnit) || p.At.Locator != null && string.IsNullOrWhiteSpace(p.At.Locator)

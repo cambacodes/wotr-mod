@@ -41,7 +41,8 @@ class ContactWindowTests(unittest.TestCase):
         model = rv.Model(story)
         presence = story["Presences"]["hepzamirah.presence"]
         hunt = "hepzamirah.trickster.bond.the_hunt"
-        self.assertEqual(presence["ContactWindows"], [dict(Flag=hunt, MinAgeHours=120)])
+        self.assertEqual(presence["ContactWindows"], [dict(Flag=hunt, MinAgeHours=120),
+            dict(Flag="hepzamirah.trickster.cost.confined", MinAgeHours=72)])
         visits = [s for s in model.scenes if s["ContactUnit"] == presence["Unit"] and presence["Area"] in s["Areas"]]
         self.assertTrue(visits)
         state = rv.SimState(5, 1000)

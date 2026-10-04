@@ -1,0 +1,652 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-04",
+  "lint_dependency": "engine-q6a L1: consume these nominated readers across scenes, choices, nodes, paragraphs, Books and journals; no duplicate L1 checker",
+  "bindings": {
+    "woljif.in_party": "c1327dad3c1897f46aa7a4717d513f24",
+    "woljif.plot_absent": "0456318ba95f7b746828075e04a83d67",
+    "arueshalae.in_party": "c3ddb9898f4aaa34486d4d0b12e14ab8",
+    "arueshalae.plot_absent": "d3b2b184eccf2b44b898f93e75fe8614"
+  },
+  "readers": {
+    "participant.lann.available": {
+      "groups": [
+        [
+          "lann.in_party"
+        ]
+      ],
+      "forbids": [
+        "lann.dead",
+        "lann.kicked_out",
+        "lann.plot_absent"
+      ],
+      "routes": []
+    },
+    "participant.woljif.available": {
+      "groups": [
+        [
+          "woljif.in_party"
+        ]
+      ],
+      "forbids": [
+        "woljif.dead",
+        "woljif.kicked_out",
+        "woljif.plot_absent"
+      ],
+      "routes": []
+    },
+    "participant.regill.available": {
+      "groups": [
+        [
+          "regill.in_party"
+        ]
+      ],
+      "forbids": [
+        "regill.dead",
+        "regill.kicked_out",
+        "regill.left_plot"
+      ],
+      "routes": []
+    },
+    "participant.greybor.available": {
+      "groups": [
+        [
+          "greybor.in_party"
+        ]
+      ],
+      "forbids": [
+        "greybor.dead",
+        "greybor.kicked_out",
+        "greybor.away"
+      ],
+      "routes": []
+    },
+    "participant.arueshalae.available": {
+      "groups": [
+        [
+          "arueshalae.in_party"
+        ],
+        [
+          "trickster.now",
+          "arueshalae.trickster.returned"
+        ]
+      ],
+      "forbids": [
+        "arueshalae.plot_absent",
+        "arueshalae.evil_recruited"
+      ],
+      "routes": [
+        "arueshalae"
+      ]
+    },
+    "participant.hepzamirah.available": {
+      "groups": [
+        [
+          "trickster.now",
+          "hepzamirah.trickster.returned"
+        ]
+      ],
+      "forbids": [
+        "participant.hepzamirah.confined"
+      ],
+      "routes": [
+        "hepzamirah"
+      ]
+    },
+    "participant.hepzamirah.confined": {
+      "groups": [
+        [
+          "hepzamirah.trickster.cost.confined"
+        ]
+      ],
+      "forbids": [
+        "hepzamirah.trickster.flesh.released"
+      ],
+      "routes": []
+    },
+    "participant.vellexia.available": {
+      "groups": [
+        [
+          "trickster.now",
+          "vellexia.trickster.in_person"
+        ]
+      ],
+      "forbids": [
+        "vellexia.parted",
+        "vellexia.farewell_friends",
+        "vellexia.farewell_slow",
+        "vellexia.trickster.kept_as_mirror"
+      ],
+      "routes": [
+        "vellexia"
+      ]
+    },
+    "participant.horzalah.available": {
+      "groups": [
+        [
+          "trickster.now",
+          "horzalah.trickster.wants_heard"
+        ]
+      ],
+      "forbids": [],
+      "routes": [
+        "horzalah"
+      ]
+    },
+    "participant.minagho.available": {
+      "groups": [
+        [
+          "minagho_chivarro.trickster.minagho_in"
+        ],
+        [
+          "minachiv.future_two"
+        ],
+        [
+          "minachiv.future_minagho"
+        ]
+      ],
+      "forbids": [
+        "minachiv.closed",
+        "inhuman",
+        "participant.minagho.lost"
+      ],
+      "routes": []
+    },
+    "participant.minagho.lost": {
+      "groups": [
+        [
+          "minagho.dead"
+        ]
+      ],
+      "forbids": [
+        "participant.minagho.returned"
+      ],
+      "routes": []
+    },
+    "participant.minagho.returned": {
+      "groups": [
+        [
+          "trickster.now",
+          "minagho_chivarro.trickster.returned_minagho"
+        ]
+      ],
+      "forbids": [],
+      "routes": []
+    },
+    "participant.chivarro.available": {
+      "groups": [
+        [
+          "minagho_chivarro.trickster.chivarro_in"
+        ],
+        [
+          "minachiv.future_two"
+        ],
+        [
+          "minachiv.future_chivarro"
+        ]
+      ],
+      "forbids": [
+        "minachiv.closed",
+        "inhuman",
+        "participant.chivarro.lost",
+        "minagho_chivarro.trickster.chivarro_sent_back",
+        "participant.chivarro.walked"
+      ],
+      "routes": []
+    },
+    "participant.chivarro.lost": {
+      "groups": [
+        [
+          "chivarro.dead"
+        ]
+      ],
+      "forbids": [
+        "participant.chivarro.returned"
+      ],
+      "routes": []
+    },
+    "participant.chivarro.returned": {
+      "groups": [
+        [
+          "trickster.now",
+          "minagho_chivarro.trickster.returned_chivarro"
+        ]
+      ],
+      "forbids": [],
+      "routes": []
+    },
+    "participant.chivarro.walked": {
+      "groups": [
+        [
+          "minagho_chivarro.trickster.chivarro_walked"
+        ]
+      ],
+      "forbids": [
+        "minagho_chivarro.trickster.cost.won_back"
+      ],
+      "routes": []
+    },
+    "participant.eritrice.available": {
+      "groups": [
+        [
+          "chapter_later"
+        ]
+      ],
+      "forbids": [],
+      "routes": [
+        "eritrice"
+      ]
+    }
+  },
+  "consumers": [
+    {
+      "scene": "herrax.trickster.react.arueshalae_morning",
+      "reader": "participant.arueshalae.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "herrax.trickster.react.arueshalae_morning_unheard",
+      "reader": "participant.arueshalae.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "herrax.trickster.react.arueshalae_knife",
+      "reader": "participant.arueshalae.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "herrax.trickster.react.regill_night",
+      "reader": "participant.regill.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "herrax.trickster.react.regill_wrist",
+      "reader": "participant.regill.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "herrax.trickster.react.woljif_con",
+      "reader": "participant.woljif.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "herrax.trickster.react.woljif_cheek",
+      "reader": "participant.woljif.available",
+      "kind": "scene",
+      "include_twins": true
+    },
+    {
+      "scene": "mielarah.deck.stowaway",
+      "reader": "participant.woljif.available",
+      "kind": "scene"
+    },
+    {
+      "scene": "mielarah.deck.stowaway.arcade",
+      "reader": "participant.woljif.available",
+      "kind": "scene"
+    },
+    {
+      "scene": "melazmera.trickster.beat.greybor",
+      "reader": "participant.greybor.available",
+      "kind": "scene"
+    },
+    {
+      "scene": "horzalah.trickster.react.wenduag_morning_street",
+      "reader": "participant.horzalah.available",
+      "kind": "scene"
+    },
+    {
+      "scene": "horzalah.trickster.guild.kept",
+      "reader": "participant.hepzamirah.available",
+      "kind": "replace_choice",
+      "old": "hepzamirah.trickster.returned"
+    },
+    {
+      "scene": "horzalah.trickster.beat.name",
+      "reader": "participant.hepzamirah.available",
+      "kind": "replace_choice",
+      "old": "hepzamirah.trickster.returned"
+    },
+    {
+      "scene": "melazmera.trickster.ch5.hunger",
+      "reader": "participant.hepzamirah.available",
+      "kind": "replace_choice",
+      "old": "hepzamirah.trickster.returned"
+    },
+    {
+      "scene": "mielarah.deck.best_job",
+      "reader": "participant.lann.available",
+      "kind": "choice",
+      "node": "joy",
+      "targets": [
+        "lann",
+        "lann_new"
+      ],
+      "fallback": "sky"
+    },
+    {
+      "scene": "mielarah.deck.best_job.arcade",
+      "reader": "participant.lann.available",
+      "kind": "choice",
+      "node": "joy",
+      "targets": [
+        "lann",
+        "lann_new"
+      ],
+      "fallback": "sky"
+    },
+    {
+      "scene": "melazmera.trickster.beat.inquisitor",
+      "reader": "participant.greybor.available",
+      "kind": "variant",
+      "node": "her",
+      "index": 0,
+      "target": "mine",
+      "variant": "mine_absent",
+      "remove": " The little man with the axe."
+    },
+    {
+      "scene": "wenduag.trickster.court.vellexia",
+      "reader": "participant.vellexia.available",
+      "kind": "remembered"
+    },
+    {
+      "scene": "chadali.trickster.epilogue.lucky_night",
+      "reader": "participant.eritrice.available",
+      "kind": "paragraph",
+      "match": "chadali.hours.first_sight",
+      "extra": [
+        "council.epilogue_convened"
+      ],
+      "alternate": "{n}Chadali kept the minutes of that first session. Beside the laughter, Eritrice had drawn the little squiggle. Chadali still tapped it whenever she reminded you who had been right.{/n}"
+    },
+    {
+      "scene": "minachiv.lastcall.page",
+      "reader": "participant.chivarro.available",
+      "kind": "paragraph",
+      "match": "minagho_chivarro.trickster.cost.herrax_favor",
+      "alternate": "Herrax collected her favour. Chivarro's share of the bill remained unpaid."
+    },
+    {
+      "scene": "wenduag.lastcall.page",
+      "reader": "participant.lann.available",
+      "kind": "paragraph",
+      "match": "wenduag.trickster.lann.paid"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.pack",
+      "reader": "participant.vellexia.available",
+      "kind": "paragraph",
+      "match": "wenduag.trickster.vellexia.hunted",
+      "remove_forbid": "vellexia.dead",
+      "alternate": "{n}Wenduag remembered the succubus's window long after it stood empty. She kept her knife sharp.{/n}"
+    },
+    {
+      "scene": "wenduag.trickster.epilogue.pack",
+      "reader": "participant.vellexia.available",
+      "kind": "paragraph",
+      "match": "wenduag.trickster.vellexia.left",
+      "remove_forbid": "vellexia.dead",
+      "alternate": "{n}Wenduag remembered the succubus's window long after it stood empty. She kept her knife sharp.{/n}"
+    }
+  ],
+  "finding_review": [
+    {
+      "id": "chadali:003",
+      "scene": "chadali.trickster.epilogue.lucky_night",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "hepzamirah:003",
+      "scene": "hepzamirah.trickster.flesh.chaplains",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "hepzamirah:004",
+      "scene": "hepzamirah.trickster.body.hounds",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:010",
+      "scene": "herrax.trickster.react.arueshalae_morning",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:011",
+      "scene": "herrax.trickster.react.arueshalae_morning_unheard",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:012",
+      "scene": "herrax.trickster.react.arueshalae_knife",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:013",
+      "scene": "herrax.trickster.react.regill_night",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:014",
+      "scene": "herrax.trickster.react.regill_wrist",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:015",
+      "scene": "herrax.trickster.react.woljif_con",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:016",
+      "scene": "herrax.trickster.react.woljif_cheek",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "herrax:017",
+      "scene": "herrax.trickster.react.arueshalae_morning_cut_you",
+      "status": "no_change_needed",
+      "evidence": "Fresh export has no such generated twin; parent scenes remain wired with include_twins for future generation."
+    },
+    {
+      "id": "herrax:018",
+      "scene": "herrax.trickster.react.arueshalae_morning_restored",
+      "status": "no_change_needed",
+      "evidence": "Fresh export has no such generated twin; parent scenes remain wired with include_twins for future generation."
+    },
+    {
+      "id": "herrax:019",
+      "scene": "herrax.trickster.react.arueshalae_morning_unheard_cut_you",
+      "status": "no_change_needed",
+      "evidence": "Fresh export has no such generated twin; parent scenes remain wired with include_twins for future generation."
+    },
+    {
+      "id": "herrax:020",
+      "scene": "herrax.trickster.react.arueshalae_morning_unheard_restored",
+      "status": "no_change_needed",
+      "evidence": "Fresh export has no such generated twin; parent scenes remain wired with include_twins for future generation."
+    },
+    {
+      "id": "horzalah:022",
+      "scene": "horzalah.trickster.guild.kept",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "horzalah:023",
+      "scene": "horzalah.trickster.beat.name",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:001",
+      "scene": "melazmera.trickster.ch5.hunger",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:002",
+      "scene": "melazmera.trickster.ch5.hunger",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:004",
+      "scene": "melazmera.trickster.beat.greybor",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:005",
+      "scene": "melazmera.trickster.beat.greybor",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:006",
+      "scene": "melazmera.trickster.beat.greybor",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:007",
+      "scene": "melazmera.trickster.beat.greybor",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "melazmera:008",
+      "scene": "melazmera.trickster.beat.inquisitor",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "mielarah:003",
+      "scene": "mielarah.deck.best_job",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "mielarah:004",
+      "scene": "mielarah.deck.best_job.arcade",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "mielarah:005",
+      "scene": "mielarah.deck.stowaway",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "mielarah:006",
+      "scene": "mielarah.deck.stowaway.arcade",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "minagho-and-chivarro:032",
+      "scene": "guest.minagho_chivarro",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "minagho-and-chivarro:033",
+      "scene": "minachiv.lastcall.page",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "wenduag:041",
+      "scene": "wenduag.lastcall.page",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "wenduag:042",
+      "scene": "wenduag.trickster.court.vellexia",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "wenduag:043",
+      "scene": "wenduag.trickster.epilogue.pack",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "wenduag:044",
+      "scene": "wenduag.trickster.epilogue.pack",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    },
+    {
+      "id": "wenduag:047",
+      "scene": "horzalah.trickster.react.wenduag_morning_street",
+      "status": "reproduced",
+      "evidence": "Fresh 2867-scene export reproduces historical-only presence/current availability gap."
+    }
+  ],
+  "binding_evidence": {
+    "lann.in_party": {
+      "guid": "dc908c2490d6f4c4393ff26967aa6566",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "lann.plot_absent": {
+      "guid": "7efcde13580d70648896ee8ae33b26f2",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
+    "regill.in_party": {
+      "guid": "fa3406f9d21cac247b4181a41027787d",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/RegillCompanion/RegillInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "greybor.in_party": {
+      "guid": "bad3705ac7bb7bc43ba7e67db75c2245",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "greybor.away": {
+      "guid": "00715f05d727921438971fa32c02ceaf",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/GreyborCompanion/GreyborNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
+    "woljif.in_party": {
+      "guid": "c1327dad3c1897f46aa7a4717d513f24",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WoljifCompanion/WoljifInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "woljif.plot_absent": {
+      "guid": "0456318ba95f7b746828075e04a83d67",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/WoljifCompanion/WoljifNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    },
+    "arueshalae.in_party": {
+      "guid": "c3ddb9898f4aaa34486d4d0b12e14ab8",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeInParty.jbp",
+      "type": "BlueprintEtude"
+    },
+    "arueshalae.plot_absent": {
+      "guid": "d3b2b184eccf2b44b898f93e75fe8614",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/ArueshalaeCompanion/ArueshalaeNotInParty_AccordingToThePlot.jbp",
+      "type": "BlueprintEtude"
+    }
+  }
+}

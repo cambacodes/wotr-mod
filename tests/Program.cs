@@ -310,6 +310,19 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
+        // eng7-l05: focused acceptance remains runnable independently of unrelated inventory gates.
+        if (args.Contains("--presence-transition-inventory"))
+        {
+            PresenceTransitionInventoryTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} presence transition inventory assertions.");
+            return;
+        }
+        if (args.Contains("--participant-inventory"))
+        {
+            ParticipantInventoryTests.Run(story, Check);
+            Console.WriteLine($"PASS: {checks} participant inventory assertions.");
+            return;
+        }
         FairRestTests.Run(Check);
         PostBagTests.Run(Check);
         MailbagTests.Run(Check);
@@ -438,6 +451,9 @@ internal static class Program
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
         ContactDisambiguationTests.Run(Check);
+        // eng7-l05
+        ParticipantInventoryTests.Run(story, Check);
+        PresenceTransitionInventoryTests.Run(story, Check); // eng7-l05
         if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
         TricksterOnlyNativeTests.Run(story, Check);
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
