@@ -929,3 +929,11 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+# eng8-q8h begin: proposing the existing experiment is pursuit; employment is not.
+DERIVED[LATE_COMMITTED] = [["trickster.ever", TEST]]
+SCENES.insert(max(i for i, s in enumerate(SCENES) if s["Owner"] == "NenioEpilogue") + 1, scene(P + "epilogue.scholar", "", "NenioEpilogue", 6, "", [
+    nar("page", '{n}Nenio left the Threshold with a trunk of notes on the Fifth Crusade. She sent the Commander proofs from Absalom, with errors marked and corrections demanded. The Encyclopedia Golarionnica grew by three supplements before its first volume reached the printers.{/n}')
+], requires=("trickster.ever", STARTED),
+   forbids=(COMMITTED, CLOSED, DECLINED, REFUSED, TEST, DISSOLVED, "sacrifice", *LOSSES),
+   ForbidOverrides={"sacrifice": "trickster.commander_back", **LOSS_BACK}, **EP))
+# end eng8-q8h

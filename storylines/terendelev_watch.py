@@ -933,3 +933,24 @@ for _suffix in ("", "_awning"):
         '{n}You tell her what the survivors say of the festival preparations. The morning itself is gone; their accounts cannot give it back.{/n} "The bunting," {n}she murmurs.{/n} "I helped put it up. They could never reach the top of the gate."',
         foresight.GONE_SQUARE)
 # end eng7-l09
+# eng8-q8h begin: the documented proof and personal receipts govern both hubs.
+DEBT_FREE = P + "debt_free"
+PERSONAL_BEATS = (WINGS, KENABRES_TOLD, DESKARI_VOW, DESKARI_LET_GO,
+    GALFREY_SPOKEN, INFIRMARY, FLOGGED, LETTER, LISTENED, SAT_UP, FAITH)
+for _scene in SCENES:
+    if _scene["Id"] in (P + "after.first_night", P + "after.first_night_awning"):
+        _sums = next(nd for nd in _scene["Nodes"] if nd["Id"] == "sums")
+        for _choice in _sums["Choices"][:2]:
+            _choice["Set"].append(DEBT_FREE)
+    if _scene["Id"] in (P + "commit", P + "commit_awning", P + "commit.release", P + "commit.release_awning"):
+        _scene["Requires"].append(PROOF)
+        _scene.setdefault("RequiresAnyGroups", []).append(list(PERSONAL_BEATS))
+    if _scene["Id"] in (P + "commit.release", P + "commit.release_awning"):
+        _release = next(nd for nd in _scene["Nodes"] if nd["Id"] == "yes")
+        for _choice in _release["Choices"]:
+            _choice["Set"].append(DEBT_FREE)
+# The late predicate is owned by the earlier registered restitution module.
+from storylines import terendelev_trickster as _q8_terendelev
+_q8_terendelev.DERIVED[P + "late_committed"] = [
+    ["trickster.ever", FIRST_NIGHT, DEBT_FREE, PROOF, beat] for beat in PERSONAL_BEATS]
+# end eng8-q8h

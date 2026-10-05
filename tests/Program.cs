@@ -166,6 +166,14 @@ internal static class Program
     // eng7-l13: the same generic draft checks are callable for focused diagnostics.
     internal static void CheckDraftScenes(HashSet<string> playedContinuations)
     {
+        // eng8-q8h begin: these cases require the actual producer inventory above,
+        // rather than a generic snapshot which seeds a Derived entitlement.
+        using var rescueInventory = JsonDocument.Parse(File.ReadAllText("tools/rescue_endpoint_inventory_contracts.json"));
+        var verifiedRetirements = rescueInventory.RootElement.GetProperty("retired_offers")
+            .EnumerateArray().Select(row => row.GetString()!).ToHashSet();
+        playedContinuations.UnionWith(verifiedRetirements);
+        playedContinuations.Add("arsinoe.trickster.late.commit");
+        // end eng8-q8h
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
@@ -434,6 +442,25 @@ internal static class Program
             return;
         }
         // eng7-l01 end
+        // eng8-q8h begin: mandatory producer/consumer and surviving rescue traces.
+        if (!args.Contains("--bindings"))
+        {
+            LateAcceptanceInventory2Tests.Run(story, Check);
+            RescueEndpointInventoryTests.Run(story, Check);
+            if (args.Contains("--eng8-q8h")) return;
+            // Focus the generic fixture on q8h's changed consumer class before the full run.
+            if (args.Contains("--eng8-q8h-drafts"))
+            {
+                var mapped = story.Scenes.Where(s => s.Id == "arsinoe.trickster.late.ask"
+                    || s.Id == "arsinoe.trickster.late.commit" || s.Id == "arsinoe.lastcall.page"
+                    || s.Id == "nenio.trickster.epilogue.scholar"
+                    || s.Id.StartsWith("terendelev.trickster.commit", StringComparison.Ordinal))
+                    .Select(s => s.Id).ToHashSet();
+                CheckDraftScenes(story.Scenes.Where(s => !mapped.Contains(s.Id)).Select(s => s.Id).ToHashSet());
+                return;
+            }
+        }
+        // end eng8-q8h
         // eng7-l13: mandatory earned-outcome inventory acceptance.
         if (!args.Contains("--bindings")) EarnedOutcomeInventoryTests.Run(story, Check);
         if (args.Contains("--wenduag-echo"))

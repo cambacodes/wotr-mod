@@ -33,6 +33,14 @@ internal static class WenduagTricksterTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
+        // eng8-q8h begin: the mandatory live inventory checks these exclusions and
+        // the surviving paid echo first. Legacy graph checks use a detached archive.
+        story = Program.Unfolded(story);
+        var legacy = new[] { "traitor.bid", "exile.bid_hub", "exile.bid_traitor",
+            "exile.late_bid", "exile.champion", "traitor.nerves" };
+        foreach (var scene in story.Scenes.Where(s => legacy.Any(k => s.Id == P + k)))
+            scene.Forbids = scene.Forbids.Where(f => f != "trickster.ever").ToArray();
+        // end eng8-q8h
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];

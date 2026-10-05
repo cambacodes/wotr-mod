@@ -137,8 +137,49 @@ def late_refusals(story, key, route):
     return {flag: tuple(sorted(repairs)) for flag, repairs in result.items()}
 
 
-def check(model, blocks, proof):
+def acceptance_inventory_check(model, blocks, proof):
     out = []
+    choices = {(b.scene["Id"], b.node["Id"], b.slot): b for b in blocks if b.slot.startswith("choice")}
+    # eng8-q8h begin: readiness must not prove acceptance; consumers must be feasible.
+    inventory = json.loads((Path(__file__).resolve().parents[1] / "late_acceptance_inventory2_contracts.json").read_text())
+    for key, groups in inventory["acceptance"].items():
+        route = key.split(".")[0]
+        if route not in model.rels:
+            continue
+        witness = next(b for b in blocks if b.route == route and b.slot == "text")
+        target = AND(*(OR(*(lit(flag) for flag in group)) for group in groups))
+        if not proof.implies(lit(key), target):
+            out.append(finding("L4", witness, "earned acceptance at " + key, "late-acceptance", required=target))
+    for sid, groups in inventory["commit_consumers"].items():
+        if sid not in model.by_id:
+            continue
+        witness = next(b for b in blocks if b.scene["Id"] == sid and b.slot == "text")
+        target = AND(*(OR(*(lit(flag) for flag in group)) for group in groups))
+        if not proof.implies(witness.context, target):
+            out.append(finding("L4", witness, "documented proof and personal beat", "permanent-acceptance", required=target))
+    for row in inventory["affirmative_consumers"]:
+        if row["scene"] not in model.by_id:
+            continue
+        for i in row["indices"]:
+            b = choices.get((row["scene"], row["node"], "choice[%d]" % i))
+            if b is None:
+                b = next(b for b in blocks if b.scene["Id"] == row["scene"] and b.slot == "text")
+                bad = True
+            else:
+                # A contradictory consumer has no reachable yes. The answer itself
+                # supplies the receipt, avoiding jointly-produced ordinary commit.
+                bad = (proof.implies(b.context, OR()) or row["flag"] in b.spec.get("Requires", [])
+                       or row["flag"] not in b.spec.get("Set", [])
+                       or row["forbidden_joint_flag"] in b.spec.get("Set", []))
+            if bad:
+                out.append(finding("L4", b, "reachable affirmative acceptance producer", "producer-consumer"))
+    # end eng8-q8h
+    return out
+
+
+def check(model, blocks, proof):
+    # eng8-q8h: same inventory is mandatory in strict L4 and mutation tests.
+    out = acceptance_inventory_check(model, blocks, proof)
     choices = {(b.scene["Id"], b.node["Id"], b.slot): b for b in blocks if b.slot.startswith("choice")}
     # eng7-l13: opportunity keys are producers too. A guarded page must not
     # conceal a stale late entitlement still reaching household/coda readers.

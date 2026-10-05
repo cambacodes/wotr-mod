@@ -9726,8 +9726,8 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "arsinoe.committed",
         "arsinoe.lastcall.route_open",
+        "arsinoe.trickster.partner",
         "lastcall.active",
         "trickster.ever"
       ],
@@ -14118,6 +14118,19 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "nenio.trickster.epilogue.closed"
+    },
+    {
+      "Id": "page/nenio.trickster.epilogue.scholar",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.started",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nenio.trickster.epilogue.scholar"
     },
     {
       "Id": "page/nenio.lastcall.page",

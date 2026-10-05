@@ -1,0 +1,333 @@
+{
+  "schema": 1,
+  "item": "E-Q8-12",
+  "block": "eng8-q8h",
+  "acceptance": {
+    "arsinoe.trickster.late_committed": [
+      [
+        "arsinoe.trickster.late_accepted"
+      ]
+    ],
+    "nenio.trickster.late_committed": [
+      [
+        "nenio.trickster.test_running"
+      ]
+    ],
+    "kiana.trickster.late_committed": [
+      [
+        "kiana.trickster.late_yes"
+      ]
+    ],
+    "terendelev.trickster.late_committed": [
+      [
+        "terendelev.trickster.debt_free"
+      ],
+      [
+        "terendelev.trickster.watch.proof_seen"
+      ],
+      [
+        "terendelev.trickster.watch.wings_tried",
+        "terendelev.trickster.watch.kenabres_told",
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_let_go",
+        "terendelev.trickster.watch.galfrey_spoken",
+        "terendelev.trickster.watch.infirmary_seen",
+        "terendelev.trickster.watch.infirmary_flogged",
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.storyteller_thanked",
+        "terendelev.trickster.watch.sat_up",
+        "terendelev.trickster.watch.faith"
+      ]
+    ]
+  },
+  "commit_consumers": {
+    "terendelev.trickster.commit": [
+      [
+        "terendelev.trickster.watch.proof_seen"
+      ],
+      [
+        "terendelev.trickster.watch.wings_tried",
+        "terendelev.trickster.watch.kenabres_told",
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_let_go",
+        "terendelev.trickster.watch.galfrey_spoken",
+        "terendelev.trickster.watch.infirmary_seen",
+        "terendelev.trickster.watch.infirmary_flogged",
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.storyteller_thanked",
+        "terendelev.trickster.watch.sat_up",
+        "terendelev.trickster.watch.faith"
+      ]
+    ],
+    "terendelev.trickster.commit_awning": [
+      [
+        "terendelev.trickster.watch.proof_seen"
+      ],
+      [
+        "terendelev.trickster.watch.wings_tried",
+        "terendelev.trickster.watch.kenabres_told",
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_let_go",
+        "terendelev.trickster.watch.galfrey_spoken",
+        "terendelev.trickster.watch.infirmary_seen",
+        "terendelev.trickster.watch.infirmary_flogged",
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.storyteller_thanked",
+        "terendelev.trickster.watch.sat_up",
+        "terendelev.trickster.watch.faith"
+      ]
+    ],
+    "terendelev.trickster.commit.release": [
+      [
+        "terendelev.trickster.watch.proof_seen"
+      ],
+      [
+        "terendelev.trickster.watch.wings_tried",
+        "terendelev.trickster.watch.kenabres_told",
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_let_go",
+        "terendelev.trickster.watch.galfrey_spoken",
+        "terendelev.trickster.watch.infirmary_seen",
+        "terendelev.trickster.watch.infirmary_flogged",
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.storyteller_thanked",
+        "terendelev.trickster.watch.sat_up",
+        "terendelev.trickster.watch.faith"
+      ]
+    ],
+    "terendelev.trickster.commit.release_awning": [
+      [
+        "terendelev.trickster.watch.proof_seen"
+      ],
+      [
+        "terendelev.trickster.watch.wings_tried",
+        "terendelev.trickster.watch.kenabres_told",
+        "terendelev.trickster.watch.deskari_vow",
+        "terendelev.trickster.watch.deskari_let_go",
+        "terendelev.trickster.watch.galfrey_spoken",
+        "terendelev.trickster.watch.infirmary_seen",
+        "terendelev.trickster.watch.infirmary_flogged",
+        "terendelev.trickster.watch.letter_written",
+        "terendelev.trickster.watch.storyteller_thanked",
+        "terendelev.trickster.watch.sat_up",
+        "terendelev.trickster.watch.faith"
+      ]
+    ]
+  },
+  "affirmative_consumers": [
+    {
+      "scene": "kiana.trickster.epilogue.commit",
+      "node": "start",
+      "indices": [
+        3,
+        4
+      ],
+      "flag": "kiana.trickster.late_yes",
+      "forbidden_joint_flag": "kiana.committed"
+    }
+  ],
+  "finding_ids": [
+    "arsinoe:010",
+    "arsinoe:011",
+    "arsinoe:026",
+    "nenio:002",
+    "nenio:003",
+    "nenio:004",
+    "terendelev:057",
+    "terendelev:058",
+    "terendelev:061",
+    "terendelev:102",
+    "terendelev:103",
+    "kiana:013",
+    "kiana:014"
+  ],
+  "finding_dispositions": [
+    {
+      "finding": "arsinoe:010",
+      "route": "arsinoe",
+      "index": 10,
+      "scene": "arsinoe.trickster.late.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "arsinoe:011",
+      "route": "arsinoe",
+      "index": 11,
+      "scene": "arsinoe.trickster.late.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "arsinoe:026",
+      "route": "arsinoe",
+      "index": 26,
+      "scene": "arsinoe.trickster.late.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "kiana:013",
+      "route": "kiana",
+      "index": 13,
+      "scene": "kiana.trickster.epilogue.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "kiana:014",
+      "route": "kiana",
+      "index": 14,
+      "scene": "kiana.trickster.epilogue.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "nenio:002",
+      "route": "nenio",
+      "index": 2,
+      "scene": "nenio.trickster.epilogue.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "nenio:003",
+      "route": "nenio",
+      "index": 3,
+      "scene": "guest.nenio",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "nenio:004",
+      "route": "nenio",
+      "index": 4,
+      "scene": "nenio.trickster.epilogue.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "terendelev:057",
+      "route": "terendelev",
+      "index": 57,
+      "scene": "terendelev.trickster.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "terendelev:058",
+      "route": "terendelev",
+      "index": 58,
+      "scene": "terendelev.trickster.commit_awning",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "terendelev:061",
+      "route": "terendelev",
+      "index": 61,
+      "scene": "terendelev.trickster.epilogue.late",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "terendelev:102",
+      "route": "terendelev",
+      "index": 102,
+      "scene": "terendelev.trickster.commit",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "terendelev:103",
+      "route": "terendelev",
+      "index": 103,
+      "scene": "terendelev.trickster.epilogue.late",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    }
+  ],
+  "producer_consumer_expectations": {
+    "arsinoe": {
+      "readiness": "arsinoe.trickster.late_ready",
+      "accepted": "arsinoe.trickster.late_accepted",
+      "refused": "arsinoe.trickster.late_declined",
+      "producer": "arsinoe.trickster.late.ask/ask[0] yes; ask[1] no",
+      "consumers": [
+        "arsinoe.harem.eligible",
+        "guest.arsinoe",
+        "arsinoe.trickster.late.commit",
+        "arsinoe.lastcall.page"
+      ],
+      "negative_histories": [
+        "flirt_only",
+        "roof_only",
+        "pending",
+        "business_only",
+        "closed"
+      ]
+    },
+    "nenio": {
+      "readiness": "nenio.started",
+      "accepted_progression": "nenio.trickster.test_running",
+      "refused": [
+        "nenio.trickster.refused_her",
+        "nenio.trickster.declined"
+      ],
+      "producer": "nenio.trickster.commit.hypothesis*/conditions[0,1]",
+      "consumers": [
+        "nenio.harem.eligible",
+        "guest.nenio",
+        "nenio.trickster.epilogue.commit"
+      ],
+      "negative_histories": [
+        "dictation_only",
+        "probation_only",
+        "purchased_return_only",
+        "tampered_unreplicated"
+      ]
+    },
+    "terendelev": {
+      "readiness": "terendelev.trickster.first_night_seen",
+      "released": "terendelev.trickster.debt_free",
+      "proof": "terendelev.trickster.watch.proof_seen",
+      "personal": "one of the documented personal-beat receipts",
+      "release_producers": [
+        "after.first_night*/sums[0,1]",
+        "commit.release*/yes[0]"
+      ],
+      "consumers": [
+        "commit",
+        "commit_awning",
+        "commit.release",
+        "commit.release_awning",
+        "epilogue.late",
+        "terendelev.harem.eligible"
+      ],
+      "negative_histories": [
+        "rescue_breakfast_only",
+        "proof_only",
+        "personal_only",
+        "owed_unreleased",
+        "declined"
+      ]
+    },
+    "kiana": {
+      "readiness": [
+        "kiana.trickster.met",
+        "kiana.lovers"
+      ],
+      "accepted": "kiana.trickster.late_yes",
+      "refused": "kiana.trickster.late_no",
+      "affirmative_producers": "kiana.trickster.epilogue.commit/start[3,4]",
+      "refusal_producer": "epilogue.commit/blank OnShow (reached through retained start[2])",
+      "consumer": "kiana.lastcall.page",
+      "forbidden_joint_production": "kiana.committed",
+      "retained_indices": [
+        0,
+        1,
+        2
+      ]
+    }
+  }
+}

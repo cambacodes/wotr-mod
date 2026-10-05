@@ -116,6 +116,10 @@ def index(story):
 def lint(story, contracts=None, drafts=None):
     contracts = contracts or json.loads(DEFAULT.read_text(encoding="utf-8"))
     result = {"hard": [], "review": [], "findings": [], "unbound_forbids": []}
+    # eng8-q8h begin: a live promise needs an actual surviving endpoint.
+    if contracts.get("rescue_endpoint_inventory"):
+        result["hard"].extend(rescue_endpoint_errors(story))
+    # end eng8-q8h
     shipped = index(story)
     draft_index = index(drafts or {})
     for c in contracts["obligations"]:
@@ -153,6 +157,40 @@ def lint(story, contracts=None, drafts=None):
             continue
         result["unbound_forbids"].append({"flag": flag, "consumers": sorted(set(paths))})
     return result
+
+
+# eng8-q8h begin: retained save graphs are not live successful plans.
+def rescue_endpoint_errors(story, contracts=None):
+    contracts = contracts or json.loads(Path(__file__).with_name("rescue_endpoint_inventory_contracts.json").read_text())
+    scenes = {s["Id"]: s for s in story.get("Scenes", [])}
+    errors = []
+    for sid in contracts["retired_offers"]:
+        scene = scenes.get(sid)
+        if scene is None or not retired(scene):
+            errors.append(sid + ": unsupported rescue promise must be explicitly retired")
+    plan = contracts["live_plan"]
+    for key in ("producer", "endpoint", "return"):
+        scene = scenes.get(plan[key])
+        if scene is None or retired(scene):
+            errors.append(plan[key] + ": sole earned endpoint/producer missing or retired")
+    for key, receipt in (("producer", "receipt"), ("endpoint", "rescue_receipt"), ("return", "return_receipt")):
+        scene = scenes.get(plan[key], {})
+        if not any(plan[receipt] in c.get("Set", []) for n in scene.get("Nodes", []) for c in n.get("Choices", [])):
+            errors.append(plan[key] + ": no authored successful receipt")
+    producer = scenes.get(plan["producer"], {})
+    endpoint = scenes.get(plan["endpoint"], {})
+    returned = scenes.get(plan["return"], {})
+    # This shared lint checks the immutable successful plan; native custody and
+    # encounter observations are replayed by the mandatory rules inventory.
+    producer_sets = {f for n in producer.get("Nodes", []) for c in n.get("Choices", []) for f in c.get("Set", [])}
+    if producer_sets & set(endpoint.get("Forbids", [])):
+        errors.append(plan["endpoint"] + ": producer conflicts with endpoint forbids")
+    if plan["receipt"] not in endpoint.get("Requires", []):
+        errors.append(plan["endpoint"] + ": endpoint bypasses preparation")
+    if plan["rescue_receipt"] not in returned.get("Requires", []):
+        errors.append(plan["return"] + ": return bypasses successful rescue")
+    return errors
+# end eng8-q8h
 
 
 def load_drafts():

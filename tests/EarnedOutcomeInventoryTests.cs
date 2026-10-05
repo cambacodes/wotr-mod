@@ -129,7 +129,8 @@ internal static class EarnedOutcomeInventoryTests
             else Select("nenio.trickster.taken.riddle", "filed", 0, late);
             // Last Call is a paid existing framework outcome, not a commitment.
             late.Flags.Add("trickster.lastcall.taken"); late.Flags.Add("ending.trickster"); Refresh(late);
-            check(!late.Has(route + ".committed") && Rules.Available(story, S(route + ".lastcall.page"), late), "Earned late fallback misses coda: " + route);
+            // eng8-q8h: Nenio's riddle buys continued company, not pursuit.
+            check(!late.Has(route + ".committed") && Rules.Available(story, S(route + ".lastcall.page"), late) == (route != "nenio"), "Late readiness mistaken for acceptance: " + route);
             late.Flags.Add(story.Relationships[route].ClosedFlag); Refresh(late);
             check(!Rules.Available(story, S(route + ".lastcall.page"), late), "Closed late fallback leaks coda: " + route);
         }

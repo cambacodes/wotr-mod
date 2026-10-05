@@ -854,3 +854,6 @@ def integrate(payload):
     permanent = {k for k in PERMANENT if k in (payload.get("Etudes") or {})}
     if permanent:
         payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | permanent)
+# eng8-q8h begin: mirror route-owned acceptance, without replacing L13 open guards.
+DERIVED["nenio.trickster.late_committed"] = [["trickster.ever", "nenio.trickster.test_running"]]
+# end eng8-q8h

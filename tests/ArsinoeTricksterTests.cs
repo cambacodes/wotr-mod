@@ -182,7 +182,12 @@ internal static class ArsinoeTricksterTests
         var former = Program.Copy(flirted); former.Flags.Remove("trickster");
         former.Flags.Remove("trickster.now"); former.Flags.Add("trickster.failed");
         check(!Rules.Available(story, lateCommit, former), "Late commitment offered without current Trickster power.");
-        check(flirted.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, flirted), "R2-6 late commitment unreachable.");
+        // eng8-q8h: flirtation readies the ask; its actual yes alone earns the page.
+        check(!flirted.Has("arsinoe.trickster.late_committed") && !Rules.Available(story, lateCommit, flirted), "Flirt-only granted late commitment.");
+        flirted.Chapter = 5;
+        flirted = LateAcceptanceInventory2Tests.Earn(story, check, "arsinoe.trickster.late.ask", flirted, "arsinoe.trickster.late_accepted");
+        flirted.Chapter = 6; Rules.Complete(story, flirted);
+        check(flirted.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, flirted), "Accepted late commitment unreachable.");
         foreach (string spoken in new[] { "arsinoe.committed", "arsinoe.future_spoken", "arsinoe.closed" })
         {
             var already = Program.Copy(flirted); already.Flags.Add(spoken);
@@ -193,7 +198,7 @@ internal static class ArsinoeTricksterTests
         check(!Rules.Available(story, lateCommit, business), "A lease kept to business offers a late romance.");
         var latePages = new HashSet<string>();
         var lateResults = Program.Walk(lateCommit, flirted, (page, _) => latePages.Add(page));
-        check(latePages.SetEquals(lateCommit.Nodes.Select(n => n.Id)), "Unreached late-commit page.");
+        check(latePages.SetEquals(lateCommit.Nodes.Where(n => n.Id != "business").Select(n => n.Id)), "Accepted coda pages missing or refusal replayed.");
         // R2-6: an epilogue writes no flags; the yes (night or table) and the refusal are narrative branches only.
         check(lateCommit.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0), "The late epilogue writes flags.");
         check(new[] { "night", "table", "business" }.All(id => lateCommit.Nodes.Single(n => n.Id == "offer").Choices.Any(c => c.Next == id)),
@@ -238,7 +243,12 @@ internal static class ArsinoeTricksterTests
         var roofOnly = Program.Copy(roofOnlyMaybe!);
         roofOnly.Chapter = 6; roofOnly.Flags.Add("trickster.ever");
         Rules.Complete(story, roofOnly);
-        check(roofOnly.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, roofOnly), "Roof courtship has no late commitment.");
+        // eng8-q8h: carry this actually played roof history through its physical yes.
+        check(!roofOnly.Has("arsinoe.trickster.late_committed"), "Roof-only grants late commitment.");
+        roofOnly.Chapter = 5;
+        roofOnly = LateAcceptanceInventory2Tests.Earn(story, check, "arsinoe.trickster.late.ask", roofOnly, "arsinoe.trickster.late_accepted");
+        roofOnly.Chapter = 6; Rules.Complete(story, roofOnly);
+        check(roofOnly.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, roofOnly), "Accepted roof late page lost.");
         var roofFriend = World(story, "trickster.ever", "arsinoe.roof_shared", "arsinoe.friendship");
         roofFriend.Chapter = 6;
         check(!Rules.Available(story, lateCommit, roofFriend), "Friendship is reopened as a late romance.");

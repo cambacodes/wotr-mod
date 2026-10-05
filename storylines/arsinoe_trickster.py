@@ -329,3 +329,26 @@ _nodes["start"]["Choices"].extend((
 for _choice in _nodes["rent"]["Choices"]:
     _choice["Forbids"].append(_RENT_RAISED)
 # end eng7-l09
+# eng8-q8h begin: readiness offers a question; only its physical yes earns acceptance.
+LATE_READY = "arsinoe.trickster.late_ready"
+LATE_ACCEPTED = "arsinoe.trickster.late_accepted"
+LATE_DECLINED = "arsinoe.trickster.late_declined"
+DERIVED[LATE_READY] = DERIVED[LATE_COMMITTED]
+DERIVED[LATE_COMMITTED] = [["trickster.ever", LATE_ACCEPTED]]
+SCENES.append(scene("arsinoe.trickster.late.ask", "An evening owed", "Arsinoe", 5,
+    '"What will you collect when the war is over?"', [
+    n("ask", "Arsinoe", '{n}Arsinoe sets down her pen. Outside, a wagon rattles toward the citadel with fresh dressings.{/n} "An evening with you. I have waited long enough to ask. Will you keep it for me?"',
+      c('"Yes. Come to my door when this is over."', "yes", flags=(LATE_ACCEPTED,)),
+      c('"Business only, Arsinoe."', "no", flags=(LATE_DECLINED,))),
+    n("yes", "Arsinoe", '{n}She catches your hand before you can draw it back.{/n} "Then I shall come in person. Do not make me knock twice."', c()),
+    n("no", "Arsinoe", '{n}She releases your hand and takes up her pen.{/n} "Business only. May Abadar keep you, Commander."', c()),
+], requires=("trickster.now", LATE_READY),
+   forbids=(*LATE_GONE, LATE_ACCEPTED, LATE_DECLINED), last=5, Relationship="arsinoe",
+   Areas=[DREZEN], ContactUnit=CONTACT,
+   AnswerLists=[ANSWERS], optional=True))
+# The postwar page remembers the physical answer; it never asks or writes it again.
+_late = next(s for s in SCENES if s["Id"] == "arsinoe.trickster.late.commit")
+for _i in (0, 1):
+    _late["Nodes"][0]["Choices"][_i]["Requires"].append(LATE_ACCEPTED)
+_late["Nodes"][0]["Choices"][2]["Requires"].append(LATE_DECLINED)
+# end eng8-q8h

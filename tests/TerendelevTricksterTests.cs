@@ -232,7 +232,13 @@ internal static class TerendelevTricksterTests
         var night1 = Later(story, lateBack, 30);
         check(Rules.Available(story, firstNight, night1), "Trk_Terendelev_LateAndDecline: her first night never comes.");
         var owed = One(firstNight, night1, new[] { P + "first_night_seen", P + "owed" });
-        var askedOwed = Later(story, owed, 60);
+        // eng8-q8h: earn the documented progression before either oath.
+        Snapshot Develop(Snapshot initial)
+        {
+            var proof = LateAcceptanceInventory2Tests.Earn(story, check, P + "watch.proof", initial, P + "watch.proof_seen");
+            return LateAcceptanceInventory2Tests.Earn(story, check, P + "watch.wings", proof, P + "watch.wings_tried");
+        }
+        var askedOwed = Later(story, Develop(owed), 60);
         var declined = One(commit, askedOwed, new[] { P + "declined" }, Committed);
         check(!Program.Walk(commit, askedOwed).Any(r => r.Has(Committed)), "Trk_Terendelev_LateAndDecline: a held debt still commits.");
         check(!Rules.Available(story, release, Later(story, declined, 10)) && Rules.Available(story, release, Later(story, declined, 60)),
@@ -243,7 +249,9 @@ internal static class TerendelevTricksterTests
         // Trk_Terendelev_Commit: nothing owed; she asks to guard the wound; the turret; the morning.
         var night2 = Later(story, back, 30);
         var square1 = One(firstNight, night2, new[] { P + "first_night_seen" }, P + "owed");
-        check(!Rules.Available(story, commit, Later(story, square1, 20)) && Rules.Available(story, commit, Later(story, square1, 50)),
+        check(!Rules.Available(story, commit, Later(story, square1, 50)), "Breakfast alone grants an oath.");
+        square1 = Develop(square1);
+        check(Rules.Available(story, commit, Later(story, square1, 50)),
             "Trk_Terendelev_Commit: her ask is not 48 hours after her first night.");
         var sworn = One(commit, Later(story, square1, 50), new[] { Committed, P + "dressing" }, Closed);
         var turret = One(night, Later(story, sworn, 10), new[] { P + "night.seen" });

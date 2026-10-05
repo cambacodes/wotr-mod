@@ -255,3 +255,16 @@ def _lastcall_variants():
              "he knows what I used him for. She keeps the hook over her own cairn now.{/n}",
         Lines=[], Requires=[E + "returned", E + "cost.used_lann"], Forbids=[E + "unavailable"],
         AnyGroups=[], Tooltip="RRT_Debt"))
+# eng8-q8h begin: the unsupported legacy bargains cannot promise a retired rescue.
+# Keep the complete saved graphs. The allocated immediate echo remains the live device.
+LEGACY_RESCUE_OFFERS = tuple(W + suffix for suffix in (
+    "traitor.bid", "exile.bid_hub", "exile.bid_traitor", "exile.late_bid",
+    "exile.champion", "traitor.nerves"))
+_integrate_q8_base = integrate
+def integrate(payload):
+    _integrate_q8_base(payload)
+    for item in payload["Scenes"]:
+        if item["Id"] in LEGACY_RESCUE_OFFERS:
+            item.setdefault("Requires", []).append("trickster.ever")
+            item.setdefault("Forbids", []).append("trickster.ever")
+# end eng8-q8h

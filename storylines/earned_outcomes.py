@@ -142,6 +142,18 @@ def integrate(payload):
             during_test["Set"].append("nenio.trickster.tampered")
             node["Choices"].append(during_test)
 
+    # eng8-q8h begin: read actual late acceptance, preserving all existing coda guards.
+    from storylines import kiana_followthrough
+    kiana_followthrough.integrate_late_acceptance(payload)
+    derived["arsinoe.trickster.partner"] = [["arsinoe.committed"], ["arsinoe.trickster.late_committed"]]
+    coda = scenes["arsinoe.lastcall.page"]
+    coda["Requires"] = ["arsinoe.trickster.partner" if flag == "arsinoe.committed" else flag for flag in coda["Requires"]]
+    # An accepted spring appointment is remembered, never produced by the ending.
+    coda["Nodes"][0].setdefault("Paragraphs", []).append({
+        "Text": "{n}The spring after Threshold, Arsinoe kept the evening she had promised the Commander before the war ended. Her shop opened late the next morning.{/n}",
+        "Requires": ["arsinoe.trickster.late_committed"], "Forbids": ["arsinoe.committed"]})
+    # end eng8-q8h
+
     # The generator only adds a gate when the current path does not prove it.
     model = verify.Model(copy.deepcopy(payload))
     proof = Proof(model)
