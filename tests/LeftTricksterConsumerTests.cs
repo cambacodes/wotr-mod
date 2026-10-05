@@ -33,6 +33,8 @@ internal static class LeftTricksterConsumerTests
         var returned = outcomes.First(w => w.Has(W + "returned"));
         var refused = outcomes.First(w => w.Has(W + "stay_dead_ordered"));
         check(!buried.Has(W + "returned") && returned.Has(W + "returned"), "q8b return did not originate at its producer");
+        check(returned.Has(W + "cairn_built") && returned.Has(W + "cost.lied_to_lann"),
+            "q8b return lost its earned burial/payment history");
 
         // Also earn the native-companion branch through the actual outbid;
         // native recruitment is observed, not inferred from a copied actor.
@@ -96,6 +98,7 @@ internal static class LeftTricksterConsumerTests
                 ready[W + "react.regill_watch"] = At(L07World.Scene(story, W + "react.regill_watch"), returned);
             }
         }
+        ready[W + "killed.cellar"] = At(L07World.Scene(story, W + "killed.cellar"), returned);
 
         foreach (var scene in consumers)
         {
@@ -103,19 +106,25 @@ internal static class LeftTricksterConsumerTests
             // Mapped sites use the producer histories above. The two Irabeth
             // street siblings are old staged-street histories, whose producer
             // is retired; keep their save fixture separate from live traversal.
+            bool legacyStreet = scene.Id == W + "react.irabeth_traitor" || scene.Id == W + "react.irabeth_suspicion";
+            check(ready.ContainsKey(scene.Id) || legacyStreet, "q8b consumer lacks an earned producer history " + scene.Id);
             var prepared = ready.TryGetValue(scene.Id, out var history)
                 ? history : L07World.Seed(story, scene, "trickster");
-            if (scene.Id == W + "react.regill_watch") prepared.Flags.Add(W + "cairn_built");
             L07World.Refresh(story, prepared);
             check(Rules.Available(story, scene, prepared), "q8b current consumer unavailable " + scene.Id);
             // Existing claim fallback is retired in favor of physical contact.
             foreach (var path in Paths)
             {
-                var former = Program.Copy(prepared);
-                former.Flags.Add(path); L07World.Refresh(story, former);
-                check(!Rules.Available(story, scene, former), "q8b off-path consumer " + scene.Id + "/" + path);
-                check(!Rules.Available(story, scene, L07World.Refresh(story, Program.Copy(former))),
-                    "q8b reload exposed consumer " + scene.Id + "/" + path);
+                foreach (bool staleMembership in new[] { false, true })
+                {
+                    var former = Program.Copy(prepared);
+                    if (!staleMembership) former.Flags.Remove("trickster");
+                    former.Flags.Add(path); L07World.Refresh(story, former);
+                    check(former.Has("trickster.ever"), "q8b conversion lost the historical path latch");
+                    check(!Rules.Available(story, scene, former), "q8b off-path consumer " + scene.Id + "/" + path);
+                    check(!Rules.Available(story, scene, L07World.Refresh(story, Program.Copy(former))),
+                        "q8b reload exposed consumer " + scene.Id + "/" + path);
+                }
             }
         }
 

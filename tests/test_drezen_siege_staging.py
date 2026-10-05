@@ -48,8 +48,11 @@ class DrezenSiegeStagingTests(unittest.TestCase):
 
     def test_maps_reports_memory_and_unrelated_camp_controls(self):
         for text in ("{n}She studies the walls on a scout's map of Drezen.{/n}",
+                     "{n}She looks at Drezen's walls on a scout's map.{/n}",
+                     "{n}She watches the city walls on the map.{/n}",
                      "{n}She looks at a scout's report of Drezen's walls.{/n}",
                      "{n}She remembers standing beneath Drezen's walls.{/n}",
+                     "{n}Once she stood beneath Drezen's walls.{/n}",
                      "{n}She recalls the siege of Drezen and its walls.{/n}",
                      "{n}She watches knights drill at the edge of the camp.{/n}"):
             self.assertEqual(findings(fixture(text)), [], text)
@@ -59,6 +62,17 @@ class DrezenSiegeStagingTests(unittest.TestCase):
         story = fixture("{n}She stands beneath Drezen's walls.{/n}", chapter=6)
         story["Scenes"][0]["Owner"] = "WenduagEpilogue"
         self.assertEqual(findings(story), [])
+
+    def test_map_or_memory_does_not_mask_a_present_view_in_the_same_sentence(self):
+        for text in ("{n}She studies a map of Drezen while she stands beneath Drezen's walls.{/n}",
+                     "{n}She recalls the siege, but she looks at Drezen's walls before her.{/n}",
+                     "{n}She stands beneath Drezen's walls with a map of Kenabres in her hand.{/n}",
+                     "{n}Drezen's walls loom above you.{/n}"):
+            with self.subTest(text=text):
+                self.assertTrue(findings(fixture(text)))
+                self.assertEqual(findings(fixture(text, staging.SIEGE_AREAS)), [])
+        # Standing in front of a portable representation is still map staging.
+        self.assertEqual(findings(fixture("{n}She stands before a map of Drezen's walls.{/n}")), [])
 
     def test_start_and_every_incoming_branch_are_checked(self):
         story = fixture("{n}She studies a scout's map of Drezen.{/n}")

@@ -34,6 +34,12 @@
     ],
     "finding_ids": [
       "wenduag:001"
-    ]
+    ],
+    "continuation_recheck": {
+      "wenduag:001": {
+        "status": "no_change_needed",
+        "evidence": "The committed early.walls take node already studies a scout's map in the regenerated payload. The original physical-view mutation still reports L3. BlueprintArea 6369196c9fe31304b8c17bea915d94c9 is verified directly in blueprints.zip; WarCamp and DrezenCapital are negative witnesses. The continuation closes map/memory masking within a sentence and retains portable wall-map controls."
+      }
+    }
   }
 }
