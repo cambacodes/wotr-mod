@@ -68,10 +68,10 @@ visit(P + "woken.white_stag", "The white stag", [
         c("Continue", "three")),
     dl("three", '''"Three days and three nights. We vied with each other in stealth and in speed, the stag and I. I did not sleep. I ate snow. I lost it in a whiteout on the second night and found it again by the smell, the way you find a friend in the dark." {n}She almost smiles.{/n} "A noble fight. The best I ever had. It was faster than me and cleverer than me, and it wanted to be caught. That is a hard thing to hunt, stag. A beast that wants you to win, and will not let you."''',
         c('"How did it end?"', "lake")),
-    dl("lake", '''"At a frozen lake, on the third dawn. It walked out onto the ice and turned and waited for me. I drew. It did not run. It looked at me the way you looked at me in the leaves: surprised that it was over."
+    dl("lake", '''"At a frozen lake, after the third night. It walked out onto the ice and turned and waited for me. I drew. It did not run. It looked at me the way you looked at me when I caught you: surprised that it was over."
 {n}She is quiet.{/n} "I did not eat the meat. I gave all of it to Old Deadeye, every scrap, and went three more days hungry after the three days of chasing. The antlers I made into my bow over that winter. The hide I made into armour, and wore it forty winters."''',
         c("Continue", "vow")),
-    dl("vow", '''"And I knelt in its blood on the ice and I swore. When the stag calls, I answer. Wherever I am. Whatever I am doing. I did not know it would hold past death." {n}She turns the hare bone in her fingers.{/n} "Nobody tells you which of your vows are the ones that hold. You find out."''',
+    dl("vow", '''"And I knelt in its blood on the ice and I swore. When the stag calls, I answer. Wherever I am. Whatever I am doing. I did not know it would hold past death." {n}She turns the hare bone in her fingers.{/n} "I meant while I could still walk my woods. Not under a stone lid."''',
         c('"And the hunt you died on?"', "death")),
     dl("death", '''"I was fifty-nine winters. Old, for a hunter on the roads." {n}She throws the bone into the fire.{/n} "A wolf came down out of the north in a hungry winter. White, as the stag had been, and too big, and wrong somehow in the way it moved. It took children out of the byres. I tracked it eleven days into the passes. On the eleventh I had it below me in a gully, on the ice. I drew."
 {n}She stops.{/n} "And then there is nothing. A rock came down, or the ice gave way under me, or my heart burst in my chest. I remember the draw. I remember the wolf's eyes. And then the dark."''',
@@ -87,7 +87,7 @@ visit(P + "woken.white_stag", "The white stag", [
     dl("form", '''{n}She stares at you. Then something breaks in her face and she laughs, really laughs, head back, a sound that sends a roosting bird clattering out of the next tree.{/n} "My form." {n}She wipes her eyes with a greasy thumb.{/n} "Four walls of stone and a Kellid seal and a witch eating off my belly, and the jester says: at least you held your form. Erastil help me. I did. Not one finger moved."''',
         c("Continue", "opened")),
     dl("opened", '''"So now you know what you did with your horn." {n}She looks at you across the fire.{/n} "I do not know all of what I am, stag. I know what I am not. The lich-things are cold, and I see my breath every morning. They do not bleed, and I bleed. They do not dream, and I dream of snow."
-{n}She turns her hand palm up in the firelight.{/n} "And I know what I have lost. When I was the Blessed I could lay these hands on a torn hound and feel Old Deadeye come down them like warm water. Since the crypt, nothing. Whether he took it as the price of the waking, or I left it down there in the dark, I cannot tell you. The stag called, and I answered, because I swore I would. When I answered, my fingers opened at last. That much I know."
+{n}She turns her hand palm up in the firelight.{/n} "And I know what I have lost. When I was the Blessed I could lay these hands on a torn hound and feel Old Deadeye come down them like warm water. Since I woke, nothing. Whether he took it as the price of the waking, or I left it down there in the dark, I cannot tell you. The stag called, and I answered, because I swore I would. When I answered, my fingers opened at last. That much I know."
 {n}She reaches over and lays her hand flat on your thigh, over the place where the arrow went in.{/n} "Your leg is where it went. It had been waiting a very long time."''',
         c('"You kept a promise for centuries. I\'ve never kept one for a week."', "week"),
         c('"I\'m glad it was my leg."', "glad")),
@@ -146,7 +146,7 @@ visit(P + "woken.jester", "Defenceless", [
         c('"Yes."', "yes"),
         c('"No. You\'re the only one I can\'t fool."', "no"),
         c('[Thievery: while she talks, lift the skinning knife from her belt]', check=dict(Skill="SkillThievery", DC=26, Success="lifted", Failure="caught", CommanderOnly=True))),
-    dl("kyado", '''"The boy said something to me once, about you, before I knew you. He said anyone who treats everything seriously is defenceless before you, like a child." {n}She looks up.{/n} "I treat everything seriously, stag. I have never made a joke in my life that I know of. So I have been sitting on this block since the bell, asking myself whether I am defenceless before you."''',
+    dl("kyado", '''"The boy said something to me about you. He said anyone who treats everything seriously is defenceless before you, like a child." {n}She looks up.{/n} "I treat everything seriously, stag. I have never made a joke in my life that I know of. So I have been sitting on this block since the bell, asking myself whether I am defenceless before you."''',
         c('"Yes."', "yes"),
         c('"No. You\'re the only one I can\'t fool."', "no"),
         c('[Thievery: while she talks, lift the skinning knife from her belt]', check=dict(Skill="SkillThievery", DC=26, Success="lifted", Failure="caught", CommanderOnly=True))),
@@ -234,7 +234,7 @@ temple(P + "temple.prior_lessons", "The prior's lessons", '"Kyado, what happened
     nar("plain", '''{n}She hands you Kyado's bow. It is still warm from his hands, and slippery.{/n}''',
         c("Continue", "shot")),
     nar("shot", '''{n}You draw. Your bad leg will not take the weight the way a stance wants it to, so you shift onto the good one, and she puts her palm flat in the small of your back and shifts you back again, firmly.{/n}
-"On both," {n}she says, very close to your ear.{/n} "Even the bad one. Especially the bad one. A leg you do not trust never gets stronger." {n}Her hand does not move from your back while you loose. The arrow goes into the demon's painted eye.{/n}''',
+"On both," {n}she says, very close to your ear.{/n} "Even the bad one. Set that heel down. Now loose." {n}Her hand does not move from your back while you loose. The arrow goes into the demon's painted eye.{/n}''',
         c("Continue", "eye")),
     dl("eye", '''{n}Kyado, in the dust, applauds, then stops, embarrassed.{/n}
 "Luck," {n}says Delamere, and takes her hand from your back, slowly.{/n} "Jester's luck. But you did not close your eyes." {n}She looks at the target, and then at you, and the yard goes quiet around the three of you.{/n} "Come again. Both of you. I have not had pupils in a long time. I had forgotten that I liked it."''',
@@ -252,7 +252,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
     nar("inside", '''{n}The chapel smells of beeswax and wet wool. The altar is a plain board painted with a longbow and a single arrow, the way Erastil's churches paint him now, and on the step below it Delamere kneels with her bow across her thighs and her head up, not bowed, the way a hound waits at a door.{/n}
 {n}Brother Haddo, a stooped Mendevian with soil under his nails, hovers in the vestry doorway. Three women with shawls over their heads wait in the porch, not quite daring the threshold.{/n}''',
         c("Continue", "silence")),
-    dl("silence", '''"Sit, stag. Not there; that bench is for his people." {n}She does not turn.{/n} "Every night since the crypt I have prayed. On my knees, in my woods, the old words, the ones my mother taught me before I could draw a bow. Every night. Nothing. Not a feather. Not a track in the snow."
+    dl("silence", '''"Sit, stag. Not there; that bench is for his people." {n}She does not turn.{/n} "Every night since I woke I have prayed. On my knees, in my woods, the old words, the ones my mother taught me before I could draw a bow. Every night. Nothing. Not a feather. Not a track in the snow."
 {n}She jerks her chin at the vestry.{/n} "Yesterday that one put his hands on a sick child in the camp, and asked Old Deadeye for her, and the fever broke before he had finished the words. A bean-grower. In a city."''',
         c('"Maybe Erastil has already said everything he meant to say to you."', "seal"),
         c('"Ask the priest how he does it."', "haddo"),
@@ -273,7 +273,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
           forbids=(ERASTIL_ANSWERED,))),
     dl("stag_seen", '''{n}She goes very still.{/n} "You knelt at my stone. You asked him." {n}Her eyes go over your face as if she were reading tracks in it.{/n} "And he answered you. With a stag's voice." {n}It is not a question, and it is not quite a comfort either.{/n} "He never once answered me with a voice, stag. Only with the one he sent."''',
         c("Continue", "stag")),
-    nar("stag_haddo", '''{n}Brother Haddo turns his hat round in his soil-black hands.{/n} "The stag is his, Commander. Old Deadeye's own beast. When the old books say a stag called at a holy place, they mean the god was listening." {n}He glances at the woman on the step, and then away.{/n} "Or a stag was in rut, and somebody wanted it to mean something. I have been a priest thirty years and I have never learned to tell the two apart. But a stag called in that crypt, from what I hear, and she came up out of the stone. I would not presume to say which it was."''',
+    nar("stag_haddo", '''{n}Brother Haddo turns his hat round in his soil-black hands.{/n} "The stag is Old Deadeye's own beast, Commander. When the old books say a stag called at a holy place, they mean the god was listening." {n}He glances at the woman on the step, and then away.{/n} "Or a stag was in rut, and somebody wanted it to mean something. I have been a priest thirty years and I have never learned to tell the two apart. But a stag's call sounded over her stone, from what I hear, and she came up out of it. I would not presume to say which it was."''',
         c("Continue", "stag")),
     dl("stag", '''{n}For a heartbeat she does not breathe. Then she sits down, hard, on the altar step, as if her knees had been cut.{/n} "A stag."
 "Over my grave." {n}Her hand goes to her breastbone, where the pilgrims said the arrow went in.{/n} "The only word he ever spoke to me with a mouth, he said with a stag's. 'Hunt me.' If he said anything over the stone while I lay under it, I could not hear it through the seal. I was holding the string."''',
@@ -290,7 +290,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
 "You blew a stag's call on my horn, and I came." {n}Her mouth tightens.{/n} "You borrowed my god's voice, jester. Did you know?"''',
         c('"Not until tonight. I\'m sorry if that spoils it."', "spoils"),
         c('"I\'d like to say it was all my own idea."', "own_idea")),
-    dl("spoils", '''"Spoils it." {n}She shakes her head, slowly.{/n} "Nothing is spoiled. A snare is not less true because the hare did not set it. If my lord left his call lying over my grave, then a jester picked it up and blew it. That is how he always worked. He never did a thing himself if a fool would do it for him."''',
+    dl("spoils", '''"Spoils it." {n}She shakes her head.{/n} "You blew the call. I came. Whether my lord meant you to find that horn, or you put your hand where it had no business being, I will ask him on my knees."''',
         c("Continue", "haddo_end")),
     dl("own_idea", '''"I know you would." {n}She almost laughs.{/n} "You would steal the credit off a god's plate and eat it in front of him. Do not do it in his house. He has a long bow and a longer memory, and I have only just got back on speaking terms with him."''',
         c("Continue", "haddo_end")),

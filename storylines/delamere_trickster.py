@@ -260,12 +260,12 @@ PLACES = {
             c("Continue", "stair")),
         stair='''{n}The masons who carried her up from the temple brought everything that was in the crypt with her, because nobody told them not to: the sarcophagus, its seal, and the old horn from its peg, which they hung above her head again out of plain country tidiness.{/n}''',
         run_far='''{n}You take the chapel door with your shoulder and the street with your feet. Through the lower town, over the fish-market barrows, up the tanners' stair and across the roofs, and you are already doing the things a hunted thing does: doubling through alleys, going to ground in a cart of fleeces, dropping over the curtain wall where the stones are rotten and running for the black line of the hills.{/n}
-{n}She comes over the wall a heartbeat behind you. She has never seen a city in her life, and she takes this one the way she would take a thicket: straight through, and without once looking at it.{/n}''',
+{n}She comes over the wall a heartbeat behind you. She takes the city the way she would take a thicket: straight through, and without once looking at it.{/n}''',
         run_short='''{n}You make the chapel door. You make the street, and the cold night air, and three long strides toward the corner, with a night-watchman's lantern swinging round to find you.{/n}
 {n}Three strides is what a stag gets, from a hunter who has waited this long.{/n}''',
-        after=nar("after", '''{n}The watchman's lantern arrives, and the watchman behind it, and he takes in the arrow and the woman with the knife and very sensibly goes to fetch someone else.{/n}''',
+        after=nar("after", '''{n}She kneels beside you with her knife in her hand. The woman who lay dead in the chapel is breathing hard.{/n}''',
             c("Continue", "not_grave")),
-        not_grave=dl("not_grave", '''"You are wondering whether I am one of the dead that walk. I can hear you wondering." {n}She lifts her head and sniffs the air of the street: smoke, dung, cabbage, ten thousand people. Her lip curls.{/n} "The dead do not get hungry, and they do not smell a city and want to be sick. I am both. Lie flat. This will hurt you more than it hurts me."''',
+        not_grave=dl("not_grave", '''"You are wondering whether I am one of the dead that walk. I can hear you wondering." {n}Her lip curls.{/n} "The dead do not get hungry, and they do not smell a city and want to be sick. I am both. Lie flat. This will hurt you more than it hurts me."''',
             c("Continue", "cut")),
     ),
 }
@@ -314,7 +314,7 @@ def waking(place):
             c("[Keep it where it is.]", "yew", flags=(YEW_BOW,))),
         nar("taken_gone", '''{n}Her hands are closed on nothing. The antler bow is long gone from here, into some quartermaster's wagon or some merchant's back room.{/n}''',
             c("Continue", "yew", flags=(YEW_BOW,))),
-        nar("given_now", '''{n}You fold her fingers back around the antler grip one at a time. They are cold, and stiffer than wood. The bow settles into them as if it had never been away, and something in the crypt that you had not noticed was strained goes quiet.{/n}''',
+        nar("given_now", '''{n}You fold her fingers back around the antler grip one at a time. They are cold, and stiffer than wood. The bow settles into them as if it had never been away.{/n}''',
             c("Continue", "horn")),
         nar("yew", '''{n}At her feet, half under the hem of her shroud, lies the other bow the Kellid priests left her: plain yew, unstrung, a sheaf of grey-fletched arrows tied beside it. Something for the road, wherever the road went.{/n}''',
             c("Continue", "horn")),
@@ -332,7 +332,7 @@ def waking(place):
 {n}He looks at you properly, with the lamp shaking in both hands, and stops.{/n} "Oh, Erastil. You're going to be the stag."''',
             c("Continue", "lift")))
     nodes += [
-        nar("lift", '''{n}The crypt waits. Somewhere above, the temple's timbers tick in the cold. You wet your lips.{/n}''',
+        nar("lift", '''{n}You lift the horn. The stone around her holds the cold. You wet your lips and draw breath.{/n}''',
             c('[Lore (Nature): sound a white stag\'s roar, the way Kyado described it] "Let\'s see who answers."',
               requires=(HORN_LORE,), mythic="Trickster", alignment=("Chaotic", 1),
               check=dict(Skill="SkillLoreNature", DC=18, Success="roar", Failure="fumble", CommanderOnly=True)),
@@ -349,13 +349,13 @@ def waking(place):
             *((c("Continue", "rise", requires=(TOMB_OPENED,), flags=(LIVING_WAKE,)),
                c("Continue", "rise_sealed", forbids=(TOMB_OPENED,), flags=(LIVING_WAKE,))) if crypt
               else (c("Continue", "rise", flags=(LIVING_WAKE, WOKE_DREZEN)),))),
-        nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
+        nar("rise", '''{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the stone had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
 {n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
             c("Continue", "draw_antler", forbids=(YEW_BOW,)),
             c("Continue", "draw_yew", requires=(YEW_BOW,))),
         # PP10 (Sol BEL): an untouched tomb opens on the page before she rises (a variant of rise, so the waking is no longer).
         nar("rise_sealed", '''{n}Then the seal goes. A crack runs round the ring of Kellid words, quick as frost across a puddle, and the stone circle drops in two halves on the lid. The lid itself grinds a hand's breadth sideways, pushed from beneath, and stops, and grinds again, until there is room for an arm, a shoulder, a face.{/n}
-{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the whole crypt had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
+{n}It is not how the dead get up in stories. There is no green fire in her eyes, no rattle of bone on stone. There is breath: one long, dragging breath, as if the stone had been holding it for her. Her ribs lift under the old leather and do not fall back.{/n}
 {n}The leather of her face goes dark and soft, and then it is skin, grey with dust, and then it is not grey. Her eyes open. They are brown, and human, and they are looking straight at you over the lip of the stone.{/n}''',
             c("Continue", "draw_antler", forbids=(YEW_BOW,)),
             c("Continue", "draw_yew", requires=(YEW_BOW,))),
@@ -363,8 +363,7 @@ def waking(place):
             c("Continue", "stag")),
         nar("draw_yew", '''{n}She comes up out of the sarcophagus the way a hunter comes up out of a hide: no stretch, no stagger, everything at once. Her hands close on the empty place where the antler bow should be, and she does not waste a heartbeat on it. The yew bow from her feet is strung before you see her string it. A grey-fletched arrow is on it.{/n}''',
             c("Continue", "stag")),
-        nar("stag", '''{n}She says nothing. She has not come back to talk. She is looking at the horn in your hand, and at you, and her face holds no anger at all, only an enormous and terrible patience.{/n}
-{n}There is a rule every child in the hill country learns before it learns its letters, and it surfaces in you now from somewhere you did not know you kept it: a stag that stands is meat.{/n}''',
+        nar("stag", '''{n}Her eyes move from the horn to your face. The arrow follows. You lower the horn. She keeps the bow drawn, its point trained on your chest.{/n}''',
             c("[Mobility: run.]", check=dict(Skill="SkillMobility", DC=24, Success="ran_far", Failure="ran_short", CommanderOnly=True))),
         nar("ran_far", t["run_far"], c("Continue", "moonset", flags=(RAN_FAR,))),
         nar("moonset", '''{n}Three days and three nights she hunted Erastil's white stag. You last until the moon goes down, which for a stag with a sword on its hip and no idea where the deer paths run is a very long time, and the woods will talk about it for a while.{/n}
@@ -408,7 +407,7 @@ def waking(place):
 "The Stone Hares had a girl who could track a fox across a frozen river. She was nine." {n}A pause.{/n} "I will count them later. All of them. The ones I can remember." {n}She wipes the knife on her thigh.{/n} "Not now. Now there is a stag bleeding in front of me, and I was taught to finish one thing before I start the next."''',
             c("Continue", "after")),
         dl("grave", '''{n}She laughs. It is not a kind sound, and the dust in her throat makes it worse.{/n} "There is no lying down again. The hunt is not finished, and a hunt that is not finished does not let its hunter sleep. You of all people should know that, stag. You called it."
-{n}She gets up, leaves the knife in the earth beside your hand, and walks away into the dark without looking back.{/n} "Live, then. So will I. We need not do it together."''',
+{n}She gets up, leaves the knife beside your hand, and walks away into the dark without looking back.{/n} "Live, then. So will I. We need not do it together."''',
             c("[Let her go.]", flags=(DECLINED, CLOSED, LIMP))),
         t["after"],
         t["not_grave"],
@@ -420,18 +419,18 @@ def waking(place):
             c('"And until then?"', "until"),
             c('"That sounds like a threat."', "until"),
             c('"I\'ll have a priest straighten it. I need two good legs for this war."', "healed")),
-        dl("healed", '''{n}She looks at you for a while without any expression at all.{/n} "Then do it. Walk straight, and be glad of it; I would be." {n}She wipes the knife on the grass and gets up.{/n} "But a stag that lets the priests take my arrow out of it has ended the hunt itself. I will not come for a day nobody owes me. Live well, city-stag. I will hear about you."
+        dl("healed", '''{n}She looks at you for a while without any expression at all.{/n} "Then do it. Walk straight, and be glad of it; I would be." {n}She wipes the knife on her shroud and gets up.{/n} "But a stag that lets the priests take my arrow out of it has ended the hunt itself. I will not come for a day nobody owes me. Live well, city-stag. I will hear about you."
 {n}She walks away into the dark, and does not look back.{/n}''',
             c("[Let her go, and send for a priest in the morning.]", flags=(RETURNED, STARTED, CLOSED, LEG_HEALED))),
-        dl("until", '''"Until then, you had better stay quick." {n}She sits back on her heels and wipes the knife on the grass, and looks about her at last: the dark, the trees, the cold.{/n}''',
+        dl("until", '''"Until then, you had better stay quick." {n}She sits back on her heels, wipes the knife on a strip of her shroud, and looks about her at last.{/n}''',
             c("Continue", "home_" + place)),
     ]
     homes = {
-        "kyado": dl("home_kyado", '''"This is my temple. The boy may stay if he sweeps." {n}Kyado makes a sound like a kettle.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
+        "kyado": dl("home_kyado", '''"The temple is mine. The boy may stay if he sweeps." {n}Kyado makes a sound like a kettle.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_KYADO))),
-        "alone": dl("home_alone", '''"This is my temple. It has been swept, after a fashion, by somebody who is not here." {n}She looks at the broom at the foot of the stair for a while, and does not ask.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
+        "alone": dl("home_alone", '''"The temple is mine. It has been swept, after a fashion, by somebody who is not here." {n}She looks toward the temple for a while, and does not ask.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_ALONE))),
-        "late": dl("home_late", '''"This is my temple." {n}She sniffs the cold air coming down the stair: no smoke, no bread, no dogs.{/n} "Nobody has kept it. Somebody will." {n}She stands, and sways, and stands again.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
+        "late": dl("home_late", '''"The temple is mine." {n}She sniffs the cold night air: no smoke, no bread, no dogs.{/n} "Nobody has kept it. Somebody will." {n}She stands, and sways, and stands again.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_ALONE))),
         "drezen": dl("home_drezen", '''"I woke in a city." {n}She says it the way you would say you woke in a latrine.{/n} "Where is my temple? No. Do not tell me; I will find it. It is in the woods, where it belongs, and I am going there tonight, before this place gets into my lungs." {n}She stands.{/n} "Go home to your war, stag, and put that leg up. I will come and see what kind of animal lives in your walls. When I am ready. Not before."''',
             c("[Limp home.]", flags=(RETURNED, STARTED, LIMP, HUNT_OWED, WOKE_DREZEN))),
