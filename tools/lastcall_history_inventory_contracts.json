@@ -1,0 +1,1006 @@
+{
+  "schema": 1,
+  "item": "E-Q8-11",
+  "label": "eng8-q8g: authored Last Call histories; existing prices and tokens only",
+  "findings": {
+    "arsinoe:020": "Neutral opener; leased settlement requires lien and called.",
+    "arsinoe:021": "Recorded-death payment also requires lien and called.",
+    "arsinoe:022": "Intact receipt separated from Worldwound pledge and closure.",
+    "arsinoe:023": "Burst receipt uses the same pledge/closure variants.",
+    "arsinoe:024": "Settled still security is released; audits are invited.",
+    "arsinoe:025": "Creditor collection is pledge-neutral and lien-backed.",
+    "eliandra:027": "Friendship call retained; daily continuation requires committed.",
+    "eliandra:028": "Book/journal identify basin without cave destruction.",
+    "eliandra:029": "Daily Book line separately requires actual daily courtship.",
+    "kiana:015": "Old Continue retired in place; letter, pardon and refusal enacted.",
+    "kiana:016": "Happy rescue and unresolved-pouch siblings read release, not called.",
+    "kiana:017": "Personal grievance needs soul_lost; dog-only grievance is distinct.",
+    "wenduag:039": "Pocket receipt guards stone; cairn-only uses token-free call."
+  },
+  "surfaces": [
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "text"
+      ],
+      "absent_text": [
+        "account",
+        "lease",
+        "lien",
+        "cauldron"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien"
+      ],
+      "forbids": [
+        "arsinoe.siphon_burst"
+      ],
+      "absent_text": [
+        "Worldwound"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.siphon_burst"
+      ],
+      "absent_text": [
+        "Worldwound"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[2]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.trickster.cost.collateral_still"
+      ],
+      "absent_text": [
+        "now holds a lien"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.trickster.cost.collateral_word"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[4]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien",
+        "lastcall.dead_on_record"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.trickster.cost.collateral_worldwound"
+      ],
+      "forbids": [
+        "ending.wound_closed"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.page",
+        "page",
+        "paragraph[7]"
+      ],
+      "requires": [
+        "arsinoe.lastcall.called",
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.trickster.cost.collateral_worldwound",
+        "ending.wound_closed"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.call",
+        "@Entry",
+        "Entry"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien"
+      ]
+    },
+    {
+      "surface": [
+        "arsinoe.lastcall.call",
+        "call",
+        "text"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[7]"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.lastcall.called"
+      ],
+      "absent_text": [
+        "Worldwound",
+        "where the rift"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "debt.abadar",
+        "text"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien"
+      ]
+    },
+    {
+      "surface": [
+        "lastcall",
+        "debt.abadar",
+        "description"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien"
+      ]
+    },
+    {
+      "surface": [
+        "eliandra.lastcall.call",
+        "@Entry",
+        "Entry"
+      ],
+      "requires": [
+        "eliandra.trickster.cost.lights_given"
+      ],
+      "absent_text": [
+        "every morning",
+        "cave that no longer exists"
+      ]
+    },
+    {
+      "surface": [
+        "eliandra.lastcall.call",
+        "call",
+        "text"
+      ],
+      "requires": [
+        "eliandra.trickster.cost.lights_given"
+      ],
+      "absent_text": [
+        "every morning",
+        "cave that no longer exists"
+      ]
+    },
+    {
+      "surface": [
+        "eliandra.lastcall.call",
+        "daily",
+        "text"
+      ],
+      "requires": [
+        "eliandra.trickster.cost.lights_given",
+        "eliandra.committed"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "owed.eliandra",
+        "text"
+      ],
+      "requires": [
+        "eliandra.trickster.cost.lights_given"
+      ],
+      "absent_text": [
+        "every morning",
+        "cave that no longer exists"
+      ]
+    },
+    {
+      "surface": [
+        "lastcall",
+        "owed.eliandra",
+        "description"
+      ],
+      "requires": [
+        "eliandra.trickster.cost.lights_given"
+      ],
+      "absent_text": [
+        "every morning",
+        "cave that no longer exists"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "owed.eliandra",
+        "line[2]"
+      ],
+      "requires": [
+        "eliandra.trickster.cost.lights_given",
+        "eliandra.committed"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.lastcall.call",
+        "letter",
+        "text"
+      ],
+      "forbids": [
+        "kiana.sunhammer_dead"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.lastcall.call",
+        "release",
+        "text"
+      ],
+      "requires": [
+        "kiana.trickster.cost.guests_robbed"
+      ],
+      "forbids": [
+        "kiana.sunhammer_dead",
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "kiana.lastcall.called",
+        "kiana.trickster.cost.guests_robbed",
+        "trickster.lastcall.kiana_guests_freed"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.lastcall.page",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "kiana.trickster.cost.guests_robbed",
+        "kiana.soul_lost"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "requires": [
+        "kiana.trickster.cost.guests_robbed",
+        "kiana.trickster.dog_saved"
+      ],
+      "forbids": [
+        "kiana.soul_lost",
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[8]"
+      ],
+      "requires": [
+        "trickster.lastcall.kiana_pardon"
+      ],
+      "forbids": [
+        "kiana.sunhammer_dead"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.lastcall.page.collectors",
+        "page",
+        "paragraph[9]"
+      ],
+      "requires": [
+        "kiana.sunhammer_dead"
+      ],
+      "absent_text": [
+        "brought the stolen souls home"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "debt.sunhammer",
+        "line[2]"
+      ],
+      "requires": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "lastcall",
+        "debt.sunhammer",
+        "settled"
+      ],
+      "any_groups": [
+        [
+          "trickster.lastcall.kiana_pardon",
+          "kiana.sunhammer_dead"
+        ]
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_together",
+        "start",
+        "paragraph[0]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_together",
+        "start",
+        "paragraph[1]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_together",
+        "start",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_together",
+        "start",
+        "paragraph[4]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_together",
+        "start",
+        "paragraph[5]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_bereaved",
+        "start",
+        "paragraph[0]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_bereaved",
+        "start",
+        "paragraph[1]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_bereaved",
+        "start",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_bereaved",
+        "start",
+        "paragraph[4]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_bereaved",
+        "start",
+        "paragraph[5]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_ascended",
+        "start",
+        "paragraph[0]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_ascended",
+        "start",
+        "paragraph[1]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_ascended",
+        "start",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_ascended",
+        "start",
+        "paragraph[4]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_ascended",
+        "start",
+        "paragraph[5]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_promised",
+        "start",
+        "paragraph[0]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_promised",
+        "start",
+        "paragraph[1]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_promised",
+        "start",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_promised",
+        "start",
+        "paragraph[4]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.ending_promised",
+        "start",
+        "paragraph[5]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "margin",
+        "paragraph[0]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "margin",
+        "paragraph[1]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "margin",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "margin",
+        "paragraph[4]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "margin",
+        "paragraph[5]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "stage",
+        "paragraph[0]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "stage",
+        "paragraph[1]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "stage",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "kiana.lastcall.guests_recovered"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "stage",
+        "paragraph[4]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "kiana.trickster.epilogue.commit",
+        "stage",
+        "paragraph[5]"
+      ],
+      "forbids": [
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.call",
+        "@Entry",
+        "Entry"
+      ],
+      "absent_text": [
+        "stone",
+        "pocket",
+        "carried"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.call",
+        "call",
+        "text"
+      ],
+      "absent_text": [
+        "stone",
+        "pocket",
+        "carried"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.call",
+        "stone",
+        "text"
+      ],
+      "requires": [
+        "wenduag.trickster.morning.pocket"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[0]"
+      ],
+      "requires": [
+        "wenduag.lastcall.called",
+        "wenduag.trickster.morning.pocket"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[5]"
+      ],
+      "requires": [
+        "wenduag.lastcall.called"
+      ],
+      "forbids": [
+        "wenduag.trickster.morning.pocket"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "owed.wenduag",
+        "text"
+      ],
+      "absent_text": [
+        "pocket",
+        "stone",
+        "knife back",
+        "still breathing"
+      ]
+    },
+    {
+      "surface": [
+        "lastcall",
+        "owed.wenduag",
+        "description"
+      ],
+      "absent_text": [
+        "pocket",
+        "stone",
+        "knife back",
+        "still breathing"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "owed.wenduag",
+        "line[2]"
+      ],
+      "requires": [
+        "wenduag.trickster.morning.pocket"
+      ]
+    },
+    {
+      "surface": [
+        "trickster.ledger",
+        "debt.abadar",
+        "line[1]"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.lastcall.called"
+      ]
+    },
+    {
+      "surface": [
+        "lastcall",
+        "debt.abadar",
+        "settled"
+      ],
+      "requires": [
+        "arsinoe.trickster.cost.lien",
+        "arsinoe.lastcall.called"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "text"
+      ],
+      "absent_text": [
+        "cairn",
+        "cellar"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[1]"
+      ],
+      "requires": [
+        "lastcall.dead_on_record"
+      ],
+      "any_groups": [
+        [
+          "wenduag.trickster.cairn_built",
+          "wenduag.trickster.abyss_cairn",
+          "wenduag.trickster.street_cairn"
+        ]
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[3]"
+      ],
+      "forbids": [
+        "wenduag.trickster.cairn_built",
+        "wenduag.trickster.abyss_cairn",
+        "wenduag.trickster.street_cairn"
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[6]"
+      ],
+      "any_groups": [
+        [
+          "wenduag.trickster.cairn_built",
+          "wenduag.trickster.abyss_cairn",
+          "wenduag.trickster.street_cairn"
+        ]
+      ]
+    },
+    {
+      "surface": [
+        "wenduag.lastcall.page",
+        "page",
+        "paragraph[7]"
+      ],
+      "requires": [
+        "lastcall.dead_on_record"
+      ],
+      "forbids": [
+        "wenduag.trickster.cairn_built",
+        "wenduag.trickster.abyss_cairn",
+        "wenduag.trickster.street_cairn"
+      ]
+    }
+  ],
+  "derived": {
+    "kiana.lastcall.guests_recovered": [
+      [
+        "seelah.souls_returned"
+      ],
+      [
+        "kiana.trickster.guests_ransomed"
+      ],
+      [
+        "kiana.trickster.guests_bought_back"
+      ],
+      [
+        "trickster.lastcall.kiana_guests_freed"
+      ]
+    ]
+  },
+  "producers": [
+    {
+      "scene": "kiana.lastcall.call",
+      "node": "release",
+      "choice": 0,
+      "sets": [
+        "kiana.lastcall.called",
+        "kiana.lastcall.resolved",
+        "trickster.lastcall.kiana_pardon",
+        "trickster.lastcall.kiana_guests_freed"
+      ]
+    },
+    {
+      "scene": "kiana.lastcall.call",
+      "node": "letter",
+      "choice": 1,
+      "sets": [
+        "kiana.lastcall.called",
+        "kiana.lastcall.resolved",
+        "trickster.lastcall.kiana_pardon"
+      ]
+    },
+    {
+      "scene": "kiana.lastcall.call",
+      "node": "letter",
+      "choice": 2,
+      "sets": [
+        "kiana.lastcall.called",
+        "kiana.lastcall.resolved",
+        "trickster.lastcall.kiana_pardon"
+      ]
+    }
+  ],
+  "unique_producers": {
+    "trickster.lastcall.kiana_guests_freed": [
+      "kiana.lastcall.call/release/0"
+    ],
+    "trickster.lastcall.kiana_pardon": [
+      "kiana.lastcall.call/letter/1",
+      "kiana.lastcall.call/letter/2",
+      "kiana.lastcall.call/release/0"
+    ]
+  },
+  "retired_choices": [
+    [
+      "kiana.lastcall.call",
+      "call",
+      0
+    ]
+  ],
+  "route_followups": [
+    "Eliandra Drezen rite clone location wording remains route-owned; debt prose now location-neutral.",
+    "Wenduag native-romance tooling wording remains route prose work (wenduag:038 is outside E-Q8-11); cairn and stone histories are inventoried separately."
+  ],
+  "eng8-q8g_baseline_review": {
+    "reason": "Six unchanged L1 text/diagnostic referrals, compared equal in every field except fingerprint; effective Kiana release forbid changed. No added or waived finding.",
+    "rekeyed": [
+      {
+        "surface": [
+          "kiana.ending_ascended",
+          "start",
+          "paragraph[3]"
+        ],
+        "old": "d38ffd5f1666e128facf92d354708461e3d3e2c53228767f4d8746594f12f3fe",
+        "new": "eb91b3113908d34a413cae575bd4efc13205682fac2d2f0ba61228bccb17d8f5"
+      },
+      {
+        "surface": [
+          "kiana.ending_bereaved",
+          "start",
+          "paragraph[3]"
+        ],
+        "old": "a9051cee02686730fae30a65882ccf98bc29d82a7c2609f1c0e7f3e059ad0ba4",
+        "new": "694e134ed8615f2b30cd189196b16a203b427c88e3e7912fee28fda664b05cfe"
+      },
+      {
+        "surface": [
+          "kiana.ending_promised",
+          "start",
+          "paragraph[3]"
+        ],
+        "old": "0ba92fd2b35b86053c8a1b2a63c0560899e8e3a0b90013d14bd1dae08cf04095",
+        "new": "779b87844ecd00911d94152a6606fbcde2b0af9f240dd7a69c6db6459f938e6b"
+      },
+      {
+        "surface": [
+          "kiana.ending_together",
+          "start",
+          "paragraph[3]"
+        ],
+        "old": "cd21e6f2aa589ea49a6c037804b965c7d208e926658e05dc360dc52a566f5e9f",
+        "new": "8a6d3cd1c4804992654ef0a0ffa6de085a12540efda6b87f675f66a50376b7f9"
+      },
+      {
+        "surface": [
+          "kiana.trickster.epilogue.commit",
+          "margin",
+          "paragraph[3]"
+        ],
+        "old": "c3f8021d1caf90f906127ac1166913673fae7aaaba329b83ed0c587ba737790b",
+        "new": "7f8ff9b2586e7aeedf6daa7ec9faef947a4087e34b64812fae19c9127370464b"
+      },
+      {
+        "surface": [
+          "kiana.trickster.epilogue.commit",
+          "stage",
+          "paragraph[3]"
+        ],
+        "old": "04f499ae601da015d7c719d34826843eec781f8a022cd00dd1cdc1558845dd56",
+        "new": "893d5a8cd8633cbeec2fc3cb09cf80a0a0b788678d54268c4f62c7c53a2959ed"
+      }
+    ]
+  }
+}

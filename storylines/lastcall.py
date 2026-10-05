@@ -323,3 +323,38 @@ def at_the_rift_scene(id, title, entry, nodes, requires, forbids=(), any_groups=
                  forbids=(TAKEN, "trickster.failed") + tuple(forbids), last=6, optional=True, Relationship=REL,
                  Chapters=[6], AnswerLists=list(FINAL_LISTS), ReturnToList=True,
                  ReturnText="{n}The thread pulls taut, and holds.{/n}", **extra)
+
+
+# eng8-q8g: apply the same historical witnesses to every downstream surface.
+_eng8_integrate = integrate
+
+
+def integrate(payload):
+    _eng8_integrate(payload)
+    entries = {e["Id"]: e for e in payload["Books"]["trickster.ledger"]["Entries"]}
+    entries["owed.eliandra"]["Lines"].append(p(
+        "{n}She asks me a question every morning. She has a hundred years of them saved up.{/n}",
+        requires=(partners.EL_DAILY,)))
+    entries["owed.wenduag"]["Lines"].append(p(
+        "{n}The knife-marked stone she left in my coat is still in my pocket.{/n}",
+        requires=(partners.WD_POCKET,)))
+    # Last Call activity resolves the spoken calls, not an unaccepted pardon.
+    entries["debt.abadar"]["Lines"][-1]["Requires"] = [partners.called("arsinoe")]
+    abadar_journal = next(e for e in payload["Relationships"][REL]["JournalEntries"] if e["Id"] == "debt.abadar")
+    abadar_journal["SettledWhen"] = [[partners.called("arsinoe")]]
+    sunhammer = entries["debt.sunhammer"]
+    sunhammer["Lines"][-1]["Requires"] = [partners.KI_SETTLED]
+    journal = next(e for e in payload["Relationships"][REL]["JournalEntries"] if e["Id"] == "debt.sunhammer")
+    journal["SettledWhen"] = [[partners.KI_SETTLED], ["kiana.sunhammer_dead"]]
+    for host in payload["Scenes"]:
+        for node in host["Nodes"]:
+            for para in node.get("Paragraphs", []):
+                if host["Id"] == "trickster.lastcall.page.collectors":
+                    if para["Text"].startswith("{n}" + partners._history_debts["sunhammer"]["page_called"]):
+                        para["Requires"].append(partners.KI_SETTLED)
+                # Retained Kiana ending paragraphs must follow actual release,
+                # not the historical fact that a call was spoken.
+                if host.get("Relationship") == "kiana" and "kiana.lastcall.called" in para.get("Forbids", []):
+                    witness = partners.KI_RECOVERED if "pouch" in para["Text"] or "promise to fetch" in para["Text"] else partners.KI_SETTLED
+                    para["Forbids"] = [witness if key == "kiana.lastcall.called" else key for key in para["Forbids"]]
+# end eng8-q8g

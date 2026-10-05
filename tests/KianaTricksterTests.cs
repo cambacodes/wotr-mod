@@ -338,7 +338,10 @@ internal static class KianaTricksterTests
         check(callDead.Count > 0 && callDead.All(r => !r.Has("kiana.lastcall.called") && r.Has("kiana.lastcall.resolved")),
             "Q10: a dead Sunhammer is called in at the rift.");
         var callAlive = Program.Walk(call, World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.sunhammer_favour", "kiana.committed"));
-        check(callAlive.Count > 0 && callAlive.All(r => r.Has("kiana.lastcall.called")), "Q10: a living Sunhammer cannot be called in.");
+        // eng8-q8g: the living creditor offers an enacted pardon AND a refusal.
+        check(callAlive.Any(r => r.Has("kiana.lastcall.called") && r.Has("trickster.lastcall.kiana_pardon"))
+            && callAlive.Any(r => !r.Has("kiana.lastcall.called") && r.Has("kiana.lastcall.resolved")),
+            "Q10: a living Sunhammer lacks his pardon or refusal road.");
         // Q10 (BEL): the betrothed keepsake is the cancelled licence, not a live hold.
         var licenceParas = Rules.VisibleParagraphs(promised, World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed",
                                                                    "kiana.trickster.cost.betrothed", "kiana.committed"));

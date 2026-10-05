@@ -372,6 +372,16 @@ internal static class Program
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
+        // eng8-q8g: optional focus; LastCallTests also runs it in the full suite.
+        if (args.Contains("--eng8-q8g"))
+        {
+            Rules.Validate(story);
+            LastCallHistoryInventoryTests.Run(story, Check);
+            LastCallTests.CheckNoStranding(story, Check);
+            Console.WriteLine("PASS: eng8-q8g (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8g
         // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
         if (args.Contains("--eng7-l06"))
         {
