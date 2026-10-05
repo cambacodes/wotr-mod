@@ -21,7 +21,10 @@ def _resolve_assembly(assembly):
     text = str(assembly)
     for root in OLD_GAME_ROOTS:
         if text.lower().startswith(root.lower() + "\\"):
-            return Path(GAME_DIR) / text[len(root) + 1:]
+            relative = text[len(root) + 1:]
+            if os.name != "nt":
+                relative = relative.replace("\\", "/")
+            return Path(GAME_DIR) / relative
     return assembly
 
 
