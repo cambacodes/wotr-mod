@@ -113,19 +113,19 @@ internal static class ShamiraTricksterTests
               && rel.TricksterAccess["killed"].Device == P + "killed.voice" && rel.TricksterAccess["cold"].Device == P + "killed.drowning"
               && rel.TricksterAccess.Values.All(a => a.Returned == Returned),
             "Shamira's relationship does not match the revised 11 §2 (killed, the voice behind the eyes, returned).");
-        // Sol HOW/COX: embodied, she is a spawn-copy of her own unit with a click-to-talk hub (ERRATA) at the Fool King's corner
-        // table in Drezen, the tailor's awning when the King is gone or cannot be found; never at Fye, Wilcer or the smith.
+        // F10: the ordinary jeweller replaces the transient Fool King as the primary anchor.
+        // The existing King-gone/failure gates still select the tailor fallback.
         var table = story.Presences["shamira.presence"];
         var awning = story.Presences["shamira.presence.awning"];
         check(story.Presences.Keys.Count(k => k.StartsWith("shamira", StringComparison.Ordinal)) == 2
               && new[] { table, awning }.All(pr => pr.Unit == Unit && pr.Area == Drezen && pr.Mode == "spawn-copy" && pr.Dialog == "hub"
                   && pr.MinChapter == 5 && pr.MaxChapter == 5 && pr.Requires.Contains(Embodied) && pr.At!.Distance >= 2f
                   && new[] { Closed, P + "cost.kept_captive", P + "cast_out", P + "ally" }.All(pr.Forbids.Contains))
-              && table.At!.NearUnit == FoolKing && table.At.Side == "right" && table.Forbids.Contains("shamira.presence.failed")
+              && table.At!.NearUnit == "bc1093231b1577a4485a730c29595195" && table.At.Side == "front" && table.At.Distance == 8f && table.Forbids.Contains("shamira.presence.failed")
               && table.Forbids.Contains("fool_king.gone") && awning.At!.NearUnit == Tailor && awning.At.Side == "right" && awning.At.Distance == 6.5f
               && awning.RequiresAnyGroups.Length == 1 && awning.RequiresAnyGroups[0].Contains("shamira.presence.failed")
               && awning.RequiresAnyGroups[0].Contains("fool_king.gone"),
-            "Trk_Shamira_Presence: her presence is not at the King's corner table with the awning as its fallback.");
+            "Trk_Shamira_Presence: her presence is not in front of the persistent jeweller with the awning as its fallback.");
         var hubScenes = own.Where(s => s.InteractionHub == "shamira.presence").ToArray();
         check(hubScenes.Select(s => s.Id).OrderBy(x => x).SequenceEqual(new[] { P + "after.city", P + "after.night_alone", P + "after.throne", P + "after.visit", P + "harem", P + "mind.barracks_after" }.OrderBy(x => x))
               && hubScenes.All(s => !Rules.IsRemote(s) && s.Entry.Length > 0 && s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })),

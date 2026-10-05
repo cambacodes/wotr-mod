@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.Serialization;
+using Kingmaker.ElementsSystem;
+using Kingmaker.View.Spawners;
+using Kingmaker.EntitySystem;
+using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Blueprints;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -23,6 +28,65 @@ internal static class PresenceManagedTests
         .Concat(story.Presences.Values.Where(p => p.At?.NearUnit != null).Select(p => p.At!.NearUnit!))
         .Concat(story.Presences.Values.SelectMany(p => new[] { p.Unit, p.Area }.Concat(p.AnswerLists)));
 
+    private static void CopyConstructionF10(Action<bool, string> check)
+    {
+        var type = typeof(Main).Assembly.GetType("Tirabade.GuestPresence", true)!;
+        var factory = type.GetMethod("CopySpawningData", BindingFlags.Static | BindingFlags.NonPublic)!;
+        // No Unity actor can be instantiated under Mono. Exercise the actual construction context and native
+        // GroupId setter on inert entity data; the old path reuses the conflicting native callback verbatim.
+        UnitEntityData Data(string id, string group)
+        {
+            var data = (UnitEntityData)FormatterServices.GetUninitializedObject(typeof(UnitEntityData));
+            typeof(EntityDataBase).GetField("<UniqueId>k__BackingField", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(data, id);
+            data.GroupId = group;
+            return data;
+        }
+        foreach (string group in new[] { "Capital_NPC_Targona", "Azata_Aranka", "<directly-controllable-unit>" })
+        {
+            var native = Data("native", group);
+            var copy = Data("copy", group);
+            bool inherited = false;
+            using (var ambient = ContextData<UnitSpawningData>.Request().MarkSpawnHidden().MarkHiddenOptimization()
+                .BeforeAttachView(unit => { inherited = true; unit.GroupId = native.GroupId; }))
+            {
+                // Negative control: the prior SpawnUnit path really would invoke the ambient callback.
+                ContextData<UnitSpawningData>.Current.BeforeAttachViewAction(copy);
+                check(inherited && copy.GroupId == native.GroupId, "F10: group conflict fixture failed to reproduce");
+                inherited = false;
+                using (var isolated = (UnitSpawningData)factory.Invoke(null, null)!)
+                {
+                    check(ReferenceEquals(ContextData<UnitSpawningData>.Current, isolated) && !ReferenceEquals(ambient, isolated),
+                        "F10: copy reused native spawning context");
+                    check(!isolated.SpawnHidden && !isolated.SimplifyWhenHidden && isolated.Body == null && isolated.Inventory == null
+                        && isolated.PrefabGuid == null, "F10: copy inherited native view/hidden state");
+                    isolated.BeforeAttachViewAction(copy);
+                    check(!inherited && copy.GroupId == copy.UniqueId && native.GroupId == group,
+                        "F10: pre-attachment group isolation touched the native or kept its group");
+                }
+                check(ReferenceEquals(ContextData<UnitSpawningData>.Current, ambient) && ambient.SpawnHidden,
+                    "F10: copy construction did not restore the native context");
+            }
+        }
+        var rejected = new Presence { Unit = "c4b5746d3d2511441ba18a894cecb328", Mode = "spawn-copy" };
+        try { Rules.ValidatePresenceCopy("devarra.locator", rejected); check(false, "F10: QA dragon accepted"); }
+        catch (InvalidOperationException ex)
+        {
+            check(ex.Message.Contains("RedDragon_Sanctum 1") && ex.Message.Contains("letter/Storyteller"), "F10: rejection lacks supported delivery");
+        }
+        try
+        {
+            Activator.CreateInstance(type, BindingFlags.Instance | BindingFlags.NonPublic, null,
+                new object[] { "devarra.locator", rejected, new BlueprintUnit() }, null);
+            check(false, "F10: direct harness copy construction bypassed refusal");
+        }
+        catch (TargetInvocationException ex) { check(ex.InnerException is InvalidOperationException, "F10: wrong direct-construction failure"); }
+        // Size/species alone cannot forbid a supported blueprint or native actor reuse.
+        rejected.Mode = "reuse-native"; Rules.ValidatePresenceCopy("devarra.locator", rejected);
+        rejected.Mode = "spawn-copy"; rejected.Unit = "c540d81c08822c14da75761493427e4c";
+        Rules.ValidatePresenceCopy("fixture.dragon", rejected);
+        Console.WriteLine("PASS: F10 isolated copy context/group under Mono; QA dragon refused before submission.");
+    }
+
     public static void Run(Story story, Dictionary<string, JObject> native, Action<bool, string> check)
     {
         string Type(string guid) => ((string)native[guid]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
@@ -35,6 +99,7 @@ internal static class PresenceManagedTests
             foreach (var list in pair.Value.AnswerLists) check(Type(list) == "BlueprintAnswersList", "Presence host is not an answer list: " + pair.Key);
         }
         PresenceRuntimeF9Tests.Run(check);
+        CopyConstructionF10(check);
         string? jerribethFaction = (string?)native[story.Presences["jerribeth.presence"].Unit]["m_Faction"];
         check(jerribethFaction != null && !jerribethFaction.EndsWith(PlayerFaction, StringComparison.Ordinal)
             && !jerribethFaction.EndsWith(NeutralFaction, StringComparison.Ordinal),

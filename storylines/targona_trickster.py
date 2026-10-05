@@ -110,7 +110,7 @@ PRESENCES = {
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Offset=[-3.0, -6.0]),
               Requires=["trickster.ever", IN_DREZEN], Forbids=[CLOSED], MinChapter=3, MaxChapter=5,
               AnswerLists=[], Dialog="hub",
-              Greeting="{n}Behind the quartermaster's stores the field infirmary runs to three rows of cots under patched "
+              Greeting="{n}Beside the smith's yard the field infirmary runs to three rows of cots under patched "
                        "canvas. Targona is kneeling at the nearest one with a basin of water. Her sleeves are wet to the "
                        "elbows, and she finishes washing the soldier's hand before she looks up.{/n}"),
 }

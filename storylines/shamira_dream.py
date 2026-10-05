@@ -39,6 +39,7 @@ def page(*args, **kw):
 # and the night alone start at her table and go through the closets. Shamira_Actor (66e12264) carries no dialog of its own.
 DREZEN = "2570015799edf594daf2f076f2f975d8"      # DrezenCapital
 UNIT = "66e12264eaf6bf74196e20a9d7619cd2"        # Shamira (CutsceneNeutrals): her own body, spawn-copied
+JEWELER = "bc1093231b1577a4485a730c29595195"  # F10 authored staging: front 8 m; pending live.
 FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"   # FoolKing, in his tavern in DrezenCapital
 TAILOR = "253cdb8f434e5a6469b75e18428316e3"      # TailorCapitalTrader (the awning)
 HUB = "shamira.presence"
@@ -46,12 +47,12 @@ HUB_ALT = "shamira.presence.awning"
 HUB_FAILED = HUB + ".failed"                     # runtime: the King's copy is wanted but he could not be found
 KING_GONE = "fool_king.gone"
 ASKED_ALONE_ = P + "night_alone.asked"
-GREETING = ("{n}In the corner of the King's tavern, with her back to the wall and a cup of his worst wine, a tall red-haired "
-            "woman in a borrowed coat is watching the room. The drinkers nearest her keep losing the thread of their own "
+GREETING = ("{n}In front of the jeweller's stall, with her back to the counter and a cup of the King's worst wine, a tall red-haired "
+            "woman in a borrowed coat is watching the street. The passers-by nearest her keep losing the thread of their own "
             "stories and cannot think why.{/n}")
 PRESENCE_FORBIDS = [CLOSED, KEPT, CAST_OUT, ALLY]   # Sol r6: the night alone no longer removes her (either outcome)
 PRESENCES = {
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=FOOL_KING, Side="right", Distance=2.5),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=JEWELER, Side="front", Distance=8.0),
               Requires=["trickster.ever", EMBODIED], Forbids=PRESENCE_FORBIDS + [HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
     HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=TAILOR, Side="right", Distance=6.5),

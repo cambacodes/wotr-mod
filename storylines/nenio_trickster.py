@@ -143,7 +143,7 @@ RELATIONSHIP = dict(
 
 REVIVALS = {"nenio": dict(Relationship=REL, Unit=UNIT, DeathFlag=DEAD)}
 
-GREETING = ("{n}Behind the spice trader's awning a woman in a scholar's grey coat has turned two of his crates into a desk "
+GREETING = ("{n}In the lane beside the spice trader's stall a woman in a scholar's grey coat has turned two of his crates into a desk "
             "and a third into a chair. Her hair is pinned up with a pencil, and she is measuring the passers-by with her "
             "eyes and writing the numbers down.{/n}")
 PRESENCES = {

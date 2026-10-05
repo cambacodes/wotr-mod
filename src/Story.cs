@@ -333,6 +333,7 @@ namespace Tirabade
         public bool Enemy;             // F9: hostile native blueprints also need neutralization.
         public bool PlayerFaction;     // the copy's faction is the player's (companion blueprints)
         public bool PartyGroup;        // the copy is in the party's unit group
+        public bool ForeignGroup;      // F10: any group other than the copy's own unique id
         public bool Silenced;          // the copy's asks are the native silent list
         public bool Passive;           // the copy is marked passive (never joins or is engaged in combat)
     }
@@ -1227,11 +1228,18 @@ namespace Tirabade
             => string.Equals(originalBlueprint, presenceUnit, StringComparison.OrdinalIgnoreCase)
             || string.Equals(blueprint, presenceUnit, StringComparison.OrdinalIgnoreCase);
 
+        // F10: only this QA candidate is unsupported by the live copy path. Dragon size alone is not a ban.
+        public static void ValidatePresenceCopy(string key, Presence presence)
+        {
+            if (presence.Mode == "spawn-copy" && presence.Unit == "c4b5746d3d2511441ba18a894cecb328")
+                throw new InvalidOperationException("Presence " + key + ": RedDragon_Sanctum 1 is an unsupported QA copy (live probe produced no usable actor). Use Devarra's existing letter/Storyteller delivery.");
+        }
+
         public static CopyQuiet PlanQuiet(CopyObservation copy)
         {
             var steps = CopyQuiet.None;
             if (copy.PlayerFaction || copy.Enemy) steps |= CopyQuiet.Faction;
-            if (copy.PlayerFaction || copy.Enemy || copy.PartyGroup) steps |= CopyQuiet.Group;
+            if (copy.PlayerFaction || copy.Enemy || copy.PartyGroup || copy.ForeignGroup) steps |= CopyQuiet.Group;
             if (!copy.Silenced) steps |= CopyQuiet.Silence;
             if (!copy.Passive) steps |= CopyQuiet.Passive;
             return steps;
@@ -2079,6 +2087,7 @@ namespace Tirabade
                     || p.ReactionScenes.Length > 0 && p.Dialog != "hub")
                     throw new InvalidOperationException("Invalid presence reaction attachments: " + pair.Key);
                 // end eng7-l11
+                if (p != null) ValidatePresenceCopy(pair.Key, p);
                 string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null

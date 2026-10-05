@@ -153,6 +153,12 @@
       "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
       "sha256": "006f09bc5f02e3e7a2748f8efcc0204b8c1f822a05b54d4d07bcc45f642a7abf",
       "type": "BlueprintUnit"
+    },
+    {
+      "guid": "e349079a648cb15448a27f9049344bf1",
+      "type": "BlueprintUnit",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/PuluraFall/PuluraFall_Eliandra.jbp",
+      "sha256": "046567fcdc002cdeb6216e4f2fba312e9e7e8510e4d64828aa5c08d1da0015c5"
     }
   ],
   "entries": [
@@ -283,7 +289,7 @@
           0.0
         ]
       },
-      "remainder": "Run 20261005-054411: the engine creates no actor for the RedDragon_Sanctum 1 (QA/Unused, Huge) copy: Spawned true, Exists false, 'wanted, copy present -> Blocked'. The locator geometry therefore cannot be proven with this blueprint; there is no exported Devarra presence to click. Needs a decision on the Devarra encounter delivery (a different spawn path or blueprint), not a data fix.",
+      "remainder": "F10: RedDragon_Sanctum 1 QA candidate refused by Rules.Validate at build time, based on the F9 no-usable-actor live result. Devarra keeps existing letters and Storyteller-hub delivery; no exported physical presence. Physical dragon delivery is not authorized by this historical probe.",
       "live_evidence": {
         "date": "2026-10-04",
         "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
@@ -323,6 +329,11 @@
         "runs": [
           "harness/.runs/20261005-054411"
         ]
+      },
+      "f10_followup": {
+        "result": "unsupported-copy",
+        "delivery": "existing remote letters / Storyteller hub",
+        "reason": "F10: RedDragon_Sanctum 1 QA candidate refused by Rules.Validate at build time, based on the F9 no-usable-actor live result. Devarra keeps existing letters and Storyteller-hub delivery; no exported physical presence. Physical dragon delivery is not authorized by this historical probe."
       }
     },
     {
@@ -545,12 +556,12 @@
       "unit": "417ce3dcf3a9707488f2b9b2a790814b",
       "consumer": "jerribeth.presence",
       "at": {
-        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "NearUnit": "bc1093231b1577a4485a730c29595195",
         "Side": "left",
-        "Distance": 6.5
+        "Distance": 7.0
       },
-      "remainder": "Placed on the walkmesh (gap 0.06 m), approachable, hub click opens the dialog (needs jerribeth.committed + jerribeth.trickster.cost.forfeit besides visit_due), no crowding and one Spawn event before the reload; the same actor survives the reload. After every reload a roaming citizen (PeasantMale5) stands 1.9 m (run 052002) or 0.3 m (run 044737) from her spot, inside the 2.0 m body-room tolerance. His route crosses x 0..3, z 10..11. The exotic stall's clear ground is exhausted (aranka front 3.5, galfrey left 2.5, nenio, herrax stall): every remaining spot near the stall is either on that route, under a roof or beside the Quartermaster. Needs a coordinator decision on a sixth spot or a different anchor, not a blind offset change.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,jerribeth.trickster.visit_due' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,jerribeth.trickster.visit_due,hour.jerribeth.trickster.visit_due,jerribeth.committed,hour.jerribeth.committed,jerribeth.trickster.cost.forfeit,hour.jerribeth.trickster.cost.forfeit' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-cause",
         "detail": "Run 20261005-000433: the copy spawns at the revised spot and is not removed, but stays Enemy of the Commander after the quiet repair (IsEnemy(commander)=true), so it is never a usable contact (Blocked). Engine/blueprint issue in the quiet-copy faction repair for Jerribeth; not a data fix.",
@@ -569,6 +580,15 @@
         "crowding_after_reload": [
           "PeasantMale5 at (2.2, 56.1, 10.8)"
         ]
+      },
+      "f10_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "bc1093231b1577a4485a730c29595195",
+          "Side": "left",
+          "Distance": 7.0
+        },
+        "reason": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance."
       }
     },
     {
@@ -613,17 +633,9 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "verified",
+      "status": "pending",
       "position": null,
-      "probe": {
-        "placement": "aranka.presence.yard",
-        "chapter": 5,
-        "area": "2570015799edf594daf2f076f2f975d8",
-        "scene": "presence:aranka.presence.yard",
-        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
-        "artifact": "tools/placement_probes/aranka.presence.yard.json",
-        "sha256": "49e2eb7d8d36ad96922553670de3e17ca36c7eda5315052b9f61107520d8057b"
-      },
+      "probe": null,
       "unit": "bd0c4fe722aeef94b8495ac284b96bc8",
       "consumer": "aranka.presence.yard",
       "at": {
@@ -633,7 +645,7 @@
           -7.0
         ]
       },
-      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-045130, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save, and the Chapter 3 window (a spawned copy vanishes in the Chapter 3 save: see live_f9_followup_2026_10_05.chapter3).",
+      "remainder": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance.",
       "harness_command": "$env:RRT_HARNESS_HIDE='bad9f602b81a80047ac470b01ebe65a9'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,aranka.trickster.answered,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
@@ -660,6 +672,26 @@
           "save": "RRT_Manual_313_Hiriko_The_Trickster.zks",
           "detail": "Same Chapter 3 behaviour as targona.presence: the copy spawns once and is gone by the next tick (aranka.presence spawns once and is lost the same way). Chapter 5 holds."
         }
+      },
+      "historical_probe_f9": {
+        "placement": "aranka.presence.yard",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:aranka.presence.yard",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/aranka.presence.yard.json",
+        "sha256": "49e2eb7d8d36ad96922553670de3e17ca36c7eda5315052b9f61107520d8057b"
+      },
+      "f10_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+          "Offset": [
+            5.0,
+            -7.0
+          ]
+        },
+        "reason": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance."
       }
     },
     {
@@ -668,17 +700,9 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "verified",
+      "status": "pending",
       "position": null,
-      "probe": {
-        "placement": "targona.presence",
-        "chapter": 5,
-        "area": "2570015799edf594daf2f076f2f975d8",
-        "scene": "presence:targona.presence",
-        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
-        "artifact": "tools/placement_probes/targona.presence.json",
-        "sha256": "ace30f8e57d2e986bfd9cbdf22b820619a76ec9aa5689e75b35598c923051708"
-      },
+      "probe": null,
       "unit": "81297c673b63b60448ef88a10db6bc78",
       "consumer": "targona.presence",
       "at": {
@@ -688,7 +712,7 @@
           -6.0
         ]
       },
-      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-045524, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save, and the Chapter 3 window (a spawned copy vanishes in the Chapter 3 save: see live_f9_followup_2026_10_05.chapter3).",
+      "remainder": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,targona.trickster.returned,hour.targona.trickster.returned,targona.trickster.cost.struck_down,hour.targona.trickster.cost.struck_down' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-data",
@@ -716,6 +740,26 @@
           "save": "RRT_Manual_313_Hiriko_The_Trickster.zks",
           "detail": "Spawn event 1, then the very next tick finds no copy (Observe: none of the blueprint in Game.State.Units, tracing every 0.25 s), the record stays Submitted and the plan is Blocked, so the presence reports failed and nothing is placed. Chapter 5 on the same code holds. The Chapter 3 log shows [Etudes] Fixed conflicting group Capital_NPC_Targona (Targona_DefaultActor) at the capital load. Not a data fix."
         }
+      },
+      "historical_probe_f9": {
+        "placement": "targona.presence",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:targona.presence",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/targona.presence.json",
+        "sha256": "ace30f8e57d2e986bfd9cbdf22b820619a76ec9aa5689e75b35598c923051708"
+      },
+      "f10_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+          "Offset": [
+            -3.0,
+            -6.0
+          ]
+        },
+        "reason": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance."
       }
     },
     {
@@ -932,7 +976,7 @@
         "Distance": 6.5
       },
       "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-052356, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
-      "harness_command": "$env:RRT_HARNESS_HIDE='cc50a88bbd8dd3e4da066d33d14fdfc8'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
+      "harness_command": "$env:RRT_HARNESS_HIDE='bc1093231b1577a4485a730c29595195'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "failed-engine",
         "detail": "Engine defect (presence ping-pong): the spawn tick observes the fresh copy as unusable (view not yet active), GuestPresence.AnchorFailed latches <key>.failed, the primary (which Forbids its own failed flag) becomes unwanted and PlanPresence(wanted=false) removes the copy, the failure clears, the primary respawns, and so on every tick (49+ cycles per run). Only primaries that forbid their own failed flag are affected; Aranka, which does not, holds. Run 20261005-010013 (326; with the fool_king.gone etude started the primary was still wanted).",
@@ -1011,17 +1055,26 @@
       "unit": "25ad116e1f5008e488b13f9b968596d4",
       "consumer": "herrax.presence.rokhorn",
       "at": {
-        "NearUnit": "cc50a88bbd8dd3e4da066d33d14fdfc8",
+        "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
         "Side": "front",
-        "Distance": 3.5
+        "Distance": 9.0
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'",
       "live_followup_2026_10_05": {
         "result": "blocked-fixture+engine",
         "detail": "Run 20261005-001745: herrax.asked_kill_chivarro is a seen dialog cue (SeenCues 49135105...), not settable by the fixture, so the presence was not wanted; the same self-forbidding primary would ping-pong.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "f10_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+          "Side": "front",
+          "Distance": 9.0
+        },
+        "reason": "F10 pending-live: isolated copy construction and/or revised ordinary capital anchor. Re-prove ground (no roof collider), >=4 m joint guest spacing, >=2 m citizen clearance, approach, production hub click and same actor after reload. Ch3 and Ch5 required for Targona/Aranka yard. Historical F9 evidence is retained, not current acceptance."
       }
     },
     {
@@ -1051,7 +1104,7 @@
         ]
       },
       "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-051150, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
-      "harness_command": "$env:RRT_HARNESS_HIDE='cc50a88bbd8dd3e4da066d33d14fdfc8'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'; Remove-Item Env:RRT_HARNESS_HIDE",
+      "harness_command": "$env:RRT_HARNESS_HIDE='23eabf5b6364d4a4e86202dc5d27600b'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
         "detail": "Needs herrax.presence.rokhorn.failed (transient) or fool_king.gone, plus the unsettable herrax.asked_kill_chivarro cue.",
@@ -1070,6 +1123,86 @@
         "crowding_after_reload": [],
         "note": "Re-spotted from right 7.5 (roof: copy snapped 8.6 m off the spot) to NearUnit exotic trader Offset [1.0,-8.0]. Fallback proven with the Fool King anchor hidden."
       }
+    },
+    {
+      "id": "shamira.presence",
+      "route": "shamira",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "66e12264eaf6bf74196e20a9d7619cd2",
+      "consumer": "shamira.presence",
+      "at": {
+        "NearUnit": "bc1093231b1577a4485a730c29595195",
+        "Side": "front",
+        "Distance": 8.0
+      },
+      "remainder": "F10 pending-live: revised primary or retained native-mark fallback. Verify Ground without roof colliders, body room, approach, production hub click and reload; MET uses native history, not -SetFlags.",
+      "f10_followup": {
+        "result": "pending-live"
+      },
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "eliandra.presence",
+      "route": "eliandra",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "e349079a648cb15448a27f9049344bf1",
+      "consumer": "eliandra.presence",
+      "at": {
+        "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+        "Side": "front",
+        "Distance": 8.0
+      },
+      "remainder": "F10 pending-live: revised primary or retained native-mark fallback. Verify Ground without roof colliders, body room, approach, production hub click and reload; MET uses native history, not -SetFlags.",
+      "f10_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+          "Side": "front",
+          "Distance": 8.0
+        }
+      },
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'eliandra.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '860edc351f25b624296a572aa1f6c48f'"
+    },
+    {
+      "id": "eliandra.presence.mark",
+      "route": "eliandra",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "e349079a648cb15448a27f9049344bf1",
+      "consumer": "eliandra.presence.mark",
+      "at": {
+        "Locator": "9a41b047-9314-4719-a915-9c24aedf3e95",
+        "Offset": [
+          0.0,
+          0.0
+        ]
+      },
+      "remainder": "F10 pending-live: revised primary or retained native-mark fallback. Verify Ground without roof colliders, body room, approach, production hub click and reload; MET uses native history, not -SetFlags.",
+      "f10_followup": {
+        "result": "pending-live",
+        "at": {
+          "Locator": "9a41b047-9314-4719-a915-9c24aedf3e95",
+          "Offset": [
+            0.0,
+            0.0
+          ]
+        }
+      },
+      "harness_command": "$env:RRT_HARNESS_HIDE='253cdb8f434e5a6469b75e18428316e3'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'eliandra.presence.mark' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '860edc351f25b624296a572aa1f6c48f'; Remove-Item Env:RRT_HARNESS_HIDE"
     }
   ],
   "docs": {
@@ -1177,5 +1310,21 @@
     ],
     "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
     "saves_not_available": "No Chapter 5 save has the custody states for Camellia, Wenduag, evil Arueshalae (held etude) or a Fool King court that stays in game."
+  },
+  "live_f10_reproof": {
+    "result": "pending-live",
+    "engine": "Independent UnitSpawningData context, own group before view attachment, foreign-group repair on recorded copies; managed fixture passed, Ch3 game re-proof still required. The log names an etude conflict group, not proof of an inherited unit GroupId.",
+    "placements": [
+      "targona.presence",
+      "aranka.presence.yard",
+      "herrax.presence.rokhorn",
+      "shamira.presence",
+      "eliandra.presence",
+      "eliandra.presence.mark",
+      "jerribeth.presence"
+    ],
+    "spacing": "Revised shared-anchor gaps are >=4 m offline. World-space inter-anchor distances, roofs, static citizens and roaming citizens require joint live proof.",
+    "eliandra": "Only the primary previously used the Fool King. The native-mark locator fallback, scene IDs and all earned gates are preserved.",
+    "devarra": "Specific failed QA copy refused at build/direct construction; existing remote letters and Storyteller hub unchanged. No claim that all dragons lack usable prefabs."
   }
 }

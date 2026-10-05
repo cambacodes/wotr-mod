@@ -1,8 +1,8 @@
 """Eliandra, Chapter 5 in Drezen: after the star-heart (the courtship on her presence; 11-ROSTER-PLAN-2 §2 build sheet).
 
-The stargazers come to Drezen with the high priestess who has let her Lady go. She keeps a table by the Fool King's bar,
-where the stone from her chiefs' ground sits under its cloth (left of Thaberdine, 2.5 m; no other presence uses him), or,
-when the King is gone or cannot be found, the Drezen mark where she stands on the Angel path (the native spawner that
+The stargazers come to Drezen with the high priestess who has let her Lady go. F10 authored staging moves her primary
+table to the ordinary tailor's frontage (8 m; pending live), preserving the King's-gone fallback gates. As before,
+when the King is gone or cannot be found, she waits at the Drezen mark where she stands on the Angel path (the native spawner that
 Eliandra_DefaultActor 64c5a760 hides everywhere else). Every beat is Trickster-only (T): it follows the device and the yes.
 
 The beats: the city (her first morning question); the stone (the King's tavern only); the lights she can see and the
@@ -21,6 +21,7 @@ from storylines.eliandra_trickster import SCENES as SCENES_MAIN
 
 SCENES = []
 
+TAILOR = "253cdb8f434e5a6469b75e18428316e3"  # F10 authored staging: front 8 m; pending live.
 FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"       # FoolKing (MythicTrickster_Ch3), in his tavern in DrezenCapital
 MARK = "9a41b047-9314-4719-a915-9c24aedf3e95"        # her native DrezenCapital spawner (scene 3e2b5ea0; Eliandra_DefaultActor)
 HUB = "eliandra.presence"
@@ -38,12 +39,13 @@ THRESHOLD_TOLD = E + "drezen.threshold"
 CHART = E + "drezen.chart"
 ROAD = E + "drezen.road_promised"
 
-GREETING = ("{n}At a table by the King's bar, out of the worst of the noise, a woman in a grey travelling cloak sits with a cup "
-            "of water in front of her and a star chart spread under her hands. The regulars give her table a wide, respectful "
+GREETING = ("{n}At a table in front of the tailor's stall, out of the worst of the street noise, a woman in a grey travelling cloak sits with a cup "
+            "of water in front of her and a star chart spread under her hands. The passers-by give her table a wide, respectful "
             "berth, as though it were an altar.{/n}")
 PRESENCES = {
-    # Left of the Fool King, 2.5 m; no other presence is anchored to him (10 §2 (i): the Table spawns no units).
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FOOL_KING, Side="left", Distance=2.5),
+    # Front of the ordinary tailor, 8 m: 4.5 m from the evil Arueshalae fallback; pending live.
+    # The existing King-gone and failure gates still select the native-mark fallback.
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="front", Distance=8.0),
               Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD, HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
     # Fallback, when the King is gone or cannot be found: her own Drezen mark from the Angel path.

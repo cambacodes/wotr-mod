@@ -217,15 +217,15 @@ internal static class EliandraTricksterTests
             "Trk_Eliandra_NoLeaveAndKingList: her one King entry does not keep the prior entries in order after every route's: " + string.Join(",", kingList));
         var tavern = story.Presences["eliandra.presence"];
         var mark = story.Presences["eliandra.presence.mark"];
-        check(tavern.At!.NearUnit == FoolKing && tavern.At.Side == "left" && Math.Abs(tavern.At.Distance - 2.5f) < 0.01f
+        check(tavern.At!.NearUnit == "253cdb8f434e5a6469b75e18428316e3" && tavern.At.Side == "front" && Math.Abs(tavern.At.Distance - 8f) < 0.01f
               && tavern.Unit == Unit && tavern.Area == Drezen && tavern.Mode == "spawn-copy" && tavern.Dialog == "hub"
               && tavern.Forbids.Contains("fool_king.gone") && tavern.Forbids.Contains("eliandra.presence.failed")
               && mark.At!.Locator != null && mark.RequiresAnyGroups.Any(g => g.Contains("eliandra.presence.failed") && g.Contains("fool_king.gone")),
-            "Trk_Eliandra_NoLeaveAndKingList: the presence is not left of the King, with her Drezen mark as fallback.");
-        foreach (var pair in story.Presences.Where(p => p.Key != "eliandra.presence" && p.Value.At?.NearUnit == FoolKing))
+            "Trk_Eliandra_NoLeaveAndKingList: the presence is not in front of the persistent tailor, with her Drezen mark as fallback.");
+        foreach (var pair in story.Presences.Where(p => p.Key != "eliandra.presence" && p.Value.At?.NearUnit == tavern.At!.NearUnit))
         {
             var a = Spot(tavern); var b = Spot(pair.Value);
-            check(Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Z - b.Z) * (a.Z - b.Z)) >= 2.0, "Trk_Eliandra_NoLeaveAndKingList: " + pair.Key + " stands within 2 m of her.");
+            check(Math.Sqrt((a.X - b.X) * (a.X - b.X) + (a.Z - b.Z) * (a.Z - b.Z)) >= 4.0, "Trk_Eliandra_NoLeaveAndKingList: " + pair.Key + " stands within 4 m of her.");
         }
         check(story.Presences.Values.Where(p => p.Unit == Unit).All(p => p.At?.NearUnit != Fye && p.At?.NearUnit != Wilcer && p.At?.NearUnit != Smith),
             "Trk_Eliandra_NoLeaveAndKingList: a presence of hers stands at Fye, the yard or the smith.");
