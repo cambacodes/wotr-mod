@@ -1,0 +1,2614 @@
+{
+  "schema_version": 1,
+  "integration_base": "a68bb98851f1ea2be15a0fefb16f8dc91f120950",
+  "sources": {
+    "blueprints": "/wrath/blueprints.zip",
+    "localization": "/wrath/Wrath_Data/StreamingAssets/Localization/enGB.json",
+    "localization_sha256": "3289c3ebab206ba6312d4c2d512c0b5623e52d7e2b86596074b81d355725aa75"
+  },
+  "policy": "Default coexistence acknowledged before commitment; partner knows/reacts in character and remains accounted for through endings. Native dramatized separations and deaths remain valid. No new gates or story edits.",
+  "limits": "none_found is an evidence-search result, not proof that no unlocalized or external-lore relationship exists. Null state conditions mean no native observer identified/bound, not permission to assert death. DLC1 anomalous counterparts and coercion are recorded separately.",
+  "roster": [
+    {
+      "woman": "Anevia",
+      "relationship": "anevia",
+      "spec": "/work/Writer/handoffs/trickster/anevia.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Irabeth",
+          "aliases": [
+            "Beth"
+          ],
+          "relationship_type": "wife",
+          "romanceable_roster_woman": "Irabeth",
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c0/CavesUnderKenabres/NeathholmVillage/HorgusAnevia/Cue_0024.jbp",
+              "guid": "377de2648a0f24d42864709080f850b9",
+              "key": "b8afb926-d090-43ec-a9ed-843b8a4298c4",
+              "text": "\"I'm going to find Irabeth. She's my wife and the leader of the Eagle Watch. As long as she lives, she won't allow {g|Kenabres}Kenabres{/g} to fall.\""
+            },
+            {
+              "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0048.jbp",
+              "guid": "069eeb42997738d40a0db4667eafe44d",
+              "key": "4040691a-21ff-4c31-8d3c-4141d1243cf9",
+              "text": "\"But Anevia isn't just my beloved. She's my staunchest ally. We share every victory and defeat. The best of me is alive thanks to her.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive_present",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethDead.jbp",
+                  "guid": "b14e13f9359585e498fcd81ab95d4d7e",
+                  "export_bindings": [
+                    "Etudes.irabeth_dead"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethGone.jbp",
+                  "guid": "395aad049186445f9f474d0a769ec8ff",
+                  "export_bindings": [
+                    "Etudes.irabeth_gone"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!irabeth_dead",
+                  "!irabeth_gone"
+                ]
+              ],
+              "note": "Alive by exclusion; route presence additionally reads irabeth_away."
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethDead.jbp",
+                  "guid": "b14e13f9359585e498fcd81ab95d4d7e",
+                  "export_bindings": [
+                    "Etudes.irabeth_dead"
+                  ]
+                },
+                {
+                  "path": "World/Dialogs/c5/Iz/IrabethDies/Cue_0013.jbp",
+                  "guid": "1f6f05c729cf7274390fa5c640436dcc",
+                  "key": "62ca985f-706b-4300-b6d7-f871c644c13e",
+                  "text": "\"Anevia. Tell her I love her. Take care... of my Nevi.\" {n}Her eyes roll back. Irabeth Tirabade is dead.{/n}",
+                  "export_bindings": []
+                }
+              ],
+              "when": [
+                [
+                  "irabeth_dead",
+                  "!irabeth.trickster.returned"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "departed",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethGone.jbp",
+                  "guid": "395aad049186445f9f474d0a769ec8ff",
+                  "export_bindings": [
+                    "Etudes.irabeth_gone"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Irabeth/IrabethDead.jbp",
+                  "guid": "b14e13f9359585e498fcd81ab95d4d7e",
+                  "export_bindings": [
+                    "Etudes.irabeth_dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "irabeth_gone",
+                  "!irabeth_dead"
+                ]
+              ],
+              "note": "Gone is departure, not death."
+            },
+            {
+              "state": "earned_return",
+              "evidence": [],
+              "when": [
+                [
+                  "trickster.now",
+                  "irabeth.trickster.returned"
+                ]
+              ],
+              "note": "Authored return; never infer this from foresight alone."
+            }
+          ],
+          "note": "",
+          "acknowledgement_receipts": [
+            "anevia.courtship_requested",
+            "anevia.courtship_ready"
+          ]
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Anevia"
+        ],
+        "localized_records_reviewed": 1158,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/MeetCamelia/Cue_0007.jbp",
+            "guid": "a3b4f763acce63b499983c4a47f652d4",
+            "key": "772005bb-6784-4dd8-aab4-0779f3e992ff",
+            "text": "\"Relax, friend, we're not demons or cultists! Don't poke my eye out with that thing, all right? We fell down here during the attack. I'm Seelah, that's Anevia and this is our new friend. We're looking for a way back to the surface.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "anevia.lastcall.page",
+        "anevia.lastcall.call",
+        "tirabade.lastcall.page"
+      ],
+      "additional_relationships": [
+        "tirabade"
+      ]
+    },
+    {
+      "woman": "Aranka",
+      "relationship": "aranka",
+      "spec": "/work/Writer/handoffs/trickster/aranka.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Thall",
+          "aliases": [
+            "Wallflower"
+          ],
+          "relationship_type": "possible unspoken love interest (one-sided hint, not confirmed pair)",
+          "romanceable_roster_woman": null,
+          "scope": "possible_love_interest",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0004.jbp",
+              "guid": "13cbf1a6bcc044b49918909bdf2382f0",
+              "key": "2fd497b9-d3d2-43e1-99d1-64ed5efa06c2",
+              "text": "{n}All three Desnan adepts are busy. Ilkes is praying, Aranka is practicing a new song, and Thall is immersed in his scrolls, stealing the occasional glance at Aranka.{/n}"
+            },
+            {
+              "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0005.jbp",
+              "guid": "2c84efa67859baa4bba26dcc43d1149b",
+              "key": "3a58f70e-ff6d-45bf-a67b-7b1507fb1bdb",
+              "text": "\"Wallflower, I've told you so many times, you have an amazing voice! So deep, so striking... I'd have you trained up in a snap if only you wanted to sing!\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive_rescued_adept",
+              "when": null,
+              "evidence": [
+                {
+                  "path": "World/Dialogs/c1/KenabresBurning/DesnaAdept3/Cue_0003.jbp",
+                  "guid": "e6bf2a3e449bd6441a9f83350dce9673",
+                  "key": "d7a7c3f8-6ed4-44a5-bf43-0b7230387650",
+                  "text": "\"Pardon me... I saw you with that shawl... Does this mean that you're a friend of Aranka's? What am I saying, of course it does! So...\""
+                }
+              ],
+              "note": "Ch1 inquisitor encounter can resolve with rescue; Azata island cue requires the surviving adepts. No current fate alias found in this export."
+            },
+            {
+              "state": "unrescued_or_unavailable",
+              "when": null,
+              "evidence": [
+                {
+                  "path": "World/Dialogs/c1/KenabresBurning/DesnaAdept3/Cue_0005.jbp",
+                  "guid": "f5ad26a14c68bd1468d7261a01375cef",
+                  "key": "9297503d-7ef7-43da-9e36-6bef4585e4a9",
+                  "text": "{n}The young man's speech is interrupted by the arrival of a new cast of characters: people in the robes of Iomedae's inquisitors appear from all sides, surrounding him.{/n} \"Adept Thall of the temple of {g|Desna}Desna{/g}, you are under arrest on suspicion of treason and aiding the demons. You have one minute to come quietly. Drag your feet, and we'll count that as an attempt to resist justice!\""
+                }
+              ],
+              "note": "Arrest is a possible failed-rescue branch, not proof of present death. Confirm the actual native encounter/unit outcome before a bodily appearance; no current fate alias found."
+            }
+          ],
+          "note": "No reciprocal declaration. Resolve this hint in character before inferring a formal coexistence arrangement; no new Thall romance or rescue mechanic is requested."
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Aranka",
+          "DesnaAdept"
+        ],
+        "localized_records_reviewed": 378,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Mythic_Azata/Island/DesnaAdepts/Cue_0004.jbp",
+            "guid": "13cbf1a6bcc044b49918909bdf2382f0",
+            "key": "2fd497b9-d3d2-43e1-99d1-64ed5efa06c2",
+            "text": "{n}All three Desnan adepts are busy. Ilkes is praying, Aranka is practicing a new song, and Thall is immersed in his scrolls, stealing the occasional glance at Aranka.{/n}"
+          }
+        ]
+      },
+      "note": "Thall has a suggestive one-sided attention cue; no mutual romance established. Ilkes is a fellow adept, not proven lover.",
+      "shared_scene_ids": [
+        "aranka.lastcall.page",
+        "aranka.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Areelu",
+      "relationship": "areelu",
+      "spec": "/work/Writer/handoffs/trickster/areelu-vorlesh.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Areelu"
+        ],
+        "localized_records_reviewed": 1542,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/AlarmSE/Dialogue/Cue_0001.jbp",
+            "guid": "118a5fa5673d3f24a8fd5d0d8cde090d",
+            "key": "8e865e3f-3657-4844-9a4e-0930c8f12add",
+            "text": "{n}The young soldier wipes the blood spatter from his face with a shaking hand.{/n} \"By {g|Iomedae}Iomedae{/g}... I'm alive. Whew... it felt like I had half the Abyss and {g|Areelu}Areelu{/g} herself on my tail back there!\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "areelu.lastcall.page",
+        "areelu.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Arsinoe",
+      "relationship": "arsinoe",
+      "spec": "/work/Writer/handoffs/trickster/arsinoe.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Arsinoe"
+        ],
+        "localized_records_reviewed": 108,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c5/Drezen_Under_Siedge/AneviaDrezenPartisans/Cue_0015.jbp",
+            "guid": "8ddfc824800c89f499aee09238428e10",
+            "key": "1a8a489f-83e5-4bd2-97ec-e6337ed0c337",
+            "text": "\"Of course, they couldn't move the bodies of those poor people whose souls were stolen by that jeweler, Sunhammer or whatever his name is. They've been sheltered in the city. Arsinoe has been looking after 'em, and Seelah's pals from the Houndhearts have been guarding 'em all this time. The demons have attacked a few times and given the knights a thrashing, only Elan was left standing. But none of the victims came to any harm. By Desna, I hope their souls are found so all this won't have been for nothin'.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "arsinoe.lastcall.page",
+        "arsinoe.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Arueshalae",
+      "relationship": "arueshalae",
+      "spec": "/work/Writer/handoffs/trickster/arueshalae.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Dimalchio",
+          "aliases": [],
+          "relationship_type": "former lover, corrupted and abandoned before campaign",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q2/KTC_Letter/Cue_0008.jbp",
+              "guid": "9e430a2cb24a2b54ca52d4e5debccfaf",
+              "key": "4f9ff125-0639-44ac-ab5e-797fe310a8ac",
+              "text": "\"He was an {g|azata}azata{/g} once. A true hero — a knight and a poet, a defender of the weak. The pride of Elysium. And I... I corrupted him. I made him fall in love with me. I broke his heart. I made him commit foul crimes I cannot even describe, and when he became indistinguishable from a demon, I left him in the Abyss.\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q2/Dimalchio/Cue_0052.jbp",
+              "guid": "f76f92a1ca5f4954eac822af89649515",
+              "key": "02abcaca-61ff-45a8-9a0c-61edbf6b5a96",
+              "text": "{n}Arueshalae stands up.{/n} \"I've tried to apologize, but you clearly don't need my apologies. Let's have it your way, then. I just want you to know I wholeheartedly regret what I've done to you. Goodbye, Dimalchio. I'm leaving — and this time, for good.\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q2/Dimalchio/Cue_0053.jbp",
+              "guid": "072a27dd3cb3ca045a96009cdd21cdf9",
+              "key": "fd93dd24-c7a3-4898-b083-a441158044d3",
+              "text": "\"Sit down, you whore.\" {n}The azata slams his hand on the table, staining the cloth with black pus. The other succubi produce whips and smirk at Arueshalae and you.{/n} \"You're not leaving this place again. You're mine by right — and you'll stay mine forever!\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q2/Dimalchio-after/Cue_0016.jbp",
+              "guid": "068c46d53e700bb40aac71a31f20acd2",
+              "key": "9584249b-4188-4d07-ab11-310d487ff1de",
+              "text": "\"It's like that, then?\" {n}The fallen azata jumps to his feet.{/n} \"Then I would rather die than let you leave here alive!\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive_hostile_former",
+              "evidence": [],
+              "when": null,
+              "note": "Q2 mansion encounter; relationship ended before campaign, explicitly confessed by Arueshalae."
+            },
+            {
+              "state": "dead_after_q2",
+              "evidence": [],
+              "when": null,
+              "note": "Native mansion confrontation kills him; quest/cue observations, not a dedicated exported death alias."
+            }
+          ],
+          "note": "",
+          "native_resolution": {
+            "status": "ended_in_native_content",
+            "reason": "Q2 mansion encounter; relationship ended before campaign, explicitly confessed by Arueshalae.",
+            "evidence": [
+              {
+                "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q2/KTC_Letter/Cue_0008.jbp",
+                "guid": "9e430a2cb24a2b54ca52d4e5debccfaf",
+                "key": "4f9ff125-0639-44ac-ab5e-797fe310a8ac",
+                "text": "\"He was an {g|azata}azata{/g} once. A true hero — a knight and a poet, a defender of the weak. The pride of Elysium. And I... I corrupted him. I made him fall in love with me. I broke his heart. I made him commit foul crimes I cannot even describe, and when he became indistinguishable from a demon, I left him in the Abyss.\""
+              }
+            ]
+          }
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Arueshalae",
+          "Arueshalae",
+          "Arushalae"
+        ],
+        "localized_records_reviewed": 1823,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c2_vs/DrezenSiege/Arusha_DrezenPrison/Answer_0034.jbp",
+            "guid": "b693e5a035ac1fd458bbbabb00d28441",
+            "key": "ae26ba57-ef4f-4810-af87-eff594329286",
+            "text": "[Accept Arueshalae into your party] \"Welcome to the crusaders!\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "arueshalae.lastcall.page",
+        "arueshalae.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Camellia",
+      "relationship": "camellia",
+      "spec": "/work/Writer/handoffs/trickster/camellia.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Rillik (or Rellik)",
+          "aliases": [
+            "Rillik",
+            "Rellik"
+          ],
+          "relationship_type": "unrequited suitor and murder victim",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q1_NobleIntent/CamelliaRedHanded/Cue_0028.jbp",
+              "guid": "d6eea83ca6c234d4e81729386b7177e1",
+              "key": "f31a975e-49f0-4475-9435-c3fdfd397a12",
+              "text": "{n}Camellia looks at the body in surprise, as if she's seeing it for the first time.{/n} \"He's the youngest son of a noble from {g|Mendev}Mendev{/g}. I believe his name was Rillik. Or Rellik. I think the dolt was in love with me — he was ever so eager to come with me to this house. One hint was all it took.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "dead_on_native_introduction",
+              "evidence": [],
+              "when": null,
+              "note": "Corpse in CamelliaRedHanded; murder is shown on-page. No dedicated exported death flag or living partner state."
+            }
+          ],
+          "note": "Never a verified reciprocal romance. Record the victim; do not require him to return or consent after death.",
+          "native_resolution": {
+            "status": "ended_in_native_content",
+            "reason": "Never a verified reciprocal romance. Record the victim; do not require him to return or consent after death.",
+            "evidence": [
+              {
+                "path": "World/Dialogs/Companions/CompanionQuests/Camellia/Q1_NobleIntent/CamelliaRedHanded/Cue_0028.jbp",
+                "guid": "d6eea83ca6c234d4e81729386b7177e1",
+                "key": "f31a975e-49f0-4475-9435-c3fdfd397a12",
+                "text": "{n}Camellia looks at the body in surprise, as if she's seeing it for the first time.{/n} \"He's the youngest son of a noble from {g|Mendev}Mendev{/g}. I believe his name was Rillik. Or Rellik. I think the dolt was in love with me — he was ever so eager to come with me to this house. One hint was all it took.\""
+              }
+            ]
+          }
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Camellia"
+        ],
+        "localized_records_reviewed": 1252,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/MeetCamelia/Cue_0008.jbp",
+            "guid": "e6ba26401a42d994e8906e2f867740d8",
+            "key": "a5eeec6b-0601-42a8-9d54-972a90aa1b54",
+            "text": "\"Really? I'm so ever glad to hear it...\" {n}The girl relaxes slightly, but she keeps her hand on her sheathed weapon.{/n} \"Allow me to introduce myself: I am Camellia. I was also in the square when... when...\" {n}Her self-control falters for a moment and you glimpse the fear beneath her mask of perfect placidity. She licks her lips nervously.{/n} \"I can scarcely believe it. How did all those demons get into the city? I thought — naively, it now seems — that the {g|wardstone}Wardstone{/g} protected us from attack. And Terendelev? I can't wrap my head around it.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "camellia.lastcall.page",
+        "camellia.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Chadali",
+      "relationship": "chadali",
+      "spec": "/work/Writer/handoffs/trickster/chadali.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Chadali"
+        ],
+        "localized_records_reviewed": 42,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Mythic_Trickster/Council_1/Cue_0006.jbp",
+            "guid": "e416b518d4bbf724c89b988a4e9dc7f1",
+            "key": "048e5ea8-50a4-4382-8922-e9fde2dd5a40",
+            "text": "\"I think I agree with Chadali. Even if representatives of the different external planes, from {g|Heaven}Heaven{/g} to {g|Hell}Hell{/g}, do come to the battle, it will be a great opportunity to sit them all down at the negotiating table. Then we can find a reasonable, peaceful solution to this old source of strife, as civilized beings should.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "chadali.lastcall.page",
+        "chadali.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Chivarro",
+      "relationship": "minagho_chivarro",
+      "spec": "/work/Writer/handoffs/trickster/chivarro.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Minagho",
+          "aliases": [],
+          "relationship_type": "lover",
+          "romanceable_roster_woman": "Minagho",
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0119.jbp",
+              "guid": "7b8ff644c3d1e6848bef78edcab65193",
+              "key": "eb303eaa-9c88-4aea-9a33-0e7913e40ad5",
+              "text": "\"Once, I tried to kill her in her bed as she slept. The fight somehow turned into sex, yet it was so much more than sex! In the morning, we both realized we were bound by our craving for each other. Of course, we do still try to kill each other. Minagho can be insufferable, and I'm not much better. But if one of us ever succeeded, it would be a terrible blow to whoever survived. I know demons should not have such feelings. But there's nothing I can do about it.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
+                  "guid": "3b8c0801d5e9a694b848ee13564d2ad7",
+                  "export_bindings": [
+                    "Etudes.minagho.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!minagho.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Minagho/MinaghoDead.jbp",
+                  "guid": "3b8c0801d5e9a694b848ee13564d2ad7",
+                  "export_bindings": [
+                    "Etudes.minagho.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "minagho.dead",
+                  "!minagho_chivarro.trickster.returned_minagho"
+                ]
+              ],
+              "note": "Export minagho.dead native cue/etude bindings listed in the route."
+            },
+            {
+              "state": "earned_return",
+              "evidence": [],
+              "when": [
+                [
+                  "trickster.now",
+                  "minagho_chivarro.trickster.returned_minagho"
+                ]
+              ],
+              "note": ""
+            }
+          ],
+          "note": ""
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Chivarro"
+        ],
+        "localized_records_reviewed": 167,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Mythic_Demon/Alushinyrra/Yozz/Answer_0068.jbp",
+            "guid": "30f4173580f97764d99cdedf16db7882",
+            "key": "c4a0f327-f273-47e6-ac33-7299a5a831b4",
+            "text": "\"Tell me more about Chivarro.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "minachiv.lastcall.page",
+        "minagho_chivarro.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Delamere",
+      "relationship": "delamere",
+      "spec": "/work/Writer/handoffs/trickster/delamere.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Delamere"
+        ],
+        "localized_records_reviewed": 372,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/TempleOfDelamere/DelamereInTomb/Answer_0005.jbp",
+            "guid": "deca1c9cbb1e83c4eac46fed52612b61",
+            "key": "cf0e8158-b571-4dd8-a7f4-b31155b95462",
+            "text": "\"Bow before me, Delamere!\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "delamere.lastcall.page",
+        "delamere.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Devarra",
+      "relationship": "devarra",
+      "spec": "/work/Writer/handoffs/trickster/devarra.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Devarra",
+          "DragonHunt"
+        ],
+        "localized_records_reviewed": 240,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/Companions/CompanionQuests/Grimbor/DragonHunt/DragonHuntBookEvents/DragonHuntBookEvent1/Answer_0003.jbp",
+            "guid": "a4a62450041a61744b10a34c7c228ab6",
+            "key": "daab5aab-261d-4aeb-bd7b-9de5c8649d3a",
+            "text": "Close."
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "devarra.lastcall.page",
+        "devarra.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Dorgelinda",
+      "relationship": "dorgelinda",
+      "spec": "/work/Writer/handoffs/trickster/dorgelinda-stranglehold.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Dorgelinda"
+        ],
+        "localized_records_reviewed": 1,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/NPC_Common/Vendor_Quartermaster/Cue_0053.jbp",
+            "guid": "27b19295930c204438d518c4e494173f",
+            "key": "dcb2a1e5-1ab3-4f35-ae64-c6109d7ce195",
+            "text": "\"No way, Commander!\" {n}The quartermaster throws up his hands.{/n} \"Not in a million years! I can manage an expedition just fine, but running a fortress is a different kettle of fish! That's enough work to make a man's head explode, which is why they sent us an expert from {g|Nerosyan}Nerosyan{/g} — her name is Dorgelinda Stranglehold. I've seen how she handles things — she knows what she's about, that one, Iomedae bless her! She'll be managing the fortress, and I'll keep taking care of the soldiers just like I've been doing.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "dorgelinda.lastcall.page",
+        "dorgelinda.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Eliandra",
+      "relationship": "eliandra",
+      "spec": "/work/Writer/handoffs/trickster/eliandra.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Eliandra"
+        ],
+        "localized_records_reviewed": 82,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Mythic_Angel/Targona/Cue_0014.jbp",
+            "guid": "a528614125b07714db52d9004f36d448",
+            "key": "429648c7-bdc3-4ab6-bed3-5e506c3d32b3",
+            "text": "\"Unbeknownst to me, I acquired this power... Even immersed in my enchanted sleep, I protected the poor folk who were imprisoned in Areelu's laboratory with me. And Eliandra and Katair did the same at Pulura's Fall. It was their self-sacrifice, so different but always sincere, that protected the temple, not just Pulura's power. The Hand of the Inheritor had long suspected this, but only after speaking to me did he finally realize the truth.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "eliandra.lastcall.page",
+        "eliandra.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Elyanka",
+      "relationship": "elyanka",
+      "spec": "/work/Writer/handoffs/trickster/elyanka-camilary.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Septimus",
+          "aliases": [],
+          "relationship_type": "lovers among DLC1 anomalous counterparts",
+          "romanceable_roster_woman": null,
+          "scope": "dlc1_anomaly",
+          "evidence": [
+            {
+              "path": "World/Dialogs/DLC1_Megaepic/Iz/Ziggurat/ElyankaSeptimus/Cue_0003.jbp",
+              "guid": "158c823dfffe4276841969bc3616f25c",
+              "key": "4e81124e-598c-4e9c-b670-f31ce6ad67ae",
+              "text": "{n}The vampire looks like a page boy but regards you with the gaze of a venerable elder who has seen more than one century pass.{/n} \"I am Septimus, the emissary sent from the far side of Golarion and a scion of Geb, kingdom of the dead. But I no longer serve at your court — my loyalty belongs solely to the queen of my heart.\""
+            },
+            {
+              "path": "World/Dialogs/DLC1_Megaepic/Iz/Ziggurat/ElyankaSeptimus/Cue_0020.jbp",
+              "guid": "36e0965b15654bb7a948180d6306b9d6",
+              "key": "51c0ed34-e7bf-4e54-b706-6b864570d224",
+              "text": "\"Yes, we do love each other. And our passion will be eternal as undeath itself. Envy us!\""
+            },
+            {
+              "path": "World/Dialogs/DLC1_Megaepic/Iz/Ziggurat/ElyankaSeptimus/Cue_0012.jbp",
+              "guid": "74c80739f82b4e13a4d98fbb3fadfefd",
+              "key": "bfad3e55-7067-4164-97e4-ac7b11e9c73f",
+              "text": "{n}The stunned vampire gives Elyanka a hurt look and exclaims in a trembling voice,{/n} \"You have betrayed me, my beloved? And for... {mf|him|her}? Curse you, harlot!\""
+            },
+            {
+              "path": "World/Dialogs/DLC1_Megaepic/Iz/Ziggurat/ElyankaSeptimus/Cue_12.jbp",
+              "guid": "d00563cfaa6b4edcaef8ed02d3785b8a",
+              "key": "fe9dfaec-804b-47c2-a12d-32b96478673a",
+              "text": "\"I... don't remember. It's strange. A moment ago our confrontation seemed inevitable to me, and now I can't remember why I was out for {mf|his|her} blood.\" {n}She turns to you and offers a stately bow.{/n} \"Farewell, Commander. And thank you for revealing the truth to us.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "anomalous_pair",
+              "evidence": [],
+              "when": null,
+              "note": "DLC1 Valmallos anomaly; charm/betrayal death or peaceful dispersal alternatives are shown in this dialogue. Base campaign SeptimusIsAlly/Enemy flags do not establish this romance."
+            }
+          ],
+          "note": "Do not transplant the anomaly romance into ordinary Elyanka without evidence."
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Elyanka",
+          "ElyankaSeptimus"
+        ],
+        "localized_records_reviewed": 140,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Drezen_C3/MythicLich_Chapter3_InDrezen/Elyanka_MainDialogue/Answer_0003.jbp",
+            "guid": "0e35a97c05a78c8479a73abbfcfccb2f",
+            "key": "56442276-940e-4565-ad5d-4ae276c90c88",
+            "text": "\"I want to know more about you.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "elyanka.lastcall.page",
+        "elyanka.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Eritrice",
+      "relationship": "eritrice",
+      "spec": "/work/Writer/handoffs/trickster/eritrice.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Eritrice",
+          "Library"
+        ],
+        "localized_records_reviewed": 43,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Mythic_Trickster/Council_1/Cue_0007.jbp",
+            "guid": "b5aa61e8ef441ca4a979285c30094268",
+            "key": "c5cd4372-c6f1-4bee-8444-165246c637fe",
+            "text": "\"I'm afraid, my dear Eritrice, they won't be in the mood to talk... Oh, look who's here!\" {n}The tattooed man turns to you with a warm smile.{/n} \"Look, we have a guest! This is the one I told you about, Commander {name}, leader of the current crusade! Don't you think it's time to listen to what the mortals have to say about this mess? Go on, speak! Share your opinion with us!\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "eritrice.lastcall.page",
+        "eritrice.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Galfrey",
+      "relationship": "galfrey",
+      "spec": "/work/Writer/handoffs/trickster/galfrey.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Unnamed knight of her father",
+          "aliases": [
+            "first love"
+          ],
+          "relationship_type": "former first love",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionRomances/Galfrey/GalfreyDrink/Cue_0033.jbp",
+              "guid": "b1e7719164da9064d9a59b789bd15697",
+              "key": "b9c9c816-08fc-40a0-904d-3aacc70f9fab",
+              "text": "\"We agreed to be honest, didn't we? He was one of my father's knights, a few years older than me. I was a young, innocent girl who had just come of age, and I fell madly in love with him. I was forever trying to contrive 'chance meetings' with him in the palace. I always made sure to know which post he was guarding.\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionRomances/Galfrey/GalfreyDrink/Cue_0034.jbp",
+              "guid": "12ab9673be8cf16459963b8967682667",
+              "key": "0c725bf7-7979-45a4-9785-077d7253e2f0",
+              "text": "\"I remember waiting for the night he would be stationed in the palace gardens. I remember my cheeks burning as I confessed my love to him. I remember our first kiss.\" {n}She sighs.{/n} \"And then my father died, I became queen, and my knight chose to abandon his position and leave. He told me that he did not wish to die young in some senseless war.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "departed_former",
+              "evidence": [],
+              "when": null,
+              "note": "Abandoned his post when her father died and she became queen. No name, death or return flag; age alone is not a supplied death witness."
+            }
+          ],
+          "note": "Kitrane is Galfrey’s authored assumed name, not the name of this knight.",
+          "native_resolution": {
+            "status": "ended_in_native_content",
+            "reason": "Kitrane is Galfrey’s authored assumed name, not the name of this knight.",
+            "evidence": [
+              {
+                "path": "World/Dialogs/Companions/CompanionRomances/Galfrey/GalfreyDrink/Cue_0033.jbp",
+                "guid": "b1e7719164da9064d9a59b789bd15697",
+                "key": "b9c9c816-08fc-40a0-904d-3aacc70f9fab",
+                "text": "\"We agreed to be honest, didn't we? He was one of my father's knights, a few years older than me. I was a young, innocent girl who had just come of age, and I fell madly in love with him. I was forever trying to contrive 'chance meetings' with him in the palace. I always made sure to know which post he was guarding.\""
+              },
+              {
+                "path": "World/Dialogs/Companions/CompanionRomances/Galfrey/GalfreyDrink/Cue_0034.jbp",
+                "guid": "12ab9673be8cf16459963b8967682667",
+                "key": "0c725bf7-7979-45a4-9785-077d7253e2f0",
+                "text": "\"I remember waiting for the night he would be stationed in the palace gardens. I remember my cheeks burning as I confessed my love to him. I remember our first kiss.\" {n}She sighs.{/n} \"And then my father died, I became queen, and my knight chose to abandon his position and leave. He told me that he did not wish to die young in some senseless war.\""
+              }
+            ]
+          }
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Galfrey"
+        ],
+        "localized_records_reviewed": 1102,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/DefendersHeart/ChapterEnd_QueenVisit/Cue_0028.jbp",
+            "guid": "c10f255b4c2a9ab4db695b3581c460ee",
+            "key": "39ce4114-141a-41c1-8db8-8d0f38107934",
+            "text": "\"Yes, it is I. I made the journey here to deduct the cost of repairing the garrison roof from your salary.\" {n}The woman rises from her seat, approaches you, and holds out her hand:{/n} \"We have not been introduced. {g|Galfrey}Galfrey of Mendev{/g}.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "galfrey.lastcall.page",
+        "galfrey.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Gesmerha",
+      "relationship": "gesmerha",
+      "spec": "/work/Writer/handoffs/trickster/gesmerha.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Gesmerha",
+          "Wintersun"
+        ],
+        "localized_records_reviewed": 829,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Mythic_Aeon/AeonJudgment_c3/Q10AeonWintersunRavon/AeonWintersunRavon/Answer_0003.jbp",
+            "guid": "077343f3506fcc041b5ff91e8ce1fca3",
+            "key": "0b45bc7e-7ddb-4638-b193-08a3f220b3fb",
+            "text": "\"The people who live here are gaunt, but you look strong and healthy.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "gesmerha.lastcall.page",
+        "gesmerha.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Hepzamirah",
+      "relationship": "hepzamirah",
+      "spec": "/work/Writer/handoffs/trickster/hepzamirah.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Hepzamirah"
+        ],
+        "localized_records_reviewed": 420,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c2_vs/SummonFromHepzamirah/Answer_0004.jbp",
+            "guid": "95f2af64c9e72ce42bb1b7a913db9189",
+            "key": "099228a2-2d4f-4355-aa5c-6fcbc14d9921",
+            "text": "...uses every effort to suppress the tangle of rage in {mf|his|her} soul, which the mysterious power has latched on to."
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "hepzamirah.lastcall.page",
+        "hepzamirah.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Herrax",
+      "relationship": "herrax",
+      "spec": "/work/Writer/handoffs/trickster/herrax.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Herrax",
+          "Herraxa"
+        ],
+        "localized_records_reviewed": 213,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c4/FleshMarket/MeatSlaver_dialogue/Cue_0003.jbp",
+            "guid": "d7a044226d7a1334c93a3c88e271678d",
+            "key": "360e6e7f-7e04-4b26-aec5-e101385d4d47",
+            "text": "\"You may have played your little games with that insolent bitch, Chivarro, but that won't work on me. Ever since I took over her turf, customers have been lining up. I can do quite well even without these aasimars of yours, if I must. So, I'm going to give you thirty thousand, and you're going to accept and say, 'Thank you, most esteemed Herrax, for forgiving me my pathetic attempt to play you for a fool.'\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "herrax.lastcall.page"
+      ]
+    },
+    {
+      "woman": "Horzalah",
+      "relationship": "horzalah",
+      "spec": "/work/Writer/handoffs/trickster/horzalah.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Horzalah",
+          "Grimbor"
+        ],
+        "localized_records_reviewed": 1143,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/Hepzamirah_main/Cue_0017.jbp",
+            "guid": "49356164c129c784b9ffc28888132245",
+            "key": "aee9beea-2e8e-4612-b51f-11e4bfee8cba",
+            "text": "{n}The ribbon comes undone with the slightest touch, and the box falls apart to reveal... a tiny dead canary. The bird spreads its wings and turns toward the demon. It opens its beak and Horzalah's voice rings through the air.{/n} \"We meet again... sister!\" {n}The bird suddenly launches into the air, transforming into a flaming spear that flies straight for Hepzamirah's face.{/n}"
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "horzalah.lastcall.page",
+        "horzalah.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Iomedae",
+      "relationship": "iomedae",
+      "spec": "/work/Writer/handoffs/trickster/iomedae.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Iomedae"
+        ],
+        "localized_records_reviewed": 626,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythicMiracle/Cue_0027.jbp",
+            "guid": "563c720017185a34d9db4e99a8582062",
+            "key": "ba4ade7e-ae1a-4bf5-a8a3-cda9b892a7a0",
+            "text": "{n}Seelah kneels before the light, offering up a prayer to {g|Iomedae}Iomedae{/g}.{/n}"
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "iomedae.lastcall.page"
+      ]
+    },
+    {
+      "woman": "Irabeth",
+      "relationship": "irabeth",
+      "spec": "/work/Writer/handoffs/trickster/irabeth.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Anevia",
+          "aliases": [
+            "Nevi"
+          ],
+          "relationship_type": "wife",
+          "romanceable_roster_woman": "Anevia",
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/NPC_Common/Irabeth/Cue_0024.jbp",
+              "guid": "a80df3f6b39f9f147bca3191eb6efef5",
+              "key": "b270c93a-0d74-42a6-abd5-d2ac5b45f124",
+              "text": "\"It happened in Tymon. I was tracking a gang of bandits, which my employer suspected was a cover for {g|Razmiran}Razmiran{/g} spies. I managed to find their lair, but inside I found something far more dangerous than spies: an unholy temple to {g|Zon-Kuthon}Zon-Kuthon{/g}! When I broke in there, the cultists were about to sacrifice someone — the person who was destined to become my wife. Anevia. But that's another story.\""
+            },
+            {
+              "path": "World/Dialogs/c1/GreyGarrison_ChapterStart/Irabeth_FirstMeet/Cue_0004.jbp",
+              "guid": "7fbc0c7ef5ccc8742a39142b0f44d152",
+              "key": "19c79917-a34d-4aef-8739-d9256fc6894c",
+              "text": "{n}She turns to you.{/n} \"{Name}, let me introduce to you my wife, Irabeth Tirabade — head of the Eagle Watch.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive_present",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
+                  "guid": "ba365d0ae03c414a8f6f906837a4fe91",
+                  "export_bindings": [
+                    "Etudes.anevia_dead"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaGone.jbp",
+                  "guid": "09f46662bcd14a03a0874267e16d6e6f",
+                  "export_bindings": [
+                    "Etudes.anevia_gone"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!anevia_dead",
+                  "!anevia_gone"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaDead.jbp",
+                  "guid": "ba365d0ae03c414a8f6f906837a4fe91",
+                  "export_bindings": [
+                    "Etudes.anevia_dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "anevia_dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "departed",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/AneviaGone.jbp",
+                  "guid": "09f46662bcd14a03a0874267e16d6e6f",
+                  "export_bindings": [
+                    "Etudes.anevia_gone"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "anevia_gone",
+                  "!anevia.trickster.returned"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "earned_return",
+              "evidence": [],
+              "when": [
+                [
+                  "trickster.now",
+                  "anevia.trickster.returned"
+                ]
+              ],
+              "note": "Authored departure return; does not raise a dead Anevia."
+            }
+          ],
+          "note": "",
+          "acknowledgement_receipts": [
+            "irabeth.courtship_requested",
+            "irabeth.personal_ready"
+          ]
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Irabeth"
+        ],
+        "localized_records_reviewed": 1036,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/NeathholmVillage/HorgusAnevia/Cue_0024.jbp",
+            "guid": "377de2648a0f24d42864709080f850b9",
+            "key": "b8afb926-d090-43ec-a9ed-843b8a4298c4",
+            "text": "\"I'm going to find Irabeth. She's my wife and the leader of the Eagle Watch. As long as she lives, she won't allow {g|Kenabres}Kenabres{/g} to fall.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "irabeth.lastcall.page",
+        "irabeth.lastcall.call",
+        "tirabade.lastcall.page"
+      ],
+      "additional_relationships": [
+        "tirabade"
+      ]
+    },
+    {
+      "woman": "Jannah",
+      "relationship": "jannah",
+      "spec": "/work/Writer/handoffs/trickster/jannah.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Jannah"
+        ],
+        "localized_records_reviewed": 60,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/DefendersHeart/Irabeth_DefHeart/Cue_0028.jbp",
+            "guid": "56a08e3d9ab1ddb4c81680ae55286e5e",
+            "key": "ca870a6e-c5eb-4277-915d-35ddc81b516a",
+            "text": "\"And one last thing. The Eagle Watch has lost a lot of soldiers recently — some were killed, but others simply haven't been seen since the attack. In the chaos that is now {g|Kenabres}Kenabres{/g}, it's next to impossible to confirm anything for sure.\" {n}Irabeth clears her throat.{/n} \"One of the missing fighters is Jannah Aldori, a new recruit in the Watch. She got along well with Seelah and she often went drinking with her. I honestly thought Seelah and Jannah had died together. But now Seelah's returned with you and there's no sign of Jannah. If you learn anything of her whereabouts when you're out in the city, please report back.\""
+          }
+        ]
+      },
+      "note": "Elan is Kiana’s husband. No native engagement or romance with Jannah established; shared companion quest participation is not a love-interest witness.",
+      "shared_scene_ids": [
+        "jannah.lastcall.page",
+        "jannah.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Jerribeth",
+      "relationship": "jerribeth",
+      "spec": "/work/Writer/handoffs/trickster/jerribeth.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Marhevok",
+          "aliases": [],
+          "relationship_type": "love interest exploited by demoness",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0014.jbp",
+              "guid": "52ada8be40232dc4eaccb8b1c3d79f55",
+              "key": "b003e047-ab44-4a8b-af47-b50108d50484",
+              "text": "\"Oh really? Then listen to the most important thing I want to say to you: don't destroy my toy village. This place and its amusing people have become quite dear to me. Marhevok too — he loves me so passionately, so blindly...\" {n}The creature's voice turns pensive.{/n} \"There are some things you cannot discover in the Abyss, no matter how long you look.\""
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0001.jbp",
+              "guid": "65362d7842f8af04ea9066041691155d",
+              "key": "154e763b-69b1-44e1-90ae-e98518400a51",
+              "text": "\"My lady... My love... Forgive me... I failed you... I lost... Didn't even keep the key safe after you gave it to me... Come, protect our Wintersun... But if you can't — take me away, take me to your castle in the clouds...\""
+            },
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/MarhevokTransformed/Cue_0001.jbp",
+              "guid": "410114edfb51a9b44961a482d3e52cbd",
+              "key": "6edde3ab-46b5-494b-aadd-1f225638587b",
+              "text": "{n}A plant stands in a pot, swaying gently, its vines and leaves strangely resembling charred human flesh. It slowly turns to you. Crazed human eyes stare at you from the surface of the flower bud. Beneath the pulsing plant tissue, you can still make out the features of a face — the face of {d|c3 marhevok castle}Marhevok{/d}, the chief of the ill-fated Wintersun clan.{/n}"
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/JerribethReveal/Cue_0044.jbp",
+              "guid": "7b9443fc261d217468e1c6b132fce4c8",
+              "key": "6bf14d04-49a6-46f1-aec7-a417304b58ce",
+              "text": "{n}Marhevok withstands the shock of your power with surprising equanimity. He raises his eyes to Jerribeth and beholds the grotesque creature unflinchingly.{/n} \"I have been judged, I have been fairly judged and I must make amends to my people. Farewell, my lady. Farewell, but know — you were and always will be my sun.\""
+            },
+            {
+              "path": "World/Dialogs/c3/IvorySanctum/JerribethGreetings/Cue_0004_NewMarh.jbp",
+              "guid": "d905736155d86ca4ea4f4ab463903082",
+              "key": "01dcca8f-8c3b-4039-84a2-ed08fcbc136b",
+              "text": "\"I gave him the thing he wanted most — the chance to be with me forever. In a new form, one more convenient for me, and for him as well, if I ever wish to take him with me to the Abyss, for instance.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive_transformed_in_sanctum",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_InSunctum.jbp",
+                  "guid": "4f87458c1e0d21c47b9269cd9dc727be",
+                  "export_bindings": []
+                }
+              ],
+              "when": null,
+              "note": "No exported alias on this branch. InSanctum makes him a living plant, not dead."
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_Dead.jbp",
+                  "guid": "fc03aa45c96a1424680c505627db8144",
+                  "export_bindings": []
+                }
+              ],
+              "when": null,
+              "note": "No exported alias."
+            },
+            {
+              "state": "alive_chief_separated_by_judgment",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_StayLeader.jbp",
+                  "guid": "baa4820ac052d664bbaa261d17ce9b08",
+                  "export_bindings": [
+                    "Etudes.gesmerha.marhevok_rules"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "gesmerha.marhevok_rules"
+                ]
+              ],
+              "note": "Aeon judgment/farewell is native, not a default Trickster breakup."
+            }
+          ],
+          "note": ""
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Jerribeth"
+        ],
+        "localized_records_reviewed": 158,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/IvorySanctum/Cage_Cultists/Answer_0008.jbp",
+            "guid": "5805ad958b76e6a44aa3cf82082fed2d",
+            "key": "ebeb9f34-8f01-4627-9d18-0b0169005abc",
+            "text": "[Nod to the leader of the templars] \"Jerribeth says: 'Do it.'\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "jerribeth.lastcall.page",
+        "jerribeth.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Kaylessa",
+      "relationship": "kaylessa",
+      "spec": "/work/Writer/handoffs/trickster/kaylessa.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Kaylessa"
+        ],
+        "localized_records_reviewed": 362,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c5/Iz/Anemora/Answer_0144_AskAboutKaylessa.jbp",
+            "guid": "6c408b29d3d0cbf499b5dd18a060c472",
+            "key": "ff84eee1-d56e-4f1c-a426-f19c8ad0f373",
+            "text": "\"I met your acolytes. The elves from Kyonin who ended up in your cult.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": []
+    },
+    {
+      "woman": "Kiana",
+      "relationship": "kiana",
+      "spec": "/work/Writer/handoffs/trickster/kiana.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Elan",
+          "aliases": [],
+          "relationship_type": "betrothed, then husband; possible widowhood",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/KyanaWelcome/Cue_0001.jbp",
+              "guid": "0bb8e464eb1a6aa458e8d5dba62f5413",
+              "key": "3cafc806-3d1e-41fa-b697-51c1d330892b",
+              "text": "{n}A slender young woman in a flowing dress walks toward you. The first thing you notice is her eyes — they are a striking blue-green.{/n} \"Welcome, travelers, to the secret-steeped land of {g|Ustalav}Ustalav{/g}! You have come to the kingdom of grim mysteries and exquisite secrets. I, the vampire princess, am delighted to see you in my castle!\" {n}After a pause, the girl smiles coyly,{/n} \"I'm glad to finally meet you, Commander, Seelah. I am Kiana, soon to be the wife of that unfortunate knight who invited you here.\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/WeddingUnexpected/Cue_0020.jbp",
+              "guid": "4e7816f547519de44b5ddb8a9ba2bdd8",
+              "key": "523858d0-0b32-42c4-a329-c9dca699b5c2",
+              "text": "\"The gifts have been given. Let us praise the gods! In the name of Abadar, I pronounce you husband and wife. You may exchange rings and join your lips in a kiss!\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp",
+              "guid": "a819e8c85ef23324bb0d8117bb9d7df3",
+              "key": "1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+              "text": "\"Yes, it feels good to be married.\" {n}Kiana smiles.{/n} \"Although, I sometimes forget that I'm a married woman... since Elan is always off fighting in the crusade.\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/KianaAloneAftermath/Cue_0001.jbp",
+              "guid": "aebbc1845e827dd4da4e28014e7b4162",
+              "key": "1b2e5ca9-c1b5-42b0-9523-5460c6d33a2c",
+              "text": "{n}Kiana appears to be in shock. Her hands are clasped to her chest, and there's a dazed look in her eyes.{/n} \"I was a wife for less than a minute... and now I'm a widow.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Capital.jbp",
+                  "guid": "e5e3765b11eec1244a2137c2999f00d1",
+                  "export_bindings": []
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Knight.jbp",
+                  "guid": "794438e299cd4184dba392150db1bc44",
+                  "export_bindings": []
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+                  "guid": "148423f1d35917946a5ebeeb4f19246c",
+                  "export_bindings": [
+                    "Etudes.seelah.elan_dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!seelah.elan_dead"
+                ]
+              ],
+              "note": "Capital/Knight are placement/role states, not proof of a breakup."
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/Seelah_Friends/Elan_Dead.jbp",
+                  "guid": "148423f1d35917946a5ebeeb4f19246c",
+                  "export_bindings": [
+                    "Etudes.seelah.elan_dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "seelah.elan_dead"
+                ]
+              ],
+              "note": ""
+            }
+          ],
+          "note": "kiana.separated, history_married, history_betrothed, widowed/bereaved are authored history, not a replacement for current Elan_Dead.",
+          "dramatized_separation_flags": [
+            "kiana.separated"
+          ],
+          "acknowledgement_receipts": [
+            "kiana.marriage",
+            "kiana.separated",
+            "kiana.bereaved",
+            "kiana.history_betrothed",
+            "kiana.history_married"
+          ]
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Kiana",
+          "Kyana",
+          "Elan",
+          "Seelah/Q2",
+          "Seelah/Q3"
+        ],
+        "localized_records_reviewed": 627,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/KenabresBurning/HurlunRamien_Early/Answer_0067_HulAngelAns.jbp",
+            "guid": "1e9b74fff8e92074bae949a4a890f4c8",
+            "key": "e81974c7-cd56-40a3-8452-e664de606503",
+            "text": "[Reveal the Light of Heaven] \"Behold, inquisitor — I bear the gift of an angel who died in the caves below Kenabres. I am no enemy of yours.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "kiana.lastcall.page",
+        "kiana.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Konomi",
+      "relationship": "konomi",
+      "spec": "/work/Writer/handoffs/trickster/konomi.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Konomi"
+        ],
+        "localized_records_reviewed": 6,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Drezen_C3/GalfreyArrives/Cue_3.jbp",
+            "guid": "161e748167974caf86ce2a255a5a6637",
+            "key": "b5e5bec7-9d08-49fb-abcf-f451d583f29b",
+            "text": "\"No. I put you in charge of the crusade and therefore I must trust you. If you want my advice, ask Lady Konomi. Her words are my own.\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "konomi.lastcall.page",
+        "konomi.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Melazmera",
+      "relationship": "melazmera",
+      "spec": "/work/Writer/handoffs/trickster/melazmera.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Melazmera",
+          "FulsomeQueen",
+          "Colyphyr",
+          "UmbralDragon"
+        ],
+        "localized_records_reviewed": 607,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c4/FinalDungeon_Colyphyr/FulsomeQueen/Cue_0024.jbp",
+            "guid": "e0dab46a6a2842c4ba0502e82f2981cf",
+            "key": "48a952d9-7515-43e2-97c8-af5700dd1a20",
+            "text": "{n}The demon grows petulant, her voice whiny like a spoiled princess.{/n} \"I need a knight. I am the Fulsome Queen, so I must have knights who will repay my enemies for wronging me. I've been hurt by everyone! This is my island, and they've made me an outcast. They kicked me out of the big wet cave, and they don't respect me at all! Especially that overgrown lizard, that black dragon! She chased me away, mocked me, and then tried to eat me! Dragons are nasty! Be a good knight and kill the dragon!\""
+          }
+        ]
+      },
+      "note": "The undialogued umbral dragon is identified by the Fulsome Queen; her hunting, treasure and hostile encounter establish no partner. Her mod voice is authored.",
+      "shared_scene_ids": [
+        "melazmera.lastcall.page",
+        "melazmera.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Mielarah",
+      "relationship": "mielarah",
+      "spec": "/work/Writer/handoffs/trickster/mielarah.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Mielarah",
+          "Captain"
+        ],
+        "localized_records_reviewed": 290,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c4/AirAdventures/Answer_0316.jbp",
+            "guid": "9e0edaeccb20fbb4eb23477c1aab6706",
+            "key": "62d08869-8cd2-409c-8033-ee842ccc5395",
+            "text": "...demands that Captain Mielarah calm down the crew."
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "mielarah.lastcall.page"
+      ]
+    },
+    {
+      "woman": "Minagho",
+      "relationship": "minagho_chivarro",
+      "spec": "/work/Writer/handoffs/trickster/minagho.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Chivarro",
+          "aliases": [],
+          "relationship_type": "lover",
+          "romanceable_roster_woman": "Chivarro",
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Chivarro_dialogue/Cue_0119.jbp",
+              "guid": "7b8ff644c3d1e6848bef78edcab65193",
+              "key": "eb303eaa-9c88-4aea-9a33-0e7913e40ad5",
+              "text": "\"Once, I tried to kill her in her bed as she slept. The fight somehow turned into sex, yet it was so much more than sex! In the morning, we both realized we were bound by our craving for each other. Of course, we do still try to kill each other. Minagho can be insufferable, and I'm not much better. But if one of us ever succeeded, it would be a terrible blow to whoever survived. I know demons should not have such feelings. But there's nothing I can do about it.\""
+            },
+            {
+              "path": "World/Dialogs/c4/TenThousandDelights/Herraxa_dialogue/Cue_0300.jbp",
+              "guid": "044dc44d93e25bc4da8e244efc46ff9f",
+              "key": "c32aaa28-475c-42bf-b010-c4a805b3181f",
+              "text": "{n}The succubus sounds playful and relaxed.{/n} \"Welcome to the Ten Thousand Delights! My name is Herrax, and I am the new madam here... Thanks to you. You rid us of that insolent upstart Chivarro, sending her after her haughty lover Minagho, so you can consider me in your debt. Know that you will always be welcome here, and my gift will be proof of that.\" {n}With a graceful movement, the demoness hands you a gold coin.{/n}"
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+                  "guid": "fd2ab9b67ce3e284184b1894c82c6c5d",
+                  "export_bindings": [
+                    "Etudes.chivarro.dead"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+                  "guid": "71f85264d9064074f9cf74999ecbffa9",
+                  "export_bindings": [
+                    "Etudes.chivarro.searching"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroWasTeleportedAway.jbp",
+                  "guid": "806ece7bcf18a374e9ad1f7b9e3bc580",
+                  "export_bindings": [
+                    "Etudes.chivarro.exiled"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!chivarro.dead",
+                  "!chivarro.searching",
+                  "!chivarro.exiled"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+                  "guid": "fd2ab9b67ce3e284184b1894c82c6c5d",
+                  "export_bindings": [
+                    "Etudes.chivarro.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "chivarro.dead",
+                  "!minagho_chivarro.trickster.returned_chivarro"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "departed_searching",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroHappyEnd.jbp",
+                  "guid": "71f85264d9064074f9cf74999ecbffa9",
+                  "export_bindings": [
+                    "Etudes.chivarro.searching"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+                  "guid": "fd2ab9b67ce3e284184b1894c82c6c5d",
+                  "export_bindings": [
+                    "Etudes.chivarro.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "chivarro.searching",
+                  "!chivarro.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "exiled_removed",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroWasTeleportedAway.jbp",
+                  "guid": "806ece7bcf18a374e9ad1f7b9e3bc580",
+                  "export_bindings": [
+                    "Etudes.chivarro.exiled"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroRemovedFormPower.jbp",
+                  "guid": "065b611752b5c0045b6d1e0164b92bcc",
+                  "export_bindings": [
+                    "Etudes.chivarro.removed",
+                    "Etudes.herrax.madam"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04/Chapter04_States/Chapter04_States/ChivarroKilled.jbp",
+                  "guid": "fd2ab9b67ce3e284184b1894c82c6c5d",
+                  "export_bindings": [
+                    "Etudes.chivarro.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "chivarro.exiled",
+                  "!chivarro.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "earned_return",
+              "evidence": [],
+              "when": [
+                [
+                  "trickster.now",
+                  "minagho_chivarro.trickster.returned_chivarro"
+                ]
+              ],
+              "note": ""
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Staunton Vhane",
+          "aliases": [
+            "Staunton"
+          ],
+          "relationship_type": "manipulated lover / love interest",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0002.jbp",
+              "guid": "a9e1c7499f4ff2e47a21c88fcac9fa2f",
+              "key": "2aa15011-8189-46b0-8b70-003dc3506dca",
+              "text": "{n}The demon's mouth drops open in surprise, and she brings her manicured hand up to cover it.{/n} \"What an unexpected surprise! Staunton, my little sweetheart, long time no see. I've missed you so much... Have you missed me? Admit it — you missed me terribly!\""
+            },
+            {
+              "path": "World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0017.jbp",
+              "guid": "06de4af313a7ac044b0b334ba21d8276",
+              "key": "ed8a4556-4f2d-4fef-aea0-04f65ebb043b",
+              "text": "\"You think I don't know that demons cannot love? You think this is news to me?\" {n}Staunton's faces twists into a sickened grin.{/n} \"I know that lying wench can't truly love me. But what of it? Maybe I love her anyway. No matter what. And if I don't... What's it got to do with you?\""
+            },
+            {
+              "path": "World/Dialogs/c5/Drezen_Under_Siedge/FreeGraveknightStaunton_Fallen/Cue_0010.jbp",
+              "guid": "aaecf51abda47bd468aadb8f01de0b70",
+              "key": "6a2322e7-8a16-4615-814a-cdb87e2b29d6",
+              "text": "{n}The dead man answers fervently, with a spark of insanity in his voice.{/n} \"On her! The temptress and deceptress who is the reason for all my suffering! Minagho is her name! And I have vowed to shed her blood!\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "dead_buried",
+              "when": null,
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/StauntonBodyBuried.jbp",
+                  "guid": "be630454e66b1c648ab95172a6b2d3bf"
+                }
+              ],
+              "note": "Native death after Drezen betrayal; burial marker, not an unconditional current-death proof after reanimation."
+            },
+            {
+              "state": "lich_reanimated",
+              "when": null,
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra/StauntonInZiggurat.jbp",
+                  "guid": "6a9fab19d4ea73a42a3ec09641fb16f0"
+                }
+              ],
+              "note": "Lich companion branch; distinct from renewed romance with Minagho."
+            },
+            {
+              "state": "aeon_redeemed_dead",
+              "when": null,
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAeon/AeonStates/RedeemedStauntonDead.jbp",
+                  "guid": "25a677f8aa3bf96439306d3355ac5e35"
+                }
+              ],
+              "note": "Rewritten-history fate; no new mutual bond with Minagho is established."
+            }
+          ],
+          "note": "Native breakup already dramatized; not a duty to preserve a living pair after his native death.",
+          "native_resolution": {
+            "status": "ended_in_native_content",
+            "reason": "Native breakup already dramatized; not a duty to preserve a living pair after his native death.",
+            "evidence": [
+              {
+                "path": "World/Dialogs/c1/GreyGarrison_ChapterStart/Minagho_First/Cue_0002.jbp",
+                "guid": "a9e1c7499f4ff2e47a21c88fcac9fa2f",
+                "key": "2aa15011-8189-46b0-8b70-003dc3506dca",
+                "text": "{n}The demon's mouth drops open in surprise, and she brings her manicured hand up to cover it.{/n} \"What an unexpected surprise! Staunton, my little sweetheart, long time no see. I've missed you so much... Have you missed me? Admit it — you missed me terribly!\""
+              },
+              {
+                "path": "World/Dialogs/c1/GreyGarrison_ChapterEnd/Minagho_Final/Cue_0017.jbp",
+                "guid": "06de4af313a7ac044b0b334ba21d8276",
+                "key": "ed8a4556-4f2d-4fef-aea0-04f65ebb043b",
+                "text": "\"You think I don't know that demons cannot love? You think this is news to me?\" {n}Staunton's faces twists into a sickened grin.{/n} \"I know that lying wench can't truly love me. But what of it? Maybe I love her anyway. No matter what. And if I don't... What's it got to do with you?\""
+              }
+            ]
+          }
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Minagho"
+        ],
+        "localized_records_reviewed": 458,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/DefendersHeart/Joran/Cue_0031.jbp",
+            "guid": "d77e61afb906e55419a7b8d12e7cce79",
+            "key": "c1ca5d8e-2469-45e2-aeed-1d6f476b4061",
+            "text": "\"As you can guess, that officer was called Staunton Vhane. And the woman turned out to be a demon. Not just any demon — it was {g|Minagho}Minagho{/g}, that foul wretch. She's given us a lot of grief here in {g|Kenabres}Kenabres{/g} too... Just don't ask me what I was doing while my brother was off having trysts with that beast, and why I didn't save him from his own stupidity.\" {n}The blacksmith gestures as if to ward off the inevitable reprobation.{/n} \"Who could've guessed it would end like this? I've failed my brother, that's the truth. I blame myself every day, looking at his plight... So that's the story.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "minachiv.lastcall.page",
+        "minagho_chivarro.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Nenio",
+      "relationship": "nenio",
+      "spec": "/work/Writer/handoffs/trickster/nenio.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Nenio"
+        ],
+        "localized_records_reviewed": 818,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/EstrodTower/Faxon/Cue_0046.jbp",
+            "guid": "e7fd8543a55aca64ab0ae9077c8a70a7",
+            "key": "c56c570d-63ef-44f6-bd6f-7f5ed4a80f36",
+            "text": "\"Time for an experiment!\" {n}A sheet of paper appears in Nenio's hands.{/n} \"Mr. Cultist, allow me to ask, what exactly will you do to us when you inevitably vanquish us?\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "nenio.lastcall.page",
+        "nenio.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Nidalynn",
+      "relationship": "nidalynn",
+      "spec": "/work/Writer/handoffs/trickster/nidalynn.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Unnamed claimed husband",
+          "aliases": [
+            "husband"
+          ],
+          "relationship_type": "spouse claimed in staged pregnant-woman test",
+          "romanceable_roster_woman": null,
+          "scope": "disguise_claim",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/DragonStupidQuests/NidalynnQuest1/Cue_0007.jbp",
+              "guid": "0c798d1029db65240a983a053ab47565",
+              "key": "5b382a22-05f4-42e4-93cc-776400269266",
+              "text": "{n}The woman eyes you warily.{/n} \"Well... maybe I do. My husband told me to forget it, but I can't! It's a bit embarrassing... but, since you asked... I want cheese so badly, I could scream! But I don't want the normal cheese you can buy on any street corner. I'm craving a special kind of cheese. The cheese my grandfather used to bring me.\""
+            },
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/DragonStupidQuests/NidalynnQuest1/Cue_0008.jbp",
+              "guid": "f2c61bcd6f4e4534ca46bffcac76e44b",
+              "key": "d8308688-25b5-41bb-b696-66b313eb071c",
+              "text": "\"Oh, thank you! No matter how many times I ask, my husband refuses to help! He's 'busy,' you see!\""
+            },
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0016.jbp",
+              "guid": "37d0134dd61992741994b6d93c30d46d",
+              "key": "1d7f505b-4865-4279-8dd4-2af3cbdbec60",
+              "text": "\"I knew that an absurd request from a pregnant woman would seem foolish. But she could have taught you a valuable lesson.\""
+            },
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Cue_0011.jbp",
+              "guid": "5f41445cf3a1b28449b183da550ab38f",
+              "key": "96aabb66-2510-40b0-b156-95569be79d5d",
+              "text": "\"Different dragons enjoy different things! I enjoy jokes and games, so when Halaseliax asked for my help, how could I refuse? Strange people asking you to bring them unusual things... It sounded so amusing! We had so much fun coming up with silly things to ask!\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "unverified",
+              "evidence": [],
+              "when": null,
+              "note": "No husband unit or fate flag found. Dragon reveal confirms a staged request, not explicitly that her husband exists or is fictional."
+            }
+          ],
+          "note": "Uncertainty, not a confirmed marriage. Review acknowledgement of the disguise claim before declaring no partner.",
+          "mention_patterns": [
+            "\\bmy husband\\b",
+            "\\byour husband\\b"
+          ]
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Nidalynn",
+          "DragonsKenabres"
+        ],
+        "localized_records_reviewed": 95,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c5/Mythic_Dragon/DragonsKenabres/Answer_0001.jbp",
+            "guid": "5a68e0830ac44b5a9f76ad28c7c6a2fc",
+            "key": "4619255c-acbe-4ed4-a883-60e39f47e0fb",
+            "text": "\"It must be Apsu rewarding me for my faithful service.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "nidalynn.lastcall.page",
+        "nidalynn.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Nocticula",
+      "relationship": "nocticula",
+      "spec": "/work/Writer/handoffs/trickster/nocticula.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Shamira",
+          "aliases": [],
+          "relationship_type": "chosen longtime lover",
+          "romanceable_roster_woman": "Shamira",
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0066.jbp",
+              "guid": "216d0445992d7f845a9fe32ffdb381d7",
+              "key": "d3fd424b-1259-4f38-842c-ebb2c5a000cc",
+              "text": "{n}Shamira snaps irritably.{/n} \"What do you think? Because I am Shamira, the Ardent Dream, the chosen lover of the great Nocticula. Every time she grows weary of plots and conspiracies and craves wild passion and warm caresses, she comes here to her harem.\""
+            },
+            {
+              "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0116.jbp",
+              "guid": "5df0033b1b0737b4a9066e7c2076fdf8",
+              "key": "9f55f940-a12c-4b6d-9d9c-25704fc5d58a",
+              "text": "\"That's what Nocticula called this place when I, Shamira the Ardent Dream, became her chosen lover. Every time she grows weary of plots and conspiracies and craves passion and caresses, she comes here, to her harem.\""
+            },
+            {
+              "path": "World/Quests/MythicQuests/Trickster/C5_FinalLaugh/Obj_3_ShamiraEssence.jbp",
+              "guid": "efacfcbdf148c5848be0917a7baa9388",
+              "key": "26c02589-d7c9-41da-b5b9-dabccba332c6",
+              "text": "Shamira, Nocticula's longtime lover and ally, is loyal to her lady insofar as anyone can be loyal in the Abyss, but she dreams of having a demon lord's power and true dominion over Alushinyrra. She is tolerably shrewd, tolerably prudent, and intolerably brazen. And she is a fallen celestial — in other words, the perfect target for anyone seeking the essence of Heaven. But the Commander's activities in Nocticula's palace may not remain confined to killing Shamira..."
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/ShamiraKilled.jbp",
+                  "guid": "dd6731e2cb230694f9c394fa32391ad5",
+                  "export_bindings": [
+                    "Etudes.shamira.killed"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!shamira.killed"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "killed",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/MythicTrickster/TricksterStates/ShamiraKilled.jbp",
+                  "guid": "dd6731e2cb230694f9c394fa32391ad5",
+                  "export_bindings": [
+                    "Etudes.shamira.killed"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "shamira.killed",
+                  "!shamira.trickster.returned"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "earned_return",
+              "evidence": [],
+              "when": [
+                [
+                  "trickster.now",
+                  "shamira.trickster.returned"
+                ]
+              ],
+              "note": "Separate mind/body/embodied/kept_throne states must be read; returned alone is not proof of a body in Alushinyrra."
+            }
+          ],
+          "note": ""
+        },
+        {
+          "name": "Socothbenoth",
+          "aliases": [],
+          "relationship_type": "brother and former lover",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c4/Nocticula_main/Cue_0046.jbp",
+              "guid": "ea3c55d2b7e6a91439bfec29457aae26",
+              "key": "2564c2eb-3b83-495f-ab42-2ece46a15cc0",
+              "text": "\"Bear in mind that I have always been unique, ever since I was born. I was the first succubus of the Abyss, the perfect specimen of my race. I had been enjoying my youth, sharing it with my brother and lover, until the hungry gaze of the demon lord Nahyndri fell upon me. That greedy tyrant saw me as a jewel to be added to his treasure hoard. He tried to abduct me. I knew I had no chance of defeating a demon lord, but in that moment I was not thinking at all — I was fighting for my freedom. When it was all over, Nahyndri was dead. I eviscerated him, and for many days afterward, blood spewed from his open carcass.\""
+            },
+            {
+              "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0476.jbp",
+              "guid": "0a4e6dbf5dc11584c810d534400e2142",
+              "key": "5a1e21f6-5a20-466c-9dec-38408d970b7d",
+              "text": "{n}The Storyteller cringes.{/n} \"A disgusting demon lord, champion of meanness, debauchery, perversions, and breaker of taboos. He is Nocticula's brother and former lover. Out of jealousy, he tried in vain to kill my Lady — but he remained alive after the attempt. He is driven by fear, shame, and hatred toward his powerful sister.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "former_rejected",
+              "evidence": [],
+              "when": null,
+              "note": "Confirmed former by Storyteller and the Abyss guide; native rejection predates the Commander. Council exit observed as socot.gone; Council battle variants are separate."
+            }
+          ],
+          "note": "Do not recast him as a current exclusive partner.",
+          "native_resolution": {
+            "status": "ended_in_native_content",
+            "reason": "Do not recast him as a current exclusive partner.",
+            "evidence": [
+              {
+                "path": "World/Dialogs/c4/Nocticula_main/Cue_0046.jbp",
+                "guid": "ea3c55d2b7e6a91439bfec29457aae26",
+                "key": "2564c2eb-3b83-495f-ab42-2ece46a15cc0",
+                "text": "\"Bear in mind that I have always been unique, ever since I was born. I was the first succubus of the Abyss, the perfect specimen of my race. I had been enjoying my youth, sharing it with my brother and lover, until the hungry gaze of the demon lord Nahyndri fell upon me. That greedy tyrant saw me as a jewel to be added to his treasure hoard. He tried to abduct me. I knew I had no chance of defeating a demon lord, but in that moment I was not thinking at all — I was fighting for my freedom. When it was all over, Nahyndri was dead. I eviscerated him, and for many days afterward, blood spewed from his open carcass.\""
+              },
+              {
+                "path": "World/Dialogs/NPC_Common/StoryTeller_MainDialogue/Cue_0476.jbp",
+                "guid": "0a4e6dbf5dc11584c810d534400e2142",
+                "key": "5a1e21f6-5a20-466c-9dec-38408d970b7d",
+                "text": "{n}The Storyteller cringes.{/n} \"A disgusting demon lord, champion of meanness, debauchery, perversions, and breaker of taboos. He is Nocticula's brother and former lover. Out of jealousy, he tried in vain to kill my Lady — but he remained alive after the attempt. He is driven by fear, shame, and hatred toward his powerful sister.\""
+              }
+            ]
+          }
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Nocticula"
+        ],
+        "localized_records_reviewed": 1395,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/KenabresBurning/HurlunRamien_Late/Cue_0010.jbp",
+            "guid": "a7f33219d011a9643ba6c28ac17bf94c",
+            "key": "0953166d-3a9e-4b44-a611-4d5d49e922cf",
+            "text": "\"Good, evil, what's the difference? All forces of chaos are the same. Demons, azatas, {g|Nocticula}Nocticula{/g} or {g|Desna}Desna{/g}, it makes no difference to me. All they think about is destroying and tearing down, but that way leads to madness. The Desnans' intentions may have been good, but they were the first to succumb to the demons' lies, the first to poison the morale of their comrades, and the first to rush headlong into such fatal foolishness. May Iomedae serve justice on them all!\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "nocticula.lastcall.page",
+        "nocticula.lastcall.call"
+      ],
+      "additional_relationships": [
+        "nocticula.acquisition"
+      ]
+    },
+    {
+      "woman": "Nurah",
+      "relationship": "nurah",
+      "spec": "/work/Writer/handoffs/trickster/nurah.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Nurah"
+        ],
+        "localized_records_reviewed": 337,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c2_vs/DrezenSiege/Bottleneck_Gate_Before_Fight/Answer_0009.jbp",
+            "guid": "4731e4be33d713543850b657ba36378b",
+            "key": "240753a5-802b-41b2-8888-4b8b0055078e",
+            "text": "\"Nurah! Did you go over to the demons' side?\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "nurah.lastcall.page",
+        "nurah.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Seelah",
+      "relationship": "seelah",
+      "spec": "/work/Writer/handoffs/trickster/seelah.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Seelah"
+        ],
+        "localized_records_reviewed": 1232,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythicMiracle/Cue_0027.jbp",
+            "guid": "563c720017185a34d9db4e99a8582062",
+            "key": "ba4ade7e-ae1a-4bf5-a8a3-cda9b892a7a0",
+            "text": "{n}Seelah kneels before the light, offering up a prayer to {g|Iomedae}Iomedae{/g}.{/n}"
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "rejected_candidates": [
+        {
+          "name": "Elan",
+          "reason": "Friend; the wedding and fiancée are Kiana’s, not Seelah’s.",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q2_TillDeathDoUsPart/ElanMonarch/Cue_0006.jbp",
+              "guid": "129096ab9053bb94d9af259f0086e91c",
+              "key": "46854585-f801-4b7e-9ea4-67cc52f9c90d",
+              "text": "\"I'm begging you, no jokes about the horns, please. I don't want to be remembered as the cuckold bridegroom!\" {n}Elan sighs, but then starts smiling again.{/n} \"I don't know if you've ever fallen in love, Seelah, I don't remember you ever talking about it. But when it happens, you are no longer who you once were. I suppose I didn't expect this of myself either... but Kiana was so desperate to have an unusual wedding. I thought to myself, if 'unusual' is the goal, then I should do something I've never done before!\""
+            }
+          ]
+        }
+      ],
+      "shared_scene_ids": [
+        "seelah.lastcall.page",
+        "seelah.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Shamira",
+      "relationship": "shamira",
+      "spec": "/work/Writer/handoffs/trickster/shamira.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Nocticula",
+          "aliases": [],
+          "relationship_type": "chosen longtime lover",
+          "romanceable_roster_woman": "Nocticula",
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0066.jbp",
+              "guid": "216d0445992d7f845a9fe32ffdb381d7",
+              "key": "d3fd424b-1259-4f38-842c-ebb2c5a000cc",
+              "text": "{n}Shamira snaps irritably.{/n} \"What do you think? Because I am Shamira, the Ardent Dream, the chosen lover of the great Nocticula. Every time she grows weary of plots and conspiracies and craves wild passion and warm caresses, she comes here to her harem.\""
+            },
+            {
+              "path": "World/Dialogs/c4/HaremOfArdentDream/Shamira_dialogue/Cue_0116.jbp",
+              "guid": "5df0033b1b0737b4a9066e7c2076fdf8",
+              "key": "9f55f940-a12c-4b6d-9d9c-25704fc5d58a",
+              "text": "\"That's what Nocticula called this place when I, Shamira the Ardent Dream, became her chosen lover. Every time she grows weary of plots and conspiracies and craves passion and caresses, she comes here, to her harem.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/NocticulaDead.jbp",
+                  "guid": "e581f609dc0f44a481e7e88824ac39da",
+                  "export_bindings": [
+                    "Etudes.noct.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "!noct.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/ImportantNPCs_fate/NocticulaDead.jbp",
+                  "guid": "e581f609dc0f44a481e7e88824ac39da",
+                  "export_bindings": [
+                    "Etudes.noct.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "noct.dead",
+                  "!nocticula.trickster.returned"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "earned_return",
+              "evidence": [],
+              "when": [
+                [
+                  "trickster.now",
+                  "nocticula.trickster.returned"
+                ]
+              ],
+              "note": ""
+            }
+          ],
+          "note": ""
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Shamira"
+        ],
+        "localized_records_reviewed": 485,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c4/BattleBliss/FinalBattleBliss_dialogue/Cue_0006.jbp",
+            "guid": "87004a1c1cab46440a0e9a0e4d6f6c6a",
+            "key": "7249bb16-eb09-4e66-ab30-a45f17684e54",
+            "text": "\"Please, have mercy on me! I promise, my generosity will know no bounds! I beg you to spare me! I won't arrange unfair fights ever again! I'll give the arena to you, Zeklex! As for you, champion... I'll give you anything you want! Shamira, save me!\" {n}Irmangaleth's wailing lament can be heard from the back of the stands. He gives such a moving performance, the audience bursts into applause.{/n}"
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "shamira.lastcall.page",
+        "shamira.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Soana",
+      "relationship": "soana",
+      "spec": "/work/Writer/handoffs/trickster/soana.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Corven",
+          "aliases": [],
+          "relationship_type": "husband",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0012.jbp",
+              "guid": "c6789b662ea5c404f957d9a20b68f5c7",
+              "key": "93318741-6358-4436-a7f0-3cf64580345d",
+              "text": "\"Corven laid a wreath of those flowers on my head and I became his wife. I washed my children in the holy spring in the Meadow of the Spirits, and they grew up healthy and strong. This forest was my land. The Great Orso came at my call!\""
+            },
+            {
+              "path": "World/Dialogs/c3/Wintersun/SoanaAfterQuest/Cue_0013.jbp",
+              "guid": "6b8ba52aa3bbfef449862f5734474a39",
+              "key": "78f4600f-1aab-4f55-bfeb-af93ac419778",
+              "text": "{n}Her voice catches and her wrinkled lips tremble.{/n} \"Where is it all now? Where?\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "unknown_absent",
+              "evidence": [],
+              "when": null,
+              "note": "No native death, divorce, departure or return observer found. Past-tense memories do not prove death. No unit/etude named Corven; retain uncertainty."
+            }
+          ],
+          "note": "",
+          "acknowledgement_receipts": [
+            "soana.present_named",
+            "soana.courtship_chosen"
+          ]
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Soana"
+        ],
+        "localized_records_reviewed": 199,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c3/Wintersun/BlindCarver/Cue_0039.jbp",
+            "guid": "3d7327a78f3fdb04d9b824c9734e09ad",
+            "key": "d1a5d57a-4fc5-4749-b2a4-d9455fa4e0f5",
+            "text": "\"There are three of them in total, and they're all in the village. They were erected by the great shaman Soana the Wise a century ago, the year the Worldwound opened. They start to flicker when demons are near. But, as far as I can remember, the stones have never raised the alarm. Demons have never come near the village thanks to the Lady of the Sun's protection... at least, that's what everyone thinks. If you firmly believe that you saw demons within the walls of Wintersun, find out why the stones are not giving their promised warning.\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "soana.lastcall.page",
+        "soana.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Targona",
+      "relationship": "targona",
+      "spec": "/work/Writer/handoffs/trickster/targona.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Targona"
+        ],
+        "localized_records_reviewed": 365,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c1/EstrodTower/Teldon/Answer_0001.jbp",
+            "guid": "c5297eabb0a4442ab53bad6cbd753392",
+            "key": "be037a97-0dbf-4dc6-bbe8-9a9e3178f49d",
+            "text": "\"You said that the angels Targona and Lariel are twins. But how can angels have siblings?\""
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "shared_scene_ids": [
+        "targona.lastcall.page",
+        "targona.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Terendelev",
+      "relationship": "terendelev",
+      "spec": "/work/Writer/handoffs/trickster/terendelev.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Terendelev"
+        ],
+        "localized_records_reviewed": 212,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythic_BE/Cue_0002.jbp",
+            "guid": "bbdbc83db718f9345b7df86ddbf5a421",
+            "key": "34031373-5427-4da8-97f2-612cb61c744a",
+            "text": "A strange flash pierces the gloom, and {name} feels drops of searing blood run down {mf|his|her} chest. The wound healed by Terendelev reopens and weeps scarlet, but there is no pain or weakness. A hazy scene appears, a cave chamber — this one or another one entirely? {name}'s heartbeat quickens, and a stream of thoughts suddenly bursts into {mf|his|her} mind — thoughts that clearly belong to another..."
+          }
+        ]
+      },
+      "note": "No non-Commander canon partner established in inspected game data.",
+      "rejected_candidates": [
+        {
+          "name": "Sevalros",
+          "reason": "Sworn brother and friend, not a verified romantic partner. Love in an undead cue alone does not establish romance.",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/TerendelevUndead/Cue_0022.jbp",
+              "guid": "337f7d48126307140bc51ce4e39b0eaf",
+              "key": "1b4b39fb-a632-4f22-9803-9d301c22c6b3",
+              "text": "\"Sevalros... I know that I used to love him... but I can no longer feel love nor joy. Sevalros... now it's just a name. It means nothing to me.\""
+            },
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/Hal_companion/Cue_0055.jbp",
+              "guid": "efa0f87f6d3bbc64aba8805d373b1d3e",
+              "key": "1e8bb373-6f21-4854-afed-c4260fe3b653",
+              "text": "\"He was Terendelev's friend, and her sworn brother. He was just as eager to seek justice, and pursue good deeds. But like Terendelev, he fell victim to corruption. Terendelev was held in such high esteem. She was adored by everyone. I even called her my best student. Over time, envy took root in Sevalros's heart. He wanted to prove himself to me. He flew toward the Wound, and declared that he would solve everything himself... \""
+            },
+            {
+              "path": "World/Dialogs/c5/Mythic_Dragon/SevalrosEvil/Cue_0019.jbp",
+              "guid": "7172da734c79979498cfd82068e2c3a0",
+              "key": "98411266-ab75-40af-a83f-0df6f82b9564",
+              "text": "\"Terendelev...\" {n}For an instant, it seems as though Sevalros is coming to his senses.{/n} \"If only I could see her, even for a moment... my sister...\" {n}He growls, as though the thought of her brings him unspeakable pain.{/n} \"No! That conceited idiot! I don't need her! I've always been better than her! I... I...\""
+            }
+          ]
+        }
+      ],
+      "shared_scene_ids": [
+        "terendelev.lastcall.page",
+        "terendelev.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Vellexia",
+      "relationship": "vellexia",
+      "spec": "/work/Writer/handoffs/trickster/vellexia.md",
+      "finding": "none_found",
+      "partners": [],
+      "search": {
+        "path_terms": [
+          "Vellexia",
+          "Velexia",
+          "RaptureOfRupture"
+        ],
+        "localized_records_reviewed": 466,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0069.jbp",
+            "guid": "8712cd1181b28d94bb2004d525227f95",
+            "key": "21e64c77-bdc3-4b98-b67f-8bdd9e414fd4",
+            "text": "{n}Vellexia greets Arueshalae with a cordial nod.{/n} \"Sweetheart, you should have told me you were coming! I would have organized a reception to celebrate your return! I must confess, I rather missed having you around. But all is forgiven, and I hope that I can count you among my regular guests once more.\""
+          },
+          {
+            "path": "World/Dialogs/c4/RaptureOfRupture/Velexia_Main/Cue_0085.jbp",
+            "guid": "ec58f45a60bec6d438a84993c6a1696e",
+            "key": "b32c0915-1616-48cc-86e3-8c6245f58af9",
+            "text": "{n}Vellexia pauses dramatically, then answers her own question.{/n} \"Why, it is sweet self-deception, of course. The gentle feeling so cherished by mortals. To let down your guard and relinquish control. To expose your delicate, defenseless throat, and persuade yourself — just for a moment — that your partner does not want to rip it open... Oh, this game is far more dangerous than any entertainment involving chains, whips, and needles. You see, there are only two ways it can end. The first ending is quite simple. You grow tired of the game, so you stop playing. Only yesterday, you were persuading yourself that you couldn't live without your 'beloved,' and today, you don't feel like letting your 'beloved' into the house. However, the second ending is far more exciting. If you allow the game to continue, one of you will eventually decide to take advantage of the other's defenselessness. In this situation, the game ends when one of you regains control of your senses, and kills the other before they muster up their own courage to strike.\""
+          }
+        ]
+      },
+      "note": "Demons/mortals and lovers described generically. Arueshalae is addressed as a returning regular guest; that greeting does not prove an established lover. No named non-Commander partner established.",
+      "shared_scene_ids": [
+        "vellexia.lastcall.page",
+        "vellexia.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Wenduag",
+      "relationship": "wenduag",
+      "spec": "/work/Writer/handoffs/trickster/wenduag.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Lann",
+          "aliases": [],
+          "relationship_type": "casual sexual partner in caves",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionRomances/Wenduag/AfterSex/Cue_0043.jbp",
+              "guid": "2779fd335c035b74999afe9cd48bb2d4",
+              "key": "2f1964d8-9db4-439c-8dbb-4600b620e5ce",
+              "text": "\"A girl like me can always find a willing partner any time she wants to have sex. And I rarely don't want it. In the caves, I usually chose Lann. Sometimes there were strong hunters from other tribes who I found attractive. And, of course, Hosilla. Could she resist dragging me into her bed? Of course she couldn't.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "alive_in_party",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannInParty.jbp",
+                  "guid": "dc908c2490d6f4c4393ff26967aa6566",
+                  "export_bindings": [
+                    "Etudes.lann.in_party"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
+                  "guid": "ca3799e579c3eaa48a6625aa456d1840",
+                  "export_bindings": [
+                    "Etudes.lann.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "lann.in_party",
+                  "!lann.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "dead",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
+                  "guid": "ca3799e579c3eaa48a6625aa456d1840",
+                  "export_bindings": [
+                    "Etudes.lann.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "lann.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "dismissed",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_KickedOut.jbp",
+                  "guid": "7afa470738d309649bea253eb167fbc1",
+                  "export_bindings": [
+                    "Etudes.lann.kicked_out"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
+                  "guid": "ca3799e579c3eaa48a6625aa456d1840",
+                  "export_bindings": [
+                    "Etudes.lann.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "lann.kicked_out",
+                  "!lann.dead"
+                ]
+              ],
+              "note": ""
+            },
+            {
+              "state": "plot_absent",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_AccordingToThePlot.jbp",
+                  "guid": "7efcde13580d70648896ee8ae33b26f2",
+                  "export_bindings": [
+                    "Etudes.lann.plot_absent"
+                  ]
+                },
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/Companions/LannCompanion/LannNotInParty_Dead.jbp",
+                  "guid": "ca3799e579c3eaa48a6625aa456d1840",
+                  "export_bindings": [
+                    "Etudes.lann.dead"
+                  ]
+                }
+              ],
+              "when": [
+                [
+                  "lann.plot_absent",
+                  "!lann.dead"
+                ]
+              ],
+              "note": ""
+            }
+          ],
+          "note": "Casual and nonexclusive in canon; still acknowledge his knowledge/reaction rather than treating him only as an adversary."
+        },
+        {
+          "name": "Hosilla",
+          "aliases": [],
+          "relationship_type": "coerced sexual involvement, not consensual romance",
+          "romanceable_roster_woman": null,
+          "scope": "coercion",
+          "evidence": [
+            {
+              "path": "World/Dialogs/Companions/CompanionRomances/Wenduag/AfterSex/Cue_0043.jbp",
+              "guid": "2779fd335c035b74999afe9cd48bb2d4",
+              "key": "2f1964d8-9db4-439c-8dbb-4600b620e5ce",
+              "text": "\"A girl like me can always find a willing partner any time she wants to have sex. And I rarely don't want it. In the caves, I usually chose Lann. Sometimes there were strong hunters from other tribes who I found attractive. And, of course, Hosilla. Could she resist dragging me into her bed? Of course she couldn't.\""
+            },
+            {
+              "path": "World/Dialogs/Companions/CompanionRomances/Wenduag/AfterSex/Cue_0044.jbp",
+              "guid": "d6ea5be19a16c1e40ad4e28e82de16a7",
+              "key": "73c21d25-511a-49a7-b54e-4ba1e90c9be5",
+              "text": "\"I had no choice. She had her eyes on me from the start, and if I said no, she would have gotten rid of me. The things we do for survival, right? So I had to swallow everything she had for me — her knife play, her whip, her habit of choking me real good before getting down to the main event...\" {n}Rolling her shoulders languidly, Wenduag doesn't even try to hide the lust in her voice.{/n} \"...It was so horrible.\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "dead_prologue",
+              "evidence": [
+                {
+                  "path": "World/Quests/c0/FromTheDeep/Obj4_SlayHosilla.jbp",
+                  "guid": "1992ddc7d1b615748a0652a964846d4c"
+                }
+              ],
+              "when": null,
+              "note": "Shield Maze boss killed during FromTheDeep/Obj4_SlayHosilla. No exported dead alias; do not invent a rescue/romance obligation."
+            }
+          ],
+          "note": "Recorded to avoid disguising abuse as romance; no coexistence obligation to abuser."
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Wenduag"
+        ],
+        "localized_records_reviewed": 2158,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/AngelMythicMiracle/Cue_0004.jbp",
+            "guid": "44e960a26d8ad7a4094ef7d264d73f19",
+            "key": "2543eb06-0769-4548-a72b-2b16c1d38636",
+            "text": "{n}Wenduag frowns.{/n} \"What did you do with it? Where did it go?\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "wenduag.lastcall.page",
+        "wenduag.lastcall.call"
+      ]
+    },
+    {
+      "woman": "Yaniel",
+      "relationship": "yaniel",
+      "spec": "/work/Writer/handoffs/trickster/yaniel.md",
+      "finding": "partner_found",
+      "partners": [
+        {
+          "name": "Joran Vhane",
+          "aliases": [
+            "Joran"
+          ],
+          "relationship_type": "past unrequited love interest",
+          "romanceable_roster_woman": null,
+          "scope": "campaign",
+          "evidence": [
+            {
+              "path": "World/Dialogs/c3/Mythic_Aeon/Joran_In_Present_Main/Cue_0021.jbp",
+              "guid": "9962281c1101b2a4ca6ad981251e2243",
+              "key": "621eb66a-6ed2-4eb3-92c3-36c1c1a4b992",
+              "text": "\"Yes, I spoke with her. She came to see me before leaving the city.\" {n}Joran looks down and adds softly,{/n} \"You know, {name}, I was head over heels in love with her when I was young. For so many years I thought she was dead, and it turned out that scum Minagho had been torturing her the whole time...\""
+            }
+          ],
+          "native_fates": [
+            {
+              "state": "dead_base_campaign",
+              "evidence": [],
+              "when": null,
+              "note": "Drezen smith confrontation; no exported dedicated death alias."
+            },
+            {
+              "state": "alive_revised_aeon_history",
+              "evidence": [
+                {
+                  "path": "World/Etudes/Common/WrathOfTheRighteous/MythicAeon/PlayerIsAeon/AeonCapital/AeonCapitalMechanic/JoranInCapital.jbp",
+                  "guid": "445d6aab1c1d9c14e8be7d89c090a5a4",
+                  "export_bindings": []
+                }
+              ],
+              "when": null,
+              "note": "Aeon history only; not a Trickster return."
+            }
+          ],
+          "note": "His remembered love is verified; reciprocal romance with Yaniel is not."
+        }
+      ],
+      "search": {
+        "path_terms": [
+          "Yaniel"
+        ],
+        "localized_records_reviewed": 251,
+        "method": "All localized dialogue records matching path terms or character name, plus global relational-language scan; quest/etude/flag path and reference checks.",
+        "anchors": [
+          {
+            "path": "World/Dialogs/c0/CavesUnderKenabres/MongrelLabyrinth/RadianceFound/Answer_0004.jbp",
+            "guid": "30ced7701683d0248911b7e0abd60ae7",
+            "key": "edf3d55e-1645-4d82-a425-4b2e0ad81e08",
+            "text": "\"Who is Yaniel?\""
+          }
+        ]
+      },
+      "note": "See partner-specific evidence and limits.",
+      "shared_scene_ids": [
+        "yaniel.lastcall.page",
+        "yaniel.lastcall.call"
+      ]
+    }
+  ]
+}

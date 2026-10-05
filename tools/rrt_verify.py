@@ -33,6 +33,7 @@ GAME = Path(os.environ.get("RRT_GAME_DIR") or r"C:\Program Files (x86)\Steam\ste
 sys.path.insert(0, str(MOD))
 from tools import player_text_lint, text_structure_lint, draft_contract_lint
 from tools import intimacy_contract_lint, memory_callback_lint, transaction_exit_lint
+from tools import canon_partner_lint
 # end eng7-l09
 # eng7-f2: existing editorial reviews stay visible; strict rejects new text.
 from tools import player_text_baseline
@@ -1823,6 +1824,12 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     for row in R["text_structure"]["review"] + R["player_text"]["hard"]:
         P("  TEXT", row["scene"], row["location"], row["code"], row["start"], row["end"])
     # end eng7-f2
+    # Canon-partner writing debt stays advisory even under --strict.
+    R["canon_partners"] = canon_partner_lint.check(story)
+    P("Canon partners (report mode): %d partner records, %d advisory findings"
+      % (R["canon_partners"]["partner_count"], len(R["canon_partners"]["findings"])))
+    for row in R["canon_partners"]["findings"]:
+        P("  PARTNER", row["woman"], row["partner"], row["code"], row.get("scene", ""))
     R["intimacy_contracts"] = intimacy_contract_lint.check(story)
     R["memory_callbacks"] = memory_callback_lint.check(story)
     R["transaction_exits"] = dict(hard=transaction_exit_lint.check(story))
