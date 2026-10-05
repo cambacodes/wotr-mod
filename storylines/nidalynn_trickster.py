@@ -134,9 +134,7 @@ DERIVED = {
 
 RELATIONSHIP = dict(
     Title="Salt on Bread",
-    Description=("I took the smallest of Devarra's eggs, hid it under a coat of ash and soot, and told Drezen it was a "
-                 "rock. A pregnant Sarkorian widow heard it through the wall. She is not a widow, and not pregnant, and "
-                 "not, if we are being honest, a woman."),
+    Description=("I kept the smallest of Devarra's eggs alive. The citadel calls it my rock. A Sarkorian widow on the steps opposite the jeweller heard it singing in my hearth. She says it is dying, and means to do something about it."),
     Objective="Keep the smallest egg alive",
     Guidance=("On the Trickster path, in the Ivory Sanctum, look at the smallest of the eggs under Xanthir Vang's "
               "golems before they act, and get it out from under their fists. If the clutch was crated to Drezen instead, the eggs wait in "
@@ -403,7 +401,7 @@ steps(P + "steps.widow", "The widow on the steps", "[Sit down on the step beside
 # --- Reactions (exactly Greybor, Ulbrig and Woljif; each behind his own guard) -----------------------------------------
 
 SCENES.append(reaction("Greybor", P + "react.greybor.rock", (HATCHED,),
-    '''{n}Greybor does not stop sharpening.{/n} "Your rock hatched." {n}The stone goes along the edge, once.{/n} "I know what those eggs were. I'd have done that one for free." {n}Another stroke.{/n} "You hid it under soot and called it a rock. I've carried forged papers past three city watches and I never thought of dirtying the thing itself." {n}He tests the edge on his thumb.{/n} "When it's big enough to be a job, somebody will pay me to do it. I'll tell them the price has gone up. Sentiment's expensive."''',
+    '''{n}Greybor does not stop sharpening.{/n} "Your rock hatched." {n}The stone passes along the edge.{/n} "I know what those eggs were. I'd have done that one for free. Now there's a woundwyrm inside our walls." {n}He tests the edge on his thumb.{/n} "When it's big enough to be a job, somebody will pay me to do it. I'll tell them the price has gone up. You've given it time to grow."''',
     answer_list=GREYBOR_LIST, relationship=REL, forbids=("greybor.dead", "greybor.kicked_out", CLOSED),
     entry='"You\'ve heard about the kiln."', chapter=3, last=5, delay=24, portrait="Greybor"))
 SCENES.append(reaction("Ulbrig", P + "react.ulbrig.white_girl", (MET, "ulbrig.in_party"),
