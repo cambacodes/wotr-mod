@@ -14,6 +14,18 @@ internal static class KonomiRecoveryTests
 {
     internal static void Run(Action<bool, string> check)
     {
+        if (!MonoNativeBoundary.Enabled) { RunFixture(check); return; }
+        // Enter real ResurrectAndFullRestore, isolating only its unavailable native mutation boundary.
+        using (var boundary = new MonoNativeBoundary(HarmonyLib.AccessTools.Method(typeof(UnitDescriptor), "Resurrect",
+            new[] { typeof(UnitEntityData), typeof(float), typeof(bool), typeof(bool) }), nameof(KonomiRecoveryTests)))
+        {
+            RunFixture(check);
+            check(boundary.Calls == 1, "Native resurrection was skipped or replayed");
+        }
+    }
+
+    private static void RunFixture(Action<bool, string> check)
+    {
         const BindingFlags instance = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance;
         const BindingFlags statics = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static;
         var service = typeof(Tirabade.Main).Assembly.GetType("Tirabade.KonomiRecovery", true)!;
@@ -166,7 +178,7 @@ internal static class KonomiRecoveryTests
             "Failed persistence dispatched native resurrection");
         failWrite = false;
         writes = 0;
-        // This calls the real installed ResurrectAndFullRestore. No substituted resurrection delegate exists.
+        // Calls real installed ResurrectAndFullRestore; Mono isolates its native mutation boundary above.
         check(Apply(true) == "Pending", "Incomplete native fixture was credited as a successful resurrection");
         check(writes == 1 && checkpoint != null && !checkpoint.Contains("\"Confirmed\":true"), "Native action preceded checkpoint or credited partial success");
         var error = (Exception?)service.GetProperty("LastError", statics)!.GetValue(null);
