@@ -651,12 +651,52 @@ namespace Tirabade
         public Dictionary<string, int> Times = new Dictionary<string, int>();
         public Dictionary<string, int> RestSpent = new Dictionary<string, int>();
         public Dictionary<string, int>? CrusadeResources;
+        // eng8-q8a: a saved return is history, not proof against a new native death.
+        // The nominated legacy execution copy and the observed living echo original
+        // answer different losses. No synthetic receipt is required of old paid copies.
         public bool Has(string flag) => Flags.Contains(flag)
-            && (flag != "wenduag.trickster.returned" || !Flags.Contains(Rules.WenduagEchoPrefix + "unavailable"));
+            && (flag != "wenduag.trickster.returned" || Rules.WenduagReturnLiving(this));
+        // end eng8-q8a
     }
 
     public static class Rules
     {
+        // eng8-q8a: dead_any also includes the persistent native execution etude.
+        // That nominated copy remains legitimate; dead_any alone after a legacy
+        // return does not prove life. Echo validity comes from its exact living actor.
+        public static bool WenduagReturnLiving(Snapshot state) =>
+            !state.Flags.Contains(WenduagEchoPrefix + "unavailable")
+            && (!state.Flags.Contains("wenduag.dead_any")
+                || state.Flags.Contains("wenduag.killed")
+                || state.Flags.Contains(WenduagEchoPrefix + "valid"));
+        public static readonly string[] LatestStateRuntime = { "nenio.life.unavailable" };
+        public static void ObserveNenioLife(Snapshot state, bool retained, bool dead, bool visitorLost)
+        {
+            if (!state.Flags.Contains("nenio.trickster.returned")) return;
+            bool visitor = new[] { "nenio.trickster.cost.recreated", "nenio.trickster.cost.unremembered",
+                "nenio.trickster.primed_away" }.Any(state.Flags.Contains);
+            if (visitorLost || !visitor && (!retained || dead)) state.Flags.Add("nenio.life.unavailable");
+        }
+        public static bool WenduagEchoCustodyMatches(Snapshot state, string phase, bool wellFormed) => wellFormed
+            && !new[] { "wenduag.killed", "wenduag.kicked_out", "wenduag.q3_killed", "wenduag.q3_sent_away",
+                "wenduag.hello_sent_away", "wenduag.hello_attacked", "wenduag.romance_active",
+                "wenduag.romance_finished", "wenduag.romance_finished.latched" }.Any(state.Has)
+            && (!state.Has("wenduag.closed") || phase == "released" || phase == "departed")
+            && state.Has(WenduagEchoPrefix + "ready")
+            && state.Has(WenduagEchoPrefix + "rescued") == new[] { "hidden", "transport", "arrived", "released", "departed" }.Contains(phase)
+            && state.Has(WenduagEchoPrefix + "returned") == (phase == "released")
+            && state.Has(WenduagEchoPrefix + "departed") == (phase == "departed");
+        public static void ObserveWenduagEchoLife(Snapshot state, string phase, bool custodyMatches, bool livingOriginal)
+        {
+            bool path = state.Has("trickster") && !new[] { "trickster.failed", "dragon", "legend", "swarm" }.Any(state.Has);
+            bool page = state.Has("trickster.foresight.accepted") || state.Has("foresight.page_taken");
+            if (!custodyMatches || !livingOriginal || !path || !page)
+            { state.Flags.Add(WenduagEchoPrefix + "unavailable"); return; }
+            state.Flags.Add(WenduagEchoPrefix + "valid");
+            if (!new[] { "down", "arrived", "released", "departed" }.Contains(phase))
+                state.Flags.Add(WenduagEchoPrefix + "unavailable");
+        }
+        // end eng8-q8a
         public const string WenduagEchoPrefix = "wenduag.trickster.echo.abyss.";
         public static readonly string[] WenduagEchoRuntime = new[] { "adapter_available", "casualty_available", "return_available", "valid", "unavailable" }
             .Select(suffix => WenduagEchoPrefix + suffix).ToArray();
@@ -979,7 +1019,10 @@ namespace Tirabade
             || flag == "konomi.return_correspondence_available"
             || flag == "konomi.death_unreturned" || flag == "konomi.death_restored"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
-            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag);
+            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag)
+            // eng8-q8a
+            || LatestStateRuntime.Contains(flag);
+            // end eng8-q8a
 
         // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
         public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
@@ -1615,7 +1658,10 @@ namespace Tirabade
                 "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)
+                // eng8-q8a
+                .Concat(LatestStateRuntime)));
+                // end eng8-q8a
             // eng7-l06: saved runtime receipts are known inputs, never authored choice effects.
             derivedFlags.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
             // eng7-l06 end
@@ -1625,6 +1671,9 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             contactEvidence.UnionWith(WenduagEchoRuntime);
+            // eng8-q8a
+            contactEvidence.UnionWith(LatestStateRuntime);
+            // end eng8-q8a
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
                 .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(RestSpentPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))

@@ -47,6 +47,9 @@ CONTACT_EVIDENCE = {"konomi.retained_hostile", "konomi.missed_contact_available"
                     "nurah.correspondence_available", "nurah.meeting_arrived"} | {
                         "wenduag.trickster.echo.abyss." + suffix for suffix in
                         ("adapter_available", "casualty_available", "return_available", "valid", "unavailable")}
+# eng8-q8a: mirror the current retained-body observation supplied by Main.BuildState.
+CONTACT_EVIDENCE.add("nenio.life.unavailable")
+# end eng8-q8a
 CHECK_SKILLS = {"SkillAthletics", "SkillMobility", "SkillStealth", "SkillThievery", "SkillKnowledgeArcana",
                 "SkillKnowledgeWorld", "SkillLoreNature", "SkillLoreReligion", "SkillPerception",
                 "SkillUseMagicDevice", "CheckDiplomacy", "CheckBluff", "CheckIntimidate"}

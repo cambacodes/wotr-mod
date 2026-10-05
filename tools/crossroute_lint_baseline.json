@@ -1,5 +1,6 @@
 {
   "schema": 1,
+  "eng8-q8a": "E-Q8-01 refresh: 32 existing L1 referrals retain identical check, route, scene, node, slot, subject, excerpt and missing condition. Only their required Nenio availability/context and fingerprints changed. No finding added or waived.",
   "findings": [
     {
       "check": "L1",
@@ -10808,6 +10809,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -10816,7 +10822,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -10829,7 +10835,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -10842,7 +10848,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -10850,17 +10856,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "04ab2b84fa044bd4a33e0f2b98c510d44bbed7b4b634714f7c66d87eb0b601b8"
+      "fingerprint": "659ef5625208be0308d244a573d26da01646c8d12b0e5fc958b08ae04b4afabd"
     },
     {
       "check": "L1",
@@ -10884,6 +10890,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -10892,7 +10903,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -10905,7 +10916,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -10918,7 +10929,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -10926,17 +10937,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "fcba77ffeac917bcdf6f4b83cadd134c6751263c0dacf696c5c9f849553f90c7"
+      "fingerprint": "750b616d267564a94fe37e79e87da40285e14c9fc32091faefad431a64f276da"
     },
     {
       "check": "L1",
@@ -11161,6 +11172,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11169,7 +11185,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11182,7 +11198,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11195,7 +11211,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11203,17 +11219,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "ef3ed3cd54f97fc277a0f1ee2b4b5db1ffb297aaf4aae41ecd1ed5a36a61d92e"
+      "fingerprint": "0fdd610e9319c1ac722392534658e5b783ff04b83dd1b4ba6a3846a5151e90c8"
     },
     {
       "check": "L1",
@@ -11227,7 +11243,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "7e95c2472a8b0aae01c9d7800b7a639007de934a78d500ba6dc89954faf54c36"
+      "fingerprint": "ccc487069bc9387388fb64b5bdeee342b6b89012e231db9102587fcf54b1d575"
     },
     {
       "check": "L1",
@@ -11326,6 +11342,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11334,7 +11355,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11347,7 +11368,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11360,7 +11381,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11368,17 +11389,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "dd2af074a4bf35d8dcea2b8ffc0cd610a9701842cdc4f17e5ff7d22a8024e1f1"
+      "fingerprint": "234a720f381ac2ea0473ea8dcfebb03986c10f5665bc1d74c7904e1f20c50a41"
     },
     {
       "check": "L1",
@@ -11416,6 +11437,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11424,7 +11450,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11437,7 +11463,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11450,7 +11476,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11458,17 +11484,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "c7d4d4fe8409d8004bd0b7245e197b9a0a5fb06aef991026a6f3abe0b9d5117e"
+      "fingerprint": "6a26c8e83e47ea9e0741cb73264d3a14340a7137a79ae7257b2fcae6f5bca7a5"
     },
     {
       "check": "L1",
@@ -11540,6 +11566,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11548,7 +11579,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11561,7 +11592,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11574,7 +11605,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11582,17 +11613,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "a582eb006afea624e63b2a137d26dd345533a227bf414681f21396ea971865b3"
+      "fingerprint": "3ba2abe41a4609cb9b5e0ddbf876ec45741613624c5b006d904fa0d860a91f02"
     },
     {
       "check": "L1",
@@ -11616,6 +11647,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11624,7 +11660,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11637,7 +11673,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11650,7 +11686,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11658,17 +11694,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "78a5bb5824f4dd45bddb02de0b6a131772c66580510aa90f31c58c88a04c8b9f"
+      "fingerprint": "7d456f6a1f91a2a6b09554cc4d0473c8697d4d15ff453fad16cc8688f0292c1f"
     },
     {
       "check": "L1",
@@ -11692,6 +11728,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11700,7 +11741,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11713,7 +11754,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11726,7 +11767,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11734,17 +11775,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "8f8172a95d92438285c549bec42a8f1d7cc76ddc240c53892d162f2401ca3744"
+      "fingerprint": "a075a50e279513ab5c2b03e0e7297831d9e3e3b7bb4e08d44d2b62fdab627482"
     },
     {
       "check": "L1",
@@ -11768,6 +11809,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11776,7 +11822,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11789,7 +11835,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11802,7 +11848,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11810,17 +11856,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "c2ad09f4bf83c31b3724dc3f6c7dc35dd6bebc36f8412a5cc94120d399ef9134"
+      "fingerprint": "9348803ed3944747d2ce230f5d472227dd53a7247645acccd0e6cb052db643f7"
     },
     {
       "check": "L1",
@@ -11844,6 +11890,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11852,7 +11903,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11865,7 +11916,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11878,7 +11929,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11886,17 +11937,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "0dfe73ab6fbe079dfcea795c8be56ccc07a19a2f2c5ef65a2eaba1eb65a719aa"
+      "fingerprint": "dd82a78c522cad29b8346b981d54ed7768b4a7563bfafeb556a2788384f61023"
     },
     {
       "check": "L1",
@@ -11954,6 +12005,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -11962,7 +12018,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -11975,7 +12031,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -11988,7 +12044,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -11996,17 +12052,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "cedea058ece3f72afa1f7602b38f2d5e638ab1df78e037516597991a15d4267d"
+      "fingerprint": "3f83a40eabc4c6766c591c14e99e8ff748b777bc7ad7747919777871afb5ee39"
     },
     {
       "check": "L1",
@@ -17226,6 +17282,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -17234,7 +17295,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -17247,7 +17308,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -17260,7 +17321,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -17268,17 +17329,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "bb38af699ba191cfe88ed0fa8d723af89ba5099201e026da0f7395bb2cc9fcf8"
+      "fingerprint": "0d06b120ba25c36dc510f021514d9a3c538424b6088e563f97e57d4fd0ee715f"
     },
     {
       "check": "L1",
@@ -17292,7 +17353,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "fa82c7c883567e5aa023442262d6f72243d453af5dec7d4516c384e6e9ceb16c"
+      "fingerprint": "bf8f27fc1d46a90e2b73f0af8ae7e02cd42683d9aeb60d7bfa7fc28db2ccfeb3"
     },
     {
       "check": "L1",
@@ -17316,6 +17377,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -17324,7 +17390,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -17337,7 +17403,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -17350,7 +17416,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -17358,17 +17424,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "c1744c37ef55475fa9a67ff9374e5333b1d41996e14a7d49364ad0779ace42e2"
+      "fingerprint": "c264abd7b054e77e1ada1502ef612022c0051b2cf4fd1ac438cf2401c03848b3"
     },
     {
       "check": "L1",
@@ -17382,7 +17448,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "6ab5f33cec7cd1d0d1236f02a3ee26ccfc1359fd8e16ccb39d5c9c530369ffb8"
+      "fingerprint": "df78b574952c9f20fa4517af4296c932df317a4967feca61d5a3cc712ec42d73"
     },
     {
       "check": "L1",
@@ -45504,6 +45570,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -45512,7 +45583,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -45525,7 +45596,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -45538,7 +45609,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -45546,17 +45617,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "62445e05a481665f10e34b5150c8f827ffcb23c33c9e820727d3c145fe09ed60"
+      "fingerprint": "1059ae4032b84c27d5d50ad4d798683328fe62cfe8675e32c0d8a00b92fc5e43"
     },
     {
       "check": "L1",
@@ -45626,7 +45697,7 @@
           ]
         ]
       ],
-      "fingerprint": "095f7ba5a0af9fb3979ceb9c7753cfa28687c986902482927a87068b645c2d45"
+      "fingerprint": "b0d54c308a5cb597606535f3ad1d016f6c1a35a88a41ba6cd63160655fd8589e"
     },
     {
       "check": "L1",
@@ -46713,7 +46784,7 @@
           ]
         ]
       ],
-      "fingerprint": "f0b55ec8eaad5ac2fc2fd14a18e1d4a2621e7b2d5e57853023270d84af326d41"
+      "fingerprint": "326cb968cbb4a1ea9e71d3886d9397910be185c13023fbf89cc2aebc3e641a1a"
     },
     {
       "check": "L1",
@@ -46729,7 +46800,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "e40fedc2083f2d45c3de9b7559f11f47212aa9c5249f282d2bc4a0771db3eb90"
+      "fingerprint": "d9f0d471abd3b6272ced4b383f77815231af898aed55326d571dfec1a526f7f7"
     },
     {
       "check": "L1",
@@ -46745,7 +46816,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "633b5752d600c087d11881983197a73e692f6613d3bc1f15046f75c42b0ee940"
+      "fingerprint": "109cb2705515317f4982d7fbb8dfd096e69af530c124152e05d982e8e0334787"
     },
     {
       "check": "L1",
@@ -46761,7 +46832,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "8290a82d448699b244bf1bc1ce900e9067f65f77447cde0e279b04ecae6079b1"
+      "fingerprint": "6f9b47fcc292b6008f0c9f3879476c300ff51aca50027757906b12ec7cf49f02"
     },
     {
       "check": "L1",
@@ -46798,7 +46869,7 @@
           ]
         ]
       ],
-      "fingerprint": "1a99b9f95b24970419b40e785fec29377a9e2bbd234065e7f59f65d4b42d0fd1"
+      "fingerprint": "391bfe2b5d947b191a29ee36dacbae4f41bec163656d0b9c27d8623beb7684b7"
     },
     {
       "check": "L1",
@@ -46835,7 +46906,7 @@
           ]
         ]
       ],
-      "fingerprint": "ca6ea118d8df5f1ae21970c2ae8fd6c47bd5326f59dbcddd85af251a659f86ba"
+      "fingerprint": "b788dc3f0bc026e5d2994a76ed3874cfcd2a881a24d7997dc876ea0fdc3544c6"
     },
     {
       "check": "L1",
@@ -46872,7 +46943,7 @@
           ]
         ]
       ],
-      "fingerprint": "c0152795befad030bc6dfc498c2eac483ede2efa31f36cf4604f8d209f87284f"
+      "fingerprint": "278b0b19057268e28c5ea5320aab6357c245660b10046d63240afcf3211c23f7"
     },
     {
       "check": "L1",
@@ -46888,7 +46959,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "0883bc0478a871dfc58e00d435cf97172b9e94b015a7f1f62bc2d3254f3b702b"
+      "fingerprint": "8a081b3e5045ee83bdc51c4e0142bb6cdaf6a43d17514e8dbe2e9346861cb734"
     },
     {
       "check": "L1",
@@ -46904,7 +46975,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "822daa73a19482fa9013e2b84098979ff4c7da24649ec56a762d68ac1a01e324"
+      "fingerprint": "98b24db0ed93386ed79d1e20a11a8406d50993bf0ac75e83ec1b1b4d7ecf16bd"
     },
     {
       "check": "L1",
@@ -46920,7 +46991,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "2eddcde6c4236b899b1ac8a5cf9598322c24d258f552305901bf0b944a2c0b9b"
+      "fingerprint": "f9fb79ccf5f07f217b43abf8a6538cd11a448decfcf490ff8fb2be25cffe9fa8"
     },
     {
       "check": "L1",
@@ -46967,7 +47038,7 @@
           ]
         ]
       ],
-      "fingerprint": "ffe15ea28023adb7c5afcd93c603aceee3f63e4fb54d035d2e0182a1d12a4635"
+      "fingerprint": "f680f2303d044b3a5325e16743bb9857ed54261761b4d279f22b33f7300e4082"
     },
     {
       "check": "L1",
@@ -46981,7 +47052,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "58f7a251532850d234a9b1e9253d5c517be83bc535082ac9a85103c8c31e6a12"
+      "fingerprint": "2930d0d4444610ced7985278074a4ef0812bc19c3852d34aee4c5d42d55e6871"
     },
     {
       "check": "L1",
@@ -47539,6 +47610,11 @@
           false
         ],
         [
+          "lit",
+          "nenio.life.unavailable",
+          false
+        ],
+        [
           "or",
           [
             "lit",
@@ -47547,7 +47623,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.recreated",
             true
           ]
         ],
@@ -47560,7 +47636,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.probation",
             true
           ]
         ],
@@ -47573,7 +47649,7 @@
           ],
           [
             "lit",
-            "nenio.trickster.returned",
+            "nenio.life.unremembered",
             true
           ]
         ],
@@ -47581,17 +47657,17 @@
           "or",
           [
             "lit",
-            "nenio.sent_away",
-            false
+            "nenio.life.probation",
+            true
           ],
           [
             "lit",
-            "nenio.trickster.returned",
-            true
+            "nenio.sent_away",
+            false
           ]
         ]
       ],
-      "fingerprint": "b644877b90c1a67bdad2e1c9ee098e5e36b7cc1f2b5ad703419f1672f619176e"
+      "fingerprint": "cb2db38752455ab81b179c9e26a8830984d740f42f879bb35802fd806c96e526"
     },
     {
       "check": "L1",
@@ -47605,7 +47681,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "3a648b1afcb54b9be959afe3a73da4d234130d01a2178c0ee43b337d0bd7117d"
+      "fingerprint": "9b66001e26605c3e5ef03f10d9fb67b4a404441afeb1997c41ea97171ad97018"
     },
     {
       "check": "L1",

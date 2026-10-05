@@ -133,12 +133,12 @@ internal static class WenduagEchoManagedTests
             && variant.StartedTracks[1].EndGate == null, "Echo changed native completion topology");
         check(((BlueprintCue)Blueprint(Id("Cue"))).OnStop.Actions.Single().GetType().Name == "Dispatch", "Echo has no narrowly reviewed dispatch");
         var record = Engine.GetNestedType("Record", BindingFlags.Public)!;
-        foreach (string phase in new[] { "pending", "down", "hidden", "transport", "arrived", "released", "invalid" })
+        foreach (string phase in new[] { "pending", "down", "hidden", "transport", "arrived", "released", "departed", "invalid" }) // eng8-q8a
         {
             var data = JObject.Parse("{\"Version\":1,\"ActorId\":\"original\",\"SourceArea\":\"area\",\"SourceStorage\":\"scene\",\"Attempt\":\"4778e4ba-4823-4e7d-b2e8-b6299c9bcb15\",\"Incapacitated\":true,\"PassiveAdded\":true,\"UntargetableAdded\":true,\"JourneyObserved\":true,\"PickupHour\":450}");
             data["Phase"] = phase;
             if (phase == "down") { data["PickupHour"] = -1; data["JourneyObserved"] = false; }
-            if (phase == "released") data["UntargetableAdded"] = false;
+            if (phase == "released" || phase == "departed") data["UntargetableAdded"] = false; // eng8-q8a
             var copy = JsonConvert.DeserializeObject(JsonConvert.SerializeObject(data.ToObject(record)), record)!;
             check((bool)record.GetProperty("WellFormed", All)!.GetValue(copy)!, "Custody JSON lost its phase/identity: " + phase);
             foreach (string field in new[] { "ActorId", "SourceArea", "SourceStorage", "Attempt", "Phase", "Incapacitated", "PassiveAdded", "UntargetableAdded", "JourneyObserved", "PickupHour" })

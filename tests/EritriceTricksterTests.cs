@@ -282,12 +282,12 @@ internal static class EritriceTricksterTests
             "The romance pages do not follow trickster.commander_back.");
         // INT: a returned Nenio reacts; a dissolved one never does.
         foreach (var r in reactions.Where(r => r.Owner == "Nenio"))
-            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.trickster.returned"
-                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.trickster.returned"
+            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.life.recreated" /* eng8-q8a */
+                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.life.probation" /* eng8-q8a */
                   && !r.ForbidOverrides.ContainsKey("nenio.dissolved"),
                 "A Nenio reaction ignores her return: " + r.Id);
         var nenioMotion = S(P + "react.nenio_motion");
-        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned");
+        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated"); // eng8-q8a: paid vessel, not later-dead retained body
         check(Rules.Available(story, nenioMotion, nenioBack)
               && !Rules.Available(story, nenioMotion, World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead")),
             "A returned Nenio is still barred from reacting.");

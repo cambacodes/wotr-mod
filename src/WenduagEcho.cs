@@ -213,11 +213,11 @@ namespace Tirabade
             internal bool WellFormed => Version == 1 && !string.IsNullOrWhiteSpace(ActorId)
                 && !string.IsNullOrWhiteSpace(SourceArea) && !string.IsNullOrWhiteSpace(SourceStorage)
                 && Guid.TryParse(Attempt, out var attempt) && attempt != Guid.Empty
-                && new[] { "pending", "down", "hidden", "transport", "arrived", "released", "invalid" }.Contains(Phase)
+                && new[] { "pending", "down", "hidden", "transport", "arrived", "released", "departed", "invalid" }.Contains(Phase) // eng8-q8a
                 && (Phase == "pending" || Phase == "invalid" || Incapacitated && PassiveAdded
-                    && (Phase == "released" ? !UntargetableAdded : UntargetableAdded)
+                    && (Phase == "released" || Phase == "departed" ? !UntargetableAdded : UntargetableAdded) // eng8-q8a
                     && (Phase == "down" ? PickupHour == -1 && !JourneyObserved : PickupHour >= 0)
-                    && (Phase != "arrived" && Phase != "released" || JourneyObserved));
+                    && (Phase != "arrived" && Phase != "released" && Phase != "departed" || JourneyObserved)); // eng8-q8a
         }
         private Record? Data()
         {
@@ -236,7 +236,7 @@ namespace Tirabade
                 .Concat(game.State.SavedAreaStates.SelectMany(a => a.AllEntityData).OfType<UnitEntityData>())
                 .Where(a => a.Blueprint?.AssetGuid.ToString() == Unit || a.OriginalBlueprint?.AssetGuid.ToString() == Unit).Distinct();
         }
-        private UnitEntityData? Original(Record data)
+        private UnitEntityData? Original(Record data, bool currentStorage = true) // eng8-q8a
         {
             if (!data.WellFormed || data.Phase == "invalid") return null;
             var matches = Actors().ToArray();
@@ -246,7 +246,10 @@ namespace Tirabade
             if (actor == null) return null; // unloaded/unresolved storage is unavailable, not death
             if (actor.UniqueId != data.ActorId || !Living(actor)) { data.Phase = "invalid"; return null; }
             var area = Game.Instance.State.LoadedAreaState;
-            return area != null && NativeContact.HasCurrentStorage(actor, area, Game.Instance.Player.CrossSceneState) ? actor : null;
+            // eng8-q8a: endings may observe the same original in persistent area storage.
+            // Physical contacts still require its current loaded storage and view.
+            return !currentStorage || area != null && NativeContact.HasCurrentStorage(actor, area, Game.Instance.Player.CrossSceneState) ? actor : null;
+            // end eng8-q8a
         }
         private static bool LivePath(Snapshot state) => state.Has("trickster")
             && !new[] { "trickster.failed", "dragon", "legend", "swarm" }.Any(state.Has);
@@ -336,16 +339,17 @@ namespace Tirabade
                 var data = Data();
                 bool origin = data != null || state.Has(E + "rescued") || state.Has(E + "returned");
                 if (!origin) return;
-                if (data == null || !data.WellFormed || Closed(state) || !state.Has(E + "ready")
-                    || state.Has(E + "rescued") != (data.Phase == "hidden" || data.Phase == "transport" || data.Phase == "arrived" || data.Phase == "released")
-                    || state.Has(E + "returned") != (data.Phase == "released"))
+                // eng8-q8a: the production custody predicate is also exercised game-free.
+                if (data == null || !Rules.WenduagEchoCustodyMatches(state, data.Phase, data.WellFormed))
                 {
                     if (data != null) data.Phase = "invalid";
                     state.Flags.Add(E + "unavailable"); return;
                 }
-                var actor = Original(data);
-                if (actor == null || !LivePath(state) || !Page(state)) { state.Flags.Add(E + "unavailable"); return; }
-                state.Flags.Add(E + "valid");
+                var actor = Original(data, currentStorage: data.Phase != "released" && data.Phase != "departed"); // eng8-q8a
+                // eng8-q8a: body validity and romance custody are distinct observations.
+                Rules.ObserveWenduagEchoLife(state, data.Phase, true, actor != null);
+                if (actor == null || !LivePath(state) || !Page(state)) return;
+                // end eng8-q8a
                 bool safe = !Game.Instance.IsLoadingSave && !Game.Instance.IsUnloading && !LoadingProcess.Instance.IsLoadingInProcess
                     && !Game.Instance.Player.IsInCombat && Game.Instance.Player.MainCharacter.Value?.State.IsConscious == true;
                 if (data.Phase == "down" && safe && state.Area == data.SourceArea && actor.HoldingState?.SceneName == data.SourceStorage
@@ -357,9 +361,9 @@ namespace Tirabade
                 }
                 if (data.Phase == "arrived" && safe && Loaded(actor) && state.Area == Capital && state.Chapter == 5)
                     state.Flags.Add(E + "return_available");
-                // Only the released original grants continuing presence, never an intermediate custody phase.
-                if (data.Phase != "released" && data.Phase != "down" && data.Phase != "arrived")
-                    state.Flags.Add(E + "unavailable");
+                // eng8-q8a: ObserveWenduagEchoLife withholds intermediate custody;
+                // a living departure grants its ending but never contact or romance.
+                // end eng8-q8a
             }
             catch (Exception ex) { LastError = ex; state.Flags.Add(E + "unavailable"); }
         }
@@ -367,7 +371,7 @@ namespace Tirabade
         {
             var state = snapshot();
             var data = Data();
-            if (state == null || data == null || state.Has(E + "unavailable")) return null;
+            if (state == null || data == null || Closed(state) || state.Has(E + "unavailable")) return null; // eng8-q8a
             if (pickup ? !state.Has(E + "casualty_available") : data.Phase != "arrived" && data.Phase != "released") return null;
             var actor = Original(data);
             return actor != null && Loaded(actor) ? actor : null;
@@ -437,7 +441,16 @@ namespace Tirabade
                 data.Phase = "released";
                 if (data.UntargetableAdded) { actor.State.Features.IsUntargetable.Release(); data.UntargetableAdded = false; }
             }
-            else if (choice.Set.Contains("wenduag.closed")) { actor.IsInGame = false; data!.Phase = "invalid"; }
+            // eng8-q8a: an ordered departure releases a living original without
+            // crediting a return, a romance, or further physical contact.
+            else if (choice.Set.Contains("wenduag.closed") && choice.Set.Contains(E + "departed"))
+            {
+                if (data!.Phase != "arrived") return false;
+                if (data.UntargetableAdded) { actor.State.Features.IsUntargetable.Release(); data.UntargetableAdded = false; }
+                actor.IsInGame = false;
+                data.Phase = "departed";
+            }
+            // end eng8-q8a
             return true;
         }
         internal void Tick()

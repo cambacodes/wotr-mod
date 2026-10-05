@@ -39,6 +39,10 @@ internal static class PresenceReactionHubInventoryTests
                     missing = Program.Copy(state); missing.Area = "elsewhere";
                     check(!Rules.PresenceHubAvailable(story, key, scene, missing), "Q7-29: wrong area offered " + id);
                     missing = Program.Copy(state); missing.Flags.Remove("nenio.trickster.returned");
+                    // eng8-q8a: rebuild the loss-specific return readers as Main.BuildState does.
+                    missing.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+                    Rules.Complete(story, missing);
+                    // end eng8-q8a
                     check(!Rules.PresenceHubAvailable(story, key, scene, missing), "Q7-29: unearned return offered " + id);
                     foreach (var requirement in scene.Requires)
                     {

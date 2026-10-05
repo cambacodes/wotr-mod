@@ -200,9 +200,13 @@ def producer_presence_errors(story):
                     hard.append("T7 %s/%s/choice[%d]: return producer %s needs the current Trickster path"
                                 % (s["Id"], n.get("Id"), i, sorted(flags) or "Revive"))
                 rel = s.get("Relationship") or "tirabade"
+                # eng8-q8a: the nominated bodily-departure receipt co-produces
+                # the existing romance closure; its independent living ending stays available.
+                from tools.return_provenance_lint import registered_closing_departure
                 for flag in c.get("Set") or []:
                     if (DEPARTURE_FLAG.search(flag) and flag not in (rels.get(rel) or {}).get("UnavailableFlags", [])
-                            and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()):
+                            and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()
+                            and not registered_closing_departure(rel, s["Id"], n["Id"], i, c, flag)):  # eng8-q8a
                         hard.append("P1 %s: departure %s must be in %s.UnavailableFlags or allowlisted with a reason"
                                     % (s["Id"], flag, rel))
     # eng7-l06: dependency checking is separate from q6a's L1 consumer-presence lint.

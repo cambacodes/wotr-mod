@@ -313,7 +313,7 @@ internal static class AreeluTricksterTests
               && ShykaLine(fwH1).Contains("bottle") && !ShykaLine(fwH1).Contains("initialled twice"),
             "The Shyka paragraph contradicts the Last Call H1 page.");
         // Sol INT (r1): a returned Nenio (G6(b)) is at breakfast exactly once; a dissolved one never.
-        var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned");
+        var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated"); // eng8-q8a: existing new vessel
         // eng7-f2: identify the narrative paragraph independently of display markup.
         int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.Replace("{n}", "").Replace("{/n}", "").StartsWith("Nenio arrived at breakfast"));
         // end eng7-f2

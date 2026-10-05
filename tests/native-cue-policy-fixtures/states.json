@@ -15085,6 +15085,21 @@
       "ExpectedCandidate": "wenduag.trickster.epilogue.refused"
     },
     {
+      "Id": "page/wenduag.trickster.echo.abyss.epilogue.departed",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "wenduag.closed",
+        "wenduag.life.available",
+        "wenduag.trickster.echo.abyss.departed"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "wenduag.trickster.echo.abyss.epilogue.departed"
+    },
+    {
       "Id": "page/wenduag.lastcall.page",
       "Target": "",
       "Dialog": "",

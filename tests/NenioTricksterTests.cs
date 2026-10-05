@@ -73,8 +73,18 @@ internal static class NenioTricksterTests
             var chosen = Ch(scene, node, index);
             var hits = new List<Snapshot>();
             foreach (var r in Program.Walk(scene, w))
+            {
+                // eng8-q8a: observe the native resurrection after this recovery's paid answer.
+                if (scene.Recovery == "nenio" && r.Flags.Contains(Returned) && !w.Flags.Contains(Returned))
+                {
+                    r.Flags.Remove("nenio.dead");
+                    r.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+                    Rules.Complete(story, r);
+                }
+                // end eng8-q8a
                 if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
                     && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))) hits.Add(r);
+            }
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -128,9 +138,14 @@ internal static class NenioTricksterTests
 
         // Shape and hooks.
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { "nenio.dead", "nenio.dissolved", "nenio.kicked_out", "nenio.killed_by_commander", "nenio.sent_away" })
+              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { "nenio.dead", "nenio.dissolved", "nenio.kicked_out", "nenio.killed_by_commander", "nenio.life.unavailable", "nenio.sent_away" }) // eng8-q8a
               && !rel.UnavailableOverrides.ContainsKey("nenio.dissolved") && rel.UnavailableOverrides.Count == 4
-              && rel.UnavailableOverrides.Values.All(v => v == Returned)
+              // eng8-q8a: a bodily return cannot answer a later loss or a different departure.
+              && rel.UnavailableOverrides["nenio.dead"] == "nenio.life.recreated"
+              && rel.UnavailableOverrides["nenio.killed_by_commander"] == "nenio.life.unremembered"
+              && rel.UnavailableOverrides["nenio.sent_away"] == "nenio.life.probation"
+              && rel.UnavailableOverrides["nenio.kicked_out"] == "nenio.life.probation"
+              // end eng8-q8a
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "enigma", "nenio.away", "nenio.dead", "nenio.killed_by_commander" }),
             "Nenio's relationship does not match the build sheet (four loss overrides to the return, none for the dissolution).");
         check(riddle.AnswerLists.SequenceEqual(new[] { FoxList }) && riddle.NativeReturnCue == FoxReturn && riddle.EntryMythic == "PlayerIsTrickster"
@@ -349,7 +364,8 @@ internal static class NenioTricksterTests
             "Sol r3 INT: committed-then-dissolved gets the living article.");
         foreach (var loss in new[] { "nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out" })
             check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss))
-                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss, Returned))
+                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss, Returned,
+                      loss == "nenio.dead" ? P + "cost.recreated" : loss == "nenio.killed_by_commander" ? P + "cost.unremembered" : P + "cost.demoted")) // eng8-q8a: matching paid receipt fixture
                   && !Avail(S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Started, loss))
                   && !Avail(S(P + "epilogue.closed"), World(story, 6, "trickster", "trickster.ever", Started, Closed, loss)),
                 "Sol r4 INT: a living epilogue plays over an unrecovered loss: " + loss);
@@ -393,7 +409,13 @@ internal static class NenioTricksterTests
 
         // Areelu G6(b): her Nenio lines lift the four losses (never the dissolution) on Nenio's return.
         var areeluReact = S("areelu.trickster.react.nenio_two_drafts");
-        check(areeluReact.ForbidOverrides.Count == 4 && areeluReact.ForbidOverrides.Values.All(v => v == Returned)
+        check(areeluReact.ForbidOverrides.Count == 4
+              // eng8-q8a: foreign reactors consume the same matching loss-specific returns.
+              && areeluReact.ForbidOverrides["nenio.dead"] == "nenio.life.recreated"
+              && areeluReact.ForbidOverrides["nenio.killed_by_commander"] == "nenio.life.unremembered"
+              && areeluReact.ForbidOverrides["nenio.sent_away"] == "nenio.life.probation"
+              && areeluReact.ForbidOverrides["nenio.kicked_out"] == "nenio.life.probation"
+              // end eng8-q8a
               && !areeluReact.ForbidOverrides.ContainsKey("nenio.dissolved"),
             "Areelu's reaction does not carry the G6(b) overrides to Nenio's return.");
         var visitors = S("areelu.trickster.report.visitors").Nodes.Single(n => n.Id == "start").Choices;

@@ -180,6 +180,16 @@ internal static class Program
                 Rules.Complete(story, state);
             }
             // eng7-l07 end
+            // eng8-q8a: declared Nenio loss fixtures need the existing matching
+            // paid vessel/probation receipt; the ordered worker proves actual payment.
+            if (scene.Relationship == "nenio" && state.Has("nenio.trickster.returned"))
+            {
+                if (state.Has("nenio.killed_by_commander")) state.Flags.Add("nenio.trickster.cost.unremembered");
+                else if (state.Has("nenio.dead")) state.Flags.Add("nenio.trickster.cost.recreated");
+                if (state.Has("nenio.sent_away") || state.Has("nenio.kicked_out")) state.Flags.Add("nenio.trickster.cost.demoted");
+                Rules.Complete(story, state);
+            }
+            // end eng8-q8a
             if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
                 state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
@@ -384,6 +394,14 @@ internal static class Program
         }
         // eng7-l06 end
         Rules.Validate(story);
+        // eng8-q8a: always execute ordered latest-state acceptance, including in the full gate.
+        if (!args.Contains("--bindings")) LatestStateInventoryTests.Run(story, Check);
+        if (args.Contains("--eng8-q8a"))
+        {
+            Console.WriteLine("PASS: eng8-q8a (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8a
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
         if (!args.Contains("--bindings"))
@@ -593,6 +611,9 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+        // eng8-q8a: current-body observations are runtime inputs, never authored effects.
+        known.UnionWith(Rules.LatestStateRuntime);
+        // end eng8-q8a
         // eng7-l06: saved placement receipts are runtime-produced conditions.
         known.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
         // eng7-l06 end

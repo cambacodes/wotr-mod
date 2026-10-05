@@ -53,7 +53,7 @@ internal static class Program
 
     private static Dictionary<string, JObject> ReadNative(string path, IEnumerable<string> ids)
     {
-        string script = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../read-native.py"));
+        string script = Path.Combine(Bootstrap.RepositoryRoot, "managed-tests", "read-native.py");
         var start = new System.Diagnostics.ProcessStartInfo(Environment.GetEnvironmentVariable("RRT_PYTHON") ?? "python")
         {
             Arguments = "\"" + script + "\" \"" + path + "\"",
@@ -372,8 +372,8 @@ internal static class Program
         bool hasParentEndingRules = story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0;
         if (hasParentEndingRules)
         {
-            string contractPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                "../../../fixtures/parent-ending-source/verified-contract.json");
+            string contractPath = Path.Combine(Bootstrap.RepositoryRoot,
+                "managed-tests/fixtures/parent-ending-source/verified-contract.json");
             ParentEndingIntegrationTests.PrepareSourceFixtures(JObject.Parse(File.ReadAllText(contractPath)),
                 ParentEndingSourceFixtures.Build(), ParentEndingSourceFixtures.PageActions());
             ParentEndingIntegrationTests.CheckPreflight(story, Check);
@@ -491,6 +491,7 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} assertions; wrong-type optional epilogue ignored with a warning; addon initialized.");
             return 0;
         }
+        Check(Degraded().Count == 0, "Blueprint construction disabled relationships: " + string.Join(",", Degraded().OrderBy(x => x)));
         KonomiMeetingIntegrationTests.Run(Check);
         IrabethMeetingIntegrationTests.Run(Check);
         NurahHubIntegrationTests.Run(story, Check);

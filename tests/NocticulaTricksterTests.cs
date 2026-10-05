@@ -249,7 +249,8 @@ internal static class NocticulaTricksterTests
         // one who is gone does not; dissolved stays blocking (her producer never reverses it).
         foreach (var gone in new[] { "nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out" })
             check(!Rules.Available(story, nenio, With(story, joked[0], gone))
-                  && Rules.Available(story, nenio, With(story, joked[0], gone, "nenio.trickster.returned")),
+                  && Rules.Available(story, nenio, With(story, joked[0], gone, "nenio.trickster.returned",
+                      gone == "nenio.dead" ? "nenio.trickster.cost.recreated" : gone == "nenio.killed_by_commander" ? "nenio.trickster.cost.unremembered" : "nenio.trickster.cost.demoted")), // eng8-q8a: matching paid receipt fixture
                 "Nenio's reaction ignores her return after " + gone + ".");
         check(!Rules.Available(story, nenio, With(story, joked[0], "nenio.dissolved", "nenio.trickster.returned")),
             "Nenio's reaction plays for a dissolved Nenio.");

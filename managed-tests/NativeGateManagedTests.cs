@@ -16,7 +16,7 @@ using Tirabade;
 // while the earned state holds (canon otherwise, including when the gate's relationship is degraded).
 internal static class NativeGateManagedTests
 {
-    public static IEnumerable<string> NativeIds => NativeGate.Reviewed.Values.Concat(Rules.ReviewedNativeObjectives.Values);
+    public static IEnumerable<string> NativeIds => NativeGate.Reviewed.Values.Concat(Rules.ReviewedNativeObjectives.Values).Concat(new[] { NativeGate.TerendelevFuneralSequence, NativeGate.TerendelevScaleAnswer });
 
     private static T Seed<T>(string guid) where T : SimpleBlueprint, new()
     {

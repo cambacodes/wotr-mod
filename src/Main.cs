@@ -1461,6 +1461,16 @@ namespace Tirabade
             if (state.Has("swarm") || state.Has("true_lich")) state.Flags.Add("inhuman");
             if (Rules.ChapterFlag(player.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             KonomiRecovery.ReadLifecycle(state);
+            // eng8-q8a: the retained-body bargain uses the native original. Missing
+            // custody or a later death cannot be answered by its old paid flag.
+            // Recreated visitors use their existing persistent presence-loss receipt.
+            if (state.Flags.Contains("nenio.trickster.returned"))
+            {
+                var original = revivalUnits.TryGetValue("nenio", out var nenio) ? Fate.Inspect(nenio) : new RecoveryStatus();
+                Rules.ObserveNenioLife(state, original.Eligible, original.Dead,
+                    presences.Any(p => Rules.PresenceRelationship(p.Key) == "nenio" && p.ReturnedActorLost));
+            }
+            // end eng8-q8a
             wenduagEcho?.Observe(state);
             if (state.Has("wenduag.trickster.returned")
                 && presences.Any(p => Rules.PresenceRelationship(p.Key) == "wenduag" && p.ReturnedActorLost))
