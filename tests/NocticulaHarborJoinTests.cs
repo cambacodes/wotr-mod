@@ -7,7 +7,7 @@ internal static class NocticulaHarborJoinTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
-        story = Program.Unfolded(story);   // NM1: judged per letter; the folded deliveries are Nm1BudgetTests
+        story = Program.ArchivedNocticulaHarbor(story, check); // eng7-l13: live retirement + retained saved graph
         string[] ids = { "noct.join.an_unfinished_map", "noct.join.the_room_she_makes", "noct.join.a_chosen_shore" };
         var bridge = story.Scenes.Where(s => ids.Contains(s.Id)).ToArray();
         if (bridge.Length == 0) return;

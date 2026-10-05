@@ -43,6 +43,45 @@ internal static class Program
         return story;
     }
 
+    // eng7-l13: NM1 retired these saved graphs. Verify the live exclusion before
+    // exercising the retained pre-retirement graph in a detached test-only copy.
+    internal static Story ArchivedNocticulaHarbor(Story original, Action<bool, string> check)
+    {
+        bool Deferred(Scene s) => s.Id.StartsWith("noct.join.", StringComparison.Ordinal)
+            || s.Relationship == "nocticula" && s.Id.Contains(".acquired.") && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+        var deferred = original.Scenes.Where(Deferred).ToArray();
+        check(deferred.Length > 3 && deferred.All(s => s.Forbids.Contains("chapter_later")), "eng7-l13: NM1 harbor retirement was removed.");
+        foreach (var scene in deferred)
+        {
+            var live = new Snapshot { Chapter = 5, Hour = 10000, Flags = new HashSet<string>(scene.Requires.Concat(new[] { "chapter_later", "trickster" })) };
+            foreach (var group in scene.RequiresAnyGroups) live.Flags.Add(group[0]);
+            check(!Rules.Available(original, scene, live), "eng7-l13: retired harbor opens in a live chapter: " + scene.Id);
+        }
+        var archived = Unfolded(original);
+        foreach (var scene in archived.Scenes.Where(Deferred))
+            scene.Forbids = scene.Forbids.Where(f => f != "chapter_later").ToArray();
+        return archived;
+    }
+
+    // eng7-l13: these four Konomi devices were already superseded/retired.
+    // Keep live exclusions and judge only their detached retained save graphs.
+    internal static Story ArchivedKonomi(Story original, Action<bool, string> check)
+    {
+        var ids = new[] { "konomi.fate_post", "konomi.retained_inquiry", "konomi.the_unintroduced_letter", "konomi.retained_attempt" };
+        var retired = original.Scenes.Where(s => ids.Contains(s.Id)).ToArray();
+        check(retired.Length == ids.Length && retired.All(s => s.Forbids.Contains("trickster.ever")), "eng7-l13: Konomi retirement was removed.");
+        foreach (var scene in retired)
+        {
+            var live = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Flags = new HashSet<string>(scene.Requires.Concat(new[] { "trickster", "trickster.ever", "chapter_later" })) };
+            foreach (var group in scene.RequiresAnyGroups) live.Flags.Add(group[0]);
+            check(!Rules.Available(original, scene, live), "eng7-l13: retired Konomi device opens: " + scene.Id);
+        }
+        var archived = Unfolded(original);
+        foreach (var scene in archived.Scenes.Where(s => ids.Contains(s.Id)))
+            scene.Forbids = scene.Forbids.Where(f => f != "trickster.ever").ToArray();
+        return archived;
+    }
+
     // A scene's minimal prerequisites: its Requires plus the first flag of each RequiresAnyGroups group (the original path).
     internal static IEnumerable<string> Prerequisites(Scene scene) => scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0]));
 
@@ -56,9 +95,16 @@ internal static class Program
     private static List<(Snapshot state, bool via)> WalkPaths(Scene scene, Snapshot initial, Action<string, Snapshot>? visit, (string node, int index)? via)
     {
         var outcomes = new List<(Snapshot, bool)>();
-        void Visit(string id, Snapshot state, HashSet<string> path, bool passed)
+        void Visit(string id, Snapshot state, HashSet<string> path, bool passed, bool dirty)
         {
             Check(path.Add(id), "Cycle without a terminal answer: " + scene.Id + "/" + id);
+            // eng7-l13: choice guards consume freshly completed Derived eligibility.
+            if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+            if (story != null && dirty)
+            {
+                state.Flags.ExceptWith(story.Derived.Keys.Where(k => k.Contains(".outcome.") || k.Contains(".late_committed.without.") || k.Contains(".late_committed.refusal_lifted.") || k.EndsWith("late_committed")));
+                Rules.Complete(story, state);
+            }
             var node = scene.Nodes.Single(n => n.Id == id);
             visit?.Invoke(id, state);
             var choices = node.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).ToList();
@@ -74,7 +120,7 @@ internal static class Program
                     foreach (var held in story.InventoryItems.Concat(story.PartyItems).Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
                         next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
-                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took);
+                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took, choice.Set.Any(f => !state.Has(f)) || choice.RemoveItem != null);
                 else
                 {
                     if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
@@ -82,8 +128,64 @@ internal static class Program
                 }
             }
         }
-        Visit(scene.Nodes[0].Id, initial, new HashSet<string>(), false);
+        Visit(scene.Nodes[0].Id, initial, new HashSet<string>(), false, true);
         return outcomes;
+    }
+
+    // eng7-l13: the same generic draft checks are callable for focused diagnostics.
+    internal static void CheckDraftScenes(HashSet<string> playedContinuations)
+    {
+        foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
+        {
+            if (playedContinuations.Contains(scene.Id)) continue;
+            var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
+            if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
+                state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
+            if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
+            if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
+            state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
+            if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
+            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
+            if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
+            if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))
+                state.Flags.UnionWith(new[] { "jerribeth.counter_cache_intact", "jerribeth.counter_clerk_witness", "jerribeth.counter_return_agreement", "jerribeth.counter_public_account" });
+            if (scene.Id == "kiana.rehearsal") state.Flags.Add("kiana.moon");
+            if (scene.Id == "kiana.seelah") state.Flags.Add("kiana.waited");
+            if (scene.Id == "kiana.morning") state.Flags.Add("kiana.separated");
+            if (scene.Id == "kiana.a_place_afterward") state.Flags.Add("kiana.separated");
+            if (new[] { "kiana.bakery_stairs", "kiana.last_page", "kiana.first_readers", "kiana.ink_after", "kiana.working_room", "kiana.kept_evening" }.Contains(scene.Id))
+                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.moon", "kiana.follow_audience", "kiana.follow_short_speech", "kiana.follow_guest_role", "kiana.follow_quiet_desk" });
+            if (new[] { "kiana.guest_table", "kiana.market_weather", "kiana.lenna_door", "kiana.blue_room" }.Contains(scene.Id))
+                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.guest_table.listened", "kiana.lenna_door.plain", "kiana.market_weather.public" });
+            if (scene.Id == "ember.rain") state.Flags.Add("ember.manyboots");
+            if (new[] { "ember.paper_bird", "ember.missing_cloth", "ember.courtyard_play", "ember.after_applause", "ember.second_ending" }.Contains(scene.Id))
+                state.Flags.UnionWith(new[] { "ember.manyboots", "ember.player_fox", "ember.stage_road", "ember.play_restitution", "ember.play_company", "ember.revision_laughter" });
+            if (scene.Id == "seelah.letter_after") state.Flags.Add("seelah.letter_public");
+            if (scene.Id == "seelah.letter_work") state.Flags.UnionWith(new[] { "seelah.letter_public", "seelah.check_person" });
+            if (scene.Id == "seelah.borrowed_saw") state.Flags.Add("seelah.frank_terms");
+            if (scene.Id == "seelah.platform_finished") state.Flags.Add("seelah.saw_gift");
+            if (scene.Id == "seelah.inheritors_corner") state.Flags.Add("seelah.prayer_company");
+            if (scene.Id.StartsWith("seelah.late_", StringComparison.Ordinal))
+                state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
+            if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
+            // Prerequisite-only fixtures still need real temporal evidence for held contact witnesses.
+            var contacts = scene.AdditionalContactUnits.Append(scene.ContactUnit);
+            foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+                .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
+                state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
+            // eng7-l13: retained legacy endings need their recorded earned returns.
+            // A loss in Requires is history, never evidence that its corpse may visit.
+            var missingReturns = scene.ForbidOverrides.Where(pair => scene.Forbids.Contains(pair.Key)
+                && state.Has(pair.Key) && !state.Has(pair.Value)).Select(pair => pair.Value).ToArray();
+            if (missingReturns.Length > 0)
+            {
+                Check(!Rules.Available(story, scene, state), "Unreturned draft loss grants an outcome: " + scene.Id);
+                state.Flags.UnionWith(missingReturns);
+            }
+            Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
+            if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
+                Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
+        }
     }
 
     private static Snapshot Complete(Scene scene, Snapshot state)
@@ -230,6 +332,8 @@ internal static class Program
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
         Rules.Validate(story);
+        // eng7-l13: mandatory earned-outcome inventory acceptance.
+        EarnedOutcomeInventoryTests.Run(story, Check);
         if (args.Contains("--wenduag-echo"))
         {
             WenduagTricksterTests.Run(story, Check);
@@ -631,48 +735,7 @@ internal static class Program
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                 && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
         }
-        foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
-        {
-            if (playedContinuations.Contains(scene.Id)) continue;
-            var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
-            if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
-                state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
-            if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
-            if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
-            state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
-            if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
-            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
-            if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
-            if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))
-                state.Flags.UnionWith(new[] { "jerribeth.counter_cache_intact", "jerribeth.counter_clerk_witness", "jerribeth.counter_return_agreement", "jerribeth.counter_public_account" });
-            if (scene.Id == "kiana.rehearsal") state.Flags.Add("kiana.moon");
-            if (scene.Id == "kiana.seelah") state.Flags.Add("kiana.waited");
-            if (scene.Id == "kiana.morning") state.Flags.Add("kiana.separated");
-            if (scene.Id == "kiana.a_place_afterward") state.Flags.Add("kiana.separated");
-            if (new[] { "kiana.bakery_stairs", "kiana.last_page", "kiana.first_readers", "kiana.ink_after", "kiana.working_room", "kiana.kept_evening" }.Contains(scene.Id))
-                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.moon", "kiana.follow_audience", "kiana.follow_short_speech", "kiana.follow_guest_role", "kiana.follow_quiet_desk" });
-            if (new[] { "kiana.guest_table", "kiana.market_weather", "kiana.lenna_door", "kiana.blue_room" }.Contains(scene.Id))
-                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.guest_table.listened", "kiana.lenna_door.plain", "kiana.market_weather.public" });
-            if (scene.Id == "ember.rain") state.Flags.Add("ember.manyboots");
-            if (new[] { "ember.paper_bird", "ember.missing_cloth", "ember.courtyard_play", "ember.after_applause", "ember.second_ending" }.Contains(scene.Id))
-                state.Flags.UnionWith(new[] { "ember.manyboots", "ember.player_fox", "ember.stage_road", "ember.play_restitution", "ember.play_company", "ember.revision_laughter" });
-            if (scene.Id == "seelah.letter_after") state.Flags.Add("seelah.letter_public");
-            if (scene.Id == "seelah.letter_work") state.Flags.UnionWith(new[] { "seelah.letter_public", "seelah.check_person" });
-            if (scene.Id == "seelah.borrowed_saw") state.Flags.Add("seelah.frank_terms");
-            if (scene.Id == "seelah.platform_finished") state.Flags.Add("seelah.saw_gift");
-            if (scene.Id == "seelah.inheritors_corner") state.Flags.Add("seelah.prayer_company");
-            if (scene.Id.StartsWith("seelah.late_", StringComparison.Ordinal))
-                state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
-            if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
-            // Prerequisite-only fixtures still need real temporal evidence for held contact witnesses.
-            var contacts = scene.AdditionalContactUnits.Append(scene.ContactUnit);
-            foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
-                .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
-                state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
-            Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
-            if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
-                Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
-        }
+        CheckDraftScenes(playedContinuations); // eng7-l13: focused class sweep shares this fixture.
         if (story.Scenes.Any(s => s.Id == "seelah.kept")) CheckSeelahOpening();
         if (story.Scenes.Any(s => s.Id == "seelah.door")) CheckSeelahContinuation();
         if (story.Scenes.Any(s => s.Id == "seelah.letter")) CheckSeelahLetters();
@@ -1439,7 +1502,9 @@ internal static class Program
             Play("morning", "kiana.committed");
             state.Hour += 48;
             bool developedRoute = story.Scenes.Any(s => s.Id == "kiana.a_place_afterward");
-            if (developedRoute && !transformed)
+            // eng7-l13: Q10 already excludes the long continuation on every Trickster entry.
+            bool budget = developedRoute && path == "trickster";
+            if (developedRoute && !transformed && !budget)
             {
                 Check(!Rules.Available(story, Find("farewell"), state), "Kiana farewell bypasses developed continuation.");
                 var chain = new[] { "guest_table", "market_weather", "lenna_door", "blue_room", "bakery_stairs", "last_page", "first_readers", "ink_after", "working_room", "kept_evening" }.AsEnumerable();
@@ -1451,11 +1516,13 @@ internal static class Program
                     Play(id, "kiana." + id);
                 }
             }
-            Play("farewell", "kiana.farewell_kept");
+            if (budget)
+                Check(!Rules.Available(story, Find("guest_table"), state) && !Rules.Available(story, Find("farewell"), state), "Kiana Trickster budget opens the retired long continuation.");
+            else Play("farewell", "kiana.farewell_kept");
             string Ending() => story.Scenes.Single(s => s.Relationship == "kiana" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id;
-            Check(Ending() == (developedRoute && transformed ? "kiana.ending_promised" : route == "widow" ? "kiana.ending_bereaved" : "kiana.ending_together"), "Kiana commitment loses her marital history or has conflicting endings.");
+            Check(Ending() == (developedRoute && (transformed || budget) ? "kiana.ending_promised" : route == "widow" ? "kiana.ending_bereaved" : "kiana.ending_together"), "Kiana commitment loses her marital history or has conflicting endings.");
             state.Flags.Add("ascended");
-            Check(Ending() == (developedRoute && transformed ? "kiana.ending_promised" : "kiana.ending_ascended"), "Kiana ascension has conflicting endings.");
+            Check(Ending() == (developedRoute && (transformed || budget) ? "kiana.ending_promised" : "kiana.ending_ascended"), "Kiana ascension has conflicting endings.");
             state.Flags.Add("kiana.closed");
             Check(Ending() == "kiana.ending_apart", "Kiana closure has conflicting endings.");
         }

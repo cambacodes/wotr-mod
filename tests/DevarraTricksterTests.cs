@@ -130,7 +130,8 @@ internal static class DevarraTricksterTests
             "The reactions are not exactly Greybor and the Storyteller, split cleanly between the flight and the legacy worlds.");
         check(pages.Length == 5 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "tested" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "tested", "devarra.outcome.route_open", "devarra.trickster.late_committed.without.devarra.trickster.declined" }),
             "The late commit is not derived from the tested story.");
         // Every watchtower gate is produced somewhere in the route.
         var produced = new HashSet<string>(story.Scenes.Where(s => s.Relationship == "devarra").SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set));

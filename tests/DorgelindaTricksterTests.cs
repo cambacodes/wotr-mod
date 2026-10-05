@@ -142,7 +142,8 @@ internal static class DorgelindaTricksterTests
             "The reactions are not exactly Konomi, Regill and Lann behind their guards.");
         check(pages.Length == 6 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard", "dorgelinda.outcome.route_open", "dorgelinda.trickster.late_committed.without.dorgelinda.trickster.declined" }),
             "The late commit is not derived from the second book.");
 
         // Trk_Dorgelinda_Countersign: the rider, signed at the caravan council, before the tribunal.

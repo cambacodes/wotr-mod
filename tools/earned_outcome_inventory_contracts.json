@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "refusal_control": {
+    "jannah": [
+      "jannah.trickster.declined",
+      "jannah.trickster.chalk_circle.walked_in",
+      "jannah.trickster.chalk_circle"
+    ],
+    "nenio": [
+      "nenio.trickster.tampered",
+      "nenio.trickster.replicated",
+      "nenio.trickster.commit.replication"
+    ]
+  },
+  "mandatory_consumers": {
+    "jannah.circle.blade": [
+      "flirt"
+    ],
+    "jannah.circle.the_watch": [
+      "mine"
+    ],
+    "jannah.circle.anything_but_wings": [
+      "stay"
+    ],
+    "jannah.circle.your_part": [
+      "not_you_want"
+    ],
+    "jannah.circle.forms": [
+      "flirt"
+    ],
+    "jannah.circle.measure": [
+      "enjoy"
+    ],
+    "jannah.circle.salt": [
+      "watching"
+    ]
+  },
+  "exemptions": {
+    "AeonEpilogue": "Native rewritten history has separate fate states (existing L4 doctrine).",
+    "noct.ending_death": "Mourning a dead Nocticula; contains historical harbor facts, no new reward.",
+    "noct.ending_sacrifice": "Historical harbor account after fatal Commander sacrifice, no living reward.",
+    "noct.ending_changed": "Inhuman Commander remembers an earlier affair; no new invitation.",
+    "minachiv.ending_changed_completed": "Transformation ends the invitation; explicitly refuses a new promise.",
+    "arsinoe.trickster.late.ascended": "An unanswered letter to an unreachable ascended Commander, not a late yes.",
+    "arsinoe.trickster.late.commit/business": "Business-only refusal branch; no romantic reward.",
+    "minagho_chivarro.trickster.epilogue.commit/regrets": "Invitation refused; no new intimacy.",
+    "minagho_chivarro.trickster.epilogue.commit/regrets_alone": "Solo invitation refused; no new intimacy.",
+    "dorgelinda.trickster.epilogue.ruled_off": "Hard closure after an earlier commitment; the cup is never used again, no romantic reward."
+  },
+  "non_romance_commitment_flags": {
+    "trickster.foresight.gate_fire": "Shyka framework receipt, not romance. After the first memory is paid, the authored page must finish without an abort (ForesightTests Foresight_Commit).",
+    "longcon.talk_done": "Framework talk completion, not a partner commitment (LongConTests).",
+    "trickster.lastcall.taken": "Framework Ledger milestone, not a partner commitment (LastCallTests).",
+    "household.table.kept": "Framework table milestone; individual seats retain their own partner entitlement guards (HouseholdTests)."
+  }
+}

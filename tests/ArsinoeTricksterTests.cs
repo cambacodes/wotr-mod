@@ -174,8 +174,12 @@ internal static class ArsinoeTricksterTests
         // commitment scene gets the rent-day page; it offers a staged night, a deferred yes and a refusal.
         var lateCommit = story.Scenes.Single(s => s.Id == "arsinoe.trickster.late.commit");
         check(lateCommit.Owner == "Epilogue" && lateCommit.Relationship == "arsinoe", "Arsinoe late page is not her epilogue.");
-        var flirted = World(story, "trickster.ever", "arsinoe.trickster.stays_to_collect", "arsinoe.started");
+        // eng7-l13: a new late yes requires current Trickster power.
+        var flirted = World(story, "trickster", "trickster.ever", "arsinoe.trickster.stays_to_collect", "arsinoe.started");
         flirted.Chapter = 6;
+        var former = Program.Copy(flirted); former.Flags.Remove("trickster");
+        former.Flags.Remove("trickster.now"); former.Flags.Add("trickster.failed");
+        check(!Rules.Available(story, lateCommit, former), "Late commitment offered without current Trickster power.");
         check(flirted.Has("arsinoe.trickster.late_committed") && Rules.Available(story, lateCommit, flirted), "R2-6 late commitment unreachable.");
         foreach (string spoken in new[] { "arsinoe.committed", "arsinoe.future_spoken", "arsinoe.closed" })
         {

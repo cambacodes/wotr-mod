@@ -147,7 +147,8 @@ internal static class HepzamirahTricksterTests
             "The reactions are not exactly Greybor, Ember and Woljif's two Moon answers behind their guards.");
         check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived["hepzamirah.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "courier_seen" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived["hepzamirah.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "courier_seen", "hepzamirah.outcome.route_open" }),
             "The late commit is not derived from the courier.");
 
         // Trk_Hepzamirah_Colyphyr: the standing offer, before she dies; read later as a variant only.

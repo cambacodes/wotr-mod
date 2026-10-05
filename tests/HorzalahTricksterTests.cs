@@ -290,7 +290,8 @@ internal static class HorzalahTricksterTests
         }
 
         // The presence failed: the night twins carry the test and both commits.
-        var nf = World(story, 5, "trickster.ever", Primed, Returned, Wants, Failed);
+        // eng7-l13: new commitments on fallback visits require current power.
+        var nf = World(story, 5, "trickster", "trickster.ever", Primed, Returned, Wants, Failed);
         nf.AvailableContacts.Clear();
         check(!Avail(gift, Later(story, nf, 48)) && Avail(giftNight, Later(story, nf, 48)) && Rules.IsRemote(giftNight) && giftNight.Kind == "visit",
             "The presence failed and the gift has no night twin.");
@@ -304,7 +305,7 @@ internal static class HorzalahTricksterTests
         check(pages.Length == 9 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
             "Horzalah's pages are not nine effect-free Chapter 6 pages.");
         check(Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, Ear))
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested, Committed))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster", "trickster.ever", Wants, Tested)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested, Committed))
               && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants)) && Avail(pg["epilogue.unanswered"], World(story, 6, "trickster.ever", Wants))
               && !Avail(pg["epilogue.unanswered"], World(story, 6, "trickster.ever", Wants, Tested))
               && Avail(pg["epilogue.decided"], World(story, 6, "trickster.ever", Wants, Declined)) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Declined))
@@ -397,7 +398,7 @@ internal static class HorzalahTricksterTests
         // H2 (Last Call's bottle brings the Commander back with sacrifice held) keeps her romantic pages, as the native endings do.
         var h2 = World(story, 6, "trickster.ever", Committed, Ear, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle");
         check(h2.Has("trickster.commander_back") && Avail(pg["epilogue.together"], h2)
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Wants, Tested, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle"))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster", "trickster.ever", Wants, Tested, "sacrifice", "trickster.lastcall.taken", "ending.wound_closed", "trickster.lastcall.pillar.bottle"))
               && !Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, "sacrifice")),
             "H2 survival suppresses her pages, or a Commander who stayed dead still gets them.");
         // Reactors speak only while with the Commander: Wenduag and Greybor need their in-party states.

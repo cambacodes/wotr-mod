@@ -7,6 +7,7 @@ internal static class KonomiMissedContactTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        story = Program.ArchivedKonomi(story, check); // eng7-l13: live retirement + retained save graph
         var reached = new HashSet<string>();
         const string observed = "konomi.missed_contact_available";
         const string access = "konomi.missed_private_access";

@@ -234,7 +234,9 @@ internal static class NidalynnTricksterTests
         // Trk_Nidalynn_Commit: she proposes when the hatchling first flies; bread and salt; eating is the yes.
         var kissed = After(wings, Later(story, faced, 25), "almost", 0).First();
         check(!Avail(flight, Later(story, kissed, 49, 3)) && Avail(flight, Later(story, kissed, 49, 5)), "Trk_Nidalynn_Commit: the first flight is not a Chapter 5 beat.");
-        var offer = flight.Nodes.Single(n => n.Id == "offer").Choices;
+        // eng7-l13: preserve the three saved answers; appended loss exits abort.
+        var offer = flight.Nodes.Single(n => n.Id == "offer").Choices.Take(3).ToList();
+        check(flight.Nodes.Single(n => n.Id == "offer").Choices.Skip(3).All(c => c.Abort && c.Set.Length == 0), "Appended salt exits grant an outcome.");
         check(offer.Count == 3 && offer[0].Set.Contains(Committed) && offer[0].Set.Contains(P + "cost.salt_eaten") && offer[1].Set.Contains(P + "bread_kept")
               && !offer[1].Set.Contains(Closed) && offer[2].Set.Contains(Closed) && offer.All(c => c.Check == null && c.Crusade == null),
             "Trk_Nidalynn_Commit: the salt is not a plain yes, a not-yet and a no.");
@@ -285,7 +287,8 @@ internal static class NidalynnTricksterTests
             "Trk_Nidalynn_Letter: the kiln letter reaches the Abyss with no carrier.");
         check(pages.Length == 9 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "kissed" })
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "kissed", "nidalynn.outcome.route_open" })
               && !World(story, 6, "trickster", "trickster.ever", P + "met", P + "form_chosen").Has(P + "late_committed")
               && !World(story, 6, "trickster", "trickster.ever", P + "met", P + "form_chosen").Has("nidalynn.harem.eligible")
               && World(story, 6, "trickster", "trickster.ever", P + "met", P + "form_chosen", P + "kissed").Has(P + "late_committed")

@@ -7,7 +7,7 @@ internal static class NocticulaAcquiredHarborTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
-        story = Program.Unfolded(story);   // NM1: judged per letter; the folded deliveries are Nm1BudgetTests
+        story = Program.ArchivedNocticulaHarbor(story, check); // eng7-l13: live retirement + retained saved graph
         const string marker = ".acquired.";
         var acquired = story.Scenes.Where(s => s.Id.Contains(marker)).ToArray();
         if (acquired.Length == 0) return;

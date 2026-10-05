@@ -150,9 +150,10 @@ internal static class DelamereTricksterTests
             "A retired reactor (Ulbrig, Woljif) still speaks.");
         check(pages.Length == 10 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
+        // eng7-l13: preserve preparation inputs and require current eligibility.
         check(story.Derived[P + "late_committed"].Length == 3
-              && story.Derived[P + "late_committed"].All(g => g.Contains("trickster.ever") && g.Contains(P + "second_hunt_offered"))
-              && story.Derived[P + "late_committed"].Select(g => g.Last()).OrderBy(x => x).SequenceEqual(new[] { P + "confessed", P + "told_both", P + "told_truth" })
+              && story.Derived[P + "late_committed"].All(g => g.Contains("trickster.ever") && g.Contains(P + "second_hunt_offered") && g.Last() == "delamere.outcome.route_open")
+              && story.Derived[P + "late_committed"].Select(g => g[2]).OrderBy(x => x).SequenceEqual(new[] { P + "confessed", P + "told_both", P + "told_truth" })
               && story.Derived["delamere.harem.eligible"].Length == 2 && story.Derived.ContainsKey("delamere.harem.voice.a_village_not_a_city"),
             "The late commit or the household eligibility is not declared.");
         var produced = new HashSet<string>(mine.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set));
@@ -389,7 +390,8 @@ internal static class DelamereTricksterTests
         // NM1: the table's delivery carries the white stag; a save between them still gets the white stag on its own.
         check(spoken.Has(P + "white_stag_told") && !Rules.Available(story, whiteStag, Later(story, spoken, 24)),
             "Trk_Delamere_SpineFolded: the feasting table does not carry the white stag.");
-        var tabled = World(story, 3, "trickster.ever", P + "returned", "delamere.started", P + "cost.limp", P + "cost.hunt_owed", P + "counted", P + "village.given",
+        // eng7-l13: positive hunt/late-yes walks retain current power.
+        var tabled = World(story, 3, "trickster", "trickster.ever", P + "returned", "delamere.started", P + "cost.limp", P + "cost.hunt_owed", P + "counted", P + "village.given",
             P + "first_meat", P + "feasting_table", P + "kyado.spoken_for");
         check(Rules.Available(story, whiteStag, Later(story, tabled, 24)) && !Rules.Available(story, red, Later(story, tabled, 24)),
             "The white stag does not come between the table and Red.");
@@ -426,7 +428,7 @@ internal static class DelamereTricksterTests
         // night does not make her accuse the Commander of the horn. The physical scene and both page twins.
         foreach (var s in new[] { hunt, huntPage, huntLate })
         {
-            var retry = World(story, s.Chapters[0], "trickster.ever", P + "second_hunt_offered", P + "called_her", "kyado.dead");
+            var retry = World(story, s.Chapters[0], "trickster", "trickster.ever", P + "second_hunt_offered", P + "called_her", "kyado.dead");
             var hollow = s.Nodes.Single(n => n.Id == "hollow");
             check(hollow.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, retry)).All(c => c.Next == "found")
                   && Choice(s, "horn", 0).Next == "hollow_called" && s.Nodes.Single(n => n.Id == "hollow_called").Choices.All(c => c.Next == "called")
@@ -655,7 +657,7 @@ internal static class DelamereTricksterTests
         // unfinished page, never the late yes.
         var epLatePage = S(P + "epilogue.late");
         var epUnfinished = S(P + "epilogue.unfinished");
-        string[] proposed = { "trickster.ever", P + "returned", "delamere.started", P + "red_blood", P + "second_hunt_offered" };
+        string[] proposed = { "trickster", "trickster.ever", P + "returned", "delamere.started", P + "red_blood", P + "second_hunt_offered" };
         var liarEnd = World(story, 6, proposed.Concat(new[] { P + "lied_erastil" }).ToArray());
         check(!liarEnd.Has(P + "late_committed") && !Rules.Available(story, epLatePage, liarEnd) && Rules.Available(story, epUnfinished, liarEnd),
             "Trk_Delamere_LateLie: an unconfessed lie still gets the late yes.");

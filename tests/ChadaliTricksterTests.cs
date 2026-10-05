@@ -149,9 +149,10 @@ internal static class ChadaliTricksterTests
         check(Reaches(started, W + "the_real_wager") && Reaches(started, "chadali.committed"), "Trk_Chadali_Payoff: no road through the real wager to the commit.");
 
         // Trk_Chadali_Commit.
-        var ready = World(story, 5, "trickster.ever", "chadali.started", W + "the_real_wager", W + "bet_her");
+        // eng7-l13: positive new commitment walks observe current power.
+        var ready = World(story, 5, "trickster", "trickster.ever", "chadali.started", W + "the_real_wager", W + "bet_her");
         // Sol HOW (2026-09-30): postponing the wager does not consume it, and the question needs the bet itself.
-        var unbet = World(story, 5, "trickster.ever", "chadali.started", W + "so_gloomy", W + "a_free_space");
+        var unbet = World(story, 5, "trickster", "trickster.ever", "chadali.started", W + "so_gloomy", W + "a_free_space");
         check(Choice(wager, "not_tonight", 0).Abort && Rules.Available(story, wager, unbet)
               && !Rules.Available(story, second, Later(story, World(story, 5, "trickster.ever", "chadali.started", W + "the_real_wager"), 72)),
             "Trk_Chadali_Commit: refusing to bet consumes the wager or still opens the question.");
@@ -173,7 +174,7 @@ internal static class ChadaliTricksterTests
         check(Reaches(declined, W + "a_coin_lying_flat"), "Her soft no has no sitting of its own.");
 
         // Trk_Chadali_LateOrange.
-        var sealedHall = World(story, 5, "trickster.ever", P + "primed", "council.debrief_motion");
+        var sealedHall = World(story, 5, "trickster", "trickster.ever", P + "primed", "council.debrief_motion");
         check(Rules.Available(story, letter, sealedHall) && !Rules.Available(story, coin, sealedHall), "Trk_Chadali_LateOrange: the orange does not arrive.");
         var lateStart = First(letter, sealedHall, "letter", 0);
         check(lateStart.Has("chadali.started") && lateStart.Has(P + "cost.late"), "Trk_Chadali_LateOrange: eating the orange does not start her.");
@@ -198,7 +199,8 @@ internal static class ChadaliTricksterTests
         check(refused.Has("chadali.closed") && !refused.Has(P + "returned"), "Trk_Chadali_Fought_Refused: refusing her terms is not her hard no.");
 
         // Trk_Chadali_Fought_Epilogue.
-        var ending = World(story, 6, "trickster.ever", "council.fought", P + "returned");
+        // eng7-l13: new late yes fixtures observe current Trickster power.
+        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned");
         check(Rules.Available(story, pageCommit, ending) && !Rules.Available(story, pageDeclined, ending),
             "Trk_Chadali_Fought_Epilogue: the late commit page is not the only page.");
         check(Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed"))
@@ -209,13 +211,13 @@ internal static class ChadaliTricksterTests
             "The refusal page or the declined-then-committed override is wrong.");
         check(pageNight.Nodes[0].Paragraphs.Count >= 20, "The committed page is missing the courtship's consequences.");
         // Sol INT (2026-09-30): the lucky night reads the real commit only, so the late page never overlaps it before an answer.
-        var lateOnly = World(story, 6, "trickster.ever", "chadali.started", P + "cost.late");
+        var lateOnly = World(story, 6, "trickster", "trickster.ever", "chadali.started", P + "cost.late");
         check(Rules.Available(story, pageCommit, lateOnly) && !Rules.Available(story, pageNight, lateOnly),
             "The committed page shows beside the late page before the Commander has answered.");
         // Ledger row 16: a Commander back from the sacrifice (the Last Call bottle) keeps her pages; a dead one does not.
         var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
         check(Rules.Available(story, pageNight, World(story, 6, new[] { "trickster.ever", "chadali.committed" }.Concat(bottle).ToArray()))
-              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster.ever", "chadali.started" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster", "trickster.ever", "chadali.started" }.Concat(bottle).ToArray()))
               && !Rules.Available(story, pageNight, World(story, 6, "trickster.ever", "chadali.committed", "sacrifice", "ending.wound_closed")),
             "The romance pages do not follow trickster.commander_back.");
         // Sol BEL: the curse lifted by her own hand shows only the restored-luck paragraph.
@@ -258,7 +260,7 @@ internal static class ChadaliTricksterTests
               && Choice(lateWager, "start", 0).Crusade?.Amount == -100 && !Rules.Available(story, lateWager, World(story, 5, "trickster", "trickster.ever", "council.debrief_motion", P + "primed"))
               && Rules.Available(story, pageCommit, Later(story, wagerOut[0], 100, 6)),
             "A peaceful, unprimed sealed hall has no way in.");
-        var declinedSealed = World(story, 6, "trickster.ever", "chadali.started", P + "declined", "council.debrief_motion");
+        var declinedSealed = World(story, 6, "trickster", "trickster.ever", "chadali.started", P + "declined", "council.debrief_motion");
         check(Rules.Available(story, pageCommit, declinedSealed) && !Rules.Available(story, pageDeclined, declinedSealed)
               && pageCommit.Nodes[0].Paragraphs.Any(p => p.Requires.Contains(P + "declined"))
               && !story.Scenes.Any(s => s.Id == P + "after.orange_tree_letter"),
@@ -293,7 +295,7 @@ internal static class ChadaliTricksterTests
         check(night.Nodes.Any(n => n.Id == "cut") && night.Nodes.Single(n => n.Id == "look").Choices.Single().Set.Contains(F + "night"),
             "The night does not reach its threshold and cut.");
         // Sol r2 HOW: no Chapter 4 key proposal in a Chapter 3 fixture.
-        var courting3 = World(story, 3, "trickster.ever", "chadali.started", "chadali.called_babbling", "chadali.cobblehoof_stopped", "chadali.lexicon_found");
+        var courting3 = World(story, 3, "trickster", "trickster.ever", "chadali.started", "chadali.called_babbling", "chadali.cobblehoof_stopped", "chadali.lexicon_found");
         foreach (var id in new[] { W + "the_recipe", W + "born_lucky", W + "her_worshippers", W + "a_lucky_charm", W + "the_old_fellow",
                                    W + "just_joking", W + "odious_questions", W + "knucklebones", W + "a_free_space", W + "so_gloomy",
                                    W + "the_real_wager", S + "what_you_said", S + "a_dull_future", S + "an_interesting_way",
@@ -306,7 +308,7 @@ internal static class ChadaliTricksterTests
         check(old.Nodes.Single(n => n.Id == "stopped").Choices.Any(c => c.Alignment?.Direction == "Evil")
               && old.Nodes.Single(n => n.Id == "stopped").Choices.Any(c => c.Alignment == null),
             "The old fellow's pivotal split has no evil option, or its mending is shifted.");
-        var chapterFive = World(story, 5, "trickster.ever", "chadali.started", "council.cauldron_given", "chadali.fair_proposed",
+        var chapterFive = World(story, 5, "trickster", "trickster.ever", "chadali.started", "council.cauldron_given", "chadali.fair_proposed",
             "chadali.bows_for_nocticula", "chadali.worthless_essence", "chadali.needle_hurt", "chadali.pressed_on_essence");
         foreach (var id in new[] { F + "will_it_hurt", F + "a_great_big_fair", F + "matching_ribbons", F + "worthless",
                                    F + "sharp_needles", S + "we_are_friends_right", H + "pretend_we_never_met" })
