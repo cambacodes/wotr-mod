@@ -408,7 +408,7 @@ letter("nurah.trickster.ran_off.second_draft", "Two hundred copies", 3, [
 # Chapter 5: a runaway first approached (or primed too late to answer) after the Abyss. Her first printing is gone; the
 # second is caught at the press, dearer, and she has had months on the road to get angry in.
 letter("nurah.trickster.ran_off.second_draft_late", "Second printing", 5, [
-    nar("start", '''{n}Months after Nurah left Drezen, and weeks after the crusade climbed back out of the Abyss, a pedlar comes through the Drezen gate with a crate of pamphlets gone soft at the corners: "The Pawn Who Left the Board", by N. D., second printing. The first sold out on the south road; a printer in Tymon has already pirated it. The dedication page is still blank.{/n}
+    nar("start", '''{n}After the crusade's return from the Abyss, a pedlar comes through the Drezen gate with a crate of pamphlets gone soft at the corners: "The Pawn Who Left the Board", by N. D., second printing. The first sold out on the south road; a printer in Tymon has already pirated it. The dedication page is still blank.{/n}
 {n}The pedlar is carrying the printer's own proof sheets for a third run, to be approved by the author when she sends word. He would very much like to sell them to somebody sooner.{/n}''',
         c("[Buy the crate and the proof sheets, pay the Tymon printer for his silence, and write the dedication into every copy.]",
           "forged", mythic="Trickster", crusade=("Finances", -400), flags=(PRIMED, GHOST, LATE, SECOND_EDITION, "nurah.started")),
