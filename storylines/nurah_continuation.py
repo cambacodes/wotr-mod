@@ -1395,16 +1395,16 @@ You kiss the inside of her wrist. Her breath catches, briefly enough that she co
 {n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress, and draws it up over her head in one motion, and drops it on the floor on top of Vhal's prospectus.{/n}
 "Now," {n}she says, and takes your hands, and puts them on her bare waist, and leans down into you.{/n}''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
     n("kiss", "Nurah", '''"I could ask someone to stand outside and become embarrassed at the appropriate moment."
-"You would charge admission."
+{n}You rub two fingers together in a show of avarice. Nurah grins.{/n}
 "Only if you insisted on being impressive."
 {n}Her teasing falters when you draw her closer. She rests a hand against your chest, feels the movement beneath it, and looks up without the harmless smile she used for the servant.
 The first kiss is brief. The second is her answer to its brevity. She pulls your collar open another inch and lets the cool air reach the place her mouth has warmed.{/n}
-"No difficult passage this time?" {n}you ask.{/n}
+{n}Your questioning look earns a small, wicked smile.{/n}
 "I am considering the ending. Be quiet while I work."
 {n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve, and when you set her down she does not let go of it; she pulls, and you come down with her.
 Outside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}
 "Much better," {n}she says.{/n} "They have learned to miss the interesting part."
-{n}She rolls you onto your back with a small grunt of effort that she will deny later, climbs astride you, and unlaces her bodice with the same quick, practised fingers that unpicked Carrow's lock. She lets it fall open and leans down until her hair closes round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
+{n}She rolls you onto your back with a small grunt of effort, climbs astride you, and unlaces her bodice with quick, practised fingers, watching your face as the laces slip free. She lets it fall open and leans down until her hair closes round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
     n("stay", "Nurah", '''"That is a long time to leave you without assistance."
 {n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.
 You draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}
