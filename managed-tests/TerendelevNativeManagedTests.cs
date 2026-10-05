@@ -59,7 +59,25 @@ internal static class TerendelevNativeManagedTests
         protected override string GetConditionCaption() => "F6d original predicate";
         protected override bool CheckCondition() => Value;
     }
+    private static bool SkipProfiling() => false;   // Unity profiler calls are ECalls the Windows host cannot run (ConditionsChecker.Check)
     internal static void Run(Story story, Dictionary<string, JObject> native, Action<bool, string> check)
+    {
+        var harness = new HarmonyLib.Harmony("RanRomance.Tirabade.TerendelevNativeManagedTests");
+        try
+        {
+            foreach (var typeName in new[] { "Kingmaker.Utility.ProfileScope", "Kingmaker.ElementsSystem.ElementsDebugScope" })
+            {
+                var type = HarmonyLib.AccessTools.TypeByName(typeName);
+                var methods = (type?.GetMethods(BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic) ?? Array.Empty<MethodInfo>())
+                    .Where(m => m.Name == "New" || m.Name == "Open").ToArray();
+                check(methods.Length > 0, "F6d host cannot stub " + typeName);
+                foreach (var method in methods) harness.Patch(method, prefix: new HarmonyLib.HarmonyMethod(typeof(TerendelevNativeManagedTests), nameof(SkipProfiling)));
+            }
+            RunGates(story, native, check);
+        }
+        finally { harness.UnpatchAll("RanRomance.Tirabade.TerendelevNativeManagedTests"); }
+    }
+    private static void RunGates(Story story, Dictionary<string, JObject> native, Action<bool, string> check)
     {
         foreach (string gate in new[] { "terendelev.scale_funeral", "terendelev.trapped_future" })
         {

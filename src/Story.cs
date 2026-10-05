@@ -1552,7 +1552,8 @@ namespace Tirabade
         // eng7-l11: the same scene ID completes once across native and visitor entries.
         public static Scene[] PresenceHubScenes(Story story, string key) => story.Scenes
             .Where(scene => scene.InteractionHub == key)
-            .Concat(story.Presences[key].ReactionScenes.Select(id => story.Scenes.Single(scene => scene.Id == id)))
+            .Concat((story.Presences.TryGetValue(key, out var hubPresence) ? hubPresence.ReactionScenes : Array.Empty<string>())
+                .Select(id => story.Scenes.Single(scene => scene.Id == id)))
             .Distinct().ToArray();
 
         public static bool PresenceHubAvailable(Story story, string key, Scene scene, Snapshot state) =>

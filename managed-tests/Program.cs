@@ -222,10 +222,39 @@ internal static class Program
                     answer.NextCue = new Kingmaker.DialogSystem.CueSelection { Cues = NativeReferences((JObject)native[pair.Value.Parent]["NextCue"]!, "Cues")
                         .Select(Reference<BlueprintCueBaseReference>).ToList() };
             }
+            else if (parentType == "BlueprintCueSequence")   // eng7-f6b: a text-only edit whose parent is a cue sequence (Cues lists the cue)
+            {
+                var parentSequence = Seed<Kingmaker.DialogSystem.Blueprints.BlueprintCueSequence>(pair.Value.Parent);
+                if (parentSequence.Cues.Count == 0)
+                    foreach (string cue in NativeReferences(native[pair.Value.Parent], "Cues")) parentSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
+            }
+            else if (parentType == "BlueprintSequenceExit")   // eng7-f6b: a text-only edit whose parent is a sequence exit (Continue lists the cue)
+            {
+                var exit = Seed<Kingmaker.DialogSystem.Blueprints.BlueprintSequenceExit>(pair.Value.Parent);
+                if (exit.Continue == null || exit.Continue.Cues.Count == 0)
+                    exit.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = NativeReferences((JObject)native[pair.Value.Parent]["Continue"]!, "Cues")
+                        .Select(Reference<BlueprintCueBaseReference>).ToList() };
+            }
             else Check(parentType == "BlueprintDialog" && pair.Value.Parent == pair.Value.Dialog, "Unexpected E14i parent type: " + parentType);
             // E14i: further parents of a mid-dialog cue (Kiana's JewelerFinal/Cue_0051: Cue_0049, Cue_0050) load like the parent.
             foreach (string also in NativeEpilogueEdit.AlsoParentsOf(pair.Key))
             {
+                string alsoType = ((string)native[also]["$type"]!).Split(new[] { ", " }, StringSplitOptions.None).Last();
+                if (alsoType == "BlueprintSequenceExit")   // eng7-f6b: a further parent that is a sequence exit (Continue lists the cue)
+                {
+                    var alsoExit = Seed<Kingmaker.DialogSystem.Blueprints.BlueprintSequenceExit>(also);
+                    if (alsoExit.Continue == null || alsoExit.Continue.Cues.Count == 0)
+                        alsoExit.Continue = new Kingmaker.DialogSystem.CueSelection { Cues = NativeReferences((JObject)native[also]["Continue"]!, "Cues")
+                            .Select(Reference<BlueprintCueBaseReference>).ToList() };
+                    continue;
+                }
+                if (alsoType == "BlueprintCueSequence")
+                {
+                    var alsoSequence = Seed<Kingmaker.DialogSystem.Blueprints.BlueprintCueSequence>(also);
+                    if (alsoSequence.Cues.Count == 0)
+                        foreach (string cue in NativeReferences(native[also], "Cues")) alsoSequence.Cues.Add(Reference<BlueprintCueBaseReference>(cue));
+                    continue;
+                }
                 var alsoParent = Seed<BlueprintCue>(also);
                 if (alsoParent.Continue == null || alsoParent.Continue.Cues.Count == 0)
                 {
@@ -247,6 +276,12 @@ internal static class Program
         {
             Check(((string)native[guid]["$type"]!).EndsWith(", BlueprintUnlockableFlag", StringComparison.Ordinal), "Wrong native flag type: " + guid);
             Seed<BlueprintUnlockableFlag>(guid);
+        }
+        // E10 quest-objective bindings (a native objective a scene reads) must resolve before Build, like the flags above.
+        foreach (var value in story.QuestObjectives.Values)
+        {
+            Check(((string)native[value[0]]["$type"]!).EndsWith(", BlueprintQuestObjective", StringComparison.Ordinal), "Wrong native objective type: " + value[0]);
+            Seed<Kingmaker.Blueprints.Quests.BlueprintQuestObjective>(value[0]);
         }
         // E10 main-character facts (a chosen mythic trick) must resolve before Build, or the scenes that read them degrade.
         foreach (string guid in story.MainCharacterFacts.Values.Distinct())
@@ -466,6 +501,18 @@ internal static class Program
         foreach (var pair in story.NativeEpilogueEdits)
         {
             var variantNames = Rules.EditVariants(pair.Value).Select((v, i) => Id(Rules.NativeEditCueName(pair.Key, pair.Value, i))).ToArray();
+            // eng7-f6b: a text-only edit never touches membership; the parent lists the native cue once and no replacement cue.
+            if (NativeEpilogueEdit.IsTextOnly(pair.Key))
+            {
+                foreach (string parentId in new[] { pair.Value.Parent }.Concat(NativeEpilogueEdit.AlsoParentsOf(pair.Key)))
+                {
+                    var textParent = NativeEpilogueEdit.TextParentCues(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(parentId)))?.Select(r => r.Guid).ToList();
+                    Check(textParent != null && textParent.Count(g => g == BlueprintGuid.Parse(pair.Key)) == 1 && !textParent.Any(variantNames.Contains),
+                        "E14d text-only edit changed its parent's membership: " + pair.Key + " / " + parentId);
+                }
+                Check(!Warnings().Any(w => w.Contains(pair.Key)), "E14d text-only edit warned or degraded: " + string.Join(" | ", Warnings().Where(w => w.Contains(pair.Key))));
+                continue;
+            }
             // E14i: a dialog edit's variants sit in its parent cue's Continue, right before the native cue.
             var editPageCues = (string.IsNullOrEmpty(pair.Value.Parent)
                 ? ((BlueprintBookPage)ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(pair.Value.Page))!).Cues

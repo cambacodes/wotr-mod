@@ -72,14 +72,18 @@ internal static partial class NativeEpilogueEditManagedTests
             if (pair.Value.Parent != null)   // E14i: listed once by its parent's Continue (First); the dialog opens on the parent
             {
                 var parentData = native[pair.Value.Parent];
-                string field = parentData["Continue"] != null ? "Continue" : parentData["NextCue"] != null ? "NextCue" : "FirstCue";
+                // eng7-f6b: a text-only edit's parent may be a cue sequence (its own Cues) or a sequence exit (Continue).
+                bool sequenceParent = ((string)parentData["$type"]!).EndsWith(", BlueprintCueSequence", StringComparison.Ordinal);
+                string field = parentData["Continue"] != null ? "Continue" : parentData["NextCue"] != null ? "NextCue" : sequenceParent ? "" : "FirstCue";
                 bool opens = field != "Continue" || pair.Value.AlsoParents != null || Refs((JObject)native[pair.Value.Dialog!]["FirstCue"]!, "Cues").Count(c => c == pair.Value.Parent) == 1;
-                check(pair.Value.Page == "" && pair.Value.Sequence == "" && (string)parentData[field]!["Strategy"]! == "First"
-                      && Refs((JObject)parentData[field]!, "Cues").Count(c => c == pair.Key) == 1 && opens
+                check(pair.Value.Page == "" && pair.Value.Sequence == "" && (sequenceParent ? pair.Value.TextOnly : (string)parentData[field]!["Strategy"]! == "First")
+                      && (sequenceParent ? Refs(parentData, "Cues") : Refs((JObject)parentData[field]!, "Cues")).Count(c => c == pair.Key) == 1 && opens
                       && Refs(data, "Answers").SequenceEqual(pair.Value.Answers ?? Array.Empty<string>()),
                     "Reviewed dialog cue is not once in its parent's Continue, or the dialog no longer opens on the parent: " + pair.Key);
                 foreach (var also in pair.Value.AlsoParents ?? Array.Empty<string>())
-                    check((string)native[also]["Continue"]!["Strategy"]! == "First" && Refs((JObject)native[also]["Continue"]!, "Cues").Count(c => c == pair.Key) == 1,
+                    check(((string)native[also]["$type"]!).EndsWith(", BlueprintCueSequence", StringComparison.Ordinal)
+                        ? pair.Value.TextOnly && Refs(native[also], "Cues").Count(c => c == pair.Key) == 1
+                        : (string)native[also]["Continue"]!["Strategy"]! == "First" && Refs((JObject)native[also]["Continue"]!, "Cues").Count(c => c == pair.Key) == 1,
                         "Reviewed dialog cue is not once in a further parent's Continue: " + pair.Key + " / " + also);
                 continue;
             }
