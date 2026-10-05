@@ -33,15 +33,16 @@ def page(*args, **kw):
 # --- Her presence in Drezen once she has a body (ERRATA: a spawn-copy with Presence.Dialog "hub"; Sol COX/HOW) -----------
 # Embodied, she comes to the Commander's city through the wardrobe and sits where the drinking is worst and the thoughts are
 # loudest: the Fool King's tavern, at the corner table (right of the King, 2.5 m; Eliandra stands left of him, 2.5 m, so
-# the two are 5 m apart). When the King is gone or cannot be found, she waits behind the tailor's awning instead (behind,
-# 2.5 m: Arueshalae's evil copy front 2.0, Kaylessa left 2.5 and Terendelev right 2.5 are each at least 3.5 m away). The
+# the two are 5 m apart). F11 authored fallback staging moves her from the tailor's awning to open ground beside
+# the ordinary smith's yard (left 6.5 m, 4 m beyond Gesmerha), so a missing tailor cannot take both placements away. The
 # courtship after the waking (her city, her visit, the game, the throne, a night alone) opens from there; the Harem night
 # and the night alone start at her table and go through the closets. Shamira_Actor (66e12264) carries no dialog of its own.
 DREZEN = "2570015799edf594daf2f076f2f975d8"      # DrezenCapital
 UNIT = "66e12264eaf6bf74196e20a9d7619cd2"        # Shamira (CutsceneNeutrals): her own body, spawn-copied
 JEWELER = "bc1093231b1577a4485a730c29595195"  # JewelerCapitalTrader (unused by the primary since F10: jeweller front 8 stood 1.4 m from the tailor; left 5-6.5 m hits the citizen cluster and Nidalynn's 4 m spacing)
 FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"   # FoolKing, in his tavern in DrezenCapital
-TAILOR = "253cdb8f434e5a6469b75e18428316e3"      # TailorCapitalTrader (the awning)
+TAILOR = "253cdb8f434e5a6469b75e18428316e3"      # TailorCapitalTrader
+SMITH = "15f754455d1d87c42a4e14df456d5415"       # F11 authored fallback: ordinary capital smith, left 6.5 m
 HUB = "shamira.presence"
 HUB_ALT = "shamira.presence.awning"
 HUB_FAILED = HUB + ".failed"                     # runtime: the King's copy is wanted but he could not be found
@@ -55,24 +56,24 @@ PRESENCES = {
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=TAILOR, Side="right", Distance=10.0),
               Requires=["trickster.ever", EMBODIED], Forbids=PRESENCE_FORBIDS + [HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=TAILOR, Side="right", Distance=6.5),
+    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=SMITH, Side="left", Distance=6.5),
                   Requires=["trickster.ever", EMBODIED], Forbids=list(PRESENCE_FORBIDS), MinChapter=5, MaxChapter=5,
                   RequiresAnyGroups=[[HUB_FAILED, KING_GONE]], AnswerLists=[], Dialog="hub",
-                  Greeting=("{n}In the shade of the tailor's awning, out of the worst of the street, a tall red-haired woman "
+                  Greeting=("{n}On the open ground beside the smith's yard, a tall red-haired woman "
                             "in a borrowed coat is sitting on a crate as if it were a throne, watching the passers-by think.{/n}")),
 }
 PLACES = ((HUB, "", ()), (HUB_ALT, "_awning", ([HUB_FAILED, KING_GONE],)))
 
 
-AWNING = (  # the King's tavern, read as the tailor's awning (Sol BEL: the fallback must not stage an absent King)
-    ("pushes the other chair out with her foot, and pours you a cup of the King's worst wine", "moves over on the crate to make room, and pours you a cup of the tailor's sour wine"),
-    ("the King's worst wine", "the tailor's sour wine"), ("the King's wine", "the sour wine"),
-    ("come to her table", "come to her crate"), ("at her table", "on her crate"), ("her corner table", "her crate under the awning"),
-    ("The King has given up pretending not to look.", "The tailor has given up pretending not to look."),
+AWNING = (  # F11: fallback at the smith's yard; saved _awning IDs stay unchanged.
+    ("pushes the other chair out with her foot, and pours you a cup of the King's worst wine", "moves over on the crate to make room, and pours you a cup of the smith's sour wine"),
+    ("the King's worst wine", "the smith's sour wine"), ("the King's wine", "the sour wine"),
+    ("come to her table", "come to her crate"), ("at her table", "on her crate"), ("her corner table", "her crate by the smith's yard"),
+    ("The King has given up pretending not to look.", "The smith has given up pretending not to look."),
     ("She leans across the table", "She leans across"), ("onto the chair", "onto the crate"),
     ("in the King's doorway", "at the end of the street"),
-    ("She gets up from the table and stops at the King's back door", "She gets up off the crate and stops at the mouth of the alley behind the stall"),
-    ("stops by the King's back door", "stops at the mouth of the alley behind the stall"),
+    ("She gets up from the table and stops at the King's back door", "She gets up off the crate and stops at the mouth of the alley beside the smith's yard"),
+    ("stops by the King's back door", "stops at the mouth of the alley beside the smith's yard"),
     ("The back door closes on her, and when you follow her out into the yard there is nobody in it", "The alley takes her, and when you follow her into it there is nobody there"),
     ("The back door closes on her. When you follow her out into the yard,", "The alley takes her. When you follow her into it,"),
     ("to sit in a tavern and drink this", "to sit in a street and drink this"),
@@ -89,7 +90,7 @@ def _awning(nodes):
 
 
 def hub(id, title, entry, nodes, requires, forbids=(), delay=0):
-    """A physical beat on her presence (the King's corner table, or the awning): the same scene on each, each forbidding the
+    """A physical beat on her presence (the tailor's row, or the smith's yard): the same scene on each, each forbidding the
     other. The first keeps the id the beat had as a page (save reference)."""
     for key, suffix, any_groups in PLACES:
         twin = id + ("_awning" if not suffix else "")

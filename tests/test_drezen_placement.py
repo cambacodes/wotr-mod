@@ -42,10 +42,25 @@ class DrezenPlacementTests(unittest.TestCase):
             bad = copy.deepcopy(self.story)
             bad["Presences"][key]["At"]["Side"] = "behind"
             self.assertTrue(any(key in e and "roof" in e for e in check(bad)), key)
-        # The native-mark fallback is still a locator, with its earned gates untouched.
+        # F11: the mark keeps its saved ID and earned gates, on the jeweller street instead of Yaniel's mark.
         fallback = self.story["Presences"]["eliandra.presence.mark"]
-        self.assertEqual("9a41b047-9314-4719-a915-9c24aedf3e95", fallback["At"]["Locator"])
+        self.assertEqual({"NearUnit": "bc1093231b1577a4485a730c29595195", "Offset": [-5.2, 3.2]}, fallback["At"])
         self.assertEqual([["eliandra.presence.failed", "fool_king.gone"]], fallback["RequiresAnyGroups"])
+
+    def test_f11_fallbacks_have_independent_anchors_and_keep_spacing(self):
+        presences = self.story["Presences"]
+        for primary, fallback in (("eliandra.presence", "eliandra.presence.mark"),
+                                  ("shamira.presence", "shamira.presence.awning")):
+            self.assertNotEqual(presences[primary]["At"]["NearUnit"], presences[fallback]["At"]["NearUnit"])
+            bad = copy.deepcopy(self.story)
+            bad["Presences"][fallback]["At"] = copy.deepcopy(presences[primary]["At"])
+            self.assertTrue(any(fallback in e and "F11" in e for e in check(bad)))
+        self.assertEqual({"NearUnit": "15f754455d1d87c42a4e14df456d5415", "Side": "left", "Distance": 6.5},
+                         presences["shamira.presence.awning"]["At"])
+        bad = copy.deepcopy(self.story)
+        bad["Presences"]["eliandra.presence.mark"]["At"] = {
+            "NearUnit": "bc1093231b1577a4485a730c29595195", "Side": "left", "Distance": 4.0}
+        self.assertTrue(any("eliandra.presence.mark" in e and "spacing" in e for e in check(bad)))
 
     def test_every_authored_presence_declaration(self):
         # Sweep route modules too, including declarations not currently registered.

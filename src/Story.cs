@@ -288,6 +288,7 @@ namespace Tirabade
         public bool RecordedNative;
         public bool RecordedNativeContact; // eng7-l05: a retired copy cannot replace a subsequently lost native.
         public bool CopyUsable = true;
+        public bool CopyOutsideLoadedPart; // F11: recorded copy exists in area data; interaction awaits its part.
         public bool CopyInitializing; // F9: submitted copy awaiting its first usable view, or a ready copy culled by distance.
         public bool ContactAmbiguous;
         public bool NativeOwnedCopy;   // F9: a sibling placement owns this actor; never adopt it as native.
@@ -322,6 +323,9 @@ namespace Tirabade
             if (!seen.AreaLoaded || !seen.Submitted || unitId == null)
             { identity = null; ready = false; return false; }
             if (identity != unitId) { identity = unitId; started = seconds; ready = false; }
+            // Time spent in another area part is not view-construction time. On return, retain F9's grace.
+            if (seen.CopyFound && seen.CopyAlive && seen.CopyOutsideLoadedPart)
+            { started = seconds; return false; }
             if (seen.CopyUsable && seen.CopyFound && seen.CopyAlive) ready = true;
             if (!seen.CopyFound) return !ready && seconds - started < GraceSeconds;
             return seen.CopyAlive && (ready ? viewPending : seconds - started < GraceSeconds);
@@ -1208,7 +1212,7 @@ namespace Tirabade
             // end eng7-l05
             if (wanted)
             {
-                if (seen.CopyFound) { if (!seen.CopyAlive || !seen.CopyUsable) steps.Add(PresenceStep.Blocked); } // eng7-l05
+                if (seen.CopyFound) { if (!seen.CopyAlive || !seen.CopyUsable && !seen.CopyOutsideLoadedPart) steps.Add(PresenceStep.Blocked); } // eng7-l05
                 else if (seen.NativeAlive) { if (seen.Recorded) steps.Add(PresenceStep.Forget); }
                 else if (seen.Submitted) steps.Add(PresenceStep.Blocked);
                 else if (!seen.AnchorResolved) steps.Add(PresenceStep.Blocked);   // E12b: never spawn without a live anchor
@@ -1476,6 +1480,9 @@ namespace Tirabade
         {
             // eng7-l05: the same usable contact and repair plan drive hubs and failure twins.
             if (!wanted || !seen.AreaLoaded) return false;
+            // A recorded living copy in another part remains present, with no interaction until that part loads.
+            if (presence.Mode == "spawn-copy" && seen.CopyFound && seen.CopyAlive && seen.CopyOutsideLoadedPart
+                && seen.NativeCount == 0 && !seen.NativeAlive && !seen.ContactAmbiguous) return false;
             // View construction and distance culling are not anchor failures. Hard anchor/twin/death evidence still wins.
             if (presence.Mode == "spawn-copy" && seen.CopyInitializing && seen.AnchorResolved
                 && seen.NativeCount == 0 && !seen.NativeAlive && !seen.ContactAmbiguous) return false;

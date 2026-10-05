@@ -87,6 +87,18 @@ internal static class PresenceRuntimeF9Tests
         check(Rules.PresenceFailed(primary, true, copy), "F9: grace concealed a dead copy");
         copy.CopyAlive = true;
         check(Rules.PlanPresence(primary, false, copy).Contains(PresenceStep.Remove), "F9: closed demand did not retire its copy");
+        var partsLease = new PresenceReadiness();
+        copy.CopyOutsideLoadedPart = true;
+        copy.CopyUsable = false;
+        copy.CopyInitializing = partsLease.Pending("copy", copy, false, 0);
+        copy.CopyInitializing = partsLease.Pending("copy", copy, false, 100);
+        check(!Rules.PresenceFailed(primary, true, copy) && Rules.PlanPresence(primary, true, copy).Length == 0,
+            "F11: living off-part copy failed after the F9 grace expired");
+        copy.CopyOutsideLoadedPart = false;
+        copy.CopyInitializing = partsLease.Pending("copy", copy, true, 100.25);
+        check(!Rules.PresenceFailed(primary, true, copy), "F11: returning part lost F9 view-construction grace");
+        copy.CopyInitializing = partsLease.Pending("copy", copy, true, 111);
+        check(Rules.PresenceFailed(primary, true, copy), "F11: returning part got unlimited grace for an unusable actor");
         copy.AreaLoaded = false; lease.Pending("copy", copy, true, 101);
         copy.AreaLoaded = true;
         check(lease.Pending("copy", copy, true, 200), "F9: reload/area arrival did not give the view a fresh grace");

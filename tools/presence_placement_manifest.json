@@ -655,7 +655,7 @@
           -7.0
         ]
       },
-      "remainder": "F10: Chapter 5 passes (run 20261005-085721: ground, approach, hub click, occupancy, same actor after reload, one spawn event). Chapter 3 (required for the 3..5 window) fails in the harness: the copy spawns but is never observed because Game.State.Units omits it; see f10_followup.chapter3.detail. Not verified until Chapter 3 passes.",
+      "remainder": "F11 fixes the F10 Chapter 3 area-part observation defect; pending live Chapter 3 re-proof. Existing Chapter 5 evidence and historic failed runs are retained.",
       "harness_command": "$env:RRT_HARNESS_HIDE='bad9f602b81a80047ac470b01ebe65a9'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,aranka.trickster.answered,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
@@ -714,6 +714,11 @@
           "result": "failed-engine-or-harness",
           "detail": "Runs 20261005-090529, -091617 (enter point), -092125 (teleport), -092651 (trace), and with temporary diagnostics -093310, -093837, -094411, -095004, -095549; aranka.yard -100129; save RRT_Manual_313_Hiriko_The_Trickster.zks. The harness never leaves the loaded lower-gate part (Commander at -146,41,-56; PresenceEnterPoint and RRT_HARNESS_TELEPORT do not reload the area). There Game.State.Units holds only 20 units while LoadedAreaState.AllEntityData holds 1,937 entities (130 main-state), including BlacksmithCapitalTrader at -12,56,-3 and a native AngelTargona at 96,65,7. ResolveTarget reads AllEntityData so the anchor resolves and SpawnUnit succeeds (History.Area unit spawned; the diagnostics showed the copy alive, in game, at the target, not destroyed, and never in State.Units), but Observe reads Game.State.Units, so the next tick finds no copy, the Submitted record plans Blocked and the presence reports failed. F10 group isolation worked (no Fixed conflicting group message after the spawn, only the load-time one); the F9 attribution to that message was a coincidence. Not a spot problem. Needs an area re-entry route for the Ch3 harness or an engine decision (Observe over AllEntityData, which would also expose the native Targona twin at 96,65,7)."
         }
+      },
+      "f11_followup": {
+        "result": "pending-live",
+        "engine": "Recorded spawn ID observed in LoadedAreaState.AllEntityData; off-part existence preserves presence, with State.Units membership required for interaction. F9 grace and demanded-state retention remain. Managed regression covers area-only copy, native twin non-adoption, death and destruction fallback once.",
+        "required": "Chapter 3 live approach, hub click and reload still need coordinator re-proof."
       }
     },
     {
@@ -734,7 +739,7 @@
           -6.0
         ]
       },
-      "remainder": "F10: Chapter 5 passes (run 20261005-085316: ground, approach, hub click, occupancy, same actor after reload, one spawn event). Chapter 3 (required for the 3..5 window) fails in the harness: the copy spawns but is never observed because Game.State.Units omits it; see f10_followup.chapter3.detail. Not verified until Chapter 3 passes.",
+      "remainder": "F11 fixes the F10 Chapter 3 area-part observation defect; pending live Chapter 3 re-proof. Existing Chapter 5 evidence and historic failed runs are retained.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,targona.trickster.returned,hour.targona.trickster.returned,targona.trickster.cost.struck_down,hour.targona.trickster.cost.struck_down' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-data",
@@ -794,6 +799,11 @@
           "result": "failed-engine-or-harness",
           "detail": "Runs 20261005-090529, -091617 (enter point), -092125 (teleport), -092651 (trace), and with temporary diagnostics -093310, -093837, -094411, -095004, -095549; aranka.yard -100129; save RRT_Manual_313_Hiriko_The_Trickster.zks. The harness never leaves the loaded lower-gate part (Commander at -146,41,-56; PresenceEnterPoint and RRT_HARNESS_TELEPORT do not reload the area). There Game.State.Units holds only 20 units while LoadedAreaState.AllEntityData holds 1,937 entities (130 main-state), including BlacksmithCapitalTrader at -12,56,-3 and a native AngelTargona at 96,65,7. ResolveTarget reads AllEntityData so the anchor resolves and SpawnUnit succeeds (History.Area unit spawned; the diagnostics showed the copy alive, in game, at the target, not destroyed, and never in State.Units), but Observe reads Game.State.Units, so the next tick finds no copy, the Submitted record plans Blocked and the presence reports failed. F10 group isolation worked (no Fixed conflicting group message after the spawn, only the load-time one); the F9 attribution to that message was a coincidence. Not a spot problem. Needs an area re-entry route for the Ch3 harness or an engine decision (Observe over AllEntityData, which would also expose the native Targona twin at 96,65,7)."
         }
+      },
+      "f11_followup": {
+        "result": "pending-live",
+        "engine": "Recorded spawn ID observed in LoadedAreaState.AllEntityData; off-part existence preserves presence, with State.Units membership required for interaction. F9 grace and demanded-state retention remain. Managed regression covers area-only copy, native twin non-adoption, death and destruction fallback once.",
+        "required": "Chapter 3 live approach, hub click and reload still need coordinator re-proof."
       }
     },
     {
@@ -991,26 +1001,18 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "verified",
+      "status": "pending",
       "position": null,
-      "probe": {
-        "placement": "shamira.presence.awning",
-        "chapter": 5,
-        "area": "2570015799edf594daf2f076f2f975d8",
-        "scene": "presence:shamira.presence.awning",
-        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
-        "artifact": "tools/placement_probes/shamira.presence.awning.json",
-        "sha256": "deb5fb256134e30ff4696c99813bcfb713537a12c2b376c8f92fe1e50badefa3"
-      },
+      "probe": null,
       "unit": "66e12264eaf6bf74196e20a9d7619cd2",
       "consumer": "shamira.presence.awning",
       "at": {
-        "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
-        "Side": "right",
+        "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+        "Side": "left",
         "Distance": 6.5
       },
-      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-052356, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
-      "harness_command": "$env:RRT_HARNESS_HIDE='bc1093231b1577a4485a730c29595195'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
+      "remainder": "F11 authored fallback moved to open ground to the left of the ordinary capital smith, independently of the tailor primary. >=4 m shared-anchor spacing (Gesmerha left 2.5 m). Historical tailor-awning proof does not authorize this new spot. Ground-layer-only rays, roof/citizen clearance, joint occupancy, approach, click and reload remain pending.",
+      "harness_command": "$env:RRT_HARNESS_HIDE='253cdb8f434e5a6469b75e18428316e3'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "failed-engine",
         "detail": "Engine defect (presence ping-pong): the spawn tick observes the fresh copy as unusable (view not yet active), GuestPresence.AnchorFailed latches <key>.failed, the primary (which Forbids its own failed flag) becomes unwanted and PlanPresence(wanted=false) removes the copy, the failure clears, the primary respawns, and so on every tick (49+ cycles per run). Only primaries that forbid their own failed flag are affected; Aranka, which does not, holds. Run 20261005-010013 (326; with the fool_king.gone etude started the primary was still wanted).",
@@ -1028,6 +1030,25 @@
         "crowding_before_reload": [],
         "crowding_after_reload": [],
         "note": "Re-spotted from behind 3.5 (roof: copy snapped 6 m up) to right 6.5 of the tailor. Fallback proven with the Fool King anchor hidden; the first attempt (run 20261005-050601) failed only the 2.0 m approach tolerance (2.02 m), the second run passed every check."
+      },
+      "historical_probe_f9": {
+        "placement": "shamira.presence.awning",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:shamira.presence.awning",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/shamira.presence.awning.json",
+        "sha256": "deb5fb256134e30ff4696c99813bcfb713537a12c2b376c8f92fe1e50badefa3"
+      },
+      "f11_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+          "Side": "left",
+          "Distance": 6.5
+        },
+        "native_anchor": "BlacksmithCapitalTraderInCapital (aee729f4de1f5844096ec3f36bcbc4f1) has unconditional activation and unhides the ordinary DefaultMechanic smith; no Legend or Fool King event dependency.",
+        "missing_primary_control": "Hide TailorCapitalTrader 253cdb8f434e5a6469b75e18428316e3 before the first presence tick; do not hide the smith."
       }
     },
     {
@@ -1267,13 +1288,13 @@
       "unit": "e349079a648cb15448a27f9049344bf1",
       "consumer": "eliandra.presence.mark",
       "at": {
-        "Locator": "9a41b047-9314-4719-a915-9c24aedf3e95",
+        "NearUnit": "bc1093231b1577a4485a730c29595195",
         "Offset": [
-          0.0,
-          0.0
+          -5.2,
+          3.2
         ]
       },
-      "remainder": "F10: the mark fallback fails live (off the mesh, Yaniel 0.8 m away); see f10_followup. The primary eliandra.presence is verified.",
+      "remainder": "F11 authored fallback moved from the off-mesh native mark beside Yaniel to the jeweller street, roughly 4 m left and 4 m forward. Pure left 4 m would stand only 1.5 m from Nidalynn; this offset keeps >=4 m shared-anchor spacing. Ground-layer-only rays, walkmesh, roof clearance, citizens, approach, click and reload remain pending live proof.",
       "f10_followup": {
         "result": "pending (data: crowded and off mesh)",
         "runs": [
@@ -1289,7 +1310,19 @@
         },
         "detail": "With the tailor hidden the primary fails and the native-mark copy spawns at the Drezen mark (96.0,64.6,7.7). Without a teleport the copy is far from the Commander, its view stays inactive and it latches failed (run 084044). With RRT_HARNESS_TELEPORT=94.5,64.6,4.5 it is placed (run 084722) but the harness reports the spot 23.8 m from the walkmesh and the native Yaniel stands 0.8 m away (96.7,64.6,7.2), so it is not approachable. Suggested data fix: replace the mark with an ordinary anchor, for example NearUnit JewelerCapitalTrader left 4 (about 30.5,9.4); that needs the locator assertion in tests/test_drezen_placement.py relaxed, so it was not done here."
       },
-      "harness_command": "$env:RRT_HARNESS_HIDE='253cdb8f434e5a6469b75e18428316e3'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'eliandra.presence.mark' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '860edc351f25b624296a572aa1f6c48f'; Remove-Item Env:RRT_HARNESS_HIDE"
+      "harness_command": "$env:RRT_HARNESS_HIDE='253cdb8f434e5a6469b75e18428316e3'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'eliandra.presence.mark' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '860edc351f25b624296a572aa1f6c48f'; Remove-Item Env:RRT_HARNESS_HIDE",
+      "f11_followup": {
+        "result": "pending-live",
+        "at": {
+          "NearUnit": "bc1093231b1577a4485a730c29595195",
+          "Offset": [
+            -5.2,
+            3.2
+          ]
+        },
+        "ground_policy": "Front/left street staging at merchant ground height; avoid rear roof colliders. No ground/collider acceptance is claimed without live rays and walkmesh evidence.",
+        "spacing": "Offline minimum shared-anchor gap 4.19 m to either Nidalynn form; no new gates."
+      }
     }
   ],
   "docs": {

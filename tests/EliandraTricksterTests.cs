@@ -220,8 +220,8 @@ internal static class EliandraTricksterTests
         check(tavern.At!.NearUnit == "253cdb8f434e5a6469b75e18428316e3" && tavern.At.Side == "front" && Math.Abs(tavern.At.Distance - 8f) < 0.01f
               && tavern.Unit == Unit && tavern.Area == Drezen && tavern.Mode == "spawn-copy" && tavern.Dialog == "hub"
               && tavern.Forbids.Contains("fool_king.gone") && tavern.Forbids.Contains("eliandra.presence.failed")
-              && mark.At!.Locator != null && mark.RequiresAnyGroups.Any(g => g.Contains("eliandra.presence.failed") && g.Contains("fool_king.gone")),
-            "Trk_Eliandra_NoLeaveAndKingList: the presence is not in front of the persistent tailor, with her Drezen mark as fallback.");
+              && mark.At!.NearUnit == "bc1093231b1577a4485a730c29595195" && mark.At.Offset!.SequenceEqual(new[] { -5.2f, 3.2f }) && mark.RequiresAnyGroups.Any(g => g.Contains("eliandra.presence.failed") && g.Contains("fool_king.gone")),
+            "Trk_Eliandra_NoLeaveAndKingList: the presence is not in front of the persistent tailor, with the jeweller street as fallback.");
         foreach (var pair in story.Presences.Where(p => p.Key != "eliandra.presence" && p.Value.At?.NearUnit == tavern.At!.NearUnit))
         {
             var a = Spot(tavern); var b = Spot(pair.Value);

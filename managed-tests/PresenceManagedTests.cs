@@ -8,6 +8,7 @@ using Kingmaker.View.Spawners;
 using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.Blueprints;
+using Kingmaker.UnitLogic;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Tirabade;
@@ -22,6 +23,88 @@ internal static class PresenceManagedTests
     private const string PlayerFaction = "72f240260881111468db610b6c37c099";
     private const string NeutralFaction = "d8de50cc80eb4dc409a983991e0b77ad";   // Neutrals
     private const string SilentAsks = "e7b22776ba8e2b84eaaff98e439639a7";       // PC_None_Barks
+
+    private static void AreaPartsF11(Action<bool, string> check)
+    {
+        const BindingFlags instance = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+        var type = typeof(Main).Assembly.GetType("Tirabade.GuestPresence", true)!;
+        var observe = type.GetMethod("ObserveRecordedCopy", BindingFlags.Static | BindingFlags.NonPublic)!;
+        var area = new SceneEntitiesState("capital-main");
+        var loadedPart = new UnitEntityData[0];
+        var blueprint = new BlueprintUnit { AssetGuid = BlueprintGuid.Parse("81297c673b63b60448ef88a10db6bc78") };
+        void Set(object target, Type owner, string field, object value) => owner.GetField(field, instance)!.SetValue(target, value);
+        UnitEntityData Data(string id)
+        {
+            var actor = (UnitEntityData)FormatterServices.GetUninitializedObject(typeof(UnitEntityData));
+            var descriptor = (UnitDescriptor)FormatterServices.GetUninitializedObject(typeof(UnitDescriptor));
+            var life = (UnitState)FormatterServices.GetUninitializedObject(typeof(UnitState));
+            Set(actor, typeof(UnitEntityData), "<Descriptor>k__BackingField", descriptor);
+            Set(descriptor, typeof(UnitDescriptor), "<Blueprint>k__BackingField", blueprint);
+            Set(descriptor, typeof(UnitDescriptor), "<Unit>k__BackingField", actor);
+            Set(descriptor, typeof(UnitDescriptor), "State", life);
+            Set(actor, typeof(EntityDataBase), "<UniqueId>k__BackingField", id);
+            Set(actor, typeof(EntityDataBase), "<HoldingState>k__BackingField", area);
+            Set(life, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Conscious);
+            return actor;
+        }
+        string id = Guid.NewGuid().ToString();
+        var record = PresenceRecord.Parse(JsonConvert.SerializeObject(new PresenceRecord {
+            Key = "targona.presence", UnitId = id, Submitted = true }), "targona.presence")!;
+        var native = Data("native-AngelTargona");
+        var copy = Data(record.UnitId!);
+        area.AllEntityData.Add(native);
+        area.AllEntityData.Add(copy);
+        PresenceObservation Seen(out UnitEntityData? found)
+        {
+            var seen = new PresenceObservation { AreaLoaded = true, Recorded = true, Submitted = true };
+            found = (UnitEntityData?)observe.Invoke(null, new object?[] { record.UnitId, area.AllEntityData, loadedPart, seen });
+            return seen;
+        }
+        var primary = new Presence { Mode = "spawn-copy", At = new PresenceAnchor { NearUnit = "smith" },
+            Forbids = new[] { "targona.presence.failed" } };
+        var readiness = new PresenceReadiness();
+        for (int tick = 0; tick < 80; tick++)
+        {
+            var seen = Seen(out var found);
+            seen.CopyInitializing = readiness.Pending(id, seen, false, tick);
+            check(ReferenceEquals(found, copy) && seen.CopyFound && seen.CopyAlive && seen.CopyOutsideLoadedPart && !seen.CopyUsable,
+                "F11: area-only recorded copy was lost, replaced by native twin or granted interaction");
+            check(Rules.PlanPresence(primary, true, seen).Length == 0 && !Rules.PresenceFailed(primary, true, seen),
+                "F11: out-of-part copy failed after grace or scheduled another spawn");
+        }
+        var retired = Seen(out _);
+        check(Rules.PlanPresence(primary, false, retired).SequenceEqual(new[] { PresenceStep.Remove }),
+            "F11: closed demand did not retire its off-part copy");
+        Set(copy, typeof(EntityDataBase), "<DestroyMark>k__BackingField", true);
+        int failures = 0, fallbackSpawns = 0;
+        bool failed = false, fallbackSubmitted = false;
+        for (int tick = 80; tick < 120; tick++)
+        {
+            var seen = Seen(out var found);
+            seen.CopyInitializing = readiness.Pending(id, seen, false, tick);
+            check(found == null && !seen.CopyFound && !seen.CopyOutsideLoadedPart,
+                "F11: destroyed copy or native twin adopted as the recorded actor");
+            check(!Rules.PlanPresence(primary, true, seen).Contains(PresenceStep.Spawn), "F11: destroyed copy respawned");
+            bool next = Rules.PresenceFailed(primary, true, seen);
+            if (next && !failed) failures++;
+            failed = next;
+            var alternate = new PresenceObservation { AreaLoaded = true, Submitted = fallbackSubmitted, Recorded = fallbackSubmitted,
+                CopyFound = fallbackSubmitted, CopyAlive = fallbackSubmitted };
+            if (Rules.PlanPresence(new Presence { Mode = "spawn-copy" }, failed, alternate).Contains(PresenceStep.Spawn))
+            { fallbackSpawns++; fallbackSubmitted = true; }
+        }
+        check(failures == 1 && fallbackSpawns == 1 && fallbackSubmitted, "F11: genuine destruction did not fail over exactly once");
+        area.AllEntityData.Remove(copy);
+        var missing = Seen(out var adopted);
+        check(adopted == null && !missing.CopyFound, "F11: native twin replaced an absent saved copy");
+        Set(copy, typeof(EntityDataBase), "<DestroyMark>k__BackingField", false);
+        Set(copy.State, typeof(UnitState), "<LifeState>k__BackingField", UnitLifeState.Dead);
+        area.AllEntityData.Add(copy);
+        var dead = Seen(out _);
+        dead.CopyInitializing = readiness.Pending(id, dead, false, 121);
+        check(dead.CopyFound && !dead.CopyAlive && Rules.PresenceFailed(primary, true, dead), "F11: out-of-part death concealed");
+        Console.WriteLine("PASS: F11 actual area entity data, off-part presence, ID-only ownership, destruction fallback once and death.");
+    }
 
     public static IEnumerable<string> NativeIds(Story story) => new[] { IrabethUnit, Capital, "db064cafc234498ca83a702c472c1a7b",
             NeutralFaction, SilentAsks }
@@ -100,6 +183,7 @@ internal static class PresenceManagedTests
         }
         PresenceRuntimeF9Tests.Run(check);
         CopyConstructionF10(check);
+        AreaPartsF11(check);
         string? jerribethFaction = (string?)native[story.Presences["jerribeth.presence"].Unit]["m_Faction"];
         check(jerribethFaction != null && !jerribethFaction.EndsWith(PlayerFaction, StringComparison.Ordinal)
             && !jerribethFaction.EndsWith(NeutralFaction, StringComparison.Ordinal),

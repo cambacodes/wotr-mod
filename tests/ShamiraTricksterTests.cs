@@ -122,10 +122,10 @@ internal static class ShamiraTricksterTests
                   && pr.MinChapter == 5 && pr.MaxChapter == 5 && pr.Requires.Contains(Embodied) && pr.At!.Distance >= 2f
                   && new[] { Closed, P + "cost.kept_captive", P + "cast_out", P + "ally" }.All(pr.Forbids.Contains))
               && table.At!.NearUnit == Tailor && table.At.Side == "right" && table.At.Distance == 10f && table.Forbids.Contains("shamira.presence.failed")
-              && table.Forbids.Contains("fool_king.gone") && awning.At!.NearUnit == Tailor && awning.At.Side == "right" && awning.At.Distance == 6.5f
+              && table.Forbids.Contains("fool_king.gone") && awning.At!.NearUnit == "15f754455d1d87c42a4e14df456d5415" && awning.At.Side == "left" && awning.At.Distance == 6.5f
               && awning.RequiresAnyGroups.Length == 1 && awning.RequiresAnyGroups[0].Contains("shamira.presence.failed")
               && awning.RequiresAnyGroups[0].Contains("fool_king.gone"),
-            "Trk_Shamira_Presence: her presence is not in front of the persistent jeweller with the awning as its fallback.");
+            "Trk_Shamira_Presence: her presence is not at the tailor with the independent smith-yard fallback.");
         var hubScenes = own.Where(s => s.InteractionHub == "shamira.presence").ToArray();
         check(hubScenes.Select(s => s.Id).OrderBy(x => x).SequenceEqual(new[] { P + "after.city", P + "after.night_alone", P + "after.throne", P + "after.visit", P + "harem", P + "mind.barracks_after" }.OrderBy(x => x))
               && hubScenes.All(s => !Rules.IsRemote(s) && s.Entry.Length > 0 && s.ContactUnit == Unit && s.Areas.SequenceEqual(new[] { Drezen })),
