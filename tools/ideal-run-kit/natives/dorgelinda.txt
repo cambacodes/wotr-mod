@@ -1,0 +1,10 @@
+# Dorgelinda Stranglehold, state "caravans_lost" (the prepared primer at Logistics_4), then the tribunal recount at Logistics_5.
+# Ruling: never-in-office is an entry condition; Logistics rank >= 2 (LogisticsRankUp2 -> LogisticsOfficer_InDrezen) is required.
+dorgelinda.present:3        # Ch3 crusade: complete LogisticsRankUp2 -> office etude LogisticsOfficer_InDrezen (she is at her desk in Drezen)
+dorgelinda.caravans_known:3 # Ch3 Logistics_4 (the lost caravans) opens: Cue_0001 10ccdfab
+dorgelinda.fellows_tribunal:3 # Ch3 Logistics_5 tribunal of Corporal Bartley (Cue_0001 7c5855fd); play it AFTER Logistics_4 (w6/dorgelinda.extra.txt sequences this)
+dorgelinda.verdict_prison:3 # Ch3 Logistics_5 verdict Answer_0007 "prison in Mendev" (Logistics5_5, her choice) -> Cue_0049
+dorgelinda.hand_offered:3   # Ch3 her office hub: Officer Answer_0008 (offer to heal the hand) - courtship beat reads it
+dorgelinda.back_from_abyss:5 # Ch5 Logistics_6 opens: Cue_0001 e247ef32 ("You really did come back from the Abyss itself!")
+# Take the guide signing branch: earn carts_signed through rider/0, never inject it.
+#@ -choice dorgelinda.trickster.caravans.countersign/sign/1

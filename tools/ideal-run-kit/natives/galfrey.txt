@@ -1,0 +1,9 @@
+# Galfrey: all-romance run takes state `alive` (fight beside her in Iz; Kitrane courtship on her Ch5 hub after the Coronation)
+galfrey.incognito_met:2       # Ch2 war camp: meet "Kitrane" (Galfrey_Incognito Cue_0001); no flirt needed
+iz.terendelev_battle:5        # Ch5 Iz: GalfreyOnTheEdge Cue_0005, early state (monster lair: Lexicon kept from Galfrey in Ch3)
+iz.monster_dead.live:5        # Ch5 Iz: undead Terendelev killed with Galfrey ("We should go" -> PlayerFoughtAlongsideWithGalfrey)
+iz.done:5                     # Ch5: Iz quest completed
+coronation.after:5            # Ch5 Drezen: Coronation done (KTCs_AfterCoronation b9cbdf8a)
+galfrey.final:5               # Ch5 Drezen: Coronation Cue_0117 starts Galfrey_Final e9205b9f (plays while she lives)
+irabeth.chapter_three:3       # Chapter03 etude (progress)
+irabeth.chapter_five:5        # Chapter05 etude (progress)

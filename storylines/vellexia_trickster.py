@@ -142,7 +142,7 @@ letter("vellexia.trickster.mirrored.speaks", "Compensation", [
     nar("finnean", '''{n}Finnean has not said a word since the salon. Now, from the scabbard, very quietly:{/n}
 "She's awake in there, Commander. You can tell by the way it doesn't reflect anything. I know what that's like. I'm just saying."''',
       c("Continue", "crate")),
-    nar("crate", '''"It's heavy, Commander," says the quartermaster who went back for it. "Heavy as a wardrobe, and warm, like somebody's been leaning on it. The haze moves when you talk near it. Do we crate it for Drezen, or leave it for the looters?"''',
+    nar("crate", '''"It's heavy, Commander," {n}says the quartermaster who went back for it.{/n} "Heavy as a wardrobe, and warm, like somebody's been leaning on it. The haze moves when you talk near it. Do we crate it for Drezen, or leave it for the looters?"''',
       c('[Have the mirror crated for Drezen] "I wasn\'t entertained either. She\'s my compensation."', "crated"),
       c('[Throw a sheet over the glass and leave it] "Goodnight, Lady Vellexia."', "sheet")),
     nar("crated", '''{n}They crate it face to the planks, on your orders, with straw packed against the glass. By morning the straw is warm right through.{/n}
@@ -270,7 +270,7 @@ letter("vellexia.trickster.sword.portrait", "The one with no hands", [
     nar("bought_back", '''{n}Near the bottom of the inventory, in a clerk's cramped hand: one portrait, unfinished, hands unpainted, chalk mark on reverse. Gallery.{/n}
 {n}She sent it back to its artist, the afternoon you told her to. Then, it seems, she bought it back from him at twice his price. She never mentioned it.{/n}''',
       c("Continue", "choice")),
-    nar("choice", '''"Everything else in that house used to be somebody," says the soldier who brought the list. "That thing never was. The looters want it for the frame. Take it, or let them burn the canvas?"''',
+    nar("choice", '''"Everything else in that house used to be somebody," {n}says the soldier who brought the list.{/n} "That thing never was. The looters want it for the frame. Take it, or let them burn the canvas?"''',
       c('[Take the portrait you marked] "The only thing in that house that was never anyone. I\'ll have it."', "taken"),
       c('[Put the portrait to the torch] "Burn it. She\'s had enough admirers."', "burned")),
     nar("taken", '''{n}They bring it back frame and all, crated in an oilcloth, because the soldier who tried to cut the canvas out found a pale stone set in silver wire in the back of the frame, warm to the touch, and decided he did not want to be the one who separated them. It is heavier than a portrait should be. By morning the cloth over its face has slipped, and nobody admits to touching it.{/n}''',
@@ -633,7 +633,7 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
       c("Continue", "threshold")),
     nar("threshold", '''{n}She is warm the way a banked fire is warm. When she kisses you it is slow and thorough and completely without mercy, and her teeth find the corner of your mouth, sharp enough to make you understand they are not a human woman's.{/n}
 {n}The dress goes to the floor in one whisper of silk. She stands in the lamplight in nothing but her skin and lets you look, and watches you look, with the open, greedy pleasure of a collector who has finally been given the piece she wanted. Then she pushes you back onto your own bed, climbs over you with her knees either side of your hips, and settles astride you, and bends down until her hair falls around both your faces like a curtain.{/n}
-"Bare your throat, sweetheart," she breathes against it. "Let us see which of us bites."''',
+"Bare your throat, sweetheart," {n}she breathes against it.{/n} "Let us see which of us bites."''',
       c("Continue", "morning")),
     nar("morning", '''{n}Morning. The bed is empty and the shutters are open. There is a bruise on your throat the exact shape of her mouth, and a note on your maps of the Worldwound in handwriting that slopes like a laugh.{/n}
 {n}"Come back alive. I have not finished with you, and I refuse to be bored by a monument."{/n}''',
@@ -651,31 +651,31 @@ stores("vellexia.trickster.after.night", "Less glass", '"Anything I should know 
 CONTINUING_NOT = ("vellexia.closed", "vellexia.parted", "vellexia.farewell_friends", "vellexia.farewell_slow", "sacrifice",
                   "inhuman", "ascended")
 TRICKSTER_PARAGRAPHS = (
-    p("The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited "
-      "to, and she sent anonymous corrections to the speeches.", requires=(PRESUMED,), forbids=(KEPT,)),
-    p("She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this "
-      "the most unsettling thing about the house.", requires=(BARE,)),
-    p("Her hands were never finished, and she never let another painter near them.", requires=(DIMINISHED,)),
-    p("She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.",
+    p("{n}The Upper City never learned she had come back. It went on toasting her memory at every feast she was not invited "
+      "to, and she sent anonymous corrections to the speeches.{/n}", requires=(PRESUMED,), forbids=(KEPT,)),
+    p("{n}She furnished the manor again from nothing, slowly, and every chair in it was only ever a chair. Guests found this "
+      "the most unsettling thing about the house.{/n}", requires=(BARE,)),
+    p("{n}Her hands were never finished, and she never let another painter near them.{/n}", requires=(DIMINISHED,)),
+    p("{n}She wore gloves in company and took them off only for the Commander, who knew what the gloves were for.{/n}",
       requires=(DIMINISHED,), forbids=CONTINUING_NOT),
-    p("She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way "
-      "other women describe a scar.", requires=(PREDICTED,)),
-    p("She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the "
-      "Upper City now walk.", requires=(TRICK_KEPT, UNMIRRORED)),
-    p("She learned the Commander's trick in the end, as she had promised, and never said how. The painter who had sold her "
-      "the portrait never worked in the Upper City again, and nobody would say why.", requires=(TRICK_KEPT, DIMINISHED),
+    p("{n}She told everyone she met that the Commander was the only guest who had ever predicted her. She said it the way "
+      "other women describe a scar.{/n}", requires=(PREDICTED,)),
+    p("{n}She learned the Commander's trick in the end, as she had promised, and never said how. Several footstools in the "
+      "Upper City now walk.{/n}", requires=(TRICK_KEPT, UNMIRRORED)),
+    p("{n}She learned the Commander's trick in the end, as she had promised, and never said how. The painter who had sold her "
+      "the portrait never worked in the Upper City again, and nobody would say why.{/n}", requires=(TRICK_KEPT, DIMINISHED),
       forbids=(UNMIRRORED,)),
-    p("She learned the Commander's trick in the end, as she had promised, and never said how. For a year every gossip in "
+    p("{n}She learned the Commander's trick in the end, as she had promised, and never said how. For a year every gossip in "
       "the Upper City found a lilac-scented card on the pillow predicting, word for word, what they would say about her "
-      "next; most of them stopped saying it.", requires=(TRICK_KEPT,), forbids=(UNMIRRORED, DIMINISHED)),
-    p("She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, "
-      "always in company.", requires=("vellexia.trickster.cost.bored_once",), forbids=CONTINUING_NOT),
-    p("A portrait of the Commander changed hands in the Upper City three times before the war was over, each time for more. "
-      "Nobody who bought it would say what it showed. Vellexia bought it in the end, and never said either.", requires=(SAT,)),
+      "next; most of them stopped saying it.{/n}", requires=(TRICK_KEPT,), forbids=(UNMIRRORED, DIMINISHED)),
+    p("{n}She never forgot the one dull sentence the Commander said to her, and reminded the Commander of it at intervals, "
+      "always in company.{/n}", requires=("vellexia.trickster.cost.bored_once",), forbids=CONTINUING_NOT),
+    p("{n}A portrait of the Commander changed hands in the Upper City three times before the war was over, each time for more. "
+      "Nobody who bought it would say what it showed. Vellexia bought it in the end, and never said either.{/n}", requires=(SAT,)),
 )
 MIRROR_PARAGRAPHS = (
-    p("The Commander kept the glass covered after the war, in a locked room, and never slept in the next one. The haze "
-      "behind the cloth never went still. \"I will be watching you do it,\" she had said, and she was.",
+    p("{n}The Commander kept the glass covered after the war, in a locked room, and never slept in the next one. The haze "
+      "behind the cloth never went still.{/n} \"I will be watching you do it,\" {n}she had said, and she was.{/n}",
       requires=(KEPT, WATCHED)),
 )
 
@@ -683,23 +683,23 @@ SCENES.append(scene("vellexia.trickster.epilogue.commit", "Kept waiting", "Epilo
     nar("start", '''{n}Lady Vellexia finished the conversation after the war, in her own time and at her own party. She sent for the Commander the way she sent for everyone, and was kept waiting, which nobody could remember happening to her before. She found this so novel that she did not have the Commander upholstered.{/n}''',
       c(), paragraphs=(
           # Q11 r3: her collection survives only where nothing walked out of her house.
-          p("She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
+          p("{n}She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
             "she collected anything she had decided was hers, into a room whose furniture had been guests once and still watched. "
             "She locked the door behind them, put the key down the front of her dress, and laughed at the Commander's face. She did "
-            "not hurry. She took the Commander's coat off slowly and dropped it on a chair that flinched.", forbids=(BARE, FREED)),
-          p("She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
+            "not hurry. She took the Commander's coat off slowly and dropped it on a chair that flinched.{/n}", forbids=(BARE, FREED)),
+          p("{n}She drew the Commander away from the other guests before anyone else could claim the evening, by the wrist, the way "
             "she collected anything she had decided was hers, into the one room of her new house she had finished: a bed, a lamp, "
             "and walls with nothing on them that had ever been anyone. She locked the door behind them, put the key down the front "
             "of her dress, and laughed at the Commander's face. She did not hurry. She took the Commander's coat off slowly and "
-            "dropped it on the bare floor, where it stayed a coat.", any_groups=[[BARE, FREED]]),
-          p("She unlaced her own gown with one hand while the other held the Commander's jaw so that {mf|he|she} had to watch, and "
+            "dropped it on the bare floor, where it stayed a coat.{/n}", any_groups=[[BARE, FREED]]),
+          p("{n}She unlaced her own gown with one hand while the other held the Commander's jaw so that {mf|he|she} had to watch, and "
             "let the silk fall. Then she pushed the Commander down onto her bed, followed {mf|him|her} down onto it, knees either "
-            "side of {mf|his|her} hips, her hair falling round both their faces, her mouth at {mf|his|her} throat. \"You kept me "
-            "waiting,\" she said against it. \"Now pay.\""),
-          p("In the morning there was a bruise on the Commander's throat the exact shape of her mouth, and a note on the pillow in "
-            "handwriting that sloped like a laugh: \"Again. I have decided.\""),
-          p("Daeran, who saw the bruise at breakfast the next week, said only that he had never known her to bill a guest in "
-                         "person, and asked whether the Commander would be needing a scarf.", forbids=DAERAN_GONE),
+            "side of {mf|his|her} hips, her hair falling round both their faces, her mouth at {mf|his|her} throat.{/n} \"You kept me "
+            "waiting,\" {n}she said against it.{/n} \"Now pay.\""),
+          p("{n}In the morning there was a bruise on the Commander's throat the exact shape of her mouth, and a note on the pillow in "
+            "handwriting that sloped like a laugh:{/n} \"Again. I have decided.\""),
+          p("{n}Daeran, who saw the bruise at breakfast the next week, said only that he had never known her to bill a guest in "
+                         "person, and asked whether the Commander would be needing a scarf.{/n}", forbids=DAERAN_GONE),
                        *TRICKSTER_PARAGRAPHS))],
     requires=(LATE_COMMITTED,),
     forbids=("vellexia.committed", "vellexia.closed", DECLINED, KEPT, "vellexia.farewell_kept", "sacrifice", "inhuman", "ascended"),

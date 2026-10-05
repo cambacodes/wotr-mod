@@ -59,11 +59,11 @@ s("a_useful_supper", "The price of a quiet street", '"You mentioned an invitatio
 "Try the chair beside mine.\"""", c('[Follow her upstairs.]', "table")),
     n("table", "Narrator", """{n}Varine is a broad woman wearing a silver ring too tight for her hand. She turns it whenever anyone mentions the weather. Oselda, lean and neatly dressed, moves her chair before introductions are finished so the serving woman can get through with the bowls.{/n}
 {n}The fourth place belongs to a driver named Hesset, whose coat has been brushed so fiercely that its seams look injured. He rises for you; Konomi points out that the soup is escaping his bowl. He sits down in time to save most of it.{/n}
-"I have invited the Commander as my guest," she says. "Our advice is still advice. Varine owns the lease. Hesset owns his wagon. Oselda appears to own the only spoon without a bent handle."
-"I came early," Oselda says.
+"I have invited the Commander as my guest," {n}she says.{/n} "Our advice is still advice. Varine owns the lease. Hesset owns his wagon. Oselda appears to own the only spoon without a bent handle."
+"I came early," {n}Oselda says.{/n}
 {n}Konomi inspects her own spoon and acknowledges the advantage.{/n}
 {n}Varine explains the proposal. Six wagons would enter after the neighboring shops shut. Each merchant would pay a porter for the evening rather than leave a driver waiting through the day. The entrance would be cleared before dawn.{/n}
-"The rooms above are occupied," Oselda says.
+"The rooms above are occupied," {n}Oselda says.{/n}
 "I know. I collect the rent."
 "Then you know the woman over the west gate begins work before sunrise. And that Hesset sometimes sleeps in his wagon. Which will be standing beside the other wagons."
 {n}Hesset lowers his spoon.{/n}
@@ -74,12 +74,12 @@ s("a_useful_supper", "The price of a quiet street", '"You mentioned an invitatio
 "Oselda?"
 "A night somebody actually hears. No deciding from this room that the courtyard sounds tolerable. It always sounds tolerable from this room."
 {n}Varine objects that she has stood in the yard herself. Oselda asks whether she stood there while six carts were being unloaded. Varine turns her ring and admits that she has not.{/n}
-"One wagon," Konomi says. "Tomorrow evening. One unloading, with the porter paid for his time. We listen downstairs and upstairs. Then we decide whether six are possible."
-"Tomorrow?" you ask.
+"One wagon," {n}Konomi says.{/n} "Tomorrow evening. One unloading, with the porter paid for his time. We listen downstairs and upstairs. Then we decide whether six are possible."
+"Tomorrow?" {n}you ask.{/n}
 "I have been accused of making an attractive guess. I should like to improve it before everyone learns to enjoy the accusation."
 {n}Oselda studies her, then names a tenant who has agreed to let them into the upper passage. Hesset can bring empty barrels. Varine will provide the porter and a lamp.{/n}
-"Nobody needs to lose a night's sleep to prove they would," Oselda adds. "We stop when the people upstairs ask."
-"Agreed," Konomi says, before Varine can negotiate with the word stop.
+"Nobody needs to lose a night's sleep to prove they would," {n}Oselda adds.{/n} "We stop when the people upstairs ask."
+"Agreed," {n}Konomi says, before Varine can negotiate with the word stop.{/n}
 {n}The serving woman brings a covered dish. Its smell answers the question Konomi underlined on your invitation. She moves it a little farther from your plate.{/n}
 "There. I have saved you from one poor decision tonight. You may make the others yourself.\"""", c('[Agree to meet them for the trial.]', flags=("konomi.supper_trial",))),
 ], after=())
@@ -87,12 +87,12 @@ s("a_useful_supper", "The price of a quiet street", '"You mentioned an invitatio
 s("the_upper_passage", "What reaches the rooms above", '"Shall we see what the yard sounds like?"', [
     n("start", "Narrator", """{n}Hesset has arrived early, which makes him impatient before anyone else has had an opportunity to be late. His wagon carries four empty barrels and a crate of loose wooden pegs. Varine has paid a porter named Bel to move them into the store and back.{/n}
 {n}Konomi wears a plain cloak over her good coat. Oselda leads you through the yard to a stair door, carrying the borrowed key.{/n}
-"This is Sella's passage," she says. "She has her sister's children tonight. If she comes out, we finish."
+"This is Sella's passage," {n}she says.{/n} "She has her sister's children tonight. If she comes out, we finish."
 {n}Konomi nods. A child's voice behind the nearest door asks whether that was a horse. Another voice says it was certainly not a horse and therefore should be ignored.{/n}
-"A promising beginning," Konomi murmurs.
+"A promising beginning," {n}Konomi murmurs.{/n}
 {n}Below, Hesset calls to Bel. The first barrel lands on a plank with a hollow crack. Sound seems to run up the wall beneath your hand.{/n}
 {n}Oselda does not look at Konomi. Her restraint is almost impolite.{/n}
-"Yes," Konomi says. "I heard it."
+"Yes," {n}Konomi says.{/n} "I heard it."
 "There are five more wagons in your proposal."
 "I also remember arithmetic."
 {n}She says it too sharply. After a moment she adds,{/n} "That was unnecessary. Shall we find out which part is making the worst of it?\"""",
@@ -101,40 +101,40 @@ s("the_upper_passage", "What reaches the rooms above", '"Shall we see what the y
       c('[Ask them to pause while you attend to something else.]', abort=True)),
     n("hear", "Narrator", """{n}You hear the wheel creak and the barrel strike, but the loudest report comes a moment afterward. A loose end of the loading plank jumps against an iron bracket. You ask Bel to hold it down while Hesset moves the next barrel.{/n}
 {n}The crack disappears. The wagon remains audible, and there is still the scrape of wood, but it no longer sounds as though someone has struck the wall with a mallet.{/n}
-"There," Konomi says. "We have at least found an expense worth naming."
+"There," {n}Konomi says.{/n} "We have at least found an expense worth naming."
 {n}Oselda tests the wall herself. She nods, then points toward the closed door.{/n}
 "Less noise is not silence."
 "No. But I would rather offer a repair than a promise to be quiet."
 {n}Konomi calls down to ask Varine what it would cost to secure the plank properly. Varine says very little, which Bel contradicts with the confidence of the person expected to do it.{/n}""", c('[Go down to hear Bel explain the repair.]', "repair")),
     n("miss", "Narrator", """{n}You name the wagon wheel. Hesset lifts its edge with a lever and has Bel move a barrel while it is clear of the stones. The crack returns, just as loud.{/n}
-"The wheel is innocent," Hesset calls. "It would like that entered somewhere."
+"The wheel is innocent," {n}Hesset calls.{/n} "It would like that entered somewhere."
 {n}Konomi presses her lips together. For a moment you think she is trying not to be annoyed. Then she turns away, shoulders moving, and you realize she is laughing.{/n}
-"I apologize," she tells Oselda. "It has had a difficult evening."
+"I apologize," {n}she tells Oselda.{/n} "It has had a difficult evening."
 {n}They lower the wagon and repeat the movements separately. The loose loading plank finally jumps against its iron bracket. Bel puts a foot on it, and the next barrel passes with a dull scrape.{/n}
 {n}The repeated unloading has taken long enough that the door opens. Sella stands there with a child asleep against her shoulder. She need not say anything. Oselda signals below, and the yard falls quiet.{/n}
-"We have finished," Konomi tells her. "Thank you for the time."
+"We have finished," {n}Konomi tells her.{/n} "Thank you for the time."
 {n}You go downstairs to settle the repair and the porter's extra work without another trial.{/n}""", c("[Listen to the porter explain what would be needed.]", "repair_late")),
     n("slow", "Narrator", """{n}Oselda repeats your request downstairs. Hesset moves the wagon a little. Bel lifts a barrel, sets it down, then rolls it slowly along the plank. Konomi tells him when to stop and asks you whether the sound changed.{/n}
 {n}On the fourth attempt the end of the plank springs upward against its bracket. Bel holds it with his boot, and the next movement loses its sharp report.{/n}
-"There," Konomi says. "A repair, rather than an instruction to make less noise. I prefer problems that can be fastened to something."
+"There," {n}Konomi says.{/n} "A repair, rather than an instruction to make less noise. I prefer problems that can be fastened to something."
 {n}The door opens before you can try again. Sella has a sleepy child against her shoulder. Oselda apologizes and signals that the trial is over.{/n}
-"We said we would stop," Konomi tells Varine when the merchant looks up from below. "We have learned enough for tonight."
+"We said we would stop," {n}Konomi tells Varine when the merchant looks up from below.{/n} "We have learned enough for tonight."
 {n}You descend together. Bel has worked past the time he was hired for, and Varine begins counting the additional coins before Oselda can ask.{/n}""", c('[Ask Bel what a lasting repair would require.]', "repair_late")),
     n("repair", "Konomi", """{n}Bel wants two new supports and a carpenter who will fit them to the stone rather than nail another scrap over the old split. He names the cost. Varine turns her ring twice, then agrees to obtain an estimate.{/n}
-"We have time to try carrying one barrel instead of rolling it," Konomi says. "Only if Bel agrees, and only while the passage remains available."
+"We have time to try carrying one barrel instead of rolling it," {n}Konomi says.{/n} "Only if Bel agrees, and only while the passage remains available."
 {n}Bel agrees to one. The sound is gentler. His arms tremble before he has carried it back.{/n}
-"And that," Oselda says, "is why we shall not write that he can do it six times for the same wage."
+"And that," {n}Oselda says,{/n} "is why we shall not write that he can do it six times for the same wage."
 {n}Konomi strikes a line from her page.{/n}
 "I had written that three minutes ago. You may enjoy seeing it removed."
 "I do."
 {n}Konomi hands you the pencil. "If you intend to remember that, have the decency to help me measure the distance."{/n}""", c('[Measure the carrying distance with her.]', "early_end")),
     n("repair_late", "Konomi", """{n}Bel explains the loose supports. Fixing them would require a carpenter and proper fittings. Carrying barrels would be quieter, he admits, but nobody has paid him enough to pretend it would not hurt.{/n}
-"Then I shall not write it as a saving," Konomi says.
+"Then I shall not write it as a saving," {n}Konomi says.{/n}
 {n}She asks him to show her the route without a load. You walk beside them while Oselda measures the distance in paces. They stop twice to disagree about the easiest turn.{/n}
-"We haven't tried the carrying," Varine says.
-"No," Konomi answers. "We have tried the patience of the people upstairs. Tomorrow we can ask Bel what he would charge. We cannot ask his back to answer tonight."
+"We haven't tried the carrying," {n}Varine says.{/n}
+"No," {n}Konomi answers.{/n} "We have tried the patience of the people upstairs. Tomorrow we can ask Bel what he would charge. We cannot ask his back to answer tonight."
 {n}It is a useful answer. She still looks unhappy as she folds the page.{/n}
-"I wanted a cleaner result," she tells you, quietly enough that nobody else has to respond.""", c('"We learned where the costs are. That is a result."', "late_end")),
+"I wanted a cleaner result," {n}she tells you, quietly enough that nobody else has to respond.{/n}""", c('"We learned where the costs are. That is a result."', "late_end")),
     n("early_end", "Konomi", """{n}When the others leave, you walk the length of the empty yard with Konomi. She checks her figures against yours, then asks to see your hands.{/n}
 "A splinter. You acquired it while holding the rail."
 {n}She removes it with the tip of a small pin, more carefully than she has treated any opinion tonight. Her fingers linger when she has finished.{/n}
@@ -156,21 +156,21 @@ s("the_upper_passage", "What reaches the rooms above", '"Shall we see what the y
 
 s("two_bad_prices", "Who pays for the improvement", '"What will you propose to Varine?"', [
     n("start", "Konomi", """{n}The supper table has been cleared for Konomi's pages. Varine has supplied a better lamp. Oselda has brought a wooden ruler and a list of the upstairs tenants' working hours. Hesset brings nothing, which he describes as a deliberate professional choice.{/n}
-"Two possible trials," Konomi says. "Both smaller than the proposal we began with. I have decided not to call either inexpensive until someone else has paid for it."
+"Two possible trials," {n}Konomi says.{/n} "Both smaller than the proposal we began with. I have decided not to call either inexpensive until someone else has paid for it."
 {n}She places the pages side by side.{/n}
 "One wagon in the first part of the evening, with the plank repaired and two porters. The upper rooms get a stated stopping time. Varine gets one wagon out of the street before the next day. Bel gets another pair of hands."
-"Two wages," Varine says.
+"Two wages," {n}Varine says.{/n}
 "Yes. The alternative is a hired waiting space beyond the adjoining houses. The wagon waits there until morning. Oselda has found one. Varine pays for the space and a watch. Hesset does not charge a day's waiting because we agree his time in advance."
 {n}Hesset lifts a finger. "A smaller waiting charge. I still have to eat while I know what time it is."{/n}
 {n}Konomi corrects the page without disputing him.{/n}
 "A smaller charge. Thank you. Those are the choices I can recommend on what we know."
-"One costs money to move less," Varine says, "and one costs money not to move."
+"One costs money to move less," {n}Varine says,{/n} "and one costs money not to move."
 "You have understood them perfectly.\"""",
       c('[Ask why Konomi prefers the evening trial.]', "preference"),
       c('[Ask why Oselda prefers the waiting space.]', "other"),
       c('[Ask them to wait until you can hear the discussion properly.]', abort=True)),
     n("preference", "Konomi", """"Because a narrow reliable opening can be enlarged later. If one wagon works, we can ask about two. Repairing the loading place is useful even if the trial ends. And Varine can see what her extra wages bought."
-"You still want the proposal you began with," Oselda says.
+"You still want the proposal you began with," {n}Oselda says.{/n}
 "I want a version of it that works. Do you think that is the same thing?"
 "I think you can imagine the second wagon very easily. I want you to imagine the woman upstairs wondering whether she has agreed to the fifth."
 {n}Konomi takes her hand away from the page.{/n}
@@ -178,11 +178,11 @@ s("two_bad_prices", "Who pays for the improvement", '"What will you propose to V
 "It can say it. Will they ask?"
 "Varine is sitting here. Ask her."
 {n}The merchant looks irritated to have become the subject of her own discussion.{/n}
-"For a week," she says. "One wagon. If it does not work, I stop. If I want more, I ask."
+"For a week," {n}she says.{/n} "One wagon. If it does not work, I stop. If I want more, I ask."
 {n}Oselda writes the words down. The small scratch of her pen gives the concession more weight than another exchange of assurances would have.{/n}""", c('[Ask what they would give up by choosing the other plan.]', "trade")),
     n("other", "Konomi", """{n}Oselda puts her ruler across the list of working hours.{/n}
 "These people can arrange themselves around daylight. They have been doing it for years. Nobody has to watch a clock wondering when the noise will stop. The waiting space costs something, but it keeps the cost where we can count it."
-"And leaves the road into the store crowded in the morning," Konomi says.
+"And leaves the road into the store crowded in the morning," {n}Konomi says.{/n}
 "For one wagon, arriving at an agreed time. Your own smaller trial."
 {n}Konomi looks at Hesset.{/n}
 "Would that help?"
@@ -193,7 +193,7 @@ s("two_bad_prices", "Who pays for the improvement", '"What will you propose to V
 {n}Oselda smiles without looking up. Konomi notices and allows it.{/n}""", c('[Ask what they would give up by choosing the evening trial.]', "trade")),
     n("trade", "Konomi", """{n}They work through the cost again. The evening plan could clear more deliveries eventually, but only if the noise and wages remain acceptable. The waiting yard gives up that immediate gain and pays a watch to keep the load safe. Neither will feed an idle driver for nothing.{/n}
 {n}Varine asks for your opinion. Konomi leans back, leaving her pages where you can read them.{/n}
-"You have stood upstairs," she says. "You are entitled to disagree with me. I would prefer to hear why before everyone enjoys it too much."
+"You have stood upstairs," {n}she says.{/n} "You are entitled to disagree with me. I would prefer to hear why before everyone enjoys it too much."
 "And if I agree?"
 "Then I would still like reasons. I have had quite enough of people agreeing because it is cheaper than continuing the conversation."
 {n}Oselda turns her ruler over. The white edge is worn smooth where her thumb rests. Hesset waits, looking from you to Varine rather than toward the door.{/n}""",
@@ -204,16 +204,16 @@ s("two_bad_prices", "Who pays for the improvement", '"What will you propose to V
 "And if they refuse?"
 "Then we have learned that too. We still have your yard."
 {n}Varine counts the proposed wages aloud. She dislikes them. She agrees to them. Hesset offers his next evening arrival, provided the carpenter has finished.{/n}
-"The report should carry both our names," Konomi tells Oselda. "Yours for the tenant hours and the alternative. Mine for the trial I have been so difficult about."
+"The report should carry both our names," {n}Konomi tells Oselda.{/n} "Yours for the tenant hours and the alternative. Mine for the trial I have been so difficult about."
 {n}Oselda looks up sharply.{/n}
 "I was paid to keep the accounts."
 "You have done something beyond them. I want a reader to know whom to ask about each part."
 {n}Konomi gathers her gloves. Under the table, her foot touches yours and withdraws again before it becomes a claim on your attention.{/n}
-"Now," she says, "can we eat before Varine discovers a cheaper alternative?\"""", c('[Stay for supper after the agreement.]', flags=("konomi.trial_chosen", "konomi.evening_trial"))),
+"Now," {n}she says,{/n} "can we eat before Varine discovers a cheaper alternative?\"""", c('[Stay for supper after the agreement.]', flags=("konomi.trial_chosen", "konomi.evening_trial"))),
     n("morning", "Konomi", """{n}Konomi looks down at her proposal. For a moment she appears about to explain it again. Instead she asks Hesset what hour would keep his waiting charge small.{/n}
 {n}They settle the arrival time. Varine will rent the space for the trial and pay the watch. Oselda will check that the route out of the yard is clear before accepting the first load.{/n}
-"I would still repair the plank," Konomi says.
-"So would I," Varine replies. "I have been hearing it ever since you made me listen."
+"I would still repair the plank," {n}Konomi says.{/n}
+"So would I," {n}Varine replies.{/n} "I have been hearing it ever since you made me listen."
 {n}Oselda begins to gather the pages. Konomi keeps one back.{/n}
 "Your name goes first on the recommendation. I will write why I changed mine."
 "You needn't make a ceremony of it."
@@ -240,42 +240,42 @@ s("the_trial_day", "An improvement with a bill attached", '"How is the trial goi
     n("evening", "Narrator", """{n}The people upstairs have agreed to the limited trial. Oselda has put the finishing hour on a board beside the gate. Bel works with another porter; neither appears particularly grateful for having been discovered to possess a back.{/n}
 {n}The repaired plank still creaks. It no longer cracks against the wall. Hesset brings the wagon through, waits while the porters steady the load, and climbs down to help them release the first rope.{/n}
 {n}Varine wants Konomi to see how quickly the entrance clears. Konomi asks Oselda whether the upper passage is available. It is not. Sella's sister has returned, and the room is full. They listen from the stair landing instead.{/n}
-"We should say where we stood," Konomi tells you. "The wall sounded different higher up."
+"We should say where we stood," {n}Konomi tells you.{/n} "The wall sounded different higher up."
 {n}Bel calls that one of the casks has a damaged binding. The second porter fetches another rope. The extra care consumes the time Varine hoped to save. When the finishing hour arrives, two casks remain on the wagon.{/n}
-"Ten minutes," Varine says.
+"Ten minutes," {n}Varine says.{/n}
 {n}Oselda turns toward her. Konomi closes her writing case.{/n}
 "Tomorrow. We said when we would stop."
 "They are already here."
 "So are the people we asked to trust the hour."
 {n}Hesset covers the remaining casks. He is displeased, but he has been paid for the agreed arrival and knows when the last part will be unloaded. The porters finish tying the cover and collect their wages.{/n}
 {n}Varine watches them leave. "We paid two men to do less than one wagon."{/n}
-"We did," Konomi says. "Put that in the account beside the waiting charge we avoided. I would like to see both.\"""", c('[Stay while they compare the actual cost.]', "evening_cost")),
+"We did," {n}Konomi says.{/n} "Put that in the account beside the waiting charge we avoided. I would like to see both.\"""", c('[Stay while they compare the actual cost.]', "evening_cost")),
     n("morning", "Narrator", """{n}The waiting yard lies behind a small cooper's shop. Hesset's wagon occupies most of it. The watch has kept the gate clear and complains, with some pride, that there was nothing to do except remain awake.{/n}
 {n}Konomi asks how he stayed warm. He shows her a brazier borrowed from the cooper, then names what he paid for the charcoal. Oselda adds it to the cost.{/n}
-"We didn't allow for that," Konomi says.
-"Neither did I," Oselda answers.
+"We didn't allow for that," {n}Konomi says.{/n}
+"Neither did I," {n}Oselda answers.{/n}
 {n}Konomi gives her a look that might have become satisfaction on a less demanding morning. Then Hesset calls them to help open the gate.{/n}
 {n}The wagon arrives at Varine's entrance at the agreed hour. A handcart stands across half the opening. Its owner has gone to buy bread. Varine sends a servant to find him, and the minutes begin accumulating exactly where nobody wished to see them.{/n}
-"So much for certainty," she says.
+"So much for certainty," {n}she says.{/n}
 {n}Oselda's jaw tightens. Konomi walks the length of the handcart, sees that it can be shifted without touching the load, and asks Bel for help. They move it against the wall. Hesset turns carefully through the remaining space.{/n}
-"A clear entrance has to belong to someone's morning," Konomi says when she returns. "It won't happen because we put an hour on paper. Who will check it?"
+"A clear entrance has to belong to someone's morning," {n}Konomi says when she returns.{/n} "It won't happen because we put an hour on paper. Who will check it?"
 {n}Varine names the servant who opens the store. Oselda writes it down and tells her to pay for the earlier start.{/n}
 {n}The wagon is unloaded before the busiest part of the day. Hesset's waiting charge is smaller. The yard, watch, charcoal and earlier start consume most of the saving.{/n}
-"Most," Oselda says, checking the figures. "Not all."
+"Most," {n}Oselda says, checking the figures.{/n} "Not all."
 {n}Konomi nods. "And the people upstairs had their night. We should include what we meant to buy."{/n}""", c('[Help compare the outcome with the original estimate.]', "morning_cost")),
     n("evening_cost", "Konomi", """{n}The remaining casks are small enough to unload the next morning without holding up another wagon. The evening trial saved some waiting and left a bill larger than Varine wanted. She agrees to finish the week, one wagon at a time, and asks for no expansion yet.{/n}
 {n}Oselda writes the results beside Konomi's estimate. She does not offer to soften them.{/n}
-"You were right to keep the hour," she says.
+"You were right to keep the hour," {n}she says.{/n}
 "I would have liked to be right about something that made me appear cleverer."
 "You can put that in the report too."
 {n}Konomi actually considers it. Then she writes a plain account of the casks that remained on the wagon.{/n}
 {n}On the way out, Bel stops her to ask who will read it. She tells him. He asks whether they will remember that the damaged binding cost time because he kept a cask from falling.{/n}
-"I will put that beside the delay," she says.
+"I will put that beside the delay," {n}she says.{/n}
 {n}He nods and goes back to the plank. Konomi watches him check the new supports with his heel.{/n}
-"He wanted a sentence," she says. "I nearly gave him a defense of the whole arrangement. You may rescue me if I begin doing that to you.\"""", c('[Walk with her away from the store.]', "walk")),
+"He wanted a sentence," {n}she says.{/n} "I nearly gave him a defense of the whole arrangement. You may rescue me if I begin doing that to you.\"""", c('[Walk with her away from the store.]', "walk")),
     n("morning_cost", "Konomi", """{n}Varine agrees to finish the week using the waiting yard. She wants the charcoal included in the next estimate and no more handcarts discovered at the last moment. Oselda says she can promise the first with more confidence than the second.{/n}
 {n}Hesset leaves knowing where he will wait on his next visit. He shakes Oselda's hand, then thanks Konomi for moving the cart.{/n}
-"There. I have finally made a contribution he can point to," she tells you.
+"There. I have finally made a contribution he can point to," {n}she tells you.{/n}
 "You helped them agree."
 "I know. I also held a wheel while Bel moved the other one. One of those things was harder to argue about."
 {n}She flexes her fingers. Her glove has acquired a dark streak across the palm. She looks at it, then deliberately leaves it on.{/n}
@@ -301,7 +301,7 @@ s("the_trial_day", "An improvement with a bill attached", '"How is the trial goi
 "It was dreadful. You have spared us both."
 {n}She draws off the other glove, folds them together and asks when you can see her again. The report will need an answer from Varine, but she is already thinking beyond it.{/n}""", c('[Arrange another evening.]', flags=("konomi.trial_lived", "konomi.trial_kissed"))),
     n("rest", "Konomi", """{n}She rests her shoulder against yours. For a while the quiet does more for her temper than another successful argument could have done.{/n}
-"This is satisfactory," she says eventually.
+"This is satisfactory," {n}she says eventually.{/n}
 "Such enthusiasm."
 "I thought you might enjoy a favorable finding without an argument attached."
 {n}Her hand closes around yours. She stays until you have both stopped listening for someone to call you back, then asks when you can see her again. There will be an answer from Varine about the report. After that, she says, she would like an evening nobody has asked her to improve.{/n}""", c('[Make time to see her again.]', flags=("konomi.trial_lived", "konomi.trial_rested"))),
@@ -323,7 +323,7 @@ s("a_name_beside_hers", "The readers she wanted", '"Has Varine answered about th
 {n}A knock saves her from further practice. Oselda enters carrying the draft they sent together. She has made notes in a different color, leaving very little margin unused.{/n}""",
       c('[Make room for her draft.]', "offer"),
       c('[Ask to postpone the discussion until you can remain.]', abort=True)),
-    n("offer", "Konomi", """"I could use the work," Oselda says. "I could also use a reader who knows when to ask me a question. They are not necessarily the same employment."
+    n("offer", "Konomi", """"I could use the work," {n}Oselda says.{/n} "I could also use a reader who knows when to ask me a question. They are not necessarily the same employment."
 "I would pass the questions on."
 "Would you pass on the ones you thought you could answer?"
 {n}Konomi's reply stops before she speaks it. Oselda places a finger on the trial account.{/n}
@@ -332,17 +332,17 @@ s("a_name_beside_hers", "The readers she wanted", '"Has Varine answered about th
 "Yes. I would also like the fee. I am not inviting you to admire me for refusing it."
 {n}Konomi reads the offer again, more slowly.{/n}
 "Then we offer two arrangements. Joint private reports, with both names and an address for each. I introduce you in the first letter. If they refuse that, a short public circular. Varine can send it to her tenants and acquaintances. Anyone who wants to ask us about it can write."
-"No regular fee for the second," Oselda says.
+"No regular fee for the second," {n}Oselda says.{/n}
 "No promised fee. We could charge for copies beyond the first distribution, if there is interest. It would begin modestly."
 "And you would lose your private introduction."
 "I would lose the guarantee of being the first person they ask. I haven't decided that I like either possibility."
 {n}Oselda sits back. "Now we have something to discuss."{/n}""", c('[Ask what each arrangement would demand of their time.]', "time")),
     n("time", "Konomi", """{n}The private reports would require an answer on a fixed day. Each woman would write the parts she knew, then they would argue over the conclusions before sending them. The offered fee could pay for Oselda's time away from other accounts and a portion of Konomi's evenings.{/n}
 {n}The circular could wait until they had something worth saying. It would travel farther through Varine's acquaintances, but neither writer would control which reader received it next. There would be no claim on an evening merely because a payment was due.{/n}
-"My office comes first," Konomi says. "What reaches me as the crown's envoy is the crown's stock, and I do not sell the crown's goods out of my own stall. It is the quickest way I know to be recalled. We write what the yard told us, and nothing else. If the two collide, this work waits."
-"Then put that in the offer," Oselda answers. "I would rather discover what waiting means before I depend on the fee."
+"My office comes first," {n}Konomi says.{/n} "What reaches me as the crown's envoy is the crown's stock, and I do not sell the crown's goods out of my own stall. It is the quickest way I know to be recalled. We write what the yard told us, and nothing else. If the two collide, this work waits."
+"Then put that in the offer," {n}Oselda answers.{/n} "I would rather discover what waiting means before I depend on the fee."
 {n}They write a limit on the number of reports. Konomi strikes out a phrase promising prompt answers and replaces it with the days she can actually offer.{/n}
-"That is less flattering," she says.
+"That is less flattering," {n}she says.{/n}
 "It is easier to arrange my week around."
 {n}Konomi turns toward you.{/n}
 "These would be some of the evenings we discussed. I want the work. I want time with you. I could make an impressive speech about reconciling them and then cancel our next supper. I would prefer a less elegant beginning."
@@ -352,11 +352,11 @@ s("a_name_beside_hers", "The readers she wanted", '"Has Varine answered about th
       c('"You want room to choose your subjects. The circular gives you that, even if the first readers impress you less. Try it before you sell a regular evening."', "circular")),
     n("joint", "Konomi", """"I do want them. I have been trying to make that sound like a duty, which was dishonest of me."
 {n}She turns the letter over and begins a new draft. Oselda watches until Konomi reaches the sentence inviting questions to both writers. Then she moves her chair closer and corrects the address.{/n}
-"You can send it," Oselda says when they have read it aloud. "If they answer only you, I expect to see what they asked."
+"You can send it," {n}Oselda says when they have read it aloud.{/n} "If they answer only you, I expect to see what they asked."
 "You will. And if you answer before I do, I expect not to discover it from the next question."
 "Agreed."
 {n}They decide which evening each will keep for writing if the offer is accepted. Oselda leaves with a copy. Konomi seals the other and puts it where her outgoing private letters wait.{/n}
-"I have not won the work yet," she says. "I dislike how much I want their answer."
+"I have not won the work yet," {n}she says.{/n} "I dislike how much I want their answer."
 "What would you like while you wait?"
 "Something very unhelpful to my professional composure. Your undivided attention, for a start. After their answer comes, I shall send you an invitation. I shall obtain something better than Varine's supper."
 {n}She touches your sleeve, then lets her hand slide down until your fingers meet.{/n}
@@ -364,7 +364,7 @@ s("a_name_beside_hers", "The readers she wanted", '"Has Varine answered about th
     n("circular", "Konomi", """{n}Konomi reads the private offer once more. Then she lays it aside, carefully enough to show that doing so costs her something.{/n}
 "I want to choose. I also want them to be impressed. You have identified an inconvenient disagreement."
 {n}Oselda asks how long the circular would be. Konomi names a length. Oselda looks at the marked pages between them until she names a shorter one.{/n}
-"We begin with what happened in the yard," Konomi says. "Actual costs, the inconvenience we missed, and what we have not yet learned. Both names. Varine may distribute it with her own letter, provided she doesn't change ours."
+"We begin with what happened in the yard," {n}Konomi says.{/n} "Actual costs, the inconvenience we missed, and what we have not yet learned. Both names. Varine may distribute it with her own letter, provided she doesn't change ours."
 "I can finish my part in two evenings."
 "So can I. I shall have to resist improving it on the third."
 {n}They divide the work. When Oselda leaves, Konomi opens her reply to the private offer and declines the regular arrangement. She offers to send the circular instead.{/n}
@@ -419,7 +419,7 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
 "I was planning to stay."
 "Then I have made an unnecessarily generous offer. Eat it before I reconsider."
 {n}Her fingers slide away slowly. You catch them before she can return to her cup.{/n}
-"I am glad you came," she says, with no clever qualification waiting behind it.""", c('[Help her clear the table.]', "plans")),
+"I am glad you came," {n}she says, with no clever qualification waiting behind it.{/n}""", c('[Help her clear the table.]', "plans")),
     n("plans", "Konomi", """{n}The dishes take less time than the conversation about where they ought to go. Konomi has a strong opinion about a shelf you have never noticed. You discover that it is based on having dropped a cup from it last month, and suggest moving the cups.{/n}
 "An excellent proposal. I should have invited you sooner."
 {n}She puts the last one safely down. When she turns, you are close enough that she does not have to raise her voice.{/n}
@@ -437,7 +437,7 @@ s("the_evening_she_kept", "After the answer arrived", '"You asked me to come to 
 {n}She takes your hand and leads you past it. At the inner door she turns back and starts on your collar herself, briskly, as if she has been wanting to all evening. "I have been sitting across from you all evening pretending to care about mushrooms. Get this off."{/n}
 {n}Her own sash comes loose under your hands; the silk beneath it is warm from the stove and then gone. She pushes you down onto the bed by the shoulders, climbs astride you with her hair falling forward around both your faces, and catches your hands to set them on her hips. "There," she says, very low, and leans down to kiss you, pressing her hips to yours.{/n}
 {n}Afterward, she lies beside you with one hand resting loosely against your chest. When you move, her fingers close for a moment, then relax.{/n}
-"I had a better answer about the waiting yard," she murmurs.
+"I had a better answer about the waiting yard," {n}she murmurs.{/n}
 "Now?"
 "No. Tomorrow. I wished you to know that I was heroically withholding it."
 {n}You laugh, and she lifts her head to kiss the laughter from your mouth. When she settles again, she draws your arm around her. Nothing more needs arranging before morning.{/n}""", c('[Stay beside her as the room grows quiet.]', flags=("konomi.ordinary_expanded", "konomi.ordinary_night"))),

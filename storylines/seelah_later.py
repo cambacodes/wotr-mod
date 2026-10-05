@@ -70,9 +70,9 @@ s("door", "The latch on the inside", 3, '"Could we have an evening somewhere wit
       c('"Stay with me tonight."', "night"),
       c('[Kiss her again, then settle beside her to talk.]', "quiet", flags=("seelah.kissed",))),
     n("night", "Seelah", '''{n}She turns the latch, then comes back to you. In the lamplight you can see the old scars on her hands and the small crease of a smile she keeps failing to suppress.{/n}
-"If I knock that lamp over, we're blaming the bedpost," she says.
+"If I knock that lamp over, we're blaming the bedpost," {n}she says.{/n}
 {n}She is not clumsy. She unbuckles her sword belt and hangs it on the bedpost as if it has earned a rest, then pulls her shirt over her head in one impatient motion and stands there in the lamplight, freckled to the waist, grinning at your face.{/n}
-"I've been thinking about that look all day," she says. "Now you. Hurry up. I'm a paladin, not a saint."
+"I've been thinking about that look all day," {n}she says.{/n} "Now you. Hurry up. I'm a paladin, not a saint."
 {n}She helps, which is to say she undoes your laces faster than you do and kisses every part of you that comes free of them. The bed is too narrow for two and she does not care. She pushes you down onto it, climbs over you, knees either side of your hips, and takes your face in both hands to kiss you, slow now, as she settles her weight down onto you.{/n}
 {n}The lamp survives. Neither of you remembers to put it out until much later.{/n}
 {n}When the room is quiet, Seelah finds your hand beneath the blanket and holds it as she falls asleep, still smiling, one foot hooked over yours as if you might try to leave.{/n}''', c('[Stay through the night.]', flags=("seelah.lovers", "seelah.private_night", "seelah.kissed"))),
@@ -103,7 +103,7 @@ s("morning", "Four loaves and a bad bargain", 3, '"What have you bought this tim
 "Come with me? I think I ought to find out whether she has anywhere to keep this dry."''', c('[Go with her.]', "visit")),
     n("visit", "Seelah", '''{n}The woman accepts one loaf and declines the others. What she needs is a place to leave her bedding while she looks for work. Seelah listens, asks who has already turned her away, and promises to speak to the storekeeper about a dry corner.{/n}
 {n}On the way back, three loaves remain in the bag.{/n}
-"Go on, laugh," Seelah says. "Three spare loaves. A magnificent victory."
+"Go on, laugh," {n}Seelah says.{/n} "Three spare loaves. A magnificent victory."
 {n}Before you answer, she adds:{/n}
 "I will ask the storekeeper. I won't just arrive with her blankets and an expression of heroic determination."''',
       c('"Good thing you heard her out. You would have marched off with the wrong job."', "honest"),
@@ -210,7 +210,7 @@ s("souls", "After they opened their eyes", 5, '"You have been very quiet since t
 {n}She looks at you, and the familiar self-mocking smile returns for a moment.{/n}
 "You were warned about that last part. No refunds."''', c('"I meant it."', "end")),
     n("end", "Seelah", '''{n}You stay until she is ready to put the shield away. Before you leave, she chooses a time to speak to Arsinoe about the people who still need help.{/n}
-"Tomorrow," she says. "Tonight I'm staying here with you."''', c('[Keep the evening with her.]', flags=("seelah.aftercare",))),
+"Tomorrow," {n}she says.{/n} "Tonight I'm staying here with you."''', c('[Keep the evening with her.]', flags=("seelah.aftercare",))),
     # Her Q3 returned Jannah (ktc_DeserterJoins/Cue_0019 651ecf0c); Seelah's own word on her (Q3 epilogue line bedca9f9).
     n("jannah", "Seelah", '''{n}The cloth stops moving again, but this time her mouth softens.{/n}
 "Jannah. She came back to us with a fresh scar and nothing but her word, and then she kept it. Elan told her to stay and watch the door, and she stayed and watched the door, and she hated every moment of it. I could see her hating it."
@@ -276,7 +276,7 @@ s("ordinary", "An evening with nothing to prove", 5, '"I came to see you. No eme
 {n}She pauses over the brush.{/n}
 "Actually, you may be exactly the person to complain to about that."''', c('[Listen to the complaints and offer a few of your own.]', "end")),
     n("quiet", "Seelah", '''{n}She takes the brush and settles with a long sigh. For a while the only sound is the bristles catching softly in her hair.{/n}
-"This is nice," she says eventually.
+"This is nice," {n}she says eventually.{/n}
 {n}A little later she adds:{/n}
 "Look at me. Given a perfectly good silence, and I have to put my boot in it."''', c('[Let the quiet last.]', "end")),
     n("end", "Seelah", '''{n}By the time you leave, she has put the brush down and left the clothes where they are. She looks rested enough to notice that you are reluctant to go.{/n}
@@ -317,7 +317,7 @@ s("parting", "A conversation without armor", 3, '"Seelah, there is something I h
 "I'll miss you. Don't come round tomorrow expecting me to laugh about it. Give me a few days before we try being friends."
 {n}She looks away, then back at you.{/n}
 "But I'm glad you said it to me. I would have hated guessing from the way you stopped looking for me."''', c('[Part honestly.]', flags=("seelah.closed", "seelah.parted",))),
-    n("stay", "Seelah", '''"Then let's choose a time now. Out loud, with a day in it." She counts on her fingers. "I've had three suppers go cold waiting for you this month, and I told everyone who asked that you were busy saving the world. You were. I still ate them alone."
+    n("stay", "Seelah", '''"Then let's choose a time now. Out loud, with a day in it." {n}She counts on her fingers.{/n} "I've had three suppers go cold waiting for you this month, and I told everyone who asked that you were busy saving the world. You were. I still ate them alone."
 {n}She waits while you work out when you can both be free.{/n}''', c('[Stay her lover and arrange your next evening together.]', abort=True)),
 ], requires=("seelah.lovers",), optional=True)
 

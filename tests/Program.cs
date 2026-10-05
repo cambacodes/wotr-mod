@@ -259,7 +259,7 @@ internal static class Program
     {
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
-        story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
+        story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
         // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
         if (args.Contains("--eng7-l06"))
         {
@@ -289,6 +289,8 @@ internal static class Program
             KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
             NativeVariantCoverageInventoryTests.Run(story, Check);
             TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
+            EngineF6cNativeTests.Run(story, Check); // eng7-f6c: append comprehensive cases after legacy native negatives
+            NativeContradictionInventoryTests.WriteEvidence(); // eng7-f6c
             TirabadeNativeSlideTests.Run(story, Check);
             LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
             Console.WriteLine($"PASS: {checks} eng7-l03 native inventory and selection assertions.");
@@ -561,6 +563,9 @@ internal static class Program
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
+        // BEGIN eng7-f5: native slide/state inventory (no game launch).
+        NativeCuePolicyInventoryTests.Run(story, Check);
+        // END eng7-f5
         ContactDisambiguationTests.Run(Check);
         // eng7-l05
         ParticipantInventoryTests.Run(story, Check);
@@ -575,7 +580,11 @@ internal static class Program
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
             NativeContradictionInventoryTests.Run(story, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
+        { // eng7-f6c
             NativeVariantCoverageInventoryTests.Run(story, Check);
+            EngineF6cNativeTests.Run(story, Check);
+            NativeContradictionInventoryTests.WriteEvidence();
+        } // eng7-f6c
         // eng7-l03 end
         TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
         // eng7-f1

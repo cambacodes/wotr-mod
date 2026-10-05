@@ -19,6 +19,9 @@ internal static class IrabethDepartureCampaignTests
         // Native living-departure observation is an explicit fixture, not a played restoration.
         initial.Flags.UnionWith(new[] { "trickster", "irabeth_gone", "irabeth.return_correspondence_available",
             "seelah.committed", "arueshalae.committed" });
+        // eng7-f6c: an actual quartermaster contact is required for the outgoing inquiry.
+        check(!Rules.Available(story, request, initial), "Request opens without physical contact.");
+        initial.AvailableContacts.Add(request.ContactUnit!);
         check(Rules.Available(story, request, initial), "Living departed correspondence cannot start.");
         var requested = Walk(request, initial);
         foreach (var result in requested)
@@ -56,9 +59,9 @@ internal static class IrabethDepartureCampaignTests
                         "Postponed reply invents a decision.");
                     continue;
                 }
-                // eng7-l08: both evidence paths and both reply decisions retain the same tier-A overrun.
+                // eng7-f6c: both evidence paths and decisions now spend exactly one delivery.
                 Program.Eng7L08Allocation(story, check, "departure/" + (answer.Has("irabeth.return_meeting_declined") ? "declined" : "accepted"),
-                    "Irabeth", 5, answer, new[] { request.Id, reply.Id }, true);
+                    "Irabeth", 5, answer, new[] { request.Id, reply.Id }, false);
                 // end eng7-l08
                 if (answer.Has("irabeth.return_meeting_declined"))
                 {

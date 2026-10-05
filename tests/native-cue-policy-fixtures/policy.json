@@ -1,0 +1,2282 @@
+{
+  "Schema": 1,
+  "Source": "blueprints.zip; authored test metadata only",
+  "Specs": {
+    "78ae1bdc3b0824b4ca2ed618782f1faa": {
+      "Page": "e83fff8e997db8e439bf12e09225696a",
+      "Sequence": "fec3b6f28610c8a48a239f148ed3ed60",
+      "Key": "411ef2f1-5168-455f-99b0-ca33960678c5",
+      "Replacement": "arueshalae.treatment.epilogue.native_dreams",
+      "When": [
+        [
+          "arueshalae.committed",
+          "trickster.ever",
+          "trickster.commander_back"
+        ]
+      ]
+    },
+    "ccd140dbf2603734aa323261c2445bec": {
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Sequence": "f8d7f50e3bb88c143834d234c0b24474",
+      "Key": "cc716238-3702-4913-977d-6189665672b7",
+      "Replacement": "anevia.trickster.epilogue.native_tirabade_left_committed",
+      "When": [
+        [
+          "trickster.ever",
+          "anevia.trickster.returned",
+          "anevia.committed"
+        ]
+      ],
+      "KeepNativeImage": true,
+      "Variants": [
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_left_bereavement",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "sacrifice",
+              "!trickster.commander_back"
+            ]
+          ],
+          "KeepNativeImage": true
+        }
+      ]
+    },
+    "3a3e561c6b05a284d93eb3bff7b712a6": {
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Sequence": "f8d7f50e3bb88c143834d234c0b24474",
+      "Key": "4c278ba4-5217-4fae-afec-47c6f6597e00",
+      "Replacement": "anevia.trickster.epilogue.native_tirabade_together",
+      "When": [
+        [
+          "trickster.ever",
+          "anevia.trickster.returned",
+          "anevia.committed",
+          "irabeth.trickster.returned"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": [
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_back",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow_committed",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "anevia.committed",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_widow",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "irabeth.trickster.epilogue.native_tirabade_south",
+          "When": [
+            [
+              "trickster.ever",
+              "irabeth.trickster.returned",
+              "!anevia.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_survived_pair",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.returned"
+            ],
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.raised_on_record",
+              "!irabeth.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "irabeth.trickster.epilogue.native_tirabade_survived_away",
+          "When": [
+            [
+              "trickster.ever",
+              "irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.returned",
+              "!anevia.trickster.returned"
+            ],
+            [
+              "trickster.ever",
+              "irabeth.trickster.raised_on_record",
+              "!irabeth.trickster.returned",
+              "!anevia.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_bereavement_pair",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.returned",
+              "sacrifice",
+              "!trickster.commander_back"
+            ],
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.cost.dug_out",
+              "sacrifice",
+              "!trickster.commander_back"
+            ],
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "irabeth.trickster.raised_on_record",
+              "sacrifice",
+              "!trickster.commander_back"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "anevia.trickster.epilogue.native_tirabade_bereavement_widow",
+          "When": [
+            [
+              "trickster.ever",
+              "anevia.trickster.returned",
+              "sacrifice",
+              "!trickster.commander_back",
+              "!irabeth.trickster.returned",
+              "!irabeth.trickster.cost.dug_out",
+              "!irabeth.trickster.raised_on_record"
+            ]
+          ],
+          "KeepNativeImage": true
+        },
+        {
+          "Replacement": "irabeth.trickster.epilogue.native_tirabade_survived_bereavement",
+          "When": [
+            [
+              "trickster.ever",
+              "irabeth.trickster.cost.dug_out",
+              "sacrifice",
+              "!trickster.commander_back",
+              "!irabeth.trickster.returned",
+              "!anevia.trickster.returned"
+            ],
+            [
+              "trickster.ever",
+              "irabeth.trickster.raised_on_record",
+              "sacrifice",
+              "!trickster.commander_back",
+              "!irabeth.trickster.returned",
+              "!anevia.trickster.returned"
+            ]
+          ],
+          "KeepNativeImage": true
+        }
+      ]
+    },
+    "825786e8c5db4511ae30950bb286f0e9": {
+      "Parent": "5b567bdd747e497cb9f6984b1ca1dfc8",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Key": "cd04e9ab-c34b-49ce-b0a7-25f064571101",
+      "Replacement": "areelu.trickster.afterlogue.spared",
+      "When": [
+        [
+          "trickster.ever",
+          "areelu.trickster.wager_struck",
+          "areelu.trickster.wager_on_screen",
+          "areelu.trickster.survives",
+          "!areelu.trickster.stake_only",
+          "!areelu.closed",
+          "!areelu.trickster.commander_burned",
+          "!areelu.incinerated",
+          "!areelu.sacrifice_wound",
+          "!areelu.sacrifice_before",
+          "trickster.cheated_death",
+          "!areelu.sacrifice_trickster",
+          "!areelu.dead_fight",
+          "areelu.committed"
+        ],
+        [
+          "trickster.ever",
+          "areelu.trickster.wager_struck",
+          "areelu.trickster.wager_on_screen",
+          "areelu.trickster.survives",
+          "!areelu.trickster.stake_only",
+          "!areelu.closed",
+          "!areelu.trickster.commander_burned",
+          "!areelu.incinerated",
+          "!areelu.sacrifice_wound",
+          "!areelu.sacrifice_before",
+          "trickster.cheated_death",
+          "!areelu.sacrifice_trickster",
+          "!areelu.dead_fight",
+          "areelu.trickster.late_committed",
+          "!areelu.trickster.declined"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": []
+    },
+    "1b53c189b767412f921b8294b980a51c": {
+      "Parent": "5b567bdd747e497cb9f6984b1ca1dfc8",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Key": "102a4671-6e9d-45b6-a801-32d1706c9698",
+      "Replacement": "areelu.trickster.afterlogue.mortal",
+      "When": [
+        [
+          "trickster.ever",
+          "areelu.trickster.wager_struck",
+          "areelu.trickster.wager_on_screen",
+          "areelu.trickster.survives",
+          "!areelu.trickster.stake_only",
+          "!areelu.closed",
+          "!areelu.trickster.commander_burned",
+          "!areelu.incinerated",
+          "!areelu.sacrifice_wound",
+          "!areelu.sacrifice_before",
+          "areelu.trickster.rewritten",
+          "areelu.committed"
+        ],
+        [
+          "trickster.ever",
+          "areelu.trickster.wager_struck",
+          "areelu.trickster.wager_on_screen",
+          "areelu.trickster.survives",
+          "!areelu.trickster.stake_only",
+          "!areelu.closed",
+          "!areelu.trickster.commander_burned",
+          "!areelu.incinerated",
+          "!areelu.sacrifice_wound",
+          "!areelu.sacrifice_before",
+          "areelu.trickster.rewritten",
+          "areelu.trickster.late_committed",
+          "!areelu.trickster.declined"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": []
+    },
+    "164c14743ee768f409a04f93a040e678": {
+      "Parent": "2330b54637738fe4fb92b6cd80eb68f7",
+      "Dialog": "63f11843f40edd54795fcc0af3f6a20e",
+      "Key": "8e520736-4eaa-4077-aea9-6e4b9a05e854",
+      "Replacement": "devarra.trickster.native.eggs_flown",
+      "When": [
+        [
+          "trickster.ever",
+          "devarra.trickster.flight.pact",
+          "devarra.trickster.flown"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": []
+    },
+    "81109ea8fb20dbc478cf67116740f4a1": {
+      "Parent": "27bc5f6c94108a446b8273800f7da48b",
+      "Dialog": "27bc5f6c94108a446b8273800f7da48b",
+      "Key": "b261aab4-14ff-41e7-bd72-21aeeab7df44",
+      "Replacement": "kiana.native.aftermath_separated",
+      "When": [
+        [
+          "trickster.now",
+          "kiana.separated"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": [
+        {
+          "Replacement": "kiana.native.aftermath_home",
+          "When": [
+            [
+              "trickster.now",
+              "kiana.trickster.guests_ransomed"
+            ],
+            [
+              "trickster.now",
+              "kiana.trickster.guests_bought_back"
+            ]
+          ],
+          "KeepNativeImage": false
+        }
+      ]
+    },
+    "a819e8c85ef23324bb0d8117bb9d7df3": {
+      "Parent": "245ec8482e1f37b4a8702e54430c5aa7",
+      "Dialog": "27bc5f6c94108a446b8273800f7da48b",
+      "Key": "1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+      "Replacement": "kiana.native.aftermath_6_separated",
+      "When": [
+        [
+          "trickster.now",
+          "kiana.separated"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": [
+        {
+          "Replacement": "kiana.native.aftermath_6_home",
+          "When": [
+            [
+              "trickster.now",
+              "kiana.trickster.guests_ransomed"
+            ],
+            [
+              "trickster.now",
+              "kiana.trickster.guests_bought_back"
+            ]
+          ],
+          "KeepNativeImage": false
+        }
+      ]
+    },
+    "df45181e1968f26459f9e8bc2b995a34": {
+      "Parent": "245ec8482e1f37b4a8702e54430c5aa7",
+      "Dialog": "27bc5f6c94108a446b8273800f7da48b",
+      "Key": "0c8edca3-4bab-4535-a37b-ea3d3186213b",
+      "Replacement": "kiana.native.aftermath_7_separated",
+      "When": [
+        [
+          "trickster.now",
+          "kiana.separated"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": [
+        {
+          "Replacement": "kiana.native.aftermath_7_home",
+          "When": [
+            [
+              "trickster.now",
+              "kiana.trickster.guests_ransomed"
+            ],
+            [
+              "trickster.now",
+              "kiana.trickster.guests_bought_back"
+            ]
+          ],
+          "KeepNativeImage": false
+        }
+      ]
+    },
+    "f5906acda82efd5468cb72aff2e68f7e": {
+      "Page": "6c50623b48ba8204686e2e426ac00425",
+      "Sequence": "bb9d36fd37d74bf4792931d6052a7d44",
+      "Key": "e61f5ab8-ec4c-439f-b035-802558deebe0",
+      "Replacement": "galfrey.native.queen_reclaimed",
+      "When": [
+        [
+          "trickster.ever",
+          "galfrey.trickster.returned",
+          "galfrey.trickster.crown_reclaimed"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": []
+    },
+    "becde70692b74ab4eba1d0cf82d2958f": {
+      "Page": "d9cc48a31f994c64f88c5dec322805a4",
+      "Sequence": "bb9d36fd37d74bf4792931d6052a7d44",
+      "Key": "e61f5ab8-ec4c-439f-b035-802558deebe0",
+      "Replacement": "galfrey.native.queen_reclaimed_twin",
+      "When": [
+        [
+          "trickster.ever",
+          "galfrey.trickster.returned",
+          "galfrey.trickster.crown_reclaimed"
+        ]
+      ],
+      "KeepNativeImage": false,
+      "Variants": []
+    }
+  },
+  "Assets": {
+    "164c14743ee768f409a04f93a040e678": {
+      "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0007.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "2330b54637738fe4fb92b6cd80eb68f7",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "8e520736-4eaa-4077-aea9-6e4b9a05e854",
+          "m_OwnerString": "164c14743ee768f409a04f93a040e678",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/DragonEggs/Cue_0007_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": true,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [
+          "!bp_b265afc1afe5a4241b1d5d42a4148e75"
+        ],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "1b53c189b767412f921b8294b980a51c": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Cue_0005.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "Мертва\n\nАрилу",
+        "ParentAsset": "5b567bdd747e497cb9f6984b1ca1dfc8",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "102a4671-6e9d-45b6-a801-32d1706c9698",
+          "m_OwnerString": "1b53c189b767412f921b8294b980a51c",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints\\World\\Dialogs\\Epilogues_afterlogues\\Cue_0005_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_92f29ae2c49edb74f8943d30ea788dd0",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": false,
+        "Animation": "None",
+        "m_Listener": "!bp_db064cafc234498ca83a702c472c1a7b",
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [
+            "!bp_f5e9e257be4241108316b2c0da0dff4b"
+          ],
+          "Strategy": "First"
+        }
+      }
+    },
+    "2330b54637738fe4fb92b6cd80eb68f7": {
+      "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/Answer_0004.jbp",
+      "type": "BlueprintAnswer",
+      "data": {
+        "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "b265afc1afe5a4241b1d5d42a4148e75",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "Text": {
+          "m_Key": "a6b4ba48-e93d-4232-8cae-8c3f24da5e3a",
+          "m_OwnerString": "2330b54637738fe4fb92b6cd80eb68f7",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/c3/IvorySanctum/DragonEggs/Answer_0004_Text.json",
+          "Shared": null
+        },
+        "NextCue": {
+          "Cues": [
+            "!bp_164c14743ee768f409a04f93a040e678"
+          ],
+          "Strategy": "First"
+        },
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "ShowCheck": {
+          "Type": "Unknown",
+          "DC": 0
+        },
+        "Experience": "NoExperience",
+        "DebugMode": false,
+        "CharacterSelection": {
+          "SelectionType": "Clear",
+          "ComparisonStats": []
+        },
+        "ShowConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "SelectConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "RequireValidCue": false,
+        "AddToHistory": true,
+        "OnSelect": {
+          "Actions": []
+        },
+        "FakeChecks": [],
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      }
+    },
+    "245ec8482e1f37b4a8702e54430c5aa7": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0005.jbp",
+      "type": "BlueprintAnswer",
+      "data": {
+        "$type": "df78945bb9f434e40b897758499cb714, BlueprintAnswer",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "a237e3aaab7c937468829bba3578770d",
+        "MythicRequirement": "None",
+        "AlignmentRequirement": "None",
+        "Text": {
+          "m_Key": "72decf4a-87f2-4a51-ab2f-b76cdd20b051",
+          "m_OwnerString": "245ec8482e1f37b4a8702e54430c5aa7",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Answer_0005_Text.json",
+          "Shared": null
+        },
+        "NextCue": {
+          "Cues": [
+            "!bp_a819e8c85ef23324bb0d8117bb9d7df3",
+            "!bp_df45181e1968f26459f9e8bc2b995a34"
+          ],
+          "Strategy": "First"
+        },
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "ShowCheck": {
+          "Type": "Unknown",
+          "DC": 0
+        },
+        "Experience": "NoExperience",
+        "DebugMode": false,
+        "CharacterSelection": {
+          "SelectionType": "Clear",
+          "ComparisonStats": []
+        },
+        "ShowConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "SelectConditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "RequireValidCue": false,
+        "AddToHistory": true,
+        "OnSelect": {
+          "Actions": []
+        },
+        "FakeChecks": [],
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        }
+      }
+    },
+    "27bc5f6c94108a446b8273800f7da48b": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/ElanKianaAftermath_SeelahQ3_diaog.jbp",
+      "type": "BlueprintDialog",
+      "data": {
+        "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "FirstCue": {
+          "Cues": [
+            "!bp_81109ea8fb20dbc478cf67116740f4a1"
+          ],
+          "Strategy": "First"
+        },
+        "StartPosition": null,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "StartActions": {
+          "Actions": []
+        },
+        "FinishActions": {
+          "Actions": [
+            {
+              "$type": "4a2be3982ea87e44f8d704b9a6330f57, UnlockFlag",
+              "name": "$UnlockFlag$50d42513-ab5c-4c89-8f6a-bdc7edfaaaef",
+              "m_flag": "!bp_97b3254015284346ba32f1749cfae0b0",
+              "flagValue": 0
+            }
+          ]
+        },
+        "ReplaceActions": {
+          "Actions": []
+        },
+        "TurnPlayer": true,
+        "TurnFirstSpeaker": true,
+        "IsLockCameraRotationButtons": false,
+        "Type": "Common",
+        "m_OverrideAreaCR": null
+      }
+    },
+    "3a3e561c6b05a284d93eb3bff7b712a6": {
+      "path": "World/Dialogs/Epilogues/Cue_0311.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "Ира умерла, Аня ливнула на коронации (и не умерла там - не было красной свадьбы)",
+        "ParentAsset": "ae1f824fe248d9f4aac7d39ec2e12140",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$f2aab634-18a9-4d80-bde1-3ceffed6fb39",
+              "Not": false,
+              "m_Etude": "!bp_b14e13f9359585e498fcd81ab95d4d7e",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$8fba03a3-4489-41d1-808d-ea574c9e033e",
+              "Not": false,
+              "m_Etude": "!bp_09f46662bcd14a03a0874267e16d6e6f",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "4c278ba4-5217-4fae-afec-47c6f6597e00",
+          "m_OwnerString": "3a3e561c6b05a284d93eb3bff7b712a6",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Epilogues/Cue_0311_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": [
+            {
+              "$type": "cec8704252375f94b888d4206a757209, ChangeBookEventImage",
+              "name": "$ChangeBookEventImage$a4c43162-2887-457a-8d50-29509f3f4789",
+              "m_Image": {
+                "AssetId": "f96ad5fa9c59d7549adff4c90f0703ab"
+              }
+            }
+          ]
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "57e18f5158904030a84a772fb361ceb4": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Epilogues_afterlogues_dialogue.jbp",
+      "type": "BlueprintDialog",
+      "data": {
+        "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "В партии только игрок!!! Чеки кидаются им лично, больше никого нет.",
+        "FirstCue": {
+          "Cues": [
+            "!bp_5b567bdd747e497cb9f6984b1ca1dfc8"
+          ],
+          "Strategy": "First"
+        },
+        "StartPosition": {
+          "$type": "ee272e7d88aff6648b4c1b052228fdc7, LocatorPosition",
+          "name": "$LocatorPosition$66873ba5-5bea-4b7e-a8f7-6041b0aca1b7",
+          "Locator": {
+            "EntityNameInEditor": "AreeluPos",
+            "_entity_id": "b39d79e3-9b10-406a-862a-604819eac128",
+            "SceneAssetGuid": "c1ef2692e52485240a118bbe8dcb126c"
+          },
+          "Offset": "0|0|0"
+        },
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "StartActions": {
+          "Actions": [
+            {
+              "$type": "60ce9f50487c58446aad79d52f8e5e54, PlayCustomMusic",
+              "name": "$PlayCustomMusic$bb457cca-db6b-43fc-addc-8b17fa8da8c7",
+              "MusicEventStart": "MUS_MysteryTheme_Play",
+              "MusicEventStop": "MUS_MysteryTheme_Stop_Slow"
+            }
+          ]
+        },
+        "FinishActions": {
+          "Actions": [
+            {
+              "$type": "66dfc08af22a32e4d8d89b367175aee3, RaiseDead",
+              "name": "$RaiseDead$e23993c3-279b-458e-b11a-0de52fb8d4bf",
+              "m_companion": null,
+              "riseAllCompanions": true
+            },
+            {
+              "$type": "09697d9710264407a9c32060cfe8a2c7, CompleteEtude",
+              "name": "$CompleteEtude$5cb725fa-d859-44ea-98db-416a36fc88e4",
+              "Etude": "!bp_ce50ca45416742f09ac11ecb85fe6212",
+              "EtudeEvaluator": null,
+              "Evaluate": false
+            },
+            {
+              "$type": "c874c271d8d54eb692490a97e6f0a19d, GameOver",
+              "name": "$GameOver$6d5206a7-550c-4157-8409-60f95ecfa2a7",
+              "Reason": "Won"
+            },
+            {
+              "$type": "0e571e9f07a314048afedff605fa53ce, LockFlag",
+              "name": "$LockFlag$4c04ecdf-c9a4-44b8-a10f-f72209f2de02",
+              "m_Flag": "!bp_bf59dc2bee2e4c809746ee326ba93214"
+            },
+            {
+              "$type": "fc8c0dda384d425087138a6644060968, StopCustomMusic",
+              "name": "$StopCustomMusic$01bff343-1bd7-4a1e-9da7-a7c7ffa5a34f"
+            },
+            {
+              "$type": "6ab8dd2cc3ba43e8b76882f981bf2b99, StartEtude",
+              "name": "$StartEtude$f27be1ed-41ea-4ee8-a4cc-200e264e1da5",
+              "Etude": "!bp_e514f072ed6f4765bed0cb5d12be5457",
+              "EtudeEvaluator": null,
+              "Evaluate": false
+            },
+            {
+              "$type": "12f52f92a7d3efe47b69ba8b41d4e47d, Play2DSound",
+              "name": "$Play2DSound$300282ec-3963-49ce-beef-f748fceed4c2",
+              "SoundName": "CUT_TheEnd_Scribble",
+              "SetSex": false,
+              "SetRace": false
+            },
+            {
+              "$type": "12f52f92a7d3efe47b69ba8b41d4e47d, Play2DSound",
+              "name": "$Play2DSound$afd84abd-d797-4e42-80ad-3f8cab2b5785",
+              "SoundName": "CUT_TheEnd_KillAmbSlow",
+              "SetSex": false,
+              "SetRace": false
+            }
+          ]
+        },
+        "ReplaceActions": {
+          "Actions": []
+        },
+        "TurnPlayer": false,
+        "TurnFirstSpeaker": false,
+        "IsLockCameraRotationButtons": false,
+        "Type": "Common",
+        "m_OverrideAreaCR": null
+      }
+    },
+    "5b567bdd747e497cb9f6984b1ca1dfc8": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Cue_0001.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "Арилу",
+        "ParentAsset": "57e18f5158904030a84a772fb361ceb4",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "7e3fd30b-9eed-4980-8fd9-1af519d90b99",
+          "m_OwnerString": "5b567bdd747e497cb9f6984b1ca1dfc8",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints\\World\\Dialogs\\Epilogues_afterlogues\\Cue_0001_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_92f29ae2c49edb74f8943d30ea788dd0",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": false,
+        "Animation": "None",
+        "m_Listener": "!bp_db064cafc234498ca83a702c472c1a7b",
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [
+            "!bp_0fd42edf36604d5fa9563711dc124aca",
+            "!bp_5afdbd2e61264e8fa227fd153bf21efb",
+            "!bp_aa857d545e124ce9a5148221e07194b9",
+            "!bp_2a4aab21bd184c91a39cdde39b3f3b88",
+            "!bp_825786e8c5db4511ae30950bb286f0e9",
+            "!bp_172325d4df134fdd98e831b93e6d857c",
+            "!bp_1b53c189b767412f921b8294b980a51c"
+          ],
+          "Strategy": "First"
+        }
+      }
+    },
+    "63f11843f40edd54795fcc0af3f6a20e": {
+      "path": "World/Dialogs/c3/IvorySanctum/DragonEggs/DragonEggs_Dialogue.jbp",
+      "type": "BlueprintDialog",
+      "data": {
+        "$type": "c8ff73feae580b142a9f43e0c61d7f32, BlueprintDialog",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "FirstCue": {
+          "Cues": [
+            "!bp_b2bf1f68ffaafd147a464d74dcfc42b1"
+          ],
+          "Strategy": "First"
+        },
+        "StartPosition": null,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+              "name": "$FlagUnlocked$d28ea6ef-ef23-4082-ae2d-00ebc2d6d094",
+              "Not": false,
+              "m_ConditionFlag": "!bp_b88c56313ded5e0409bbd04334add635",
+              "ExceptSpecifiedValues": false,
+              "SpecifiedValues": []
+            }
+          ]
+        },
+        "StartActions": {
+          "Actions": []
+        },
+        "FinishActions": {
+          "Actions": []
+        },
+        "ReplaceActions": {
+          "Actions": []
+        },
+        "TurnPlayer": true,
+        "TurnFirstSpeaker": true,
+        "IsLockCameraRotationButtons": false,
+        "Type": "Common",
+        "m_OverrideAreaCR": null
+      }
+    },
+    "6c50623b48ba8204686e2e426ac00425": {
+      "path": "World/Dialogs/Epilogues/BookPage_0255.jbp",
+      "type": "BlueprintBookPage",
+      "data": {
+        "$type": "b6d078a4ae218fe4a82f3fb5707b7e1f, BlueprintBookPage",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "королева жива или мертва\nпортрет королевы живой",
+        "ParentAsset": "bb9d36fd37d74bf4792931d6052a7d44",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$084cf0d3-7e97-4050-9d42-3e8947493b38",
+              "Not": true,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$871a6318-4e13-4211-a5db-8943da4e50b6",
+                    "Not": false,
+                    "m_Etude": "!bp_f69401a70b5f5db46b19572568a2ec50",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$e748b183-c3fc-488b-afa1-12b7591920fb",
+                    "Not": false,
+                    "m_Etude": "!bp_f69401a70b5f5db46b19572568a2ec50",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": false,
+                    "CompletionInProgress": false,
+                    "Completed": true
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$4880d65f-29eb-4fc7-bb93-35fcfbc69a1d",
+              "Not": true,
+              "m_Etude": "!bp_0ab81986d8f7c484a8fede0d2188125c",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Cues": [
+          "!bp_8624075fc3b022d41bd8c18ae0b71eb0",
+          "!bp_dd519146e0e7f6f43a68b1d9af343b0b",
+          "!bp_df7c06984068dde42b998183f8aa87a2",
+          "!bp_f5906acda82efd5468cb72aff2e68f7e",
+          "!bp_a8764b751e8fb1240b998546ec6ed292",
+          "!bp_72401afde04343f4c898efba4b4d1880"
+        ],
+        "Answers": [
+          "!bp_7ba54cf112ab3924c960f49c80f4a650"
+        ],
+        "OnShow": {
+          "Actions": []
+        },
+        "ImageLink": {
+          "AssetId": "b8160f03d066dbf46a16466eecb277d5"
+        },
+        "ForeImageLink": {
+          "AssetId": "75a5abe6d8621444b858f3be1f1f0bb1"
+        },
+        "Title": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    },
+    "78ae1bdc3b0824b4ca2ed618782f1faa": {
+      "path": "World/Dialogs/Epilogues/Cue_0461.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "любой конец романса, игрок умер",
+        "ParentAsset": "e83fff8e997db8e439bf12e09225696a",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$b05c16ca-be2b-431a-939d-aa909f52b7e8",
+              "Not": false,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$91842b7a-9042-464f-830f-c0ebe4b78301",
+              "Not": false,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$561b2b3e-460e-47e9-b045-fa4cf0a794d8",
+                    "Not": false,
+                    "m_Etude": "!bp_6585b428527be344d8224983ee0ba181",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$2f0f2e4b-f775-402a-9cef-5be6c1a033e1",
+                    "Not": false,
+                    "m_Etude": "!bp_e81129bb979b3dd47bf9459ee03663d8",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "411ef2f1-5168-455f-99b0-ca33960678c5",
+          "m_OwnerString": "78ae1bdc3b0824b4ca2ed618782f1faa",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Epilogues/Cue_0461_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "81109ea8fb20dbc478cf67116740f4a1": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "27bc5f6c94108a446b8273800f7da48b",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "b261aab4-14ff-41e7-bd72-21aeeab7df44",
+          "m_OwnerString": "81109ea8fb20dbc478cf67116740f4a1",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0001_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": true,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [
+            "!bp_3f8b3b4fbd6d18d44b91a34c88e2208a"
+          ],
+          "Strategy": "First"
+        }
+      }
+    },
+    "825786e8c5db4511ae30950bb286f0e9": {
+      "path": "World/Dialogs/Epilogues_afterlogues/Cue_0004.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "Жива, необдраконена\n\nАрилу",
+        "ParentAsset": "5b567bdd747e497cb9f6984b1ca1dfc8",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$5d85a984-da3e-462e-aee6-54d010890c0b",
+              "Not": true,
+              "m_Etude": "!bp_127e8a018a0840b080c276b4704e58a2",
+              "NotStarted": false,
+              "Started": true,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$e63aa88d-0581-4a56-a744-a9559f5ea29e",
+              "Not": true,
+              "m_Etude": "!bp_936af39436c74953b43a4165bfbcc9f9",
+              "NotStarted": false,
+              "Started": true,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "cd04e9ab-c34b-49ce-b0a7-25f064571101",
+          "m_OwnerString": "825786e8c5db4511ae30950bb286f0e9",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints\\World\\Dialogs\\Epilogues_afterlogues\\Cue_0004_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_92f29ae2c49edb74f8943d30ea788dd0",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": false,
+        "Animation": "None",
+        "m_Listener": "!bp_db064cafc234498ca83a702c472c1a7b",
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [
+            "!bp_f5e9e257be4241108316b2c0da0dff4b"
+          ],
+          "Strategy": "First"
+        }
+      }
+    },
+    "a819e8c85ef23324bb0d8117bb9d7df3": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "если душу Кианы не похищали",
+        "ParentAsset": "245ec8482e1f37b4a8702e54430c5aa7",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$5e18b618-8ff9-4412-970a-66c82c32d926",
+              "Not": false,
+              "m_Etude": "!bp_be924a4c2bfff36459cebb87b84b8fb5",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "1aef0e95-dc1e-49fa-9852-3fba13bd5e20",
+          "m_OwnerString": "a819e8c85ef23324bb0d8117bb9d7df3",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0006_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_180b0eaa5dce387458d2ebf0ee943985",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [
+            "!bp_716683517058beb4ead374bd16b22ff0"
+          ],
+          "Strategy": "First"
+        }
+      }
+    },
+    "ae1f824fe248d9f4aac7d39ec2e12140": {
+      "path": "World/Dialogs/Epilogues/BookPage_0307.jbp",
+      "type": "BlueprintBookPage",
+      "data": {
+        "$type": "b6d078a4ae218fe4a82f3fb5707b7e1f, BlueprintBookPage",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "аня и ира\nигрок НЕ оставил язву открытой (стандартный финал)\n\nдва портрета",
+        "ParentAsset": "f8d7f50e3bb88c143834d234c0b24474",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$3a62f769-2dd2-421d-b02a-37799764e46e",
+              "Not": true,
+              "m_Etude": "!bp_9955b661dd7640b19986e453293a3e0a",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$7a464493-5d3d-4ea1-9622-2c11e0898b10",
+              "Not": false,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$e73dec00-682e-4c54-a635-3e57dafd1a97",
+                    "Not": false,
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$cf444647-13ef-4e6c-a58f-474e9d8c531f",
+                          "Not": false,
+                          "m_Etude": "!bp_8b0924efc23df3540b4d8b5fbffd522f",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$a51a7d54-90e1-43ec-9e85-6bf755f09736",
+                          "Not": true,
+                          "m_Etude": "!bp_b14e13f9359585e498fcd81ab95d4d7e",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$84016bed-544f-4e2d-8e95-eb936a8864a5",
+                          "Not": true,
+                          "m_Etude": "!bp_395aad049186445f9f474d0a769ec8ff",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$09856073-397c-48b2-8c13-d891ca121a46",
+                          "Not": true,
+                          "m_Etude": "!bp_ba365d0ae03c414a8f6f906837a4fe91",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$d6403059-23c4-47fc-aaf3-1aa4a79cd12d",
+                          "Not": true,
+                          "m_Etude": "!bp_09f46662bcd14a03a0874267e16d6e6f",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+                          "name": "$FlagUnlocked$8dbfebb5-4210-432f-b7de-e2c4c42c42cc",
+                          "Not": true,
+                          "m_ConditionFlag": "!bp_e3cab9ec23524fe8a1f77168485988dd",
+                          "ExceptSpecifiedValues": false,
+                          "SpecifiedValues": []
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$2afc5e4f-1509-47f2-a642-0f6291cac87d",
+                    "Not": false,
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$ec691197-7982-41c5-a209-66196634abf7",
+                          "Not": false,
+                          "m_Etude": "!bp_7a038ff7b70e91844954407b18e8feb6",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$f21c4739-6a67-4293-bfb1-f32233795008",
+                          "Not": true,
+                          "m_Etude": "!bp_b14e13f9359585e498fcd81ab95d4d7e",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$d23b1a90-a4f1-45d5-9df2-2a516535d40d",
+                          "Not": true,
+                          "m_Etude": "!bp_395aad049186445f9f474d0a769ec8ff",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$6aa8b841-ce10-43d2-864c-63684873bb02",
+                          "Not": true,
+                          "m_Etude": "!bp_ba365d0ae03c414a8f6f906837a4fe91",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$fb0677ed-fcb2-4678-8935-4a356931b2ee",
+                          "Not": true,
+                          "m_Etude": "!bp_09f46662bcd14a03a0874267e16d6e6f",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+                          "name": "$FlagUnlocked$d0d5f414-9679-4199-8ecb-31f404ca9b99",
+                          "Not": true,
+                          "m_ConditionFlag": "!bp_e3cab9ec23524fe8a1f77168485988dd",
+                          "ExceptSpecifiedValues": false,
+                          "SpecifiedValues": []
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$e4cd8db0-c35b-49a7-85e1-c618556c6329",
+                    "Not": false,
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$701f7148-fb49-4616-8589-bc84f49d4a53",
+                          "Not": false,
+                          "m_Etude": "!bp_395aad049186445f9f474d0a769ec8ff",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$11736c75-e077-4553-8b2d-3162f619720a",
+                          "Not": false,
+                          "m_Etude": "!bp_09f46662bcd14a03a0874267e16d6e6f",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+                          "name": "$FlagUnlocked$26db691e-7e52-49f2-9e30-cb436ce5a466",
+                          "Not": true,
+                          "m_ConditionFlag": "!bp_e3cab9ec23524fe8a1f77168485988dd",
+                          "ExceptSpecifiedValues": false,
+                          "SpecifiedValues": []
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$46b653ef-5730-420c-9829-6e165634831c",
+                    "Not": false,
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$55446eff-936a-435a-b016-efe4b35d4eac",
+                          "Not": false,
+                          "m_Etude": "!bp_b14e13f9359585e498fcd81ab95d4d7e",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$93dca12b-040c-4e15-8f5c-9c81a0f658cd",
+                          "Not": false,
+                          "m_Etude": "!bp_09f46662bcd14a03a0874267e16d6e6f",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "fcc336266b98019488d20a50d120e05c, FlagUnlocked",
+                          "name": "$FlagUnlocked$3b12a79c-317f-4062-ab49-cf1cd647269a",
+                          "Not": true,
+                          "m_ConditionFlag": "!bp_e3cab9ec23524fe8a1f77168485988dd",
+                          "ExceptSpecifiedValues": false,
+                          "SpecifiedValues": []
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Cues": [
+          "!bp_cba964e33d0a0704d847629be452b359",
+          "!bp_2d6b09c6508010e49b882741add89dcf",
+          "!bp_ccd140dbf2603734aa323261c2445bec",
+          "!bp_3a3e561c6b05a284d93eb3bff7b712a6"
+        ],
+        "Answers": [
+          "!bp_f1bf440ef508c1740835d7c7c192092b"
+        ],
+        "OnShow": {
+          "Actions": []
+        },
+        "ImageLink": {
+          "AssetId": "52163ec59b7bf62408b1b24137843bba"
+        },
+        "ForeImageLink": {
+          "AssetId": "aeba1cbb79aa6e748ab1d3fcbe8e44e7"
+        },
+        "Title": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    },
+    "bb9d36fd37d74bf4792931d6052a7d44": {
+      "path": "World/Dialogs/Epilogues/CueSequence_Queen.jbp",
+      "type": "BlueprintCueSequence",
+      "data": {
+        "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "325b6ca784a0d4a458fe424fb81a0967",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Cues": [
+          "!bp_6c50623b48ba8204686e2e426ac00425",
+          "!bp_d9cc48a31f994c64f88c5dec322805a4",
+          "!bp_de261aa662c6ad04295b32916cecc3fa"
+        ],
+        "m_Exit": "!bp_7f28b01e753cb314489c2e2759741f8b"
+      }
+    },
+    "becde70692b74ab4eba1d0cf82d2958f": {
+      "path": "World/Dialogs/Epilogues/Cue_0502.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "d9cc48a31f994c64f88c5dec322805a4",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$aa302795-f3d4-47ad-adf2-004644a48d19",
+              "Not": false,
+              "m_Etude": "!bp_a4f20ae9f6a6c3d4ba204721589470a2",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": {
+            "assetguid": "90722c5b26c8e4048bbccdeebd03546f",
+            "stringkey": "e61f5ab8-ec4c-439f-b035-802558deebe0"
+          }
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "ccd140dbf2603734aa323261c2445bec": {
+      "path": "World/Dialogs/Epilogues/Cue_0310.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "обе живы, но ушли от игрока на Коронации",
+        "ParentAsset": "ae1f824fe248d9f4aac7d39ec2e12140",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$9336528a-a64d-4ac2-953d-c39966a38b8d",
+              "Not": false,
+              "m_Etude": "!bp_395aad049186445f9f474d0a769ec8ff",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$79944d89-3da0-4654-9875-f0fdf2e9d245",
+              "Not": false,
+              "m_Etude": "!bp_09f46662bcd14a03a0874267e16d6e6f",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "cc716238-3702-4913-977d-6189665672b7",
+          "m_OwnerString": "ccd140dbf2603734aa323261c2445bec",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Epilogues/Cue_0310_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": [
+            {
+              "$type": "cec8704252375f94b888d4206a757209, ChangeBookEventImage",
+              "name": "$ChangeBookEventImage$a8f542c9-4a65-4b01-af70-889d5a6c5c9f",
+              "m_Image": {
+                "AssetId": "f96ad5fa9c59d7549adff4c90f0703ab"
+              }
+            }
+          ]
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "d9cc48a31f994c64f88c5dec322805a4": {
+      "path": "World/Dialogs/Epilogues/BookPage_0258.jbp",
+      "type": "BlueprintBookPage",
+      "data": {
+        "$type": "b6d078a4ae218fe4a82f3fb5707b7e1f, BlueprintBookPage",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "королева старуха\nпортрет старухи",
+        "ParentAsset": "bb9d36fd37d74bf4792931d6052a7d44",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$72e07b7b-939b-4620-8d59-3a43171c933d",
+              "Not": false,
+              "m_Etude": "!bp_0ab81986d8f7c484a8fede0d2188125c",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Cues": [
+          "!bp_04cccb13979ff9a498af47668433f894",
+          "!bp_becde70692b74ab4eba1d0cf82d2958f",
+          "!bp_a132f2f0079fbab499501d705d8711f6",
+          "!bp_4e3682bcd99ffdb45940b2f31f9e962b"
+        ],
+        "Answers": [
+          "!bp_a8bb814fb12409a48812bdf117b92dc1"
+        ],
+        "OnShow": {
+          "Actions": []
+        },
+        "ImageLink": {
+          "AssetId": "b8160f03d066dbf46a16466eecb277d5"
+        },
+        "ForeImageLink": {
+          "AssetId": "f99ee772cfdfb374f976f3492dc70960"
+        },
+        "Title": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    },
+    "df45181e1968f26459f9e8bc2b995a34": {
+      "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0007.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": null,
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "245ec8482e1f37b4a8702e54430c5aa7",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Text": {
+          "m_Key": "0c8edca3-4bab-4535-a37b-ea3d3186213b",
+          "m_OwnerString": "df45181e1968f26459f9e8bc2b995a34",
+          "m_OwnerPropertyPath": "Text",
+          "m_JsonPath": "Strings/Mechanics/Blueprints/World/Dialogs/Companions/CompanionQuests/Seelah/Q3_WeightOfMySword/ElandKianaAftermath/Cue_0007_Text.json",
+          "Shared": null
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": "!bp_180b0eaa5dce387458d2ebf0ee943985",
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [
+            "!bp_0e50ec24099196a42b7089ffecdc46b2"
+          ],
+          "Strategy": "First"
+        }
+      }
+    },
+    "e83fff8e997db8e439bf12e09225696a": {
+      "path": "World/Dialogs/Epilogues/BookPage_0358.jbp",
+      "type": "BlueprintBookPage",
+      "data": {
+        "$type": "b6d078a4ae218fe4a82f3fb5707b7e1f, BlueprintBookPage",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "аруша\nпортрет",
+        "ParentAsset": "fec3b6f28610c8a48a239f148ed3ed60",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "d2f424beb5ace314887e9cc946b68dfa, CompanionInParty",
+              "name": "$CompanionInParty$b57b3bf0-9933-4d99-bea5-6f8656e0727a",
+              "Not": false,
+              "m_companion": "!bp_a352873d37ec6c54c9fa8f6da3a6b3e1",
+              "MatchWhenActive": true,
+              "MatchWhenDetached": true,
+              "MatchWhenRemote": true,
+              "MatchWhenDead": true,
+              "MatchWhenEx": false
+            }
+          ]
+        },
+        "Cues": [
+          "!bp_b70e6293f34a1544c94cc4e02be5d36f",
+          "!bp_84a056d6843bf3942ad6ad329d501dd9",
+          "!bp_adddffb92df5b9043a2991d35813c350",
+          "!bp_6a23522308b248dca321351950278781",
+          "!bp_78ae1bdc3b0824b4ca2ed618782f1faa",
+          "!bp_8be39b531a7980d4ab7d65b5c2da4a84",
+          "!bp_f76713034f4087a4f80495971c47ca7b"
+        ],
+        "Answers": [
+          "!bp_aba691f1d9a2725428ccf1dad879bf6e"
+        ],
+        "OnShow": {
+          "Actions": []
+        },
+        "ImageLink": {
+          "AssetId": "b8160f03d066dbf46a16466eecb277d5"
+        },
+        "ForeImageLink": {
+          "AssetId": "f538083db79a87b4dbc7012dc37c547c"
+        },
+        "Title": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": null
+        }
+      }
+    },
+    "f5906acda82efd5468cb72aff2e68f7e": {
+      "path": "World/Dialogs/Epilogues/Cue_0259.jbp",
+      "type": "BlueprintCue",
+      "data": {
+        "$type": "8eee9d45ddcfa614d99610c1892993e3, BlueprintCue",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "мертва",
+        "ParentAsset": "6c50623b48ba8204686e2e426ac00425",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$642b9a1d-2e94-4ca5-b602-1a2fbe1e654b",
+              "Not": false,
+              "m_Etude": "!bp_a4f20ae9f6a6c3d4ba204721589470a2",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Text": {
+          "m_Key": "",
+          "m_OwnerString": "",
+          "m_OwnerPropertyPath": "",
+          "m_JsonPath": "",
+          "Shared": {
+            "assetguid": "90722c5b26c8e4048bbccdeebd03546f",
+            "stringkey": "e61f5ab8-ec4c-439f-b035-802558deebe0"
+          }
+        },
+        "Experience": "NoExperience",
+        "Speaker": {
+          "m_Blueprint": null,
+          "MoveCamera": true,
+          "NotRevealInFoW": false,
+          "NoSpeaker": false,
+          "SwitchDual": false,
+          "m_SpeakerPortrait": null
+        },
+        "TurnSpeaker": true,
+        "Animation": "None",
+        "m_Listener": null,
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "AlignmentShift": {
+          "Direction": "TrueNeutral",
+          "Value": 0,
+          "Description": {
+            "m_Key": "",
+            "m_OwnerString": "",
+            "m_OwnerPropertyPath": "",
+            "m_JsonPath": "",
+            "Shared": null
+          }
+        },
+        "Answers": [],
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        }
+      }
+    },
+    "f8d7f50e3bb88c143834d234c0b24474": {
+      "path": "World/Dialogs/Epilogues/CueSequence_Special.jbp",
+      "type": "BlueprintCueSequence",
+      "data": {
+        "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "",
+        "ParentAsset": "f4958714381a3044b8d83c0bba86c21c",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": []
+        },
+        "Cues": [
+          "!bp_1d9f98606a634f94bf5cfb7999121914",
+          "!bp_32774ce2179449099220783b7e2f9837",
+          "!bp_7dadb517c882435f95f82d069b6422f4",
+          "!bp_ae1f824fe248d9f4aac7d39ec2e12140",
+          "!bp_99eddf2ebc4ddee4daedc247f00ee310",
+          "!bp_5c95d8e3fa4f3b44896914987cb04b0b",
+          "!bp_8f494f2b927b478458268bb0b3d177d2",
+          "!bp_743a5ff3baab9264aa92c306b47456f8",
+          "!bp_1df02d216bdd4e246b66b21074479767",
+          "!bp_69239b35f60e4d47b42f629b93c6e56d",
+          "!bp_900512dc72f04a34aaf864aa595d72a2",
+          "!bp_3915e283ab044349981fe9fa0be800b0",
+          "!bp_7ad402cd701a44cda57c5af3ea4d3e8c",
+          "!bp_441adfe8222567345b01892fe11806d8",
+          "!bp_9af05128f0bf94349bde191f62aeba3d"
+        ],
+        "m_Exit": "!bp_d649f17a42a8e0c418bb336ced272934"
+      }
+    },
+    "fec3b6f28610c8a48a239f148ed3ed60": {
+      "path": "World/Dialogs/Epilogues/CueSequence_Companions.jbp",
+      "type": "BlueprintCueSequence",
+      "data": {
+        "$type": "eea0d7fdafd8fe047a81a3208e5ed9ab, BlueprintCueSequence",
+        "PrototypeLink": "",
+        "m_Overrides": [],
+        "Components": [],
+        "Comment": "в ростере есть компаньоны кроме наемников и Голфри\n\nигрок НЕ оставил язву открытой (стандартный финал)",
+        "ParentAsset": "d649f17a42a8e0c418bb336ced272934",
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false,
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$1a0896aa-da94-4b32-8437-8a8250393224",
+              "Not": true,
+              "m_Etude": "!bp_9955b661dd7640b19986e453293a3e0a",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$6ef5e585-7eda-4abc-87c0-4758aa097395",
+              "Not": false,
+              "m_Etude": "!bp_c7f9774c28b345a29073aacd8e1fa0f9",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Cues": [
+          "!bp_9a7a9aadb3ba30d4686387d0ef7bcc82",
+          "!bp_503164ff04ac64543ba42561ea9f970f",
+          "!bp_9f67adedf4dacca439264db537a4b9f3",
+          "!bp_223fd069ee25c784db2df011adbf10f8",
+          "!bp_6ef6aa5c76e62564f950445d45613ef4",
+          "!bp_f1b5cd57aa76be44b9f754a208854ee7",
+          "!bp_a4bd573be98f4997a5c7146cf86aa984",
+          "!bp_638d02e6ba15fca43861343af4d60fa1",
+          "!bp_48f344caa8963c0429dd147b6ad00bee",
+          "!bp_486574ba611578e40a00a8082fd8e65a",
+          "!bp_2842a437c0db5ff46b3eb8afc65e89c1",
+          "!bp_8534fc624cc202148add7b96510d7842",
+          "!bp_9669bef01411fd2498a466d2aef63bca",
+          "!bp_e83fff8e997db8e439bf12e09225696a",
+          "!bp_7937c8393a0e71f438ee49856eacf7e4"
+        ],
+        "m_Exit": "!bp_bd86bfdb8f44c3c4bbc3f0bfb4358416"
+      }
+    }
+  },
+  "ParentMutation": {
+    "Cue": "78ae1bdc3b0824b4ca2ed618782f1faa",
+    "Continue": [
+      "959237a34dfe436eb8f088b4be259daa"
+    ],
+    "Source": "RanRomance SlideArue; src/NativeEpilogueEdit.cs reviewed ParentContinue"
+  }
+}

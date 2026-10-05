@@ -34,6 +34,21 @@ def run(module, story):
 
 
 class PresenceTests(unittest.TestCase):
+    def test_devotion_does_not_stage_the_goddess_after_romance_closure(self):
+        # eng7-f6c: keep Irabeth's unconditional faith without granting divine contact.
+        for verb in ("pray", "prays", "prayed", "praying", "prayers"):
+            s = fixture("{n}The paladin's words: %s to Iomedae.{/n}" % verb)
+            s["Relationships"]["iomedae"] = relationship("iomedae")
+            self.assertEqual(run(other_woman, s), [])
+        for text in ("{n}She prayed to Iomedae. Iomedae stood beside her.{/n}",
+                     "{n}Iomedae answers the prayer.{/n}",
+                     "{n}She prayed to Iomedae's hand resting on her brow.{/n}"):
+            s = fixture(text)
+            s["Relationships"]["iomedae"] = relationship("iomedae")
+            self.assertTrue(run(other_woman, s))
+        s["Scenes"][0]["Nodes"][0].update(Speaker="Iomedae", Text="You prayed to Iomedae.")
+        self.assertTrue(run(other_woman, s))
+
     def test_all_mentions_and_speaking_cues(self):
         s = fixture("{n}Seelah stands beside the hearth.{/n}")
         self.assertEqual({f["subject"] for f in run(other_woman, s)}, {"seelah", "seelah:physical"})

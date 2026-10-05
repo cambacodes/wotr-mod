@@ -1,0 +1,7 @@
+# Kiana: good wedding (two clues), Seelah Q3 completed in Ch5, aftermath dialog seen
+seelah.in_party:0          # Seelah recruited in the Prologue caves and kept in the party through Ch5
+kiana.wedding_seen:3       # Ch3: WeddingUnexpected Cue_0020, the pronouncement
+kiana.q2_done:3            # Ch3: Seelah Q2 "Till Death Do Us Part" completed (good ending, 2 clues)
+seelah.q3_started:5        # Ch5 day 25: Elan's call, "All right. I'll help you."
+seelah.souls_returned:5    # Ch5: Seelah Q3 "The Weight of My Sword" completed, souls returned
+kiana.aftermath_seen:5     # Ch5: ElandKianaAftermath dialog in Drezen after Q3

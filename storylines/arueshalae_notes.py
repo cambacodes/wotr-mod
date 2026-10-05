@@ -138,7 +138,7 @@ hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
         c("[Sit in the chair.]", "sit", flags=(CHAIR,)),
         c("[Turn the chair round and sit astride it, arms on the back, like a soldier in a mess tent.]", "astride", flags=(CHAIR,))),
     nar("sit", '''{n}You sit. The rush seat creaks. She sits down opposite you in her own chair, very carefully, and puts her hands flat on the table, and looks at you across it the way you have seen her look at the net-menders' bench, and the bakery, and the cat.{/n}
-"It works," she says, very quietly. "Nobody at this table is the one being eaten. It works."''', c()),
+"It works," {n}she says, very quietly.{/n} "Nobody at this table is the one being eaten. It works."''', c()),
     a("astride", '''{n}She stares at you, then laughs so hard she has to hold on to the table.{/n} "You're impossible. I buy you a chair, the first chair I have ever bought anyone, and you sit on it backwards." {n}She turns her own chair round and sits on it the same way, facing you over its back, chin on her folded arms.{/n} "There. Now it's a proper table. A barracks table. I've always wanted one of those."''', c()),
 ], (COMMITTED, MORNING), delay=48, chapters=(5,))
 
@@ -168,7 +168,7 @@ hub(RAIN, "Nothing happening", 5, '"It\'s raining."', [
         c("[Lie down beside her and watch the rain.]", "lie", flags=(RAIN,)),
         c("[Sit on the floor with your back to the cot, and report on the rain.]", "floor", flags=(RAIN,))),
     nar("lie", '''{n}You lie down beside her, on top of the blankets, careful of the wings. Neither of you says anything for a very long time. The rain goes on. Somewhere a bell rings the hour, and then the next hour. At some point she takes your hand through a fold of the blanket, the way she has learned to, and neither of you lets go.{/n}
-"This," she says eventually, drowsily, "is the best thing I have ever been prescribed."''', c()),
+"This," {n}she says eventually, drowsily,{/n} "is the best thing I have ever been prescribed."''', c()),
     nar("floor", '''{n}You sit on the floor with your back against the cot and read the rain aloud in the voice of a staff officer delivering a situation report. "Rain, ongoing. Strength, moderate. Enemy intentions, unknown." She laughs into the pillow until she has to wipe her eyes, and then goes quiet, and then, to her own astonishment, falls asleep.{/n}
 {n}She does not sleep, as a rule. You sit very still, so as not to wake her, until the rain stops.{/n}''', c()),
 ], (FORTY, MORNING), delay=24, chapters=(5,))
@@ -238,7 +238,7 @@ hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
           requires=(WARD_HELD,), remove_item=SCROLL),
         c('[Kiss the scar, lightly]', "kiss_e", flags=(SCAR,), requires=(ELYSIUM,))),
     nar("kiss_e", '''{n}You lift her hand and kiss the white line, lightly, once. Nothing comes out of you. Nothing at all. She stares at the place your mouth was as if she had expected to see frost on it.{/n}
-"Now it's got two things in it," she says, unsteadily. "The cat, and you. And it didn't cost you anything. I'll never get used to that. I'm not going to try."''', c()),
+"Now it's got two things in it," {n}she says, unsteadily.{/n} "The cat, and you. And it didn't cost you anything. I'll never get used to that. I'm not going to try."''', c()),
     a("keep", '''"The first thing I've kept that nobody gave me a use for." {n}She holds the hand against her chest.{/n} "The list is like that, too. I'm collecting them, aren't I? Useless things. I'm going to be the most cluttered demon in the history of the Abyss." {n}She laughs.{/n} "Good."''', c()),
     nar("kiss", '''{n}She watches you walk to the shrine door and back with the ward read over you, seal to last word, for this, and her mouth opens to stop you and does not. Then you lift her hand and kiss the white line, lightly, once. Nothing comes out of you. She goes very still, and then she takes her hand back, slowly, and looks at the scar as if it had changed colour.{/n}
 "You spent a horse on a cat scratch." {n}Her voice is unsteady.{/n} "Now it's got two things in it. The cat, and you. It'll never heal now. I won't let it."''', c()),

@@ -142,7 +142,7 @@ wager(BORN, "Born lucky", '"You said you were born by chance."', [
     ch("sorry", '''"You are, a bit." {n}She peeks at you sideways, and the chin comes down.{/n} "All right. The sulk is over. That was a short one. You should feel very honoured."''',
       c("Continue", "here_anyway")),
     ch("lined_up", '''{n}She stops sniffing and looks at you properly, and the look goes on for longer than you expect.{/n}
-"That's very clever," she says slowly. "And you said it so I'd stop sulking." {n}A pause.{/n} "...It worked. I hate that it worked. You're a horrible lucky charm."''',
+"That's very clever," {n}she says slowly.{/n} "And you said it so I'd stop sulking." {n}A pause.{/n} "...It worked. I hate that it worked. You're a horrible lucky charm."''',
       c("Continue", "here_anyway")),
     ch("here_anyway", '''"That's all luck is, really. Things lining up, and somebody noticing." {n}She picks a crumb off the table and eats it.{/n}
 "You don't like it, do you? Being lined up for. You'd rather line things up yourself." {n}Her eyes are bright and quite shrewd.{/n} "That's all right. I noticed you. That's my part. What you do about it is yours."''',
@@ -174,7 +174,7 @@ wager(PRAYERS, "A prayer in Drezen", '"Do people in Drezen pray to you?"', [
       c("Continue", "close")),
     ch("told", '''"You'd tell her?" {n}She blinks.{/n} "But then she'd stop praying to me. She'd pray to you."
 {n}You watch her turn it over. It takes a while, and it is not entirely comfortable to watch; for a moment she looks, very distinctly, like someone deciding whether to be jealous.{/n}
-"...Good," she says at last. "Yes. Good. People should know who to thank. It's only polite." {n}And then, much smaller:{/n} "Even if it isn't me."''',
+"...Good," {n}she says at last.{/n} "Yes. Good. People should know who to thank. It's only polite." {n}And then, much smaller:{/n} "Even if it isn't me."''',
       c("Continue", "close")),
     ch("close", '''"You're a strange lucky charm." {n}She tucks the folded prayer into her sleeve.{/n} "Most of them just sit there and are lucky. You keep getting up and doing things about it."''',
       c("[Leave her with the prayer.]")),
@@ -201,7 +201,7 @@ wager(CHARM, "Our lucky charm", '"You keep calling me your lucky charm."', [
       c('"A charm doesn\'t get a say."', "think", flags=(NOT_A_CHARM,)),
       c('"It\'s better. Carry me, then."', "anyway", flags=(CHARMED,))),
     ch("whose", '''"Whose?" {n}She opens her mouth, and closes it, and the dimples come and go and come again.{/n}
-"The Council's," she says firmly. "Obviously." {n}A pause.{/n} "Mostly the Council's." {n}Another pause, longer.{/n} "Eritrice says you can't own a lucky charm, you can only be lucky enough to have one nearby. She says it's in the rules. I think she made that rule up to stop me buying one."''',
+"The Council's," {n}she says firmly.{/n} "Obviously." {n}A pause.{/n} "Mostly the Council's." {n}Another pause, longer.{/n} "Eritrice says you can't own a lucky charm, you can only be lucky enough to have one nearby. She says it's in the rules. I think she made that rule up to stop me buying one."''',
       c('"Then stay nearby."', "anyway", flags=(CHARMED,))),
     ch("think", '''"You want me to think about it." {n}She takes a long breath through her nose, the way you might before diving into cold water.{/n}
 "All right. I'll think about it. I'll think about you bleeding and choosing and being a person who might not come back." {n}Her hands are fists in the yellow silk.{/n} "I'll hate it. I'll do it anyway. I'll still bake for you. I'll just bake knowing."''',
@@ -236,7 +236,7 @@ wager(OLD_FELLOW, "The old fellow", '"How is Cobblehoof?"', [
 {n}She stands up, and goes across the hall, and picks up the feather, and holds it in both hands.{/n} "I'll send it back to him tomorrow, all of it, all the mornings I missed. And I'll bake him something. He'll say 'Phrr'. He'll mean thank you." {n}She does not look at you.{/n} "You're so mean. Don't do that to me again."''',
       c("Continue", "close")),
     ch("curse", '''{n}Chadali looks at you, and her face, which has always been open, is carefully closed.{/n}
-"All right," she says. "For the Council. For his own good." {n}She puts the feather in her sleeve, beside the prayers.{/n}
+"All right," {n}she says.{/n} "For the Council. For his own good." {n}She puts the feather in her sleeve, beside the prayers.{/n}
 "I'll keep it up. I'm very good at wishing. People forget that I can stop." {n}And then, more softly, not to you:{/n} "Poor old fellow."''',
       c("Continue", "close")),
     ch("spared", '''"Grumpy." {n}She smiles warmly.{/n} "He's always grumpy. Somebody told me he brings bad luck to the Council, and I said, don't be so harsh on the old fellow. He's gloomy sometimes, but that will hardly cause us any trouble."
@@ -273,7 +273,7 @@ wager(DEVIL, "Just joking", '"About Alichino..."', [
       c("Continue", "wager")),
     ch("stop", '''"Use cookies against me? How?" {n}She genuinely wants to know.{/n}
 {n}You explain. It takes some time. By the end she is very quiet and has eaten four cookies without appearing to notice.{/n}
-"That's horrible," she says. "Devils are horrible. I knew that. I just didn't want to know it about Alichino." {n}She sighs.{/n} "Fine. Only one cookie a session. He can analyse that."''',
+"That's horrible," {n}she says.{/n} "Devils are horrible. I knew that. I just didn't want to know it about Alichino." {n}She sighs.{/n} "Fine. Only one cookie a session. He can analyse that."''',
       c("Continue", "wager")),
     ch("wager", '''"I'll make you a bet." {n}She leans across the table, eyes shining.{/n}
 "Next session, Alichino doesn't come. He'll send a note saying he's detained by urgent business in Hell. I bet you a whole tray he does." {n}She holds out her hand.{/n} "And you have to bet he comes. Otherwise it isn't a bet, it's just agreeing."''',
@@ -339,14 +339,14 @@ wager(KNUCKLEBONES, "Knucklebones", '"You brought dice?"', [
 "There. Now we're both cheats. Eritrice would have a stroke." {n}She is still giggling.{/n} "That's allowed. If you do it where I can see, it's a game."''',
       c("Continue", "fair", flags=(CHEATED_OPENLY,))),
     ch("smooth", '''{n}The bones fall. Five backs. It is a perfect throw, and perfectly invisible; you are rather proud of it.{/n}
-{n}Chadali looks at the bones and, for once, does not clap.{/n} "Five," she says. "Five backs, first throw."
+{n}Chadali looks at the bones and, for once, does not clap.{/n} "Five," {n}she says.{/n} "Five backs, first throw."
 {n}She gathers them up and throws. They come down any old way. She looks at them, and then at you, and smiles, and the smile is completely friendly and does not reach her eyes.{/n} "Lucky you."''',
       c("Continue", "seen")),
     ch("seen", '''{n}You play on. You win every throw. She does not remark on it again. At the end of the hour she pushes your whole pile of cookies across the table to you and keeps none.{/n}
-"You won," she says brightly. "All of them. Well done."
+"You won," {n}she says brightly.{/n} "All of them. Well done."
 {n}She is still smiling when you leave. You are almost at the door before you realise that she has not once, the whole hour, called you her lucky charm.{/n}''',
       c("[Go.]")),
-    ch("fair", '''"That," she says, sweeping the bones back into the cup, "is the best game I've had in a hundred years."
+    ch("fair", '''"That," {n}she says, sweeping the bones back into the cup,{/n} "is the best game I've had in a hundred years."
 "You know why? Because I didn't know who'd win. Nobody at this table ever lets me not know. Alichino counts, Shyka knows, Eritrice writes it down before it happens." {n}She hugs the cup to her chest.{/n} "You let me not know. Or you let me see you cheat. Either's fine. Both's a present."''',
       c("[Take your cookies.]")),
 ], requires=(RECIPE,), forbids=(KNUCKLEBONES,))
@@ -440,7 +440,7 @@ wager(LOADED, "Loaded dice", '"You\'ve been quiet with me since the knucklebones
 {n}The dimples come back, slowly, like the sun after a storm that has not quite decided to leave.{/n} "Now eat the cookie. It's the cross one. It's got raisins."''',
       c("[Eat the cross cookie.]")),
     ch("deny", '''{n}She looks at you for a long time. Then she nods, and smiles, and pushes the cookie into your hand.{/n}
-"All right," she says. "I'm imagining it."
+"All right," {n}she says.{/n} "I'm imagining it."
 {n}She is perfectly pleasant for the rest of the audience. She talks about the weather in Elysium and the price of honey. When you leave, she says "Go on, lucky charm," exactly as she always does, and now it sounds like something she has decided to keep saying.{/n}''',
       c("[Go.]")),
 ], requires=(CHEATED_SMOOTHLY,), forbids=(LOADED,))

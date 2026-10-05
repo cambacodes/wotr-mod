@@ -1,0 +1,6 @@
+# Iomedae (rel iomedae) natives for the all-romance run (commit in Ch5 by the disputation; finale H1 punchline -> "lived" pages).
+iz.done:5                    # Ch5: complete Iz (fight beside Galfrey before Deskari arrives, see Irabeth/Galfrey); the disputation Requires it
+iomedae.banner_in_hand:5     # Ch5 Iz: Banner_Iz_Dizlogue reaches Cue_0011 "...Your banner... is back in your hands" (any non-Locust branch; do not lose the banner, Cue_0014)
+# Native keys the sim turns on by itself (listed for the guide): iomedae.key_dies_revealed (Ch5 Summit Cue_0045 "the lock destroys the key", hear it before Answer_0214),
+# iomedae.queen_saw_banner (Ch3 GalfreyArrives Cue_0052, optional flavour letter).
+# Finale keys (after the commit, not forced): sacrifice:6 + ending.trickster_full:6 from GrandFinal Answer_0011. Never S1 (Answer_0017/0035, ending.wound_closed) in this run.

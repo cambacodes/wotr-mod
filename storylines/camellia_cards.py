@@ -38,7 +38,7 @@ living(DECK, "The old woman's deck", '"Are those cards?"', [
     cam("third", '''{n}She lays her hand flat on the third card, the future, and does not turn it.{/n}
 "And now the future." {n}Her voice drops.{/n} "I prefer to watch the person's face while I turn the last one. That's the real reading. The card is only the excuse." {n}She turns it, not looking at it, looking at you. It shows a woman with a veil over her face and a knife behind her back.{/n}''',
         c("[Keep your face perfectly still]", "still"),
-        c('[Trickster] Reach across and turn the card back over. "Read it again. This time, look at the card."', "back"),
+        c('[Trickster] {n}Reach across and turn the card back over.{/n} "Read it again. This time, look at the card."', "back"),
         c('"That\'s a pretty picture. Who is she?"', "who")),
     cam("still", '''{n}She watches your face for a long time. You give her nothing. At last she looks down at the card herself, and laughs, a little breathlessly.{/n}
 "Oh. The widow. A woman in a veil with a knife behind her back." {n}She taps it.{/n} "And you didn't blink. You looked at me as if I had turned over a picture of a nice supper." {n}She gathers up the cards.{/n} "I hate people I can't read, usually. I shall have to make an exception and study you."''',

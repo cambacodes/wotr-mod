@@ -141,21 +141,21 @@ physical(COLLECTION, "Collateral", '"You wanted to see me about the lease?"', [
 
 
 # The collateral is collected on whichever cauldron page the finale shows (E14c paragraphs).
-WORD_CALLED = ("The Commander's word, pledged as collateral, stayed on her books whatever became of the rest of the account. "
+WORD_CALLED = ("{n}The Commander's word, pledged as collateral, stayed on her books whatever became of the rest of the account. "
                "Arsinoe called it in exactly once, years later, in a single line on temple vellum: a request for an evening, "
                "at a time of her choosing, with no excuses accepted. The Commander came. She marked the debt paid, and then, "
-               "in the margin, reopened it.")
+               "in the margin, reopened it.{/n}")
 # Paragraphs have no ForbidOverrides: "alive" is (no sacrifice) or trickster.commander_back (which implies sacrifice).
 ALIVE = "trickster.commander_back"
 COLLATERAL = (
     p(WORD_CALLED, requires=(WORD,), forbids=("sacrifice",)),
     p(WORD_CALLED, requires=(WORD, ALIVE)),
-    p("The Commander's word, pledged as collateral, was never called in. Arsinoe kept it on her books at face value for "
-      "the rest of her life, and would not let the clerks from Absalom write it off. \"A word is not void because the one "
-      "who gave it is dead,\" she told them. \"It is merely unpaid.\"", requires=(WORD, "sacrifice"), forbids=(ALIVE,)),
-    p("The Fool King's still, pledged as collateral, was audited by the temple of Abadar every season. The barrel baron "
+    p("{n}The Commander's word, pledged as collateral, was never called in. Arsinoe kept it on her books at face value for "
+      "the rest of her life, and would not let the clerks from Absalom write it off.{/n} \"A word is not void because the one "
+      "who gave it is dead,\" {n}she told them.{/n} \"It is merely unpaid.\"", requires=(WORD, "sacrifice"), forbids=(ALIVE,)),
+    p("{n}The Fool King's still, pledged as collateral, was audited by the temple of Abadar every season. The barrel baron "
       "met each inspection in full regalia. Arsinoe's reports describe the collateral as 'well guarded, fully "
-      "operational, and regrettably drinkable', and bear the rings of several cups.", requires=(STILL,)),
+      "operational, and regrettably drinkable', and bear the rings of several cups.{/n}", requires=(STILL,)),
 )
 
 
@@ -165,18 +165,18 @@ def epilogue(id, title, text, requires, forbids=(), paragraphs=()):
 
 
 BURST_VARIANTS = (
-    p("Arsinoe entered it in the temple ledger as \"leased property, consumed in the course of its intended use\". Then she "
+    p("{n}Arsinoe entered it in the temple ledger as{/n} \"leased property, consumed in the course of its intended use\"{n}. Then she "
       "drew up the bill, addressed it to Threshold, attention of the Commander, and sent it by the ordinary post. It came "
       "back unopened, bearing a seal nobody in Drezen could identify. She filed it with evident satisfaction. To a priest of "
-      "Abadar, an unpaid account is simply a relationship that has not yet ended.", forbids=(CALLED, "lastcall.active")),
-    p("Arsinoe entered it in the temple ledger as \"leased property, consumed in the course of its intended use\", drew up "
+      "Abadar, an unpaid account is simply a relationship that has not yet ended.{/n}", forbids=(CALLED, "lastcall.active")),
+    p("{n}Arsinoe entered it in the temple ledger as{/n} \"leased property, consumed in the course of its intended use\"{n}, drew up "
       "the bill, and laid it on the Commander's table herself the morning after. It was paid by noon, arrears and all. She "
-      "closed the account in front of the Commander, which she had never before done for anyone.", requires=("lastcall.active",),
+      "closed the account in front of the Commander, which she had never before done for anyone.{/n}", requires=("lastcall.active",),
       forbids=(CALLED,)),
-    p("It had not burst as the Commander's, though. At the rift, by the letter of the lease, the Commander had handed it "
+    p("{n}It had not burst as the Commander's, though. At the rift, by the letter of the lease, the Commander had handed it "
       "back, a breath before the end: returnable at the end of the world, and this had been the end of the world. What "
       "burst was the temple's property, consumed in the course of its intended use, and the lessee owed nothing but the "
-      "arrears. Arsinoe entered the discharge in her smallest hand and underlined the date.", requires=(CALLED,)),
+      "arrears. Arsinoe entered the discharge in her smallest hand and underlined the date.{/n}", requires=(CALLED,)),
 )
 
 epilogue("arsinoe.trickster.epilogue.bill_to_threshold", "Consumed in the course of its intended use",
@@ -185,31 +185,31 @@ epilogue("arsinoe.trickster.epilogue.bill_to_threshold", "Consumed in the course
 epilogue("arsinoe.trickster.epilogue.pot_returned", "Returned at the end of the world",
     '''{n}The soul cauldron came back from Threshold whole, which surprised everyone except Arsinoe. She locked it in the temple strongroom with the gold-wax tag still on the cradle, and wrote in the lease's margin in her smallest, neatest hand: "Returned at the end of the world, as agreed. Title: unproven, pending Absalom. Rent in arrears: considerable."{/n}''',
     ("trickster.ever", LIEN), ("arsinoe.siphon_burst",), paragraphs=(
-        p("The Commander is still paying it. Arsinoe has never once suggested a discount.", forbids=("lastcall.active", "sacrifice")),
-        p("The Commander is still paying it. Arsinoe has never once suggested a discount.", requires=(ALIVE,), forbids=("lastcall.active",)),
-        p("Nobody paid it. The Commander's estate was settled without the arrears, which Arsinoe carried forward every year "
-          "in her own hand and never once wrote off.", requires=("sacrifice",), forbids=(ALIVE, "lastcall.active")),
-        p("The Commander paid the arrears the next morning, across her own table, to the copper, and watched her close the "
-          "account. She has never once suggested a discount, and she did not start then.", requires=("lastcall.active",)),
+        p("{n}The Commander is still paying it. Arsinoe has never once suggested a discount.{/n}", forbids=("lastcall.active", "sacrifice")),
+        p("{n}The Commander is still paying it. Arsinoe has never once suggested a discount.{/n}", requires=(ALIVE,), forbids=("lastcall.active",)),
+        p("{n}Nobody paid it. The Commander's estate was settled without the arrears, which Arsinoe carried forward every year "
+          "in her own hand and never once wrote off.{/n}", requires=("sacrifice",), forbids=(ALIVE, "lastcall.active")),
+        p("{n}The Commander paid the arrears the next morning, across her own table, to the copper, and watched her close the "
+          "account. She has never once suggested a discount, and she did not start then.{/n}", requires=("lastcall.active",)),
     ) + COLLATERAL)
 epilogue("arsinoe.trickster.epilogue.foreclosure", "A lien on one Worldwound, slightly used",
     '''{n}Among the records of the Drezen temple of Abadar lies a lien, sealed in gold wax, on "one Worldwound, slightly used". Clerks from Absalom have tried three times to strike it out as a jest. Each time, the clerk who opens the file finds the seal whole and the terms in order, and closes it again rather more quietly than he opened it.{/n}''',
     ("trickster.ever", WOUND), ("ending.wound_closed",), paragraphs=(
         # One settlement per history, agreeing with the cauldron page (Sol r5 COX): unsettled, paid at her table, or called in.
-        p("The church has not yet foreclosed. Arsinoe says it is a question of choosing the right moment.",
+        p("{n}The church has not yet foreclosed. Arsinoe says it is a question of choosing the right moment.{/n}",
           forbids=("lastcall.active", CALLED)),
-        p("It is a released lien. The morning the Commander paid the arrears across her table, Arsinoe wrote \"Released on "
-          "payment\" beneath the seal, and filed it again rather than burn it, because she could not bring herself to destroy "
-          "so good a document.", requires=("lastcall.active",), forbids=(CALLED,)),
-        p("It is a copy. The lease was called in at Threshold and the lien went with it to the First Vault, attached to "
-          "whatever the Wound became. Beneath the seal, in her hand: \"Transferred. Collect there.\"", requires=(CALLED,)),
+        p("{n}It is a released lien. The morning the Commander paid the arrears across her table, Arsinoe wrote{/n} \"Released on "
+          "payment\" {n}beneath the seal, and filed it again rather than burn it, because she could not bring herself to destroy "
+          "so good a document.{/n}", requires=("lastcall.active",), forbids=(CALLED,)),
+        p("{n}It is a copy. The lease was called in at Threshold and the lien went with it to the First Vault, attached to "
+          "whatever the Wound became. Beneath the seal, in her hand:{/n} \"Transferred. Collect there.\"", requires=(CALLED,)),
     ))
 epilogue("arsinoe.trickster.epilogue.foreclosure_closed", "Collateral withdrawn by closure",
     '''{n}When the Worldwound closed, Arsinoe took out the lien sealed in gold wax on "one Worldwound, slightly used", and wrote across it, in a very small hand: "Collateral withdrawn by closure. Lien discharged."{/n}
 {n}It is the only entry in her ledger she ever underlined twice. The rent was another matter, and another ledger.{/n}''',
     ("trickster.ever", WOUND, "ending.wound_closed"), paragraphs=(
-        p("The lien itself had gone to the First Vault at Threshold, when the lease was called in; what she discharged in "
-          "Drezen was her copy, and she sent the Vault a note to say so.", requires=(CALLED,)),
+        p("{n}The lien itself had gone to the First Vault at Threshold, when the lease was called in; what she discharged in "
+          "Drezen was her copy, and she sent the Vault a note to say so.{/n}", requires=(CALLED,)),
     ))
 
 
@@ -250,10 +250,10 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
          c('"Then collect. There is no war left to be late for."', "table"),
          c('"There is nothing to collect, Arsinoe. Business only."', "business"),
          paragraphs=(
-             p("She laid the lease on the table and put a finger on the line about late payments. \"You told me you would make "
+             p("{n}She laid the lease on the table and put a finger on the line about late payments.{/n} \"You told me you would make "
                "certain the payments were always a little late. The war ended before the first one fell due. So I have come "
                "to collect early, which is a thing I never do.\"", requires=(STAYS,)),
-             p("\"We had a roof, once,\" she said. \"Bread and cheese, and a city I pointed at for a whole evening while you "
+             p("\"We had a roof, once,\" {n}she said.{/n} \"Bread and cheese, and a city I pointed at for a whole evening while you "
                "held my hand.\"", requires=(COURTED,), forbids=(STAYS,)),
              p("\"And a book I promised to lend you, with a whole page about an innkeeper's sauce.\"",
                requires=(COURTED, "arsinoe_first_impression"), forbids=(STAYS,)),
@@ -267,11 +267,11 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
                "things I have not priced. I have not priced this. So. Yes, or no?\""),
          )),
     late("night", '''{n}She let you. She had come dressed for the temple, collar to hem, and she stood very still under your hands while you worked the collar open, her gold eyes on yours. At the clasps of the robe she lost patience, pushed your hands aside and undid the rest herself, quickly, and let the whole weight of it fall.{/n}
-"You kept me waiting for a war," she said. "I will not wait for fastenings as well."
+"You kept me waiting for a war," {n}she said.{/n} "I will not wait for fastenings as well."
 {n}She walked you backward to the bed with one hand flat on your chest, pushed, and came down over you, a knee either side of your hips, her hair slipping its pins and falling around both your faces. She took your wrists and set your hands on her waist, exactly where she wanted them. Then she bent, and kissed you, and sank down.{/n}''',
          c("Continue", "morning")),
     late("morning", '''{n}In the morning she was at the Commander's table in her shift, her hair down, writing on the back of something in her smallest hand. "Collected," it said. Then, a little lower: "Early."{/n}
-"Go back to sleep, Commander," she said, without looking up. "I intend to be very late opening the shop, and I want company for it."
+"Go back to sleep, Commander," {n}she said, without looking up.{/n} "I intend to be very late opening the shop, and I want company for it."
 {n}The next month she set a second cup on the shelf in the room behind her shop, and she never once charged for it.{/n}''',
          c('[Stay.]')),
     late("table", '''{n}She let you take her hand across the table. Then she leaned over and kissed you, hard, the way she presses a seal, and sat back to admire the impression.{/n}
@@ -279,7 +279,7 @@ SCENES.append(scene("arsinoe.trickster.late.commit", "Interest on late payments"
 {n}She kept that appointment, and one every month after it, and the queue outside her shop learned to expect it opened late.{/n}''',
          c('[Keep the appointment.]')),
     late("business", '''{n}Arsinoe looked at the Commander for a while. Then she gathered her gloves, and did not hurry about it.{/n}
-"Business only," she said. "May Abadar keep you, Commander."
+"Business only," {n}she said.{/n} "May Abadar keep you, Commander."
 {n}She stayed in Drezen. When their business crossed she was perfectly courteous about it, and she never once sat down.{/n}''',
          c('[Let her go.]')),
 ], requires=(LATE_COMMITTED,), forbids=(*LATE_GONE, "sacrifice", "ascended", "swarm", "true_lich"),
@@ -292,8 +292,8 @@ SCENES.append(scene("arsinoe.trickster.late.ascended", "An invoice to a higher a
 {n}Nobody knows whether it was answered. The second cup on her shelf was never given to another guest.{/n}''')],
     requires=(LATE_COMMITTED, "ascended"), forbids=LATE_GONE, last=6, Relationship="arsinoe"))
 
-COLLECTOR = p("When people asked why a priestess who always moved on had stayed, Arsinoe said she had an outstanding "
-              "account in Drezen. She never said which.", requires=(STAYS,))
+COLLECTOR = p("{n}When people asked why a priestess who always moved on had stayed, Arsinoe said she had an outstanding "
+              "account in Drezen. She never said which.{/n}", requires=(STAYS,))
 
 
 def integrate(payload):

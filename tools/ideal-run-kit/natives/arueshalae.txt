@@ -1,0 +1,3 @@
+# Arueshalae: freed and recruited in the Ch2 Drezen prison, recruited for good at Greengates (Ch3), never evil, never dead
+arueshalae.prison_desna_named:2   # Ch2 Drezen citadel prison (Arusha_DrezenPrison): she names Desna; recruit her (Cue_0044/Cue_0061)
+arueshalae.ward_held:3            # Ch3 onward: keep Scrolls of Death Ward (89e10c3f) in inventory, bought from the Ch3/Ch5 Drezen scroll vendors (7 each)

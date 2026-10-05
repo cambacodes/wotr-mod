@@ -1,0 +1,3 @@
+# Targona: state `freed_in_heaven` -> `shared_ward` (freed in Areelu's lab with the Suture's Abyssal Key; never attacked).
+targona.abyss_key_held:3   # InventoryItems AbyssalKey b5b0214f: get the Suture's key in Areelu's laboratory before her chamber
+targona.free:3             # TargonaWings Answer_0031 [Destroy the barrier] -> TargonaIsFreeInAreeluLab

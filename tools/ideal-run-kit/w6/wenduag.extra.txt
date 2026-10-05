@@ -1,0 +1,6 @@
+# Keys kept OFF (w6/trace2.py only, value -1): L-path hosts that never exist on the W path
+wenduag.traitor:-1        # WenduagTraitor is the Lann-route recruit; the W path never starts it
+# Scenes the W-path player never reaches (w6/trace2.py only, "!id"): hosts on L-path or exile lists
+!wenduag.trickster.killed.stage     # host is Lann's Q1 kill list (L path only)
+!wenduag.trickster.exile.bid_hub    # host is the exile list: never exile her
+!wenduag.trickster.exile.bid_traitor

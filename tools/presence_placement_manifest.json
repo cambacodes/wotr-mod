@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "item": "E-Q7-33",
-  "scope": "Offline placement inventory. Pending is not verified walkability and does not authorize coordinates.",
+  "scope": "Offline placement inventory with cached live evidence. Pending is not completed live verification. The F7 coordinator explicitly authorizes the verified street point for cellar-door staging; original-actor click/occupancy/reload remain pending.",
   "evidence_source": "/work/Writer/handoffs/LOOP-3-HANDOFF.md:2026-10-04 ~04:10 LIVE HARNESS",
   "probe_contract": {
     "chapter": 5,
@@ -51,6 +51,102 @@
       "type": "BlueprintUnit",
       "path": "QA/Unused/Units/NPC/Unique/Act_5_HeraldOfTheIvoryLabyrinth/MythicDragon_Ch5/RedDragon_Sanctum 1.jbp",
       "sha256": "1b7e26c3ee54323607522ee729d3606a8e2ed8073bd2b794e4854a5d2888a021"
+    },
+    {
+      "guid": "0f12118177d102f428a3b30b15b132eb",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Fye_Bartender.jbp",
+      "sha256": "6d322c80737bdd9bc3272c35b8e6bccb16a508810d170a9f16e8207362e06522",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "253cdb8f434e5a6469b75e18428316e3",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/TailorCapitalTrader.jbp",
+      "sha256": "1fc64d8ab932a0d8572dc3ab4ca24b7047c78225b1e7346d9fe5dfacd7c64fec",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "25ad116e1f5008e488b13f9b968596d4",
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/TenThousandDelights/Rokhorn.jbp",
+      "sha256": "4113ef67930cc9556bc0e8a2f0bdee1e3e52ec79f681a46ada440ba485302e3d",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "2c8caedd0a558524ca0ed1ab3132fae1",
+      "path": "Units/Companions/Arueshalae/CR20_EvilArueshalae_NPC.jbp",
+      "sha256": "aa2469fb1fc70a986166c56479558887c73c120451a22ac50eccbdb11dd1238f",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "397b090721c41044ea3220445300e1b8",
+      "path": "Units/Companions/Camelia/Camelia_Companion.jbp",
+      "sha256": "0987f8a02840cba3688cbb7f991d67c26801b94415bbeca005352386d38271e2",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "417ce3dcf3a9707488f2b9b2a790814b",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Wintersun/Jerribeth.jbp",
+      "sha256": "bb5fb42975e6243e382b4e96c1bc70211a2664d40b4786cd2cf39cb7e5c816f2",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "430cba7801b149b4e8494ace6baf4f7c",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_DesnaPriest.jbp",
+      "sha256": "9a45034ee73bddbcc3e93747e13ffc681c46fb5911b64941e5381aa499df4da4",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "49e6676f68337114985a22bd548a8a4d",
+      "path": "Units/Companions/Nenio/Nenio_NPC_Level1.jbp",
+      "sha256": "d4ffd3131c87590d6a7cab6e7e807541baaa122560393d7dffd35660a190c91e",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "66e12264eaf6bf74196e20a9d7619cd2",
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/HaremOfArdentDream/Shamira.jbp",
+      "sha256": "11a16e336d2e05b618968d2264a3e90d4c97745acee54c54b4f878afeac85383",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "81297c673b63b60448ef88a10db6bc78",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/AreeluLab/AngelTargona.jbp",
+      "sha256": "4e9e46511da0f889a4eaa0a9fbd601af30f785e2b5c7b7b26cc53dbc4cead0e5",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "9d9c523bc2b17434bb66df212b127187",
+      "path": "Units/NPC/Unique/Act_4_MidnightIsles/BadLuck/Mielara.jbp",
+      "sha256": "3630ddc9a962c12a1f9be1f41b09e56b709c1d86d88eb7de1544c249c957d3da",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "a380d926e92f70e429681eb9654478f9",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/DrezenCapital_Quartermaster.jbp",
+      "sha256": "6b138179fc4768035aad6b5118327d5546b80a4718db236ea1278747e049a71e",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "bc1093231b1577a4485a730c29595195",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/JewelerCapitalTrader.jbp",
+      "sha256": "4d5e27015f59accd9457285d4b9d8b81d03c23b4b4deafc261d3f85936207e6a",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "bd0c4fe722aeef94b8495ac284b96bc8",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicAzata_Ch3/Azata_Aranka_RankupSpeaker.jbp",
+      "sha256": "d76d3df86df5d7c10e41a72b8f2d36822f6b2ac5ca6b5b9a900de9666e89d7c0",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "cc50a88bbd8dd3e4da066d33d14fdfc8",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicTrickster_Ch3/FoolKing.jbp",
+      "sha256": "2b8656c5c1b1de3b0fecd4aafeddaa07982d0826723be809228dffda3167ac44",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "e3bc95db7e2181d41847b3a1d858258d",
+      "path": "Units/Companions/Arueshalae/EvilArueshalae_Companion.jbp",
+      "sha256": "2def22d2b666f561b1ac19b5a5968625183cb521f82e3ac9d259ece10da09cea",
+      "type": "BlueprintUnit"
     }
   ],
   "entries": [
@@ -66,7 +162,29 @@
       "unit": "ae766624c03058440a036de90a7f2009",
       "consumer": "wenduag.trickster.echo.abyss.return",
       "at": null,
-      "remainder": "No cellar position found. Coordinator must supply Ch5 save, loaded scene, mesh/approach/click/occupancy and reload evidence. Runtime destination remains null."
+      "remainder": "F7 coordinator street-level cellar-door decision implemented at the cached verified walkable street point. TODO live original-actor approach/click, existing three-metre occupancy exclusion and reload; no basement-area destination and no completed verification claim.",
+      "live_evidence": {
+        "date": "2026-10-04",
+        "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
+        "save_sha256": "294bb9e82b8b99f785988b78ce55ccaaaaebfff3ec0635dd9fb465618355eedd",
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "chapter": 5,
+        "run": "harness/.runs/20261004-173452",
+        "result": "NO CELLAR FOUND: DrezenCapital walkable mesh has bands y~40..76 only; the lowest (y~40, x -75..4, z 25..80) is the street the Wenduag locator stands on. No unit stands below y=39 except Nurah's area at y=0 (a separate frame). Native basements are separate areas (DrezenCapital_AbandonedBuildingBasement, DrezenCapital_HouseToPrisonBasement, DrezenCitadel levels, ReturnToDrezen_HouseToPrisonAbandonedBasement), which WenduagEcho cannot target (it requires Area == DrezenCapital)."
+      },
+      "staging": "street-level cellar entrance",
+      "candidate_position": [
+        -24.63,
+        40.13,
+        57.17
+      ],
+      "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceProbe \"-24.63,40.13,57.17\" -ProbeRadius 3 -ProbeEnter -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -NoRoundTrip -Screenshots",
+      "runtime_position": [
+        -24.63,
+        40.13,
+        57.17
+      ]
     },
     {
       "id": "wenduag.street",
@@ -86,7 +204,33 @@
           0.0
         ]
       },
-      "remainder": "Ch3 probe failed walkable mesh; Ch5 save/probe still required. Exterior exile locator is not a cellar destination."
+      "remainder": "Chapter 5 live (20261004-172702): locator f8cfa132 is on the DrezenCapital mesh (gap 0.12 m, drift 0.12 m, no crowding); the Ch3 failure is not reproduced. Still open: hub click, approach and reload need a save with wenduag.trickster.returned. AREA TRUTH: the sampled early Chapter 5 save sits in ReturnToDrezen; native TpToCapital later reaches DrezenCapital within Chapter 5. The cellar-door decision uses the verified street point, not a basement-area teleport.",
+      "live_evidence": {
+        "date": "2026-10-04",
+        "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
+        "save_sha256": "294bb9e82b8b99f785988b78ce55ccaaaaebfff3ec0635dd9fb465618355eedd",
+        "save_state": "Chapter 5, saved in ReturnToDrezen 83a099db95e0e6e4485a20b10ce7c28d; the spike loads DrezenCapital_FromThroneRoom",
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "chapter": 5,
+        "not_covered": [
+          "approachable",
+          "clickable",
+          "after_reload"
+        ],
+        "not_covered_reason": "No Chapter 5 save carries this route's presence flags (trickster.ever + returned) and the harness cannot set flags, so no hub click, approach or reload was possible. Walkable mesh, settle drift and body room only.",
+        "run": "harness/.runs/20261004-172702",
+        "target": [
+          -24.63,
+          40.13,
+          57.17
+        ],
+        "walkable_gap": 0.121,
+        "drift": 0.12,
+        "crowding": [],
+        "result": "mesh/occupancy PASS"
+      },
+      "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'wenduag.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,wenduag.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
     },
     {
       "id": "devarra.locator",
@@ -106,7 +250,34 @@
           0.0
         ]
       },
-      "remainder": "Ch3 probe failed walkable mesh; Ch5 save/probe still required. This locator is a harness probe, not an exported Devarra presence."
+      "remainder": "Chapter 5 live (20261004-172352): locator d7aa4429 is on the DrezenCapital mesh (gap 0.32 m, drift 0.33 m, no crowding); the Ch3 failure is not reproduced. This locator is a harness probe, not an exported Devarra presence, so no hub/approach/reload applies.",
+      "live_evidence": {
+        "date": "2026-10-04",
+        "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
+        "save_sha256": "294bb9e82b8b99f785988b78ce55ccaaaaebfff3ec0635dd9fb465618355eedd",
+        "save_state": "Chapter 5, saved in ReturnToDrezen 83a099db95e0e6e4485a20b10ce7c28d; the spike loads DrezenCapital_FromThroneRoom",
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "chapter": 5,
+        "not_covered": [
+          "approachable",
+          "clickable",
+          "after_reload"
+        ],
+        "not_covered_reason": "No Chapter 5 save carries this route's presence flags (trickster.ever + returned) and the harness cannot set flags, so no hub click, approach or reload was possible. Walkable mesh, settle drift and body room only.",
+        "run": "harness/.runs/20261004-172352",
+        "target": [
+          33.58,
+          62.33,
+          -4.31
+        ],
+        "walkable_gap": 0.323,
+        "drift": 0.327,
+        "crowding": [],
+        "result": "mesh/occupancy PASS",
+        "unit_name": "RedDragon_Sanctum 1 (Huge, corpulence 2.0)"
+      },
+      "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceUnits c4b5746d3d2511441ba18a894cecb328 -PresenceLocator d7aa4429-41bd-4d58-bb17-074863d847f7 -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -Screenshots -NoRoundTrip"
     },
     {
       "id": "galfrey.presence",
@@ -124,7 +295,34 @@
         "Side": "left",
         "Distance": 2.5
       },
-      "remainder": "Blueprint identity/type checked offline. Coordinator must validate live Ch5 anchor, approach/click, hub title, failure/fallback and reload."
+      "remainder": "Chapter 5 live (20261004-173750): anchor resolves once in DrezenCapital and the primary spot is walkable (gap 0.89 m, drift 0.006 m, no crowding). Still open: hub title, click/approach, failure-to-fallback and reload need a returned-Galfrey save. The anchor traders do NOT exist in ReturnToDrezen (the sampled early Chapter 5 siege area); native TpToCapital later reaches the capital in Chapter 5.",
+      "live_evidence": {
+        "date": "2026-10-04",
+        "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
+        "save_sha256": "294bb9e82b8b99f785988b78ce55ccaaaaebfff3ec0635dd9fb465618355eedd",
+        "save_state": "Chapter 5, saved in ReturnToDrezen 83a099db95e0e6e4485a20b10ce7c28d; the spike loads DrezenCapital_FromThroneRoom",
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "chapter": 5,
+        "not_covered": [
+          "approachable",
+          "clickable",
+          "after_reload"
+        ],
+        "not_covered_reason": "No Chapter 5 save carries this route's presence flags (trickster.ever + returned) and the harness cannot set flags, so no hub click, approach or reload was possible. Walkable mesh, settle drift and body room only.",
+        "run": "harness/.runs/20261004-173750",
+        "anchor": "ExoticCapitalTrader at (-5.9,56.0,8.6) orientation 165.79",
+        "target": [
+          -3.48,
+          56.01,
+          9.19
+        ],
+        "walkable_gap": 0.889,
+        "drift": 0.006,
+        "crowding": [],
+        "result": "mesh/occupancy PASS (gap under 1.5 m)"
+      },
+      "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
     },
     {
       "id": "galfrey.presence.stall",
@@ -140,9 +338,50 @@
       "at": {
         "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
         "Side": "right",
-        "Distance": 2.5
+        "Distance": 3.5
       },
-      "remainder": "Blueprint identity/type checked offline. Coordinator must validate live Ch5 anchor, approach/click, hub title, failure/fallback and reload."
+      "remainder": "Chapter 5 live: right 2.5 failed body room (a market citizen); right 3.5 passes (run 20261004-174607) and is now the exported anchor. Still open: hub click/approach, fallback trigger and reload need a returned-Galfrey save. The tiefling trader does not exist in ReturnToDrezen.",
+      "live_evidence": {
+        "date": "2026-10-04",
+        "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
+        "save_sha256": "294bb9e82b8b99f785988b78ce55ccaaaaebfff3ec0635dd9fb465618355eedd",
+        "save_state": "Chapter 5, saved in ReturnToDrezen 83a099db95e0e6e4485a20b10ce7c28d; the spike loads DrezenCapital_FromThroneRoom",
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "chapter": 5,
+        "not_covered": [
+          "approachable",
+          "clickable",
+          "after_reload"
+        ],
+        "not_covered_reason": "No Chapter 5 save carries this route's presence flags (trickster.ever + returned) and the harness cannot set flags, so no hub click, approach or reload was possible. Walkable mesh, settle drift and body room only.",
+        "run": "harness/.runs/20261004-174607",
+        "anchor": "Vendor_Tiefling at (-59.0,45.1,-54.8) orientation 289.64",
+        "target": [
+          -57.8,
+          45.12,
+          -51.48
+        ],
+        "walkable_gap": 0.082,
+        "drift": 0.122,
+        "crowding": [],
+        "result": "mesh/occupancy PASS at Distance 3.5",
+        "rejected": [
+          {
+            "side": "right",
+            "distance": 2.5,
+            "run": "harness/.runs/20261004-174034",
+            "result": "FAIL: market Citizen 1.8 m away, no room for her body"
+          },
+          {
+            "side": "left",
+            "distance": 2.5,
+            "run": "harness/.runs/20261004-174326",
+            "result": "FAIL: 2.29 m from the mesh, drifted 5.95 m"
+          }
+        ]
+      },
+      "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned,galfrey.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
     },
     {
       "id": "galfrey.sergeant",
@@ -156,7 +395,9 @@
       "unit": null,
       "consumer": "galfrey.trickster.ch3.standing_orders",
       "at": null,
-      "remainder": "Current scene is remote and declares no placed sergeant. Live handoff placement question is unresolved; do not invent a unit/position."
+      "remainder": "Re-checked 2026-10-04: still a remote scene with no placed sergeant unit or position; nothing to probe live. Current scene is remote and declares no placed sergeant; do not invent a unit/position.",
+      "area_truth": "Chapter 3 capital.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S3 -SceneFilter @('galfrey.trickster.ch3.standing_orders') -Screenshots"
     },
     {
       "id": "chadali.fallback",
@@ -170,7 +411,294 @@
       "unit": null,
       "consumer": "chadali.trickster.fought.lucky",
       "at": null,
-      "remainder": "Current branch has no Chadali presence/fallback declaration; sealed-hall delivery is a letter. Old fallback live check cannot establish current placement."
+      "remainder": "Re-checked 2026-10-04: still no Chadali presence/fallback declaration (sealed-hall delivery is a letter); nothing to probe live. Old fallback live check cannot establish current placement.",
+      "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -SceneFilter @('chadali.trickster.fought.lucky') -Screenshots"
+    },
+    {
+      "id": "jerribeth.presence",
+      "route": "jerribeth",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "417ce3dcf3a9707488f2b9b2a790814b",
+      "consumer": "jerribeth.presence",
+      "at": {
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "left",
+        "Distance": 6.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,jerribeth.trickster.visit_due' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "aranka.presence",
+      "route": "aranka",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "430cba7801b149b4e8494ace6baf4f7c",
+      "consumer": "aranka.presence",
+      "at": {
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "front",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "aranka.presence.yard",
+      "route": "aranka",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "bd0c4fe722aeef94b8495ac284b96bc8",
+      "consumer": "aranka.presence.yard",
+      "at": {
+        "NearUnit": "a380d926e92f70e429681eb9654478f9",
+        "Side": "front",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,aranka.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "targona.presence",
+      "route": "targona",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "81297c673b63b60448ef88a10db6bc78",
+      "consumer": "targona.presence",
+      "at": {
+        "NearUnit": "a380d926e92f70e429681eb9654478f9",
+        "Side": "behind",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,targona.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "camellia.presence",
+      "route": "camellia",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "397b090721c41044ea3220445300e1b8",
+      "consumer": "camellia.presence",
+      "at": {
+        "NearUnit": "0f12118177d102f428a3b30b15b132eb",
+        "Side": "left",
+        "Distance": 6.0
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'camellia.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,camellia.trickster.primed,camellia.trickster.raised' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96,cf3639c5cf057034fa766dd5f421d2ed'"
+    },
+    {
+      "id": "arueshalae.presence.evil_drezen",
+      "route": "arueshalae",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "e3bc95db7e2181d41847b3a1d858258d",
+      "consumer": "arueshalae.presence.evil_drezen",
+      "at": {
+        "NearUnit": "bc1093231b1577a4485a730c29595195",
+        "Side": "front",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_drezen' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "arueshalae.presence.evil_awning",
+      "route": "arueshalae",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "2c8caedd0a558524ca0ed1ab3132fae1",
+      "consumer": "arueshalae.presence.evil_awning",
+      "at": {
+        "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+        "Side": "front",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.presence.evil_drezen.failed,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "mielarah.presence",
+      "route": "mielarah",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "9d9c523bc2b17434bb66df212b127187",
+      "consumer": "mielarah.presence",
+      "at": {
+        "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+        "Side": "right",
+        "Distance": 7.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "mielarah.presence.arcade",
+      "route": "mielarah",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "9d9c523bc2b17434bb66df212b127187",
+      "consumer": "mielarah.presence.arcade",
+      "at": {
+        "NearUnit": "bc1093231b1577a4485a730c29595195",
+        "Side": "behind",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall,mielarah.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "shamira.presence.awning",
+      "route": "shamira",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "66e12264eaf6bf74196e20a9d7619cd2",
+      "consumer": "shamira.presence.awning",
+      "at": {
+        "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+        "Side": "behind",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,shamira.trickster.embodied,shamira.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "nenio.presence",
+      "route": "nenio",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "49e6676f68337114985a22bd548a8a4d",
+      "consumer": "nenio.presence",
+      "at": {
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "behind",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,nenio.trickster.cost.recreated' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "herrax.presence.rokhorn",
+      "route": "herrax",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "25ad116e1f5008e488b13f9b968596d4",
+      "consumer": "herrax.presence.rokhorn",
+      "at": {
+        "NearUnit": "cc50a88bbd8dd3e4da066d33d14fdfc8",
+        "Side": "front",
+        "Distance": 3.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+    },
+    {
+      "id": "herrax.presence.rokhorn_stall",
+      "route": "herrax",
+      "kind": "presence",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "status": "pending",
+      "position": null,
+      "probe": null,
+      "unit": "25ad116e1f5008e488b13f9b968596d4",
+      "consumer": "herrax.presence.rokhorn_stall",
+      "at": {
+        "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+        "Side": "right",
+        "Distance": 7.5
+      },
+      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,herrax.presence.rokhorn.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
     }
-  ]
+  ],
+  "docs": {
+    "area_truth_table": "tools/drezen_area_chapters.json",
+    "chapter_table": [
+      {
+        "chapter": 3,
+        "drezen_areas": [
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "phase": "c2-c3 Answer_0002 completes Chapter02 (starts Chapter03 / SwitchChapter3) and TeleportParty enters DrezenCapital_Enter. CapitalMechanic/DefaultMechanic persist under Chapter03_Extra, separate from the completed Chapter03 etude."
+      },
+      {
+        "chapter": 4,
+        "drezen_areas": [],
+        "phase": "ToNexus completes Chapter03 and its StartsOnComplete starts Chapter04. Capital street hubs are unavailable during the Abyss; do not infer a visit from a 3..5 presence window."
+      },
+      {
+        "chapter": 5,
+        "drezen_areas": [
+          "83a099db95e0e6e4485a20b10ce7c28d",
+          "2570015799edf594daf2f076f2f975d8"
+        ],
+        "phase": "ReturnToDrezen liberation and GoddessesSummit first. Summit -> LastPartOfDialog -> TpToCapital -> DrezenCapital_Enter. No chapter switch in that teleport. Late returned-state hubs remain in DrezenCapital, not the siege."
+      },
+      {
+        "chapter": 6,
+        "drezen_areas": [],
+        "phase": "ThresholdEnter completes Chapter05; StartsOnComplete starts Chapter06 and SwitchChapter(6). The final Threshold campaign supplies no ordinary return to Drezen. Epilogue recollections are not physical capital encounters."
+      }
+    ],
+    "native_transition": "Chapter05_Extra/ReturnToDrezen/GoddessesSummit (81851815) -> LastPartOfDialog (9bda41e7) -> TpToCapital (78dcfaba) TeleportParty(cdaba431) -> DrezenCapital_Enter.m_Area (25700157). Thus the manual save is in the siege, but late Chapter 5 capital placements are reachable without a harness teleport.",
+    "coverage": {
+      "exported_presences": 47,
+      "physical_drezen_scenes": 873
+    },
+    "live_limits": "The cached spikes forcibly entered capital; they establish geometry there, not natural progression or production hub clicks/reload. All live_evidence fields are historical and retained. Never promote pending to verified from fixture setup alone.",
+    "cellar_decision": "Coordinator-approved street-level cellar entrance at (-24.63,40.13,57.17); no separate basement area. Pending live approach/click/occupancy/reload verification.",
+    "spacing": "At least 4 m between simultaneously wanted presences on the same native anchor. Distances on different anchors and post-settle drift require joint live verification."
+  }
 }

@@ -1,0 +1,4 @@
+# Camellia: never killed, never dismissed; the living courtship ("_alive" twins) on her companion hub. No extra native key is
+# needed for the commit; the keys below are what the prescribed run makes true and are read only by optional beats.
+regill.in_party:2     # Ch2 onward: Regill recruited and kept (reactor: camellia.trickster.react.regill_quarters after the commit)
+iz.done:5             # Ch5: Iz completed beside Galfrey (opens the optional post-commit beat camellia.trickster.day.the_eve_alive)

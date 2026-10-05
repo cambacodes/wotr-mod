@@ -261,7 +261,7 @@ physical("konomi.trickster.dismissed.private", "Off the record", '"Business conc
 "Then you want an attaché whose letters you read. I have been that, for the Crown, and I will not be it in your bed." {n}She picks up the fan again. It steadies her hand.{/n} "Give me a season, Commander. Then ask me again, and do not ask as a Trickster. Ask as someone who could be told no."''',
       c('[Let her decide] "Your call."', flags=(DECLINED,))),
     nar("threshold", '''{n}She looks at your hand in hers for a moment, and her thumb moves once across your knuckles.{/n}
-"The next evening," she says, "is this one."
+"The next evening," {n}she says,{/n} "is this one."
 {n}The fan closes with a snap. She rises, and the manners she has worn since the day she walked into your council with a scroll under the Queen's seal come off all at once: the ears she keeps so correctly upright at the table tip back, pleased, and the tail she holds in a careful curl through every audience comes loose and sweeps out behind her in the lamplight, slow, russet and pale-tipped, like a banner let down from a wall.{/n}
 "I have wanted this since you shouted at my carriage. Take this robe off me. Slowly. I want to watch your hands."
 {n}You do it slowly. She lets the outer robe slide from one shoulder, then the other, and stands in the lamplight with nothing on but her rings, and lets you look for exactly as long as she has decided you may. Then she kisses you, hard, her nails light at the back of your neck, her tail curling round the backs of your knees as if it had its own opinion about where you should stand.{/n}
@@ -494,7 +494,7 @@ physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"Yo
         forbids=(ACCREDITED,)),   # retired (PP5 r2): the first supper comes first
       c('"Business only, Lady Konomi. The council table is enough."', "business", flags=(ENVOY,)),
       c('[Accept her terms] "Done. I\'ll bring the wine; I expect to pay for it."', "supper")),
-    k("supper", '''"Then the first supper is tonight," she says, "and you are late for it."
+    k("supper", '''"Then the first supper is tonight," {n}she says,{/n} "and you are late for it."
 {n}She sends the chancery boy for bread, cold fowl and a wine she names without looking at any list, and clears exactly half the desk. The other half keeps her ledger, open.{/n}
 {n}She eats the way she argues, neatly and without wasting anything, and lets you talk about the council for the length of one glass. Then she sets her cup down.{/n}
 "You could have left the jug in that chair until the war ended. Nobody at your table would have noticed. Why did you want a stranger there, Commander? Not Nerosyan. A stranger."''',
@@ -511,13 +511,13 @@ physical("konomi.trickster.never_arrived.rooms", "The account for the jug", '"Yo
 {n}For a moment she looks as though she means to bill you for it. Then she laughs, low, the first unguarded sound you have heard from her.{/n} "Nobody has ever gone to so much trouble to be rude to me."''',
       c("Continue", "stay")),
     k("stay", '''{n}The candle is half gone. The chancery boy comes back for the plates and is sent away again without them.{/n}
-"The terms said supper," she says. "They said nothing about when supper ends."''',
+"The terms said supper," {n}she says.{/n} "They said nothing about when supper ends."''',
       c("[Stay.]", "accept", flags=(ROOMS_KEPT,))),
     nar("accept", '''{n}She comes round the desk, takes the account out of your hand and drops it in the drawer, and then takes you by the front of your coat and walks you back until the edge of her desk is behind your knees. Her rings come off one at a time into the inkwell lid, unhurried, as if she were laying down a hand of cards. The court silks go over her head; she sweeps the ledger off the desk with her tail and sits you down on the cleared wood, and settles across your lap with one knee either side of you, and puts her hands flat on your chest as if she were still deciding the price.{/n}
 {n}"I lose this argument," she says against your mouth, "on purpose. Do not get used to it," and pushes you down.{/n}''',
       c("Continue", "morning")),
     k("morning", '''{n}In the morning she is at the desk again, dressed, writing, with your coat over the back of her chair as if she had won it.{/n}
-"I have entered last night as a supper," she says, without looking up. "The wine is on your account. The rest is not for sale." {n}Her ears are pink to the tips.{/n} "Same time next week, Commander. Do not be late twice."''',
+"I have entered last night as a supper," {n}she says, without looking up.{/n} "The wine is on your account. The rest is not for sale." {n}Her ears are pink to the tips.{/n} "Same time next week, Commander. Do not be late twice."''',
       c('"Same time next week."', flags=("konomi.lovers",))),
     k("business", '''"Business only." {n}She opens the thin ledger again and writes one line in it, very neatly.{/n} "Then I shall be your envoy, Commander, and Nerosyan shall have my honest opinion of you every week, in cipher. You will not enjoy it."''',
       c('"I\'m sure it will."')),
@@ -536,20 +536,20 @@ letter("konomi.trickster.never_arrived.arrival", "A stranger in the attaché's o
 # --- Epilogue: paragraphs on her registered endings, and her own pages (R2-6) ---------------------------------------
 
 TRICKSTER_PARAGRAPHS = (
-    p("Lady Konomi reached Nerosyan eventually. She never explained the delay, and she billed the crown for three days of "
-      "travel that had taken her nowhere.", requires=(RECESSED,), forbids=(OUTFOXED,)),
-    p("In Nerosyan they said the new envoy to Drezen had been appointed by the Commander, at her own suggestion, on terms "
-      "nobody else was shown.", requires=(RECESSED, OUTFOXED)),
-    p("She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.",
+    p("{n}Lady Konomi reached Nerosyan eventually. She never explained the delay, and she billed the crown for three days of "
+      "travel that had taken her nowhere.{/n}", requires=(RECESSED,), forbids=(OUTFOXED,)),
+    p("{n}In Nerosyan they said the new envoy to Drezen had been appointed by the Commander, at her own suggestion, on terms "
+      "nobody else was shown.{/n}", requires=(RECESSED, OUTFOXED)),
+    p("{n}She kept the unnamed favour for years, and mentioned it only when the Commander seemed in danger of forgetting it.{/n}",
       requires=(FAVOUR,)),
-    p("Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's request. Lady Konomi had "
+    p("{n}Nerosyan's archive holds one dispatch with a word crossed out and six words added at a dead woman's request. Lady Konomi had "
       "it framed, and billed the crown for the frame. Every envoy who ever sat across from her read it, and asked, and was "
       "told plainly that she had died at her post and come back on her own fee. None of them ever again quite trusted a "
-      "Commander who could afford it.",
+      "Commander who could afford it.{/n}",
       requires=(RETURNED, RECALLED)),
-    p("In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', entered from "
+    p("{n}In the Royal Council's register for that year, column four still reads 'credentials presented, Drezen', entered from "
       "a dovecote's report two days before anyone left the capital. Auditors query it every spring. Lady Konomi signs the "
-      "query every spring, and sends it back.", requires=(RETURNED, ACCREDITED)),
+      "query every spring, and sends it back.{/n}", requires=(RETURNED, ACCREDITED)),
 )
 
 SCENES.append(scene("konomi.trickster.epilogue.commit", "Accepted in advance", "Epilogue", 5, "", [
@@ -563,7 +563,7 @@ SCENES.append(scene("konomi.trickster.epilogue.commit", "Accepted in advance", "
       c(), paragraphs=TRICKSTER_PARAGRAPHS),
     nar("terms", '''{n}The Commander sent it back with a single clause added: 'Not to be recalled by anyone. Including me.'{/n}
 {n}She arrived the next morning with the dispatch in one hand and her travelling case in the other, and read the clause aloud in the doorway, twice, the way she read treaties. Then she set the case down.{/n}
-"That," she said, "is the first sensible thing you have ever written me."
+"That," {n}she said,{/n} "is the first sensible thing you have ever written me."
 {n}She stayed. She was never recalled by anyone again.{/n}''',
       c(), paragraphs=TRICKSTER_PARAGRAPHS),
     nar("dinner", '''{n}The Commander sent it back unsigned, folded round an invitation to dinner.{/n}

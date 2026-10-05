@@ -133,11 +133,11 @@ s("the_answer_on_record", "The answer she puts her name to", '"What did the circ
       c('[Keep her hand and ask for a quiet walk together.]', "walk")),
     n("kiss", "Narrator", '''{n}Konomi meets you halfway. Her other hand comes to the back of your neck, and the careful pause after the first kiss lasts only until you draw her closer.{/n}
 {n}When she finally lets you move back, she is smiling without trying to make it look like a favorable assessment.{/n}
-"Yes," she says, though you have asked no question.
+"Yes," {n}she says, though you have asked no question.{/n}
 {n}She puts the case beneath the desk, well away from the chair beside her. You remain with her while the light changes at the window.{/n}''', c('[Keep the rest of the visit for each other.]', flags=("konomi.political_reply_kept", "konomi.political_reply_kissed"))),
     n("walk", "Narrator", '''{n}She agrees at once, then spends a moment looking for the gloves she put inside her own case. You wait while she finds them. She gives you a look that discourages the most obvious remark and invites a better one.{/n}
 {n}Outside, she takes your arm. You choose the first turning; she chooses the next. Neither has an appointment at the end of the street.{/n}
-"There," she says. "We have found a use for two people who insist on choosing."
+"There," {n}she says.{/n} "We have found a use for two people who insist on choosing."
 {n}You walk until she declares the street exhausted of interest and steers you back toward her door by the elbow.{/n}''', c('[Enjoy the walk and return together.]', flags=("konomi.political_reply_kept",))),
 ], after=("konomi.political_terms_sent",), delay=168)
 

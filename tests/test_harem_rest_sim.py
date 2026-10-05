@@ -42,13 +42,15 @@ class FullRosterBudget(unittest.TestCase):
                 self.assertEqual(result['pair_eligibility'], start5 + 24 * 24)
                 self.assertEqual(result['chapters'][1]['deadline_misses'], [])
                 self.assertEqual(result['chapters'][1]['optional'], 20)
-                self.assertEqual(result['chapters'][1]['protected'], 41 + int(rematch))
+                # eng7-f3: three flavour beats are unkeyed, not protected dockets.
+                self.assertEqual(result['chapters'][1]['protected'], 38 + int(rematch))
+                self.assertEqual(result['chapters'][1]['dynamic'], 3)
                 for chapter in result['chapters']:
                     self.assertLessEqual(chapter['load'], 1.0)
                     by_hour = {}
                     for hour, allowance, ref in chapter['slots']:
                         by_hour[hour, allowance] = by_hour.get((hour, allowance), 0) + 1
-                    self.assertTrue(all(count <= (1 if key == 'household.pair' else 2)
+                    self.assertTrue(all(count <= (1 if key in ('household.pair', None) else 2)
                                         for (_, key), count in by_hour.items()))
 
     def test_missing_native_walk_cannot_be_reported_as_a_reachability_proof(self):

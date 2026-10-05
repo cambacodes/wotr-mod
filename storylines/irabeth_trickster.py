@@ -154,7 +154,7 @@ CALL_TEXT = '''"I will call her. Once. A raise is a summons, not a leash; if she
 {n}At the door he stops.{/n}
 "She will ask whose it was. I will not lie to her."'''
 BOUGHT_TEXT = '''{n}The Queen's household keeps a jeweller in Drezen for the crown's use. He does not keep diamonds of that size for anyone else's, and he names a price for the one he has that makes the treasurer sit down.{/n}
-"Two, then," the chaplain says, when it is on the altar beside the first. "The boy first, as the list says. Then her, if she will come." {n}He looks at the second stone, and then at you.{/n} "That is a great deal of the crusade's bread, Commander, for one knight's answer."'''
+"Two, then," {n}the chaplain says, when it is on the altar beside the first.{/n} "The boy first, as the list says. Then her, if she will come." {n}He looks at the second stone, and then at you.{/n} "That is a great deal of the crusade's bread, Commander, for one knight's answer."'''
 
 
 def list_nodes(p, argue):
@@ -221,7 +221,7 @@ letter("irabeth.trickster.dead.raise_list", "Diamond for one", [
       c("Continue", "toast", requires=(LATE,), forbids=(STANDING,)),
       c("Continue", "salute", forbids=(STANDING, LATE))),
     nar("roster", '''{n}You have the duty roster brought over from the barracks and laid open beside his list. Under her name, in her own square hand: "To report to the Commander in person. Not to be struck off except by the Commander."{/n}
-"She wrote that herself," he says. "I know the hand." He reads it twice, the way she would have.''',
+"She wrote that herself," {n}he says.{/n} "I know the hand." {n}He reads it twice, the way she would have.{/n}''',
       c("Continue", "call")),
     nar("toast", '''"And you will tell me she is still on duty because a drunk knight answered 'present' for her at your toast."
 {n}You tell him exactly that. You also tell him who signs the chapel's requisitions.{/n}''',
@@ -310,7 +310,7 @@ letter("irabeth.trickster.killed.late_step", "The report of the day", [
       c('[Finish his line for him, then take his list] "Slain by me. Write it. Then put her name at the top of your raise list."',
         "record")),
     nar("lie", '''{n}He writes it. His hand shakes on "stepped", and the word comes out crooked. When he is done he sands the page, folds it, and gives it to the knight to carry to the archive.{/n}
-"I will remember the other one, Commander," he says, very quietly. "Every day. So will he."
+"I will remember the other one, Commander," {n}he says, very quietly.{/n} "Every day. So will he."
 {n}The knight with the candle does not say anything. By the end of the week the whole order has heard some version of it, and no two versions agree.{/n}''',
       c('"Remember what you like. File what I said."')),
     nar("stands", '''{n}He finishes the line in your words. He does not soften them. When he is done he looks at the page, then at you, and nods once, as if you had passed something.{/n}''',
@@ -537,7 +537,7 @@ physical("irabeth.trickster.commit", "Off the record", '"Knight-Captain. Off the
       c('[Salute] "Dismissed, Knight-Captain. For tonight."', flags=("irabeth.trickster.friends",)),
       c('"Something\'s stopping you. Say it."', "no", requires=("anevia_gone",), forbids=(A_RET,)),
       c('"Something\'s stopping you. Say it."', "no_home", requires=(SHARES,)),
-      c('[Kiss her] "Irabeth." Not her rank. Her name.', "reckon", requires=(SHARES,), forbids=(LIED,),
+      c('[Kiss her] "Irabeth." {n}Not her rank. Her name.{/n}', "reckon", requires=(SHARES,), forbids=(LIED,),
         flags=("irabeth.committed",)),
       c('[Wait for her to decide] "Whatever you want. Not an order."', "decides", requires=(SHARES,)),
       c('"Something\'s stopping you. Say it."', "no_gate", requires=(A_RET,), forbids=(SHARES,)),
@@ -666,44 +666,44 @@ physical("irabeth.trickster.nevi_reply", "Keeping it", '"The south-road courier 
 # --- Epilogue: one page, or paragraphs on her registered ending ----------------------------------------------------
 
 UNDER_ORDERS_PARAGRAPHS = (
-    p("She had come back because she was still on the Drezen roster, and she stayed under a vow she had sworn over "
+    p("{n}She had come back because she was still on the Drezen roster, and she stayed under a vow she had sworn over "
       "Teodor Vell's bier. His sword never left her side until the Wound was shut. Then she carried it to his mother in "
-      "Nerosyan herself, and stood in the doorway with her helmet under her arm until she was let in.", requires=(VELL,),
+      "Nerosyan herself, and stood in the doorway with her helmet under her arm until she was let in.{/n}", requires=(VELL,),
       forbids=(BOUGHT,)),
-    p("She had come back because she was still on the Drezen roster, on a diamond the crusade could not spare. Teodor "
+    p("{n}She had come back because she was still on the Drezen roster, on a diamond the crusade could not spare. Teodor "
       "Vell, called back the same night, served in her company for the rest of the war and never learned what the second "
-      "stone had cost; she saw to that, and saw to it that the company ate.", requires=(BOUGHT,)),
-    p("She had come back remembering two things at once: the Commander's blow, and the step. She never pretended the "
-      "first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.", requires=(BLOW,),
+      "stone had cost; she saw to that, and saw to it that the company ate.{/n}", requires=(BOUGHT,)),
+    p("{n}She had come back remembering two things at once: the Commander's blow, and the step. She never pretended the "
+      "first had not happened. She taught the step to every recruit who would hold their ground long enough to learn it.{/n}", requires=(BLOW,),
       forbids=(LIED, K_RAISED)),
-    p("The chapel's book of Iz kept both lines under her name for as long as there was a chapel in Drezen: struck down "
+    p("{n}The chapel's book of Iz kept both lines under her name for as long as there was a chapel in Drezen: struck down "
       "by the Commander, called back on the Commander's order. She read them once a year, on the day, and never asked "
-      "for either to be struck.", requires=(K_RAISED,)),
-    p("She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had "
-      "been blamed for enough already.", requires=(LIED,)),
-    p("When the Wound closed, she kept her vow to the hour and set the sword down at last. Anevia took the "
+      "for either to be struck.{/n}", requires=(K_RAISED,)),
+    p("{n}She served out the war exactly, and not one hour more. Of what happened at Iz she said only that the dragon had "
+      "been blamed for enough already.{/n}", requires=(LIED,)),
+    p("{n}When the Wound closed, she kept her vow to the hour and set the sword down at last. Anevia took the "
       "Commander's pen from wherever she had kept it through the war and handed it to her wife without a word. Irabeth signed her own discharge "
       "with it, and put it in her pocket instead of the roster. What she "
-      "did with the free hand was her own business, and she made sure everyone understood that.", requires=(SIGNED,)),
-    p("When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander "
+      "did with the free hand was her own business, and she made sure everyone understood that.{/n}", requires=(SIGNED,)),
+    p("{n}When the Wound closed, Irabeth Tirabade put her sword down at last, flexed the hand, and asked the Commander "
       "the question she had been saving: not as a knight, and not under orders. She asked it out loud, in the kitchen "
-      "of the house on the corner, with Anevia leaning in the doorway to hear it first.", requires=("irabeth.trickster.late_committed",),
+      "of the house on the corner, with Anevia leaning in the doorway to hear it first.{/n}", requires=("irabeth.trickster.late_committed",),
       forbids=("irabeth.committed", "irabeth.closed", DECLINED, "irabeth.trickster.friends", "anevia_gone")),
-    p("When the Wound closed, Irabeth Tirabade put her sword down at last, walked out of the gate to where her wife was "
+    p("{n}When the Wound closed, Irabeth Tirabade put her sword down at last, walked out of the gate to where her wife was "
       "waiting on the road side of the line, and came back with an answer from both of them. She asked the Commander "
-      "the question she had been saving: not as a knight, and not under orders.", requires=("irabeth.trickster.late_committed", A_RET),
+      "the question she had been saving: not as a knight, and not under orders.{/n}", requires=("irabeth.trickster.late_committed", A_RET),
       forbids=("irabeth.committed", "irabeth.closed", DECLINED, "irabeth.trickster.friends")),
-    p("The south-road courier caught her up after the Wound was closed, with the answer she had sent him for. Nevi had "
+    p("{n}The south-road courier caught her up after the Wound was closed, with the answer she had sent him for. Nevi had "
       "kept the pen. Irabeth went to find the Commander "
-      "without her sword.", requires=(PEN_SENT,), forbids=("irabeth.committed", "irabeth.closed")),
-    p("She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record. "
-      "The pen stayed with Nevi.", requires=("irabeth.trickster.asked_as_commander",), forbids=("irabeth.committed",)),
-    p("She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.",
+      "without her sword.{/n}", requires=(PEN_SENT,), forbids=("irabeth.committed", "irabeth.closed")),
+    p("{n}She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.{/n} "
+      "{n}The pen stayed with Nevi.{/n}", requires=("irabeth.trickster.asked_as_commander",), forbids=("irabeth.committed",)),
+    p("{n}She stayed the Commander's knight until the Wound was closed: loyal, exact, and never once off the record.{/n}",
       requires=(DECLINED,), forbids=("irabeth.committed", "irabeth.closed", "irabeth.trickster.asked_as_commander")),
-    p("She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took "
-      "it, and did not look back.", requires=("irabeth.closed",)),
-    p("She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her "
-      "Commander, who knew exactly how far the other would go.", requires=("irabeth.trickster.friends",),
+    p("{n}She stayed the Commander's knight, and that was all. When the discharge was finally signed she saluted, took "
+      "it, and did not look back.{/n}", requires=("irabeth.closed",)),
+    p("{n}She and the Commander stayed what they had agreed to be on the night of the salute: a Knight-Captain and her "
+      "Commander, who knew exactly how far the other would go.{/n}", requires=("irabeth.trickster.friends",),
       forbids=("irabeth.committed", "irabeth.closed")),
 )
 

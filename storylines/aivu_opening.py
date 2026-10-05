@@ -84,12 +84,12 @@ s("the_roof_below", "The roof below", '"Shall we look at your city from undernea
     n("start", "Aivu", '''{n}Aivu brings the map rolled around a stick. She has added three birds, a patch of weeds, and a shape labeled 'probably a cat.'{/n}
 "It was asleep. I didn't want to wake it just to ask."
 {n}At the laundry lane she stops. One of the poles supporting a drying awning leans away from its socket. A strip of fabric hangs from it. Beneath the awning, a young laundry hand is gathering damp shirts out of the dirt.{/n}
-"I did that," Aivu says.
+"I did that," {n}Aivu says.{/n}
 {n}The words come out before you can ask.{/n}
 "Yesterday. After we went away. I came back because the map didn't have the courtyard. I thought I could land on the wall. Then the cloth moved and I tried to miss it, and my wing hit the pole."
 {n}The laundry hand glances over. His knuckles are scraped. He lowers his eyes when he recognizes you.{/n}
-"I said I'd fix everything," Aivu adds. "I brought another pole. But it doesn't fit in the hole. And he won't tell me where they keep the tools."
-"My name's Jori," the young man says. "And I'm not putting a saw in a dragon's mouth."''',
+"I said I'd fix everything," {n}Aivu adds.{/n} "I brought another pole. But it doesn't fit in the hole. And he won't tell me where they keep the tools."
+"My name's Jori," {n}the young man says.{/n} "And I'm not putting a saw in a dragon's mouth."''',
         c('"Let us hear what Jori needs before we promise anything else."', "listen"),
         c('"We should ask Nessa to lend us the proper tools and show us."', "listen"),
         c('"We need time to do this properly. I will return."', abort=True)),
@@ -98,25 +98,25 @@ s("the_roof_below", "The roof below", '"Shall we look at your city from undernea
 "I know! I said I was sorry."
 "You did. Jori heard you. He also heard you coming down behind him. Give him a little room."
 {n}Aivu retreats a pace. Jori's shoulders loosen.{/n}
-"I thought the whole wall was falling," he says. "Then I thought it was a demon. Then I thought I was an idiot for thinking it was a demon. It was a busy moment."
+"I thought the whole wall was falling," {n}he says.{/n} "Then I thought it was a demon. Then I thought I was an idiot for thinking it was a demon. It was a busy moment."
 "I'm not a demon."
 "I know that now."
 {n}Aivu looks at his scraped hand. She does not repeat herself.{/n}
 "I can carry water. I won't spill it."
-"You might," Nessa says. "Everyone does. Start with one bucket."
+"You might," {n}Nessa says.{/n} "Everyone does. Start with one bucket."
 {n}The awning can be restored today if you work beside Nessa while Jori rewashes the shirts. Or you can help with the shirts, leaving Jori the quieter task of fitting the pole with Nessa. Neither job will finish itself.{/n}''',
         c('[Work on the awning. Give Jori space to choose when he speaks to Aivu.]', "pole"),
         c('[Help wash the shirts. Let Aivu carry water to your shared work.]', "water")),
     n("pole", "Aivu", '''{n}Nessa hands you a rasp and shows you where the new pole catches. Aivu watches the first few strokes, then takes her bucket toward the pump. She walks, although the detour visibly annoys her.{/n}
 {n}By the fourth trip she has learned to stop before putting the bucket down. By the sixth, Jori has begun to point where he wants it. Neither makes a ceremony of this.{/n}
-"How many more?" she asks.
+"How many more?" {n}she asks.{/n}
 "Two. Then clean water for the rinse."
 "That sounds like more than two."
 "It is."
 {n}She looks longingly up the lane, then takes the empty bucket.{/n}
 {n}You fit the pole twice before Nessa is satisfied. When it stands firm, Aivu asks whether she may hold the fabric clear while you tie it. Jori says he can manage. She lets him.{/n}
 {n}At last the awning throws a straight-edged patch of shade across the courtyard. Jori sits in it to eat. Aivu remains by the gate.{/n}
-"He still doesn't want me close," she whispers.
+"He still doesn't want me close," {n}she whispers.{/n}
 "He may need longer."
 "The pole didn't."
 {n}She knows the difference. The unfairness of it still troubles her.{/n}
@@ -124,7 +124,7 @@ s("the_roof_below", "The roof below", '"Shall we look at your city from undernea
         c('"That is a promise you can keep."', flags=("aivu.repaired", "aivu.jori_space"))),
     n("water", "Aivu", '''{n}Jori gives you the shirts as readily as if you had always worked here. His relief at leaving the washing trough is rather less professional.{/n}
 {n}Aivu carries water from the pump. She fills the first bucket too high and arrives with wet forelegs. You wring out a shirt and wait while she experiments with the second. She learns to stop before lowering it, instead of setting it down at the end of a lurch.{/n}
-"This shirt is much smaller than it was," she observes.
+"This shirt is much smaller than it was," {n}she observes.{/n}
 "It is folded."
 "I know! I was checking whether you knew."
 {n}From the pole comes a brief laugh. Jori works the rasp again before Aivu can look around.{/n}
@@ -157,7 +157,7 @@ s("a_way_for_feet", "A way for feet", '"Have you found the next place for your m
 {n}She settles back from the entrance, where she can spread her wings without touching either wall.{/n}
 "I can watch the outside. And you can tell me what the cart is doing. No going quiet and then making a crash."
 {n}You inspect the stones around the axle. The arch itself appears sound, but hauling on the cart might dislodge the loose heap beside it. Nessa has a rope; she also has work to finish before she can lend a hand. There is no urgent reason to hurry.{/n}
-"Could we take the cart apart?" Aivu asks. "It doesn't look as if anyone is going to use it. Except spiders. We'd have to warn them."
+"Could we take the cart apart?" {n}Aivu asks.{/n} "It doesn't look as if anyone is going to use it. Except spiders. We'd have to warn them."
 {n}A crow lands on the wall above her. She looks up, offended by its easy view.{/n}
 "Or you could find which stone is holding it. I can see the top, but not the bottom."''',
         c('[Inspect the axle and the heap before moving anything. Perception DC 18.]', check=dict(Skill="SkillPerception", DC=18, Success="lever", Failure="wait")),
@@ -174,8 +174,8 @@ s("a_way_for_feet", "A way for feet", '"Have you found the next place for your m
         c('[Help her mark both ways accurately.]', flags=("aivu.shortcut_open", "aivu.cart_whole"))),
     n("wait", "Aivu", '''{n}The heap refuses to reveal a safe first move. You leave the cart where it is and ask Nessa for help. She cannot come until the washing is hung. Aivu wants to assist, but waits at the courtyard entrance until invited.{/n}
 {n}The three of you return with a saw, a hammer, and rope. Nessa braces the cart while you remove the handles. Aivu holds the rope from the open lane, keeping the broken frame from sliding farther into the passage. It is slow work. Twice she asks whether the next part will be the last. Twice Nessa says no.{/n}
-"I thought being helpful would have more exciting bits," Aivu confides.
-"You can stop when you need to," Nessa says. "Tell us first."
+"I thought being helpful would have more exciting bits," {n}Aivu confides.{/n}
+"You can stop when you need to," {n}Nessa says.{/n} "Tell us first."
 {n}Aivu asks for a break. You prop the frame securely and sit in the sun. When she is ready, the work resumes without anyone calling her lazy.{/n}
 {n}By the time the cart is out, it is a stack of salvageable boards. Nessa takes those home for kindling. Aivu marks the cleared passage but keeps a second arrow around the outside.{/n}
 "That's my way. The other one is for buckets. And people carrying buckets. The buckets shouldn't go alone."
@@ -186,11 +186,11 @@ s("a_way_for_feet", "A way for feet", '"Have you found the next place for your m
 {n}Aivu considers the dark corner, then backs into the lane. She shakes her wings out one at a time.{/n}
 "We should tell Nessa before she thinks we've fixed it. I didn't promise, but I did say it was a very good shortcut."
 {n}Nessa listens to your account of the wedged axle. She is disappointed, but agrees that moving the cart without proper help is a poor bargain for a few saved steps. She will ask a carpenter when one next comes for laundry.{/n}
-"So my map has a wrong bit," Aivu says.
-"Your map has a bit that needs changing," Nessa replies. "Mine would have the old passage open. Yours will be better."
+"So my map has a wrong bit," {n}Aivu says.{/n}
+"Your map has a bit that needs changing," {n}Nessa replies.{/n} "Mine would have the old passage open. Yours will be better."
 {n}You retrace the longer route with an empty bucket. Aivu counts your steps aloud until you lose count laughing. On the second attempt she keeps quiet, tapping a claw against the paper at each turn.{/n}
 {n}She draws a cross over the blocked alley. Beside it she adds the crooked outline of the cart, so no one will mistake the mark for a closed shop.{/n}
-"I don't like leaving it there," she says. "But I like knowing where it is. Someone else can decide about the cart. I'm deciding about the map."''',
+"I don't like leaving it there," {n}she says.{/n} "But I like knowing where it is. Someone else can decide about the cart. I'm deciding about the map."''',
         c('[Finish the longer route with her.]', flags=("aivu.shortcut_marked",))),
 ], requires=("aivu.the_roof_below",), delay=48)
 
@@ -209,7 +209,7 @@ s("someone_elses_turn", "Someone else's turn", '"Is your map ready for a travele
         c('[Show her which side gives directions.]', "sides", requires=("aivu.map_two_sides",))),
     n("names", "Aivu", '''{n}Nessa locates her laundry, then reads its grander name with a snort.{/n}
 "That is going to stick. I can tell."
-"It's a good name," Aivu says hopefully.
+"It's a good name," {n}Aivu says hopefully.{/n}
 "It is a very long name. Look here, though. Your sock has covered the turn into the lane."
 {n}Aivu reaches toward the paper, then stops herself.{/n}
 "I can move the sock when you come back. Can you find the turn anyway?"
@@ -235,10 +235,10 @@ s("someone_elses_turn", "Someone else's turn", '"Is your map ready for a travele
 "He looked at the map before he looked at my wings. Did you see?"
 "I saw."
 "Good. I wanted someone else to see, too."''', c('[Listen for Nessa returning.]', "route")),
-    n("talked", "Aivu", '''"That's a sock," Jori says. "Unless you've found a very strange bucket."
+    n("talked", "Aivu", '''"That's a sock," {n}Jori says.{/n} "Unless you've found a very strange bucket."
 "Everyone is very certain about buckets. Have you noticed?"
 {n}He laughs and sets the basket down. She moves her tail so it will not strike his ankle.{/n}
-"I told Nessa I can come with you next time you look at the roofs," he says. "From the street. Someone should tell you which ones leak."
+"I told Nessa I can come with you next time you look at the roofs," {n}he says.{/n} "From the street. Someone should tell you which ones leak."
 "You want to come?"
 "If you want another pair of eyes."
 "Yes! But we aren't going on all of them. We're asking first."
@@ -256,7 +256,7 @@ s("someone_elses_turn", "Someone else's turn", '"Is your map ready for a travele
 "Did you mind?"
 "I minded carrying the water. I didn't mind knowing where to carry it."
 {n}Nessa returns the map. She has noticed one confusing arrow at the step. You correct it together, and Aivu makes you approach from both directions to check that neither traveler is sent sprawling.{/n}
-"When the carpenter comes," Nessa adds, "I'll tell you if the cart moves."
+"When the carpenter comes," {n}Nessa adds,{/n} "I'll tell you if the cart moves."
 "Then I'll come change it."
 {n}Aivu says this with more confidence than she showed when promising to fix everything. She knows exactly which little cross she will have to rub out.{/n}''', c('[Sit beside the finished corrections.]', "keep")),
     n("keep", "Aivu", '''{n}Aivu rolls the map, then unrolls it again. The paper is softer at its creases now. There are fingerprints near the laundry and a water mark beside the pump.{/n}
@@ -266,7 +266,7 @@ s("someone_elses_turn", "Someone else's turn", '"Is your map ready for a travele
 {n}She turns that over in her mind, then pushes the smooth arrow-stone toward you.{/n}
 "You can keep this until next time. Then we'll have to meet to turn the city the right way up."
 {n}Nessa would like to keep a copy by the laundry door for new workers. Aivu also wants the original for her own explorations. Copying it will take another afternoon, especially if every bird must be preserved.{/n}
-"You don't have to come for the copying," she says. "I can ask Jori to help with the letters. But you can if you want. Or we can just look for somewhere new. Somewhere with a garden, perhaps."
+"You don't have to come for the copying," {n}she says.{/n} "I can ask Jori to help with the letters. But you can if you want. Or we can just look for somewhere new. Somewhere with a garden, perhaps."
 {n}She has plans that continue when you leave. She still wants to know which of them you would like to share.{/n}''',
         c('"Let us make the laundry copy together. You can decide which birds it needs."', "copy"),
         c('"Keep the original for yourself. Next time, show me the garden in the cart."', "explore")),

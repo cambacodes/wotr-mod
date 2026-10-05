@@ -91,7 +91,7 @@ hub(COMPLAINT, "A formal complaint", 3, '"I hear you\'ve been sent for."', [
         c('"If you want to go, go. It was always your choice."', "choice", flags=(COMPLAINT,))),
     a("against", '''{n}Her mouth falls open. Then she laughs, and it is not the startled laugh; it is something rougher and prouder.{/n}
 "The only chaplain who knows exactly what she's blessing them against." {n}She says it again, slowly, to keep it.{/n} "I'm going to write that on the vestry door. He's going to see it every morning." {n}She hesitates.{/n} "You know he'll only write again."
-"Let him," you tell her. "I'll give him a seat in the front pew for your first sermon."''', c()),
+"Let him," {n}you tell her.{/n} "I'll give him a seat in the front pew for your first sermon."''', c()),
     a("choice", '''{n}She stands there, holding the censer she brought to hand back.{/n}
 "It was always my choice." {n}She sets the censer down on your table, and then, slowly, picks it up again.{/n} "Then I choose to keep it. Not because you said so. Because the second company asked me to bless their swords before the march, and I said yes, and I'm not going to go back on a yes." {n}She turns at the door.{/n} "Tell the chapter-master I'll pray for him. He'll hate that."''', c(flags=(STAYS_CHAPLAIN,))),
 ], (CHAPLAIN,), delay=48, chapters=(3, 5))

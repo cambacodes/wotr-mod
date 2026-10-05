@@ -1,15 +1,13 @@
-"""eng7-f6d: authored corrections after Terendelev's paid Trickster restitution.
+"""eng7-f6d: saved scenes retained after consolidation with eng7-f6c.
 
-The funeral cue has no progression actions and is hidden. The scale inquiry
-keeps its native Conditional/GiveObjective and continuation into her corruption
-story. The obsolete future question is hidden and an answer is appended to its
-existing list. No correction grants the old trapped-voice evidence or a return.
+The active corrections live in engine_f6c. These duplicate deliveries are
+retired by chapter gating, retaining every saved scene, node and choice.
+The native future question stays available with its corrected reply.
 Source: blueprints.zip, StoryTeller_MainDialogue/Cue_0765, Cue_0777,
 Cue_0785, Answer_0784 and AnswersList_0783; enGB.json.
 """
 from copy import deepcopy
 from story_format import c, n, scene
-from storylines.native_overrides import declare
 
 RETURNED = "terendelev.trickster.returned"
 WHEN = [["trickster.ever", RETURNED]]
@@ -41,19 +39,10 @@ SCENES = [
 
 
 def integrate(payload):
-    payload["Scenes"].extend(deepcopy(SCENES))
-    for target, gate, kind in (
-        ("21b10801b6c2b194d92506a137ef1307", "terendelev.scale_funeral", "cue"),
-        ("fd39fd84212de2047b6b887c9a9cf28e", "terendelev.trapped_future", "answer"),
-    ):
-        declare(payload, source=__name__, target=target, target_type=kind, action="HIDE", key=gate,
-                spec=dict(Target=target, Relationship="terendelev", When=WHEN))
-    for target, parent, key, replacement in (
-        ("c68d9b3a2b887f645ac539f996a63a92", "31665b38d6922ef4ab4cb83afa8245fe",
-         "222096f4-434d-4e8c-99c5-67c070fb21c8", SCENES[0]["Id"]),
-        (FUTURE_CUE, "fd39fd84212de2047b6b887c9a9cf28e",
-         "da750b86-b8b0-4a2f-a6d4-fea3512327b0", SCENES[1]["Id"]),
-    ):
-        declare(payload, source=__name__, target=target, target_type="cue", action="REPLACE",
-                spec=dict(Parent=parent, Dialog="bf328bcec67a5014f9a56ee6220f3bcc", Key=key,
-                          Replacement=replacement, When=WHEN))
+    # eng7-integ3: f6c owns these native corrections. Keep every f6d scene,
+    # node and answer for saves, but retire its duplicate deliveries. The
+    # original future question remains native and reaches the corrected cue.
+    retired = deepcopy(SCENES)
+    for page in retired:
+        page["Forbids"].append("chapter_later")
+    payload["Scenes"].extend(retired)

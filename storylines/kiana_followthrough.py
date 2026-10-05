@@ -53,22 +53,22 @@ s("bakery_stairs", "The room above the bread", [
 "Come with me."''', c('[Take her hand and climb.]', "room")),
     n("room", "Narrator", '''{n}Meral is an angular man with paint on his sleeve and spectacles that slip whenever he looks down. He opens the door before Kiana can knock twice.{/n}
 "You found it. Mind the shelf."
-"Everyone has been warning me about furniture lately," Kiana says. "I am beginning to take it personally."
+"Everyone has been warning me about furniture lately," {n}Kiana says.{/n} "I am beginning to take it personally."
 {n}The room is smaller than the table's difficult ascent had suggested. Meral has painted one wall cream; the next still carries a square of darker color where somebody's cupboard stood. Edris sits on the bed with a bundle of folded paper.{/n}
-"I brought enough for everybody," Meral says, noticing the loaf.
-"You may keep your own half-eaten contribution," Kiana tells him. "This is ours."
+"I brought enough for everybody," {n}Meral says, noticing the loaf.{/n}
+"You may keep your own half-eaten contribution," {n}Kiana tells him.{/n} "This is ours."
 {n}He laughs and moves a stool away from the shelf. Kiana tests it before sitting, then pats the place beside her on the window ledge.{/n}''', c('[Divide the bread while Edris unfolds the papers.]', "offer")),
     n("offer", "Kiana", '''{n}"There," Edris says. "Names of people who asked about your princess. I didn't invite them. I remembered what you said."{/n}
 "How many people did you tell?"
 "Enough to get these names."
 {n}Kiana counts, loses her place, and starts again.{/n}
 "They won't all fit here."
-"The baker lets a room at the back on afternoons when she isn't storing sacks in it," Meral says. "I asked the price. Then I thought I had better ask you."
+"The baker lets a room at the back on afternoons when she isn't storing sacks in it," {n}Meral says.{/n} "I asked the price. Then I thought I had better ask you."
 "In that order?"
 "Prices are easier to ask."
 {n}Kiana takes the list from Edris. Her smile has become intent.{/n}
 "I could read part of it. Properly this time. With the end written down before I arrive."
-"People could put something toward the room," Edris says.
+"People could put something toward the room," {n}Edris says.{/n}
 "People could also dislike it and tell their friends. I should like to be paid before that stage of the arrangement."
 {n}She is joking, but her finger stays on the list.{/n}''',
       c('"Read it to people who have not heard it. Find out what survives a roomful of strangers."', "audience", flags=("kiana.follow_audience",)),
@@ -132,7 +132,7 @@ s("last_page", "The sentence she keeps", [
       c('"Keep the question at the end. Cut the explanations and let the guest answer it."', "cut", flags=("kiana.follow_short_speech",))),
     n("keep", "Kiana", '''"Yes. The third image needs somewhere to land. I have been running at it as if I were afraid you would stop me."
 {n}She stands, puts the page on the mantel and begins again. This time she stops after the first grand claim. Her hand remains extended toward an invisible guest until she grows visibly tired of holding it there.{/n}
-"You may sit down," she says at last, with the exhausted dignity of a woman defeated by her own hospitality.
+"You may sit down," {n}she says at last, with the exhausted dignity of a woman defeated by her own hospitality.{/n}
 {n}You laugh. Kiana drops the pose.{/n}
 "That. I want that. It takes longer, but there is a person inside it now."
 {n}She marks two pauses, then hesitates over the third.{/n}
@@ -186,7 +186,7 @@ s("first_readers", "People who have not heard it", [
       c('[Find a place in the larger room.]', "public_room", requires=("kiana.follow_audience",)),
       c('[Join the small circle upstairs.]', "small_room", requires=("kiana.follow_workshop",))),
     n("public_room", "Kiana", '''{n}The baker's back room smells of flour and damp stone. There are fourteen people, two more than the chairs will accommodate. Meral gives up his seat and finds a crate for himself.{/n}
-"I shall begin," Kiana says, before anyone can offer another chair. "There is a princess. She is not a wise woman. This is unfortunate for her household and convenient for the story."
+"I shall begin," {n}Kiana says, before anyone can offer another chair.{/n} "There is a princess. She is not a wise woman. This is unfortunate for her household and convenient for the story."
 {n}Someone laughs near the back. Kiana's grip on the pages loosens.{/n}
 "If you cannot hear, tell me. If you disagree with the princess, wait. Somebody else probably does too."
 {n}Edris closes the door, keeping the jar for room contributions on a stool beside it. Kiana watches one late arrival put in a coin, then makes herself look away.{/n}''', c('[Listen as she begins.]', "entrance")),
@@ -203,7 +203,7 @@ s("first_readers", "People who have not heard it", [
     n("quiet_entrance", "Narrator", '''{n}She speaks the threat quietly, as she did when you rehearsed in the storeroom. A listener leans forward. Kiana holds the silence until Lenna breaks it with the cook's perfectly ordinary question about supper. The grand danger collapses into domestic inconvenience, and Kiana lets the laugh come before she answers.{/n}''', c('[Follow the cook into the argument.]', "role")),
     n("comic_entrance", "Narrator", '''{n}Kiana lets her sleeve catch on the chair beside her. She frees it without admitting that anything has happened, exactly as she practiced in the borrowed castle. The first laugh comes before the princess has finished her threat. Kiana waits for it this time, preserving her dignity while Lenna prepares to dispose of the rest.{/n}''', c('[Follow the cook into the argument.]', "role")),
     n("role", "Narrator", '''{n}Lenna reads the cook as a woman who has endured the princess for too many years to be impressed by a dramatic entrance. Her first question concerns the missing supper. Kiana gives her a lofty answer about matters of the heart.{/n}
-"Will they be eating?" Lenna asks.
+"Will they be eating?" {n}Lenna asks.{/n}
 {n}The laugh is larger than Kiana expected. She waits for it, smiling into the edge of her page.{/n}''',
       c('[Read the guest, arriving in the middle of their argument.]', "guest_role", requires=("kiana.follow_guest_role",)),
       c('[Listen as Edris brings the guest into the argument.]', "audience_role", requires=("kiana.follow_listens",))),
@@ -217,7 +217,7 @@ s("first_readers", "People who have not heard it", [
       c('[Follow the pauses in the longer speech.]', "long", requires=("kiana.follow_long_speech",)),
       c('[Hear the shortened question and its answer.]', "short", requires=("kiana.follow_short_speech",))),
     n("long", "Narrator", '''{n}The first pause earns a laugh. The second earns a smaller one. At the third, a chair scrapes while somebody shifts an aching leg. Kiana's eyes flick toward the sound. She reaches for the next line too quickly, swallows the end of it, and stops.{/n}
-"The princess is considering whether she has made a mistake," she says. "Give her a moment. She is unused to the activity."
+"The princess is considering whether she has made a mistake," {n}she says.{/n} "Give her a moment. She is unused to the activity."
 {n}The room laughs again. Kiana takes a breath and returns to the question. This time she lets it be plain. The guest asks to move the chair away from the draft. Lenna, waiting with the imaginary supper, snorts before she is meant to enter.{/n}
 {n}Kiana gets through the final page without another rush, but the third pause stays marked beneath her thumb.{/n}''', c('[Stay through the final exchange.]', "response")),
     n("short", "Narrator", '''{n}Kiana reaches the question sooner than some listeners expect. A man near the door is still smiling at the cook when the princess asks her guest to sit down. The reply about the draft receives a surprised laugh.{/n}
@@ -234,10 +234,10 @@ s("first_readers", "People who have not heard it", [
 "Did you mean it?"
 "I think I did. I should like to take the credit after the fact."
 {n}She writes the woman's phrase on the back of her page, asking how to spell her name before she does.{/n}''', c('[Help her collect the scattered pages.]', "cost")),
-    n("ask_response", "Kiana", '''"Which part?" she asks.
+    n("ask_response", "Kiana", '''"Which part?" {n}she asks.{/n}
 {n}The man who liked the unreasonable princess points to the cook's entrance. He enjoyed the way Kiana tried to keep being grand while somebody was asking about dinner. Kiana makes him repeat the particular line.{/n}
 "That was Lenna's. She refused to say it the way I wrote it."
-"Because nobody would say it that way," Lenna replies.
+"Because nobody would say it that way," {n}Lenna replies.{/n}
 {n}Kiana crosses out her original wording in front of them.{/n}
 "There. A small public defeat. I expect it will improve the play."
 {n}She smiles at Lenna, who looks absurdly pleased for a woman who has been arguing the point all afternoon.{/n}''', c('[Collect the pages once the questions have ended.]', "cost")),
@@ -370,13 +370,13 @@ s("working_room", "A place for the unfinished", [
 {n}She reads a page from each copy, checking the same passage. The words agree. She pays Meral the sum on his estimate, then gathers the copies with a pleased care she cannot quite disguise.{/n}
 "They look as though someone meant them to be read."
 {n}Meral carries his account book downstairs, leaving her the table. She lays out the new story and begins. Before she reaches the end of a sentence, somebody knocks to ask whether Meral has finished a bill.{/n}
-"Downstairs," Kiana says.
+"Downstairs," {n}Kiana says.{/n}
 {n}She starts again. A second knock follows almost at once.{/n}
 "If that is the same bill, I have begun to resent it personally."''', c('[Wait while she deals with the visitor.]', "shared_cost")),
     n("shared_cost", "Kiana", '''{n}It is Edris, returning a stool. Kiana lets her in, then realizes she has stood up to welcome exactly the kind of interruption she meant to prevent.{/n}
 "Put it there. Sit on it if you like. I need to finish this line before I become impossible."
 {n}Edris sits. Kiana writes, scratches out a word and asks what a cook would call a princess who keeps changing the supper hour.{/n}
-"Hungry," Edris says.
+"Hungry," {n}Edris says.{/n}
 {n}Kiana puts down the pen and laughs.{/n}
 "That is better. I was going to make it much longer."
 {n}She writes the word, then puts a little line beneath it.{/n}
@@ -492,5 +492,5 @@ s("kept_evening", "The time beside her name", [
 "Go. Before I begin making tomorrow less sensible as well."''', c('[Leave her with the evening kept and another page to write.]', flags=("kiana.followthrough_kept",))),
     n("quiet_end", "Narrator", '''{n}Kiana settles against you and pulls the shawl over both your knees. For a while she tells you about a word in the old rehearsal copy that looked so much like cupboard that the princess appeared to be proposing marriage to one. Then she stops talking and listens to the street.{/n}
 {n}When you get up to leave, she folds the shawl rather than putting it on. She is staying in for the rest of the night. There is water to empty from the basin, and a bed that has finally been cleared of papers.{/n}
-"Good night," she says, kissing the side of your face. "I liked having you here."''', c('[Leave her to the rest of her evening.]', flags=("kiana.followthrough_kept",))),
+"Good night," {n}she says, kissing the side of your face.{/n} "I liked having you here."''', c('[Leave her to the rest of her evening.]', flags=("kiana.followthrough_kept",))),
 ], after="kiana.workroom_taken", delay=168)

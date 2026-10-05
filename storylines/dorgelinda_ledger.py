@@ -179,7 +179,7 @@ office(GRIP, "Stranglehold", '"Busy?"', [
 {n}The soldier is pulling at the end of the pen with both hands. Dorgelinda is reading a manifest.{/n}''',
         c("[Wait for it to finish.]", "finish")),
     d("finish", '''{n}The soldier gives up, red to the ears. The sergeant collects two coppers from each clerk with the air of a man who has done this before.{/n}
-"New draft," Dorgelinda says, without looking up from the manifest. "Asked the lads in the stores why they call me Stranglehold. Thought it was a joke about my temper." {n}She turns a page.{/n} "It's partly a joke about my temper."''',
+"New draft," {n}Dorgelinda says, without looking up from the manifest.{/n} "Asked the lads in the stores why they call me Stranglehold. Thought it was a joke about my temper." {n}She turns a page.{/n} "It's partly a joke about my temper."''',
       c('"Is that a standing wager?"', "wager")),
     d("wager", '''"Every new draft since Kenabres. Pay a copper, take the pen out from under my hand, win a silver. I've not paid a silver yet." {n}Now she looks up. The clerks have gone very quiet.{/n}
 "Trickster's rules for you, Commander, since you're a Trickster. Any way you like. You can pull it, pinch it, sing it out. If it comes out, I'll put your silver against your boots. If it doesn't..." {n}She taps the pen with one finger.{/n} "You buy the stores a round."''',
@@ -412,7 +412,7 @@ office(RATIONS, "Two out of three", '"You weren\'t at the mess."', [
 "Ration consumed, Commander. Enter it where you like." {n}The table starts eating again.{/n} "You'll pay for that in the book. I've a long memory for orders I didn't want."''',
       c("Continue", "after", flags=(ORDERED,))),
     d("sit", '''{n}You sit. You eat. She watches you eat, and says nothing either, and after a while she reaches over with her spoon and takes one mouthful from your bowl, as if tasting for poison, and then another.{/n}
-"The turnip's off," she says. "I'll have words with the cook." {n}She does not take a third. She does not need to.{/n}''',
+"The turnip's off," {n}she says.{/n} "I'll have words with the cook." {n}She does not take a third. She does not need to.{/n}''',
       c("Continue", "after", flags=(SHARED,))),
     d("after", '''{n}Later, in her office, she opens your column and writes a line you can read, for once: Commander, at the mess.{/n}
 "I've fed armies on less than this, you know. On the hard postin's, before Drezen, the lads ate what the country let 'em and said thank you." {n}She stops.{/n} "Different war. Same arithmetic. Folk who've never been hungry think it's the cold that breaks an army. It's the empty bowl on the man beside you, and knowin' the officer's isn't."''',
@@ -477,7 +477,7 @@ office(MORNING, "The morning count", '"Mornin\'."', [
     d("sergeant", '''{n}Somebody knocks. She does not move.{/n}
 "Ma'am?" {n}The sergeant with the bandaged ear, through the door.{/n} "Ma'am, the Commander's boots are in the office. One of 'em. Under the desk. Should I send 'em up to the citadel?"
 {n}Dorgelinda closes her eye and counts to five under her breath.{/n}
-"No, Sergeant," she calls. "Log 'em as returned stores. Commander's boots, one pair, to be counted at the Commander's convenience."
+"No, Sergeant," {n}she calls.{/n} "Log 'em as returned stores. Commander's boots, one pair, to be counted at the Commander's convenience."
 {n}A pause, full of thought, on the other side of the door. "Yes, ma'am."{/n}''',
       c("Continue", "consequence")),
     d("consequence", '''"That'll be round the stores by noon and round the barracks by supper." {n}She stands, and straightens her coat, and looks at you with the plain level look she gives a cart with a cracked axle.{/n}
@@ -575,7 +575,7 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
       c("Continue", "end", flags=(RECEIPT,))),
     d("kiss", '''{n}Every clerk in the yard sees it. So do two sergeants, a column of Mendevian levies, a paladin on a warhorse and the carter of the wagon behind, who drops his reins.{/n}
 {n}She lets it happen. Then she kisses you back, hard, with her good hand flat against your breastbone, pushing as much as holding, and lets go all at once.{/n}
-"Well, that's in the book now," she says, rather hoarsely. "And theirs." {n}She climbs up onto the wagon seat.{/n} "Come back and sign the receipt, Commander. I'll not ask twice."''',
+"Well, that's in the book now," {n}she says, rather hoarsely.{/n} "And theirs." {n}She climbs up onto the wagon seat.{/n} "Come back and sign the receipt, Commander. I'll not ask twice."''',
       c("Continue", "end")),
     d("salute", '''{n}You salute her, properly, heel to heel, the way the ranks salute her and nobody above the rank of sergeant ever has.{/n}
 {n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the withered fingers held to her brow by nothing but the arm beneath them.{/n}
@@ -601,7 +601,7 @@ office(VROCK, "The vrock's driver", '"Who\'s that in the corner?"', [
       c("[Say nothing. Let him sweat.]", "sweat")),
     d("vrock", '''"...No, Commander." {n}Very quietly.{/n} "Fellows paid me four silver to turn off the road at the ford. I've a wife in Vigil and three little 'uns and the Crusade pays me in promises."
 {n}Dorgelinda writes something without looking up.{/n}
-"That's the first true thing he's said since the caravans," she says. "I wanted you to hear it. I wanted him to see who he owes his neck to."''',
+"That's the first true thing he's said since the caravans," {n}she says.{/n} "I wanted you to hear it. I wanted him to see who he owes his neck to."''',
       c("Continue", "owes")),
     d("sweat", '''{n}He sweats. It does not take long. Carters have no gift for silence.{/n}
 "It weren't a vrock, Commander. Fellows paid me four silver to turn off the road at the ford. I've a wife in Vigil and three little 'uns and the Crusade pays me in promises."
@@ -736,7 +736,7 @@ office(COUNCIL, "After the council", '"You look like you\'ve sat through the Log
 
 office(GATE, "The west gate", '"Quartermaster? What\'s the bell?"', [
     nar("start", '''{n}The alarm bell on the western wall is ringing when you reach her office, and she is not in it. She is in the yard, one-handed, buckling on a breastplate that has not been buckled in years, while a clerk tries to help and gets swatted.{/n}
-"Supply wagon," she says, without turning. "Three hundred yards out, broken axle, and somethin' with wings circlin' it. The gate captain won't open for a cart. I'm not askin' him."''',
+"Supply wagon," {n}she says, without turning.{/n} "Three hundred yards out, broken axle, and somethin' with wings circlin' it. The gate captain won't open for a cart. I'm not askin' him."''',
         c('"Then I\'ll open it."', "open"),
         c('"You\'re not going out there."', "stay")),
     d("stay", '''"I'm goin' out there." {n}She picks up a boar spear from the rack by the stores door, the only weapon in the building that is not on a manifest.{/n}
@@ -1129,7 +1129,7 @@ office(UNBALANCED, "The unbalanced line", '"Quartermaster."', [
       c("[Leave her to the horseshoes.]")),
     d("wait", '''"Wait." {n}She seems surprised by it. She turns the word over the way she would a coin she did not expect to find.{/n}
 "Most folk don't. They either push or they go." {n}She looks at the ledger, and then, after a moment, she turns it to your page, and looks at that instead, the long open column with no line ruled under it.{/n}
-"...It's still open," she says. "Don't think I've shut it. I've never shut it. I just haven't signed." {n}She closes the book.{/n} "Go on. I've horseshoes."''',
+"...It's still open," {n}she says.{/n} "Don't think I've shut it. I've never shut it. I just haven't signed." {n}She closes the book.{/n} "Go on. I've horseshoes."''',
       c("[Leave her to the horseshoes.]", flags=(L + "waited",))),
 ], requires=("trickster.ever", DECLINED), forbids=(UNBALANCED, COMMITTED), delay=24, chapters=(5,))
 
@@ -1233,7 +1233,7 @@ office(QUARREL_SCENE, "Hammer and tongs", '"You wanted to see me?"', [
 {n}She rubs her eye.{/n} "Tell me first. Every time. I'll carry any lie you like if I know I'm carryin' it."''',
       c("Continue", "cool", flags=(L + "tell_first",))),
     d("seal", '''{n}Silence. The kind that fills a room.{/n}
-"No," she says at last, very evenly. "You don't. You're the Commander. You can sign for what you like and I'll write it down." {n}She folds the letter, precisely.{/n}
+"No," {n}she says at last, very evenly.{/n} "You don't. You're the Commander. You can sign for what you like and I'll write it down." {n}She folds the letter, precisely.{/n}
 "And I'm the quartermaster, and I'll feed the walls on a quarter less bread, and I'll not say one word about it to you again. You've my word." {n}She puts the letter in a drawer.{/n} "Was there anythin' else, Commander?"''',
       c('"...That was a stupid thing to say. I\'m sorry."', "cool"),
       c("[Leave.]", "cold")),

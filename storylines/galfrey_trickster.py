@@ -368,9 +368,9 @@ tag(LETTER, "N-all")
 # farewell (Cue_0053 -> the Lexicon -> Cue_0056, GalfreyDead), so the Queen dies exactly as she does in canon.
 
 WATCH = (
-    c('[Perception DC 18] Watch the wound as you say it, the way she would want it said: "Your Majesty."', requires=(PLANTED,),
+    c('[Perception DC 18] {n}Watch the wound as you say it, the way she would want it said:{/n} "Your Majesty."', requires=(PLANTED,),
       check=dict(Skill="SkillPerception", DC=18, Success="read", Failure="blind", CommanderOnly=True)),
-    c('[Perception DC 22] Watch the wound as you say it, the way she would want it said: "Your Majesty."', forbids=(PLANTED,),
+    c('[Perception DC 22] {n}Watch the wound as you say it, the way she would want it said:{/n} "Your Majesty."', forbids=(PLANTED,),
       check=dict(Skill="SkillPerception", DC=22, Success="read", Failure="blind", CommanderOnly=True)),
     c("[Stay where you are. Let her be.]", abort=True, forbids=(MANU,)),
 )

@@ -33,7 +33,7 @@ s("carriers", "What the wagons can carry", [
     n("women", "Narrator", '''{n}Konomi introduces Vanna, the stocky woman scraping mud from a wheel, and Selis, who has been checking the fastenings on a stack of empty chests. Both are well into middle age. Neither looks pleased with the other's diligence.{/n}
 {n}"Two wagons," Vanna says. "Mine. Six horses, also mine. We can carry what she has promised."{/n}
 {n}"I promised space on three wagons," Selis replies. "The third will join us before departure."{/n}
-"Whose third wagon?" Konomi asks.
+"Whose third wagon?" {n}Konomi asks.{/n}
 {n}Selis names a woman who has not yet answered her offer. Vanna stops scraping the wheel.{/n}
 {n}"You told me it was arranged."{/n}
 {n}"I told you I knew where to obtain it."{/n}
@@ -63,7 +63,7 @@ s("carriers", "What the wagons can carry", [
 {n}Konomi looks at Selis. Selis closes the cargo list.{/n}
 {n}"I did not want to ask her for another favor. I wanted to bring her business."{/n}
 {n}For a moment the two women look equally miserable.{/n}
-"You have brought business," Konomi says. "More than the wagons can carry. We can work with that once you stop offering each other gratitude disguised as arithmetic."''', c('[Listen to her proposed next step.]', "terms")),
+"You have brought business," {n}Konomi says.{/n} "More than the wagons can carry. We can work with that once you stop offering each other gratitude disguised as arithmetic."''', c('[Listen to her proposed next step.]', "terms")),
     n("terms", "Narrator", '''{n}Konomi has Selis write to the customer who made the introductions. The letter explains the missing wagon and offers a later date for part of the load. Vanna checks that the offered date is possible before Selis signs it.{/n}
 {n}Their agreement will cover one journey with two wagons. They will divide its proceeds according to the wagons, labor and customers each provides, then decide whether to continue. Konomi makes them state who will pay if another promise exceeds the space available.{/n}
 {n}Selis dislikes that question. Vanna dislikes how long she takes to answer it. Neither leaves.{/n}
@@ -137,7 +137,7 @@ s("before_road", "An evening before the road", [
       c('[Kiss her again, then stay close.]', "talk", flags=("konomi.before_road_kissed",)),
       c('"Then stop looking for one and tell me what you are plotting."', "talk", flags=("konomi.before_road_kissed",))),
     n("talk", "Konomi", '''{n}She leaves the traveling case where it is. Beyond the window, the sweeping stops; for a little while neither of you supplies another sound.{/n}
-"I will not ask you to make the road disappear," she says at last. "I have things to do in Nerosyan. I would like to know what we intend to do about the distance."''',
+"I will not ask you to make the road disappear," {n}she says at last.{/n} "I have things to do in Nerosyan. I would like to know what we intend to do about the distance."''',
       c('"Keep writing. Tell me when you expect to return, and I will tell you when I can meet you."', "letters", flags=("konomi.private_letters",)),
       c('"There are others in my life. I will not lie to you about them, and I will not drop you for them."', "others", flags=("konomi.private_letters", "konomi.private_other_promises"))),
     n("letters", "Konomi", '''"I can do that. I may write too much when I am irritated. You may tell me which pages you enjoyed most."

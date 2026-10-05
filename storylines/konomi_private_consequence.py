@@ -20,7 +20,7 @@ def s(id, title, nodes, requires=(), delay=24, manual=False):
 s("private_return_terms", "The price of being asked first", [
     n("start", "Narrator", '''{n}Konomi's letter proposes another visit to Drezen. This time she has an appointment with the owner whose leases she now negotiates, and an answer to the invitations she carried back to Nerosyan. She asks whether you can meet during the visit before she books her passage.{/n}
 {n}You confirm a date through the ordinary post. When the agreed day comes, she arrives at your meeting place with dust on the hem of her traveling clothes and a narrow wooden box beneath her arm.{/n}
-"Samples," she says before you ask. "A prospective tenant makes fittings for furniture. I thought it would help the owner understand what she proposes to store. I have spent the journey explaining that I am not selling hinges."
+"Samples," {n}she says before you ask.{/n} "A prospective tenant makes fittings for furniture. I thought it would help the owner understand what she proposes to store. I have spent the journey explaining that I am not selling hinges."
 {n}She puts the box down and comes close enough to touch your cheek.{/n}
 "I am pleased to see you. That was the other thing I meant to say first."''',
       c('[Welcome her and ask what became of the introductions.]', "offer"),
@@ -95,7 +95,7 @@ s("private_return_terms", "The price of being asked first", [
 s("private_kept_hours", "An hour she could have sold", [
     n("start", "Narrator", '''{n}On the morning of your promised visit, Konomi sends a runner with a question: can you come to the lease office before meeting her elsewhere? The runner has been told to wait, and plainly paid to look at the door until you answer.{/n}
 {n}You agree. At the office, the owner has already left. Konomi is replacing the fittings in their box while the prospective tenant fastens a traveling cloak. The woman thanks her for the answer, not warmly, and goes out past you.{/n}
-"She dislikes the space I could offer," Konomi says. "She was quite right to refuse it. I wish she had reached the decision before I finished the explanation."
+"She dislikes the space I could offer," {n}Konomi says.{/n} "She was quite right to refuse it. I wish she had reached the decision before I finished the explanation."
 {n}She lifts the box from the desk.{/n}
 "The first tenant's option stands. There will be no little miracle in which everyone gets the same rooms. Come in. I have an answer about my agreement, and a less pleasant question about our afternoon."''',
       c('[Ask whether the owner accepted the exclusive seasonal arrangement.]', "exclusive", requires=("konomi.private_career_exclusive",)),
@@ -132,7 +132,7 @@ s("private_kept_hours", "An hour she could have sold", [
 "Now come with me. I have been looking at you across that desk long enough."''', c('[Leave with her for the remaining time.]', "short_walk")),
     n("leave", "Narrator", '''{n}Konomi opens the door and calls to the clerk in the passage. She asks him to tell the owner that she cannot provide the additional recommendations by tomorrow. He offers to bring the proposals to her lodging. She declines.{/n}
 {n}When he has gone, she takes a moment to put her things away. The decision has not made her suddenly indifferent to the fee.{/n}
-"I shall be drafting that answer in my head halfway through whatever you say next," she says. "When you catch me at it, pinch me."
+"I shall be drafting that answer in my head halfway through whatever you say next," {n}she says.{/n} "When you catch me at it, pinch me."
 "I might ask you to tell me about it."
 "That would be generous. Begin with something else. I want to discover whether I remember how to leave a room before the work in it is finished."
 {n}She closes the box, leaves it for the applicant to collect, and offers you her arm. At the street she turns her face into the wind as though she has only just remembered the weather.{/n}''', c('[Take the whole afternoon you kept for one another.]', "long_walk")),
@@ -148,7 +148,7 @@ s("private_kept_hours", "An hour she could have sold", [
     n("long_walk", "Konomi", '''{n}With the whole afternoon free, you reach the quiet end of the street and keep going. Konomi notices a patch of pale flowers growing through a broken wall. She stops to examine them, then admits she has no idea what they are.{/n}
 "I have been wrong about enough plants. You may identify these if you like."
 {n}You leave them unnamed. A loose stone makes an adequate seat. She settles beside you, tests whether it rocks, and leaves you the steadier end.{/n}
-"I am still pleased about the work," she says. "And I walked out on a fee to sit on a wobbling stone with you. My mother would call that a very poor bargain. She would be wrong."
+"I am still pleased about the work," {n}she says.{/n} "And I walked out on a fee to sit on a wobbling stone with you. My mother would call that a very poor bargain. She would be wrong."
 {n}She reaches for your hand and watches you bring it to your lips. Her fingers curl against your cheek.{/n}
 "There. That is an excellent beginning. What did you want to do with the afternoon you defended so firmly?"''',
       c('[Draw her close and kiss her.]', "long_kiss"),
@@ -237,16 +237,16 @@ s("private_last_visit", "The visit before you leave", [
       c('[Kiss her and stay together for the night.]', "night"),
       c('[Keep holding her. Spend the evening close, and part before your next duty.]', "quiet")),
     n("night", "Narrator", '''{n}She kisses you hard, as if the war might come through the door before she has finished. Her hand closes in your collar and does not let go until she needs both hands for your belt.{/n}
-"The lamp stays lit," she says against your mouth. "I intend to remember this properly."
+"The lamp stays lit," {n}she says against your mouth.{/n} "I intend to remember this properly."
 {n}Her robe slides from her shoulders onto the floor beside the travelling case. She pushes you back across the bed, climbs over you, and settles her knees either side of your hips, her hair falling loose around your face as she pulls your hands to her hips and bends to kiss you.{/n}
 {n}Much later, when the lamp is out, she asks whether you are awake. You are. In a precise, level voice she tells you which of the war's likely outcomes she has been costing out since supper. You do not promise her any of them. You find her hand beneath the cover and hold it until the figures run out.{/n}
 {n}In the morning she walks you to the door. The book remains on the windowsill.{/n}
-"Go carefully," she says. "I want another inconvenient afternoon."
+"Go carefully," {n}she says.{/n} "I want another inconvenient afternoon."
 {n}You kiss her once more before you leave.{/n}''', c('[Leave with the farewell and the affection you chose.]', flags=("konomi.private_consequence_complete", "konomi.private_farewell_night"))),
     n("quiet", "Narrator", '''{n}She settles against you. You remain together while the room grows darker, speaking when something occurs to either of you and letting the rest of the time pass without an account of how well you used it.{/n}
 {n}Before you must leave, she lights the lamp. You help her find a place for the borrowed book where she can reach it from the bed. She tells you which part she intends to argue with when you have both read it.{/n}
 {n}At the door she holds you once more.{/n}
-"Go carefully," she says. "I want another inconvenient afternoon."
+"Go carefully," {n}she says.{/n} "I want another inconvenient afternoon."
 {n}She keeps your hand until the bells force the matter.{/n}''', c('[Leave with the farewell and the affection you chose.]', flags=("konomi.private_consequence_complete",))),
 ], requires=("konomi.private_hours_kept",), delay=24, manual=True)
 

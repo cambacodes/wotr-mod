@@ -525,7 +525,7 @@ inline("soana.trickster.handover.winter_portion", "The spirits' portion, again",
     n("shared", "Soana", '''{n}She looks at your hand the way she looks at a snare that has caught the wrong animal. Then she takes your wrist in her root-hard fingers and draws the knife across your palm, not deep, and turns it over the melted ring. The blood goes into the moss and does not stay there. Something in the trees sighs.{/n}
 "They know your taste now as well as mine. That was stupid, hunter. They will come to your door as well, some winter, and I will not be there to tell them no."
 {n}She binds your hand with the same rag she keeps for her own, without being asked, and without being gentle.{/n}
-"Stupid," she says again, more quietly, and does not let go of the rag's end for a while.''',
+"Stupid," {n}she says again, more quietly, and does not let go of the rag's end for a while.{/n}''',
         c("[Leave her to the frost]")),
     n("watched", "Soana", '''{n}She opens her palm along the old line, without a sound, and holds it over the melted ring until the moss stops drinking. Something in the trees sighs, and the ring begins to freeze over.{/n}
 "There. Next winter again, and the winter after. Remember it the next time you are clever on somebody else's behalf."
@@ -678,24 +678,24 @@ inline("soana.trickster.missed.second_ask", "The other die", 5, '"About your bow
 # --- Epilogue pages (no mythic, alignment or crusade effects) ---------------------------------------------------------
 
 EPILOGUE_PARAGRAPHS = (
-    p("The cut she made at the second asking healed into a white scar inside the Commander's wrist. It ached every winter, "
-      "as she had promised, and she never once asked whether it did.", requires=(SECOND,)),
-    p("The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept "
-      "getting up. The scouts stopped reporting it. It had become ordinary.", requires=(CATCHUP,)),
-    p("For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad "
-      "moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.",
+    p("{n}The cut she made at the second asking healed into a white scar inside the Commander's wrist. It ached every winter, "
+      "as she had promised, and she never once asked whether it did.{/n}", requires=(SECOND,)),
+    p("{n}The Wintersun beasts kept going out against the demons on the roads until the last of them was gone, and they kept "
+      "getting up. The scouts stopped reporting it. It had become ordinary.{/n}", requires=(CATCHUP,)),
+    p("{n}For as long as the die sat in her bowl, the Commander's girths snapped, letters went astray and blades turned at bad "
+      "moments. Each time, somewhere on a Wintersun road, a bear that should have stayed down got up again.{/n}",
       requires=("soana.trickster.cost.luck_fed",)),
-    p("The Commander never threw a loaded die again. The pair sat in Soana's bowl, both twenty up, and nobody who visited "
-      "the cave was allowed to touch them.", requires=("soana.trickster.cost.pair_given",)),
+    p("{n}The Commander never threw a loaded die again. The pair sat in Soana's bowl, both twenty up, and nobody who visited "
+      "the cave was allowed to touch them.{/n}", requires=("soana.trickster.cost.pair_given",)),
 )
 
 SCENES.append(scene("soana.trickster.epilogue.knot", "The second strand", "Epilogue", 5, "", [
     nar("start", '''{n}Soana took her leash back from the Commander's hand the night of the vow and tied it into her knot again, with the Commander's life at the other end. The Commander felt it pull on hungry nights for the rest of the war, in the wrist the knot had marked, and the wrist ached in cold weather ever after. When the war was over she began to plant the dead Wintersun woods, and, slowly, to bind the forest's broken things into the few that lived. She never thanked the Commander for anything, and she never let the knot go slack.{/n}''',
         c(), paragraphs=(
-            p("The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, "
-              "Soana said that was how you knew it was working.", requires=(SPENT,)),
-            p("The Commander wore her grey cord round the marked wrist for the rest of their life, and every spring she replaited it "
-              "from her own braid, complaining the whole time. When it chafed, she said that was how you knew it was working.",
+            p("{n}The Commander wore the halves of the clay knot on a strip of gut for the rest of their life. When it chafed, "
+              "Soana said that was how you knew it was working.{/n}", requires=(SPENT,)),
+            p("{n}The Commander wore her grey cord round the marked wrist for the rest of their life, and every spring she replaited it "
+              "from her own braid, complaining the whole time. When it chafed, she said that was how you knew it was working.{/n}",
               forbids=(SPENT,)),
             *EPILOGUE_PARAGRAPHS))],
     requires=(RETURNED, BEARER), forbids=(CLOSED, "sacrifice"), last=99, Relationship="soana", ForbidOverrides=dict(SACRIFICE_BACK)))
@@ -712,21 +712,21 @@ SCENES.append(scene("soana.trickster.epilogue.luck", "The die in the bowl", "Epi
 _RECKON_TAIL = ("The visits after that were spent clearing the stream below the graves and fencing her seed bed while she "
                 "watched. She sent the Commander away when the work was done. On the next visit she told them to stay.")
 COMMIT_ACCOUNTING = (
-    p("When the Commander came to her cave after the war, she stopped them at the graves and asked why they had given "
-      "her to Camellia. They answered for it. She heard them out, then put a bundle of stakes in their hands. " + _RECKON_TAIL,
+    p("{n}" + ("When the Commander came to her cave after the war, she stopped them at the graves and asked why they had given "
+      "her to Camellia. They answered for it. She heard them out, then put a bundle of stakes in their hands. " + _RECKON_TAIL) + "{/n}",
       requires=(KILLED,), forbids=(ACC_INVITED,)),
-    p("When the Commander came to her cave after the war, she stopped them at the graves and asked why they had killed "
-      "her. They answered for it. She heard them out, then put a bundle of stakes in their hands. " + _RECKON_TAIL,
+    p("{n}" + ("When the Commander came to her cave after the war, she stopped them at the graves and asked why they had killed "
+      "her. They answered for it. She heard them out, then put a bundle of stakes in their hands. " + _RECKON_TAIL) + "{/n}",
       requires=(OWN_KILL,), forbids=(KILLED, ACC_INVITED)),
-    p("When the Commander came to her cave after the war, she stopped them at the graves, and they listened while she "
-      "told them what her return had left undone. " + _RECKON_TAIL,
+    p("{n}" + ("When the Commander came to her cave after the war, she stopped them at the graves, and they listened while she "
+      "told them what her return had left undone. " + _RECKON_TAIL) + "{/n}",
       forbids=(KILLED, OWN_KILL, ACC_INVITED)),
-    p("The Commander had answered her by the graves and worked beside the water. After the war they came back for the "
-      "woman who had told them to come for her, and she kept them carrying water through the dry months.",
+    p("{n}The Commander had answered her by the graves and worked beside the water. After the war they came back for the "
+      "woman who had told them to come for her, and she kept them carrying water through the dry months.{/n}",
       requires=(ACC_INVITED,)),
-    p("The year after the Worldwound closed she held out a new cord, plaited from her own grey hair. The Commander gave "
-      "her the marked wrist. She tied their life to hers and pulled the cord tight. \"Your end, hunter. You know what "
-      "it holds now.\" She kept that wrist in her hand when she led them down into the furs."),
+    p("{n}The year after the Worldwound closed she held out a new cord, plaited from her own grey hair. The Commander gave "
+      "her the marked wrist. She tied their life to hers and pulled the cord tight.{/n} \"Your end, hunter. You know what "
+      "it holds now.\" {n}She kept that wrist in her hand when she led them down into the furs.{/n}"),
 )
 
 SCENES.append(scene("soana.trickster.epilogue.commit", "Your end", "Epilogue", 5, "", [
@@ -753,9 +753,9 @@ SCENES.append(scene("soana.trickster.epilogue.luck_lost", "Twenty up, in a cold 
     requires=("trickster.ever", LUCK_KEPT), forbids=(RETURNED, "soana.late_campaign_kept", "soana.progression_kept", OWN_KILL),
     RequiresAnyGroups=[list(LOSS)], last=99, Relationship="soana"))
 
-UNBOUND = p("She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
+UNBOUND = p("{n}She took her leash back from the Commander's hand the day they parted, with a single strand and her own blood. "
              "It held, barely, for as long as she lived. The knot hung in her cave with one strand, and she bound nothing new "
-             "into the Wintersun woods again.", requires=(RETURNED,))
+             "into the Wintersun woods again.{/n}", requires=(RETURNED,))
 
 SCENES.append(scene("soana.trickster.epilogue.declined", "One strand", "Epilogue", 5, "", [
     nar("start", '''{n}She never asked again. When travellers asked the old woman in the cave about the Commander, she said that she had once met a hunter who could not make up their mind when it mattered, and that was all she said.{/n}''',
@@ -779,15 +779,15 @@ SCENES.append(scene("soana.trickster.epilogue.by_your_hand", "The hunter's kill"
     nar("start", '''{n}Soana died in her cave at Wintersun by the Commander's own hand, and the forest died with her. Nothing in the trees answered for her afterwards; whatever she had held in her knot went where such things go when the hand on the leash is gone.{/n}
 {n}The crusade's report called it a necessary execution. The Sarkorians who passed the dead wood called it the place where the bloody hunter came, and they did not lower their voices when they said it.{/n}''',
         c(), paragraphs=(
-            p("Her clay medallion went into the Commander's pack with the rest of the loot, and stayed there.",
+            p("{n}Her clay medallion went into the Commander's pack with the rest of the loot, and stayed there.{/n}",
               requires=("soana.medallion_held",)),
             # The two witnesses with a stake (the reactions live here: her relationship is closed by her death).
-            p("\"You killed the old woman yourself,\" Camellia said, when the news reached camp, and tilted her head as if "
-              "listening for something that had stopped. \"I asked you so nicely for her, my friend, and you simply took her. "
+            p("\"You killed the old woman yourself,\" {n}Camellia said, when the news reached camp, and tilted her head as if "
+              "listening for something that had stopped.{/n} \"I asked you so nicely for her, my friend, and you simply took her. "
               "I suppose I ought to admire it. I find I only want to know how it felt.\"",
               forbids=("camellia.dead", "camellia.killed", "camellia.kicked_out")),
-            p("Ulbrig looked at the Commander's hands, not their face, when the scouts brought word that the Wintersun wood had "
-              "gone grey from the roots up. \"She bound a demon to a bear and called it keeping, warchief. I'd not have done it "
+            p("{n}Ulbrig looked at the Commander's hands, not their face, when the scouts brought word that the Wintersun wood had "
+              "gone grey from the roots up.{/n} \"She bound a demon to a bear and called it keeping, warchief. I'd not have done it "
               "her way. But a forest with nobody left to speak for it is a hungry thing, and it knows whose boots walked out of it.\"",
               requires=("ulbrig.talked",), forbids=("ulbrig.dead", "ulbrig.kicked_out")),
         ))],
@@ -798,10 +798,10 @@ SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue",
     nar("start", '''{n}The Commander made no further visits to Wintersun. Before the army's last march Soana came to Drezen once, took her leash back from the Commander's palm with a single strand and most of her own blood, and left without a word. It held.{/n}
 {n}The Wintersun woods grew quiet again. Travellers who asked the old woman in the cave about the Commander were told about a hunter who had held a dead woman to her own words. She did not say it kindly.{/n}''',
         c(), paragraphs=(
-            p("\"Dug my graves with their own hands,\" she would add. \"Badly. And still walked away.\"", requires=(DUG,)),
-            p("\"Paid Drezen to dig my graves,\" she would add. \"The diggers ate my fish, and the one who paid them walked away all the same.\"",
+            p("\"Dug my graves with their own hands,\" {n}she would add.{/n} \"Badly. And still walked away.\"", requires=(DUG,)),
+            p("\"Paid Drezen to dig my graves,\" {n}she would add.{/n} \"The diggers ate my fish, and the one who paid them walked away all the same.\"",
               requires=(BOUGHT,)),
-            p("\"Would not lift a spade for my dead,\" she would add. \"Turned round at my door and walked away.\"",
+            p("\"Would not lift a spade for my dead,\" {n}she would add.{/n} \"Turned round at my door and walked away.\"",
               requires=(LEFT,)),
         ))],
     requires=("trickster.ever", RETURNED, CLOSED), forbids=("sacrifice",), last=99, Relationship="soana",
@@ -811,14 +811,14 @@ SCENES.append(scene("soana.trickster.epilogue.unbound", "The leash", "Epilogue",
 SCENES.append(scene("soana.trickster.epilogue.unvowed", "One strand, old promises", "Epilogue", 5, "", [
     nar("start", '''{n}Soana held her leash alone, with one strand and her own blood; taking it back nearly killed her. She lived. She buried the dead forest one grave a day and planted what she could beside the water.{/n}''',
         c(), paragraphs=(
-            p("The Commander had answered her by the graves and worked where she pointed, and she had called them back "
+            p("{n}The Commander had answered her by the graves and worked where she pointed, and she had called them back "
               "for herself. They still came to her fire when the war allowed. She fed them, scolded them and took them to "
-              "bed, and never once let them near the knot. \"You had your chance at that,\" she said, and that was the end of it.",
+              "bed, and never once let them near the knot.{/n} \"You had your chance at that,\" {n}she said, and that was the end of it.{/n}",
               requires=(ACC_INVITED,)),
-            p("Their old promises did not open the cave to them again. When they came after the war she stopped them by "
+            p("{n}Their old promises did not open the cave to them again. When they came after the war she stopped them by "
               "the graves, heard their answer for how she had died, and put the stakes in their hands. They cleared her "
               "stream and fenced her seed bed over the visits that followed. Only when she called them back for herself "
-              "did they sit at her fire as her lover again. The knot stayed in her hands.",
+              "did they sit at her fire as her lover again. The knot stayed in her hands.{/n}",
               forbids=(ACC_INVITED,)),
         ))],
     requires=("trickster.ever", RETURNED, COMMITTED), forbids=(BEARER, CLOSED, FRIENDS, "sacrifice"), last=99, Relationship="soana",
@@ -828,10 +828,10 @@ SCENES.append(scene("soana.trickster.epilogue.unvowed", "One strand, old promise
 SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", "Epilogue", 5, "", [
     nar("start", '''{n}Soana kept a second cup by the fire for the Commander. She called them her friend, usually just before asking them to carry something heavy, and when anyone asked whether she liked their visits, she said the water pot did.{/n}''',
         c(), paragraphs=(
-            p("She held her leash alone, with one strand and her own blood; taking it back had nearly killed her. "
-              "She buried the dead forest one grave a day, and made the Commander dig every third one when they visited.",
+            p("{n}She held her leash alone, with one strand and her own blood; taking it back had nearly killed her. "
+              "She buried the dead forest one grave a day, and made the Commander dig every third one when they visited.{/n}",
               requires=(RETURNED,)),
-            p("The loaded die stayed in her bowl, twenty up, and the she-bear who had carried it to the roads grew fat and grey.",
+            p("{n}The loaded die stayed in her bowl, twenty up, and the she-bear who had carried it to the roads grew fat and grey.{/n}",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
         ))],
     requires=("trickster.ever", FRIENDS), forbids=(CLOSED, BEARER, "sacrifice", *LOSS), last=99, Relationship="soana",
@@ -842,29 +842,29 @@ SCENES.append(scene("soana.trickster.epilogue.friends", "A friend at the fire", 
 SCENES.append(scene("soana.trickster.epilogue.slack", "The slack strand", "Epilogue", 5, "", [
     nar("start", '''{n}The Commander did not come back from the Threshold. The riders brought the word to Wintersun a fortnight later, and Soana made the messenger tell it twice, the second time slower. Then she sent him back down the path and sat by the cold fire.{/n}''',
         c(), paragraphs=(
-            p("She had known before the riders came. The knot on her wrist went slack the night it happened, the way a line "
+            p("{n}She had known before the riders came. The knot on her wrist went slack the night it happened, the way a line "
               "goes slack when the fish is gone. Her end had been "
               "tied to the Commander's life, and that life had gone first, as she had told them it would. She cut the dead strand "
               "off with her knife, tied it round her own throat, and went on binding the Wintersun woods "
-              "for twenty years more out of spite. She never said the Commander's name to anyone. She said \"the hunter\", and "
-              "everyone knew.", requires=(RETURNED, BEARER)),
-            p("She had known before the riders came. The leash struck her the night the Commander's hand stopped holding it, "
+              "for twenty years more out of spite. She never said the Commander's name to anyone. She said{/n} \"the hunter\"{n}, and "
+              "everyone knew.{/n}", requires=(RETURNED, BEARER)),
+            p("{n}She had known before the riders came. The leash struck her the night the Commander's hand stopped holding it, "
               "all of its weight at once and nothing at the other end. She went down on her knees, caught it and held. It "
-              "nearly killed her. It did not.",
+              "nearly killed her. It did not.{/n}",
               requires=(RETURNED,), forbids=(BEARER, RECLAIMED_BEFORE, CLOSED, POSTPONED)),
-            p("Out on the Wintersun road, the she-bear that had stood up on the Commander's luck all winter lay down in the "
-              "ferns that night and did not get up. Soana took the die out of the bowl and buried it with her, twenty up.",
+            p("{n}Out on the Wintersun road, the she-bear that had stood up on the Commander's luck all winter lay down in the "
+              "ferns that night and did not get up. Soana took the die out of the bowl and buried it with her, twenty up.{/n}",
               requires=(LUCK_KEPT,), forbids=(RETURNED,)),
-            p("She had taken the leash back while the Commander still lived, and no strand of it ran to the Threshold. Nothing "
-              "pulled when they died. She sat until the messenger was out of sight, then went out to her graves.",
+            p("{n}She had taken the leash back while the Commander still lived, and no strand of it ran to the Threshold. Nothing "
+              "pulled when they died. She sat until the messenger was out of sight, then went out to her graves.{/n}",
               requires=(RETURNED, RECLAIMED_BEFORE), forbids=(BEARER,)),
-            p("She had gone to Drezen before the last march and taken the leash back from the Commander's palm herself, with "
+            p("{n}She had gone to Drezen before the last march and taken the leash back from the Commander's palm herself, with "
               "a single strand and most of her own blood. Nothing pulled when they died. When the messenger asked whether the "
-              "Commander had been her friend, she said, \"The dead do not need you improving them.\"",
+              "Commander had been her friend, she said,{/n} \"The dead do not need you improving them.\"",
               requires=(RETURNED, CLOSED), forbids=(BEARER, RECLAIMED_BEFORE)),
-            p("She had tired of waiting for the Commander's answer before the army marched. She went to Drezen, took the "
+            p("{n}She had tired of waiting for the Commander's answer before the army marched. She went to Drezen, took the "
               "leash back from their palm with her own blood, and walked home. Their death gave her nothing back a second "
-              "time. The knot hung in her cave with one strand, and she did not ask again.",
+              "time. The knot hung in her cave with one strand, and she did not ask again.{/n}",
               requires=(RETURNED, POSTPONED), forbids=(BEARER, CLOSED, FRIENDS, RECLAIMED_BEFORE)),
         ))],
     requires=("trickster.ever", "sacrifice"), forbids=("trickster.commander_back", "soana.late_campaign_kept", *LOSS),
@@ -911,21 +911,21 @@ SCENES.extend(REACTIONS)
 
 # The alive branches end on the registered pages; the portion and the die leave a mark there.
 ALIVE_PARAGRAPHS = (
-    p("Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and "
-      "cursed the Commander's name while she did it. She never missed a winter.", requires=(BLOOD,)),
-    p("Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The "
+    p("{n}Every winter the spirits came to the cave mouth for their portion, and every winter she cut her palm for them and "
+      "cursed the Commander's name while she did it. She never missed a winter.{/n}", requires=(BLOOD,)),
+    p("{n}Some winters the spirits came to the Commander's door instead, wherever it was, and stood in the frost till dawn. The "
       "Commander learned to keep a knife by the threshold, and a rag, and to expect a letter from Wintersun a week later "
-      "calling them stupid.", requires=("soana.trickster.cost.portion_shared",), forbids=("sacrifice",)),
-    p("She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.",
+      "calling them stupid.{/n}", requires=("soana.trickster.cost.portion_shared",), forbids=("sacrifice",)),
+    p("{n}She kept a loaded die in her offering bowl until she died, twenty up. Nobody who visited the cave was allowed to touch it.{/n}",
       requires=(DICE,), forbids=(LUCK_REFUSED,)),
 )
 ALIVE_ENDINGS = ("kept_life", "chosen_visits", "familiar_company", "sacrifice", "beyond_the_forest")
 # Q10 r2: the shared portion outlives a Commander who stayed dead; Soana pays both halves. (The living paragraph above
 # forbids sacrifice, and the living endings that a returned Commander reaches carry it again with the override below.)
 PORTION_ALIVE = ALIVE_PARAGRAPHS[1]
-PORTION_DEAD = p("The winter after the Threshold the spirits came to Wintersun twice: once for her portion, and once for the "
+PORTION_DEAD = p("{n}The winter after the Threshold the spirits came to Wintersun twice: once for her portion, and once for the "
                  "Commander's, which nobody alive was left to pay. Soana cut both palms and paid them both, every winter after, "
-                 "and cursed the dead for leaving her the bill.", requires=("soana.trickster.cost.portion_shared",))
+                 "and cursed the dead for leaving her the bill.{/n}", requires=("soana.trickster.cost.portion_shared",))
 
 
 def _scene(by_id, id):

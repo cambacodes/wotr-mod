@@ -7,6 +7,7 @@ paragraphs; their neutral siblings keep earned endings available in other worlds
 import copy
 import json
 from pathlib import Path
+from tools.player_text_lint import narration_free
 
 ROOT = Path(__file__).resolve().parents[1]
 DEAD = "engine.l12.commander_unreturned"
@@ -147,9 +148,9 @@ def integrate(payload):
         for node in scene["Nodes"]:
             for paragraph in list(node.get("Paragraphs") or []):
                 for contract in contracts:
-                    if paragraph["Text"].startswith(contract["prefix"]):
+                    if narration_free(paragraph["Text"]).startswith(contract["prefix"]):
                         other = copy.deepcopy(paragraph)
-                        other["Text"] = contract["bereavement"]
+                        other["Text"] = "{n}" + contract["bereavement"] + "{/n}"
                         add(paragraph, "Forbids", DEAD)
                         add(other, "Requires", DEAD)
                         node["Paragraphs"].append(other)

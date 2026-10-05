@@ -174,10 +174,10 @@ GREETING = ("{n}Crates stamped with the anchor of Starcatcher stand stacked besi
             "counting them off against a bill of lading keeps an arm's length of empty cobbles around her without "
             "seeming to try. The market has noticed. Nobody walks close.{/n}")
 PRESENCES = {
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="behind", Distance=2.5),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="right", Distance=7.5),
               Requires=["trickster.ever", CONTACT], Forbids=[CLOSED, KILLED, HUB_FAILED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    HUB_FB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELER, Side="behind", Distance=2.5),
+    HUB_FB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELER, Side="behind", Distance=3.5),
                  Requires=["trickster.ever", CONTACT, HUB_FAILED], Forbids=[CLOSED, KILLED], MinChapter=5, MaxChapter=5,
                  AnswerLists=[], Dialog="hub",
                  Greeting=("{n}In the jewellers' arcade, behind the counters, a woman in a captain's coat is weighing "
@@ -745,7 +745,7 @@ remote(P + "raid.wind", "The capstan", [
         c('[Give the order] "Go up, bosun. Cut her down, and hold her."', "cut",
           flags=(CUT_DOWN, OSKEL_DEAD, MEANT, NOTICED, HUNG, YARD_SECRET), alignment=("Evil", 1)),
         c('"No. Leave her where she is."', "leave"),
-        c('[Mobility DC 24] "Stand clear, all of you." Stand under her yourself, nearest, and cut the line with a thrown knife.',
+        c('[Mobility DC 24] "Stand clear, all of you." {n}Stand under her yourself, nearest, and cut the line with a thrown knife.{/n}',
           check=dict(Skill="SkillMobility", DC=24, Success="thrown", Failure="climbed", CommanderOnly=True))),
     nar("thrown", '''{n}You send Oskel to the forecastle with the others and stand alone at the foot of the mast, directly under her, the only living thing within ten strides. The knife turns twice in the grey light and parts the line a hand above the knot.{/n}
 {n}She comes down into your arms like a sack of wet sailcloth, and you go to your knees on the deck with her and get your fingers under the knot, and for one breath you are exactly where every name in her book once stood.{/n}''',
@@ -1031,7 +1031,7 @@ SCENES.append(scene(P + "epilogue.committed", "", "MielarahEpilogue", 6, "", [
 
 SCENES.append(scene(P + "epilogue.late", "", "MielarahEpilogue", 6, "", [
     nar("page", '''{n}The spring after Threshold, a ship with an anchor on her flag came down out of a clear sky over Drezen and hung there, a hundred feet up, while her captain let down a rope ladder and climbed to the bottom of it and did not step off.{/n}
-"You turned for home, the last time I gave you my wheel," said Mielarah. "I have thought about it for a year. It was the right thing to do, and I have not forgiven you for it."
+"You turned for home, the last time I gave you my wheel," {n}said Mielarah.{/n} "I have thought about it for a year. It was the right thing to do, and I have not forgiven you for it."
 "I told you I would not ask you anything again, and I keep my word, even to you." {n}She did not hold out her hand. She only moved her boots to one side of the bottom rung, so that there was room on it for two.{/n} "I am not asking. I am telling you where the ladder is. The wheel is where you left it."''',
         c('[Take her hand and climb.]', "climb"),
         c('[Stay on the ground.]', "stay")),

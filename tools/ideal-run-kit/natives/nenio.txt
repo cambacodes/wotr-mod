@@ -1,0 +1,4 @@
+# Nenio, state "in_party" (recruited Ch1-2, never dismissed, kept through the Enigma)
+# Her romance commits in Ch3 on her own hub; the keys below are the native Ch5 "More than Nothing" outcome the guide prescribes.
+nenio.fox_revealed:5      # Ch5 Nameless Ruins / Areshkagal tomb with Nenio in the party: FoxReveal cue 5db28e49 seen (the Sphinx statue reveal)
+nenio.enigma_resolved:5   # Ch5 FoxMyself: pass Diplomacy DC 32 or Knowledge (Arcana) DC 30 -> Cue_0032 (she is restored and re-recruited)

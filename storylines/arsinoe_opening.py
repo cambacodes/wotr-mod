@@ -104,7 +104,7 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
     n("start", "Arsinoe", '''{n}Arsinoe has the picture under one arm. She adjusts the fastening at her wrist, notices you watching, and offers the roll for you to carry.{/n}
 "Thank you. I have brought the receipt as well. One should not arrive with an argument and forget the evidence."
 {n}Outside the shop, a broad-shouldered man is lifting a drying frame through a doorway scarcely wider than the frame. He sees Arsinoe and attempts a bow without putting it down.{/n}
-"Please finish that first," she says.
+"Please finish that first," {n}she says.{/n}
 {n}He does. The frame settles safely inside, and the man wipes his hands on an apron before introducing himself as Tovin.{/n}
 "You liked the view?"
 "I liked it enough to examine it. May we come in?"''',
@@ -122,7 +122,7 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
 "Yes."
 {n}Arsinoe lets the answer stand for a moment.{/n}
 "Thank you. Now we can discuss what to do with it. Can you draw a view of your own?"''', c('[Hear his proposal.]', "proposal")),
-    n("explanation", "Arsinoe", '''"An old plate," Tovin says. "It came with the press. The name was gone. I added a title and had the sheets colored."
+    n("explanation", "Arsinoe", '''"An old plate," {n}Tovin says.{/n} "It came with the press. The name was gone. I added a title and had the sheets colored."
 "Did you mean it as a proposal for what Drezen might become?"
 "I meant to sell pictures. Soldiers send them home. People like to show where they've been."
 {n}Arsinoe turns the sheet toward him.{/n}
@@ -132,7 +132,7 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
     n("proposal", "Tovin", '''"Buildings. Well enough. Faces give me trouble."
 {n}He takes a board from behind the counter. On it is a rough study of his own street. A leaning chimney has been drawn twice, once as it stands and once corrected to the vertical.{/n}
 "I was going to make this straight."
-"I would begin with the chimney itself," Arsinoe says.
+"I would begin with the chimney itself," {n}Arsinoe says.{/n}
 {n}He laughs, then notices that she is looking seriously at the drawing.{/n}
 "I could cut a small plate. This corner, a bit of the next house. Nothing like the big one. A proper view would take longer."
 "And these?"
@@ -151,7 +151,7 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
       c('"Wait for the street view. Let your recommendation mean you have seen his own work."', "street", flags=("arsinoe.print_street",), forbids=("arsinoe.print_fantasy",))),
     n("fantasy", "Arsinoe", '''"Then show me the corrected title before you offer another copy. And tell your earlier customers what they bought if they return."
 {n}Tovin finds a blank strip and tries a few words with his pen. After two attempts, he writes A CITY IMAGINED.{/n}
-"Drezen can still be the place where you imagined it," you say.
+"Drezen can still be the place where you imagined it," {n}you say.{/n}
 "I wish someone had suggested that before I paid for the lettering."
 {n}Arsinoe examines the strip, then sets it across the false title.{/n}
 "This I can recommend as a curiosity. Not as a view."
@@ -162,7 +162,7 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
 "Keep the money you owe me until you have the proof. We can settle my purchase then."
 {n}He looks relieved, although the covered stack still troubles him.{/n}
 "I had hoped this would be quicker."
-"So had I," she says. "I came to buy a picture."
+"So had I," {n}she says.{/n} "I came to buy a picture."
 {n}Tovin's rueful laugh follows you to the door.{/n}''', c('[Step outside with Arsinoe.]', "outside")),
     n("outside", "Arsinoe", '''{n}Outside, she stops to look back along the street. It is considerably narrower than its imagined counterpart. A basket hangs from an upper window on a rope, and someone below is arguing that its owner has sent down the wrong coins.{/n}
 "There. He ought to draw that. The basket, I mean. Perhaps not the argument."
@@ -397,7 +397,7 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 {n}She settles the book securely, then keeps her hand in yours a little longer.{/n}''', c('[Walk the last few steps with her.]', "parting", flags=("arsinoe.first_kiss",))),
     n("hand", "Arsinoe", '''"Then that is what we shall do."
 {n}She gives you her hand and stands beside you. Her thumb moves once over your knuckles. A pair of passersby recognizes her, receives a nod, and continues on without requiring either of you to explain the evening.{/n}
-"I am very pleased with tonight," she says. "I hope that is clear."''', c('[Walk the last few steps with her.]', "parting")),
+"I am very pleased with tonight," {n}she says.{/n} "I hope that is clear."''', c('[Walk the last few steps with her.]', "parting")),
     n("slow_end", "Arsinoe", '''"So would I."
 {n}She offers you the book.{/n}
 "Take this until then. Begin with the inn. You may skip the governor with my blessing, although I cannot claim divine authority for that advice."

@@ -1,0 +1,8 @@
+# Terendelev: all-romance run takes state bones_galfrey (fight undead Terendelev beside Galfrey in Iz)
+terendelev.scale_held:0      # Prologue caves: loot Terendelev's Scale (TerendelevScaleItem 816f2445), keep it unused all game
+terendelev.claw_story:3      # Ch3 Drezen: Storyteller's Terendelev topic (StoryTeller_MainDialogue Cue_0778 / Cue_0779)
+terendelev.voice_heard:3     # Ch3 Drezen: Storyteller [Show Terendelev's scale] Answer_0767, then Answer_0784 -> Cue_0785
+iz.terendelev_battle:5       # Ch5 Iz: GalfreyOnTheEdge Cue_0005 (Galfrey's target is the monster lair: Lexicon NOT handed to Galfrey)
+iz.monster_dead.live:5       # Ch5 Iz: undead Terendelev killed with Galfrey (MonsterDead 42e220d5)
+irabeth.chapter_three:3      # Chapter03 etude (progress)
+irabeth.chapter_five:5       # Chapter05 etude (progress)

@@ -1,0 +1,5 @@
+# Eliandra, state "vow" (met in Ch5 at Pulura's Fall; the last rite at her basin), with the optional Ch3 tablet trip (state tablet_trip)
+fool_king.tablet_brought:3  # Ch3 Fool King quest: bring the proof tablet from the chiefs' ground below Pulura's Fall (FoolKing_Tavern Answer_0025)
+fool_king.crowned:3         # Ch3 crown the Fool King (Thaberdine) -> he is in his Drezen tavern in Ch5 (her presence stands beside him)
+eliandra.met_ch5:5          # Ch5 Pulura's Fall: her leader dialog (PuluraLeaderSaved Cue_0001 "for everyone")
+eliandra.shrine_left:5      # Ch5 same dialog: Answer_0011 "What will happen to the sanctuary now?" -> Cue_0029/0030 (opens the packing beat)

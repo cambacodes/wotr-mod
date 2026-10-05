@@ -60,6 +60,8 @@ param(
     [int]$MaxPathsPerScene = 8,
     [int]$MaxScenesPerSave = 0,
     [string[]]$SceneFilter = @(),
+    [string[]]$SetFlags = @(),
+    [string[]]$StartEtudes = @(),
     [switch]$NoRoundTrip,
     [switch]$Headless,
     [switch]$Windowed,
@@ -69,10 +71,19 @@ param(
     [int]$ScreenshotsPerScene = 3,
     [switch]$Inline,
     [int]$MaxInlineNavSteps = 40,
-    [ValidateSet('Residence', 'Presence')][string]$Spike,
+    # BEGIN eng7-f5
+    [ValidateSet('Residence', 'Presence', 'NativeEpilogue')][string]$Spike,
+    [string]$NativeEpilogueCases,
+    # END eng7-f5
     [string[]]$PresenceUnits = @(),
     [string]$PresenceLocator,
+    [string]$PresenceKey,
+    [string]$PresenceEnterPoint,
     [string]$PresenceProbe,
+    [switch]$ProbeEnter,
+    [string]$PresenceNearUnit,
+    [string]$PresenceSide = 'left',
+    [float]$PresenceAnchorDistance = 2.5,
     [float]$ProbeRadius = 10,
     [switch]$Probes,
     [switch]$Build,
@@ -227,6 +238,15 @@ $plan = [ordered]@{
     quitWhenDone      = $true
     timeouts          = [ordered]@{ globalSeconds = [Math]::Max(60, $TimeoutMinutes * 60 - 60) }
 }
+# BEGIN eng7-f5: JSON is embedded, so no extra mod-folder installation or shared runtime hook is needed.
+if ($Spike -eq 'NativeEpilogue') {
+    if (!$NoRoundTrip -or $Inline -or $Headless) { throw '-Spike NativeEpilogue requires -NoRoundTrip, visible dialogs and no -Inline.' }
+    if ($resolvedSaves.Count -eq 0) { throw '-Spike NativeEpilogue requires a loadable free-roam save.' }
+    if (!$NativeEpilogueCases) { $NativeEpilogueCases = Join-Path $Repo 'tests/native-cue-policy-fixtures/states.json' }
+    $plan.nativeEpilogueCasesJson = Get-Content -LiteralPath $NativeEpilogueCases -Raw
+    $plan.maxStepsPerWalk = 1000
+} elseif ($NativeEpilogueCases) { throw '-NativeEpilogueCases requires -Spike NativeEpilogue.' }
+# END eng7-f5
 # Opt-in only: without -Spike the plan (and so the run) is exactly as before.
 if ($Spike) { $plan.spike = $Spike.ToLowerInvariant() }
 if (($PresenceUnits.Count -gt 0 -or $PresenceLocator -or $PSBoundParameters.ContainsKey('PresenceProbe') -or $PSBoundParameters.ContainsKey('ProbeRadius')) -and $Spike -ne 'Presence') {
@@ -245,13 +265,22 @@ if ($PSBoundParameters.ContainsKey('PresenceProbe')) {
     }
     if ($ProbeRadius -le 0 -or [float]::IsNaN($ProbeRadius) -or [float]::IsInfinity($ProbeRadius)) { throw '-ProbeRadius must be finite and greater than zero.' }
 }
-if ($Spike -eq 'Presence' -and ($PresenceUnits.Count -gt 0 -or $PresenceLocator -or $PSBoundParameters.ContainsKey('PresenceProbe'))) {
+if ($PresenceKey -and $Spike -ne 'Presence') { throw '-PresenceKey needs -Spike Presence.' }
+if ($PresenceKey -and ($PresenceUnits.Count -gt 0 -or $PresenceLocator -or $PresenceNearUnit -or $PresenceProbe)) { throw '-PresenceKey tests the production placement; copy/probe overrides cannot be combined with it.' }
+if ($PSBoundParameters.ContainsKey('PresenceEnterPoint') -and $Spike -ne 'Presence') { throw '-PresenceEnterPoint needs -Spike Presence.' }
+if ($Spike -eq 'Presence' -and ($PSBoundParameters.ContainsKey('PresenceEnterPoint') -or $PresenceKey -or $PresenceUnits.Count -gt 0 -or $PresenceLocator -or $PresenceNearUnit -or $PSBoundParameters.ContainsKey('PresenceProbe'))) {
     $presence = [ordered]@{}
+    if ($PresenceKey) { $presence.key = $PresenceKey }
+    if ($PSBoundParameters.ContainsKey('PresenceEnterPoint')) { $presence.enterPoint = $PresenceEnterPoint }
     if ($PresenceUnits.Count -gt 0) { $presence.units = @($PresenceUnits) }
     if ($PresenceLocator) { $presence.locator = $PresenceLocator }
-    if ($PSBoundParameters.ContainsKey('PresenceProbe')) { $presence.probe = $PresenceProbe; $presence.probeRadius = $ProbeRadius }
+    if ($PresenceNearUnit) { $presence.nearUnit = $PresenceNearUnit; $presence.side = $PresenceSide; $presence.anchorDistance = $PresenceAnchorDistance }
+    if ($PSBoundParameters.ContainsKey('PresenceProbe')) { $presence.probe = $PresenceProbe; $presence.probeRadius = $ProbeRadius; if ($ProbeEnter) { $presence.probeEnter = $true } }
     $plan.presence = $presence
 }
+# Fixture setup is harness-only, applied after each source-save load.
+$plan.setFlags = @($SetFlags | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
+$plan.startEtudes = @($StartEtudes | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
 $planJson = $plan | ConvertTo-Json -Depth 5
 
 $launchArgs = @()
@@ -435,6 +464,14 @@ try {
         foreach ($sv in @($r.Saves)) {
             Say ("  {0}: load={1} ({2:N0} ms) available={3} driven={4} choices={5} roundtrip={6}" -f (Split-Path -Leaf $sv.Save), $sv.LoadOk, $sv.LoadMs,
                 @($sv.AvailableScenes).Count, $sv.ScenesDriven, $sv.ChoicesTaken, $(if ($sv.RoundTrip.Attempted) { $sv.RoundTrip.Passed } else { "skipped: $($sv.RoundTrip.SkipReason)" }))
+            # BEGIN eng7-f5
+            if ($sv.PSObject.Properties['NativeSlides'] -and @($sv.NativeSlides).Count) {
+                $slides = @($sv.NativeSlides)
+                $passedSlides = @($slides | Where-Object { $_.Passed }).Count
+                $forcedSlides = @($slides | Where-Object { $_.Forced }).Count
+                Say ("    native slides: {0}/{1} passed; synthetic={2}; details in Saves[*].NativeSlides" -f $passedSlides, $slides.Count, $forcedSlides) Cyan
+            }
+            # END eng7-f5
             if ($sv.PSObject.Properties['Residence'] -and $sv.Residence) {
                 $rs = $sv.Residence; $pr = $rs.Presence
                 Say ("    residence spike: (a) entry={0} ({1:N0} ms from {2}; closet live={3}) (b) preset={4} ok={5} (c) presence ok={6} -> passed={7}" -f `
@@ -448,7 +485,7 @@ try {
                 $probe = $sv.PresenceSpike.Probe
                 Say ("    walkable probe: {0}, radius {1} m, area {2}" -f ($probe.Position -join ','), $probe.Radius, $sv.PresenceSpike.Area) Cyan
                 foreach ($point in @($probe.Points)) {
-                    Say ("      {0} ({1:N3} m)" -f (($point.Position | ForEach-Object { $_.ToString('R', [Globalization.CultureInfo]::InvariantCulture) }) -join ','), $point.Distance)
+                    Say ("      {0} ({1:N3} m)" -f (($point.Position | ForEach-Object { ([double]$_).ToString('R', [Globalization.CultureInfo]::InvariantCulture) }) -join ','), $point.Distance)
                 }
             }
         }

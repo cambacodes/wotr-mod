@@ -40,7 +40,7 @@ class Lane12Tests(unittest.TestCase):
     def test_commander_mourning_mutation_is_rejected(self):
         story = copy.deepcopy(self.after)
         page = next(s for s in story["Scenes"] if s["Id"] == "anevia.ending_sacrifice")
-        p = next(p for n in page["Nodes"] for p in n["Paragraphs"] if p["Text"].startswith("The spring after Threshold, somebody knocked"))
+        p = next(p for n in page["Nodes"] for p in n["Paragraphs"] if lane.narration_free(p["Text"]).startswith("The spring after Threshold, somebody knocked"))
         p["Forbids"].remove(lane.DEAD)
         self.assertTrue(any(f["scene"] == page["Id"] for f in findings(commander_alive, story)))
         self.assertTrue(any("living continuation" in error for error in earned_presence_lint.check(story)[0]))
@@ -60,7 +60,7 @@ class Lane12Tests(unittest.TestCase):
                 continue
             for node in scene["Nodes"]:
                 for p in node.get("Paragraphs") or []:
-                    if any(p["Text"].startswith(c["prefix"]) for c in contracts):
+                    if any(lane.narration_free(p["Text"]).startswith(c["prefix"]) for c in contracts):
                         self.assertIn(lane.DEAD, p["Forbids"])
                         count += 1
         self.assertGreater(count, 50)  # sweep includes both Tirabade routes

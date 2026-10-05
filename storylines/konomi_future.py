@@ -17,7 +17,7 @@ def s(id, title, nodes, requires=(), delay=48):
 
 s("lease_offer", "The name on the next agreement", [
     n("start", "Konomi", '''{n}Konomi meets you outside the building whose lease brought her back to Drezen. A woman is locking the door behind her. She thanks Konomi, gives you a curious glance and leaves with a folded agreement under her arm.{/n}
-"The tenant," Konomi says. "She has signed. Fewer rooms than she wanted, with the option to take the rest after the first season. She will have less space and enough money left to put something in it."
+"The tenant," {n}Konomi says.{/n} "She has signed. Fewer rooms than she wanted, with the option to take the rest after the first season. She will have less space and enough money left to put something in it."
 {n}She watches the woman turn the corner.{/n}
 "The owner has offered me a different kind of work. I have been trying to decide how much of my pleasure in the offer is vanity."''',
       c('"Tell me what she wants you to do."', "offer"),

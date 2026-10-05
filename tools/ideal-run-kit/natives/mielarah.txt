@@ -1,0 +1,6 @@
+# Mielarah: state `arrived` (hired, her ship, no raid, no storm helm, landfall at Colyphyr, never attacked).
+mielarah.met_first:4    # Tumberd_dialogue: first talk to her at the Bad Luck
+mielarah.told_curse:4   # Tumberd_dialogue Cue_0048: ask about her curse (the Gravedragger story)
+mielarah.hired:4        # Tumberd_dialogue: pay 150,000 gp (or Diplomacy DC 41 then 100,000) - Cue_0075; requires NO Profane Gift
+mielarah.voyage_begun:5 # AirAdventures_BookEvent (portal with her ship) really starts late in Ch4 after the tavern beats; dated :5 only so the sim (which cannot order keys inside a chapter) lets the Ch4 tavern beats, which Forbid it, play first
+mielarah.arrived:4      # Colyphyr arrival cue fd7b46bf: the voyage ends safely (no raid Answer_0404, no storm helm Answer_0351)

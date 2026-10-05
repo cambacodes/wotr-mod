@@ -642,6 +642,10 @@ def make_expansion(*, independent_tirabade=True):
     from storylines import native_reconciliation_f6a
     native_reconciliation_f6a.integrate(payload)
     # eng7-f6a end
+    # eng7-f6c begin: only the assigned native dependencies and morale wording.
+    from storylines import engine_f6c
+    engine_f6c.integrate(payload)
+    # eng7-f6c end
     earned_presence.integrate(payload)
     trickster_engine(payload)
     # eng7-l05: wire current participants before binding their transitive native inputs.
@@ -705,6 +709,9 @@ def make_expansion(*, independent_tirabade=True):
             presence = payload["Presences"][name]
             presence["Requires"] = list(dict.fromkeys([*presence.get("Requires", []), "trickster.now"]))
     # eng7-l07 end
+    # eng7-f6c begin: append employment paragraphs after the existing epilogue appenders.
+    engine_f6c.reconcile_employment(payload)
+    # eng7-f6c end
     native_overrides.finalize(payload)
     validate_native_gate_contract(payload)
     return payload
@@ -789,5 +796,6 @@ if __name__ == "__main__":
     output = ROOT / "development/Story.json"
     output.parent.mkdir(exist_ok=True)
     payload = make_expansion()
-    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    newline = "\r\n" if output.exists() and b"\r\n" in output.read_bytes() else "\n"
+    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline=newline)
     print(f"INCOMPLETE DEVELOPMENT EXPORT: {len(payload['Scenes'])} scenes -> {output}")

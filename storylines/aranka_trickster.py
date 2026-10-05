@@ -85,7 +85,7 @@ PRESENCES = {
     # A spawned copy of her Azata-island actor busking on the crates by the spice trader's stall in the market (polish
     # 2026-09-28: off Fye's counter, where other routes already stand). A singer on the road plays where the coin is,
     # not in the one tavern everybody else drinks in.
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=MARKET, Side="front", Distance=2.5),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=MARKET, Side="front", Distance=3.5),
               Requires=["trickster.ever", "aranka.trickster.in_drezen"], Forbids=[CLOSED], MinChapter=3, MaxChapter=5,
               AnswerLists=[], Dialog="hub",
               Greeting="{n}A woman in Desnan blue is sitting on a stack of spice crates by the curio stall with a lute "
@@ -93,7 +93,7 @@ PRESENCES = {
     # If the market stall is not in the capital, aranka.presence.failed is raised and she sings in the quartermaster's
     # yard instead: a copy of a different unit of hers, beside Wilcer Garms, who never leaves. The same four in-person
     # beats have yard copies (ids ending _yard).
-    YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="front", Distance=2.5),
+    YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="front", Distance=3.5),
                Requires=["trickster.ever", "aranka.trickster.in_drezen", FYE_GONE], Forbids=[CLOSED], MinChapter=3,
                MaxChapter=5, AnswerLists=[], Dialog="hub",
                Greeting="{n}The market is shuttered. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the "
@@ -467,11 +467,11 @@ counter("aranka.trickster.touring.arrives", "Court poet", '"You came."', [
 # --- Epilogue pages (R2-6; ordered siblings, no page effects) -------------------------------------------------------
 
 VERSE_PARAGRAPHS = (
-    p("She sang the thief's verse herself, to the end of her days, and before it she always told the hall that the "
-      "thief had said it must be the Desnans. The halls always laughed. The Commander never did.", requires=(DENIED,)),
-    p("The third verse, the one Aranka wrote as a question and the Knight-Commander answered alone and badly, is printed under the other two "
-      "in every copy. It has never once been sung well. Aranka would not allow it.", requires=(SANG_ALONE,)),
-    p("The verse where the Knight-Commander trips over their own banner is still the most requested verse of the song.",
+    p("{n}She sang the thief's verse herself, to the end of her days, and before it she always told the hall that the "
+      "thief had said it must be the Desnans. The halls always laughed. The Commander never did.{/n}", requires=(DENIED,)),
+    p("{n}The third verse, the one Aranka wrote as a question and the Knight-Commander answered alone and badly, is printed under the other two "
+      "in every copy. It has never once been sung well. Aranka would not allow it.{/n}", requires=(SANG_ALONE,)),
+    p("{n}The verse where the Knight-Commander trips over their own banner is still the most requested verse of the song.{/n}",
       requires=(MOCKING,)),
 )
 

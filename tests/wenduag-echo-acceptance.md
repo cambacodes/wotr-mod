@@ -6,12 +6,16 @@ The native sequence and dialogue fixtures read the installed blueprints.zip rath
 
 ## Required destination capture
 
-`src/WenduagEcho.cs` intentionally leaves `TODO_VerifiedCellarPosition` null.
-Capture a cellar position in DrezenCapital, area `2570015799edf594daf2f076f2f975d8`, together with its loaded scene and navigation evidence.
+F7 coordinator decision: `src/WenduagEcho.cs` places the retained original at the street-level cellar door,
+using the verified walkable Wenduag street point `(-24.63, 40.13, 57.17)` in DrezenCapital,
+area `2570015799edf594daf2f076f2f975d8`. Capture its loaded scene and original-actor navigation evidence.
+Chapter 5 reaches capital after the ReturnToDrezen summit teleport; do not target a basement area.
 Verify that the Commander can walk from the normal arrival point to the original Wenduag, approach within two metres, and click her without another native interaction intercepting the click.
 Verify standing space and the three-metre occupancy exclusion, and repeat after saving and loading.
-Do not substitute the native exterior exile locator for a cellar position.
-Until this value is supplied, the original remains in transport and the return scene cannot open.
+The prose now stages the return at the cellar door and the stair down, without claiming a basement walkmesh.
+The manifest remains pending until original-actor click, occupancy and reload pass; walkability alone is not that proof.
+Use the exact `wenduag.cellar` commands in `harness/README.md` on a real retained-original custody save.
+The existing identity, paid preparation, transport, journey and live-Trickster checks still govern arrival.
 
 ## Foresight producer
 

@@ -263,7 +263,7 @@ s("refuge", "The house she left behind", [
     n("stay", "Jerribeth", '''"Good. I have had enough reassuring inventions for one day."
 {n}She begins with the practical problems, grows angry again in the middle of an explanation, and allows you to hear it without correcting herself into a more attractive performance.{/n}
 {n}Before you part, she admits that she opened her side of the charm before the agreed hour.{/n}
-"I thought you might be there," she says. "You may be pleased about that after I have gone."''', c('[Arrange another conversation.]', flags=("jerribeth.refuge_acknowledged",))),
+"I thought you might be there," {n}she says.{/n} "You may be pleased about that after I have gone."''', c('[Arrange another conversation.]', flags=("jerribeth.refuge_acknowledged",))),
 ], requires=("jerribeth.evening", "jerribeth.refuge_known", "jerribeth.patron_lost"), chapter=4, optional=True)
 
 s("future", "A future she has not rehearsed", [
@@ -340,7 +340,7 @@ s("ordinary", "A performance she abandoned", [
 {n}She files the joke away instead of improving it, the way she files everything.{/n}''', c('[Stay with her.]', "end")),
     n("end", "Jerribeth", '''{n}The conversation wanders. Twice she asks a question and does not wait for the whole answer, because the first half told her what she wanted. Once she lets the imagined lamplight slip, and when you do not look away from her into the dark, she notes that as well.{/n}
 {n}Near the end she tells you, idly, the name of a clerk in your own chancery who has been selling your dispatches for a month. She has known for weeks. She tells you now, she says, because a debt you owe her is worth more than a secret you lack, and because she would rather be the one who watches him ruined.{/n}
-"Come again tomorrow," she says at last. "I might still be short of good ideas. I am never short of information."''', c('[Keep another evening for her.]', flags=("jerribeth.at_ease",))),
+"Come again tomorrow," {n}she says at last.{/n} "I might still be short of good ideas. I am never short of information."''', c('[Keep another evening for her.]', flags=("jerribeth.at_ease",))),
 ], requires=("jerribeth.future", "jerribeth.committed"), chapter=5)
 
 s("farewell", "The frame she leaves open", [

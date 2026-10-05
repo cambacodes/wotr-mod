@@ -498,35 +498,35 @@ DATE_NODES = [
 # --- Epilogues ----------------------------------------------------------------------------------------------------------
 
 PARAGRAPHS = (
-    p("Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
-      "aloud every year on the anniversary in a temple of Abadar, where debts are remembered.",
+    p("{n}Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
+      "aloud every year on the anniversary in a temple of Abadar, where debts are remembered.{/n}",
       requires=(MET, ROBBED), forbids=(Q3, MARKED, BOUGHT, VOW, LASTCALL_CALLED)),
-    p("Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
+    p("{n}Sunhammer's pouch never came back to Drezen. Kiana kept a list of the other names from her wedding, and read it "
       "aloud every year on the anniversary in a temple of Abadar. Every year, at the back of the temple, a young man in "
-      "a jeweller's apron stood and listened, and left before the end.", requires=(MET, ROBBED, MARKED),
+      "a jeweller's apron stood and listened, and left before the end.{/n}", requires=(MET, ROBBED, MARKED),
       forbids=(Q3, BOUGHT, VOW, LASTCALL_CALLED)),
-    p("The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud "
+    p("{n}The rest of Kiana's wedding guests came home from Sunhammer's pouch for a thousand crowns and an apology said aloud "
       "in the Commander's own voice. Every year the jewellers' guild of Mendev hears it again at its feast, recited by an "
-      "apprentice who has it by heart. Kiana put it in her play, word for word, and audiences wept at it without knowing why.",
+      "apprentice who has it by heart. Kiana put it in her play, word for word, and audiences wept at it without knowing why.{/n}",
       requires=(MET, BOUGHT)),
-    p("The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. "
+    p("{n}The Commander's promise to fetch the other stones stood in red ink in Arsinoe's ledger for the rest of the war. "
       "Kiana kept the list of names beside it and read it aloud every year on the anniversary, and each year, after the "
-      "last name, she looked up.", requires=(MET, VOW), forbids=(Q3, LASTCALL_CALLED)),
-    p("Somewhere in Mendev a jeweller's apprentice remembered the cold of the Commander's palm on his, and his master kept "
+      "last name, she looked up.{/n}", requires=(MET, VOW), forbids=(Q3, LASTCALL_CALLED)),
+    p("{n}Somewhere in Mendev a jeweller's apprentice remembered the cold of the Commander's palm on his, and his master kept "
       "the three words that went with it in a ledger: One favour, owed. Kiana knew. Every so often, at supper, she asked whether he had called it in yet, and watched "
-      "the Commander's face while they answered.", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED, Q3, SUNHAMMER_DEAD)),
-    p("Darek Sunhammer died with the Commander's favour still owed him, and nobody else ever came to collect it. Kiana "
-      "said it was the only debt she had ever seen cancelled by a funeral, and that she approved.", requires=(MET, FAVOUR),
+      "the Commander's face while they answered.{/n}", requires=(MET, FAVOUR), forbids=(LASTCALL_CALLED, Q3, SUNHAMMER_DEAD)),
+    p("{n}Darek Sunhammer died with the Commander's favour still owed him, and nobody else ever came to collect it. Kiana "
+      "said it was the only debt she had ever seen cancelled by a funeral, and that she approved.{/n}", requires=(MET, FAVOUR),
       forbids=(LASTCALL_CALLED,), any_groups=[[Q3, SUNHAMMER_DEAD]]),
-    p("Elan and Kiana stayed friends, which surprised everyone but Elan.", requires=(MET, H_MARRIED),
+    p("{n}Elan and Kiana stayed friends, which surprised everyone but Elan.{/n}", requires=(MET, H_MARRIED),
       forbids=("kiana.widowed",)),
-    p("Kiana framed the licence anyway, the cancelled one, with POSTPONED still stamped across it in red. It hung over "
-      "her writing table, and she told guests it was the only good review her wedding ever got.", requires=(MET, H_BETROTHED)),
-    p("The hold on Kiana's licence was lifted the day the Wound closed, and the Sunhammer ring went to Arsinoe's temple, to be "
+    p("{n}Kiana framed the licence anyway, the cancelled one, with POSTPONED still stamped across it in red. It hung over "
+      "her writing table, and she told guests it was the only good review her wedding ever got.{/n}", requires=(MET, H_BETROTHED)),
+    p("{n}The hold on Kiana's licence was lifted the day the Wound closed, and the Sunhammer ring went to Arsinoe's temple, to be "
       "broken on an auditor's bench. The baker and the crossbowman had been married since the spring, and sent the "
-      "Commander a slice of each cake, with no note.", requires=(POSTPONED,), forbids=(KING,)),
-    p("The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King "
-      "was sober. He was not. The baker and the crossbowman were married that week anyway, and Kiana went to both, and danced at both, and did not look at the third licence once.",
+      "Commander a slice of each cake, with no note.{/n}", requires=(POSTPONED,), forbids=(KING,)),
+    p("{n}The Fool King's decree against weddings was lifted the day the Wound closed, by royal proclamation, once the King "
+      "was sober. He was not. The baker and the crossbowman were married that week anyway, and Kiana went to both, and danced at both, and did not look at the third licence once.{/n}",
       requires=(POSTPONED, KING)),
 )
 

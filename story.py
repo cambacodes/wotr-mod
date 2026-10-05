@@ -443,14 +443,16 @@ s("i_morning", "What an oath cannot answer", "Irabeth", 3,
 
 s("reckoning", "Three accounts of the same evening", "Together", 3,
   '"It is time the three of us spoke in private."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}Anevia has chosen a small room with a table and three chairs. Irabeth has brought no armor beyond the habits of her posture. Neither woman sits beside you. They sit facing each other, leaving the third place between them empty until you take it.{/n}
 {n}Anevia checks the latch. Irabeth watches her do it.{/n}
-"We don't need guarding," Irabeth says.
-"I know." Anevia takes her hand off the door. "That's not why I checked."
+"We don't need guarding," {n}Irabeth says.{/n}
+"I know." {n}Anevia takes her hand off the door.{/n} "That's not why I checked."
 {n}The silence after that is more painful than an accusation.{/n}''',
       c('"I have been involved with both of you. I knew each of you was keeping it from the other."', "truth", flags=("reckoning_honest",)),
       c('"We all wanted this. Perhaps there is less to apologize for than we think."', "excuse"),
       c('"I should not be part of your marriage any longer."', "withdraw")),
+    # end eng7-f2
     n("excuse", "Irabeth", '''"No."
 {n}Irabeth does not raise her voice.{/n}
 "I wanted you. I did not agree to be deceived by my wife. She did not agree to be deceived by me. Do not use what we wanted to erase what we did."
@@ -466,6 +468,7 @@ s("reckoning", "Three accounts of the same evening", "Together", 3,
 {n}Anevia shuts her eyes.{/n}
 "Desna. We were helping each other hide it."
 {n}For a while you hear nothing but the lamp and someone walking in the passage outside.{/n}''', c('[Listen.]', "hurt"), portrait="TogetherReckoning"),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("hurt", "Irabeth", '''"Were you unhappy with me?"
 {n}The question costs Irabeth more than anger would have. Anevia answers at once.{/n}
 "I was happy to come home to you. I was happy up there on that landing, too. I thought if I kept the two apart, I could keep both."
@@ -477,9 +480,10 @@ s("reckoning", "Three accounts of the same evening", "Together", 3,
 "I liked being bold. Making the Commander wait for my next move. I kept wanting to see how far I could go."
 {n}She looks at you before turning back to Anevia.{/n}
 "Then you asked about my evening, and I let you believe I had spent it alone. I found that much easier than looking you in the face now."
-"You took the choice," Anevia says. "So did I."''',
+"You took the choice," {n}Anevia says.{/n} "So did I."''',
       c('"You don\'t have to decide tonight whether you can forgive anyone."', "space"),
       c('"Could we find a way for all three of us to be together?"', "too_soon")),
+    # end eng7-f2
     n("too_soon", "Anevia", '''"Maybe. I don't know."
 {n}Anevia's uncertainty is more honest than a refusal would have been.{/n}
 "But if you turn this into a clever solution before I've finished being hurt, I'll walk out. And I won't be walking toward your room."
@@ -491,14 +495,18 @@ s("reckoning", "Three accounts of the same evening", "Together", 3,
 {n}Anevia stands beside her, leaving a little space between them.{/n}
 "We'll speak again. Separately first, I think. And nobody's borrowing work as an excuse in the meantime."
 {n}They leave together. Neither reaches for the other's hand. Neither moves far enough away to make reaching impossible.{/n}''', c('[Give them time.]')),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("withdraw", "Narrator", '''{n}Neither woman tries to stop you. That is harder than you expected.{/n}
-"Then say it plainly," Irabeth says.
+"Then say it plainly," {n}Irabeth says.{/n}
 {n}You do. You tell them that the affairs are over and that you will not ask either to leave the other. Anevia listens with her arms folded, but when you finish she lets them fall to her sides.{/n}
 "All right. We'll have enough to talk about without guessing whether you're waiting outside the door."
 {n}You leave them together. Repairing their marriage is theirs to attempt, and no longer yours to direct.{/n}''', c('[End the romance route.]', flags=("closed", "parted_honestly"))),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("end_bad", "Narrator", '''{n}Irabeth rises. Anevia does not look at you again.{/n}
-"Then there is nothing further to discuss," Irabeth says. "You will receive the same service and the same honest counsel as before. Nothing more."
+"Then there is nothing further to discuss," {n}Irabeth says.{/n} "You will receive the same service and the same honest counsel as before. Nothing more."
 {n}The meeting ends. There is no dramatic dismissal, only a door opened and held until you leave.{/n}''', c('[Leave.]')),
+    # end eng7-f2
 ], requires=("a_morning", "i_morning", "a_affair", "i_affair"), delay=24)
 
 s("a_truth", "What she keeps", "Anevia", 3,
@@ -580,15 +588,18 @@ s("i_truth", "Without a penance", "Irabeth", 3,
 
 s("table", "A place for the third chair", "Together", 3,
   '"Shall we talk about what we could build together?"', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}This time there is food on the table. Anevia has bought it rather than attempting to bake. She catches you looking at the loaf.{/n}
 "Thought we'd suffered enough for one week."
 {n}Irabeth gives her a look that is half affection and half warning. Anevia shrugs, but her smile is genuine.{/n}
-"We have spoken," Irabeth says. "A great deal. We do not agree about everything."
+"We have spoken," {n}Irabeth says.{/n} "A great deal. We do not agree about everything."
 "Which is how we knew we hadn't been replaced by unusually polite demons."
 {n}Irabeth reaches for her wife's hand. Anevia lets her take it.{/n}''', c('[Sit with them.]', "proposal")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("proposal", "Irabeth", '''"We would like to try. The three of us."
 {n}Irabeth says it plainly, then looks to Anevia rather than continuing on her behalf.{/n}
-"Not 'you can borrow my wife on certain evenings'," Anevia says. "I know that sounds obvious. I want it said anyway. You're not something we're dividing up, and neither are we."
+"Not 'you can borrow my wife on certain evenings'," {n}Anevia says.{/n} "I know that sounds obvious. I want it said anyway. You're not something we're dividing up, and neither are we."
 {n}She pulls the bread apart with her fingers.{/n}
 "We keep our marriage. We make room for you as yourself. And if one of us isn't happy, we don't decide the other two get to outvote her. Or you."
 {n}Irabeth nods.{/n}
@@ -596,18 +607,23 @@ s("table", "A place for the third chair", "Together", 3,
       c('"I want that too."', "terms"),
       c('"Would I always be a guest in your marriage?"', "guest"),
       c('"I care about you both, but I cannot do this."', "stop")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("guest", "Anevia", '''"That's what I was afraid you'd ask. Because I don't have a tidy answer."
 {n}She looks to Irabeth, who answers without defensiveness.{/n}
 "We have years together. A history we cannot and should not erase. But history is not authority over you. You must have a say in the life we share. A real say, including the right to dislike our habits."
-"Especially her habits," Anevia adds. "Mine are charming."
+"Especially her habits," {n}Anevia adds.{/n} "Mine are charming."
 {n}Irabeth squeezes her hand.{/n}
 "And there must be time for each of us alone with you. We are not offering you admission to a room where the two of us have already made every decision."''', c('"Then let us decide the first things together."', "terms")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("terms", "Narrator", '''{n}The discussion is less graceful than the proposal. You speak about nights together and nights apart. About what may be said in public, and what belongs only to the person who confided it. About the difference between privacy and an alibi.{/n}
-"If I ask for an evening with my wife," Irabeth says, "it cannot become a test of whether I love you enough. And if you ask for time with her, I must not treat that as a trespass."
-"Same goes for you and me," Anevia tells her. "We don't make our marriage the place nobody's allowed to need anything."
+"If I ask for an evening with my wife," {n}Irabeth says,{/n} "it cannot become a test of whether I love you enough. And if you ask for time with her, I must not treat that as a trespass."
+"Same goes for you and me," {n}Anevia tells her.{/n} "We don't make our marriage the place nobody's allowed to need anything."
 {n}When other attachments come up, neither woman assumes your answer.{/n}''',
       c('"I have other people in my life. I will not hide them from you or ask you to compete."', "open", flags=("other_loves",)),
       c('"For now, I want to see what the three of us can become. If that changes, I will say so."', "room")),
+    # end eng7-f2
     n("open", "Anevia", '''"Then we talk about time. Actual time. An evening you've promised somebody can't also be an evening you've promised me."
 {n}She holds up a hand before Irabeth can speak.{/n}
 "And no, you don't get to say you're used to sharing people with the crusade, so whatever's left will do. That's exactly the sort of nonsense we're trying to stop."
@@ -615,30 +631,36 @@ s("table", "A place for the third chair", "Together", 3,
 "I was not going to say that."
 "You were thinking it very loudly."
 {n}They agree that affection elsewhere is not itself a betrayal. Broken promises still will be. No one asks you to end another relationship, and no one pretends that every possible difficulty has been settled.{/n}''', c('"I can agree to that."', "room")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("room", "Irabeth", '''"One more thing. I do not want this evening to end with all of us proving how comfortable we are."
 {n}Irabeth's ears redden. Anevia's expression softens.{/n}
 "You mean we can eat the bread without anyone having to take their shirt off."
 "I was attempting to put it more delicately."
 "You were doing very well."
 {n}The laughter that follows is a little embarrassed and entirely welcome. You eat together. Some of the conversation is awkward; some of it is wonderfully ordinary. When you leave, each woman kisses you goodbye in the other's presence. Anevia watches Irabeth do it, then looks away, then deliberately looks back.{/n}
-"All right," she says. "We can learn."''', c('[Begin trying, without demanding certainty.]', flags=("trying",))),
+"All right," {n}she says.{/n} "We can learn."''', c('[Begin trying, without demanding certainty.]', flags=("trying",))),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("stop", "Narrator", '''{n}The two women hear you out. Neither asks you to make your refusal sound like a lesser affection.{/n}
-"Then thank you for coming far enough to say it honestly," Irabeth says.
+"Then thank you for coming far enough to say it honestly," {n}Irabeth says.{/n}
 {n}Anevia folds the cloth around the remaining bread.{/n}
 "Take this. We bought too much."
 {n}It is a small kindness, offered without a claim on you. You accept it and leave them together.{/n}''', c('[End the romance route.]', flags=("closed", "parted_honestly"))),
+    # end eng7-f2
 ], requires=("a_truth", "i_truth", "a_heard", "i_heard"), delay=24)
 
 s("ordinary", "The first ordinary quarrel", "Together", 3,
   '"We missed the evening we planned. I would like to talk about it."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}The evening was meant to be simple. Supper, no reports, no attempt to settle the future. Then duties ran late. A message failed to arrive. Someone waited longer than she would like to admit.{/n}
-"I am not angry that you were needed," Irabeth says. "I am angry that I sat there inventing reasons not to feel disappointed."
+"I am not angry that you were needed," {n}Irabeth says.{/n} "I am angry that I sat there inventing reasons not to feel disappointed."
 {n}Anevia folds her arms.{/n}
 "And I'm angry that I knew you were doing that and tried to make a joke out of it instead of saying I was disappointed too."
 {n}Neither looks at you as if you alone are responsible. That does not make the conversation comfortable.{/n}''',
       c('"We need a better way to send word when plans change."', "practical"),
       c('"This is what loving the Commander means. You knew that."', "rank"),
       c('"I need to know when your plans change too. I can be the one left waiting."', "waiting")),
+    # end eng7-f2
     n("waiting", "Irabeth", '''"Of course. I did not mean..."
 {n}Anevia looks at her. Irabeth stops, then begins again.{/n}
 "I suppose I thought you would always have something else to do."
@@ -648,24 +670,28 @@ s("ordinary", "The first ordinary quarrel", "Together", 3,
 "Tell me what you wanted us to do."''',
       c('"Come and find me afterward. Even a shorter evening together matters to me."', "find_me", flags=("ordinary.find_after",)),
       c('"Tell me not to wait. I would rather make another plan than keep watching the door."', "release_wait", flags=("ordinary.release_wait",))),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("find_me", "Anevia", '''"Even if I can't explain what's kept me?"
 {n}She asks without making it a joke.{/n}
 "I can come home with a head full of things I can't tell you. Sometimes I go quiet because I'd rather that than spend the evening sayin' what I can't say."
 {n}Irabeth's expression shifts at something familiar in the description.{/n}
-"You could tell us you wanted to stay," she says.
+"You could tell us you wanted to stay," {n}she says.{/n}
 "Yes. Could've done that."
 {n}Anevia turns back to you.{/n}
 "I can look for you. If you've gone to bed, I'll leave you to sleep. But I won't decide you wouldn't want me there just because the good part of the evening got away."''',
       c('"That is what I am asking. We can eat before we have anything clever to say."', "practical")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("release_wait", "Irabeth", '''{n}Irabeth looks down at the unused place setting.{/n}
 "I would have found that difficult to hear tonight."
-"Better than not hearin' anything," Anevia says.
+"Better than not hearin' anything," {n}Anevia says.{/n}
 "Yes. Better than that."
 {n}Irabeth draws the plate toward her and begins to cut the bread.{/n}
 "I don't want us all sitting in different rooms because each of us is trying not to be a burden. If I cannot come, I will say so. If I still want you to find me later, I will say that too."
 {n}She puts the bread where all three of you can reach it.{/n}
 "And if you have already made another plan, I will try not to treat that as a verdict on how much you wanted to see me."''',
       c('"We can miss one evening without losing the next one."', "practical")),
+    # end eng7-f2
     n("rank", "Irabeth", '''"I know what serving the Commander means. We were discussing something else."
 {n}Irabeth's voice is level. Anevia's is not.{/n}
 "If being disappointed is disloyalty now, we should've stuck to sneaking around. At least then I knew what the rules were."
@@ -673,24 +699,30 @@ s("ordinary", "The first ordinary quarrel", "Together", 3,
 "That was cruel. I'm sorry. The rest of it stands."''',
       c('"You are right. I used my title to avoid answering you."', "practical"),
       c('"My duties will always come first. I cannot offer more."', "stop")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("practical", "Narrator", '''{n}Anevia finds a scrap of paper and writes: under the candle by the door.{/n}
-"The aides move that whenever they leave reports," Irabeth says.
+"The aides move that whenever they leave reports," {n}Irabeth says.{/n}
 {n}She takes an empty tea tin from the sideboard and sets it where all three of you can see it.{/n}
 "Here. A note inside, the lid on."
-"I'll try not to order more tea for it," Anevia says.
+"I'll try not to order more tea for it," {n}Anevia says.{/n}
 {n}You agree to check the tin before leaving for an evening together. No confidential names on the note, and no one needs to wait for the others before eating.{/n}
-"And we reschedule," Anevia says. "Actually reschedule. Not 'soon', which in military language means sometime after the next catastrophe."
+"And we reschedule," {n}Anevia says.{/n} "Actually reschedule. Not 'soon', which in military language means sometime after the next catastrophe."
 {n}Irabeth nods.{/n}
 "If it is always the same person's evening that disappears, we speak about that too."
 {n}Once the practical matters are settled, an awkward silence remains.{/n}''', c('"Are we still angry?"', "angry")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("angry", "Anevia", '''"A little."
 {n}Anevia looks almost relieved to admit it.{/n}
 "I don't want to have to stop being angry the instant we find a sensible answer. Makes the whole thing feel like a performance review."
-"Nor do I," Irabeth says. "But I would still like supper."
+"Nor do I," {n}Irabeth says.{/n} "But I would still like supper."
 {n}You eat what is available. It is not the meal anyone had planned. Halfway through it, Anevia steals a particularly good piece from Irabeth's plate. Irabeth catches her wrist, removes the morsel, and gives it to you. Anevia's offended expression makes both of you laugh.{/n}''', c('[Keep the new arrangement.]', flags=("kept_terms",))),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("stop", "Narrator", '''{n}Irabeth nods slowly. Anevia pushes her plate away.{/n}
-"Then that is the answer," Irabeth says. "We will not keep asking for a life you have told us you cannot share."
+"Then that is the answer," {n}Irabeth says.{/n} "We will not keep asking for a life you have told us you cannot share."
 {n}They do not punish your honesty. They do not agree to live on it, either.{/n}''', c('[End the romance route.]', flags=("closed", "parted_honestly"))),
+    # end eng7-f2
 ], requires=("table", "trying"), delay=48)
 
 s("a_self", "The things that are hers", "Anevia", 3,
@@ -713,13 +745,15 @@ s("a_self", "The things that are hers", "Anevia", 3,
 "When I tell you, I want it to be because I want you to know me. Not because we've reached some point where I'm expected to unlock the last drawer."
 {n}Her hand returns to your arm.{/n}
 "Can that be enough?"''', c('"Yes. You don\'t have to earn your privacy."', "privacy", flags=("a_privacy",))),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("privacy", "Anevia", '''"Good."
 {n}You walk again. After a while she begins telling you about a bakery she once passed every morning. She remembers the smell more clearly than the street. She never bought anything there, and admits she used to linger outside until the proprietor chased her away.{/n}
-"One day," she says, "I'd like to be the sort of woman who goes in because she can. Buys the ridiculous expensive thing with the honey. Eats it before anyone can tell her she ought to save it."
+"One day," {n}she says,{/n} "I'd like to be the sort of woman who goes in because she can. Buys the ridiculous expensive thing with the honey. Eats it before anyone can tell her she ought to save it."
 {n}She looks up at you with a smile that owes nothing to concealment.{/n}
 "There. A scandalous confession. Try not to spread it around."''',
       c('"I want to be there when you do."', "end"),
       c('"I could buy you a whole bakery."', "bakery")),
+    # end eng7-f2
     n("bakery", "Anevia", '''"You could buy yourself a very expensive argument."
 {n}She laughs and nudges your side.{/n}
 "I don't want a bakery bestowed on me. I want to learn what I like doing when nobody's paying me to be useful. If I end up wanting a bakery, I'll tell you. You'll hear about flour prices until you beg for a cultist interrogation instead."''', c('"Then I\'ll start with one honey cake."', "end")),
@@ -731,10 +765,11 @@ s("a_self", "The things that are hers", "Anevia", 3,
 
 s("power", "No exception for power", "Together", 5,
   '"We should talk about what my power means for us."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Irabeth", '''"Yes. We should."
 {n}Irabeth does not look toward the door or lower her voice as if disagreeing with you required secrecy. Anevia notices, and seems quietly pleased.{/n}
 "I have followed you through things I could scarcely have imagined when we met. That does not mean I will call every choice you make a good one."
-"And if you ever start reading my mind to save yourself an awkward question," Anevia adds, "we're going to have a much more awkward conversation."
+"And if you ever start reading my mind to save yourself an awkward question," {n}Anevia adds,{/n} "we're going to have a much more awkward conversation."
 {n}There is humor in it, but no uncertainty.{/n}''',
       c('"Heaven has given me power. It has not made every private choice of mine righteous."', "angel", requires=("angel",)),
       c('"Freedom matters to me. So does the freedom to refuse me."', "azata", requires=("azata",)),
@@ -746,6 +781,7 @@ s("power", "No exception for power", "Together", 5,
       c('"I promise not to make your feelings the subject of a cosmic joke."', "trickster", requires=("trickster",)),
       c('"There are choices on my path that would cost me the life we are discussing."', "lich", requires=("lich",)),
       c('"Whatever power I wield, your choices remain yours."', "terms")),
+    # end eng7-f2
     n("angel", "Irabeth", '''"Thank you for saying so."
 {n}Irabeth touches the symbol at her breast, then lowers her hand.{/n}
 "It is tempting to mistake a miracle for an answer to every question that follows it. I know that temptation well. But my faith is not a way to avoid knowing my own conduct. Nor should it become a way to excuse yours."
@@ -767,13 +803,15 @@ s("power", "No exception for power", "Together", 5,
 {n}Anevia's voice is quieter.{/n}
 "I grew up where powerful people found reasons for other people to suffer. Don't bring that into my home and give it a kinder name."
 {n}Neither woman asks you for a performance of remorse. They ask whether you have heard them.{/n}''', c('"I have. You are not promising to excuse my actions."', "terms")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("devil", "Anevia", '''"No bargains means no clever wording either."
 {n}Anevia leans forward.{/n}
 "If you find yourself explaining why something technically wasn't a lie, stop and imagine me having a very large knife and very little patience."
 "Anevia."
 "A metaphorical knife."
 {n}Irabeth does not look reassured.{/n}
-"We are choosing a relationship," she says. "Not an obligation enforceable by power. Nothing we say tonight gives you a claim upon either of us."''', c('"Agreed."', "terms")),
+"We are choosing a relationship," {n}she says.{/n} "Not an obligation enforceable by power. Nothing we say tonight gives you a claim upon either of us."''', c('"Agreed."', "terms")),
+    # end eng7-f2
     n("legend", "Irabeth", '''"You do not have to replace it by being indispensable every hour of the day."
 {n}The warning comes with a rueful smile.{/n}
 "That may be advice I am particularly poorly qualified to give. I would still like you to hear it."
@@ -794,15 +832,19 @@ s("power", "No exception for power", "Together", 5,
 "I will not call an empty imitation of tenderness enough simply because I remember the person who once offered it. I will not accept another's suffering as the price of keeping you."
 {n}Anevia looks at your hands rather than your face.{/n}
 "If the road takes you away from being able to want this, we don't get dragged along by a promise made before you changed. Neither do you."''', c('"I understand what I stand to lose."', "terms")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("terms", "Narrator", '''{n}Power has not made the conversation easy. It has merely made avoiding it more dangerous. You answer their concerns without requiring admiration in return.{/n}
-"We are not promising never to be afraid," Irabeth says. "We are promising to speak when we are."
-"And you're promising to listen before you decide we just don't understand," Anevia adds.
+"We are not promising never to be afraid," {n}Irabeth says.{/n} "We are promising to speak when we are."
+"And you're promising to listen before you decide we just don't understand," {n}Anevia adds.{/n}
 {n}When you agree, neither woman treats the matter as settled forever. They do, however, move their chairs closer. For tonight, being able to have the conversation is enough.{/n}''',
       c('"Hold me to that."', flags=("power_terms",)),
       c('"I cannot accept those limits."', "stop")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("stop", "Irabeth", '''"Then we cannot offer you this relationship."
 {n}There is sorrow in Irabeth's voice. There is no invitation to negotiate. Anevia stands beside her, close enough that their shoulders touch.{/n}
-"We meant what we said," Anevia tells you. "It wasn't a way of asking you to make us feel better."''', c('[End the romance route.]', flags=("closed",))),
+"We meant what we said," {n}Anevia tells you.{/n} "It wasn't a way of asking you to make us feel better."''', c('[End the romance route.]', flags=("closed",))),
+    # end eng7-f2
 ], requires=("return",), delay=24)
 
 s("future", "A door worth coming home through", "Together", 5,
@@ -827,37 +869,48 @@ s("future", "A door worth coming home through", "Together", 5,
 "I would like that for all of us."''',
       c('"A home, with room for each of us to leave and return."', "choice"),
       c('"I may still have other people and duties in my life."', "others")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("others", "Irabeth", '''"So will we."
 {n}Irabeth's answer is gentle.{/n}
 "I do not mean that those attachments will be identical. Only that none of us is arriving without a life. We cannot ask you to have no claims upon your time except ours while keeping all of our own."
-"We can ask you to remember we exist when we're not in the room," Anevia says. "And we can do the same for whoever else matters to you. That's a start."''', c('"Then let us plan honestly around the lives we have."', "choice", flags=("other_loves",))),
+"We can ask you to remember we exist when we're not in the room," {n}Anevia says.{/n} "And we can do the same for whoever else matters to you. That's a start."''', c('"Then let us plan honestly around the lives we have."', "choice", flags=("other_loves",))),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("choice", "Narrator", '''{n}You discuss where you might live and discover that all three of you have strong opinions about stairs. You discuss money without allowing your rank to end the conversation. You discuss whether a public announcement would be courage or merely an efficient way to make other people unbearable.{/n}
-"We can tell the people who need to know," Anevia says. "Everybody else can survive wondering."
+"We can tell the people who need to know," {n}Anevia says.{/n} "Everybody else can survive wondering."
 {n}Irabeth agrees, then looks at you with a seriousness that quiets the room.{/n}
 "We would like you in that life. I would. Anevia would. We have had time to find out whether that is only gratitude, or fear, or the wish to make what happened less shameful. It is more than those things."
 {n}Anevia meets your eyes.{/n}
 "We want you. With us. Do you want that too?"''',
       c('"Yes. I choose a life with you both."', "yes", flags=("committed",)),
       c('"I love you, but I cannot promise that life."', "no")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("yes", "Narrator", '''{n}Anevia lets out a breath she had been pretending not to hold. Irabeth reaches for you, then for her wife, drawing the three of you close enough that the table becomes an inconvenience.{/n}
-"We should move that," Anevia murmurs.
+"We should move that," {n}Anevia murmurs.{/n}
 "The table?"
 "Eventually. I was having a moment."
 {n}You laugh, all three of you. When the laughter passes, no one immediately lets go.{/n}
 {n}There is no new oath before a temple, no witness empowered to make the choice permanent. There are three people who have learned something of the harm they can do, and who are choosing to attempt something kinder. For tonight, they trust each other enough to begin.{/n}''', c('[Stay with them.]')),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("no", "Narrator", '''{n}Irabeth's hand pauses before reaching yours. Anevia looks at the space you have left on the paper.{/n}
-"Then it is better that we know," Irabeth says.
+"Then it is better that we know," {n}Irabeth says.{/n}
 {n}You speak for a while longer, without trying to make the ending painless. When you leave, the paper remains on the table. They still have a future to write upon it.{/n}''', c('[End the romance route.]', flags=("closed", "parted_honestly"))),
+    # end eng7-f2
 ], requires=("power", "a_self", "i_self", "power_terms"), delay=48)
 
 s("shared_night", "No one at the door", "Together", 5,
   '"I would like an evening with you both. No promises beyond tonight."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}Anevia opens the door before you knock a second time. For an instant the old habit returns: a quick glance down the passage, a check of who might have seen you arrive. Then she catches herself and steps aside with a smile.{/n}
 "Come in. We were arguing about the wine."
-"I said it was quite good," Irabeth explains.
+"I said it was quite good," {n}Irabeth explains.{/n}
 "She's trying to spare its feelings."
 {n}The room is warm. There are three cups, a small plate of food, and no convincing attempt to disguise the evening as anything else.{/n}''', c('[Join them.]', "near")),
-    n("near", "Anevia", '''"Before anybody gets impressive," Anevia says, "we can have a nice evening and leave it at that."
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
+    n("near", "Anevia", '''"Before anybody gets impressive," {n}Anevia says,{/n} "we can have a nice evening and leave it at that."
 {n}She looks at Irabeth as she says it, then at you.{/n}
 "I know we all agreed. I want to know we still mean it when we're here, and somebody's looking hopeful."
 {n}Irabeth sets her cup down.{/n}
@@ -865,6 +918,7 @@ s("shared_night", "No one at the door", "Together", 5,
 {n}Anevia's laughter is soft. She leans over and kisses her wife. When they part, she reaches for your hand rather than assuming you will move closer.{/n}''',
       c('[Take her hand and kiss each woman in turn.]', "close"),
       c('"Tonight I would rather just be close to you."', "quiet")),
+    # end eng7-f2
     n("close", "Narrator", '''{n}At first the unfamiliarity makes all three of you careful. Then Anevia says something irreverent against Irabeth's cheek, Irabeth laughs, and the carefulness goes out of the room like a draught when a door shuts.{/n}
 {n}Anevia gets to your buttons first. She has spy's fingers and no patience, and she kisses you while she works, hard, tasting of the wine she said was only quite good. Behind you Irabeth's hands settle on your hips, big and warm, and her mouth finds the back of your neck.{/n}
 "Still all right?" Irabeth asks, low, against your skin.
@@ -883,31 +937,37 @@ s("shared_night", "No one at the door", "Together", 5,
 
 s("last_watch", "Until the last watch ends", "Together", 5,
   '"Before the final battles, there are things I want to say."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}You have all become skilled at pretending that practical preparations are enough. There is always another report, another strap to mend, another person who needs an answer. Tonight you leave those things unfinished long enough to sit together.{/n}
-"I don't want a farewell speech," Anevia says. "I've heard officers make 'em. They always sound as if they've already decided who gets to be brave and who gets to grieve."
+"I don't want a farewell speech," {n}Anevia says.{/n} "I've heard officers make 'em. They always sound as if they've already decided who gets to be brave and who gets to grieve."
 {n}Irabeth's hand tightens around hers.{/n}
 "Then let us speak as people who would prefer to come home."''',
       c('"I want the life we planned. I will fight for the chance to live it."', "life"),
       c('"If I do not return, I want you to keep living."', "after")),
+    # end eng7-f2
     n("after", "Anevia", '''"We will. Badly, some days, if it comes to that."
 {n}Anevia's voice catches, but she does not look away.{/n}
 "Don't ask us to promise we'll do it beautifully. I might be very unreasonable for a while."
 {n}Irabeth rests her forehead briefly against her wife's temple, then turns to you.{/n}
 "We understand what you mean. I would ask the same of you. Remember us as people who wanted to live, not as instructions to spend the rest of your life mourning correctly."''', c('"I will remember."', "life")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("life", "Irabeth", '''"Then there is something I should admit."
 {n}Irabeth looks almost embarrassed.{/n}
 "I have been adding places to the list. For afterward. More than we could visit in a year."
-"More than we could visit in five," Anevia says. "She has opinions about lakes now."
+"More than we could visit in five," {n}Anevia says.{/n} "She has opinions about lakes now."
 {n}Irabeth smiles through the fear neither woman is hiding very well.{/n}
 "I would like the chance to be disappointed by at least one of them. To arrive and discover that the poet exaggerated, and complain about the road, and be happy anyway."
 {n}She takes your hand.{/n}
 "I have never wanted an ordinary disappointment so much."''', c('"Keep the list. We will need it."', "end")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("end", "Narrator", '''{n}There are kisses, and a laugh that breaks in the middle, and a long silence in which none of you pretends to have become fearless. You remain together until the next necessary thing can no longer wait.{/n}
 {n}At the door, Anevia turns back.{/n}
-"A window that opens," she reminds you. "Don't let her replace it with a defensible arrow slit."
+"A window that opens," {n}she reminds you.{/n} "Don't let her replace it with a defensible arrow slit."
 "I have made no such proposal."
 "Yet."
 {n}You leave them laughing quietly together. You carry the sound with you into the preparations that remain.{/n}''', c('[Return to the crusade.]', flags=("last_words",))),
+    # end eng7-f2
 ], requires=("future",), delay=24)
 
 s("ending_together", "Three at the table", "Epilogue", 0, "", [
@@ -1021,16 +1081,20 @@ s("i_self", "A strength she can set down", "Irabeth", 3,
 
 s("departure", "Before the descent", "Together", 3,
   '"Before the next campaign takes me away, I want an evening with you both."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}Drezen is full of preparations. Orders travel faster than rumors for once, though the rumors are doing their best. You find Anevia and Irabeth arguing over how much can reasonably be fitted into a travel pouch.{/n}
-"It is a sensible precaution," Irabeth says.
+"It is a sensible precaution," {n}Irabeth says.{/n}
 "It's a second cupboard with a strap."
 {n}They stop when they see you. Anevia holds up the pouch.{/n}
 "We've been making ourselves useful. You should probably intervene before we add a chair."''', c('"What have you put in it?"', "gifts")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("gifts", "Narrator", '''{n}A small sewing kit. A clean cloth. Something edible wrapped with considerably more care than its appearance warrants. A whetstone that Irabeth insists is better than the one you have been using. None of it comes from crusade stores.{/n}
-"There is no charm in it," Irabeth says. "No blessing I can promise will keep you safe."
-"Just things that'll annoy you into remembering us," Anevia adds.
+"There is no charm in it," {n}Irabeth says.{/n} "No blessing I can promise will keep you safe."
+"Just things that'll annoy you into remembering us," {n}Anevia adds.{/n}
 {n}Her voice is light until she looks at the pouch in your hands.{/n}
 "We're bad at this part. The waiting. You'll have noticed."''', c('"I cannot promise when I will return."', "promise")),
+    # end eng7-f2
     n("promise", "Irabeth", '''"Then do not."
 {n}Irabeth reaches for Anevia's hand before she takes yours.{/n}
 "Promise that when you can tell us the truth, you will. We can endure uncertainty better than an assurance we know you cannot keep."
@@ -1041,11 +1105,13 @@ s("departure", "Before the descent", "Together", 3,
 {n}The laughter breaks before it becomes entirely convincing. You hold them both until no one feels obliged to make it sound better.{/n}''',
       c('"I will carry you with me."', "end"),
       c('[Kiss them each goodbye.]', "end")),
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("end", "Narrator", '''{n}You spend the evening together. There are things left unsaid, but none of them is a deliberate deception. At the door Anevia straightens your collar, then immediately complains that Irabeth has taught her to fuss.{/n}
-"Take care of yourself," she says. "Not just the useful bits. All of you."
+"Take care of yourself," {n}she says.{/n} "Not just the useful bits. All of you."
 {n}Irabeth's farewell is quieter.{/n}
 "Come back if you can. We will still be people while you are gone. I hope you remember that as a comfort."
 {n}You take the pouch. It is heavier than it looks.{/n}''', c('[Prepare to leave.]', flags=("farewell",))),
+    # end eng7-f2
 ], requires=("table",), delay=24, last=3)
 
 s("abyss_letter", "A letter with no messenger", "Memory", 4, "", [
@@ -1088,19 +1154,23 @@ s("a_waiting", "The place beside her", "Anevia", 5,
 
 s("return", "People who kept living", "Together", 5,
   '"Can we make time for one another again?"', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}The three of you sit together with the door closed. It ought to be a familiar arrangement by now. Instead you find yourselves looking carefully at one another, as if a careless assumption might undo the effort that brought you here.{/n}
-"I had a speech," Anevia says. "Very good one. You'd have been impressed."
-"What happened to it?" Irabeth asks.
+"I had a speech," {n}Anevia says.{/n} "Very good one. You'd have been impressed."
+"What happened to it?" {n}Irabeth asks.{/n}
 "People kept turning out to be more complicated than I'd allowed for. Inconsiderate of them."
 {n}She looks at you, then at her wife, and her smile softens.{/n}''',
       c('[Show them the letter you wrote in the Abyss.]', "letter", requires=("wrote_letter",)),
       c('"Tell me how you are now, not how you think I need you to be."', "now")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("letter", "Narrator", '''{n}You put the folded page on the table. Anevia recognizes neither the paper nor the handwriting's hurried slant, but she understands its condition. She handles it as carefully as she would a report that cost someone's life to carry.{/n}
 {n}Irabeth reads it slowly, smoothing a crease with her thumb. She stops before the last line and looks at you.{/n}
 "You kept this all that time?"
 {n}Anevia finishes first, then returns to the beginning.{/n}
-"This is a very bad military report," she says. "No useful intelligence at all."
+"This is a very bad military report," {n}she says.{/n} "No useful intelligence at all."
 {n}She keeps the paper between her palms until she is ready to hand it to her wife.{/n}''', c('"It was not written for the officers."', "now")),
+    # end eng7-f2
     n("now", "Irabeth", '''"Some things are better. Some are not. I would rather tell you which than make you guess."
 {n}Irabeth does. Anevia corrects one detail and supplies another. They disagree briefly, listen, and continue. You realize that their ability to do so is something they have practiced when you were not there.{/n}
 "We didn't spend every evening discussing you," Anevia says. "That'd have been a miserable way to stay married."
@@ -1121,21 +1191,27 @@ s("return", "People who kept living", "Together", 5,
 
 s("parting", "An answer that can change", "Together", 3,
   '"I need to talk about whether I can remain in this relationship."', [
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("start", "Narrator", '''{n}They listen without interrupting. Anevia's hand has gone still on the table. Irabeth sits a little straighter, then deliberately lets her shoulders relax.{/n}
-"Is this something you need us to hear," Irabeth asks, "or something you have already decided?"
+"Is this something you need us to hear," {n}Irabeth asks,{/n} "or something you have already decided?"
 {n}Anevia looks at you steadily.{/n}
 "Either way, say it. We didn't promise to keep you by making it impossible to leave."''',
       c('"I have decided. I want to end our romantic relationship."', "confirm"),
       c('"I am overwhelmed, but I still want to be with you. I needed to be able to say it."', "stay")),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("confirm", "Irabeth", '''"Then we accept your decision."
 {n}Her voice is careful. Beside her, Anevia draws a slow breath.{/n}
-"Give us a little distance," Anevia says. "I don't want to promise we'll all be easy friends tomorrow just to make the ending nicer. But I don't want you punished for telling us, either."
+"Give us a little distance," {n}Anevia says.{/n} "I don't want to promise we'll all be easy friends tomorrow just to make the ending nicer. But I don't want you punished for telling us, either."
 {n}You say goodbye to the part of your lives you had hoped to share. The work of the crusade remains, as do the things you have learned about one another. Neither is a reason to pretend that nothing has ended.{/n}''',
       c('[End the romance route.]', flags=("closed", "parted_honestly"))),
+    # end eng7-f2
+    # eng7-f2: narration markup; wording, answers and effects retained.
     n("stay", "Anevia", '''"All right. Then we can talk about being overwhelmed."
 {n}Anevia's shoulders loosen. Irabeth reaches for your hand and waits for you to decide whether to take it.{/n}
-"You do not have to threaten to leave in order to ask for something to change," Irabeth says. "But you must also be able to tell us when you are considering it."
+"You do not have to threaten to leave in order to ask for something to change," {n}Irabeth says.{/n} "But you must also be able to tell us when you are considering it."
 {n}The conversation is difficult and useful. You leave with the relationship still intact, and with a little less fear of saying something inconvenient inside it.{/n}''', c('[Continue the relationship.]', abort=True)),
+    # end eng7-f2
 ], requires=("trying",), optional=True)
 
 

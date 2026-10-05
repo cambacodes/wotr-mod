@@ -552,7 +552,7 @@ terms_in_person("nurah.trickster.terms", "nurah.presence.raised",
     '''{n}She takes you by the hand as if leading a mark to the card table, and she does not let go until your own door is shut behind you both. Then she climbs onto your writing desk, scattering your dispatches, so that she can look down at you.{/n}
 "I spent a season as a thing in a cage that could not touch anything. Author's terms: tonight I touch everything."
 {n}She means it. Her hands are quick and ink-stained and greedy, at your buckles, your ribs, the old scar under your arm, which she finds in the dark and presses with one thumb until you flinch. "Found you," she says, pleased, and files it away. The chaplains' shift goes over her head and onto the floor. She is warm, warmer than she has any right to be, and when you lift her off the desk she wraps her legs around you and laughs against your throat as if she has just won a very large bet.{/n}''',
-    '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," she says without looking up. "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
+    '''{n}Dawn finds her at your desk in your shirt, which comes to her knees, writing fast with your best pen.{/n} "Chapter nine," {n}she says without looking up.{/n} "I'm taking out the hunchback. I'm putting in something much worse. You'll love it."
 {n}Two days later the chaplains send the rest of their account: one grey shift, not returned. It has been paid already, in a small, stitched hand, with money you are fairly sure used to be yours, and made out in a name that is not hers.{/n}''',
     (RETURNED,), (),
     '''"Then we have a book." {n}She says it quickly, before anyone can take it back.{/n}
@@ -614,33 +614,33 @@ _terms_night("nurah.trickster.ran_off.terms", "nurah.presence",
 # --- Epilogue: her own pages (R2-6) --------------------------------------------------------------------------------
 
 EPILOGUE_PARAGRAPHS = (
-    p("The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the "
-      "Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.",
+    p("{n}The book was called 'To the Abyss and Back', and in her case the title was a matter of record. Somewhere in the "
+      "Midnight Isles a marilith keeps a bill of sale for the author herself, and has never once been able to collect on it.{/n}",
       requires=(RETURNED,)),
-    p("The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author "
+    p("{n}The crusade's rolls list Nurah Dendiwhar among the dead of Drezen, struck off on the Commander's word. The author "
       "of 'To the Abyss and Back' put another name on every copy, and the inquisitors who hunted her never once "
-      "thought to look for a dead woman.", requires=("nurah.trickster.cost.chaplains_writ",)),
-    p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
+      "thought to look for a dead woman.{/n}", requires=("nurah.trickster.cost.chaplains_writ",)),
+    p("{n}Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
       "because I had stopped being funny. N. D.' The first printings carried it because a quartermaster's purse had paid "
       "the printer to. After that she kept it herself, and began adding a footnote to it instead, a different one in "
-      "every edition.", requires=(GHOST, PRINTER_PAID)),
-    p("Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
+      "every edition.{/n}", requires=(GHOST, PRINTER_PAID)),
+    p("{n}Every copy she ever printed opened with the same dedication, in her own hand: 'To the Commander, who kept me "
       "because I had stopped being funny. N. D.' She could have struck it from the forme any day she liked. She never "
-      "did. Instead she added a footnote to it, a different one in every edition.", requires=(GHOST,), forbids=(PRINTER_PAID,)),
-    p("The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that "
-      "the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.",
+      "did. Instead she added a footnote to it, a different one in every edition.{/n}", requires=(GHOST,), forbids=(PRINTER_PAID,)),
+    p("{n}The Drezen gaol kept her cell exactly as she left it, plank desk and all. The turnkeys still tell new recruits that "
+      "the prisoner in it forged her own pardon out of professional disgust, and that the Commander had counted on it.{/n}",
       requires=(LEDGER, RELEASED), forbids=(RETURNED,)),
-    p("The Commander's name appeared once, on the first page, exactly where she had decided it should go.",
+    p("{n}The Commander's name appeared once, on the first page, exactly where she had decided it should go.{/n}",
       forbids=(SIGNED, "nurah.trickster.cost.coauthor")),
-    p("The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget "
-      "whose idea that had been.", requires=(SIGNED,), forbids=("nurah.trickster.cost.coauthor",)),
-    p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had "
-      "been since the proofs. She said the second one was the only one the Commander had earned.",
+    p("{n}The Commander's name appeared once, on the first page, in the Commander's own hand. She never let anyone forget "
+      "whose idea that had been.{/n}", requires=(SIGNED,), forbids=("nurah.trickster.cost.coauthor",)),
+    p("{n}The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, where it had "
+      "been since the proofs. She said the second one was the only one the Commander had earned.{/n}",
       requires=("nurah.trickster.cost.coauthor", SIGNED)),
-    p("The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the "
-      "Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.",
+    p("{n}The Commander's name appeared twice: on the cover, in her typeface, and in the gap on the first page, which the "
+      "Commander had left blank and she had filled in herself, in the Commander's hand, better than the Commander's hand.{/n}",
       requires=("nurah.trickster.cost.coauthor",), forbids=(SIGNED,)),
-    p("Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.",
+    p("{n}Ramisa of the Fleshmarkets was seen, for one night only, in the front row of something. She never said what.{/n}",
       requires=(AUDIENCE,)),
 )
 
@@ -689,12 +689,12 @@ SCENES.append(scene("nurah.trickster.epilogue.the_margin", "Author's terms", "Ep
     nar("start", '''{n}Two years after the Threshold a book came out of the River Kingdoms: "To the Abyss and Back: The Crusade Through the Eyes of a Former Cultist". It was banned in several countries, and a bounty was put on its author's head. The inquisitors never found her. She was writing the sequel at the Commander's desk, in the Commander's shirt, and complaining about the light.{/n}
 {n}The author's terms she had set held to the last page: her name on the cover, and nobody's above it. She read the Commander nothing until it was bound, and then read the whole of it aloud, in bed, over four nights, stopping to argue with her own sentences.{/n}''',
         c(), paragraphs=EPILOGUE_PARAGRAPHS + (
-            p("Her name went on the cover next to the Commander's, in the same typeface. She told everyone it had been her idea.",
+            p("{n}Her name went on the cover next to the Commander's, in the same typeface. She told everyone it had been her idea.{/n}",
               requires=("nurah.trickster.cost.coauthor",)),
-            p("She went back to the cell once, with the first bound copy, and left it on the bunk for the next prisoner. On "
-              "the flyleaf she had written: 'For the next tenant. Insist on a better forger.'",
+            p("{n}She went back to the cell once, with the first bound copy, and left it on the bunk for the next prisoner. On "
+              "the flyleaf she had written: 'For the next tenant. Insist on a better forger.'{/n}",
               requires=(RELEASED,), forbids=(RETURNED, RAN_OFF)),
-            p("She never went back to the River Kingdoms pedlars. She said she had outgrown crates.", requires=(RAN_OFF,)),
+            p("{n}She never went back to the River Kingdoms pedlars. She said she had outgrown crates.{/n}", requires=(RAN_OFF,)),
         ))],
     requires=("trickster.ever", COMPLETE), forbids=(CLOSED, *DEATHS, "sacrifice"), last=99, Relationship="nurah",
     ForbidOverrides={**{d: RETURNED for d in DEATHS}, "sacrifice": "trickster.commander_back"}))
@@ -713,31 +713,31 @@ NIGHT_OUT = ("nurah.trickster.prison.night_out", "nurah.trickster.prison.night_o
 SCENES.append(scene("nurah.trickster.epilogue.unwritten", "The unwritten book", "Epilogue", 5, "", [
     nar("start", '''{n}No book about the crusade from the wrong side ever came out of the River Kingdoms. Nurah Dendiwhar, who had been a slave, a secretary, a cultist and a traitor, and had meant to outlive all four, did not outlive the Commander's decision.{/n}''',
         c(), paragraphs=(
-            p("She was put to death on the day Drezen was taken, by the Commander's verdict, while the smoke was still coming off "
-              "the walls. She called them all scum to the last, and was annoyed that nobody wrote it down.", requires=(EXEC_SIEGE,),
+            p("{n}She was put to death on the day Drezen was taken, by the Commander's verdict, while the smoke was still coming off "
+              "the walls. She called them all scum to the last, and was annoyed that nobody wrote it down.{/n}", requires=(EXEC_SIEGE,),
               forbids=(EXEC_PRISON, CAMELLIA_KILL)),
-            p("She died in her cell, by the Commander's own blow. She spat at the Commander's feet first; the turnkey who "
-              "scrubbed the floor afterwards said it was the only clean thing she ever did in there.", requires=(EXEC_PRISON,),
+            p("{n}She died in her cell, by the Commander's own blow. She spat at the Commander's feet first; the turnkey who "
+              "scrubbed the floor afterwards said it was the only clean thing she ever did in there.{/n}", requires=(EXEC_PRISON,),
               forbids=(CAMELLIA_KILL,)),
-            p("The Commander gave her to Camellia, who had asked for her as one asks for a dish one has never tried. Camellia "
-              "spoke of that night only once afterwards, to say that it had not taken long.", requires=(CAMELLIA_KILL,)),
-            p("Among what she left in the cell was the pardon, folded small, with the 'Q' scraped clean, the seal set the right way "
+            p("{n}The Commander gave her to Camellia, who had asked for her as one asks for a dish one has never tried. Camellia "
+              "spoke of that night only once afterwards, to say that it had not taken long.{/n}", requires=(CAMELLIA_KILL,)),
+            p("{n}Among what she left in the cell was the pardon, folded small, with the 'Q' scraped clean, the seal set the right way "
               "up and the date corrected, all in her own hand. Irabeth had it entered in the gaol ledger beside the sentence, and "
-              "asked the Commander nothing about either.", requires=(LEDGER,), forbids=("irabeth_dead",), any_groups=(NIGHT_OUT,)),
-            p("Among what she left in the cell was the pardon, folded small, with every fault in it corrected in her own hand. "
-              "Nobody in the gaol could say what it was for.", requires=(LEDGER, "irabeth_dead"), any_groups=(NIGHT_OUT,)),
-            p("Among what she left in the cell was the pardon the Commander had slid under the bars, as bad as the night it came: "
-              "the tail on the 'Q', the seal upside down, the date a day too late. Nobody had waited a day to check.",
+              "asked the Commander nothing about either.{/n}", requires=(LEDGER,), forbids=("irabeth_dead",), any_groups=(NIGHT_OUT,)),
+            p("{n}Among what she left in the cell was the pardon, folded small, with every fault in it corrected in her own hand. "
+              "Nobody in the gaol could say what it was for.{/n}", requires=(LEDGER, "irabeth_dead"), any_groups=(NIGHT_OUT,)),
+            p("{n}Among what she left in the cell was the pardon the Commander had slid under the bars, as bad as the night it came: "
+              "the tail on the 'Q', the seal upside down, the date a day too late. Nobody had waited a day to check.{/n}",
               requires=(LEDGER,), forbids=NIGHT_OUT),
-            p("Her manuscript was on the plank desk, its first page dedicated to the Commander in her own small stitched hand, in "
-              "words she had never written. No printer ever set it. The Commander kept it, and did not read past the dedication.",
+            p("{n}Her manuscript was on the plank desk, its first page dedicated to the Commander in her own small stitched hand, in "
+              "words she had never written. No printer ever set it. The Commander kept it, and did not read past the dedication.{/n}",
               requires=(GHOST,), forbids=(RAN_OFF,)),
-            p("The proofs of chapter one had a gap on the first page exactly one name wide. It was never filled in by anyone.",
+            p("{n}The proofs of chapter one had a gap on the first page exactly one name wide. It was never filled in by anyone.{/n}",
               requires=(PROOFS,), forbids=(SIGNED,)),
-            p("The proofs of chapter one had the Commander's name in the gap on the first page, in the Commander's own hand. It is "
-              "the only line of that book anyone ever read.", requires=(SIGNED,)),
-            p("She had set her author's terms in that cell, and the Commander had taken them, and her, and then said the other "
-              "word. If she had time to put that in a sentence, nobody found it.", requires=(COMPLETE,)),
+            p("{n}The proofs of chapter one had the Commander's name in the gap on the first page, in the Commander's own hand. It is "
+              "the only line of that book anyone ever read.{/n}", requires=(SIGNED,)),
+            p("{n}She had set her author's terms in that cell, and the Commander had taken them, and her, and then said the other "
+              "word. If she had time to put that in a sentence, nobody found it.{/n}", requires=(COMPLETE,)),
         ))],
     requires=("trickster.ever",), forbids=(RETURNED,), last=99, Relationship="nurah", RequiresAnyGroups=[list(DEATHS)]))
 

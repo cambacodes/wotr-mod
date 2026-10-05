@@ -18,9 +18,9 @@ def separation_nodes():
         n("separate_question", "Irabeth", '''"Then let us be precise about what you are asking."
 {n}Irabeth moves her chair back a little. She is still within reach of her wife, but you can see both their faces without leaning around the table.{/n}
 "If you do not want a relationship with me, I need to hear that. If you want one without the expectation that every important evening belongs to all three of us, I need to hear that too. They would be different answers."
-"And if you're hoping Beth will tell me what I ought to want," Anevia adds, "you'll have a long evening. She tried that once about a coat. I still own it."
+"And if you're hoping Beth will tell me what I ought to want," {n}Anevia adds,{/n} "you'll have a long evening. She tried that once about a coat. I still own it."
 {n}The joke gives Irabeth something familiar to smile at. It does not turn the question into a joke.{/n}
-"Our marriage isn't the part you're being asked to settle," Anevia says. "What you want with each of us is. Say that first. We can answer for ourselves."''',
+"Our marriage isn't the part you're being asked to settle," {n}Anevia says.{/n} "What you want with each of us is. Say that first. We can answer for ourselves."''',
           c('"Anevia, I want to continue with you. Irabeth, I am ending our romantic relationship."', "separate_anevia", forbids=("anevia.closed", "irabeth.closed")),
           c('"Irabeth, I want to continue with you. Anevia, I am ending our romantic relationship."', "separate_irabeth", forbids=("anevia.closed", "irabeth.closed")),
           c('"I want a relationship with each of you, without a shared household or an expectation that we meet as three."', "separate_both", forbids=("anevia.closed", "irabeth.closed")),
@@ -30,11 +30,11 @@ def separation_nodes():
         n("separate_anevia", "Irabeth", '''{n}Irabeth looks down at her hands. When she raises her eyes again, she speaks to you first.{/n}
 "I understand. I would rather you had wanted a different answer. That does not make this one unclear."
 {n}Anevia does not reach across her wife to take your hand. She waits until Irabeth turns toward her.{/n}
-"I still want to see you," Anevia says. "Alone. That's my answer, not something Beth has to say for me. But I won't turn her hurt into the price of a pleasant evening."
-"I can live with you continuing to see each other," Irabeth says. "I may have an unhappy face when you leave. I would prefer not to be required to improve it before either of you can go."
+"I still want to see you," {n}Anevia says.{/n} "Alone. That's my answer, not something Beth has to say for me. But I won't turn her hurt into the price of a pleasant evening."
+"I can live with you continuing to see each other," {n}Irabeth says.{/n} "I may have an unhappy face when you leave. I would prefer not to be required to improve it before either of you can go."
 "You won't be."
 {n}Anevia's answer is quiet. She rests her hand on the table between them, leaving Irabeth room to take it or leave it there.{/n}
-"Come and speak to me another day," she tells you. "We need to work out what we're actually offering each other. Don't arrive with an account of what Beth must have meant. I'll ask her myself."
+"Come and speak to me another day," {n}she tells you.{/n} "We need to work out what we're actually offering each other. Don't arrive with an account of what Beth must have meant. I'll ask her myself."
 {n}Irabeth nods. No one offers a farewell kiss to make the room look kinder than it feels.{/n}''',
           c('[Accept Anevia\'s individual invitation.]',
             flags=(GROUP_CLOSED, "irabeth.closed", "tirabade.anevia_continuation_invited"))),
@@ -45,12 +45,12 @@ def separation_nodes():
 "And you don't have to give the same answer as me. I know that face."
 "I was going to ask whether you wanted me to stay afterward."
 "Yes. I would."
-"I'm not asking you to stop seeing each other," Anevia adds. "I want our marriage. I can make room for this relationship without pretending I'm pleased about how my own has ended."
+"I'm not asking you to stop seeing each other," {n}Anevia adds.{/n} "I want our marriage. I can make room for this relationship without pretending I'm pleased about how my own has ended."
 {n}Irabeth nods before turning to you.{/n}
 "I still want a relationship with you. I cannot tell you tonight exactly what it will look like. There are things Anevia and I need to say without making you our audience. There are things you and I need to say without asking her to bear witness."
-"That would be a considerable improvement," Anevia says. "Being brave in front of an audience gets exhausting."
+"That would be a considerable improvement," {n}Anevia says.{/n} "Being brave in front of an audience gets exhausting."
 {n}Irabeth gives her a small, pained smile.{/n}
-"Come and speak with me another day," she tells you. "If we continue, I want it to be because we have chosen something we can live with. Not because neither of us could bear another ending tonight."
+"Come and speak with me another day," {n}she tells you.{/n} "If we continue, I want it to be because we have chosen something we can live with. Not because neither of us could bear another ending tonight."
 {n}When you leave, Irabeth stays as her wife asked. Their evening belongs to them.{/n}''',
           c('[Accept Irabeth\'s individual invitation.]',
             flags=(GROUP_CLOSED, "anevia.closed", "tirabade.irabeth_continuation_invited"))),
@@ -61,18 +61,18 @@ def separation_nodes():
 "You can miss it. I might too."
 {n}Irabeth turns back to you.{/n}
 "I am willing to continue seeing you separately. I am not agreeing that our difficulties will disappear because we have fewer people at supper. I will still be married. I will still care how you treat my wife."
-"And I'll still care how you treat her," Anevia says. "I won't conduct her conversations for her. Those are different things."
-"Then we are agreed about the marriage too," Irabeth says. "Each of us can keep seeing you. We are not asking one another to give that up."
-"Agreed," Anevia says.
+"And I'll still care how you treat her," {n}Anevia says.{/n} "I won't conduct her conversations for her. Those are different things."
+"Then we are agreed about the marriage too," {n}Irabeth says.{/n} "Each of us can keep seeing you. We are not asking one another to give that up."
+"Agreed," {n}Anevia says.{/n}
 {n}You discuss visits, private confidences and evenings that have already been promised elsewhere. Irabeth stops herself when she begins answering a question meant for Anevia. Anevia lets her start again without making the correction into a performance.{/n}
-"Speak with each of us," Irabeth says. "A proper conversation. We have each said that we want to continue. We have not decided every detail of how."
-"And when Beth and I go home together," Anevia adds, "you don't have to come along to prove you're all right. You're allowed an evening of your own. We'll try to survive the suspense."
+"Speak with each of us," {n}Irabeth says.{/n} "A proper conversation. We have each said that we want to continue. We have not decided every detail of how."
+"And when Beth and I go home together," {n}Anevia adds,{/n} "you don't have to come along to prove you're all right. You're allowed an evening of your own. We'll try to survive the suspense."
 {n}Irabeth's laugh is brief, but it is real. The decision has left them with something to do besides persuade one another not to be disappointed.{/n}''',
           c('[Accept separate conversations, without a shared relationship.]',
             flags=(GROUP_CLOSED, "tirabade.anevia_continuation_invited", "tirabade.irabeth_continuation_invited"))),
         n("separate_wait", "Irabeth", '''"Then we stop here for tonight."
 {n}Irabeth draws a slow breath. Anevia puts the cloth back where it was.{/n}
-"Don't make me guess which answer you're going to give," Anevia says. "When you know, tell me. Until then, I can live with 'I don't know.'"
+"Don't make me guess which answer you're going to give," {n}Anevia says.{/n} "When you know, tell me. Until then, I can live with 'I don't know.'"
 {n}You leave the question open. Nobody calls the conversation a promise to continue, or a decision to part.{/n}''',
           c('[Leave the decision open. Speak again later.]', abort=True)),
     ]
@@ -83,25 +83,25 @@ SCENES = [scene(
     '"I would like an evening with you both. Would you?"', [
         n("start", "Anevia", '''{n}Anevia asks you to wait until Irabeth has finished at the watch. When you meet them later, they have taken a small table in a side room at headquarters. Three mismatched cups stand beside a covered dish. Nobody has brought a report.{/n}
 "Beth said we should be clear about the invitation. I said supper was a fairly clear invitation. Apparently I have been inviting people to complicated things for years."
-"You once invited me to inspect a loose window fastening," Irabeth says.
+"You once invited me to inspect a loose window fastening," {n}Irabeth says.{/n}
 "It was loose."
 "I found out afterward that you had already repaired it."
 {n}Anevia looks at you with conspicuous innocence.{/n}
 "Good evening, though."
 {n}Irabeth smiles. Then she takes her place beside the table, waiting for you to sit rather than choosing where you must go.{/n}
-"We each have a relationship with you," she says. "We have not yet asked what we might want when the three of us are together. I would like to ask."
-"And eat," Anevia adds. "The two ambitions can coexist."''',
+"We each have a relationship with you," {n}she says.{/n} "We have not yet asked what we might want when the three of us are together. I would like to ask."
+"And eat," {n}Anevia adds.{/n} "The two ambitions can coexist."''',
           c('"I would like to find out."', "wanted"),
           c('"I am happy seeing you separately. I do not want to begin a shared relationship."', "separate"),
           c('"This deserves an evening when I can stay. May I ask another day?"', "later")),
         n("wanted", "Irabeth", '''"I wanted you to see us when we are enjoying ourselves."
 {n}Irabeth glances at Anevia, whose fingers have paused on the cover of the dish.{/n}
 "I have spoken about my marriage as something that must be considered. It is. But it is also the person who knows when I am trying not to laugh. The person I want to show a ridiculous thing because it will become more ridiculous when she sees it."
-"I provide an essential service," Anevia says.
+"I provide an essential service," {n}Anevia says.{/n}
 "You do."
 {n}Irabeth says it without changing her expression. Anevia looks briefly at the dish, then reaches over to straighten a fold in her wife's sleeve. It takes longer than the fold deserves.{/n}
-"I like you watching her," Anevia tells you. "Sometimes. Sometimes I find myself watching you instead. I wanted to find out what an evening would be like if I didn't have to pretend I was merely waiting for the two of you to finish speaking."
-"You would not wait in any case," Irabeth says.
+"I like you watching her," {n}Anevia tells you.{/n} "Sometimes. Sometimes I find myself watching you instead. I wanted to find out what an evening would be like if I didn't have to pretend I was merely waiting for the two of you to finish speaking."
+"You would not wait in any case," {n}Irabeth says.{/n}
 "No. But now I've said why."
 {n}Anevia removes the cover. There are roasted roots, dark bread and a portion of cheese she warns both of you to divide fairly.{/n}''',
           c('"I like seeing the two of you together. I would like to be wanted here too."', "place"),
@@ -110,7 +110,7 @@ SCENES = [scene(
         n("place", "Anevia", '''"You are. I didn't buy enough cheese for a diplomatic observer."
 {n}She passes you the plate, then lets the joke rest.{/n}
 "I know Beth in ways you don't. She knows me in ways you don't. You know things about each of us the other hasn't been there to see. I'd rather be curious about that than keep score."
-"There will be moments when we fall into an old habit," Irabeth says. "A look that means something to us and nothing to you. You can ask. You can also dislike being left outside it."
+"There will be moments when we fall into an old habit," {n}Irabeth says.{/n} "A look that means something to us and nothing to you. You can ask. You can also dislike being left outside it."
 "You don't have to enjoy every story about our marriage. Some of them aren't very good."
 {n}Irabeth looks wounded enough to make Anevia laugh.{/n}
 "Especially the window one."
@@ -121,49 +121,49 @@ SCENES = [scene(
         n("change", "Irabeth", '''"We would be choosing evenings together. We would not be surrendering the evenings we spend separately."
 {n}Irabeth breaks a piece of bread in two and gives half to Anevia.{/n}
 "I would still ask you out without first arranging an outing for everyone. I would still want time alone with my wife. If either of you needed to speak to me privately, I would listen privately."
-"And if one of us wants an evening to herself, we don't appoint the other two to find out what's wrong," Anevia says. "Sometimes I want to put my feet up and complain to nobody. It's a talent."
+"And if one of us wants an evening to herself, we don't appoint the other two to find out what's wrong," {n}Anevia says.{/n} "Sometimes I want to put my feet up and complain to nobody. It's a talent."
 "You have rarely demonstrated it."
 "Private talent."
 {n}You discuss the simpler matters first: how to send word, who might be waiting, what can be said in front of the aides. Irabeth wants no false explanation that makes another person responsible for covering your whereabouts. Anevia wants no public announcement made on her behalf merely because it would save an awkward question.{/n}
-"If someone asks me directly, I will answer for myself," she says. "I'd like the chance to do that before hearing which version has reached the kitchens."''',
+"If someone asks me directly, I will answer for myself," {n}she says.{/n} "I'd like the chance to do that before hearing which version has reached the kitchens."''',
           c('"Other people may also matter to me. I will keep the promises I make to them."', "others", flags=("other_loves",)),
           c('"I want to give this time without promising what the rest of my life will look like."', "time")),
         n("others", "Anevia", '''"Good. Then don't promise us their evenings."
 {n}Anevia pushes the cheese toward Irabeth, who has been politely leaving the last piece alone.{/n}
 "I don't need a list of every private thing you say to somebody else. I do need to know whether you're coming when you've told me you're coming. And they deserve the same."
-"We should tell you when our own plans change," Irabeth says. "Neither of us has a spotless record there."
+"We should tell you when our own plans change," {n}Irabeth says.{/n} "Neither of us has a spotless record there."
 "Speak for yourself."
 {n}Irabeth raises an eyebrow. Anevia considers it, then gives in.{/n}
 "All right. Speak for both of us on that particular point."
 {n}There is no demand to abandon another lover, and no attempt to turn this meal into permission for promises nobody has asked you to make.{/n}''',
           c('"Then we begin with the time we can actually give."', "time")),
         n("time", "Irabeth", '''"I would like another evening. After we have had time to think about this one."
-"Supper again?" Anevia asks.
+"Supper again?" {n}Anevia asks.{/n}
 "Perhaps. Something ordinary."
 "You say that as though we've been spectacularly unusual tonight. I have eaten too much and you have defended a window fastening."
 {n}Irabeth laughs, surprised into it. Anevia watches her with an expression you have seen when her wife enters a room she was not expected to enter. Then she catches you watching and does not turn away.{/n}
-"I could get used to this," she says.
+"I could get used to this," {n}she says.{/n}
 {n}Irabeth sets down her cup.{/n}
 "I want to try. With both of you. I do not need to decide tonight where we will live after the war. I do want you to know that I am here because I wanted to come."
-"So am I," Anevia says. "And I want to hear your answer before I invent something clever to make it easier to say."''',
+"So am I," {n}Anevia says.{/n} "And I want to hear your answer before I invent something clever to make it easier to say."''',
           c('"Yes. Let us try this together."', "goodnight"),
           c('"I care for you both, but I want to keep our relationships separate."', "separate"),
           c('"I need another day to think."', "later")),
         n("goodnight", "Narrator", '''{n}At the door, Anevia catches Irabeth's sleeve and draws her down for a kiss. Irabeth's hand settles at her wife's waist. It is a familiar gesture, offered without a glance to see whether you approve.{/n}
 {n}When Anevia turns to you, there is a question in the way she holds out her hand. You take it and kiss her. Irabeth waits until you turn toward her before leaning close enough for you to meet her.{/n}
-"Another evening," she says.
-"With a less charitable division of the cheese," Anevia adds.
+"Another evening," {n}she says.{/n}
+"With a less charitable division of the cheese," {n}Anevia adds.{/n}
 {n}You leave them arguing about who ate the last piece. The argument follows you down the corridor, affectionate and entirely unnecessary. For once you have no reason to wonder whether your departure has made the room easier to bear.{/n}''',
           c('[Choose the shared relationship you have discussed.]', flags=("trying",))),
         n("separate", "Anevia", '''"Then that's what we keep."
 {n}Anevia lets out a breath, disappointed enough that she does not immediately dress it up as a joke.{/n}
 "I liked the idea. I still like you. Both facts can fit in the same evening."
-"I would rather know," Irabeth says. "The relationships we have chosen do not disappear because we choose against this possibility."
+"I would rather know," {n}Irabeth says.{/n} "The relationships we have chosen do not disappear because we choose against this possibility."
 {n}You finish supper. You speak about another visit with each of them, separately. No one calls it a lesser answer, or pretends it was the answer she had hoped for.{/n}''',
           c('[Keep the independent relationships and decline the shared arrangement.]', flags=(GROUP_CLOSED,))),
         n("later", "Irabeth", '''"Then take it."
 {n}Irabeth stands, and Anevia begins collecting the cups.{/n}
-"Ask us when you're ready," Anevia says. "We'll see what evening we can find. You needn't decide because the food's already on the table."
+"Ask us when you're ready," {n}Anevia says.{/n} "We'll see what evening we can find. You needn't decide because the food's already on the table."
 {n}You leave without making a new promise. The relationships you brought to this conversation remain as they were.{/n}''',
           c('[Consider the invitation. Speak again another day.]', abort=True)),
     ],
@@ -176,8 +176,8 @@ SCENES.append(scene(
     "tirabade.after_local_parting", "A question left for the other woman", "Together", 3,
     '"One relationship has ended. I would like to speak about what that means for the other."', [
         n("start", "Narrator", '''{n}You ask whether both women are willing to speak with you. Anevia arranges a time after their duties; Irabeth asks you to meet them in a side room at headquarters. When you arrive, neither has brought anything to make the conversation look like a social call.{/n}
-"We have already heard one answer," Irabeth says. "I do not want to argue you out of it."
-"Neither do I," Anevia says. "But we haven't said what happens to the other relationship. I'd rather ask than find out we've all been assuming different things."
+"We have already heard one answer," {n}Irabeth says.{/n} "I do not want to argue you out of it."
+"Neither do I," {n}Anevia says.{/n} "But we haven't said what happens to the other relationship. I'd rather ask than find out we've all been assuming different things."
 {n}They wait for you to sit. The conversation has room for an answer; it offers no way to take back the refusal already given.{/n}''',
           c('[Speak about the relationship that remains undecided.]', "separate_question")),
         *separation_nodes(),
@@ -334,19 +334,19 @@ def integrate(payload):
 "The part where seeing you was simply a good thing in the middle of the day. I still want that. I don't want to need a special occasion every time I ask you to sit down."
 {n}Irabeth takes your hand.{/n}
 "Nor do I. But I would like to hear what has changed for you, even when the answer complicates the evening we hoped to have. We have time to enjoy ourselves and time to learn something we did not expect."''')
-    history_variant(books["power"], "azata", '''"Then keep choosing," Anevia says. "When the choice is interesting, and when it's whether to send word that you'll be late."
+    history_variant(books["power"], "azata", '''"Then keep choosing," {n}Anevia says.{/n} "When the choice is interesting, and when it's whether to send word that you'll be late."
 {n}She smiles a little, then rests her hand beside yours.{/n}
 "I like that you want a life you haven't already been assigned. So do I. I asked Beth for something I wanted, and then I asked you. It mattered that you could each answer. I'd hate to find out we'd made all that effort just to start calling somebody else's answer an obstacle to our freedom."
-"We will have promises to keep," Irabeth says. "We chose those too."
+"We will have promises to keep," {n}Irabeth says.{/n} "We chose those too."
 "Exactly. Desna doesn't have to remind me where I said I'd be for supper. I can remember that myself."''')
     history_variant(books["future"], "choice", '''{n}You discuss where you might live and discover that all three of you have strong opinions about stairs. You discuss money without allowing your rank to end the conversation. You discuss whether a public announcement would be courage or merely an efficient way to make other people unbearable.{/n}
-"We can tell the people who need to know," Anevia says. "Everybody else can survive wondering."
+"We can tell the people who need to know," {n}Anevia says.{/n} "Everybody else can survive wondering."
 {n}Irabeth agrees, then looks at you with a seriousness that quiets the room.{/n}
 "We would like you in that life. I would. Anevia would. We have learned more about what we want than we knew when we first asked you to supper. I do not want to keep calling it an experiment because a promise makes me nervous."
 {n}Anevia meets your eyes.{/n}
 "We want you. With us. Do you want that too?"''')
     history_variant(books["future"], "yes", '''{n}Anevia lets out a breath she had been pretending not to hold. Irabeth reaches for you, then for her wife, drawing the three of you close enough that the table becomes an inconvenience.{/n}
-"We should move that," Anevia murmurs.
+"We should move that," {n}Anevia murmurs.{/n}
 "The table?"
 "Eventually. I was having a moment."
 {n}You laugh, all three of you. When the laughter passes, no one immediately lets go.{/n}
@@ -358,10 +358,10 @@ def integrate(payload):
     return_start = next(page for page in books["return"]["Nodes"] if page["Id"] == "start")
     return_start["Choices"].append(c('[Show them the letter about the supper you hoped to share.]', "negotiated_letter", requires=("tirabade.negotiated_letter",)))
     books["return"]["Nodes"].append(n("negotiated_letter", "Narrator", '''{n}Anevia reads the letter first, then passes it to her wife without folding it. Irabeth smooths the crease with the side of her hand.{/n}
-"I would have answered," she says.
-"So would I," Anevia says. "Probably on worse paper."
+"I would have answered," {n}she says.{/n}
+"So would I," {n}Anevia says.{/n} "Probably on worse paper."
 {n}She touches the stain at the edge of the page. There are things both women might ask about the days in which you carried it. For now, Irabeth places the letter between you where no one has to reach across someone else to take it.{/n}
-"We can tell you about our days now," she says. "You can tell us which part of yours belongs in a conversation instead of a report."''',
+"We can tell you about our days now," {n}she says.{/n} "You can tell us which part of yours belongs in a conversation instead of a report."''',
         c('"Then let us begin there."', "now")))
 
     for old_id in ("ending_together", "ending_apart", "ending_unfinished", "ending_loss", "ending_monster", "ending_aeon"):

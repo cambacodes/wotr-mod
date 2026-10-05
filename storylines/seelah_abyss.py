@@ -41,7 +41,7 @@ s("letter", "An audience for cruelty", [
 {n}"Leave it. Please."{/n}''',
       c('[Leave with them while the audience is distracted.]', "burned", flags=("seelah.letter_burned",))),
     n("public", "Seelah", '''{n}In a narrow passage away from the stall, the copyist finally opens the letter. It is intact.{/n}
-"We got it," Seelah says.
+"We got it," {n}Seelah says.{/n}
 {n}"Yes," the woman answers. "And tomorrow they can ask whether my sister thinks I'm starving. At every stall where I look for work."{/n}
 {n}Seelah's hand falls from the woman's shoulder.{/n}
 "I thought if we stopped him quickly..."

@@ -1,0 +1,13 @@
+# Melazmera (relationship melazmera). State "alive" (SOFT: she dies only if the player touches the crown and kills her).
+# '#@' lines are timed.py directives (plain trace.py ignores them). Verified: python timed.py trace natives/melazmera.txt - melazmera
+melazmera.queen_contract_offered:4  # Ch4 Colyphyr: the Fulsome Queen offers the dragon contract (FulsomeQueen/Cue_0024 e0dab46a)
+melazmera.hoard_told:4              # Ch4 Colyphyr: the Queen explains the hoard (FulsomeQueen Cue_0078/Cue_0079: rocks in crowns)
+greybor.in_party:2                  # Greybor recruited (Ch2) and kept (GreyborInParty bad3705a); Horzalah needs him too
+greybor.declined_queen:4            # Ch4 Colyphyr: with Greybor in the party, he declines the Queen's contract (FulsomeQueen/Cue_0112 8a7d6895)
+melazmera.ch5:5                     # Chapter 5 (Chapter05 etude 5b01aa69)
+#@ melazmera.queen_contract_offered:4+7   # Colyphyr is late Ch4
+#@ melazmera.hoard_told:4+7
+#@ greybor.declined_queen:4+8
+#@ !melazmera_dead                   # never touch the crown / never kill her (ColyphyrMelazmeraDead fee0f0cf)
+#@ !melazmera.illusion_lifted        # alternative entry (lair illusions seen through) not modelled; the stock sim forces it from Ch4 day 1
+#@ !melazmera.illusion_lifted_b

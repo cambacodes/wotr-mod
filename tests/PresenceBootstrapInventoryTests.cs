@@ -217,6 +217,41 @@ internal static class PresenceBootstrapInventoryTests
                 state, "galfrey.trickster.returned", check);
             state = Later(story, state); Contact(story, "galfrey.presence", state, check);
         }
+        // eng7-f4: walk both existing thefts, then place Seelah before she has reconciled.
+        foreach (bool late in new[] { false, true })
+        {
+            var state = Fresh(story, 3);
+            if (late) { state.Flags.Add("seelah_gone"); Recompute(story, state); state = Later(story, state); }
+            state = Play(story, late ? "seelah.trickster.dismissed.late" : "seelah.trickster.dismissed.setup",
+                state, "seelah.trickster.primed", check);
+            state.Flags.Add("seelah_gone"); Recompute(story, state); state = Later(story, state);
+            check(!state.Has("seelah.trickster.returned") && !Rules.RouteOpen(story.Relationships["seelah"], state),
+                "Stolen papers grant reconciliation before her answer");
+            Contact(story, "seelah.presence", state, check);
+            check(Rules.Available(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.back_for_the_papers"), state),
+                "Seelah cannot demand her stolen papers");
+            MissingAnchor(story, "seelah.presence", state, "seelah.trickster.dismissed.back_for_the_papers_letter", check);
+            foreach (var blocker in new[] { "seelah.closed", "seelah_dead", "trickster.failed" })
+            {
+                var blocked = Program.Copy(state); blocked.Flags.Add(blocker); Recompute(story, blocked);
+                if (blocker == "trickster.failed")
+                    check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.back_for_the_papers"), blocked),
+                        "Seelah's new return act fires after leaving Trickster");
+                else
+                    check(!Rules.PresenceWanted(story.Presences["seelah.presence"], blocked), "Papers lift unrelated loss: " + blocker);
+            }
+            state = Play(story, "seelah.trickster.dismissed.back_for_the_papers", state, "seelah.trickster.returned", check);
+            state = Later(story, state);
+            check(Rules.RouteOpen(story.Relationships["seelah"], state), "Her answer does not complete the earned return");
+        }
+        {
+            var unpaid = Fresh(story, 3, "seelah_gone");
+            check(!Rules.PresenceWanted(story.Presences["seelah.presence"], unpaid), "Seelah returns without stolen papers");
+            var otherPath = Program.Copy(unpaid); otherPath.Flags.Remove("trickster"); Recompute(story, otherPath);
+            check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "seelah.trickster.dismissed.late"), otherPath),
+                "Papers theft changes canon off-Trickster");
+        }
+        // eng7-f4 end
         foreach (var name in new[] { "camellia.presence", "irabeth.presence", "kaylessa.presence", "nurah.presence.cell", "minagho_chivarro.presence.minagho" })
         {
             var p = story.Presences[name]; string rel = Rules.PresenceRelationship(name)!;

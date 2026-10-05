@@ -1,0 +1,28 @@
+# Horzalah (relationship horzalah). State "mercy" (Greybor kept; Greybor Q3 variant A; spared at the mercy node by the mod's con).
+# '#@' lines are timed.py directives (plain trace.py ignores them). Verified: python timed.py trace natives/horzalah.txt - horzalah
+greybor.in_party:2                  # Greybor recruited (Ch2) and kept in the roster through Ch5 (GreyborInParty bad3705a)
+horzalah.seals_seen:4               # Ch4 Greybor Q2 "A Matter of Reputation": her projection (HorzalahFirst/Cue_0001 fc1030e8)
+horzalah.met_q2:4                   # Ch4 Q2: HorzalahFirst/Cue_0017 0a2ac3e4 ("Horzalah, not Hepzamirah")
+horzalah.guild_seen:4               # Ch4 Q2: YozzDying/Cue_0015 88e13a2f
+horzalah.scar_seen:4                # Ch4 Q2: YozzDying/Cue_0049 7dce8fdd (the collar-shaped scar) -> mod "The collar-shaped scar"
+horzalah.rescue_refused_told:4      # Ch4 Q2: YozzDying/Cue_0051 fc5119d8 ("He refused to rescue me back then")
+horzalah.gift_given:4               # Ch4 Q2: YozzDying/Cue_0058 c200758b (take the sisterly gift box)
+greybor.q2_done:4                   # Ch4: complete QuestionOfReputation 6377e005
+horzalah.gift_delivered:4           # Ch4 Colyphyr: Hepzamirah_main Answer_0016 [Release the canary] -> Cue_0017 49356164
+iz.done:5                           # Ch5: Iz quest complete (95ff7d97); GreyborQ3 needs it
+coronation.after:5                  # Ch5: the Coronation (b9cbdf8a)
+horzalah.met_q3_a:5                 # Ch5 Greybor Q3 "The Price of Loyalty", variant A (Commander + Greybor alone): Horzalah_Ambush/Cue_0003 65b730aa
+#@ horzalah.seals_seen:4+2
+#@ horzalah.met_q2:4+2
+#@ horzalah.guild_seen:4+3
+#@ horzalah.scar_seen:4+3
+#@ horzalah.rescue_refused_told:4+3
+#@ horzalah.gift_given:4+3
+#@ greybor.q2_done:4+4
+#@ horzalah.gift_delivered:4+10
+#@ iz.done:5+2
+#@ coronation.after:5+3
+#@ horzalah.met_q3_a:5+6
+#@ !horzalah.killed                 # never Horzalah_Mercy Answer_0004 / Answer_0022 [kill]
+#@ !horzalah.killed_b
+#@ !greybor.q3_failed

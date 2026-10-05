@@ -7,6 +7,7 @@ import argparse
 import copy
 import json
 import math
+import re  # eng7-f3: full reserved enmity keys, including seat-woman readers.
 from pathlib import Path
 import sys
 import tempfile
@@ -173,11 +174,16 @@ def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=
             if pair_ready is not None and hour >= pair_ready:
                 if not pair_used and reservations:
                     slots.append((hour, 'household.pair', reservations.pop(0)))
-                while protected_used < 2 and dynamics:
-                    slots.append((hour, 'household.protected', dynamics.pop(0)))
-                    protected_used += 1
+                # eng7-f3: optional dynamic flavour is unkeyed (K8 category contract),
+                # independently capped at three. It cannot queue behind protected settlements.
+                if dynamics:
+                    slots.append((hour, None, dynamics.pop(0)))
+                # end eng7-f3
         protected_beats = sum(kind == 'household.protected' for _, kind, _ in slots)
         optional_beats = sum(kind == 'household.pair' for _, kind, _ in slots)
+        # eng7-f3
+        dynamic_beats = sum(kind is None for _, kind, _ in slots)
+        # end eng7-f3
         # Reserve all other optional/mending/flavour load in the same allowance, not just the worked pair's six steps.
         reserved_pair = 20 if chapter == 5 else 0
         protected_total = protected_beats
@@ -186,11 +192,14 @@ def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=
         missed = [entry['ref'] for entry in pending if entry['chapter'] == chapter]
         if chapter == 5:
             missed += reservations + dynamics
-        chapters.append(dict(chapter=chapter, household_beats=protected_beats + optional_beats + letters + acknowledgment_beats,
+        # eng7-f3: flavour counts toward the approved household ceiling, not a protected allowance.
+        chapters.append(dict(chapter=chapter, household_beats=protected_beats + optional_beats + dynamic_beats + letters + acknowledgment_beats,
+                             dynamic=dynamic_beats,
                              protected=protected_beats, optional=optional_beats, letters=letters,
                              acknowledgments=acknowledgment_beats,
                              reserved_pair=reserved_pair, rests_available=rests, rests_needed=needed,
                              load=round(needed / max(1, rests), 3), deadline_misses=missed, slots=slots))
+        # end eng7-f3
     return dict(conditional=conditional, rematch=rematch, fallback=fallback, blocked=blocked, chapters=chapters,
                 completed=completed, pair_complete='S02.morning' in completed,
                 pair_eligibility=pair_ready, paragraphs=2 * len(data['schedule']))
@@ -205,6 +214,23 @@ def report(result, emit=print):
              (row['chapter'], row['household_beats'], row['rests_needed'], row['rests_available'], row['load'], row['deadline_misses']))
     emit('S02 morning completed: %s; eligibility hour: %s; blocked rows: %d; instantiated paragraphs: %d' %
          (result['pair_complete'], result['pair_eligibility'], len(result['blocked']), result['paragraphs']))
+
+
+# eng7-f3
+def enmity_reader_flags(payload):
+    """Every serialized reserved reader, including Guest List seat-woman paragraphs."""
+    def scan(value):
+        if isinstance(value, dict):
+            for key, child in value.items():
+                if key != 'Set':
+                    yield from scan(child)
+        elif isinstance(value, list):
+            for child in value:
+                yield from scan(child)
+        elif isinstance(value, str) and re.fullmatch(r'[a-z0-9_]+\.harem\.enmity\.[a-z0-9_.]+', value):
+            yield value
+    return sorted(set(scan(payload)))
+# end eng7-f3
 
 
 # eng7-l11: acceptance inventory consumes W0c contracts; reservations never prove delivery.
@@ -244,10 +270,35 @@ def inventory_acceptance(story, data, expectations, walk=None):
                 errors.append('row bound to an absent or unregistered scene: ' + row['ref'] + '/' + sid)
             elif scene.get('HouseholdCategory') == 'protected' and scene.get('RestAllowance') != 'household.protected':
                 errors.append('protected row has wrong allowance: ' + sid)
-    enmity_producers = [scene['Id'] for scene in story['Scenes'] for node in scene['Nodes']
-                       for choice in node['Choices'] if any('.harem.enmity.' in flag for flag in choice.get('Set', []))]
-    if not enmity_producers:
-        blockers.append('first-wins acceptance: no serialized enmity producers (consume q6a L1-L6 when landed)')
+    # eng7-f3: enumerate missing writing inputs as DATA, never synthetic delivered scenes.
+    missing_rows = [row['ref'] for row in active if not expectations['row_scene_ids'].get(row['ref'])]
+    missing_packets = []
+    for packet in data['packets']:
+        ids = expectations.get('packet_scene_ids', {}).get(packet['id'], [])
+        if not ids:
+            missing_packets.append(packet['id'])
+            blockers.append('build-sheet packet scene missing: ' + packet['id'])
+        elif any(sid not in by_id or not by_id[sid].get('HouseholdCategory') for sid in ids):
+            errors.append('packet bound to an absent or unregistered scene: ' + packet['id'])
+    enmity_producers = {}
+    for scene in story['Scenes']:
+        for node in scene['Nodes']:
+            for index, choice in enumerate(node['Choices']):
+                for flag in choice.get('Set', []):
+                    if '.harem.enmity.' in flag:
+                        enmity_producers.setdefault(flag, []).append(dict(scene=scene['Id'], node=node['Id'], choice=index))
+    enmity_readers = enmity_reader_flags(story)
+    missing_enmity = [flag for flag in enmity_readers if flag not in enmity_producers]
+    if missing_enmity:
+        blockers.append('first-wins enmity producers missing: ' + ', '.join(missing_enmity))
+    declared = expectations.get('missing_data', {})
+    for name, observed in (('schedule_scene_refs', missing_rows), ('packet_scene_refs', missing_packets),
+                           ('enmity_producer_flags', missing_enmity)):
+        if declared.get(name) != observed:
+            errors.append('DATA inventory changed; update missing_data: ' + name)
+    missing_data = dict(schedule_scene_refs=missing_rows, packet_scene_refs=missing_packets,
+                        enmity_producer_flags=missing_enmity, native_walk=not bool(walk))
+    # end eng7-f3
     # Existing E9 automatically schedules earliest native progress. Always label that assumption.
     route_run = e9.simulate_rest_budget(e9.Model(story))
     if not walk:
@@ -262,6 +313,7 @@ def inventory_acceptance(story, data, expectations, walk=None):
                 blockers.append('native gate timestamp missing: ' + key)
     return dict(status='failed' if errors else 'data_blocked' if blockers else 'ready_for_native_walk',
                 errors=errors, blockers=blockers, form_census=census, chapter5_min_table_rests=rests,
+                missing_data=missing_data, enmity_producers=enmity_producers,  # eng7-f3
                 active_rows=len(active), actual_table_beats={row['chapter']: row['table_beats'] for row in route_run['chapters']},
                 native_progress_assumed=True, certified=False)
 # end eng7-l11
@@ -300,12 +352,19 @@ def main(argv=None):
         # end eng7-l11
         target.write_text(json.dumps(fixture, ensure_ascii=False, indent=2), encoding='utf-8')
     passed = True
-    for rematch in (False, True):
+    # eng7-f3: include packet fallback and late reunion when testing conditional data.
+    expectations = json.loads((ROOT / 'tools/harem_inventory_scenarios.json').read_text(encoding='utf-8'))
+    profiles = [p for p in expectations['scenarios'] if p['conditional']] if args.conditional else [
+        dict(id='walk-success', rematch=False), dict(id='walk-rematch', rematch=True)]
+    for profile in profiles:
+        print('Scenario: ' + profile['id'])
+        options = {k: profile[k] for k in ('rematch', 'fallback', 'late_s06') if k in profile}
         result = simulate(story, data, route_run, arrivals=walk.get('eligibility_hours'), gate_hours=walk.get('gate_hours'),
-                          conditional=args.conditional, rematch=rematch)
+                          conditional=args.conditional, **options)
         report(result)
         passed &= result['pair_complete'] and not result['blocked'] and all(
             not chapter['deadline_misses'] and chapter['load'] <= 1 for chapter in result['chapters'])
+    # end eng7-f3
     if not args.walk:
         print('NOTE: tools/fixtures/all-romance-run.json / S9 native walk is not supplied. This does not certify native reachability.')
     return 0 if passed else 1

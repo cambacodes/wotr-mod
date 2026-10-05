@@ -26,6 +26,11 @@ def spans(text, speaker="Narrator", kind="node"):
         hard.extend(("unclosed-narration", start, end) for start, end in openers)
     else:
         outside.append((last, len(text)))
+    # eng7-f2: UI labels are valid display surfaces without narration markup.
+    # Markup balance is still checked; NPC text retains full prose detection.
+    if kind == "ui":
+        return hard, review
+    # end eng7-f2
     # Mask display tokens without changing offsets. Gender tags are speech, not prose.
     mask = list(text)
     for token in re.finditer(r'\{[^{}]*\}|\[[^\]]*\]', text):
@@ -33,11 +38,24 @@ def spans(text, speaker="Narrator", kind="node"):
     masked = "".join(mask)
     # Quotes may span lines and narration spans (Owlcat dialogue often does).
     quote_mask = list(masked)
-    for quote in re.finditer(r'"[^"]*"|“[^”]*”', masked, re.S):
-        quote_mask[quote.start():quote.end()] = " " * (quote.end() - quote.start())
+    # eng7-f2: Owlcat also repeats an opening quote on continuation paragraphs.
+    # A quote at the start of a line while speech is open does not close it.
+    opened = None
+    for i, char in enumerate(masked):
+        if char in {'"', '“', '”'}:
+            if opened is None and char != '”':
+                opened = char
+            elif ((opened == '“' and char == '”') or
+                  (opened == '"' and char == '"' and
+                   masked[masked.rfind('\n', 0, i) + 1:i].strip())):
+                opened = None
+            quote_mask[i] = '\0'
+        elif opened is not None:
+            quote_mask[i] = '\0'
+    # end eng7-f2
     remaining = "".join(quote_mask)
     for begin, end in outside:
-        for line in re.finditer(r'[^\n]+', remaining[begin:end]):
+        for line in re.finditer(r'[^\n\0]+', remaining[begin:end]):
             raw = line.group()
             if not re.search(r'[A-Za-z]', raw):
                 continue

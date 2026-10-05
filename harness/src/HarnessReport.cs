@@ -145,6 +145,9 @@ namespace RRT.TestHarness
         public int ScenesDriven;
         public int ChoicesTaken;
         public List<SceneRun> Runs = new List<SceneRun>();
+        // BEGIN eng7-f5
+        public List<NativeSlideResult> NativeSlides = new List<NativeSlideResult>();
+        // END eng7-f5
         public RoundTripResult RoundTrip = new RoundTripResult();
         /// <summary>-Spike Residence only (omitted otherwise): the P2 residence feasibility spike for this save.</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikeResult? Residence;
@@ -193,6 +196,9 @@ namespace RRT.TestHarness
         public void ComputeSummary()
         {
             var s = new ReportSummary { Saves = Saves.Count };
+            // BEGIN eng7-f5
+            if (Plan.NativeEpilogueSpike && Saves.Count == 0) s.Failures.Add("No save was exercised by the native slide probe.");
+            // END eng7-f5
             if (!Init.RrtModFound) s.Failures.Add("RRT mod RanRomanceTirabade not found by UMM.");
             if (!Init.Initialized) s.Failures.Add("Tirabade.Main did not initialize" + (Init.Error != null ? ": " + Init.Error : "."));
             if (Init.ReflectionProblems.Count > 0) s.Failures.Add("Reflection lookups failed: " + string.Join("; ", Init.ReflectionProblems));
@@ -243,9 +249,19 @@ namespace RRT.TestHarness
                     s.Failures.Add(save.Save + ": residence spike: " + (save.Residence.Findings.Count > 0 ? string.Join("; ", save.Residence.Findings) : "not evaluated"));
                 if (save.PresenceSpike != null && !save.PresenceSpike.Passed)
                     s.Failures.Add(save.Save + ": presence spike: " + (save.PresenceSpike.Findings.Count > 0 ? string.Join("; ", save.PresenceSpike.Findings) : "not evaluated"));
+                // BEGIN eng7-f5: empty, truncated, stuck and exception probes cannot pass silently.
+                if (Plan.NativeEpilogueSpike && save.NativeSlides.Count == 0) s.Failures.Add(save.Save + ": no native slide cases ran");
+                if (Plan.NativeEpilogueSpike && save.Exceptions.Any(e => e.Relevant))
+                    s.Failures.Add(save.Save + ": relevant exception during native slide probing: " + save.Exceptions.First(e => e.Relevant).Message);
+                foreach (var slides in save.NativeSlides.Where(r => !r.Passed))
+                    s.Failures.Add(save.Save + " / " + slides.Case + ": " + slides.Result + "; " + string.Join("; ", slides.Findings));
+                // END eng7-f5
                 save.Passed = save.LoadOk && save.StateError == null && save.NotIdle == null && save.Runs.All(r => r.Passed)
                     && !save.Exceptions.Any(e => e.Relevant) && (!save.RoundTrip.Attempted || save.RoundTrip.Passed)
                     && (save.Residence == null || save.Residence.Passed) && (save.PresenceSpike == null || save.PresenceSpike.Passed);
+                // BEGIN eng7-f5
+                save.Passed &= save.NativeSlides.All(r => r.Passed);
+                // END eng7-f5
             }
             s.RelevantExceptions += GlobalExceptions.Count(e => e.Relevant);
             if (GlobalExceptions.Any(e => e.Relevant)) s.Failures.Add("Relevant errors outside any save: " + GlobalExceptions.First(e => e.Relevant).Message);

@@ -28,8 +28,8 @@ internal static class PresencePlacementManifestTests
         return json.RootElement.Clone();
     }
 
-    // Deliberately separate structural validity from verified delivery. A pending record is
-    // a valid inventory entry but is never permission to assign a position in WenduagEcho.
+    // Deliberately separate structural validity from verified delivery. The F7 coordinator's
+    // street-door staging decision does not substitute for a completed live delivery probe.
     internal static bool Authorized(JsonNode entry, out string reason)
     {
         reason = "pending coordinator live evidence";
@@ -72,6 +72,7 @@ internal static class PresencePlacementManifestTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
+        DrezenAreaTruth(story, check);
         var manifest = JsonNode.Parse(File.ReadAllText("tools/presence_placement_manifest.json"))!;
         check(manifest["schema_version"]!.GetValue<int>() == 1 && manifest["item"]!.GetValue<string>() == "E-Q7-33",
             "E-Q7-33: unknown placement manifest schema");
@@ -119,7 +120,9 @@ internal static class PresencePlacementManifestTests
                 var presence = story.Presences[entry["consumer"]!.GetValue<string>()];
                 var expectedAt = JsonSerializer.SerializeToNode(presence.At, new JsonSerializerOptions { IncludeFields = true, DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull })!;
                 foreach (var property in entry["at"]!.AsObject())
-                    check(property.Key == "Offset"
+                    check(property.Key == "Distance"
+                        ? presence.At!.Distance == property.Value!.GetValue<double>()
+                        : property.Key == "Offset"
                         ? JsonSerializer.Deserialize<float[]>(expectedAt[property.Key]!.ToJsonString())!
                             .SequenceEqual(JsonSerializer.Deserialize<float[]>(property.Value!.ToJsonString())!)
                         : expectedAt[property.Key]?.ToJsonString() == property.Value?.ToJsonString(),
@@ -129,8 +132,10 @@ internal static class PresencePlacementManifestTests
                     && presence.MinChapter <= probeChapter && probeChapter <= presence.MaxChapter,
                     "E-Q7-33: exported placement chapter/area/unit differs");
                 var state = new Snapshot { Area = presence.Area, Chapter = probeChapter, Hour = 10000 };
-                state.Flags.UnionWith(presence.Requires); Rules.Complete(story, state);
-                check(Rules.PresenceWanted(presence, state), "E-Q7-33: placement positive fixture did not execute");
+                state.Flags.UnionWith(presence.Requires);
+                foreach (var group in presence.RequiresAnyGroups) state.Flags.Add(group.First());
+                Rules.Complete(story, state);
+                check(Rules.PresenceWanted(presence, state), "E-Q7-33: placement positive fixture did not execute: " + entry["id"]);
                 check(Rules.PlanPresence(presence, true, new PresenceObservation { AreaLoaded = true, AnchorResolved = false }).Contains(PresenceStep.Blocked),
                     "E-Q7-33: missing anchor did not fail closed");
                 state.Chapter = presence.MinChapter - 1;
@@ -149,9 +154,13 @@ internal static class PresencePlacementManifestTests
             if (status == "pending") Console.WriteLine("PENDING LIVE: E-Q7-33 " + entry["id"] + " — " + entry["remainder"]);
         }
         var cellar = entries.Single(e => e!["id"]!.GetValue<string>() == "wenduag.cellar")!;
-        if (!Authorized(cellar, out _))
-            check(File.ReadAllText("src/WenduagEcho.cs").Contains("TODO_VerifiedCellarPosition = null"),
-                "E-Q7-33: an unverified cellar destination was enabled in runtime");
+        check(cellar["staging"]?.GetValue<string>() == "street-level cellar entrance"
+            && cellar["candidate_position"]?.ToJsonString() == "[-24.63,40.13,57.17]",
+            "F7: coordinator cellar-door staging decision missing");
+        check(File.ReadAllText("src/WenduagEcho.cs").Contains(
+                "TODO_VerifiedCellarPosition = new Vector3(-24.63f, 40.13f, 57.17f)"),
+            "F7: runtime cellar-door point differs from the coordinator's verified street point");
+        check(!Authorized(cellar, out _), "F7: pending cellar click/reload evidence was called verified");
         var promoted = cellar.DeepClone(); promoted["status"] = "verified";
         check(!Authorized(promoted, out _), "E-Q7-33: promotion without evidence passed");
         // Validator positive and mutation controls use a labelled synthetic probe in system temp,
@@ -188,5 +197,48 @@ internal static class PresencePlacementManifestTests
         }
         finally { File.Delete(artifact); }
         Console.WriteLine("PASS: E-Q7-33 offline manifest GUID/type/chapter and evidence/mutation gates; pending live placements remain unresolved.");
+    }
+
+    private static void DrezenAreaTruth(Story story, Action<bool, string> check)
+    {
+        var table = JsonNode.Parse(File.ReadAllText("tools/drezen_area_chapters.json"))!;
+        var areas = table["areas"]!.AsArray().ToDictionary(a => a!["guid"]!.GetValue<string>(), a => a!);
+        foreach (var pair in story.Presences)
+        {
+            var p = pair.Value;
+            check(areas.ContainsKey(p.Area), "F7: presence area absent from reachability table: " + pair.Key);
+            var area = areas[p.Area];
+            // Area and window are conjunctive: Chapter 4 in a 3..5 window does not
+            // invent a capital visit during the Abyss. Exact impossible windows fail.
+            var chapters = area["reachable_chapters"]!.AsArray().Select(c => c!.GetValue<int>());
+            check(chapters.Any(c => p.MinChapter <= c && c <= p.MaxChapter),
+                "F7: presence has no reachable (area, chapter) pair: " + pair.Key);
+            if (p.At?.NearUnit != null)
+                check(area["units"]!.AsArray().Any(u => u!["guid"]!.GetValue<string>() == p.At.NearUnit),
+                    "F7: NearUnit absent from area's native blueprint unit list: " + pair.Key);
+        }
+        foreach (var scene in story.Scenes.Where(s => !Rules.IsRemote(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)))
+            foreach (string area in scene.Areas.Where(a => a == Rules.NurahCapital || a == "83a099db95e0e6e4485a20b10ce7c28d"))
+            {
+                var chapters = areas[area]["reachable_chapters"]!.AsArray().Select(c => c!.GetValue<int>()).ToArray();
+                check(scene.Chapters.Length > 0 ? scene.Chapters.All(chapters.Contains)
+                    : chapters.Any(c => scene.MinChapter <= c && c <= scene.MaxChapter),
+                    "F7: encounter/hub has an unreachable Drezen chapter: " + scene.Id);
+            }
+        var presences = story.Presences.ToArray();
+        for (int i = 0; i < presences.Length; i++)
+            for (int j = i + 1; j < presences.Length; j++)
+            {
+                var a = presences[i].Value; var b = presences[j].Value;
+                if (a.Area != Rules.NurahCapital || b.Area != a.Area || a.At?.NearUnit == null
+                    || a.At.NearUnit != b.At?.NearUnit || Rules.PresencesExclusive(a, b)) continue;
+                (double X, double Z) Offset(PresenceAnchor at) => at.Side switch {
+                    "right" => (at.Distance, 0), "front" => (0, at.Distance),
+                    "behind" => (0, -at.Distance), _ => (-at.Distance, 0) };
+                var aa = Offset(a.At); var ba = Offset(b.At!);
+                double distance = Math.Sqrt(Math.Pow(aa.X - ba.X, 2) + Math.Pow(aa.Z - ba.Z, 2));
+                check(distance >= 4 - 0.000001,
+                    "F7: coexisting shared-anchor presences are under 4 m apart: " + presences[i].Key + " / " + presences[j].Key);
+            }
     }
 }

@@ -24,7 +24,7 @@ s("one_account", "A warning small enough to hear", '"I brought the account. It h
 "You might have brought a better one."
 "I wanted you to see the weakness before we tried it."
 {n}The page describes a watcher's line: loose wooden clappers connected by cord above a narrow crossing. Something large pushing through disturbs the line. Small animals can pass beneath it. There is no spirit in the wood, and nothing capable of defending the crossing once the sound has been heard.{/n}
-"A hunter's rattle," she says. "With more writing."
+"A hunter's rattle," {n}she says.{/n} "With more writing."
 "A warning. It might give you time to reach shelter, or discover what is coming before it reaches the cave."
 "And here I was hoping you had brought an army small enough to fit between the folds."
 {n}She turns the page over. The reverse is blank.{/n}
@@ -53,14 +53,14 @@ s("one_account", "A warning small enough to hear", '"I brought the account. It h
 "I won't. Show me a crossing."
 "Above the stream. Near enough to hear, far enough to give me more warning than a claw through the cave mouth."
 {n}She measures a length of cord against her forearm, stops, and measures again. This time she leaves more slack.{/n}''', c('[Hold the cord while she cuts it.]', "author")),
-    n("dead", "Soana", '''"While I search," she repeats. "You have no objection to that part?"
+    n("dead", "Soana", '''"While I search," {n}she repeats.{/n} "You have no objection to that part?"
 "Searching is not the same as binding another creature."
 "To you. To me it is the work that must be done before the next horror finds us undefended."
 {n}She lifts the little wooden pieces, strikes them together, and listens until the sound has died.{/n}
 "There is a crossing above the stream. I used to hear larger feet there."
 {n}She puts the pieces down separately.{/n}
 "We will try your warning. If I hear it in the night, I will know it is not him. I would know that without your invention, of course. Do not look pleased with the lesson."''', c('[Lay out enough cord for the crossing.]', "author")),
-    n("author", "Soana", '''"No incantation?" she asks.
+    n("author", "Soana", '''"No incantation?" {n}she asks.{/n}
 "None in this proposal."
 "Good. I told the rulers of Sarkoris to wipe out the mages without mercy. They would not listen. And still the clever people insist that the next spell will repair what the last clever person ruined."
 {n}She is addressing the paper, but watching you.{/n}''',
@@ -112,7 +112,7 @@ s("watch_line", "What moves the branch", '"Shall we try the warning?"', [
 {n}You help carry the pieces back to the cave. She leaves them in their bowl.{/n}''', c('[Return when you can stay.]', abort=True)),
     n("watch", "Narrator", '''{n}A small bird lands on the line. The cord sags, but the wooden pieces do not meet. It departs without sounding your warning.{/n}
 {n}Soana rests her hands on her knees. A gust travels through the leaves above you. Nothing sounds. The next gust comes lower, dragging a bough across the far end of the line. The clappers knock sharply together.{/n}
-"There is your first invader," she says.
+"There is your first invader," {n}she says.{/n}
 {n}You move the rubbing bough clear and return to the trunk. Minutes pass. Then the clappers strike again, softly this time. Neither of you has seen anything cross.{/n}
 {n}The low sound repeats. A reed bends beside the bank, though the leaves above it are still.{/n}''',
       c('[Perception] [Find what is moving before you disturb the crossing.]', check=dict(Skill="SkillPerception", DC=22, Success="found", Failure="missed", CommanderOnly=True), forbids=("soana.watch_found", "soana.watch_missed", "soana.watch_patient")),
@@ -127,7 +127,7 @@ s("watch_line", "What moves the branch", '"Shall we try the warning?"', [
 {n}Soana catches the bowl before your heel tips it down the bank.{/n}
 "Now it knows about you as well."
 {n}When the movement stops, you find a few stiff bristles on a snag and a forked twig hanging from the cord. The tracks belong to a young boar. You cannot tell whether its body or the twig moved the line first.{/n}
-"We will have to watch again," you say.
+"We will have to watch again," {n}you say.{/n}
 "Yes. Sit where you can rise without kicking our belongings into the water."
 {n}The second watch is longer. The boar does not return. When you try a loose twig against the line yourself, it catches readily enough to explain the softer noise, though you have missed the chance to watch the animal do it.{/n}''', c('[Set the recovered twig beside the bowl.]', "choice", flags=("soana.watch_missed",))),
     n("patient", "Soana", '''{n}Soana points two fingers at her own eyes, then toward the bank. You remain still. For a while there is nothing to see except a blade of grass quivering against the cord.{/n}
@@ -151,9 +151,9 @@ s("watch_line", "What moves the branch", '"Shall we try the warning?"', [
 "Something taller would sound it."
 "Something taller with the courtesy to use this path."
 {n}She makes you pass through once more, while she listens from the first bend toward the cave. This time she calls back that she heard only the final knock. You move one wooden piece so it strikes more cleanly. She then listens beside the rushing stream while you sound the clappers again. There she misses two knocks out of three.{/n}
-"Leave it for now," she says. "I will hear what it has to say. I shall not sleep with my knife on the far side of the cave."''', c('[Walk back with her.]', "finish")),
+"Leave it for now," {n}she says.{/n} "I will hear what it has to say. I shall not sleep with my knife on the far side of the cave."''', c('[Walk back with her.]', "finish")),
     n("low", "Soana", '''{n}You leave the cord at its lower height and tie a loose loop at the near end, so she can take it down without reaching across the crossing.{/n}
-"When I stop listening, I unhook it," she says. "Another knot to untie before I sleep. As if I had too little work."
+"When I stop listening, I unhook it," {n}she says.{/n} "Another knot to untie before I sleep. As if I had too little work."
 "It may not be worth keeping."
 "I intend to discover that for myself."
 {n}She makes you sit in her place while she trips the line. You can hear it plainly. Then you exchange places. She listens from the bend toward the cave while you trip the line again, and calls back that she heard. Beside the rushing stream, she misses two knocks out of three.{/n}
@@ -236,7 +236,7 @@ s("price_of_warning", "The keeper cannot hear everything", '"Has the warning ear
 "Good. The far knot has tightened. You may enjoy undoing your own excellent work."
 {n}You do not enjoy it. Soana watches your struggle, then passes you her awl without comment. The point loosens the cord enough to pull it free.{/n}
 {n}Back at the cave, she coils the line and keeps the clappers in their bowl. She does not throw them into the fire.{/n}
-"Useful wood," she says when she catches you looking.
+"Useful wood," {n}she says when she catches you looking.{/n}
 "And an account?"
 "A shorter one, now that we know how it ends."''', c('[Amend the account with her.]', "finish")),
     n("leave", "Soana", '''"Then take your string down before you go. I will not climb that bank to undo your knots."
@@ -260,7 +260,7 @@ s("ordinary_feast", "A feast for an ordinary afternoon", '"You said something wo
     n("start", "Soana", '''{n}Soana takes the cover off the pot. Inside is a little honey, thick enough to cling to the spoon. A dish of tart berries waits beside it.{/n}
 "I had hoped for sweeter fruit. The fruit had other ambitions. Sit down."
 {n}She has put a folded cloth on a flat stone. You sit beside her, with the dish of berries between your knees.{/n}
-"No new plans?" she asks.
+"No new plans?" {n}she asks.{/n}
 "You told me not to bring one."
 "It is a relief to discover you can follow an instruction without first enlarging it."
 {n}She gives you a spoon and takes the smaller one herself. The first berry draws her lips tight. She dips the next in more honey.{/n}
@@ -308,7 +308,7 @@ And found her goat would wear it."
 "Do I pass?"
 "You reached the end. The trees have not fled. Try it again."
 {n}She adds words about a foolish young man and an exceptionally well-dressed goat. You lose the tune again, this time because you laugh before the end.{/n}
-"A reasonable place to stop," she says. "The goat usually receives the applause."''', c('[Ask where she used to sing it.]', "festival")),
+"A reasonable place to stop," {n}she says.{/n} "The goat usually receives the applause."''', c('[Ask where she used to sing it.]', "festival")),
     n("listen", "Soana", '''{n}She lifts one eyebrow, but keeps the tune going. Without words, its little hesitation becomes funnier each time she repeats it. You begin to recognize where the singer is expected to linger and where the listener is expected to laugh.{/n}
 {n}At the end she gives the final phrase an outrageous flourish. It exhausts her breath and leaves her shaking her head at herself.{/n}
 "I used to do that better."

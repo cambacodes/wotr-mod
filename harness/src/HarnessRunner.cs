@@ -150,7 +150,7 @@ namespace RRT.TestHarness
             return listed ?? sm.LoadZipSave(full);
         }
 
-        IEnumerator LoadSave(string path, Box<string?> error, Box<double> ms, Box<string?> notIdle)
+        IEnumerator LoadSave(string path, Box<string?> error, Box<double> ms, Box<string?> notIdle, bool setup = true)
         {
             error.Value = null; notIdle.Value = null;
             var sw = Stopwatch.StartNew();
@@ -172,6 +172,11 @@ namespace RRT.TestHarness
             if (!ok.Value) { error.Value = "area not loaded within " + plan.Timeouts.LoadSeconds + " s (" + IdleBlocker() + ")"; yield break; }
             yield return WaitFor(() => IdleBlocker() == null, plan.Timeouts.IdleSeconds, ok, 60);
             if (!ok.Value) notIdle.Value = IdleBlocker() ?? "unstable";
+            if (ok.Value && setup && (plan.SetFlags.Count > 0 || plan.StartEtudes.Count > 0))
+            {
+                try { ApplyFixtureSetup(); }
+                catch (Exception ex) { error.Value = "fixture setup: " + ex.Message; }
+            }
             ms.Value = sw.Elapsed.TotalMilliseconds;
             yield return new Wait(1f);
         }
@@ -288,6 +293,14 @@ namespace RRT.TestHarness
             try { snapshot = rrt.State(); sr.State = RrtBridge.ToData(snapshot); }
             catch (Exception ex) { sr.StateError = ex.GetType().Name + ": " + ex.Message; capture.Add("harness", "Exception", "State() threw", ex.ToString()); yield break; }
 
+            // BEGIN eng7-f5: probe uses this runner's existing load, exception and report conventions.
+            if (plan.NativeEpilogueSpike)
+            {
+                yield return NativeEpilogueInventory(sr, prefix);
+                TryWrite();
+                yield break;
+            }
+            // END eng7-f5
             // -Spike Residence (opt-in): the P2 residence feasibility spike replaces scene driving for this save.
             if (plan.ResidenceSpike)
             {
@@ -315,6 +328,19 @@ namespace RRT.TestHarness
                     sr.Exceptions.Add(new CapturedLog { Source = "harness", Severity = "Exception", Message = ex.Message, StackTrace = ex.ToString(), Relevant = true, Context = capture.Context });
                     TryStopDialog();
                 });
+                if (check.Production != null && plan.RoundTrip && !check.Production.Failures().Any())
+                {
+                    yield return new Guarded(RoundTrip(sr.RoundTrip, "presence:" + plan.Presence!.Key), ex =>
+                    {
+                        sr.RoundTrip.Passed = false; sr.RoundTrip.SkipReason = ex.Message;
+                    });
+                    if (sr.RoundTrip.Passed)
+                    {
+                        check.ProductionAfterReload = new ProductionPresenceProbe { Key = plan.Presence!.Key! };
+                        yield return new Guarded(InspectProductionPresence(check.ProductionAfterReload), ex =>
+                            check.ProductionAfterReload.Error = ex.Message);
+                    }
+                }
                 check.Evaluate();
                 TryWrite();
                 yield break;
@@ -918,7 +944,7 @@ namespace RRT.TestHarness
             if (!rt.Saved) { rt.SkipReason = "Game.SaveGame did not produce a file within " + plan.Timeouts.SaveSeconds + " s"; yield break; }
 
             var err = new Box<string?>(); var ms = new Box<double>(); var notIdle = new Box<string?>();
-            yield return LoadSave(info.FolderName, err, ms, notIdle);
+            yield return LoadSave(info.FolderName, err, ms, notIdle, setup: false);
             rt.LoadMs = ms.Value;
             rt.Reloaded = err.Value == null && notIdle.Value == null;
             if (!rt.Reloaded) { rt.SkipReason = "reload failed: " + (err.Value ?? notIdle.Value); yield break; }

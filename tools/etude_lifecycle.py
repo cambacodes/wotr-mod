@@ -273,8 +273,10 @@ def main():
     old = load(a.out) or {}
     for g, e in old.items():
         table.setdefault(g, e)
-    Path(a.out).write_text(json.dumps(dict(source="blueprints.zip + 18-ETUDE-BINDING-AUDIT rulings (tools/etude_lifecycle.py)",
-                                           etudes=table), indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    output = Path(a.out)
+    newline = "\r\n" if output.exists() and b"\r\n" in output.read_bytes() else "\n"
+    output.write_text(json.dumps(dict(source="blueprints.zip + 18-ETUDE-BINDING-AUDIT rulings (tools/etude_lifecycle.py)",
+                                           etudes=table), indent=1, sort_keys=True) + "\n", encoding="utf-8", newline=newline)
     rows, hard, warn = check(story, table)
     print("%d etude GUIDs classified -> %s; %d HARD, %d WARN" % (len(table), a.out, len(hard), len(warn)))
     for x in hard:

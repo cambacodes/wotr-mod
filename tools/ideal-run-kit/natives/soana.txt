@@ -1,0 +1,4 @@
+# Soana: Ch3 Wintersun "Deep-Rooted Derangement" resolved peacefully, Orso spared, Soana alive and never handed to Camellia
+soana.heard_creed:3      # Ch3 SoanaAfterBear: hear her creed (Cue_0012 "...a true protector is the one who sacrifices themselves")
+soana.old_defender:3     # Ch3 SoanaAfterBear (Orso alive): peaceful farewell, Cue_0042 starts Wintersun_OldDefender
+soana.after_quest:3      # Ch3: SoanaAfterQuest etude running (quest reported back; her after-quest dialog is the route's host)

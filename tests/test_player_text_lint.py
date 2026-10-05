@@ -14,6 +14,18 @@ class PlayerTextTests(unittest.TestCase):
         rows = lint.check(payload('{n}"Stay," you tell her.{/n}'))["review"]
         self.assertTrue(any(r["code"] == "embedded-commander-speech" and r["start"] >= 0 for r in rows))
 
+    def test_npc_questions_and_demands_are_not_commander_attributions(self):
+        for text in ('"What did you say?"', '"So before you say anything soft: she comes first."',
+                     '"Tomorrow at muster you say it again."', '"What will you tell him?"',
+                     '"First paragraph.\n"Then you say it again."'):
+            self.assertFalse(any(r['code'] == 'embedded-commander-speech'
+                                 for r in lint.check(payload(text))['review']), text)
+        for text in ('{n}"Stay," you tell her.{/n}', '{n}You say, "Stay."{/n}',
+                     '"Stay," you tell her.', '“Stay,” the Commander says.',
+                     '"Well?" {n}"Stay," you reply.{/n}'):
+            self.assertTrue(any(r['code'] == 'embedded-commander-speech'
+                                for r in lint.check(payload(text))['review']), text)
+
     def test_controls_and_exact_exception(self):
         for text in ('"Have you asked her?"', '"A native-born soldier wrote a draft order."',
                      '{n}He hands the captain her sword.{/n}', '{n}Commander, {mf|he|she} waits.{/n}'):

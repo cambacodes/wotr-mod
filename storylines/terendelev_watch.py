@@ -108,7 +108,7 @@ watch(P + "after.first_night", "The first night", '"You look as though you haven
     te("breakfast", '''"Breakfast." {n}Her brows go up.{/n} "I owe you a life and you want fried bread." {n}And then she is laughing, the laugh from the square, bright as a bell in cold air, so that the turnip men stop to stare.{/n} "There is a woman two streets over who fries it the way they did at the festival, with honey. I smelled it at the fourth bell and nearly wept. Very well, crusader. Breakfast. It is a start, and I shall decide later what it is the start of."''',
        c("[Go and find the woman with the honey.]")),
     te("owed", '''{n}She is quiet. The turnip men go on arguing. A child tugs at the hem of the borrowed cloak, and she puts a hand on his head without looking, and he goes away satisfied.{/n}
-"Yes," she says at last. "I do. I will pay it." {n}She stands and settles the cloak on her shoulders like armour.{/n} "A life is a large sum, and I would not like to pay it badly. Give me a little time to think how."''',
+"Yes," {n}she says at last.{/n} "I do. I will pay it." {n}She stands and settles the cloak on her shoulders like armour.{/n} "A life is a large sum, and I would not like to pay it badly. Give me a little time to think how."''',
        c("[Leave her to her sums.]")),
 ], requires=(), forbids=(FIRST_NIGHT,), delay=24)
 
@@ -372,13 +372,13 @@ watch(P + "night.watch", "The north turret", "[Climb to the north turret after t
     nar("cut", '''{n}"Careless," she says, like an order, with her hands spread flat on your back to hold you to her against the wind, and pulls you down the last inch.{/n}
 {n}The last thing the north turret sees of its watch is the cloak, the brazier's one red eye, and the pike leaning forgotten against the parapet.{/n}''',
         c("Continue", "grey")),
-    te("grey", '''{n}In the grey hour before the sixth bell she lies with her head on your chest and the cloak over you both, listening to the wound under her ear as if it were a heartbeat.{/n} "I have kept a great many watches," she says, very low. "I have never once been glad of the dark before. I was glad of this one." {n}Her fingers trace the edge of the dressing.{/n} "Do not tell the sentries. They would never respect me again."''',
+    te("grey", '''{n}In the grey hour before the sixth bell she lies with her head on your chest and the cloak over you both, listening to the wound under her ear as if it were a heartbeat.{/n} "I have kept a great many watches," {n}she says, very low.{/n} "I have never once been glad of the dark before. I was glad of this one." {n}Her fingers trace the edge of the dressing.{/n} "Do not tell the sentries. They would never respect me again."''',
        c('"Your secret\'s safe."', "morning"),
        c("[Pull the cloak up over her shoulders.]", "morning")),
     nar("morning", '''{n}The relief sentry comes up the stair at the sixth bell, coughing loudly and at length from the third step down.{/n}
 {n}By the time his helmet clears the top of the stair she is sitting against the parapet in her breeches and the borrowed cloak, and nothing else. Her shirt is gone. It is wound round your middle in long, very neat strips, knotted over the wound with a knot a sailor would envy.{/n}''',
         c("Continue", "sentry")),
-    te("sentry", '''"Nothing to report," {n}Terendelev tells the sentry gravely.{/n} "A quiet night. Carry on." {n}He salutes, and turns to the dark, and keeps his eyes very firmly on it. She leans her head back against the stone and closes her eyes.{/n} "Every morning," she says to you, low. "At this hour. With my own hands. Do not argue; it is in the oath."''',
+    te("sentry", '''"Nothing to report," {n}Terendelev tells the sentry gravely.{/n} "A quiet night. Carry on." {n}He salutes, and turns to the dark, and keeps his eyes very firmly on it. She leans her head back against the stone and closes her eyes.{/n} "Every morning," {n}she says to you, low.{/n} "At this hour. With my own hands. Do not argue; it is in the oath."''',
        c('"I wasn\'t going to argue."', "end"),
        c('"You\'ve run out of shirts."', "end")),
     te("end", '''{n}She opens one eye.{/n} "Then you will have to find me more. It is the least a Commander can do for the watch." {n}And she laughs, the bell of it carrying out over the cold roofs of Drezen, so that the sentry has to bite the inside of his cheek, and somewhere below in the lower town the two turnip men stop arguing to listen.{/n}''',
@@ -535,7 +535,7 @@ LISTENED = P + "watch.storyteller_thanked"
 watch(P + "watch.listener", "Someone was listening", '"The Storyteller asked me to tell you something."', [
     te("start", '''"The blind elf with the stories? I have seen him on the citadel steps. He turns his head when I pass, the way dogs do when they hear their name in another room." {n}She waits.{/n} "What did he ask you to tell me?"''',
        c('"That while you were in the dark, someone was listening. He heard your voice in his visions, for months."', "heard")),
-    te("heard", '''{n}She does not say anything at all for a while. The street goes by.{/n} "I thought I was alone," she says at last. "In the bones. I thought nobody could hear it. That was the worst of it, crusader, worse than the killing: that I was screaming and the world was going on as if I were not." {n}She stands.{/n} "Take me to him. Now, please, before I decide that it is undignified."''',
+    te("heard", '''{n}She does not say anything at all for a while. The street goes by.{/n} "I thought I was alone," {n}she says at last.{/n} "In the bones. I thought nobody could hear it. That was the worst of it, crusader, worse than the killing: that I was screaming and the world was going on as if I were not." {n}She stands.{/n} "Take me to him. Now, please, before I decide that it is undignified."''',
        c("[Take her to the Storyteller's shelves.]", "shelves")),
     nar("shelves", '''{n}The old elf is sitting where he always sits, among his books, with a cup gone cold at his elbow. He turns his head before either of you speaks, and his face changes, and he puts the cup down very carefully, as though he had been holding it for a long time.{/n}
 {n}Terendelev kneels down on the floor in front of him, in the dust, in her borrowed cloak, and takes both his hands in hers.{/n}''',
@@ -628,7 +628,7 @@ SCENES.append(scene(P + "watch.third_bell", "The third bell", "Terendelev", 5, "
     nar("hum", '''{n}You hum. It is very bad. She lifts her head to look at you in outraged disbelief, and then puts it back down on your knee and starts, very softly, to hum it with you, correctly, until you give up and let her have it.{/n}''',
         c("Continue", "sleep")),
     nar("sleep", '''{n}Somewhere after the fifth bell she falls asleep, with her head on your knee and one hand closed round your ankle, as though she were holding a post. Her breathing is slow and even and warm through the cloth. The fire burns low. You do not move.{/n}
-{n}In the grey before morning she wakes, sees where she is, and does not move either.{/n} "That was a whole night," she says, astonished, into your knee. "A whole night, and no hook."''',
+{n}In the grey before morning she wakes, sees where she is, and does not move either.{/n} "That was a whole night," {n}she says, astonished, into your knee.{/n} "A whole night, and no hook."''',
         c('"Any time you need a light."', "end", flags=(SAT_UP,)),
         c('[Flirt] "You\'re welcome in here any time. With or without the candle."', "end_flirt", flags=(SAT_UP,))),
     te("end", '''{n}She gets up, stiffly, and looks down at you in the chair.{/n} "That is a dangerous offer to make a dragon, crusader. We take things literally, and we come back." {n}At the door she stops.{/n} "Thank you. I will try the dark again tonight. Knowing where the light is may be enough."''',
@@ -660,7 +660,7 @@ watch(P + "watch.war_table", "The Wound's weather", '"You wanted to see the war 
        c("Continue", "blood")),
     te("quiet", '''{n}She looks up at you sharply, and then, slowly, begins to laugh.{/n} "Not where it is loud. Where it is holding its breath, because that is where the knife is." {n}She shakes her head.{/n} "Three centuries I stood between Kenabres and the Wound and never once thought to ask where the Wound was hiding. I only ever asked where it was coming from." {n}She puts her hand back on the map.{/n} "Very well. Every night, at the second bell. It will hurt. I do not mind, if it is used cleverly."''',
        c("Continue", "blood")),
-    nar("blood", '''{n}When she takes her hand off the map there is a single drop of blood on the parchment beside the ford, from her nose. She wipes her lip with the back of her wrist and looks at the drop with a kind of detached interest.{/n} "Your colour," she says. "I keep forgetting it is not mine."''',
+    nar("blood", '''{n}When she takes her hand off the map there is a single drop of blood on the parchment beside the ford, from her nose. She wipes her lip with the back of her wrist and looks at the drop with a kind of detached interest.{/n} "Your colour," {n}she says.{/n} "I keep forgetting it is not mine."''',
         c("[Give her your handkerchief.]")),
     te("no", '''{n}She looks at you across the map for the space of a breath, and something in her face you cannot read.{/n} "No. Not a map." {n}She takes her hand back.{/n} "Kenabres used me for one, you know. Every night for a hundred years: where are the demons, Terendelev, how many, how soon. I never minded. I was their dragon." {n}A pause.{/n} "It is a strange thing, to be told I am not something. I think I like it. I will tell the scouts what I felt tonight, all the same. Once. As a gift, not a duty."''',
        c("[Walk her out of the war room.]")),
@@ -685,7 +685,7 @@ watch(P + "watch.refugees", "The ribbon-seller", '"There\'s a crowd round your c
     te("decide", '''{n}She is silent a moment. Then she gets down off the crate, and kneels on the cobbles in front of the old woman so that their faces are level, and takes the tray of ribbons gently out of her lap, and chooses one. Blue.{/n} "You gave me the long end, every year, and charged me for the short one." {n}Her voice carries, a little, whether she means it to or not.{/n} "I always knew. I never said. It was worth the difference, to see you cheat a dragon."''',
        c("Continue", "crowd")),
     nar("crowd", '''{n}The old woman makes a sound you will remember for a long time. And the whole crowd moves, not closer, but lower: one after another, the people of Kenabres going down on their knees on the cobbles of Drezen, the way people used to kneel in the square when a silver shape went over the Wardstone at evening.{/n}
-{n}Terendelev looks at them all, and her face does something terrible and then steadies.{/n} "Get up," she says. "Get up, all of you. I am not your dragon any more. I am a woman on a crate who owes you a great deal, and I would like to start paying it. Who here has a roof that leaks?"''',
+{n}Terendelev looks at them all, and her face does something terrible and then steadies.{/n} "Get up," {n}she says.{/n} "Get up, all of you. I am not your dragon any more. I am a woman on a crate who owes you a great deal, and I would like to start paying it. Who here has a roof that leaks?"''',
         c("Continue", "after")),
     te("after", '''{n}Afterwards, when the crowd has gone off arguing about roofs, she sits back down on the crate with the blue ribbon wound round and round her fingers.{/n} "That was either very brave or very foolish. I told them. It is done." {n}She looks at the ribbon.{/n} "They will want too much of me, and I will give it to them anyway, and in a month I will be more tired than I was in the bones. And every one of them will have a dry roof." {n}She ties the ribbon round her wrist.{/n} "I think I was lonely, crusader. I did not know it until she said my hand."''',
        c("[Sit down on the cobbles beside her crate.]", flags=(KNOWN,))),
@@ -751,7 +751,7 @@ SCENES.append(scene(P + "watch.at_the_gate", "At the gate", "Terendelev", 5, "",
     nar("start", '''{n}You come down into the citadel yard at dusk after a day of councils and drill, and some time in the afternoon the old wound in your side, the one she keeps dressed, opened under your coat without your noticing. You notice now: the shirt is stuck to it.{/n}
 {n}She is standing at the foot of the stair. She has been standing there, the stair-sentry tells you later, since a clerk mentioned on the turret that the Commander had been seen at the council table with a hand pressed to one side, which was the middle of the afternoon.{/n}''',
         c("Continue", "look")),
-    te("look", '''{n}She looks at your arm. She looks at the dark wet patch spreading over your side where the dressing has given up. She takes one very long breath, and it smokes in the torchlight.{/n} "Sit down on that step," says Terendelev, "before you fall down it, and then I will decide whether to heal you or to kill you."''',
+    te("look", '''{n}She looks at your arm. She looks at the dark wet patch spreading over your side where the dressing has given up. She takes one very long breath, and it smokes in the torchlight.{/n} "Sit down on that step," {n}says Terendelev,{/n} "before you fall down it, and then I will decide whether to heal you or to kill you."''',
        c('"It\'s a scratch."', "scratch"),
        c("[Sit down on the step.]", "down")),
     te("scratch", '''"It is not a scratch. I can smell it from here, and so can every dog in the lower town." {n}She takes hold of your belt and sits you down on the step herself, not gently, and catches you when your knees go.{/n} "You have a hole in you that I made a promise over, crusader. You do not get to carry it into a council and sit on it all afternoon like this."''',
@@ -770,7 +770,7 @@ SCENES.append(scene(P + "watch.at_the_gate", "At the gate", "Terendelev", 5, "",
     te("sorry", '''"You did not think. No." {n}The anger goes out of her all at once, like a held breath.{/n} "You never do, when it is your own skin. You thought a great deal at Iz, with a knife in your hand and my bones in the fire. You are very careful with everyone but yourself." {n}She pins the dressing.{/n} "I know that kind of creature. I was one. Somebody had to stand at the mouth of a cave for a year before I learned better."''',
        c("[Let her help you up.]")),
     te("hand", '''{n}She lets you. Her hand is shaking; you did not know dragons' hands could shake. She stands on the stair with your hand around hers and the whole yard crossing past pretending not to see, and does not say anything at all until the last of them has gone in.{/n}
-"Three hours," she says finally, very low. "Come inside. You are getting blood on the only coat that fits me."''',
+"Three hours," {n}she says finally, very low.{/n} "Come inside. You are getting blood on the only coat that fits me."''',
        c("[Go inside with her.]")),
 ], requires=("trickster.ever", RETURNED, FIRST_NIGHT, DRESSING), forbids=(CLOSED, AEON), delay=60, last=5, Relationship=REL, Chapters=[5],
     Remote=True, Kind="visit", ManualOnly=True, Areas=[DREZEN]))
@@ -809,7 +809,7 @@ watch(P + "watch.scales", "The silver that stayed", '"You\'re wearing your shirt
        c("[Touch it.]", "touch")),
     te("hurt", '''"No. It itches, rather, the way new skin itches." {n}She lets the shirt fall back.{/n} "It came up again this morning, while I was changing your dressing, and it stayed. There is a little down my spine as well, I think; I cannot see it. The sentries on the north turret have been very careful not to look."''',
        c("Continue", "hope")),
-    nar("touch", '''{n}The scales are cool under your fingertips, and smooth, and you feel her pulse jump underneath them. She does not move away. After a moment she puts her own hand over yours and holds it there, flat against the silver.{/n} "It came up while I was changing your dressing this morning," she says, "and it stayed."''',
+    nar("touch", '''{n}The scales are cool under your fingertips, and smooth, and you feel her pulse jump underneath them. She does not move away. After a moment she puts her own hand over yours and holds it there, flat against the silver.{/n} "It came up while I was changing your dressing this morning," {n}she says,{/n} "and it stayed."''',
         c("Continue", "hope")),
     te("hope", '''"I do not know what it means." {n}She says it carefully, like a woman stepping onto ice.{/n} "I tried the shape again, afterwards, on the turret. Nothing, as always. But something is coming back, crusader, a little at a time, from wherever it went. Or something new is growing where the old thing was. I cannot tell which." {n}Her mouth quirks.{/n} "I have decided not to hope about it. I am hoping about it very much."''',
        c('"Then I\'ll hope for both of us, so you don\'t have to."', "end", flags=(SCALES,)),
@@ -876,7 +876,7 @@ SCENES.append(scene(P + "watch.road", "The road out of Iz", "Terendelev", 5, "",
     nar("look", '''{n}And the whole crusade is looking, in its way: the knights and the sergeants and the walking wounded, turning in their saddles or on their crutches to see the silver-haired woman who came out of the fire. Some of them make the sign of the Inheritor as she passes. One spits. Most only look, the way people look at a comet, as though she might be a sign of something and they have not decided what.{/n}
 {n}She sees it all. She sits her horse badly and very straight, and looks back at every one of them.{/n}''',
         c("Continue", "sky")),
-    te("sky", '''{n}Later, when the column halts to water the horses and she has got down, with some difficulty and more dignity, she stands at the edge of the road looking back at Iz and the sky over it.{/n} "I used to fly over this," she says. "Not here; further east, at the edge of the Wound, when I was young and the crusades were new. From up there it looked like a burn on the world. From down here it looks like the whole world." {n}She is quiet.{/n} "I did not know that. I should have. It would have made me humbler."''',
+    te("sky", '''{n}Later, when the column halts to water the horses and she has got down, with some difficulty and more dignity, she stands at the edge of the road looking back at Iz and the sky over it.{/n} "I used to fly over this," {n}she says.{/n} "Not here; further east, at the edge of the Wound, when I was young and the crusades were new. From up there it looked like a burn on the world. From down here it looks like the whole world." {n}She is quiet.{/n} "I did not know that. I should have. It would have made me humbler."''',
        c('"You were kind enough. You knelt on the cobbles for a stranger."', "kind"),
        c('"You\'ll get used to it. We all do."', "used")),
     te("kind", '''"I knelt on the cobbles for strangers for three hundred years, and I loved every one of them, crusader. I never once regretted them." {n}Not bitterly; only exactly.{/n} "But I loved them the way a dragon loves a city: from above, all at once, with the whole of it in view. Now I am down among them with no wings, and I have to love them one door at a time, and knock, and wait to be let in. I should like to learn how. I think it is harder."''',

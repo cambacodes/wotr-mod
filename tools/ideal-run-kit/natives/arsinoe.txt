@@ -1,0 +1,3 @@
+# Arsinoe: no loss keys. Both keys are progress keys the sim already turns on; listed for the guide.
+arsinoe.capital:3          # Arsinoe_Capital: she stands at her Drezen stall whenever Drezen is open (Ch3, Ch5)
+council.cauldron_given:5   # Council 5-1 Cue_0041 (Shyka hands over the soul cauldron, EmptySyphon) - Trickster Ch5 Council meeting

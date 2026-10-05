@@ -31,7 +31,7 @@ An itinerant broker named Salven offers safe passage for letters to the Lady in 
 Your clerk Neris has held it back from the incoming petitioners. She asks whether the seal is yours.
 It resembles the outward face of the divided wax. The central line is wrong. Somebody has seen enough of a request to sell an imitation, and too little to make one answer.
 You lay the false guarantee beside your own half. When Nocticula's answering stroke appears, you copy Salven's wording onto the permitted sheet. You do not place the unfamiliar seal against hers.{/n}
-"If you are selling introductions," she writes, "I expect a better description. This makes me sound like an office with inconvenient hours."
+"If you are selling introductions," {n}she writes,{/n} "I expect a better description. This makes me sound like an office with inconvenient hours."
 "Would you prefer expensive ones?"
 "I would prefer the money. Why have you sent me an advertisement instead?"
 "Because he is selling your brother's promise of access with my name underneath it. I want to discover who buys it before somebody takes a false invitation seriously."
@@ -44,55 +44,55 @@ You lay the false guarantee beside your own half. When Nocticula's answering str
          c('The letter travelled as a closed packet. The outside could have been copied.', "letters", requires=f("channel_letters_only"), forbids=f("channel_exposed")),
          c('The failed aperture exposed more. You already hold the sketch and the marked shavings.', "exposed", requires=f("channel_letters_only", "channel_exposed", "channel_repaired", "sketch_surrendered"))),
     page("narrow", "Nocticula", '''"Then do not flatter the counterfeit by making it a successful intrusion. Your half has an outside. You have carried it through a fortress full of people who can remember a shape."
-You ask whether she thinks the broker knows anything useful.
+{n}You ask whether she thinks the broker knows anything useful.{/n}
 "He knows somebody will pay before asking whether he does. That is usually enough to begin a career."
 "And end one?"
 "You are asking me to become optimistic about your clerks. Show me the paper."''', c('Copy the guarantee without supplying the missing line.', "offer")),
     page("letters", "Nocticula", '''"A closed letter is an excellent precaution against somebody reading its contents. Against somebody selling its existence, it is less distinguished."
 "He still cannot reach you."
 "He does not need to. He needs his customer to fear that he can. A remarkably economical use of me."
-Her next instruction is brief: keep the wrapping. Someone who copies only a seal may be a liar; someone who copies the fold has handled the packet.
-You ask whether she wants the original.
+{n}Her next instruction is brief: keep the wrapping. Someone who copies only a seal may be a liar; someone who copies the fold has handled the packet.{/n}
+{n}You ask whether she wants the original.{/n}
 "I want you to discover which before you help him improve his work."''', c('Compare the wrapper and copy the guarantee.', "offer")),
     page("exposed", "Nocticula", '''"The opening you spoiled is still closed. Do not reopen it to reassure yourself."
 "I have not."
 "Good. I dislike paying twice for the same stupidity, particularly when I paid in attention."
-You describe the second light again, then stop. It had no face, voice or mark that identifies this broker.
-"That is the useful part of your answer," she writes. "You have an enemy small enough to investigate. Do not improve him into an unknowable one."
-She retains the surrendered sketch. You cannot test a copy of its inner stroke against the counterfeit without asking her to perform that comparison.
-You ask. Her answer arrives after a long enough pause to remind you who now possesses the original construction.
+{n}You describe the second light again, then stop. It had no face, voice or mark that identifies this broker.{/n}
+"That is the useful part of your answer," {n}she writes.{/n} "You have an enemy small enough to investigate. Do not improve him into an unknowable one."
+{n}She retains the surrendered sketch. You cannot test a copy of its inner stroke against the counterfeit without asking her to perform that comparison.{/n}
+{n}You ask. Her answer arrives after a long enough pause to remind you who now possesses the original construction.{/n}
 "It is not that stroke. Keep looking."''', c('Keep the old exposure on record without claiming it identifies Salven.', "offer")),
-    page("offer", "Commander", '''You propose sending a reply that appears to accept one purchased introduction. Salven will have to name where he expects a petition to be delivered. Neris can attend his advertised collection point in Drezen with a closed packet, soldiers close enough to hear her call.
-Nocticula wants to know what is in the packet.
+    page("offer", "Commander", '''{n}You propose sending a reply that appears to accept one purchased introduction. Salven will have to name where he expects a petition to be delivered. Neris can attend his advertised collection point in Drezen with a closed packet, soldiers close enough to hear her call.{/n}
+{n}Nocticula wants to know what is in the packet.{/n}
 "A request from a man who thinks you will enjoy hearing how easily he purchased your attention."
 "You have a model close at hand."
 "I was going to sign it."
-The next line forms more slowly.
+{n}The next line forms more slowly.{/n}
 "Then he will learn that you are investigating him."
 "After he has supplied the delivery instructions. Before that, I offer a seller the possibility of a better customer."
 "Better in which sense?"
 "More expensive to disappoint."
-You offer a further concession. If she supplies an outer mark which her actual servants recognize as false, you will let her keep a signed undertaking naming your part in the investigation. It will prove your involvement if the affair later becomes inconvenient. Anyone selling Council protection will have to account for your recorded cooperation with the woman his guarantee claims to reach.
-She will gain a record you cannot dismiss as an anonymous forgery. You will gain a way to distinguish a bought promise from a reply she actually chose to send.''',
+{n}You offer a further concession. If she supplies an outer mark which her actual servants recognize as false, you will let her keep a signed undertaking naming your part in the investigation. It will prove your involvement if the affair later becomes inconvenient. Anyone selling Council protection will have to account for your recorded cooperation with the woman his guarantee claims to reach.{/n}
+{n}She will gain a record you cannot dismiss as an anonymous forgery. You will gain a way to distinguish a bought promise from a reply she actually chose to send.{/n}''',
          c('[Good] Use the bait once, then publish a denial and destroy the reusable pattern. People who bought protection should hear the truth.', "public", flags=f("concession_public")),
          c('[Evil] Keep the buyers out of the proclamation. Take control of the forwarding arrangement and share its reports with you.', "network", flags=f("concession_network")),
          c('I will not put my name in your keeping for this. End our private correspondence.', "withdraw", flags=f("closed"))),
     page("public", "Nocticula", '''"You would rather embarrass the purchasers than own them."
 "I would rather stop selling them a danger they cannot recognize."
 "There is no need to make that sound unprofitable. Some will be grateful. Some will insist you have destroyed an excellent investment. You may enjoy learning which are richer."
-She draws an outer flourish around a blank space. It resembles a careless hand imitating her patience.
+{n}She draws an outer flourish around a blank space. It resembles a careless hand imitating her patience.{/n}
 "Copy this. Once. I shall recognize it, and so will the servants to whom I choose to show it. It gives you no audience with anyone else."
-You copy it onto the bait letter. She asks you to send the signed undertaking through your own answering mark first. Its lines fade from your sheet one after another, leaving their pressure in the paper.
-You have not been promised another evening in return.''', c('Let her retain the undertaking and prepare the single bait letter.', flags=f("borrowed_signature_done", "undertaking_held"))),
+{n}You copy it onto the bait letter. She asks you to send the signed undertaking through your own answering mark first. Its lines fade from your sheet one after another, leaving their pressure in the paper.{/n}
+{n}You have not been promised another evening in return.{/n}''', c('Let her retain the undertaking and prepare the single bait letter.', flags=f("borrowed_signature_done", "undertaking_held"))),
     page("network", "Nocticula", '''"You propose to become a more reliable version of the man you are investigating."
 "Reliability is a neglected advantage in his trade."
 "What would you forward?"
 "An address and an offer. No seal would guarantee your answer. People could still pay me to make certain you received the question."
 "And I should thank you for appointing yourself between me and people who might interest me?"
-You revise the proposal. Every forwarded petition gets copied to her mark before you decide whether to answer its sender. You cannot quietly keep the profitable ones for yourself.
-She leaves the page blank until you write that limitation in your own hand.
+{n}You revise the proposal. Every forwarded petition gets copied to her mark before you decide whether to answer its sender. You cannot quietly keep the profitable ones for yourself.{/n}
+{n}She leaves the page blank until you write that limitation in your own hand.{/n}
 "There. Now you have offered something. Keep a copy of your greed. It will help us identify it when you later give it a more diplomatic name."
-Her false flourish arrives beneath your signature. She takes the undertaking through the answering mark and leaves you the pattern for the bait.''', c('Accept the copied-report obligation and prepare the bait.', flags=f("borrowed_signature_done", "undertaking_held", "reports_owed"))),
+{n}Her false flourish arrives beneath your signature. She takes the undertaking through the answering mark and leaves you the pattern for the bait.{/n}''', c('Accept the copied-report obligation and prepare the bait.', flags=f("borrowed_signature_done", "undertaking_held", "reports_owed"))),
     page("withdraw", "Narrator", '''{n}You write that she will receive no further private requests. The answering line pulls free of the wax. It leaves the old break visible beneath it.
 Neris still needs instructions about Salven. You send for her and put the false guarantee where an ordinary clerk can read it. Nothing about ending the correspondence makes the forgery disappear.{/n}''', c('Take the forgery back to your officers.')),
 ])
@@ -108,21 +108,21 @@ Nocticula's mark waits in a sheet beside the papers. You have copied the address
          c('[Knowledge: World 35] Separate the copied date from the merchant\'s own hand before anyone questions him.', flags=f("address_check_tried"), forbids=f("address_check_tried"), check=dict(Skill="SkillKnowledgeWorld", DC=35, Success="read", Failure="mistake", CommanderOnly=True)),
          c('Have the gate clerk compare his own entry and send the officers with Neris. Let the inquiry be visible.', "open", flags=f("inquiry_visible")),
          c('Close the private channel and let the officers finish the investigation without her.', "withdraw", flags=f("closed"))),
-    page("read", "Commander", '''The old date belongs to the form beneath the signature. The merchant added the day of arrival in the margin, then scratched it out when it contradicted the guarantee he was copying.
-You send the officers to hold the room while Neris asks the bathhouse keeper for that day's rental account. The keeper produces it before the merchant can send his assistant away. The three letters lie beside a brazier, their wrappers marked with the counterfoil's delivery numbers.
-The assistant has a list of three buyers sewn inside his sleeve. He agrees to unpick it after Neris asks whether he prefers a seamstress or a soldier to perform the operation.
-Salven is gone. The merchant is still here, with the payments and the letters he promised to forward. Your officers seal the room while its owner counts the money in their presence.
-Nocticula's reply appears as you finish recording the names.
+    page("read", "Commander", '''{n}The old date belongs to the form beneath the signature. The merchant added the day of arrival in the margin, then scratched it out when it contradicted the guarantee he was copying.{/n}
+{n}You send the officers to hold the room while Neris asks the bathhouse keeper for that day's rental account. The keeper produces it before the merchant can send his assistant away. The three letters lie beside a brazier, their wrappers marked with the counterfoil's delivery numbers.{/n}
+{n}The assistant has a list of three buyers sewn inside his sleeve. He agrees to unpick it after Neris asks whether he prefers a seamstress or a soldier to perform the operation.{/n}
+{n}Salven is gone. The merchant is still here, with the payments and the letters he promised to forward. Your officers seal the room while its owner counts the money in their presence.{/n}
+{n}Nocticula's reply appears as you finish recording the names.{/n}
 "An address which leads to a person. You should send my brother the method. He has always preferred the reverse."''', c('Account for the held letters and identified buyers.', "decision", flags=f("buyers_identified", "merchant_held"))),
     page("mistake", "Narrator", '''{n}You take the copied date for the day of sale and send an inquiry naming the wrong day. Neris carries both papers back to the gate clerk to challenge the discrepancy. He checks his original book, then points out that the crossed-out margin belongs to a different hand. By the time she returns with the correction, your inquiry has reached the bathhouse.
 The merchant tries to leave with the payments. Your officers catch him at the back stair. His assistant gets away with the list of buyers, and the three letters burn in a brazier before Neris can put out the coals.
 She saves one torn wrapper. Its writer will need to be found through the public noticeboard, which will also tell Salven that the investigation has followed his delivery address.
 You send Nocticula the corrected date and the burned wrapper's description. Her answer leaves the error where you put it.{/n}
 "You may keep the ingenious explanation. I shall keep the fact that he had time to burn the names. What will you offer the people you can no longer warn privately?"''', c('Post a notice for the missing buyers and record the lost names.', "decision", flags=f("buyers_unknown", "merchant_held", "inquiry_visible", "salven_warned", "wrapper_recovered"))),
-    page("open", "Commander", '''The clerk recognizes his own abbreviated date. He is less interested in proving that you could have recognized it than in finding the person who has copied his office's hand.
-He goes with Neris. The merchant hears the inquiry coming and reaches the stairs with his money; the soldiers there turn him back. His assistant escapes from a window onto the bathhouse roof. By the time the room is opened, the letters and buyers' list are burning. Neris pulls one torn wrapper out with a fire iron before its edges collapse. The address has burned away, but a red knot and part of a delivery number survive.
-You have the merchant and his payments. You do not have a private means to warn every buyer. Neris writes a notice describing the guarantee without reproducing its seal.
-Nocticula reads your account and asks whether the visible inquiry was deliberate.
+    page("open", "Commander", '''{n}The clerk recognizes his own abbreviated date. He is less interested in proving that you could have recognized it than in finding the person who has copied his office's hand.{/n}
+{n}He goes with Neris. The merchant hears the inquiry coming and reaches the stairs with his money; the soldiers there turn him back. His assistant escapes from a window onto the bathhouse roof. By the time the room is opened, the letters and buyers' list are burning. Neris pulls one torn wrapper out with a fire iron before its edges collapse. The address has burned away, but a red knot and part of a delivery number survive.{/n}
+{n}You have the merchant and his payments. You do not have a private means to warn every buyer. Neris writes a notice describing the guarantee without reproducing its seal.{/n}
+{n}Nocticula reads your account and asks whether the visible inquiry was deliberate.{/n}
 "I preferred the clerk who knew his own book to a guess which sounded clever."
 "He seems to have been worth consulting. Ask him whom the merchant paid for the room. Men often remember an unpaid week more accurately than a face."''', c('Post the notice and record that the assistant escaped with warning.', "decision", flags=f("buyers_unknown", "merchant_held", "salven_warned", "wrapper_recovered"))),
     page("decision", "Nocticula", '''"Now decide what your signature was worth."
@@ -139,14 +139,14 @@ She has not returned her original.
 "I kept the address that answers."
 "For the moment."
 You leave her qualification where it is and sign. The copy darkens beneath your hand. Somewhere beyond the paper, she receives the proof that you surrendered the instrument instead of using it a second time.{/n}''', c('Keep the restitution account and relinquish the reusable pattern.', flags=f("the_paid_address_done", "concession_delivered", "pattern_destroyed", "restitution_reserved"))),
-    page("network", "Commander", '''The merchant supplies two forwarding contacts. One address is empty when your officers reach it; the other belongs to a woman who copies advertisements and has kept his unpaid bill. She gives Neris the original wording for her claim against his seized funds.
-Your new arrangement begins with a creditor, a room and a man who will lie when it becomes profitable. You write those limitations into the first report to Nocticula.
-"You omitted the most troublesome proprietor," she answers.
-You add your own name.
+    page("network", "Commander", '''{n}The merchant supplies two forwarding contacts. One address is empty when your officers reach it; the other belongs to a woman who copies advertisements and has kept his unpaid bill. She gives Neris the original wording for her claim against his seized funds.{/n}
+{n}Your new arrangement begins with a creditor, a room and a man who will lie when it becomes profitable. You write those limitations into the first report to Nocticula.{/n}
+"You omitted the most troublesome proprietor," {n}she answers.{/n}
+{n}You add your own name.{/n}
 "Better."
-Neris prepares a different notice: an office that receives requests, and a keeper who copies every one before she refuses it. Nocticula reads the copies. Nobody who writes to that office is told so.
-Nocticula receives the first ledger page before you close the room for the night. It contains the merchant's account and your correction of it. She now knows which contacts you obtained and which escaped.
-The false flourish stays in a sealed drawer. Using it outside this one forwarding arrangement would contradict the signed undertaking she holds.''', c('Retain the limited pattern and give her the first required report.', flags=f("the_paid_address_done", "concession_delivered", "pattern_retained", "first_report_delivered"))),
+{n}Neris prepares a different notice: an office that receives requests, and a keeper who copies every one before she refuses it. Nocticula reads the copies. Nobody who writes to that office is told so.{/n}
+{n}Nocticula receives the first ledger page before you close the room for the night. It contains the merchant's account and your correction of it. She now knows which contacts you obtained and which escaped.{/n}
+{n}The false flourish stays in a sealed drawer. Using it outside this one forwarding arrangement would contradict the signed undertaking she holds.{/n}''', c('Retain the limited pattern and give her the first required report.', flags=f("the_paid_address_done", "concession_delivered", "pattern_retained", "first_report_delivered"))),
     page("withdraw", "Narrator", '''{n}You tell Nocticula that the remaining inquiries will go through your officers. Her answering mark lifts from the paper.
 "Keep your undertaking," she writes before the last line vanishes. "I have mine."
 The correspondence ends. The signature you gave her does not follow it out of the world.{/n}''', c('Close the channel. She keeps your signature.')),
@@ -165,44 +165,44 @@ add("the_retained_copy", "The copy she keeps", "the_paid_address_done", [
          c('Read her answer about the buyers whose names you recovered.', "known", requires=f("buyers_identified")),
          c('Read her answer about the buyers who must identify themselves publicly.', "unknown", requires=f("buyers_unknown", "wrapper_recovered"))),
     page("known", "Nocticula", '''"The first buyer wanted his daughter's letter delivered. He did not ask what she had written. The second wanted a rival denounced. The third wanted to learn which answer the second would receive."
-These are the accounts Neris obtained from the three people on the saved list. Nocticula has reordered them.
-"You have put the most innocent first," you write.
+{n}These are the accounts Neris obtained from the three people on the saved list. Nocticula has reordered them.{/n}
+"You have put the most innocent first," {n}you write.{/n}
 "I have put the man who knows least first. You may decide whether that improves him."
-Neris has warned them individually. The daughter keeps her letter. The two rivals must conduct the next stage of their dispute without claiming that a demon lord has already selected a favorite.
-Nocticula asks whether you regret losing their expectations before discovering what they would pay to keep them.
-You tell her she received your answer in the report.
+{n}Neris has warned them individually. The daughter keeps her letter. The two rivals must conduct the next stage of their dispute without claiming that a demon lord has already selected a favorite.{/n}
+{n}Nocticula asks whether you regret losing their expectations before discovering what they would pay to keep them.{/n}
+{n}You tell her she received your answer in the report.{/n}
 "I received what you did. I was asking whether you enjoyed doing it."''', c('Answer her about the bargain you actually carried out.', "bargain")),
     page("unknown", "Nocticula", '''"Two people have answered the notice. The merchant claims he recognizes one. She claims he never saw her face. An unfortunate distinction for the people holding the money."
-Neris has not paid either claim yet. She is comparing the torn wrapper with the descriptions they supplied. The assistant remains missing, and Salven will have heard which address you found.
-"You are not going to tell me that all the money returned to its owners," Nocticula writes.
+{n}Neris has not paid either claim yet. She is comparing the torn wrapper with the descriptions they supplied. The assistant remains missing, and Salven will have heard which address you found.{/n}
+"You are not going to tell me that all the money returned to its owners," {n}Nocticula writes.{/n}
 "Not until it does."
 "Then keep sending that account. A finished story would be less useful than this unfinished one."
-You had expected mockery. The instruction is worse in a more practical way: she will know if a later report quietly forgets the people you could not find.
-You leave their claims open in the ledger. The clerk has work for another morning, whether or not tonight's letter becomes pleasant.''', c('Keep the missing buyers and escaped assistant in the account.', "bargain")),
-    page("bargain", "Commander", '''You turn her question back on her. She could have denounced a copied flourish through any servant able to hold a pen. Why ask you to spend days pursuing a broker?
+{n}You had expected mockery. The instruction is worse in a more practical way: she will know if a later report quietly forgets the people you could not find.{/n}
+{n}You leave their claims open in the ledger. The clerk has work for another morning, whether or not tonight's letter becomes pleasant.{/n}''', c('Keep the missing buyers and escaped assistant in the account.', "bargain")),
+    page("bargain", "Commander", '''{n}You turn her question back on her. She could have denounced a copied flourish through any servant able to hold a pen. Why ask you to spend days pursuing a broker?{/n}
 "Because you asked for my company and offered your ingenuity. I wished to discover whether either survived an inconvenient task."
 "And because you now possess a signed undertaking that links my name to yours."
 "You did read it before signing."
 "I am trying to discover whether you enjoyed receiving it."
-The answering stroke pauses halfway through a curve.
+{n}The answering stroke pauses halfway through a curve.{/n}
 "A little. You made an excellent show of noticing the price before paying it."
-You can almost hear the smile. It is irritating how readily your memory supplies what the sheet withholds.''',
+{n}You can almost hear the smile. It is irritating how readily your memory supplies what the sheet withholds.{/n}''',
          c('I chose to end the fraud. You can use my signature to embarrass me, but you cannot make that choice yours.', "honesty", requires=f("pattern_destroyed", "restitution_reserved")),
          c('I kept a useful trade and gave you a view into it. We can both want the advantage without pretending the other is harmless.', "profit", requires=f("pattern_retained", "first_report_delivered"))),
     page("honesty", "Nocticula", '''"You imagine I need to own a choice to enjoy what it costs you."
 "I imagine you enjoy letting people wonder."
 "Often. You have deprived me of several agreeable minutes by saying it so promptly."
-She encloses a copy of the false guarantee with its central line struck through. You had sent her the wording; she has returned it with your title replaced by Salven's own name.
+{n}She encloses a copy of the false guarantee with its central line struck through. You had sent her the wording; she has returned it with your title replaced by Salven's own name.{/n}
 "For your noticeboard. Let the guarantee promise that he will intercede with himself. It may finally describe a service he can provide."
-You laugh before finishing the page. Her next line is already forming.
+{n}You laugh before finishing the page. Her next line is already forming.{/n}
 "There. Your gratitude has become less laborious. Keep it that way."
-You set the corrected advertisement beside Neris's ledger. The pattern is gone, and the joke does not require you to recover it.''', c('Send the corrected advertisement to Neris and return to the private letter.', "history")),
+{n}You set the corrected advertisement beside Neris's ledger. The pattern is gone, and the joke does not require you to recover it.{/n}''', c('Send the corrected advertisement to Neris and return to the private letter.', "history")),
     page("profit", "Nocticula", '''"Harmless would be a poor recommendation for either of us. I prefer to know which appetites can be given useful employment."
 "You have employed mine for the price of reading a ledger."
 "You have acquired a business for the price of admitting I may read it. We can quarrel about who was cheated after it produces something worth stealing."
-She asks for one amendment. Neris is to mark blank reports as blank, not omit them. Otherwise a silence could conceal a profitable refusal.
-You write the instruction while the answering stroke waits.
-"You are very pleased with that," you tell her.
+{n}She asks for one amendment. Neris is to mark blank reports as blank, not omit them. Otherwise a silence could conceal a profitable refusal.{/n}
+{n}You write the instruction while the answering stroke waits.{/n}
+"You are very pleased with that," {n}you tell her.{/n}
 "With the amendment? Moderately. With your expression, considerably more."
 "You cannot see it."
 "Then you have no reason to change it."''', c('Record that even an empty reporting period needs an answer.', "history", flags=f("blank_reports_owed"))),
@@ -214,26 +214,26 @@ You write the instruction while the answering stroke waits.
     page("rejected", "Nocticula", '''"You refused the first offer. You seem determined to make me admire it."
 "I want you to understand why this answer would be different."
 "Then give a different answer. Rehearsing the refusal has not made it more fascinating."
-You cross out the next sentence, which had begun with an explanation she has already heard. Beneath it you write that you enjoy wanting something from her which she has not yet decided to give.
-"A dangerous taste," she replies. "You will find me exceedingly accomplished at prolonging it."
+{n}You cross out the next sentence, which had begun with an explanation she has already heard. Beneath it you write that you enjoy wanting something from her which she has not yet decided to give.{/n}
+"A dangerous taste," {n}she replies.{/n} "You will find me exceedingly accomplished at prolonging it."
 "I have noticed."
-She leaves those words unanswered for several breaths before adding a small correction to your canceled sentence. Even your discarded defense, apparently, could have been better.''', c('Leave the old refusal intact and ask for a new invitation.', "end")),
+{n}She leaves those words unanswered for several breaths before adding a small correction to your canceled sentence. Even your discarded defense, apparently, could have been better.{/n}''', c('Leave the old refusal intact and ask for a new invitation.', "end")),
     page("patronage", "Nocticula", '''"I have not misplaced our earlier terms. Neither should you."
 "This would not settle them."
 "No. Nor purchase another gift, nor make my patience with your experiments inexhaustible."
-You write that you are asking for her attention, not a favorable entry in an account. If she wants an answer about your ambition, she will have to hear something she may dislike.
+{n}You write that you are asking for her attention, not a favorable entry in an account. If she wants an answer about your ambition, she will have to hear something she may dislike.{/n}
 "I have heard you before. That danger is not new."
 "Then you should know whether you miss it."
-The answering stroke goes still. When it moves again, it crosses out the word should.
-"You may ask," she writes. "Try to remember how that differs from supplying my reply."
-You rewrite the question. She keeps both versions.''', c('Keep the earlier bargain separate and let her answer the personal question.', "end")),
+{n}The answering stroke goes still. When it moves again, it crosses out the word should.{/n}
+"You may ask," {n}she writes.{/n} "Try to remember how that differs from supplying my reply."
+{n}You rewrite the question. She keeps both versions.{/n}''', c('Keep the earlier bargain separate and let her answer the personal question.', "end")),
     page("missed", "Nocticula", '''"You have no shared night to invoke, so you invoke a broker and a clerk. An original courtship."
 "Would an invented night improve it?"
 "It would improve my opinion of your imagination. Briefly."
-You tell her you would like to discover which of her silences mean she is bored and which mean she is deciding how to make your next sentence expensive.
+{n}You tell her you would like to discover which of her silences mean she is bored and which mean she is deciding how to make your next sentence expensive.{/n}
 "And what will you do with that distinction?"
 "Risk a better sentence."
-She writes nothing for long enough that you start considering several. Then a single line arrives.
+{n}She writes nothing for long enough that you start considering several. Then a single line arrives.{/n}
 "Keep one. I may ask to hear it."''', c('Wait for an actual invitation.', "end")),
     page("end", "Narrator", '''{n}The last page carries a time: after the following evening's reports. Nocticula asks you to put aside a clean sheet and leave the business ledger closed unless you have something urgent to tell her.
 You write that the city may provide something urgent without asking either of you.
@@ -258,11 +258,11 @@ add("an_answer_of_her_own", "An answer of her own", "the_retained_copy_done", [
     page("terms", "Nocticula", '''"They will cost you waiting. Send me a request through the mark when you want me. I shall answer the ones that amuse me, and leave the rest lying on your desk until you are ashamed of them. Come knocking at my door uninvited, asleep or awake, and you will learn what I keep in the rooms I do not show guests."
 "And other company?"
 "Keep it interesting enough that you do not arrive here to complain about it. I am not offering to become the occupation of every hour you possess."
-You ask whether she expects names.
+{n}You ask whether she expects names.{/n}
 "When somebody is involved in the business you bring me, I expect the name, spelled correctly. When you wish to make me jealous, choose a less predictable amusement."
 "I was considering whether you would insist on exclusivity."
 "I insist that whatever you send me is worth my time. You will find that work enough for one mortal."
-She presses the mark into the wax once more, harder, the way a seal-ring is pressed into a debtor's letter. She still holds your signed undertaking, and she lets you watch her fold it away somewhere you will never see.''',
+{n}She presses the mark into the wax once more, harder, the way a seal-ring is pressed into a debtor's letter. She still holds your signed undertaking, and she lets you watch her fold it away somewhere you will never see.{/n}''',
          c('Ask what the narrow fold permits now.', "narrow", requires=f("channel_provisional"), forbids=f("channel_letters_only")),
          c('Keep the repaired or written channel limited to the letters already agreed.', "letters", requires=f("channel_letters_only"))),
     page("narrow", "Nocticula", '''"It permits you to ask before turning it."
@@ -277,24 +277,24 @@ She presses the mark into the wax once more, harder, the way a seal-ring is pres
     page("letters", "Nocticula", '''"Letters, then. No window because an evening has become personal."
 "You will have to imagine my expression."
 "I have been doing quite well. You will have to become less predictable if you wish to keep that privilege."
-You ask whether she dislikes being imagined.
+{n}You ask whether she dislikes being imagined.{/n}
 "I dislike being corrected. People are generous with the improvements they believe a woman has been waiting to receive."
 "And what would you correct about me?"
 "The confidence with which you asked that question. I shall leave the rest until it inconveniences me."
-You fold down the corner of the sheet before it can brush the lamp. The mark waits while you move it. Her answer has followed the wax; nothing has entered the room.''', c('Keep the written limit and ask about the price she still retains.', "risk")),
-    page("risk", "Commander", '''You ask whether the undertaking will remain private.
+{n}You fold down the corner of the sheet before it can brush the lamp. The mark waits while you move it. Her answer has followed the wax; nothing has entered the room.{/n}''', c('Keep the written limit and ask about the price she still retains.', "risk")),
+    page("risk", "Commander", '''{n}You ask whether the undertaking will remain private.{/n}
 "While keeping it private suits me. You gave it because it was worth something. Do not now ask me to make it worthless as proof of affection."
 "I could be asked why I placed my name in your keeping."
 "You might answer. I should be interested to hear which part you omit."
-You put your palm flat beside the wax. The mark on the paper stops moving, as if it had felt the weight of your hand and is deciding whether to bite.
-You tell her that the same applies to you. An enemy might one day make it useful to say that she answered.
-"Then give an accurate account," she writes. "Inaccurate ones attract tedious corrections."
-Beneath her last line she has left a blank the width of a signature, and the wax beside it has gone warm, the way skin goes warm.''',
+{n}You put your palm flat beside the wax. The mark on the paper stops moving, as if it had felt the weight of your hand and is deciding whether to bite.{/n}
+{n}You tell her that the same applies to you. An enemy might one day make it useful to say that she answered.{/n}
+"Then give an accurate account," {n}she writes.{/n} "Inaccurate ones attract tedious corrections."
+{n}Beneath her last line she has left a blank the width of a signature, and the wax beside it has gone warm, the way skin goes warm.{/n}''',
          c('I accept. The letters, the danger that comes with them, and you. Mostly you.', "accept", flags=f("renewed_agreement", "personal_risk_accepted")),
          c('I will keep the concession, but I do not want this personal arrangement. Close the private channel.', "decline", flags=f("personal_declined", "closed"))),
     page("accept", "Nocticula", '''"An ambitious evening. We shall see how much of it you can sustain."
 {n}Below your answer she writes her own name. The answering mark crosses its last letter and returns to the broken edge of the wax. It has sealed this page, not joined the two halves.{/n}
-"For the record," she adds. "You seem to enjoy acquiring them."
+"For the record," {n}she adds.{/n} "You seem to enjoy acquiring them."
 "This one has better handwriting."
 "This one has an excellent reason to be legible. I may wish to quote you."
 {n}You ask her to stay while you tell her the discarded first sentence. She declines. Then she asks for the second.

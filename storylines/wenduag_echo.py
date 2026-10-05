@@ -97,9 +97,9 @@ You drag her behind fallen masonry, clear space around her face, and cover her w
         c("[Leave her under the cloak for now.]", abort=True)),
 ], requires=(E + "ready", E + "casualty_available", "wenduag.abyss_fell"), forbids=(E + "rescued",),
     ContactUnit=UNIT, InteractionHub="wenduag.echo", TricksterDevice=True, TricksterState="echo_abyss"),
-authored("return", "The torn belt", 5, "[Approach the hunter in the cellar.]", [
-    n("start", "Wenduag", '''{n}She has hung the torn belt over a nail. Her knife lies across her knees.
-A low bed of loose stones fills the alcove behind her. White dust clings to her fingers.{/n}
+authored("return", "The torn belt", 5, "[Approach the hunter at the cellar door.]", [
+    n("start", "Wenduag", '''{n}She has hung the torn belt over a nail beside the cellar door. Her knife lies across her knees.
+A low bed of loose stones lies beside the stair down. White dust clings to her fingers.{/n}
 "You dragged me away from him. I was going to kill Lann.
 Don't look pleased with yourself. That hasn't changed."''',
         c('"I wanted you alive. What you do with that is yours."', "stay"),
@@ -236,17 +236,17 @@ def _lastcall_variants():
     original = partner["paragraphs"][1]
     original["Forbids"].append(E + "returned")
     partner["paragraphs"].append(p(
-        "The world buried an empty coffin for the Commander. Wenduag listened from the cellar stair, turning the torn belt in her hands. "
-        "Then she packed a niche in the catacombs with loose stones and laid the hooked shaft across it. Nobody was allowed to touch it.",
+        "{n}The world buried an empty coffin for the Commander. Wenduag listened from the cellar stair, turning the torn belt in her hands. "
+        "Then she packed a niche in the catacombs with loose stones and laid the hooked shaft across it. Nobody was allowed to touch it.{/n}",
         requires=("lastcall.dead_on_record", E + "returned")))
     partner["paragraphs"].extend([
-        p("Lann came down the cellar stair after the war. He looked at the hook over her door, then left without asking to come in.",
+        p("{n}Lann came down the cellar stair after the war. He looked at the hook over her door, then left without asking to come in.{/n}",
           requires=(E + "returned", E + "cost.used_lann"), forbids=LANN_GONE),
-        p("Lann was dead. The hook stayed over her door; she never told anyone why she kept it.",
+        p("{n}Lann was dead. The hook stayed over her door; she never told anyone why she kept it.{/n}",
           requires=(E + "returned", E + "cost.used_lann", "lann.dead")),
-        p("Lann had left the Commander's service. The hook stayed over her door, and there was no visit to settle what it had cost him.",
+        p("{n}Lann had left the Commander's service. The hook stayed over her door, and there was no visit to settle what it had cost him.{/n}",
           requires=(E + "returned", E + "cost.used_lann", "lann.kicked_out"), forbids=("lann.dead",)),
-        p("There was no word of Lann after the war. The hook stayed over her door.",
+        p("{n}There was no word of Lann after the war. The hook stayed over her door.{/n}",
           requires=(E + "returned", E + "cost.used_lann", "lann.plot_absent"), forbids=("lann.dead", "lann.kicked_out")),
     ])
     lastcall_ledger.EXTRA_ENTRIES.append(dict(

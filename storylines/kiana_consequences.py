@@ -71,7 +71,7 @@ s("guest_table", "Enough bowls for everyone", [
     n("widowed", "Kiana", '''"Elan would have laughed at that. So am I. Stop looking relieved and tell us what the dog did next."
 {n}Her voice catches on the last word. She takes a drink before anyone can offer her one.{/n}
 "Some jokes are worth enjoying. Odrin's story about the dog has been getting better for years."
-"The dog has been getting more expensive," he says.
+"The dog has been getting more expensive," {n}he says.{/n}
 {n}Kiana laughs through the breath she had been holding. Lenna manages a small smile, but does not yet look up.{/n}''',
       c('[Ask Odrin how the dog acquired its excellent references.]', "end")),
     n("separated", "Kiana", '''"Elan gave an excellent supper. He also burnt the bread once. Must I suppress one story to tell the other?"
@@ -228,12 +228,12 @@ s("lenna_door", "The unasked invitation", [
       c('"Kiana had the floor. I was enjoying the view."', "listen")),
     n("plain", "Kiana", '''{n}Lenna nods, slowly this time.{/n}
 "I was afraid you hated me. It seemed safer to hide behind a boot."
-"I still brought the jar back," Kiana says. "If I hated you, I would have kept it and sent Odrin to explain why."
+"I still brought the jar back," {n}Kiana says.{/n} "If I hated you, I would have kept it and sent Odrin to explain why."
 {n}Lenna laughs before she can prevent it. Kiana waits for her to finish.{/n}
 "I want to see you. But you have to invite me. I can't keep finding out about my own absence from Edris."''',
       c('[Give Lenna room to answer.]', "invitation", flags=("kiana.lenna_door.plain",))),
     n("rank", "Kiana", '''{n}"It did," Lenna says. "People usually come to me when their shoes hurt. They don't bring the person in charge of the city."{/n}
-"I brought someone I wanted you to like," Kiana says. "I may have been rather hopeful about how easy that would be."
+"I brought someone I wanted you to like," {n}Kiana says.{/n} "I may have been rather hopeful about how easy that would be."
 {n}She glances at you.{/n}
 "Yes, the Commander commands things. At supper I expect that to be confined to passing the bread."
 {n}Lenna exhales.{/n}
@@ -241,7 +241,7 @@ s("lenna_door", "The unasked invitation", [
 "Much better. I would have needed another jar to carry all the explanations I was inventing."''',
       c('[Let the conversation continue.]', "invitation", flags=("kiana.lenna_door.rank",))),
     n("listen", "Kiana", '''{n}"You could have said that," Lenna tells you, then hears herself and looks at Kiana. "No. You couldn't very well interrupt to announce that you weren't interrupting."{/n}
-"It would have been a magnificent speech," Kiana says. "Brief, but memorable."
+"It would have been a magnificent speech," {n}Kiana says.{/n} "Brief, but memorable."
 {n}Lenna laughs and leans back on her stool.{/n}
 "I am making this worse."
 "You are talking to us. That's already an improvement on deciding we wouldn't want to come."
@@ -382,7 +382,7 @@ s("roof_supper", "A place among the guests", [
 {n}Lenna offers to hang up the shawl. Kiana keeps it on, smoothing the fold around the round pin before following you to the table.{/n}''',
       c('[Make room beside you.]', "cups")),
     n("cups", "Kiana", '''{n}Odrin pours a little of his drink into each cup. He begins explaining before anyone has tasted it.{/n}
-"Plums," Kiana says. "We had guessed that much."
+"Plums," {n}Kiana says.{/n} "We had guessed that much."
 {n}"There's more to it than plums."{/n}
 "I am afraid there may be."
 {n}She tastes it. Her eyebrows rise.{/n}

@@ -13,6 +13,7 @@ and hereby name it the Leavable Prison" (-> Cue_0118 99c33b3b). The Commander st
 way, and later renames the body Mutasafen grows her, so that its maker keeps no key to it. The whole courtship after her
 return is hepzamirah_flesh; this module holds the device, the deal, the courier, the terms and the pages.
 """
+import copy
 from story_format import c, n, p, reaction, scene
 from storylines import lastcall_ledger
 
@@ -560,7 +561,7 @@ PATH_FIT_V2 = {}
 def integrate(payload):
     """Register the new relationship's own keys and presences. Scenes are added by expansion.py; world keys bind on
     demand (trickster_world)."""
-    payload.setdefault("Presences", {}).update({k: dict(v) for k, v in PRESENCES.items()})
+    payload.setdefault("Presences", {}).update(copy.deepcopy(PRESENCES))
     have = payload.setdefault("InventoryItems", {}).get(PICK_HELD)
     if have is not None and have != PICK_ITEM:
         raise ValueError("Conflicting binding: " + PICK_HELD)

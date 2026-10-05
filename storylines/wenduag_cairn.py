@@ -339,7 +339,7 @@ visit(W + "court.vellexia", "The blond one", [
     nar("start", '''{n}Wenduag has found a new sport. She sits on the parapet above the citadel yard for an hour at a time, very still, and watches one particular window.{/n}''',
         c("Continue", "promised", requires=(VELLEXIA_SEEN,)),
         c("Continue", "here", forbids=(VELLEXIA_SEEN,))),
-    wd("promised", '''"The blond one." {n}She does not take her eyes off the window.{/n} "The succubus from the Midnight Isles. "I promised her something, the night we met. I told her I'd make her scream." {n}Her lips peel back.{/n} "With pleasure, I said. I meant it, too, that night. Don't mistake that for liking the bitch. I keep my promises, {mf|master|mistress}. The fun ones. I'm deciding which kind this one is."''',
+    wd("promised", '''"The blond one." {n}She does not take her eyes off the window.{/n} "The succubus from the Midnight Isles. I promised her something, the night we met. I told her I'd make her scream." {n}Her lips peel back.{/n} "With pleasure, I said. I meant it, too, that night. Don't mistake that for liking the bitch. I keep my promises, {mf|master|mistress}. The fun ones. I'm deciding which kind this one is."''',
         c("Continue", "what")),
     wd("here", '''"There's a succubus in your citadel." {n}She does not take her eyes off the window.{/n} "Walking about in the day like a lady, with that yellow hair and that smile, and your whole court pretending not to notice what she smells like." {n}She sniffs, deliberately.{/n} "I noticed. I notice everything that's hungry."''',
         c("Continue", "what")),

@@ -1,0 +1,4 @@
+# Elyanka Camilary: state `funeral` / `king` (any Trickster run after Iz; the Fool King crowned and reigning gives the mourners option).
+fool_king.crowned:3      # FoolKingCoronated cc76b7ab: Trickster Ch3 Fool King coronation (keep him: never FoolKingGone)
+iz.done:5                # CompletedQuests 95ff7d97: Iz completed in Ch5 (Drezen then mourns the Commander as dead)
+elyanka.funeral.king:5   # FoolKing_Tavern Cue_0059 d1c14400 "We sang songs, threw you a fine funeral": talk to the Fool King in his Ch5 tavern

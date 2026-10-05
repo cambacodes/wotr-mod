@@ -1,0 +1,12 @@
+# Eritrice (rel eritrice) natives for the all-romance run. Council 5-2 route R-A (Council with you, Answer_0044), coordinated with natives/nocticula.txt.
+# The commit lands in Ch3, long before 5-2. The 5-2 keys are entered at ch6 (same convention as nocticula.txt) because the
+# fight really happens late in Ch5, after the Ch5 hall sittings; the sim cannot split a chapter.
+council.session_minuted:3        # Ch3 Council 3: sit through to the vote, Council_3/Cue_0040 "Passed unanimously." (also Lexicon2 Cue_0035 in Ch4, 5-1 Cue_0029 in Ch5)
+eritrice.chair_usurped:3         # Ch3 Council 3 (optional flavour): Answer_0039 "I think our meeting can be adjourned. Get to work!" -> Cue_0045
+noct.will_attend:5               # Ch5 boudoir audience: Nocticula/Answer_0011 (she will attend the Council; NoctaWillAttendTheCouncil)
+noct.acq.council_disclosed:5     # same answer (SelectedAnswers fd4f6c1d)
+noct.acq.council_fight:6         # Ch5 (late) Council 5-2: Answer_0044 [Join the Council and attack Nocticula] -> FightAgaintsNoctaCouncilAllied
+noct.dead:6                      # same fight: NocticulaDead (defeated; projection at Threshold; Nocticula's device)
+council.debrief_motion:6         # Ch5 (late) Debrief_Council/Cue_0015 "The motion passes unanimously." (the Council volunteers its essence)
+shamira.council_donated:6        # Debrief_Council/Cue_0016 (SyphonWithCouncilNoShyka)
+eritrice.essence_given:6         # optional: talk to her right after 5-2, Council_5-2 Answer_0024 -> Cue_0026 "I am used to suffering for the sake of truth."

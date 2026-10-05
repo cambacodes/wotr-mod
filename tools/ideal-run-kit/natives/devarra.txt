@@ -1,0 +1,12 @@
+# Devarra: state `flown` (Option A "She flies"). Pact in her lair first, then her native escape at 10% HP,
+# then the Ivory Sanctum golems: password -> Deactivation. Run with: python timed.py trace natives\devarra.txt - devarra
+# (plain trace.py turns every key on at the chapter start, which forbids the lair pact; the '#@' lines order them).
+greybor.in_party:3            # Greybor recruited and in the party: the Dragon Hunt ("The Dragon Hunt" book events) leads to the lair
+devarra.escaped:3             # WoundWormLair_Event_Mechanics: fight her to 10% HP, she flies (RedDragonEscaped 23bea004); never finish her
+devarra.golems_met:3          # IvorySanctum Golems_DragonEggs Cue 24de2c3e: talk to the golems in the eggs chamber
+devarra.golems_calling:3      # Golems_DragonEggs Cue ea54d573 (the stone calls the absent dragon; the E18 gate falls through to Cue_0047)
+devarra.golems_deactivated:3  # Golems_DragonEggs Cue_0028 450b4a85 "Deactivation.": the native password lowers the fists
+#@ devarra.escaped:3+1
+#@ devarra.golems_met:3+3
+#@ devarra.golems_calling:3+3
+#@ devarra.golems_deactivated:3+3

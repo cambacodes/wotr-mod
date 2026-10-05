@@ -1,0 +1,10 @@
+# Jannah: freed at the Molten Scar cage (Seelah active), joins Seelah's Q3 in Ch5 (Answer_0016), Q3 completed
+seelah.in_party:0              # Seelah recruited in the Prologue caves and never dismissed (all Janna etudes live under SeelahInParty)
+jannah.asked_watch_service:1   # Ch1 Defender's Heart party (Seelah Q0): ask "Have you been serving in the Eagle Watch for long, Jannah?" (Answer_0034)
+seelah.houndheart_seen:2       # Ch2 Seelah Q1 Houndhearts camp: Elan's chest scene (KnightCamp Cue_0011/Cue_0012)
+jannah.quasit_seen:2           # Ch2 Seelah Q1 Houndhearts camp: her solo try at the quasit (KnightCamp Cue_0017)
+jannah.sword_given:3           # Ch3 Molten Scar cage: she tells you to take her sword (Deserter Cue_2/Cue_5)
+jannah.free:3                  # Ch3 Molten Scar cage: free her (JannaFree via Cue_0025/0029/0060/Cue_3)
+seelah.q3_started:5            # Ch5 day 25: Elan's call, "All right. I'll help you." (Seelah Q3 starts)
+jannah.joined:5                # Ch5 ktc_DeserterJoins: Answer_0016 "she comes with us" (JannaComesWithUs, Cue_0019)
+seelah.souls_returned:5        # Ch5: Seelah Q3 completed (souls returned)

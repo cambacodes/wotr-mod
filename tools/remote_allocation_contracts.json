@@ -74,7 +74,7 @@
       "scene": "irabeth.return_own_invitation",
       "source": [],
       "current_site": "irabeth.return_request + irabeth.return_reply",
-      "evidence": "The named own-invitation is absent; the current departure class still has two distinct Chapter 5 pages."
+      "evidence": "eng7-f6c: The named own-invitation is absent. return_request is a physical inquiry at the native quartermaster desk; return_reply is the one Chapter 5 remote delivery."
     },
     {
       "finding": "shamira:014",

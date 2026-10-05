@@ -1,0 +1,10 @@
+# Last Call (relationship lastcall, CommittedFlag trickster.lastcall.taken)
+# Run with trace_lc.py (Ch6 lengthened so the ReturnToList chain fits the sim's one-scene-per-relationship-per-day round).
+fool_king.tablet_brought:3  # Ch3 FoolKing_Tavern Answer_0025 (show the Sarcorian tablet), then Answer_0032 [Trust your intuition]
+fool_king.crowned:3         # Ch3 FoolKing_Tavern Answer_0042 "It's time to crown you." after the 14-day coronation project (FoolKingCoronated)
+lastcall.flask_taken:3      # Ch3 Areelu's lab, SoulJar_AreeLab_dialog Answer_0006 [Take the vessel]
+lastcall.flask_held:3       # SoulJar_Trickster "Magical Moonshine Flask" kept in inventory to the end (never sell or drop)
+# Set by the native finale AFTER trickster.lastcall.taken; needed only for lastcall.active (the epilogue pages), not for the commit.
+# Not forced here because forcing them from the start of Ch6 would wrongly block Ch6 scenes that Forbid `sacrifice`:
+#   ending.trickster_full:6  # GrandFinal Answer_0011 "I'm the punchline!" with a Council syphon -> Cue_0063 (or ending.trickster without one)
+#   sacrifice:6              # the same Answer_0011 starts Ending_PlayerSacrifice

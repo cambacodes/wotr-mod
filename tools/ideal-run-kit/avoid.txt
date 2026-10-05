@@ -1,0 +1,5 @@
+tirabade.group_closed
+terendelev.trickster.refused_claim
+terendelev.trickster.flinched
+terendelev.trickster.search_failed
+terendelev.trickster.cost.bled_white

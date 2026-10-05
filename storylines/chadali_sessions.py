@@ -248,7 +248,7 @@ session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
 {n}She holds the flower as if it were a jewel.{/n} "That's a good surprise. A very good one. Stealing something and giving it back. That's the nicest kind of trick."''',
       c("Continue", "close")),
     ch("secret", '''{n}You tell her. It does not matter what; it is something you have not said aloud to anyone, not to your companions, not to yourself in the dark. It is not a large thing. It is a true one.{/n}
-{n}Chadali listens without clapping. When you finish, she is very still.{/n} "Oh," she says. "Oh. I didn't know that." {n}Wonderingly:{/n} "I didn't know that. I'm chance, and I didn't know."''',
+{n}Chadali listens without clapping. When you finish, she is very still.{/n} "Oh," {n}she says.{/n} "Oh. I didn't know that." {n}Wonderingly:{/n} "I didn't know that. I'm chance, and I didn't know."''',
       c("Continue", "close")),
     ch("purpose", '''"Ha!" {n}She points at you, triumphant.{/n} "You just did! You said you couldn't, and you're the one person who always can, and you gave up! That's the most surprising thing you've ever said!"
 {n}She laughs so hard she has to hold on to you.{/n} "Oh, that's wonderful. Say it again. No, don't, it'll be less surprising."''',
@@ -260,7 +260,7 @@ session(WISH, "What chance wishes for", '"What do you wish for, Chadali?"', [
     ch("bake", '''"Something new!" {n}She claps.{/n} "Oh, that's dangerous. I'll probably burn it. You'll have to eat it anyway." {n}She is already muttering about spices.{/n}''',
       c("[Leave her plotting.]")),
     ch("tell", '''{n}She leans close and whispers it. It is about a meteor shower, and a party, and an azata who was there when she opened her eyes and whom she has never been able to find again.{/n}
-"I still look," she says. "Every time the sky does something silly. That's the only thing I've ever looked for. Until you."''',
+"I still look," {n}she says.{/n} "Every time the sky does something silly. That's the only thing I've ever looked for. Until you."''',
       c("[Hold her.]")),
     ch("stay", '''"That isn't a wish, that's just asking." {n}But she is already pulling the cushions out from under the table, where she has apparently been keeping them.{/n} "Granted. Obviously. Wish for something harder next time."''',
       c("[Stay.]")),
@@ -283,11 +283,11 @@ session(BETTING_LIVES, "You bet with people", '"You\'ve heard about the feint."'
       c('"I\'ll learn them. Every one."', "felt", flags=(FELT_IT,)),
       c('"If I stopped for every name, I couldn\'t do the job."', "job")),
     ch("wanted", '''{n}That stops her. For a moment the hard face wavers.{/n}
-"That's worse," she says finally. "That's worse and better at once. You're about to do a terrible thing, and you came to me with it first, instead of to a cookie."
+"That's worse," {n}she says finally.{/n} "That's worse and better at once. You're about to do a terrible thing, and you came to me with it first, instead of to a cookie."
 {n}She pushes the parcel across the table.{/n} "Tell me their names. The company's. Some of them. Then eat one. Then I'll come round to your side of the table."''',
       c("[Tell her names.]", "felt", flags=(FELT_IT,))),
     ch("silent", '''{n}You say nothing. You do not take a cookie. You sit, on your side of the long table, and let the silence be as long as it needs to be.{/n}
-{n}After a long time she gets up and comes round, and sits down next to you, and does not touch you, and then does.{/n} "Names," she says. "Tell me their names. If you're going to bet their lives, you can remember whom you're betting."''',
+{n}After a long time she gets up and comes round, and sits down next to you, and does not touch you, and then does.{/n} "Names," {n}she says.{/n} "Tell me their names. If you're going to bet their lives, you can remember whom you're betting."''',
       c("Continue", "felt", flags=(FELT_IT,))),
     ch("job", '''"Then do it slower." {n}Instantly.{/n} "Or do it worse. I don't care. Win by a bit less. Nobody will write you a song about the feint."
 {n}She stands up.{/n} "I'm going to go and be sad about them, since you won't. That's my job, then. Somebody has to." {n}She takes the unopened parcel with her. At the door she stops.{/n} "Come back tomorrow. I'll have finished being sad. I'll need you to have started."''',
@@ -338,7 +338,7 @@ session(FRIENDS, "We are friends, right?", '"About what I asked you in session..
       c('"Both. I need what\'s in you. I also need you."', "both")),
     ch("not_jar", '''"But you asked." {n}Stubbornly.{/n} "In front of them. You made me say it out loud so I couldn't take it back."
 {n}And then, slowly, she understands.{/n} "...Oh. You made me say it out loud so I couldn't take it back." {n}She sits back.{/n} "That was a trick. So I'd be brave in front of them. So I'd have to be."
-"That's horrible," she says, with something like admiration. "It worked."''',
+"That's horrible," {n}she says, with something like admiration.{/n} "It worked."''',
       c("Continue", "close")),
     ch("watching", '''"Everyone's always watching me. I'm very watchable." {n}A flicker of the dimples, gone at once.{/n}
 "And would I have? Run?" {n}She actually thinks about it, which you did not expect.{/n} "Maybe. If you hadn't asked. I'd have found a reason. I'm very good at finding reasons for things I want."

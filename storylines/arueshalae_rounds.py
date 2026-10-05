@@ -110,7 +110,7 @@ session(PRIESTESS, "The last one", 3, '"You\'ve been reading the Desnan prayer b
 "Thank you. Everyone else says something kind. The priests say the goddess has forgiven me, and I think, then the goddess is wrong, and I'm not allowed to think that." {n}She puts her hand flat on the prayer book.{/n} "You carry her. Yes." {n}She looks at the book under her hand.{/n} "I won't forget her. Not even on a day when I laugh."''', c()),
     a("write", '''{n}She stares at you as if you had suggested she fly to the moon.{/n} "Write to them. To the Desnans. And say what? 'Dear Mother of the shrine, I am the succubus who killed your priestess, please tell me her name so I can...'" {n}She stops.{/n} "So I can what?"
 {n}You tell her: so she can stop calling her "the priestess". So the one person in the world who remembers every smallest detail of her death can remember the one detail that was hers.{/n}
-"That's insane," she whispers. "That's the most insane thing anyone has asked of me, and I have been asked for things in Alushinyrra that would curl your hair. I'm going to do it."''', c()),
+"That's insane," {n}she whispers.{/n} "That's the most insane thing anyone has asked of me, and I have been asked for things in Alushinyrra that would curl your hair. I'm going to do it."''', c()),
 ], (RELAPSE,), delay=24, chapters=(3, 4, 5))
 
 session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
@@ -144,9 +144,9 @@ session(OLD_NAME, "What they called me", 5, '"The woman in the Alushinyrra marke
         c("Continue", "held_cure", requires=(CURED,)),
         c("Continue", "held_paid", forbids=(CURED,))),
     a("held_cure", '''{n}Nothing comes out of you. She holds on anyway, harder than she needs to, and slowly her shoulders come down from round her ears.{/n}
-"That's the difference," she says at last, very quietly. "Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't." {n}At the sixth minute she lets go, before the ward can.{/n} "Don't tell her about the doctor. She'll want one."''', c(flags=(OLD_NAME,))),
+"That's the difference," {n}she says at last, very quietly.{/n} "Her party would have been more. Much more. And I'd have hated myself before dawn. This is less, and I don't." {n}At the sixth minute she lets go, before the ward can.{/n} "Don't tell her about the doctor. She'll want one."''', c(flags=(OLD_NAME,))),
     a("held_paid", '''{n}Nothing comes out of you. She holds your hand between her wrists instead of her palms anyway, the careful way, as if she did not quite believe the ward.{/n}
-"Seven minutes," she says. "I could have had a whole party. I'd rather have seven of yours." {n}She is shaking.{/n} "If we ever go back down there, don't do that. Everybody in the Abyss can smell it when someone gives."''', c(flags=(OLD_NAME,))),
+"Seven minutes," {n}she says.{/n} "I could have had a whole party. I'd rather have seven of yours." {n}She is shaking.{/n} "If we ever go back down there, don't do that. Everybody in the Abyss can smell it when someone gives."''', c(flags=(OLD_NAME,))),
 ], (INTAKE,), delay=24, chapters=(5,))
 
 
@@ -165,9 +165,9 @@ session(WOUND, "The doctor is out", 5, '"You\'re sitting up. Good."', [
         c('[Hold out your hand for her to hold, instead] "Stitch later. Sit with me."', "sit", requires=(TOUCHED,),
           flags=(WOUND,))),
     nar("go", '''{n}She does it without once touching your skin, only the thread and the needle and the steel of the forceps, her face an inch from the wound, her breath held. It is the neatest suture you have ever had. She ties it off and cuts it and sits back, and her hands are shaking now that it is done.{/n}
-"There," she says. "Now you've got a little bit of me in you that didn't take anything. Just a knot."''', c()),
+"There," {n}she says.{/n} "Now you've got a little bit of me in you that didn't take anything. Just a knot."''', c()),
     a("sit", '''{n}She looks at the hand, and at the strapping on your side, and at the hand again.{/n} "You're hurt, and there's no ward on you, and I won't." {n}Then she lays her own hand on the blanket over yours, so that only the wool is between them, and keeps it there for the rest of the night.{/n}
-"Doctor's orders," she says, when the orderly comes to shoo her away, and the orderly, to everyone's surprise, goes.''', c()),
+"Doctor's orders," {n}she says, when the orderly comes to shoo her away, and the orderly, to everyone's surprise, goes.{/n}''', c()),
 ], (KITCHEN,), delay=24, chapters=(5,))
 
 
@@ -185,7 +185,7 @@ session(DANCE, "Recommended exercise", 5, '"There\'s music in the square."', [
         c("Continue", "cure", requires=(CURED,)),
         c("Continue", "glove", forbids=(CURED,))),
     nar("cure", '''{n}You dance badly, and she dances beautifully, and between you it comes out as something the fiddlers can live with. One reel is seven minutes, near enough; you both know it, and you both pretend not to. When the fiddlers start the second, she moves her hand from yours to your sleeve without missing a step, and you dance the rest with the cloth between you, which the fiddlers think is very courtly.{/n}
-"You're counting," she says into your ear. "Not the steps. The other thing." You are. So is she.''',
+"You're counting," {n}she says into your ear.{/n} "Not the steps. The other thing." {n}You are. So is she.{/n}''',
         c("Continue", "after")),
     nar("glove", '''{n}She holds your sleeve, not your hand, and dances with the cloth between you. You dance anyway. You dance badly, and she dances beautifully, and nobody in the square notices that the Commander's partner never once touches the Commander's skin.{/n}''',
         c("Continue", "after")),
@@ -205,7 +205,7 @@ session(AFTER_WAR, "Prognosis", 5, '"What will you do, after?"', [
 "A kitchen. I want a kitchen. Not a big one. With a window, and a table that's too small, and a shelf for whatever cat decides to live with us. I want to learn to cook, badly, like you, and burn things for somebody, and have them eat it anyway." {n}She stops for breath.{/n} "And everything else on my list, one thing at a time. I've told you all of it, haven't I? I tell you everything now. It's very inconvenient."''',
         c("Continue", "you")),
     a("you", '''"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and I'll be the one at the window, waiting to find out which ones." {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}
-"I remember Lady Vellexia's guests, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.''',
+{n}"I remember Lady Vellexia's guests, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.{/n}''',
         c('"I\'ll come back to the kitchen. Burn something for me."', "burn", flags=(AFTER_WAR,)),
         c('"The prognosis is excellent. Doctor\'s verdict."', "verdict", flags=(AFTER_WAR,))),
     a("burn", '''"Oh, I will." {n}She grins, all teeth, and for a moment she looks exactly like what she is, and it is wonderful.{/n} "I'm going to burn things for you that nobody has ever burned before. I've got centuries of practice at making mortals suffer. It's time it was good for something."''', c()),
@@ -251,7 +251,7 @@ session(EVE, "Before Threshold", 5, '"When it comes, then."', [
         c('"Burnt onions. Your list. The night you walked out of Fye\'s and kept walking."', "list", flags=(EVE,))),
     a("joke", '''"Of course you will." {n}She laughs, and it catches in her throat.{/n} "In the middle of the end of the world, you'll be making a joke, and I'll hear it, and I'll be so annoyed I'll forget to fall." {n}She puts the book in your hands.{/n} "Keep this for me until after. I'll want to write the ending."''', c()),
     a("list", '''{n}She goes very still, listening to her own list said back to her in your voice.{/n}
-"Yes," she whispers. "That's the treatment. That's all of it." {n}She puts the book in your hands.{/n} "Keep this for me until after. If I start to go, read it to me. Out loud. Even the diagram."''', c()),
+"Yes," {n}she whispers.{/n} "That's the treatment. That's all of it." {n}She puts the book in your hands.{/n} "Keep this for me until after. If I start to go, read it to me. Out loud. Even the diagram."''', c()),
 ], (MORNING,), delay=24, chapters=(5,))
 
 

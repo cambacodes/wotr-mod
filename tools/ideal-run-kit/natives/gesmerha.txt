@@ -1,0 +1,9 @@
+# Gesmerha: alive state (registered campaign). No loss keys.
+gesmerha.met:3                    # BlindCarver/Cue_0001: first talk to the Blind Carver in Wintersun
+gesmerha.took_risk:3              # BlindCarver Answer_0025 -> Diplomacy DC 23 pass -> Cue_0024 (opens the Trickster commission)
+gesmerha.wintersun_resolved:3     # Wintersun_quest completed: rune stones reported (Answer_0017 at the ambush), Marhevok dealt with, report to Irabeth
+gesmerha.truth:3                  # Wintersun resolved with the truth exposed (either gesmerha.truth or gesmerha.illusions works)
+gesmerha.capital_guest:5          # KTC_WintersunHelp_BlindCarver: she comes to Drezen ~15 days into Ch5 capital events
+gesmerha.heard_future:5           # KTC_WintersunHelp_dialogue: hear her out at the Drezen audience (Cue 164cf168 / 64388ef1)
+gesmerha.post_resolution_contact:5 # native Ch5 post-resolution Wintersun contact etude (she is back at her Wintersun hub)
+gesmerha.heard_migration:5        # KTC_WintersunHelp_dialogue: hear her plan to leave and seek a new home (or heard_staying)

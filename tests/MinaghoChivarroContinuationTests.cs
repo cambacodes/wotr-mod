@@ -10,7 +10,10 @@ internal static class MinaghoChivarroContinuationTests
         const string prefix = "minachiv.";
         const string capital = "2570015799edf594daf2f076f2f975d8";
         // The registered RanRomance continuation; the pair's Trickster route has its own suite (MinaghoChivarroTricksterTests).
-        bool Registered(Scene s) => s.Relationship == "minagho_chivarro" && !s.Id.StartsWith("minagho_chivarro.trickster.", StringComparison.Ordinal);
+        // eng7-f6c begin: native responses use their selector suite, not this continuation's ending arbitration.
+        bool Registered(Scene s) => s.Relationship == "minagho_chivarro" && !Rules.IsNativeReplacement(story, s)
+            && !s.Id.StartsWith("minagho_chivarro.trickster.", StringComparison.Ordinal);
+        // eng7-f6c end
         var visits = story.Scenes.Where(s => Registered(s) && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         var endings = story.Scenes.Where(s => Registered(s) && s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
         check(visits.Length == 23, "Minagho/Chivarro continuation must include its complete 23-visit chain.");

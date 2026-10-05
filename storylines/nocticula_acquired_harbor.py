@@ -119,8 +119,8 @@ You touch that correction. Nocticula watches the movement.{/n}
 
     if original_id == "noct.her_own_face":
         replace(pages["start"],
-            '"You have used dreams to offer me things I wanted," you say. "Does this room mean you know what I want tonight?"',
-            '"You have arranged another room around a question," you say. "Does that mean you know what I want tonight?"')
+            '"You have used dreams to offer me things I wanted," {n}you say.{/n} "Does this room mean you know what I want tonight?"',
+            '"You have arranged another room around a question," {n}you say.{/n} "Does that mean you know what I want tonight?"')
         pages["start"]["Choices"][0]["Text"] = '"I wanted an evening in which I could look at you without pretending to study the evidence."'
         replace(pages["face"],
             '"That is either a very good compliment or a remarkably provincial objection to variety."\n"You may choose the interpretation you like."\n"I usually do. It saves time."',
@@ -132,10 +132,10 @@ You touch that correction. Nocticula watches the movement.{/n}
             'There are disadvantages to knowing my habits.')
         if gift == "renewed":
             replace(pages["start"], 'Your gift has not gone away.', 'You have given me your power again. I have not forgotten what that permits.')
-            replace(pages["start"], '"No," she says. "It has not."', '"Nor have I," she says. "You should be suspicious if I pretended otherwise."')
+            replace(pages["start"], '"No," {n}she says.{/n} "It has not."', '"Nor have I," {n}she says.{/n} "You should be suspicious if I pretended otherwise."')
         elif gift == "absent":
             replace(pages["start"],
-                '"You could make the invitation rather difficult to refuse. Your gift has not gone away."\n"No," she says. "It has not."',
+                '"You could make the invitation rather difficult to refuse. Your gift has not gone away."\n"No," {n}she says.{/n} "It has not."',
                 '"There is no gift between us tonight. There is still a room which exists because you want me in it."\n"And a door you asked me to open. I opened it because I wanted you through it. Try not to make me regret the hinges."')
         if history != "prior":
             replace(pages["start"],

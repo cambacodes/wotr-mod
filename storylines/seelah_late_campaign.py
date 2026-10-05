@@ -24,7 +24,7 @@ s("late_course", "The turn she means to take", '"You have chalk on your sleeve. 
     n("start", "Seelah", '''{n}Seelah looks at her sleeve, then at the chalk in her hand, as if considering an accusation she cannot quite refute.{/n}
 "A race. Which I'm going to win. Come and see."
 {n}She leads you to a narrow yard behind a cooper's shed. Empty barrels mark a crooked course. Two women are arguing over a length of cord: a lean woman with a gray braid and another, younger woman with thick calves and an ink stain on her cheek.{/n}
-"Tavia used to carry messages for a living," Seelah says. "Dena still does. They claim that running in a straight line has made soldiers lazy. I felt I ought to defend us."
+"Tavia used to carry messages for a living," {n}Seelah says.{/n} "Dena still does. They claim that running in a straight line has made soldiers lazy. I felt I ought to defend us."
 {n}"She asked to enter before I mentioned soldiers," Tavia says.{/n}
 "Some people cannot be trusted with a perfectly good explanation."''',
       c('[Ask them to show you the course.]', "course"),
@@ -49,7 +49,7 @@ s("late_course", "The turn she means to take", '"You have chalk on your sleeve. 
 {n}Dena offers to run with Seelah. Tavia promptly recruits another courier from the shed doorway, a broad woman named Breva who has watched the preparations with a mug in her hands.{/n}
 {n}"Now I have to put this down," Breva says. "I hope you appreciate the sacrifice."{/n}
 {n}Seelah shows Dena where she wants the exchange. They disagree over which side of the post is faster, try both and settle on Dena's suggestion.{/n}
-"Watch that," Seelah says to you. "I expect to look splendid. If I don't, try to remember how splendidly I intended to look."
+"Watch that," {n}Seelah says to you.{/n} "I expect to look splendid. If I don't, try to remember how splendidly I intended to look."
 {n}She grins at you over Dena's shoulder, then bends to check the cord.{/n}''', c('[Ask when they intend to hold the race.]', "invitation")),
     n("invitation", "Seelah", '''"Once we've had a little practice. There's room for an audience by the shed. Nothing grand. Somebody suggested a prize, but then we'd spend the afternoon arguing about who could afford to lose it."
 {n}Tavia proposes that the winners choose a song everyone else has to sing. Seelah approves this immediately and begins considering songs with entirely too many verses.{/n}
@@ -91,7 +91,7 @@ s("late_lesson", "A shield held low", '"You invited me to Istra\'s lesson."', [
     n("start", "Narrator", '''{n}Istra has laid three battered practice shields against the yard wall. Her left hand holds a piece of bread; her right rests in the crook of her belt, the last two fingers curled inward. She is an older woman with a close crop of iron-gray hair and a voice that carries without growing loud.{/n}
 {n}"You can move that barrel," she tells Seelah. "If I leave it there, they'll all steer around it. I want them to notice where they're stepping."{/n}
 {n}Seelah moves it. Four women arrive, all grown, all with work to return to afterward. One carries folded laundry; another keeps checking a small sandglass. Istra asks each how much time she has, then changes where she has put the shields.{/n}
-"We aren't making soldiers this afternoon," Seelah tells you. "We're practicing getting somebody past a narrow place without leaving our own faces uncovered."''',
+"We aren't making soldiers this afternoon," {n}Seelah tells you.{/n} "We're practicing getting somebody past a narrow place without leaving our own faces uncovered."''',
       c('[Stay for the lesson.]', "arrangement"),
       c('"I cannot stay today. Begin without me."', abort=True)),
     n("arrangement", "Seelah", '''{n}Istra gives Seelah the largest shield. Seelah tests the strap, loosens it and turns toward the waiting women.{/n}''',
@@ -233,7 +233,7 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
     n("start", "Seelah", '''"I have been intolerable for years. Today I receive public recognition."
 {n}Seelah has tied her hair firmly back and left her armor behind. The yard is swept. Tavia has checked the cord, Breva is shifting the last empty barrel into position, and Dena has drawn a fresh starting line. A handful of spectators stand by the shed with their work baskets at their feet.{/n}
 {n}Istra arrives carrying a stool. She plants it where she can see the exchange and tells Seelah that looking at the finish before making the last turn is an excellent way to kiss a barrel.{/n}
-"I have other plans for my mouth," Seelah says, glancing at you.
+"I have other plans for my mouth," {n}Seelah says, glancing at you.{/n}
 {n}The glance lasts just long enough to be deliberate.{/n}''',
       c('[Take your place for the race.]', "preparation"),
       c('"I have to leave. Save my place for another day."', abort=True)),
@@ -251,7 +251,7 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
 {n}She points to a scuff beside the third barrel.{/n}
 "Nearly went back to check on her. As if she couldn't lift a shield without me hovering! Stayed here instead, and ran until I stopped kicking that stone."
 {n}Istra catches her pointing and raises an eyebrow.{/n}
-"I was saying you are very difficult to supervise," Seelah calls.
+"I was saying you are very difficult to supervise," {n}Seelah calls.{/n}
 {n}"A condition I intend to maintain."{/n}
 {n}Seelah smiles, then looks down the course again.{/n}
 "Now I can't blame lack of practice. I shall need a more inventive explanation if I lose. We have ruled out the barrel moving. Apparently someone marked where it was."''', c('[Join the others at the line.]', "role")),
@@ -265,7 +265,7 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
       c('[Keep your stride on the wider line and finish cleanly.]', "wide", flags=("seelah.late_wide_turn", "seelah.late_race_lost"))),
     n("narrow", "Narrator", '''{n}You plant your foot close to the barrel, turn and stretch the hoop toward its peg. It catches, swings once and settles. Breva's hoop lands a moment later.{/n}
 {n}Seelah throws both arms up. Then she remembers she has to move out of the lane and does so just before Breva arrives with a breathless complaint about the width of the universe.{/n}
-"I knew you could do it," Seelah says, taking your hands.
+"I knew you could do it," {n}Seelah says, taking your hands.{/n}
 {n}"She was making the face of a woman who knew nothing of the sort," Istra observes.{/n}
 "I was saving the cheering until we won!"
 {n}Seelah is flushed and grinning. She squeezes your hands once more before letting you catch your breath. Tavia comes to inspect the pegs, finds nothing to dispute and asks how many verses they have condemned themselves to sing.{/n}''', c('[Let Seelah choose the song.]', "won", flags=("seelah.late_race_won",))),
@@ -287,7 +287,7 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
     n("watching", "Narrator", '''{n}Seelah runs first against Tavia, loses a little ground beneath the cord and gains it at the peg. She returns with the hoop low. Dena takes it cleanly, and Breva launches herself after her.{/n}
 {n}From the post you can see the difference at the last turn. Dena takes it tightly enough to slow; Breva goes wider without breaking stride. Dena reaches her peg first, but the hoop strikes the end and falls. Breva's hoop settles a heartbeat later.{/n}
 {n}Dena looks back at you. Tavia has begun celebrating. Seelah saw the fallen hoop too.{/n}
-"The hoop has to stay," she says before anyone asks. "That was the rule."
+"The hoop has to stay," {n}she says before anyone asks.{/n} "That was the rule."
 {n}Dena groans, picks it up and replaces it with immense care. Seelah goes to meet her, clapping her on the shoulder.{/n}
 "You were fast enough. Next time we negotiate with the peg beforehand."
 {n}She comes to stand beside you, still breathing hard.{/n}
@@ -302,7 +302,7 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
 {n}The cooper calls for his yard back. Seelah bends to lift the starting post, still humming the fourth verse.{/n}''', c('[Help clear the course.]', "clear")),
     n("lost", "Seelah", '''{n}Tavia chooses a song about a woman who keeps returning to a house because she has forgotten something, until everybody but the woman knows why she goes there. Seelah learns the first verse, invents the words of the second and becomes unexpectedly convincing by the third.{/n}
 {n}At the line about forgetting her own good sense, she looks straight at you. Dena notices and sings louder to cover her laugh.{/n}
-"I have lost with grace," Seelah announces afterward. "Anybody saying otherwise will have to sing it again."
+"I have lost with grace," {n}Seelah announces afterward.{/n} "Anybody saying otherwise will have to sing it again."
 {n}She leans close enough that the next words are yours alone.{/n}
 "I would still prefer to have won. I had a much worse song ready."
 {n}She helps Tavia wind up the cord, mumbling the verse she got wrong. Tavia corrects her. "I liked mine better," Seelah says.{/n}''', c('[Help clear the course.]', "clear")),
@@ -350,7 +350,7 @@ s("late_afterglow", "The verse she remembers", '"You were going to ask me for an
 "There. Every clever thing, gone."
 {n}She strips the way a soldier does, fast and without ceremony: boots kicked under the chair, shirt over her head in one pull, and then a curse because she has got her elbow tangled in the sleeve. You free her. She does not let you do anything else for yourself. Your belt, your shirt, your boots: she takes them off you one by one like a thief turning out a mark's pockets, and drops each on the floor with a satisfied little "mine."{/n}
 {n}Then she shoves you down onto the bed, swings a leg over your hips, freckled and bare and grinning, and pins your wrists to the pillow with both hands.{/n}
-"Hold still," she says against your mouth. "I've been waiting a whole race for this."
+"Hold still," {n}she says against your mouth.{/n} "I've been waiting a whole race for this."
 {n}In the morning she wakes before you. A hammer starts up below. She pulls you closer instead of rising, her thumb stroking your shoulder.{/n}
 "Morning. Try getting me out of this bed. Go on. I dare you."''',
       c('"Begin with five more minutes."', "morning", flags=("seelah.late_night_kept", "seelah.kissed"))),
@@ -401,7 +401,7 @@ s("late_first_step", "Something left for next time", '"Let us try the thing we t
     n("quiet_phrase", "Seelah", '''{n}She waits for the phrase. When it comes, her tapping finger stills. She leans forward through the quiet that follows, listening for the next note.{/n}
 "There. It leaves you expecting the next bit."
 {n}She tries to hum it afterward and loses the last note. The musician supplies it without interrupting her packing, then asks if she wants to learn the whole tune.{/n}
-"Not today," Seelah says. "Play it for me once more. I'll spare you my singing."
+"Not today," {n}Seelah says.{/n} "Play it for me once more. I'll spare you my singing."
 {n}She finds your hand beneath the edge of the bench.{/n}
 "I'd come back just for that bit. You chose well."''', c('[Stay until the musician finishes packing.]', "carry")),
     n("quick_phrase", "Seelah", '''{n}She catches the rhythm under your fingers and answers it on her knee. When the tune quickens she looks delighted, then loses the beat and laughs at herself.{/n}
@@ -411,7 +411,7 @@ s("late_first_step", "Something left for next time", '"Let us try the thing we t
 {n}The musician lifts an eyebrow at the racket. Seelah grins, stops tapping, and curls her fingers around yours.{/n}
 "Yes. I would like to come again. Next time I will have forgotten the difficult part and be very confident about it."''', c('[Stay until the musician finishes packing.]', "carry")),
     n("shelf", "Narrator", '''{n}The cooper has agreed to rent Seelah a small locking cupboard in the room above the shed. It is hardly bigger than a chest stood on end. The key turns stiffly, and the lower shelf has a dark mark where something once leaked.{/n}
-"Look at our fine house," Seelah says. "Mind your head. And your knees. All right, it's a cupboard. But I paid for it. Our things stay here even when we don't, and the cooper can keep his hands off the shelf."
+"Look at our fine house," {n}Seelah says.{/n} "Mind your head. And your knees. All right, it's a cupboard. But I paid for it. Our things stay here even when we don't, and the cooper can keep his hands off the shelf."
 {n}She has left a small parcel beside the cupboard. She unwraps it to reveal a plain cup and a strip of cloth, neatly folded. She puts them on the lower shelf, then moves them to one side to leave room.{/n}
 "What are you putting here? Something you'll want when you come back. I've brought a cup, so don't go trying to outdo me with a trophy."''',
       c('[Choose an ordinary keepsake to leave beside her cup.]', "keepsake", flags=("seelah.late_shelf_keepsake",)),

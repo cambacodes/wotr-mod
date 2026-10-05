@@ -11,12 +11,12 @@ BRIDGES = {
 "I miss him, Lenna. I also left him. Pass the onions before this becomes a trial."
 {n}Lenna puts her spoon down.{/n} "I'm sorry. I was trying to say something kind."
 "I know. Tell me something else. Tell me how Odrin came to owe your butcher money."
-"That was the dog," Odrin says immediately.
+"That was the dog," {n}Odrin says immediately.{/n}
 {n}Kiana reaches for the onions. "Then begin with the dog."{/n}''',
         '''"Every letter gives Elan a different fate. I have not finished reading them. Eat before you write another."
 {n}Lenna looks at you as though the Commander might supply a verdict. Kiana catches the movement.{/n}
 "No. I asked you both to supper. If there is something certain to tell you, I will tell you. Until then, you may ask whether I want another onion."
-"Do you?" Odrin asks.
+"Do you?" {n}Odrin asks.{/n}
 "No. That one was terrible. Explain how you can afford to offend the butcher and still eat this well."
 {n}He looks relieved to have a question he can answer.{/n}'''),
     ("market_weather", "past"): ("shut",
@@ -44,14 +44,14 @@ BRIDGES = {
 "No. I do have to decide what to wear. A smaller calamity."
 {n}She shuts the lid gently and takes the shawl from the chair.{/n}'''),
     ("blue_room", "supper_later"): ("supper_stairs",
-        '''"I remember that table," Kiana says. "Elan and Meral got it wedged on the stairs. Each insisted the other should have measured something."
+        '''"I remember that table," {n}Kiana says.{/n} "Elan and Meral got it wedged on the stairs. Each insisted the other should have measured something."
 {n}Edris begins to apologize. Kiana shakes her head.{/n}
 "Tell that one. I supplied excellent advice and they ignored every word."
 {n}Her fingers stop turning her cup.{/n}
 "Have Meral write. I want to see whether that table has recovered from the journey."
 "I'll tell him."
 "Tell him to write. Let me answer him."''',
-        '''"Ask Meral to write to me," Kiana says. "And please don't arrange a surprise reunion because somebody thinks they have heard something."
+        '''"Ask Meral to write to me," {n}Kiana says.{/n} "And please don't arrange a surprise reunion because somebody thinks they have heard something."
 {n}Edris's face changes.{/n} "I wouldn't."
 "Good. Send me the guest list. I refuse to be surprised halfway up those stairs."
 {n}Edris nods, more slowly this time.{/n}

@@ -1,0 +1,6 @@
+# Kaylessa, state "dead_at_reveal_ch3" (HARD native death at the Ch3 Forn ambush; she begs for death in Kaylessa_Reveal)
+kaylessa.met:1            # Ch1 Kenabres: talk to Kaylessa (Kaylessa_main) and let her go (never [Attack])
+kaylessa.first_words_seen:1 # Ch1 Kaylessa_main Cue_0001 seen (her first words; read by wasps.what_i_want)
+kaylessa.camp_hunt_told:2 # Ch2 war camp: she says she hunts someone (Kaylessa_main Cue_0040 or Cue_0053); opens kaylessa.early.tells
+kaylessa.begged_death:3   # Ch3 Forn ambush SE -> Kaylessa_Reveal Cue_0037 (her plea): reached on every path
+kaylessa.dead:3           # Ch3 Kaylessa_Reveal: every exit starts Kaylessa_dead (HARD); guide takes the promise answer -> Cue_0033

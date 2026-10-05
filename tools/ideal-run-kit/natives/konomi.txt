@@ -1,0 +1,6 @@
+# Konomi: all-romance run takes state `in_office` (Diplomacy Council kept; never dismissed at Diplomacy_6)
+konomi.present:3              # Ch3: crusade project DiplomacyRankUp2 (Diplomacy rank 1->2) starts DiplomacyOfficer_InDrezen b5f301fb (Konomi in the Drezen throne room)
+konomi.rank_six_started:5     # Ch5: Diplomacy_6 rank-up council (dialog 30333438), answered without Answer_0070
+konomi.rank_eight_started:5   # Ch5: Diplomacy_8 rank-up council (dialog 6178470b)
+irabeth.chapter_three:3       # Chapter03 etude (progress)
+irabeth.chapter_five:5        # Chapter05 etude (progress)

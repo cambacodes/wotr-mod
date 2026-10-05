@@ -179,7 +179,7 @@ threshold("nocticula.trickster.defeated.chair", "Beside me", '"One more question
     nar("threshold", '''{n}The dark around her widens and closes over the two of you like a drawn curtain. Beyond it Threshold goes on, muffled, as though in another room.{/n}
 {n}Her fingers find the buckles of your armour before you feel them move: cold at first, then not cold at all. She strips you the way she prices things, piece by piece, watching your face to learn what each piece costs you. You reach for her and close your hands on nothing; she laughs against your throat. "Hands where I can see them. I said so."{/n}
 {n}So you keep them where she can see them. She pushes you back onto a throne that was not there a moment ago, settles astride your hips with a weight that is very real indeed, and leans down until her hair falls around you both like a second darkness.{/n}
-"I have wanted to do this since the Council," she murmurs against your mouth, amused at herself for saying it. "I want you undone, and I want to watch every step of it, and I want you to remember whose shadow did it." {n}The last fire in Threshold gutters and goes out.{/n}''',
+"I have wanted to do this since the Council," {n}she murmurs against your mouth, amused at herself for saying it.{/n} "I want you undone, and I want to watch every step of it, and I want you to remember whose shadow did it." {n}The last fire in Threshold gutters and goes out.{/n}''',
         c('"...Flawless."', forbids=(LATE,)),
         c('"...Flawless."', "morning_late_paid", requires=(LATE, PAID)),
         c('"...Flawless."', "morning_late", requires=(LATE,), forbids=(PAID,))),
@@ -259,9 +259,9 @@ page("nocticula.trickster.defeated.epilogue", "A queen does not come back",
     '''{n}What the Abyss buried after the Council was a shadow. Nocticula let Alushinyrra wear black, let every lord of the Abyss believe the Midnight Isles were ripe, and walked out of her own funeral into a quiet she had never been allowed before.{/n}
 {n}When the Commander asked her, years later, whether she had ever meant to come back, she said a queen does not come back. She simply stops pretending to be gone.{/n}''',
     ("trickster.ever", RETURNED), living=True, paragraphs=(
-        p("She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, "
+        p("{n}She kept the promise she had made at Threshold, and kept it the way she kept everything: jealously, "
           "expensively, and with the lamps lit. At every table the Commander sat at afterwards, the chair at the right "
-          "hand was hers, and she was always in it before anyone else arrived.", requires=(SAID_YES,)),))
+          "hand was hers, and she was always in it before anyone else arrived.{/n}", requires=(SAID_YES,)),))
 page("nocticula.trickster.defeated.epilogue.fooled", "The dress",
     '''{n}She never wore the dress from the Council again. She kept it, folded, in the one chest in her palace that has no key.{/n}''',
     ("trickster.ever", RETURNED, "noct.fooled"))
@@ -317,7 +317,7 @@ page("nocticula.trickster.epilogue.commit", "The chair nobody else sat in", "", 
         c("[Make her say it twice.] \"I didn't hear you.\"", "twice"),
         c("[Leave the chair beside her empty.]", "refused_page")),
     nar("refused_page", '''{n}The Commander did not cross the room. Nocticula watched the refusal arrive, all the way to the door, and laughed, low, the way she laughed at a card played well against her.{/n}
-"Then keep your hands where I cannot see them," she said. "I shall find out what they do anyway."
+"Then keep your hands where I cannot see them," {n}she said.{/n} "I shall find out what they do anyway."
 {n}The chair beside hers stayed empty for the rest of the Commander's life, and nobody else was ever allowed to sit in it.{/n}''', c()),
     nar("crossed", '''{n}She did not rise. She let the Commander come to her, all the way across a room built to make petitioners feel the distance, and watched every step of it the way she watched the Abyss: as something that would one day belong to her.{/n}
 {n}At the chair she laid one fingertip on the Commander's breastbone and held it there, not pressing, her mouth a breath away. "Kneel, or kiss me. Choose quickly. I bore easily."{/n}''',

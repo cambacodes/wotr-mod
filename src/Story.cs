@@ -1552,8 +1552,7 @@ namespace Tirabade
         // eng7-l11: the same scene ID completes once across native and visitor entries.
         public static Scene[] PresenceHubScenes(Story story, string key) => story.Scenes
             .Where(scene => scene.InteractionHub == key)
-            .Concat((story.Presences.TryGetValue(key, out var hubPresence) ? hubPresence.ReactionScenes : Array.Empty<string>())
-                .Select(id => story.Scenes.Single(scene => scene.Id == id)))
+            .Concat((story.Presences.TryGetValue(key, out var hubPresence) ? hubPresence.ReactionScenes : Array.Empty<string>()).Select(id => story.Scenes.Single(scene => scene.Id == id))) // synthetic hubs (wenduag.echo) have no Presence entry
             .Distinct().ToArray();
 
         public static bool PresenceHubAvailable(Story story, string key, Scene scene, Snapshot state) =>
@@ -2073,7 +2072,10 @@ namespace Tirabade
                     || p.ContactWindows.Select(w => w.Flag).Distinct().Count() != p.ContactWindows.Length
                     || p.Requires.Concat(p.Forbids).Concat(p.RequiresAnyGroups.SelectMany(g => g)).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))
-                    || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key))
+                    // eng7-f3: a reviewed reaction-only visitor is a valid hub too.
+                    || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key)
+                        && p.ReactionScenes.Length == 0)
+                    // end eng7-f3
                     || p.Greeting != null && (p.Dialog == null || string.IsNullOrWhiteSpace(p.Greeting))
                     || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area
                         && !PresencesExclusive(p, other.Value)))
@@ -2239,11 +2241,10 @@ namespace Tirabade
             ["golems_dragon_eggs.over_body"] = "b8dfb42d03fc931409f2b80614cfa9de",     // Golems_DragonEggs/Cue_0001 ("Get up, lizard!")
             ["arsinoe.souls_search_answer"] = "41d9638f7d971164fab4efdbbbffbe70",      // VendorArsinoe/Answer_0025 (-> Cue_0026 "found nothing")
             ["kiana.q3_recovery"] = "2b4a5c01a192d1f4aa8c9d32aa149727",           // FinalResolve, paired with Cue_0032 and its native completion
-            // eng7-f6d begin: Storyteller funeral and obsolete trapped-voice question.
-            ["terendelev.scale_funeral"] = "21b10801b6c2b194d92506a137ef1307",
-            ["terendelev.trapped_future"] = "fd39fd84212de2047b6b887c9a9cf28e",
-            // eng7-f6d end
             ["dragon_eggs.dialog"] = "63f11843f40edd54795fcc0af3f6a20e",                // DragonEggs_Dialogue (FlagUnlocked EnableEggDialog)
+            // eng7-f6c begin: the action-free, once-only funeral introduction.
+            ["terendelev.funeral_introduction"] = "21b10801b6c2b194d92506a137ef1307",
+            // eng7-f6c end
         };
 
         // E18: gates whose refusal only warns (the native content plays; no relationship is touched).
@@ -2485,7 +2486,10 @@ namespace Tirabade
                         || !scene.AnswerLists.SequenceEqual(new[] { "871af36f2ab2b1f40b5de77976c54276" })
                         || !new[] { "irabeth.return_reply", "irabeth.return_meeting_accepted", "irabeth.return_meeting_arrived" }.All(scene.Requires.Contains)
                         || scene.DelayHours < 12
-                    : !IsRemote(scene) || scene.ContactUnit != null || scene.AnswerLists.Length != 0
+                    // eng7-f6c: request at the native quartermaster desk; reply remains remote.
+                    : (reply ? !IsRemote(scene) || scene.ContactUnit != null || scene.AnswerLists.Length != 0
+                        : IsRemote(scene) || scene.ContactUnit != "8692bff6041c47a0b13158d5977f291b"
+                            || !scene.AnswerLists.SequenceEqual(new[] { "fa57cf97ea01bf34e9a30f6ad444381e" }))
                         || !scene.Requires.Contains("irabeth.return_correspondence_available")
                         || (reply && (!new[] { "irabeth.return_request", "irabeth.return_request_sent" }.All(scene.Requires.Contains)
                             || !scene.Forbids.Contains("irabeth.return_meeting_accepted") || scene.DelayHours < 48))))

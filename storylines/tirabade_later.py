@@ -15,7 +15,7 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
     n("box", "Irabeth", '''"Three suggestions for an evening. We each wrote one before you arrived. Yours is the blank piece of paper."
 {n}Anevia produces a narrow roll of tools.{/n}
 "Whoever opens a lock gets to argue for a suggestion. If all three of us manage it, we'll have to do somethin' dreadful like make plans together."
-"The locks were her addition," Irabeth says.
+"The locks were her addition," {n}Irabeth says.{/n}
 "You said you wanted a challenge."
 "I meant an evening without work. Apparently I should have been more precise."''', c('[Make room for the box.]', "lesson")),
     n("lesson", "Anevia", '''{n}You take the box to a sheltered corner of the courtyard. Anevia spreads the cloth beneath it and sets two tools on your palm.{/n}
@@ -33,7 +33,7 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
 "Less force. You're listenin' through your fingers, not demandin' an answer."
 {n}The lock gives a faint click. You begin to turn the tool, and she stops you.{/n}
 "Nearly. That's the bit where I used to get impatient."
-"Used to?" Irabeth asks.
+"Used to?" {n}Irabeth asks.{/n}
 {n}Anevia ignores her with considerable effort.{/n}
 "Try it again. Slower."''',
       c('[Follow her guidance.]', "guided", flags=("three_locks.anevia_taught",)),
@@ -60,16 +60,16 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
       c('[Give Irabeth time to enjoy her success.]', "beth_proud", flags=("three_locks.irabeth_taught",))),
     n("beth_proud", "Irabeth", '''"I know. You are very surprised to find that someone else can be secretive."
 {n}She is smiling now. Anevia reaches across you to squeeze her wife's wrist, and Irabeth turns her hand to catch the offered fingers.{/n}
-"Your turn," Irabeth tells you. "You have the advantage of seeing exactly which mistake to avoid."''', c('[Let her show you the second lock.]', "your_turn")),
+"Your turn," {n}Irabeth tells you.{/n} "You have the advantage of seeing exactly which mistake to avoid."''', c('[Let her show you the second lock.]', "your_turn")),
     n("beth_turn", "Irabeth", '''{n}Irabeth studies the second lock before touching it. Anevia watches her hands with an attention she has not bothered to disguise.{/n}
-"You can look at my face occasionally," Irabeth says.
+"You can look at my face occasionally," {n}Irabeth says.{/n}
 "Know what your face looks like."
 "So you keep telling me."
 {n}The lock clicks open. Anevia's smile answers the satisfaction in her wife's face.{/n}''', c('[Set the second lock aside.]', "last")),
     n("your_turn", "Irabeth", '''{n}Irabeth points out where she found resistance and waits while you try. When your hand slips, she steadies the box instead of taking the tools away.{/n}
 "Again. There is no one waiting on the other side of a door."
 {n}Anevia rests her chin on her folded arms and watches. It takes longer than you hoped, but eventually the lock opens.{/n}
-"Good," Irabeth says, with enough pleasure that you look up from the hasp.''', c('[Set the second lock aside.]', "last")),
+"Good," {n}Irabeth says, with enough pleasure that you look up from the hasp.{/n}''', c('[Set the second lock aside.]', "last")),
     n("last", "Anevia", '''{n}Anevia takes the final lock with the air of someone about to restore the proper order of things. It does not open.{/n}
 {n}She tries again. Irabeth reaches into her pocket and sets a key beside the box.{/n}
 "That one sticks. I meant to tell you before we came out."
@@ -87,7 +87,7 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
 "Had a very nice door to leave through."
 {n}Irabeth shakes her head and gets up to collect the lantern. Anevia catches her free hand as she passes. Both look to you as you suggest a day.{/n}''', c('[Arrange the evening together.]', flags=("three_locks.planned",))),
     n("meal", "Irabeth", '''"Then we choose somewhere that will feed us before anyone recognizes our titles."
-"That's a disguise problem," Anevia says. "I can help."
+"That's a disguise problem," {n}Anevia says.{/n} "I can help."
 {n}Irabeth gives her a long look.{/n}
 "Ordinary clothes."
 "You take all the adventure out of things."
@@ -100,7 +100,7 @@ SCENES = [scene("three_locks", "A respectable use for a bad habit", "Together", 
 SCENES.append(scene("three_outing", "The evening on the folded page", "Together", 3,
     '"We chose an evening. Shall we keep it?"', [
     n("start", "Irabeth", '''{n}Irabeth has changed into a plain shirt and a coat without insignia. Anevia stands behind her, straightening a fold at the shoulder.{/n}
-"You are making it worse," Irabeth says.
+"You are making it worse," {n}Irabeth says.{/n}
 "Keep movin' and I'll make it interesting."
 {n}Anevia steps back to inspect her work, then notices you watching.{/n}
 "Ready? She's been ready for a quarter of an hour. Keeps inventin' things to check so I won't notice."
@@ -110,7 +110,7 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
       c('[Go out for the meal you chose.]', "meal", requires=("three_locks.meal",)),
       c('[Explain that something has changed, and arrange another evening.]', abort=True)),
     n("music", "Anevia", '''{n}The room Anevia has chosen is crowded enough to be warm without a fire. A fiddler stands on a low platform, stamping time with one boot. You find space near the end of a bench. Anevia brings over a cup of cider and sets it safely out of the way of passing elbows.{/n}
-"No speeches," Anevia says, sounding pleased. "Can't hear yourself think, never mind deliver one."
+"No speeches," {n}Anevia says, sounding pleased.{/n} "Can't hear yourself think, never mind deliver one."
 {n}Irabeth leans close to answer. Anevia turns her head to listen, and their foreheads nearly meet.{/n}
 "What?"
 "I said, can you hear anything but the drum?"
@@ -125,7 +125,7 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
 {n}Anevia's surprise lasts only a moment before she offers Irabeth her hand.{/n}
 "Well. If you're goin' to arrange things that neatly."''', c('[Make room for them to stand.]', "dance")),
     n("far_wall", "Anevia", '''{n}Anevia retrieves her cup and finds a gap through the crowd. You make room for yourselves on a bench against the far wall, where the fiddle rises above the drum instead of struggling beneath it. Anevia sets her cup beside her before turning to you both.{/n}
-"Better," Irabeth says.
+"Better," {n}Irabeth says.{/n}
 "Good. Now you can hear me say you look lovely."
 {n}Irabeth gives her a sideways look.{/n}
 "You could have said that while you were pulling at my coat."
@@ -146,13 +146,13 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
 {n}Anevia takes your hand. Her movements are small and assured; when another couple comes too close, she turns the collision into a change of direction and grins at you.{/n}
 "See? Completely planned."
 {n}Irabeth waits at the edge of the room, holding Anevia's cup. As the tune ends, Anevia leans toward her to reclaim it and steals a brief kiss instead.{/n}
-"Better than the drink," she says, then reaches back for you.''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.anevia_dance",))),
+"Better than the drink," {n}she says, then reaches back for you.{/n}''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.anevia_dance",))),
     n("listen", "Anevia", '''{n}Anevia settles beside you. Irabeth stays standing close enough that you can hear her humming the melody.{/n}
-"She knows all the words," Anevia murmurs. "Won't sing 'em unless you catch her at the right moment."
+"She knows all the words," {n}Anevia murmurs.{/n} "Won't sing 'em unless you catch her at the right moment."
 "You are not going to make this the right moment by announcing it."
 {n}Anevia laughs and rests her head briefly against Irabeth's arm. You listen together until the tune ends.{/n}''', c('[Leave together for the walk home.]', "walk", flags=("three_outing.listened",))),
     n("meal", "Irabeth", '''{n}The place you choose has a short menu and a window overlooking a narrow lane. Irabeth reaches for the chair beside the window. Anevia pauses at the other side of the table, looking from the window to the door.{/n}
-"You can see both from here," Irabeth tells her, shifting the chair facing the door a little.
+"You can see both from here," {n}Irabeth tells her, shifting the chair facing the door a little.{/n}
 {n}Anevia sits, caught in a habit she had hoped no one would notice.{/n}
 "Wasn't goin' to say anything."
 "I know. I would like you to taste your supper."
@@ -168,7 +168,7 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
     n("choose", "Anevia", '''"Right. Put it down, Beth. You're off duty."
 {n}Irabeth relinquishes the menu, but keeps watching it until you turn it out of her line of sight.{/n}
 "One thing. The pie. Everything else is your decision."
-"Heard her," Anevia says. "Don't get distracted by anythin' sensible."
+"Heard her," {n}Anevia says.{/n} "Don't get distracted by anythin' sensible."
 {n}Anevia glances at you, then lowers her voice.{/n}
 "She's been lookin' at it since we arrived. I believe you've been entrusted with a very serious matter."''', c('[Include the pie in the order.]', "supper", flags=("three_outing.chosen_for_beth",))),
     n("supper", "Narrator", '''{n}The meal arrives without incident, which Irabeth seems to consider an achievement. The pie is still warm. Anevia cuts a small piece from her own portion and sets it on her wife's plate.{/n}
@@ -184,7 +184,7 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
       c('"The long way. We kept this evening for ourselves."', "long", flags=("three_outing.long_walk",)),
       c('"Home. I would like another hour with you both indoors."', "home", flags=("three_outing.home",))),
     n("long", "Irabeth", '''{n}Irabeth offers you her arm. Anevia takes her other hand, and for a while the three of you have to negotiate the uneven paving together.{/n}
-"This is not a practical formation," Irabeth observes.
+"This is not a practical formation," {n}Irabeth observes.{/n}
 "Good thing we're not marchin'."
 {n}Anevia squeezes her hand. You choose the next turning, where the lane is wide enough that no one has to let go.{/n}''', c('[Take the longer walk together.]', flags=("three_outing.kept",))),
     n("home", "Anevia", '''"Now that's a plan I can support."
@@ -192,7 +192,7 @@ SCENES.append(scene("three_outing", "The evening on the folded page", "Together"
       c('[Kiss her, and go inside together.]', "inside", flags=("three_outing.kissed",)),
       c('[Take her hand and go inside together.]', "inside")),
     n("inside", "Irabeth", '''{n}Irabeth closes the door behind you. Anevia is already looking for somewhere to put the things she has carried home in her pockets.{/n}
-"Leave them," Irabeth says. "They will still be there in the morning."
+"Leave them," {n}Irabeth says.{/n} "They will still be there in the morning."
 {n}Anevia turns back. Irabeth holds out a hand to each of you, and waits for you both to come closer.{/n}''', c('[Stay with them.]', flags=("three_outing.kept",))),
 ], requires=("three_locks.planned",),
     forbids=("closed", "loss", "inhuman", "irabeth_away", "anevia_away", "last_watch"), delay=48, optional=True,

@@ -43,6 +43,13 @@ COMMANDER_ABSENT = {
     # eng7-f6a: her historical identity, spoken to Pharasma, stages no living Commander.
     "areelu.trickster.afterlogue.former_half_demon": "independent",
     # eng7-f6a end
+    # eng7-f6c begin: native histories stay true after the Commander's death.
+    # Guild careers and the Tirabades' service/retirement stage no living Commander.
+    "horzalah.native.eng7_f6c.guild": "independent",
+    "horzalah.native.eng7_f6c.trio": "independent",
+    "irabeth.native.eng7_f6c.service": "independent",
+    "irabeth.native.eng7_f6c.retired": "independent",
+    # eng7-f6c end
     # The trio's loss pages: the future the war took, told without the Commander in the room.
     "ending_loss": "independent",
     "tirabade.negotiated_ending_loss": "independent",
@@ -197,6 +204,13 @@ PRESENCE_BOOTSTRAPS = {
 }
 PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
 # eng7-l06 end
+
+# eng7-f4: authored contact bootstrap for the existing stolen-transfer-papers device.
+# Only departure is lifted: theft brings her back to demand her papers, not to reconcile.
+PRESENCE_BOOTSTRAPS["seelah"] = {"seelah_gone": {
+    "Flag": "seelah.trickster.primed",
+    "Reason": "The stolen transfer papers bring the living Seelah to Fye's table before she answers."}}
+# eng7-f4 end
 
 
 def presence_relationship(key):

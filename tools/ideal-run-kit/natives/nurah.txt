@@ -1,0 +1,6 @@
+# Nurah: all-romance run takes state `imprisoned` (arrested after the Drezen battle, pardoned at her cell in Ch3)
+nurah.trickster_recruited:2   # Ch2 war camp: confront Nurah (Answer_0084), Trickster recruit Answer_0109 -> Cue_0103 starts NurahRecruitedByTrickster a879a3a6
+nurah.siege_asked_to_stay:2   # Ch2 Drezen, Nurah_After_Battle (accomplice branch): "Stay with me. I need you in my party!" (Answer_0005) -> Cue_0010; opens the inline beat nurah.early.hanging
+nurah.prison:2                # Ch2 end, Drezen: Nurah_After_Battle -> arrest -> NuraInPrisonAfterDrezen c922e0cb (kept playing; never use native [Set Nurah free] before the commit)
+irabeth.chapter_three:3       # Chapter03 etude (progress)
+irabeth.chapter_five:5        # Chapter05 etude (progress)

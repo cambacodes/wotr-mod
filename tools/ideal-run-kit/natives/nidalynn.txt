@@ -1,0 +1,10 @@
+# Nidalynn (relationship nidalynn). State "golems" (the smallest egg taken at Xanthir's golems in the Ivory Sanctum, Ch3).
+# No native key has to be forced: the device is inline on IvorySanctum/Golems_DragonEggs AnswersList_0002.
+# '#@' lines are timed.py directives (plain trace.py ignores them). Verified: python timed.py trace natives/nidalynn.txt - nidalynn
+#@ !eggs.project              # the clutch is not crated to Drezen BEFORE the egg is taken (DragonEggs Answer_0021); the mod scene forbids it
+#@ !eggs.destroyed            # nor smashed before (DragonEggs Answer_0003 / the golems' Destruction)
+#@ !eggs.omelet
+#@ -choice nidalynn.trickster.eggs.lamp_black/held/1    # never "[Put your heel through it...]" (the stock sim takes it: shortest path)
+#@ -choice nidalynn.trickster.kiln.hatching/her/1       # prescribed: tell the truth at the kiln (the lie also reaches the commit, longer)
+#@ -choice nidalynn.trickster.kiln.whose/choose/1       # prescribed: give up the claim at once ("She's yours to raise...")
+#@ -choice nidalynn.trickster.kiln.whose/choose/2
