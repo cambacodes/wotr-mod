@@ -388,7 +388,7 @@ internal static partial class NativeEpilogueEditManagedTests
         check(whenOnly.Selected() == 0 && live.Selected() == -1, "The delivery predicate is not what separates the live group from When alone.");
         current = null;
         check(live.Selected() == -1 && dream.Selected() == -1, "A delivery group selects with the mod disabled.");
-        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "src", "Main.cs"));
+        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(Bootstrap.RepositoryRoot, "src", "Main.cs"));
         check(mainSource.Contains("Game.Instance?.Player != null ? State() : null, story);"), "Main no longer builds its E14d groups with the story (delivery predicate).");
         Console.WriteLine("PASS: E14d delivery predicate (Arueshalae Cue_0462 and Cue_0461): When and scene availability on one snapshot.");
     }

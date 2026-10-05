@@ -88,6 +88,17 @@ internal static class IrabethMeetingIntegrationTests
 
     internal static void Run(Action<bool, string> check)
     {
+        if (!MonoNativeBoundary.Enabled) { RunFixture(check); return; }
+        using (var boundary = new MonoNativeBoundary(HarmonyLib.AccessTools.PropertyGetter(
+            typeof(Kingmaker.EntitySystem.Persistence.LoadingProcess), "Instance"), nameof(IrabethMeetingIntegrationTests)))
+        {
+            RunFixture(check);
+            check(boundary.Calls == 1, "Meeting Tick skipped or replayed its native loading boundary");
+        }
+    }
+
+    private static void RunFixture(Action<bool, string> check)
+    {
         var goneFact = (Etude)FormatterServices.GetUninitializedObject(typeof(Etude));
         var hideFact = (Etude)FormatterServices.GetUninitializedObject(typeof(Etude));
         var history = Meeting.GetMethod("DepartureHistoryPermits", Members)!;
