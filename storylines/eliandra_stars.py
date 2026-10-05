@@ -1,9 +1,9 @@
 """Eliandra, Chapter 5 in Drezen: after the star-heart (the courtship on her presence; 11-ROSTER-PLAN-2 §2 build sheet).
 
 The stargazers come to Drezen with the high priestess who has let her Lady go. F10 authored staging moves her primary
-table to the ordinary tailor's frontage (8 m; pending live), preserving the King's-gone fallback gates. As before,
-when the King is gone or cannot be found, she waits at the Drezen mark where she stands on the Angel path (the native spawner that
-Eliandra_DefaultActor 64c5a760 hides everywhere else). Every beat is Trickster-only (T): it follows the device and the yes.
+table to the ordinary tailor's frontage (8 m; live proof 20261005-100808), preserving the King's-gone fallback gates.
+F11 authored staging puts the fallback beside the jeweller, about four metres left and four metres forward.
+The old Angel-path mark was off the walkmesh beside Yaniel; the offset leaves Nidalynn her steps. Every beat is Trickster-only (T): it follows the device and the yes.
 
 The beats: the city (her first morning question); the stone (the King's tavern only); the lights she can see and the
 Commander cannot; the healing that tires her now; Katair and his own grave at the Stone Tree (Ranger_main Cue_0016-0023);
@@ -23,7 +23,7 @@ SCENES = []
 
 TAILOR = "253cdb8f434e5a6469b75e18428316e3"  # F10: front 8 m. Live proof 20261005-100808.
 FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"       # FoolKing (MythicTrickster_Ch3), in his tavern in DrezenCapital
-MARK = "9a41b047-9314-4719-a915-9c24aedf3e95"        # her native DrezenCapital spawner (scene 3e2b5ea0; Eliandra_DefaultActor)
+JEWELLER = "bc1093231b1577a4485a730c29595195"  # JewelerCapitalTrader; ordinary Ch3/Ch5 capital trader
 HUB = "eliandra.presence"
 HUB_ALT = "eliandra.presence.mark"
 HUB_FAILED = HUB + ".failed"
@@ -44,15 +44,16 @@ GREETING = ("{n}At a table in the open ground between the tailor's and the jewel
             "berth, as though it were an altar.{/n}")
 PRESENCES = {
     # Front of the ordinary tailor, 8 m: 4.5 m from the evil Arueshalae fallback; pending live.
-    # The existing King-gone and failure gates still select the native-mark fallback.
+    # The existing King-gone and failure gates still select the fallback.
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="front", Distance=8.0),
               Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD, HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    # Fallback, when the King is gone or cannot be found: her own Drezen mark from the Angel path.
-    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(Locator=MARK, Offset=[0.0, 0.0]),
+    # F11 authored fallback: street left/front of the jeweller, away from Nidalynn at left 2.5 m.
+    # World offset (merchant faces about -15 degrees): about 4.2 m left / 4.4 m front. Pending Ground-only live proof.
+    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELLER, Offset=[-5.2, 3.2]),
                   Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD], MinChapter=5, MaxChapter=5,
                   RequiresAnyGroups=[[HUB_FAILED, KING_GONE]], AnswerLists=[], Dialog="hub",
-                  Greeting=("{n}A woman in a grey travelling cloak sits in a quiet corner of the city with a star chart across "
+                  Greeting=("{n}To the left of the jeweller's stall, a little way into the street, a woman in a grey travelling cloak sits with a star chart across "
                             "her knees, watching the street as though it were a sky she had not learned yet.{/n}")),
 }
 
@@ -73,7 +74,7 @@ PLACES = ((HUB, "", {}), (HUB_ALT, "_mark", dict(RequiresAnyGroups=[[HUB_FAILED,
 
 
 def drezen(id, title, entry, nodes, requires, forbids=(), delay=0, places=PLACES, heart=True, **fields):
-    """A beat on her presence (the King's tavern, or her Drezen mark): the same scene on each, each forbidding the other."""
+    """A beat on her presence (the tailor's frontage, or the jeweller's street): the same scene on each, each forbidding the other."""
     ids = [id + suffix for _, suffix, _ in places]
     for hub, suffix, extra in places:
         sid = id + suffix
@@ -94,7 +95,7 @@ def drezen(id, title, entry, nodes, requires, forbids=(), delay=0, places=PLACES
 # the shrine's last night are hosted only there.
 
 def also_in_drezen(scene_id, entry):
-    """Twins of a shrine scene on her presence (tavern and mark): same nodes, each twin forbidding the others."""
+    """Twins of a shrine scene on her presence (tailor and jeweller): same nodes, each twin forbidding the others."""
     original = next(s for s in SCENES_MAIN if s["Id"] == scene_id)
     ids = [scene_id] + [scene_id + "_drezen" + suffix for _, suffix, _ in PLACES]
     for hub, suffix, extra in PLACES:

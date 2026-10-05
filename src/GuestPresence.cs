@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Kingmaker;
 using Kingmaker.Blueprints;
@@ -184,6 +185,20 @@ namespace Tirabade
         internal static UnitSpawningData CopySpawningData() => ContextData<UnitSpawningData>.Request()
             .BeforeAttachView(copy => copy.GroupId = copy.UniqueId);
 
+        // F11: State.Units covers only the active area part. Ownership comes exclusively from the saved
+        // spawn ID; an off-part native twin with the same blueprint must never become our copy.
+        internal static UnitEntityData? ObserveRecordedCopy(string? copyId, IEnumerable<EntityDataBase> areaEntities,
+            IEnumerable<UnitEntityData> loadedUnits, PresenceObservation seen)
+        {
+            var copy = copyId == null ? null : areaEntities.OfType<UnitEntityData>().FirstOrDefault(unit =>
+                unit.UniqueId == copyId && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed);
+            seen.CopyFound = copy != null;
+            seen.CopyAlive = copy != null && !copy.State.IsDead && !copy.State.IsFinallyDead;
+            seen.CopyOutsideLoadedPart = copy != null && !loadedUnits.Contains(copy);
+            seen.CopyUsable = copy != null && !seen.CopyOutsideLoadedPart && NativeContact.Usable(copy);
+            return copy;
+        }
+
         // eng7-l05: the uniquely recorded unit is the only copy we may retire.
         internal PresenceObservation Observe(out UnitEntityData? native, out UnitEntityData? copy, out PresenceRecord? record)
         {
@@ -207,11 +222,8 @@ namespace Tirabade
             var units = game.State.Units
                 .Where(unit => Rules.IsPresenceUnit(blueprintId, unit.OriginalBlueprint?.AssetGuid.ToString(), unit.Blueprint?.AssetGuid.ToString())
                     && !unit.Destroyed && !unit.DestroyMark && !unit.IsDisposed).ToArray();
-            copy = copyId == null ? null : units.FirstOrDefault(unit => unit.UniqueId == copyId);
-            seen.CopyFound = copy != null;
-            seen.CopyAlive = copy != null && !copy.State.IsDead && !copy.State.IsFinallyDead;
+            copy = ObserveRecordedCopy(copyId, game.State.LoadedAreaState.AllEntityData, game.State.Units, seen);
             // eng7-l05: living unusable twins stay ambiguous, including actors in unloaded storage.
-            seen.CopyUsable = copy != null && NativeContact.Usable(copy);
             var natives = units.Where(unit => unit.UniqueId != copyId && !NativeContact.Ignorable(unit)).ToArray();
             seen.NativeCount = natives.Length;
             seen.RecordedNative = record?.NativeUnitId != null;

@@ -57,6 +57,13 @@ def check(story, table=None):
             errors.append(f"{key}: no reachable (area, chapter) pair")
         at = presence.get("At") or {}
         anchor = at.get("NearUnit")
+        # F11: each alternate must survive a genuinely missing primary merchant. No gate changes.
+        if key in ("eliandra.presence.mark", "shamira.presence.awning"):
+            primary = presences.get("eliandra.presence" if key == "eliandra.presence.mark" else "shamira.presence")
+            if not anchor or primary and anchor == (primary.get("At") or {}).get("NearUnit"):
+                errors.append(f"{key}: F11 requires an independent persistent fallback anchor")
+            if at.get("Side") == "behind":
+                errors.append(f"{key}: F11 fallback must avoid roof-prone rear staging")
         if key in F10_PRIMARIES:
             if anchor not in F10_MERCHANTS:
                 errors.append(f"{key}: F10 requires an ordinary persistent Ch5 merchant, away from the exotic stall")
