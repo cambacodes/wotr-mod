@@ -650,6 +650,12 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l13: required q6b reader test found its registry missing from the export.
+    from storylines import native_facts
+    native_facts.integrate(payload)
+    # eng7-l13: enforce existing live outcome contracts after all scene generators.
+    from storylines import earned_outcomes
+    earned_outcomes.integrate(payload)
     return payload
 
 
