@@ -552,6 +552,187 @@ internal static class YanielTricksterTests
         check(Avail(ch4, Later(story, World(story, 4, "trickster.ever", Swapped, "minagho.dead"), 48))
               && Paths(ch4, Later(story, World(story, 4, "trickster.ever", Swapped, "minagho.dead"), 48)).All(o => o.path.Any(e => e.node == "city_dead")),
             "The Chapter 4 memory places a dead Minagho somewhere in the city.");
+        // Reviewed polish A1-A4, A8-A9, A11: exercise production Rules with earned choices.
+        // New prose branches must be exclusive without changing the route's outcome.
+        Node N(Scene scene, string id) => scene.Nodes.Single(n => n.Id == id);
+        string Selected(Scene scene, string id, Snapshot state)
+        {
+            var selected = N(scene, id).Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).ToArray();
+            check(selected.Length == 1, "Yaniel polish: ambiguous or missing continuation " + scene.Id + "/" + id);
+            return selected.FirstOrDefault()?.Next ?? "";
+        }
+        var masquerade = S(P + "beat.areelu");
+        var maskIron = Take(wall, bareUnseen, "cuff_unseen", 1, P + "sword_lost");
+        maskIron = Take(foundLate, Later(story, maskIron, 24), "judges_empty", 0, Returned);
+        maskIron = Take(S(P + "beat.walls"), Later(story, maskIron, 24), "you", 2, P + "drawn.walls");
+        foreach (var receipts in new[] { Array.Empty<string>(), new[] { "yaniel.fake_freed" },
+                                        new[] { "yaniel.fake_refused" }, new[] { "yaniel.fake_freed", "yaniel.fake_refused" } })
+        foreach (bool architect in new[] { false, true })
+        foreach (var origin in new[] { home, lateHome, maskIron })
+        {
+            var state = Observe(story, origin, receipts.Concat(new[] { "yaniel.areelu_unmasked" })
+                                                      .Concat(architect ? new[] { "areelu.started" } : Array.Empty<string>()).ToArray());
+            string expected = receipts.Contains("yaniel.fake_freed") ? "freed" : receipts.Length > 0 ? "refused" : "plain";
+            check(Selected(masquerade, "start", state) == expected, "Yaniel polish A1: impostor receipt precedence.");
+            string endNode = expected == "freed" ? "end" : expected == "refused" ? "end_refused" : "end_unknown";
+            check(Selected(masquerade, architect ? "courted" : "wanted", state) == endNode,
+                "Yaniel polish A1: ending forgets the impostor history.");
+            if (architect) check(Selected(masquerade, "wanted", state) == "courted", "Yaniel polish A1: Areelu reaction lost.");
+            var endings = Paths(masquerade, Later(story, state, 24));
+            check(endings.Count == 4 && endings.All(o => o.path.Any(e => e.node == endNode)
+                  && o.state.Has(P + "beat.areelu") && !o.state.Has(Committed)), "Yaniel polish A1: changed courtship payoff.");
+            check(N(masquerade, endNode).Choices[1].Set.SequenceEqual(new[] { P + "drawn.bite" })
+                  && !N(masquerade, endNode).Text.Contains("take her sword back"), "Yaniel polish A1: unearned sword refusal or flirt effect.");
+        }
+
+        void Refresh(Snapshot state)
+        {
+            // Live inventory is observed afresh; derived keys are not saved receipts.
+            state.Flags.ExceptWith(story.Derived.Keys);
+            state.Flags.ExceptWith(story.Counts.Keys);
+            Rules.Complete(story, state);
+        }
+        var oathRoad = Take(swap, World(story, 3, "trickster", "trickster.ever", "yaniel.fane_doubt", "yaniel.radiance_plus1"),
+                            "sworn", 0, Swapped, Judges, Oath);
+        foreach (bool iz in new[] { false, true })
+        foreach (int custody in new[] { 0, 1, 2 }) // absent, stash only, party
+        foreach (bool worn in new[] { false, true })
+        foreach (bool back in new[] { false, true })
+        {
+            var state = Later(story, Observe(story, Later(story, oathRoad, 200, 5), "yaniel.freed", "irabeth.chapter_five"), 24);
+            state.Flags.Remove("yaniel.radiance_plus1");
+            state.Flags.Remove("yaniel.radiance_party.plus1");
+            if (custody > 0) state.Flags.Add("yaniel.radiance_plus1");
+            if (custody == 2) state.Flags.Add("yaniel.radiance_party.plus1");
+            if (iz) state.Flags.Add("iz.done");
+            if (worn) state.Flags.Add(P + "cuff_worn");
+            if (back) state.Flags.Add(P + "why.come_back");
+            else state.Flags.Remove(P + "why.come_back");
+            Refresh(state);
+            string greeting = custody == 2 ? (iz ? "judges_due" : "judges") : (iz ? "judges_empty_due" : "judges_empty");
+            check(Selected(found, "start", state) == greeting, "Yaniel polish A2: arrival timing or stash treated as hip: iz=" + iz + " custody=" + custody + " selected=" + Selected(found, "start", state) + " expected=" + greeting);
+            check(Selected(found, greeting, state) == (worn ? "cuff_seen" : back ? "why_back" : "stay"),
+                "Yaniel polish A2: cuff/return continuation lost.");
+            check(Paths(found, state).All(o => !o.state.Has(Verdict) && !o.state.Has(Stands) && !o.state.Has(Broken)),
+                "Yaniel polish A2: greeting judges the oath for free.");
+        }
+
+        var oathHome = Take(found, Later(story, Observe(story, Later(story, oathRoad, 200, 5), "yaniel.freed", "irabeth.chapter_five"), 24), "stay", 0, Returned);
+        var oathCourt = Take(S(P + "beat.walls"), Later(story, oathHome, 24), "you", 2, P + "drawn.walls");
+        var oathIz = Later(story, Observe(story, oathCourt, "iz.done"), 24);
+        var drill = S(P + "beat.drill");
+        var brokenOath = Program.Copy(oathIz);
+        brokenOath.Flags.Remove("yaniel.radiance_plus1");
+        brokenOath.Flags.Remove("yaniel.radiance_party.plus1");
+        Refresh(brokenOath);
+        brokenOath = Observe(story, Take(hands, brokenOath, "broken", 0, Broken), "yaniel.radiance_plus1");
+        var pendingHome = Take(foundLate, Later(story, lateRift, 24), "judges", 0, Returned);
+        pendingHome = Take(S(P + "beat.walls"), Later(story, pendingHome, 24), "you", 2, P + "drawn.walls");
+        var pendingOath = Take(hands, Later(story, pendingHome, 24), "pending_held", 0, P + "oath_pending");
+        foreach (var (state, suffix) in new[] {
+            (oathCourt, ""), (pendingOath, ""),
+            (Take(hands, Observe(story, oathIz, "yaniel.radiance_sang"), "held_sang", 0, Stands), "_stands"),
+            (Take(hands, oathIz, "held_believed", 0, Stands), "_stands"),
+            (Take(hands, oathIz, "held_unproven", 0, P + "oath_unproven"), "_unproven"),
+            (brokenOath, "_broken") })
+        {
+            var ready = Later(story, state, 24);
+            check(Avail(drill, ready) && Selected(drill, "start", ready) == "grip" + suffix,
+                "Yaniel polish A3: wrong oath lesson.");
+            var longing = N(drill, "cut").Choices.Skip(1).Where(c => Rules.Match(c.Requires, c.Forbids, ready)).ToArray();
+            check(longing.Length == 1 && longing[0].Next == "want" + suffix, "Yaniel polish A3: wrong longing response.");
+            check(Paths(drill, ready).Count == 2 && Paths(drill, ready).All(o => o.state.Has(drill.Id)
+                  && o.state.Has(Stands) == state.Has(Stands) && o.state.Has(Broken) == state.Has(Broken)),
+                "Yaniel polish A3: lesson changes oath outcome or loses a method.");
+        }
+
+        var church = S(P + "beat.church");
+        foreach (bool iz in new[] { false, true })
+        {
+            var neverOwned = iz ? Observe(story, bareUnseen, "iz.done") : bareUnseen;
+            var cuffOath = Take(wall, neverOwned, "cuff_unseen", 1, P + "sword_lost");
+            cuffOath = Take(foundLate, Later(story, cuffOath, 24), "judges_empty", 0, Returned);
+            cuffOath = Take(S(P + "beat.walls"), Later(story, cuffOath, 24), "you", 2, P + "drawn.walls");
+            cuffOath = Take(S(P + "beat.statue"), Later(story, cuffOath, 24), "truth", 0, P + "beat.statue");
+            foreach (int custody in new[] { 0, 1, 2 })
+            {
+                var state = Program.Copy(cuffOath);
+                if (custody > 0) state.Flags.Add("yaniel.radiance_plus1");
+                if (custody == 2) state.Flags.Add("yaniel.radiance_party.plus1");
+                Rules.Complete(story, state);
+                state = Later(story, state, 24);
+                check(Avail(church, state) && Selected(church, "start", state) == "judges_cuff",
+                    "Yaniel polish A4: recovery erases manacle oath origin.");
+                var paths = Paths(church, state);
+                check(paths.Count == 3 && paths.All(o => o.state.Has(church.Id) && !o.state.Has(Stands)
+                      && o.state.Has(P + "sword_lost")), "Yaniel polish A4: church changes oath or loses a response.");
+                check(N(church, "choose").Choices[2].Crusade?.Resource == "Favors"
+                      && N(church, "choose").Choices[2].Crusade?.Amount == -50,
+                    "Yaniel polish A4: reliquary payment changed.");
+            }
+        }
+
+        // A5-A6: earlier vulnerability stays true without granting trust or curing captivity.
+        var waryRoad = Take(wall, Later(story, Observe(story, bareUnseen, "yaniel.struck_test"), 24), "cuff_unseen", 1, P + "distrust");
+        var waryHome = Take(foundLate, Later(story, waryRoad, 24), "judges_empty", 0, Returned);
+        waryHome = Take(S(P + "beat.walls"), Later(story, waryHome, 24), "you", 2, P + "drawn.walls");
+        var vulnerable = Take(refugee, Later(story, waryHome, 24), "after", 0, P + "beat.refugee");
+        var waryVerdict = Take(hands, Later(story, Observe(story, vulnerable, "iz.done", "yaniel.radiance_plus1"), 24), "held_believed", 0, Stands);
+        check(!waryVerdict.Has(P + "trusted") && !waryVerdict.Has(Committed)
+              && Avail(S(P + "epilogue.distrusted"), Later(story, waryVerdict, 24, 6))
+              && !N(S(P + "epilogue.distrusted"), "page").Text.Contains("never once stood with her back"),
+            "Yaniel polish A5: refugee vulnerability is erased or awards raid trust.");
+        foreach (string slept in new[] { "went", "stayed" })
+        {
+            var rested = Take(night, Later(story, home, 24), slept, 0, P + "beat.night");
+            check(Avail(S(P + "epilogue.unsettled"), Later(story, rested, 24, 6))
+                  && !N(S(P + "epilogue.unsettled"), "page").Text.Contains("never did learn to sleep in a bed"),
+                "Yaniel polish A6: unsettled history erases sleep or changes ending eligibility.");
+        }
+
+        // A9: chapter-four choices, market outcome, refusal, vigil, intimacy and the later wrist choice.
+        foreach (string cuffNode in new[] { "worn", "packed" })
+        foreach (string marketNode in new[] { "picked2", "bought", "left" })
+        foreach (bool returnedIron in new[] { false, true })
+        {
+            var memory = Paths(ch4, Later(story, carried, 100, 4)).FirstOrDefault(o =>
+                o.path.Any(e => e.node == cuffNode) && o.path.Any(e => e.node == marketNode));
+            check(memory.state != null, "Yaniel polish A9: memory history missing.");
+            if (memory.state == null) continue;
+            var state = Take(found, Later(story, Observe(story, Later(story, memory.state, 200, 5), "yaniel.freed", "irabeth.chapter_five"), 24), "stay", 0, Returned);
+            state = Take(S(P + "beat.walls"), Later(story, state, 24), "you", 2, P + "drawn.walls");
+            state = Take(refugee, Later(story, state, 24), "after", 0, P + "beat.refugee");
+            state = Take(letter, Later(story, Observe(story, state, "iz.done"), 24), "end_quiet", 0, Verdict);
+            if (returnedIron)
+            {
+                state = Take(trade, Later(story, state, 24), "given_carries", 0, Declined);
+                state = Take(vigil, Later(story, state, 24), "bell", 0, Committed, Shackle);
+            }
+            else state = Take(trade, Later(story, state, 24), "ask", 0, Committed, Shackle);
+            foreach (int reciprocal in new[] { 0, 1 })
+                check(Through(niche, Later(story, state, 24), "want", reciprocal).All(o => o.Has(Niche) && o.Has(P + "morning_seen")),
+                    "Yaniel polish A11: reciprocal intimacy answer loses aftermath.");
+            state = Take(niche, Later(story, state, 24), "want", 0, Niche);
+            state = Take(S(P + "after.watch"), Later(story, state, 24), "end", 0, P + "after.watch_stood");
+            check(Selected(wrist, "start", state) == cuffNode, "Yaniel polish A9: wrong wrist provenance.");
+            foreach (int pocket in cuffNode == "worn" ? new[] { 0, 1 } : new[] { 0 })
+            {
+                var afterWrist = Take(wrist, Later(story, state, 24), cuffNode == "worn" ? "mark2" : "unwrapped2", pocket, P + "after.wrist_seen");
+                var postwar = Later(story, afterWrist, 24, 6);
+                foreach (var page in pages.Where(s => s.Nodes[0].Paragraphs.Any(q => q.Text.Contains("why there were two"))))
+                {
+                    var twoIrons = page.Nodes[0].Paragraphs.Where(q => Rules.ParagraphVisible(q, postwar)
+                        && (q.Text.Contains("why there were two") || q.Text.Contains("kept both irons") || q.Text.Contains("rescued woman's iron"))).ToArray();
+                    check(twoIrons.Length == (marketNode == "left" ? 0 : 1), "Yaniel polish A9: contradictory two-irons prose " + page.Id);
+                    if (twoIrons.Length == 1 && returnedIron)
+                        check(twoIrons[0].Text.Contains("After the vigil"), "Yaniel polish A9: earned cuff return lost to historical decline.");
+                }
+            }
+        }
+        var noMemory = Take(S(P + "after.watch"), Later(story, nicheDone, 24), "end", 0, P + "after.watch_stood");
+        check(Selected(wrist, "start", noMemory) == "pouch" && Through(wrist, Later(story, noMemory, 24), "pouch2", 0).Any(),
+            "Yaniel polish A9: no chapter-four decision invents linen or wear.");
+
         Console.WriteLine("PASS: Yaniel Trickster (Trk_Yaniel_*): the swap on both Fane branches, the walls at 24 h for every Radiance state, "
                           + "the kill that stands, the oath judged after Iz, Minagho, the trade and the vigil, the niche, the reactors, the pages, "
                           + beats.Length + " beats.");
