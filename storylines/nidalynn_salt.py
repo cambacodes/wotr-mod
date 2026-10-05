@@ -109,7 +109,7 @@ visit(WINGS, "Wings", [
     nar("wall", '''{n}She is on the east wall above the kiln, at dusk, sitting on the parapet with her legs over the drop and a sheepskin round her shoulders. Below, on the kiln roof, the young dragon is learning her wings.{/n}
 {n}She is the size of a pony now. She runs the length of the roof-ridge with her wings out and her neck stretched, and at the end of the ridge she jumps, and for one moment she is in the air, and then she is not, and there is a crash in the lane below and a great deal of furious hissing, and a soldier somewhere laughs, and stops laughing.{/n}''',
         c("Continue", "watch")),
-    nd("watch", '''"Eleven times today." {n}Nidalynn does not take her eyes off the lane.{/n} "She won't let me help. She bit me for trying. She's right; you have to do it yourself or it doesn't count, the first time." {n}The young dragon climbs back up the kiln wall by her claws, dragging one wing, and goes to the end of the ridge again.{/n} "Sit down. You'll make her nervous. She thinks you're going to take her away. She still thinks that, you know. Children remember."''',
+    nd("watch", '''"Eleven times today." {n}Nidalynn does not take her eyes off the lane.{/n} "She won't let me help. She bit me for trying. She's right; you have to do it yourself or it doesn't count, the first time." {n}The young dragon climbs back up the kiln wall by her claws, dragging one wing, and goes to the end of the ridge again.{/n} "Sit down. She's watching you instead of the roof edge. I won't have her trying to impress you and breaking her neck."''',
         c("[Sit beside her on the parapet.]", "sit")),
     nar("sit", '''{n}You sit. The stone is cold. She is not; you can feel it through the sheepskin where her shoulder is against yours, a steady warmth like a banked hearth, far more than the evening should allow.{/n}
 {n}Down on the roof the young dragon spreads her wings, and folds them, and spreads them.{/n}''',
@@ -277,7 +277,7 @@ visit(FIRST_DEMON, "What she hunts", [
         c("Continue", "fed")),
     nar("look", '''{n}The young dragon watches you look. When you look up at her she lifts her head, very high, the way the chaplain lifts his when he is about to say something about Iomedae, and makes a small, satisfied noise.{/n}''',
         c("Continue", "fed")),
-    nd("fed", '''"That's for you." {n}Nidalynn is laughing silently on the step.{/n} "She's brought her first kill to the one she thinks is the head of the house. I rather thought it'd be me."''',
+    nd("fed", '''"That's for you." {n}Nidalynn is laughing silently on the step.{/n} "Her first demon, and she's showing it to the one she thinks is the head of the house. I rather thought it'd be me."''',
         c("Continue", "demons", requires=(FED_DEMONS,)),
         c("Continue", "goats", requires=(FED_GOATS,)),
         c("Continue", "rats", requires=(FED_RATS,)),
@@ -380,21 +380,20 @@ visit(LONG_NIGHT, "What a silver is afraid of", [
         c('"He knew."', "knew"),
         c("[Say nothing. Hold on.]", "hold")),
     nd("knew", '''"You can't know that." {n}But she is listening.{/n}''',
-        c('"He gave a white-haired girl his salt at his fire, and never asked her where from. He knew she\'d come back. People like that always know."', "salt")),
+        c('"He gave you his salt and a place by his fire. He wanted you there."', "salt")),
     nd("salt", '''{n}She does not answer for a long time. When she does, her voice has gone thick.{/n} "That's a trickster's trick. Saying the thing somebody needs to hear, and saying it so well they can't argue." {n}She wipes her face with the heel of her hand.{/n} "It's also true. I think. I'm going to decide it's true, and you're not to take it back."''',
         c("Continue", "afraid")),
     nd("hold", '''{n}She lets you. After a while her breathing evens out, and she says, in a different voice:{/n} "Thank you. For not saying something clever. I know you had one ready."''',
         c("Continue", "afraid")),
-    nd("afraid", '''"So now you know what a silver's afraid of." {n}She turns her head on your shoulder and looks at you, very close.{/n} "Not demons. Not golems. Not even a woundwyrm. Leaving somebody for two years in a temper, and coming back to ash."
-"You're so short. All of you. You're here and then you're not, and I don't always notice the difference in time." {n}Her hand finds yours.{/n} "I noticed with you. I notice every time you go out of that door."''',
+    nd("afraid", '''"I used to think I could come back whenever I pleased." {n}She turns her head to look at you.{/n} "Reudger would be on his step. The mares would be on the grass. Then I came back to ash. I couldn't find his grave." {n}Her hand closes on yours.{/n} "When you leave this kiln, I listen for your boots on the stair. I've caught myself doing it before the bell's stopped ringing."''',
         c("[Kiss her.]", "kiss"),
-        c('"Then don\'t leave in a temper."', "temper")),
-    nd("temper", '''{n}She laughs, wet and startled.{/n} "No. No, I'll quarrel with you here, in the kiln, where you can hear it. That's what kilns are for." {n}And then she kisses you, since you did not.{/n}''',
+        c('"Then I\'ll make enough noise for you to notice."', "temper")),
+    nd("temper", '''{n}She laughs, wet and startled.{/n} "You would. And then she'd start answering, and neither of us would get any sleep." {n}She catches the front of your coat and draws you closer.{/n} "Come here, Commander." {n}Then she kisses you.{/n}''',
         c("Continue", "kiss")),
     nar("kiss", '''{n}It is not like the kiss on the wall. It is slower, and it goes on, and her hand comes up into your hair and stays there, and the embers tick, and somewhere in it she makes a small low sound that you feel through her ribs more than hear.{/n}
 {n}Then she stops, and puts her forehead against yours, and breathes.{/n}''',
         c("Continue", "not_here")),
-    nd("not_here", '''"Not here." {n}Her voice is not steady.{/n} "Not in a lime-kiln, on a sack, with a child at the back of it who wakes up if you drop a spoon." {n}She laughs under her breath.{/n} "I've waited longer than your grandmother's been dead, Commander. I'll not have it on a lime sack."
+    nd("not_here", '''"Not here." {n}Her voice is not steady.{/n} "Not in a lime-kiln, on a sack, with a child at the back of it who wakes up if you drop a spoon." {n}She laughs under her breath.{/n} "I've waited long enough, Commander. I'll not have it on a lime sack."
 "When she flies. There's somewhere I'll take you. I'll not tell you where. You'd only try to guess, and you'd guess wrong, and be smug about it."''',
         c("[Stay till the embers are grey.]", flags=(LONG_NIGHT,))),
 ], requires=(KISSED,), forbids=(LONG_NIGHT, PROPOSED), delay=24, optional=True)
