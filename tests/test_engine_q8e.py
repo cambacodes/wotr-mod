@@ -87,7 +87,7 @@ class EngineQ8eTests(unittest.TestCase):
     def test_all_native_targets_and_continuations_match_archive_and_localization(self):
         fixtures = endings.ending_contracts()['Fixtures']
         actual = find_bindings(game_dir() / 'blueprints.zip', {g: f['Type'] for g, f in fixtures.items()})
-        strings = json.loads((game_dir() / 'Wrath_Data/StreamingAssets/Localization/enGB.json').read_text())['strings']
+        strings = json.loads((game_dir() / 'Wrath_Data/StreamingAssets/Localization/enGB.json').read_text(encoding='utf-8'))['strings']
         for guid, f in fixtures.items():
             record = actual[guid]
             self.assertEqual(f['Path'], record['path'])

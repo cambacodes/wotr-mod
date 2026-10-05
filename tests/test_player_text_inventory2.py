@@ -4,6 +4,7 @@ import json
 from pathlib import Path
 import unittest
 from tools import player_text_lint as player, text_structure_lint as structure, player_text_baseline as baseline
+from tools.game_blueprints import game_dir
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -83,8 +84,8 @@ class PlayerTextInventory2Tests(unittest.TestCase):
         # Native Greybor dragon-age discussion; verify the exact localization
         # when installed, then review only this complete display surface.
         key = "351dcde6-b3d3-436d-b599-f7129acad809"
-        path = Path("/wrath/Wrath_Data/StreamingAssets/Localization/enGB.json")
-        text = json.loads(path.read_text())["strings"][key]
+        path = game_dir() / "Wrath_Data/StreamingAssets/Localization/enGB.json"
+        text = json.loads(path.read_text(encoding="utf-8"))["strings"][key]
         self.assertIn("A large adult female?", text)
         reviewed = {"exceptions": [dict(scene="native/Greybor/" + key, location="start", code="age-certification",
             match="adult", text=text, reason="An adult dragon, distinct from a young dragon, is a different paid quarry.")]}
