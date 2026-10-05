@@ -2,7 +2,7 @@
   "schema_version": 1,
   "item": "E-Q7-33",
   "scope": "Offline placement inventory with cached live evidence. Pending is not completed live verification. The F7 coordinator explicitly authorizes the verified street point for cellar-door staging; original-actor click/occupancy/reload remain pending.",
-  "evidence_source": "/work/Writer/handoffs/LOOP-3-HANDOFF.md:2026-10-04 ~04:10 LIVE HARNESS",
+  "evidence_source": "Coordinator handoff LOOP-3-HANDOFF.md:2026-10-04 ~04:10 LIVE HARNESS (external provenance)",
   "probe_contract": {
     "chapter": 5,
     "requires": [
@@ -146,6 +146,12 @@
       "guid": "e3bc95db7e2181d41847b3a1d858258d",
       "path": "Units/Companions/Arueshalae/EvilArueshalae_Companion.jbp",
       "sha256": "2def22d2b666f561b1ac19b5a5968625183cb521f82e3ac9d259ece10da09cea",
+      "type": "BlueprintUnit"
+    },
+    {
+      "guid": "15f754455d1d87c42a4e14df456d5415",
+      "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
+      "sha256": "006f09bc5f02e3e7a2748f8efcc0204b8c1f822a05b54d4d07bcc45f642a7abf",
       "type": "BlueprintUnit"
     }
   ],
@@ -496,7 +502,7 @@
         "area": "2570015799edf594daf2f076f2f975d8",
         "scene": "presence:aranka.presence",
         "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
-        "artifact": "C:\\Users\\Z\\Documents\\Projects\\RanRomanceTirabade-claude\\tools\\placement_probes\\aranka.presence.json",
+        "artifact": "tools/placement_probes/aranka.presence.json",
         "sha256": "db7c70ff7340ef9822d5110aedc62c3afd029123bb8926ee5e11ab6a8dbd35b8"
       },
       "unit": "430cba7801b149b4e8494ace6baf4f7c",
@@ -521,11 +527,11 @@
       "unit": "bd0c4fe722aeef94b8495ac284b96bc8",
       "consumer": "aranka.presence.yard",
       "at": {
-        "NearUnit": "a380d926e92f70e429681eb9654478f9",
-        "Side": "front",
-        "Distance": 3.5
+        "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+        "Side": "right",
+        "Distance": 6.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "remainder": "F9 authored re-anchor to ordinary capital blacksmith; shared-anchor spacing >=4 m. Pending live mesh, approach, hub click, joint occupancy and reload for this changed placement. Historical quartermaster evidence below is superseded for placement.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,aranka.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "not-testable",
@@ -546,11 +552,11 @@
       "unit": "81297c673b63b60448ef88a10db6bc78",
       "consumer": "targona.presence",
       "at": {
-        "NearUnit": "a380d926e92f70e429681eb9654478f9",
+        "NearUnit": "15f754455d1d87c42a4e14df456d5415",
         "Side": "behind",
         "Distance": 3.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "remainder": "F9 authored re-anchor to ordinary capital blacksmith; shared-anchor spacing >=4 m. Pending live mesh, approach, hub click, joint occupancy and reload for this changed placement. Historical quartermaster evidence below is superseded for placement.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,targona.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-data",

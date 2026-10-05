@@ -176,7 +176,7 @@ namespace RRT.TestHarness
             AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == AssemblyName);
 
         object? Static(string name) => main.GetField(name, S)!.GetValue(null);
-        static object? Get(object o, string field) => o.GetType().GetField(field, I)!.GetValue(o);
+        internal static object? Get(object o, string field) => o.GetType().GetField(field, I)!.GetValue(o);
         static T GetAs<T>(object o, string field) => (T)Get(o, field)!;
 
         public bool Initialized => (bool)Static("initialized")!;

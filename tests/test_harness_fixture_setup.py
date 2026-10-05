@@ -15,7 +15,7 @@ class HarnessFixtureSetupTests(unittest.TestCase):
             project = temp / "Fixture.csproj"
             sources = ("HarnessPlan.cs", "PresenceSpikeModel.cs", "ResidenceSpikeModel.cs", "WalkableProbe.cs", "ProductionPresenceProbe.cs")
             # Compile only the policy half of the runtime probe, without Unity/game types.
-            probe = (ROOT / "harness/src/ProductionPresenceProbe.cs").read_text().split("    internal sealed partial class HarnessRunner")[0]
+            probe = (ROOT / "harness/src/ProductionPresenceProbe.cs").read_text(encoding="utf-8").split("    internal sealed partial class HarnessRunner")[0]
             probe = "\n".join(line for line in probe.splitlines() if not line.startswith("using Kingmaker") and line != "using UnityEngine;") + "\n}\n"
             (temp / "ProductionPolicy.cs").write_text(probe)
             # F5 adds case validation to HarnessPlan; compile its real game-free
@@ -42,6 +42,24 @@ if (!plan.SetFlags.SequenceEqual(new[] {"a", "b"}) || plan.StartEtudes.Single() 
 bool invalid = false;
 try { HarnessPlan.Parse("{\\\"startEtudes\\\":[\\\"bad\\\"]}"); } catch (FormatException) { invalid = true; }
 if (!invalid) throw new Exception("invalid GUID accepted");
+var fixtures = HarnessPlan.Parse(@"{""setPresenceFailures"":[""galfrey.presence, aranka.presence"","" galfrey.presence ""],""holdEtudes"":[""9104498B-842E-1584-DA9B-3640CB9E4157""],""seenCues"":[""49135105-da5b-c6c4-f93e-312e80286f91""],""removeCompanions"":[""ae766624-c030-5844-0a03-6de90a7f2009""]}");
+if (!fixtures.SetPresenceFailures.SequenceEqual(new[] {"galfrey.presence", "aranka.presence"})
+    || fixtures.HoldEtudes.Single() != "9104498b842e1584da9b3640cb9e4157"
+    || fixtures.SeenCues.Single() != "49135105da5bc6c4f93e312e80286f91"
+    || fixtures.RemoveCompanions.Single() != "ae766624c03058440a036de90a7f2009") throw new Exception("F9 fixture normalization");
+if (new HarnessPlan().HasFixtureSetup) throw new Exception("F9 fixtures enabled by default");
+var isolated = new[] {
+    new HarnessPlan { SetPresenceFailures = fixtures.SetPresenceFailures },
+    new HarnessPlan { HoldEtudes = fixtures.HoldEtudes },
+    new HarnessPlan { SeenCues = fixtures.SeenCues },
+    new HarnessPlan { RemoveCompanions = fixtures.RemoveCompanions }
+};
+if (isolated.Any(p => !p.HasFixtureSetup)) throw new Exception("F9 standalone fixture skipped setup");
+foreach (string field in new[] {"holdEtudes", "seenCues", "removeCompanions"}) {
+    invalid = false;
+    try { HarnessPlan.Parse("{\\\"" + field + "\\\":[\\\"bad\\\"]}"); } catch (FormatException) { invalid = true; }
+    if (!invalid) throw new Exception("F9 invalid GUID accepted: " + field);
+}
 var key = HarnessPlan.Parse("{\\\"spike\\\":\\\"presence\\\",\\\"presence\\\":{\\\"key\\\":\\\"galfrey.presence\\\"}}");
 if (key.Presence!.Key != "galfrey.presence") throw new Exception("production selection");
 var p = new ProductionPresenceProbe { Key="fixture", Wanted=true, ActorId="same", WalkableGap=0.2f, Drift=0.1f, ApproachDistance=1.8f, Clickable=true };

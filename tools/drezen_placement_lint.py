@@ -35,7 +35,7 @@ def offset(at):
 
 
 def check(story, table=None):
-    table = table or json.loads((ROOT / "tools/drezen_area_chapters.json").read_text())
+    table = table or json.loads((ROOT / "tools/drezen_area_chapters.json").read_text(encoding="utf-8"))
     areas = {a["guid"]: a for a in table["areas"]}
     errors = []
     presences = story.get("Presences", {})
@@ -49,6 +49,8 @@ def check(story, table=None):
         if not pairs:
             errors.append(f"{key}: no reachable (area, chapter) pair")
         anchor = (presence.get("At") or {}).get("NearUnit")
+        if key in ("targona.presence", "aranka.presence.yard") and anchor != "15f754455d1d87c42a4e14df456d5415":
+            errors.append(f"{key}: F9 yard requires the ordinary capital blacksmith, not the Legend event quartermaster")
         if anchor and anchor not in {u["guid"] for u in area["units"]}:
             errors.append(f"{key}: NearUnit {anchor} absent from {area['name']} native unit list")
     for scene in story.get("Scenes", []):

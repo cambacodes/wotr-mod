@@ -14,7 +14,7 @@ internal static class ArankaTricksterTests
     private const string Fye = "0f12118177d102f428a3b30b15b132eb";
     private const string Market = "bad9f602b81a80047ac470b01ebe65a9"; // ExoticCapitalTrader (polish 2026-09-28: off Fye's counter)
     private const string YardUnit = "bd0c4fe722aeef94b8495ac284b96bc8";
-    private const string Quartermaster = "a380d926e92f70e429681eb9654478f9";
+    private const string Quartermaster = "15f754455d1d87c42a4e14df456d5415"; // F9 ordinary capital smith
     private const string FyeGone = "aranka.presence.failed";
     private const string KingC3 = "1a17d8053a3be7f47a7908eb6706f2fe";
     private const string KingC3Return = "814dd1a078a1c2849aefc85e2e15b2d2";
@@ -181,7 +181,7 @@ internal static class ArankaTricksterTests
             "Her presence in the market is missing or malformed.");
         presence = story.Presences["aranka.presence"];
         check(story.Presences.TryGetValue("aranka.presence.yard", out var yard) && yard.Unit == YardUnit && yard.Unit != presence.Unit
-              && yard.At?.NearUnit == Quartermaster && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
+              && yard.At?.NearUnit == Quartermaster && yard.At.Side == "right" && yard.At.Distance == 6.5f && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
               && yard.Forbids.Contains(Closed) && yard.MinChapter == 3 && yard.MaxChapter == 5,
             "The yard presence for a Fye-less capital is missing or malformed.");
         yard = story.Presences["aranka.presence.yard"];

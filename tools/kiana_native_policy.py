@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def contracts():
-    return json.loads((ROOT / "tools/kiana_native_contracts.json").read_text())
+    return json.loads((ROOT / "tools/kiana_native_contracts.json").read_text(encoding="utf-8"))
 
 
 def parent_type(target, spec):

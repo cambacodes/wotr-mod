@@ -49,7 +49,7 @@ class DrezenPlacementTests(unittest.TestCase):
         self.assertEqual([], check({"Scenes": [scene]}))
 
     def test_pinned_native_area_and_spawner_evidence(self):
-        table = json.loads((ROOT / "tools/drezen_area_chapters.json").read_text())
+        table = json.loads((ROOT / "tools/drezen_area_chapters.json").read_text(encoding="utf-8"))
         candidates = [Path(os.environ.get("RRT_BLUEPRINTS_ZIP") or "/wrath/blueprints.zip"),
                       Path(os.environ.get("RRT_GAME_DIR") or
                            r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure") / "blueprints.zip"]

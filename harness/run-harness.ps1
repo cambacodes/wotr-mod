@@ -62,6 +62,10 @@ param(
     [string[]]$SceneFilter = @(),
     [string[]]$SetFlags = @(),
     [string[]]$StartEtudes = @(),
+    [string[]]$SetPresenceFailures = @(),
+    [string[]]$HoldEtudes = @(),
+    [string[]]$SeenCues = @(),
+    [string[]]$RemoveCompanions = @(),
     [switch]$NoRoundTrip,
     [switch]$Headless,
     [switch]$Windowed,
@@ -280,6 +284,10 @@ if ($Spike -eq 'Presence' -and ($PSBoundParameters.ContainsKey('PresenceEnterPoi
 }
 # Fixture setup is harness-only, applied after each source-save load.
 $plan.setFlags = @($SetFlags | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
+$plan.setPresenceFailures = @($SetPresenceFailures | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
+$plan.holdEtudes = @($HoldEtudes | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
+$plan.seenCues = @($SeenCues | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
+$plan.removeCompanions = @($RemoveCompanions | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
 $plan.startEtudes = @($StartEtudes | ForEach-Object { $_.Split(',') } | ForEach-Object { $_.Trim() } | Where-Object { $_ } | Select-Object -Unique)
 $planJson = $plan | ConvertTo-Json -Depth 5
 

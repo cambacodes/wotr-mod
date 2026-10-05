@@ -21,7 +21,7 @@ story = json.load(open(ROOT / "development/Story.json", encoding="utf-8"))
 
 SKIP = {"seelah.trickster.dismissed.setup", "camellia.trickster.killed.setup_hub", "camellia.trickster.killed.setup_q3",
         "camellia.trickster.killed.setup_q1"}
-AVOID_FLAGS = set(open(os.path.join(HERE, "avoid.txt")).read().split()) | {
+AVOID_FLAGS = set(open(os.path.join(HERE, "avoid.txt"), encoding="utf-8").read().split()) | {
     "soana.friendship_chosen", "soana.courtship_waiting", "soana.later_friends", "soana.late_friends", "soana.friendship_kept",
     "soana.later_friend_evening"}
 AVOID_TEXT = {"\"It's worth a joke.", "[Put a deposit on the house special]", "\"Let her stay gone.\"", "[Kneel] \"I'm yours. Send her home.\""}

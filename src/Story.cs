@@ -288,7 +288,9 @@ namespace Tirabade
         public bool RecordedNative;
         public bool RecordedNativeContact; // eng7-l05: a retired copy cannot replace a subsequently lost native.
         public bool CopyUsable = true;
+        public bool CopyInitializing; // F9: submitted copy awaiting its first usable view, or a ready copy culled by distance.
         public bool ContactAmbiguous;
+        public bool NativeOwnedCopy;   // F9: a sibling placement owns this actor; never adopt it as native.
         public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
         public bool NativeHidden;      // that unit is out of game (hidden by native state)
         public bool NativeAtPosition = true;
@@ -306,8 +308,29 @@ namespace Tirabade
     [Flags]
     public enum CopyQuiet { None = 0, Faction = 1, Group = 2, Silence = 4, Passive = 8 }
 
+    // F9: game-free lifetime policy. The runtime samples monotonic seconds twice in a tick;
+    // reload/area observation resets the lease. A copy that never becomes usable gets ten seconds.
+    // Once usable, an inactive view (distance culling) does not invalidate the placement.
+    public sealed class PresenceReadiness
+    {
+        public const double GraceSeconds = 10;
+        private string? identity;
+        private double started;
+        private bool ready;
+        public bool Pending(string? unitId, PresenceObservation seen, bool viewPending, double seconds)
+        {
+            if (!seen.AreaLoaded || !seen.Submitted || unitId == null)
+            { identity = null; ready = false; return false; }
+            if (identity != unitId) { identity = unitId; started = seconds; ready = false; }
+            if (seen.CopyUsable && seen.CopyFound && seen.CopyAlive) ready = true;
+            if (!seen.CopyFound) return !ready && seconds - started < GraceSeconds;
+            return seen.CopyAlive && (ready ? viewPending : seconds - started < GraceSeconds);
+        }
+    }
+
     public sealed class CopyObservation
     {
+        public bool Enemy;             // F9: hostile native blueprints also need neutralization.
         public bool PlayerFaction;     // the copy's faction is the player's (companion blueprints)
         public bool PartyGroup;        // the copy is in the party's unit group
         public bool Silenced;          // the copy's asks are the native silent list
@@ -1154,7 +1177,7 @@ namespace Tirabade
                 return new[] { seen.NativeAlive ? PresenceStep.RestoreNative : PresenceStep.Forget };
             if (wanted && presence.Mode == "spawn-copy")
             {
-                if (seen.NativeCount > 1) return new[] { PresenceStep.Blocked };
+                if (seen.NativeCount > 1 || seen.NativeOwnedCopy) return new[] { PresenceStep.Blocked };
                 bool nativeReady = seen.NativeAlive && seen.NativeUsable && !seen.NativeHidden
                     && (!presence.ManageNative || seen.AnchorResolved && seen.NativeAtPosition); // eng7-l05
                 bool manageable = presence.ManageNative && seen.NativeAlive && seen.NativeManageable && seen.AnchorResolved;
@@ -1207,8 +1230,8 @@ namespace Tirabade
         public static CopyQuiet PlanQuiet(CopyObservation copy)
         {
             var steps = CopyQuiet.None;
-            if (copy.PlayerFaction) steps |= CopyQuiet.Faction;
-            if (copy.PlayerFaction || copy.PartyGroup) steps |= CopyQuiet.Group;
+            if (copy.PlayerFaction || copy.Enemy) steps |= CopyQuiet.Faction;
+            if (copy.PlayerFaction || copy.Enemy || copy.PartyGroup) steps |= CopyQuiet.Group;
             if (!copy.Silenced) steps |= CopyQuiet.Silence;
             if (!copy.Passive) steps |= CopyQuiet.Passive;
             return steps;
@@ -1445,6 +1468,9 @@ namespace Tirabade
         {
             // eng7-l05: the same usable contact and repair plan drive hubs and failure twins.
             if (!wanted || !seen.AreaLoaded) return false;
+            // View construction and distance culling are not anchor failures. Hard anchor/twin/death evidence still wins.
+            if (presence.Mode == "spawn-copy" && seen.CopyInitializing && seen.AnchorResolved
+                && seen.NativeCount == 0 && !seen.NativeAlive && !seen.ContactAmbiguous) return false;
             var plan = PlanPresence(presence, wanted, seen);
             if (plan.Contains(PresenceStep.Blocked) || seen.ContactAmbiguous && !plan.Contains(PresenceStep.Remove)) return true;
             bool moving = plan.Contains(PresenceStep.Unhide) || plan.Contains(PresenceStep.Move);

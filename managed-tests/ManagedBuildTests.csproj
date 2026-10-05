@@ -8,6 +8,7 @@
     <GameDir Condition="'$(GameDir)' == ''">C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure\</GameDir>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="../tests/PresenceRuntimeF9Tests.cs" Link="PresenceRuntimeF9Tests.cs" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
     <Reference Include="$(GameDir)Wrath_Data\Managed\*.dll" Exclude="$(GameDir)Wrath_Data\Managed\System*.dll;$(GameDir)Wrath_Data\Managed\mscorlib.dll;$(GameDir)Wrath_Data\Managed\netstandard.dll" Private="false" />
     <Reference Include="$(GameDir)Wrath_Data\Managed\UnityModManager\UnityModManager.dll" Private="false" />

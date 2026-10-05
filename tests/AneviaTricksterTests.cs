@@ -65,7 +65,11 @@ internal static class AneviaTricksterTests
         // Polish b6b: Gesmerha and Hepzamirah stand at the smith's sides (2.5); Anevia keeps her own spot out on the road.
         check(presence!.At!.Side == "front" && presence.At.Distance >= 6f && presence.At.Distance <= 10f
               && story.Presences.Where(kv => kv.Key != "anevia.presence" && kv.Value.At?.NearUnit == presence.At.NearUnit)
-                   .All(kv => kv.Value.At!.Side != "front" && kv.Value.At.Distance <= 3f),
+                   .All(kv => {
+                       var a = Rules.AnchorOffset(presence.At, 0);
+                       var b = Rules.AnchorOffset(kv.Value.At!, 0);
+                       return Math.Sqrt(Math.Pow(a.Dx - b.Dx, 2) + Math.Pow(a.Dz - b.Dz, 2)) >= 4;
+                   }),
             "Anevia is crowded back into the smith's corner.");
         var tirabade = story.Relationships["tirabade"];
         check(tirabade.UnavailableOverrides["irabeth_dead"] == IrabethReturned && tirabade.UnavailableOverrides["anevia_gone"] == Returned,

@@ -76,6 +76,18 @@ namespace Tirabade
         internal bool AnchorFailed { get; private set; }
         // E12c: the unit a click-to-talk hub attaches to (our copy, else the present native unit), refreshed each tick.
         internal UnitEntityData? Actor { get; private set; }
+        private readonly PresenceReadiness readiness = new PresenceReadiness();
+        private readonly System.Diagnostics.Stopwatch readinessClock = System.Diagnostics.Stopwatch.StartNew();
+
+        private void ObserveReadiness(PresenceObservation seen, UnitEntityData? copy, PresenceRecord? record)
+        {
+            var game = Game.Instance;
+            bool viewPending = copy != null && copy.IsInGame && !copy.Suppressed && copy.State.IsConscious
+                && !copy.IsEnemy(game.Player.MainCharacter.Value)
+                && NativeContact.HasCurrentStorage(copy, game.State.LoadedAreaState, game.Player.CrossSceneState)
+                && copy.HoldingState.IsSceneLoaded && (copy.View == null || !copy.View.gameObject.activeInHierarchy);
+            seen.CopyInitializing = readiness.Pending(record?.UnitId, seen, viewPending, readinessClock.Elapsed.TotalSeconds);
+        }
 
         private bool ResolveTarget(Game game)
         {
@@ -120,6 +132,7 @@ namespace Tirabade
         internal static CopyObservation ObserveCopy(UnitEntityData copy) => new CopyObservation
         {
             PlayerFaction = copy.Descriptor.Faction == BlueprintRoot.Instance.PlayerFaction,
+            Enemy = Game.Instance.Player.MainCharacter.Value != null && copy.IsEnemy(Game.Instance.Player.MainCharacter.Value),
             PartyGroup = copy.GroupId == PartyGroupId,
             Silenced = copy.Descriptor.OverrideAsks?.AssetGuid.ToString() == SilentAsks,
             Passive = copy.Passive,
@@ -200,6 +213,12 @@ namespace Tirabade
                 && units.Any(actor => NativeContact.Usable(actor));
             if (native != null)
             {
+                // A primary and its fallback can share a blueprint. The fallback's saved copy is not a native return:
+                // accepting it would clear primary.failed and retire the fallback on the following tick.
+                string observedNativeId = native.UniqueId;
+                seen.NativeOwnedCopy = game.Player.SettingsList.Any(pair => pair.Key != SaveKey
+                    && pair.Key.StartsWith(SavePrefix, StringComparison.Ordinal) && pair.Value is string json
+                    && PresenceRecord.Parse(json, pair.Key.Substring(SavePrefix.Length))?.UnitId == observedNativeId);
                 seen.NativeAlive = commander != null && !native.IsEnemy(commander);
                 seen.NativeUsable = NativeContact.Usable(native);
                 seen.NativeManageable = NativeContact.Usable(native, allowHidden: true);
@@ -230,7 +249,16 @@ namespace Tirabade
                         (unit.UniqueId == record.NativeUnitId || unit.UniqueId == record.NativeContactId)
                         && (unit.State.IsDead || unit.State.IsFinallyDead))))
                 { record.Lost = true; Write(record); }
-                var steps = Rules.PlanPresence(Spec, wanted, seen);
+                LastQuiet = CopyQuiet.None;
+                // Repair an older recorded copy before failure/receipt observation (hostile blueprint copies included).
+                if (copy != null && seen.CopyAlive)
+                {
+                    LastQuiet = Quiet(copy);
+                    if (LastQuiet != CopyQuiet.None) seen = Observe(out native, out copy, out record);
+                }
+                ObserveReadiness(seen, copy, record);
+                // Own-failure gates select the fallback; they must not destroy the demanded primary and clear failure.
+                var steps = Rules.PlanPresence(Spec, demanded, seen);
                 Actor = null; // eng7-l05: publish only the post-transition usable contact.
                 // E12b: a wanted presence that cannot be placed (an anchored copy without its anchor, or a reuse-native
                 // presence without a usable native actor) is reported, and exposed as <key>.failed for the letter twin.
@@ -240,12 +268,12 @@ namespace Tirabade
                     && Rules.RecordPresenceFailure(receiptStory, Key, receiptState, seen))
                     Game.Instance.Player.SettingsList[FailureSaveKey] = "1";
                 // eng7-l06 end
-                LastQuiet = CopyQuiet.None;
                 foreach (var step in steps) Execute(step, native, copy, record);
                 // E12d: every live copy (fresh, or spawned by an earlier build) is kept inert; never a native unit.
                 if (copy != null && seen.CopyAlive && !steps.Contains(PresenceStep.Remove)) LastQuiet |= Quiet(copy);
                 // eng7-l05: no stale actor/failure between a spawn, unhide, retirement and hub attachment.
                 seen = Observe(out native, out copy, out record);
+                ObserveReadiness(seen, copy, record);
                 AnchorFailed = Rules.PresenceFailed(Spec, demanded, seen);
                 if (wanted && !AnchorFailed)
                 {

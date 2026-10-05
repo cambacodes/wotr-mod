@@ -30,7 +30,7 @@ internal static class PresencePlacementManifestTests
 
     // Deliberately separate structural validity from verified delivery. The F7 coordinator's
     // street-door staging decision does not substitute for a completed live delivery probe.
-    internal static bool Authorized(JsonNode entry, out string reason)
+    internal static bool Authorized(JsonNode entry, out string reason, string? evidenceRoot = null)
     {
         reason = "pending coordinator live evidence";
         if (entry["status"]?.GetValue<string>() != "verified") return false;
@@ -46,7 +46,11 @@ internal static class PresencePlacementManifestTests
                 || position.Any(p => p == null || !double.IsFinite(p.GetValue<double>()))) )
         { reason = "destination coordinates missing/unsafe"; return false; }
         string? artifact = probe["artifact"]?.GetValue<string>();
-        if (artifact == null || !Path.IsPathFullyQualified(artifact) || !File.Exists(artifact)
+        if (artifact == null || Path.IsPathRooted(artifact) || artifact.Contains(':') || artifact.Contains('\\')
+            || artifact.Split('/').Any(part => part == ".."))
+        { reason = "probe artifact must be repo-relative"; return false; }
+        artifact = Path.GetFullPath(Path.Combine(evidenceRoot ?? Directory.GetCurrentDirectory(), artifact));
+        if (!File.Exists(artifact)
             || Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(artifact))).ToLowerInvariant() != probe["sha256"]?.GetValue<string>())
         { reason = "probe artifact missing or changed"; return false; }
         var result = JsonNode.Parse(File.ReadAllText(artifact))!;
@@ -166,6 +170,15 @@ internal static class PresencePlacementManifestTests
         // Validator positive and mutation controls use a labelled synthetic probe in system temp,
         // never promote it into the real manifest or call it live evidence.
         string artifact = Path.GetTempFileName();
+        string evidenceRoot = Path.GetDirectoryName(artifact)!;
+        string repoRoot = Directory.GetCurrentDirectory();
+        var verified = entries.Single(e => e!["id"]!.GetValue<string>() == "aranka.presence")!;
+        try
+        {
+            Directory.SetCurrentDirectory(evidenceRoot);
+            check(Authorized(verified, out _, repoRoot), "F9: repo-relative live evidence depends on current directory");
+        }
+        finally { Directory.SetCurrentDirectory(repoRoot); }
         try
         {
             promoted["position"] = new JsonArray(1.0, 2.0, 3.0);
@@ -177,23 +190,29 @@ internal static class PresencePlacementManifestTests
             void SaveProbe()
             {
                 File.WriteAllText(artifact, result.ToJsonString());
-                var probe = result.DeepClone().AsObject(); probe["artifact"] = artifact;
+                var probe = result.DeepClone().AsObject(); probe["artifact"] = Path.GetFileName(artifact);
                 probe["sha256"] = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(artifact))).ToLowerInvariant();
                 promoted["probe"] = probe;
             }
-            SaveProbe(); check(Authorized(promoted, out _), "E-Q7-33: valid synthetic probe contract rejected");
+            SaveProbe(); check(Authorized(promoted, out _, evidenceRoot), "E-Q7-33: valid synthetic probe contract rejected");
+            foreach (string unsafePath in new[] { artifact, "C:/absolute/probe.json", "../probe.json" })
+            {
+                promoted["probe"]!["artifact"] = unsafePath;
+                check(!Authorized(promoted, out _, evidenceRoot), "F9: non-relative or escaping evidence path accepted");
+            }
+            SaveProbe();
             foreach (string field in new[] { "walkable", "approachable", "clickable", "occupancy_clear", "after_reload" })
             {
-                result[field] = false; SaveProbe(); check(!Authorized(promoted, out _), "E-Q7-33: failed probe accepted: " + field);
+                result[field] = false; SaveProbe(); check(!Authorized(promoted, out _, evidenceRoot), "E-Q7-33: failed probe accepted: " + field);
                 result[field] = true;
             }
-            result["walkable_gap"] = 3.0; SaveProbe(); check(!Authorized(promoted, out _), "E-Q7-33: unsafe mesh gap accepted");
+            result["walkable_gap"] = 3.0; SaveProbe(); check(!Authorized(promoted, out _, evidenceRoot), "E-Q7-33: unsafe mesh gap accepted");
             result["walkable_gap"] = 0.2; result["chapter"] = 3; SaveProbe();
-            check(!Authorized(promoted, out _), "E-Q7-33: Ch3 probe authorized Ch5 placement");
+            check(!Authorized(promoted, out _, evidenceRoot), "E-Q7-33: Ch3 probe authorized Ch5 placement");
             result["chapter"] = 5; result["area"] = "elsewhere"; SaveProbe();
-            check(!Authorized(promoted, out _), "E-Q7-33: wrong-area probe accepted");
+            check(!Authorized(promoted, out _, evidenceRoot), "E-Q7-33: wrong-area probe accepted");
             result["area"] = Rules.NurahCapital; SaveProbe();
-            File.AppendAllText(artifact, " "); check(!Authorized(promoted, out _), "E-Q7-33: changed evidence accepted");
+            File.AppendAllText(artifact, " "); check(!Authorized(promoted, out _, evidenceRoot), "E-Q7-33: changed evidence accepted");
         }
         finally { File.Delete(artifact); }
         Console.WriteLine("PASS: E-Q7-33 offline manifest GUID/type/chapter and evidence/mutation gates; pending live placements remain unresolved.");

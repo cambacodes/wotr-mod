@@ -34,6 +34,11 @@ internal static class PresenceManagedTests
             check(Type(pair.Value.Area).StartsWith("BlueprintArea", StringComparison.Ordinal), "Presence area is not a BlueprintArea: " + pair.Key);
             foreach (var list in pair.Value.AnswerLists) check(Type(list) == "BlueprintAnswersList", "Presence host is not an answer list: " + pair.Key);
         }
+        PresenceRuntimeF9Tests.Run(check);
+        string? jerribethFaction = (string?)native[story.Presences["jerribeth.presence"].Unit]["m_Faction"];
+        check(jerribethFaction != null && !jerribethFaction.EndsWith(PlayerFaction, StringComparison.Ordinal)
+            && !jerribethFaction.EndsWith(NeutralFaction, StringComparison.Ordinal),
+            "F9: Jerribeth native faction fixture no longer demonstrates the non-Player quiet repair");
         var unit = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(IrabethUnit)) as BlueprintUnit ?? new BlueprintUnit { AssetGuid = BlueprintGuid.Parse(IrabethUnit) };
         var spec = new Presence { Unit = IrabethUnit, Area = Capital, Mode = "spawn-copy", Requires = new[] { "trickster.ever" },
             Position = new PresencePosition { X = 1, Y = 2, Z = 3, Orientation = 90 } };
