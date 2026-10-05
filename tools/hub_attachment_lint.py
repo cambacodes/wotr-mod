@@ -17,6 +17,46 @@ HUB_REACTIONS = {**dict.fromkeys(HUBS, REACTIONS), CH6_HUB: REACTIONS[:1]}
 # end eng7-f3
 
 
+# eng8-q8f: manual reading is never an in-world entry witness.
+def gameplay_entry_lint(story):
+    contract = json.loads((Path(__file__).with_name('gameplay_entry_inventory_contracts.json')).read_text())
+    scenes = {s['Id']: s for s in story['Scenes']}
+    if (contract['scope'] not in story.get('Relationships', {})
+            and not any(s.get('Relationship') == contract['scope'] for s in scenes.values())):
+        return []  # Other-route unit fixtures carry no Terendelev inventory.
+    errors = []
+    for row in contract['entries']:
+        for suffix, hub in zip(('', '_awning'), contract['hubs']):
+            sid = row['scene'] + suffix
+            scene = scenes.get(sid, {})
+            presence = story.get('Presences', {}).get(hub, {})
+            other = row['scene'] + ('_awning' if not suffix else '')
+            if (not scene.get('Entry') or scene.get('ManualOnly') or scene.get('Remote')
+                    or scene.get('ContactUnit') != contract['unit']
+                    or scene.get('InteractionHub') != hub or scene.get('Areas') != [contract['area']]
+                    or scene.get('Chapters') != [5]
+                    or contract['return'] not in scene.get('Requires', [])
+                    or other not in scene.get('Forbids', [])
+                    or presence.get('Dialog') != 'hub' or presence.get('Unit') != contract['unit']
+                    or contract['return'] not in presence.get('Requires', [])
+                    or (suffix and 'terendelev.presence.failed' not in scene.get('Requires', []))):
+                errors.append('missing earned gameplay entry: ' + sid + ' (' + ','.join(row['findings']) + ')')
+    for scene in scenes.values():
+        # Chapter contradictions are save-safe retired manuscripts, not live delivery debt.
+        retired = ('chapter_later' in scene.get('Forbids', []) and scene.get('MinChapter', 1) >= 2)
+        native_entry = bool(scene.get('Entry') and scene.get('AnswerLists') and not scene.get('Remote'))
+        hub = story.get('Presences', {}).get(scene.get('InteractionHub'), {})
+        contact_entry = bool(scene.get('Entry') and not scene.get('Remote')
+                             and scene.get('ContactUnit') and hub.get('Dialog') == 'hub'
+                             and hub.get('Unit') == scene.get('ContactUnit'))
+        if (scene.get('Relationship') == contract['scope'] and scene.get('ManualOnly') and not retired
+                and not scene.get('Owner', '').endswith('Epilogue')
+                and not native_entry and not contact_entry):
+            errors.append('substantive ManualOnly scene has no gameplay entry: ' + scene['Id'])
+    return errors
+# end eng8-q8f
+
+
 def integrate(story):
     """Authored attachment only: preserve scene identity, native lists and all route gates."""
     # eng7-f3
@@ -30,7 +70,7 @@ def integrate(story):
 
 def lint(story):
     scenes = {s['Id']: s for s in story['Scenes']}
-    errors = []
+    errors = gameplay_entry_lint(story)  # eng8-q8f: build and CLI enforce nominated delivery rows.
     for key, presence in story.get('Presences', {}).items():
         entries = presence.get('ReactionScenes', [])
         if entries and key not in HUB_REACTIONS:  # eng7-f3

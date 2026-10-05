@@ -22,7 +22,10 @@ internal static class CamelliaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng8-q8f: the late-coffin positive pays its existing sexton price.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 100 } };
+        // end eng8-q8f
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
@@ -45,13 +48,12 @@ internal static class CamelliaTricksterTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
-        // The outcomes of a full walk that pass through the named choice (its Set flags held and, if a Next, its node visited).
+        // eng8-q8f: outcomes that actually traverse the named node and saved answer index.
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = new List<Snapshot>();
-            foreach (var r in Program.Walk(scene, w))
-                if (chosen.Set.All(r.Has) && r.Has(scene.Id)) hits.Add(r);
+            // eng8-q8f: prove the edge, including empty/shared Set arrays.
+            var hits = Program.WalkVia(scene, w, node, index);
+            // end eng8-q8f
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }

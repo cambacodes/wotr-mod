@@ -887,6 +887,36 @@ SCENES.append(scene(P + "watch.road", "The road out of Iz", "Terendelev", 5, "",
     Remote=True, Kind="visit", ManualOnly=True))
 
 
+# eng8-q8f: authored handovers and invitations through the existing two contacts.
+_GAMEPLAY_ENTRIES = {
+    "letter.watch_report": '"Let me read your watch report."',
+    "letter.second_report": '"You have another report for me?"',
+    "watch.third_bell": '"Come by my room after your watch."',
+    "watch.at_the_gate": '"Walk with me to the citadel."',
+    "watch.road": '"Tell me about the ride back from Iz."',
+}
+for _key, _entry in _GAMEPLAY_ENTRIES.items():
+    _host = next(s for s in SCENES if s["Id"] == P + _key)
+    _host.update(Entry=_entry, ContactUnit=HUMAN, InteractionHub=HUB,
+                 Areas=[DREZEN], Remote=False, ManualOnly=False)
+    if _key == "watch.road":
+        # The existing completed-Iz reader witnesses the trip; the late return stays excluded.
+        _host["Requires"] = list(dict.fromkeys([*_host["Requires"], "iz.done"]))
+        _host["Nodes"][0]["Text"] = ('{n}Beside the trader\'s stall, Terendelev shakes her head at a passing horse. '
+            'The ride back from Iz is still fresh in her memory.{/n}\n' + _host["Nodes"][0]["Text"])
+    _host.pop("Kind", None)
+    _twin = copy.deepcopy(_host)
+    _twin["Id"] += "_awning"
+    _twin["InteractionHub"] = HUB_FB
+    if _key == "watch.road":
+        _twin["Nodes"][0]["Text"] = _twin["Nodes"][0]["Text"].replace("Beside the trader's stall", "Under the tailor's awning", 1)
+    _twin["Requires"] = list(dict.fromkeys([*_twin["Requires"], HUB_FAILED]))
+    _host["Forbids"] = list(dict.fromkeys([*_host["Forbids"], _twin["Id"]]))
+    _twin["Forbids"] = list(dict.fromkeys([*_twin["Forbids"], _host["Id"]]))
+    SCENES.append(_twin)
+# end eng8-q8f
+
+
 # Both presence hubs use the same sold-memory variants; old answers keep their indices.
 for suffix in ("", "_awning"):
     foresight.gap(REL, P + "watch.proof" + suffix, (("fear", 0),), "try",

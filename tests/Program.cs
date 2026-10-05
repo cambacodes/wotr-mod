@@ -22,7 +22,10 @@ internal static class Program
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
         RestSpent = new Dictionary<string, int>(original.RestSpent),
         CrusadeResources = original.CrusadeResources == null ? null : new Dictionary<string, int>(original.CrusadeResources),
-        AvailableContacts = new HashSet<string>(original.AvailableContacts)
+        AvailableContacts = new HashSet<string>(original.AvailableContacts),
+        // eng8-q8f: retain the actually placed hub contact across branch copies.
+        SceneContacts = new HashSet<string>(original.SceneContacts)
+        // end eng8-q8f
     };
 
     // eng7-l08: ledger reader used by actual route walkers, including known failing inventories.
@@ -138,12 +141,25 @@ internal static class Program
             var node = scene.Nodes.Single(n => n.Id == id);
             Rules.EnterNode(node, state); // eng7-l09: runtime OnShow precedes choice availability.
             visit?.Invoke(id, state);
-            var choices = node.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).ToList();
+            var choices = node.Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToList();
+            // eng8-q8f: Main generates an abort when no paid answer is affordable.
+            if (Rules.PaymentExitAvailable(node, state))
+            { outcomes.Add((Copy(state), passed)); return; }
+            // end eng8-q8f
             Check(choices.Count > 0, "Page has no selectable answers: " + scene.Id + "/" + id);
             foreach (var choice in choices)
             {
                 bool took = passed || (via != null && via.Value.node == id && node.Choices.IndexOf(choice) == via.Value.index);
                 var next = Copy(state);
+                // eng8-q8f: debit before granting effects, as production does.
+                if (choice.Crusade != null)
+                {
+                    var cost = choice.Crusade;
+                    next.CrusadeResources ??= new Dictionary<string, int>();
+                    next.CrusadeResources.TryGetValue(cost.Resource, out int balance);
+                    next.CrusadeResources[cost.Resource] = balance + cost.Amount;
+                }
+                // end eng8-q8f
                 foreach (var effect in choice.Set)
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                 // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
@@ -384,6 +400,19 @@ internal static class Program
         }
         // eng7-l06 end
         Rules.Validate(story);
+        // eng8-q8f: focused diagnostics share the mandatory full-suite assertions.
+        if (args.Contains("--eng8-q8f"))
+        {
+            Inventory2WalkerMutationTests.Run(story, Check);
+            GameplayEntryInventoryTests.Run(story, Check);
+            CamelliaTricksterTests.Run(story, Check);
+            NenioTricksterTests.Run(story, Check);
+            HorzalahTricksterTests.Run(story, Check);
+            TerendelevTricksterTests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8f (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8f
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
         if (!args.Contains("--bindings"))
@@ -910,6 +939,10 @@ internal static class Program
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                 && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
         }
+        // eng8-q8f: default full-suite acceptance, not an optional diagnostic.
+        Inventory2WalkerMutationTests.Run(story, Check);
+        GameplayEntryInventoryTests.Run(story, Check);
+        // end eng8-q8f
         CheckDraftScenes(playedContinuations); // eng7-l13: focused class sweep shares this fixture.
         if (story.Scenes.Any(s => s.Id == "seelah.kept")) CheckSeelahOpening();
         if (story.Scenes.Any(s => s.Id == "seelah.door")) CheckSeelahContinuation();

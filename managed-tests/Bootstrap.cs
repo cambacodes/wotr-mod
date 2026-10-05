@@ -4,6 +4,9 @@ using System.Reflection;
 
 internal static class Bootstrap
 {
+    internal static string RepositoryRoot => Path.GetFullPath(Environment.GetEnvironmentVariable("RRT_TEST_REPO_ROOT")
+        ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../.."));
+
     private static int Main(string[] args)
     {
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
@@ -14,8 +17,9 @@ internal static class Bootstrap
             return 2;
         }
         string game = Path.GetFullPath(args[0]);
-        string root = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../.."));
-        string mod = Path.Combine(root, "src/bin/Release/net48");
+        string root = RepositoryRoot;
+        string mod = Path.GetFullPath(Environment.GetEnvironmentVariable("RRT_TEST_MOD_DIR")
+            ?? Path.Combine(root, "src/bin/Release/net48"));
         string managed = Path.Combine(game, "Wrath_Data/Managed");
         AppDomain.CurrentDomain.AssemblyResolve += (_, request) =>
         {

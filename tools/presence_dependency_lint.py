@@ -11,6 +11,10 @@ OWNED_ROUTES = {"aranka", "camellia", "irabeth", "kaylessa", "nurah", "minagho_c
 
 
 def check(story, relationships=None):
+    # eng8-q8f: dependency success cannot waive a scene with no gameplay entry.
+    from tools.hub_attachment_lint import gameplay_entry_lint
+    entry_errors = gameplay_entry_lint(story) if relationships is None or "terendelev" in relationships else []
+    # end eng8-q8f
     scenes = story.get("Scenes") or []
     rels = story.get("Relationships") or {}
     derived = story.get("Derived") or {}
@@ -264,7 +268,7 @@ def check(story, relationships=None):
             visit(key, seen)
         return found
 
-    hard = []
+    hard = list(entry_errors)  # eng8-q8f: retain missing-entry failures beside bootstrap cycles.
     for rel_name, rel in rels.items():
         if relationships is not None and rel_name not in relationships:
             continue

@@ -66,10 +66,13 @@ internal static class TerendelevTricksterTests
         var night = S(P + "night.watch");
         var keepsakes = S(P + "watch.keepsakes");
         var road = S(P + "watch.road");
-        var own = story.Scenes.Where(s => s.Relationship == "terendelev" && !s.Reaction && !s.Id.StartsWith("terendelev.continuation", StringComparison.Ordinal)).ToArray();
+        var own = story.Scenes.Where(s => s.Relationship == "terendelev" && !s.Reaction && !s.Id.StartsWith(P + "react.", StringComparison.Ordinal) && !s.Id.StartsWith("terendelev.continuation", StringComparison.Ordinal)).ToArray();
         var hub = own.Where(s => s.InteractionHub != null).ToArray();
         var pages = own.Where(s => s.Id.StartsWith(P + "epilogue.", StringComparison.Ordinal)).ToArray(); // eng7-f6d: native dialogue text records have their own suite.
-        var reactions = story.Scenes.Where(s => s.Relationship == "terendelev" && s.Reaction).ToArray();
+        // eng8-q8f: count the royal-letter reactor once, delivered as a physical handover.
+        var reactions = story.Scenes.Where(s => s.Relationship == "terendelev"
+            && (s.Reaction || s.Id == P + "react.galfrey.letter")).ToArray();
+        // end eng8-q8f
 
         // Plays one scene and returns the outcomes holding every flag in `with` and none in `without`.
         List<Snapshot> Play(Scene scene, Snapshot w, string[] with, params string[] without)
@@ -179,7 +182,7 @@ internal static class TerendelevTricksterTests
         check(Rules.PresenceWanted(stall, back) && !Rules.PresenceWanted(awning, back), "Trk_Terendelev_Bones: her presence does not stand in Drezen.");
         check(!Rules.Available(story, late, Later(story, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", Returned), 48)),
             "Trk_Terendelev_Bones: the late page follows a return.");
-        check(Rules.Available(story, road, Later(story, back, 8)), "Trk_Terendelev_Bones: the road out of Iz never comes.");
+        check(Rules.Available(story, road, Later(story, World(story, 5, "trickster.ever", Returned, "iz.done"), 8)), "Trk_Terendelev_Bones: the road out of Iz never comes.");
         var failed = One(bones, battle, new[] { P + "search_failed" }, Returned);
         var claimed = One(bones, battle, new[] { P + "refused_claim" }, Returned);
         var flinched = One(bones, battle, new[] { P + "flinched" }, Returned, P + "search_failed");
@@ -343,11 +346,12 @@ internal static class TerendelevTricksterTests
             foreach (var node in s.Nodes)
                 check(!node.Text.Contains("street kid in Kenabres", StringComparison.Ordinal) && !node.Text.Contains("night before", StringComparison.Ordinal),
                     "Invented history or the wrong prologue chronology: " + s.Id + "/" + node.Id);
-        // INT/COX: the reports and visits that assumed an absence or a battle are manual reads, and assume neither.
+        // eng8-q8f: extras open at placed contacts; manual UI is no delivery witness.
         foreach (var id in new[] { "letter.watch_report", "letter.second_report", "watch.at_the_gate", "watch.road", "watch.third_bell" })
-            check(S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))
-                  && !S(P + id).Nodes.Any(n => n.Text.Contains("departure", StringComparison.Ordinal) || n.Text.Contains("column comes back", StringComparison.Ordinal)),
-                "A Chapter 5 extra is still a rest delivery, or claims an absence: " + id);
+            check(!S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))
+                  && S(P + id).ContactUnit == Human && S(P + id).InteractionHub == "terendelev.presence",
+                "A Chapter 5 extra lacks gameplay contact: " + id);
+        // end eng8-q8f
 
         Console.WriteLine("PASS: Terendelev Trickster (Trk_Terendelev_*): the square and the Abyss, the bones on the Queen's list and the knight's, "
             + "the search and the gamble, the late page, the claim, the rest and the flinch, the first night and its debt, the release, "

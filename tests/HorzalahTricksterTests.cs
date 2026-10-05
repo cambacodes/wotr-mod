@@ -39,7 +39,10 @@ internal static class HorzalahTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        // eng8-q8f: funded positive predicate fixtures; negatives explicitly remove funds.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen,
+            CrusadeResources = new Dictionary<string, int> { ["Favors"] = 100, ["Finances"] = 150 } };
+        // end eng8-q8f
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
@@ -63,39 +66,13 @@ internal static class HorzalahTricksterTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
-        // Every outcome of a scene with the exact edges taken to reach it: (node, choice index) pairs, walked the way the
-        // engine offers them (only choices whose Requires/Forbids hold at that point; a check branches to both outcomes).
-        List<(Snapshot state, List<(string node, int index)> path)> Paths(Scene scene, Snapshot initial)
-        {
-            var outcomes = new List<(Snapshot, List<(string, int)>)>();
-            void Visit(string id, Snapshot state, List<(string, int)> path)
-            {
-                var node = scene.Nodes.Single(n => n.Id == id);
-                for (int i = 0; i < node.Choices.Count; i++)
-                {
-                    var choice = node.Choices[i];
-                    if (!Rules.Match(choice.Requires, choice.Forbids, state)) continue;
-                    var next = Program.Copy(state);
-                    foreach (var effect in choice.Set)
-                        if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
-                    var edge = new List<(string, int)>(path) { (id, i) };
-                    if (choice.Next != null || choice.Check != null)
-                        foreach (var target in Rules.NextNodes(choice)) Visit(target, Program.Copy(next), edge);
-                    else
-                    {
-                        if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
-                        outcomes.Add((next, edge));
-                    }
-                }
-            }
-            Visit(scene.Nodes[0].Id, initial, new List<(string, int)>());
-            return outcomes;
-        }
         // Take: the scene must be available, and the outcome must have traversed exactly that choice.
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
             check(Avail(scene, w), "Not available before taking " + scene.Id + "/" + node + "[" + index + "]");
-            var hits = Paths(scene, w).Where(o => o.path.Contains((node, index))).Select(o => o.state).ToList();
+            // eng8-q8f: shared production affordability, debit, entry and abort processing.
+            var hits = Program.WalkVia(scene, w, node, index);
+            // end eng8-q8f
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
