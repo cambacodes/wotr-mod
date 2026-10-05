@@ -50,6 +50,13 @@ namespace Tirabade
         // cook, sell or smash. Warning-only. The parent mod never names the dialog or the flag.
         public const string DragonEggsDialog = "dragon_eggs.dialog";
         public const string EnableEggDialog = "b88c56313ded5e0409bbd04334add635";
+        // eng7-f6c begin: Cue_0765 has no actions or continuation. Only its
+        // checker is wrapped; the sequence, native GUID and ShowOnce stay intact.
+        public const string TerendelevFuneral = "terendelev.funeral_introduction";
+        public const string TerendelevFuneralSequence = "a52fcdb99e9bfca459613b989a9760f9";
+        public const string TerendelevScaleAnswer = "53173097d471d3a45bc31e770e2f35f2";
+        public const string TerendelevScale = "816f244523b5455a85ae06db452d4330";
+        // eng7-f6c end
         public static Dictionary<string, string> Reviewed => Rules.ReviewedNativeGates;
 
         // Phase 1: the native evidence must match exactly, or the gate is refused (the caller degrades its relationship).
@@ -60,34 +67,6 @@ namespace Tirabade
             checkers = Array.Empty<ConditionsChecker>();
             if (!Reviewed.TryGetValue(gate, out var target) || spec.Target != target) return "not a reviewed native gate";
             var blueprint = resolve(target);
-            // eng7-f6d begin: preserve the original condition objects and actions.
-            if (gate == "terendelev.scale_funeral")
-            {
-                if (!(blueprint is BlueprintCue funeralCue) || !funeralCue.ShowOnce || funeralCue.ShowOnceCurrentDialog
-                    || funeralCue.Conditions?.Operation != Operation.And || funeralCue.Conditions.Conditions?.Length != 2
-                    || !(funeralCue.Conditions.Conditions[0] is AnswerSelected answer) || !answer.Not || answer.CurrentDialog
-                    || ReferenceGuid(answer, "m_Answer") != BlueprintGuid.Parse("53173097d471d3a45bc31e770e2f35f2")
-                    || !(funeralCue.Conditions.Conditions[1] is ItemsEnough item) || item.Not || item.Money || item.Quantity != 1
-                    || ReferenceGuid(item, "m_ItemToCheck") != BlueprintGuid.Parse("816f244523b5455a85ae06db452d4330")
-                    || funeralCue.ComponentsArray.Length != 0 || funeralCue.OnShow?.Actions?.Length != 0 || funeralCue.OnStop?.Actions?.Length != 0
-                    || funeralCue.Answers?.Count != 0 || funeralCue.Continue?.Cues?.Count != 0
-                    || NativeEpilogueEdit.TextKey(funeralCue.Text) != "59d62299-340d-4994-ab9a-1c62e6cc1376")
-                    return "Storyteller scale funeral differs from the reviewed funeralCue";
-                owner = funeralCue; checkers = new[] { funeralCue.Conditions }; return null;
-            }
-            if (gate == "terendelev.trapped_future")
-            {
-                if (!(blueprint is BlueprintAnswer answer) || answer.ShowOnce || answer.ShowOnceCurrentDialog
-                    || answer.ShowConditions?.Operation != Operation.And || answer.ShowConditions.Conditions?.Length != 0
-                    || answer.SelectConditions?.Operation != Operation.And || answer.SelectConditions.Conditions?.Length != 0
-                    || answer.ComponentsArray.Length != 0 || answer.OnSelect?.Actions?.Length != 0
-                    || answer.NextCue?.Strategy != Kingmaker.DialogSystem.Strategy.First || answer.NextCue.Cues?.Count != 1
-                    || answer.NextCue.Cues[0]?.Guid != BlueprintGuid.Parse("ca71b79bc9a45b741bcc6599ef017fe7")
-                    || NativeEpilogueEdit.TextKey(answer.Text) != "d3e37cdf-9826-4186-be58-d8fac773f168")
-                    return "Storyteller trapped-future answer differs from the reviewed answer";
-                owner = answer; checkers = new[] { answer.ShowConditions }; return null;
-            }
-            // eng7-f6d end
             if (gate == NativeQ3Recovery.Gate)
                 return NativeQ3Recovery.Check(resolve, out owner);
             if (gate == SanctumSpawn)
@@ -133,6 +112,30 @@ namespace Tirabade
                 checkers = new[] { dialog.Conditions };
                 return null;
             }
+            // eng7-f6c begin: drift refuses the hide; no once-only cue is cloned.
+            if (gate == TerendelevFuneral)
+            {
+                if (!(blueprint is BlueprintCue funeral)) return "Storyteller/Cue_0765 missing";
+                var shown = funeral.Conditions?.Conditions;
+                if (!funeral.ShowOnce || funeral.ShowOnceCurrentDialog || funeral.ComponentsArray.Length != 0
+                    || NativeEpilogueEdit.TextKey(funeral.Text) != "59d62299-340d-4994-ab9a-1c62e6cc1376"
+                    || funeral.OnShow?.Actions?.Length != 0 || funeral.OnStop?.Actions?.Length != 0
+                    || funeral.Answers?.Count != 0 || funeral.Continue?.Cues?.Count != 0
+                    || funeral.AlignmentShift == null || funeral.AlignmentShift.Value != 0
+                    || funeral.Conditions == null || funeral.Conditions.Operation != Operation.And
+                    || shown == null || shown.Length != 2
+                    || !(shown[0] is AnswerSelected answer) || !answer.Not || answer.CurrentDialog
+                    || answer.Answer?.AssetGuid != BlueprintGuid.Parse(TerendelevScaleAnswer)
+                    || !(shown[1] is ItemsEnough items) || items.Not || items.Money || items.Quantity != 1
+                    || items.ItemToCheck?.AssetGuid != BlueprintGuid.Parse(TerendelevScale)
+                    || !(resolve(TerendelevFuneralSequence) is BlueprintCueSequence sequence)
+                    || sequence.Cues == null || sequence.Cues.Count(reference => reference?.Guid == funeral.AssetGuid) != 1)
+                    return "Storyteller/Cue_0765 differs from the reviewed action-free funeral policy";
+                owner = funeral;
+                checkers = new[] { funeral.Conditions };
+                return null;
+            }
+            // eng7-f6c end
             if (!(blueprint is BlueprintCue cue)) return "Golems_DragonEggs/Cue_0001 missing";
             var conditions = cue.Conditions?.Conditions;
             if (cue.Conditions == null || cue.Conditions.Operation != Operation.And || conditions == null || conditions.Length != 1
@@ -150,11 +153,6 @@ namespace Tirabade
                 System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)!.GetValue(status);
             return reference != null && reference.Guid == BlueprintGuid.Parse(guid);
         }
-
-        // eng7-f6d: field references are read only; never alter the native conditions.
-        private static BlueprintGuid? ReferenceGuid(object value, string field) => (value.GetType().GetField(field,
-            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)
-            ?.GetValue(value) as BlueprintReferenceBase)?.Guid;
 
         private static BlueprintGuid? QuestGuid(QuestStatus status) => ((BlueprintQuestReference?)typeof(QuestStatus).GetField("m_Quest",
             System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public)!.GetValue(status))?.Guid;

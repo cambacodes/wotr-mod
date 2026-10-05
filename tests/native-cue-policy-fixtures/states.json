@@ -847,6 +847,110 @@
       "ExpectedCandidate": "devarra.trickster.native.eggs_flown"
     },
     {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/v0/g0",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minagho_chivarro.trickster.spared.brand",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "17249a81e2f0d7d4ca67937db86ef858"
+      ],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/control/off-Trickster",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minagho_chivarro.trickster.spared.brand"
+      ],
+      "NativeEligible": [
+        "17249a81e2f0d7d4ca67937db86ef858"
+      ],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/control/unpaid",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "17249a81e2f0d7d4ca67937db86ef858"
+      ],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/control/closed",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minachiv.closed",
+        "minagho_chivarro.trickster.spared.brand",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "17249a81e2f0d7d4ca67937db86ef858"
+      ],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/control/unreturned-sacrifice",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minagho_chivarro.trickster.spared.brand",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "17249a81e2f0d7d4ca67937db86ef858"
+      ],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/control/degraded",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minagho_chivarro.trickster.spared.brand",
+        "rrt.degraded.minagho_chivarro",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "17249a81e2f0d7d4ca67937db86ef858"
+      ],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
+      "Id": "17249a81e2f0d7d4ca67937db86ef858/control/native-ineligible",
+      "Target": "17249a81e2f0d7d4ca67937db86ef858",
+      "Dialog": "257e13519dd1f5b4c8d992865ba0f609",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "minagho_chivarro.trickster.spared.brand",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "minagho_chivarro.native.eng7_f6c.debt"
+    },
+    {
       "Id": "1b53c189b767412f921b8294b980a51c/v0/g0",
       "Target": "1b53c189b767412f921b8294b980a51c",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
@@ -1216,6 +1320,116 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "kiana.native.doubt_30_home"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/v0/g0",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/control/off-Trickster",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.broken"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/control/unpaid",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/control/closed",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.closed",
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/control/unreturned-sacrifice",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/control/degraded",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "rrt.degraded.irabeth",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "2d6b09c6508010e49b882741add89dcf"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
+    },
+    {
+      "Id": "2d6b09c6508010e49b882741add89dcf/control/native-ineligible",
+      "Target": "2d6b09c6508010e49b882741add89dcf",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.broken",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.retired"
     },
     {
       "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g0",
@@ -3156,6 +3370,220 @@
       "ExpectedCandidate": "kiana.native.q3_reconcile_016_full"
     },
     {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/v0/g0",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "62f20840e6aa33844b641c5c8e10f814"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/control/off-Trickster",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned"
+      ],
+      "NativeEligible": [
+        "62f20840e6aa33844b641c5c8e10f814"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/control/unpaid",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "62f20840e6aa33844b641c5c8e10f814"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/control/closed",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.closed",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "62f20840e6aa33844b641c5c8e10f814"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/control/unreturned-sacrifice",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "62f20840e6aa33844b641c5c8e10f814"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/control/degraded",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "rrt.degraded.horzalah",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "62f20840e6aa33844b641c5c8e10f814"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "62f20840e6aa33844b641c5c8e10f814/control/native-ineligible",
+      "Target": "62f20840e6aa33844b641c5c8e10f814",
+      "Dialog": "",
+      "Page": "9669bef01411fd2498a466d2aef63bca",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.guild"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/v0/g0",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.committed",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "661508b5683d140458f6a0908de98d70"
+      ],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/control/off-Trickster",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.committed"
+      ],
+      "NativeEligible": [
+        "661508b5683d140458f6a0908de98d70"
+      ],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/control/unpaid",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "661508b5683d140458f6a0908de98d70"
+      ],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/control/closed",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.closed",
+        "herrax.committed",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "661508b5683d140458f6a0908de98d70"
+      ],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/control/unreturned-sacrifice",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.committed",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "661508b5683d140458f6a0908de98d70"
+      ],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/control/degraded",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.committed",
+        "rrt.degraded.herrax",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "661508b5683d140458f6a0908de98d70"
+      ],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
+      "Id": "661508b5683d140458f6a0908de98d70/control/native-ineligible",
+      "Target": "661508b5683d140458f6a0908de98d70",
+      "Dialog": "b1a346ae168956b4a8b759845ab8d2de",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "herrax.committed",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "herrax.native.eng7_f6c.reachable"
+    },
+    {
       "Id": "73815b731281fdc47bbc59aba42b2126/v0/g0",
       "Target": "73815b731281fdc47bbc59aba42b2126",
       "Dialog": "ff5c54635748e334990879498eb5429b",
@@ -4187,6 +4615,116 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/v0/g0",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8ae3220fd0a645809f59f54f8d89985f"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/control/off-Trickster",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned"
+      ],
+      "NativeEligible": [
+        "8ae3220fd0a645809f59f54f8d89985f"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/control/unpaid",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8ae3220fd0a645809f59f54f8d89985f"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/control/closed",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.closed",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8ae3220fd0a645809f59f54f8d89985f"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/control/unreturned-sacrifice",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8ae3220fd0a645809f59f54f8d89985f"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/control/degraded",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "rrt.degraded.horzalah",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8ae3220fd0a645809f59f54f8d89985f"
+      ],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8ae3220fd0a645809f59f54f8d89985f/control/native-ineligible",
+      "Target": "8ae3220fd0a645809f59f54f8d89985f",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
     },
     {
       "Id": "a473e5412ffd0f54fbf395770a80a008/v0/g0",
@@ -5319,7 +5857,7 @@
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
       ],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "c68d9b3a2b887f645ac539f996a63a92/control/off-Trickster",
@@ -5333,7 +5871,7 @@
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
       ],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "c68d9b3a2b887f645ac539f996a63a92/control/unpaid",
@@ -5347,7 +5885,7 @@
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
       ],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "c68d9b3a2b887f645ac539f996a63a92/control/closed",
@@ -5363,7 +5901,7 @@
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
       ],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "c68d9b3a2b887f645ac539f996a63a92/control/unreturned-sacrifice",
@@ -5379,7 +5917,7 @@
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
       ],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "c68d9b3a2b887f645ac539f996a63a92/control/degraded",
@@ -5395,7 +5933,7 @@
       "NativeEligible": [
         "c68d9b3a2b887f645ac539f996a63a92"
       ],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "c68d9b3a2b887f645ac539f996a63a92/control/native-ineligible",
@@ -5408,7 +5946,7 @@
         "trickster.ever"
       ],
       "NativeEligible": [],
-      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.beginning"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/v0/g0",
@@ -5423,7 +5961,7 @@
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
       ],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/control/off-Trickster",
@@ -5437,7 +5975,7 @@
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
       ],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/control/unpaid",
@@ -5451,7 +5989,7 @@
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
       ],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/control/closed",
@@ -5467,7 +6005,7 @@
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
       ],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/control/unreturned-sacrifice",
@@ -5483,7 +6021,7 @@
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
       ],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/control/degraded",
@@ -5499,7 +6037,7 @@
       "NativeEligible": [
         "ca71b79bc9a45b741bcc6599ef017fe7"
       ],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "ca71b79bc9a45b741bcc6599ef017fe7/control/native-ineligible",
@@ -5512,7 +6050,7 @@
         "trickster.ever"
       ],
       "NativeEligible": [],
-      "ExpectedCandidate": "terendelev.native.future_returned"
+      "ExpectedCandidate": "terendelev.native.eng7_f6c.voice"
     },
     {
       "Id": "cb2e13e1ded36e5419d746ed92162a91/v0/g0",
@@ -5633,6 +6171,116 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "kiana.native.q3_reconcile_022_full"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/v0/g0",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/control/off-Trickster",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.encouraged"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/control/unpaid",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/control/closed",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.closed",
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/control/unreturned-sacrifice",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "sacrifice",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/control/degraded",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "rrt.degraded.irabeth",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "cba964e33d0a0704d847629be452b359"
+      ],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
+    },
+    {
+      "Id": "cba964e33d0a0704d847629be452b359/control/native-ineligible",
+      "Target": "cba964e33d0a0704d847629be452b359",
+      "Dialog": "",
+      "Page": "ae1f824fe248d9f4aac7d39ec2e12140",
+      "Chapter": 6,
+      "Flags": [
+        "irabeth.committed",
+        "native.history.irabeth.encouraged",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "irabeth.native.eng7_f6c.service"
     },
     {
       "Id": "ccd140dbf2603734aa323261c2445bec/v0/g0",
@@ -14529,6 +15177,32 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "trickster.lastcall.page.last_word"
+    },
+    {
+      "Id": "page/terendelev.native.scale_inquiry",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "terendelev.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "terendelev.native.scale_inquiry"
+    },
+    {
+      "Id": "page/terendelev.native.future_returned",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "terendelev.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "terendelev.native.future_returned"
     }
   ]
 }

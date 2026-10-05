@@ -4,14 +4,19 @@ from story_format import c, n, scene
 DREZEN = "2570015799edf594daf2f076f2f975d8"
 IRABETH = "280d4712dceb37f4a88e98f1f4c6e64f"
 SCENES = []
+# eng7-f6c: the outgoing inquiry is handled at the quartermaster's desk.
+QUARTERMASTER = "8692bff6041c47a0b13158d5977f291b"
+QUARTERMASTER_HUB = "fa57cf97ea01bf34e9a30f6ad444381e"
 
 
 def s(id, title, nodes, requires=(), delay=0, physical=False):
+    request = id == "return_request"  # eng7-f6c: physical inquiry, one remote reply.
     for page in nodes:
         page["Portrait"] = "Irabeth"
     SCENES.append(scene("irabeth." + id, title, "Irabeth", 5,
+        '"About the requisition bearing Irabeth\'s name."' if request else
         '"You agreed to hear me. May we speak?"' if physical else "", nodes,
-        Relationship="irabeth", AfterDeparture="irabeth", Remote=not physical,
+        Relationship="irabeth", AfterDeparture="irabeth", Remote=not (physical or request),
         Chapters=[5], Areas=[DREZEN],
         requires=("trickster", "irabeth_gone", *requires,
                   *(('irabeth.return_meeting_arrived', 'irabeth.return_meeting_accepted') if physical
@@ -19,7 +24,8 @@ def s(id, title, nodes, requires=(), delay=0, physical=False):
         forbids=("irabeth_dead", "inhuman", "swarm", "true_lich", "closed", "irabeth.closed",
                  "irabeth.return_meeting_declined", *(("irabeth.return_meeting_accepted",) if id == "return_reply" else ())),
         delay=delay, optional=True,
-        **({"ContactUnit": IRABETH, "AnswerLists": ["871af36f2ab2b1f40b5de77976c54276"]} if physical else {})))
+        **({"ContactUnit": IRABETH, "AnswerLists": ["871af36f2ab2b1f40b5de77976c54276"]} if physical else
+           {"ContactUnit": QUARTERMASTER, "AnswerLists": [QUARTERMASTER_HUB]} if request else {})))
 
 
 s("return_request", "An order without an officer", [

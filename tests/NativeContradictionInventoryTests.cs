@@ -13,11 +13,14 @@ internal static class NativeContradictionInventoryTests
     internal static JsonDocument Load(string name) => JsonDocument.Parse(File.ReadAllText(Path.Combine("tools", name)));
 
     internal static bool OriginalHolds(JsonElement checker, IEnumerable<string> playing,
-        IEnumerable<string>? seen = null, IEnumerable<string>? completed = null)
+        IEnumerable<string>? seen = null, IEnumerable<string>? completed = null, IEnumerable<string>? answers = null,
+        IEnumerable<string>? items = null) // eng7-f6c
     {
         var live = new HashSet<string>(playing);
         var cues = new HashSet<string>(seen ?? Array.Empty<string>());
         var quests = new HashSet<string>(completed ?? Array.Empty<string>());
+        var selected = new HashSet<string>(answers ?? Array.Empty<string>()); // eng7-f6c
+        var inventoryItems = new HashSet<string>(items ?? Array.Empty<string>()); // eng7-f6c
         bool Condition(JsonElement c)
         {
             string type = c.GetProperty("$type").GetString()!.Split(", ").Last();
@@ -26,6 +29,9 @@ internal static class NativeContradictionInventoryTests
             {
                 "EtudeStatus" when c.GetProperty("Playing").GetBoolean() => live.Contains(Ref("m_Etude")),
                 "CueSeen" => cues.Contains(Ref("m_Cue")),
+                "AnswerSelected" => selected.Contains(Ref("m_Answer")), // eng7-f6c
+                "ItemsEnough" when !c.GetProperty("Money").GetBoolean() && c.GetProperty("Quantity").GetInt32() == 1
+                    => inventoryItems.Contains(Ref("m_ItemToCheck")), // eng7-f6c: the funeral's single scale
                 "QuestStatus" when c.GetProperty("State").GetString() == "Completed" => quests.Contains(Ref("m_Quest")),
                 "OrAndLogic" => Checker(c.GetProperty("ConditionsChecker")),
                 _ => throw new Exception("Unreviewed native fixture condition: " + type)

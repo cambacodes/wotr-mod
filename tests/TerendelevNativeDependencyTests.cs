@@ -19,9 +19,12 @@ internal static class TerendelevNativeDependencyTests
         var evidence = new Dictionary<string, List<object>>();
         foreach (string target in new[] { funeral, inquiry, future, question }) evidence[target] = new List<object>();
         var authored = story.Scenes.Single(s => s.Id == "terendelev.native.future_question");
-        check(authored.AnswerLists.SequenceEqual(new[] { "33501a1edc26b2c4285096b9214c5414" }), "F6d: replacement future question lost its native list");
+        check(authored.AnswerLists.SequenceEqual(new[] { "33501a1edc26b2c4285096b9214c5414" }), "F6d: retired future question lost its saved native list");
         check(authored.ReturnToList && authored.NativeReturnCue == null, "F6d: future question replays the old memory instead of returning to its native list");
         check(!authored.Nodes.SelectMany(n => n.Choices).SelectMany(c => c.Set).Any(), "F6d: native correction manufactures route or voice evidence");
+        check(!story.NativeGates.Values.Any(g => g.Target == question) && !story.NativeAnswerEdits.ContainsKey(question),
+            "Integ3: legitimate native future question was overridden");
+        check(!story.SelectedAnswers.Values.Contains(question), "Integ3: corrected future manufactures trapped-voice history");
         foreach (bool path in new[] { false, true })
         foreach (bool returned in new[] { false, true })
         foreach (bool scale in new[] { false, true })
@@ -30,6 +33,7 @@ internal static class TerendelevNativeDependencyTests
         foreach (bool closed in new[] { false, true })
         {
             var state = new Snapshot { Chapter = 5, Hour = 100000 };
+            state.Flags.Add("chapter_later"); // Main's Chapter 5 snapshot, including retirement guards.
             if (path) state.Flags.UnionWith(new[] { "trickster", "trickster.ever" });
             if (returned) state.Flags.Add(returnedFlag);
             if (closed) state.Flags.Add("terendelev.closed");
@@ -58,16 +62,20 @@ internal static class TerendelevNativeDependencyTests
             {
                 bool original = Original(target), earned = path && returned;
                 string? selected, expected;
-                if (target == funeral || target == question)
+                if (target == funeral)
                 {
-                    string gate = target == funeral ? "terendelev.scale_funeral" : "terendelev.trapped_future";
-                    selected = original && Rules.NativeGateHolds(story, gate, state) ? "hidden" : null;
+                    selected = original && Rules.NativeGateHolds(story, "terendelev.funeral_introduction", state) ? "hidden" : null;
                     expected = original && earned ? "hidden" : null;
+                }
+                else if (target == question)
+                {
+                    selected = story.NativeGates.Values.Any(g => g.Target == question) ? "hidden" : null;
+                    expected = null;
                 }
                 else
                 {
                     selected = NativeVariantCoverageInventoryTests.Selected(story, target, state, original);
-                    expected = original && earned ? "terendelev.native." + (target == inquiry ? "scale_inquiry" : "future_returned") : null;
+                    expected = original && earned ? "terendelev.native.eng7_f6c." + (target == inquiry ? "beginning" : "voice") : null;
                 }
                 bool passed = selected == expected;
                 string name = $"F6d {target}: Trickster={path}, return={returned}, scale={scale}, scale answer={scaleAnswer}, claw answer={clawAnswer}, closed={closed}";
@@ -75,8 +83,9 @@ internal static class TerendelevNativeDependencyTests
                 evidence[target].Add(new { Name = name, Original = original, Selected = selected, Expected = expected, Passed = passed });
             }
             check(before.SetEquals(state.Flags), "F6d: selection produces trapped-voice or return history");
-            if (!closed)
-                check(Rules.Available(story, authored, state) == (path && returned), "F6d: unearned/off-path future question");
+            foreach (string retired in new[] { "scale_inquiry", "future_returned", "future_question" })
+                check(!Rules.Available(story, story.Scenes.Single(s => s.Id == "terendelev.native." + retired), state),
+                    "Integ3: duplicate Terendelev delivery remains selectable: " + retired);
         }
         // eng7-f6d: a text correction is no living audience for an unreturned sacrifice.
         foreach (bool commanderBack in new[] { false, true })
@@ -97,7 +106,7 @@ internal static class TerendelevNativeDependencyTests
         check(NativeVariantCoverageInventoryTests.Selected(story, inquiry, historical, true) != null,
             "F6d: changing path undoes a paid historical return");
         historical.Flags.Add(Rules.DegradedPrefix + "terendelev");
-        check(!Rules.NativeGateHolds(story, "terendelev.scale_funeral", historical), "F6d: degraded native gate still hides original");
+        check(!Rules.NativeGateHolds(story, "terendelev.funeral_introduction", historical), "F6d: degraded native gate still hides original");
         check(NativeVariantCoverageInventoryTests.Selected(story, inquiry, historical, true) == null,
             "F6d: degraded native selector still overrides original");
         foreach (var pair in evidence)

@@ -14,6 +14,7 @@ internal static class IrabethIndependentTests
         var reached = new HashSet<string>();
         // The Trickster layer (IrabethTricksterTests) is judged by its own suite: its devices serve irabeth_dead by design.
         var newScenes = story.Scenes.Where(s => s.Relationship == "irabeth" && s.AfterDeparture == null
+                                                && !Rules.IsNativeReplacement(story, s) // eng7-f6c: covered by the native selector suite
                                                 && !s.Id.StartsWith("irabeth.trickster.", StringComparison.Ordinal)
                                                 && !s.Id.StartsWith("irabeth.early.", StringComparison.Ordinal)).ToArray();   // PacingPP1Tests
         var ends = newScenes.Where(s => s.Owner == "Epilogue").ToArray();

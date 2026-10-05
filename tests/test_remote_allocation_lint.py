@@ -97,7 +97,7 @@ class RemoteAllocationTests(unittest.TestCase):
         report = lint.lint(story)
         # Remaining failures are retained, never silently given a new allocation.
         self.assertEqual({h["history"] for h in report["review"]},
-                         {"abyss", "stone", "champion", "late-bid", "street-courtship", "departure"})
+                         {"abyss", "stone", "champion", "late-bid", "street-courtship"})  # eng7-f6c
 
 
 if __name__ == "__main__":

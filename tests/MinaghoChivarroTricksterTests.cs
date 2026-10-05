@@ -472,7 +472,8 @@ internal static class MinaghoChivarroTricksterTests
             "Camellia's reaction ignores her return, or claims the veiled Camellia's missing hub.");
 
         // The registered route (save-safe edits only): lost pages never play for a returned woman; the chain has its own endings.
-        foreach (var s in story.Scenes.Where(s => s.Relationship == "minagho_chivarro" && !s.Id.StartsWith(P, StringComparison.Ordinal)))
+        foreach (var s in story.Scenes.Where(s => s.Relationship == "minagho_chivarro" && !s.Id.StartsWith(P, StringComparison.Ordinal)
+            && !Rules.IsNativeReplacement(story, s))) // eng7-f6c: native text is covered by the selector suite
         {
             if (s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)) check(s.Forbids.Contains(Chain), "A registered ending plays after a Trickster commit: " + s.Id);
             foreach (var death in new[] { ("minagho.dead", RetM), ("chivarro.dead", RetC) })

@@ -417,6 +417,12 @@ def inventory(payload, expectations, backlog):
             # rather than the legitimate question, requires replacement.
             context = fixture["Type"] == "BlueprintAnswersList" or (
                 row["Route"] == "herrax" and fixture["Type"] == "BlueprintAnswer")
+            # eng7-f6c begin: Answer_0784 asks about a future, not a posthumous fate.
+            # It has no OnSelect effects. Correct Cue_0785, retaining the useful
+            # question and never aliasing the new reply to trapped-voice history.
+            context = context or (row["Id"] == "terendelev:003"
+                                  and guid == "fd39fd84212de2047b6b887c9a9cf28e")
+            # eng7-f6c end
             results.append(dict(Finding=row["Id"], Route=row["Route"], Target=guid, Path=fixture["Path"],
                 Dependency=row["Dependency"], Status="context" if context else "registered_unevaluated" if spec else "FAIL_UNCOVERED",
                 Spec=copy.deepcopy(spec), Source=declaration["Source"] if declaration else None))

@@ -25,7 +25,8 @@ class NativeInventoryTests(unittest.TestCase):
         self.assertEqual(len({r["Finding"] for r in rows}), 45)
         report, failures = render_inventory(self.payload, self.expected, self.backlog)
         self.assertGreater(failures, 0)  # a complete queue is not a clean bill of native consistency
-        self.assertIn("FAIL_UNCOVERED", report)
+        self.assertNotIn("FAIL_UNCOVERED", report)
+        self.assertIn("registered_unevaluated", report)  # registration still requires selector evidence
         for row in rows:
             self.assertIn(row["Target"], report)
             self.assertIn(row["Finding"], report)
@@ -87,6 +88,12 @@ class NativeInventoryTests(unittest.TestCase):
         report, _ = render_inventory(self.payload, self.expected, self.backlog, coverage)
         rows = [line for line in report.splitlines() if line.startswith("| irabeth:002") and cue in line]
         self.assertEqual(len(rows), 1)
+        # eng7-f6c: the shipped morale edit is now registered. A bare native
+        # preservation result still cannot green an export with the edit removed.
+        missing = copy.deepcopy(self.payload)
+        missing["NativeOverrides"] = [r for r in missing["NativeOverrides"] if r["Target"] != cue]
+        report, _ = render_inventory(missing, self.expected, self.backlog, coverage)
+        rows = [line for line in report.splitlines() if line.startswith("| irabeth:002") and cue in line]
         self.assertIn("FAIL_UNCOVERED", rows[0])
 
     def test_variant_fixtures_consume_known_q6b_readers_and_paid_flags(self):

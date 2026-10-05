@@ -156,6 +156,18 @@ namespace Tirabade
                 parent: "31665b38d6922ef4ab4cb83afa8245fe", dialog: "bf328bcec67a5014f9a56ee6220f3bcc",
                 continueTo: new[] { "71fbdd5c766802f4eac6dfe0612a2d46" }, onStop: new[] { "Conditional" }),
             // eng7-f6d end
+            // eng7-f6c begin: reviewed cue/slide contracts; no new mutation adapter.
+            ["661508b5683d140458f6a0908de98d70"] = new Evidence("", "", "79d1fac5-23ab-460e-8e60-ce60a4a62ae1", degradeOnRefusal: false,
+                parent: "d69aa03788628cc41848cad53c94e4fb", dialog: "b1a346ae168956b4a8b759845ab8d2de", answers: new[] { "031fa64fda952c940bbac1e4b5a394c3" }),
+            ["62f20840e6aa33844b641c5c8e10f814"] = new Evidence("9669bef01411fd2498a466d2aef63bca", Companions, "8ccf1c23-ae95-4b2e-84cc-37b647aabebd", degradeOnRefusal: false,
+                continueTo: new[] { "8593ec10e3c34cdaaa2d2ed45e73e58a" }, parentContinue: new[] { "8593ec10e3c34cdaaa2d2ed45e73e58a" }),
+            ["8ae3220fd0a645809f59f54f8d89985f"] = new Evidence("", "", "1dd07de3-c767-4561-b659-4b9cea9cf6e7", degradeOnRefusal: false,
+                parent: "8b037c275d3423f44a2e5ecc02c003cf", dialog: "ae58532cb72b28b4eaaccb82eb78eaea", alsoParents: Array.Empty<string>()),
+            ["cba964e33d0a0704d847629be452b359"] = new Evidence("ae1f824fe248d9f4aac7d39ec2e12140", "f8d7f50e3bb88c143834d234c0b24474", "c174e4f2-0f7f-4fc4-9e21-88b56cb2506b", degradeOnRefusal: false),
+            ["2d6b09c6508010e49b882741add89dcf"] = new Evidence("ae1f824fe248d9f4aac7d39ec2e12140", "f8d7f50e3bb88c143834d234c0b24474", "3ad4bedd-1e78-470d-812d-98d51d3ed1b2", degradeOnRefusal: false),
+            ["17249a81e2f0d7d4ca67937db86ef858"] = new Evidence("", "", "7cf9be7f-e702-408c-97b0-76cda664bcc5", degradeOnRefusal: false,
+                parent: "c5f918382f54e4342b40334c2d9f854f", dialog: "257e13519dd1f5b4c8d992865ba0f609", answers: new[] { "cbd2f289d8173fb41a231772290440ba" }, alsoParents: Array.Empty<string>()),
+            // eng7-f6c end
             // Engine-q4: StoryTeller_MainDialogue/Cue_0785, Answer_0784. Its answer list stays native.
             ["ca71b79bc9a45b741bcc6599ef017fe7"] = new Evidence("", "", "da750b86-b8b0-4a2f-a6d4-fea3512327b0", degradeOnRefusal: false,
                 parent: "fd39fd84212de2047b6b887c9a9cf28e", dialog: "bf328bcec67a5014f9a56ee6220f3bcc", answers: new[] { "33501a1edc26b2c4285096b9214c5414" }),

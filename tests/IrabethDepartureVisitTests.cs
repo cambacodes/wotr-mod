@@ -33,7 +33,7 @@ internal static class IrabethDepartureVisitTests
             state.Flags.UnionWith(scene.Requires);
             state.Flags.UnionWith(new[] { "seelah.committed", "arueshalae.committed" });
             foreach (string flag in scene.Requires) state.Times[flag] = state.Hour - scene.DelayHours;
-            if (scene.ContactUnit != null) state.AvailableContacts.Add(Unit);
+            if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit); // eng7-f6c
             var originalFlags = state.Flags.ToArray();
             check(Rules.Available(story, scene, state) && Rules.ContactAvailable(story, scene, state), "Earned visit remains blocked: " + scene.Id);
             var unmarked = Copy(scene); unmarked.AfterDeparture = null;
@@ -78,10 +78,13 @@ internal static class IrabethDepartureVisitTests
                 check(!Rules.Available(story, scene, state) && !Rules.ContactAvailable(story, scene, state), "Arrival flag alone manufactured actor contact.");
                 state.AvailableContacts.Add("b5e867e13503c6f41bb1316705efb4a2");
                 check(!Rules.Available(story, scene, state), "Wife actor substituted for Irabeth.");
-                state.AvailableContacts.Clear(); state.AvailableContacts.Add(Unit);
-                state.Flags.Remove(Arrival); state.Flags.Add(Correspondence);
-                check(!Rules.Available(story, scene, state) && !Rules.ContactAvailable(story, scene, state), "Accepted correspondence substituted for physical arrival.");
-                state.Flags.Remove(Correspondence); state.Flags.Add(Arrival);
+                state.AvailableContacts.Clear(); state.AvailableContacts.Add(scene.ContactUnit!);
+                if (scene.Id == "irabeth.return_first_words") // eng7-f6c: the request visits the quartermaster.
+                {
+                    state.Flags.Remove(Arrival); state.Flags.Add(Correspondence);
+                    check(!Rules.Available(story, scene, state) && !Rules.ContactAvailable(story, scene, state), "Accepted correspondence substituted for physical arrival.");
+                    state.Flags.Remove(Correspondence); state.Flags.Add(Arrival);
+                }
             }
             check(state.Flags.SetEquals(originalFlags) && state.Has("seelah.committed") && state.Has("arueshalae.committed"), "Visit checks changed history or another romance.");
         }
@@ -115,9 +118,12 @@ internal static class IrabethDepartureVisitTests
         foreach (int index in new[] { 0, 1 })
         {
             Reject(s => s.Scenes[index].Requires = s.Scenes[index].Requires.Where(f => f != Correspondence).ToArray(), "missing remote proof");
-            Reject(s => s.Scenes[index].ContactUnit = Unit, "remote requires inaccessible body");
-            Reject(s => s.Scenes[index].Remote = false, "physical request or reply");
+            Reject(s => s.Scenes[index].ContactUnit = Unit, "wrong actor for request or reply"); // eng7-f6c
+            Reject(s => s.Scenes[index].Remote = !s.Scenes[index].Remote, "wrong request or reply delivery");
         }
+        // eng7-f6c: a label cannot exempt a remote request from the letter budget.
+        Reject(s => s.Scenes[0].ContactUnit = null, "quartermaster contact removed");
+        Reject(s => s.Scenes[0].AnswerLists = Array.Empty<string>(), "quartermaster entry removed");
         Reject(s => s.Scenes[1].DelayHours = 47, "reply has no travel time");
         Reject(s => s.Scenes[1].Forbids = s.Scenes[1].Forbids.Where(f => f != Accepted).ToArray(), "reply repeats after acceptance");
         foreach (string flag in new[] { "irabeth.return_request", "irabeth.return_request_sent" })
