@@ -7,8 +7,8 @@ as mine" (Prison_Baph/Cue_0123 c5f91838). Chivarro: "Minagho and I... were close
 d8b51192); "Any of them can be yours for a night... Or forever, if your pockets are deep enough" (Cue_0081 594482c2). Herrax
 asks for the kill in advance (Herraxa_dialogue/Cue_0045_KillChivarro 49135105) and her house strips the dead: rings "cut off a
 dead body along with the fingers" (Cue_0052 d6955c2a). "Closets grant you freedom. You can step inside one, and exit from
-another..." (SocothBriefing/Cue_0011 2f4be0bd). Authored, and labelled as authored: the Commander volunteering as the
-failure of record; the unpaid seal that keeps the body it marks ("The dead do not bleed."); the linen press; Herrax's
+another..." (SocothBriefing/Cue_0011 2f4be0bd). Authored, and labelled as authored: the Commander claiming the debt for causing Minagho's
+failure in Kenabres; the unpaid seal that keeps the body it marks ("The dead do not bleed."); the linen press; Herrax's
 house never destroying stock it can sell. The killed-Chivarro device (Sol quality pass, 2026-09-30) is prepared before
 the kill and never contradicts it: with the deposit, Herrax's house sends down the Chivarro on its own menu (Sael, the
 incubus who wears her face for guests who cannot afford her) in her rings, the Commander kills him knowingly in the native
@@ -153,7 +153,7 @@ def letter(id, title, nodes, requires, forbids=(), delay=24, owner="Memory", **e
 
 # 5.1 Primers, inline, after her own recital of the brand's terms; the terminal choice hands back to her canon reply
 # (Cue_0021 / Cue_0026), which returns to the native kill/spare list, so every native etude still starts.
-JOKE = '[Play a cruel trick on Baphomet] "\'Bleed until you spill the blood of the one who failed you\'? Fine. I\'m the one who failed him."'
+JOKE = '''[Play a cruel trick on Baphomet] "You said, 'until I spilled the blood of the one who caused me to fail in Kenabres.' That was me. Put my name on the debt."'''
 for sid, ch, lst, nrc, nxt, told in (
         ("setup_c4", 4, "82a0c2ad3e6dc41469ec66a7affdc486", "0aa00bcf3121a694dbf306bea0f62153",
          "99d65001b1b0cfe45b2f47ad7d7dac7c", "minagho.brand_told_c4"),
@@ -170,9 +170,9 @@ for sid, ch, lst, nrc, nxt, told in (
 
 # 5.2 The parley: the one injected answer on Baphomet's Labyrinth hub. His price is his seal on the Commander.
 OPEN_CHOICES = (
-    c('[Hold up your bleeding palm] "The one who failed you in Kenabres? That\'s me. You\'ve had my blood every morning since. I\'ve come for her body."',
+    c('''[Hold up your bleeding palm] "I caused her failure in Kenabres. I put my name on the debt. You've had my blood every morning since. I've come for her body."''',
       "terms", requires=(PRIMED, "minagho.dead")),
-    c('[Cut your palm on his cage and press it to the seal] "Kenabres. The failure you branded her for. Sign me in as it, in blood, now. Then give me her body."',
+    c('''[Cut your palm on his cage and press it to the seal] "I caused her failure in Kenabres. Put the debt on this hand, in blood. Then give me her body."''',
       "terms", requires=("trickster", "minagho.dead"), forbids=(PRIMED,), flags=(PRIMED, DEBT, LATE_CLAIM), mythic="Trickster"),
     c('"I put my name on her brand. It bleeds on me now."', "thief", requires=(PRIMED,), forbids=("minagho.dead",)),
     c('"Never mind."', abort=True))
@@ -194,7 +194,7 @@ SCENES.append(scene(P + "react.baphomet", "The collateral", "Baphomet", 5, '"Abo
          c("Continue", "primed_alive", requires=(PRIMED,), forbids=("minagho.dead",)),
          c("Continue", "told", requires=("baphomet.minagho_dead_told", "minagho.dead")),
          c("Continue", "base", requires=("minagho.dead",), forbids=("baphomet.minagho_dead_told",))),
-    baph("primed_alive", '''{n}The vision laughs, and the bone walls laugh with it.{/n} "I heard. Every seal I own heard. You stood in front of my slave and told her you were the failure of Kenabres, and my brand believed you. I added seals to her for less."
+    baph("primed_alive", '''{n}The vision laughs, and the bone walls laugh with it.{/n} "I heard. Every seal I own heard. You stood in front of my slave and claimed the debt for her failure in Kenabres, and my brand believed you. I added seals to her for less."
 "Very well, debtor. I never forget a debt, and I never forgive a thief. You are both."''', *OPEN_CHOICES),
     baph("told", '''"You heard me say she failed. And now you come to buy the failure. Her debt was paid in screams, and then in her corpse. What could a mortal offer for either?"''',
          *OPEN_CHOICES),
@@ -255,7 +255,7 @@ def wake_nodes(text, extra=()):
     return [*varied("wake", mg, text, WAKE_VARIANTS, decisions), CLAIMED_NODE]
 
 
-KNIFE = ('[Put the knife in her hand] "\'Spill the blood of the one who caused you to fail.\' Go on. I\'ll hold it for you."',)
+KNIFE = ('''[Put the knife in her hand] "I caused your failure in Kenabres. Spill my blood. I'll hold the knife for you."''',)
 physical(P + "minagho_dead.brand", "Technically, she did it", "Minagho", PRES_MIN, MIN_UNIT, [
     nar("start", '''{n}Baphomet's servants kept their word to the letter. At dawn the watch found Minagho propped against the door of the quartermaster's stores, below the citadel, the way a merchant props a sample in a shop door. Nobody has dared to move her. Her head hangs. The bar across the door has been lifted off and laid neatly on the step.{/n}
 {n}The mark on her brow is wet. The dead do not bleed.{/n}''',
@@ -290,9 +290,9 @@ letter(P + "minagho_dead.collateral", "What the ledger says", [
 
 # 5.5 Spared: the brand stopped bleeding on her, and she has come to see the thief's hand.
 SPARED_OPEN = (
-    c('[Show her your palm] "Look at your fingers. It started drying the moment I opened my mouth in that cell, and it has been my palm that bleeds since. Mornings, mostly."', "terms", requires=(PRIMED,)),
-    c('[Cut your palm and say the terms over it] "\'Until she spills the blood of the one who caused her to fail.\' That\'s me. Watch."',
-      "terms", requires=("trickster",), forbids=(PRIMED,), flags=(PRIMED, DEBT, LATE_CLAIM), mythic="Trickster",
+    c('''[Show her your palm] "I put my name on your debt. Now look at your fingers. My hand has been paying for that."''', "terms", requires=(PRIMED,), flags=(PALM,)),
+    c('''[Cut your palm and claim the debt] "You failed in Kenabres because of me. I claim your debt. Watch."''',
+      "terms", requires=("trickster",), forbids=(PRIMED,), flags=(PRIMED, DEBT, LATE_CLAIM, PALM), mythic="Trickster",
       crusade=("Favors", -100)))
 SPARED_TERMS = mg("terms", '''"What kind of idiot lets their enemy slip away? And what kind of idiot puts their own name in a demon lord's ledger?" {n}She touches the mark. It stays dry.{/n}
 "Baphomet will want the thief's name. I could buy my life back with yours, Golarian. Give me one reason I shouldn't."''',
@@ -311,14 +311,13 @@ physical(P + "spared.brand", "It stopped bleeding", "Minagho", PRES_SPARED, MIN_
 letter(P + "spared.brand_letter", "It stopped bleeding", [
     mg("start", '''{n}The note is pinned to your pillow with one of your own daggers.{/n}
 "You let me go. Nobody lets me go. I could buy my life back with yours, Golarian. Give me one reason I shouldn't, and give it to my face."''',
-       c('"Because it\'s my name on the brand now. Come and see."', flags=(MIN_IN, STARTED, DEBT), requires=(PRIMED,)),
-       c('"No reason. Stay away, and keep your face dry."', flags=(DECL_M,), requires=(PRIMED,)),
+       c('"Because it\'s my name on the brand now. Come and see."', flags=(MIN_IN, STARTED, DEBT, PALM), requires=(PRIMED,)),
+       c('"No reason. Stay away, and keep your face dry."', flags=(DECL_M, PALM), requires=(PRIMED,)),
        c('[Go down to her yourself, with a knife.]', "late", forbids=(PRIMED,), mythic="Trickster"),
        c('"No reason. Stay away."', flags=(DECL_M,), forbids=(PRIMED,))),
-    nar("late", '''{n}The dagger's hilt is scratched with a place below the citadel, and you go there alone, at night. She is waiting with her back to a wall, the mark on her brow wet and running into her collar, and her hand on the dagger's twin.{/n}
-{n}You cut your palm in front of her and say the Goat's own terms over it, "until she spills the blood of the one who caused her to fail", and name yourself the failure of Kenabres, and hold the hand out. She stares at it. Then she wipes her brow with two fingers, and looks at them, and they come away dry.{/n}
-"...What did you *do*?"''',
-        c('"Put my name in his ledger. It bleeds on me now. Come and see."', flags=(PRIMED, DEBT, LATE_CLAIM, MIN_IN, STARTED),
+    nar("late", '''{n}The dagger's hilt bears an address below the citadel. You find her there at night, with her back to the wall and blood running from the mark into her collar. You cut your palm and claim the debt. Blood beads on your hand. She wipes her brow; her fingers come away dry.{/n}
+"...What did you do?"''',
+        c('"Put my name in his ledger. It bleeds on me now. Come and see."', flags=(PRIMED, DEBT, LATE_CLAIM, MIN_IN, STARTED, PALM),
           crusade=("Favors", -100))),
     ],
    requires=("trickster.ever", "minagho.spared.latched", PRES_SPARED + ".failed"), RequiresAnyGroups=[[PRIMED, "trickster"]],
@@ -418,14 +417,14 @@ letter(P + "reunion.wardrobe", "Through the wrong wardrobe", [
        c('"Ask her which one it is."', "which", requires=(MIN_IN,)),
        c('"She\'s not here. That\'s the other half of the joke."', "alone", forbids=(MIN_IN,))),
     *varied("which", cv, '''{n}Minagho is sitting on your bed. Chivarro looks at her for a long moment, and then at you, and decides something.{/n}
-"One night. I take her side of the bed, she takes the other, and you, Golarian, sleep in the corridor. If she wants me gone by morning, I go back through your cupboard, and you will never find the press again."''',
+"One night. I take her side of the bed, she takes the other, and you, Golarian, sleep in the corridor. If she wants me gone by morning, I leave by the door. You can explain the cupboard to your guards."''',
             [("which_debt", cv, '"She says you *own* her debt. Then you and I will discuss the price of her, later, with knives."', CLAIMED)],
             (c('"The corridor it is."', flags=(REUNITED, CH_IN)),
-             c('"No. Back through the press, both of your terms with you."', flags=(SENT_BACK,)))),
+             c('''"Then leave. Take your terms with you."''', flags=(SENT_BACK,)))),
     cv("alone", '''{n}She looks at your empty bed for a long time.{/n} "Then what am I doing in your bedroom, Golarian?"
 "If you killed her, say so now, while I still have the dagger. If you let her die, say that instead. It is the same answer, but I like to know how you lie."''',
        c('"I\'m working on it. She\'s still owed."', flags=(CH_IN, WAITING)),
-       c('"Then go back. I\'ll knock when she\'s breathing."', flags=(SENT_BACK,))),
+       c('''"Then go. I'll send word when she's breathing."''', flags=(SENT_BACK,))),
 ], requires=("trickster", "trickster.ever", "closets.known"),
    forbids=(REUNITED, CH_IN, "chivarro.searching", "chivarro.dead", RET_C, SENT_BACK), delay=0,
    TricksterDevice=True, TricksterState="chivarro_alive")
@@ -433,13 +432,18 @@ letter(P + "reunion.wardrobe", "Through the wrong wardrobe", [
 # 5.2 Killed: a deposit on Herrax's own hub, the moment she asks for the kill (C8).
 SCENES.append(scene(P + "chivarro_dead.deposit", "The house special", "Herrax", 4, '"About Chivarro. Before I go looking: what does your house sell?"', [
     hx("start", '''{n}Herrax lifts one scarred brow.{/n} "Cold feet, lover? She's a bitch in a cellar. It's hardly a siege."''',
-       c('[Put a deposit on the house special] "You want her gone forever? Then sell her to me, and send her double down to that cellar to die in her place. Write it down: \'One Chivarro, forever.\' I\'m paying in advance."',
-         "ink", mythic="Trickster"),
+       c('"What does your house sell?"', "menu", mythic="Trickster"),
        c('"Forget I asked."', abort=True)),
-    hx("ink", '''"Paying for a corpse before it's a corpse?" {n}She counts something behind her eyes, and whatever the sum is, it pleases her.{/n} "Oh, lover. You've read my menu. Of course there's a Chivarro on it: Sael, my prettiest boy, who wears her face for the guests who could never afford the original. He does her voice better than she does these days."
-"So. Tonight my boys lift the real one out of her cellar and into mine, and Sael goes down in her rings and her scent to wait for you. You go in, and you kill him, and the whole Lower City hears that Chivarro died at a crusader's hand. Dead to the city, gone from it forever, in a mortal's pocket: that's everything I asked you for, and I get paid twice." {n}She writes the line herself and blows on the ink.{/n} "He won't know what he's for until the knife. That's the part you're buying. My boys take the house's proof from every job: the rings, and whatever the rings are on. And the price is a favour. When I call. You won't ask what."''',
-       c('"Put it on my bill."', flags=(DEPOSIT, FAVOR, DOUBLE), alignment=("Evil", 1)),
+    hx("ink", '''"One Chivarro, forever."
+{n}Herrax writes it herself.{/n}
+"Sael goes down tonight, in her rings and her scent. The real one waits in my cellar. He will not know what he is for until the knife. My boys take the proof: the rings, and whatever they are on."
+{n}She blows on the ink.{/n}
+"My price is a favor. When I call, you will not ask what. You get your demon; I get paid for losing mine."''',
+       c('"Put it on my bill."', flags=(DEPOSIT, FAVOR), alignment=("Evil", 1)),
        c('"No. No favours with no name."', abort=True)),
+    hx("menu", '"A convincing corpse, lover. Sael wears Chivarro\'s face for guests who cannot afford her. My boys can put him in her cellar and keep the original in mine. You kill him. The city gets its dead Chivarro; I get rid of mine."\n{n}Herrax smiles.{/n}\n"You want the one still breathing? Order her before you go. The house keeps the proof."',
+       c('[Put a deposit on the house special] "You want her gone forever? Then sell her to me, and send her double down to that cellar to die in her place. Write it down: \'One Chivarro, forever.\' I\'m paying in advance."', "ink", mythic="Trickster"),
+       c('"No. Forget it."', abort=True)),
 ], requires=("trickster", "herrax.asked_kill_chivarro"), forbids=("chivarro.dead", "chivarro.searching", DEPOSIT), last=4,
    optional=True, Relationship=REL, AnswerLists=[HERRAX_LIST], NativeReturnCue=HERRAX_RETURN,
    TricksterDevice=True, TricksterState="chivarro_dead"))
@@ -455,9 +459,10 @@ letter(P + "chivarro_dead.bought", "The house always collects", [
              c('[Order from the house menu] "One Chivarro. Forever. My pockets are deep enough. Write it now; I\'ll sign."', "late",
                requires=("trickster",), forbids=(DEPOSIT,), mythic="Trickster"),
              c('"Nothing. Keep her. Let the dead stay dead."', flags=(DECL_C,)))),
-    hx("paid", '''"'One Chivarro, forever. Deposit paid.' My own hand, lover. I laughed while I wrote it. I stopped laughing when my clerk read it back and I understood you'd meant every word of it, the boy included. My house does not deliver short on a paid order." {n}Under it, in the same round hand: "Out-lawyered in my own house. I adore you. Delivered, less the proof."{/n}
-"The favour stands. When I call."''',
-       c('"Deal."', "sale", alignment=("Evil", 1))),
+    hx("paid", '''"'One Chivarro, forever. Deposit paid.' My own hand, lover. Sael is dead, the original is breathing, and the favor stands. I do enjoy a customer who finishes the job."
+{n}Below the order, Herrax has written: "Delivered, less the proof."{/n}
+"You bought Chivarro. You did not buy my tray."''',
+       c('"Deal."', "sale", flags=(DOUBLE,), alignment=("Evil", 1))),
     hx("late", '''{n}The next page is the order, written while the ink on the first was still wet: "One Chivarro, forever." Your name is waiting for its signature.{/n}
 "Nobody ordered her forever in time, lover, so I kept her breathing for whoever would bid the most. That is you, now. Late orders cost double: two favours. And a month of feeding stock nobody had paid for is not free: three hundred in crusade script, and a writ for the rest."''',
        c('"Deal. Both favours."', "sale", flags=(FAVOR, LATE), alignment=("Evil", 1), crusade=("Finances", -300)),
@@ -469,7 +474,7 @@ letter(P + "chivarro_dead.bought", "The house always collects", [
        c('[Burn the bill] "Nothing. Get dressed. Minagho hates waiting."', requires=(MIN_IN,),
          flags=(RET_C, CH_IN, BURNED, STARTED, REUNITED), alignment=("Chaotic", 1)),
        c('[Keep the bill] "Everything. And now I own it."', flags=(RET_C, CH_IN, OWNED), alignment=("Evil", 2))),
-], requires=("trickster.ever", "chivarro.dead", "chivarro.dead.latched", DEPOSIT),
+], requires=("trickster.ever", "chivarro.dead", "chivarro.dead_confirmed", DEPOSIT),
    forbids=(RET_C, DECL_C), delay=48, owner="Herrax", TricksterDevice=True, TricksterState="chivarro_dead")
 
 # Not a device (nothing returns her): a household letter, so the relationship's loss flag does not hide it.
@@ -477,7 +482,7 @@ SCENES.append(scene(P + "chivarro_dead.unbought", "The house special, unsold", "
     hx("start", '''{n}The letter smells of the Delights: incense, coin and something under both. The hand is round and unhurried.{/n}
 "Honey. Word came up from her cellar that she was dead by your hand, and she is, and I drank to you, and I meant it. I'll tell you something for free, because it can't be sold any more. There was a Chivarro on my menu. A boy who wore her face. If you'd asked me what my house sells before you went down to that cellar, you could have killed him instead and bought her from me after, breathing. You didn't ask. The dead don't keep, lover, not even in my cellar. She's in the Lower City's pit with the rest, and nothing I sell will bring her up."''',
        c("[Burn the letter.]", flags=(LOST_CHIV,)))],
-   requires=("trickster.ever", "chivarro.dead", "chivarro.dead.latched", "herrax.asked_kill_chivarro"), forbids=(DEPOSIT, LOST_CHIV), delay=48,
+   requires=("trickster.ever", "chivarro.dead", "chivarro.dead_confirmed", "herrax.asked_kill_chivarro"), forbids=(DEPOSIT, LOST_CHIV), delay=48,
    last=5, optional=True, Relationship="household", Remote=True, Chapters=[5]))
 
 household.secret("chivarro_lost", "Chivarro, unbought",
@@ -525,8 +530,8 @@ letter(P + "after.what_the_offer_bought", "What the offer bought", varied("start
     '''"There is a buyer. There is always a buyer. A marilith in the Lower City wants the two lilitu who walked out of the Lower City under a crusader's colours, and she has sent a list of what she would pay." {n}Minagho's hand, under Chivarro's, in a harder script:{/n} "She would pay less than you did. Tell us what to do with it, Golarian. We want to see what you say."''',
     [("receipt", cv, "{n}Chivarro, in the margin:{/n} \"The receipt you burned is the only one of its kind. The marilith has asked for a copy.\"",
       BURNED)],
-    (c('"Take the buyer\'s list. Sell it back to her."', flags=(T_OFFER, P + "offer_sold_back"), alignment=("Evil", 1)),
-     c('"Burn the list. Let them come."', flags=(T_OFFER, P + "offer_burned")))),
+    (c('''"Sell her an evening at your table. Nothing else."''', flags=(T_OFFER, P + "offer_sold_back"), alignment=("Evil", 1)),
+     c('''"Burn it. If she sends knives, keep them."''', flags=(T_OFFER, P + "offer_burned")))),
     requires=("trickster.ever", REUNITED), forbids=(*CHAIN_FORBIDS, T_OFFER, HALF, OWNED), ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 PRICE_NODES = [
@@ -572,16 +577,18 @@ letter(P + "after.won_back", "Won back", [
 
 letter(P + "after.who_keeps_the_house", "Who keeps the house", varied("start", mg,
     '''"We are going to need a house, when your war is done. Somewhere with thick doors and a cellar nobody else knows about." {n}Chivarro, in the margin:{/n} "And a linen press. For guests."''',
-    [("door", cv, '{n}Chivarro adds, lower down:{/n} "Your kept door opens on my old house some nights now. I hear the music through it. Brick it up, or give it to us."',
+    [("door", cv, '''{n}Chivarro adds a line beneath Minagho's:{/n}
+"A front door, this time. With a brass bell. You have exhausted the cupboard's hospitality; I shall charge for the noise you make at the proper entrance."''',
       DOOR)],
     (c('"Chivarro keeps the house. Minagho keeps the door."', flags=(T_HOUSE, "minachiv.host_ending")),
      c('"Neither. You keep each other, and I keep out of it."', flags=(T_HOUSE, "minachiv.winter_ending")))),
     requires=("trickster.ever", T_NAME), forbids=(*CHAIN_FORBIDS, T_HOUSE, OWNED), ForbidOverrides={**PAIR_FO, **UNOWNED})
 
 # 5.4 The commit: their terms, her refusal on every branch, and the heat to the cut.
-PAIR_THRESHOLD = nar("threshold", '''{n}They take you up to your own quarters between them, one on each arm, arguing across you the whole way about which of them the stairs were built for.{/n}
-{n}At the door Chivarro stops arguing. She unbuckles your sword belt without looking at it, the way a woman who has undressed a thousand guests knows every buckle ever forged. Minagho is slower and less kind; she drags her nails down the seam of your shirt and watches your face instead of her hands, learning where you flinch. Two mouths, one warm and one fever-hot, and somewhere between them the bleeding palm is lifted and kissed, and licked clean, and pressed flat against a bare hip that is not yours.{/n}
-{n}"I have sold ten thousand nights, honey," Chivarro says against your throat, in the voice of a woman closing on a price she means to get. "Every one of them for someone else. This one I am taking for myself, and I intend to get my money's worth, so do not you dare be ordinary." Then, lower: "Our terms. Say it again." You say it again. Minagho laughs, low and ugly and delighted, and pulls you both down onto the bed.{/n}''',
+PAIR_THRESHOLD = nar("threshold", '''{n}They take you upstairs between them, still quarreling over which woman the stairs were built for. At your door Chivarro drops your sword belt. Minagho opens your shirt, dragging her nails down your ribs and watching where you flinch.
+Chivarro kisses your throat while Minagho catches your mouth. Your hand is lifted between them; Chivarro presses a kiss to the palm and lays it against her bare hip.{/n}
+"I have priced enough nights for other people," {n}she says.{/n} "I mean to enjoy this one."
+{n}Minagho pulls Chivarro's gown loose, then kisses her before drawing both of you toward the bed.{/n}''',
     c("Continue", flags=(NIGHT_PAIR,)))
 COMMIT_FORBIDS = (CLOSED, COMPLETE, DECLINED, KEPT, OWNED, *CHAIN_FORBIDS)
 COMMIT_NODES = [
@@ -606,9 +613,11 @@ letter(P + "after.before_the_last_road_letter", "Before the last road", [
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)),
        c('"Get out of my city."', flags=(CLOSED,))),
     nar("came", '''{n}You write two words and send the runner down before the ink is dry. They come up at midnight, through the door, not the wardrobe, and nobody on the stair is fool enough to ask where they are going.{/n}
-{n}Chivarro takes the letter off your desk, reads your two words aloud as if pricing them, and drops it in the grate. Minagho does not bother with reading. She has your shirt open before the paper catches, her nails dragging down your ribs, and Chivarro, behind you, unbuckles your belt with a madam's quick, bored fingers and lets it fall. "Ink," Minagho says against your mouth, walking you back towards the bed. "You answered us in *ink*." Then the backs of your knees meet the mattress, and they bear you down onto it between them, Chivarro already astride you and Minagho's teeth at your throat.{/n}''',
+{n}Chivarro takes the letter off your desk, reads your two words aloud as if pricing them, and drops it in the grate. Minagho does not bother with reading. She has your shirt open before the paper catches, her nails dragging down your ribs, and Chivarro, behind you, unbuckles your belt with a madam's quick, bored fingers and lets it fall. {/n}
+"Ink," {n}Minagho says against your mouth, walking you back towards the bed.{/n} "You answered us in ink."
+{n}Then the backs of your knees meet the mattress, and they bear you down onto it between them, Chivarro already astride you and Minagho's teeth at your throat.{/n}''',
         c("Continue", "morning", flags=(NIGHT_PAIR,))),
-    nar("morning", '''{n}In the morning the grate is cold and the letter is ash, and both of them are still there, which neither will admit was a decision. Chivarro leaves a bill on the pillow for the night, itemised, with a kiss printed on the total. Minagho binds your palm when it opens at dawn, too tightly, and tells you that next time you will come down to the stores yourself, like someone who means it.{/n}''',
+    nar("morning", '''{n}In the morning the grate is cold and the letter is ash, and both of them are still there. Chivarro leaves a bill on the pillow for the night, itemised, with a kiss printed on the total. Minagho binds your palm when it opens at dawn, too tightly, and tells you that next time you will come down to the stores yourself, like someone who means it.{/n}''',
         c("[Pay the bill.]", flags=(MORNING,)))],
    requires=("trickster.ever", T_HOUSE, MIN_IN, CH_IN, PRES_CHIV + ".failed"),
    forbids=(*COMMIT_FORBIDS, P + "after.before_the_last_road"), delay=96, ForbidOverrides={**PAIR_FO, **UNOWNED})
@@ -617,7 +626,7 @@ letter(P + "after.before_the_last_road_letter", "Before the last road", [
 ALONE_CHIV_NODES = [
     cv("start", '''"She is not coming, or she is not coming yet. I have stopped waiting to find out which." {n}She has taken over the quartermaster's counter; Wilcer Garms has taken refuge behind his own ledgers.{/n} "So. What am I, in Drezen, without her?"''',
        c('"Stay anyway. Keep the house with me instead."', "terms"),
-       c('"Go back through the press. There\'s nothing here for you."', flags=(CLOSED,))),
+       c('''"Then leave. There's nothing here for you."''', flags=(CLOSED,))),
     cv("terms", '''"Then I keep my own house, in your city, on my terms, and you pay the rent. If she walks back in, the terms change, and you do not get a say."''',
        c('"Your terms."', "threshold", flags=(COMPLETE, "minachiv.future_chivarro", HALF, CHAIN), requires=(DEBT,)),
        c('"Not those terms."', "refuse"),
@@ -625,12 +634,12 @@ ALONE_CHIV_NODES = [
     cv("refuse", '''"Then wait. You are good at making demons wait."''',
        c('"Then wait. I\'ll ask again."', flags=(DECLINED,))),
     nar("threshold", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
-{n}"Rent," she says, and holds out her hand. When you put yours in it she does not take it; she inspects it, turns it palm up, runs one nail along the old cut until you draw breath, and smiles at the sound as if she has just been quoted a price she likes. Then she undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it. Her own gown she leaves for last and lets fall without ceremony, because she knows precisely what it costs you to watch.{/n}
-{n}"Ten thousand nights I sold," she murmurs, walking you backwards to a bed too narrow for anything she has in mind. "This one is mine, and I am going to collect every copper of it." She pushes you down with two fingers, climbs astride you in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
+"Rent," {n}she says, holding out her hand. When you put yours in it she does not take it; she inspects it, turns it palm up, runs one nail along the old cut until you draw breath, and smiles at the sound as if she has just been quoted a price she likes. Then she undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it. Her own gown she leaves for last and lets fall without ceremony, because she knows precisely what it costs you to watch.{/n}
+"Ten thousand nights I sold," {n}she murmurs, walking you backwards to the bed.{/n} "This one is mine, and I am going to collect every copper of it." {n}She pushes you down with two fingers, climbs astride you in one practiced motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
         c("Continue", flags=(NIGHT_CHIV,))),
     nar("threshold_clean", '''{n}She does not take you to your quarters. She takes you to hers, a rented room above a chandler's shop below the citadel, and bars the door with a chair, and turns.{/n}
-{n}"Rent," she says, and holds out her hand, and when you put a purse in it she weighs it without looking, drops it on the floor, and takes your hand instead. She undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it, and lets her own gown fall last, because she knows precisely what it costs you to watch.{/n}
-{n}"A room of my own, in a crusader's city, and a tenant who pays," she murmurs, walking you backwards to a bed too narrow for anything she has in mind. "I have come down in the world. Let us see how far." She pushes you down with two fingers, climbs astride you in one practised motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
+"Rent," {n}she says, holding out her hand. When you put a purse in it she weighs it without looking, drops it on the floor, and takes your hand instead. She undresses you the way she once dressed the Delights' best rooms: without hurry, piece by piece, setting each thing exactly where she wants it, and lets her own gown fall last, because she knows precisely what it costs you to watch.{/n}
+"A room of my own, in a crusader's city, and a tenant who pays," {n}she murmurs, walking you backwards to the bed.{/n} "I have come down in the world. Let us see how far." {n}She pushes you down with two fingers, climbs astride you in one practised motion, and leans down until her breath is on your mouth, and there, holding you exactly where she wants you, she stops talking.{/n}''',
         c("Continue", flags=(NIGHT_CHIV,))),
 ]
 physical(P + "alone.chivarro", "The house she keeps now", "Chivarro", PRES_CHIV, CHIV_UNIT, ALONE_CHIV_NODES,
@@ -652,14 +661,16 @@ letter(P + "alone.chivarro_letter", "The house she keeps now", [
 
 ALONE_MIN_NODES = [
     mg("start", '''"You keep looking at the gate as if someone else is coming through it." {n}She does not look at it herself.{/n}''',
-       c('"She\'s in Herrax\'s cellar, and the house wants too much for her. Stay."', "terms", requires=("chivarro.dead.latched", DEPOSIT)),
-       c('"She went back through the press. Stay."', "terms", forbids=("chivarro.dead.latched", REUNITED)),
-       c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead.latched",), forbids=(DEPOSIT,)),
+       c('"She\'s in Herrax\'s cellar, and the house wants too much for her. Stay."', "terms", requires=("chivarro.dead_confirmed", DEPOSIT)),
+       c('''"She left. Stay."''', "terms", forbids=("chivarro.dead_confirmed", REUNITED)),
+       c('"I killed her. You know I did. Stay anyway."', "killer", requires=("chivarro.dead_confirmed",), forbids=(DEPOSIT,)),
        # Sol PP8 r2 (INT): the walkout after the reunion, answered with "Let her stay gone" (appended).
-       c('"She walked out, and I let her stay gone. Stay."', "terms", requires=(SENT_BACK, REUNITED), forbids=("chivarro.dead.latched",))),
-    mg("killer", '''"I know." {n}Her lip peels back from her teeth.{/n} "Herrax sang it all over the Lower City: the crusader who cut Chivarro down in her own cellar for a madam's favour. I heard it in Drezen before your blade was clean."
-{n}She is very still.{/n} "I have killed for less. I have lain down with worse. Which of those you get is mine to choose, and I will take a very long time choosing, and you will feel every day of it."
-"Here is why I am still standing here instead of opening your throat. Herrax has her rings on a tray in the Delights, fingers and all, for any guest to paw. You are going to buy them back from her and give them to me, and I am going to bury them somewhere Herrax will never find. And every time you look at me, you will remember who you bought them for."''',
+       c('"She walked out, and I let her stay gone. Stay."', "terms", requires=(SENT_BACK, REUNITED), forbids=("chivarro.dead_confirmed",))),
+    mg("killer", '''"I know. Herrax made certain everyone knew."
+{n}Minagho's lip draws back from her teeth.{/n}
+"I should open your throat. I have done it for less. Do not mistake my staying for pardon, Golarian. I want you to wake beside someone who remembers her. I want you to see my face when you think the account is settled."
+{n}She grips your wrist, hard enough to hurt.{/n}
+"Chivarro is dead. You do not get her place by keeping mine warm. Now tell me what you are offering."''',
        c("Continue", "terms")),
     mg("terms", '''"Stay. For a mortal who owns my debt and bleeds for it every morning." {n}Her lip curls.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
        c('"Your price."', "threshold", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
@@ -667,12 +678,14 @@ ALONE_MIN_NODES = [
     mg("refuse", '''"Then ask me when it scars, Golarian. Or do not ask at all."''',
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,)),
        c('"Then go. Dry."', flags=(CLOSED,))),
-    nar("threshold", '''{n}She walks you back to your quarters as though she were the one escorting a prisoner, one hand fisted in the back of your collar. Inside she does not bother with the lamp.{/n}
-{n}She finds the bleeding palm in the dark and holds it against her mouth, and you feel her smile against the cut before you feel her teeth. "Mine," she says, "for tonight. His, every morning after." Then she pushes you back against the door, hard enough to rattle the bar, and takes her time: her fingers at your throat, not squeezing, only reminding; her mouth hot and unkind along your jaw; her body pressed to yours from knee to shoulder so that you feel every breath she refuses to hurry. She strips your shirt off one-handed and throws it somewhere you will never find it.{/n}
-{n}"On the bed," she says against your ear. "On your back. Hands where I can bite them." When you are where she wants you she follows you down, straddles your hips, pins both your wrists above your head with one of hers, and leans down until her hair falls across your face. There, at the very edge of it, she makes you wait one breath longer than you can bear, and smiles.{/n}''',
+    nar("threshold", '''{n}Minagho escorts you upstairs with her fist in your collar. Inside, she kicks the door shut and catches your hand. Her mouth closes over the cut; you feel her teeth before she lets go.{/n}
+"Mine tonight. His in the morning."
+{n}She pins you against the door and kisses along your jaw. Her body presses against yours as she strips off your shirt, then loosens her own dress without stepping back. You catch her bare waist. She smiles and takes both your wrists.{/n}
+"On the bed, Golarian. I want to see your face."
+{n}She pushes you onto the mattress and follows, hair spilling across your cheek as she catches your mouth again.{/n}''',
         c("Continue", flags=(NIGHT_MIN,))),
 ]
-ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead.latched"]]
+ALONE_MIN_GATE = [[DECL_C, SENT_BACK, "chivarro.dead_confirmed"]]
 ALONE_MIN_FORBIDS = (REUNITED, RET_C, CH_IN, CLOSED, COMPLETE, DECLINED)
 # Sol PP8 r2 (INT): Chivarro's arrival and the reunion are history once she has been let go ("Let her stay gone").
 ALONE_MIN_FO = {REUNITED: SENT_BACK, CH_IN: SENT_BACK, RET_C: SENT_BACK}
@@ -684,11 +697,12 @@ physical(P + "alone.minagho_spared", "One lilitu, dry", "Minagho", PRES_SPARED, 
          forbids=(*ALONE_MIN_FORBIDS, "minagho.dead", P + "alone.minagho"), delay=96,
          TricksterDevice=True, TricksterState="chivarro_dead", ForbidOverrides=dict(ALONE_MIN_FO))
 letter(P + "alone.minagho_letter", "One lilitu, dry", [
-    mg("start", '''"Stay, you said. For a mortal who owns my debt and bleeds for it every morning." {n}The hand is hard and very straight.{/n} "My price: you never bargain for me again. Not with him, not with anyone."''',
+    mg("start", '''{n}The handwriting is hard and very straight.{/n}
+"You want me in Drezen, Golarian. For a mortal who owns my debt and bleeds for it every morning. My price: you never bargain for me again. Not with him, not with anyone."''',
        c('"Your price."', "came", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
        c('"Then I\'ll ask again when it scars."', flags=(DECLINED,))),
     nar("came", '''{n}She does not answer the letter. She answers the door, the same night: you open it and she is already on the other side of it, as if she had been standing there since she sent it.{/n}
-{n}"Your price," she says, "paid," and comes in without waiting to be asked, and kicks the door shut behind her. She takes your bleeding hand, opens it, and presses her mouth to the cut until you feel her teeth; then she shoves you back against the bar of the door and strips your shirt over your head, and when you reach for her she catches both your wrists and walks you backwards to the bed, and pushes you down onto it, and climbs astride you with your wrists pinned in one of her hands.{/n}''',
+"Your price," {n}she says.{/n} "Paid." {n}She comes in without waiting to be asked, and kicks the door shut behind her. She takes your bleeding hand, opens it, and presses her mouth to the cut until you feel her teeth; then she shoves you back against the bar of the door and strips your shirt over your head, and when you reach for her she catches both your wrists and walks you backwards to the bed, and pushes you down onto it, and climbs astride you with your wrists pinned in one of her hands.{/n}''',
         c("Continue", "morning", flags=(NIGHT_MIN,))),
     nar("morning", '''{n}At dawn your palm opens, as it does every dawn now. She is awake before it does, watching, and binds it with a strip of your own sheet, too tightly, without a word. When she goes, she takes the rest of the sheet with her.{/n}''',
         c("[Let her.]", flags=(MORNING,)))],
@@ -711,7 +725,9 @@ letter(P + "after.when_it_scars", "When it scars", [
 {n}Chivarro, from the bench:{/n} "I watched. From the stair. Every morning. It was disgusting, honey, and I have never been so flattered. Ask."''',
        c('"Stay. Both of you. On your terms."', "night", flags=(COMPLETE, "minachiv.future_two", CHAIN)),
        c('[Close the hand] "Forget I asked."', flags=(CLOSED,))),
-    nar("night", '''{n}They do not take you to your quarters this time. They take you to theirs, the rooms below the citadel with the thick door, and Minagho bars it with her own back. Chivarro strips your gloves off first, one finger at a time, and kisses the burned palm as if she were sealing a contract with it; Minagho has your belt and shirt off before Chivarro has finished, and walks you backwards to the bed with her teeth at your ear. "On your back," Chivarro says, already unlacing, "and keep that hand where we can both see it." They come down onto the bed on either side of you, and then Minagho is astride you and Chivarro's mouth is on yours, and the lamp goes out under somebody's elbow.{/n}''',
+    nar("night", '''{n}They do not take you to your quarters this time. They take you to theirs, the rooms below the citadel with the thick door, and Minagho bars it with her own back. Chivarro strips your gloves off first, one finger at a time, and kisses the burned palm as if she were sealing a contract with it; Minagho has your belt and shirt off before Chivarro has finished, and walks you backwards to the bed with her teeth at your ear. {/n}
+"On your back," {n}Chivarro says, already unlacing.{/n} "And keep that hand where we can both see it."
+{n}They come down onto the bed on either side of you, and then Minagho is astride you and Chivarro's mouth is on yours, and the lamp goes out under somebody's elbow.{/n}''',
         c("Continue", "morning", flags=(NIGHT_PAIR,))),
     nar("morning", '''{n}At dawn the palm opens along its new scar, and two hands reach for it at once. Minagho gets there first and binds it. Chivarro writes the night on your bill, itemised, and adds a line at the foot in her sharp hand: "Scar: paid in advance."{/n}''',
         c("[Keep the bill.]", flags=(MORNING,))),
@@ -724,11 +740,14 @@ letter(P + "alone.minagho_when_it_scars", "When it scars", [
         c("[Let it bleed a while longer.]", abort=True)),
     nar("burn", '''{n}For five dawns you close it yourself, at the quartermaster's brazier, with the flat of a knife heated white, until what runs across your palm is a scar that bleeds and not merely a cut. You do not tell her. On the fifth morning you go down to her crate with the hand bound, and unbind it in front of her.{/n}''',
         c('[Show her the scar] "It scarred. Ask me, or I\'ll ask you."', "min")),
-    mg("min", '''"You burned it closed." {n}She does not touch it. She looks at it the way she looks at a contract she means to break.{/n} "It still opens. It is still his. But the scar is yours, and you made it every morning for five days without telling me, which is the first thing you have ever done for me without a joke in it."
-{n}Her lip curls, and it is not quite contempt.{/n} "Ask, Golarian."''',
+    mg("min", '''"You burned it closed."
+{n}She studies the hand without touching it.{/n}
+"It still opens. It is still his. But you kept putting it in the fire, five mornings running, without asking me to admire you. Show it to the Goat when he next calls. I want to hear what he says."
+"And do not bring me that hand as payment for Chivarro. I have not forgotten her. Ask, Golarian."''',
        c('"Stay."', "night", flags=(COMPLETE, "minachiv.future_minagho", HALF, CHAIN)),
        c('[Close the hand] "Forget I asked."', flags=(CLOSED,))),
-    nar("night", '''{n}She does not go back to her crate. She follows you up to your quarters, and inside the door she takes the scarred hand and bites the ridge of it, gently, and then not gently. Then she has you against the wall with her knee between yours and your shirt in her fist, and walks you to the bed, and pushes you down, and climbs astride you with the burned palm pressed flat over the dry brand on her own brow. "Mine," she says, "on top of his."{/n}''',
+    nar("night", '''{n}She does not go back to her crate. She follows you up to your quarters, and inside the door she takes the scarred hand and bites the ridge of it, gently, and then not gently. Then she has you against the wall with her knee between yours and your shirt in her fist, and walks you to the bed, and pushes you down, and climbs astride you with the burned palm pressed flat over the dry brand on her own brow. {/n}
+"Mine," {n}she says.{/n} "On top of his."''',
         c("Continue", "morning", flags=(NIGHT_MIN,))),
     nar("morning", '''{n}At dawn the scar opens, as it will every dawn. She is awake for it, and binds it with a strip of your sheet, too tightly, without a word, and does not leave.{/n}''',
         c("[Let her.]", flags=(MORNING,))),
@@ -742,7 +761,8 @@ letter(P + "alone.chivarro_when_it_scars", "Paid in advance", [
     cv("chv", '''{n}The runner comes back with the purse still in his hand and a message he has been made to learn by heart.{/n} "'A year in advance. Nobody pays a madam in advance, honey; it is terribly bad business. It means you intend to come back. Come and ask me to my face, and bring the purse.'"''',
        c('[Go, with the purse] "Stay. Keep the house with me."', "night", flags=(COMPLETE, "minachiv.future_chivarro", HALF, CHAIN)),
        c('[Keep the purse] "Forget I asked."', flags=(CLOSED,))),
-    nar("night", '''{n}She counts the purse first, every coin, on the bed, while you stand and watch. Then she sweeps the coins onto the floor with one arm, pulls you down onto the bed by your collar, rolls you onto your back and settles astride you, her gown already sliding from her shoulders. "Paid in advance," she says, "so I shall take my time."{/n}''',
+    nar("night", '''{n}She counts the purse first, every coin, on the bed, while you stand and watch. Then she sweeps the coins onto the floor with one arm, pulls you down onto the bed by your collar, rolls you onto your back and settles astride you, her gown already sliding from her shoulders. {/n}
+"Paid in advance," {n}she says.{/n} "So I shall take my time."''',
         c("Continue", "morning", flags=(NIGHT_CHIV,))),
     nar("morning", '''{n}In the morning there is a receipt on the pillow, in her hand: "One year, one night, and the interest, which is not negotiable." The coins are still on the floor. She has left them there, she says, so you can watch her pick them up.{/n}''',
         c("[Keep the receipt.]", flags=(MORNING,))),
@@ -818,30 +838,34 @@ page(P + "epilogue.pair", "Two runaway lilitu", [
         paragraphs=(PALM_P, KNELT_P,
                     p("{n}Chivarro kept the ashes of the bill in a snuffbox, and took it out whenever the Commander forgot who had been bought and who had paid.{/n}",
                       requires=(BURNED,)),
-                    p("{n}Some nights the kept door in the Commander's quarters opened on the Delights by itself, and music came through it. The Commander never bricked it up.{/n}",
+                    p('''{n}The kept door never opened on that room again. At the women's house, a brass bell announced the Commander. Chivarro charged for ringing it. Minagho rang it twice whenever Chivarro was counting.{/n}''',
                       requires=(DOOR,)),
-                    p("{n}The Commander never once knocked. Chivarro billed for every visit through the wardrobe, and Minagho kept the accounts.{/n}",
-                      requires=(P + "morning_wardrobe",))))],
+                    p('''{n}Chivarro remembered the first cupboard entrance whenever she presented a bill. Minagho always added something for the indignity. The Commander learned to knock.{/n}''',
+                      requires=(P + "morning_wardrobe",)),
+                    p('{n}Chivarro sold the marilith one evening at their table. The price included wine and conversation; Minagho charged extra whenever the guest mentioned ownership. She left with no bill of sale and an expensive desire to be invited back.{/n}',
+                      requires=(P + "offer_sold_back",), forbids=(P + "offer_burned",)),
+                    p("{n}The marilith's first hired knife returned without his weapons. Minagho kept those. Chivarro sent the employer a bill for the damaged door. After the next messenger saw the collection, the offers stopped.{/n}",
+                      requires=(P + "offer_burned",), forbids=(P + "offer_sold_back",))))],
     requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_two"), forbids=("sacrifice",), overrides={"sacrifice": "trickster.commander_back"})
 page(P + "epilogue.chivarro", "Rent", [
     nar("end", '''{n}Chivarro kept her own house in Drezen after the war and never once let the Commander forget whose name was on the lease. The rent was collected in person, at her convenience, and it went up every year.{/n}''',
         paragraphs=(p("{n}Minagho never came back from Baphomet's ledger. Chivarro kept a second chair at her table anyway, and nobody, not even the Commander, was allowed to sit in it.{/n}",
                       requires=("minagho.dead",), forbids=(MIN_IN,)),
-                    p("{n}Minagho went her own way, dry-browed, and did not come back. Chivarro kept a second chair at her table anyway, and nobody, not even the Commander, was allowed to sit in it.{/n}",
+                    p('''{n}Minagho went her own way and did not return. Chivarro kept a second chair at her table. Nobody, including the Commander, was allowed to sit in it.{/n}''',
                       forbids=(MIN_IN, "minagho.dead")),
                     p("{n}When Minagho did walk back in, the terms changed, exactly as Chivarro had promised, and the Commander did not get a say.{/n}",
                       requires=(MIN_IN,)),
-                    PALM_P,
+                    p("{n}The Commander's palm opened at dawn. Chivarro bound it herself and complained whenever blood stained her sheets. Baphomet's debt survived the war.{/n}", requires=(PALM,)),
                     p("{n}The Commander kept the coin. Chivarro never charged for it, and never let anyone else touch it.{/n}",
                       requires=(P + "morning_coin",))))],
     requires=("trickster.ever", COMPLETE, CHAIN, "minachiv.future_chivarro"), forbids=("sacrifice",), overrides={"sacrifice": "trickster.commander_back"})
 page(P + "epilogue.minagho", "His, every morning", [
     nar("end", '''{n}Minagho stayed in Drezen with the Goat's mark still on her brow, dry for the first time since Kenabres, and kept the Commander's debt the way other women keep a lover's letters: close, and bitterly, and read over and over. Nobody bargained for her again. She saw to that.{/n}''',
-        paragraphs=(PALM_P, KNELT_P,
+        paragraphs=(p("{n}The Commander's palm opened at dawn. Minagho bound it too tightly and watched for the flinch. Baphomet's debt survived the war.{/n}", requires=(PALM,)), KNELT_P,
                     p("{n}She never forgave the house that kept Chivarro in its cellar and wanted too much for her. Some nights she went down to the Lower City and made it pay the difference.{/n}",
-                      requires=("chivarro.dead.latched", DEPOSIT), forbids=(RET_C,)),
+                      requires=("chivarro.dead_confirmed", DEPOSIT), forbids=(RET_C,)),
                     p("{n}She never forgave the Commander for Chivarro, and never pretended to. Every year, on the night of the cellar, she sat at the foot of the bed and sharpened a dagger until dawn, and every year she put it away unused, and never said why.{/n}",
-                      requires=("chivarro.dead.latched",), forbids=(DEPOSIT, RET_C)),
+                      requires=("chivarro.dead_confirmed",), forbids=(DEPOSIT, RET_C)),
                     p("{n}Chivarro came back through the house's back rooms after all, found the terms already signed without her, and renegotiated them, loudly, for a week.{/n}",
                       requires=(RET_C,)),
                     p("{n}Every dawn, for the rest of the Commander's life, Minagho bound the palm herself, too tightly, and never once called it kindness.{/n}",
@@ -863,9 +887,19 @@ page(P + "epilogue.commit", "One invitation a year", [
     nar("waiting", '''{n}Chivarro kept a room in Drezen after the war, below the citadel, waiting for someone who had not come back, and let it be known that the Commander still owed her an answer. The first year, she sent one invitation, on her own terms.{/n}''',
         c("[Go.]", "went_alone"),
         c("[Send your regrets.]", "regrets_alone")),
-    nar("went", '''{n}The Commander went. The door was barred from the inside with a chair, and opened anyway. Chivarro took the Commander's sword belt off on the threshold as if collecting a coat; Minagho took the rest, less politely, walking the Commander backwards across a room neither of them had bothered to light, and between them they bore the Commander down onto a bed that Chivarro announced had been built for exactly three.{/n}
-{n}The Commander went every year after that, and some years did not leave until spring.{/n}'''),
-    nar("went_alone", '''{n}The Commander went. Chivarro opened the door herself, in a dressing gown and nothing else, and looked the Commander over the way she had once looked over the Delights' new stock. "Late," she said. "Everything costs more when it is late." She pulled the Commander in by the collar, shut the door with her heel, and let the gown fall on the way to the bed. At the bed she did not stop: she pushed the Commander down onto it with one hand flat on the chest, climbed astride, and pinned the Commander's wrists to the pillow above. "Late," she said again, against the Commander's mouth, lowering her hips. "Now you pay the interest."{/n}
+    nar("went", '''{n}Chivarro takes the Commander's sword belt at the threshold and lets it fall. Minagho catches the open collar and pulls the Commander into an unlit room. Chivarro's gown slides from her shoulders; Minagho kisses hard enough to leave a mark, then turns to bite Chivarro's answering smile.{/n}
+"Three places," {n}Chivarro says, drawing them toward the bed.{/n} "I had it made to measure."
+{n}Minagho pushes the Commander onto the mattress. Chivarro reaches past her to unfasten the last buckle.{/n}
+
+{n}At dawn Chivarro retrieves the sword belt from the doorway. Minagho is still in bed, holding the Commander's wrist.{/n}
+"Your dispatches can wait. I want another hour."
+"Then bar the door," {n}Chivarro says.{/n} "Before one of your officers decides the war has started again."
+{n}Minagho pulls Chivarro back onto the bed by the wrist. The Commander returned the following year, and sometimes stayed until spring.{/n}'''),
+    nar("went_alone", '''{n}The Commander went. Chivarro opened the door herself, in a dressing gown and nothing else, and looked the Commander over the way she had once looked over the Delights' new stock. {/n}
+"Late," {n}she said.{/n} "Everything costs more when it is late."
+{n}She pulled the Commander in by the collar, shut the door with her heel, and let the gown fall on the way to the bed. At the bed she did not stop: she pushed the Commander down onto it with one hand flat on the chest, climbed astride, and pinned the Commander's wrists to the pillow above. {/n}
+"Late," {n}she says against the Commander's mouth, holding both wrists against the pillow.{/n} "Now you pay the interest."
+
 {n}In the morning there was a bill on the pillow, itemised, with the interest compounded by the hour, and her signature across the total. The Commander went every year after that. The rent went up every time.{/n}'''),
     nar("regrets_alone", '''{n}The Commander sent regrets. The next year's invitation came anyway, and the year after that. She was patient in the way demons are patient: badly, and with a knife in her garter.{/n}'''),
     nar("regrets", '''{n}The Commander sent regrets. The next year's invitation came anyway, and the year after that. They were patient in the way demons are patient: badly, and with knives.{/n}'''),
@@ -890,7 +924,9 @@ REACTIONS = [
              answer_list=WENDUAG_HUB, forbids=("wenduag.killed", "wenduag.kicked_out"), chapter=5, last=5,
              entry='"Minagho is back."'),
     reaction("Socothbenoth", P + "react.socoth_fee", ("trickster.ever", SOCOTH),
-             '''"A lilitu through my linen press? My closets are not a bawdy house. Well. Not *only*." {n}He sniffs.{/n} "The fee is one secret from each of them, collected at my leisure. Do tell them I said hello. Do not tell them what I said after."''',
+             '''"A lilitu through my linen press? My closets are not a bawdy house. Well. Not only."
+{n}He sniffs.{/n}
+"Chivarro owes me a secret. I shall collect it when she has a particularly delicious one. Do tell her I said hello. Do not repeat what I said after."''',
              answer_list=SOCOTH_LIST, forbids=("council.expired",), chapter=5, last=5,
              entry='"About the linen press."', NativeReturnCue=SOCOTH_RETURN),
     reaction("Camellia", P + "react.camellia_bill", (RET_C,),
