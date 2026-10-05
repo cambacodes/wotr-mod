@@ -1,5 +1,6 @@
 """Conservative dependency selection for the per-round rules/Python gate."""
 from pathlib import Path
+import ast
 import json
 import re
 import subprocess
@@ -43,6 +44,7 @@ FAST_PYTHON = {
     'test_presence_dependency_lint', 'test_native_world_reconciliation',
     'test_draft_contract_lint', 'test_earned_presence', 'test_player_text_lint',
     'test_text_structure_lint', 'test_parent_bindings', 'test_test_selection', 'test_verifier_tiers',
+    'test_foresight_echo',
 }
 
 
@@ -57,6 +59,10 @@ def mentioned_routes(path):
     if names & {'minagho', 'chivarro', 'minagho_chivarro'}:
         names |= {'minagho', 'chivarro', 'minagho_chivarro'}
     return names
+
+
+def filename_routes(path):
+    return {r for r, pattern in FILE_ROUTES.items() if pattern.search(path.stem)}
 
 
 def catalog():
@@ -78,11 +84,48 @@ def changed_files(base=None):
     return sorted(set(files))
 
 
+def python_names(path, files):
+    module = 'tests.' + path.stem
+    expensive = 'test_late_consumer_registration_is_serialized'
+    if path.stem != 'test_foresight_echo' or set(files) & {
+            'expansion.py', 'story.py', 'storylines/foresight.py'}:
+        return [module]
+    current = ast.parse(path.read_text(encoding='utf-8-sig'))
+    try:
+        old = ast.parse(subprocess.check_output(['git', 'show', 'HEAD:tests/test_foresight_echo.py'],
+                                               cwd=ROOT, stderr=subprocess.DEVNULL).decode('utf-8-sig'))
+        body = lambda tree: next(ast.dump(n) for n in ast.walk(tree)
+                                 if isinstance(n, ast.FunctionDef) and n.name == expensive)
+        if body(current) != body(old):
+            return [module]
+    except (subprocess.CalledProcessError, StopIteration):
+        return [module]
+    # Its production factory and test body are unchanged. Keep every other
+    # foresight test here; FULL discovery always runs the serialization witness.
+    return [module + '.' + cls.name + '.' + method.name
+            for cls in current.body if isinstance(cls, ast.ClassDef)
+            for method in cls.body if isinstance(method, ast.FunctionDef)
+            and method.name.startswith('test_') and method.name != expensive]
+
+
 def select(files):
     suites = catalog()
     routes, shared = set(), not files
+    touched_suites, touched_python = set(), set()
     for name in files:
         path = Path(name)
+        if path.parts and path.parts[0] == 'tests':
+            if path.stem in suites:
+                touched_suites.add(path.stem)
+            if path.name.startswith('test_') and path.suffix == '.py':
+                touched_python.add(path.stem)
+        if path.parts and path.parts[0] == 'tools':
+            # A lint/selector regression must run even if neither file contains
+            # a literal route name. Unknown systems keep the shared core too.
+            stem = path.stem.replace('-', '_')
+            candidates = {'test_' + stem, 'test_' + stem.removesuffix('_lint')}
+            touched_python.update(candidate for candidate in candidates
+                                  if (ROOT / 'tests' / (candidate + '.py')).is_file())
         if path.parts and path.parts[0] == 'storylines':
             match = {r for r in ROUTES if path.stem == r or path.stem.startswith(r + '_')}
             if match and path.stem not in SHARED_STORIES:
@@ -92,7 +135,9 @@ def select(files):
         if path.parts and path.parts[0] == 'tests' and path.name != 'Program.cs':
             actual = ROOT / path
             if actual.is_file() and actual.suffix in {'.py', '.cs'}:
-                match = mentioned_routes(actual)
+                # A selector/cache/inventory fixture's example flags are not
+                # ownership declarations for every route used in its examples.
+                match = filename_routes(actual)
                 if match and len(match) <= 3:
                     routes |= match
                     continue
@@ -102,14 +147,14 @@ def select(files):
     if routes & {'minagho', 'chivarro', 'minagho_chivarro'}:
         routes |= {'minagho', 'chivarro', 'minagho_chivarro'}
     selected = [name for name, owners in suites.items()
-                if not owners or name in FAST_INVENTORIES or routes.intersection(owners)]
+                if not owners or name in FAST_INVENTORIES or name in touched_suites or routes.intersection(owners)]
     python = []
     for path in sorted((ROOT / 'tests').glob('test_*.py')):
-        if path.stem == 'test_ideal_run_regression':
+        if path.stem == 'test_ideal_run_regression' and path.stem not in touched_python:
             continue  # always in FULL, which runs discovery
         owners = mentioned_routes(path)
-        if path.stem in FAST_PYTHON or routes.intersection(owners):
-            python.append('tests.' + path.stem)
+        if path.stem in FAST_PYTHON or path.stem in touched_python or routes.intersection(owners):
+            python.extend(python_names(path, files))
     return dict(files=files, shared=shared, routes=sorted(routes), suites=selected, python=python)
 
 

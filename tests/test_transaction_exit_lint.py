@@ -1,4 +1,5 @@
 import copy
+from tests.story_fixture import fresh_story
 import unittest
 from tools import transaction_exit_lint as lint
 
@@ -19,7 +20,7 @@ class TransactionExitLintTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.scene = next(s for s in expansion.make_expansion()["Scenes"] if s["Id"] == lint.CONTRACTS[0]["scene"])
+        cls.scene = next(s for s in fresh_story()["Scenes"] if s["Id"] == lint.CONTRACTS[0]["scene"])
 
     def test_contract_and_mutations(self):
         self.assertFalse(lint.check({"Scenes": [self.scene]}, lint.CONTRACTS))

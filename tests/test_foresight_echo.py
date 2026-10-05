@@ -148,8 +148,15 @@ class ForesightSurfaceTests(unittest.TestCase):
     def test_registered_consumer_contract_matches_export(self):
         story = fresh_story()
         consumers = {s["Id"]: foresight.PAGE_TAKEN for s in story["Scenes"] if foresight.PAGE_TAKEN in s["Requires"]}
-        self.assertEqual(consumers, foresight.CONSUMERS)
-        self.assertEqual(story["ForesightConsumers"], foresight.CONSUMERS)
+        # Authorized consumers: the four played Wenduag echo pages and the
+        # household table in each supported chapter. This is an independent
+        # contract, not the generator's mutable registration table.
+        expected = {key: "foresight.page_taken" for key in (
+            "wenduag.trickster.echo.abyss.prepare", "wenduag.trickster.echo.abyss.pickup",
+            "wenduag.trickster.echo.abyss.return", "wenduag.trickster.echo.abyss.trust",
+            "household.table.offered", "household.table.offered_c5")}
+        self.assertEqual(consumers, expected)
+        self.assertEqual(story["ForesightConsumers"], expected)
         self.assertEqual(story["Derived"]["household.stance_eligible"], [[foresight.PAGE_TAKEN, "trickster.now"]])
         for key in (foresight.PAGE_TAKEN, foresight.GATE_BELIEVED):
             self.assertTrue(all("trickster.now" in group for group in story["Derived"][key]))
@@ -242,8 +249,8 @@ class ForesightSurfaceTests(unittest.TestCase):
                 self.assertEqual(nodes["gap." + target]["Choices"], nodes[target]["Choices"])
 
 
-GAME = Path(os.environ.get("RRT_GAME_DIR") or
-            r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure")
+from tools.game_blueprints import game_dir
+GAME = game_dir()
 
 
 @unittest.skipUnless((GAME / "blueprints.zip").exists(), "blueprints.zip not installed")

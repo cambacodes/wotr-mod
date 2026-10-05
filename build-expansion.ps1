@@ -4,6 +4,7 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $previousHashSeed = $env:PYTHONHASHSEED
+$previousGameDir = $env:RRT_GAME_DIR
 $previousPython = $env:RRT_PYTHON
 $previousBindings = $env:RRT_PARENT_BINDINGS
 $previousExpandedEpilogue = $env:RRT_TEST_EXPANDED_EPILOGUE
@@ -14,6 +15,7 @@ try {
     $dotnetPath = Join-Path $env:LOCALAPPDATA 'RanRomanceTools/dotnet/dotnet.exe'
     if (!(Test-Path -LiteralPath $dotnetPath)) { $dotnetPath = (Get-Command dotnet -ErrorAction Stop).Source }
     $env:PYTHONHASHSEED = '0'
+    $env:RRT_GAME_DIR = $GameDir
     $env:RRT_PYTHON = $pythonPath
     $env:RRT_PARENT_BINDINGS = (@(
         'reference/canon-review/expansion-parent-bindings.json'
@@ -148,6 +150,7 @@ try {
     Write-Output "Scenes: $($story.Scenes.Count). Missing portrait keys: $($missingPortraits.Count). No installed files changed."
 } finally {
     $env:PYTHONHASHSEED = $previousHashSeed
+    $env:RRT_GAME_DIR = $previousGameDir
     $env:RRT_PYTHON = $previousPython
     $env:RRT_PARENT_BINDINGS = $previousBindings
     $env:RRT_TEST_EXPANDED_EPILOGUE = $previousExpandedEpilogue

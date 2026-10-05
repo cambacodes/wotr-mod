@@ -18,6 +18,8 @@ using UnityModManagerNet;
 
 internal static class Program
 {
+    private static int profiledChecks;
+    private static double profiledSeconds;
     private static readonly List<object> suiteTimings = new List<object>();
     private static void RunSuite(string name, Action run)
     {
@@ -26,6 +28,9 @@ internal static class Program
         try { run(); }
         finally
         {
+            timer.Stop();
+            profiledChecks += checks - before;
+            profiledSeconds += timer.Elapsed.TotalSeconds;
             suiteTimings.Add(new { suite = name, seconds = timer.Elapsed.TotalSeconds, assertions = checks - before });
             string? output = Environment.GetEnvironmentVariable("RRT_MANAGED_TIMINGS");
             if (!string.IsNullOrEmpty(output)) File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings));
@@ -104,6 +109,22 @@ internal static class Program
 
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run(string game, string storyPath, string modDirectory)
+    {
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        try { return RunConstruction(game, storyPath, modDirectory); }
+        finally
+        {
+            string? output = Environment.GetEnvironmentVariable("RRT_MANAGED_TIMINGS");
+            if (!string.IsNullOrEmpty(output))
+            {
+                suiteTimings.Add(new { suite = "ManagedConstructionAndNativeInline", seconds = timer.Elapsed.TotalSeconds - profiledSeconds,
+                    assertions = checks - profiledChecks });
+                File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings));
+            }
+        }
+    }
+
+    private static int RunConstruction(string game, string storyPath, string modDirectory)
     {
         var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath))!;
         Rules.Validate(story);
@@ -797,22 +818,22 @@ internal static class Program
         RunSuite("ReturnToListManagedTests", () => ReturnToListManagedTests.Run(native, Id, Check));
         RunSuite("ParagraphManagedTests", () => ParagraphManagedTests.Run(Id, Check));
         RunSuite("NativeEpilogueEditManagedTests", () => NativeEpilogueEditManagedTests.Run(native, Id, Check));
-        NativeEpilogueEditManagedTests.RunQ4(native, Id, Check);
-        if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
-        if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
-        if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);
-        NativeEpilogueEditManagedTests.RunKianaSiblings(story, native, Id, Check);
+        RunSuite("NativeEpilogueEditManagedTests.RunQ4", () => NativeEpilogueEditManagedTests.RunQ4(native, Id, Check));
+        if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) RunSuite("NativeEpilogueEditManagedTests.RunTirabade", () => NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check));
+        if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) RunSuite("NativeEpilogueEditManagedTests.RunCamellia", () => NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check));
+        if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) RunSuite("NativeEpilogueEditManagedTests.RunAfterlogue", () => NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check));
+        RunSuite("NativeEpilogueEditManagedTests.RunKianaSiblings", () => NativeEpilogueEditManagedTests.RunKianaSiblings(story, native, Id, Check));
         RunSuite("NativeQ3RecoveryManagedTests", () => NativeQ3RecoveryManagedTests.Run(story, Id, Check));
-        NativeEpilogueEditManagedTests.RunDelivery(story, Check);
-        NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
-        NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
+        RunSuite("NativeEpilogueEditManagedTests.RunDelivery", () => NativeEpilogueEditManagedTests.RunDelivery(story, Check));
+        RunSuite("NativeEpilogueEditManagedTests.RunDreamPage", () => NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check));
+        RunSuite("NativeEpilogueEditManagedTests.RunJewelerBowl", () => NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check));
         // eng8-q8e: EE follow-ons retain actual native history receipts.
-        NativeEpilogueEditManagedTests.RunEndingIdentity(story, native, Check);
+        RunSuite("NativeEpilogueEditManagedTests.RunEndingIdentity", () => NativeEpilogueEditManagedTests.RunEndingIdentity(story, native, Check));
         RunSuite("NativeGateManagedTests", () => NativeGateManagedTests.Run(story, Check));
         RunSuite("TerendelevNativeManagedTests", () => TerendelevNativeManagedTests.Run(story, native, Check)); // eng7-f6d
         if (story.Scenes.Any(Rules.IsWenduagEchoHub)) RunSuite("WenduagEchoManagedTests", () => WenduagEchoManagedTests.Run(Check));
-        NativeGateManagedTests.RunArsinoe(story, Check);
-        NativeGateManagedTests.RunDevarra(story, Check);
+        RunSuite("NativeGateManagedTests.RunArsinoe", () => NativeGateManagedTests.RunArsinoe(story, Check));
+        RunSuite("NativeGateManagedTests.RunDevarra", () => NativeGateManagedTests.RunDevarra(story, Check));
         RunSuite("SpeakerManagedTests", () => SpeakerManagedTests.Run(native, Check));
         RunSuite("ContinueBeforeManagedTests", () => ContinueBeforeManagedTests.Run(native, Id, Check));
         RunSuite("PresenceHubManagedTests", () => PresenceHubManagedTests.Run(Id, Check));

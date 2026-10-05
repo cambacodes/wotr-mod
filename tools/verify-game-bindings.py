@@ -6,25 +6,29 @@ Build tests/RulesTests.csproj before running this command.
 import argparse
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 from zipfile import ZipFile
 from parent_bindings import load_parent_bindings
 
 ROOT = Path(__file__).resolve().parents[1]
+ASSET_ID = re.compile(rb'"AssetId"\s*:\s*"([a-f0-9]{32})"')
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("story", type=Path)
+    parser.add_argument("--runner", type=Path, default=ROOT / "tests/bin/Release/net8.0/RulesTests.dll",
+                        help="Built RulesTests assembly, including builds outside the worktree")
     parser.add_argument("--output", type=Path, default=ROOT / "development/game-bindings-report.json")
     parser.add_argument("--parent-bindings", help="Reviewed parent-mod evidence manifest(s), pinned to the installed assembly; "
                         "several paths may be joined with os.pathsep, as in RRT_PARENT_BINDINGS")
     parser.add_argument("--game", type=Path, default=Path(r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure"))
     args = parser.parse_args()
-    dotnet = Path(os.environ["LOCALAPPDATA"]) / "RanRomanceTools/dotnet/dotnet.exe"
-    runner = ROOT / "tests/bin/Release/net8.0/RulesTests.dll"
-    output = subprocess.run([str(dotnet) if dotnet.is_file() else "dotnet", str(runner), "--bindings", str(args.story.resolve())], check=True, capture_output=True, text=True)
+    local = os.environ.get("LOCALAPPDATA")
+    dotnet = Path(local) / "RanRomanceTools/dotnet/dotnet.exe" if local else None
+    output = subprocess.run([str(dotnet) if dotnet and dotnet.is_file() else "dotnet", str(args.runner.resolve()), "--bindings", str(args.story.resolve())], check=True, capture_output=True, text=True)
     bindings = json.loads(output.stdout)
     pending = {b["Guid"] for b in bindings}
     found = {}
@@ -35,7 +39,8 @@ def main():
                 continue
             with archive.open(name) as stream:
                 header = stream.read(160)
-                if not any(guid.encode("ascii") in header for guid in pending):
+                asset = ASSET_ID.search(header)
+                if asset is None or asset.group(1).decode('ascii') not in pending:
                     continue
                 record = json.loads(header + stream.read())
             guid = record["AssetId"]

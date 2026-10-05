@@ -21,20 +21,77 @@ internal static partial class Program
     }
     // Diagnostics go to stderr, including in --bindings mode (stdout is JSON).
     private static readonly List<object> suiteTimings = new();
+    private static double accountedSuiteSeconds;
+    private static int accountedSuiteChecks;
+    private static readonly HashSet<string> completedInWorkers = new();
+    private static WorldBuildCache? worldBuilds;
+    private static readonly HashSet<string> immutableRouteSuites = new() {
+        "ArueshalaeTricksterTests", "ChadaliTricksterTests", "DelamereTricksterTests", "DevarraTricksterTests",
+        "DorgelindaTricksterTests", "EritriceTricksterTests", "JannahTricksterTests", "KaylessaTricksterTests",
+        "MielarahTricksterTests", "NenioTricksterTests"
+    };
+    internal static void CompleteWorld(Snapshot state)
+    {
+        if (worldBuilds == null) Rules.Complete(story, state);
+        else worldBuilds.Complete(state);
+    }
     internal static void RunSuite(string name, Action run)
     {
+        if (completedInWorkers.Remove(name)) return;
         int before = checks;
         var timer = Stopwatch.StartNew();
+        var previous = worldBuilds;
+        worldBuilds = immutableRouteSuites.Contains(name) ? new WorldBuildCache(story) : null;
         try { run(); }
         finally
         {
-            suiteTimings.Add(new { suite = name, seconds = timer.Elapsed.TotalSeconds, assertions = checks - before });
+            accountedSuiteSeconds += timer.Elapsed.TotalSeconds;
+            accountedSuiteChecks += checks - before;
+            suiteTimings.Add(new { suite = name, seconds = timer.Elapsed.TotalSeconds, assertions = checks - before,
+                world_builds = worldBuilds?.Builds ?? 0, world_hits = worldBuilds?.Hits ?? 0 });
+            worldBuilds = previous;
             if (Environment.GetEnvironmentVariable("RRT_TEST_PROFILE") == "1")
                 Console.Error.WriteLine($"SUITE {name}: {timer.Elapsed.TotalSeconds:F3}s, {checks - before} assertions");
             string? output = Environment.GetEnvironmentVariable("RRT_TEST_TIMINGS");
             if (!string.IsNullOrEmpty(output))
                 File.WriteAllText(output, JsonSerializer.Serialize(suiteTimings));
         }
+    }
+
+    private static void RecordInlineTiming(double elapsed)
+    {
+        suiteTimings.Add(new { suite = "OriginalCampaignAndStructure", seconds = Math.Max(0, elapsed - accountedSuiteSeconds),
+            assertions = checks - accountedSuiteChecks, world_builds = 0, world_hits = 0 });
+        string? output = Environment.GetEnvironmentVariable("RRT_TEST_TIMINGS");
+        if (!string.IsNullOrEmpty(output)) File.WriteAllText(output, JsonSerializer.Serialize(suiteTimings));
+    }
+
+    private static void RunIndependentFull(string[] args)
+    {
+        // Opt in only for the unfiltered expansion preflight. Legacy modes and
+        // bindings keep their original ordering and stdout contracts.
+        string? setting = Environment.GetEnvironmentVariable("RRT_RULES_JOBS");
+        if (args.Length != 1 || string.IsNullOrEmpty(setting) || setting == "1") return;
+        if (!int.TryParse(setting, out int jobs) || jobs < 1 || jobs > 4)
+            throw new ArgumentException("RRT_RULES_JOBS must be between 1 and 4");
+        var candidates = new Dictionary<string, string> {
+            ["ArueshalaeTricksterTests"] = "arueshalae.trickster.dead.starving",
+            ["ChadaliTricksterTests"] = "chadali.trickster.council.coin",
+            ["DelamereTricksterTests"] = "delamere.trickster.crypt.stag",
+            ["DevarraTricksterTests"] = "devarra.trickster.dead.woken",
+            ["DorgelindaTricksterTests"] = "dorgelinda.trickster.audit.open",
+            ["EritriceTricksterTests"] = "eritrice.trickster.council.motion",
+            ["JannahTricksterTests"] = "jannah.trickster.cage.terms",
+            ["KaylessaTricksterTests"] = "kaylessa.trickster.dead.borrow",
+            ["MielarahTricksterTests"] = "mielarah.trickster.tavern.arithmetic",
+            ["NenioTricksterTests"] = "nenio.trickster.taken.riddle",
+        };
+        var ids = story.Scenes.Select(s => s.Id).ToHashSet();
+        var selected = candidates.Where(p => ids.Contains(p.Value)).Select(p => p.Key).ToHashSet();
+        if (selected.Count == 0) return;
+        Rules.Validate(story);
+        RunParallel(selected, StoryArgument(args), jobs);
+        completedInWorkers.UnionWith(selected);
     }
 
     private static Dictionary<string, MethodInfo> SuiteMethods() => typeof(Program).Assembly.GetTypes()
@@ -130,6 +187,8 @@ internal static partial class Program
         // suite counters. Results are printed/merged in stable suite-name order.
         string scratch = Path.Combine(Path.GetTempPath(), "rrt-rule-suites-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(scratch);
+        var timer = Stopwatch.StartNew();
+        int before = checks;
         try
         {
             var names = selected.OrderBy(v => v, StringComparer.Ordinal).ToArray();
@@ -183,6 +242,11 @@ internal static partial class Program
                 if (hash != null) File.WriteAllText(coveragePath, JsonSerializer.Serialize(new { StorySha256 = hash, Evaluations = evaluations }));
             }
         }
-        finally { Directory.Delete(scratch, recursive: true); }
+        finally
+        {
+            accountedSuiteSeconds += timer.Elapsed.TotalSeconds;
+            accountedSuiteChecks += checks - before;
+            Directory.Delete(scratch, recursive: true);
+        }
     }
 }

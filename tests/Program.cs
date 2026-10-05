@@ -141,7 +141,7 @@ internal static partial class Program
             if (story != null && dirty)
             {
                 state.Flags.ExceptWith(eligibilityKeys);
-                Rules.Complete(story, state);
+                CompleteWorld(state);
             }
             var node = nodes[id];
             Rules.EnterNode(node, state); // eng7-l09: runtime OnShow precedes choice availability.
@@ -411,10 +411,20 @@ internal static partial class Program
 
     private static void Main(string[] args)
     {
+        // Let disposable worker directories unwind before reporting a failure.
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        try { RunMain(args); }
+        catch (Exception error) { Console.Error.WriteLine(error); Environment.ExitCode = 1; }
+        finally { if (args.Length == 1) RecordInlineTiming(timer.Elapsed.TotalSeconds); }
+    }
+
+    private static void RunMain(string[] args)
+    {
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(StoryArgument(args)), new JsonSerializerOptions { IncludeFields = true })!;
         if (RunSelected(args)) return;
+        RunIndependentFull(args);
         // --- eng8-q8c: focused diagnostics, also run in the full suite below ---
         if (args.Contains("--transaction-inventory2"))
         {
@@ -829,6 +839,7 @@ internal static partial class Program
         // BEGIN eng7-f5: native slide/state inventory (no game launch).
         RunSuite("NativeCuePolicyInventoryTests", () => NativeCuePolicyInventoryTests.Run(story, Check));
         // END eng7-f5
+        RunSuite("ContactDisambiguationTests", () => ContactDisambiguationTests.Run(Check));
         // eng7-l05
         RunSuite("ParticipantInventoryTests", () => ParticipantInventoryTests.Run(story, Check));
         RunSuite("PresenceTransitionInventoryTests", () => PresenceTransitionInventoryTests.Run(story, Check)); // eng7-l05
@@ -858,6 +869,7 @@ internal static partial class Program
         RunSuite("ContinueBeforeTests", () => ContinueBeforeTests.Run(Check));
         RunSuite("CountTests", () => CountTests.Run(Check));
         RunSuite("ReachabilityCacheTests", () => ReachabilityCacheTests.Run(Check));
+        RunSuite("WorldBuildCacheTests", () => WorldBuildCacheTests.Run(Check));
         RunSuite("SceneAnchorTests", () => SceneAnchorTests.Run(Check));
         RunSuite("PresenceAnchorTests", () => PresenceAnchorTests.Run(Check));
         RunSuite("PresenceHubTests", () => PresenceHubTests.Run(Check));
