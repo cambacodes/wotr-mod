@@ -1,0 +1,57 @@
+{
+ "placement": "shamira.presence",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:shamira.presence",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+  "Side": "right",
+  "Distance": 10.0
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 1.30037737,
+ "drift": 0.00305175781,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F10 (HEAD de2dab1b)",
+  "run": "harness/.runs/20261005-083228",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+  "actor_id": "ef681431-6106-42c2-a068-a4cf826f5832",
+  "actor_id_after_reload": "ef681431-6106-42c2-a068-a4cf826f5832",
+  "position": [
+   23.0104465,
+   56.0031738,
+   20.8419323
+  ],
+  "target": [
+   23.0104465,
+   56.0062256,
+   20.8419323
+  ],
+  "approach_distance": 1.8399334,
+  "after_reload_drift": 0.0102121076,
+  "after_reload_gap": 1.30494082,
+  "after_reload_position": [
+   23.01,
+   56.0031738,
+   20.84
+  ],
+  "after_reload_approach": 1.85784018,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-083228/shots/shamira.presence__production.png",
+   "harness/.runs/20261005-083228/shots/shamira.presence__production_2.png"
+  ],
+  "note": "Re-spotted from jeweller front 8 (run 20261005-081022: body room blocked by the static TailorCapitalTrader and NobleMale2) to tailor right 10 m (open ground west of the tailor's row, 12.8 m from Eliandra). The awning fallback shamira.presence.awning is 3.5 m closer on the same side and exclusive with the primary."
+ }
+}

@@ -105,7 +105,9 @@ internal sealed class InventoryWorldBuilder
     {
         missingAnchors.Add(key);
         var p = Story.Presences[key];
-        if (p.At?.NearUnit is string unit)
+        // F10: a fallback that shares the primary's anchor unit (Shamira: primary and awning both use the tailor) must keep
+        // that actor, or the "primary cannot be placed" scenario would also destroy the fallback's anchor.
+        if (p.At?.NearUnit is string unit && !Story.Presences.Any(o => o.Key != key && o.Value.Unit == p.Unit && o.Value.At?.NearUnit == unit))
             foreach (var actor in Actors.Where(a => a.Unit == unit && a.Area == p.Area && a.Presence == "")) actor.Destroyed = true;
         Refresh();
     }

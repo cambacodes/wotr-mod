@@ -598,7 +598,7 @@ Come in person. Not with a coin. You'll have to reach. H."''',
 # unit (no dialog of its own) with a click-to-talk hub (ERRATA, Presence.Dialog "hub").
 DREZEN = "2570015799edf594daf2f076f2f975d8"
 FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"
-# F10 authored staging: ordinary tiefling trader; front 9 m clears Terendelev's front 4.5 m. Pending live.
+# F10 authored staging: ordinary tiefling trader; front 8.5 m clears Terendelev's front 4.5 m by 4 m and the roof edge (9 m snapped onto a roof). Live proof 20261005-082713.
 TIEFLING = "23eabf5b6364d4a4e86202dc5d27600b"   # Vendor_Tiefling (the lower town; Terendelev front, Galfrey's stall right, Mielarah behind)
 EXOTIC = "bad9f602b81a80047ac470b01ebe65a9"   # ExoticCapitalTrader, native capital actor
 ROK_HUB = "herrax.presence.rokhorn"
@@ -609,10 +609,10 @@ LETTER_SENT = [H + "late.next_move", H + "owed.night", "herrax.letters.the_couri
 PENDING = [[MC_REUNITED, MC_RETURNED], LETTER_SENT]
 ROK_FORBIDS = [CLOSED, CONTRACT, MC_DEPOSIT, MC_FAVOR]
 PRESENCES = {
-    ROK_HUB: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="front", Distance=9.0),
+    ROK_HUB: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="front", Distance=8.5),
                   Requires=["trickster.ever", STARTED, ASKED_KILL], Forbids=ROK_FORBIDS + [ROK_FAILED, KING_GONE],
                   RequiresAnyGroups=[list(g) for g in PENDING], MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
-                  Greeting=("{n}Rokhorn has the whole stretch of cobbles in front of the tiefling trader's stall to himself. The passers-by have decided, without "
+                  Greeting=("{n}Rokhorn has the whole stretch of cobbles at the far end of the lane past the tiefling trader's stall to himself. The passers-by have decided, without "
                             "discussing it, that a bare-chested incubus in a cloak grey with Worldwound ash is best left the "
                             "far end of anything. He raises his cup to you with two claws.{/n}")),
     ROK_HUB_ALT: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Offset=[1.0, -8.0]),

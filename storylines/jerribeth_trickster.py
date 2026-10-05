@@ -780,11 +780,11 @@ VISIT_TERMS = '''"A forfeit is collected in person. I have come to see what I bo
 {n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}
 "I walked through your market in my own shape and nobody looked twice. I shall not stay the night; the Abyss notices when I am absent, and your guards will notice at dawn. But I do not collect at a distance. Which face do you want across the table, Commander?"'''
 PRESENCES = {
-    # F10 authored staging: jeweller's left side, away from the exotic-stall citizen route; pending live.
-    PRESENCE: dict(Unit=J_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit="bc1093231b1577a4485a730c29595195", Side="left", Distance=7.0),
+    # F10: tailor's left (east) 7 m; the jeweller's left stood in a roaming citizen cluster. Live proof 20261005-083631.
+    PRESENCE: dict(Unit=J_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit="253cdb8f434e5a6469b75e18428316e3", Side="left", Distance=7.0),
                    Requires=["trickster.ever", VISIT_DUE], Forbids=[VISITED, "jerribeth.closed"],
                    MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
-                   Greeting="{n}A narrow, insectile figure stands beside the jeweller's stall, and nobody in the market sees her. Her "
+                   Greeting="{n}A narrow, insectile figure stands at the far side of the tailor's stall, and nobody in the market sees her. Her "
                             "antennae turn toward you before you are close.{/n} \"You came by the market. Good. I dislike "
                             "being kept waiting by people I have already bought.\""),
 }

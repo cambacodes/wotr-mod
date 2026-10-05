@@ -1,0 +1,57 @@
+{
+ "placement": "jerribeth.presence",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:jerribeth.presence",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+  "Side": "left",
+  "Distance": 7.0
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 1.00252712,
+ "drift": 1.01170349,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F10 (HEAD de2dab1b)",
+  "run": "harness/.runs/20261005-083631",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,jerribeth.trickster.visit_due,hour.jerribeth.trickster.visit_due,jerribeth.committed,hour.jerribeth.committed,jerribeth.trickster.cost.forfeit,hour.jerribeth.trickster.cost.forfeit' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+  "actor_id": "cf28f6d8-45da-492c-ac16-72bcc5328a26",
+  "actor_id_after_reload": "cf28f6d8-45da-492c-ac16-72bcc5328a26",
+  "position": [
+   39.8566856,
+   57.01793,
+   18.5606461
+  ],
+  "target": [
+   39.8566856,
+   56.0062256,
+   18.5606461
+  ],
+  "approach_distance": 1.95160186,
+  "after_reload_drift": 1.01170909,
+  "after_reload_gap": 0.9965274,
+  "after_reload_position": [
+   39.85,
+   57.01793,
+   18.56
+  ],
+  "after_reload_approach": 1.94834411,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-083631/shots/jerribeth.presence__production.png",
+   "harness/.runs/20261005-083631/shots/jerribeth.presence__production_2.png"
+  ],
+  "note": "Re-spotted from jeweller left 7 (run 20261005-082051: NobleMale6, a roaming citizen, blocked body room) to tailor left 7 m (east lane, 4.5 m from Kaylessa's left 2.5). The copy stands 1.0 m above the mesh point (a low ledge, not a roof), inside the 1.5 m contract."
+ }
+}

@@ -121,7 +121,7 @@ internal static class ShamiraTricksterTests
               && new[] { table, awning }.All(pr => pr.Unit == Unit && pr.Area == Drezen && pr.Mode == "spawn-copy" && pr.Dialog == "hub"
                   && pr.MinChapter == 5 && pr.MaxChapter == 5 && pr.Requires.Contains(Embodied) && pr.At!.Distance >= 2f
                   && new[] { Closed, P + "cost.kept_captive", P + "cast_out", P + "ally" }.All(pr.Forbids.Contains))
-              && table.At!.NearUnit == "bc1093231b1577a4485a730c29595195" && table.At.Side == "front" && table.At.Distance == 8f && table.Forbids.Contains("shamira.presence.failed")
+              && table.At!.NearUnit == Tailor && table.At.Side == "right" && table.At.Distance == 10f && table.Forbids.Contains("shamira.presence.failed")
               && table.Forbids.Contains("fool_king.gone") && awning.At!.NearUnit == Tailor && awning.At.Side == "right" && awning.At.Distance == 6.5f
               && awning.RequiresAnyGroups.Length == 1 && awning.RequiresAnyGroups[0].Contains("shamira.presence.failed")
               && awning.RequiresAnyGroups[0].Contains("fool_king.gone"),

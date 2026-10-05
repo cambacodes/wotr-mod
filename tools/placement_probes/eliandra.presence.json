@@ -1,0 +1,57 @@
+{
+ "placement": "eliandra.presence",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:eliandra.presence",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+  "Side": "front",
+  "Distance": 8.0
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.001876831,
+ "drift": 0.00305175781,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F10 (HEAD de2dab1b)",
+  "run": "harness/.runs/20261005-100808",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'eliandra.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '860edc351f25b624296a572aa1f6c48f'",
+  "actor_id": "5cd44d2a-0c2a-4956-8bf8-7ee6b45feb00",
+  "actor_id_after_reload": "5cd44d2a-0c2a-4956-8bf8-7ee6b45feb00",
+  "position": [
+   31.84645,
+   56.0031738,
+   11.5723591
+  ],
+  "target": [
+   31.84645,
+   56.0062256,
+   11.5723591
+  ],
+  "approach_distance": 1.08374417,
+  "after_reload_drift": 0.005240792,
+  "after_reload_gap": 0.001876831,
+  "after_reload_position": [
+   31.84,
+   56.0031738,
+   11.57
+  ],
+  "after_reload_approach": 0.994031668,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-100808/shots/eliandra.presence__production.png",
+   "harness/.runs/20261005-100808/shots/eliandra.presence__production_2.png"
+  ],
+  "note": "Unchanged spot (tailor front 8) passes as authored: ground, no roof; the nearest static NobleMale2 is 2.1 m away (tolerance 2 m). Spawn at (31.8, 56.0, 11.6)."
+ }
+}

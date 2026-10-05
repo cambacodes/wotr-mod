@@ -1,0 +1,57 @@
+{
+ "placement": "herrax.presence.rokhorn",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:herrax.presence.rokhorn",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+  "Side": "front",
+  "Distance": 8.5
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.4511852,
+ "drift": 0.122077942,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F10 (HEAD de2dab1b)",
+  "run": "harness/.runs/20261005-082713",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'",
+  "actor_id": "937507d4-849f-4251-b85e-22ca568bce9d",
+  "actor_id_after_reload": "937507d4-849f-4251-b85e-22ca568bce9d",
+  "position": [
+   -66.98528,
+   45.0009155,
+   -51.92248
+  ],
+  "target": [
+   -66.98528,
+   45.1229935,
+   -51.92248
+  ],
+  "approach_distance": 1.84134412,
+  "after_reload_drift": 0.122399874,
+  "after_reload_gap": 0.450281978,
+  "after_reload_position": [
+   -66.98,
+   45.0009155,
+   -51.92
+  ],
+  "after_reload_approach": 1.83636045,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-082713/shots/herrax.presence.rokhorn__production.png",
+   "harness/.runs/20261005-082713/shots/herrax.presence.rokhorn__production_2.png"
+  ],
+  "note": "Re-spotted from front 9 (roof: copy snapped 2.7 m up onto the roof collider, run 20261005-075751) to front 8.5 m, which is 4 m from Terendelev's front 4.5. The primary now holds on the ordinary tiefling trader; no Fool King anchor."
+ }
+}

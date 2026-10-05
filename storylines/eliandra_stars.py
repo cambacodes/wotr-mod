@@ -21,7 +21,7 @@ from storylines.eliandra_trickster import SCENES as SCENES_MAIN
 
 SCENES = []
 
-TAILOR = "253cdb8f434e5a6469b75e18428316e3"  # F10 authored staging: front 8 m; pending live.
+TAILOR = "253cdb8f434e5a6469b75e18428316e3"  # F10: front 8 m. Live proof 20261005-100808.
 FOOL_KING = "cc50a88bbd8dd3e4da066d33d14fdfc8"       # FoolKing (MythicTrickster_Ch3), in his tavern in DrezenCapital
 MARK = "9a41b047-9314-4719-a915-9c24aedf3e95"        # her native DrezenCapital spawner (scene 3e2b5ea0; Eliandra_DefaultActor)
 HUB = "eliandra.presence"
@@ -39,7 +39,7 @@ THRESHOLD_TOLD = E + "drezen.threshold"
 CHART = E + "drezen.chart"
 ROAD = E + "drezen.road_promised"
 
-GREETING = ("{n}At a table in front of the tailor's stall, out of the worst of the street noise, a woman in a grey travelling cloak sits with a cup "
+GREETING = ("{n}At a table in the open ground between the tailor's and the jeweller's stalls, out of the worst of the street noise, a woman in a grey travelling cloak sits with a cup "
             "of water in front of her and a star chart spread under her hands. The passers-by give her table a wide, respectful "
             "berth, as though it were an altar.{/n}")
 PRESENCES = {
