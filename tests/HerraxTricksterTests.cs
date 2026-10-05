@@ -200,7 +200,9 @@ internal static class HerraxTricksterTests
         // Trk_Herrax_Owed: Chapter 4 ended mid-chain; one letter, every state, and a reachable yes.
         var states = new (string node, string[] flags)[]
         {
-            ("unsold", new[] { Primed }), ("sold", new[] { Primed, Bait }), ("blown", new[] { Primed, Blown }),
+            ("unsold", new[] { Primed, "herrax.coin_held" }), ("unsold_lost", new[] { Primed }),
+            ("sold", new[] { Primed, Bait }),
+            ("blown", new[] { Primed, Blown, "herrax.coin_held" }), ("blown_lost", new[] { Primed, Blown }),
             ("lesson", new[] { Primed, Bait, Lesson, P + "knife_taken" }), ("knife", new[] { Primed, Bait, Lesson, Declined }),
             ("restored", new[] { Primed, Bait, Lesson, Declined, Restored }),
             ("restored_watched", new[] { Primed, Bait, Lesson, Declined, Restored, "herrax.house.a_night_late" }),
