@@ -114,13 +114,11 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
     n("remember_heard", "Seelah", '''"She had quite a lot to say. I nearly supplied both halves of the argument for her."
 {n}Seelah looks down at the strip of wood she is still carrying.{/n}
 "And I still need her to teach me how to cut this straight. Imagine having to go back and ask after telling her how to do everything else."
-"You might have managed it."
-"Oh, I'd have asked. She might have enjoyed the answer rather more."''', c('[Join the carpenter at the smith\'s door.]', "thanks")),
+"Oh, I'd still have asked her. After telling her how to do everything else! She'd have enjoyed answering that."''', c('[Join the carpenter at the smith\'s door.]', "thanks")),
     n("remember_demand", "Seelah", '''"You took it back. I remember that part too."
 {n}She gives your hand a brief squeeze before letting you go.{/n}
 "Come on. If we leave Mera waiting much longer, she'll decide the real problem with paladins is that we spend all day talking outside workshops."
-"Would she be wrong?"
-"Today? I'd rather not give her more evidence."''', c('[Follow her to the door.]', "thanks")),
+"Today she'd have a point. Come on, before I give her more evidence."''', c('[Follow her to the door.]', "thanks")),
     n("thanks", "Seelah", '''{n}Seelah catches up with the carpenter before she goes inside.{/n}
 "Thank you for showing us the crossing would hold. I'll come back when you're ready to finish it."
 {n}"If you can follow instructions," Mera says.{/n}
@@ -312,9 +310,9 @@ s("roof_evening", "Enough sky for an evening", '"You promised me a view."', [
 "I would still like the longer ones. But if I wait for the perfect road before I invite you anywhere, I could miss rather a lot of evenings."
 {n}She points at the remaining pickle.{/n}
 "We even encountered a danger unknown to either of us. A proper expedition."''', c('[Stay and watch the light change.]', "future")),
-    n("try", "Seelah", '''"So am I. I nearly wore a hole in my boots looking for something grand enough. Then I thought, 'Seelah, you idiot. You want supper with this person. Go buy supper.'"
+    n("try", "Seelah", '''"Good. I nearly wore a hole in my boots looking for something grand enough. Then I thought, 'Seelah, you idiot. You want supper. Go buy supper.'"
 {n}She tears the last flatbread in two and offers you half.{/n}
-"Good sky. Good company. Jury's still out on the pickle."''', c('[Stay and watch the light change.]', "future")),
+"Mind you, if you come back tomorrow, I'm buying a different pickle."''', c('[Stay and watch the light change.]', "future")),
     n("future", "Seelah", '''{n}As the light fades, Seelah moves the empty basket beneath her seat. She looks at you instead of the sky.{/n}
 "I've still got questions. And there's still work waiting downstairs. But right now I'm looking at your mouth, and I'd rather you were sitting here."
 {n}She rests her hand on the seat beside her, palm up.{/n}

@@ -65,7 +65,7 @@ s("letter", "An audience for cruelty", [
 
 s("letter_after", "What we meant to do", [
     n("start", "Seelah", '''{n}Seelah comes to find you empty-handed. She opens her mouth, shuts it, then plants her hands on her hips.{/n}
-"I had a fine speech ready. Made me sound very wise. Pity about yesterday."
+"I had a fine speech ready. Made me sound very wise. Pity about that stall."
 {n}She sits on a low stone and scuffs the ground with her heel.{/n}
 "I was so busy wanting to knock his teeth out that I forgot to look at the woman holding my sleeve."''',
       c('"I thought stopping him was worth the attention it would draw."', "public", requires=("seelah.letter_public",)),
@@ -91,7 +91,7 @@ s("letter_after", "What we meant to do", [
 {n}Seelah rubs a hand over her face. Her shoulders are still hunched, but she looks you in the eye again.{/n}''', c('[Agree to watch each other as well as the person you are helping.]', "end", flags=("seelah.check_person",))),
     n("assumed", "Seelah", '''"Ugh. 'She'll thank me afterward.' I've said that too."
 {n}She grimaces and presses her palms against the stone.{/n}
-"If I start doing that again, stop me. In front of everyone, if you have to. I'll do the same for you. Better a red face than another mess like yesterday."
+"If I start doing that again, stop me. In front of everyone, if you have to. I'll do the same for you. Better a red face than another mess like that stall."
 {n}She points a finger at you.{/n}
 "And if I grumble, remind me whose bright idea it was."''', c('[Agree to stop each other when you get carried away.]', "end", flags=("seelah.check_person",))),
     n("signal", "Seelah", '''"Something better than looking at me while I am already marching past you."
@@ -104,7 +104,7 @@ s("letter_after", "What we meant to do", [
 {n}A trace of humor returns.{/n}
 "I am making no promises about what happens after I look."''', c('[Agree on the signal.]', "end", flags=("seelah.check_signal",))),
     n("end", "Seelah", '''{n}For a while neither of you speaks. Then Seelah shifts closer on the stone.{/n}
-"There. If I'd put that off another week, I'd have worn a trench pacing around camp. One night was bad enough."
+"There. If I'd put that off another week, I'd have worn a trench pacing around camp. I've done enough pacing already."
 {n}She lays her hand beside yours, her little finger brushing your knuckle.{/n}
 "Will you walk with me? Just here. I have had quite enough of awnings for now."''',
       c('[Take her hand and walk beside her.]', flags=("seelah.letter_discussed",)),

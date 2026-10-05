@@ -143,7 +143,7 @@ hub("seelah.trickster.in_party.lift_lesson", "One lift, never on anyone who need
       c('[Keep the coin] "Finders keepers."', flags=(LESSON, "seelah.started"))),
     nar("caught_you", '''{n}She catches your wrist before your fingers are halfway to the strings, and holds it there, not hard.{/n}
 "Too slow. And you looked at the purse. Never look at the purse." {n}Her thumb taps your knuckle once.{/n} "Do it like you're sorry. You'll get it. Some other day."''',
-      c('[Give her back her own coin, with one of yours] "Two for one. For the lesson."', flags=(LESSON, "seelah.started"))),
+      c('[Offer her one of your coppers] "For the lesson. Keep it where I can see it."', flags=(LESSON, "seelah.started"))),
 ], requires=("trickster",), forbids=("seelah_dead", "seelah_gone", LESSON), delay=0, Chapters=[3, 4, 5])
 
 
@@ -151,7 +151,7 @@ hub("seelah.trickster.in_party.lift_lesson", "One lift, never on anyone who need
 # Shared by the bier and the effects: the relic-seller under the chapel steps, the lift (the lesson lowers the DC), and
 # on a failed check the Commander's nerve instead of a clean hand. Both roads fill the bowl; only the cost differs.
 
-LIST_LAST = '''{n}The last line is newer than the rest, the ink hardly a week old; she must have found him since she came to Drezen: "The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. I bought one off him for two silver and took it to old Brother Haldis at the chapel, who carried the Kenabres reliquary book out of the ruins. The setting marks match his book, stone for stone. They are off the Kenabres altars. Not mine to take back. I am a paladin now. Tell Irabeth."{/n}'''
+LIST_LAST = '''{n}The last line is in fresher ink: "The relic-seller under the chapel steps. Sells 'saints' tears' to pilgrims. I bought one off him for two silver and took it to old Brother Haldis at the chapel, who carried the Kenabres reliquary book out of the ruins. The setting marks match his book, stone for stone. They are off the Kenabres altars. Not mine to take back. I am a paladin now. Tell Irabeth."{/n}'''
 
 STALL = '''{n}The relic-seller's stall is a plank on two barrels under the chapel steps, shuttered for the night. He is still behind it, counting by a shielded lamp: a soft, careful man in pilgrim's grey, with a fat pouch at his belt that he touches every little while, the way a man touches a thing he loves.{/n}'''
 
@@ -229,24 +229,27 @@ hub("seelah.trickster.dead.wakes", "Whatever you took", '"Seelah."', [
     s_("start", '''"You robbed my corpse."
 {n}She is sitting on the edge of the chapel cot in her shirt, turning her empty purse inside out. She laughs once, badly.{/n}
 "The worst part is I'd have done the same. Every copper I had, Commander. Even the gold piece, and I've carried that one since Solku without ever spending it. Did She let me go, or did you buy me?"''',
-      c('"The chaplain did the work. A grave-robber paid for half of it, and my coat for the rest."', "coin", forbids=(CHAPLAIN,)),
-      c('"The chaplain did the work. A grave-robber paid for half of it, and his chapel for the rest, on my word."', "coin_word", requires=(CHAPLAIN,))),
-    s_("coin_word", '''"On your word." {n}She closes her eyes.{/n} "So the whole chapel knows the Commander robbed a dead paladin, then robbed a grave-robber, and then asked the priests for credit. Wonderful. I'm going to be hearing about that at every mass until the Wound shuts."''',
+      c('"The chaplain did the work. The seller\'s stones paid for half the rite, and my diamond for the rest."', "coin", forbids=(CHAPLAIN, PAID)),
+      c('"The chaplain did the work. The seller\'s stones paid for half the rite, and his chapel supplied the rest on my word."', "coin_word", requires=(CHAPLAIN,), forbids=(PAID,)),
+      c('"The chaplain did the work. Crusade gold bought the seller\'s stones. My diamond paid for the rest."', "coin", requires=(PAID,), forbids=(CHAPLAIN,)),
+      c('"The chaplain did the work. Crusade gold bought the seller\'s stones. The chapel supplied the rest on my word."', "coin_word_paid", requires=(PAID, CHAPLAIN,))),
+    s_("coin_word", '''"On your word." {n}She closes her eyes.{/n} "You emptied a dead paladin's purse, brought the priests stones off the Kenabres altars, and asked them for credit. Wonderful. I'm going to hear about that at every mass until the Wound shuts."''',
       c("Continue", "coin")),
-    s_("coin", '''"He showed me one of the stones. Gilt still on it." {n}She turns the empty purse over again, as if something might have grown in it overnight.{/n} "Kenabres stones. I paid Brother Haldis to check one against his reliquary book the week before I died, and it matched. Now I'm walking round on them."
+    s_("coin", '''"He showed me one of the stones. Gilt still on it." {n}She turns the empty purse over again, as if something might have grown in it overnight.{/n} "Kenabres stones. I paid Brother Haldis to check one against his reliquary book. It matched. Now I'm walking round on them."
 "And something else is gone. My list." {n}Her hand goes flat under her collarbone, where the purse hangs when she sleeps.{/n} "You read it. Every line. You're the one who took it."
 {n}She holds out her palm, and it is steady.{/n}
 "Give it back. Now, while I'm still too weak to take it off you."''',
       c('[Put the list in her hand] "Here. It\'s yours. I only borrowed it."', "given", flags=(WOKE, GIVEN_BACK)),
       c('[Keep it] "Not yet."', "kept", flags=(WOKE, KEEPS))),
-    s_("given", '''{n}She unfolds it and reads the last line. Under it, in your hand, somebody has written "Taken back." She looks at that for a long time.{/n}
-{n}Then she borrows the chaplain's pen and writes one more line beneath it, and does not cross it out: "Kenabres stones. Stolen for me. Owed."{/n}
-{n}She folds the list very small, puts it in her purse and ties the strings badly, on purpose.{/n}
-"Acemi never got her helm back. I'll get this one right, if it takes the rest of my life. Thank you, Commander. I'm still angry."''',
+    s_("given", '''{n}She unfolds the list and reads the last line. Then she borrows the chaplain's pen and writes beneath it: "Kenabres stones. Used for me. Owed."{/n}
+{n}She folds it small, puts it in her purse and ties the strings badly.{/n}
+"Acemi never got her helm back. I'll put these stones right, if it takes the rest of my life. Thank you, Commander. I'm still angry."''',
       c('"Be angry. You have time for it now."')),
     s_("kept", '''{n}Her hand stays out a moment longer. Then she closes it, slowly, around nothing.{/n}
 "Then I'll steal it back." {n}She says it lightly. She does not mean it lightly.{/n} "Fair warning, Commander. I was better at this than you, and I've had a lot of practice being patient."''',
       c('"I\'ll keep my coat buttoned."')),
+    s_("coin_word_paid", '''"On your word." {n}She shuts her eyes, then opens them again.{/n} "You paid a grave-robber with crusade gold. For the stones and his silence. Then you asked the chapel for credit. Wonderful. He's richer, the priests are poorer, and I'm alive to shout at you."''',
+      c("Continue", "coin")),
 ], requires=(REVIVED, RETURNED), forbids=(WOKE, "seelah_dead"), delay=0, Areas=[DREZEN], Chapters=[3, 5])
 
 
@@ -396,7 +399,7 @@ MORNING_FAR = '''{n}Morning. She is sitting cross-legged on the bed in your shir
 
 tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a while."', [
     s_("start", '''{n}The same table by the door. She has bought you a drink with money she swore she didn't have, and she pushes it across without looking at it.{/n}
-"I stole to eat, in Solku. Then I stole a knight's helm, and she died without it, and I've been paying for that in a paladin's coat ever since. And now you've stolen from me, and I'm sitting here buying you a drink." {n}She spreads her hands.{/n} "Explain that. I've been trying to all week."''',
+"I stole to eat, in Solku. Then I stole a knight's helm, and she died without it, and I've been paying for that in a paladin's coat ever since. And now you've stolen from me, and I'm sitting here buying you a drink." {n}She spreads her hands.{/n} "Explain that. I've been turning it over ever since I came back."''',
       c("Continue", "near", forbids=(FAR,)), c("Continue", "far", requires=(FAR,))),
     s_("near", '''"I took the Drezen road company, by the way. Close enough to rob you on feast days."''', c("Continue", "ask")),
     s_("far", '''"I took the border company, by the way. So whatever you're going to say, say it like I'm leaving. Because I am."''',
@@ -422,12 +425,13 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
       c('[Let her choose] "You know where the coat is."', "chooses", requires=(ROMANCE, HOLDS, GIVEN_BACK),
         flags=("seelah.committed",)),
       c('[Ask what\'s wrong] "You\'re not saying something."', "no_stones", requires=(HOLDS, GIVEN_BACK))),
-    s_("no_stones", '''{n}She puts her hand flat over the place in her tunic where the list is now.{/n}
-"You read every line of this before you gave it back. You robbed a grave-robber for me with a trick I taught you, and you bought me back with stones off the Kenabres altars. I owe that. I don't know yet whether I owe it to you." {n}She finishes her drink.{/n}
-"Ask me again when I've paid the first coin of it back myself. Not before."''',
+    s_("no_stones", '''{n}She presses her hand over the list inside her tunic.{/n}
+"You read every line before you gave it back. The man on the last one had stones off the Kenabres altars. Now those stones have bought me back. I owe the people they were taken from. I don't know yet what I owe you."
+{n}She finishes her drink.{/n}
+"Ask me again when I've paid the first coin back myself. Not before."''',
       c('[Let her keep it] "Then I\'ll ask again, and I\'ll ask better."', flags=(DECLINED,))),
     s_("list_back", '''{n}She does not touch it at once. Then she unfolds it and reads it from the top, Acemi first, the way you would count the money in a purse somebody had just given back to you. At the last line she stops.{/n}
-"You never crossed it out." {n}She borrows the stub of pencil behind the tankards and writes a line under it, and does not cross that out either: "Kenabres stones. Stolen for me. Owed."{/n}
+"You never crossed it out." {n}She borrows the stub of pencil behind the tankards and writes a line under it, and does not cross that out either: "Kenabres stones. Used for me. Owed."{/n}
 {n}She folds it small and puts it inside her tunic, flat against her ribs.{/n} "All right. Now it's only you and me at this table. Now ask."''',
       c('[Kiss her] "Stay. Not as a sword. As you."', "threshold", requires=("seelah.started",), flags=("seelah.committed",)),
       c('[Let her choose] "You know where the coat is."', "chooses", flags=("seelah.committed",))),
@@ -444,7 +448,7 @@ tavern("seelah.trickster.dismissed.commit", "Not as a sword", '"Seelah. Stay a w
     s_("door", '''"Go and help people. Write." {n}She repeats it like an order she has decided to obey.{/n} "I will. Both. The letters will be badly spelled and full of complaints about turnips."''',
       c('"I\'ll read every one."')),
     s_("no", '''{n}She is quiet a long time.{/n}
-"You took my papers so I'd have to come back. And I came." {n}She taps the table, once.{/n} "That clerk laughed at me for a quarter of an hour. Every company I asked this week looked at my empty belt before they looked at my face. I'm not sitting here because I chose to, Commander. I'm sitting here because you made sure I couldn't sit anywhere else."
+"You took my papers so I'd have to come back. And I came." {n}She taps the table, once.{/n} "That clerk laughed at me for a quarter of an hour. Every company I asked looked at my empty belt before they looked at my face. I'm not sitting here because I chose to, Commander. I'm sitting here because you made sure I couldn't sit anywhere else."
 {n}She finishes her drink.{/n}
 "Ask me again after I've walked out that door once, on my own feet, and come back through it anyway."''',
       c('[Let her keep it] "Then I\'ll ask again, and I\'ll ask better."', flags=(DECLINED,))),
@@ -603,8 +607,8 @@ visit_twin("seelah.trickster.dead_no_unit.seller_word", "seelah.trickster.dead_n
 # --- Epilogue ------------------------------------------------------------------------------------------------------
 
 PICKPOCKET_PARAGRAPHS = (
-    p("{n}She kept the list in her purse for the rest of her life, tied in badly on purpose. The last line was never crossed "
-      "out. She showed it to exactly two people, and one of them was the Commander.{/n}", requires=(GIVEN_BACK,)),
+    p("{n}Seelah kept the list in her purse, tied in badly on purpose. Beneath the relic-seller's entry she kept her own "
+      "account of what she owed the Kenabres dead, and what she had paid back.{/n}", requires=(GIVEN_BACK,)),
     p("{n}The Commander never did give it back. Seelah never stopped trying to take it. Every year the attempts grew more "
       "elaborate, and every year, at the end, she apologised.{/n}", requires=(KEEPS,), forbids=(ROBBED,)),
     p("{n}The chapel never quite forgave the credit the Commander had asked of it, or the stolen stones it had ground. Seelah "
@@ -626,16 +630,16 @@ PICKPOCKET_PARAGRAPHS = (
     # Q10 r2 (appended; epilogue.papers slices this tuple from index 3): the caught lift's other two answers.
     p("{n}The relic-seller served two years in the Inheritor's cells. Seelah visited him once, with a list of every pilgrim he "
       "had sold a 'saint's tear' to, and made him help her find them all.{/n}", requires=(TAKEN,)),
-    p("{n}The relic-seller left Drezen a rich man on the crusade's gold. Seelah spent the next three winters tracking down "
-      "the pilgrims he had sold stones to, and buying back what she could, a coin at a time.{/n}", requires=(PAID,)),
+    p("{n}Crusade gold had bought the relic-seller's stones and his silence. He left Drezen a rich man. Seelah spent the next "
+      "three winters tracking down the pilgrims he had sold stones to, and buying back what she could, a coin at a time.{/n}", requires=(PAID,)),
 )
 
 PICKPOCKET_OPENERS = (
-    p("{n}She never quite forgave the night at her bier: every coin she had, her list read without asking, and a grave-robber "
-      "robbed in her name. She never said which of the three she minded most.{/n}", requires=(REVIVED,)),
-    p("{n}She never quite forgave the sack of her effects opened in Drezen while she lay under a sheet in a stranger's keeping: "
-      "every coin she had sent off by rider, her list read without asking, and a grave-robber robbed in her name. She never "
-      "said which of the three she minded most.{/n}", forbids=(REVIVED,)),
+    p("{n}Seelah remembered the night at her bier: her purse emptied, her list read without asking, and the Kenabres stones "
+      "brought to the chaplain's bowl. She gave thanks for her life. She still wanted an account of what had bought it.{/n}", requires=(REVIVED,)),
+    p("{n}Seelah remembered her effects opened in Drezen while her body lay in a field chaplain's keeping. Her savings went "
+      "by rider with stones off the Kenabres altars. Her list stayed in the Commander's coat. She gave thanks for her life, "
+      "then asked for the list.{/n}", forbids=(REVIVED,)),
 )
 
 SCENES.append(scene("seelah.trickster.epilogue.pickpocket", "Whatever was in the purse", "Epilogue", 5, "", [
@@ -649,8 +653,12 @@ SCENES.append(scene("seelah.trickster.epilogue.papers", "Her papers", "Epilogue"
     requires=(RETURNED, HERDED), forbids=(HOLDS,), last=99, Relationship="seelah"))
 
 SCENES.append(scene("seelah.trickster.epilogue.commit", "Now we're even", "Epilogue", 5, "", [
-    n("end", "Narrator", '''{n}After the war the Commander found a purse on the pillow one morning, tied badly on purpose, with a note inside in Seelah's hand: "Now we're even. Ask me properly."{/n}
-{n}The Commander did.{/n}''', portrait="Seelah")],
+    n("end", "Narrator", '''{n}On a visit after the war, Seelah left a purse on the Commander's pillow, tied badly, with a note inside: "Ask me properly. - S."{/n}
+{n}She was waiting at Fye's. The Commander asked. She caught their belt and pulled them close.{/n}
+"There. Took you long enough. Upstairs. I want you, and I've wasted enough of my leave staring across this table."
+{n}In the room above, she kicked off her boots and pulled her shirt over her head. Her mouth found the Commander's throat while her callused hands opened their shirt. A buckle caught between them; she swore, laughing, and freed it. Then she drew the Commander down onto the bed with her, bare skin pressed against theirs, one strong leg hooked over their hip.{/n}
+"Better. Now kiss me before somebody finds us a job."
+{n}By morning she was late for muster. She scrambled into her clothes, found a missing boot under the Commander's coat, and came back from the door for another kiss.{/n}''', portrait="Seelah")],
     requires=("trickster.ever", LATE_COMMITTED, ROMANCE),
     forbids=("seelah.committed", "seelah.closed", DECLINED, FRIENDS), last=99, Relationship="seelah"))
 
@@ -671,7 +679,7 @@ REACTIONS = [
              '''{n}Irabeth puts down her pen, which is how you know she means it.{/n}
 "You robbed a paladin's corpse, Commander. She got up. And she swore in my hearing, in the chapel, to rob you back for it."
 {n}She picks the pen up again.{/n}
-"A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. Seelah asked me why. I told her I didn't know. I'm asking you, and I can see you're not going to tell me. I'm going to pray about this. Then I'm going to buy her a drink and pray about that."''',
+"A relic-seller from under the chapel steps boarded up his stall and left by the east gate in a hurry. Seelah asked me why. I told her I didn't know. I'm asking you, and I can see you're not going to tell me. I'm going to pray about this. Then I'm going to buy her a drink and pray about that."''',
              answer_list=IRABETH_HUB, forbids=IRABETH_GONE + (TAKEN,), chapter=3, last=5, entry='"Seelah is back."',
              Chapters=[3, 5], ForbidOverrides=dict(IRABETH_BACK)),
     # Q10 r3: the list given back at her waking; no vow to rob the Commander back (appended sibling).
@@ -679,7 +687,7 @@ REACTIONS = [
              '''{n}Irabeth puts down her pen, which is how you know she means it.{/n}
 "You robbed a paladin's corpse, Commander. She got up. And she came to the chapel with a list in her hand and asked me to witness a new line on it, which she will not let me read."
 {n}She picks the pen up again.{/n}
-"A relic-seller from under the chapel steps boarded up his stall this week and left by the east gate in a hurry. I'm not going to ask. I'm going to pray about it, and then I'm going to buy her a drink."''',
+"A relic-seller from under the chapel steps boarded up his stall and left by the east gate in a hurry. I'm not going to ask. I'm going to pray about it, and then I'm going to buy her a drink."''',
              answer_list=IRABETH_HUB, forbids=IRABETH_GONE + (TAKEN,), chapter=3, last=5,
              entry='"Seelah is back, and she has her list."', Chapters=[3, 5], ForbidOverrides=dict(IRABETH_BACK)),
     # Q10 r2: the caught lift answered by an arrest; Irabeth has the seller in her cells (appended sibling).

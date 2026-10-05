@@ -118,6 +118,68 @@ internal static class SeelahTricksterTests
         check(Rules.Available(story, pick, poor) && owed.Count == 4 && owed.All(r => r.Has("seelah.trickster.cost.chaplains_word")),
             "Trk_Seelah_Dead_NoDiamond failed.");
 
+        // Reviewed polish 005–008/011–012: walk each acquisition, then read its
+        // one waking account. LESSON records either practice result, never a successful lift.
+        foreach (bool trained in new[] { false, true })
+        foreach (bool credit in new[] { false, true })
+        {
+            var source = World(story, 5, "trickster", "trickster.ever", "seelah_dead", "revive.seelah.available");
+            if (trained)
+            {
+                var taught = Program.Walk(lesson, party).First();
+                source.Flags.UnionWith(taught.Flags.Where(f => f == "seelah.trickster.lift_lesson" || f == "seelah.started"));
+            }
+            if (!credit) source.Flags.Add("seelah.diamond_held");
+            Rules.Complete(story, source);
+            var outcomes = Program.Walk(pick, source).Where(r => r.Has(Returned)).ToList();
+            check(outcomes.Count == 4, "Seelah acquisition matrix lost an outcome.");
+            foreach (var acquired in outcomes)
+            {
+                bool bought = acquired.Has("seelah.trickster.cost.seller_paid");
+                bool seized = acquired.Has("seelah.trickster.cost.seller_taken");
+                var awake = After(story, acquired, 1, "seelah_dead", "revive.seelah.available");
+                var first = wakes.Nodes[0].Choices.Where(c => Rules.ChoiceAvailable(c, awake)).ToList();
+                check(Rules.Available(story, wakes, awake) && first.Count == 1,
+                    "Seelah waking must have one payment account for each acquisition and second stone.");
+                check(first.Single().Text.Contains("Crusade gold") == bought
+                      && first.Single().Next == (credit ? (bought ? "coin_word_paid" : "coin_word") : "coin"),
+                    "Seelah waking confuses purchase, seizure or the second stone.");
+                var visited = new HashSet<string>();
+                var given = Program.Walk(wakes, awake, (page, _) => visited.Add(page))
+                    .Single(r => r.Has("seelah.trickster.death_returned"));
+                check(visited.Contains("coin_word_paid") == (bought && credit)
+                      && visited.Contains("coin_word") == (!bought && credit),
+                    "Seelah credit response claims a robbery on the paid road.");
+                check(acquired.CrusadeResources!["Finances"] == 10000 - (bought ? 500 : 0)
+                      && acquired.CrusadeResources["Favors"] == 10000 - (seized ? 50 : 0) - (credit ? 100 : 0)
+                      && !acquired.Has("seelah.diamond_held"),
+                    "Seelah acquisition or second stone was charged twice or lost its price.");
+                var end = S("seelah.trickster.epilogue.pickpocket").Nodes.Single();
+                var shown = Rules.VisibleParagraphs(end, given).ToList();
+                check(shown.Count(p => p.Text.Contains("Seelah remembered")) == 1
+                      && shown.Single(p => p.Text.Contains("Seelah remembered")).Text.Contains("night at her bier")
+                      && shown.Any(p => p.Text.Contains("Crusade gold had bought")) == bought
+                      && !shown.Any(p => p.Text.Contains("robbed in her name")),
+                    "Seelah's epilogue contradicts its acquisition history.");
+                // Node-level histories: the neutral refusal covers paid and unpaid roads.
+                // Keep the engine-generated abort at answer index 10; no early splice shifts it.
+                // The list here was given through the actual waking, not an invented training success.
+                foreach (string commitId in new[] { "seelah.trickster.dismissed.commit", "seelah.trickster.dismissed.commit_visit" })
+                {
+                    var refusal = S(commitId).Nodes.Single(n => n.Id == "answer").Choices
+                        .Where(c => c.Next == "no_stones" || c.Next == "no_stones_paid")
+                        .Where(c => Rules.ChoiceAvailable(c, given)).ToList();
+                    check(refusal.Count == 1 && refusal.Single().Next == "no_stones",
+                        "Seelah repayment refusal uses the wrong seller history, including its visit twin.");
+                    var page = S(commitId).Nodes.Single(n => n.Id == refusal.Single().Next);
+                    check(page.Choices.Single().Set.SequenceEqual(new[] { "seelah.trickster.declined" })
+                          && !page.Text.Contains("robbed a grave-robber")
+                          && !page.Text.Contains("trick I taught"),
+                        "Seelah repayment refusal invents successful training or changes her no.");
+                }
+            }
+        }
+
         // Trk_Seelah_Wakes: her price for getting up.
         var woke = Program.Walk(wakes, standing);
         check(woke.Any(r => r.Has("seelah.trickster.death_returned")) && woke.Any(r => r.Has("seelah.trickster.cost.keeps_it"))
@@ -178,8 +240,8 @@ internal static class SeelahTricksterTests
         string EndText(Snapshot w) => string.Join("\n", Rules.VisibleParagraphs(pocketEnd, w).Select(p => p.Text));
         var bierEnd = EndText(raised[0]);
         var riderEnd = EndText(inTown);
-        check(bierEnd.Contains("night at her bier") && !bierEnd.Contains("sack of her effects")
-              && riderEnd.Contains("sack of her effects") && !riderEnd.Contains("night at her bier"),
+        check(bierEnd.Contains("night at her bier") && !bierEnd.Contains("effects opened in Drezen")
+              && riderEnd.Contains("effects opened in Drezen") && !riderEnd.Contains("night at her bier"),
             "The pickpocket epilogue merges the bier and the rider histories.");
 
         // Trk_Seelah_Dismissed: the papers, primed at the dismissal, come back in person.
