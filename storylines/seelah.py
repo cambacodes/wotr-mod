@@ -159,7 +159,7 @@ EVENING = [
 "Better than the buttons."
 {n}You laugh, and she kisses you again before you can think of a reply.{/n}''',
       c('[Stay with her a little longer.]', flags=("seelah.courting",))),
-    n("worry", "Seelah", '''"So am I."
+    n("worry", "Seelah", '''"I've been thinking about tomorrow too."
 {n}She picks a loose thread from the blanket, then catches herself and leaves it alone.{/n}
 "Well, I can't promise I'll suddenly grow wise and sweet-tempered. You've heard me argue. I'd be caught lying before we finished supper."
 {n}She looks back at you.{/n}

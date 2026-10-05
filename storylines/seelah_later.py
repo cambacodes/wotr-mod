@@ -73,7 +73,7 @@ s("door", "The latch on the inside", 3, '"Could we have an evening somewhere wit
 "If I knock that lamp over, we're blaming the bedpost," {n}she says.{/n}
 {n}She is not clumsy. She unbuckles her sword belt and hangs it on the bedpost as if it has earned a rest, then pulls her shirt over her head in one impatient motion and stands there in the lamplight, freckled to the waist, grinning at your face.{/n}
 "I've been thinking about that look all day," {n}she says.{/n} "Now you. Hurry up. I'm a paladin, not a saint."
-{n}She helps, which is to say she undoes your laces faster than you do and kisses every part of you that comes free of them. The bed is too narrow for two and she does not care. She pushes you down onto it, climbs over you, knees either side of your hips, and takes your face in both hands to kiss you, slow now, as she settles her weight down onto you.{/n}
+{n}She helps, which is to say she has your shirt open before you finish the first lace, and kisses your throat, then your mouth, impatient with the cloth between you. The bed is too narrow for two and she does not care. She pushes you down onto it, climbs over you, knees either side of your hips, and takes your face in both hands to kiss you, slow now, as she settles her weight down onto you.{/n}
 {n}The lamp survives. Neither of you remembers to put it out until much later.{/n}
 {n}When the room is quiet, Seelah finds your hand beneath the blanket and holds it as she falls asleep, still smiling, one foot hooked over yours as if you might try to leave.{/n}''', c('[Stay through the night.]', flags=("seelah.lovers", "seelah.private_night", "seelah.kissed"))),
     n("quiet", "Seelah", '''"Then we'll have a quiet evening. I can manage one of those."
@@ -108,9 +108,9 @@ s("morning", "Four loaves and a bad bargain", 3, '"What have you bought this tim
 "I will ask the storekeeper. I won't just arrive with her blankets and an expression of heroic determination."''',
       c('"Good thing you heard her out. You would have marched off with the wrong job."', "honest"),
       c('"We should find someone who actually wants three loaves."', "bread")),
-    n("honest", "Seelah", '''"So am I."
-{n}She adjusts the bag, thoughtful now.{/n}
-"An empty belly is bad enough. Then somebody with a full one comes along and tells you what you ought to want. I should know better."''', c('"You heard her. Now go and get her that dry corner."', "end")),
+    n("honest", "Seelah", '''"Yes. Straight past her, carrying enough bread for a siege."
+{n}She shifts the bag onto her other arm.{/n}
+"I've been hungry enough to steal it. I should have let her finish before I started buying the whole stall. Three loaves left, and she still needs that dry corner."''', c('"You heard her. Now go and get her that dry corner."', "end")),
     n("bread", "Seelah", '''"The guards will. They have never refused anything that could be eaten while standing up."
 {n}She grins at you over the bag.{/n}
 "Don't tell them how much I paid. I have a reputation for knowing what I'm doing. In a few places."''', c('[Help her find a use for the bread.]', "end")),

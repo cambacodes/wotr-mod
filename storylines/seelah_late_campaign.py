@@ -61,9 +61,8 @@ s("late_course", "The turn she means to take", '"You have chalk on your sleeve. 
       c('"Split the teaching with Istra. She can carry on when you are away."', "shared", flags=("seelah.late_shared_lessons",))),
     n("fixed", "Seelah", '''"One lesson, same hour. Otherwise I'll be hauling shields around Drezen every time somebody shouts my name."
 {n}She counts off the days on her chalk-stained fingers.{/n}
-"I'll ask Istra when the women can come, and give her the days I'm here. Fewer runs before the race. Still a few."
-"Will that bother you?"
-"Of course! I want to teach them and beat Tavia. Iomedae gave me two legs, and somehow that still isn't enough."
+"I'll ask Istra when the women can come, and give her the days I'm here. Fewer runs before the race. Still a few.
+Of course I'll grumble! I want to teach them and beat Tavia. Iomedae gave me two legs, and somehow that still isn't enough."
 {n}She rubs a streak of chalk off her thumb.{/n}
 "Early, if they can come then. Get the lesson done before I start craning over the shields to see what Tavia's up to."
 {n}She points the chalk at you.{/n}
@@ -72,9 +71,8 @@ s("late_course", "The turn she means to take", '"You have chalk on your sleeve. 
 {n}She opens her mouth, shuts it, and laughs.{/n}
 "Which she should! It's her hand. She's the one who knows how to fight with it."
 {n}Seelah turns the chalk lengthwise and breaks it in two. She keeps both pieces.{/n}
-"I'll ask which parts she wants. I'll show the work that takes two strong hands. She can show them how to do it without growing another Seelah."
-"And when you disagree?"
-"We'll try it without hitting anybody first. I'm prepared to make that concession."
+"I'll ask which parts she wants. I'll show the work that takes two strong hands. She can show them how to do it without growing another Seelah.
+If we disagree, we'll try it without hitting anybody first. I'm prepared to make that concession."
 {n}She glances back toward the yard.{/n}
 "And then I am coming straight back here. Before somebody moves the barrels and I have to learn it all again."''', c('"Send for me when you teach. I want to watch."', "end")),
     n("end", "Seelah", '''{n}At the next corner she stops and catches your hand.{/n}
@@ -165,15 +163,13 @@ s("late_page", "A page she keeps", '"You said you had something to show me."', [
       c('[Ask what she will do while the rescue is unfinished.]', "unfinished", forbids=("seelah.souls_returned",))),
     n("grief", "Seelah", '''"I'm still angry. The next poor fool who bumps into me hasn't earned a tongue-lashing for it. I can remember that for an afternoon. Years? Ask me after supper."
 {n}She smooths the corner of the page.{/n}
-"We got the souls back. That was worth doing. Some mornings I wake up and all I can count is what we didn't fix. When the fighting lets me, I'll take a road on my own for a while. See what I do without somebody looking to me for the answer."
-"Would you write?"
-"Yes. Even if all I've found is rain. Three pages of it, perhaps. Curse me for wasting paper, then turn the page. There'll be more."
+"We got the souls back. That was worth doing. Some mornings I wake up and all I can count is what we didn't fix. When the fighting lets me, I'll take a road on my own for a while. See what I do without somebody looking to me for the answer.
+I'll write. Even if all I've found is rain. Three pages of it, perhaps. Curse me for wasting paper, then turn the page. There'll be more."
 {n}She writes 'Letters, even in the rain' and leaves the next line empty.{/n}''', c('[Look at the blank line beneath her plans.]', "elan_gate")),
     n("questions", "Seelah", '''"I'll find people who've wrestled with the same questions. Hear what they did. If I only seek out people who'll clap me on the back and say I was right, I might as well stay here and talk to my boots."
 {n}She taps the line about going somewhere.{/n}
-"I may take that road without you. I'd miss you. But put you beside me, and I'll be pointing out the way before I've worked out where I'm going."
-"You think I expect you to know?"
-"You, everybody. Somebody asks, and out comes the answer. Even when I haven't got one. I want to catch myself doing that."
+"I may take that road without you. I'd miss you. But put you beside me, and I'll be pointing out the way before I've worked out where I'm going.
+Somebody asks, and out comes my answer. Even when I haven't got one! I ought to shut up long enough to hear theirs."
 {n}She writes a short sentence, then shows it to you: 'Ask before explaining.'{/n}
 "Starting here. I can't blame my boots for everything."
 {n}She leaves a space beneath it for an address she does not yet have.{/n}''', c('[Keep her company while she turns the page.]', "elan_gate")),
@@ -185,9 +181,8 @@ s("late_page", "A page she keeps", '"You said you had something to show me."', [
 {n}She writes 'Ask where they want to go' beneath the drawing, then underlines 'ask' once.{/n}''', c('[Wait while she writes down the question.]', "elan_gate")),
     n("unfinished", "Seelah", '''"I can't write 'all's well.' It isn't. But if we sit here staring at empty paper, we'll wear a hole in this bench before anything changes."
 {n}She rests the pen across the booklet.{/n}
-"The rescue isn't finished. I'm not forgetting that because I had a good afternoon. I'm also not going to beat myself with it every time I laugh. That won't bring anyone back."
-"What goes on the page?"
-"The next thing I can try. We haven't made the rescue yet. And walking down a road won't make everything right, either."
+"The rescue isn't finished. I'm not forgetting that because I had a good afternoon. I'm also not going to beat myself with it every time I laugh. That won't bring anyone back.
+I'll put down the next thing I can try. The rescue first. I won't forget it just because I've packed my boots."
 {n}She writes 'Find another way,' then, on a separate line, 'Keep the lesson.'{/n}
 "Both. Strange neighbors on a page. They'll have to get along."
 {n}She runs the pen beneath both lines and turns the page.{/n}''', c('[Ask what she wants to put on the next page.]', "own")),
@@ -277,9 +272,8 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
 {n}She takes your hand and bows toward the spectators with exaggerated dignity. Tavia begins considering songs.{/n}''', c('[Face the losing song together.]', "lost", flags=("seelah.late_race_lost", "seelah.late_race_stumbled"))),
     n("wide", "Narrator", '''{n}You take the wider line without losing your footing. Breva makes the shorter turn and reaches the peg first. Your hoop lands after hers, upright and entirely too late.{/n}
 {n}Seelah meets you beyond the course. She looks at the two hoops, then back at you.{/n}
-"I had a whole speech ready. It was going to be unbearable."
-"You could give it anyway."
-"No. Tavia would enjoy stopping me too much."
+"I had a whole speech ready. It was going to be unbearable.
+I'd give it anyway, but Tavia would enjoy stopping me too much."
 {n}She takes your hand and raises it briefly toward the spectators before bowing with exaggerated dignity. The applause makes her laugh.{/n}
 {n}"Finishing without breaking my barrels counts for something," the cooper calls from the shed.{/n}
 "There. We have won a very particular kind of admiration."
@@ -314,9 +308,9 @@ s("late_race", "A song worth losing", '"Is this the afternoon you become intoler
 
 
 s("late_afterglow", "The verse she remembers", '"You were going to ask me for an evening."', [
-    n("start", "Seelah", '''"I was. Somewhere with a door, and no audience to correct the words. I've had that blasted tune from the race in my head all week."
+    n("start", "Seelah", '''"I was. Somewhere with a door, and no audience to correct the words. I've had that blasted tune in my head ever since the race."
 {n}She has hired the little room above the cooper's shed until morning. The cooper took her coin and made one condition: no practising turns on his floorboards. There is a bed built for one and a half, a basin, and a chair whose missing rung has been replaced with a darker piece of wood.{/n}
-{n}Seelah puts a jug of water on the table. The shirt she wore at the race hangs over the chair, a pulled thread trailing from the sleeve where the cord caught it. She brought it to mend, she says, and has not the slightest intention of mending it tonight.{/n}
+{n}Seelah puts a jug of water on the table. The shirt she wore at the race hangs over the chair, a loose thread trailing from the sleeve. She brought it to mend, she says, and has not the slightest intention of mending it tonight.{/n}
 "I'm going to kiss you. Been thinking about it all the way up the stairs. Nearly missed a step."''',
       c('[Come in and close the door.]', "race"),
       c('"I cannot stay tonight. Ask me again."', abort=True)),
@@ -361,14 +355,14 @@ s("late_afterglow", "The verse she remembers", '"You were going to ask me for an
 "I want another morning like this one. Soon. Find us a night when nothing's on fire, Commander, or I'll pick one myself and you'll hear about it from the guard."''', c('[Leave the room together.]', "plans")),
     n("kisses", "Narrator", '''{n}She meets your kiss with a pleased sound and gives it back with interest. You draw apart, her fingers still tangled in your collar. She looks from your mouth to the bed and groans at the ceiling.{/n}
 "Kisses, then. Lots of them. Come here."
-{n}You sit together on the edge of the bed because the chair would never hold two. Seelah makes one attempt at humming the afternoon's tune, gives it up when you touch her cheek, and kisses you again.{/n}
+{n}You sit together on the edge of the bed because the chair would never hold two. Seelah makes one attempt at humming the race's tune, gives it up when you touch her cheek, and kisses you again.{/n}
 {n}The evening goes in drinks of water, half-remembered jokes and her fingers in your hair whenever she runs out of things to say, which happens more often than she would like you to notice.{/n}
 {n}Before it is time to go she rests her forehead against yours.{/n}
 "I'm asking you to stay next time. Already planning it. Paladin's word."''', c('[Hold her close before leaving.]', "plans", flags=("seelah.kissed",))),
     n("quiet", "Seelah", '''"All right. Come here."
 {n}She sits on the bed and shoves a folded blanket out of the way. When you sit beside her she takes your hand, as though she had won it at cards, and keeps it.{/n}
 "I won't sing unless asked. That is the most valuable thing I have offered anyone today."
-{n}You talk about the afternoon: Tavia repeating the rules over everyone's helpful objections, the cooper counting his barrels afterward, Istra's unconcealed delight whenever Seelah was contradicted. Seelah admits that she has already thought of a different way to take the third turn.{/n}
+{n}You talk about the race: Tavia repeating the rules over everyone's helpful objections, the cooper counting his barrels afterward, Istra's unconcealed delight whenever Seelah was contradicted. Seelah admits that she has already thought of a different way to take the third turn.{/n}
 "You see what you have encouraged. There will be diagrams."
 {n}She draws one on her palm with a fingertip, then discovers that the most important barrel has ended up on the side of her thumb. The explanation collapses into laughter.{/n}
 {n}When you rise to leave, she holds your hand a moment longer before letting it go.{/n}
