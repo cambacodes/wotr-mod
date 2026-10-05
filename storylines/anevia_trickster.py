@@ -113,7 +113,7 @@ letter("anevia.trickster.gone.setup", "Don't", [
       c('[Knock on the back of the wardrobe]', "crate", requires=("anevia.socoth_absent",), forbids=("closets.door_kept",)),
       c('[Fold the note away] "Not yet."', abort=True)),
     n("socoth", "Socothbenoth", '''{n}You knock. Among the hangers, something laughs, and the laugh smells of attar of roses.{/n}
-"A spymaster's bedroom, three days' ride south, and she has told you in writing not to come? Oh, darling, you've brought me a present. Do you know how rarely anyone knocks? People simply barge through my closets as if they were corridors."
+"A spymaster's bedroom in Kenabres, and she has told you in writing not to come? Oh, darling, you've brought me a present. Do you know how rarely anyone knocks? People simply barge through my closets as if they were corridors."
 {n}The voice comes from the dark at the back of the wardrobe, where there ought to be nothing but cedar.{/n}
 "My price is small. My side of the door stays open. Whatever is said in that room, I hear it: every sigh, every quarrel, every creak of the bed, if you're lucky. I'm not ashamed of wanting it, and you shouldn't be ashamed of paying it."''',
       c('[Pay it] "Done. Open the door."', "paid", mythic="Trickster", alignment=("Chaotic", 1), forbids=OUTLIVED,
@@ -198,7 +198,7 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
       c('[Sit until the candle\'s done] "Till the candle\'s done, then."', "named", forbids=(LISTEN,),
         flags=(RETURNED, "anevia.started", NAILED)),
       c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,))),
-    a("killer", '''{n}She knows. Of course she knows: she is a spy, and the report from Iz reached Kenabres before you did.{/n}
+    a("killer", '''{n}The report from Iz reached Kenabres before you did.{/n}
 "You put your sword through my wife."
 {n}The knife doesn't shake. Her voice does, once, and then it doesn't.{/n}
 "And now you climb outta my wardrobe like it's a joke. Sit down. Not 'cause I forgive you. 'Cause I want to look at you while I decide what you are."''',
@@ -215,7 +215,7 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
       c('[Sit, and hope the coats keep quiet] "...Nobody else is here."', "thrown_out", requires=(LISTEN,))),
     a("named", '''{n}The candle burns down. She talks for most of it, about nothing: the price of a room in Kenabres, a dog in the street that barks at priests, how bad the ale has got. She never once puts the knife down.{/n}
 {n}When the wick starts to gutter, she stands.{/n}
-"Not here. Not anywhere with furniture. The Drezen gate, outside the walls, change of the watch, two nights from now. I'm not comin' in. You come out."''',
+"Not here. Not anywhere with furniture. The Drezen gate, outside the walls. Give me two nights on the road. Ask the watch for my message when you get back. I'm not comin' in. You come out."''',
       c("Continue", "nail", forbids=(CRATED,)), c("Continue", "nail_crate", requires=(CRATED,))),
     a("thrown_out", '''{n}Anevia stops in the middle of a sentence and looks at the coats.{/n}
 "Someone's breathin' in there. Not you."
@@ -226,9 +226,9 @@ letter("anevia.trickster.gone.wardrobe", "A live drop", [
       c('[Go back into the wardrobe before the knife moves] "Going."', "nail",
         flags=(RETURNED, "anevia.started", NAILED, THROWN))),
     nar("nail", '''{n}When you step back into the wardrobe, you hear the first nail go in before the door has quite closed.{/n}''',
-      c('"Two nights."')),
+      c('"At the gate, then."')),
     nar("nail_crate", '''{n}You climb back into the crate. The first nail goes into the lid before you have finished folding your knees. Somewhere above, a voice you know tells a carter, very sweetly, that this one is going back north and that he is to hit every pothole on the road.{/n}''',
-      c('"Two nights."')),
+      c('"At the gate, then."')),
     # Both left at the Coronation (Cue_0310): Beth is alive, broken by the Commander's betrayal, and on the road with her.
     a("beth_left", '''"Keep your voice down. Beth's asleep through that wall. First time in three nights she's slept without the sword in her hand."
 {n}She does not look at the wall. She looks at you, the way she looks at a man she has already decided to report.{/n}
@@ -260,7 +260,7 @@ letter("anevia.trickster.gone.fetched", "Two letters and a bootlace", [
 {n}The ink is heavier on the next line.{/n}
 "I'm grateful. Gods, I'm grateful. I'm also never lettin' you give me an order. Not one. Not even 'pass the salt'."''',
       c("Continue", "close")),
-    a("close", '''"I'll be at the Drezen gate when we get in. Outside it. I'm not sure yet I'll go any further."''',
+    a("close", '''"We're outside Drezen. Beth's got her sword out again; she says she's inspectin' the gate. She's missed it, the stubborn cow. I'll leave word with the watch. Come out when they tell you. I'm not sure yet I'll go any further."''',
       c('[Write back: stay at the edge of it] "I\'ll wait outside."', flags=(RETURNED, "anevia.started", BARGAIN)),
       c('[Write back: tell her it was a joke] "It was a joke, Anevia. The world laughed."',
         flags=(RETURNED, "anevia.started", BARGAIN, JOKE_TOLD))),
@@ -319,14 +319,14 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
     a("beth_widow", BETH_WIDOW, *GATE_CHOICES),
     a("beth_back", BETH_BACK, c("Continue", "beth_terms")),
     a("beth_terms", '''{n}She watches the gate a while longer. When she speaks again it is in her report voice, flat and exact, the one she uses for things she has already decided.{/n}
-"And she looks at you. Don't pretend she doesn't; I've been lookin' at her look at people for eleven years. So here's my terms for that, too, same as mine. If Beth wants you, she asks me first. To my face. Not you askin' for her, not an order, not some trick. Her."
+"And she looks at you. Don't pretend she doesn't; I know that look of hers. So here's my terms for that, too, same as mine. If Beth wants you, she asks me first. To my face. Not you askin' for her, not an order, not some trick. Her."
 {n}She kicks the mud line once.{/n}
 "And when she asks, I'll say yes. I'd rather share than bury. I've tried burying. I'm no good at it."''',
       c('[Take her hand and wait] "Tell me about her. I\'m listening."', "told", flags=(GATE, "anevia.trickster.hand_taken", SHARES)),
       c('[Stay on your side of the line] "Your road. Your call."', "line", flags=(GATE, FRIENDS, SHARES))),
     a("told", '''{n}So she tells you. Not the war: the small things. That Beth snores like a siege engine and denies it under oath. That she folds her socks in pairs and then, for no reason anyone has discovered, in threes. That she sang at their wedding, badly and on purpose, so Anevia would stop crying and laugh.{/n}
 {n}She never once says "did". Her hand stays in yours the whole time. She doesn't seem to notice.{/n}''',
-      c('"Same time next week?"')),
+      c('"I\'ll come back. Same gate?"')),
     a("line", '''{n}She nods once, the way she nods at a report that says what she expected.{/n}
 "Good. Keep it that way till I say otherwise."''',
       c('"Understood."')),
@@ -338,7 +338,7 @@ physical("anevia.trickster.gone.gate", "The line in the mud", '"You said the gat
       c('[Stay on your side of the line] "Your road. Your call."', "line", flags=(GATE, FRIENDS))),
     a("told_left", '''{n}So she tells you. Not the war: the small things. That Beth snores like a siege engine and denies it under oath. That she still folds her socks in pairs and then in threes, every night, even in a room she will leave at dawn. That last night she woke shouting a knight's name, and then apologised to the wall.{/n}
 {n}Her hand stays in yours the whole time. She doesn't seem to notice. When she does, she doesn't let go.{/n}''',
-      c('"Same time next week?"')),
+      c('"I\'ll come back. Same gate?"')),
 ], requires=("trickster.ever", RETURNED), forbids=(GATE,), delay=48)
 
 TERMS_TEXT = '''"Here's how it goes. I don't come inside. You come out. No closets, no wardrobes, no demons breathin' in the coats. You knock on a real door, like a person."
@@ -434,7 +434,7 @@ physical("anevia.trickster.gone.commit", "A real door", '"Same gate. Same line."
 "She'll want a turn yellin' at you for this. Let her. She's earned it, and so have you."''',
       c('"I\'ll knock."')),
     a("no", '''"Then we're done for tonight. I'm not sayin' never. I'm sayin' not like this. Come back when you can knock."
-{n}She picks up the lantern and walks back down the road without looking round. Spies never do.{/n}''',
+{n}She picks up the lantern and walks back down the road without looking round.{/n}''',
       c('[Let her walk back to the road] "Then I\'ll learn to knock."', flags=(DECLINED,))),
     a("left", '''"Beth asked me where I go at night. I told her the truth: the gate. She didn't say a word. She cleaned her sword instead, all of it, twice."
 {n}She breathes out, and it smokes in the cold.{/n}
@@ -469,7 +469,7 @@ Don't make me wait too long. I'm a spy, not a saint."''',
    forbids=("anevia.committed", DECLINED, "anevia.trickster.gone.gate", "anevia.trickster.gone.commit"), delay=96)
 
 physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
-    a("start", '''{n}She is at the gate again, four nights later, as if she never left it.{/n}
+    a("start", '''{n}You knock on the guardhouse door. A sentry points you round the corner. Anevia waits there with her lantern, on the road side of the line.{/n}
 "You knocked. On the guardhouse door, like an idiot, in front of half the watch. All right. I heard you."''',
       c("Continue", "price", forbids=(KILLED,)),
       c("Continue", "price", requires=(KILLED, I_RET)),
@@ -504,11 +504,14 @@ physical("anevia.trickster.gone.second_ask", "Something true", '"I knocked."', [
     a("key", '''{n}You tell her. She listens the way she listens to a confession she means to keep: no expression at all, then one slow nod, as if a lock had turned somewhere behind her eyes. She closes the empty hand and puts it in her pocket.{/n}
 "Probably never use it."''',
       c("Continue", "night")),
-    a("night", '''{n}That night there is a knock at your door: three knocks, like a person. You have not reached the latch when it lifts on its own. Spies do not wait for locks.{/n}
+    a("night", '''{n}That night there is a knock at your door: three knocks, like a person.{/n}
+"Changed my mind about comin' in. Didn't change it about knockin'."
+{n}You have not reached the latch when it lifts on its own.{/n}
 {n}She is across the room before you are out of the chair, and she does not bother with the lantern. Her hands are cold from the road and then they are not. She has your shirt half over your head when she laughs, low, into your mouth, and says "Probably" as if it were the filthiest word she knows, and pushes you back onto the bed and follows you down.{/n}''',
       c("Continue", "dawn")),
-    a("dawn", '''{n}Grey light, and her side of the bed is cold. On the table, where anyone could read it, she has chalked one word into the wood: the thing you told her.{/n}
-{n}By noon it has been wiped away. You never see her do it.{/n}''',
+    a("dawn", '''{n}Grey light, and her side of the bed is cold. Your shirt lies over the chair. Under your cup is a folded scrap in her plain hand.{/n}
+"Probably."
+{n}Nothing else. Not a word of what you told her. You tuck the scrap away before the first runner knocks.{/n}''',
       c('"Probably."')),
 ], requires=("trickster.ever", RETURNED, DECLINED), forbids=("anevia.committed",), delay=96)
 

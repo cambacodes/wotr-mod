@@ -183,10 +183,10 @@ s("a_question_at_home", "The question before the answer", [
 "Then somebody buys a bigger table. Not tonight."
 {n}She wraps both hands around the mug.{/n}
 "I'm glad she's got you. Doesn't stop me bein' greedy."''', c('"I am answering you, Anevia. Not her."', "time")),
-    n("separate", "Anevia", '''"Then tell her exactly that. Beth'll hear 'he wants all of us' in a weather report if she's nervous enough."
+    n("separate", "Anevia", '''"Then tell her exactly that. Beth'll hear 'the Commander wants both of us' in a weather report if she's nervous enough."
 {n}Anevia leans back, considering you.{/n}
 "I'd like you two in one room arguin' about somethin' stupid. The way I carry a basket. My bread. Somethin' like that."
-"You would take her side."
+{n}You point out that she would take Beth's side.{/n}
 "Depends if she's right. And whether you just dropped the basket."
 {n}She grins, then lets it go.{/n}
 "And if you two ever gang up on me about the bread, I'm leavin' the pair of you for the baker."''', c('"And what do you get out of it?"', "time")),
@@ -482,11 +482,11 @@ s("her_own_answer", "The invitation she kept", [
       c('"Yes. I would like that."', "kiss"),
       c('"Come sit close. I would like to begin there."', "near"),
       c('"I can\'t give you what we\'ve been talking about."', "stop")),
-    n("kiss", "Narrator", '''{n}She kisses you like she has been planning it for a month, which she has. Her hand settles at the side of your neck. When you lean into it she makes a small pleased sound in her throat and does not let go until you are both grinning against each other's mouths.{/n}
+    n("kiss", "Narrator", '''{n}She kisses you hard enough to stop the next question. Her hand settles at the side of your neck. When you lean into it she makes a pleased sound in her throat and holds on until you are both grinning against each other's mouths.{/n}
 "There goes the rest of my eloquence."
 {n}You tell her she can try again later. She kisses you once more before she agrees. When she draws back she stays with her forehead near yours, close enough that none of her usual quick deflections would have anywhere to go.{/n}
 "Wanted that."
-"I noticed."
+{n}Your grin widens.{/n}
 "Good. Wasn't bein' subtle."
 {n}She drops onto the bench beside you, knee against yours. The wind shoves at the window until the cloth catches it. Anevia glances at it and, for once, does not get up to fix anything.{/n}''', c('[Stay close and ask what she would like from this evening.]', "evening", flags=("anevia.first_evening_kissed",))),
     n("near", "Anevia", '''"Right there, then. I can do that without makin' a speech."
@@ -601,14 +601,14 @@ s("an_invitation_afterward", "The question she asked separately", [
 
 
 s("borrowed_signature", "A name used without asking", [
-    n("start", "Anevia", '''{n}Anevia is waiting with a woman you have not met. The stranger has a red wool scarf wrapped twice around her neck, though the day is warm. She holds a folded paper by its edges, avoiding the ink.{/n}
-"This is Ressa," {n}Anevia says.{/n} "She repairs harnesses. Somebody has decided that makes her a useful source of names."
-{n}Ressa hands you the paper. It requests the names and addresses of people renting rooms near a damaged warehouse, together with a payment for an inspection. At the bottom is a mark intended to look official.{/n}
-"It isn't ours," {n}Anevia says.{/n} "Not quite. Somebody remembered the shape and got ambitious with the rest."
-{n}Ressa keeps watching your hands.{/n}
-"My neighbor paid. Then they asked which of the other women lived alone. That was when I stopped believing it was about the roof."
-{n}Anevia offers her a chair. Ressa refuses it, then changes her mind before anybody comments.{/n}
-"I didn't come here to be the woman who accused half the street. I came because I don't know where the names go."''',
+    n("start", "Anevia", '''{n}Anevia waits with a woman wearing a red wool scarf despite the heat. The stranger holds a folded notice clear of its ink.{/n}
+"Ressa. Repairs harnesses. Somebody's been usin' our mark to ask who lives on her street."
+{n}The notice demands an inspection fee, names and addresses. Ressa points below the false seal.{/n}
+"My neighbor paid," {n}Ressa says.{/n} "Then they asked which women lived alone. What does that have to do with a roof?"
+{n}Anevia sets a chair beside her. Ressa sits after a moment.{/n}
+"In Drezen? Could mean thieves. Could mean somebody lookin' for a door with nobody behind it who'll raise the alarm. That's why you brought it to me."
+"I don't know where the names go," {n}Ressa says.{/n}
+"Then we find out. Keep that paper."''',
       c('"You\'ve brought one name and one paper. We chase that, not the whole street."', "paper"),
       c('"Who delivered the paper?"', "courier"),
       c('"Let her come back when she\'s ready."', abort=True)),
@@ -619,16 +619,15 @@ s("borrowed_signature", "A name used without asking", [
 "Cale. Perhaps. I didn't write it down."
 "Then 'Cale, perhaps' goes down in pencil. What'd she ask next?"
 {n}Ressa describes the questions in their order. Anevia lets her talk and keeps her own mouth shut, which visibly costs her. When Ressa contradicts herself about the day, Anevia asks what else happened that morning. The answer fixes the delivery after a broken cart had blocked the street. Ressa was not sure before. She is now.{/n}''', c('[Examine the actual paper.]', "paper")),
-    n("paper", "Anevia", '''"We could send a crier round shoutin' that the inspection's fake. Stops some payments. Also tells whoever's behind it we're sniffin'."
-{n}Anevia smooths the paper flat on the table.{/n}
-"Or we find where the replies go first. There'll be another collection. Nobody asks for addresses if they mean to vanish after one handful of coin."
-"My neighbor gave them her sister's name," {n}Ressa says.{/n} "She thought it'd get her roof seen to."
-{n}Anevia's face changes.{/n}
-"Then the warnin' goes out today. Clever can wait. I ain't leavin' women in the dark so I can have a neater trap."
-{n}She asks Ressa who on the street can carry a plain warning and keep her mouth shut about where it came from. Ressa thinks, then nods.{/n}
-"Dema. Collects washin'. Everybody talks to her while they're handin' over things they don't want the neighbors seein'."
-"Would she help?"
-"Ask her. She hates bein' volunteered."''',
+    n("paper", "Anevia", '''"We warn the street, the bastard collectin' these knows we're sniffin'. We wait, they get another sack of names."
+{n}Anevia smooths the notice flat.{/n}
+"My neighbor gave them her sister's," {n}Ressa says.{/n} "Thought it'd get the roof seen to."
+"Bloody hell," {n}Anevia says.{/n} "Warnin' goes out today. I'll find another way to catch 'em. Who can pass it round without givin' your name?"
+"Dema," {n}Ressa says.{/n} "Collects washing. Everybody talks while they're handing over things they don't want the neighbors seeing."
+"She'll help?" {n}Anevia asks.{/n}
+"Ask her," {n}Ressa says.{/n} "She hates being volunteered."
+{n}Anevia takes out a clean sheet.{/n}
+"Good. Then we ask."''',
       c('"We will ask. Start with the warning and keep Ressa\'s name out of it."', "warning", flags=("anevia.source_protected",)),
       c('"Post the warning under my seal. Nobody needs to know who brought it."', "notice", flags=("anevia.public_warning",))),
     n("warning", "Anevia", '''"Good. Tell Dema straight what it's for. You lie worse than she does, and it'd show."
@@ -696,11 +695,11 @@ s("the_paper_seller", "What the impression leaves out", [
       c('[Perception DC 24] Read the shallow impression, and only what is really there.', check=dict(Skill="SkillPerception", DC=24, Success="read", Failure="blurred", CommanderOnly=True)),
       c('[Help Tovra sort the used sheets and mind her shop while she searches.]', "sorted"),
       c('[Keep the uncertain paper and ask Dema about the practical details.]', "uncertain")),
-    n("read", "Narrator", '''{n}You turn the sheet until the curve resolves into the lower loop of a written figure. The first apparent letter is a crease. Beneath it, the words "blue cistern, second bell" cross the impression of a narrow receipt line.{/n}
-{n}Anevia repeats the words exactly, without adding a name to them. Tovra asks to look. She recognizes the ruled line as one used in packets sold to the dye yard near an old cistern.{/n}
-"Not proof she works there," {n}Tovra says.{/n} "People can write directions to a place they don't own."
-"Useful distinction," {n}Anevia replies.{/n} "We'll keep it."
-{n}You have a meeting place and an approximate time. It does not say who will be there, and half the district has blue dye under its nails.{/n}''',
+    n("read", "Narrator", '''{n}You turn the sheet against the light. The apparent letter is a crease. Beneath it you can read: "blue cistern, second bell." A ruled receipt line crosses the words.{/n}
+{n}Tovra recognizes the ruling from paper sold to the dye yard by the old cistern.{/n}
+"Doesn't mean she owns the place," {n}Tovra says.{/n}
+"Didn't ask who owned it," {n}Anevia says.{/n} "Asked where she goes. Now we've got a place and a bell."
+{n}She copies the words exactly. There is no buyer's name on the sheet.{/n}''',
       c('[Record the actual place and time.]', "cost", flags=("anevia.trace_read", "anevia.trace_cistern"))),
     n("blurred", "Narrator", '''{n}The angle changes the mark, but does not make it reliable. You think you can see a name until a slight movement turns the first letter into the edge of a receipt line. Anevia watches your expression, then lowers the paper.{/n}
 "Leave it. I ain't kickin' in a door on a smudge."
@@ -745,7 +744,7 @@ s("the_paper_seller", "What the impression leaves out", [
 
 s("the_woman_with_the_basket", "What Dema chooses to carry", [
     n("start", "Narrator", '''{n}Dema's collection place is a shed with a roof that leaks at one corner. She has dealt with the leak by moving a tub beneath it and hanging an emphatic notice above the dry baskets. Nothing on the notice invites a customer to comment on the arrangement.{/n}
-{n}Dema herself is an adult woman with rolled sleeves and a streak of blue beneath one thumbnail. She looks from Anevia to you, then sets down the bundle she was tying.{/n}
+{n}Dema has her sleeves rolled up and a streak of blue beneath one thumbnail. She looks from Anevia to you, then sets down the bundle she was tying.{/n}
 "Ressa said you'd come. She said you'd be polite about it. I've got three tubs soaking, so skip that part."
 "Done," {n}Anevia says.{/n}
 {n}Anevia describes the false notices. Dema listens, asks to see the paper and points to the mark at the bottom.{/n}
@@ -775,16 +774,14 @@ s("the_woman_with_the_basket", "What Dema chooses to carry", [
 {n}Dema considers the door.{/n}
 "I could carry the next bundle and see whether the basket is still there. I could also tell you to stand outside until Cale comes out. The second option would give me a quieter evening."
 "Tell me the quiet one first," {n}Anevia says.{/n}''', c('"Tell us what you\'ll do, and what you won\'t."', "choice")),
-    n("choice", "Dema", '''"If I help, I want to know what happens when she notices. I work here. I can't run back to headquarters and get a man on my door."
-{n}Anevia takes a slow breath before answering.{/n}
-"You tell us if the basket's there, and you leave. You don't take it, you don't keep her talkin'. She asks why you came, you're deliverin' the washin' you were gonna deliver anyway. We watch the door. Not you playin' spy."
-"And after?"
-"You ain't in the public account. Ressa keeps the warnin' movin'. Cale threatens you, we come down on her like a wall. Can't swear she won't guess somebody talked."
-{n}Dema studies her.{/n}
-"You're a terrible liar, for a spy."
-"I save it for people I don't like."
-{n}She picks up the waiting bundle and sets it down again.{/n}
-"I'll tell you if the basket's there. I won't wear a signal, and I won't go back a second time because the first answer wasn't enough. Need more than that, pick the other plan."''',
+    n("choice", "Dema", '''"And when she notices? I work here. I can't run back to headquarters."
+"One delivery," {n}Anevia says.{/n} "Look for the basket. Leave it where it is. No signals, no keepin' her talkin'. We're watchin' the door."
+"After?" {n}Dema asks.{/n}
+"I ain't givin' your name to a crier," {n}Anevia says.{/n} "She comes after you, send word. Can't promise she won't guess."
+{n}Dema studies her, then picks up the bundle.{/n}
+"If I go, I'll tell you if it's there. Once. You want another look, get it yourself."
+"Fair," {n}Anevia says.{/n}
+{n}The bundle stays in Dema's hands while she waits for your answer.{/n}''',
       c('"One delivery, then she walks away. That\'s enough."', "help", flags=("anevia.dema_helped",)),
       c('"We watch the door ourselves. She\'s done enough."', "watch", flags=("anevia.dema_spared",))),
     n("help", "Narrator", '''{n}Dema goes about the delivery with an air of irritation that needs no rehearsal. Anevia keeps you at the corner rather than close to the counting-room door. You can see the entrance and a narrow side passage. Neither view reveals what happens inside.{/n}
@@ -854,25 +851,21 @@ s("the_counting_room", "The names and the person leaving", [
 {n}Cale begins explaining that she would never have burned them. Anevia places the scorched receipt in front of her.{/n}
 "Then you should be relieved."
 {n}You secure the records and keep Cale in the room until help arrives. The buyer's identity remains an open question. The women whose names fill the lists will not have to wait for that question to be solved before hearing what was taken.{/n}''', c('[Write it down straight: what you saved, and who got away.]', "limits", flags=("anevia.records_intact",))),
-    n("buyer", "Narrator", '''{n}You reach the side doorway before the buyer can close it. She stops when she sees that leaving now will require more than a brisk explanation. You direct her back into the room and keep the passage behind you.{/n}
-{n}Anevia has Cale against the desk, one hand held clear of the brazier. With the other she drags the basket away from the coals. Smoke rises from several loose sheets before she can reach them.{/n}
-"Names survived," {n}she says.{/n} "Some receipts didn't."
-{n}The buyer sets her case down. Inside are several packets of ordinary commercial papers, a purse and two letters of introduction. None establishes a demonic conspiracy. One establishes that she has bought address lists in another district.{/n}
-"Helve," {n}Anevia reads.{/n} "Then we can stop calling you a customer."
-{n}Helve asks whether she is being accused of purchasing this list. Anevia looks at the unsigned receipt, then at the papers damaged by the fire.{/n}
-"You are being asked what you came to buy. We will not improve the evidence to make the answer easier."''', c('[Keep the buyer for questioning and record the damaged receipts.]', "limits", flags=("anevia.records_partial",))),
-    n("limits", "Anevia", '''{n}Once the immediate danger is past, Anevia uncovers the lists one page at a time. She finds Ressa's street, then the neighbor's sister. She does not read the names aloud for everybody in the room.{/n}
+    n("buyer", "Narrator", '''{n}You catch the buyer at the side door and send her back inside. Anevia has Cale pinned against the desk. With her free hand she drags the basket clear of the brazier. Several receipts curl black before she can reach them.{/n}
+"Names survived. Some receipts didn't."
+{n}The buyer opens her case: commercial papers, a purse, two introductions. One records another purchase of addresses. None names a cult.{/n}
+"Helve," {n}Anevia reads.{/n} "Buying names all over Drezen, are you? What for?"
+"I haven't bought these," {n}Helve says.{/n}
+"Then tell me why you ran when they started burnin'."
+{n}Anevia sets the unsigned receipt aside, clear of the coals.{/n}''', c('[Keep the buyer for questioning and record the damaged receipts.]', "limits", flags=("anevia.records_partial",))),
+    n("limits", "Anevia", '''{n}Anevia finds Ressa's street and the neighbor's sister on the recovered list. She folds the page before Cale can read another name aloud.{/n}
 "Who else has copies?"
-{n}Cale looks at the door, then at the brazier, as though considering which answer might have been available a minute earlier.{/n}
-"I sent a sample. Five names. No addresses."
-"To whom?"
-"I don't know the woman's name. She left a place to send it."
-{n}Anevia asks for the address and writes it separately from the recovered list.{/n}
-"Then there's five names still out there, and we're goin' after 'em."
-{n}There is anger in her voice now, less theatrical than Cale seems to expect.{/n}
-"You had women asking their neighbors for private details because they thought a roof might be made safe. That's the part I keep coming back to. You used them to do the collecting for you."
-"You use informants."
-"Mine know who they're talkin' to, and they get paid. You had grandmothers doin' your legwork for the price of a roof."''',
+"I sent a sample," {n}Cale says.{/n} "Five names. No addresses."
+"Where?" {n}Anevia asks.{/n}
+{n}Cale gives a destination. Anevia writes it on a separate sheet.{/n}
+"Five names. We'll start there."
+"You use informants too," {n}Cale says.{/n}
+"I've crawled through sewers for a name. You got grandmothers to hand over their daughters for a roof you weren't gonna mend. Don't try sellin' me that as the same job."''',
       c('"Post the truth: it was a swindle, and we didn\'t get all of it back."', "record"),
       c('"Tell the people on the list first. Nobody should hear their own name read out in the square."', "record")),
     n("record", "Narrator", '''{n}Cale is taken off for ordinary questioning about the false collection. The recovered papers go into a sealed packet marked with the case, not the witnesses. Anevia keeps a separate list of the people who need warning and asks for the messages to go by hand, privately.{/n}
@@ -882,7 +875,7 @@ s("the_counting_room", "The names and the person leaving", [
 "Ask me when I've slept. Right now I'd hang Cale out that window and call it justice, so I'm the wrong one to ask."
 {n}She turns to you.{/n}
 "Come find me in a day or two. Bring wine. I'll have the sums by then, and I'll be in a mood."''',
-      c('"Tell me later. Breathe first."', flags=("anevia.counting_room_settled",))),
+      c('"I\'ll bring the wine. You bring the names."', flags=("anevia.counting_room_settled",))),
 ], requires=("anevia.dema_terms_kept", "anevia.lover"), forbids=("irabeth_dead", "irabeth_gone"), delay=0)
 
 
@@ -986,10 +979,9 @@ s("the_evening_without_a_case", "Something she did not have to solve", [
 "Good," {n}she says, crossing it out.{/n} "We have learned something at very little cost to the goats."''', c('[Restore the old rule and offer another game.]', "deciding")),
     n("deciding", "Anevia", '''"In a minute."
 {n}She stands the crooked goat up by the lamp.{/n}
-"Told Beth about last week. How you lost at cards and didn't explain why it didn't count. She said you sounded unnatural. Then she laughed for a good minute, which she don't do for just anybody."
+"Told Beth about the goats. She wanted to know if I'd been drinkin'. Hadn't. That's the worst of it."
 {n}Her finger stays on the little wooden goat.{/n}
-"What else did I do?"
-"Watched me bein' ridiculous about a goat and didn't look like you wanted me to stop."
+"And now you're watchin' me get ridiculous over a goat, and you still ain't makin' for the door."
 {n}She glances up, grinning.{/n}
 "There's a list. Not showin' you. You'd get a big head."''',
       c('"I remember the way you look pleased before you decide what to say about it."', "seen"),
@@ -1207,21 +1199,15 @@ s("a_key_that_is_hers", "What she wants to keep", [
 "So can you. Preferably before one of us throws a boot."
 {n}She grins and leans against you.{/n}
 "There. For keeps, with a few questions left in it. Believe that more than any vow."''', c('[Ask what she hopes will happen in the room.]', "room")),
-    n("room", "Anevia", '''"Breakfast. Though if I try cooking it here, that window'll have to open all the way."
-{n}She studies the cramped hearth, then shakes her head.{/n}
-"Still want my proper oven. Stone, big enough for a loaf I haven't had to bully into the pan. Beth says I should learn to make the loaf before choosing the oven. Typical paladin. Very concerned with doing things in order."
-"Would it fit here?"
-"No. And I won't put it here. That's for home. For the morning she comes downstairs because she can smell what I've made."
-{n}Anevia turns the key on its cord.{/n}
-"There was a kitchen in the temple where I grew up. Desna's people, singing while they worked. I could smell breakfast before I was properly awake. Sometimes that's what I remember when somebody asks why I keep doing this miserable bloody job. A morning where the noise outside the door is somebody being happy."
-{n}She gives the key a little swing and catches it.{/n}
-"Doesn't have to be a temple. Doesn't even need a competent baker, at first. Just has to be somewhere a person can stop listening for whoever's coming to drag her out."
-"You want that with Irabeth."
-"Yes. And I want you coming to breakfast because I asked you. Beth grumbling that I've fed you the burnt bit. You defending it badly. Several people I love, all wrong about my bread."
-{n}She laughs, then lays the key down.{/n}
-"This room's smaller. I can start with an evening. Though I'd like several very good nights too. Don't let the breakfast plan give you a false impression."
-{n}Her smile is warm and deliberately wicked. She catches the front of your shirt and draws you closer, and waits, not very long, to see what you'll do about it.{/n}
-"We could begin investigating the second possibility."''',
+    n("room", "Anevia", '''"Breakfast. Though if I cook here, we'll have to get that bloody window open."
+{n}She glances at the cramped hearth.{/n}
+"Still want my stone oven. That's for home. For Beth comin' downstairs 'cause she can smell the bread."
+{n}The key turns on its green cord.{/n}
+"Desna's temple had mornings like that. Singin', flour everywhere, crust hot enough to burn your fingers. Kept thinkin' of it when I was up to my eyes in gore. I'd like another one."
+{n}She loops the green cord round her finger and catches your shirt, drawing you close.{/n}
+"You'll come for breakfast. Beth'll say I've given you the burnt bit. You can defend me, badly."
+{n}Her grip tightens.{/n}
+"But this room's mine. Tonight I want you in it. Come here."''',
       c('[Kiss her and stay for the evening she has chosen.]', "night"),
       c('[Hold her and listen to the street.]', "end"),
       c('"Let me help with the bread. Tell me which part you\'ll trust me with."', "bread"),
