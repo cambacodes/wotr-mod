@@ -64,7 +64,10 @@ class PlayerTextInventory2Tests(unittest.TestCase):
 
     def test_reviewed_continuation_is_exact_not_a_blanket_exception(self):
         sid = "targona.the_unscheduled_door"
-        text = self.surfaces[sid, "start"]
+        # Exercise the recorded exception even after the live letter is corrected.
+        policy = json.loads(player.EXCEPTIONS.read_text())
+        text = next(e["text"] for e in policy["eng8-q8c"]["speech_boundary_exceptions"]
+                    if e["scene"] == sid and e["location"] == "start")
         self.assertFalse(structure.check(payload(text, sid))["review"])
         self.assertTrue(structure.check(payload(text + " ", sid))["review"])
         self.assertTrue(structure.check(payload(text, "different"))["review"])
