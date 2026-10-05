@@ -193,7 +193,7 @@ def king_nodes(open_text, crowned_text, uncrowned_text=None):
         nar("unknown", '''{n}You know that tune, or something very like it. Half the Desnan refugees on the road out of Kenabres were humming it, and the ones who knew the words called it Starward Gaze and said a priestess named Aranka had carried it out of the burning city. Theirs went all the way through. His has a hole in the middle where a verse should be.{/n}''',
             c(JOKE, "round", mythic="Trickster", crusade=("Finances", -100)),
             c('"Never mind. Carry on, Your Majesty."', abort=True)),
-        nar("round", '''{n}You climb onto the bench and pay for every mug on every table. The beer buys you the room. It does not buy what happens next.{/n}
+        nar("round", '''{n}You climb onto the bench and pay for every mug on every table. The sapper nearest you drums his empty mug against the wood.{/n}
 {n}You sing the King's ballad back at him with the words of a Desnan hymn you have no right to and a second verse of your own. The rhyme for 'Thaberdine' is 'tambourine'. It is a dreadful rhyme. A sapper learns it first, then the one-eyed carter by the door, then the girl who carries the King's mugs, who has a better voice than any of them.{/n}''',
             c("Continue", "sheet")),
         nar("sheet", '''{n}Thaberdine fishes inside his shirt and brings out the greasy, folded song-sheet his pops left him, the one thing he owns that is older than his debts, and smooths it on the table to show you how the ballad really goes.{/n}
@@ -242,7 +242,7 @@ letter("aranka.trickster.verse.any_tavern", "Every mug in the house", [
         c(JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
         c('[Leave them to their beer.]', abort=True)),
     nar("reply", '''{n}You climb onto a table, pay for every mug in the house, and teach a room full of sappers and quartermasters Starward Gaze with a second verse of your own. Nobody in the room has heard of Thaberdine. You rhyme him with 'tambourine' anyway.{/n}
-{n}The beer buys you the room. The verse takes all night and most of the camp's beer. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By noon the carters on the north road have it, and most of the people who learn it from them never knew it without the verse.{/n}
+{n}You keep them singing all night, until the tavern has almost no beer left. In the grey of the morning somebody has chalked your verse under the Desnan broadsheet the refugees nailed by the door last spring, 'tambourine' and all, and underlined it twice. By noon the carters on the north road have it, and most of the people who learn it from them never knew it without the verse.{/n}
 {n}That evening a letter comes back down the north road with a returning carter, in a round, flourishing hand that has pressed hard enough to tear the paper in two places.{/n}''',
         c("Continue", "reply_known", requires=(GAVE_SONG,)),
         c("Continue", "reply_unknown", forbids=(GAVE_SONG,))),
@@ -356,7 +356,7 @@ counter("aranka.trickster.verse.encore", "An offer from Nerosyan", '"You came ba
     a("choice", '''"So tell me, Commander. Is there a reason to stay that isn't a song?"''',
       c('[Ask her to stay] "Stay. Sing it with me. Every night we get."', "stay", flags=(KEPT,)),
       c('[Charm her] "Stay, and I\'ll rhyme you anything."', "not_yet"),
-      c('[Tell her to take the stage] "Go. A song that stays in one tavern dies."', "stage", flags=(CLOSED, NEROSYAN))),
+      c('[Tell her to take the stage] "Go. Let them hear you in Nerosyan."', "stage", flags=(CLOSED, NEROSYAN))),
     a("not_yet", '''"That's a pretty line." {n}She folds the Mendevian letter very small, and then smaller.{/n}
 "Too pretty. You gave a crowd a verse. So I'm going to write one. For you. When I sing it, you'll know what I'm asking, and I'll know what you answer. Not tonight."''',
       c('[Let her write it] "Then I\'ll listen for it."', flags=(DECLINED,))),
@@ -400,9 +400,9 @@ def mocking_nodes():
         king("king", '''"Sing it, Majesty! Sing the one where you lose!" {n}Thaberdine beams at you with perfect, drunken goodwill. He thinks you are both kings.{/n}''',
              c(FAILURE_JOKE, "loud", mythic="Trickster"),
              c('"Not tonight, Your Majesty."', abort=True)),
-        nar("loud", '''{n}You climb onto the bench and lead it. You sing the banner verse louder than anyone, and trip over an imaginary banner on the rhyme, and the tavern howls. By the third round they are singing it with you, not at you, and by the fifth it has become a drinking song about the one commander in the world who can take a joke.{/n}''',
+        nar("loud", '''{n}You climb onto the bench and lead it. You sing the banner verse louder than anyone, and trip over an imaginary banner on the rhyme, and the tavern howls. By the third round they are singing it with you, not at you, and by the fifth they are pounding their mugs on the tables to demand it again.{/n}''',
             c("Continue", "after")),
-        king("after", '''"Now THAT'S a king!" {n}Thaberdine wipes his eyes.{/n} "Pops always said, a king who can't sing his own defeats won't live to see many victories. Or was it the other way round? One of 'em!"''',
+        king("after", '''"Now THAT'S a king!" {n}Thaberdine wipes his eyes.{/n} "You fell right on the rhyme! I didn't even spill my beer. Let's have the one with the banner again!"''',
              c('"Again. Louder on the rhyme."', flags=(PRIMED, MOCKING))),
     ]
 
@@ -422,7 +422,7 @@ letter("aranka.trickster.failure.mocking_verse_any", "Louder on the rhyme", [
 {n}There is no King's tavern left to lead it in. The worst camp tavern in Drezen is full tonight, and somebody at the back is already humming the banner verse under his breath.{/n}''',
         c(FAILURE_JOKE, "reply", mythic="Trickster", crusade=("Finances", -150)),
         c('[Leave them to it.]', abort=True)),
-    nar("reply", '''{n}You pay for every mug in the house, climb onto a table and lead it until dawn, tripping over an imaginary banner on every rhyme. By noon the carters have taken it up the north road, and it means something else now.{/n}
+    nar("reply", '''{n}You pay for every mug in the house, climb onto a table and lead it until dawn, tripping over an imaginary banner on every rhyme. By noon the carters have taken it up the north road, singing the banner verse and laughing at the fall.{/n}
 {n}That evening a letter comes back down the north road, in a round hand you know, with a blot in the middle as if the writer stopped for a long while.{/n}''',
         c("Continue", "her_reply")),
     a("her_reply", '''"You sang the verse where you lose. Out loud, on purpose! The carter who brought this tried to show me the fall and nearly put his boot in our supper."
@@ -483,7 +483,7 @@ def page(id, title, text, requires, forbids=(), paragraphs=(), **extra):
 
 
 page("aranka.trickster.epilogue.commit", "The last night in Nerosyan",
-     '''{n}After Threshold Aranka took the Nerosyan stage for a single season. On its last night she sang Starward Gaze with a third verse nobody had heard before, and then she told the hall she was going home to Drezen, where the second verse had been written, and to the person who had written it. She did not say anything else. She did not need to.{/n}
+     '''{n}After Threshold Aranka took the Nerosyan stage for a single season. On its last night she sang Starward Gaze with a third verse nobody had heard before, and then she told the hall she was going home to Drezen, where the second verse had been written, and to the person who had written it. She left the stage before the applause had finished.{/n}
 {n}She came in on the night mail-coach, dusty to the knee, and did not knock. She found the Commander at the desk under a lamp and a drift of requisitions, sat down on the requisitions, took the pen away, and put the Commander's hand on the lacing of her bodice instead. She sang the first bar of the third verse low against the Commander's mouth while the knot gave, then swept the requisitions onto the floor with one forearm, lay back across the desk, and pulled the Commander down after her by the collar, her heels locking behind the Commander's back. The lute went face-down on the floor. Nobody got up to put the lamp out.{/n}
 {n}The household learned the third verse through the floorboards that night whether it wanted to or not, and by the end of the week the sentries on the north wall were whistling the bridge of it. Aranka let the Nerosyan troupe send three more contracts after her, and lit the stove with every one.{/n}''',
      requires=("trickster.ever", LATE_COMMITTED), forbids=(KEPT, CLOSED, DECLINED, "sacrifice", FAILURE), paragraphs=VERSE_PARAGRAPHS,
@@ -531,7 +531,7 @@ REACTIONS = [
              answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
              entry='"You look pleased with yourself."'),
     reaction("Woljif", "aranka.trickster.react.woljif_mocking", (MOCKING,),
-             '''"Chief, they're singing the one where you trip over your own banner." {n}Woljif looks genuinely shaken.{/n} "You LED it. That's the part I don't get. Nobody leads the one about themselves. That's, like, the first rule."''',
+             '''"Chief, they're singing the one where you trip over your own banner." {n}Woljif looks genuinely shaken.{/n} "You LED it. That's the part I don't get. I'd have found somewhere else to drink."''',
              answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5],
              entry='"Something on your mind?"'),
     reaction("Lann", "aranka.trickster.react.lann_verse", (ANSWERED,),
@@ -606,7 +606,7 @@ counter("aranka.trickster.failure.reckoning", "Necessary", '"You said you had so
       c('"It was necessary then. It is necessary now."', "unchanged"),
       c('"I\'ll come back when I have an answer worth hearing."', abort=True)),
     a("bought", '''{n}You strike the requisition through and write an order to buy the meal at market price instead. The carter reads the sum back to you twice before he believes it. The pilgrim takes his sack away without thanking anyone, which Aranka seems to think is exactly right.{/n}
-"There. He has his supper, and your soldiers will have theirs. That was more trouble, wasn't it? It's always more trouble."
+"There! He keeps his supper, and your soldiers will have theirs. Let the carter carry your order instead of the pilgrim's sack."
 {n}She picks up the lute and rests her hand on its neck without sounding a string.{/n}
 "I haven't forgotten what you said. I don't think I ever will. But I heard what you said today, too. So I'll hear you sing again, and we'll see whether you remember it when there's nobody here to applaud."''',
       c('"Then I\'ll sing. And the meal stays his."', flags=(RETURNED, MORAL_REPAIRED, PROVISIONS))),
@@ -621,7 +621,7 @@ counter("aranka.trickster.failure.reckoning", "Necessary", '"You said you had so
 # 05 3.1) runs the camp's rumours for coin; the fine for "the other noise" is exactly the kind of news he trades in.
 SCENES.append(reaction("Woljif", "aranka.trickster.react.woljif_roof", (NIGHT,),
     '''"Chief. Word is somebody paid a fine this morning for singing on a roof after the bell. And for 'the other noise'." {n}Woljif studies the ceiling with great innocence.{/n} "I'm not saying I was running a book on whether the bard'd stick around. I'm saying if I was, I'd be rich today, and nobody else would."
-{n}Then the grin goes, just for a moment.{/n} "She came back for you, Chief. Every night, she came back. People like us don't get that much. Don't make her sorry she did."''',
+{n}Then the grin goes, just for a moment.{/n} "She came back for you, Chief. Every night, she came back. I didn't think she'd keep doing it. Don't make her sorry she did."''',
     answer_list=WOLJIF_HUB, forbids=WOLJIF_GONE, chapter=3, last=5, Chapters=[3, 5], entry='"You heard something."'))
 
 
