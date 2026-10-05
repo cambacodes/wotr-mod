@@ -53,7 +53,7 @@ internal static class Program
 
     private static Dictionary<string, JObject> ReadNative(string path, IEnumerable<string> ids)
     {
-        string script = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "../../../read-native.py"));
+        string script = Path.Combine(Bootstrap.RepositoryRoot, "managed-tests", "read-native.py");
         var start = new System.Diagnostics.ProcessStartInfo(Environment.GetEnvironmentVariable("RRT_PYTHON") ?? "python")
         {
             Arguments = "\"" + script + "\" \"" + path + "\"",
@@ -372,8 +372,8 @@ internal static class Program
         bool hasParentEndingRules = story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0;
         if (hasParentEndingRules)
         {
-            string contractPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
-                "../../../fixtures/parent-ending-source/verified-contract.json");
+            string contractPath = Path.Combine(Bootstrap.RepositoryRoot,
+                "managed-tests/fixtures/parent-ending-source/verified-contract.json");
             ParentEndingIntegrationTests.PrepareSourceFixtures(JObject.Parse(File.ReadAllText(contractPath)),
                 ParentEndingSourceFixtures.Build(), ParentEndingSourceFixtures.PageActions());
             ParentEndingIntegrationTests.CheckPreflight(story, Check);
@@ -491,6 +491,7 @@ internal static class Program
             Console.WriteLine($"PASS: {checks} assertions; wrong-type optional epilogue ignored with a warning; addon initialized.");
             return 0;
         }
+        Check(Degraded().Count == 0, "Blueprint construction disabled relationships: " + string.Join(",", Degraded().OrderBy(x => x)));
         KonomiMeetingIntegrationTests.Run(Check);
         IrabethMeetingIntegrationTests.Run(Check);
         NurahHubIntegrationTests.Run(story, Check);
@@ -504,9 +505,11 @@ internal static class Program
             // eng7-f6b: a text-only edit never touches membership; the parent lists the native cue once and no replacement cue.
             if (NativeEpilogueEdit.IsTextOnly(pair.Key))
             {
-                foreach (string parentId in new[] { pair.Value.Parent }.Concat(NativeEpilogueEdit.AlsoParentsOf(pair.Key)))
+                // eng8-q8e: a book-page text edit keeps its original page membership too.
+                foreach (string parentId in new[] { string.IsNullOrEmpty(pair.Value.Parent) ? pair.Value.Page : pair.Value.Parent }.Concat(NativeEpilogueEdit.AlsoParentsOf(pair.Key)))
                 {
-                    var textParent = NativeEpilogueEdit.TextParentCues(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(parentId)))?.Select(r => r.Guid).ToList();
+                    var parent = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(parentId));
+                    var textParent = (parent is BlueprintBookPage textPage ? textPage.Cues : NativeEpilogueEdit.TextParentCues(parent))?.Select(r => r.Guid).ToList();
                     Check(textParent != null && textParent.Count(g => g == BlueprintGuid.Parse(pair.Key)) == 1 && !textParent.Any(variantNames.Contains),
                         "E14d text-only edit changed its parent's membership: " + pair.Key + " / " + parentId);
                 }
@@ -790,6 +793,8 @@ internal static class Program
         NativeEpilogueEditManagedTests.RunDelivery(story, Check);
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
+        // eng8-q8e: EE follow-ons retain actual native history receipts.
+        NativeEpilogueEditManagedTests.RunEndingIdentity(story, native, Check);
         NativeGateManagedTests.Run(story, Check);
         TerendelevNativeManagedTests.Run(story, native, Check); // eng7-f6d
         if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Run(Check);

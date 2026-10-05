@@ -1,0 +1,1480 @@
+{
+  "Schema": 1,
+  "Item": "E-Q8-06",
+  "Block": "eng8-q8e",
+  "Authored": true,
+  "IdentityPreservingTargets": [
+    "8f6017d8d3bc5ec46b15773947e80c70",
+    "86bf0569a9029ae4b8c9d300a41e5739",
+    "8593ec10e3c34cdaaa2d2ed45e73e58a",
+    "3d54fe05a0fe44f78ac907c37fe8a460"
+  ],
+  "Policy": "Existing earned ending conditions, current Trickster; no added costs or romance requirements. EE continuations retain native eligibility and evil conduct.",
+  "Rows": [
+    {
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ],
+      "Replacements": [
+        "camellia.trickster.epilogue.native_te_stayed"
+      ]
+    },
+    {
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ],
+      "Replacements": [
+        "camellia.trickster.epilogue.native_te_own_path"
+      ]
+    },
+    {
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ],
+      "Replacements": [
+        "camellia.trickster.epilogue.native_stayed"
+      ]
+    },
+    {
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ],
+      "Replacements": [
+        "camellia.trickster.epilogue.native_threshold_waited"
+      ]
+    },
+    {
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ],
+      "Replacements": [
+        "camellia.trickster.epilogue.native_stayed_plain"
+      ]
+    },
+    {
+      "Target": "3617a648c06a45d1807fde65aedafb06",
+      "Field": "NativeEpilogueSuppressions",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ]
+    },
+    {
+      "Target": "e9a183135b8289544a3144dcf8151920",
+      "Field": "NativeEpilogueSuppressions",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept"
+      ]
+    },
+    {
+      "Target": "430ce9767d3ede2479ff9d6aee432304",
+      "Field": "NativeEpilogueSuppressions",
+      "Outcomes": [
+        "camellia.trickster.epilogue.kept",
+        "camellia.trickster.epilogue.commit"
+      ]
+    },
+    {
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "nenio.trickster.epilogue.commit",
+        "nenio.trickster.epilogue.article"
+      ],
+      "Replacements": [
+        "nenio.trickster.epilogue.native_commit",
+        "nenio.trickster.epilogue.native_article"
+      ]
+    },
+    {
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "wenduag.trickster.epilogue.pack"
+      ],
+      "Replacements": [
+        "wenduag.trickster.epilogue.native_pack"
+      ]
+    },
+    {
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "wenduag.trickster.epilogue.native_commander_back"
+      ],
+      "Replacements": [
+        "wenduag.trickster.epilogue.native_commander_back"
+      ]
+    },
+    {
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "wenduag.trickster.epilogue.pack",
+        "wenduag.trickster.epilogue.native_commander_back"
+      ],
+      "Replacements": [
+        "wenduag.trickster.epilogue.native_greybor",
+        "wenduag.trickster.epilogue.native_greybor_back"
+      ]
+    },
+    {
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Field": "NativeEpilogueEdits",
+      "Outcomes": [
+        "wenduag.trickster.epilogue.pack"
+      ],
+      "Replacements": [
+        "wenduag.trickster.epilogue.native_ember"
+      ]
+    }
+  ],
+  "Fixtures": {
+    "84f892d388bba01489145ecd631f23a2": {
+      "Path": "World/Dialogs/Epilogues/Cue_0392.jbp",
+      "Type": "BlueprintCue",
+      "Key": "8f73fe38-c791-4d7e-9bd0-553f1f0b07aa",
+      "Text": "Camellia's euphoria at gaining semidivine power quickly passed, giving way to irritability. Murder had once filled her with tremulous excitement, whereas now it brought her nothing but boredom, given that she was never in any danger. Unable to come to terms with her new status, she left her best friend and disappeared, losing herself among the planes of the multiverse.",
+      "DataSha256": "16fb92ce38e0427b942cbaa60faa3e5bf86807c2c575f8bd75025d12b4e1174e",
+      "TextSha256": "7e77e68ccccb55a00a6d91ab43828ad04ef2a3378dfebb3d45a6106ca9cb5a66",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$125df920-66dc-475b-9a21-d66fda138f96",
+              "Not": false,
+              "Comment": "ТЕ с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$3d9885d8-7797-42a0-a20c-d8d6d6024611",
+                    "Not": false,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$bae2426b-ec43-40f1-a9fb-b21313dddd7f",
+                    "Not": false,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+              "name": "$QuestStatus$56221b40-7260-4a40-83cc-83c97ed1b4e7",
+              "Not": false,
+              "m_Quest": "!bp_72d7618aeec2e134db7e9728e9fea90a",
+              "State": "Completed"
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": [
+            {
+              "$type": "cec8704252375f94b888d4206a757209, ChangeBookEventImage",
+              "name": "$ChangeBookEventImage$37e56d75-17af-4b85-ae42-206ce844170b",
+              "m_Image": {
+                "AssetId": "df4a5da19a0a64542929dc8409b29bbe"
+              }
+            }
+          ]
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "c1b1da84c12d3ac448ec65b4342ce77f": {
+      "Path": "World/Dialogs/Epilogues/Cue_0544.jbp",
+      "Type": "BlueprintCue",
+      "Key": "d494dcd7-7f4f-4b8b-a8d7-7dcb41998909",
+      "Text": "Camellia refused to {d|Camellia Ignored}share{/d} in the Commander's semidivine power. She had her own path to follow.",
+      "DataSha256": "eadc4151e3a7a1ff7c3fc33431a662cf0bb5e63dfb64c5e6f9d8353c4a91d52f",
+      "TextSha256": "df4015ec7b3c107e70e904dff5106b63556258d8c26834844443d460169a09dd",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$60314e6b-0f69-4a67-8d26-f9b269b0a67e",
+              "Not": false,
+              "Comment": "ТЕ с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$2f292c1d-2b95-4def-bddc-5d040b32f27e",
+                    "Not": false,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$75463878-1fe6-4f60-87f5-d83e8e4d8205",
+                    "Not": false,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+              "name": "$QuestStatus$b1923de3-82bd-45d4-bcbe-db6e3c4424ae",
+              "Not": true,
+              "m_Quest": "!bp_72d7618aeec2e134db7e9728e9fea90a",
+              "State": "Completed"
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "4ed8e9723359441dae10ad3068d3f2c7": {
+      "Path": "World/Dialogs/Epilogues/Cue_28.jbp",
+      "Type": "BlueprintCue",
+      "Key": "aee7c6bf-fbe1-4288-83e7-3ff3bd4545ad",
+      "Text": "After the end of the war, Camellia remained with the Commander, sharing his life's worries and joys, trying to accept them as her own. Yet nothing could help her overcome her worst enemy — boredom. On one moonless night, Camellia simply vanished.",
+      "DataSha256": "0d616c4031b0a62ed3880cef9edbb8bcd18e17840dc2c5595ac76f1bcd06c65d",
+      "TextSha256": "fe1e2adc8be64bfd2cca925e3f9a73e4f5ee44a83a896eb28f1cc44f0e79209e",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$4483418f-c331-482d-90e2-f95f4d4b6bf4",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$6c1111a0-8acf-4178-846b-3d2ae365b845",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$f832ede9-4531-420c-b74e-bc2bae3b188d",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$2cd852aa-d7f1-4d66-9349-f94cffd77999",
+              "Not": false,
+              "Comment": "закомпличен любой романс",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$a9185adc-ddba-4e32-bb0c-f8310b63c163",
+                    "Not": false,
+                    "m_Etude": "!bp_0f98398a5ddf32e4cb8200f56e4cfbfc",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$cc4cd9ee-5a46-4a30-a013-a00d9cefc01e",
+                    "Not": false,
+                    "m_Etude": "!bp_1454cf86d07cfdf4f8b5daee625cdc5b",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$a122201d-eafc-4e31-b65e-f3f20c524ff4",
+              "Not": true,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "36a07840d25540eeac6b1c6631196bcc": {
+      "Path": "World/Dialogs/Epilogues/Cue_38_master.jbp",
+      "Type": "BlueprintCue",
+      "Key": "af56e46e-7e82-4e22-9951-8ddc37dd015f",
+      "Text": "After the victory at Threshold, Camellia refused to join the crusader army retreating to Drezen. Instead she wandered among the ruins of the empty fortress, alone. She often stopped to listen to the wind, hoping to hear a familiar voice.",
+      "DataSha256": "609663ca1f570e214cf76a86396ce42aed625c4daa324b7e4f67ec0ab69f5549",
+      "TextSha256": "4a551ce988428d9fabfbc78c772eedd2c041b0d498988e68812d709648fdd3aa",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$aa11208f-d036-4311-a691-875142f7662c",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$ea741a14-64ec-49d6-8012-adce71c3d05d",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$df447b8a-e986-4392-b2fd-841a50f33ee8",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$e477f651-07e9-4351-a22e-ad0c11b4819d",
+              "Not": false,
+              "Comment": "закомпличен любой романс",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$bc7b3b56-3f0d-45ee-8668-ef7c3caeb4a8",
+                    "Not": false,
+                    "m_Etude": "!bp_0f98398a5ddf32e4cb8200f56e4cfbfc",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$c901d9f9-1923-4b45-b106-cc9b6cca7610",
+                    "Not": false,
+                    "m_Etude": "!bp_1454cf86d07cfdf4f8b5daee625cdc5b",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$1d355c77-6eed-403c-ac97-b86a6146442d",
+              "Not": false,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "5011dfa46fbb0464ab624d78bcfbd483": {
+      "Path": "World/Dialogs/Epilogues/Cue_0386.jbp",
+      "Type": "BlueprintCue",
+      "Key": "4dd21f1d-4280-4598-851d-bbc6bbf2f3e4",
+      "Text": "Once the war had ended, Camellia grew bored and irritable. Shortly afterward, on a moonless night, she vanished.",
+      "DataSha256": "5b3fb60d6b7d442f16ab9b84da4d711c52fa4b94ac5d8460408c9726de17e9ea",
+      "TextSha256": "7c0e059750e4082396337c2bfad4c518d71425d0ff6a74c32e402bb76cf5f965",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$cefa5054-d40e-49dc-8ac8-40db4cda9eeb",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$71e43d71-05fb-4d43-9c66-11487233e411",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$9208a850-e2bb-46bf-9879-dc6a60de70c7",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$e86c3875-a2a5-4d66-9fd7-c8dbcfdc1834",
+              "Not": true,
+              "Comment": "НЕ закомпличен любой романс",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$fb3bc41f-343c-403d-96c3-9acfc78969ec",
+                    "Not": false,
+                    "m_Etude": "!bp_0f98398a5ddf32e4cb8200f56e4cfbfc",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$b4f3b946-0c9b-4115-bac9-ef8b212fef1e",
+                    "Not": false,
+                    "m_Etude": "!bp_1454cf86d07cfdf4f8b5daee625cdc5b",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [
+            "!bp_f23fb3dacf91b3e4b9d3a85937d323bf"
+          ],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "3617a648c06a45d1807fde65aedafb06": {
+      "Path": "World/Dialogs/Epilogues/Cue_16.jbp",
+      "Type": "BlueprintCue",
+      "Key": "de512bb2-4d4d-4ca2-b20d-9b2d6384c802",
+      "Text": "About a month later, an assassin by the name of Mireya arrived in Varisia. She had few things in common with the missing woman, apart from a fondness for cutting the hearts out of her victims.",
+      "DataSha256": "d3bad2ce604e2a418b1212fa9468f4138a090f133803391a7e741b2ec1fb84c5",
+      "TextSha256": "f08fbc98aa1f4d739a0fa6153113967ecfb9c3c69db39b02227ff1ce9c2506d5",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$b8bf1d56-b715-4764-be13-faf0260821fc",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$f831081c-fc8a-465e-a0a3-826239c13cc0",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$e30a98cb-632f-47bd-a8fc-dd884dc1c475",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "e9a183135b8289544a3144dcf8151920": {
+      "Path": "World/Dialogs/Epilogues/Cue_0390.jbp",
+      "Type": "BlueprintCue",
+      "Key": "f31377a1-a78e-47f2-bc10-1721eac2f9c1",
+      "Text": "Young and attractive, she was desired by many of the key players in the Varisian underworld. Mireya bedded plenty of them, but never more than once — none of them were good enough for her.",
+      "DataSha256": "7bbefedf0e6c4457a74882dd788ca6db8681964c621eafb6aca7b8dc2b14c488",
+      "TextSha256": "f9f9b2732992676dcaf24da30904933f993ccd929c88b6a692d664183fa39403",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$d3ce5ab1-c8df-43db-b0a5-97fb70cc7d18",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$fde0c9be-11eb-4095-8cca-c2e5ef9e4f60",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$7e3028b6-e214-41d6-a79e-d888258a8aa7",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$c9732014-2d5c-43e3-84d9-5582499ab67f",
+              "Not": false,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$a19a17b1-72fa-4d05-b3a7-5b91a8f47ad7",
+                    "Not": false,
+                    "Comment": "обычный романс + не помер",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$a28657e6-88cb-4596-8975-c04ed161a0c9",
+                          "Not": false,
+                          "m_Etude": "!bp_0f98398a5ddf32e4cb8200f56e4cfbfc",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$ac68d619-09c1-470b-8554-7fbf77bfde2d",
+                          "Not": true,
+                          "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$53fee615-da27-412a-b2d4-bf52a157b4fb",
+                    "Not": false,
+                    "Comment": "любой романс + помер",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                          "name": "$OrAndLogic$0b205d1f-5042-4206-868b-a72ddf566f56",
+                          "Not": false,
+                          "Comment": "",
+                          "ConditionsChecker": {
+                            "Operation": "Or",
+                            "Conditions": [
+                              {
+                                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                                "name": "$EtudeStatus$394b00b7-0665-49e1-8496-1faf9d823d4d",
+                                "Not": false,
+                                "m_Etude": "!bp_0f98398a5ddf32e4cb8200f56e4cfbfc",
+                                "NotStarted": false,
+                                "Started": false,
+                                "Playing": true,
+                                "CompletionInProgress": false,
+                                "Completed": false
+                              },
+                              {
+                                "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                                "name": "$EtudeStatus$7be68ac8-99a1-4629-8683-fc1a184025b1",
+                                "Not": false,
+                                "m_Etude": "!bp_1454cf86d07cfdf4f8b5daee625cdc5b",
+                                "NotStarted": false,
+                                "Started": false,
+                                "Playing": true,
+                                "CompletionInProgress": false,
+                                "Completed": false
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$7e77c82c-f29b-45cf-a284-f11ac6d9be85",
+                          "Not": false,
+                          "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "430ce9767d3ede2479ff9d6aee432304": {
+      "Path": "World/Dialogs/Epilogues/Cue_0391.jbp",
+      "Type": "BlueprintCue",
+      "Key": "4819461c-331c-4872-a077-49115a7c9ad7",
+      "Text": "A few years later, Camellia suddenly {d|Camellia TrueLove}came back{/d} — with a bottle of wine in her hands and a fleeting smile on her lips. She had returned, so she claimed, so that she could forever stay with her friend and love. And then, some months later, she left again. Her last words to her lover were \"I do not want to feel the desire to kill you.\"",
+      "DataSha256": "fed8307a52613b136ad87f789b059a61ebeb06ce1c52ce2fd3a3b137c0495d75",
+      "TextSha256": "de29bd7bd5d578833ce165e77913634551a5de9b874954b2b4ae193ca0565b13",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$cf911dc0-9763-4f13-bf23-3e0a8922239a",
+              "Not": true,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$397a17b7-e9d2-407b-b516-df32c0f79252",
+              "Not": false,
+              "m_Etude": "!bp_1454cf86d07cfdf4f8b5daee625cdc5b",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "b6c0fb4c102cfb84f83a772e2dbb8a14": {
+      "Path": "World/Dialogs/Epilogues/Cue_0423.jbp",
+      "Type": "BlueprintCue",
+      "Key": "185ff9f7-34e0-4806-83fd-9df14b95e269",
+      "Text": "Soon after the war, the tireless researcher of all things researchable embarked on a new journey. She had a sudden urge to know how much time it would take to visit every nation on Golarion. She {d|Nenio no friend}never returned{/d}. No, she did not perish — she simply got carried away with another experiment and forgot to come back.",
+      "DataSha256": "29fc951154d2c445431784d5e7c6e3c77bd991ae1395bc74944ce0c643a7a2dd",
+      "TextSha256": "7e4a648917571f646d71cda366b3e022c0172c404b0dcdec7af5072bd4b544c8",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$ced0646a-fbee-478f-a8ac-06d987e39165",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$337673f0-1e09-4a9d-a49b-8e4191256f98",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$096df34c-ac44-43a6-88be-10f31fe9faff",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$5cfa793d-201b-4035-9464-73bfe6d1367c",
+              "Not": false,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+                    "name": "$OrAndLogic$02c396d0-bb1b-453e-ab12-3502f8afd4ee",
+                    "Not": false,
+                    "Comment": "",
+                    "ConditionsChecker": {
+                      "Operation": "And",
+                      "Conditions": [
+                        {
+                          "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                          "name": "$EtudeStatus$aca84811-e811-464b-a315-dffb8df9d288",
+                          "Not": true,
+                          "m_Etude": "!bp_9748dacf968fdbf408af504d00e3e38e",
+                          "NotStarted": false,
+                          "Started": false,
+                          "Playing": true,
+                          "CompletionInProgress": false,
+                          "Completed": false
+                        },
+                        {
+                          "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                          "name": "$QuestStatus$8e40a3ba-2679-4a01-a580-ea1f0bc3ff67",
+                          "Not": false,
+                          "m_Quest": "!bp_fcf68dc28a7e9df43961d067937e3935",
+                          "State": "Completed"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+                    "name": "$QuestStatus$56cb1bb3-0044-46a2-80a6-38cf46c03200",
+                    "Not": true,
+                    "m_Quest": "!bp_fcf68dc28a7e9df43961d067937e3935",
+                    "State": "Completed"
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$908a2670-c9a5-4464-9eb1-f3770dd65832",
+              "Not": true,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "8f6017d8d3bc5ec46b15773947e80c70": {
+      "Path": "World/Dialogs/Epilogues/Cue_0410.jbp",
+      "Type": "BlueprintCue",
+      "Key": "8590f7c2-79d5-4179-9c8a-0798f4ef5de9",
+      "Text": "After the war, the huntress {d|Wenduag Ignored}left{/d} the Commander's service and, having cobbled together a band of ruthless mercenaries out of veteran crusaders, went to the River Kingdoms to conquer one of them for herself. For a handful of years, she ruled over a dozen villages, until the local lords joined forces to put an end to her reign.",
+      "DataSha256": "c9024afcf18b9c3e4f486d2196d0462f217732b4d3fbca3abe4d8136bf6023c1",
+      "TextSha256": "529baffdf57b674c205811b5838855587201ef0845703f89e77f8e2b039f7232",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+              "name": "$QuestStatus$c58f7476-4398-48f1-9768-1f53695fc5e2",
+              "Not": true,
+              "m_Quest": "!bp_5ba83bd1a6b1c884794fbb4858480e7f",
+              "State": "Completed"
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "86bf0569a9029ae4b8c9d300a41e5739": {
+      "Path": "World/Dialogs/Epilogues/Cue_0409.jbp",
+      "Type": "BlueprintCue",
+      "Key": "0dfe0435-8149-466d-bf0c-88d648651c3a",
+      "Text": "Wenduag took the Commander's death coldly and calmly. Only the keenest observers could tell that from that day on, Wenduag valued her own life even less than before, charging bravely into any battle, as if begging death to send an arrow that would strike her right in the heart. Within a scant few years, her pleas were answered.",
+      "DataSha256": "8f510775c31a4dc8e21f9306bde342656a4574d0c4458e8e9a7f79d02a4f3b36",
+      "TextSha256": "5a887aaf282469ddad25f9472f5902409c4003c2a14bab2c2f417f97cb05d4b0",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$333422f0-cc33-4b25-81ca-8c9abfc3f6b4",
+              "Not": false,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$d06e3064-0fdb-4273-bb4f-69823eb9cf6c",
+                    "Not": false,
+                    "m_Etude": "!bp_c3a5748e4a44a1649a75e0968c15a0c1",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$0905c1b9-9ad1-45f1-bb92-fd03075a25e4",
+                    "Not": false,
+                    "m_Etude": "!bp_bf5bb702e577a0a4eaa1a9df7dea253b",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$d505e922-b0d4-4dea-b787-d88aa3551daa",
+              "Not": false,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "8593ec10e3c34cdaaa2d2ed45e73e58a": {
+      "Path": "World/Dialogs/Epilogues/Cue_37_EEGBkillsW.jbp",
+      "Type": "BlueprintCue",
+      "Key": "0f468f97-27b0-492b-9213-7a53171c52af",
+      "Text": "One of the first to hear this phrase was another of the Commander's former companions, Wenduag. Greybor personally fulfilled the contract on her head.",
+      "DataSha256": "a7968fb9d96c3c6f12e1c2961676fc19a6a1cf3ce9c1918abb291d954aa92d86",
+      "TextSha256": "468f8f4a41b6f712a6d552530a617e62c272fcd5cfd7ebbb29bd8d4a21a728a3",
+      "Data": {
+        "Conditions": {
+          "Operation": "Or",
+          "Conditions": [
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$465d65f3-1cfd-445b-a6e0-1b3d2feb323c",
+              "Not": false,
+              "m_Cue": "!bp_8f6017d8d3bc5ec46b15773947e80c70",
+              "CurrentDialog": false
+            },
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$3734b796-c4e5-476a-bf0d-b3e7fb5ffcb1",
+              "Not": false,
+              "m_Cue": "!bp_86bf0569a9029ae4b8c9d300a41e5739",
+              "CurrentDialog": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "3d54fe05a0fe44f78ac907c37fe8a460": {
+      "Path": "World/Dialogs/Epilogues/Cue_37_EEWenduBurnsEmber.jbp",
+      "Type": "BlueprintCue",
+      "Key": "5442dcf4-e1dd-47f5-b41a-c127471418f0",
+      "Text": "One day, a gang led by Wenduag attacked the orphanage where Ember lived. The mongrel ordered it pillaged and burned to the ground, and the inhabitants were turned out onto the street. Wenduag either failed to recognize her former companion or chose not to acknowledge her.",
+      "DataSha256": "090ec7dc5b8fd452641e93aed21f6cc6102e579b9b230ef72cf6f002c8c627e4",
+      "TextSha256": "f8f7c8c4fbbac58fcc728efc5308a5b8a6ff89af7776cd3b6b1c5fc99081c0a4",
+      "Data": {
+        "Conditions": {
+          "Operation": "Or",
+          "Conditions": [
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$92d29827-fc88-4897-8628-94dec7b1f329",
+              "Not": false,
+              "m_Cue": "!bp_8f6017d8d3bc5ec46b15773947e80c70",
+              "CurrentDialog": false
+            },
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$5faf7f04-6c7e-4e67-b2db-5e9f404866f9",
+              "Not": false,
+              "m_Cue": "!bp_d744a32aeb3e0804b98683deb56da799",
+              "CurrentDialog": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "62f20840e6aa33844b641c5c8e10f814": {
+      "Path": "World/Dialogs/Epilogues/Cue_0454.jbp",
+      "Type": "BlueprintCue",
+      "Key": "8ccf1c23-ae95-4b2e-84cc-37b647aabebd",
+      "Text": "After the war, Greybor went off on his \"personal conquest.\" He traveled to Alushinyrra and killed four candidates for the position of the head of the {d|Greybor Guild}Assassins' Guild{/d}, whereupon he rightfully took the position himself and became a preeminent figure in the Midnight Isles. Under his leadership, the guild prospered, and the denizens of many planes would shudder whenever they heard the innocent phrase \"sweet dreams.\"",
+      "DataSha256": "75e4e46edbfe3d8cf6cc496e51a1afdf92a8614b932b7ed0460bf71d5bdae5ad",
+      "TextSha256": "2062e85510053a0b5cb0e34fbd92be7db0a394f608add4cf1dac550e2f211468",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$112d8a14-5827-47b4-a6d2-0106ae3b051b",
+              "Not": false,
+              "Comment": "ТЕ НЕ (!!!) с компаньонами",
+              "ConditionsChecker": {
+                "Operation": "And",
+                "Conditions": [
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$b47c2edd-a8d7-4b14-b325-575251244f18",
+                    "Not": true,
+                    "m_Cue": "!bp_6f95e268d337ddc45be43a11587bc0b6",
+                    "CurrentDialog": false
+                  },
+                  {
+                    "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+                    "name": "$CueSeen$7a9bfa77-96ec-496e-a468-a2c2ea17057e",
+                    "Not": true,
+                    "m_Cue": "!bp_aca88b6a3cc90c047925bbc0572c10dc",
+                    "CurrentDialog": false
+                  }
+                ]
+              }
+            },
+            {
+              "$type": "1d392c8d9feed78408fbcb18f9468fb9, OrAndLogic",
+              "name": "$OrAndLogic$07cb3637-1a08-47eb-b233-a25a41a7586f",
+              "Not": false,
+              "Comment": "",
+              "ConditionsChecker": {
+                "Operation": "Or",
+                "Conditions": [
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$98e97dc7-838f-4c8e-a731-0437bc93bb64",
+                    "Not": false,
+                    "m_Etude": "!bp_a7ad5a841ace4e3cad533b3b886303ba",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  },
+                  {
+                    "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+                    "name": "$EtudeStatus$293ef7d2-86f0-40d0-ae1f-c1d94abd93cc",
+                    "Not": false,
+                    "m_Etude": "!bp_26bf0b163f9c4a078c6c48d93cc0fa76",
+                    "NotStarted": false,
+                    "Started": false,
+                    "Playing": true,
+                    "CompletionInProgress": false,
+                    "Completed": false
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [
+            "!bp_8593ec10e3c34cdaaa2d2ed45e73e58a"
+          ],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "47c754ad6f357e64f9d1295065698aae": {
+      "Path": "World/Dialogs/Epilogues/Cue_0419.jbp",
+      "Type": "BlueprintCue",
+      "Key": "10140353-9b55-4652-98e4-a169acea995e",
+      "Text": "After seeing everything she believed in {d|Ember Evil}crumble{/d} before her eyes, the girl that once answered to the name Ember descended into total madness. After the war's end she found herself living in an orphanage, sweeping floors and washing dishes. She retained her magical powers, but she never used them again. Through her tears, she would say, \"I don't want to do tricks. When I do tricks, everybody dies.\"",
+      "DataSha256": "138fd347364e3c4c39d8db7105468d154689e043eb8d98f985e35804fb0e57a9",
+      "TextSha256": "60695b35c0615ca4a603d74ecef4f99f908d20fd32c31aadba471cf8c8675c3e",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+              "name": "$QuestStatus$ba400877-5d95-4096-88fd-be911a254cc4",
+              "Not": false,
+              "m_Quest": "!bp_49b7496143daed149ab4557a9684dd53",
+              "State": "Completed"
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$fe95cd9b-7d13-45dd-8374-66d82482f2c2",
+              "Not": false,
+              "m_Etude": "!bp_b1d0c45e438c2ae458466ed56de99a9d",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [
+            "!bp_3d54fe05a0fe44f78ac907c37fe8a460"
+          ],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "f23fb3dacf91b3e4b9d3a85937d323bf": {
+      "Path": "World/Dialogs/Epilogues/Cue_0387.jbp",
+      "Type": "BlueprintCue",
+      "Key": "bde81fb1-19f7-4ac0-9414-f217803d63c5",
+      "Text": "That event was preceded by a futile attempt to drive a dagger into the former {d|Camellia Ignored}Commander's{/d} heart.",
+      "DataSha256": "157d762fd0e47d0f609c10eb61b95f733e7a3a174bcba516438195e96fcdc621",
+      "TextSha256": "a3f4e5ce805f8d200878e1022b1ba7ea87b36d9f6ad7b87e4fac2e063b18c1b9",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "49ab5e967cc13354493c3f9395e55611, QuestStatus",
+              "name": "$QuestStatus$3503ed8b-bab9-4463-88a4-0ae5ea9dd5d0",
+              "Not": true,
+              "m_Quest": "!bp_72d7618aeec2e134db7e9728e9fea90a",
+              "State": "Completed"
+            },
+            {
+              "$type": "ea981728db8a5f84888ecba390671a05, EtudeStatus",
+              "name": "$EtudeStatus$f42e941f-64cf-4da0-b203-bff0874479b9",
+              "Not": true,
+              "m_Etude": "!bp_381a296094804761af0893d2e70dc2df",
+              "NotStarted": false,
+              "Started": false,
+              "Playing": true,
+              "CompletionInProgress": false,
+              "Completed": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "74c459561da4455a8642d1a9e99f0f34": {
+      "Path": "World/Dialogs/Epilogues/Cue_37_EEGbEmber.jbp",
+      "Type": "BlueprintCue",
+      "Key": "25f34917-975c-45ad-830e-2e7e3e97f578",
+      "Text": "A few years after the war had ended, Greybor found the orphanage where his companion Ember lived. The former assassin took in the former preacher and cared for her as if she were his own daughter.",
+      "DataSha256": "1765dea7d0899716846af27f6d99197bb562dfea304224db6f7ea3484404ebfc",
+      "TextSha256": "7307af0d49ebfd84eb780229b975cec3adb79339570c828db06d6af79772bf5f",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$2c7c5824-d316-4002-ae2c-67735a34499f",
+              "Not": false,
+              "m_Cue": "!bp_47c754ad6f357e64f9d1295065698aae",
+              "CurrentDialog": false
+            },
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$40ed597b-6bdb-4863-9d3b-97e326130955",
+              "Not": true,
+              "m_Cue": "!bp_3d54fe05a0fe44f78ac907c37fe8a460",
+              "CurrentDialog": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    },
+    "cdcde1c34a544b72816b46d0fa28eda3": {
+      "Path": "World/Dialogs/Epilogues/Cue_37_EEGbEmberAlt.jbp",
+      "Type": "BlueprintCue",
+      "Key": "df7f5b05-03e1-4841-b51c-d68d2b23a3a3",
+      "Text": "A few years after the end of the war, Greybor found the orphanage where his companion Ember had once lived. He wished to take in the former preacher and give her a home, but all he found were the charred remains of a fire.",
+      "DataSha256": "c49a80d91a2f0f712e5452f9caadc97800aca710f4849db123f9924486e66580",
+      "TextSha256": "be467627262c481869ba9d3544c08dd587a6c4d8b9be0bc7df054723288c0135",
+      "Data": {
+        "Conditions": {
+          "Operation": "And",
+          "Conditions": [
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$e0ec708f-165a-4b77-a60d-70bbe286f888",
+              "Not": false,
+              "m_Cue": "!bp_47c754ad6f357e64f9d1295065698aae",
+              "CurrentDialog": false
+            },
+            {
+              "$type": "4d2b3bd16c3f2bf4ebb8a19907e2be7e, CueSeen",
+              "name": "$CueSeen$008aa7bd-223e-43cf-bca6-3e72b6f2f1cc",
+              "Not": false,
+              "m_Cue": "!bp_3d54fe05a0fe44f78ac907c37fe8a460",
+              "CurrentDialog": false
+            }
+          ]
+        },
+        "Continue": {
+          "Cues": [],
+          "Strategy": "First"
+        },
+        "OnShow": {
+          "Actions": []
+        },
+        "OnStop": {
+          "Actions": []
+        },
+        "Answers": [],
+        "Components": [],
+        "ShowOnce": false,
+        "ShowOnceCurrentDialog": false
+      }
+    }
+  },
+  "Findings": [
+    {
+      "Id": "camellia:001",
+      "Scene": "camellia.trickster.epilogue.native_stayed_plain",
+      "Problem": "A living commitment earns epilogue.kept but never sets returned. Both this replacement and its When gate require returned, leaving native Cue_0386 (5011dfa46fbb0464ab624d78bcfbd483) describing her departure beside the new ending. Verified against the archive and localization.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "camellia:002",
+      "Scene": "camellia.trickster.epilogue.native_stayed",
+      "Problem": "The living committed romance receives epilogue.kept while this returned-only edit leaves native Cue_28 (4ed8e9723359441dae10ad3068d3f2c7) describing her eventual disappearance.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "camellia:003",
+      "Scene": "camellia.trickster.epilogue.native_te_stayed",
+      "Problem": "The living committed ascension history cannot select this returned-only replacement. Native Cue_0392 (84f892d388bba01489145ecd631f23a2) instead says she leaves and disappears among the planes, contradicting epilogue.kept.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "camellia:004",
+      "Scene": "camellia.trickster.epilogue.kept",
+      "Problem": "The suppression of native Cue_16 (3617a648c06a45d1807fde65aedafb06) requires returned. The living kept history therefore retains the follow-on about the missing woman's replacement identity arriving in Varisia.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "camellia:005",
+      "Scene": "camellia.trickster.epilogue.kept",
+      "Problem": "The associated suppression of native Cue_0390 (e9a183135b8289544a3144dcf8151920) also excludes living commitments. The intended native-ending reconciliation consequently leaves its Varisian follow-on active in that completed route.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "camellia:006",
+      "Scene": "camellia.trickster.epilogue.commit",
+      "Problem": "Living terms can earn this fallback ending without returned, but Cue_0391's suppression requires returned in both KEPT and TERMS. Native Cue_0391 (430ce9767d3ede2479ff9d6aee432304) subsequently describes another departure. The same omission affects living epilogue.kept.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "camellia:078",
+      "Scene": "camellia.trickster.epilogue.native_stayed",
+      "Problem": "CamelliaNativeSlideTests labels a fixture containing only trickster.ever and camellia.committed as a second-death history and expects native slides. No death flag is present; this is also the valid living commitment whose authored kept page contradicts those slides.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "nenio:065",
+      "Scene": "nenio.trickster.epilogue.commit",
+      "Problem": "The route does not reconcile native Nenio epilogues. A run that skips the friendship experiment can show native Cue_0423 (b6c0fb4c102cfb84f83a772e2dbb8a14), which says she never returned and forgot to come back, alongside this authored return. No Nenio NativeEpilogueEdit or suppression is exported.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "wenduag:004",
+      "Scene": "wenduag.trickster.epilogue.pack",
+      "Problem": "Native Cue_0410, GUID 8f6017d8d3bc5ec46b15773947e80c70, remains unreconciled when Q3 is incomplete. A bought, committed kept Wenduag can receive this departure alongside the authored pack ending. B10 claims an E14d replacement that is absent.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "wenduag:005",
+      "Scene": "wenduag.lastcall.page",
+      "Problem": "Native Cue_0409, GUID 86bf0569a9029ae4b8c9d300a41e5739, still mourns a Commander returned through Last Call and subsequently kills Wenduag through reckless fighting. The promised commander_back reconciliation is absent.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "wenduag:006",
+      "Scene": "wenduag.trickster.epilogue.pack",
+      "Problem": "Native Cue_37_EEGBkillsW, GUID 8593ec10e3c34cdaaa2d2ed45e73e58a, follows the unreconciled departure or mourning cue and kills Wenduag despite the retained partnership. The E18 continuation gate claimed by B10 is absent.",
+      "Status": "fixed"
+    },
+    {
+      "Id": "wenduag:007",
+      "Scene": "wenduag.trickster.epilogue.pack",
+      "Problem": "Native Cue_37_EEWenduBurnsEmber, GUID 3d54fe05a0fe44f78ac907c37fe8a460, still consumes Cue_0410's departure history. B10's claimed continuation reconciliation is absent. Cruelty is appropriate; the unreconciled departure history is the defect.",
+      "Status": "fixed"
+    }
+  ],
+  "ParentPolicy": {
+    "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+    "Source": "reference/canon-review/aranka-AranEpil.cs:36",
+    "Etude": "6eddba9546e84c2fb0bb50af027b7d25",
+    "Not": true
+  },
+  "SharedLossGuards": [
+    {
+      "Outcome": "wenduag.trickster.epilogue.native_commander_back",
+      "Source": "wenduag.trickster.epilogue.pack"
+    }
+  ]
+}

@@ -1439,9 +1439,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1456,10 +1455,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1474,10 +1472,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.commander_back",
-        "trickster.ever"
+        "camellia.trickster.coffin_life",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1492,11 +1489,230 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
+        "camellia.trickster.coffin_life",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g4",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g5",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g6",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g7",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g8",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
         "trickster.commander_back",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g9",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g10",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g11",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g12",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g13",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g14",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "36a07840d25540eeac6b1c6631196bcc"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
+    },
+    {
+      "Id": "36a07840d25540eeac6b1c6631196bcc/v0/g15",
+      "Target": "36a07840d25540eeac6b1c6631196bcc",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1510,9 +1726,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned"
+        "camellia.committed"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1526,8 +1740,8 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.outcome.route_open",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1543,9 +1757,8 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1560,10 +1773,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1578,10 +1790,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "rrt.degraded.camellia",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "36a07840d25540eeac6b1c6631196bcc"
@@ -1596,9 +1807,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.native_threshold_waited"
@@ -2066,6 +2276,378 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "kiana.native.q3_reconcile_030_full"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g0",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g1",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g2",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g3",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g4",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g5",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g6",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g7",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g8",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g9",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g10",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g11",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g12",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g13",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g14",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/v0/g15",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/control/off-Trickster",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/control/unpaid",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/control/closed",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.closed",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/control/unreturned-sacrifice",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "sacrifice",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/control/degraded",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "rrt.degraded.wenduag",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "3d54fe05a0fe44f78ac907c37fe8a460"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
+    },
+    {
+      "Id": "3d54fe05a0fe44f78ac907c37fe8a460/control/native-ineligible",
+      "Target": "3d54fe05a0fe44f78ac907c37fe8a460",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_ember"
     },
     {
       "Id": "3f29d60b9a30bbb49bc9d56eaae1f643/v0/g0",
@@ -2569,9 +3151,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2586,10 +3167,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2604,10 +3184,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.commander_back",
-        "trickster.ever"
+        "camellia.trickster.coffin_life",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2622,11 +3201,230 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
+        "camellia.trickster.coffin_life",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g4",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g5",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g6",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g7",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g8",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
         "trickster.commander_back",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g9",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g10",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g11",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g12",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g13",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g14",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "4ed8e9723359441dae10ad3068d3f2c7"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
+    },
+    {
+      "Id": "4ed8e9723359441dae10ad3068d3f2c7/v0/g15",
+      "Target": "4ed8e9723359441dae10ad3068d3f2c7",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2640,9 +3438,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned"
+        "camellia.committed"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2656,8 +3452,8 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.outcome.route_open",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2673,9 +3469,8 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2690,10 +3485,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2708,10 +3502,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "rrt.degraded.camellia",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "4ed8e9723359441dae10ad3068d3f2c7"
@@ -2726,9 +3519,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed"
@@ -2741,9 +3533,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2758,10 +3549,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2776,10 +3566,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.commander_back",
-        "trickster.ever"
+        "camellia.trickster.coffin_life",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2794,11 +3583,230 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
+        "camellia.trickster.coffin_life",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g4",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g5",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g6",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g7",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g8",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
         "trickster.commander_back",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g9",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g10",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g11",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g12",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g13",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g14",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "5011dfa46fbb0464ab624d78bcfbd483"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
+    },
+    {
+      "Id": "5011dfa46fbb0464ab624d78bcfbd483/v0/g15",
+      "Target": "5011dfa46fbb0464ab624d78bcfbd483",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2812,9 +3820,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned"
+        "camellia.committed"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2828,8 +3834,8 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.outcome.route_open",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2845,9 +3851,8 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2862,10 +3867,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2880,10 +3884,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "rrt.degraded.camellia",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "5011dfa46fbb0464ab624d78bcfbd483"
@@ -2898,9 +3901,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.native_stayed_plain"
@@ -4492,9 +5494,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4509,10 +5510,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4527,10 +5527,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.commander_back",
-        "trickster.ever"
+        "camellia.trickster.coffin_life",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4545,11 +5544,230 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
+        "camellia.trickster.coffin_life",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g4",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g5",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g6",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g7",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g8",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
         "trickster.commander_back",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g9",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g10",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g11",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g12",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g13",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g14",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "84f892d388bba01489145ecd631f23a2"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "84f892d388bba01489145ecd631f23a2/v0/g15",
+      "Target": "84f892d388bba01489145ecd631f23a2",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4563,9 +5781,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned"
+        "camellia.committed"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4579,8 +5795,8 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.outcome.route_open",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4596,9 +5812,8 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4613,10 +5828,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4631,10 +5845,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "rrt.degraded.camellia",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "84f892d388bba01489145ecd631f23a2"
@@ -4649,12 +5862,1016 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.native_te_stayed"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g0",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g1",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g2",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g3",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g4",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g5",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g6",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g7",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g8",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g9",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g10",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g11",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g12",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g13",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g14",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v0/g15",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g0",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g1",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g2",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g3",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g4",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g5",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g6",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g7",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g8",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g9",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g10",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g11",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g12",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g13",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g14",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/v1/g15",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor_back"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/control/off-Trickster",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/control/unpaid",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/control/closed",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.closed",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/control/unreturned-sacrifice",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "sacrifice",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/control/degraded",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "rrt.degraded.wenduag",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8593ec10e3c34cdaaa2d2ed45e73e58a"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "8593ec10e3c34cdaaa2d2ed45e73e58a/control/native-ineligible",
+      "Target": "8593ec10e3c34cdaaa2d2ed45e73e58a",
+      "Dialog": "ae58532cb72b28b4eaaccb82eb78eaea",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_greybor"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g0",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g1",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g2",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g3",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g4",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g5",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g6",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g7",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g8",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g9",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g10",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g11",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g12",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g13",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g14",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/v0/g15",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.echo.abyss.returned_available",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/control/off-Trickster",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/control/unpaid",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/control/closed",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.closed",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/control/unreturned-sacrifice",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "sacrifice",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/control/degraded",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "rrt.degraded.wenduag",
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [
+        "86bf0569a9029ae4b8c9d300a41e5739"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
+    },
+    {
+      "Id": "86bf0569a9029ae4b8c9d300a41e5739/control/native-ineligible",
+      "Target": "86bf0569a9029ae4b8c9d300a41e5739",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.now",
+        "wenduag.trickster.native"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_commander_back"
     },
     {
       "Id": "8ae3220fd0a645809f59f54f8d89985f/v0/g0",
@@ -4765,6 +6982,378 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "horzalah.native.eng7_f6c.trio"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g0",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g1",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g2",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g3",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g4",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g5",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g6",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g7",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g8",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g9",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g10",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g11",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g12",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g13",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g14",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/v0/g15",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed",
+        "wenduag.trickster.echo.abyss.returned_available"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/control/off-Trickster",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/control/unpaid",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/control/closed",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.closed",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/control/unreturned-sacrifice",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "sacrifice",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/control/degraded",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "rrt.degraded.wenduag",
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [
+        "8f6017d8d3bc5ec46b15773947e80c70"
+      ],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
+    },
+    {
+      "Id": "8f6017d8d3bc5ec46b15773947e80c70/control/native-ineligible",
+      "Target": "8f6017d8d3bc5ec46b15773947e80c70",
+      "Dialog": "",
+      "Page": "223fd069ee25c784db2df011adbf10f8",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now",
+        "wenduag.committed"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "wenduag.trickster.epilogue.native_pack"
     },
     {
       "Id": "a473e5412ffd0f54fbf395770a80a008/v0/g0",
@@ -5493,6 +8082,1248 @@
       "ExpectedCandidate": "kiana.native.doubt_31_home"
     },
     {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g0",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g1",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g2",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g3",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g4",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g5",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g6",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g7",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g8",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g9",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g10",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g11",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g12",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g13",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g14",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g15",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g16",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g17",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g18",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g19",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g20",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g21",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g22",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g23",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g24",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g25",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g26",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g27",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g28",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g29",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g30",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v0/g31",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g0",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g1",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g2",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g3",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g4",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g5",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g6",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g7",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g8",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g9",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g10",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g11",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g12",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g13",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g14",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g15",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g16",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g17",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g18",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g19",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g20",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g21",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g22",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g23",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g24",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g25",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g26",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g27",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g28",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g29",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g30",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/v1/g31",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.committed",
+        "nenio.outcome.eligible",
+        "nenio.trickster.returned",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_article"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/control/off-Trickster",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/control/unpaid",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/control/closed",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.closed",
+        "nenio.trickster.late_committed",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/control/unreturned-sacrifice",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "sacrifice",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/control/degraded",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "rrt.degraded.nenio",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "b6c0fb4c102cfb84f83a772e2dbb8a14"
+      ],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
+      "Id": "b6c0fb4c102cfb84f83a772e2dbb8a14/control/native-ineligible",
+      "Target": "b6c0fb4c102cfb84f83a772e2dbb8a14",
+      "Dialog": "",
+      "Page": "f1b5cd57aa76be44b9f754a208854ee7",
+      "Chapter": 6,
+      "Flags": [
+        "nenio.trickster.late_committed",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "nenio.trickster.epilogue.native_commit"
+    },
+    {
       "Id": "be05eef615c2eac44ac30ec0a2e49603/v0/g0",
       "Target": "be05eef615c2eac44ac30ec0a2e49603",
       "Dialog": "e35b026526a45204d8eeefa22a7f5a57",
@@ -5730,9 +9561,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5747,10 +9577,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5765,10 +9594,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.commander_back",
-        "trickster.ever"
+        "camellia.trickster.coffin_life",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5783,11 +9611,230 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
+        "camellia.trickster.coffin_life",
         "camellia.trickster.killed_held",
-        "camellia.trickster.returned",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g4",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g5",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g6",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g7",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g8",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
         "trickster.commander_back",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g9",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g10",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g11",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g12",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g13",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g14",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "c1b1da84c12d3ac448ec65b4342ce77f"
+      ],
+      "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"
+    },
+    {
+      "Id": "c1b1da84c12d3ac448ec65b4342ce77f/v0/g15",
+      "Target": "c1b1da84c12d3ac448ec65b4342ce77f",
+      "Dialog": "",
+      "Page": "503164ff04ac64543ba42561ea9f970f",
+      "Chapter": 6,
+      "Flags": [
+        "camellia.committed",
+        "camellia.trickster.coffin_life",
+        "camellia.trickster.cost.knows_you_tried",
+        "camellia.trickster.killed_held",
+        "trickster.commander_back",
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5801,9 +9848,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned"
+        "camellia.committed"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5817,8 +9862,8 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
-        "camellia.outcome.route_open",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5834,9 +9879,8 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5851,10 +9895,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5869,10 +9912,9 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
         "rrt.degraded.camellia",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [
         "c1b1da84c12d3ac448ec65b4342ce77f"
@@ -5887,9 +9929,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
-        "camellia.outcome.route_open",
-        "camellia.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.native_te_own_path"

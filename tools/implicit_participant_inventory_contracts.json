@@ -1,0 +1,107 @@
+{
+  "schema": 1,
+  "item": "E-Q8-05",
+  "block": "eng8-q8e",
+  "Authored": true,
+  "readers": {
+    "participant.chivarro.available": [
+      "minachiv.closed",
+      "inhuman",
+      "minagho_chivarro.trickster.chivarro_sent_back"
+    ],
+    "participant.hepzamirah.available": [
+      "hepzamirah.closed"
+    ],
+    "participant.vellexia.available": [
+      "vellexia.closed",
+      "vellexia.parted"
+    ]
+  },
+  "consumers": [
+    {
+      "finding": "herrax:023",
+      "scene": "herrax.trickster.chivarro_seen",
+      "reader": "participant.chivarro.available",
+      "kind": "scene",
+      "presences": [
+        "herrax.presence.rokhorn"
+      ]
+    },
+    {
+      "finding": "herrax:024",
+      "scene": "herrax.trickster.chivarro_seen_stall",
+      "reader": "participant.chivarro.available",
+      "kind": "scene",
+      "presences": [
+        "herrax.presence.rokhorn_stall"
+      ]
+    },
+    {
+      "finding": "horzalah:020",
+      "scene": "horzalah.trickster.guild.kept",
+      "reader": "participant.hepzamirah.available",
+      "kind": "node",
+      "node": "sister",
+      "history": "hepzamirah.trickster.returned",
+      "fallback": "sister_absent"
+    },
+    {
+      "finding": "wenduag:024",
+      "scene": "wenduag.trickster.court.vellexia",
+      "reader": "participant.vellexia.available",
+      "kind": "scene"
+    },
+    {
+      "finding": "wenduag:025",
+      "scene": "wenduag.trickster.court.vellexia.native_visit",
+      "reader": "participant.vellexia.available",
+      "kind": "scene"
+    }
+  ],
+  "review": [
+    {
+      "id": "herrax:023",
+      "scene": "herrax.trickster.chivarro_seen",
+      "status": "fixed",
+      "evidence": "The physical discovery and Rokhorn's associated presence require reunion/return history but do not exclude minachiv.closed or chivarro_sent_back. They can therefore initiate a discovery of Chivarro in Drezen after the Commander has sent her away."
+    },
+    {
+      "id": "herrax:024",
+      "scene": "herrax.trickster.chivarro_seen_stall",
+      "status": "fixed",
+      "evidence": "The alternate-anchor twin repeats the departure leak when the Fool King is gone or the primary presence fails."
+    },
+    {
+      "id": "horzalah:020",
+      "scene": "horzalah.trickster.guild.kept",
+      "status": "no_change_needed_for_live_guard",
+      "evidence": "Rechecked HEAD export: four sister edges already read the guarded Hepzamirah participant. The absence acknowledgment is appended and the inventory now enforces every edge."
+    },
+    {
+      "id": "wenduag:024",
+      "scene": "wenduag.trickster.court.vellexia",
+      "status": "fixed",
+      "evidence": "vellexia.trickster.in_person is an unguarded composite of persistent historical flags. Unlike participant.vellexia.available, it has no RouteOpen guard. This scene remains available after Vellexia closes or becomes unavailable."
+    },
+    {
+      "id": "wenduag:025",
+      "scene": "wenduag.trickster.court.vellexia.native_visit",
+      "status": "fixed",
+      "evidence": "A production-rules probe opens this regenerated twin with in_person true and participant.vellexia.available false. Wenduag describes a closed, unavailable Vellexia as presently walking the citadel."
+    }
+  ],
+  "no_change_needed": [
+    {
+      "site": "participant.chivarro.available",
+      "evidence": "Existing E-Q7-04 reader already forbids chivarro_sent_back; consumer wiring was missing."
+    },
+    {
+      "site": "participant.hepzamirah.available / participant.vellexia.available",
+      "evidence": "Existing DerivedOpenRoutes and bodily/confined readers are reused; no commitment requirement added."
+    },
+    {
+      "site": "horzalah:020 current-location sister edges",
+      "evidence": "Base HEAD Story.json already uses participant.hepzamirah.available on all four edges via E-Q7-04 replace_choice. Added inventory enforcement and historical-departure acknowledgment only."
+    }
+  ]
+}

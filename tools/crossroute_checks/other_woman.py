@@ -64,6 +64,30 @@ def check(model, blocks, proof):
             native_scenes[variant['Replacement']] = context
     # eng7-f6b end
     out = []
+    # eng8-q8e begin: identity contracts catch sister/pronoun consumers and spawns.
+    import json
+    from pathlib import Path
+    from .common import AND, lit, Block
+    contract = json.loads((Path(__file__).resolve().parents[1] / "implicit_participant_inventory_contracts.json").read_text(encoding="utf-8"))
+    for entry in contract["consumers"]:
+        if entry["scene"] not in model.by_id:
+            continue  # standalone lint fixtures and legacy stories have no consumer
+        required = AND(lit(entry["reader"]),
+                       *(lit(loss, False) for loss in contract["readers"][entry["reader"]]))
+        candidates = [b for b in blocks if b.scene["Id"] == entry["scene"]
+                      and b.slot == "text" and (entry["kind"] == "scene" or b.node["Id"] == entry["node"])]
+        for b in candidates:
+            if not proof.implies(b.context, required):
+                out.append(finding("L1", b, "declared current participant: " + entry["reader"],
+                                   entry["reader"], b.text[:160], required=required))
+        for name in entry.get("presences", []):
+            presence = model.story["Presences"][name]
+            context = fields(presence, overrides=True)
+            if not proof.implies(context, required):
+                b = Block(candidates[0].scene, dict(Id=name), presence, "presence", presence.get("Greeting", ""), context)
+                out.append(finding("L1", b, "declared current participant: " + entry["reader"],
+                                   entry["reader"], b.text[:160], required=required))
+    # eng8-q8e end
     for b in blocks:
         for woman, (route, pattern) in names.items():
             seat = (model.story.get("SeatWomen") or {}).get(woman) or {}

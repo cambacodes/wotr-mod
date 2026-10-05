@@ -77,7 +77,16 @@ namespace Tirabade
         public const string QueenSequence = "bb9d36fd37d74bf4792931d6052a7d44";   // CueSequence_Queen (Galfrey's realm slides)   // CueSequence_Special (the Tirabade pair page)
         public static readonly Dictionary<string, Evidence> Reviewed = new Dictionary<string, Evidence>
         {
-            ["86bf0569a9029ae4b8c9d300a41e5739"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "0dfe0435-8149-466d-bf0c-88d648651c3a"), // Wenduag Cue_0409
+            // eng8-q8e begin: archive/localization and AranEpil parent-policy reviewed.
+            ["8f6017d8d3bc5ec46b15773947e80c70"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "8590f7c2-79d5-4179-9c8a-0798f4ef5de9", textOnly: true),
+            ["b6c0fb4c102cfb84f83a772e2dbb8a14"] = new Evidence("f1b5cd57aa76be44b9f754a208854ee7", Companions, "185ff9f7-34e0-4806-83fd-9df14b95e269"),
+            ["8593ec10e3c34cdaaa2d2ed45e73e58a"] = new Evidence("", "", "0f468f97-27b0-492b-9213-7a53171c52af",
+                degradeOnRefusal: false, parent: "62f20840e6aa33844b641c5c8e10f814", dialog: "ae58532cb72b28b4eaaccb82eb78eaea", alsoParents: Array.Empty<string>(), textOnly: true),
+            ["3d54fe05a0fe44f78ac907c37fe8a460"] = new Evidence("", "", "5442dcf4-e1dd-47f5-b41a-c127471418f0",
+                degradeOnRefusal: false, parent: "47c754ad6f357e64f9d1295065698aae", dialog: "ae58532cb72b28b4eaaccb82eb78eaea", alsoParents: Array.Empty<string>(), textOnly: true),
+            // eng8-q8e end
+            // eng8-q8e: CueSeen keeps the original Commander-return cue too.
+            ["86bf0569a9029ae4b8c9d300a41e5739"] = new Evidence("223fd069ee25c784db2df011adbf10f8", Companions, "0dfe0435-8149-466d-bf0c-88d648651c3a", textOnly: true), // Wenduag Cue_0409
             ["36a07840d25540eeac6b1c6631196bcc"] = new Evidence("503164ff04ac64543ba42561ea9f970f", Companions, "af56e46e-7e82-4e22-9951-8ddc37dd015f",
                 degradeOnRefusal: false), // Camellia Cue_38_master (warning-only, with the other Camellia slides below)
             // Arueshalae Cue_0461 (the dream world): RanRomance's SlideArue sets its Continue to Aranka's slide 959237a3 (aranka-SlideArue.cs),

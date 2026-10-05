@@ -919,6 +919,15 @@ def integrate(payload):
         Greeting=('{n}Nenio has wedged her folio beneath a stone beside the camp stores. The wind off Threshold '
                   'keeps lifting its pages.{/n} "The fortifications can wait. I came to measure the Wound. Stand still."'))
     # end eng7-f3
+    # eng8-q8e begin: authored return replaces only the incompatible no-friend slide.
+    from storylines.native_overrides import register_legacy
+    register_legacy(payload, __name__, edits={
+        "b6c0fb4c102cfb84f83a772e2dbb8a14": dict(Page="f1b5cd57aa76be44b9f754a208854ee7",
+            Sequence="fec3b6f28610c8a48a239f148ed3ed60", Key="185ff9f7-34e0-4806-83fd-9df14b95e269",
+            Replacement=P + "epilogue.native_commit", When=[["trickster.now", LATE_COMMITTED]],
+            KeepNativeImage=False, Variants=[dict(Replacement=P + "epilogue.native_article",
+                When=[["trickster.now", COMMITTED]], KeepNativeImage=False)])})
+    # eng8-q8e end
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.
@@ -929,3 +938,15 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+
+# eng8-q8e begin: E14 one-node slides reuse the authored return, without paragraph appenders.
+NATIVE_ENDING_SCENES = []
+for _ending_suffix in ("commit", "article"):
+    import copy as _ending_copy
+    _original = next(s for s in SCENES if s["Id"] == P + "epilogue." + _ending_suffix)
+    _slide = _ending_copy.deepcopy(_original)
+    _slide["Id"] = P + "epilogue.native_" + _ending_suffix
+    _slide["Nodes"][0].pop("Paragraphs", None)
+    NATIVE_ENDING_SCENES.append(_slide)
+# eng8-q8e end

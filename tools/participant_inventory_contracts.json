@@ -354,7 +354,8 @@
     {
       "scene": "wenduag.trickster.court.vellexia",
       "reader": "participant.vellexia.available",
-      "kind": "remembered"
+      "kind": "remembered",
+      "eng8-q8e": {"availability": "scene", "reason": "Both physical hosts now require current Vellexia; keep the remembered node and answer indices for saves."}
     },
     {
       "scene": "chadali.trickster.epilogue.lucky_night",

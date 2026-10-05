@@ -384,6 +384,21 @@ internal static class Program
         }
         // eng7-l06 end
         Rules.Validate(story);
+        // eng8-q8e begin: required inventories run in full and focused rules modes.
+        if (!args.Contains("--bindings"))
+        {
+            ImplicitParticipantInventoryTests.Run(story, Check);
+            NativeEndingInventory2Tests.Run(story, Check);
+        }
+        if (args.Contains("--eng8-q8e"))
+        {
+            NenioTricksterTests.Run(story, Check); // native slides preserve the route's page inventory
+            HerraxTricksterTests.Run(story, Check); // physical discovery fixtures use the departure reader
+            HorzalahTricksterTests.Run(story, Check);
+            WenduagTricksterTests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8e (" + checks + " checks)"); return;
+        }
+        // eng8-q8e end
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
         if (!args.Contains("--bindings"))

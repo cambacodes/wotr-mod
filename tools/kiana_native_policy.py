@@ -43,9 +43,15 @@ def expected():
     result = {}
     source = (ROOT / 'src/NativeEpilogueEdit.cs').read_text(encoding='utf-8-sig')
     policies = contracts()
-    runtime_targets = set(re.findall(r'\["([a-f0-9]{32})"\] = new Evidence\([^\n]*textOnly: true', source))
-    if runtime_targets != set(policies):
+    # eng8-q8e begin: the shared delivery also preserves Wenduag's native CueSeen.
+    from tools.native_contradictions import ending_contracts
+    ending_targets = set(ending_contracts()["IdentityPreservingTargets"])
+    declarations = re.findall(r'\["([a-f0-9]{32})"\] = new Evidence\((.*?)\),[ \t]*(?://[^\n]*)?\n', source, re.S)
+    runtime_targets = {target for target, args in declarations if 'textOnly: true' in args}
+    if runtime_targets != set(policies) | ending_targets:
         raise ValueError('eng7-f6b: text-only runtime inventory differs from archive contracts')
+    result.update({target: 'BlueprintCue' for target in ending_targets})
+    # eng8-q8e end
     for target, policy in policies.items():
         if runtime_declaration(target, policy) not in source:
             raise ValueError('eng7-f6b: runtime cue policy differs: ' + target)

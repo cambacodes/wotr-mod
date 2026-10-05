@@ -216,11 +216,15 @@ internal static class HerraxTricksterTests
 
         // Trk_Herrax_ChivarroSeen: the one discovery (ledger 05 row 13).
         Snapshot InDrezen(Snapshot s) { var t = Program.Copy(s); t.Area = "2570015799edf594daf2f076f2f975d8"; t.AvailableContacts.Add("25ad116e1f5008e488b13f9b968596d4"); return t; }
-        var chiv = InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier"));
-        check(Avail(seen, chiv) && Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", P + "owed.night")))
-              && !Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", "minagho_chivarro.trickster.chivarro_deposit", "minagho_chivarro.trickster.cost.herrax_favor", "herrax.letters.the_courier")))
-              && !Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier")))
-              && !Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited")))
+        // eng8-q8e: historical reunion alone is not current physical presence.
+        Snapshot ChivarroAtSide(params string[] flags) => InDrezen(World(story, 5, flags.Concat(new[] { "minagho_chivarro.trickster.chivarro_in" }).ToArray()));
+        var chiv = ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier");
+        check(Avail(seen, chiv) && Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", P + "owed.night"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", "minagho_chivarro.trickster.chivarro_deposit", "minagho_chivarro.trickster.cost.herrax_favor", "herrax.letters.the_courier"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier", "minagho_chivarro.trickster.chivarro_sent_back"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier", "minachiv.closed"))
               && !Rules.IsRemote(seen) && seen.InteractionHub == "herrax.presence.rokhorn",
             "Trk_Herrax_ChivarroSeen: the discovery does not follow her request and Chivarro alive at the Commander's side, or fires over a sale.");
         var kept = Take(seen, chiv, "start", 0, P + "cost.contract_unfinished", P + "contract.kept_out");
@@ -337,7 +341,7 @@ internal static class HerraxTricksterTests
             }
             return delivered;
         }
-        var chivWorlds = new[] { "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited" };
+        var chivWorlds = new[] { "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "minagho_chivarro.trickster.chivarro_in" };
         foreach (var (name, flags) in new (string, string[])[] {
             ("committed", new[] { "trickster", "trickster.ever", "herrax.madam", "herrax.met", Started, Primed, Bait, Lesson, P + "knife_taken", Committed }),
             ("owed", new[] { "trickster", "trickster.ever", "herrax.met", Started, Primed }),
@@ -346,7 +350,7 @@ internal static class HerraxTricksterTests
             var count = Ch5Letters(World(story, 5, flags.Concat(chivWorlds).ToArray()));
             check(count == 1, "Trk_Herrax_OneCh5Letter_" + name + ": " + count + " Herrax letters delivered in Chapter 5 (cap 1, discovery included).");
         }
-        var packetWalk = Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Primed, Bait, Lesson, P + "knife_taken", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited"));
+        var packetWalk = Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Primed, Bait, Lesson, P + "knife_taken", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "minagho_chivarro.trickster.chivarro_in"));
         check(packetWalk.Any(r => r.Has(P + "contract.kept_out")) && packetWalk.Any(r => r.Has(P + "contract.stood_by_her")),
             "Trk_Herrax_Discovery_Folded: the packet does not carry the one discovery.");
 
@@ -357,6 +361,8 @@ internal static class HerraxTricksterTests
         check(!packetFirst.Has(P + "cost.contract_unfinished"), "Trk_Herrax_LateReturn: the packet settles a discovery before Chivarro is back.");
         var backLater = InDrezen(Later(story, packetFirst, 48));
         backLater.Flags.Add("minagho_chivarro.trickster.reunited");
+        backLater.Flags.Add("minagho_chivarro.trickster.chivarro_in");
+        ImplicitParticipantInventoryTests.Observe(story, backLater);
         check(Avail(seen, backLater) && Rules.MailbagArrivals(story, backLater).All(s => s.Relationship != "herrax"),
             "Trk_Herrax_LateReturn: Chivarro returning after the packet has no discovery, or it arrives as a second letter.");
         check(Take(seen, backLater, "start", 1, P + "contract.stood_by_her").Has(P + "cost.contract_unfinished"), "Trk_Herrax_LateReturn: no answer to carry home.");

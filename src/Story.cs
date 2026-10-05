@@ -2293,6 +2293,13 @@ namespace Tirabade
                     if (pair.Key == "dbec675b71e9d5f4d96055f4bb31762e" && scene?.Relationship == "mielarah")
                         earned.UnionWith(new[] { "mielarah.trickster.primed.self", "mielarah.trickster.primed.minder", "mielarah.voyage_begun" });
                     // eng7-f6a end
+                    // eng8-q8e begin: the native partner's earned Commander return.
+                    // This exact mourning/continuation exception grants no RRT commitment.
+                    if ((pair.Key == "86bf0569a9029ae4b8c9d300a41e5739" || pair.Key == "8593ec10e3c34cdaaa2d2ed45e73e58a")
+                        && scene?.Relationship == "wenduag" && variant.When != null
+                        && variant.When.All(g => g != null && g.Contains("wenduag.trickster.native") && g.Contains("trickster.commander_back")))
+                        earned.Add("trickster.commander_back");
+                    // eng8-q8e end
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
@@ -2309,6 +2316,10 @@ namespace Tirabade
                 var spec = pair.Value;
                 var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
                 var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship!, relationship);
+                // eng8-q8e begin: existing terms earn only this follow-on suppression.
+                if (pair.Key == "430ce9767d3ede2479ff9d6aee432304" && spec?.Relationship == "camellia")
+                    earned.Add("camellia.trickster.terms_named");
+                // eng8-q8e end
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0

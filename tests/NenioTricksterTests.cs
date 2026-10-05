@@ -124,7 +124,8 @@ internal static class NenioTricksterTests
         var correction = S(P + "away.correction_visitor");
         var first = S(F + "dictation");
         var demons = S(F + "demons");
-        var pages = story.Scenes.Where(s => s.Relationship == "nenio" && s.Owner == "NenioEpilogue").ToArray();
+        // eng8-q8e: E14 replacement text is not an additional authored route page.
+        var pages = story.Scenes.Where(s => s.Relationship == "nenio" && s.Owner == "NenioEpilogue" && !Rules.IsNativeReplacement(story, s)).ToArray();
 
         // Shape and hooks.
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
