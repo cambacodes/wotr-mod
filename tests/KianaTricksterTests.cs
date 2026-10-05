@@ -379,8 +379,8 @@ internal static class KianaTricksterTests
         foreach (var answered in new[] { saidYes, saidNo })
             check(!Rules.Available(story, S("kiana.morning"), Later(story, answered, 100)) && !Rules.Available(story, questionLetter, Later(story, answered, 100)),
                 "Q10: the question is asked twice.");
-        // Acceptance without the question: lovers who never answered reach the page, may only leave the margin empty, and
-        // establish no commitment and no Last Call coda.
+        // Unanswered eligible courtship can accept the final question or return the script blank.
+        // Only the affirmative producer earns the late commitment and Last Call coda.
         // eng8-q8h: use the actual met -> marriage -> answer -> date producers above.
         var neverAsked = Program.Copy(lovers); neverAsked.Chapter = 6;
         neverAsked.Flags.Add("lastcall.active"); Rules.Complete(story, neverAsked);
@@ -468,6 +468,46 @@ internal static class KianaTricksterTests
         var kingEnd = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed", "kiana.trickster.cost.betrothed",
                             "kiana.trickster.decree_king", "kiana.committed");
         check(!Rules.VisibleParagraphs(promised, kingEnd).Any(x => x.Text.Contains("Three weddings")), "Q10: her cancelled wedding goes ahead.");
+
+        // Reviewed P1: native wedding/soul loss and widowhood are independent.
+        foreach (var lostSoul in new[] { false, true })
+        foreach (var widowed in new[] { false, true })
+        {
+            var flags = new List<string> { "trickster", "trickster.ever", "chapter_later",
+                "seelah.souls_returned", "kiana.wedding_seen" };
+            if (lostSoul) flags.Add("kiana.possessed");
+            if (widowed) flags.Add("seelah.elan_dead");
+            var history = World(story, 5, flags.ToArray());
+            var expected = lostSoul ? (widowed ? "widow" : "married") : (widowed ? "awake_widow" : "awake");
+            var eligible = waited.Nodes[0].Choices.Where(c => Rules.ChoiceAvailable(c, history)).ToArray();
+            check(eligible.Length == 1 && eligible[0].Next == expected,
+                "P1: wrong letter reading for soul loss=" + lostSoul + ", widow=" + widowed);
+            var outcomes = Program.Walk(waited, history);
+            check(outcomes.Count == 2 && outcomes.All(r => r.Has("kiana.trickster.met")
+                && r.Has("kiana.trickster.cost.letter_late")
+                && r.Has(widowed ? "kiana.history_widow" : "kiana.history_married")),
+                "P1: a corrected reading lost its original page receipts.");
+            var reading = waited.Nodes.Single(n => n.Id == expected).Text;
+            check((lostSoul || !reading.Contains("woke")) && (!widowed || !reading.Contains("Elan says hello")),
+                "P1: conscious bride wakes again, or dead Elan sends a greeting.");
+        }
+
+        // P5: postal decisions survive recovered placement, in both directions.
+        foreach (var posted in Program.Walk(questionLetter, unplacedAsk))
+        {
+            var recovered = Later(story, posted, 100);
+            recovered.AvailableContacts.Add(Kyana);
+            recovered.Flags.Remove("kiana.presence.failed");
+            Rules.Complete(story, recovered);
+            check(!Rules.Available(story, question, recovered) && !Rules.Available(story, S("kiana.morning"), recovered),
+                "P5: recovered placement reverses a signed postal answer.");
+        }
+        const string permanentQuestion = "Will you stay? Not for supper. For good.";
+        check(new[] { question, questionLetter, epCommit }.All(s => s.Nodes[0].Text.Contains(permanentQuestion)),
+            "P5: an irreversible answer has no visible permanent question.");
+        check(collection.Nodes.Single(n => n.Id == "wedding_dog").Text.Contains("sword pommel")
+            && collection.Nodes.Single(n => n.Id == "wedding").Text.Contains("my chisel"),
+            "P8: collection forgets which rescue tool was used.");
 
         // Exclusivity: one device per world.
         foreach (var w in new[] { seen, missedWife, possessed, awake, noKing })

@@ -15,8 +15,7 @@ def s(id, title, nodes, requires, forbids=(), delay=48, **extra):
 
 
 s("another_page", "There is still time to answer", [
-    n("start", "Narrator", '''{n}Kiana's folded farewell page is still among the things you have kept. There is room on it for an invitation of your own.{/n}
-{n}There is still room beneath Kiana's farewell for an invitation to supper.{/n}''',
+    n("start", "Narrator", '''{n}Kiana's folded farewell page is still among your papers. Below it is room for an invitation to supper.{/n}''',
       c('[Write to ask whether she would like to continue your evenings together.]', "reply"),
       c('[Keep the page as it is. You can write another time.]', abort=True)),
     n("reply", "Narrator", '''{n}Her answer arrives on a scrap cut from a larger sheet.{/n}
