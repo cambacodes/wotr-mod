@@ -49,6 +49,11 @@ internal static partial class NativeEpilogueEditManagedTests
         return reference;
     }
 
+    // eng7-f6c: Horzalah's Guild epilogue page and Irabeth's service and retired epilogue slides are warning-only like the
+    // other epilogue slides (a drifted native page withholds the line; it must not disable the relationship).
+    private static readonly HashSet<string> F6cWarningOnly = new HashSet<string> {
+        "62f20840e6aa33844b641c5c8e10f814", "cba964e33d0a0704d847629be452b359", "2d6b09c6508010e49b882741add89dcf" };
+
     public static void Run(Dictionary<string, JObject> native, Func<string, BlueprintGuid> id, Action<bool, string> check)
     {
         string[] Refs(JObject data, string field) => ((JArray)data[field]!).Select(v => ((string)v!).Replace("!bp_", "")).ToArray();
@@ -92,7 +97,8 @@ internal static partial class NativeEpilogueEditManagedTests
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
                 && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa"
-                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Key != "dbec675b71e9d5f4d96055f4bb31762e" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
+                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Key != "dbec675b71e9d5f4d96055f4bb31762e"
+                && !F6cWarningOnly.Contains(pair.Key) && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
             + "lines, Arueshalae's Cue_0461 and Wenduag's Cue_0580 are warning-only).");
         // Engine-q2 item 5: Galfrey's two Queen slides share one text, one sequence, and are warning-only.
@@ -220,8 +226,8 @@ internal static partial class NativeEpilogueEditManagedTests
         var byGuid = new Dictionary<BlueprintGuid, (BlueprintCue Cue, string Name, Func<bool> Native)>();
         foreach (var pair in cues) byGuid[pair.Value.AssetGuid] = (pair.Value, pair.Key, nativeCheckers[pair.Key]);
         var edited = story.NativeEpilogueEdits.Where(pair => pair.Value.Page == evidence.Page).OrderBy(pair => pair.Key, StringComparer.Ordinal).ToArray();
-        check(edited.Select(pair => pair.Key).SequenceEqual(new[] { Cue0311, Cue0310 }.OrderBy(k => k, StringComparer.Ordinal)),
-            "The Tirabade page edits are not exactly Cue_0310 and Cue_0311.");
+        check(edited.Select(pair => pair.Key).SequenceEqual(new[] { Cue0311, Cue0310, "cba964e33d0a0704d847629be452b359", "2d6b09c6508010e49b882741add89dcf" }.OrderBy(k => k, StringComparer.Ordinal)),
+            "The Tirabade page edits are not exactly Cue_0310, Cue_0311 and the eng7-f6c Irabeth service/retired slides.");
         foreach (var edit in edited)
         {
             string cueId = edit.Key;
@@ -248,8 +254,8 @@ internal static partial class NativeEpilogueEditManagedTests
                 "Tirabade cue is not guarded exactly once: " + cueId);
         }
         Func<string, string[]> variantsOf = cueId => Rules.EditVariants(story.NativeEpilogueEdits[cueId]).Select(v => v.Replacement).ToArray();
-        check(page.Cues.Select(r => byGuid[r.Guid].Name).SequenceEqual(TirabadePageCues.Take(2).Concat(variantsOf(Cue0310)).Append(TirabadePageCues[2])
-                .Concat(variantsOf(Cue0311)).Append(Cue0311)),
+        check(page.Cues.Select(r => byGuid[r.Guid].Name).SequenceEqual(TirabadePageCues.SelectMany(g =>   // eng7-f6c: Cue_0308/Cue_0566 now carry Irabeth variants
+                (story.NativeEpilogueEdits.ContainsKey(g) ? variantsOf(g) : Array.Empty<string>()).Append(g))),
             "Tirabade variants are not inserted in order right before their native cues.");
         string[] Shown() => page.Cues.Select(reference => byGuid[reference.Guid])
             .Where(entry => entry.Native() && entry.Cue.Conditions.Conditions.All(c => c.Check())).Select(entry => entry.Name).ToArray();
