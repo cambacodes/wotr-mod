@@ -1,0 +1,59 @@
+{
+ "placement": "aranka.presence.yard",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:aranka.presence.yard",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "15f754455d1d87c42a4e14df456d5415",
+  "Offset": [
+   5.0,
+   -7.0
+  ]
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.003276825,
+ "drift": 0.00610351563,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-045130",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "$env:RRT_HARNESS_HIDE='bad9f602b81a80047ac470b01ebe65a9'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,aranka.trickster.answered,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
+  "actor_id": "5fbc0157-9275-45fa-aedc-eeef11b3b341",
+  "actor_id_after_reload": "5fbc0157-9275-45fa-aedc-eeef11b3b341",
+  "position": [
+   -7.04,
+   56.0092773,
+   -10.03
+  ],
+  "target": [
+   -7.04,
+   56.0031738,
+   -10.03
+  ],
+  "approach_distance": 1.81045032,
+  "after_reload_drift": 0.00610351563,
+  "after_reload_gap": 0.00326538086,
+  "after_reload_position": [
+   -7.03,
+   56.0092773,
+   -10.02
+  ],
+  "after_reload_approach": 1.80647111,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-045130/shots/aranka.presence.yard__production.png",
+   "harness/.runs/20261005-045130/shots/aranka.presence.yard__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). Re-spotted to NearUnit smith Offset [5.0,-7.0] (the F9 smith right 6.5 spot was 0.3 m from static PeasantMale2). Genuine fallback: market anchor hidden before the first tick."
+ }
+}

@@ -110,7 +110,8 @@ ARCH_DEAD = F + "architect.the_dead"
 ARCH_AGREED = F + "architect.agreed"
 ARCH_TRICK = F + "architect.footnote"
 # The killed world's box marked KENABRES? (nenio_folios): told, or lied to (a Ledger secret).
-TOLD_BITE = "nenio.told_bite"                      # SelectedAnswers CompanionDialogues/Nenio/Answer_0132 ("I can bite hard enough, too!")
+TOLD_BITE = "nenio.told_bite"                      # SelectedAnswers CompanionDialogues/Nenio/Answer_0132 ("I can bite hard enough, too!")
+
 KENABRES_SAID = F + "stranger.kenabres_said"        # the Commander named Kenabres to the recreated stranger (the box's source)
 KENABRES_TOLD = F + "kenabres_box.told"
 KENABRES_LIED = F + "kenabres_box.lied"
@@ -148,7 +149,7 @@ GREETING = ("{n}Behind the spice trader's awning a woman in a scholar's grey coa
 PRESENCES = {
     # A spawned copy of her Chapter 1 unit behind the exotic trader's awning in the market (build sheet): 5 m from Aranka's
     # copy, which stands in front of the same trader. Never at Fye's bar, the yard or the smith.
-    PRESENCE: dict(Unit=COPY_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="behind", Distance=3.5),
+    PRESENCE: dict(Unit=COPY_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Offset=[7.0, -4.0]),
                    Requires=["trickster.ever", VISITOR], Forbids=[CLOSED, FAILED], MinChapter=3, MaxChapter=5,
                    AnswerLists=[], Dialog="hub", Greeting=GREETING),
     # If the trader's stall is not in the capital: the jeweller's arcade, right of the jeweller at 2.5 m (at least 3.2 m from
@@ -780,10 +781,14 @@ KEPT_PARAS = (
     p("{n}Her entry on Areelu Vorlesh remained the most admiring in the Encyclopedia. Scholars in Absalom walked out of her lectures over it, and she let them go, and went on, and never once apologised.{/n}", requires=(ARCH_AGREED,)),
     p("{n}Her entry on Areelu Vorlesh has a footnote longer than the entry, in a legible hand, listing every Sarkorian town by name. Nobody knows who wrote it. Nenio claimed it was a printer's error, too.{/n}", requires=(ARCH_TRICK,)),
 )
-# Sol r4 INT: epilogues bypass UnavailableFlags; each living page guards every loss, lifted only by her Trickster return.
-LOSSES = (DEAD, KILLED, SENT_AWAY, KICKED_OUT)
-LOSS_BACK = {k: RETURNED for k in LOSSES}
-
+# Sol r4 INT: epilogues bypass UnavailableFlags; each living page guards every loss, lifted only by her Trickster return.
+
+LOSSES = (DEAD, KILLED, SENT_AWAY, KICKED_OUT)
+
+LOSS_BACK = {k: RETURNED for k in LOSSES}
+
+
+
 SCENES.append(scene(P + "epilogue.article", "", "NenioEpilogue", 6, "", [
     nar("page", '''{n}Nenio kept her promise from the steps of the Threshold. The Encyclopedia Golarionnica carries a short article on the great deeds of the Commander of the Fifth Crusade. It is forty pages long. Nine of them are footnotes. The title line of the entry has a blank in it, carefully ruled, and under the blank the status line reads "longitudinal study, ongoing".{/n}
 {n}She never finished the Encyclopedia. Every volume she published bred three supplements, and every supplement a correction to the supplements, and she said that an encyclopedia which stopped growing was an obituary. She went on travelling, and measuring, and forgetting kings, and wherever she went the Commander's legible hand went too, taking dictation, and more often than was strictly necessary for science, the pen was put down.{/n}''',
@@ -852,7 +857,8 @@ household.secret("nenio_kenabres", "An arrest at the gate",
 NATIVE = {
     "SeenCues": {FOX_ARGUED: [FOX_ONE], FOX_REVEALED: ["5db28e499fd812848b92d6ac7b26e234"],
                  ENIGMA_RESOLVED: ["c214b2d290676f344a9227a2711393a6"]},
-    "SelectedAnswers": {ASKED_FORGETTING: "ece25c57e50c9e0458c6cd47a143d8fe", ASKED_GIFT: "9763b3f979b4cce449e5ca1d28f50eed",
+    "SelectedAnswers": {ASKED_FORGETTING: "ece25c57e50c9e0458c6cd47a143d8fe", ASKED_GIFT: "9763b3f979b4cce449e5ca1d28f50eed",
+
                         TOLD_BITE: "20a557207800252419c55049322943c4"},
 }
 

@@ -168,7 +168,7 @@
       "unit": "ae766624c03058440a036de90a7f2009",
       "consumer": "wenduag.trickster.echo.abyss.return",
       "at": null,
-      "remainder": "F7 coordinator street-level cellar-door decision implemented at the cached verified walkable street point. TODO live original-actor approach/click, existing three-metre occupancy exclusion and reload; no basement-area destination and no completed verification claim.",
+      "remainder": "Run 20261005-060528: the street-level cellar-door point (-24.63,40.13,57.17) is on the DrezenCapital walkmesh (nearest node 0.12 m, 0 findings). Original-actor approach, click, three-metre occupancy and reload need a real retained-original custody save (not fixture-creatable), so the entry stays pending.",
       "live_evidence": {
         "date": "2026-10-04",
         "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
@@ -196,6 +196,14 @@
         "detail": "Needs a retained-original custody save (no such save exists) and the runtime destination fix; mesh-only probe proves no actor click. Left pending.",
         "save": null,
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "pending (mesh only)",
+        "detail": "Run 20261005-060528: the street-level cellar-door point (-24.63,40.13,57.17) is on the DrezenCapital walkmesh (nearest node 0.12 m, 0 findings). Original-actor approach, click, three-metre occupancy and reload need a real retained-original custody save (not fixture-creatable), so the entry stays pending.",
+        "runs": [
+          "harness/.runs/20261005-060528"
+        ],
+        "mesh_gap": 0.12142581
       }
     },
     {
@@ -216,7 +224,7 @@
           0.0
         ]
       },
-      "remainder": "Chapter 5 live (20261004-172702): locator f8cfa132 is on the DrezenCapital mesh (gap 0.12 m, drift 0.12 m, no crowding); the Ch3 failure is not reproduced. Still open: hub click, approach and reload need a save with wenduag.trickster.returned. AREA TRUTH: the sampled early Chapter 5 save sits in ReturnToDrezen; native TpToCapital later reaches DrezenCapital within Chapter 5. The cellar-door decision uses the verified street point, not a basement-area teleport.",
+      "remainder": "Run 20261005-040905: wenduag.presence is not wanted. Wenduag is alive in the Trickster Chapter 5 save (native Wenduag_Companion at -13.4,40.0,60.7, inGame) and her Trickster return (death then return) was never earned there; wenduag.trickster.returned is a fixture flag only and the native unit stays, so the presence correctly stays off (RemoveCompanions only takes her out of the party). A save where she died natively is required.",
       "live_evidence": {
         "date": "2026-10-04",
         "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
@@ -248,6 +256,13 @@
         "detail": "Not wanted in every available Trickster save (326 ch5 run 20261004-231410, 275 ch5 run 20261004-230933, 313 ch3 run 20261004-231715): native state wenduag.in_party (etude WenduagInParty) is set and the presence Forbids it. The harness fixture can set flags and start etudes but cannot clear a native etude, so a not-in-party Wenduag cannot be reached; this is not a placement failure.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "pending (custody state not producible)",
+        "detail": "Run 20261005-040905: wenduag.presence is not wanted. Wenduag is alive in the Trickster Chapter 5 save (native Wenduag_Companion at -13.4,40.0,60.7, inGame) and her Trickster return (death then return) was never earned there; wenduag.trickster.returned is a fixture flag only and the native unit stays, so the presence correctly stays off (RemoveCompanions only takes her out of the party). A save where she died natively is required.",
+        "runs": [
+          "harness/.runs/20261005-040905"
+        ]
       }
     },
     {
@@ -268,7 +283,7 @@
           0.0
         ]
       },
-      "remainder": "Chapter 5 live (20261004-172352): locator d7aa4429 is on the DrezenCapital mesh (gap 0.32 m, drift 0.33 m, no crowding); the Ch3 failure is not reproduced. This locator is a harness probe, not an exported Devarra presence, so no hub/approach/reload applies.",
+      "remainder": "Run 20261005-054411: the engine creates no actor for the RedDragon_Sanctum 1 (QA/Unused, Huge) copy: Spawned true, Exists false, 'wanted, copy present -> Blocked'. The locator geometry therefore cannot be proven with this blueprint; there is no exported Devarra presence to click. Needs a decision on the Devarra encounter delivery (a different spawn path or blueprint), not a data fix.",
       "live_evidence": {
         "date": "2026-10-04",
         "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
@@ -301,6 +316,13 @@
         "detail": "Run 20261005-010943 (326, after fixing the harness bridge Tick signature): locator d7aa4429 target [33.58,62.33,-4.31] walkable gap 0.32 m on the DrezenCapital mesh; the dragon copy was then not a usable actor (view inactive, Commander far away), so no drift/body-room/approach was recorded. Probe-only candidate; no exported presence exists.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "failed-engine (probe-only entry)",
+        "detail": "Run 20261005-054411: the engine creates no actor for the RedDragon_Sanctum 1 (QA/Unused, Huge) copy: Spawned true, Exists false, 'wanted, copy present -> Blocked'. The locator geometry therefore cannot be proven with this blueprint; there is no exported Devarra presence to click. Needs a decision on the Devarra encounter delivery (a different spawn path or blueprint), not a data fix.",
+        "runs": [
+          "harness/.runs/20261005-054411"
+        ]
       }
     },
     {
@@ -309,9 +331,17 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "galfrey.presence",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:galfrey.presence",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/galfrey.presence.json",
+        "sha256": "f8d9acef8a55b3b255f2b411948d0d53dd1956b213864c0707ed8db16b107b3c"
+      },
       "unit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
       "consumer": "galfrey.presence",
       "at": {
@@ -319,7 +349,7 @@
         "Side": "left",
         "Distance": 2.5
       },
-      "remainder": "Chapter 5 live (20261004-173750): anchor resolves once in DrezenCapital and the primary spot is walkable (gap 0.89 m, drift 0.006 m, no crowding). Still open: hub title, click/approach, failure-to-fallback and reload need a returned-Galfrey save. The anchor traders do NOT exist in ReturnToDrezen (the sampled early Chapter 5 siege area); native TpToCapital later reaches the capital in Chapter 5.",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-030820, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
       "live_evidence": {
         "date": "2026-10-04",
         "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
@@ -346,12 +376,24 @@
         "result": "mesh/occupancy PASS (gap under 1.5 m)"
       },
       "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,galfrey.trickster.returned,hour.galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-engine",
         "detail": "Engine defect (presence ping-pong): the spawn tick observes the fresh copy as unusable (view not yet active), GuestPresence.AnchorFailed latches <key>.failed, the primary (which Forbids its own failed flag) becomes unwanted and PlanPresence(wanted=false) removes the copy, the failure clears, the primary respawns, and so on every tick (49+ cycles per run). Only primaries that forbid their own failed flag are affected; Aranka, which does not, holds. Runs 20261004-231947, 20261005-003400, -003759, -004212, -004616, -005002 (326; also with the stall anchor destroyed and with the Commander standing at the spot).",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-030820",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": ""
       }
     },
     {
@@ -360,9 +402,17 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "galfrey.presence.stall",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:galfrey.presence.stall",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/galfrey.presence.stall.json",
+        "sha256": "2912b37e15801ffa92b694a0198480fe7b903d9a035853c77232ffa4d06cc79e"
+      },
       "unit": "a8b7f6fd39ff2974f8b5fbf944a7f735",
       "consumer": "galfrey.presence.stall",
       "at": {
@@ -370,7 +420,7 @@
         "Side": "right",
         "Distance": 3.5
       },
-      "remainder": "Chapter 5 live: right 2.5 failed body room (a market citizen); right 3.5 passes (run 20261004-174607) and is now the exported anchor. Still open: hub click/approach, fallback trigger and reload need a returned-Galfrey save. The tiefling trader does not exist in ReturnToDrezen.",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-044308, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
       "live_evidence": {
         "date": "2026-10-04",
         "save": "RRT_Manual_275_Mythic_Path_Act_5__Secret_Path_V2_.zks",
@@ -411,12 +461,24 @@
         ]
       },
       "area_truth": "Chapter 5 late capital is reachable after native TpToCapital; the ReturnToDrezen siege is a separate phase.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned,galfrey.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "harness_command": "$env:RRT_HARNESS_HIDE='bad9f602b81a80047ac470b01ebe65a9'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,galfrey.trickster.returned,hour.galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
         "detail": "README command sets galfrey.presence.failed, which is not a settable flag (fixture setup: key not present; run 20261004-232234). It is only reached through the primary's transient failure, i.e. the ping-pong above.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-044308",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Genuine missing-anchor fallback: the primary anchor (ExoticCapitalTrader) is hidden by RRT_HARNESS_HIDE before RRT's first tick of the area (harness prefix on Main.TickPresences), so galfrey.presence never spawns and the stall copy is the only Galfrey."
       }
     },
     {
@@ -439,6 +501,10 @@
         "detail": "Remote event with no placed actor or position; there is nothing to place or click. Left pending as an inventory entry.",
         "save": null,
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "not-applicable",
+        "detail": "Remote event with no placed actor or position; nothing to place or click. Left pending as an inventory entry."
       }
     },
     {
@@ -461,6 +527,10 @@
         "detail": "Remote event (letter) with no placed actor or position; there is nothing to place or click. Left pending as an inventory entry.",
         "save": null,
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "not-applicable",
+        "detail": "Remote event (letter) with no placed actor or position; nothing to place or click. Left pending as an inventory entry."
       }
     },
     {
@@ -479,13 +549,26 @@
         "Side": "left",
         "Distance": 6.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "remainder": "Placed on the walkmesh (gap 0.06 m), approachable, hub click opens the dialog (needs jerribeth.committed + jerribeth.trickster.cost.forfeit besides visit_due), no crowding and one Spawn event before the reload; the same actor survives the reload. After every reload a roaming citizen (PeasantMale5) stands 1.9 m (run 052002) or 0.3 m (run 044737) from her spot, inside the 2.0 m body-room tolerance. His route crosses x 0..3, z 10..11. The exotic stall's clear ground is exhausted (aranka front 3.5, galfrey left 2.5, nenio, herrax stall): every remaining spot near the stall is either on that route, under a roof or beside the Quartermaster. Needs a coordinator decision on a sixth spot or a different anchor, not a blind offset change.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,jerribeth.trickster.visit_due' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-cause",
         "detail": "Run 20261005-000433: the copy spawns at the revised spot and is not removed, but stays Enemy of the Commander after the quiet repair (IsEnemy(commander)=true), so it is never a usable contact (Blocked). Engine/blueprint issue in the quiet-copy faction repair for Jerribeth; not a data fix.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "failed-cause (data: static route), pre-reload checks pass",
+        "detail": "Placed on the walkmesh (gap 0.06 m), approachable, hub click opens the dialog (needs jerribeth.committed + jerribeth.trickster.cost.forfeit besides visit_due), no crowding and one Spawn event before the reload; the same actor survives the reload. After every reload a roaming citizen (PeasantMale5) stands 1.9 m (run 052002) or 0.3 m (run 044737) from her spot, inside the 2.0 m body-room tolerance. His route crosses x 0..3, z 10..11. The exotic stall's clear ground is exhausted (aranka front 3.5, galfrey left 2.5, nenio, herrax stall): every remaining spot near the stall is either on that route, under a roof or beside the Quartermaster. Needs a coordinator decision on a sixth spot or a different anchor, not a blind offset change.",
+        "runs": [
+          "harness/.runs/20261005-044737",
+          "harness/.runs/20261005-052002",
+          "harness/.runs/20261005-031707 (hub flags missing, body room blocked by CitizenMale3)"
+        ],
+        "spawn_events": 1,
+        "crowding_after_reload": [
+          "PeasantMale5 at (2.2, 56.1, 10.8)"
+        ]
       }
     },
     {
@@ -513,7 +596,16 @@
         "Distance": 3.5
       },
       "remainder": "Verified live 2026-10-05 on a Chapter 5 Trickster fixture (see probe artifact). Not covered: joint presence with the other earned guests, and a naturally reached post-summit capital save.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'"
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "live_f9_followup_2026_10_05": {
+        "result": "verified (re-run after F9)",
+        "run": "harness/.runs/20261005-060740",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "crowding_before_reload": [],
+        "crowding_after_reload": []
+      }
     },
     {
       "id": "aranka.presence.yard",
@@ -521,23 +613,53 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "aranka.presence.yard",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:aranka.presence.yard",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/aranka.presence.yard.json",
+        "sha256": "49e2eb7d8d36ad96922553670de3e17ca36c7eda5315052b9f61107520d8057b"
+      },
       "unit": "bd0c4fe722aeef94b8495ac284b96bc8",
       "consumer": "aranka.presence.yard",
       "at": {
         "NearUnit": "15f754455d1d87c42a4e14df456d5415",
-        "Side": "right",
-        "Distance": 6.5
+        "Offset": [
+          5.0,
+          -7.0
+        ]
       },
-      "remainder": "F9 authored re-anchor to ordinary capital blacksmith; shared-anchor spacing >=4 m. Pending live mesh, approach, hub click, joint occupancy and reload for this changed placement. Historical quartermaster evidence below is superseded for placement.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,aranka.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-045130, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save, and the Chapter 3 window (a spawned copy vanishes in the Chapter 3 save: see live_f9_followup_2026_10_05.chapter3).",
+      "harness_command": "$env:RRT_HARNESS_HIDE='bad9f602b81a80047ac470b01ebe65a9'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,aranka.trickster.answered,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
         "detail": "Only wanted after aranka.presence.failed (transient, unsettable). Its anchor (DrezenCapital_Quartermaster a380d926) is also absent from the capital as loaded on the 326 fixture (unit inventory, run 20261005-003102).",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-045130",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Re-spotted to NearUnit smith Offset [5.0,-7.0] (the F9 smith right 6.5 spot was 0.3 m from static PeasantMale2). Genuine fallback: market anchor hidden before the first tick.",
+        "chapter3": {
+          "result": "failed-engine",
+          "runs": [
+            "harness/.runs/20261005-053249"
+          ],
+          "save": "RRT_Manual_313_Hiriko_The_Trickster.zks",
+          "detail": "Same Chapter 3 behaviour as targona.presence: the copy spawns once and is gone by the next tick (aranka.presence spawns once and is lost the same way). Chapter 5 holds."
+        }
       }
     },
     {
@@ -546,23 +668,54 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "targona.presence",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:targona.presence",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/targona.presence.json",
+        "sha256": "ace30f8e57d2e986bfd9cbdf22b820619a76ec9aa5689e75b35598c923051708"
+      },
       "unit": "81297c673b63b60448ef88a10db6bc78",
       "consumer": "targona.presence",
       "at": {
         "NearUnit": "15f754455d1d87c42a4e14df456d5415",
-        "Side": "behind",
-        "Distance": 3.5
+        "Offset": [
+          -3.0,
+          -6.0
+        ]
       },
-      "remainder": "F9 authored re-anchor to ordinary capital blacksmith; shared-anchor spacing >=4 m. Pending live mesh, approach, hub click, joint occupancy and reload for this changed placement. Historical quartermaster evidence below is superseded for placement.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,targona.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-045524, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save, and the Chapter 3 window (a spawned copy vanishes in the Chapter 3 save: see live_f9_followup_2026_10_05.chapter3).",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,targona.trickster.returned,hour.targona.trickster.returned,targona.trickster.cost.struck_down,hour.targona.trickster.cost.struck_down' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-data",
         "detail": "Runs 20261005-000756 and 20261005-010354 (the latter also starts etude Legend_SoldierParty_KTC): anchor DrezenCapital_Quartermaster a380d926 is not present in the capital (spawned only by the Ch5 Legend_SoldierParty_KTC capital event), so the presence Blocks. The anchor needs a state the route does not guarantee; choose an anchor that exists whenever the presence is wanted.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-045524",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Re-spotted from smith behind 3.5 (1.1 m from static PeasantFemale3) to NearUnit smith Offset [-3.0,-6.0]. A hub scene must be available, hence cost.struck_down (furlough scene).",
+        "chapter3": {
+          "result": "failed-engine",
+          "runs": [
+            "harness/.runs/20261005-052752",
+            "harness/.runs/20261005-053815 (RRT_HARNESS_TRACE=1)"
+          ],
+          "save": "RRT_Manual_313_Hiriko_The_Trickster.zks",
+          "detail": "Spawn event 1, then the very next tick finds no copy (Observe: none of the blueprint in Game.State.Units, tracing every 0.25 s), the record stays Submitted and the plan is Blocked, so the presence reports failed and nothing is placed. Chapter 5 on the same code holds. The Chapter 3 log shows [Etudes] Fixed conflicting group Capital_NPC_Targona (Targona_DefaultActor) at the capital load. Not a data fix."
+        }
       }
     },
     {
@@ -581,13 +734,21 @@
         "Side": "left",
         "Distance": 6.0
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "remainder": "Run 20261005-032531: with camellia.killed/primed/raised fixtures the plan is RecordNativeContact then Blocked, because the native Camelia_Companion is alive in the save (at 76.4,56.1,-14.1) and PlanPresence refuses to duplicate a living twin. No available save has a dead Camelia (killing her is not a fixture), so the custody state cannot be produced. Separately the Fye_Bartender anchor (and the whole Fool King court) is not in game in Chapter 5 after the area settles, even with the Commander teleported beside the bar (rays run 20261005-042232), so the Chapter 5 spot would fail its anchor.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'camellia.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,camellia.trickster.primed,camellia.trickster.raised' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96,cf3639c5cf057034fa766dd5f421d2ed'",
       "live_followup_2026_10_05": {
         "result": "blocked-fixture",
         "detail": "Run 20261005-002058: the native Camellia unit is alive but not scene-loaded (holding=False) so PlanPresence Blocks as a living twin; camellia.killed was only faked by starting the etude, the native actor was not killed.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "pending (state not producible)",
+        "detail": "Run 20261005-032531: with camellia.killed/primed/raised fixtures the plan is RecordNativeContact then Blocked, because the native Camelia_Companion is alive in the save (at 76.4,56.1,-14.1) and PlanPresence refuses to duplicate a living twin. No available save has a dead Camelia (killing her is not a fixture), so the custody state cannot be produced. Separately the Fye_Bartender anchor (and the whole Fool King court) is not in game in Chapter 5 after the area settles, even with the Commander teleported beside the bar (rays run 20261005-042232), so the Chapter 5 spot would fail its anchor.",
+        "runs": [
+          "harness/.runs/20261005-032531",
+          "harness/.runs/20261005-042232"
+        ]
       }
     },
     {
@@ -606,13 +767,21 @@
         "Side": "front",
         "Distance": 3.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "remainder": "Run 20261005-033113: before the reload every check passes (placed on the mesh gap 0.003 m at 33.48,56.0,13.82, clickable, no crowding, one Spawn). The held-etude observation that makes evil Arueshalae wanted is a synthetic -HoldEtudes fixture, cleared before every reload by design, so after the reload she is not wanted, the copy is removed and the actor identity changes. A real held etude (native evil Arueshalae state) is needed for the reload criterion; no save has it.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_drezen' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "blocked-fixture",
         "detail": "Run 20261005-002643: not wanted; arueshalae.evil_dead (native etude 9104498b) is started by the fixture but not held.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "pending (reload not provable)",
+        "detail": "Run 20261005-033113: before the reload every check passes (placed on the mesh gap 0.003 m at 33.48,56.0,13.82, clickable, no crowding, one Spawn). The held-etude observation that makes evil Arueshalae wanted is a synthetic -HoldEtudes fixture, cleared before every reload by design, so after the reload she is not wanted, the copy is removed and the actor identity changes. A real held etude (native evil Arueshalae state) is needed for the reload criterion; no save has it.",
+        "runs": [
+          "harness/.runs/20261005-033113"
+        ],
+        "spawn_events": 1
       }
     },
     {
@@ -631,13 +800,21 @@
         "Side": "front",
         "Distance": 3.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
+      "remainder": "Run 20261005-033559 (jeweller anchor hidden): the fallback spawns once after the primary and passes placement, click and body room before the reload; the same synthetic-held limitation as evil_drezen removes her after the reload. The primary spawned once and was removed once (genuine failure flow, no oscillation); the hide was applied after the first tick in that run, before the harness early-hide fixture.",
       "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.presence.evil_drezen.failed,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "not-testable",
         "detail": "Needs arueshalae.presence.evil_drezen.failed (transient) and arueshalae.evil_dead (see evil_drezen).",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
         "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "pending (reload not provable)",
+        "detail": "Run 20261005-033559 (jeweller anchor hidden): the fallback spawns once after the primary and passes placement, click and body room before the reload; the same synthetic-held limitation as evil_drezen removes her after the reload. The primary spawned once and was removed once (genuine failure flow, no oscillation); the hide was applied after the first tick in that run, before the harness early-hide fixture.",
+        "runs": [
+          "harness/.runs/20261005-033559"
+        ],
+        "spawn_events": 1
       }
     },
     {
@@ -646,9 +823,17 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "mielarah.presence",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:mielarah.presence",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/mielarah.presence.json",
+        "sha256": "d878d37a3fe8d6e450fceb68d09ec9c6756720c658302634be80fa364baedaec"
+      },
       "unit": "9d9c523bc2b17434bb66df212b127187",
       "consumer": "mielarah.presence",
       "at": {
@@ -656,13 +841,25 @@
         "Side": "right",
         "Distance": 7.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-034046, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,mielarah.trickster.landfall,hour.mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-engine",
         "detail": "Engine defect (presence ping-pong): the spawn tick observes the fresh copy as unusable (view not yet active), GuestPresence.AnchorFailed latches <key>.failed, the primary (which Forbids its own failed flag) becomes unwanted and PlanPresence(wanted=false) removes the copy, the failure clears, the primary respawns, and so on every tick (49+ cycles per run). Only primaries that forbid their own failed flag are affected; Aranka, which does not, holds. Run 20261005-001114 (326).",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-034046",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": ""
       }
     },
     {
@@ -671,23 +868,43 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "mielarah.presence.arcade",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:mielarah.presence.arcade",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/mielarah.presence.arcade.json",
+        "sha256": "50c068aee49d4b566b6ad2204be8a0732709d14668060ee61a056cead7de760d"
+      },
       "unit": "9d9c523bc2b17434bb66df212b127187",
       "consumer": "mielarah.presence.arcade",
       "at": {
         "NearUnit": "bc1093231b1577a4485a730c29595195",
-        "Side": "behind",
-        "Distance": 3.5
+        "Side": "right",
+        "Distance": 6.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall,mielarah.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-050204, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
+      "harness_command": "$env:RRT_HARNESS_HIDE='23eabf5b6364d4a4e86202dc5d27600b'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,mielarah.trickster.landfall,hour.mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
         "detail": "Reached only through the mielarah.presence failure (unsettable flag); see the primary's ping-pong.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-050204",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Re-spotted from behind 3.5 (roof: a copy snapped 6 m up onto a Ground-layer collider) to right 6.5 of the jeweller. Genuine fallback: the tiefling anchor hidden before the first tick."
       }
     },
     {
@@ -696,23 +913,43 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "shamira.presence.awning",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:shamira.presence.awning",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/shamira.presence.awning.json",
+        "sha256": "deb5fb256134e30ff4696c99813bcfb713537a12c2b376c8f92fe1e50badefa3"
+      },
       "unit": "66e12264eaf6bf74196e20a9d7619cd2",
       "consumer": "shamira.presence.awning",
       "at": {
         "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
-        "Side": "behind",
-        "Distance": 3.5
+        "Side": "right",
+        "Distance": 6.5
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,shamira.trickster.embodied,shamira.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-052356, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
+      "harness_command": "$env:RRT_HARNESS_HIDE='cc50a88bbd8dd3e4da066d33d14fdfc8'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "failed-engine",
         "detail": "Engine defect (presence ping-pong): the spawn tick observes the fresh copy as unusable (view not yet active), GuestPresence.AnchorFailed latches <key>.failed, the primary (which Forbids its own failed flag) becomes unwanted and PlanPresence(wanted=false) removes the copy, the failure clears, the primary respawns, and so on every tick (49+ cycles per run). Only primaries that forbid their own failed flag are affected; Aranka, which does not, holds. Run 20261005-010013 (326; with the fool_king.gone etude started the primary was still wanted).",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-052356",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Re-spotted from behind 3.5 (roof: copy snapped 6 m up) to right 6.5 of the tailor. Fallback proven with the Fool King anchor hidden; the first attempt (run 20261005-050601) failed only the 2.0 m approach tolerance (2.02 m), the second run passed every check."
       }
     },
     {
@@ -721,23 +958,45 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "nenio.presence",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:nenio.presence",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/nenio.presence.json",
+        "sha256": "b734fedea3b3350b406e3e1801edcf289abe9020b1a3caf9feae5f43fe1c6486"
+      },
       "unit": "49e6676f68337114985a22bd548a8a4d",
       "consumer": "nenio.presence",
       "at": {
         "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
-        "Side": "behind",
-        "Distance": 3.5
+        "Offset": [
+          7.0,
+          -4.0
+        ]
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,nenio.trickster.cost.recreated' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-051609, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
+      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,nenio.trickster.returned,hour.nenio.trickster.returned,nenio.trickster.cost.recreated,hour.nenio.trickster.cost.recreated,nenio.trickster.scribe,hour.nenio.trickster.scribe' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
       "live_followup_2026_10_05": {
         "result": "failed-engine",
         "detail": "Engine defect (presence ping-pong): the spawn tick observes the fresh copy as unusable (view not yet active), GuestPresence.AnchorFailed latches <key>.failed, the primary (which Forbids its own failed flag) becomes unwanted and PlanPresence(wanted=false) removes the copy, the failure clears, the primary respawns, and so on every tick (49+ cycles per run). Only primaries that forbid their own failed flag are affected; Aranka, which does not, holds. Run 20261005-001429 (326).",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-051609",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Re-spotted from behind 3.5 (roof: copy snapped 6 m up) to NearUnit exotic trader Offset [7.0,-4.0]. A hub scene must be available, hence nenio.trickster.scribe."
       }
     },
     {
@@ -771,23 +1030,45 @@
       "kind": "presence",
       "chapter": 5,
       "area": "2570015799edf594daf2f076f2f975d8",
-      "status": "pending",
+      "status": "verified",
       "position": null,
-      "probe": null,
+      "probe": {
+        "placement": "herrax.presence.rokhorn_stall",
+        "chapter": 5,
+        "area": "2570015799edf594daf2f076f2f975d8",
+        "scene": "presence:herrax.presence.rokhorn_stall",
+        "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+        "artifact": "tools/placement_probes/herrax.presence.rokhorn_stall.json",
+        "sha256": "6f6c61a879bbe18f5615353309ff12edf08231007822da80661e50154ce6f90a"
+      },
       "unit": "25ad116e1f5008e488b13f9b968596d4",
       "consumer": "herrax.presence.rokhorn_stall",
       "at": {
         "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
-        "Side": "right",
-        "Distance": 7.5
+        "Offset": [
+          1.0,
+          -8.0
+        ]
       },
-      "remainder": "TODO live mesh, body room, approach, production hub click and reload at the revised offset; test jointly with other earned presences. Four-metre same-anchor spacing is offline evidence only.",
-      "harness_command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,herrax.presence.rokhorn.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+      "remainder": "Verified live 2026-10-05 after engine fix F9 (run harness/.runs/20261005-051150, one spawn event, same actor after reload; see the probe artifact). Not covered: joint presence with every other earned guest at once, a naturally reached post-summit capital save.",
+      "harness_command": "$env:RRT_HARNESS_HIDE='cc50a88bbd8dd3e4da066d33d14fdfc8'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'; Remove-Item Env:RRT_HARNESS_HIDE",
       "live_followup_2026_10_05": {
         "result": "not-testable",
         "detail": "Needs herrax.presence.rokhorn.failed (transient) or fool_king.gone, plus the unsettable herrax.asked_kill_chivarro cue.",
         "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
-        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)"
+        "verifier": "engine item E-Q7-33 follow-up, harness -PresenceKey production probe (Commander walks to the spot)",
+        "superseded_by": "live_f9_followup_2026_10_05"
+      },
+      "live_f9_followup_2026_10_05": {
+        "result": "verified",
+        "run": "harness/.runs/20261005-051150",
+        "spawn_events": 1,
+        "remove_events": 0,
+        "actor_stable_across_reload": true,
+        "hub_click": "production PresenceClick started the presence hub dialog",
+        "crowding_before_reload": [],
+        "crowding_after_reload": [],
+        "note": "Re-spotted from right 7.5 (roof: copy snapped 8.6 m off the spot) to NearUnit exotic trader Offset [1.0,-8.0]. Fallback proven with the Fool King anchor hidden."
       }
     }
   ],
@@ -828,5 +1109,73 @@
     "live_limits": "The cached spikes forcibly entered capital; they establish geometry there, not natural progression or production hub clicks/reload. All live_evidence fields are historical and retained. Never promote pending to verified from fixture setup alone.",
     "cellar_decision": "Coordinator-approved street-level cellar entrance at (-24.63,40.13,57.17); no separate basement area. Pending live approach/click/occupancy/reload verification.",
     "spacing": "At least 4 m between simultaneously wanted presences on the same native anchor. Distances on different anchors and post-settle drift require joint live verification."
+  },
+  "additional_live_runs_2026_10_05": {
+    "note": "Presences the coordinator asked to prove that are not entries of this inventory (no native_targets pins for their units). Not promoted to verified here; their evidence is recorded for the coordinator.",
+    "terendelev.presence": {
+      "result": "passes all criteria after a data fix",
+      "at": {
+        "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+        "Side": "front",
+        "Distance": 4.5
+      },
+      "run": "harness/.runs/20261005-060105",
+      "spawn_events": 1,
+      "actor_stable_across_reload": true,
+      "gap": 0.0808982849,
+      "crowding": [],
+      "crowding_after_reload": [],
+      "previous": "front 2.5 failed body room (static NobleMale5 1.9 m away), run 20261005-054702"
+    },
+    "terendelev.presence.awning": {
+      "result": "passes all criteria (tiefling anchor hidden before the first tick)",
+      "run": "harness/.runs/20261005-055021",
+      "spawn_events": 1,
+      "actor_stable_across_reload": true,
+      "gap": 0.00148391724,
+      "crowding": [],
+      "crowding_after_reload": []
+    },
+    "shamira.presence": {
+      "result": "pending (anchor leaves the game)",
+      "runs": [
+        "harness/.runs/20261005-055700"
+      ],
+      "detail": "Anchored on the Fool King (cc50a88b). He and his court are in game for the first area tick only: the primary spawns once, then the anchor is out of game, the copy is lost and the earned awning fallback takes over (shamira.presence.awning spawns once, verified above). The primary cannot be held in a Chapter 5 capital in these saves."
+    },
+    "herrax.presence.rokhorn": {
+      "result": "pending (anchor leaves the game)",
+      "runs": [
+        "harness/.runs/20261005-040002",
+        "harness/.runs/20261005-040316"
+      ],
+      "detail": "Same Fool King anchor behaviour as shamira.presence: one primary Spawn, then the anchor is out of game and rokhorn_stall (verified) takes over once. A save in which the Fool King court stays in game is needed to prove the primary."
+    },
+    "eliandra.presence / eliandra.presence.mark": {
+      "result": "pending (fixture impossible)",
+      "runs": [
+        "harness/.runs/20261005-055418",
+        "harness/.runs/20261005-055539"
+      ],
+      "detail": "eliandra.met_ch5 is not a persistent authored flag (fixture setup: Persistent flag missing), so the hub state cannot be produced; the primary anchor is also the Fool King."
+    }
+  },
+  "live_f9_summary_2026_10_05": {
+    "engine": "F9 (0a7ffa87) plus harness fixtures RRT_HARNESS_HIDE early hide and RRT_HARNESS_RAYS; storyline re-spots for targona, aranka.yard, nenio, shamira.awning, herrax.stall, mielarah.arcade, terendelev",
+    "oscillation": "No spawn/remove oscillation in any run: one Spawn event per placement (the failure primaries of fallback pairs also spawn at most once).",
+    "verified": [
+      "aranka.presence.yard",
+      "galfrey.presence",
+      "galfrey.presence.stall",
+      "herrax.presence.rokhorn_stall",
+      "mielarah.presence",
+      "mielarah.presence.arcade",
+      "nenio.presence",
+      "shamira.presence.awning",
+      "targona.presence",
+      "aranka.presence"
+    ],
+    "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+    "saves_not_available": "No Chapter 5 save has the custody states for Camellia, Wenduag, evil Arueshalae (held etude) or a Fool King court that stays in game."
   }
 }

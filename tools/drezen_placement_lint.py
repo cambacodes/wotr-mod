@@ -30,6 +30,8 @@ def exclusive(a, b):
 
 
 def offset(at):
+    if at.get("Offset") is not None:   # world-space [dx, dz], as Rules.AnchorOffset
+        return float(at["Offset"][0]), float(at["Offset"][1])
     x, z = SIDES[at.get("Side", "left")]
     return x * at["Distance"], z * at["Distance"]
 

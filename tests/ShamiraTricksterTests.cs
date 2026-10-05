@@ -122,7 +122,7 @@ internal static class ShamiraTricksterTests
                   && pr.MinChapter == 5 && pr.MaxChapter == 5 && pr.Requires.Contains(Embodied) && pr.At!.Distance >= 2f
                   && new[] { Closed, P + "cost.kept_captive", P + "cast_out", P + "ally" }.All(pr.Forbids.Contains))
               && table.At!.NearUnit == FoolKing && table.At.Side == "right" && table.Forbids.Contains("shamira.presence.failed")
-              && table.Forbids.Contains("fool_king.gone") && awning.At!.NearUnit == Tailor && awning.At.Side == "behind"
+              && table.Forbids.Contains("fool_king.gone") && awning.At!.NearUnit == Tailor && awning.At.Side == "right" && awning.At.Distance == 6.5f
               && awning.RequiresAnyGroups.Length == 1 && awning.RequiresAnyGroups[0].Contains("shamira.presence.failed")
               && awning.RequiresAnyGroups[0].Contains("fool_king.gone"),
             "Trk_Shamira_Presence: her presence is not at the King's corner table with the awning as its fallback.");

@@ -107,7 +107,7 @@ RELATIONSHIP_PATCH = dict(
 PRESENCES = {
     # A spawned copy of her laboratory unit among the infirmary cots behind the quartermaster's stores. Aranka's yard copy
     # stands in front of Wilcer when Fye's is lost; Targona stands behind him, among the cots.
-    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="behind", Distance=3.5),
+    HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Offset=[-3.0, -6.0]),
               Requires=["trickster.ever", IN_DREZEN], Forbids=[CLOSED], MinChapter=3, MaxChapter=5,
               AnswerLists=[], Dialog="hub",
               Greeting="{n}Behind the quartermaster's stores the field infirmary runs to three rows of cots under patched "

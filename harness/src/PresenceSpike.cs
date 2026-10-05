@@ -38,6 +38,23 @@ namespace RRT.TestHarness
             list.Add((string.IsNullOrEmpty(entry.AkEvent) ? "(text)" : entry.AkEvent) + (text.Length > 0 ? " \"" + text + "\"" : ""));
         }
 
+        // Fixture (RRT_HARNESS_HIDE): hide anchors before RRT's first tick of the area, so a primary placement fails from the start
+        // (as a genuinely missing anchor would) instead of spawning first and losing its anchor afterwards. Test-only.
+        static bool hidePatched;
+        static void HideAnchorsPrefix()
+        {
+            try
+            {
+                string? hide = Environment.GetEnvironmentVariable("RRT_HARNESS_HIDE");
+                var game = Game.Instance;
+                if (string.IsNullOrWhiteSpace(hide) || game?.State?.LoadedAreaState?.MainState == null || game.IsLoadingSave || game.IsUnloading) return;
+                var hidden = hide!.Split(',').Select(g => g.Trim()).Where(g => g.Length > 0).ToArray();
+                foreach (var unit in game.State.Units.Where(u => hidden.Contains(u.Blueprint?.AssetGuid.ToString()) && u.IsInGame).ToArray())
+                { unit.IsInGame = false; unit.MarkForDestroy(); }
+            }
+            catch { }
+        }
+
         static IEnumerable<UnitAsksComponent.Bark> AllBarks(UnitAsksComponent asks)
         {
             foreach (var field in typeof(UnitAsksComponent).GetFields(BindingFlags.Instance | BindingFlags.Public))
@@ -55,6 +72,17 @@ namespace RRT.TestHarness
             var ok = new Box<bool>();
             var game = Game.Instance;
             var guests = new List<(object Guest, QuietCopyProbe Probe)>();
+            if (!hidePatched && !string.IsNullOrWhiteSpace(Environment.GetEnvironmentVariable("RRT_HARNESS_HIDE")))
+            {
+                hidePatched = true;
+                try
+                {
+                    var tick = AccessTools.TypeByName("Tirabade.Main") is Type main ? AccessTools.Method(main, "TickPresences") : null;
+                    if (tick != null) harmony.Patch(tick, prefix: new HarmonyMethod(typeof(HarnessRunner), nameof(HideAnchorsPrefix)));
+                    else res.Notes.Add("fixture: Tirabade.Main.TickPresences not found; anchors hidden after area load only");
+                }
+                catch (Exception ex) { res.Notes.Add("fixture: could not patch TickPresences: " + ex.Message); }
+            }
             try
             {
                 // ---- Drezen: stay when already there, else load the enter point ------------------------------------------
@@ -90,6 +118,31 @@ namespace RRT.TestHarness
                 }
                 yield return WaitFor(() => IdleBlocker() == null, sp.SettleSeconds, ok, 30);
                 if (!ok.Value) { res.NotIdle = IdleBlocker() ?? "unstable"; yield break; }
+                // Fixture (RRT_HARNESS_RAYS=x,z,radius,step): downward ray hits (every collider, top first) on a grid, plus all
+                // units in range, so a placement can be chosen off a roof/awning and away from static NPCs. Test-only, read-only.
+                string? rays = Environment.GetEnvironmentVariable("RRT_HARNESS_RAYS");
+                if (!string.IsNullOrWhiteSpace(rays))
+                {
+                    foreach (string spec in rays!.Split(';'))
+                    {
+                        var r = spec.Split(',').Select(v => float.Parse(v, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                        for (float gx = r[0] - r[2]; gx <= r[0] + r[2] + 0.01f; gx += r[3])
+                            for (float gz = r[1] - r[2]; gz <= r[1] + r[2] + 0.01f; gz += r[3])
+                            {
+                                var hits = Physics.RaycastAll(new Vector3(gx, 90f, gz), Vector3.down, 120f).OrderByDescending(h => h.point.y).Take(4)
+                                    .Select(h => h.point.y.ToString("0.0") + ":" + h.collider.name + "/" + LayerMask.LayerToName(h.collider.gameObject.layer)).ToArray();
+                                var node = Kingmaker.View.ObstacleAnalyzer.GetNearestNode(new Vector3(gx, r.Length > 4 ? r[4] : 56f, gz));
+                                res.Notes.Add("ray " + gx.ToString("0.0") + "," + gz.ToString("0.0") + " node "
+                                    + (node.node != null ? node.position.y.ToString("0.0") + " d" + Vector3.Distance(new Vector3(gx, r.Length > 4 ? r[4] : 56f, gz), node.position).ToString("0.0") : "none")
+                                    + " hits " + string.Join(" | ", hits));
+                            }
+                    }
+                    foreach (var unit in game.State.Units.Where(u => u.IsInGame && !u.State.IsDead))
+                        res.Notes.Add("unit " + unit.Blueprint?.name + " " + ResidenceSpikePlan.Norm(unit.Blueprint?.AssetGuid.ToString() ?? "") + " at "
+                            + unit.Position.x.ToString("0.00") + "," + unit.Position.y.ToString("0.00") + "," + unit.Position.z.ToString("0.00") + " or " + unit.Orientation.ToString("0")
+                            + " corp " + unit.Corpulence.ToString("0.0"));
+                    yield break;
+                }
                 var area = game.CurrentlyLoadedArea!;
                 string areaGuid = ResidenceSpikePlan.Norm(area.AssetGuid.ToString());
                 res.Area = area.name + " " + areaGuid;

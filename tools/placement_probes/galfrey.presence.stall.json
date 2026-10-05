@@ -1,0 +1,57 @@
+{
+ "placement": "galfrey.presence.stall",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:galfrey.presence.stall",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+  "Side": "right",
+  "Distance": 3.5
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.08164215,
+ "drift": 0.122077942,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-044308",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "$env:RRT_HARNESS_HIDE='bad9f602b81a80047ac470b01ebe65a9'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,galfrey.trickster.returned,hour.galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
+  "actor_id": "f742bd40-5c21-4854-a6e7-a409bb582bec",
+  "actor_id_after_reload": "f742bd40-5c21-4854-a6e7-a409bb582bec",
+  "position": [
+   -57.8033752,
+   45.0009155,
+   -51.4837036
+  ],
+  "target": [
+   -57.8033752,
+   45.1229935,
+   -51.4837036
+  ],
+  "approach_distance": 1.84207678,
+  "after_reload_drift": 0.12241935,
+  "after_reload_gap": 0.081905365,
+  "after_reload_position": [
+   -57.8,
+   45.0009155,
+   -51.48
+  ],
+  "after_reload_approach": 1.83983493,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-044308/shots/galfrey.presence.stall__production.png",
+   "harness/.runs/20261005-044308/shots/galfrey.presence.stall__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). Genuine missing-anchor fallback: the primary anchor (ExoticCapitalTrader) is hidden by RRT_HARNESS_HIDE before RRT's first tick of the area (harness prefix on Main.TickPresences), so galfrey.presence never spawns and the stall copy is the only Galfrey."
+ }
+}

@@ -49,7 +49,7 @@ GREETING = ("{n}Beside the tiefling trader's stall in the lower town, a tall wom
             "sentry watches a road. Children keep drifting close to stare at her, and she keeps letting them.{/n}")
 PRESENCES = {
     # Front of the tiefling trader; Mielarah stands behind him at 2.5 m, so the two copies are 5 m apart.
-    HUB: dict(Unit=HUMAN, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="front", Distance=2.5),
+    HUB: dict(Unit=HUMAN, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="front", Distance=4.5),
               Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, HUB_FAILED, *PARENT_EMBODIED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
     # Fallback: right of the tailor (Kaylessa stands left 2.5, Arueshalae's evil copy front 2.0: 5 m and 3.2 m apart).

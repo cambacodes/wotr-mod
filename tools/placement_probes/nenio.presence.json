@@ -1,0 +1,59 @@
+{
+ "placement": "nenio.presence",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:nenio.presence",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+  "Offset": [
+   7.0,
+   -4.0
+  ]
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.0006637573,
+ "drift": 0.0,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-051609",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,nenio.trickster.returned,hour.nenio.trickster.returned,nenio.trickster.cost.recreated,hour.nenio.trickster.cost.recreated,nenio.trickster.scribe,hour.nenio.trickster.scribe' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+  "actor_id": "1dfa16e1-d50e-498c-bad8-83580bbfc178",
+  "actor_id_after_reload": "1dfa16e1-d50e-498c-bad8-83580bbfc178",
+  "position": [
+   1.09600019,
+   56.0062256,
+   4.58
+  ],
+  "target": [
+   1.09600019,
+   56.0062256,
+   4.58
+  ],
+  "approach_distance": 1.81695545,
+  "after_reload_drift": 0.009999871,
+  "after_reload_gap": 0.0006599426,
+  "after_reload_position": [
+   1.09,
+   56.0062256,
+   4.57
+  ],
+  "after_reload_approach": 1.80767834,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-051609/shots/nenio.presence__production.png",
+   "harness/.runs/20261005-051609/shots/nenio.presence__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). Re-spotted from behind 3.5 (roof: copy snapped 6 m up) to NearUnit exotic trader Offset [7.0,-4.0]. A hub scene must be available, hence nenio.trickster.scribe."
+ }
+}

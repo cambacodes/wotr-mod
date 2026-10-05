@@ -54,7 +54,7 @@ PRESENCES = {
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=FOOL_KING, Side="right", Distance=2.5),
               Requires=["trickster.ever", EMBODIED], Forbids=PRESENCE_FORBIDS + [HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=TAILOR, Side="behind", Distance=3.5),
+    HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", ManageNative=True, At=dict(NearUnit=TAILOR, Side="right", Distance=6.5),
                   Requires=["trickster.ever", EMBODIED], Forbids=list(PRESENCE_FORBIDS), MinChapter=5, MaxChapter=5,
                   RequiresAnyGroups=[[HUB_FAILED, KING_GONE]], AnswerLists=[], Dialog="hub",
                   Greeting=("{n}In the shade of the tailor's awning, out of the worst of the street, a tall red-haired woman "

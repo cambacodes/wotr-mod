@@ -614,7 +614,7 @@ PRESENCES = {
                   Greeting=("{n}Rokhorn has the whole end of the King's bar to himself. The regulars have decided, without "
                             "discussing it, that a bare-chested incubus in a cloak grey with Worldwound ash is best left the "
                             "far end of anything. He raises his cup to you with two claws.{/n}")),
-    ROK_HUB_ALT: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="right", Distance=7.5),
+    ROK_HUB_ALT: dict(Unit=ROK_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Offset=[1.0, -8.0]),
                       Requires=["trickster.ever", STARTED, ASKED_KILL], Forbids=list(ROK_FORBIDS),
                       RequiresAnyGroups=[list(g) for g in PENDING] + [[ROK_FAILED, KING_GONE]], MinChapter=5, MaxChapter=5,
                       AnswerLists=[], Dialog="hub",

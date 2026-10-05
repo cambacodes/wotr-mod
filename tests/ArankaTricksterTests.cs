@@ -181,7 +181,7 @@ internal static class ArankaTricksterTests
             "Her presence in the market is missing or malformed.");
         presence = story.Presences["aranka.presence"];
         check(story.Presences.TryGetValue("aranka.presence.yard", out var yard) && yard.Unit == YardUnit && yard.Unit != presence.Unit
-              && yard.At?.NearUnit == Quartermaster && yard.At.Side == "right" && yard.At.Distance == 6.5f && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
+              && yard.At?.NearUnit == Quartermaster && yard.At.Offset != null && yard.At.Offset[0] == 5f && yard.At.Offset[1] == -7f && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
               && yard.Forbids.Contains(Closed) && yard.MinChapter == 3 && yard.MaxChapter == 5,
             "The yard presence for a Fye-less capital is missing or malformed.");
         yard = story.Presences["aranka.presence.yard"];

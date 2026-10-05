@@ -104,7 +104,7 @@ internal static class TargonaTricksterTests
               && rel.TricksterAccess["freed_in_heaven"].Device == P + "free.spent_light"
               && rel.CommittedFlag == Committed && rel.ClosedFlag == Closed, "Targona's relationship patch is wrong.");
         check(story.Presences.TryGetValue("targona.presence", out var presence) && presence.Unit == Unit && presence.Mode == "spawn-copy"
-              && presence.At?.NearUnit == Quartermaster && presence.At.Side == "behind" && presence.Dialog == "hub"
+              && presence.At?.NearUnit == Quartermaster && presence.At.Offset != null && presence.At.Offset[0] == -3f && presence.At.Offset[1] == -6f && presence.Dialog == "hub"
               && presence.Forbids.Contains(Closed) && presence.MinChapter == 3 && presence.MaxChapter == 5
               && presence.Requires.Contains(P + "in_drezen"), "Her presence among the cots is missing or malformed.");
         check(!story.Presences.Any(p => p.Key != "targona.presence" && p.Value.At?.NearUnit == Quartermaster && p.Value.At.Side == "behind"),

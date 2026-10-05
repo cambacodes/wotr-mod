@@ -177,7 +177,7 @@ PRESENCES = {
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="right", Distance=7.5),
               Requires=["trickster.ever", CONTACT], Forbids=[CLOSED, KILLED, HUB_FAILED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    HUB_FB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELER, Side="behind", Distance=3.5),
+    HUB_FB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELER, Side="right", Distance=6.5),
                  Requires=["trickster.ever", CONTACT, HUB_FAILED], Forbids=[CLOSED, KILLED], MinChapter=5, MaxChapter=5,
                  AnswerLists=[], Dialog="hub",
                  Greeting=("{n}In the jewellers' arcade, behind the counters, a woman in a captain's coat is weighing "

@@ -1,0 +1,57 @@
+{
+ "placement": "mielarah.presence.arcade",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:mielarah.presence.arcade",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "bc1093231b1577a4485a730c29595195",
+  "Side": "right",
+  "Distance": 6.5
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.002544403,
+ "drift": 0.0,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-050204",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "$env:RRT_HARNESS_HIDE='23eabf5b6364d4a4e86202dc5d27600b'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,mielarah.trickster.landfall,hour.mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
+  "actor_id": "d6196f83-ae20-4e79-9ec7-c8818b55a3b1",
+  "actor_id_after_reload": "d6196f83-ae20-4e79-9ec7-c8818b55a3b1",
+  "position": [
+   40.67445,
+   56.0031738,
+   12.1839762
+  ],
+  "target": [
+   40.67445,
+   56.0031738,
+   12.1839762
+  ],
+  "approach_distance": 1.83752167,
+  "after_reload_drift": 0.008188856,
+  "after_reload_gap": 0.002532959,
+  "after_reload_position": [
+   40.67,
+   56.0031738,
+   12.18
+  ],
+  "after_reload_approach": 1.83575583,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-050204/shots/mielarah.presence.arcade__production.png",
+   "harness/.runs/20261005-050204/shots/mielarah.presence.arcade__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). Re-spotted from behind 3.5 (roof: a copy snapped 6 m up onto a Ground-layer collider) to right 6.5 of the jeweller. Genuine fallback: the tiefling anchor hidden before the first tick."
+ }
+}
