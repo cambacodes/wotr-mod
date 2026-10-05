@@ -15,6 +15,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CAPITAL = "2570015799edf594daf2f076f2f975d8"
 RETURN = "83a099db95e0e6e4485a20b10ce7c28d"
+# F10: these primaries need ordinary merchants that survived the F9 Ch5 load/reload.
+# Membership in the area alone also admits the transient Fool King and Legend quartermaster.
+F10_MERCHANTS = {"23eabf5b6364d4a4e86202dc5d27600b", "253cdb8f434e5a6469b75e18428316e3",
+                 "bc1093231b1577a4485a730c29595195"}
+F10_PRIMARIES = {"herrax.presence.rokhorn", "shamira.presence", "eliandra.presence", "jerribeth.presence"}
 SIDES = {"left": (-1, 0), "right": (1, 0), "front": (0, 1), "behind": (0, -1)}
 
 
@@ -30,6 +35,8 @@ def exclusive(a, b):
 
 
 def offset(at):
+    if at.get("Offset") is not None:   # world-space [dx, dz], as Rules.AnchorOffset
+        return float(at["Offset"][0]), float(at["Offset"][1])
     x, z = SIDES[at.get("Side", "left")]
     return x * at["Distance"], z * at["Distance"]
 
@@ -48,7 +55,13 @@ def check(story, table=None):
                  if presence.get("MinChapter", 1) <= c <= presence.get("MaxChapter", 6)]
         if not pairs:
             errors.append(f"{key}: no reachable (area, chapter) pair")
-        anchor = (presence.get("At") or {}).get("NearUnit")
+        at = presence.get("At") or {}
+        anchor = at.get("NearUnit")
+        if key in F10_PRIMARIES:
+            if anchor not in F10_MERCHANTS:
+                errors.append(f"{key}: F10 requires an ordinary persistent Ch5 merchant, away from the exotic stall")
+            if at.get("Side") not in ("front", "left", "right") or at.get("Offset") is not None:
+                errors.append(f"{key}: F10 requires front/side ground staging, not a roof-prone rear offset")
         if key in ("targona.presence", "aranka.presence.yard") and anchor != "15f754455d1d87c42a4e14df456d5415":
             errors.append(f"{key}: F9 yard requires the ordinary capital blacksmith, not the Legend event quartermaster")
         if anchor and anchor not in {u["guid"] for u in area["units"]}:

@@ -333,6 +333,7 @@ namespace Tirabade
         public bool Enemy;             // F9: hostile native blueprints also need neutralization.
         public bool PlayerFaction;     // the copy's faction is the player's (companion blueprints)
         public bool PartyGroup;        // the copy is in the party's unit group
+        public bool ForeignGroup;      // F10: any group other than the copy's own unique id
         public bool Silenced;          // the copy's asks are the native silent list
         public bool Passive;           // the copy is marked passive (never joins or is engaged in combat)
     }
@@ -874,7 +875,7 @@ namespace Tirabade
             var eligible = id + ".harem.eligible";
             return !state.Has(DegradedPrefix + id) && RouteOpen(story.Relationships[id], state, named.Length == 0 ? null : otherWomen)
                 && (named.Length == 0 ? state.Has(eligible) : story.Derived.TryGetValue(eligible, out var groups)
-                    && groups.Any(group => group.All(state.Has)) && !DerivedForbidden(story, eligible, state));
+                    && AnyGroupHeld(groups, state) && !DerivedForbidden(story, eligible, state));
         })
             && scene.ParticipantWomen.All(id => {
                 var woman = story.SeatWomen[id];
@@ -978,8 +979,8 @@ namespace Tirabade
             : Blocks(relationship, flag, state));
 
         // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
-        public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
-        public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
+        public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => AnyGroupHeld(entry.OpenWhen, state);
+        public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => AnyGroupHeld(entry.SettledWhen, state);
 
         // E15: the one journal action due for an entry: "give" (not yet in the journal and open), "complete" (in the journal,
         // still open, and settled), or null. A debt settled before it was ever noted is given first, completed on a later tick.
@@ -1048,8 +1049,16 @@ namespace Tirabade
             // end eng8-q8a
 
         // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
-        public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
-            .Where(pair => !state.Has(pair.Key) && pair.Value.Any(state.Has)).Select(pair => pair.Key).ToArray();
+        public static string[] PendingLatches(Story story, Snapshot state)
+        {
+            var pending = new List<string>();
+            foreach (var pair in story.Latches)
+                if (!state.Has(pair.Key))
+                    foreach (var source in pair.Value)
+                        if (state.Has(source)) { pending.Add(pair.Key); break; }
+            // Collect before adding any latch: sources are all read from the original snapshot.
+            return pending.ToArray();
+        }
 
         // Latches (then Story.Derived composites) complete a snapshot after every native reader has run.
         public static void Complete(Story story, Snapshot state)
@@ -1057,8 +1066,8 @@ namespace Tirabade
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
             // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
             // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
-            foreach (var key in DerivedOrder(story))
-                if (!state.Has(key) && story.Derived[key].Any(group => group.All(state.Has)) && DerivedRoutesOpen(story, key, state)
+            foreach (var key in CompletionOrder(story))
+                if (!state.Has(key) && AnyGroupHeld(story.Derived[key], state) && DerivedRoutesOpen(story, key, state)
                     && !DerivedForbidden(story, key, state))
                     state.Flags.Add(key);
             foreach (var pair in story.Counts)
@@ -1088,15 +1097,43 @@ namespace Tirabade
 
         // E4b: a relationship's route is open while its ClosedFlag is not held and none of its UnavailableFlags blocks (Blocks:
         // an authored UnavailableOverrides return lifts the flag). The same closure the relationship's own scenes obey.
-        public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null) => !state.Has(relationship.ClosedFlag)
-            && !relationship.UnavailableFlags.Any(flag => !(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state));
+        public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null)
+        {
+            if (state.Has(relationship.ClosedFlag)) return false;
+            foreach (var flag in relationship.UnavailableFlags)
+                if (!(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state)) return false;
+            return true;
+        }
+
+        // Array loops avoid allocating a bound predicate/enumerator for every group in every snapshot.
+        private static bool AnyGroupHeld(string[][] groups, Snapshot state)
+        {
+            foreach (var group in groups)
+            {
+                bool held = true;
+                foreach (var flag in group)
+                    if (!state.Has(flag)) { held = false; break; }
+                if (held) return true;
+            }
+            return false;
+        }
 
         // Engine-q2: a DerivedForbids flag withholds its Derived key (the key is never set while the flag holds).
-        public static bool DerivedForbidden(Story story, string key, Snapshot state) =>
-            story.DerivedForbids.TryGetValue(key, out var forbids) && forbids.Any(state.Has);
+        public static bool DerivedForbidden(Story story, string key, Snapshot state)
+        {
+            if (story.DerivedForbids.TryGetValue(key, out var forbids))
+                foreach (var flag in forbids)
+                    if (state.Has(flag)) return true;
+            return false;
+        }
 
-        public static bool DerivedRoutesOpen(Story story, string key, Snapshot state) =>
-            !story.DerivedOpenRoutes.TryGetValue(key, out var routes) || routes.All(rel => RouteOpen(story.Relationships[rel], state));
+        public static bool DerivedRoutesOpen(Story story, string key, Snapshot state)
+        {
+            if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
+                foreach (var rel in routes)
+                    if (!RouteOpen(story.Relationships[rel], state)) return false;
+            return true;
+        }
 
         // The flags a Derived key reads: its AND-groups, plus every closure input of its DerivedOpenRoutes relationships.
         public static IEnumerable<string> DerivedInputs(Story story, string key)
@@ -1113,6 +1150,77 @@ namespace Tirabade
             return inputs;
         }
 
+        // Story and its nested arrays remain mutable (the acceptance suites edit both).
+        // Cache only dependency order, never flags or route eligibility. Check the exact
+        // ordered inputs before reuse, including closure/override edges, without hashing
+        // or allocating a dependency graph for every completed snapshot.
+        private sealed class CompletionPlan
+        {
+            internal readonly string[] Keys, Order;
+            internal readonly string[][] Inputs;
+            private readonly IEqualityComparer<string> keyComparer;
+            internal CompletionPlan(Story story)
+            {
+                keyComparer = story.Derived.Comparer;
+                Keys = story.Derived.Keys.ToArray();
+                Inputs = Keys.Select(key => DerivedInputs(story, key).ToArray()).ToArray();
+                Order = DerivedOrder(story).ToArray();
+            }
+
+            internal bool Matches(Story story)
+            {
+                if (Keys.Length != story.Derived.Count || !ReferenceEquals(keyComparer, story.Derived.Comparer)) return false;
+                int index = 0;
+                foreach (var pair in story.Derived)
+                {
+                    if (pair.Key != Keys[index]) return false;
+                    var cursor = new DependencyCursor(Inputs[index++]);
+                    foreach (var group in pair.Value)
+                        foreach (var input in group)
+                            if (!cursor.Next(input)) return false;
+                    if (story.DerivedForbids.TryGetValue(pair.Key, out var forbids))
+                        foreach (var input in forbids)
+                            if (!cursor.Next(input)) return false;
+                    if (story.DerivedOpenRoutes.TryGetValue(pair.Key, out var routes))
+                        foreach (var rel in routes)
+                        {
+                            var relationship = story.Relationships[rel];
+                            if (!cursor.Next(relationship.ClosedFlag)) return false;
+                            foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>())
+                                if (!cursor.Next(input)) return false;
+                            if (relationship.UnavailableOverrides != null)
+                                foreach (var input in relationship.UnavailableOverrides.Values)
+                                    if (!cursor.Next(input)) return false;
+                        }
+                    if (!cursor.Finished) return false;
+                }
+                return true;
+            }
+        }
+
+        private struct DependencyCursor
+        {
+            private readonly string[] inputs;
+            private int position;
+            internal DependencyCursor(string[] inputs) { this.inputs = inputs; position = 0; }
+            internal bool Next(string input) => position < inputs.Length && inputs[position++] == input;
+            internal bool Finished => position == inputs.Length;
+        }
+
+        private sealed class CompletionCache { internal CompletionPlan? Plan; }
+        private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Story, CompletionCache> completionPlans
+            = new System.Runtime.CompilerServices.ConditionalWeakTable<Story, CompletionCache>();
+
+        private static string[] CompletionOrder(Story story)
+        {
+            var cache = completionPlans.GetValue(story, _ => new CompletionCache());
+            lock (cache)
+            {
+                if (cache.Plan == null || !cache.Plan.Matches(story)) cache.Plan = new CompletionPlan(story);
+                return cache.Plan.Order;
+            }
+        }
+
         // Derived keys, every key after the Derived keys it reads (Validate rejects cycles; the visited set keeps this finite).
         public static List<string> DerivedOrder(Story story)
         {
@@ -1121,9 +1229,25 @@ namespace Tirabade
             void Visit(string key)
             {
                 if (!seen.Add(key)) return;
-                foreach (var input in DerivedInputs(story, key))
-                    if (story.Derived.ContainsKey(input)) Visit(input);
+                // Same input order as DerivedInputs, without rebuilding its nested LINQ chain per key.
+                foreach (var group in story.Derived[key])
+                    foreach (var input in group) VisitInput(input);
+                if (story.DerivedForbids.TryGetValue(key, out var forbids))
+                    foreach (var input in forbids) VisitInput(input);
+                if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
+                    foreach (var rel in routes)
+                    {
+                        var relationship = story.Relationships[rel];
+                        VisitInput(relationship.ClosedFlag);
+                        foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>()) VisitInput(input);
+                        if (relationship.UnavailableOverrides != null)
+                            foreach (var input in relationship.UnavailableOverrides.Values) VisitInput(input);
+                    }
                 order.Add(key);
+            }
+            void VisitInput(string input)
+            {
+                if (story.Derived.ContainsKey(input)) Visit(input);
             }
             foreach (var key in story.Derived.Keys) Visit(key);
             return order;
@@ -1270,11 +1394,18 @@ namespace Tirabade
             => string.Equals(originalBlueprint, presenceUnit, StringComparison.OrdinalIgnoreCase)
             || string.Equals(blueprint, presenceUnit, StringComparison.OrdinalIgnoreCase);
 
+        // F10: only this QA candidate is unsupported by the live copy path. Dragon size alone is not a ban.
+        public static void ValidatePresenceCopy(string key, Presence presence)
+        {
+            if (presence.Mode == "spawn-copy" && presence.Unit == "c4b5746d3d2511441ba18a894cecb328")
+                throw new InvalidOperationException("Presence " + key + ": RedDragon_Sanctum 1 is an unsupported QA copy (live probe produced no usable actor). Use Devarra's existing letter/Storyteller delivery.");
+        }
+
         public static CopyQuiet PlanQuiet(CopyObservation copy)
         {
             var steps = CopyQuiet.None;
             if (copy.PlayerFaction || copy.Enemy) steps |= CopyQuiet.Faction;
-            if (copy.PlayerFaction || copy.Enemy || copy.PartyGroup) steps |= CopyQuiet.Group;
+            if (copy.PlayerFaction || copy.Enemy || copy.PartyGroup || copy.ForeignGroup) steps |= CopyQuiet.Group;
             if (!copy.Silenced) steps |= CopyQuiet.Silence;
             if (!copy.Passive) steps |= CopyQuiet.Passive;
             return steps;
@@ -2128,6 +2259,7 @@ namespace Tirabade
                     || p.ReactionScenes.Length > 0 && p.Dialog != "hub")
                     throw new InvalidOperationException("Invalid presence reaction attachments: " + pair.Key);
                 // end eng7-l11
+                if (p != null) ValidatePresenceCopy(pair.Key, p);
                 string relationship = PresenceRelationship(pair.Key) ?? "";
                 if (p == null || !story.Relationships.ContainsKey(relationship) || !GuidOk(p.Unit) || !GuidOk(p.Area)
                     || p.Mode != "reuse-native" && p.Mode != "spawn-copy" || p.Requires == null || p.Forbids == null || p.AnswerLists == null

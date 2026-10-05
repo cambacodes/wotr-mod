@@ -797,3 +797,34 @@ these changed spots remain pending. The old quartermaster run details stay histo
 Repeat Targona and Aranka yard commands with `$S3` as well as `$S5` for their 3..5 window.
 The remote sergeant, Chadali letter and Devarra probe commands above retain their stated limits;
 the cellar entry still needs genuine retained-original custody, never a fixture-created return.
+
+## ENGINE F9 live proof (E-Q7-33, 2026-10-05)
+
+Results are in `tools/presence_placement_manifest.json` (`live_f9_followup_2026_10_05` per entry, `live_f9_summary_2026_10_05`,
+`additional_live_runs_2026_10_05`) and the probe artifacts under `tools/placement_probes/`. Verified on the Trickster Chapter 5
+save: galfrey.presence, galfrey.presence.stall, mielarah.presence, mielarah.presence.arcade, aranka.presence(.yard), targona.presence,
+nenio.presence, shamira.presence.awning, herrax.presence.rokhorn_stall (each with one Spawn event, same actor after reload).
+
+Fixture notes learned in that pass:
+
+- `RRT_HARNESS_HIDE=<guid,guid>` now hides the anchors **before RRT's first tick** of the area (a Harmony prefix on
+  `Tirabade.Main.TickPresences`), so the primary fails like a really missing anchor and the earned fallback is the only copy.
+  Run the fallback commands with `-SetFlags` of the route plus `hour.<flag>`, **without** `-NoRoundTrip`, and with the variable set
+  in the same PowerShell command (`$env:RRT_HARNESS_HIDE='...'; ./harness/run-harness.ps1 ...; Remove-Item Env:RRT_HARNESS_HIDE`).
+  Anchors: ExoticCapitalTrader bad9f602..., Vendor_Tiefling 23eabf5b..., FoolKing cc50a88b..., JewelerCapitalTrader bc109323...
+- `RRT_HARNESS_RAYS="x,z,radius,step[,y];..."` (with `-Spike Presence -PresenceEnterPoint ...`, no key) writes a downward ray
+  grid (every collider and layer, top first), the nearest walkmesh node and every in-game unit to `PresenceSpike.Notes`. A copy
+  placed under a roof or awning snaps up onto the Ground-layer collider (6+ m off its target); candidate spots must have no
+  Ground-layer hit above the mesh and no unit within about 2 m. Static citizens (e.g. PeasantMale2, PeasantFemale3, NobleMale5)
+  and the roaming PeasantMale5 sit near the smith and the exotic stall.
+- A hub click needs a hub scene that is available, so the fixture flags must satisfy one hub scene of the presence: Jerribeth
+  needs `jerribeth.committed` and `jerribeth.trickster.cost.forfeit`; Targona `targona.trickster.cost.struck_down`; Nenio
+  `nenio.trickster.scribe`.
+- The Fool King (cc50a88b), Fye and their courts are in game only for the first area tick of the Chapter 5 capital. Placements
+  anchored on them (herrax.presence.rokhorn, shamira.presence, eliandra.presence, camellia.presence) spawn once and then lose their
+  anchor; the earned fallback takes over. Their primaries cannot be proven on these saves.
+- Pending with exact reasons in the manifest: jerribeth (roaming citizen after reload), camellia and wenduag.street (native unit
+  alive, custody not fixture-creatable), the two evil Arueshalae spots (synthetic held etude is cleared before reload),
+  wenduag.cellar (mesh proven only), devarra.locator (engine creates no actor for the dragon copy).
+- Chapter 3 (save RRT_Manual_313): a spawned copy (targona, aranka) is gone by the next tick; Chapter 5 holds. Engine defect, runs
+  20261005-052752, -053249, trace 20261005-053815.

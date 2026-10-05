@@ -93,7 +93,7 @@ PRESENCES = {
     # If the market stall is not in the capital, aranka.presence.failed is raised and she sings in the quartermaster's
     # yard instead: a copy of a different unit of hers, beside the ordinary capital blacksmith (F9). The same four in-person
     # beats have yard copies (ids ending _yard).
-    YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="right", Distance=6.5),
+    YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Offset=[5.0, -7.0]),
                Requires=["trickster.ever", "aranka.trickster.in_drezen", FYE_GONE], Forbids=[CLOSED], MinChapter=3,
                MaxChapter=5, AnswerLists=[], Dialog="hub",
                Greeting="{n}The market is shuttered. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the "

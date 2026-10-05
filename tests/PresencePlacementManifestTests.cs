@@ -251,7 +251,7 @@ internal static class PresencePlacementManifestTests
                 var a = presences[i].Value; var b = presences[j].Value;
                 if (a.Area != Rules.NurahCapital || b.Area != a.Area || a.At?.NearUnit == null
                     || a.At.NearUnit != b.At?.NearUnit || Rules.PresencesExclusive(a, b)) continue;
-                (double X, double Z) Offset(PresenceAnchor at) => at.Side switch {
+                (double X, double Z) Offset(PresenceAnchor at) => at.Offset != null ? (at.Offset[0], at.Offset[1]) : at.Side switch {
                     "right" => (at.Distance, 0), "front" => (0, at.Distance),
                     "behind" => (0, -at.Distance), _ => (-at.Distance, 0) };
                 var aa = Offset(a.At); var ba = Offset(b.At!);

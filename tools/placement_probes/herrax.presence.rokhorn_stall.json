@@ -1,0 +1,59 @@
+{
+ "placement": "herrax.presence.rokhorn_stall",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:herrax.presence.rokhorn_stall",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+  "Offset": [
+   1.0,
+   -8.0
+  ]
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.00222396851,
+ "drift": 0.00305175781,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-051150",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "$env:RRT_HARNESS_HIDE='cc50a88bbd8dd3e4da066d33d14fdfc8'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'; Remove-Item Env:RRT_HARNESS_HIDE",
+  "actor_id": "0f05fe0b-2d65-4b36-b5d6-79716c160b1a",
+  "actor_id_after_reload": "0f05fe0b-2d65-4b36-b5d6-79716c160b1a",
+  "position": [
+   -4.904,
+   56.0031738,
+   0.5799999
+  ],
+  "target": [
+   -4.904,
+   56.0062256,
+   0.5799999
+  ],
+  "approach_distance": 1.80924094,
+  "after_reload_drift": 0.00305175781,
+  "after_reload_gap": 0.00222396851,
+  "after_reload_position": [
+   -4.9,
+   56.0031738,
+   0.57
+  ],
+  "after_reload_approach": 1.79120076,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-051150/shots/herrax.presence.rokhorn_stall__production.png",
+   "harness/.runs/20261005-051150/shots/herrax.presence.rokhorn_stall__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). Re-spotted from right 7.5 (roof: copy snapped 8.6 m off the spot) to NearUnit exotic trader Offset [1.0,-8.0]. Fallback proven with the Fool King anchor hidden."
+ }
+}

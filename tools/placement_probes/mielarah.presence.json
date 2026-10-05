@@ -1,0 +1,57 @@
+{
+ "placement": "mielarah.presence",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:mielarah.presence",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "23eabf5b6364d4a4e86202dc5d27600b",
+  "Side": "right",
+  "Distance": 7.5
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.120494843,
+ "drift": 0.119441986,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-034046",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,mielarah.trickster.landfall,hour.mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'",
+  "actor_id": "fddb3a7e-fc2e-4f59-a949-ef59d1775520",
+  "actor_id_after_reload": "fddb3a7e-fc2e-4f59-a949-ef59d1775520",
+  "position": [
+   -56.45866,
+   45.00355,
+   -47.71651
+  ],
+  "target": [
+   -56.45866,
+   45.1229935,
+   -47.71651
+  ],
+  "approach_distance": 1.81657171,
+  "after_reload_drift": 0.119229652,
+  "after_reload_gap": 0.1204834,
+  "after_reload_position": [
+   -56.45,
+   45.0038223,
+   -47.71
+  ],
+  "after_reload_approach": 1.81648242,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-034046/shots/mielarah.presence__production.png",
+   "harness/.runs/20261005-034046/shots/mielarah.presence__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). "
+ }
+}

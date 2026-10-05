@@ -1,0 +1,57 @@
+{
+ "placement": "shamira.presence.awning",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:shamira.presence.awning",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "253cdb8f434e5a6469b75e18428316e3",
+  "Side": "right",
+  "Distance": 6.5
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.00222396851,
+ "drift": 0.00305175781,
+ "evidence": {
+  "date": "2026-10-05",
+  "engine": "F9 (HEAD 0a7ffa87) plus the harness early-hide fixture",
+  "run": "harness/.runs/20261005-052356",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "$env:RRT_HARNESS_HIDE='cc50a88bbd8dd3e4da066d33d14fdfc8'; ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,hour.trickster.ever,shamira.trickster.embodied,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'; Remove-Item Env:RRT_HARNESS_HIDE",
+  "actor_id": "be50068b-0662-4307-abec-36825dfc5e1b",
+  "actor_id_after_reload": "be50068b-0662-4307-abec-36825dfc5e1b",
+  "position": [
+   26.47879,
+   56.0031738,
+   20.3722572
+  ],
+  "target": [
+   26.47879,
+   56.0062256,
+   20.3722572
+  ],
+  "approach_distance": 1.84021151,
+  "after_reload_drift": 0.00398274232,
+  "after_reload_gap": 0.002248967,
+  "after_reload_position": [
+   26.47,
+   56.0031738,
+   20.37
+  ],
+  "after_reload_approach": 1.83809817,
+  "crowding": [],
+  "after_reload_crowding": [],
+  "spawn_events": 1,
+  "remove_events": 0,
+  "screenshots": [
+   "harness/.runs/20261005-052356/shots/shamira.presence.awning__production.png",
+   "harness/.runs/20261005-052356/shots/shamira.presence.awning__production_2.png"
+  ],
+  "note": "Fixture state (authored flags aged with hour.<flag>, Trickster etude, entry at DrezenCapital_FromThroneRoom); the Commander walked to the spot, production PresenceClick started the hub dialog, a round-trip save/reload kept the same actor id with no oscillation (one Spawn event). Re-spotted from behind 3.5 (roof: copy snapped 6 m up) to right 6.5 of the tailor. Fallback proven with the Fool King anchor hidden; the first attempt (run 20261005-050601) failed only the 2.0 m approach tolerance (2.02 m), the second run passed every check."
+ }
+}

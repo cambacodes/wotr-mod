@@ -290,7 +290,7 @@ internal static class NenioTricksterTests
             "A Nenio scene hangs on a crowded hub (Fye, the yard, the smith).");
         var presence = story.Presences["nenio.presence"];
         var arcade = story.Presences["nenio.presence.arcade"];
-        check(presence.Unit == CopyUnit && presence.At?.NearUnit == "bad9f602b81a80047ac470b01ebe65a9" && presence.At?.Side == "behind"
+        check(presence.Unit == CopyUnit && presence.At?.NearUnit == "bad9f602b81a80047ac470b01ebe65a9" && presence.At?.Offset != null && presence.At.Offset[0] == 7f && presence.At.Offset[1] == -4f
               && presence.Requires.Contains(P + "visitor") && presence.Forbids.Contains(Closed) && presence.Dialog == "hub"
               && arcade.At?.NearUnit == "bc1093231b1577a4485a730c29595195" && arcade.Requires.Contains("nenio.presence.failed"),
             "Her presence is not the copy behind the exotic trader (5 m from Aranka), with the jeweller's arcade as the fallback.");

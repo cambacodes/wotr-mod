@@ -79,6 +79,7 @@ internal static class PresenceTests
         Invalid("key without .presence", (s, x) => { s.Presences.Remove("irabeth.presence"); s.Presences["irabeth"] = x; });
         Invalid("bad unit guid", (_, x) => x.Unit = "nope");
         Invalid("bad area guid", (_, x) => x.Area = "00000000000000000000000000000000");
+        Invalid("unsupported QA dragon copy", (_, x) => x.Unit = "c4b5746d3d2511441ba18a894cecb328");
         Invalid("unknown mode", (_, x) => x.Mode = "teleport");
         Invalid("copy without position", (_, x) => x.Position = null);
         Invalid("ungated copy", (_, x) => x.Requires = Array.Empty<string>());
@@ -128,6 +129,10 @@ internal static class PresenceTests
         check(Rules.PlanQuiet(new CopyObservation { Silenced = true }) == CopyQuiet.Passive,
             "A copy reloaded from a save (Passive is not saved) is not made passive again.");
         check(!Rules.PlanQuiet(new CopyObservation { Passive = true }).HasFlag(CopyQuiet.Faction), "A neutral copy's faction was switched.");
+        // F10: neutral NPC groups were missed by the party-only repair. The native stays in its group;
+        // every recorded copy must detach, including one loaded from an older save.
+        check(Rules.PlanQuiet(new CopyObservation { ForeignGroup = true, Silenced = true, Passive = true }) == CopyQuiet.Group,
+            "F10: neutral copy retained a native NPC group");
         // E12e: a PretendUnit copy (Seelah_NPC_Level1 pretending to be Seelah_Companion) is still the presence's unit.
         const string seelahNpc = "90481a29cc75f424b9891a55c6dcbb53", seelahCompanion = "54be53f0b35bf3c4592a97ae335fe765";
         check(Rules.IsPresenceUnit(seelahNpc, seelahNpc, seelahCompanion), "A pretending copy is not recognized as the presence's unit.");

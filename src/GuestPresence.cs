@@ -7,6 +7,8 @@ using Kingmaker.Visual.Sound;
 using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using Kingmaker.EntitySystem.Persistence;
+using Kingmaker.ElementsSystem;
+using Kingmaker.View.Spawners;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -39,6 +41,7 @@ namespace Tirabade
 
         internal GuestPresence(string key, Presence spec, BlueprintUnit blueprint)
         {
+            Rules.ValidatePresenceCopy(key, spec);
             Key = key;
             Spec = spec;
             Blueprint = blueprint;
@@ -134,6 +137,7 @@ namespace Tirabade
             PlayerFaction = copy.Descriptor.Faction == BlueprintRoot.Instance.PlayerFaction,
             Enemy = Game.Instance.Player.MainCharacter.Value != null && copy.IsEnemy(Game.Instance.Player.MainCharacter.Value),
             PartyGroup = copy.GroupId == PartyGroupId,
+            ForeignGroup = copy.GroupId != copy.UniqueId,
             Silenced = copy.Descriptor.OverrideAsks?.AssetGuid.ToString() == SilentAsks,
             Passive = copy.Passive,
         };
@@ -146,8 +150,8 @@ namespace Tirabade
             var neutral = (steps & CopyQuiet.Faction) != 0 ? ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(NeutralFaction)) as BlueprintFaction : null;
             // The group goes first: UnitGroup.Remove takes the copy's faction out of the old group's faction set, so it must
             // still be the faction the copy joined with (after a switch it logs "Has no item in set" and leaves the party
-            // group's set stale). A copy whose faction cannot be switched keeps its group too.
-            if ((steps & CopyQuiet.Group) != 0 && ((steps & CopyQuiet.Faction) == 0 || neutral != null))
+            // group's set stale). Group isolation is still required if the neutral faction is unavailable.
+            if ((steps & CopyQuiet.Group) != 0)
             {
                 copy.GroupId = copy.UniqueId;   // what a non-player unit's group id defaults to
                 done |= CopyQuiet.Group;
@@ -173,6 +177,12 @@ namespace Tirabade
             }
             return done;
         }
+
+        // F10: SpawnUnit reuses Current, including a native placeholder's BeforeAttachView callback, hidden
+        // optimization and body/inventory. A presence must not inherit any of those. Isolate before attachment;
+        // Quiet also repairs foreign groups on copies saved by older builds. No native actor is passed here.
+        internal static UnitSpawningData CopySpawningData() => ContextData<UnitSpawningData>.Request()
+            .BeforeAttachView(copy => copy.GroupId = copy.UniqueId);
 
         // eng7-l05: the uniquely recorded unit is the only copy we may retire.
         internal PresenceObservation Observe(out UnitEntityData? native, out UnitEntityData? copy, out PresenceRecord? record)
@@ -324,8 +334,10 @@ namespace Tirabade
                     // Persist before spawning: an ambiguous submitted record is never spawned twice (TerendelevDelivery pattern).
                     var fresh = new PresenceRecord { Key = Key, UnitId = Guid.NewGuid().ToString(), Submitted = true };
                     Write(fresh);
-                    var spawned = game.EntityCreator.SpawnUnit(Blueprint, Target, Quaternion.Euler(0f, facing, 0f),
-                        game.State.LoadedAreaState.MainState, fresh.UnitId);
+                    UnitEntityData? spawned;
+                    using (CopySpawningData())
+                        spawned = game.EntityCreator.SpawnUnit(Blueprint, Target, Quaternion.Euler(0f, facing, 0f),
+                            game.State.LoadedAreaState.MainState, fresh.UnitId);
                     // E12d: quiet before the first frame, so the copy never barks or joins a fight as the native unit would.
                     if (spawned != null) LastQuiet = Quiet(spawned);
                     break;

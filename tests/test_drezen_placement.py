@@ -32,6 +32,21 @@ class DrezenPlacementTests(unittest.TestCase):
                 p["At"] = copy.deepcopy(bad["Presences"]["galfrey.presence.stall"]["At"])
             self.assertTrue(check(bad), mutation)
 
+    def test_f10_transient_anchors_roofs_and_roaming_lane(self):
+        for key in ("herrax.presence.rokhorn", "shamira.presence", "eliandra.presence", "jerribeth.presence"):
+            for anchor in ("cc50a88bbd8dd3e4da066d33d14fdfc8", "0f12118177d102f428a3b30b15b132eb",
+                           "a380d926e92f70e429681eb9654478f9", "bad9f602b81a80047ac470b01ebe65a9"):
+                bad = copy.deepcopy(self.story)
+                bad["Presences"][key]["At"]["NearUnit"] = anchor
+                self.assertTrue(any(key in e and "F10" in e for e in check(bad)), (key, anchor))
+            bad = copy.deepcopy(self.story)
+            bad["Presences"][key]["At"]["Side"] = "behind"
+            self.assertTrue(any(key in e and "roof" in e for e in check(bad)), key)
+        # The native-mark fallback is still a locator, with its earned gates untouched.
+        fallback = self.story["Presences"]["eliandra.presence.mark"]
+        self.assertEqual("9a41b047-9314-4719-a915-9c24aedf3e95", fallback["At"]["Locator"])
+        self.assertEqual([["eliandra.presence.failed", "fool_king.gone"]], fallback["RequiresAnyGroups"])
+
     def test_every_authored_presence_declaration(self):
         # Sweep route modules too, including declarations not currently registered.
         for path in sorted((ROOT / "storylines").glob("*.py")):
