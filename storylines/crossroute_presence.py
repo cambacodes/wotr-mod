@@ -79,14 +79,12 @@ def unavailability(payload, woman, route, known=None, distant=False):
 
 
 def scene_guard(scene, payload, woman, route, known=None, distant=False):
-    # Scene forbids already have earned overrides. Use that runtime contract
-    # directly: no new positive dependency on another route's progression.
-    # Paragraphs/answers use the equivalent composite because they lack
-    # ForbidOverrides. Register it also as the authored participant contract.
+    # The composite reads existing losses and returns without requiring
+    # another romance's progression. Register it as the participant contract.
     key = availability(payload, woman, route, known, distant)
     audience = NATIVE_AUDIENCES.get(woman)
     window = set(scene.get("Chapters") or range(scene.get("MinChapter", 0), scene.get("MaxChapter", 99) + 1))
-    if (audience and audience[0] in scene.get("AnswerLists", [])
+    if (window != {0} and audience and audience[0] in scene.get("AnswerLists", [])
             and window <= audience[1] and scene.get("NativeReturnCue")):
         # eng7-l14: native inline audiences retain their fixed Requires/
         # Forbids lists. RequiresAnyGroups conjoins its OR groups: append a
@@ -95,35 +93,39 @@ def scene_guard(scene, payload, woman, route, known=None, distant=False):
         if [key] not in groups:
             groups.append([key])
         return
-    # Reactions may not list another route's relationship state in their
-    # Forbids; native death/departure flags remain valid direct guards.
-    # Departure adapters have a fixed forbid/override contract.
     rel = payload["Relationships"][route]
     rel = dict(rel, UnavailableFlags=[*rel.get("UnavailableFlags", []), *PRESENCE_LOSSES.get(woman, [])])
     if distant:
         rel = dict(rel, UnavailableFlags=[f for f in rel.get("UnavailableFlags", []) if f != woman + "_gone"])
-    composite_override = any(loss in payload.get("Derived", {})
-                             for loss in rel.get("UnavailableOverrides", {}))
-    opaque_loss = known is not None and any(loss not in known for loss in rel.get("UnavailableFlags", []))
-    foreign_state = {rel[f] for name, rel in payload["Relationships"].items()
+    if window == {0} and woman in NATIVE_COMPANIONS:
+        # eng7-l14: ChapterFlag deliberately has no Prologue input. The
+        # native audience still reads current loss flags directly; requiring
+        # the Chapters 1–6 composite would hide her canonical introduction.
+        for loss in rel.get("UnavailableFlags", []):
+            if loss not in scene.setdefault("Forbids", []):
+                scene["Forbids"].append(loss)
+        return
+    # eng7-l14: guest-state reader contracts apply across routes. Keep life,
+    # closure and body exclusions inside the same live composite. Only the
+    # existing Long Con native-host adapter needs its scoped gone override;
+    # native reactions retain direct losses where their reader contract allows.
+    foreign_state = {spec[f] for name, spec in payload["Relationships"].items()
                      if name != scene.get("Relationship", "tirabade")
-                     for f in ("StartedFlag", "ClosedFlag", "CommittedFlag") if f in rel}
-    reaction_state = scene.get("Reaction") and any(f in foreign_state for f in rel.get("UnavailableFlags", []))
-    party_key = woman + ".in_party"
-    party_contract = party_key in scene.get("Requires", []) and party_key in payload.get("Etudes", {})
+                     for f in ("StartedFlag", "ClosedFlag", "CommittedFlag") if f in spec}
+    native_reaction = scene.get("Reaction") and not any(
+        f in foreign_state for f in rel.get("UnavailableFlags", []))
+    direct_contract = local_return_overrides(payload, scene, woman) or native_reaction
+    if not direct_contract:
+        # Presence is an exclusion, not a newly timed prerequisite. Existing
+        # DelayHours must still start at the route's original paid/event flag.
+        absent = unavailability(payload, woman, route, known, distant)
+        if absent not in scene.setdefault("Forbids", []):
+            scene["Forbids"].append(absent)
+        return
     if woman in BODY_RETURNS:
         for flag in ("trickster.ever", BODY_RETURNS[woman]):
             if flag not in scene.setdefault("Requires", []):
                 scene["Requires"].append(flag)
-    if reaction_state or party_contract or scene.get("AfterDeparture") or composite_override or opaque_loss or woman in NATIVE_COMPANIONS:
-        if scene.get("Reaction"):
-            absent = unavailability(payload, woman, route, known, distant)
-            if absent not in scene.setdefault("Forbids", []):
-                scene["Forbids"].append(absent)
-            return
-        if key not in scene.setdefault("Requires", []):
-            scene["Requires"].append(key)
-        return
     if woman not in LIVING_AFTER_ROMANCE_REFUSAL:
         closed = rel["ClosedFlag"]
         if closed not in scene.setdefault("Forbids", []):
@@ -158,10 +160,12 @@ def integrate(payload):
     # each scene before adding guards: deep-copying the entire list would
     # preserve those aliases and leak a guest's override into unrelated pages.
     payload["Scenes"] = [copy.deepcopy(s) for s in payload["Scenes"]]
-    # eng7-l14 authored temporal clarifications: remembered counsel in
-    # independent pages remains true for widows. Preserve the same remarks,
-    # without attributing current speech to an absent spouse.
+    # eng7-l14 authored temporal clarifications: campaign harm receipts and
+    # remembered counsel survive subsequent deaths/departures. Preserve those
+    # facts without attributing current action to an absent woman.
     counsel = {
+        ("soana.ending_native_loss", "camellia"): ("Camellia killed Soana.", "During the crusade, Camellia killed Soana."),
+        ("soana.ending_unfinished_loss", "camellia"): ("Camellia killed Soana.", "During the crusade, Camellia killed Soana."),
         ("irabeth.a_name_on_the_list", "company"): ("Nevi says I built", "Nevi once said I built"),
         ("irabeth.without_an_account", "want"): ("Nevi says it's my worst tactic.", "Nevi once said it's my worst tactic."),
         ("anevia.a_key_that_is_hers", "room"): ("Beth says I should learn", "Beth once said I should learn"),

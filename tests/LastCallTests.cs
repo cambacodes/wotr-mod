@@ -129,18 +129,32 @@ internal static class LastCallTests
             "noct.complete", "vellexia.committed", "devarra.committed", "nurah.complete", "nurah.ran_off" /* her coda needs a living Nurah */, "kiana.committed", "minachiv.complete", "soana.committed", "aranka.extension_kept",
             "gesmerha.committed", "seelah.committed", "targona.committed", "dorgelinda.committed", "hepzamirah.committed", "eritrice.committed",
             "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed", "nidalynn.committed", "shamira.committed", "jannah.committed", "nenio.committed", "herrax.committed", "terendelev.committed", "eliandra.committed", "galfrey.committed", "horzalah.committed", "elyanka.committed", "melazmera.committed", "yaniel.committed", "wenduag.committed", "iomedae.committed", "mielarah.committed" };
-        var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).ToArray());
+        // eng7-l14: commitment does not resurrect a canon-dead body. These
+        // existing paid returns describe the fixture's earned living world.
+        var bodyReturns = new[] { "hepzamirah.trickster.returned", "delamere.trickster.returned", "terendelev.trickster.returned" };
+        var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).Concat(bodyReturns).ToArray());
         var shown = codas.Where(s => Av(s, all)).Select(s => s.Id).ToList();
         check(codas.Length == 40 && shown.Count == 38 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
               && shown.Contains("tirabade.lastcall.page"),
             "LastCall_AllCommitted: expected 38 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
         {
-            var own = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle, coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0] : coda.Requires.Last());
+            var commitment = coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0]
+                : coda.Requires.Last(k => !k.EndsWith(".trickster.returned", StringComparison.Ordinal) && !k.StartsWith("crossroute.", StringComparison.Ordinal));
+            var own = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", Bottle, commitment }.Concat(bodyReturns).ToArray());
             check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id);
             var uncommitted = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle);
             check(!Av(coda, uncommitted), "LastCall_AllCommitted: a coda plays without her commit: " + coda.Id);
         }
+        foreach (var returned in bodyReturns)
+        {
+            var unreturned = Program.Copy(all);
+            unreturned.Flags.Remove(returned);
+            unreturned = Done(story, unreturned);
+            var woman = returned.Substring(0, returned.IndexOf('.', StringComparison.Ordinal));
+            check(!Av(Sc(woman + ".lastcall.page"), unreturned), "LastCall_EarnedPresence: commitment grants an unreturned body: " + woman);
+        }
+        // end eng7-l14
 
         // 9. LastCall_Paragraphs_Nonempty: every page has unconditional text.
         foreach (var page in pages)

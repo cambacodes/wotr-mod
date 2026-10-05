@@ -11,6 +11,9 @@ ACTION = re.compile(r"\b(?:stands?|stood|sits?|sat|leans?|waits?|steps?|walks?|e
 # Drezen_Under_Siedge/Goddesses_Summit/Cue_0033 and its siblings use
 # Nocticula's BlueprintUnit 0cca8c84. These lists already stage the actor.
 NATIVE_AUDIENCES = {
+    # eng7-l14: MeetCamelia/Cue_0007 (a3b4f763acce63b499983c4a47f652d4,
+    # native Seelah 54be53f0) introduces the caves' party before this list.
+    "seelah": ("1ca6cf08fceeac141a0df689cecc784a", {0}),
     "minagho": ("41dff710486d05d49bbb663f729ddabd", {2}),
     "nocticula": ("7f18896facfbd614c96e2e4ea2d6c0d5", {5}),
 }

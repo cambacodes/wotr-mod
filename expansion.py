@@ -650,6 +650,9 @@ def make_expansion(*, independent_tirabade=True):
     scene_kinds.integrate(payload)
     trickster_now_setups(payload)
     normalize_trickster_access(payload)
+    # eng7-l14: retain q6b's verified read-only history registry in exports.
+    from storylines import native_facts
+    native_facts.integrate(payload)
     # eng7-l14: live cross-route prose reads existing earned presence.
     from storylines import crossroute_presence
     crossroute_presence.integrate(payload)

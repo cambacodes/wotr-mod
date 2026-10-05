@@ -39,6 +39,22 @@ describes future life and is not itself a history exemption. Each occurrence
 is checked separately; a memory mention cannot exempt a second live mention.
 The classifier is `tools/crossroute_checks/mention_context.py`; its conservative
 default is a live claim, with regression fixtures for both classes.
+Relative clauses and coordinated predicates about today's actor take
+precedence over history, relic, comparison and reputation exemptions:
+"remember Seelah, who now waits" and "Seelah is brave and stands" still need
+life. Conditional meeting plans also need life. A first-year visit in an
+epilogue describes postwar life, not an earlier campaign recollection.
+Actions by another actor reacting to her name or relic (a knight of her company)
+do not establish the named woman's presence. These cases are checked alongside
+unreturned-loss exclusion and satisfiable earned-return regression worlds.
+The paid receipt for the silver dragon's festival-square promise records the
+prologue morning and remains readable without resurrecting Terendelev. A new
+live visit in the same clause still requires her existing earned return.
+The caves' witnesses likewise recall the first encounter and Terendelev's
+earlier healing; their own current speaking cues remain presence-guarded.
+The two Soana death receipts explicitly date Camellia's killing to the crusade,
+so the remembered perpetrator need not survive to the ending. A coordinated
+future visit or separate live cameo remains subject to current availability.
 
 | Check | Sample | Condition logic / result |
 | --- | --- | --- |
@@ -85,7 +101,9 @@ location/participant metadata; changed baselined gates require a new review.
 ## eng7-l14 scope and rule
 
 `storylines/crossroute_presence.py` runs after all route generators. Ordinary
-scene guards use the existing Forbids/ForbidOverrides contract. Optional live
+scene guards exclude a live inverse of the existing availability contract. It
+reads native losses and registered earned overrides without adding timed
+Requires inputs or restarting the scene's original DelayHours. Optional live
 branches instead guard incoming answers where a neutral alternative is proved
 selectable, so a refused guest does not suppress the owner's scene. Native
 present/departure inputs do not establish life: if such an optional branch's
@@ -93,8 +111,15 @@ input survives a later loss, appended answers retain its existing no-guest
 targets and costs. No original answer is retargeted. Mixed fetched-return
 receipts retain the historical sentence and append a guarded future visit.
 Fixed departure hosts and forbidden relationship-state reads use the equivalent
-guarded composite. Reactions otherwise read direct native losses and registered
-return overrides, including an earned return added after a snapshot was built. Optional ending cameos
+guarded composite. Guest losses, closure and body exclusions stay inside this
+live composite across ordinary routes, preserving reader contracts in Long Con, Last
+Call, Nenio, Elyanka and siblings. The explicitly scoped Long Con native-host
+adapter retains its original direct overrides; registered returns and neutral
+histories stay intact.
+Native reactions without foreign relationship-state losses read direct native
+losses and registered return overrides, including an earned return added after
+a snapshot was built. Other reactions use the equivalent inverse exclusion.
+Optional ending cameos
 append guarded paragraphs; original paragraph indices are retained. The mixed
 Irabeth negotiation appends one neutral page and four answers after the original
 indices; the original live page and answer targets remain. Four remembered
@@ -160,12 +185,16 @@ losses are all clear; their custom returns still require the romance route
 open, so a hard post-return departure is retained. Other routes retain their existing closure guard,
 including deliberate departures. Own romance and household closure gates
 remain unchanged. Native bound
-speakers and two verified native audiences do not need a recreated visitor
+speakers and verified native audiences do not need a recreated visitor
 clone. A fixed native inline audience retains its original Requires/Forbids
 lists and conjoins the identical live predicate as a singleton
 RequiresAnyGroups entry; existing alternatives cannot bypass it.
 The Minagho citadel and Nocticula Summit witnesses are cited beside
 `NATIVE_AUDIENCES` and verified against `/wrath/blueprints.zip` and `enGB.json`.
+MeetCamelia's Cue_0007 likewise stages Seelah in the caves before its Prologue
+list. Chapter 0 has no ChapterFlag or paid return opportunity; its native
+companion audience reads current loss exclusions directly, keeping the
+path-neutral introduction available without a Chapters 1–6/Trickster reader.
 
 E-Q7-29 is owned by l11 (`eng7-l11-task.md` and its implementation report);
 this lane does not duplicate its attachment mechanism or timing decision.

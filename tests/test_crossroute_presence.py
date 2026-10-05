@@ -75,6 +75,45 @@ class MentionContextTests(unittest.TestCase):
         self.assertEqual(live_mentions(text, pattern), [])
         self.assertEqual(len(live_mentions(text + " {n}Seelah waits at the door.{/n}", pattern)), 1)
 
+    def test_reference_cannot_exempt_relative_or_coordinated_live_claim(self):
+        for text in (
+            "Unlike Seelah, who stands beside the fire, I am tired.",
+            "If Seelah joins us tonight, we can begin.",
+            "If Seelah watches the gate tonight, we can begin.",
+            "If Seelah will join us tonight, we can begin.",
+            "I remember Seelah, who now waits at the gate.",
+            "I remember Seelah, who is now standing at the gate.",
+            "I remember Seelah, who now watches the gate.",
+            "Unlike Seelah, who leans against the gate, I am tired.",
+            "Unlike Seelah, who will join us tonight, I am tired.",
+            "Seelah is gone, but she waits at the gate.",
+            "Seelah has already had a word with me and will meet us tonight.",
+            "Seelah is brave and stands at the gate.",
+            "Seelah's old letters lie on the desk; she arrives tonight.",
+            "Seelah's old letters lie on the desk; she is here now.",
+            "Seelah's old letters lie on the desk; she holds my hand.",
+        ):
+            with self.subTest(text=text):
+                story = fixture(text)
+                self.assertTrue(run(other_woman, story))
+                guard.integrate(story)
+                self.assertEqual(run(other_woman, story), [])
+                model = verify.Model(copy.deepcopy(story))
+                proof = Proof(model)
+                context = AND(lit("chapter_later"), fields(story["Scenes"][0], overrides=True))
+                self.assertTrue(proof.implies(AND(context, lit("seelah.dead")), lit("seelah.returned")))
+                self.assertFalse(proof.implies(AND(context, lit("trickster.ever"), lit("seelah.dead"), lit("seelah.returned")),
+                                               lit("seelah.returned", False)))
+        self.assertTrue(run(other_woman, fixture("Seelah came to visit, the first year. Then she stopped coming.", True)))
+        for text in ("Unlike Seelah, I never liked wine.",
+                     "If Seelah were here, she would have laughed.",
+                     "I remember Seelah, who once stood beside the fire.",
+                     "Seelah's old letters lie on the desk; I arrive tonight.",
+                     "{n}A knight of Seelah's company takes off his helmet and holds it under his arm.{/n}",
+                     "{n}When Seelah's name was spoken in her hearing she went quiet, and later she would go and stand a watch.{/n}"):
+            with self.subTest(reference=text):
+                self.assertEqual(run(other_woman, fixture(text)), [])
+
     def test_declared_memory_does_not_require_current_life(self):
         s = fixture("{n}Seelah stands beside you in Kenabres.{/n}")
         s["Scenes"][0]["Kind"] = "memory"
@@ -83,8 +122,133 @@ class MentionContextTests(unittest.TestCase):
         guard.integrate(s)
         self.assertEqual(s, before)
 
+    def test_paid_prologue_receipt_does_not_require_the_dragon_return(self):
+        text = "The Commander paid for the page with a morning in Kenabres: the silver dragon's promise in the festival square."
+        pattern = re.compile(r"the silver dragon", re.I)
+        self.assertEqual(live_mentions(text, pattern, postwar=True), [])
+        self.assertTrue(live_mentions(text[:-1] + ", but she will visit tonight.", pattern, postwar=True))
+        story = fixture(text, epilogue=True)
+        story["Relationships"]["terendelev"] = dict(relationship("terendelev"), UnavailableFlags=[])
+        guard.integrate(story)
+        self.assertEqual(story["Scenes"][0]["Nodes"][0]["Text"], text)
+        self.assertNotIn("crossroute.terendelev.available", story["Scenes"][0]["Requires"])
+        self.assertEqual(run(other_woman, story), [])
+
+    def test_campaign_killer_receipt_survives_the_killers_later_loss(self):
+        for sid in ("soana.ending_native_loss", "soana.ending_unfinished_loss"):
+            with self.subTest(scene=sid):
+                story = fixture("{n}Camellia killed Soana. The cave kept her old blanket.{/n}", True)
+                story["Relationships"]["soana"] = dict(relationship("soana"), UnavailableFlags=[])
+                story["Relationships"]["camellia"] = relationship("camellia")
+                scene = story["Scenes"][0]
+                scene.update(Id=sid, Relationship="soana")
+                scene["Nodes"][0]["Id"] = "camellia"
+                guard.integrate(story)
+                scene = story["Scenes"][0]
+                self.assertIn("During the crusade, Camellia killed Soana.", scene["Nodes"][0]["Text"])
+                self.assertEqual(scene["Requires"], [])
+                self.assertEqual(scene["Forbids"], [])
+                self.assertEqual(run(other_woman, story), [])
+                proof = Proof(verify.Model(copy.deepcopy(story)))
+                lost = AND(lit("camellia.dead"), lit("camellia.departed"), lit("camellia.closed"),
+                           lit("camellia.returned", False))
+                self.assertTrue(proof.implies(lost, fields(scene, overrides=True)))
+                self.assertFalse(proof.implies(lost, lit("camellia.returned")))
+                scene["Nodes"][0]["Text"] += " {n}Camellia waits at the gate.{/n}"
+                self.assertTrue(run(other_woman, story))
+        self.assertTrue(run(other_woman, fixture(
+            "{n}During the crusade, Seelah killed Soana and she will visit tonight.{/n}", True)))
+
+    def test_foresight_witness_recollections_keep_departed_helpers_historical(self):
+        texts = (
+            '"Then I got a proper look at your face and thought: oh, that\'s the one Terendelev healed."',
+            '"That was you, the first time I ever saw you. Down in the caves, grey as a fish, and Seelah with her hand on her sword because she thought you were a cultist."',
+        )
+        for text in texts:
+            with self.subTest(text=text):
+                story = fixture(text)
+                story["Relationships"]["terendelev"] = dict(relationship("terendelev"), UnavailableFlags=[])
+                guard.integrate(story)
+                self.assertEqual(run(other_woman, story), [])
+                self.assertFalse(any(f.startswith("crossroute.") for f in story["Scenes"][0]["Requires"] + story["Scenes"][0]["Forbids"]))
+        self.assertTrue(run(other_woman, fixture("Seelah healed me and will visit tonight.")))
+
 
 class GuardPassTests(unittest.TestCase):
+    def test_prologue_native_audience_uses_losses_without_a_later_chapter_flag(self):
+        story = fixture("{n}Seelah stands beside Camellia.{/n}")
+        scene = story["Scenes"][0]
+        scene.update(MinChapter=0, MaxChapter=0, Chapters=[0], ReturnToList=True,
+                     AnswerLists=[other_woman.NATIVE_AUDIENCES["seelah"][0]])
+        guard.integrate(story)
+        scene = story["Scenes"][0]
+        self.assertEqual(scene["Requires"], [])
+        self.assertEqual(run(other_woman, story), [])
+        proof = Proof(verify.Model(copy.deepcopy(story)))
+        present = AND(*(lit(f, False) for f in
+            ("chapter_one", "chapter_later", "trickster.ever", "seelah.dead", "seelah.departed", "seelah.refused", "trickster.failed")))
+        self.assertTrue(proof.implies(present, fields(scene, overrides=True)))
+        self.assertFalse(proof.implies(present, lit("seelah.dead")))
+        self.assertTrue(proof.implies(fields(scene, overrides=True), lit("seelah.dead", False)))
+
+    def test_partner_presence_keeps_restricted_reader_contracts(self):
+        for route in ("longcon", "lastcall", "nenio", "aranka"):
+            with self.subTest(route=route):
+                story = fixture("{n}Galfrey stands beside the fire.{/n}")
+                story["Relationships"][route] = dict(relationship(route), UnavailableFlags=[])
+                scene = story["Scenes"][0]
+                scene.update(Relationship=route, Requires=[route + ".begun"])
+                guard.integrate(story)
+                scene = story["Scenes"][0]
+                self.assertNotIn("galfrey.closed", scene["Requires"] + scene["Forbids"])
+                self.assertEqual(run(other_woman, story), [])
+                proof = Proof(verify.Model(copy.deepcopy(story)))
+                self.assertTrue(proof.implies(AND(lit("chapter_later"), fields(scene, overrides=True)), lit("galfrey.closed", False)))
+                self.assertEqual(scene["Requires"], [route + ".begun"])
+                earned = AND(lit("chapter_later"), lit("galfrey.dead"), lit("galfrey.returned"),
+                             lit(route + ".begun"), *(lit(f, False) for f in
+                                 ("galfrey.closed", "galfrey.departed", "galfrey.refused", "trickster.failed")))
+                self.assertTrue(proof.implies(earned, fields(scene, overrides=True)))
+                self.assertFalse(proof.implies(earned, lit("galfrey.returned", False)))
+
+    def test_guest_body_return_does_not_restart_original_delay(self):
+        story = fixture("{n}The silver dragon stands beside the fire.{/n}")
+        story["Relationships"]["terendelev"] = dict(relationship("terendelev"), UnavailableFlags=[])
+        scene = story["Scenes"][0]
+        scene.update(Requires=["funeral.latched"], DelayHours=72)
+        guard.integrate(story)
+        scene = story["Scenes"][0]
+        self.assertEqual(scene["Requires"], ["funeral.latched"])
+        self.assertEqual(scene["DelayHours"], 72)
+        self.assertEqual(run(other_woman, story), [])
+        proof = Proof(verify.Model(copy.deepcopy(story)))
+        context = AND(lit("chapter_later"), fields(scene, overrides=True))
+        self.assertTrue(proof.implies(context, lit("terendelev.trickster.returned")))
+        earned = AND(lit("chapter_later"), lit("trickster.ever"), lit("funeral.latched"),
+                     lit("terendelev.trickster.returned"), lit("terendelev.closed", False),
+                     lit("terendelev.parent_lich_bind", False))
+        self.assertTrue(proof.implies(earned, fields(scene, overrides=True)))
+        self.assertFalse(proof.implies(earned, lit("terendelev.trickster.returned", False)))
+
+    def test_native_reaction_reads_return_without_a_stale_absence_veto(self):
+        story = fixture("The officer answers.")
+        story["Relationships"]["irabeth"] = dict(relationship("irabeth"),
+            UnavailableFlags=["irabeth_dead", "irabeth_gone"],
+            UnavailableOverrides={"irabeth_dead": "irabeth.trickster.returned"})
+        scene = story["Scenes"][0]
+        scene.update(Reaction=True)
+        scene["Nodes"][0]["Speaker"] = "Irabeth"
+        guard.integrate(story)
+        scene = story["Scenes"][0]
+        self.assertNotIn("crossroute.irabeth.unavailable", scene["Forbids"])
+        self.assertEqual(scene["ForbidOverrides"]["irabeth_dead"], "irabeth.trickster.returned")
+        proof = Proof(verify.Model(copy.deepcopy(story)))
+        earned = AND(lit("irabeth_dead"), lit("irabeth.trickster.returned"), lit("irabeth_gone", False))
+        self.assertTrue(proof.implies(earned, fields(scene, overrides=True)))
+        self.assertTrue(proof.implies(AND(fields(scene, overrides=True), lit("irabeth_dead")),
+                                     lit("irabeth.trickster.returned")))
+        self.assertEqual(run(other_woman, story), [])
+
     def test_longcon_native_host_retains_its_existing_paid_departure_adapter(self):
         s = fixture("{n}Irabeth closes the ledger.{/n}")
         s["Relationships"]["longcon"] = dict(relationship("longcon"), UnavailableFlags=[], UnavailableOverrides={})
@@ -269,7 +433,7 @@ class GuardPassTests(unittest.TestCase):
             scene["ForbidOverrides"] = shared_overrides
         s["Scenes"].append(sibling)
         guard.integrate(s)
-        self.assertIn("crossroute.seelah.available", s["Scenes"][0]["Requires"])
+        self.assertIn("crossroute.seelah.unavailable", s["Scenes"][0]["Forbids"])
         self.assertEqual(s["Scenes"][1]["Forbids"], [])
         self.assertEqual(s["Scenes"][1]["ForbidOverrides"], {})
         self.assertEqual(shared_forbids, [])
@@ -445,20 +609,24 @@ class GuardPassTests(unittest.TestCase):
         s["Scenes"].append(dict(Id="anevia.owner", Owner="Anevia", Relationship="anevia", Nodes=[]))
         before = copy.deepcopy(s)
         guard.integrate(s)
+        scene = s["Scenes"][0]
         self.assertEqual(run(other_woman, s), [])
-        self.assertIn("anevia_dead", s["Scenes"][0]["Forbids"])
-        self.assertNotIn("anevia_gone", s["Scenes"][0]["Forbids"])
         proof = Proof(verify.Model(copy.deepcopy(s)))
+        self.assertTrue(proof.implies(AND(lit("chapter_later"), fields(scene, overrides=True)), lit("anevia_dead", False)))
         distant = AND(lit("chapter_later"), lit("anevia_gone"), lit("anevia.trickster.returned", False),
                       *(lit(k, False) for k in ("anevia_dead", "swarm", "true_lich")))
         self.assertTrue(proof.implies(distant, lit("crossroute.anevia.correspondent")))
+        self.assertTrue(proof.implies(AND(distant, *(lit(k) for k in before["Scenes"][0]["Requires"])),
+                                     fields(scene, overrides=True)))
         self.assertFalse(proof.implies(distant, lit("anevia.trickster.returned")))
         self.assertTrue(proof.implies(lit("crossroute.anevia.correspondent"), lit("anevia_dead", False)))
         # The same clause in another scene or without its existing paid-story
         # prerequisites cannot grant a distant-contact exception.
         before["Scenes"][0]["Requires"].remove("irabeth.trickster.declined")
         guard.integrate(before)
-        self.assertIn("anevia_gone", before["Scenes"][0]["Forbids"])
+        proof = Proof(verify.Model(copy.deepcopy(before)))
+        self.assertTrue(proof.implies(AND(lit("chapter_later"), fields(before["Scenes"][0], overrides=True), lit("anevia_gone")),
+                                     lit("anevia.trickster.returned")))
 
     def test_paid_native_south_road_contact_keeps_departure_and_death_consequences(self):
         s = fixture("{n}Beth stands beside the bed.{/n}")
@@ -474,21 +642,26 @@ class GuardPassTests(unittest.TestCase):
         s["Scenes"].append(dict(Id="irabeth.owner", Owner="Irabeth", Relationship="irabeth", Nodes=[]))
         original = copy.deepcopy(s)
         guard.integrate(s)
+        scene = s["Scenes"][0]
         self.assertEqual(run(other_woman, s), [])
-        self.assertIn("irabeth_dead", s["Scenes"][0]["Forbids"])
-        self.assertNotIn("irabeth_gone", s["Scenes"][0]["Forbids"])
         self.assertEqual(s["Relationships"], original["Relationships"])
         proof = Proof(verify.Model(copy.deepcopy(s)))
         away = AND(lit("chapter_later"), lit("irabeth_gone"), lit("irabeth.closed"),
                    lit("irabeth.trickster.returned", False),
                    *(lit(k, False) for k in ("irabeth_dead", "swarm", "true_lich")))
         self.assertTrue(proof.implies(away, lit("crossroute.irabeth.correspondent")))
+        self.assertTrue(proof.implies(AND(away, *(lit(k) for k in original["Scenes"][0]["Requires"])),
+                                     fields(scene, overrides=True)))
         self.assertFalse(proof.implies(away, lit("irabeth.trickster.returned")))
         self.assertTrue(proof.implies(AND(lit("crossroute.irabeth.correspondent"), lit("irabeth_dead")),
             lit("irabeth.trickster.returned")))
+        self.assertTrue(proof.implies(AND(lit("chapter_later"), fields(scene, overrides=True), lit("irabeth_dead")),
+                                     lit("irabeth.trickster.returned")))
         original["Scenes"][0]["Requires"].remove("anevia.trickster.primed")
         guard.integrate(original)
-        self.assertIn("irabeth_gone", original["Scenes"][0]["Forbids"])
+        proof = Proof(verify.Model(copy.deepcopy(original)))
+        self.assertTrue(proof.implies(AND(lit("chapter_later"), fields(original["Scenes"][0], overrides=True), lit("irabeth_gone")),
+                                     lit("irabeth.trickster.returned")))
 
     def test_later_loss_uses_existing_reproach_and_keeps_killer_account(self):
         s = fixture("A quiet arrival.")

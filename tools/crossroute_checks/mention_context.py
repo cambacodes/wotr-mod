@@ -7,6 +7,36 @@ tense. Exemptions apply per occurrence, never to a whole mixed paragraph.
 """
 import re
 
+LIVE_ACTION = r"(?:stands?|waits?|sits?|leans?|steps?|enters?|joins?|arrives?|laughs?|smiles?|speaks?|says?|asks?|answers?|nods?|walks?|comes?|holds?|takes?|touches?|watches?|turns?|moves?|puts?|drinks?|sings?|offers?|grins?|lifts?|reaches?|pushes?|pulls?|folds?|sets?|kisses?|embraces?)\b"
+LIVE_STATE = r"(?:is\s+(?:(?:now|still)\s+)?(?:here|alive|present|standing|sitting|waiting)|has returned|will\s+(?:meet|visit|come|join|arrive|return|wait))\b"
+
+
+def live_continuation(after):
+    """eng7-l14: a reference cannot swallow a claim about the same actor.
+
+    Stay inside this sentence. Relative clauses and coordinated predicates
+    can attach today's action to a memory, comparison, relic or reputation.
+    Counterfactual past reactions ("would have laughed") remain references.
+    """
+    clause = re.split(r"[.!?]\s+|\n|\{/n\}", after)[0]
+    action = LIVE_ACTION
+    possessed = re.match(r"['’]s\b", clause)
+    state = LIVE_STATE
+    if re.match(r"\s*,?\s*who\s+(?:(?:now|still)\s+)?(?:" + action + "|" + state + ")", clause, re.I):
+        return True
+    if not possessed and re.search(r"\b(?:and|but)\s+(?:she\s+)?(?:(?:now|still)\s+)?" + action, clause, re.I):
+        return True
+    subject = r"she\s+" if possessed else r"(?:she\s+)?"
+    if re.search(r"\b(?:and|but)\s+" + subject + r"(?:will|shall)\s+(?:meet|visit|come|join|arrive|return|wait)\b", clause, re.I):
+        return True
+    if re.search(r"\bshe\s+" + action + r"[^.!?;]{0,60}\b(?:here|now|tonight|tomorrow)\b", clause, re.I):
+        return True
+    if re.search(r";\s*she\s+(?:(?:now|still)\s+)?" + action, clause, re.I):
+        return True
+    if re.search(r"\bshe\s+" + state, clause, re.I):
+        return True
+    return False
+
 
 def reference_reason(text, match, postwar=False):
     before = text[max(0, match.start() - 100):match.start()]
@@ -20,6 +50,16 @@ def reference_reason(text, match, postwar=False):
             and "{n}You hear" in text and match.start() < text.index("{n}You hear")
             and text.rfind("{n}", 0, match.start()) < text.rfind("{/n}", 0, match.start())):
         return "paid recollection of an earlier morning"
+    if live_continuation(after):
+        return None
+    if (re.search(r"\bDuring the crusade,\s*$", before, re.I)
+            and re.match(r"\s+(?:killed|executed|tortured|imprisoned|chained|sacrificed)\b", after, re.I)):
+        return "explicit campaign harm recollection"
+    # eng7-l14: the paid receipt records the prologue morning, not a new
+    # visit by its dead dragon. Keep the memory price independent of return.
+    if (re.search(r"\bwith a morning in Kenabres:\s*(?:the\s+)?$", before, re.I)
+            and re.match(r"['’]s\s+promise in the festival square\b", after, re.I)):
+        return "paid recollection of the prologue promise"
     if re.search(r"\b(?:but|and)\s+(?:she\s+)?(?:is here|is alive|has returned|will (?:join|come|visit)|waits here)\b", clause, re.I):
         return None
     if re.search(r"\bshe(?:['’]ll|\s+will)\s+(?:meet|visit|come|join|arrive|return)\b", after, re.I):
@@ -45,7 +85,7 @@ def reference_reason(text, match, postwar=False):
         return "recalled consignment order"
     if re.match(r"\s+was the (?:cleverest|strongest|kindest)\b", after, re.I):
         return "past reputation"
-    if re.match(r"\s+came to visit,? the first year\b", after, re.I):
+    if not postwar and re.match(r"\s+came to visit,? the first year\b", after, re.I):
         return "dated earlier visit"
     if re.search(r"\bcorpse\b", before, re.I) and re.search(r"['‘\"]One\s+$", before, re.I) and re.match(r",\s+forever\.?['’\"]", after, re.I):
         return "recalled corpse contract"
@@ -86,6 +126,11 @@ def reference_reason(text, match, postwar=False):
             return "religious belief or institution"
     if re.search(r"\b(?:remember(?:s|ed)?|recall(?:s|ed)?|memory of|memories of|mourn(?:s|ed)?|grieve(?:s|d)?|grave of|death of|killed|executed|buried|lost|losing)\s+(?:(?:the|a|her|my|your|with|how|when|of|Lady|Queen)\s+)*$", before, re.I):
         return "explicit memory or mourning"
+    if (not postwar and not narrated
+            and "the first time I ever saw you" in text[:match.start()]
+            and re.search(r"\bDown in the caves\b", before)
+            and re.match(r"\s+with her hand on her sword because she thought\b", after)):
+        return "explicit recollection of the first cave encounter"
     if re.match(r"\s+(?:is dead|was dead|stayed dead|died|has died|had died|had been killed|was killed|was executed|is gone)\b", after, re.I):
         return "death or departure"
     if re.match(r"['’]s(?:[.!?]|[\"”])", after):
@@ -96,6 +141,10 @@ def reference_reason(text, match, postwar=False):
             and not re.search(r"\b(?:tonight|tomorrow|will|meet|visit|return)\b", clause, re.I)):
         return "reputation"
     if re.search(r"\b(?:if|as if|like|unlike|rather than|not|instead of|isn['’]t|try bein['’]?|being)\s+(?:(?:Lady|Queen)\s+)?$", before, re.I):
+        # Conditional scheduling and comparisons with a living actor still
+        # depend on her availability; a purely hypothetical likeness does not.
+        if re.match(r"\s+(?:" + LIVE_ACTION + "|" + LIVE_STATE + r"|hasn['’]t got\b|has not got\b)", after, re.I):
+            return None
         return "comparison or hypothetical"
     if re.search(r"\b(?:said|told|heard|seen)\b[^.!?]{0,60}\bsince\s+$", before, re.I):
         return "remembered earlier comparison"
@@ -132,7 +181,7 @@ def reference_reason(text, match, postwar=False):
     if (not postwar and not narrated
             and re.search(r"\bI (?:held|fought|stood|waited|carried|brought|made|kept|saved)\b[^.!?]{0,70}\b(?:for|with|beside)\s+$", before, re.I)):
         return "reported earlier shared action"
-    if not postwar and not narrated and re.match(r"\s+(?:gave|kept|wanted|loved|left|read|served|tortured|imprisoned|held|broke|made|offered|told|taught|showed|found|said|asked|had|warned|tried)\b", after, re.I):
+    if not postwar and not narrated and re.match(r"\s+(?:gave|kept|wanted|loved|left|read|served|tortured|imprisoned|held|broke|made|offered|told|taught|showed|found|said|asked|had|warned|tried|healed)\b", after, re.I):
         # Reported past action does not promise another meeting. A current or
         # future assertion in the same sentence is still independently checked.
         if not re.search(r"\b(?:will|tonight|tomorrow|now|still|meet|visit|come|arrive)\b|['’]ll\b", sentence, re.I):

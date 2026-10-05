@@ -751,7 +751,7 @@
           ]
         ]
       ],
-      "fingerprint": "a4f9dc38fe679529586409f885f7e1ed4c73a63edee8bd9388a2b61b74471ae0"
+      "fingerprint": "4221539e3478ef5a14c90631096f9634da6464aaf95a535fbab4ac371db841be"
     },
     {
       "check": "L4",
@@ -798,7 +798,7 @@
           ]
         ]
       ],
-      "fingerprint": "584d0f02d2e26e1525cba9e904808d97580f1ef776a22303bf4b048fec58a122"
+      "fingerprint": "d191e391c451c121f18dc1446669798a80744c69edc6e66d2e754ba37872c2f6"
     },
     {
       "check": "L4",
@@ -10964,7 +10964,7 @@
           true
         ]
       ],
-      "fingerprint": "371bf499174622342ea0b98b9c23b757f75a41e89e6c3be342ed40f688cc74ae"
+      "fingerprint": "e93a2ac98eeb2cca616b808c025a21b29694f44a0e7e9151a1d400833b6f8d1b"
     },
     {
       "check": "L4",
@@ -10996,7 +10996,7 @@
           true
         ]
       ],
-      "fingerprint": "1ccf78bfe13456e33a5c7e48077943c057cb3acb406a18fd2c41393e68bcd7fb"
+      "fingerprint": "1c50d93c53ce9621fd0283636e713b8ee9eb7b954fe3131c2f67b9db263295bb"
     },
     {
       "check": "L4",
@@ -11028,7 +11028,7 @@
           true
         ]
       ],
-      "fingerprint": "f2b8764ea5d3abc16b89575728ffe718539e4fa5b281b8be90bd779285a06e5c"
+      "fingerprint": "039d318f03e70caf34b3be7db15b40fe62d920eda1795e96dc46f6a6e4ede4df"
     },
     {
       "check": "L4",
@@ -11060,7 +11060,7 @@
           true
         ]
       ],
-      "fingerprint": "07f45746a2aeed8a50a3569e465dd48cea64abb546e3ac2b4fb39e810311858e"
+      "fingerprint": "3e40addfdf64170574576ac78f841459c9e085ddecea9ecbc1ec7833d46157ea"
     },
     {
       "check": "L4",
@@ -13562,7 +13562,7 @@
           ]
         ]
       ],
-      "fingerprint": "0cdb6dc1259e13b3345935faf090a46ad1f010564f18d07dd0cf68b26f3722b5"
+      "fingerprint": "2d4990667bd385b93f8aff2ce431efb2aa965b8bff8d1ab573a2c7eee2287006"
     },
     {
       "check": "L4",
@@ -14437,7 +14437,7 @@
       "subject": "Drezen",
       "excerpt": "Wenduag watches the thin demon-woman in the collar, whenever she appears in the citadel, the way a hunter watches a wolf that has left its pack and not died of it.",
       "missing_condition": "Areas subset ['2570015799edf594daf2f076f2f975d8'] and Chapters subset [3, 5], or an explicit location variant",
-      "fingerprint": "ebca70ea3743d1329e70b52e1a5507d58d364ed2d448a8624d152a3b2a349a4e"
+      "fingerprint": "ceb500a177f92d3739256ae9f0d208a836254132d3b5bb8d10089dc7735e6b31"
     },
     {
       "check": "L4",
@@ -16164,7 +16164,7 @@
           true
         ]
       ],
-      "fingerprint": "f8c14cbf43a24f5d6ed4e546d7fd5ea20625eb627e169cdfd2ea3c5b3e0bb8b8"
+      "fingerprint": "57581dd080c72b5eb52e00d8cbeb58073414bfd279161932e2d3d79034308b61"
     },
     {
       "check": "L4",
@@ -16196,7 +16196,7 @@
           true
         ]
       ],
-      "fingerprint": "35d7f3fe0adfda8c12799ba1dc507d750a207bc38a8723f3ffa50b373a98cab6"
+      "fingerprint": "43740eff22c18b9b4d3fac182798f699e20d224b0b0005e473029afdd0d4785b"
     },
     {
       "check": "L4",
@@ -16228,7 +16228,7 @@
           true
         ]
       ],
-      "fingerprint": "a54566f4f7f57269658f9a8f9e4d68495195c42abbc85191929535a99ca95129"
+      "fingerprint": "c900726c7cee3d1b7dfd56b36c5b4fb9e33902268ea7b970935c9850cce217a7"
     },
     {
       "check": "L5",
@@ -16980,7 +16980,7 @@
         "ending.wound_closed",
         true
       ],
-      "fingerprint": "6b062af119b689529b7b675a0fd05f2c853f9bf96a060874b177c87af9068681"
+      "fingerprint": "b47ed1fa8d688d4190b1568b6a52bd184ee434df332bb86f4034e7e0a24e65d8"
     },
     {
       "check": "L5",
@@ -21524,7 +21524,7 @@
           true
         ]
       ],
-      "fingerprint": "a0b03dba2ed68d5a7540a14d7e9f43a5acbce0aed2bdf3d61676bfc96a4995ae"
+      "fingerprint": "eb4e7af2b0af0f135124dc82def44fa314e612dad811f7684acef60ce7443177"
     },
     {
       "check": "L4",
@@ -24972,7 +24972,7 @@
           ]
         ]
       ],
-      "fingerprint": "a2a66f828f768eb7c90c97fab3bf8e69e464eb22beec48441d3b4bd13c590fc8"
+      "fingerprint": "c01503171bdd12550b4aa28f08273200b79902e05a8535a7a287fc8fabcc729b"
     },
     {
       "check": "L4",
@@ -25072,7 +25072,7 @@
           ]
         ]
       ],
-      "fingerprint": "00ba8c87bf5436ebe4eb9b72df20097e5f56c514125c247b190ec86ca5e241ad"
+      "fingerprint": "11b02aa87fa1772bd47873f413df997ca7ef0d1c444f45ef4b87e0ac97d3db50"
     },
     {
       "check": "L4",
@@ -26942,7 +26942,7 @@
           true
         ]
       ],
-      "fingerprint": "e3c1b1941921913f815055ba62fb81c010e5868449c5d9acdeae14891dfa9aee"
+      "fingerprint": "94880af4b17d5b86d023cf4e6e9ec42a36071702ecceb928d6573b61c10ac913"
     },
     {
       "check": "L4",
@@ -26974,7 +26974,7 @@
           true
         ]
       ],
-      "fingerprint": "9581c260f6c9b94b3f6ee482262d65f30a2a52372678bb81d73fe7e9d72a5455"
+      "fingerprint": "cbb0f1d302bc0071e908478234d8c507da62e6f0f95f6039f8f143b4c1228a62"
     },
     {
       "check": "L4",
@@ -27006,7 +27006,7 @@
           true
         ]
       ],
-      "fingerprint": "c3198af86e93d2cfcb6a93c67b43cef8ce00c712260f60751e6e14a9261c2658"
+      "fingerprint": "6856766419ed7a8606ebc8240ffae1a7dd6b3cfc69225b82923b7930d3591279"
     },
     {
       "check": "L4",
@@ -27038,7 +27038,7 @@
           true
         ]
       ],
-      "fingerprint": "63dcd275aaa2f0ffcb8c4c45b9fed22a08b60a44836ab6bf76a89bd048f75928"
+      "fingerprint": "33e4093b62d4c3ff8bd9617ed53ea940df51b7f3d38196047c9f8a9765f66850"
     },
     {
       "check": "L4",
@@ -27070,7 +27070,7 @@
           true
         ]
       ],
-      "fingerprint": "8270a50add61685dfd58da3708d4d0b5b18dfe525ed89beb731ddcfbdb21a3e1"
+      "fingerprint": "d681482fe8df647d771eb2f40f955b9e152211490d67d3efea9791894ee7df60"
     },
     {
       "check": "L4",
@@ -27102,7 +27102,7 @@
           true
         ]
       ],
-      "fingerprint": "ef2c0b5c2559ef5c3118d20c7e11cad7a6853aabb3fc2abeff16b0fdcc22f834"
+      "fingerprint": "9d3e83d0c1fd4d4eba24cef7500a47ecceff0584273d340b59acdd183dda9640"
     },
     {
       "check": "L4",
