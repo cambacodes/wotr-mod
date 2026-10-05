@@ -209,6 +209,6 @@ internal static class OwnLifeInventoryTests
     {
         Cases(story, check);
         L07World.RejectMutation(story, s => L07World.Scene(s, "devarra.trickster.epilogue.hungry").Forbids = Array.Empty<string>(), Cases, check, "remove hungry closure");
-        L07World.RejectMutation(story, s => L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires = L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires.Where(k => k != "minagho.life.available").ToArray(), Cases, check, "remove Minagho life guard");
+        L07World.RejectMutation(story, s => L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires = L07World.Scene(s, "minagho_chivarro.trickster.epilogue.pair").Requires.Where(k => k != "minagho.life.available" && k != "minagho_chivarro.outcome.eligible").ToArray(), Cases, check, "remove all Minagho life guards at the pair consumer");
     }
 }

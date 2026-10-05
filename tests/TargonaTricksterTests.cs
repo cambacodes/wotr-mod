@@ -22,7 +22,9 @@ internal static class TargonaTricksterTests
     // contact false: the runtime's view before her copy has spawned (Sol quality pass: the contact is produced by the presence).
     private static Snapshot World(Story story, int chapter, bool contact, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");

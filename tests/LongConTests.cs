@@ -33,7 +33,9 @@ internal static class LongConTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        // eng-final E-Q8-10: the positive talk/sting fixture can pay its fee.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen,
+            CrusadeResources = new Dictionary<string, int> { ["Favors"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Irabeth);

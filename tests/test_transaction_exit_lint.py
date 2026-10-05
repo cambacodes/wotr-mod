@@ -22,7 +22,7 @@ class TransactionExitLintTests(unittest.TestCase):
         cls.scene = next(s for s in expansion.make_expansion()["Scenes"] if s["Id"] == lint.CONTRACTS[0]["scene"])
 
     def test_contract_and_mutations(self):
-        self.assertFalse(lint.check({"Scenes": [self.scene]}))
+        self.assertFalse(lint.check({"Scenes": [self.scene]}, lint.CONTRACTS))
         for mutation in ("entry", "settlement", "reroll", "agreement", "reentry"):
             scene = copy.deepcopy(self.scene)
             nodes = {n["Id"]: n for n in scene["Nodes"]}
@@ -34,4 +34,4 @@ class TransactionExitLintTests(unittest.TestCase):
                 nodes["rent"]["Choices"][int(mutation == "reroll")]["Forbids"] = []
             else:
                 nodes["start"]["Choices"] = [c for c in nodes["start"]["Choices"] if c.get("Next") != "raised"]
-            self.assertTrue(lint.check({"Scenes": [scene]}), mutation)
+            self.assertTrue(lint.check({"Scenes": [scene]}, lint.CONTRACTS), mutation)

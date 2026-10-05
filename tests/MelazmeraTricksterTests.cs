@@ -341,7 +341,7 @@ internal static class MelazmeraTricksterTests
               && !Avail(coly, World(story, 4, Colyphyr, "trickster", "trickster.ever", Returned, "greybor.in_party", "greybor.declined_queen", "greybor.dead")),
             "Greybor's Colyphyr reaction does not need him there when the Queen's contract was offered, alive.");
         check(Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed)) && !Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed, "nenio.dead"))
-              && Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed, "nenio.dead", "nenio.trickster.returned")),
+              && Avail(nenio, World(story, 5, Drezen, "trickster", "trickster.ever", Fed, "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated")), // eng8-q8a: existing paid vessel fixture
             "Nenio's reaction is not guarded by her own death and return.");
 
         // The night visits: after her message, never while she is tired of the Commander (the crown) unless committed after.
@@ -396,7 +396,9 @@ internal static class MelazmeraTricksterTests
         // Pages: one per outcome.
         string[] Shown(params string[] flags) => pages.Where(s => Avail(s, World(story, 6, Drezen, flags))).Select(s => s.Id).ToArray();
         check(Shown("trickster.ever", Returned, Committed, StoneKept, Seal).SequenceEqual(new[] { P + "epilogue.together" })
-              && Shown("trickster.ever", Returned, Fed).SequenceEqual(new[] { P + "epilogue.commit" })
+              // eng7-l13: offering the new late promise needs current Trickster power.
+              && Shown("trickster", "trickster.ever", Returned, Fed).SequenceEqual(new[] { P + "epilogue.commit" })
+              && !Shown("trickster.ever", Returned, Fed).Contains(P + "epilogue.commit")
               && Shown("trickster.ever", Returned, Declined).SequenceEqual(new[] { P + "epilogue.declined" })
               && Shown("trickster.ever", Returned, LeftFree, Closed).SequenceEqual(new[] { P + "epilogue.left_free" })
               && Shown("trickster.ever", Returned, Committed, Declined, Hunted).SequenceEqual(new[] { P + "epilogue.together" })

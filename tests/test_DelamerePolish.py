@@ -24,7 +24,8 @@ def page_text(node, flags):
 
 def play(scene, flags, *, choices=None, mobility="Success", checks=None):
     """Follow actual answer indices and check targets; default to the first open answer."""
-    flags = set(flags)
+    # eng7-l13: positive campaign replay on the current Trickster path.
+    flags = set(flags) | {"trickster", "chapter_later"}
     nodes = {node["Id"]: node for node in scene["Nodes"]}
     node_id = scene["Nodes"][0]["Id"]
     seen = set()
@@ -33,6 +34,10 @@ def play(scene, flags, *, choices=None, mobility="Success", checks=None):
         if node_id in seen:
             raise AssertionError("Replay loop: " + node_id)
         seen.add(node_id)
+        state = SimState(5, 5000)
+        state.flags.update(flags)
+        sim_complete(play.model, state)
+        flags = state.flags
         node = nodes[node_id]
         text.append(page_text(node, flags))
         open_answers = [(i, c) for i, c in enumerate(node["Choices"]) if matches(c, flags)]
@@ -57,10 +62,11 @@ class DelamerePolishTests(unittest.TestCase):
         cls.story = make_expansion()
         cls.model = Model(cls.story)
         cls.scenes = cls.model.by_id
+        play.model = cls.model
 
     def derive(self, flags):
         state = SimState(5, 5000)
-        state.flags.update(flags)
+        state.flags.update(set(flags) | {"chapter_later"})
         sim_complete(self.model, state)
         return state.flags
 

@@ -24,7 +24,9 @@ internal static class MielarahTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "" };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 5 ? Drezen : "",
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
@@ -377,7 +379,8 @@ internal static class MielarahTricksterTests
         check(pages.Length == 3 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
         // Sol INT: a first flight, a soft refusal or the epilogue's rejection never implies a commitment.
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", "mielarah.committed" })
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", "mielarah.committed", "mielarah.outcome.eligible" })
               && story.Derived["mielarah.harem.eligible"].Count() == 2, "The late commit or the harem eligibility is not declared.");
         var flownOnly = World(story, 5, "trickster", "trickster.ever", P + "landfall", "mielarah.started", D + "docked", D + "reckoned", D + "flown");
         var softNo = World(story, 5, "trickster", "trickster.ever", P + "landfall", "mielarah.started", D + "flown", P + "declined");

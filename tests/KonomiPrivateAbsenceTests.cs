@@ -7,6 +7,7 @@ internal static class KonomiPrivateAbsenceTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        story = Program.ArchivedKonomi(story, check); // eng7-l13: live retirement + retained save graph
         Scene Get(string id) => story.Scenes.Single(s => s.Id == "konomi." + id);
         var absence = Get("private_absence");
         var reunion = Get("private_reunion");

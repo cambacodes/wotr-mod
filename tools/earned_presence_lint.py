@@ -150,6 +150,33 @@ def live_context(story, scene, choice=None):
                for g in scene.get("RequiresAnyGroups") or [])
 
 
+# eng8-q8b begin: T6c nominates consumers, independently of producer T7.
+def left_trickster_consumers(story):
+    contract = json.loads((ROOT / "tools/left_trickster_consumer_contracts.json").read_text(encoding="utf-8"))
+    if contract["relationship"] not in story.get("Relationships", {}):
+        return []
+    by_id = {s["Id"]: s for s in story.get("Scenes", [])}
+    errors = []
+    required_scenes = [*contract["scenes"], *(
+        contract["court_prefix"] + name + suffix
+        for name in contract["native_twin_roots"] for suffix in ("", ".native_visit"))]
+    for sid in required_scenes:
+        if sid not in by_id:
+            errors.append("T6c %s: missing registered survival consumer" % sid)
+    for sid, scene in by_id.items():
+        if sid in contract["scenes"] or sid.startswith(contract["court_prefix"]):
+            # The explicit entry contract remains required even when a reward
+            # choice or historical return happens to imply additional guards.
+            if "trickster.now" not in scene.get("Requires", []):
+                errors.append("T6c %s: authored courtship/survival consumer must require trickster.now" % sid)
+    reader = contract["return_reader"]
+    if (story.get("Derived", {}).get(reader) != contract["return_groups"]
+            or story.get("DerivedForbids", {}).get(reader) != contract["return_forbids"]):
+        errors.append("T6c %s: legacy survival lift must read current path and actor validity" % reader)
+    return errors
+# eng8-q8b end
+
+
 def return_producers(story):
     """Resolve return composites to their authored producers; native readings need no new act."""
     keys = set()
@@ -200,9 +227,13 @@ def producer_presence_errors(story):
                     hard.append("T7 %s/%s/choice[%d]: return producer %s needs the current Trickster path"
                                 % (s["Id"], n.get("Id"), i, sorted(flags) or "Revive"))
                 rel = s.get("Relationship") or "tirabade"
+                # eng8-q8a: the nominated bodily-departure receipt co-produces
+                # the existing romance closure; its independent living ending stays available.
+                from tools.return_provenance_lint import registered_closing_departure
                 for flag in c.get("Set") or []:
                     if (DEPARTURE_FLAG.search(flag) and flag not in (rels.get(rel) or {}).get("UnavailableFlags", [])
-                            and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()):
+                            and not (ep.DEPARTURE_EXEMPTIONS.get((rel, flag)) or "").strip()
+                            and not registered_closing_departure(rel, s["Id"], n["Id"], i, c, flag)):  # eng8-q8a
                         hard.append("P1 %s: departure %s must be in %s.UnavailableFlags or allowlisted with a reason"
                                     % (s["Id"], flag, rel))
     # eng7-l06: dependency checking is separate from q6a's L1 consumer-presence lint.
@@ -349,6 +380,10 @@ def check(story, review=False):
         for g in (story.get("Derived") or {}).get(key) or []:
             if ep.TRICKSTER_NOW not in g:
                 hard.append("T6b %s: group %s does not read %s (%s)" % (key, g, ep.TRICKSTER_NOW, why))
+
+    # eng8-q8b begin
+    hard.extend(left_trickster_consumers(story))
+    # eng8-q8b end
 
     # EP5: her own loss with an earned return, on committed pages.
     for s in scenes:

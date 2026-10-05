@@ -17,7 +17,9 @@ internal static class EritriceTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -136,7 +138,8 @@ internal static class EritriceTricksterTests
         check(Reaches(primed, "eritrice.committed", 3), "Trk_Eritrice_Motion: no road to the commit.");
 
         // Trk_Eritrice_Debate.
-        var debating = World(story, 3, "trickster.ever", P + "primed", "council.session_minuted");
+        // eng7-l13: positive new commitment walks observe current power.
+        var debating = World(story, 3, "trickster", "trickster.ever", P + "primed", "council.session_minuted");
         var started = First(debate, debating, "honest", 0);
         check(started.Has("eritrice.started") && started.Has(P + "minutes_read") && started.Has(P + "argued_straight"),
             "Trk_Eritrice_Debate: the honest argument does not start the relationship.");
@@ -147,13 +150,13 @@ internal static class EritriceTricksterTests
         check(Reaches(started, M + "quill", 3) && Reaches(started, "eritrice.committed", 3), "Trk_Eritrice_Debate: no road through the quill to the commit.");
 
         // Trk_Eritrice_Commit.
-        var ready = World(story, 5, "trickster.ever", "eritrice.started", M + "quill");
+        var ready = World(story, 5, "trickster", "trickster.ever", "eritrice.started", M + "quill");
         check(Rules.Available(story, second, ready) && !Rules.Available(story, third, ready), "Trk_Eritrice_Commit: the second reading is not available.");
         check(After(second, ready, "case", 0).All(r => r.Has("eritrice.committed")), "Trk_Eritrice_Commit: calling the question does not commit.");
         check(second.Nodes.Single(n => n.Id == "open").Choices.Count == 2, "The second reading does not open on the lie when there was one.");
 
         // Trk_Eritrice_Declined.
-        var liar = World(story, 5, "trickster.ever", "eritrice.started", M + "quill", P + "cost.caught_lying");
+        var liar = World(story, 5, "trickster", "trickster.ever", "eritrice.started", M + "quill", P + "cost.caught_lying");
         var declined = First(second, liar, "refused", 0);
         check(declined.Has(P + "declined") && !declined.Has("eritrice.committed"), "Trk_Eritrice_Declined: her refusal is not the soft no.");
         check(Play(second, liar).Any(r => r.Has(P + "declined")) && Program.Walk(second, liar).All(r => !r.Has("eritrice.closed")),
@@ -203,7 +206,7 @@ internal static class EritriceTricksterTests
         check(struck.Has("eritrice.closed") && !struck.Has(P + "returned"), "Trk_Eritrice_Fought_Struck: striking the grudge is not her hard no.");
 
         // Trk_Eritrice_Fought_Epilogue.
-        var ending = World(story, 6, "trickster.ever", "council.fought", P + "returned");
+        var ending = World(story, 6, "trickster", "trickster.ever", "council.fought", P + "returned");
         check(Rules.Available(story, pageCommit, ending) && !Rules.Available(story, pageDeclined, ending),
             "Trk_Eritrice_Fought_Epilogue: the late commit page is not the only page.");
         var committedEnd = World(story, 6, "trickster.ever", "eritrice.committed");
@@ -214,7 +217,7 @@ internal static class EritriceTricksterTests
             "The refusal page or the declined-then-carried override is wrong.");
 
         // The standing debate: every sitting reachable, the night only after the commit, and it is the one heated beat.
-        var debateStart = World(story, 3, "trickster.ever", "eritrice.started", P + "minutes_read", "council.session_minuted", "eritrice.certain_book_said");
+        var debateStart = World(story, 3, "trickster", "trickster.ever", "eritrice.started", P + "minutes_read", "council.session_minuted", "eritrice.certain_book_said");
         foreach (var sitting in sittings)
             check(sitting.Optional && sitting.Requires.Contains("trickster.ever"), "A sitting is not an optional Trickster-path beat: " + sitting.Id);
         check(sittings.Length >= 30, "The standing debate is missing sittings.");
@@ -229,12 +232,12 @@ internal static class EritriceTricksterTests
                                    K + "where_the_chair_goes_home", K + "a_motion_to_expel", K + "personal_privilege" })
             check(Reaches(debateStart, id, 3), "Sitting unreachable in Chapter 3: " + id);
         // Sol r2 INT: the essence and eve sittings close once the Council has walked out; the walk-out has its own sitting.
-        var chapterFive = World(story, 5, "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
+        var chapterFive = World(story, 5, "trickster", "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
             "eritrice.proposed_key", "eritrice.cipher_unread", "eritrice.council_walked_out", "eritrice.nocticula_named");
         foreach (var id in new[] { M + "at_worst", M + "the_cipher", M + "stay_in_your_seats", M + "a_serious_matter",
                                    K + "a_lie_for_the_chair", K + "the_lady_in_shadow", K + "just_imagine" })
             check(Reaches(chapterFive, id), "Sitting unreachable in Chapter 5: " + id);
-        var walkedOut = World(story, 5, "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
+        var walkedOut = World(story, 5, "trickster", "trickster.ever", "eritrice.started", P + "minutes_read", "council.cauldron_given",
             "eritrice.proposed_key", "eritrice.council_walked_out", "council.walked_out");
         check(Reaches(walkedOut, K + "so_many_years") && !Reaches(walkedOut, M + "a_serious_matter") && !Reaches(walkedOut, K + "just_imagine")
               && S(M + "a_serious_matter").Forbids.Contains("eritrice.essence_given"),
@@ -276,17 +279,17 @@ internal static class EritriceTricksterTests
         // INT (ledger row 16): the Last Call bottle survival keeps both romance pages; a Commander who stayed dead does not.
         var bottle = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
         check(Rules.Available(story, pageMet, World(story, 6, new[] { "trickster.ever", "eritrice.committed" }.Concat(bottle).ToArray()))
-              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster.ever", "eritrice.started" }.Concat(bottle).ToArray()))
+              && Rules.Available(story, pageCommit, World(story, 6, new[] { "trickster", "trickster.ever", "eritrice.started" }.Concat(bottle).ToArray()))
               && !Rules.Available(story, pageMet, World(story, 6, "trickster.ever", "eritrice.committed", "sacrifice", "ending.wound_closed")),
             "The romance pages do not follow trickster.commander_back.");
         // INT: a returned Nenio reacts; a dissolved one never does.
         foreach (var r in reactions.Where(r => r.Owner == "Nenio"))
-            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.trickster.returned"
-                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.trickster.returned"
+            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.life.recreated" /* eng8-q8a */
+                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.life.probation" /* eng8-q8a */
                   && !r.ForbidOverrides.ContainsKey("nenio.dissolved"),
                 "A Nenio reaction ignores her return: " + r.Id);
         var nenioMotion = S(P + "react.nenio_motion");
-        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned");
+        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated"); // eng8-q8a: paid vessel, not later-dead retained body
         check(Rules.Available(story, nenioMotion, nenioBack)
               && !Rules.Available(story, nenioMotion, World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead")),
             "A returned Nenio is still barred from reacting.");

@@ -675,12 +675,52 @@ namespace Tirabade
         public Dictionary<string, int> Times = new Dictionary<string, int>();
         public Dictionary<string, int> RestSpent = new Dictionary<string, int>();
         public Dictionary<string, int>? CrusadeResources;
+        // eng8-q8a: a saved return is history, not proof against a new native death.
+        // The nominated legacy execution copy and the observed living echo original
+        // answer different losses. No synthetic receipt is required of old paid copies.
         public bool Has(string flag) => Flags.Contains(flag)
-            && (flag != "wenduag.trickster.returned" || !Flags.Contains(Rules.WenduagEchoPrefix + "unavailable"));
+            && (flag != "wenduag.trickster.returned" || Rules.WenduagReturnLiving(this));
+        // end eng8-q8a
     }
 
     public static class Rules
     {
+        // eng8-q8a: dead_any also includes the persistent native execution etude.
+        // That nominated copy remains legitimate; dead_any alone after a legacy
+        // return does not prove life. Echo validity comes from its exact living actor.
+        public static bool WenduagReturnLiving(Snapshot state) =>
+            !state.Flags.Contains(WenduagEchoPrefix + "unavailable")
+            && (!state.Flags.Contains("wenduag.dead_any")
+                || state.Flags.Contains("wenduag.killed")
+                || state.Flags.Contains(WenduagEchoPrefix + "valid"));
+        public static readonly string[] LatestStateRuntime = { "nenio.life.unavailable" };
+        public static void ObserveNenioLife(Snapshot state, bool retained, bool dead, bool visitorLost)
+        {
+            if (!state.Flags.Contains("nenio.trickster.returned")) return;
+            bool visitor = new[] { "nenio.trickster.cost.recreated", "nenio.trickster.cost.unremembered",
+                "nenio.trickster.primed_away" }.Any(state.Flags.Contains);
+            if (visitorLost || !visitor && (!retained || dead)) state.Flags.Add("nenio.life.unavailable");
+        }
+        public static bool WenduagEchoCustodyMatches(Snapshot state, string phase, bool wellFormed) => wellFormed
+            && !new[] { "wenduag.killed", "wenduag.kicked_out", "wenduag.q3_killed", "wenduag.q3_sent_away",
+                "wenduag.hello_sent_away", "wenduag.hello_attacked", "wenduag.romance_active",
+                "wenduag.romance_finished", "wenduag.romance_finished.latched" }.Any(state.Has)
+            && (!state.Has("wenduag.closed") || phase == "released" || phase == "departed")
+            && state.Has(WenduagEchoPrefix + "ready")
+            && state.Has(WenduagEchoPrefix + "rescued") == new[] { "hidden", "transport", "arrived", "released", "departed" }.Contains(phase)
+            && state.Has(WenduagEchoPrefix + "returned") == (phase == "released")
+            && state.Has(WenduagEchoPrefix + "departed") == (phase == "departed");
+        public static void ObserveWenduagEchoLife(Snapshot state, string phase, bool custodyMatches, bool livingOriginal)
+        {
+            bool path = state.Has("trickster") && !new[] { "trickster.failed", "dragon", "legend", "swarm" }.Any(state.Has);
+            bool page = state.Has("trickster.foresight.accepted") || state.Has("foresight.page_taken");
+            if (!custodyMatches || !livingOriginal || !path || !page)
+            { state.Flags.Add(WenduagEchoPrefix + "unavailable"); return; }
+            state.Flags.Add(WenduagEchoPrefix + "valid");
+            if (!new[] { "down", "arrived", "released", "departed" }.Contains(phase))
+                state.Flags.Add(WenduagEchoPrefix + "unavailable");
+        }
+        // end eng8-q8a
         public const string WenduagEchoPrefix = "wenduag.trickster.echo.abyss.";
         public static readonly string[] WenduagEchoRuntime = new[] { "adapter_available", "casualty_available", "return_available", "valid", "unavailable" }
             .Select(suffix => WenduagEchoPrefix + suffix).ToArray();
@@ -835,7 +875,7 @@ namespace Tirabade
             var eligible = id + ".harem.eligible";
             return !state.Has(DegradedPrefix + id) && RouteOpen(story.Relationships[id], state, named.Length == 0 ? null : otherWomen)
                 && (named.Length == 0 ? state.Has(eligible) : story.Derived.TryGetValue(eligible, out var groups)
-                    && groups.Any(group => group.All(state.Has)) && !DerivedForbidden(story, eligible, state));
+                    && AnyGroupHeld(groups, state) && !DerivedForbidden(story, eligible, state));
         })
             && scene.ParticipantWomen.All(id => {
                 var woman = story.SeatWomen[id];
@@ -939,8 +979,8 @@ namespace Tirabade
             : Blocks(relationship, flag, state));
 
         // E15: an OR of AND-groups (the Derived shape). An empty SettledWhen never settles.
-        public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => entry.OpenWhen.Any(group => group.All(state.Has));
-        public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => entry.SettledWhen.Any(group => group.All(state.Has));
+        public static bool JournalEntryOpen(JournalEntry entry, Snapshot state) => AnyGroupHeld(entry.OpenWhen, state);
+        public static bool JournalEntrySettled(JournalEntry entry, Snapshot state) => AnyGroupHeld(entry.SettledWhen, state);
 
         // E15: the one journal action due for an entry: "give" (not yet in the journal and open), "complete" (in the journal,
         // still open, and settled), or null. A debt settled before it was ever noted is given first, completed on a later tick.
@@ -1003,11 +1043,22 @@ namespace Tirabade
             || flag == "konomi.return_correspondence_available"
             || flag == "konomi.death_unreturned" || flag == "konomi.death_restored"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
-            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag);
+            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag)
+            // eng8-q8a
+            || LatestStateRuntime.Contains(flag);
+            // end eng8-q8a
 
         // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
-        public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
-            .Where(pair => !state.Has(pair.Key) && pair.Value.Any(state.Has)).Select(pair => pair.Key).ToArray();
+        public static string[] PendingLatches(Story story, Snapshot state)
+        {
+            var pending = new List<string>();
+            foreach (var pair in story.Latches)
+                if (!state.Has(pair.Key))
+                    foreach (var source in pair.Value)
+                        if (state.Has(source)) { pending.Add(pair.Key); break; }
+            // Collect before adding any latch: sources are all read from the original snapshot.
+            return pending.ToArray();
+        }
 
         // Latches (then Story.Derived composites) complete a snapshot after every native reader has run.
         public static void Complete(Story story, Snapshot state)
@@ -1015,8 +1066,8 @@ namespace Tirabade
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
             // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
             // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
-            foreach (var key in DerivedOrder(story))
-                if (!state.Has(key) && story.Derived[key].Any(group => group.All(state.Has)) && DerivedRoutesOpen(story, key, state)
+            foreach (var key in CompletionOrder(story))
+                if (!state.Has(key) && AnyGroupHeld(story.Derived[key], state) && DerivedRoutesOpen(story, key, state)
                     && !DerivedForbidden(story, key, state))
                     state.Flags.Add(key);
             foreach (var pair in story.Counts)
@@ -1046,15 +1097,43 @@ namespace Tirabade
 
         // E4b: a relationship's route is open while its ClosedFlag is not held and none of its UnavailableFlags blocks (Blocks:
         // an authored UnavailableOverrides return lifts the flag). The same closure the relationship's own scenes obey.
-        public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null) => !state.Has(relationship.ClosedFlag)
-            && !relationship.UnavailableFlags.Any(flag => !(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state));
+        public static bool RouteOpen(Relationship relationship, Snapshot state, IEnumerable<string>? absentWomen = null)
+        {
+            if (state.Has(relationship.ClosedFlag)) return false;
+            foreach (var flag in relationship.UnavailableFlags)
+                if (!(absentWomen?.Contains(flag) ?? false) && Blocks(relationship, flag, state)) return false;
+            return true;
+        }
+
+        // Array loops avoid allocating a bound predicate/enumerator for every group in every snapshot.
+        private static bool AnyGroupHeld(string[][] groups, Snapshot state)
+        {
+            foreach (var group in groups)
+            {
+                bool held = true;
+                foreach (var flag in group)
+                    if (!state.Has(flag)) { held = false; break; }
+                if (held) return true;
+            }
+            return false;
+        }
 
         // Engine-q2: a DerivedForbids flag withholds its Derived key (the key is never set while the flag holds).
-        public static bool DerivedForbidden(Story story, string key, Snapshot state) =>
-            story.DerivedForbids.TryGetValue(key, out var forbids) && forbids.Any(state.Has);
+        public static bool DerivedForbidden(Story story, string key, Snapshot state)
+        {
+            if (story.DerivedForbids.TryGetValue(key, out var forbids))
+                foreach (var flag in forbids)
+                    if (state.Has(flag)) return true;
+            return false;
+        }
 
-        public static bool DerivedRoutesOpen(Story story, string key, Snapshot state) =>
-            !story.DerivedOpenRoutes.TryGetValue(key, out var routes) || routes.All(rel => RouteOpen(story.Relationships[rel], state));
+        public static bool DerivedRoutesOpen(Story story, string key, Snapshot state)
+        {
+            if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
+                foreach (var rel in routes)
+                    if (!RouteOpen(story.Relationships[rel], state)) return false;
+            return true;
+        }
 
         // The flags a Derived key reads: its AND-groups, plus every closure input of its DerivedOpenRoutes relationships.
         public static IEnumerable<string> DerivedInputs(Story story, string key)
@@ -1071,6 +1150,77 @@ namespace Tirabade
             return inputs;
         }
 
+        // Story and its nested arrays remain mutable (the acceptance suites edit both).
+        // Cache only dependency order, never flags or route eligibility. Check the exact
+        // ordered inputs before reuse, including closure/override edges, without hashing
+        // or allocating a dependency graph for every completed snapshot.
+        private sealed class CompletionPlan
+        {
+            internal readonly string[] Keys, Order;
+            internal readonly string[][] Inputs;
+            private readonly IEqualityComparer<string> keyComparer;
+            internal CompletionPlan(Story story)
+            {
+                keyComparer = story.Derived.Comparer;
+                Keys = story.Derived.Keys.ToArray();
+                Inputs = Keys.Select(key => DerivedInputs(story, key).ToArray()).ToArray();
+                Order = DerivedOrder(story).ToArray();
+            }
+
+            internal bool Matches(Story story)
+            {
+                if (Keys.Length != story.Derived.Count || !ReferenceEquals(keyComparer, story.Derived.Comparer)) return false;
+                int index = 0;
+                foreach (var pair in story.Derived)
+                {
+                    if (pair.Key != Keys[index]) return false;
+                    var cursor = new DependencyCursor(Inputs[index++]);
+                    foreach (var group in pair.Value)
+                        foreach (var input in group)
+                            if (!cursor.Next(input)) return false;
+                    if (story.DerivedForbids.TryGetValue(pair.Key, out var forbids))
+                        foreach (var input in forbids)
+                            if (!cursor.Next(input)) return false;
+                    if (story.DerivedOpenRoutes.TryGetValue(pair.Key, out var routes))
+                        foreach (var rel in routes)
+                        {
+                            var relationship = story.Relationships[rel];
+                            if (!cursor.Next(relationship.ClosedFlag)) return false;
+                            foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>())
+                                if (!cursor.Next(input)) return false;
+                            if (relationship.UnavailableOverrides != null)
+                                foreach (var input in relationship.UnavailableOverrides.Values)
+                                    if (!cursor.Next(input)) return false;
+                        }
+                    if (!cursor.Finished) return false;
+                }
+                return true;
+            }
+        }
+
+        private struct DependencyCursor
+        {
+            private readonly string[] inputs;
+            private int position;
+            internal DependencyCursor(string[] inputs) { this.inputs = inputs; position = 0; }
+            internal bool Next(string input) => position < inputs.Length && inputs[position++] == input;
+            internal bool Finished => position == inputs.Length;
+        }
+
+        private sealed class CompletionCache { internal CompletionPlan? Plan; }
+        private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Story, CompletionCache> completionPlans
+            = new System.Runtime.CompilerServices.ConditionalWeakTable<Story, CompletionCache>();
+
+        private static string[] CompletionOrder(Story story)
+        {
+            var cache = completionPlans.GetValue(story, _ => new CompletionCache());
+            lock (cache)
+            {
+                if (cache.Plan == null || !cache.Plan.Matches(story)) cache.Plan = new CompletionPlan(story);
+                return cache.Plan.Order;
+            }
+        }
+
         // Derived keys, every key after the Derived keys it reads (Validate rejects cycles; the visited set keeps this finite).
         public static List<string> DerivedOrder(Story story)
         {
@@ -1079,9 +1229,25 @@ namespace Tirabade
             void Visit(string key)
             {
                 if (!seen.Add(key)) return;
-                foreach (var input in DerivedInputs(story, key))
-                    if (story.Derived.ContainsKey(input)) Visit(input);
+                // Same input order as DerivedInputs, without rebuilding its nested LINQ chain per key.
+                foreach (var group in story.Derived[key])
+                    foreach (var input in group) VisitInput(input);
+                if (story.DerivedForbids.TryGetValue(key, out var forbids))
+                    foreach (var input in forbids) VisitInput(input);
+                if (story.DerivedOpenRoutes.TryGetValue(key, out var routes))
+                    foreach (var rel in routes)
+                    {
+                        var relationship = story.Relationships[rel];
+                        VisitInput(relationship.ClosedFlag);
+                        foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>()) VisitInput(input);
+                        if (relationship.UnavailableOverrides != null)
+                            foreach (var input in relationship.UnavailableOverrides.Values) VisitInput(input);
+                    }
                 order.Add(key);
+            }
+            void VisitInput(string input)
+            {
+                if (story.Derived.ContainsKey(input)) Visit(input);
             }
             foreach (var key in story.Derived.Keys) Visit(key);
             return order;
@@ -1649,7 +1815,10 @@ namespace Tirabade
                 "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)
+                // eng8-q8a
+                .Concat(LatestStateRuntime)));
+                // end eng8-q8a
             // eng7-l06: saved runtime receipts are known inputs, never authored choice effects.
             derivedFlags.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
             // eng7-l06 end
@@ -1659,6 +1828,9 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             contactEvidence.UnionWith(WenduagEchoRuntime);
+            // eng8-q8a
+            contactEvidence.UnionWith(LatestStateRuntime);
+            // end eng8-q8a
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
                 .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(RestSpentPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
@@ -2328,6 +2500,13 @@ namespace Tirabade
                     if (pair.Key == "dbec675b71e9d5f4d96055f4bb31762e" && scene?.Relationship == "mielarah")
                         earned.UnionWith(new[] { "mielarah.trickster.primed.self", "mielarah.trickster.primed.minder", "mielarah.voyage_begun" });
                     // eng7-f6a end
+                    // eng8-q8e begin: the native partner's earned Commander return.
+                    // This exact mourning/continuation exception grants no RRT commitment.
+                    if ((pair.Key == "86bf0569a9029ae4b8c9d300a41e5739" || pair.Key == "8593ec10e3c34cdaaa2d2ed45e73e58a")
+                        && scene?.Relationship == "wenduag" && variant.When != null
+                        && variant.When.All(g => g != null && g.Contains("wenduag.trickster.native") && g.Contains("trickster.commander_back")))
+                        earned.Add("trickster.commander_back");
+                    // eng8-q8e end
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
@@ -2344,6 +2523,10 @@ namespace Tirabade
                 var spec = pair.Value;
                 var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
                 var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship!, relationship);
+                // eng8-q8e begin: existing terms earn only this follow-on suppression.
+                if (pair.Key == "430ce9767d3ede2479ff9d6aee432304" && spec?.Relationship == "camellia")
+                    earned.Add("camellia.trickster.terms_named");
+                // eng8-q8e end
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0

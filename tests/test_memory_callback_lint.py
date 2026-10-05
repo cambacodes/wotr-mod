@@ -13,11 +13,16 @@ class MemoryCallbackTests(unittest.TestCase):
     def test_every_incoming_choice_and_twin(self):
         result = lint.check(self.story)
         self.assertFalse(result["hard"], result["hard"])
-        self.assertEqual(len(result["executed"]), 7)
-        self.assertEqual(result["no_change_needed"], ["terendelev.trickster.watch.third_bell_awning"])
+        # eng8-q8f: gameplay now supplies the awning twin; both sold-memory edges must execute.
+        self.assertEqual(len(result["executed"]), 8)
+        self.assertEqual(result["no_change_needed"], [])
+        # end eng8-q8f
 
     def test_absent_third_bell_twin_is_checked_if_supplied_as_fixture(self):
-        fixture = {"Scenes": list(self.story["Scenes"])}
+        # eng8-q8f: remove the shipped twin before supplying the isolated mutation fixture.
+        fixture = {"Scenes": [s for s in self.story["Scenes"]
+                              if s["Id"] != "terendelev.trickster.watch.third_bell_awning"]}
+        # end eng8-q8f
         twin = copy.deepcopy(next(s for s in self.story["Scenes"] if s["Id"] == "terendelev.trickster.watch.third_bell"))
         twin["Id"] += "_awning"
         fixture["Scenes"].append(twin)

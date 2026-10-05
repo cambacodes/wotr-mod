@@ -16,7 +16,9 @@ internal static class DorgelindaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
@@ -142,7 +144,8 @@ internal static class DorgelindaTricksterTests
             "The reactions are not exactly Konomi, Regill and Lann behind their guards.");
         check(pages.Length == 6 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived["dorgelinda.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "methods_heard", "dorgelinda.outcome.route_open", "dorgelinda.trickster.late_committed.without.dorgelinda.trickster.declined" }),
             "The late commit is not derived from the second book.");
 
         // Trk_Dorgelinda_Countersign: the rider, signed at the caravan council, before the tribunal.

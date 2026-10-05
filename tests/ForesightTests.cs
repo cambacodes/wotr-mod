@@ -36,7 +36,9 @@ internal static class ForesightTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -166,7 +168,9 @@ internal static class ForesightTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         Node N(Scene scene, string node) => scene.Nodes.Single(n => n.Id == node);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
-        HashSet<string> New(Snapshot from, Snapshot to) => new HashSet<string>(to.Flags.Where(f => !from.Has(f)));
+        // eng7-l13: exact authored effects exclude freshly recomputed Derived/Counts readers.
+        HashSet<string> New(Snapshot from, Snapshot to) => new HashSet<string>(to.Flags.Where(f => !from.Has(f)
+            && !story.Derived.ContainsKey(f) && !story.Counts.ContainsKey(f)));
         Snapshot Later(Snapshot w, int hours, int? chapter = null, params string[] add)
         {
             var later = Program.Copy(w);

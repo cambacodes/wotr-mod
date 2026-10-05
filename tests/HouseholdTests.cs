@@ -106,11 +106,16 @@ internal static class HouseholdTests
             && !Guest("shamira", "shamira.committed", "shamira.killed") && Guest("shamira", "shamira.committed", "shamira.killed", "shamira.trickster.returned")
             && !Guest("shamira", "shamira.committed", "shamira.killed", "shamira.trickster.returned", "shamira.closed", "shamira.trickster.cost.kept_captive"),
             "Shamira's Guest List chair ignores her closed route, her death or her return.");
-        // Nenio (COX audit): closed hides, dead hides, returned shows; dissolved has no return and stays hidden.
+        // eng8-q8a: a historical retained-body return does not lift a new native death.
+        // The existing paid new-vessel receipt is the separate original-body exception.
         check(Guest("nenio", "nenio.committed") && !Guest("nenio", "nenio.committed", "nenio.closed")
-            && !Guest("nenio", "nenio.committed", "nenio.dead") && Guest("nenio", "nenio.committed", "nenio.dead", "nenio.trickster.returned")
+            && !Guest("nenio", "nenio.committed", "nenio.dead")
+            && !Guest("nenio", "nenio.committed", "nenio.dead", "nenio.trickster.returned")
+            && Guest("nenio", "nenio.committed", "nenio.trickster.returned")
+            && Guest("nenio", "nenio.committed", "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated")
             && !Guest("nenio", "nenio.committed", "nenio.dissolved", "nenio.trickster.returned"),
-            "Nenio's Guest List chair ignores her closed route, her death or her return.");
+            "Nenio's Guest List chair ignores current death, closure, or matching new-vessel return.");
+        // end eng8-q8a
         // Engine contract (E4b): a guard only withholds; a Derived closure input settles first; a missing input propagates.
         var guarded = new Story();
         guarded.Relationships["r"] = new Relationship { ClosedFlag = "r.closed", CommittedFlag = "r.c", UnavailableFlags = new[] { "r.dead" },

@@ -505,9 +505,11 @@ internal static class Program
             // eng7-f6b: a text-only edit never touches membership; the parent lists the native cue once and no replacement cue.
             if (NativeEpilogueEdit.IsTextOnly(pair.Key))
             {
-                foreach (string parentId in new[] { pair.Value.Parent }.Concat(NativeEpilogueEdit.AlsoParentsOf(pair.Key)))
+                // eng8-q8e: a book-page text edit keeps its original page membership too.
+                foreach (string parentId in new[] { string.IsNullOrEmpty(pair.Value.Parent) ? pair.Value.Page : pair.Value.Parent }.Concat(NativeEpilogueEdit.AlsoParentsOf(pair.Key)))
                 {
-                    var textParent = NativeEpilogueEdit.TextParentCues(ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(parentId)))?.Select(r => r.Guid).ToList();
+                    var parent = ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(parentId));
+                    var textParent = (parent is BlueprintBookPage textPage ? textPage.Cues : NativeEpilogueEdit.TextParentCues(parent))?.Select(r => r.Guid).ToList();
                     Check(textParent != null && textParent.Count(g => g == BlueprintGuid.Parse(pair.Key)) == 1 && !textParent.Any(variantNames.Contains),
                         "E14d text-only edit changed its parent's membership: " + pair.Key + " / " + parentId);
                 }
@@ -791,6 +793,8 @@ internal static class Program
         NativeEpilogueEditManagedTests.RunDelivery(story, Check);
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
+        // eng8-q8e: EE follow-ons retain actual native history receipts.
+        NativeEpilogueEditManagedTests.RunEndingIdentity(story, native, Check);
         NativeGateManagedTests.Run(story, Check);
         TerendelevNativeManagedTests.Run(story, native, Check); // eng7-f6d
         if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Run(Check);

@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "item": "E-Q8-13",
+  "block": "eng8-q8h",
+  "retired_offers": [
+    "wenduag.trickster.traitor.bid",
+    "wenduag.trickster.exile.bid_hub",
+    "wenduag.trickster.exile.bid_traitor",
+    "wenduag.trickster.exile.late_bid",
+    "wenduag.trickster.exile.champion",
+    "wenduag.trickster.traitor.nerves"
+  ],
+  "live_plan": {
+    "producer": "wenduag.trickster.echo.abyss.prepare",
+    "receipt": "wenduag.trickster.echo.abyss.ready",
+    "endpoint": "wenduag.trickster.echo.abyss.pickup",
+    "return": "wenduag.trickster.echo.abyss.return",
+    "rescue_receipt": "wenduag.trickster.echo.abyss.rescued",
+    "return_receipt": "wenduag.trickster.echo.abyss.returned"
+  },
+  "finding_ids": [
+    "wenduag:008",
+    "wenduag:009",
+    "wenduag:010",
+    "wenduag:011",
+    "wenduag:012",
+    "wenduag:013",
+    "wenduag:066"
+  ],
+  "finding_dispositions": [
+    {
+      "finding": "wenduag:008",
+      "route": "wenduag",
+      "index": 8,
+      "scene": "wenduag.trickster.traitor.bid",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "wenduag:009",
+      "route": "wenduag",
+      "index": 9,
+      "scene": "wenduag.trickster.exile.bid_hub",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "wenduag:010",
+      "route": "wenduag",
+      "index": 10,
+      "scene": "wenduag.trickster.exile.bid_traitor",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "wenduag:011",
+      "route": "wenduag",
+      "index": 11,
+      "scene": "wenduag.trickster.exile.late_bid",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "wenduag:012",
+      "route": "wenduag",
+      "index": 12,
+      "scene": "wenduag.trickster.exile.champion",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "wenduag:013",
+      "route": "wenduag",
+      "index": 13,
+      "scene": "wenduag.trickster.traitor.nerves",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    },
+    {
+      "finding": "wenduag:066",
+      "route": "wenduag",
+      "index": 66,
+      "scene": "wenduag.trickster.traitor.bid",
+      "status": "implemented",
+      "recheck": "Confirmed in this checkout before changes; prior L13 eligibility or endpoint retirement did not resolve this finding."
+    }
+  ],
+  "legacy_incompatibilities": [
+    {
+      "producer": "wenduag.trickster.traitor.bid",
+      "receipt": "wenduag.trickster.fall_agreed",
+      "blocked_consumer": "wenduag.trickster.echo.abyss.prepare",
+      "resolution": "Retire the obsolete bargain with its retired payoff; preserve this allocated echo guard."
+    }
+  ]
+}

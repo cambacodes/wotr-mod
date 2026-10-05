@@ -30,7 +30,9 @@ internal static class HerraxTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -141,7 +143,8 @@ internal static class HerraxTricksterTests
         var yes = Take(reachable, Later(story, cut, 24), "offer", 0, Committed, P + "morning_served");
         check(yes.Has(Committed) && Take(reachable, Later(story, cut, 24), "offer", 1, Closed).Has(Closed),
             "Trk_Herrax_Con: yes is not the commit, or no is not the Commander's own close.");
-        check(!reachable.Nodes.Any(n => n.Id == "offer" && n.Choices.Any(c => c.Check != null || c.Crusade != null || c.Requires.Length > 0)),
+        // eng7-l13: live eligibility is required; no new test or price is allowed.
+        check(!reachable.Nodes.Any(n => n.Id == "offer" && n.Choices.Any(c => c.Check != null || c.Crusade != null || c.Requires.Any(k => k != "trickster.now" && k != "herrax.outcome.route_open"))),
             "Trk_Herrax_Con: her proposal carries a test, a price or a gate.");
 
         // Trk_Herrax_ConBlown: the failure plays out in public, and still reaches the yes.
@@ -188,7 +191,7 @@ internal static class HerraxTricksterTests
             "Trk_Herrax_NoMadam: the courier does not speak to the met and unmet worlds.");
         var promise = Take(nextMove, unmet, "door", 0, Primed, Promised, Started);
         var late = pages.Single(s => s.Id == P + "epilogue.after_hours");
-        check(Avail(late, World(story, 6, "trickster.ever", Primed, Promised, Started)) && !Avail(pages.Single(s => s.Id == P + "epilogue.reachable"), World(story, 6, "trickster.ever", Promised)),
+        check(Avail(late, World(story, 6, promise.Flags.ToArray())) && !Avail(pages.Single(s => s.Id == P + "epilogue.reachable"), World(story, 6, "trickster.ever", Promised)),
             "Trk_Herrax_NoMadam: the page after the Threshold does not answer her letter.");
         check(story.Derived[P + "late_committed"].Any(g => g.Contains(Promised)) && story.Derived["herrax.harem.eligible"].Any(g => g.Length == 1 && g[0] == P + "late_committed"),
             "Trk_Herrax_NoMadam: the late commit is not the R2-6 late_committed key, or eligibility ignores it.");
@@ -204,7 +207,7 @@ internal static class HerraxTricksterTests
         };
         foreach (var (node, flags) in states)
         {
-            var ow = World(story, 5, new[] { "trickster.ever" }.Concat(flags).ToArray());
+            var ow = World(story, 5, new[] { "trickster", "trickster.ever" }.Concat(flags).ToArray());
             check(Avail(owed, ow) && !Avail(nextMove, ow), "Trk_Herrax_Owed_" + node + ": the owed letter does not come, or both letters do.");
             var next = owed.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, ow)).Select(c => c.Next).ToList();
             check(next.Count == 1 && next[0] == node, "Trk_Herrax_Owed_" + node + ": the letter speaks from the wrong state (" + string.Join(",", next) + ").");
@@ -215,11 +218,15 @@ internal static class HerraxTricksterTests
 
         // Trk_Herrax_ChivarroSeen: the one discovery (ledger 05 row 13).
         Snapshot InDrezen(Snapshot s) { var t = Program.Copy(s); t.Area = "2570015799edf594daf2f076f2f975d8"; t.AvailableContacts.Add("25ad116e1f5008e488b13f9b968596d4"); return t; }
-        var chiv = InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier"));
-        check(Avail(seen, chiv) && Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", P + "owed.night")))
-              && !Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", "minagho_chivarro.trickster.chivarro_deposit", "minagho_chivarro.trickster.cost.herrax_favor", "herrax.letters.the_courier")))
-              && !Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier")))
-              && !Avail(seen, InDrezen(World(story, 5, "trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited")))
+        // eng8-q8e: historical reunion alone is not current physical presence.
+        Snapshot ChivarroAtSide(params string[] flags) => InDrezen(World(story, 5, flags.Concat(new[] { "minagho_chivarro.trickster.chivarro_in" }).ToArray()));
+        var chiv = ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier");
+        check(Avail(seen, chiv) && Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", P + "owed.night"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.returned_chivarro", "minagho_chivarro.trickster.chivarro_deposit", "minagho_chivarro.trickster.cost.herrax_favor", "herrax.letters.the_courier"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier", "minagho_chivarro.trickster.chivarro_sent_back"))
+              && !Avail(seen, ChivarroAtSide("trickster.ever", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "herrax.letters.the_courier", "minachiv.closed"))
               && !Rules.IsRemote(seen) && seen.InteractionHub == "herrax.presence.rokhorn",
             "Trk_Herrax_ChivarroSeen: the discovery does not follow her request and Chivarro alive at the Commander's side, or fires over a sale.");
         var kept = Take(seen, chiv, "start", 0, P + "cost.contract_unfinished", P + "contract.kept_out");
@@ -300,7 +307,7 @@ internal static class HerraxTricksterTests
         var reachablePage = pages.Single(s => s.Id == P + "epilogue.reachable");
         foreach (var page in new[] { reachablePage, late })
         {
-            var basis = page == late ? new[] { "trickster.ever", Primed, Promised, Started } : new[] { "trickster.ever", Committed };
+            var basis = page == late ? promise.Flags.ToArray() : new[] { "trickster.ever", Committed };
             check(Avail(page, World(story, 6, basis))
                   && Avail(page, World(story, 6, basis.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray()))
                   && !Avail(page, World(story, 6, basis.Concat(new[] { "sacrifice" }).ToArray())),
@@ -336,7 +343,7 @@ internal static class HerraxTricksterTests
             }
             return delivered;
         }
-        var chivWorlds = new[] { "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited" };
+        var chivWorlds = new[] { "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "minagho_chivarro.trickster.chivarro_in" };
         foreach (var (name, flags) in new (string, string[])[] {
             ("committed", new[] { "trickster", "trickster.ever", "herrax.madam", "herrax.met", Started, Primed, Bait, Lesson, P + "knife_taken", Committed }),
             ("owed", new[] { "trickster", "trickster.ever", "herrax.met", Started, Primed }),
@@ -345,7 +352,7 @@ internal static class HerraxTricksterTests
             var count = Ch5Letters(World(story, 5, flags.Concat(chivWorlds).ToArray()));
             check(count == 1, "Trk_Herrax_OneCh5Letter_" + name + ": " + count + " Herrax letters delivered in Chapter 5 (cap 1, discovery included).");
         }
-        var packetWalk = Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Primed, Bait, Lesson, P + "knife_taken", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited"));
+        var packetWalk = Program.Walk(courier, World(story, 5, "trickster.ever", Committed, Primed, Bait, Lesson, P + "knife_taken", Started, "herrax.asked_kill_chivarro", "minagho_chivarro.trickster.reunited", "minagho_chivarro.trickster.chivarro_in"));
         check(packetWalk.Any(r => r.Has(P + "contract.kept_out")) && packetWalk.Any(r => r.Has(P + "contract.stood_by_her")),
             "Trk_Herrax_Discovery_Folded: the packet does not carry the one discovery.");
 
@@ -356,6 +363,8 @@ internal static class HerraxTricksterTests
         check(!packetFirst.Has(P + "cost.contract_unfinished"), "Trk_Herrax_LateReturn: the packet settles a discovery before Chivarro is back.");
         var backLater = InDrezen(Later(story, packetFirst, 48));
         backLater.Flags.Add("minagho_chivarro.trickster.reunited");
+        backLater.Flags.Add("minagho_chivarro.trickster.chivarro_in");
+        ImplicitParticipantInventoryTests.Observe(story, backLater);
         check(Avail(seen, backLater) && Rules.MailbagArrivals(story, backLater).All(s => s.Relationship != "herrax"),
             "Trk_Herrax_LateReturn: Chivarro returning after the packet has no discovery, or it arrives as a second letter.");
         check(Take(seen, backLater, "start", 1, P + "contract.stood_by_her").Has(P + "cost.contract_unfinished"), "Trk_Herrax_LateReturn: no answer to carry home.");

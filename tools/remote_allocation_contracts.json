@@ -60,6 +60,106 @@
         "6": 0
       },
       "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2 Wenduag tier A; R2-5 Chapter 4 whitelist"
+    },
+    {
+      "character": "Camellia",
+      "relationships": [
+        "camellia"
+      ],
+      "owners": [
+        "Camellia"
+      ],
+      "prefixes": [
+        "camellia.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 1,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2; R2-5 Chapter 4 whitelist",
+      "integration": "eng8-q8d"
+    },
+    {
+      "character": "Galfrey",
+      "relationships": [
+        "galfrey"
+      ],
+      "owners": [
+        "Galfrey"
+      ],
+      "prefixes": [
+        "galfrey.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 1,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2; R2-5 Chapter 4 whitelist",
+      "integration": "eng8-q8d"
+    },
+    {
+      "character": "Horzalah",
+      "relationships": [
+        "horzalah"
+      ],
+      "owners": [
+        "Horzalah"
+      ],
+      "prefixes": [
+        "horzalah.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 2,
+        "6": 1
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2; R2-5 Chapter 4 whitelist; horzalah.md Chapter 6 coordinator one-rest ruling",
+      "integration": "eng8-q8d"
+    },
+    {
+      "character": "Nenio",
+      "relationships": [
+        "nenio"
+      ],
+      "owners": [
+        "Nenio"
+      ],
+      "prefixes": [
+        "nenio.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 1,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2; R2-5 Chapter 4 whitelist",
+      "integration": "eng8-q8d"
+    },
+    {
+      "character": "Terendelev",
+      "relationships": [
+        "terendelev"
+      ],
+      "owners": [
+        "Terendelev"
+      ],
+      "prefixes": [
+        "terendelev.trickster."
+      ],
+      "limits": {
+        "3": 2,
+        "4": 0,
+        "5": 1,
+        "6": 0
+      },
+      "ledger_row": "05-ROUND2-LEDGER-AND-RULES.md \u00a74.2; R2-5 Chapter 4 whitelist",
+      "integration": "eng8-q8d"
     }
   ],
   "framework_allocations": {

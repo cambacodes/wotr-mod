@@ -129,7 +129,8 @@ internal static partial class NativeEpilogueEditManagedTests
         check(NativeEpilogueEdit.Check(cueId, new NativeEpilogueEditSpec { Page = evidence.Page, Sequence = evidence.Sequence, Key = evidence.Key,
             Replacement = spec.Replacement, When = spec.When, KeepNativeImage = true }, g => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(g)), null) != null,
             "A kept native image was accepted on a cue without one.");
-        var replacement = Seed<BlueprintCue>(id("native-edit." + cueId).ToString());
+        // eng8-q8e: isolate this attach fixture from the now-shipped Cue_0409 replacement.
+        var replacement = Seed<BlueprintCue>(id("eng8-q8e.fixture.native-edit." + cueId).ToString());
         bool applies = false;
         var plan = NativeEpilogueEdit.Prepare(cueId, spec, original, page, replacement, () => applies);
         var before = page.Cues.Select(c => c.Guid).ToArray();
@@ -705,20 +706,26 @@ internal static partial class NativeEpilogueEditManagedTests
         const string R = "camellia.trickster.returned", C = "camellia.committed", T = "camellia.trickster.terms_named", N = "camellia.trickster.epilogue.native_";
         var rows = new (string What, string[] Native, string[]? Flags, string[] Plays)[]
         {
-            ("no romance, nothing returned", new string[0], new[] { "trickster.ever" }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
-            ("no romance, kept", new string[0], new[] { "trickster.ever", R, C }, new[] { N + "stayed_plain" }),
+            ("no romance, nothing returned", new string[0], new[] { "trickster.now", "trickster.ever" }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
+            ("no romance, kept", new string[0], new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "stayed_plain" }),
             ("no romance, kept, mod disabled", new string[0], null, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
-            ("true romance, kept", new[] { RomTrue }, new[] { "trickster.ever", R, C }, new[] { N + "stayed" }),
-            ("true romance, terms named", new[] { RomTrue }, new[] { "trickster.ever", R, T },
+            ("true romance, kept", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "stayed" }),
+            ("true romance, terms named", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", R, T },
                 new[] { "4ed8e9723359441dae10ad3068d3f2c7", "3617a648c06a45d1807fde65aedafb06" }),
-            ("default romance, kept, closed", new[] { RomDefault }, new[] { "trickster.ever", R, C, "camellia.closed" },
+            ("default romance, kept, closed", new[] { RomDefault }, new[] { "trickster.now", "trickster.ever", R, C, "camellia.closed" },
                 new[] { "4ed8e9723359441dae10ad3068d3f2c7", "3617a648c06a45d1807fde65aedafb06", "e9a183135b8289544a3144dcf8151920" }),
-            ("romance, sacrifice, kept, Commander back", new[] { RomDefault, Sacrifice }, new[] { "trickster.ever", R, C, "sacrifice", "trickster.commander_back" },
+            ("romance, sacrifice, kept, Commander back", new[] { RomDefault, Sacrifice }, new[] { "trickster.now", "trickster.ever", R, C, "sacrifice", "trickster.commander_back" },
                 new[] { N + "threshold_waited" }),
-            ("romance, sacrifice, kept, Commander dead", new[] { RomDefault, Sacrifice }, new[] { "trickster.ever", R, C, "sacrifice" },
+            ("romance, sacrifice, kept, Commander dead", new[] { RomDefault, Sacrifice }, new[] { "trickster.now", "trickster.ever", R, C, "sacrifice" },
                 new[] { "36a07840d25540eeac6b1c6631196bcc", "3617a648c06a45d1807fde65aedafb06", "e9a183135b8289544a3144dcf8151920" }),
-            ("TE, Q3 done, true romance, kept", new[] { RomTrue }, new[] { "trickster.ever", R, C }, new[] { N + "te_stayed" }),
-            ("TE, Q3 open, kept", new string[0], new[] { "trickster.ever", R, C }, new[] { N + "te_own_path" }),
+            ("TE, Q3 done, true romance, kept", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "te_stayed" }),
+            ("TE, Q3 open, kept", new string[0], new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "te_own_path" }),
+            // eng8-q8e begin: living commitments are not a fabricated second death.
+            ("living commitment", new string[0], new[] { "trickster.now", "trickster.ever", C }, new[] { N + "stayed_plain" }),
+            ("living terms", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", T }, new[] { "4ed8e9723359441dae10ad3068d3f2c7", "3617a648c06a45d1807fde65aedafb06" }),
+            ("actual later death, historical return", new string[0], new[] { "trickster.now", "trickster.ever", R, C, "camellia.dead" }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
+            ("off-Trickster living commitment", new string[0], new[] { "trickster.ever", C }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
+            // eng8-q8e end
         };
         foreach (var row in rows)
         {

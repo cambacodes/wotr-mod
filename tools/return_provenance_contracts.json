@@ -68,5 +68,16 @@
     "camellia:018",
     "camellia:019",
     "camellia:020"
-  ]
+  ],
+  "eng8-q8d": {
+    "coffin_completion_nodes": {
+      "camellia.trickster.killed.third_night": [
+        "eng8.price"
+      ],
+      "camellia.trickster.killed.late_curtain": [
+        "eng8.price"
+      ]
+    },
+    "reason": "Chapter 5 placement-failure reunion folds the same paid coffin agreement into its own native-execution ritual delivery; original producers remain for old saves and Chapter 3."
+  }
 }

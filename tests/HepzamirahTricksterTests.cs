@@ -24,7 +24,9 @@ internal static class HepzamirahTricksterTests
 
     private static Snapshot WorldIn(Story story, string area, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Body);
@@ -147,7 +149,8 @@ internal static class HepzamirahTricksterTests
             "The reactions are not exactly Greybor, Ember and Woljif's two Moon answers behind their guards.");
         check(pages.Length == 4 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null))),
             "The epilogue pages carry effects or are missing.");
-        check(story.Derived["hepzamirah.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "courier_seen" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived["hepzamirah.trickster.late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "courier_seen", "hepzamirah.outcome.route_open" }),
             "The late commit is not derived from the courier.");
 
         // Trk_Hepzamirah_Colyphyr: the standing offer, before she dies; read later as a variant only.

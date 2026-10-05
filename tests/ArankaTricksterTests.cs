@@ -26,7 +26,9 @@ internal static class ArankaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         if (chapter == 3 || chapter == 5) state.AvailableContacts.Add(Unit);
@@ -38,7 +40,9 @@ internal static class ArankaTricksterTests
     // Polish (item 6): a Chapter 5 snapshot of native facts only: no Aranka contact, no presence observation, no route flag.
     private static Snapshot Native(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng-final: native facts do not imply an empty crusade treasury.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
@@ -392,7 +396,8 @@ internal static class ArankaTricksterTests
             Scene Y(Scene s) => S(s.Id + "_yard" + (chapter == 5 ? "_late" : ""));
             Scene M(Scene s) => chapter == 5 ? L(s) : s;
             int day = chapter == 5 ? 24 : 72, posted = chapter == 5 ? 24 : 48;
-            var yAnswered = Yard(chapter, "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
+            // eng7-l13: the positive encore creates a new Trickster commitment.
+            var yAnswered = Yard(chapter, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
             check(Rules.Available(story, Y(duet), yAnswered) && !Rules.Available(story, M(duet), yAnswered),
                 "Fye-less duet: the yard copy is missing, or the counter scene still opens (chapter " + chapter + ").");
             var ySung = Play(Y(duet), yAnswered).First(r => r.Has(P + "duet_sung"));

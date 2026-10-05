@@ -22,8 +22,11 @@ internal static class WenduagTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 4 ? "7847c3e3537104f4694167af0b9fcd0e" : Drezen,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
+        state.AvailableContacts.Add("da4c28dd01413694f82b08b728a8c6e5"); // eng8-q8d: native Nexus host
         state.AvailableContacts.Add("ae766624c03058440a036de90a7f2009");   // her presence copy (returned worlds)
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -33,6 +36,14 @@ internal static class WenduagTricksterTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
+        // eng8-q8h begin: the mandatory live inventory checks these exclusions and
+        // the surviving paid echo first. Legacy graph checks use a detached archive.
+        story = Program.Unfolded(story);
+        var legacy = new[] { "traitor.bid", "exile.bid_hub", "exile.bid_traitor",
+            "exile.late_bid", "exile.champion", "traitor.nerves" };
+        foreach (var scene in story.Scenes.Where(s => legacy.Any(k => s.Id == P + k)))
+            scene.Forbids = scene.Forbids.Where(f => f != "trickster.ever").ToArray();
+        // end eng8-q8h
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
@@ -80,6 +91,7 @@ internal static class WenduagTricksterTests
         {
             var moved = Program.Copy(state);
             moved.Chapter = chapter;
+            moved.Area = chapter == 4 ? "7847c3e3537104f4694167af0b9fcd0e" : Drezen; // eng8-q8d: actual camp travel
             Rules.Complete(story, moved);
             return moved;
         }
@@ -415,9 +427,9 @@ internal static class WenduagTricksterTests
         Allocation("killed", 3, cellarDone, false, cairn, back, cellar);
         var stoneAt = Later(At(buried, 4), 24);
         check(Avail(stone, stoneAt), "Stone allocation witness is unavailable");
-        Allocation("stone", 4, Program.Walk(stone, stoneAt).First(r => r.Has(stone.Id)), true, stone);
-        Allocation("champion", 4, Program.Walk(champion, exiled).First(r => r.Has(champion.Id)), true, champion);
-        Allocation("late-bid", 4, lateBought, true, lateBid);
+        Allocation("stone", 4, Program.Walk(stone, stoneAt).First(r => r.Has(stone.Id)), false, stone);
+        Allocation("champion", 4, Program.Walk(champion, exiled).First(r => r.Has(champion.Id)), false, champion);
+        Allocation("late-bid", 4, lateBought, false, lateBid);
         // eng7-integ: retired native-fall replays cannot supply completed allocation traces.
         check(!Avail(abyssFall, fellBought) && !Avail(abyssBack, At(fellBought, 5)),
             "Retired Abyss roads cannot earn a delivery allocation.");

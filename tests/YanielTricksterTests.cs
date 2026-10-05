@@ -50,7 +50,9 @@ internal static class YanielTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
         // A held form is on the Commander in these worlds (E10 party-only read: yaniel_radiance); the stash-only world is
@@ -288,7 +290,8 @@ internal static class YanielTricksterTests
               && Paths(raid, Later(story, World(story, 5, "trickster", "trickster.ever", Swapped, Carries, Returned, P + "beat.walls", P + "beat.bout"), 24)).All(o => !o.path.Any(e => e.node == "after_struck")),
             "The raid does not answer the Fane attack on the struck branch, or answers one that never happened.");
         var ep6 = new[] { "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.raid", "yaniel.struck_test", P + "distrust" };
-        var ep6Trusted = ep6.Concat(new[] { P + "trusted" }).ToArray();
+        // eng7-l13: the earned late offer is a new act on the current Trickster path.
+        var ep6Trusted = ep6.Concat(new[] { "trickster", P + "trusted" }).ToArray();
         int Shown(string[] flags) => pages.Count(s => Avail(s, World(story, 6, flags)) && s.Id != P + "epilogue.mourned");
         check(Avail(S(P + "epilogue.distrusted"), World(story, 6, ep6)) && !Avail(S(P + "epilogue.commit"), World(story, 6, ep6)) && Shown(ep6) == 1
               && Avail(S(P + "epilogue.commit"), World(story, 6, ep6Trusted)) && Shown(ep6Trusted) == 1
@@ -480,7 +483,7 @@ internal static class YanielTricksterTests
         check(pages.Length == 9 && pages.All(s => s.MinChapter == 6 && s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.RemoveItem == null && c.Crusade == null))),
             "Yaniel's pages are not nine effect-free Chapter 6 pages.");
         check(Avail(pg["epilogue.together"], World(story, 6, "trickster.ever", Committed, Shackle))
-              && Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee")) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Committed))
+              && Avail(pg["epilogue.commit"], World(story, 6, "trickster", "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee")) && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Committed))
               && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict)) && Avail(pg["epilogue.unasked"], World(story, 6, "trickster.ever", Returned, Verdict))
               && !Avail(pg["epilogue.commit"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Broken)) && Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, P + "drawn.walls", P + "beat.refugee", Broken))
               && !Avail(pg["epilogue.broken"], World(story, 6, "trickster.ever", Returned, Verdict, Broken, Committed))

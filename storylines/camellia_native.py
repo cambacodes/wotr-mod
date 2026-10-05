@@ -96,3 +96,6 @@ def integrate(payload):
     """Register the scenes and the edits (after camellia_trickster.integrate)."""
     payload["Scenes"].extend(copy.deepcopy(SCENES))
     register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS, suppressions=NATIVE_EPILOGUE_SUPPRESSIONS)
+    # eng8-q8e begin: final outcome parity is applied after all engine appenders.
+    # Living commitments and terms are covered along with paid returns; IDs stay fixed.
+    # eng8-q8e end

@@ -16,7 +16,9 @@ internal static class JerribethTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         if (chapter > 1) state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
@@ -470,7 +472,8 @@ internal static class JerribethTricksterTests
         // morning, and keeps a nonsexual refusal. The tenant with no body never knocks, and the host never lends his body.
         foreach (var vessel in new[] { "", "jerribeth.trickster.cost.host", "jerribeth.trickster.cost.lodger", "jerribeth.trickster.body.statue", "jerribeth.trickster.body.locust" })
         {
-            var flags = new List<string> { "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" };
+            // eng7-l13: positive new late act uses current power, not history alone.
+            var flags = new List<string> { "trickster", "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" };
             if (vessel != "") flags.AddRange(new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", vessel });
             var w = World(story, 6, flags.ToArray());
             check(Rules.Available(story, epCommit, w), "The late commit is missing for vessel '" + vessel + "'.");

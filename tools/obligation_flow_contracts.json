@@ -1,6 +1,8 @@
 {
   "schema": 1,
   "item": "E-Q7-23",
+  "eng8-q8h": "Enforce the retired legacy promises and the surviving immediate paid echo endpoint.",
+  "rescue_endpoint_inventory": "rescue_endpoint_inventory_contracts.json",
   "obligations": [
     {
       "finding": "eritrice:006",

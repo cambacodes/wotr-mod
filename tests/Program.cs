@@ -22,7 +22,10 @@ internal static class Program
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
         RestSpent = new Dictionary<string, int>(original.RestSpent),
         CrusadeResources = original.CrusadeResources == null ? null : new Dictionary<string, int>(original.CrusadeResources),
-        AvailableContacts = new HashSet<string>(original.AvailableContacts)
+        AvailableContacts = new HashSet<string>(original.AvailableContacts),
+        // eng8-q8f: retain the actually placed hub contact across branch copies.
+        SceneContacts = new HashSet<string>(original.SceneContacts)
+        // end eng8-q8f
     };
 
     // eng7-l08: ledger reader used by actual route walkers, including known failing inventories.
@@ -47,7 +50,9 @@ internal static class Program
         int limit = allocation.GetProperty("limits").GetProperty(chapter.ToString()).GetInt32();
         string ledger = allocation.GetProperty("ledger_row").GetString()!;
         bool failure = pages.Length > limit;
-        check(failure == expectedFailure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        // eng8-q8d: shipped positives may never expect an allocation failure.
+        check(!expectedFailure && !failure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        // end eng8-q8d
         if (eng7L08ReportedHistories.Add(character + "/" + chapter + "/" + name))
             Console.WriteLine("eng7-l08 allocation " + JsonSerializer.Serialize(new {
                 name, character, chapter, deliveries = ids, count = pages.Length, limit, ledger_row = ledger,
@@ -73,6 +78,45 @@ internal static class Program
         return story;
     }
 
+    // eng7-l13: NM1 retired these saved graphs. Verify the live exclusion before
+    // exercising the retained pre-retirement graph in a detached test-only copy.
+    internal static Story ArchivedNocticulaHarbor(Story original, Action<bool, string> check)
+    {
+        bool Deferred(Scene s) => s.Id.StartsWith("noct.join.", StringComparison.Ordinal)
+            || s.Relationship == "nocticula" && s.Id.Contains(".acquired.") && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal);
+        var deferred = original.Scenes.Where(Deferred).ToArray();
+        check(deferred.Length > 3 && deferred.All(s => s.Forbids.Contains("chapter_later")), "eng7-l13: NM1 harbor retirement was removed.");
+        foreach (var scene in deferred)
+        {
+            var live = new Snapshot { Chapter = 5, Hour = 10000, Flags = new HashSet<string>(scene.Requires.Concat(new[] { "chapter_later", "trickster" })) };
+            foreach (var group in scene.RequiresAnyGroups) live.Flags.Add(group[0]);
+            check(!Rules.Available(original, scene, live), "eng7-l13: retired harbor opens in a live chapter: " + scene.Id);
+        }
+        var archived = Unfolded(original);
+        foreach (var scene in archived.Scenes.Where(Deferred))
+            scene.Forbids = scene.Forbids.Where(f => f != "chapter_later").ToArray();
+        return archived;
+    }
+
+    // eng7-l13: these four Konomi devices were already superseded/retired.
+    // Keep live exclusions and judge only their detached retained save graphs.
+    internal static Story ArchivedKonomi(Story original, Action<bool, string> check)
+    {
+        var ids = new[] { "konomi.fate_post", "konomi.retained_inquiry", "konomi.the_unintroduced_letter", "konomi.retained_attempt" };
+        var retired = original.Scenes.Where(s => ids.Contains(s.Id)).ToArray();
+        check(retired.Length == ids.Length && retired.All(s => s.Forbids.Contains("trickster.ever")), "eng7-l13: Konomi retirement was removed.");
+        foreach (var scene in retired)
+        {
+            var live = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Flags = new HashSet<string>(scene.Requires.Concat(new[] { "trickster", "trickster.ever", "chapter_later" })) };
+            foreach (var group in scene.RequiresAnyGroups) live.Flags.Add(group[0]);
+            check(!Rules.Available(original, scene, live), "eng7-l13: retired Konomi device opens: " + scene.Id);
+        }
+        var archived = Unfolded(original);
+        foreach (var scene in archived.Scenes.Where(s => ids.Contains(s.Id)))
+            scene.Forbids = scene.Forbids.Where(f => f != "trickster.ever").ToArray();
+        return archived;
+    }
+
     // A scene's minimal prerequisites: its Requires plus the first flag of each RequiresAnyGroups group (the original path).
     internal static IEnumerable<string> Prerequisites(Scene scene) => scene.Requires.Concat(scene.RequiresAnyGroups.Select(group => group[0]));
 
@@ -86,18 +130,38 @@ internal static class Program
     private static List<(Snapshot state, bool via)> WalkPaths(Scene scene, Snapshot initial, Action<string, Snapshot>? visit, (string node, int index)? via)
     {
         var outcomes = new List<(Snapshot, bool)>();
-        void Visit(string id, Snapshot state, HashSet<string> path, bool passed)
+        void Visit(string id, Snapshot state, HashSet<string> path, bool passed, bool dirty)
         {
             Check(path.Add(id), "Cycle without a terminal answer: " + scene.Id + "/" + id);
+            // eng7-l13: choice guards consume freshly completed Derived eligibility.
+            if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+            if (story != null && dirty)
+            {
+                state.Flags.ExceptWith(story.Derived.Keys.Where(k => k.Contains(".outcome.") || k.Contains(".late_committed.without.") || k.Contains(".late_committed.refusal_lifted.") || k.EndsWith("late_committed")));
+                Rules.Complete(story, state);
+            }
             var node = scene.Nodes.Single(n => n.Id == id);
             Rules.EnterNode(node, state); // eng7-l09: runtime OnShow precedes choice availability.
             visit?.Invoke(id, state);
-            var choices = node.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).ToList();
+            var choices = node.Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToList();
+            // eng8-q8f: Main generates an abort when no paid answer is affordable.
+            if (Rules.PaymentExitAvailable(node, state))
+            { outcomes.Add((Copy(state), passed)); return; }
+            // end eng8-q8f
             Check(choices.Count > 0, "Page has no selectable answers: " + scene.Id + "/" + id);
             foreach (var choice in choices)
             {
                 bool took = passed || (via != null && via.Value.node == id && node.Choices.IndexOf(choice) == via.Value.index);
                 var next = Copy(state);
+                // eng8-q8f: debit before granting effects, as production does.
+                if (choice.Crusade != null)
+                {
+                    var cost = choice.Crusade;
+                    next.CrusadeResources ??= new Dictionary<string, int>();
+                    next.CrusadeResources.TryGetValue(cost.Resource, out int balance);
+                    next.CrusadeResources[cost.Resource] = balance + cost.Amount;
+                }
+                // end eng8-q8f
                 foreach (var effect in choice.Set)
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                 // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
@@ -105,7 +169,7 @@ internal static class Program
                     foreach (var held in story.InventoryItems.Concat(story.PartyItems).Where(e => e.Value == choice.RemoveItem).Select(e => e.Key))
                         next.Flags.Remove(held);
                 if (choice.Next != null || choice.Check != null)
-                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took);
+                    foreach (var target in Rules.NextNodes(choice)) Visit(target, Copy(next), new HashSet<string>(path), took, choice.Set.Any(f => !state.Has(f)) || choice.RemoveItem != null);
                 else
                 {
                     if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
@@ -113,8 +177,95 @@ internal static class Program
                 }
             }
         }
-        Visit(scene.Nodes[0].Id, initial, new HashSet<string>(), false);
+        Visit(scene.Nodes[0].Id, initial, new HashSet<string>(), false, true);
         return outcomes;
+    }
+
+    // eng7-l13: the same generic draft checks are callable for focused diagnostics.
+    internal static void CheckDraftScenes(HashSet<string> playedContinuations)
+    {
+        // eng8-q8h begin: these cases require the actual producer inventory above,
+        // rather than a generic snapshot which seeds a Derived entitlement.
+        using var rescueInventory = JsonDocument.Parse(File.ReadAllText("tools/rescue_endpoint_inventory_contracts.json"));
+        var verifiedRetirements = rescueInventory.RootElement.GetProperty("retired_offers")
+            .EnumerateArray().Select(row => row.GetString()!).ToHashSet();
+        playedContinuations.UnionWith(verifiedRetirements);
+        playedContinuations.Add("arsinoe.trickster.late.commit");
+        // end eng8-q8h
+        foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
+        {
+            if (playedContinuations.Contains(scene.Id)) continue;
+            // eng-final E-Q8-10: this positive structural walk explores paid
+            // paths too; separate mutation histories still prove insolvency.
+            var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires),
+                CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
+            // eng7-l07: these are declared prerequisite fixtures, not provenance proof.
+            // The ordered inventory suite separately plays and verifies the coffin producer.
+            if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
+                state.Flags.Add("camellia.trickster.cost.knows_you_tried");
+            if (scene.Relationship == "camellia" || scene.Id == "minagho_chivarro.trickster.reunion.wardrobe")
+            {
+                if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
+                Rules.Complete(story, state);
+            }
+            // eng7-l07 end
+            // eng8-q8a: declared Nenio loss fixtures need the existing matching
+            // paid vessel/probation receipt; the ordered worker proves actual payment.
+            if (scene.Relationship == "nenio" && state.Has("nenio.trickster.returned"))
+            {
+                if (state.Has("nenio.killed_by_commander")) state.Flags.Add("nenio.trickster.cost.unremembered");
+                else if (state.Has("nenio.dead")) state.Flags.Add("nenio.trickster.cost.recreated");
+                if (state.Has("nenio.sent_away") || state.Has("nenio.kicked_out")) state.Flags.Add("nenio.trickster.cost.demoted");
+                Rules.Complete(story, state);
+            }
+            // end eng8-q8a
+            if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
+                state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
+            if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
+            if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
+            state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
+            if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
+            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
+            if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
+            if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))
+                state.Flags.UnionWith(new[] { "jerribeth.counter_cache_intact", "jerribeth.counter_clerk_witness", "jerribeth.counter_return_agreement", "jerribeth.counter_public_account" });
+            if (scene.Id == "kiana.rehearsal") state.Flags.Add("kiana.moon");
+            if (scene.Id == "kiana.seelah") state.Flags.Add("kiana.waited");
+            if (scene.Id == "kiana.morning") state.Flags.Add("kiana.separated");
+            if (scene.Id == "kiana.a_place_afterward") state.Flags.Add("kiana.separated");
+            if (new[] { "kiana.bakery_stairs", "kiana.last_page", "kiana.first_readers", "kiana.ink_after", "kiana.working_room", "kiana.kept_evening" }.Contains(scene.Id))
+                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.moon", "kiana.follow_audience", "kiana.follow_short_speech", "kiana.follow_guest_role", "kiana.follow_quiet_desk" });
+            if (new[] { "kiana.guest_table", "kiana.market_weather", "kiana.lenna_door", "kiana.blue_room" }.Contains(scene.Id))
+                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.guest_table.listened", "kiana.lenna_door.plain", "kiana.market_weather.public" });
+            if (scene.Id == "ember.rain") state.Flags.Add("ember.manyboots");
+            if (new[] { "ember.paper_bird", "ember.missing_cloth", "ember.courtyard_play", "ember.after_applause", "ember.second_ending" }.Contains(scene.Id))
+                state.Flags.UnionWith(new[] { "ember.manyboots", "ember.player_fox", "ember.stage_road", "ember.play_restitution", "ember.play_company", "ember.revision_laughter" });
+            if (scene.Id == "seelah.letter_after") state.Flags.Add("seelah.letter_public");
+            if (scene.Id == "seelah.letter_work") state.Flags.UnionWith(new[] { "seelah.letter_public", "seelah.check_person" });
+            if (scene.Id == "seelah.borrowed_saw") state.Flags.Add("seelah.frank_terms");
+            if (scene.Id == "seelah.platform_finished") state.Flags.Add("seelah.saw_gift");
+            if (scene.Id == "seelah.inheritors_corner") state.Flags.Add("seelah.prayer_company");
+            if (scene.Id.StartsWith("seelah.late_", StringComparison.Ordinal))
+                state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
+            if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
+            // Prerequisite-only fixtures still need real temporal evidence for held contact witnesses.
+            var contacts = scene.AdditionalContactUnits.Append(scene.ContactUnit);
+            foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
+                .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
+                state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
+            // eng7-l13: retained legacy endings need their recorded earned returns.
+            // A loss in Requires is history, never evidence that its corpse may visit.
+            var missingReturns = scene.ForbidOverrides.Where(pair => scene.Forbids.Contains(pair.Key)
+                && state.Has(pair.Key) && !state.Has(pair.Value)).Select(pair => pair.Value).ToArray();
+            if (missingReturns.Length > 0)
+            {
+                Check(!Rules.Available(story, scene, state), "Unreturned draft loss grants an outcome: " + scene.Id);
+                state.Flags.UnionWith(missingReturns);
+            }
+            Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
+            if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
+                Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
+        }
     }
 
     private static Snapshot Complete(Scene scene, Snapshot state)
@@ -255,44 +406,141 @@ internal static class Program
         }
     }
 
+    // Opt-in timings leave the default gate and --bindings stdout unchanged.
+    private static void Profile(string name, Action run)
+    {
+        if (Environment.GetEnvironmentVariable("RRT_RULES_PROFILE") != "1") { run(); return; }
+        int before = checks;
+        long allocated = GC.GetAllocatedBytesForCurrentThread();
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        try { run(); }
+        finally
+        {
+            Console.Error.WriteLine($"PROFILE {name}: {timer.Elapsed.TotalSeconds:F3}s, {checks - before} assertions, {GC.GetAllocatedBytesForCurrentThread() - allocated} bytes");
+        }
+    }
+
     private static void Main(string[] args)
     {
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
+        // --- eng8-q8c: focused diagnostics, also run in the full suite below ---
+        if (args.Contains("--transaction-inventory2"))
+        {
+            Rules.Validate(story);
+            TransactionInventory2Tests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8c (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8c
+        // eng8-q8g: optional focus; LastCallTests also runs it in the full suite.
+        if (args.Contains("--eng8-q8g"))
+        {
+            Rules.Validate(story);
+            LastCallHistoryInventoryTests.Run(story, Check);
+            LastCallTests.CheckNoStranding(story, Check);
+            Console.WriteLine("PASS: eng8-q8g (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8g
         // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
         if (args.Contains("--eng7-l06"))
         {
             Rules.Validate(story);
-            PresenceBootstrapInventoryTests.Run(story, Check);
-            PresenceExceptionExportTests.Run(story, Check);
-            PresenceFailureReceiptTests.Run(story, Check);
+            Profile("PresenceBootstrapInventoryTests.Run", () => PresenceBootstrapInventoryTests.Run(story, Check));
+            Profile("PresenceExceptionExportTests.Run", () => PresenceExceptionExportTests.Run(story, Check));
+            Profile("PresenceFailureReceiptTests.Run", () => PresenceFailureReceiptTests.Run(story, Check));
             Console.WriteLine("PASS: eng7-l06 (" + checks + " checks)");
             return;
         }
         // eng7-l06 end
+        // eng8-q8d: focused diagnostics share the mandatory full-suite runner.
+        if (args.Contains("--eng8-q8d"))
+        {
+            Rules.Validate(story);
+            LongConTests.Run(story, Check);
+            CamelliaTricksterTests.Run(story, Check);
+            GalfreyTricksterTests.Run(story, Check);
+            HorzalahTricksterTests.Run(story, Check);
+            NenioTricksterTests.Run(story, Check);
+            TerendelevTricksterTests.Run(story, Check);
+            WenduagTricksterTests.Run(story, Check);
+            ReturnProvenanceInventoryTests.Run(story, Check);
+            PresenceBootstrapInventoryTests.Run(story, Check);
+            PresenceExceptionExportTests.Run(story, Check);
+            EarnedPresenceTests.Run(story, Check);
+            LocationInventoryTests.Run(story, Check);
+            EngineQ5Tests.Run(story, Check);
+            InventoryFixtureMutationTests.Run(story, Check);
+            DeliveryInventory2Tests.Run(story, Check);
+            return;
+        }
+        // end eng8-q8d
         Rules.Validate(story);
+        if (args.Contains("--completion-parity"))
+        {
+            Profile("CompletionParityTests.Run", () => CompletionParityTests.Run(story, Check));
+            Console.WriteLine($"PASS: {checks} completion parity assertions.");
+            return;
+        }
+        // eng8-q8a: always execute ordered latest-state acceptance, including in the full gate.
+        if (!args.Contains("--bindings")) Profile("LatestStateInventoryTests.Run", () => LatestStateInventoryTests.Run(story, Check));
+        if (args.Contains("--eng8-q8a"))
+        {
+            Console.WriteLine("PASS: eng8-q8a (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8a
+        // eng8-q8e begin: required inventories run in full and focused rules modes.
+        if (!args.Contains("--bindings"))
+        {
+            ImplicitParticipantInventoryTests.Run(story, Check);
+            NativeEndingInventory2Tests.Run(story, Check);
+        }
+        if (args.Contains("--eng8-q8e"))
+        {
+            NenioTricksterTests.Run(story, Check); // native slides preserve the route's page inventory
+            HerraxTricksterTests.Run(story, Check); // physical discovery fixtures use the departure reader
+            HorzalahTricksterTests.Run(story, Check);
+            WenduagTricksterTests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8e (" + checks + " checks)"); return;
+        }
+        // eng8-q8e end
+        // eng8-q8f: focused diagnostics share the mandatory full-suite assertions.
+        if (args.Contains("--eng8-q8f"))
+        {
+            Inventory2WalkerMutationTests.Run(story, Check);
+            GameplayEntryInventoryTests.Run(story, Check);
+            CamelliaTricksterTests.Run(story, Check);
+            NenioTricksterTests.Run(story, Check);
+            HorzalahTricksterTests.Run(story, Check);
+            TerendelevTricksterTests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8f (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8f
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
         if (!args.Contains("--bindings"))
         {
-            NativeWorldReconciliationInventoryTests.Run(story, Check);
-            NativeGateContractParityTests.Run(story, Check);
+            Profile("NativeWorldReconciliationInventoryTests.Run", () => NativeWorldReconciliationInventoryTests.Run(story, Check));
+            Profile("NativeGateContractParityTests.Run", () => NativeGateContractParityTests.Run(story, Check));
         }
         // eng7-l03: focused inventory acceptance; the full gate calls the same suites below.
         if (args.Contains("--eng7-l03-native"))
         {
             // eng7-f6a begin
-            NativeReconciliationF6aTests.Run(story, Check);
+            Profile("NativeReconciliationF6aTests.Run", () => NativeReconciliationF6aTests.Run(story, Check));
             // eng7-f6a end
-            NativeContradictionInventoryTests.Run(story, Check);
-            KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
-            NativeVariantCoverageInventoryTests.Run(story, Check);
-            TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
-            EngineF6cNativeTests.Run(story, Check); // eng7-f6c: append comprehensive cases after legacy native negatives
+            Profile("NativeContradictionInventoryTests.Run", () => NativeContradictionInventoryTests.Run(story, Check));
+            Profile("KianaNativeReconciliationTests.Run", () => KianaNativeReconciliationTests.Run(story, Check)); // eng7-f6b
+            Profile("NativeVariantCoverageInventoryTests.Run", () => NativeVariantCoverageInventoryTests.Run(story, Check));
+            Profile("TerendelevNativeDependencyTests.Run", () => TerendelevNativeDependencyTests.Run(story, Check)); // eng7-f6d
+            Profile("EngineF6cNativeTests.Run", () => EngineF6cNativeTests.Run(story, Check)); // eng7-f6c: append comprehensive cases after legacy native negatives
             NativeContradictionInventoryTests.WriteEvidence(); // eng7-f6c
-            TirabadeNativeSlideTests.Run(story, Check);
-            LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
+            Profile("TirabadeNativeSlideTests.Run", () => TirabadeNativeSlideTests.Run(story, Check));
+            Profile("LastCallTests.Run", () => LastCallTests.Run(story, Check)); // eng7-l03: consume the existing L6 suppression contract
             Console.WriteLine($"PASS: {checks} eng7-l03 native inventory and selection assertions.");
             return;
         }
@@ -300,9 +548,12 @@ internal static class Program
         // eng7-l07: required on the full expansion run; keep special-mode output contracts intact.
         if (args.Contains("--eng7-l07") || !args.Any(a => a.StartsWith("--", StringComparison.Ordinal)))
         {
-            OwnLifeInventoryTests.Run(story, Check);
-            ReturnProvenanceInventoryTests.Run(story, Check);
-            CurrentActInventoryTests.Run(story, Check);
+            Profile("OwnLifeInventoryTests.Run", () => OwnLifeInventoryTests.Run(story, Check));
+            Profile("ReturnProvenanceInventoryTests.Run", () => ReturnProvenanceInventoryTests.Run(story, Check));
+            Profile("CurrentActInventoryTests.Run", () => CurrentActInventoryTests.Run(story, Check));
+            // eng8-q8b begin: also required by the full RulesTests gate.
+            Profile("LeftTricksterConsumerTests.Run", () => LeftTricksterConsumerTests.Run(story, Check));
+            // eng8-q8b end
             if (args.Contains("--eng7-l07"))
             {
                 Console.WriteLine($"PASS: {checks} eng7-l07 assertions.");
@@ -313,39 +564,60 @@ internal static class Program
         // eng7-l01: optional focused checks; the full runner below is still mandatory.
         if (args.Contains("--inventory-mutations"))
         {
-            InventoryFixtureMutationTests.RunMutationSentinels(Check);
+            Profile("InventoryFixtureMutationTests.RunMutationSentinels", () => InventoryFixtureMutationTests.RunMutationSentinels(Check));
             return;
         }
         if (args.Contains("--inventory-fixtures"))
         {
-            InventoryFixtureMutationTests.Run(story, Check);
+            Profile("InventoryFixtureMutationTests.Run", () => InventoryFixtureMutationTests.Run(story, Check));
             return;
         }
         // eng7-l01 end
+        // eng8-q8h begin: mandatory producer/consumer and surviving rescue traces.
+        if (!args.Contains("--bindings"))
+        {
+            LateAcceptanceInventory2Tests.Run(story, Check);
+            RescueEndpointInventoryTests.Run(story, Check);
+            if (args.Contains("--eng8-q8h")) return;
+            // Focus the generic fixture on q8h's changed consumer class before the full run.
+            if (args.Contains("--eng8-q8h-drafts"))
+            {
+                var mapped = story.Scenes.Where(s => s.Id == "arsinoe.trickster.late.ask"
+                    || s.Id == "arsinoe.trickster.late.commit" || s.Id == "arsinoe.lastcall.page"
+                    || s.Id == "nenio.trickster.epilogue.scholar"
+                    || s.Id.StartsWith("terendelev.trickster.commit", StringComparison.Ordinal))
+                    .Select(s => s.Id).ToHashSet();
+                CheckDraftScenes(story.Scenes.Where(s => !mapped.Contains(s.Id)).Select(s => s.Id).ToHashSet());
+                return;
+            }
+        }
+        // end eng8-q8h
+        // eng7-l13: mandatory earned-outcome inventory acceptance.
+        if (!args.Contains("--bindings")) Profile("EarnedOutcomeInventoryTests.Run", () => EarnedOutcomeInventoryTests.Run(story, Check));
         if (args.Contains("--wenduag-echo"))
         {
-            WenduagTricksterTests.Run(story, Check);
-            WenduagEchoRulesTests.Run(story, Check);
+            Profile("WenduagTricksterTests.Run", () => WenduagTricksterTests.Run(story, Check));
+            Profile("WenduagEchoRulesTests.Run", () => WenduagEchoRulesTests.Run(story, Check));
             return;
         }
-        NurahContactEvidenceTests.Run(Check);
+        Profile("NurahContactEvidenceTests.Run", () => NurahContactEvidenceTests.Run(Check));
         if (args.Contains("--iomedae"))
         {
             // One route's suite alone (fast iteration; the full run still calls it below).
-            IomedaeTricksterTests.Run(story, Check);
+            Profile("IomedaeTricksterTests.Run", () => IomedaeTricksterTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} Iomedae assertions.");
             return;
         }
         if (args.Contains("--nidalynn"))
         {
             // One route's suite alone (polish: her checks run even when an earlier suite fails; the full run still calls it below).
-            NidalynnTricksterTests.Run(story, Check);
+            Profile("NidalynnTricksterTests.Run", () => NidalynnTricksterTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} Nidalynn assertions.");
             return;
         }
         if (args.Contains("--prerequisite-groups"))
         {
-            PrerequisiteGroupsTests.Run(Check);
+            Profile("PrerequisiteGroupsTests.Run", () => PrerequisiteGroupsTests.Run(Check));
             Console.WriteLine($"PASS: {checks} prerequisite group assertions.");
             return;
         }
@@ -388,58 +660,58 @@ internal static class Program
         if (args.Contains("--tirabade-combined"))
         {
             var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
-            AneviaIndependentTests.Run(story, Check);
-            IrabethIndependentTests.Run(story, Check);
-            TirabadeIndependentBridgeTests.Run(story, baseline, Check);
-            TirabadeCombinedHistoryTests.Run(story, Check);
+            Profile("AneviaIndependentTests.Run", () => AneviaIndependentTests.Run(story, Check));
+            Profile("IrabethIndependentTests.Run", () => IrabethIndependentTests.Run(story, Check));
+            Profile("TirabadeIndependentBridgeTests.Run", () => TirabadeIndependentBridgeTests.Run(story, baseline, Check));
+            Profile("TirabadeCombinedHistoryTests.Run", () => TirabadeCombinedHistoryTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} combined individual, bridge and played-history assertions. Live delivery remains unverified.");
             return;
         }
         if (args.Contains("--tirabade-bridge"))
         {
             var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
-            TirabadeIndependentBridgeTests.Run(story, baseline, Check);
+            Profile("TirabadeIndependentBridgeTests.Run", () => TirabadeIndependentBridgeTests.Run(story, baseline, Check));
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
         // eng7-l05: focused acceptance remains runnable independently of unrelated inventory gates.
         if (args.Contains("--presence-transition-inventory"))
         {
-            PresenceTransitionInventoryTests.Run(story, Check);
+            Profile("PresenceTransitionInventoryTests.Run", () => PresenceTransitionInventoryTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} presence transition inventory assertions.");
             return;
         }
         if (args.Contains("--participant-inventory"))
         {
-            ParticipantInventoryTests.Run(story, Check);
+            Profile("ParticipantInventoryTests.Run", () => ParticipantInventoryTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} participant inventory assertions.");
             return;
         }
         // eng7-l10: required inventory regressions, including retirement and mutation controls.
         if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("nenio"))
-            NenioBodyCustodyTests.Run(story, Check);
+            Profile("NenioBodyCustodyTests.Run", () => NenioBodyCustodyTests.Run(story, Check));
         if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("wenduag"))
         {
-            WenduagNativeMomentInventoryTests.Run(story, Check);
-            PresencePlacementManifestTests.Run(story, Check);
+            Profile("WenduagNativeMomentInventoryTests.Run", () => WenduagNativeMomentInventoryTests.Run(story, Check));
+            Profile("PresencePlacementManifestTests.Run", () => PresencePlacementManifestTests.Run(story, Check));
         }
         if (args.Contains("--eng7-l10"))
         {
-            WenduagEchoRulesTests.Run(story, Check);
+            Profile("WenduagEchoRulesTests.Run", () => WenduagEchoRulesTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} eng7-l10 assertions.");
             return;
         }
         // end eng7-l10
-        FairRestTests.Run(Check);
-        PostBagTests.Run(Check);
-        MailbagTests.Run(Check);
-        BookTests.Run(story, Check);
-        HouseholdTests.Run(story, Check);
-        HouseholdEngineTests.Run(story, Check);
-        ArueshalaeBranchTests.Run(story, Check);
-        PrerequisiteGroupsTests.Run(Check);
-        TargonaContinuation();
-        ArankaContinuation();
+        Profile("FairRestTests.Run", () => FairRestTests.Run(Check));
+        Profile("PostBagTests.Run", () => PostBagTests.Run(Check));
+        Profile("MailbagTests.Run", () => MailbagTests.Run(Check));
+        Profile("BookTests.Run", () => BookTests.Run(story, Check));
+        Profile("HouseholdTests.Run", () => HouseholdTests.Run(story, Check));
+        Profile("HouseholdEngineTests.Run", () => HouseholdEngineTests.Run(story, Check));
+        Profile("ArueshalaeBranchTests.Run", () => ArueshalaeBranchTests.Run(story, Check));
+        Profile("PrerequisiteGroupsTests.Run", () => PrerequisiteGroupsTests.Run(Check));
+        Profile("TargonaContinuation", () => TargonaContinuation());
+        Profile("ArankaContinuation", () => ArankaContinuation());
         foreach (var recovery in story.Scenes.Where(s => s.Recovery != null))
         {
             var revival = story.Revivals[recovery.Recovery!];
@@ -479,6 +751,12 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+        // eng8-q8a: current-body observations are runtime inputs, never authored effects.
+        known.UnionWith(Rules.LatestStateRuntime);
+        // end eng8-q8a
+        // eng8-q8c: OnShow receipts are authored producers, including successful checks.
+        known.UnionWith(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet));
+        // end eng8-q8c
         // eng7-l06: saved placement receipts are runtime-produced conditions.
         known.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
         // eng7-l06 end
@@ -491,7 +769,7 @@ internal static class Program
                 Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
         }
         if (args.Contains("--tirabade-progression") || story.Scenes.Any(s => s.Id == "three_kept_days"))
-            TirabadeProgressionTests.Run(story, Check);
+            Profile("TirabadeProgressionTests.Run", () => TirabadeProgressionTests.Run(story, Check));
         var normal = Campaign(1, true);
         Campaign(1, false);
         Campaign(2, true);
@@ -539,77 +817,77 @@ internal static class Program
         var json = JsonSerializer.Serialize(normal, new JsonSerializerOptions { IncludeFields = true });
         var reload = JsonSerializer.Deserialize<Snapshot>(json, new JsonSerializerOptions { IncludeFields = true })!;
         Check(normal.Flags.SetEquals(reload.Flags) && normal.Times.OrderBy(x => x.Key).SequenceEqual(reload.Times.OrderBy(x => x.Key)), "Snapshot round trip lost progress");
-        ExpansionTests.Run(Check);
-        SkillCheckTests.Run(Check);
-        ForbidOverrideTests.Run(Check);
-        TricksterLatchTests.Run(Check);
-        ChapterZeroTests.Run(Check);
-        UnavailableOverrideTests.Run(Check);
-        NativeForbidOverrideTests.Run(Check);
-        DerivedFlagTests.Run(Check);
-        ChoiceExtensionTests.Run(Check);
-        ReactionTests.Run(Check);
-        TricksterAccessTests.Run(Check);
-        NativeReaderTests.Run(Check);
+        Profile("ExpansionTests.Run", () => ExpansionTests.Run(Check));
+        Profile("SkillCheckTests.Run", () => SkillCheckTests.Run(Check));
+        Profile("ForbidOverrideTests.Run", () => ForbidOverrideTests.Run(Check));
+        Profile("TricksterLatchTests.Run", () => TricksterLatchTests.Run(Check));
+        Profile("ChapterZeroTests.Run", () => ChapterZeroTests.Run(Check));
+        Profile("UnavailableOverrideTests.Run", () => UnavailableOverrideTests.Run(Check));
+        Profile("NativeForbidOverrideTests.Run", () => NativeForbidOverrideTests.Run(Check));
+        Profile("DerivedFlagTests.Run", () => DerivedFlagTests.Run(Check));
+        Profile("ChoiceExtensionTests.Run", () => ChoiceExtensionTests.Run(Check));
+        Profile("ReactionTests.Run", () => ReactionTests.Run(Check));
+        Profile("TricksterAccessTests.Run", () => TricksterAccessTests.Run(Check));
+        Profile("NativeReaderTests.Run", () => NativeReaderTests.Run(Check));
         // eng7-l02: required native fact inventory acceptance.
-        NativeFactInventoryTests.Run(story, Check);
+        Profile("NativeFactInventoryTests.Run", () => NativeFactInventoryTests.Run(story, Check));
         // eng7-l02 end
-        EpilogueAfterTests.Run(Check);
-        NativeCostTests.Run(Check);
-        EntryEffectTests.Run(Check);
-        PresenceTests.Run(Check);
-        PresenceRuntimeF9Tests.Run(Check);
-        ContactWindowTests.Run(Check);
-        NativeEpilogueTests.Run(Check);
-        ReturnToListTests.Run(Check);
-        ParagraphTests.Run(Check);
-        NativeEpilogueEditTests.Run(Check);
+        Profile("EpilogueAfterTests.Run", () => EpilogueAfterTests.Run(Check));
+        Profile("NativeCostTests.Run", () => NativeCostTests.Run(Check));
+        Profile("EntryEffectTests.Run", () => EntryEffectTests.Run(Check));
+        Profile("PresenceTests.Run", () => PresenceTests.Run(Check));
+        Profile("PresenceRuntimeF9Tests.Run", () => PresenceRuntimeF9Tests.Run(Check));
+        Profile("ContactWindowTests.Run", () => ContactWindowTests.Run(Check));
+        Profile("NativeEpilogueTests.Run", () => NativeEpilogueTests.Run(Check));
+        Profile("ReturnToListTests.Run", () => ReturnToListTests.Run(Check));
+        Profile("ParagraphTests.Run", () => ParagraphTests.Run(Check));
+        Profile("NativeEpilogueEditTests.Run", () => NativeEpilogueEditTests.Run(Check));
         // BEGIN eng7-f5: native slide/state inventory (no game launch).
-        NativeCuePolicyInventoryTests.Run(story, Check);
+        Profile("NativeCuePolicyInventoryTests.Run", () => NativeCuePolicyInventoryTests.Run(story, Check));
         // END eng7-f5
-        ContactDisambiguationTests.Run(Check);
+        Profile("ContactDisambiguationTests.Run", () => ContactDisambiguationTests.Run(Check));
         // eng7-l05
-        ParticipantInventoryTests.Run(story, Check);
-        PresenceTransitionInventoryTests.Run(story, Check); // eng7-l05
-        if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
-        TricksterOnlyNativeTests.Run(story, Check);
+        Profile("ParticipantInventoryTests.Run", () => ParticipantInventoryTests.Run(story, Check));
+        Profile("PresenceTransitionInventoryTests.Run", () => PresenceTransitionInventoryTests.Run(story, Check)); // eng7-l05
+        if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) Profile("NativeDialogEditTests.Run", () => NativeDialogEditTests.Run(story, Check));
+        Profile("TricksterOnlyNativeTests.Run", () => TricksterOnlyNativeTests.Run(story, Check));
         // eng7-f6a begin
         if (story.NativeEpilogueEdits.ContainsKey("5b567bdd747e497cb9f6984b1ca1dfc8"))
-            NativeReconciliationF6aTests.Run(story, Check);
+            Profile("NativeReconciliationF6aTests.Run", () => NativeReconciliationF6aTests.Run(story, Check));
         // eng7-f6a end
         // eng7-l03: mapped native inventory and historical selection acceptance.
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
-            NativeContradictionInventoryTests.Run(story, Check);
+            Profile("NativeContradictionInventoryTests.Run", () => NativeContradictionInventoryTests.Run(story, Check));
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
         { // eng7-f6c
-            NativeVariantCoverageInventoryTests.Run(story, Check);
-            EngineF6cNativeTests.Run(story, Check);
+            Profile("NativeVariantCoverageInventoryTests.Run", () => NativeVariantCoverageInventoryTests.Run(story, Check));
+            Profile("EngineF6cNativeTests.Run", () => EngineF6cNativeTests.Run(story, Check));
             NativeContradictionInventoryTests.WriteEvidence();
         } // eng7-f6c
         // eng7-l03 end
-        TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
+        Profile("TerendelevNativeDependencyTests.Run", () => TerendelevNativeDependencyTests.Run(story, Check)); // eng7-f6d
         // eng7-f1
-        NativeAnswerEditsTests.Run(story, Check);
-        KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
+        Profile("NativeAnswerEditsTests.Run", () => NativeAnswerEditsTests.Run(story, Check));
+        Profile("KianaNativeReconciliationTests.Run", () => KianaNativeReconciliationTests.Run(story, Check)); // eng7-f6b
         // end eng7-f1
-        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
-        SpeakerTests.Run(Check);
-        ContinueBeforeTests.Run(Check);
-        CountTests.Run(Check);
-        SceneAnchorTests.Run(Check);
-        PresenceAnchorTests.Run(Check);
-        PresenceHubTests.Run(Check);
+        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) Profile("WenduagNativeAscentTests.Run", () => WenduagNativeAscentTests.Run(story, Check));
+        Profile("SpeakerTests.Run", () => SpeakerTests.Run(Check));
+        Profile("ContinueBeforeTests.Run", () => ContinueBeforeTests.Run(Check));
+        Profile("CountTests.Run", () => CountTests.Run(Check));
+        Profile("SceneAnchorTests.Run", () => SceneAnchorTests.Run(Check));
+        Profile("PresenceAnchorTests.Run", () => PresenceAnchorTests.Run(Check));
+        Profile("PresenceHubTests.Run", () => PresenceHubTests.Run(Check));
         // eng7-l11
-        PresenceReactionHubInventoryTests.Run(story, Check);
-        ContactInventoryOracleTests.Run(story, Check);
+        Profile("PresenceReactionHubInventoryTests.Run", () => PresenceReactionHubInventoryTests.Run(story, Check));
+        Profile("ContactInventoryOracleTests.Run", () => ContactInventoryOracleTests.Run(story, Check));
         // end eng7-l11
         // __E14_RULES__
-        StartedDialogTests.Run(Check);
-        ContactContinuationTests.Run(Check);
-        PairedContactTests.Run(Check);
-        TerendelevDeliveryTests.Run(Check);
-        RecoveryTests.Run(Check);
-        RetainedRecoveryRulesTests.Run(Check);
+        Profile("StartedDialogTests.Run", () => StartedDialogTests.Run(Check));
+        Profile("ContactContinuationTests.Run", () => ContactContinuationTests.Run(Check));
+        Profile("PairedContactTests.Run", () => PairedContactTests.Run(Check));
+        Profile("TerendelevDeliveryTests.Run", () => TerendelevDeliveryTests.Run(Check));
+        Profile("RecoveryTests.Run", () => RecoveryTests.Run(Check));
+        Profile("RetainedRecoveryRulesTests.Run", () => RetainedRecoveryRulesTests.Run(Check));
         // These are draft scene checks. Full new-route campaigns need their own
         // ending, transformation and introducer scenarios before release.
         // These continuations have actual predecessor walkthroughs below; a snapshot
@@ -645,223 +923,179 @@ internal static class Program
         };
         if (story.Scenes.Any(s => s.Id == "anevia.the_last_ordinary_thing"))
         {
-            AneviaIndependentTests.Run(story, Check);
+            Profile("AneviaIndependentTests.Run", () => AneviaIndependentTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "anevia").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
         {
-            IrabethIndependentTests.Run(story, Check);
+            Profile("IrabethIndependentTests.Run", () => IrabethIndependentTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "irabeth" && s.AfterDeparture == null).Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.AfterDeparture == "irabeth"))
         {
-            IrabethDepartureVisitTests.Run(story, Check);
-            IrabethDepartureCampaignTests.Run(story, Check);
+            Profile("IrabethDepartureVisitTests.Run", () => IrabethDepartureVisitTests.Run(story, Check));
+            Profile("IrabethDepartureCampaignTests.Run", () => IrabethDepartureCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.AfterDeparture == "irabeth").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "tirabade.negotiated_table")
             && story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
-            TirabadeCombinedHistoryTests.Run(story, Check);
+            Profile("TirabadeCombinedHistoryTests.Run", () => TirabadeCombinedHistoryTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "arsinoe_after_rain"))
         {
-            ArsinoeCampaignTests.Run(story, Check);
-            ArsinoeAssembledTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
+            Profile("ArsinoeCampaignTests.Run", () => ArsinoeCampaignTests.Run(story, Check));
+            Profile("ArsinoeAssembledTests.Run", () => ArsinoeAssembledTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) Profile("ArsinoeTricksterTests.Run", () => ArsinoeTricksterTests.Run(story, Check));
             // eng7-l09
-            TransactionExitInventoryTests.Run(story, Check);
+            Profile("TransactionExitInventoryTests.Run", () => TransactionExitInventoryTests.Run(story, Check));
+            // eng8-q8c: E-Q8-09 interrupted transaction inventory.
+            Profile("TransactionInventory2Tests.Run", () => TransactionInventory2Tests.Run(story, Check));
+            // end eng8-q8c
             // end eng7-l09
-            if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) Profile("IrabethTricksterTests.Run", () => IrabethTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) Profile("AneviaTricksterTests.Run", () => AneviaTricksterTests.Run(story, Check));
             // eng7-l08: required producer-history timing acceptance.
-            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.fetched_gate")) TimelineInventoryTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.fetched_gate")) Profile("TimelineInventoryTests.Run", () => TimelineInventoryTests.Run(story, Check));
             // end eng7-l08
-            if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) TirabadeNativeSlideTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) JerribethTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) KonomiTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) NocticulaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "vellexia.trickster.mirrored.speaks")) VellexiaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nurah.trickster.prison.pardon")) NurahTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) Profile("TirabadeNativeSlideTests.Run", () => TirabadeNativeSlideTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) Profile("JerribethTricksterTests.Run", () => JerribethTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) Profile("KonomiTricksterTests.Run", () => KonomiTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) Profile("NocticulaTricksterTests.Run", () => NocticulaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "vellexia.trickster.mirrored.speaks")) Profile("VellexiaTricksterTests.Run", () => VellexiaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nurah.trickster.prison.pardon")) Profile("NurahTricksterTests.Run", () => NurahTricksterTests.Run(story, Check));
             if (story.Scenes.Any(s => s.Id == "kiana.trickster.possessed.fake_gem"))
             {
-                KianaTricksterTests.Run(story, Check);
+                Profile("KianaTricksterTests.Run", () => KianaTricksterTests.Run(story, Check));
                 playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("kiana.trickster.", StringComparison.Ordinal)
                     || s.Id == "kiana.betrothal").Select(s => s.Id));
             }
-            if (story.Scenes.Any(s => s.Id == "minagho_chivarro.trickster.reunion.wardrobe")) MinaghoChivarroTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "soana.trickster.killed.knot")) SoanaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) ArankaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "gesmerha.trickster.dead.unfinished_work")) GesmerhaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket")) SeelahTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "seelah.early.pack")) PacingPP1Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nocticula.ch4.hoard")) PacingPP4Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) DorgelindaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) TargonaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) HepzamirahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "minagho_chivarro.trickster.reunion.wardrobe")) Profile("MinaghoChivarroTricksterTests.Run", () => MinaghoChivarroTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "soana.trickster.killed.knot")) Profile("SoanaTricksterTests.Run", () => SoanaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) Profile("ArankaTricksterTests.Run", () => ArankaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "gesmerha.trickster.dead.unfinished_work")) Profile("GesmerhaTricksterTests.Run", () => GesmerhaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket")) Profile("SeelahTricksterTests.Run", () => SeelahTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "seelah.early.pack")) Profile("PacingPP1Tests.Run", () => PacingPP1Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nocticula.ch4.hoard")) Profile("PacingPP4Tests.Run", () => PacingPP4Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) Profile("DorgelindaTricksterTests.Run", () => DorgelindaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) Profile("TargonaTricksterTests.Run", () => TargonaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) Profile("HepzamirahTricksterTests.Run", () => HepzamirahTricksterTests.Run(story, Check));
             // 18-ETUDE-BINDING-AUDIT: each fixed native binding holds where its scenes are delivered.
-            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) EtudeBindingTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) CamelliaTricksterTests.Run(story, Check);
-            if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) CamelliaNativeSlideTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
-            if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) AreeluAfterlogueTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) Profile("EtudeBindingTests.Run", () => EtudeBindingTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) Profile("CamelliaTricksterTests.Run", () => CamelliaTricksterTests.Run(story, Check));
+            if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) Profile("CamelliaNativeSlideTests.Run", () => CamelliaNativeSlideTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) Profile("EritriceTricksterTests.Run", () => EritriceTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) Profile("AreeluTricksterTests.Run", () => AreeluTricksterTests.Run(story, Check));
+            if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) Profile("AreeluAfterlogueTests.Run", () => AreeluAfterlogueTests.Run(story, Check));
             // Sol quality pass: Areelu's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "areelu" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) ChadaliTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) ArueshalaeTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) DevarraTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) Profile("ChadaliTricksterTests.Run", () => ChadaliTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) Profile("ArueshalaeTricksterTests.Run", () => ArueshalaeTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) Profile("DevarraTricksterTests.Run", () => DevarraTricksterTests.Run(story, Check));
             // Option A (devarra-device-options.md): the moult device is retired (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "devarra" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) DelamereTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) KaylessaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "mielarah.trickster.tavern.arithmetic")) MielarahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) Profile("DelamereTricksterTests.Run", () => DelamereTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) Profile("KaylessaTricksterTests.Run", () => KaylessaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "mielarah.trickster.tavern.arithmetic")) Profile("MielarahTricksterTests.Run", () => MielarahTricksterTests.Run(story, Check));
             // Sol quality pass: Mielarah's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "mielarah" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "nidalynn.trickster.eggs.lamp_black")) NidalynnTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "shamira.trickster.killed.voice")) ShamiraTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "nidalynn.trickster.eggs.lamp_black")) Profile("NidalynnTricksterTests.Run", () => NidalynnTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "shamira.trickster.killed.voice")) Profile("ShamiraTricksterTests.Run", () => ShamiraTricksterTests.Run(story, Check));
             // PP9: the early threads T2 (Hepzamirah <- Voetiel) and T3 (Shamira <- Telmer), 15b-EARLY-THREADS.md.
-            if (story.Scenes.Any(s => s.Id == "hepzamirah.early.moon_message")) EarlyThreadsTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "longcon.tell_them")) LongConTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "hepzamirah.early.moon_message")) Profile("EarlyThreadsTests.Run", () => EarlyThreadsTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "longcon.tell_them")) Profile("LongConTests.Run", () => LongConTests.Run(story, Check));
             // 12-TRICKSTER-FORESIGHT: Shyka's page, its payoffs, and the echo and gap APIs.
-            if (story.Scenes.Any(s => s.Id == "trickster.foresight.page")) ForesightTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "trickster.foresight.page")) Profile("ForesightTests.Run", () => ForesightTests.Run(story, Check));
             // PP2: Camellia, Kaylessa and Arueshalae early beats, their readers, and the two near-miss fixes.
-            if (story.Scenes.Any(s => s.Id == "camellia.early.blood")) PacingPP2Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) JannahTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "aranka.early.duet")) PacingPP3Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) NenioTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "camellia.early.blood")) Profile("PacingPP2Tests.Run", () => PacingPP2Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) Profile("JannahTricksterTests.Run", () => JannahTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "aranka.early.duet")) Profile("PacingPP3Tests.Run", () => PacingPP3Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) Profile("NenioTricksterTests.Run", () => NenioTricksterTests.Run(story, Check));
             // Sol quality pass: Nenio's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nenio" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "herrax.trickster.madam.schedule")) HerraxTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "horzalah.trickster.mercy.gift")) HorzalahTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) ElyankaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) MelazmeraTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) WenduagTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) WenduagEchoRulesTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "herrax.trickster.madam.schedule")) Profile("HerraxTricksterTests.Run", () => HerraxTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "horzalah.trickster.mercy.gift")) Profile("HorzalahTricksterTests.Run", () => HorzalahTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) Profile("ElyankaTricksterTests.Run", () => ElyankaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) Profile("MelazmeraTricksterTests.Run", () => MelazmeraTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) Profile("WenduagTricksterTests.Run", () => WenduagTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) Profile("WenduagEchoRulesTests.Run", () => WenduagEchoRulesTests.Run(story, Check));
             // eng7-l10: E-Q7-30 retirement is tested negatively above; these saved pages
             // must not enter the generic fixture that expects every page to open.
             playedContinuations.UnionWith(new[] { "wenduag.trickster.abyss.fall", "wenduag.trickster.street.fall" });
             // end eng7-l10
-            if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) GalfreyTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) YanielTricksterTests.Run(story, Check);
-            if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) YanielRadianceTests.Run(story, Check);
-            if (story.Derived.ContainsKey("chivarro.dead_confirmed")) ChivarroDeathTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) Profile("IomedaeTricksterTests.Run", () => IomedaeTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) Profile("TerendelevTricksterTests.Run", () => TerendelevTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) Profile("EliandraTricksterTests.Run", () => EliandraTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) Profile("GalfreyTricksterTests.Run", () => GalfreyTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) Profile("YanielTricksterTests.Run", () => YanielTricksterTests.Run(story, Check));
+            if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) Profile("YanielRadianceTests.Run", () => YanielRadianceTests.Run(story, Check));
+            if (story.Derived.ContainsKey("chivarro.dead_confirmed")) Profile("ChivarroDeathTests.Run", () => ChivarroDeathTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) Profile("LastCallTests.Run", () => LastCallTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
         {
-            GesmerhaCampaignTests.Run(story, Check);
+            Profile("GesmerhaCampaignTests.Run", () => GesmerhaCampaignTests.Run(story, Check));
             if (story.Scenes.Any(s => s.Id == "gesmerha.the_things_still_here"))
-                GesmerhaLateCampaignTests.Run(story, Check);
+                Profile("GesmerhaLateCampaignTests.Run", () => GesmerhaLateCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "gesmerha").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "ember.something_you_cannot_do"))
         {
-            EmberCampaignTests.Run(story, Check);
-            EmberAssembledTests.Run(story, Check);
-            RemoteContinuationTests.Run(story, Check);
+            Profile("EmberCampaignTests.Run", () => EmberCampaignTests.Run(story, Check));
+            Profile("EmberAssembledTests.Run", () => EmberAssembledTests.Run(story, Check));
+            Profile("RemoteContinuationTests.Run", () => RemoteContinuationTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "ember").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "aivu.a_garden_that_can_go"))
         {
-            AivuCampaignTests.Run(story, Check);
+            Profile("AivuCampaignTests.Run", () => AivuCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "aivu").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "vellexia.the_unused_reply"))
         {
-            VellexiaCampaignTests.Run(story, Check);
+            Profile("VellexiaCampaignTests.Run", () => VellexiaCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "vellexia").Select(s => s.Id));
         }
         if (story.Relationships.ContainsKey("minagho_chivarro"))
         {
-            MinaghoChivarroContinuationTests.Run(story, Check);
+            Profile("MinaghoChivarroContinuationTests.Run", () => MinaghoChivarroContinuationTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "minagho_chivarro"
                 && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).Select(s => s.Id));
         }
         if (story.Relationships.ContainsKey("nocticula"))
         {
-            NocticulaContinuationTests.Run(story, Check);
+            Profile("NocticulaContinuationTests.Run", () => NocticulaContinuationTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "noct.acq.her_hand"))
         {
-            NocticulaAcquisitionTests.Run(story, Check);
+            Profile("NocticulaAcquisitionTests.Run", () => NocticulaAcquisitionTests.Run(story, Check));
             if (story.Scenes.Any(s => s.Id == "noct.acq.borrowed_signature"))
-                NocticulaConcessionTests.Run(story, Check);
-            NocticulaHarborJoinTests.Run(story, Check);
-            NocticulaAcquiredHarborTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "noct.acq.epilogue.correspondence")) Nm1BudgetTests.Run(story, Check);
+                Profile("NocticulaConcessionTests.Run", () => NocticulaConcessionTests.Run(story, Check));
+            Profile("NocticulaHarborJoinTests.Run", () => NocticulaHarborJoinTests.Run(story, Check));
+            Profile("NocticulaAcquiredHarborTests.Run", () => NocticulaAcquiredHarborTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "noct.acq.epilogue.correspondence")) Profile("Nm1BudgetTests.Run", () => Nm1BudgetTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("noct.join.", StringComparison.Ordinal)).Select(s => s.Id));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                 && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
         }
-        foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
-        {
-            if (playedContinuations.Contains(scene.Id)) continue;
-            var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
-            // eng7-l07: these are declared prerequisite fixtures, not provenance proof.
-            // The ordered inventory suite separately plays and verifies the coffin producer.
-            if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
-                state.Flags.Add("camellia.trickster.cost.knows_you_tried");
-            if (scene.Relationship == "camellia" || scene.Id == "minagho_chivarro.trickster.reunion.wardrobe")
-            {
-                if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
-                Rules.Complete(story, state);
-            }
-            // eng7-l07 end
-            if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
-                state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
-            if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
-            if (scene.ContactUnit != null) state.AvailableContacts.Add(scene.ContactUnit);
-            state.AvailableContacts.UnionWith(scene.AdditionalContactUnits);
-            if (scene.RequiresAny.Length > 0) state.Flags.Add(scene.RequiresAny[0]);
-            foreach (var group in scene.RequiresAnyGroups) state.Flags.Add(group[0]);
-            if (scene.Relationship == "soana") state.Flags.Add("soana.fox_waited");
-            if (scene.Id.StartsWith("jerribeth.counterfeit_", StringComparison.Ordinal))
-                state.Flags.UnionWith(new[] { "jerribeth.counter_cache_intact", "jerribeth.counter_clerk_witness", "jerribeth.counter_return_agreement", "jerribeth.counter_public_account" });
-            if (scene.Id == "kiana.rehearsal") state.Flags.Add("kiana.moon");
-            if (scene.Id == "kiana.seelah") state.Flags.Add("kiana.waited");
-            if (scene.Id == "kiana.morning") state.Flags.Add("kiana.separated");
-            if (scene.Id == "kiana.a_place_afterward") state.Flags.Add("kiana.separated");
-            if (new[] { "kiana.bakery_stairs", "kiana.last_page", "kiana.first_readers", "kiana.ink_after", "kiana.working_room", "kiana.kept_evening" }.Contains(scene.Id))
-                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.moon", "kiana.follow_audience", "kiana.follow_short_speech", "kiana.follow_guest_role", "kiana.follow_quiet_desk" });
-            if (new[] { "kiana.guest_table", "kiana.market_weather", "kiana.lenna_door", "kiana.blue_room" }.Contains(scene.Id))
-                state.Flags.UnionWith(new[] { "kiana.separated", "kiana.waited", "kiana.guest_table.listened", "kiana.lenna_door.plain", "kiana.market_weather.public" });
-            if (scene.Id == "ember.rain") state.Flags.Add("ember.manyboots");
-            if (new[] { "ember.paper_bird", "ember.missing_cloth", "ember.courtyard_play", "ember.after_applause", "ember.second_ending" }.Contains(scene.Id))
-                state.Flags.UnionWith(new[] { "ember.manyboots", "ember.player_fox", "ember.stage_road", "ember.play_restitution", "ember.play_company", "ember.revision_laughter" });
-            if (scene.Id == "seelah.letter_after") state.Flags.Add("seelah.letter_public");
-            if (scene.Id == "seelah.letter_work") state.Flags.UnionWith(new[] { "seelah.letter_public", "seelah.check_person" });
-            if (scene.Id == "seelah.borrowed_saw") state.Flags.Add("seelah.frank_terms");
-            if (scene.Id == "seelah.platform_finished") state.Flags.Add("seelah.saw_gift");
-            if (scene.Id == "seelah.inheritors_corner") state.Flags.Add("seelah.prayer_company");
-            if (scene.Id.StartsWith("seelah.late_", StringComparison.Ordinal))
-                state.Flags.UnionWith(new[] { "seelah.late_fixed_lessons", "seelah.late_running", "seelah.late_race_lost", "seelah.late_pc_delight" });
-            if (scene.Id == "konomi.hearing_after" || scene.Id == "konomi.private_hearing_after") state.Flags.Add("konomi.hearing_buyer_barred");
-            // Prerequisite-only fixtures still need real temporal evidence for held contact witnesses.
-            var contacts = scene.AdditionalContactUnits.Append(scene.ContactUnit);
-            foreach (var window in story.Presences.Values.Where(p => p.Area == state.Area && contacts.Contains(p.Unit))
-                .SelectMany(p => p.ContactWindows).Where(w => state.Has(w.Flag)))
-                state.Times[window.Flag] = state.Hour - Math.Max(scene.DelayHours, window.MinAgeHours);
-            Check(Rules.Available(story, scene, state), "Draft scene prerequisites cannot open " + scene.Id);
-            if (scene.Relationship != "nurah" && scene.Id != "targona.the_key_remains_hers" && scene.Id != "aranka.the_next_verse")
-                Check(Walk(scene, state).Count > 0, "Draft scene has no terminal choices: " + scene.Id);
-        }
+        // eng8-q8f: default full-suite acceptance, not an optional diagnostic.
+        Profile("Inventory2WalkerMutationTests.Run", () => Inventory2WalkerMutationTests.Run(story, Check));
+        Profile("GameplayEntryInventoryTests.Run", () => GameplayEntryInventoryTests.Run(story, Check));
+        // end eng8-q8f
+        Profile("CheckDraftScenes", () => CheckDraftScenes(playedContinuations)); // eng7-l13: focused class sweep shares this fixture.
         if (story.Scenes.Any(s => s.Id == "seelah.kept")) CheckSeelahOpening();
         if (story.Scenes.Any(s => s.Id == "seelah.door")) CheckSeelahContinuation();
         if (story.Scenes.Any(s => s.Id == "seelah.letter")) CheckSeelahLetters();
-        if (story.Scenes.Any(s => s.Id == "seelah.borrowed_saw")) SeelahAftermathTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "seelah.late_course")) SeelahLateCampaignTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.offered_signature")) JerribethConsequencesTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_yard")) TirabadeCampaignTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_stolen_roads")) TirabadeReckoningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_borrowed_names")) TirabadeAfterRoadsTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.private_history")) KonomiPrivateHearingTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.guest_table")) KianaConsequencesTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.invitation")) KianaEntryTests.Run(story, Check);
-        if (args.Contains("--kiana-progression") || story.Scenes.Any(s => s.Id == "kiana.a_place_afterward")) KianaProgressionTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "seelah.borrowed_saw")) Profile("SeelahAftermathTests.Run", () => SeelahAftermathTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "seelah.late_course")) Profile("SeelahLateCampaignTests.Run", () => SeelahLateCampaignTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.offered_signature")) Profile("JerribethConsequencesTests.Run", () => JerribethConsequencesTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_yard")) Profile("TirabadeCampaignTests.Run", () => TirabadeCampaignTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_stolen_roads")) Profile("TirabadeReckoningTests.Run", () => TirabadeReckoningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_borrowed_names")) Profile("TirabadeAfterRoadsTests.Run", () => TirabadeAfterRoadsTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.private_history")) Profile("KonomiPrivateHearingTests.Run", () => KonomiPrivateHearingTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.guest_table")) Profile("KianaConsequencesTests.Run", () => KianaConsequencesTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.invitation")) Profile("KianaEntryTests.Run", () => KianaEntryTests.Run(story, Check));
+        if (args.Contains("--kiana-progression") || story.Scenes.Any(s => s.Id == "kiana.a_place_afterward")) Profile("KianaProgressionTests.Run", () => KianaProgressionTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "jerribeth.parting"))
         {
             var delivery = new Story {
@@ -874,82 +1108,86 @@ internal static class Program
             ready.Flags.Add("jerribeth.lovers");
             Check(Rules.NextRemote(delivery, ready)?.Id == visit.Id, "Jerribeth repeatable breakup starves the next eligible continuation.");
         }
-        if (story.Scenes.Any(s => s.Id == "seelah.future_followup")) SeelahProgressionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.bakery_stairs")) KianaFollowthroughTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "ember.paper_bird")) EmberAfternoonsTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.threshold")) SoanaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "arsinoe_city_on_paper")) ArsinoeOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.political_account")) KonomiPoliticalTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.fate_envelope")) JerribethFateTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "arsinoe_your_hours")) ArsinoeContinuationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.one_account")) SoanaContinuationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.borrowed_name")) KianaFurtherTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "targona.unasked_question")) TargonaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "gesmerha.unbought_work")) GesmerhaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.former_grief")) KianaReconciliationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.a_useful_supper")) KonomiOrdinaryExpansionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "vellexia.unfinished_likeness")) VellexiaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "aivu.a_city_with_wings")) AivuOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.private_absence")) KonomiPrivateAbsenceTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "seelah.future_followup")) Profile("SeelahProgressionTests.Run", () => SeelahProgressionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.bakery_stairs")) Profile("KianaFollowthroughTests.Run", () => KianaFollowthroughTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "ember.paper_bird")) Profile("EmberAfternoonsTests.Run", () => EmberAfternoonsTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.threshold")) Profile("SoanaOpeningTests.Run", () => SoanaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "arsinoe_city_on_paper")) Profile("ArsinoeOpeningTests.Run", () => ArsinoeOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.political_account")) Profile("KonomiPoliticalTests.Run", () => KonomiPoliticalTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.fate_envelope")) Profile("JerribethFateTests.Run", () => JerribethFateTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "arsinoe_your_hours")) Profile("ArsinoeContinuationTests.Run", () => ArsinoeContinuationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.one_account")) Profile("SoanaContinuationTests.Run", () => SoanaContinuationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.borrowed_name")) Profile("KianaFurtherTests.Run", () => KianaFurtherTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "targona.unasked_question")) Profile("TargonaOpeningTests.Run", () => TargonaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "gesmerha.unbought_work")) Profile("GesmerhaOpeningTests.Run", () => GesmerhaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.former_grief")) Profile("KianaReconciliationTests.Run", () => KianaReconciliationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.a_useful_supper")) Profile("KonomiOrdinaryExpansionTests.Run", () => KonomiOrdinaryExpansionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "vellexia.unfinished_likeness")) Profile("VellexiaOpeningTests.Run", () => VellexiaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "aivu.a_city_with_wings")) Profile("AivuOpeningTests.Run", () => AivuOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.private_absence")) Profile("KonomiPrivateAbsenceTests.Run", () => KonomiPrivateAbsenceTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "konomi.private_absence_catchup" && s.Nodes.Any(n => n.Id == "absence_career_future")))
-            KonomiAbsenceChronologyTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.the_thing_in_the_sack")) SoanaLaterProgressionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.when_the_road_returns")) SoanaLateCampaignTests.Run(story, Check);
+            Profile("KonomiAbsenceChronologyTests.Run", () => KonomiAbsenceChronologyTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.the_thing_in_the_sack")) Profile("SoanaLaterProgressionTests.Run", () => SoanaLaterProgressionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.when_the_road_returns")) Profile("SoanaLateCampaignTests.Run", () => SoanaLateCampaignTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "return" && s.Nodes.Any(n => n.Id == "before_the_abyss")))
-            TirabadeChronologyTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) KonomiPrivateConsequenceTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) KonomiMissedContactTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.retained_inquiry")) KonomiRetainedReturnTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.return_letter")) KonomiReturnInvitationTests.Run(story, Check);
-        if (story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0) ParentEndingRulesTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.the_names_admitted")) KonomiPoliticalConsequenceTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_locks")) CheckTirabadeLocks();
+            Profile("TirabadeChronologyTests.Run", () => TirabadeChronologyTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) Profile("KonomiPrivateConsequenceTests.Run", () => KonomiPrivateConsequenceTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) Profile("KonomiMissedContactTests.Run", () => KonomiMissedContactTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.retained_inquiry")) Profile("KonomiRetainedReturnTests.Run", () => KonomiRetainedReturnTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.return_letter")) Profile("KonomiReturnInvitationTests.Run", () => KonomiReturnInvitationTests.Run(story, Check));
+        if (story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0) Profile("ParentEndingRulesTests.Run", () => ParentEndingRulesTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) Profile("KonomiEarlyReciprocityTests.Run", () => KonomiEarlyReciprocityTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) Profile("ArankaContinuationTests.Run", () => ArankaContinuationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) Profile("KonomiContactTests.Run", () => KonomiContactTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.the_names_admitted")) Profile("KonomiPoliticalConsequenceTests.Run", () => KonomiPoliticalConsequenceTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) Profile("JerribethCounterofferTests.Run", () => JerribethCounterofferTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) Profile("JerribethProgressionTests.Run", () => JerribethProgressionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) Profile("KonomiLettersTests.Run", () => KonomiLettersTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_locks")) Profile("CheckTirabadeLocks", () => CheckTirabadeLocks());
         if (args.Contains("--installed-legacy"))
             Check(story.Scenes.Count == 34 && story.Relationships.Count == 1,
                 "Installed-legacy mode is only for the original standalone 34-scene story.");
-        CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
+        Profile("CheckTirabadeQuarrel", () => CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy")));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
-        EarnedPresenceTests.Run(story, Check);
+        Profile("EarnedPresenceTests.Run", () => EarnedPresenceTests.Run(story, Check));
         // eng7-l12: staging, native finale facts and paragraph survival.
-        LocationInventoryTests.Run(story, Check);
-        WorldFactInventoryTests.Run(story, Check);
-        CommanderParagraphInventoryTests.Run(story, Check);
-        EngineQ5Tests.Run(story, Check);
+        Profile("LocationInventoryTests.Run", () => LocationInventoryTests.Run(story, Check));
+        Profile("WorldFactInventoryTests.Run", () => WorldFactInventoryTests.Run(story, Check));
+        Profile("CommanderParagraphInventoryTests.Run", () => CommanderParagraphInventoryTests.Run(story, Check));
+        Profile("EngineQ5Tests.Run", () => EngineQ5Tests.Run(story, Check));
         // eng7-l06
-        PresenceBootstrapInventoryTests.Run(story, Check);
-        PresenceExceptionExportTests.Run(story, Check);
-        PresenceFailureReceiptTests.Run(story, Check);
+        Profile("PresenceBootstrapInventoryTests.Run", () => PresenceBootstrapInventoryTests.Run(story, Check));
+        Profile("PresenceExceptionExportTests.Run", () => PresenceExceptionExportTests.Run(story, Check));
+        Profile("PresenceFailureReceiptTests.Run", () => PresenceFailureReceiptTests.Run(story, Check));
         // eng7-l06 end
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
-        CurrentPathTests.Run(Check);
+        Profile("CurrentPathTests.Run", () => CurrentPathTests.Run(Check));
         CurrentPathTests.RunStory(story, Check);
         // Engine-q2 item 2: a returned, committed partner's Failed objective is restored.
-        ObjectiveRestoreTests.Run(Check);
+        Profile("ObjectiveRestoreTests.Run", () => ObjectiveRestoreTests.Run(Check));
         ObjectiveRestoreTests.RunStory(story, Check);
         // Engine-q2 item 4: Konomi's death latch.
-        KonomiDeathLatchTests.Run(story, Check);
+        Profile("KonomiDeathLatchTests.Run", () => KonomiDeathLatchTests.Run(story, Check));
         // Engine-q2 item 5: Galfrey's native Queen slides for a returned, re-crowned Queen.
-        if (story.Relationships.ContainsKey("galfrey")) GalfreyQueenSlideTests.Run(story, Check);
-        KonomiTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
-        if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();
-        if (story.Scenes.Any(s => s.Id == "konomi.private_departure")) CheckKonomiPrivateContinuation();
-        if (story.Scenes.Any(s => s.Id == "konomi.capital_letter")) CheckKonomiDistance();
-        if (story.Scenes.Any(s => s.Id == "konomi.private_future_choice")) CheckKonomiFuture();
-        if (story.Scenes.Any(s => s.Id == "konomi.private_history")) CheckKonomiHistory();
-        if (story.Scenes.Any(s => s.Id == "jerribeth.invitation")) CheckJerribethCampaign();
-        if (story.Scenes.Any(s => s.Id == "kiana.invitation")) CheckKianaCampaign();
-        if (story.Scenes.Any(s => s.Id == "ember.drawing")) CheckEmberOpening();
+        if (story.Relationships.ContainsKey("galfrey")) Profile("GalfreyQueenSlideTests.Run", () => GalfreyQueenSlideTests.Run(story, Check));
+        Profile("KonomiTests.Run", () => KonomiTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.hearing")) Profile("CheckKonomiHearing", () => CheckKonomiHearing());
+        if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) Profile("CheckKonomiPost", () => CheckKonomiPost());
+        if (story.Scenes.Any(s => s.Id == "konomi.private_departure")) Profile("CheckKonomiPrivateContinuation", () => CheckKonomiPrivateContinuation());
+        if (story.Scenes.Any(s => s.Id == "konomi.capital_letter")) Profile("CheckKonomiDistance", () => CheckKonomiDistance());
+        if (story.Scenes.Any(s => s.Id == "konomi.private_future_choice")) Profile("CheckKonomiFuture", () => CheckKonomiFuture());
+        if (story.Scenes.Any(s => s.Id == "konomi.private_history")) Profile("CheckKonomiHistory", () => CheckKonomiHistory());
+        if (story.Scenes.Any(s => s.Id == "jerribeth.invitation")) Profile("CheckJerribethCampaign", () => CheckJerribethCampaign());
+        if (story.Scenes.Any(s => s.Id == "kiana.invitation")) Profile("CheckKianaCampaign", () => CheckKianaCampaign());
+        if (story.Scenes.Any(s => s.Id == "ember.drawing")) Profile("CheckEmberOpening", () => CheckEmberOpening());
         // eng7-l01: mandatory delivery acceptance in the standard integrated runner.
         if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.unprimed"))
-            InventoryFixtureMutationTests.Run(story, Check);
+            Profile("InventoryFixtureMutationTests.Run", () => InventoryFixtureMutationTests.Run(story, Check));
         // eng7-l01 end
+        // eng8-q8d: executed production positives are never expected failures.
+        if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer"))
+            DeliveryInventory2Tests.Run(story, Check);
+        // end eng8-q8d
         Console.WriteLine($"PASS: {checks} assertions covering the original campaign, independent-relationship rules, authored expansion campaign scenarios and {story.Scenes.Count(s => s.Relationship != "tirabade")} draft expansion scenes. Unity execution and real save persistence are not covered.");
     }
 
@@ -1628,7 +1866,9 @@ internal static class Program
             Play("morning", "kiana.committed");
             state.Hour += 48;
             bool developedRoute = story.Scenes.Any(s => s.Id == "kiana.a_place_afterward");
-            if (developedRoute && !transformed)
+            // eng7-l13: Q10 already excludes the long continuation on every Trickster entry.
+            bool budget = developedRoute && path == "trickster";
+            if (developedRoute && !transformed && !budget)
             {
                 Check(!Rules.Available(story, Find("farewell"), state), "Kiana farewell bypasses developed continuation.");
                 var chain = new[] { "guest_table", "market_weather", "lenna_door", "blue_room", "bakery_stairs", "last_page", "first_readers", "ink_after", "working_room", "kept_evening" }.AsEnumerable();
@@ -1640,11 +1880,13 @@ internal static class Program
                     Play(id, "kiana." + id);
                 }
             }
-            Play("farewell", "kiana.farewell_kept");
+            if (budget)
+                Check(!Rules.Available(story, Find("guest_table"), state) && !Rules.Available(story, Find("farewell"), state), "Kiana Trickster budget opens the retired long continuation.");
+            else Play("farewell", "kiana.farewell_kept");
             string Ending() => story.Scenes.Single(s => s.Relationship == "kiana" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id;
-            Check(Ending() == (developedRoute && transformed ? "kiana.ending_promised" : route == "widow" ? "kiana.ending_bereaved" : "kiana.ending_together"), "Kiana commitment loses her marital history or has conflicting endings.");
+            Check(Ending() == (developedRoute && (transformed || budget) ? "kiana.ending_promised" : route == "widow" ? "kiana.ending_bereaved" : "kiana.ending_together"), "Kiana commitment loses her marital history or has conflicting endings.");
             state.Flags.Add("ascended");
-            Check(Ending() == (developedRoute && transformed ? "kiana.ending_promised" : "kiana.ending_ascended"), "Kiana ascension has conflicting endings.");
+            Check(Ending() == (developedRoute && (transformed || budget) ? "kiana.ending_promised" : "kiana.ending_ascended"), "Kiana ascension has conflicting endings.");
             state.Flags.Add("kiana.closed");
             Check(Ending() == "kiana.ending_apart", "Kiana closure has conflicting endings.");
         }
@@ -1920,11 +2162,22 @@ internal static class Program
             string Ending() => story.Scenes.Single(s => s.Relationship == "seelah" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id;
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_unfinished_work"), "Seelah ending invents completed personal quest.");
             state.Flags.Add("seelah.souls_returned");
-            Check(Rules.Available(story, aftermath, state), "Seelah soul-rescue aftermath remains blocked after quest completion.");
-            var alive = Walk(aftermath, state);
-            Check(alive.All(s => s.Has("seelah.aftercare")), "Seelah living-Elan aftermath has no conclusion.");
-            state.Flags.Add("seelah.elan_dead");
-            Check(Walk(aftermath, state).All(s => s.Has("seelah.aftercare")), "Seelah dead-Elan aftermath has no conclusion.");
+            // eng-final l14: this page names Arsinoe as the living caregiver;
+            // her existing Lich/Swarm exclusions remain binding. Exercise both
+            // admitted histories and their unavailable-caregiver controls.
+            bool caregiverUnavailable = mythic == "true_lich" || mythic == "swarm";
+            Check(Rules.Available(story, aftermath, state) == !caregiverUnavailable,
+                "Seelah soul-rescue aftermath does not respect the caregiver's current availability: " + mythic);
+            if (caregiverUnavailable)
+                Check(!state.Has("seelah.aftercare"), "An unavailable caregiver invents completed Seelah aftercare.");
+            else
+            {
+                var alive = Walk(aftermath, state);
+                Check(alive.Count > 0 && alive.All(s => s.Has("seelah.aftercare")), "Seelah living-Elan aftermath has no conclusion.");
+                state.Flags.Add("seelah.elan_dead");
+                var bereaved = Walk(aftermath, state);
+                Check(bereaved.Count > 0 && bereaved.All(s => s.Has("seelah.aftercare")), "Seelah dead-Elan aftermath has no conclusion.");
+            }
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_together"), "Seelah quest-complete ending is wrong.");
             state.Flags.Add("seelah.ending_moderate");
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_unsettled"), "Seelah relationship erases the moderate ending.");

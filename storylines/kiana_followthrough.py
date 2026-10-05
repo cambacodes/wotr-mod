@@ -494,3 +494,16 @@ s("kept_evening", "The time beside her name", [
 {n}When you get up to leave, she folds the shawl rather than putting it on. She is staying in for the rest of the night. There is water to empty from the basin, and a bed that has finally been cleared of papers.{/n}
 "Good night," {n}she says, kissing the side of your face.{/n} "I liked having you here."''', c('[Leave her to the rest of her evening.]', flags=("kiana.followthrough_kept",))),
 ], after="kiana.workroom_taken", delay=168)
+# eng8-q8h begin: append the unanswered courtship answers; saved indices stay intact.
+def integrate_late_acceptance(payload):
+    ep = next(s for s in payload["Scenes"] if s["Id"] == "kiana.trickster.epilogue.commit")
+    start = ep["Nodes"][0]
+    for i in (0, 1):
+        old = start["Choices"][i]
+        start["Choices"].append(c(old["Text"], old["Next"],
+            forbids=("kiana.trickster.late_yes", "kiana.trickster.late_no"),
+            flags=("kiana.trickster.late_yes",)))
+    # The page is selected before OnShow records refusal. Preserve its old generic
+    # Continue answer, whose generated identity would change if it gained a Set.
+    next(node for node in ep["Nodes"] if node["Id"] == "blank").setdefault("EnterSet", []).append("kiana.trickster.late_no")
+# end eng8-q8h

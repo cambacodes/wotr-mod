@@ -41,6 +41,106 @@ def localization_text(strings, value):
     return entry.get("Text", "") if isinstance(entry, dict) else entry
 
 
+# eng8-q8e begin: explicit outcome-to-target parity, including native continuations.
+def ending_contracts():
+    return json.loads((ROOT / "tools/native_ending_inventory2_contracts.json").read_text(encoding="utf-8"))
+
+
+ENDING_FIELDS = ("Requires", "RequiresAny", "RequiresAnyGroups", "Forbids", "ForbidOverrides")
+
+
+def ending_when(scene):
+    """Compile the existing ending conditions into E14's OR-of-AND representation.
+
+    An override lifts only its own loss. No commitment implies bodily return.
+    The live-path condition applies to these native alterations, not to the
+    completed return itself. Final engine guards are read after all appenders.
+    """
+    from itertools import product
+    groups = [scene.get("RequiresAny")] if scene.get("RequiresAny") else []
+    groups += scene.get("RequiresAnyGroups") or []
+    for loss in scene.get("Forbids") or []:
+        override = (scene.get("ForbidOverrides") or {}).get(loss)
+        groups.append(["!" + loss, override] if override else ["!" + loss])
+    return [list(dict.fromkeys(["trickster.now", *scene.get("Requires", []), *parts]))
+            for parts in product(*groups)]
+
+
+def integrate_endings(payload):
+    """Align existing registrations with final, save-compatible ending readers."""
+    import copy
+    scenes = {s["Id"]: s for s in payload["Scenes"]}
+    # The native partner needs the same current-body losses as the authored pack.
+    # Reuse the final lifecycle reader; a saved return is not a second life.
+    for shared in ending_contracts().get("SharedLossGuards", []):
+        target, source = scenes[shared["Outcome"]], scenes[shared["Source"]]
+        rel = payload["Relationships"][target["Relationship"]]
+        for loss in rel.get("UnavailableFlags", []):
+            if loss not in target.setdefault("Forbids", []):
+                target["Forbids"].append(loss)
+            if loss in source.get("ForbidOverrides", {}):
+                target.setdefault("ForbidOverrides", {})[loss] = source["ForbidOverrides"][loss]
+            else:
+                target.setdefault("ForbidOverrides", {}).pop(loss, None)
+    for row in ending_contracts()["Rows"]:
+        spec = payload[row["Field"]][row["Target"]]
+        outcomes = [scenes[id] for id in row["Outcomes"]]
+        if row["Field"] == "NativeEpilogueSuppressions":
+            spec["When"] = [g for outcome in outcomes for g in ending_when(outcome)]
+            continue
+        for variant, outcome, replacement in zip([spec, *spec.get("Variants", [])], outcomes, row["Replacements"]):
+            variant["When"] = ending_when(outcome)
+            target = scenes[replacement]
+            if target is not outcome:
+                for field in ENDING_FIELDS:
+                    target[field] = copy.deepcopy(outcome.get(field, {} if field == "ForbidOverrides" else []))
+                target["Requires"] = list(dict.fromkeys([*target["Requires"], "trickster.now"]))
+
+
+def check_endings(payload, contracts=None):
+    """Missing targets, narrowed histories and unavailable replacements fail closed."""
+    contracts = contracts or ending_contracts()
+    if len(contracts["Rows"]) != 13 or len(contracts["Findings"]) != 12:
+        raise ValueError("E-Q8-06: omitted ending inventory row/finding")
+    if len(set(contracts.get("IdentityPreservingTargets", []))) != 4:
+        raise ValueError("E-Q8-06: omitted native history identity")
+    scenes = {s["Id"]: s for s in payload["Scenes"]}
+    registered = {r["Target"]: r for r in payload.get("NativeOverrides", [])}
+    for shared in contracts.get("SharedLossGuards", []):
+        target, source = scenes[shared["Outcome"]], scenes[shared["Source"]]
+        for loss in payload["Relationships"][target["Relationship"]].get("UnavailableFlags", []):
+            if (loss not in target.get("Forbids", []) or target.get("ForbidOverrides", {}).get(loss)
+                    != source.get("ForbidOverrides", {}).get(loss)):
+                raise ValueError("E-Q8-06: inconsistent current-body guard " + loss)
+    for row in contracts["Rows"]:
+        target = row["Target"]
+        spec = payload.get(row["Field"], {}).get(target)
+        if not spec or target not in registered or registered[target]["Field"] != row["Field"]:
+            raise ValueError("E-Q8-06: missing ending target " + target)
+        if target not in contracts["Fixtures"]:
+            raise ValueError("E-Q8-06: missing original fixture " + target)
+        outcomes = [scenes[id] for id in row["Outcomes"]]
+        if row["Field"] == "NativeEpilogueSuppressions":
+            if spec["When"] != [g for outcome in outcomes for g in ending_when(outcome)]:
+                raise ValueError("E-Q8-06: incomplete suppression histories " + target)
+        else:
+            variants = [spec, *spec.get("Variants", [])]
+            if len(variants) != len(outcomes):
+                raise ValueError("E-Q8-06: incomplete variants " + target)
+            for variant, outcome, replacement in zip(variants, outcomes, row["Replacements"]):
+                if variant["Replacement"] != replacement or variant["When"] != ending_when(outcome):
+                    raise ValueError("E-Q8-06: incomplete ending histories " + target)
+                if scenes[replacement] is not outcome:
+                    for field in ENDING_FIELDS:
+                        expected = outcome.get(field, {} if field == "ForbidOverrides" else [])
+                        if field == "Requires":
+                            expected = list(dict.fromkeys([*expected, "trickster.now"]))
+                        if scenes[replacement].get(field) != expected:
+                            raise ValueError("E-Q8-06: replacement unavailable for ending " + target)
+    return len(contracts["Rows"])
+# eng8-q8e end
+
+
 def return_routes(payload):
     """Only existing declared return/outcome evidence; invent no rescue predicate."""
     result = {}
@@ -215,6 +315,21 @@ def render_inventory(payload, expectations, backlog, coverage=None):
         if finding.get("SnapshotStateAbsent"):
             lines.append(f"- {finding['Id']}: snapshot `{finding['SnapshotStateAbsent']}` is absent here; "
                          "contracts use the current paid dig/raise evidence without inventing a reconciliation flag.")
+    # eng8-q8e begin: supplemental targets include pronoun-only follow-ons.
+    if expectations.get("eng8-q8e"):
+        lines += ["", "## E-Q8-06 ending continuation parity", "",
+                  "Authored, current-Trickster reconciliations. Structural parity is checked against final "
+                  "ending conditions; native eligibility and negative histories are exercised by RulesTests.", ""]
+        try:
+            check_endings(payload)
+            status = "PARITY"
+        except ValueError as error:
+            failures += 1
+            status = "FAIL"
+            lines.append(str(error))
+        for row in ending_contracts()["Rows"]:
+            lines.append(f"- `{row['Target']}` / `{row['Field']}`: {status}; " + ", ".join(row["Outcomes"]))
+    # eng8-q8e end
     return "\n".join(lines) + "\n", failures
 
 

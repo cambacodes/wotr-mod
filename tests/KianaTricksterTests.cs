@@ -15,7 +15,9 @@ internal static class KianaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.AvailableContacts.Add(Arsinoe);
@@ -257,7 +259,7 @@ internal static class KianaTricksterTests
         var late = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.history_married");
         check(Rules.Available(story, epCommit, late) && !Any(late, S("kiana.ending_unfinished"), S("kiana.trickster.ending_unfinished")),
             "Trk_Kiana_EpilogueCommit failed.");
-        check(epCommit.Nodes[0].Choices.Count == 3 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
+        check(epCommit.Nodes[0].Choices.Count == 5 && epCommit.Nodes[0].Choices.All(ch => ch.Next != null), "The late commit gives no answer.");
         var notYet = World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.lovers", "kiana.attracted", "kiana.morning", "kiana.uncertain");
         check(!Rules.Available(story, epCommit, notYet) && Rules.Available(story, S("kiana.trickster.ending_unfinished"), notYet)
               && !Rules.Available(story, S("kiana.ending_unfinished"), notYet), "Her 'then don't promise it' is not honoured.");
@@ -338,7 +340,10 @@ internal static class KianaTricksterTests
         check(callDead.Count > 0 && callDead.All(r => !r.Has("kiana.lastcall.called") && r.Has("kiana.lastcall.resolved")),
             "Q10: a dead Sunhammer is called in at the rift.");
         var callAlive = Program.Walk(call, World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.trickster.cost.sunhammer_favour", "kiana.committed"));
-        check(callAlive.Count > 0 && callAlive.All(r => r.Has("kiana.lastcall.called")), "Q10: a living Sunhammer cannot be called in.");
+        // eng8-q8g: the living creditor offers an enacted pardon AND a refusal.
+        check(callAlive.Any(r => r.Has("kiana.lastcall.called") && r.Has("trickster.lastcall.kiana_pardon"))
+            && callAlive.Any(r => !r.Has("kiana.lastcall.called") && r.Has("kiana.lastcall.resolved")),
+            "Q10: a living Sunhammer lacks his pardon or refusal road.");
         // Q10 (BEL): the betrothed keepsake is the cancelled licence, not a live hold.
         var licenceParas = Rules.VisibleParagraphs(promised, World(story, 6, "trickster", "trickster.ever", "kiana.trickster.met", "kiana.history_betrothed",
                                                                    "kiana.trickster.cost.betrothed", "kiana.committed"));
@@ -376,12 +381,24 @@ internal static class KianaTricksterTests
                 "Q10: the question is asked twice.");
         // Acceptance without the question: lovers who never answered reach the page, may only leave the margin empty, and
         // establish no commitment and no Last Call coda.
-        var neverAsked = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers");
+        // eng8-q8h: use the actual met -> marriage -> answer -> date producers above.
+        var neverAsked = Program.Copy(lovers); neverAsked.Chapter = 6;
+        neverAsked.Flags.Add("lastcall.active"); Rules.Complete(story, neverAsked);
         var neverPages = Pages(epCommit, neverAsked);
-        check(Rules.Available(story, epCommit, neverAsked) && neverPages.Contains("blank") && !neverPages.Contains("margin") && !neverPages.Contains("stage")
-              && Program.Walk(epCommit, neverAsked).All(r => !r.Has("kiana.trickster.late_committed") && !Rules.Available(story, coda, r)),
-            "Q10: the epilogue narrates a commitment nobody recorded.");
-        var lateYes = World(story, 6, "trickster", "trickster.ever", "lastcall.active", "kiana.trickster.met", "kiana.lovers", "kiana.trickster.late_yes");
+        check(Rules.Available(story, epCommit, neverAsked) && neverPages.Contains("blank") && neverPages.Contains("margin") && neverPages.Contains("stage"),
+            "eng8-q8h: unanswered eligible courtship has no affirmative answer.");
+        foreach (var node in new[] { "margin", "stage" })
+        {
+            var answer = epCommit.Nodes[0].Choices.Single(c => c.Next == node && c.Set.Contains("kiana.trickster.late_yes"));
+            check(Rules.ChoiceAvailable(answer, neverAsked), "Affirmative appended answer blocked: " + node);
+            var copy = Program.Copy(neverAsked);
+            copy.Flags.UnionWith(answer.Set); Rules.Complete(story, copy);
+            check(copy.Has("kiana.trickster.late_committed") && !copy.Has("kiana.committed")
+                && Rules.Available(story, coda, copy), "Real affirmative consumer invalidates itself: " + node);
+        }
+        var refusal = Program.Walk(epCommit, neverAsked).Single(r => r.Has("kiana.trickster.late_no"));
+        check(!refusal.Has("kiana.trickster.late_committed") && !Rules.Available(story, coda, refusal), "Real refusal grants a late coda");
+        var lateYes = Program.Walk(epCommit, neverAsked).First(r => r.Has("kiana.trickster.late_yes"));
         check(lateYes.Has("kiana.trickster.late_committed") && Rules.Available(story, coda, lateYes), "Q10: the late commit loses her Last Call coda.");
         foreach (var off in new[] { "kiana.uncertain", "kiana.parting" })
         {

@@ -22,7 +22,10 @@ internal static class CamelliaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng8-q8f: the late-coffin positive pays its existing sexton price.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 100 } };
+        // end eng8-q8f
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Unit);
@@ -45,13 +48,12 @@ internal static class CamelliaTricksterTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
-        // The outcomes of a full walk that pass through the named choice (its Set flags held and, if a Next, its node visited).
+        // eng8-q8f: outcomes that actually traverse the named node and saved answer index.
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = new List<Snapshot>();
-            foreach (var r in Program.Walk(scene, w))
-                if (chosen.Set.All(r.Has) && r.Has(scene.Id)) hits.Add(r);
+            // eng8-q8f: prove the edge, including empty/shared Set arrays.
+            var hits = Program.WalkVia(scene, w, node, index);
+            // end eng8-q8f
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -180,7 +182,10 @@ internal static class CamelliaTricksterTests
         check(late.Remote && late.Chapters.SequenceEqual(new[] { 3, 5 }), "The late curtain is not a Chapter 3 and 5 rest page.");
         // A kill taken through the native verdict in Chapter 5 (FinalTruth) has the same way back, on the same terms.
         check(Avail(late, World(story, 5, "trickster", "trickster.ever", Killed)), "Trk_Camellia_KilledLate: a Chapter 5 kill has no way back.");
-        check(letter.Chapters.SequenceEqual(new[] { 3, 5 }), "The letter twin is shut in Chapter 5.");
+        // eng8-q8d: Chapter 5 failure folds the price into either coffin delivery.
+        check(letter.Chapters.SequenceEqual(new[] { 3 }) && new[] { late, third }.All(s => s.Nodes.Any(n => n.Id == "eng8.price")),
+            "Chapter 5 failed placement lacks its folded coffin agreement, or still adds a letter.");
+        // end eng8-q8d
         check(Ch(late, "choose", 0).Crusade?.Resource == "Finances" && Ch(late, "choose", 0).Crusade!.Amount == -100,
             "The sexton is not paid for in Finances (-100).");
         check(Ch(late, "coffin", 0).Mythic == "PlayerIsTrickster", "The line said to the corpse is not a native [Trickster] answer.");
@@ -439,7 +444,8 @@ internal static class CamelliaTricksterTests
         var again = S(P + "cards.two_lies_again");
         check(Ch(again, "two", 0).Requires.Contains(P + "masks.out_lied") && Ch(again, "two", 1).Forbids.Contains(P + "masks.out_lied"),
             "The second game rewrites a lost first game as a win.");
-        check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named", "camellia.outcome.route_open", "camellia.trickster.late_committed.without.camellia.trickster.declined" }),
             "The Derived late commit does not rest on her named price.");
 
         Console.WriteLine("PASS: Camellia Trickster (Trk_Camellia_*): the joke at every kill, the late curtain, the veiled mourner, the body told it's overacting, her price, her test, the oath, and the life around them.");

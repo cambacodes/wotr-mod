@@ -628,6 +628,9 @@ def make_expansion(*, independent_tirabade=True):
         nm1_nocticula.integrate(payload)
     # Last Call (doc 04) and the Trickster's Ledger: after every route, so its pages and call-ins read the routes' flags.
     lastcall.integrate(payload)
+    # eng8-q8e begin: append native-only slides after Last Call places its existing pages.
+    payload["Scenes"].extend(copy.deepcopy(nenio_trickster.NATIVE_ENDING_SCENES))
+    # eng8-q8e end
     iomedae_trickster.integrate_joint(payload)     # ledger row 6: the Appointment empties the flask (after Last Call's pages)
     # Shyka's page (12-TRICKSTER-FORESIGHT): the Council bargain, the memory, the misstep, the Ch5 line, the witnesses, Last
     # Call's paragraphs and the Ledger's journal lines; then the routes' echoes and memory gaps (appended, optional).
@@ -714,6 +717,18 @@ def make_expansion(*, independent_tirabade=True):
     # eng7-f6c end
     native_overrides.finalize(payload)
     validate_native_gate_contract(payload)
+    # eng7-l13: apply existing outcome contracts after every integrated consumer.
+    from storylines import earned_outcomes
+    earned_outcomes.integrate(payload)
+    # eng8-q8e begin: reconcile against final authored ending eligibility.
+    from tools import native_contradictions
+    native_contradictions.integrate_endings(payload)
+    native_overrides.finalize(payload)
+    native_contradictions.check_endings(payload)
+    # eng8-q8e end
+    # eng7-l14: live cross-route prose reads existing earned presence.
+    from storylines import crossroute_presence
+    crossroute_presence.integrate(payload)
     return payload
 
 

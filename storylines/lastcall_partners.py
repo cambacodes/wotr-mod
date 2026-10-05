@@ -971,3 +971,113 @@ def pages():
             page.update(MinChapter=6, MaxChapter=6, Chapters=[6])
         out.append((part["rel"], page))
     return out
+
+
+# eng8-q8g: authored Last Call history variants; no new route stakes.
+# Paid debt, chosen collateral, daily courtship and a carried token are distinct.
+_history_partners = {part["rel"]: part for part in PARTNERS}
+_history_debts = {debt["key"]: debt for debt in DEBTS}
+KI_SETTLED = "trickster.lastcall.kiana_pardon"
+KI_FREED = "trickster.lastcall.kiana_guests_freed"
+KI_RECOVERED = "kiana.lastcall.guests_recovered"
+WD_POCKET = WD + "morning.pocket"
+EL_DAILY = "eliandra.committed"
+
+_arsinoe = _history_partners["arsinoe"]
+_arsinoe["deal"] = [[AR + "cost.lien"]]
+_arsinoe["opener"] = "{n}Arsinoe met the Commander after Threshold. She put the counting-room key away and took the Commander's hand.{/n}"
+_arsinoe["paragraphs"] = (
+    page_p("The cauldron went back across her counter as leased. She checked it twice, then entered the discharge with a receipt.",
+           requires=(called("arsinoe"), AR + "cost.lien"), forbids=("arsinoe.siphon_burst",)),
+    page_p("The cauldron was handed back at the rift as leased, a breath before it burst. What burst was the temple's property, consumed in its intended use. Arsinoe entered the discharge with a receipt.",
+           requires=(called("arsinoe"), AR + "cost.lien", "arsinoe.siphon_burst")),
+    page_p("The Fool King's still had been pledged. With the account settled, Arsinoe released the lien. The barrel baron still invited her to audit the tap on the first of every month. She seldom left sober.",
+           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_still")),
+    page_p("The Commander's word had been the collateral. Abadar's clerks entered it at face value, which amused them, and then found that it held, which did not.",
+           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_word")),
+    page_p("The First Vault does not recognize death as grounds for default, nor for refusing payment from the deceased. She took the Commander's payment anyway, and entered it without comment.",
+           requires=(called("arsinoe"), AR + "cost.lien", ON_RECORD)),
+    page_p("Arsinoe closed the Commander's lease account in a counting-room that smelled of ink and scorched air. She checked every figure twice, closed the book, and laughed.",
+           requires=(called("arsinoe"), AR + "cost.lien")),
+    page_p('When the clerks asked what the Worldwound was now worth as collateral, Arsinoe told them "Slightly used," and would not be moved.',
+           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_worldwound"), forbids=("ending.wound_closed",)),
+    page_p("The Worldwound had been pledged. Now there was only scorched earth where it had been. Arsinoe struck the discharged lien from the ledger and shut the book.",
+           requires=(called("arsinoe"), AR + "cost.lien", AR + "cost.collateral_worldwound", "ending.wound_closed")),
+)
+_abadar = _history_debts["abadar"]
+_abadar["groups"] = [[AR + "cost.lien"]]
+_abadar["page_called"] = "The church of Abadar collected the cauldron lease to the letter. The First Vault entered its discharge and released the pledged security. The receipt bore the date of Threshold."
+
+_eliandra = _history_partners["eliandra"]
+_eliandra["ledger_text"] = "I knelt across Eliandra's basin and gave Pulura my sight of her lights. The lights are still there. Eliandra can read them to me; I can no longer see them."
+_eliandra["call"]["text"] = "{n}Low in the north, over the rift, there is a place your eyes will not stay on. They slide off it to the smoke and your own hands. It has been that way since the offering across Eliandra's basin. You say her name and ask what the sky is doing. Very far off, slow and plain, the evening reading begins.{/n}"
+
+_kiana = _history_partners["kiana"]
+_kiana["paragraphs"][0]["Requires"] = [called("kiana"), KI + "cost.guests_robbed", KI_FREED]
+_kiana["paragraphs"][0]["Forbids"] = []
+_kiana["paragraphs"][1]["Requires"].append("kiana.soul_lost")
+_kiana["paragraphs"][1]["Forbids"] = [KI_RECOVERED]
+_kiana["paragraphs"] += (
+    page_p("The dog came home first. The other guests stayed in the pouch. Kiana never let the Commander call that a rescue of everyone at her wedding.",
+           requires=(KI + "cost.guests_robbed", KI + "dog_saved"), forbids=("kiana.soul_lost", KI_RECOVERED)),
+)
+_kiana["call"]["text"] = "{n}Sunhammer's account is still on your mind at the edge of the rift: the favour, the stones, or the grudge he keeps against you.{/n}"
+_sunhammer = _history_debts["sunhammer"]
+_sunhammer["page_called"] = "Darek Sunhammer kept the Commander's sealed pardon. His bill was discharged by its terms. The jeweller had bought protection from the very hand that should have signed his warrant."
+_sunhammer["page_outlived"] = "Darek Sunhammer collected nothing. He had died before Threshold, with his account still in the one ledger he kept in his head. No apprentice could inherit that claim. His death said nothing about which stolen souls had come home."
+
+_wenduag = _history_partners["wenduag"]
+WD_CAIRNS = (WD + "cairn_built", WD + "abyss_cairn", WD + "street_cairn")
+_wenduag["opener"] = "{n}When word came from Threshold, Wenduag sharpened her knife. She listened to the whole account without looking up. Then she laughed, and went to find the Commander.{/n}"
+_wenduag["call"]["entry"] = '[Call into the dark] "Wenduag. Dig."'
+_wenduag["call"]["text"] = "{n}At the rift you say the word the neathers use when one hunter has gone into the dark ahead of another. It goes out over the Wound and is swallowed. You do not know whether anyone hears it. You say it anyway.{/n}"
+_wenduag["paragraphs"][0]["Requires"].append(WD_POCKET)
+_wenduag["paragraphs"][1]["AnyGroups"].append(list(WD_CAIRNS))
+_wenduag["paragraphs"][3]["Forbids"].extend(WD_CAIRNS)
+_wenduag["paragraphs"] += (
+    page_p("At the rift the Commander called into the dark: \"Dig.\" Far away, at the bottom of a stair in Drezen, Wenduag lifted her head.",
+           requires=(called("wenduag"),), forbids=(WD_POCKET,)),
+    page_p("She spent the last night of the war sitting on her own cairn with her knife across her knees. Toward morning she laughed, and said a name.",
+           any_groups=[WD_CAIRNS]),
+    page_p("The world buried the Commander with an empty coffin and a great deal of singing. Wenduag complained about the rhymes, then found a quiet place to wait for the news they had got wrong.",
+           requires=(ON_RECORD,), forbids=WD_CAIRNS),
+)
+_wenduag["ledger_text"] = "I built a cairn for Wenduag. She says she owes me nothing for it. When I reach the rift, I mean to call into the dark."
+
+_eng8_call_in_scenes = call_in_scenes
+_eng8_derived = derived
+
+
+def derived():
+    return {**_eng8_derived(), KI_RECOVERED: [[key] for key in (
+        "seelah.souls_returned", KI + "guests_ransomed", KI + "guests_bought_back", KI_FREED)]}
+
+
+def call_in_scenes(factory):
+    out = _eng8_call_in_scenes(factory)
+    calls = {s["Id"]: s for s in out}
+    for rel, witness, text, target in (
+        ("eliandra", EL_DAILY, "{n}You ask as she once asked you every morning. The familiar reading carries through the roar.{/n}", "daily"),
+        ("wenduag", WD_POCKET, "{n}The flat grey stone is still in your pocket, its knife-scratched line against your palm. You close your hand until the edges bite and call again: \"Dig.\"{/n}", "stone"),
+    ):
+        host = calls[rel + ".lastcall.call"]
+        first = host["Nodes"][0]["Choices"][0]
+        first["Requires"].append(witness)
+        first["Next"] = target
+        host["Nodes"][0]["Choices"].append(c("Continue", flags=(called(rel), resolved(rel)), forbids=(witness,)))
+        host["Nodes"].append(n(target, "Narrator", text, c("Continue", flags=(called(rel), resolved(rel)))))
+    host = calls["kiana.lastcall.call"]
+    # Retain the old generic settlement's answer slot; it cannot enact a pardon.
+    host["Nodes"][0]["Choices"][0]["Requires"].append("kiana.sunhammer_dead")
+    host["Nodes"][0]["Choices"].append(c('[Read the jeweller\'s letter.]', "letter", forbids=("kiana.sunhammer_dead",)))
+    host["Nodes"].append(n("letter", "Narrator",
+        "{n}The letter arrived before the march to Threshold. You break its seal at the rift. Sunhammer names his price: a pardon under your seal, protecting him from the crusade's warrant. If he still holds any wedding stones, they go to the temple ward in exchange. If the guests are already free, the pardon settles only his old account. His apprentice waits behind the siege lines for your answer.{/n}",
+        c('[Seal the pardon. Buy the remaining stones.]', "release", requires=(KI + "cost.guests_robbed",), forbids=(KI_RECOVERED,)),
+        c('[Seal the pardon. Settle the old account.]', flags=(called("kiana"), resolved("kiana"), KI_SETTLED), requires=(KI_RECOVERED,)),
+        c('[Seal the pardon. Settle the old account.]', flags=(called("kiana"), resolved("kiana"), KI_SETTLED), forbids=(KI_RECOVERED, KI + "cost.guests_robbed")),
+        c('[Refuse the pardon.] "He can keep his bill. I will not shield him."', flags=(resolved("kiana"),))))
+    host["Nodes"].append(n("release", "Narrator",
+        "{n}You press your seal into the pardon and send it back through the siege lines. The apprentice hands the pouch to the temple's priestesses before taking the paper. They check every stone against the sleepers in their ward, then split them with cleaving chisels. One by one, the sleepers wake. The pardon is his. The souls are their own again.{/n}",
+        c("Continue", flags=(called("kiana"), resolved("kiana"), KI_SETTLED, KI_FREED))))
+    return out
+# end eng8-q8g

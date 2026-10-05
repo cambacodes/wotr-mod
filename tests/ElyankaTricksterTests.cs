@@ -178,13 +178,14 @@ internal static class ElyankaTricksterTests
         check(dead.DelayHours == 48, "Trk_Elyanka_TheDead: the test does not wait two days after the sale.");
 
         // Trk_Elyanka_Claims: the exchange of claims (her proposal), the soft no, her move 48 hours later with no price.
-        var t = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_carrion", P + "beat.whisper");
+        // eng7-l13: positive claims and second-offer commitments use current power.
+        var t = World(story, 5, "trickster", "trickster.ever", Owned, Bequeathed, Started, Tested, P + "gave_carrion", P + "beat.whisper");
         var yes = Take(claims, t, "rites", 0, Committed);
         check(yes.Has(Committed) && yes.Has("trickster.secret.elyanka_rites") && Take(claims, t, "yes_kiss", 0, Committed).Has(Committed),
             "Trk_Elyanka_Claims: taking her claim does not commit (with her rites kept secret).");
         var no = Take(claims, t, "buyer", 0, Declined);
         check(no.Has(Declined) && !no.Has(Committed) && !no.Has(Closed), "Trk_Elyanka_Claims: the buyer's question is not her soft no.");
-        var nw = World(story, 5, "trickster.ever", Owned, Bequeathed, Started, Tested, Declined);
+        var nw = World(story, 5, "trickster", "trickster.ever", Owned, Bequeathed, Started, Tested, Declined);
         check(move.DelayHours == 48 && Take(move, nw, "take_rites", 0, Committed).Has(P + "lock_taken")
               && Take(move, nw, "home", 0, LeftFree).Has(Closed)
               && move.Nodes.SelectMany(n => n.Choices).All(c => c.Crusade == null && c.Alignment == null),
@@ -439,7 +440,8 @@ internal static class ElyankaTricksterTests
 
         // Trk_Elyanka_Household: eligible only by a yes she actually gave.
         check(story.Derived["elyanka.harem.eligible"].Any(g => g.Length == 1 && g[0] == Committed)
-              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed })
+        // eng7-l13: preparation also requires the live outcome contract.
+              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed, "elyanka.outcome.route_open" })
               && !World(story, 6, "trickster.ever", Owned, Tested, Declined, LeftFree, Closed).Has("elyanka.harem.eligible")
               && !World(story, 6, "trickster.ever", Owned, Tested).Has("elyanka.harem.eligible")
               && World(story, 5, "trickster.ever", Committed).Has("elyanka.harem.eligible"),

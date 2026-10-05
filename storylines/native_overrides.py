@@ -173,6 +173,10 @@ def _known(payload):
     rules = (ROOT / "src/Story.cs").read_text(encoding="utf-8-sig")
     runtime = rules.split("var derivedFlags =", 1)[1].split("var contactEvidence", 1)[0]
     known.update(re.findall(r'"([^"\n]+)"', runtime))
+    # eng-final / E-Q8-01 + E-Q8-06: native ending guards read the same
+    # finite live-body inputs as Rules.Validate, never arbitrary authored keys.
+    latest = rules.split("LatestStateRuntime =", 1)[1].split("}", 1)[0]
+    known.update(re.findall(r'"([^"\n]+)"', latest))
     echo = rules.split("WenduagEchoRuntime = new[]", 1)[1].split("}", 1)[0]
     known.update("wenduag.trickster.echo.abyss." + suffix for suffix in re.findall(r'"([^"\n]+)"', echo))
     for relationship in payload.get("Relationships", {}).values():

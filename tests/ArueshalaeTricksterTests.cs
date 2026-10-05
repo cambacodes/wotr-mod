@@ -285,7 +285,9 @@ internal static class ArueshalaeTricksterTests
         check(S(T + "relapse_two").Requires.Contains(T + "rite_slipped"), "The second relapse does not follow the missed rite.");
         var proposal = S(T + "prescription");
         var ask = proposal.Nodes.Single(n => n.Id == "ask");
-        check(ask.Choices.Count == 4 && ask.Choices.All(c => c.Crusade == null && c.Alignment == null),
+        // eng7-l13: old proposal indices stay fixed; new loss exits grant nothing.
+        check(ask.Choices.Count >= 4 && ask.Choices.Take(4).All(c => c.Crusade == null && c.Alignment == null)
+              && ask.Choices.Skip(4).All(c => c.Abort && c.Set.Length == 0),
             "The proposal is not hers alone (yes / the saint / not yet / no, no price).");
         var ready = Later(story, World(story, 5, Drezen, "trickster", "trickster.ever", T + "intake", T + "relapse_two", T + "her_call"), 100);
         check(Avail(proposal, ready), "The proposal is not available after the second relapse.");
@@ -423,7 +425,9 @@ internal static class ArueshalaeTricksterTests
         foreach (var closedW in refusedTerms.Concat(refusedAgain))
         {
             var atEnd = Later(story, closedW, 50, 6); atEnd.Flags.Add("lastcall.active");
-            check(closedW.Has("arueshalae.closed") && closedW.Has(P + "terms_refused") && closedW.Has(P + "late_committed")
+            // eng7-l13: observe closure freshly; a stale late key is no longer entitlement.
+            atEnd.Flags.ExceptWith(story.Derived.Keys); Rules.Complete(story, atEnd);
+            check(closedW.Has("arueshalae.closed") && closedW.Has(P + "terms_refused") && !atEnd.Has(P + "late_committed")
                   && !Avail(lostPage, atEnd), "Trk_Arueshalae_LastCallClosed: a refused chaplain still gets her Last Call coda.");
         }
         check(refusedAgain.Count > 0, "Trk_Arueshalae_LastCallClosed: the chaplain's second refusal is unreachable.");

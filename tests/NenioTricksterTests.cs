@@ -70,11 +70,20 @@ internal static class NenioTricksterTests
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = new List<Snapshot>();
-            foreach (var r in Program.Walk(scene, w))
-                if (chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))
-                    && chosen.Forbids.All(f => !r.Has(f) || chosen.Set.Contains(f))) hits.Add(r);
+            // eng8-q8f: prove the edge, including empty/shared Set arrays.
+            var hits = Program.WalkVia(scene, w, node, index);
+            // end eng8-q8f
+            foreach (var r in hits)
+            {
+                // eng8-q8a: observe the native resurrection after this recovery's paid answer.
+                if (scene.Recovery == "nenio" && r.Flags.Contains(Returned) && !w.Flags.Contains(Returned))
+                {
+                    r.Flags.Remove("nenio.dead");
+                    r.Flags.ExceptWith(story.Derived.Keys.Concat(story.Counts.Keys));
+                    Rules.Complete(story, r);
+                }
+                // end eng8-q8a
+            }
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -124,13 +133,19 @@ internal static class NenioTricksterTests
         var correction = S(P + "away.correction_visitor");
         var first = S(F + "dictation");
         var demons = S(F + "demons");
-        var pages = story.Scenes.Where(s => s.Relationship == "nenio" && s.Owner == "NenioEpilogue").ToArray();
+        // eng8-q8e: E14 replacement text is not an additional authored route page.
+        var pages = story.Scenes.Where(s => s.Relationship == "nenio" && s.Owner == "NenioEpilogue" && !Rules.IsNativeReplacement(story, s)).ToArray();
 
         // Shape and hooks.
         check(rel.StartedFlag == Started && rel.ClosedFlag == Closed && rel.CommittedFlag == Committed
-              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { "nenio.dead", "nenio.dissolved", "nenio.kicked_out", "nenio.killed_by_commander", "nenio.sent_away" })
+              && rel.UnavailableFlags.OrderBy(f => f).SequenceEqual(new[] { "nenio.dead", "nenio.dissolved", "nenio.kicked_out", "nenio.killed_by_commander", "nenio.life.unavailable", "nenio.sent_away" }) // eng8-q8a
               && !rel.UnavailableOverrides.ContainsKey("nenio.dissolved") && rel.UnavailableOverrides.Count == 4
-              && rel.UnavailableOverrides.Values.All(v => v == Returned)
+              // eng8-q8a: a bodily return cannot answer a later loss or a different departure.
+              && rel.UnavailableOverrides["nenio.dead"] == "nenio.life.recreated"
+              && rel.UnavailableOverrides["nenio.killed_by_commander"] == "nenio.life.unremembered"
+              && rel.UnavailableOverrides["nenio.sent_away"] == "nenio.life.probation"
+              && rel.UnavailableOverrides["nenio.kicked_out"] == "nenio.life.probation"
+              // end eng8-q8a
               && rel.TricksterAccess.Keys.OrderBy(k => k).SequenceEqual(new[] { "enigma", "nenio.away", "nenio.dead", "nenio.killed_by_commander" }),
             "Nenio's relationship does not match the build sheet (four loss overrides to the return, none for the dissolution).");
         check(riddle.AnswerLists.SequenceEqual(new[] { FoxList }) && riddle.NativeReturnCue == FoxReturn && riddle.EntryMythic == "PlayerIsTrickster"
@@ -210,7 +225,7 @@ internal static class NenioTricksterTests
 
         // Trk_Nenio_Night: the threshold and the morning, the reactors, and the study after.
         var nightWorld = Later(story, yes, 4);
-        check(Avail(night, nightWorld) && Rules.IsRemote(night) && !night.Optional, "Trk_Nenio_Night: the night does not follow her yes.");
+        check(Avail(night, nightWorld) && !Rules.IsRemote(night) && !night.Optional, "Trk_Nenio_Night: the night does not follow her yes.");
         var slept = Take(night, nightWorld, "watch", 0, P + "night");
         check(Avail(morning, Later(story, slept, 6)), "Trk_Nenio_Night: the morning does not follow.");
         var after = Take(morning, Later(story, slept, 6), "war", 0, P + "morning_after");
@@ -306,16 +321,17 @@ internal static class NenioTricksterTests
               && !night.Nodes[0].Text.Contains("ninety-nine"), "The night shows notes she no longer has.");
 
         // Pages: the article, the late yes, the void, and the closed page; none writes anything.
-        check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void" })
+        check(pages.Select(s => s.Id).OrderBy(i => i).SequenceEqual(new[] { P + "epilogue.article", P + "epilogue.closed", P + "epilogue.commit", P + "epilogue.void", P + "epilogue.scholar" }.OrderBy(i => i))
               && pages.All(s => s.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0))),
             "Nenio's pages are not the article, the late yes, the void and the closed page.");
         var ch6 = World(story, 6, "trickster", "trickster.ever", Started, Committed, NameFiled);
         check(Avail(S(P + "epilogue.article"), ch6) && !Avail(S(P + "epilogue.commit"), ch6), "Pages: the committed page is not the article.");
-        check(Avail(S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Started)), "Pages: the war's end has no late yes.");
+        // eng8-q8h: ordinary employment cannot grant the romantic conclusion.
+        check(!Avail(S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Started)), "Employment grants late yes.");
         // Sol COX: the Last Call H2 survival (the bottle, the Wound closed) keeps her romance pages (ledger row 16).
         var h2 = new[] { "sacrifice", "ending.wound_closed", "trickster.lastcall.taken", "trickster.lastcall.pillar.bottle" };
         var h2Committed = World(story, 6, new[] { "trickster", "trickster.ever", Started, Committed }.Concat(h2).ToArray());
-        var h2Late = World(story, 6, new[] { "trickster", "trickster.ever", Started }.Concat(h2).ToArray());
+        var h2Late = World(story, 6, new[] { "trickster", "trickster.ever", Started, P + "test_running" }.Concat(h2).ToArray());
         check(h2Committed.Has("trickster.commander_back") && !h2Committed.Has("trickster.cheated_death")
               && Avail(S(P + "epilogue.article"), h2Committed) && Avail(S(P + "epilogue.commit"), h2Late),
             "The Last Call H2 survival loses Nenio's romance pages.");
@@ -349,7 +365,8 @@ internal static class NenioTricksterTests
             "Sol r3 INT: committed-then-dissolved gets the living article.");
         foreach (var loss in new[] { "nenio.dead", "nenio.killed_by_commander", "nenio.sent_away", "nenio.kicked_out" })
             check(!Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss))
-                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss, Returned))
+                  && Avail(S(P + "epilogue.article"), World(story, 6, "trickster", "trickster.ever", Started, Committed, loss, Returned,
+                      loss == "nenio.dead" ? P + "cost.recreated" : loss == "nenio.killed_by_commander" ? P + "cost.unremembered" : P + "cost.demoted")) // eng8-q8a: matching paid receipt fixture
                   && !Avail(S(P + "epilogue.commit"), World(story, 6, "trickster", "trickster.ever", Started, loss))
                   && !Avail(S(P + "epilogue.closed"), World(story, 6, "trickster", "trickster.ever", Started, Closed, loss)),
                 "Sol r4 INT: a living epilogue plays over an unrecovered loss: " + loss);
@@ -393,7 +410,13 @@ internal static class NenioTricksterTests
 
         // Areelu G6(b): her Nenio lines lift the four losses (never the dissolution) on Nenio's return.
         var areeluReact = S("areelu.trickster.react.nenio_two_drafts");
-        check(areeluReact.ForbidOverrides.Count == 4 && areeluReact.ForbidOverrides.Values.All(v => v == Returned)
+        check(areeluReact.ForbidOverrides.Count == 4
+              // eng8-q8a: foreign reactors consume the same matching loss-specific returns.
+              && areeluReact.ForbidOverrides["nenio.dead"] == "nenio.life.recreated"
+              && areeluReact.ForbidOverrides["nenio.killed_by_commander"] == "nenio.life.unremembered"
+              && areeluReact.ForbidOverrides["nenio.sent_away"] == "nenio.life.probation"
+              && areeluReact.ForbidOverrides["nenio.kicked_out"] == "nenio.life.probation"
+              // end eng8-q8a
               && !areeluReact.ForbidOverrides.ContainsKey("nenio.dissolved"),
             "Areelu's reaction does not carry the G6(b) overrides to Nenio's return.");
         var visitors = S("areelu.trickster.report.visitors").Nodes.Single(n => n.Id == "start").Choices;
