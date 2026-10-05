@@ -86,6 +86,55 @@ internal static class CompletionParityTests
         fixture.Relationships["r"].UnavailableOverrides["dead"] = "empty";
         Compare(fixture, new Snapshot(), "replacement, empty groups and override edit");
 
+        // Reuse a warm plan while changing every kind of dependency in place.
+        // An equal key count is insufficient: later keys can become prerequisites.
+        var mutable = new Story();
+        mutable.Derived["consumer"] = new[] { new[] { "seed" } };
+        mutable.Derived["later"] = new[] { Array.Empty<string>() };
+        mutable.Derived["closed"] = new[] { Array.Empty<string>() };
+        mutable.Derived["dead"] = new[] { Array.Empty<string>() };
+        mutable.Derived["returned"] = new[] { Array.Empty<string>() };
+        mutable.Relationships["r"] = new Relationship { ClosedFlag = "not_closed", UnavailableFlags = new[] { "not_dead" } };
+        mutable.Relationships["s"] = new Relationship { ClosedFlag = "not_closed", UnavailableFlags = Array.Empty<string>() };
+        mutable.DerivedOpenRoutes["consumer"] = new[] { "r" };
+        Compare(mutable, new Snapshot(), "cold plan");
+        mutable.Derived["consumer"][0][0] = "later";
+        Compare(mutable, new Snapshot(), "group input changed at equal size");
+        mutable.DerivedForbids["consumer"] = new[] { "seed" };
+        Compare(mutable, new Snapshot(), "forbid inserted");
+        mutable.DerivedForbids["consumer"][0] = "later";
+        Compare(mutable, new Snapshot(), "forbid input changed at equal size");
+        mutable.DerivedForbids.Remove("consumer");
+        mutable.Relationships["r"].ClosedFlag = "closed";
+        Compare(mutable, new Snapshot(), "closure dependency changed");
+        mutable.Relationships["r"].ClosedFlag = "not_closed";
+        mutable.Relationships["r"].UnavailableFlags[0] = "dead";
+        Compare(mutable, new Snapshot(), "unavailable dependency changed");
+        mutable.Relationships["r"].UnavailableOverrides["dead"] = "returned";
+        Compare(mutable, new Snapshot(), "override dependency inserted");
+        mutable.Relationships["r"].UnavailableOverrides["dead"] = "seed";
+        Compare(mutable, new Snapshot(), "override dependency changed at equal size");
+        mutable.DerivedOpenRoutes["consumer"][0] = "s";
+        Compare(mutable, new Snapshot(), "route input changed at equal size");
+        mutable.DerivedOpenRoutes.Remove("consumer");
+        Compare(mutable, new Snapshot(), "route guard removed");
+        mutable.Derived.Remove("later");
+        mutable.Derived["seed"] = new[] { Array.Empty<string>() };
+        Compare(mutable, new Snapshot(), "derived key replaced at equal size");
+        mutable.Derived["consumer"][0][0] = "seed";
+        Compare(mutable, new Snapshot(), "replacement key becomes prerequisite");
+        // The public list is caller-owned; editing it cannot poison the cached order.
+        Rules.DerivedOrder(mutable).Clear();
+        Compare(mutable, new Snapshot(), "public order list edited");
+        mutable.Derived["extra"] = new[] { new[] { "consumer" } };
+        Compare(mutable, new Snapshot(), "derived key inserted");
+        mutable.Derived.Remove("extra");
+        Compare(mutable, new Snapshot(), "derived key removed");
+        mutable.Derived["consumer"][0][0] = "SEED";
+        Compare(mutable, new Snapshot(), "case-sensitive dependency");
+        mutable.Derived = new Dictionary<string, string[][]>(mutable.Derived, StringComparer.OrdinalIgnoreCase);
+        Compare(mutable, new Snapshot(), "dictionary comparer replaced");
+
         var flags = shipped.Derived.Keys.Concat(shipped.Derived.Keys.SelectMany(key => Rules.DerivedInputs(shipped, key)))
             .Concat(shipped.Latches.Values.SelectMany(sources => sources)).Concat(shipped.Counts.Values.SelectMany(count => count.Of))
             .Concat(new[] { "wenduag.dead_any", "wenduag.killed", Rules.WenduagEchoPrefix + "valid", Rules.WenduagEchoPrefix + "unavailable" })

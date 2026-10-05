@@ -1042,7 +1042,7 @@ namespace Tirabade
             foreach (var key in PendingLatches(story, state)) state.Flags.Add(key);
             // Validate guarantees an acyclic graph; one pass in dependency order reaches the same fixed point as repeated passes,
             // and settles every input of a DerivedOpenRoutes guard (which can only withhold a key) before the key is decided.
-            foreach (var key in DerivedOrder(story))
+            foreach (var key in CompletionOrder(story))
                 if (!state.Has(key) && AnyGroupHeld(story.Derived[key], state) && DerivedRoutesOpen(story, key, state)
                     && !DerivedForbidden(story, key, state))
                     state.Flags.Add(key);
@@ -1124,6 +1124,77 @@ namespace Tirabade
                         .Concat(relationship.UnavailableOverrides?.Values ?? (IEnumerable<string>)Array.Empty<string>());
                 }
             return inputs;
+        }
+
+        // Story and its nested arrays remain mutable (the acceptance suites edit both).
+        // Cache only dependency order, never flags or route eligibility. Check the exact
+        // ordered inputs before reuse, including closure/override edges, without hashing
+        // or allocating a dependency graph for every completed snapshot.
+        private sealed class CompletionPlan
+        {
+            internal readonly string[] Keys, Order;
+            internal readonly string[][] Inputs;
+            private readonly IEqualityComparer<string> keyComparer;
+            internal CompletionPlan(Story story)
+            {
+                keyComparer = story.Derived.Comparer;
+                Keys = story.Derived.Keys.ToArray();
+                Inputs = Keys.Select(key => DerivedInputs(story, key).ToArray()).ToArray();
+                Order = DerivedOrder(story).ToArray();
+            }
+
+            internal bool Matches(Story story)
+            {
+                if (Keys.Length != story.Derived.Count || !ReferenceEquals(keyComparer, story.Derived.Comparer)) return false;
+                int index = 0;
+                foreach (var pair in story.Derived)
+                {
+                    if (pair.Key != Keys[index]) return false;
+                    var cursor = new DependencyCursor(Inputs[index++]);
+                    foreach (var group in pair.Value)
+                        foreach (var input in group)
+                            if (!cursor.Next(input)) return false;
+                    if (story.DerivedForbids.TryGetValue(pair.Key, out var forbids))
+                        foreach (var input in forbids)
+                            if (!cursor.Next(input)) return false;
+                    if (story.DerivedOpenRoutes.TryGetValue(pair.Key, out var routes))
+                        foreach (var rel in routes)
+                        {
+                            var relationship = story.Relationships[rel];
+                            if (!cursor.Next(relationship.ClosedFlag)) return false;
+                            foreach (var input in relationship.UnavailableFlags ?? Array.Empty<string>())
+                                if (!cursor.Next(input)) return false;
+                            if (relationship.UnavailableOverrides != null)
+                                foreach (var input in relationship.UnavailableOverrides.Values)
+                                    if (!cursor.Next(input)) return false;
+                        }
+                    if (!cursor.Finished) return false;
+                }
+                return true;
+            }
+        }
+
+        private struct DependencyCursor
+        {
+            private readonly string[] inputs;
+            private int position;
+            internal DependencyCursor(string[] inputs) { this.inputs = inputs; position = 0; }
+            internal bool Next(string input) => position < inputs.Length && inputs[position++] == input;
+            internal bool Finished => position == inputs.Length;
+        }
+
+        private sealed class CompletionCache { internal CompletionPlan? Plan; }
+        private static readonly System.Runtime.CompilerServices.ConditionalWeakTable<Story, CompletionCache> completionPlans
+            = new System.Runtime.CompilerServices.ConditionalWeakTable<Story, CompletionCache>();
+
+        private static string[] CompletionOrder(Story story)
+        {
+            var cache = completionPlans.GetValue(story, _ => new CompletionCache());
+            lock (cache)
+            {
+                if (cache.Plan == null || !cache.Plan.Matches(story)) cache.Plan = new CompletionPlan(story);
+                return cache.Plan.Order;
+            }
         }
 
         // Derived keys, every key after the Derived keys it reads (Validate rejects cycles; the visited set keeps this finite).
