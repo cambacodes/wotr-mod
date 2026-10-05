@@ -645,8 +645,8 @@ epilogue("kept", '''{n}The chroniclers of the Fifth Crusade agree that Shamira t
         p('''{n}On the night before the rift she came into the Commander's sleep as she always did, and for once she did not warm her hands. "Come out of the hole, clown," she said, in the throne-room voice, and under it something that was not. "I have already died of one trick this year. I will not lose you to a hole in the ground. It would be a very poor joke, and you are not allowed to tell poor jokes. Not to me." Then she sat down at the edge of the dream and did not leave it until the drums.{/n}'''),
     ) + SHELL_PARAGRAPHS + (
         p('''{n}The light around her throne was dimmer than it had been, and did not wither anyone who looked at it. Her court learned to look.{/n}''', forbids=(BARRACKS,)),
-        p('''{n}The Commander never dreamed alone again. Every night, wherever the Commander slept, she came: through the dragon and the bread and the barley, into the one warm room she knew, to keep her stolen body alive for another day. Some nights she only sat at the edge of the dream and watched. Some nights she did not. She never once asked.{/n}'''),
-        p('''{n}All that first year she kept to the edge of every dream, with her back turned, as the Commander had asked on the first night, and her hands were cold by noon, and her court whispered about it. Then, one night, the Commander asked her to turn round. She made the Commander ask twice.{/n}''', requires=(P + "terms.edge",)),
+        p('''{n}Wherever the Commander slept, Shamira knew the way in. She came for the warmth that kept her stolen body alive, and watched every door for signs that it might close against her. The Commander could ask for a night alone. She had made the price plain.{/n}'''),
+        p('''{n}She kept to the edge of the Commander's dreams, her back turned as she had been told. By noon her hands were cold. She showed them at court, and let everyone wonder who had made the Ardent Dream pay so dearly for her body.{/n}''', requires=(P + "terms.edge",)),
         p('''{n}The light around her throne came back brighter than anyone remembered, fed on a barracks of Mendevian soldiers who never dreamed again, and it withered whatever looked at it, as it always had. Of the men of that barracks, eleven deserted within the year, two hanged themselves, and one became a very great painter, and none of them could have said why.{/n}''', requires=(BARRACKS,)),
         p('''{n}She never stopped wanting her lady's throne. The Commander never helped her take it, and never tried to stop her, and stood where she could see, which was all she had asked.{/n}''', requires=(STAND,)),
         p('''{n}She wanted her lady's throne all her life, and the Commander told her to her face that no help would come from that quarter, not against Nocticula. She sulked for a decade. She stayed.{/n}''', requires=(NOT_NOCT,)),
@@ -668,7 +668,7 @@ epilogue("late", '''{n}The war ended before the Ardent Dream could finish her ga
 epilogue("ally", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and sat her throne in the Harem of Ardent Dream as if she had never been dead.{/n}
 {n}She had lost one game in her life that she had meant to win, and she never played it again with anyone. She still came into the Commander's sleep every night, because the body would not live without it, and she sat at the far edge of every dream with her back turned, and never once looked round. She paid her debts exactly, and not one favour more.{/n}''',
     requires=(EMBODIED, ALLY), forbids=(COMMITTED,), paragraphs=(
-        p('''{n}On the night before the rift she spoke in the Commander's sleep for the first time since the game. "You won. I said I would never ask you anything again, and I won't. This isn't asking. This is telling. Come back out of the hole, Golarian. I owe you a life, and I pay my debts, and I can't pay a dead man."{/n}'''),
+        p('''{n}On the night before the rift she spoke in the Commander's sleep for the first time since the game. "You won. I said I would never ask you anything again, and I won't. This isn't asking. This is telling. Come back out of the hole, Golarian. I owe you a life, and I pay my debts, and I can't pay a corpse."{/n}'''),
     ) + SHELL_PARAGRAPHS)
 
 epilogue("closed_door", '''{n}Shamira the Ardent Dream went back to her city after the war in a body the Commander had stolen for her, and never spoke the Commander's name again. The Commander had shut a door on her in her own Harem. In the Abyss, some things are forgiven. That is not one of them.{/n}
@@ -687,21 +687,21 @@ epilogue("drowned", '''{n}For a night after the boudoir, the Commander carried t
 {n}The Commander's mother's face never came back quite right.{/n}''',
     requires=(DECLINED,), forbids=(RETURNED,))
 
-epilogue("never", '''{n}The Ardent Dream once opened the Commander's head in her Harem and found it full of moonshine recipes, and went looking under them, and found nothing she could name. The mortal's mad patron sent the mortal back to Alushinyrra with a cauldron and a murder to do, and the mortal did not do it.{/n}
-{n}She never learned why. It was, she said, the most interesting thing that had happened in her city in an age.{/n}''',
+epilogue("never", '''{n}The Ardent Dream once searched the Commander's mind in her Harem. She found the war, and an invitation she had not expected. The Commander left her alive. She never learned whether it was caution, indifference, or another game.{/n}
+{n}She had her servants watch for the mortal whenever strangers came through her doors.{/n}''',
     requires=(READ,), forbids=(KILLED,))
 
-epilogue("walked", '''{n}Shamira the Ardent Dream walked out of a wardrobe in Drezen one spring night in a body the Commander had stolen for her, and went home to Alushinyrra, and was not seen in Drezen again before the war ended.{/n}
-{n}She came back every night, all the same, into the Commander's sleep, because the body would die without it. The Commander never dreamed alone again, and never knew, from one night to the next, whether she would speak.{/n}''',
+epilogue("walked", '''{n}Shamira walked out of the Commander's wardrobe in a stolen body and returned to her Harem. She took her chair back and let the courtiers discover for themselves how much of her had survived.{/n}
+{n}Every night she entered the Commander's sleep for the warmth that kept that body alive. Sometimes she spoke. Sometimes she sat without a word, listening to thoughts the Commander had not meant to share.{/n}''',
     requires=(EMBODIED,), forbids=(COMMITTED, CLOSED, ALLY, GAME), paragraphs=SHELL_PARAGRAPHS)
 
 epilogue("unhoused", '''{n}The war ended with the Ardent Dream still behind the Commander's eyes, waiting for a body that never came. She talked, at first. Then she sulked. Then, for long stretches, she only listened, and the second heartbeat went on beside the Commander's own, patient as a cat at a mousehole.{/n}
 {n}Nobody else ever heard her. Everyone who stood too close to the Commander, though, found themselves thinking of her.{/n}''',
     requires=(FOUND,), forbids=(EMBODIED, KEPT, CAST_OUT, CLOSED))
 
-epilogue("mourned", '''{n}On the night the rift took the Commander, the coal of the Commander in her went out before morning, as she had said it would, and there was no hearth to go back to.{/n}
-{n}She sat her throne in the Harem of Ardent Dream with the court sent away until the stolen body went cold at the fingertips, and then at the wrists. Then she had every lamp in the Harem lit and went out into her city, into every mortal sleeper's dream in Alushinyrra, one after another, looking for a fire the body would take. It would take none of them; she had said so herself, on the wardrobe floor.{/n}
-{n}They found the shell three streets from the Harem at dawn, sitting in a doorway, faceless again, with a thin white frost on its long hands. Of the rest of her the Abyss says nothing. It is a mouth.{/n}''',
+epilogue("mourned", '''{n}On the night the rift took the Commander, the coal in Shamira's chest went out before morning. She sent her court away and sat on her throne, listening for a dream that did not come.{/n}
+{n}By the first dawn her fingertips were white. She had every lamp in the Harem lit, then went out into Alushinyrra. For three days she searched the city, entering mortal sleepers' dreams, one after another, looking for a fire the stolen body would take. None would kindle it. The cold crept past her wrists; she could still move, and kept looking.{/n}
+{n}At dawn after the third night, they found the shell three streets from the Harem, sitting in a doorway. Its face was blank again. Frost covered its long hands. No one in her court went to fetch it.{/n}''',
     requires=(EMBODIED, "sacrifice"), forbids=(ALIVE_AFTER, CLOSED), living=False)
 
 

@@ -341,7 +341,7 @@ page(P + "mind.almost", "Almost", [
 "This is my Harem's bathing room, as I remember it. I have not been able to remember a room properly since I died. I remembered this one in your head tonight. You were thinking of it without knowing." {n}A slow smile.{/n} "You were thinking of me in it."''',
         c('"You put it there."', "put"),
         c('[Step into the water.]', "water")),
-    sh("put", '''"I put nothing there. I haven't the fire to put things anywhere, any more. I only turn up the lamps on what I find." {n}She tilts her head.{/n} "And I found this. It was under the war and the dragon and the barley, where you keep the things you would rather nobody found. Right at the bottom. Warm as a stove."''',
+    sh("put", '''"I put nothing there. I haven't the fire to put things anywhere, any more. I only turn up the lamps on what I find." {n}She tilts her head.{/n} "And I found this. It was under the war, where you keep the things you would rather nobody found. Right at the bottom. Warm as a stove."''',
         c('[Step into the water.]', "water")),
     nar("water", '''{n}The water is warm, blood-warm, and it smells of cinnamon and something burnt. She watches you come, and does not move to meet you, and does not move away. When you are close enough to touch her she puts one long hand flat on your chest, the way a physician feels for a heartbeat, and holds you there.{/n}
 {n}Her hand is hot. It is the first hot thing about her since the boudoir.{/n}''',
@@ -368,7 +368,7 @@ page(P + "mind.fuel", "What wakes a body", [
         c("Continue", "good", forbids=(TORN, CHOSE_ALONE))),
     sh("torn", WHISPER + '''"Look at my collarbone." {n}There is a long white seam there where the last root tore it, like a split in fine leather.{/n} "I shall be able to shape the face, and the hair, and everything else a succubus can shape. That, I can already tell you, I shall not be able to shape away. You put it there. It's yours. I'll wear it for you every day, to remind you."''',
         c("Continue", "fire")),
-    sh("chosen", WHISPER + '''"You chose this." {n}She is looking at it the way a woman looks at a dress somebody else has bought her.{/n} "Alone, before you had even killed me, you went down into Ramisa's garden and walked the beds and picked a body for a woman you had spoken to twice. Tall. Long hands." {n}A strange pause.{/n} "It's the right one. I'd have chosen it. I have not decided whether that flatters me or frightens me."''',
+    sh("chosen", WHISPER + '''"You chose this." {n}She is looking at it the way a woman looks at a dress somebody else has bought her.{/n} "Alone, before you had even killed me, you went down into Ramisa's garden and walked the beds and picked a body for me. Tall. Long hands." {n}A strange pause.{/n} "It's the right one. I'd have chosen it. I have not decided whether that flatters me or frightens me."''',
         c("Continue", "fire")),
     sh("good", WHISPER + '''"Good bones." {n}She says it the way a horse-trader says it, but her voice is not steady.{/n} "Good skin. The hands are right. Ramisa always did grow hands well." {n}A pause.{/n} "It's empty, Golarian. It has never been anyone. When I go into it, it will be the first thing that ever happened to it."''',
         c("Continue", "fire")),
@@ -395,11 +395,11 @@ page(P + "mind.fuel", "What wakes a body", [
         c('"Mine. Only mine. You\'ll burn small."', "only_mine", flags=(FUEL, REFUSED_BARRACKS)),
         c('"Mine, and the barracks. One night."', "barracks", flags=(FUEL, BARRACKS, SECRET), alignment=("Evil", 2)),
         c('"Not my dreams. There has to be another way."', "no_way")),
-    sh("only_mine", '''{n}For a moment she is silent, and you feel her anger go all through you like a fever, and pass.{/n}
-"A candle, then." {n}Very quietly.{/n} "You would rather keep two hundred strangers' sleep than have me blaze. That is either very good of you, or you simply don't want to share me with a barracks." {n}A breath.{/n} "It is the second. I have been in your head; I would know. Tomorrow night, Golarian. Lie down beside me, and dream me awake."''',
+    sh("only_mine", '''{n}Her anger passes through your head like a fever. Then it settles.{/n}
+"A candle, then. Two hundred men keep their sleep, and my court gets to watch me shiver." {n}She laughs without amusement.{/n} "You have made your choice. Tomorrow night, lie down beside me and dream. I will take what you offered. Do not expect me to admire your restraint."''',
         c("[Close the wardrobe.]")),
     sh("barracks", '''{n}The heat behind your eyes flares so hot that the wardrobe swims.{/n}
-"There," {n}she breathes.{/n} "There it is. That's the thing under the barley. I knew there was something under there." {n}She is laughing, low and delighted and entirely without mercy.{/n} "One night. I'll go through them like a wind through wheat, and in the morning your sergeants will wonder why the men are so quiet at breakfast. Then tomorrow, you. And I will be myself again."''',
+"There," {n}she breathes.{/n} "Two hundred sleepers. All that warmth, and you have given me a way in." {n}She is laughing, low and delighted and entirely without mercy.{/n} "One night. I'll go through them like a wind through wheat, and in the morning your sergeants will wonder why the men are so quiet at breakfast. Then tomorrow, you. And I will be myself again."''',
         c("Continue", "north")),
     nar("north", '''{n}That night you do not sleep. You stand in the doorway of the north barracks with your eyes open while two hundred men snore in rows, and you feel her go out of you and along the rows like a draught along a floor, and come back, and go out again.{/n}
 {n}Here and there a man sighs, or smiles, or stops smiling. That is all. In the morning your head aches as if you had drunk the whole night, and at breakfast the north barracks eats in silence, and nobody can say why.{/n}''',
@@ -469,8 +469,8 @@ page(P + "mind.waking", "Dreams for a body", [
     sh("rabbit", '''{n}Her mouth twitches.{/n} "Rabbit." {n}She crouches, awkwardly, in a body that does not yet know how to crouch, and puts one long hand flat on your chest, exactly where she put it in the dream by the water. It is warm. It is the first warm thing about her.{/n}
 "Still going like one. Good." {n}Then she reads the rest of you, and her face changes.{/n}''',
         c("Continue", "understand")),
-    sh("understand", '''"No. You don't." {n}She is reading it off you, and whatever she finds there makes her close her eyes.{/n}
-"I have walked into ten thousand sleepers' dreams and out again, and gone back only when there was something left to take. You have given me a hearth. Nobody has ever given me a hearth. I shall sit at it every night until one of us is dead, and you will never again close your eyes and be alone." {n}When she opens them again they are hard.{/n} "It is a terrible thing to have done to you. I did it. I'd do it again. Get up off the floor, Golarian. You look like a corpse, and I have had enough of those."''',
+    sh("understand", '''"No. You don't." {n}She closes her eyes, reading you.{/n} "I used to leave a sleeper when there was nothing worth taking. Your dreams keep this body warm. I shall be back every night, and I shall find something worth taking every time."
+{n}She draws your coat tighter around herself.{/n} "Get up, Golarian. You look like a corpse. I have a court to disappoint, and I am wearing your clothes to do it."''',
         c("Continue", "go")),
     sh("go", '''"Now. My city thinks I'm dead. My court will have eaten each other by now, trying to sit in my chair." {n}She pulls your coat tighter, and it does not suit her, and she wears it as if it were ermine.{/n} "I am going home to find out who. I can still walk between worlds. Barely. It will hurt."
 {n}She steps back into the wardrobe, among your coats, and closes the door on herself. When you open it again, there is nobody in it, and your good coat is gone.{/n}''',
