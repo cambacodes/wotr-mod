@@ -1,4 +1,5 @@
 """eng8-q8c / E-Q8-09: every registered receipt/exclusion/payment mutation fails."""
+from tests.story_fixture import fresh_story
 import copy
 import unittest
 from tools import transaction_exit_lint as lint
@@ -8,7 +9,7 @@ class TransactionInventory2LintTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
 
     def test_registered_inventory_and_negative_mutations(self):
         self.assertFalse(lint.check(self.story))

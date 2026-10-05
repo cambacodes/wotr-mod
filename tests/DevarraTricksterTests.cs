@@ -64,7 +64,10 @@ internal static class DevarraTricksterTests
             return hits;
         }
         // Plays every available Devarra scene forward and reports whether a flag is ever held.
+        using var reachability = new ReachabilityCache();
         bool Reaches(Snapshot start, string flag, int chapter = 5)
+            => reachability.Reaches(start, flag, chapter, () => Explore(Program.Copy(start), chapter));
+        IEnumerable<Snapshot> Explore(Snapshot start, int chapter)
         {
             var seen = new HashSet<string>();
             var frontier = new List<Snapshot> { start };
@@ -73,18 +76,17 @@ internal static class DevarraTricksterTests
                 var next = new List<Snapshot>();
                 foreach (var from in frontier)
                 {
-                    if (from.Has(flag)) return true;
+                    yield return from;
                     var w = Later(story, from, 200, chapter);
                     foreach (var scene in own.Where(s => Rules.Available(story, s, w)))
                         foreach (var r in Program.Walk(scene, w))
                         {
-                            if (r.Has(flag)) return true;
+                            yield return r;
                             if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
                         }
                 }
                 frontier = next;
             }
-            return false;
         }
         bool AnyOpen(Snapshot w) => story.Scenes.Where(s => s.Relationship == "devarra" && s.Owner != "DevarraEpilogue")
             .Any(s => Rules.Available(story, s, Later(story, w, 200)));

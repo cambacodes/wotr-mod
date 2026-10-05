@@ -1,4 +1,5 @@
 """eng7-f6d: dormant mechanical contracts are strict; draft prose stays advisory."""
+from tests.story_fixture import fresh_story
 import unittest
 from tools import draft_contract_lint as lint
 
@@ -48,7 +49,7 @@ class DraftContractTests(unittest.TestCase):
     def test_integration_preserves_live_relationship_and_dormancy(self):
         import copy, expansion
         from storylines import terendelev_continuation as draft
-        payload = expansion.make_expansion()
+        payload = fresh_story()
         before = copy.deepcopy(payload["Relationships"]["terendelev"])
         draft.integrate(payload)
         self.assertEqual(payload["Relationships"]["terendelev"], before)

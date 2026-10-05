@@ -1,4 +1,5 @@
 """Inventory mutations must fail the required verifier's own-life/provenance checks."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -13,7 +14,7 @@ class InventoryContracts(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
 
     def test_clean_required_checks(self):
         self.assertEqual(own_life_lint.check(self.story), [])

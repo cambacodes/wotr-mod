@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.Json;
 using Tirabade;
 
-internal static class Program
+internal static partial class Program
 {
     private static int checks;
     private static Story story = null!;
@@ -130,6 +130,9 @@ internal static class Program
     private static List<(Snapshot state, bool via)> WalkPaths(Scene scene, Snapshot initial, Action<string, Snapshot>? visit, (string node, int index)? via)
     {
         var outcomes = new List<(Snapshot, bool)>();
+        var nodes = scene.Nodes.ToDictionary(n => n.Id);
+        var eligibilityKeys = story == null ? Array.Empty<string>() : story.Derived.Keys.Where(k => k.Contains(".outcome.")
+            || k.Contains(".late_committed.without.") || k.Contains(".late_committed.refusal_lifted.") || k.EndsWith("late_committed")).ToArray();
         void Visit(string id, Snapshot state, HashSet<string> path, bool passed, bool dirty)
         {
             Check(path.Add(id), "Cycle without a terminal answer: " + scene.Id + "/" + id);
@@ -137,10 +140,10 @@ internal static class Program
             if (Rules.ChapterFlag(state.Chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
             if (story != null && dirty)
             {
-                state.Flags.ExceptWith(story.Derived.Keys.Where(k => k.Contains(".outcome.") || k.Contains(".late_committed.without.") || k.Contains(".late_committed.refusal_lifted.") || k.EndsWith("late_committed")));
+                state.Flags.ExceptWith(eligibilityKeys);
                 Rules.Complete(story, state);
             }
-            var node = scene.Nodes.Single(n => n.Id == id);
+            var node = nodes[id];
             Rules.EnterNode(node, state); // eng7-l09: runtime OnShow precedes choice availability.
             visit?.Invoke(id, state);
             var choices = node.Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToList();
@@ -410,12 +413,13 @@ internal static class Program
     {
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
-        story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
+        story = JsonSerializer.Deserialize<Story>(File.ReadAllText(StoryArgument(args)), new JsonSerializerOptions { IncludeFields = true })!;
+        if (RunSelected(args)) return;
         // --- eng8-q8c: focused diagnostics, also run in the full suite below ---
         if (args.Contains("--transaction-inventory2"))
         {
             Rules.Validate(story);
-            TransactionInventory2Tests.Run(story, Check);
+            RunSuite("TransactionInventory2Tests", () => TransactionInventory2Tests.Run(story, Check));
             Console.WriteLine("PASS: eng8-q8c (" + checks + " checks)");
             return;
         }
@@ -424,7 +428,7 @@ internal static class Program
         if (args.Contains("--eng8-q8g"))
         {
             Rules.Validate(story);
-            LastCallHistoryInventoryTests.Run(story, Check);
+            RunSuite("LastCallHistoryInventoryTests", () => LastCallHistoryInventoryTests.Run(story, Check));
             LastCallTests.CheckNoStranding(story, Check);
             Console.WriteLine("PASS: eng8-q8g (" + checks + " checks)");
             return;
@@ -434,9 +438,9 @@ internal static class Program
         if (args.Contains("--eng7-l06"))
         {
             Rules.Validate(story);
-            PresenceBootstrapInventoryTests.Run(story, Check);
-            PresenceExceptionExportTests.Run(story, Check);
-            PresenceFailureReceiptTests.Run(story, Check);
+            RunSuite("PresenceBootstrapInventoryTests", () => PresenceBootstrapInventoryTests.Run(story, Check));
+            RunSuite("PresenceExceptionExportTests", () => PresenceExceptionExportTests.Run(story, Check));
+            RunSuite("PresenceFailureReceiptTests", () => PresenceFailureReceiptTests.Run(story, Check));
             Console.WriteLine("PASS: eng7-l06 (" + checks + " checks)");
             return;
         }
@@ -445,27 +449,27 @@ internal static class Program
         if (args.Contains("--eng8-q8d"))
         {
             Rules.Validate(story);
-            LongConTests.Run(story, Check);
-            CamelliaTricksterTests.Run(story, Check);
-            GalfreyTricksterTests.Run(story, Check);
-            HorzalahTricksterTests.Run(story, Check);
-            NenioTricksterTests.Run(story, Check);
-            TerendelevTricksterTests.Run(story, Check);
-            WenduagTricksterTests.Run(story, Check);
-            ReturnProvenanceInventoryTests.Run(story, Check);
-            PresenceBootstrapInventoryTests.Run(story, Check);
-            PresenceExceptionExportTests.Run(story, Check);
-            EarnedPresenceTests.Run(story, Check);
-            LocationInventoryTests.Run(story, Check);
-            EngineQ5Tests.Run(story, Check);
-            InventoryFixtureMutationTests.Run(story, Check);
-            DeliveryInventory2Tests.Run(story, Check);
+            RunSuite("LongConTests", () => LongConTests.Run(story, Check));
+            RunSuite("CamelliaTricksterTests", () => CamelliaTricksterTests.Run(story, Check));
+            RunSuite("GalfreyTricksterTests", () => GalfreyTricksterTests.Run(story, Check));
+            RunSuite("HorzalahTricksterTests", () => HorzalahTricksterTests.Run(story, Check));
+            RunSuite("NenioTricksterTests", () => NenioTricksterTests.Run(story, Check));
+            RunSuite("TerendelevTricksterTests", () => TerendelevTricksterTests.Run(story, Check));
+            RunSuite("WenduagTricksterTests", () => WenduagTricksterTests.Run(story, Check));
+            RunSuite("ReturnProvenanceInventoryTests", () => ReturnProvenanceInventoryTests.Run(story, Check));
+            RunSuite("PresenceBootstrapInventoryTests", () => PresenceBootstrapInventoryTests.Run(story, Check));
+            RunSuite("PresenceExceptionExportTests", () => PresenceExceptionExportTests.Run(story, Check));
+            RunSuite("EarnedPresenceTests", () => EarnedPresenceTests.Run(story, Check));
+            RunSuite("LocationInventoryTests", () => LocationInventoryTests.Run(story, Check));
+            RunSuite("EngineQ5Tests", () => EngineQ5Tests.Run(story, Check));
+            RunSuite("InventoryFixtureMutationTests", () => InventoryFixtureMutationTests.Run(story, Check));
+            RunSuite("DeliveryInventory2Tests", () => DeliveryInventory2Tests.Run(story, Check));
             return;
         }
         // end eng8-q8d
         Rules.Validate(story);
         // eng8-q8a: always execute ordered latest-state acceptance, including in the full gate.
-        if (!args.Contains("--bindings")) LatestStateInventoryTests.Run(story, Check);
+        if (!args.Contains("--bindings")) RunSuite("LatestStateInventoryTests", () => LatestStateInventoryTests.Run(story, Check));
         if (args.Contains("--eng8-q8a"))
         {
             Console.WriteLine("PASS: eng8-q8a (" + checks + " checks)");
@@ -475,27 +479,27 @@ internal static class Program
         // eng8-q8e begin: required inventories run in full and focused rules modes.
         if (!args.Contains("--bindings"))
         {
-            ImplicitParticipantInventoryTests.Run(story, Check);
-            NativeEndingInventory2Tests.Run(story, Check);
+            RunSuite("ImplicitParticipantInventoryTests", () => ImplicitParticipantInventoryTests.Run(story, Check));
+            RunSuite("NativeEndingInventory2Tests", () => NativeEndingInventory2Tests.Run(story, Check));
         }
         if (args.Contains("--eng8-q8e"))
         {
-            NenioTricksterTests.Run(story, Check); // native slides preserve the route's page inventory
-            HerraxTricksterTests.Run(story, Check); // physical discovery fixtures use the departure reader
-            HorzalahTricksterTests.Run(story, Check);
-            WenduagTricksterTests.Run(story, Check);
+            RunSuite("NenioTricksterTests", () => NenioTricksterTests.Run(story, Check)); // native slides preserve the route's page inventory
+            RunSuite("HerraxTricksterTests", () => HerraxTricksterTests.Run(story, Check)); // physical discovery fixtures use the departure reader
+            RunSuite("HorzalahTricksterTests", () => HorzalahTricksterTests.Run(story, Check));
+            RunSuite("WenduagTricksterTests", () => WenduagTricksterTests.Run(story, Check));
             Console.WriteLine("PASS: eng8-q8e (" + checks + " checks)"); return;
         }
         // eng8-q8e end
         // eng8-q8f: focused diagnostics share the mandatory full-suite assertions.
         if (args.Contains("--eng8-q8f"))
         {
-            Inventory2WalkerMutationTests.Run(story, Check);
-            GameplayEntryInventoryTests.Run(story, Check);
-            CamelliaTricksterTests.Run(story, Check);
-            NenioTricksterTests.Run(story, Check);
-            HorzalahTricksterTests.Run(story, Check);
-            TerendelevTricksterTests.Run(story, Check);
+            RunSuite("Inventory2WalkerMutationTests", () => Inventory2WalkerMutationTests.Run(story, Check));
+            RunSuite("GameplayEntryInventoryTests", () => GameplayEntryInventoryTests.Run(story, Check));
+            RunSuite("CamelliaTricksterTests", () => CamelliaTricksterTests.Run(story, Check));
+            RunSuite("NenioTricksterTests", () => NenioTricksterTests.Run(story, Check));
+            RunSuite("HorzalahTricksterTests", () => HorzalahTricksterTests.Run(story, Check));
+            RunSuite("TerendelevTricksterTests", () => TerendelevTricksterTests.Run(story, Check));
             Console.WriteLine("PASS: eng8-q8f (" + checks + " checks)");
             return;
         }
@@ -504,23 +508,23 @@ internal static class Program
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
         if (!args.Contains("--bindings"))
         {
-            NativeWorldReconciliationInventoryTests.Run(story, Check);
-            NativeGateContractParityTests.Run(story, Check);
+            RunSuite("NativeWorldReconciliationInventoryTests", () => NativeWorldReconciliationInventoryTests.Run(story, Check));
+            RunSuite("NativeGateContractParityTests", () => NativeGateContractParityTests.Run(story, Check));
         }
         // eng7-l03: focused inventory acceptance; the full gate calls the same suites below.
         if (args.Contains("--eng7-l03-native"))
         {
             // eng7-f6a begin
-            NativeReconciliationF6aTests.Run(story, Check);
+            RunSuite("NativeReconciliationF6aTests", () => NativeReconciliationF6aTests.Run(story, Check));
             // eng7-f6a end
-            NativeContradictionInventoryTests.Run(story, Check);
-            KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
-            NativeVariantCoverageInventoryTests.Run(story, Check);
-            TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
-            EngineF6cNativeTests.Run(story, Check); // eng7-f6c: append comprehensive cases after legacy native negatives
+            RunSuite("NativeContradictionInventoryTests", () => NativeContradictionInventoryTests.Run(story, Check));
+            RunSuite("KianaNativeReconciliationTests", () => KianaNativeReconciliationTests.Run(story, Check)); // eng7-f6b
+            RunSuite("NativeVariantCoverageInventoryTests", () => NativeVariantCoverageInventoryTests.Run(story, Check));
+            RunSuite("TerendelevNativeDependencyTests", () => TerendelevNativeDependencyTests.Run(story, Check)); // eng7-f6d
+            RunSuite("EngineF6cNativeTests", () => EngineF6cNativeTests.Run(story, Check)); // eng7-f6c: append comprehensive cases after legacy native negatives
             NativeContradictionInventoryTests.WriteEvidence(); // eng7-f6c
-            TirabadeNativeSlideTests.Run(story, Check);
-            LastCallTests.Run(story, Check); // eng7-l03: consume the existing L6 suppression contract
+            RunSuite("TirabadeNativeSlideTests", () => TirabadeNativeSlideTests.Run(story, Check));
+            RunSuite("LastCallTests", () => LastCallTests.Run(story, Check)); // eng7-l03: consume the existing L6 suppression contract
             Console.WriteLine($"PASS: {checks} eng7-l03 native inventory and selection assertions.");
             return;
         }
@@ -528,11 +532,11 @@ internal static class Program
         // eng7-l07: required on the full expansion run; keep special-mode output contracts intact.
         if (args.Contains("--eng7-l07") || !args.Any(a => a.StartsWith("--", StringComparison.Ordinal)))
         {
-            OwnLifeInventoryTests.Run(story, Check);
-            ReturnProvenanceInventoryTests.Run(story, Check);
-            CurrentActInventoryTests.Run(story, Check);
+            RunSuite("OwnLifeInventoryTests", () => OwnLifeInventoryTests.Run(story, Check));
+            RunSuite("ReturnProvenanceInventoryTests", () => ReturnProvenanceInventoryTests.Run(story, Check));
+            RunSuite("CurrentActInventoryTests", () => CurrentActInventoryTests.Run(story, Check));
             // eng8-q8b begin: also required by the full RulesTests gate.
-            LeftTricksterConsumerTests.Run(story, Check);
+            RunSuite("LeftTricksterConsumerTests", () => LeftTricksterConsumerTests.Run(story, Check));
             // eng8-q8b end
             if (args.Contains("--eng7-l07"))
             {
@@ -549,15 +553,15 @@ internal static class Program
         }
         if (args.Contains("--inventory-fixtures"))
         {
-            InventoryFixtureMutationTests.Run(story, Check);
+            RunSuite("InventoryFixtureMutationTests", () => InventoryFixtureMutationTests.Run(story, Check));
             return;
         }
         // eng7-l01 end
         // eng8-q8h begin: mandatory producer/consumer and surviving rescue traces.
         if (!args.Contains("--bindings"))
         {
-            LateAcceptanceInventory2Tests.Run(story, Check);
-            RescueEndpointInventoryTests.Run(story, Check);
+            RunSuite("LateAcceptanceInventory2Tests", () => LateAcceptanceInventory2Tests.Run(story, Check));
+            RunSuite("RescueEndpointInventoryTests", () => RescueEndpointInventoryTests.Run(story, Check));
             if (args.Contains("--eng8-q8h")) return;
             // Focus the generic fixture on q8h's changed consumer class before the full run.
             if (args.Contains("--eng8-q8h-drafts"))
@@ -573,31 +577,31 @@ internal static class Program
         }
         // end eng8-q8h
         // eng7-l13: mandatory earned-outcome inventory acceptance.
-        if (!args.Contains("--bindings")) EarnedOutcomeInventoryTests.Run(story, Check);
+        if (!args.Contains("--bindings")) RunSuite("EarnedOutcomeInventoryTests", () => EarnedOutcomeInventoryTests.Run(story, Check));
         if (args.Contains("--wenduag-echo"))
         {
-            WenduagTricksterTests.Run(story, Check);
-            WenduagEchoRulesTests.Run(story, Check);
+            RunSuite("WenduagTricksterTests", () => WenduagTricksterTests.Run(story, Check));
+            RunSuite("WenduagEchoRulesTests", () => WenduagEchoRulesTests.Run(story, Check));
             return;
         }
-        NurahContactEvidenceTests.Run(Check);
+        RunSuite("NurahContactEvidenceTests", () => NurahContactEvidenceTests.Run(Check));
         if (args.Contains("--iomedae"))
         {
             // One route's suite alone (fast iteration; the full run still calls it below).
-            IomedaeTricksterTests.Run(story, Check);
+            RunSuite("IomedaeTricksterTests", () => IomedaeTricksterTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} Iomedae assertions.");
             return;
         }
         if (args.Contains("--nidalynn"))
         {
             // One route's suite alone (polish: her checks run even when an earlier suite fails; the full run still calls it below).
-            NidalynnTricksterTests.Run(story, Check);
+            RunSuite("NidalynnTricksterTests", () => NidalynnTricksterTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} Nidalynn assertions.");
             return;
         }
         if (args.Contains("--prerequisite-groups"))
         {
-            PrerequisiteGroupsTests.Run(Check);
+            RunSuite("PrerequisiteGroupsTests", () => PrerequisiteGroupsTests.Run(Check));
             Console.WriteLine($"PASS: {checks} prerequisite group assertions.");
             return;
         }
@@ -640,56 +644,56 @@ internal static class Program
         if (args.Contains("--tirabade-combined"))
         {
             var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
-            AneviaIndependentTests.Run(story, Check);
-            IrabethIndependentTests.Run(story, Check);
-            TirabadeIndependentBridgeTests.Run(story, baseline, Check);
-            TirabadeCombinedHistoryTests.Run(story, Check);
+            RunSuite("AneviaIndependentTests", () => AneviaIndependentTests.Run(story, Check));
+            RunSuite("IrabethIndependentTests", () => IrabethIndependentTests.Run(story, Check));
+            RunSuite("TirabadeIndependentBridgeTests", () => TirabadeIndependentBridgeTests.Run(story, baseline, Check));
+            RunSuite("TirabadeCombinedHistoryTests", () => TirabadeCombinedHistoryTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} combined individual, bridge and played-history assertions. Live delivery remains unverified.");
             return;
         }
         if (args.Contains("--tirabade-bridge"))
         {
             var baseline = JsonSerializer.Deserialize<Story>(File.ReadAllText(args[args.Length - 2]), new JsonSerializerOptions { IncludeFields = true })!;
-            TirabadeIndependentBridgeTests.Run(story, baseline, Check);
+            RunSuite("TirabadeIndependentBridgeTests", () => TirabadeIndependentBridgeTests.Run(story, baseline, Check));
             Console.WriteLine($"PASS: {checks} focused bridge assertions. Irabeth contract declarations are fixtures, not a played route or release approval.");
             return;
         }
         // eng7-l05: focused acceptance remains runnable independently of unrelated inventory gates.
         if (args.Contains("--presence-transition-inventory"))
         {
-            PresenceTransitionInventoryTests.Run(story, Check);
+            RunSuite("PresenceTransitionInventoryTests", () => PresenceTransitionInventoryTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} presence transition inventory assertions.");
             return;
         }
         if (args.Contains("--participant-inventory"))
         {
-            ParticipantInventoryTests.Run(story, Check);
+            RunSuite("ParticipantInventoryTests", () => ParticipantInventoryTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} participant inventory assertions.");
             return;
         }
         // eng7-l10: required inventory regressions, including retirement and mutation controls.
         if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("nenio"))
-            NenioBodyCustodyTests.Run(story, Check);
+            RunSuite("NenioBodyCustodyTests", () => NenioBodyCustodyTests.Run(story, Check));
         if (args.Contains("--eng7-l10") || story.Relationships.ContainsKey("wenduag"))
         {
-            WenduagNativeMomentInventoryTests.Run(story, Check);
-            PresencePlacementManifestTests.Run(story, Check);
+            RunSuite("WenduagNativeMomentInventoryTests", () => WenduagNativeMomentInventoryTests.Run(story, Check));
+            RunSuite("PresencePlacementManifestTests", () => PresencePlacementManifestTests.Run(story, Check));
         }
         if (args.Contains("--eng7-l10"))
         {
-            WenduagEchoRulesTests.Run(story, Check);
+            RunSuite("WenduagEchoRulesTests", () => WenduagEchoRulesTests.Run(story, Check));
             Console.WriteLine($"PASS: {checks} eng7-l10 assertions.");
             return;
         }
         // end eng7-l10
-        FairRestTests.Run(Check);
-        PostBagTests.Run(Check);
-        MailbagTests.Run(Check);
-        BookTests.Run(story, Check);
-        HouseholdTests.Run(story, Check);
-        HouseholdEngineTests.Run(story, Check);
-        ArueshalaeBranchTests.Run(story, Check);
-        PrerequisiteGroupsTests.Run(Check);
+        RunSuite("FairRestTests", () => FairRestTests.Run(Check));
+        RunSuite("PostBagTests", () => PostBagTests.Run(Check));
+        RunSuite("MailbagTests", () => MailbagTests.Run(Check));
+        RunSuite("BookTests", () => BookTests.Run(story, Check));
+        RunSuite("HouseholdTests", () => HouseholdTests.Run(story, Check));
+        RunSuite("HouseholdEngineTests", () => HouseholdEngineTests.Run(story, Check));
+        RunSuite("ArueshalaeBranchTests", () => ArueshalaeBranchTests.Run(story, Check));
+        RunSuite("PrerequisiteGroupsTests", () => PrerequisiteGroupsTests.Run(Check));
         TargonaContinuation();
         ArankaContinuation();
         foreach (var recovery in story.Scenes.Where(s => s.Recovery != null))
@@ -749,7 +753,7 @@ internal static class Program
                 Check(node.Text.Count(c => c == '\u2014') == 0, "Em dash in " + scene.Id + "/" + node.Id);
         }
         if (args.Contains("--tirabade-progression") || story.Scenes.Any(s => s.Id == "three_kept_days"))
-            TirabadeProgressionTests.Run(story, Check);
+            RunSuite("TirabadeProgressionTests", () => TirabadeProgressionTests.Run(story, Check));
         var normal = Campaign(1, true);
         Campaign(1, false);
         Campaign(2, true);
@@ -797,77 +801,77 @@ internal static class Program
         var json = JsonSerializer.Serialize(normal, new JsonSerializerOptions { IncludeFields = true });
         var reload = JsonSerializer.Deserialize<Snapshot>(json, new JsonSerializerOptions { IncludeFields = true })!;
         Check(normal.Flags.SetEquals(reload.Flags) && normal.Times.OrderBy(x => x.Key).SequenceEqual(reload.Times.OrderBy(x => x.Key)), "Snapshot round trip lost progress");
-        ExpansionTests.Run(Check);
-        SkillCheckTests.Run(Check);
-        ForbidOverrideTests.Run(Check);
-        TricksterLatchTests.Run(Check);
-        ChapterZeroTests.Run(Check);
-        UnavailableOverrideTests.Run(Check);
-        NativeForbidOverrideTests.Run(Check);
-        DerivedFlagTests.Run(Check);
-        ChoiceExtensionTests.Run(Check);
-        ReactionTests.Run(Check);
-        TricksterAccessTests.Run(Check);
-        NativeReaderTests.Run(Check);
+        RunSuite("ExpansionTests", () => ExpansionTests.Run(Check));
+        RunSuite("SkillCheckTests", () => SkillCheckTests.Run(Check));
+        RunSuite("ForbidOverrideTests", () => ForbidOverrideTests.Run(Check));
+        RunSuite("TricksterLatchTests", () => TricksterLatchTests.Run(Check));
+        RunSuite("ChapterZeroTests", () => ChapterZeroTests.Run(Check));
+        RunSuite("UnavailableOverrideTests", () => UnavailableOverrideTests.Run(Check));
+        RunSuite("NativeForbidOverrideTests", () => NativeForbidOverrideTests.Run(Check));
+        RunSuite("DerivedFlagTests", () => DerivedFlagTests.Run(Check));
+        RunSuite("ChoiceExtensionTests", () => ChoiceExtensionTests.Run(Check));
+        RunSuite("ReactionTests", () => ReactionTests.Run(Check));
+        RunSuite("TricksterAccessTests", () => TricksterAccessTests.Run(Check));
+        RunSuite("NativeReaderTests", () => NativeReaderTests.Run(Check));
         // eng7-l02: required native fact inventory acceptance.
-        NativeFactInventoryTests.Run(story, Check);
+        RunSuite("NativeFactInventoryTests", () => NativeFactInventoryTests.Run(story, Check));
         // eng7-l02 end
-        EpilogueAfterTests.Run(Check);
-        NativeCostTests.Run(Check);
-        EntryEffectTests.Run(Check);
-        PresenceTests.Run(Check);
-        PresenceRuntimeF9Tests.Run(Check);
-        ContactWindowTests.Run(Check);
-        NativeEpilogueTests.Run(Check);
-        ReturnToListTests.Run(Check);
-        ParagraphTests.Run(Check);
-        NativeEpilogueEditTests.Run(Check);
+        RunSuite("EpilogueAfterTests", () => EpilogueAfterTests.Run(Check));
+        RunSuite("NativeCostTests", () => NativeCostTests.Run(Check));
+        RunSuite("EntryEffectTests", () => EntryEffectTests.Run(Check));
+        RunSuite("PresenceTests", () => PresenceTests.Run(Check));
+        RunSuite("PresenceRuntimeF9Tests", () => PresenceRuntimeF9Tests.Run(Check));
+        RunSuite("ContactWindowTests", () => ContactWindowTests.Run(Check));
+        RunSuite("NativeEpilogueTests", () => NativeEpilogueTests.Run(Check));
+        RunSuite("ReturnToListTests", () => ReturnToListTests.Run(Check));
+        RunSuite("ParagraphTests", () => ParagraphTests.Run(Check));
+        RunSuite("NativeEpilogueEditTests", () => NativeEpilogueEditTests.Run(Check));
         // BEGIN eng7-f5: native slide/state inventory (no game launch).
-        NativeCuePolicyInventoryTests.Run(story, Check);
+        RunSuite("NativeCuePolicyInventoryTests", () => NativeCuePolicyInventoryTests.Run(story, Check));
         // END eng7-f5
-        ContactDisambiguationTests.Run(Check);
         // eng7-l05
-        ParticipantInventoryTests.Run(story, Check);
-        PresenceTransitionInventoryTests.Run(story, Check); // eng7-l05
-        if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) NativeDialogEditTests.Run(story, Check);
-        TricksterOnlyNativeTests.Run(story, Check);
+        RunSuite("ParticipantInventoryTests", () => ParticipantInventoryTests.Run(story, Check));
+        RunSuite("PresenceTransitionInventoryTests", () => PresenceTransitionInventoryTests.Run(story, Check)); // eng7-l05
+        if (story.NativeEpilogueEdits.ContainsKey("164c14743ee768f409a04f93a040e678")) RunSuite("NativeDialogEditTests", () => NativeDialogEditTests.Run(story, Check));
+        RunSuite("TricksterOnlyNativeTests", () => TricksterOnlyNativeTests.Run(story, Check));
         // eng7-f6a begin
         if (story.NativeEpilogueEdits.ContainsKey("5b567bdd747e497cb9f6984b1ca1dfc8"))
-            NativeReconciliationF6aTests.Run(story, Check);
+            RunSuite("NativeReconciliationF6aTests", () => NativeReconciliationF6aTests.Run(story, Check));
         // eng7-f6a end
         // eng7-l03: mapped native inventory and historical selection acceptance.
         if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638"))
-            NativeContradictionInventoryTests.Run(story, Check);
+            RunSuite("NativeContradictionInventoryTests", () => NativeContradictionInventoryTests.Run(story, Check));
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6"))
         { // eng7-f6c
-            NativeVariantCoverageInventoryTests.Run(story, Check);
-            EngineF6cNativeTests.Run(story, Check);
+            RunSuite("NativeVariantCoverageInventoryTests", () => NativeVariantCoverageInventoryTests.Run(story, Check));
+            RunSuite("EngineF6cNativeTests", () => EngineF6cNativeTests.Run(story, Check));
             NativeContradictionInventoryTests.WriteEvidence();
         } // eng7-f6c
         // eng7-l03 end
-        TerendelevNativeDependencyTests.Run(story, Check); // eng7-f6d
+        RunSuite("TerendelevNativeDependencyTests", () => TerendelevNativeDependencyTests.Run(story, Check)); // eng7-f6d
         // eng7-f1
-        NativeAnswerEditsTests.Run(story, Check);
-        KianaNativeReconciliationTests.Run(story, Check); // eng7-f6b
+        RunSuite("NativeAnswerEditsTests", () => NativeAnswerEditsTests.Run(story, Check));
+        RunSuite("KianaNativeReconciliationTests", () => KianaNativeReconciliationTests.Run(story, Check)); // eng7-f6b
         // end eng7-f1
-        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) WenduagNativeAscentTests.Run(story, Check);
-        SpeakerTests.Run(Check);
-        ContinueBeforeTests.Run(Check);
-        CountTests.Run(Check);
-        SceneAnchorTests.Run(Check);
-        PresenceAnchorTests.Run(Check);
-        PresenceHubTests.Run(Check);
+        if (story.NativeEpilogueEdits.ContainsKey("4bb3706172f1ed54ca11db96254c4638")) RunSuite("WenduagNativeAscentTests", () => WenduagNativeAscentTests.Run(story, Check));
+        RunSuite("SpeakerTests", () => SpeakerTests.Run(Check));
+        RunSuite("ContinueBeforeTests", () => ContinueBeforeTests.Run(Check));
+        RunSuite("CountTests", () => CountTests.Run(Check));
+        RunSuite("ReachabilityCacheTests", () => ReachabilityCacheTests.Run(Check));
+        RunSuite("SceneAnchorTests", () => SceneAnchorTests.Run(Check));
+        RunSuite("PresenceAnchorTests", () => PresenceAnchorTests.Run(Check));
+        RunSuite("PresenceHubTests", () => PresenceHubTests.Run(Check));
         // eng7-l11
-        PresenceReactionHubInventoryTests.Run(story, Check);
-        ContactInventoryOracleTests.Run(story, Check);
+        RunSuite("PresenceReactionHubInventoryTests", () => PresenceReactionHubInventoryTests.Run(story, Check));
+        RunSuite("ContactInventoryOracleTests", () => ContactInventoryOracleTests.Run(story, Check));
         // end eng7-l11
         // __E14_RULES__
-        StartedDialogTests.Run(Check);
-        ContactContinuationTests.Run(Check);
-        PairedContactTests.Run(Check);
-        TerendelevDeliveryTests.Run(Check);
-        RecoveryTests.Run(Check);
-        RetainedRecoveryRulesTests.Run(Check);
+        RunSuite("StartedDialogTests", () => StartedDialogTests.Run(Check));
+        RunSuite("ContactContinuationTests", () => ContactContinuationTests.Run(Check));
+        RunSuite("PairedContactTests", () => PairedContactTests.Run(Check));
+        RunSuite("TerendelevDeliveryTests", () => TerendelevDeliveryTests.Run(Check));
+        RunSuite("RecoveryTests", () => RecoveryTests.Run(Check));
+        RunSuite("RetainedRecoveryRulesTests", () => RetainedRecoveryRulesTests.Run(Check));
         // These are draft scene checks. Full new-route campaigns need their own
         // ending, transformation and introducer scenarios before release.
         // These continuations have actual predecessor walkthroughs below; a snapshot
@@ -903,179 +907,179 @@ internal static class Program
         };
         if (story.Scenes.Any(s => s.Id == "anevia.the_last_ordinary_thing"))
         {
-            AneviaIndependentTests.Run(story, Check);
+            RunSuite("AneviaIndependentTests", () => AneviaIndependentTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "anevia").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
         {
-            IrabethIndependentTests.Run(story, Check);
+            RunSuite("IrabethIndependentTests", () => IrabethIndependentTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "irabeth" && s.AfterDeparture == null).Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.AfterDeparture == "irabeth"))
         {
-            IrabethDepartureVisitTests.Run(story, Check);
-            IrabethDepartureCampaignTests.Run(story, Check);
+            RunSuite("IrabethDepartureVisitTests", () => IrabethDepartureVisitTests.Run(story, Check));
+            RunSuite("IrabethDepartureCampaignTests", () => IrabethDepartureCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.AfterDeparture == "irabeth").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "tirabade.negotiated_table")
             && story.Scenes.Any(s => s.Id == "irabeth.the_evening_she_chose"))
-            TirabadeCombinedHistoryTests.Run(story, Check);
+            RunSuite("TirabadeCombinedHistoryTests", () => TirabadeCombinedHistoryTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "arsinoe_after_rain"))
         {
-            ArsinoeCampaignTests.Run(story, Check);
-            ArsinoeAssembledTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
+            RunSuite("ArsinoeCampaignTests", () => ArsinoeCampaignTests.Run(story, Check));
+            RunSuite("ArsinoeAssembledTests", () => ArsinoeAssembledTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) RunSuite("ArsinoeTricksterTests", () => ArsinoeTricksterTests.Run(story, Check));
             // eng7-l09
-            TransactionExitInventoryTests.Run(story, Check);
+            RunSuite("TransactionExitInventoryTests", () => TransactionExitInventoryTests.Run(story, Check));
             // eng8-q8c: E-Q8-09 interrupted transaction inventory.
-            TransactionInventory2Tests.Run(story, Check);
+            RunSuite("TransactionInventory2Tests", () => TransactionInventory2Tests.Run(story, Check));
             // end eng8-q8c
             // end eng7-l09
-            if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) RunSuite("IrabethTricksterTests", () => IrabethTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) RunSuite("AneviaTricksterTests", () => AneviaTricksterTests.Run(story, Check));
             // eng7-l08: required producer-history timing acceptance.
-            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.fetched_gate")) TimelineInventoryTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.fetched_gate")) RunSuite("TimelineInventoryTests", () => TimelineInventoryTests.Run(story, Check));
             // end eng7-l08
-            if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) TirabadeNativeSlideTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) JerribethTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) KonomiTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) NocticulaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "vellexia.trickster.mirrored.speaks")) VellexiaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nurah.trickster.prison.pardon")) NurahTricksterTests.Run(story, Check);
+            if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) RunSuite("TirabadeNativeSlideTests", () => TirabadeNativeSlideTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "jerribeth.trickster.dead.tenant")) RunSuite("JerribethTricksterTests", () => JerribethTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "konomi.trickster.dismissed.late")) RunSuite("KonomiTricksterTests", () => KonomiTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nocticula.trickster.defeated.shadow")) RunSuite("NocticulaTricksterTests", () => NocticulaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "vellexia.trickster.mirrored.speaks")) RunSuite("VellexiaTricksterTests", () => VellexiaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nurah.trickster.prison.pardon")) RunSuite("NurahTricksterTests", () => NurahTricksterTests.Run(story, Check));
             if (story.Scenes.Any(s => s.Id == "kiana.trickster.possessed.fake_gem"))
             {
-                KianaTricksterTests.Run(story, Check);
+                RunSuite("KianaTricksterTests", () => KianaTricksterTests.Run(story, Check));
                 playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("kiana.trickster.", StringComparison.Ordinal)
                     || s.Id == "kiana.betrothal").Select(s => s.Id));
             }
-            if (story.Scenes.Any(s => s.Id == "minagho_chivarro.trickster.reunion.wardrobe")) MinaghoChivarroTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "soana.trickster.killed.knot")) SoanaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) ArankaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "gesmerha.trickster.dead.unfinished_work")) GesmerhaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket")) SeelahTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "seelah.early.pack")) PacingPP1Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nocticula.ch4.hoard")) PacingPP4Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) DorgelindaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) TargonaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) HepzamirahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "minagho_chivarro.trickster.reunion.wardrobe")) RunSuite("MinaghoChivarroTricksterTests", () => MinaghoChivarroTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "soana.trickster.killed.knot")) RunSuite("SoanaTricksterTests", () => SoanaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "aranka.trickster.verse.kings_tavern")) RunSuite("ArankaTricksterTests", () => ArankaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "gesmerha.trickster.dead.unfinished_work")) RunSuite("GesmerhaTricksterTests", () => GesmerhaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket")) RunSuite("SeelahTricksterTests", () => SeelahTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "seelah.early.pack")) RunSuite("PacingPP1Tests", () => PacingPP1Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nocticula.ch4.hoard")) RunSuite("PacingPP4Tests", () => PacingPP4Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "dorgelinda.trickster.audit.open")) RunSuite("DorgelindaTricksterTests", () => DorgelindaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "targona.trickster.dead.setup")) RunSuite("TargonaTricksterTests", () => TargonaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "hepzamirah.trickster.ghost.body")) RunSuite("HepzamirahTricksterTests", () => HepzamirahTricksterTests.Run(story, Check));
             // 18-ETUDE-BINDING-AUDIT: each fixed native binding holds where its scenes are delivered.
-            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) EtudeBindingTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) CamelliaTricksterTests.Run(story, Check);
-            if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) CamelliaNativeSlideTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) EritriceTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) AreeluTricksterTests.Run(story, Check);
-            if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) AreeluAfterlogueTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.late.the_wound_calls")) RunSuite("EtudeBindingTests", () => EtudeBindingTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "camellia.trickster.killed.performance")) RunSuite("CamelliaTricksterTests", () => CamelliaTricksterTests.Run(story, Check));
+            if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) RunSuite("CamelliaNativeSlideTests", () => CamelliaNativeSlideTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "eritrice.trickster.council.motion")) RunSuite("EritriceTricksterTests", () => EritriceTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.struck")) RunSuite("AreeluTricksterTests", () => AreeluTricksterTests.Run(story, Check));
+            if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) RunSuite("AreeluAfterlogueTests", () => AreeluAfterlogueTests.Run(story, Check));
             // Sol quality pass: Areelu's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "areelu" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) ChadaliTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) ArueshalaeTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) DevarraTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "chadali.trickster.council.coin")) RunSuite("ChadaliTricksterTests", () => ChadaliTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "arueshalae.trickster.dead.starving")) RunSuite("ArueshalaeTricksterTests", () => ArueshalaeTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "devarra.trickster.dead.woken")) RunSuite("DevarraTricksterTests", () => DevarraTricksterTests.Run(story, Check));
             // Option A (devarra-device-options.md): the moult device is retired (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "devarra" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) DelamereTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) KaylessaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "mielarah.trickster.tavern.arithmetic")) MielarahTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "delamere.trickster.crypt.stag")) RunSuite("DelamereTricksterTests", () => DelamereTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "kaylessa.trickster.dead.borrow")) RunSuite("KaylessaTricksterTests", () => KaylessaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "mielarah.trickster.tavern.arithmetic")) RunSuite("MielarahTricksterTests", () => MielarahTricksterTests.Run(story, Check));
             // Sol quality pass: Mielarah's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "mielarah" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "nidalynn.trickster.eggs.lamp_black")) NidalynnTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "shamira.trickster.killed.voice")) ShamiraTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "nidalynn.trickster.eggs.lamp_black")) RunSuite("NidalynnTricksterTests", () => NidalynnTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "shamira.trickster.killed.voice")) RunSuite("ShamiraTricksterTests", () => ShamiraTricksterTests.Run(story, Check));
             // PP9: the early threads T2 (Hepzamirah <- Voetiel) and T3 (Shamira <- Telmer), 15b-EARLY-THREADS.md.
-            if (story.Scenes.Any(s => s.Id == "hepzamirah.early.moon_message")) EarlyThreadsTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "longcon.tell_them")) LongConTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "hepzamirah.early.moon_message")) RunSuite("EarlyThreadsTests", () => EarlyThreadsTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "longcon.tell_them")) RunSuite("LongConTests", () => LongConTests.Run(story, Check));
             // 12-TRICKSTER-FORESIGHT: Shyka's page, its payoffs, and the echo and gap APIs.
-            if (story.Scenes.Any(s => s.Id == "trickster.foresight.page")) ForesightTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "trickster.foresight.page")) RunSuite("ForesightTests", () => ForesightTests.Run(story, Check));
             // PP2: Camellia, Kaylessa and Arueshalae early beats, their readers, and the two near-miss fixes.
-            if (story.Scenes.Any(s => s.Id == "camellia.early.blood")) PacingPP2Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) JannahTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "aranka.early.duet")) PacingPP3Tests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) NenioTricksterTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "camellia.early.blood")) RunSuite("PacingPP2Tests", () => PacingPP2Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "jannah.trickster.cage.terms")) RunSuite("JannahTricksterTests", () => JannahTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "aranka.early.duet")) RunSuite("PacingPP3Tests", () => PacingPP3Tests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "nenio.trickster.taken.riddle")) RunSuite("NenioTricksterTests", () => NenioTricksterTests.Run(story, Check));
             // Sol quality pass: Nenio's retired scenes (gated off with Forbids trickster.ever; ids kept for saves).
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nenio" && s.Forbids.Contains("trickster.ever")).Select(s => s.Id));
-            if (story.Scenes.Any(s => s.Id == "herrax.trickster.madam.schedule")) HerraxTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "horzalah.trickster.mercy.gift")) HorzalahTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) ElyankaTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) MelazmeraTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) WenduagTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) WenduagEchoRulesTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "herrax.trickster.madam.schedule")) RunSuite("HerraxTricksterTests", () => HerraxTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "horzalah.trickster.mercy.gift")) RunSuite("HorzalahTricksterTests", () => HorzalahTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "elyanka.trickster.door.hearse")) RunSuite("ElyankaTricksterTests", () => ElyankaTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "melazmera.trickster.ch4.salt")) RunSuite("MelazmeraTricksterTests", () => MelazmeraTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "wenduag.trickster.killed.stage")) RunSuite("WenduagTricksterTests", () => WenduagTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == Rules.WenduagEchoPrefix + "pickup")) RunSuite("WenduagEchoRulesTests", () => WenduagEchoRulesTests.Run(story, Check));
             // eng7-l10: E-Q7-30 retirement is tested negatively above; these saved pages
             // must not enter the generic fixture that expects every page to open.
             playedContinuations.UnionWith(new[] { "wenduag.trickster.abyss.fall", "wenduag.trickster.street.fall" });
             // end eng7-l10
-            if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) IomedaeTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) TerendelevTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) EliandraTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) GalfreyTricksterTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) YanielTricksterTests.Run(story, Check);
-            if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) YanielRadianceTests.Run(story, Check);
-            if (story.Derived.ContainsKey("chivarro.dead_confirmed")) ChivarroDeathTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) LastCallTests.Run(story, Check);
+            if (story.Scenes.Any(s => s.Id == "iomedae.trickster.dream.banner")) RunSuite("IomedaeTricksterTests", () => IomedaeTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "terendelev.trickster.bones.restitution")) RunSuite("TerendelevTricksterTests", () => TerendelevTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "eliandra.trickster.ch5.last_rite")) RunSuite("EliandraTricksterTests", () => EliandraTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer")) RunSuite("GalfreyTricksterTests", () => GalfreyTricksterTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "yaniel.trickster.fane.swap")) RunSuite("YanielTricksterTests", () => YanielTricksterTests.Run(story, Check));
+            if (story.PartyItems.ContainsKey("yaniel.radiance_party.plus2")) RunSuite("YanielRadianceTests", () => YanielRadianceTests.Run(story, Check));
+            if (story.Derived.ContainsKey("chivarro.dead_confirmed")) RunSuite("ChivarroDeathTests", () => ChivarroDeathTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "trickster.lastcall.threshold")) RunSuite("LastCallTests", () => LastCallTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "arsinoe").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "gesmerha.a_story_from_elsewhere"))
         {
-            GesmerhaCampaignTests.Run(story, Check);
+            RunSuite("GesmerhaCampaignTests", () => GesmerhaCampaignTests.Run(story, Check));
             if (story.Scenes.Any(s => s.Id == "gesmerha.the_things_still_here"))
-                GesmerhaLateCampaignTests.Run(story, Check);
+                RunSuite("GesmerhaLateCampaignTests", () => GesmerhaLateCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "gesmerha").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "ember.something_you_cannot_do"))
         {
-            EmberCampaignTests.Run(story, Check);
-            EmberAssembledTests.Run(story, Check);
-            RemoteContinuationTests.Run(story, Check);
+            RunSuite("EmberCampaignTests", () => EmberCampaignTests.Run(story, Check));
+            RunSuite("EmberAssembledTests", () => EmberAssembledTests.Run(story, Check));
+            RunSuite("RemoteContinuationTests", () => RemoteContinuationTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "ember").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "aivu.a_garden_that_can_go"))
         {
-            AivuCampaignTests.Run(story, Check);
+            RunSuite("AivuCampaignTests", () => AivuCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "aivu").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "vellexia.the_unused_reply"))
         {
-            VellexiaCampaignTests.Run(story, Check);
+            RunSuite("VellexiaCampaignTests", () => VellexiaCampaignTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "vellexia").Select(s => s.Id));
         }
         if (story.Relationships.ContainsKey("minagho_chivarro"))
         {
-            MinaghoChivarroContinuationTests.Run(story, Check);
+            RunSuite("MinaghoChivarroContinuationTests", () => MinaghoChivarroContinuationTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "minagho_chivarro"
                 && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).Select(s => s.Id));
         }
         if (story.Relationships.ContainsKey("nocticula"))
         {
-            NocticulaContinuationTests.Run(story, Check);
+            RunSuite("NocticulaContinuationTests", () => NocticulaContinuationTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula").Select(s => s.Id));
         }
         if (story.Scenes.Any(s => s.Id == "noct.acq.her_hand"))
         {
-            NocticulaAcquisitionTests.Run(story, Check);
+            RunSuite("NocticulaAcquisitionTests", () => NocticulaAcquisitionTests.Run(story, Check));
             if (story.Scenes.Any(s => s.Id == "noct.acq.borrowed_signature"))
-                NocticulaConcessionTests.Run(story, Check);
-            NocticulaHarborJoinTests.Run(story, Check);
-            NocticulaAcquiredHarborTests.Run(story, Check);
-            if (story.Scenes.Any(s => s.Id == "noct.acq.epilogue.correspondence")) Nm1BudgetTests.Run(story, Check);
+                RunSuite("NocticulaConcessionTests", () => NocticulaConcessionTests.Run(story, Check));
+            RunSuite("NocticulaHarborJoinTests", () => NocticulaHarborJoinTests.Run(story, Check));
+            RunSuite("NocticulaAcquiredHarborTests", () => NocticulaAcquiredHarborTests.Run(story, Check));
+            if (story.Scenes.Any(s => s.Id == "noct.acq.epilogue.correspondence")) RunSuite("Nm1BudgetTests", () => Nm1BudgetTests.Run(story, Check));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Id.StartsWith("noct.join.", StringComparison.Ordinal)).Select(s => s.Id));
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                 && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
         }
         // eng8-q8f: default full-suite acceptance, not an optional diagnostic.
-        Inventory2WalkerMutationTests.Run(story, Check);
-        GameplayEntryInventoryTests.Run(story, Check);
+        RunSuite("Inventory2WalkerMutationTests", () => Inventory2WalkerMutationTests.Run(story, Check));
+        RunSuite("GameplayEntryInventoryTests", () => GameplayEntryInventoryTests.Run(story, Check));
         // end eng8-q8f
         CheckDraftScenes(playedContinuations); // eng7-l13: focused class sweep shares this fixture.
         if (story.Scenes.Any(s => s.Id == "seelah.kept")) CheckSeelahOpening();
         if (story.Scenes.Any(s => s.Id == "seelah.door")) CheckSeelahContinuation();
         if (story.Scenes.Any(s => s.Id == "seelah.letter")) CheckSeelahLetters();
-        if (story.Scenes.Any(s => s.Id == "seelah.borrowed_saw")) SeelahAftermathTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "seelah.late_course")) SeelahLateCampaignTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.offered_signature")) JerribethConsequencesTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_yard")) TirabadeCampaignTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_stolen_roads")) TirabadeReckoningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "three_borrowed_names")) TirabadeAfterRoadsTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.private_history")) KonomiPrivateHearingTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.guest_table")) KianaConsequencesTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.invitation")) KianaEntryTests.Run(story, Check);
-        if (args.Contains("--kiana-progression") || story.Scenes.Any(s => s.Id == "kiana.a_place_afterward")) KianaProgressionTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "seelah.borrowed_saw")) RunSuite("SeelahAftermathTests", () => SeelahAftermathTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "seelah.late_course")) RunSuite("SeelahLateCampaignTests", () => SeelahLateCampaignTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.offered_signature")) RunSuite("JerribethConsequencesTests", () => JerribethConsequencesTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_yard")) RunSuite("TirabadeCampaignTests", () => TirabadeCampaignTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_stolen_roads")) RunSuite("TirabadeReckoningTests", () => TirabadeReckoningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "three_borrowed_names")) RunSuite("TirabadeAfterRoadsTests", () => TirabadeAfterRoadsTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.private_history")) RunSuite("KonomiPrivateHearingTests", () => KonomiPrivateHearingTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.guest_table")) RunSuite("KianaConsequencesTests", () => KianaConsequencesTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.invitation")) RunSuite("KianaEntryTests", () => KianaEntryTests.Run(story, Check));
+        if (args.Contains("--kiana-progression") || story.Scenes.Any(s => s.Id == "kiana.a_place_afterward")) RunSuite("KianaProgressionTests", () => KianaProgressionTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "jerribeth.parting"))
         {
             var delivery = new Story {
@@ -1088,69 +1092,69 @@ internal static class Program
             ready.Flags.Add("jerribeth.lovers");
             Check(Rules.NextRemote(delivery, ready)?.Id == visit.Id, "Jerribeth repeatable breakup starves the next eligible continuation.");
         }
-        if (story.Scenes.Any(s => s.Id == "seelah.future_followup")) SeelahProgressionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.bakery_stairs")) KianaFollowthroughTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "ember.paper_bird")) EmberAfternoonsTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.threshold")) SoanaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "arsinoe_city_on_paper")) ArsinoeOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.political_account")) KonomiPoliticalTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.fate_envelope")) JerribethFateTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "arsinoe_your_hours")) ArsinoeContinuationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.one_account")) SoanaContinuationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.borrowed_name")) KianaFurtherTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "targona.unasked_question")) TargonaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "gesmerha.unbought_work")) GesmerhaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "kiana.former_grief")) KianaReconciliationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.a_useful_supper")) KonomiOrdinaryExpansionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "vellexia.unfinished_likeness")) VellexiaOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "aivu.a_city_with_wings")) AivuOpeningTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.private_absence")) KonomiPrivateAbsenceTests.Run(story, Check);
+        if (story.Scenes.Any(s => s.Id == "seelah.future_followup")) RunSuite("SeelahProgressionTests", () => SeelahProgressionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.bakery_stairs")) RunSuite("KianaFollowthroughTests", () => KianaFollowthroughTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "ember.paper_bird")) RunSuite("EmberAfternoonsTests", () => EmberAfternoonsTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.threshold")) RunSuite("SoanaOpeningTests", () => SoanaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "arsinoe_city_on_paper")) RunSuite("ArsinoeOpeningTests", () => ArsinoeOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.political_account")) RunSuite("KonomiPoliticalTests", () => KonomiPoliticalTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.fate_envelope")) RunSuite("JerribethFateTests", () => JerribethFateTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "arsinoe_your_hours")) RunSuite("ArsinoeContinuationTests", () => ArsinoeContinuationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.one_account")) RunSuite("SoanaContinuationTests", () => SoanaContinuationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.borrowed_name")) RunSuite("KianaFurtherTests", () => KianaFurtherTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "targona.unasked_question")) RunSuite("TargonaOpeningTests", () => TargonaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "gesmerha.unbought_work")) RunSuite("GesmerhaOpeningTests", () => GesmerhaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "kiana.former_grief")) RunSuite("KianaReconciliationTests", () => KianaReconciliationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.a_useful_supper")) RunSuite("KonomiOrdinaryExpansionTests", () => KonomiOrdinaryExpansionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "vellexia.unfinished_likeness")) RunSuite("VellexiaOpeningTests", () => VellexiaOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "aivu.a_city_with_wings")) RunSuite("AivuOpeningTests", () => AivuOpeningTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.private_absence")) RunSuite("KonomiPrivateAbsenceTests", () => KonomiPrivateAbsenceTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "konomi.private_absence_catchup" && s.Nodes.Any(n => n.Id == "absence_career_future")))
-            KonomiAbsenceChronologyTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.the_thing_in_the_sack")) SoanaLaterProgressionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "soana.when_the_road_returns")) SoanaLateCampaignTests.Run(story, Check);
+            RunSuite("KonomiAbsenceChronologyTests", () => KonomiAbsenceChronologyTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.the_thing_in_the_sack")) RunSuite("SoanaLaterProgressionTests", () => SoanaLaterProgressionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "soana.when_the_road_returns")) RunSuite("SoanaLateCampaignTests", () => SoanaLateCampaignTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "return" && s.Nodes.Any(n => n.Id == "before_the_abyss")))
-            TirabadeChronologyTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) KonomiPrivateConsequenceTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) KonomiMissedContactTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.retained_inquiry")) KonomiRetainedReturnTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.return_letter")) KonomiReturnInvitationTests.Run(story, Check);
-        if (story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0) ParentEndingRulesTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) KonomiEarlyReciprocityTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) ArankaContinuationTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) KonomiContactTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "konomi.the_names_admitted")) KonomiPoliticalConsequenceTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) JerribethCounterofferTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) JerribethProgressionTests.Run(story, Check);
-        if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) KonomiLettersTests.Run(story, Check);
+            RunSuite("TirabadeChronologyTests", () => TirabadeChronologyTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.private_return_terms")) RunSuite("KonomiPrivateConsequenceTests", () => KonomiPrivateConsequenceTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.the_unintroduced_letter")) RunSuite("KonomiMissedContactTests", () => KonomiMissedContactTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.retained_inquiry")) RunSuite("KonomiRetainedReturnTests", () => KonomiRetainedReturnTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.return_letter")) RunSuite("KonomiReturnInvitationTests", () => KonomiReturnInvitationTests.Run(story, Check));
+        if (story.ParentEpilogueEdits.Count > 0 || story.ParentEpilogueLossRules.Count > 0) RunSuite("ParentEndingRulesTests", () => ParentEndingRulesTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.a_turn_for_herself")) RunSuite("KonomiEarlyReciprocityTests", () => KonomiEarlyReciprocityTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "aranka.the_wrong_refrain")) RunSuite("ArankaContinuationTests", () => ArankaContinuationTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.margin" && s.ContactUnit != null)) RunSuite("KonomiContactTests", () => KonomiContactTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "konomi.the_names_admitted")) RunSuite("KonomiPoliticalConsequenceTests", () => KonomiPoliticalConsequenceTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.counterfeit_guest")) RunSuite("JerribethCounterofferTests", () => JerribethCounterofferTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Id == "jerribeth.settlement_visit")) RunSuite("JerribethProgressionTests", () => JerribethProgressionTests.Run(story, Check));
+        if (story.Scenes.Any(s => s.Nodes.Any(n => n.Id == "wonder_reply"))) RunSuite("KonomiLettersTests", () => KonomiLettersTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "three_locks")) CheckTirabadeLocks();
         if (args.Contains("--installed-legacy"))
             Check(story.Scenes.Count == 34 && story.Relationships.Count == 1,
                 "Installed-legacy mode is only for the original standalone 34-scene story.");
         CheckTirabadeQuarrel(expanded: !args.Contains("--installed-legacy"));
         // Earned presence (rubric Binding context (3)): after every special mode, so --bindings stdout stays pure JSON.
-        EarnedPresenceTests.Run(story, Check);
+        RunSuite("EarnedPresenceTests", () => EarnedPresenceTests.Run(story, Check));
         // eng7-l12: staging, native finale facts and paragraph survival.
-        LocationInventoryTests.Run(story, Check);
-        WorldFactInventoryTests.Run(story, Check);
-        CommanderParagraphInventoryTests.Run(story, Check);
-        EngineQ5Tests.Run(story, Check);
+        RunSuite("LocationInventoryTests", () => LocationInventoryTests.Run(story, Check));
+        RunSuite("WorldFactInventoryTests", () => WorldFactInventoryTests.Run(story, Check));
+        RunSuite("CommanderParagraphInventoryTests", () => CommanderParagraphInventoryTests.Run(story, Check));
+        RunSuite("EngineQ5Tests", () => EngineQ5Tests.Run(story, Check));
         // eng7-l06
-        PresenceBootstrapInventoryTests.Run(story, Check);
-        PresenceExceptionExportTests.Run(story, Check);
-        PresenceFailureReceiptTests.Run(story, Check);
+        RunSuite("PresenceBootstrapInventoryTests", () => PresenceBootstrapInventoryTests.Run(story, Check));
+        RunSuite("PresenceExceptionExportTests", () => PresenceExceptionExportTests.Run(story, Check));
+        RunSuite("PresenceFailureReceiptTests", () => PresenceFailureReceiptTests.Run(story, Check));
         // eng7-l06 end
         // Engine-q2: the current-path reader (trickster.now), fixture and generated story.
-        CurrentPathTests.Run(Check);
-        CurrentPathTests.RunStory(story, Check);
+        RunSuite("CurrentPathTests", () => CurrentPathTests.Run(Check));
+        RunSuite("CurrentPathTests.Story", () => CurrentPathTests.RunStory(story, Check));
         // Engine-q2 item 2: a returned, committed partner's Failed objective is restored.
-        ObjectiveRestoreTests.Run(Check);
-        ObjectiveRestoreTests.RunStory(story, Check);
+        RunSuite("ObjectiveRestoreTests", () => ObjectiveRestoreTests.Run(Check));
+        RunSuite("ObjectiveRestoreTests.Story", () => ObjectiveRestoreTests.RunStory(story, Check));
         // Engine-q2 item 4: Konomi's death latch.
-        KonomiDeathLatchTests.Run(story, Check);
+        RunSuite("KonomiDeathLatchTests", () => KonomiDeathLatchTests.Run(story, Check));
         // Engine-q2 item 5: Galfrey's native Queen slides for a returned, re-crowned Queen.
-        if (story.Relationships.ContainsKey("galfrey")) GalfreyQueenSlideTests.Run(story, Check);
-        KonomiTests.Run(story, Check);
+        if (story.Relationships.ContainsKey("galfrey")) RunSuite("GalfreyQueenSlideTests", () => GalfreyQueenSlideTests.Run(story, Check));
+        RunSuite("KonomiTests", () => KonomiTests.Run(story, Check));
         if (story.Scenes.Any(s => s.Id == "konomi.hearing")) CheckKonomiHearing();
         if (story.Scenes.Any(s => s.Id == "konomi.fate_post")) CheckKonomiPost();
         if (story.Scenes.Any(s => s.Id == "konomi.private_departure")) CheckKonomiPrivateContinuation();
@@ -1162,11 +1166,11 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "ember.drawing")) CheckEmberOpening();
         // eng7-l01: mandatory delivery acceptance in the standard integrated runner.
         if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.unprimed"))
-            InventoryFixtureMutationTests.Run(story, Check);
+            RunSuite("InventoryFixtureMutationTests", () => InventoryFixtureMutationTests.Run(story, Check));
         // eng7-l01 end
         // eng8-q8d: executed production positives are never expected failures.
         if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer"))
-            DeliveryInventory2Tests.Run(story, Check);
+            RunSuite("DeliveryInventory2Tests", () => DeliveryInventory2Tests.Run(story, Check));
         // end eng8-q8d
         Console.WriteLine($"PASS: {checks} assertions covering the original campaign, independent-relationship rules, authored expansion campaign scenarios and {story.Scenes.Count(s => s.Relationship != "tirabade")} draft expansion scenes. Unity execution and real save persistence are not covered.");
     }

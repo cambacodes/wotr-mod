@@ -1,4 +1,5 @@
 """eng7-f6c: native contract preservation and the complete departure ledger."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -15,7 +16,7 @@ class EngineF6cTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         from expansion import make_expansion
-        cls.story = make_expansion()
+        cls.story = fresh_story()
         cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
         cls.expectations = json.loads((ROOT / "tools/native_inventory_expectations.json").read_text(encoding="utf-8"))
 

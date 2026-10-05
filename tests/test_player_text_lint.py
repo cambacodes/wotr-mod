@@ -1,4 +1,5 @@
 """eng7-l09: positive reports and narrow negative controls."""
+from tests.story_fixture import fresh_story
 import json
 from pathlib import Path
 import unittest
@@ -10,10 +11,6 @@ def payload(text, speaker="X", **extra):
 
 
 class PlayerTextTests(unittest.TestCase):
-    def test_explicit_speech_and_review_span(self):
-        rows = lint.check(payload('{n}"Stay," you tell her.{/n}'))["review"]
-        self.assertTrue(any(r["code"] == "embedded-commander-speech" and r["start"] >= 0 for r in rows))
-
     def test_npc_questions_and_demands_are_not_commander_attributions(self):
         for text in ('"What did you say?"', '"So before you say anything soft: she comes first."',
                      '"Tomorrow at muster you say it again."', '"What will you tell him?"',
@@ -23,8 +20,11 @@ class PlayerTextTests(unittest.TestCase):
         for text in ('{n}"Stay," you tell her.{/n}', '{n}You say, "Stay."{/n}',
                      '"Stay," you tell her.', '“Stay,” the Commander says.',
                      '"Well?" {n}"Stay," you reply.{/n}'):
-            self.assertTrue(any(r['code'] == 'embedded-commander-speech'
-                                for r in lint.check(payload(text))['review']), text)
+            rows = [r for r in lint.check(payload(text))['review']
+                    if r['code'] == 'embedded-commander-speech']
+            self.assertTrue(rows, text)
+            for row in rows:
+                self.assertEqual(text[row['start']:row['end']], row['match'], text)
 
     def test_controls_and_exact_exception(self):
         for text in ('"Have you asked her?"', '"A native-born soldier wrote a draft order."',
@@ -48,7 +48,7 @@ class PlayerTextTests(unittest.TestCase):
 
     def test_all_mapped_scripted_replies_are_reported(self):
         import expansion
-        story = expansion.make_expansion()
+        story = fresh_story()
         rows = lint.check(story)["review"]
         findings = json.loads((Path(__file__).resolve().parents[1] / "tools/engine_backlog.json").read_text(encoding="utf-8"))["findings"]
         for finding in findings:

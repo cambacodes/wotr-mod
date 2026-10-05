@@ -1,4 +1,5 @@
 """eng7-l09: order, nesting, exact inline spans, drafts and action controls."""
+from tests.story_fixture import fresh_story
 import unittest
 import json
 from pathlib import Path
@@ -8,7 +9,7 @@ from tools import text_structure_lint as lint
 class TextStructureTests(unittest.TestCase):
     def test_all_mapped_shipped_spans(self):
         import expansion
-        story = expansion.make_expansion()
+        story = fresh_story()
         rows = lint.check(story)
         self.assertFalse(rows["hard"], rows["hard"])
         surfaces = {(sid, location): text for sid, location, text, _, _ in lint.surfaces(story)}

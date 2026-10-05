@@ -1,4 +1,5 @@
 """Replay Delamere's audited callbacks from the assembled, folded story."""
+from tests.story_fixture import fresh_story
 from pathlib import Path
 import sys
 import unittest
@@ -59,7 +60,7 @@ def play(scene, flags, *, choices=None, mobility="Success", checks=None):
 class DelamerePolishTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = make_expansion()
+        cls.story = fresh_story()
         cls.model = Model(cls.story)
         cls.scenes = cls.model.by_id
         play.model = cls.model

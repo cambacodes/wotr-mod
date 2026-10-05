@@ -40,3 +40,10 @@ for mode in 0 1 wrong-type; do
     echo "Managed construction fixture: RRT_TEST_EXPANDED_EPILOGUE=$mode"
     RRT_TEST_EXPANDED_EPILOGUE=$mode mono "$scratch/tests/ManagedBuildTests.exe" "$game" "$story"
 done
+
+# Match the build's real UMM entry point and selective-degradation fixtures.
+RRT_TEST_EXPANDED_EPILOGUE=0 RRT_TEST_LOAD=1 mono "$scratch/tests/ManagedBuildTests.exe" "$game" "$story"
+for missing in irabeth_dead trickster; do
+    RRT_TEST_EXPANDED_EPILOGUE=0 RRT_TEST_MISSING_ETUDE=$missing \
+        mono "$scratch/tests/ManagedBuildTests.exe" "$game" "$story"
+done

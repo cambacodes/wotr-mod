@@ -18,6 +18,19 @@ using UnityModManagerNet;
 
 internal static class Program
 {
+    private static readonly List<object> suiteTimings = new List<object>();
+    private static void RunSuite(string name, Action run)
+    {
+        int before = checks;
+        var timer = System.Diagnostics.Stopwatch.StartNew();
+        try { run(); }
+        finally
+        {
+            suiteTimings.Add(new { suite = name, seconds = timer.Elapsed.TotalSeconds, assertions = checks - before });
+            string? output = Environment.GetEnvironmentVariable("RRT_MANAGED_TIMINGS");
+            if (!string.IsNullOrEmpty(output)) File.WriteAllText(output, JsonConvert.SerializeObject(suiteTimings));
+        }
+    }
     private static int checks;
     private const BindingFlags PrivateStatic = BindingFlags.NonPublic | BindingFlags.Static;
 
@@ -94,17 +107,17 @@ internal static class Program
     {
         var story = JsonConvert.DeserializeObject<Story>(File.ReadAllText(storyPath))!;
         Rules.Validate(story);
-        TerendelevDeliveryBlueprintTests.Run(Check);
-        NativeContactStorageTests.Run(Check);
-        JerribethRecoveryObservationTests.Run(Check);
-        TirabadeRecoveryObservationTests.Run(Check);
-        KonomiContactObservationTests.Run(Check);
-        KonomiRecoveryTests.Run(Check);
-        KonomiMeetingTests.Run(Check);
-        IrabethMeetingTests.Run(Check);
-        NurahMeetingTests.Run(Check);
-        NurahInteractionTests.Run(Check);
-        NurahHubTests.Run(story, Check);
+        RunSuite("TerendelevDeliveryBlueprintTests", () => TerendelevDeliveryBlueprintTests.Run(Check));
+        RunSuite("NativeContactStorageTests", () => NativeContactStorageTests.Run(Check));
+        RunSuite("JerribethRecoveryObservationTests", () => JerribethRecoveryObservationTests.Run(Check));
+        RunSuite("TirabadeRecoveryObservationTests", () => TirabadeRecoveryObservationTests.Run(Check));
+        RunSuite("KonomiContactObservationTests", () => KonomiContactObservationTests.Run(Check));
+        RunSuite("KonomiRecoveryTests", () => KonomiRecoveryTests.Run(Check));
+        RunSuite("KonomiMeetingTests", () => KonomiMeetingTests.Run(Check));
+        RunSuite("IrabethMeetingTests", () => IrabethMeetingTests.Run(Check));
+        RunSuite("NurahMeetingTests", () => NurahMeetingTests.Run(Check));
+        RunSuite("NurahInteractionTests", () => NurahInteractionTests.Run(Check));
+        RunSuite("NurahHubTests", () => NurahHubTests.Run(story, Check));
         var savedSettings = typeof(Kingmaker.Player).GetMember("SettingsList").Single();
         Check(savedSettings.GetCustomAttributes(typeof(JsonPropertyAttribute), true).Length == 1,
             "Player checkpoint container is not included in native JSON serialization");
@@ -133,7 +146,7 @@ internal static class Program
         var native = ReadNative(Path.Combine(game, "blueprints.zip"), targetIds.Concat(nativeReturnIds).Concat(nativeNextIds).Concat(sequenceIds.Skip(1)).Concat(story.Etudes.Values).Concat(story.CompletedEtudes.Values).Concat(story.SelectedAnswers.Values).Concat(story.StartedDialogs.Values).Concat(story.CompletedQuests.Values).Concat(story.SeenCues.Values.SelectMany(ids => ids)).Concat(unitIds).Concat(nurahNativeBindings.Keys).Concat(ChoiceExtensionManagedTests.NativeIds).Concat(NativeReaderManagedTests.NativeIds(story)).Concat(PresenceManagedTests.NativeIds(story)).Concat(NativeEpilogueManagedTests.NativeIds).Concat(ContinueBeforeManagedTests.NativeIds).Concat(SpeakerManagedTests.NativeIds).Concat(NativeEpilogueEditManagedTests.NativeIds).Concat(NativeGateManagedTests.NativeIds).Concat(NativeQ3Recovery.NativeIds).Concat(ReturnToListManagedTests.NativeIds).Concat(WenduagEchoManagedTests.NativeIds).Concat(story.RemovableItems).Concat(story.PortraitFallbacks.Values.Where(v => v.Length == 32)).Distinct());
         // SEE-01: the retained finally-dead Seelah reaches the Trickster pickpocket through revive.seelah.available.
         if (story.Scenes.Any(s => s.Id == "seelah.trickster.dead.pickpocket"))
-            SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check);
+            RunSuite("SeelahRecoveryTests", () => SeelahRecoveryTests.Run(story, native["26ae0f50130942b4bb8dfe658e77b1c6"], Check));
         // Book-picture fallbacks: every native target is a BlueprintPortrait in the archive, and every alias names another key.
         foreach (var fallback in story.PortraitFallbacks)
             Check(fallback.Value.Length == 32
@@ -492,9 +505,9 @@ internal static class Program
             return 0;
         }
         Check(Degraded().Count == 0, "Blueprint construction disabled relationships: " + string.Join(",", Degraded().OrderBy(x => x)));
-        KonomiMeetingIntegrationTests.Run(Check);
-        IrabethMeetingIntegrationTests.Run(Check);
-        NurahHubIntegrationTests.Run(story, Check);
+        RunSuite("KonomiMeetingIntegrationTests", () => KonomiMeetingIntegrationTests.Run(Check));
+        RunSuite("IrabethMeetingIntegrationTests", () => IrabethMeetingIntegrationTests.Run(Check));
+        RunSuite("NurahHubIntegrationTests", () => NurahHubIntegrationTests.Run(story, Check));
         Check((bool)main.GetField("initialized", PrivateStatic)!.GetValue(null)!, "Build did not initialize: " + main.GetField("error", PrivateStatic)!.GetValue(null));
         Check(main.GetField("error", PrivateStatic)!.GetValue(null) == null, "Build reported an error");
         // E14d: every shipped native epilogue edit passed its evidence check on the archive-shaped cue and attached all of its
@@ -543,7 +556,7 @@ internal static class Program
         foreach (var latch in story.Latches.Keys)
             Check(ResourcesLibrary.TryGetBlueprint(Id("flag." + latch)) is BlueprintUnlockableFlag
                 && ResourcesLibrary.TryGetBlueprint(Id("flag.hour." + latch)) is BlueprintUnlockableFlag, "Latch flag not registered: " + latch);
-        NativeAudienceTests.Run(story, Check);
+        RunSuite("NativeAudienceTests", () => NativeAudienceTests.Run(story, Check));
         foreach (var scene in story.Scenes.Where(s => s.ContinueBefore != null))
         {
             var line = ResourcesLibrary.TryGetBlueprint(Id("cue." + scene.Id + ".continue"));
@@ -555,8 +568,8 @@ internal static class Program
                     "Continue-before line is not inserted once, right before its anchor: " + scene.Id + " in " + guid);
             }
         }
-        if (hasParentEndingRules) ParentEndingIntegrationTests.Run(story, Check);
-        EndingDeliveryTests.Run(story, Id, Check);
+        if (hasParentEndingRules) RunSuite("ParentEndingIntegrationTests", () => ParentEndingIntegrationTests.Run(story, Check));
+        RunSuite("EndingDeliveryTests", () => EndingDeliveryTests.Run(story, Id, Check));
         if (expandedEpilogue != null)
         {
             Check(expandedEpilogue.Cues.Take(expandedOriginal.Length).SequenceEqual(expandedOriginal),
@@ -776,37 +789,37 @@ internal static class Program
         Console.WriteLine($"PASS: {checks} assertions; real Main.Build, {story.Scenes.Count} scenes, {registered.Count} generated blueprints, {targetIds.Length} native answer lists, 1 native Aeon sequence and 1 parent-mod sentinel sequence, idempotence.");
         Console.WriteLine("DLL SHA256 " + Hash(typeof(Tirabade.Main).Assembly.Location));
         Console.WriteLine("Story SHA256 " + Hash(storyPath));
-        ChoiceExtensionManagedTests.Run(native, Seed<BlueprintUnlockableFlag>, Seed<BlueprintCue>, Seed<Kingmaker.Blueprints.Items.BlueprintItem>, Id, Check);
-        NativeReaderManagedTests.Run(story, native, Check);
-        EpilogueAfterManagedTests.Run(Id, Check);
-        PresenceManagedTests.Run(story, native, Check);
-        NativeEpilogueManagedTests.Run(native, Id, Check);
-        ReturnToListManagedTests.Run(native, Id, Check);
-        ParagraphManagedTests.Run(Id, Check);
-        NativeEpilogueEditManagedTests.Run(native, Id, Check);
+        RunSuite("ChoiceExtensionManagedTests", () => ChoiceExtensionManagedTests.Run(native, Seed<BlueprintUnlockableFlag>, Seed<BlueprintCue>, Seed<Kingmaker.Blueprints.Items.BlueprintItem>, Id, Check));
+        RunSuite("NativeReaderManagedTests", () => NativeReaderManagedTests.Run(story, native, Check));
+        RunSuite("EpilogueAfterManagedTests", () => EpilogueAfterManagedTests.Run(Id, Check));
+        RunSuite("PresenceManagedTests", () => PresenceManagedTests.Run(story, native, Check));
+        RunSuite("NativeEpilogueManagedTests", () => NativeEpilogueManagedTests.Run(native, Id, Check));
+        RunSuite("ReturnToListManagedTests", () => ReturnToListManagedTests.Run(native, Id, Check));
+        RunSuite("ParagraphManagedTests", () => ParagraphManagedTests.Run(Id, Check));
+        RunSuite("NativeEpilogueEditManagedTests", () => NativeEpilogueEditManagedTests.Run(native, Id, Check));
         NativeEpilogueEditManagedTests.RunQ4(native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("3a3e561c6b05a284d93eb3bff7b712a6")) NativeEpilogueEditManagedTests.RunTirabade(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("4ed8e9723359441dae10ad3068d3f2c7")) NativeEpilogueEditManagedTests.RunCamellia(story, native, Id, Check);
         if (story.NativeEpilogueEdits.ContainsKey("825786e8c5db4511ae30950bb286f0e9")) NativeEpilogueEditManagedTests.RunAfterlogue(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunKianaSiblings(story, native, Id, Check);
-        NativeQ3RecoveryManagedTests.Run(story, Id, Check);
+        RunSuite("NativeQ3RecoveryManagedTests", () => NativeQ3RecoveryManagedTests.Run(story, Id, Check));
         NativeEpilogueEditManagedTests.RunDelivery(story, Check);
         NativeEpilogueEditManagedTests.RunDreamPage(story, native, Id, Check);
         NativeEpilogueEditManagedTests.RunJewelerBowl(story, native, Id, Check);
         // eng8-q8e: EE follow-ons retain actual native history receipts.
         NativeEpilogueEditManagedTests.RunEndingIdentity(story, native, Check);
-        NativeGateManagedTests.Run(story, Check);
-        TerendelevNativeManagedTests.Run(story, native, Check); // eng7-f6d
-        if (story.Scenes.Any(Rules.IsWenduagEchoHub)) WenduagEchoManagedTests.Run(Check);
+        RunSuite("NativeGateManagedTests", () => NativeGateManagedTests.Run(story, Check));
+        RunSuite("TerendelevNativeManagedTests", () => TerendelevNativeManagedTests.Run(story, native, Check)); // eng7-f6d
+        if (story.Scenes.Any(Rules.IsWenduagEchoHub)) RunSuite("WenduagEchoManagedTests", () => WenduagEchoManagedTests.Run(Check));
         NativeGateManagedTests.RunArsinoe(story, Check);
         NativeGateManagedTests.RunDevarra(story, Check);
-        SpeakerManagedTests.Run(native, Check);
-        ContinueBeforeManagedTests.Run(native, Id, Check);
-        PresenceHubManagedTests.Run(Id, Check);
-        MailbagManagedTests.Run(story, Id, Check);
-        BookManagedTests.Run(story, Id, Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(storyPath))!, "..", "art", "CustomNpcPortraits", "RanRomance-Tirabade", "Scenes")), Check);
-        BookPolishManagedTests.Run(story, Id, Check);
-        HouseholdManagedTests.Run(story, Id, Check);
+        RunSuite("SpeakerManagedTests", () => SpeakerManagedTests.Run(native, Check));
+        RunSuite("ContinueBeforeManagedTests", () => ContinueBeforeManagedTests.Run(native, Id, Check));
+        RunSuite("PresenceHubManagedTests", () => PresenceHubManagedTests.Run(Id, Check));
+        RunSuite("MailbagManagedTests", () => MailbagManagedTests.Run(story, Id, Check));
+        RunSuite("BookManagedTests", () => BookManagedTests.Run(story, Id, Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Path.GetFullPath(storyPath))!, "..", "art", "CustomNpcPortraits", "RanRomance-Tirabade", "Scenes")), Check));
+        RunSuite("BookPolishManagedTests", () => BookPolishManagedTests.Run(story, Id, Check));
+        RunSuite("HouseholdManagedTests", () => HouseholdManagedTests.Run(story, Id, Check));
         // __E14_MANAGED__
         Console.WriteLine("Scope: real managed blueprint construction and native ending seen-state checks; native answer and Aeon reference lists extracted from blueprints.zip; parent-mod sequence has preservation sentinels. Ending probes bypass route eligibility, Unity page rendering and debug logging. No parent-mod initialization, full campaign condition evaluation, portraits, ToyBox execution or game save round trip.");
         return 0;

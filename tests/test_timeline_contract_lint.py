@@ -1,4 +1,5 @@
 """E-Q7-18 temporal assertions and optimistic producer floors."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -112,7 +113,7 @@ class TimelineContractTests(unittest.TestCase):
 
     def test_shipped_binding_schedules_and_mutated_waits(self):
         from expansion import make_expansion
-        story = make_expansion()
+        story = fresh_story()
         contracts = json.loads(lint.DEFAULT.read_text(encoding="utf-8"))
         for schedule in contracts["schedules"]:
             witness = lint.replay_schedule(story, schedule)

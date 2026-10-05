@@ -1,4 +1,5 @@
 """eng8-q8e: inventory omissions, implicit staging and native fixture fidelity."""
+from tests.story_fixture import fresh_story
 import copy
 import hashlib
 import json
@@ -19,7 +20,7 @@ class EngineQ8eTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
         cls.implicit = json.loads((ROOT / 'tools/implicit_participant_inventory_contracts.json').read_text())
 
     def implicit_findings(self, story, scene):

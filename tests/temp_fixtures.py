@@ -1,13 +1,14 @@
-"""Fixture directories inherit the workspace ACL, including on managed Windows sandboxes."""
+"""System-temp fixtures use ordinary inherited directory permissions."""
 from contextlib import contextmanager
 from pathlib import Path
 import shutil
+import tempfile
 import uuid
 
 
 @contextmanager
 def temporary_directory():
-    directory = Path(__file__).resolve().parent / ("fixture-" + uuid.uuid4().hex)
+    directory = Path(tempfile.gettempdir()) / ("rrt-fixture-" + uuid.uuid4().hex)
     directory.mkdir()
     try:
         yield directory

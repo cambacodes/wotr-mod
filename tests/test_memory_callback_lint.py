@@ -1,4 +1,5 @@
 import copy
+from tests.story_fixture import fresh_story
 import json
 import unittest
 from tools import memory_callback_lint as lint
@@ -8,7 +9,7 @@ class MemoryCallbackTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
 
     def test_every_incoming_choice_and_twin(self):
         result = lint.check(self.story)

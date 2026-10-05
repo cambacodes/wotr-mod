@@ -1,4 +1,5 @@
 """Echo-origin histories and inherited text/identity compatibility, without exporting files."""
+from tests.story_fixture import fresh_story
 import unittest
 
 import expansion
@@ -14,7 +15,7 @@ class WenduagEchoTests(unittest.TestCase):
             cls.before = expansion.make_expansion()
         finally:
             echo.integrate = integrate
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
         cls.scenes = {scene["Id"]: scene for scene in cls.story["Scenes"]}
 
     def test_existing_scene_nodes_choices_keep_saved_identities(self):
