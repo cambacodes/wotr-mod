@@ -22,12 +22,12 @@ def s(id, title, owner, entry, nodes, requires=(), delay=48):
 s("three_yard", "A game with no useful purpose", "Together",
   '"Anevia said you had found somewhere to spend an afternoon."', [
     n("start", "Irabeth", '''{n}Irabeth is holding a wooden ball. Anevia stands beside her with a narrow strip of red cloth draped over one shoulder.{/n}
-"I found it," Irabeth says. "She has already begun inspecting the prize."
+"I found it," {n}Irabeth says.{/n} "She has already begun inspecting the prize."
 "Wanted to know what we were riskin' our reputations for. Good cloth. Could patch a very small catastrophe."
 {n}Irabeth takes the strip from her wife and lays it on the counter behind them.{/n}
 "We have not entered anything yet."
 {n}Beyond the counter, nine wooden pins stand at the end of a lane made from old planks. A woman with gray braids finishes sweeping the approach and rests her broom against the wall.{/n}
-"Tessa," she introduces herself. "I keep the yard. Afternoon fee pays for the lane, not advice. Advice is free and generally ignored."''',
+"Tessa," {n}she introduces herself.{/n} "I keep the yard. Afternoon fee pays for the lane, not advice. Advice is free and generally ignored."''',
       c('"What are the rules?"', "rules"),
       c('[Arrange to join them another afternoon.]', abort=True)),
     n("rules", "Narrator", '''{n}Tessa puts a ball on the counter. It is smaller than the one Irabeth is holding.{/n}
@@ -35,7 +35,7 @@ s("three_yard", "A game with no useful purpose", "Together",
 {n}She points to the low fence behind the pins.{/n}
 {n}"Roll, don't throw. That fence belongs to my neighbor, and she has heard every apology I know."{/n}
 {n}Anevia turns a ball between her palms. Irabeth has not put hers down.{/n}
-"You have played before," Anevia says.
+"You have played before," {n}Anevia says.{/n}
 "Years ago. Badly. I would like to discover whether I still do."
 "Always admired your ambition, Beth."''',
       c('"Show us how you would begin, Irabeth."', "beth"),
@@ -78,8 +78,8 @@ s("three_yard", "A game with no useful purpose", "Together",
 {n}"She's goin' to be unbearable. We should've taken her somewhere dull."{/n}''', c('[Make room for her next attempt.]', "together")),
     n("together", "Irabeth", '''{n}After several turns, Tessa brings over a slate with three names already written on it.{/n}
 "Olva, Nessa, and Perrin. They usually come together. Looking for opponents, if you're interested."
-"I am," Irabeth says promptly.
-"Hadn't noticed," Anevia tells her.
+"I am," {n}Irabeth says promptly.{/n}
+"Hadn't noticed," {n}Anevia tells her.{/n}
 {n}Irabeth puts down the ball.{/n}
 "And you? I want you on my team."
 "I like seein' what you do when you want to win something small. Yes. I'll play."
@@ -96,7 +96,7 @@ s("three_yard", "A game with no useful purpose", "Together",
     n("coaches", "Anevia", '''"Dangerous offer. She'll have diagrams."
 "You have already scratched one on the counter."
 {n}Anevia covers the mark with her palm. Tessa gives her a cloth.{/n}
-"It'll come off," Anevia assures her.
+"It'll come off," {n}Anevia assures her.{/n}
 "I know. You are going to take it off."
 {n}While Anevia rubs at the mark, Irabeth writes the three names on the slate. She shows it to you both before returning it.{/n}
 "If the advice becomes tiresome, say so. I intend to enjoy having you there."''', c('[Choose a day for the match together.]', "date")),
@@ -128,12 +128,12 @@ s("three_match", "The point they could not agree on", "Together",
       c('[Take a moment to choose your line without advice.]', "alone", requires=("three_yard.own_roll",)),
       c('[Ask your two coaches what they suggest.]', "advice", requires=("three_yard.coaches",))),
     n("alone", "Anevia", '''{n}Anevia starts to point, remembers, and scratches her ear instead. Irabeth catches the movement. Her lips twitch.{/n}
-"Don't," Anevia whispers.
+"Don't," {n}Anevia whispers.{/n}
 "I said nothing."
 "Very loud nothing."
 {n}They step back together and let you study the lane. When you turn toward them, neither is looking at the score.{/n}''', c('[Choose the roll you practiced.]', "technique")),
     n("advice", "Irabeth", '''"The left side is running true today. Use the knot as your marker."
-"Or the patch," Anevia adds. "If you want to make it interesting."
+"Or the patch," {n}Anevia adds.{/n} "If you want to make it interesting."
 "We are already interested."
 {n}Anevia touches her wife's wrist with two fingers.{/n}
 "You have to admit it looked good when it worked."
@@ -169,7 +169,7 @@ s("three_match", "The point they could not agree on", "Together",
 "Then let 'em lose properly against us. You don't fix that by handin' back every point somebody dislikes."
 {n}Anevia turns the ball in her hands. Irabeth looks at you.{/n}
 "We do not agree. I could keep the score, though I would dislike it."
-"And I can roll again," Anevia says. "Won't make me agree I fouled."
+"And I can roll again," {n}Anevia says.{/n} "Won't make me agree I fouled."
 {n}Tessa waits at the counter for the team's answer.{/n}''',
       c('"Keep the keeper\'s decision. We did not see a foul, and we should not invent one."', "stand", flags=("three_match.stood",)),
       c('"Offer a fresh roll without admitting a foul. Let us settle this on the lane."', "replay", flags=("three_match.replayed",))),
@@ -265,7 +265,7 @@ s("three_beth_score", "What she wanted to win", "Irabeth",
 s("three_anevia_flour", "The loaf she wanted to make", "Anevia",
   '"You said you would be at the bakery this afternoon."', [
     n("start", "Anevia", '''{n}Anevia has flour on her sleeve and a small, hard lump of dough on the board before her. An older woman wearing a blue apron takes one look at it and pours a little water into a cup.{/n}
-"Dalia," Anevia tells you. "She agreed to teach me. Thought she ought to know what she was gettin' into, so I paid first."
+"Dalia," {n}Anevia tells you.{/n} "She agreed to teach me. Thought she ought to know what she was gettin' into, so I paid first."
 {n}Dalia sets the cup beside the board.{/n}
 "You paid for flour and oven space. I offered to teach. At present I am trying to persuade you to use the water."
 "Makes it stick."
@@ -359,7 +359,7 @@ s("three_anevia_flour", "The loaf she wanted to make", "Anevia",
 {n}Dalia places the shaped loaf near the warm oven to rise again. While you wait, she gives you both a bowl of cooled rolls to split for tomorrow's breadcrumbs. Anevia steals a small piece and offers half to you. Dalia sees and tells her which ones have seeds.{/n}''', c('[Help with the rolls while the loaf rises.]', "baked")),
     n("baked", "Anevia", '''{n}By the time Dalia takes the loaf from the oven, the bread smells better than Anevia had dared to predict. One side has split along the seam. She crouches beside the cooling rack to inspect it.{/n}
 "Looks like it tried to leave. Can't blame it."
-"Leave it on the rack," Dalia says. "You can take it when it has cooled."
+"Leave it on the rack," {n}Dalia says.{/n} "You can take it when it has cooled."
 {n}Anevia waits with you at the open back door. Her shoulder rests against yours.{/n}
 "I'm tellin' Beth you saw all of it. Then she can't give you a better account than I deserve."
 {n}She looks up at you.{/n}
@@ -378,7 +378,7 @@ s("three_anevia_flour", "The loaf she wanted to make", "Anevia",
 "You can say if it's heavy."
 "It is a little heavy. It is also good."
 {n}Anevia breaks her piece open and studies it. You take a bite. The middle is cooked through, the crust tougher than she had hoped.{/n}
-"Next one needs a little more water," she says.
+"Next one needs a little more water," {n}she says.{/n}
 {n}Irabeth puts down her plate and takes Anevia's flour-marked sleeve gently between her fingers.{/n}
 "Then I would like to try the next one. You have flour here."
 "Have it everywhere."
@@ -417,7 +417,7 @@ s("three_return_game", "A line everyone can see", "Together",
 "I still think I saw it."
 "I know. I still don't think you did."
 {n}Anevia offers her hand. Olva takes it after a moment.{/n}
-"I should not have left Nessa to congratulate you for all of us," Olva says.
+"I should not have left Nessa to congratulate you for all of us," {n}Olva says.{/n}
 "You can make up for it by losin' graciously today."
 {n}Olva laughs despite herself. Irabeth exhales and picks up the bucket.{/n}''', c('[Help prepare the lane.]', "line")),
     n("lost", "Anevia", '''{n}Olva returns the red pennant to Tessa. Nessa notices Anevia looking at it.{/n}
@@ -427,7 +427,7 @@ s("three_return_game", "A line everyone can see", "Together",
 "I asked for the replay. I do not want this afternoon to begin with an apology from Anevia for agreeing to it."
 {n}Nessa nods. Olva rubs her hands together, looking for an answer before choosing a simpler one.{/n}
 "Then shall we play?"
-"As soon as you've helped us make this line visible," Anevia tells her.''', c('[Help prepare the lane.]', "line")),
+"As soon as you've helped us make this line visible," {n}Anevia tells her.{/n}''', c('[Help prepare the lane.]', "line")),
     n("line", "Narrator", '''{n}You hold the straightedge Irabeth brought while Irabeth washes off the old chalk. Anevia and Olva mark the new boundary, one at each end. Tessa checks it from both sides before letting anyone retrieve a ball.{/n}
 {n}The first watcher is Nessa. She crouches beside the lane, points at the full marked board, and makes Perrin move his foot back before his practice roll.{/n}
 {n}"See? Very difficult for the cooper," Anevia says. "Can't bear to be separated from a board."{/n}
@@ -466,7 +466,7 @@ s("three_return_game", "A line everyone can see", "Together",
 {n}Irabeth laughs, then brings her wife's hand briefly to her cheek. Anevia leaves it there until Tessa asks who wants another cup.{/n}''',
       c('[Stay for the drink and conversation.]', "invitation")),
     n("invitation", "Anevia", '''{n}By the time you leave, another pair of teams has begun a match. Irabeth pauses at the gate to watch a roll, then makes herself turn back.{/n}
-"We can come again," Anevia tells her. "Even when you aren't carryin' a prize."
+"We can come again," {n}Anevia tells her.{/n} "Even when you aren't carryin' a prize."
 "I know. I wanted to see whether she used the side board."
 {n}Anevia takes one of her hands and offers the other to you.{/n}
 "Come to ours when we've all got an evening. Beth wants to show us somethin'."
@@ -481,15 +481,15 @@ s("three_small_journeys", "Places they had not gone", "Together",
   '"I was promised a mysterious map."', [
     n("start", "Irabeth", '''"Anevia promised that. I promised a map."
 {n}Irabeth opens it across the low table. It is a traveler's sketch copied onto cheap paper, with uneven roads and small pictures beside some of the towns. Anevia settles on the rug with three cups and a jug of water.{/n}
-"I bought it from a woman who repairs wagon covers," Irabeth explains. "She drew the route for a customer, then sold me a copy. It is not a military survey."
-"Strong recommendation," Anevia says. "Where's the place with the pastry?"
+"I bought it from a woman who repairs wagon covers," {n}Irabeth explains.{/n} "She drew the route for a customer, then sold me a copy. It is not a military survey."
+"Strong recommendation," {n}Anevia says.{/n} "Where's the place with the pastry?"
 "It is a mill."
 "Could have both."''',
       c('[Sit with them and examine the map.]', "places"),
       c('[Ask to keep the evening for another day.]', abort=True)),
     n("places", "Irabeth", '''{n}Irabeth points to a small circle beside a river.{/n}
 "There is a public garden here. The woman said they grow fruit against warm walls and open the gate when it is in flower. I would like to go when nobody expects me to inspect the walls."
-"I'd like the market town," Anevia says, touching another mark. "According to the woman, half the stalls sell things the other half have just bought. Sounds educational."
+"I'd like the market town," {n}Anevia says, touching another mark.{/n} "According to the woman, half the stalls sell things the other half have just bought. Sounds educational."
 {n}Irabeth looks at her wife.{/n}
 "You want to watch people steal from each other?"
 "No. I want to spend an entire afternoon decidin' whether to buy something useless. Could watch people while I do it."
@@ -528,14 +528,14 @@ s("three_small_journeys", "Places they had not gone", "Together",
 {n}Anevia looks down, smiling. Irabeth bends to kiss the side of her head.{/n}
 "We can go to the market afterward. I would like to see what you find."''', c('[Keep both places on the map.]', "near")),
     n("market", "Anevia", '''"Then I get to buy something that has no practical use. You're both witnesses."
-"I shall remind you when you begin inspecting the stitching," Irabeth says.
+"I shall remind you when you begin inspecting the stitching," {n}Irabeth says.{/n}
 "The useless thing can be well made."
 {n}Anevia circles the town, then connects it to the garden with a dotted line.{/n}
 "We stay long enough to see your flowers. I don't want you spendin' the whole day pretendin' you aren't wonderin' about them."
 {n}Irabeth rests her cheek briefly against her wife's hair.{/n}
 "Thank you. I would have wondered."''', c('[Keep both places on the map.]', "near")),
     n("near", "Irabeth", '''{n}Irabeth folds the map along its old creases, leaving the pencil inside, and puts it on the shelf. Anevia moves the cups onto the table before getting up from the rug.{/n}
-"We have this evening," Irabeth says. "I would like to spend the rest of it closer to you."
+"We have this evening," {n}Irabeth says.{/n} "I would like to spend the rest of it closer to you."
 {n}She looks at you, then at her wife. Anevia steps into her arms and kisses her. Irabeth's hand spreads across her back, drawing her in.{/n}
 {n}When they part, Anevia offers you a hand.{/n}
 "Beth's got an excellent idea. I intend to encourage it."''',
@@ -563,9 +563,9 @@ s("three_small_journeys", "Places they had not gone", "Together",
 {n}You give them the time. Irabeth moves the little clock where all three of you can see it.{/n}
 "There. We can enjoy what we have."
 {n}She fetches cushions. Anevia sits beside you and draws Irabeth down on her other side, then shifts until nobody has been left balancing on an edge.{/n}
-"Give me your hand," she tells her wife. "I've thought of a game."
+"Give me your hand," {n}she tells her wife.{/n} "I've thought of a game."
 {n}She begins drawing a route on Irabeth's palm and asks you to guess the destination. Irabeth supplies wrong answers so confidently that Anevia finally tells her to stop helping.{/n}
 {n}When the agreed time comes, Irabeth notices first. She touches your arm. Anevia gives a disappointed sigh, then stands to fetch your things.{/n}
-"Another evening," she says. "I'm keepin' the map."''',
+"Another evening," {n}she says.{/n} "I'm keepin' the map."''',
       c('[Thank them for the evening and keep your other promise.]', flags=("three_small_journeys.kept",))),
 ], requires=("three_return_game.kept",))

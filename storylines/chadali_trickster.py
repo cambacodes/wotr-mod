@@ -246,7 +246,7 @@ EP = dict(last=6, Relationship="chadali")
 
 SCENES.append(scene(P + "epilogue.commit", "", "ChadaliEpilogue", 6, "", [
     nar("page", '''{n}The spring after Threshold, a Vudrani woman in yellow silk came up the road to Drezen with a basket on her arm, and the gate guards afterwards swore that every die in the barracks came up sixes that day. She found the Commander, sat down uninvited, and put the basket between them: cookies, and a single orange.{/n}
-"I've finished thinking," said Chadali. "You never did leave anything to chance, and I've decided that's the luckiest thing about you. So. There's a question you were too busy to ask. Ask it."''',
+"I've finished thinking," {n}said Chadali.{/n} "You never did leave anything to chance, and I've decided that's the luckiest thing about you. So. There's a question you were too busy to ask. Ask it."''',
         c('[Ask her.] "Stay."', "stay"),
         c('[Take the orange, and not the question.] "Half each. Then we\'ll see."', "half"),
         c("[Give her back the coin.]", "coin", requires=(PRIMED,)),

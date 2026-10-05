@@ -156,11 +156,11 @@ s("the_seized_wagon", "Iron that belonged to somebody",
       c('[Return when you can hear both accounts.]', abort=True)),
     n("officer", "Irabeth", '''"That is the point I want settled."
 {n}Hadran indicates a stamped mark on one of the bars. The same mark appeared on the false load. He asked where this one had come from, and Brena laughed.{/n}
-"I asked whether he expected me to smelt it myself," she says. "That was the laugh."
+"I asked whether he expected me to smelt it myself," {n}she says.{/n} "That was the laugh."
 "You would not give a name."
 "I gave two. You disliked both."
 {n}Irabeth holds up a hand. Hadran presses his lips together.{/n}
-"A mark may identify a supplier," she says. "It does not establish that every bar bearing it is false. What did you test?"
+"A mark may identify a supplier," {n}she says.{/n} "It does not establish that every bar bearing it is false. What did you test?"
 "The papers."
 "What did you test on the iron?"
 {n}He has no answer. Irabeth lets the silence run until Brena stops looking satisfied with it.{/n}
@@ -930,7 +930,7 @@ s("without_an_account", "No account of the day required",
 {n}She cuts the loaf, hands you the heel and considers her own piece.{/n}
 "Talk, or shall I attempt the remarkable discipline of sitting quietly?"
 {n}You choose. She follows your lead, sometimes talking, sometimes content to sit. By the time the loaf is gone she has stopped glancing at the blanket.{/n}
-"I'm glad you came," she says when you rise. "Still true."''', c('[Leave while she is still smiling.]', "end", flags=("irabeth.private_space",))),
+"I'm glad you came," {n}she says when you rise.{/n} "Still true."''', c('[Leave while she is still smiling.]', "end", flags=("irabeth.private_space",))),
     n("end", "Irabeth", '''{n}You fold the blanket together. Irabeth takes one end and you take the other, and the simple job takes longer than it should because she keeps finding reasons to look at you.{/n}
 "Again. Some version of it. I'm not writing this one up as standing procedure."
 {n}Downstairs, she hangs the key back on its hook and stops at the open door.{/n}
@@ -1207,9 +1207,9 @@ s("a_road_she_would_choose", "A road without an assignment",
 {n}You walk to Sella's room above a provisioner's shop. The route-maker is sorting drawings by age rather than destination. She explains that an old bridge remains an old bridge even when someone copies it beautifully onto new paper.{/n}
 {n}Irabeth looks immediately interested.{/n}
 "That is an excellent reason to distrust attractive handwriting."
-"Only when it describes a bridge," Sella replies. "Otherwise it depends on what you want from the writer."
+"Only when it describes a bridge," {n}Sella replies.{/n} "Otherwise it depends on what you want from the writer."
 {n}Irabeth glances at you and discovers you already looking at her.{/n}
-"We are here for roads," she says, less firmly than she intended.''', c('[Make room for the drawings.]', "drawings")),
+"We are here for roads," {n}she says, less firmly than she intended.{/n}''', c('[Make room for the drawings.]', "drawings")),
     n("drawings", "Narrator", '''{n}Sella spreads three routes across the table. One follows a broad road between settled towns. It has inns, tolls and long views of cultivated land. Another turns into hills above a lake, with fewer stopping places and a stretch that becomes unpleasant after heavy rain. The third promises an impressive ruin and offers almost no useful information about the way home.{/n}
 {n}Irabeth puts the third aside.{/n}
 {n}"I have seen enough impressive ruins without arranging a holiday around another."{/n}
@@ -1229,7 +1229,7 @@ s("a_road_she_would_choose", "A road without an assignment",
 {n}She studies the stopping places again.{/n}
 "But I want a bed at least some nights. And I want to be able to say I am cold without somebody reminding me that I have endured worse. I have endured many things I do not intend to buy as recreation."
 {n}Sella points to a longer way with a reliable inn before the hill section. It adds distance and removes a difficult crossing.{/n}
-"That one," Irabeth says, then stops. "If it suits you. I have begun giving orders to an imaginary journey."
+"That one," {n}Irabeth says, then stops.{/n} "If it suits you. I have begun giving orders to an imaginary journey."
 {n}Her smile is rueful.{/n}
 "I do like choosing. I also like the thought of arriving with someone who wanted to come, rather than someone who followed the most confident finger across the map."''', c('"I want to come. Keep the inn and the slower crossing."', "practice")),
     n("practice", "Narrator", '''{n}Sella gives Irabeth a copy of the relevant section and shows her how to compare the road's turns with the landmarks described beneath it. Then she sets a smaller drawing beside it: a route through Drezen with several deliberately misleading details.{/n}

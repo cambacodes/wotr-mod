@@ -1,0 +1,8 @@
+# Areelu Vorlesh (rel areelu) natives for the all-romance run (finale: spare her, then the Commander's punchline GrandFinal Answer_0011 + Last Call).
+# Run with Ch6 lengthened (work4/trace6.py = trace.py with chapter_days {6: 12}); the default 1-day Ch6 lets only one Areelu scene play
+# (one physical scene per relationship per sim day), so threshold.welcome uses the day and wager.raised never runs. Same rules otherwise.
+areelu.met:5               # Ch5 Iz: AreeluIntro dialog (main quest; StartedDialogs 0a43d63c)
+areelu.one_must_burn:5     # Ch5: Areelu's laboratory, her cell (AreeluCell 246a775c): hear Cue_0037 "One of us must burn so that the other may live..."; do NOT smash the projector first (Cue_0009 ends the dialog)
+# Set by the native finale AFTER areelu.committed (needed only by the pages, not forced here because forcing them from Ch6 start distorts Ch6):
+#   sacrifice:6 and ending.trickster_full:6 (or ending.trickster_allplanes_fw:6 with Shyka's essence)  # GrandFinal Answer_0011 "I'm the punchline!"
+#   never areelu.sacrifice_trickster / areelu.incinerated / areelu.dead_fight / areelu.sacrifice_wound                 # all mean Areelu died

@@ -82,7 +82,7 @@ s("the_things_still_here", "The things left to carry", '"Gesmerha? May I come cl
       c('[Take her hand briefly before the others return.]', "hand", requires=("gesmerha.lover",)),
       c('"I will listen. You can introduce me when they arrive."', "waiting")),
     n("hand", "Gesmerha", '''{n}You tell her where your hand is and meet hers. Her fingers close around it with a warmth that changes the small space between you.{/n}
-"There you are," she says softly.
+"There you are," {n}she says softly.{/n}
 "I am here."
 "I know. I wanted to say it anyway."
 {n}She turns your hand between hers, finding a callus with her thumb. You tell her how it came there. Her reply is a quiet laugh, followed by a question about whether it still hurts.{/n}
@@ -93,7 +93,7 @@ s("the_things_still_here", "The things left to carry", '"Gesmerha? May I come cl
 "You could tell them that."
 "I intend to. I was hoping to practice on someone who might be amused before being offended."
 {n}Her smile lasts until the returning footsteps reach the hall. Then she asks Halvek to bring a stool for Sella and describes where you are sitting.{/n}
-"We have company," she says. "Company with an invitation to listen, not a new owner for the box."
+"We have company," {n}she says.{/n} "Company with an invitation to listen, not a new owner for the box."
 {n}Sella's answer comes from the doorway.{/n}
 "Good. I have brought enough relatives to disagree with already."''', c('[Let Gesmerha make the introductions.]', flags=("gesmerha.late_arrived",))),
     n("abyss_song", "Gesmerha", '''"Which one?"
@@ -105,10 +105,10 @@ s("the_things_still_here", "The things left to carry", '"Gesmerha? May I come cl
 
 s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella before we decide what the box contains."', [
     n("start", "Gesmerha", '''{n}Sella pulls her stool near the long box. Halvek turns it so the lid can open without striking the wall. Gesmerha asks each of them to say where they have put their feet, then stands and crosses the short distance with her staff.{/n}
-"I want to touch the first pattern," she says. "May I?"
-"Yes," Sella replies. "I would have said yes this morning too, if anyone had asked before telling me what I must leave behind."
+"I want to touch the first pattern," {n}she says.{/n} "May I?"
+"Yes," {n}Sella replies.{/n} "I would have said yes this morning too, if anyone had asked before telling me what I must leave behind."
 {n}The lid opens with a low creak. Sella puts a flat piece of wood into Gesmerha's waiting hands. One edge has been cut into a series of shallow curves; the other bears marks too close together to read at a glance.{/n}
-"My grandmother made that after she hurt her wrist," Sella says. "She could still draw the curves. She asked her sister to cut them. People point at it and tell me how skilled my grandmother was, as though her having needed help would spoil the lesson."
+"My grandmother made that after she hurt her wrist," {n}Sella says.{/n} "She could still draw the curves. She asked her sister to cut them. People point at it and tell me how skilled my grandmother was, as though her having needed help would spoil the lesson."
 {n}Gesmerha traces the cut edge.{/n}
 "I learned that curve from this piece. Nobody told me who held the knife."
 "I know. That is one reason I want the box."''',
@@ -124,24 +124,24 @@ s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella b
 "And I have spent enough years being told that the box will be more useful with somebody else. It always seems to become useful just when I want to take it home."
 {n}Neither woman raises her voice. Halvek looks from one to the other, then sits on the floor rather than offer an opinion.{/n}''', c('[Ask what arrangements have actually been proposed.]', "offers")),
     n("travel", "Sella", '''"It could. If somebody wanted to hear the history before offering to improve it."
-"I want to hear it," Gesmerha says. "I also want to keep the pattern where it can be used. Those wishes are going to interfere with one another unless we are careful."
+"I want to hear it," {n}Gesmerha says.{/n} "I also want to keep the pattern where it can be used. Those wishes are going to interfere with one another unless we are careful."
 "You could make copies."
 "Of some pieces. This edge is easy to measure. The marks beside it may have been a note to someone who already knew what they meant. Copying every scratch would not teach me their meaning."
 {n}Sella leans close enough to indicate the marks aloud.{/n}
 "They are not instructions. They record what her sister said when she cut the third curve too deep. Grandmother thought the complaint deserved to last as long as the mistake."
 {n}Gesmerha laughs before she can stop herself. Then she asks to feel the third curve again.{/n}
-"I have been teaching people to reproduce that depth," she admits. "I thought it deliberate."
+"I have been teaching people to reproduce that depth," {n}she admits.{/n} "I thought it deliberate."
 "It became deliberate once you taught it. You can keep doing it. I am asking to keep the piece that began it."
 {n}Gesmerha turns the pattern carefully between her hands.{/n}
 "That is a better argument than several we have had this morning."''', c('[Ask what arrangements could preserve both uses.]', "offers")),
     n("offers", "Gesmerha", '''"We can copy the three patterns the apprentices use most. Sella can take the originals and the rest of the box. It will take work, and the copies will be teaching tools with their makers named, not little relics pretending to have belonged to her grandmother."
-"Who pays?" Halvek asks from the floor.
-"The people asking for copies," Gesmerha replies. "I have put aside wood and money for tools. I can use part of it. The apprentices can give time if they choose."
-"You delayed your tools once already," you say.
+"Who pays?" {n}Halvek asks from the floor.{/n}
+"The people asking for copies," {n}Gesmerha replies.{/n} "I have put aside wood and money for tools. I can use part of it. The apprentices can give time if they choose."
+"You delayed your tools once already," {n}you say.{/n}
 "I remember. This does not make the second delay free."
 {n}She rests the pattern against the rim of the box.{/n}
 "Or we leave the originals with Sella and borrow them for a set period when she is somewhere we can reach. She names the carrier and decides which pieces travel. We teach from what we already know until then."
-"No demand that I live near the workshop," Sella says.
+"No demand that I live near the workshop," {n}Sella says.{/n}
 "None. That would be a different bargain, and one I do not think you want."
 {n}Gesmerha turns toward your voice.{/n}
 "You have heard us. Which cost would you be willing to help with? I will not ask you to announce that one of us has been the reasonable person all along."''',
@@ -149,30 +149,30 @@ s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella b
       c('"Arrange a limited loan when Sella chooses. I can help return this box to her now."', "loan")),
     n("copies", "Gesmerha", '''"Then I will pay for the wood. Not the Commander's treasury. I want the teaching pieces, and I have been allowed to decide what I spend on them."
 {n}Sella takes the pattern when Gesmerha offers it back.{/n}
-"Three," she says. "No quiet decision to copy the rest while the lid is open."
+"Three," {n}she says.{/n} "No quiet decision to copy the rest while the lid is open."
 "Three. You can sit with us while we work, if you want to."
 "I would rather finish packing my mother's things. Ask me when a mark is unclear. I may know. If I do not, leave it unclear until someone does."
 {n}Gesmerha nods, then remembers to answer aloud.{/n}
 "Agreed. We will name your grandmother and her sister on the first copy. The depth of the third curve can keep its complaint."
 {n}Halvek laughs. Sella tells him he has been forgiven neither for bringing the box without asking nor for carrying it badly.{/n}
-"But you can carry it back," she adds. "After the three pieces are finished."
+"But you can carry it back," {n}she adds.{/n} "After the three pieces are finished."
 {n}Gesmerha feels for the edge of the lid and asks Halvek to lower it only when she has moved her hand.{/n}''', c('[Keep the three-copy agreement.]', "copies_end")),
     n("loan", "Gesmerha", '''{n}Gesmerha runs her thumb once more along the pattern before giving it back.{/n}
 "I will miss having it to hand. Still. Agreed."
-"Six days for a loan," Sella says. "Longer only if I agree before the carrier leaves. If you cannot promise the return, ask for a different time."
+"Six days for a loan," {n}Sella says.{/n} "Longer only if I agree before the carrier leaves. If you cannot promise the return, ask for a different time."
 "And if you move farther away?"
 "Then I will tell you where a message can reach me, if there is such a place. I cannot give you a road I have not traveled."
 {n}Gesmerha rests her empty hands against each other.{/n}
 "Then I shall teach the curve from what I know. I will tell them why it may differ from the old piece. There is work enough in that."
-"You sound as though I have deprived you of something," Sella says.
+"You sound as though I have deprived you of something," {n}Sella says.{/n}
 "You have. Something I liked to use. You have also offered to lend it on terms any carver could follow. I can grumble and still keep my word."
 {n}Sella exhales, a small sound that seems to surprise Halvek more than the argument did.{/n}
 "Good. I should like to take the box home without being congratulated for allowing everybody to become wiser."
-"Then let us make the trip useful instead," Gesmerha says. "There are other things waiting with it."''', c('[Keep the limited-loan agreement.]', "loan_end")),
+"Then let us make the trip useful instead," {n}Gesmerha says.{/n} "There are other things waiting with it."''', c('[Keep the limited-loan agreement.]', "loan_end")),
     *[n(id, "Gesmerha", '''{n}Sella and Halvek leave together after agreeing where the box will be taken. Gesmerha waits for their steps to pass beyond the doorway before reaching for her staff.{/n}
 "Will you walk with me as far as the door? I know the way. I would like the company."
 {n}You offer your arm where she asks for it. She takes it lightly, testing the floor ahead with her staff rather than letting you draw her around the stool.{/n}
-"I wanted you to agree with me," she says as you reach the threshold. "At the beginning. I had a very satisfactory account prepared of why I ought to keep everything."
+"I wanted you to agree with me," {n}she says as you reach the threshold.{/n} "At the beginning. I had a very satisfactory account prepared of why I ought to keep everything."
 "You might have argued it."
 "I still could. That is what galls me. I have given my answer, and the other arguments are still perfectly able to wake me at night."
 {n}Cool air reaches the hall. She turns her face toward it and loosens her grip on your arm.{/n}
@@ -183,8 +183,8 @@ s("the_box_with_two_names", "The name beneath the clan's", '"Let us hear Sella b
 
 s("the_long_way_with_company", "The weight on the road", '"Are the things ready to be carried?"', [
     n("start", "Gesmerha", '''{n}The long box stands shut beside the hall door. Halvek has fastened carrying loops around it. Gesmerha is checking the knot nearest her, following each turn with a fingertip.{/n}
-"I would like it to remain one box," she says. "Sella was very particular about receiving the lid along with everything beneath it."
-"I heard her," Halvek replies.
+"I would like it to remain one box," {n}she says.{/n} "Sella was very particular about receiving the lid along with everything beneath it."
+"I heard her," {n}Halvek replies.{/n}
 "Yes. So did the people outside."
 {n}He tests the second loop with a short lift, then lowers the box again. Gesmerha finds the handle of her own small tool roll and puts it over her shoulder.{/n}''',
       c('[Ask how the three copies came out.]', "copies", requires=("gesmerha.teaching_copies",)),
@@ -206,35 +206,35 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 "Very much. It would be pleasant to finish one useful thing without an audience debating what it means."''', c('[Take the carrying loop Halvek offers.]', "road")),
     n("road", "Narrator", '''{n}You and Halvek carry the box between you. Gesmerha walks beside the load, keeping one hand on the loop near Halvek while her staff tests the uneven ground. She tells him when his pace begins to lengthen beyond hers; he shortens it.{/n}
 {n}Near the crossing, the water has risen over the stones usually used as a path. A branch turns slowly against the nearest one. Gesmerha hears it scrape.{/n}
-"That was not there yesterday," she says. "Set the box down on dry ground before anyone decides how brave to be."
+"That was not there yesterday," {n}she says.{/n} "Set the box down on dry ground before anyone decides how brave to be."
 {n}Halvek points toward the higher path. It follows the bank before crossing farther upstream; the detour would bring you to Sella after the people gathering for a lesson have left.{/n}
-"They asked me to hear their first attempts," Gesmerha says. "I said I would. I would still prefer to arrive late with a dry box."
+"They asked me to hear their first attempts," {n}Gesmerha says.{/n} "I said I would. I would still prefer to arrive late with a dry box."
 {n}She asks you to describe the stones and the direction of the current. You do, including the gap concealed by cloudy water.{/n}''',
       c('[Examine the current and the bank before choosing a crossing.]', check=dict(Skill="SkillLoreNature", DC=26, CommanderOnly=True, Success="read_water", Failure="mistaken")),
       c('"Take the higher path. We can explain why the lesson had to wait."', "higher")),
     n("read_water", "Gesmerha", '''{n}The branch is caught against a broken stake, not the stone beneath it. Downstream, water spreads thinly over a bed of gravel. You describe a route that keeps the load above the deepest channel and lets each carrier test a step before shifting the weight.{/n}
-"Show Halvek first," Gesmerha says. "Then he can tell me when his feet move. I would rather hear one account at a time."
+"Show Halvek first," {n}Gesmerha says.{/n} "Then he can tell me when his feet move. I would rather hear one account at a time."
 {n}You cross without the box to test the gravel, then return. Halvek follows your directions with the load while Gesmerha keeps the staff ahead of her and one hand at his elbow. At the far bank she pauses until both carriers have put the box down.{/n}
-"All of it?" she asks.
-"Lid included," Halvek answers.
+"All of it?" {n}she asks.{/n}
+"Lid included," {n}Halvek answers.{/n}
 "Excellent. We have exceeded Sella's lowest expectations."
 {n}She checks her tool roll, then offers you the strip of cloth she keeps for drying the handles. You finish the walk before the lesson begins. Sella receives the intact box, and Gesmerha hears the learners gathering as Halvek sets it down.{/n}''',
       c('[Carry the box the rest of the way without hurrying her.]', flags=("gesmerha.delivery_kept", "gesmerha.crossing_read"))),
     n("mistaken", "Narrator", '''{n}The surface near the familiar stones looks calmer than it is. You step onto the first one to test it. It shifts, and the sudden scrape of your boot makes Gesmerha turn toward you.{/n}
 {n}Halvek reaches for the carrying loop before the box can slide down the bank. Gesmerha catches his sleeve, releases it when he says he is steady, and puts both hands on the dry end of the lid. Nobody has entered the water with the load.{/n}
-"Leave it there," she says. "Tell me where you are."
+"Leave it there," {n}she says.{/n} "Tell me where you are."
 {n}You answer from the bank. One boot is full of cold water. It takes time to recover your balance, check the gravel under the box and explain exactly which stone moved.{/n}
-"The higher path," Halvek says.
-"Yes," Gesmerha answers. "After we have rested enough that nobody is carrying Sella's inheritance while your boot is full of water."
+"The higher path," {n}Halvek says.{/n}
+"Yes," {n}Gesmerha answers.{/n} "After we have rested enough that nobody is carrying Sella's inheritance while your boot is full of water."
 {n}Gesmerha unrolls her cloth for your wet boot. She asks you not to call the delay nothing; people did make time to hear her.{/n}''', c('[Acknowledge the mistake and take the safer way.]', "late")),
     n("higher", "Gesmerha", '''"Then the higher path. I shall be disappointed about the lesson while remaining pleased that none of us has to fish for the box."
 {n}She asks Halvek to describe the first climb. He tells her about the roots and where the bank narrows. She shifts her tool roll to keep it from catching on the carrying loop.{/n}
-"We can send word if we meet anyone coming the other way," she says. "If not, I will apologize when we arrive. They can decide whether they want to give me another afternoon."
+"We can send word if we meet anyone coming the other way," {n}she says.{/n} "If not, I will apologize when we arrive. They can decide whether they want to give me another afternoon."
 "You dislike missing it."
 "Yes. I wanted to hear what they had done. I also wanted them to be glad I had come. That part is less useful to explain in the apology."
 {n}She waits until you and Halvek have the load balanced before setting out.{/n}''', c('[Take the longer path together.]', "late")),
     n("late", "Narrator", '''{n}The detour is slow. When you stop to change hands on the carrying loops, Gesmerha asks to sit for a moment. She chooses a patch of dry ground after you describe it, rests her staff across her knees and tilts her face toward the air moving above the bank.{/n}
-"I should have brought something to eat," she says.
+"I should have brought something to eat," {n}she says.{/n}
 {n}Halvek produces a parcel his sister gave him. Gesmerha laughs when he admits she supplied it because she expected him to choose an inconvenient route.{/n}
 "I shall ask her whether she wishes to take over the planning. I may even mean it."
 {n}You share the food before lifting the box again. By the time Sella receives it, the learners have gone. One has left a message: he showed the others his work without waiting, and would like Gesmerha to hear about it tomorrow.{/n}
@@ -244,7 +244,7 @@ s("the_long_way_with_company", "The weight on the road", '"Are the things ready 
 
 s("a_lesson_without_her", "The work someone else began", '"What did the learners make of the patterns?"', [
     n("start", "Gesmerha", '''{n}Gesmerha has arranged three small carvings on the chest. Each rests on its own scrap of cloth. She asks you to sit, then tells you which one has an edge that catches a careless finger.{/n}
-"I have stopped touching that side first," she says. "Its maker will not say whether he meant it. I think he did."
+"I have stopped touching that side first," {n}she says.{/n} "Its maker will not say whether he meant it. I think he did."
 {n}She lifts the middle piece and follows its broad curve with her thumb.{/n}
 "Elun brought these. His own, his cousin's, and one made by a woman who swore she was only watching until someone lent her a knife."''',
       c('"We reached them before the lesson. What did you keep thinking about afterward?"', "present", requires=("gesmerha.crossing_read",)),
@@ -333,7 +333,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
 "I want more than good afternoons."
 "Then say what more. I have imagined three answers already, and I want the true one before I grow fond of a wrong one."
 {n}You tell her. She listens with her head tilted, the way she listens for a crack in a block, and asks one question: what becomes of this when you are on your road and she is on hers.{/n}
-"I will not sit wherever it is easiest for you to find me," she says, when you have answered. "I have a clan to see settled, and work I want, and days I mean to keep for myself. You have your own people. I will not speak for them, and you will not speak for mine."
+"I will not sit wherever it is easiest for you to find me," {n}she says, when you have answered.{/n} "I have a clan to see settled, and work I want, and days I mean to keep for myself. You have your own people. I will not speak for them, and you will not speak for mine."
 "Agreed."
 "Good. Then I want to kiss you. That was meant to be the easy part, and now I find I want your answer more than I wanted the other one."''',
       c('"Yes. Be my lover."', "first_kiss"),
@@ -341,7 +341,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
       c('"I want to keep knowing you as a friend."', "friends")),
     n("first_kiss", "Gesmerha", '''"Then come here."
 {n}She finds your hand and draws it to her shoulder. Her other hand finds your face. She waits there a breath, until you lean to her, and then kisses you with a warmth that wipes out whatever she had meant to say after it.{/n}
-"Was that the answer you imagined?" you ask when she draws back.
+"Was that the answer you imagined?" {n}you ask when she draws back.{/n}
 "No. The one I imagined had a clever remark after it. I have lost the remark."
 "You could look for it."
 "I would rather spend the time on this."
@@ -352,7 +352,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
 {n}She says it the way she says *hold it* over the mallet. She is already pulling the tie from the end of her braid. Then she stands, takes the hem of her shift in both hands, draws it over her head and drops it, and stands there in the lamplight with her chin up, letting you look, because she knows you are looking.{/n}
 "I cannot see you. You will have to come here so I can find out what I am getting."
 {n}You come. She reads you the way she reads a block she means to cut: shoulders, the scars the war has left, the belt, which she deals with herself. Her hands are rough from the chisels and quite sure of what they want. When she has you as bare as she is, she pushes you down onto the bed, which was built for one sleeping woman and says so, and she laughs into your mouth at the creak of it and does not care.{/n}
-"Too small," she says. "Good. Nowhere for you to go."
+"Too small," {n}she says.{/n} "Good. Nowhere for you to go."
 {n}She pulls the blanket over both your shoulders, slides her knee across you, and draws your hips hard up against hers.{/n}''',
       c('[Continue]', "after_night")),
     n("gentle", "Gesmerha", '''"Then sit close enough that I need not keep finding the distance."
@@ -360,7 +360,7 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
 "Who told you?"
 "My aunt. She had an excellent eye and very little patience for a niece explaining what the wood ought to resemble."
 {n}You ask whether the goat survived. Gesmerha says somebody bought it after she stopped insisting it was a person.{/n}
-"I had forgotten that part," she admits. "There was a useful lesson in it, but I believe we can leave the lesson outside tonight."
+"I had forgotten that part," {n}she admits.{/n} "There was a useful lesson in it, but I believe we can leave the lesson outside tonight."
 {n}You kiss her. She answers slowly, then asks for a story of your own. You choose one that makes her laugh, with her hand resting in yours.{/n}
 {n}When it is time to go, she draws you close once more and asks you to put the chair back where it stood before leaving. Her last remark through the closing door makes you laugh all the way across the hall.{/n}''',
       c('[Keep the gentle evening as lovers.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers"))),
@@ -375,36 +375,36 @@ s("the_room_she_chose", "After the last knock", '"It is me. May I come in?"', [
       c('[Keep the closeness without a romantic promise.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_open"))),
     n("friends", "Gesmerha", '''"Then you may begin by telling me something entirely useless. I have been given useful information since dawn."
 {n}You offer an account of a disagreement about a meal that neither participant had tasted. Gesmerha listens gravely until you reach the explanation for why nobody was willing to taste it first.{/n}
-"That is not useless," she protests. "I know at least three people who would benefit from hearing it."
+"That is not useless," {n}she protests.{/n} "I know at least three people who would benefit from hearing it."
 "We can change their names before telling them."
 "They would recognize the sensible person immediately and fail to notice the resemblance to anyone else. I shall save myself the trouble."
 {n}Her own story concerns a visiting trader who tried to sell a musical instrument by insisting it was easier to admire before hearing it played. She imitates his offended reply when somebody took him at his word and asked him not to demonstrate.{/n}
 {n}You spend the evening laughing often enough that one knock at the door becomes a tentative apology from someone who decides his question can wait. Gesmerha tells you who it was after his steps have retreated; she recognized his voice in the apology.{/n}
-"A promising development," she says. "Perhaps he has found it himself."
+"A promising development," {n}she says.{/n} "Perhaps he has found it himself."
 {n}When you leave, she asks for another such evening if the road permits it. You are pleased to have one worth remembering already.{/n}''',
       c('[Keep the friendship and the private evening.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_friends"))),
     # The aftermath of the night, its own beat after the cut (Sol 2026-09-30, Directive 12).
     n("after_night", "Gesmerha", '''{n}Later, with her head on your chest, she complains that the pillow has escaped again. You find it on the floor. Her thanks turns into another kiss, slower than the first ones.{/n}
-"I wanted this," she says quietly. "Since the box. Since before the box. I stopped pretending otherwise somewhere on the road back from Sella's."
+"I wanted this," {n}she says quietly.{/n} "Since the box. Since before the box. I stopped pretending otherwise somewhere on the road back from Sella's."
 {n}In the morning she is up before you, dressed, sitting on the chest by the door with her staff across her knees. She tells you, with great satisfaction, that the door has turned away its first visitor of the day, that it was Halvek, and that he will never ask her about the smallest pattern again.{/n}''',
       c('[Stay for breakfast.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.night_shared"))),
     # The same morning for the slower lover's first night: its terminal choice records the commit.
     n("after_first_night", "Gesmerha", '''{n}Later, with her head on your chest, she complains that the pillow has escaped again. You find it on the floor. Her thanks turns into another kiss, slower than the first ones.{/n}
-"I wanted this," she says quietly. "Since the box. Since before the box. I stopped pretending otherwise somewhere on the road back from Sella's."
+"I wanted this," {n}she says quietly.{/n} "Since the box. Since before the box. I stopped pretending otherwise somewhere on the road back from Sella's."
 {n}In the morning she is up before you, dressed, sitting on the chest by the door with her staff across her knees. She tells you, with great satisfaction, that the door has turned away its first visitor of the day, that it was Halvek, and that he will never ask her about the smallest pattern again.{/n}''',
       c('[Stay for breakfast.]', flags=("gesmerha.private_evening_kept", "gesmerha.late_lovers", "gesmerha.committed", "gesmerha.night_shared"))),
     # The late commit's own threshold: the slower lover who asks to stay after the first kiss (Sol 2026-09-30, pattern 3).
     n("first_night", "Gesmerha", '''{n}She goes still. Then she laughs, low, and does not let go of your hand.{/n}
 "The chair was never going to hold you. I put it there so I would have something to refuse."
 {n}She pulls you down beside her, and then beneath her. Her shift comes off over her head in one motion; your shirt takes longer, because she will not let you help and her fingers keep stopping to read what they find. The bed was built for one sleeping woman and says so. She tells it to be quiet.{/n}
-"There," she says, when there is nothing left between you but the blanket. "Now I know what I am getting."
+"There," {n}she says, when there is nothing left between you but the blanket.{/n} "Now I know what I am getting."
 {n}She settles astride you with the blanket around both your shoulders, bends to take your mouth, and reaches down between you.{/n}''',
       c('[Continue]', "after_first_night")),
 ], "gesmerha.work_settled")
 
 s("the_work_left_finished", "A place in the days ahead", '"Is everything ready for you to leave?"', [
     n("start", "Gesmerha", '''{n}The chest is shut. Gesmerha sits beside it with her staff across her knees and a small bundle at her feet. The three carvings have gone to their makers. The long box has not returned.{/n}
-"Everything I have agreed to carry," she says. "Someone will remember another indispensable object once I stand up. I have decided to be selective about believing them."
+"Everything I have agreed to carry," {n}she says.{/n} "Someone will remember another indispensable object once I stand up. I have decided to be selective about believing them."
 {n}She asks you to describe the doorway. When you tell her it is clear, she smiles.{/n}
 "A fine achievement. We ought to have celebrated it while everybody was still here."
 "Are you glad the work is finished?"
@@ -455,7 +455,7 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
 "We will have plenty to argue over."
 "Good. It would be a disgrace to find I had fallen in love with someone whose opinions melted when I kissed them."
 {n}She hears the silence after her words and smiles into it.{/n}
-"Yes," she says. "I meant that. Breathe before you answer."
+"Yes," {n}she says.{/n} "I meant that. Breathe before you answer."
 {n}You tell her what she is to you. She listens with your hand between hers, then pulls you in by it and kisses you until a sound at the far doorway reminds you both where you are. She laughs against your cheek and rests her forehead near yours for one more breath.{/n}
 "I want another ordinary morning with you. Not a farewell worth singing about. A morning."
 "So do I."
@@ -465,7 +465,7 @@ s("the_work_left_finished", "A place in the days ahead", '"Is everything ready f
 "I shall try to be an inconvenient guest."
 "Moderation. I have known people with a natural gift for it, and I would not ask you to compete."
 {n}She laughs, squeezes your hand and lets go. You tell her where her staff rests, then describe the clear way to the door.{/n}
-"I am glad we finished the box," she says. "I am glad we had an evening afterward. Two different pleasures. I mean to keep both."
+"I am glad we finished the box," {n}she says.{/n} "I am glad we had an evening afterward. Two different pleasures. I mean to keep both."
 {n}She lifts her bundle. You walk together as far as the doorway, where Halvek has come to ask whether she is ready. She tells him yes, then turns back toward your voice for the goodbye.{/n}''',
       c('[Keep the friendship and the visits you will try to arrange.]', flags=("gesmerha.late_complete", "gesmerha.future_friends"))),
     n("open", "Gesmerha", '''"Then we shall keep knowing one another. I will not explain your answer to the people who would enjoy predicting what it must become."

@@ -35,7 +35,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 "Hessa. She says she has been paid to examine the construction, and would like me to stop improving it until she has finished."''', c('"Let her begin."', "underneath")),
     n("underneath", "Narrator", '''{n}Hessa starts with the back. Jerribeth follows her hands with such fierce attention that the stair climber loses its head. She restores it without comment.{/n}
 {n}The dwarf removes one section of scenery. Behind it, a thin brass arm moves a screen across the basin. She stops the arm. The picture above the water freezes. The figure remains there with its head bent to pass beneath an arch.{/n}
-"It will fade," Jerribeth says. "Unless she intends to hold that all evening."
+"It will fade," {n}Jerribeth says.{/n} "Unless she intends to hold that all evening."
 {n}Hessa points to the image, then to the frame. Jerribeth's hands draw together.{/n}
 "She asks whether a guest would know their image was being held. I said that a guest who could see it would notice. She says that was not her question."
 {n}The figure in the basin still appears to be trying to get through the door.{/n}
@@ -51,7 +51,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 {n}Hessa says something. Jerribeth's antennae lift, then draw back.{/n}
 "She asks what happens if they refuse to exchange places. I told her that was not the design. She has asked whether it could be."
 {n}Jerribeth holds the first figure where it is. The second reaches the landing and turns to stare at its absent partner. For a moment the pair appear to be arguing about who has arrived.{/n}
-"That would require another sequence," she says.
+"That would require another sequence," {n}she says.{/n}
 {n}Hessa folds her arms and waits. Jerribeth notices you watching and makes a sharp sound of annoyance.{/n}
 "I did not say it was impossible."''', c('"Ask what her patron would pay for that sequence before you make the whole thing."', "inspection_result")),
     n("removed", "Narrator", '''{n}Jerribeth lifts the basin away. Without it, the model shows its moving screens. The tiny climber goes behind one and comes out halfway up the wrong staircase.{/n}
@@ -70,7 +70,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 {n}Hessa asks a question. Jerribeth points to the dwarf's tools, then makes a dismissive gesture.{/n}
 "Her fee is between her and the patron. I invited an inspection. She performed one. I will not pretend she was unwelcome because she looked in an inconvenient place."
 {n}Hessa begins replacing the screen. Jerribeth reaches to help and stops when the dwarf holds out a palm. They finish the task separately.{/n}
-"I want the room," Jerribeth tells you. "I should like you to remember that when this becomes an amusing story about my temperament."
+"I want the room," {n}Jerribeth tells you.{/n} "I should like you to remember that when this becomes an amusing story about my temperament."
 {n}The frozen figure fades from the water. The basin is empty before Hessa finishes putting away her tools.{/n}''', c('"I will remember. What do you want to make when she has gone?"', "inspection_result")),
     n("inspection_result", "Jerribeth", '''{n}Hessa writes at the cleared end of the table. Before folding the sheet she points to the frame and asks another question.{/n}
 "Whether the Commander approves the construction. She would like to put your name beside her findings."
@@ -79,7 +79,7 @@ s("settlement_visit", "The visitor who looks underneath", [
       c('"You may say I attended through the charm. I cannot certify what I have only been shown."', "report", flags=("jerribeth.inspection_witness_only",)),
       c('"Leave my name out. This is your work and her examination."', "report", flags=("jerribeth.inspection_unnamed",))),
     n("report", "Narrator", '''{n}Jerribeth repeats your answer aloud. Hessa changes a line and shows her the revision. The two bend over it together, equally unwilling to make room.{/n}
-"She has put down what she actually examined," Jerribeth tells you. "Including the part I would have preferred her not to admire so closely. She will take it to her employer."
+"She has put down what she actually examined," {n}Jerribeth tells you.{/n} "Including the part I would have preferred her not to admire so closely. She will take it to her employer."
 {n}Hessa leaves with her report. Jerribeth waits until the door beyond the image closes, then puts one of the little figures on top of the basin.{/n}
 "I was tempted to give it her face."
 "Were you?"
@@ -94,7 +94,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 {n}Jerribeth waits through another sentence.{/n}
 "She has been less well informed about what it costs. I shall correct that."''', c('"Show her the staircase."', "specification")),
     n("specification", "Narrator", '''{n}Cevra watches the figures climb. At the first reversal she laughs. At the second she points to the figure arriving late and begins a long explanation, punctuating it by touching individual mirrors on her sleeve.{/n}
-"Her guests," Jerribeth says. "She would like me to give that figure the face of whichever one is watching. She has had a dispute about precedence. Several disputes."
+"Her guests," {n}Jerribeth says.{/n} "She would like me to give that figure the face of whichever one is watching. She has had a dispute about precedence. Several disputes."
 {n}Jerribeth answers aloud. Cevra stops smiling.{/n}
 "I told her the price was for an impossible staircase. She says Vardess included likenesses. And retained them for later entertainments."
 {n}Cevra takes a folded invitation from her sleeve. Jerribeth reads it without bringing it close enough for you to see the names.{/n}
@@ -111,7 +111,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 "She agrees to show us how it ought to look. Try not to reward the effort before she has made it."
 {n}An image of Cevra's mirrored gown forms around the third figure. Jerribeth offers her two small cards and explains them aloud. Cevra chooses one. The little hostess sweeps down the stairs to greet her guests, passes behind a screen and reappears on the landing she has just left.{/n}
 {n}The visitors look up at her. She descends again, faster. This time they reach the top before she can greet them.{/n}
-"She chose to insist on meeting them personally," Jerribeth tells you. "The other card lets them find their own way."
+"She chose to insist on meeting them personally," {n}Jerribeth tells you.{/n} "The other card lets them find their own way."
 {n}Cevra snatches the second card. Her figure sits down. The other two immediately become lost. After a silence, the real Cevra laughs.{/n}
 "She wants both endings. And her figure must have a better chair."''', c('"Put both choices into the demonstration her guests see before they agree to play."', "bargain")),
     n("comedy", "Narrator", '''{n}Jerribeth folds the catalogue shut and makes the climbers quarrel. One wears a crown too large for the archway. The other keeps offering to carry it, then placing it on its own head.{/n}
@@ -133,7 +133,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 "There was money there. Enough for part of a room. I am going to be unpleasant about losing it for a little while. You may remain if you can bear to let me."
 {n}She does not ask you to replace the fee. She opens the catalogue and turns to the next name, then stops before you can mistake the movement for an end to the evening.{/n}''', c('"I can stay. Tell me about the room."', "private_cost")),
     n("bargain", "Jerribeth", '''{n}Cevra examines the miniature from each side. Jerribeth turns the basin so she can see the picture above the water stop and fade. They argue over the number of performances and how much of the mechanism Cevra is buying.{/n}
-"She has agreed to the demonstration we just gave her," Jerribeth tells you. "No store of guest likenesses for future use. I will have to remain to work the sequence. She would prefer to own something that could be made to repeat itself indefinitely."
+"She has agreed to the demonstration we just gave her," {n}Jerribeth tells you.{/n} "No store of guest likenesses for future use. I will have to remain to work the sequence. She would prefer to own something that could be made to repeat itself indefinitely."
 {n}Cevra produces a small purse. Jerribeth does not open it until the visitor has read the revised description beside the model. Then she counts the advance in plain view and writes a receipt.{/n}
 "Serit will be pleased. It pays for the next section. The rest buys some time to look at rooms."
 {n}Cevra departs with the receipt and leaves Vardess's invitation behind. Jerribeth picks it up by a corner.{/n}
@@ -146,7 +146,7 @@ s("settlement_visit", "The visitor who looks underneath", [
 {n}She turns the basin until it shows only the dark ceiling above her table.{/n}
 "The next invitation will be for you. I want to show you where this is going without somebody else asking how much of it can be purchased."''', c('[Stay until she has put the work away.]', "after")),
     n("after", "Narrator", '''{n}She takes the model apart carefully. It is slow work. Once, when a support catches, she holds it still and waits until the urge to pull has passed.{/n}
-"Say something," she tells you. "I have nearly finished being interesting."
+"Say something," {n}she tells you.{/n} "I have nearly finished being interesting."
 {n}You ask how she makes the little climbers turn so sharply. She demonstrates with two fingers, then has to start fitting the support again. The interruption earns an irritated laugh.{/n}
 {n}When the last screen is laid flat, she leaves the charm open. The conversation continues without an exhibit between you.{/n}''', c('[Keep the next invitation.]', flags=("jerribeth.settlement_visited",))),
 ], requires=("jerribeth.counteroffer_kept",), delay=48)
@@ -221,7 +221,7 @@ s("room_measure", "A room before its walls", [
     n("loop", "Narrator", '''{n}She sends the small figure through the arch. The street bends out of sight. When it returns, its own footprints are already waiting on the planks.{/n}
 "Too obvious."
 {n}The footprints vanish. A window opens over the doorway instead. Someone inside has set out a lamp. The climber stops beneath it.{/n}
-"Who lives there?" you ask.
+"Who lives there?" {n}you ask.{/n}
 "Someone who has seen it pass before."
 "Will they open the door?"
 {n}Jerribeth considers that. The window closes, but the light remains behind it. The little figure sits on the step and takes off its boots.{/n}
@@ -229,7 +229,7 @@ s("room_measure", "A room before its walls", [
 {n}She writes something down outside the image. When she returns, the lamp has grown brighter.{/n}
 "Do not grow impatient and give it a happy ending while I am occupied. I should like to discover what it wants first."''', c('"I will leave it on the step. Come back here."', "private")),
     n("terrace", "Narrator", '''{n}The little figure reaches the terrace. Below it, streets exchange places like impatient people trying to see past one another. It watches until one rises toward a narrow door, then runs to find the way down.{/n}
-"Greedy," Jerribeth says with approval.
+"Greedy," {n}Jerribeth says with approval.{/n}
 {n}She sends the figure back. It takes the wrong turning and emerges at the arch. This time it begins again without being prompted.{/n}
 "I would need more streets."
 "You could begin with these."

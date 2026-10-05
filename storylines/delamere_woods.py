@@ -215,7 +215,7 @@ _first_meat["Nodes"].append(_home_late)
 _first_meat["Nodes"].extend([
     nar("home_gate", "{n}At the south gate she hands her haunch to the first person she sees, a Kellid girl of perhaps ten, and shows her how to carry it. You set yours beside the camp's cooking fire.{/n}",
         c()),
-    nar("home_table", '{n}At the north-wall cookfire she drops her haunch onto the chopping block and takes yours off your shoulder to lay beside it. The north-wall cook stares at the meat, then reaches for his cleaver.{/n} "The camp gets the next one," she tells him. "See that your men remember it."',
+    nar("home_table", '{n}At the north-wall cookfire she drops her haunch onto the chopping block and takes yours off your shoulder to lay beside it. The north-wall cook stares at the meat, then reaches for his cleaver.{/n} "The camp gets the next one," {n}she tells him.{/n} "See that your men remember it."',
         c()),
 ])
 for _node in _first_meat["Nodes"][-2:]:
@@ -467,7 +467,7 @@ def second_hunt(opening):
             c('"Erastil did. I told you."', "liar", flags=(LIAR, CLOSED))),
         dl("confess", '''{n}She shuts her eyes.{/n} "Yes." {n}Just that, for a while.{/n} "I knew. I think I knew on the wall. I wanted it so much that I let you give it to me." {n}When she opens her eyes they are wet and very hard.{/n} "You gave me a gift you had stolen from my own god. That is the worst thing anyone has done to me since the peasants waited on the road with knives. And you have taken it back, out loud, in my woods, and I think that is the bravest." {n}A long breath.{/n} "I will be angry with you for a year. Ask me what I will do tonight."''',
             c("Continue", "choice")),
-        dl("liar", '''{n}She looks at you for exactly as long as it takes to draw a bow and let the string down again.{/n} "No," she says, very gently. "He did not."
+        dl("liar", '''{n}She looks at you for exactly as long as it takes to draw a bow and let the string down again.{/n} "No," {n}she says, very gently.{/n} "He did not."
 {n}She picks up her bow. She steps back from the fire, one step, two, and the dark takes her as if she had never been standing in it. You hear nothing at all, not a leaf, not a breath. The embers tick. The hide lies on the floor of the blind, waiting for no one.{/n}''',
             c("[Stand in the empty blind until the fire goes out.]")),
         nar("choice", '''{n}Between you there is a ring of embers, and a fresh hide, and the long cold breath of the woods. She has not moved. She will not move, you understand, unless you do; she has run as far tonight as she means to run.{/n}''',

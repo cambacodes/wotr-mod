@@ -343,15 +343,15 @@ first_meeting("capital", [CAPITAL_LIST], [DREZEN], ("gesmerha.capital_guest",))
 # --- Epilogue pages (no mythic, alignment or crusade effects) ---------------------------------------------------------
 
 STATUE_PARAGRAPHS = (
-    p("The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it "
-      "back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.",
+    p("{n}The thing with too many joints stood in the smith's yard until the spring, when the Wintersun survivors asked for it "
+      "back. They set it up where the Lady's statue had been, so that nobody would forget what they had knelt to.{/n}",
       requires=(STATUE_TRUE,)),
-    p("The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward "
-      "anyone who came in walking loudly.", requires=(STATUE_NEW,)),
-    p("She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never "
-      "been bought.", requires=(HANDS,)),
-    p("Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being "
-      "mentioned.", requires=(LAUGHED,)),
+    p("{n}The listening woman went nowhere. The smith kept her by his gate, and swore that she turned her head a little toward "
+      "anyone who came in walking loudly.{/n}", requires=(STATUE_NEW,)),
+    p("{n}She kept the wooden hands on a shelf by her bed, palms up. She said they were the only pair in Drezen that had never "
+      "been bought.{/n}", requires=(HANDS,)),
+    p("{n}Nobody in Wintersun ever spoke to the Commander about the pyre. Some debts, the carvers said, are paid by never being "
+      "mentioned.{/n}", requires=(LAUGHED,)),
 )
 
 
@@ -363,10 +363,10 @@ def page(id, title, text, requires, forbids, paragraphs=(), **extra):
 page("bench", "What came after", '''{n}Gesmerha never carved on commission again. She kept the corner of the smith's yard for as long as the war lasted and a good while after, and it became the corner of the city where people came to have the truth cut out of wood for them, whether they liked it or not. She could tell the Commander's step from anyone's, in any crowd, and she let it be known that she always heard it a long time before it reached the door.{/n}''',
      requires=(RETURNED, COMMITTED), forbids=(CLOSED, "sacrifice"), ForbidOverrides={"sacrifice": "trickster.commander_back"},
      paragraphs=(
-         p("The Commander kept the oath about purses, which surprised everyone who knew the Commander.", forbids=(HANDS,)),
-         p("The Commander never swore off buying things, and she never asked again. Three days in her yard with both hands on "
+         p("{n}The Commander kept the oath about purses, which surprised everyone who knew the Commander.{/n}", forbids=(HANDS,)),
+         p("{n}The Commander never swore off buying things, and she never asked again. Three days in her yard with both hands on "
            "the wood had been the price instead, and she held that it had been paid in full: when anyone in Drezen offered her "
-           "coin for the Commander's time, she told them the only currency she took for that had already been spent.",
+           "coin for the Commander's time, she told them the only currency she took for that had already been spent.{/n}",
            requires=(HANDS,)),
      ) + STATUE_PARAGRAPHS)
 
@@ -441,11 +441,11 @@ SCENES.extend(REACTIONS)
 # --- The registered route ---------------------------------------------------------------------------------------------
 
 # The alive chain: if she lived through the ambush with a commission paid, she carves it.
-COMMISSION_PARAGRAPH = p("She carved the Commander's commission in the end, years after it was paid for: a small thing in "
+COMMISSION_PARAGRAPH = p("{n}She carved the Commander's commission in the end, years after it was paid for: a small thing in "
                          "the pale birch from her Wintersun bench, with the coin still in it, which she would not describe to anyone. She said a commission is a commission, and "
-                         "that her line had never left paid work on the bench.", requires=(COMMISSIONED,), forbids=(RETURNED,))
-BORROWED_PARAGRAPH = p("She never believed in the ten afternoons. She kept count of the real ones instead, and told the "
-                       "Commander once that they had long since passed ten, and that the borrowed ones were paid back.",
+                         "that her line had never left paid work on the bench.{/n}", requires=(COMMISSIONED,), forbids=(RETURNED,))
+BORROWED_PARAGRAPH = p("{n}She never believed in the ten afternoons. She kept count of the real ones instead, and told the "
+                       "Commander once that they had long since passed ten, and that the borrowed ones were paid back.{/n}",
                        requires=(SLOW,))
 ALIVE_ENDINGS = ("gesmerha.ending_living_reunion", "gesmerha.ending_unmet_again", "gesmerha.late_ending_lovers",
                  "gesmerha.late_ending_friends", "gesmerha.late_ending_open", "gesmerha.late_ending_closed",

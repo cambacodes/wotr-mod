@@ -130,7 +130,7 @@ s("return_first_words", "An hour outside the chain of command", [
     n("end", "Narrator", '''{n}The hour runs out while Irabeth is still speaking. She notices the light at the window, checks the time, and stops herself in the middle of a sentence.{/n}
 "I should go."
 {n}She takes her papers. Yours remain covered in her precise corrections.{/n}
-"Do not write to me yet," she says. "If there is something more to say, I would like to be the one who decides when it is said."
+"Do not write to me yet," {n}she says.{/n} "If there is something more to say, I would like to be the one who decides when it is said."
 {n}There is enough of a smile in it to make it worth remembering. She leaves without asking anyone to return her to a post.{/n}''',
         c('[Let her go. Leave the account to the quartermaster.]', flags=("irabeth.return_private_hour_kept",))),
 ], requires=("irabeth.return_reply",), delay=12, physical=True)

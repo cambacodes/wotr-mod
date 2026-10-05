@@ -1,0 +1,7 @@
+# Hepzamirah (relationship hepzamirah). State "ghost" (HARD: she dies natively at Colyphyr on every path).
+# '#@' lines are timed.py directives (plain trace.py ignores them). Verified: python timed.py trace natives/hepzamirah.txt - hepzamirah
+hepzamirah.dead:4            # Ch4 Colyphyr final fight: the 10%-HP cutscene starts ColyphyrHepzamirahDead d4657f5e (every path)
+alderpash.leavable:5         # Ch5 Labyrinth: Alderpash/Answer_0115 1e33632e "I steal this cell and hereby name it the Leavable Prison" (Trickster); optional, selects the "again" variant
+baphomet.parley:5            # Ch5 Labyrinth: talk to Baphomet in his prison (Prison_Baph_dialogue 257e1351); optional page "A deed, by fire"
+#@ hepzamirah.dead:4+10      # end of Ch4 (her Colyphyr offer scene must come before the fight)
+#@ !hepzamirah.ghost_dispersed   # never [Attack] the ghost (Prison_HepzamirahGhost Answer_0009 -> Cue_0016 a4011b00); the stock sim auto-forces it

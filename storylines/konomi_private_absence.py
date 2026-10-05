@@ -112,7 +112,7 @@ def reply_nodes(final_flags=()):
         c('[Tell her what you most want to say now.]', "absence_unrecorded", forbids=("konomi.letter_wonder", "konomi.letter_fear",))),
       n("absence_oldwonder", "Konomi", '''"I would have wanted to see it. I do not have to approve of the Abyss to envy you one view of it."
 {n}She asks you to describe the light again. This time you can show its direction with your hands, stop when she has misunderstood, and hear the question that makes you remember another detail.{/n}
-"There," she says at last. "I have something I can imagine."
+"There," {n}she says at last.{/n} "I have something I can imagine."
 {n}She looks pleased, then rueful.{/n}
 "I was not there. I cannot forge that. But bring me the next one, and the one after, and I shall hold you to every detail. I had things of my own to tell you, and nowhere to post them."''', c('[Ask what she has been doing with her days.]', "absence_now")),
       n("absence_oldfear", "Konomi", '''"I have read what you were afraid of. One evening will not tell me how much of it came home with you. I shall find out the way I find out anything: by asking rude questions until someone slips."
@@ -164,7 +164,7 @@ def reply_nodes(final_flags=()):
 {n}She reaches for your hand and leaves her palm open between you.{/n}
 "Closer. I have been sitting across tables from people all season."
 {n}You take her hand. Her fingers tighten around yours before she lets them rest. For a little while she seems as relieved as you are not to be explaining something.{/n}
-"I have missed touching you," she says. "Even when the conversation I imagined was a quarrel. That was annoying."
+"I have missed touching you," {n}she says.{/n} "Even when the conversation I imagined was a quarrel. That was annoying."
 {n}The admission makes her smile, but she does not use the smile to withdraw it.{/n}''', c('[Stay near and ask how she spent the days you could not hear about.]', "absence_her_days")),
       n("absence_changed", "Konomi", '''"I stopped leaving an evening empty every time somebody said there might be news."
 {n}She watches your face as she says it.{/n}

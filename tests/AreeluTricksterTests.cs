@@ -313,7 +313,9 @@ internal static class AreeluTricksterTests
             "The Shyka paragraph contradicts the Last Call H1 page.");
         // Sol INT (r1): a returned Nenio (G6(b)) is at breakfast exactly once; a dissolved one never.
         var nenioBack = With(story, rewriteWorld, "nenio.dead", "nenio.trickster.returned");
-        int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.StartsWith("Nenio arrived at breakfast"));
+        // eng7-f2: identify the narrative paragraph independently of display markup.
+        int Breakfast(Snapshot w) => Rules.VisibleParagraphs(report.Single(s => s.Id.EndsWith(".participation")).Nodes.Single(n => n.Id == "morning"), w).Count(pp => pp.Text.Replace("{n}", "").Replace("{/n}", "").StartsWith("Nenio arrived at breakfast"));
+        // end eng7-f2
         check(Breakfast(rewriteWorld) == 1 && Breakfast(nenioBack) == 1 && Breakfast(With(story, rewriteWorld, "nenio.dead")) == 0
               && Breakfast(With(story, nenioBack, "nenio.dissolved")) == 0, "A returned Nenio misses breakfast, or appears twice.");
         // Sol COX (r1): no companion outside the allocation visits the report.

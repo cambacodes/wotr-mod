@@ -137,7 +137,7 @@ PRESENCES = {
     # bar, on his left beyond Seelah and Vellexia (Aranka keeps his right). Her native dialog would greet a living
     # companion, so Dialog "hub" makes the copy talkable through her own scenes only (E12c). If the anchor fails,
     # camellia.presence.failed opens the letter twin, and the epilogue page carries the commit.
-    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="left", Distance=3.5),
+    PRESENCE: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=FYE, Side="left", Distance=6.0),
                    Requires=["trickster.ever", KILLED, PRIMED, RAISED], Forbids=[CLOSED, DECLINED], MinChapter=3, MaxChapter=5,
                    AnswerLists=[], Dialog="hub",
                    Greeting="{n}At the far end of Fye's bar sits a woman in black lace to the chin, with a glass of wine "

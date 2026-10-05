@@ -1,0 +1,2 @@
+# The Table (relationship household, CommittedFlag household.table.kept)
+fool_king.crowned:3         # Ch3: the King in his tavern (the offer also shows on the uncrowned Ch3 list; crowned is the guide's state)

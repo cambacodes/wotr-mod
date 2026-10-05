@@ -371,7 +371,7 @@
       "reader": "participant.chivarro.available",
       "kind": "paragraph",
       "match": "minagho_chivarro.trickster.cost.herrax_favor",
-      "alternate": "Herrax collected her favour. Chivarro's share of the bill remained unpaid."
+      "alternate": "{n}Herrax collected her favour. Chivarro's share of the bill remained unpaid.{/n}"
     },
     {
       "scene": "wenduag.lastcall.page",

@@ -324,48 +324,48 @@ SCENES.append(scene("jerribeth.trickster.never_met.toast", "A toast at the eveni
 # --- Epilogue: paragraphs on her registered endings, and the late commit (R2-6) --------------------------------------
 
 TRICKSTER_PARAGRAPHS = (
-    p("In the Commander's quarters a gilt idol of the Lady of the Sun kept its face turned toward the bed. The chaplains "
-      "never did stop asking for the favour back.", requires=(STATUE,)),
-    p("A locust lived for years under a glass on the Commander's desk, long past any locust's season. It cleaned its face "
-      "whenever a letter was opened, and it read every one.", requires=(LOCUST,)),
-    p("The man from the stockade served the Commander's household for the rest of his life, courteous and exact, and "
-      "smiling. Nobody who had known him before would sit near him at supper.", requires=(HOST,)),
-    p("The Commander's physicians recorded a curious symptom: on the first of each month the Commander laughed at nothing, "
+    p("{n}In the Commander's quarters a gilt idol of the Lady of the Sun kept its face turned toward the bed. The chaplains "
+      "never did stop asking for the favour back.{/n}", requires=(STATUE,)),
+    p("{n}A locust lived for years under a glass on the Commander's desk, long past any locust's season. It cleaned its face "
+      "whenever a letter was opened, and it read every one.{/n}", requires=(LOCUST,)),
+    p("{n}The man from the stockade served the Commander's household for the rest of his life, courteous and exact, and "
+      "smiling. Nobody who had known him before would sit near him at supper.{/n}", requires=(HOST,)),
+    p("{n}The Commander's physicians recorded a curious symptom: on the first of each month the Commander laughed at nothing, "
       "high and abrasive, and afterwards could not remember one small thing. The Commander never complained. The rent was "
-      "always paid.", requires=(LODGER,)),
-    p("The lease had been signed late, over a seed that was already dying. She honoured it exactly as long as it amused "
-      "her. It amused her for the rest of the Commander's life.", requires=(LATE,)),
-    p("In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray "
-      "the one who made it. She considered this the finest betrayal of her career.", requires=(TOAST,)),
-    p("A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and "
-      "smiling a little too widely. He never drank, and he never once poured a cup for anyone.", requires=(TOAST_HOST, LEVY)),
-    p("A Wintersun deserter who had once put down his cup in the Fool King's tavern served in the Commander's household "
-      "after the war, exact and courteous and smiling a little too widely. He never drank again, in any tavern.",
+      "always paid.{/n}", requires=(LODGER,)),
+    p("{n}The lease had been signed late, over a seed that was already dying. She honoured it exactly as long as it amused "
+      "her. It amused her for the rest of the Commander's life.{/n}", requires=(LATE,)),
+    p("{n}In the taverns of Drezen they still tell the toast. Nobody tells the ending: the Lady of the Sun never did betray "
+      "the one who made it. She considered this the finest betrayal of her career.{/n}", requires=(TOAST,)),
+    p("{n}A sergeant of the Wintersun levy served in the Commander's household after the war, exact and courteous and "
+      "smiling a little too widely. He never drank, and he never once poured a cup for anyone.{/n}", requires=(TOAST_HOST, LEVY)),
+    p("{n}A Wintersun deserter who had once put down his cup in the Fool King's tavern served in the Commander's household "
+      "after the war, exact and courteous and smiling a little too widely. He never drank again, in any tavern.{/n}",
       requires=(TOAST_HOST,), forbids=(LEVY,)),
-    p("The toast drunk for free was charged to the future, as she had said it would be, with interest. The Commander never "
-      "again remembered raising a cup to anyone before her.", requires=(GRUDGE_PAID,)),
-    p("The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it "
-      "differently whenever she was asked, and always as the evening they had first met.", requires=(TOAST_MEMORY,)),
+    p("{n}The toast drunk for free was charged to the future, as she had said it would be, with interest. The Commander never "
+      "again remembered raising a cup to anyone before her.{/n}", requires=(GRUDGE_PAID,)),
+    p("{n}The Commander could never remember the night of the toast, only that it had cost something. Jerribeth told it "
+      "differently whenever she was asked, and always as the evening they had first met.{/n}", requires=(TOAST_MEMORY,)),
     # COX: one owner for the single forfeit. When Last Call plays, its coda collects it (the rift); otherwise this does.
-    p("A broken contract is a demon's favourite kind. She collected the forfeit on the first anniversary of it, without "
+    p("{n}A broken contract is a demon's favourite kind. She collected the forfeit on the first anniversary of it, without "
       "warning, in a single line of a letter the Commander found already open on the desk: one memory, the first meeting, "
-      "taken. Afterwards the Commander knew they had ever met only because the letter said so.",
+      "taken. Afterwards the Commander knew they had ever met only because the letter said so.{/n}",
       requires=(FORFEIT, "jerribeth.closed")),
-    p("She collected the forfeit on the first anniversary of the contract, without warning. Nothing had been broken; "
+    p("{n}She collected the forfeit on the first anniversary of the contract, without warning. Nothing had been broken; "
       "she said a clause nobody invokes goes stale, and she did not keep stale things. "
       "She took the Commander's first meeting with her: the voice in the head, the first bargain, all of it. Afterwards "
       "the Commander knew they had met only because she said so, and she told it differently every time, a little more "
-      "flattering to herself with each telling. \"You cannot contradict me,\" she said, when the Commander objected. "
+      "flattering to herself with each telling.{/n} \"You cannot contradict me,\" {n}she said, when the Commander objected.{/n} "
       "\"That was the point. Now I am the only one who remembers how we began, and I intend to improve it.\"",
       requires=(FORFEIT,), forbids=(ACTIVE, "jerribeth.closed")),
 )
 GRUDGE_UNPAID_PARAGRAPH = p(
-    "She never did collect the interest on the toast. She told everyone who would listen that the Commander still owed it, "
-    "and let them wonder what it was. The Commander came to understand that this was worse.",
+    "{n}She never did collect the interest on the toast. She told everyone who would listen that the Commander still owed it, "
+    "and let them wonder what it was. The Commander came to understand that this was worse.{/n}",
     requires=(TOAST_GRUDGE, "jerribeth.closed"), forbids=(GRUDGE_PAID,))
 REFUSED_PARAGRAPH = p(
-    "A crusade clerk later found, in the Commander's papers, a blank contract with a single line written in a small, neat "
-    "hand: \"No forfeit, no signature.\"", requires=(NO_FORFEIT,))
+    "{n}A crusade clerk later found, in the Commander's papers, a blank contract with a single line written in a small, neat "
+    "hand:{/n} \"No forfeit, no signature.\"", requires=(NO_FORFEIT,))
 
 # The late commit is staged by what she is: a living demon in her guise, a tenant wearing the man from the stockade, or a
 # tenant with no body of her own (idol, locust or lodger) who comes up from the back of the Commander's skull. The accepted
@@ -375,18 +375,18 @@ _MIND = dict(requires=(RETURNED,), forbids=(HOST,))
 _MUSTER_END = ("He never came to a muster again. The Commander never once caught her in a lie, which was, she said, the "
                "whole point.")
 MUSTER_PARAGRAPHS = (
-    p("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
+    p("{n}" + ("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
       "to clasp arms, and the Commander asked his name. He stood there with his hand out until Jerribeth, at the "
       "Commander's elbow in her elven guise, told him the story of that day, better than he could have told it himself, "
-      "with a detail in it that had not happened. " + _MUSTER_END, forbids=(RETURNED,)),
-    p("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
+      "with a detail in it that had not happened. " + _MUSTER_END) + "{/n}", forbids=(RETURNED,)),
+    p("{n}" + ("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
       "to clasp arms, and the Commander asked his name. He stood there with his hand out until the smiling man at the "
       "Commander's elbow told him the story of that day in a high, pleased voice that was not his own, better than the "
-      "sergeant could have told it himself, with a detail in it that had not happened. " + _MUSTER_END, requires=(HOST,)),
-    p("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
+      "sergeant could have told it himself, with a detail in it that had not happened. " + _MUSTER_END) + "{/n}", requires=(HOST,)),
+    p("{n}" + ("At the first Drezen muster after the war, a grey sergeant who had carried the Commander off the wall at Iz came up "
       "to clasp arms, and the Commander asked his name. He stood there with his hand out until the Commander heard their "
       "own voice tell him the story of that day, better than he could have told it himself, with a detail in it that had "
-      "not happened. It was her story, told with the Commander's mouth. " + _MUSTER_END, **_MIND),
+      "not happened. It was her story, told with the Commander's mouth. " + _MUSTER_END) + "{/n}", **_MIND),
 )
 
 SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocked", "Epilogue", 5, "", [
@@ -398,20 +398,20 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
       c('[Say yes, aloud, to an empty breakfast room.]', "signed_mind", **_MIND),
       c('[Say nothing, and finish the tea.]', "torn_mind", **_MIND),
       paragraphs=(
-          p("The war had ended with their correspondence unfinished: a frame on a shelf, a promise drafted and never signed. "
+          p("{n}" + ("The war had ended with their correspondence unfinished: a frame on a shelf, a promise drafted and never signed. "
             "She came to the Commander's door in the elven guise, with the seam of light left along its jaw so that "
             "nobody who knew her could mistake it, and the guards let her in because nobody who did not know her could see "
-            "it. She sat down at the Commander's table without being asked. " + _OFFER_LINE, forbids=(RETURNED,)),
-          p("The war had ended before the lease did. She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him "
+            "it. She sat down at the Commander's table without being asked. " + _OFFER_LINE) + "{/n}", forbids=(RETURNED,)),
+          p("{n}" + ("The war had ended before the lease did. She came to the door in the man from the stockade, smiling two finger-widths too wide, and the guards let him "
             "in because they had long ago stopped looking at his face. He sat down at the Commander's table without being "
-            "asked, and her voice came out of him, high and pleased. " + _OFFER_LINE, requires=(HOST,)),
-          p("The war had ended before the lease did. She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull "
-            "at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked. \"The forfeit is "
+            "asked, and her voice came out of him, high and pleased. " + _OFFER_LINE) + "{/n}", requires=(HOST,)),
+          p("{n}The war had ended before the lease did. She did not come to the door. She had no door to come to. She came up from the back of the Commander's skull "
+            "at breakfast, where she had lived since the Sanctum, and the tea went cold while she talked.{/n} \"The forfeit is "
             "one memory, of my choosing, when I choose. I have already read your answer; I live beside it. Say it aloud "
             "anyway. I prefer my bargains witnessed, even when the only witness is you.\"", **_MIND),
       )),
     nar("signed", '''{n}The Commander held out a hand. She turned it palm up and read it twice, the way she read small print, as if checking it for a trick, and did not find one, and seemed disappointed and pleased in exactly equal measure.{/n}
-"Signed," she said, and did not let go of the hand. "I collect in person, Commander. I do not collect at breakfast."''',
+"Signed," {n}she said, and did not let go of the hand.{/n} "I collect in person, Commander. I do not collect at breakfast."''',
       c('[Take her to bed.]', "night", forbids=(RETURNED,)),
       c('[Take her to bed.]', "night_host", requires=(HOST,)),
       c('[Keep the breakfast table between you.]', "collected")),
@@ -438,7 +438,7 @@ SCENES.append(scene("jerribeth.trickster.epilogue.commit", "The guest who knocke
 {n}Behind the left eye, something neat and patient was very pleased with itself. "Rent received. The forfeit stands. I have not decided which memory. You will be the second to know."{/n}''',
       c("Continue", "collected")),
     nar("collected", '''{n}She collected a year later to the day, over breakfast, between one sentence and the next. She took the war: not the Commander's deeds, which were written down everywhere, but the having been there. The Commander put down the cup and could not say why the tea tasted of smoke.{/n}
-"There," she said. "Now I am the only one at this table who remembers how we met, and I intend to improve it."
+"There," {n}she said.{/n} "Now I am the only one at this table who remembers how we met, and I intend to improve it."
 {n}Afterwards the Commander read about the crusade like a stranger reading a history, and Jerribeth, who had not been there either, told it back over supper, with herself in it.{/n}''',
       c(), paragraphs=MUSTER_PARAGRAPHS + TRICKSTER_PARAGRAPHS),
     nar("torn", '''{n}The Commander kept both hands folded in their lap, where she could see them.{/n}
@@ -780,7 +780,7 @@ VISIT_TERMS = '''"A forfeit is collected in person. I have come to see what I bo
 {n}She lifts her hand into the light: long, jointed, clawed at the tips, very still.{/n}
 "I walked through your market in my own shape and nobody looked twice. I shall not stay the night; the Abyss notices when I am absent, and your guards will notice at dawn. But I do not collect at a distance. Which face do you want across the table, Commander?"'''
 PRESENCES = {
-    PRESENCE: dict(Unit=J_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="left", Distance=2.5),
+    PRESENCE: dict(Unit=J_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="left", Distance=6.5),
                    Requires=["trickster.ever", VISIT_DUE], Forbids=[VISITED, "jerribeth.closed"],
                    MinChapter=5, MaxChapter=5, AnswerLists=[], Dialog="hub",
                    Greeting="{n}A narrow, insectile figure stands at the spice stall, and nobody in the market sees her. Her "

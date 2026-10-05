@@ -192,6 +192,9 @@ namespace RRT.TestHarness
         /// <summary>E12: one line per returned presence ("key [mode] wanted; status"), for verifying a presence appears.</summary>
         public string[] PresenceReport() => (string[])Invoke(presenceReport, null);
         /// <summary>E12c: click a presence like the player; true when its RRT hub dialog started.</summary>
+        public object? ProductionPresence(string key) => ((IEnumerable)Static("presences")!).Cast<object>()
+            .SingleOrDefault(p => (string)Get(p, "Key")! == key);
+        public static object? PresenceTarget(object presence) => Call(presence, "get_Target");
         public bool PresenceClick(string key) => (bool)Invoke(presenceClick, key);
         public void Set(string key, int value = 1) => Invoke(set, key, value);
 

@@ -24,7 +24,7 @@ def s(id, title, nodes, requires=(), delay=24):
 
 s("counterfeit_guest", "A Commander who always agrees", [
     n("start", "Narrator", '''{n}Jerribeth has put a little theater inside the frame. Its curtain rises on a figure in an absurd crown. The face is a guess at yours. The figure bows to an empty chair and holds the bow until it looks painful.{/n}
-"May I be useful?" Jerribeth says in a dreadful imitation of a soldier's voice. "May I conquer something small enough to fit beneath your chair?"
+"May I be useful?" {n}Jerribeth says in a dreadful imitation of a soldier's voice.{/n} "May I conquer something small enough to fit beneath your chair?"
 {n}She stops moving the puppet. Its smile remains.{/n}
 "Somebody has offered me this. He believes I shall be delighted."
 {n}Beside the theater lies an open, shallow case. Its lining bears the pressed outline of the model. This is an object on her table, not another room she has made for the charm.{/n}''',
@@ -64,7 +64,7 @@ s("counterfeit_guest", "A Commander who always agrees", [
 {n}She lifts the theater out of its case. Beneath the velvet lining, a corner of stiff paper protrudes.{/n}
 "His assistant packed the construction sheet with it. I doubt Vardess intended me to have that."''', c('[Ask her to lift the lining.]', "lining")),
     n("lining", "Narrator", '''{n}The sheet shows a miniature stage divided into three compartments. In one stands the crowned puppet. In another, an insectile silhouette. The last contains several rows of watching faces. A narrow line runs from each compartment into a little square beneath the stage.{/n}
-"The audience he proposes is invited to his own house," Jerribeth says. "They are people who enjoy pretending their host has a secret that makes attendance valuable. This is the little demonstration he wishes me to approve first. I have invited neither him nor his guests yet."
+"The audience he proposes is invited to his own house," {n}Jerribeth says.{/n} "They are people who enjoy pretending their host has a secret that makes attendance valuable. This is the little demonstration he wishes me to approve first. I have invited neither him nor his guests yet."
 {n}The silhouette bows when she touches a brass pin beneath it. Its movement is identical to the puppet's.{/n}
 "There. He has made me obedient as well. He merely delayed the discovery."''',
       c('"Find out what the square holds before you invite him anywhere."', "square"),
@@ -94,7 +94,7 @@ s("counterfeit_guest", "A Commander who always agrees", [
 
 s("counterfeit_hinge", "Under the miniature stage", [
     n("start", "Narrator", '''{n}The theater lies on its side. Jerribeth has removed its painted floor and placed the little figures in a row, like guests expelled from a supper. Light runs through narrow channels underneath the boards whenever she moves a brass pin.{/n}
-"The obvious trick is quite good," she says. "The figures borrow one another's movements. A bow to me becomes a bow from me. Our host can appear to command both without changing what the first audience sees."
+"The obvious trick is quite good," {n}she says.{/n} "The figures borrow one another's movements. A bow to me becomes a bow from me. Our host can appear to command both without changing what the first audience sees."
 {n}She moves two pins. The crowned figure inclines toward her; the insectile figure inclines toward the empty chair.{/n}
 "The square is still sealed. Serit has varnished the catch into the same color as the wood. I can break it. I would prefer to know what I shall break."''',
       c('[Study the seams and reflected light for a concealed catch.]', check=dict(Skill="SkillPerception", DC=25, Success="found", Failure="missed", CommanderOnly=True)),
@@ -102,13 +102,13 @@ s("counterfeit_hinge", "Under the miniature stage", [
       c('[Leave the disassembled theater for another evening.]', abort=True),
       c('"Turn it around as you did the unfinished village. Show me what the audience would never see."', "study", requires=("jerribeth.sun_exposed",))),
     n("study", "Narrator", '''{n}Jerribeth turns the whole stage away from the frame, then angles it until you can look into the compartment meant for the audience. From here the painted catch is plainly a reflection laid across the wood. Its varnish continues up the wrong side of a supporting post.{/n}
-"The front supplies the explanation," she says. "And the audience helps it along. You remembered."
+"The front supplies the explanation," {n}she says.{/n} "And the audience helps it along. You remembered."
 {n}She reaches around the post and finds the real hinge from behind. The square opens. A thin strip inside bears a row of repeated diagrams. Jerribeth removes it without tearing either end.{/n}
 "A recorder. He intended to keep my movements and give them whatever meaning pleased him."
 {n}She puts the intact strip beside the stage. When she restores the model's position, the false catch becomes convincing again.{/n}
 "There is a use for leaving the back of an illusion visible. I shall try not to become famous for it."''', c('[Keep the strip as evidence.]', "result", flags=("jerribeth.counter_cache_intact", "jerribeth.counter_study_used",))),
     n("found", "Narrator", '''{n}A line of light travels beneath the square when Jerribeth lifts the left figure. It stops at a tiny notch that the inked diagram places on the opposite side. You ask her to tilt the stage. The notch remains dark while everything beside it brightens.{/n}
-"A false reflection," she says. "He has painted the catch where someone impatient will pry."
+"A false reflection," {n}she says.{/n} "He has painted the catch where someone impatient will pry."
 {n}You guide her toward the real hinge. It opens without resistance. Inside is a thin strip marked with repeated little diagrams of the figures' positions. Jerribeth slides it free before touching another pin.{/n}
 "It keeps the movements. He can repeat the bow after I leave. He could exhibit my disapproval as often as he liked and have it incline prettily to him every time."
 {n}She holds the unbroken strip where you can see both ends.{/n}''', c('"Keep that intact. We have the thing he expected to own."', "result", flags=("jerribeth.counter_cache_intact",))),
@@ -212,7 +212,7 @@ s("counterfeit_clerk", "The artist who signed underneath", [
     n("security", "Jerribeth", '''"A postponement. He will dislike that less than I expected to enjoy it."
 {n}She gives Serit the answer. He argues over the meaning of every adjustment until she turns the construction sheet toward him and makes him circle each section he still has to explain.{/n}
 {n}Finally he signs beneath the circles. He leaves his cap on the table while he writes, as though he has forgotten why he was holding it.{/n}
-"He has made the work countable," Jerribeth says. "Annoying. Sensible. I shall remember that when I am tempted to ask for one more demonstration."
+"He has made the work countable," {n}Jerribeth says.{/n} "Annoying. Sensible. I shall remember that when I am tempted to ask for one more demonstration."
 {n}Serit takes the cap and leaves the image.{/n}''', c('[Keep the circled sheet visible beside the model.]', "end")),
     n("end", "Jerribeth", '''{n}Jerribeth waits until her guest has gone before addressing you again. The miniature chair still wears the absurd crown.{/n}
 "Serit will deliver the working adjustments before our next meeting. He has agreed to that much. If he is staying to face Vardess, he can keep the rehearsal until we have the agreement."
@@ -243,13 +243,13 @@ s("counterfeit_audience", "The host in the empty chair", [
 {n}He speaks sharply. Jerribeth replies before translating.{/n}
 "He says I have damaged a valuable invention. I have asked him which part contained his own contribution."
 {n}Vardess puts one hand on the portfolio. Jerribeth puts one finger on the table beside it. He leaves it where it is.{/n}
-"Now," she tells you. "We can make him acknowledge the recorder in front of its maker, if Serit is staying. Or we can give him a reason to bargain while the room is still private."''',
+"Now," {n}she tells you.{/n} "We can make him acknowledge the recorder in front of its maker, if Serit is staying. Or we can give him a reason to bargain while the room is still private."''',
       c('"Bring Serit in. Let him explain the intact strip."', "testimony", requires=("jerribeth.counter_clerk_witness",)),
       c('"Bring Serit in with the rehearsal. Offer Vardess a chance to hear himself."', "replay", requires=("jerribeth.counter_clerk_rehearsal",)),
       c('"Show him the working adjustments Serit left. Ask how soon his room will be finished without them."', "missing", requires=("jerribeth.counter_clerk_hidden",))),
     n("testimony", "Narrator", '''{n}Serit steps into view from outside the frame. Vardess rises halfway out of his chair. Jerribeth points him back toward it without looking away from Serit.{/n}
 {n}The artist lifts the intact strip and shows how its marks correspond to the three figures. Jerribeth repeats enough of his explanation for you to follow. When Vardess interrupts, Serit turns the strip over and shows his signature.{/n}
-"He says the movement you make can become whatever bow the owner chooses to display," Jerribeth relays. "And he says the owner specifically requested that I should not be told."
+"He says the movement you make can become whatever bow the owner chooses to display," {n}Jerribeth relays.{/n} "And he says the owner specifically requested that I should not be told."
 {n}Vardess answers. Serit takes off his cap and removes a second strip from the lining.{/n}
 "Our host considers his employee unreliable. His employee offers three rehearsals of the host's entrance for comparison."
 {n}For the first time, Vardess looks at the door.{/n}''', c('"Now he understands what can leave this room."', "leverage", flags=("jerribeth.counter_proof_shown",))),
@@ -280,10 +280,10 @@ s("counterfeit_audience", "The host in the empty chair", [
 "Now anyone who sees this can ask him why his entertainments need a hidden recorder. I am keeping a copy. He will have to wonder who has read it."
 {n}Vardess pushes Serit's agreement across the table. The catalogue goes back beneath his arm.{/n}''', c('[Have her complete the exchange as agreed.]', "departure")),
     n("archive", "Narrator", '''{n}The bargaining becomes brisk. Vardess wants names removed from the catalogue. Jerribeth turns a page toward the frame and asks you whether a catalogue with blank spaces is worth keeping.{/n}
-"No," you tell her.
+"No," {n}you tell her.{/n}
 {n}She gives him the answer. He wants the miniature. She offers the useless figures. He wants an undertaking never to approach his patrons. She laughs in his face.{/n}
 {n}Finally he puts down both the agreement and the catalogue. In return, Jerribeth gives back the working adjustments and any rehearsal Serit supplied. She agrees to keep tonight's demonstration private. She promises no service and makes no promise about finding better clients.{/n}
-"He will be able to finish the room," she tells you. "We have bought something else."
+"He will be able to finish the room," {n}she tells you.{/n} "We have bought something else."
 {n}Vardess waits for her to close the catalogue before he removes his hand from it.{/n}''', c('[Accept the trade, including the room he can still finish.]', "departure")),
     n("departure", "Jerribeth", '''{n}Vardess says his farewell without looking toward the charm. Jerribeth listens until his footsteps have passed beyond whatever room lies outside her image. Then she lifts the miniature chair and removes its crown.{/n}
 "He has a great many acquaintances. Some of them will be pleased by this. Others will think I have become troublesome. I expect to hear from both."
@@ -307,12 +307,12 @@ s("counterfeit_spoil", "What she keeps in the drawer", [
 {n}He begins a grateful speech. She interrupts. It is impossible to mistake the impatience in her face, even without hearing her words.{/n}
 "I have told him to inspect the rest before thanking me. People become tiresome when they discover another clause halfway through their gratitude."
 {n}Serit examines the page. Then he tears it through his own signature. He does not ask to use her fire.{/n}
-"He has no intention of selling that debt to anyone else," she says. "A pity. I could have taught him how."''', c('[Let him leave with the torn agreement.]', "work")),
+"He has no intention of selling that debt to anyone else," {n}she says.{/n} "A pity. I could have taught him how."''', c('[Let him leave with the torn agreement.]', "work")),
     n("circles", "Narrator", '''{n}She holds up the construction sheet. Every circle has a corresponding diagram beneath it. Two have been redrawn in different ink.{/n}
 "He attempted to omit the resetting pin. I made him begin again. He has now finished."
 {n}She calls Serit into view and points to the last drawing. He demonstrates with a loose brass pin. Jerribeth watches, asks one question, and receives an answer short enough to satisfy her.{/n}
 {n}Then she holds his agreement over the lamp on her side. The lower edge blackens. Serit watches until the flame reaches his signature.{/n}
-"I could have made another copy," she tells you when he turns away. "I did not."
+"I could have made another copy," {n}she tells you when he turns away.{/n} "I did not."
 "Does he know that?"
 "He asked. I answered. He will have to decide whether to believe me. That seems to trouble him more than the debt did."''', c('[Wait until the last fragment has burned.]', "work")),
     n("work", "Jerribeth", '''{n}Serit leaves her image. Jerribeth brushes a scrap of paper from the table with one careful finger.{/n}
@@ -384,7 +384,7 @@ s("counterfeit_spoil", "What she keeps in the drawer", [
 
 s("counterfeit_after", "The voice she cannot rehearse", [
     n("start", "Narrator", '''{n}The table is gone from the image when you return. Jerribeth has made a window overlooking a city that could not stand. Its upper streets turn through one another; a tower bends until its highest balcony hangs beneath its own door. Small lights move along the impossible paths.{/n}
-"No catalogue," she says. "I began this before Vardess learned to order a collar. I keep changing the streets. There is no need to decide where you want to go."
+"No catalogue," {n}she says.{/n} "I began this before Vardess learned to order a collar. I keep changing the streets. There is no need to decide where you want to go."
 {n}Her own narrow silhouette stands beside the invented window. A passing light catches one wing and travels along its edge.{/n}
 "You supplied a voice to my room. I have been thinking about how little opportunity I gave it to say anything that was not useful."''',
       c('"Then listen. I have been looking forward to seeing you."', "wanted"),
@@ -472,7 +472,7 @@ s("counterfeit_after", "The voice she cannot rehearse", [
 "Especially the ones you keep hoping will improve."
 {n}She takes her hand away from the sill. The frame remains exactly as it was.{/n}''', c('[Keep the question open without claiming to have solved it.]', "end")),
     n("end", "Jerribeth", '''{n}Before you part, Jerribeth returns the little faceless puppet to the edge of her image. It raises one hand as though preparing to make a declaration.{/n}
-"I have found its proper occupation," she says.
+"I have found its proper occupation," {n}she says.{/n}
 {n}The puppet opens a tiny door and gets out of the way. Beyond it is the impossible city, seen from beneath the first turning street.{/n}
 "There. It finally knows when to stop talking."
 "You should keep it."

@@ -165,6 +165,10 @@ last_joke("trickster.lastcall.last_joke.areelu", AREELU_LISTS, heroic=False)
 # --- Block A: the report, interrupted (native PlayerFinalChoice sequence, E14a) -------------------------------------------
 
 def block_a(id, title, text, requires, after, paragraphs, forbids=()):
+    # eng7-f2: these epilogue surfaces are narration, including quoted recollections.
+    text = "{n}" + text + "{/n}"
+    paragraphs = [{**para, "Text": "{n}" + para["Text"] + "{/n}"} for para in paragraphs]
+    # end eng7-f2
     SCENES.append(scene(id, title, "Epilogue", 1, "", [nar("page", text, paragraphs=paragraphs)],
                         requires=("trickster.ever",) + tuple(requires), forbids=("trickster.failed",) + tuple(forbids),
                         last=99, Relationship=REL, EpilogueSequence="PlayerFinalChoice", EpilogueAfter=after))
@@ -231,6 +235,12 @@ LAST_WORD = scene("trickster.lastcall.page.last_word", "The Last Word", "Epilogu
         ))],
     requires=("trickster.ever", ACTIVE), forbids=("trickster.failed",), last=99, Relationship=REL)
 
+
+# eng7-f2: the separately constructed final page is narrative too.
+LAST_WORD["Nodes"][0]["Text"] = "{n}" + LAST_WORD["Nodes"][0]["Text"] + "{/n}"
+for _paragraph in LAST_WORD["Nodes"][0]["Paragraphs"]:
+    _paragraph["Text"] = "{n}" + _paragraph["Text"] + "{/n}"
+# end eng7-f2
 
 # --- The Ledger's lines (E15) -------------------------------------------------------------------------------------------
 

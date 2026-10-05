@@ -1,0 +1,9 @@
+# Nocticula: Council 5-2 route R-A (Council with you against Nocticula), she is "defeated, projected, alive" (noct.defeated_not_dead).
+# Chapter granularity: the Council 5-2 fight happens late in Ch5, AFTER the nocticula.acquisition letters finish.
+# The sim cannot split a chapter, so the fight keys are entered at ch6 (entering them at ch5 blocks the whole Ch5 acquisition chain,
+# which Forbids noct.acq.council_fight). Run with CHDAYS=6=3 (trace2.py): the three Threshold scenes are consecutive entries
+# on the same native answer list, but the sim allows one scene per relationship per day and Ch6 is 1 sim day by default.
+noct.will_attend:5            # Ch5 boudoir audience: Nocticula/Answer_0011 "Your brother sent me to play a prank on you..." (NoctaWillAttendTheCouncil)
+noct.acq.council_disclosed:5  # same answer (SelectedAnswers fd4f6c1d...), satisfies noct.acq.the_missing_line's RequiresAnyGroups
+noct.dead:6                   # Council 5-2 Answer_0044 [Join the Council and attack Nocticula] -> she falls -> NocticulaDead (really late Ch5)
+noct.acq.council_fight:6      # same fight: FightAgaintsNoctaCouncilAllied ed5d1dfa... (really late Ch5)

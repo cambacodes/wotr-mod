@@ -1,0 +1,7 @@
+# Wenduag, state "kept" (W path, alive, native romance never activated)
+wenduag.chosen:0          # Prologue Mongrel Labyrinth: "Come with me, Wenduag." (Answer_0027) -> Venduag_Chosen
+wenduag.in_party:1        # she stays recruited Ch1-Ch6 (WenduagCompanion etude); never exiled
+yaniel.freed:3            # Ch3 Midnight Fane: never pick a kill answer in TrueYaniel dialog -> Yaniel_Freed
+wenduag.heard_savamelekh:4  # Ch4 Alushinyrra interlude SavaAndWendu Cue_0023 (plays only while her native romance is inactive)
+wenduag.q3_turned_on_him:5  # Ch5 Q3 FinalSava: Respect 1+2+3 -> she turns on Savamelekh (Cue_0035)
+savamelekh.dead.w:5       # Ch5 Q3_TraitorsBlood completed

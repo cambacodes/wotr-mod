@@ -60,6 +60,7 @@ sys.path.insert(0, str(ROOT))
 from storylines import earned_presence as ep   # noqa: E402
 # eng7-l06: validation reads export data, never a generation-time module mutation.
 from tools import presence_exception_schema, presence_dependency_lint, presence_failure_lint
+from tools.player_text_lint import narration_free
 # eng7-l06 end
 
 NATIVE_KINDS = ("Etudes", "CompletedQuests", "SeenCues", "SelectedAnswers", "StartedDialogs", "CompletedEtudes",
@@ -207,7 +208,9 @@ def producer_presence_errors(story):
     # eng7-l06: dependency checking is separate from q6a's L1 consumer-presence lint.
     hard.extend(presence_exception_schema.errors(story))
     hard.extend(presence_failure_lint.check(story))
-    hard.extend(presence_dependency_lint.check(story, presence_dependency_lint.OWNED_ROUTES))
+    # eng7-f4: the strict verifier covers contact/return dependencies on every route.
+    hard.extend(presence_dependency_lint.check(story))
+    # eng7-f4 end
     return hard
 
 
@@ -245,7 +248,7 @@ def check(story, review=False):
             continue
         for node in scene.get("Nodes") or []:
             for index, paragraph in enumerate(node.get("Paragraphs") or []):
-                if any(paragraph.get("Text", "").startswith(c["prefix"]) for c in contracts):
+                if any(narration_free(paragraph.get("Text", "")).startswith(c["prefix"]) for c in contracts):
                     if not (dead_defined and DEAD in (paragraph.get("Forbids") or [])):
                         hard.append("EP6 %s/%s/paragraph[%d]: living continuation lacks earned Commander survival" %
                                     (scene["Id"], node["Id"], index))

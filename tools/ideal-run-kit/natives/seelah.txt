@@ -1,0 +1,6 @@
+# Seelah: recruited in the Prologue, kept in the party Ch1-Ch5, all four personal quests completed, best ending
+seelah.in_party:0                 # Prologue caves (MeetSeelahAnevia Cue_0049): automatic recruit; never dismiss her
+seelah.houndheart_seen:2          # Ch2 Seelah Q1 "The League of the Inspiring Cart", Houndhearts camp (KnightCamp Cue_0011/Cue_0012)
+seelah.abyss_holding_up:4         # Ch4 her companion dialog: ask "How are you holding up?" (Answer_0119) -> opens seelah.abyss.night
+seelah.q3_started:5               # Ch5 day 25: ktc_ElanCalls, "All right. I'll help you." (Answer_0007)
+seelah.souls_returned:5           # Ch5: Q3 "The Weight of My Sword" completed, souls returned (Seelah_BestEnding)

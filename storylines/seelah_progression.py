@@ -48,7 +48,7 @@ def future_gate_nodes(destination="start", migration=False):
     if not migration:
         activity_choices.append(c('"I want to see you again. But I cannot promise whole days together before the war ends."', "short_quest", forbids=("seelah.late_race_kept",)))
     nodes = [
-        n("future_entry", "Seelah", title, c('"Tell me."', "future_abyss"), c('"Tell me another evening."', abort=True)),
+        n("future_entry", "Seelah", '"' + title + '"', c('"Tell me."', "future_abyss"), c('"Tell me another evening."', abort=True)),
         n("future_abyss", "Seelah", '''"First, have we left anything hanging? Drawing a hearth on a scrap of paper won't make it go away."''',
           c('"Nothing hanging. What shall we do together?"', "future_activity", forbids=("seelah.letter_unsettled",)),
           c('"We talked, and we went back to the copyist. I have not forgotten."', "future_activity", requires=("seelah.letter_unsettled", "seelah.copyist_followed")),

@@ -110,7 +110,7 @@ fortune(BAG, "Will it hurt?", '"You\'ve been quiet since the cauldron."', [
 {n}Then her face does something complicated.{/n} "But you put the coin there. It didn't stand up by itself." {n}A long silence.{/n} "Are you going to put another way there, too? Make it up? Because if you do, and it's a trick, and it doesn't work, I'll have hoped for nothing, and I'll never forgive you."''',
       c('"No tricks. If there\'s no other way, I\'ll tell you."', "brave", flags=(TOLD_IT_HURTS,))),
     ch("keep", '''{n}She holds your eyes for a long time, measuring, the way she looks at a coin she suspects of being weighted.{/n}
-"All right," she says at last. "I'll hope. I'm very good at hoping. You be very good at finding." {n}She takes your hand and puts it on the table between you, and puts hers over it.{/n} "And if you can't, you tell me first. Before the needle. Not after."''',
+"All right," {n}she says at last.{/n} "I'll hope. I'm very good at hoping. You be very good at finding." {n}She takes your hand and puts it on the table between you, and puts hers over it.{/n} "And if you can't, you tell me first. Before the needle. Not after."''',
       c("[Promise that too.]")),
     ch("there", '''"There." {n}She thinks about it.{/n} "Yes. That I can hold. If there's a needle, you'll be there."
 {n}She squeezes your fingers so hard her bracelets bite.{/n} "Hold my hand. Don't look at the needle. Tell me a joke. A bad one. I like the bad ones."''',
@@ -174,7 +174,7 @@ fortune(BOWS, "Matching ribbons", '"You offered Nocticula ribbons."', [
 {n}Then, more slowly:{/n} "I'm not afraid of her. Isn't that strange? I'm afraid of a needle, and I'm not afraid of the Lady in Shadow. I think it's because she's all show, and the needle isn't."''',
       c("Continue", "close")),
     ch("politely", '''{n}She stops clapping. She thinks about it, properly, with her tongue between her teeth.{/n}
-"Both," she says at last. "Heads and tails." {n}A small, guilty smile.{/n} "I wanted her to feel better. I also wanted to see what she'd look like with a big yellow bow on her horns. I don't think those are different wants. I think that's just what being kind is, mostly."''',
+"Both," {n}she says at last.{/n} "Heads and tails." {n}A small, guilty smile.{/n} "I wanted her to feel better. I also wanted to see what she'd look like with a big yellow bow on her horns. I don't think those are different wants. I think that's just what being kind is, mostly."''',
       c("Continue", "close")),
     ch("did", '''"I know." {n}She looks at you with bright, uncomplicated fondness.{/n} "That was a good trick. A mean one. But she deserved a little meanness; she's been very mean to lots of people for a very long time."
 "And then I offered her ribbons, so it came out even." {n}She nods, satisfied with the arithmetic.{/n} "You do the mean part, and I do the ribbons. We're a good pair."''',
@@ -201,7 +201,7 @@ fortune(MEAN, "Worthless", '"About what you said to Socothbenoth."', [
       c('"Then don\'t do it again."', "again"),
       c('"Everyone has a worst moment. That was yours."', "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
     ch("hurt", '''{n}She flinches as if you had thrown something.{/n}
-"Good," she says, and then, horrified: "No. Not good. I meant... good that you told me. Not good that you had to hear it." {n}She presses the grey parcel against her chest.{/n}
+"Good," {n}she says, and then, horrified:{/n} "No. Not good. I meant... good that you told me. Not good that you had to hear it." {n}She presses the grey parcel against her chest.{/n}
 "I'm not used to hurting people. I'm used to hurting for them. I don't know what to do with this. I baked. I burnt them. They're in here."''',
       c("[Take the burnt cookies, and eat one.]", "forgive", flags=(FORGAVE_MEAN,), requires=(MORNING,)),
       c("[Take the burnt cookies, and eat one.]", "forgive_early", flags=(FORGAVE_MEAN,), forbids=(MORNING,))),
@@ -235,7 +235,7 @@ fortune(AFTER_NEEDLE, "Sharp needles", '"How are you?"', [
       c('"It will grow back?"', "grow"),
       c('"I promised you. I\'m sorry."', "sorry", requires=(PROMISED_SAFE,))),
     ch("sit", '''{n}You sit. After a while she leans against you, the whole warm weight of her, and breathes out, long and slow.{/n}
-"This is better than any cookie," she says into your shoulder. "Don't tell anyone I said that. It would ruin my whole reputation."
+"This is better than any cookie," {n}she says into your shoulder.{/n} "Don't tell anyone I said that. It would ruin my whole reputation."
 "...Tell me a joke. A bad one."''',
       c("[Tell her a very bad joke.]", "joke")),
     ch("grow", '''"I don't know." {n}She shrugs, and winces.{/n} "Nobody's ever taken any of me before. Nobody can tell me if it heals. Shyka just smiled when they said it would hurt, so I'm not asking Shyka anything any more."
@@ -245,7 +245,7 @@ fortune(AFTER_NEEDLE, "Sharp needles", '"How are you?"', [
 "You didn't break anything. I gave it, because you needed it, and I'm a lot braver than I look." {n}Her chin wobbles, and lifts.{/n} "I just didn't know brave felt this bad afterwards. Nobody tells you."''',
       c("[Hold her.]", "joke", flags=(HELD_AFTER,))),
     ch("joke", '''{n}She laughs. It is a small laugh, and it catches on something, but it is a real one.{/n}
-"That was awful," she says. "That was the worst one yet." {n}She wipes her eyes on the not-yellow shawl.{/n}
+"That was awful," {n}she says.{/n} "That was the worst one yet." {n}She wipes her eyes on the not-yellow shawl.{/n}
 "Tomorrow I'll bake. Tomorrow I'll wear yellow. Tonight I'm going to sit here with you and be sad, and it's going to be the luckiest sad I've ever been."''',
       c("[Stay.]")),
 ], requires=(STARTED, NEEDLED), forbids=(AFTER_NEEDLE,), chapters=(5,))
@@ -273,10 +273,10 @@ fortune(NIGHT, "Honey", '"You sent for me. After dark."', [
 {n}Her bracelets are cold against the back of your neck and her mouth is hot, and she makes a small astonished sound, as if something unexpectedly wonderful had happened to her, which, you slowly understand, it has.{/n}''',
       c("Continue", "silk")),
     ch("silk", '''{n}She is soft everywhere your hands go, and warm, and nowhere near as patient as she was trying to look. The yellow silk slides off one round shoulder, and she does not catch it. She is busy with your buckles, and cursing them, sweetly and inventively, in a language that sounds like birdsong and is obviously filthy.{/n}
-"Whoever made this armour," she says, "has never been kissed. Not once. I can tell. It's in the straps."''',
+"Whoever made this armour," {n}she says,{/n} "has never been kissed. Not once. I can tell. It's in the straps."''',
       c("[Help her with the straps.]", "look")),
     ch("look", '''{n}When the last of it is off she pulls you down among the cushions, and the candles gutter in the draught you make, and for a moment she simply lies there looking up at you, flushed and dishevelled, one hand spread flat on your chest as if feeling for a heartbeat she had bet on.{/n}
-"Lucky me," she whispers, and she does not mean it as a joke.''',
+"Lucky me," {n}she whispers, and she does not mean it as a joke.{/n}''',
       c("[Lean down to her.]", "cut", flags=(NIGHT_FLAG,))),
     ch("cut", '''{n}She pulls the silk loose the rest of the way and draws you down to her, and her laugh against your mouth is the last thing you hear clearly. Somewhere along the table a candle tips over and goes out, and neither of you notices, and neither of you minds.{/n}''',
       c("[...]")),

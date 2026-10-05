@@ -81,7 +81,7 @@ Vhal proposes an authorial appearance before a small group of subscribers visiti
 Nurah has circled discreetly and written: She has already printed your name.
 The collector's local representative is an editor named Reth Carrow. He will receive revisions and arrange the subscribers' evening. Nurah proposes meeting you first, privately, to decide what to do with him. She has enclosed a smaller note for the courier to deliver if you agree.
 It gives no place yet. She wants a way into Drezen that does not walk her past soldiers who remember the siege, and she means to walk it once herself before she trusts it.{/n}
-"Do not send me an honor guard," she adds. "If I wanted a row of men discussing whether I deserve to live, I would attend a temple. Name me a door nobody salutes. If I find a sentry on it, I shall assume you put him there to watch me, and I shall be right, and you will not see me again."
+"Do not send me an honor guard," {n}she adds.{/n} "If I wanted a row of men discussing whether I deserve to live, I would attend a temple. Name me a door nobody salutes. If I find a sentry on it, I shall assume you put him there to watch me, and I shall be right, and you will not see me again."
 {n}The courier has a blank sheet, a clean reed pen, and the patient look of a man determined not to ask why the author of the book hates it.{/n}''',
       c('[Send her a door nobody salutes, and an invitation to use it.]', "sent"),
       c('[Keep the packet and put off your answer.]', "later"),
@@ -105,9 +105,9 @@ Whatever Nurah does to Vhal now, she will do it without you, and she will probab
 
 visit("invitation_reply", "The answer in the margin", [
     n("start", "Narrator", '''{n}The reply arrives in the hands of a different courier, an older woman carrying a basket of mended gloves. She produces Nurah's letter from beneath a patchwork mitten and waits while you check the seal.{/n}
-"She said you might be suspicious," the woman says. "I told her I would charge extra if the suspicion involved a search."
-Nurah has written on the back of your own invitation. She has struck out a sentence about discretion and replaced it with something more specific: nobody is to announce her name to a room full of strangers.
-"A cloak is not a miracle," the reply begins. "I have walked your stair. The fourth step from the top squeals; I have put candle-wax on it, and if it squeals again I shall know somebody scraped the wax off, and who. I will use your door on one condition: nobody makes the meeting into a spectacle. That includes you, on the evenings you have had a very clever idea.
+"She said you might be suspicious," {n}the woman says.{/n} "I told her I would charge extra if the suspicion involved a search."
+{n}Nurah has written on the back of your own invitation. She has struck out a sentence about discretion and replaced it with something more specific: nobody is to announce her name to a room full of strangers.{/n}
+"A cloak is not a miracle," {n}the reply begins.{/n} "I have walked your stair. The fourth step from the top squeals; I have put candle-wax on it, and if it squeals again I shall know somebody scraped the wax off, and who. I will use your door on one condition: nobody makes the meeting into a spectacle. That includes you, on the evenings you have had a very clever idea.
 "I will come when I send word that I am coming, and not otherwise. If you ever send a man to fetch me, he will find a room with nobody in it and a very rude note on the pillow.
 "Now to the interesting part. Carrow sent me a sample of the dedication. It thanks my former master for discovering the talent that would otherwise have wasted itself in idleness. You may imagine the notes I have made in the margin.
 "I have decided to hear his offer. I have not decided to let him finish it. Come prepared to give me a reason."
@@ -168,7 +168,7 @@ She looks past you before looking at you. From the passage comes the rattle of a
       c('"Show me whether you have brought your own corrections first."', "corrections")),
     n("kiss", "Nurah", '''{n}Nurah meets you halfway. Her fingers tighten on your coat, then slide upward until they rest along your jaw. A servant turns into the passage behind her, carrying an empty tray. She breaks the kiss just long enough to turn a blandly polite smile toward him.
 He recognizes the Commander and makes a clumsy attempt to straighten. Nurah has pulled her hood forward before he can take a closer look.{/n}
-"Good evening," she says, in a voice so harmless that you nearly laugh. "The Commander is helping me with a difficult passage."
+"Good evening," {n}she says, in a voice so harmless that you nearly laugh.{/n} "The Commander is helping me with a difficult passage."
 {n}The man wishes you luck and hurries away. Nurah waits three breaths, then leans against you, laughing into your coat.{/n}
 "I thought he was going to offer to hold the book."
 "You gave him the opportunity."
@@ -190,7 +190,7 @@ Then she gives you the second volume, briskly enough to suggest she has remember
 "Read. We can be distracting afterward."''', c('[Open her corrected copy.]', "two_copies", flags=f("first_teasing"))),
     n("two_copies", "Narrator", '''{n}Nurah has not merely crossed out the false dedication. She has replaced its flattering phrases with notes on the kinds of error a wealthy subscriber is likely to overlook. A date has moved by three years. A campaign has acquired a commander who was dead when it began. A servant who carried a message has become the lord who dictated it.
 She has left the imitation of her own signature untouched.{/n}
-"That is the useful part," she says. "If we only tell Carrow he forged a name, he will say the printer made a mistake. If we ask him to defend the chapter, we may find out who told him which mistakes to make."
+"That is the useful part," {n}she says.{/n} "If we only tell Carrow he forged a name, he will say the printer made a mistake. If we ask him to defend the chapter, we may find out who told him which mistakes to make."
 "And your corrections?"
 "Tell him I noticed. Not how much."
 {n}A gust lifts the loose dedication page. Nurah traps it against your arm, her hand flattening over the line about obedience.{/n}
@@ -238,11 +238,11 @@ She has left the imitation of her own signature untouched.{/n}
     n("plan", "Nurah", '''"He wants an interview with the author. He can have one. I will decide how much author he survives hearing."
 {n}She has arranged for Carrow to send a proof of the disputed chapter before the subscribers' evening. The sheet will be brought to the same appointment by a compositor named Sava Lorn, whom the editor trusts to keep her mouth shut about work.
 Nurah has already asked the woman to stay long enough to discuss the printing. Carrow does not know that part.{/n}
-"I am going to need you to do something difficult," she says.
+"I am going to need you to do something difficult," {n}she says.{/n}
 "Listen?"
 "Worse. Let him think he has pleased you before he learns what you noticed."
 {n}Footsteps pass outside. Nurah glances at the closed door, her hand resting on your wrist until they fade.{/n}
-"I will come back with the proof," she says. "We can decide how to dress the lie once we know where it is weakest."
+"I will come back with the proof," {n}she says.{/n} "We can decide how to dress the lie once we know where it is weakest."
 "And the book?"
 "Keep both. If you lose the corrected one, I will expect you to remember every insult."
 {n}She gives your wrist a final squeeze and lets go. Before leaving she listens at the door, then takes the quieter passage away.{/n}''', c('[Keep the copies and prepare to examine Carrow\'s proof.]', flags=f("first_meeting_finished"))),
@@ -257,52 +257,52 @@ Nurah tilts her head.{/n}
 "I have considered putting it on every bill Mr. Carrow refuses to pay."
 {n}Sava unwraps a printer's proof and smooths it against the bundle. The page is crowded with corrections in two inks. One hand wants a sentence made more flattering; another wants the name of a witness removed. Neither has initialed the change.
 Nurah gives you a clean copy. Sava retains the marked one.{/n}
-"He told me to take your corrections and leave," the compositor says. "He did not tell me how long you would take to make them."
-"An encouraging omission," Nurah says. "We may be able to work with it."
+"He told me to take your corrections and leave," {n}the compositor says.{/n} "He did not tell me how long you would take to make them."
+"An encouraging omission," {n}Nurah says.{/n} "We may be able to work with it."
 {n}The disputed paragraph describes a retreat near the Worldwound. Its date is written out in full. Beneath it, a footnote cites a supply book and the name of a commander. Nurah places a scrap beside the page: a copied entry from that supply book, with a change of command recorded at its head.
 She rests one finger on the two dates and waits.{/n}''',
       c('[Compare the dates and the authority named in the two accounts. Knowledge: World, DC 31.]', check=dict(Skill="SkillKnowledgeWorld", DC=31, Success="chronology", Failure="wrong_year", CommanderOnly=True)),
       c('"You have already found something. Tell me what you want to do with it."', "her_error")),
     n("chronology", "Nurah", '''{n}The proof has preserved the date of an order and given it to the officer who succeeded its author. The supply book distinguishes the two appointments. The printed account does not.
 You turn the copied entry so Sava can see the heading and point out the change. She reads it twice.{/n}
-"That footnote was added yesterday," she says. "It was not in the first copy."
-"Whose correction?" you ask.
+"That footnote was added yesterday," {n}she says.{/n} "It was not in the first copy."
+"Whose correction?" {n}you ask.{/n}
 "Carrow brought it. The writing was already on the sheet."
 {n}Nurah's smile has narrowed. She takes the clean proof from you, holds it against the marked one without touching Sava's copy, and compares the spaces left for the missing witness.{/n}
-"Somebody wanted the old commander gone and his successor in the room," she says. "It is a remarkable improvement for a man who arrived after the retreat."
+"Somebody wanted the old commander gone and his successor in the room," {n}she says.{/n} "It is a remarkable improvement for a man who arrived after the retreat."
 "An error they may correct if we point it out now."
 "Then we will point at something else. Sava, tell your editor I object to the word exemplary. It is lazy."
 {n}Sava copies that complaint in the margin, leaving the useful error untouched. Nurah catches your eye while the compositor is writing.{/n}
 "You found the interesting one. I was afraid you would stop at the bad prose. There is so much of it to choose from."''', c('[Keep the hidden chronological defect for the interview.]', "witness", flags=f("chronology_kept"))),
     n("wrong_year", "Narrator", '''{n}You begin with the date in the proof, treating the adjacent name as the officer who held command at the time. Sava glances at Nurah. Nurah reaches across and puts a finger over the later appointment in the supply book.{/n}
-"That is his successor," she says. "Read the heading."
+"That is his successor," {n}she says.{/n} "Read the heading."
 {n}The mistake becomes plain. Sava has already written the opening of your objection on the correction sheet. She draws a line through it.{/n}
-"I cannot take that line off the paper," she says. "He numbers the sheets. If I return a clean one, he will ask for this one."
-"Let him ask," Nurah says.
+"I cannot take that line off the paper," {n}she says.{/n} "He numbers the sheets. If I return a clean one, he will ask for this one."
+"Let him ask," {n}Nurah says.{/n}
 "He will ask me."
 {n}Nurah looks at the scored-out words, then at the copied entry. Her jaw tightens.{/n}
 "Fine. Tell him we were looking at the date. He can waste an evening working out how much we noticed."
 "He will check it."
 "I know."
 {n}She gives the proof back to you. The useful omission is still there, but the editor will know where to look before he sees you again.{/n}
-"We can make him talk about the revision," Nurah says. "It would have been more entertaining to watch him defend the original. Do not offer to apologize to the paper. It has suffered enough."''', c('[Let the visible correction warn Carrow; prepare for a revised defense.]', "witness", flags=f("editor_warned"))),
+"We can make him talk about the revision," {n}Nurah says.{/n} "It would have been more entertaining to watch him defend the original. Do not offer to apologize to the paper. It has suffered enough."''', c('[Let the visible correction warn Carrow; prepare for a revised defense.]', "witness", flags=f("editor_warned"))),
     n("her_error", "Nurah", '''"I want him to explain a little miracle. His officer has managed to command a retreat before being given command."
 {n}She lays the supply entry across the proof. You can see the succession now: one officer in the heading, another beneath the later appointment. The printed account has given the second man the first man's order.{/n}
 "You could have told me that immediately."
 "Yes. And missed the pleasure of watching you decide whether to ask."
 {n}She takes a pencil from Sava, adds a complaint about the adjective exemplary, and returns it. The compositor copies the harmless objection without asking about the dates.{/n}
-"Now I want to choose our first question at the interview," Nurah says. "Carrow will be expecting you to ask about your own reputation. I want to ask him who died before this officer arrived."
+"Now I want to choose our first question at the interview," {n}Nurah says.{/n} "Carrow will be expecting you to ask about your own reputation. I want to ask him who died before this officer arrived."
 "You have a name?"
 "The name of the woman whose account he removed. It is still visible under the correction on Sava's sheet."
 {n}Sava turns the marked proof slightly away. Nurah stops reaching for it.{/n}
-"You may look," Sava says. "You are not keeping it."
+"You may look," {n}Sava says.{/n} "You are not keeping it."
 "I was going to ask very charmingly."
 "You were going to fold it into the other one."
 {n}Nurah grins, caught and unashamed.{/n}
 "Then we had better both be careful. I will ask the first question. You may watch whether he looks at you or the door."''', c('[Let Nurah control the first question and retain the unexposed flaw.]', "witness", flags=f("nurah_leads_interview"))),
     n("witness", "Narrator", '''{n}Sava lays her proof flat again. A name remains faintly visible beneath the removed footnote: Bressa. Nurah has stopped smiling.{/n}
-"The sentence was longer in the first copy," Sava says. "It described a woman sent back along the road to recover a case of papers. She was missing when the rest reached the next camp."
-"Missing," Nurah repeats.
+"The sentence was longer in the first copy," {n}Sava says.{/n} "It described a woman sent back along the road to recover a case of papers. She was missing when the rest reached the next camp."
+"Missing," {n}Nurah repeats.{/n}
 "That is what it said."
 "And now she is grateful."
 {n}The compositor's fingers close around the edge of the page. You notice a band of clean skin where a ring has been removed.{/n}
@@ -314,14 +314,14 @@ You turn the copied entry so Sava can see the heading and point out the change. 
 "Does Carrow still have it?"
 "In a locked case. With the subscriber list. He says it is the only part of the project worth protecting."
 {n}Nurah looks at you, then slides the clean proof underneath Sava's hand, preventing her from wrapping the bundle without moving it.{/n}
-"That case," she says. "I want it open."''',
+"That case," {n}she says.{/n} "I want it open."''',
       c('"Give us a way to see it. You will be paid for the work and kept out of the public accusation."', "paid_help"),
       c('"Carrow will blame the printer if this fails. Help us, and we can put his own corrections in front of him."', "shared_danger"),
       c('"Return the proof. We will find our own way into his case."', "leave_sava")),
     n("paid_help", "Sava", '''"I want what he owes me first. Three weeks of wages and the paper I bought when he said he would reimburse me. I can show you the bills."
 {n}Nurah makes an impatient movement. You wait. Sava takes a narrow roll from inside her sleeve and flattens it beside the proof.
 The sum is written at the bottom, with each late payment marked above it. Nurah reads down the marks.{/n}
-"He is paying subscribers' expenses with your wages," she says.
+"He is paying subscribers' expenses with your wages," {n}she says.{/n}
 "I know what he is doing. I want to stop financing it."
 {n}Nurah counts coins from her own purse. She pays the arrears recorded on the roll, then pushes the purse closed before Sava can mention the paper.{/n}
 "The paper when you bring what you promised. I am not buying a second promise on the strength of the first."
@@ -342,7 +342,7 @@ Nurah objects. Sava begins wrapping the bundle. The halfling lets the objection 
 "All right. We will open it. Keep your signed dedication somewhere he cannot burn it while apologizing."
 {n}Sava nods once. She has left with her wages still unpaid, and she makes sure Nurah remembers that before she goes.{/n}''', c('[Keep the shared evidence and Sava\'s limited cooperation.]', flags=f("proof_examined", "sava_evidence"))),
     n("leave_sava", "Nurah", '''{n}Nurah takes her hand off the proof. Sava wraps it before she can reconsider.{/n}
-"Tell Carrow we are interested," the halfling says. "Use whatever tone makes him most pleased with himself."
+"Tell Carrow we are interested," {n}the halfling says.{/n} "Use whatever tone makes him most pleased with himself."
 "That will not be difficult."
 {n}The compositor carries the bundle away without giving you the case's construction or the place where Carrow keeps its key. Nurah watches her go.{/n}
 "You have left us with more work."
@@ -357,7 +357,7 @@ Nurah objects. Sava begins wrapping the bundle. The halfling lets the objection 
 
 visit("the_borrowed_audience", "An audience in borrowed clothes", [
     n("start", "Narrator", '''{n}At the next appointment Nurah takes one look at your clothes and makes a noise of profound disappointment.{/n}
-"You look like the Commander," she says.
+"You look like the Commander," {n}she says.{/n}
 "A difficult habit to break."
 "We are not trying to convince Carrow you are somebody else. We are trying to convince him you are a particular kind of fool. There is a difference."
 {n}For the rehearsal she has borrowed a small room near the tavern. She leads you there from the appointment, shuts the door, and sets two chairs on opposite sides of a narrow table. A third stands against the wall with a coat hanging over it.
@@ -409,7 +409,7 @@ She sees you glance at that last sentence.{/n}
 "Will they agree?"
 "A man who has bought an exclusive privilege will usually travel a considerable distance to make sure somebody else has not been given it for free."
 {n}She reads the invitation aloud in a brisk, officious voice. The authority in it belongs to the appointment itself: the editor must reconcile the submitted wording before the Commander can endorse the edition. She has promised no endorsement.{/n}
-"He may refuse," you say.
+"He may refuse," {n}you say.{/n}
 "Then he tells both men he cannot put their claims beside each other. That is also an answer."
 {n}She holds the page up for you to see, but takes it back when you reach for it.{/n}
 "I am sending these. If either representative asks who arranged the collision, I want to have the pleasure of being difficult to find."''', c('[Send the incompatible claims to the same appointment.]', "ready_double", flags=f("cover_double"))),
@@ -418,7 +418,7 @@ She sees you glance at that last sentence.{/n}
 "He has printed the title when it suits him. He can answer to it when it does not."
 "He will ask for a public audience. A painting for his little book, with himself standing beside the throne. We would never get rid of the engravings."
 {n}She takes the pencil and writes a short refusal on the back of the invitation. The meeting will remain private. The editor may bring the disputed originals and explain which authority he believed he had to publish a royal dedication before obtaining approval.{/n}
-"I am not going to sit at the end of a row of soldiers while he performs his astonishment," she says. "If he wants to address a queen, he may do it in a room small enough that I can hear him swallow."
+"I am not going to sit at the end of a row of soldiers while he performs his astonishment," {n}she says.{/n} "If he wants to address a queen, he may do it in a room small enough that I can hear him swallow."
 "You enjoyed deciding that."
 "I am beginning to understand why people defend hereditary privilege so enthusiastically. It saves them from having to be interesting before they are obeyed."
 {n}She places the completed refusal in your hand and curls your fingers over it.{/n}
@@ -439,7 +439,7 @@ Her laugh breaks the performance before yours does.{/n}
 "I was. You became embarrassing. It is a surprisingly effective defense."
 {n}She reaches for the papers. You catch the flattering one first and read her absurd addition about the dragon aloud. Nurah lunges for it, one hand braced on your knee, and tears the margin rather than let you finish.
 For a moment neither of you moves. Then she kisses you, hard enough to make the chair creak when you draw her closer.{/n}
-"Practice is over," she says against your mouth. "Do not use that voice again until somebody is paying to hear it."''', c('[Use the rehearsed deception at the interview.]', flags=f("audience_ready", "cover_held"))),
+"Practice is over," {n}she says against your mouth.{/n} "Do not use that voice again until somebody is paying to hear it."''', c('[Use the rehearsed deception at the interview.]', flags=f("audience_ready", "cover_held"))),
     n("broken_cover", "Nurah", '''{n}Your eyes follow her hand. Nurah stops speaking in the middle of a compliment and lifts the concealed sheet.{/n}
 "There. He sees that, and the case stays shut."
 "You knew what I was looking for."
@@ -450,7 +450,7 @@ For a moment neither of you moves. Then she kisses you, hard enough to make the 
 "It is not. You have made it harder."
 {n}She lets the words stand. When you reach for the clean proof, she gives it to you without another demonstration.
 You try the entrance once more. She corrects the first sentence, then the way you wait for a reply. By the time she is satisfied, the light at the window has changed and she has abandoned the idea of an unhurried evening.{/n}
-"Next time," she says, collecting the papers. "Unless you intend to rehearse falling asleep in the chair as well."''', c('[Proceed with Nurah covering the weakness in the performance.]', flags=f("audience_ready", "cover_fragile"))),
+"Next time," {n}she says, collecting the papers.{/n} "Unless you intend to rehearse falling asleep in the chair as well."''', c('[Proceed with Nurah covering the weakness in the performance.]', flags=f("audience_ready", "cover_fragile"))),
     n("open_pressure", "Nurah", '''"That will get him through the door. It will also make him bring the least useful things he can call originals."
 "Then we catch the substitution."
 "We had better."
@@ -462,7 +462,7 @@ Then she scratches out the sentence about being delighted by the proposed editio
 {n}She pushes the better chair back into place. This time she sits in it herself, stretching out her legs and letting you find somewhere else to stand.
 The interview will begin with a demand rather than a deception. Carrow will have time to prepare for that demand, and Nurah makes you repeat which original you want before she lets the subject go.{/n}''', c('[Use open authority and expect a prepared answer.]', flags=f("audience_ready", "cover_open"))),
     n("ready_double", "Nurah", '''{n}She rereads both invitations, making a small change to one greeting and none to the other. The two claims now lead to the same place at the same time for reasons their owners will find entirely flattering.{/n}
-"The dangerous moment is when they realize each has been promised something the other cannot permit," she says. "If we let them quarrel only with each other, Carrow may escape with the case."
+"The dangerous moment is when they realize each has been promised something the other cannot permit," {n}she says.{/n} "If we let them quarrel only with each other, Carrow may escape with the case."
 "So we keep him between them."
 "Verbally, if possible. The room is rather small for wrestling."
 {n}She measures the gap between the chairs with a glance, then looks at you with fresh amusement.{/n}
@@ -477,7 +477,7 @@ The interview will begin with a demand rather than a deception. Carrow will have
 "Good. He can write it down and improve his education."
 {n}She folds the invitation without a seal. Carrow will have to read it before deciding which parts he wishes he had not seen.
 The title will get you a guarded editor and an audience in which he cannot pretend he does not know who is asking. It will not open his case by itself. Nurah turns the practice clasp toward you and makes you work out where his hand must go when he unlocks it.{/n}
-"Watch that," she says. "Even kings have to put their keys somewhere. Queens, naturally, are less careless."
+"Watch that," {n}she says.{/n} "Even kings have to put their keys somewhere. Queens, naturally, are less careless."
 {n}She holds up the ribbon from your sleeve, which you had not noticed her untying, and drops it into her pocket.{/n}''', c('[Prepare for a guarded royal interview.]', flags=f("audience_ready", "cover_royal"))),
 ], "proof_examined")
 
@@ -495,24 +495,24 @@ She lays the clean proof on the table. Carrow looks at it, then at you. He has p
       c('[Let Nurah receive the editor under the title he printed.]', "royal", requires=f("cover_royal"))),
     n("flattery", "Nurah", '''{n}Carrow has prepared compliments, but you give him something easier to work with: questions whose answers might lead to money. How many subscribers? How expensive a binding? Could a portrait be changed without delaying delivery?
 His hand leaves the case. He brings out a prospectus, then a larger sheet showing two possible arrangements for the title page. Nurah shifts in her chair as though bored. The movement puts her beside his elbow.{/n}
-"The original authorial materials would naturally remain under our protection," he says.
-"Naturally," you answer. "May I see what that protection has preserved?"
+"The original authorial materials would naturally remain under our protection," {n}he says.{/n}
+"Naturally," {n}you answer.{/n} "May I see what that protection has preserved?"
 {n}He produces a key from his waistcoat. Nurah studies the engraving on the title page while he turns it. The case opens toward you. Under the prospectuses lies an older folded proof, bound with a red thread.{/n}
-"That one," she says.
+"That one," {n}she says.{/n}
 "It is very rough."
 "So was the subject."
 {n}He smiles because he cannot decide whether she has made a joke he ought to understand. He lifts the folded proof, leaving the open case within her reach.
 Nurah does not touch it. She is watching his face now, waiting for the first lie worth keeping.{/n}''', c('[Examine the page he has brought out.]', "read", flags=f("case_opened"))),
     n("interruption", "Nurah", '''{n}Carrow notices your glance at the case. The heel of his hand settles against the clasp. He begins a long account of Vhal's devotion to neglected historical figures.
 Nurah drops her pencil. It rolls under his chair.{/n}
-"Oh, do not trouble yourself," she says, already leaning down.
+"Oh, do not trouble yourself," {n}she says, already leaning down.{/n}
 {n}He troubles himself immediately. The chair scrapes. Nurah emerges with the pencil in one hand and a dust mark on her sleeve. Carrow's key cord has fallen outside his waistcoat. She looks at it openly.{/n}
 "Does your devotion have a lock? I should like to see what it is hiding."
 "We have had difficulties with unauthorized copies."
 "You have had considerable success with mine."
 {n}She waits. You ask him which of the materials carries Nurah's actual signature. He explains the distinction between a facsimile and an endorsement. You make him explain it again, using the forged page he has already distributed.
 At last he opens the case and removes a folded proof. Then he shuts the lid and winds the key cord around two fingers. Nurah's interruption has obtained the page, but he will not let either of you near the remaining papers.{/n}
-"There," she says. "We have reached the part of the interview that requires reading."''', c('[Read the proof while he guards the case.]', "read", flags=f("case_guarded"))),
+"There," {n}she says.{/n} "We have reached the part of the interview that requires reading."''', c('[Read the proof while he guards the case.]', "read", flags=f("case_guarded"))),
     n("demand", "Nurah", '''{n}Carrow has the requested proof ready in a separate folder. He slides it across the table without opening the case.{/n}
 "The earliest surviving impression. I had it prepared as soon as your message arrived."
 {n}Nurah holds the sheet toward the window. A narrow strip has been pasted over the bottom line. She puts it down with the care she might give a dead insect she intended someone else to identify.{/n}
@@ -522,28 +522,28 @@ At last he opens the case and removes a folded proof. Then he shuts the lid and 
 "The compositor's."
 {n}She looks at you. Carrow notices the exchange and changes his answer.{/n}
 "Possibly mine. We worked in some haste."
-"Then we are fortunate to have the editor here," you say. "Take the correction off."
+"Then we are fortunate to have the editor here," {n}you say.{/n} "Take the correction off."
 {n}The paper tears when he tries. He stops, lifts the damaged sheet, and finally unlocks the case. The older folded proof comes out with its red thread still tied. He places the damaged substitute beside it, keeping one finger over the torn footnote.
 Nurah moves his finger with the blunt end of her pencil.{/n}
 "We will need that as well."''', c('[Compare the substitute with the older proof.]', "read", flags=f("case_guarded", "substitute_exposed"))),
     n("collision", "Nurah", '''{n}Carrow opens his mouth to answer. Someone knocks. Nurah calls for the visitor to come in before he can decide whether he is receiving anyone.
 Two men enter, each carrying an invitation, each determined to explain why the other has made a mistake. One is short and magnificently dressed. The other has brought a clerk who knows the exact wording of every promise his employer purchased.
 Carrow rises. You move your chair to make room for the clerk, leaving the editor neatly between the table and the wall.{/n}
-"A misunderstanding," he says.
-"We have collected several," Nurah replies. "Please sit down."
+"A misunderstanding," {n}he says.{/n}
+"We have collected several," {n}Nurah replies.{/n} "Please sit down."
 {n}She asks the clerk to read his invitation. Before the first man can object, she gives him the dedication bearing his employer's name. The word exclusive becomes the loudest word in the room.
 Carrow tries to explain that the edition can have more than one issue. The clerk asks whether each issue will claim to be the only one. The other representative begins demanding his deposit.
 While Carrow unlocks the case to produce the subscriber terms, Nurah puts a steady hand on your knee beneath the table. Her fingers tighten when the folded red-thread proof appears. She has seen it. So have you.
 The clerk reaches for the terms. You ask Carrow to leave the older proof beside them. He cannot refuse without explaining why he opened the wrong part of the case.{/n}''', c('[Keep the editor answering while Nurah reads.]', "read", flags=f("case_opened", "subscribers_witnessed"))),
     n("royal", "Nurah", '''{n}Carrow bows too deeply. Nurah lets him remain bent while she moves the clean proof to the middle of the table.{/n}
-"You have a talent for finding titles when there is room for them in the price," she says. "I hope you are equally good at finding the papers behind them."
+"You have a talent for finding titles when there is room for them in the price," {n}she says.{/n} "I hope you are equally good at finding the papers behind them."
 "Your Majesty, we understood the proposed dedication would be welcome."
 "By whom?"
 "By the court."
 "How convenient. I have brought enough of it to ask."
 {n}She points at the case. He opens it, removes the folded proof, and immediately closes it again. The key vanishes into his waistcoat. He has prepared for an offended queen, and he intends to leave with every scrap he did not come to surrender.
 Nurah notices. Instead of ordering the case seized, she asks him to read the proposed dedication aloud. He gets as far as obedient service before faltering.{/n}
-"That is the phrase you chose," she says. "Do finish it."
+"That is the phrase you chose," {n}she says.{/n} "Do finish it."
 {n}He does. By the final line his voice has become almost inaudible.
 She turns the page toward you. Her face is composed, but her foot has hooked around the leg of his chair. If he rises abruptly, he will have a much less dignified audience.{/n}''', c('[Inspect the proof before deciding how to answer the insult.]', "read", flags=f("case_guarded", "royal_discomfort"))),
     n("read", "Narrator", '''{n}The old proof is full of corrections in several hands. Nurah's writing crosses the middle of a paragraph about Trezbot's arrival. Beneath it, in another hand, a footnote names Bressa and the case of accounts she was sent to recover. A line has been drawn through the note, hard enough to split a letter.
@@ -552,23 +552,23 @@ Carrow begins explaining that the original author frequently revised her own wor
       c('[Use the chronological error he has not been warned about.]', "caught", requires=f("chronology_kept")),
       c('[Let him reveal how he prepared for the objection already sent.]', "warned", requires=f("editor_warned")),
       c('[Give Nurah the first question you promised her.]', "her_question", requires=f("nurah_leads_interview"))),
-    n("caught", "Nurah", '''"You revised the date of the retreat," you say. "But you left this officer in command. He arrived afterward."
+    n("caught", "Nurah", '''"You revised the date of the retreat," {n}you say.{/n} "But you left this officer in command. He arrived afterward."
 "The author supplied the date."
-"No," Nurah says. "The author supplied an account in which the officer had not yet arrived. Show us where I changed that."
+"No," {n}Nurah says.{/n} "The author supplied an account in which the officer had not yet arrived. Show us where I changed that."
 {n}Carrow searches the page. He finds the line she wrote, follows it to the later correction, and stops. The ink is his own. He looks at the clean proof on the table as if it might offer a kinder sequence of events.{/n}
 "A necessary clarification."
 "Whose necessity?"
 {n}You wait. At last he says Vhal wanted the household's contribution placed earlier, before a rival family's officers could claim credit. Nurah asks him to repeat that slowly while she writes it on the reverse of the damaged proof.
 He refuses to sign. She has not asked him to.{/n}
-"Now we know what an improvement costs," she says. "And which part of the history changes when somebody pays for one."''', c('[Keep the exposed alteration as the basis for the next move.]', flags=f("interview_finished", "editor_exposed"))),
+"Now we know what an improvement costs," {n}she says.{/n} "And which part of the history changes when somebody pays for one."''', c('[Keep the exposed alteration as the basis for the next move.]', flags=f("interview_finished", "editor_exposed"))),
     n("warned", "Nurah", '''{n}Carrow produces a second sheet before you finish the objection. He has prepared a note explaining that the disputed officer directed events through correspondence before his arrival. No surviving letter is attached.{/n}
-"We are grateful to the compositor for raising the question," he says.
-"Gratitude seems to be the cheapest material in your workshop," Nurah replies. "May we see the correspondence?"
+"We are grateful to the compositor for raising the question," {n}he says.{/n}
+"Gratitude seems to be the cheapest material in your workshop," {n}Nurah replies.{/n} "May we see the correspondence?"
 "It is not presently available."
 "Then you have improved a mistake into an invisible source."
 {n}He will not abandon the explanation. Nurah cannot make him. The earlier warning has given him time to turn a contradiction into a dispute over missing documents.
 You ask who first mentioned the correspondence. He says Vhal. When you ask where she keeps it, he says her secretary handles such matters. Nurah writes secretary on the margin and draws a small, ugly face beneath it.{/n}
-"We will ask her," she says.
+"We will ask her," {n}she says.{/n}
 {n}Carrow smiles. He has kept this answer intact. The smile annoys Nurah enough that she snaps the point of her pencil against the paper.{/n}''', c('[Seek evidence he has not had time to explain away.]', flags=f("interview_finished", "editor_defense_ready"))),
     n("her_question", "Nurah", '''"Who told you Bressa was grateful?"
 {n}Carrow looks down. Nurah does not. She keeps her eyes on his face until he answers.{/n}
@@ -679,17 +679,17 @@ You copy the subscriber names while she works through Vhal's letters. She does n
 Outside, the stair seems louder under your feet than it did on the way up. Nurah waits until you have reached the street before she takes your arm. Her hand remains cold through your sleeve.{/n}''', c('[Leave with the copies and the reference to Bressa\'s later sale.]', flags=f("papers_recovered", "papers_copied"))),
     n("taken", "Nurah", '''{n}Nurah wraps the originals in the blank sheets she prepared. When she reaches the threatening letter, she stops, reads the quoted praise once more, and folds it with the rest.
 The case looks absurdly empty. Prospectuses and wine accounts slide into the space where the hidden papers had been.{/n}
-"He will miss them," she says.
+"He will miss them," {n}she says.{/n}
 "That was the plan."
 "Yes. I am reminding myself that I like it."
 {n}She gives you the parcel because it fits beneath your coat more easily than hers. At the door she turns back and takes the case's little brass key as well. You raise an eyebrow.{/n}
-"For his next case," she says. "He should learn to change his habits."
+"For his next case," {n}she says.{/n} "He should learn to change his habits."
 {n}You leave by the stair. In the street she checks the parcel once, touching it through your coat, then walks ahead before you can ask what part of the letter has made her so quiet.{/n}''', c('[Leave with the originals and expect their owners to notice.]', flags=f("papers_recovered", "papers_taken"))),
     n("settled", "Nurah", '''{n}Carrow attempts to exclude Vhal's private correspondence from the settlement. Nurah reads his entry describing her promised appearance and asks which part of his promise he actually owns.
 He gives up the letters.
 You put the narrow undertaking in writing: the Commander's unauthorized endorsement will not be pursued further against him in exchange for these identified materials. Carrow reads it twice. Nurah stands behind his chair, close enough that he cannot look at her without turning his whole body.
 When he has gone, she takes Vhal's threat from the parcel and holds it above the lamp. For a moment you think she means to burn it. Instead she reads the paper against the light, looking for writing on the other side.{/n}
-"He knew about this," she says. "He kept it until she could decide how much to ask."
+"He knew about this," {n}she says.{/n} "He kept it until she could decide how much to ask."
 "We have it now."
 "We have this copy. She kept the letter she is threatening to print."
 {n}She lowers the page. The room has grown darker while you were bargaining. She asks you to leave the lamp where it is.{/n}''', c('[Keep the surrendered evidence and the specific cost of the settlement.]', flags=f("papers_recovered", "papers_settled"))),
@@ -700,7 +700,7 @@ visit("the_letter_she_wrote", "In her own hand", [
     n("start", "Nurah", '''{n}Nurah arrives without the parcel. She puts a single sheet on your table, then moves the lamp so that you can read it without taking the page from her.
 It is her copy of the letter Vhal means to publish. She has reconstructed the quoted passage from memory and left a blank where she cannot remember the wording.
 The letter praises Trezbot's generosity. It asks to remain in his household. Its concluding flourish is graceful, almost affectionate.{/n}
-"I wrote it," she says. "Before you decide the interesting question is whether she forged it. She did not."
+"I wrote it," {n}she says.{/n} "Before you decide the interesting question is whether she forged it. She did not."
 {n}You look at the blank. Nurah taps it with the end of a pen.{/n}
 "An adjective. I cannot remember which one. There were so many available, and he liked most of them."
 "Why does she have it?"
@@ -758,7 +758,7 @@ She drops the paper curl into the lamp's cold tray and looks at the door. For a 
 "We follow the reference we have."
 "That may lead nowhere."
 {n}You do not promise otherwise. Nurah studies your face, then pulls the chair closer with one heel.{/n}
-"I wanted you to say something foolish," she admits. "I had a very good answer ready."
+"I wanted you to say something foolish," {n}she admits.{/n} "I had a very good answer ready."
 "Save it. I have a long evening ahead."
 {n}Her laugh is brief. She reaches for your hand and turns it palm upward, tracing a small ink stain at the base of your thumb.{/n}
 "So do I. And I would rather spend part of it on something she cannot price."''', c('[Stay while she decides how much of the old letter to use.]', "near", flags=f("bressa_priority"))),
@@ -789,12 +789,12 @@ She drops the paper curl into the lamp's cold tray and looks at the door. For a 
 "Leave it. I know where it is."
 {n}She rises onto the chair to reach you without pulling you down. Her hands settle on your shoulders, then slide beneath the edge of your collar. The touch is slow now, with none of the performance she used in front of Carrow.
 You kiss the corner of her mouth. She turns toward you and makes you begin again properly. One knee presses against your hip as she steadies herself. The chair protests.{/n}
-"This furniture has no discretion," she murmurs.
+"This furniture has no discretion," {n}she murmurs.{/n}
 "We could move."
 "I was hoping you would think of that."
 {n}You lift her from the chair. She makes a small, affronted sound that turns into a laugh halfway through, and wraps an arm around your neck. On the way past the table she reaches down to extinguish the lamp. The old letter disappears into darkness with everything else.
 At the bed she twists out of your arms before you can set her down, lands on her knees on the cover, and hauls you after her by the collar she has already half unfastened.{/n}
-"You were slow," she says. "Trezbot's clerks were faster, and they were paid by the hour." {n}She pulls the pins out of her hair one at a time and drops them on the floor, and then her dress after them, and puts one ink-stained hand flat on your chest and pushes you down onto your back, and follows.{/n}
+"You were slow," {n}she says.{/n} "Trezbot's clerks were faster, and they were paid by the hour." {n}She pulls the pins out of her hair one at a time and drops them on the floor, and then her dress after them, and puts one ink-stained hand flat on your chest and pushes you down onto your back, and follows.{/n}
 {n}In the morning she retrieves the letter without hurrying, folds it into her sleeve, and steals the warmer side of the cover before you can object. When you reach for her she does not pretend to be asleep. From that night she stops knocking at your door; she simply comes in, and tells you what she has been writing, and sits where she likes.{/n}''', c('[Let the work wait until she comes up the stair again.]', flags=f("letter_faced"))),
 ], "papers_recovered")
 
@@ -815,14 +815,14 @@ She flicks a small coin across the table. It spins, falls, and rolls into the fo
 "No. And I should like to preserve that pleasant ignorance until it becomes expensive."
 {n}She turns the invitation over. On its blank side she has drawn the room: a long table, a sideboard, a pair of doors. The record will be displayed beside the book while Nurah reads. Vhal wants the audience to see the reward being offered.
 There is no screened recess for the papers and no secretary assigned to hold them throughout the evening. Nurah has confirmed both details by asking where she may stand to be seen most flatteringly.{/n}
-"Vanity is excellent reconnaissance," she says. "People become suspicious when you ask about the lock. Ask about the light, and they move the table for you."''', c('[Use the unsuspicious display arrangement.]', "sava", flags=f("display_open"))),
+"Vanity is excellent reconnaissance," {n}she says.{/n} "People become suspicious when you ask about the lock. Ask about the light, and they move the table for you."''', c('[Use the unsuspicious display arrangement.]', "sava", flags=f("display_open"))),
     n("warned", "Nurah", '''"He found the broken thread. He has not proved what was read, which has encouraged him to imagine everything."
 {n}Nurah unfolds a second sheet. The revised arrangement places Vhal's documents behind a folding screen. Her secretary will bring out each one only when she asks for it.{/n}
 "We will not get a hand on the record simply by leaning across the table. Carrow has also warned her that I may ask about the subscriber list."
 "Will she cancel?"
 "And admit she cannot control a small woman with a book? Her pride is more reliable than her editor."
 {n}Nurah scratches a line through the sideboard on her sketch. The secretary's position behind the screen leaves him within hearing of the room but outside its argument. Someone will have to make him leave it or force the record into public view.{/n}
-"The thread has bought us a second obstacle," she says. "We can still cross it. I would prefer not to buy a third."
+"The thread has bought us a second obstacle," {n}she says.{/n} "We can still cross it. I would prefer not to buy a third."
 {n}She nudges your hand with the blunt pencil. Her anger has become practical again, though she has not forgotten whose hand was on the hinge.{/n}''', c('[Plan around the guarded document screen.]', "sava", flags=f("display_guarded"))),
     n("theft", "Nurah", '''"Vhal has called the missing papers stolen property. Carrow has called them several less printable things. Neither has dared accuse the Commander in writing."
 {n}Nurah has kept their messages. The collector's is elegantly furious; the editor's has a stain where his hand smeared the final line.{/n}
@@ -841,7 +841,7 @@ There is no screened recess for the papers and no secretary assigned to hold the
 "She has made it part of her defense."
 "Which means she must show it. I do like a woman who arranges her own inconvenience so thoughtfully."
 {n}The documents will sit on the table during the reading. Vhal has not hired extra watchers. She is relying on the Commander's public settlement with Carrow to make an outright seizure look like a broken undertaking, though the undertaking says nothing about her record.{/n}
-"We shall be precise," Nurah says. "It annoys people much more than shouting."''', c('[Make her display the original she has used to defend herself.]', "sava", flags=f("display_open"))),
+"We shall be precise," {n}Nurah says.{/n} "It annoys people much more than shouting."''', c('[Make her display the original she has used to defend herself.]', "sava", flags=f("display_open"))),
     n("sava", "Narrator", '''{n}Nurah draws a small square beside the room's entrance.
 "The compositor has been invited too. Vhal wants someone available to accept responsibility for an unfortunate printing error."
 She looks up from the sketch. The square is empty. She has not written Sava's name inside it.{/n}''',
@@ -850,7 +850,7 @@ She looks up from the sketch. The square is empty. She has not written Sava's na
       c('[Keep Sava outside the operation, as agreed.]', "outside", requires=f("sava_uninvolved"))),
     n("paid", "Nurah", '''"She has bought enough paper to finish the run without Carrow's credit. That makes her less afraid of displeasing him. It does not make her fond of us."
 {n}Nurah produces a sample sheet. Sava has offered to print a short replacement at her own rate if you provide the wording before the evening. She will not set type during an argument or accept payment in promises of future gratitude.{/n}
-"I paid her the paper balance," Nurah says. "Do not look so startled. I intend to recover it from somebody much less sympathetic."
+"I paid her the paper balance," {n}Nurah says.{/n} "Do not look so startled. I intend to recover it from somebody much less sympathetic."
 "What will she print?"
 "Our answer. Once we have decided whether it is a correction, an accusation, or an invitation to buy something worse."
 {n}She folds the sample and puts it with the sketch. The small square gains a name now, followed by the word printer.
@@ -869,7 +869,7 @@ Nurah pushes the sheet toward you.{/n}
 "No. She noticed."
 {n}Nurah crosses out the square beside the entrance. There will be no compositor to identify the printing changes, and no extra copies waiting to circulate while Vhal is still talking.
 She moves the invitation into the empty space. Its false signature will have to introduce the dispute. Nurah can identify her own writing. You can identify the endorsement you never gave. Neither requires Sava to stand between you and the collector.{/n}
-"She may sell her account later," Nurah says. "We did not buy her silence."
+"She may sell her account later," {n}Nurah says.{/n} "We did not buy her silence."
 "Would you have preferred to?"
 "I prefer knowing which inconvenience I have paid for. This one remains a surprise."
 {n}She picks up the coin from the secretary's visit and balances it on the chair's rung beside her muddy boot. It falls before she can make it stand. She leaves it on the floor.{/n}
@@ -890,8 +890,8 @@ Vhal introduces the Commander as a distinguished supporter of the enterprise. Nu
       c('"I am told this evening offers an unusually good return on misplaced confidence."', "opening", requires=("trickster",))),
     n("opening", "Nurah", '''{n}Vhal takes the answer as graciously as she can and calls the room to order. A dozen subscribers and representatives turn from their wine. Several already have their copies open to the proposed dedication.
 Nurah climbs onto the low reading platform without accepting the secretary's hand. She puts her own book on the stand, opens it, and waits until the room is quiet.{/n}
-"This edition contains an account of a woman named Bressa," she says. "Before I read it, I would like to see the document Mrs. Vhal has offered in support."
-"After the introduction," Vhal replies.
+"This edition contains an account of a woman named Bressa," {n}she says.{/n} "Before I read it, I would like to see the document Mrs. Vhal has offered in support."
+"After the introduction," {n}Vhal replies.{/n}
 "This is the introduction."
 {n}A man near the front laughs, thinking the exchange rehearsed. Vhal looks at him. The laughter dies.
 Nurah keeps her finger on the page. She has made the record part of the reading in front of everyone. The collector can refuse, but she can no longer pretend the request was never made.{/n}''',
@@ -917,11 +917,11 @@ Another wants to know whether his own household's documents are being treated wi
 Vhal tells Edran to bring the sheet.
 He places it on the stand, keeping the leather cover under his arm. Nurah reads the sale entry aloud. The name of the purchasing household carries clearly to the back of the room. So does the price.
 When she finishes, she leaves the sheet beside the printed claim of grateful service. Nobody needs her to explain why the two do not belong together.{/n}
-"Mr. Carrow," she says. "You remember discussing this sentence. I would hate to deprive you of an audience now that we have found one."''', c('[Use the original sale entry beside the invented testimony.]', "proof", flags=f("record_seen", "record_on_stand"))),
+"Mr. Carrow," {n}she says.{/n} "You remember discussing this sentence. I would hate to deprive you of an audience now that we have found one."''', c('[Use the original sale entry beside the invented testimony.]', "proof", flags=f("record_seen", "record_on_stand"))),
     n("record_withdrawn", "Nurah", '''{n}Vhal does not yield. She says the Commander is turning a literary evening into a tribunal and asks Edran to secure the collection.
 The secretary closes the leather cover. Nurah watches him go through the service door. Her hand tightens on the edge of the stand, but she does not follow him.
 You have the copied reference from her correspondence. You do not have the original sale sheet, and the audience has not seen it. Vhal intends to exploit that difference.{/n}
-"Mrs. Vhal offered me that record for a signed performance of gratitude," Nurah says. "If she does not wish to show the record, perhaps she would like to explain the offer."
+"Mrs. Vhal offered me that record for a signed performance of gratitude," {n}Nurah says.{/n} "If she does not wish to show the record, perhaps she would like to explain the offer."
 "A private letter has been misunderstood."
 "Then we should read the whole of it. I am sure context will improve your evening."
 {n}Nurah takes out the recovered correspondence or its copy, opens it to the promised exchange, and begins before Vhal can interrupt. The guests lean forward. The original record has escaped the room, but its owner's bargain has not.{/n}''', c('[Expose the bargain without claiming to possess the withdrawn original.]', "proof", flags=f("record_withdrawn"))),
@@ -933,20 +933,20 @@ Nurah asks you for the evidence prepared before the evening. Her voice is light.
     n("printed", "Nurah", '''{n}Sava has brought a stack of sheets with the false endorsement on one side and the relevant passages of Vhal's offer on the other. She hands them to the nearest guests, then tells them to pass the copies along. She refuses to answer a question about the binding until the sheets have reached the back of the room.
 Vhal takes one. Her ring leaves a faint dent in the paper.{/n}
 "This was prepared in advance."
-"So was your edition," Nurah says. "We admired your method."
+"So was your edition," {n}Nurah says.{/n} "We admired your method."
 {n}A subscriber compares the offer with the promise printed in his own book. Another asks why his family's name appears beside a payment in the reproduced list. The room begins asking questions faster than Vhal can choose who may ask them.
 Sava stays by the door, protecting the remaining copies beneath one arm. She has been paid to print. She has no intention of being persuaded to surrender the stock because the customer has become unpopular.{/n}''', c('[Let the copies carry the accusation beyond the room.]', "letter", flags=f("public_copies"))),
     n("witness", "Nurah", '''{n}Sava steps forward with the signed instruction. Before she speaks, you state that she brought it at your request. Vhal's glance moves from the compositor to you.
 Sava identifies Carrow's correction, the proof she set, and the instruction replacing Bressa's missing account with grateful service. She refuses to guess whether Vhal dictated the wording. Carrow seizes on that refusal until Sava turns the sheet over and reads his note about the collector's requested emphasis.
 Nurah watches him lose the advantage he thought he had found.{/n}
-"You see," she tells Vhal, "a witness becomes much more troublesome when she is allowed to remember the parts you did not order."
+"You see," {n}she tells Vhal,{/n} "a witness becomes much more troublesome when she is allowed to remember the parts you did not order."
 {n}Sava finishes, folds the document, and steps back beside you. When a guest asks whether she will print an account of the evening, she gives him a price. Nurah's laugh interrupts the next question.{/n}''', c('[Keep the accusation attached to the witnessed instruction.]', "letter", flags=f("public_witness"))),
     n("alone", "Nurah", '''{n}You place the false endorsement beside the original invitation. Nurah writes her name on a clean sheet, then points out the identical hesitation in every printed imitation. Someone copied a single model badly enough to make even the mistake repeat.
 Vhal calls this a trivial editorial matter. You ask whether she would accept a similarly trivial imitation of her signature on a debt.
 The answer takes her too long.
 Nurah reads the offer concerning Bressa. Without Sava, there is no compositor to identify who ordered the altered line. Carrow and Vhal keep passing that part of the accusation between them. But neither can explain why a genuine authorial appearance had to be purchased with a withheld record while a false signature was already selling the book.
 A guest tears the dedication from his copy. The small sound carries surprisingly far.{/n}
-"That is one correction," Nurah says. "Do leave room for the others."''', c('[Keep the narrower accusation on what you can personally identify.]', "letter", flags=f("public_authors"))),
+"That is one correction," {n}Nurah says.{/n} "Do leave room for the others."''', c('[Keep the narrower accusation on what you can personally identify.]', "letter", flags=f("public_authors"))),
     n("letter", "Narrator", '''{n}Vhal takes a folded page from inside her sleeve. Nurah recognizes the gesture before the paper opens.
 "Since we are discussing authentic writing," the collector says, "perhaps the author will explain this expression of affection for the household she now finds so convenient to condemn."
 She begins reading Nurah's old praise of Trezbot. The room falls quiet. Nurah leaves the stand and walks toward her, slowly enough that nobody mistakes it for an attempt to snatch the letter.
@@ -969,19 +969,19 @@ Nurah has seen enough.{/n}
 "Another edition? I hope you obtained the author's permission."
 {n}A guest asks whether the collector has been sold a copy. Vhal insists the original is authentic. Another asks how she knows. The plausible variants Nurah sent into circulation have reached their intended buyer, and now every guest wants the explanation the collector hoped to avoid.
 Nurah lets the questions continue until Vhal holds the original out in exasperation. Then she takes it.{/n}
-"This one is mine," she says. "I remember the sentence you omitted. We can begin there."
+"This one is mine," {n}she says.{/n} "I remember the sentence you omitted. We can begin there."
 {n}She has not made the old praise disappear. She has made Vhal surrender control of its reading in order to defend the value of her own collection. The collector's hand stays outstretched for a moment after the paper is gone.
 You catch Nurah's eye. Her smile is small enough that only you see it.{/n}''', c('[Let the author read the original she has identified.]', "reading", flags=f("variants_paid_off"))),
     n("reading", "Nurah", '''"I beg you not to send me from the household whose kindness has taught me to love my place."
 {n}Nurah reads the sentence in the same careful voice with which Vhal read the praise. The room is quiet enough that you hear the page move against her sleeve.{/n}
-"He was considering sending me to another owner," she says. "I preferred the temper I already knew. So I wrote him something he would enjoy keeping."
-"We cannot possibly establish what you meant at the time," Vhal says.
+"He was considering sending me to another owner," {n}she says.{/n} "I preferred the temper I already knew. So I wrote him something he would enjoy keeping."
+"We cannot possibly establish what you meant at the time," {n}Vhal says.{/n}
 "You seemed very sure a moment ago."
 {n}The collector draws herself up. Nurah does not raise her voice to follow her.{/n}
 "You may dislike the household now, but this is still evidence of your own words."
 "Yes. They worked. He kept me. I was good at my work."
 {n}A man in the second row shifts his feet. Nurah looks at him until he stops.{/n}
-"She has offered to buy more words," Nurah continues. "This time she wants me to say another woman was grateful. You have heard the offer. Is there anyone here who would like to pay extra to hear me mean it?"
+"She has offered to buy more words," {n}Nurah continues.{/n} "This time she wants me to say another woman was grateful. You have heard the offer. Is there anyone here who would like to pay extra to hear me mean it?"
 {n}Nobody answers. Vhal reaches for the letter. Nurah folds it once and puts it inside her bodice, watching the collector decide whether to reach farther.{/n}
 "That belongs to my collection."
 "You have used it. Send me the bill. We can compare it with the price of the signature you printed."
@@ -989,15 +989,15 @@ You catch Nurah's eye. Her smile is small enough that only you see it.{/n}''', c
       c('[Keep the original record on the stand while Vhal tries to dismiss the comparison.]', "visible_close", requires=f("record_on_stand")),
       c('[Keep the accusation on the bargain the room heard, despite the withdrawn record.]', "withdrawn_close", requires=f("record_withdrawn"))),
     n("visible_close", "Nurah", '''{n}You put a hand beside Bressa's sale entry before Edran can clear the stand. He stops. The document remains between the invented gratitude and Nurah's open book.{/n}
-"An interpretation has been disputed," Vhal says. "A correction can be made."
-"Which interpretation?" you ask.
+"An interpretation has been disputed," {n}Vhal says.{/n} "A correction can be made."
+"Which interpretation?" {n}you ask.{/n}
 {n}She will not say slavery. She calls it service, then circumstance, then a regrettable imprecision. Nurah waits through each attempt.{/n}
-"The price is legible," she says at last. "You may borrow the number if the word troubles you."
+"The price is legible," {n}she says at last.{/n} "You may borrow the number if the word troubles you."
 {n}The finely dressed subscriber asks whether the other testimonies have similar records behind them. His tone has lost its pleasure. Vhal offers him a private explanation; he asks why privacy has suddenly become necessary.
 Nurah steps down from the platform. As she passes you, her fingers close briefly around your wrist. Her hand is shaking. Her voice, when she asks Edran for a clean sheet to trace the record, is perfectly steady.
 He brings it. Vhal watches the tracing begin and says she would like to discuss a settlement somewhere less crowded.{/n}''', c('[Leave with the witnessed evidence and her request to negotiate.]', flags=f("reading_confronted"))),
-    n("withdrawn_close", "Nurah", '''"The document would have settled this," Vhal says. "Unfortunately the Commander's manner made its removal necessary."
-"Then bring it back," you answer.
+    n("withdrawn_close", "Nurah", '''"The document would have settled this," {n}Vhal says.{/n} "Unfortunately the Commander's manner made its removal necessary."
+"Then bring it back," {n}you answer.{/n}
 {n}She refuses. A guest complains that his evening has been spoiled by accusations neither side can settle. Nurah turns to him.{/n}
 "The record may wait. The offer did not. You heard what she wanted me to say before she would let me see it. Would you pay a historian to work that way?"
 "We pay for a finished history."
@@ -1011,7 +1011,7 @@ Nurah makes her repeat it.{/n}''', c('[Take the offer. The record stays missing.
 visit("the_unpurchased_sentence", "The unpurchased sentence", [
     n("start", "Nurah", '''{n}When Nurah next comes to your chambers, she takes the old letter from inside her book and puts it on the table. The crease beneath the omitted line is still visible.
 She rubs it flat with her thumb, then stops before she wears through the paper.{/n}
-"Kindness," she says. "I remembered the wrong adjective. I would have chosen a worse one if I had known how long people intended to keep reading it."
+"Kindness," {n}she says.{/n} "I remembered the wrong adjective. I would have chosen a worse one if I had known how long people intended to keep reading it."
 "Would he have noticed?"
 "He noticed anything that made him sound less important. Cruelty was a much smaller concern."
 {n}She glances toward the chair, but remains standing beside you.{/n}
@@ -1023,7 +1023,7 @@ She rubs it flat with her thumb, then stops before she wears through the paper.{
       c('[Ask what can still be pursued after the original was withdrawn.]', "missing", requires=f("record_withdrawn"))),
     n("variants_memory", "Nurah", '''"She had to prove which one was worth keeping. I was happy to assist."
 {n}Nurah takes out one of her altered versions and puts it beside the original. The changes are tiny. Side by side, the two sheets look like an innocent writer deciding which words she prefers.{/n}
-"She could have kept holding the letter and refused to compare them," you say.
+"She could have kept holding the letter and refused to compare them," {n}you say.{/n}
 "Then every collector in that room would have wondered what she was afraid to discover. You chose her vanity very well."
 {n}She tears the variant down the middle, folds the pieces together, and places them in the lamp tray. The original goes back into the book.{/n}
 "That one has finished its work. This one is mine again."
@@ -1033,7 +1033,7 @@ She rubs it flat with her thumb, then stops before she wears through the paper.{
       c('[Turn to the original Vhal still withheld.]', "missing", requires=f("record_withdrawn"))),
     n("record", "Nurah", '''"I kept it on the stand until the guests had finished looking. Vhal could hardly take it away while insisting it explained everything."
 {n}Nurah produces a tracing of the entry. The original remains with the collector, but the name, date, price, and witnessing marks have been copied in front of people who saw them. One subscriber wrote his initials beside the tracing because he wished to appear useful.{/n}
-"She may still bargain over the sheet," Nurah says. "She cannot pretend we invented what it says. I have sent the buyer's name to a correspondent who knows that district."
+"She may still bargain over the sheet," {n}Nurah says.{/n} "She cannot pretend we invented what it says. I have sent the buyer's name to a correspondent who knows that district."
 "Will they find Bressa?"
 "They may find a household that changed its name twice and burned its accounts. I have asked for the accounts anyway."
 {n}She holds the tracing against the light, checks that the smallest mark can still be read, and puts it back into her sleeve.{/n}
@@ -1060,7 +1060,7 @@ She has already written a demand concerning the sale record. She leaves space be
 "You would enjoy ruining her more thoroughly."
 "I would. I would also enjoy obtaining the record before she flees with it. Some days one must choose which pleasure arrives first."
 {n}She moves the corrected demand toward you. The terms leave Vhal's unrelated collection intact in exchange for the original, its purchase history, and a printed correction naming Bressa without invented testimony. Nurah keeps the right to publish the letters exposing the bargain if the correction is withheld.{/n}
-"Do not ask me to thank her when she signs," she says. "I have used up my supply."''', c('[Support the narrow exchange and preserve the inquiry.]', "settle", flags=f("demand_record"))),
+"Do not ask me to thank her when she signs," {n}she says.{/n} "I have used up my supply."''', c('[Support the narrow exchange and preserve the inquiry.]', "settle", flags=f("demand_record"))),
     n("chaos", "Nurah", '''{n}She lays out two dedication proofs and the subscriber list. Every exclusive claim has a rival. Every offended patron knows somebody who would enjoy hearing about the offense.{/n}
 "Vhal returns the deposits or gives each subscriber the source material behind the rival claim. Their choice. We publish the choice before she can persuade them to make it quietly."
 "Some will take the material."
@@ -1070,7 +1070,7 @@ She has already written a demand concerning the sale record. She leaves space be
 "And people outside those families?"
 "Some names will become public. Some should have been public years ago. I cannot promise every beneficiary will be charming."
 {n}She looks at you without apology. This is the part she enjoys: private pride made vulnerable to other people's malice, with herself deciding which door to open.{/n}
-"We can make it smaller," she says. "I will be less entertained, but I am willing to hear an interesting objection."''',
+"We can make it smaller," {n}she says.{/n} "I will be less entertained, but I am willing to hear an interesting objection."''',
       c('[Release the rival source packets and let the subscribers choose their quarrels.]', "settle", flags=f("demand_rivals")),
       c('"Keep the quarrel to the paid dedications. Do not release unrelated names."', "limited", flags=f("demand_limited"))),
     n("limited", "Nurah", '''{n}Nurah draws a line around the dedication claims. The circle excludes most of the collection.{/n}
@@ -1085,7 +1085,7 @@ She has already written a demand concerning the sale record. She leaves space be
     n("evil", "Nurah", '''"Her supplier names. Her purchase records. The correspondence that distinguishes a source from a rumor."
 {n}Nurah writes quickly. Vhal may keep the bound volumes and the contracts already fulfilled. The private papers that make the business profitable will pass to Nurah, including the sale record and the collector's acquisition notes.
 In exchange, Nurah proposes withholding the recovered private correspondence from further publication. The copies already given or testimony already heard cannot be recalled. Vhal will be paying for what Nurah still controls; any separate promise of publication will have to be settled at the table.{/n}
-"She may rebuild," you say.
+"She may rebuild," {n}you say.{/n}
 "Certainly. I intend to leave her enough ambition to try. If she finds another useful collection, I would like to hear about it."
 "You could destroy the business instead."
 "And waste the work? I dislike her, not her shelves."
@@ -1107,10 +1107,10 @@ The profitable supplier list is gone from the terms. Nurah has copied its title 
     n("settle", "Narrator", '''{n}You accompany Nurah to Vhal's hired rooms. The collector has packed her books but left the traveling chest open. Edran stands beside it with a list.
 Nurah puts the terms on the table. Vhal reads the first line and pushes the sheet back.{/n}
 "The sale record is mine. I paid for it. Nothing said at that gathering transferred ownership to either of you."
-"You offered it to me," Nurah says.
+"You offered it to me," {n}Nurah says.{/n}
 "For work you have not supplied."
 {n}Nurah puts her hand on the rejected terms. Vhal has begun with the one thing she knows Nurah came to take.{/n}
-"Tell me what you think it is still worth," Nurah says.
+"Tell me what you think it is still worth," {n}Nurah says.{/n}
 {n}The collector looks at you before answering.{/n}''',
       c('[Place the publicly witnessed tracing beside the demand.]', "witnessed_terms", requires=f("record_on_stand")),
       c('[Question the secretary who handled the withheld original.]', "missing_terms", requires=f("record_withdrawn"))),
@@ -1123,10 +1123,10 @@ Nurah puts the terms on the table. Vhal reads the first line and pushes the shee
 "Because you have other things to lose. We can discuss them together, or I can leave you to explain why an accurate history required selling its author her own witness."
 {n}Vhal studies the initials once more. The subscriber is one of the people whose next commission she wants. Challenging his memory would give him another reason to reconsider it.
 She tells Edran to bring the sheet and acquisition note to the table. He leaves them under Vhal's hand. They are available for the bargain now, not yet surrendered.{/n}''', c('[Negotiate with the identified original now on the table.]', "choose_terms", flags=f("record_leverage_witnessed"))),
-    n("missing_terms", "Nurah", '''"You have a number copied from a private letter," Vhal says. "You have not seen what it identifies. I could have been mistaken about the document myself."
+    n("missing_terms", "Nurah", '''"You have a number copied from a private letter," {n}Vhal says.{/n} "You have not seen what it identifies. I could have been mistaken about the document myself."
 {n}Edran looks down at his inventory. You turn toward him.{/n}
 "Did you prepare that description?"
-"He is my secretary," Vhal says.
+"He is my secretary," {n}Vhal says.{/n}
 "Then he can distinguish your mistake from his."
 {n}Nurah follows your glance and takes out a clean sheet.{/n}
 "We are writing an account of the evening. Mrs. Vhal appears ready to explain that her staff supplied the wrong evidence. Would you prefer to have your own statement beside hers?"
@@ -1142,7 +1142,7 @@ Nurah draws a line beneath that sentence.{/n}
 {n}She looks at you, annoyed, then writes a reply underneath: The editor had already circulated my imitation signature. She shows Edran both statements together.
 He signs. He also opens the chest and lays the sale record beside his description. The catalog number matches. Vhal slams the lid after he removes the acquisition note.{/n}
 "You are dismissed."
-"He can finish identifying the papers first," you say.
+"He can finish identifying the papers first," {n}you say.{/n}
 {n}Nurah places the statement beyond the collector's reach. You have an identified original at the cost of giving a compromised witness his own defense in the final account. Vhal cannot remove that witness by closing a chest.{/n}''', c('[Keep the witness\'s agreed statement and continue the bargain.]', "choose_terms")),
     n("choose_terms", "Narrator", '''{n}Bressa's record lies on the table. Nurah reads the purchaser's name once, then places the demand sheet beside it.
 "Now the rest," she says.
@@ -1152,7 +1152,7 @@ Vhal has begun calculating what she can keep. Her gaze moves from the correspond
       c('[Leave unrelated papers outside the paired-dedication dispute.]', "bargain_limited", requires=f("demand_limited")),
       c('[Separate her private sources from the public business she hopes to save.]', "bargain_collection", requires=f("demand_collection")),
       c('[Hold to the narrower joint demand.]', "bargain_refused", requires=f("demand_refused"))),
-    n("bargain_record", "Nurah", '''"A printed correction will follow every volume," Vhal says.
+    n("bargain_record", "Nurah", '''"A printed correction will follow every volume," {n}Vhal says.{/n}
 "A refusal gives me a short book to print beside it. Your offer, my answer, and the price beside Bressa's name."
 "You would destroy the edition for a footnote?"
 "You risked it to invent one."
@@ -1162,7 +1162,7 @@ Vhal has begun calculating what she can keep. Her gaze moves from the correspond
 {n}The collector demands the phrase editorial oversight. Nurah crosses out oversight and writes unsupported testimony. They argue until you place the sale entry beside the proposed correction and ask which word is inaccurate.
 Vhal signs. Nurah signs the limited restriction on reproducing the letter while the correction stands, with witness accounts expressly excluded. She retains the right to publish the offer if Vhal removes that correction from later impressions.{/n}''', c('[Accept the limited publication restraint.]', "signed", flags=f("bargain_publication_limited"))),
     n("bargain_rivals", "Nurah", '''"The subscribers did not purchase my sources."
-"Then return their deposits," Nurah says. "All of them. Together."
+"Then return their deposits," {n}Nurah says.{/n} "All of them. Together."
 {n}Vhal asks Edran for the account. The money has already paid for paper, binding, and this room. Nurah watches her reach the total.{/n}
 "They can accept a rival packet instead. Most will consider it a better investment. You taught them that."
 "Those families will never employ me again."
@@ -1171,14 +1171,14 @@ Vhal signs. Nurah signs the limited restriction on reproducing the letter while 
 She accepts. Unrelated boxes stay with Vhal. The specified packets retain their witness names and accusations; Vhal may not substitute an expurgated version.
 The collector signs the list before Edran separates the packets from the chest. Nurah checks each one, refusing a promise of delivery after departure.{/n}''', c('[Take the specified packets and leave the unrelated remainder.]', "signed", flags=f("bargain_named_packets"))),
     n("bargain_limited", "Nurah", '''"Printing both dedications will humiliate my clients."
-"They were promised something impossible," you say. "You can explain it with the two pages, or Nurah can print the subscriber list with her own explanation."
+"They were promised something impossible," {n}you say.{/n} "You can explain it with the two pages, or Nurah can print the subscriber list with her own explanation."
 {n}Nurah smiles and lays the list flat.{/n}
 "I have written a very good opening. You would hate it."
 {n}Vhal demands that unrelated household papers remain outside the publication. You agree. Nurah has already accepted that limit privately, but makes the collector wait while she reads it again.
 The paired pages will identify both purchasers and amounts. Vhal may add her explanation that she offered separate issues. Nurah insists the original word exclusive remain visible above it.
 Vhal signs. When Nurah adds her signature, the collector watches it with an expression that suggests she has finally learned why an imitation was easier.{/n}''', c('[Keep the paired pages and Vhal\'s explanation together.]', "signed", flags=f("bargain_paired_pages"))),
     n("bargain_collection", "Nurah", '''"Those sources are my livelihood."
-"The volumes are your livelihood," Nurah says. "The sources are why your clients sometimes pay twice."
+"The volumes are your livelihood," {n}Nurah says.{/n} "The sources are why your clients sometimes pay twice."
 {n}She turns the list toward Vhal. A second payment, entered privately, suppressed an earlier account. Vhal calls it additional research. Nurah asks whether the family would like to compare the invoices.{/n}
 "You would destroy the value by publishing them."
 "Yes. I would prefer you to sell me the value instead."
@@ -1189,42 +1189,42 @@ The collector adds a prohibition on publishing evidence of the offer she made co
       c('[Reserve the secretary\'s promised statement before accepting the publication restriction.]', "statement_scope", requires=f("secretary_statement"), flags=f("bargain_clients_reserved")),
       c('[Accept the current-client delay and the restriction on publishing the recovered correspondence.]', "collection_agreed", forbids=f("secretary_statement"), flags=f("bargain_clients_reserved"))),
     n("collection_agreed", "Nurah", '''{n}Nurah changes evidence to recovered private correspondence and reads the revised sentence aloud. Vhal asks whether she intends to commission a witness to tell the same story for her.{/n}
-"Not as a device to evade this exchange," Nurah says. "People who were in the room may talk. I have promised you no power over their memories."
+"Not as a device to evade this exchange," {n}Nurah says.{/n} "People who were in the room may talk. I have promised you no power over their memories."
 {n}Vhal accepts the wording. It protects the letters Nurah is acquiring without pretending the guests can be made to forget the reading.
 Nurah signs beside the client restriction, then holds out her hand for the inventory. She will not sign the receipt until every listed packet has left the chest.{/n}''', c('[Complete the private collection exchange.]', "signed")),
     n("statement_scope", "Nurah", '''{n}Nurah places Edran's signed statement across the proposed restriction.{/n}
 "This is reserved. It goes into my account exactly as he signed it, with my reply. We agreed before you offered the collection."
-"I agreed to no such reservation," Vhal says. "You obtained his help by promising to publish the very transaction I am paying you to stop publishing."
+"I agreed to no such reservation," {n}Vhal says.{/n} "You obtained his help by promising to publish the very transaction I am paying you to stop publishing."
 "Then pay for the letters. You cannot buy a promise I have already made to him."
 {n}Vhal looks from the statement to the inventory. She strikes a name in the former-client column: the buyer who paid most lavishly to conceal an earlier history.{/n}
 "That packet stays with me. The statement has reduced the silence I receive. It reduces the collection you receive in return."
 {n}Nurah presses the pen against the table until its nib bends.{/n}
-"Or," Vhal continues, "you give my signed reply the same place beside his statement. No omissions. No invented commentary inside my words. Your objections may follow them. I intend to answer the allegation in the publication that carries it."
+"Or," {n}Vhal continues,{/n} "you give my signed reply the same place beside his statement. No omissions. No invented commentary inside my words. Your objections may follow them. I intend to answer the allegation in the publication that carries it."
 {n}Nurah turns toward you. She wants the packet. She also wants to deny the collector an audience purchased at her expense. Neither desire can be satisfied by pretending Edran's statement was already covered.{/n}''',
       c('[Keep Edran\'s statement unchanged and leave Vhal the named client packet.]', "reserve_packet", flags=f("collector_packet_reserved")),
       c('[Keep the full collection and print Vhal\'s signed reply beside Edran\'s unchanged statement.]', "reserve_reply", flags=f("collector_reply_reserved"))),
     n("reserve_packet", "Nurah", '''{n}You put a line through the packet on Nurah's copy of the inventory. Vhal draws the same line on hers, slower than necessary.{/n}
-"The statement remains outside the publication restriction," you say. "Its admission, its explanation, and Nurah's reply."
+"The statement remains outside the publication restriction," {n}you say.{/n} "Its admission, its explanation, and Nurah's reply."
 "Those pages only. The recovered private letters remain covered."
 {n}Nurah writes the exception beneath that sentence and makes Vhal initial it. Then she watches Edran return the valuable packet to the chest. Its red cover disappears beneath the papers the collector still owns.{/n}
-"I would have enjoyed that one," Nurah says.
-"You can decline the exchange," Vhal answers.
+"I would have enjoyed that one," {n}Nurah says.{/n}
+"You can decline the exchange," {n}Vhal answers.{/n}
 "And deprive you of all the less expensive things you have lost? No."
 {n}She signs. When Edran offers to thank her, she tells him to save his gratitude for the employer who next believes his account of himself.
 The rest of the collection passes across the table. Nurah counts it twice, leaving the crossed-out name visible on top of her copy.{/n}''', c('[Accept the smaller collection and the explicit publication exception.]', "signed")),
-    n("reserve_reply", "Nurah", '''"Write it now," you tell Vhal. "Edran's statement stays intact. Your answer follows it, and Nurah's reply follows yours."
+    n("reserve_reply", "Nurah", '''"Write it now," {n}you tell Vhal.{/n} "Edran's statement stays intact. Your answer follows it, and Nurah's reply follows yours."
 {n}Vhal asks for fresh paper. Nurah gives her the sheet with the disputed clause on its reverse.{/n}
 "You may find it inspiring."
 {n}The collector writes that she sought an authorized account and offered a rare document as compensation. She calls Edran an employee who misjudged her instructions. She acknowledges withdrawing the record, describing the act as protection against a hostile gathering.
 Nurah reads the completed reply, then underlines the word compensation on her own sheet.{/n}
-"You will leave it as written," Vhal says.
+"You will leave it as written," {n}Vhal says.{/n}
 "Every word. My readers may enjoy comparing your compensation with the praise you demanded for it."
 {n}They attach both signed statements to the settlement. The publication exception names them and permits Nurah's separate response; the private correspondence remains restricted.
 Edran sets the disputed client packet with the rest of the transferred collection. Nurah takes it without smiling. She has kept its value by giving Vhal room to defend herself in Nurah's next account.{/n}''', c('[Accept the collector\'s printed reply as the cost of the complete collection.]', "signed")),
     n("bargain_refused", "Nurah", '''{n}Vhal sees the deleted demand and offers the supplier list at a reduced price. Nurah looks at it. She does not reach for it.{/n}
-"The record, its source, and the correspondence about this offer," you say.
-"Such admirable restraint," Vhal replies. "Would installments preserve it?"
-"Do not confuse my disagreement with the Commander for permission to insult me," Nurah says.
+"The record, its source, and the correspondence about this offer," {n}you say.{/n}
+"Such admirable restraint," {n}Vhal replies.{/n} "Would installments preserve it?"
+"Do not confuse my disagreement with the Commander for permission to insult me," {n}Nurah says.{/n}
 {n}She pushes the list back. You offer to exclude unrelated papers from this account. Vhal demands that her present buyers remain unnamed except where they purchased the disputed dedication. Nurah adds an exception for anyone directly identified in the offer concerning Bressa.
 After rereading the correspondence, Vhal accepts. The settlement is narrower than Nurah wanted and less damaging than Vhal feared. When the collector begins speaking of future opportunities, Nurah interrupts to ask for the acquisition note already promised.{/n}''', c('[Take the limited evidence without buying the wider collection.]', "signed", flags=f("bargain_scope_narrow"))),
     n("signed", "Narrator", '''{n}You compare the sale sheet's catalog number with the earlier reference. Nurah checks the date and witnessing marks against the acquisition note, then places both inside her book.
@@ -1247,7 +1247,7 @@ She opens the wrapper. The settlement has produced something less tidy than Vhal
       c('[Examine the finished answer.]', "results", forbids=f("secretary_statement"))),
     n("statement", "Nurah", '''{n}Edran's admission appears before Nurah's answer. He names the withheld document and Vhal's order, then defends how late he claims to have understood the bargain.
 Nurah has printed the whole statement, including that defense. Her reply below it is considerably less forgiving.{/n}
-"He sent a revised version," she says. "It contained fewer things he remembered doing. I kept the signed one."
+"He sent a revised version," {n}she says.{/n} "It contained fewer things he remembered doing. I kept the signed one."
 "He still gets his explanation."
 "Yes. That was the price. You need not remind me how fairly I have paid it."
 {n}She turns the sheet over. Edran has also asked permission to use the account when seeking new employment. Nurah answered that she does not own his signature and recommends he find an employer who reads past the first paragraph.
@@ -1263,7 +1263,7 @@ The record itself lies safely inside her book. She touches its edge, then smooth
 The missing packet has left Nurah with fewer profitable names. It has not diminished her interest in the ones she acquired.{/n}
 "Next time we buy a witness with space in my book, remind me to find out who else will try to charge for the page."''', c('[Keep the actual loss on the inventory.]', "results")),
     n("reply_cost", "Nurah", '''{n}Vhal's reply follows Edran's statement without a word removed. Nurah has printed her own response below it, beginning with the price of the praise the collector calls an authorized account.{/n}
-"She sent another version," Nurah says. "This one blamed a misunderstanding with the editor. I told her we purchased the signed performance, not unlimited revisions."
+"She sent another version," {n}Nurah says.{/n} "This one blamed a misunderstanding with the editor. I told her we purchased the signed performance, not unlimited revisions."
 "Her defense may persuade someone."
 "Yes. That is why she wanted it here."
 {n}Nurah closes the pamphlet and opens the red-covered client packet. The invoices inside are worth more than she expected. She lets you see the figures, then puts them away.{/n}
@@ -1279,7 +1279,7 @@ The missing packet has left Nurah with fewer profitable names. It has not dimini
 Nurah taps the signature with evident pleasure.{/n}
 "She asked to call it incomplete. I asked which part of a sentence she had entirely invented was merely missing. Edran advised her to sign."
 {n}The acquisition note identifies the dealer who sold the record. Nurah has sent an inquiry with a copy of the witnessing marks. She has received a confirmation that the dealer's former clerk still works in the district, though not an answer about Bressa herself.{/n}
-"That is the next person to ask," she says. "I have paid the messenger. If there is an answer, it will come after the road has had its turn."
+"That is the next person to ask," {n}she says.{/n} "I have paid the messenger. If there is an answer, it will come after the road has had its turn."
 "Will you keep following it?"
 "Yes."
 {n}She gives you the answer without ornament, then turns back to Vhal's signature.{/n}
@@ -1294,25 +1294,25 @@ Nurah has received copies of the first angry letters. She reads the best sentenc
 Bressa's record is separate from the packets. A copy has gone to a correspondent near the purchasing household. The original remains with Nurah.{/n}''', c('[Keep the released dispute and follow what it draws into the open.]', "history", flags=f("outcome_rivals"))),
     n("limited", "Nurah", '''{n}The revised dedication prints both exclusive claims on facing pages. Under each is the amount paid for the privilege. Nurah has insisted on identical type, so neither patron can accuse the other of buying larger letters after the fact.
 The subscribers have demanded explanations from Vhal. Their quarrel concerns the edition itself. The unrelated household papers remain outside the publication.{/n}
-"One has offered to buy every remaining copy," Nurah says. "I asked whether he wanted them bound together. He did not appreciate the economy."
+"One has offered to buy every remaining copy," {n}Nurah says.{/n} "I asked whether he wanted them bound together. He did not appreciate the economy."
 "You sound satisfied."
 "I am enjoying the part we kept. You need not mistake that for agreement about the part you removed."
 {n}She lays the paired pages aside. Bressa's sale record has been copied for an inquiry to the purchasing household's district. Nurah has retained the acquisition note and the original sheet.
 There is no answer yet. While waiting, she has begun a short account of the subscribers' evening in which none of the wealthy guests can quite recognize himself without admitting that he paid to be flattered.{/n}
-"You may read it when I have made you less obvious," she says. "That will take the longest."''', c('[Keep the narrowed public quarrel and her unfinished account.]', "history", flags=f("outcome_limited"))),
+"You may read it when I have made you less obvious," {n}she says.{/n} "That will take the longest."''', c('[Keep the narrowed public quarrel and her unfinished account.]', "history", flags=f("outcome_limited"))),
     n("collection", "Nurah", '''{n}Nurah has arranged the transferred papers by usefulness. The largest stack concerns households that paid Vhal to conceal information while publicly praising the accuracy of her histories.
 She has already written to two former clients outside the protected list. The letters offer private research services at prices calculated from what the recipients previously paid for silence.{/n}
 "You have not wasted time."
 "Neither have they. One former client tried to purchase his own file before Edran finished packing it. The present clients must wait until Vhal delivers their contracts. I have marked the dates."
 {n}She shows you the offer, then the answer she sent. Her price is higher. She has no intention of transferring the only copy.
 Bressa's record sits in a smaller folder with the acquisition note. Nurah has sent a query about the purchaser, partly to follow the woman's disappearance and partly to test a source named in the collection. She has kept the expense against the new business.{/n}
-"Does everything become useful?" you ask.
+"Does everything become useful?" {n}you ask.{/n}
 "No. Some things become expensive. I try to notice the difference before I acquire them."
 {n}Her gaze settles on you, warm and deliberately appraising.{/n}
 "You are making that calculation difficult. I resent it more attractively on some evenings than others."''', c('[Let her keep her collection, and name her own price for it.]', "history", flags=f("outcome_collection"))),
     n("distance", "Nurah", '''{n}The settlement releases Bressa's record and the evidence concerning Vhal's offer. The wider supplier list remains outside your joint undertaking. Nurah has copied the record for an inquiry and paid to have it carried to the purchaser's district.
 She gives you the account without mentioning the separate scrap she kept when you refused her larger plan.{/n}
-"You are waiting for me to ask," you say.
+"You are waiting for me to ask," {n}you say.{/n}
 "I am waiting to see whether you can resist."
 "Have you bought another collection?"
 "No. I have written a letter. It is my letter."
@@ -1362,7 +1362,7 @@ She sets the paper tube on your knee and waits to see whether you will look thro
 "Those are usually the things I intend you to find."
 {n}She closes the drawer, then opens it again to move the old praise letter behind the finished pages. When she shuts it the second time, she leaves it shut.
 At the door she pauses to pull on her gloves. One finger has a small split in the seam. You offer to have it mended. She says she can manage a needle, then gives you the glove anyway.{/n}
-"Bring it next time," she says. "I want to see whether you have hidden a proclamation inside."
+"Bring it next time," {n}she says.{/n} "I want to see whether you have hidden a proclamation inside."
 {n}The other glove remains on her hand. She touches your cheek with it before she leaves.{/n}''', c('[Keep the glove for the next private evening.]', flags=f("copies_settled"))),
 ], "settlement_finished")
 
@@ -1389,32 +1389,32 @@ There are no proofs under her arm tonight. No list of paid subscribers. She noti
 "Patience. I am revising the order of events."
 {n}She draws you toward the chair and climbs into your lap when you sit. For a while she seems content to examine the face of the person who helped her ruin an evening, acquire an enemy, and get an old letter back. Her thumb moves along your jaw, stopping where she wants your attention.
 You kiss the inside of her wrist. Her breath catches, briefly enough that she could deny it, and her fingers curl against your cheek.{/n}
-"That was not in my order," she says.
+"That was not in my order," {n}she says.{/n}
 "A correction."
 "An impertinent one."
 {n}She settles her knees either side of you in the chair and makes a correction of her own, with her mouth, slowly, the way she strikes a line she means nobody to read again. Then she sits back far enough to take hold of the hem of her dress, and draws it up over her head in one motion, and drops it on the floor on top of Vhal's prospectus.{/n}
-"Now," she says, and takes your hands, and puts them on her bare waist, and leans down into you.''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
+"Now," {n}she says, and takes your hands, and puts them on her bare waist, and leans down into you.{/n}''', c('[Let the private argument continue without an audience.]', "morning", flags=f("private_night"))),
     n("kiss", "Nurah", '''"I could ask someone to stand outside and become embarrassed at the appropriate moment."
 "You would charge admission."
 "Only if you insisted on being impressive."
 {n}Her teasing falters when you draw her closer. She rests a hand against your chest, feels the movement beneath it, and looks up without the harmless smile she used for the servant.
 The first kiss is brief. The second is her answer to its brevity. She pulls your collar open another inch and lets the cool air reach the place her mouth has warmed.{/n}
-"No difficult passage this time?" you ask.
+"No difficult passage this time?" {n}you ask.{/n}
 "I am considering the ending. Be quiet while I work."
 {n}You carry her the few steps to the bed. She keeps hold of your collar, laughing when the loose fastening catches in her sleeve, and when you set her down she does not let go of it; she pulls, and you come down with her.
 Outside the room, someone passes without stopping. Nurah hears the footsteps, glances at the door, and turns back to you.{/n}
-"Much better," she says. "They have learned to miss the interesting part."
+"Much better," {n}she says.{/n} "They have learned to miss the interesting part."
 {n}She rolls you onto your back with a small grunt of effort that she will deny later, climbs astride you, and unlaces her bodice with the same quick, practised fingers that unpicked Carrow's lock. She lets it fall open and leans down until her hair closes round both your faces like a curtain.{/n}''', c('[Close the evening around the two of you.]', "morning", flags=f("private_night"))),
     n("stay", "Nurah", '''"That is a long time to leave you without assistance."
 {n}She says it softly. Her fingers leave your collar and rest against the side of your neck. You feel the small movement when she swallows.
 You draw her into an embrace. For a moment she stands still inside it, her face hidden against you. Then she reaches around your back and finds the seam she wants, pulling you closer by it.{/n}
-"I am staying," she says. "You may stop looking as though you expect me to turn into a letter."
+"I am staying," {n}she says.{/n} "You may stop looking as though you expect me to turn into a letter."
 "Your letters are difficult company."
 "They have only ink to work with."
 {n}She lifts her head. The smile that follows is slow and very much aware of what she has to work with instead.
 When you kiss her, she takes her time answering. The lamp remains unlit. You know the way across the room without it, and Nurah discovers several reasons to delay you before you reach the bed: your belt, which she dislikes; your shirt, which she likes better on the floor; a kiss against the bedpost that she says is research.
 At the bed she stops you with one hand flat on your chest and pushes, and you sit. She stands between your knees, which puts her eyes level with yours for once, and unhooks her dress at the back without looking, and lets it go.{/n}
-"I am staying," she says again, quieter, and climbs into your lap, and takes your face in both inky hands and pulls you down onto the bed with her.''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
+"I am staying," {n}she says again, quieter, and climbs into your lap, and takes your face in both inky hands and pulls you down onto the bed with her.{/n}''', c('[Spend the night together.]', "morning", flags=f("private_night"))),
     n("quiet", "Nurah", '''{n}Nurah leaves the fastening open, as though declining to surrender the small victory entirely.{/n}
 "A dangerous preference. I could talk until you regret it."
 "You have tried."
@@ -1446,7 +1446,7 @@ At the door she looks back.{/n}
 "You could leave one at home occasionally."
 "I could bring an authentic insult instead. Something written especially for you."
 {n}She steps between your knees and lays the repaired glove across one of them. Her bare hand finds yours.{/n}
-"There will still be things I want that you dislike," she says. "And people who think your taste has become indefensible."
+"There will still be things I want that you dislike," {n}she says.{/n} "And people who think your taste has become indefensible."
 "They have had time to practice the opinion."
 "Then we should give them something worth improving it over."
 {n}She kisses you with no hurry at all. When she draws back, her expression has become mischievous again.{/n}
@@ -1457,7 +1457,7 @@ At the door she looks back.{/n}
 "You began with a book."
 "A necessary disguise. You are much easier to summon when somebody has misused your name."
 {n}She straightens the open fastening at your collar without closing it, the way she would straighten a page she has decided to keep.{/n}
-"I will come when I choose and when we can make it possible," she says. "You may write if you miss me. Try to include something worth answering."
+"I will come when I choose and when we can make it possible," {n}she says.{/n} "You may write if you miss me. Try to include something worth answering."
 "And if I merely say that I miss you?"
 "I will consider whether you have made it sound interesting."
 {n}She kisses your cheek before you can offer a revision. At the door she turns the book over in her hands, checking that the letter remains inside.

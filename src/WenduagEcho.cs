@@ -40,9 +40,9 @@ namespace Tirabade
         internal const string End = "bbdc280f084c7e64261f0b5f0463889c";
         internal const string Journey = "ddbcf384507535043a1ad5ad8ad8ea15";
         internal const string Capital = Rules.NurahCapital;
-        // TODO: capture an accessible cellar position in DrezenCapital, verify its scene/navmesh,
-        // occupancy and click approach in the coordinator's harness; do not use the street exile locator as a cellar.
-        internal static readonly Vector3? TODO_VerifiedCellarPosition = null;
+        // F7 coordinator staging: street-level cellar door near the verified Wenduag street point.
+        // TODO: verify original-actor approach, click, occupancy and reload live; this is not a basement.
+        internal static readonly Vector3? TODO_VerifiedCellarPosition = new Vector3(-24.63f, 40.13f, 57.17f);
         private static readonly string[][] ExpectedTracks = {
             new[] { "7c1d4ba8ea1255549630d99a644562a2" },
             new[] { "256d8625eeecaf54bb96819cfa989a3e", Movement, "2f95cf24e9b8a084a8630e844b4c5081",

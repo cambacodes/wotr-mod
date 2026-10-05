@@ -35,7 +35,7 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
 "Right. Frightened voice, sword out. Except nobody's drawn a sword, and I haven't even asked about the saw."
 {n}She sets down the strip of wood and turns to Orsa.{/n}''', c('[Let Mera explain the loan.]', "listened")),
     n("person", "Seelah", '''{n}Seelah follows your attention from Orsa to the carpenter. Mera has left a space in the tool roll for the missing saw. She keeps touching it as though the tool might appear there.{/n}
-"We should hear what happened before I start making offers," Seelah says. "Mera?"
+"We should hear what happened before I start making offers," {n}Seelah says.{/n} "Mera?"
 {n}Orsa lets out a breath. Seelah glances from her to the empty slot in Mera's tool roll.{/n}''', c('[Ask Mera about the borrowed saw.]', "listened")),
     n("need", "Seelah", '''"Orsa, what's happened? Want me to help you tell it?"
 {n}The washer shakes her head, then looks toward the washhouse.{/n}
@@ -45,7 +45,7 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
     n("listened", "Narrator", '''{n}"I lent it for a shelf," Mera says. "She was to bring it back before I began this platform. It isn't a shared tool. I earn my living with it."{/n}
 {n}Seelah nods, then turns to Orsa. "We won't know what to do until we see it."{/n}
 {n}Orsa looks at Mera. "All right."{/n}''', c('[Wait while Orsa fetches the saw.]', "broken")),
-    n("hasty_start", "Seelah", '''"Oh, let her get a word out," Seelah says. "You'll frighten the truth clean out of her."
+    n("hasty_start", "Seelah", '''"Oh, let her get a word out," {n}Seelah says.{/n} "You'll frighten the truth clean out of her."
 {n}Mera looks down at the gap between herself and Orsa.{/n}
 {n}"I am standing on the other side of a drain. I would like my saw back."{/n}
 {n}Seelah's mouth closes. She glances at you.{/n}''',
@@ -55,7 +55,7 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
 {n}She sets the strip of wood beside the wall and steps back.{/n}
 {n}"I lent it to her for a shelf," Mera says. "Not for this job. This morning I asked whether she had brought it. She said she'd fetch it. That was before you arrived."{/n}
 {n}Orsa twists the hem of her apron.{/n}
-"That is the part I hadn't heard," Seelah says.
+"That is the part I hadn't heard," {n}Seelah says.{/n}
 {n}Mera turns to Orsa again, still waiting for her answer.{/n}''', c('[Wait for Orsa to answer.]', "broken")),
     n("broken", "Narrator", '''{n}Orsa goes into the washhouse and returns with a saw wrapped in a towel. Several teeth are broken. One end of the blade has bent away from the handle.{/n}
 {n}"There was a nail in the shelf board. I pulled harder when it caught. I thought if I could straighten it before you saw..."{/n}
@@ -71,11 +71,11 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
 "Tell me where you want them."
 {n}You carry boards while Mera checks each one. Seelah braces the first in place. Orsa brings dry wedges and kneels to pass them to the carpenter.{/n}
 {n}By the time the narrow crossing is firm, Seelah's forearms are trembling. Mera tests it herself, then lets her release the board.{/n}
-"I like a job where being stubborn is briefly the right answer," Seelah says, flexing her fingers.''', c('[Return to the question of the saw.]', "repayment")),
+"I like a job where being stubborn is briefly the right answer," {n}Seelah says, flexing her fingers.{/n}''', c('[Return to the question of the saw.]', "repayment")),
     n("repayment", "Narrator", '''{n}Mera puts her remaining tools away. Orsa stands beside her rather than across the drain.{/n}
 {n}"I'll pay to repair it. Not all at once. I don't have it."{/n}
 {n}"I need the saw for work. I can't wait until you have it."{/n}
-"I'll pay the smith," Seelah says. "Orsa, how about you pay me back a few coins at a time?"
+"I'll pay the smith," {n}Seelah says.{/n} "Orsa, how about you pay me back a few coins at a time?"
 {n}Orsa looks relieved, then wary. "I don't want to spend every washing day wondering when you'll come to collect."{/n}
 {n}Seelah rubs her hands on her trousers.{/n}
 "Fair enough. Let's count the coins before I start throwing them about."
@@ -90,7 +90,7 @@ s("borrowed_saw", "The missing teeth", '"You said you wanted a second pair of ha
 {n}Orsa nods, her eyes fixed on the towel around the saw. Seelah opens her mouth, catches herself, and picks up her strip of wood.{/n}''', c('[Walk to the smith with Mera and Seelah.]', "walk")),
     n("loan", "Narrator", '''{n}Orsa names a small amount after each week's washing. "And after you've paid for supper?" Seelah asks. Orsa studies her apron.{/n}
 {n}After a pause, Orsa names a smaller one.{/n}
-"That one," Seelah says. "If the work stops, you tell me. No extra charge for needing longer."
+"That one," {n}Seelah says.{/n} "If the work stops, you tell me. No extra charge for needing longer."
 {n}Mera asks what happens if Seelah leaves Drezen.{/n}
 {n}Seelah scratches her chin. "Then Orsa and I settle it before I pack. I'm not handing her debt to some stranger with a big stick."{/n}
 {n}Orsa agrees. She repeats the amount herself, then says she is sorry for hiding the saw. Mera keeps her eyes on Orsa until the washer finishes, then nods.{/n}''', c('[Walk to the smith with Mera and Seelah.]', "walk")),
@@ -278,7 +278,7 @@ s("inheritors_corner", "Words she has said before", '"You asked me to find you t
 s("roof_evening", "Enough sky for an evening", '"You promised me a view."', [
     n("start", "Narrator", '''{n}Mera lets you through her workshop and points to the stairs. Seelah follows carrying a covered basket. At the top, the roof opens into a small terrace with two low seats set well back from the railing.{/n}
 {n}"The view is included," Mera calls. "The furniture is not to be tested to destruction."{/n}
-"There goes my plan for the evening," Seelah calls back.
+"There goes my plan for the evening," {n}Seelah calls back.{/n}
 {n}Mera's laugh follows you up. Seelah spreads the cloth on a low crate between the seats, sets out the food, and puts the basket at her feet.{/n}
 "Cold chicken, flatbread, and something the woman swore was a pickle. She had my coins before I could argue."''',
       c('[Try the pickle.]', "pickle"),

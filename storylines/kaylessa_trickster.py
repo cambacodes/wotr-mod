@@ -746,7 +746,7 @@ visit(P + "after.knife_on_table", "Put down somewhere", [
 {n}In the morning the shade under the tailor's awning is empty, and the crate has been turned over, and on the bottom of it someone has scratched the outline of a wasp.{/n}''',
         c("[Let her go.]", flags=(LEFT, CLOSED))),
     kay("leave_lie", '''{n}After a while the dagger goes from the table without your seeing it move.{/n}
-"Rule three," says the dark by the window, quite calmly. "It's the only one I'd kill over. I don't want to kill you, soldier. So I'll go."''',
+"Rule three," {n}says the dark by the window, quite calmly.{/n} "It's the only one I'd kill over. I don't want to kill you, soldier. So I'll go."''',
         c("[Let her go.]", flags=(LEFT, CLOSED))),
 ], requires=(DECLINED,), forbids=(COMMITTED,), delay=72)
 

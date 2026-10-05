@@ -100,7 +100,7 @@ Nocticula turns her half over before you finish studying it.{/n}
 "You sound almost interested in the attempt."
 "I am often interested in things I intend to punish. Try to remain capable of distinguishing that from an invitation."
 {n}She leaves the wax in your hand and withdraws her fingers. It is cooler than your skin.{/n}
-"The Council," she says. "Before your private ambitions acquire another chapter."''',
+"The Council," {n}she says.{/n} "Before your private ambitions acquire another chapter."''',
          c('[Keep the marked half and return to the Council conversation.]', flags=f("requested", "seal_received"))),
     page("decline", "Nocticula", '''{n}Nocticula lowers her hand and waits until you have finished speaking.{/n}
 "Then we have finished that question. You may yet have something interesting to say about the business which brought you here."
@@ -164,18 +164,18 @@ The opening is narrow enough to examine without sleeping. Something could follow
          c('[Knowledge: Arcana 34] Bind the reply to the missing stroke and keep the room outside the reflection.', flags=f("channel_attempted"), forbids=f("channel_attempted"), check=dict(Skill="SkillKnowledgeArcana", DC=34, Success="fine", Failure="torn", CommanderOnly=True)),
          c('Use the seal as a sealed question. Give up the possibility of hearing her answer tonight.', "slow", flags=f("channel_slow")),
          c('Put it away. You are not ready to offer even this much access.', abort=True)),
-    page("fine", "Commander", '''You trace the folded edge instead of the line Nocticula withheld. The difference catches under your fingers: an unanswered question may be carried without pretending to contain its own answer.
-You turn the fold inward. The shadow ends at the crease. Beyond it there is darkness, but no glimpse of your desk, door or sleeping city.
-For a moment you can feel how easily the fold could be widened. Your gift for making an exception is waiting for a larger proposition. You leave it waiting.
-Three small impressions appear in the wax. None matches the movement of your hands.
-You tap the paper twice. There is a pause. Then a single answering tap comes from the wrong side of the table.
-You have attracted someone's attention. The unanswered part is whose.''',
+    page("fine", "Commander", '''{n}You trace the folded edge instead of the line Nocticula withheld. The difference catches under your fingers: an unanswered question may be carried without pretending to contain its own answer.{/n}
+{n}You turn the fold inward. The shadow ends at the crease. Beyond it there is darkness, but no glimpse of your desk, door or sleeping city.{/n}
+{n}For a moment you can feel how easily the fold could be widened. Your gift for making an exception is waiting for a larger proposition. You leave it waiting.{/n}
+{n}Three small impressions appear in the wax. None matches the movement of your hands.{/n}
+{n}You tap the paper twice. There is a pause. Then a single answering tap comes from the wrong side of the table.{/n}
+{n}You have attracted someone's attention. The unanswered part is whose.{/n}''',
          c('Keep the narrow opening and ask her to complete the mark you never saw.', "question", flags=f("channel_narrow"))),
     page("torn", "Narrator", '''{n}The fold catches a reflection of the lamp. It begins repeating down a corridor which should not fit inside the sheet. On the third repetition, another light appears.
 You flatten the paper. The corridor closes, leaving a scorched crease and a sound like somebody drawing breath on the far side of a locked door.
 The wax is intact. Its warm edge has impressed part of your name into the tabletop.
 You cannot tell whether the other light belonged to Nocticula. Opening the same fold again would give whoever waited there a better view of the room.{/n}
-"No," you say, to the empty chair.
+"No," {n}you say, to the empty chair.{/n}
 {n}You scrape the marked wood into a bowl and move your work to an inner room. The mark travels with the shavings; a fleck on the floor turns toward the bowl until you pick it up.
 The wax will have to carry a closed question now. You will also have to tell Nocticula what nearly answered it.{/n}''',
          c('Seal the shavings with the request and disclose the failed opening.', "slow", flags=f("channel_exposed", "channel_slow"))),
@@ -183,11 +183,11 @@ The wax will have to carry a closed question now. You will also have to tell Noc
 This way offers no view into her room, and no voice to interrupt. You must write what you want her to answer, then endure the possibility that she will choose a different question.
 There is space for a few lines. You leave the rest blank.{/n}''',
          c('Ask for her half of the authentication, and offer to account for your own.', "question")),
-    page("question", "Commander", '''You describe the incomplete reflection and ask her to add the part she withheld. You do not draw what you think it ought to be.
-Below that, you write the real request: an evening with her, on her side of the wax, with no brother in the room, no Council waiting and no report due at the end of it.
-The last sentence is less restrained. You tell her that you expect her to be difficult and would rather find out whether you can be interesting.
-You consider crossing it out. The line remains.
-The folded sheet goes dark from the center outward. When the shadow reaches the edge, it stops. Nothing in the room beyond it changes.''',
+    page("question", "Commander", '''{n}You describe the incomplete reflection and ask her to add the part she withheld. You do not draw what you think it ought to be.{/n}
+{n}Below that, you write the real request: an evening with her, on her side of the wax, with no brother in the room, no Council waiting and no report due at the end of it.{/n}
+{n}The last sentence is less restrained. You tell her that you expect her to be difficult and would rather find out whether you can be interesting.{/n}
+{n}You consider crossing it out. The line remains.{/n}
+{n}The folded sheet goes dark from the center outward. When the shadow reaches the edge, it stops. Nothing in the room beyond it changes.{/n}''',
          c('Leave the request closed and wait for an answer.', flags=f("the_missing_line_done", "question_sent"))),
 ], "seal_received")
 
@@ -232,7 +232,7 @@ Her voice comes from the small completed mark. No figure occupies the chair.{/n}
     page("repair", "Narrator", '''{n}You lay the sketch beneath the packet. You leave no copy beneath the blotter. Nocticula asks you to name the point at which the second light appeared, and stops you when you try to describe the whole attempt before answering that question.
 One line chars. The shavings settle. A thin streak of ash runs into the wax and disappears.
 You try the old fold without opening it. It no longer catches a reflection.{/n}
-"There," she says. "You may keep the paper. The clever part of it has become mine."
+"There," {n}she says.{/n} "You may keep the paper. The clever part of it has become mine."
 "And the conversation?"
 "May continue as a letter. If I discover that you kept a useful omission, it will become a very short one."
 {n}You have lost the private opening and given her the construction which failed. Her answering mark remains, small and legible beside your name.{/n}''',
@@ -256,7 +256,7 @@ You try the old fold without opening it. It no longer catches a reflection.{/n}
 "Is it occupied?"
 "Not by an invitation I have made to you."
 {n}The answer leaves you no graceful fiction of a relationship resumed. It also leaves her listening.{/n}
-"Write what you want," she says. "If your proposal begins with my becoming less difficult, spare us both the paper."''',
+"Write what you want," {n}she says.{/n} "If your proposal begins with my becoming less difficult, spare us both the paper."''',
          c('Prepare to ask for her actual company rather than a gentler imitation.', "patronage")),
     page("patronage", "Nocticula", '''"And the gift? Are you hoping a better-mannered question will make it unnecessary to discuss that?"''',
          c('"Your renewed gift is a fact between us. It is not my answer to this invitation."', "terms", requires=("noct.acq.gift_renewed",)),
@@ -269,10 +269,10 @@ You try the old fold without opening it. It no longer catches a reflection.{/n}
 "You have already spent one letter asking me to promise the second. Try not to spend the second asking for the third."
 {n}You smile despite yourself. She cannot see it, but her next words arrive with uncomfortable accuracy.{/n}
 "There is the advantage of making you wait. You have had time to consider how much you wanted an answer."
-The wax cools. Its completed stroke remains. She has ended this conversation herself.''',
+{n}The wax cools. Its completed stroke remains. She has ended this conversation herself.{/n}''',
          c('Keep the trial correspondence. Prepare an actual concession before asking for more.', flags=f("her_hand_done", "correspondence_trial"))),
     page("close", "Narrator", '''{n}You tell her you will keep the sketch. The answering stroke lifts from the wax like a thread being pulled through cloth.{/n}
-"Then keep it without my address," she says.
+"Then keep it without my address," {n}she says.{/n}
 {n}You flatten the packet. It reflects only the light in your room. There is still work to do about the place you exposed, but no reply waiting inside it.{/n}''', c('[End the attempt; the earlier history remains.]')),
 ], "question_sent")
 

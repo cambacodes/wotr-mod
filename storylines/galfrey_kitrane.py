@@ -57,8 +57,10 @@ PRESENCES = {
     HUB: dict(Unit=DISGUISED, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=CURIO, Side="left", Distance=2.5),
               Requires=["trickster.ever", RETURNED], Forbids=[CLOSED, HUB_FAILED], MinChapter=5, MaxChapter=5,
               AnswerLists=[], Dialog="hub", Greeting=GREETING),
-    # Fallback: right of the tiefling trader (Terendelev front 2.5 and Mielarah behind 2.5 are each 3.5 m away).
-    HUB_FB: dict(Unit=DISGUISED, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="right", Distance=2.5),
+    # Fallback: right of the tiefling trader, 3.5 m out (E-Q7-33 live probe, Chapter 5 save, DrezenCapital: at 2.5 m a market
+    # citizen stood 1.8 m from her; at 3.5 m the spot is 0.08 m from the mesh with room for her body; Terendelev front 2.5 and
+    # Mielarah behind 2.5 are each about 4.3 m away).
+    HUB_FB: dict(Unit=DISGUISED, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TIEFLING, Side="right", Distance=3.5),
                  Requires=["trickster.ever", RETURNED, HUB_FAILED], Forbids=[CLOSED], MinChapter=5, MaxChapter=5,
                  AnswerLists=[], Dialog="hub",
                  Greeting=("{n}Beside the tiefling trader's stall in the lower town, a knight of the Green Crows sits on "
@@ -109,7 +111,7 @@ beat(P + "after.first_morning", "Boots", '"Did you get your boots?"', [
     ki("morning", '''"I have been standing here since the sixth bell. Nobody has bowed. Nobody has asked me to decide anything." {n}She watches a woman go past with a basket of eels, a boy with a crate of chickens, two off-duty pikemen arguing about a girl.{/n} "I have cut my hair with the sergeant's knife and I wear the Crows' old helm, and I find that nobody looks at the face under a minor order's helm; they look at the surcoat, and decide I am nobody, and look away. A child sold me a pie. It was cold in the middle. I ate it standing up, in the street, with my fingers." {n}Something moves in her face, and is mastered.{/n} "I have eaten at every high table between Nerosyan and Absalom, Commander. I do not think I have ever enjoyed a meal so much."''',
         c('"What will you do with the rest of the day?"', "day"),
         c('[Flirt] "You have pie on your chin, Kitrane."', "chin")),
-    ki("chin", '''{n}Her hand goes to her chin before she can stop it. There is no pie on her chin. She looks at you for a long, flat second, with the whole century of her reign in it.{/n} "That," says Kitrane of the Green Crows, "was impudent." {n}Then she laughs, a real laugh, and a pikeman turns to look.{/n} "Nobody has lied to me for my own amusement in a hundred years. Do it again sometime. Not today."''',
+    ki("chin", '''{n}Her hand goes to her chin before she can stop it. There is no pie on her chin. She looks at you for a long, flat second, with the whole century of her reign in it.{/n} "That," {n}says Kitrane of the Green Crows,{/n} "was impudent." {n}Then she laughs, a real laugh, and a pikeman turns to look.{/n} "Nobody has lied to me for my own amusement in a hundred years. Do it again sometime. Not today."''',
         c("Continue", "day")),
     ki("day", '''"Stand here." {n}Simply.{/n} "Watch. Learn what a city sounds like when nobody is afraid I am listening. Tomorrow I shall see about the Crows. There are two of them left, and a squire, and a tent that leaks." {n}She glances at you sidelong.{/n} "Come back when the war lets you. I find I watch the crowd for your face. It is a new habit. I have not decided yet whether I approve of it."''',
         c("[Leave her to the crowd.]", flags=(FIRST,)),
@@ -443,11 +445,11 @@ beat(P + "kitrane.letter", "Forgive me", '"I\'ve read your letter. The one you h
         c('"Give it back to you. It\'s yours."', "give"),
         c('"Keep it. You wrote it to me."', "keep"),
         c('"Answer it." [Take her hand.] "I forgive you."', "forgive")),
-    ki("give", '''{n}She takes it from you, and looks at it, and without a word she folds it once more and tucks it inside her surcoat, next to the broadsheet about Sir Anselm.{/n} "The Queen's things," she says. "I seem to be collecting them. I shall have a trunk of her soon, like any other widow."''',
+    ki("give", '''{n}She takes it from you, and looks at it, and without a word she folds it once more and tucks it inside her surcoat, next to the broadsheet about Sir Anselm.{/n} "The Queen's things," {n}she says.{/n} "I seem to be collecting them. I shall have a trunk of her soon, like any other widow."''',
         c("[Leave her with it.]", flags=(LETTER_SPOKEN, P + "kitrane.letter_returned"))),
     ki("keep", '''"I did." {n}A long breath.{/n} "Keep it, then. Keep it somewhere no Inquisitor goes. And if I am ever tempted to be the Queen again, show it to me, and remind me what she was like at the end of a day."''',
         c("[Put it away.]", flags=(LETTER_SPOKEN, P + "kitrane.letter_kept"))),
-    ki("forgive", '''{n}Her hand is cold, and very still in yours, and then it is not.{/n} "That," she says, not quite steadily, "is a thing I have wanted to hear from you since the night I wrote it, and the Queen would have changed the subject and ordered more candles." {n}She does not take her hand back.{/n} "Kitrane will allow it. Just this once. In a market. Where nobody is looking."''',
+    ki("forgive", '''{n}Her hand is cold, and very still in yours, and then it is not.{/n} "That," {n}she says, not quite steadily,{/n} "is a thing I have wanted to hear from you since the night I wrote it, and the Queen would have changed the subject and ordered more candles." {n}She does not take her hand back.{/n} "Kitrane will allow it. Just this once. In a market. Where nobody is looking."''',
         c("[Hold her hand a moment longer.]", flags=(LETTER_SPOKEN, P + "kitrane.letter_kept"))),
 ], requires=(FIRST, FAREWELL), forbids=(LETTER_SPOKEN,), delay=24)
 
@@ -525,7 +527,7 @@ beat(P + "kitrane.reel", "The market reel", '"There\'s music in the square."', [
         c("[Kiss her in front of the whole market.]", "kissed", flags=(REEL,)),
         c('[Flirt] "Then I\'ll save it for somewhere they can\'t whistle."', "saved", flags=(REEL,))),
     nar("kissed", '''{n}They whistle. They go back to their eels. The fiddler strikes up again, something slower, and a pikeman with a bruised foot shouts something about officers that makes Kitrane laugh into your mouth.{/n}
-"There," she says when she can. "Nobody wrote it down." {n}She does not let go of you for some time.{/n}''',
+"There," {n}she says when she can.{/n} "Nobody wrote it down." {n}She does not let go of you for some time.{/n}''',
         c("[Stay for the next dance.]")),
     ki("saved", '''"Somewhere they cannot whistle." {n}Her mouth curves slowly.{/n} "You are a very careful strategist, Commander. I have always admired it in you. I am beginning to find it maddening." {n}She lets go of your arm at last, and retrieves her sword-belt, and buckles it on without looking at it.{/n} "Choose the ground well. I intend to hold you to it."''',
         c("[Leave her flushed and laughing.]")),
@@ -809,7 +811,7 @@ beat(P + "kitrane.grey", "Counting", '"You\'re frowning at that mirror again."',
     ki("start", '''"Three." {n}She holds out the sergeant's little steel mirror to you, accusingly.{/n} "There were three this morning. I had one a fortnight ago. At this rate I shall be white as the Storyteller by Threshold, and you will have to lead me into battle by the elbow."''',
         c('[Flirt] "I\'ll count them for you. Every one."', "count"),
         c('"Do you mind?"', "mind")),
-    ki("count", '''{n}She hands you the mirror, and then, after a moment's consideration, takes it back and bends her head instead, right there beside the curio stall, so that you can part her hair with your fingers and look.{/n} "Report, Commander," she says to the cobbles, a little muffled.''',
+    ki("count", '''{n}She hands you the mirror, and then, after a moment's consideration, takes it back and bends her head instead, right there beside the curio stall, so that you can part her hair with your fingers and look.{/n} "Report, Commander," {n}she says to the cobbles, a little muffled.{/n}''',
         c('"Four."', "four"),
         c('"Three. And a very handsome ear."', "ear")),
     ki("four", '''"Four!" {n}She straightens up so fast that her hair falls in her eyes.{/n} "Four. You are a liar and a scoundrel and I shall never let you count again." {n}She is laughing.{/n} "I have been counted by treasurers and physicians and priests of the Inheritor for a hundred years, Commander, and not one of them ever made it feel like this."''',

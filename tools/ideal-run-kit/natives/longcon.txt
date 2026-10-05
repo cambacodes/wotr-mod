@@ -1,0 +1,7 @@
+# The Long Con (relationship longcon, CommittedFlag longcon.talk_done)
+CalebFooled:1               # Ch1 Blackwing Library: pass Perception DC 17 (Answer_0015) or Lore (Religion) DC 15 (Answer_0016) or be a Tiefling, then [Give in to the strange instinct] "...in the name of... Baphomet!"
+longcon.kc_appointed:2      # Ch2: appointed Knight Commander (native SeenCue 99b869e1); gates the prisoner page
+nurah.asked_what_she_wants:2 # Ch2 Nurah's dialog Answer 9a962124 (optional: longcon.big_joke)
+nurah.trickster_recruited:2 # Ch2 Nurah, canon Trickster pact Answer_0109 (optional: longcon.big_joke)
+gresilla.darrazand_heard:3  # Ch3 Midnight Fane, Gresilla Cue_0014 (T1 thread for Nocticula)
+fane.darrazand_defeated:3   # Ch3 Darrazand fight (delivers T1)

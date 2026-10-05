@@ -95,7 +95,7 @@ class DraftContractTests(unittest.TestCase):
             story = {"Scenes": self.inventory[name]["scenes"]}
             self.assertTrue(player_text_lint.check(story, draft=True)["review"])
         result = text_structure_lint.check({"Scenes": self.inventory["terendelev_continuation"]["scenes"]}, draft=True)
-        self.assertTrue(any(r["code"] == "orphan-narration-closer" for r in result["hard"]))
+        self.assertEqual(result["hard"], [])
 
     def test_every_mapped_draft_text_finding_has_a_diagnostic(self):
         import json
@@ -108,5 +108,7 @@ class DraftContractTests(unittest.TestCase):
         for f in findings:
             if f.get("item_id") not in {"E-Q7-20", "E-Q7-21"} or not f["snapshot_evidence"].get("draft_finding"):
                 continue
-            rows = player if f["item_id"] == "E-Q7-21" else structure["hard"] + structure["review"]
-            self.assertTrue(any(r["scene"] == f["scene"] for r in rows), f["id"])
+            if f["item_id"] == "E-Q7-21":
+                self.assertTrue(any(r["scene"] == f["scene"] for r in player), f["id"])
+            else:
+                self.assertFalse(any(r["scene"] == f["scene"] for r in structure["hard"]), f["id"])

@@ -1,0 +1,7 @@
+# Yaniel, state "doubt" (freed at the Midnight Fane; Radiance handed to her in its +1 form; the swap on her doubt branch)
+yaniel.radiance_plus1:3   # carry Radiance (+1 form, RadiancePlus1ITem) in inventory into the Ch3 Midnight Fane
+yaniel.radiance_seen:3    # Ch3 TrueYaniel dialog: [Hand Radiance to the woman] Answer_0005 -> Cue_0008 "I thought I'd never see you again, my friend"
+yaniel.fane_doubt:3       # Ch3 same dialog: the +1/masterwork branch Cue_0027 (her doubt); the RRT swap is inline there
+yaniel.freed:3            # Ch3 leave the Fane dialog without a kill answer (Answer_0020 / 0011 / 0006) -> Yaniel_Freed
+irabeth.chapter_five:5    # Ch5 starts (Irabeth's Chapter05 etude; latches yaniel.ch5.latched)
+iz.done:5                 # Ch5 the Iz main quest completed (her verdict scenes come after Iz)

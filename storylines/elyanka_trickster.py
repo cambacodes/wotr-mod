@@ -178,7 +178,7 @@ DOOR_CHOICES = (
 
 SCENES.append(scene(E + "door.hearse", "A hearse at the south gate", "Elyanka", 5, "", [
     nar("start", '''{n}The sergeant of the south gate has been standing outside your door since the change of watch, and he has not once put down the card in his hand, as if it might go off. It is heavy grey paper edged in black, sealed with black wax and a pressed white flower, and it is addressed in a tall, sloping hand:{/n}
-*To the executor of the estate of the late Knight Commander of the Fifth Crusade. Elyanka Camilary, of the Immortal Principality of Ustalav, under the crusader's oath, asks leave to treat for the remains. Payment in hand.*''',
+{n}*To the executor of the estate of the late Knight Commander of the Fifth Crusade. Elyanka Camilary, of the Immortal Principality of Ustalav, under the crusader's oath, asks leave to treat for the remains. Payment in hand.*{/n}''',
         c("Continue", "sergeant")),
     n("sergeant", "Gate sergeant", '''"Came up the Ustalav road at noon, Commander. A hearse. Black lacquer, glass sides, four black horses in plumes, and six of hers walking behind in grey without a word out of any of them. She has the oath right enough. Sworn at Nerosyan on her way north, not a month back; I read it twice. By law she can come in, and she knows it. She told me so before I asked."
 {n}He turns the card over, and back.{/n} "She asked for your executor, Commander. Not for you. I didn't tell her you were alive. I didn't tell her anything. I don't think she'd have heard me if I had."''',

@@ -576,7 +576,7 @@ table("tirabade.trickster.third_chair", "Deal the cards", [
       c('[Leave the chair empty tonight] "Not yet. Keep it for me."', "kept", flags=("tirabade.trickster.declined",)),
       portrait="Irabeth"),
     a("dealt", '''{n}Anevia deals. Irabeth cheats, badly and one-handed, and denies it under oath. Nobody finds the Queen of Coins. At some point the watch changes behind you, and nobody at the table notices, and then the lantern is the only light on the road and all three of you are still there.{/n}
-"Same time tomorrow," Anevia says. "Same chairs. Knock first."''',
+"Same time tomorrow," {n}Anevia says.{/n} "Same chairs. Knock first."''',
       c('"Same chairs."')),
     n("kept", "Irabeth", '''"Then it stays here. We'll put a cup on it."
 {n}Anevia is already pouring.{/n}''',
@@ -595,47 +595,47 @@ def ret(text, requires=(), forbids=()):
 
 
 PARAGRAPHS = (
-    ret("She never again owned a wardrobe she had not nailed shut, and she never again went through a door without "
-      "knocking on it first.", requires=(NAILED,), forbids=(CRATED,)),
-    ret("The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the "
-      "carpenters found it and could not work out why anyone had used so many nails.", requires=(NAILED,), forbids=(CRATED,)),
-    ret("She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who "
-      "asked about the holes was told they were for ventilation, which was true.", requires=(CRATED,)),
-    ret("Somewhere south of Drezen a quartermaster still tells the story of the crate marked \"salt pork, Commander's "
-      "personal\", and nobody believes him.", requires=(CRATED,)),
-    ret("Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in "
-      "the room, she said it was the other way round.", requires=(BARGAIN,)),
-    ret("She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it "
-      "out.", requires=(ACCOUNT,), forbids=(EXPOSED,)),
-    ret("She never again took anything the Commander said on trust. She said it was restful.", requires=(EXPOSED,)),
-    ret("The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, "
+    ret("{n}She never again owned a wardrobe she had not nailed shut, and she never again went through a door without "
+      "knocking on it first.{/n}", requires=(NAILED,), forbids=(CRATED,)),
+    ret("{n}The wardrobe in the room over the Defender's Heart stayed nailed shut until the Heart was rebuilt, and then the "
+      "carpenters found it and could not work out why anyone had used so many nails.{/n}", requires=(NAILED,), forbids=(CRATED,)),
+    ret("{n}She kept the crate lid, the one with the air holes, and used it as a tray for the rest of her life. Anyone who "
+      "asked about the holes was told they were for ventilation, which was true.{/n}", requires=(CRATED,)),
+    ret("{n}Somewhere south of Drezen a quartermaster still tells the story of the crate marked{/n} \"salt pork, Commander's "
+      "personal\"{n}, and nobody believes him.{/n}", requires=(CRATED,)),
+    ret("{n}Whenever the Commander asked, she said she had come back because Beth had fetched her. Whenever Beth was in "
+      "the room, she said it was the other way round.{/n}", requires=(BARGAIN,)),
+    ret("{n}She kept the certified copy of the report from Iz in a drawer, the version that hurt, and never once took it "
+      "out.{/n}", requires=(ACCOUNT,), forbids=(EXPOSED,)),
+    ret("{n}She never again took anything the Commander said on trust. She said it was restful.{/n}", requires=(EXPOSED,)),
+    ret("{n}The spring after Threshold, somebody knocked on the Commander's door in Nerosyan: a real door, three times, "
       "like a person. She had a lantern in one hand and no knife in the other, and the conversation from the gate "
-      "picked up exactly where she had left it. On her terms. It was always going to be on her terms.",
+      "picked up exactly where she had left it. On her terms. It was always going to be on her terms.{/n}",
       requires=(LATE,), forbids=("anevia.committed", "anevia.closed", DECLINED, FRIENDS)),
-    ret("Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.",
+    ret("{n}Irabeth came with her, carrying both their packs and pretending very hard to be somewhere else.{/n}",
       requires=(LATE, I_RET), forbids=("anevia.committed", "anevia.closed", DECLINED, FRIENDS)),
-    ret("She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three "
-      "knocks, and no furniture.", requires=(TERMS,)),
-    ret("She kept the one secret the Commander ever handed her, and never once used it. Probably.", requires=(KEY,)),
-    p("She never forgave the Commander for Iz, and never pretended to. She kept her own terms anyway: a real door, three "
+    ret("{n}She kept to the door rule for the rest of her life, and made the Commander keep it too: a real door, three "
+      "knocks, and no furniture.{/n}", requires=(TERMS,)),
+    ret("{n}She kept the one secret the Commander ever handed her, and never once used it. Probably.{/n}", requires=(KEY,)),
+    p("{n}She never forgave the Commander for Iz, and never pretended to. She kept her own terms anyway: a real door, three "
       "knocks, and Beth's name said out loud every time she came through it. Whatever the two of them had, they built it "
-      "beside that grave and not over it, and she would not let either of them forget which side of it they stood on.",
+      "beside that grave and not over it, and she would not let either of them forget which side of it they stood on.{/n}",
       requires=(RETURNED, KILLED), forbids=(I_RET,), any_groups=([TERMS, KEY],)),
-    p("Beth stayed dead. Anevia kept her side of the bed cold on purpose for a year, and said so, and then one winter "
+    p("{n}Beth stayed dead. Anevia kept her side of the bed cold on purpose for a year, and said so, and then one winter "
       "night she didn't, and said that too. She never once let the Commander pretend the two things were the same "
-      "kind of love, and never once let either of them be ashamed of the second.",
+      "kind of love, and never once let either of them be ashamed of the second.{/n}",
       requires=(RETURNED, "irabeth_dead"), forbids=(I_RET, KILLED), any_groups=([TERMS, KEY],)),
-    p("At muster the morning after the gate, the Commander said it in the yard, in front of Beth's knights, in the same "
-      "words: \"I killed her. At Iz. With my own hand.\" Nobody in Drezen ever said it sideways again.",
+    p("{n}At muster the morning after the gate, the Commander said it in the yard, in front of Beth's knights, in the same "
+      "words:{/n} \"I killed her. At Iz. With my own hand.\" {n}Nobody in Drezen ever said it sideways again.{/n}",
       requires=(RETURNED, PENANCE)),
-    ret("She kept her word and never came inside. Letters reached the Commander now and then from towns on the road "
-      "south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.",
+    ret("{n}She kept her word and never came inside. Letters reached the Commander now and then from towns on the road "
+      "south, unsigned, in a hand nobody else could read. None of them was a yes. None of them was quite a no.{/n}",
       requires=(DECLINED,), forbids=("anevia.committed", "anevia.closed")),
-    ret("She came to the gate once more, to say goodbye properly, and did not come again.", requires=("anevia.closed",)),
-    ret("She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they "
-      "liked it there.", requires=(FRIENDS,), forbids=("anevia.committed", "anevia.closed", LATE)),
-    ret("Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the "
-      "road side of it and talked to her through the whole of every watch.", requires=(I_RET,)),
+    ret("{n}She came to the gate once more, to say goodbye properly, and did not come again.{/n}", requires=("anevia.closed",)),
+    ret("{n}She and the Commander stayed on their own sides of the line in the mud, by agreement, and found that they "
+      "liked it there.{/n}", requires=(FRIENDS,), forbids=("anevia.committed", "anevia.closed", LATE)),
+    ret("{n}Beth stood watch at the Drezen gate until the Wound was closed, left foot forward, and Anevia stood on the "
+      "road side of it and talked to her through the whole of every watch.{/n}", requires=(I_RET,)),
 )
 PAGE = '''{n}Anevia Tirabade came back as far as the Drezen gate, and for a long while no further.{/n}'''
 TOGETHER = {"trying": "tirabade.group_closed", "committed": "tirabade.group_closed"}
@@ -808,24 +808,24 @@ COURTSHIP_OPENING = ("anevia.unborrowed_hour", "anevia.a_question_at_home", "ane
                      "anevia.beths_answer", "anevia.her_own_answer", "anevia.a_place_of_our_own",
                      "anevia.an_invitation_afterward")
 LIVING_ENDINGS = ("anevia.ending_kept", "anevia.ending_open", "anevia.ending_unfinished", "anevia.ending_promised")
-TIRABADE_PARAGRAPH = p("They had both been lost once, one to Iz and one to the road south, and both had come back by "
+TIRABADE_PARAGRAPH = p("{n}They had both been lost once, one to Iz and one to the road south, and both had come back by "
                        "routes that did not bear close inspection. At the Tirabade table there were three chairs, and "
-                       "Anevia's rule for the third was the same as for every door: knock first.",
+                       "Anevia's rule for the third was the same as for every door: knock first.{/n}",
                        requires=(RETURNED, I_RET))
 # Sol pol INT: the registered "wife killed" ending, for an Anevia who came back but never renewed her terms. Her no at
 # the gate was "not like this", not never; exactly one of these (with the independent module's never-returned closure)
 # says where it was left. The muster and unsigned-letter paragraphs follow from PARAGRAPHS.
 WIFE_KILLED_RETURNED = (
-    p("Her last word at the gate had been \"Come back when you can knock,\" and she had meant both halves of it. The knock "
+    p("{n}Her last word at the gate had been{/n} \"Come back when you can knock,\" {n}and she had meant both halves of it. The knock "
       "she wanted was Iz, said plainly in the Commander's own voice, in the yard where Beth's knights could hear it. It "
-      "was never said there. She did not shut the gate, and she did not forgive a word of it.",
+      "was never said there. She did not shut the gate, and she did not forgive a word of it.{/n}",
       requires=(RETURNED, DECLINED), forbids=(PENANCE,)),
-    p("She called the muster what it was: the price of the gate, not of the door. She held to that. The lantern stayed on "
-      "her side of the line, the Commander still knew how to knock, and she never once said she would not answer.",
+    p("{n}She called the muster what it was: the price of the gate, not of the door. She held to that. The lantern stayed on "
+      "her side of the line, the Commander still knew how to knock, and she never once said she would not answer.{/n}",
       requires=(RETURNED, DECLINED, PENANCE)),
-    p("She came back as far as the Drezen gate with Beth's name still the first thing out of her mouth. Whatever passed "
+    p("{n}She came back as far as the Drezen gate with Beth's name still the first thing out of her mouth. Whatever passed "
       "between them afterward, she never let Iz be told as an accident, and never let her coming back be mistaken for a "
-      "pardon.",
+      "pardon.{/n}",
       requires=(RETURNED,), forbids=(DECLINED,)),
 )
 

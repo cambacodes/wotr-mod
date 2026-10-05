@@ -1,0 +1,9 @@
+# Delamere: woken state via the Ch3 crypt (matrix state `unvisited` -> `crypt`). Kyado kept alive.
+kyado.crypt_door_seen:3     # Kyado_main_dialogue Cue_0012: ask Kyado about the door ("It leads... into the c-cellar")
+kyado.initiated:3           # Answer_0092 "I do!" -> Cue_0094_TrickReinf: CryptKey + KyadoDontDie_TricksterReinf (Kyado survives the crypt exit)
+delamere.tomb_visited:3     # TombOfDelamere_BookEvent started: open the sarcophagus book event in the crypt
+# Polish r4 Book-lock gate: finish the opened-tomb native event, leaving her remains here.
+delamere.tomb_opened_bruteforce:3  # Answer_0023 -> Cue_0040: break the seal and open the lid
+delamere.tomb_close_forced_selected:3  # Answer_0050: leave the relics and close the lid (no Drezen move order)
+delamere.tomb_closed_forced:3  # Cue_0054: the lid closes and the archer lowers the bow
+delamere.tomb_book_locked_forced:3  # Answer_0059 Close: SwitchInteraction disables the corpse Book

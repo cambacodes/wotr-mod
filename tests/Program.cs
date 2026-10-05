@@ -259,7 +259,7 @@ internal static class Program
     {
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
-        story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last()), new JsonSerializerOptions { IncludeFields = true })!;
+        story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
         // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
         if (args.Contains("--eng7-l06"))
         {
@@ -561,6 +561,9 @@ internal static class Program
         ReturnToListTests.Run(Check);
         ParagraphTests.Run(Check);
         NativeEpilogueEditTests.Run(Check);
+        // BEGIN eng7-f5: native slide/state inventory (no game launch).
+        NativeCuePolicyInventoryTests.Run(story, Check);
+        // END eng7-f5
         ContactDisambiguationTests.Run(Check);
         // eng7-l05
         ParticipantInventoryTests.Run(story, Check);

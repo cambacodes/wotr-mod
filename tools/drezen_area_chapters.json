@@ -1,0 +1,608 @@
+{
+  "schema_version": 1,
+  "item": "E-Q7-33 / ENGINE F7",
+  "source": "/wrath/blueprints.zip",
+  "authored_changes": "Street-level cellar-door staging and spacing offsets are authored placement corrections. Earned return/path gates and saved identities are unchanged.",
+  "chapter_table": [
+    {
+      "chapter": 3,
+      "drezen_areas": [
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "phase": "c2-c3 Answer_0002 completes Chapter02 (starts Chapter03 / SwitchChapter3) and TeleportParty enters DrezenCapital_Enter. CapitalMechanic/DefaultMechanic persist under Chapter03_Extra, separate from the completed Chapter03 etude."
+    },
+    {
+      "chapter": 4,
+      "drezen_areas": [],
+      "phase": "ToNexus completes Chapter03 and its StartsOnComplete starts Chapter04. Capital street hubs are unavailable during the Abyss; do not infer a visit from a 3..5 presence window."
+    },
+    {
+      "chapter": 5,
+      "drezen_areas": [
+        "83a099db95e0e6e4485a20b10ce7c28d",
+        "2570015799edf594daf2f076f2f975d8"
+      ],
+      "phase": "ReturnToDrezen liberation and GoddessesSummit first. Summit -> LastPartOfDialog -> TpToCapital -> DrezenCapital_Enter. No chapter switch in that teleport. Late returned-state hubs remain in DrezenCapital, not the siege."
+    },
+    {
+      "chapter": 6,
+      "drezen_areas": [],
+      "phase": "ThresholdEnter completes Chapter05; StartsOnComplete starts Chapter06 and SwitchChapter(6). The final Threshold campaign supplies no ordinary return to Drezen. Epilogue recollections are not physical capital encounters."
+    }
+  ],
+  "window_policy": "Area and chapter window are conjunctive. Reachable pairs are the intersection with reachable_chapters; a window spanning chapter 4 does not invent a Drezen visit. A window with no reachable pair fails; every explicit scene Chapters entry must be reachable.",
+  "unit_list_scope": "All NearUnit anchors in every exported route; typed BlueprintUnit records plus native UnitFromSpawner references in a mechanics scene owned by the area. Membership is possible placement, not unconditional spawning, visibility, walkability or click evidence. Native absence/failure gates still apply.",
+  "areas": [
+    {
+      "guid": "2570015799edf594daf2f076f2f975d8",
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/DrezenCapital.jbp",
+      "sha256": "574ba60cdc4fbe184e5adabb445e91fa5820f37c2e6af76232562fcc7afa0be6",
+      "name": "DrezenCapital",
+      "reachable_chapters": [
+        3,
+        5
+      ],
+      "units": [
+        {
+          "guid": "0f12118177d102f428a3b30b15b132eb",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Fye_Bartender.jbp",
+          "sha256": "6d322c80737bdd9bc3272c35b8e6bccb16a508810d170a9f16e8207362e06522",
+          "name": "Fye_Bartender",
+          "spawner": {
+            "EntityNameInEditor": "Fye",
+            "_entity_id": "3b6527fd-f52d-4d57-a669-0ad12527c204",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "ab741f2c25aeea746a10c3f5e5359e69",
+            "path": "World/Cutscenes/DrezenCapital/WenduagRomance_HavocInTheTavern/CommandSetCombatMode 4.jbp",
+            "sha256": "459276ad67585d4aa84db21df2a54c819df071cff9d811a84b8b9c2e7e264339",
+            "pointer": "/Data/Target/Spawner",
+            "value": {
+              "EntityNameInEditor": "Fye",
+              "_entity_id": "3b6527fd-f52d-4d57-a669-0ad12527c204",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "15f754455d1d87c42a4e14df456d5415",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/BlacksmithCapitalTrader.jbp",
+          "sha256": "006f09bc5f02e3e7a2748f8efcc0204b8c1f822a05b54d4d07bcc45f642a7abf",
+          "name": "BlacksmithCapitalTrader",
+          "spawner": {
+            "EntityNameInEditor": "BlacksmithCapitalTrader",
+            "_entity_id": "a0a7f948-d390-475c-8b40-4e556193f4fe",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "514b5b3f581450d4db247f847ddda851",
+            "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Capital_NPC_DefaultActors/BlacksmithCapitalTrader.jbp",
+            "sha256": "12d6079ac5a05f9f073ceb9678ed213959233a5fbaa46cfc34a1ae28244e1a15",
+            "pointer": "/Data/Components/0/Actions/Actions/0/Target/Spawner",
+            "value": {
+              "EntityNameInEditor": "BlacksmithCapitalTrader",
+              "_entity_id": "a0a7f948-d390-475c-8b40-4e556193f4fe",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "23eabf5b6364d4a4e86202dc5d27600b",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Vendor_Tiefling.jbp",
+          "sha256": "ee346c0c34dfde1978bb01d3ffefa9793da38f969536babcd19b2ace91f2aee1",
+          "name": "Vendor_Tiefling",
+          "spawner": {
+            "EntityNameInEditor": "Vendor_Tiefling",
+            "_entity_id": "48a8544c-4871-40c4-a2af-b27b40b14660",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "6872482e2c4ef3f4ab9df9350c7b506d",
+            "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Capital_NPC_DefaultActors/Vendor_Tiefling_DefaultActor.jbp",
+            "sha256": "e9f1611a659f4e10da2e41e19aaca351fb1bbdb7e5f25689c0207dd56b510540",
+            "pointer": "/Data/Components/0/Actions/Actions/0/Target/Spawner",
+            "value": {
+              "EntityNameInEditor": "Vendor_Tiefling",
+              "_entity_id": "48a8544c-4871-40c4-a2af-b27b40b14660",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "253cdb8f434e5a6469b75e18428316e3",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/TailorCapitalTrader.jbp",
+          "sha256": "1fc64d8ab932a0d8572dc3ab4ca24b7047c78225b1e7346d9fe5dfacd7c64fec",
+          "name": "TailorCapitalTrader",
+          "spawner": {
+            "EntityNameInEditor": "TailorCapitalTrader",
+            "_entity_id": "4a378093-68b9-4244-b5c8-7974ae993360",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "bdfebe1a24817cb4e9a4252baaec5c43",
+            "path": "World/Cutscenes/DrezenCapital/AeonQ3DayCutscene/CommandUnitLookAt 2.jbp",
+            "sha256": "e24c58f757a3b1e6f3e522a75829b379bbf7d3b5b52928a3d46215ea48c7f5b8",
+            "pointer": "/Data/m_Unit/Spawner",
+            "value": {
+              "EntityNameInEditor": "TailorCapitalTrader",
+              "_entity_id": "4a378093-68b9-4244-b5c8-7974ae993360",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "a380d926e92f70e429681eb9654478f9",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/DrezenCapital_Quartermaster.jbp",
+          "sha256": "6b138179fc4768035aad6b5118327d5546b80a4718db236ea1278747e049a71e",
+          "name": "DrezenCapital_Quartermaster",
+          "spawner": {
+            "EntityNameInEditor": "Spawner [DrezenCapital_Quartermaster]",
+            "_entity_id": "6b8e0aa3-612a-4685-b0c6-91431c09a1ed",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "2ede66b9c9f646b68d421aad84c68287",
+            "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/Ch5_KTC_and_Timeline/CH5_Legend_CapitalEvents/Legend_SoldierParty_KTC.jbp",
+            "sha256": "4bdef169803e8d151da3a44bff9c6f93743bf270b8ef4947be85cbba4cc03f1a",
+            "pointer": "/Data/Components/0/Actions/Actions/0/Parameters/Parameters/0/Evaluator/Spawner",
+            "value": {
+              "EntityNameInEditor": "Spawner [DrezenCapital_Quartermaster]",
+              "_entity_id": "6b8e0aa3-612a-4685-b0c6-91431c09a1ed",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "a609ed9b2205d034bb3bb04d2a255681",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+          "sha256": "b33a4a9e14ab40d49056b984cbdea5dfc665126da5a518d472b0d588247e057e",
+          "name": "Arsinoe",
+          "spawner": {
+            "EntityNameInEditor": "Arsinoe",
+            "_entity_id": "31b377f4-f461-47b1-98a1-4dbb02f23a05",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "b77b3e90abb1471bbfad3e42bfcc4a30",
+            "path": "World/Cutscenes/DrezenCapital/KTC_FestivalInKenabres/CommandAction.jbp",
+            "sha256": "051995531099d0dd80ed5a1d44e13844f9ca321ff78041aef04108143c1a680c",
+            "pointer": "/Data/Action/Actions/0/Unit/Spawner",
+            "value": {
+              "EntityNameInEditor": "Arsinoe",
+              "_entity_id": "31b377f4-f461-47b1-98a1-4dbb02f23a05",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "bad9f602b81a80047ac470b01ebe65a9",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/ExoticCapitalTrader.jbp",
+          "sha256": "ee07258e5735c0880c0cf7500bb51e0b55bebea7be46b2af10e4b0772710b8ba",
+          "name": "ExoticCapitalTrader",
+          "spawner": {
+            "EntityNameInEditor": "ExoticCapitalTrader",
+            "_entity_id": "ce2f8af4-7421-49d1-b9f6-eade620a37ab",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "10818061893a7e9499e508b20677dd48",
+            "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Capital_NPC_DefaultActors/ExoticCapitalTrader.jbp",
+            "sha256": "5c69263e2fb31b97a96c2341da861352874b9c3db24e24a21c44448addeb403f",
+            "pointer": "/Data/Components/0/Actions/Actions/0/Target/Spawner",
+            "value": {
+              "EntityNameInEditor": "ExoticCapitalTrader",
+              "_entity_id": "ce2f8af4-7421-49d1-b9f6-eade620a37ab",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "bc1093231b1577a4485a730c29595195",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/JewelerCapitalTrader.jbp",
+          "sha256": "4d5e27015f59accd9457285d4b9d8b81d03c23b4b4deafc261d3f85936207e6a",
+          "name": "JewelerCapitalTrader",
+          "spawner": {
+            "EntityNameInEditor": "JewelerCapitalTrader",
+            "_entity_id": "fdf37a46-5768-4e15-8ffc-80a399c45fd0",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "23ce9708a1a88124c8bf74406ad3b446",
+            "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Capital_NPC_DefaultActors/JewelerCapitalTrader.jbp",
+            "sha256": "75ea0e87f678b1b8df26e1ab4575d032a3dd06569df29f76f80499ff9677c40b",
+            "pointer": "/Data/Components/0/Actions/Actions/0/Target/Spawner",
+            "value": {
+              "EntityNameInEditor": "JewelerCapitalTrader",
+              "_entity_id": "fdf37a46-5768-4e15-8ffc-80a399c45fd0",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "cc50a88bbd8dd3e4da066d33d14fdfc8",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/MythicTrickster_Ch3/FoolKing.jbp",
+          "sha256": "2b8656c5c1b1de3b0fecd4aafeddaa07982d0826723be809228dffda3167ac44",
+          "name": "FoolKing",
+          "spawner": {
+            "EntityNameInEditor": "KTC_FoolKing",
+            "_entity_id": "89d75a18-6e5f-4016-8a79-c4c3cd70d176",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "0d9eb140367630e4bbedad3ed208205a",
+            "path": "World/Cutscenes/DrezenCapital/FoolKingCoronation/CommandAction 1.jbp",
+            "sha256": "e6fa50c10019f109de75b09a12476ae90213ac59e706084bec79efaa0d792b17",
+            "pointer": "/Data/Action/Actions/2/Unit/Spawner",
+            "value": {
+              "EntityNameInEditor": "KTC_FoolKing",
+              "_entity_id": "89d75a18-6e5f-4016-8a79-c4c3cd70d176",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        },
+        {
+          "guid": "da4c28dd01413694f82b08b728a8c6e5",
+          "path": "Units/NPC/Unique/Act_1_WorldwoundIncursion/BlackWingRuins/Storyteller.jbp",
+          "sha256": "486de1cddddb00933170f5fb192e9f7ce3a032f6834b82d0877dcd16768a7f60",
+          "name": "Storyteller",
+          "spawner": {
+            "EntityNameInEditor": "Storyteller",
+            "_entity_id": "a0993ca0-8627-4ec9-a9f2-5a75910d7023",
+            "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+          },
+          "membership": {
+            "guid": "432df77f88f344ce8f161e1e6f4f2953",
+            "path": "World/Cutscenes/DrezenCapital/Coronation_StorytellerComeToPlayer/CommandMoveUnit.jbp",
+            "sha256": "08221adf8969830da33da7fbed18bd1333f2839a31eee063aca4c56dbc27e0bb",
+            "pointer": "/Data/Unit/Spawner",
+            "value": {
+              "EntityNameInEditor": "Storyteller",
+              "_entity_id": "a0993ca0-8627-4ec9-a9f2-5a75910d7023",
+              "SceneAssetGuid": "3e2b5ea054cd5b2479e7f13134363ef4"
+            }
+          },
+          "scene_owner": {
+            "guid": "377d6527da57139449008d6c27cdedfc",
+            "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
+            "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
+          }
+        }
+      ]
+    },
+    {
+      "guid": "83a099db95e0e6e4485a20b10ce7c28d",
+      "path": "World/Areas/Act_5_HeraldOfTheIvoryLabyrinth/ReturnToDrezen/ReturnToDrezen.jbp",
+      "sha256": "4c97a1fbcc11ac389a200828febe2f2484abd007f93333fbbd4fc0ba13086863",
+      "name": "ReturnToDrezen",
+      "reachable_chapters": [
+        5
+      ],
+      "units": [],
+      "unit_list_note": "No route anchor targets this siege area. ExoticCapitalTrader and Vendor_Tiefling are absent in the supplied live dump (~56 units). This list records attested route anchors only, not an exhaustive scene unit census."
+    },
+    {
+      "guid": "0a5654e7dc18f074d9356009d55eb51b",
+      "path": "World/Areas/Act_3_DemonsHerecy/WintersunOutdoor/WintersunOutdoor.jbp",
+      "sha256": "064fa08be4929b1629a9b6b2c317c12dfb7d33fd79b702b4e8d4f8a10c981ea2",
+      "name": "WintersunOutdoor",
+      "reachable_chapters": [
+        3,
+        5
+      ],
+      "units": [],
+      "unit_list_note": "Auxiliary route presence area; no NearUnit anchor is used here. Retained native location, not part of the Drezen transition."
+    },
+    {
+      "guid": "3538511f16d45f44f8249ff710777e2d",
+      "path": "World/Areas/Act_5_HeraldOfTheIvoryLabyrinth/TheIvoryLabyrinth/TheIvoryLabyrinth.jbp",
+      "sha256": "0d6b37c8a7d088444080a27e46fd47560eb3b57151040f875f70403427b7ac1c",
+      "name": "TheIvoryLabyrinth",
+      "reachable_chapters": [
+        5
+      ],
+      "units": [],
+      "unit_list_note": "Auxiliary route presence area; no NearUnit anchor is used here. Retained native location, not part of the Drezen transition."
+    },
+    {
+      "guid": "fe9eaf819cf03424a9108aa8b777694d",
+      "path": "World/Areas/Act_5_HeraldOfTheIvoryLabyrinth/DemonicCommando_Lair/DemonicCommando_Lair.jbp",
+      "sha256": "796724c7744196105d792db5955ef6bcbc31adc3b4a9d2847aa7d98504aa4cc0",
+      "name": "DemonicCommando_Lair",
+      "reachable_chapters": [
+        5
+      ],
+      "units": [],
+      "unit_list_note": "Auxiliary route presence area; no NearUnit anchor is used here. Retained native location, not part of the Drezen transition."
+    },
+    {
+      "guid": "10c4b0e2af186ba46ab4d238d00a40a8",
+      "path": "World/Areas/Act_6_Threshold/ThresholdOutdoor/ThresholdOutdoor.jbp",
+      "sha256": "d8cf500efface63f24ca4e4781e2ab91c5d7b04178fab568a51a30a83ffd64b6",
+      "name": "ThresholdOutdoor",
+      "reachable_chapters": [
+        6
+      ],
+      "units": [
+        {
+          "guid": "a609ed9b2205d034bb3bb04d2a255681",
+          "path": "Units/NPC/Unique/Act_3_DemonsHerecy/Drezen/Arsinoe.jbp",
+          "sha256": "b33a4a9e14ab40d49056b984cbdea5dfc665126da5a518d472b0d588247e057e",
+          "name": "Arsinoe",
+          "spawner": {
+            "EntityNameInEditor": "Arsinoe_Camp",
+            "_entity_id": "f92f8322-3d27-49c5-8846-479fea72100e",
+            "SceneAssetGuid": "2fd2152bb44578f47a6cd43744ff296a"
+          },
+          "membership": {
+            "guid": "564ad4c002ab445db93f4a35b4b06e0b",
+            "path": "World/Cutscenes/ThresholdOutdoor/OutdoorAttacked/CommandAction1.jbp",
+            "sha256": "63b7b30777bdf34e11372d10293dab4827b11a9b782481708ae1e3c78aa75374",
+            "pointer": "/Data/Action/Actions/2/Unit2/Spawner",
+            "value": {
+              "EntityNameInEditor": "Arsinoe_Camp",
+              "_entity_id": "f92f8322-3d27-49c5-8846-479fea72100e",
+              "SceneAssetGuid": "2fd2152bb44578f47a6cd43744ff296a"
+            }
+          },
+          "scene_owner": {
+            "guid": "dd2bf73e1314a81448d075a25c4cce82",
+            "path": "World/Areas/Act_6_Threshold/ThresholdOutdoor/Addons/ThresholdOutdoor_Camp.jbp",
+            "sha256": "a1f78b26335b85e6bf1fac31861a029118ce5d2487cb53a3dc72e95d44d72e1b"
+          }
+        }
+      ]
+    },
+    {
+      "guid": "8217b05e37078414981d994151f0ffb1",
+      "path": "World/Areas/Act_4_MidnightIsles/AlushinyrraHigherCity/AlushinyrraHigherCity.jbp",
+      "sha256": "aa19d5750661544acb60148793f92140389f0980473b00d3546b5e6caa91b411",
+      "name": "AlushinyrraHigherCity",
+      "reachable_chapters": [
+        4
+      ],
+      "units": []
+    }
+  ],
+  "evidence": [
+    {
+      "guid": "15e0048c7daf0ac4999c2313b58df0e3",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03.jbp",
+      "sha256": "d626188eb27d9ac62c07aaa6b5730d29429315e42ca055167619675945923ff7",
+      "pointer": "/Data/Components/4/Actions/Actions/0/Chapter",
+      "value": 3
+    },
+    {
+      "guid": "637a57423a82b044f888677c92f5d6cb",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04.jbp",
+      "sha256": "7c251bc77b6e71b7215250b06de126c4bce87d14a17bfbd464c8a8bf6960ff56",
+      "pointer": "/Data/Components/2/Actions/Actions/0/Chapter",
+      "value": 4
+    },
+    {
+      "guid": "5b01aa690202e584888dfc600a4aac0a",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
+      "sha256": "d45504a1a808fd83365329508458c0e470f8a5e9ff00a8ca3d3e6203c4b87898",
+      "pointer": "/Data/Components/1/Actions/Actions/1/Chapter",
+      "value": 5
+    },
+    {
+      "guid": "41bf413e0fa2ea34b937d4445edd5f89",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter06.jbp",
+      "sha256": "0200d2831cfbfbed842d595f5249269558774328ea5c2dffe38b2394b337bfae",
+      "pointer": "/Data/Components/2/Actions/Actions/0/Chapter",
+      "value": 6
+    },
+    {
+      "guid": "81851815200b9d545bec82a65332a1b9",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen/GoddessesSummit.jbp",
+      "sha256": "b4f16c9af7a0170d7f5513529dba7ee92be9f2dbabb6e0fe1ba5d91a14e734c1",
+      "pointer": "/Data/m_StartsOnComplete",
+      "value": [
+        "!bp_9bda41e72901054449b973b1457b2050"
+      ]
+    },
+    {
+      "guid": "9bda41e72901054449b973b1457b2050",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/LastPartOfDialog.jbp",
+      "sha256": "9763ea167077fef6a438da736b3e96b6a0e434ba993f51f40fd02bce10a6d701",
+      "pointer": "/Data/m_StartsOnComplete",
+      "value": [
+        "!bp_78dcfabaca08aeb41947fbdff85a4ce4"
+      ]
+    },
+    {
+      "guid": "cdaba43118a82ff429b803ae846b35b0",
+      "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/EnterPoints/DrezenCapital_Enter.jbp",
+      "sha256": "3b29851f0d80bc43aa962523069f25ce98b9f75da46dc3a9a3903acb42a97c1d",
+      "pointer": "/Data/m_Area",
+      "value": "!bp_2570015799edf594daf2f076f2f975d8"
+    },
+    {
+      "guid": "eb0d42923a0cf6c4281b0925337e8591",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/ReturnToDrezen.jbp",
+      "sha256": "c134b674821cd1105e77991fae24ec874657b288f6614395f25187245acffcdb",
+      "pointer": "/Data/m_LinkedAreaPart",
+      "value": "!bp_83a099db95e0e6e4485a20b10ce7c28d"
+    },
+    {
+      "guid": "30862a76dd4a11049be42d3de26159fb",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic.jbp",
+      "sha256": "dfbf7ee8106f4dce3338f2bb393021cf661e71c14c98a0af04f095a747cc111e",
+      "pointer": "/Data/m_LinkedAreaPart",
+      "value": "!bp_2570015799edf594daf2f076f2f975d8"
+    },
+    {
+      "guid": "637a57423a82b044f888677c92f5d6cb",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter04.jbp",
+      "sha256": "7c251bc77b6e71b7215250b06de126c4bce87d14a17bfbd464c8a8bf6960ff56",
+      "pointer": "/Data/m_StartsOnComplete",
+      "value": [
+        "!bp_5b01aa690202e584888dfc600a4aac0a"
+      ]
+    },
+    {
+      "guid": "5b01aa690202e584888dfc600a4aac0a",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05.jbp",
+      "sha256": "d45504a1a808fd83365329508458c0e470f8a5e9ff00a8ca3d3e6203c4b87898",
+      "pointer": "/Data/m_StartsOnComplete",
+      "value": [
+        "!bp_41bf413e0fa2ea34b937d4445edd5f89"
+      ]
+    },
+    {
+      "guid": "78dcfabaca08aeb41947fbdff85a4ce4",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/TpToCapital.jbp",
+      "sha256": "48d65c337b995aa4f7106e1885efa397c91e1c679224adf97f49eeb067d4988a",
+      "pointer": "/Data/Components/0/Actions/Actions/0/m_exitPositon",
+      "value": "!bp_cdaba43118a82ff429b803ae846b35b0"
+    },
+    {
+      "guid": "78dcfabaca08aeb41947fbdff85a4ce4",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/TpToCapital.jbp",
+      "sha256": "48d65c337b995aa4f7106e1885efa397c91e1c679224adf97f49eeb067d4988a",
+      "pointer": "/Data/Components/0/Actions/Actions/3/Etude",
+      "value": "!bp_5b1278d9ed304e89a352b5aa799231f1"
+    },
+    {
+      "guid": "78dcfabaca08aeb41947fbdff85a4ce4",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/TpToCapital.jbp",
+      "sha256": "48d65c337b995aa4f7106e1885efa397c91e1c679224adf97f49eeb067d4988a",
+      "pointer": "/Data/Components/0/Actions/Actions/4/Etude",
+      "value": "!bp_78dcfabaca08aeb41947fbdff85a4ce4"
+    },
+    {
+      "guid": "78dcfabaca08aeb41947fbdff85a4ce4",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/TpToCapital.jbp",
+      "sha256": "48d65c337b995aa4f7106e1885efa397c91e1c679224adf97f49eeb067d4988a",
+      "pointer": "/Data/Components/0/Actions/Actions/7/Etude",
+      "value": "!bp_d879f55729e74cacb0dee97a1a27234a"
+    },
+    {
+      "guid": "78dcfabaca08aeb41947fbdff85a4ce4",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/TpToCapital.jbp",
+      "sha256": "48d65c337b995aa4f7106e1885efa397c91e1c679224adf97f49eeb067d4988a",
+      "pointer": "/Data/Components/3/Actions/Actions/0/Etude",
+      "value": "!bp_5fc90ace2efa4f11bfa3e059147b2221"
+    },
+    {
+      "guid": "89159b8d0b304a64bafa3781745204e9",
+      "path": "World/Encounters/MidnightFane/AreaTransitions/ToNexus.jbp",
+      "sha256": "94e37393de0065ddeab472a2b967f247aec2e52c416723cde34a616bc1b6935d",
+      "pointer": "/Data/m_Actions/0/Actions/Actions/0/IfTrue/Actions/0/Etude",
+      "value": "!bp_15e0048c7daf0ac4999c2313b58df0e3"
+    },
+    {
+      "guid": "89159b8d0b304a64bafa3781745204e9",
+      "path": "World/Encounters/MidnightFane/AreaTransitions/ToNexus.jbp",
+      "sha256": "94e37393de0065ddeab472a2b967f247aec2e52c416723cde34a616bc1b6935d",
+      "pointer": "/Data/m_Actions/0/Actions/Actions/0/IfFalse/Actions/0/m_exitPositon",
+      "value": "!bp_af3b027c7833958428f51b1544a51e4c"
+    },
+    {
+      "guid": "6084c07ae5bb11543903c3fa8db03f1a",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter05_Extra/Chapter05_AreasDefault/ThresholdEnter.jbp",
+      "sha256": "622e35a6165679b5aa93a5ff30d28badb1f2d0adf1fcecd407e24acbb424951e",
+      "pointer": "/Data/Components/0/Actions/Actions/0/Etude",
+      "value": "!bp_5b01aa690202e584888dfc600a4aac0a"
+    },
+    {
+      "guid": "15e0048c7daf0ac4999c2313b58df0e3",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03.jbp",
+      "sha256": "d626188eb27d9ac62c07aaa6b5730d29429315e42ca055167619675945923ff7",
+      "pointer": "/Data/m_StartsOnComplete",
+      "value": [
+        "!bp_637a57423a82b044f888677c92f5d6cb"
+      ]
+    },
+    {
+      "guid": "0e20d73ea0da6a94d94a6b42035a1ce0",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter02.jbp",
+      "sha256": "bc0a96e5b5ae11a6c680d8a508ecd5801e7d75f5e43bcb2c94a1d84a3903cdef",
+      "pointer": "/Data/m_StartsOnComplete",
+      "value": [
+        "!bp_15e0048c7daf0ac4999c2313b58df0e3"
+      ]
+    },
+    {
+      "guid": "8fee4ed01247a3649b8dcd7abacf3e0d",
+      "path": "World/Dialogs/Interchapters/c2-c3/Answer_0002.jbp",
+      "sha256": "36c2a864fb00216f614787443a82aee92139b23d3d5cddfb57f757017af2003b",
+      "pointer": "/Data/OnSelect/Actions/1/Etude",
+      "value": "!bp_0e20d73ea0da6a94d94a6b42035a1ce0"
+    },
+    {
+      "guid": "8fee4ed01247a3649b8dcd7abacf3e0d",
+      "path": "World/Dialogs/Interchapters/c2-c3/Answer_0002.jbp",
+      "sha256": "36c2a864fb00216f614787443a82aee92139b23d3d5cddfb57f757017af2003b",
+      "pointer": "/Data/OnSelect/Actions/3/m_exitPositon",
+      "value": "!bp_cdaba43118a82ff429b803ae846b35b0"
+    },
+    {
+      "guid": "2d9c51e422e743947bfa0281d0a2db51",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03_Extra.jbp",
+      "sha256": "63dc874f70b84f17432bee39518850866eccd52eee71460716cfe0c3913fa1eb",
+      "pointer": "/Data/m_Parent",
+      "value": "!bp_f0e6f6b732c40284ab3c103cad2455cc"
+    },
+    {
+      "guid": "ef35e9838eea48f48b22ae3aef9ca6cd",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic.jbp",
+      "sha256": "7cafb7f8179f21da727f9cd5cb8595e49693a201247add98770dc5848bd2594e",
+      "pointer": "/Data/m_Parent",
+      "value": "!bp_2d9c51e422e743947bfa0281d0a2db51"
+    },
+    {
+      "guid": "30862a76dd4a11049be42d3de26159fb",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic.jbp",
+      "sha256": "dfbf7ee8106f4dce3338f2bb393021cf661e71c14c98a0af04f095a747cc111e",
+      "pointer": "/Data/m_Parent",
+      "value": "!bp_ef35e9838eea48f48b22ae3aef9ca6cd"
+    }
+  ]
+}

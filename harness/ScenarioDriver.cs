@@ -6,6 +6,9 @@ using Kingmaker.EntitySystem;
 using Kingmaker.EntitySystem.Entities;
 using UnityEngine;
 using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
+using Kingmaker.Blueprints.Root;
 
 namespace RRT.TestHarness
 {
@@ -80,5 +83,107 @@ namespace RRT.TestHarness
             return query;
         }
         // end eng7-l11
+        IEnumerator NativeEpilogueInventory(SaveReport save, string prefix)
+        {
+            using (NativeEpilogueInventoryProbe.PreventSaves())
+                yield return NativeEpilogueInventoryBody(save, prefix);
+        }
+
+        IEnumerator NativeEpilogueInventoryBody(SaveReport save, string prefix)
+        {
+            var source = NativeSlideCases.Parse(plan.NativeEpilogueCasesJson!);
+            var cases = plan.Force ? source.Cases.Where(c => plan.IncludesScene(c.ExpectedCandidate)).ToList()
+                : source.Cases.Any(c => c.UseSaveState) ? source.Cases.Where(c => c.UseSaveState).ToList()
+                : new List<NativeSlideCase> {
+                    new NativeSlideCase { Id = "saved/epilogue", Dialog = NativeEpilogueInventoryProbe.EpilogueDialog },
+                    new NativeSlideCase { Id = "saved/afterlogue", Dialog = NativeEpilogueInventoryProbe.AfterlogueDialog } };
+            if (cases.Count == 0) throw new InvalidOperationException("No slide cases match SceneFilter");
+            if (plan.MaxScenesPerSave > 0 && cases.Count > plan.MaxScenesPerSave)
+            {
+                // Explicit evidence debt; a bounded subset must never be reported as a complete roster proof.
+                save.NativeSlides.Add(new NativeSlideResult { Case = "coverage", Result = "truncated", Findings = new List<string> {
+                    (cases.Count - plan.MaxScenesPerSave) + " slide cases not run (-MaxScenesPerSave)" } });
+                cases = cases.Take(plan.MaxScenesPerSave).ToList();
+            }
+            foreach (var scenario in cases)
+            {
+                var result = new NativeSlideResult { Case = scenario.Id };
+                save.NativeSlides.Add(result);
+                capture.Context = prefix + "slides:" + scenario.Id;
+                var error = new Box<string?>(); var ms = new Box<double>(); var notIdle = new Box<string?>();
+                yield return LoadSave(save.ResolvedPath, error, ms, notIdle);
+                if (error.Value != null || notIdle.Value != null)
+                {
+                    result.Result = "load-failed"; result.Findings.Add(error.Value ?? notIdle.Value!); TryWrite(); continue;
+                }
+                yield return new Guarded(DriveNativeSlides(scenario, result), ex =>
+                {
+                    result.Result = "exception"; result.Passed = false; result.Findings.Add(ex.ToString()); TryStopDialog();
+                });
+                TryWrite();
+            }
+            // Native OnShow/OnStop may change the disposable loaded world. Reload the source before leaving this mode.
+            var restoreError = new Box<string?>(); var restoreMs = new Box<double>(); var restoreIdle = new Box<string?>();
+            yield return LoadSave(save.ResolvedPath, restoreError, restoreMs, restoreIdle);
+            if (restoreError.Value != null || restoreIdle.Value != null)
+                save.NativeSlides.Add(new NativeSlideResult { Case = "restore", Result = "load-failed", Findings = new List<string> { restoreError.Value ?? restoreIdle.Value! } });
+        }
+
+        IEnumerator DriveNativeSlides(NativeSlideCase scenario, NativeSlideResult result)
+        {
+            int logMark = capture.Mark();
+            using (var probe = new NativeEpilogueInventoryProbe(rrt!, scenario, plan.Force, result))
+            {
+                var dc = Game.Instance.DialogController;
+                try
+                {
+                    dc.StartDialogWithoutTarget(probe.Dialog, null);
+                    var ok = new Box<bool>();
+                    yield return WaitFor(() => dc.Dialog != null || result.Observations.Count > 0, 10, ok);
+                    if (!ok.Value) result.Result = "not-started";
+                    else
+                    {
+                        int step = 0;
+                        int scripted = 0;
+                        for (; step < plan.MaxStepsPerWalk && dc.Dialog != null; step++)
+                        {
+                            yield return WaitFor(() => dc.Dialog == null || (!IsCuePlayScheduled(dc) && dc.Answers.Any()), plan.Timeouts.StepSeconds, ok, 2);
+                            if (!ok.Value) { result.Result = "stuck"; result.Findings.Add("No answers at " + dc.CurrentCue?.name); break; }
+                            if (dc.Dialog == null) break;
+                            yield return WaitBound(dc);
+                            if (dc.Dialog == null) break;
+                            var answers = dc.Answers.ToList();
+                            if (plan.Screenshots && result.Screenshots.Count < plan.ScreenshotsPerScene)
+                                yield return Shot(Safe(scenario.Id) + "__slides__" + step, result.Screenshots, message => result.Findings.Add(message));
+                            var next = answers.FirstOrDefault(a => IsAnswer(a, r => r.ContinueAnswer) || IsAnswer(a, r => r.InterchapterContinueAnswer)
+                                || IsAnswer(a, r => r.ExitAnswer) || IsAnswer(a, r => r.InterchapterExitAnswer));
+                            if (next == null && scripted < scenario.AnswerPath.Count)
+                            {
+                                string answer = scenario.AnswerPath[scripted++];
+                                next = answers.SingleOrDefault(a => a.AssetGuid.ToString() == answer || a.name == answer);
+                                if (next == null) result.Findings.Add("Scripted answer not selectable: " + answer);
+                            }
+                            if (next == null)
+                            {
+                                // Epilogue pages use the engine's continue answer; afterlogue verdict branches need an
+                                // explicit coordinator script. Never choose an arbitrary moral/campaign answer.
+                                result.Result = "needs-answer-script";
+                                result.Findings.Add("Native choices at " + dc.CurrentCue?.name + ": " + string.Join(", ", answers.Select(a => a.AssetGuid + " " + a.name)));
+                                break;
+                            }
+                            dc.SelectAnswer(next);
+                            yield return null;
+                        }
+                        if (result.Result == "running") result.Result = dc.Dialog == null ? "completed" : "step-limit";
+                    }
+                }
+                finally { TryStopDialog(); }
+                probe.Evaluate(scenario);
+                foreach (var error in capture.Since(logMark).Where(e => e.Relevant))
+                    result.Findings.Add(error.Source + " " + error.Severity + ": " + error.Message);
+                if (result.Findings.Count > 0) result.Passed = false;
+            }
+        }
     }
 }
+// END eng7-f5

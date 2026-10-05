@@ -1,0 +1,10 @@
+# Chadali (rel chadali) natives for the all-romance run. Council 5-2 route R-A (Council with you, Answer_0044), coordinated with natives/nocticula.txt.
+# The commit lands in Ch3; the 5-2 keys are entered at ch6 (nocticula.txt convention; the fight is really late Ch5).
+council.session_minuted:3        # Ch3 Council 3 vote, Council_3/Cue_0040 (shared Council progress; not required by Chadali's path, listed for the shared run)
+chadali.chance_asked:3           # Ch3 hall, Chadali's own dialog: Council_Chadali/Answer_0011 "Do you believe in chance?" (opens her coin scene)
+noct.will_attend:5               # Ch5 boudoir audience: Nocticula/Answer_0011
+noct.acq.council_disclosed:5     # same answer
+noct.acq.council_fight:6         # Ch5 (late) Council 5-2: Answer_0044 -> FightAgaintsNoctaCouncilAllied
+noct.dead:6                      # same fight: NocticulaDead (Nocticula's device covers her)
+council.debrief_motion:6         # Debrief_Council/Cue_0015
+shamira.council_donated:6        # Debrief_Council/Cue_0016

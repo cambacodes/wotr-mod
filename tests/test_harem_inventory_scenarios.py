@@ -58,12 +58,73 @@ class HaremInventory(unittest.TestCase):
                     for hour, allowance, ref in chapter['slots']:
                         usage[hour, allowance] = usage.get((hour, allowance), 0) + 1
                     for (_, allowance), count in usage.items():
-                        self.assertLessEqual(count, self.story['RestAllowances'][allowance])
+                        if allowance is not None:  # eng7-f3: dynamic flavour is unkeyed.
+                            self.assertLessEqual(count, self.story['RestAllowances'][allowance])
                 ch5 = result['chapters'][1]
                 self.assertGreaterEqual(ch5['rests_needed'], 20)
                 counted = ch5['household_beats'] + (30 if profile.get('fallback') else 0)
-                ceiling = self.scenarios['chapter_ceilings']['5']['worst' if profile.get('fallback') else 'ideal']
+                ceiling = self.scenarios['chapter_ceilings']['5']['worst' if profile.get('fallback') or profile.get('rematch') else 'ideal']
                 self.assertLessEqual(counted, ceiling)
+
+    # eng7-f3
+    def test_data_inventory_names_every_missing_scene_and_enmity_reader(self):
+        result = sim.inventory_acceptance(self.story, self.schedule, self.scenarios)
+        missing = result['missing_data']
+        active = [r['ref'] for r in self.schedule['schedule'] if r.get('count') and r.get('status') != 'retired']
+        self.assertEqual(missing['schedule_scene_refs'], active)
+        self.assertEqual(missing['packet_scene_refs'], ['K1', 'K2', 'K3'])
+        readers = sorted({f for k, groups in self.story['Derived'].items() if k.endswith('.harem.enmity_any')
+                          for group in groups for f in group} | {
+                              'minagho_chivarro.harem.enmity.minagho.hepzamirah',
+                              'minagho_chivarro.harem.enmity.chivarro.hepzamirah'})
+        self.assertEqual(missing['enmity_producer_flags'], readers)
+        self.assertEqual(len(readers), 12)
+        self.assertFalse(result['enmity_producers'])
+        self.assertTrue(missing['native_walk'])
+
+    def test_data_inventory_drift_and_partial_enmity_production_are_visible(self):
+        expected = copy.deepcopy(self.scenarios)
+        expected['missing_data']['schedule_scene_refs'].remove('S02')
+        self.assertTrue(sim.inventory_acceptance(self.story, self.schedule, expected)['errors'])
+        story = copy.deepcopy(self.story)
+        flag = expected['missing_data']['enmity_producer_flags'][0]
+        producer = story['Scenes'][0]
+        producer['Nodes'][0]['Choices'][0]['Set'].append(flag)
+        result = sim.inventory_acceptance(story, self.schedule, self.scenarios)
+        self.assertIn(flag, result['enmity_producers'])
+        self.assertNotIn(flag, result['missing_data']['enmity_producer_flags'])
+        self.assertEqual(len(result['missing_data']['enmity_producer_flags']), 11)
+        self.assertTrue(result['errors'])
+        self.assertFalse(result['certified'])
+
+    def test_conditional_cli_runs_every_available_profile_and_passes(self):
+        output = io.StringIO()
+        with contextlib.redirect_stdout(output):
+            self.assertEqual(sim.main(['--conditional']), 0)
+        for profile in self.scenarios['scenarios']:
+            if profile['conditional']:
+                self.assertIn('Scenario: ' + profile['id'], output.getvalue())
+        self.assertIn('does not certify native reachability', output.getvalue())
+
+    def test_unkeyed_flavour_never_consumes_protected_slots_or_hides_a_miss(self):
+        for rematch in (False, True):
+            result = sim.simulate(self.story, self.schedule, self.route_run, conditional=True,
+                                  fallback=True, late_s06=True, rematch=rematch)
+            ch5 = result['chapters'][1]
+            dynamic = [(hour, allowance, ref) for hour, allowance, ref in ch5['slots'] if ref.startswith('reserved.dynamic.')]
+            self.assertEqual([ref for _, _, ref in dynamic], ['reserved.dynamic.0', 'reserved.dynamic.1', 'reserved.dynamic.2'])
+            self.assertTrue(all(allowance is None for _, allowance, _ in dynamic))
+            self.assertEqual(ch5['dynamic'], 3)
+            self.assertEqual(ch5['protected'], 48 + int(rematch))
+            self.assertEqual(ch5['household_beats'], ch5['protected'] + ch5['optional'] + ch5['letters'] + ch5['dynamic'])
+            self.assertEqual(ch5['deadline_misses'], [])
+        # A real shortage still fails; the simulator must not simply ignore reserved.dynamic.2.
+        run = copy.deepcopy(self.route_run)
+        run['chapter_days'][5] = 25
+        result = sim.simulate(self.story, self.schedule, run, conditional=True, fallback=True, rematch=True)
+        self.assertTrue(result['chapters'][1]['deadline_misses'])
+        self.assertFalse(result['pair_complete'])
+    # end eng7-f3
 
     def test_participant_absence_keeps_outcome_withheld_in_walk_timed_model(self):
         arrivals = {rel: 0 for rel in self.story['Relationships']}

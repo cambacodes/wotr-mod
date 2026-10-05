@@ -485,7 +485,7 @@ meet(P + "alive.stories", "Blood and tale", '"About the Condemned wagon."', [
 "All right. By the forms. Don't expect me to be grateful. The forms don't say anything about grateful."''',
         c("[Leave her the cell for the night.]")),
     nar("missed", '''{n}You go back over it and find nothing. The chest, the chase, Curl's things: it all sits where she put it. If there is a lie in her telling, it is buried deeper than your memory reaches.{/n}''',
-        c('[Bluff] Name a lie anyway: "Elan\'s chest was on your left, not your right. You weren\'t where you say you were."',
+        c('[Bluff] {n}Name a lie anyway:{/n} "Elan\'s chest was on your left, not your right. You weren\'t where you say you were."',
           check=dict(Skill="CheckBluff", DC=26, Success="false_blood", Failure="false_caught")),
         c('[Let her finish] "No blood. It\'s true."', "drawn")),
     jan("false_blood", '''{n}She frowns. You watch her go back over the camp, looking for the chest, and not be sure.{/n}
@@ -634,10 +634,10 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
 "It stands, then." {n}She doesn't move a finger.{/n} "Quit the circle, Commander. I'm not allowed to get up until you do, and my arm hurts."''',
         c("[Quit the circle.]", "you_up")),
     jan("you_up", '''{n}You step over the chalk. She gets up, sheathes, and stands in the circle bleeding through her sleeve while the yard stares at her.{/n}
-"The wrong way, and in front of everybody," she says, to you, not to them. "Good. Nobody can say it was an accident."''',
+"The wrong way, and in front of everybody," {n}she says, to you, not to them.{/n} "Good. Nobody can say it was an accident."''',
         c("Continue", "after")),
     jan("shamed", '''{n}The yard goes very still. Jannah gets up, which she has never once done before the victor left the circle, and she does it slowly, deliberately, so that every one of them sees her break the forms rather than lie there under that.{/n}
-"The bout was fair," she says, to the yard. "What the Commander said after it wasn't. Write that down, anybody here who writes things down." {n}She walks out without sheathing.{/n}''',
+"The bout was fair," {n}she says, to the yard.{/n} "What the Commander said after it wasn't. Write that down, anybody here who writes things down." {n}She walks out without sheathing.{/n}''',
         c("[Watch her go.]")),
     nar("her_first", '''{n}You never see it coming. A turn of her wrist, a flicker of steel inside your guard, and a sting along your jaw; when you touch it your fingers come away red. First blood.{/n}
 {n}Jannah stands inside the chalk with her blade lowered, breathing hard, and waits to see what the Commander of the crusade does with the forms in front of the whole muster.{/n}''',
@@ -645,7 +645,7 @@ meet(P + "challenge", "The rematch", '"You look like someone about to do somethi
           flags=(SHE_FIRST, PUBLIC_YIELD), crusade=("Favors", -100)),
         c("[Wipe the blood off your jaw and walk out of the circle.]", "walked_off", flags=(REFUSED_YIELD, DECLINED))),
     jan("her_yield", '''{n}Four hundred soldiers watch their Commander lie down on {mf|his|her} back in the sand inside a deserter's chalk circle, eyes open, not moving. It is so quiet you can hear the smith's forge breathing.{/n}
-"Answered," Jannah says, to you. Then, louder, to the whole yard: "First blood! Does anybody here want to argue with me about it?"
+"Answered," {n}Jannah says, to you. Then, louder, to the whole yard:{/n} "First blood! Does anybody here want to argue with me about it?"
 {n}Some of them do. You can see it in the Mendevian knights by the barracks door: a Commander who lies down in the sand for a deserter is a Commander who can be made to lie down. By evening the officers will be writing home to Nerosyan about it, and the knights' donations will be slower to come.{/n}
 {n}Nobody on the smithy roof wants to. She steps out of the chalk, as the old man's rule would have it, so that you're allowed to move. Then she steps straight back in and pulls you up by both hands.{/n}''',
         c("Continue", "after")),
@@ -702,7 +702,7 @@ meet(P + "circle_night", "Inside the chalk", '[Go to the practice yard tonight, 
         c("Continue", "mark_arm", requires=(YOU_FIRST,)),
         c("Continue", "mark_late", forbids=(SHE_FIRST, YOU_FIRST))),
     nar("mark_jaw", '''{n}Her thumb finds the cut she gave you at the muster, along the line of your jaw, and follows it all the way, slowly, the way you'd follow the edge of a blade you were proud of.{/n}
-"I did that," she says against your mouth, as if she still can't quite believe it. "In front of everyone."''',
+"I did that," {n}she says against your mouth, as if she still can't quite believe it.{/n} "In front of everyone."''',
         c("Continue", "kiss")),
     nar("mark_arm", '''{n}She takes your hand and puts it on her sword arm, on the bandage over the cut you gave her at the muster, and presses until it hurts, and watches your face while it does.{/n}
 "You did that. In front of everyone. Nobody ever did that in front of everyone." {n}Her voice has gone low.{/n} "Do it again. Not with the sword."''',
@@ -715,9 +715,9 @@ meet(P + "circle_night", "Inside the chalk", '[Go to the practice yard tonight, 
         c("Continue", "learn")),
     jan("learn", '''{n}She is not patient and she is not shy.{/n} "Take that off. All of it. I want to look at you." {n}When she has looked, her breath goes ragged and she doesn't try to steady it.{/n}
 {n}She walks you backwards across the circle a step at a time until your heels are at the chalk, and holds you there on its edge with her mouth at your throat and her hands learning you the way she'd learn a new blade: the weight, the balance, the places it wants to move.{/n}
-"Seven years I only wanted to win," she says against your skin. "Tonight I want this more."''',
+"Seven years I only wanted to win," {n}she says against your skin.{/n} "Tonight I want this more."''',
         c("Continue", "down")),
-    jan("down", '''"This is where I'd take your sword," she says, breathing hard, her forehead against yours, "if you'd brought it into measure." {n}She pushes her breeches down off her hips with one hand and doesn't let go of you with the other.{/n}
+    jan("down", '''"This is where I'd take your sword," {n}she says, breathing hard, her forehead against yours,{/n} "if you'd brought it into measure." {n}She pushes her breeches down off her hips with one hand and doesn't let go of you with the other.{/n}
 "You did. So I will."''',
         c("[Let her.]", "cut"),
         c("[Take hers first.]", "cut")),
@@ -781,7 +781,7 @@ meet(P + "chalk_circle", "A circle in the yard", '"Somebody has chalked a circle
 "Then you'll say it, and I'll stand there and hear it. And tonight doesn't have to wait for that. I decided about tonight a long time ago."''',
         c("[Let her decide.]")),
     jan("yield_in", '''{n}She comes down off the wall and walks slowly round the circle, once, the way a victor does. You don't move. Your eyes stay on the Wound-light.{/n}
-"Nobody's watching," she says. "It doesn't count the same without the muster." {n}She kneels at the edge of the chalk.{/n}
+"Nobody's watching," {n}she says.{/n} "It doesn't count the same without the muster." {n}She kneels at the edge of the chalk.{/n}
 "It counts enough. Quit lying there, Commander. I've decided, and I'd like you on your feet for it."''',
         c("[Get up.]")),
     nar("left", '''{n}You leave it. In the morning the circle has been scuffed out and the sword is gone, and so is she. The gate sergeant saw a half-elf walk out on the south road at first light, alone.{/n}

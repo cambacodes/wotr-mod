@@ -1,0 +1,12 @@
+# Shamira (relationship shamira). State "killed" (HARD: her native death is mandatory for every Trickster ending).
+# Plain lines work with trace.py. Lines starting '#@' are directives for timed.py (intra-chapter order, keys kept off,
+# choices never taken); plain trace.py ignores them. Verified with:  SIM_DEPTH=80 python timed.py trace natives/shamira.txt - shamira
+# (SIM_DEPTH=80: the stock sim stops path search at 24 choices and so declines her folded Ch5 pages; see notes/shamira.md).
+shamira.let_in.thought:4     # Ch4 Harem audience: Shamira_dialogue Answer_0031 33f75e11 "[Think to yourself]" (any of Answer_0008/0031/0044/0178 works)
+shamira.plan_known:5         # Ch5 after Council 5-1: SocothBriefing Cue_0012 e5a9d6bb (the plan to take her essence)
+shamira.killed:5             # Ch5 boudoir: kill her (TricksterStates/ShamiraKilled dd6731e2). HARD, mandatory
+areelu.siphon.shamira:5      # Ch5 take her essence from the corpse: SyphonWithShamira cfc7c93f in inventory
+shamira.cauldron_shown:5     # Ch5 Drezen closet: SocothInCloset Answer_0007 7b0b6c9d (show the syphon -> Council 5-2)
+#@ shamira.killed:5+3        # the kill comes AFTER the briefing (mod setup "What's left of her" must play before it)
+#@ areelu.siphon.shamira:5+3
+#@ shamira.cauldron_shown:5+4

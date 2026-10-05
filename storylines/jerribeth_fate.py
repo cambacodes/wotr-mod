@@ -57,7 +57,7 @@ SCENES = [
           c('[Put away the paper. Leave her answer unchanged.]', flags=("jerribeth.fate_experiment_refused",))),
         n("purpose", "Jerribeth", '''"What do you want to ask?"
 {n}She keeps the unbroken sheet. You still hold the one with the little notch. The copies have ceased trying to resemble each other.{/n}
-"I can wait," you say.
+"I can wait," {n}you say.{/n}
 "Of course you can. You have found a way to make waiting look clever. I would like to know whether answering will be worth my time."
 {n}Her delicate hands come together around the fold.{/n}
 "I am not going to put Vellexia's affairs in it. Nor a list of people who can be persuaded to protect you. Those invitations have prices you have not offered to pay."''',

@@ -113,7 +113,7 @@ session(STUDIED, "Night reading", 3, '"You were in the shrine library until the 
 "Immune to energy drain." {n}She sounds as though she is afraid to breathe on it.{/n} "Not a cure. A ward you buy by the scroll, and it's gone before a candle's burned down a finger." {n}Her finger stops on your margin note, where you have worked the price out per minute.{/n} "You've written it down as if it were a dosage. You've worked out what it costs to hold my hand." {n}She straightens, and then does not seem to know what to do with her hands.{/n} "I don't trust it. Nobody's ever offered me something so small and so dear at the same time. I keep looking for the hook. And you haven't even tried it yet; you only think my touch is what that sergeant meant."''',
         c("[Close the books.]", flags=(STUDIED,))),
     a("not_yet", '''{n}She watches you turn back three pages, then five, then the whole handbook, and lose the thread each time.{/n}
-"You'll get there," she says. "Or you won't, and you'll have burned a lot of the shrine's lamp oil on a demon." {n}She almost smiles.{/n} "Come back to it. I'll be here. I'm always watching."''', c(abort=True)),
+"You'll get there," {n}she says.{/n} "Or you won't, and you'll have burned a lot of the shrine's lamp oil on a demon." {n}She almost smiles.{/n} "Come back to it. I'll be here. I'm always watching."''', c(abort=True)),
 ], ("trickster",), forbids=(STUDIED,), chapters=(3, 5), Areas=[DREZEN_AREA])   # the shrine library
 
 
@@ -135,9 +135,9 @@ session(INTAKE, "Intake", 3, '[Hold out your hand, palm up] "You look pale. Let 
 "Properly? Before the goddess. Before Desna caught me in the priestess's dream and made me look at what I was." {n}Her voice drops.{/n} "Since then I don't touch anyone. I keep my hands behind my back in a crowd, and when somebody brushes against me anyway I feel the edge of them go, a little, and I walk away fast. I tell myself every day that I'm not hungry, and every day it's a lie."''',
         c("Continue", "diagnosis")),
     nar("diagnosis", '''{n}You make the face that the Kenabres field surgeons made when they had bad news and no time: a short nod, a click of the tongue, a hand on the hip.{/n}
-"Starvation," you tell her. "I'd write it on the chart, if you had a chart."
+"Starvation," {n}you tell her.{/n} "I'd write it on the chart, if you had a chart."
 {n}Her mouth twists.{/n} "Starvation. That's a mortal word. You starve because there's no bread. I'm not short of bread, Commander. I'm surrounded by it every hour, and it talks to me, and thanks me for my prayers." {n}She looks at the hand that held her wrist.{/n} "I'll tell you what it is. I want to be touched and not count what I took. I want to kiss someone the way a mortal does, and have them still there afterwards. Once. That's the whole illness."
-"Then I've spent three nights in the shrine library finding out what that would take," you tell her. "Somebody has to be the doctor. I've read the texts. I'm the nearest thing you've got."''',
+"Then I've spent three nights in the shrine library finding out what that would take," {n}you tell her.{/n} "Somebody has to be the doctor. I've read the texts. I'm the nearest thing you've got."''',
         c("Continue", "her")),
     a("her", '''{n}For a moment you think you have hurt her. Then she sits down, very suddenly, on an ammunition crate, and laughs until she has to wipe her eyes on her sleeve, and the laugh is the most unguarded sound you have ever heard her make.{/n}
 "A doctor. For a succubus. Oh, gods, they'd hang you in Alushinyrra, and then they'd hire you." {n}She sobers, a little.{/n} "You should know before you start that if this goes wrong, it won't be the patient on the floor. It'll be the doctor. So don't lose the doctor, doctor." {n}She says it lightly, and it is not light.{/n} "Very well. What do you prescribe? I warn you, any physician in Alushinyrra would have reached for chains."''',
@@ -209,7 +209,7 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
         c("Continue", "explain", forbids=(DREAM,))),
     a("dream", '''"I know what you're thinking. In the dream you bent down to kiss me, where it couldn't have hurt you, and I screamed and threw you off." {n}Her cheeks go dark.{/n} "I've been ashamed of that every day since. That was the one place in all the worlds where my kiss isn't death, and I still couldn't bear it. Out here I'm still what I was built to be. I won't risk you out here."''',
         c("Continue", "explain")),
-    nar("explain", '''"It's a procedure," you tell her. "The ward from the handbook, read over me. While it holds, your hand takes nothing. That's what the books say. Tonight we find out whether the books know what you are."
+    nar("explain", '''"It's a procedure," {n}you tell her.{/n} "The ward from the handbook, read over me. While it holds, your hand takes nothing. That's what the books say. Tonight we find out whether the books know what you are."
 {n}She searches your face for the joke. For once, you aren't making one. It frightens her more than the hand does.{/n}
 "And if they don't? If it doesn't hold?"
 "Then I'll have spent a fortune to learn something, and so will you. That's what procedures are for."''',
@@ -226,7 +226,7 @@ session(TOUCHED, "The procedure", 3, '"I want to try something. Give me your han
         c("Continue", "cured")),
     a("cured", '''{n}She is staring at your joined hands. She has stopped breathing, if she breathes.{/n}
 "Nothing." {n}Her voice is tiny.{/n} "It isn't taking anything. Commander, it isn't taking anything." {n}Her thumb moves, once, over your knuckles, testing.{/n} "I can feel your pulse. I can feel it, and I'm not... It's only a pulse."
-"Seven minutes," you tell her. "Then the ward's spent, and so is the scroll. Every time, a new one. That's the treatment."
+"Seven minutes," {n}you tell her.{/n} "Then the ward's spent, and so is the scroll. Every time, a new one. That's the treatment."
 {n}She holds on while you count. At the sixth minute she lets go herself, carefully, before the ward can let go of you, and holds the hand you held against her chest, and begins to cry, silently.{/n} "I've never held anyone's hand before without killing a little of them. Not once." {n}A wet, startled laugh.{/n} "Seven minutes, at the price of a horse. Gods help your purse, doctor. I'll take it."''',
         c("[Keep your hand where she can see it.]", flags=(TOUCHED, CURED))),
     nar("no_scroll", '''{n}She looks at your bare hand, and then at your face, and sees the answer before you give it; she sees everything before you do.{/n}
@@ -257,7 +257,7 @@ session(ALUSHINYRRA, "Where I grew up", 4, '"Tell me about the house you grew up
           flags=(ALUSHINYRRA, WANTS_MEAL))),
     a("noted", '''"The treatment plan." {n}She rests her chin on her knees and smiles at the dark.{/n} "You haven't got a treatment plan. You've got a pocket full of jokes and a very straight face." {n}A pause.{/n} "Write it down anyway. I want to see what it looks like in your handwriting."''', c()),
     a("first", '''{n}She goes absolutely still. Then she counts on her fingers, silently, going back through days you can't see.{/n}
-"It is," she says, astonished. "It is. The cat doesn't count; I wanted the cat to want me. The smell of the bakery was close. But this..." {n}She presses her hand to her mouth.{/n} "That's the first thing. The first thing I've wanted that isn't somebody. Oh. Oh, I'm going to cry in the Abyss, in front of a demon's camp, and it's your fault."''', c()),
+"It is," {n}she says, astonished.{/n} "It is. The cat doesn't count; I wanted the cat to want me. The smell of the bakery was close. But this..." {n}She presses her hand to her mouth.{/n} "That's the first thing. The first thing I've wanted that isn't somebody. Oh. Oh, I'm going to cry in the Abyss, in front of a demon's camp, and it's your fault."''', c()),
 ], (INTAKE, "trickster.ever"), forbids=(ALUSHINYRRA,), delay=24, chapters=(4,))
 
 # Q11: the telling is staged in the Abyss, so it stays in Chapter 4; a Chapter 5 player who missed it hears it in Drezen.
@@ -306,11 +306,11 @@ session(KITCHEN, "A meal someone made", 5, '"Seventh bell. You said kitchens."',
         c("[Keep your hands on the table.]", "hand_paid")),
     nar("hand_cure", '''{n}You are back from the chapel before the bowl is dry, with the ward cold on your skin, and she knows the look of you now; she puts the bowl down. Then she reaches across the table and takes your hand, the one with the onion burn on the knuckle, and turns it over, and presses her lips to the burn.{/n}
 {n}Nothing comes out of you. Nothing at all. She lifts her mouth away slowly, deliberately, watching your face over your knuckles, and then she does it again, because she can.{/n}
-"Still working," she says. "Seven minutes, and the walk across the yard had two of them. I counted. Good."''',
+"Still working," {n}she says.{/n} "Seven minutes, and the walk across the yard had two of them. I counted. Good."''',
         c("Continue", "after")),
     nar("hand_paid", '''{n}She reaches across the table for your hand, the one with the onion burn on the knuckle, and stops an inch short of it. She knows the sound of a seal breaking by now, and she has not heard one tonight.{/n}
 {n}She bends her head instead and kisses the air above the burn, so close that you feel her breath on it and nothing else.{/n}
-"One," she says, shakily. "For the cook. That's all I'm allowed tonight, and I've never meant one more. Don't you dare laugh."''',
+"One," {n}she says, shakily.{/n} "For the cook. That's all I'm allowed tonight, and I've never meant one more. Don't you dare laugh."''',
         c("Continue", "after")),
     a("after", '''{n}She stays until the candles are low, helping you wash the bowls in a basin of cold water with the concentration of someone performing surgery.{/n}
 "I've been asking what I dream of. Since the goddess. I still don't know." {n}She dries the last bowl.{/n} "But I think I know what I want to remember, when I'm very old, if demons get old. I want to remember that somebody burned the onions for me."''',
@@ -434,7 +434,7 @@ session(NIGHT, "Under the Tender of Dreams", 5, '"Where are we going?"', [
 "There's no ward in there." {n}She lets go of you, finger by finger.{/n} "Not tonight, then. I won't take you up a tower and spend the whole night counting what I've taken. I've done that, before the goddess. I won't do it to you." {n}She touches your cheek through a fold of her cloak, the only way she trusts herself to.{/n} "Buy it, and have it read. I'll still be here. I'll still want to go."''',
         c("[Go and find the scroll-sellers.]", abort=True)),
     nar("tower", '''{n}Drezen falls away under you. The lamps, the wall, the long dark scar of the siege lines. She sets you down at the top of the old bell tower above the citadel, where the bells were melted for arrows years ago and nothing is left but a ring of broken stone open to the sky. The stars are very close. Desna's stars; the ones travellers steer by.{/n}
-"I come here to be where she can see me," she says. "I don't pray. I just sit where she can see."''',
+"I come here to be where she can see me," {n}she says.{/n} "I don't pray. I just sit where she can see."''',
         c("Continue", "flowers", requires=(ELYSIUM,)),
         c("Continue", "stars", forbids=(ELYSIUM,))),
     a("flowers", '''{n}She has nothing in her hands tonight, and she keeps looking at them, as if they belonged to someone else.{/n}
@@ -504,9 +504,9 @@ session(DISCHARGED, "Discharged", 5, '"You look different. You keep touching thi
         c('"Yes."', "yes", flags=(COMMITTED,)),
         c('"Not yet."', "later", abort=True),
         c('"No."', "no", flags=(CLOSED, REFUSED))),
-    a("yes", '''{n}She does not let go of your hand. She puts her other hand flat on your chest, over your heart, and keeps it there, and waits, and the heart goes on beating under it.{/n} "Still there," she says. "Still there. Desna help me, I'm never going to get used to that."''', c()),
+    a("yes", '''{n}She does not let go of your hand. She puts her other hand flat on your chest, over your heart, and keeps it there, and waits, and the heart goes on beating under it.{/n} "Still there," {n}she says.{/n} "Still there. Desna help me, I'm never going to get used to that."''', c()),
     a("later", '''"Not yet." {n}She squeezes your hand, hard, because she can.{/n} "All right. I've got a great deal of time now, and two hands to fill it. Ask me again when you've worked out what you're waiting for."''', c(abort=True)),
-    a("no", '''{n}She lets go of your hand. She looks at her own for a moment, as if surprised it still works.{/n} "Then I'll go and touch something else," she says, and does not cry until she is out of the tent.''', c()),
+    a("no", '''{n}She lets go of your hand. She looks at her own for a moment, as if surprised it still works.{/n} "Then I'll go and touch something else," {n}she says, and does not cry until she is out of the tent.{/n}''', c()),
 ], (INTAKE, ELYSIUM, "trickster.ever"), forbids=(COMMITTED, AFTERTASTE, CHAPLAIN, FAILED, DISCHARGED), delay=24,
     chapters=(5,))
 
@@ -521,9 +521,9 @@ session(FREED, "Bare hands", 5, '"You keep looking at your hands."', [
         c('[Take her hand] "All of you."', "yes", flags=(FREED, COMMITTED)),
         c('"Not yet."', "later", abort=True),
         c('"No."', "no", flags=(FREED, CLOSED, REFUSED))),
-    a("yes", '''{n}She closes her fingers on yours and holds on, and nothing happens, except that she holds on.{/n} "Warm," she says, surprised. "You're warm. I never noticed. I never dared stay long enough to notice." {n}She does not let go.{/n} "All of me. I'll hold you to that. I'll hold you to it with both hands, now I can."''', c()),
+    a("yes", '''{n}She closes her fingers on yours and holds on, and nothing happens, except that she holds on.{/n} "Warm," {n}she says, surprised.{/n} "You're warm. I never noticed. I never dared stay long enough to notice." {n}She does not let go.{/n} "All of me. I'll hold you to that. I'll hold you to it with both hands, now I can."''', c()),
     a("later", '''"Not yet." {n}She curls her fingers closed and puts the hand away, but not behind her back.{/n} "All right. I've a great deal of time now, and two hands to fill it. I'll ask again."''', c(abort=True)),
-    a("no", '''{n}She lets her hand fall. She looks at it for a moment, as if surprised it still works.{/n} "Then I'll go and hold somebody else's," she says, quite steadily, and does not cry until she is out of the lamplight.''', c()),
+    a("no", '''{n}She lets her hand fall. She looks at it for a moment, as if surprised it still works.{/n} "Then I'll go and hold somebody else's," {n}she says, quite steadily, and does not cry until she is out of the lamplight.{/n}''', c()),
 ], ("trickster", "trickster.ever", ELYSIUM), forbids=(INTAKE, COMMITTED, AFTERTASTE, CHAPLAIN, FAILED, FREED), delay=24,
     chapters=(5,))
 

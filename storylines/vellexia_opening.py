@@ -72,7 +72,7 @@ s("unfinished_likeness", "The portrait that arrived early", '"What has caught yo
 {n}She turns the frame toward you.{/n}''', c('[Examine the picture without opening the frame.]', "picture"), portrait="VellexiaManorSpeaker"),
     n("picture", "Narrator", '''{n}Vellexia's painted likeness stands in a room you do not recognize. Her dress is white; one sleeve has slipped to the elbow. The expression is so openly pleased that for a moment the portrait seems more intimate than a naked figure would have been.{/n}
 {n}Then you notice the room. Its window shows a sky that could belong to Golarion. The table holds a cup with a chipped rim. Nothing in it is magnificent enough for the woman standing there.{/n}
-"Well?" asks the actual Vellexia.
+"Well?" {n}asks the actual Vellexia.{/n}
 "The room is very ordinary."
 "To you, perhaps. To me it resembles an industrious attempt at an insult."''',
         c('[Look back at the picture.]', "picture_changed"), portrait="VellexiaPaintingDay"),
@@ -154,7 +154,7 @@ s("second_painter", "A seam in the surprise", '"Has your artist explained the po
 {n}She gives you the back of the frame to hold while she checks that nothing has shifted.{/n}
 "You have deprived me of an accident. Try to provide a worthwhile conversation in compensation."''', c('[Help close the frame for the demonstration.]', "asked_end")),
     n("found_end", "Vellexia", '''{n}When you turn the closed frame toward you, the picture shows a woman looking toward an open door. Beyond it there is another room, almost bare. She has one foot on either side of the threshold.{/n}
-"Better," Vellexia says.
+"Better," {n}Vellexia says.{/n}
 "Do you recognize it?"
 "I recognize the impulse. I have left more interesting rooms than that one."
 {n}She reaches past you to turn the frame, then stops with her arm close against yours.{/n}
@@ -257,7 +257,7 @@ s("two_observers", "The view from the other chair", '"What do you intend to try 
         c('[Turn the retained picture so both of you can see it.]', "kept", requires=("vellexia.kept_picture",)),
         c('[Ask how she intends to make a likeness without the returned picture.]', "returned", requires=("vellexia.returned_picture",))),
     n("kept", "Vellexia", '''{n}The picture shows Vellexia seated alone. As you move it, another chair appears at the painted table. Its occupant is a blur. You cannot tell whether the uncertainty belongs to the work or to the people looking.{/n}
-"It is hesitating," she says. "Apparently we disagree."
+"It is hesitating," {n}she says.{/n} "Apparently we disagree."
 "About what?"
 "How close the chairs ought to be, for one thing. Watch."
 {n}She moves her own chair nearer. In the picture the distance widens.{/n}
@@ -371,7 +371,7 @@ s("unadvertised_hour", "An hour with no witnesses", '"You offered an hour withou
 {n}Her gaze moves from your face to the empty space beside you.{/n}
 "An improvement on explaining why you ought not to ask."
 {n}She brings her cup with her and sits within reach.{/n}''', c('[Turn toward her.]', "intent")),
-    n("intent", "Vellexia", '''"You have been watching my mouth," she says.
+    n("intent", "Vellexia", '''"You have been watching my mouth," {n}she says.{/n}
 "You have been watching me notice it."
 "Yes. I prefer to know whether my company is attentive."
 {n}Her knee touches yours. She leaves it there, then waits.{/n}
@@ -470,7 +470,7 @@ s("a_question_kept", "The question she chooses", '"You had another hour for me."
 "If the person is me, choose a better disguise."
 {n}You begin with an argument you once thought worth winning. She asks what losing would have cost. The question takes the conversation somewhere you had not intended, and she follows with evident interest.{/n}
 {n}When the hour ends, she keeps the best part of her own story back for your next visit, and tells you so.{/n}
-"You may return," she says. "With another unfinished thought, if necessary. I reserve the right to finish an argument."''', c('[Promise another visit.]', flags=("vellexia.opening_kept",))),
+"You may return," {n}she says.{/n} "With another unfinished thought, if necessary. I reserve the right to finish an argument."''', c('[Promise another visit.]', flags=("vellexia.opening_kept",))),
     n("company", "Vellexia", '''"A story for someone whose company I want again. You make conversation sound like a dangerous commission."
 {n}She considers, then begins an account of a noble who paid to have his enemy's name removed from every program at a celebration. The enemy purchased all the empty spaces and left them blank. By midnight, nobody was talking about anyone else.{/n}
 "Which one were you helping?"

@@ -1,0 +1,5 @@
+# Jerribeth: state alive (met, never attacked, Marhevok spared, she leaves the Ivory Sanctum for the Abyss).
+jerribeth.met:3              # Ch3 Wintersun: c3/Wintersun/JerribethReveal Cue_0003 (and IvorySanctum/JerribethGreetings Cue_0001)
+jerribeth.wintersun_known:3  # Ch3 Wintersun reveal heard (SeenCue b2997124...)
+jerribeth.xanthir_known:3    # Ch3 Ivory Sanctum, after Xanthir: JerribetnFinal/Cue_0001 (she pins the locusts); end with Answer_0028/0016 -> Cue_0020
+jerribeth.refuge_known:4     # Ch4 Vellexia's manor: c4/RaptureOfRupture/Jerribeth_Velexia Cue_0011 ("...the manor where I have taken refuge?")

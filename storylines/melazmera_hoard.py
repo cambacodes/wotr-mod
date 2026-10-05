@@ -94,19 +94,19 @@ letter(M + "stone.second", "A stone in the porridge", [
         c("Continue", "boast", requires=(REPLY_BOAST,)),
         c("Continue", "question", requires=(REPLY_QUESTION,)),
         c("Continue", "silent", forbids=(REPLY_HONEST, REPLY_BOAST, REPLY_QUESTION))),
-    mz("honest", '''"THIEF.
+    mz("honest", '''{n}"THIEF.{/n}
 SALT PORK IS WHAT A PIG IS WHEN IT HAS GIVEN UP. YOU SHOULD EAT BETTER THINGS. I WILL BRING YOU BETTER THINGS.
 EVERY ORDER YOU GIVE IS YOURS. THEN I HAVE ALL YOUR ORDERS ON MY CLAW. I GAVE ONE. I TOLD A VROCK TO BE DINNER. IT DID AS IT WAS TOLD.''',
         c("Continue", "tail")),
-    mz("boast", '''"THIEF.
+    mz("boast", '''{n}"THIEF.{/n}
 NOTHING IS AS GOOD AS A HARPY. YOU ARE RIGHT. I AM GLAD YOU KNOW IT.
 THE WHOLE CRUSADE DOES WHAT YOUR MARK SAYS. I FLEW OVER IT AND TOLD IT TO BE QUIET. IT SHOUTED AND SHOT ARROWS. YOUR CRUSADE IS BADLY TRAINED.''',
         c("Continue", "tail")),
-    mz("question", '''"THIEF.
+    mz("question", '''{n}"THIEF.{/n}
 I COUNT BECAUSE THINGS GO. EVERYTHING GOES. GOATS GO INTO ME. SHIPS GO INTO THE CLIFFS. THE HORNED ONE'S DIGGERS GO INTO THE DARK. THE NUMBER STAYS.
 I HAVE COUNTED FORTY-ONE FOR TWO HUNDRED YEARS. NOW I COUNT FORTY-TWO. IT IS YOUR FAULT. I DO NOT LIKE IT. I COUNT IT ANYWAY.''',
         c("Continue", "tail")),
-    mz("silent", '''"THIEF.
+    mz("silent", '''{n}"THIEF.{/n}
 YOU DID NOT ANSWER. I SAT ON THE HIGH ROCK THREE NIGHTS. A HARPY SAT ON IT WITH ME. I ATE THE HARPY. IT WAS NOT AN ANSWER.
 I WILL ASK AGAIN WHEN I CAN SEE YOUR FACE. YOU WILL NOT LIKE IT BETTER.''',
         c("Continue", "tail")),
@@ -391,7 +391,7 @@ visit(M + "beat.count", "The Commander's hoard", [
         c('"Everything in yours is from somebody you ate."', "ate"),
         c('[Take the sapphire out of your pocket and put it on the shelf with her stones.]', "sapphire", requires=(STONE_KEPT,))),
     mz("ate", '''{n}She laughs, and the lamp gutters.{/n} "Yes. That is how you keep things properly. You make sure nobody can come back for them." {n}She sits down on the end of your bed.{/n}
-"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away." {n}She looks at you sidelong.{/n} "I lie awake counting them. Forty on the heap, one in your pocket, and two that walk." I have never lain awake about anything before. I do not know if I like it. I keep doing it."''',
+"But I did not eat you. And I did not eat the seal. So now I have two things in my hoard that could get up and walk away." {n}She looks at you sidelong.{/n} "I lie awake counting them. Forty on the heap, one in your pocket, and two that walk." {n}I have never lain awake about anything before. I do not know if I like it. I keep doing it."{/n}''',
         c("Continue", flags=(COUNTED,))),
     mz("sapphire", '''{n}You put the grey stone on the shelf, at the end of the row of her letters, where it looks like one more of them.{/n}
 {n}She stares at it. Then she comes and picks it up, and weighs it in her palm, and puts it back into your pocket herself, and pats it flat.{/n} "No. That one does not go on the shelf. That one goes where it goes. That is the one you took." {n}Her hand stays flat against you.{/n}

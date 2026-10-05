@@ -1,0 +1,12 @@
+# Minagho (shared relationship minagho_chivarro): state dead (HARD on Trickster) -> device "the brand" (Baphomet parley), returned_minagho.
+minagho.brand_told_c4:4       # Ch4 Lower City ambush: MinaghoAfterCombat, she recites the brand's terms (SeenCue 234795ef...)
+minagho.spared_c4:4           # same dialog: Answer_0026 [Let Minagho go] "Get out of my sight!" -> MinaghoSetFreeInC4
+minagho.dead:5                # Ch5 Return to Drezen siege: FreeGraveknightStaunton_Fallen/Cue_0031 starts MinaghoDead (unavoidable on Trickster)
+minagho.killed_by_staunton:5  # same cue 09780c42... (SeenCues)
+# Note: the sim also auto-enables minagho.brand_told_c3 (Azata-only Fane dialog) and plays setup_c3 in Ch3; on a real Trickster run
+# that dialog never opens, so the primer is setup_c4 in Ch4. Either primer sets the same flags.
+# Chivarro (shared relationship minagho_chivarro): state no_happy_end (alive, deposed and exiled to the Lower City, never killed).
+chivarro.removed:4            # Ch4 Ten Thousand Delights, AvengeInsults confrontation (any non-attack ending) -> Cue_0049 ChivarroRemovedFormPower
+chivarro.exiled:4             # same cue: ChivarroWasTeleportedAway
+herrax.met:4                  # leave the Delights and return; first talk with Herrax (SeenCue 044dc44d...)
+herrax.asked_kill_chivarro:4  # same talk, automatic Cue_0045_KillChivarro; afterwards NEVER enter the Lower City ChivarroAbusedScene zone (chivarro.dead must stay false)

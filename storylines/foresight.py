@@ -350,21 +350,21 @@ SCENES.append(_toast)
 
 def _report(key):
     gone = " and ".join(GONE[k] for k in key)
-    return p('''I record one more irregularity, because I am thorough. In the third year of the war the Commander bought a page of {mf|his|her} own other endings from Shyka the Many, looked at every one of them, and decided, coldly, not to have any of them. {mf|He|She} paid for the page with a morning in Kenabres: ''' + gone + '''. I have that morning in my notes, in some detail. The Commander does not have it anywhere.''',
+    return p("{n}" + ('''I record one more irregularity, because I am thorough. In the third year of the war the Commander bought a page of {mf|his|her} own other endings from Shyka the Many, looked at every one of them, and decided, coldly, not to have any of them. {mf|He|She} paid for the page with a morning in Kenabres: ''' + gone + '''. I have that morning in my notes, in some detail. The Commander does not have it anywhere.''') + "{/n}",
              requires=("trickster.ever", ACCEPTED) + tuple(MEMORY[k] for k in key) + ((RAISED,) if len(key) == 2 else ()),
              forbids=(() if len(key) == 2 else (RAISED,)))
 
 
 def _unread(key):
     lines = " ".join(RECEIPT[k] for k in key)
-    return p('''Among the Commander's effects I found, folded very small, a receipt in a hand that was not {mf|his|hers}: "''' + lines + '''" It had never been opened. I read it aloud to {mf|him|her}. {mf|He|She} listened as one listens to an account of someone else's debts, and could not tell me what had been bought.''',
+    return p("{n}" + ('''Among the Commander's effects I found, folded very small, a receipt in a hand that was not {mf|his|hers}: "''' + lines + '''" It had never been opened. I read it aloud to {mf|him|her}. {mf|He|She} listened as one listens to an account of someone else's debts, and could not tell me what had been bought.''') + "{/n}",
              requires=("trickster.ever", ACCEPTED) + tuple(MEMORY[k] for k in key) + ((RAISED,) if len(key) == 2 else ()),
              forbids=(MEMORY_SCENE, MEMORY_TOLD) + (() if len(key) == 2 else (RAISED,)))
 
 
 # §7.3: the unread receipt comes first (no rest and no Chapter 5 line ever delivered it), then the report, then Shyka.
 LASTCALL_PARAGRAPHS = tuple(_unread(key) for key, _, _ in COMBOS) + tuple(_report(key) for key, _, _ in COMBOS) + (
-    p('''Shyka, whose essence went into the Wound with the rest of the Council's, came to the Commander's table afterwards wearing the Commander's own face, and recited the lost morning aloud, word for word, as a story about somebody else. The Commander listened politely, and laughed in the right places, and asked at the end who it had happened to. I record the question. I do not record the answer, because Shyka did not give one.''',
+    p('''{n}Shyka, whose essence went into the Wound with the rest of the Council's, came to the Commander's table afterwards wearing the Commander's own face, and recited the lost morning aloud, word for word, as a story about somebody else. The Commander listened politely, and laughed in the right places, and asked at the end who it had happened to. I record the question. I do not record the answer, because Shyka did not give one.{/n}''',
       requires=("trickster.now", ACCEPTED, SHYKA_ESSENCE)),
 )
 LASTCALL_PAGES = ("trickster.lastcall.page.interrupted", "trickster.lastcall.page.heroic")

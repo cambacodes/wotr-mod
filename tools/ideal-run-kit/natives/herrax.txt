@@ -1,0 +1,8 @@
+# Herrax: state madam_ch4 (Chivarro deposed in Ch4, Herrax rules the Ten Thousand Delights).
+chivarro.removed:4            # Ch4 Chivarro confrontation ends in exile: Cue_0049 ChivarroRemovedFormPower (same etude as herrax.madam)
+chivarro.exiled:4             # same beat: ChivarroWasTeleportedAway
+herrax.madam:4                # = ChivarroRemovedFormPower 065b6117...; leave the Delights and return (Add2_GoAwayBrothel) so Herrax takes the chair
+herrax.met:4                  # first Herraxa_dialogue talk (SeenCue 044dc44d...)
+herrax.asked_kill_chivarro:4  # same talk, automatic: Cue_0045_KillChivarro (gives Obj3_ExiledChivarro). Never enter the ChivarroAbusedScene zone afterwards.
+herrax.rokhorn_confessed:4    # ask her incubus Rokhorn why he obeys her (SelectedAnswers c60613dc...)
+herrax.coin_held:4            # keep the golden coin she gives you (item 1d5570f0...); never sell or spend it

@@ -1,0 +1,10 @@
+# Aranka (relationship aranka; CommittedFlag aranka.extension_kept). State "never_entered" (no parent RanRomance Aranka romance on Trickster).
+# '#@' lines are timed.py directives (plain trace.py ignores them). Verified: python timed.py trace natives/aranka.txt - aranka
+aranka.gave_song:1                  # Ch1 Temple of Desna: Starward Gaze finished with the adepts (DesnaTempleFinal Cue_0020 f21279d1)
+fool_king.crowned:3                 # Ch3 Trickster spine: crown the Fool King (FoolKingCoronated cc76b7ab); keeps the Ch5 tavern twin open
+# (optional) aranka.kenabres_contest_won:1 - winning the Ch1 song contest (DC 13) hides the mod's Ch1 duet "Keep the rhythm"; either is fine
+#@ fool_king.crowned:3+12
+#@ !aranka.kenabres_attacked        # never [Attack] the adepts (DesnaTempleFinal Answer_0026 3259064c): closes the route
+#@ !aranka.ran_romance              # parent RanRomance Aranka etudes never start on this run (RRT never starts them)
+#@ !aranka.ran_failure
+#@ !fool_king.gone

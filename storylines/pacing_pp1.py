@@ -110,7 +110,7 @@ beat("anevia.early.watch", "A covering for the night", "Anevia", 0,
 "Go on. If he's warm he might stop talkin'. I'd take a quiet Gwerm over a warm leg any night, and that's the truth."''',
       c('"It\'s yours. Mr. Gwerm has a mansion to go home to."', "covered"),
       c('[Give the blanket to Horgus.]', "horgus"), speaker_unit=ANEVIA_PROLOGUE, portrait="Anevia"),
-    n("covered", "Anevia", '''"Had a mansion," Anevia says, before Horgus can. "Last anybody checked."
+    n("covered", "Anevia", '''"Had a mansion," {n}Anevia says, before Horgus can.{/n} "Last anybody checked."
 {n}She takes the blanket anyway and pulls it up over her knees. Horgus opens his mouth, considers the blanket, considers her, and shuts it again. It will not last.{/n}
 "There. Now I owe you for the bedding. Keep this up and I'll have to start a ledger."''',
       c('[Leave her to rest.]', flags=(WATCH + "covered",)), speaker_unit=ANEVIA_PROLOGUE, portrait="Anevia"),
@@ -262,7 +262,7 @@ beat("seelah.abyss.night", "Nothing out there", "Seelah", 4,
       speaker_unit=SEELAH, portrait="Seelah"),
     n("listen", "Seelah", '''{n}She hesitates, then nods. The two of you step away from the others, out of earshot, and listen.{/n}
 {n}The Abyss is not silent. Something far off grinds like a millstone. The air carries a smell of rot and hot copper. But there is no screaming. You listen together until she is sure of it.{/n}
-"Nothing," she says at last. "There's nothing."
+"Nothing," {n}she says at last.{/n} "There's nothing."
 {n}She doesn't sound relieved, exactly. She sounds like someone who has set down a weight and is still feeling the shape of it in her arms.{/n}
 "All right. If it comes tonight, I'll wake you. And you'll come and hear nothing with me again. Promise?"''',
       c('"Promise."', flags=(NIGHT + "listened",)), speaker_unit=SEELAH, portrait="Seelah"),

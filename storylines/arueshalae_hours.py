@@ -69,7 +69,7 @@ hub(BAKERY, "Tanner's Row, at dawn", 3, '"You smell of flour."', [
         c('"You\'re right. Leave it. Some things you can only want from a distance."', "leave", flags=(BAKERY,))),
     a("back", '''"That's the whole treatment." {n}She repeats it, the way she repeats everything you say that she means to keep.{/n} {n}She wipes her face, spreading the flour further.{/n} "I'll go back. With gloves, this time. I promised her I'd help with the trough. Tomorrow before dawn. If I knock the trough over every morning, the baker's going to stop paying me in rolls."''', c()),
     a("gloves", '''"Gloves and the other end of the trough." {n}She nods, too quickly, relieved.{/n} "That's sensible. That's what a real doctor would say. You keep surprising me by being one." {n}She hesitates.{/n} "She'll ask why. She asks why about everything."
-"Tell her you're allergic to children," you suggest. She laughs so hard she has to sit down.''', c()),
+"Tell her you're allergic to children," {n}you suggest. She laughs so hard she has to sit down.{/n}''', c()),
     a("leave", '''{n}She is quiet for a long time.{/n} "Some things you can only want from a distance." {n}She nods slowly.{/n} "Yes. I know that one. I've known it longer than anything." {n}She brushes flour from her sleeve, and looks at it, and doesn't brush any more.{/n} "I'll still go and stand in the alley. For the smell. Nobody can take a smell."''', c()),
 ], (INTAKE, RX_WANT), delay=24, chapters=(3, 5))
 

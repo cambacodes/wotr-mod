@@ -42,7 +42,7 @@ s("unbought_work", "Something you have not ordered", '"Are you working on someth
     n("start", "Gesmerha", '''{n}Gesmerha has tucked a coil of dark hair into the back of her collar. One strand has escaped. She blows it away from her mouth without taking either hand from the piece of wood before her.{/n}
 "Yes. And if you tell me what it ought to be, it will cease to be mine."
 {n}The block has no recognizable shape yet. Two shallow channels follow a pale line through its middle. Beside it lie a folded cloth, a knife, and a cup with a broken handle. Each has its place within easy reach of her hand.{/n}
-"You are allowed to ask," she adds. "I have had three people tell me today that it would make an excellent box. A fourth wanted a box and thought that amounted to the same thing."
+"You are allowed to ask," {n}she adds.{/n} "I have had three people tell me today that it would make an excellent box. A fourth wanted a box and thought that amounted to the same thing."
 "Would it?"
 "Possibly. I have not forgiven the fourth person yet."
 {n}She sets the knife down with its handle toward her. Only then does she turn to you.{/n}''',
@@ -104,7 +104,7 @@ s("along_the_grain", "A fault in the board", '"Shall we examine that wood?"', [
     n("start", "Gesmerha", '''{n}The length of wood lies on low supports. Gesmerha has brushed its surface clean. A line of chalk marks the proposed hinge; two smaller marks indicate where her hands should meet yours when you lift it.{/n}
 "Tell me before you turn it. I would rather not learn your intentions from my fingers."
 {n}Together you bring the pale underside uppermost. Near one end a dark seam curves out of sight.{/n}
-"There," she says when you describe it. "I can follow it at the edge, but I cannot reach where it goes without cutting. It may be no more than a stain. It may spoil the whole length."
+"There," {n}she says when you describe it.{/n} "I can follow it at the edge, but I cannot reach where it goes without cutting. It may be no more than a stain. It may spoil the whole length."
 "What would you do without me?"
 "Sacrifice a strip along that side. I have enough wood. I would prefer not to waste it."
 {n}The piece is hers. She waits while you examine the seam, keeping her hands clear of the supported edge.{/n}''',
@@ -151,14 +151,14 @@ s("along_the_grain", "A fault in the board", '"Shall we examine that wood?"', [
 "Between me and a broken hinge. I would have lost."
 {n}She puts the offcut aside. When you leave, the space for the hinge is still uncut, but its position is right.{/n}''', c('"Let me know when you are ready for the next part."', flags=("gesmerha.wood_kept", "gesmerha.grain_found"))),
     n("trays", "Gesmerha", '''{n}The trays take shape slowly. You hold each one while Gesmerha tests the depth of the recess. They will need a cloth wrapped around them for carrying.{/n}
-"I wanted one thing," she says. "Now I shall have two things that must be kept together. There is probably a proverb about that. Do not tell me."
+"I wanted one thing," {n}she says.{/n} "Now I shall have two things that must be kept together. There is probably a proverb about that. Do not tell me."
 "I do not know one."
 "A quality I appreciate in a visitor."
 {n}She asks you to find the offcut you first examined. It is not where you thought you left it. After a search you discover it beneath the supports and put it in her hand.{/n}
 "Next time, leave the evidence where we can find it. Being wrong is tiresome enough without kneeling in the dust afterwards."
 {n}She puts it beside her cord.{/n}''', c('"I will help with the wrapping when the trays are finished."', flags=("gesmerha.wood_kept", "gesmerha.grain_missed"))),
     n("safe", "Gesmerha", '''{n}You finish the measuring before she lets you sweep the bench. The sacrificed strip yields two small blanks for playing pieces and little else.{/n}
-"You look as though you expect a verdict," she says.
+"You look as though you expect a verdict," {n}she says.{/n}
 "Was it the right choice?"
 "It was a choice I offered. I knew what it would cost. You need not turn it into a trial."
 {n}She places one of the blanks in your hand. It is smooth on one side and raw on the other.{/n}
@@ -219,7 +219,7 @@ s("whose_mark", "A name on the underside", '"How is the game coming along?"', [
 
 s("the_first_game", "A rule she dislikes", '"Is it time to learn your game?"', [
     n("start", "Gesmerha", '''{n}Gesmerha has cleared the bench. The pieces sit in two groups, each within easy reach of one player.{/n}
-"The reply came back," she says. "We should dispose of business before you discover how ruthless I am at leisure."''',
+"The reply came back," {n}she says.{/n} "We should dispose of business before you discover how ruthless I am at leisure."''',
       c('"What did he say about selling it under your mark?"', "own_reply", requires=("gesmerha.own_mark",)),
       c('"Did the letter help?"', "letter_reply", requires=("gesmerha.introduced",))),
     n("own_reply", "Gesmerha", '''"He says buyers would want a discount if there is no special connection to the crusade. I told him the connection was that its Commander had helped me measure the wood. He did not find that special enough."
@@ -245,7 +245,7 @@ s("the_first_game", "A rule she dislikes", '"Is it time to learn your game?"', [
     n("trays", "Gesmerha", '''{n}The trays slide apart when you push the first piece across their join. Gesmerha catches the nearer one and sighs.{/n}
 "There is the fault we bought. Fetch the wrapping cloth."
 {n}Folded twice beneath the trays, it holds them steady. You try the move again, slowly. This time the piece reaches the opposite row without disturbing the board.{/n}
-"An extra thing to remember," she says. "Put the cloth away with them when we finish."
+"An extra thing to remember," {n}she says.{/n} "Put the cloth away with them when we finish."
 "I will."
 "And you may move that piece back. Fixing the table did not entitle you to take my corner."
 {n}Her finger is already on the occupied corner. You return your piece to its starting place.{/n}''', c('[Begin the game again.]', "play")),
@@ -307,13 +307,13 @@ s("the_unclaimed_hour", "When the tools are put away", '"Would you like company 
 {n}She moves the jar away from both cups and leans back against the wall.{/n}
 "Tell me something you enjoyed without having to convince yourself. No victory speeches. I have heard enough of those to know where the pauses go."''', c('[Tell her about a meal that lasted longer than expected because the conversation was good.]', "ordinary")),
     n("ordinary", "Gesmerha", '''{n}She listens to your account, asking what was served and who forgot to clear the dishes. When you describe the last scraps being divided, she asks who took the piece everybody had been politely avoiding.{/n}
-"That is the person I would like to meet," she says. "Someone willing to end an argument by eating it."
+"That is the person I would like to meet," {n}she says.{/n} "Someone willing to end an argument by eating it."
 "What would you do with an evening that nobody could interrupt?"
 "I would invite somebody to interrupt it. At a time of my choosing."
 "You have managed that much."
 "Yes. I am deciding what to do with the rest."
 {n}For a moment she falls silent. You hear movement farther down the path, a bucket set down, two people calling to each other. The sounds pass without becoming a demand on her.{/n}
-"I miss being asked foolish things," she says. "Not careless things. Foolish ones. Whether I would rather be a bird or a fish. Whether a song would sound better with all the verses in the wrong order. People think every conversation with me ought to repair something."
+"I miss being asked foolish things," {n}she says.{/n} "Not careless things. Foolish ones. Whether I would rather be a bird or a fish. Whether a song would sound better with all the verses in the wrong order. People think every conversation with me ought to repair something."
 "Bird or fish?"
 "Bird. I do not trust water enough to live in it. You?"''',
       c('"Bird. We could argue about where to land."', "bird"),
@@ -330,11 +330,11 @@ s("the_unclaimed_hour", "When the tools are put away", '"Would you like company 
 "You have made the river sound worse than a council meeting."
 "I have attended some very bad meetings. It is an informed comparison."
 {n}She shifts a little closer, her shoulder almost touching yours. You can smell the clean wood dust caught in her sleeve beneath the smoke from the cups.{/n}
-"Stay on land," she says. "You have only just learned the rules of my game. I do not want to start again with somebody else."
+"Stay on land," {n}she says.{/n} "You have only just learned the rules of my game. I do not want to start again with somebody else."
 {n}She does not follow it with a joke.{/n}''', c('[Stay beside her.]', "ask")),
     n("ask", "Gesmerha", '''"There is something I should ask while neither of us is pretending to work. Why do you keep coming back?"
 {n}She turns her face toward your voice. The old scars are visible in the sheltered light. Her expression is attentive, a little wary, and more interested than she intends to disguise.{/n}
-"I like your company," you say.
+"I like your company," {n}you say.{/n}
 "That is a pleasant answer. It has room to hide several others."
 {n}Her hand rests on the seat between you. She has not reached for yours.{/n}
 "I find myself listening for your arrival. Sometimes I am annoyed when somebody else's boots make the right sound. I would rather know whether I am being foolish before I begin resenting innocent footwear."
@@ -362,14 +362,14 @@ s("the_unclaimed_hour", "When the tools are put away", '"Would you like company 
 "Would you prefer I left?"
 "I would prefer you told me why defending that outer row pleased you so much. I am still deciding whether to forgive you."
 {n}You defend your tactics. She considers your argument and rejects your best excuse. By the time the cups are empty enough to abandon, the conversation has found its old ease, though you both leave a few subjects alone.{/n}
-"Come back when the wind drops," she says as you rise. "I have something to show you. A friend is permitted to be impressed."''', c('"I will come as your friend."', flags=("gesmerha.hour_kept", "gesmerha.friendship"))),
+"Come back when the wind drops," {n}she says as you rise.{/n} "I have something to show you. A friend is permitted to be impressed."''', c('"I will come as your friend."', flags=("gesmerha.hour_kept", "gesmerha.friendship"))),
 ], requires=("gesmerha.game_kept",))
 
 s("against_the_current", "A boat for no customer", '"You had something to show me."', [
     n("start", "Gesmerha", '''{n}A little wooden boat rests in Gesmerha's palm. Its hull is no longer than your finger, and a narrow shaving curls above it in place of a sail.{/n}
 "From the offcuts. I was meant to be testing a tool. Then I wanted to see whether it would float."
 {n}A shallow basin stands beside the bench. She asks you to set it level, then places the boat on the water. It leans so far to one side that the sail touches the surface.{/n}
-"You are allowed to laugh," she says. "I know what it is doing."
+"You are allowed to laugh," {n}she says.{/n} "I know what it is doing."
 "How?"
 "The sail grows wet when I lift it. There are ways to learn what a boat has done besides watching it."
 {n}She retrieves it, feels the wet shaving, and rests the hull in her palm again.{/n}
@@ -421,7 +421,7 @@ s("against_the_current", "A boat for no customer", '"You had something to show m
 "Were they genuine questions?"
 "Entirely. I contain more than one thought. Occasionally they interfere with each other."
 {n}You stay close until she leans back, comfortable enough to ask you to move the basin before somebody catches it with a foot. The little boat remains on its cloth, drying in the air.{/n}
-"Next time," she says, "come with a story that has nothing to do with me. I want to find out who visits all these other places and then comes here."''', c('"I will bring one worth your afternoon."', flags=("gesmerha.opening_kept", "gesmerha.first_kiss"))),
+"Next time," {n}she says,{/n} "come with a story that has nothing to do with me. I want to find out who visits all these other places and then comes here."''', c('"I will bring one worth your afternoon."', flags=("gesmerha.opening_kept", "gesmerha.first_kiss"))),
     n("hold", "Gesmerha", '''"Then sit nearer. Your cloak is doing most of the holding from there."
 {n}She leans into your arm, adjusting until the seam of your sleeve no longer presses against her cheek. One hand settles on your wrist.{/n}
 "That is better."
@@ -436,7 +436,7 @@ s("against_the_current", "A boat for no customer", '"You had something to show m
 "And if I choose badly?"
 "Then I shall ask questions until we reach the interesting part."
 {n}She leaves room beside her while you put the basin away. When you return to the seat, she begins an account of a carving she once disliked so much that she turned it upside down and began again. She refuses to tell you what it originally depicted.{/n}
-"Another afternoon," she says. "I have to keep something back."''', c('"Another afternoon, without hurrying it."', flags=("gesmerha.opening_kept",))),
+"Another afternoon," {n}she says.{/n} "I have to keep something back."''', c('"Another afternoon, without hurrying it."', flags=("gesmerha.opening_kept",))),
     n("friend", "Gesmerha", '''"You have been good company. I wanted to say so, without you wondering whether I was asking you the other thing again."
 "You have been good company too."
 "Even over the drink?"

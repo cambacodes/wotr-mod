@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- eng7-f5: offline production policy tests, no mod build or game launch. Use system-temp output paths. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType><TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems><DefineConstants>NATIVE_GAME_POLICY</DefineConstants>
+    <GameDir Condition="'$(GameDir)' == ''">/wrath/</GameDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="NativeCuePolicyInventoryTests.cs" /><Compile Include="NativeCuePolicyInventoryProgram.cs" />
+    <Compile Include="../src/Story.cs" /><Compile Include="../src/NativeEpilogueEdit.cs" />
+    <Compile Include="../src/ParentEndingGuard.cs" /><Compile Include="../src/NativeQ3Recovery.cs" />
+    <Reference Include="$(GameDir)Wrath_Data/Managed/*.dll" Exclude="$(GameDir)Wrath_Data/Managed/System*.dll;$(GameDir)Wrath_Data/Managed/mscorlib.dll;$(GameDir)Wrath_Data/Managed/netstandard.dll" />
+  </ItemGroup>
+</Project>

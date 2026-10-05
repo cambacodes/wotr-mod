@@ -314,14 +314,14 @@ SCENES.append(scene(SKY, "The sky, exactly", "Nurah", 4, "", [
     Chapters=[4], Remote=True, Kind="letter"))
 
 SKY_PARAGRAPHS = (
-    p("The chapter on the Abyss was the only one in the book she had not seen for herself. She printed the Commander's page "
-      "as it came, ugly and exact, and wrote in the preface that she had never in her life been so jealous of a paragraph.",
+    p("{n}The chapter on the Abyss was the only one in the book she had not seen for herself. She printed the Commander's page "
+      "as it came, ugly and exact, and wrote in the preface that she had never in her life been so jealous of a paragraph.{/n}",
       requires=(SKY + "_plain",)),
-    p("In the chapter on the Abyss she struck out every adjective the Commander had sent her and printed what was left, with "
-      "a footnote: \"The Commander thinks the Abyss is beautiful. The Commander should be watched.\"",
+    p("{n}In the chapter on the Abyss she struck out every adjective the Commander had sent her and printed what was left, with "
+      "a footnote:{/n} \"The Commander thinks the Abyss is beautiful. The Commander should be watched.\"",
       requires=(SKY + "_pretty",)),
-    p("The chapter on the Abyss she wrote from the archive's three volumes and her own corrections. A footnote explained "
-      "that her eyewitness had been given a blank page, and had returned it in perfect condition.", requires=(SKY + "_blank",)),
+    p("{n}The chapter on the Abyss she wrote from the archive's three volumes and her own corrections. A footnote explained "
+      "that her eyewitness had been given a blank page, and had returned it in perfect condition.{/n}", requires=(SKY + "_blank",)),
 )
 
 

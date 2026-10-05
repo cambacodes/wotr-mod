@@ -148,7 +148,7 @@ GREETING = ("{n}Behind the spice trader's awning a woman in a scholar's grey coa
 PRESENCES = {
     # A spawned copy of her Chapter 1 unit behind the exotic trader's awning in the market (build sheet): 5 m from Aranka's
     # copy, which stands in front of the same trader. Never at Fye's bar, the yard or the smith.
-    PRESENCE: dict(Unit=COPY_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="behind", Distance=2.5),
+    PRESENCE: dict(Unit=COPY_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=EXOTIC, Side="behind", Distance=3.5),
                    Requires=["trickster.ever", VISITOR], Forbids=[CLOSED, FAILED], MinChapter=3, MaxChapter=5,
                    AnswerLists=[], Dialog="hub", Greeting=GREETING),
     # If the trader's stall is not in the capital: the jeweller's arcade, right of the jeweller at 2.5 m (at least 3.2 m from
@@ -289,7 +289,7 @@ SCENES.append(scene(P + "taken.riddle", "A riddle only she can answer", "Nenio",
 {n}The kitsune has heard the crack too. Of course she has.{/n}''',
          c("Continue", "tangled_her")),
      nen("tangled_her", '''"The riddle has two answers. The anomaly. The Faceless Sphinx." {n}The faintest crease between her brows, gone at once.{/n} "A riddle with two answers is a question pretending to be a riddle. The anomaly does not answer questions."''',
-         c('[Lore (Religion)] Rebuild the last line on the Sphinx\'s own inscription at the Ruins: "Tear my mask off and let it fall at my feet." Only one of them ever did.',
+         c('[Lore (Religion)] {n}Rebuild the last line on the Sphinx\'s own inscription at the Ruins:{/n} "Tear my mask off and let it fall at my feet." {n}Only one of them ever did.{/n}',
            check=dict(Skill="SkillLoreReligion", DC=24, Success="rebuilt", Failure="lost")),
          c("[Let it go.]", flags=(RIDDLE_DECLINED,))),
      nar("rebuilt", '''{n}You take the last line apart and put it back together out of the statue's own words. The Sphinx wears her mask and would never let it fall. Only one creature in this place ever tore hers off, and took a name, and began a hundred volumes under it, of which one exists.{/n}
@@ -726,7 +726,7 @@ visit(P + "night", "Night one", [
 {n}"Thirty-four," she says, and her voice has gone somewhere it has not been before. "Thirty... Thirty-five..."{/n}''',
         c("Continue", "lose")),
     nen("lose", '''{n}She kisses you in the middle of a number. Not the careful single kiss of an experiment: hungry and clumsy and completely unscientific, her free hand in your hair, her body pressed the whole length of yours, pushing you back onto the blanket among her fallen notes.{/n}
-"I have lost the count," she says against your throat, astonished. "I have never lost a count. Never." {n}Her breath is ragged, and she laughs at it, and does not try to steady it.{/n} "I do not care. Write that down. No. Do not write anything down."''',
+"I have lost the count," {n}she says against your throat, astonished.{/n} "I have never lost a count. Never." {n}Her breath is ragged, and she laughs at it, and does not try to steady it.{/n} "I do not care. Write that down. No. Do not write anything down."''',
         c("Continue", "watch")),
     nar("watch", '''{n}She opens her hand. The stopwatch falls onto the blanket, still ticking, and neither of you reaches for it. She is over you, her hair falling around both your faces like a curtain around a lamp, her knees either side of your hips, pulling the last of your clothes away with more determination than skill, and she looks down at you the way she looks at a ruin nobody has catalogued: as if everything in it were about to be hers.{/n}
 {n}"Night one," she says. "Beginning now."{/n}''',
@@ -902,6 +902,23 @@ def integrate(payload):
     if "nenio" in revivals and revivals["nenio"] != REVIVALS["nenio"]:
         raise ValueError("Conflicting revival: nenio")
     revivals.update({k: dict(v) for k, v in REVIVALS.items()})
+    # eng7-f3: authored research visit, not companion recruitment or a romance window.
+    # ThresholdOutdoor (10c4b0e2...) and the camp's Arsinoe anchor are native:
+    # World/Areas/Act_6_Threshold/ThresholdOutdoor/ThresholdOutdoor.jbp;
+    # World/Encounters/ThresholdOutdoor/ConditionsHolders/Arsinoe_Camp_Conditions01/02.jbp.
+    # A returned scholar follows the impossible shadow to the siege camp to measure it.
+    # Only Nocticula's existing earned reaction is attached; the Drezen windows stay intact.
+    reaction_id = "nocticula.trickster.reaction.nenio"
+    reaction_scene = next(s for s in payload["Scenes"] if s["Id"] == reaction_id)
+    payload["Presences"]["nenio.presence.threshold"] = dict(
+        Unit=COPY_UNIT, Area="10c4b0e2af186ba46ab4d238d00a40a8", Mode="spawn-copy",
+        At=dict(NearUnit="a609ed9b2205d034bb3bb04d2a255681", Side="right", Distance=2.5),
+        Requires=list(dict.fromkeys(("trickster.ever", VISITOR, RETURNED, *reaction_scene["Requires"]))),
+        Forbids=[CLOSED, DISSOLVED, reaction_id, "sacrifice"], MinChapter=6, MaxChapter=6,
+        AnswerLists=[], Dialog="hub", ReactionScenes=[reaction_id],
+        Greeting=('{n}Nenio has wedged her folio beneath a stone beside the camp stores. The wind off Threshold '
+                  'keeps lifting its pages.{/n} "The fortifications can wait. I came to measure the Wound. Stand still."'))
+    # end eng7-f3
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

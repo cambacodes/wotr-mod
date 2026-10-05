@@ -1,13 +1,13 @@
 """eng7-l09: order, nesting, exact inline spans, drafts and action controls."""
 import unittest
+import json
+from pathlib import Path
 from tools import text_structure_lint as lint
 
 
 class TextStructureTests(unittest.TestCase):
     def test_all_mapped_shipped_spans(self):
         import expansion
-        import json
-        from pathlib import Path
         story = expansion.make_expansion()
         rows = lint.check(story)
         self.assertFalse(rows["hard"], rows["hard"])
@@ -25,6 +25,7 @@ class TextStructureTests(unittest.TestCase):
                 # The repaired shipped text must pass; restoring the orphan must fail.
                 self.assertTrue(any(r[0] == "orphan-narration-closer"
                                     for r in lint.spans("{/n}" + text)[0]), finding["id"])
+        self.assertEqual(rows, {"hard": [], "review": []})
     def test_order_and_nesting(self):
         for text in ('{/n}before{n}after', '{n}one{n}two{/n}{/n}', '{n}open', 'orphan{/n}'):
             self.assertTrue(lint.spans(text)[0], text)
@@ -39,6 +40,21 @@ class TextStructureTests(unittest.TestCase):
         hard, review = lint.spans(text, "X")
         self.assertFalse(hard)
         self.assertEqual([text[a:b] for _, a, b in review], ['She shuts the door.', 'Her hand shakes.'])
+
+    # eng7-f2: exact inline spans must never include intervening speech.
+    def test_multiple_spoken_lines_and_continuation_paragraphs(self):
+        text = '"Stay." She waits. "Here." She smiles.'
+        hard, review = lint.spans(text, "X")
+        self.assertFalse(hard)
+        self.assertEqual([text[a:b] for _, a, b in review], ['She waits.', 'She smiles.'])
+        self.assertEqual(lint.spans('"First paragraph.\n"Second paragraph."', "X"), ([], []))
+
+    def test_ui_and_npc_surfaces_still_validate_tags(self):
+        self.assertEqual(lint.spans('A promise under an open sky', kind='ui'), ([], []))
+        self.assertTrue(lint.spans('She smiles.', 'Seelah')[1])
+        self.assertTrue(lint.spans('Label{/n}', kind='ui')[0])
+        self.assertTrue(lint.spans('Speech{/n}', 'Seelah')[0])
+    # end eng7-f2
 
     def test_owlcat_controls(self):
         for text, kind in (('"Stay," {n}she says.{/n} "Here."', "node"),

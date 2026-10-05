@@ -17,7 +17,7 @@ def integrate(payload):
 "I wanted you asleep. Wanted the paper somewhere else. Managed both."
 {n}Irabeth smiles, then looks at you.{/n}
 "We are still learning which things need an argument and which need a little room on the bedside table. I would rather you knew that than thought we had settled everything before inviting you in."
-"And you get to tell us when we're crowding your side of it," Anevia adds. "We can be very considerate about a question we haven't let you answer yet."'''
+"And you get to tell us when we're crowding your side of it," {n}Anevia adds.{/n} "We can be very considerate about a question we haven't let you answer yet."'''
     pages["back"]["Text"] = '''"I miss how easy some of it felt, too."
 {n}Anevia leans toward you.{/n}
 "Not the hiding. Before that, when seeing you was a good part of the day and I hadn't started making excuses for it. I'd like more of the good part."
@@ -31,18 +31,18 @@ def integrate(payload):
     reunion["Nodes"].append(n("before_the_abyss", "Irabeth", '''"You remembered."
 {n}Irabeth looks at Anevia, who gives her a small nod.{/n}
 "There were evenings when I wanted to tell you something and reached for paper before remembering how little chance it had of finding you. Eventually I told Anevia some of it instead."
-"Some," Anevia says. "She saved a complaint about a recruit's boots for your personal attention."
+"Some," {n}Anevia says.{/n} "She saved a complaint about a recruit's boots for your personal attention."
 "It was an impressive complaint."
 {n}Anevia laughs, then reaches across the table for your hand.{/n}
 "We missed you. We also had things to say to each other that weren't about waiting. I don't want to lose those now you're here."
-"Nor do I," Irabeth says. "And I want to hear what you have to tell us, when you are ready. We need not fit all of it into this evening."''',
+"Nor do I," {n}Irabeth says.{/n} "And I want to hear what you have to tell us, when you are ready. We need not fit all of it into this evening."''',
         c('"Then begin with something from your days here."', "now")))
 
     night = books["shared_night"]
     pages = {node["Id"]: node for node in night["Nodes"]}
     pages["close"]["Text"] = '''{n}Anevia says something irreverent against Irabeth's cheek. Irabeth laughs and draws her closer, then turns toward you without letting her wife go.{/n}
 {n}You kiss her. Anevia's hand settles warmly against your back. When you shift to make room for her, she touches your face and waits until you meet her eyes before leaning in.{/n}
-"Still all right?" Irabeth asks.
+"Still all right?" {n}Irabeth asks.{/n}
 {n}You answer her. Anevia answers too, with a pleased little smile which becomes another kiss. The lamp is turned low, and the rest of the evening passes beyond the reach of reports and explanations.{/n}'''
     for sid, flag, text in (
         ("three_small_journeys", "three_small_journeys.night", '"I have been thinking about the night we stayed together after looking at the map."'),
@@ -53,8 +53,8 @@ def integrate(payload):
         pages["near"]["Choices"].append(c(text, "familiar", requires=(sid, flag)))
     night["Nodes"].append(n("familiar", "Anevia", '''"So have I. Though I was trying to concentrate on this evening."
 {n}Anevia's teasing softens as Irabeth takes her hand. Her wife looks at you with a smile you have seen across a pillow before.{/n}
-"I liked waking up and finding you still there," Irabeth says. "I would like that again."
-"After we've enjoyed the bit before sleeping," Anevia adds.
+"I liked waking up and finding you still there," {n}Irabeth says.{/n} "I would like that again."
+"After we've enjoyed the bit before sleeping," {n}Anevia adds.{/n}
 {n}Irabeth laughs and draws her wife close enough to kiss her. Anevia answers without hurrying, then reaches toward you. There is pleasure in recognizing the invitation and being wanted all over again.{/n}''',
         c('[Join them for another night together.]', "close")))
 
@@ -75,11 +75,11 @@ def integrate_morale(payload):
     reunion["Nodes"].append(n("morale", "Irabeth", '''"I still have them."
 {n}Irabeth turns her cup once, aligning its handle with the edge of the table.{/n}
 "A report arrives and I know what I would have told another officer to do. Then I sit there looking for the mistake I must have missed. Sometimes I find one. That does not help me trust the next answer."
-"She still gives it," Anevia says.
+"She still gives it," {n}Anevia says.{/n}
 "Yes. I do."
 {n}Irabeth looks up before her wife can add anything.{/n}
 "I would like to come to supper without having to give you a better account of myself first. I may have very little to say."
-"I can provide enough conversation for three," Anevia offers.
+"I can provide enough conversation for three," {n}Anevia offers.{/n}
 "That was not in doubt."
 {n}The reply brings a brief smile. Irabeth leaves the cup where it is.{/n}
 "And I want to hear about your day. Even a bad one. I am tired of everyone deciding what news I can bear."''',
@@ -103,7 +103,7 @@ def integrate_morale(payload):
             c('[Respect her request and leave the subject.]', "scar_quiet")),
         n("scar_quiet", "Narrator", '''{n}Irabeth nods once. She does not touch her face or offer an explanation.{/n}
 {n}Anevia draws the lamp away from the edge of the table. For a while, its small scraping sound is the only answer she gives you.{/n}
-"I'd like some air," she says at last.
+"I'd like some air," {n}she says at last.{/n}
 {n}Irabeth rises with her. At the door she pauses, one hand resting on the latch.{/n}
 "We will speak another evening."
 {n}She leaves with her wife. The cups remain on the table.{/n}''',
@@ -124,12 +124,12 @@ def integrate_morale(payload):
 "You need not agree. Neither of you. But I was there, and she did not come back."
 {n}She pulls the unused saucer toward her. There is a chip in its rim; she turns it out of sight.{/n}
 "I have begun three letters to people who will want to know what happened. I keep finding a way to write about the battle without saying that I came home."
-"Who are they for?" Anevia asks.
+"Who are they for?" {n}Anevia asks.{/n}
 {n}Irabeth gives her the names. This time her wife listens without trying to finish the answer.{/n}''',
             c('"We can sit with you while you write, if you want."', "queen_letters"),
             c('"You need not finish them tonight. I would still like to hear what you want next."', "future")),
         n("queen_letters", "Narrator", '''{n}Irabeth fetches the unfinished pages. Anevia clears a place beside the lamp and sits down again.{/n}
-"I want to write it myself," Irabeth says.
+"I want to write it myself," {n}Irabeth says.{/n}
 {n}She reads the first line under her breath. Crosses out a word. Leaves the next sentence alone.{/n}
 {n}Anevia catches your eye when you move to speak. You let the silence stand. After a while Irabeth asks for fresh ink, and her wife goes to find it.{/n}
 {n}You remain beside her. By the time Anevia returns, Irabeth has reached the sentence she could not write before. She does not read it aloud.{/n}''',
@@ -149,7 +149,7 @@ def integrate_morale(payload):
     watch["Nodes"].append(n("life_broken", "Irabeth", '''"I have kept the list. The places we spoke about."
 {n}Irabeth takes a folded sheet from her pocket. One corner has worn through.{/n}
 "There are days when I think I should hand everything over to someone better and be grateful if they let me go. Then I look at this and find myself planning the road as though I had already earned the journey."
-"You can plan a road without putting yourself on trial," Anevia says.
+"You can plan a road without putting yourself on trial," {n}Anevia says.{/n}
 {n}Irabeth presses the fold flat with her thumb. She does not answer at once.{/n}
 "I know what you mean. I cannot always believe it."
 {n}Anevia sits closer. She reads the first place on the sheet, then the second.{/n}
@@ -170,7 +170,7 @@ def integrate_morale(payload):
     watch["Nodes"].extend([
         n("scar_unsettled", "Anevia", '''"Good."
 {n}Anevia's answer is short. Irabeth looks between you.{/n}
-"I don't want to spend tonight on it," she says.
+"I don't want to spend tonight on it," {n}she says.{/n}
 "Neither do I. But I don't want a grand farewell to do the arguing for us."
 {n}Anevia reaches for her wife's hand. When she looks back at you, the anger has not vanished from her face.{/n}
 "I want us to come back. Then we'll still have things to say."

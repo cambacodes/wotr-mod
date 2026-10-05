@@ -2072,7 +2072,10 @@ namespace Tirabade
                     || p.ContactWindows.Select(w => w.Flag).Distinct().Count() != p.ContactWindows.Length
                     || p.Requires.Concat(p.Forbids).Concat(p.RequiresAnyGroups.SelectMany(g => g)).Any(flag => !Known(flag)) || p.Requires.Intersect(p.Forbids).Any()
                     || p.AnswerLists.Any(id => !GuidOk(id))
-                    || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key))
+                    // eng7-f3: a reviewed reaction-only visitor is a valid hub too.
+                    || p.Dialog != null && (p.Dialog != "hub" || !story.Scenes.Any(s => s.InteractionHub == pair.Key)
+                        && p.ReactionScenes.Length == 0)
+                    // end eng7-f3
                     || p.Greeting != null && (p.Dialog == null || string.IsNullOrWhiteSpace(p.Greeting))
                     || story.Presences.Any(other => other.Key != pair.Key && other.Value?.Unit == p.Unit && other.Value.Area == p.Area
                         && !PresencesExclusive(p, other.Value)))

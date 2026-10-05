@@ -18,7 +18,7 @@ s("three_choose_days", "Before we call it the last evening",
     n("start", "Irabeth", '''"We can. But I do not want to mistake making a promise for having lived it."
 {n}Anevia looks at her wife, then toward you.{/n}
 "We've still got things we meant to do together. Some are small. They're the ones that get put off because nobody's likely to die if we miss them. Then somehow we never do them."
-"I want those days," Irabeth says. "I also know we may not have all the time we want. I would rather hear you say that than sit here waiting for an evening you cannot give us."
+"I want those days," {n}Irabeth says.{/n} "I also know we may not have all the time we want. I would rather hear you say that than sit here waiting for an evening you cannot give us."
 {n}She reaches for Anevia's hand. Her wife takes it without turning the question into a joke.{/n}''',
       c('"Let us make time for the days we planned before our final goodbyes."', "days"),
       c('"I cannot promise all those days before the fighting. I want to speak about leaving now."', "short"),
@@ -26,7 +26,7 @@ s("three_choose_days", "Before we call it the last evening",
     n("days", "Anevia", '''"Then come and find us. We can pick up where we left off."
 {n}Irabeth nods.{/n}
 "The final watch can wait while there is still time to live here. We need not spend every evening pretending it is the last."
-"And we don't have to turn every evening into a great seduction," Anevia adds. "Though I reserve the right to try occasionally."
+"And we don't have to turn every evening into a great seduction," {n}Anevia adds.{/n} "Though I reserve the right to try occasionally."
 {n}Her wife smiles at that, then looks back at you.{/n}
 "When we have kept those appointments, I would like to talk again. About what we have actually found together."''',
       c('[Continue the shared Drezen conversations; return when you are ready.]', abort=True)),
@@ -43,15 +43,15 @@ s("three_more_days", "After the words already said",
   '"We have spoken our goodbyes, but we are still here. May we make more time together?"', [
     n("start", "Anevia", '''"I haven't forgotten what we said."
 {n}Anevia looks toward Irabeth, who closes the paper she was reading.{/n}
-"Neither have I," Irabeth says. "I also haven't left. If we have time for another evening, I would like to use it."
-"There are things we never got round to," Anevia tells you. "We can pick up the next one. Nobody needs to tear up a farewell speech first."
+"Neither have I," {n}Irabeth says.{/n} "I also haven't left. If we have time for another evening, I would like to use it."
+"There are things we never got round to," {n}Anevia tells you.{/n} "We can pick up the next one. Nobody needs to tear up a farewell speech first."
 {n}Irabeth lays the folded paper aside. Anevia leans against her chair, watching you.{/n}''',
       c('"I would like those evenings with you both."', "yes"),
       c('[Keep the earlier goodbye for now. You can ask again later.]', abort=True)),
     n("yes", "Irabeth", '''"Then come when you can stay. We will begin with the next thing we meant to do."
 {n}Anevia puts her arm around her wife's waist.{/n}
 "I might complain that you kept us waiting. Don't let that put you off."
-"You may also be pleased," Irabeth says.
+"You may also be pleased," {n}Irabeth says.{/n}
 "Very. I thought that was obvious."
 {n}She looks at you, and the smile she gives you leaves little doubt.{/n}''',
       c('[Resume unfinished shared Drezen visits, keeping earlier choices and goodbyes.]', flags=("three_progression.catchup_requested",))),
@@ -63,7 +63,7 @@ s("three_kept_days", "The days behind the promise",
     n("start", "Irabeth", '''"More of it. That is my first answer."
 {n}Irabeth has left her blue coat open. Anevia straightens the collar as she passes, then settles beside her wife.{/n}
 "I liked choosing an evening for us. I liked seeing you arrive because you wanted to be there. I don't want that to become something I only did once."
-"She has begun collecting ideas," Anevia says. "Some alarming ones."
+"She has begun collecting ideas," {n}Anevia says.{/n} "Some alarming ones."
 "You suggested half of them."
 "I did. I have excellent taste."
 {n}Her grin softens when Irabeth takes her hand.{/n}''',
@@ -72,17 +72,17 @@ s("three_kept_days", "The days behind the promise",
     n("unfinished", "Anevia", '''"I still look for Vald when I'm out. Sometimes I catch myself doing it on the way to meet you."
 {n}She shrugs, irritated by the habit.{/n}
 "We didn't finish everything. Ista and Wenna have their own work to do. Malven didn't turn honest because we made him answer a few questions."
-"And we cannot make our time together wait for him to become honest," Irabeth says.
+"And we cannot make our time together wait for him to become honest," {n}Irabeth says.{/n}
 "We'd die of old age."
 {n}Anevia looks toward her wife, then at you.{/n}
 "I liked having you with me while we tried. I liked coming home afterward. That's what I want more of. You in the middle of a day, instead of only at the beginning of a grand promise."''', c('[Ask what Irabeth wants from those days.]', "beth")),
     n("beth", "Irabeth", '''"I want to choose the next outing. Both of you have had ample opportunity to observe my dancing. I intend to find something at which you are equally vulnerable."
-"A threat," Anevia says, pleased.
+"A threat," {n}Anevia says, pleased.{/n}
 "An invitation. You may decline."
 "And let you think I'm frightened?"
 {n}Irabeth's smile broadens. She reaches past her wife to straighten your collar, though it needs no attention.{/n}
 "I want you to come looking for me, too. I like seeing you forget what you meant to say."
-"She practises that look," Anevia tells you.
+"She practises that look," {n}Anevia tells you.{/n}
 "With considerable success."
 {n}Irabeth leaves her fingers resting against your collar for another moment before sitting back.{/n}
 "Find us an evening. I will make the arrangements."

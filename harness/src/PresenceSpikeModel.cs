@@ -32,9 +32,17 @@ namespace RRT.TestHarness
         /// Commander, as an E12b At.Locator presence would (engine queue 9d: Devarra's Huge dragon at TerendelevUndeadLocator).
         /// The spike then also checks the spot: nearest walkable node, drift after the copy settles, and room for its body.</summary>
         public string? Locator;
+        /// <summary>Inspect and click this production GuestPresence instead of spawning quiet copies.</summary>
+        public string? Key;
+        /// <summary>Alternative to Locator, as an E12b At.NearUnit presence: a native unit blueprint guid standing once in the area, with Side (left|right|front|behind) and AnchorDistance.</summary>
+        public string? NearUnit;
+        public string Side = "left";
+        public float AnchorDistance = 2.5f;
         /// <summary>Optional x,y,z mesh query in the saved area; replaces the quiet-copy spike and never spawns units.</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? Probe;
         public float ProbeRadius = 10f;
+        /// <summary>Probe mode only: enter the spike's enter point (Drezen capital) first, like the copy spike does.</summary>
+        public bool ProbeEnter;
         [JsonIgnore] public float[]? ProbeCoordinates;
         /// <summary>Largest accepted gap (m) between the locator and the nearest walkable node, and drift of the settled copy.</summary>
         public float MaxWalkableGap = 1.5f;
@@ -45,6 +53,9 @@ namespace RRT.TestHarness
 
         public void Normalize()
         {
+            Key = string.IsNullOrWhiteSpace(Key) ? null : Key!.Trim();
+            if (Key != null && (Probe != null || Locator != null || NearUnit != null))
+                throw new FormatException("presence.key cannot be combined with copy/probe overrides.");
             ProbeCoordinates = null;
             if (Probe != null)
             {
@@ -62,7 +73,7 @@ namespace RRT.TestHarness
             Locator = string.IsNullOrWhiteSpace(Locator) ? null : Locator!.Trim().ToLowerInvariant();
             if (MaxWalkableGap <= 0f) MaxWalkableGap = 1.5f;
             Units = (Units ?? new List<string>()).Where(u => !string.IsNullOrWhiteSpace(u)).Select(ResidenceSpikePlan.Norm).Distinct().ToList();
-            if (Units.Count == 0 && ProbeCoordinates == null) throw new FormatException("presence.units needs at least one unit blueprint guid.");
+            if (Units.Count == 0 && ProbeCoordinates == null && Key == null) throw new FormatException("presence.units needs at least one unit blueprint guid.");
             if (Distance < 1f) Distance = 1f;
             if (ObserveSeconds < 1) ObserveSeconds = 1;
             if (EntrySeconds < 10) EntrySeconds = 10;
@@ -109,6 +120,9 @@ namespace RRT.TestHarness
         /// <summary>Dialogs that started while the copies were watched (none should: the harness opens none).</summary>
         public List<string> Dialogs = new List<string>();
         public List<string> Notes = new List<string>();
+        public ProductionPresenceProbe? Production;
+        public ProductionPresenceProbe? ProductionAfterReload;
+        public bool ProductionReloadRequired;
         public string? Error;
         public string? Locator;            // the plan's locator, when set
         public string? LocatorError;       // the locator did not resolve in the loaded area
@@ -136,7 +150,17 @@ namespace RRT.TestHarness
                 if (Probe.Error != null) Findings.Add("mesh probe: " + Probe.Error);
                 if (Probe.Points.Count == 0 && Probe.Error == null) Findings.Add("mesh probe: no walkable points within " + Probe.Radius + " m");
             }
-            if (Probe == null && Error == null && EntryError == null && NotIdle == null && spawned.Count == 0)
+            if (Production != null) Findings.AddRange(Production.Failures());
+            if (ProductionReloadRequired)
+            {
+                if (ProductionAfterReload == null) Findings.Add("production presence was not checked after reload");
+                else
+                {
+                    Findings.AddRange(ProductionAfterReload.Failures().Select(f => "after reload: " + f));
+                    if (ProductionAfterReload.ActorId != Production?.ActorId) Findings.Add("production actor identity changed after reload");
+                }
+            }
+            if (Production == null && Probe == null && Error == null && EntryError == null && NotIdle == null && spawned.Count == 0)
                 Findings.Add("no copy was spawned" + (Skipped.Count > 0 ? "; skipped " + string.Join("; ", Skipped) : "")
                     + string.Concat(Copies.Where(c => c.EngineStatus != null).Select(c => "; " + c.UnitName + ": " + c.EngineStatus)));
             foreach (var c in Copies)

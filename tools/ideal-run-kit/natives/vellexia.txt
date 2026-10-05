@@ -1,0 +1,6 @@
+# Vellexia: registered route, state farewell_or_dismissed (alive, native third date ended peacefully).
+vellexia.greeted:4           # Ch4 Higher City: enter Vellexia's manor, Velexia_Main/Cue_0001 "A new guest has arrived?" (SeenCue 3850d7ab...)
+# The eight manor visits must all be played BEFORE the Battlebliss invitation (SeenCue 746af280..., vellexia.arena_invited);
+# arena_invited is therefore not forced here (the sim would block the visits from the chapter start).
+vellexia.native_finished:5   # RaptureOfRupture completed (third date). Really late Ch4; entered at ch5 because the first six visits Forbid it.
+vellexia.dismissed_native:5  # Third date: Answer_0070 "Thank you for your time... Now I must go." -> Cue_0076 (really late Ch4)

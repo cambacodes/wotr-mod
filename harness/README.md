@@ -1,5 +1,100 @@
 # RRT in-game test harness (GLOBAL-20)
 
+<!-- BEGIN eng7-f5 -->
+## Native epilogue/afterlogue inventory (E-Q7-34)
+
+`-Spike NativeEpilogue` replaces normal scene driving with the live slide driver in
+`Probes/NativeEpilogueInventoryProbe.cs` and `ScenarioDriver.cs`. It opens the loaded native epilogue
+dialog (`ae58532c`) and Areelu afterlogue (`57e18f51`). Forced cases enter the actual loaded native
+sequence or owning cue/answer selection, including the parent mod's and RRT's registered additions.
+It does not create replacement slides or complete a campaign. The report includes the entry GUID,
+loaded authored sequences, RanEpilogue patch presence, native/replacement/authored/paragraph/suppression
+inventory, native eligibility, shown cues, image/action signatures, OnShow/OnStop dispatch, continuation,
+and book presentation (actual sprite and available authored portrait).
+
+The coordinator runs these commands **on Windows, from the repository root**, after integrating/building
+RRT and exporting the matching `development/Story.json`. Keep RanRomance and the intended RanEpilogue
+version installed. `-Build` builds the harness; the normal script backs up/restores the installed mods.
+Use an absolute path to a **copy of a free-roam save** with its required DLC available. A completed
+campaign is unnecessary for synthetic cases. These are visible game runs; do not interact with Wrath.
+
+```powershell
+$game = 'C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure'
+$save = 'D:\RRT-test-saves\Drezen-copy.zks'
+
+# Preflight only. Copies and launches nothing.
+.\harness\run-harness.ps1 -GameDir $game -Saves $save -Spike NativeEpilogue -Force -NoRoundTrip -DryRun
+
+# Full synthetic inventory: every authored epilogue page and every registered native variant,
+# plus off-Trickster, unpaid, closed, unreturned-sacrifice, degraded and native-ineligible controls.
+.\harness\run-harness.ps1 -GameDir $game -Build -Saves $save -Spike NativeEpilogue -Force -NoRoundTrip -TimeoutMinutes 360
+
+# E-Q7-34's seven routes, if the coordinator wants a smaller explicitly scoped run.
+.\harness\run-harness.ps1 -GameDir $game -Build -Saves $save -Spike NativeEpilogue -Force -NoRoundTrip -TimeoutMinutes 180 -SceneFilter @('anevia.','irabeth.','areelu.','arueshalae.','devarra.','galfrey.','kiana.')
+
+# Natural native/RRT selection: reads the save's actual history. Repeat on a real finale save for
+# campaign acceptance, and on an off-Trickster save to establish unchanged native fallthrough.
+.\harness\run-harness.ps1 -GameDir $game -Build -Saves $save -Spike NativeEpilogue -NoRoundTrip -TimeoutMinutes 45
+```
+
+`-NativeEpilogueCases <absolute-json-path>` replaces the embedded default
+`tests/native-cue-policy-fixtures/states.json`. `-SceneFilter` matches `ExpectedCandidate` scene IDs
+or prefixes in forced mode. `-MaxScenesPerSave N` is a diagnostic bound: truncation is a failed/incomplete
+report, never full acceptance. The mode uses a 1,000-answer limit per case and the existing step/global
+timeouts. `-Screenshots -ScreenshotsPerScene N` optionally captures bound book pages. Do not combine this
+mode with `-Inline`, `-Headless` or save round-trip; `-NoRoundTrip` is required.
+
+Custom files use schema 1 and the following shape (the example reads real saved state):
+
+```json
+{
+  "Schema": 1,
+  "Evidence": "coordinator finale-save expectations",
+  "Cases": [{
+    "Id": "saved/afterlogue", "UseSaveState": true,
+    "Dialog": "57e18f5158904030a84a772fb361ceb4",
+    "ExpectShown": [], "ExpectHidden": [], "AnswerPath": []
+  }]
+}
+```
+
+Without `-Force`, custom `UseSaveState` cases are run when supplied; otherwise the two full native
+dialogs run. `ExpectShown`/`ExpectHidden` take cue GUIDs or exact blueprint names. `AnswerPath` takes
+answer GUIDs or exact names for native choices lacking an engine Continue/Exit answer. A missing or
+unselectable scripted answer fails; the driver never invents a moral choice. With `-Force`, each case's
+`Chapter` and `Flags` are an explicit final RRT snapshot, and `NativeEligible` lists the target page's
+eligible original cues. `Target` names a registered native edit; `ExpectedCandidate` names its scene
+or an authored epilogue scene. Unrelated native page conditions remain those of the loaded save.
+
+The driver temporarily substitutes the snapshot and **underlying native checkers**, preserving RRT's
+original/replacement guards and real sequence ordering. It blocks RRT idle updates and game save writes
+while a case runs, restores dialog entries and Harmony patches in `finally`, and reloads the source save
+between cases and on leaving the mode. Native OnShow/OnStop actions execute in the disposable loaded
+world. No probe is registered in `expansion.py`, no game etudes are used to fabricate earned history,
+and no save is written by this mode.
+
+Read `harness/.runs/<stamp>/rrt-harness-report.json`: `Saves[*].NativeSlides` contains each case's
+`State`, `Evidence`, `Inventory`, `Observations`, `Findings`, `Warnings`, `Degraded`, and `Passed`.
+Missing originals/replacements, drifted presentation/actions/continuations, degraded relationships,
+native edit/suppression warnings, stuck/unscripted dialogs, truncated coverage and exceptions fail the
+normal harness summary (exit 1; infrastructure failures remain exit 2). A synthetic pass proves live
+execution for the supplied snapshot; it **does not prove that a campaign paid for that state**. Missing
+finale-save, RanEpilogue-version or earned-history evidence remains coordinator acceptance debt.
+
+Offline fixtures can be regenerated with `python tools/native_epilogue_inventory.py --story development/Story.json`.
+`tests/NativeCuePolicyFixtures.csproj` links the production cue-policy adapter against game assemblies,
+without building RRT, running the harness or launching Unity. On Windows:
+
+```powershell
+dotnet run --project tests/NativeCuePolicyFixtures.csproj -c Release -p:GameDir="$game\"
+```
+
+Its serialized archive fixtures reject the historical Cue_0461 policy after RanRomance's Aranka
+continuation is applied and accept the repaired contract; check both Tirabade non-Companions pages,
+kept/swapped images and continuation; and test refusal/fallthrough siblings. `RulesTests.csproj` and
+Python discovery also check the state inventory. Fixtures are authored test metadata, never player text.
+<!-- END eng7-f5 -->
+
 `RRTTestHarness` is a separate UnityModManager mod. It loads real saves in the real game, opens every
 RRT scene dialog, picks answers programmatically, and records what breaks. It needs no human input and
 no OCR: every observation comes from game objects, RRT internals read by reflection, and log hooks.
@@ -379,10 +474,13 @@ to stay in the loaded area; `units`, `distance`, `observeSeconds`, `entrySeconds
 To find coordinates when a locator is missing, use the mesh probe with a save already in the intended area:
 
 ```powershell
-./harness/run-harness.ps1 -Saves '<save in the intended Drezen cellar>' -Spike Presence -PresenceProbe "12.5,0,-8" -ProbeRadius 10 -NoRoundTrip
+./harness/run-harness.ps1 -Saves '<copy of a DrezenCapital save>' -Spike Presence -PresenceProbe "-24.63,40.13,57.17" -ProbeRadius 3 -NoRoundTrip
 ```
 
-The coordinates above are an example, not a verified cellar position.
+`-ProbeEnter` makes probe mode enter Drezen capital first (early Chapter 5 saves can sit in ReturnToDrezen; the native summit later returns to capital). Probe mode also writes every live unit (`unit <name> [guid] <name> at x,y,z`) and a per-height walkable-mesh summary (`band y~N nodes ...`) to `PresenceSpike.Notes`.
+`-PresenceNearUnit <unit guid> -PresenceSide left|right|front|behind -PresenceAnchorDistance m` places the copy as an E12b `At.NearUnit` presence would and runs the same mesh, drift and body-room checks as `-PresenceLocator`.
+
+The street point above was walkable in the cached live probe; cellar-door original-actor click and reload remain pending.
 Probe mode stays in the saved area, skips the automatic Drezen entry, and spawns no copies.
 Use three finite coordinates with a decimal point and commas between coordinates; the radius must be positive and finite, and defaults to 10 m.
 It cannot be combined with `-PresenceLocator` or `-PresenceUnits`.
@@ -425,3 +523,210 @@ under `residence` in the plan (`enterPoint`, `seat`, `pathTo`, `units`, `entrySe
 ```powershell
 ./harness/run-harness.ps1 -Build -Saves '<copy of Manual_339_Trickster_Ending_Act_5.zks>' -Spike Residence -Screenshots -NoRoundTrip -TimeoutMinutes 20
 ```
+
+## ENGINE F7: area truth and returned-state fixtures
+
+Chapter 5 has two Drezen phases. `ReturnToDrezen` (83a099db) is liberation; the native chain
+`GoddessesSummit -> LastPartOfDialog -> TpToCapital -> DrezenCapital_Enter` returns to
+`DrezenCapital` (25700157) in the same chapter. The merchants belong to capital, not the siege.
+See `tools/drezen_area_chapters.json` for pinned blueprint paths, hashes and field assertions.
+Chapter 3 uses capital. Chapter 4 is the Abyss; Chapter 6 starts at Threshold. A 3..5 presence
+window is conjunctive with its area guard and does not create a Chapter 4 capital visit.
+
+`-SetFlags` accepts comma-separated flags or a PowerShell string array. `-StartEtudes` accepts
+comma-separated BlueprintEtude GUIDs or an array. Both apply after each source-save load,
+before normal scene enumeration or a spike. Completed etudes are rejected rather than reset;
+all etudes resolve before mutation. Setup never runs on the temporary round-trip reload.
+The input save is unchanged; the harness deletes its own temporary round-trip save.
+
+`-PresenceKey` tests the actual production GuestPresence instead of creating a quiet copy.
+It waits for the actor, queries its target mesh/drift/body room, orders the Commander to walk
+within two metres, and calls the existing production PresenceClick hook. It records the hub
+opening, closes it, saves and reloads without fixture seeding, then repeats and compares the
+actor UniqueId. Results are in `PresenceSpike.Production`, `ProductionAfterReload`, and
+`RoundTrip`. `-NoRoundTrip` omits that proof and cannot satisfy the placement probe contract.
+`-PresenceEnterPoint` chooses the area entry explicitly; an empty string stays in the save area.
+With `-PresenceKey`, do not supply copy units, locators, NearUnit overrides or mesh-only probes.
+
+The commands below are **fixture tests**, not evidence that the run earned its returns.
+Use disposable copies of saves in the stated chapter and keep closed/dead/native-loss controls.
+The selected flags are one positive fixture; genuine return choices, costs and path gates stay
+in shipped content. If native state forbids the actor or an anchor is absent, report the failure.
+Also repeat in a naturally reached post-summit capital save and with the other earned guests
+present. Four-metre shared-anchor spacing is offline geometry, not walkability approval.
+
+Set these variables to copied saves; run from the repository root with the built harness:
+
+```powershell
+$S5 = 'C:\RRT-F7-saves\chapter5-copy.zks'
+$S3 = 'C:\RRT-F7-saves\chapter3-copy.zks'
+```
+
+### wenduag.cellar
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceProbe "-24.63,40.13,57.17" -ProbeRadius 3 -ProbeEnter -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -NoRoundTrip -Screenshots
+./harness/run-harness.ps1 -Saves $S5 -SceneFilter @('wenduag.trickster.echo.abyss.return') -Screenshots -SetFlags 'trickster.ever'
+```
+
+Street-level cellar **door**, never a basement-area teleport. The mesh-only command spawns no
+actor and proves no hub click. The normal command requires a real retained-original custody save
+and the named runtime destination fix; do not seed observational `return_available`/`valid` keys
+or a rescue flag to counterfeit that custody. `src/WenduagEcho.cs` uses the coordinator's
+street-door point; the existing custody and journey checks still govern arrival. Pending: original actor
+approach/click, the existing three-metre occupancy exclusion, and reload at the door.
+
+### wenduag.street
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'wenduag.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,wenduag.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### devarra.locator
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceUnits c4b5746d3d2511441ba18a894cecb328 -PresenceLocator d7aa4429-41bd-4d58-bb17-074863d847f7 -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -Screenshots -NoRoundTrip
+```
+
+Probe-only candidate; no exported Devarra GuestPresence exists. This checks copy geometry/body
+room, not route delivery. Pending: coordinator encounter click/approach/reload evidence.
+
+### galfrey.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### galfrey.presence.stall
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned,galfrey.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### galfrey.sergeant
+
+```powershell
+./harness/run-harness.ps1 -Saves $S3 -SceneFilter @('galfrey.trickster.ch3.standing_orders') -Screenshots
+```
+
+Remote-event inventory: no placed actor or position exists. Run from an earned eligible history;
+scene availability does not turn this into a presence or validate a historical fallback spot.
+
+### chadali.fallback
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -SceneFilter @('chadali.trickster.fought.lucky') -Screenshots
+```
+
+Remote-event inventory: no placed actor or position exists. Run from an earned eligible history;
+scene availability does not turn this into a presence or validate a historical fallback spot.
+
+### jerribeth.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,jerribeth.trickster.visit_due' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### aranka.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### aranka.presence.yard
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,aranka.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### targona.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,targona.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### camellia.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'camellia.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,camellia.trickster.primed,camellia.trickster.raised' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96,cf3639c5cf057034fa766dd5f421d2ed'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### arueshalae.presence.evil_drezen
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_drezen' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### arueshalae.presence.evil_awning
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.presence.evil_drezen.failed,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### mielarah.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### mielarah.presence.arcade
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall,mielarah.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### shamira.presence.awning
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,shamira.trickster.embodied,shamira.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### nenio.presence
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,nenio.trickster.cost.recreated' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### herrax.presence.rokhorn
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.
+
+### herrax.presence.rokhorn_stall
+
+```powershell
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,herrax.presence.rokhorn.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+Pending: production hub click, approach, body room and identical actor after reload.

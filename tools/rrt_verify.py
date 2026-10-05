@@ -34,6 +34,9 @@ sys.path.insert(0, str(MOD))
 from tools import player_text_lint, text_structure_lint, draft_contract_lint
 from tools import intimacy_contract_lint, memory_callback_lint, transaction_exit_lint
 # end eng7-l09
+# eng7-f2: existing editorial reviews stay visible; strict rejects new text.
+from tools import player_text_baseline
+# end eng7-f2
 SCRATCH = HERE / "scratch"
 
 MYTHIC = ["trickster", "angel", "demon", "lich", "aeon", "azata", "devil", "dragon", "legend", "swarm"]
@@ -1570,6 +1573,10 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     # E2: gate lints on the raw story (tools/gate_lint.py): one-flag groups, scenes relying on the tirabade default
     # eng7-l04: adapter parity is separate from q6a's cross-route L1-L6 checks.
     from tools.native_gate_contract_lint import check as check_native_gate_contract
+    from tools.drezen_placement_lint import check as check_drezen_placement
+    R["drezen_placement"] = check_drezen_placement(story)
+    for failure in R["drezen_placement"]:
+        P("     - HARD", failure)
     R["native_gate_contract"] = check_native_gate_contract(story)
     for failure in R["native_gate_contract"]:
         P("     - HARD", failure)
@@ -1804,6 +1811,15 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     # eng7-l09: always inspect authoring data; dormant drafts never enter shipped scores.
     R["player_text"] = player_text_lint.check(story)
     R["text_structure"] = text_structure_lint.check(story)
+    # eng7-f2: all shipped markup findings are strict. Existing nonmechanical
+    # player-text reviews require route writing work and remain in the report.
+    R["player_text"]["hard"] = player_text_baseline.new_findings(
+        story, R["player_text"]["review"], therapy_counts=R["player_text"]["therapy_counts"])
+    P("eng7-f2 strict text: %d structure reviews, %d new player-text findings"
+      % (len(R["text_structure"]["review"]), len(R["player_text"]["hard"])))
+    for row in R["text_structure"]["review"] + R["player_text"]["hard"]:
+        P("  TEXT", row["scene"], row["location"], row["code"], row["start"], row["end"])
+    # end eng7-f2
     R["intimacy_contracts"] = intimacy_contract_lint.check(story)
     R["memory_callbacks"] = memory_callback_lint.check(story)
     R["transaction_exits"] = dict(hard=transaction_exit_lint.check(story))
@@ -2587,13 +2603,15 @@ def main():
     R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
     Path(a.text).write_text(text, encoding="utf-8")
     # eng7-l04: fail strict verification for unsupported adapter declarations.
-    hard = len(R.get("native_gate_contract", [])) + len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
+    hard = len(R.get("drezen_placement", [])) + len(R.get("native_gate_contract", [])) + len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \
         + len(R.get("bindings", {}).get("failures", [])) + len(R.get("return_safety", {}).get("failures", [])) \
         + sum(len(v) for v in R.get("gate_lint", {}).values()) + len(R.get("etude_lifecycle", {}).get("hard", [])) \
         + len(R.get("earned_presence", {}).get("hard", [])) \
-        + len(R.get("text_structure", {}).get("hard", [])) + len(R.get("intimacy_contracts", {}).get("hard", [])) \
+        + len(R.get("text_structure", {}).get("hard", [])) + len(R.get("text_structure", {}).get("review", [])) \
+        + len(R.get("player_text", {}).get("hard", [])) + len(R.get("intimacy_contracts", {}).get("hard", [])) \
         + len(R.get("memory_callbacks", {}).get("hard", [])) + len(R.get("transaction_exits", {}).get("hard", [])) \
         + len(R["runtime"]["duplicate_names"]) + len(R["runtime"]["retry_dups"])         + len(R.get("released_names_removed", []))
+    # end eng7-f2
     for x in R.get("released_names_removed", [])[:20]: print("SAVE BREAK (name from a released build no longer registered):", x)
     # eng7-f6d begin: dormant mechanical defects fail strict verification too.
     hard += len(R.get("drafts", {}).get("contracts", []))

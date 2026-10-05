@@ -1,0 +1,5 @@
+# Irabeth: all-romance run takes state `alive` (fight beside Galfrey in Iz; Irabeth back in Drezen after the Coronation)
+irabeth.chapter_three:3       # Chapter03 etude (progress; gates the Ch3 end of the_evening_she_chose)
+irabeth.chapter_five:5        # Chapter05 etude (progress)
+encouraged:3                  # Ch3: Battered Spirit passed (Diplomacy/Intimidate DC 25), AssigningIrabeth 7 d + KTC 23 d -> IrabethEncouraged_Chapter03 8b0924ef (flavour lines only)
+coronation.after:5            # Ch5: Coronation done; IrabethNotInDrezenCh5_WithGalfrey ends, her Ch5 Drezen beats open

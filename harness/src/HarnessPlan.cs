@@ -38,6 +38,10 @@ namespace RRT.TestHarness
         public int MaxScenesPerSave;
         /// <summary>Scene id or prefix filters; empty means all.</summary>
         public List<string> SceneFilter = new List<string>();
+        /// <summary>Harness-only fixture flags, set after each source save load, before spikes or scene enumeration.</summary>
+        public List<string> SetFlags = new List<string>();
+        /// <summary>Harness-only BlueprintEtude GUIDs. Starts unstarted etudes; never resets completed etudes.</summary>
+        public List<string> StartEtudes = new List<string>();
         /// <summary>null: reload between scenes unless Force is set.</summary>
         public bool? ReloadBetweenScenes;
         public bool RoundTrip = true;
@@ -75,6 +79,10 @@ namespace RRT.TestHarness
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public ResidenceSpikePlan? Residence;
         /// <summary>Settings of the presence quiet-copy spike or mesh probe; filled with defaults when Spike is "presence".</summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public PresenceSpikePlan? Presence;
+        // BEGIN eng7-f5: embedded fixture data keeps the Windows install self-contained.
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)] public string? NativeEpilogueCasesJson;
+        [JsonIgnore] public bool NativeEpilogueSpike => string.Equals(Spike, "nativeepilogue", StringComparison.OrdinalIgnoreCase);
+        // END eng7-f5
         public HarnessTimeouts Timeouts = new HarnessTimeouts();
 
         [JsonIgnore] public bool ResidenceSpike => string.Equals(Spike, "residence", StringComparison.OrdinalIgnoreCase);
@@ -99,6 +107,12 @@ namespace RRT.TestHarness
         {
             Saves = (Saves ?? new List<string>()).Where(s => !string.IsNullOrWhiteSpace(s)).Select(s => s.Trim()).ToList();
             SceneFilter = (SceneFilter ?? new List<string>()).Where(s => !string.IsNullOrWhiteSpace(s)).ToList();
+            SetFlags = (SetFlags ?? new List<string>()).SelectMany(s => s.Split(',')).Select(s => s.Trim()).Where(s => s.Length > 0).Distinct(StringComparer.Ordinal).ToList();
+            StartEtudes = (StartEtudes ?? new List<string>()).SelectMany(s => s.Split(',')).Select(s => s.Trim()).Where(s => s.Length > 0).Select(s =>
+            {
+                if (!Guid.TryParse(s, out var guid)) throw new FormatException("startEtudes needs BlueprintEtude GUIDs: " + s);
+                return guid.ToString("N");
+            }).Distinct(StringComparer.Ordinal).ToList();
             Timeouts ??= new HarnessTimeouts();
             if (!Dfs && !string.Equals(Mode, "random", StringComparison.OrdinalIgnoreCase))
                 throw new FormatException("Plan mode must be \"random\" or \"dfs\", not \"" + Mode + "\".");
@@ -111,7 +125,18 @@ namespace RRT.TestHarness
             if (string.IsNullOrWhiteSpace(InlineHostsPath)) InlineHostsPath = null;
             if (MaxInlineNavSteps < 1) MaxInlineNavSteps = 1;
             if (string.IsNullOrWhiteSpace(Spike)) Spike = null;
-            if (Spike != null && !ResidenceSpike && !PresenceSpike) throw new FormatException("Plan spike must be \"residence\" or \"presence\", not \"" + Spike + "\".");
+            // BEGIN eng7-f5
+            if (Spike != null && !ResidenceSpike && !PresenceSpike && !NativeEpilogueSpike)
+                throw new FormatException("Plan spike must be residence, presence or nativeepilogue.");
+            if (NativeEpilogueSpike)
+            {
+                if (Saves.Count == 0) throw new FormatException("Native epilogue probe needs a loadable save.");
+                if (string.IsNullOrWhiteSpace(NativeEpilogueCasesJson)) throw new FormatException("Native epilogue probe needs serialized cases.");
+                NativeSlideCases.Parse(NativeEpilogueCasesJson!);
+                if (Inline || RoundTrip || Headless) throw new FormatException("Native epilogue probe needs NoRoundTrip, visible dialogs and no Inline.");
+            }
+            else if (NativeEpilogueCasesJson != null) throw new FormatException("Slide cases require nativeepilogue spike.");
+            // END eng7-f5
             if (ResidenceSpike) (Residence ??= new ResidenceSpikePlan()).Normalize();
             else if (Residence != null) throw new FormatException("Plan residence settings need spike \"residence\".");
             if (PresenceSpike) (Presence ??= new PresenceSpikePlan()).Normalize();

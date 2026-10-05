@@ -717,7 +717,7 @@ page(W + "abyss.fall", "The best of his daughters", [
         c('"That\'s the last of it. The body does that. Go and see to the others, Lann; I\'ll take care of her."',
           check=dict(Skill="CheckBluff", DC=26, Success="alone", Failure="knows"))),
     lann("alone", '''{n}Lann looks down at her. His mouth works.{/n}
-"I never wanted it to be me," he says, to nobody. "I always thought, if anyone, it would be you." {n}He wipes his hands on his coat, carefully, all the way to the wrists, and goes to see to the others, and does not look back.{/n}''',
+"I never wanted it to be me," {n}he says, to nobody.{/n} "I always thought, if anyone, it would be you." {n}He wipes his hands on his coat, carefully, all the way to the wrists, and goes to see to the others, and does not look back.{/n}''',
         c("Continue", "cairn", forbids=(UNPLANNED,)),
         c("Continue", "price", requires=(UNPLANNED,))),
     nar("price", '''{n}Nobody bought this. There was no plan and no bargain: an hour ago she was trying to tear Lann's throat out for Savamelekh, and now you are on your knees in his hall choosing to bury her breathing. There is a price for deciding it here, now, with nothing prepared, and you pay it in front of everyone.{/n}
@@ -823,7 +823,7 @@ page(W + "street.fall", "The traitor in the street", [
         c("Continue", "lann_there", requires=(STREET_LANN,)),
         c("Continue", "claim", forbids=(STREET_LANN,))),
     lann("lann_there", '''{n}Lann is standing a few paces off with his bow still in his hand. He has not moved since she fell. He looks at her the way you look at a house you grew up in, burning.{/n}
-"Wendu," he says, very quietly, and nothing else.''',
+"Wendu," {n}he says, very quietly, and nothing else.{/n}''',
         c("Continue", "claim_lann")),
     nar("claim", '''{n}The watch is looking at you. So is half the lower town, from its doorways. A traitor's head on the south gate is exactly what Drezen needs to see this morning, and exactly what you cannot give them.{/n}''',
         c('"She\'s mine. My kill, my prisoner, my traitor. Her people bury their own under stones, and I\'ll do it myself. Nobody touches her."',
@@ -862,7 +862,7 @@ page(W + "street.fall", "The traitor in the street", [
         c("Continue", "catacomb", crusade=("Favors", -150), flags=(WATCH, BRASK_KNOWS), forbids=(STREET_LANN,)),
         c("Continue", "lann_eyes", crusade=("Favors", -150), flags=(WATCH, BRASK_KNOWS), requires=(STREET_LANN,))),
     lann("lann_eyes", '''{n}Lann has been standing a few paces off with his bow still in his hand since she fell, looking at her the way you look at a house you grew up in, burning. He did not hear what Brask said to you, or he did not understand it. He walks over and closes her eyes with two fingers, gently, the way you close a book.{/n}
-"Wendu," he says, very quietly, and walks away down the street without looking back.''',
+"Wendu," {n}he says, very quietly, and walks away down the street without looking back.{/n}''',
         c("Continue", "catacomb_lann")),
     nar("catacomb", '''{n}There are catacombs under the citadel, old ones, from before the demons came, where Drezen's dead lay in niches until there were too many dead to bother. You carry her down yourself. The neathers who live in the cellars above them watch you go past with their yellow eyes and say nothing at all.{/n}
 {n}You build it in an empty niche at the bottom of the oldest stair, out of the fallen stones of the vault: flat pieces set on edge so that they roof her rather than press on her, the head end packed loose, her knife wiped on your knee and closed into her right hand.{/n}

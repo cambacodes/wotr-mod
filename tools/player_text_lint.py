@@ -6,6 +6,11 @@ import re
 EXCEPTIONS = Path(__file__).with_name("player_text_exceptions.json")
 
 
+def narration_free(text):
+    """Compare display content without changing the narration it emits."""
+    return text.replace('{n}', '').replace('{/n}', '')
+
+
 def surfaces(story):
     """Yield only displayed text, including conditional paragraphs and Book/journal text."""
     for scene in story.get("Scenes", []):
@@ -41,10 +46,36 @@ PATTERNS = {
 THERAPY = re.compile(r'\b(?:permission|consent|boundar(?:y|ies)|you may refuse|ask first|may I kiss|earlier affection)\b', re.I)
 
 
+def spoken_offsets(text):
+    """Quoted NPC speech is not an attribution of the Commander's words.
+
+    Narration tags take precedence, and Owlcat continuation paragraphs can
+    repeat an opening quote without ending the preceding speech.
+    """
+    spoken = set()
+    opened, narration = None, False
+    for token in re.finditer(r'\{/?n\}|[\s\S]', text):
+        char, i = token.group(), token.start()
+        if char in ('{n}', '{/n}'):
+            narration = char == '{n}'
+            continue
+        if char in ('"', '“', '”'):
+            if opened is None and char != '”':
+                opened = char
+            elif ((opened == '“' and char == '”') or
+                  (opened == '"' and char == '"' and
+                   text[text.rfind('\n', 0, i) + 1:i].strip())):
+                opened = None
+        elif opened is not None and not narration:
+            spoken.add(i)
+    return spoken
+
+
 def check(story, exceptions=None, draft=False):
     policy = json.loads(EXCEPTIONS.read_text(encoding="utf-8")) if exceptions is None else exceptions
     rows, counts = [], {}
     for sid, location, text, speaker, kind in surfaces(story):
+        spoken = spoken_offsets(text)
         for term in THERAPY.finditer(text):
             route = sid.split("/")[1] if sid.startswith("Relationships/") else sid.split(".")[0].split("_")[0]
             counts[route] = counts.get(route, 0) + 1
@@ -53,6 +84,10 @@ def check(story, exceptions=None, draft=False):
                 continue
             searched = re.sub(r'\{mf\|[^}]+\}', lambda m: " " * len(m.group()), text) if code == "commander-gender" else text
             for match in regex.finditer(searched):
+                if code == "embedded-commander-speech":
+                    attribution = re.search(r'\b(?:you (?:say|tell|ask|reply|answer|suggest)|the Commander (?:says|asks|replies))\b', match.group(), re.I)
+                    if attribution and match.start() + attribution.start() in spoken:
+                        continue
                 if any(e["scene"] == sid and e["location"] == location and e["code"] == code
                        and e["match"] == match.group() and e.get("reason") for e in policy.get("exceptions", [])):
                     continue

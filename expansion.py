@@ -789,5 +789,6 @@ if __name__ == "__main__":
     output = ROOT / "development/Story.json"
     output.parent.mkdir(exist_ok=True)
     payload = make_expansion()
-    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    newline = "\r\n" if output.exists() and b"\r\n" in output.read_bytes() else "\n"
+    output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline=newline)
     print(f"INCOMPLETE DEVELOPMENT EXPORT: {len(payload['Scenes'])} scenes -> {output}")

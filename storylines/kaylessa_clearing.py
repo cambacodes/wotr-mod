@@ -170,7 +170,7 @@ here(STIRS, "The knife in the dark", '"You look like you haven\'t slept."', [
         c('"Next time it sits up, send it to me. I\'ll tell it a joke so bad it goes back to sleep out of embarrassment."',
           "joke", flags=(MADE_HER_LAUGH,))),
     kay("held_her", '''{n}She goes stiff for a moment under your arm, the way she does when anyone touches her without warning. Then she lets her head fall against your shoulder, heavily, like a soldier who has stopped marching.{/n}
-"This," she says, to nobody in particular. "This is the stupidest thing that works."''',
+"This," {n}she says, to nobody in particular.{/n} "This is the stupidest thing that works."''',
         c("[Stay until the lamps are lit.]")),
     kay("sting", '''{n}She stares at you. Then a laugh gets out of her, low and startled, and it seems to surprise her more than you.{/n}
 "You've been reading about my goddess. Somebody's been in the chaplain's shelves." {n}She shakes her head, and she's still smiling when she stops.{/n} "Hate it right back. Yes. The Sting would like that. She never did like anything that crept up on a woman in the dark."''',
@@ -203,7 +203,7 @@ here(CLOAK, "Not grey", '"Is that... a new cloak?"', [
 "We'll see about the floor, soldier. I paid good money for this. If it ends up on anybody's floor, I'll be the one who drops it there, and the floor will have been swept."''',
         c("[Leave her to argue with the tailor about the hem.]")),
     kay("suits", '''"It does." {n}She says it as a fact, not a question, and then looks faintly shocked at herself.{/n}
-"It does," she says again, quieter, looking down at the red over her arm. "I'd forgotten I was allowed to like the look of something."''',
+"It does," {n}she says again, quieter, looking down at the red over her arm.{/n} "I'd forgotten I was allowed to like the look of something."''',
         c("[Leave her to argue with the tailor about the hem.]")),
     kay("seen", '''"Let them." {n}Her teeth show, all of them.{/n} "Let them see me coming a mile off, soldier, and let them run the whole mile. I've spent two years being the one who runs. It's somebody else's turn."''',
         c("[Leave her to argue with the tailor about the hem.]")),

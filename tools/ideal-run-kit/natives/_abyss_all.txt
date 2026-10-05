@@ -1,0 +1,26 @@
+chivarro.exiled:4             # same beat: ChivarroWasTeleportedAway
+chivarro.exiled:4             # same cue: ChivarroWasTeleportedAway
+chivarro.removed:4            # Ch4 Chivarro confrontation ends in exile: Cue_0049 ChivarroRemovedFormPower (same etude as herrax.madam)
+chivarro.removed:4            # Ch4 Ten Thousand Delights, AvengeInsults confrontation (any non-attack ending) -> Cue_0049 ChivarroRemovedFormPower
+herrax.asked_kill_chivarro:4  # same talk, automatic Cue_0045_KillChivarro; afterwards NEVER enter the Lower City ChivarroAbusedScene zone (chivarro.dead must stay false)
+herrax.asked_kill_chivarro:4  # same talk, automatic: Cue_0045_KillChivarro (gives Obj3_ExiledChivarro). Never enter the ChivarroAbusedScene zone afterwards.
+herrax.coin_held:4            # keep the golden coin she gives you (item 1d5570f0...); never sell or spend it
+herrax.madam:4                # = ChivarroRemovedFormPower 065b6117...; leave the Delights and return (Add2_GoAwayBrothel) so Herrax takes the chair
+herrax.met:4                  # first Herraxa_dialogue talk (SeenCue 044dc44d...)
+herrax.met:4                  # leave the Delights and return; first talk with Herrax (SeenCue 044dc44d...)
+herrax.rokhorn_confessed:4    # ask her incubus Rokhorn why he obeys her (SelectedAnswers c60613dc...)
+jerribeth.met:3              # Ch3 Wintersun: c3/Wintersun/JerribethReveal Cue_0003 (and IvorySanctum/JerribethGreetings Cue_0001)
+jerribeth.refuge_known:4     # Ch4 Vellexia's manor: c4/RaptureOfRupture/Jerribeth_Velexia Cue_0011 ("...the manor where I have taken refuge?")
+jerribeth.wintersun_known:3  # Ch3 Wintersun reveal heard (SeenCue b2997124...)
+jerribeth.xanthir_known:3    # Ch3 Ivory Sanctum, after Xanthir: JerribetnFinal/Cue_0001 (she pins the locusts); end with Answer_0028/0016 -> Cue_0020
+minagho.brand_told_c4:4       # Ch4 Lower City ambush: MinaghoAfterCombat, she recites the brand's terms (SeenCue 234795ef...)
+minagho.dead:5                # Ch5 Return to Drezen siege: FreeGraveknightStaunton_Fallen/Cue_0031 starts MinaghoDead (unavoidable on Trickster)
+minagho.killed_by_staunton:5  # same cue 09780c42... (SeenCues)
+minagho.spared_c4:4           # same dialog: Answer_0026 [Let Minagho go] "Get out of my sight!" -> MinaghoSetFreeInC4
+noct.acq.council_disclosed:5  # same answer (SelectedAnswers fd4f6c1d...), satisfies noct.acq.the_missing_line's RequiresAnyGroups
+noct.acq.council_fight:6      # same fight: FightAgaintsNoctaCouncilAllied ed5d1dfa... (really late Ch5)
+noct.dead:6                   # Council 5-2 Answer_0044 [Join the Council and attack Nocticula] -> she falls -> NocticulaDead (really late Ch5)
+noct.will_attend:5            # Ch5 boudoir audience: Nocticula/Answer_0011 "Your brother sent me to play a prank on you..." (NoctaWillAttendTheCouncil)
+vellexia.dismissed_native:5  # Third date: Answer_0070 "Thank you for your time... Now I must go." -> Cue_0076 (really late Ch4)
+vellexia.greeted:4           # Ch4 Higher City: enter Vellexia's manor, Velexia_Main/Cue_0001 "A new guest has arrived?" (SeenCue 3850d7ab...)
+vellexia.native_finished:5   # RaptureOfRupture completed (third date). Really late Ch4; entered at ch5 because the first six visits Forbid it.

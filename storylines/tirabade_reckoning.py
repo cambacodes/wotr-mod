@@ -28,7 +28,7 @@ s("three_stolen_roads", "Someone else's journey", "Together",
 "That's Ista's."
 {n}The woman behind the stall looks up.{/n}
 "It belongs to the person who buys it."
-"Does Ista know that?" Anevia asks.''',
+"Does Ista know that?" {n}Anevia asks.{/n}''',
       c('[Look at the book.]', "book"),
       c('[Ask to visit the stalls another time.]', abort=True)),
     n("book", "Narrator", '''{n}The book contains hand-drawn roads, sketches of bridges, and cramped notes about places to sleep. A folded page at the back shows a garden behind a mill. Anevia keeps her hands off it.{/n}
@@ -43,7 +43,7 @@ s("three_stolen_roads", "Someone else's journey", "Together",
     n("owner", "Irabeth", '''"At the wagon yard. We passed her sign."
 {n}Gresa puts a scrap of cloth over the book.{/n}
 "Go and ask. I will not sell it until you come back. Nor will I hand it to you because someone knows the stitching."
-"Good," Irabeth says.
+"Good," {n}Irabeth says.{/n}
 {n}Anevia raises an eyebrow, but follows her away from the stall.{/n}
 {n}Ista is mending a cover beside her cart. When you describe the book, she drops the needle into her lap.{/n}
 "The blue one? I thought my wife had packed it."
@@ -58,7 +58,7 @@ s("three_stolen_roads", "Someone else's journey", "Together",
 "The book is mine. Years of it. Places I went before I met my wife. Places we argued about after. There is a page with a very good fish supper and three different accounts of whose idea it was to stop."
 {n}Anevia crouches beside the chest.{/n}
 "Vald may have the bundle nearby. He'll need to come back for his money. We could watch where he goes."
-"We should secure the book first," Irabeth says. "If he notices anything wrong, he may run with what remains."
+"We should secure the book first," {n}Irabeth says.{/n} "If he notices anything wrong, he may run with what remains."
 "If we take it now, Gresa has to tell him why she can't sell it. We get the book and a description we've already got."
 {n}Ista turns the needle over.{/n}
 "I want both. I know that is not an answer you can use."''', c('[Return to Gresa and discuss the possibilities.]', "decision")),
@@ -96,7 +96,7 @@ s("three_stolen_roads", "Someone else's journey", "Together",
 {n}Ista is waiting with Gresa. When Irabeth gives her the bundle, she checks the knots before looking at the ruined binding.{/n}
 {n}"These are mine," she says. Then, more quietly, "So is that."{/n}''', c('[Help Ista carry what was recovered.]', "after")),
     n("after", "Anevia", '''{n}Ista returns to her cart to examine what she has. You leave her the account you have written. Anevia folds the note after Ista has read it.{/n}
-"Wanted us to buy something useless," she says. "Managed another report."
+"Wanted us to buy something useless," {n}she says.{/n} "Managed another report."
 {n}Irabeth looks at the yellow corner still protruding from her wife's packet.{/n}
 "You did buy something."
 "Before the evening took a turn. It's a sash. There were supposed to be lanterns, too. Music. You looking surprised."
@@ -116,7 +116,7 @@ s("three_lantern_debt", "What she had arranged", "Anevia",
 {n}Anevia has brought a folded sack with two carrying straps. She hands you one end before testing the other.{/n}
 "Nell lent me four. She paints the shades herself. Said she'd trust me with the lamps if I promised not to make jokes about the birds."
 {n}You turn the corner beside a narrow workshop. Four paper shades hang in the window. Their painted birds have round bodies and legs at improbable angles.{/n}
-"Been rehearsin' my silence," Anevia tells you. "Hardest part of the arrangement."''',
+"Been rehearsin' my silence," {n}Anevia tells you.{/n} "Hardest part of the arrangement."''',
       c('[Go into the workshop with her.]', "nell"),
       c('[Offer to help another time.]', abort=True)),
     n("nell", "Narrator", '''{n}Nell is an older woman with paint on her cuffs and a thick bandage around one thumb. She points to the shades before Anevia can speak.{/n}
@@ -141,7 +141,7 @@ s("three_lantern_debt", "What she had arranged", "Anevia",
       c('"Tell me how you found a painter who lends lanterns."', "meeting"),
       c('"I rather like having time to look at you."', "look", flags=("three_lantern_debt.looked",))),
     n("meeting", "Anevia", '''"Saw the window. Came in to ask what sort of birds they were. Nell told me. Very firmly."
-"She wanted a lamp that made people look handsome," Nell says.
+"She wanted a lamp that made people look handsome," {n}Nell says.{/n}
 "I said warm."
 "You asked whether yellow light was kinder than white."
 {n}Anevia gives you a warning look which has very little force behind it.{/n}
@@ -157,9 +157,9 @@ s("three_lantern_debt", "What she had arranged", "Anevia",
 "Did I?"
 "Some days. Other days you were quite pleased with yourself. Liked those too."
 {n}Nell makes a small impatient sound. Anevia stops talking long enough for the line of her mouth to be drawn.{/n}
-"There," Nell says. "Now you may misbehave again."
+"There," {n}Nell says.{/n} "Now you may misbehave again."
 {n}Anevia laughs. The painter makes two quick marks before the expression is gone.{/n}
-"That's cheating," Anevia says.
+"That's cheating," {n}Anevia says.{/n}
 "You would know."''', c('[Remain with her while Nell draws.]', "waiting")),
     n("waiting", "Anevia", '''{n}Nell goes to find a softer pencil. Anevia stretches her fingers over her knees.{/n}
 "I keep thinkin' about that stall. All those people walkin' past. One of them might have bought Ista's book, taken it home and thought they'd found somethin' lovely."
@@ -258,7 +258,7 @@ s("three_beth_steps", "An unfamiliar step", "Irabeth",
 {n}You move the bench farther back. She watches, then laughs at herself.{/n}
 "Yes. That was an available solution."
 {n}This time she asks you to join her. The first change of places works. The second leaves you facing the wrong direction.{/n}
-"I think that was mine," she says. "I tried to correct you before you had finished moving."''',
+"I think that was mine," {n}she says.{/n} "I tried to correct you before you had finished moving."''',
       c('"Let me lead this time. You can find out where I am going."', "follow", flags=("three_beth_steps.followed",)),
       c('"Keep leading. Give me time to follow the step you actually take."', "lead", flags=("three_beth_steps.led",))),
     n("follow", "Narrator", '''{n}Irabeth places her hand against your shoulder. You count softly and begin. She starts a turn too soon, catches herself and waits, her mouth pressed into a line of concentration.{/n}
@@ -365,7 +365,7 @@ s("three_ista_departure", "The road she was taking", "Together",
   '\"Ista sent word that she wanted to see us.\"', [
     n("start", "Irabeth", '''"She is at the wagon yard. She asked us to come before the afternoon deliveries."
 {n}Anevia has brought the descriptions you wrote down. She checks the folded sheet, then puts it away without explaining why she checked.{/n}
-"Could've come herself," she says.
+"Could've come herself," {n}she says.{/n}
 "She has a cart to watch."
 "Yes. I know."
 {n}Irabeth touches her wife's elbow. Anevia does not move away, but she does not answer the touch until you have reached the corner. Then her hand closes briefly over Irabeth's.{/n}''',
@@ -387,7 +387,7 @@ s("three_ista_departure", "The road she was taking", "Together",
 {n}Anevia starts to speak. Ista lifts a finger.{/n}
 "I agreed to leave it at the stall. I remember. That does not make me like looking at it."
 {n}She opens to the mill drawing. A strip of plain paper holds the halves together. On the reverse, a sentence ends where the wheel tore through it.{/n}
-"That was an argument about a fish supper," she says. "I remember the supper. I cannot remember what we thought was so funny afterward."
+"That was an argument about a fish supper," {n}she says.{/n} "I remember the supper. I cannot remember what we thought was so funny afterward."
 {n}Wenna reaches across and closes the book gently.{/n}
 "We may remember on the road."''', c('[Give them a moment.]', "offer")),
     n("letters", "Ista", '''"Two customers have already answered. One sent a boy back with my letter and said he had no time for accounts. I will go myself. Perhaps he will find some time if I stand in his doorway."
@@ -406,7 +406,7 @@ s("three_ista_departure", "The road she was taking", "Together",
 "I know. You paid for the first map. This is something I wanted to give you."
 {n}Ista taps a dotted turn beside the mill.{/n}
 "That track has steep ground. Wenna likes to say I put it there to make her appreciate the other road."
-"She took the turn without asking me," Wenna says. "Then claimed the view was worth it."
+"She took the turn without asking me," {n}Wenna says.{/n} "Then claimed the view was worth it."
 {n}Irabeth studies the two routes.{/n}
 "Was it?"
 {n}Wenna's mouth twitches.{/n}
@@ -432,10 +432,10 @@ s("three_ista_departure", "The road she was taking", "Together",
 "When you can go. There is no date on it."
 {n}Anevia accepts it with both hands.{/n}
 "I'll try not to improve the route without askin'."
-"Ask your companions," Ista says. "I shall be somewhere else, having a different argument."
+"Ask your companions," {n}Ista says.{/n} "I shall be somewhere else, having a different argument."
 {n}On the way back, Irabeth asks to carry the map. Anevia passes it over. For several streets nobody mentions Vald.{/n}
 {n}Then Anevia stops at a turning and looks down it. Irabeth waits beside her.{/n}
-"Not today," Anevia says at last. She turns back toward you.
+"Not today," {n}Anevia says at last. She turns back toward you.{/n}
 "We've got somewhere we meant to go."''', c('[Walk back with them.]', flags=("three_ista_departure.heard",))),
 ], requires=("three_lantern_debt.kept", "three_beth_steps.learned"))
 
@@ -445,7 +445,7 @@ s("three_lantern_turn", "The evening she wanted", "Together",
     n("start", "Anevia", '''"Four lamps. Four birds. No casualties."
 {n}Anevia stands beside the yard gate with the yellow sash tied at her waist. Tessa has closed the lane for the evening. The pins are stacked beyond the fence, and the fee board has been turned to its blank side.{/n}
 {n}Veska, a gray-haired woman with a fiddle case beneath her arm, is arguing cheerfully with Tessa about how much supper counts as payment. Irabeth has gone to fetch a jug of water.{/n}
-"Don't look at the birds too long," Anevia tells you. "Nell has spies everywhere."
+"Don't look at the birds too long," {n}Anevia tells you.{/n} "Nell has spies everywhere."
 {n}She takes your offered arm before calling for her wife.{/n}''',
       c('[Join them for the evening.]', "coat"),
       c('[Ask to keep the gathering for another evening.]', abort=True)),
@@ -455,7 +455,7 @@ s("three_lantern_turn", "The evening she wanted", "Together",
 "I bought it."
 "Good. Saves me an argument with the owner when I refuse to give it back."
 {n}Irabeth comes close enough for Anevia to straighten the collar. Her wife's hands linger against the cloth.{/n}
-"You look handsome," Anevia says. "There. No joke. Very expensive service."
+"You look handsome," {n}Anevia says.{/n} "There. No joke. Very expensive service."
 {n}Irabeth kisses her forehead, then the corner of her mouth. Anevia catches her by the lapel before she can draw away.{/n}
 "Do that properly."
 {n}Irabeth does. Veska examines her fiddle strings with the air of a woman accustomed to waiting for lovers.{/n}''',
@@ -487,7 +487,7 @@ s("three_lantern_turn", "The evening she wanted", "Together",
 "Your turn. I've been very patient."
 {n}She takes the cup from you and places it safely on the counter.{/n}
 "Walk with me. Then turn when I give you my hand. If it goes wrong, we blame the music. Veska's already been paid in supper."
-"I can hear you," Veska says.
+"I can hear you," {n}Veska says.{/n}
 "Good. Saves explainin' afterward."
 {n}The first phrase begins. Anevia keeps her eyes on you rather than the boards, waiting to see how you will move.{/n}''',
       c('[Dance close, keeping the turn small.]', "close", flags=("three_lantern_turn.close",)),
@@ -504,7 +504,7 @@ s("three_lantern_turn", "The evening she wanted", "Together",
 {n}"Could get fond of this," Anevia says. She does not look toward the fiddle.{/n}''', c('[Bring her back to Irabeth.]', "beth")),
     n("beth", "Irabeth", '''{n}Irabeth puts down her cup as you approach.{/n}
 "I believe I was promised a turn."
-"Several," Anevia says. "Some of them almost graceful."
+"Several," {n}Anevia says.{/n} "Some of them almost graceful."
 {n}She takes her wife's cup and goes to speak to Veska. Irabeth offers you her hand with the confidence of having done it before.{/n}''',
       c('[Lead her as you did in practice.]', "follow", requires=("three_beth_steps.followed",)),
       c('[Follow the step she has learned to give you.]', "lead", requires=("three_beth_steps.led",))),
@@ -526,17 +526,17 @@ s("three_lantern_turn", "The evening she wanted", "Together",
       c('[Stay with them while Veska plays.]', "quiet", forbids=("three_lantern_debt.shared_sketch",))),
     n("sketch", "Anevia", '''"Beth brought it. Wouldn't let me carry it near the pickles."
 {n}Irabeth retrieves the rolled paper from its cloth wrapping. Beneath the yellow light, the drawn Anevia watches the living one with the same unfinished smile.{/n}
-"What do you think?" Irabeth asks you.
+"What do you think?" {n}Irabeth asks you.{/n}
 "You chose the right lamps."
 {n}Anevia laughs, then grows quiet as Irabeth holds the sketch beside her face. Her wife's expression makes the next joke unnecessary.{/n}
-"Keep it safe," she says. "I'll do my best with the original."
+"Keep it safe," {n}she says.{/n} "I'll do my best with the original."
 {n}Irabeth rolls the paper again before kissing her.{/n}''', c('[Stay close while the tune ends.]', "leaving")),
     n("quiet", "Narrator", '''{n}Anevia takes Irabeth's free hand and draws it around her own waist. Irabeth steps closer, bringing you with her. None of you quite faces the same direction, and Anevia has to move her foot to give everyone room.{/n}
 {n}"There," she murmurs.{/n}
 {n}Irabeth bends her head beside yours. You can feel her smile when Anevia begins humming, gets the tune wrong, and continues with confidence.{/n}
 {n}Veska finishes the piece her own way.{/n}''', c('[Thank Veska and Tessa for the evening.]', "leaving")),
     n("leaving", "Irabeth", '''{n}You help extinguish the lamps before taking down the shades. Tessa checks the gate while Veska packs her fiddle. Anevia folds the yellow sash over one arm so it will not trail in the street.{/n}
-"Come back to ours," Irabeth says. "If you have time. I do not want to stop looking at you both yet."
+"Come back to ours," {n}Irabeth says.{/n} "If you have time. I do not want to stop looking at you both yet."
 {n}Anevia turns toward her wife, visibly pleased by the directness.{/n}
 "Neither do I."
 {n}She looks at you before offering her hand.{/n}''',
@@ -596,7 +596,7 @@ s("three_open_road", "Where the evening went", "Together",
 {n}Anevia turns her hand beneath her wife's until their fingers fit together.{/n}''', c('[Leave the map open for another future day.]', "desire")),
     n("desire", "Irabeth", '''{n}Irabeth moves the walnuts out of the way and turns toward Anevia.{/n}
 "I liked dancing with you. I liked seeing you dance with our guest. I have been trying to find a less awkward way to say that."
-"That way was fine," Anevia says.
+"That way was fine," {n}Anevia says.{/n}
 {n}Her wife touches the yellow sash, laid across the back of the nearby chair.{/n}
 "I wanted to bring you home. Both of you. I kept thinking about it while Veska played."
 {n}Anevia rises onto her knees and kisses her. Irabeth's arms close around her wife before Anevia draws back far enough to speak.{/n}

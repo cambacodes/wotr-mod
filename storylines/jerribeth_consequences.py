@@ -120,7 +120,7 @@ s("borrowed_sun", "The figure she leaves unfinished", [
     n("remain", "Jerribeth", '''{n}For several breaths she offers neither an excuse nor a new display. Then she brings the altered model closer to the charm.{/n}
 "Look at it once more. This version. Tell me whether the light reaches the far side."
 {n}You lean toward the frame. She follows your gaze, moving the pale disc by a small amount until its light reveals the changes you requested.{/n}
-"There," she says. "I dislike some of your company. I have apparently decided to keep asking for it."
+"There," {n}she says.{/n} "I dislike some of your company. I have apparently decided to keep asking for it."
 {n}She leaves the model where you can both see it for the rest of the conversation.{/n}''', c('[Continue looking with her.]', flags=("jerribeth.sun_reworked",))),
     n("part", "Jerribeth", '''"Then this is the last thing I show you."
 {n}She moves the study beyond the frame. Her own face remains until you reach for the charm.{/n}
@@ -145,7 +145,7 @@ s("small_print", "The part she expected you to miss", [
       c('[Read the added condition.]', "condition"),
       c('[Postpone the discussion before agreeing to anything.]', abort=True)),
     n("condition", "Narrator", '''{n}The line permits the purchaser to advertise that Jerribeth developed the work during private consultations with an unnamed victorious commander. It then lists enough accomplishments to make the omitted name useless as a disguise.{/n}
-"She has removed the likeness and kept the implication," Jerribeth says. "A competent piece of impudence."
+"She has removed the likeness and kept the implication," {n}Jerribeth says.{/n} "A competent piece of impudence."
 {n}A second sheet lies underneath. You ask to see it.{/n}
 "My draft answer."
 {n}She has crossed out the accomplishments. The phrase private consultations remains.{/n}''',
@@ -155,7 +155,7 @@ s("small_print", "The part she expected you to miss", [
 "You agreed not to sell our private conversations."
 "I agreed not to reproduce them. There is a difference."
 {n}You leave the sentence unanswered long enough for her to hear herself defending it.{/n}
-"Yes," she says. "An ugly little difference when placed beside the invitation that made the conversations possible. I had hoped it would look more attractive with a fee attached."''', c('"What are you offering now?"', "choice")),
+"Yes," {n}she says.{/n} "An ugly little difference when placed beside the invitation that made the conversations possible. I had hoped it would look more attractive with a fee attached."''', c('"What are you offering now?"', "choice")),
     n("test", "Jerribeth", '''"I thought you probably would. I also thought you might enjoy the implication enough to let it remain."
 "Then you were asking after all. You chose an irritating way to do it."
 "I wanted you to choose the indulgent answer without making me request indulgence."
@@ -204,7 +204,7 @@ s("unsold_evening", "An audience she cannot purchase", [
       c('[Ask to keep the evening for another time.]', abort=True)),
     n("room", "Narrator", '''{n}The room becomes clear inside the frame. Jerribeth moves her image to a chair near its edge. You draw your own chair closer to the charm; the distance between your bodies remains unchanged.{/n}
 {n}She does not borrow anyone you recognize. A narrow strip of darkness marks where her invented room ends.{/n}
-"I could make the table disappear too," she says. "But I suspect we would only find another object to put between us."''',
+"I could make the table disappear too," {n}she says.{/n} "But I suspect we would only find another object to put between us."''',
       c('"Show yourself in your own form. I want to look at you."', "true", flags=("jerribeth.unsold_true_form",)),
       c('"Choose a guise you enjoy wearing. Tell me what you like about it."', "guise", flags=("jerribeth.unsold_guise",))),
     n("guise", "Jerribeth", '''{n}The change takes place in full view. The woman inside the frame has a broad mouth, fine lines beside her eyes and an expression that remains Jerribeth's. She turns one hand, watching how the lamplight lies on its ordinary knuckles.{/n}
@@ -258,7 +258,7 @@ s("unsold_evening", "An audience she cannot purchase", [
 "You could save us both the effort by continuing to look."
 "Then you would have to find out whether I stayed without the remark."
 {n}She begins an answer, stops, and leaves you an unusually long silence. Her hands have become still in the frame.{/n}
-"I thought you would eventually ask what useful thing I had brought," she says. "Something worth the time."
+"I thought you would eventually ask what useful thing I had brought," {n}she says.{/n} "Something worth the time."
 "Tonight I wanted this."
 "Then I have brought it. I expect you to be extravagantly pleased."
 {n}Her next laugh is softer than the remark deserves.{/n}
@@ -322,7 +322,7 @@ s("purchaser_answer", "What she did when nobody watched", [
       c('[Ask to see part of the design she kept.]', "kept_design", requires=("jerribeth.offer_design",))),
     n("kept_performance", "Jerribeth", '''"A banquet with exceptionally ill-mannered dishes. I am still deciding whether any of them deserve to be invited again."
 {n}She conjures a silver bowl whose lid rises to inspect an empty platter. The lid closes with an air of appalled judgment. You laugh before she explains it.{/n}
-"Good," she says. "The platter has not yet given its defense. I have been saving that."''', c('[Ask what she almost did instead.]', "temptation")),
+"Good," {n}she says.{/n} "The platter has not yet given its defense. I have been saving that."''', c('[Ask what she almost did instead.]', "temptation")),
     n("kept_design", "Jerribeth", '''{n}She shows you a little room whose painted doors open onto further pictures of the same room. An unpainted gap beside the first door remains clearly visible.{/n}
 "Every invented escape returns an imagined visitor to her seat. The actual guests can leave through that gap. I was rather pleased with the contrast."
 "Would your purchaser have left it visible?"
@@ -355,6 +355,6 @@ s("purchaser_answer", "What she did when nobody watched", [
     n("end_design", "Jerribeth", '''{n}Jerribeth restores the model. One painted door opens a moment before the little room beyond it appears. She closes it, adjusts something too small for you to see, and tries again.{/n}
 "There. You should have the pleasure of choosing the wrong door before discovering that it was wrong."
 {n}This time the movement is smooth. The actual opening remains clear beside it. You ask her to repeat the change so that you can follow what she did.{/n}
-"Watch the hinge," she says, pleased by the attention. "Everyone watches the room."
+"Watch the hinge," {n}she says, pleased by the attention.{/n} "Everyone watches the room."
 {n}She leaves the model between you while you talk. You keep noticing details, and she keeps admitting that she put them there deliberately.{/n}''', c('[Ask her to save the next improvement for you.]', flags=("jerribeth.consequences_kept",))),
 ], requires=("jerribeth.unsold_evening_kept",), delay=48)

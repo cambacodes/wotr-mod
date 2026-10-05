@@ -58,7 +58,7 @@ namespace RRT.TestHarness
             try
             {
                 // ---- Drezen: stay when already there, else load the enter point ------------------------------------------
-                if (sp.ProbeCoordinates == null && sp.EnterPoint != null && ResidenceSpikePlan.Norm(game.CurrentlyLoadedArea?.AssetGuid.ToString() ?? "") != PresenceSpikePlan.DrezenCapital)
+                if ((sp.ProbeCoordinates == null || sp.ProbeEnter) && sp.EnterPoint != null && Bp<BlueprintAreaEnterPoint>(sp.EnterPoint)?.Area != game.CurrentlyLoadedArea)
                 {
                     var enter = Bp<BlueprintAreaEnterPoint>(sp.EnterPoint);
                     if (enter == null) { res.EntryError = "enter point " + sp.EnterPoint + " is not a BlueprintAreaEnterPoint"; yield break; }
@@ -79,9 +79,25 @@ namespace RRT.TestHarness
                 if (sp.ProbeCoordinates != null)
                 {
                     var query = res.Probe = new WalkableProbe { Position = sp.ProbeCoordinates, Radius = sp.ProbeRadius };
+                    foreach (var unit in game.State.LoadedAreaState.AllEntityData.OfType<UnitEntityData>().Where(u => !u.Destroyed && !u.IsDisposed))
+                        res.Notes.Add("unit " + unit.Blueprint?.name + " [" + ResidenceSpikePlan.Norm(unit.Blueprint?.AssetGuid.ToString() ?? "") + "] "
+                            + unit.CharacterName + " at " + unit.Position.x.ToString("0.00") + "," + unit.Position.y.ToString("0.00") + "," + unit.Position.z.ToString("0.00")
+                            + (unit.IsPlayerFaction ? " party" : "") + (unit.State.IsDead ? " dead" : ""));
                     var graphs = AstarPath.active?.data?.graphs;
                     if (graphs == null) { query.Error = "no pathfinding graphs in the saved area"; yield break; }
                     var position = new Vector3(query.Position[0], query.Position[1], query.Position[2]);
+                    var bands = new SortedDictionary<int, float[]>();
+                    foreach (var graph in graphs)
+                        graph?.GetNodes((Action<Pathfinding.GraphNode>)(node =>
+                        {
+                            if (!node.Walkable) return;
+                            var q = (Vector3)node.position;
+                            int band = (int)Math.Round(q.y / 2f) * 2;
+                            if (!bands.TryGetValue(band, out var b)) bands[band] = b = new[] { 0f, q.x, q.x, q.z, q.z };
+                            b[0]++; b[1] = Math.Min(b[1], q.x); b[2] = Math.Max(b[2], q.x); b[3] = Math.Min(b[3], q.z); b[4] = Math.Max(b[4], q.z);
+                        }));
+                    foreach (var kv in bands)
+                        res.Notes.Add("band y~" + kv.Key + " nodes " + kv.Value[0] + " x " + kv.Value[1].ToString("0") + ".." + kv.Value[2].ToString("0") + " z " + kv.Value[3].ToString("0") + ".." + kv.Value[4].ToString("0"));
                     foreach (var graph in graphs)
                         graph?.GetNodes((Action<Pathfinding.GraphNode>)(node =>
                         {
@@ -89,6 +105,13 @@ namespace RRT.TestHarness
                             var point = node is Pathfinding.MeshNode mesh ? mesh.ClosestPointOnNode(position) : (Vector3)node.position;
                             query.Consider(point.x, point.y, point.z);
                         }));
+                    yield break;
+                }
+                if (sp.Key != null)
+                {
+                    res.ProductionReloadRequired = plan.RoundTrip;
+                    var production = res.Production = new ProductionPresenceProbe { Key = sp.Key };
+                    yield return InspectProductionPresence(production);
                     yield break;
                 }
                 var problems = rrt == null ? new List<string> { "RRT bridge not available" } : RrtBridge.Validate(rrt.Assembly, RrtBridge.PresenceSpikeExpectations);
@@ -108,7 +131,19 @@ namespace RRT.TestHarness
                 Vector3? locatorAt = null;
                 res.Locator = sp.Locator;
                 res.MaxWalkableGap = sp.MaxWalkableGap;
-                if (sp.Locator != null)
+                if (sp.NearUnit != null)
+                {
+                    var nearGuid = Kingmaker.Blueprints.BlueprintGuid.Parse(sp.NearUnit);
+                    var near = units.Where(u => u.Blueprint?.AssetGuid == nearGuid && !u.Destroyed && !u.DestroyMark && !u.IsDisposed && u.IsInGame && !u.State.IsDead && !u.State.IsFinallyDead).Take(2).ToArray();
+                    if (near.Length != 1) { res.LocatorError = "anchor unit " + sp.NearUnit + ": " + near.Length + " live matches in " + area.name; yield break; }
+                    double r = near[0].Orientation * Math.PI / 180.0;
+                    float fx = (float)Math.Sin(r), fz = (float)Math.Cos(r), rx = fz, rz = -fx, dx, dz;
+                    switch (sp.Side) { case "left": dx = -rx; dz = -rz; break; case "right": dx = rx; dz = rz; break; case "behind": dx = -fx; dz = -fz; break; default: dx = fx; dz = fz; break; }
+                    locatorAt = near[0].Position + new Vector3(dx * sp.AnchorDistance, 0f, dz * sp.AnchorDistance);
+                    res.Notes.Add("anchor " + near[0].Blueprint.name + " at " + near[0].Position + " orientation " + near[0].Orientation + " -> " + sp.Side + " " + sp.AnchorDistance + " m = " + locatorAt.Value);
+                    res.Locator = "near:" + sp.NearUnit + ":" + sp.Side + ":" + sp.AnchorDistance;
+                }
+                else if (sp.Locator != null)
                 {
                     var entity = Kingmaker.EntitySystem.EntityService.Instance.GetEntity(sp.Locator);
                     if (entity == null || entity.Destroyed) { res.LocatorError = "not found in " + area.name; yield break; }

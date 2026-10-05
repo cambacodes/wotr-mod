@@ -118,6 +118,9 @@ DEBTS = [
 # --- Partners: the call-in line at the rift and the coda page ---------------------------------------------------------------
 
 def page_p(text, requires=(), forbids=(), any_groups=()):
+    # eng7-f2: partner coda paragraphs narrate postwar history.
+    text = "{n}" + text + "{/n}"
+    # end eng7-f2
     return p(text, requires=requires, forbids=forbids, any_groups=any_groups)
 
 
@@ -128,6 +131,9 @@ def partner(key, rel, commit, closed, title, opener, paragraphs, declined=None, 
             call_commit=None, ledger=None, page_commit_groups=None, page_forbid_overrides=None, call_forbids=()):
     """page_commit_groups (optional): the page plays on any of these commitment states instead of `commit` alone (R2-6: a
     route's late_committed key); `commit` stays first."""
+    # eng7-f2: both retained coda variants use the same narrative opener.
+    opener = "{n}" + opener + "{/n}"
+    # end eng7-f2
     PARTNERS.append(dict(key=key, rel=rel, commit=commit, closed=closed, title=title, opener=opener, paragraphs=paragraphs,
                          declined=declined, page_forbids=tuple(page_forbids), deal=[list(g) for g in deal], call=call,
                          call_commit=call_commit or [[commit]], ledger_title=ledger[0] if ledger else None,

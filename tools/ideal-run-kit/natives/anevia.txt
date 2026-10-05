@@ -1,0 +1,5 @@
+# Anevia: all-romance run takes state `in_drezen` (Irabeth alive at the Coronation, so AneviaGone never starts)
+neathholm.evening:0           # Prologue: the Neathholm evening (camp rest; Anevia's splint beat)
+irabeth.chapter_three:3       # Chapter03 etude (progress)
+irabeth.chapter_five:5        # Chapter05 etude (progress)
+coronation.after:5            # Ch5 Drezen: Coronation done with Irabeth alive (no Cue_0421)

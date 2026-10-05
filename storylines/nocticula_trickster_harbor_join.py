@@ -47,49 +47,49 @@ The drawing changes beneath her answering stroke. A row of mooring posts appears
     p("missed", "Nocticula", '''"You are determined not to receive anything by accident."
 "I have seen what happens to people who accept the favorable half of a story and let somebody else write the price."
 "You have also seen what happens to people who make every conversation begin with their cleverness. Shall we risk a different opening?"
-You tell her you want to see her, and that you will still ask the inconvenient question when she is there.
+{n}You tell her you want to see her, and that you will still ask the inconvenient question when she is there.{/n}
 "Better. I was beginning to think you wanted an exceptionally well-annotated absence."
-She draws a small mark beside the empty water. It is not a signature.
+{n}She draws a small mark beside the empty water. It is not a signature.{/n}
 "I have offered you no accommodation and no solution to the Worldwound. Keep those spaces empty until we actually discuss them."''', c('Ask what the larger disagreement means for a smaller undertaking.', "politics", flags=f("history_new"))),
     p("rejected", "Nocticula", '''"I remember what you refused. You need not make a monument of it on every available page."
 "Would you prefer I let you describe this as reconsideration?"
 "I would prefer you discover an answer worth the trouble of hearing twice."
-You put a line beneath your original sentence. It stays legible. Beneath it you write that you accepted her company, and will consider work worth doing together, without accepting an offer merely because she has repeated it attractively.
-"A useful distinction," she answers. "I shall enjoy watching you maintain it when the work and the company want different answers."
-The empty coast acquires one sharp rock. You ask whether it represents you.
+{n}You put a line beneath your original sentence. It stays legible. Beneath it you write that you accepted her company, and will consider work worth doing together, without accepting an offer merely because she has repeated it attractively.{/n}
+"A useful distinction," {n}she answers.{/n} "I shall enjoy watching you maintain it when the work and the company want different answers."
+{n}The empty coast acquires one sharp rock. You ask whether it represents you.{/n}
 "Do not be vain. There is room for several."''', c('Keep the refusal in history and discuss the new proposal.', "politics", flags=f("history_refused"))),
     p("prior", "Nocticula", '''"You recall that an interrupted convenience is not a canceled obligation. How refreshing."
 "I recall that we can disagree about what was convenient."
 "Frequently. You possess an unfortunate gift for finding reasons to dislike a privilege after making use of it."
-You ask whether this harbor is another installment of the older price.
+{n}You ask whether this harbor is another installment of the older price.{/n}
 "No. If I ask you for something concerning the Worldwound, I will not disguise it as a discussion of ropes. You are perfectly capable of disappointing me in more than one matter. I prefer to know which we are discussing."
-You leave the earlier terms written in your own account. When the sheet comes back, she has underlined them, twice, in a darker ink.''', c('Preserve the existing terms and ask about the separate harbor work.', "politics", flags=f("history_prior"))),
-    p("politics", "Commander", '''You ask what she expects when your ambitions reach beyond a private trade route.
+{n}You leave the earlier terms written in your own account. When the sheet comes back, she has underlined them, twice, in a darker ink.{/n}''', c('Preserve the existing terms and ask about the separate harbor work.', "politics", flags=f("history_prior"))),
+    p("politics", "Commander", '''{n}You ask what she expects when your ambitions reach beyond a private trade route.{/n}
 "I expect you to remember that my city is not a convenient collection of pieces for you to rearrange."
 "I could say the same of my world."
 "You should. Then explain what you intend to do with it."
-You have no map complete enough to make every consequence obedient. You can name the direction in which you mean to work. Nocticula will hear that before she shows you another shore.''',
+{n}You have no map complete enough to make every consequence obedient. You can name the direction in which you mean to work. Nocticula will hear that before she shows you another shore.{/n}''',
       c('[Good] I intend to end the danger of the Worldwound. That does not make every life near it a price you may collect.', "closure", flags=f("closure_intent")),
       c('[Trickster] I may want a crossroads which serves my world. You would need a reason to prefer it to an invasion at your gates.', "crossroads", flags=f("crossroads_proposed")),
       c('[Evil] I will seek the outcome that leaves me strongest. Tell me what you would actually pay to make your preferred answer mine.', "power", flags=f("power_declared"))),
     p("closure", "Nocticula", '''"Every commander learns to call the people he spends a necessity. You wish to reserve the arithmetic for yourself."
 "I want you to hear an objection before you start spending my name."
 "Then make it specific when the occasion comes. I have little patience for men who bring me a principle instead of an answer and expect the principle to finish their work."
-She does not offer a new Worldwound contract. She acknowledges that you have named an intention she can work with, and a limit she may contest.
+{n}She does not offer a new Worldwound contract. She acknowledges that you have named an intention she can work with, and a limit she may contest.{/n}
 "For the harbor, you may ask what happened to the passengers. I shall ask what made the passage valuable. Try to provide answers useful to both questions."''', c('Accept that common work does not settle every disputed price.', "gift")),
     p("crossroads", "Nocticula", '''"A crossroads. How charmingly you describe an open approach to somebody else's throat."
 "A road can be closed to an army."
 "By whom? For how long? And what happens when the person at the gate discovers that an army can pay?"
-You begin to answer. She stops you at the first assumption you cannot support. The silence afterward is not an invitation to make the assumption more eloquent.
-"I have not agreed to that outcome," she writes. "Do not put my name on it. Do not use my mark to invite an ally to a road whose existence you have not proved you can control."
-You concede that limit. You will not trade her supposed endorsement while asking her to examine the danger.
+{n}You begin to answer. She stops you at the first assumption you cannot support. The silence afterward is not an invitation to make the assumption more eloquent.{/n}
+"I have not agreed to that outcome," {n}she writes.{/n} "Do not put my name on it. Do not use my mark to invite an ally to a road whose existence you have not proved you can control."
+{n}You concede that limit. You will not trade her supposed endorsement while asking her to examine the danger.{/n}
 "There is the first useful thing your crossroads has produced. An invitation you have promised not to sell. We can discuss an actual harbor while your larger ambition learns some dimensions."''', c('Withhold her endorsement and keep the crossroads proposal unresolved.', "gift", flags=f("endorsement_withheld"))),
     p("power", "Nocticula", '''"You have confused naming your appetite with demonstrating your price."
 "I thought you disliked modesty performed for an audience."
 "I dislike bad performances. You have yet to tell me what power you would relinquish for mine."
-You answer that you will not grant another party authority to speak for her while negotiating with her yourself. If she offers something worth the loss, you will discuss the larger sacrifice then.
+{n}You answer that you will not grant another party authority to speak for her while negotiating with her yourself. If she offers something worth the loss, you will discuss the larger sacrifice then.{/n}
 "A restraint upon your own intermediaries. Small, but intelligible. I accept that as a limit on this conversation, not as payment for the Worldwound."
-She draws a narrow line across the coast.
+{n}She draws a narrow line across the coast.{/n}
 "Show me what you do with one profitable route before you ask me to value your ownership of every road."''', c('Keep her name out of other bargains and leave the larger price unagreed.', "gift", flags=f("endorsement_withheld"))),
     p("gift", "Nocticula", '''"There is also the question of how you propose to meet me. Do you intend to let an old source of power supply an answer you have not given?"''',
       c('Your renewed gift is still in me. I would rather you knocked.', "gift_present", requires=("noct.acq.gift_renewed",)),
@@ -98,16 +98,16 @@ She draws a narrow line across the coast.
     p("gift_present", "Nocticula", '''"I could simply take the evening; the gift would let me. Where is the pleasure in that? I would rather watch you walk in on your own feet, knowing exactly what I am."
 "And I am capable of wanting you while objecting to the means of obtaining me."
 "Then we have something to discuss when you arrive. I should hate to exhaust the conversation before making a room for it."
-She offers to host a single meeting through her side of the responding mark. You will name the hour and receive an invitation before sleep. She wants your answer; she could have the evening without it, and you both know it.''', c('Propose the following evening for one trial meeting.', flags=f("an_unfinished_map_done", "trial_offered"))),
+{n}She offers to host a single meeting through her side of the responding mark. You will name the hour and receive an invitation before sleep. She wants your answer; she could have the evening without it, and you both know it.{/n}''', c('Propose the following evening for one trial meeting.', flags=f("an_unfinished_map_done", "trial_offered"))),
     p("gift_absent", "Nocticula", '''"My side of the mark. I will make the place and send the invitation. You will provide the inconvenient guest."
 "You could have proposed that before."
 "I could have proposed a great many things before deciding whether your company justified them. You should enjoy being expensive enough to require a decision."
-She will prepare a single meeting, not repair the old aperture or supply a blessing under another name. You will have to stay within the place she makes rather than use it as a road into Alushinyrra.
-"If you want a palace door," she adds, "ask for one. I would prefer to refuse the actual ambition."''', c('Propose the following evening for one trial meeting.', flags=f("an_unfinished_map_done", "trial_offered"))),
+{n}She will prepare a single meeting, not repair the old aperture or supply a blessing under another name. You will have to stay within the place she makes rather than use it as a road into Alushinyrra.{/n}
+"If you want a palace door," {n}she adds,{/n} "ask for one. I would prefer to refuse the actual ambition."''', c('Propose the following evening for one trial meeting.', flags=f("an_unfinished_map_done", "trial_offered"))),
     p("letters", "Nocticula", '''"Then keep the coast unfinished. It appears you prefer me at a distance which fits on a desk."
 "I prefer the agreement I made."
 "For now. Send me something worth reading within it."
-She takes back the drawing, slowly, so that you can watch the coast leave your desk. The answering stroke stays on the wax, sulking.''', c('Keep the personal correspondence without entering the harbor work.')),
+{n}She takes back the drawing, slowly, so that you can watch the coast leave your desk. The answering stroke stays on the wax, sulking.{/n}''', c('Keep the personal correspondence without entering the harbor work.')),
 ])
 
 
@@ -121,17 +121,17 @@ You sit where the lamp illuminates your own hand. Beyond the window, a sentry st
     p("exposure", "Nocticula", '''"I remember the sketch. It has not improved while in my possession."
 "You have been looking at it?"
 "You gave me an error with an attractive idea inside it. Did you expect me to preserve only the error?"
-She keeps what you surrendered. The admission costs her nothing, and gives you a reason to remember that she does not stop being curious because you would prefer your mistake forgotten.
-The new stroke has no branching path to test. It answers from her side of the mark, and will vanish when she withdraws it.
-"Refuse this too, if you like," she writes. "I shall enjoy the refusal nearly as much as the evening. Not quite."''', c('Keep the old exposure and surrendered sketch distinct from the invitation.', "prepare")),
+{n}She keeps what you surrendered. The admission costs her nothing, and gives you a reason to remember that she does not stop being curious because you would prefer your mistake forgotten.{/n}
+{n}The new stroke has no branching path to test. It answers from her side of the mark, and will vanish when she withdraws it.{/n}
+"Refuse this too, if you like," {n}she writes.{/n} "I shall enjoy the refusal nearly as much as the evening. Not quite."''', c('Keep the old exposure and surrendered sketch distinct from the invitation.', "prepare")),
     p("prepare", "Nocticula", '''"Write where you mean to wake."
-You name your room in Drezen, the chair, and the lamp with a chipped blue foot. You do not write the rest: that before you sat down you went out to the sentry on the wall below your window and paid him to strike the rail at the second bell, hard, whether or not he hears you snoring.
-She finds it anyway. The answering stroke goes still on the wax for a long breath.
+{n}You name your room in Drezen, the chair, and the lamp with a chipped blue foot. You do not write the rest: that before you sat down you went out to the sentry on the wall below your window and paid him to strike the rail at the second bell, hard, whether or not he hears you snoring.{/n}
+{n}She finds it anyway. The answering stroke goes still on the wax for a long breath.{/n}
 "You have hired a man to wake you from me."
 "I have hired a man to strike a rail. What I do when I hear it is my affair."
-"How insulting." The stroke curls. "And how sensible. I could hold a sleeper through a great deal louder than a rail, if I chose. We shall find out whether I choose."
-You read it twice. The risk has a name, and it has not become smaller because she wrote it beautifully.
-She has asked for one evening. What comes after it, she makes clear, will depend on how much she enjoys it.''',
+"How insulting." {n}The stroke curls.{/n} "And how sensible. I could hold a sleeper through a great deal louder than a rail, if I chose. We shall find out whether I choose."
+{n}You read it twice. The risk has a name, and it has not become smaller because she wrote it beautifully.{/n}
+{n}She has asked for one evening. What comes after it, she makes clear, will depend on how much she enjoys it.{/n}''',
       c('Go to sleep, with the sentry paid to strike the rail at the second bell.', "arrival", flags=f("trial_accepted")),
       c('Decline the evening. Keep the letters, and keep her out of your sleep.', "refuse", flags=f("closed", "letters_retained"))),
     p("arrival", "Narrator", '''{n}You leave the sheet beneath the lamp and close your eyes. Sleep brings a stone landing no larger than your room, with an open arch at one end. Beyond it hangs a red evening sky. There is no city beneath the sky, and no ground upon which to place one.
@@ -142,7 +142,7 @@ Nocticula stands beside the arch. The light follows the edges of her wings, then
 {n}You can see the familiar ease with which she lets a silence become someone else's difficulty. Her attention is less comfortable than her handwriting. It also makes the absurdly small landing seem worth the wait.
 You tell her so. She steps close enough that you smell night-blooming flowers, and lifts one hand toward your collar.
 Far away and very loud, iron rings on iron. Once. Your sentry is punctual.{/n}
-"Your hired man," she says, without turning her head. Her hand has stopped an inch from your throat. "I could make you deaf to him. It would take less effort than this conversation."
+"Your hired man," {n}she says, without turning her head. Her hand has stopped an inch from your throat.{/n} "I could make you deaf to him. It would take less effort than this conversation."
 {n}The second blow is already on its way up the wall.{/n}''', c('[Let the second blow reach you.]', "waking")),
     p("waking", "Narrator", '''{n}The second blow reaches you. The arch loses its red light, and your chair presses against the back of your legs. The lamp is still burning, and the sentry below the window is swearing at his stinging hands. Nocticula's next words are already on the sheet beneath the lamp.{/n}
 "Your sentry is a very punctual man. I have made a note of his face."
@@ -153,12 +153,12 @@ Under it, one more line, smaller: "Next time, pay him to be late."{/n}''',
       c('Write back that you will think about the sentry\'s wages.', flags=f("the_room_she_makes_done", "exit_demonstrated")),
       c('No. Keep the letters. I do not want further dream meetings.', flags=f("the_room_she_makes_done", "exit_demonstrated", "closed", "letters_retained"))),
     p("refuse", "Nocticula", '''"Then stay by your lamp."
-The second stroke disappears. The old answering mark remains.
-You ask whether she intends to withdraw her correspondence as well.
+{n}The second stroke disappears. The old answering mark remains.{/n}
+{n}You ask whether she intends to withdraw her correspondence as well.{/n}
 "Did you ask me to?"
 "No."
 "Then try not to refuse an evening and spend the rest of it demanding compensation for an offense I have not committed. Tell me what you meant to write before I drew the coast."
-You turn to a clean page. Nothing asks you to sleep.''', c('Continue the existing correspondence.')),
+{n}You turn to a clean page. Nothing asks you to sleep.{/n}''', c('Continue the existing correspondence.')),
 ])
 
 
@@ -175,49 +175,49 @@ You put the letter down, laughing. When you pick it up again she has added a que
     p("closure", "Nocticula", '''"Nor will your interest in the passengers purchase my indifference to what they found."
 "I would find you less interesting if you were indifferent to a profitable mystery."
 "Be careful. You are making it difficult for me to charge you for my patience."
-She asks whether you want your first advice to concern the passengers' safety or the means of securing the passage, and holds back the rest of the case the way a card player holds back the last trick.
-You tell her which question you mean to ask first. Her answering mark curls on the page, amused, and gives you nothing more.''', c('Choose the first question.', "purpose")),
+{n}She asks whether you want your first advice to concern the passengers' safety or the means of securing the passage, and holds back the rest of the case the way a card player holds back the last trick.{/n}
+{n}You tell her which question you mean to ask first. Her answering mark curls on the page, amused, and gives you nothing more.{/n}''', c('Choose the first question.', "purpose")),
     p("unagreed", "Nocticula", '''"Good. I have declined far more impressive attempts to make an acquaintance sound like an alliance."
 "You would dislike finding your name on something you had not examined."
 "I would dislike finding it there unsuccessfully. Do not omit the more expensive possibility merely because you disapprove of it."
-She has endorsed nothing and named no price. You copy her answer beside the proposal, and the mark follows your pen along the line with a patience that suggests she is learning your hand for later use.
-"The harbor," she writes. "Show me an ambition which can bear being questioned while it is still small enough to inspect."''', c('Choose what you would investigate first.', "purpose")),
-    p("purpose", "Commander", '''You could begin by asking whom the trade leaves behind. You could begin by asking who is foolish enough to profit from a road under Nocticula's gaze without sharing it with her.
-The two questions may lead to the same person. They will not flatter that person in the same way.
-Nocticula has left space beneath her unfinished drawing. This time she means you to choose what belongs there.''',
+{n}She has endorsed nothing and named no price. You copy her answer beside the proposal, and the mark follows your pen along the line with a patience that suggests she is learning your hand for later use.{/n}
+"The harbor," {n}she writes.{/n} "Show me an ambition which can bear being questioned while it is still small enough to inspect."''', c('Choose what you would investigate first.', "purpose")),
+    p("purpose", "Commander", '''{n}You could begin by asking whom the trade leaves behind. You could begin by asking who is foolish enough to profit from a road under Nocticula's gaze without sharing it with her.{/n}
+{n}The two questions may lead to the same person. They will not flatter that person in the same way.{/n}
+{n}Nocticula has left space beneath her unfinished drawing. This time she means you to choose what belongs there.{/n}''',
       c('[Good] Begin with those who paid to travel and did not arrive. A route worth keeping must be worth surviving.', "people", flags=f("first_question_passengers")),
       c('[Evil] Begin with whoever collects the profit. If I help you find the road, I expect to discuss its value to me.', "profit", flags=f("first_question_profit"))),
     p("people", "Nocticula", '''"You have chosen the answer most likely to make me listen to an inconvenient witness."
 "You have chosen the adviser most likely to find one."
 "Yes. I am attempting to remember why I considered this an advantage."
-She writes that she will bring the accounts of the missing and the returned. Some of them, she adds, lied to her agents, and she has not yet decided what a liar costs in her harbor.
-She underlines the word liar.''', c('Keep the request for the travelers\' accounts in the invitation.', "invitation")),
+{n}She writes that she will bring the accounts of the missing and the returned. Some of them, she adds, lied to her agents, and she has not yet decided what a liar costs in her harbor.{/n}
+{n}She underlines the word liar.{/n}''', c('Keep the request for the travelers\' accounts in the invitation.', "invitation")),
     p("profit", "Nocticula", '''"You expect to be paid before discovering whether your advice is worth taking?"
 "I expect to be heard before you decide that my only reward should be proximity to you."
 "An ambitious complaint from a man who requested precisely that."
-You admit the difficulty. It does not make the two questions identical.
-She agrees to name a return for a useful result once you know what the route can do. For appearing, she writes, you have already been paid: she has let you watch her work.
-"Bring the appetite," she writes. "We shall see whether it develops manners when the thing it wants belongs to somebody who can refuse it."''', c('Keep payment open until there is a result to pay for.', "invitation")),
+{n}You admit the difficulty. It does not make the two questions identical.{/n}
+{n}She agrees to name a return for a useful result once you know what the route can do. For appearing, she writes, you have already been paid: she has let you watch her work.{/n}
+"Bring the appetite," {n}she writes.{/n} "We shall see whether it develops manners when the thing it wants belongs to somebody who can refuse it."''', c('Keep payment open until there is a result to pay for.', "invitation")),
     p("invitation", "Nocticula", '''"Then I will show you the quay."
-You ask whether she is offering further hosted meetings through the same mark.
+{n}You ask whether she is offering further hosted meetings through the same mark.{/n}
 "When you sleep with the answering sheet beside you. Put it in a drawer when you want your nights to yourself. I shall know which nights they are, and I shall wonder what you do with them."
-You will keep the old correspondence as well. She does not ask about your other lovers. She has never needed to ask about anything she could find out for herself.
+{n}You will keep the old correspondence as well. She does not ask about your other lovers. She has never needed to ask about anything she could find out for herself.{/n}
 "And if I decline the harbor after hearing the case?"
 "Then I shall have spent an evening arranging a particularly elaborate disappointment. I do not recommend making a habit of it."
 "That was almost an answer."
 "Decline it, and I shall be annoyed, which I do beautifully and at length. Your letters would have to become very much better company."
-She has left you the clean final space again. No new stroke appears inside it.''',
+{n}She has left you the clean final space again. No new stroke appears inside it.{/n}''',
       c('Accept recurring hosted invitations on those terms. Hear the harbor proposal before deciding whether to undertake it.', "yes", flags=f("recurring_dreams_accepted", "harbor_variant_ready")),
       c('Keep the letters and decline further dream invitations or harbor work.', "no", flags=f("closed", "letters_retained"))),
     p("yes", "Nocticula", '''"Wear whatever boots you believe the mystery deserves."
-You ask whether there will be water this time.
+{n}You ask whether there will be water this time.{/n}
 "You have not yet seen the problem. Do not begin improving it."
-The coast returns beneath her signature. She has finished one more mooring post. You could count the spaces left for the others, but instead you turn the sheet so its blank water faces the lamp.
-You want to see what she makes of it. You also want to see her notice that you have returned.
-For once you do not supply a more respectable reason.''', c('Keep the accepted invitation to hear a new undertaking.', flags=f("a_chosen_shore_done"))),
+{n}The coast returns beneath her signature. She has finished one more mooring post. You could count the spaces left for the others, but instead you turn the sheet so its blank water faces the lamp.{/n}
+{n}You want to see what she makes of it. You also want to see her notice that you have returned.{/n}
+{n}For once you do not supply a more respectable reason.{/n}''', c('Keep the accepted invitation to hear a new undertaking.', flags=f("a_chosen_shore_done"))),
     p("no", "Nocticula", '''"Then the coast remains my concern."
-She folds the drawing through the answering mark until only your own words remain. Beneath them she asks whether your missing broker has yet become foolish enough to use his old name.
-You consult the latest report. The correspondence continues within the narrower choice you made.''', c('Keep the private correspondence without accepting the larger invitation.', flags=f("a_chosen_shore_done"))),
+{n}She folds the drawing through the answering mark until only your own words remain. Beneath them she asks whether your missing broker has yet become foolish enough to use his old name.{/n}
+{n}You consult the latest report. The correspondence continues within the narrower choice you made.{/n}''', c('Keep the private correspondence without accepting the larger invitation.', flags=f("a_chosen_shore_done"))),
 ])
 
 

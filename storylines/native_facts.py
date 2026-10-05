@@ -407,6 +407,6 @@ def inventory_consumers(payload):
     abdicated = copy.deepcopy(crown)
     abdicated['Requires'] = ['galfrey.romance_finished']
     abdicated['Forbids'] = []
-    abdicated['Text'] = 'Galfrey laid down the crown after the war. She stayed with the Commander, and let Mendev find its own answer to that.'
+    abdicated['Text'] = '{n}Galfrey laid down the crown after the war. She stayed with the Commander, and let Mendev find its own answer to that.{/n}'
     paragraphs.append(abdicated)
 # eng7-l02 end

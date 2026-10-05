@@ -105,7 +105,7 @@ visit(P + "woken.white_stag", "The white stag", [
 visit(P + "woken.glory", "Her glory", [
     nar("market", '''{n}There is a crowd around the fountain in the Drezen market, and a minstrel on its rim with a lute, and when you push through to see what the laughter is about, the tall Kellid woman at the front of the crowd has her hand around his lute's neck and the minstrel has gone the colour of whey.{/n}''',
         c("Continue", "song")),
-    dl("song", '''"Sing it again," she says, very pleasantly. "The part about the Blessed Delamere who wept over every deer she slew, and fed the orphans of the wood with honey from her own hands."
+    dl("song", '''"Sing it again," {n}she says, very pleasantly.{/n} "The part about the Blessed Delamere who wept over every deer she slew, and fed the orphans of the wood with honey from her own hands."
 {n}The minstrel does not sing it again. She lets go of the lute. He clutches it to his chest like a baby.{/n}''',
         c('"Delamere. What did he do?"', "wrong")),
     dl("wrong", '''"He sang me wrong." {n}She turns on you, and there is real outrage in her face, and under it something stranger and more naked: hunger.{/n} "Weeping over deer. Honey. Orphans. I never wept over a deer in my life; I ate them. I had no honey; bees hate me. And I did not feed orphans, I put them to work, which is better for an orphan than honey."
@@ -157,7 +157,7 @@ visit(P + "woken.jester", "Defenceless", [
         c("Continue", "end", flags=(JESTER_SEEN,))),
     nar("lifted", '''{n}It comes away from her belt as if it were glad to go. She is still talking. You wait until she stops, and then you hold it up between two fingers, handle first, the way you would return a dropped glove.{/n}''',
         c("Continue", "lifted2")),
-    dl("lifted2", '''{n}She looks at the knife. She looks at her belt. She looks at you.{/n} "Yes," she says at last, in a voice you have not heard from her before. "Defenceless. Like a child." {n}She takes the knife back, very carefully, as if it might have learned tricks while it was away.{/n} "Do that to the Horned One's people and I will kiss you in front of the whole war council. Do it to me again and I will put you over my knee."''',
+    dl("lifted2", '''{n}She looks at the knife. She looks at her belt. She looks at you.{/n} "Yes," {n}she says at last, in a voice you have not heard from her before.{/n} "Defenceless. Like a child." {n}She takes the knife back, very carefully, as if it might have learned tricks while it was away.{/n} "Do that to the Horned One's people and I will kiss you in front of the whole war council. Do it to me again and I will put you over my knee."''',
         c("Continue", "end", flags=(JESTER_SEEN, KNIFE_LIFTED))),
     dl("caught", '''{n}Her hand closes on your wrist before your fingers have found the hilt, hard enough to grind the bones.{/n} "No." {n}She does not let go.{/n} "Not defenceless, then. Not with a knife." {n}She holds your wrist a moment longer than she needs to, and her thumb moves, once, over the pulse.{/n} "Try again next winter. You will be slower then; I have seen to that."''',
         c("Continue", "end", flags=(JESTER_SEEN,))),
@@ -234,10 +234,10 @@ temple(P + "temple.prior_lessons", "The prior's lessons", '"Kyado, what happened
     nar("plain", '''{n}She hands you Kyado's bow. It is still warm from his hands, and slippery.{/n}''',
         c("Continue", "shot")),
     nar("shot", '''{n}You draw. Your bad leg will not take the weight the way a stance wants it to, so you shift onto the good one, and she puts her palm flat in the small of your back and shifts you back again, firmly.{/n}
-"On both," she says, very close to your ear. "Even the bad one. Especially the bad one. A leg you do not trust never gets stronger." {n}Her hand does not move from your back while you loose. The arrow goes into the demon's painted eye.{/n}''',
+"On both," {n}she says, very close to your ear.{/n} "Even the bad one. Especially the bad one. A leg you do not trust never gets stronger." {n}Her hand does not move from your back while you loose. The arrow goes into the demon's painted eye.{/n}''',
         c("Continue", "eye")),
     dl("eye", '''{n}Kyado, in the dust, applauds, then stops, embarrassed.{/n}
-"Luck," says Delamere, and takes her hand from your back, slowly. "Jester's luck. But you did not close your eyes." {n}She looks at the target, and then at you, and the yard goes quiet around the three of you.{/n} "Come again. Both of you. I have not had pupils in a long time. I had forgotten that I liked it."''',
+"Luck," {n}says Delamere, and takes her hand from your back, slowly.{/n} "Jester's luck. But you did not close your eyes." {n}She looks at the target, and then at you, and the yard goes quiet around the three of you.{/n} "Come again. Both of you. I have not had pupils in a long time. I had forgotten that I liked it."''',
         c("[Promise to come again.]", flags=(LESSONS,))),
 ], requires=("trickster.ever", FIRST_MEAT), forbids=(CLOSED, LESSONS, KYADO_JUDGED), delay=24, optional=True)
 
@@ -297,7 +297,7 @@ visit(P + "woken.old_deadeye", "Old Deadeye's house", [
     dl("haddo_end", '''{n}She gets up and turns to the priest, who flinches.{/n} "Bean-grower. Your rows are crooked; I saw them through the wall. Straighten them before the spring or the rain will take the soil down into the street." {n}She unslings the brace of hares at her belt and lays them on the altar, under the painted bow.{/n} "The first for him. The rest for the women in your porch. They have been standing in the cold for my sake since dawn, and I did not see them. That was a sin. Tell them it was mine."''',
         c("Continue", "out")),
     nar("out", '''{n}She walks out past the three women. One of them, the youngest, reaches out without thinking and touches the hem of her grave-leathers as she goes by, the way you would touch a relic. Delamere stops, and looks at her, and puts a hand on her head for the space of a breath, and goes on.{/n}
-{n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} "Tonight I will pray again," she says. "Not louder. He is not deaf. I will only listen harder."''',
+{n}Out in the street she waits for you to catch up, and matches her step to your limp.{/n} "Tonight I will pray again," {n}she says.{/n} "Not louder. He is not deaf. I will only listen harder."''',
         c("[Walk with her as far as the gate.]", flags=(DEADEYE,))),
 ], requires=("trickster.ever", STAG_TOLD), forbids=(CLOSED, DEADEYE), delay=48, optional=True)
 
@@ -327,7 +327,7 @@ visit(P + "woken.names", "The names", [
     dl("mark", '''"She would." {n}She thinks about it, and nods.{/n} "She would have laughed at me for fussing. She was a hard little thing; she had to be, with that mother." {n}She cuts a small hare under the others, ears back, running.{/n} "There. That is what she was. It will do until I remember the rest."''',
         c("Continue", "boy")),
     dl("cut", '''{n}She looks at you, and then, slowly, she gives you the chisel.{/n} "Hold it like this. Not like that; you hold it like a man holding a stolen purse. Like this." {n}She stands behind you and closes her hand over yours, stone-cold and white with dust, and guides the first stroke.{/n} "Nine winters. Tracked foxes. Bitten nails. The Stone Hares' girl, who put her cheek to the ice." {n}Four strokes, five. What you cut is not a name. It is a description, in a stranger's clumsy hand, in a language you cannot read.{/n}
-"There," she says, very quietly, into your hair. "That is her. Better than a name."''',
+"There," {n}she says, very quietly, into your hair.{/n} "That is her. Better than a name."''',
         c("Continue", "boy")),
     dl("boy", '''{n}She takes the chisel back and moves along the wall, to a place a little apart from the villages, low down, where the lamp barely reaches. Four small marks are already cut there, in a row, like the four finger bones she found in the drain.{/n}
 "The farm boy. The one they ate." {n}Her voice does not change.{/n} "I never knew him. He was born long after me. But he died on my grave, and so he is mine. I have cut him with my own people, because he has no one else to be with."''',

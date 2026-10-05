@@ -198,6 +198,13 @@ PRESENCE_BOOTSTRAPS = {
 PRESENCE_CHAPTERS = [["chapter_one"], ["chapter_later"]]
 # eng7-l06 end
 
+# eng7-f4: authored contact bootstrap for the existing stolen-transfer-papers device.
+# Only departure is lifted: theft brings her back to demand her papers, not to reconcile.
+PRESENCE_BOOTSTRAPS["seelah"] = {"seelah_gone": {
+    "Flag": "seelah.trickster.primed",
+    "Reason": "The stolen transfer papers bring the living Seelah to Fye's table before she answers."}}
+# eng7-f4 end
+
 
 def presence_relationship(key):
     match = re.fullmatch(r"(.+?)\.presence(?:\.[a-z0-9_]+)?", key)

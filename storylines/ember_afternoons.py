@@ -28,7 +28,7 @@ Ember moves her hand away from a spectacularly torn sleeve.{/n}
     n("project", "Ember", '''"Our bird. Only this time he can move."
 {n}She shows you a flat wooden offcut with a paper beak attached. Loose pieces of cloth dangle below it.{/n}
 "Pella gave me the broken pegs. I thought they could be legs, but they were too heavy. He kept falling on his face."
-"You kept putting him down beak first," says the woman.
+"You kept putting him down beak first," {n}says the woman.{/n}
 "That too."
 {n}Ember holds the bird sideways. Its beak opens when she pulls a thread.{/n}
 "I wanted to make him say something. But now that he can, I don't know what he ought to say first."''',
@@ -38,15 +38,15 @@ Ember moves her hand away from a spectacularly torn sleeve.{/n}
 "I have inspected all the boots, and none of them contain breakfast."
 {n}Pella laughs into a piece of folded linen.{/n}
 "That is a burden, certainly."
-"He can go looking for it," Ember says. "Only somebody will have to tell him where to go. If I make him walk and talk and meet everybody myself, I will run out of hands."''', c('"You want another performer."', "invite")),
+"He can go looking for it," {n}Ember says.{/n} "Only somebody will have to tell him where to go. If I make him walk and talk and meet everybody myself, I will run out of hands."''', c('"You want another performer."', "invite")),
     n("inspector", "Ember", '''{n}She lifts the bird until its beak faces the cloudless sky.{/n}
 "The rain is very late. I shall have to inspect something else."
-"My washing is grateful," says Pella.
+"My washing is grateful," {n}says Pella.{/n}
 "He could inspect breakfast. But somebody will have to tell him where it is. If I make him walk and talk and meet everybody myself, I will run out of hands."''', c('"You want another performer."', "invite")),
     n("invite", "Ember", '''"Would you like to?"
 {n}She lays the bird across the top of the scrap basket.{/n}
 "Pella says we can use her courtyard when the washing has gone in. Just for a little while. She wants to see whether he can walk without losing anything."
-"I want to sit down without someone handing me another shirt," Pella says. "A bird is a welcome change."
+"I want to sit down without someone handing me another shirt," {n}Pella says.{/n} "A bird is a welcome change."
 {n}Ember brings out a second wooden shape. This one has a long nose and a tail made from an old ribbon.{/n}
 "This is a fox. I thought he might know where breakfast was. Foxes usually do."''',
       c('"I will be the fox. I reserve the right to give terrible directions."', "fox", flags=("ember.player_fox",)),
@@ -54,13 +54,13 @@ Ember moves her hand away from a spectacularly torn sleeve.{/n}
     n("fox", "Ember", '''"Then I must make him get lost somewhere interesting."
 {n}She holds the fox out by its flat handle. Its ribbon tail has a knot in the middle.{/n}
 "Don't undo that. It keeps slipping off. I think he must have caught it in a gate."
-"Or a laundry basket," Pella says.
+"Or a laundry basket," {n}Pella says.{/n}
 "He won't admit it."
 {n}You try a solemn greeting. Ember's bird answers by opening its beak so far that the thread catches. She has to free it before either creature can speak again.{/n}
 "We should practice. He might get stuck halfway through a secret."''', c('[Agree to rehearse before inviting anyone.]', "cloth")),
     n("narrator", "Ember", '''"Then you can tell me when they have been talking for too long."
 {n}She gives the fox a deep, solemn voice, then answers it with the bird. The second voice is almost exactly the same. Pella raises an eyebrow.{/n}
-"They're related," Ember says quickly.
+"They're related," {n}Ember says quickly.{/n}
 "A fox and a bird?"
 "They don't like to talk about it."
 {n}She laughs at her own explanation and tries again. This time the fox speaks so slowly that the bird interrupts before he reaches the end of his greeting.{/n}
@@ -69,9 +69,9 @@ Ember moves her hand away from a spectacularly torn sleeve.{/n}
 "You can stand the figures here. My own cloth, not a customer's. Bring it back to the shelf when you've finished."
 {n}She smooths one corner.{/n}
 "If my brother needs it for his delivery cart, his work comes first. He's lent me that cart often enough."
-"We can still have the bird," Ember says. "He belongs to us."
+"We can still have the bird," {n}Ember says.{/n} "He belongs to us."
 "Yes. And the courtyard is yours for one afternoon after we agree the day. No preaching to draw a crowd, and no blocking the door."
-"I wanted to do the fox," Ember says, sounding faintly affronted.
+"I wanted to do the fox," {n}Ember says, sounding faintly affronted.{/n}
 {n}Pella lifts both hands in surrender. Ember arranges a scrap of yellow cloth beside the bird, then removes it and folds it into a small parcel.{/n}''', c('"What is that?"', "boots")),
     n("boots", "Ember", '''"His boots. All of them. He takes them off to eat breakfast, and the fox carries them away."
 "Why?"
@@ -84,7 +84,7 @@ Ember moves her hand away from a spectacularly torn sleeve.{/n}
 
 s("missing_cloth", "The sea has gone to work", [
     n("start", "Narrator", '''{n}The shelf is empty. Ember looks underneath it, then at the table, although a blue cloth large enough to cover the table could hardly have hidden beneath a spool of thread.{/n}
-"He needed it," Pella says. "I told you his cart came first. A crate had broken, and he needed something to keep the little parcels together."
+"He needed it," {n}Pella says.{/n} "I told you his cart came first. A crate had broken, and he needed something to keep the little parcels together."
 {n}Ember nods. She puts the bird on the bare wood.{/n}
 "I remember."
 "He'll bring it back when he's done. I don't know when that will be."
@@ -113,7 +113,7 @@ s("missing_cloth", "The sea has gone to work", [
       c('"Let us make a road with loose scraps. The bird can travel overland."', "road", flags=("ember.stage_road",)),
       c('"Let us wait for the cloth. We can practice the voices today."', "wait", flags=("ember.stage_waited",))),
     n("road", "Narrator", '''{n}You and Ember choose three broad scraps from the permitted basket. Pella gives you a small board to put under them so their ragged edges will not snag on the table. With the handles held just above the cloth, both figures can cross it.{/n}
-"That one is an inn," Ember says, indicating a brown square.
+"That one is an inn," {n}Ember says, indicating a brown square.{/n}
 "A very small inn."
 "It only has one room. The fox has promised it to everybody."
 {n}She stops. The fox looks behind itself.{/n}
@@ -121,7 +121,7 @@ s("missing_cloth", "The sea has gone to work", [
 {n}The bird attempts to enter the inn and catches its beak on the edge of the board. Ember frees it without dislodging the road.{/n}
 "We can keep the afternoon we chose. Pella won't have to go and tell people we've stopped."''', c('[Help fasten a rest for the bird behind the board.]', "role")),
     n("wait", "Narrator", '''{n}Pella takes a shawl down from its peg. She is going to see one of her guests before the evening meal anyway, but the other lives in the opposite direction.{/n}
-"I'll do that door tomorrow," she says. "There won't be anybody waiting here for a performance that isn't happening."
+"I'll do that door tomorrow," {n}she says.{/n} "There won't be anybody waiting here for a performance that isn't happening."
 {n}Ember watches her go.{/n}
 "Waiting makes work too. I hadn't thought about that."
 {n}You practice at the bare table. The puppets stay in their operators' hands, well above the wood. The fox is given a sneeze that interrupts its most important lies. By the fourth attempt, you both manage to keep the figures upright through it.{/n}
@@ -162,7 +162,7 @@ s("missing_cloth", "The sea has gone to work", [
 s("courtyard_play", "Breakfast for a troublesome bird", [
     n("start", "Narrator", '''{n}Pella has cleared the courtyard. Three stools face the low table, with enough room beside them for anyone who would rather stand. A woman carrying an empty market basket has taken the stool nearest the door. Pella introduces her as Ilva, then sits beside her.{/n}
 {n}Ember peers over the table. Ilva wants to know whether she will be able to hear from the back.{/n}
-"There isn't a back," Ember says. "But you can tell us if we're too quiet."''',
+"There isn't a back," {n}Ember says.{/n} "But you can tell us if we're too quiet."''',
       c('[Help set out the road.]', "road", requires=("ember.stage_road",)),
       c('[Help unfold the returned sea.]', "sea", requires=("ember.stage_waited",)),
       c('[Ask for a little time before taking your place.]', abort=True)),
@@ -173,10 +173,10 @@ s("courtyard_play", "Breakfast for a troublesome bird", [
 {n}Ember makes the bird take an experimental step behind the board.{/n}
 "He has a very long way to go for breakfast."''', c('[Take your place.]', "role")),
     n("sea", "Narrator", '''{n}The cloth has come back with a small tear near one corner. Pella's brother has apologized, and Pella has folded that edge underneath so it cannot catch on the bird's handle.{/n}
-"Nessa couldn't come on the first afternoon," she tells you. "So the new day worked out for somebody."
+"Nessa couldn't come on the first afternoon," {n}she tells you.{/n} "So the new day worked out for somebody."
 {n}Nessa arrives with a cup with a chipped rim. She sets it well away from the performers and takes the last stool.{/n}
 "I was told there would be a sea. Is that it?"
-"It has had a busy week," Ember says.
+"It has had a busy week," {n}Ember says.{/n}
 "So have I. I'll try not to spill anything into it."
 {n}Ember smooths the yellow island. It is a little farther from the edge than she remembers.{/n}
 "The sea has got smaller. We can move breakfast."
@@ -194,18 +194,18 @@ s("courtyard_play", "Breakfast for a troublesome bird", [
 "There is an excellent view."
 "Can I eat it?"
 {n}Pella laughs. The fox sneezes so violently that its tail slips off the edge of the table. Ember retrieves it while you explain that this is a customary fox greeting, seldom understood by outsiders.{/n}
-"Ah," Pella says. "That explains a good deal."''', c('[Continue to the missing boots.]', "theft")),
+"Ah," {n}Pella says.{/n} "That explains a good deal."''', c('[Continue to the missing boots.]', "theft")),
     n("theft", "Narrator", '''{n}The bird puts down its boots to count them. The fox offers to help, then hides the little bundle beneath its tail. When the bird turns back, the parcel has vanished.{/n}
-"You were standing here," says the bird.
-"I stand in many places," says the fox.
+"You were standing here," {n}says the bird.{/n}
+"I stand in many places," {n}says the fox.{/n}
 "But this was one of them."
 {n}The fox begins to back away. Its tail drags the parcel into sight.{/n}
-"That wasn't very clever," Ilva says.
+"That wasn't very clever," {n}Ilva says.{/n}
 {n}Ember gives the bird a long look at the exposed boots. This time she remembers to close its beak before speaking.{/n}''',
       c('[Give the fox the work of making amends.]', "restitution", requires=("ember.play_restitution",)),
       c('[Let the fox ask for help with its own cold feet.]', "explanation", requires=("ember.play_explanation",))),
     n("restitution", "Narrator", '''{n}The fox returns the boots and offers to carry the bird's luggage. The bird accepts the help, but makes the fox walk where it can see the bundle. Together they arrive at the empty bowl.{/n}
-"There isn't any breakfast," says the bird.
+"There isn't any breakfast," {n}says the bird.{/n}
 {n}The fox searches beneath the bowl. The yellow scrap, now unpacked, becomes a pancake. It is folded into two unequal pieces. The bird studies both before offering the larger one to the fox.{/n}
 "You did carry everything."
 {n}Pella applauds. Ilva claps too, then says she hopes the fox doesn't take the boots again tomorrow.{/n}
@@ -215,15 +215,15 @@ s("courtyard_play", "Breakfast for a troublesome bird", [
 "I thought you had so many that you wouldn't miss a few."
 "I have so many feet."
 {n}The bird considers, then leads the fox to breakfast. A scrap becomes a pancake, shared between them. Afterward they roll the remaining yellow cloth into a new pair of boots for the fox.{/n}
-"Ask first next time," says the bird.
+"Ask first next time," {n}says the bird.{/n}
 {n}Pella applauds. Ilva claps more slowly.{/n}
 "And if he says he's cold again? Does the bird have to keep making him things?"
 {n}Ember looks at the tiny boots. Pella waits instead of answering for her.{/n}''', c('[Let Ember answer.]', "answer")),
     n("answer", "Ember", '''"I don't know what he does tomorrow. We haven't made tomorrow yet."
 {n}She lowers the bird a little.{/n}
 "I wanted him to be able to come back."
-"I liked him," Pella says. "I don't want him driven out."
-"Neither do I," Ilva says. "I'd put my boots somewhere else, though."
+"I liked him," {n}Pella says.{/n} "I don't want him driven out."
+"Neither do I," {n}Ilva says.{/n} "I'd put my boots somewhere else, though."
 {n}Ember puts the bird down. The wooden handle makes a little clack against the table.{/n}
 "It is finished for today. Thank you for coming."
 {n}The audience thanks her. Ilva asks whether there will be another. Ember says she would like to think about it. Pella gets up to move the stools, giving you a moment beside the table.{/n}''',
@@ -242,7 +242,7 @@ s("courtyard_play", "Breakfast for a troublesome bird", [
 
 s("after_applause", "The morning after the fox", [
     n("start", "Narrator", '''{n}Ember is sitting near Pella's doorway with the puppet handles laid across her knees. Pella is inside, arguing with a customer about a missing button. The customer believes that five buttons became four in the wash. Pella remembers sewing the fourth one on last week.{/n}
-"I don't think the fox took it," Ember says quietly.
+"I don't think the fox took it," {n}Ember says quietly.{/n}
 {n}She turns one of the handles over.{/n}
 "Ilva came by. She brought us a piece of ribbon for the next one. She said she liked the play. Then she said the same thing about the boots."
 {n}The new ribbon is green and much too long for a tail.{/n}
@@ -305,7 +305,7 @@ s("after_applause", "The morning after the fox", [
 
 s("second_ending", "A visitor at the fox's gate", [
     n("start", "Narrator", '''{n}Ember has borrowed a small tray from Pella, who made her promise to return it before supper. The courtyard table is covered in clean laundry today. You settle on the broad step with the tray between you and the puppets laid beside it.{/n}
-"Only the end," Ember says. "We know how the beginning goes."
+"Only the end," {n}Ember says.{/n} "We know how the beginning goes."
 {n}She has mended the bird's beak. The thread now passes through a smooth loop, and the jaw closes when she lets it go.{/n}
 "It doesn't laugh unless I want it to. That's useful. Sometimes I don't want it to."''',
       c('[Take the fox, as before.]', "fox", requires=("ember.player_fox",)),
@@ -313,7 +313,7 @@ s("second_ending", "A visitor at the fox's gate", [
       c('[Ask to try the ending another afternoon.]', abort=True)),
     n("fox", "Ember", '''"You can say something I haven't thought of. Only don't have him take the boots again. I don't want that today."
 {n}You make the fox inspect the bird's boots from a respectful distance. It announces that it has retired from collecting other people's footwear.{/n}
-"Good," says the bird. "Then we can talk about something else."
+"Good," {n}says the bird.{/n} "Then we can talk about something else."
 {n}Ember looks up from the tray.{/n}
 "I like that. We haven't let them talk about much else."''', c('[Begin the new ending.]', "version")),
     n("narrator", "Ember", '''"Say the bird has finished breakfast. He doesn't have to go anywhere yet."
@@ -327,17 +327,17 @@ s("second_ending", "A visitor at the fox's gate", [
       c('[Let the fox attempt its terrible song.]', "song", requires=("ember.revision_laughter",)),
       c('[Follow the bird past the fox\'s gate.]', "gate", requires=("ember.revision_distance",))),
     n("song", "Narrator", '''{n}The fox begins with a verse about a splendid tail. It loses the tune halfway through, starts again, and ends on a note that causes the bird to turn its head.{/n}
-"You have left part of it out," the bird says.
+"You have left part of it out," {n}the bird says.{/n}
 "The dull part."
 "The part that makes it a song."
 {n}The bird supplies three clear notes. The fox copies two and misses the third. Ember repeats the passage until both figures can get through it together.{/n}
-"Tomorrow," says the bird, "I might show you the next bit."
+"Tomorrow," {n}says the bird,{/n} "I might show you the next bit."
 {n}The fox asks whether the next bit mentions its tail. The bird says no, but they can probably fit it in.{/n}
 {n}Ember puts the bird down. This time the silence at the end has nothing caught inside it.{/n}
 "He wants to come back. We let him say it himself."''', c('"And the fox has something to practice while he waits."', "heard")),
     n("gate", "Narrator", '''{n}The green ribbon makes a gate across the tray. The fox has gone home. The bird passes once, carrying its boots. On the next pass it slows beside the gate.{/n}
 "Have you had breakfast?"
-"Yes," says the fox. "There is a little left."
+"Yes," {n}says the fox.{/n} "There is a little left."
 {n}The bird studies the gate. The fox waits on the other side without dragging it open.{/n}
 "May I bring my boots in?"
 "You may keep them on."

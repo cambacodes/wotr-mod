@@ -119,7 +119,7 @@ meet(FORMS, "The forms", '"You\'re drawing circles again."', [
         c('[Step inside her measure.]', "inside", flags=(MEASURE_FLIRT,)),
         c('"And the yield?"', "yield")),
     jan("inside", '''{n}You take the step. The point of her blade slides past your shoulder, and now there is nothing between you but the width of a breath.{/n}
-"That," she says, not quite steadily, "is exactly what they tell you not to do." {n}She doesn't step back either. After a while she remembers she's holding a sword and lowers it.{/n}
+"That," {n}she says, not quite steadily,{/n} "is exactly what they tell you not to do." {n}She doesn't step back either. After a while she remembers she's holding a sword and lowers it.{/n}
 "Let's do the yield. Before I forget what I was teaching."''',
         c("Continue", "yield")),
     jan("yield", '''"The yield is the hard one." {n}She lies down on her back inside the chalk, lays the blade beside her, and fixes her eyes on the ceiling.{/n}
@@ -321,7 +321,7 @@ meet(SEELAH, "The League of the Inspiring Cart", '"Tell me about Seelah."', [
 "No glory without risk. She used to shout it at the tavern ceiling. I'm going to shout it at a demon one of these days, and mean it, and then I'll have paid for something."''',
         c("[Leave her with it.]")),
     jan("mourn_quiet", '''{n}You sit on the bunk beside her. After a while she leans, very slightly, until her shoulder is against yours, and stays there while the lamp gutters.{/n}
-"Thank you," she says eventually. "For not saying she'd have forgiven me. Everybody says that."''',
+"Thank you," {n}she says eventually.{/n} "For not saying she'd have forgiven me. Everybody says that."''',
         c("[Leave her with it.]")),
     jan("gone", '''"Seelah's gone. The turnkey says you sent her away." {n}She looks at you over the tankard, and she doesn't hide what she thinks.{/n}
 "She was the best of us. The whole League. Better than Elan, and Elan was a knight. I don't know what she did to be put out, and I'm not going to ask, because I'd have to hear your side of it and I'd rather keep mine."
@@ -562,7 +562,7 @@ meet(FORD, "The ford", '"Tell me about the ford."', [
 "In Mivon I won forty-one bouts and never once had anything to say at the end of one. I'd just salute and walk off. This time I had something." {n}She winds the leather back on, tight and neat.{/n} "It was you. Don't make me say it twice."''',
         c("[Leave her to her grip.]")),
     jan("read", '''{n}You read them with her, one by one, in the lamplight. She says a word or two about each: a cook, a card-sharp, the boy's father, a woman who sang. At the fourth she stops.{/n}
-"Pim," she says, and doesn't say anything else, and winds the leather back on over him. {n}It takes her a long time to get it tight enough.{/n}''',
+"Pim," {n}she says, and doesn't say anything else, and winds the leather back on over him.{/n} {n}It takes her a long time to get it tight enough.{/n}''',
         c("[Leave her to her grip.]")),
 ], requires=(POSTING,), delay=24)
 
@@ -611,7 +611,7 @@ meet(YOUR_TALE, "Your part", '"You look like you\'re about to ask me something."
 "I was there too. I was carrying beer through the streets while people burned, laughing too loud, and thinking I was a hero because we'd found a cart." {n}She refills your cup.{/n} "Tell me one of them. One name. I'll drink to them."''',
         c("[Tell her one.]", "one")),
     jan("one", '''{n}You tell her one. She listens the way she listens to a telling in blood and tale, without interrupting, watching for the lie and not finding one.{/n}
-"All right," she says at the end, and drinks. "Now drink your beer."''',
+"All right," {n}she says at the end, and drinks.{/n} "Now drink your beer."''',
         c("[Drink the gaol's terrible beer with her.]")),
     jan("nothing", '''"Then you're either lying, or you're the most frightening person in Drezen." {n}She studies you over the cup.{/n}
 "I'll assume lying. It's kinder to both of us, and you'll tell me the truth eventually. Everyone does, in a cell, if you pour them enough of this."''',
@@ -723,10 +723,10 @@ meet(YIELD_CIRCLE, "Yielding the circle", '"The muster\'s in an hour."', [
 {n}The yard goes so quiet you can hear the lantern chains on the barracks wall. Somebody on the smithy roof says, "What's the Commander doing?" and somebody else says, "Shut up. It's Mivon."{/n}''',
         c("Continue", "yielded_her")),
     jan("yielded_her", '''{n}Jannah stands over you with her sword still lowered, and her face is doing something very complicated.{/n}
-"The Commander yields the circle," she says, not loudly. Then, because the old man would have wanted it said properly, loud enough for the gate: "The Commander of the crusade yields the circle to Jannah Aldori, of Mivon!"
+"The Commander yields the circle," {n}she says, not loudly. Then, because the old man would have wanted it said properly, loud enough for the gate:{/n} "The Commander of the crusade yields the circle to Jannah Aldori, of Mivon!"
 {n}She quits the circle, as she must. Then she turns on her heel, walks straight back in and lies down in the sand beside you, which is not in any of the forms at all.{/n}''',
         c("Continue", "sand")),
-    jan("sand", '''"I'm not cutting a notch for that," she says to the sky. "It doesn't count. It's the best thing anybody's ever done for me in public, and it doesn't count."
+    jan("sand", '''"I'm not cutting a notch for that," {n}she says to the sky.{/n} "It doesn't count. It's the best thing anybody's ever done for me in public, and it doesn't count."
 {n}Four hundred soldiers stand around a chalk circle in which their Commander and a deserter are lying on their backs in the sand, and nobody says a word.{/n}''',
         c("[Lie there with her.]")),
 ], requires=(COMMITTED, YOU_FIRST), forbids=(PUBLIC_YIELD,), delay=72)
@@ -838,7 +838,7 @@ meet(CURL, "The fourth of the League", '"You never talk about Curl."', [
     jan("room", '''"For now." {n}She looks at the tankard a while longer.{/n} "He'd have liked you. He liked anyone who got away with things. He'd have tried to pick your pocket and then apologised and given you back somebody else's purse."''',
         c("[Leave her with the League.]")),
     jan("quiet", '''{n}She lets the silence be, the way she'd let a blade rest in the chalk.{/n}
-"Thank you," she says eventually. "Everyone else tells me it wasn't my fault. I don't know that it wasn't. Neither do they."''',
+"Thank you," {n}she says eventually.{/n} "Everyone else tells me it wasn't my fault. I don't know that it wasn't. Neither do they."''',
         c("[Leave her with the League.]")),
 ], requires=(HOUNDHEART,), delay=48)
 
@@ -864,7 +864,7 @@ meet(VROCKS, "The ritual", '"You were shaking on the wall. Before."', [
 "My master would say a minute is plenty. Most bouts are over in less."''',
         c("[Leave the lamp turned up.]")),
     jan("beside", '''{n}You sit down on the cold floor beside her. After a while she leans until her shoulder is against yours, and puts the sword back in its sheath without looking at it.{/n}
-"Leave the lamp up," she says. "I know it's a waste of oil. Leave it up anyway."''',
+"Leave the lamp up," {n}she says.{/n} "I know it's a waste of oil. Leave it up anyway."''',
         c("[Leave the lamp turned up.]")),
 ], requires=(WALLS,), delay=24)
 
@@ -937,7 +937,7 @@ meet(TRACE, "Once", '"You keep touching it."', [
         c("Continue", "trace")),
     nar("trace", '''{n}She takes your hand and puts your fingers at her brow, where the scar begins, and lets you follow it: over the temple, along the line of the bone where the blade turned, up to above the ear where it stops. She keeps her eyes open the whole time and doesn't blink.{/n}''',
         c("Continue", "once")),
-    jan("once", '''"Once," she says, when you reach the end of it. "You get to do that once a year. On the day of the Scar. Not on any other day, and not because you're sorry."
+    jan("once", '''"Once," {n}she says, when you reach the end of it.{/n} "You get to do that once a year. On the day of the Scar. Not on any other day, and not because you're sorry."
 {n}She holds your hand there a moment longer than she meant to.{/n} "I'm going to enjoy making you wait for it."''',
         c("[Take your hand back when she lets you.]")),
 ], requires=(SCAR, NIGHT), delay=24)
@@ -1042,7 +1042,7 @@ meet(STAIRS, "The duelling stairs", '"You\'re planning something."', [
 "You've already stood in a chalk circle with me in front of four hundred soldiers. A street of dyers throwing fruit won't bother you."''',
         c("Continue", "end")),
     jan("end", '''{n}She folds the drawing in four and puts it inside her gambeson, over her heart, without apparently noticing she's done it.{/n}
-"If there's an after," she says again. "There might not be. But I've stopped planning for running, and I have to plan for something."''',
+"If there's an after," {n}she says again.{/n} "There might not be. But I've stopped planning for running, and I have to plan for something."''',
         c("[Leave her with her plans.]")),
 ], requires=(COMMITTED,), delay=96)
 
@@ -1080,7 +1080,7 @@ meet(NOTCH, "The right way", '"You\'re cutting a notch."', [
         c('"Then cut it somewhere else."', "elsewhere"),
         c('"Then don\'t cut it."', "dont")),
     jan("elsewhere", '''{n}She considers that. Then she turns the scabbard over and, on the outside, near the mouth, where anyone who looked could see it, she cuts a small, neat circle with one stroke through it: her old salle's mark.{/n}
-"There," she says. "Not a notch. The other thing."''',
+"There," {n}she says.{/n} "Not a notch. The other thing."''',
         c("[Leave her with it.]")),
     jan("dont", '''"No." {n}She puts the knife away.{/n}
 "No, I won't. The right-way ones, and the wrong-way ones, and then nothing. Anybody who counts will think I stopped fencing." {n}She looks at you at last.{/n} "Let them think it. The ones who matter will know I only stopped counting."''',

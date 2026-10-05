@@ -563,7 +563,7 @@ letter(P + "after.won_back", "Won back", [
     cv("answer", '''{n}The card comes back the next morning, pinned to your door with a hatpin. On the back, in her hand:{/n} "Red. You remembered. It is still not enough." {n}Under it, smaller:{/n} "Tomorrow. Bring the hand."''',
        c("[Go, tomorrow, and bring the hand.]", "hand")),
     nar("hand", '''{n}Her room at the far end of Drezen has one chair, and she is in it. The bolt of red silk is draped over the bed, unopened, like a guest she has not decided to receive. She points at the table. You put your hand on it, palm up, and the old cut opens as if it had been waiting for her.{/n}
-{n}She tells you, at length and without raising her voice, exactly what the wardrobe cost her, and the walk-out, and the three days she spent in this room listening for your knock and despising herself for listening. Your palm bleeds onto her table the whole time. When she has finished she folds your fingers shut herself, one at a time.{/n} "Now it is worth something," she says. "Go home. I will come back to the bench when I choose, and I choose tomorrow."''',
+{n}She tells you, at length and without raising her voice, exactly what the wardrobe cost her, and the walk-out, and the three days she spent in this room listening for your knock and despising herself for listening. Your palm bleeds onto her table the whole time. When she has finished she folds your fingers shut herself, one at a time.{/n} "Now it is worth something," {n}she says.{/n} "Go home. I will come back to the bench when I choose, and I choose tomorrow."''',
         c("Continue", "house_too")),
     cv("house_too", '''{n}At the door she stops you with two fingers on your chest.{/n} "And when your war is done we will need a house, she and I. Thick doors, a cellar nobody knows about, and a linen press, for guests. Who keeps it? Answer now; I will not write to ask."''',
         c('"You keep the house. Minagho keeps the door."', flags=(T_NAME, WON_BACK, PALM_TABLE, T_HOUSE, "minachiv.host_ending")),
@@ -769,7 +769,7 @@ physical(P + "after.the_morning_after", "The morning after", "Chivarro", PRES_CH
 
 CHIV_MORNING = [
     cv("start", '''{n}Chivarro is at the quartermaster's counter at dawn, counting coins she did not have yesterday into a purse she did not have either. They are yours.{/n}
-"Rent," she says, before you can speak. "And interest. I charge interest, honey; I was a madam, not a saint." {n}She snaps the purse shut and looks at you properly for the first time.{/n} "You were better than I expected and worse than you think. Both go on the bill."''',
+"Rent," {n}she says, before you can speak.{/n} "And interest. I charge interest, honey; I was a madam, not a saint." {n}She snaps the purse shut and looks at you properly for the first time.{/n} "You were better than I expected and worse than you think. Both go on the bill."''',
        c('"Put it on my bill, then."', flags=(MORNING,), crusade=("Finances", -100)),
        c('[Take back one coin] "The interest is too high."', "haggle", crusade=("Finances", -100))),
     cv("haggle", '''{n}She lets you take it. Then she takes your wrist, turns your hand over, puts the coin back in your palm, presses it into the hollow of it with her thumb, and closes your fingers on it until it hurts.{/n} "Now it is a keepsake. Keepsakes are free. Everything else goes on the bill."''',

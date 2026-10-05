@@ -1,0 +1,5 @@
+# Chivarro (shared relationship minagho_chivarro): state no_happy_end (alive, deposed and exiled to the Lower City, never killed).
+chivarro.removed:4            # Ch4 Ten Thousand Delights, AvengeInsults confrontation (any non-attack ending) -> Cue_0049 ChivarroRemovedFormPower
+chivarro.exiled:4             # same cue: ChivarroWasTeleportedAway
+herrax.met:4                  # leave the Delights and return; first talk with Herrax (SeenCue 044dc44d...)
+herrax.asked_kill_chivarro:4  # same talk, automatic Cue_0045_KillChivarro; afterwards NEVER enter the Lower City ChivarroAbusedScene zone (chivarro.dead must stay false)

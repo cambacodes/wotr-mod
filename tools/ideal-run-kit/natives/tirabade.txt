@@ -1,0 +1,6 @@
+# Tirabade (Irabeth + Anevia + Commander): negotiated table built on both solo routes; both women alive and in Drezen
+neathholm.evening:0           # Prologue (Anevia early beat)
+irabeth.chapter_three:3       # Chapter03 etude (progress; needed for irabeth.the_evening_she_chose -> irabeth.marital_terms_agreed)
+irabeth.chapter_five:5        # Chapter05 etude (progress)
+encouraged:3                  # Ch3: Battered Spirit passed (flavour lines in i_respite/last_watch)
+coronation.after:5            # Ch5: Coronation done with Irabeth alive (Ch5 trio scenes forbid irabeth_away)

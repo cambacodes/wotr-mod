@@ -48,11 +48,11 @@ remote(DREAM_BANNER, "What the banner remembers", [
     nar("line", '''{n}She carries you along a line of soldiers in the last grey of evening. You see her in pieces, the way a banner sees whoever carries it: the edge of a jaw under a dented helm, a wet braid, a gauntlet with the leather worn through at the knuckles. She is young. She is tired in a way that has nothing to do with the day.{/n}
 {n}Beyond the soldiers, across a field of black stubble, something waits in ranks that do not shift or cough or stamp against the cold, because nothing in them is alive to mind it.{/n}
 {n}A boy at the end of the line is shaking. He is too young for his mail. She stops in front of him and drives your staff into the mud at his feet, and the jolt runs all the way up into your cloth.{/n}
-"Look at this, not at them," she says. Her voice is hoarse from shouting and low from not wanting the others to hear. "When the line breaks, and it will, you will not be able to find me. Find this. Where it stands, I am standing. Do you understand me?"
+"Look at this, not at them," {n}she says. Her voice is hoarse from shouting and low from not wanting the others to hear.{/n} "When the line breaks, and it will, you will not be able to find me. Find this. Where it stands, I am standing. Do you understand me?"
 {n}He nods. He is looking up at you. So, you realize, is she, as if she needed telling too.{/n}''',
         c("Continue", "alone")),
     nar("alone", '''{n}Later the line has sunk into the sleep soldiers sleep before a dawn attack, and she sits alone in the mud with her back against your staff. She takes her helm off. You cannot see her face from where you are. You can feel the back of her head against the wood.{/n}
-"Tomorrow they will come across that field," she tells you, "and I will be the only one of us who has ever seen them come, and I will have to look as if I have done it a hundred times." {n}A long breath, let out slowly, so nobody will hear it.{/n} "Hold. I will do the rest."
+"Tomorrow they will come across that field," {n}she tells you,{/n} "and I will be the only one of us who has ever seen them come, and I will have to look as if I have done it a hundred times." {n}A long breath, let out slowly, so nobody will hear it.{/n} "Hold. I will do the rest."
 {n}She says it to a banner on a pole in the rain. She says it the way people say the things they would never say to another person.{/n}
 {n}Then she puts her helm back on, and gets up, and walks the line again in the dark, stopping at each sleeper long enough to check a strap or tuck in a cloak, and says nothing to any of them, and comes back, and sits down against your staff again, and does not sleep.{/n}''',
         c("Continue", "wake")),
@@ -142,7 +142,7 @@ remote(E + "dream.chasm", "The gorge", [
         c("Continue", "cloak")),
     nar("cloak", '''{n}It is only a cloak: wool, sodden with the road, the hem black with ash. She takes it off and holds it, and says something you cannot hear over the wind in the gorge. It is too short to be a prayer, or it is a very short prayer. Then she casts it out over the gap the way a fisherman casts a net.{/n}
 {n}It should fall. You watch it not fall. It lies across the dark from pin to pin, flat and taut, no wider than a plank, and the wind that should lift its edges goes around it.{/n}
-"Walk," she says. "Do not look down. Do not look at me. Walk."
+"Walk," {n}she says.{/n} "Do not look down. Do not look at me. Walk."
 {n}They walk: forty of them, one at a time, on a cloak, over nothing. The boy from the rain is the ninth. She stands at the near end the whole while with one hand on your staff. Her arm is shaking. Her face is not.{/n}''',
         c("Continue", "last")),
     nar("last", '''{n}When the last of them is over she pulls you out of the rock, sets you on her shoulder and steps out onto the cloth herself. You feel it give under her like a wet plank. You feel her feel it. Halfway across, the sound behind reaches the edge, and something reaches after her, and she does not look back.{/n}
@@ -181,7 +181,7 @@ remote(E + "dream.test", "The oath over the door", [
 {n}Stone this time, and cold, and quiet: a hall with a broken roof and snow coming through it. She carries you upright and walks slowly, the way one walks toward something one does not want to startle.{/n}
 {n}At the far end of the hall a knight sits on the steps of a dais. His armour is very old and very good, and there is nothing inside it that ought to be moving. Frost lies on his shoulders like epaulettes. When she stops ten paces off he lifts his head, and whatever looks out of the helm is patient, and is not alive.{/n}''',
         c("Continue", "oath")),
-    nar("oath", '''"You swore an oath once," she says. "I read it on the way in. It is carved over the door, and your name is under it."
+    nar("oath", '''"You swore an oath once," {n}she says.{/n} "I read it on the way in. It is carved over the door, and your name is under it."
 {n}The thing on the steps makes a sound that is not a word.{/n}
 "You swore to hold this hall for the living. There are no living here. There have not been for a long while. You are holding it against them." {n}She plants you in the snow between herself and him, takes her hand from your staff, and shows him her empty hands.{/n} "I will not fight you. I think you know that I would win, and I think you know you would not mind. So I will only ask you: whose oath are you keeping?"''',
         c("Continue", "argued")),
@@ -290,7 +290,7 @@ at_herald(E + "herald.legend", "The Acts", 4, '"Tell me about your lady. Before 
     herald("tavern", '''"Then it was a very well-read tavern." {n}He lets it go, though you can see what it costs him to let anything go in this city.{/n} "Keep your secrets, Champion. The Abyss will try to have them out of you soon enough."''',
         c("Continue", flags=(BRIDGE_TOLD,))),
     herald("dreams", '''{n}You tell him what the banner has shown you, all of it, in the order it came. He hears you out with his wings folded close against his back.{/n}
-"I have prayed before that banner," he says at last, quietly. "It has never shown me anything." {n}There is no envy in it. There is something nearer to fear.{/n} "Forgive me. In this place I am afraid of everything that shows us what we want to see. And yet a relic of hers would not lie."
+"I have prayed before that banner," {n}he says at last, quietly.{/n} "It has never shown me anything." {n}There is no envy in it. There is something nearer to fear.{/n} "Forgive me. In this place I am afraid of everything that shows us what we want to see. And yet a relic of hers would not lie."
 {n}He sets his hand on your shoulder, heavily, the way knights do it.{/n} "When we are home, and she can hear you, ask her yourself. Not through me."''',
         c("Continue", flags=(BRIDGE_TOLD, DREAMS_TOLD))),
     herald("how", '''"She has never said. The priests say faith, and they are right." {n}He lifts his chin, the way he does when he speaks of her in front of demons.{/n} "Her company was going to die on that bank, and she would not allow it. She asked nothing of heaven that night that she had not already given it. My lady did not wait to be a goddess to do what was right, Champion. That is why she became one."''',
