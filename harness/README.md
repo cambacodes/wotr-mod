@@ -730,3 +730,21 @@ Pending: production hub click, approach, body room and identical actor after rel
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
+
+### Live results and fixture notes (E-Q7-33 follow-up, 2026-10-05)
+
+Use a Trickster Chapter 5 save (RRT_Manual_326...), not Secret Path 275 (not Trickster; `trickster.now` is false). The
+`-PresenceKey` probe now walks the Commander to the placed spot first (a copy far from the player has an inactive view, which
+the engine treats as not usable), and records `Diagnostic` and, with env `RRT_HARNESS_TRACE=1`, a per-0.25 s `Trace` in
+`PresenceSpike.Production`. Test-only env fixtures: `RRT_HARNESS_HIDE=<unit guids>` destroys those anchor units after area
+load, `RRT_HARNESS_TELEPORT=x,y,z` moves the Commander before the first tick.
+
+Hub availability also needs the aged flags: set `hour.<flag>` beside each flag so scene delays are met. A working command:
+
+```powershell
+./harness/run-harness.ps1 -Saves 'RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition' -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,hour.trickster.ever,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+`<key>.failed` flags and `fool_king.gone`-style native state are not settable (fixture setup: key not present); fallbacks
+(`.stall`, `.yard`, `.arcade`, ...) are reached only through a real primary failure. Results are in
+`tools/presence_placement_manifest.json` (`live_followup_2026_10_05`); `aranka.presence` is verified, the rest are not.

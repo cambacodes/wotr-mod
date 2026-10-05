@@ -71,6 +71,23 @@ namespace RRT.TestHarness
                         && game.CurrentlyLoadedArea == enter.Area && game.State.LoadedAreaState?.MainState != null, sp.EntrySeconds, ok, 30);
                     if (!ok.Value) { res.EntryError = "area " + enter.Area?.name + " not loaded within " + sp.EntrySeconds + " s"; yield break; }
                 }
+                // Fixture (RRT_HARNESS_TELEPORT=x,y,z): put the Commander near a spot before the first production tick (test-only).
+                string? tp = Environment.GetEnvironmentVariable("RRT_HARNESS_TELEPORT");
+                if (!string.IsNullOrWhiteSpace(tp))
+                {
+                    var c = tp!.Split(',').Select(v => float.Parse(v, System.Globalization.CultureInfo.InvariantCulture)).ToArray();
+                    game.Player.MainCharacter.Value.Translocate(new UnityEngine.Vector3(c[0], c[1], c[2]), (float?)null);
+                    res.Notes.Add("fixture moved the Commander to " + tp);
+                }
+                // Fixture (RRT_HARNESS_HIDE=guid,guid): take native anchor units out of play before the first production tick, so a
+                // primary placement fails for real and its earned fallback is exercised. Test-only; the input save is untouched.
+                string? hide = Environment.GetEnvironmentVariable("RRT_HARNESS_HIDE");
+                if (!string.IsNullOrWhiteSpace(hide))
+                {
+                    var hidden = hide!.Split(',').Select(g => g.Trim()).Where(g => g.Length > 0).ToArray();
+                    foreach (var unit in game.State.Units.Where(u => hidden.Contains(u.Blueprint?.AssetGuid.ToString())).ToArray())
+                    { unit.IsInGame = false; unit.MarkForDestroy(); res.Notes.Add("fixture hid " + unit.Blueprint?.name + " " + unit.UniqueId); }
+                }
                 yield return WaitFor(() => IdleBlocker() == null, sp.SettleSeconds, ok, 30);
                 if (!ok.Value) { res.NotIdle = IdleBlocker() ?? "unstable"; yield break; }
                 var area = game.CurrentlyLoadedArea!;
