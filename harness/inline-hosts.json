@@ -1,11 +1,11 @@
 {
  "generatedFrom": {
   "story": "Story.json",
-  "blueprints": "/wrath/blueprints.zip"
+  "blueprints": "C:\\Program Files (x86)\\Steam\\steamapps\\common\\Pathfinder Second Adventure\\blueprints.zip"
  },
  "summary": {
-  "entryTargetScenes": 1139,
-  "resolved": 1139,
+  "entryTargetScenes": 1140,
+  "resolved": 1140,
   "inlineOnlyScenes": 317,
   "inlineOnlyResolved": 317,
   "answerListScenesWithoutContact": 704,
@@ -13087,6 +13087,25 @@
     "dialog": "20e94a828d4016d45a6b723765306522",
     "dialogName": "Irabeth_Dialogue",
     "cue": "Cue_0069",
+    "clicks": 0
+   }
+  },
+  "irabeth.return_request": {
+   "kind": "dialog",
+   "lists": [
+    "fa57cf97ea01bf34e9a30f6ad444381e"
+   ],
+   "explicit": true,
+   "contact": "8692bff6041c47a0b13158d5977f291b",
+   "entry": {
+    "fa57cf97ea01bf34e9a30f6ad444381e": "RRT_entry.irabeth.return_request"
+   },
+   "resolved": true,
+   "host": {
+    "list": "fa57cf97ea01bf34e9a30f6ad444381e",
+    "dialog": "c1cb7e7361777b940829b8b71ae03f23",
+    "dialogName": "Logistics_Officer_Dialogue",
+    "cue": "Cue_0001",
     "clicks": 0
    }
   },
