@@ -329,3 +329,67 @@ _nodes["start"]["Choices"].extend((
 for _choice in _nodes["rent"]["Choices"]:
     _choice["Forbids"].append(_RENT_RAISED)
 # end eng7-l09
+
+
+# --- eng8-q8c / E-Q8-09: interrupted pledges and both negotiated outcomes ---
+# Authored lease terms: grace waives renewals, never the initial 500 crowns.
+_RENT_GRACE = "arsinoe.trickster.cost.rent_grace"
+_nodes["discount"]["EnterSet"] = [_RENT_GRACE]
+_nodes["discount"]["Text"] = _nodes["discount"]["Text"].replace(
+    "Three seasons' grace.", "The first payment stands. The next three seasonal renewals are waived.")
+for _choice in _nodes["rent"]["Choices"]:
+    _choice["Forbids"].append(_RENT_GRACE)
+for _choice in _nodes["start"]["Choices"]:
+    if _choice.get("Next") == "rent":
+        _choice["Forbids"].append(_RENT_GRACE)
+_nodes["start"]["Choices"].append(c(
+    '"The first payment stands. We agreed on three renewals free."', "discount",
+    requires=(_RENT_PAID, _RENT_GRACE), forbids=(_RENT_RAISED,)))
+
+_collection = next(s for s in SCENES if s["Id"] == COLLECTION)
+_pledge = next(nd for nd in _collection["Nodes"] if nd["Id"] == "pledge")
+_collateral = (STILL, WOUND, WORD)
+for _choice in _pledge["Choices"]:
+    _choice["Forbids"].extend(_collateral)
+# Append-only resume answers: no second pledge, including when the still is gone.
+for _flag, _target, _text in (
+    (STILL, "still", '"The still is already pledged."'),
+    (WOUND, "wound", '"You already hold the lien on the Worldwound."'),
+    (WORD, "word", '"My word is already in your ledger."'),
+):
+    _pledge["Choices"].append(c(_text, _target, requires=(_flag,),
+        forbids=tuple(f for f in _collateral if f != _flag)))
+
+for _scene in SCENES:
+    if _scene["Id"] in ("arsinoe.trickster.epilogue.bill_to_threshold",
+                        "arsinoe.trickster.epilogue.pot_returned"):
+        _scene["Nodes"][0].setdefault("Paragraphs", []).append(p(
+            '{n}The first five hundred crowns stayed paid. Arsinoe struck the next three seasonal renewals '
+            'from the account, as agreed; the grace covered no later rent or loss of the stone.{/n}',
+            requires=(_RENT_GRACE,)))
+# end eng8-q8c
+
+
+# --- eng8-q8c / E-Q8-04: close the collection opener before its next turn ---
+_collection["Nodes"][0]["Text"] = _collection["Nodes"][0]["Text"].replace(
+    'I do not do that. So.\n', 'I do not do that. So."\n')
+# end eng8-q8c
+
+
+# --- eng8-q8c / E-Q8-09: settlement honors the concession already earned ---
+_returned = next(s for s in SCENES if s["Id"] == "arsinoe.trickster.epilogue.pot_returned")
+_end = _returned["Nodes"][0]
+_end["Text"] = _end["Text"].replace("Rent in arrears: considerable.", "Renewals: see account.")
+for _paragraph in list(_end.get("Paragraphs", [])):
+    if "never once suggested a discount" not in _paragraph["Text"]:
+        continue
+    _grace_paragraph = dict(_paragraph)
+    _grace_paragraph["Requires"] = list(_paragraph.get("Requires", [])) + [_RENT_GRACE]
+    _grace_paragraph["Forbids"] = list(_paragraph.get("Forbids", []))
+    _grace_paragraph["Text"] = _paragraph["Text"].replace(
+        "Arsinoe has never once suggested a discount.", "The three waived renewals were absent from the bill.").replace(
+        "She has never once suggested a discount, and she did not start then.",
+        "The three waived renewals were absent from the bill.")
+    _paragraph.setdefault("Forbids", []).append(_RENT_GRACE)
+    _end["Paragraphs"].append(_grace_paragraph)
+# end eng8-q8c

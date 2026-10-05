@@ -1,5 +1,44 @@
 {
-  "exceptions": [],
+  "exceptions": [
+    {
+      "scene": "arsinoe_the_first_cart",
+      "location": "heard",
+      "code": "age-certification",
+      "match": "adult",
+      "text": "\"Yes. Even a dry step deserves a moment's admiration before I begin on the landing.\"\n{n}She looks back at the dry tread. A child being led through by an adult hops over it, expecting the familiar splash, and looks disappointed when none comes.{/n}\n\"There. We have ruined someone's entertainment.\"\n{n}Her smile returns. She waits for the family to pass before moving closer to you.{/n}\n\"I wanted you here for more than an opinion on masonry. I do like being admired. It is pleasant, and I have never understood the virtue of pretending otherwise. But I should like you to keep coming when I am difficult as well. I am difficult rather often.\"\n{n}She brushes dust from her cuff.{/n}\n\"With admiration afterward, naturally. I have no intention of giving that up for anyone.\"",
+      "reason": "A child jumps over the repaired step while accompanied by an adult; age distinguishes the two actions.",
+      "block": "eng8-q8c"
+    },
+    {
+      "scene": "ember.the_empty_basket",
+      "location": "neighbor",
+      "code": "age-certification",
+      "match": "adult",
+      "text": "{n}The vegetable seller remembers the family. Her name is Heda. She has news of the youngest daughter, now an adult, who works carrying water to a kitchen several streets away. She does not know whether the comb belonged to her.{/n}\n\"Take it to her if you like. But don't arrive telling her you've brought back her home. People have been bringing her broken pieces of it for years.\"\n{n}Ember holds the basket closer.{/n}\n\"I was going to ask if she wanted it.\"\n\"Then ask. And let her say no.\"\n{n}Heda writes the kitchen's location on the back of a discarded price notice. Deren reads it, then points out a shorter way. He knows the streets where the stores are, he says, with a smile that does not quite survive the explanation.{/n}\n{n}At the kitchen, the woman is carrying two empty buckets. She introduces herself as Mara, listens to Ember, and studies the comb without taking it.{/n}\n\"That was my mother's. I don't want it.\"",
+      "reason": "The missing youngest daughter has grown up; her present age matters to the elapsed family history.",
+      "block": "eng8-q8c"
+    },
+    {
+      "scene": "ember.a_question_at_the_yard",
+      "location": "room",
+      "code": "age-certification",
+      "match": "adult",
+      "text": "{n}Selvi locks the cart and checks the fastening twice. You carry the food while Oren helps her brother down. Ember takes the thin cloth, which folds into a very small bundle in her arms.{/n}\n\"It isn't nothing,\" {n}she says when Selvi looks at it.{/n} \"He can use it over his shoulders when he wakes.\"\n{n}The walk is slow. Vessa goes ahead to prepare the extra place. By the time you reach the room, the boy is yawning so widely that Ember begins to yawn too.{/n}\n{n}Selvi settles him with the striped covering, then thanks Vessa in a voice that still sounds tired and defensive. Vessa nods and points out where the water is kept.{/n}\n{n}Outside, Ember remembers Deren's request. You go back to the yard and ask about a place for an adult worker to sleep. There is one in a shared loft. The owner wants to meet him before agreeing. Ember carries that answer back exactly as it was given.{/n}",
+      "reason": "Deren needs a worker sleeping place in the shared loft, distinct from the child shelter described in the scene.",
+      "block": "eng8-q8c"
+    }
+  ],
   "therapy_budgets": {},
-  "policy": "Exact scene, location, code, match and a documented in-world reason are required. Therapy counts require human review; no voice or consent verdict is inferred."
+  "policy": "Exact scene, location, code, match and a documented in-world reason are required. Therapy counts require human review; no voice or consent verdict is inferred.",
+  "eng8-q8c": {
+    "speech_boundary_exceptions": [
+      {
+        "scene": "targona.the_unscheduled_door",
+        "location": "start",
+        "code": "speech-boundary-review",
+        "text": "{n}The tale Targona sends is short, and written in a hand meant to be read aloud by lamplight. She has given its soldier a name that is not her own.{/n}\n\"I have called her Meret. A sergeant from Kenabres says he knew a Meret, and that she would have liked this. I chose to believe him.\n{n}Meret, a sergeant of the host, wakes in a room with a chair, a closed door, and a parcel tied with a thoroughly unreasonable quantity of string. The parcel gets three lines. The demon who built the room gets none.{/n}\n\"I read it to the fever ward last night,\" {n}Targona writes.{/n} \"They argued about the string for an hour. Nobody died before morning. I am not saying the two are connected. I am not saying they are not.\"\n{n}You read the ending your suggestion gave her.{/n}",
+        "reason": "The letter encloses Meret's narrated fictional story between quoted commentary; a reviewed continuation opening."
+      }
+    ]
+  }
 }

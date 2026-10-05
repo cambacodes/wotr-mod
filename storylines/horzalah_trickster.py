@@ -955,3 +955,23 @@ def integrate(payload):
             raise ValueError("Conflicting presence: " + key)
         payload["Presences"][key] = dict(value)
     payload.setdefault("PortraitFallbacks", {}).setdefault("Horzalah", PORTRAIT_GUID)
+
+
+# --- eng8-q8c / E-Q8-09: the injury survives exit before the existing payment ---
+_late_transaction = next(s for s in SCENES if s["Id"] == H + "late.at_night")
+_late_nodes = {nd["Id"]: nd for nd in _late_transaction["Nodes"]}
+# OnShow precedes the irreversible narration. PRIMED remains the paid outcome.
+_late_nodes["cut"]["EnterSet"] = [EAR, LATE]
+for _choice in _late_nodes["start"]["Choices"]:
+    _choice["Forbids"].append(EAR)
+_late_nodes["start"]["Choices"].append(c(
+    "Continue", "no_priest", requires=(EAR, LATE), forbids=(PRIMED,)))
+# end eng8-q8c
+
+
+# --- eng8-q8c: resume the bill after she has gone; stage arrival only once ---
+_late_arrival = _late_nodes["start"]["Text"]
+_late_nodes["start"]["Text"] = '{n}The lamp burns low beside your bed. The watch keeps the corridor outside your quarters.{/n}'
+for _arrival_node in ("refused", "refused_offer", "refused_room", "dismissed"):
+    _late_nodes[_arrival_node]["Text"] = _late_arrival + "\n" + _late_nodes[_arrival_node]["Text"]
+# end eng8-q8c

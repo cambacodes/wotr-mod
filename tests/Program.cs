@@ -372,6 +372,15 @@ internal static class Program
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
+        // --- eng8-q8c: focused diagnostics, also run in the full suite below ---
+        if (args.Contains("--transaction-inventory2"))
+        {
+            Rules.Validate(story);
+            TransactionInventory2Tests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8c (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8c
         // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
         if (args.Contains("--eng7-l06"))
         {
@@ -593,6 +602,9 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+        // eng8-q8c: OnShow receipts are authored producers, including successful checks.
+        known.UnionWith(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet));
+        // end eng8-q8c
         // eng7-l06: saved placement receipts are runtime-produced conditions.
         known.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
         // eng7-l06 end
@@ -782,6 +794,9 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
             // eng7-l09
             TransactionExitInventoryTests.Run(story, Check);
+            // eng8-q8c: E-Q8-09 interrupted transaction inventory.
+            TransactionInventory2Tests.Run(story, Check);
+            // end eng8-q8c
             // end eng7-l09
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);

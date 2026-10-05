@@ -38,6 +38,9 @@ def surfaces(story):
 
 
 PATTERNS = {
+    # --- eng8-q8c / E-Q8-04: age certification is a review, not an age verdict ---
+    "age-certification": re.compile(r'\badult\b', re.I),
+    # end eng8-q8c
     "embedded-commander-speech": re.compile(r'(?:["”][^\n]{0,40}\b(?:you (?:say|tell|ask|reply|answer|suggest)|the Commander (?:says|asks|replies))\b|\byou (?:say|tell|ask|reply|answer|suggest)\b[^\n]{0,60}["“])', re.I),
     "tooling-residue": re.compile(r'\b(?:mod(?: romance)?|handler|observer|manuscript|registered caller|native (?!born\b)|parent (?:portrait|ending)|book-event|hidden (?:romance )?penalt\w*|implementation|teleport behavior|live inventory|game verification|(?:existing|verified) ending|route reachability|encounter-result|continuation|[a-z_]+\.[a-z_]+\.[a-z_.]+)\b', re.I),
     "commander-gender": re.compile(r'\bCommander\b[^.!?\n]{0,160}\b(?:he|him|his)\b|\b(?:he|him|his)\b[^.!?\n]{0,160}\bCommander\b', re.I),
@@ -89,7 +92,10 @@ def check(story, exceptions=None, draft=False):
                     if attribution and match.start() + attribution.start() in spoken:
                         continue
                 if any(e["scene"] == sid and e["location"] == location and e["code"] == code
-                       and e["match"] == match.group() and e.get("reason") for e in policy.get("exceptions", [])):
+                       and e["match"] == match.group() and e.get("reason")
+                       # eng8-q8c: adult exceptions require the whole reviewed surface.
+                       and (code != "age-certification" or e.get("text") == text)
+                       for e in policy.get("exceptions", [])):
                     continue
                 rows.append(dict(scene=sid, location=location, code=code, start=match.start(), end=match.end(),
                                  match=text[match.start():match.end()], draft=draft, severity="review"))
@@ -104,7 +110,8 @@ def check(story, exceptions=None, draft=False):
                 if before and after and before[-1].lstrip().startswith('"') and after[0].lstrip().startswith('"'):
                     rows.append(dict(scene=sid, location=location, code="speaker-attribution-review", start=match.start(),
                                      end=match.end(), match=match.group(), draft=draft, severity="review"))
-    rows = [row for row in rows if not any(e["scene"] == row["scene"] and e["location"] == row["location"]
+    # eng8-q8c: age exceptions were already checked against their full text above.
+    rows = [row for row in rows if row["code"] == "age-certification" or not any(e["scene"] == row["scene"] and e["location"] == row["location"]
             and e["code"] == row["code"] and e["match"] == row["match"] and e.get("reason")
             for e in policy.get("exceptions", []))]
     budgets = policy.get("therapy_budgets", {})

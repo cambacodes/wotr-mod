@@ -1,6 +1,8 @@
 """eng7-l09: ordered narration tokens and exact unmarked span diagnostics."""
 import re
+import json
 from tools.player_text_lint import surfaces
+from tools.player_text_lint import EXCEPTIONS
 
 
 def spans(text, speaker="Narrator", kind="node"):
@@ -53,6 +55,12 @@ def spans(text, speaker="Narrator", kind="node"):
         elif opened is not None:
             quote_mask[i] = '\0'
     # end eng7-f2
+    # A standalone narration paragraph separates speech turns. A fresh opening
+    # after it requires the previous turn to close. Inline attribution and
+    # uninterrupted Owlcat continuation paragraphs remain valid.
+    # --- eng8-q8c / E-Q8-04 ---
+    review.extend(speech_boundaries(text))
+    # end eng8-q8c
     remaining = "".join(quote_mask)
     for begin, end in outside:
         for line in re.finditer(r'[^\n\0]+', remaining[begin:end]):
@@ -67,12 +75,45 @@ def spans(text, speaker="Narrator", kind="node"):
     return hard, review
 
 
-def check(story, draft=False):
+# --- eng8-q8c: quote boundaries use narration tokens, not quotes inside them ---
+def speech_boundaries(text):
+    rows = []
+    opened, start, standalone = None, None, False
+    for token in re.finditer(r'\{n\}[\s\S]*?\{/n\}|["“”]', text):
+        value, i = token.group(), token.start()
+        if value.startswith('{n}'):
+            before = text[text.rfind('\n', 0, i) + 1:i]
+            line_end = text.find('\n', token.end())
+            after = text[token.end():line_end if line_end >= 0 else len(text)]
+            if opened is not None and not before.strip() and not after.strip():
+                standalone = True
+            continue
+        at_line_start = not text[text.rfind('\n', 0, i) + 1:i].strip()
+        if opened is None and value != '”':
+            opened, start, standalone = value, i, False
+        elif value != '”' and at_line_start and opened == value:
+            if standalone:
+                rows.append(("speech-boundary-review", start, i))
+            standalone = False
+        elif (opened == '“' and value == '”') or (opened == '"' and value == '"'):
+            opened, start, standalone = None, None, False
+    return rows
+# end eng8-q8c
+
+
+def check(story, draft=False, exceptions=None):
     result = {"hard": [], "review": []}
+    # eng8-q8c: reviewed continuation exceptions bind to the complete surface.
+    policy = json.loads(EXCEPTIONS.read_text(encoding="utf-8")) if exceptions is None else exceptions
     for sid, location, text, speaker, kind in surfaces(story):
         hard, review = spans(text, speaker, kind)
         for level, rows in (("hard", hard), ("review", review)):
             for code, start, end in rows:
+                if code == "speech-boundary-review" and any(
+                    e.get("scene") == sid and e.get("location") == location and e.get("code") == code
+                    and e.get("text") == text and e.get("reason")
+                    for e in policy.get("eng8-q8c", {}).get("speech_boundary_exceptions", [])):
+                    continue
                 result[level].append(dict(scene=sid, location=location, code=code, start=start, end=end,
                                           match=text[start:end], draft=draft))
     return result
