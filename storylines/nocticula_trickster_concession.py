@@ -295,11 +295,15 @@ add("an_answer_of_her_own", "An answer of her own", "the_retained_copy_done", [
     page("accept", "Nocticula", '''"An ambitious evening. We shall see how much of it you can sustain."
 {n}Below your answer she writes her own name. The answering mark crosses its last letter and returns to the broken edge of the wax. It has sealed this page, not joined the two halves.{/n}
 "For the record," {n}she adds.{/n} "You seem to enjoy acquiring them."
-"This one has better handwriting."
+{n}You write that this record has better handwriting.{/n}
 "This one has an excellent reason to be legible. I may wish to quote you."
 {n}You ask her to stay while you tell her the discarded first sentence. She declines. Then she asks for the second.
-It is worse than you remembered. Halfway through writing it, you stop and cross out a word. Nocticula supplies a more dangerous one beneath it.
-You spend the next few minutes arguing about the difference. Neither of you opens a ledger. The lamp burns lower while the mark moves between your unfinished lines.{/n}''', c('Keep the agreed correspondence and spend the rest of this evening in it.', flags=f("an_answer_of_her_own_done"))),
+It is worse than you remembered. Halfway through writing it, you cross out a word. Nocticula supplies a more dangerous one beneath it.{/n}
+"Enough about the broker. I would have your collar open by now. Your belt on the floor. My mouth at your throat, until you forgot that clever answer."
+{n}Ink pools at the end of the last stroke.{/n}
+"My robe would be next. Your hands on my bare hips, where I could see them. You have been thinking about my bed, Commander. Tell me what you wanted there."
+{n}She leaves room beneath the question. You draw the sheet closer. The unfinished dispatch waits beside the lamp.
+At dawn, a last line waits beside your answer: "That was worth reading. Burn it before your clerk arrives. I keep my copy."{/n}''', c('Keep the agreed correspondence and spend the rest of this evening in it.', flags=f("an_answer_of_her_own_done"))),
     page("decline", "Nocticula", '''"Declined." {n}The word sits alone on the page for a while, as if she were letting it cool.{/n}
 "Nobody declines me twice in the same year, Commander. Choose your next refusal with more care than this one. I keep your undertaking; I keep everything that is signed to me. You may spend the rest of the war watching me not use it, and wondering why."
 {n}The answering stroke draws itself out of the wax. You wait until the paper is still, then place it beside the business account.
