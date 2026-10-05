@@ -55,5 +55,29 @@
     "wenduag:007",
     "wenduag:008",
     "wenduag:009"
-  ]
+  ],
+  "eng8-q8b": {
+    "item": "E-Q8-02",
+    "consumer_contract": "tools/left_trickster_consumer_contracts.json",
+    "checker": "earned_presence_lint T6c / crossroute L6; consumer entry guards also bind native_visit twins; completed persistent returns elsewhere remain historical",
+    "finding_ids": [
+      "wenduag:045",
+      "wenduag:046",
+      "wenduag:048",
+      "wenduag:049",
+      "wenduag:050",
+      "wenduag:051",
+      "wenduag:052",
+      "wenduag:053",
+      "wenduag:054",
+      "wenduag:055",
+      "wenduag:056",
+      "wenduag:057",
+      "wenduag:058",
+      "wenduag:059",
+      "wenduag:060",
+      "wenduag:061",
+      "wenduag:062"
+    ]
+  }
 }

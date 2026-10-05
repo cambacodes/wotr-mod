@@ -55814,7 +55814,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "d4b7ea19c09b8b5cd719790cfa1a260e241d0a2a1f45b997e8c2e74b0028bb48"
+      "fingerprint": "cc256ff6e5dd0e9ac48766dd81f17917ed71d8e2e441ab8c1a3f2082256282f2"
     },
     {
       "check": "L1",
@@ -55851,7 +55851,7 @@
           ]
         ]
       ],
-      "fingerprint": "65e2918fea306a855e66824bf6d760b7a9d84e9e16599e7ec4770519d7a69279"
+      "fingerprint": "8e1667a43bbd1a5a5614a66550b29574bd040d1611984f69ec46b2b32354f9d6"
     },
     {
       "check": "L1",
@@ -55867,7 +55867,7 @@
         "areelu.closed",
         false
       ],
-      "fingerprint": "b3ced53e9f316c8a615fca7f86ccba8ac5af674c97de10022d83d8e2d41f85d0"
+      "fingerprint": "a5ef4254a67a50f5c77c01b3b12ae718a84e895419e9052147629d4d86d6ce5e"
     },
     {
       "check": "L1",
@@ -55904,7 +55904,7 @@
           ]
         ]
       ],
-      "fingerprint": "086a8a3b1e009bd32b795af2268ffa1d4244fe06ae5dfc20d625476aaf26c6cb"
+      "fingerprint": "de5206f5ba427b80d2f068f601e4870a4a98a1aa30ab6ad4029d872f9d45f062"
     },
     {
       "check": "L1",
@@ -56010,7 +56010,7 @@
         "iomedae.closed",
         false
       ],
-      "fingerprint": "e10a9f89e0bf6b610b14b103b5139f4052a65b24059797934297a4e0300bd949"
+      "fingerprint": "d3605b7a62f13da49f7ec917cfbcce569c81bafa1bad7dbfc57c89770aad7dff"
     },
     {
       "check": "L1",
@@ -56057,7 +56057,7 @@
           ]
         ]
       ],
-      "fingerprint": "2f5780e567f40c77b5e62c4d2bc09d52204d8d9305d4b2125857ca60a9f9d558"
+      "fingerprint": "56e8d0183adca0c036f77d56d5d07f86b89cbd18acd167cdb4cd1b0de3af54df"
     },
     {
       "check": "L1",
@@ -56104,7 +56104,7 @@
           ]
         ]
       ],
-      "fingerprint": "493a40b1f27178ad98551d30399f6596e3b9031818f19b0a334228bed1c05b94"
+      "fingerprint": "153a74fac4f11c2069618ce38d0978c6eb528ef24026ef6a374492c0c6132982"
     },
     {
       "check": "L1",
@@ -56118,7 +56118,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "20d1dbd9be9647af8b1371e5ca2d416ec5977ba5048aa122e7a1e228615d79c6"
+      "fingerprint": "71b5186569f212fe9805c3fdc40e63b576057ef17a500066e38ea30c204712af"
     },
     {
       "check": "L1",
@@ -56165,7 +56165,7 @@
           ]
         ]
       ],
-      "fingerprint": "75d2235a2762690e09d423c767aa8d0621e256eaa1c74f3c3be5e55120abe295"
+      "fingerprint": "6d9ba32a1b94ab067674b6c61ef1d7e7539677fba0542baf5e2c470a75d40e53"
     },
     {
       "check": "L1",
@@ -56212,7 +56212,7 @@
           ]
         ]
       ],
-      "fingerprint": "9a7df329eac54286428e0e3af849bea7a97851497aacea4ced0f71638c64cfac"
+      "fingerprint": "341fd27ec11df8d8ec2232c801cdf9acff5d0d6ca7309628d9a6d97966d4b4c0"
     },
     {
       "check": "L1",
@@ -56226,7 +56226,7 @@
       "required_condition": [
         "or"
       ],
-      "fingerprint": "515410021e19ce90c83eef4fb951416692419f92ff48d7c0773c1ecd7f837e24"
+      "fingerprint": "0353e60442c9ad7a0b8e7f5326d4600719f3427e4da40a66e280233b0b0f0687"
     },
     {
       "check": "L1",
@@ -58675,5 +58675,98 @@
       ],
       "fingerprint": "d4d2b803e51cefa10c2cc0eeb9feeb2303e434bd8b18c36087fdb092265573d5"
     }
-  ]
+  ],
+  "eng8-q8b": {
+    "reason": "11 existing L1 fingerprints refreshed after E-Q8-02 adds current-path guards; all finding fields except fingerprint identical. No finding or prose debt waived. L14 owns other-woman gates.",
+    "replacements": [
+      {
+        "scene": "wenduag.trickster.court.yaniel",
+        "node": "start",
+        "slot": "text",
+        "subject": "areelu",
+        "old": "d4b7ea19c09b8b5cd719790cfa1a260e241d0a2a1f45b997e8c2e74b0028bb48",
+        "new": "cc256ff6e5dd0e9ac48766dd81f17917ed71d8e2e441ab8c1a3f2082256282f2"
+      },
+      {
+        "scene": "wenduag.trickster.court.yaniel",
+        "node": "start",
+        "slot": "text",
+        "subject": "minagho",
+        "old": "65e2918fea306a855e66824bf6d760b7a9d84e9e16599e7ec4770519d7a69279",
+        "new": "8e1667a43bbd1a5a5614a66550b29574bd040d1611984f69ec46b2b32354f9d6"
+      },
+      {
+        "scene": "wenduag.trickster.court.yaniel.native_visit",
+        "node": "start",
+        "slot": "text",
+        "subject": "areelu",
+        "old": "b3ced53e9f316c8a615fca7f86ccba8ac5af674c97de10022d83d8e2d41f85d0",
+        "new": "a5ef4254a67a50f5c77c01b3b12ae718a84e895419e9052147629d4d86d6ce5e"
+      },
+      {
+        "scene": "wenduag.trickster.court.yaniel.native_visit",
+        "node": "start",
+        "slot": "text",
+        "subject": "minagho",
+        "old": "086a8a3b1e009bd32b795af2268ffa1d4244fe06ae5dfc20d625476aaf26c6cb",
+        "new": "de5206f5ba427b80d2f068f601e4870a4a98a1aa30ab6ad4029d872f9d45f062"
+      },
+      {
+        "scene": "wenduag.trickster.epilogue.pack",
+        "node": "page",
+        "slot": "paragraph[4]",
+        "subject": "iomedae",
+        "old": "e10a9f89e0bf6b610b14b103b5139f4052a65b24059797934297a4e0300bd949",
+        "new": "d3605b7a62f13da49f7ec917cfbcce569c81bafa1bad7dbfc57c89770aad7dff"
+      },
+      {
+        "scene": "wenduag.trickster.react.irabeth_suspicion",
+        "node": "@Entry",
+        "slot": "Entry",
+        "subject": "irabeth",
+        "old": "2f5780e567f40c77b5e62c4d2bc09d52204d8d9305d4b2125857ca60a9f9d558",
+        "new": "56e8d0183adca0c036f77d56d5d07f86b89cbd18acd167cdb4cd1b0de3af54df"
+      },
+      {
+        "scene": "wenduag.trickster.react.irabeth_suspicion",
+        "node": "start",
+        "slot": "text",
+        "subject": "irabeth",
+        "old": "493a40b1f27178ad98551d30399f6596e3b9031818f19b0a334228bed1c05b94",
+        "new": "153a74fac4f11c2069618ce38d0978c6eb528ef24026ef6a374492c0c6132982"
+      },
+      {
+        "scene": "wenduag.trickster.react.irabeth_suspicion",
+        "node": "start",
+        "slot": "text",
+        "subject": "irabeth:physical",
+        "old": "20d1dbd9be9647af8b1371e5ca2d416ec5977ba5048aa122e7a1e228615d79c6",
+        "new": "71b5186569f212fe9805c3fdc40e63b576057ef17a500066e38ea30c204712af"
+      },
+      {
+        "scene": "wenduag.trickster.react.irabeth_traitor",
+        "node": "@Entry",
+        "slot": "Entry",
+        "subject": "irabeth",
+        "old": "75d2235a2762690e09d423c767aa8d0621e256eaa1c74f3c3be5e55120abe295",
+        "new": "6d9ba32a1b94ab067674b6c61ef1d7e7539677fba0542baf5e2c470a75d40e53"
+      },
+      {
+        "scene": "wenduag.trickster.react.irabeth_traitor",
+        "node": "start",
+        "slot": "text",
+        "subject": "irabeth",
+        "old": "9a7df329eac54286428e0e3af849bea7a97851497aacea4ced0f71638c64cfac",
+        "new": "341fd27ec11df8d8ec2232c801cdf9acff5d0d6ca7309628d9a6d97966d4b4c0"
+      },
+      {
+        "scene": "wenduag.trickster.react.irabeth_traitor",
+        "node": "start",
+        "slot": "text",
+        "subject": "irabeth:physical",
+        "old": "515410021e19ce90c83eef4fb951416692419f92ff48d7c0773c1ecd7f837e24",
+        "new": "0353e60442c9ad7a0b8e7f5326d4600719f3427e4da40a66e280233b0b0f0687"
+      }
+    ]
+  }
 }

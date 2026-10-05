@@ -4,6 +4,9 @@ T7 covers the full recursive return/device producer class and revivals.
 T6 covers native edits, suppressions, gates and settlements, distinguishing
 new power (trickster.now) from consequences of a specific already-earned act.
 Add replacement cue context to the native diagnostics, including every variant.
+
+eng8-q8b: T6c also covers registered survival/courtship consumers and their
+native_visit twins, including scenes that never produce a romance flag.
 """
 import re
 from tools import earned_presence_lint as earned
@@ -15,9 +18,11 @@ def check(model, blocks, proof):
     out = []
     index = {(b.scene["Id"], b.node.get("Id"), b.slot): b for b in blocks}
     for message in hard:
-        if not re.match(r"T[1-7](?:[ab])? ", message):
+        # eng8-q8b begin
+        if not re.match(r"T[1-7](?:[abc])? ", message):
             continue
-        match = re.match(r"T\d(?:[ab])? ([^ :/]+)(?:/([^/ :]+)(?:/(choice\[\d+\]))?)?:", message)
+        match = re.match(r"T\d(?:[abc])? ([^ :/]+)(?:/([^/ :]+)(?:/(choice\[\d+\]))?)?:", message)
+        # eng8-q8b end
         if match and match[1] in model.by_id:
             s = model.by_id[match[1]]
             n = next((n for n in s["Nodes"] if n["Id"] == match[2]), s["Nodes"][0] if s["Nodes"] else {"Id": ""})
@@ -47,6 +52,9 @@ def check(model, blocks, proof):
                         route, target = spec.get("Relationship", "@native"), key
             if match and match[1].startswith("foresight."):
                 route, target = "foresight", match[1]
+            # eng8-q8b: the nominated survival reader is route metadata.
+            if message.startswith("T6c ") and match and match[1].startswith("wenduag."):
+                route, target = "wenduag", match[1]
             s = dict(Id=target, Relationship=route)
             out.append(finding("L6", Block(s, {"Id": "@condition"}, {}, "condition", message, ("and",)), message, message.split()[0]))
     return out

@@ -37,5 +37,15 @@ NATIVE_EPILOGUE_EDITS = {
 
 def integrate(payload):
     """Register the scene and the edit (after the Wenduag route)."""
+    # eng8-q8b begin: the legacy copy's survival lift shares its existing
+    # current-path presence policy. Stored return/payment facts remain intact;
+    # this does not alter other women's persistent completed return contracts.
+    from pathlib import Path
+    import json
+    contract = json.loads((Path(__file__).resolve().parents[1] / "tools/left_trickster_consumer_contracts.json").read_text(encoding="utf-8"))
+    for group in payload["Derived"].get(contract["return_reader"], []):
+        if "trickster.now" not in group:
+            group.append("trickster.now")
+    # eng8-q8b end
     payload["Scenes"].extend(copy.deepcopy(SCENES))
     register_legacy(payload, __name__, edits=NATIVE_EPILOGUE_EDITS)

@@ -15035,6 +15035,7 @@
       "Chapter": 6,
       "Flags": [
         "trickster.ever",
+        "trickster.now",
         "wenduag.committed"
       ],
       "NativeEligible": [],
@@ -15048,6 +15049,7 @@
       "Chapter": 6,
       "Flags": [
         "trickster.ever",
+        "trickster.now",
         "wenduag.life.available",
         "wenduag.started"
       ],
@@ -15062,6 +15064,7 @@
       "Chapter": 6,
       "Flags": [
         "trickster.ever",
+        "trickster.now",
         "wenduag.closed",
         "wenduag.trickster.cairn_built",
         "wenduag.trickster.stay_dead_ordered"
@@ -15077,6 +15080,7 @@
       "Chapter": 6,
       "Flags": [
         "trickster.ever",
+        "trickster.now",
         "wenduag.closed",
         "wenduag.life.available",
         "wenduag.trickster.court.claim_refused"

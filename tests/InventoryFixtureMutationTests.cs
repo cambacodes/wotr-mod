@@ -780,9 +780,16 @@ internal static class InventoryFixtureMutationTests
                 absent.Report("wenduag:055/unreturned/" + lost);
             }
             var former = w.Copy(); former.Native("trickster.failed"); former.Refresh();
-            Need(Rules.RouteOpen(story.Relationships["wenduag"], former.State), "Paid return lost on path departure.");
-            former = former.Walk("wenduag.trickster.epilogue.pack").First();
-            former.Report("wenduag:055/former Trickster earned return");
+            // eng8-q8b begin: this nominated legacy copy requires current power;
+            // its earned receipt and native fate survive conversion as history.
+            Need(former.State.Has("wenduag.trickster.returned") && former.State.Has("wenduag.killed"),
+                "Legacy conversion erased the return receipt or native fate.");
+            Need(!former.State.Has("wenduag.life.available") && !Rules.RouteOpen(story.Relationships["wenduag"], former.State),
+                "Current-path legacy copy survived path departure.");
+            foreach (string page in new[] { "pack", "unclaimed", "dead", "refused" })
+                Need(!former.Available("wenduag.trickster.epilogue." + page), "Off-path legacy ending selected " + page);
+            former.Report("wenduag:055/former Trickster legacy copy withheld");
+            // eng8-q8b end
             var ascended = w.Copy(); ascended.Native("ascend_all");
             var edit = story.NativeEpilogueEdits["4bb3706172f1ed54ca11db96254c4638"]; // blueprints.zip Epilogues/Cue_0580
             var variants = Rules.EditVariants(edit);

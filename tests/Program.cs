@@ -415,6 +415,9 @@ internal static class Program
             OwnLifeInventoryTests.Run(story, Check);
             ReturnProvenanceInventoryTests.Run(story, Check);
             CurrentActInventoryTests.Run(story, Check);
+            // eng8-q8b begin: also required by the full RulesTests gate.
+            LeftTricksterConsumerTests.Run(story, Check);
+            // eng8-q8b end
             if (args.Contains("--eng7-l07"))
             {
                 Console.WriteLine($"PASS: {checks} eng7-l07 assertions.");

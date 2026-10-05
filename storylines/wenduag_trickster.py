@@ -292,7 +292,7 @@ inline(W + "early.walls", "Men in rows", (2,), '"You\'ve been watching the knigh
         c('"And yet the city is still ours."', "ours")),
     conv("ours", '''"Yours." {n}She says it carefully, as if tasting it.{/n} "Because you're strong, not because they stand in rows. Every one of those men is here because you walked into a demon's army and came out with his head. They follow you because you're strong. The day you aren't, they'll follow somebody else." {n}She shrugs.{/n} "So would I. That's not an insult, {mf|master|mistress}. It's the only honest thing anybody here will ever tell you."''',
         c("Continue", flags=(W + "early.walls.line",))),
-    conv("take", '''{n}Her whole face changes. You have never before seen her look at the city walls as a problem instead of a view.{/n}
+    conv("take", '''{n}Her whole face changes. She studies the walls on a scout's map of Drezen, then lays it beside the crate.{/n}
 "Not from the front. Only fools and uplanders go in the front." {n}She sketches in the dirt with the point of an arrow: the wall, the gate, the old river culvert at the west corner, the sewer grates in the lower town.{/n} "There's always a hole. The demons came in through one. Rats come in through the same ones. You send your quiet people down in the night, ten or twelve, with knives and no armour, and you cut the throats on the gate from the inside while the fools are still shouting at the front. By morning it's your gate." {n}She sits back.{/n} "And you don't lose the boy in the third rank. You lose the ten who went down the hole, and they're the ones who knew the risk."''',
         c('"That\'s not how crusaders fight."', "crusaders"),
         c('"Ten who knew the risk. I\'ll remember that."', "remember")),
@@ -1055,3 +1055,10 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+# eng8-q8b begin: the legacy cellar revelations require the same current
+# Trickster path as the authored surviving copy. The stored return stays saved.
+for _consumer in SCENES:
+    if _consumer["Id"] in (W + "lann.truth", W + "lann.found_out"):
+        _consumer["Requires"] = list(dict.fromkeys([*_consumer["Requires"], "trickster.now"]))
+# eng8-q8b end
