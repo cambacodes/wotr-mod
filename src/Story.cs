@@ -288,7 +288,9 @@ namespace Tirabade
         public bool RecordedNative;
         public bool RecordedNativeContact; // eng7-l05: a retired copy cannot replace a subsequently lost native.
         public bool CopyUsable = true;
+        public bool CopyInitializing; // F9: submitted copy awaiting its first usable view, or a ready copy culled by distance.
         public bool ContactAmbiguous;
+        public bool NativeOwnedCopy;   // F9: a sibling placement owns this actor; never adopt it as native.
         public bool NativeAlive;       // a live, friendly unit of the blueprint that is not our copy
         public bool NativeHidden;      // that unit is out of game (hidden by native state)
         public bool NativeAtPosition = true;
@@ -306,8 +308,29 @@ namespace Tirabade
     [Flags]
     public enum CopyQuiet { None = 0, Faction = 1, Group = 2, Silence = 4, Passive = 8 }
 
+    // F9: game-free lifetime policy. The runtime samples monotonic seconds twice in a tick;
+    // reload/area observation resets the lease. A copy that never becomes usable gets ten seconds.
+    // Once usable, an inactive view (distance culling) does not invalidate the placement.
+    public sealed class PresenceReadiness
+    {
+        public const double GraceSeconds = 10;
+        private string? identity;
+        private double started;
+        private bool ready;
+        public bool Pending(string? unitId, PresenceObservation seen, bool viewPending, double seconds)
+        {
+            if (!seen.AreaLoaded || !seen.Submitted || unitId == null)
+            { identity = null; ready = false; return false; }
+            if (identity != unitId) { identity = unitId; started = seconds; ready = false; }
+            if (seen.CopyUsable && seen.CopyFound && seen.CopyAlive) ready = true;
+            if (!seen.CopyFound) return !ready && seconds - started < GraceSeconds;
+            return seen.CopyAlive && (ready ? viewPending : seconds - started < GraceSeconds);
+        }
+    }
+
     public sealed class CopyObservation
     {
+        public bool Enemy;             // F9: hostile native blueprints also need neutralization.
         public bool PlayerFaction;     // the copy's faction is the player's (companion blueprints)
         public bool PartyGroup;        // the copy is in the party's unit group
         public bool Silenced;          // the copy's asks are the native silent list
@@ -651,12 +674,52 @@ namespace Tirabade
         public Dictionary<string, int> Times = new Dictionary<string, int>();
         public Dictionary<string, int> RestSpent = new Dictionary<string, int>();
         public Dictionary<string, int>? CrusadeResources;
+        // eng8-q8a: a saved return is history, not proof against a new native death.
+        // The nominated legacy execution copy and the observed living echo original
+        // answer different losses. No synthetic receipt is required of old paid copies.
         public bool Has(string flag) => Flags.Contains(flag)
-            && (flag != "wenduag.trickster.returned" || !Flags.Contains(Rules.WenduagEchoPrefix + "unavailable"));
+            && (flag != "wenduag.trickster.returned" || Rules.WenduagReturnLiving(this));
+        // end eng8-q8a
     }
 
     public static class Rules
     {
+        // eng8-q8a: dead_any also includes the persistent native execution etude.
+        // That nominated copy remains legitimate; dead_any alone after a legacy
+        // return does not prove life. Echo validity comes from its exact living actor.
+        public static bool WenduagReturnLiving(Snapshot state) =>
+            !state.Flags.Contains(WenduagEchoPrefix + "unavailable")
+            && (!state.Flags.Contains("wenduag.dead_any")
+                || state.Flags.Contains("wenduag.killed")
+                || state.Flags.Contains(WenduagEchoPrefix + "valid"));
+        public static readonly string[] LatestStateRuntime = { "nenio.life.unavailable" };
+        public static void ObserveNenioLife(Snapshot state, bool retained, bool dead, bool visitorLost)
+        {
+            if (!state.Flags.Contains("nenio.trickster.returned")) return;
+            bool visitor = new[] { "nenio.trickster.cost.recreated", "nenio.trickster.cost.unremembered",
+                "nenio.trickster.primed_away" }.Any(state.Flags.Contains);
+            if (visitorLost || !visitor && (!retained || dead)) state.Flags.Add("nenio.life.unavailable");
+        }
+        public static bool WenduagEchoCustodyMatches(Snapshot state, string phase, bool wellFormed) => wellFormed
+            && !new[] { "wenduag.killed", "wenduag.kicked_out", "wenduag.q3_killed", "wenduag.q3_sent_away",
+                "wenduag.hello_sent_away", "wenduag.hello_attacked", "wenduag.romance_active",
+                "wenduag.romance_finished", "wenduag.romance_finished.latched" }.Any(state.Has)
+            && (!state.Has("wenduag.closed") || phase == "released" || phase == "departed")
+            && state.Has(WenduagEchoPrefix + "ready")
+            && state.Has(WenduagEchoPrefix + "rescued") == new[] { "hidden", "transport", "arrived", "released", "departed" }.Contains(phase)
+            && state.Has(WenduagEchoPrefix + "returned") == (phase == "released")
+            && state.Has(WenduagEchoPrefix + "departed") == (phase == "departed");
+        public static void ObserveWenduagEchoLife(Snapshot state, string phase, bool custodyMatches, bool livingOriginal)
+        {
+            bool path = state.Has("trickster") && !new[] { "trickster.failed", "dragon", "legend", "swarm" }.Any(state.Has);
+            bool page = state.Has("trickster.foresight.accepted") || state.Has("foresight.page_taken");
+            if (!custodyMatches || !livingOriginal || !path || !page)
+            { state.Flags.Add(WenduagEchoPrefix + "unavailable"); return; }
+            state.Flags.Add(WenduagEchoPrefix + "valid");
+            if (!new[] { "down", "arrived", "released", "departed" }.Contains(phase))
+                state.Flags.Add(WenduagEchoPrefix + "unavailable");
+        }
+        // end eng8-q8a
         public const string WenduagEchoPrefix = "wenduag.trickster.echo.abyss.";
         public static readonly string[] WenduagEchoRuntime = new[] { "adapter_available", "casualty_available", "return_available", "valid", "unavailable" }
             .Select(suffix => WenduagEchoPrefix + suffix).ToArray();
@@ -979,7 +1042,10 @@ namespace Tirabade
             || flag == "konomi.return_correspondence_available"
             || flag == "konomi.death_unreturned" || flag == "konomi.death_restored"
             || flag == "irabeth.return_correspondence_available" || flag == "irabeth.return_meeting_arrived"
-            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag);
+            || flag == "nurah.correspondence_available" || flag == "nurah.meeting_arrived" || WenduagEchoRuntime.Contains(flag)
+            // eng8-q8a
+            || LatestStateRuntime.Contains(flag);
+            // end eng8-q8a
 
         // E1: latch keys whose source is observed in this snapshot but which are not recorded yet.
         public static string[] PendingLatches(Story story, Snapshot state) => story.Latches
@@ -1154,7 +1220,7 @@ namespace Tirabade
                 return new[] { seen.NativeAlive ? PresenceStep.RestoreNative : PresenceStep.Forget };
             if (wanted && presence.Mode == "spawn-copy")
             {
-                if (seen.NativeCount > 1) return new[] { PresenceStep.Blocked };
+                if (seen.NativeCount > 1 || seen.NativeOwnedCopy) return new[] { PresenceStep.Blocked };
                 bool nativeReady = seen.NativeAlive && seen.NativeUsable && !seen.NativeHidden
                     && (!presence.ManageNative || seen.AnchorResolved && seen.NativeAtPosition); // eng7-l05
                 bool manageable = presence.ManageNative && seen.NativeAlive && seen.NativeManageable && seen.AnchorResolved;
@@ -1207,8 +1273,8 @@ namespace Tirabade
         public static CopyQuiet PlanQuiet(CopyObservation copy)
         {
             var steps = CopyQuiet.None;
-            if (copy.PlayerFaction) steps |= CopyQuiet.Faction;
-            if (copy.PlayerFaction || copy.PartyGroup) steps |= CopyQuiet.Group;
+            if (copy.PlayerFaction || copy.Enemy) steps |= CopyQuiet.Faction;
+            if (copy.PlayerFaction || copy.Enemy || copy.PartyGroup) steps |= CopyQuiet.Group;
             if (!copy.Silenced) steps |= CopyQuiet.Silence;
             if (!copy.Passive) steps |= CopyQuiet.Passive;
             return steps;
@@ -1445,6 +1511,9 @@ namespace Tirabade
         {
             // eng7-l05: the same usable contact and repair plan drive hubs and failure twins.
             if (!wanted || !seen.AreaLoaded) return false;
+            // View construction and distance culling are not anchor failures. Hard anchor/twin/death evidence still wins.
+            if (presence.Mode == "spawn-copy" && seen.CopyInitializing && seen.AnchorResolved
+                && seen.NativeCount == 0 && !seen.NativeAlive && !seen.ContactAmbiguous) return false;
             var plan = PlanPresence(presence, wanted, seen);
             if (plan.Contains(PresenceStep.Blocked) || seen.ContactAmbiguous && !plan.Contains(PresenceStep.Remove)) return true;
             bool moving = plan.Contains(PresenceStep.Unhide) || plan.Contains(PresenceStep.Move);
@@ -1615,7 +1684,10 @@ namespace Tirabade
                 "konomi.death_unreturned", "konomi.death_restored",
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" }
-                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)));
+                .Concat(story.Revivals.Keys.Select(key => "revive." + key + ".available")).Concat(WordMadeTrueKeys).Concat(WenduagEchoRuntime)
+                // eng8-q8a
+                .Concat(LatestStateRuntime)));
+                // end eng8-q8a
             // eng7-l06: saved runtime receipts are known inputs, never authored choice effects.
             derivedFlags.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
             // eng7-l06 end
@@ -1625,6 +1697,9 @@ namespace Tirabade
                 "irabeth.return_correspondence_available", "irabeth.return_meeting_arrived",
                 "nurah.correspondence_available", "nurah.meeting_arrived" });
             contactEvidence.UnionWith(WenduagEchoRuntime);
+            // eng8-q8a
+            contactEvidence.UnionWith(LatestStateRuntime);
+            // end eng8-q8a
             if (authoredFlags.Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys)
                 .Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(ReaderKeys(story))
                 .Any(flag => flag.StartsWith(DegradedPrefix, StringComparison.Ordinal) || flag.StartsWith(RestSpentPrefix, StringComparison.Ordinal) || flag.StartsWith(ServedPrefix, StringComparison.Ordinal)))
@@ -2293,6 +2368,13 @@ namespace Tirabade
                     if (pair.Key == "dbec675b71e9d5f4d96055f4bb31762e" && scene?.Relationship == "mielarah")
                         earned.UnionWith(new[] { "mielarah.trickster.primed.self", "mielarah.trickster.primed.minder", "mielarah.voyage_begun" });
                     // eng7-f6a end
+                    // eng8-q8e begin: the native partner's earned Commander return.
+                    // This exact mourning/continuation exception grants no RRT commitment.
+                    if ((pair.Key == "86bf0569a9029ae4b8c9d300a41e5739" || pair.Key == "8593ec10e3c34cdaaa2d2ed45e73e58a")
+                        && scene?.Relationship == "wenduag" && variant.When != null
+                        && variant.When.All(g => g != null && g.Contains("wenduag.trickster.native") && g.Contains("trickster.commander_back")))
+                        earned.Add("trickster.commander_back");
+                    // eng8-q8e end
                     if (scene == null || relationship == null
                         || !scene.Owner.EndsWith("Epilogue", StringComparison.Ordinal) || scene.Owner == "AeonEpilogue" || scene.Nodes.Count != 1
                         || string.IsNullOrWhiteSpace(scene.Nodes[0].Text) || scene.Nodes[0].Paragraphs.Count != 0 || scene.EpilogueSequence != null
@@ -2309,6 +2391,10 @@ namespace Tirabade
                 var spec = pair.Value;
                 var relationship = spec != null && spec.Relationship != null && story.Relationships.TryGetValue(spec.Relationship, out var r) ? r : null;
                 var earned = relationship == null ? new HashSet<string>() : EarnedFlags(story, spec!.Relationship!, relationship);
+                // eng8-q8e begin: existing terms earn only this follow-on suppression.
+                if (pair.Key == "430ce9767d3ede2479ff9d6aee432304" && spec?.Relationship == "camellia")
+                    earned.Add("camellia.trickster.terms_named");
+                // eng8-q8e end
                 if (spec == null || relationship == null || !Guid.TryParseExact(pair.Key, "N", out _) || story.NativeEpilogueEdits.ContainsKey(pair.Key)
                     || !Guid.TryParseExact(spec.Page ?? "", "N", out _) || !Guid.TryParseExact(spec.Sequence ?? "", "N", out _)
                     || spec.Key == null || spec.When == null || spec.When.Length == 0

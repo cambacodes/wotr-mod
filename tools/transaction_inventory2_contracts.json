@@ -1,0 +1,46 @@
+{
+  "eng8-q8c": {
+    "item": "E-Q8-09",
+    "contracts": [
+      {
+        "kind": "exclusive-selection",
+        "scene": "arsinoe.trickster.cauldron.collection",
+        "node": "pledge",
+        "selections": [
+          {"index": 0, "receipt": "arsinoe.trickster.cost.collateral_still", "target": "still"},
+          {"index": 1, "receipt": "arsinoe.trickster.cost.collateral_worldwound", "target": "wound"},
+          {"index": 2, "receipt": "arsinoe.trickster.cost.collateral_word", "target": "word"}
+        ],
+        "findings": ["arsinoe:006", "arsinoe:007", "arsinoe:008"]
+      },
+      {
+        "kind": "check-outcomes",
+        "scene": "arsinoe.trickster.cauldron.lease",
+        "node": "rent",
+        "index": 1,
+        "paid": "arsinoe.trickster.cost.rent_paid",
+        "initial": {"node": "terms", "index": 0, "payment": {"Resource": "Finances", "Amount": -500}},
+        "outcomes": [
+          {"branch": "Success", "target": "discount", "receipt": "arsinoe.trickster.cost.rent_grace"},
+          {"branch": "Failure", "target": "raised", "receipt": "arsinoe.trickster.cost.rent_raised"}
+        ],
+        "settled": "arsinoe.trickster.cost.rent_surcharge_paid",
+        "consumers": ["arsinoe.trickster.epilogue.bill_to_threshold", "arsinoe.trickster.epilogue.pot_returned"],
+        "findings": ["arsinoe:009"]
+      },
+      {
+        "kind": "irreversible-settlement",
+        "scene": "horzalah.trickster.late.at_night",
+        "act": "cut",
+        "entry_receipts": ["horzalah.trickster.cost.ear", "horzalah.trickster.cost.late"],
+        "paid_receipts": ["horzalah.trickster.primed", "horzalah.started"],
+        "settled": "horzalah.trickster.primed",
+        "payment_node": "no_priest",
+        "payment_index": 0,
+        "payment": {"Resource": "Favors", "Amount": -100},
+        "resume": "no_priest",
+        "findings": ["horzalah:030"]
+      }
+    ]
+  }
+}

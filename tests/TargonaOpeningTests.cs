@@ -110,7 +110,9 @@ internal static class TargonaOpeningTests
                                      : new[] { "none", "wardMet", "wardCommitted", "lettersFirst" }
                      : new[] { "none" })
         {
-            var initial = new Snapshot { Chapter = 5, Area = scenes[0].Areas.Single(), Hour = 1000 };
+            // eng-final E-Q8-10: the played wand night and ward visit have funds.
+            var initial = new Snapshot { Chapter = 5, Area = scenes[0].Areas.Single(), Hour = 1000,
+                CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000 } };
             initial.Flags.UnionWith(new[] { "targona.free", "targona.ran_" + mode, currentPath,
                 "seelah.committed", "arueshalae.committed" });
             if (order != "none") initial.Flags.UnionWith(new[] { "trickster.ever", "chapter_later" });

@@ -955,3 +955,58 @@ def integrate(payload):
             raise ValueError("Conflicting presence: " + key)
         payload["Presences"][key] = dict(value)
     payload.setdefault("PortraitFallbacks", {}).setdefault("Horzalah", PORTRAIT_GUID)
+
+
+# --- eng8-q8c / E-Q8-09: the injury survives exit before the existing payment ---
+_late_transaction = next(s for s in SCENES if s["Id"] == H + "late.at_night")
+_late_nodes = {nd["Id"]: nd for nd in _late_transaction["Nodes"]}
+# OnShow precedes the irreversible narration. PRIMED remains the paid outcome.
+_late_nodes["cut"]["EnterSet"] = [EAR, LATE]
+for _choice in _late_nodes["start"]["Choices"]:
+    _choice["Forbids"].append(EAR)
+_late_nodes["start"]["Choices"].append(c(
+    "Continue", "no_priest", requires=(EAR, LATE), forbids=(PRIMED,)))
+# end eng8-q8c
+
+
+# --- eng8-q8c: resume the bill after she has gone; stage arrival only once ---
+_late_arrival = _late_nodes["start"]["Text"]
+_late_nodes["start"]["Text"] = '{n}The lamp burns low beside your bed. The watch keeps the corridor outside your quarters.{/n}'
+for _arrival_node in ("refused", "refused_offer", "refused_room", "dismissed"):
+    _late_nodes[_arrival_node]["Text"] = _late_arrival + "\n" + _late_nodes[_arrival_node]["Text"]
+# end eng8-q8c
+# eng8-q8d: a fresh Chapter 6 entrant plays the Guild report and gift inside
+# her entrance delivery. Already-primed entrants retain guild.kept alone.
+def _eng8_chapter_six_entrances():
+    kept = next(s for s in SCENES if s['Id'] == H + 'guild.kept')
+    for suffix, terminal in [('unmet.knife', 'exit'), ('late.at_night', 'no_priest')]:
+        host = next(s for s in SCENES if s['Id'] == H + suffix)
+        end = next(n for n in host['Nodes'] if n['Id'] == terminal)
+        old = end['Choices'][0]
+        old['Forbids'].append('chapter.six')
+        folded = copy.deepcopy(old)
+        folded['Forbids'].remove('chapter.six')
+        folded['Requires'].append('chapter.six')
+        folded['Next'] = 'eng8.guild.arrival'
+        end['Choices'].append(folded)
+        host['Nodes'].append(nar('eng8.guild.arrival',
+            '{n}Two days later, before the march to Threshold, the air folds beside your lamp. Horzalah steps out of it, the empty box in her hand.{/n}',
+            c('Continue', 'eng8.guild.start')))
+        nodes = copy.deepcopy(kept['Nodes'])
+        for node in nodes:
+            node['Id'] = 'eng8.guild.' + node['Id']
+            for choice in node['Choices']:
+                if choice.get('Next'):
+                    choice['Next'] = 'eng8.guild.' + choice['Next']
+                if choice.get('Check'):
+                    for key in ('Success', 'Failure'):
+                        choice['Check'][key] = 'eng8.guild.' + choice['Check'][key]
+                if not choice.get('Next') and not choice.get('Check') and not choice.get('Abort'):
+                    choice['Set'] = list(dict.fromkeys(choice['Set'] + [kept['Id']]))
+        host['Nodes'].extend(nodes)
+    chamber = next(s for s in SCENES if s['Id'] == H + 'visit.chamber')
+    chamber['MaxChapter'] = 5
+    chamber['Chapters'] = [5]
+
+_eng8_chapter_six_entrances()
+# end eng8-q8d

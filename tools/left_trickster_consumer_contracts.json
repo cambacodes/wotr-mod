@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "item": "E-Q8-02",
+  "authored": "eng8-q8b: current-path consumers of Wenduag's authored courtship and legacy survival copy; no new return, cost or relationship requirement.",
+  "relationship": "wenduag",
+  "court_prefix": "wenduag.trickster.court.",
+  "native_twin_roots": ["trial", "gate", "stinger", "cairn", "morning", "vellexia", "yaniel", "neathers", "hunt", "gongs"],
+  "scenes": [
+    "wenduag.trickster.epilogue.pack",
+    "wenduag.trickster.epilogue.unclaimed",
+    "wenduag.trickster.epilogue.dead",
+    "wenduag.trickster.epilogue.refused",
+    "wenduag.trickster.killed.cellar",
+    "wenduag.trickster.lann.truth",
+    "wenduag.trickster.lann.found_out",
+    "wenduag.trickster.react.regill_watch",
+    "wenduag.trickster.react.lann_morning",
+    "wenduag.trickster.react.irabeth_traitor",
+    "wenduag.trickster.react.irabeth_suspicion"
+  ],
+  "return_reader": "wenduag.trickster.echo.abyss.returned_available",
+  "return_groups": [["wenduag.trickster.returned", "trickster.now"], ["wenduag.trickster.echo.abyss.departed", "wenduag.trickster.echo.abyss.valid", "trickster.now"]],
+  "return_forbids": ["wenduag.trickster.echo.abyss.unavailable"],
+  "history_policy": "Legacy Wenduag is a nominated current-path copy, as is her existing presence. Keep the stored returned flag and costs on conversion. Do not impose this policy on completed persistent returns in other contracts (Camellia's paid battlefield resurrection is the negative control). Echo actor validity and later loss/custody chronology remain runtime lifecycle contracts.",
+  "finding_ids": ["wenduag:045", "wenduag:046", "wenduag:048", "wenduag:049", "wenduag:050", "wenduag:051", "wenduag:052", "wenduag:053", "wenduag:054", "wenduag:055", "wenduag:056", "wenduag:057", "wenduag:058", "wenduag:059", "wenduag:060", "wenduag:061", "wenduag:062"],
+  "no_change_needed": {
+    "wenduag.trickster.epilogue.native_ascent": "Already requires trickster.now; Cue_0580 edit also reads current power.",
+    "wenduag.trickster.court.claim_in_person commitment choices": "L13 already guards commitment setters; retain those guards and cover entry consumers."
+  },
+  "mapped_rechecks": [
+    {
+      "findings": [
+        "wenduag:045",
+        "wenduag:046",
+        "wenduag:048",
+        "wenduag:049",
+        "wenduag:050",
+        "wenduag:051",
+        "wenduag:052",
+        "wenduag:053",
+        "wenduag:054"
+      ],
+      "status": "changed",
+      "evidence": "storylines/wenduag_cairn.py eng8-q8b: current power at every court entry, including all ten native_visit twins; L13 commitment and leave answer indices retained."
+    },
+    {
+      "findings": [
+        "wenduag:055",
+        "wenduag:056",
+        "wenduag:057",
+        "wenduag:058"
+      ],
+      "status": "changed",
+      "evidence": "storylines/wenduag_cairn.py eng8-q8b: all four authored ending entries read current power. storylines/wenduag_native.py limits returned_available to current Trickster and preserves actor-unavailable forbid; own-life and relationship readers already consume this lift."
+    },
+    {
+      "findings": [
+        "wenduag:059",
+        "wenduag:060"
+      ],
+      "status": "changed",
+      "evidence": "storylines/wenduag_trickster.py eng8-q8b: both Lann revelations keep the earned returned requirement and now read current power."
+    },
+    {
+      "findings": [
+        "wenduag:061"
+      ],
+      "status": "changed",
+      "evidence": "storylines/wenduag_cairn.py eng8-q8b: Regill reads current power and a real existing cairn history, alongside returned."
+    },
+    {
+      "findings": [
+        "wenduag:062"
+      ],
+      "status": "changed",
+      "evidence": "storylines/wenduag_cairn.py eng8-q8b: Lann's morning reaction reads current power and existing with_you as well as earned intimacy/trust."
+    }
+  ],
+  "class_sweep": "Guard killed.cellar and both Irabeth street reactions; court prefix includes stinger and both claim surfaces. Native ascent and its edit already read current power. Other-route Wenduag mentions still use the central loss lift; their prose/presence is left to route owners and L14.",
+  "route_followups": "L14 owns Vellexia/Yaniel and other-woman presence; route rounds own the unchanged courtship/ending prose. E-Q8-01 owns echo current-loss/custody ordering; E-Q8-13 owns still-live survival promises.",
+  "continuation_recheck": {
+    "status": "no_change_needed",
+    "finding_ids": [
+      "wenduag:045",
+      "wenduag:046",
+      "wenduag:048",
+      "wenduag:049",
+      "wenduag:050",
+      "wenduag:051",
+      "wenduag:052",
+      "wenduag:053",
+      "wenduag:054",
+      "wenduag:055",
+      "wenduag:056",
+      "wenduag:057",
+      "wenduag:058",
+      "wenduag:059",
+      "wenduag:060",
+      "wenduag:061",
+      "wenduag:062"
+    ],
+    "evidence": "Committed eng8-q8b guards rechecked against the regenerated payload: all 17 mapped findings, ten native_visit twins, both claim entries and the legacy return reader. LeftTricksterConsumerTests now requires producer-earned histories at every active registered consumer and checks converted paths with cleared or stale Trickster membership plus reload. The two retired street-reaction siblings retain isolated old-save fixtures. No additional route gates, costs or mechanics."
+  }
+}

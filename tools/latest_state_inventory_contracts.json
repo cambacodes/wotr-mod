@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "item": "E-Q8-01",
+  "authored": "eng8-q8a: loss-specific availability and a nonromantic aftermath for the already-paid echo rescue; no new recovery, price, or romantic requirement.",
+  "finding_ids": ["nenio:005", "nenio:006", "nenio:007", "nenio:008", "nenio:009", "nenio:010", "nenio:011", "wenduag:040", "wenduag:041"],
+  "nenio": {
+    "runtime_loss": "nenio.life.unavailable",
+    "overrides": {
+      "nenio.dead": "nenio.life.recreated",
+      "nenio.killed_by_commander": "nenio.life.unremembered",
+      "nenio.sent_away": "nenio.life.probation",
+      "nenio.kicked_out": "nenio.life.probation"
+    },
+    "derived": {
+      "nenio.life.recreated": [["nenio.trickster.returned", "nenio.trickster.cost.recreated"], ["nenio.trickster.returned", "nenio.trickster.cost.unremembered"]],
+      "nenio.life.unremembered": [["nenio.trickster.returned", "nenio.trickster.cost.unremembered"]],
+      "nenio.life.probation": [["nenio.trickster.returned", "nenio.trickster.cost.demoted"], ["nenio.trickster.returned", "nenio.trickster.cost.unremembered"]]
+    },
+    "producer": "nenio.trickster.dead.the_price",
+    "producer_node": "raised",
+    "producer_choice": 0,
+    "producer_action": "nenio",
+    "consumers": ["nenio.trickster.epilogue.article", "nenio.trickster.epilogue.commit", "nenio.trickster.epilogue.void", "nenio.trickster.epilogue.closed", "nenio.trickster.night"],
+    "guest": "guest.nenio"
+  },
+  "wenduag": {
+    "prefix": "wenduag.trickster.echo.abyss.",
+    "life_return": "wenduag.trickster.echo.abyss.returned_available",
+    "life_groups": [["wenduag.trickster.returned", "trickster.now"], ["wenduag.trickster.echo.abyss.departed", "wenduag.trickster.echo.abyss.valid", "trickster.now"]],
+    "romance_readers": ["wenduag.trickster.with_you", "wenduag.trickster.partner", "wenduag.trickster.late_committed", "wenduag.harem.voice.pack"],
+    "refusal": "wenduag.trickster.epilogue.refused",
+    "departure": "wenduag.trickster.echo.abyss.epilogue.departed",
+    "departure_producer": {"scene": "wenduag.trickster.echo.abyss.return", "node": "start", "choice": 2, "receipt": "wenduag.trickster.echo.abyss.departed"}
+  },
+  "evidence": {
+    "nenio_current_death": "40fb6c123ced9ed45a305e0feec010ae, NenioNotInParty_Dead: CompanionInParty MatchWhenDead only. Native resurrection of the retained original clears this current loss; dead.latched and returned remain historical. Never replay the one-shot bargain to answer a later death.",
+    "nenio_matching_returns": "Existing cost.recreated, cost.unremembered and cost.demoted identify the new-vessel and probation producers. A bodily resurrection never lifts a later dismissal or execution. No new receipt is required of those older paid returns.",
+    "wenduag_current_death": "1129a007a909f5c4f860cd0909cd10e0, WenduagNotInParty_Dead: WenduagKilled OR UnitIsDead. Only the nominated historical killed-copy exception or the observed exact living echo original can answer it; generic returned alone cannot.",
+    "wenduag_custody": "WenduagEcho.Record ActorId, Attempt, Phase and saved presence Lost receipts. Released refusal and arrived explicit departure remain living observations; missing, dead, duplicate, mismatched or corrupt originals do not. Loaded storage is required for physical contact, not for an ending's remote life observation.",
+    "chronology": "Re-observe the current native body/departure after the paid producer, including after reload. Native resurrection clears only current bodily death; all unrelated losses and romantic closure remain. Persistent presence Lost and invalid echo custody are never cleared by an earlier return flag."
+  }
+}

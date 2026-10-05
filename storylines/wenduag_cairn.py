@@ -661,3 +661,25 @@ for _delivery_source in list(SCENES):
                     _delivery_answer["Set"].append(_delivery_source["Id"])
     SCENES.append(_native_visit)
 # end eng7-l08
+
+# eng8-q8b begin: E-Q8-02 applies at entry, including every native hub twin.
+_current_survival = {W + name for name in (
+    "killed.cellar", "epilogue.pack", "epilogue.unclaimed", "epilogue.dead", "epilogue.refused",
+    "react.regill_watch", "react.lann_morning",
+    "react.irabeth_traitor", "react.irabeth_suspicion")}
+for _consumer in SCENES:
+    if _consumer["Id"].startswith(W + "court.") or _consumer["Id"] in _current_survival:
+        _consumer["Requires"] = list(dict.fromkeys([*_consumer.get("Requires", []), "trickster.now"]))
+    if _consumer["Id"] == W + "react.lann_morning":
+        _consumer["Requires"] = list(dict.fromkeys([*_consumer["Requires"], WITH_YOU]))
+    if _consumer["Id"] == W + "react.regill_watch":
+        _consumer.setdefault("RequiresAnyGroups", []).append([CAIRN, ABYSS_CAIRN, STREET_CAIRN])
+    # L13 already serialized these answer indices. Entry power must not make
+    # its generator omit the old off-path leave answers on a regenerated save.
+    if _consumer["Id"] in (W + "court.claim", W + "court.claim_in_person"):
+        for _node in _consumer["Nodes"]:
+            if _node["Id"] in ("after_given", "after_knelt", "after_struck"):
+                _answer = _node["Choices"][0]
+                _answer["Requires"] = list(dict.fromkeys([*_answer.get("Requires", []), "trickster.now"]))
+                _node["Choices"].append(c("[Leave.]", forbids=("trickster.now",), abort=True))
+# eng8-q8b end

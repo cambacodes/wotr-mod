@@ -6098,7 +6098,17 @@
     "ffabc0de1942f4feda33a7e316706aaa3e962819e15c94af0d4e19a7cac3bf41": 1,
     "ffbcb033e0bc055ca601c3c31b812cacabe614c79729fddb758c3100766beffa": 1,
     "ffbf438a71aef3a77f273417f5cdc91965621109ec376bda1af6c4ca6eb8bae9": 1,
-    "ffd5de6042feec0e3f97a78f08993dc9e5dd1efb344a3899700bd8cd5a384160": 1
+    "ffd5de6042feec0e3f97a78f08993dc9e5dd1efb344a3899700bd8cd5a384160": 1,
+    "16d7ddb4f874de005edb0e4d83774d68aecfcc84d7214f5201189d9e3802f72a": 1,
+    "d2777808b63ddf3977bf015496c6bf4f9cf25b6780f98612e0ddcdf01b24edad": 1,
+    "6088576bc0635efc45ffd8f9db4c01af162d541c60a79a8de191b0bfb4ff2b93": 1,
+    "fa63c113fc06ae7e6342f6448ed792e140a27e1a342311c6b1bf005404184ab7": 1,
+    "51ec776e75fbda042cf6d3f3f12ae352733760ad2613fa44e634f8eb7d4aa4c7": 1,
+    "d612685cd0c6ac4c1da62cf1cca2f2a64ab5488806660f518bd53a10f71020a1": 1,
+    "2e479a027e9236ab8385c6d3339e9884d0c2faf1969f4e6c00d62ea1ba398739": 1,
+    "4a7d757dfac946a12da90ba13da8e0b08b7696ab3c70fd995e8d5be70c93f9cb": 1,
+    "446adf0e19a8d5b8f48f69a93b9dd9b00ea9187d315411cea6f4c73c73faf4d3": 1,
+    "1f40b0b92e70ef80f85efa39d230762b091b3844ba19941e8b9275984eb683ac": 1
   },
   "therapy_counts": {
     "a": 1,
@@ -6123,5 +6133,83 @@
     "kaylessa": 1,
     "mielarah": 6,
     "herrax": 1
+  },
+  "eng8-q8c": {
+    "item": "E-Q8-04",
+    "status": "Route prose followups; retained diagnostics, not age exceptions.",
+    "added_fingerprints": {
+      "16d7ddb4f874de005edb0e4d83774d68aecfcc84d7214f5201189d9e3802f72a": 1,
+      "d2777808b63ddf3977bf015496c6bf4f9cf25b6780f98612e0ddcdf01b24edad": 1,
+      "6088576bc0635efc45ffd8f9db4c01af162d541c60a79a8de191b0bfb4ff2b93": 1,
+      "fa63c113fc06ae7e6342f6448ed792e140a27e1a342311c6b1bf005404184ab7": 1,
+      "51ec776e75fbda042cf6d3f3f12ae352733760ad2613fa44e634f8eb7d4aa4c7": 1,
+      "d612685cd0c6ac4c1da62cf1cca2f2a64ab5488806660f518bd53a10f71020a1": 1,
+      "2e479a027e9236ab8385c6d3339e9884d0c2faf1969f4e6c00d62ea1ba398739": 1,
+      "4a7d757dfac946a12da90ba13da8e0b08b7696ab3c70fd995e8d5be70c93f9cb": 1,
+      "446adf0e19a8d5b8f48f69a93b9dd9b00ea9187d315411cea6f4c73c73faf4d3": 1,
+      "1f40b0b92e70ef80f85efa39d230762b091b3844ba19941e8b9275984eb683ac": 1
+    },
+    "surfaces": [
+      {
+        "scene": "jerribeth.counterfeit_guest",
+        "location": "square",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "jerribeth.counterfeit_after",
+        "location": "guise",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "jerribeth.settlement_visit",
+        "location": "inspection",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "jerribeth.settlement_visit",
+        "location": "buyer",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "arsinoe_borrowed_court",
+        "location": "start",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "arsinoe_courtyard_company",
+        "location": "public",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "arsinoe_courtyard_company",
+        "location": "private",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "anevia.the_woman_with_the_basket",
+        "location": "start",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "arsinoe_after_rain",
+        "location": "passage",
+        "code": "age-certification",
+        "match": "adult"
+      },
+      {
+        "scene": "ember.the_empty_basket",
+        "location": "room",
+        "code": "age-certification",
+        "match": "adult"
+      }
+    ]
   }
 }

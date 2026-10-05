@@ -22,7 +22,10 @@ internal static class Program
         Flags = new HashSet<string>(original.Flags), Times = new Dictionary<string, int>(original.Times),
         RestSpent = new Dictionary<string, int>(original.RestSpent),
         CrusadeResources = original.CrusadeResources == null ? null : new Dictionary<string, int>(original.CrusadeResources),
-        AvailableContacts = new HashSet<string>(original.AvailableContacts)
+        AvailableContacts = new HashSet<string>(original.AvailableContacts),
+        // eng8-q8f: retain the actually placed hub contact across branch copies.
+        SceneContacts = new HashSet<string>(original.SceneContacts)
+        // end eng8-q8f
     };
 
     // eng7-l08: ledger reader used by actual route walkers, including known failing inventories.
@@ -47,7 +50,9 @@ internal static class Program
         int limit = allocation.GetProperty("limits").GetProperty(chapter.ToString()).GetInt32();
         string ledger = allocation.GetProperty("ledger_row").GetString()!;
         bool failure = pages.Length > limit;
-        check(failure == expectedFailure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        // eng8-q8d: shipped positives may never expect an allocation failure.
+        check(!expectedFailure && !failure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        // end eng8-q8d
         if (eng7L08ReportedHistories.Add(character + "/" + chapter + "/" + name))
             Console.WriteLine("eng7-l08 allocation " + JsonSerializer.Serialize(new {
                 name, character, chapter, deliveries = ids, count = pages.Length, limit, ledger_row = ledger,
@@ -138,12 +143,25 @@ internal static class Program
             var node = scene.Nodes.Single(n => n.Id == id);
             Rules.EnterNode(node, state); // eng7-l09: runtime OnShow precedes choice availability.
             visit?.Invoke(id, state);
-            var choices = node.Choices.Where(c => Rules.Match(c.Requires, c.Forbids, state)).ToList();
+            var choices = node.Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToList();
+            // eng8-q8f: Main generates an abort when no paid answer is affordable.
+            if (Rules.PaymentExitAvailable(node, state))
+            { outcomes.Add((Copy(state), passed)); return; }
+            // end eng8-q8f
             Check(choices.Count > 0, "Page has no selectable answers: " + scene.Id + "/" + id);
             foreach (var choice in choices)
             {
                 bool took = passed || (via != null && via.Value.node == id && node.Choices.IndexOf(choice) == via.Value.index);
                 var next = Copy(state);
+                // eng8-q8f: debit before granting effects, as production does.
+                if (choice.Crusade != null)
+                {
+                    var cost = choice.Crusade;
+                    next.CrusadeResources ??= new Dictionary<string, int>();
+                    next.CrusadeResources.TryGetValue(cost.Resource, out int balance);
+                    next.CrusadeResources[cost.Resource] = balance + cost.Amount;
+                }
+                // end eng8-q8f
                 foreach (var effect in choice.Set)
                     if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
                 // E11: a removed item is no longer observed in the inventory (Main.BuildState reads InventoryItems live).
@@ -166,10 +184,21 @@ internal static class Program
     // eng7-l13: the same generic draft checks are callable for focused diagnostics.
     internal static void CheckDraftScenes(HashSet<string> playedContinuations)
     {
+        // eng8-q8h begin: these cases require the actual producer inventory above,
+        // rather than a generic snapshot which seeds a Derived entitlement.
+        using var rescueInventory = JsonDocument.Parse(File.ReadAllText("tools/rescue_endpoint_inventory_contracts.json"));
+        var verifiedRetirements = rescueInventory.RootElement.GetProperty("retired_offers")
+            .EnumerateArray().Select(row => row.GetString()!).ToHashSet();
+        playedContinuations.UnionWith(verifiedRetirements);
+        playedContinuations.Add("arsinoe.trickster.late.commit");
+        // end eng8-q8h
         foreach (var scene in story.Scenes.Where(s => s.Relationship != "tirabade"))
         {
             if (playedContinuations.Contains(scene.Id)) continue;
-            var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires) };
+            // eng-final E-Q8-10: this positive structural walk explores paid
+            // paths too; separate mutation histories still prove insolvency.
+            var state = new Snapshot { Chapter = scene.MinChapter, Hour = 10000, Area = scene.Areas.FirstOrDefault() ?? "", Flags = new HashSet<string>(scene.Requires),
+                CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
             // eng7-l07: these are declared prerequisite fixtures, not provenance proof.
             // The ordered inventory suite separately plays and verifies the coffin producer.
             if (state.Has("camellia.killed") && state.Has("camellia.trickster.returned"))
@@ -180,6 +209,16 @@ internal static class Program
                 Rules.Complete(story, state);
             }
             // eng7-l07 end
+            // eng8-q8a: declared Nenio loss fixtures need the existing matching
+            // paid vessel/probation receipt; the ordered worker proves actual payment.
+            if (scene.Relationship == "nenio" && state.Has("nenio.trickster.returned"))
+            {
+                if (state.Has("nenio.killed_by_commander")) state.Flags.Add("nenio.trickster.cost.unremembered");
+                else if (state.Has("nenio.dead")) state.Flags.Add("nenio.trickster.cost.recreated");
+                if (state.Has("nenio.sent_away") || state.Has("nenio.kicked_out")) state.Flags.Add("nenio.trickster.cost.demoted");
+                Rules.Complete(story, state);
+            }
+            // end eng8-q8a
             if (scene.Relationship == "wenduag" && state.Has("wenduag.trickster.returned"))
                 state.Flags.Add(Rules.WenduagEchoPrefix + "returned_available");
             if (scene.Recovery != null) state.Flags.Add("revive." + scene.Recovery + ".available");
@@ -372,6 +411,25 @@ internal static class Program
         // No Windows crash dialog on a failed check (it piled up dialogs on the desktop): print and exit 1.
         AppDomain.CurrentDomain.UnhandledException += (_, e) => { Console.Error.WriteLine(e.ExceptionObject); Environment.Exit(1); };
         story = JsonSerializer.Deserialize<Story>(File.ReadAllText(args.Last(a => !a.StartsWith("--", StringComparison.Ordinal))), new JsonSerializerOptions { IncludeFields = true })!;
+        // --- eng8-q8c: focused diagnostics, also run in the full suite below ---
+        if (args.Contains("--transaction-inventory2"))
+        {
+            Rules.Validate(story);
+            TransactionInventory2Tests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8c (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8c
+        // eng8-q8g: optional focus; LastCallTests also runs it in the full suite.
+        if (args.Contains("--eng8-q8g"))
+        {
+            Rules.Validate(story);
+            LastCallHistoryInventoryTests.Run(story, Check);
+            LastCallTests.CheckNoStranding(story, Check);
+            Console.WriteLine("PASS: eng8-q8g (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8g
         // eng7-l06: focused diagnostics; the default runner below executes these suites unconditionally too.
         if (args.Contains("--eng7-l06"))
         {
@@ -383,7 +441,65 @@ internal static class Program
             return;
         }
         // eng7-l06 end
+        // eng8-q8d: focused diagnostics share the mandatory full-suite runner.
+        if (args.Contains("--eng8-q8d"))
+        {
+            Rules.Validate(story);
+            LongConTests.Run(story, Check);
+            CamelliaTricksterTests.Run(story, Check);
+            GalfreyTricksterTests.Run(story, Check);
+            HorzalahTricksterTests.Run(story, Check);
+            NenioTricksterTests.Run(story, Check);
+            TerendelevTricksterTests.Run(story, Check);
+            WenduagTricksterTests.Run(story, Check);
+            ReturnProvenanceInventoryTests.Run(story, Check);
+            PresenceBootstrapInventoryTests.Run(story, Check);
+            PresenceExceptionExportTests.Run(story, Check);
+            EarnedPresenceTests.Run(story, Check);
+            LocationInventoryTests.Run(story, Check);
+            EngineQ5Tests.Run(story, Check);
+            InventoryFixtureMutationTests.Run(story, Check);
+            DeliveryInventory2Tests.Run(story, Check);
+            return;
+        }
+        // end eng8-q8d
         Rules.Validate(story);
+        // eng8-q8a: always execute ordered latest-state acceptance, including in the full gate.
+        if (!args.Contains("--bindings")) LatestStateInventoryTests.Run(story, Check);
+        if (args.Contains("--eng8-q8a"))
+        {
+            Console.WriteLine("PASS: eng8-q8a (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8a
+        // eng8-q8e begin: required inventories run in full and focused rules modes.
+        if (!args.Contains("--bindings"))
+        {
+            ImplicitParticipantInventoryTests.Run(story, Check);
+            NativeEndingInventory2Tests.Run(story, Check);
+        }
+        if (args.Contains("--eng8-q8e"))
+        {
+            NenioTricksterTests.Run(story, Check); // native slides preserve the route's page inventory
+            HerraxTricksterTests.Run(story, Check); // physical discovery fixtures use the departure reader
+            HorzalahTricksterTests.Run(story, Check);
+            WenduagTricksterTests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8e (" + checks + " checks)"); return;
+        }
+        // eng8-q8e end
+        // eng8-q8f: focused diagnostics share the mandatory full-suite assertions.
+        if (args.Contains("--eng8-q8f"))
+        {
+            Inventory2WalkerMutationTests.Run(story, Check);
+            GameplayEntryInventoryTests.Run(story, Check);
+            CamelliaTricksterTests.Run(story, Check);
+            NenioTricksterTests.Run(story, Check);
+            HorzalahTricksterTests.Run(story, Check);
+            TerendelevTricksterTests.Run(story, Check);
+            Console.WriteLine("PASS: eng8-q8f (" + checks + " checks)");
+            return;
+        }
+        // end eng8-q8f
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
         if (!args.Contains("--bindings"))
@@ -415,6 +531,9 @@ internal static class Program
             OwnLifeInventoryTests.Run(story, Check);
             ReturnProvenanceInventoryTests.Run(story, Check);
             CurrentActInventoryTests.Run(story, Check);
+            // eng8-q8b begin: also required by the full RulesTests gate.
+            LeftTricksterConsumerTests.Run(story, Check);
+            // eng8-q8b end
             if (args.Contains("--eng7-l07"))
             {
                 Console.WriteLine($"PASS: {checks} eng7-l07 assertions.");
@@ -434,6 +553,25 @@ internal static class Program
             return;
         }
         // eng7-l01 end
+        // eng8-q8h begin: mandatory producer/consumer and surviving rescue traces.
+        if (!args.Contains("--bindings"))
+        {
+            LateAcceptanceInventory2Tests.Run(story, Check);
+            RescueEndpointInventoryTests.Run(story, Check);
+            if (args.Contains("--eng8-q8h")) return;
+            // Focus the generic fixture on q8h's changed consumer class before the full run.
+            if (args.Contains("--eng8-q8h-drafts"))
+            {
+                var mapped = story.Scenes.Where(s => s.Id == "arsinoe.trickster.late.ask"
+                    || s.Id == "arsinoe.trickster.late.commit" || s.Id == "arsinoe.lastcall.page"
+                    || s.Id == "nenio.trickster.epilogue.scholar"
+                    || s.Id.StartsWith("terendelev.trickster.commit", StringComparison.Ordinal))
+                    .Select(s => s.Id).ToHashSet();
+                CheckDraftScenes(story.Scenes.Where(s => !mapped.Contains(s.Id)).Select(s => s.Id).ToHashSet());
+                return;
+            }
+        }
+        // end eng8-q8h
         // eng7-l13: mandatory earned-outcome inventory acceptance.
         if (!args.Contains("--bindings")) EarnedOutcomeInventoryTests.Run(story, Check);
         if (args.Contains("--wenduag-echo"))
@@ -593,6 +731,12 @@ internal static class Program
             .Concat(story.Etudes.Keys).Concat(story.CompletedQuests.Keys).Concat(story.SeenCues.Keys).Concat(story.SelectedAnswers.Keys).Concat(story.StartedDialogs.Keys).Concat(story.CompletedEtudes.Keys).Concat(Rules.ReaderKeys(story)).Concat(story.PendingHooks).Concat(story.Latches.Keys).Concat(story.Derived.Keys).Concat(story.Counts.Keys)
             // E12b: the runtime observation an anchored presence exposes for its letter twin (as Rules.Validate derives it).
             .Concat(story.Presences.Where(p => p.Value?.At != null).Select(p => Rules.PresenceFailedFlag(p.Key))).Concat(new[] { "started", "closed", "committed", "chapter_one", "chapter_later", "loss", "ascended", "inhuman", "konomi.missed_contact_available", "konomi.missed_contact_invalidated", "konomi.retained_dead", "konomi.retained_hostile", "konomi.return_contact_available", "konomi.return_correspondence_available", "nurah.correspondence_available", "nurah.meeting_arrived" }));
+        // eng8-q8a: current-body observations are runtime inputs, never authored effects.
+        known.UnionWith(Rules.LatestStateRuntime);
+        // end eng8-q8a
+        // eng8-q8c: OnShow receipts are authored producers, including successful checks.
+        known.UnionWith(story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.EnterSet));
+        // end eng8-q8c
         // eng7-l06: saved placement receipts are runtime-produced conditions.
         known.UnionWith(story.PresenceFailureReceipts.Values.Select(r => r.Flag));
         // eng7-l06 end
@@ -672,6 +816,7 @@ internal static class Program
         NativeCostTests.Run(Check);
         EntryEffectTests.Run(Check);
         PresenceTests.Run(Check);
+        PresenceRuntimeF9Tests.Run(Check);
         ContactWindowTests.Run(Check);
         NativeEpilogueTests.Run(Check);
         ReturnToListTests.Run(Check);
@@ -782,6 +927,9 @@ internal static class Program
             if (story.Scenes.Any(s => s.Id == "arsinoe.trickster.cauldron.lease")) ArsinoeTricksterTests.Run(story, Check);
             // eng7-l09
             TransactionExitInventoryTests.Run(story, Check);
+            // eng8-q8c: E-Q8-09 interrupted transaction inventory.
+            TransactionInventory2Tests.Run(story, Check);
+            // end eng8-q8c
             // end eng7-l09
             if (story.Scenes.Any(s => s.Id == "irabeth.trickster.dead.setup")) IrabethTricksterTests.Run(story, Check);
             if (story.Scenes.Any(s => s.Id == "anevia.trickster.gone.setup")) AneviaTricksterTests.Run(story, Check);
@@ -910,6 +1058,10 @@ internal static class Program
             playedContinuations.UnionWith(story.Scenes.Where(s => s.Relationship == "nocticula.acquisition"
                 && s.Id != "noct.acq.after_the_council").Select(s => s.Id));
         }
+        // eng8-q8f: default full-suite acceptance, not an optional diagnostic.
+        Inventory2WalkerMutationTests.Run(story, Check);
+        GameplayEntryInventoryTests.Run(story, Check);
+        // end eng8-q8f
         CheckDraftScenes(playedContinuations); // eng7-l13: focused class sweep shares this fixture.
         if (story.Scenes.Any(s => s.Id == "seelah.kept")) CheckSeelahOpening();
         if (story.Scenes.Any(s => s.Id == "seelah.door")) CheckSeelahContinuation();
@@ -1012,6 +1164,10 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.unprimed"))
             InventoryFixtureMutationTests.Run(story, Check);
         // eng7-l01 end
+        // eng8-q8d: executed production positives are never expected failures.
+        if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer"))
+            DeliveryInventory2Tests.Run(story, Check);
+        // end eng8-q8d
         Console.WriteLine($"PASS: {checks} assertions covering the original campaign, independent-relationship rules, authored expansion campaign scenarios and {story.Scenes.Count(s => s.Relationship != "tirabade")} draft expansion scenes. Unity execution and real save persistence are not covered.");
     }
 
@@ -1986,11 +2142,22 @@ internal static class Program
             string Ending() => story.Scenes.Single(s => s.Relationship == "seelah" && s.Owner == "Epilogue" && Rules.Available(story, s, state)).Id;
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_unfinished_work"), "Seelah ending invents completed personal quest.");
             state.Flags.Add("seelah.souls_returned");
-            Check(Rules.Available(story, aftermath, state), "Seelah soul-rescue aftermath remains blocked after quest completion.");
-            var alive = Walk(aftermath, state);
-            Check(alive.All(s => s.Has("seelah.aftercare")), "Seelah living-Elan aftermath has no conclusion.");
-            state.Flags.Add("seelah.elan_dead");
-            Check(Walk(aftermath, state).All(s => s.Has("seelah.aftercare")), "Seelah dead-Elan aftermath has no conclusion.");
+            // eng-final l14: this page names Arsinoe as the living caregiver;
+            // her existing Lich/Swarm exclusions remain binding. Exercise both
+            // admitted histories and their unavailable-caregiver controls.
+            bool caregiverUnavailable = mythic == "true_lich" || mythic == "swarm";
+            Check(Rules.Available(story, aftermath, state) == !caregiverUnavailable,
+                "Seelah soul-rescue aftermath does not respect the caregiver's current availability: " + mythic);
+            if (caregiverUnavailable)
+                Check(!state.Has("seelah.aftercare"), "An unavailable caregiver invents completed Seelah aftercare.");
+            else
+            {
+                var alive = Walk(aftermath, state);
+                Check(alive.Count > 0 && alive.All(s => s.Has("seelah.aftercare")), "Seelah living-Elan aftermath has no conclusion.");
+                state.Flags.Add("seelah.elan_dead");
+                var bereaved = Walk(aftermath, state);
+                Check(bereaved.Count > 0 && bereaved.All(s => s.Has("seelah.aftercare")), "Seelah dead-Elan aftermath has no conclusion.");
+            }
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_together"), "Seelah quest-complete ending is wrong.");
             state.Flags.Add("seelah.ending_moderate");
             Check(Ending() == (state.Has("inhuman") ? "seelah.ending_changed" : "seelah.ending_unsettled"), "Seelah relationship erases the moderate ending.");

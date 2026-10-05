@@ -95,7 +95,8 @@
             "guid": "377d6527da57139449008d6c27cdedfc",
             "path": "World/Areas/Act_3_DemonsHerecy/DrezenCapital/Addons/DrezenCapital_DefaultMechanic.jbp",
             "sha256": "98ff032edcff548a7b4121bfb108edb5c0c7dad3db670275150630f5cdc9e457"
-          }
+          },
+          "availability": "Ordinary Traders/BlacksmithCapitalTraderInCapital unhides this scene spawner with no activation conditions (Ch3/Ch5 Trickster capital); no Legend event required. Live joint geometry remains pending."
         },
         {
           "guid": "23eabf5b6364d4a4e86202dc5d27600b",
@@ -603,6 +604,64 @@
       "sha256": "dfbf7ee8106f4dce3338f2bb393021cf661e71c14c98a0af04f095a747cc111e",
       "pointer": "/Data/m_Parent",
       "value": "!bp_ef35e9838eea48f48b22ae3aef9ca6cd"
+    },
+    {
+      "guid": "aee729f4de1f5844096ec3f36bcbc4f1",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Traders/BlacksmithCapitalTraderInCapital.jbp",
+      "sha256": "97aa687e681fd62cb98e6ac6d0749acee407a96d42424743d0445ce41b0ce2db",
+      "pointer": "/Data/Components/0/Actions/Actions/0/Unhide",
+      "value": true
+    },
+    {
+      "guid": "aee729f4de1f5844096ec3f36bcbc4f1",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Traders/BlacksmithCapitalTraderInCapital.jbp",
+      "sha256": "97aa687e681fd62cb98e6ac6d0749acee407a96d42424743d0445ce41b0ce2db",
+      "pointer": "/Data/ActivationCondition/Conditions",
+      "value": []
+    },
+    {
+      "guid": "47dd28176f033054bb369a039b9144fe",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Traders.jbp",
+      "sha256": "810da9efd7aaacfc88a9a078ea41898430f8bc3fcdd07823ad842f7737df00af",
+      "pointer": "/Data/ActivationCondition/Conditions",
+      "value": []
+    },
+    {
+      "guid": "30862a76dd4a11049be42d3de26159fb",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic.jbp",
+      "sha256": "dfbf7ee8106f4dce3338f2bb393021cf661e71c14c98a0af04f095a747cc111e",
+      "pointer": "/Data/m_StartsWith",
+      "value": [
+        "!bp_ce5f755519ff2c945ab4eacd67d3f8e3",
+        "!bp_a16801f903892ff4ba19f69b5a46f557",
+        "!bp_3a1ae39368c85164d9a9051206b2b42f",
+        "!bp_36e8f2b603acdd444a2e1e1eeb22494e",
+        "!bp_e8c6628f9796d104b8fc4bb75e6d5e23",
+        "!bp_4b441ac2bc063f6439795edc9d98b8a1",
+        "!bp_48967c3ec4330294ab1f5d24d9b45052",
+        "!bp_878b1056e8cb4cf8896406cdeb86efb0",
+        "!bp_e0d8b253efedb70488badaaa3d47632c",
+        "!bp_8649140454376084f84dbdc8a7d6a7f1",
+        "!bp_47dd28176f033054bb369a039b9144fe",
+        "!bp_63dd69dc339c4e3db4b3d743049e9cf7",
+        "!bp_5b194800b0c144f090302cd00ab7a5a1",
+        "!bp_a140c3239a464f4290dad7274d10b5cf",
+        "!bp_ff6fdc224c844bc39db663653088abb5",
+        "!bp_b354ec11d92a4d7480b021ea1a0e9fdd"
+      ]
+    },
+    {
+      "guid": "47dd28176f033054bb369a039b9144fe",
+      "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/CapitalMechanic/DrezenCapital_DefaultMechanic/Traders.jbp",
+      "sha256": "810da9efd7aaacfc88a9a078ea41898430f8bc3fcdd07823ad842f7737df00af",
+      "pointer": "/Data/m_StartsWith",
+      "value": [
+        "!bp_593e523b598f0bb44b7313fbecffc49e",
+        "!bp_72e751ad27029144bbfbcb5606338bd4",
+        "!bp_80d962445c436644fa371e3e8324e1f1",
+        "!bp_f5d08d5c41d6b584ca59081039a19f20",
+        "!bp_aee729f4de1f5844096ec3f36bcbc4f1"
+      ]
     }
   ]
 }

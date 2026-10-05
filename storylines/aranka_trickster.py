@@ -19,7 +19,7 @@ UNIT = "430cba7801b149b4e8494ace6baf4f7c"           # Azata_Aranka_DesnaPriest (
 DREZEN = "2570015799edf594daf2f076f2f975d8"
 MARKET = "bad9f602b81a80047ac470b01ebe65a9"         # ExoticCapitalTrader: the spice-and-curio stall, no other route's anchor
 YARD_UNIT = "bd0c4fe722aeef94b8495ac284b96bc8"      # Azata_Aranka_RankupSpeaker: her Chapter 3 look, a second unit for the yard
-QUARTERMASTER = "a380d926e92f70e429681eb9654478f9"  # DrezenCapital_Quartermaster (Wilcer Garms), always in the capital
+QUARTERMASTER = "15f754455d1d87c42a4e14df456d5415"  # F9: capital blacksmith, ordinary Traders mechanics; authored yard placement
 KING_C3 = "1a17d8053a3be7f47a7908eb6706f2fe"        # c3/Mythic_Trickster/FoolKing_Tavern/AnswersList_0009
 KING_C3_RETURN = "814dd1a078a1c2849aefc85e2e15b2d2" # FoolKing_Tavern/Cue_0008 "Oh, Commander! Nice of you to stop by."
 KING_C5 = "6dccfd39947ef4242a8afbe36b21a46c"        # FoolKing_Tavern/AnswersList_0054 (Chapter 5)
@@ -91,9 +91,9 @@ PRESENCES = {
               Greeting="{n}A woman in Desnan blue is sitting on a stack of spice crates by the curio stall with a lute "
                        "across her knees, and half the market has stopped haggling to hear her tune it.{/n}"),
     # If the market stall is not in the capital, aranka.presence.failed is raised and she sings in the quartermaster's
-    # yard instead: a copy of a different unit of hers, beside Wilcer Garms, who never leaves. The same four in-person
+    # yard instead: a copy of a different unit of hers, beside the ordinary capital blacksmith (F9). The same four in-person
     # beats have yard copies (ids ending _yard).
-    YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="front", Distance=3.5),
+    YARD: dict(Unit=YARD_UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=QUARTERMASTER, Side="right", Distance=6.5),
                Requires=["trickster.ever", "aranka.trickster.in_drezen", FYE_GONE], Forbids=[CLOSED], MinChapter=3,
                MaxChapter=5, AnswerLists=[], Dialog="hub",
                Greeting="{n}The market is shuttered. A woman in Desnan blue is sitting on the tailgate of a supply wagon in the "

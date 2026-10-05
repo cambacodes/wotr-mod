@@ -39,7 +39,10 @@ internal static class HorzalahTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        // eng8-q8f: funded positive predicate fixtures; negatives explicitly remove funds.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen,
+            CrusadeResources = new Dictionary<string, int> { ["Favors"] = 100, ["Finances"] = 150 } };
+        // end eng8-q8f
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
@@ -63,39 +66,13 @@ internal static class HorzalahTricksterTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
-        // Every outcome of a scene with the exact edges taken to reach it: (node, choice index) pairs, walked the way the
-        // engine offers them (only choices whose Requires/Forbids hold at that point; a check branches to both outcomes).
-        List<(Snapshot state, List<(string node, int index)> path)> Paths(Scene scene, Snapshot initial)
-        {
-            var outcomes = new List<(Snapshot, List<(string, int)>)>();
-            void Visit(string id, Snapshot state, List<(string, int)> path)
-            {
-                var node = scene.Nodes.Single(n => n.Id == id);
-                for (int i = 0; i < node.Choices.Count; i++)
-                {
-                    var choice = node.Choices[i];
-                    if (!Rules.Match(choice.Requires, choice.Forbids, state)) continue;
-                    var next = Program.Copy(state);
-                    foreach (var effect in choice.Set)
-                        if (next.Flags.Add(effect)) next.Times[effect] = next.Hour;
-                    var edge = new List<(string, int)>(path) { (id, i) };
-                    if (choice.Next != null || choice.Check != null)
-                        foreach (var target in Rules.NextNodes(choice)) Visit(target, Program.Copy(next), edge);
-                    else
-                    {
-                        if (!choice.Abort) { next.Flags.Add(scene.Id); next.Times[scene.Id] = next.Hour; }
-                        outcomes.Add((next, edge));
-                    }
-                }
-            }
-            Visit(scene.Nodes[0].Id, initial, new List<(string, int)>());
-            return outcomes;
-        }
         // Take: the scene must be available, and the outcome must have traversed exactly that choice.
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
             check(Avail(scene, w), "Not available before taking " + scene.Id + "/" + node + "[" + index + "]");
-            var hits = Paths(scene, w).Where(o => o.path.Contains((node, index))).Select(o => o.state).ToList();
+            // eng8-q8f: shared production affordability, debit, entry and abort processing.
+            var hits = Program.WalkVia(scene, w, node, index);
+            // end eng8-q8f
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -369,16 +346,16 @@ internal static class HorzalahTricksterTests
         // Trk_Horzalah_Chapter6: the Greybor-less night after Q3 lapsed at Chapter 6 ends on the pages (the one-rest Chapter 6
         // budget): no presence, no room twins; her gift left unanswered is the open page. The Last Call coda needs the commit.
         var c6 = World(story, 6, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "chapter.six");
-        var c6a = Take(unmet, c6, "exit", 0, Primed, Ear);
+        var c6a = Take(unmet, c6, "eng8.guild.decline_end_6", 0, Primed, Ear, Wants, Tested, Returned);
         // Q12 (Sol COX/HOW): in Chapter 6 the gift comes with her to the same visit, so the romantic page is reachable with
         // no extra delivery: the Chapter 5 "wants" answer is shut, "wants6" leads into the room version of the gift.
         var pivotChoices = kept.Nodes.Single(n => n.Id == "pivot").Choices;
         check(pivotChoices.Single(ch => ch.Next == "wants").Forbids.Contains("chapter.six") && pivotChoices.Last().Next == "wants6"
               && pivotChoices.Last().Requires.Contains("chapter.six") && !Rules.Match(pivotChoices[0].Requires, pivotChoices[0].Forbids, Later(story, c6a, 48)),
             "Trk_Horzalah_Chapter6: the Chapter 5 answer (no gift) plays in Chapter 6, or the Chapter 6 answer was not appended.");
-        var c6b = Take(kept, Later(story, c6a, 48), "decline_end_6", 0, Wants, Tested, Returned);
-        var c6free = Take(kept, Later(story, c6a, 48), "free2_6", 0, Wants, Tested, P + "cost.gift_freed");
-        var c6ally = Take(kept, Later(story, c6a, 48), "accept2_6", 0, Wants, Ally);
+        var c6b = Take(unmet, c6, "eng8.guild.decline_end_6", 0, Wants, Tested, Returned);
+        var c6free = Take(unmet, c6, "eng8.guild.free2_6", 0, Wants, Tested, P + "cost.gift_freed");
+        var c6ally = Take(unmet, c6, "eng8.guild.accept2_6", 0, Wants, Ally);
         check(!Avail(gift, Later(story, c6b, 48)) && !Avail(giftNight, Later(story, c6b, 48))
               && !Avail(giftNight, Later(story, World(story, 6, "trickster.ever", Wants, "horzalah.presence.failed"), 48))
               && Avail(pg["epilogue.commit"], World(story, 6, c6b.Flags.ToArray())) && Avail(pg["epilogue.commit"], World(story, 6, c6free.Flags.ToArray()))

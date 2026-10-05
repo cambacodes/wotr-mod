@@ -29,6 +29,11 @@ def spec():
 
 
 class NativeOverridesTests(unittest.TestCase):
+    def test_live_body_registry_is_known_without_admitting_authored_guesses(self):
+        known = overrides._known(world())
+        self.assertIn("nenio.life.unavailable", known)
+        self.assertNotIn("her.life.unavailable", known)
+
     def test_unsafe_types_and_unreviewed_targets_fail_before_mutation(self):
         for kind, action in (("answer", "REPLACE"), ("objective", "REPLACE"), ("objective", "HIDE"),
                              ("bark", "REPLACE"), ("cue", "SLIDE-SWAP")):
@@ -158,11 +163,27 @@ class ShippedNativeMigrationTests(unittest.TestCase):
     def test_all_existing_native_specs_are_registered_and_unchanged(self):
         from storylines import devarra_native, kiana_native, camellia_native, areelu_afterlogue, wenduag_native, galfrey_queen_slide, arueshalae_rounds
         payload = self.payload
+        # eng8-q8e begin: only declared ending eligibility changes during migration.
+        from tools.native_contradictions import ending_contracts, ending_when
+        rows = {(r["Field"], r["Target"]): r for r in ending_contracts()["Rows"]}
+        scenes = {s["Id"]: s for s in payload["Scenes"]}
+        def final_spec(field, cue, original):
+            expected = copy.deepcopy(original)
+            row = rows.get((field, cue))
+            if row:
+                outcomes = [scenes[id] for id in row["Outcomes"]]
+                if field == "NativeEpilogueSuppressions":
+                    expected["When"] = [group for s in outcomes for group in ending_when(s)]
+                else:
+                    for variant, outcome in zip([expected, *expected.get("Variants", [])], outcomes):
+                        variant["When"] = ending_when(outcome)
+            return expected
+        # eng8-q8e end
         for module in (devarra_native, kiana_native, camellia_native, areelu_afterlogue, wenduag_native, galfrey_queen_slide, arueshalae_rounds):
             for cue, expected in module.NATIVE_EPILOGUE_EDITS.items():
-                self.assertEqual(payload["NativeEpilogueEdits"][cue], expected, cue)
+                self.assertEqual(payload["NativeEpilogueEdits"][cue], final_spec("NativeEpilogueEdits", cue, expected), cue)
         for cue, expected in camellia_native.NATIVE_EPILOGUE_SUPPRESSIONS.items():
-            self.assertEqual(payload["NativeEpilogueSuppressions"][cue], expected, cue)
+            self.assertEqual(payload["NativeEpilogueSuppressions"][cue], final_spec("NativeEpilogueSuppressions", cue, expected), cue)
         actual = {(row["Field"], row["RuntimeKey"]) for row in payload["NativeOverrides"]}
         expected = {(field, key) for field in overrides.FIELDS for key in payload.get(field, {})}
         self.assertEqual(actual, expected)

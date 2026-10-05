@@ -16,7 +16,9 @@ internal static class IrabethTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.AvailableContacts.Add(Contact);
         Rules.Complete(story, state);

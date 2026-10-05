@@ -17,7 +17,9 @@ internal static class DelamereTricksterTests
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
         // eng7-l12: the ridge/fire continuations are visits from Drezen.
-        var state = new Snapshot { Chapter = chapter, Area = "2570015799edf594daf2f076f2f975d8", Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Area = "2570015799edf594daf2f076f2f975d8", Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);

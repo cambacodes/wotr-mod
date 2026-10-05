@@ -296,15 +296,19 @@ internal static class InventoryFixtureMutationTests
         w = w.Walk("galfrey.trickster.iz.offer").First(r => r.State.Has("galfrey.trickster.kitrane_taken")
             && r.State.Has("galfrey.trickster.blind") == blind);
         w.Native("galfrey.dead"); w.Advance(40);
-        w = w.Earn("galfrey.trickster.iz.eulogy", "galfrey.trickster.cost.eulogy");
+        // eng8-q8d: pending-device delivery belongs to the living sergeant;
+        // the returned woman's market hubs must still be unavailable.
+        if (missing) w.MissingAnchor("galfrey.presence.sergeant");
+        w.TickRoute("galfrey");
+        w = w.Earn("galfrey.trickster.iz.eulogy" + (missing ? "_stall" : ""), "galfrey.trickster.cost.eulogy");
         w.Native("coronation.after"); w.Advance(96);
         if (missing) w.MissingAnchor("galfrey.presence");
         w.TickRoute("galfrey");
-        Need(story.Presences.Count(p => p.Key.StartsWith("galfrey.presence", StringComparison.Ordinal)
+        Need(story.Presences.Count(p => (p.Key == "galfrey.presence" || p.Key == "galfrey.presence.stall")
             && Rules.PresenceWanted(p.Value, w.State)) == 0, "Pending Kitrane visit must not stage an unreturned market actor.");
         string ret = w.State.Has("galfrey.trickster.cost.rent_scar") ? "galfrey.trickster.return.kitrane_scarred" : "galfrey.trickster.return.kitrane";
-        // The paid reporting visit is remote; the two market hubs begin after her return.
-        w = w.Earn(ret, "galfrey.trickster.returned");
+        w = w.Earn(ret + (missing ? "_stall" : ""), "galfrey.trickster.returned");
+        // end eng8-q8d
         w.Advance(6); w.TickRoute("galfrey");
         w = w.Earn("galfrey.trickster.after.first_morning" + (missing ? "_stall" : ""), "galfrey.trickster.first_morning");
         // Subsequent acts are played when available; no commitment prerequisites are fabricated.
@@ -780,9 +784,16 @@ internal static class InventoryFixtureMutationTests
                 absent.Report("wenduag:055/unreturned/" + lost);
             }
             var former = w.Copy(); former.Native("trickster.failed"); former.Refresh();
-            Need(Rules.RouteOpen(story.Relationships["wenduag"], former.State), "Paid return lost on path departure.");
-            former = former.Walk("wenduag.trickster.epilogue.pack").First();
-            former.Report("wenduag:055/former Trickster earned return");
+            // eng8-q8b begin: this nominated legacy copy requires current power;
+            // its earned receipt and native fate survive conversion as history.
+            Need(former.State.Has("wenduag.trickster.returned") && former.State.Has("wenduag.killed"),
+                "Legacy conversion erased the return receipt or native fate.");
+            Need(!former.State.Has("wenduag.life.available") && !Rules.RouteOpen(story.Relationships["wenduag"], former.State),
+                "Current-path legacy copy survived path departure.");
+            foreach (string page in new[] { "pack", "unclaimed", "dead", "refused" })
+                Need(!former.Available("wenduag.trickster.epilogue." + page), "Off-path legacy ending selected " + page);
+            former.Report("wenduag:055/former Trickster legacy copy withheld");
+            // eng8-q8b end
             var ascended = w.Copy(); ascended.Native("ascend_all");
             var edit = story.NativeEpilogueEdits["4bb3706172f1ed54ca11db96254c4638"]; // blueprints.zip Epilogues/Cue_0580
             var variants = Rules.EditVariants(edit);

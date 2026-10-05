@@ -38,14 +38,14 @@ touch under Kenabres, "a part of its power entered your soul" (glossary). As the
 room her soul knows, and she turns towards it. Shown, never stated as a rule. Voice: compassionate, earnest, humble ("I believe this is a test for me. A hard test, but a necessary one.",
 TargonaWings/Cue_0023 40db6d5f). The Commander is the question she has to answer, never the reason she came.
 Her Drezen actor and dialog are Angel-only, so on this path she works in a field infirmary behind the quartermaster's
-stores (authored) and is met through a spawned copy of her laboratory unit, anchored at Wilcer Garms.
+stores (authored) and is met through a spawned copy of her laboratory unit, anchored at the capital blacksmith by the supply yard (authored placement).
 """
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
 UNIT = "81297c673b63b60448ef88a10db6bc78"           # AngelTargona (AreeluLab; no dialog component: the presence copy)
 DREZEN = "2570015799edf594daf2f076f2f975d8"
-QUARTERMASTER = "a380d926e92f70e429681eb9654478f9"  # DrezenCapital_Quartermaster, "Wilcer Garms", always in the capital
+QUARTERMASTER = "15f754455d1d87c42a4e14df456d5415"  # F9: capital blacksmith, ordinary Traders mechanics; authored yard placement
 LAB_LIST = "2a75fbc8e86fd514e82117c99fc9e528"       # c3/AreeluLaboratory/TargonaWings/AnswersList_0003 ([Attack] Answer_0034)
 SEELAH_HUB = "417fa384f3250634bb71859fbc913453"     # CompanionDialogues/Seelah/AnswersList_0003
 SOSIEL_HUB = "129b55b8b5d50974f84f7c607d894fd0"     # CompanionDialogues/Sosiel/AnswersList_0002 ("Tell me about yourself.")

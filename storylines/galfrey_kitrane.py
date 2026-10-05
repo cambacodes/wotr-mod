@@ -714,6 +714,13 @@ beat(P + "kitrane.crown", "The crown or the crow", '"You wanted to walk the wall
 
 
 def integrate(payload):
+    # eng8-q8d: the pending device stages the living sergeant, not Galfrey.
+    # Her own two presences still require Returned independently.
+    from storylines import earned_presence
+    earned_presence.PRESENCE_BOOTSTRAPS['galfrey'] = {'galfrey.dead': {
+        'Flag': P + 'kitrane_taken',
+        'Reason': 'The accepted Iz device brings the Crows sergeant to conduct the vigil and escort the earned arrival.'}}
+    # end eng8-q8d
     for key, value in PRESENCES.items():
         have = payload.setdefault("Presences", {}).get(key)
         if have is not None and have != value:
@@ -975,3 +982,45 @@ alive(P + "alive.oath", "The Crows' oath, by lamplight", '"The Crows\' sergeant 
 {n}"Commander," says the Queen of Mendev. And then, without raising her eyes from the page, very low: "Kitrane slept very well, and she is not sorry."{/n}""",
         c("[Bow to the Queen.]", flags=(COMMITTED, P + "alive.committed"))),
 ], requires=(PLAN_KEPT, TRIAL_KEPT), forbids=(COMMITTED,), delay=48)
+# eng8-q8d: earlier waits leave room for her unchanged two-day reservation.
+for _eng8_scene in SCENES:
+    if _eng8_scene['Id'] in (P + 'commit.oath', P + 'commit.oath_stall'):
+        _eng8_scene['DelayHours'] = 12
+
+# Authored Crows sergeant, using Owlcat's ordinary crusader unit; he waits only
+# while Kitrane's earned return is pending. Neither hub impersonates Galfrey.
+ENG8_SERGEANT = '8a23e71893cf8ab428e7ebd64b10ad27'  # Prologue_KenabresCrusader_Male
+for _eng8_hub, _eng8_anchor, _eng8_side, _eng8_req, _eng8_forb in (
+    ('galfrey.presence.sergeant', CURIO, 'left', (), ('galfrey.presence.sergeant.failed',)),
+    ('galfrey.presence.sergeant_stall', TIEFLING, 'right', ('galfrey.presence.sergeant.failed',), ())):
+    PRESENCES[_eng8_hub] = dict(Unit=ENG8_SERGEANT, Area=DREZEN, Mode='spawn-copy',
+        At=dict(NearUnit=_eng8_anchor, Side=_eng8_side, Distance=2.5 if _eng8_side == 'left' else 3.5),
+        Requires=['trickster.ever', P + 'kitrane_taken', DEAD, *_eng8_req],
+        Forbids=[CLOSED, RETURNED, *_eng8_forb], MinChapter=5, MaxChapter=5,
+        AnswerLists=[], Dialog='hub',
+        Greeting='{n}The Crows\' sergeant waits with his helm under his arm. The chapel bells have left him tight-lipped.{/n} "Commander."')
+
+_eng8_tent = next(s for s in SCENES if s['Id'] == P + 'visit.tent')
+_eng8_tent.pop('Kind', None)
+_eng8_tent.update(Remote=False, Entry='[Go with Kitrane to the Crows\' tent.]',
+    ContactUnit=DISGUISED, InteractionHub=HUB, Areas=[DREZEN])
+# Keep the threshold narration free of an unchosen Commander speech line.
+_eng8_cut = next(n for n in _eng8_tent['Nodes'] if n['Id'] == 'cut')
+_eng8_cut['Text'] = _eng8_cut['Text'].replace(
+    '"Kitrane," you say, because it is the only name she has left, and she answers it with her whole body',
+    'She meets you with her whole body')
+_eng8_twin = copy.deepcopy(_eng8_tent)
+_eng8_twin['Id'] += '_stall'
+_eng8_twin['InteractionHub'] = HUB_FB
+_eng8_twin['Requires'].append(HUB_FAILED)
+_eng8_twin['Forbids'].append(_eng8_tent['Id'])
+_eng8_tent['Forbids'].extend([_eng8_twin['Id'], HUB_FAILED])
+SCENES.append(_eng8_twin)
+# Galfrey's own guarded acknowledgment keeps her cousin in her life without
+# spending a reactor slot. This is authored speech, not a native cue rewrite.
+for _eng8_host in (s for s in SCENES if s['Id'] in (P + 'kitrane.conversation', P + 'kitrane.conversation_stall')):
+    _eng8_host['Nodes'][0]['Choices'].append(c('"Has your cousin noticed?"', 'eng8.cousin',
+        forbids=('daeran.dead', 'daeran.kicked_out')))
+    _eng8_host['Nodes'].append(ki('eng8.cousin', '"He still watches every knight who enters the market. '
+        'He will tire of it. He tires of most things."', c('[Leave her to the crowd.]', flags=(CONVERSATION,))))
+# end eng8-q8d

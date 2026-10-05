@@ -152,6 +152,7 @@ namespace RRT.TestHarness
 
         IEnumerator LoadSave(string path, Box<string?> error, Box<double> ms, Box<string?> notIdle, bool setup = true)
         {
+            FixtureObservations.Clear(); // especially round-trip reload: never carry synthetic observations into evidence.
             error.Value = null; notIdle.Value = null;
             var sw = Stopwatch.StartNew();
             SaveInfo? info = null;
@@ -172,7 +173,7 @@ namespace RRT.TestHarness
             if (!ok.Value) { error.Value = "area not loaded within " + plan.Timeouts.LoadSeconds + " s (" + IdleBlocker() + ")"; yield break; }
             yield return WaitFor(() => IdleBlocker() == null, plan.Timeouts.IdleSeconds, ok, 60);
             if (!ok.Value) notIdle.Value = IdleBlocker() ?? "unstable";
-            if (ok.Value && setup && (plan.SetFlags.Count > 0 || plan.StartEtudes.Count > 0))
+            if (ok.Value && setup && plan.HasFixtureSetup)
             {
                 try { ApplyFixtureSetup(); }
                 catch (Exception ex) { error.Value = "fixture setup: " + ex.Message; }

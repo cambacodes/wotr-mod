@@ -49,6 +49,11 @@ internal static partial class NativeEpilogueEditManagedTests
         return reference;
     }
 
+    // eng7-f6c: Horzalah's Guild epilogue page and Irabeth's service and retired epilogue slides are warning-only like the
+    // other epilogue slides (a drifted native page withholds the line; it must not disable the relationship).
+    private static readonly HashSet<string> F6cWarningOnly = new HashSet<string> {
+        "62f20840e6aa33844b641c5c8e10f814", "cba964e33d0a0704d847629be452b359", "2d6b09c6508010e49b882741add89dcf" };
+
     public static void Run(Dictionary<string, JObject> native, Func<string, BlueprintGuid> id, Action<bool, string> check)
     {
         string[] Refs(JObject data, string field) => ((JArray)data[field]!).Select(v => ((string)v!).Replace("!bp_", "")).ToArray();
@@ -92,7 +97,8 @@ internal static partial class NativeEpilogueEditManagedTests
         }
         check(NativeEpilogueEdit.Reviewed.All(pair => pair.Value.DegradeOnRefusal == (pair.Key != Cue0311 && pair.Key != Cue0310
                 && pair.Value.Page != NativeEpilogueEdit.CamelliaPage && pair.Value.Parent == null && pair.Key != "78ae1bdc3b0824b4ca2ed618782f1faa"
-                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Key != "dbec675b71e9d5f4d96055f4bb31762e" && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
+                && pair.Key != "4bb3706172f1ed54ca11db96254c4638" && pair.Key != "dbec675b71e9d5f4d96055f4bb31762e"
+                && !F6cWarningOnly.Contains(pair.Key) && pair.Value.Sequence != NativeEpilogueEdit.QueenSequence)),
             "E14d refusal policy changed (only the Tirabade Cue_0311 / Cue_0310, the Camellia BookPage_0347 slides and the E14i afterlogue "
             + "lines, Arueshalae's Cue_0461 and Wenduag's Cue_0580 are warning-only).");
         // Engine-q2 item 5: Galfrey's two Queen slides share one text, one sequence, and are warning-only.
@@ -123,7 +129,8 @@ internal static partial class NativeEpilogueEditManagedTests
         check(NativeEpilogueEdit.Check(cueId, new NativeEpilogueEditSpec { Page = evidence.Page, Sequence = evidence.Sequence, Key = evidence.Key,
             Replacement = spec.Replacement, When = spec.When, KeepNativeImage = true }, g => ResourcesLibrary.TryGetBlueprint(BlueprintGuid.Parse(g)), null) != null,
             "A kept native image was accepted on a cue without one.");
-        var replacement = Seed<BlueprintCue>(id("native-edit." + cueId).ToString());
+        // eng8-q8e: isolate this attach fixture from the now-shipped Cue_0409 replacement.
+        var replacement = Seed<BlueprintCue>(id("eng8-q8e.fixture.native-edit." + cueId).ToString());
         bool applies = false;
         var plan = NativeEpilogueEdit.Prepare(cueId, spec, original, page, replacement, () => applies);
         var before = page.Cues.Select(c => c.Guid).ToArray();
@@ -220,8 +227,8 @@ internal static partial class NativeEpilogueEditManagedTests
         var byGuid = new Dictionary<BlueprintGuid, (BlueprintCue Cue, string Name, Func<bool> Native)>();
         foreach (var pair in cues) byGuid[pair.Value.AssetGuid] = (pair.Value, pair.Key, nativeCheckers[pair.Key]);
         var edited = story.NativeEpilogueEdits.Where(pair => pair.Value.Page == evidence.Page).OrderBy(pair => pair.Key, StringComparer.Ordinal).ToArray();
-        check(edited.Select(pair => pair.Key).SequenceEqual(new[] { Cue0311, Cue0310 }.OrderBy(k => k, StringComparer.Ordinal)),
-            "The Tirabade page edits are not exactly Cue_0310 and Cue_0311.");
+        check(edited.Select(pair => pair.Key).SequenceEqual(new[] { Cue0311, Cue0310, "cba964e33d0a0704d847629be452b359", "2d6b09c6508010e49b882741add89dcf" }.OrderBy(k => k, StringComparer.Ordinal)),
+            "The Tirabade page edits are not exactly Cue_0310, Cue_0311 and the eng7-f6c Irabeth service/retired slides.");
         foreach (var edit in edited)
         {
             string cueId = edit.Key;
@@ -248,8 +255,8 @@ internal static partial class NativeEpilogueEditManagedTests
                 "Tirabade cue is not guarded exactly once: " + cueId);
         }
         Func<string, string[]> variantsOf = cueId => Rules.EditVariants(story.NativeEpilogueEdits[cueId]).Select(v => v.Replacement).ToArray();
-        check(page.Cues.Select(r => byGuid[r.Guid].Name).SequenceEqual(TirabadePageCues.Take(2).Concat(variantsOf(Cue0310)).Append(TirabadePageCues[2])
-                .Concat(variantsOf(Cue0311)).Append(Cue0311)),
+        check(page.Cues.Select(r => byGuid[r.Guid].Name).SequenceEqual(TirabadePageCues.SelectMany(g =>   // eng7-f6c: Cue_0308/Cue_0566 now carry Irabeth variants
+                (story.NativeEpilogueEdits.ContainsKey(g) ? variantsOf(g) : Array.Empty<string>()).Append(g))),
             "Tirabade variants are not inserted in order right before their native cues.");
         string[] Shown() => page.Cues.Select(reference => byGuid[reference.Guid])
             .Where(entry => entry.Native() && entry.Cue.Conditions.Conditions.All(c => c.Check())).Select(entry => entry.Name).ToArray();
@@ -382,7 +389,7 @@ internal static partial class NativeEpilogueEditManagedTests
         check(whenOnly.Selected() == 0 && live.Selected() == -1, "The delivery predicate is not what separates the live group from When alone.");
         current = null;
         check(live.Selected() == -1 && dream.Selected() == -1, "A delivery group selects with the mod disabled.");
-        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "src", "Main.cs"));
+        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(Bootstrap.RepositoryRoot, "src", "Main.cs"));
         check(mainSource.Contains("Game.Instance?.Player != null ? State() : null, story);"), "Main no longer builds its E14d groups with the story (delivery predicate).");
         Console.WriteLine("PASS: E14d delivery predicate (Arueshalae Cue_0462 and Cue_0461): When and scene availability on one snapshot.");
     }
@@ -699,20 +706,26 @@ internal static partial class NativeEpilogueEditManagedTests
         const string R = "camellia.trickster.returned", C = "camellia.committed", T = "camellia.trickster.terms_named", N = "camellia.trickster.epilogue.native_";
         var rows = new (string What, string[] Native, string[]? Flags, string[] Plays)[]
         {
-            ("no romance, nothing returned", new string[0], new[] { "trickster.ever" }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
-            ("no romance, kept", new string[0], new[] { "trickster.ever", R, C }, new[] { N + "stayed_plain" }),
+            ("no romance, nothing returned", new string[0], new[] { "trickster.now", "trickster.ever" }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
+            ("no romance, kept", new string[0], new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "stayed_plain" }),
             ("no romance, kept, mod disabled", new string[0], null, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
-            ("true romance, kept", new[] { RomTrue }, new[] { "trickster.ever", R, C }, new[] { N + "stayed" }),
-            ("true romance, terms named", new[] { RomTrue }, new[] { "trickster.ever", R, T },
+            ("true romance, kept", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "stayed" }),
+            ("true romance, terms named", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", R, T },
                 new[] { "4ed8e9723359441dae10ad3068d3f2c7", "3617a648c06a45d1807fde65aedafb06" }),
-            ("default romance, kept, closed", new[] { RomDefault }, new[] { "trickster.ever", R, C, "camellia.closed" },
+            ("default romance, kept, closed", new[] { RomDefault }, new[] { "trickster.now", "trickster.ever", R, C, "camellia.closed" },
                 new[] { "4ed8e9723359441dae10ad3068d3f2c7", "3617a648c06a45d1807fde65aedafb06", "e9a183135b8289544a3144dcf8151920" }),
-            ("romance, sacrifice, kept, Commander back", new[] { RomDefault, Sacrifice }, new[] { "trickster.ever", R, C, "sacrifice", "trickster.commander_back" },
+            ("romance, sacrifice, kept, Commander back", new[] { RomDefault, Sacrifice }, new[] { "trickster.now", "trickster.ever", R, C, "sacrifice", "trickster.commander_back" },
                 new[] { N + "threshold_waited" }),
-            ("romance, sacrifice, kept, Commander dead", new[] { RomDefault, Sacrifice }, new[] { "trickster.ever", R, C, "sacrifice" },
+            ("romance, sacrifice, kept, Commander dead", new[] { RomDefault, Sacrifice }, new[] { "trickster.now", "trickster.ever", R, C, "sacrifice" },
                 new[] { "36a07840d25540eeac6b1c6631196bcc", "3617a648c06a45d1807fde65aedafb06", "e9a183135b8289544a3144dcf8151920" }),
-            ("TE, Q3 done, true romance, kept", new[] { RomTrue }, new[] { "trickster.ever", R, C }, new[] { N + "te_stayed" }),
-            ("TE, Q3 open, kept", new string[0], new[] { "trickster.ever", R, C }, new[] { N + "te_own_path" }),
+            ("TE, Q3 done, true romance, kept", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "te_stayed" }),
+            ("TE, Q3 open, kept", new string[0], new[] { "trickster.now", "trickster.ever", R, C }, new[] { N + "te_own_path" }),
+            // eng8-q8e begin: living commitments are not a fabricated second death.
+            ("living commitment", new string[0], new[] { "trickster.now", "trickster.ever", C }, new[] { N + "stayed_plain" }),
+            ("living terms", new[] { RomTrue }, new[] { "trickster.now", "trickster.ever", T }, new[] { "4ed8e9723359441dae10ad3068d3f2c7", "3617a648c06a45d1807fde65aedafb06" }),
+            ("actual later death, historical return", new string[0], new[] { "trickster.now", "trickster.ever", R, C, "camellia.dead" }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
+            ("off-Trickster living commitment", new string[0], new[] { "trickster.ever", C }, new[] { "5011dfa46fbb0464ab624d78bcfbd483", "3617a648c06a45d1807fde65aedafb06" }),
+            // eng8-q8e end
         };
         foreach (var row in rows)
         {

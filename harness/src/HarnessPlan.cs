@@ -42,6 +42,12 @@ namespace RRT.TestHarness
         public List<string> SetFlags = new List<string>();
         /// <summary>Harness-only BlueprintEtude GUIDs. Starts unstarted etudes; never resets completed etudes.</summary>
         public List<string> StartEtudes = new List<string>();
+        public List<string> SetPresenceFailures = new List<string>(); // presence keys, harness-only transient observation
+        public List<string> HoldEtudes = new List<string>(); // BlueprintEtude GUIDs, synthetic playing observation
+        public List<string> SeenCues = new List<string>(); // BlueprintCueBase GUIDs, native dialog history
+        public List<string> RemoveCompanions = new List<string>(); // BlueprintUnit GUIDs
+        [JsonIgnore] public bool HasFixtureSetup => SetFlags.Count > 0 || StartEtudes.Count > 0
+            || SetPresenceFailures.Count > 0 || HoldEtudes.Count > 0 || SeenCues.Count > 0 || RemoveCompanions.Count > 0;
         /// <summary>null: reload between scenes unless Force is set.</summary>
         public bool? ReloadBetweenScenes;
         public bool RoundTrip = true;
@@ -103,6 +109,14 @@ namespace RRT.TestHarness
             return plan;
         }
 
+        static List<string> FixtureKeys(List<string>? values) => (values ?? new List<string>())
+            .SelectMany(s => s.Split(',')).Select(s => s.Trim()).Where(s => s.Length > 0).Distinct(StringComparer.Ordinal).ToList();
+        static List<string> FixtureGuids(List<string>? values, string field) => FixtureKeys(values).Select(s =>
+        {
+            if (!Guid.TryParse(s, out var guid)) throw new FormatException(field + " needs blueprint GUIDs: " + s);
+            return guid.ToString("N");
+        }).Distinct(StringComparer.Ordinal).ToList();
+
         public void Normalize()
         {
             Saves = (Saves ?? new List<string>()).Where(s => !string.IsNullOrWhiteSpace(s)).Select(s => s.Trim()).ToList();
@@ -113,6 +127,10 @@ namespace RRT.TestHarness
                 if (!Guid.TryParse(s, out var guid)) throw new FormatException("startEtudes needs BlueprintEtude GUIDs: " + s);
                 return guid.ToString("N");
             }).Distinct(StringComparer.Ordinal).ToList();
+            SetPresenceFailures = FixtureKeys(SetPresenceFailures);
+            HoldEtudes = FixtureGuids(HoldEtudes, "holdEtudes");
+            SeenCues = FixtureGuids(SeenCues, "seenCues");
+            RemoveCompanions = FixtureGuids(RemoveCompanions, "removeCompanions");
             Timeouts ??= new HarnessTimeouts();
             if (!Dfs && !string.Equals(Mode, "random", StringComparison.OrdinalIgnoreCase))
                 throw new FormatException("Plan mode must be \"random\" or \"dfs\", not \"" + Mode + "\".");

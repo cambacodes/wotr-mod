@@ -108,7 +108,7 @@ internal static class NativeReaderManagedTests
         var throwing = new Snapshot();
         readParty.Invoke(null, new object[] { new Func<BlueprintItem, bool>(_ => throw new InvalidOperationException("fixture")), throwing });
         check(!story.PartyItems.Keys.Any(throwing.Has), "A throwing party read reports the item as held.");
-        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", "src", "Main.cs"));
+        var mainSource = System.IO.File.ReadAllText(System.IO.Path.Combine(Bootstrap.RepositoryRoot, "src", "Main.cs"));
         check(mainSource.Contains("ReadPartyItems(item => player.Inventory.Contains(item), state);"),
             "Main.BuildState no longer reads PartyItems from the party inventory alone.");
         // MainCharacterFacts: every bound fact is resolved by Build, and the reader reports exactly what the unit holds.

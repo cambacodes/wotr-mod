@@ -50,7 +50,9 @@ internal static class YanielTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.AvailableContacts.Add(Unit);
         state.Flags.UnionWith(flags);
         // A held form is on the Commander in these worlds (E10 party-only read: yaniel_radiance); the stash-only world is

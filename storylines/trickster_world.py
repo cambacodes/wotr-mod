@@ -805,6 +805,34 @@ def integrate_participant_inventory(payload):
     hounds = next(s for s in payload["Scenes"] if s["Id"] == "hepzamirah.trickster.body.hounds")
     forbid(hounds, "hepzamirah.trickster.cost.confined")
     hounds.setdefault("ForbidOverrides", {})["hepzamirah.trickster.cost.confined"] = "hepzamirah.trickster.flesh.released"
+    # eng8-q8e begin: deterministic implicit consumers supplement L14's name sweep.
+    implicit = json.loads((Path(__file__).resolve().parents[1] / "tools/implicit_participant_inventory_contracts.json").read_text(encoding="utf-8"))
+    scenes = {s["Id"]: s for s in payload["Scenes"]}
+    for entry in implicit["consumers"]:
+        consumer, key = scenes[entry["scene"]], entry["reader"]
+        if entry["kind"] == "scene":
+            require(consumer, key)
+        else:
+            for node in list(consumer["Nodes"]):
+                for choice in list(node["Choices"]):
+                    if choice.get("Next") != entry["node"]:
+                        continue
+                    absent = copy.deepcopy(choice)
+                    absent["Requires"] = [f for f in absent.get("Requires", []) if f != key]
+                    require(absent, entry["history"])
+                    require(choice, key)
+                    absent["Next"] = entry["fallback"]
+                    forbid(absent, key)
+                    node["Choices"].append(absent)
+                for choice in node["Choices"]:
+                    if choice.get("Next") == "pivot" and key in choice.get("Forbids", []):
+                        choice["Forbids"] = [entry["history"] if f == key else f for f in choice["Forbids"]]
+            consumer["Nodes"].append(dict(Id=entry["fallback"], Speaker="Horzalah", Portrait="Horzalah",
+                Text='"And my sister is gone from your forge, they tell me." {n}Her lip curls.{/n} "Keep her away from my box. Wherever she has crawled off to, she can stay there."',
+                Choices=[dict(Text="Continue", Next="pivot", Set=[], Requires=[], Forbids=[], Abort=False)]))
+        for name in entry.get("presences", []):
+            require(payload["Presences"][name], key)
+    # eng8-q8e end
     # Last Call's historical futures do not make an absent member pay or share a house.
     page = next(s for s in payload["Scenes"] if s["Id"] == "minachiv.lastcall.page")
     for node in page["Nodes"]:
@@ -854,3 +882,6 @@ def integrate(payload):
     permanent = {k for k in PERMANENT if k in (payload.get("Etudes") or {})}
     if permanent:
         payload["PermanentEtudes"] = sorted(set(payload.get("PermanentEtudes", [])) | permanent)
+# eng8-q8h begin: mirror route-owned acceptance, without replacing L13 open guards.
+DERIVED["nenio.trickster.late_committed"] = [["trickster.ever", "nenio.trickster.test_running"]]
+# end eng8-q8h

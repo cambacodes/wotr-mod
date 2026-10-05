@@ -17,7 +17,9 @@ internal static class EritriceTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -282,12 +284,12 @@ internal static class EritriceTricksterTests
             "The romance pages do not follow trickster.commander_back.");
         // INT: a returned Nenio reacts; a dissolved one never does.
         foreach (var r in reactions.Where(r => r.Owner == "Nenio"))
-            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.trickster.returned"
-                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.trickster.returned"
+            check(r.ForbidOverrides.TryGetValue("nenio.dead", out var o1) && o1 == "nenio.life.recreated" /* eng8-q8a */
+                  && r.ForbidOverrides.TryGetValue("nenio.sent_away", out var o2) && o2 == "nenio.life.probation" /* eng8-q8a */
                   && !r.ForbidOverrides.ContainsKey("nenio.dissolved"),
                 "A Nenio reaction ignores her return: " + r.Id);
         var nenioMotion = S(P + "react.nenio_motion");
-        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned");
+        var nenioBack = World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead", "nenio.trickster.returned", "nenio.trickster.cost.recreated"); // eng8-q8a: paid vessel, not later-dead retained body
         check(Rules.Available(story, nenioMotion, nenioBack)
               && !Rules.Available(story, nenioMotion, World(story, 3, "trickster.ever", "eritrice.started", "nenio.dead")),
             "A returned Nenio is still barred from reacting.");

@@ -566,7 +566,7 @@ $S3 = 'C:\RRT-F7-saves\chapter3-copy.zks'
 
 ```powershell
 ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceProbe "-24.63,40.13,57.17" -ProbeRadius 3 -ProbeEnter -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -NoRoundTrip -Screenshots
-./harness/run-harness.ps1 -Saves $S5 -SceneFilter @('wenduag.trickster.echo.abyss.return') -Screenshots -SetFlags 'trickster.ever'
+./harness/run-harness.ps1 -Saves $S5 -SceneFilter @('wenduag.trickster.echo.abyss.return') -Screenshots -SetFlags 'trickster.ever,hour.trickster.ever'
 ```
 
 Street-level cellar **door**, never a basement-area teleport. The mesh-only command spawns no
@@ -579,7 +579,7 @@ approach/click, the existing three-metre occupancy exclusion, and reload at the 
 ### wenduag.street
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'wenduag.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,wenduag.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'wenduag.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,wenduag.trickster.returned,hour.trickster.ever,hour.wenduag.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -RemoveCompanions 'ae766624c03058440a036de90a7f2009'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -596,7 +596,7 @@ room, not route delivery. Pending: coordinator encounter click/approach/reload e
 ### galfrey.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned,hour.trickster.ever,hour.galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -604,7 +604,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### galfrey.presence.stall
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned,galfrey.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'galfrey.presence.stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,galfrey.trickster.returned,hour.trickster.ever,hour.galfrey.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SetPresenceFailures 'galfrey.presence' -NoRoundTrip
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -630,7 +630,7 @@ scene availability does not turn this into a presence or validate a historical f
 ### jerribeth.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,jerribeth.trickster.visit_due' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'jerribeth.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,jerribeth.trickster.visit_due,hour.trickster.ever,hour.jerribeth.trickster.visit_due' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -638,7 +638,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### aranka.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,hour.trickster.ever,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -646,7 +646,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### aranka.presence.yard
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,aranka.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,hour.trickster.ever,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SetPresenceFailures 'aranka.presence' -NoRoundTrip
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -654,7 +654,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### targona.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,targona.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'targona.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,targona.trickster.returned,hour.trickster.ever,hour.targona.trickster.returned' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -662,7 +662,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### camellia.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'camellia.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,camellia.trickster.primed,camellia.trickster.raised' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96,cf3639c5cf057034fa766dd5f421d2ed'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'camellia.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,camellia.trickster.primed,camellia.trickster.raised,hour.trickster.ever,hour.camellia.trickster.primed,hour.camellia.trickster.raised' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96,cf3639c5cf057034fa766dd5f421d2ed'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -670,7 +670,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### arueshalae.presence.evil_drezen
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_drezen' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_drezen' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.trickster.reunited,hour.trickster.ever,hour.arueshalae.trickster.returned,hour.arueshalae.trickster.reunited' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -HoldEtudes '9104498b842e1584da9b3640cb9e4157' -NoRoundTrip
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -678,7 +678,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### arueshalae.presence.evil_awning
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.presence.evil_drezen.failed,arueshalae.trickster.reunited' -StartEtudes '9104498b842e1584da9b3640cb9e4157,9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'arueshalae.presence.evil_awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,arueshalae.trickster.returned,arueshalae.trickster.reunited,hour.trickster.ever,hour.arueshalae.trickster.returned,hour.arueshalae.trickster.reunited' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -HoldEtudes '9104498b842e1584da9b3640cb9e4157' -SetPresenceFailures 'arueshalae.presence.evil_drezen' -NoRoundTrip
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -686,7 +686,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### mielarah.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall,hour.trickster.ever,hour.mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -694,7 +694,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### mielarah.presence.arcade
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall,mielarah.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'mielarah.presence.arcade' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,mielarah.trickster.landfall,hour.trickster.ever,hour.mielarah.trickster.landfall' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SetPresenceFailures 'mielarah.presence' -NoRoundTrip
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -702,7 +702,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### shamira.presence.awning
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,shamira.trickster.embodied,shamira.presence.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'shamira.presence.awning' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,shamira.trickster.embodied,hour.trickster.ever,hour.shamira.trickster.embodied' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SetPresenceFailures 'shamira.presence' -NoRoundTrip
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -710,7 +710,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### nenio.presence
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,nenio.trickster.cost.recreated' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'nenio.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,nenio.trickster.cost.recreated,hour.trickster.ever,hour.nenio.trickster.cost.recreated' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -718,7 +718,7 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### herrax.presence.rokhorn
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SeenCues '49135105da5bc6c4f93e312e80286f91'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
@@ -726,7 +726,74 @@ Pending: production hub click, approach, body room and identical actor after rel
 ### herrax.presence.rokhorn_stall
 
 ```powershell
-./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,herrax.asked_kill_chivarro,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,herrax.presence.rokhorn.failed' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'herrax.presence.rokhorn_stall' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,herrax.started,minagho_chivarro.trickster.reunited,herrax.trickster.late.next_move,hour.trickster.ever,hour.herrax.started,hour.minagho_chivarro.trickster.reunited,hour.herrax.trickster.late.next_move' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96' -SetPresenceFailures 'herrax.presence.rokhorn' -NoRoundTrip -SeenCues '49135105da5bc6c4f93e312e80286f91'
 ```
 
 Pending: production hub click, approach, body room and identical actor after reload.
+
+### Live results and fixture notes (E-Q7-33 follow-up, 2026-10-05)
+
+Use a Trickster Chapter 5 save (RRT_Manual_326...), not Secret Path 275 (not Trickster; `trickster.now` is false). The
+`-PresenceKey` probe now walks the Commander to the placed spot first (a copy far from the player has an inactive view, which
+the engine treats as not usable), and records `Diagnostic` and, with env `RRT_HARNESS_TRACE=1`, a per-0.25 s `Trace` in
+`PresenceSpike.Production`. Test-only env fixtures: `RRT_HARNESS_HIDE=<unit guids>` destroys those anchor units after area
+load, `RRT_HARNESS_TELEPORT=x,y,z` moves the Commander before the first tick.
+
+Hub availability also needs the aged flags: set `hour.<flag>` beside each flag so scene delays are met. A working command:
+
+```powershell
+./harness/run-harness.ps1 -Saves 'RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition' -Spike Presence -PresenceKey 'aranka.presence' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,hour.trickster.ever,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+```
+
+`-SetFlags` sets persistent authored flags only. F9 adds explicit native-history and transient-observation fixtures below;
+`fool_king.gone` remains a native read, rather than a counterfeit persistent flag. Results are in
+`tools/presence_placement_manifest.json` (`live_followup_2026_10_05`); `aranka.presence` is verified, the rest are not.
+
+## ENGINE F9 fixture commands and limits
+
+The commands for every pending manifest entry above now age authored flags (`hour.<flag>`), use
+`-SeenCues` for Herrax's native request, `-RemoveCompanions` for Wenduag, and `-HoldEtudes` for
+evil Arueshalae. `-SetPresenceFailures` takes **presence keys** (without `.failed`); for example
+`-SetPresenceFailures galfrey.presence` supplies `galfrey.presence.failed` to the harness run.
+These inputs are opt-in and compiled only into RRT.TestHarness. Unknown presence keys, persistent
+flags, wrong blueprint types, missing/ambiguous companions and malformed GUIDs fail fixture setup.
+
+`-HoldEtudes` supplies a synthetic **held/playing observation** before Rules.Complete reads composites, including a
+started but dormant etude; it runs no native play actions. `-SeenCues` adds typed cues to native
+ShownCues history. `-RemoveCompanions` calls Player.RemoveCompanion(stayInGame:false), rather than
+pretending that a party flag is false. Input saves are unchanged. Synthetic failed/held observations
+are cleared before **every** reload, including temporary round-trip loads, and are not persisted.
+The `-NoRoundTrip` commands above prove fallback entry and contact only; they cannot satisfy the
+placement evidence contract. Actual reload evidence needs the natural native history or a genuine
+missing anchor, without synthetic held/failed input. No pending entry is promoted by these fixtures.
+
+For a genuine missing-anchor fallback and reload control, replace the synthetic-failure option
+with the relevant `RRT_HARNESS_HIDE` value below, keep all other command arguments and omit
+`-NoRoundTrip`. Always clear the environment variable when finished:
+
+| Pending fallback | Hide primary anchor GUID |
+| --- | --- |
+| galfrey.presence.stall | bad9f602b81a80047ac470b01ebe65a9 |
+| aranka.presence.yard | bad9f602b81a80047ac470b01ebe65a9 |
+| mielarah.presence.arcade | 23eabf5b6364d4a4e86202dc5d27600b |
+| herrax.presence.rokhorn_stall | cc50a88bbd8dd3e4da066d33d14fdfc8 |
+| shamira.presence.awning | cc50a88bbd8dd3e4da066d33d14fdfc8 |
+| arueshalae.presence.evil_awning | bc1093231b1577a4485a730c29595195 |
+
+Exact genuine-anchor control for Aranka's changed yard placement (Chapter 5):
+
+```powershell
+$env:RRT_HARNESS_HIDE = 'bad9f602b81a80047ac470b01ebe65a9'
+try {
+    ./harness/run-harness.ps1 -Saves $S5 -Spike Presence -PresenceKey 'aranka.presence.yard' -Screenshots -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags 'trickster.ever,aranka.trickster.answered,hour.trickster.ever,hour.aranka.trickster.answered' -StartEtudes '9f486a9c0c9abfc4a952bb22e88a7e96'
+} finally { Remove-Item Env:RRT_HARNESS_HIDE }
+```
+
+Targona and Aranka's yard now use BlacksmithCapitalTrader (15f75445), from ordinary capital
+Traders mechanics, instead of the Legend event quartermaster. Targona is 3.5 m behind the smith;
+Aranka is 6.5 m to his right. Other shared-anchor presences stay at least 4 m away. These are
+authored corrections; mesh, joint body room, approach, click and identical actor on reload for
+these changed spots remain pending. The old quartermaster run details stay historical.
+Repeat Targona and Aranka yard commands with `$S3` as well as `$S5` for their 3..5 window.
+The remote sergeant, Chadali letter and Devarra probe commands above retain their stated limits;
+the cellar entry still needs genuine retained-original custody, never a fixture-created return.

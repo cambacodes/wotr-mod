@@ -92,6 +92,24 @@ class TimelineContractTests(unittest.TestCase):
         contracts = json.loads(lint.DEFAULT.read_text(encoding="utf-8"))["contracts"]
         self.assertCountEqual(expected, [c["finding"] for c in contracts])
 
+    def test_live_composites_rebuild_after_return_and_later_refusal(self):
+        prepare = scene("prepare", ("dead",), 24, ("returned",))
+        callback = scene("callback", ("returned",), 48, ("done",))
+        callback["Forbids"] = ["absent"]
+        refuse = scene("refuse", ("returned",), 0, ("refused",))
+        story = {"Etudes": {"dead": "guid"},
+                 "Derived": {"absent": [["dead"]], "eligible": [["returned"]]},
+                 "DerivedForbids": {"absent": ["eligible"], "eligible": ["refused"]},
+                 "Scenes": [prepare, callback, refuse]}
+        schedule = dict(name="return", native=["dead"], origins=["returned"], minimum_hours=48,
+                        steps=[dict(scene="prepare", want=["returned"]), dict(scene="callback", want=["done"])])
+        witness = lint.replay_schedule(story, schedule)
+        self.assertEqual(witness["hour"], 72)
+        self.assertIsNone(witness["failure"])
+        schedule["steps"].insert(1, dict(scene="refuse", want=["refused"]))
+        with self.assertRaisesRegex(ValueError, "forbidden history: callback"):
+            lint.replay_schedule(story, schedule)
+
     def test_shipped_binding_schedules_and_mutated_waits(self):
         from expansion import make_expansion
         story = make_expansion()

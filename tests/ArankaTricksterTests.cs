@@ -14,7 +14,7 @@ internal static class ArankaTricksterTests
     private const string Fye = "0f12118177d102f428a3b30b15b132eb";
     private const string Market = "bad9f602b81a80047ac470b01ebe65a9"; // ExoticCapitalTrader (polish 2026-09-28: off Fye's counter)
     private const string YardUnit = "bd0c4fe722aeef94b8495ac284b96bc8";
-    private const string Quartermaster = "a380d926e92f70e429681eb9654478f9";
+    private const string Quartermaster = "15f754455d1d87c42a4e14df456d5415"; // F9 ordinary capital smith
     private const string FyeGone = "aranka.presence.failed";
     private const string KingC3 = "1a17d8053a3be7f47a7908eb6706f2fe";
     private const string KingC3Return = "814dd1a078a1c2849aefc85e2e15b2d2";
@@ -26,7 +26,9 @@ internal static class ArankaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         if (chapter == 3 || chapter == 5) state.AvailableContacts.Add(Unit);
@@ -38,7 +40,9 @@ internal static class ArankaTricksterTests
     // Polish (item 6): a Chapter 5 snapshot of native facts only: no Aranka contact, no presence observation, no route flag.
     private static Snapshot Native(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng-final: native facts do not imply an empty crusade treasury.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add("chapter_later");
         Rules.Complete(story, state);
@@ -181,7 +185,7 @@ internal static class ArankaTricksterTests
             "Her presence in the market is missing or malformed.");
         presence = story.Presences["aranka.presence"];
         check(story.Presences.TryGetValue("aranka.presence.yard", out var yard) && yard.Unit == YardUnit && yard.Unit != presence.Unit
-              && yard.At?.NearUnit == Quartermaster && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
+              && yard.At?.NearUnit == Quartermaster && yard.At.Side == "right" && yard.At.Distance == 6.5f && yard.Dialog == "hub" && yard.Requires.Contains(FyeGone)
               && yard.Forbids.Contains(Closed) && yard.MinChapter == 3 && yard.MaxChapter == 5,
             "The yard presence for a Fye-less capital is missing or malformed.");
         yard = story.Presences["aranka.presence.yard"];

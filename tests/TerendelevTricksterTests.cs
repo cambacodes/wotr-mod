@@ -66,10 +66,13 @@ internal static class TerendelevTricksterTests
         var night = S(P + "night.watch");
         var keepsakes = S(P + "watch.keepsakes");
         var road = S(P + "watch.road");
-        var own = story.Scenes.Where(s => s.Relationship == "terendelev" && !s.Reaction && !s.Id.StartsWith("terendelev.continuation", StringComparison.Ordinal)).ToArray();
+        var own = story.Scenes.Where(s => s.Relationship == "terendelev" && !s.Reaction && !s.Id.StartsWith(P + "react.", StringComparison.Ordinal) && !s.Id.StartsWith("terendelev.continuation", StringComparison.Ordinal)).ToArray();
         var hub = own.Where(s => s.InteractionHub != null).ToArray();
         var pages = own.Where(s => s.Id.StartsWith(P + "epilogue.", StringComparison.Ordinal)).ToArray(); // eng7-f6d: native dialogue text records have their own suite.
-        var reactions = story.Scenes.Where(s => s.Relationship == "terendelev" && s.Reaction).ToArray();
+        // eng8-q8f: count the royal-letter reactor once, delivered as a physical handover.
+        var reactions = story.Scenes.Where(s => s.Relationship == "terendelev"
+            && (s.Reaction || s.Id == P + "react.galfrey.letter")).ToArray();
+        // end eng8-q8f
 
         // Plays one scene and returns the outcomes holding every flag in `with` and none in `without`.
         List<Snapshot> Play(Scene scene, Snapshot w, string[] with, params string[] without)
@@ -154,13 +157,13 @@ internal static class TerendelevTricksterTests
             "Something other than her watch commits, or the commit leaves the wound undressed.");
 
         // Pacing: at least one beat in Chapters 3 and 4 before she returns.
-        check(Rules.Available(story, square, World(story, 3, "trickster")) && Rules.Available(story, weeps, World(story, 4, "trickster"))
+        check(Rules.Available(story, square, World(story, 3, "trickster")) && Rules.Available(story, weeps, World(story, 3, "trickster"))
               && Rules.Available(story, where, World(story, 3, "trickster", "terendelev.voice_heard"))
               && !Rules.Available(story, where, World(story, 3, "trickster")),
-            "Trk_Terendelev_Pacing: the Chapter 3 and 4 beats are shut.");
+            "Trk_Terendelev_Pacing: the Chapter 3 preparation beats are shut.");
         check(!Rules.Available(story, square, World(story, 4, "trickster")), "The Drezen memory plays in the Abyss (Q6 r2).");
-        var tested = One(weeps, World(story, 4, "trickster", "terendelev.scale_held"), new[] { P + "blood_tested", P + "scale_warmed" });
-        check(tested.Has(P + "blood_tested"), "Trk_Terendelev_Pacing: the blood is never tested in the Abyss.");
+        var tested = One(weeps, World(story, 3, "trickster", "terendelev.scale_held"), new[] { P + "blood_tested", P + "scale_warmed" });
+        check(tested.Has(P + "blood_tested"), "Trk_Terendelev_Pacing: the blood is never tested in Drezen.");
 
         // Trk_Terendelev_Bones: the Queen's list; the found search, the gamble, the wound.
         var battle = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle");
@@ -179,7 +182,7 @@ internal static class TerendelevTricksterTests
         check(Rules.PresenceWanted(stall, back) && !Rules.PresenceWanted(awning, back), "Trk_Terendelev_Bones: her presence does not stand in Drezen.");
         check(!Rules.Available(story, late, Later(story, World(story, 5, "trickster", "trickster.ever", "iz.monster_dead.live", Returned), 48)),
             "Trk_Terendelev_Bones: the late page follows a return.");
-        check(Rules.Available(story, road, Later(story, back, 8)), "Trk_Terendelev_Bones: the road out of Iz never comes.");
+        check(Rules.Available(story, road, Later(story, World(story, 5, "trickster.ever", Returned, "iz.done"), 8)), "Trk_Terendelev_Bones: the road out of Iz never comes.");
         var failed = One(bones, battle, new[] { P + "search_failed" }, Returned);
         var claimed = One(bones, battle, new[] { P + "refused_claim" }, Returned);
         var flinched = One(bones, battle, new[] { P + "flinched" }, Returned, P + "search_failed");
@@ -232,7 +235,13 @@ internal static class TerendelevTricksterTests
         var night1 = Later(story, lateBack, 30);
         check(Rules.Available(story, firstNight, night1), "Trk_Terendelev_LateAndDecline: her first night never comes.");
         var owed = One(firstNight, night1, new[] { P + "first_night_seen", P + "owed" });
-        var askedOwed = Later(story, owed, 60);
+        // eng8-q8h: earn the documented progression before either oath.
+        Snapshot Develop(Snapshot initial)
+        {
+            var proof = LateAcceptanceInventory2Tests.Earn(story, check, P + "watch.proof", initial, P + "watch.proof_seen");
+            return LateAcceptanceInventory2Tests.Earn(story, check, P + "watch.wings", proof, P + "watch.wings_tried");
+        }
+        var askedOwed = Later(story, Develop(owed), 60);
         var declined = One(commit, askedOwed, new[] { P + "declined" }, Committed);
         check(!Program.Walk(commit, askedOwed).Any(r => r.Has(Committed)), "Trk_Terendelev_LateAndDecline: a held debt still commits.");
         check(!Rules.Available(story, release, Later(story, declined, 10)) && Rules.Available(story, release, Later(story, declined, 60)),
@@ -243,7 +252,9 @@ internal static class TerendelevTricksterTests
         // Trk_Terendelev_Commit: nothing owed; she asks to guard the wound; the turret; the morning.
         var night2 = Later(story, back, 30);
         var square1 = One(firstNight, night2, new[] { P + "first_night_seen" }, P + "owed");
-        check(!Rules.Available(story, commit, Later(story, square1, 20)) && Rules.Available(story, commit, Later(story, square1, 50)),
+        check(!Rules.Available(story, commit, Later(story, square1, 50)), "Breakfast alone grants an oath.");
+        square1 = Develop(square1);
+        check(Rules.Available(story, commit, Later(story, square1, 50)),
             "Trk_Terendelev_Commit: her ask is not 48 hours after her first night.");
         var sworn = One(commit, Later(story, square1, 50), new[] { Committed, P + "dressing" }, Closed);
         var turret = One(night, Later(story, sworn, 10), new[] { P + "night.seen" });
@@ -343,11 +354,12 @@ internal static class TerendelevTricksterTests
             foreach (var node in s.Nodes)
                 check(!node.Text.Contains("street kid in Kenabres", StringComparison.Ordinal) && !node.Text.Contains("night before", StringComparison.Ordinal),
                     "Invented history or the wrong prologue chronology: " + s.Id + "/" + node.Id);
-        // INT/COX: the reports and visits that assumed an absence or a battle are manual reads, and assume neither.
+        // eng8-q8f: extras open at placed contacts; manual UI is no delivery witness.
         foreach (var id in new[] { "letter.watch_report", "letter.second_report", "watch.at_the_gate", "watch.road", "watch.third_bell" })
-            check(S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))
-                  && !S(P + id).Nodes.Any(n => n.Text.Contains("departure", StringComparison.Ordinal) || n.Text.Contains("column comes back", StringComparison.Ordinal)),
-                "A Chapter 5 extra is still a rest delivery, or claims an absence: " + id);
+            check(!S(P + id).ManualOnly && !Rules.IsMailbagLetter(S(P + id))
+                  && S(P + id).ContactUnit == Human && S(P + id).InteractionHub == "terendelev.presence",
+                "A Chapter 5 extra lacks gameplay contact: " + id);
+        // end eng8-q8f
 
         Console.WriteLine("PASS: Terendelev Trickster (Trk_Terendelev_*): the square and the Abyss, the bones on the Queen's list and the knight's, "
             + "the search and the gamble, the late page, the claim, the rest and the flinch, the first night and its debt, the release, "

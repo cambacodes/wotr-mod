@@ -151,10 +151,14 @@ def _variant(scene, source, target, text, flag=E + "returned"):
 
 def integrate(payload):
     """Registered through wenduag_cairn.integrate; expansion.py is outside this unit's allow list."""
-    payload["Derived"][E + "returned_available"] = [[W + "returned"]]
+    # eng8-q8a: the departure receipt proves bodily life only; closed still withholds romance.
+    payload["Derived"][E + "returned_available"] = [[W + "returned", "trickster.now"], [E + "departed", E + "valid", "trickster.now"]]
+    # end eng8-q8a
     payload.setdefault("DerivedForbids", {})[E + "returned_available"] = [E + "unavailable"]
     for key in (W + "with_you", W + "partner", W + "late_committed", "wenduag.harem.voice.pack"):
-        payload["DerivedForbids"][key] = [E + "unavailable"]
+        # eng8-q8a: a living refusal grants no continuing intimacy or household reward.
+        payload["DerivedForbids"][key] = [E + "unavailable", "wenduag.closed"]
+        # end eng8-q8a
     relationship = payload["Relationships"]["wenduag"]
     relationship["UnavailableFlags"].append(E + "unavailable")
     relationship["UnavailableOverrides"] = {
@@ -220,7 +224,20 @@ Your hook will have to be faster than my axe."'''
     for item in scenes.values():
         if item["Owner"].endswith("Epilogue"):
             item.setdefault("Forbids", []).append(E + "unavailable")
-    payload["Scenes"].extend(copy.deepcopy(SCENES))
+    # eng8-q8a: append the existing departure's receipt; preserve its answer index.
+    emitted = copy.deepcopy(SCENES)
+    departure = next(s for s in emitted if s["Id"] == E + "return")["Nodes"][0]["Choices"][2]
+    departure["Set"].append(E + "departed")
+    payload["Scenes"].extend(emitted)
+    # Authored aftermath of this paid rescue, not a second return or an invitation.
+    payload["Scenes"].append(scene(E + "epilogue.departed", "", "WenduagEpilogue", 6, "", [
+        nar("page", "{n}Wenduag left Drezen with the torn belt wound round her wrist. The Commander had ordered her out, alive. "
+            "She took her knife and went east, where the Wound had left things worth hunting. "
+            "The hook stayed behind. She never came back for it.{/n}", c("Continue")),
+    ], requires=("trickster.ever", "wenduag.closed", E + "departed", "wenduag.life.available"),
+       forbids=("wenduag.committed", E + "unavailable", "sacrifice"),
+       ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=6, Relationship="wenduag"))
+    # end eng8-q8a
     payload.setdefault("SelectedAnswers", {})[E + "journey"] = "ddbcf384507535043a1ad5ad8ad8ea15"
     payload.setdefault("StartedDialogs", {})[E + "journey_started"] = "09f9a3762723ced47b25f953ddbc9e32"
     _lastcall_variants()
@@ -255,3 +272,16 @@ def _lastcall_variants():
              "he knows what I used him for. She keeps the hook over her own cairn now.{/n}",
         Lines=[], Requires=[E + "returned", E + "cost.used_lann"], Forbids=[E + "unavailable"],
         AnyGroups=[], Tooltip="RRT_Debt"))
+# eng8-q8h begin: the unsupported legacy bargains cannot promise a retired rescue.
+# Keep the complete saved graphs. The allocated immediate echo remains the live device.
+LEGACY_RESCUE_OFFERS = tuple(W + suffix for suffix in (
+    "traitor.bid", "exile.bid_hub", "exile.bid_traitor", "exile.late_bid",
+    "exile.champion", "traitor.nerves"))
+_integrate_q8_base = integrate
+def integrate(payload):
+    _integrate_q8_base(payload)
+    for item in payload["Scenes"]:
+        if item["Id"] in LEGACY_RESCUE_OFFERS:
+            item.setdefault("Requires", []).append("trickster.ever")
+            item.setdefault("Forbids", []).append("trickster.ever")
+# end eng8-q8h

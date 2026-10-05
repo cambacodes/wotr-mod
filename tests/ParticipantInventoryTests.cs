@@ -92,7 +92,8 @@ internal static class ParticipantInventoryTests
                 else absent.Flags.Add(woman + ".closed");
                 Observe(story, absent);
                 check(!absent.Has(key), id + " absence fixture retained current presence.");
-                if (kind == "scene")
+                // eng8-q8e: the nominated physical Vellexia host retires its remembered opening by a scene guard.
+                if (kind == "scene" || entry.TryGetProperty("eng8-q8e", out var q8e) && q8e.GetProperty("availability").GetString() == "scene")
                 {
                     check(Rules.Available(story, scene, live), id + " is not available with its intended participant.");
                     check(!Rules.Available(story, scene, absent), id + " advertises an absent participant.");

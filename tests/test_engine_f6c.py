@@ -17,7 +17,7 @@ class EngineF6cTests(unittest.TestCase):
         from expansion import make_expansion
         cls.story = make_expansion()
         cls.scenes = {s["Id"]: s for s in cls.story["Scenes"]}
-        cls.expectations = json.loads((ROOT / "tools/native_inventory_expectations.json").read_text())
+        cls.expectations = json.loads((ROOT / "tools/native_inventory_expectations.json").read_text(encoding="utf-8"))
 
     def test_terendelev_future_question_keeps_its_native_continuation_without_old_evidence(self):
         question = self.expectations["Fixtures"]["fd39fd84212de2047b6b887c9a9cf28e"]["Data"]
@@ -42,7 +42,7 @@ class EngineF6cTests(unittest.TestCase):
         spec = self.story["NativeGates"]["terendelev.funeral_introduction"]
         self.assertEqual(spec, dict(Target=cue, Relationship="terendelev",
                                    When=[["trickster.ever", "terendelev.trickster.returned"]]))
-        rows = inventory(self.story, self.expectations, json.loads((ROOT / "tools/engine_backlog.json").read_text()))
+        rows = inventory(self.story, self.expectations, json.loads((ROOT / "tools/engine_backlog.json").read_text(encoding="utf-8")))
         self.assertEqual(next(r for r in rows if r["Finding"] == "terendelev:001")["Status"], "registered_unevaluated")
         with self.assertRaisesRegex(ValueError, "cue-policy contract"):
             _delivery(cue, "cue", "REPLACE", None, {})

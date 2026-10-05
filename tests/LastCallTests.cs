@@ -16,7 +16,9 @@ internal static class LastCallTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 20000 };
+        var state = new Snapshot { Chapter = chapter, Hour = 20000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -36,6 +38,8 @@ internal static class LastCallTests
 
     internal static void Run(Story story, Action<bool, string> check)
     {
+        // eng8-q8g: production availability, selected history and enacted receipts.
+        LastCallHistoryInventoryTests.Run(story, check);
         Scene Sc(string id) => story.Scenes.Single(s => s.Id == id);
         bool Av(Scene s, Snapshot w) => Rules.Available(story, s, w);
         var threshold = Sc("trickster.lastcall.threshold");
@@ -129,18 +133,32 @@ internal static class LastCallTests
             "noct.complete", "vellexia.committed", "devarra.committed", "nurah.complete", "nurah.ran_off" /* her coda needs a living Nurah */, "kiana.committed", "minachiv.complete", "soana.committed", "aranka.extension_kept",
             "gesmerha.committed", "seelah.committed", "targona.committed", "dorgelinda.committed", "hepzamirah.committed", "eritrice.committed",
             "areelu.committed", "chadali.committed", "camellia.committed", "arueshalae.committed", "delamere.committed", "nidalynn.committed", "shamira.committed", "jannah.committed", "nenio.committed", "herrax.committed", "terendelev.committed", "eliandra.committed", "galfrey.committed", "horzalah.committed", "elyanka.committed", "melazmera.committed", "yaniel.committed", "wenduag.committed", "iomedae.committed", "mielarah.committed" };
-        var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).ToArray());
+        // eng7-l14: commitment does not resurrect a canon-dead body. These
+        // existing paid returns describe the fixture's earned living world.
+        var bodyReturns = new[] { "hepzamirah.trickster.returned", "delamere.trickster.returned", "terendelev.trickster.returned" };
+        var all = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", "sacrifice", Bottle }.Concat(commits).Concat(bodyReturns).ToArray());
         var shown = codas.Where(s => Av(s, all)).Select(s => s.Id).ToList();
         check(codas.Length == 40 && shown.Count == 38 && !shown.Contains("anevia.lastcall.page") && !shown.Contains("irabeth.lastcall.page")
               && shown.Contains("tirabade.lastcall.page"),
             "LastCall_AllCommitted: expected 38 shown codas with the pair page replacing Anevia's and Irabeth's (got " + shown.Count + ").");
         foreach (var coda in codas)
         {
-            var own = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle, coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0] : coda.Requires.Last());
+            var commitment = coda.RequiresAnyGroups.Length > 0 ? coda.RequiresAnyGroups[0][0]
+                : coda.Requires.Last(k => !k.EndsWith(".trickster.returned", StringComparison.Ordinal) && !k.StartsWith("crossroute.", StringComparison.Ordinal));
+            var own = World(story, 6, new[] { "trickster.ever", Taken, "ending.trickster", Bottle, commitment }.Concat(bodyReturns).ToArray());
             check(Av(coda, own), "LastCall_AllCommitted: a coda does not play for its committed partner alone: " + coda.Id);
             var uncommitted = World(story, 6, "trickster.ever", Taken, "ending.trickster", Bottle);
             check(!Av(coda, uncommitted), "LastCall_AllCommitted: a coda plays without her commit: " + coda.Id);
         }
+        foreach (var returned in bodyReturns)
+        {
+            var unreturned = Program.Copy(all);
+            unreturned.Flags.Remove(returned);
+            unreturned = Done(story, unreturned);
+            var woman = returned.Substring(0, returned.IndexOf('.', StringComparison.Ordinal));
+            check(!Av(Sc(woman + ".lastcall.page"), unreturned), "LastCall_EarnedPresence: commitment grants an unreturned body: " + woman);
+        }
+        // end eng7-l14
 
         // 9. LastCall_Paragraphs_Nonempty: every page has unconditional text.
         foreach (var page in pages)
@@ -193,7 +211,9 @@ internal static class LastCallTests
                 "Engine-q2: a call-in is not guarded by its partner's open route, or the last joke does not wait on it: " + call.Id);
             check(call.Requires.Contains(Open) && call.Forbids.Contains(Taken) && call.RequiresAnyGroups.Length == 1 && call.AnswerLists.Length == 5
                   && call.Forbids.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))
-                  && call.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))),
+                  // eng8-q8g: intermediate answers reach the creditor's terms;
+                  // every terminal still resolves the spoken or refused debt.
+                  && call.Nodes.SelectMany(n => n.Choices).Where(c => c.Next == null).All(c => c.Set.Any(f => f.EndsWith(".lastcall.resolved", StringComparison.Ordinal))),
                 "A call-in is not a ledger line of the open ledger, or one of its answers leaves the debt unresolved: " + call.Id);
         }
         // Engine-q2 item 3: a closed or departed partner's call-in is not offered and does not strand the last joke; her
@@ -262,28 +282,50 @@ internal static class LastCallTests
         authored.UnionWith(story.Derived.Keys);
         foreach (var entry in ledger.JournalEntries)
             check(entry.OpenWhen.SelectMany(g => g).All(authored.Contains), "A Ledger line opens on a flag nothing sets: " + entry.Id);
-        // NM1 (ideal-run C14): no call-in can strand the last joke. In every combination of the flags its choices read, some
-        // choice is selectable and resolves the debt (Devarra's refused bill used to leave none).
-        foreach (var callIn in story.Scenes.Where(s => s.Id.EndsWith(".lastcall.call", StringComparison.Ordinal)))
-        {
-            var choices = callIn.Nodes[0].Choices;
-            var keys = choices.SelectMany(ch => ch.Requires.Concat(ch.Forbids)).Concat(callIn.RequiresAnyGroups.SelectMany(g => g)).Distinct().ToArray();
-            check(keys.Length <= 14, "A call-in reads too many flags to enumerate: " + callIn.Id);
-            string resolvedFlag = callIn.Id.Replace(".lastcall.call", ".lastcall.resolved");
-            for (int mask = 0; mask < 1 << keys.Length; mask++)
-            {
-                var held = new Snapshot { Chapter = 6 };
-                for (int i = 0; i < keys.Length; i++) if ((mask & (1 << i)) != 0) held.Flags.Add(keys[i]);
-                // Only the worlds where the call-in itself is offered (a deal held, nothing it forbids).
-                if (!callIn.RequiresAnyGroups.All(g => g.Any(held.Has)) || callIn.Forbids.Any(held.Has) || !callIn.Requires.All(held.Has)) continue;
-                check(choices.Any(ch => Rules.Match(ch.Requires, ch.Forbids, held) && ch.Next == null && ch.Set.Contains(resolvedFlag)),
-                    "A call-in strands the last joke (no resolving choice) for " + callIn.Id + " with {" + string.Join(", ", held.Flags) + "}");
-            }
-        }
+        CheckNoStranding(story, check); // eng8-q8g: also callable by the focused gate.
         var devarraCall = Sc("devarra.lastcall.call");
         var refusedBill = new Snapshot { Chapter = 6 }; refusedBill.Flags.UnionWith(new[] { "devarra.trickster.cost.egg_withheld", "devarra.trickster.refused" });
         check(devarraCall.Nodes[0].Choices.Count(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)) == 1
               && devarraCall.Nodes[0].Choices.Single(ch => Rules.Match(ch.Requires, ch.Forbids, refusedBill)).Set.SequenceEqual(new[] { "devarra.lastcall.resolved" }),
             "Devarra's refused bill still soft-locks the last joke, or her call-in is spoken anyway.");
     }
+
+    // eng8-q8g: every offered call world must have a resolving terminal path.
+    internal static void CheckNoStranding(Story story, Action<bool, string> check)
+    {
+        // NM1 (ideal-run C14): no call-in can strand the last joke. In every combination of the flags its choices read, some
+        // choice is selectable and resolves the debt (Devarra's refused bill used to leave none).
+        foreach (var callIn in story.Scenes.Where(s => s.Id.EndsWith(".lastcall.call", StringComparison.Ordinal)))
+        {
+            bool reviewed = new[] { "kiana.lastcall.call", "eliandra.lastcall.call", "wenduag.lastcall.call" }.Contains(callIn.Id);
+            var choices = reviewed ? callIn.Nodes.SelectMany(n => n.Choices) : callIn.Nodes[0].Choices;
+            var keys = choices.SelectMany(ch => ch.Requires.Concat(ch.Forbids)).Concat(callIn.RequiresAnyGroups.SelectMany(g => g)).Distinct().ToArray();
+            check(keys.Length <= 14, "A call-in reads too many flags to enumerate: " + callIn.Id);
+            string resolvedFlag = callIn.Id.Replace(".lastcall.call", ".lastcall.resolved");
+            int offeredWorlds = 0;
+            for (int mask = 0; mask < 1 << keys.Length; mask++)
+            {
+                var held = new Snapshot { Chapter = 6 };
+                for (int i = 0; i < keys.Length; i++) if ((mask & (1 << i)) != 0) held.Flags.Add(keys[i]);
+                if (reviewed)
+                {
+                    // E11's matrix uses real eligibility inputs; producer proof is separate.
+                    held.Flags.UnionWith(callIn.Requires.Where(f => !story.Derived.ContainsKey(f)));
+                    if (callIn.Id == "wenduag.lastcall.call") held.Flags.Add("wenduag.committed");
+                    if (held.Has("kiana.lastcall.guests_recovered")) held.Flags.Add("seelah.souls_returned");
+                    held.Flags.ExceptWith(story.Derived.Keys);
+                    Rules.Complete(story, held);
+                }
+                // Only the worlds where the call-in itself is offered (a deal held, nothing it forbids).
+                if (!callIn.RequiresAnyGroups.All(g => g.Any(held.Has)) || callIn.Forbids.Any(held.Has) || !callIn.Requires.All(held.Has)) continue;
+                // eng8-q8g: follow the real selectable graph, including pardon/refusal.
+                offeredWorlds++;
+                var ends = Program.Walk(callIn, held);
+                check(ends.Count > 0 && ends.All(end => end.Has(resolvedFlag)),
+                    "A call-in strands the last joke (no resolving choice) for " + callIn.Id + " with {" + string.Join(", ", held.Flags) + "}");
+            }
+            if (reviewed) check(offeredWorlds > 0, "No-stranding matrix executed no offered worlds: " + callIn.Id);
+        }
+    }
+    // end eng8-q8g
 }

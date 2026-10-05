@@ -1,0 +1,43 @@
+{
+ "placement": "aranka.presence",
+ "chapter": 5,
+ "area": "2570015799edf594daf2f076f2f975d8",
+ "scene": "presence:aranka.presence",
+ "save_sha256": "1038cf45f2a2e8ca3199bc5077a89ef6f0cd3f04a8fce278156858bda17950d0",
+ "position": null,
+ "at": {
+  "NearUnit": "bad9f602b81a80047ac470b01ebe65a9",
+  "Side": "front",
+  "Distance": 3.5
+ },
+ "walkable": true,
+ "approachable": true,
+ "clickable": true,
+ "occupancy_clear": true,
+ "after_reload": true,
+ "walkable_gap": 0.006798191,
+ "drift": 0.00305175781,
+ "evidence": {
+  "date": "2026-10-05",
+  "run": "harness/.runs/20261004-235639 (repeat: 20261005-005345)",
+  "save": "RRT_Manual_326_Mythic_Path_act_5_The_Swarm_Edition.zks",
+  "command": "run-harness.ps1 -Saves RRT_Manual_326_... -Spike Presence -PresenceKey aranka.presence -PresenceEnterPoint 51ec615b45183294bb9b065d9a913e99 -SetFlags trickster.ever,aranka.trickster.answered,hour.trickster.ever,hour.aranka.trickster.answered -StartEtudes 9f486a9c0c9abfc4a952bb22e88a7e96",
+  "actor_id": "309eae01-0e4a-40fa-8734-e96b0ce585b9",
+  "actor_id_after_reload": "309eae01-0e4a-40fa-8734-e96b0ce585b9",
+  "position": [
+   -5.044696,
+   56.0031738,
+   5.18712568
+  ],
+  "target": [
+   -5.044696,
+   56.0062256,
+   5.18712568
+  ],
+  "approach_distance": 1.83566213,
+  "after_reload_drift": 0.004249697,
+  "after_reload_gap": 0.01703535,
+  "crowding": [],
+  "note": "Fixture state (flags + trickster etude on a Chapter 5 Trickster save entered at DrezenCapital_FromThroneRoom); Commander walked to the spot from the throne room, production PresenceClick opened the hub dialog, round-trip save/reload kept the same actor id."
+ }
+}

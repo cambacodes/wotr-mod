@@ -720,3 +720,33 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+# eng8-q8d: Chapter 5 failed placement gets the reunion and its existing price
+# at the coffin, inside the delivery that paid for her breath. Chapter 3 stays.
+def _eng8_coffin_reunion():
+    import copy
+    letter = next(s for s in SCENES if s['Id'] == P + 'killed.performance_letter')
+    letter['MaxChapter'] = 3
+    letter['Chapters'] = [3]
+    for sid, terminal in [('killed.third_night', 'home'), ('killed.late_curtain', 'walk')]:
+        host = next(s for s in SCENES if s['Id'] == P + sid)
+        end = next(n for n in host['Nodes'] if n['Id'] == terminal)
+        old = end['Choices'][0]
+        old['Forbids'] = list(dict.fromkeys(old['Forbids'] + ['irabeth.chapter_five']))
+        end['Choices'].append(c('[Go home]', requires=('irabeth.chapter_five',), forbids=(PRESENCE_FAILED,)))
+        end['Choices'].append(c('[Turn back to the coffin]', 'eng8.reunion',
+                                requires=('irabeth.chapter_five', PRESENCE_FAILED)))
+        price = copy.deepcopy(next(n for n in letter['Nodes'] if n['Id'] == 'price'))
+        price['Id'] = 'eng8.price'
+        price['Text'] = ('"Then hear my price here. Camellia Gwerm is dead, her name and her father\'s house with her; '
+                         'that part of the trick is mine to pay. Stones will keep my place in the box. Your blood '
+                         'from my knife whenever the flies want it, or your name at the top of my list: the first '
+                         'friend I kill if I ever need one. Choose."')
+        for ch in price['Choices']:
+            ch['Text'] = ch['Text'].replace('[Write back "My blood"]', '[Offer your blood]').replace('[Write back your own]', '[Offer your name]').replace('[Burn the letter]', '[Leave her]')
+        host['Nodes'].extend([
+            cam('eng8.reunion', '{n}She has lifted the lid again. When you turn back, she catches your wrist, her nails raw against it.{/n} '
+                '"No. Stay. I have no wish to hunt you through a city full of crusaders tonight."', c('Continue', 'eng8.price')),
+            price])
+
+_eng8_coffin_reunion()
+# end eng8-q8d

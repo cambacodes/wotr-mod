@@ -36,11 +36,14 @@ internal static class GalfreyTricksterTests
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
         // eng7-l12: Chapter 3 standing orders are delivered in the Drezen camp.
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 3 || chapter == 5 ? Drezen : "" };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 3 || chapter == 5 ? Drezen : "",
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Disguised);
+        state.AvailableContacts.Add("8a23e71893cf8ab428e7ebd64b10ad27"); // eng8-q8d: the Crows sergeant
         Rules.Complete(story, state);
         foreach (var flag in state.Flags.ToList()) state.Times[flag] = state.Hour - 200;
         return state;
@@ -81,7 +84,7 @@ internal static class GalfreyTricksterTests
         var crown = S(P + "kitrane.crown");
         var ford = S(P + "kitrane.ford");
         var own = story.Scenes.Where(s => s.Relationship == "galfrey" && !s.Reaction).ToArray();
-        var hub = own.Where(s => s.InteractionHub != null).ToArray();
+        var hub = own.Where(s => s.InteractionHub == "galfrey.presence" || s.InteractionHub == "galfrey.presence.stall").ToArray();
         var pages = own.Where(s => s.Owner == "GalfreyEpilogue").ToArray();
         var reactions = story.Scenes.Where(s => s.Relationship == "galfrey" && s.Reaction).ToArray();
 
@@ -176,7 +179,7 @@ internal static class GalfreyTricksterTests
             "Trk_Galfrey_Pacing: asked as her general, the letter still moots it.");
         check(World(story, 2, mooted.Flags.ToArray()).Has(P + "kitrane_planted"), "Trk_Galfrey_Pacing: a moot in Chapter 2 does not plant Kitrane.");
 
-        // Trk_Galfrey_Kitrane: planted, read at the bed, framed for her; the return at +48 h; the oath refused.
+        // Trk_Galfrey_Kitrane: planted, read at the bed, framed for her; the return at +24 h; the oath refused.
         var bed = World(story, 5, "trickster", "trickster.ever", "galfrey.dying_seen", "galfrey.early.kitrane.mooted");
         check(Rules.Available(story, offer, bed) && !Rules.Available(story, offer, World(story, 5, "trickster.ever", "trickster.failed", "galfrey.dying_seen")),
             "Trk_Galfrey_Kitrane: the offer is shut at the bed, or opens without the live Trickster.");
@@ -201,14 +204,14 @@ internal static class GalfreyTricksterTests
         var crowned = Later(story, eulogised, 10, null, "coronation.after", "coronation.seen");
         check(!Rules.Available(story, ret, Later(story, crowned, 20)) && Rules.Available(story, ret, Later(story, crowned, 50))
               && !Rules.Available(story, retScarred, Later(story, crowned, 200)),
-            "Trk_Galfrey_Kitrane: the return is not 48 hours after the Coronation, or the scarred twin plays in the read world.");
+            "Trk_Galfrey_Kitrane: the return is not 24 hours after the Coronation, or the scarred twin plays in the read world.");
         var back = One(ret, Later(story, crowned, 50), new[] { Returned });
         check(Rules.PresenceWanted(stall, back) && !Rules.PresenceWanted(fb, back), "Trk_Galfrey_Kitrane: her presence does not stand in the market.");
         var met = One(first, Later(story, back, 10), new[] { P + "first_morning" });
         check(!Rules.Available(story, oath, Later(story, met, 60)), "Trk_Galfrey_Kitrane: the oath comes without a shared act and a real exchange.");
         var morning = Later(story, met, 0, null, P + "kitrane.reel", P + "kitrane.elixir_told");
-        check(!Rules.Available(story, oath, Later(story, morning, 20)) && Rules.Available(story, oath, Later(story, morning, 50)),
-            "Trk_Galfrey_Kitrane: the oath is not 48 hours after her first morning.");
+        check(!Rules.Available(story, oath, Later(story, morning, 10)) && Rules.Available(story, oath, Later(story, morning, 12)),
+            "Trk_Galfrey_Kitrane: the oath has not reserved the earlier 12-hour courtship wait.");
         var yes = One(oath, Later(story, morning, 50), new[] { Committed }, P + "sworn");
         check(oath.Nodes.Single(n => n.Id == "crowd").Choices.Any(c => c.Text.StartsWith("[Refuse her oath", StringComparison.Ordinal) && c.Next == "refuse"),
             "Trk_Galfrey_Kitrane: the commit is not the Commander refusing her oath.");
@@ -228,9 +231,9 @@ internal static class GalfreyTricksterTests
         check(!Rules.Available(story, retScarred, Later(story, diedBlind, 200)),
             "Trk_Galfrey_RefusedThenYes: a blind offer is released without the proclamation (the eulogy).");
         var proclaimed = Later(story, One(eulogy, Later(story, diedBlind, 1), new[] { P + "cost.eulogy" }), 1);
-        check(!Rules.Available(story, ret, Later(story, proclaimed, 50)) && !Rules.Available(story, retScarred, Later(story, proclaimed, 50))
+        check(!Rules.Available(story, ret, Later(story, proclaimed, 50)) && !Rules.Available(story, retScarred, Later(story, proclaimed, 34))
               && Rules.Available(story, retScarred, Later(story, proclaimed, 100)),
-            "Trk_Galfrey_RefusedThenYes: the blind return is not 96 hours after the Coronation and the eulogy.");
+            "Trk_Galfrey_RefusedThenYes: the blind return is not 36 hours after the Coronation and the eulogy.");
         var letDie = One(offer, bed, new[] { P + "let_die", Closed }, Taken);
         check(!Rules.Available(story, ret, Later(story, Died(letDie, "coronation.after", "coronation.seen"), 200))
               && Rules.Available(story, S(P + "epilogue.queen"), World(story, 6, letDie.Flags.Concat(new[] { "trickster", "trickster.ever", Dead }).ToArray())),
@@ -430,7 +433,8 @@ internal static class GalfreyTricksterTests
 
         // Reactions and pages.
         check(reactions.Length == 13 && reactions.All(s => s.Nodes.Count == 1)
-              && new[] { "Irabeth", "Seelah", "Hulrun", "Daeran", "Thaberdine" }.All(o => reactions.Any(s => s.Owner == o))
+              && new[] { "Irabeth", "Seelah", "Hulrun" }.All(o => reactions.Any(s => s.Owner == o && !s.Forbids.Contains("trickster.ever")))
+              && reactions.Where(s => s.Owner == "Daeran" || s.Owner == "Thaberdine").All(s => s.Forbids.Contains("trickster.ever"))
               && reactions.Where(s => s.Owner == "Irabeth").All(s => s.Forbids.Contains("irabeth_dead")
                   && s.ForbidOverrides.TryGetValue("irabeth_dead", out var r) && r == "irabeth.trickster.returned"),
             "Galfrey's reactors are not Irabeth (seven), Seelah, Hulrun (two), Daeran and the King, or Irabeth's are unguarded.");

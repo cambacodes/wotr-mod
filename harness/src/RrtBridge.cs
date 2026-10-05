@@ -89,7 +89,7 @@ namespace RRT.TestHarness
             ("Tirabade.PresencePosition", "Z", "field", "Single"),
             ("Tirabade.PresencePosition", "Orientation", "field", "Single"),
             ("Tirabade.GuestPresence", ".ctor", "ctor(String,Presence,BlueprintUnit)", "*"),
-            ("Tirabade.GuestPresence", "Tick", "instance-method(Boolean)", "Void"),
+            ("Tirabade.GuestPresence", "Tick", "instance-method(Boolean,Story,Snapshot)", "Void"),
             ("Tirabade.GuestPresence", "get_Actor", "instance-method()", "UnitEntityData"),
             ("Tirabade.GuestPresence", "get_Status", "instance-method()", "String"),
             ("Tirabade.GuestPresence", "get_LastError", "instance-method()", "Exception"),
@@ -176,7 +176,7 @@ namespace RRT.TestHarness
             AppDomain.CurrentDomain.GetAssemblies().FirstOrDefault(a => a.GetName().Name == AssemblyName);
 
         object? Static(string name) => main.GetField(name, S)!.GetValue(null);
-        static object? Get(object o, string field) => o.GetType().GetField(field, I)!.GetValue(o);
+        internal static object? Get(object o, string field) => o.GetType().GetField(field, I)!.GetValue(o);
         static T GetAs<T>(object o, string field) => (T)Get(o, field)!;
 
         public bool Initialized => (bool)Static("initialized")!;
@@ -194,6 +194,12 @@ namespace RRT.TestHarness
         /// <summary>E12c: click a presence like the player; true when its RRT hub dialog started.</summary>
         public object? ProductionPresence(string key) => ((IEnumerable)Static("presences")!).Cast<object>()
             .SingleOrDefault(p => (string)Get(p, "Key")! == key);
+        public string ContactInventory(string guid)
+        {
+            var m = Assembly.GetType("Tirabade.NativeContact", true)!.GetMethod("Inventory", S)!;
+            return Newtonsoft.Json.JsonConvert.SerializeObject(m.Invoke(null, new object[] { guid }));
+        }
+        public static string? PresenceUnit(object presence) => (string?)Get(Get(presence, "Spec")!, "Unit");
         public static object? PresenceTarget(object presence) => Call(presence, "get_Target");
         public bool PresenceClick(string key) => (bool)Invoke(presenceClick, key);
         public void Set(string key, int value = 1) => Invoke(set, key, value);
@@ -234,7 +240,7 @@ namespace RRT.TestHarness
         }
 
         /// <summary>GuestPresence.Tick(wanted): plans and executes spawn/remove exactly as Main.TickPresences does.</summary>
-        public static void PresenceTick(object presence, bool wanted) => Call(presence, "Tick", wanted);
+        public static void PresenceTick(object presence, bool wanted) => Call(presence, "Tick", wanted, null, null);
         /// <summary>The placed unit (a UnitEntityData), or null.</summary>
         public static object? PresenceActor(object presence) => Call(presence, "get_Actor");
         public static string? PresenceStatus(object presence) => (string?)Call(presence, "get_Status");

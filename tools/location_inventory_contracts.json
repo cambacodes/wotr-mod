@@ -18,5 +18,28 @@
     "nenio.folio.volume_one_arcade": "Both give/give_new stay in Drezen; no visitor recruitment implemented.",
     "nenio.lastcall.page": "Visitor observes from Drezen; native companion's distance remains neutral (can attend Threshold).",
     "nenio.lastcall.call": "Distance neutral for native-companion and visitor worlds."
+  },
+  "eng8-q8b": {
+    "authored": "E-Q8-03: scouts map in an ordinary camp, or physical walls only in the verified Chapter 2 siege exterior; no capital in Chapter 2.",
+    "siege_areas": [
+      "6369196c9fe31304b8c17bea915d94c9"
+    ],
+    "blueprint_evidence": {
+      "6369196c9fe31304b8c17bea915d94c9": "World/Areas/Act_2_SwordOfValor/DrezenCitadel_Level1/DrezenCitadel_Level1.jbp; BlueprintArea (siege city/exterior walls)",
+      "7a25c101fe6f7aa46b192db13373d03b": "World/Areas/Act_2_SwordOfValor/WarCamp/WarCamp.jbp; BlueprintArea (movable camp, not a siege witness)",
+      "2570015799edf594daf2f076f2f975d8": "DrezenCapital; Chapter 3/5, not Chapter 2"
+    },
+    "inferred_drezen_scenes": [
+      "wenduag.trickster.early.walls"
+    ],
+    "finding_ids": [
+      "wenduag:001"
+    ],
+    "continuation_recheck": {
+      "wenduag:001": {
+        "status": "no_change_needed",
+        "evidence": "The committed early.walls take node already studies a scout's map in the regenerated payload. The original physical-view mutation still reports L3. BlueprintArea 6369196c9fe31304b8c17bea915d94c9 is verified directly in blueprints.zip; WarCamp and DrezenCapital are negative witnesses. The continuation closes map/memory masking within a sentence and retains portable wall-map controls."
+      }
+    }
   }
 }

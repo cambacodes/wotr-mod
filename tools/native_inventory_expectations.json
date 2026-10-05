@@ -1,5 +1,9 @@
 {
   "SchemaVersion": 1,
+  "eng8-q8e": {
+    "Item": "E-Q8-06",
+    "Contracts": "tools/native_ending_inventory2_contracts.json"
+  },
   "Item": "E-Q7-09",
   "Authored": true,
   "Policy": "Inventory contracts only. Uncovered dependencies FAIL coverage; they never authorize an unsafe runtime edit or new prose.",

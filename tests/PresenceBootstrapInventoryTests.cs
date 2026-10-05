@@ -200,9 +200,9 @@ internal static class PresenceBootstrapInventoryTests
             Contact(story, "nurah.presence.cell", state, check);
             state = Play(story, "nurah.trickster.prison.night_out_late", state, "nurah.trickster.released", check);
         }
-        // Exported Galfrey preparation/vigil/returns are remote; the physical actor is her earned returned body.
+        // eng8-q8d: the living sergeant hosts the vigil and the earned return.
         foreach (var scene in story.Scenes.Where(s => s.Id == "galfrey.trickster.iz.eulogy" || s.Id.StartsWith("galfrey.trickster.return.kitrane", StringComparison.Ordinal)))
-            check(scene.ContactUnit == null && Rules.IsRemote(scene), "Obsolete Galfrey sergeant dependency: " + scene.Id);
+            check(scene.ContactUnit == "8a23e71893cf8ab428e7ebd64b10ad27" && !Rules.IsRemote(scene), "Missing Galfrey sergeant delivery: " + scene.Id);
         foreach (bool scarred in new[] { false, true })
         {
             var state = Fresh(story, 5, "galfrey.dying_seen", "coronation.seen");
@@ -211,6 +211,7 @@ internal static class PresenceBootstrapInventoryTests
                 scarred ? "galfrey.closed" : "galfrey.trickster.cost.rent_scar");
             state.Flags.Add("galfrey.dead"); Recompute(story, state); state = Later(story, state);
             check(!Rules.PresenceWanted(story.Presences["galfrey.presence"], state), "Unreturned Galfrey staged for vigil");
+            Contact(story, "galfrey.presence.sergeant", state, check);
             state = Play(story, "galfrey.trickster.iz.eulogy", state, "galfrey.trickster.cost.eulogy", check);
             state = Later(story, state);
             state = Play(story, scarred ? "galfrey.trickster.return.kitrane_scarred" : "galfrey.trickster.return.kitrane",

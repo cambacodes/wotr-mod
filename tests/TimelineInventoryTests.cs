@@ -29,6 +29,9 @@ internal static class TimelineInventoryTests
         }
         void Complete(Snapshot state)
         {
+            // eng-final: a new native observation recomputes live readers;
+            // unavailability from before the paid return is not a save latch.
+            state.Flags.ExceptWith(story.Derived.Keys);
             var pending = Rules.PendingLatches(story, state).ToArray();
             Rules.Complete(story, state);
             foreach (var flag in pending) state.Times[flag] = state.Hour;
@@ -103,6 +106,16 @@ internal static class TimelineInventoryTests
                 "Post-Coronation cap or second-ask price failed: " + state.Hour);
             Console.WriteLine("E-Q7-18 " + (killed ? "raised" : "called") + ": return 48 -> letters 144 -> gate 156 -> refusal 162 -> paid yes " + state.Hour);
         }
+
+        // eng-final: both sides of the new presence guard on one history.
+        var observation = Native();
+        check(observation.Has("crossroute.irabeth.unavailable"), "Unreturned death loses its presence veto");
+        observation.Flags.Add("irabeth.trickster.returned");
+        Complete(observation);
+        check(!observation.Has("crossroute.irabeth.unavailable"), "Paid return keeps a stale absence veto");
+        observation.Flags.Add("irabeth_gone");
+        Complete(observation);
+        check(observation.Has("crossroute.irabeth.unavailable"), "Later departure keeps stale living eligibility");
 
         // A 204h itinerary cannot pass by appealing to the 504h campaign cap.
         bool Age(int hour, int at, int minimum, int? maximum) => at >= 0 && at <= hour

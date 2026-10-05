@@ -940,3 +940,28 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+# eng8-q8d: the road is the one rest delivery; the sergeant conducts the
+# vigil and the arrival in person. Appended twins preserve every old node.
+def _eng8_sergeant_visits():
+    import copy
+    unit = '8a23e71893cf8ab428e7ebd64b10ad27'
+    for suffix in ('iz.eulogy', 'return.kitrane', 'return.kitrane_scarred'):
+        host = next(s for s in SCENES if s['Id'] == P + suffix)
+        host.pop('Kind', None)
+        host.update(Remote=False, ContactUnit=unit, InteractionHub='galfrey.presence.sergeant',
+                    Areas=[DREZEN], Entry='[Follow the Crows\' sergeant.]')
+        if suffix.startswith('return.'):
+            host['DelayHours'] = 36 if suffix.endswith('_scarred') else 24
+        twin = copy.deepcopy(host)
+        twin['Id'] += '_stall'
+        twin['InteractionHub'] = 'galfrey.presence.sergeant_stall'
+        twin['Requires'].append('galfrey.presence.sergeant.failed')
+        twin['Forbids'].append(host['Id'])
+        host['Forbids'].extend([twin['Id'], 'galfrey.presence.sergeant.failed'])
+        SCENES.append(twin)
+    for sid in ('react.daeran.cousin', 'react.king'):
+        retired = next(s for s in SCENES if s['Id'] == P + sid)
+        retired['Forbids'].append('trickster.ever')
+
+_eng8_sergeant_visits()
+# end eng8-q8d

@@ -17,7 +17,43 @@ Alushinyrra Higher/Medium/Lower city (see table), Chapter 4.
 WintersunOutdoor 0a5654e7dc18f074d9356009d55eb51b, Chapter 3/5.
 """
 import re
+import json
+from pathlib import Path
 from .common import finding, sentences, postwar
+
+# eng8-q8b begin: Chapter 2 siege geography is distinct from the capital.
+SIEGE = json.loads(Path(__file__).resolve().parents[1].joinpath("location_inventory_contracts.json").read_text(encoding="utf-8"))["eng8-q8b"]
+SIEGE_AREAS = tuple(SIEGE["siege_areas"])
+SIEGE_HISTORY = re.compile(r"\b(?:remembers?|recalls?|remembered|recalled|had stood|had been|used to|once\b.{0,45}\b(?:stood|watched|looked)|dream|vision|portrait|painting|mind['’]s eye)\b", re.I)
+SIEGE_MAP = re.compile(r"\b(?:maps?|reports?|sketch(?:es)?|drawings?)\s+(?:of|from|shows?|showing|depicts?|depicting)\b|\b(?:pencilled|drawn|charted)\b", re.I)
+SIEGE_REPRESENTED = re.compile(r"\b(?:walls?|battlements|ramparts|siege lines)\b.{0,70}\b(?:on|in)\s+(?:(?:a|the|her|his|your|scouts?['’]s?|scouts?['’]?)\s+){0,3}(?:map|report|sketch|drawing)\b", re.I)
+SIEGE_CLAUSE = re.compile(r"\s*(?:;|,|\b(?:and|but|while|as)\b)\s*(?=(?:she|he|you|Drezen['’]s walls|the walls)\s+(?:stands?|looks?|watches?|sees?|faces?|loom|rise|tower)\b)", re.I)
+SIEGE_PHYSICAL = re.compile(r"\b(?:stands?|standing|looks?|looking|watches?|watching)\s+(?:out\s+)?(?:at|outside|beneath|below|above|beyond)\s+(?:the\s+)?(?:Drezen(?:['’]s)?\b|city walls\b)|\b(?:Drezen['’]s|city)\s+walls\s+(?:stand|loom|rise|tower)\b", re.I)
+
+
+def siege_clauses(paragraph):
+    # A portable map or a memory never excuses a separate physical assertion
+    # in the same sentence. Keep representation phrases together.
+    for line in sentences(paragraph):
+        yield from SIEGE_CLAUSE.split(line)
+
+
+def siege_staged(text, inferred=False):
+    paragraphs = re.findall(r"\{n\}(.*?)\{/n\}", text, re.S) or [text]
+    for paragraph in paragraphs:
+        if MENTAL.search(paragraph):
+            continue
+        for line in siege_clauses(paragraph):
+            if (SIEGE_HISTORY.search(line) or SIEGE_REPRESENTED.search(line)
+                    or (SIEGE_MAP.search(line) and not SIEGE_PHYSICAL.search(line))):
+                continue
+            named = re.search(r"\bDrezen(?:['’]s)?\b", line, re.I)
+            walls = re.search(r"\b(?:city walls?|battlements|ramparts|siege lines)\b" if not named else r"\b(?<!pike )(?:walls?|battlements|ramparts|siege lines)\b", line, re.I)
+            view = re.search(r"\b(?:looks? at|looking at|watches?|watching|view|see|sees|seen|stands?|standing|outside|beneath|below|above|beyond|before|faces?|loom|rise|tower)\b", line, re.I)
+            if walls and view and (named or inferred):
+                if not re.search(r"\b(?:will|would|could|might|shall|should|if|going to)\b", line, re.I):
+                    yield line
+# eng8-q8b end
 
 PLACES = {
     "Drezen": (r"Drezen|(?:Drezen['’]s\s+)?citadel", ("2570015799edf594daf2f076f2f975d8",), (3, 5)),
@@ -52,7 +88,9 @@ def staged(text, name):
                 or re.search(r"\bThe rest of that ear is on a shelf in Alushinyrra\b", line, re.I)
                 or TRAVEL.search(line)):
             continue
-        if not re.search(r"\b(?:" + place + r")\b", line, re.I) or HISTORY.search(line):
+        # eng8-q8b: maps/reports are portable representations. Restrict this
+        # exception to represented geography, not any sentence with a map table.
+        if not re.search(r"\b(?:" + place + r")\b", line, re.I) or HISTORY.search(line) or SIEGE_MAP.search(line) or SIEGE_REPRESENTED.search(line):
             continue
         if (re.search(r"\b(?:here in|here at|in|inside|at|outside|above|beneath|through|over|across|under|back in|back at)\s+(?:the\s+)?(?:" + place + r")\b", line, re.I)
                 and re.search(r"\b(?:stands?|sits?|leans?|waits?|walks?|steps?|watches?|opens?|window|room|chamber|door|table|bed|walls?|battlements|courtyard|camp|tent|air|wind|rain|fire|night|find|meet)\b", line, re.I)):
@@ -73,10 +111,23 @@ def check(model, blocks, proof):
             continue
         if any(TRAVEL.search(model.nodes[b.scene["Id"]][nid]["Text"]) for nid in b.ancestors):
             continue
+        # eng8-q8b begin: scan each branch, including physical views hidden by
+        # 'never before seen'. A scout's drawing carries no location assertion.
+        window = set(b.scene.get("Chapters") or range(b.scene["MinChapter"], b.scene["MaxChapter"]+1))
+        siege_matches = list(siege_staged(b.text, b.scene["Id"] in SIEGE["inferred_drezen_scenes"])) if window == {2} else []
+        if siege_matches and not postwar(b.scene):
+            if not b.scene.get("Areas") or not set(b.scene["Areas"]) <= set(SIEGE_AREAS):
+                out.append(finding("L3", b, "Chapter 2 siege view requires verified siege Areas subset %s, or scouts' map/report staging" % list(SIEGE_AREAS),
+                                   "Drezen siege", siege_matches[0][:240]))
+        # eng8-q8b end
         for name, (_, areas, chapters) in PLACES.items():
             # Quoted NPC speech may describe a destination while narration stages
             # another place. Only scan the actual narrator portions of NPC nodes.
             matches = list(staged(b.text, name))
+            # eng8-q8b: named walls in Chapter 2 use siege geometry, never the
+            # Chapter 3/5 capital contract. Other Drezen staging still uses it.
+            if name == "Drezen" and siege_matches:
+                matches = [line for line in matches if not list(siege_staged(line, b.scene["Id"] in SIEGE["inferred_drezen_scenes"]))]
             if not matches:
                 continue
             # Postwar authored visits describe their future setting, not the

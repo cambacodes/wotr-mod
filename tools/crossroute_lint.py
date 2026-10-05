@@ -34,14 +34,37 @@ choices, and the blueprint/localization sources cited in the check modules.
 eng7-l13 adds generator guards to L4 producers/consumers and the mandatory
 existing refusal/consequence contracts. Node prose and saved identifiers stay
 unchanged. The original L1/L2/L3/L5/L6 calibration below remains applicable.
-L1 name-only findings deliberately
-retain the task's broad name policy (including letters and recollections);
-`:physical` findings additionally assert actual staging.
+
+eng7-l14 refines L1 and wires live cross-route guards at generation time.
+Names alone do not assert life. Explicit recollection, mourning, reputation,
+religious titles/invocations and surviving objects may remain ungated. Staging,
+speaking, current reactions and plans require the woman's current route state,
+including the existing registered earned returns. Past tense in an epilogue
+describes future life and is not itself a history exemption. Each occurrence
+is checked separately; a memory mention cannot exempt a second live mention.
+The classifier is `tools/crossroute_checks/mention_context.py`; its conservative
+default is a live claim, with regression fixtures for both classes.
+Relative clauses and coordinated predicates about today's actor take
+precedence over history, relic, comparison and reputation exemptions:
+"remember Seelah, who now waits" and "Seelah is brave and stands" still need
+life. Conditional meeting plans also need life. A first-year visit in an
+epilogue describes postwar life, not an earlier campaign recollection.
+Actions by another actor reacting to her name or relic (a knight of her company)
+do not establish the named woman's presence. These cases are checked alongside
+unreturned-loss exclusion and satisfiable earned-return regression worlds.
+The paid receipt for the silver dragon's festival-square promise records the
+prologue morning and remains readable without resurrecting Terendelev. A new
+live visit in the same clause still requires her existing earned return.
+The caves' witnesses likewise recall the first encounter and Terendelev's
+earlier healing; their own current speaking cues remain presence-guarded.
+The two Soana death receipts explicitly date Camellia's killing to the crusade,
+so the remembered perpetrator need not survive to the ending. A coordinated
+future visit or separate live cameo remains subject to current availability.
 
 | Check | Sample | Condition logic / result |
 | --- | --- | --- |
-| L1 | `chadali.trickster.epilogue.lucky_night`, Eritrice mentions | Chadali's commitment and Council return do not establish Eritrice's separate live route; reported. |
-| L1 | `galfrey.trickster.iz.road/irabeth` and `/irabeth2` | Incoming choice forbids Irabeth's losses, but no matching physical contact/presence/participant contract; physical finding retained. |
+| L1 | `chadali.trickster.epilogue.lucky_night`, Eritrice mentions | Live Eritrice cameos now read her own current availability; Chadali's commitment never proves it. |
+| L1 | `galfrey.trickster.iz.road/irabeth` and `/irabeth2` | Live guest narration now carries the explicit authored participant contract and current route losses, without requiring a household commitment or a visitor clone. |
 | L1 | Household named-seat fixture | Naming only one seat does not prove the other woman present or alive; all incoming choice paths and paragraph conditions checked. |
 | L2 | `iomedae.trickster.epilogue.lived` and living Last Call pages | Scene sacrifice forbids/earned Commander return establish life; no findings. Paragraph and unreturned-sacrifice negative fixtures reject leaks. |
 | L3 | `horzalah.trickster.react.wenduag_morning/start` | Citadel staging, Chapter 5, no area gate; reported. |
@@ -79,6 +102,114 @@ the guard. Missing central lifecycle registrations need route-owner review.
 The baseline records debt, not permission to grant an unearned outcome.
 Fingerprints include full text, effective conditions, required predicates and
 location/participant metadata; changed baselined gates require a new review.
+
+## eng7-l14 scope and rule
+
+`storylines/crossroute_presence.py` runs after all route generators. Ordinary
+scene guards exclude a live inverse of the existing availability contract. It
+reads native losses and registered earned overrides without adding timed
+Requires inputs or restarting the scene's original DelayHours. Optional live
+branches instead guard incoming answers where a neutral alternative is proved
+selectable, so a refused guest does not suppress the owner's scene. Native
+present/departure inputs do not establish life: if such an optional branch's
+input survives a later loss, appended answers retain its existing no-guest
+targets and costs. No original answer is retargeted. Mixed fetched-return
+receipts retain the historical sentence and append a guarded future visit.
+Fixed departure hosts and forbidden relationship-state reads use the equivalent
+guarded composite. Guest losses, closure and body exclusions stay inside this
+live composite across ordinary routes, preserving reader contracts in Long Con, Last
+Call, Nenio, Elyanka and siblings. The explicitly scoped Long Con native-host
+adapter retains its original direct overrides; registered returns and neutral
+histories stay intact.
+Native reactions without foreign relationship-state losses read direct native
+losses and registered return overrides, including an earned return added after
+a snapshot was built. Other reactions use the equivalent inverse exclusion.
+Optional ending cameos
+append guarded paragraphs; original paragraph indices are retained. The mixed
+Irabeth negotiation appends one neutral page and four answers after the original
+indices; the original live page and answer targets remain. Four remembered
+spousal remarks receive authored past attribution, and Irabeth's road refusal
+refers to Anevia's departure without asserting a present meeting. Existing
+memory/dream forms assert a remembered/imagined actor, not current life.
+No commitment, attraction, new payment, new return or native actor substitution
+is introduced. Pair seats inspect only the named woman's losses.
+Incoming paths may express the same guard through different native/derived
+conditions. L1 proves every edge, applies its flag changes, and inherits an
+earlier invariant only when the edge cannot change its inputs; a shared
+spelling is not required. Unproved cycles remain failures. Native flags are
+read directly on an edge already proving every registered earned override,
+so a previously computed absence cannot veto a newly recorded return.
+Only a genuinely neutral target is eligible as a no-guest fallback. Shared
+Swarm/true-Lich body exclusions remain at ordinary scene entry when neither
+owner nor guest has an earned override; changed epilogues remain reachable.
+
+An empty relationship loss list is not proof that a canon-dead body exists.
+Hepzamirah, Delamere and Terendelev read their existing
+`<woman>.trickster.returned` and `trickster.ever` producers; no return is
+produced here. Terendelev's existing parent-lich binding veto and Nidalynn's
+`left_with_it` veto are read from their registered presence contracts.
+Shyka's paid reading repeats an earlier morning in the Commander's voice;
+only that quotation, before the narrated loss of the memory, is historical.
+Later live cameos remain guarded. The page's existing payment choices and
+foresight/echo producers are unchanged.
+
+The existing `irabeth.trickster.second_ask/price` conditional courier offer and
+`second_ask/morning`, `nevi_reply/morning` letter clauses read distant life,
+including death exclusions. The pen/discharge price, decline prerequisites and
+three-day reply remain in the original route. These clauses do not make Anevia
+return to Drezen. Other staged/meeting clauses still exclude unreturned
+`anevia_gone`. Removing the existing correspondence prerequisites removes this
+narrow exception; no generic remote/departed exemption is allowed.
+
+The Long Con's original Irabeth host contract separately declares
+`irabeth_gone -> irabeth.trickster.returned` in ForbidOverrides. Its native
+contact is the registered `irabeth.presence` unit; its summons uses the same
+existing paid adapter. L1 preserves this explicit contract only for Long Con
+Irabeth native-contact or letter pages carrying that original override. Gone
+without the registered return remains excluded. Other routes, unrelated
+contacts and later departure vetoes do not inherit it. Matching existing
+contacts prove staging through this host contract, without requiring an
+unrelated generic availability key or a visitor clone.
+
+Native Cue_0310 (`ccd140dbf2603734aa323261c2445bec`, enGB
+`cc716238-3702-4913-977d-6189665672b7`) establishes that the living Tirabades
+leave Mendev together after Irabeth's humiliation. The existing paid wardrobe
+reaches Anevia's south-road lodging; its `beth_left` page and the subsequent
+native south-road clauses read that earned access plus Irabeth's current life.
+They do not return Irabeth to Drezen or reopen her closed romance. Her death
+still needs her registered return. If a subsequent loss prevents the living
+wardrobe cameo, appended answers lead to its existing reproach/killer pages;
+the Commander’s deliberate killing remains acknowledged. Removing the existing
+paid/returned-host prerequisites removes this native-contact exception.
+
+An authored participant key is not proof by its spelling: L1 independently
+proves the route's current losses as well as the key. The Tirabades' independent
+romance refusals do not remove a living native wife or officer from ordinary
+cross-route dialogue. Native companions may also remain when their native
+losses are all clear; their custom returns still require the romance route
+open, so a hard post-return departure is retained. Other routes retain their existing closure guard,
+including deliberate departures. Own romance and household closure gates
+remain unchanged. Native bound
+speakers and verified native audiences do not need a recreated visitor
+clone. A fixed native inline audience retains its original Requires/Forbids
+lists and conjoins the identical live predicate as a singleton
+RequiresAnyGroups entry; existing alternatives cannot bypass it.
+The Minagho citadel and Nocticula Summit witnesses are cited beside
+`NATIVE_AUDIENCES` and verified against `/wrath/blueprints.zip` and `enGB.json`.
+MeetCamelia's Cue_0007 likewise stages Seelah in the caves before its Prologue
+list. Chapter 0 has no ChapterFlag or paid return opportunity; its native
+companion audience reads current loss exclusions directly, keeping the
+path-neutral introduction available without a Chapters 1–6/Trickster reader.
+
+E-Q7-29 is owned by l11 (`eng7-l11-task.md` and its implementation report);
+this lane does not duplicate its attachment mechanism or timing decision.
+
+The retained L4 row for
+`anevia.trickster.epilogue.nailed_wardrobe_lover/end/paragraph[18]` is the
+appended visit half of the existing fetched-return receipt. Splitting that
+receipt exposes its existing missing owner-RouteOpen condition in two slots;
+the new Irabeth guard narrows the visit and grants no new outcome. That
+owner-route follow-up remains outside this lane.
 """
 
 
@@ -162,6 +293,18 @@ def markdown_report(result):
               "The exact remaining route-prose referrals appear in the eng7-l12 table above.", "",
               "## eng7-integ4 baseline review", "",
               "All 76 changed L1 fingerprints match the prior integrated baseline by check, route, scene, node, slot, subject, excerpt, missing condition and required predicate. Their guard contexts changed when l13 added live eligibility; no prose, location or participant contract changed. The combined baseline retains 1,681 existing L1 referrals (previously 1,685). Added live outcome proof resolves four prior rows: anevia.ending_changed_power/end/paragraph[8] (Irabeth), irabeth.ending_ascent/end/text (Iomedae), and irabeth.ending_changed/end/paragraph[6] and paragraph[14] (Anevia). No new finding class or prose was waived. L2/L3/L4/L5/L6 are zero."]
+    # eng7-l14: every retained fingerprint gets a concrete owner/location and
+    # evidence. Baseline debt in other checks stays visible rather than being
+    # mistaken for a completed L1 repair or silently removed.
+    lines += ["", "## Remaining findings: route follow-ups", "",
+              "Every row below is retained debt outside the L1 presence lane. The missing condition and excerpt are the evidence for the route owner; no row grants permission to bypass that condition.", "",
+              "| Check | Route | Scene / node / slot | Subject | Required follow-up and evidence |",
+              "| --- | --- | --- | --- | --- |"]
+    for f in result["findings"]:
+        clean = lambda value: str(value).replace("|", "\\|").replace("\n", " ")
+        lines.append("| %s | %s | `%s/%s/%s` | %s | %s — %s |" % tuple(clean(v) for v in (
+            f["check"], f["route"], f["scene"], f["node"], f["slot"], f["subject"],
+            f["missing_condition"], f["excerpt"])))
     return "\n".join(lines) + "\n"
 
 

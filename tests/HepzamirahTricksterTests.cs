@@ -24,7 +24,9 @@ internal static class HepzamirahTricksterTests
 
     private static Snapshot WorldIn(Story story, string area, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Area = area, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         state.AvailableContacts.Add(Body);

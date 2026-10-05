@@ -14,6 +14,22 @@ NATIVE_TABLES = ("Etudes", "SeenCues", "SelectedAnswers", "StartedDialogs",
                  "CompletedQuests", "CompletedEtudes", "StartedQuests", "MainCharacterFacts",
                  "QuestObjectives", "InventoryItems", "PartyItems", "UnlockableFlags")
 
+# eng8-q8d: validate cumulative executed ages, never independently aged flags.
+def delivered_timeline(history):
+    steps = history["steps"]
+    hours = [step["hour"] for step in steps]
+    if any(type(hour) is not int or hour < 0 for hour in hours) or hours != sorted(hours):
+        return "nonchronological delivered history"
+    if history.get("maximum_hours") is None:
+        return None
+    origin = history["origin"]
+    witnesses = [step["hour"] for step in steps if origin in step.get("set", [])]
+    if not witnesses:
+        return "missing cumulative origin " + origin
+    return check_age(dict(origins=[origin], maximum_hours=history["maximum_hours"]),
+                     {origin}, {origin: witnesses[0]}, hours[-1])
+# end eng8-q8d
+
 
 def arrival_hour(scene, flags, times, hour=0):
     """Rules.Available's delay clock: all held OR-group members count.
@@ -71,19 +87,51 @@ def replay_schedule(story, schedule):
                  resources=dict(schedule.get("resources", {})))
     scenes = {s["Id"]: s for s in story["Scenes"]}
     trace = []
+    # eng-final: each observation rebuilds live Derived readers. They are not
+    # latches: a paid return must retire yesterday's unavailability, and a new
+    # loss must retire yesterday's eligibility. Settle negative dependencies
+    # before their consumers, as Rules.DerivedOrder does.
+    derived = story.get("Derived", {})
+    order, visited = [], set()
+    def visit(key):
+        if key in visited:
+            return
+        visited.add(key)
+        inputs = [f for group in derived[key] for f in group]
+        inputs += story.get("DerivedForbids", {}).get(key, [])
+        for route in story.get("DerivedOpenRoutes", {}).get(key, []):
+            rel = story["Relationships"][route]
+            inputs += [rel["ClosedFlag"], *rel.get("UnavailableFlags", []),
+                       *rel.get("UnavailableOverrides", {}).values()]
+        for flag in inputs:
+            if flag in derived:
+                visit(flag)
+        order.append(key)
+    for key in derived:
+        visit(key)
     def complete(at):
-        for _ in range(len(story.get("Derived", {})) + len(story.get("Latches", {})) + 1):
+        old_times = {key: at["times"][key] for key in derived if key in at["times"]}
+        at["flags"].difference_update(derived)
+        for key in derived:
+            at["times"].pop(key, None)
+        for _ in range(len(derived) + len(story.get("Latches", {})) + 1):
             changed = False
             for table in ("Latches", "Derived"):
-                for flag, inputs in story.get(table, {}).items():
+                entries = story.get(table, {}).items() if table == "Latches" else ((key, derived[key]) for key in order)
+                for flag, inputs in entries:
                     groups = [[f] for f in inputs] if table == "Latches" else inputs
                     if flag not in at["flags"] and any(set(g) <= at["flags"] for g in groups):
                         if set(story.get("DerivedForbids", {}).get(flag, [])) & at["flags"]:
                             continue
                         guards = story.get("DerivedOpenRoutes", {}).get(flag, [])
-                        if any(story["Relationships"][r]["ClosedFlag"] in at["flags"] for r in guards):
+                        if any(story["Relationships"][r]["ClosedFlag"] in at["flags"] or any(
+                                loss in at["flags"] and rel.get("UnavailableOverrides", {}).get(loss) not in at["flags"]
+                                for loss in rel.get("UnavailableFlags", []))
+                               for r in guards for rel in [story["Relationships"][r]]):
                             continue
-                        at["flags"].add(flag); at["times"][flag] = at["hour"]; changed = True
+                        at["flags"].add(flag)
+                        at["times"][flag] = old_times.get(flag, at["hour"])
+                        changed = True
             if not changed:
                 break
     complete(state)

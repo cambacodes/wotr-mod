@@ -18,7 +18,9 @@ internal static class AneviaTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            // eng-final / E-Q8-10: fund these positive histories; the walker enforces every debit.
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         state.AvailableContacts.Add(Contact);
         state.AvailableContacts.Add(IrabethContact);
@@ -65,7 +67,11 @@ internal static class AneviaTricksterTests
         // Polish b6b: Gesmerha and Hepzamirah stand at the smith's sides (2.5); Anevia keeps her own spot out on the road.
         check(presence!.At!.Side == "front" && presence.At.Distance >= 6f && presence.At.Distance <= 10f
               && story.Presences.Where(kv => kv.Key != "anevia.presence" && kv.Value.At?.NearUnit == presence.At.NearUnit)
-                   .All(kv => kv.Value.At!.Side != "front" && kv.Value.At.Distance <= 3f),
+                   .All(kv => {
+                       var a = Rules.AnchorOffset(presence.At, 0);
+                       var b = Rules.AnchorOffset(kv.Value.At!, 0);
+                       return Math.Sqrt(Math.Pow(a.Dx - b.Dx, 2) + Math.Pow(a.Dz - b.Dz, 2)) >= 4;
+                   }),
             "Anevia is crowded back into the smith's corner.");
         var tirabade = story.Relationships["tirabade"];
         check(tirabade.UnavailableOverrides["irabeth_dead"] == IrabethReturned && tirabade.UnavailableOverrides["anevia_gone"] == Returned,

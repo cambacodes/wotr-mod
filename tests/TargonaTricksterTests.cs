@@ -11,7 +11,7 @@ internal static class TargonaTricksterTests
 {
     private const string Drezen = "2570015799edf594daf2f076f2f975d8";
     private const string Unit = "81297c673b63b60448ef88a10db6bc78";
-    private const string Quartermaster = "a380d926e92f70e429681eb9654478f9";
+    private const string Quartermaster = "15f754455d1d87c42a4e14df456d5415"; // F9 ordinary capital smith
     private const string LabList = "2a75fbc8e86fd514e82117c99fc9e528";
     private const string P = "targona.trickster.";
     private const string Committed = "targona.committed";
@@ -22,7 +22,9 @@ internal static class TargonaTricksterTests
     // contact false: the runtime's view before her copy has spawned (Sol quality pass: the contact is produced by the presence).
     private static Snapshot World(Story story, int chapter, bool contact, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000 };
+        // eng-final E-Q8-10: fund the positive fixture; the walker enforces every debit.
+        var state = new Snapshot { Chapter = chapter, Area = Drezen, Hour = 5000,
+            CrusadeResources = new Dictionary<string, int> { ["Finances"] = 10000, ["Favors"] = 10000, ["Materials"] = 10000 } };
         state.Flags.UnionWith(flags);
         if (Rules.ChapterFlag(chapter) is string chapterFlag) state.Flags.Add(chapterFlag);
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");

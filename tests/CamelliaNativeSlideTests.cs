@@ -58,12 +58,14 @@ internal static class CamelliaNativeSlideTests
         var worlds = new (string What, string[] Flags, string Kind)[]
         {
             ("never returned", new[] { "trickster.ever" }, "native"),
-            ("committed before a second death, not returned", new[] { "trickster.ever", "camellia.committed" }, "native"),
+            ("living committed", new[] { "trickster.ever", "camellia.committed" }, "kept"),
+            ("actual second death without return", new[] { "trickster.ever", "camellia.committed", "camellia.dead" }, "native"),
+            ("living terms", new[] { "trickster.ever", P + "terms_named" }, "terms"),
             ("returned only", new[] { "trickster.ever", P + "returned" }, "native"),
             ("returned, declined", new[] { "trickster.ever", P + "returned", P + "declined" }, "native"),
             ("kept", new[] { "trickster.ever", P + "returned", "camellia.committed" }, "kept"),
             ("kept, killed (kicked_out is the kill)", new[] { "trickster.ever", P + "returned", "camellia.committed", "camellia.killed",
-                "camellia.kicked_out", P + "killed_held" }, "kept"),
+                "camellia.kicked_out", P + "killed_held", P + "cost.knows_you_tried" }, "kept"),
             ("kept, then dismissed", new[] { "trickster.ever", P + "returned", "camellia.committed", "camellia.kicked_out" }, "native"),
             ("kept, then closed", new[] { "trickster.ever", P + "returned", "camellia.committed", "camellia.closed" }, "native"),
             ("terms named", new[] { "trickster.ever", P + "returned", P + "terms_named" }, "terms"),
@@ -82,8 +84,10 @@ internal static class CamelliaNativeSlideTests
                                 if (back && !sacrifice) continue;
                                 var state = new Snapshot { Chapter = 6 };
                                 state.Flags.UnionWith(world.Flags);
+                                state.Flags.Add("trickster");
                                 if (sacrifice) state.Flags.Add("sacrifice");
                                 if (back) state.Flags.Add("trickster.commander_back");
+                                Rules.Complete(story, state);
                                 string kind = world.Kind != "native" && sacrifice && !back ? "native" : world.Kind;
                                 string what = $"{world.What}, sacrifice={sacrifice}, back={back}, TE={te}, Q3={q3}, rom={romDefault}/{romTrue}";
                                 var shown = new List<string>();
@@ -93,7 +97,7 @@ internal static class CamelliaNativeSlideTests
                                     if (story.NativeEpilogueEdits.TryGetValue(cue, out var edit))
                                     {
                                         var variants = Rules.EditVariants(edit);
-                                        int i = Rules.SelectNativeEditVariant(variants, state);
+                                        int i = Rules.SelectNativeEditVariant(story, variants, Rules.EditScenes(story, variants), state);
                                         shown.Add(i < 0 ? cue : variants[i].Replacement);
                                     }
                                     else if (!Rules.WhenHolds(story.NativeEpilogueSuppressions[cue].When, state)) shown.Add(cue);

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "lane": "eng8-q8f",
+  "scope": "terendelev",
+  "return": "terendelev.trickster.returned",
+  "unit": "9e8401e7703907e4d94189d5992dd13e",
+  "area": "2570015799edf594daf2f076f2f975d8",
+  "hubs": ["terendelev.presence", "terendelev.presence.awning"],
+  "entries": [
+    {"scene": "terendelev.trickster.react.galfrey.letter", "findings": ["terendelev:043"]},
+    {"scene": "terendelev.trickster.letter.watch_report", "findings": ["terendelev:044"]},
+    {"scene": "terendelev.trickster.letter.second_report", "findings": ["terendelev:045"]},
+    {"scene": "terendelev.trickster.watch.third_bell", "findings": ["terendelev:046", "terendelev:105"]},
+    {"scene": "terendelev.trickster.watch.at_the_gate", "findings": ["terendelev:047"]},
+    {"scene": "terendelev.trickster.watch.road", "findings": ["terendelev:048"]}
+  ]
+}

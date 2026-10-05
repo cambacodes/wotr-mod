@@ -887,6 +887,36 @@ SCENES.append(scene(P + "watch.road", "The road out of Iz", "Terendelev", 5, "",
     Remote=True, Kind="visit", ManualOnly=True))
 
 
+# eng8-q8f: authored handovers and invitations through the existing two contacts.
+_GAMEPLAY_ENTRIES = {
+    "letter.watch_report": '"Let me read your watch report."',
+    "letter.second_report": '"You have another report for me?"',
+    "watch.third_bell": '"Come by my room after your watch."',
+    "watch.at_the_gate": '"Walk with me to the citadel."',
+    "watch.road": '"Tell me about the ride back from Iz."',
+}
+for _key, _entry in _GAMEPLAY_ENTRIES.items():
+    _host = next(s for s in SCENES if s["Id"] == P + _key)
+    _host.update(Entry=_entry, ContactUnit=HUMAN, InteractionHub=HUB,
+                 Areas=[DREZEN], Remote=False, ManualOnly=False)
+    if _key == "watch.road":
+        # The existing completed-Iz reader witnesses the trip; the late return stays excluded.
+        _host["Requires"] = list(dict.fromkeys([*_host["Requires"], "iz.done"]))
+        _host["Nodes"][0]["Text"] = ('{n}Beside the trader\'s stall, Terendelev shakes her head at a passing horse. '
+            'The ride back from Iz is still fresh in her memory.{/n}\n' + _host["Nodes"][0]["Text"])
+    _host.pop("Kind", None)
+    _twin = copy.deepcopy(_host)
+    _twin["Id"] += "_awning"
+    _twin["InteractionHub"] = HUB_FB
+    if _key == "watch.road":
+        _twin["Nodes"][0]["Text"] = _twin["Nodes"][0]["Text"].replace("Beside the trader's stall", "Under the tailor's awning", 1)
+    _twin["Requires"] = list(dict.fromkeys([*_twin["Requires"], HUB_FAILED]))
+    _host["Forbids"] = list(dict.fromkeys([*_host["Forbids"], _twin["Id"]]))
+    _twin["Forbids"] = list(dict.fromkeys([*_twin["Forbids"], _host["Id"]]))
+    SCENES.append(_twin)
+# end eng8-q8f
+
+
 # Both presence hubs use the same sold-memory variants; old answers keep their indices.
 for suffix in ("", "_awning"):
     foresight.gap(REL, P + "watch.proof" + suffix, (("fear", 0),), "try",
@@ -933,3 +963,39 @@ for _suffix in ("", "_awning"):
         '{n}You tell her what the survivors say of the festival preparations. The morning itself is gone; their accounts cannot give it back.{/n} "The bunting," {n}she murmurs.{/n} "I helped put it up. They could never reach the top of the gate."',
         foresight.GONE_SQUARE)
 # end eng7-l09
+# eng8-q8d: her debtor report is handed over on either earned presence hub.
+_eng8_report = next(s for s in SCENES if s['Id'] == P + 'letter.debtor')
+_eng8_report.pop('Kind', None)
+_eng8_report.update(Remote=False, Entry='[Take her report.]', ContactUnit=HUMAN,
+                     InteractionHub=HUB, Areas=[DREZEN])
+_eng8_report['Nodes'][0]['Text'] = ('{n}Terendelev hands you a folded report. Her writing is large, square and very careful.{/n}\n'
+                                     + _eng8_report['Nodes'][0]['Text'].split('\n', 1)[1])
+_eng8_twin = copy.deepcopy(_eng8_report)
+_eng8_twin['Id'] += '_awning'
+_eng8_twin['InteractionHub'] = HUB_FB
+_eng8_twin['Requires'].append(HUB_FAILED)
+_eng8_twin['Forbids'].append(_eng8_report['Id'])
+_eng8_report['Forbids'].extend([_eng8_twin['Id'], HUB_FAILED])
+SCENES.append(_eng8_twin)
+# end eng8-q8d
+# eng8-q8h begin: the documented proof and personal receipts govern both hubs.
+DEBT_FREE = P + "debt_free"
+PERSONAL_BEATS = (WINGS, KENABRES_TOLD, DESKARI_VOW, DESKARI_LET_GO,
+    GALFREY_SPOKEN, INFIRMARY, FLOGGED, LETTER, LISTENED, SAT_UP, FAITH)
+for _scene in SCENES:
+    if _scene["Id"] in (P + "after.first_night", P + "after.first_night_awning"):
+        _sums = next(nd for nd in _scene["Nodes"] if nd["Id"] == "sums")
+        for _choice in _sums["Choices"][:2]:
+            _choice["Set"].append(DEBT_FREE)
+    if _scene["Id"] in (P + "commit", P + "commit_awning", P + "commit.release", P + "commit.release_awning"):
+        _scene["Requires"].append(PROOF)
+        _scene.setdefault("RequiresAnyGroups", []).append(list(PERSONAL_BEATS))
+    if _scene["Id"] in (P + "commit.release", P + "commit.release_awning"):
+        _release = next(nd for nd in _scene["Nodes"] if nd["Id"] == "yes")
+        for _choice in _release["Choices"]:
+            _choice["Set"].append(DEBT_FREE)
+# The late predicate is owned by the earlier registered restitution module.
+from storylines import terendelev_trickster as _q8_terendelev
+_q8_terendelev.DERIVED[P + "late_committed"] = [
+    ["trickster.ever", FIRST_NIGHT, DEBT_FREE, PROOF, beat] for beat in PERSONAL_BEATS]
+# end eng8-q8h
