@@ -1,4 +1,5 @@
 """eng7-l03: mapped inventory omissions/drift fail; unresolved prose stays visible."""
+from tests.story_fixture import fresh_story
 import copy
 import hashlib
 import json
@@ -16,7 +17,7 @@ class NativeInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.payload = expansion.make_expansion()
+        cls.payload = fresh_story()
         cls.expected = json.loads((ROOT / "tools/native_inventory_expectations.json").read_text(encoding="utf-8"))
         cls.backlog = json.loads((ROOT / "tools/engine_backlog.json").read_text(encoding="utf-8"))
 

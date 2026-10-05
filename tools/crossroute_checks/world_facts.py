@@ -75,22 +75,30 @@ def native_evidence(model, guids):
 
 def check(model, blocks, proof):
     out = []
+    # Binding aliases are immutable within this inventory. Resolve each native
+    # fact once, instead of rescanning every reader for every sentence.
+    evidence = {}
+    def target_for(guids):
+        if guids not in evidence:
+            evidence[guids] = native_evidence(model, guids)
+        return evidence[guids]
     for b in blocks:
         if not postwar(b.scene) or b.slot in ("Entry", "ReturnText"):
             continue
         for line in sentences(b.text):
             clean = re.sub(r"\{[^}]*\}", "", line)
             for name, (pattern, guids) in FACTS.items():
-                target = native_evidence(model, guids)
-                if asserted(pattern, clean) and not proof.implies(b.context, target):
-                    out.append(finding("L5", b, "native fact %s established by %s" % (name, ", ".join(guids)), name, line[:240], required=target))
+                if asserted(pattern, clean):
+                    target = target_for(guids)
+                    if not proof.implies(b.context, target):
+                        out.append(finding("L5", b, "native fact %s established by %s" % (name, ", ".join(guids)), name, line[:240], required=target))
             for path, guid in PATH_GUIDS.items():
                 label = r"(?:Gold Dragon|golden dragon|dragon)" if path == "dragon" else path
                 pattern = r"\b(?:you (?:are|remain|remained|became)|Commander (?:is|remains|remained|became))\s+(?:an?\s+|the\s+)?" + label + r"\b"
                 if asserted(pattern, clean):
-                    target = native_evidence(model, (guid,))
+                    target = target_for((guid,))
                     if path == "trickster":
-                        target = OR(target, lit("trickster.now"), native_evidence(model, TRICKSTER_FINALES))
+                        target = OR(target, lit("trickster.now"), target_for(TRICKSTER_FINALES))
                     if not proof.implies(b.context, target):
                         native_name = "Locust" if path == "swarm" else path.title()
                         out.append(finding("L5", b, "current mythic %s: PlayerIs%s %s" % (path, native_name, guid), path, line[:240], required=target))

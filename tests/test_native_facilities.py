@@ -1,4 +1,5 @@
 """Native facilities: fail closed at export, preserve migrations, scope history."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -158,7 +159,7 @@ class ShippedNativeMigrationTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.payload = expansion.make_expansion()
+        cls.payload = fresh_story()
 
     def test_all_existing_native_specs_are_registered_and_unchanged(self):
         from storylines import devarra_native, kiana_native, camellia_native, areelu_afterlogue, wenduag_native, galfrey_queen_slide, arueshalae_rounds

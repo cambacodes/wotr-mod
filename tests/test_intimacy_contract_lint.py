@@ -1,4 +1,5 @@
 import copy
+from tests.story_fixture import fresh_story
 import unittest
 from tools import intimacy_contract_lint as lint
 
@@ -7,7 +8,7 @@ class IntimacyContractTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
 
     def test_every_cut_declaration_and_knife_variant(self):
         result = lint.check(self.story)

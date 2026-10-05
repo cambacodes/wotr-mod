@@ -1,4 +1,5 @@
 """eng7-f6d: dormant mechanical contracts are strict; draft prose stays advisory."""
+from tests.story_fixture import fresh_story
 import unittest
 from tools import draft_contract_lint as lint
 
@@ -11,6 +12,24 @@ class DraftContractTests(unittest.TestCase):
     # eng7-f6d begin: repaired drafts are now a mandatory mechanical gate.
     def test_all_dormant_contracts_are_clean(self):
         self.assertEqual(lint.check(self.inventory), [])
+
+    def test_shared_gate_fixture_does_not_hide_defects_or_other_sources(self):
+        import json, tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        with tempfile.TemporaryDirectory(prefix='rrt-draft-cache-control-') as scratch:
+            path = Path(scratch) / 'drafts.json'
+            broken = {'draft': {'scenes': [{'Id': 'draft', 'Remote': True, 'Nodes': [
+                {'Id': 'start', 'Choices': [{'Next': 'lost'}]}]}]}}
+            path.write_text(json.dumps(dict(root=str(lint.ROOT.resolve()), modules=broken)))
+            with patch.dict(lint.os.environ, RRT_GATE_DRAFT_INVENTORY=str(path)):
+                first = lint.inventory()
+                self.assertTrue(any(r['code'] == 'missing-target' for r in lint.check(first)))
+                first.clear()
+                self.assertTrue(any(r['code'] == 'missing-target' for r in lint.check(lint.inventory())))
+                with patch.object(lint, '_build_inventory', side_effect=RuntimeError('different source must build')):
+                    with self.assertRaisesRegex(RuntimeError, 'different source must build'):
+                        lint.inventory(Path(scratch) / 'different-source')
 
     def test_completion_branches_and_deferred_waits(self):
         scenes = {s["Id"]: s for s in self.inventory["terendelev_continuation"]["scenes"]}
@@ -48,7 +67,7 @@ class DraftContractTests(unittest.TestCase):
     def test_integration_preserves_live_relationship_and_dormancy(self):
         import copy, expansion
         from storylines import terendelev_continuation as draft
-        payload = expansion.make_expansion()
+        payload = fresh_story()
         before = copy.deepcopy(payload["Relationships"]["terendelev"])
         draft.integrate(payload)
         self.assertEqual(payload["Relationships"]["terendelev"], before)

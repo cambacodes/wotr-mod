@@ -1,4 +1,5 @@
 """E-Q7-17: count actual histories by woman, including auxiliary owners."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -85,7 +86,7 @@ class RemoteAllocationTests(unittest.TestCase):
 
     def test_current_mapped_visits_use_physical_delivery_and_stable_hubs(self):
         from expansion import make_expansion
-        story = make_expansion()
+        story = fresh_story()
         scenes = {s["Id"]: s for s in story["Scenes"]}
         for suffix in ["trial", "gate", "stinger", "cairn", "morning", "vellexia", "yaniel", "neathers", "hunt", "gongs"]:
             sid = "wenduag.trickster.court." + suffix

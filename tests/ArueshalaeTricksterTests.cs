@@ -66,7 +66,10 @@ internal static class ArueshalaeTricksterTests
         bool Avail(Scene scene, Snapshot w) => Rules.Available(story, scene, w);
         var own = story.Scenes.Where(s => s.Relationship == "arueshalae" && !s.Reaction && s.Owner == "Arueshalae").ToArray();
         // Plays every available Arueshalae scene forward (in the given area) and reports whether a flag is ever held.
+        using var reachability = new ReachabilityCache();
         bool Reaches(Snapshot start, string flag, int chapter, string area)
+            => reachability.Reaches(start, flag, chapter, () => Explore(Program.Copy(start), chapter, area), area);
+        IEnumerable<Snapshot> Explore(Snapshot start, int chapter, string area)
         {
             var seen = new HashSet<string>();
             var frontier = new List<Snapshot> { start };
@@ -75,19 +78,18 @@ internal static class ArueshalaeTricksterTests
                 var next = new List<Snapshot>();
                 foreach (var from in frontier)
                 {
-                    if (from.Has(flag)) return true;
+                    yield return from;
                     var w = Later(story, from, 100, chapter);
                     w.Area = area;
                     foreach (var scene in own.Where(s => Avail(s, w)))
                         foreach (var r in Program.Walk(scene, w))
                         {
-                            if (r.Has(flag)) return true;
+                            yield return r;
                             if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
                         }
                 }
                 frontier = next.Take(300).ToList();
             }
-            return false;
         }
 
         // --- Shape: relationship, revival, presences (06-ROUTE-REGISTRY placements) --------------------------------

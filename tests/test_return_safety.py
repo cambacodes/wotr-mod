@@ -110,7 +110,8 @@ class ReturnSafetyAllowlistTests(unittest.TestCase):
         return_safety.load_allowlist(return_safety.ALLOWLIST)
 
 
-GAME = Path(os.environ.get("RRT_GAME_DIR") or r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure")
+from tools.game_blueprints import game_dir
+GAME = game_dir()
 
 
 @unittest.skipUnless((GAME / "blueprints.zip").exists(), "blueprints.zip not installed")

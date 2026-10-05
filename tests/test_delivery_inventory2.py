@@ -1,4 +1,5 @@
 """E-Q8-07: coverage and mutation checks for shipped delivery contracts."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -12,8 +13,30 @@ class DeliveryInventory2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         from expansion import make_expansion
-        cls.story = make_expansion()
+        cls.story = fresh_story()
         cls.contracts = json.loads(allocation.DELIVERY_INVENTORY.read_text(encoding="utf-8"))
+
+    def scene_variant(self, scene_id):
+        # These lints only read their input. Isolate the changed record while
+        # retaining the same complete campaign around every mutation.
+        story = dict(self.story, Scenes=list(self.story['Scenes']))
+        index = next(i for i, s in enumerate(story['Scenes']) if s['Id'] == scene_id)
+        changed = copy.deepcopy(story['Scenes'][index])
+        story['Scenes'][index] = changed
+        return story, changed
+
+    def test_scene_variants_cannot_poison_later_mutations(self):
+        physical = next(row['scene'] for row in self.contracts['sites'] if row.get('physical'))
+        changed, scene = self.scene_variant(physical)
+        scene['ContactUnit'] = None
+        self.assertTrue(allocation.delivery_inventory(changed))
+        self.assertEqual(allocation.delivery_inventory(self.story), [])
+        from tools import return_provenance_lint as provenance
+        sid = next(iter(provenance.contracts()['eng8-q8d']['coffin_completion_nodes']))
+        changed, scene = self.scene_variant(sid)
+        scene['Nodes'][0]['Choices'][0]['Set'].append(provenance.contracts()['completed'])
+        self.assertTrue(provenance.check(changed))
+        self.assertEqual(provenance.check(self.story), [])
 
     def test_every_mapped_finding_has_a_positive_delivered_history(self):
         findings = self.contracts["findings"]
@@ -40,8 +63,7 @@ class DeliveryInventory2Tests(unittest.TestCase):
         contracts = copy.deepcopy(self.contracts)
         contracts["histories"].append(contracts["retired_histories"].pop(0))
         self.assertTrue(allocation.delivery_inventory(self.story, contracts))
-        story = copy.deepcopy(self.story)
-        scene = next(s for s in story["Scenes"] if s["Id"] == "wenduag.trickster.exile.champion")
+        story, scene = self.scene_variant("wenduag.trickster.exile.champion")
         scene["Forbids"].remove("trickster.ever")
         self.assertTrue(allocation.delivery_inventory(story))
 
@@ -50,15 +72,13 @@ class DeliveryInventory2Tests(unittest.TestCase):
             if not row.get("physical"):
                 continue
             for mutation in ("Remote", "ManualOnly", "ContactUnit"):
-                story = copy.deepcopy(self.story)
-                scene = next(s for s in story["Scenes"] if s["Id"] == row["scene"])
+                story, scene = self.scene_variant(row["scene"])
                 scene[mutation] = None if mutation == "ContactUnit" else True
                 self.assertTrue(allocation.delivery_inventory(story), (row["scene"], mutation))
 
     def test_unallocated_reactor_and_production_expected_failure_rejected(self):
         for sid in self.contracts["retired_reactors"]:
-            story = copy.deepcopy(self.story)
-            scene = next(s for s in story["Scenes"] if s["Id"] == sid)
+            story, scene = self.scene_variant(sid)
             scene["Forbids"].remove("trickster.ever")
             self.assertTrue(allocation.delivery_inventory(story), sid)
         contracts = copy.deepcopy(self.contracts)
@@ -72,12 +92,10 @@ class DeliveryInventory2Tests(unittest.TestCase):
         from tools import return_provenance_lint as provenance
         self.assertEqual(provenance.check(self.story), [])
         for sid in provenance.contracts()['eng8-q8d']['coffin_completion_nodes']:
-            story = copy.deepcopy(self.story)
-            scene = next(s for s in story['Scenes'] if s['Id'] == sid)
+            story, scene = self.scene_variant(sid)
             scene['Requires'].remove('camellia.killed')
             self.assertTrue(provenance.check(story), sid)
-            story = copy.deepcopy(self.story)
-            scene = next(s for s in story['Scenes'] if s['Id'] == sid)
+            story, scene = self.scene_variant(sid)
             scene['Nodes'][0]['Choices'][0]['Set'].append(provenance.contracts()['completed'])
             self.assertTrue(provenance.check(story), sid)
 

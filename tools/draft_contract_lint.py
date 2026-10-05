@@ -35,6 +35,17 @@ pathlib.Path(sys.argv[1]).write_text(json.dumps(out), encoding="utf-8")
 
 
 def inventory(root=ROOT):
+    # A gate constructs this once from the current sources before starting
+    # read-only checks. JSON decoding gives every caller a private fixture.
+    fixture = os.environ.get('RRT_GATE_DRAFT_INVENTORY')
+    if fixture:
+        data = json.loads(Path(fixture).read_text(encoding='utf-8'))
+        if data['root'] == str(Path(root).resolve()):
+            return data['modules']
+    return _build_inventory(root)
+
+
+def _build_inventory(root):
     # Imports (including append-to-SCENES modules) happen in a fresh process in
     # a disposable copy. No sys.modules or source-module state leaks to callers.
     with tempfile.TemporaryDirectory(prefix="rrt-eng7-l09-drafts-") as folder:

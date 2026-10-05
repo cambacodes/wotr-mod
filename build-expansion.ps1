@@ -3,6 +3,8 @@ param(
     [string]$Python = 'python'
 )
 $ErrorActionPreference = 'Stop'
+$previousHashSeed = $env:PYTHONHASHSEED
+$previousGameDir = $env:RRT_GAME_DIR
 $previousPython = $env:RRT_PYTHON
 $previousBindings = $env:RRT_PARENT_BINDINGS
 $previousExpandedEpilogue = $env:RRT_TEST_EXPANDED_EPILOGUE
@@ -12,6 +14,8 @@ try {
     $pythonPath = (Get-Command $Python -ErrorAction Stop).Source
     $dotnetPath = Join-Path $env:LOCALAPPDATA 'RanRomanceTools/dotnet/dotnet.exe'
     if (!(Test-Path -LiteralPath $dotnetPath)) { $dotnetPath = (Get-Command dotnet -ErrorAction Stop).Source }
+    $env:PYTHONHASHSEED = '0'
+    $env:RRT_GAME_DIR = $GameDir
     $env:RRT_PYTHON = $pythonPath
     $env:RRT_PARENT_BINDINGS = (@(
         'reference/canon-review/expansion-parent-bindings.json'
@@ -31,37 +35,20 @@ try {
     # Static gate (GLOBAL-15): structure, dead gates, TypeIds, native bindings, released-save references.
     & $pythonPath tools/rrt_verify.py --strict --quiet --story development/Story.json --game $GameDir
     if ($LASTEXITCODE) { throw 'Static verification failed (tools/rrt_verify_report.txt)' }
-    # rrt_verify sections F2 (tools/return_safety.py: the Main.cs native return contract) and E2 (tools/gate_lint.py): fixtures
-    & $pythonPath -m unittest tests.test_return_safety tests.test_gate_lint
-    if ($LASTEXITCODE) { throw 'Return safety or gate lint tests failed' }
-    # E3 (tools/etude_lifecycle.py, 18-ETUDE-BINDING-AUDIT): a Playing-only etude binding read outside its window fails the gate.
-    & $pythonPath -m unittest tests.test_etude_lifecycle
-    if ($LASTEXITCODE) { throw 'Etude lifecycle tests failed' }
-    # Pacing lint (handoff 13 section 6): REVIEW and WARN lines are advisory; a HARD violation or a bad availability map fails.
-    & $pythonPath -m unittest tests.test_pacing_lint
-    if ($LASTEXITCODE) { throw 'Pacing lint tests failed' }
-    # E-new 0: chapter 0 in rrt_verify, the simulator and the matrix tests; harness probes never ship.
-    & $pythonPath -m unittest tests.test_chapter_zero
-    if ($LASTEXITCODE) { throw 'Chapter 0 (Prologue) tests failed' }
-    # Doc 16 section 8c.6: the Seelah x Wenduag prerequisite sheet lints clean, and its lint rejects the ruled-out defects.
-    & $pythonPath -m unittest tests.test_household_pair_seelah_wenduag
-    if ($LASTEXITCODE) { throw 'Seelah x Wenduag prerequisite sheet tests failed' }
+    # FULL preflight: every Python test, including save guards, L1-L6 and the ideal run.
+    & $pythonPath -m unittest discover -s tests -p 'test_*.py' -q
+    if ($LASTEXITCODE) { throw 'Full Python test gate failed' }
+    # Lint policies retain their existing hard/advisory distinction.
     & $pythonPath tools/pacing_lint.py --story development/Story.json --availability tools/pacing-availability.json
     if ($LASTEXITCODE) { throw 'Pacing lint failed: a hard violation, or an invalid tools/pacing-availability.json' }
     # Harem schedule lint (doc 16 section 8c.2): classification, protected schedule, packet rules walks (data only).
-    & $pythonPath -m unittest tests.test_harem_schedule
-    if ($LASTEXITCODE) { throw 'Harem schedule lint tests failed' }
     & $pythonPath tools/harem_schedule_lint.py --story development/Story.json
     if ($LASTEXITCODE) { throw 'Harem schedule lint failed (tools/harem-schedule.json)' }
     # Harem smoothing metadata + form audit (doc 16 section 8c.3; data only). The 08 section 5 form cap is enforced (rulings D1/D2, W0b).
-    & $pythonPath -m unittest tests.test_harem_smoothing
-    if ($LASTEXITCODE) { throw 'Harem smoothing lint tests failed' }
     & $pythonPath tools/harem_smoothing_lint.py --story development/Story.json --strict-forms
     if ($LASTEXITCODE) { throw 'Harem smoothing lint failed (tools/harem-smoothing.json)' }
     # Earned presence (TRICKSTER-RUBRIC Binding context (3) and (4)): no living postwar page beside an unreturned sacrifice,
     # and every canon change (return device, native slide edit, native gate, revival) only on the Trickster path.
-    & $pythonPath -m unittest tests.test_earned_presence
-    if ($LASTEXITCODE) { throw 'Earned presence lint tests failed' }
     & $pythonPath tools/earned_presence_lint.py --story development/Story.json
     if ($LASTEXITCODE) { throw 'Earned presence lint failed (storylines/earned_presence.py, tools/earned_presence_lint.py)' }
     & $dotnetPath build narrator/Narrator.csproj -c Release --nologo -v quiet
@@ -162,6 +149,8 @@ try {
     Write-Output "Development package built: $output"
     Write-Output "Scenes: $($story.Scenes.Count). Missing portrait keys: $($missingPortraits.Count). No installed files changed."
 } finally {
+    $env:PYTHONHASHSEED = $previousHashSeed
+    $env:RRT_GAME_DIR = $previousGameDir
     $env:RRT_PYTHON = $previousPython
     $env:RRT_PARENT_BINDINGS = $previousBindings
     $env:RRT_TEST_EXPANDED_EPILOGUE = $previousExpandedEpilogue

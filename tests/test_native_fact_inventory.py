@@ -1,4 +1,5 @@
 """E-Q7-10 real archive evidence, export contract and mutation acceptance."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -13,7 +14,7 @@ from tools.native_fact_inventory import EXPECTATIONS, verify_inventory
 class NativeFactInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.payload = expansion.make_expansion()
+        cls.payload = fresh_story()
         cls.spec = json.loads(EXPECTATIONS.read_text(encoding="utf-8"))
 
     def test_each_mapped_finding_has_current_evidence(self):

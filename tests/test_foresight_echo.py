@@ -1,6 +1,7 @@
 """12-TRICKSTER-FORESIGHT §2.4a / §2.9: the echo API. Only allocated echoes export; the budget (8 mod-wide, 1 per route,
 2 per chapter) and the registry axes (sense + misstep unique) are enforced; an exported echo is appended last, gated on the
 page, costs something, and continues with the host node's own choices. Run: python -m unittest tests.test_foresight_echo"""
+from tests.story_fixture import fresh_story
 from pathlib import Path
 import copy
 import json
@@ -47,7 +48,7 @@ class EchoApiTests(unittest.TestCase):
         self.assertEqual(hosts, {**PROPOSED, "wenduag": "wenduag.trickster.echo.abyss.prepare"})
         self.assertTrue(set(PROPOSED).isdisjoint(foresight.ALLOCATED))
         self.assertEqual([e["rel"] for e in foresight.active_echoes()], ["wenduag"])
-        story = expansion.make_expansion()
+        story = fresh_story()
         self.assertFalse(any(nd["Id"].startswith("echo.") for s in story["Scenes"] for nd in s["Nodes"]))
 
     def test_allocated_echo_is_appended_gated_and_neutral(self):
@@ -145,10 +146,17 @@ class EchoApiTests(unittest.TestCase):
 
 class ForesightSurfaceTests(unittest.TestCase):
     def test_registered_consumer_contract_matches_export(self):
-        story = expansion.make_expansion()
+        story = fresh_story()
         consumers = {s["Id"]: foresight.PAGE_TAKEN for s in story["Scenes"] if foresight.PAGE_TAKEN in s["Requires"]}
-        self.assertEqual(consumers, foresight.CONSUMERS)
-        self.assertEqual(story["ForesightConsumers"], foresight.CONSUMERS)
+        # Authorized consumers: the four played Wenduag echo pages and the
+        # household table in each supported chapter. This is an independent
+        # contract, not the generator's mutable registration table.
+        expected = {key: "foresight.page_taken" for key in (
+            "wenduag.trickster.echo.abyss.prepare", "wenduag.trickster.echo.abyss.pickup",
+            "wenduag.trickster.echo.abyss.return", "wenduag.trickster.echo.abyss.trust",
+            "household.table.offered", "household.table.offered_c5")}
+        self.assertEqual(consumers, expected)
+        self.assertEqual(story["ForesightConsumers"], expected)
         self.assertEqual(story["Derived"]["household.stance_eligible"], [[foresight.PAGE_TAKEN, "trickster.now"]])
         for key in (foresight.PAGE_TAKEN, foresight.GATE_BELIEVED):
             self.assertTrue(all("trickster.now" in group for group in story["Derived"][key]))
@@ -167,7 +175,7 @@ class ForesightSurfaceTests(unittest.TestCase):
 
     def test_existing_pilot_keeps_choices_and_misstep_price(self):
         from storylines import wenduag_echo
-        story = expansion.make_expansion()
+        story = fresh_story()
         slot, = foresight.active_echoes()
         self.assertEqual((slot["sense"], slot["wrong"], slot["misstep"], slot["cost"]),
                          ("sight + sound", "white stair, water", "paid runner searches the wrong place", ("Finances", -50)))
@@ -182,7 +190,7 @@ class ForesightSurfaceTests(unittest.TestCase):
                                  {k: v for k, v in new.items() if k != "Requires"})
 
     def test_one_fire_watch_on_both_chapter_lists(self):
-        story = expansion.make_expansion()
+        story = fresh_story()
         setters = [s for s in story["Scenes"] if any(foresight.GATE_WATCH in ch["Set"]
                    for nd in s["Nodes"] for ch in nd["Choices"])]
         self.assertEqual([s["Id"] for s in setters], [foresight.WATCH_SCENE])
@@ -204,7 +212,7 @@ class ForesightSurfaceTests(unittest.TestCase):
 
 
     def test_watch_memories_follow_the_sold_memory_on_both_hubs(self):
-        story = expansion.make_expansion()
+        story = fresh_story()
         scenes = {s["Id"]: s for s in story["Scenes"]}
         for suffix in ("", "_awning"):
             for scene_id, via, index, target in (
@@ -241,8 +249,8 @@ class ForesightSurfaceTests(unittest.TestCase):
                 self.assertEqual(nodes["gap." + target]["Choices"], nodes[target]["Choices"])
 
 
-GAME = Path(os.environ.get("RRT_GAME_DIR") or
-            r"C:\Program Files (x86)\Steam\steamapps\common\Pathfinder Second Adventure")
+from tools.game_blueprints import game_dir
+GAME = game_dir()
 
 
 @unittest.skipUnless((GAME / "blueprints.zip").exists(), "blueprints.zip not installed")
@@ -270,7 +278,7 @@ class ForesightCanonTests(unittest.TestCase):
         for gender in ("son", "daughter"):
             self.assertIn("my " + gender, native.replace("{mf|son|daughter}", gender))
             self.assertIn("my " + gender + "'s jar", reaction.replace("{mf|son|daughter}", gender))
-        story = expansion.make_expansion()
+        story = fresh_story()
         text = "\n".join(n["Text"] for s in story["Scenes"] for n in s["Nodes"])
         self.assertNotIn("my daughter's jar", text)
         self.assertNotIn("Areelu's daughter", text)

@@ -94,7 +94,12 @@ internal static class NenioTricksterTests
             return hit ?? w;
         }
         var own = story.Scenes.Where(s => s.Relationship == "nenio" && !s.Reaction && !s.Owner.EndsWith("Epilogue", StringComparison.Ordinal)).ToArray();
+        using var reachability = new ReachabilityCache();
         bool Reaches(Snapshot start, string flag, int chapter = 5, Func<Snapshot, bool>? keep = null)
+            => keep == null
+                ? reachability.Reaches(start, flag, chapter, () => Explore(Program.Copy(start), chapter, null))
+                : Explore(Program.Copy(start), chapter, keep).Any(s => s.Has(flag));
+        IEnumerable<Snapshot> Explore(Snapshot start, int chapter, Func<Snapshot, bool>? keep)
         {
             var seen = new HashSet<string>();
             var frontier = new List<Snapshot> { start };
@@ -103,19 +108,18 @@ internal static class NenioTricksterTests
                 var next = new List<Snapshot>();
                 foreach (var from in frontier)
                 {
-                    if (from.Has(flag)) return true;
+                    yield return from;
                     var w = Later(story, from, 160, chapter);
                     foreach (var scene in own.Where(s => Avail(s, w)))
                         foreach (var r in Program.Walk(scene, w))
                         {
-                            if (r.Has(flag)) return true;
+                            yield return r;
                             if (keep != null && !keep(r)) continue;
                             if (seen.Add(string.Join(",", r.Flags.OrderBy(f => f)))) next.Add(r);
                         }
                 }
                 frontier = next.Take(300).ToList();
             }
-            return false;
         }
 
         var rel = story.Relationships["nenio"];

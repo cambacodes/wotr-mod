@@ -1,4 +1,5 @@
 """eng7-l04: serialized/native fixtures and negative adapter/target mutations."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -15,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class NativeWorldInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = make_expansion()
+        cls.story = fresh_story()
         cls.found = registry.finalize(cls.story)
 
     def test_every_mapped_site_is_registered_with_native_evidence(self):

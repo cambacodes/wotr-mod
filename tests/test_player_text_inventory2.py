@@ -1,4 +1,5 @@
 """eng8-q8c / E-Q8-04: mapped age labels, speech boundaries and exact controls."""
+from tests.story_fixture import fresh_story
 import copy
 import json
 from pathlib import Path
@@ -17,7 +18,7 @@ class PlayerTextInventory2Tests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         import expansion
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
         cls.surfaces = {(s, n): t for s, n, t, _, _ in player.surfaces(cls.story)}
 
     def test_all_four_mapped_age_labels_are_exact_visible_diagnostics(self):

@@ -176,7 +176,7 @@ def physical_guard(model, block, woman, route, pattern=None):
     return OR(*alternatives)
 
 
-def guarded_on_paths(model, items, proof, block, target):
+def guarded_on_paths(model, items, proof, block, target, scene_contexts=None):
     """eng7-l14: different valid incoming guards need not share a spelling.
 
     Check every edge, including its Set effects. Inherit an earlier invariant
@@ -188,7 +188,8 @@ def guarded_on_paths(model, items, proof, block, target):
     if block.slot.startswith("@"):
         return False
     sid = block.scene["Id"]
-    contexts = {b.node["Id"]: b.context for b in items if b.scene["Id"] == sid and b.slot == "text"}
+    contexts = (scene_contexts[sid] if scene_contexts is not None else
+                {b.node["Id"]: b.context for b in items if b.scene["Id"] == sid and b.slot == "text"})
     indexed = model.walk_index()[sid][2]
     extra = (fields(block.spec, groups="AnyGroups" if block.slot.startswith("paragraph[") else "RequiresAnyGroups")
              if block.slot.startswith(("paragraph[", "choice[")) else AND())
@@ -221,6 +222,13 @@ def guarded_on_paths(model, items, proof, block, target):
 
 def check(model, blocks, proof):
     names = roster(model)
+    # These incoming contexts are the same for every actor proof in a scene.
+    # Keep this index local: a new/mutated export always builds its own index.
+    scene_contexts = {s["Id"]: {} for s in model.scenes}
+    for block in blocks:
+        if block.slot == "text":
+            scene_contexts[block.scene["Id"]][block.node["Id"]] = block.context
+    seats = model.story.get("SeatWomen") or {}
     # eng7-f6b: text-only native dialogue keeps canon speakers and native eligibility.
     # A romance refusal never removes Seelah/Jannah/Arsinoe from their native quest.
     from tools import kiana_native_policy
@@ -269,14 +277,17 @@ def check(model, blocks, proof):
         # rather than asserting that actor is alive in the current world.
         if b.scene.get("Kind") in ("memory", "dream"):
             continue
+        is_postwar = postwar(b.scene)
         for woman, (route, pattern) in names.items():
-            seat = (model.story.get("SeatWomen") or {}).get(woman) or {}
+            speaking = b.slot == "text" and pattern.fullmatch(b.node.get("Speaker", ""))
+            if not speaking and not pattern.search(b.text):
+                continue
+            seat = seats.get(woman) or {}
             if (route == b.route or seat.get("Relationship") == b.route
                     or b.route.startswith(woman + ".")):
                 continue
-            matches = live_mentions(b.text, pattern, postwar(b.scene))
+            matches = live_mentions(b.text, pattern, is_postwar)
             match = matches[0] if matches else None
-            speaking = b.slot == "text" and pattern.fullmatch(b.node.get("Speaker", ""))
             if not match and not speaking:
                 continue
             # eng7-f6c begin: faith survives closure of the goddess's courtship.
@@ -295,7 +306,7 @@ def check(model, blocks, proof):
             native = native_scenes.get(b.scene['Id'], {})
             inherited_speaker = any(pattern.fullmatch(name) for name in native.get('Speakers', []))
             inherited_mention = bool(pattern.search(native.get('Mentions', '')))
-            guarded = inherited_speaker or inherited_mention or guarded_on_paths(model, blocks, proof, b, guard)
+            guarded = inherited_speaker or inherited_mention or guarded_on_paths(model, blocks, proof, b, guard, scene_contexts)
             if not guarded:
                 out.append(finding("L1", b, "living %s: departed/dead-unreturned losses with registered earned returns; romance refusal does not remove a living actor" % route,
                                    woman, excerpt, required=guard))
@@ -303,7 +314,7 @@ def check(model, blocks, proof):
                 bool(matches) and b.scene.get("Kind") not in ("memory", "dream")
                 and staged(b.text, pattern, b.node.get("Speaker") == "Narrator"))
             presence = physical_guard(model, b, woman, route, pattern) if physical else None
-            if physical and not inherited_speaker and not guarded_on_paths(model, blocks, proof, b, presence):
+            if physical and not inherited_speaker and not guarded_on_paths(model, blocks, proof, b, presence, scene_contexts):
                 out.append(finding("L1", b, "physical %s: matching guarded presence, ContactUnit or household participant" % woman,
                                    woman + ":physical", excerpt, required=presence))
     return out

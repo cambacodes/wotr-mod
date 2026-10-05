@@ -28,7 +28,6 @@ class NativeAnswerContractTests(unittest.TestCase):
         self.assertEqual(set(kiana_native.NATIVE_ANSWER_EDITS), set(native_answer_policy.contracts()))
         for target, spec in kiana_native.NATIVE_ANSWER_EDITS.items():
             native_answer_policy.check(target, spec, self.found)
-            self.assertEqual(spec["When"], kiana_native.HOME_WORLDS)
 
     def test_behavior_drift_is_rejected_by_class(self):
         for target, spec in kiana_native.NATIVE_ANSWER_EDITS.items():

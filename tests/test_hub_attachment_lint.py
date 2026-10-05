@@ -1,4 +1,5 @@
 import copy
+from tests.story_fixture import fresh_story
 import unittest
 from expansion import make_expansion
 from tools import hub_attachment_lint as lint
@@ -7,7 +8,7 @@ from tools import hub_attachment_lint as lint
 class HubAttachments(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = make_expansion()
+        cls.story = fresh_story()
 
     def test_reviewed_attachments(self):
         self.assertEqual(lint.lint(self.story), [])

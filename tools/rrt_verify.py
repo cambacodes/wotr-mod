@@ -1099,7 +1099,7 @@ def narration_lint(text, speaker):
 
 
 # ------------------------------------------------------------------------------------------------ main
-def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False, story_obj=None, label="development"):
+def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False, story_obj=None, label="development", gate_only=False):
     t0 = time.time()
     R = collections.OrderedDict()
     story = story_obj if story_obj is not None else json.loads(Path(story_path).read_text(encoding="utf-8"))
@@ -1140,320 +1140,325 @@ def run(story_path, game, use_zip=True, drafts=False, out_json=None, quiet=False
     R["relationship_flags_without_producer"] = relnp
     P("  Relationship Closed/Committed flags that NOTHING sets (route can never close/commit; journal objective never completes): %s" % relnp)
 
-    # ---- B. reachability per mythic world
-    worlds = [mythic_world(m, model) for m in MYTHIC] + [mythic_world(None, model, "none")]
-    reach = {}
-    committed_flags = {r["CommittedFlag"] for r in model.rels.values()}
-    reach_cache = {}   # (forced true, forced false) -> Reach: equal worlds give equal results (a World's name is only a label)
-    def cached_reach(w, light=False):
-        key = (frozenset(w.true), frozenset(w.false))
-        if key not in reach_cache:
-            rr = Reach(model, w)
-            if light:   # section H reads only reached/held; drop the rest so hundreds of cached worlds stay small
-                for k in ("why", "choices", "dead_scenes", "dead_choices", "must_flag", "must_scene", "_must_static"): delattr(rr, k)
-                rr.held = rr.held & committed_flags   # section H asks held only about CommittedFlags
-            reach_cache[key] = rr
-        return reach_cache[key]
-    for w in worlds:
-        reach[w.name] = cached_reach(w)
-    any_reached = set().union(*[set(r.reached) for r in reach.values()])
-    free_reached = set()
-    for w in worlds:
-        free_reached |= set(Reach(model, w, chaptered=False).reached)
-    never = [s for s in model.scenes if s["Id"] not in any_reached]
-    R["unreachable_all_paths"] = {}
-    P("\n## B. Scenes unreachable on EVERY mythic path (fixed point, chaptered): %d of %d" % (len(never), len(model.scenes)))
-    by_rel = collections.defaultdict(list)
-    for s in never:
-        why = reach["trickster"].why.get(s["Id"]) or reach["trickster"].dead_scenes.get(s["Id"]) or "?"
-        if s["Id"] in free_reached: why = "CHAPTER-TRAP (reachable if chapters ignored) / " + why
-        R["unreachable_all_paths"][s["Id"]] = why
-        by_rel[s["Relationship"]].append((s["Id"], why))
-    for rel, lst in sorted(by_rel.items()):
-        P("  [%s] %d" % (rel, len(lst)))
-        for sid, why in lst[:25]: P("     - %-55s %s" % (sid, why))
-        if len(lst) > 25: P("     ... +%d more" % (len(lst) - 25))
-    # per path reachability of relationship start/commit
-    P("\n## B2. Per mythic path: relationship entry / committed-flag reachability (E=entry scene reachable, C=CommittedFlag reachable, X=ClosedFlag)")
-    hdr = "  %-22s" % "relationship" + "".join("%-10s" % w.name[:9] for w in worlds)
-    P(hdr)
-    matrix = {}
-    for rk, r in model.rels.items():
-        row = "  %-22s" % rk[:22]
-        matrix[rk] = {}
-        for w in worlds:
-            rr = reach[w.name]
-            ent = any(s["Relationship"] == rk and not is_epilogue(s) and s["Id"] in rr.reached for s in model.scenes)
-            com = r["CommittedFlag"] in rr.held
-            clo = r["ClosedFlag"] in rr.held
-            cell = ("E" if ent else "-") + ("C" if com else "-") + ("X" if clo else "-")
-            matrix[rk][w.name] = cell
-            row += "%-10s" % cell
-        P(row)
-    R["path_matrix"] = matrix
-    dead_choice_ct = collections.Counter()
-    for k, v in reach["trickster"].dead_choices.items(): dead_choice_ct[model.by_id[k[0]]["Relationship"]] += 1
-    all_dead = set()
-    for rr0 in reach.values():
-        for k in rr0.dead_choices:
-            if not any(k in r.choices for r in reach.values()): all_dead.add(k)
-    R["dead_choices_all_paths"] = ["%s/%s/%d" % k for k in sorted(all_dead)]
-    P("\n  Choices dead on every path (forbid/requires contradiction inside own chain): %d" % len(all_dead))
-    for k in sorted(all_dead)[:40]:
-        why = next(r.dead_choices[k] for r in reach.values() if k in r.dead_choices)
-        P("     -", "%s/%s/%d" % k, why)
-    unused_choices = []
-    for s in model.scenes:
-        if s["Id"] not in any_reached: continue
-        for n in s["Nodes"]:
-            for i, c in enumerate(n["Choices"]):
-                if not any((s["Id"], n["Id"], i) in r.choices for r in reach.values()) and (s["Id"], n["Id"], i) not in all_dead:
-                    unused_choices.append("%s/%s/%d" % (s["Id"], n["Id"], i))
-    R["unreachable_choices_in_reachable_scenes"] = unused_choices
-    P("  Other choices never selectable inside otherwise-reachable scenes (no path found; see why): %d" % len(unused_choices))
-    for x in unused_choices[:25]:
-        sid, nid, i = x.split("/")
-        c = model.nodes[sid][nid]["Choices"][int(i)]
-        P("     - %-55s req %s forb %s" % (x, c["Requires"], c["Forbids"]))
-
-    # ---- H. Trickster roster matrix with blocking states
-    P("\n## H. Trickster access per relationship (world = trickster etude playing; variants force a native state true or false)")
-    tri = {}
-    for rk, r in model.rels.items():
-        rel_scenes = [s for s in model.scenes if s["Relationship"] == rk and not is_epilogue(s)]
-        cand_true = set(f for f in r.get("UnavailableFlags", []) if f in model.native and f not in MYTHIC)
-        cand_false = set()
-        for s in rel_scenes:
-            for f in s["Forbids"]:
-                if f in model.native and f not in MYTHIC: cand_true.add(f)
-            for f in list(s["Requires"]) + list(s["RequiresAny"]):
-                if f in model.native and f not in MYTHIC and f != "trickster": cand_false.add(f)
-        base = reach["trickster"]
-        base_ent = [s["Id"] for s in rel_scenes if s["Id"] in base.reached]
-        res = dict(entry=bool(base_ent), committed=r["CommittedFlag"] in base.held, entry_scenes=len(base_ent),
-                   total_scenes=len(rel_scenes), blocks_entry=[], blocks_commit=[])
-        for f in sorted(cand_true):
-            rr = cached_reach(mythic_world("trickster", model, "tri+" + f, true={f}), light=True)
-            e = any(s["Id"] in rr.reached for s in rel_scenes)
-            if not e: res["blocks_entry"].append(f + "=true")
-            elif r["CommittedFlag"] not in rr.held and res["committed"]: res["blocks_commit"].append(f + "=true")
-        for f in sorted(cand_false):
-            rr = cached_reach(mythic_world("trickster", model, "tri-" + f, false={f}), light=True)
-            e = any(s["Id"] in rr.reached for s in rel_scenes)
-            if not e: res["blocks_entry"].append(f + "=missed")
-            elif r["CommittedFlag"] not in rr.held and res["committed"]: res["blocks_commit"].append(f + "=missed")
-        tri[rk] = res
-        P("  %-17s entry=%-5s committed(%s)=%-5s scenes %d/%d reachable" % (rk, res["entry"], r["CommittedFlag"], res["committed"], res["entry_scenes"], res["total_scenes"]))
-        if res["blocks_entry"]: P("       entry blocked by:", ", ".join(res["blocks_entry"]))
-        if res["blocks_commit"]: P("       commit blocked by:", ", ".join(res["blocks_commit"]))
-    R["trickster"] = tri
-    # roster characters without a relationship
-    roster = []
-    rp = MOD / "ROSTER.md"
-    if rp.is_file():
-        for line in rp.read_text(encoding="utf-8").splitlines():
-            mm = re.match(r"^\|\s*([A-Z][A-Za-z' ]+?)\s*\|", line)
-            if mm and mm.group(1) not in ("Character", "Candidate") and not line.startswith("| ---"):
-                roster.append(mm.group(1).strip())
-    alias = {"minagho": "minagho_chivarro", "chivarro": "minagho_chivarro", "anevia": "anevia", "irabeth": "irabeth"}
-    drafts_by_char = collections.defaultdict(list)
     registered_mods = registered_modules(MOD)
-    for p in (MOD / "storylines").glob("*.py"):
-        if p.stem not in registered_mods: drafts_by_char[p.stem.split("_")[0]].append(p.stem)
-    R["roster"] = []
-    P("\n## H2. Roster matrix (ROSTER.md) x Story.json")
-    P("  %-22s %-18s %-6s %-6s %-6s %s" % ("character", "relationship", "reg?", "T-ent", "T-end", "notes"))
-    for name in roster:
-        key = name.lower().split()[0]
-        rk = alias.get(key, key)
-        if rk in model.rels:
-            t = tri[rk]
-            note = "; ".join(t["blocks_entry"][:4] + ["commit:" + x for x in t["blocks_commit"][:3]])
-            P("  %-22s %-18s %-6s %-6s %-6s %s" % (name, rk, "yes", t["entry"], t["committed"], note))
-            R["roster"].append(dict(character=name, relationship=rk, registered=True, trickster_entry=t["entry"],
-                                    trickster_end=t["committed"], blocks=t["blocks_entry"], commit_blocks=t["blocks_commit"]))
-        else:
-            d = drafts_by_char.get(key, [])
-            P("  %-22s %-18s %-6s %-6s %-6s %s" % (name, "-", "NO", "-", "-", ("draft modules: " + ",".join(d)) if d else "no Story.json relationship and no draft"))
-            R["roster"].append(dict(character=name, relationship=None, registered=False, drafts=d))
-
-    # ---- C. chapter / delay traps
-    P("\n## C. Chapter-window / delay traps")
-    traps = [sid for sid, why in R["unreachable_all_paths"].items() if why.startswith("CHAPTER-TRAP")]
-    P("  Chapter traps (reachable only if chapter order ignored): %d %s" % (len(traps), traps[:20]))
-    # delay chains inside single-chapter windows
-    def window(s):
-        return tuple(s["Chapters"]) if s["Chapters"] else tuple(range(s["MinChapter"], min(s["MaxChapter"], 6) + 1))
-    memo = {}
-    def chain(sid, depth=0):
-        if sid in memo: return memo[sid]
-        if depth > 60: return (0, [sid])
-        memo[sid] = (0, [sid])
-        s = model.by_id[sid]
-        w = window(s)
-        best = (0, [])
-        for r in s["Requires"]:
-            cand = None
-            for (psid, _, _) in model.producers.get(r, []):
-                ps = model.by_id.get(psid)
-                if not ps or set(window(ps)) - set(w) or psid == sid: cand = (0, []) if cand is None else min(cand, (0, [])); continue
-                c = chain(psid, depth + 1)
-                cand = c if cand is None or c[0] < cand[0] else cand
-            if cand and cand[0] > best[0]: best = cand
-        memo[sid] = (best[0] + s["DelayHours"], best[1] + [sid])
-        return memo[sid]
-    long_chains = []
-    for s in model.scenes:
-        w = window(s)
-        if len(w) == 1 and not is_epilogue(s):
-            h, path = chain(s["Id"])
-            if h >= 120: long_chains.append((h, w[0], s["Id"], path))
-    long_chains.sort(reverse=True)
-    R["delay_chains"] = [dict(hours=h, chapter=c, scene=sid, chain=p) for h, c, sid, p in long_chains]
-    P("  Scenes in a single-chapter window whose minimum in-window delay chain is >= 120h: %d" % len(long_chains))
-    for h, c, sid, p in long_chains[:15]: P("     - ch%d %4dh %-45s chain len %d" % (c, h, sid, len(p)))
-    remote = [s for s in model.scenes if is_remote(s) and not s.get("TableHosted") and not s["ManualOnly"] and not is_epilogue(s)]
-    comp = {}
-    for ch in range(1, 6):
-        comp[ch] = collections.Counter(s["Relationship"] for s in remote if s["MinChapter"] <= ch <= s["MaxChapter"] and (not s["Chapters"] or ch in s["Chapters"]))
-    order = []
-    for s in model.scenes:
-        if is_remote(s) and not s["ManualOnly"] and s["Relationship"] not in order: order.append(s["Relationship"])
-    R["remote_order"] = order
-    P("  Rest-letter delivery: NextRemote picks the FIRST available remote scene in list order. Relationship priority order:", order)
-    for ch, c in comp.items(): P("     ch%d competing remote scenes by relationship: %s" % (ch, dict(c)))
-    # E9 rest budget (report only; never a hard failure)
-    rb = simulate_rest_budget(model, **(REST_OPTIONS or {}))
-    print_rest_budget(rb, P)
-    R["rest_budget"] = rb
-    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-    from tools import harem_rest_sim
-    schedule_path = harem_rest_sim.SCHEDULE
-    if schedule_path.is_file() and "household" in model.rels:
-        data = json.loads(schedule_path.read_text(encoding="utf-8"))
-        R["household_budget"] = []
-        for rematch in (False, True):
-            result = harem_rest_sim.simulate(model.story, data, rb, conditional=True, rematch=rematch)
-            harem_rest_sim.report(result, P)
-            R["household_budget"].append(result)
-        P("  NOTE: ER-H3 conditional day-24 load only. Native S9 fixture / gate-time proof remains required.")
-    # volatile etudes used as history
-    vol = []
-    for f, where in refs.items():
-        if model.native.get(f) == "Etudes" and not model.is_persistent_native(f) and f not in MYTHIC:
-            hist = bool(HIST_WORDS.search(f))
-            vol.append((not hist, f, hist, collections.Counter(k for _, k in where), where[0][0]))
-    vol.sort()
-    R["volatile_etudes"] = [dict(flag=f, looks_historical=h, uses=dict(u), example=e) for _, f, h, u, e in vol]
-    P("\n  Etude bindings read only while IsPlaying (NOT permanent in State()) but used as gates: %d; name looks like one-time history: %d"
-      % (len(vol), sum(1 for v in vol if v[2])))
-    for _, f, h, u, e in vol:
-        P("     %s %-38s %s  e.g. %s" % ("HIST" if h else "    ", f, dict(u), e))
-
-    # ---- D. cross-route forbid matrix
-    P("\n## D. Cross-route forbid conflicts (flag produced by route A, forbidden by route B)")
-    prod_rel = collections.defaultdict(set)
-    for f, lst in model.producers.items():
-        for (sid, _, _) in lst: prod_rel[f].add(model.by_id[sid]["Relationship"])
-    forb = collections.defaultdict(lambda: collections.defaultdict(list))
-    for s in model.scenes:
-        for f in s["Forbids"]:
-            for a in prod_rel.get(f, ()):
-                if a != s["Relationship"]: forb[a][s["Relationship"]].append((f, s["Id"], "scene"))
-        for n in s["Nodes"]:
-            for i, c in enumerate(n["Choices"]):
-                for f in c["Forbids"]:
-                    for a in prod_rel.get(f, ()):
-                        if a != s["Relationship"]: forb[a][s["Relationship"]].append((f, "%s/%s/%d" % (s["Id"], n["Id"], i), "choice"))
-    for rk, r in model.rels.items():
-        for f in r.get("UnavailableFlags", []) + r.get("FailureFlags", []):
-            for a in prod_rel.get(f, ()):
-                if a != rk: forb[a][rk].append((f, "rel:" + rk, "relationship"))
-    R["forbid_matrix"] = {a: {b: [list(x) for x in v] for b, v in d.items()} for a, d in forb.items()}
-    nconf = 0
-    for a, d in sorted(forb.items()):
-        for b, v in sorted(d.items()):
-            flags = sorted(set(x[0] for x in v))
-            scenes_hit = len(set(x[1] for x in v if x[2] == "scene"))
-            nconf += 1
-            P("  %-16s -> %-16s flags %s  (%d scenes, %d choice gates)" % (a, b, flags[:6], scenes_hit, sum(1 for x in v if x[2] == "choice")))
-    if not nconf: P("  none")
-
-    # ---- D2. coexistence (Directives v2): no route may depend on another romanceable being dead/departed/hostile/closed
-    P("\n## D2. Coexistence: scenes/endings/choices whose gates depend on ANOTHER relationship's loss/closure or romance state")
-    chars = {rk: set() for rk in model.rels}
-    for rk in model.rels:
-        base = rk.split(".")[0]
-        chars[rk] |= {base}
-    chars.setdefault("tirabade", set()).update({"anevia", "irabeth", "tirabade"})
-    for k in ("minagho_chivarro",):
-        if k in chars: chars[k] |= {"minagho", "chivarro", "minachiv"}
-    for k in list(chars):
-        if k.startswith("nocticula"): chars[k] |= {"noct", "nocticula"}
-    tok2rels = collections.defaultdict(set)
-    for rk, cs in chars.items():
-        for c in cs: tok2rels[c].add(rk)
-    flag_owner = {}
-    for rk, r in model.rels.items():
-        for f in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"]): flag_owner[f] = {rk}
-    def owners(f):
-        if f in flag_owner: return flag_owner[f]
-        tok = re.split(r"[._]", f)[0]
-        o = set(tok2rels.get(tok, ()))
+    if gate_only:
+        R["advisory_analysis_skipped"] = ["B", "B2", "H", "H2", "C", "D", "D2", "D3"]
+        P("FAST verifier: report-only world, roster, budget and conflict analyses deferred to FULL.")
+    else:
+        # ---- B. reachability per mythic world
+        worlds = [mythic_world(m, model) for m in MYTHIC] + [mythic_world(None, model, "none")]
+        reach = {}
+        committed_flags = {r["CommittedFlag"] for r in model.rels.values()}
+        reach_cache = {}   # (forced true, forced false) -> Reach: equal worlds give equal results (a World's name is only a label)
+        def cached_reach(w, light=False):
+            key = (frozenset(w.true), frozenset(w.false))
+            if key not in reach_cache:
+                rr = Reach(model, w)
+                if light:   # section H reads only reached/held; drop the rest so hundreds of cached worlds stay small
+                    for k in ("why", "choices", "dead_scenes", "dead_choices", "must_flag", "must_scene", "_must_static"): delattr(rr, k)
+                    rr.held = rr.held & committed_flags   # section H asks held only about CommittedFlags
+                reach_cache[key] = rr
+            return reach_cache[key]
+        for w in worlds:
+            reach[w.name] = cached_reach(w)
+        any_reached = set().union(*[set(r.reached) for r in reach.values()])
+        free_reached = set()
+        for w in worlds:
+            free_reached |= set(Reach(model, w, chaptered=False).reached)
+        never = [s for s in model.scenes if s["Id"] not in any_reached]
+        R["unreachable_all_paths"] = {}
+        P("\n## B. Scenes unreachable on EVERY mythic path (fixed point, chaptered): %d of %d" % (len(never), len(model.scenes)))
+        by_rel = collections.defaultdict(list)
+        for s in never:
+            why = reach["trickster"].why.get(s["Id"]) or reach["trickster"].dead_scenes.get(s["Id"]) or "?"
+            if s["Id"] in free_reached: why = "CHAPTER-TRAP (reachable if chapters ignored) / " + why
+            R["unreachable_all_paths"][s["Id"]] = why
+            by_rel[s["Relationship"]].append((s["Id"], why))
+        for rel, lst in sorted(by_rel.items()):
+            P("  [%s] %d" % (rel, len(lst)))
+            for sid, why in lst[:25]: P("     - %-55s %s" % (sid, why))
+            if len(lst) > 25: P("     ... +%d more" % (len(lst) - 25))
+        # per path reachability of relationship start/commit
+        P("\n## B2. Per mythic path: relationship entry / committed-flag reachability (E=entry scene reachable, C=CommittedFlag reachable, X=ClosedFlag)")
+        hdr = "  %-22s" % "relationship" + "".join("%-10s" % w.name[:9] for w in worlds)
+        P(hdr)
+        matrix = {}
         for rk, r in model.rels.items():
-            if f in r.get("UnavailableFlags", []) and f not in MYTHIC and f != "true_lich": o.add(rk)
-        return o
-    LOSS = re.compile(r"dead|gone|away|absent|killed|condemned|prison|unavailable|early_fight|final_fight|detached|closed|departure|departed|hostile|killing|rejected|lost|victims_revived|native_devastated|searching")
-    ROM = re.compile(r"committed|lover|courtship|started|romance|complete|renewed|kept|trusted|affair")
-    coex = []
-    for s in model.scenes:
-        rk = s["Relationship"]
-        mine = chars.get(rk, set())
-        def other(f):
-            o = owners(f) - {rk}
-            if not o: return None
-            if any(tok in mine for tok in [re.split(r"[._]", f)[0]]): return None
-            return o
-        pos = list(s["Requires"]) + list(s["RequiresAny"]) + [x for g in s["RequiresAnyGroups"] for x in g]
-        for f in pos:
-            o = other(f)
-            if o and LOSS.search(f): coex.append(("REQUIRES-OTHER-LOSS", s["Id"], f, sorted(o), is_epilogue(s)))
-        for f in s["Forbids"]:
-            o = other(f)
-            if o and ROM.search(f) and not LOSS.search(f): coex.append(("FORBIDS-OTHER-ROMANCE", s["Id"], f, sorted(o), is_epilogue(s)))
-        for n in s["Nodes"]:
-            for i, c in enumerate(n["Choices"]):
-                for f in c["Requires"]:
-                    o = other(f)
-                    if o and LOSS.search(f): coex.append(("choice-requires-other-loss", "%s/%s/%d" % (s["Id"], n["Id"], i), f, sorted(o), is_epilogue(s)))
-                for f in c["Forbids"]:
-                    o = other(f)
-                    if o and ROM.search(f) and not LOSS.search(f): coex.append(("choice-forbids-other-romance", "%s/%s/%d" % (s["Id"], n["Id"], i), f, sorted(o), is_epilogue(s)))
-    R["coexistence"] = [dict(kind=k, where=w, flag=f, other=o, epilogue=e) for k, w, f, o, e in coex]
-    cc = collections.Counter((k, s_rel(model, w), tuple(o)) for k, w, f, o, e in coex)
-    P("  %d gate uses. By (kind, route -> other):" % len(coex))
-    for (k, a, o), n in sorted(cc.items(), key=lambda x: (x[0][0], -x[1])):
-        ex = next((w, f) for kk, w, f, oo, e in coex if kk == k and s_rel(model, w) == a and tuple(oo) == o)
-        P("     %-30s %-18s -> %-28s x%-3d e.g. %s [%s]" % (k, a, ",".join(o), n, ex[0], ex[1]))
+            row = "  %-22s" % rk[:22]
+            matrix[rk] = {}
+            for w in worlds:
+                rr = reach[w.name]
+                ent = any(s["Relationship"] == rk and not is_epilogue(s) and s["Id"] in rr.reached for s in model.scenes)
+                com = r["CommittedFlag"] in rr.held
+                clo = r["ClosedFlag"] in rr.held
+                cell = ("E" if ent else "-") + ("C" if com else "-") + ("X" if clo else "-")
+                matrix[rk][w.name] = cell
+                row += "%-10s" % cell
+            P(row)
+        R["path_matrix"] = matrix
+        dead_choice_ct = collections.Counter()
+        for k, v in reach["trickster"].dead_choices.items(): dead_choice_ct[model.by_id[k[0]]["Relationship"]] += 1
+        all_dead = set()
+        for rr0 in reach.values():
+            for k in rr0.dead_choices:
+                if not any(k in r.choices for r in reach.values()): all_dead.add(k)
+        R["dead_choices_all_paths"] = ["%s/%s/%d" % k for k in sorted(all_dead)]
+        P("\n  Choices dead on every path (forbid/requires contradiction inside own chain): %d" % len(all_dead))
+        for k in sorted(all_dead)[:40]:
+            why = next(r.dead_choices[k] for r in reach.values() if k in r.dead_choices)
+            P("     -", "%s/%s/%d" % k, why)
+        unused_choices = []
+        for s in model.scenes:
+            if s["Id"] not in any_reached: continue
+            for n in s["Nodes"]:
+                for i, c in enumerate(n["Choices"]):
+                    if not any((s["Id"], n["Id"], i) in r.choices for r in reach.values()) and (s["Id"], n["Id"], i) not in all_dead:
+                        unused_choices.append("%s/%s/%d" % (s["Id"], n["Id"], i))
+        R["unreachable_choices_in_reachable_scenes"] = unused_choices
+        P("  Other choices never selectable inside otherwise-reachable scenes (no path found; see why): %d" % len(unused_choices))
+        for x in unused_choices[:25]:
+            sid, nid, i = x.split("/")
+            c = model.nodes[sid][nid]["Choices"][int(i)]
+            P("     - %-55s req %s forb %s" % (x, c["Requires"], c["Forbids"]))
 
-    # ---- D3. epilogue guards (Rules.Available returns true for Epilogue owners BEFORE relationship Closed/Unavailable checks)
-    P("\n## D3. Epilogue scenes not guarded against their relationship's ClosedFlag / UnavailableFlags (Story.cs:205 skips those checks)")
-    eg = []
-    for s in model.scenes:
-        if not is_epilogue(s): continue
-        r = model.rels.get(s["Relationship"])
-        if not r: continue
-        pos = set(s["Requires"]) | set(s["RequiresAny"]) | {x for g in s["RequiresAnyGroups"] for x in g}
-        guards = [r["ClosedFlag"]] + [f for f in r.get("UnavailableFlags", [])]
-        # a scene that REQUIRES any loss/closure flag is an explicit loss ending: exempt
-        if pos & (set(guards) | {"loss", "inhuman"} | set(r.get("FailureFlags", []))): continue
-        req_mythic = pos & set(MYTHIC + ["true_lich"])
-        missing = [f for f in guards if f not in s["Forbids"] and not (req_mythic and f in MYTHIC + ["true_lich"])]
-        if missing: eg.append((s["Id"], s["Relationship"], missing))
-    R["epilogue_unguarded"] = [dict(scene=a, relationship=b, missing_forbids=c) for a, b, c in eg]
-    byr = collections.Counter(b for _, b, _ in eg)
-    P("  %d of %d epilogue scenes lack at least one guard. By relationship: %s" % (len(eg), sum(1 for s in model.scenes if is_epilogue(s)), dict(byr)))
-    for a, b, c in eg[:25]: P("     - %-45s %-16s missing forbids %s" % (a, b, c))
+        # ---- H. Trickster roster matrix with blocking states
+        P("\n## H. Trickster access per relationship (world = trickster etude playing; variants force a native state true or false)")
+        tri = {}
+        for rk, r in model.rels.items():
+            rel_scenes = [s for s in model.scenes if s["Relationship"] == rk and not is_epilogue(s)]
+            cand_true = set(f for f in r.get("UnavailableFlags", []) if f in model.native and f not in MYTHIC)
+            cand_false = set()
+            for s in rel_scenes:
+                for f in s["Forbids"]:
+                    if f in model.native and f not in MYTHIC: cand_true.add(f)
+                for f in list(s["Requires"]) + list(s["RequiresAny"]):
+                    if f in model.native and f not in MYTHIC and f != "trickster": cand_false.add(f)
+            base = reach["trickster"]
+            base_ent = [s["Id"] for s in rel_scenes if s["Id"] in base.reached]
+            res = dict(entry=bool(base_ent), committed=r["CommittedFlag"] in base.held, entry_scenes=len(base_ent),
+                       total_scenes=len(rel_scenes), blocks_entry=[], blocks_commit=[])
+            for f in sorted(cand_true):
+                rr = cached_reach(mythic_world("trickster", model, "tri+" + f, true={f}), light=True)
+                e = any(s["Id"] in rr.reached for s in rel_scenes)
+                if not e: res["blocks_entry"].append(f + "=true")
+                elif r["CommittedFlag"] not in rr.held and res["committed"]: res["blocks_commit"].append(f + "=true")
+            for f in sorted(cand_false):
+                rr = cached_reach(mythic_world("trickster", model, "tri-" + f, false={f}), light=True)
+                e = any(s["Id"] in rr.reached for s in rel_scenes)
+                if not e: res["blocks_entry"].append(f + "=missed")
+                elif r["CommittedFlag"] not in rr.held and res["committed"]: res["blocks_commit"].append(f + "=missed")
+            tri[rk] = res
+            P("  %-17s entry=%-5s committed(%s)=%-5s scenes %d/%d reachable" % (rk, res["entry"], r["CommittedFlag"], res["committed"], res["entry_scenes"], res["total_scenes"]))
+            if res["blocks_entry"]: P("       entry blocked by:", ", ".join(res["blocks_entry"]))
+            if res["blocks_commit"]: P("       commit blocked by:", ", ".join(res["blocks_commit"]))
+        R["trickster"] = tri
+        # roster characters without a relationship
+        roster = []
+        rp = MOD / "ROSTER.md"
+        if rp.is_file():
+            for line in rp.read_text(encoding="utf-8").splitlines():
+                mm = re.match(r"^\|\s*([A-Z][A-Za-z' ]+?)\s*\|", line)
+                if mm and mm.group(1) not in ("Character", "Candidate") and not line.startswith("| ---"):
+                    roster.append(mm.group(1).strip())
+        alias = {"minagho": "minagho_chivarro", "chivarro": "minagho_chivarro", "anevia": "anevia", "irabeth": "irabeth"}
+        drafts_by_char = collections.defaultdict(list)
+        registered_mods = registered_modules(MOD)
+        for p in (MOD / "storylines").glob("*.py"):
+            if p.stem not in registered_mods: drafts_by_char[p.stem.split("_")[0]].append(p.stem)
+        R["roster"] = []
+        P("\n## H2. Roster matrix (ROSTER.md) x Story.json")
+        P("  %-22s %-18s %-6s %-6s %-6s %s" % ("character", "relationship", "reg?", "T-ent", "T-end", "notes"))
+        for name in roster:
+            key = name.lower().split()[0]
+            rk = alias.get(key, key)
+            if rk in model.rels:
+                t = tri[rk]
+                note = "; ".join(t["blocks_entry"][:4] + ["commit:" + x for x in t["blocks_commit"][:3]])
+                P("  %-22s %-18s %-6s %-6s %-6s %s" % (name, rk, "yes", t["entry"], t["committed"], note))
+                R["roster"].append(dict(character=name, relationship=rk, registered=True, trickster_entry=t["entry"],
+                                        trickster_end=t["committed"], blocks=t["blocks_entry"], commit_blocks=t["blocks_commit"]))
+            else:
+                d = drafts_by_char.get(key, [])
+                P("  %-22s %-18s %-6s %-6s %-6s %s" % (name, "-", "NO", "-", "-", ("draft modules: " + ",".join(d)) if d else "no Story.json relationship and no draft"))
+                R["roster"].append(dict(character=name, relationship=None, registered=False, drafts=d))
+
+        # ---- C. chapter / delay traps
+        P("\n## C. Chapter-window / delay traps")
+        traps = [sid for sid, why in R["unreachable_all_paths"].items() if why.startswith("CHAPTER-TRAP")]
+        P("  Chapter traps (reachable only if chapter order ignored): %d %s" % (len(traps), traps[:20]))
+        # delay chains inside single-chapter windows
+        def window(s):
+            return tuple(s["Chapters"]) if s["Chapters"] else tuple(range(s["MinChapter"], min(s["MaxChapter"], 6) + 1))
+        memo = {}
+        def chain(sid, depth=0):
+            if sid in memo: return memo[sid]
+            if depth > 60: return (0, [sid])
+            memo[sid] = (0, [sid])
+            s = model.by_id[sid]
+            w = window(s)
+            best = (0, [])
+            for r in s["Requires"]:
+                cand = None
+                for (psid, _, _) in model.producers.get(r, []):
+                    ps = model.by_id.get(psid)
+                    if not ps or set(window(ps)) - set(w) or psid == sid: cand = (0, []) if cand is None else min(cand, (0, [])); continue
+                    c = chain(psid, depth + 1)
+                    cand = c if cand is None or c[0] < cand[0] else cand
+                if cand and cand[0] > best[0]: best = cand
+            memo[sid] = (best[0] + s["DelayHours"], best[1] + [sid])
+            return memo[sid]
+        long_chains = []
+        for s in model.scenes:
+            w = window(s)
+            if len(w) == 1 and not is_epilogue(s):
+                h, path = chain(s["Id"])
+                if h >= 120: long_chains.append((h, w[0], s["Id"], path))
+        long_chains.sort(reverse=True)
+        R["delay_chains"] = [dict(hours=h, chapter=c, scene=sid, chain=p) for h, c, sid, p in long_chains]
+        P("  Scenes in a single-chapter window whose minimum in-window delay chain is >= 120h: %d" % len(long_chains))
+        for h, c, sid, p in long_chains[:15]: P("     - ch%d %4dh %-45s chain len %d" % (c, h, sid, len(p)))
+        remote = [s for s in model.scenes if is_remote(s) and not s.get("TableHosted") and not s["ManualOnly"] and not is_epilogue(s)]
+        comp = {}
+        for ch in range(1, 6):
+            comp[ch] = collections.Counter(s["Relationship"] for s in remote if s["MinChapter"] <= ch <= s["MaxChapter"] and (not s["Chapters"] or ch in s["Chapters"]))
+        order = []
+        for s in model.scenes:
+            if is_remote(s) and not s["ManualOnly"] and s["Relationship"] not in order: order.append(s["Relationship"])
+        R["remote_order"] = order
+        P("  Rest-letter delivery: NextRemote picks the FIRST available remote scene in list order. Relationship priority order:", order)
+        for ch, c in comp.items(): P("     ch%d competing remote scenes by relationship: %s" % (ch, dict(c)))
+        # E9 rest budget (report only; never a hard failure)
+        rb = simulate_rest_budget(model, **(REST_OPTIONS or {}))
+        print_rest_budget(rb, P)
+        R["rest_budget"] = rb
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+        from tools import harem_rest_sim
+        schedule_path = harem_rest_sim.SCHEDULE
+        if schedule_path.is_file() and "household" in model.rels:
+            data = json.loads(schedule_path.read_text(encoding="utf-8"))
+            R["household_budget"] = []
+            for rematch in (False, True):
+                result = harem_rest_sim.simulate(model.story, data, rb, conditional=True, rematch=rematch)
+                harem_rest_sim.report(result, P)
+                R["household_budget"].append(result)
+            P("  NOTE: ER-H3 conditional day-24 load only. Native S9 fixture / gate-time proof remains required.")
+        # volatile etudes used as history
+        vol = []
+        for f, where in refs.items():
+            if model.native.get(f) == "Etudes" and not model.is_persistent_native(f) and f not in MYTHIC:
+                hist = bool(HIST_WORDS.search(f))
+                vol.append((not hist, f, hist, collections.Counter(k for _, k in where), where[0][0]))
+        vol.sort()
+        R["volatile_etudes"] = [dict(flag=f, looks_historical=h, uses=dict(u), example=e) for _, f, h, u, e in vol]
+        P("\n  Etude bindings read only while IsPlaying (NOT permanent in State()) but used as gates: %d; name looks like one-time history: %d"
+          % (len(vol), sum(1 for v in vol if v[2])))
+        for _, f, h, u, e in vol:
+            P("     %s %-38s %s  e.g. %s" % ("HIST" if h else "    ", f, dict(u), e))
+
+        # ---- D. cross-route forbid matrix
+        P("\n## D. Cross-route forbid conflicts (flag produced by route A, forbidden by route B)")
+        prod_rel = collections.defaultdict(set)
+        for f, lst in model.producers.items():
+            for (sid, _, _) in lst: prod_rel[f].add(model.by_id[sid]["Relationship"])
+        forb = collections.defaultdict(lambda: collections.defaultdict(list))
+        for s in model.scenes:
+            for f in s["Forbids"]:
+                for a in prod_rel.get(f, ()):
+                    if a != s["Relationship"]: forb[a][s["Relationship"]].append((f, s["Id"], "scene"))
+            for n in s["Nodes"]:
+                for i, c in enumerate(n["Choices"]):
+                    for f in c["Forbids"]:
+                        for a in prod_rel.get(f, ()):
+                            if a != s["Relationship"]: forb[a][s["Relationship"]].append((f, "%s/%s/%d" % (s["Id"], n["Id"], i), "choice"))
+        for rk, r in model.rels.items():
+            for f in r.get("UnavailableFlags", []) + r.get("FailureFlags", []):
+                for a in prod_rel.get(f, ()):
+                    if a != rk: forb[a][rk].append((f, "rel:" + rk, "relationship"))
+        R["forbid_matrix"] = {a: {b: [list(x) for x in v] for b, v in d.items()} for a, d in forb.items()}
+        nconf = 0
+        for a, d in sorted(forb.items()):
+            for b, v in sorted(d.items()):
+                flags = sorted(set(x[0] for x in v))
+                scenes_hit = len(set(x[1] for x in v if x[2] == "scene"))
+                nconf += 1
+                P("  %-16s -> %-16s flags %s  (%d scenes, %d choice gates)" % (a, b, flags[:6], scenes_hit, sum(1 for x in v if x[2] == "choice")))
+        if not nconf: P("  none")
+
+        # ---- D2. coexistence (Directives v2): no route may depend on another romanceable being dead/departed/hostile/closed
+        P("\n## D2. Coexistence: scenes/endings/choices whose gates depend on ANOTHER relationship's loss/closure or romance state")
+        chars = {rk: set() for rk in model.rels}
+        for rk in model.rels:
+            base = rk.split(".")[0]
+            chars[rk] |= {base}
+        chars.setdefault("tirabade", set()).update({"anevia", "irabeth", "tirabade"})
+        for k in ("minagho_chivarro",):
+            if k in chars: chars[k] |= {"minagho", "chivarro", "minachiv"}
+        for k in list(chars):
+            if k.startswith("nocticula"): chars[k] |= {"noct", "nocticula"}
+        tok2rels = collections.defaultdict(set)
+        for rk, cs in chars.items():
+            for c in cs: tok2rels[c].add(rk)
+        flag_owner = {}
+        for rk, r in model.rels.items():
+            for f in (r["StartedFlag"], r["ClosedFlag"], r["CommittedFlag"]): flag_owner[f] = {rk}
+        def owners(f):
+            if f in flag_owner: return flag_owner[f]
+            tok = re.split(r"[._]", f)[0]
+            o = set(tok2rels.get(tok, ()))
+            for rk, r in model.rels.items():
+                if f in r.get("UnavailableFlags", []) and f not in MYTHIC and f != "true_lich": o.add(rk)
+            return o
+        LOSS = re.compile(r"dead|gone|away|absent|killed|condemned|prison|unavailable|early_fight|final_fight|detached|closed|departure|departed|hostile|killing|rejected|lost|victims_revived|native_devastated|searching")
+        ROM = re.compile(r"committed|lover|courtship|started|romance|complete|renewed|kept|trusted|affair")
+        coex = []
+        for s in model.scenes:
+            rk = s["Relationship"]
+            mine = chars.get(rk, set())
+            def other(f):
+                o = owners(f) - {rk}
+                if not o: return None
+                if any(tok in mine for tok in [re.split(r"[._]", f)[0]]): return None
+                return o
+            pos = list(s["Requires"]) + list(s["RequiresAny"]) + [x for g in s["RequiresAnyGroups"] for x in g]
+            for f in pos:
+                o = other(f)
+                if o and LOSS.search(f): coex.append(("REQUIRES-OTHER-LOSS", s["Id"], f, sorted(o), is_epilogue(s)))
+            for f in s["Forbids"]:
+                o = other(f)
+                if o and ROM.search(f) and not LOSS.search(f): coex.append(("FORBIDS-OTHER-ROMANCE", s["Id"], f, sorted(o), is_epilogue(s)))
+            for n in s["Nodes"]:
+                for i, c in enumerate(n["Choices"]):
+                    for f in c["Requires"]:
+                        o = other(f)
+                        if o and LOSS.search(f): coex.append(("choice-requires-other-loss", "%s/%s/%d" % (s["Id"], n["Id"], i), f, sorted(o), is_epilogue(s)))
+                    for f in c["Forbids"]:
+                        o = other(f)
+                        if o and ROM.search(f) and not LOSS.search(f): coex.append(("choice-forbids-other-romance", "%s/%s/%d" % (s["Id"], n["Id"], i), f, sorted(o), is_epilogue(s)))
+        R["coexistence"] = [dict(kind=k, where=w, flag=f, other=o, epilogue=e) for k, w, f, o, e in coex]
+        cc = collections.Counter((k, s_rel(model, w), tuple(o)) for k, w, f, o, e in coex)
+        P("  %d gate uses. By (kind, route -> other):" % len(coex))
+        for (k, a, o), n in sorted(cc.items(), key=lambda x: (x[0][0], -x[1])):
+            ex = next((w, f) for kk, w, f, oo, e in coex if kk == k and s_rel(model, w) == a and tuple(oo) == o)
+            P("     %-30s %-18s -> %-28s x%-3d e.g. %s [%s]" % (k, a, ",".join(o), n, ex[0], ex[1]))
+
+        # ---- D3. epilogue guards (Rules.Available returns true for Epilogue owners BEFORE relationship Closed/Unavailable checks)
+        P("\n## D3. Epilogue scenes not guarded against their relationship's ClosedFlag / UnavailableFlags (Story.cs:205 skips those checks)")
+        eg = []
+        for s in model.scenes:
+            if not is_epilogue(s): continue
+            r = model.rels.get(s["Relationship"])
+            if not r: continue
+            pos = set(s["Requires"]) | set(s["RequiresAny"]) | {x for g in s["RequiresAnyGroups"] for x in g}
+            guards = [r["ClosedFlag"]] + [f for f in r.get("UnavailableFlags", [])]
+            # a scene that REQUIRES any loss/closure flag is an explicit loss ending: exempt
+            if pos & (set(guards) | {"loss", "inhuman"} | set(r.get("FailureFlags", []))): continue
+            req_mythic = pos & set(MYTHIC + ["true_lich"])
+            missing = [f for f in guards if f not in s["Forbids"] and not (req_mythic and f in MYTHIC + ["true_lich"])]
+            if missing: eg.append((s["Id"], s["Relationship"], missing))
+        R["epilogue_unguarded"] = [dict(scene=a, relationship=b, missing_forbids=c) for a, b, c in eg]
+        byr = collections.Counter(b for _, b, _ in eg)
+        P("  %d of %d epilogue scenes lack at least one guard. By relationship: %s" % (len(eg), sum(1 for s in model.scenes if is_epilogue(s)), dict(byr)))
+        for a, b, c in eg[:25]: P("     - %-45s %-16s missing forbids %s" % (a, b, c))
 
     # ---- E. lints
     P("\n## E. Lints")
@@ -2583,6 +2588,7 @@ def main():
     ap.add_argument("--no-zip", action="store_true")
     ap.add_argument("--drafts", action="store_true")
     ap.add_argument("--quiet", action="store_true")
+    ap.add_argument("--gate-only", action="store_true", help="run every strict check; defer report-only world/budget analyses to FULL")
     ap.add_argument("--strict", action="store_true", help="exit 1 on hard failures (for build gates)")
     ap.add_argument("--matrix", help="TT-20: check a trickster-matrix.json against the story (report; --strict fails on registered rows)")
     ap.add_argument("--matrix-json", default=str(report_dir / (report_stem + ".matrix.json"))) # eng7-l09
@@ -2610,7 +2616,7 @@ def main():
         sys.exit(code)
     global FREEZE_GC
     FREEZE_GC = True
-    R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet)
+    R, text = run(a.story, Path(a.game), use_zip=not a.no_zip, drafts=a.drafts, out_json=a.json, quiet=a.quiet, gate_only=a.gate_only)
     Path(a.text).write_text(text, encoding="utf-8")
     # eng7-l04: fail strict verification for unsupported adapter declarations.
     hard = len(R.get("drezen_placement", [])) + len(R.get("native_gate_contract", [])) + len(R["validate_errors"]) + len(R["no_producer_required"]) + len(R.get("typeid", {}).get("problems", [])) \

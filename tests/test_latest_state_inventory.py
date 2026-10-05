@@ -1,4 +1,5 @@
 """E-Q8-01 strict-inventory mutations, independent of the ordered C# histories."""
+from tests.story_fixture import fresh_story
 import copy
 import unittest
 
@@ -9,7 +10,7 @@ from tools import return_provenance_lint as lint
 class LatestStateInventoryTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.story = expansion.make_expansion()
+        cls.story = fresh_story()
         cls.data = lint.latest_contracts()
 
     def test_shipped_inventory(self):
