@@ -714,6 +714,9 @@ def make_expansion(*, independent_tirabade=True):
     # eng7-f6c end
     native_overrides.finalize(payload)
     validate_native_gate_contract(payload)
+    # eng7-l13: apply existing outcome contracts after every integrated consumer.
+    from storylines import earned_outcomes
+    earned_outcomes.integrate(payload)
     return payload
 
 

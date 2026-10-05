@@ -247,6 +247,7 @@ internal static class IomedaeTricksterTests
 
         // Trk_Iomedae_Disputation: the commit (her concession aloud), SkillLoreReligion DC 24 or plain, and every refusal
         // player-caused (the boast, the mocked madness, the lie about the theft); never after a yes or a no.
+        // eng7-l13: new disputation commitments require current power.
         var ready = World(story, 5, "trickster", "trickster.ever", Started, Latch, P + "bridge_seen", "iz.done", Held, Called);
         check(!Avail(disp, Later(ready, 0, area: "00000000000000000000000000000000")) && disp.Areas.SequenceEqual(new[] { Drezen }) && disp.DelayHours == 24
               && disp.Chapters.SequenceEqual(new[] { 5 }),
@@ -507,7 +508,8 @@ internal static class IomedaeTricksterTests
               && Render(coda, h2).Contains("never saw the banner"),
             "Trk_Iomedae_LastCall: her coda is not wired to her concession, or it has a call-in (her debt is made at the rift).");
         check(story.Derived["iomedae.harem.eligible"].Any(gr => gr.Length == 1 && gr[0] == Committed)
-              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed })
+        // eng7-l13: preparation also requires the live outcome contract.
+              && story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", Committed, "iomedae.outcome.route_open" })
               && !World(story, 6, "trickster.ever", Started, Declined).Has("iomedae.harem.eligible")
               && World(story, 5, "trickster.ever", Committed).Has("iomedae.harem.eligible"),
             "Trk_Iomedae_Household: eligibility follows something other than her concession.");

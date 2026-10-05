@@ -315,7 +315,9 @@ internal static class JannahTricksterTests
         var no = kept.First(r => r.Has(P + "declined"));
         check(!Avail(chalk, Later(story, no, 48)) && Avail(chalk, Later(story, no, 72)),
             "Trk_Jannah_Lie: the chalk circle is not left in the yard.");
-        var circle = chalk.Nodes.Single(n => n.Id == "open").Choices;
+        // eng7-l13: retain the five saved repair/parting answers and neutral exits.
+        var circle = chalk.Nodes.Single(n => n.Id == "open").Choices.Take(5).ToList();
+        check(chalk.Nodes.Single(n => n.Id == "open").Choices.Skip(5).All(c => c.Abort && c.Set.Length == 0), "Appended circle exits grant an outcome.");
         check(circle.Count == 5 && circle[0].Requires.Contains(P + "held_the_lie") && circle[1].Requires.Contains(P + "threw_the_bout")
               && circle[2].Requires.Contains(P + "shamed_her") && circle[3].Requires.Contains(P + "refused_the_yield")
               && circle.Take(4).All(c => c.Set.Contains(Committed) && c.Crusade == null) && circle[4].Set.Contains(Closed),

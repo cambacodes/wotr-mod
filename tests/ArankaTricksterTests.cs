@@ -392,7 +392,8 @@ internal static class ArankaTricksterTests
             Scene Y(Scene s) => S(s.Id + "_yard" + (chapter == 5 ? "_late" : ""));
             Scene M(Scene s) => chapter == 5 ? L(s) : s;
             int day = chapter == 5 ? 24 : 72, posted = chapter == 5 ? 24 : 48;
-            var yAnswered = Yard(chapter, "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
+            // eng7-l13: the positive encore creates a new Trickster commitment.
+            var yAnswered = Yard(chapter, "trickster", "trickster.ever", P + "answered", "aranka.extension_started", P + "cost.credited");
             check(Rules.Available(story, Y(duet), yAnswered) && !Rules.Available(story, M(duet), yAnswered),
                 "Fye-less duet: the yard copy is missing, or the counter scene still opens (chapter " + chapter + ").");
             var ySung = Play(Y(duet), yAnswered).First(r => r.Has(P + "duet_sung"));

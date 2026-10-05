@@ -48,7 +48,8 @@ internal static class JerribethProgressionTests
         Snapshot Core(int chapter)
         {
             var state = new Snapshot { Chapter = chapter, Hour = 1000, Area = "2570015799edf594daf2f076f2f975d8" };
-            state.Flags.UnionWith(new[] { "jerribeth.met", "seelah.committed", "kiana.committed", "trickster" });
+            // eng7-l13: this suite plays the ordinary campaign; Trickster uses the authored budget fold.
+            state.Flags.UnionWith(new[] { "jerribeth.met", "seelah.committed", "kiana.committed", "angel" });
             // Sol r2: in Chapter 5 the second letter is the question_late twin (the Trickster late-start fold; inert off the path).
             foreach (string id in new[] { "invitation", chapter == 5 ? "question_late" : "question", "guise", "price", "evening", "commission" })
                 state = Play(id, state, queue: true);
@@ -178,7 +179,8 @@ internal static class JerribethProgressionTests
             check(state.Has("jerribeth.settlement_kept"), "Played consequences fail to unlock future consideration.");
             if (history == "fresh")
             {
-                state = Play("future", state, s => s.Has("jerribeth.fate_terms"), queue: true);
+                // eng7-l13: choose the ordinary earned promise; the magic reply belongs to Trickster tests.
+                state = Play("future", state, s => s.Has("jerribeth.committed"), queue: true);
                 check(state.Has("jerribeth.developed_future"), "Fresh completed campaign cannot earn its future.");
                 check(!Rules.Available(story, reaffirm, state), "Fresh developed promise needlessly repeats as migration.");
             }

@@ -166,7 +166,9 @@ internal static class ForesightTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         Node N(Scene scene, string node) => scene.Nodes.Single(n => n.Id == node);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
-        HashSet<string> New(Snapshot from, Snapshot to) => new HashSet<string>(to.Flags.Where(f => !from.Has(f)));
+        // eng7-l13: exact authored effects exclude freshly recomputed Derived/Counts readers.
+        HashSet<string> New(Snapshot from, Snapshot to) => new HashSet<string>(to.Flags.Where(f => !from.Has(f)
+            && !story.Derived.ContainsKey(f) && !story.Counts.ContainsKey(f)));
         Snapshot Later(Snapshot w, int hours, int? chapter = null, params string[] add)
         {
             var later = Program.Copy(w);

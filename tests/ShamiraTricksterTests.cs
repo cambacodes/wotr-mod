@@ -340,7 +340,8 @@ internal static class ShamiraTricksterTests
         var throned = Program.Walk(S(P + "after.throne"), Later(story, committed, 73)).First();
         check(Avail(S(P + "after.night_alone"), Later(story, throned, 73)), "The night alone does not follow the throne.");
         check(Through(harem, hw, "search", 1).All(r => r.Has(P + "ally.favour")) && !Avail(S(P + "after.favour"), Later(story, Through(harem, hw, "search", 1).First(), 73)), "The ally never pays a favour, or it comes again as a page.");
-        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "game_proposed" })
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived[P + "late_committed"].Single().SequenceEqual(new[] { "trickster.ever", P + "game_proposed", "shamira.outcome.route_open" })
               && story.Derived["shamira.harem.eligible"].Length == 2 && story.Derived.ContainsKey("shamira.harem.voice.keeps_a_harem"),
             "The late commit or the household eligibility is not declared.");
 

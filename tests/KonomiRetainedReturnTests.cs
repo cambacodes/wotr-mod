@@ -7,6 +7,7 @@ internal static class KonomiRetainedReturnTests
 {
     internal static void Run(Story story, Action<bool, string> check)
     {
+        story = Program.ArchivedKonomi(story, check); // eng7-l13: live retirement + retained save graph
         const string unit = "ca2d58c5c65723945857e04fb85d30ce";
         const string capital = "2570015799edf594daf2f076f2f975d8";
         const string dead = "konomi.retained_dead";

@@ -141,7 +141,8 @@ internal static class HerraxTricksterTests
         var yes = Take(reachable, Later(story, cut, 24), "offer", 0, Committed, P + "morning_served");
         check(yes.Has(Committed) && Take(reachable, Later(story, cut, 24), "offer", 1, Closed).Has(Closed),
             "Trk_Herrax_Con: yes is not the commit, or no is not the Commander's own close.");
-        check(!reachable.Nodes.Any(n => n.Id == "offer" && n.Choices.Any(c => c.Check != null || c.Crusade != null || c.Requires.Length > 0)),
+        // eng7-l13: live eligibility is required; no new test or price is allowed.
+        check(!reachable.Nodes.Any(n => n.Id == "offer" && n.Choices.Any(c => c.Check != null || c.Crusade != null || c.Requires.Any(k => k != "trickster.now" && k != "herrax.outcome.route_open"))),
             "Trk_Herrax_Con: her proposal carries a test, a price or a gate.");
 
         // Trk_Herrax_ConBlown: the failure plays out in public, and still reaches the yes.
@@ -188,7 +189,7 @@ internal static class HerraxTricksterTests
             "Trk_Herrax_NoMadam: the courier does not speak to the met and unmet worlds.");
         var promise = Take(nextMove, unmet, "door", 0, Primed, Promised, Started);
         var late = pages.Single(s => s.Id == P + "epilogue.after_hours");
-        check(Avail(late, World(story, 6, "trickster.ever", Primed, Promised, Started)) && !Avail(pages.Single(s => s.Id == P + "epilogue.reachable"), World(story, 6, "trickster.ever", Promised)),
+        check(Avail(late, World(story, 6, promise.Flags.ToArray())) && !Avail(pages.Single(s => s.Id == P + "epilogue.reachable"), World(story, 6, "trickster.ever", Promised)),
             "Trk_Herrax_NoMadam: the page after the Threshold does not answer her letter.");
         check(story.Derived[P + "late_committed"].Any(g => g.Contains(Promised)) && story.Derived["herrax.harem.eligible"].Any(g => g.Length == 1 && g[0] == P + "late_committed"),
             "Trk_Herrax_NoMadam: the late commit is not the R2-6 late_committed key, or eligibility ignores it.");
@@ -204,7 +205,7 @@ internal static class HerraxTricksterTests
         };
         foreach (var (node, flags) in states)
         {
-            var ow = World(story, 5, new[] { "trickster.ever" }.Concat(flags).ToArray());
+            var ow = World(story, 5, new[] { "trickster", "trickster.ever" }.Concat(flags).ToArray());
             check(Avail(owed, ow) && !Avail(nextMove, ow), "Trk_Herrax_Owed_" + node + ": the owed letter does not come, or both letters do.");
             var next = owed.Nodes.Single(n => n.Id == "start").Choices.Where(c => Rules.Match(c.Requires, c.Forbids, ow)).Select(c => c.Next).ToList();
             check(next.Count == 1 && next[0] == node, "Trk_Herrax_Owed_" + node + ": the letter speaks from the wrong state (" + string.Join(",", next) + ").");
@@ -300,7 +301,7 @@ internal static class HerraxTricksterTests
         var reachablePage = pages.Single(s => s.Id == P + "epilogue.reachable");
         foreach (var page in new[] { reachablePage, late })
         {
-            var basis = page == late ? new[] { "trickster.ever", Primed, Promised, Started } : new[] { "trickster.ever", Committed };
+            var basis = page == late ? promise.Flags.ToArray() : new[] { "trickster.ever", Committed };
             check(Avail(page, World(story, 6, basis))
                   && Avail(page, World(story, 6, basis.Concat(new[] { "sacrifice", "trickster.commander_back" }).ToArray()))
                   && !Avail(page, World(story, 6, basis.Concat(new[] { "sacrifice" }).ToArray())),

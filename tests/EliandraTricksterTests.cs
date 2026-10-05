@@ -300,7 +300,8 @@ internal static class EliandraTricksterTests
         var kept = One(letter, Later(story, no, 60), new[] { E + "letter_kept" }, Committed);
         check(Rules.Available(story, S(E + "epilogue.late"), World(story, 6, kept.Flags.ToArray()))
               && !Rules.Available(story, S(E + "epilogue.declined"), World(story, 6, kept.Flags.ToArray()))
-              && story.Derived[E + "late_committed"].SequenceEqual(new[] { new[] { "trickster.ever", E + "letter_kept" } }, new SeqEq()),
+        // eng7-l13: preparation also requires the live outcome contract.
+              && story.Derived[E + "late_committed"].SequenceEqual(new[] { new[] { "trickster.ever", E + "letter_kept", "eliandra.outcome.route_open" } }, new SeqEq()),
             "The kept letter does not carry the R2-6 late yes.");
         // A committed Commander who survived the finale by the bottle keeps her page (ledger row 16: commander_back).
         var survived = World(story, 6, night.Flags.Concat(new[] { "sacrifice", "ending.trickster" }).ToArray());

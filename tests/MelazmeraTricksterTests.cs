@@ -396,7 +396,9 @@ internal static class MelazmeraTricksterTests
         // Pages: one per outcome.
         string[] Shown(params string[] flags) => pages.Where(s => Avail(s, World(story, 6, Drezen, flags))).Select(s => s.Id).ToArray();
         check(Shown("trickster.ever", Returned, Committed, StoneKept, Seal).SequenceEqual(new[] { P + "epilogue.together" })
-              && Shown("trickster.ever", Returned, Fed).SequenceEqual(new[] { P + "epilogue.commit" })
+              // eng7-l13: offering the new late promise needs current Trickster power.
+              && Shown("trickster", "trickster.ever", Returned, Fed).SequenceEqual(new[] { P + "epilogue.commit" })
+              && !Shown("trickster.ever", Returned, Fed).Contains(P + "epilogue.commit")
               && Shown("trickster.ever", Returned, Declined).SequenceEqual(new[] { P + "epilogue.declined" })
               && Shown("trickster.ever", Returned, LeftFree, Closed).SequenceEqual(new[] { P + "epilogue.left_free" })
               && Shown("trickster.ever", Returned, Committed, Declined, Hunted).SequenceEqual(new[] { P + "epilogue.together" })

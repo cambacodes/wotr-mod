@@ -439,7 +439,8 @@ internal static class CamelliaTricksterTests
         var again = S(P + "cards.two_lies_again");
         check(Ch(again, "two", 0).Requires.Contains(P + "masks.out_lied") && Ch(again, "two", 1).Forbids.Contains(P + "masks.out_lied"),
             "The second game rewrites a lost first game as a win.");
-        check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named" }),
+        // eng7-l13: preparation also requires the live outcome contract.
+        check(story.Derived[P + "late_committed"].Length == 1 && story.Derived[P + "late_committed"][0].SequenceEqual(new[] { "trickster.ever", P + "terms_named", "camellia.outcome.route_open", "camellia.trickster.late_committed.without.camellia.trickster.declined" }),
             "The Derived late commit does not rest on her named price.");
 
         Console.WriteLine("PASS: Camellia Trickster (Trk_Camellia_*): the joke at every kill, the late curtain, the veiled mourner, the body told it's overacting, her price, her test, the oath, and the life around them.");

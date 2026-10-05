@@ -470,7 +470,8 @@ internal static class JerribethTricksterTests
         // morning, and keeps a nonsexual refusal. The tenant with no body never knocks, and the host never lends his body.
         foreach (var vessel in new[] { "", "jerribeth.trickster.cost.host", "jerribeth.trickster.cost.lodger", "jerribeth.trickster.body.statue", "jerribeth.trickster.body.locust" })
         {
-            var flags = new List<string> { "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" };
+            // eng7-l13: positive new late act uses current power, not history alone.
+            var flags = new List<string> { "trickster", "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers" };
             if (vessel != "") flags.AddRange(new[] { Dead, Returned, "jerribeth.trickster.cost.tenant", vessel });
             var w = World(story, 6, flags.ToArray());
             check(Rules.Available(story, epCommit, w), "The late commit is missing for vessel '" + vessel + "'.");

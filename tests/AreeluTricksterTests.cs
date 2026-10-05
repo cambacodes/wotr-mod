@@ -208,7 +208,8 @@ internal static class AreeluTricksterTests
         check(raisedOut.Any(r => r.Has(Committed) && r.Has(Named) && r.Has(WoundCeded)) && raisedOut.Any(r => r.Has(Committed) && !r.Has(Named)),
             "The priced term (notes for her life, the wound as the price) or its refusal is missing at Threshold.");
         var producer = raised.Nodes.Single(n => n.Id == "her_choice").Choices[0];
-        check(producer.Set.SequenceEqual(new[] { Committed }) && producer.Requires.Length == 0, "The CommittedFlag producer moved (her_choice, choice 0).");
+        // eng7-l13: keep the producer at its saved index and require current power.
+        check(producer.Set.SequenceEqual(new[] { Committed }) && producer.Requires.SequenceEqual(new[] { "trickster.now" }), "The CommittedFlag producer moved (her_choice, choice 0).");
         check(!Available(raised, raisedOut.First(r => r.Has(Committed))), "The raised wager can be raised twice.");
 
         // Trk_Areelu_LateThreshold.

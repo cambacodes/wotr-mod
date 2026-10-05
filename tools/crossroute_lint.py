@@ -21,6 +21,7 @@ sys.path.insert(0, str(ROOT))
 from tools.crossroute_checks import (other_woman, commander_alive, location_staging,
                                     late_commitment, world_facts, left_trickster)
 from tools.crossroute_checks.common import Proof, blocks, verify
+from tools.lastcall_entitlement_lint import errors as entitlement_errors
 
 CHECKS = (other_woman, commander_alive, location_staging, late_commitment, world_facts, left_trickster)
 BASELINE = ROOT / "tools/crossroute_lint_baseline.json"
@@ -30,7 +31,10 @@ CALIBRATION = """## Calibration
 Hand-checked on the regenerated branch export against `Rules.Available`,
 `RouteOpen`, `ParticipantsAvailable`, `ParagraphVisible`, the actual scene
 choices, and the blueprint/localization sources cited in the check modules.
-No prose or route condition was changed. L1 name-only findings deliberately
+eng7-l13 adds generator guards to L4 producers/consumers and the mandatory
+existing refusal/consequence contracts. Node prose and saved identifiers stay
+unchanged. The original L1/L2/L3/L5/L6 calibration below remains applicable.
+L1 name-only findings deliberately
 retain the task's broad name policy (including letters and recollections);
 `:physical` findings additionally assert actual staging.
 
@@ -43,10 +47,10 @@ retain the task's broad name policy (including letters and recollections);
 | L3 | `horzalah.trickster.react.wenduag_morning/start` | Citadel staging, Chapter 5, no area gate; reported. |
 | L3 | `horzalah.trickster.visit.chamber/room` | Explicit prior room-fold journey on every incoming path earns an authored location variant; removed the initial false positive. |
 | L3 | `shamira.trickster.ch4.read/war` | Drezen is mental imagery in a narrated mind search; removed the initial false positive. Drezen wardrobe starts elsewhere remain findings. |
-| L4 | `devarra.trickster.epilogue.woken` | A historical return plus commitment does not establish today's closed/departure eligibility; reported. |
-| L4 | `iomedae.trickster.disputation/torches/choice[0]` | Sets commitment with historical `trickster.ever`, without live-path evidence; reported. |
-| L4 | `jannah.circle.measure/measure_line/choice[1]` | Romantic response can follow `declined` without `chalk_circle.walked_in`; reported. The repair choice itself remains legitimate. |
-| L4 | Nenio `commit.result` clean branch / replication / committed article | Clean incoming branch forbids tampering; replication records the authored repair. All commitment producers and all contamination producers prove the immutable control invariant. Removed the article's initial false positive; unguarded folio romance still reported. |
+| L4 | `devarra.trickster.epilogue.woken` | Live RouteOpen now guards the outcome; matching earned returns still lift only their losses. |
+| L4 | `iomedae.trickster.disputation/torches/choice[0]` | Integrated scene entry requires `trickster.now`; mutation removing its effective entry/answer guard reproduces L4. |
+| L4 | Jannah `blade`, `the_watch`, `anything_but_wings`, `your_part`, and flirt siblings | Each romantic incoming edge reads NOT declined OR existing chalk-circle repair. The repair producer remains selectable. |
+| L4 | Nenio `commit.result` clean branch / replication / committed article | Clean incoming branch forbids tampering; replication records the authored repair. All commitment producers and all contamination producers prove the immutable control invariant. Removed the article's initial false positive; generator guards the folio siblings, and kissing during isolation records the existing tampering consequence. |
 | L4 | Konomi `ending_private` and sibling ending pages | Forbidding `dead.unreturned` covers the current retained corpse through the central live lifecycle observer. Current sources imply their history latch; the latch never implies current life. Removed these initial false positives after checking `KonomiRecovery.ObserveLife/ReadLifecycle` and `Main.State`. |
 | L5 | `chadali.trickster.epilogue.lucky_night/page/paragraph[15]` | `hoped_aloud` does not imply native `Ending_WoundClosed`; reported. |
 | L5 | `kaylessa.trickster.epilogue.declined/page` | Claims closure without the closure etude; Crossroads history remains possible; reported. |
@@ -135,8 +139,8 @@ def markdown_report(result):
               "E-Q7-05: living continuation contracts cover every sibling, including mourning/allowlisted pages. "
               "Unreturned sacrifice selects bereavement; existing earned Commander returns retain the living alternative. Historical costs remain. "
               "No new device, price, commitment or repair gate was added.", "",
-              "L2/L3/L5/L6 are zero. Remaining L1/L4 rows below are route-prose follow-ups, not approved outcomes. "
-              "Appended neutral/bereavement alternatives retain applicable L1/L4 debt, so their fingerprints are separately enumerated. "
+              "L2/L3/L4/L5/L6 are zero. Remaining L1 rows below are route-prose follow-ups, not approved outcomes. "
+              "Appended neutral/bereavement alternatives retain applicable L1 debt, so their fingerprints are separately enumerated. "
               "No remaining row is dismissed as a false positive without evidence.", "",
               "## Remaining finding referrals", "",
               "Each row maps one baseline fingerprint to the exact consumer and the guard still needing route-owner review. "
@@ -151,6 +155,13 @@ def markdown_report(result):
     lines += ["", "## Historical q6a calibration", "",
               "The following calibration describes the input before eng7-l12 repairs; its reported L3/L5 examples are now resolved. "
               "It remains here as the original evidence and proof-limit record.", "", CALIBRATION.rstrip()]
+    # eng7-l13: every residual has an explicit route/scene disposition. These
+    # are retained review debt outside the L4 lane, not silently waived facts.
+    lines += ["", "## eng7-l13 residual dispositions", "",
+              "L4 is fully burned down. Explicit historical/negative exemptions and the existing mandatory consumer contracts are in `tools/earned_outcome_inventory_contracts.json`. Aeon's rewritten history retains its existing exception. Exact non-romance framework milestone flags (Shyka's paid page receipt, the Long Con talk, Ledger and table milestones) are documented separately; the exemption never hides another romantic producer on the same answer. Shyka's paid page retains its mandatory no-abort completion. Solo Minagho/Chivarro outcomes read the named woman's losses plus common route blockers, using SeatWomen; the absent partner is not required. Chivarro's own walk-out still reads the existing WON_BACK repair; Minagho's solo road ignores that other woman's walk-out. Late-road keys are checked as producers in their own right, including existing refusal forbids on pages that read raw terms. Existing ForbidOverrides remain repair roads, including Chadali's authored hall_sealed fallback. They retain their preparation inputs and read current route/refusal/control eligibility; new Trickster acts at their consumers additionally read trickster.now. Historical paid consequences retain trickster.ever.", "",
+              "The exact remaining route-prose referrals appear in the eng7-l12 table above.", "",
+              "## eng7-integ4 baseline review", "",
+              "All 76 changed L1 fingerprints match the prior integrated baseline by check, route, scene, node, slot, subject, excerpt, missing condition and required predicate. Their guard contexts changed when l13 added live eligibility; no prose, location or participant contract changed. The combined baseline retains 1,681 existing L1 referrals (previously 1,685). Added live outcome proof resolves four prior rows: anevia.ending_changed_power/end/paragraph[8] (Irabeth), irabeth.ending_ascent/end/text (Iomedae), and irabeth.ending_changed/end/paragraph[6] and paragraph[14] (Anevia). No new finding class or prose was waived. L2/L3/L4/L5/L6 are zero."]
     return "\n".join(lines) + "\n"
 
 
@@ -169,6 +180,8 @@ def main(argv=None):
         parser.error("--strict cannot write its own baseline")
     story = json.loads(args.story.read_text(encoding="utf-8-sig"))
     findings = check(story)
+    # eng7-l13: serialized call/coda/Book/journal parity is also mandatory.
+    entitlement_failures = entitlement_errors(story)
     baseline = json.loads(args.baseline.read_text(encoding="utf-8-sig")) if args.baseline.exists() else {"findings": []}
     if baseline.get("schema", 1) != 1 or not isinstance(baseline.get("findings"), list):
         parser.error("invalid baseline schema")
@@ -181,11 +194,13 @@ def main(argv=None):
         args.json.write_text(json.dumps(result, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     output = text_report(result, args.details)
     print(output, end="")
+    for failure in entitlement_failures:
+        print("L4 entitlement contract: " + failure)
     if args.text:
         args.text.write_text(text_report(result, details=True), encoding="utf-8")
     if args.markdown:
         args.markdown.write_text(markdown_report(result), encoding="utf-8")
-    return int(args.strict and bool(result["new_findings"]))
+    return int(args.strict and bool(result["new_findings"] or entitlement_failures))
 
 
 if __name__ == "__main__":

@@ -183,9 +183,12 @@ internal static class LastCallTests
         foreach (var call in calls)
         {
             string rel = call.Id.Substring(0, call.Id.Length - ".lastcall.call".Length), due = rel + ".lastcall.callable";
+            // eng7-l13: stakes stay exact; Nenio control and Wenduag partnership are mandatory extra readers.
+            string? eligibility = rel == "nenio" ? "nenio.outcome.eligible" : rel == "wenduag" ? "wenduag.trickster.partner" : null;
             check(call.Requires.Contains(due) && story.DerivedOpenRoutes.TryGetValue(due, out var routes) && routes.SequenceEqual(new[] { rel })
                   && story.DerivedForbids.TryGetValue(due, out var settled) && settled.First() == rel + ".lastcall.resolved"
-                  && story.Derived[due].Select(g => g.Single()).OrderBy(k => k).SequenceEqual(call.RequiresAnyGroups.Single().OrderBy(k => k))
+                  && (eligibility == null || story.Derived[due].All(g => g.Contains(eligibility)))
+                  && story.Derived[due].Select(g => g.Where(k => k != eligibility).Single()).OrderBy(k => k).SequenceEqual(call.RequiresAnyGroups.Single().OrderBy(k => k))
                   && joke.Forbids.Contains(due) && jokeAreelu.Forbids.Contains(due),
                 "Engine-q2: a call-in is not guarded by its partner's open route, or the last joke does not wait on it: " + call.Id);
             check(call.Requires.Contains(Open) && call.Forbids.Contains(Taken) && call.RequiresAnyGroups.Length == 1 && call.AnswerLists.Length == 5
@@ -255,6 +258,8 @@ internal static class LastCallTests
               && Rules.JournalStep(socoth, true, false, paid) == null,
             "E15: a Ledger line is not given when the debt appears and completed when it is called in.");
         var authored = story.Scenes.SelectMany(s => s.Nodes).SelectMany(n => n.Choices).SelectMany(c => c.Set).ToHashSet();
+        // eng7-l13: NAME_GONE is an earned Derived stake, validated against its live producers.
+        authored.UnionWith(story.Derived.Keys);
         foreach (var entry in ledger.JournalEntries)
             check(entry.OpenWhen.SelectMany(g => g).All(authored.Contains), "A Ledger line opens on a flag nothing sets: " + entry.Id);
         // NM1 (ideal-run C14): no call-in can strand the last joke. In every combination of the flags its choices read, some

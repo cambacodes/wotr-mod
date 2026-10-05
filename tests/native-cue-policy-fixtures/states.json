@@ -1439,6 +1439,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -1455,6 +1456,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.ever"
@@ -1472,6 +1474,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.commander_back",
         "trickster.ever"
@@ -1489,6 +1492,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.commander_back",
@@ -1507,6 +1511,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned"
       ],
       "NativeEligible": [
@@ -1521,6 +1526,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
+        "camellia.outcome.route_open",
         "trickster.ever"
       ],
       "NativeEligible": [
@@ -1537,6 +1543,7 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -1553,6 +1560,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "sacrifice",
         "trickster.ever"
@@ -1570,6 +1578,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "rrt.degraded.camellia",
         "trickster.ever"
@@ -1587,6 +1596,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -2559,6 +2569,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -2575,6 +2586,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.ever"
@@ -2592,6 +2604,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.commander_back",
         "trickster.ever"
@@ -2609,6 +2622,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.commander_back",
@@ -2627,6 +2641,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned"
       ],
       "NativeEligible": [
@@ -2641,6 +2656,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
+        "camellia.outcome.route_open",
         "trickster.ever"
       ],
       "NativeEligible": [
@@ -2657,6 +2673,7 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -2673,6 +2690,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "sacrifice",
         "trickster.ever"
@@ -2690,6 +2708,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "rrt.degraded.camellia",
         "trickster.ever"
@@ -2707,6 +2726,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -2721,6 +2741,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -2737,6 +2758,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.ever"
@@ -2754,6 +2776,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.commander_back",
         "trickster.ever"
@@ -2771,6 +2794,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.commander_back",
@@ -2789,6 +2813,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned"
       ],
       "NativeEligible": [
@@ -2803,6 +2828,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
+        "camellia.outcome.route_open",
         "trickster.ever"
       ],
       "NativeEligible": [
@@ -2819,6 +2845,7 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -2835,6 +2862,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "sacrifice",
         "trickster.ever"
@@ -2852,6 +2880,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "rrt.degraded.camellia",
         "trickster.ever"
@@ -2869,6 +2898,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -4462,6 +4492,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -4478,6 +4509,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.ever"
@@ -4495,6 +4527,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.commander_back",
         "trickster.ever"
@@ -4512,6 +4545,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.commander_back",
@@ -4530,6 +4564,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned"
       ],
       "NativeEligible": [
@@ -4544,6 +4579,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
+        "camellia.outcome.route_open",
         "trickster.ever"
       ],
       "NativeEligible": [
@@ -4560,6 +4596,7 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -4576,6 +4613,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "sacrifice",
         "trickster.ever"
@@ -4593,6 +4631,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "rrt.degraded.camellia",
         "trickster.ever"
@@ -4610,6 +4649,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -5690,6 +5730,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -5706,6 +5747,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.ever"
@@ -5723,6 +5765,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.commander_back",
         "trickster.ever"
@@ -5740,6 +5783,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.killed_held",
         "camellia.trickster.returned",
         "trickster.commander_back",
@@ -5758,6 +5802,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned"
       ],
       "NativeEligible": [
@@ -5772,6 +5817,7 @@
       "Page": "503164ff04ac64543ba42561ea9f970f",
       "Chapter": 6,
       "Flags": [
+        "camellia.outcome.route_open",
         "trickster.ever"
       ],
       "NativeEligible": [
@@ -5788,6 +5834,7 @@
       "Flags": [
         "camellia.closed",
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -5804,6 +5851,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "sacrifice",
         "trickster.ever"
@@ -5821,6 +5869,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "rrt.degraded.camellia",
         "trickster.ever"
@@ -5838,6 +5887,7 @@
       "Chapter": 6,
       "Flags": [
         "camellia.committed",
+        "camellia.outcome.route_open",
         "camellia.trickster.returned",
         "trickster.ever"
       ],
@@ -9650,7 +9700,8 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "arsinoe.trickster.late_committed"
+        "arsinoe.trickster.late_committed",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "arsinoe.trickster.late.commit"
@@ -10156,7 +10207,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_together"
+        "minachiv.future_together",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_together"
@@ -10169,7 +10221,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_two"
+        "minachiv.future_two",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_two"
@@ -10182,7 +10235,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_minagho"
+        "minachiv.future_minagho",
+        "minagho_chivarro.outcome.minagho_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_minagho"
@@ -10195,7 +10249,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_chivarro"
+        "minachiv.future_chivarro",
+        "minagho_chivarro.outcome.chivarro_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_chivarro"
@@ -10208,7 +10263,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_open"
+        "minachiv.future_open",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_open"
@@ -10221,7 +10277,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_friends"
+        "minachiv.future_friends",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_friends"
@@ -10234,7 +10291,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_chivarro_service"
+        "minachiv.future_chivarro_service",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_chivarro_service"
@@ -10247,7 +10305,8 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
-        "minachiv.future_service"
+        "minachiv.future_service",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_service"
@@ -10429,7 +10488,8 @@
       "Chapter": 6,
       "Flags": [
         "ascended",
-        "minachiv.complete"
+        "minachiv.complete",
+        "minagho_chivarro.outcome.eligible"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minachiv.ending_ascent_completed"
@@ -10442,6 +10502,7 @@
       "Chapter": 6,
       "Flags": [
         "minachiv.complete",
+        "minagho_chivarro.outcome.eligible",
         "sacrifice"
       ],
       "NativeEligible": [],
@@ -10467,7 +10528,8 @@
       "Chapter": 6,
       "Flags": [
         "noct.chosen_company",
-        "noct.complete"
+        "noct.complete",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_company"
@@ -10480,7 +10542,8 @@
       "Chapter": 6,
       "Flags": [
         "noct.chosen_alliance",
-        "noct.complete"
+        "noct.complete",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_alliance"
@@ -10493,7 +10556,8 @@
       "Chapter": 6,
       "Flags": [
         "noct.chosen_limit",
-        "noct.complete"
+        "noct.complete",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_limit"
@@ -10532,7 +10596,8 @@
       "Chapter": 6,
       "Flags": [
         "ascended",
-        "noct.complete"
+        "noct.complete",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_ascent"
@@ -10575,7 +10640,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_new",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_company.acquired.new"
@@ -10611,7 +10677,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_prior",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_company.acquired.prior"
@@ -10629,7 +10696,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_new",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_alliance.acquired.new"
@@ -10665,7 +10733,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_prior",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_alliance.acquired.prior"
@@ -10683,7 +10752,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_new",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_limit.acquired.new"
@@ -10719,7 +10789,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_prior",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_limit.acquired.prior"
@@ -10845,7 +10916,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_new",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_ascent.acquired.new"
@@ -10881,7 +10953,8 @@
         "noct.join.exit_demonstrated",
         "noct.join.harbor_variant_ready",
         "noct.join.history_prior",
-        "noct.join.recurring_dreams_accepted"
+        "noct.join.recurring_dreams_accepted",
+        "nocticula.outcome.route_open"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "noct.ending_ascent.acquired.prior"
@@ -11111,6 +11184,7 @@
       "Flags": [
         "anevia.committed",
         "anevia.lastcall.route_open",
+        "anevia.outcome.route_open",
         "lastcall.active",
         "trickster.ever"
       ],
@@ -11126,7 +11200,8 @@
       "Flags": [
         "jerribeth.commission",
         "jerribeth.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "jerribeth.trickster.epilogue.commit"
@@ -11154,7 +11229,8 @@
       "Chapter": 6,
       "Flags": [
         "konomi.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "konomi.trickster.epilogue.commit"
@@ -11317,6 +11393,7 @@
       "Chapter": 6,
       "Flags": [
         "noct.complete",
+        "nocticula.outcome.route_open",
         "nocticula.trickster.cost.shade_paid",
         "trickster.ever"
       ],
@@ -11345,6 +11422,7 @@
       "Chapter": 6,
       "Flags": [
         "noct.complete",
+        "nocticula.outcome.route_open",
         "nocticula.trickster.cost.shade_refused",
         "trickster.ever"
       ],
@@ -11399,8 +11477,10 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "nocticula.outcome.route_open",
         "nocticula.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "nocticula.trickster.epilogue.commit"
@@ -11440,6 +11520,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "trickster.now",
         "vellexia.trickster.late_committed"
       ],
       "NativeEligible": [],
@@ -11468,7 +11549,8 @@
       "Chapter": 6,
       "Flags": [
         "nurah.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "nurah.trickster.epilogue.commit"
@@ -11577,7 +11659,8 @@
       "Flags": [
         "kiana.lovers",
         "kiana.trickster.met",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "kiana.trickster.epilogue.commit"
@@ -11658,6 +11741,7 @@
         "minachiv.complete",
         "minachiv.future_two",
         "minagho.life.available",
+        "minagho_chivarro.outcome.eligible",
         "minagho_chivarro.trickster.committed",
         "trickster.ever"
       ],
@@ -11674,6 +11758,7 @@
         "chivarro.life.available",
         "minachiv.complete",
         "minachiv.future_chivarro",
+        "minagho_chivarro.outcome.chivarro_open",
         "minagho_chivarro.trickster.committed",
         "trickster.ever"
       ],
@@ -11690,6 +11775,7 @@
         "minachiv.complete",
         "minachiv.future_minagho",
         "minagho.life.available",
+        "minagho_chivarro.outcome.minagho_open",
         "minagho_chivarro.trickster.committed",
         "trickster.ever"
       ],
@@ -11718,8 +11804,10 @@
       "Chapter": 6,
       "Flags": [
         "chivarro.life.available",
+        "minagho_chivarro.outcome.chivarro_open",
         "minagho_chivarro.trickster.tprev.house",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "minagho_chivarro.trickster.epilogue.commit"
@@ -11786,7 +11874,8 @@
       "Chapter": 6,
       "Flags": [
         "soana.trickster.late_committed",
-        "soana.trickster.returned"
+        "soana.trickster.returned",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.trickster.epilogue.commit"
@@ -11799,7 +11888,8 @@
       "Chapter": 6,
       "Flags": [
         "soana.trickster.late_committed",
-        "soana.trickster.luck_kept"
+        "soana.trickster.luck_kept",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "soana.trickster.epilogue.luck_late"
@@ -11936,7 +12026,8 @@
       "Chapter": 6,
       "Flags": [
         "aranka.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "aranka.trickster.epilogue.commit"
@@ -12031,7 +12122,8 @@
       "Flags": [
         "gesmerha.trickster.returned",
         "gesmerha.trickster.yard_seen",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "gesmerha.trickster.epilogue.commit"
@@ -12046,7 +12138,8 @@
         "gesmerha.trickster.returned",
         "gesmerha.trickster.yard_seen",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "gesmerha.trickster.epilogue.commit_mourned"
@@ -12155,7 +12248,8 @@
       "Flags": [
         "seelah.romance",
         "seelah.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "seelah.trickster.epilogue.commit"
@@ -12223,7 +12317,8 @@
       "Chapter": 6,
       "Flags": [
         "dorgelinda.trickster.methods_heard",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "dorgelinda.trickster.epilogue.commit"
@@ -12318,7 +12413,8 @@
       "Chapter": 6,
       "Flags": [
         "hepzamirah.trickster.courier_seen",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "hepzamirah.trickster.epilogue.commit"
@@ -12360,7 +12456,8 @@
       "Chapter": 6,
       "Flags": [
         "targona.trickster.washed_the_dead",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "targona.trickster.epilogue.commit"
@@ -12509,7 +12606,8 @@
       "Chapter": 6,
       "Flags": [
         "camellia.trickster.terms_named",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.commit"
@@ -12523,7 +12621,8 @@
       "Flags": [
         "camellia.trickster.terms_named",
         "sacrifice",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "camellia.trickster.epilogue.commit_on_record"
@@ -12565,7 +12664,8 @@
       "Chapter": 6,
       "Flags": [
         "eritrice.started",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "eritrice.trickster.epilogue.commit"
@@ -13060,7 +13160,8 @@
       "Chapter": 6,
       "Flags": [
         "chadali.started",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "chadali.trickster.epilogue.commit"
@@ -13114,7 +13215,8 @@
       "Chapter": 6,
       "Flags": [
         "arueshalae.trickster.aftertaste",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "arueshalae.trickster.epilogue.commit"
@@ -13256,7 +13358,8 @@
       "Chapter": 6,
       "Flags": [
         "devarra.trickster.tested",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "devarra.trickster.epilogue.commit"
@@ -13339,7 +13442,8 @@
       "Chapter": 6,
       "Flags": [
         "delamere.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "delamere.trickster.epilogue.late"
@@ -13492,7 +13596,8 @@
       "Chapter": 6,
       "Flags": [
         "kaylessa.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "kaylessa.trickster.epilogue.commit"
@@ -13544,6 +13649,7 @@
       "Chapter": 6,
       "Flags": [
         "mielarah.committed",
+        "mielarah.outcome.eligible",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -13611,7 +13717,8 @@
       "Chapter": 6,
       "Flags": [
         "nidalynn.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "nidalynn.trickster.epilogue.late"
@@ -13747,7 +13854,8 @@
       "Flags": [
         "shamira.trickster.embodied",
         "shamira.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "shamira.trickster.epilogue.late"
@@ -13895,6 +14003,7 @@
       "Chapter": 6,
       "Flags": [
         "jannah.committed",
+        "jannah.outcome.eligible",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -13908,7 +14017,8 @@
       "Chapter": 6,
       "Flags": [
         "jannah.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "jannah.trickster.epilogue.commit"
@@ -13962,6 +14072,7 @@
       "Chapter": 6,
       "Flags": [
         "nenio.committed",
+        "nenio.outcome.eligible",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -13975,7 +14086,8 @@
       "Chapter": 6,
       "Flags": [
         "nenio.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "nenio.trickster.epilogue.commit"
@@ -14017,6 +14129,7 @@
         "lastcall.active",
         "nenio.committed",
         "nenio.lastcall.route_open",
+        "nenio.outcome.eligible",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -14043,7 +14156,8 @@
       "Chapter": 6,
       "Flags": [
         "herrax.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "herrax.trickster.epilogue.after_hours"
@@ -14111,7 +14225,8 @@
       "Chapter": 6,
       "Flags": [
         "terendelev.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "terendelev.trickster.epilogue.late"
@@ -14207,7 +14322,8 @@
       "Chapter": 6,
       "Flags": [
         "eliandra.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "eliandra.trickster.epilogue.late"
@@ -14343,7 +14459,8 @@
       "Chapter": 6,
       "Flags": [
         "galfrey.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "galfrey.trickster.epilogue.late"
@@ -14469,7 +14586,8 @@
       "Chapter": 6,
       "Flags": [
         "horzalah.trickster.late_committed",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "horzalah.trickster.epilogue.commit"
@@ -14698,7 +14816,8 @@
       "Chapter": 6,
       "Flags": [
         "melazmera.trickster.returned",
-        "trickster.ever"
+        "trickster.ever",
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "melazmera.trickster.epilogue.commit"
@@ -14792,6 +14911,7 @@
       "Chapter": 6,
       "Flags": [
         "trickster.ever",
+        "trickster.now",
         "yaniel.trickster.courted",
         "yaniel.trickster.verdict"
       ],

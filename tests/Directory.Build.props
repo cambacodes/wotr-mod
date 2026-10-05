@@ -1,0 +1,7 @@
+<Project>
+  <!-- eng7-l13: callers can keep all build artifacts outside the worktree. -->
+  <PropertyGroup Condition="'$(RRT_TEST_BUILD_ROOT)' != ''">
+    <BaseIntermediateOutputPath>$(RRT_TEST_BUILD_ROOT)/obj/</BaseIntermediateOutputPath>
+    <BaseOutputPath>$(RRT_TEST_BUILD_ROOT)/bin/</BaseOutputPath>
+  </PropertyGroup>
+</Project>
