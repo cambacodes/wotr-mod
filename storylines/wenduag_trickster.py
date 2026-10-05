@@ -1055,3 +1055,16 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+# eng8-q8d: use the Storyteller's verified Nexus conversation to leave his
+# fire and inspect the camp. Wenduag is never spawned by a narrator-only beat.
+# StoryTeller_MainDialogue/AnswersList_0002; Nexus is the crusade's Ch4 camp.
+for _eng8_suffix, _eng8_entry in (
+    ('ch4.stone', '[Check your pack beside the Storyteller\'s fire.]'),
+    ('exile.champion', '[Leave the fire and make a circuit of the camp.]'),
+    ('exile.late_bid', '[Walk out beyond the camp pickets.]')):
+    _eng8_scene = next(s for s in SCENES if s['Id'] == W + _eng8_suffix)
+    _eng8_scene.pop('Kind', None)
+    _eng8_scene.update(Remote=False, ContactUnit='da4c28dd01413694f82b08b728a8c6e5',
+        AnswerLists=['88cfebc7c46549aba284036a26e9eade'],
+        Areas=['7847c3e3537104f4694167af0b9fcd0e'], Entry=_eng8_entry)
+# end eng8-q8d

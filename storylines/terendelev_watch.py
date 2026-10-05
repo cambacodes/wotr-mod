@@ -933,3 +933,18 @@ for _suffix in ("", "_awning"):
         '{n}You tell her what the survivors say of the festival preparations. The morning itself is gone; their accounts cannot give it back.{/n} "The bunting," {n}she murmurs.{/n} "I helped put it up. They could never reach the top of the gate."',
         foresight.GONE_SQUARE)
 # end eng7-l09
+# eng8-q8d: her debtor report is handed over on either earned presence hub.
+_eng8_report = next(s for s in SCENES if s['Id'] == P + 'letter.debtor')
+_eng8_report.pop('Kind', None)
+_eng8_report.update(Remote=False, Entry='[Take her report.]', ContactUnit=HUMAN,
+                     InteractionHub=HUB, Areas=[DREZEN])
+_eng8_report['Nodes'][0]['Text'] = ('{n}Terendelev hands you a folded report. Her writing is large, square and very careful.{/n}\n'
+                                     + _eng8_report['Nodes'][0]['Text'].split('\n', 1)[1])
+_eng8_twin = copy.deepcopy(_eng8_report)
+_eng8_twin['Id'] += '_awning'
+_eng8_twin['InteractionHub'] = HUB_FB
+_eng8_twin['Requires'].append(HUB_FAILED)
+_eng8_twin['Forbids'].append(_eng8_report['Id'])
+_eng8_report['Forbids'].extend([_eng8_twin['Id'], HUB_FAILED])
+SCENES.append(_eng8_twin)
+# end eng8-q8d

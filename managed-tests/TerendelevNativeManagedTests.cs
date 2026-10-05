@@ -46,7 +46,12 @@ internal static class TerendelevNativeManagedTests
             NextCue = new CueSelection { Strategy = Strategy.First, Cues = ((JArray)native[question]["NextCue"]!["Cues"]!).Select(v => Ref<BlueprintCueBaseReference>((string)v!)).ToList() } };
         oldQuestion.Text = new Kingmaker.Localization.LocalizedString();
         typeof(Kingmaker.Localization.LocalizedString).GetField("m_Key", Fields)!.SetValue(oldQuestion.Text, (string)native[question]["Text"]!["m_Key"]!);
-        return new Dictionary<string, SimpleBlueprint> { [funeral] = cue, [question] = oldQuestion };
+        // eng7-f6c: the funeral hide also reviews the scale answer its AnswerSelected names and that the cue sits once in its CueSequence.
+        var funeralSequence = new BlueprintCueSequence { AssetGuid = BlueprintGuid.Parse(NativeGate.TerendelevFuneralSequence) };
+        funeralSequence.Cues.AddRange(((JArray)native[NativeGate.TerendelevFuneralSequence]["Cues"]!).Select(v => Ref<BlueprintCueBaseReference>((string)v!)));
+        var scaleAnswer = new BlueprintAnswer { AssetGuid = BlueprintGuid.Parse(NativeGate.TerendelevScaleAnswer) };
+        return new Dictionary<string, SimpleBlueprint> { [funeral] = cue, [question] = oldQuestion,
+            [NativeGate.TerendelevFuneralSequence] = funeralSequence, [NativeGate.TerendelevScaleAnswer] = scaleAnswer };
     }
     internal static void Seed(Dictionary<string, JObject> native, Action<bool, string> check)
     {
@@ -79,7 +84,7 @@ internal static class TerendelevNativeManagedTests
     }
     private static void RunGates(Story story, Dictionary<string, JObject> native, Action<bool, string> check)
     {
-        foreach (string gate in new[] { "terendelev.scale_funeral", "terendelev.trapped_future" })
+        foreach (string gate in new[] { NativeGate.TerendelevFuneral } /* eng7-f6c retired the trapped-future answer gate: Answer_0784 stays native */)
         {
             var world = Gates(native, check);
             var spec = story.NativeGates[gate];

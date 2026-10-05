@@ -667,3 +667,18 @@ for _host in (P + "bones.restitution", P + "bones.restitution_irabeth"):
         '{n}She looks down at the bones she came out of.{/n} "My wings are in that fire." {n}Her voice steadies.{/n} "Well. I came out of it, and they did not. I will take that bargain for now."',
         _foresight.GONE_SQUARE)
 # end eng7-l09
+# eng8-q8d: authored blood test in Chapter 3 Drezen, before the descent.
+_eng8_test = next(s for s in SCENES if s['Id'] == P + 'wound.weeps')
+_eng8_test.update(MinChapter=3, MaxChapter=3, Chapters=[3], Areas=[DREZEN])
+for _eng8_node in _eng8_test['Nodes']:
+    if _eng8_node['Id'] == 'areelu':
+        # Keep the saved node; Chapter 3 has no future audience-hall memory.
+        _eng8_node['Text'] = next(n['Text'] for n in _eng8_test['Nodes'] if n['Id'] == 'plain')
+    _eng8_node['Text'] = (_eng8_node['Text']
+        .replace('The Abyss has no night, only a dimmer red. You wake in it', 'Drezen\'s bells wake you before dawn')
+        .replace('On the dust of the Abyss itself', 'On a scrap of a cultist\'s Abyssal hide')
+        .replace('The priests in the Abyss do not try.', 'The citadel\'s priests can only bind it.')
+        .replace('lying in the red half-dark', 'lying in the first grey light')
+        .replace('The Abyss mutters to itself beyond the pickets.', 'The watch changes beyond the citadel door.')
+        .replace('you ride on into the red.', 'you return to the crusade\'s dispatches.'))
+# end eng8-q8d

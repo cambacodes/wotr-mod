@@ -69,6 +69,17 @@ def check(story):
         if story.get('Derived', {}).get(key) != value:
             errors.append('RP incorrect provenance reader ' + key)
     by = {s['Id']: s for s in story['Scenes']}
+    # eng8-q8d: registration is node-scoped; the ritual must still establish
+    # its native execution and paid breath before the folded agreement.
+    folded = data.get('eng8-q8d', {}).get('coffin_completion_nodes', {})
+    for sid, nodes in folded.items():
+        scene = by.get(sid, {})
+        if (data['producer_inputs'][0] not in scene.get('Requires', [])
+                or not any(data['producer_inputs'][1] in c.get('Set', [])
+                           for n in scene.get('Nodes', []) for c in n['Choices'])
+                or not set(nodes) <= {n['Id'] for n in scene.get('Nodes', [])}):
+            errors.append('RP folded coffin lacks matching ritual: ' + sid)
+    # end eng8-q8d
     if data['completed'] in story.get('Derived', {}) or data['completed'] in story.get('Latches', {}):
         errors.append('RP completed coffin return must be authored by its own producer')
     for sid in data['producers'] + data['veiled_scenes'] + data['dispatch_scenes']:
@@ -89,7 +100,9 @@ def check(story):
                 loc = '%s/%s[%d]' % (scene['Id'], node['Id'], i)
                 if scene['Id'] in data['producers'] and data['generic'] in choice.get('Set', []) and data['completed'] not in choice['Set']:
                     errors.append('RP missing completion producer ' + loc)
-                if scene['Id'] not in data['producers'] and data['completed'] in choice.get('Set', []):
+                # eng8-q8d: only the registered folded agreement can complete a return.
+                if (scene['Id'] not in data['producers'] and node['Id'] not in folded.get(scene['Id'], [])
+                        and data['completed'] in choice.get('Set', [])):
                     errors.append('RP unauthorized coffin completion producer ' + loc)
                 if scene['Id'] in data['dispatch_scenes'] and data['generic'] in choice.get('Requires', []) + choice.get('Forbids', []):
                     errors.append('RP stale dispatch/fallback ' + loc)

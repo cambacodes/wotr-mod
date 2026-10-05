@@ -47,7 +47,9 @@ internal static class Program
         int limit = allocation.GetProperty("limits").GetProperty(chapter.ToString()).GetInt32();
         string ledger = allocation.GetProperty("ledger_row").GetString()!;
         bool failure = pages.Length > limit;
-        check(failure == expectedFailure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        // eng8-q8d: shipped positives may never expect an allocation failure.
+        check(!expectedFailure && !failure, ledger + ": " + name + ": observed " + pages.Length + "/" + limit);
+        // end eng8-q8d
         if (eng7L08ReportedHistories.Add(character + "/" + chapter + "/" + name))
             Console.WriteLine("eng7-l08 allocation " + JsonSerializer.Serialize(new {
                 name, character, chapter, deliveries = ids, count = pages.Length, limit, ledger_row = ledger,
@@ -383,6 +385,28 @@ internal static class Program
             return;
         }
         // eng7-l06 end
+        // eng8-q8d: focused diagnostics share the mandatory full-suite runner.
+        if (args.Contains("--eng8-q8d"))
+        {
+            Rules.Validate(story);
+            LongConTests.Run(story, Check);
+            CamelliaTricksterTests.Run(story, Check);
+            GalfreyTricksterTests.Run(story, Check);
+            HorzalahTricksterTests.Run(story, Check);
+            NenioTricksterTests.Run(story, Check);
+            TerendelevTricksterTests.Run(story, Check);
+            WenduagTricksterTests.Run(story, Check);
+            ReturnProvenanceInventoryTests.Run(story, Check);
+            PresenceBootstrapInventoryTests.Run(story, Check);
+            PresenceExceptionExportTests.Run(story, Check);
+            EarnedPresenceTests.Run(story, Check);
+            LocationInventoryTests.Run(story, Check);
+            EngineQ5Tests.Run(story, Check);
+            InventoryFixtureMutationTests.Run(story, Check);
+            DeliveryInventory2Tests.Run(story, Check);
+            return;
+        }
+        // end eng8-q8d
         Rules.Validate(story);
         // eng7-l04: shipped registry inventory plus supported/full/partial adapter mutations.
         // --bindings must print only JSON (verify-game-bindings.py parses stdout); these suites still run in every test mode.
@@ -1012,6 +1036,10 @@ internal static class Program
         if (story.Scenes.Any(s => s.Id == "areelu.trickster.wager.unprimed"))
             InventoryFixtureMutationTests.Run(story, Check);
         // eng7-l01 end
+        // eng8-q8d: executed production positives are never expected failures.
+        if (story.Scenes.Any(s => s.Id == "galfrey.trickster.iz.offer"))
+            DeliveryInventory2Tests.Run(story, Check);
+        // end eng8-q8d
         Console.WriteLine($"PASS: {checks} assertions covering the original campaign, independent-relationship rules, authored expansion campaign scenarios and {story.Scenes.Count(s => s.Relationship != "tirabade")} draft expansion scenes. Unity execution and real save persistence are not covered.");
     }
 

@@ -22,8 +22,9 @@ internal static class WenduagTricksterTests
 
     private static Snapshot World(Story story, int chapter, params string[] flags)
     {
-        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = Drezen };
+        var state = new Snapshot { Chapter = chapter, Hour = 5000, Area = chapter == 4 ? "7847c3e3537104f4694167af0b9fcd0e" : Drezen };
         state.Flags.UnionWith(flags);
+        state.AvailableContacts.Add("da4c28dd01413694f82b08b728a8c6e5"); // eng8-q8d: native Nexus host
         state.AvailableContacts.Add("ae766624c03058440a036de90a7f2009");   // her presence copy (returned worlds)
         state.Flags.Add(chapter == 1 ? "chapter_one" : "chapter_later");
         Rules.Complete(story, state);
@@ -80,6 +81,7 @@ internal static class WenduagTricksterTests
         {
             var moved = Program.Copy(state);
             moved.Chapter = chapter;
+            moved.Area = chapter == 4 ? "7847c3e3537104f4694167af0b9fcd0e" : Drezen; // eng8-q8d: actual camp travel
             Rules.Complete(story, moved);
             return moved;
         }
@@ -415,9 +417,9 @@ internal static class WenduagTricksterTests
         Allocation("killed", 3, cellarDone, false, cairn, back, cellar);
         var stoneAt = Later(At(buried, 4), 24);
         check(Avail(stone, stoneAt), "Stone allocation witness is unavailable");
-        Allocation("stone", 4, Program.Walk(stone, stoneAt).First(r => r.Has(stone.Id)), true, stone);
-        Allocation("champion", 4, Program.Walk(champion, exiled).First(r => r.Has(champion.Id)), true, champion);
-        Allocation("late-bid", 4, lateBought, true, lateBid);
+        Allocation("stone", 4, Program.Walk(stone, stoneAt).First(r => r.Has(stone.Id)), false, stone);
+        Allocation("champion", 4, Program.Walk(champion, exiled).First(r => r.Has(champion.Id)), false, champion);
+        Allocation("late-bid", 4, lateBought, false, lateBid);
         // eng7-integ: retired native-fall replays cannot supply completed allocation traces.
         check(!Avail(abyssFall, fellBought) && !Avail(abyssBack, At(fellBought, 5)),
             "Retired Abyss roads cannot earn a delivery allocation.");

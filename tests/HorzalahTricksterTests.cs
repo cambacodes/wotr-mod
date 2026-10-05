@@ -369,16 +369,16 @@ internal static class HorzalahTricksterTests
         // Trk_Horzalah_Chapter6: the Greybor-less night after Q3 lapsed at Chapter 6 ends on the pages (the one-rest Chapter 6
         // budget): no presence, no room twins; her gift left unanswered is the open page. The Last Call coda needs the commit.
         var c6 = World(story, 6, "trickster", "trickster.ever", "iz.done", "coronation.after", "greybor.q2_done", "chapter.six");
-        var c6a = Take(unmet, c6, "exit", 0, Primed, Ear);
+        var c6a = Take(unmet, c6, "eng8.guild.decline_end_6", 0, Primed, Ear, Wants, Tested, Returned);
         // Q12 (Sol COX/HOW): in Chapter 6 the gift comes with her to the same visit, so the romantic page is reachable with
         // no extra delivery: the Chapter 5 "wants" answer is shut, "wants6" leads into the room version of the gift.
         var pivotChoices = kept.Nodes.Single(n => n.Id == "pivot").Choices;
         check(pivotChoices.Single(ch => ch.Next == "wants").Forbids.Contains("chapter.six") && pivotChoices.Last().Next == "wants6"
               && pivotChoices.Last().Requires.Contains("chapter.six") && !Rules.Match(pivotChoices[0].Requires, pivotChoices[0].Forbids, Later(story, c6a, 48)),
             "Trk_Horzalah_Chapter6: the Chapter 5 answer (no gift) plays in Chapter 6, or the Chapter 6 answer was not appended.");
-        var c6b = Take(kept, Later(story, c6a, 48), "decline_end_6", 0, Wants, Tested, Returned);
-        var c6free = Take(kept, Later(story, c6a, 48), "free2_6", 0, Wants, Tested, P + "cost.gift_freed");
-        var c6ally = Take(kept, Later(story, c6a, 48), "accept2_6", 0, Wants, Ally);
+        var c6b = Take(unmet, c6, "eng8.guild.decline_end_6", 0, Wants, Tested, Returned);
+        var c6free = Take(unmet, c6, "eng8.guild.free2_6", 0, Wants, Tested, P + "cost.gift_freed");
+        var c6ally = Take(unmet, c6, "eng8.guild.accept2_6", 0, Wants, Ally);
         check(!Avail(gift, Later(story, c6b, 48)) && !Avail(giftNight, Later(story, c6b, 48))
               && !Avail(giftNight, Later(story, World(story, 6, "trickster.ever", Wants, "horzalah.presence.failed"), 48))
               && Avail(pg["epilogue.commit"], World(story, 6, c6b.Flags.ToArray())) && Avail(pg["epilogue.commit"], World(story, 6, c6free.Flags.ToArray()))

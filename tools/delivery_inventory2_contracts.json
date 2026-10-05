@@ -1,0 +1,1725 @@
+{
+  "schema": 1,
+  "item": "E-Q8-07",
+  "integration": "eng8-q8d",
+  "source": "origin/claude/engine-inv2:tools/engine_backlog2.json; 05-ROUND2-LEDGER-AND-RULES.md \u00a7\u00a74.2\u20134.4; horzalah.md coordinator Ch6 ruling",
+  "findings": [
+    {
+      "finding": "camellia:072",
+      "scene": "camellia.trickster.killed.third_night",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Fold the Chapter 5 reunion, price and failed-presence outcome into one coffin delivery and suppress the separate follow-up there."
+    },
+    {
+      "finding": "camellia:073",
+      "scene": "camellia.trickster.killed.late_curtain",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Apply the single-delivery Chapter 5 reunion solution to the unprimed coffin branch too."
+    },
+    {
+      "finding": "galfrey:013",
+      "scene": "galfrey.trickster.iz.eulogy",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Implement the specified sergeant presence and physical vigil with its fallback. Check that each death-state branch consumes exactly one Chapter 5 rest delivery."
+    },
+    {
+      "finding": "galfrey:014",
+      "scene": "galfrey.trickster.return.kitrane",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Move the return to the specified sergeant presence and physical fallback while preserving its earned gates. Include it in the one-delivery branch assertion."
+    },
+    {
+      "finding": "galfrey:015",
+      "scene": "galfrey.trickster.return.kitrane_scarred",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Implement both physical scarred-return variants and verify the same Chapter 5 delivery cap."
+    },
+    {
+      "finding": "galfrey:016",
+      "scene": "galfrey.trickster.visit.tent",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Open the visit from her own presence and implement visit.tent_stall. Preserve the current threshold and cut. Check that visiting the tent consumes no rest delivery."
+    },
+    {
+      "finding": "galfrey:017",
+      "scene": "galfrey.trickster.return.kitrane_scarred",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Shorten earlier waits while preserving the scar's consequence and all earned gates. Check a genuinely timed scarred progression through commitment and intimacy within 168 hours of coronation."
+    },
+    {
+      "finding": "galfrey:018",
+      "scene": "galfrey.trickster.commit.answer",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Rebalance earlier waits so her stated two-day reservation fits the shared budget. Check cumulative timestamps from coronation rather than independently aged fixtures."
+    },
+    {
+      "finding": "galfrey:019",
+      "scene": "galfrey.trickster.commit.answer_stall",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Apply the budget correction to the fallback and verify its complete timed progression."
+    },
+    {
+      "finding": "galfrey:020",
+      "scene": "galfrey.trickster.commit.release",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Reduce earlier waits without removing the sworn gate or her two-day reckoning. Check this branch through the tent within 168 hours."
+    },
+    {
+      "finding": "galfrey:021",
+      "scene": "galfrey.trickster.commit.release_stall",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Apply and test the same cumulative timing correction on this hub."
+    },
+    {
+      "finding": "galfrey:022",
+      "scene": "galfrey.trickster.react.daeran.cousin",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Retire the reaction as specified and retain a guarded acknowledgment from Galfrey's side. Check that this reaction is unavailable in an otherwise eligible Trickster run."
+    },
+    {
+      "finding": "galfrey:023",
+      "scene": "galfrey.trickster.react.king",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Retire this reaction while retaining kitrane.king as her own encounter. Check the active reactor set against the ledger."
+    },
+    {
+      "finding": "galfrey:089",
+      "scene": "galfrey.trickster.react.daeran.cousin",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Assert the eligible reactor owners and retirement gates, separately from retained scene IDs. Verify only Irabeth, Seelah and Hulrun remain active."
+    },
+    {
+      "finding": "galfrey:090",
+      "scene": "galfrey.trickster.return.kitrane_scarred",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Add a progression test that stamps actual choices from coronation through courtship and intimacy, counts branch deliveries, and enforces 168 hours without pre-aging new prerequisites."
+    },
+    {
+      "finding": "horzalah:021",
+      "scene": "horzalah.trickster.unmet.knife",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Make the Chapter 6 entrant's ear bargain, Guild outcome and gift test one delivery, or move the entry to Chapter 5. Preserve an actually earned test before the romantic ending."
+    },
+    {
+      "finding": "horzalah:022",
+      "scene": "horzalah.trickster.late.at_night",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Restrict this entrance to Chapter 5 or give its Chapter 6 version the complete earned late-road sequence within one delivery."
+    },
+    {
+      "finding": "horzalah:023",
+      "scene": "horzalah.trickster.guild.kept",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Retain this single Chapter 6 visit for players already primed in Chapter 5; merge its report and test into the Chapter 6 entrance for players primed there."
+    },
+    {
+      "finding": "horzalah:024",
+      "scene": "horzalah.trickster.visit.chamber",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Set MaxChapter 5 and cover an earned commitment that misses the visit with appropriately heated ending prose, rather than another Chapter 6 delivery.",
+      "no_change_needed": "The existing epilogue.commit already supplies the heated undressing and bed threshold cut; executed fresh and already-primed Chapter 6 histories reach it without a chamber visit. Only the chamber cutoff needed implementation."
+    },
+    {
+      "finding": "horzalah:031",
+      "scene": "horzalah.trickster.guild.kept",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Run both Chapter 6 entrance roads through the actual delivery mechanism with a one-rest allowance. Require the earned gift outcome and correct ending within that allowance."
+    },
+    {
+      "finding": "nenio:023",
+      "scene": "nenio.trickster.night",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Make the night physical on her own hub and visitor presences while retaining its completion flag. Update the acceptance test and check the worst Chapter 5 return-to-intimacy sequence."
+    },
+    {
+      "finding": "terendelev:088",
+      "scene": "terendelev.trickster.wound.weeps",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Implement the documented Chapter 3 Drezen blood test and update its native-event staging."
+    },
+    {
+      "finding": "terendelev:089",
+      "scene": "terendelev.trickster.letter.debtor",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Move this report to both presence hubs, leaving the late return as the branch's single rest delivery."
+    },
+    {
+      "finding": "wenduag:042",
+      "scene": "wenduag.trickster.ch4.stone",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Deliver the exchange through a verified physical contact or an already permitted host, and make its allocation test pass."
+    },
+    {
+      "finding": "wenduag:043",
+      "scene": "wenduag.trickster.exile.champion",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Move the report to a verified physical encounter or approved host without adding a rest delivery."
+    },
+    {
+      "finding": "wenduag:044",
+      "scene": "wenduag.trickster.exile.late_bid",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Implement it on an appropriate physical encounter surface and remove the expected allocation failure."
+    },
+    {
+      "finding": "wenduag:065",
+      "scene": "wenduag.trickster.ch4.stone",
+      "status": "implemented",
+      "evidence": "DeliveryInventory2Tests: actual MailbagArrivals, placement observations and completed choices; Resolve all three deliveries and require expectedFailure=false for each allocation witness."
+    }
+  ],
+  "sites": [
+    {
+      "scene": "galfrey.trickster.iz.eulogy",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane_scarred",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.visit.tent",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.commit.answer",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.commit.answer_stall",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.commit.release",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.commit.release_stall",
+      "physical": true
+    },
+    {
+      "scene": "nenio.trickster.night",
+      "physical": true
+    },
+    {
+      "scene": "wenduag.trickster.ch4.stone",
+      "physical": true
+    },
+    {
+      "scene": "wenduag.trickster.exile.champion",
+      "physical": true
+    },
+    {
+      "scene": "wenduag.trickster.exile.late_bid",
+      "physical": true
+    },
+    {
+      "scene": "terendelev.trickster.letter.debtor",
+      "physical": true
+    },
+    {
+      "scene": "terendelev.trickster.wound.weeps",
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "scene": "camellia.trickster.killed.performance_letter",
+      "chapters": [
+        3
+      ]
+    },
+    {
+      "scene": "horzalah.trickster.visit.chamber",
+      "chapters": [
+        5
+      ]
+    },
+    {
+      "scene": "galfrey.trickster.iz.eulogy_stall",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane_stall",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.return.kitrane_scarred_stall",
+      "physical": true
+    },
+    {
+      "scene": "galfrey.trickster.visit.tent_stall",
+      "physical": true
+    },
+    {
+      "scene": "nenio.trickster.night_visitor",
+      "physical": true
+    },
+    {
+      "scene": "nenio.trickster.night_arcade",
+      "physical": true
+    },
+    {
+      "scene": "terendelev.trickster.letter.debtor_awning",
+      "physical": true
+    }
+  ],
+  "reactors": [
+    "Irabeth",
+    "Seelah",
+    "Hulrun"
+  ],
+  "retired_reactors": [
+    "galfrey.trickster.react.daeran.cousin",
+    "galfrey.trickster.react.king"
+  ],
+  "histories": [
+    {
+      "name": "camellia-prepared-failed",
+      "character": "Camellia",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster"
+      ],
+      "steps": [
+        {
+          "scene": "camellia.trickster.killed.setup_hub",
+          "require": [
+            "camellia.trickster.primed"
+          ]
+        },
+        {
+          "native": [
+            "camellia.killed"
+          ]
+        },
+        {
+          "scene": "camellia.trickster.killed.third_night",
+          "require": [
+            "camellia.trickster.returned",
+            "camellia.trickster.terms_named"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "camellia.presence"
+      ],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "camellia-unprimed-failed",
+      "character": "Camellia",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster"
+      ],
+      "steps": [
+        {
+          "native": [
+            "camellia.killed"
+          ]
+        },
+        {
+          "scene": "camellia.trickster.killed.late_curtain",
+          "require": [
+            "camellia.trickster.returned",
+            "camellia.trickster.terms_named"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "camellia.presence"
+      ],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "galfrey-healthy-physical-postponed",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1",
+        "galfrey.seelah_at_bed"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken",
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath",
+          "require": [
+            "galfrey.trickster.oath_postponed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.answer",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.react.irabeth.drill"
+        },
+        {
+          "scene": "galfrey.trickster.react.seelah.majesty"
+        },
+        {
+          "scene": "galfrey.trickster.react.hulrun.door"
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-healthy-physical-sworn",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken",
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath",
+          "require": [
+            "galfrey.trickster.sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.release",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-healthy-stall-postponed",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken",
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy_stall",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane_stall",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning_stall",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin_stall",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows_stall",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath_stall",
+          "require": [
+            "galfrey.trickster.oath_postponed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.answer_stall",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent_stall",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "galfrey.presence.sergeant",
+        "galfrey.presence"
+      ],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-healthy-stall-sworn",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken",
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy_stall",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane_stall",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning_stall",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin_stall",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows_stall",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath_stall",
+          "require": [
+            "galfrey.trickster.sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.release_stall",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent_stall",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "galfrey.presence.sergeant",
+        "galfrey.presence"
+      ],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-scarred-physical-postponed",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken"
+          ],
+          "require_absent": [
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane_scarred",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath",
+          "require": [
+            "galfrey.trickster.oath_postponed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.answer",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-scarred-physical-sworn",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken"
+          ],
+          "require_absent": [
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane_scarred",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath",
+          "require": [
+            "galfrey.trickster.sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.release",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-scarred-stall-postponed",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken"
+          ],
+          "require_absent": [
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy_stall",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane_scarred_stall",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning_stall",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin_stall",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows_stall",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath_stall",
+          "require": [
+            "galfrey.trickster.oath_postponed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.answer_stall",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent_stall",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "galfrey.presence.sergeant",
+        "galfrey.presence"
+      ],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "galfrey-scarred-stall-sworn",
+      "character": "Galfrey",
+      "chapter": 5,
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "native": [
+        "trickster",
+        "galfrey.dying_seen",
+        "trickster.perception_tier1"
+      ],
+      "steps": [
+        {
+          "scene": "galfrey.trickster.iz.offer",
+          "require": [
+            "galfrey.trickster.kitrane_taken"
+          ],
+          "require_absent": [
+            "galfrey.trickster.sorcery_read"
+          ]
+        },
+        {
+          "native": [
+            "galfrey.dead",
+            "coronation.after"
+          ],
+          "chapter": 5,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "galfrey.trickster.iz.road",
+          "require": [
+            "galfrey.trickster.cost.coffin"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.iz.eulogy_stall",
+          "require": [
+            "galfrey.trickster.cost.eulogy"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.return.kitrane_scarred_stall",
+          "require": [
+            "galfrey.trickster.returned"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.after.first_morning_stall",
+          "require": [
+            "galfrey.trickster.first_morning"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.coffin_stall",
+          "require": [
+            "galfrey.trickster.coffin.named"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.kitrane.crows_stall",
+          "require": [
+            "galfrey.trickster.kitrane.squire_sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.oath_stall",
+          "require": [
+            "galfrey.trickster.sworn"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.commit.release_stall",
+          "require": [
+            "galfrey.committed"
+          ]
+        },
+        {
+          "scene": "galfrey.trickster.visit.tent_stall",
+          "require": [
+            "galfrey.trickster.tent_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "galfrey.presence.sergeant",
+        "galfrey.presence"
+      ],
+      "maximum_deliveries": 1,
+      "maximum_hours": 168,
+      "origin": "coronation.after"
+    },
+    {
+      "name": "horzalah-fresh-unmet.knife-tested",
+      "character": "Horzalah",
+      "chapter": 6,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.unmet.knife",
+          "require": [
+            "horzalah.trickster.tested",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ],
+          "require_absent": [
+            "horzalah.closed"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.commit",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "horzalah-fresh-unmet.knife-ally",
+      "character": "Horzalah",
+      "chapter": 6,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.unmet.knife",
+          "require": [
+            "horzalah.trickster.ally",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ],
+          "require_absent": [
+            "horzalah.closed"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.ally",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "horzalah-fresh-unmet.knife-free",
+      "character": "Horzalah",
+      "chapter": 6,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.unmet.knife",
+          "require": [
+            "horzalah.trickster.cost.gift_freed",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ],
+          "require_absent": [
+            "horzalah.closed"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.commit",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "horzalah-fresh-late.at_night-tested",
+      "character": "Horzalah",
+      "chapter": 6,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after",
+        "horzalah.dismissed",
+        "horzalah.met_q3_a"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.late.at_night",
+          "require": [
+            "horzalah.trickster.tested",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ],
+          "require_absent": [
+            "horzalah.closed"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.commit",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "horzalah-fresh-late.at_night-ally",
+      "character": "Horzalah",
+      "chapter": 6,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after",
+        "horzalah.dismissed",
+        "horzalah.met_q3_a"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.late.at_night",
+          "require": [
+            "horzalah.trickster.ally",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ],
+          "require_absent": [
+            "horzalah.closed"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.ally",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "horzalah-fresh-late.at_night-free",
+      "character": "Horzalah",
+      "chapter": 6,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after",
+        "horzalah.dismissed",
+        "horzalah.met_q3_a"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.late.at_night",
+          "require": [
+            "horzalah.trickster.cost.gift_freed",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ],
+          "require_absent": [
+            "horzalah.closed"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.commit",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "horzalah-already-primed",
+      "character": "Horzalah",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.done",
+        "coronation.after"
+      ],
+      "steps": [
+        {
+          "scene": "horzalah.trickster.unmet.knife",
+          "require": [
+            "horzalah.trickster.primed"
+          ]
+        },
+        {
+          "chapter": 6,
+          "area": "2570015799edf594daf2f076f2f975d8"
+        },
+        {
+          "scene": "horzalah.trickster.guild.kept",
+          "require": [
+            "horzalah.trickster.tested",
+            "horzalah.trickster.returned",
+            "horzalah.trickster.wants_heard"
+          ]
+        },
+        {
+          "scene": "horzalah.trickster.epilogue.commit",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 1,
+      "budget_chapter": 6
+    },
+    {
+      "name": "nenio-dead_visitor",
+      "character": "Nenio",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "nenio.dead"
+      ],
+      "steps": [
+        {
+          "scene": "nenio.trickster.dead.the_price_recreated",
+          "require": [
+            "nenio.trickster.returned"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.dead.market_visitor",
+          "require": [
+            "nenio.trickster.scribe"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.hypothesis_visitor",
+          "require": [
+            "nenio.trickster.test_running"
+          ],
+          "require_absent": [
+            "nenio.trickster.tampered"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.result_visitor",
+          "require": [
+            "nenio.committed",
+            "nenio.trickster.first_night"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.night_visitor",
+          "require": [
+            "nenio.trickster.night"
+          ],
+          "require_absent": [
+            "nenio.closed"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "nenio-dead_arcade",
+      "character": "Nenio",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "nenio.dead"
+      ],
+      "steps": [
+        {
+          "scene": "nenio.trickster.dead.the_price_recreated",
+          "require": [
+            "nenio.trickster.returned"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.dead.market_arcade",
+          "require": [
+            "nenio.trickster.scribe"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.hypothesis_arcade",
+          "require": [
+            "nenio.trickster.test_running"
+          ],
+          "require_absent": [
+            "nenio.trickster.tampered"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.result_arcade",
+          "require": [
+            "nenio.committed",
+            "nenio.trickster.first_night"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.night_arcade",
+          "require": [
+            "nenio.trickster.night"
+          ],
+          "require_absent": [
+            "nenio.closed"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "nenio.presence"
+      ],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "nenio-away_visitor",
+      "character": "Nenio",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "nenio.kicked_out"
+      ],
+      "steps": [
+        {
+          "scene": "nenio.trickster.away.field_report",
+          "require": [
+            "nenio.trickster.primed_away"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.away.correction_visitor",
+          "require": [
+            "nenio.trickster.returned",
+            "nenio.trickster.scribe"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.hypothesis_visitor",
+          "require": [
+            "nenio.trickster.test_running"
+          ],
+          "require_absent": [
+            "nenio.trickster.tampered"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.result_visitor",
+          "require": [
+            "nenio.committed",
+            "nenio.trickster.first_night"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.night_visitor",
+          "require": [
+            "nenio.trickster.night"
+          ],
+          "require_absent": [
+            "nenio.closed"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "nenio-away_arcade",
+      "character": "Nenio",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "nenio.kicked_out"
+      ],
+      "steps": [
+        {
+          "scene": "nenio.trickster.away.field_report",
+          "require": [
+            "nenio.trickster.primed_away"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.away.correction_arcade",
+          "require": [
+            "nenio.trickster.returned",
+            "nenio.trickster.scribe"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.hypothesis_arcade",
+          "require": [
+            "nenio.trickster.test_running"
+          ],
+          "require_absent": [
+            "nenio.trickster.tampered"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.commit.result_arcade",
+          "require": [
+            "nenio.committed",
+            "nenio.trickster.first_night"
+          ]
+        },
+        {
+          "scene": "nenio.trickster.night_arcade",
+          "require": [
+            "nenio.trickster.night"
+          ],
+          "require_absent": [
+            "nenio.closed"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "nenio.presence"
+      ],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "terendelev-blood-test",
+      "character": "Terendelev",
+      "chapter": 3,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "terendelev.scale_held"
+      ],
+      "steps": [
+        {
+          "scene": "terendelev.trickster.memory.square"
+        },
+        {
+          "scene": "terendelev.trickster.wound.weeps",
+          "require": [
+            "terendelev.trickster.blood_tested",
+            "terendelev.trickster.scale_warmed"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 2
+    },
+    {
+      "name": "terendelev-late-debtor",
+      "character": "Terendelev",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.monster_dead.live"
+      ],
+      "steps": [
+        {
+          "scene": "terendelev.trickster.late.the_wound_calls",
+          "require": [
+            "terendelev.trickster.returned"
+          ]
+        },
+        {
+          "scene": "terendelev.trickster.after.first_night",
+          "require": [
+            "terendelev.trickster.first_night_seen",
+            "terendelev.trickster.owed"
+          ]
+        },
+        {
+          "scene": "terendelev.trickster.commit",
+          "require": [
+            "terendelev.trickster.declined"
+          ]
+        },
+        {
+          "scene": "terendelev.trickster.letter.debtor",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "terendelev-late-debtor_awning",
+      "character": "Terendelev",
+      "chapter": 5,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "iz.monster_dead.live"
+      ],
+      "steps": [
+        {
+          "scene": "terendelev.trickster.late.the_wound_calls",
+          "require": [
+            "terendelev.trickster.returned"
+          ]
+        },
+        {
+          "scene": "terendelev.trickster.after.first_night_awning",
+          "require": [
+            "terendelev.trickster.first_night_seen",
+            "terendelev.trickster.owed"
+          ]
+        },
+        {
+          "scene": "terendelev.trickster.commit_awning",
+          "require": [
+            "terendelev.trickster.declined"
+          ]
+        },
+        {
+          "scene": "terendelev.trickster.letter.debtor_awning",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "missing": [
+        "terendelev.presence"
+      ],
+      "maximum_deliveries": 1
+    },
+    {
+      "name": "wenduag-stone",
+      "character": "Wenduag",
+      "chapter": 3,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster"
+      ],
+      "steps": [
+        {
+          "scene": "wenduag.trickster.killed.stage",
+          "require": [
+            "wenduag.trickster.staged"
+          ]
+        },
+        {
+          "native": [
+            "wenduag.killed"
+          ]
+        },
+        {
+          "scene": "wenduag.trickster.killed.cairn",
+          "require": [
+            "wenduag.trickster.cairn_built"
+          ]
+        },
+        {
+          "chapter": 4,
+          "area": "7847c3e3537104f4694167af0b9fcd0e"
+        },
+        {
+          "scene": "wenduag.trickster.ch4.stone",
+          "require": []
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 0,
+      "budget_chapter": 4
+    },
+    {
+      "name": "wenduag-champion",
+      "character": "Wenduag",
+      "chapter": 3,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster"
+      ],
+      "steps": [
+        {
+          "scene": "wenduag.trickster.exile.bid_hub",
+          "require": [
+            "wenduag.trickster.exile_agreed"
+          ]
+        },
+        {
+          "native": [
+            "wenduag.kicked_out"
+          ]
+        },
+        {
+          "chapter": 4,
+          "area": "7847c3e3537104f4694167af0b9fcd0e"
+        },
+        {
+          "scene": "wenduag.trickster.exile.champion",
+          "require": [
+            "wenduag.trickster.champion_seen"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 0,
+      "budget_chapter": 4
+    },
+    {
+      "name": "wenduag-late-bid",
+      "character": "Wenduag",
+      "chapter": 4,
+      "area": "2570015799edf594daf2f076f2f975d8",
+      "native": [
+        "trickster",
+        "wenduag.kicked_out"
+      ],
+      "steps": [
+        {
+          "chapter": 4,
+          "area": "7847c3e3537104f4694167af0b9fcd0e"
+        },
+        {
+          "scene": "wenduag.trickster.exile.late_bid",
+          "require": [
+            "wenduag.trickster.bought"
+          ]
+        }
+      ],
+      "expectedFailure": false,
+      "maximum_deliveries": 0
+    }
+  ],
+  "diagnostic_mutations": [
+    "remote-physical-regression",
+    "unretired-reactor",
+    "raised-binding-budget",
+    "second-Ch6-delivery",
+    "late-coronation-chain",
+    "missing-contact",
+    "missing-gift-test"
+  ],
+  "native_locations": {
+    "Iz": {
+      "area": "2ccc6731787b6ec41ab5adc13f1b9ce9",
+      "blueprint": "World/Areas/Act_5_HeraldOfTheIvoryLabyrinth/Iz/Iz.jbp",
+      "type": "BlueprintArea",
+      "use": "The actual GalfreyOnTheEdge deathbed list precedes travel to Drezen and the native coronation input."
+    }
+  }
+}

@@ -929,3 +929,18 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+# eng8-q8d: the night is a physical visit on her companion/visitor hubs.
+# Keep the original night ID and append only the two placement twins.
+_eng8_night = next(s for s in SCENES if s['Id'] == P + 'night')
+_eng8_nights = []
+meet(_eng8_night['Id'], _eng8_night['Title'], '[Go with Nenio to her room.]', _eng8_night['Nodes'],
+     requires=(FIRST_NIGHT,), forbids=(P + 'night',), delay=4, optional=False, into=_eng8_nights)
+_eng8_night.clear()
+_eng8_night.update(_eng8_nights[0])
+for _eng8_twin in _eng8_nights[1:]:
+    for _eng8_node in _eng8_twin['Nodes']:
+        for _eng8_choice in _eng8_node['Choices']:
+            if not _eng8_choice.get('Next') and not _eng8_choice.get('Abort'):
+                _eng8_choice['Set'] = list(dict.fromkeys(_eng8_choice['Set'] + [P + 'night']))
+    SCENES.append(_eng8_twin)
+# end eng8-q8d

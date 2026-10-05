@@ -15,6 +15,51 @@ BINDING_LIMITS = {"Irabeth": {"3": 2, "4": 0, "5": 1, "6": 0},
                   "Shamira": {"3": 2, "4": 0, "5": 2, "6": 0},
                   "Wenduag": {"3": 2, "4": 0, "5": 1, "6": 0}}
 
+# eng8-q8d: the Chapter 6 exception is the explicit Horzalah coordinator ruling.
+BINDING_LIMITS.update({name: {"3": 2, "4": 0, "5": tier, "6": six}
+                      for name, tier, six in (("Camellia", 1, 0), ("Galfrey", 1, 0),
+                          ("Horzalah", 2, 1), ("Nenio", 1, 0), ("Terendelev", 1, 0))})
+DELIVERY_INVENTORY = DEFAULT.with_name("delivery_inventory2_contracts.json")
+
+
+def delivery_inventory(story, contracts=None):
+    """Structural coverage; executed positive histories are mandatory C# tests.
+
+    Mutation/diagnostic fixtures cannot bless a known production overrun.
+    Scene metadata alone never claims to have delivered a page.
+    """
+    contracts = contracts or json.loads(DELIVERY_INVENTORY.read_text(encoding="utf-8"))
+    scenes = {s["Id"]: s for s in story["Scenes"]}
+    failures = []
+    for row in contracts["sites"]:
+        scene = scenes.get(row["scene"])
+        if scene is None:
+            failures.append("missing delivery site " + row["scene"])
+            continue
+        if row.get("physical") and (remote(scene) or not scene.get("ContactUnit")
+                or not (scene.get("InteractionHub") or scene.get("AnswerLists"))
+                or scene.get("ManualOnly")):
+            failures.append("physical delivery drift " + scene["Id"])
+        if "chapters" in row and scene.get("Chapters") != row["chapters"]:
+            failures.append("chapter allocation drift " + scene["Id"])
+    for row in contracts["retired_reactors"]:
+        scene = scenes.get(row)
+        if scene is None or "trickster.ever" not in scene.get("Forbids", []):
+            failures.append("unretired reactor " + row)
+    active = {s["Owner"] for s in story["Scenes"]
+              if s["Id"].startswith("galfrey.trickster.react.")
+              and "trickster.ever" not in s.get("Forbids", [])}
+    if active != set(contracts["reactors"]):
+        failures.append("Galfrey reactor allocation drift: " + ",".join(sorted(active)))
+    for history in contracts["histories"]:
+        if history.get("expectedFailure") or history.get("diagnostic"):
+            failures.append("production history expects failure: " + history["name"])
+        if any(set(step) & {"flags", "checkpoint", "pre_age"}
+               for step in history["steps"]):
+            failures.append("fabricated production history: " + history["name"])
+    return failures
+# end eng8-q8d
+
 
 def remote(scene):
     return bool(scene.get("Remote")) or scene.get("Owner") == "Memory"
@@ -60,6 +105,10 @@ def count_history(story, allocation, chapter, deliveries):
 def lint(story, contracts=None, histories=None):
     contracts = contracts or json.loads(DEFAULT.read_text(encoding="utf-8"))
     result = {"hard": [], "review": [], "histories": [], "findings": []}
+    # eng8-q8d: synthetic unit-test stories keep their own fixture contracts.
+    if any(s["Id"] == "galfrey.trickster.iz.offer" for s in story["Scenes"]):
+        result["hard"].extend(delivery_inventory(story))
+    # end eng8-q8d
     allocations = {a["character"]: a for a in contracts["allocations"]}
     for name, a in allocations.items():
         if any(type(x) is not int or x < 0 for x in a["limits"].values()) or not a["ledger_row"]:

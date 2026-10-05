@@ -14,6 +14,22 @@ NATIVE_TABLES = ("Etudes", "SeenCues", "SelectedAnswers", "StartedDialogs",
                  "CompletedQuests", "CompletedEtudes", "StartedQuests", "MainCharacterFacts",
                  "QuestObjectives", "InventoryItems", "PartyItems", "UnlockableFlags")
 
+# eng8-q8d: validate cumulative executed ages, never independently aged flags.
+def delivered_timeline(history):
+    steps = history["steps"]
+    hours = [step["hour"] for step in steps]
+    if any(type(hour) is not int or hour < 0 for hour in hours) or hours != sorted(hours):
+        return "nonchronological delivered history"
+    if history.get("maximum_hours") is None:
+        return None
+    origin = history["origin"]
+    witnesses = [step["hour"] for step in steps if origin in step.get("set", [])]
+    if not witnesses:
+        return "missing cumulative origin " + origin
+    return check_age(dict(origins=[origin], maximum_hours=history["maximum_hours"]),
+                     {origin}, {origin: witnesses[0]}, hours[-1])
+# end eng8-q8d
+
 
 def arrival_hour(scene, flags, times, hour=0):
     """Rules.Available's delay clock: all held OR-group members count.

@@ -154,13 +154,13 @@ internal static class TerendelevTricksterTests
             "Something other than her watch commits, or the commit leaves the wound undressed.");
 
         // Pacing: at least one beat in Chapters 3 and 4 before she returns.
-        check(Rules.Available(story, square, World(story, 3, "trickster")) && Rules.Available(story, weeps, World(story, 4, "trickster"))
+        check(Rules.Available(story, square, World(story, 3, "trickster")) && Rules.Available(story, weeps, World(story, 3, "trickster"))
               && Rules.Available(story, where, World(story, 3, "trickster", "terendelev.voice_heard"))
               && !Rules.Available(story, where, World(story, 3, "trickster")),
-            "Trk_Terendelev_Pacing: the Chapter 3 and 4 beats are shut.");
+            "Trk_Terendelev_Pacing: the Chapter 3 preparation beats are shut.");
         check(!Rules.Available(story, square, World(story, 4, "trickster")), "The Drezen memory plays in the Abyss (Q6 r2).");
-        var tested = One(weeps, World(story, 4, "trickster", "terendelev.scale_held"), new[] { P + "blood_tested", P + "scale_warmed" });
-        check(tested.Has(P + "blood_tested"), "Trk_Terendelev_Pacing: the blood is never tested in the Abyss.");
+        var tested = One(weeps, World(story, 3, "trickster", "terendelev.scale_held"), new[] { P + "blood_tested", P + "scale_warmed" });
+        check(tested.Has(P + "blood_tested"), "Trk_Terendelev_Pacing: the blood is never tested in Drezen.");
 
         // Trk_Terendelev_Bones: the Queen's list; the found search, the gamble, the wound.
         var battle = World(story, 5, "trickster", "trickster.ever", "iz.terendelev_battle");

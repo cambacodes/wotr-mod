@@ -56,3 +56,48 @@ Logging stays in the test process's console and manager buffers because the mana
 
 The report includes hashes of the development DLL and story so the evidence can be tied to a specific build.
 This is a construction and preservation test, not an in-game playthrough or save compatibility test.
+
+On Linux, install the .NET 8 SDK, Mono 6.8 (`mono-complete`), and Python 3.
+Regenerate from the repository root, then run the script (which also works from another directory):
+
+```bash
+PYTHONHASHSEED=0 python3 expansion.py  # regenerate from the repository root first
+tools/managed_tests_linux.sh /wrath/  # defaults to /wrath and development/Story.json
+# Optional second argument selects another existing story export:
+tools/managed_tests_linux.sh /path/to/game /path/to/Story.json
+```
+
+For expansion generation, export `RRT_PARENT_BINDINGS` with the existing files in this order,
+joined by `:`: `reference/canon-review/expansion-parent-bindings.json`,
+`nurah-parent-bindings.json`, `nurah-parent-runtime-cue-bindings.json`, and
+`terendelev-parent-bindings.json` (all four under `reference/canon-review`).
+Use absolute paths, as in `build-expansion.ps1`.
+The runner sets this manifest list itself for the managed tests. It reads the existing story;
+it does not regenerate or modify it. A stale export can fail `Rules.Validate` before construction.
+
+The script builds both net48 projects against the selected game's assemblies and runs the
+same construction suite under Mono for `RRT_TEST_EXPANDED_EPILOGUE=0`, `1`, and `wrong-type`.
+Each mode runs in a fresh process and any build or test failure exits nonzero.
+Normal construction now explicitly asserts that no relationships were disabled; the
+intentional missing-binding fixtures retain their separate degradation assertions.
+On this branch, all three modes report `Registered 2936 scenes` and
+`disabled relationships: none`.
+Both projects already use `Microsoft.NETFramework.ReferenceAssemblies` 1.0.3; Windows
+build defaults remain unchanged. The optional `ModAssemblyPath` MSBuild property selects
+the freshly built production DLL for the test reference.
+
+Build outputs and intermediates live in a unique system temporary directory, removed on
+exit. `RRT_TEST_REPO_ROOT` and `RRT_TEST_MOD_DIR` let the test bootstrap resolve source
+fixtures and that production DLL without relying on a repository `bin` directory.
+`RRT_PYTHON` defaults to `python3` and may select a different interpreter executable.
+The helper still reads real native records from `blueprints.zip`.
+
+Desktop Mono can enter Unity code farther than Windows .NET Framework before failing.
+The Konomi recovery fixture therefore uses a scoped, Mono-only Harmony prefix at the
+native `UnitDescriptor.Resurrect` mutation boundary to reproduce Windows' pre-mutation
+security exception. The actual `ResurrectAndFullRestore` caller, production checkpoint
+handling, unchanged-death assertions, and exactly-one-dispatch check remain exercised.
+The prefix is removed after the fixture. Rendering and profiling use the suite's existing
+headless boundaries. The Konomi and Irabeth meeting fixtures likewise scope the documented
+`LoadingProcess.Instance` rejection to their runs. `MonoNativeBoundary` owns and removes
+these patches; Windows runs apply none of them. No runtime mod behavior changes.
