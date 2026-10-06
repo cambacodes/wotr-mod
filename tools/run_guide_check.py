@@ -3,6 +3,8 @@
 The rrt-step comments are a machine-readable index of the visible numbered steps.
 We check both the index and its rendered choices/gates, then execute the kit in a
 system temporary directory and compare its entire ordered history. No game runs.
+Use --update after regeneration to replace marked derived blocks, then review the
+handwritten travel instructions against the refreshed itinerary.
 """
 from __future__ import annotations
 
@@ -23,9 +25,7 @@ GUIDE = ROOT / "docs/TRICKSTER-RUN-GUIDE.md"
 PROFILE = "3:80,5:30"
 BEGIN = "<!-- rrt-checked-begin -->"
 END = "<!-- rrt-checked-end -->"
-CHAPTER3_COMMITS = {"longcon", "household", "foresight", "nenio", "targona", "nurah", "eritrice",
-                    "devarra", "delamere", "gesmerha", "aranka", "kaylessa", "arsinoe", "chadali"}
-CHAPTER6_COMMITS = {"nocticula", "areelu", "lastcall"}
+UPDATE_HINT = "Run python tools/run_guide_check.py --update, then review the narrative."
 STEP = re.compile(r"<!-- rrt-step (.+?) -->")
 META = re.compile(r"<!-- rrt-guide (.+?) -->")
 AREAS = {
@@ -83,8 +83,19 @@ def records(trace):
              "choices": [[c["node"], c["index"]] for c in e["choices"]]} for e in trace["log"]]
 
 
-def commit_chapter(rel):
-    return 3 if rel in CHAPTER3_COMMITS else 4 if rel == "herrax" else 6 if rel in CHAPTER6_COMMITS else 5
+def commitment_chapters(model, steps):
+    """Locate promises in executed choices/completions rather than a hand-maintained route list."""
+    witnesses = {info["CommittedFlag"]: rel for rel, info in model.rels.items()}
+    chapters = {}
+    for step in steps:
+        earned = [step["scene"]] if step["completed"] else []
+        for nid, index in step["choices"]:
+            node = model.nodes[step["scene"]][nid]
+            earned += node.get("EnterSet", []) + node["Choices"][index]["Set"]
+        for flag in earned:
+            if flag in witnesses:
+                chapters.setdefault(witnesses[flag], step["chapter"])
+    return chapters
 
 
 def ticks(values):
@@ -99,6 +110,11 @@ def gates(obj):
             parts.append(title + ": " + ticks(obj[key]))
     for group in obj.get("RequiresAnyGroups", []):
         parts.append("Need one of: " + ticks(group))
+    for flag, overrides in obj.get("ForbidOverrides", {}).items():
+        parts.append(f"Block `{flag}` lifted by: " + ticks([overrides] if isinstance(overrides, str) else overrides))
+    for key in ("Mythic", "EntryMythic"):
+        if obj.get(key):
+            parts.append(key + ": " + str(obj[key]))
     return "; ".join(parts)
 
 
@@ -225,9 +241,14 @@ def render_routes(model):
             lines.append(f"- Recovery for **{state}**: `{sid}` ({scene['Title']}); {location(model, scene)}; "
                          f"chapters {scene['MinChapter']}–{scene['MaxChapter']}; {scene['DelayHours']}h delay. " +
                          gates(scene) + ". Return witness: " + ticks([access["Returned"]]) + ".")
+            for node in scene["Nodes"]:
+                for index in range(len(node["Choices"])):
+                    lines.append("  - " + choice_line(model, scene, node, index))
         blockers = {f for s in model.scenes if s["Relationship"] == rel for f in s["Forbids"]
                     if re.search(r"(?:^|[._])(closed|declined|refused|failed|killed|dead|gone)(?:[._]|$)", f)}
         blockers.add(info["ClosedFlag"])
+        blockers.update(info.get("UnavailableFlags", []))
+        blockers.update(info.get("FailureFlags", []))
         producers = [(s, n, i) for s in model.scenes if s["Relationship"] == rel for n in s["Nodes"]
                      for i, c in enumerate(n["Choices"]) if blockers.intersection(c["Set"])]
         if producers:
@@ -282,8 +303,9 @@ def render_resources(model, steps):
              "after an early mod commitment; a historical promise does not protect against later loss. The checker",
              "asserts each earned commitment time against the chapter boundary, as well as current eligibility at Last Call.", "",
              "| Chapter | Records completed before advancing |", "|---|---|"]
-    for ch in (3, 4, 5, 6):
-        rels = [r for r in model.rels if r not in {"ember", "aivu"} and commit_chapter(r) == ch]
+    commitments = commitment_chapters(model, steps)
+    for ch in sorted(set(commitments.values())):
+        rels = [r for r in model.rels if commitments.get(r) == ch]
         lines.append(f"| {ch} | {ticks(rels)} |")
     lines += ["", "## Resource and check preparation", "",
              "Crusade resources are separate from party gold. The following is the gross spend of the printed choice",
@@ -309,9 +331,101 @@ def render_resources(model, steps):
     return "\n".join(lines).rstrip()
 
 
+def render_checklist(model, trace, chapter):
+    steps = [s for s in records(trace) if s["chapter"] == chapter]
+    lines = [f"### Chapter {chapter} checked checklist", "",
+             "Complete the chapter's numbered itinerary in order, including every printed check, payment and gate.",
+             "The native travel instructions above correct the simulation's timing substitutions.", "",
+             "| Route | Completed visits | Last completed scene in this chapter |", "|---|---:|---|"]
+    completed = {}
+    for step in steps:
+        if step["completed"]:
+            scene = model.by_id[step["scene"]]
+            completed.setdefault(scene.get("Relationship", scene["Owner"]), []).append(scene["Id"])
+    for rel, scenes in completed.items():
+        lines.append(f"| {rel} | {len(scenes)} | `{scenes[-1]}` |")
+    days = {int(ch): length for ch, length in trace["result"]["chapter_days"].items()}
+    start = sum(length for ch, length in days.items() if ch < chapter) * 24
+    commits = [model.rels[rel]["CommittedFlag"] for rel, hour in trace["result"]["commit_hours"].items()
+               if hour is not None and start <= hour < start + days[chapter] * 24]
+    lines += ["", "Commitments earned in this chapter: " + ticks(commits) + ".",
+              "Scheduled native receipts (apply the travel corrections above): " + ticks(sorted(
+                  {flag for flag, ch in trace["natives"].items() if ch == chapter}
+                  | {flag for flag, when in trace["timed"].items() if when[0] == chapter})) + ".",
+              "Check native action receipts and physical presence windows before leaving; a completed visit",
+              "or historical commitment alone does not preserve a woman after a later loss."]
+    return "\n".join(lines)
+
+
+def render_calendar(trace):
+    lines = [f"The checked path uses `CHDAYS={PROFILE}`. Simulation days and rest budgets are scheduling",
+             "evidence, not game-enforced deadlines. Longer waits are permitted unless a listed presence window",
+             "or native transition closes contact.", "",
+             "| Chapter | Simulated days | Rests needed | Rests available |", "|---|---:|---:|---:|"]
+    for chapter in trace["result"]["chapters"]:
+        lines.append(f"| {chapter['chapter']} | {chapter['days']:g} | {chapter['rests_needed']} | {chapter['rests_available']} |")
+    return "\n".join(lines)
+
+
+def render_exclusions(trace):
+    lines = ["| Record | Status on this checked Trickster history | Implemented blocker |", "|---|---|---|"]
+    for result in trace["result"]["relationships"]:
+        if not result["committed"]:
+            reason = re.sub(r"[A-Za-z_][A-Za-z0-9_]*\.[A-Za-z0-9_.]+", lambda match: ticks([match.group()]),
+                            result.get("blocked") or "No commitment earned")
+            lines.append(f"| {result['relationship']} | Not achieved | {reason} |")
+    return "\n".join(lines)
+
+
 def render_checked(model, steps):
     return "\n\n".join([render_resources(model, steps), render_steps(model, steps),
                          render_routes(model), render_presences(model), render_native_plan(model)])
+
+
+def derived_blocks(model, trace):
+    blocks = {"checked": (BEGIN, END, render_checked(model, records(trace))),
+              "calendar": ("<!-- rrt-calendar-begin -->", "<!-- rrt-calendar-end -->", render_calendar(trace)),
+              "exclusions": ("<!-- rrt-exclusions-begin -->", "<!-- rrt-exclusions-end -->", render_exclusions(trace))}
+    for chapter in range(7):
+        name = f"checklist-{chapter}"
+        blocks[name] = (f"<!-- rrt-{name}-begin -->", f"<!-- rrt-{name}-end -->",
+                        render_checklist(model, trace, chapter))
+    return blocks
+
+
+def block_bounds(text, begin, end):
+    if text.count(begin) != 1 or text.count(end) != 1:
+        raise ValueError(f"Guide needs exactly one {begin} / {end} pair. " + UPDATE_HINT)
+    start = text.index(begin) + len(begin)
+    stop = text.index(end)
+    if stop < start:
+        raise ValueError(f"Guide block markers are reversed: {begin}. " + UPDATE_HINT)
+    return start, stop
+
+
+def update_text(text, model, trace, sources, newline="\n"):
+    """Replace only marked derived content and its source manifest; validate before saving."""
+    for begin, end, rendered in derived_blocks(model, trace).values():
+        start, stop = block_bounds(text, begin, end)
+        text = text[:start] + newline * 2 + rendered.replace("\n", newline) + newline * 2 + text[stop:]
+    if len(META.findall(text)) != 1:
+        raise ValueError("Guide needs exactly one metadata record. " + UPDATE_HINT)
+    metadata = json.dumps({"profile": PROFILE, "sources": sources}, ensure_ascii=False, separators=(",", ":"))
+    text = META.sub(lambda _: "<!-- rrt-guide " + metadata + " -->", text)
+    validate(text, model, trace, sources)
+    return text
+
+
+def update_guide(path, model, trace, sources):
+    # Preserve CRLF/LF (and all handwritten bytes) by disabling universal-newline translation.
+    with path.open(encoding="utf-8", newline="") as source:
+        original = source.read()
+    newline = "\r\n" if "\r\n" in original else "\n"
+    updated = update_text(original, model, trace, sources, newline=newline)
+    if updated != original:
+        with path.open("w", encoding="utf-8", newline="") as output:
+            output.write(updated)
+    return len(records(trace))
 
 
 def render_native_plan(model):
@@ -361,10 +475,11 @@ def render_native_plan(model):
 
 
 def validate(text, model, trace=None, expected_manifest=None):
+    text = text.replace("\r\n", "\n")
     errors = []
     metas = META.findall(text)
     if len(metas) != 1 or text.count(BEGIN) != 1 or text.count(END) != 1:
-        raise ValueError("Guide needs exactly one metadata record and checked block")
+        raise ValueError("Guide needs exactly one metadata record and checked block. " + UPDATE_HINT)
     meta = json.loads(metas[0])
     steps = [json.loads(raw) for raw in STEP.findall(text)]
     if not steps:
@@ -409,18 +524,29 @@ def validate(text, model, trace=None, expected_manifest=None):
             if token not in model.story.get("Presences", {}) and token not in model.story.get("RestAllowances", {}):
                 errors.append("Unknown flag/scene reference " + token)
     if not errors:
+        block_bounds(text, BEGIN, END)
         actual = text.split(BEGIN, 1)[1].split(END, 1)[0].strip()
         if actual != render_checked(model, steps):
             errors.append("Visible choices, checks, costs, gates, route losses or presence windows are stale")
     if trace is not None:
+        for name, (begin, end, rendered) in derived_blocks(model, trace).items():
+            if name == "checked":
+                continue
+            start, stop = block_bounds(text, begin, end)
+            if text[start:stop].strip() != rendered:
+                errors.append(f"Derived {name} is stale")
         if steps != records(trace):
             errors.append("Guide's ordered scenes/choices/completions differ from executed ideal-run path")
         committed = {r["relationship"] for r in trace["result"]["relationships"] if r["committed"]}
         if committed != set(model.rels) - {"ember", "aivu"}:
             errors.append("Combined run no longer commits every achievable relationship")
         days = {int(ch): length for ch, length in trace["result"]["chapter_days"].items()}
+        commit_chapters = commitment_chapters(model, records(trace))
         for rel in committed:
-            ch = commit_chapter(rel)
+            ch = commit_chapters.get(rel)
+            if ch is None:
+                errors.append(f"{rel} has no executed commitment witness")
+                continue
             start = sum(length for chapter, length in days.items() if chapter < ch) * 24
             at = trace["result"]["commit_hours"].get(rel)
             if at is None or not start <= at < start + days[ch] * 24:
@@ -437,7 +563,7 @@ def validate(text, model, trace=None, expected_manifest=None):
         if any(c["rests_needed"] > c["rests_available"] for c in trace["result"]["chapters"]):
             errors.append("Combined run exceeds chapter rest budget")
     if errors:
-        raise ValueError("\n".join(dict.fromkeys(errors)))
+        raise ValueError("\n".join(dict.fromkeys(errors)) + "\n" + UPDATE_HINT)
     return len(steps)
 
 
@@ -445,16 +571,22 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--guide", type=Path, default=GUIDE)
     parser.add_argument("--story", type=Path, default=ROOT / "development/Story.json")
+    parser.add_argument("--update", action="store_true", help="regenerate marked derived blocks, preserving handwritten narrative")
     args = parser.parse_args()
     # Permit invocation from outside the checkout without relying on cwd.
     sys.path.insert(0, str(ROOT))
     try:
-        count = validate(args.guide.read_text(encoding="utf-8"), model_from(args.story),
-                         run_kit(), manifest())
+        model, trace, sources = model_from(args.story), run_kit(), manifest()
+        if args.update:
+            count = update_guide(args.guide, model, trace, sources)
+        else:
+            count = validate(args.guide.read_text(encoding="utf-8"), model, trace, sources)
     except (ValueError, KeyError, IndexError, TypeError, subprocess.TimeoutExpired) as error:
         print(f"RUN GUIDE FAIL: {error}", file=sys.stderr)
         return 1
     print(f"RUN GUIDE PASS: {count} ordered steps; 46/48 records; all 22 Last Call call-ins")
+    if args.update:
+        print("Derived blocks updated; review the handwritten narrative before merging.")
     return 0
 
 
