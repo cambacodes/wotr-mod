@@ -7,6 +7,7 @@ a party-only read (E10 PartyItems: Player.Inventory only, which holds every part
 shared stash) and moves those gates to it, append-only: no node, choice or scene is added, removed or reordered; only the
 listed gates read the new key (each paired "empty" branch forbids the new key, so exactly one branch still shows). The
 epilogue's hall-peg paragraph (p4: the sword hung in the hall after the war) keeps the broad read.
+This late integration point also appends the route's Joran memorials after the Last Call pages have been assembled.
 """
 from storylines import yaniel_trickster as yt
 
@@ -47,7 +48,7 @@ def _swap(keys):
 
 
 def integrate(payload):
-    """Bind the party-only read and move the listed gates (after yaniel_trickster and trickster_world)."""
+    """Bind the party-only read, move the listed gates and apply memorials after Last Call and trickster_world."""
     items = payload.setdefault("PartyItems", {})
     for key, guid in PARTY_ITEMS.items():
         if items.get(key, guid) != guid:
@@ -88,3 +89,6 @@ def integrate(payload):
         if HELD not in scene["Requires"]:
             raise ValueError("yaniel_radiance: %s no longer requires %s" % (scene_id, HELD))
         scene["Requires"] = _swap(scene["Requires"])
+
+    # Route-owned memorial prose: Last Call has been assembled by this late integration point.
+    yt.integrate_partner_memory(payload)
