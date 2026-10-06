@@ -81,9 +81,13 @@ internal static class MinaghoChivarroTricksterTests
               && boughtText.Contains("buy all of it", StringComparison.Ordinal) && bought.Requires.Contains(Deposit),
             "Chivarro's return is not the prepared double, or a raise came back (memory rrt-unique-devices).");
         check(deposit.Nodes.Any(n => n.Text.Contains("the rings, and whatever they are on", StringComparison.Ordinal) && n.Text.Contains("Sael", StringComparison.Ordinal))
+              && deposit.Nodes.Single(n => n.Id == "menu").Text.Contains("Sael", StringComparison.Ordinal)
+              && deposit.Nodes.Single(n => n.Id == "start").Choices[0].Next == "menu"
+              && !deposit.Nodes.Single(n => n.Id == "start").Choices[0].Text.Contains("Sael", StringComparison.Ordinal)
               && !deposit.Nodes.Single(n => n.Id == "ink").Choices[0].Set.Contains("trickster.secret.chivarro_double")
+              && bought.Requires.Contains("chivarro.dead_confirmed")
               && bought.Nodes.Single(n => n.Id == "paid").Choices[0].Set.Contains("trickster.secret.chivarro_double"),
-            "The prepared double is undisclosed, or its death secret precedes completed delivery.");
+            "Herrax must disclose the double before the order, and record its killing only at confirmed settlement.");
         var road = S(P + "after.before_the_last_road");
         var roadLetter = S(P + "after.before_the_last_road_letter");
         var aloneChiv = S(P + "alone.chivarro");
@@ -101,7 +105,7 @@ internal static class MinaghoChivarroTricksterTests
               && setupC4.Nodes.Single().Choices.Single().NativeNext == "99d65001b1b0cfe45b2f47ad7d7dac7c"
               && setupC3.AnswerLists.SequenceEqual(new[] { "b00190e0e55fd9944b7fc8de5c83cbc0" }) && setupC3.NativeReturnCue == "3c6de45d40c17fa40806e4d931eaf7b5"
               && setupC3.Nodes.Single().Choices.Single().NativeNext == "093724348a359594ebe7f7193e7b86dc"
-              && new[] { setupC4, setupC3 }.All(s => s.EntryMythic == "PlayerIsTrickster" && s.Entry.Contains("until I spilled the blood of the one who caused me to fail in Kenabres.")),
+              && new[] { setupC4, setupC3 }.All(s => s.EntryMythic == "PlayerIsTrickster" && s.Entry.Contains("until I spilled the blood of the one who caused me to fail in Kenabres.") && !s.Entry.Contains("failed him", StringComparison.Ordinal)),
             "The brand primers left Minagho's recital of her terms.");
         check(parley.AnswerLists.SequenceEqual(new[] { "cbd2f289d8173fb41a231772290440ba" }) && parley.NativeReturnCue == "2d1a338243b8ddb429bbad5db08ed7de"
               && deposit.AnswerLists.SequenceEqual(new[] { "43f93812d6216c94db356622859397f1" }) && deposit.NativeReturnCue == "1af69c65d15cc8949a4fe47a45c4f85d",
@@ -345,6 +349,19 @@ internal static class MinaghoChivarroTricksterTests
         var killerWorld = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", "chivarro.exile_objective_done", MinIn, "minagho.spared_c4");
         check(Pages(aloneMinSpared, killerWorld).Contains("killer") && !Pages(aloneMinSpared, With(killerWorld, Deposit, DeclC)).Contains("killer"),
             "Minagho does not face the Commander who killed Chivarro.");
+        // Starting the native fight alone proves no death, even with an old early DOUBLE receipt.
+        var combatOnly = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", Deposit, Favor, "trickster.secret.chivarro_double", MinIn, "minagho.spared_c4");
+        check(!Av(bought, combatOnly) && !Av(S(P + "chivarro_dead.unbought"), combatOnly)
+              && !Av(aloneMinSpared, combatOnly), "An unfinished fight is being treated as Chivarro's death.");
+        var killerLetter = S(P + "alone.minagho_letter");
+        var letterHistory = With(killerWorld, "minagho_chivarro.presence.minagho_spared.failed");
+        check(Pages(killerLetter, letterHistory).Contains("killer_start") && Pages(killerLetter, letterHistory).Contains("killer_decline")
+              && !Pages(killerLetter, With(letterHistory, Deposit)).Contains("killer_start"),
+            "Confirmed unprepared killing must be acknowledged on both letter answers, without accusing prepared histories.");
+        var scarHistory = With(killerWorld, Declined);
+        check(Pages(S(P + "alone.minagho_when_it_scars"), scarHistory).Contains("killer_min")
+              && !Pages(S(P + "alone.minagho_when_it_scars"), With(scarHistory, Deposit)).Contains("killer_min"),
+            "The existing scar retry cannot skip the killing or accuse a prepared substitution.");
         var herrax = World(story, 4, "trickster", "trickster.ever", "herrax.asked_kill_chivarro");
         check(Av(deposit, herrax) && Done(deposit, herrax).Single().Has(Deposit) && Done(deposit, herrax).Single().Has(Favor), "Trk_Chivarro_Deposit failed.");
         var depositFailed = World(story, 5, "trickster.ever", "trickster.failed", "chivarro.dead", "chivarro.exile_objective_done", Deposit, Favor);
@@ -388,6 +405,13 @@ internal static class MinaghoChivarroTricksterTests
                     "A paid/refused transfer misreports the palm: " + arrival.Id);
             }
         }
+        foreach (var priorAnswer in new[] { DeclC, SentBack })
+        {
+            var unfinished = World(story, 5, "trickster", "trickster.ever", "chivarro.dead", MinIn, "minagho.spared_c4", priorAnswer);
+            check(!Av(S(P + "alone.minagho_spared"), unfinished),
+                "An unfinished fight plus an earlier refusal must not admit an answerless solo page.");
+        }
+
         var ownedOut = boughtOut.Single(r => r.Has(Owned));
         check(ownedOut.Has(RetC) && !ownedOut.Has("minachiv.started") && !Av(aloneChiv, Later(story, ownedOut, "minagho.dead", DeclM)),
             "Trk_Chivarro_KeptBill failed: keeping the bill starts the relationship.");
