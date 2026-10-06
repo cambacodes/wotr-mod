@@ -561,7 +561,7 @@ internal static class NurahTricksterTests
 
         // Reactions: exactly Irabeth and Camellia; a dead reactor hides the line and nothing waits on it.
         var reactions = story.Scenes.Where(s => s.Relationship == "nurah" && s.Reaction).ToList();
-        check(reactions.Count == 11 && reactions.All(s => s.Owner == "Irabeth" || s.Owner == "Camellia")
+        check(reactions.Count == 16 && reactions.All(s => s.Owner == "Irabeth" || s.Owner == "Camellia")
               && reactions.All(s => s.AnswerLists.Length == 1 || s.Remote && s.Id.Contains(".camellia_veiled_", StringComparison.Ordinal)),
             "Nurah reactions: wrong reactors or delivery.");
         // Sol quality pass (INT): a Camellia killed by the Commander and back on her own route is the veiled copy at Fye's, with no
@@ -653,5 +653,31 @@ internal static class NurahTricksterTests
               && lostEntry.AnyGroups.Length == 1 && Deaths.Concat(new[] { "nurah.dead_camellia" }).All(lostEntry.AnyGroups[0].Contains),
             "The Ledger does not state her loss in every death world.");
         check(Rules.Available(story, pardon, World(story, 3, "trickster", "trickster.ever", "nurah.prison")), "The in-life pardon was retired with the raise.");
+
+        // Round 2: carry real refusals through finale selection, without proofs.
+        foreach (var source in new[] { night, S("nurah.trickster.prison.night_out_late") })
+        {
+            var entry = World(story, source.MinChapter, "trickster", "trickster.ever", "nurah.prison", "nurah.trickster.cost.ledger_lie");
+            var refusal = Program.Walk(source, entry).Single(w => w.Has("nurah.trickster.cost.owned_line"));
+            check(!refusal.Has("nurah.trickster.proofs_seen")
+                  && Rules.Available(story, S("nurah.trickster.epilogue.owned_line"), Later(story, refusal, 1, 5)),
+                "An ownership refusal has no pre-proofs ending: " + source.Id);
+        }
+        foreach (var suffix in new[] { "", "_late" })
+        {
+            var source = S("nurah.trickster.ran_off.terms_by_post" + suffix);
+            var entry = World(story, source.MinChapter, "trickster", "trickster.ever", "nurah.ran_off", "nurah.trickster.primed", "nurah.trickster.cost.ghostwritten");
+            var refusal = Program.Walk(source, entry).Single(w => w.Has("nurah.trickster.cost.last_word"));
+            check(!refusal.Has("nurah.trickster.proofs_seen")
+                  && Rules.Available(story, S("nurah.trickster.epilogue.last_word"), Later(story, refusal, 1, 5)),
+                "A postal refusal has no pre-proofs ending: " + source.Id);
+        }
+        foreach (var suffix in new[] { "", "_late" })
+        {
+            var primer = S("nurah.trickster.ran_off.second_draft" + suffix);
+            var entry = World(story, primer.MinChapter, "trickster", "trickster.ever", "nurah.ran_off", "nurah.trickster.accepted", "nurah.trickster.proofs_seen", "nurah.trickster.released");
+            check(!Rules.Available(story, primer, entry), "The late purchase steals an accepted prison courtship: " + primer.Id);
+        }
+
     }
 }

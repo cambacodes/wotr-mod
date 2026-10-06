@@ -1,0 +1,15 @@
+{
+  "voice": "NURAH: sharp, spiteful, acquisitive, observant, impatient with flattery; amused by a successful con, capable of affection without becoming good. Short barbs and concrete appetite. Chosen initiative and playful control; possessiveness is never ownership. Literary wit is occasional, not every sentence. No therapy language, generic porn voice, moral diagnosis, maxims, visions or audience address. Write new dialogue; do not reuse the example or staging sentences.",
+  "scene": "Canon-true facts: Nurah Dendiwhar is a halfling, formerly enslaved by Lord Axilar Trezbot in Isger, educated as his secretary and a historian of the Worldwound. She is a treacherous former cultist, not a redeemed innocent; she is not a mage. Trezbot was her owner, not a canon romantic partner. No canon husband or lover is established. Do not invent eye/hair colors, measurements, sexual history, pregnancy, or the Commander's scars. AUTHORED CONTINUATION SITUATION: Ch5 Drezen, established lovers after printing settlement. Stay branch: private bed after her own repeated decision to stay, dress unhooked and dropped, Commander drawn down with her. This branch is slower and closer than the teasing chair scene, but her appetite, selfish plans and biting humor survive. Required additional beat: she stays of her own wish tonight and has not promised to become tame or available on demand. No shared-morning claim that quiet branch also had sex; that alternative is outside this fill. Production brief for the user-selected explicit fill, not player-facing exposition. Only Nurah and the Commander participate; both are willing and alert. The intended act is consensual sex following the already staged undressing and embrace. Do not invent a new sexual practice or third participant for novelty. Required beats: mutual bodily initiative, Nurah's chosen control answered by active participation, one short in-character desire/power remark, a distinct situational pressure, then the exact final line. No abuse memory or debt as a sexual inducement, no incapacity, ownership, redemption, added gate, fee, commitment or automatic forgiveness. Commander anatomy is supplied by commander_variants; avoid default masculine pronouns. Only N: narration and U: Nurah speech; no voiced Commander lines. Return at the final hinge; do not write the existing morning or publication footnote. ",
+  "last_line": "N: Nurah leaves the lamp unlit when the passage falls quiet.",
+  "speakers": {
+    "U": "Nurah"
+  },
+  "example": "N: She draws you back before you can sit up.\nU: The lamp can stay as it is.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18
+}

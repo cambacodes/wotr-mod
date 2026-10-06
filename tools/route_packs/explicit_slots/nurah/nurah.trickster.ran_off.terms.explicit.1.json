@@ -1,0 +1,15 @@
+{
+  "voice": "NURAH: sharp, spiteful, acquisitive, observant, impatient with flattery; amused by a successful con, capable of affection without becoming good. Short barbs and concrete appetite. Chosen initiative and playful control; possessiveness is never ownership. Literary wit is occasional, not every sentence. No therapy language, generic porn voice, moral diagnosis, maxims, visions or audience address. Write new dialogue; do not reuse the example or staging sentences.",
+  "scene": "Canon-true facts: Nurah Dendiwhar is a halfling, formerly enslaved by Lord Axilar Trezbot in Isger, educated as his secretary and a historian of the Worldwound. She is a treacherous former cultist, not a redeemed innocent; she is not a mage. Trezbot was her owner, not a canon romantic partner. No canon husband or lover is established. Do not invent eye/hair colors, measurements, sexual history, pregnancy, or the Commander's scars. AUTHORED SITUATION: Ch5, Drezen private chamber after Nurah returns by pedlar concealment and back stair with her manuscript. Alternate first night; actual return, book terms and personal invitation already happened. Coat and tied pamphlets lie near the bed. She initiates, laughs and has already left a shoulder bite in the non-graphic setup. Her insulting dedication remains; the pressure is recognizable traitor versus soldiers outside. A private proof sheet will be left in the existing morning, not published by this fill. Production brief for the user-selected explicit fill, not player-facing exposition. Only Nurah and the Commander participate; both are willing and alert. The intended act is consensual sex following the already staged undressing and embrace. Do not invent a new sexual practice or third participant for novelty. Required beats: mutual bodily initiative, Nurah's chosen control answered by active participation, one short in-character desire/power remark, a distinct situational pressure, then the exact final line. No abuse memory or debt as a sexual inducement, no incapacity, ownership, redemption, added gate, fee, commitment or automatic forgiveness. Commander anatomy is supplied by commander_variants; avoid default masculine pronouns. Only N: narration and U: Nurah speech; no voiced Commander lines. Return at the final hinge; do not write the existing morning or publication footnote. ",
+  "last_line": "N: The last footsteps fade below the back stair.",
+  "speakers": {
+    "U": "Nurah"
+  },
+  "example": "N: Her discarded coat catches on the tied pamphlets.\nU: Leave it. Nobody came to read those tonight.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 12,
+  "max_lines": 18
+}
