@@ -1,0 +1,41 @@
+{
+  "seelah": {
+    "device_class": "act_before_confession",
+    "setting": "Drezen companion-hub penance-list reckoning and borrowed room; existing Fye stairs for outside-party courtship",
+    "payoff_shape": "her reclaimed penance list stays private or enters her chosen pocket game; earlier closeness becomes a chosen future, then boots for her own posting",
+    "canon_hooks": [
+      {
+        "guid": "50c68a552d32d3741af44e0fd18ac652",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0018.jbp",
+        "key": "2a34986a-d8d2-415d-a2a7-2663c2f94da8",
+        "native_excerpt": "\"A thief lives one day at a time, that's what they say. I was the type that never thought past the next job. Anyhow, I was able to sneak into the knights' camp and steal one of their mithral helms.\" {n}Seelah pauses, her voice sad and measured.{/n} \"And I was right there when a gnoll attacked the helm's owner — Acemi was her name — and dealt a blow to her unprotected head. A gnoll like all those others she'd fearlessly driven from the gates of Solku. That one blow was fatal, ",
+        "scope": "Native characterization/event evidence, not native romance. Path-exclusive dialogue is a voice target only unless this history actually heard it."
+      },
+      {
+        "guid": "a3d0b31d35fc785418c78ded53cb278d",
+        "path": "World/Dialogs/Companions/CompanionQuests/Seelah/Q1_LittleTroubles/Ch1_SeelahMeetsFriends/Cue_0006.jbp",
+        "key": "b9c43cae-d4c0-48f1-a042-6e928e300ca5",
+        "native_excerpt": "{n}Seelah pushes a mug of beer toward you and speaks softly,{/n} \"It was me who convinced {g|Irabeth}Irabeth{/g} to use what Jannah, Curl, and Elan found for a little party. If you look out the window, you might think the End Times have come and the Abyss has devoured us all. I thought some simple pleasures — good food and good company — could help keep the gloom at bay.\" {n}Seelah looks at you hesitantly, as if trying to gauge your reaction.{/n}",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "f4a62f6d32724c84bbb706a9a8c048e2",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Seelah/Cue_0094.jbp",
+        "key": "cdbd8d33-0989-49c1-a32b-d1ad279799ac",
+        "native_excerpt": "\"I... feel alone. Nobody else is going to sit with me and celebrate saving a beer cart. And I'd like to regain — if not the friendship, at least the trust of the other knights. Especially those I respect and consider my friends, like Elan.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "dc1a2f2a9d2409d44aa803ad2604d0b1",
+        "path": "World/Dialogs/c3/AreeluLaboratory/SecretWish/SeelahWish/Cue_0005.jbp",
+        "key": "18b09f85-857c-4d7d-9796-800891801e98",
+        "native_excerpt": "\"Everything was different for a moment. My life was... different. As if {g|Acemi}Acemi{/g}, the paladin who died because of me, was still alive. She trained me and we traveled all over, and so much happened...\" {n}Seelah grits her teeth.{/n} \"It was an illusion. Let's just drop it.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}

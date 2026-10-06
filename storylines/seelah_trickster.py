@@ -774,6 +774,8 @@ def integrate(payload):
         for flag in ("seelah_dead", "seelah_gone"):
             if flag in s["Forbids"]:
                 s.setdefault("ForbidOverrides", {})[flag] = value
+    from storylines import seelah_round2
+    seelah_round2.integrate(payload)
     # Irabeth's two Seelah barks sit on Seelah's companion hub; they lift her death or dismissal once she has returned.
     for id in ("irabeth.trickster.dead.react_seelah", "irabeth.trickster.killed.react_seelah"):
         if id in by_id:
@@ -792,3 +794,7 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+# Authored round-2 situations, route-local receipts and save-safe slot staging.
+from storylines import seelah_round2
+seelah_round2.prepare(SCENES, PRESENCES, DERIVED)
