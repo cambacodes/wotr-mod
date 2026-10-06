@@ -154975,6 +154975,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "areelu.present_now",
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
