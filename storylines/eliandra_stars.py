@@ -46,12 +46,12 @@ PRESENCES = {
     # Front of the ordinary tailor, 8 m: 4.5 m from the evil Arueshalae fallback; pending live.
     # The existing King-gone and failure gates still select the fallback.
     HUB: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=TAILOR, Side="front", Distance=8.0),
-              Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD, HUB_FAILED, KING_GONE], MinChapter=5,
+              Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD, "eliandra.attacked", "eliandra.trickster.away", HUB_FAILED, KING_GONE], MinChapter=5,
               MaxChapter=5, AnswerLists=[], Dialog="hub", Greeting=GREETING),
     # F11 authored fallback: street left/front of the jeweller, away from Nidalynn at left 2.5 m.
     # World offset (merchant faces about -15 degrees): about 4.2 m left / 4.4 m front. Pending Ground-only live proof.
     HUB_ALT: dict(Unit=UNIT, Area=DREZEN, Mode="spawn-copy", At=dict(NearUnit=JEWELLER, Offset=[-5.2, 3.2]),
-                  Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD], MinChapter=5, MaxChapter=5,
+                  Requires=["trickster.ever", MET], Forbids=[CLOSED, DEAD, "eliandra.attacked", "eliandra.trickster.away"], MinChapter=5, MaxChapter=5,
                   RequiresAnyGroups=[[HUB_FAILED, KING_GONE]], AnswerLists=[], Dialog="hub",
                   Greeting=("{n}To the left of the jeweller's stall, a little way into the street, a woman in a grey travelling cloak sits with a star chart across "
                             "her knees, watching the street as though it were a sky she had not learned yet.{/n}")),
@@ -81,7 +81,7 @@ def drezen(id, title, entry, nodes, requires, forbids=(), delay=0, places=PLACES
         PATH_FIT[sid] = "T"
         SCENES.append(scene(sid, title, "Eliandra", 5, entry, copy.deepcopy(nodes),
                             requires=("trickster.ever", *((HEART_SEEN,) if heart else (MET,)), *requires),
-                            forbids=(CLOSED, DEAD, *[o for o in ids if o != sid], *forbids), delay=delay, last=5,
+                            forbids=(CLOSED, DEAD, "eliandra.attacked", "eliandra.trickster.away", *[o for o in ids if o != sid], *forbids), delay=delay, last=5,
                             Relationship=REL, Chapters=[5], Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub,
                             RequiresAnyGroups=[list(g) for g in fields.get("RequiresAnyGroups", [])]
                             + [list(g) for g in extra.get("RequiresAnyGroups", [])],
@@ -105,7 +105,7 @@ def also_in_drezen(scene_id, entry):
         twin.pop("AnswerLists", None)
         twin.pop("NativeReturnCue", None)
         twin.update(Id=sid, Entry=entry, Areas=[DREZEN], ContactUnit=UNIT, InteractionHub=hub,
-                    Forbids=list(dict.fromkeys(original["Forbids"] + [o for o in ids if o != sid])),
+                    Forbids=list(dict.fromkeys(original["Forbids"] + ["eliandra.trickster.away"] + [o for o in ids if o != sid])),
                     RequiresAnyGroups=[list(g) for g in original.get("RequiresAnyGroups") or []]
                     + [list(g) for g in extra.get("RequiresAnyGroups", [])])
         SCENES.append(twin)
@@ -163,20 +163,19 @@ drezen_pre(E + "ch5.self_offering", "Her own offering", '"You sent for me?"', [
 
 
 drezen_pre(E + "ch5.evening", "Two people on a wall", '"You look as if you haven\'t slept since the basin."', [
-    el("start", '''"I have not." {n}Eliandra is sitting on the stargazers' crates with her cloak pulled round her, watching Drezen's lamps go out one by one.{/n} "Odden says I am too old to sit up all night. Odden has been saying that for eighty years, and he has been sitting up with me for most of them." {n}She moves over on the crate without being asked.{/n} "Sit. I have been wanting to ask you something that is not a rite, and not a vow, and not anything a high priestess ought to ask."''',
+    el("start", '"No, I have not slept." {n}She shifts along the crate and lifts the edge of her cloak for you. The stargazers\' last cases stand roped beside her; beyond them the night watch crosses the street.{/n} "Sit here. Odden will inspect the knots at dawn. Until then I need neither a report nor a prayer."',
        c("[Sit beside her.]", "ask")),
     el("ask", '''"You came to help us against the demons. You stayed to ask about my Lady. The crusade must have needed you elsewhere. Why stay?"''',
        c('"I wanted to ask about you, for once."', "first"),
        c('[Flirt] "Because I wanted to find out what you look like when you forget to be the high priestess."', "forget", flags=(FLIRTED,)),
        c('"I don\'t know. I kept finding reasons to come back."', "reasons")),
-    el("first", '''"About me." {n}She draws the cloak closer.{/n} "I thought I had answered enough questions to be tired of them. Apparently I have not."''',
+    el("first", '"About me?" {n}She takes your hand beneath the cloak.{/n} "Then stay. I should like to be asked while I have no hammering to shout over."',
        c("Continue", "close")),
-    el("forget", '''{n}She laughs, very quietly, so as not to wake the street.{/n} "Tired," {n}she says.{/n} "I look tired. You are looking at it now." {n}She holds your eyes, and does not move away either.{/n} "It is not very impressive."''',
+    el("forget", '"Tired. Irritable. Quite capable of wanting you here." {n}She looks directly at you, her knee touching yours beneath the cloak.{/n} "Keep looking. I have put the charts away."',
        c('"It is to me."', "close")),
-    el("reasons", '''"So did I." {n}She glances at the space beside her on the crate.{/n} "I told myself you might need to speak to the high priestess. You have sat here long enough to prove that was a poor excuse."''',
+    el("reasons", '"So did I. I nearly sent a warden with a question about the road." {n}She moves closer.{/n} "You saved him a cold walk. Sit here."',
        c("Continue", "close")),
-    nar("close", '''{n}You sit on the crates until the last lamp on the street goes out. At some point her head comes to rest against your shoulder, and neither of you mentions it, and when the sky begins to grey she straightens, and stands, and looks down at you with an expression you have not seen on her before: not the priestess measuring a portent, but a woman deciding something.{/n}
-{n}"Tomorrow," she says. "Walk with me in the morning. I will ask you then."{/n}''',
+    nar("close", '{n}She rests against your shoulder and keeps your hand beneath her cloak. When the last street lamp goes dark she turns towards you; her mouth brushes your cheek. She stays there until the watch changes.{/n}\n{n}At the first grey light she straightens. A carter is already checking the wheels.{/n} "The morning after this one. Walk with me from the north gate. I have something to ask you before we take the carts out."',
         c("[Promise to walk with her.]", flags=(E + "drezen.evening",))),
 ], requires=(LEAVE,), forbids=(COMMITTED, DECLINED, E + "drezen.evening"), delay=6)
 
@@ -207,7 +206,7 @@ drezen_pre(E + "ch5.first_mile", "The first mile", '"Walk with you? Where?"', [
 "My Lady saw your hand," {n}she says.{/n} "I saw your hand. And you stand in the open road with her lights still in the sky and tell me it was a cramp." {n}She looks at you with no anger at all, which is worse.{/n} "I was going to ask you something. I will not, today. Go back to your war, Commander. We leave for the fords in a few days. If I ever know what to do with you, I will write."''',
        c("[Let her walk back alone.]")),
     el("road", '''{n}The first mile is not a long way. At a milestone half-buried in ash Eliandra stops, and looks north along the road, and then back at the walls of Drezen, and then at you.{/n}
-"I have never asked anyone for anything for myself," {n}she says.{/n} "I have asked for help for my people, often; that is different. Before the basin, I had never asked my Lady for my own release." {n}She takes a breath.{/n} "So I am out of practice. Forgive me if I do it badly."''',
+"The carts will be ready soon. I want your answer before we leave." {n}She turns away from the road to face you.{/n} "For me, this time."''',
        c("Continue", "ask")),
     el("ask", '''"Drezen," {n}she says,{/n} "or the road?" {n}She holds your eyes.{/n} "When your war is done. Will you have me in Drezen, in your city, with walls around us? Or will you walk the road with me into whatever is left of Sarkoris, and help me find out what it is?"
 "I am asking you, Commander. I want to be told."''',
@@ -215,11 +214,11 @@ drezen_pre(E + "ch5.first_mile", "The first mile", '"Walk with you? Where?"', [
          flags=(COMMITTED,)),
        c('[Tell her to leave the stargazers] "Drezen. Just you. Let Odden take them on."', "no", flags=(DECLINED,)),
        c('[Wish her well] "The road is yours, Eliandra. Go well."', "farewell", flags=(CLOSED,))),
-    el("yes", '''{n}She laughs: short, startled and entirely unguarded, not a sound the high priestess of Pulura has made in public in a century. A carter on the road turns round to look.{/n}
+    el("yes", '''{n}She laughs: short, startled and entirely unguarded. A carter on the road turns round to look.{/n}
 "Every morning," {n}she says.{/n} "You will regret that. I have a hundred years of questions saved up." {n}She reaches out and takes your hand, deliberately, the way she would set a lens to her eye. Her fingers are cold from the road. She does not let go.{/n}
 "The heart of the shrine is still open," {n}she says, more quietly.{/n} "I left it for last. Ride back with me to the dry fall, Commander, and help me close it."''',
        c("[Walk back to the gate with her.]")),
-    el("no", '''{n}She takes it like a blow she saw coming.{/n}
+    el("no", '''{n}Eliandra looks north along the road. The carts are still waiting at the gate.{/n}
 "You ask me to abandon the only people I have," {n}she says.{/n} "The ones who are left. Odden, who has no one. The girl with the sling, who does not know how to be anywhere but a cave." {n}She is not angry. That would be easier.{/n} "I cannot. I will not. If that is the only way you will have me, then you will not have me, and I will have asked for nothing after all."
 "Go back to your war, Commander. We leave for the fords in a few days. I will write, when I know where we are."''',
        c("[Let her walk back alone.]")),
@@ -241,7 +240,7 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
     nar("heart", '''{n}The star-heart is bare to the rock. The basin went with the carts; the long table did not, being too heavy to move, and her last charts lie on it half rolled, weighted with river stones. Overhead the sky burns, black and enormous, as it has burned for a century and will burn when there is nobody under it at all.{/n}
 {n}Eliandra sets the lamp down and blows it out. There is enough light without it.{/n}''',
         c("Continue", "her")),
-    el("her", '''"I used to take the evening's reading here," {n}she says.{/n} "Every evening, for a hundred years. I knew every star over this room. I never once looked at a living soul the way I looked at them." {n}She turns to face you.{/n}''',
+    el("her", '"The last reading is packed. The door can wait until morning." {n}Eliandra sets her palm on the bare table, then turns to you.{/n} "I asked you here because I want you to stay with me tonight."',
        c("Continue", "look", requires=(LIGHTS_GIVEN,)),
        c("Continue", "look_up", forbids=(LIGHTS_GIVEN,))),
     el("look", '''"There are lights over the north tonight. You cannot see them. I can." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look at me, then," {n}she says.{/n} "I will look up for both of us."''',
@@ -250,29 +249,23 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
     el("look_up", '''"You kept your sight. I gave her the strength back. I am still her priestess." {n}She steps closer, close enough that you can smell the road on her cloak, and cedar, and ink.{/n} "Look up, then, while I look at you. I have looked at the sky long enough."''',
        c("Continue", "want", requires=(E + "dead_named",)),
        c("Continue", "want_rite", forbids=(E + "dead_named",))),
-    el("want_rite", '''"I have wanted things before," {n}she says.{/n} "I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing." {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}
-"I know now. I want you, Commander. I have wanted you since you came to me with a question nobody had asked me in a hundred years: what my Lady takes, and what I might ask her for. I have no idea at all what to do about it. I am told that is usual."''',
+    el("want_rite", '"You asked what my Lady would take, and what I might ask of her. I remembered that on the road." {n}She lays her hand against your chest and comes closer.{/n} "The offering is done. This is what I want now. Kiss me, Commander."',
        c("[Kiss her.]", "robes"),
        c('[Flirt] "I\'ll show you. Slowly. We have all night."', "robes"),
        c('[Flirt] "The stars can wait."', "robes", requires=(FLIRTED,))),
-    el("want", '''"I have wanted things before," {n}she says.{/n} "I gave all of it to her before I knew what it was, and I did not miss it, because I did not know what I was missing." {n}Her hand comes up, slowly, and rests flat on your chest, the way she rests it on her own heart when she bows.{/n}
-"I know now. I want you, Commander. I have wanted you since the day you walked into my broken shrine with blood on your sleeves and asked me who I had lost. I have no idea at all what to do about it. I am told that is usual."''',
+    el("want", '"You asked who I had lost when there were bodies waiting to be carried out. I remembered that on the road." {n}She lays her hand against your chest and comes closer.{/n} "The offering is done. This is what I want now. Kiss me, Commander."',
        c("[Kiss her.]", "robes"),
        c('[Flirt] "I\'ll show you. Slowly. We have all night."', "robes"),
        c('[Flirt] "The stars can wait."', "robes", requires=(FLIRTED,))),
-    nar("robes", '''{n}She kisses like someone learning a language by immersion: clumsy for a breath, then with a sudden fierce aptitude that takes you both by surprise. Her hands are in your hair. Yours are at her waist, on the grey cloak, on the pin at her throat that will not come undone.{/n}
-{n}She takes your hands away from it. For a heartbeat you think she has changed her mind. Then she unpins it herself and lets the cloak fall, and beneath it the white robes of her office, and she loosens those too, tie by tie, with the same steady fingers that never once shook at the lens, looking at you the whole while.{/n}''',
+    nar("robes", '{n}Her first kiss misses the corner of your mouth. She catches your face between her hands and tries again, firmly enough to leave you breathless. Your fingers catch on the pin at her throat.{/n}\n{n}She pushes them aside, unpins her cloak herself, and loosens the ties of her white robes while looking straight at you. When you reach for her again, she pulls you in.{/n}',
         c("Continue", "wrist")),
-    nar("wrist", '''{n}Her skin is paler where the robes covered it. An old white scar crosses her shoulder. You put your mouth to it; her fingers tighten in your hair.{/n}
-{n}You find her wrist, and the pulse beneath it, quick and hard: a heart that kept its steady time through a hundred years of evenings and is keeping no time at all now. You press your lips there and feel it race. Eliandra says your name, and then says it again, as if she were checking an observation, and pulls you close.{/n}''',
+    nar("wrist", '{n}The loosened robes slip from her shoulder. You kiss the exposed skin; her fingers tighten in your hair. When your mouth reaches her wrist, she turns her hand to hold your cheek.{/n} "Closer." {n}She says your name against your mouth and pulls you to her.{/n}',
         c("Continue", "learn")),
     nar("learn", '''{n}She pulls your shirt free and lays both hands against your ribs. Her fingers pause over a scar; her breath catches against your throat. She takes your hand and presses it to her bare waist.{/n} "Here. I want your hands here." {n}Her teeth close lightly on your shoulder. Her thigh presses between yours; the loosened white robes gather at her hips. She pulls you closer, then backs against the table without letting go.{/n}''',
         c("Continue", "charts")),
-    nar("charts", '''{n}The table is behind her. The charts are on the table. Neither fact turns out to matter. The river stones go over with a clatter, and the half-rolled charts slide off the edge in a slow white landslide, a hundred years of the northern sky spilling across the floor of the star-heart, and Eliandra, flat on her back on the bare wood with her hair loose over the Maiden's own constellations, laughs aloud and draws you down onto her.{/n}
-{n}Overhead, the stars go on burning. For once, nobody in this room is looking at them.{/n}''',
+    nar("charts", '{n}She catches a chart beneath her elbow and pushes it clear. The river stones clatter to the floor. The remaining rolls slide after them, still tied; she watches them fall, then draws you between her knees at the edge of the bare table.{/n} "They can be picked up. Come here."',
         c("Continue", "morning")),
-    nar("morning", '''{n}You wake on the floor of the star-heart under her cloak, with a star chart stuck to your back and the sky overhead gone pale with morning. Eliandra is already up and dressed, kneeling among the fallen charts, rolling them one by one and tying them with a concentration that suggests she has decided not to think about anything else just yet.{/n}
-{n}Boots in the corridor. A man stops in the doorway: a military bearing, a face covered in old scars, a bow across his back. He looks at the empty shrine. He looks at the charts. He looks at you, and at her, and at the cloak, and at the obvious.{/n}''',
+    nar("morning", '{n}You wake beneath her cloak with a star chart stuck to your back. Eliandra is pressed along your side, her hair caught under your shoulder. She frees it with an irritated tug and kisses you before getting up.{/n}\n{n}By the time boots sound in the corridor she is dressed and kneeling among the charts. A scarred man with a bow stops in the doorway. Katair looks from the empty shrine to the cloak and your bare shoulder, then to Eliandra. She keeps hold of the roll she has tied wrong.{/n}',
         c("Continue", "katair")),
     kt("katair", '''"I was beyond the walls," {n}says Katair.{/n} "Days. I came back to a sacked shrine and an empty valley, and found the carts' tracks going to Drezen, and Odden in Drezen, who told me you had come back here and would not tell me why." {n}His voice is perfectly level. His hands are not, quite.{/n} "Regnard. Taeriell. The lovers."
 {n}It is not a question. Eliandra nods.{/n}
@@ -286,13 +279,10 @@ drezen_pre(E + "visit.star_heart", "The shrine's last night", '"Is the heart sti
        c("Continue", "wrong")),
     el("answer_self", '''"I gave my Lady back her gift, Katair. Myself, at the basin, with nobody's hand but mine. She let me go. And then I made my choice." {n}She lifts her chin.{/n} "I am not the strongest of her servants any more, and I am not going to be ashamed of any of it in front of you."''',
        c("Continue", "wrong")),
-    kt("wrong", '''{n}Katair is silent. Then he crosses the room, takes the charts out of her arms, and looks at them.{/n}
-"You have rolled these wrong," {n}he says.{/n} "Every one. The north is on the outside." {n}He hands them back.{/n} "In a hundred years I never once saw you roll a chart wrong."
-{n}Then, to you, with no change of tone:{/n} "If you are careless with her, Commander, I will know. Taeriell used to chart where I went, every time I left the walls. Seventy years of it. He thought I did not know." {n}He stops, as if he has walked into a wall.{/n} "He will not chart anything now."''',
-       c('"I\'ll take care of her."', "end"),
-       c('"She doesn\'t need taking care of. She needs asking."', "end")),
-    nar("end", '''{n}Katair goes out to see to the horses. Eliandra stands in the middle of the star-heart with an armful of wrongly rolled charts, looking at the doorway where he went.{/n}
-{n}"He will forgive me," she says. "Not today. He has other things to forgive himself first." She looks down at the charts and, astonishingly, smiles. "I am not going to reroll them."{/n}''',
+    kt("wrong", '{n}Katair takes the charts from her arms and examines their ties.{/n} "The north is on the outside. Every one." {n}He looks towards the discarded cloak, then back at her.{/n} "The column leaves soon. Who is tending the wounded?"\n"I am," {n}Eliandra answers.{/n} "As I was yesterday. I will be at the carts when they leave."\n{n}Katair loosens one tie and checks the observations. His hand stops at Taeriell\'s name in the margin.{/n} "I should have been here."',
+       c('"The column still has its priestess."', "end"),
+       c('"Ask her. I am staying out of this."', "end")),
+    nar("end", '{n}Katair goes to see to the horses. Eliandra watches him leave, then puts the charts in your arms and retrieves her cloak.{/n} "He will have questions for the column. I will answer those too." {n}She catches your mouth in a brief kiss before pinning the cloak.{/n} "I wanted you here. I still do. Now help me carry these out before he brings the horses through the door."',
         c("[Help her carry them out.]", flags=(HEART_SEEN, CHARTS))),
 ], requires=(COMMITTED,), forbids=(HEART_SEEN,), delay=12)
 
@@ -315,11 +305,11 @@ drezen(E + "drezen.city", "A city with walls", '"How are you finding Drezen?"', 
        c('"Nothing. I don\'t have mornings. I have the next thing."', "nothing", flags=(FIRST_QUESTION,))),
     el("dispatches", '''"Burn them." {n}She seems delighted.{/n} "We had no dispatches. We had observations, and every one was kept, even the wrong ones. I think I should like to burn something, once. Will you save me a very bad one?"''',
        c('"I\'ll save you the Council\'s next letter."', "end")),
-    el("flirt", '''{n}Colour comes into her face, which, in someone that pale, is very visible.{/n} "You say things like that as if they cost you nothing," {n}she says.{/n} "I have watched you. I do not think they are free. I think you have simply decided to pay for them." {n}She looks down at the chart.{/n} "Say it again tomorrow. I will pretend to be less surprised."''',
+    el("flirt", '{n}She looks frankly at your mouth, then hooks her fingers beneath yours on the table.{/n} "Then leave the dispatches unopened for a little while tomorrow. Come to me first. I should like to find out how long I can delay a Commander."',
        c("Continue", "end")),
-    el("nothing", '''"The next thing." {n}She considers that as she would a star that had stopped where it should not.{/n} "Then I shall be the next thing, some mornings. I am told I am very good at being in the way. Katair has said so for a hundred years."''',
+    el("nothing", '"You could have breakfast. With me." {n}She turns your hand over and runs her thumb across the palm.{/n} "There will still be a war when the bread is gone. I am going to ask you again tomorrow."',
        c("Continue", "end")),
-    el("end", '''"Thank you. That is one." {n}She picks up her cup again.{/n} "I have a hundred years of questions, and you have agreed to all of them. You should have read the terms more carefully, Commander."''',
+    el("end", '{n}She returns to the chart, keeping your hand until the edge of the table pulls it from hers.{/n} "Go, Commander. I have had my answer. Tomorrow I want more of your morning."',
        c("[Leave her to her chart.]")),
 ], requires=(), forbids=(FIRST_QUESTION,))
 
@@ -327,8 +317,7 @@ drezen(E + "drezen.city", "A city with walls", '"How are you finding Drezen?"', 
 # --- 2. The stone (the King's tavern only) ----------------------------------------------------------------------------
 
 drezen(E + "drezen.stone", "The stone under the cloth", '"You\'ve been looking at the King\'s stone."', [
-    el("start", '''"I came to see it." {n}Eliandra does not pretend otherwise. Behind the bar, under its cloth, the stone tablet from the chiefs' ground sits between a keg and a jar of pickled eggs.{/n}
-"I watched you carry it away from behind my Lady's veil, and I have wondered ever since what a crusader wanted with a chief's stone. And here it is, in a tavern, holding up a king." {n}She is quiet.{/n} "He asked me whether his ancestors were buried under it. I said probably. I thought it kinder than the truth."''',
+    el("start", '"Come. I want to look at it again." {n}Eliandra rolls her chart and leads you from the tailor\'s frontage to Thaberdine\'s tavern. The King waves you past his drinkers. Behind the bar, his stone tablet sits beneath a cloth between a keg and a jar of pickled eggs.{/n}\n"I watched you carry it away from behind my Lady\'s veil. I wondered what a crusader wanted with a chief\'s stone. He asked whether his ancestors were buried under it. I said probably."',
        c('"What is the truth?"', "truth"),
        c('"He needed it more than the dead did."', "needed")),
     el("truth", '''"I read it. He lifted the cloth for me, and I read it twice." {n}She looks at the cloth.{/n} "The letters are older than the fall of Sarkoris. The moss is older than that. It says what he says it says, word for word, and it bears his crest. I do not know how, and I will not pretend it is a forgery. It is not."
@@ -353,7 +342,7 @@ drezen(E + "drezen.dark_sky", "Lights over the north wall", '"You sent for me. I
     el("start", '''"It is. Come up to the wall with me. Bring a cloak; the wind comes straight off the Wound." {n}She is already on her feet, her own cloak pinned to the throat, her face bright in a way you have not seen it in Drezen before.{/n} "They are out, Commander. Over the north. Come and see what they have done to the sentries."''',
        c("[Go up to the north wall with her.]", "wall")),
     nar("wall", '''{n}The north wall of Drezen is black and bitter and nearly empty. A sentry stamps his feet in the angle of a tower, his face turned up, his mouth open. Two crusaders further along have stopped mid-round to stare. Eliandra stands at the parapet and looks north.{/n}
-{n}You look north too. There is the Wound's red smear on the horizon, as always, and above it a dark, clear sky with a great many stars. And there is something else, a place in the sky your eyes will not stay on. They slide off it to a star, to a cloud, to the sentry's upturned face. You try three times. The third time you understand that you will be trying for the rest of your life.{/n}''',
+{n}You look north too. There is the Wound's red smear on the horizon, as always, and above it a dark, clear sky with a great many stars. And there is something else, a place in the sky your eyes will not stay on. They slide off it to the sentry's upturned face. You recognize the pull from the first-mile road. This time you stop trying to force your eyes back and stand beside her.{/n}''',
         c("Continue", "cost", requires=(LIGHTS_SEEN,)),
         c("Continue", "cost_plain", forbids=(LIGHTS_SEEN,))),
     nar("cost", '''{n}You remember the chiefs' ground: the colours over the dry fall, the cairn, the sword across your knees. You remember them exactly, and you will go on remembering them exactly, and that is all you will have. The veil that hid a whole shrine for a century lies over one pair of eyes now, and it is very good work.{/n}''',
@@ -366,12 +355,11 @@ drezen(E + "drezen.dark_sky", "Lights over the north wall", '"You sent for me. I
        c("[Watch her face instead of the sky.]", "face")),
     el("exact", '''"Exact." {n}She turns to the north, and her voice changes: it is the voice she uses for the evening reading, slow and plain.{/n} "Three curtains, north-north-east, the lowest touching the Wound's glare. Green at the hem, very bright. Folds of rose above, moving westward, perhaps a hand's breadth in the time it takes to breathe twice. At the height of the middle curtain a white band, where it is brightest, pulsing, the way a heart does when one has been running." {n}She stops.{/n} "The sentry has started to cry. He is trying to hide it. There. That is exact."''',
        c("Continue", "end")),
-    el("kind", '''"Kind." {n}She considers the sky.{/n} "They are the most beautiful I have seen them in a hundred years, and I have seen them every winter of those hundred years through a hole in a rock. I think my Lady has put them out for us. I think she likes to be looked at, and she knows you cannot, and she has sent them anyway, so that I will have to tell you." {n}Her fingers tighten.{/n} "That is kind, and I think it is also true. I would not tell you a kind thing that was not."''',
+    el("kind", '"Kind, then. They are bright enough to make the sentries forget the cold." {n}She looks north, her fingers tightening around yours.{/n} "I have watched them from the shrine all my life. I like having you beside me under them. I will describe the part your eyes cannot keep."',
        c("Continue", "end")),
-    nar("face", '''{n}You watch Eliandra instead. The wind lifts her hair from her cheek; she holds it back without looking away from the north. When she notices your gaze, she leans against your shoulder and keeps watching. You stay with her while the sentry finishes his round.{/n}''',
+    nar("face", '{n}You watch her instead. When she notices, she leans against you and turns her cheek towards your mouth. Your kiss lands just below her ear; she draws a sharp breath, then catches your wandering hand against the parapet.{/n} "The sentry is still here." {n}She does not move away. She holds your fingers while he makes his round.{/n}',
         c("Continue", "end")),
-    el("end", '''"They will be back tomorrow night, if the wind holds," {n}she says at last.{/n} "And I will tell you again. I shall bring a second cloak."
-{n}She does not say that she is sorry. You notice that, and you are grateful for it, and she seems to know you are.{/n}''',
+    el("end", '"Tomorrow, if the wind holds. I shall bring another cloak." {n}She stays against your shoulder, one hand over yours. When the sentry passes again she points out the lowest green fold for him, then resumes the description quietly for you.{/n}',
        c("[Stay on the wall until the sentry is relieved.]", flags=(DARK_SKY,))),
 ], requires=(LIGHTS_GIVEN,), forbids=(DARK_SKY,), delay=24)
 
@@ -391,11 +379,11 @@ drezen(E + "drezen.ordinary", "One wound at a time", '"You look exhausted. What 
        c('"Do you regret it?"', "regret"),
        c('"I think you did a very ordinary, very brave thing, and a boy kept his leg."', "brave"),
        c("[Take her hands and look at the blood under the nails.]", "hands")),
-    el("regret", '''"No." {n}She answers at once, and then, being who she is, checks the answer.{/n} "No. I regret that the boy waited an hour in pain. I regret that the next one will wait longer. I do not regret the bargain." {n}She looks at you.{/n} "I was the strongest of my Lady's priestesses because I gave her everything and kept nothing. Now I keep something. It is a smaller strength. It is mine."''',
+    el("regret", '"No. I regret that the boy waited an hour in pain, and that the next will wait longer." {n}She flexes her tired fingers.{/n} "I will need another priestess at that table tomorrow. I should have asked sooner. I would still make the offering."',
        c("Continue", "end")),
     el("brave", '''"Ordinary." {n}She does not like the word, and does not argue with it either.{/n} "The boy will walk. That is what matters, and I will not pretend otherwise because it took me an hour." {n}Her jaw sets, the high priestess for a breath.{/n} "But I will be quicker next time. My Lady took back her gift; she did not take back a century of knowing where the blood runs and how a wound wants to close. That is mine. I learned it at a thousand pallets." {n}A breath, not quite steady.{/n} "I resent the hour, Commander. I will go on resenting it. I would pay it again."''',
        c("Continue", "end")),
-    nar("hands", '''{n}Her hands are cold and not quite steady. You turn them palm up. The blood under the nails is the boy's, and the ink stain on the second finger of the right hand is a hundred years old, and there is no shimmer on either palm, none at all, only the lines anyone has.{/n}
+    nar("hands", '''{n}Her hands are cold and not quite steady. You turn them palm up. The blood under the nails is the boy's, and fresh ink stains the second finger of the right hand, and there is no shimmer on either palm, none at all, only the lines anyone has.{/n}
 {n}Eliandra lets you look. Then she closes her fingers round yours. "They will learn," she says. "They learned to hold a lens. They can learn to be tired."{/n}''',
         c("Continue", "end")),
     el("end", '''"Go and see to your war. I am going to sit here with a cup of water and watch the street go by, and I am going to enjoy being useless for an hour." {n}She almost laughs.{/n} "I have never been useless for an hour in my life. I should like to find out whether I am any good at it."''',
@@ -426,11 +414,10 @@ drezen(E + "drezen.katair", "A name on a tombstone", '"Katair wants a word with 
        c("Continue", "her")),
     kt("warn", '''"No." {n}Something almost like humour crosses his face and is gone.{/n} "She has not been warned off anything since she was thirteen, and it has done her no good at all. I am not going to start now." {n}He glances the way she went.{/n} "I am telling you what a sacrifice weighs, because she will never tell you what hers weighed. She will say it was nothing. It was not nothing."''',
        c("Continue", "her")),
-    kt("her", '''"She gave her whole life to my Lady at thirteen. She never once asked for any of it back, and she held the rest of us together for a century while I went out to stand over my own grave. She deserves one thing that is hers."
-{n}He looks at you directly now, and holds it.{/n}''',
+    kt("her", '"The column still looks to her. I have watched her go from the wounded to your table and back again without sitting down." {n}He unfolds his arms.{/n} "When she says she will walk to Iz, believe her. Help with the horses. Do not make her argue for the road as well."',
        c("Continue", "gave_it", requires=(LIGHTS_GIVEN,)),
        c("Continue", "chose_you", forbids=(LIGHTS_GIVEN,))),
-    kt("gave_it", '''"You gave her that. I do not like the way you did it, and I do not understand you, and I am grateful. Do not make me regret it."''',
+    kt("gave_it", '"You paid for her release. I am grateful. That does not put her people in your debt." {n}He glances towards the road.{/n} "We will need good horses in spring. Remember that when she brings you the map."',
        c('"I won\'t."', "end"),
        c('[Offer your hand] "Come and drink with us at the Stone Tree, when the war\'s over."', "tree")),
     kt("chose_you", '''"She gave that up herself, and then she chose you. I did not choose you, and I do not understand why she did, and I will not stand between her and the first thing she has ever taken for her own. Do not make me regret it."''',
@@ -492,7 +479,7 @@ drezen(E + "drezen.chart", "Your lights sit low in the north", '"What are you dr
        c("[Take the chart.]", "end")),
     el("plain", '''"It suits you. Things are always hiding at the edge of the sky, near the ground, where people have stopped looking up." {n}She rolls the chart, ties it, and holds it out.{/n} "Keep it. Correct it, if I have made mistakes. Do not cross anything out."''',
        c("[Take the chart.]", "end")),
-    el("end", '''"That is today's," {n}she says.{/n} "Tomorrow's will be harder. I have been working up to the hard ones." {n}For a moment she loses the thread of her own calculation, and does not seem to mind.{/n} "Go away now. I want to watch you carry it."''',
+    el("end", '{n}She gives you the chart, then catches your sleeve as you turn to leave.{/n} "Keep it dry. And come back before the night watch. I want to see you without a table between us."',
        c("[Carry the chart away where she can see it.]", flags=(CHART,))),
 ], requires=(FIRST_QUESTION,), forbids=(CHART,), delay=24)
 
@@ -507,8 +494,7 @@ drezen(E + "drezen.road", "The road into Sarkoris", '"Planning the route already
     el("why", '''"Because the first spring after a century is the one I am afraid of." {n}She says it simply.{/n} "I have not been outside a cave in a hundred years without a reason and a sword at my back. I do not know what the land will look like, or what I will feel when I see it. Odden will cry, and the girl with the sling will ask questions, and I would like, for once, to have somebody beside me who is not waiting for me to tell them what to do."''',
        c('"Then the first spring is mine."', "yes", flags=(ROAD,)),
        c('"I can\'t promise it. The war decides where I am."', "war")),
-    el("yes", '''{n}She writes something small in the corner of the map, and turns it so you can read it: your name, and "first spring", and underneath, in the same exact hand, "asked, and answered".{/n}
-"There," {n}she says.{/n} "That is not a vow. I am done with vows. It is a thing I asked for and was given, which is much better, and much more frightening."''',
+    el("yes", '{n}She writes your name beside the road to Iz, and beneath it, "first spring". Then she turns the map for you to see.{/n} "I will ask the quartermaster for two mounts. You can explain why one must carry the Commander."',
        c("[Leave her to her map.]")),
     el("war", '''"No. It does." {n}She does not seem hurt.{/n} "Then I will ask again in the spring, when the war has decided. I am allowed to ask every morning. You agreed to it on the ford road, and I have a very good memory." {n}She rolls the map, carefully.{/n} "But I will leave a place on the road beside me, all the same, and I will not let Odden put the mule in it."''',
        c("[Leave her to her map.]", flags=(E + "drezen.road_open",))),
@@ -525,11 +511,9 @@ def od(id, text, *choices, **kw):
 
 
 drezen(E + "drezen.odden", "The dwarf and the cooper", '"Odden looks happier than I\'ve ever seen him."', [
-    el("start", '''"He has discovered that in Drezen one may buy wine without hiding it in a boot-chest." {n}Eliandra looks across the room, where the old dwarf is explaining something at great length to a cooper who has plainly heard it before and is listening anyway.{/n} "He came to find me this morning to tell me he had something to say to you, and he has been working up to it ever since. I think he has now had enough wine to be brave. Brace yourself."''',
+    el("start", '''"He has discovered that in Drezen one may buy wine without hiding it in a boot-chest." {n}Odden has come down from the refugees' rooms with the cooper. Across the street, the old dwarf is explaining something at great length to a cooper who has plainly heard it before and is listening anyway.{/n} "He came to find me this morning to tell me he had something to say to you, and he has been working up to it ever since. I think he has now had enough wine to be brave. Brace yourself."''',
        c("[Let him come.]", "odden")),
-    od("odden", '''{n}Odden arrives at the table with his beard freshly braided and his cup held very carefully level.{/n}
-"Commander. A word. Stargazer to commander." {n}He clears his throat.{/n} "I've watched her for a hundred years. Hundred and some. Every evening, the reading. Every morning, the rounds. Never a day off, never a cup of wine, never a word for herself. I thought she was made that way, like a lens is. Ground to it."
-"Then you came."''',
+    od("odden", '{n}Odden approaches with his beard freshly braided and a full cup held level.{/n} "Commander. A word." {n}He glances at Eliandra.{/n} "She had bandages to change all morning. The wardens have work, and she is still doing their lifting. If you mean to sit with her, make her sit too."',
        c("Continue", "remembered", requires=(E + "remembrance",)),
        c("Continue", "departed", forbids=(E + "remembrance",))),
     od("remembered", '''"She took a cup at my table, on the day of the dead. The whole room saw it. And now she's sitting in Drezen with her feet very nearly up, asking people questions." {n}His eyes are wet.{/n} "I don't know what you did at that basin. She won't say. I don't need to know."''',
@@ -540,16 +524,14 @@ drezen(E + "drezen.odden", "The dwarf and the cooper", '"Odden looks happier tha
        c('"What did you want to say, Odden?"', "say")),
     od("herself", '''"She did. She does everything herself. That's the trouble with her." {n}He glares at you with enormous affection.{/n} "But she didn't do this one alone. So."''',
        c("Continue", "say")),
-    od("say", '''"If you hurt her, I'll tell every tavern in Drezen that you cheat at cards." {n}He holds up a thick finger.{/n} "Every one. And I'll be believed, because I'm very old and I have an honest face."
-"That's all. That's the whole speech. I had a longer one, but the wine ate it." {n}He raises his cup to her, and then, after a moment's thought, to you, and drinks, and goes back to the cooper with the air of a dwarf who has discharged a great duty.{/n}''',
+    od("say", '"If you hurt her, every tavern in Drezen hears that you cheat at cards. From me." {n}He raises a thick finger.{/n} "I have an honest face. You have yours. Decide who they will believe." {n}He drinks to her, drinks to you, then goes back to the cooper with his speech delivered.{/n}',
        c("Continue", "after")),
-    el("after", '''{n}Eliandra has her hand over her mouth. When she takes it away she is trying very hard not to laugh.{/n}
-"He practised that," {n}she says.{/n} "On me. Twice. The first version had a verse in it." {n}She watches the old dwarf settle back beside the cooper.{/n} "He had a daughter, you know. Ranhild. We never learned what became of her. I think he has decided that since he cannot fuss over her, he will fuss over me. I have decided to let him."''',
+    el("after", '{n}Eliandra watches Odden return to the cooper, struggling not to laugh.{/n} "He practised that on me twice. The first version had a verse." {n}She takes your hand openly on the table.{/n} "His daughter Ranhild never came back. We do not know what became of her. Let him fuss. I will tell him when he goes too far."',
        c('"For the record, it\'s a fair question. Whether I cheat at cards."', "cards"),
-       c("[Raise your cup to Odden across the room.]", "cup")),
-    el("cards", '''"Do you?" {n}Her eyes narrow, with interest rather than disapproval.{/n} "No. Do not answer. I should like there to be one thing about you that I find out for myself. I am told that is how it is done."''',
+       c("[Raise your cup to Odden across the street.]", "cup")),
+    el("cards", '"Do you?" {n}Her eyes narrow with interest.{/n} "No. Save your answer. I shall play against you, and Odden may watch. We will see whether his honest face survives losing."',
        c("[Leave the question unanswered.]", flags=(ODDEN_SPOKE,))),
-    nar("cup", '''{n}Odden sees you raise it, and raises his back, and the cooper, not knowing why, raises his too, and then half the room is drinking to something none of them could name. Eliandra watches all of it with her hand on her heart, as though this, too, were an observation, and one she means to keep.{/n}''',
+    nar("cup", '''{n}Odden sees you raise it, and raises his back, and the cooper, not knowing why, raises his too, and then the drinkers at the outdoor tables are drinking to something none of them could name. Eliandra watches all of it with her hand on her heart, as though this, too, were an observation, and one she means to keep.{/n}''',
         c("[Drink.]", flags=(ODDEN_SPOKE,))),
 ], requires=(FIRST_QUESTION,), forbids=(ODDEN_SPOKE,), delay=24)
 
@@ -573,7 +555,7 @@ drezen(E + "drezen.questions", "Every morning", '"What is it today?"', [
        c('"What are you afraid of?"', "afraid"),
        c('"What did you want, at thirteen, before the vow?"', "thirteen", flags=(E + "drezen.sea",)),
        c('"Do you miss any of it? The strength, the vow, the shrine?"', "miss")),
-    el("afraid", '''"That I will be very good at this," {n}she says at once,{/n} "and then you will die in some breach somewhere, and I will have learned it for nothing, and it will be too late to go back to not knowing." {n}She holds your eyes as she says it, and does not soften it.{/n} "There. You asked."''',
+    el("afraid", '"Of reaching for you in bed and finding an empty pillow. Of a messenger at the door with your cloak and no one inside it." {n}She meets your eyes.{/n} "I have learned how you breathe when you sleep. I want more time to learn the rest. Your next breach may give me none."',
        c("Continue", "end")),
     el("thirteen", '''"To see the sea." {n}She laughs, surprised at herself.{/n} "I had never seen it. Nobody in my clan had. A trader told us it was a lake with no other side, and I did not believe him, and I meant to go and see for myself when I was grown. Then I found my gift, and there was the vow, and there was always something more important than the sea."''',
        c("Continue", "end")),
@@ -584,8 +566,7 @@ drezen(E + "drezen.questions", "Every morning", '"What is it today?"', [
        c("Continue", "end")),
     el("miss_strong", '''"Not the strength. My Lady left me that, and I use it every day, and every day it is heavier, because now I choose each time whom to spend it on. The vow chose for me. The vow..." {n}A pause.{/n} "The certainty. For a century I never once had to choose what I was for; my Lady had chosen, and I had agreed, and a hundred people are alive because I never wavered. I would make that vow again. But now I choose every morning, and it frightens me, and I have told no one that but you."''',
        c("Continue", "end")),
-    el("end", '''{n}She adds one more line to the paper and turns it so that you can read it: today's date, and beside it, "asked and answered, both ways".{/n}
-"Tomorrow," {n}she says,{/n} "I am going to ask you something easy, as a rest. I have not decided what. Something about horses, perhaps. I know nothing whatever about horses."''',
+    el("end", '{n}She puts the pen away and catches your hand before you rise.{/n} "Tomorrow you will have more orders. Come before you read them. I want a little of the morning."',
        c("[Promise to be an expert on horses by tomorrow.]", flags=(QUESTIONS,))),
 ], requires=(CHART,), forbids=(QUESTIONS,), delay=24)
 
@@ -607,8 +588,7 @@ drezen(E + "drezen.ramien", "The priest who dreamed of the waterfall", '"I hear 
        c('[Flirt] "I\'d believe it. She has good taste in faces."', "flirt")),
     el("true", '''"I have no idea." {n}Serenely.{/n} "It is the kind of thing that ought to be true. After a hundred years of vigil I have learned that the gods rarely correct a kind story, and never correct a sermon." {n}She sips her water.{/n} "He also asked whether I would bless the new window in his chapel. I said yes. I have never blessed a window. I expect it will go perfectly well."''',
        c("[Leave her to her windows.]", flags=(RAMIEN_TALKED,))),
-    el("flirt", '''{n}Eliandra looks at you over the rim of her cup with an expression that, on any other woman, you would call smug.{/n}
-"You say that," {n}she says,{/n} "to a woman who has just been told by a priest of Desna that she appears in divine visions. You will have to do better than that, Commander. Try again tomorrow. I will be insufferable until then."''',
+    el("flirt", '{n}She lowers her cup, looking pleased with herself.{/n} "Good taste, certainly. A very imprecise compliment. Try again tomorrow, Commander. I shall expect you."',
        c("[Leave her to be insufferable.]", flags=(RAMIEN_TALKED,))),
 ], requires=(RAMIEN_DREAM,), forbids=(RAMIEN_TALKED,), delay=24)
 
@@ -629,3 +609,35 @@ _LIVE_PRODUCERS = {
 for _q5_producer in SCENES:
     if _q5_producer["Id"] in _LIVE_PRODUCERS:
         _q5_producer["Requires"] = [*_q5_producer.get("Requires", []), "trickster.now"]
+
+
+# Round 2: authored continuity at both physical hosts. Old indices and effects remain;
+# only append fallback nodes/answers. Release, proposal and sex are separate decisions.
+for _scene in SCENES:
+    # These twins also use the first-visit cast; retain historical Angel acquaintance.
+    _scene["Forbids"] = list(dict.fromkeys([*_scene["Forbids"], "eliandra.met_ch3"]))
+    _by = {nd["Id"]: nd for nd in _scene["Nodes"]}
+    if _scene["Id"] in (E + "visit.star_heart", E + "visit.star_heart_mark"):
+        for _id in ("look", "look_up"):
+            _answers = _by[_id]["Choices"]
+            _answers[1]["Requires"].append(E + "terms_known")
+            _answers.append(c("Continue", "want_observation", forbids=(E + "dead_named", E + "terms_known")))
+        _scene["Nodes"].append(el("want_observation",
+            '"You stayed for the reading. Tonight I want you to stay for me." {n}She rests her hand on your chest and comes close enough for her breath to touch your mouth.{/n} "Kiss me, Commander."',
+            c("[Kiss her.]", "robes"), c('[Flirt] "The stars can wait."', "robes")))
+        _slot = _scene["Id"] + ".explicit.1"
+        _by["charts"]["Choices"][0]["Next"] = _slot
+        # Explicit brief: first chosen night at the bare chart table; no interruption.
+        _scene["Nodes"].append(nar(_slot,
+            '{n}Eliandra catches your wrist, pulls you down against her, and kisses you hard enough to silence the question on your lips. The last chart slips from the table.{/n}',
+            c("Continue", "morning")))
+    if _scene["Id"] in (E + "drezen.city", E + "drezen.city_mark"):
+        _by["ask"]["Text"] = _by["ask"]["Text"].replace("since the road", "until we could sit together")
+    if _scene["Id"] in (E + "drezen.road", E + "drezen.road_mark"):
+        _by["why"]["Choices"][1]["Forbids"].append(LETTER_ANSWERED)
+        _written = copy.deepcopy(_by["why"]["Choices"][1])
+        _written.update(Next="war_letter", Requires=[LETTER_ANSWERED], Forbids=[])
+        _by["why"]["Choices"].append(_written)
+        _scene["Nodes"].append(el("war_letter",
+            '"Then I will ask again when it is done. You wrote that I could ask every morning." {n}She folds the map.{/n} "Keep that letter in mind when you think the spring too far away to discuss."',
+            c("[Leave the spring open.]", flags=(E + "drezen.road_open",))))

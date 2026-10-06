@@ -125,5 +125,57 @@
   "chapter": [
    5
   ]
+ },
+ "eliandra": {
+  "device_class": "bargain",
+  "setting": "Pulura star-heart offering basin, then Drezen north-gate milestone and emptied dry-fall chart table",
+  "payoff_shape": "irreversible lights or priestly strength are relinquished without buying love; her road proposal keeps the survivors, and charts meet Katair’s morning objection",
+  "canon_hooks": [
+   {
+    "guid": "24d719b48b3195949b3d96a5afb5721b",
+    "path": "World/Dialogs/c3/Pulura_C3/Pulura_C3_main/HeraldPulura/Cue_0009.jbp",
+    "key": "7a20e0bd-fa54-4684-8d50-db0c7d488d28",
+    "native_excerpt": "\"She is the ideal priestess, a selfless servant of the goddess and her people. Eliandra discovered her gift when she was only thirteen, and ever since then, she has healed, guided, and protected the inhabitants of Sarkoris. I have met very few mortals who are capable of such abnegation. She has never married or had a family, but has devoted herself entirely to service. In return, the Shimmering Maiden has rewarded Eliandra for her sacrifice — she has always been the strongest",
+    "scope": "Native characterization/event evidence, not native romance. Path-exclusive dialogue is a voice target only unless this history actually heard it."
+   },
+   {
+    "guid": "09ace5be98925f74da06c1ea967d461f",
+    "path": "World/Dialogs/c3/Pulura_C3/Pulura_C3_main/Elyandra_main/Cue_0050.jbp",
+    "key": "98a24002-aaa6-48e9-98b5-ead26a5b6d32",
+    "native_excerpt": "\"Vestari and Cristry are the living embodiment of such a disaster. I love them with all my heart, like they are my own children. However, before the temple was hidden a hundred years ago, they could have five quarrels and six reconciliations all between one moonrise and the next. At other times, they would go a month without talking to one another. That created quite a problem, since stargazers are supposed to share their observations and research. This carried on for years, ",
+    "scope": "Native characterization/event evidence, not native romance. Path-exclusive dialogue is a voice target only unless this history actually heard it."
+   },
+   {
+    "guid": "28e3b35d52e24fb4da16778f68b2b1c2",
+    "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0030.jbp",
+    "key": "89825892-cab0-4831-9855-6860e58b7e42",
+    "native_excerpt": "\"It breaks my heart to leave this place, but we cannot stay here. The sanctuary was protected by the secrecy of its location. But now that the demons know about the temple, this is no longer a place of refuge. I will lead the survivors somewhere safe — but I cherish the hope that we will return. Someday, our waterfalls will sing again...\"",
+    "scope": "Native characterization/event evidence, not native romance. Path-exclusive dialogue is a voice target only unless this history actually heard it."
+   },
+   {
+    "guid": "cb48db9773f775b428f0a5f20757145e",
+    "path": "World/Dialogs/c5/PuluraFallsC5/PuluraLeaderSaved/Cue_0026.jbp",
+    "key": "e20e4c9b-4cd3-4e31-a84f-2f94f9852811",
+    "native_excerpt": "\"This is Pulura's Fall. Once there were real waterfalls here... you could hear the song of the water as it flowed across the stones. But then the Worldwound came, and stole it all away. The servants of the Shimmering Maiden took shelter here when Sarkoris fell. My Lady hid this place from unfriendly eyes, and prolonged the lives of everyone inside — so that we could dedicate ourselves to an important mission. We have been studying the Worldwound ",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "4411616a3244f5346bc3fb323be66d2f",
+    "path": "World/Dialogs/c3/Pulura_C3/Pulura_C3_main/Elyandra_main/Cue_0035.jbp",
+    "key": "06bd9f09-20c3-4c13-9db7-ddd0f2145df3",
+    "native_excerpt": "\"My request to you was made on impulse. To put it simply... A heavy burden has been placed on our shoulders, and it is easy to grow weary. We not only live in complete isolation, but we have done so for a very long time, an entire lifetime for some races. I am afraid many will be broken by this ordeal, if they have not been already. It would be easier if I could be dispassionate, like Katair, but I cannot. I worry for those in my care. I feel lik",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   },
+   {
+    "guid": "6692c6d1de7b1404cbd87079739a3a4e",
+    "path": "World/Dialogs/c3/Pulura_C3/Pulura_C3_main/Elyandra_main/Cue_0011.jbp",
+    "key": "f99f9661-960e-48c2-b6ec-2f5a60130c4b",
+    "native_excerpt": "{n}Eliandra shakes her head.{/n} \"I cannot allow this. It would reopen old wounds for Katair, Odden, and the others. It could also lead to future chaos. And believe me, the chaos caused by Vestari and Cristry when they are together is enough to put some demons to shame.\"",
+    "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+   }
+  ],
+  "chapter": [
+   5
+  ]
  }
 }

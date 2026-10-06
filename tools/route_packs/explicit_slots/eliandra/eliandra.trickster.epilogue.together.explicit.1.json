@@ -1,0 +1,26 @@
+{
+  "slot_id": "eliandra.trickster.epilogue.together.explicit.1",
+  "voice": "ELIANDRA: precise, protective, severe when deceived; a devout priestess with dry practical humor, accustomed to giving directions and completing difficult work. Private appetite becomes direct once she chooses a lover. Brief imperatives, concrete corrections, occasional awkwardness without infantilization. Faith and service remain hers. New dialogue only; do not reuse the example or source quotations. Avoid therapy/HR language, poetic maxims, endless observation metaphors, modern pornography register or generic domination.",
+  "facts": [
+    "Native unit e349079a648cb15448a27f9049344bf1 is female, Chaotic Good and aasimar.",
+    "HeraldPulura/Cue_0009 (24d719b48b3195949b3d96a5afb5721b): discovered healing gift at thirteen; never married or had a family; devoted her life to service and received exceptional priestly strength. Childhood is nonsexual history only.",
+    "Elyandra_main/Cue_0050 (09ace5be98925f74da06c1ea967d461f): banned temple romances after Vestari and Cristry's quarrels disrupted research.",
+    "PuluraLeaderSaved/Cue_0026 (cb48db9773f775b428f0a5f20757145e): Pulura prolonged the inhabitants' lives for the mission.",
+    "PuluraLeaderSaved/Cue_0030 (28e3b35d52e24fb4da16778f68b2b1c2): she leads survivors to safety after the shrine is exposed.",
+    "No native sexual anatomy, measurements, virginity, erotic preferences or scar provenance is established by these facts. Do not add them."
+  ],
+  "scene": "Postwar restoration circuit, an unnamed roadside lodging, within the existing together epilogue; authored DLC-tier coda, not a native named inn or new playable event. Commander and Eliandra have reunited after actual travel. Use only where the shrine night actually occurred (existing heart_seen); otherwise the page uses its nonsexual return paragraph. Reserve consensual sexual intimacy between established lovers, not another first night. Required beats: she arrives road-tired but alert, deliberately puts the map out of reach until morning and initiates the familiar embrace; she knows what she wants, without becoming a generic seductress; one blunt remark about wanting the Commander; desire coexists with the next morning's journey/healing work; retained aurora/strength cost is not cured by sex; this return is neither escape nor retirement. No new promise of the first spring or permanent residence. End with the dawn road audible, then resume the restoration-and-return coda. Present-day adult intimacy only. This is a brief for a later user-selected fill; keep the staging and aftermath coherent in both Commander variants.",
+  "last_line": "N: Outside, the first cart rattles onto the road.",
+  "speakers": {
+    "E": "Eliandra"
+  },
+  "example": "N: Eliandra pushes the rolled chart beyond the candle and catches your sleeve.\nE: Leave that. Come closer.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 14,
+  "max_lines": 20,
+  "default_text": "{n}She sets the road map beyond the candle, takes your hand beneath her cloak, and pulls you close. By the time the cloak reaches the floor, she has kissed the greeting out of your mouth.{/n}",
+  "placement": "epilogue.together/page: appended established-lovers return paragraph under existing heart_seen; no new commitment condition"
+}
