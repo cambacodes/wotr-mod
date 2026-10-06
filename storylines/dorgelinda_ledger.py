@@ -11,6 +11,8 @@ Each engages a canon anchor of hers:
 - her offer to be court-martialled after the war (Logistics_8-1/Cue_0095 c25b7d5e).
 Her past before the supply service is her own telling in her own voice, and she says as much; nothing here states it as fact.
 """
+# Authored additions: courtship, supply counts, scar stories, wool, cup, bedroom,
+# Old Harrow and postwar shop extend her logistics service; they do not rewrite native verdicts.
 from story_format import c, p, scene
 from storylines.dorgelinda_trickster import (ABYSS, BOOTS_PAID, CARTS, CLEAN, CLOSED, COMMITTED, COUNTED, DECLINED, DIRTY, HANGED,
                                              HANGED_LANN, HANGED_WENDUAG, HUSHED, LATE, METHODS, P, PRESENT, PRISON, REDEEMED,
@@ -124,35 +126,29 @@ office(HAND, "The bad hand", '"You\'re writin\' with one hand again."', [
 "Go on, then. You're payin' in boots this week. I'll give you a story for 'em."''',
       c('"How did it happen?"', "story"),
       c('"I didn\'t come to ask."', "liar")),
-    d("liar", '''"Liar." {n}She says it without heat, the way she says "damp" of a warehouse.{/n}
-"You came to be counted, and you're sittin' there countin' me. I'd do the same. A quartermaster who doesn't count the other side of the table ends up guardin' an empty warehouse with a full book."''',
+    d("liar", '''"Liar." {n}She blots the requisition.{/n} "You've been watchin' that hand since you sat down. Go on, then."''',
       c("Continue", "story")),
     d("story", '''"There's three versions, dependin' on who's buyin'. For a colonel, I held a breach alone at Kenabres against a horde. For a recruit, it was a demon the size of a barn." {n}She finally looks up.{/n}
 "For you, the true one. Somethin' with claws came over a barricade I was holdin', in the dark, and I put a spear in it, and it put its hand across my face and the other across my arm on the way down. The report says demon. The report was written by a man who wasn't there. I didn't see much of it. It took the eye first."''',
       c('"And the hand?"', "hand")),
-    d("hand", '''"The hand it left. That's the joke. It took the eye and it left the hand, only it left the hand the way a cutpurse leaves a purse: on you, with nothin' in it." {n}She lifts the grey fingers with her good hand, turns them to the lamp, and lets them fall back on the page. They land like something dropped.{/n}
-"Went numb on the march back and stayed numb. The healers poked it for a month. Our resident jokesters took one look and started callin' me Stranglehold. So I left the front for the supply service, and I showed every one of those wisecrackers that one hand's all you need to keep your supplies in order."''',
+    d("hand", '''"Hand went numb on the march back. Stayed numb. The healers poked it for a month." {n}She lifts the withered fingers with her good hand, then lowers them onto the page.{/n} "Our jokesters started callin' me Stranglehold. So I left the front for supply, and showed 'em what one hand could keep hold of."''',
       c('"And did they learn?"', "learned"),
       c('[Reach across the desk and take the bad hand in yours.]', "touch")),
     d("learned", '''"All of 'em. The thievin' quartermasters, the officers who lose half a caravan every skirmish, the civilian milksops with a sob story for every sack." {n}Something that is almost pride comes into her voice.{/n}
-"Two of those jokesters are dead now, on the walls, and I buried 'em in good boots. The third's a sergeant in my stores. He calls me ma'am and counts twice." {n}She sniffs.{/n} "That's what a nickname's for. To see who's still sayin' it in a year."''',
+"Two of those jokesters are dead now, on the walls, and I buried 'em in good boots. The third's a sergeant in my stores. He calls me ma'am and counts twice." {n}She sniffs.{/n} "The one still in my stores counts twice. He can laugh after the carts are in."''',
       c("Continue", "ask_back")),
     d("touch", '''{n}She does not pull away. Nor does she help. The hand is cool and very light, the skin tight over the bones, like holding a glove somebody else has taken off.{/n}
 "It won't feel a thing, Commander. That's the point of tellin' you." {n}Her good hand keeps the page flat on its own. She watches your thumb move over the knuckles and her jaw works, once.{/n}
 "...It's been a while since anybody picked it up on purpose. Most folk hand it back to me like it's somethin' I dropped."''',
       c("[Keep holding it a moment longer.]", "ask_back", flags=(L + "held_hand",)),
       c("[Set it back on the page, gently.]", "ask_back")),
-    d("ask_back", '''"Right. Your turn." {n}She dips the pen.{/n} "I've told you where my eye went and where my hand went. You've drawn a column of stores, two pairs of boots and a blanket you can't account for. What's the Trickster had off you? And don't say nothin'. Nobody walks out of a war without somethin' missin' from the column."''',
+    d("ask_back", '''"Your turn." {n}She sets down the pen.{/n} "I've told you about the wound. What'd this war leave on you, Commander?"''',
       c("[Show her a scar you don't talk about.]", "scar"),
       c('"The Trickster took something. I\'m still counting what."', "counting"),
       c('[Flirt] "Nothing you can see. You\'ll have to look harder."', "flirt")),
-    d("scar", '''{n}She studies it the way she studies a dented helmet, working out what hit it and how hard and whether whoever wore it walked away.{/n}
-"That's a bad one. Somebody meant it." {n}She writes a line in your column, small. You can read it upside down: One scar, declared.{/n}
-"There. Now you're on the books properly. Everythin' else you drew was stores. That's the first thing you've given me that isn't."''',
+    d("scar", '''{n}She studies the scar.{/n} "That's a bad one. Somebody meant it." {n}She makes a note beside the next armour issue.{/n} "Padding there, if you're wearin' plate. I'll tell the armourer."''',
       c('"You write everything down."', "close", flags=(HAND_TOLD,))),
-    d("counting", '''"Still countin'." {n}She repeats it as if checking the weight.{/n}
-"That's an honest answer, and I hate it, 'cause I can't write it down. Tell you what. You count, I'll hold the column open, and when you've got a figure you bring it here." {n}She writes a line in your column: One loss, amount not yet known.{/n}
-"There. Now you're on the books properly. That's the first thing you've given me that isn't stores."''',
+    d("counting", '''"Still countin'. Aye." {n}She leaves the pen beside the requisition.{/n} "I've had days like that. Boots due back next week, though." {n}She writes the date of the next visit.{/n} "I'll expect you with 'em."''',
       c('"You write everything down."', "close", flags=(HAND_TOLD,))),
     d("flirt", '''{n}She looks at you with the one eye, from the top of your head to the edge of the desk, as thoroughly as she would a new consignment of cavalry saddles.{/n}
 "Harder than that?" {n}A pause.{/n} "Hammer and tongs, Commander. You've got the nerve of a Fellow with a full cart." {n}She writes a line in your column, very small, and turns the book so you cannot read it.{/n}
@@ -204,8 +200,7 @@ office(GRIP, "Stranglehold", '"Busy?"', [
 {n}She waves the clerks off. They go, disappointed, taking the young soldier with them. When the door closes she leans back.{/n}
 "Don't tell 'em I've never lost. I lost twice. Once to a paladin who prayed at it, and once to a halfling who tickled me." {n}She points the pen at you.{/n} "Neither of 'em got a second go."''',
       c("Continue", "after")),
-    d("after", '''{n}The office empties. She pours two cups from the bottle that is on no manifest and sets one by your hand.{/n}
-"Our resident jokesters named me for a hand that couldn't hold a thing. So I made the other one hold everythin'. That's all a nickname is, Commander. Somebody else's joke that you finish." {n}She drinks.{/n} "You'd know. They call you a Trickster. I'd like to see what you finish."''',
+    d("after", '''{n}The clerks leave. She pours two drinks and pushes one toward you.{/n} "They laughed when the hand went numb. Now they ask before they borrow a nail." {n}She drinks.{/n} "What've you come to take, Commander?"''',
       c('"Maybe you."', "maybe"),
       c('"The war. Then we\'ll see."', "war")),
     d("maybe", '''{n}She chokes on the drink. She does it quietly, and with dignity, and wipes her mouth with the back of her bad hand.{/n}
@@ -252,18 +247,15 @@ office(WAREHOUSE, "The warehouse by the walls", '"You said the stores by the wal
 "He counted 'em. The corporal." {n}Her voice is very flat.{/n} "Twelve men with green slime for tears who'd have rotted in their cots. And the order was that my quartermaster should die sooner than open this box. Because an officer's worth ten of 'em. That's the arithmetic, Commander. I've done it myself. I'll do it again before this war's over."''',
       c('"Is it the right arithmetic?"', "arith"),
       c('"What does the book want?"', "book")),
-    d("arith", '''"Right?" {n}She sets the vial back in the straw, neatly, in its row.{/n}
-"Right's for priests and paladins. I do supply. If an officer dies 'cause the potions went to twelve privates, we lose a battle, and a hundred privates die, and I write that down too." {n}She is quiet a moment.{/n} "And if the twelve privates die, the whole company learns what it's worth to us, and they stop fightin' for us, and we lose the battle anyway. There's no right. There's a crate, and there's who drinks it, and I'd sooner it was me decidin' than some lord who's never smelled a plague ward."''',
+    d("arith", '''"Those potions were reserved for officers. Lose the officers and a company gets itself butchered." {n}She sets the empty vial back in its straw.{/n} "Leave twelve men rottin' while you've got medicine under lock, and their mates learn not to trust you. I backed the order. I still have to feed those mates. Go on. Give me somewhere to enter the vials."''',
       c("Continue", "book")),
     d("book", '''"The book wants twenty-four vials entered somewhere. Either they're stolen, and they go under Bartley's name for the record in Nerosyan, or they're issued, and they go under yours."
 {n}She holds out the pen.{/n} "You ate a warehouse. You tell me if you ate these."''',
       *POTION_CHOICES),
-    d("ours", '''{n}She watches you write it: twenty-four vials, healing, issued to the Commander, for operations. Used, quietly. Then, under it, because you are who you are, a small tally of twelve lines.{/n}
+    d("ours", '''{n}She watches you enter twenty-four healing vials under your own name. Beneath the issue, you mark the twelve survivors.{/n}
 "You'll have the general staff askin' where their potions went." {n}She takes the pen back.{/n} "And I'll tell 'em. The Commander drank 'em. All twenty-four. Very thirsty, the Commander." {n}Her mouth twitches.{/n} "They'll believe it of you. That's the terrible thing."''',
       c("Continue", "home", flags=(POTIONS_OURS,))),
-    d("bartley", '''{n}She nods, once, and writes it herself, in her own hand: twenty-four vials, healing, stolen, C. N. Bartley. The pen does not waver.{/n}
-"That's the law. That's how it'll read in Nerosyan, and they'll say we've got a grip on our troublemakers." {n}She blots the line.{/n}
-"And somewhere a corporal who saved twelve men is goin' to have one more line against him in a book nobody'll ever read." {n}She closes the ledger.{/n} "You did right by the book, Commander. I'll not pretend it tastes good."''',
+    d("bartley", '''{n}She writes the stolen vials under Bartley's name and blots the entry.{/n} "Theft. That's how it'll read in Nerosyan. I'll put the twelve survivors in the report too. Doesn't wipe out what he did to my quartermaster."''',
       c("Continue", "home", flags=(POTIONS_BARTLEY,))),
     nar("home", '''{n}You lock up together. She takes the lantern. On the walk back along the wall a sentry salutes the Commander and then, a beat later, the quartermaster, and she returns it with the bad hand as she always does.{/n}
 {n}At the stores door she stops.{/n}''',
@@ -285,9 +277,8 @@ office(DEBTS, "Old debts", '"You\'re writin\' letters. To whom?"', [
 "Before I had one hand, I had a knack for findin' things, and some of the folk I found 'em through were the sort you don't bring home. There was one, in a river town, who could find a nail in a snowstorm and tell you who'd dropped it. Ya couldn't snatch a nail from him. I tried once. I was younger."
 {n}She seals the Nerosyan letter with a thumb of wax.{/n} "He owes me for a night I didn't tell a watch captain what I'd seen. He's the kind of man who pays that sort of debt, 'cause the other sort don't live long in his trade."''',
       c('"And if he can\'t get the helmets out?"', "stuck")),
-    d("stuck", '''"Then they sit there till the war's over, and some Ustalavic customs clerk sells 'em to a vampire's honour guard, and three hundred of our lads go up the walls with their skulls in their hands." {n}She puts the Ustalav letter on top of the pile.{/n}
-"Or you can help. You've a Trickster's hand, and the Commander's seal, and you've already put your name to one thing that isn't true in my book." {n}Her eye is steady.{/n} "I'm not askin'. I'm tellin' you what's on the table."''',
-      c('[Forge a Mendevian treasury release, seal and all.]', "forge"),
+    d("stuck", '''"Then those helmets sit in Ustalav till some clerk sells 'em, and our lads climb the walls bareheaded." {n}She sets blank paper beside the letters.{/n} "You've got your seal. I've got a fence who owes me. Between us, we ought to get past one bloody customs yard."''',
+      c('[Forge a Mendevian treasury release, seal and all.]', "forge", requires=('trickster.now',)),
       c('"I\'ll write to Ustalav as the Commander. Under my own seal, with a threat in it."', "honest"),
       c('"Send your fence. I\'d like to see what a man who owes Dorgelinda Stranglehold can do."', "fence")),
     d("forge", '''{n}She watches you do it: the treasury clerk's cramped hand, the flourish on the Chancellor's initial, the right grey wax, which she produces from a drawer without comment. When you hold it up to the lamp it would fool you. It very nearly fools her.{/n}
@@ -301,9 +292,7 @@ office(DEBTS, "Old debts", '"You\'re writin\' letters. To whom?"', [
 "You'd like to see it." {n}She adds a line to the fence's letter in a hand even smaller than her own, and folds it twice more.{/n}
 "All right. You'll see it. It'll cost me a debt I've been savin' ten years, but you'll see it, and when three hundred helmets come up the Nerosyan road with Ustalavic customs seals on 'em that nobody ever stamped..." {n}She seals it.{/n} "...you'll not ask how. That's the rule with him."''',
       c("[Agree to the rule.]", "sent", flags=(FENCE_CALLED,))),
-    d("sent", '''{n}She stacks the sealed letters for the courier and sits back. Outside, the bell on the western wall rings the change of watch. Somewhere below, someone is hammering a new hinge onto a supply wagon.{/n}
-"Folk in Nerosyan think the war's fought with swords. It's fought with letters. Who owes who, who'll send what, whose cart gets to the front before the other feller's." {n}She rubs her good eye.{/n}
-"The Queen's retinue is givin' banquets in the capital with wine worth more than a company's potions. I've seen the bills. And here's me chasin' helmets through Ustalav." {n}She snorts.{/n} "Call me a freethinkin' rebel if you like."''',
+    d("sent", '''{n}She stacks the sealed letters for the courier. The western bell rings the change of watch.{/n} "One to the treasury, one to customs, one to a fence. Three hundred helmets still sittin' in a yard while I wait for answers." {n}She rubs her eye.{/n} "The Queen's retinue can get wine for a banquet without all this. I've seen the bills. Call me a freethinkin' rebel if you like."''',
       c('"A freethinking rebel."', "rebel"),
       c('"I\'d rather call you Dorgelinda."', "name")),
     d("rebel", '''"Hah. You'd be the first to say it to my face instead of behind it." {n}She gathers the letters.{/n}
@@ -409,17 +398,18 @@ office(RATIONS, "Two out of three", '"You weren\'t at the mess."', [
       c("Continue", "after", flags=(SHARED,))),
     d("order", '''{n}Every spoon at the table stops.{/n}
 "...An order." {n}She gives you the one eye, unblinking. Then she takes a bowl from the stack, fills it at the pot, sits down, and eats every mouthful while holding your gaze, and sets the spoon down with a click.{/n}
-"Ration consumed, Commander. Enter it where you like." {n}The table starts eating again.{/n} "You'll pay for that in the book. I've a long memory for orders I didn't want."''',
+"Ration consumed, Commander. Enter it where you like." {n}The table starts eating again.{/n} "I'll eat, Commander. Don't expect me to thank you for makin' a show of it."''',
       c("Continue", "after", flags=(ORDERED,))),
     d("sit", '''{n}You sit. You eat. She watches you eat, and says nothing either, and after a while she reaches over with her spoon and takes one mouthful from your bowl, as if tasting for poison, and then another.{/n}
 "The turnip's off," {n}she says.{/n} "I'll have words with the cook." {n}She does not take a third. She does not need to.{/n}''',
       c("Continue", "after", flags=(SHARED,))),
-    d("after", '''{n}Later, in her office, she opens your column and writes a line you can read, for once: Commander, at the mess.{/n}
-"I've fed armies on less than this, you know. On the hard postin's, before Drezen, the lads ate what the country let 'em and said thank you." {n}She stops.{/n} "Different war. Same arithmetic. Folk who've never been hungry think it's the cold that breaks an army. It's the empty bowl on the man beside you, and knowin' the officer's isn't."''',
-      c('"Is that why you ate last?"', "last")),
-    d("last", '''"That's why I eat last." {n}She caps the ink.{/n}
-"Doesn't make me a saint. It makes me a quartermaster the ranks'll believe when I tell 'em a lie." {n}She is quiet a while.{/n}
-"You sat at that table, Commander. They'll talk about it in the barracks for a month. You'll not have bought one crate with it, and you'll have bought more than a warehouse." {n}She puts the pen down.{/n} "Go on. I've letters to write to people who've never missed a meal."''',
+    d("after", '''{n}Back in her office, Dorgelinda puts the empty ration bowl on the desk.{/n}''',
+      c('"Is that why you ate last?"', "last", forbids=('dorgelinda.ledger.ordered_to_eat',)),
+      c("Continue", "after_ordered", requires=(ORDERED,))),
+    d("last", '''"Aye. I wasn't puttin' my supper ahead of his. The lad's eaten now. So have we." {n}She sets the bowl aside and opens the requisition book.{/n} "I've letters to write to people who've never missed a meal. If the cooks hear you liked that turnip, we'll never see the last of it. Keep your mouth shut about that much, at least."''',
+      c("[Leave her to the letters.]")),
+
+    d("after_ordered", '"You embarrassed me in front of the lads." {n}She pushes the bowl aside.{/n} "I know you meant to get food into me. Next time, sit down and eat. I can take a hint without you bellowin\' an order across the mess."',
       c("[Leave her to the letters.]")),
 ], requires=("trickster.ever", COUNTED, PRESENT), forbids=(RATIONS, "dorgelinda.conscience_kept"), delay=48, chapters=(5,))
 
@@ -427,8 +417,7 @@ office(RATIONS, "Two out of three", '"You weren\'t at the mess."', [
 # --- 7. After hours (the intimate beat, after the commit). -------------------------------------------------------------
 
 office(NIGHT, "After hours", '"The clerks have gone home."', [
-    nar("start", '''{n}They have. The stores are dark but for her lamp. She has not opened the ledger. That is the first thing you notice: the book is shut, and her good hand lies on the cover, and she is looking at you.{/n}
-"Bolt the door." {n}Not an order. She does not give you orders. It is a line in a manifest, read aloud.{/n}''',
+    nar("start", '''{n}The last carter has gone. Dorgelinda shuts the ledger and pushes it to the far end of the desk. Her eye follows you to the door.{/n} "Bolt it."''',
         c("[Bolt it.]", "bolted")),
     d("bolted", '''"Right." {n}She gets up and comes round the desk, and stops close enough that you can smell the lamp oil and wool and the good stuff that is on no manifest.{/n}
 {n}She does not say anything for a moment. Her good hand goes to the stack of requisitions on the corner of the desk and squares it, though it is already square, and then squares it again.{/n}
@@ -444,18 +433,18 @@ office(NIGHT, "After hours", '"The clerks have gone home."', [
 {n}She lays her good hand flat on your chest, over the shirt, and leaves it there, feeling your heart go.{/n}
 "Oh," {n}she says, quite quietly, as if somebody had told her a figure she did not expect.{/n} "That's fast. Is that me?"''',
       c("Continue", "count")),
-    d("count", '''{n}She undoes you with one hand, slowly at first and then not slowly at all, and swears at a stuck button, and wins. Every scar she finds she touches, the old ones and the new, and asks nothing about any of them. Her breathing has gone ragged. So has yours.{/n}
-{n}Her own she does not name. You find them anyway: the long pale furrows down her arm from shoulder to wrist, the old white knot of a spear wound over the hip, the heavy shoulders and hard forearms of a woman who has hauled crates most of her life. She watches your face while you find them, and keeps count.{/n}''',
+    d("count", '''{n}She swears at a stuck button, works it free and pulls your shirt open. Her palm moves over your chest; at a scar, it slows. Her breath catches when you unfasten her belt.{/n}
+{n}Her shirt slips from one shoulder, baring the pale furrows along her arm. You brush your lips over the unscarred shoulder. She turns into you and catches your mouth with hers.{/n}''',
       c("[Tell her she's beautiful.]", "tell"),
       c('[Say nothing. Show her.]', "show")),
     d("tell", '''"Beautiful." {n}She snorts, and it catches halfway, and she puts her forehead against your shoulder so that you cannot see her face.{/n}
 "You lyin' Trickster." {n}Her voice is thick.{/n} "You'd sign for anythin'. Say it again."''',
       c("Continue", "threshold")),
-    d("show", '''{n}You show her. She lets you, for a while, standing, the edge of the desk behind her, her good hand fisted in your shirt as if it were the last rope on a sinking wagon.{/n}
-"Hammer and tongs," {n}she breathes, not quite steady, and pulls.{/n}''',
+    d("show", '''{n}You kiss her. She grips the back of your neck and pulls you closer, until your hip presses against the desk and her breath is hot against your mouth.{/n} "About bloody time."''',
       c("Continue", "threshold")),
-    nar("threshold", '''{n}Her elbow knocks the ledger off the desk. She lets it lie. The bed in her rooms behind the stores is narrow and regulation and has never been meant for two, and she swears at it in Dwarven, fondly, the way she swears at a cart that will get there in the end. Her boots come off, and yours, and she drops them side by side, heel to heel, because she is who she is.{/n}
-{n}Then she pulls you down onto the rough wool, and her withered hand lies on your back like a weight she has decided to let you carry, and the good one does not let go at all.{/n}''',
+    nar("threshold", '''{n}Her elbow sends the ledger to the floor. She leaves it there. You kick off a boot; it slides beneath the desk. She pulls you through the inner door, laughing against your mouth. At the bed you work her boots loose, then your remaining one. Her hand catches yours at her waist.{/n}
+"I want you. Here. Before some bastard comes askin' for horseshoes."
+{n}She draws you onto the rough wool. Her bare shoulder is warm beneath your lips; her good hand presses you close, and the last of your clothes falls beside the bed.{/n}''',
         c("[The lamp gutters out.]", flags=(NIGHT_KEPT,))),
 ], requires=("trickster.ever", COMMITTED), forbids=(NIGHT,), delay=12, chapters=(5,))
 
@@ -497,7 +486,7 @@ office(MORNING, "The morning count", '"Mornin\'."', [
 # --- 9. The inquiry: Nerosyan wants the ledgers. -------------------------------------------------------------------------
 
 INQUIRY_CHOICES = (
-    c('"Send them the true books. My line open, the Fellows\' book if we kept it. All of it."', "true_books",
+    c('"Send the true books. Every issue, every signature. All of it."', "true_books",
       crusade=("Favors", -100)),
     c('[Write them a ledger that balances, in your own hand.]', "clean_copy", crusade=("Finances", -100),
       alignment=("Chaotic", 1)),
@@ -505,35 +494,29 @@ INQUIRY_CHOICES = (
 )
 
 office(INQUIRY, "The inquiry", '"You look like you\'ve had a letter."', [
-    d("start", '''"I've had a letter." {n}She holds it up by one corner, as if it were wet. It carries the seal of the Mendevian treasury, or what is left of the treasury.{/n}
-"Nerosyan wants the ledgers. All of 'em. They've heard talk in the capital about where Drezen's stores go, and none of it's kind. Some lord who's never missed a meal wants to see the books." {n}She drops it on the desk.{/n} "They'll see your line. Open since the day you signed it. Twenty-some things in your name that nobody in Nerosyan can account for."''',
+    d("start", '''"Nerosyan wants the ledgers. All of 'em." {n}She drops a treasury letter onto the desk.{/n} "Some lord's heard about our irregular issues. He wants dates, signatures and names. Yours is on the first page. Mine's on the rest. He'll have plenty to read."''',
       c("Continue", "dirty", requires=(DIRTY,)),
       c("Continue", "clean", requires=(CLEAN,), forbids=(DIRTY,)),
       c("Continue", "plain", forbids=(CLEAN, DIRTY))),
     d("dirty", '''"And they'll see the other book, if they look in the right drawer. Their methods, my hand. Weight discrepancies here, carts that fell off in transit there." {n}She puts her good hand on the thin ledger, the one in the smaller script.{/n}
 "I kept it better than they ever did. That won't save either of us if the wrong clerk opens it."''',
       c("Continue", "offer")),
-    d("clean", '''"There's no second book. I burned it. You took the dirt. I've been sleepin' better since." {n}She taps the letter.{/n}
-"Doesn't matter. Your line's enough to hang a commander in the eyes of a lord who wants one hanged."''',
+    d("clean", '''"No second book. I burned it." {n}She taps the letter.{/n} "But there's still your signature under those issues. A lord who wants a scandal won't stop because the sums add up."''',
       c("Continue", "offer")),
-    d("plain", '''"It's enough to hang a commander in the eyes of a lord who wants one hanged." {n}She taps the letter.{/n}''',
+    d("plain", '''"The sums aren't what he's after. He wants somebody to blame."''',
       c("Continue", "offer")),
-    d("offer", '''{n}She sits back. Her face goes blank, the way it does when a cart comes in short.{/n}
-"Here's what I'll do. I'll put my name on it. The whole column. Quartermaster's error, quartermaster's thievin', one-eyed dwarf lost her grip. They'll believe it. They want to believe it of somebody." {n}She shrugs.{/n} "You can court-martial me after the war if you want. For now, we need you on the walls more than we need me in the stores. Arithmetic."''',
+    d("offer", '''{n}She draws the letter back across the desk.{/n} "I can answer for it. Quartermaster's error, quartermaster's thievin'. They'll like either. You stay here and keep the demons off the walls. I'll go to Nerosyan after the war."''',
       c("Continue", "asked_before", requires=(COURT_MARTIAL,)),
       c("Continue", "choice", forbids=(COURT_MARTIAL,))),
     d("asked_before", '''"I said it at the council: court-martial me after the war. I meant it then. I mean it more now." {n}Her good hand is flat on the letter.{/n} "It's a good trade, Commander. One quartermaster for one Commander. Nerosyan'd take it in a heartbeat."''',
       c("Continue", "choice")),
     d("choice", '''"So. What goes to Nerosyan?"''', *INQUIRY_CHOICES),
-    d("true_books", '''{n}She taps the desk twice with one blunt nail. Then she opens the drawer and takes out every ledger she has, and stacks them, and ties them with cord, and does not remove a page.{/n}
-"The truth. To Nerosyan. Hammer and tongs." {n}She knots the cord hard.{/n} "They'll hate you for it in the capital. The lords'll say the Commander admits to it. The ranks'll say the Commander told the truth to the lords, which nobody's done in a hundred years." {n}She sets the bundle by the door.{/n} "I don't know which'll be louder. I'll be proud of you either way, and I'll not say so again."''',
+    d("true_books", '''{n}She stacks every ledger, ties the bundle and leaves every page in place.{/n} "All of it, then. I'll send copies of the receipts with it. Nerosyan'll curse us. Let 'em do it with the figures in front of 'em."''',
       c("Continue", "after", flags=(TRUE_BOOKS,))),
     d("clean_copy", '''{n}It takes you the whole night. She sits across from you and reads each page as you finish it, and corrects your arithmetic twice, and once your spelling. By dawn there is a stores ledger for Drezen that balances to the copper, in your hand, with no Commander's line and no second book in it. The couriers and the copyist who seals it will want paying, and paying well, for their silence.{/n}
 "Used, quietly." {n}She holds the last page to the lamp.{/n} "That's the best forgery I've ever seen, and I've seen 'em in three kingdoms." {n}She does not smile.{/n} "It's a lie in my book, Commander. First one I've ever sent to Nerosyan. I'll carry it. Don't ask me to like it."''',
       c("Continue", "after", flags=(CLEAN_COPY,))),
-    d("her_name", '''"Right." {n}She says it very evenly. She picks up the pen and writes her name at the foot of your column, under every shortage and the boots, in the same small hard hand: D. Stranglehold, Quartermaster. Her error.{/n}
-"There. Now it's mine." {n}She blots it, and closes the book, and does not look at you.{/n}
-"I'll go to Nerosyan when the war's done. Not before. Not while there's a wagon in this yard that needs countin'." {n}A long pause.{/n} "You made the right arithmetic, Commander. I told you to. I just didn't think you'd do it."''',
+    d("her_name", '''{n}She writes her name beneath the list of disputed issues: D. Stranglehold, Quartermaster.{/n} "There. My responsibility." {n}She blots it without looking up.{/n} "I'll answer for it when the war's done. Not while there's a cart in this yard waitin' to be counted."''',
       c("Continue", "after", flags=(HER_NAME,))),
     nar("after", '''{n}The courier leaves at noon. Out in the yard the carts are being loaded for the front, wagon after wagon, with whatever Drezen has left, which is not enough and will have to be.{/n}
 {n}She watches them from the doorway with her arms folded, the good one over the bad one, and does not come back in until the last one is through the gate.{/n}''',
@@ -557,21 +540,31 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
 {n}She tugs the last rope, tests it, and it holds.{/n} "Don't argue. I've heard every argument. I've a pen, a knife and one good hand, and the hand's the dangerous one."''',
       c('"I wasn\'t going to argue."', "wasnt"),
       c('"Stay. I need someone left to count what comes back."', "stay")),
-    d("stay", '''"Somebody's left. Three clerks and a sergeant with one ear. They can count." {n}She turns round at last.{/n}
-"You asked me to keep you in the book. I said yes." {n}Her eye is very steady.{/n} "You don't keep a line open from a hundred leagues back, Commander. You keep it open by bein' where it is."''',
+    d("stay", '''"Three clerks and a sergeant are stayin'. They can count the returnin' wagons." {n}She tests the last rope.{/n} "This one's goin' to the Wound. So am I. You'll want ammunition when you get there, whatever else you want of me."''',
       c("Continue", "boots")),
-    d("wasnt", '''"Liar." {n}Without heat.{/n} "You were goin' to argue and then you thought better of it. That's growth. I'll put it in the book."''',
+    d("wasnt", '''"Good." {n}She pulls the last rope tight.{/n} "Cart's packed. Don't hold it up."''',
       c("Continue", "boots")),
-    d("boots", '''{n}She reaches into the pack and takes out a folded paper and a stub of pencil.{/n}
-"Receipt." {n}She holds it out.{/n} "Your party, issued: one Commander. To be returned. I've written it already. All you need to do is come back and sign that you've come back, and I'll close it. Just that one." {n}A pause.{/n} "The rest stays open."''',
+    d("boots", '''{n}She takes a folded paper and pencil from her pack.{/n} "Receipt for your party's kit. Sign when you bring it back. And bring yourself back with it. I don't want a clerk returnin' your boots without you."''',
       c("Continue", "paid", requires=(BOOTS_PAID,)),
-      c("Continue", "choose", forbids=(BOOTS_PAID,))),
+      c("Continue", "choose", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed', 'dorgelinda.trickster.cost.boots_paid'), requires=()),
+      c("Continue", 'choose', requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed', 'dorgelinda.trickster.cost.boots_paid')),
+      c("Continue", 'choose_cold', requires=('dorgelinda.ledger.quarrel_unmended',), forbids=('dorgelinda.trickster.cost.boots_paid',)),
+      c("Continue", 'choose_cold', requires=('dorgelinda.ledger.quarrel_cold',), forbids=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
+      c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
+      c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
+      c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid')),
+      c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.trickster.cost.boots_paid'))),
     d("paid", '''"The boots stay here." {n}She nods at the stores door.{/n} "The last pair, the ones you paid your debt in. Top shelf, unworn. I'm not issuin' 'em to anyone else, and I'm not takin' 'em to the Wound to get demon on 'em." {n}Something moves in her face.{/n} "You come back and you can have 'em. Not before."''',
-      c("Continue", "choose")),
+      c("Continue", "choose", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed'), requires=()),
+      c("Continue", 'choose', requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+      c("Continue", 'choose_cold', requires=('dorgelinda.ledger.quarrel_unmended',), forbids=()),
+      c("Continue", 'choose_cold', requires=('dorgelinda.ledger.quarrel_cold',), forbids=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended')),
+      c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+      c("Continue", 'choose_reserved', requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
+      c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+      c("Continue", 'choose_private', requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended'))),
     d("choose", '''{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}''', *LAST),
-    d("receipt", '''{n}You sign it. In advance, in pencil, on the back of her wagon: Commander, returned. Received in good order.{/n}
-{n}She reads it. She reads it again. Then she folds it very small and puts it inside her coat, over her heart, where she keeps nothing else.{/n}
-"Used, quietly," {n}she says, and her voice goes wrong on the second word.{/n} "You've signed for somethin' that hasn't happened yet. That's a lie in my book, Commander." {n}She climbs up onto the wagon seat.{/n} "You'd better make it true."''',
+    d("receipt", '''{n}You write “Commander, returned” in pencil beside the issued kit. She reads it, folds the paper and puts it inside her coat.{/n} "Not yet, you aren't. You'd better make it true."''',
       c("Continue", "end", flags=(RECEIPT,))),
     d("kiss", '''{n}Every clerk in the yard sees it. So do two sergeants, a column of Mendevian levies, a paladin on a warhorse and the carter of the wagon behind, who drops his reins.{/n}
 {n}She lets it happen. Then she kisses you back, hard, with her good hand flat against your breastbone, pushing as much as holding, and lets go all at once.{/n}
@@ -581,9 +574,27 @@ office(FORWARD, "Carried forward", '"You\'re ridin\' with the wagons?"', [
 {n}She stares. Then she returns it, with the bad hand, as she always does, slowly, so that you can see the withered fingers held to her brow by nothing but the arm beneath them.{/n}
 "Commander." {n}Her voice does not waver.{/n} "Come back and sign the receipt." {n}She climbs up onto the wagon seat.{/n}''',
       c("Continue", "end")),
-    nar("end", '''{n}The wagon lurches. She takes the reins in her good hand. As it rolls toward the gate she opens the ledger on her knee, one-handed, against the jolt, and writes a line without looking at the page.{/n}
-{n}You do not need to see it to know what it says.{/n}''',
+    nar("end", '''{n}The wagon lurches toward the gate. Dorgelinda braces the ledger against her knee and calls the carter's name. He answers from the next wagon; she marks him present and calls the next.{/n}''',
         c("[Watch the wagon go.]")),
+
+    d('choose_cold', "{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}",
+      c("[Sign the receipt now, in advance: \"Commander, returned. Received in good order.\"]", "receipt"),
+      c("[Kiss her, in front of the wagons, and never mind the clerks.]", 'kiss_cold'),
+      c("[Salute her. Properly. The way the ranks salute her.]", "salute")),
+    d('choose_reserved', "{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}",
+      c("[Sign the receipt now, in advance: \"Commander, returned. Received in good order.\"]", "receipt"),
+      c("[Kiss her, in front of the wagons, and never mind the clerks.]", 'kiss_reserved'),
+      c("[Salute her. Properly. The way the ranks salute her.]", "salute")),
+    d('choose_private', "{n}Around you the column is moving. A horn sounds from the walls. The Wound's light is on every face in the yard.{/n}",
+      c("[Sign the receipt now, in advance: \"Commander, returned. Received in good order.\"]", "receipt"),
+      c("[Kiss her, in front of the wagons, and never mind the clerks.]", 'kiss_reserved_private'),
+      c("[Salute her. Properly. The way the ranks salute her.]", "salute")),
+    d('kiss_cold', '{n}She steps back and catches your wrist before you can kiss her. The clerks look down at their manifests.{/n} "Not here. Not after what you said." {n}She releases you and climbs onto the wagon.{/n} "Bring the kit back, Commander. The receipt\'s still yours."',
+      c("Continue", "end")),
+    d('kiss_reserved', '{n}She turns her cheek and gives your hand a brief squeeze, then lets go.{/n} "My rooms, on the nights I say. We settled that. The yard\'s for wagons." {n}She climbs onto the seat.{/n} "Come back with your kit."',
+      c("Continue", "end")),
+    d('kiss_reserved_private', '{n}She turns her cheek and lets your hand go.{/n} "Not in front of my clerks. You\'ve your business. This is mine." {n}She climbs onto the seat.{/n} "Come back with your kit."',
+      c("Continue", "end")),
 ], requires=("trickster.ever", INQUIRY), forbids=(FORWARD,), delay=48, chapters=(5,))
 
 
@@ -660,16 +671,14 @@ office(BARTLEY, "The corporal's account", '"You look like you\'ve had news of Ba
     d("none", '''"It's from one of his. Bartley's lot. It came through the stores in a sack of oats, which is the Fellows' idea of a courier." {n}She pushes it across.{/n}
 {n}The charcoal is smudged but legible: Tell the Commander we know about the book. Tell the Commander it was a good trick. Tell the Commander the potions saved twelve. Don't let them write that bit down wrong.{/n}''',
       c("Continue", "potions")),
-    d("potions", '''"Don't let them write that bit down wrong." {n}She repeats it with no expression.{/n}
-"Every thief I ever caught wanted the same thing. Not mercy. Not the rope took off. They wanted the book to say why." {n}She taps the ledger.{/n} "The book never says why, Commander. It says how many and when and whose. The why's what the lords in Nerosyan make up afterwards to feel clean."''',
+    d("potions", '''"Twelve." {n}She presses a finger against the charcoal number.{/n} "That's what the letter asks us to remember. Fair enough. I'll put it beside the stolen potions. And beside the quartermaster Bartley left bleedin' on the floor. Nerosyan can read all three."''',
       c("Continue", "ours", requires=(POTIONS_OURS,)),
       c("Continue", "his", requires=(POTIONS_BARTLEY,)),
       c("Continue", "ask", forbids=(POTIONS_OURS, POTIONS_BARTLEY))),
     d("ours", '''"You put the potions in your own column, the night we counted the warehouse. Used, quietly. Twelve lines under it." {n}She opens the book and shows you, as if you might have forgotten.{/n}
 "So it's written down right, near enough." {n}She dips the pen and copies his last line under yours, word for word, in her own small hard hand: Don't let them write that bit down wrong.{/n} "There. Any lord in Nerosyan who opens this book to hang somebody over twenty-four vials can read that first. He'll hate it. Good."''',
       c("Continue", "ask")),
-    d("his", '''"You put the potions on him, the night we counted the warehouse. Theft. That's the law." {n}She opens the book and shows you the line, in her own hand: stolen, C. N. Bartley.{/n}
-"So it's written down wrong. By the book. By me." {n}She closes it.{/n} "He asked for one thing, Commander. I'll not pretend we gave it."''',
+    d("his", '''"You entered the theft under his name. I wrote it." {n}She closes the ledger.{/n} "That letter's goin' with the report. Let 'em read what he wanted said."''',
       c("Continue", "ask")),
     d("ask", '''{n}She folds the charcoal letter small again, and does not put it in the ledger. She puts it inside her coat.{/n}
 "Answer me one thing and I'll not ask again. When you put your name to that line, that first day. Did you do it for him? For them? Or 'cause you're a Trickster and you couldn't stand to see a book balance?"''',
@@ -693,18 +702,21 @@ office(BARTLEY, "The corporal's account", '"You look like you\'ve had news of Ba
 # --- 13. After the council: the other voices at her table. ----------------------------------------------------------
 
 office(COUNCIL, "After the council", '"You look like you\'ve sat through the Logistics Council."', [
-    d("start", '''"I've sat through the Logistics Council." {n}She pours two cups from the bottle that is on no manifest before you have finished sitting down.{/n}
-"You'd think, with the Worldwound on the doorstep and demons on the walls, a supply council would talk about supply. No. We talk about Woljif's schemes and whether Lann's lads can live on purple moss, and the rest of the table talks about honesty." {n}She drinks.{/n} "I've never in my life wanted to strangle so many people with one hand."''',
-      c('"Tell me what you really think of them."', "think"),
-      c('"You like them."', "like")),
-    d("like", '''"Like 'em?" {n}She snorts into the cup.{/n} "I'd die for 'em. That's different. Liking's for people who've got time." {n}She sets the cup down.{/n}
-"Go on, then. Ask me about each one. I've been savin' it up. It's a long war and nobody asks the quartermaster."''',
+    d("start", '''"I've sat through the Logistics Council." {n}She sets the minutes beside the requisitions.{/n} "Woljif's got a scheme, Lann's got a way to stretch the grain, and the rest of the table wants us honest. We've still got demons on the walls. Somebody'll have to get the supplies there."''',
+      c('"Tell me what you really think of them."', "think", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+      c('"You like them."', "like", forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+      c('"Give me the supply report."', "council_cold", requires=('dorgelinda.ledger.quarrel_unmended',), forbids=()),
+      c('"Give me the supply report."', "council_cold", requires=('dorgelinda.ledger.quarrel_cold',), forbids=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended')),
+      c('"Tell me what you really think of them."', 'think', requires=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
+      c('"You like them."', 'like', requires=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',))),
+    d("like", '''"Like 'em?" {n}She snorts.{/n} "I'd die for 'em. Doesn't mean I want another council meetin'. Go on. Ask me. I've been savin' it up."''',
       c("Continue", "think")),
-    d("think", '''"Woljif." {n}She holds up one finger of the good hand.{/n} "Thinks every problem's a lock and every lock's a joke. He's right more often than I'd like. I'd trust him with my purse and not my stores, which you'll notice is the wrong way round, and I know it, and so does he."
-"The honest ones." {n}A second finger.{/n} "Want everyone to be good. Ask me what honest people would do. I tell 'em honest people are the ones who haven't been hungry yet, and they look at me like I've kicked a dog."''',
+    d("think", '''{n}She pours two cups and sits down with the minutes between you.{/n}
+"Woljif." {n}She holds up one finger of the good hand.{/n} "Thinks every problem's a lock and every lock's a joke. He's right more often than I'd like. I'd trust him with my purse and not my stores, which you'll notice is the wrong way round, and I know it, and so does he."
+"The honest ones." {n}A second finger.{/n} "Ask me what we'd do without the Fellows. I'd start by findin' men who can get a cart through. Then I'd ask where they got the cart."''',
       c("[Wait for the others.]", "others")),
     d("others", '''"Lann." {n}Third finger.{/n} "Good lad. Thinks everyone can live on nothin' 'cause his people did. They can't. His people buried a lot of the ones who couldn't. He knows it. He doesn't say it."
-"And the hard ones." {n}She does not raise a fourth finger. She puts the hand flat on the table.{/n} "Want the strong fed and the weak to learn. I've seen armies run that way. They win for a season. Then they eat each other." {n}She drinks.{/n} "They'd say I'm soft. They'd be right. Soft's what keeps a supply line from gettin' its throat cut by its own soldiers."''',
+"And the hard ones." {n}She sets her hand flat on the minutes.{/n} "Would feed the strong and let the rest go hungry. Then I'm short six drivers and the strong ones haven't got ammunition. I'll not run my stores that way."''',
       c('"And you? What would you have them say about you?"', "her"),
       c('"And me?"', "me")),
     d("her", '''"Me." {n}She thinks about it seriously, as if it were a requisition.{/n}
@@ -715,20 +727,18 @@ office(COUNCIL, "After the council", '"You look like you\'ve sat through the Log
 "And then you come here after and let me pour you a drink and complain about 'em. That's not the job." {n}Her eye is very steady.{/n} "Nobody told you to do that."''',
       c('"Nobody had to."', "nobody"),
       c('[Flirt] "The drink\'s better here."', "drink")),
-    d("nobody", '''"No." {n}Very quietly.{/n} "Nobody had to."
-{n}She refills your cup without asking, and writes nothing in the book.{/n}
-"Go on, then. Tell me about the war. The part the council doesn't hear. I'll not write it down."''',
+    d("nobody", '''"Good." {n}She refills the cups.{/n} "Tell me where the carts failed you. What the reports left out."''',
       c("[Tell her about the war.]", "tell")),
     d("drink", '''"The drink's better here 'cause I found it, and I found it 'cause I know where things get lost." {n}She refills your cup without asking.{/n}
-"You'll get a reputation, Commander, drinkin' with the quartermaster. The lords'll say you're lookin' to rob your own stores." {n}She clinks her cup against yours.{/n} "Let 'em. You already have. Tell me about the war. The part the council doesn't hear."''',
+"You'll get a reputation, Commander, drinkin' with the quartermaster. The lords'll say you're lookin' to rob your own stores." {n}She clinks her cup against yours.{/n} "Tell me where the companies went short. The council's heard enough about honesty for one night."''',
       c("[Tell her about the war.]", "tell")),
-    nar("tell", '''{n}You tell her. Not the victories: the bits between. The night march in the rain. The soldier who asked you for a light and was dead by morning. The hole in the line nobody filled because nobody knew it was there. She listens the way she counts, without hurry, her good hand around the cup, and does not interrupt once.{/n}
-{n}When you are done the bottle is lower than it was and the lamp needs trimming.{/n}''',
+    nar("tell", '''{n}You tell her about the fighting and the supply reports. She asks where the carts failed to arrive, and listens to the answer without touching her pen. When you finish, the bottle is lower and the lamp needs trimming.{/n}''',
         c("Continue", "done")),
-    d("done", '''"Right." {n}She trims the lamp one-handed.{/n}
-"The lad who wanted a light. Was he one of mine? Had he boots on?" {n}She does not wait for the answer you do not have.{/n} "Never mind. Give me the place and the week, and I'll find his name. I'll find all of 'em." {n}She caps the bottle.{/n} "Not for the book. The book's for Nerosyan."
-"Same time next week, Commander. Bring your boots."''',
+    d("done", '''"Give me the companies that went short. I'll ask the carters myself." {n}She trims the lamp and caps the bottle.{/n} "Not tonight. There'll be manifests waitin' in the mornin'. Leave the names on my desk."''',
       c("[Leave the last of your cup for her.]", flags=(L + "war_told",))),
+
+    d("council_cold", '"Wagons late. Soldiers hungry." {n}She hands you the written report.{/n} "My recommendation\'s at the bottom. Anything else goes through the clerk."',
+      c("[Take the report.]")),
 ], requires=("trickster.ever", DEBTS), forbids=(COUNCIL, "woljif.dead", "woljif.kicked_out", "lann.dead", "lann.kicked_out", "lann.plot_absent"), delay=48)
 
 
@@ -765,8 +775,7 @@ office(GATE, "The west gate", '"Quartermaster? What\'s the bell?"', [
     d("spear", '''"I set the spear." {n}She looks down at it.{/n} "One hand's all you need, if you set it right." {n}Something that is almost a laugh.{/n}
 "Don't tell the jokesters. They'll want a new nickname." {n}She straightens, and raises her voice to the wall.{/n} "You lot! Down here with a spare axle and six strong backs!"''',
       c("Continue", "end")),
-    d("end", '''{n}Back inside the walls, with the wagon hauled home and the boots counted, she writes it in your column: Two hundred pairs, recovered. One carter, recovered. One Commander, out the gate on the quartermaster's account.{/n}
-"That last line's the dearest thing on the page." {n}She blots it.{/n} "Don't do it again. I'll not have the stock to replace you."''',
+    d("end", '''{n}She enters the recovered boots and sends the clerks to check them.{/n} "That was a bloody great set of claws. If your shoulder's open, get a healer to it before you bleed on my floor."''',
       c("[Let her write.]")),
 ], requires=("trickster.ever", COUNCIL), forbids=(GATE,), delay=48)
 
@@ -787,8 +796,7 @@ office(WEIGHT, "A weight discrepancy", '"That\'s a lot of barrels for a crusade 
     d("plain", '''"There's no buyin' honest in Mendev this year. So I'm callin' in debts." {n}She spreads the good hand at the yard.{/n}
 "Old army pals, drinkin' partners, men who owe me. Each one sends a cart, a barrel, a chest. Just a weight discrepancy here, some cargo that must've dried out or fallen off in transit there."''',
       c("Continue", "how")),
-    d("how", '''{n}She hands you the slate.{/n}
-"You'll want to see how it's done. You of all people." {n}She points with the chalk.{/n} "A barrel of salt pork weighs what it weighs at the depot. Two days on a wet road and it's lost a stone to the damp, the carter swears. Nobody weighs it at the other end but me. So the depot writes one weight and I write another and the difference is in my yard." {n}She taps the slate.{/n} "Used, quietly. That's your trick, and it's older than you."''',
+    d("how", '''"Depot sends ten barrels. Carter swears one leaked. Nerosyan writes nine; I unload ten." {n}She taps the chalked figures.{/n} "Old army pal at the depot. Long-overdue debt. Don't look so pleased. I knew this one before you came to Drezen."''',
       c('"You\'re stealing from Mendev."', "stealing"),
       c('"You\'re better at it than the Fellows ever were."', "better")),
     d("stealing", '''"I'm stealin' from Mendev." {n}She agrees without heat.{/n}
@@ -816,7 +824,7 @@ office(WEIGHT, "A weight discrepancy", '"That\'s a lot of barrels for a crusade 
 # --- 16. The Fool King's bill (Chapter 5, after the Trickster's coronation). ------------------------------------------
 
 REVEL_CHOICES = (
-    c('"Put it on my line."', "mine", crusade=("Finances", -200)),
+    c('"Authorize two hundred from the crusade treasury. Replace the surgeons\' wine first."', "mine", crusade=("Finances", -200)),
     c('"Send the bill to the King."', "king", requires=(KING_REVEL,)),
     c('[Trickster] "It was a jest. You can\'t bill a jest."',
       check=dict(Skill="CheckBluff", DC=28, Success="jest_won", Failure="jest_lost", CommanderOnly=True)),
@@ -835,8 +843,7 @@ office(REVELS, "The cellar bill", '"You look like you\'ve had a very long night.
     d("bill", '''"Sixty-one barrels of ale. Nineteen of wine, the Mendevian red I was savin' for the wounded, 'cause it's the only thing that'll get a surgeon's dose down a man with no stomach left. Four of brandy. Every bottle of the good stuff that was on no manifest, which means I can't even claim it." {n}She turns around at last.{/n}
 "We came back from Iz with half an army and nothin' in the wagons, and the city celebrated by drinkin' what little we had. That's the Trickster's triumph, Commander. I'm the one countin' it."''',
       *REVEL_CHOICES),
-    d("mine", '''{n}She sucks her teeth. Then she writes it in your column, in full, figure by figure, and at the bottom a sum that makes your purse wince.{/n}
-"Paid out of the Commander's own. So I can buy wine for the surgeons from some baron who'll overcharge me." {n}She blots it.{/n} "You'd have sooner paid it than argued. That's the one thing about you I never have to audit." {n}A pause.{/n} "It was a good party, I'm told. I'd have liked to have been at it, if it had been anybody else's cellar."''',
+    d("mine", '''{n}She writes the authorization beside the cellar losses and underlines the amount.{/n} "Crusade funds. Two hundred, on your order. I'll buy the surgeons' red before I buy another drop for a drunk." {n}She blots the ink.{/n} "Next celebration, leave me a barrel. Or invite me before the bastards empty it."''',
       c("Continue", "end", flags=(L + "revels_paid",))),
     d("king", '''"Send it to the King." {n}She considers it, slate in hand.{/n}
 "The King of Fools, with a crown and a tin sceptre and his whole treasury in his boots." {n}Something happens to her mouth.{/n} "Oh, I'll send it. I'll send it with a clerk in full dress and a trumpet. And he'll read it out to his court of drunks, and they'll cheer it, and he'll pay me in a proclamation." {n}She writes on the slate: Charged to His Majesty.{/n}
@@ -874,18 +881,14 @@ office(FAITH, "Buying forgiveness", '"I didn\'t know you prayed."', [
     d("hammer", '''"It was my mother's. She was a smith. She'd have wanted me to be one." {n}She turns it once more.{/n}
 "I went for a soldier instead, and then a quartermaster, which is a smith for things that aren't iron. Boots, carts, lies to the ranks about when the grain's comin'." {n}She puts the hammer in the drawer.{/n} "Torag's god of the forge, and of protection, and of plannin' a war. Hard on his enemies. I've done more harm to Mendev's common folk this year than half the demons in the Wound. I'd not blame him for bein' hard on me."''',
       c('"Do you want forgiveness?"', "want"),
-      c('[Trickster] "Gods can be bargained with. I\'ve done it."', "bargain")),
+      c('[Trickster] "Would you let me bargain with Torag on your behalf?"', "bargain")),
     d("want", '''"Want it?" {n}She thinks, the way she thinks about requisitions.{/n}
 "No. I want the lads fed and the boots at the front and the war won. Forgiveness is somethin' you want when you've got time." {n}She looks up.{/n}
 "After, maybe. If there's an after. I'll build him a little shrine in the stores and put the hammer on it. That'll be all the cathedral I need." {n}Her mouth twists.{/n} "Somebody'll steal the hammer. I'll know who."''',
       c("Continue", "end")),
-    d("bargain", '''{n}She weighs you with the one eye, the way she weighs a sack that has been short-filled before.{/n}
-"I've no doubt you have." {n}Flatly.{/n} "And I've no doubt you came out ahead, and the god's still scratchin' his head over where it went." {n}She shakes her head.{/n}
-"Not Torag. Not for me. He's a smith's god. You don't bargain with a smith, you pay what the work's worth." {n}A pause.{/n} "And don't you go makin' any deals on my account behind my back, Commander. I'll find out. It'll be in somebody's ledger."''',
+    d("bargain", '''"No." {n}She puts the hammer away.{/n} "Not for me. I've work enough without findin' I've promised a god somethin' in my sleep. If I've to answer to Torag, I'll answer myself. You leave it alone."''',
       c("Continue", "end", flags=(L + "no_deals",))),
-    d("end", '''{n}She shuts the drawer on the hammer and takes out the ledger instead.{/n}
-"There. Back to work." {n}She opens it at your column, and looks at it for a while without writing anything.{/n}
-"You know what my mother used to say about a good forging? You can tell it by the sound. A cracked one rings false. You've got the loudest column in this book, Commander, and it doesn't ring false." {n}She dips the pen.{/n} "I've not decided yet what it rings like. Go on. I'll think about it."''',
+    d("end", '''{n}She takes out the requisition book.{/n} "Right. Enough prayin'. The lads need barley whether Torag's pleased with me or not. Hand me that letter."''',
       c("[Leave her to think.]")),
 ], requires=("trickster.ever", RATIONS), forbids=(FAITH,), delay=48, chapters=(5,))
 
@@ -898,10 +901,13 @@ office(AFTER, "After the war", '"It\'s cold in here."', [
         c("[Sit. Sort.]", "sort")),
     nar("sort", '''{n}You sort. For a long time neither of you speaks. The cloaks came back from the front. Some of them came back without their owners. She checks every pocket before she sorts one, and puts what she finds in a tin box: a coin, a letter, a lock of hair, a wooden horse no bigger than a thumb.{/n}''',
         c('"What do you do with those?"', "tin")),
-    d("tin", '''"Send 'em home, where there's a name. Where there isn't, I keep 'em." {n}She drops a brass button into the tin.{/n}
-"I've a crate of these in the back. Twenty years of pockets." {n}She reaches for the next cloak.{/n} "Somebody's got to. The book says a cloak came back. The book doesn't say there was a horse in the pocket."''',
-      c('"What will you do, after the war?"', "after", forbids=(NARROWED,)),
-      c('"What will you do, after the war?"', "after_narrowed", requires=(NARROWED,))),
+    d("tin", '''"Send 'em home, where there's a name. Where there isn't, I keep 'em." {n}She drops a brass button into the tin.{/n} "Twenty years of pockets in the back. The chaplain helps me find the families. Takes longer than mendin' the cloaks."''',
+      c('"What will you do, after the war?"', "after", forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended'), requires=()),
+      c('"What will you do, after the war?"', "after_narrowed", requires=('dorgelinda.ledger.narrowed',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+      c('"What will you do, after the war?"', 'after', requires=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_cold'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended')),
+      c('"What will you do, after the war?"', 'after_narrowed', requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_cold'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
+      c('"What will you do, after the war?"', 'after_cold', requires=('dorgelinda.ledger.quarrel_unmended',), forbids=()),
+      c('"What will you do, after the war?"', 'after_cold', requires=('dorgelinda.ledger.quarrel_cold',), forbids=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended'))),
     d("after_narrowed", '''{n}Her hands stop, and start again.{/n}
 "That's a mornin' question, Commander. We said no mornings." {n}She sorts a cloak into rags, harder than it needs.{/n} "You'd not tell me who else is in your book. I'll not tell you what's in mine. That's the bargain you picked." {n}She does not look up.{/n} "Rags on the left. Go on, I'll finish. Tonight's not one of the nights."''',
       c("[Leave her to the cloaks.]")),
@@ -924,16 +930,17 @@ office(AFTER, "After the war", '"It\'s cold in here."', [
     d("boots", '''"Somewhere with a dwarf with a boot shop." {n}She considers it gravely.{/n} "There's a lot of dwarves with boot shops. You'd have to try every one." {n}She sorts a cloak into mendable.{/n}
 "...I'll put a sign up. So you'll know which. 'Stranglehold's Boots. They Fit.'" {n}Her mouth twitches.{/n} "The jokesters'll love it."''',
       c("Continue", "end", flags=(L + "boot_shop",))),
-    d("joke", '''"Wherever the joke lands." {n}She sighs, and it smokes in the cold.{/n} "That's the truest thing you've said all year and it's no use to me at all. I can't put a joke on a map."
-{n}She sorts a cloak into mendable.{/n} "Fine. I'll audit it. Wherever it lands, I'll send a clerk to count it. It'll be the only joke in history with a stores ledger."''',
+    d("joke", '''"Wherever the joke lands." {n}She sorts another cloak.{/n} "That won't get a letter to you. Send me a place when you've got one, Commander. Then I'll know where to send the boots."''',
       c("Continue", "end", flags=(L + "joke_audited",))),
     d("sign", '''{n}She puts the cloak down.{/n}
 "That's what folk say in songs." {n}But she says it without any heat at all.{/n} "You'd sign for it. You sign for everythin'." {n}Her breath smokes in the cold while she thinks about it.{/n}
 "All right. Sign for it. I'll hold you to it, and I've a grip, you'll recall." {n}She picks the cloak up again.{/n} "Don't make me write it off."''',
       c("Continue", "end", flags=(L + "signed_after",))),
-    nar("end", '''{n}You sort the rest together. When the last cloak is on its pile she closes the tin box, with the horse and the hair and the letter in it, and sets it on the shelf with the others, and stands for a moment with her good hand on the lid.{/n}
-{n}Then she puts out the lantern, and in the dark and the cold she leans her whole weight against your side, and stays there.{/n}''',
+    nar("end", '''{n}When the last cloak is sorted, she shuts the tin of soldiers' keepsakes and places it on the shelf. Outside, the carters are calling for the next load. She picks up the mendable pile and carries it to the door.{/n}''',
         c("[Stay.]")),
+
+    d("after_cold", '"Boots. A shop, if the war leaves me enough leather." {n}She sorts another cloak into rags.{/n} "That\'s all I\'ve to say about after. Leave those on the left. I\'ll finish."',
+      c("[Leave her to the cloaks.]")),
 ], requires=("trickster.ever", MORNING), forbids=(AFTER,), delay=24, chapters=(5,))
 
 
@@ -968,9 +975,7 @@ office(HELMETS, "Three hundred helmets", '"Is that what I think it is?"', [
 "Oh, that's a picture. The Commander of the Fifth Crusade in a levy's kettle hat, three sizes small." {n}She wipes her eye with the back of her bad hand.{/n}
 "Take it off before somebody paints it. Here." {n}She finds another, larger, and sets it on your head herself, and adjusts the strap under your chin with her good hand, with great care, as if it mattered.{/n} "There. That one fits. Now you look like somebody I'd trust on a wall."''',
       c("Continue", "last")),
-    d("last", '''{n}The last helmet goes on the last stack. She stands back and looks at the wall of them, row on row, glinting in the lamplight.{/n}
-"Every one of 'em's a head covered." {n}Quietly.{/n} "You know what the book'll say? 'Helmets, received.' Two words. That's what this'll be in a hundred years, if anybody reads it. Two words."
-{n}She picks up the lantern.{/n} "I'll know. And you'll know. That's two more than most things in this war get."''',
+    d("last", '''{n}She holds the lantern up to the finished stacks.{/n} "Iron for the lads. At last." {n}She lowers it.{/n} "Tomorrow I'll have the clerks count 'em. Tonight I'm lookin'."''',
       c("[Walk her back to the office.]")),
 ], requires=("trickster.ever", DEBTS), forbids=(HELMETS,), delay=96)
 
@@ -981,18 +986,16 @@ office(WARD, "The plague ward", '"Where are we going?"', [
     nar("start", '''{n}She does not say. She takes you out of the stores and across the lower bailey to the long stone barracks the healers took over after the last battle, where the windows are kept open in all weathers and the smell comes out to meet you before the door does.{/n}
 {n}Inside, in two rows of cots, men and women with grey faces and bandaged eyes are sleeping or pretending to. A few are sitting up. One is playing dice against himself.{/n}''',
         c("Continue", "ward")),
-    d("ward", '''"Bartley's company." {n}Low, so as not to wake anyone.{/n} "The ones who came back from the fight with the plague on 'em. Cryin' green slime instead of tears, rottin' in their cots. Twelve of 'em were goin' to die. The healers were out of potions."
-{n}She nods down the row.{/n} "They didn't die. You know why. It's in two books now: Bartley's, and mine."''',
+    d("ward", '''"Bartley's company." {n}She keeps her voice low.{/n} "Came back with the plague on 'em. Green slime for tears, rottin' in their cots. The potions he stole got twelve through it. They're still here."''',
       c("Continue", "ours", requires=(POTIONS_OURS,)),
       c("Continue", "his", requires=(POTIONS_BARTLEY,)),
       c("Continue", "neither", forbids=(POTIONS_OURS, POTIONS_BARTLEY))),
     d("ours", '''"And in mine it says the Commander drank 'em. All twenty-four. Very thirsty, the Commander." {n}Her mouth twitches.{/n}
-"I've had three officers from the general staff come to my desk this month askin' after their potions. I showed 'em the line. They went very quiet. One of 'em asked if you were well." {n}She looks down the row again.{/n} "You're not the one who was sick. They are. But the book says you. So they're well."''',
+"I've had three officers from the general staff come to my desk this month askin' after their potions. I showed 'em the line. They went very quiet. One of 'em asked if you were well." {n}She looks down the row again.{/n} "They're well because Bartley got the potions into 'em. Our paperwork came after. Don't mix those up."''',
       c("Continue", "soldier")),
-    d("his", '''"And in mine it says Bartley stole 'em. Which he did." {n}She says it flatly.{/n}
-"It's the law, Commander. I'll not pretend otherwise. But I wanted you to see what the theft bought, before you forget it's anythin' but a line." {n}She looks down the row again.{/n} "Twelve lines. Breathin'."''',
+    d("his", '''"I wanted you to see what the theft bought. He nearly killed a quartermaster to do it. Those are the men he saved."''',
       c("Continue", "soldier")),
-    d("neither", '''"The book says twenty-four vials. It doesn't say twelve people." {n}She looks down the row again.{/n} "I wanted you to see the twelve."''',
+    d("neither", '''"Those are the lads Bartley stole the potions for. I wanted you to see 'em before they're sent back to the walls."''',
       c("Continue", "soldier")),
     nar("soldier", '''{n}The soldier with the dice looks up. He has a healer's bandage over one eye and the new pink skin of a man who has nearly rotted and then not. He knows the Commander. Everyone does. He starts to get up, and cannot quite, and salutes from the cot instead.{/n}
 {n}Then he sees the quartermaster beside you, and his face changes, the way a soldier's face changes when he sees someone he owes.{/n}''',
@@ -1007,19 +1010,13 @@ office(WARD, "The plague ward", '"Where are we going?"', [
         c("[Wait beside her.]", "wait", forbids=(HANGED,)),
         c('"You didn\'t want the rope."', "rope_hanged", requires=(HANGED,)),
         c("[Wait beside her.]", "wait_hanged", requires=(HANGED,))),
-    d("rope", '''"No. I didn't." {n}She does not look at you.{/n}
-"I stood at that table and said it's rotten, hangin' your comrades. And then I said the law, the law, the law, 'cause somebody had to say it, 'cause that's what the chair of the Logistics Council is for." {n}She pushes off the wall.{/n}
-"And you came in with your line of ink and made it so the law had less to hang. You did that for them. Or for me. I've stopped askin' which." {n}She straightens her coat.{/n} "Don't answer. I'll write it down wrong."''',
+    d("rope", '''"No. I didn't want it." {n}She glances back at the barracks.{/n} "He beat my quartermaster half to death. Stole more than these potions, too. I asked for chains to Nerosyan, and I meant it." {n}She straightens her coat.{/n} "Come on. They're tryin' to sleep."''',
       c("[Walk her back.]", flags=(L + "ward_seen",))),
-    d("wait", '''{n}You wait. It takes a while. A patrol goes past on the wall above and does not look down.{/n}
-"Twelve." {n}She says it at last, to the stone.{/n} "I count everythin', Commander. Crates, carts, nails, heads. I've never once been able to count what didn't happen. The men who didn't die. The rope I didn't have to tie." {n}She pushes off the wall.{/n} "You've given me a column I can't add up. I've had worse gifts. Not many better."''',
+    d("wait", '''{n}You wait beside her as a patrol passes overhead.{/n} "They looked near dead when the potions reached 'em. Now that one's playin' dice." {n}She pushes off the wall.{/n} "Come on. I've got kit to find for 'em before they're back on duty."''',
       c("[Walk her back.]", flags=(L + "ward_seen",))),
-    d("rope_hanged", '''"No. I didn't." {n}She does not look at you.{/n}
-"I said it's rotten, hangin' your comrades. Then I said the law, the law, the law, 'cause that's what the chair's for. And it was done anyway, and I watched it done." {n}She pushes off the wall.{/n}
-"Twelve in there breathin' 'cause he stole those potions. Him in the ground 'cause of your verdict. Same Commander, same month. I'll carry both lines. Don't ask me to add 'em together."''',
+    d("rope_hanged", '''"No. I didn't want it." {n}She keeps her eye on the barracks door.{/n} "He saved those men and nearly killed my quartermaster. You had him executed. I'll not pretend I was glad to watch. Come on."''',
       c("[Walk her back.]", flags=(L + "ward_seen",))),
-    d("wait_hanged", '''{n}You wait. It takes a while. A patrol goes past on the wall above and does not look down.{/n}
-"Twelve." {n}She says it at last, to the stone.{/n} "I can count the twelve. I can count the dead; I saw it done. What I can't do is make the two columns talk to each other." {n}She pushes off the wall.{/n} "He bought them with potions and you had him executed for it. I'll not forget either. Come on. It's cold."''',
+    d("wait_hanged", '''{n}She waits until the patrol has passed.{/n} "Twelve came through the plague. Bartley's dead. I saw both. Don't ask me to be glad about the second because of the first." {n}She starts back toward the stores.{/n}''',
       c("[Walk her back.]", flags=(L + "ward_seen",))),
 ], requires=("trickster.ever", WAREHOUSE), forbids=(WARD, REVIEW), delay=24)
 
@@ -1134,11 +1131,10 @@ office(UNBALANCED, "The unbalanced line", '"Quartermaster."', [
 ], requires=("trickster.ever", DECLINED), forbids=(UNBALANCED, COMMITTED), delay=24, chapters=(5,))
 
 
-# --- 24. The quartermaster of the march (Logistics_Officer/Cue_0012 a514f727: the man she replaced). -------------------
+# --- 24. The quartermaster of the march (Logistics_Officer/Cue_0012 11981a23: medal for the assault on Drezen). -------
 
 office(MARCH, "The quartermaster of the march", '"Who\'s the transfer for?"', [
-    d("start", '''"Old Harrow. Well. That's not his name. That's what the lads call him, 'cause he'll harrow a field for turnips if the carts are late." {n}She pushes a paper across the desk. It is a request for transfer to the field army, very neatly written, signed with a thumbprint where the name should be.{/n}
-"He ran the supply on the march to Drezen. Got a medal for it. Deserved it, too: he fed an army on the move through the Wound, which is harder than anythin' I do in here." {n}She taps the paper.{/n} "Then they gave him my stores to run, and he couldn't. A fortress is a different beast. So he's back where he was, doin' good work, and now he wants to go out with the next column."''',
+    d("start", '''"Old Harrow. Not his name. That's what the lads call him. He'll harrow a field for turnips if the carts are late." {n}She pushes a transfer request across the desk, signed with a thumbprint.{/n} "He kept the camp supplied on the march. Got his medal for the assault on Drezen. Good soldier. Fortress stores were beyond him, so he's back at his old work. Now he wants to go with the next column."''',
       c('"Is that a problem?"', "problem")),
     d("problem", '''"It's a problem 'cause I need your signature on it and I don't want to give it you." {n}She sits back.{/n}
 "He's sixty if he's a day. His knees are gone. He'll march with that column 'cause he can't stand to be the man who stayed behind, and one night on the road some demon'll come over a wagon and he'll be the one holdin' the spear." {n}Her good hand closes, slowly, on nothing.{/n} "I know how that goes. I know exactly how it goes."''',
@@ -1156,8 +1152,7 @@ office(MARCH, "The quartermaster of the march", '"Who\'s the transfer for?"', [
 "Sign it. Give it to the courier. And the courier loses it. And old Harrow waits for his orders, and waits, and writes again, and it's lost again." {n}She wipes her eye.{/n} "And every time he asks, I'll be able to look him in the face and say the Commander signed. It's true. You did."
 {n}She takes the signed paper and, with great deliberation, files it in the back of the ledger, behind your column.{/n} "Used, quietly. Hammer and tongs, Commander. That's the cruellest kindness I've ever seen."''',
       c("Continue", "after", flags=(L + "harrow_lost",))),
-    d("after", '''"You know why I took this job? The chief quartermaster's chair?" {n}She does not wait for an answer.{/n}
-"'Cause after the thing with claws, I couldn't stand in a line with a spear any more. The hand wouldn't close. So I found a job where the only thing I had to hold was a pen." {n}She holds it up.{/n} "And every week I sign men to the front, and some of 'em don't come back, and I've the hand for that. Turns out it doesn't need closin'."''',
+    d("after", '''"He wants to go because he can still feed a marchin' army. I know what it is to lose the work you're good at." {n}She sets the pen down.{/n} "I found this job. Doesn't mean I like sendin' an old soldier out where I can't watch him."''',
       c('"You did it for them. The same as the stores."', "same"),
       c("[Put your hand over hers, on the pen.]", "pen")),
     d("same", '''"The same as the stores." {n}She nods slowly.{/n} "Maybe. I'd like to think so. On a good day I think so." {n}She puts the pen down.{/n}
@@ -1186,17 +1181,12 @@ office(SERGEANT, "The sergeant's version", '"Is the Quartermaster in?"', [
 "Didn't say a word. Next week she's in the supply tent. Week after, she's runnin' it. By winter she's got the whole company's stores in a grip you couldn't pry a nail out of, and she's got Dobbin scrubbin' the supply-tent floor every night for a month, on his knees, with her countin' the strokes." {n}He grins, then stops grinning.{/n}
 "Dobbin's dead. On the walls, at Drezen. She buried him in good boots. Right size. She measured 'em herself."''',
       c('"And you?"', "you")),
-    d("you", '''"Me?" {n}He looks at the ledger, at his own slow careful figures.{/n}
-"I'm her sergeant. Eight years. I count twice, like she says." {n}He hesitates.{/n} "She took the name, Commander. She took it off us and made it hers, and now it means the opposite of what we meant. That's the thing about her. You can't take anythin' off her she doesn't let you."
-{n}He glances at the door, and lowers his voice.{/n} "Except you, the lads say. They say you took a whole column of stores off her and she let you. Is that true?"''',
+    d("you", '''"Eight years I've been her sergeant. Still count twice." {n}He glances at the door.{/n} "The lads say you're in here more than the colonels, Commander. She leaves the good bottle out when you're due. We notice. Is there somethin' in that?"''',
       c('"I signed for it. She let me."', "let"),
       c('"That\'s between me and the Quartermaster."', "between")),
-    d("let", '''"She let you." {n}He shakes his head slowly, as if at a miracle he does not quite approve of.{/n}
-"Then you'll take care, Commander. Beggin' your pardon. She's never let anybody take anythin'. If she's let you, she's let you have somethin' she can't get back." {n}He picks up the rag again.{/n}
-"There's three of us left that knew her before. Me and two in the field. We'd..." {n}He does not finish it. He does not need to.{/n}''',
+    d("let", '''"Aye. She let you." {n}He picks up the rag.{/n} "Then bring your boots back when she asks, Commander. She'll have my ear if you don't. What's left of it."''',
       c("Continue", "door")),
-    d("between", '''"Aye. Sorry, Commander." {n}He goes back to the ink.{/n}
-"Only, the lads talk. And I'll tell you what I tell them: the Quartermaster knows what she's about. Always has." {n}He mops, carefully.{/n} "If she's keepin' a line open for you, it's 'cause she wants it open. Nobody makes her."''',
+    d("between", '''"Aye. Sorry, Commander." {n}He goes back to the ink.{/n} "I'll tell the lads to mind their own kit. She's got enough bother with the Nerosyan carts."''',
       c("Continue", "door")),
     nar("door", '''{n}The door opens. Dorgelinda comes in with snow on her shoulders and a manifest in her good hand, and stops, and looks from the sergeant to you to the ink-stained rag.{/n}''',
         c("Continue", "back")),
@@ -1217,16 +1207,11 @@ QUARREL = (
 )
 
 office(QUARREL_SCENE, "Hammer and tongs", '"You wanted to see me?"', [
-    d("start", '''"I did." {n}She does not ask you to sit. She is standing behind the desk with a letter in her good hand, and she has read it more than once, from the look of the creases.{/n}
-"Nerosyan's cut our allotment. A quarter off grain, a third off powder, half off boots." {n}She puts the letter down.{/n} "D'you know why? 'Cause somebody at court read a report that the Commander of the Crusade signs for stores that go missin', and laughs about it, and keeps a line open in the quartermaster's book like it's a joke between friends. 'Irregular accounting.' That's the phrase."''',
+    d("start", '''"Nerosyan's cut our allotment. A quarter off grain, a third off powder, half off boots." {n}She flattens a creased letter on the desk.{/n} "Some bastard at court's read about your signatures under the irregular issues. Calls it a joke between friends. 'Irregular accounting,' he writes. The lads on the walls get less bread, and he gets a fine phrase."''',
       c('"That\'s not a joke between friends."', "friends")),
-    d("friends", '''"No. It's not." {n}Her voice goes up a notch, which you have hardly ever heard.{/n}
-"It's my book. It's my name on the stores. When the court says irregular, it means me. It means old Dorgelinda's lost her grip, and the lads on the walls get a quarter less bread 'cause of it." {n}She slaps the letter.{/n}
-"You signed for stores that never came back, in front of witnesses, with a straight face, and made the whole Crusade laugh. And every laugh's a line somebody in Nerosyan's writin' down against us."''',
+    d("friends", '''"No. It's not." {n}She slaps the letter.{/n} "It's my name on the stores. When the court says irregular, it means me. And the lads on the walls get a quarter less bread for it. You signed in front of witnesses; now a lord at court wants to make somethin' of it. I should've heard from you before I heard from him."''',
       *QUARREL),
-    d("again", '''"You'd do it again." {n}She stares at you.{/n}
-"Course you would. You're a Trickster. You'd sign for the sun if you thought somebody was goin' to hang for stealin' it." {n}She sits down, hard.{/n} "And I'd let you. That's the worst of it. I'd let you, and then I'd stand here with a letter from Nerosyan and a quarter less bread."
-{n}She rubs her eye.{/n} "Hammer and tongs. I'm not angry you did it. I'm angry I'd have done the same, and I haven't the nerve."''',
+    d("again", '''"You'd do it again. Course you would." {n}She sits down hard.{/n} "And I'd let you. I watched that ink dry. Thought we'd got the lads what they needed. Now I've a letter from Nerosyan and a quarter less bread." {n}She rubs her eye.{/n} "Hammer and tongs. I'm angry with you. And with myself."''',
       c("Continue", "cool")),
     d("sorry", '''"First." {n}She repeats it, and some of the fight goes out of her.{/n}
 "Aye. First. Before the court heard it. Before it was a laugh in the mess and a line in some lord's report." {n}She sits down.{/n} "I don't mind the lies, Commander. I mind hearin' about 'em from Nerosyan."
@@ -1239,12 +1224,10 @@ office(QUARREL_SCENE, "Hammer and tongs", '"You wanted to see me?"', [
       c("[Leave.]", "cold")),
     d("cold", '''{n}You leave. She does not look up when the door closes.{/n}''',
       c("[Go.]", flags=(QUARREL_COLD,))),
-    d("cool", '''"Right." {n}She takes a breath and lets it out.{/n} "Here's what we'll do, 'cause shoutin' doesn't fill a granary." {n}She pulls a fresh sheet toward her.{/n}
+    d("cool", '''"Right." {n}She takes a breath and lets it out.{/n} "Here's what we'll do." {n}She pulls a fresh sheet toward her.{/n}
 "I'll write to Nerosyan. Dull as ditchwater. Every cart and crate accounted for, all regular, all quiet, nothin' to laugh about. The Commander's line in a separate book, on my shelf, not theirs." {n}She dips the pen.{/n} "And you'll write a line under mine sayin' the Commander's full confidence is in the quartermaster. Your hand. Your seal. No jokes in it."''',
       c("[Write it. No jokes.]", "written")),
-    d("written", '''{n}You write it. She reads it twice, and nods, and folds both letters together and seals them.{/n}
-"There. That'll get us the powder back, if not the boots." {n}She sets the letter in the courier's tray and sits back, and folds her good hand over the bad one.{/n}
-"That's our first proper row, Commander." {n}Something almost like satisfaction.{/n} "Good. I'd started to worry you were too good to be true. Nobody balances that well. Now shut the door and come here. I'll forgive you properly."''',
+    d("written", '''{n}She reads your letter twice, folds it with hers and seals them together.{/n} "There. That'll get us the powder back, if not the boots." {n}She sets the letters in the courier's tray.{/n} "Our first proper row, Commander. Mended. Have a drink before I find somethin' else to shout about."''',
       c("[Shut the door.]", flags=(L + "quarrel_mended",))),
 ], requires=("trickster.ever", OTHERS), forbids=(QUARREL_SCENE,), delay=48, chapters=(5,))
 
@@ -1261,8 +1244,7 @@ office(COLD_COUNTS, "Cold counts", '"Line thirty-one, Quartermaster?"', [
       c("Continue", "letter")),
     d("letter", '''"I wrote Nerosyan without you. Dull as ditchwater. Every cart accounted for, nothin' to laugh about. They gave us the powder back, not the boots." {n}She pours two cups, short ones.{/n} "There's a line left at the foot of it, for the Commander's confidence in the quartermaster. I didn't fill it in. It's not my hand they want."''',
       c("[Write it. Your hand, your seal. No jokes.]", "written")),
-    d("written", '''{n}She reads it twice, and folds it, and puts it in the courier's tray, and only then looks at you, properly, for the first time since the row.{/n}
-"There. That's our first proper row, mended." {n}Something almost like satisfaction.{/n} "Took you long enough. Now shut the door and come here. I'll forgive you properly."''',
+    d("written", '''{n}She reads your letter twice and puts it in the courier's tray. Then she looks up at you.{/n} "There. That's mended. Took you long enough. Have a drink before I find somethin' else to shout about."''',
       c("[Shut the door.]", flags=(L + "quarrel_mended",))),
     d("stand", '''{n}You sign. She blots it. Not another word passes the desk, and the clerks go back to their figures, disappointed.{/n}''',
       c("[Go.]", flags=(L + "quarrel_unmended",))),
@@ -1272,16 +1254,12 @@ office(COLD_COUNTS, "Cold counts", '"Line thirty-one, Quartermaster?"', [
 # --- 27. The right size (Logistics_2/Cue_0080: "a boot one size too large can lead to a soldier's death"). -------------
 
 office(SIZE, "The right size", '"Why is there a boot on your desk?"', [
-    d("start", '''"'Cause it's yours." {n}It is. The left one of the pair you drew last week, the second pair, the one you could not account for. She has turned it upside down on the blotter like a specimen.{/n}
-"One of the lads on the south wall brought it back. Said the Commander gave it him off {mf|his|her} own foot when his split on the ice." {n}She taps the sole.{/n} "It's two sizes too big for him. He's been walkin' the wall in it for a week with rags stuffed in the toe, and he'd not give it back for a barrel of brandy. Came to me to have it fitted. I've fitted it."''',
+    d("start", '''"South-wall levy." {n}A patched boot stands upside down on her blotter. The toe is packed with bloody rags.{/n} "His own split on the ice. Borrowed this off a mate. Two sizes too big, and he kept walkin' in it till the heel rubbed raw. I've found him a pair that fits. Kept this to show the clerks what 'near enough' buys."''',
       c('"Then why is it here?"', "why")),
-    d("why", '''"'Cause I wanted you to see it." {n}She turns it over.{/n}
-"There's a thing the veterans say, and they're right: a rotted strap or a boot one size too large, and a soldier dies. Blister on the march, can't keep up, left behind, and the thing in the dark finds him. I've seen it." {n}She sets the boot down very carefully.{/n}
-"You gave that lad a boot two sizes wrong, and he'd have died in it grateful. That's the kind of gift you give, Commander. I've been watchin'. Big, generous, and not quite the right size."''',
-      c('"Is that a complaint?"', "complaint"),
+    d("why", '''"Blister on the march. Can't keep up. Left behind for somethin' hungry." {n}She takes the rags out of the toe and drops them in the waste bucket.{/n} "That lad needs boots, not somebody's bloody castoffs. I've told the clerks to measure him before they hand him another pair."''',
+      c('"Is that a complaint about my stores?"', "complaint"),
       c('"Then teach me the right size."', "teach")),
-    d("complaint", '''"It's an observation. I'm a quartermaster. We observe." {n}She sniffs.{/n}
-"That first line in my book was too big. Every trick you've pulled since's been two sizes wrong and stuffed with rags." {n}She looks up.{/n} "And every one of 'em's kept somebody walkin'. So I'll not complain. I'll fit 'em." {n}Her mouth twitches.{/n} "Now sit down and take off your boots. The right one's goin' to split next, I can hear it from here."''',
+    d("complaint", '''"Aye. Our stores." {n}She points at the stool.{/n} "I've dealt with his. Now yours. Sit down. The right heel wants lookin' at."''',
       c("[Sit. Take off your boots.]", "measure")),
     d("teach", '''{n}She squints at you with the one eye, checking whether that was a joke.{/n}
 "All right." {n}She points at the stool.{/n} "Sit. Boots off. The right one's goin' to split next, I can hear it from here."''',
@@ -1296,9 +1274,7 @@ office(SIZE, "The right size", '"Why is there a boot on your desk?"', [
 "So you'd keep comin' back to have 'em seen to. Nobody comes to the quartermaster unless somethin' pinches, so I found what pinched." {n}She stands, knees cracking, and dusts her breeches.{/n}
 "It's a cheap trick. I'll not pretend otherwise. You're not the only one in Drezen who knows a few." {n}She fetches a pair from the shelf behind her without looking, sets them in front of you, and folds her good arm over her bad one.{/n} "Made to the cord, not the eye. Go on."''',
       c("[Put them on.]", "fit")),
-    d("fit", '''{n}They fit. The old ones were right. These are better, heel and instep and toe, as if made on your own last.{/n}
-"There." {n}Her voice is gruff.{/n} "Now you've no excuse to come back." {n}She picks up her pen, and does not write anything, and puts it down again.{/n}
-"...You'll come back anyway. You've got the look." {n}She takes the boot from the south wall off her desk and sets it aside for the lad.{/n} "Go on. I've got a boy with rags in his toe."''',
+    d("fit", '''{n}The new boots fit snugly at heel and instep. She checks the right heel once more, then stands.{/n} "There. No excuse to come back." {n}She picks up her pen, puts it down, and looks at you.{/n} "Unless you've got a better one. Go on. I've a lad on the wall waitin' for his pair."''',
       c('"I\'ll come back anyway."', flags=(L + "fitted",)),
       c("[Walk out in the new boots, and come back in an hour with the old ones.]", flags=(L + "fitted", L + "came_back"))),
 ], requires=("trickster.ever", GRIP), forbids=(SIZE,), delay=72)
@@ -1312,7 +1288,7 @@ office(INSPECTOR, "The inspector", '"Who\'s the gentleman in the good coat?"', [
         c("Continue", "introduce")),
     d("introduce", '''"Commander. This is one of the treasury men I sent for, to ride with the caravans. Like you agreed at the council." {n}Her voice is perfectly level.{/n} "He rode in with the last one. Saw his first demon on the Kenabres road. Very brave about it, the carters say. Only lost his breakfast the once."
 {n}The inspector does not smile. He turns your column toward you.{/n}
-"Commander. There is a line here, in your name, that I am unable to reconcile."''',
+"Commander. These issues in your name require an explanation."''',
       c('"Which line?"', "line")),
     nar("line", '''{n}He reads it aloud, precisely, as if it were evidence: every entry since the first, down to the bottle that is on no manifest. His voice climbs a little on the largest of them. "This is not an accounting form, Commander. This is a blank cheque."{/n}
 {n}Dorgelinda does not move.{/n}''',
@@ -1351,10 +1327,7 @@ office(INSPECTOR, "The inspector", '"Who\'s the gentleman in the good coat?"', [
 "I sat on the committee that wrote the field regulations, Commander. There is no such practice." {n}He closes the book.{/n} "I shall report the line as irregular. I shall also report that the quartermaster checked it twice." {n}He glances at her.{/n} "She is the only thing in this fortress that is in order."
 {n}He leaves. Dorgelinda watches the door close.{/n}''',
       c("Continue", "gone", flags=(L + "inspector_caught",))),
-    d("hers", '''{n}The inspector turns to her. She does not hesitate.{/n}
-"I know it line by line. Every cart, every crate, every pair of boots. I know where half of it went, and I've a fair guess at the other half, and I'll tell Nerosyan when Nerosyan sends me a warehouse to replace it." {n}Her good hand stays flat on the desk.{/n}
-"Until then it's the Commander's issue, and it's in my book, and I'm the one who's countin' it. You can put that in your report. My name. Spelled right."
-{n}He looks at her, and then, unexpectedly, writes it down, and spells it right.{/n}''',
+    d("hers", '''"I know every issue in that column. I checked the signatures and I kept the receipts." {n}Her good hand stays flat on the desk.{/n} "Nerosyan can have my explanation when it sends us the replacement stores. Till then, they're the Commander's issues. Put that in your report. My name. Spelled right."''',
       c("Continue", "gone", flags=(L + "inspector_hers",))),
     d("gone", '''{n}When he has gone she sits down in the chair he was in, your chair, and puts her face in her good hand for exactly the space of one breath.{/n}
 "Hammer and tongs," {n}she says through her fingers.{/n} "I sent for him. I sent for him myself, at the council. Someone experienced, ready to answer for the delivery with his life." {n}She lowers the hand.{/n} "And he is. He'll answer for it to the letter, and he'll put us both in it." {n}A short, tired laugh.{/n} "That's what you get for askin' for honest men, Commander. You get 'em."''',
@@ -1367,24 +1340,29 @@ office(INSPECTOR, "The inspector", '"Who\'s the gentleman in the good coat?"', [
 
 # The closing page after her committed page: what the weekly counts made of the years after.
 SCENES.append(scene(P + "epilogue.after_the_war", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}The Logistics Council was dissolved the year after the Wound closed. Its chair was not. She had, by then, too many columns open in too many books to stop.{/n}''',
+    nar("page", '''{n}After the war, Dorgelinda still had supplies to issue and veterans coming to her door. The new clerks quickly learned to count twice.{/n}''',
         paragraphs=(
             p("{n}There was a boot shop, in the end, on a street near the Drezen gate, with a sign that said STRANGLEHOLD'S BOOTS. THEY FIT. The jokesters were never allowed in. The Commander was measured there once a month, whether the Commander's feet had grown or not.{/n}", requires=(L + "boot_shop",)),
-            p("{n}Wherever the Trickster's joke landed, a clerk arrived within the week with a ledger and a knotted cord, and counted it.{/n}", requires=(L + "joke_audited",)),
-            p("{n}The Commander had signed for an after, in a cold storeroom, among other people's cloaks. She held the Commander to it. She had a grip, as everyone knew.{/n}", requires=(L + "signed_after",)),
+            p("{n}The Commander's postwar requisitions still came to Dorgelinda. She sent a clerk back whenever a quantity was missing, rank or no rank.{/n}", requires=(L + "joke_audited",)),
+            p('{n}The Commander had promised to find Dorgelinda when the war was over. Visits continued in the rooms behind the stores, after the last cart.{/n}', requires=('dorgelinda.ledger.signed_after',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
             p("{n}Every pair of boots the Commander wore from then on came from the same shelf, and fitted, and was entered in her book.{/n}", requires=(L + "fitted",)),
             p("{n}Twelve soldiers from a plague ward in Drezen outlived the war. None of them ever learned whose column their potions were written in.{/n}", requires=(L + "ward_seen",)),
-            p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=(L + "narrowed",)),
-            p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=(L + "unblessed",)),
-            p("{n}The row about the seal was never mended. On office days she counted the Commander like a wagon for the rest of the war, and off them she did not, and neither of them ever said which was the truth.{/n}", requires=(L + "quarrel_unmended",)),
-            p("{n}They quarrelled, now and then, about irregular accounting. She told the Commander first when she was angry, and the Commander told her first when there was a lie to carry. It was, the sergeant said, the best-run household in Mendev.{/n}", requires=(L + "quarrel_mended",), forbids=(L + "narrowed",)),
+            p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=('dorgelinda.ledger.narrowed',), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+            p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=('dorgelinda.ledger.unblessed',), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_unmended')),
+            p('{n}The quarrel about the seal remained unresolved. Dorgelinda continued supplying the army, but private visits stopped. The Commander saw her across the office desk, with a clerk waiting for the next requisition.{/n}', requires=(L + "quarrel_unmended",)),
+            p('{n}When there was trouble with a requisition, the Commander heard it from Dorgelinda before Nerosyan did. The sergeant still left the office whenever their voices rose.{/n}', requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended',)),
+
+            p("{n}She kept to the smaller yes, all her life: the Commander's on the nights she chose, and never at breakfast. Neither of them ever quite said it was enough.{/n}", requires=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended',)),
+            p("{n}She never asked about the Commander's other columns, and the Commander never offered. They kept to that. It was colder than either of them liked, and they kept to it anyway.{/n}", requires=('dorgelinda.ledger.unblessed', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.narrowed', 'dorgelinda.ledger.quarrel_unmended')),
+            p('{n}The Commander had promised to find Dorgelinda when the war was over. Visits continued in the rooms behind the stores, after the last cart.{/n}', requires=('dorgelinda.ledger.signed_after', 'dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended'), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+            p('{n}The quarrel about the seal remained unresolved. Dorgelinda continued supplying the army, but private visits stopped. The Commander saw her across the office desk, with a clerk waiting for the next requisition.{/n}', requires=('dorgelinda.ledger.quarrel_cold',), forbids=('dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended')),
         ))],
     requires=("trickster.ever", COMMITTED), forbids=("sacrifice", CLOSED),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, last=6, Relationship="dorgelinda"))
 
 
 SCENES.append(scene(P + "epilogue.ruled_off", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", """{n}The Logistics Council's last ledger balanced to the copper. One column in it, in the Commander's name, was ruled off in a hard straight line the full width of the page, the only line Dorgelinda Stranglehold ever drew in anger. She kept the dented tin cup on the shelf over her desk until she died, and never drank from it again.{/n}""")],
+    nar("page", '''{n}Dorgelinda returned the Commander's dented cup to the shelf above her desk. Requisitions came through a clerk from then on. She continued supplying the crusade, but the door to her rooms stayed shut to the Commander.{/n}''')],
     requires=("trickster.ever", COMMITTED, CLOSED), last=6, Relationship="dorgelinda"))
 
 
@@ -1396,8 +1374,7 @@ SCENES.append(scene(P + "epilogue.ruled_off", "", "DorgelindaEpilogue", 6, "", [
 # consequence is read by receipts (Chapter 5): the wool comes back to her desk as this Commander spent it.
 
 SCENES.append(scene(WOOL, "Cold iron and wool", "Dorgelinda", 4, "", [
-    nar("crate", '''{n}At camp in the Abyss you open one of the crates your party carried down from Drezen, because its tag says COLD IRON and the camp has already had one visitor that would not have cared for it. The arrowheads are there, packed in straw and counted. So, under them, where more straw ought to be, are socks: grey wool, regulation, rolled in twos the way the stores roll them. A dozen pair.{/n}
-{n}Tied round the top pair with a bit of string is a note in a big, square, one-handed hand.{/n}''',
+    nar("crate", '''{n}In the Abyss camp, you open a crate your party brought from Drezen. Cold-iron arrowheads lie counted in straw. Under them are twelve pairs of grey wool socks, rolled in twos. A note in Dorgelinda's square hand is tied to the top pair.{/n}''',
         c("Continue", "note_heel", requires=(FITTED,)),
         c("Continue", "note", forbids=(FITTED,))),
     d("note", '''"Commander.
@@ -1416,9 +1393,9 @@ D. Stranglehold, Logistics."
 # Her epilogue remembers what the weekly counts made of the line.
 EPILOGUE_PARAGRAPHS = {
     P + "epilogue.committed": (
-        (TRUE_BOOKS, "{n}The ledgers she sent to Nerosyan during the war were the true ones, open line and all. The lords never forgave the Commander for it. The ranks never forgot it.{/n}"),
+        (TRUE_BOOKS, '{n}The ledgers sent to Nerosyan were the true ones, disputed issues and all. The lords resented the admission. Among the ranks, it earned the Commander a few defenders who had no patience for court gossip.{/n}'),
         (CLEAN_COPY, "{n}The copy she sent to Nerosyan during the war balanced to the copper, in the Commander's hand. It was the only lie she ever filed, and she kept the original, and never said where.{/n}"),
-        (HER_NAME, "{n}After the war she went to Nerosyan as she had promised, to answer for a column with her name at the foot of it. The Commander went with her, and the court found that the stores had been used, quietly, by order, and could not decide whose.{/n}"),
+        (HER_NAME, "{n}After the war Dorgelinda went to Nerosyan to answer for the disputed issues bearing her name. She took the original receipts and argued over every cart and crate. The Commander received a copy of the inquiry's questions in her small, hard hand.{/n}"),
         (RECEIPT, "{n}She kept a pencilled receipt folded small inside her coat for the rest of her life: Commander, returned. Received in good order. It was the only receipt in her whole career she was ever glad to close.{/n}"),
     ),
 }
@@ -1435,3 +1412,11 @@ def integrate(payload):
     for sid, paras in EPILOGUE_PARAGRAPHS.items():
         page = by_id[sid]["Nodes"][0]
         page.setdefault("Paragraphs", []).extend(p(text, requires=(flag,)) for flag, text in paras)
+
+    # Authored polish: retained account and private terms, after all old paragraph slots.
+    by_id[P + "epilogue.committed"]["Nodes"][0]["Paragraphs"].extend((
+        p("{n}The first disputed account had balanced before the war ended. She kept the Commander's confession with its receipts; no clerk was allowed to mistake it for missing stock.{/n}", requires=('dorgelinda.trickster.cost.told_all',), forbids=()),
+        p('{n}The original issue remained unresolved. She kept its receipts together and still demanded an explanation whenever the Commander brought another requisition.{/n}', requires=(), forbids=('dorgelinda.trickster.cost.told_all',)),
+        p("{n}The Commander joined her at her table whenever the war's remaining business allowed, drinking from her dented cup.{/n}", requires=('dorgelinda.ledger.quarrel_mended',), forbids=('dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+        p("{n}The Commander joined her at her table whenever the war's remaining business allowed, drinking from her dented cup.{/n}", requires=(), forbids=('dorgelinda.ledger.quarrel_cold', 'dorgelinda.ledger.quarrel_mended', 'dorgelinda.ledger.quarrel_unmended', 'dorgelinda.ledger.narrowed', 'dorgelinda.ledger.unblessed')),
+    ))

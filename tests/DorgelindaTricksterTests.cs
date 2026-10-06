@@ -303,8 +303,9 @@ internal static class DorgelindaTricksterTests
         // Directive 12 on the generated text: the threshold stages desire and the initiating motion, and the cut lands
         // there, on the node's only choice; nothing past the start of the act is narrated.
         var threshold = night.Nodes.Single(n => n.Id == "threshold");
-        check(threshold.Text.Contains("pulls you down") && threshold.Text.Contains("boots come off")
-              && night.Nodes.Single(n => n.Id == "count").Text.Contains("undoes you"),
+        check(threshold.Text.Contains("draws you onto the rough wool") && threshold.Text.Contains("your remaining one")
+              && threshold.Text.Contains("beneath the desk") && threshold.Text.Contains("I want you")
+              && night.Nodes.Single(n => n.Id == "count").Text.Contains("unfasten her belt"),
             "The night fades before the approach (Directive 12: staging and initiating motion required).");
         check(threshold.Choices.Count == 1 && threshold.Choices[0].Next == null && threshold.Choices[0].Text.Contains("lamp gutters"),
             "The cut does not land on the threshold.");

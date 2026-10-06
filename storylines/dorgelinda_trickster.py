@@ -14,6 +14,8 @@ completely unnoticed." The Commander never conjures anything: a signature, witne
 missing stores the Commander's issue. She has no fate etude; the device makes an opportunity, and she prices it herself.
 The route opens only through the Trickster audit; the continuation that makes it a full courtship is dorgelinda_ledger.
 """
+# Authored F16 extension: a witnessed issue signature assumes responsibility for supplies.
+# Reuse Magic Device supplies the analogy, not legal acquittal or compelled affection.
 from story_format import c, n, p, reaction, scene
 
 SCENES = []
@@ -336,15 +338,14 @@ office(P + "after.fellows_methods", "The second book", '"Shut the door. No, all 
 # --- The commit (Chapter 5), with her refusal reachable on every branch. ------------------------------------------------
 
 ASK = (
-    c('"Keep the line open. And me in the book with it."', "yes", forbids=(BOOTS_OWED,)),
-    c('[Set the last pair of boots on her desk.] "Keep the line open. And me in the book with it."', "yes_boots",
+    c('[Flirt] "You, Dorgelinda. I\'d come back with nothing to account for."', "yes", forbids=(BOOTS_OWED,)),
+    c('[Set the last pair of boots on her desk.] "Debt paid. I\'m here for you, Dorgelinda."', "yes_boots",
       requires=(BOOTS_OWED,)),
     c('"Before you answer: you still don\'t know where it all went."', "not_yet"),
 )
 
 office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."', [
-    nar("open", '''{n}The ledger is open at your line. It has grown: the first line in your hand, then boots, blankets, a bottle that was never on any manifest. Small entries in her hand since the first, every one of them dated, some of them in the code she uses for things she will not have her clerks read. She has not closed it. She has not ruled it off.{/n}
-{n}She has shut the door without being asked, and bolted it, and sent the sergeant to count something at the far end of the yard.{/n}''',
+    nar("open", '''{n}Dorgelinda checks the week's issues and closes the ledger. She leaves the pen beside it. After sending the sergeant to the yard, she brings out a bottle and sets two cups on the desk.{/n} "That's the stores done. Sit a bit."''',
         c("Continue", "recall_clean", requires=(CLEAN,)),
         c("Continue", "recall_dirty", requires=(DIRTY,), forbids=(CLEAN,)),
         c("Continue", "recall", forbids=(CLEAN, DIRTY))),
@@ -356,15 +357,13 @@ office(P + "after.commit", "The open line", '"Sit. I\'ve got your column open."'
       c("Continue", "confessed", requires=(CONFESSED,)), c("Continue", "ask", forbids=(CONFESSED,))),
     d("confessed", '''"You told me the truth once, the day I opened the audit. I wrote it down. It's still in here, at the back. Unsent."''',
       c("Continue", "ask")),
-    d("ask", '''{n}Her dented tin cup is on the desk beside the book: the one she drinks the third toast from, the one that never goes to anybody else. It is empty. The bottle that was never on any manifest stands next to it.{/n}
-"I've been fair with you, Commander, and I'll be plain. I don't want you in my book. You've been in my book since the day you signed it. I want you in my rooms, and at my table when the carts come in, and in my bed when they don't." {n}Her good hand lies flat by the keys, not on them.{/n}
-"I'm no girl, and I'm no fool, and I don't ask twice. So. Yes or no?"''', *ASK),
-    d("yes", '''{n}She opens the bottle one-handed, bracing it against the desk with her bad wrist, fills her own dented cup to the brim and pushes it across to you with the back of her hand. She does not pour one for herself.{/n}
-"Armed, armoured and fed. Supply service toast. Most nights it's two out of three." {n}She watches you lift it.{/n} "Tonight it's three. Drink it all; that cup's yours now, and nobody's drunk from it since Kenabres but me."
-"My rooms are behind the stores. The latch is off after the last cart. Don't knock. I'll hear you anyway."''',
+    d("ask", '''"You come here and listen. Even when I'm tellin' you no." {n}She rolls her dented cup between her palm and the desk, then sets it down.{/n} "I've started watchin' the door for you. Hammer and tongs. As if I hadn't enough to do."
+{n}She looks at you squarely.{/n} "Is it me you're comin' for, Commander? Or have you got another damned shortage?"''', *ASK),
+    d("yes", '''{n}She reaches across the desk and catches your hand. Her grip is firm; when you lean closer, she kisses you hard enough to leave you tasting the drink on her lips.{/n} "Then stay. I want you at my table. And in my bed when the carts'll bloody well let us."
+{n}She fills her dented cup and pushes it toward you.{/n} "Armed, armoured and fed. Tonight it's three. Cup's yours. Drink. My rooms are behind the stores. Come after the last cart."''',
       c("[Stay while she writes.]", flags=(COMMITTED,))),
-    d("yes_boots", '''{n}She counts the boots: two, left and right, regulation, drawn today from the Crusade's own stores on your seal. She writes them in. Paid. Then she fills her own dented cup to the brim and stands it inside the left boot.{/n}
-"Paid in full. Took you long enough. Armed, armoured and fed: three out of three, for once." {n}She pushes the boots across the desk at you.{/n} "That cup's yours now. Nobody's drunk from it since Kenabres but me. My rooms, behind the stores; the latch is off after the last cart. Bring the boots. I'll want to see if they fit."''',
+    d("yes_boots", '''{n}She checks the boots and writes them as paid. Then she sets the pen down, takes your hand and pulls you close for a hard kiss.{/n} "Debt's done. This isn't part of it."
+{n}She fills her dented cup and stands it inside the left boot.{/n} "Armed, armoured and fed. Three out of three. Cup's yours now. Drink, then bring those to my rooms after the last cart. I want you there."''',
       c("[Stay while she writes.]", flags=(COMMITTED, BOOTS_PAID), crusade=("Materials", -200))),
     d("not_yet", '''"No, I don't." {n}She shuts the book, gently, which is worse than hard.{/n}
 "And I'm not sayin' yes to a line I can't balance, Commander. Not today. Come back when you'll tell me where it went. All of it. Then ask me again."''',
@@ -380,7 +379,7 @@ office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
       c('"Not all of it. Anything else."', "no")),
     d("told", '''{n}You tell her. She writes all of it down, and strikes a hundred's worth of stores that were never really there. When you finish, the page balances, which it has not done since the day you first signed it.{/n}
 "There. Was that so hard." {n}She puts the pen down, takes her own dented cup off the shelf, and stands it on the balanced page, empty.{/n} "Now ask."''',
-      c("[Ask.]", flags=(COMMITTED, TOLD_ALL))),
+      c('"The account\'s settled. I still want you, Dorgelinda."', flags=(COMMITTED, TOLD_ALL))),
     d("no", '''"Then we're done, Commander." {n}She rules a line under your column, the only line she has ever drawn in anger.{/n}
 "I'll keep the book. Not you."''',
       c("[Go.]", flags=(CLOSED,))),
@@ -391,9 +390,9 @@ office(P + "after.second_ask", "Where it went", '"You came back. Sit. Talk."', [
 
 EP = dict(last=6, Relationship="dorgelinda")
 SCENES.append(scene(P + "epilogue.committed", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}The Logistics Council's last ledger balanced to the copper, save one line in the Commander's name, marked "used, quietly". Dorgelinda Stranglehold never ruled it off, and never explained why to the clerks. The Commander drank from Dorgelinda's dented cup at her table for the rest of her life, three out of three on the good nights, and let themselves into the rooms behind the stores more often than the clerks thought proper, and never once knocked.{/n}''',
+    nar("page", '''{n}Dorgelinda Stranglehold sent the Logistics Council's final returns to Nerosyan. She kept the original receipts in the rooms behind the stores. The clerks still brought their requisitions before supper.{/n}''',
         paragraphs=(
-            p("{n}Under the first entry, in the Commander's hand, was a rider nobody but she had ever read to the end: \"...and all stores that follow them.\" She followed them.{/n}", requires=(CARTS,)),
+            p("{n}The rider signed at the caravan council stayed with the original manifests. Any clerk copying the Commander's issues had to copy that clause as well.{/n}", requires=(CARTS,)),
             p("{n}The boots were entered as paid. She kept the last pair on a shelf in the stores, regulation, unworn, and would not issue them to anyone.{/n}", requires=(BOOTS_PAID,)),
             p("{n}A confession sat in the back of the book, in her hand, never sent to Nerosyan.{/n}", any_groups=[[CONFESSED, TOLD_ALL]],
               forbids=("dorgelinda.ledger.true_books_sent",)),
@@ -404,11 +403,11 @@ SCENES.append(scene(P + "epilogue.committed", "", "DorgelindaEpilogue", 6, "", [
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))
 
 SCENES.append(scene(P + "epilogue.committed_on_record", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}When the Commander was entered as dead, Dorgelinda Stranglehold refused to close the account. "Dead's a status, not a balance," she told the clerk from Nerosyan. The line stayed open in her book for as long as she kept books, which was a very long time.{/n}''')],
+    nar("page", '''{n}When the Commander failed to return, Dorgelinda checked the last issue herself. She kept the dented cup beside the receipt, and sent the Commander's remaining kit away under her own seal. No clerk was allowed to do it for her.{/n}''')],
     requires=("trickster.ever", COMMITTED, "sacrifice"), forbids=("trickster.commander_back", CLOSED), **EP))
 
 SCENES.append(scene(P + "epilogue.commit", "", "DorgelindaEpilogue", 6, "", [
-    nar("page", '''{n}The war ended before the audit did. The spring after Threshold, Dorgelinda Stranglehold came to the Commander with the Logistics Council's final ledger under her arm and one line still open in it. "I don't ship a book to Nerosyan with a hole in it," she said. "So. Either you close it, or you stay in it." She had already written "carried forward". She was not asking, much.{/n}''')],
+    nar("page", '''{n}The spring after Threshold, Dorgelinda brought the Commander the last supply ledger and demanded an account of the disputed issues. She had put aside a bottle for the visit. It stayed corked until the work was done.{/n}''')],
     requires=("trickster.ever", METHODS), forbids=(COMMITTED, CLOSED, DECLINED, "sacrifice"),
     ForbidOverrides={"sacrifice": "trickster.commander_back"}, **EP))   # Q9 r3: the spring visit needs the Commander back
 
