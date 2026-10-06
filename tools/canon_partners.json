@@ -1209,11 +1209,19 @@
                 {
                   "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_InSunctum.jbp",
                   "guid": "4f87458c1e0d21c47b9269cd9dc727be",
-                  "export_bindings": []
+                  "export_bindings": [
+                    "Etudes.jerribeth.marhevok_in_sanctum"
+                  ]
                 }
               ],
-              "when": null,
-              "note": "No exported alias on this branch. InSanctum makes him a living plant, not dead."
+              "when": [
+                [
+                  "jerribeth.marhevok_in_sanctum",
+                  "!jerribeth.marhevok_dead",
+                  "!gesmerha.marhevok_rules"
+                ]
+              ],
+              "note": "Verified read-only native plant observer. Native origin is the Sanctum; authored living Jerribeth carries the portable captive to her bedroom. The earned returned tenant leaves him distant. Death and current chief status take priority."
             },
             {
               "state": "dead",
@@ -1221,11 +1229,17 @@
                 {
                   "path": "World/Etudes/Common/WrathOfTheRighteous/Chapter03/WintersunStory/Marhevok_Dead.jbp",
                   "guid": "fc03aa45c96a1424680c505627db8144",
-                  "export_bindings": []
+                  "export_bindings": [
+                    "Etudes.jerribeth.marhevok_dead"
+                  ]
                 }
               ],
-              "when": null,
-              "note": "No exported alias."
+              "when": [
+                [
+                  "jerribeth.marhevok_dead"
+                ]
+              ],
+              "note": "Verified read-only native death observer; takes priority over earlier plant custody."
             },
             {
               "state": "alive_chief_separated_by_judgment",
@@ -1240,13 +1254,29 @@
               ],
               "when": [
                 [
-                  "gesmerha.marhevok_rules"
+                  "gesmerha.marhevok_rules",
+                  "!jerribeth.marhevok_dead"
                 ]
               ],
               "note": "Aeon judgment/farewell is native, not a default Trickster breakup."
+            },
+            {
+              "state": "unknown",
+              "evidence": [],
+              "when": [
+                [
+                  "!jerribeth.marhevok_dead",
+                  "!gesmerha.marhevok_rules",
+                  "!jerribeth.marhevok_in_sanctum"
+                ]
+              ],
+              "note": "Reviewed uncertainty when no current observer establishes a fate; never inferred death or consent. AeonEpilogue is an erased world, not a continuation of native state flags."
             }
           ],
-          "note": ""
+          "note": "Authored round 2a: terms receipt precedes commitment; exclusive demand is refused; living captive reacts without speech; chief remains separated and answers by letter. Aeon owner erases the correspondence and leaves present-world remembrance unknown.",
+          "acknowledgement_receipts": [
+            "jerribeth.partner_terms_chosen"
+          ]
         }
       ],
       "search": {

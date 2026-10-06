@@ -900,7 +900,8 @@ def integrate(payload):
         c(keep["Text"], "arrival", requires=(OFFERED,), forbids=(RETURNED,), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
         c(keep["Text"], "tenant_room", requires=(OFFERED, RETURNED), flags=(*keep["Set"], FORFEIT, FATE_TERMS)),
         c(keep["Text"], "short_end", forbids=(OFFERED,), flags=(*keep["Set"], FATE_TERMS))))
-    future["Nodes"].extend(IN_PERSON)
+    # Partner discovery edits tenant_room; keep templates clean across builds.
+    future["Nodes"].extend(copy.deepcopy(IN_PERSON))
     # BEL (Sol r3): the in-letter bodily arrival is retired (gated off, kept for saves already on it); the living contract
     # now ends the letter with her appointment, and the visit plays on her presence.
     for node_id in ("promise", "short_future", "fate_short"):
@@ -1027,6 +1028,10 @@ def integrate(payload):
             for choice in node["Choices"]:
                 if "jerribeth.closed" in choice["Set"] and PARTED not in choice["Set"]:
                     choice["Set"] = [*choice["Set"], PARTED]
+
+    # Route-owned partner terms and current Marhevok state (round 2a).
+    from storylines import jerribeth_partner
+    jerribeth_partner.integrate(payload)
 
 
 # Engine-q5: return/device producers use current power; earned-return consumers keep trickster.ever.

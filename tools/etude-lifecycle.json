@@ -1642,6 +1642,24 @@
     "hold"
    ]
   },
+  "4f87458c1e0d21c47b9269cd9dc727be": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Marhevok_InSunctum",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Marhevok_InSunctum",
+   "traits": [
+    "hold"
+   ]
+  },
   "5169dbc60a1ad854493f7ba44c27a0d8": {
    "ancestors_completed": [],
    "areas": {},
@@ -4480,6 +4498,24 @@
    "name": "RegillInParty",
    "traits": [
     "conditional"
+   ]
+  },
+  "fc03aa45c96a1424680c505627db8144": {
+   "ancestors_completed": [],
+   "areas": {},
+   "cascade_chapter": null,
+   "chain": [
+    "Marhevok_Dead",
+    "WintersunStory",
+    "Chapter03_AreasDefault",
+    "Chapter03_Extra",
+    "WrathOfTheRighteous"
+   ],
+   "completed_by": [],
+   "conditional": [],
+   "name": "Marhevok_Dead",
+   "traits": [
+    "hold"
    ]
   },
   "fcbd1ad00e1c7044b8485d7feda8b9b7": {

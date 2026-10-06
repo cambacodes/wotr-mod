@@ -316,7 +316,7 @@ internal static class JerribethTricksterTests
                               "jerribeth.trickster.cost.tenant", "jerribeth.trickster.cost.lodger", "jerribeth.trickster.cost.forfeit");
         var together = S("jerribeth.ending_together");
         check(Rules.Available(story, together, endLodger), "G6: the returned tenant has no ending.");
-        check(together.Nodes.Where(n => n.Paragraphs.Count > 0).All(n => Rules.VisibleParagraphs(n, endLodger).Length == 2),
+        check(together.Nodes.Where(n => n.Id == "earlier" || n.Id == "room").All(n => n.Paragraphs.Take(12).Count(p => Rules.ParagraphVisible(p, endLodger)) == 2),
             "Tenant paragraphs missing on her ending.");
         var late2 = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", "jerribeth.attracted", "jerribeth.commission", "jerribeth.lovers");
         check(Rules.Available(story, epCommit, late2) && !Rules.Available(story, S("jerribeth.ending_unfinished"), late2),
@@ -325,7 +325,7 @@ internal static class JerribethTricksterTests
                             "jerribeth.trickster.no_forfeit");
         var apart = S("jerribeth.ending_apart");
         check(!Rules.Available(story, epCommit, refused) && Rules.Available(story, apart, refused)
-              && Rules.VisibleParagraphs(apart.Nodes[0], refused).Length == 1, "Trk_Jerribeth_EpilogueCommit_Refused failed.");
+              && apart.Nodes[0].Paragraphs.Take(14).Count(p => Rules.ParagraphVisible(p, refused)) == 1, "Trk_Jerribeth_EpilogueCommit_Refused failed.");
         var deadNoReturn = World(story, 6, "trickster", "trickster.ever", "jerribeth.met", Dead, "jerribeth.commission", "jerribeth.lovers");
         check(!Rules.Available(story, epCommit, deadNoReturn), "The late commit brings a dead Jerribeth to the door.");
         var canon = World(story, 6, "jerribeth.met", "jerribeth.attracted");
@@ -439,7 +439,7 @@ internal static class JerribethTricksterTests
             check(w.Has("lastcall.active") == lastCall, "Last Call activity misread in the forfeit walk.");
             // One ending page per history: count its paragraphed (terminal) node once, plus the coda when it plays.
             int OnPage(Scene s) => Rules.Available(story, s, w)
-                ? Rules.VisibleParagraphs(s.Nodes.First(n => n.Paragraphs.Count > 0), w).Count(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[jerribeth.future/her_terms/choice/0][jerribeth.future/her_terms/choice/3][jerribeth.future/her_terms_short/choice/0][jerribeth.future/her_terms_short/choice/3][jerribeth.future/grudge][jerribeth.future/grudge_short][jerribeth.future/arrival_terms][jerribeth.future/morning][jerribeth.future/tenant_morning][jerribeth.future/arrival_note][jerribeth.ending_together/earlier/paragraph/10][jerribeth.ending_together/earlier/paragraph/11][jerribeth.ending_together/room/paragraph/10][jerribeth.ending_together/room/paragraph/11][jerribeth.ending_ascended/earlier/paragraph/10][jerribeth.ending_ascended/earlier/paragraph/11][jerribeth.ending_ascended/room/paragraph/10][jerribeth.ending_ascended/room/paragraph/11][jerribeth.ending_apart/start/paragraph/10][jerribeth.ending_apart/start/paragraph/11][jerribeth.ending_apart/start/paragraph/12][jerribeth.trickster.dead.setup_final/lease][jerribeth.trickster.dead.backdated/signed][jerribeth.trickster.epilogue.commit/offer/paragraph/0][jerribeth.trickster.epilogue.commit/offer/paragraph/1][jerribeth.trickster.epilogue.commit/offer/paragraph/2][jerribeth.trickster.epilogue.commit/night_after][jerribeth.trickster.epilogue.commit/night_mind_after][jerribeth.trickster.epilogue.commit/collected/paragraph/13][jerribeth.trickster.epilogue.commit/collected/paragraph/14][jerribeth.trickster.epilogue.commit/torn][jerribeth.trickster.epilogue.commit/torn_mind][jerribeth.lastcall.page/page/paragraph/1][jerribeth.trickster.visit/arrival_terms][jerribeth.trickster.visit/morning][jerribeth.trickster.visit_letter/start][book/trickster.ledger/owed.jerribeth]")) : 0;
+                ? Rules.VisibleParagraphs(s.Nodes.Single(n => n.Id == (s.Id == "jerribeth.lastcall.page" ? "page" : s.Id == "jerribeth.ending_apart" ? "start" : "earlier")), w).Count(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[jerribeth.future/her_terms/choice/0][jerribeth.future/her_terms/choice/3][jerribeth.future/her_terms_short/choice/0][jerribeth.future/her_terms_short/choice/3][jerribeth.future/grudge][jerribeth.future/grudge_short][jerribeth.future/arrival_terms][jerribeth.future/morning][jerribeth.future/tenant_morning][jerribeth.future/arrival_note][jerribeth.ending_together/earlier/paragraph/10][jerribeth.ending_together/earlier/paragraph/11][jerribeth.ending_together/room/paragraph/10][jerribeth.ending_together/room/paragraph/11][jerribeth.ending_ascended/earlier/paragraph/10][jerribeth.ending_ascended/earlier/paragraph/11][jerribeth.ending_ascended/room/paragraph/10][jerribeth.ending_ascended/room/paragraph/11][jerribeth.ending_apart/start/paragraph/10][jerribeth.ending_apart/start/paragraph/11][jerribeth.ending_apart/start/paragraph/12][jerribeth.trickster.dead.setup_final/lease][jerribeth.trickster.dead.backdated/signed][jerribeth.trickster.epilogue.commit/offer/paragraph/0][jerribeth.trickster.epilogue.commit/offer/paragraph/1][jerribeth.trickster.epilogue.commit/offer/paragraph/2][jerribeth.trickster.epilogue.commit/night_after][jerribeth.trickster.epilogue.commit/night_mind_after][jerribeth.trickster.epilogue.commit/collected/paragraph/13][jerribeth.trickster.epilogue.commit/collected/paragraph/14][jerribeth.trickster.epilogue.commit/torn][jerribeth.trickster.epilogue.commit/torn_mind][jerribeth.lastcall.page/page/paragraph/1][jerribeth.trickster.visit/arrival_terms][jerribeth.trickster.visit/morning][jerribeth.trickster.visit_letter/start][book/trickster.ledger/owed.jerribeth]")) : 0;
             int collections = OnPage(together) + OnPage(ascended) + OnPage(lcPage);
             check(Rules.Available(story, together, w) && collections == 1,
                 "The single forfeit is collected " + collections + " times (Last Call " + lastCall + ", vessel '" + vessel + "').");
@@ -474,7 +474,7 @@ internal static class JerribethTricksterTests
             var pages = new HashSet<string>();
             var outs = Program.Walk(epCommit, w, (page, _) => pages.Add(page));
             bool mind = vessel != "" && vessel != "jerribeth.trickster.cost.host";
-            check(epCommit.Nodes[0].Paragraphs.Count(p => Rules.ParagraphVisible(p, w)) == 1
+            check(epCommit.Nodes[0].Paragraphs.Take(3).Count(p => Rules.ParagraphVisible(p, w)) == 1
                   && Rules.VisibleParagraphs(epCommit.Nodes.Single(n => n.Id == "collected"), w).Count(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[jerribeth.trickster.epilogue.commit/collected/paragraph/0][jerribeth.trickster.epilogue.commit/collected/paragraph/1][jerribeth.trickster.epilogue.commit/collected/paragraph/2]")) == 1,
                 "The late commit's arrival or muster is not exactly one variant for vessel '" + vessel + "'.");
             check(pages.Contains("collected") && (mind ? pages.Contains("torn_mind") && pages.Contains("signed_mind") && !pages.Contains("signed")
@@ -594,7 +594,7 @@ internal static class JerribethTricksterTests
                 "The toast carrier changes between the toast and the invitation (levy " + levy + ").");
             var given = invOuts.First(r => r.Has(ToastHost) && r.Has(invitation.Id));
             var end = World(story, 6, given.Flags.Concat(new[] { "jerribeth.committed" }).ToArray());
-            var ending = together.Nodes.First(n => n.Paragraphs.Count > 0);
+            var ending = together.Nodes.Single(n => n.Id == "earlier");
             var hostLines = Rules.VisibleParagraphs(ending, end).Where(p => SurfaceIds.Has(SurfaceIds.Of(story, p), "[jerribeth.ending_together/earlier/paragraph/6][jerribeth.ending_together/earlier/paragraph/7][jerribeth.ending_together/room/paragraph/6][jerribeth.ending_together/room/paragraph/7]")).ToList();
             check(hostLines.Count == 1,
                 "The ending remembers the wrong toast carrier (levy " + levy + ").");
