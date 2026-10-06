@@ -1,0 +1,23 @@
+{
+  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "facts": [
+    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
+    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
+    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
+    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+  ],
+  "scene": "Authored optional postwar visit in correspondence ending, not existing default letter paragraph. Bodily Nocticula and living Commander only after narrated travel, her admission and fresh affirmative approach; refusal retains correspondence and never enters this slot. User-supplied consensual intimate continuation; no new travel mechanic, restored Gift or opened Chapter 5 palace. Narrate past tense, the Commander/they. She keeps the signed undertaking and limited channel; the half-seal beside actual travel papers is an authored prop, not teleportation. Morning recalls current Shamira state and her next request rather than a generic farewell.",
+  "last_line": "N: At dawn, the half-seal rested beside the travel papers.",
+  "speakers": {
+    "N": "Narrator",
+    "L": "Nocticula"
+  },
+  "example": "N: Nocticula took the Commander's hand before the glass reached the table.\nL: Leave it. I have had enough of watching you drink.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 18,
+  "default_text": "{n}Nocticula took the Commander's hand and closed the chamber door. At dawn, the half-seal rested beside the travel papers.{/n}"
+}

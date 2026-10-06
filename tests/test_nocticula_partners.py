@@ -55,6 +55,14 @@ class NocticulaPartnerTests(unittest.TestCase):
                              [n["Id"] for n in old["Nodes"]])
             for a, b in zip(old["Nodes"], new["Nodes"]):
                 for previous, current in zip(a["Choices"], b["Choices"]):
+                    # R2 fill nodes splice the heated cut before the old
+                    # aftermath. The saved answer index survives; its effects
+                    # and old destination remain on the matching continuation.
+                    if ".explicit." in (current.get("Next") or ""):
+                        fill = next(n for n in new["Nodes"] if n["Id"] == current["Next"])
+                        if len(fill["Choices"]) == 1 and ".aftermath." in (fill["Choices"][0].get("Next") or ""):
+                            fill = next(n for n in new["Nodes"] if n["Id"] == fill["Choices"][0]["Next"])
+                        current = fill["Choices"][a["Choices"].index(previous)]
                     for key in ("Next", "Set", "Abort", "Check", "NativeNext"):
                         self.assertEqual(previous.get(key), current.get(key), (old["Id"], a["Id"], key))
 

@@ -1,0 +1,23 @@
+{
+  "voice": "NOCTICULA: commanding, amused, impatient with pleading, possessive and calculating; frank appetite; attraction to inconvenient ingenuity; enjoys fear, remains a dangerous ruler. Short concrete remarks, no reassurance script, aphorisms, modern relationship jargon or sentimental redemption. Write new dialogue; do not reuse the example.",
+  "facts": [
+    "Nocticula is the Lady in Shadow, a demonic ruler of the Midnight Isles.",
+    "Shamira identifies herself as her chosen lover in native Chapter 4 dialogue and covets her throne.",
+    "Native Threshold spawning uses ProjectionBuff after NocticulaDead; native epilogue describes concealment after defeat.",
+    "No fixed Commander gender or anatomy. Do not invent physical features or claim authored room mechanics are native canon."
+  ],
+  "scene": "Postwar Alushinyrra, existing narrated palace ending knelt branch, mutually exclusive with kissed/walked. Bodily Nocticula and living Commander, her spoken yes and the Commander's chosen kneeling approach. User-supplied consensual intimate continuation; no punishment, coercion or humiliation framing. Her authority stays intact without demeaning the Commander. Past-tense neutral epilogue narration; no automatic partner assent or body for a mental passenger. End before the unchanged paid/refused mornings; sex settles no favor.",
+  "last_line": "N: The palace lamps burned low before morning.",
+  "speakers": {
+    "N": "Narrator",
+    "L": "Nocticula"
+  },
+  "example": "N: Nocticula took the Commander's hand before the glass reached the table.\nL: Leave it. I have had enough of watching you drink.",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 18,
+  "default_text": "{n}She caught the Commander's hand and drew them nearer. The palace lamps burned low before morning.{/n}"
+}

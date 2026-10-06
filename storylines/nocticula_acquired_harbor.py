@@ -68,7 +68,7 @@ def adapt(source, history, gift=None):
 {n}She takes a folded strip from beneath the sailcloth. Three names cross it in different hands. The last has been written twice; somebody disputed its spelling.
 You touch that correction. Nocticula watches the movement.{/n}
 "You can ask about him. I have not brought you enough to pretend I know where he is."
-"And what do you want from the man doing the asking?"
+"And what do you want from the person doing the asking?"
 {n}She draws the strip back slowly enough that her fingers pass over yours.{/n}'''),
             ("profit", "noct.join.first_question_profit",
              '"I asked who profits. Have you brought a price or a man who thinks he can name one?"',

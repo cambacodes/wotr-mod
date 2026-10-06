@@ -1,0 +1,33 @@
+{
+  "nocticula": {
+    "device_class": "bargain",
+    "setting": "Threshold projection audience, concealed sovereign and paid chair at the Commander's right",
+    "payoff_shape": "shadow keeps a paid place or an opposite-end surveillance stalemate",
+    "canon_hooks": [
+      {
+        "guid": "9c219d9331c1fa24d95ab1c51c46df84",
+        "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0023.jbp",
+        "key": "c79247e7-e6fd-411c-abbd-4041938d35a9",
+        "native_excerpt": "\"You amuse me, mortal. Very well. Be on your way. If you happen to see Shamira, tell her I say hello... unless you've already encountered her, of course. I'm sure you can see yourself out — you did find a way in, after all.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "84df3b227f54e3e44888b5bb8585089d",
+        "path": "World/Dialogs/c5/Mythic_Trickster/Nocticula/Cue_0021.jbp",
+        "key": "7328c1e1-84a0-44e9-b4c1-995b3d51df18",
+        "native_excerpt": "\"And you decided to report back to me after you finished the job? How kind. But do you know what? I won't hold it against you. Shamira was starting to forget her place. She was no longer content to rule Alushinyrra on my behalf... She coveted my throne. You've saved me the trouble of having to deal with her.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "7d07492b12cf5bd4bb1c88113d5831ab",
+        "path": "World/Dialogs/c6/FirstFloor/NocticulaThreshold/Cue_0002.jbp",
+        "key": "5760c5f9-02d3-416d-b51d-b4297a450659",
+        "native_excerpt": "{n}You hear the sound of laughter, and then the Lady in Shadow begins to speak.{/n} \"You do not disappoint, my chosen. Your performance has been flawless. I hope you will continue to impress me, and that you will do what needs to be done in the end.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      6
+    ]
+  }
+}
