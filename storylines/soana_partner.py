@@ -124,7 +124,7 @@ def commitments(scenes):
             future = [deepcopy(page["Paragraphs"][4])]
             page["Paragraphs"][4]["Requires"].append(DECIDED)
             page["Paragraphs"][4]["Forbids"].append(EXCLUSIVE)
-        page["Choices"][0]["Requires"].append(DECIDED)
+        # The saved exit leaves without settling any relationship terms.
         page["Choices"][0]["Id"] = "continue"  # saves reference the legacy .continue epilogue answer
         for name, stance, text in (
             ("share", SHARE, '"Keep Corven\'s place. If he comes home, we tell him what we are to each other."'),
@@ -316,6 +316,9 @@ def paragraphs(*, lost=False, aeon=False):
               "as well as the desire that had preceded it.{/n}", requires=(EXCLUSIVE,)),
             p("{n}The Commander had chosen an affair hidden behind a shaman's counsel. Its secrecy belonged to the "
               "vanished visits; there was no account of their consequences in the new history.{/n}", requires=(SECRET,)),
+            p("{n}No arrangement with the Commander had been settled before the history vanished. "
+              "Corven's marriage had not been surrendered to the vanished traveler.{/n}",
+              forbids=(SHARE, EXCLUSIVE, SECRET)),
         )
     unknown = p("{n}The bark addressed to Corven remained among Soana's possessions. No answer had reached it. "
                 "Her husband's fate was still unknown; the names of their children stayed inside the fold.{/n}",
@@ -345,7 +348,9 @@ def paragraphs(*, lost=False, aeon=False):
             p("{n}A letter signed Corven had been kept among the Commander's dispatches. Its writer had never been verified, "
               "and Soana had heard nothing of it.{/n}", requires=(HELD,), forbids=(CONFIRMED,)),
             p("{n}A letter signed Corven had been burned before Soana could read it. The courier's unanswered report remained "
-              "on the southern road; no proof of its writer's fate had reached her.{/n}", requires=(BURIED,), forbids=(CONFIRMED,)))
+              "on the southern road; no proof of its writer's fate had reached her.{/n}", requires=(BURIED,), forbids=(CONFIRMED,)),
+            p("{n}No arrangement with the Commander had been settled. Corven remained her husband; "
+              "nothing had been agreed on his behalf.{/n}", forbids=(SHARE, EXCLUSIVE, SECRET)))
 
 
 LOSS_ENDINGS = {"soana.ending_native_loss", "soana.ending_unfinished_loss",

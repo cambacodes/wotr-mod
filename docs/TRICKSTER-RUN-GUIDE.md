@@ -8013,7 +8013,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
 657. **Irabeth: A road without an assignment** — Drezen. <!-- rrt-step {"scene":"irabeth.a_road_she_would_choose","chapter":5,"day":106,"completed":true,"choices":[["start",0],["drawings",0],["towns",0],["practice",0],["measured",0],["want",0],["lasting",0],["end",0]]} -->
    Scene `irabeth.a_road_she_would_choose`; chapters 5–5 (only 5); wait at least 48h after the latest prerequisite; complete.
    Open: "Sella is expecting us. Have you decided what you want to ask?"
-   Need all: `irabeth.instruction_tested`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`.
+   Need all: `irabeth.instruction_tested`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`, `swarm`, `true_lich`.
    Native answer-list host: `871af36f2ab2b1f40b5de77976c54276`.
    Actor must be physically available: `280d4712dceb37f4a88e98f1f4c6e64f`.
    - `irabeth.a_road_she_would_choose/start/0` — [Make room for the drawings.]
@@ -8022,7 +8022,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    - `irabeth.a_road_she_would_choose/practice/0` — [Follow the measurements, even though the route looks less direct.]; records `irabeth.walk_measured`
    - `irabeth.a_road_she_would_choose/measured/0` — [Sit beside her without finding another destination.]
    - `irabeth.a_road_she_would_choose/want/0` — "Yes. I want to keep coming back to you, for good, and the people we love can come too."; records `irabeth.future_lasting`
-   - `irabeth.a_road_she_would_choose/lasting/0` — [Kiss her back and let the onion go.]; records `irabeth.committed`
+   - `irabeth.a_road_she_would_choose/lasting/0` — [Kiss her back and let the onion go.]; records `irabeth.committed`, `irabeth.partner_stance.share`; Blocked by: `anevia_dead`
    - `irabeth.a_road_she_would_choose/end/0` — [Carry the onions home.]; records `irabeth.future_chosen`
 
 658. **Wenduag: Wenduag's word** — native dialogue listed below. <!-- rrt-step {"scene":"minagho_chivarro.trickster.react.wenduag","chapter":5,"day":106,"completed":true,"choices":[["start",0]]} -->
@@ -8382,7 +8382,7 @@ A completed scene also records its scene ID. Read all letters before waiting for
    Need all: `irabeth.future_chosen`; Blocked by: `closed`, `irabeth.closed`, `inhuman`, `irabeth_away`, `irabeth_dead`, `swarm`, `true_lich`.
    Native answer-list host: `871af36f2ab2b1f40b5de77976c54276`.
    Actor must be physically available: `280d4712dceb37f4a88e98f1f4c6e64f`.
-   - `irabeth.the_hour_before_battle/start/0` — "Then begin with those."
+   - `irabeth.the_hour_before_battle/start/0` — "Then begin with those."; Blocked by: `irabeth.partner_stance.secret`
    - `irabeth.the_hour_before_battle/wanted/0` — [Ask about Sella's drawing.]
    - `irabeth.the_hour_before_battle/future/0` — "I meant what I said at the arch. All of it."; Need all: `irabeth.future_lasting`
    - `irabeth.the_hour_before_battle/lasting/0` — [Kiss her hand. Promise nothing about tomorrow.]
@@ -12641,6 +12641,13 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `irabeth.anevias_answer/refuse/0` — [Accept that this proposal has failed.] [Any shared romance between the three of you also ends.]; records `irabeth.closed`, `tirabade.group_closed`
 - `irabeth.after_the_shared_answer/stop/0` — [Leave her be.] [Any shared romance between the three of you also ends.]; records `irabeth.closed`, `tirabade.group_closed`
 - `irabeth.a_road_she_would_choose/want/2` — "I care for you, but I want us to become friends rather than continue as lovers." [Any shared romance between the three of you also ends.]; records `irabeth.future_friends`, `tirabade.group_closed`
+- `irabeth.a_road_she_would_choose/partner_lasting_0_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.a_road_she_would_choose/partner_lasting_0_secret/2` — [Leave before she lies to her wife.]; records `irabeth.closed`
+- `irabeth.a_road_she_would_choose/partner_lasting_0_lie/1` — "Go home. Tell her what you almost did."; records `irabeth.closed`
+- `irabeth.the_hour_before_battle/partner_fallout/0` — [Let them leave together.]; records `irabeth.partner_stance.secret`, `irabeth.partner_stance.discovered`, `irabeth.closed`
+- `irabeth.the_hour_before_battle/partner_absent/0` — [Accept the end of the affair.]; records `irabeth.closed`, `irabeth.partner_stance.confession_sent`
+- `irabeth.the_hour_before_battle/partner_dead/0` — [Accept the end of the affair.]; records `irabeth.closed`, `irabeth.partner_stance.unconfessed`
+- `irabeth.the_hour_before_battle/partner_fallout_returned/0` — [Let them leave together.]; records `irabeth.partner_stance.secret`, `irabeth.partner_stance.discovered`, `irabeth.closed`
 - `irabeth.after_the_answer_was_lost/choice/2` — "I can't be that for you. I'd like to stay your friend." [Any shared romance between the three of you also ends.]; records `irabeth.closed`, `tirabade.group_closed`
 - `irabeth.return_reply/decline/0` — [Leave the meeting unarranged.]; records `irabeth.return_meeting_declined`
 - `irabeth.trickster.dead.late_order/cup/1` — [Let her rest] "...No. She earned it."; records `irabeth.trickster.declined`
@@ -12650,12 +12657,32 @@ Choices recording closure, refusal or failure that blocks later scenes (avoid ap
 - `irabeth.trickster.killed.dig/start/1` — [Let the blow stand] "No. It happened. I did it."; records `irabeth.trickster.declined`
 - `irabeth.trickster.killed.blow_missed/both/1` — [Let the blow stand] "No. I did it. I won't take it back."; records `irabeth.trickster.declined`, `irabeth.trickster.blow_stands`
 - `irabeth.trickster.killed.blow_missed/raised/1` — [Let the blow stand] "Iz. I won't take it back."; records `irabeth.trickster.declined`, `irabeth.trickster.blow_stands`
+- `irabeth.trickster.back_on_duty/partner_fallout/0` — [Let them leave together.]; records `irabeth.partner_stance.secret`, `irabeth.partner_stance.discovered`, `irabeth.closed`
+- `irabeth.trickster.back_on_duty/partner_absent/0` — [Accept the end of the affair.]; records `irabeth.closed`, `irabeth.partner_stance.confession_sent`
+- `irabeth.trickster.back_on_duty/partner_dead/0` — [Accept the end of the affair.]; records `irabeth.closed`, `irabeth.partner_stance.unconfessed`
+- `irabeth.trickster.back_on_duty/partner_fallout_returned/0` — [Let them leave together.]; records `irabeth.partner_stance.secret`, `irabeth.partner_stance.discovered`, `irabeth.closed`
 - `irabeth.trickster.commit/no/0` — [Step back] "Then I'll ask again. Not as your Commander."; records `irabeth.trickster.declined`
 - `irabeth.trickster.commit/no_home/0` — [Step back] "Then I'll ask again. Not as your Commander."; records `irabeth.trickster.declined`
 - `irabeth.trickster.commit/no_house/0` — [Step back] "Then I'll ask again. Not as your Commander."; records `irabeth.trickster.declined`
 - `irabeth.trickster.commit/no_gate/0` — [Step back] "Then I'll ask again. Not as your Commander."; records `irabeth.trickster.declined`
 - `irabeth.trickster.commit/not_tonight/0` — [Step back] "Then I'll ask again. Not as your Commander."; records `irabeth.trickster.declined`
+- `irabeth.trickster.commit/partner_answer_3_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.commit/partner_answer_3_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
+- `irabeth.trickster.commit/partner_decides_0_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.commit/partner_decides_0_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
 - `irabeth.trickster.second_ask/price/1` — "Some things I keep."; records `irabeth.closed`
+- `irabeth.trickster.second_ask/partner_yes_0_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.second_ask/partner_yes_0_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
+- `irabeth.trickster.second_ask/partner_yes_1_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.second_ask/partner_yes_1_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
+- `irabeth.trickster.second_ask/partner_yes_2_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.second_ask/partner_yes_2_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
+- `irabeth.trickster.nevi_reply/partner_yes_0_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.nevi_reply/partner_yes_0_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
+- `irabeth.trickster.nevi_reply/partner_yes_1_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.nevi_reply/partner_yes_1_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
+- `irabeth.trickster.nevi_reply/partner_yes_2_exclusive/1` — [Accept her refusal. End the courtship.]; records `irabeth.partner_stance.exclusive`, `irabeth.closed`
+- `irabeth.trickster.nevi_reply/partner_yes_2_secret/1` — [End the courtship.]; records `irabeth.closed`, `irabeth.partner_stance.secret_refused`
 
 ### minagho_chivarro: The company they choose
 

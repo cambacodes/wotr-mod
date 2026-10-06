@@ -72,7 +72,7 @@ class SoanaPartnerTests(unittest.TestCase):
                 results = list(walks(event))
                 self.assertEqual({frozenset(after & {P.SHARE, P.EXCLUSIVE, P.SECRET})
                                   for after, _, _ in results},
-                                 {frozenset([f]) for f in (P.SHARE, P.EXCLUSIVE, P.SECRET)})
+                                 {frozenset(), *(frozenset([f]) for f in (P.SHARE, P.EXCLUSIVE, P.SECRET))})
                 for after, _, _ in results:
                     self.assertNotIn("soana.committed", after)
                     self.assertEqual("soana.closed" in after, P.EXCLUSIVE in after)
@@ -156,6 +156,10 @@ class SoanaPartnerTests(unittest.TestCase):
             for page in event["Nodes"]:
                 with self.subTest(scene=event["Id"], node=page["Id"]):
                     paragraphs = page.get("Paragraphs", [])
+                    unset = [p for p in paragraphs if set((P.SHARE, P.EXCLUSIVE, P.SECRET)) <= set(p.get("Forbids", ()))]
+                    self.assertEqual(1, len(unset))
+                    self.assertTrue(available(unset[0], set()))
+                    self.assertTrue(all(not available(unset[0], {s}) for s in (P.SHARE, P.EXCLUSIVE, P.SECRET)))
                     for known in (set(), {P.CONFIRMED, P.TOGETHER}, {P.CONFIRMED, P.SEPARATED}, {P.CONFIRMED, P.DISTANT}):
                         flags = known | {P.SHARE}
                         state = [p for p in paragraphs if available(p, flags)

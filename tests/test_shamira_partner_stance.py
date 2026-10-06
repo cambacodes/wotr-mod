@@ -108,6 +108,9 @@ class ShamiraPartnerStanceTests(unittest.TestCase):
     def test_late_page_records_terms_without_new_eligibility_or_return(self):
         for state in self.states:
             for flags, trace in walk(self.scenes[partner.P + "epilogue.late"], state, start="page"):
+                if trace == ["page"]:
+                    self.assertEqual(flags, set(state))
+                    continue
                 self.assertEqual(sum(flag in flags for flag in (partner.SHARE, partner.EXCLUSIVE, partner.SECRET)), 1)
                 self.assertNotIn(partner.COMMITTED, flags)
                 self.assertNotIn(partner.RETURNED, flags - set(state))

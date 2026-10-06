@@ -110,11 +110,11 @@ internal static class SoanaPartnerTests
             check(Rules.Available(story, late, w), "Stance choices changed the postwar invitation gate.");
             var reached = new HashSet<string>();
             var results = Program.Walk(late, w, (id, _) => reached.Add(id));
-            check(results.Count == 3, "A postwar invitation lost a stance or left a selectable bypass.");
+            check(results.Count == 4, "A postwar invitation lost a stance or its legacy exit.");
             foreach (var final in results)
             {
                 var stances = new[] { "share", "exclusive", "secret" }.Count(s => final.Has("soana.partner_stance." + s));
-                check(stances == 1 && final.Has(K + "agreed") && !final.Has("soana.committed"),
+                check(stances <= 1 && final.Has(K + "agreed") == (stances == 1) && !final.Has("soana.committed"),
                     "A postwar invitation loses its stance or rewrites its existing commitment contract.");
                 check(final.Has("soana.closed") == final.Has("soana.partner_stance.exclusive"),
                     "Soana's postwar exclusivity refusal gives the Commander a lover.");

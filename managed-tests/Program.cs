@@ -741,23 +741,27 @@ internal static class Program
                 var continuation = !ending && (scene.ContactUnit != null || Rules.IsRemote(scene) || scene.Participants.Length > 0) ? scene : null;
                 // The frozen contracts cover old exits; new inert one-answer pages use the same runtime rule.
                 var sole = node.Choices.Count == 1 ? node.Choices[0] : null;
-                bool plainEnding = genericEndingExits.Contains(nodeId) || ending && sole != null
+                bool legacyEnding = genericEndingExits.Contains(nodeId);
+                bool plainEnding = ending && sole != null
                     && sole.Id == null && sole.Text == "Continue" && sole.Next == null && sole.Check == null
                     && sole.Requires.Length == 0 && sole.Forbids.Length == 0 && sole.Set.Length == 0
                     && !sole.Abort && sole.Revive == null;
-                if (plainEnding)
-                    Check(ending && node.Choices.Count == 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
+                if (legacyEnding || plainEnding)
+                    Check(ending && node.Choices.Count >= 1 && node.Choices[0].Next == null && node.Choices[0].Check == null
                         && node.Choices[0].Requires.Length == 0 && node.Choices[0].Forbids.Length == 0
-                        && node.Choices[0].Set.Length == 0 && !node.Choices[0].Abort && node.Choices[0].Revive == null,
+                        && node.Choices[0].Set.Length == 0 && !node.Choices[0].Abort && node.Choices[0].Revive == null
+                        && node.Choices[0].NativeNext == null && node.Choices[0].Mythic == null
+                        && node.Choices[0].Alignment == null && node.Choices[0].Crusade == null
+                        && node.Choices[0].RemoveItem == null && node.Choices[0].StartEtude == null,
                         "Legacy ending exit mechanics changed: " + nodeId);
                 Check(page.Answers.Count == (plainEnding ? 1 : node.Choices.Count + (continuation == null ? 0 : 1) + (node.Choices.Any(choice => choice.Crusade?.Amount < 0) ? 1 : 0)), "Wrong choice count: " + nodeId);
                 foreach (var reference in page.Answers) Check(reference.Get() is BlueprintAnswer, "Unresolved generated answer: " + nodeId);
-                if (plainEnding)
+                if (legacyEnding || plainEnding)
                 {
-                    var leave = (BlueprintAnswer)page.Answers.Single().Get();
+                    var leave = (BlueprintAnswer)page.Answers[0].Get();
                     Check(leave.AssetGuid == Id("answer." + nodeId + ".continue"), "Legacy ending exit identity changed: " + nodeId);
                     Check(leave.OnSelect.Actions.Length == 0 && leave.NextCue.Cues.Count == 0, "Plain ending mutates progress or continues: " + nodeId);
-                    continue;
+                    if (plainEnding) continue;
                 }
                 if (node.Choices.Any(choice => choice.Crusade?.Amount < 0))
                 {
