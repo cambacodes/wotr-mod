@@ -60,7 +60,11 @@ internal static class ShamiraTricksterTests
     {
         var there = Program.Copy(state);
         there.Area = Drezen;
-        there.AvailableContacts.Add(Unit);
+        Rules.Complete(story, there);
+        there.AvailableContacts.Remove(Unit);
+        if (story.Presences.Where(p => p.Key.StartsWith("shamira.presence", StringComparison.Ordinal))
+                .Any(p => Rules.PresenceWanted(p.Value, there)))
+            there.AvailableContacts.Add(Unit);
         return there;
     }
 
@@ -305,6 +309,34 @@ internal static class ShamiraTricksterTests
         check(own.Where(s => s.Id != waking.Id && s.Id != fuel.Id && s.Id != dream.Id).SelectMany(s => s.Nodes).SelectMany(n => n.Choices).All(c => !c.Set.Contains(NeverAlone)),
             "Something other than the waking sets the cost.");
 
+        // The surgeon's consequence remains owed after either game refusal,
+        // in both contact placements. Settlement closes every delivery form.
+        var inquiry = S(P + "mind.barracks_inquiry");
+        foreach (var refusal in new[] { P + "ally", Closed })
+        foreach (var fallback in new[] { false, true })
+        {
+            var deferred = Program.Copy(barracks);
+            deferred.Flags.Add(refusal);
+            if (fallback) deferred.Flags.Add("fool_king.gone");
+            deferred = AtHerTable(story, Later(story, deferred, 96));
+            check(!deferred.AvailableContacts.Contains(Unit),
+                "Trk_Shamira_Barracks: refused romance fabricated a Shamira contact.");
+            check(Avail(inquiry, deferred),
+                "Trk_Shamira_Barracks: refusal suppressed the independent surgeon.");
+            if (!Avail(inquiry, deferred)) continue;
+            foreach (var verdict in Program.Walk(inquiry, deferred))
+            {
+                var settled = Later(story, verdict, 1);
+                check(new[] { P + "barracks.told", P + "barracks.blamed", P + "barracks.covered" }
+                        .Count(settled.Has) == 1,
+                    "Trk_Shamira_Barracks: multiple verdicts for one atrocity.");
+                check(!Avail(inquiry, settled)
+                      && !Avail(S(P + "mind.barracks_after"), settled)
+                      && !Avail(S(P + "mind.barracks_after_awning"), settled),
+                    "Trk_Shamira_Barracks: settled inquiry was delivered twice.");
+            }
+        }
+
         // Trk_Shamira_Commit: the game in her Harem.
         var harem = S(P + "harem");
         var visit = S(P + "after.visit");
@@ -320,7 +352,9 @@ internal static class ShamiraTricksterTests
         // Sol INT: both placements retain their original unavailable-scene negative.
         foreach (var placement in new[] { visit, S(P + "after.visit_awning") })
         foreach (var (flags, node) in new (string[], string)[] {
-            (new string[0], "aru_redeemed"), (new[] { "arueshalae.evil_recruited" }, "aru_evil"),
+            (new string[0], "aru_absent"),
+            (new[] { "arueshalae.recruited_drezen" }, "aru_redeemed"),
+            (new[] { "arueshalae.evil_recruited" }, "aru_evil"),
             (new[] { "arueshalae_dead" }, "aru_gone"), (new[] { "arueshalae.kicked_out" }, "aru_gone"),
             (new[] { "arueshalae.failed" }, "aru_gone"), (new[] { "arueshalae.evil_recruited", "arueshalae.evil_dead" }, "aru_gone"),
             (new[] { "arueshalae_dead", "arueshalae.trickster.returned" }, "aru_redeemed") })
@@ -337,18 +371,16 @@ internal static class ShamiraTricksterTests
                 at.Flags.Add("arueshalae.trickster.returned");
                 Rules.Complete(story, at);
             }
-            // The shipped scene forbids an unavailable Arueshalae before any
-            // dialogue opens. Never walk a history rejected by that scene gate.
-            if (at.Has("crossroute.arueshalae.unavailable"))
-            {
-                check(!Avail(placement, at), "Trk_Shamira_Visit: unavailable Arueshalae bypasses the original scene negative.");
-                continue;
-            }
-            check(Avail(placement, at), "Trk_Shamira_Visit: current Arueshalae cannot reach the visit.");
+            at = AtHerTable(story, at);
+            check(Avail(placement, at), "Trk_Shamira_Visit: a companion state blocked Shamira's invitation.");
+            if (!Avail(placement, at)) continue;
             var seenNodes = new HashSet<string>();
             Program.Walk(placement, at, (id, _) => seenNodes.Add(id));
-            check(seenNodes.Contains(node) && seenNodes.Count(x => x.StartsWith("aru_", StringComparison.Ordinal)) == 1,
+            check(seenNodes.Contains(node),
                 "Trk_Shamira_Visit: Arueshalae's state [" + string.Join(",", flags) + "] does not read as " + node + ".");
+            if (node == "aru_absent" || node == "aru_gone")
+                check(!seenNodes.Contains("aru_redeemed") && !seenNodes.Contains("aru_evil"),
+                    "Trk_Shamira_Visit: absent or never-recruited Arueshalae appeared.");
         }
         var hw = Later(story, proposed, 25);
         check(Avail(harem, hw), "Trk_Shamira_Commit: the game is not offered after her proposal.");
