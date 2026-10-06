@@ -745,9 +745,9 @@ partner("eliandra", "eliandra", "eliandra.committed", "eliandra.closed", "The Ma
     ), page_commit_groups=[["eliandra.committed"], [EL + "late_committed"]],
     deal=[[EL + "cost.lights_given"]],
     call=call('''[Look north] "Eliandra. Tell me what the sky is doing."''',
-        '''{n}Low in the north, over the rift, there is a place your eyes will not stay on. They slide off it to the smoke, to the stones, to your own hands. It has been that way since the night at the basin. You say her name into it anyway, and ask it what it is doing, the way she once asked you every morning. For a while nothing answers. Then, very far off, slow and plain and entirely sure of itself, the evening reading begins.{/n}''',
+        '''{n}Low in the north, above the rift, is a place your eyes will not stay on. They slide towards the smoke, the stones, your hands. You paid that price at Eliandra's basin. You say her name into the dark and wait. At last a voice begins the evening reading, slow and exact.{/n}''',
         (PLAIN_CHOICE, (), (), ())),
-    ledger=("Eliandra: the Maiden's lights", "I knelt at a basin in a cave that no longer exists and gave a goddess my sight of her lights, so that a woman who had never asked for anything could ask me one question. Now she asks me one every morning. The lights are still there, apparently. I have it on excellent authority. The authority will not stop describing them."))
+    ledger=("Eliandra: the Maiden's lights", "I knelt across Eliandra's basin and offered my sight of Pulura's lights in her place. My eyes still turn aside when the lights return. Her Lady took what I named."))
 
 
 GA = "galfrey.trickster."
@@ -1017,8 +1017,8 @@ _arsinoe["paragraphs"] += (
 )
 
 _eliandra = _history_partners["eliandra"]
-_eliandra["ledger_text"] = "I knelt across Eliandra's basin and gave Pulura my sight of her lights. The lights are still there. Eliandra can read them to me; I can no longer see them."
-_eliandra["call"]["text"] = "{n}Low in the north, over the rift, there is a place your eyes will not stay on. They slide off it to the smoke and your own hands. It has been that way since the offering across Eliandra's basin. You say her name and ask what the sky is doing. Very far off, slow and plain, the evening reading begins.{/n}"
+_eliandra["ledger_text"] = "I knelt across Eliandra's basin and offered my sight of Pulura's lights in her place. My eyes still turn aside when the lights return. Her Lady took what I named."
+_eliandra["call"]["text"] = "{n}Low in the north, above the rift, is a place your eyes will not stay on. They slide towards the smoke, the stones, your hands. You paid that price at Eliandra's basin. You say her name into the dark and wait. At last a voice begins the evening reading, slow and exact.{/n}"
 
 _kiana = _history_partners["kiana"]
 _kiana["paragraphs"][0]["Requires"] = [called("kiana"), KI + "cost.guests_robbed", KI_FREED]
