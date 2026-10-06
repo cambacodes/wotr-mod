@@ -279,6 +279,85 @@ internal static class TerendelevTricksterTests
         check(pages.Count(s => Rules.Available(story, s, epiHome)) >= 1 && Rules.Available(story, S(P + "epilogue.guardian"), epiHome)
               && !Rules.Available(story, S(P + "epilogue.watch"), epiHome), "Trk_Terendelev_Guardian: the guardian page does not play.");
 
+        // Reviewed polish: debt contact is exhaustive, with no kiss receipt on a turned cheek.
+        foreach (var suffix in new[] { "", "_awning" })
+        foreach (var debtState in new[] { "free", "owed", "declined", "released" })
+        {
+            var market = S(P + "watch.market" + suffix);
+            var state = World(story, 5, "trickster", "trickster.ever", Returned, P + "first_night_seen");
+            if (suffix.Length != 0) state.Flags.Add("terendelev.presence.failed");
+            if (debtState != "free") state.Flags.Add(P + "owed");
+            if (debtState == "declined") state.Flags.Add(P + "declined");
+            if (debtState == "released") state.Flags.Add(Committed);
+            Rules.Complete(story, state);
+            var believe = market.Nodes.Single(n => n.Id == "believe");
+            var visible = believe.Choices.Where(c => Rules.ChoiceAvailable(c, state)).ToArray();
+            check(visible.Count(c => c.Text.StartsWith("[Kiss her")) == 1
+                  && visible.Count(c => c.Text.StartsWith("[Wipe the honey")) == 1
+                  && visible.Any(c => c.Next == "children"), "Market debt alternatives overlap or block the children: " + debtState + suffix);
+            foreach (var index in Enumerable.Range(0, believe.Choices.Count).Where(i => Rules.ChoiceAvailable(believe.Choices[i], state)))
+            foreach (var result in Program.WalkVia(market, state, "believe", index))
+                check(result.Has(P + "watch.kissed_in_the_market") ==
+                    (believe.Choices[index].Next == "kiss"), "A turned cheek grants a market kiss: " + debtState + suffix);
+        }
+
+        // Admission cannot buy an oath; the existing transaction must actually debit 300.
+        foreach (var suffix in new[] { "", "_awning" })
+        {
+            var state = Develop(World(story, 5, "trickster", "trickster.ever", Returned,
+                P + "first_night_seen", P + "debt_free", "galfrey.killed_by_commander"));
+            if (suffix.Length != 0) state.Flags.Add("terendelev.presence.failed");
+            var why = S(P + "watch.galfrey_why" + suffix);
+            var reckoning = S(P + "watch.galfrey_reckoning" + suffix);
+            var oath = S(P + "commit" + suffix);
+            check(!Rules.Available(story, oath, state), "Unanswered murder grants an oath.");
+            var admission = Program.WalkVia(why, state, "start", 0).Single();
+            check(admission.Has(P + "watch.queen_owned") && !admission.Has(P + "watch.queen_answered"), "Admission produces payment.");
+            var waiting = Later(story, admission, 73);
+            check(!Rules.Available(story, oath, waiting), "Admission alone grants an oath.");
+            foreach (var funds in new[] { 0, 299, 300 })
+            {
+                var funded = Program.Copy(waiting);
+                funded.CrusadeResources = new Dictionary<string, int> { ["Finances"] = funds };
+                var offer = reckoning.Nodes.Single(n => n.Id == "start");
+                check(Rules.ChoiceAvailable(offer.Choices[2], funded), "The restitution wait is unavailable.");
+                check(Rules.ChoiceAvailable(offer.Choices[0], funded) == (funds >= 300), "Unaffordable restitution is selectable.");
+                var outcomes = Program.Walk(reckoning, funded);
+                check(outcomes.Where(r => r.Has(P + "watch.queen_answered")).All(r => r.CrusadeResources!["Finances"] == funds - 300), "Restitution did not debit before answering.");
+                check(outcomes.Any(r => !r.Has(reckoning.Id) && !r.Has(Closed) && !r.Has(P + "watch.queen_answered")), "Waiting closes or answers the Queen's question.");
+                if (funds < 300) check(outcomes.All(r => !r.Has(P + "watch.queen_answered")), "Insufficient finances grant an oath receipt.");
+                else check(outcomes.Any(r => r.Has(P + "watch.queen_answered") && Rules.Available(story, oath, r)), "Paid restitution does not restore the earned oath offer.");
+            }
+            foreach (var index in new[] { 1, 2, 3 })
+                check(Program.WalkVia(why, state, "start", index).All(r => r.Has(Closed) && r.Has(P + "guardian") && !r.Has(P + "watch.queen_answered")), "Cold/false/refused admission keeps the guardian in Drezen.");
+        }
+
+        // Render the guardian's full callback bundle, then the two Commander histories.
+        var guardianPage = S(P + "epilogue.guardian");
+        var guardianSacrifice = S(P + "epilogue.guardian_sacrifice");
+        var allHome = World(story, 6, epiHome.Flags.Concat(guardianPage.Nodes[0].Paragraphs.SelectMany(p => p.Requires))
+            .Where(f => f != Committed && f != "storyteller.dead_main" && f != "storyteller.dead_delayed" && f != "irabeth_dead").ToArray());
+        var renderedHome = guardianPage.Nodes[0].Text + string.Join(" ", Rules.VisibleParagraphs(guardianPage.Nodes[0], allHome).Select(p => p.Text));
+        check(!renderedHome.Contains("north turret") && !renderedHome.Contains("Commander's hearth")
+              && !renderedHome.Contains("came down to the war room") && !renderedHome.Contains("changed the dressing every morning"), "Guardian callbacks restore recurring Drezen access.");
+        allHome.Flags.Add("sacrifice"); Rules.Complete(story, allHome);
+        check(Rules.Available(story, guardianSacrifice, allHome) && !Rules.Available(story, guardianPage, allHome), "Guardian sacrifice shows a living Commander.");
+        allHome.Flags.Add("trickster.commander_back"); Rules.Complete(story, allHome);
+        check(!Rules.Available(story, guardianSacrifice, allHome) && Rules.Available(story, guardianPage, allHome), "Earned Commander return does not select the living guardian ending.");
+
+        foreach (var id in new[] { "watch", "late", "debt", "guardian" })
+        foreach (var fate in new[] { "alive", "main", "delayed", "both", "dlc", "dlc_main", "dlc_delayed" })
+        {
+            var state = World(story, 6, "trickster", "trickster.ever", Returned, P + "watch.storyteller_thanked");
+            if (fate.Contains("main") || fate == "both") state.Flags.Add("storyteller.dead_main");
+            if (fate.Contains("delayed") || fate == "both") state.Flags.Add("storyteller.dead_delayed");
+            if (fate.Contains("dlc")) state.Flags.Add("storyteller.dead_dlc");
+            Rules.Complete(story, state);
+            var visible = Rules.VisibleParagraphs(S(P + "epilogue." + id).Nodes[0], state).Select(p => p.Text).ToArray();
+            check(visible.Count(t => t.Contains("Lady of Graves")) == (fate != "alive" && !fate.Contains("dlc") ? 1 : 0), "Storyteller usher variants overlap or survive DLC death: " + fate + id);
+            check(visible.Count(t => t.Contains("The Storyteller told")) == (fate == "alive" ? 1 : 0), "Storyteller keeps earthly life after renunciation: " + fate + id);
+        }
+
         // Trk_Terendelev_Keepsakes: her claw handed back (removed), her scale refused (kept).
         var withBoth = Later(story, square1, 20);
         withBoth.Flags.Add("terendelev.scale_held"); withBoth.Flags.Add("terendelev.claw_held");
@@ -291,12 +370,12 @@ internal static class TerendelevTricksterTests
             "Trk_Terendelev_Keepsakes: the claw is not handed back as hers.");
 
         // Reactions and pages.
-        check(reactions.Length == 8 && reactions.All(s => s.Nodes.Count == 1)
+        check(reactions.Length == 8 && reactions.All(s => s.Nodes.Count == (s.Id == P + "react.galfrey.letter" ? 3 : 1))
               && new[] { "Seelah", "Irabeth", "Anevia", "Storyteller", "Galfrey" }.All(o => reactions.Any(s => s.Owner == o))
               && reactions.Where(s => s.Owner == "Daeran" || s.Owner == "Regill").All(s => s.Forbids.Contains("chapter_later")),
             "Terendelev's reactors are not Seelah (twice), Irabeth, Anevia, the Storyteller, Galfrey, Daeran and Regill.");
-        check(pages.Length == 6 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
-            "Her epilogue pages are not six read-only Chapter 6 pages.");
+        check(pages.Length == 7 && pages.All(s => s.MinChapter == 6 && s.MaxChapter == 6 && s.Nodes.SelectMany(n => n.Choices).All(c => c.Set.Length == 0)),
+            "Her epilogue pages are not seven read-only Chapter 6 pages.");
         var epiWatch = World(story, 6, turret.Flags.ToArray());
         check(Rules.Available(story, S(P + "epilogue.watch"), epiWatch) && !Rules.Available(story, S(P + "epilogue.late"), epiWatch)
               && !Rules.Available(story, S(P + "epilogue.debt"), epiWatch), "Her committed page is not the only page of a committed watch.");
