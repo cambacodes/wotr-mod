@@ -5411,7 +5411,7 @@
       "Replacement": "areelu.trickster.afterlogue.spared",
       "When": [
         [
-          "trickster.ever",
+          "trickster.now",
           "areelu.trickster.wager_struck",
           "areelu.trickster.wager_on_screen",
           "areelu.trickster.survives",
@@ -5426,28 +5426,99 @@
           "!areelu.dead_fight",
           "areelu.committed",
           "areelu.present_now"
-        ],
-        [
-          "trickster.ever",
-          "areelu.trickster.wager_struck",
-          "areelu.trickster.wager_on_screen",
-          "areelu.trickster.survives",
-          "!areelu.trickster.stake_only",
-          "!areelu.closed",
-          "!areelu.trickster.commander_burned",
-          "!areelu.incinerated",
-          "!areelu.sacrifice_wound",
-          "!areelu.sacrifice_before",
-          "trickster.cheated_death",
-          "!areelu.sacrifice_trickster",
-          "!areelu.dead_fight",
-          "areelu.trickster.late_committed",
-          "!areelu.trickster.declined",
-          "areelu.present_now"
         ]
       ],
       "KeepNativeImage": false,
-      "Variants": []
+      "Variants": [
+        {
+          "Replacement": "areelu.trickster.afterlogue.spared_wager",
+          "When": [
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.closed",
+              "!areelu.trickster.stake_only",
+              "!areelu.trickster.declined",
+              "!areelu.incinerated",
+              "!areelu.sacrifice_wound",
+              "!areelu.sacrifice_before",
+              "trickster.cheated_death",
+              "!areelu.sacrifice_trickster",
+              "!areelu.dead_fight",
+              "!areelu.trickster.graft_drawn",
+              "!areelu.committed"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "areelu.trickster.afterlogue.return_witch",
+          "When": [
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.died_at_finale",
+              "lastcall.h2",
+              "trickster.commander_back",
+              "!iomedae.appointment_kept",
+              "!iomedae.trickster.rescued",
+              "!areelu.trickster.graft_drawn"
+            ],
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.died_at_finale",
+              "iomedae.appointment_kept",
+              "!areelu.trickster.graft_drawn"
+            ],
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.died_at_finale",
+              "iomedae.trickster.rescued",
+              "!areelu.trickster.graft_drawn"
+            ]
+          ],
+          "KeepNativeImage": false
+        },
+        {
+          "Replacement": "areelu.trickster.afterlogue.return_mortal",
+          "When": [
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.died_at_finale",
+              "lastcall.h2",
+              "trickster.commander_back",
+              "!iomedae.appointment_kept",
+              "!iomedae.trickster.rescued",
+              "areelu.trickster.graft_drawn"
+            ],
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.died_at_finale",
+              "iomedae.appointment_kept",
+              "areelu.trickster.graft_drawn"
+            ],
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.died_at_finale",
+              "iomedae.trickster.rescued",
+              "areelu.trickster.graft_drawn"
+            ]
+          ],
+          "KeepNativeImage": false
+        }
+      ]
     },
     "1b53c189b767412f921b8294b980a51c": {
       "Parent": "5b567bdd747e497cb9f6984b1ca1dfc8",
@@ -5456,7 +5527,7 @@
       "Replacement": "areelu.trickster.afterlogue.mortal",
       "When": [
         [
-          "trickster.ever",
+          "trickster.now",
           "areelu.trickster.wager_struck",
           "areelu.trickster.wager_on_screen",
           "areelu.trickster.survives",
@@ -5469,26 +5540,30 @@
           "areelu.trickster.rewritten",
           "areelu.committed",
           "areelu.present_now"
-        ],
-        [
-          "trickster.ever",
-          "areelu.trickster.wager_struck",
-          "areelu.trickster.wager_on_screen",
-          "areelu.trickster.survives",
-          "!areelu.trickster.stake_only",
-          "!areelu.closed",
-          "!areelu.trickster.commander_burned",
-          "!areelu.incinerated",
-          "!areelu.sacrifice_wound",
-          "!areelu.sacrifice_before",
-          "areelu.trickster.rewritten",
-          "areelu.trickster.late_committed",
-          "!areelu.trickster.declined",
-          "areelu.present_now"
         ]
       ],
       "KeepNativeImage": false,
-      "Variants": []
+      "Variants": [
+        {
+          "Replacement": "areelu.trickster.afterlogue.mortal_wager",
+          "When": [
+            [
+              "trickster.now",
+              "areelu.trickster.wager_struck",
+              "areelu.trickster.wager_on_screen",
+              "!areelu.closed",
+              "!areelu.trickster.stake_only",
+              "!areelu.trickster.declined",
+              "!areelu.incinerated",
+              "!areelu.sacrifice_wound",
+              "!areelu.sacrifice_before",
+              "areelu.trickster.rewritten",
+              "!areelu.committed"
+            ]
+          ],
+          "KeepNativeImage": false
+        }
+      ]
     },
     "164c14743ee768f409a04f93a040e678": {
       "Parent": "2330b54637738fe4fb92b6cd80eb68f7",

@@ -1018,7 +1018,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "1b53c189b767412f921b8294b980a51c"
@@ -1026,24 +1026,22 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.mortal"
     },
     {
-      "Id": "1b53c189b767412f921b8294b980a51c/v0/g1",
+      "Id": "1b53c189b767412f921b8294b980a51c/v1/g0",
       "Target": "1b53c189b767412f921b8294b980a51c",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "areelu.present_now",
-        "areelu.trickster.late_committed",
         "areelu.trickster.rewritten",
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "1b53c189b767412f921b8294b980a51c"
       ],
-      "ExpectedCandidate": "areelu.trickster.afterlogue.mortal"
+      "ExpectedCandidate": "areelu.trickster.afterlogue.mortal_wager"
     },
     {
       "Id": "1b53c189b767412f921b8294b980a51c/control/off-Trickster",
@@ -1071,7 +1069,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "1b53c189b767412f921b8294b980a51c"
@@ -1092,7 +1090,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "1b53c189b767412f921b8294b980a51c"
@@ -1113,7 +1111,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "sacrifice",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "1b53c189b767412f921b8294b980a51c"
@@ -1134,7 +1132,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "rrt.degraded.areelu",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "1b53c189b767412f921b8294b980a51c"
@@ -1154,7 +1152,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.afterlogue.mortal"
@@ -32377,7 +32375,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "825786e8c5db4511ae30950bb286f0e9"
@@ -32385,24 +32383,129 @@
       "ExpectedCandidate": "areelu.trickster.afterlogue.spared"
     },
     {
-      "Id": "825786e8c5db4511ae30950bb286f0e9/v0/g1",
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v1/g0",
       "Target": "825786e8c5db4511ae30950bb286f0e9",
       "Dialog": "57e18f5158904030a84a772fb361ceb4",
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "areelu.present_now",
-        "areelu.trickster.late_committed",
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "825786e8c5db4511ae30950bb286f0e9"
       ],
-      "ExpectedCandidate": "areelu.trickster.afterlogue.spared"
+      "ExpectedCandidate": "areelu.trickster.afterlogue.spared_wager"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g0",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "lastcall.h2",
+        "trickster.commander_back",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.return_witch"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g1",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "iomedae.appointment_kept",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.return_witch"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v2/g2",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "iomedae.trickster.rescued",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.return_witch"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g0",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.graft_drawn",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "lastcall.h2",
+        "trickster.commander_back",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.return_mortal"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g1",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.graft_drawn",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "iomedae.appointment_kept",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.return_mortal"
+    },
+    {
+      "Id": "825786e8c5db4511ae30950bb286f0e9/v3/g2",
+      "Target": "825786e8c5db4511ae30950bb286f0e9",
+      "Dialog": "57e18f5158904030a84a772fb361ceb4",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.graft_drawn",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "iomedae.trickster.rescued",
+        "trickster.now"
+      ],
+      "NativeEligible": [
+        "825786e8c5db4511ae30950bb286f0e9"
+      ],
+      "ExpectedCandidate": "areelu.trickster.afterlogue.return_mortal"
     },
     {
       "Id": "825786e8c5db4511ae30950bb286f0e9/control/off-Trickster",
@@ -32430,7 +32533,7 @@
       "Chapter": 6,
       "Flags": [
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "825786e8c5db4511ae30950bb286f0e9"
@@ -32451,7 +32554,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "825786e8c5db4511ae30950bb286f0e9"
@@ -32472,7 +32575,7 @@
         "areelu.trickster.wager_struck",
         "sacrifice",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "825786e8c5db4511ae30950bb286f0e9"
@@ -32493,7 +32596,7 @@
         "areelu.trickster.wager_struck",
         "rrt.degraded.areelu",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [
         "825786e8c5db4511ae30950bb286f0e9"
@@ -32513,7 +32616,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.afterlogue.spared"
@@ -148318,7 +148421,43 @@
         "anevia.present_now",
         "irabeth.present_now",
         "irabeth.trickster.returned",
-        "trickster.now"
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "ec1219cf3a664baab8987200e0fe1aa7"
+      ],
+      "ExpectedCandidate": "anevia.trickster.native.bread_returned"
+    },
+    {
+      "Id": "ec1219cf3a664baab8987200e0fe1aa7/v0/g1",
+      "Target": "ec1219cf3a664baab8987200e0fe1aa7",
+      "Dialog": "de4cc2dd71694b842be37b75d1705b83",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.present_now",
+        "irabeth.present_now",
+        "irabeth.trickster.cost.dug_out",
+        "irabeth.trickster.returned",
+        "trickster.ever"
+      ],
+      "NativeEligible": [
+        "ec1219cf3a664baab8987200e0fe1aa7"
+      ],
+      "ExpectedCandidate": "anevia.trickster.native.bread_returned"
+    },
+    {
+      "Id": "ec1219cf3a664baab8987200e0fe1aa7/v0/g2",
+      "Target": "ec1219cf3a664baab8987200e0fe1aa7",
+      "Dialog": "de4cc2dd71694b842be37b75d1705b83",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "anevia.present_now",
+        "irabeth.present_now",
+        "irabeth.trickster.raised_on_record",
+        "irabeth.trickster.returned",
+        "trickster.ever"
       ],
       "NativeEligible": [
         "ec1219cf3a664baab8987200e0fe1aa7"
@@ -148348,7 +148487,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
-        "trickster.now"
+        "trickster.ever"
       ],
       "NativeEligible": [
         "ec1219cf3a664baab8987200e0fe1aa7"
@@ -148366,7 +148505,7 @@
         "anevia.present_now",
         "irabeth.present_now",
         "irabeth.trickster.returned",
-        "trickster.now"
+        "trickster.ever"
       ],
       "NativeEligible": [
         "ec1219cf3a664baab8987200e0fe1aa7"
@@ -148384,7 +148523,7 @@
         "irabeth.present_now",
         "irabeth.trickster.returned",
         "sacrifice",
-        "trickster.now"
+        "trickster.ever"
       ],
       "NativeEligible": [
         "ec1219cf3a664baab8987200e0fe1aa7"
@@ -148402,7 +148541,7 @@
         "irabeth.present_now",
         "irabeth.trickster.returned",
         "rrt.degraded.anevia",
-        "trickster.now"
+        "trickster.ever"
       ],
       "NativeEligible": [
         "ec1219cf3a664baab8987200e0fe1aa7"
@@ -148419,7 +148558,7 @@
         "anevia.present_now",
         "irabeth.present_now",
         "irabeth.trickster.returned",
-        "trickster.now"
+        "trickster.ever"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "anevia.trickster.native.bread_returned"
@@ -154022,6 +154161,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "targona.outcome.route_open",
         "targona.payoff.partner",
         "targona.present_now",
         "targona.trickster.washed_the_dead",
@@ -154038,6 +154178,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "targona.outcome.route_open",
         "targona.present_now",
         "targona.trickster.met",
         "trickster.ever"
@@ -154053,6 +154194,7 @@
       "Chapter": 6,
       "Flags": [
         "sacrifice",
+        "targona.outcome.route_open",
         "targona.present_now",
         "targona.trickster.met",
         "trickster.ever"
@@ -154067,6 +154209,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "targona.outcome.route_open",
         "targona.present_now",
         "targona.trickster.forgiven",
         "trickster.ever"
@@ -154081,6 +154224,7 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "targona.outcome.route_open",
         "targona.present_now",
         "targona.trickster.declined",
         "trickster.ever"
@@ -154111,6 +154255,7 @@
       "Chapter": 6,
       "Flags": [
         "targona.committed",
+        "targona.outcome.route_open",
         "targona.payoff.partner",
         "targona.present_now",
         "trickster.ever"
@@ -154127,6 +154272,7 @@
       "Flags": [
         "sacrifice",
         "targona.committed",
+        "targona.outcome.route_open",
         "targona.payoff.partner",
         "targona.present_now",
         "trickster.ever"
@@ -154322,7 +154468,7 @@
         "areelu.trickster.graft_drawn",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.finale.rewrite"
@@ -154340,7 +154486,7 @@
         "areelu.sacrifice_trickster",
         "areelu.trickster.graft_drawn",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.finale.after"
@@ -154354,6 +154500,7 @@
       "Flags": [
         "areelu.committed",
         "areelu.died_at_finale",
+        "areelu.outcome.route_open",
         "areelu.payoff.partner",
         "areelu.present_now",
         "areelu.trickster.wager_struck",
@@ -154375,7 +154522,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.finale.survived"
@@ -154393,7 +154540,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.rooms"
@@ -154411,7 +154558,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.hunters"
@@ -154430,7 +154577,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.grey"
@@ -154449,7 +154596,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.graft"
@@ -154467,7 +154614,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.sarkoris"
@@ -154485,7 +154632,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.participation"
@@ -154504,7 +154651,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "ending.trickster",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.wound"
@@ -154523,7 +154670,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "ending.trickster_allplanes",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.crossroads"
@@ -154541,7 +154688,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.prison"
@@ -154559,7 +154706,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.cult"
@@ -154578,7 +154725,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "ending.trickster",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.incursion"
@@ -154596,7 +154743,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.dagger"
@@ -154615,7 +154762,7 @@
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
         "trickster.cheated_death",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.lady"
@@ -154633,7 +154780,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.visitors"
@@ -154651,7 +154798,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.name"
@@ -154669,7 +154816,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.promise"
@@ -154687,7 +154834,7 @@
         "areelu.trickster.survives",
         "areelu.trickster.wager_on_screen",
         "areelu.trickster.wager_struck",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.report.afterword"
@@ -154717,8 +154864,9 @@
         "areelu.present_now",
         "areelu.trickster.commander_burned",
         "areelu.trickster.wager_struck",
+        "lastcall.h2",
         "trickster.commander_back",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.finale.lien_bottled"
@@ -154760,6 +154908,7 @@
       "Flags": [
         "areelu.ascended",
         "areelu.committed",
+        "areelu.outcome.route_open",
         "areelu.payoff.partner",
         "areelu.present_now",
         "areelu.trickster.wager_struck",
@@ -154778,10 +154927,61 @@
         "areelu.present_now",
         "areelu.trickster.wager_struck",
         "iomedae.appointment_kept",
-        "trickster.ever"
+        "trickster.now"
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "areelu.trickster.finale.not_burned"
+    },
+    {
+      "Id": "page/areelu.trickster.finale.company",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.committed",
+        "areelu.payoff.ordinary",
+        "areelu.present_now",
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "areelu.trickster.finale.company"
+    },
+    {
+      "Id": "page/areelu.trickster.report.inn",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.committed",
+        "areelu.payoff.ordinary",
+        "areelu.present_now",
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "areelu.trickster.report.inn"
+    },
+    {
+      "Id": "page/areelu.trickster.finale.unraised",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "areelu.trickster.survives",
+        "areelu.trickster.wager_on_screen",
+        "areelu.trickster.wager_struck",
+        "trickster.now"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "areelu.trickster.finale.unraised"
     },
     {
       "Id": "page/areelu.lastcall.page",
@@ -154844,6 +155044,20 @@
       ],
       "NativeEligible": [],
       "ExpectedCandidate": "chadali.trickster.epilogue.lucky_night"
+    },
+    {
+      "Id": "page/chadali.trickster.epilogue.company",
+      "Target": "",
+      "Dialog": "",
+      "Page": "",
+      "Chapter": 6,
+      "Flags": [
+        "chadali.present_now",
+        "chadali.started",
+        "trickster.ever"
+      ],
+      "NativeEligible": [],
+      "ExpectedCandidate": "chadali.trickster.epilogue.company"
     },
     {
       "Id": "page/chadali.lastcall.page",
@@ -156413,6 +156627,9 @@
         "horzalah.committed",
         "horzalah.payoff.ordinary",
         "horzalah.present_now",
+        "horzalah.trickster.cost.ear",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -156427,7 +156644,10 @@
       "Flags": [
         "horzalah.payoff.partner",
         "horzalah.present_now",
+        "horzalah.trickster.cost.ear",
         "horzalah.trickster.late_committed",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "trickster.ever",
         "trickster.now"
       ],
@@ -156442,6 +156662,9 @@
       "Chapter": 6,
       "Flags": [
         "horzalah.present_now",
+        "horzalah.trickster.cost.ear",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "horzalah.trickster.wants_heard",
         "trickster.ever"
       ],
@@ -156456,7 +156679,10 @@
       "Chapter": 6,
       "Flags": [
         "horzalah.present_now",
+        "horzalah.trickster.cost.ear",
         "horzalah.trickster.declined",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -156469,7 +156695,10 @@
       "Page": "",
       "Chapter": 6,
       "Flags": [
+        "horzalah.trickster.cost.ear",
         "horzalah.trickster.left_free",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -156484,6 +156713,9 @@
       "Flags": [
         "horzalah.present_now",
         "horzalah.trickster.ally",
+        "horzalah.trickster.cost.ear",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "trickster.ever"
       ],
       "NativeEligible": [],
@@ -156497,6 +156729,9 @@
       "Chapter": 6,
       "Flags": [
         "horzalah.present_now",
+        "horzalah.trickster.cost.ear",
+        "horzalah.trickster.primed",
+        "horzalah.trickster.returned",
         "horzalah.trickster.threatened",
         "trickster.ever"
       ],
