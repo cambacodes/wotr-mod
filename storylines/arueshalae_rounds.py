@@ -122,7 +122,7 @@ session(TEMPLE_LETTER, "Reply from the river", 5, '"They wrote back."', [
         c('"I don\'t know. But when the Wound is closed, we\'re going to the sea."', "promise", flags=(TEMPLE_LETTER,)),
         c('"Maybe that\'s what dreaming is."', "dream", flags=(TEMPLE_LETTER,))),
     a("promise", '''"We." {n}She presses the stone to her lips, very lightly, as if it were a person she might drain.{/n} "Yes. When the Wound is closed. I'm going to hold you to that. I'm going to hold you to it so hard."''', c()),
-    a("dream", '''{n}She is quiet for a long time.{/n} "Desna asked me what I dream of. I've never had an answer." {n}She closes her fist round the stone.{/n} "I think I might have part of one now. It's grey, with a white band round it. And it wants to see the sea."''', c()),
+    a("dream", '''{n}She is quiet for a long time.{/n} "Desna asked me what I dream of. I keep finding things I want to tell her." {n}She closes her fist around the stone.{/n} "This one is grey, with a white band around it. The Mother asked me to take it to the sea. I want to."''', c()),
 ], (WRITE,), delay=72, chapters=(5,))
 
 
@@ -201,8 +201,9 @@ session(DANCE, "Recommended exercise", 5, '"There\'s music in the square."', [
 # --- After the yes ---------------------------------------------------------------------------------------------
 
 session(AFTER_WAR, "Prognosis", 5, '"What will you do, after?"', [
-    a("start", '''{n}She has clearly been waiting for someone to ask, because she has an answer ready, and she gives it in a rush, as if afraid of losing her nerve.{/n}
-"A kitchen. I want a kitchen. Not a big one. With a window, and a table that's too small, and a shelf for whatever cat decides to live with us. I want to learn to cook, badly, like you, and burn things for somebody, and have them eat it anyway." {n}She stops for breath.{/n} "And everything else on my list, one thing at a time. I've told you all of it, haven't I? I tell you everything now. It's very inconvenient."''',
+    a("start", '''{n}She answers in a rush, as if afraid of losing her nerve.{/n}
+"A kitchen. I want a kitchen. With a window, and a table that's too small, and a shelf for whatever cat decides to come in. I want to learn to cook. I'll be terrible at it."
+{n}She stops for breath.{/n} "When the Wound is closed. Nobody can send me out on patrol while I'm burning the supper. I could burn the whole pot if I liked."''',
         c("Continue", "you")),
     a("you", '''"And you. I want you there, when you're there. I'm not a fool, I know what you are. You'll be off doing impossible things for the rest of your life, and I'll be the one at the window, waiting to find out which ones." {n}She says it lightly, and means it lightly, and her eyes are very steady.{/n}
 {n}"I remember Lady Vellexia's guests, Commander. The table was never the problem. The empty chair was. So come back to the kitchen. That's all. That's the whole prognosis.{/n}''',
@@ -229,16 +230,17 @@ session(RACE, "A race over the roofs", 5, '"I challenge you."', [
 "You cheated." {n}She is laughing so hard she has to sit down on the ridge.{/n} "You said no tricks and you cheated and I didn't see how. I was flying over you the whole time." {n}She wipes her eyes.{/n} "Rematch. Tomorrow. And I'm watching the chapel."''', c()),
 ], (MORNING,), delay=24, chapters=(5,))
 
-session(NIGHTMARE, "The other kind of dream", 5, '"I\'m sorry I woke you."', [
-    nar("start", '''{n}She has woken you by screaming, the way she screamed in the dream-hunts, and not since. When you get to her she is sitting bolt upright on her bedroll with her wings half open and her nails dug into her own arms.{/n}''',
+session(NIGHTMARE, '''Faces in the dark''', 5, '"I\'m sorry I woke you."', [
+    nar("start", '''{n}Her cry wakes you. She is sitting on her bedroll with her wings half open, staring into the dark. Her nails have left red marks on her own arms.{/n}''',
         c("Continue", "dream")),
-    a("dream", '''"I dreamed. I was so proud, when it started, when the goddess showed me how... and now it's this." {n}She is shaking.{/n}
-"It was the priestess. And the sergeant. And everyone. A table, a long table, like Lady Vellexia's, and all of them sitting at it, and me at the head, and they were all very polite and very grey, and nobody would eat." {n}She presses her palms against her eyes.{/n} "They were waiting for me to eat first."''',
+    a("dream", '''"I was thinking about my first dream. How proud I was of it." {n}She is shaking.{/n} "Then I closed my eyes, and there was the priestess. Her skin was cold. She was trying to speak. I didn't stop."
+"I wasn't asleep. I knew where I was. I could hear the watch outside." {n}She presses her palms against her eyes.{/n} "I still couldn't stop seeing her."''',
         c('"I heard you. I\'m here."', "price", flags=(NIGHTMARE,)),
         c('[Sit with her till dawn, and say nothing.]', "sit", flags=(NIGHTMARE,))),
-    a("price", '''{n}She lowers her hands and looks at you, and something in her face shifts, as if you had said a word in a language she had been trying to remember.{/n}
-"You're here." {n}She breathes out.{/n} "I wanted dreams so badly. I thought I'd had the worst of them already." {n}She takes a fistful of your shirt and does not let go.{/n} "Stay till it's light. Not every night. This one."''', c()),
-    nar("sit", '''{n}You sit on the end of the bedroll with your back against the tent pole, and after a while she leans against your shoulder, not touching skin, only cloth, and after a longer while she falls asleep again. You stay until the window goes grey. She doesn't dream again, or if she does, she doesn't scream.{/n}''', c()),
+    a("price", '''{n}She lowers her hands and looks at you.{/n} "You're here."
+"I used to pray for a dream. I've had one. But when I close my eyes, I still see her." {n}She takes a fistful of your shirt, keeping her fingers clear of your skin.{/n} "Stay till it's light. Not every night. This one."''', c()),
+    nar("sit", '''{n}You sit at the end of the bedroll. After a while she leans against your shoulder, with your coat between you. Her hands slowly unclench. Outside, the watch changes. She listens until the first birds begin, then lifts her head to look at the pale sky.{/n}
+"You can go now. They're sounding the muster. I'll come down in a moment."''', c()),
 ], (MORNING,), delay=48, chapters=(5,))
 
 session(EVE, "Before Threshold", 5, '"When it comes, then."', [

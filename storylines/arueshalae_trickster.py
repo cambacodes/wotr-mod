@@ -354,7 +354,7 @@ OFFER_CUE = "68cfcd112d6060141a492949392692aa"   # MeetEvilArusha/Cue_0011 "Hmm.
 HOME_VISIT = P + "evil.home_visit"
 SCENES.append(scene(HOME_VISIT, "Bedside manner", "Arueshalae", 5,
     '[Take her pulse from across the room] "Pale, feverish, homicidal. Classic case. I didn\'t come to cure you. I came to bring you home."', [
-    a("start", '''{n}Arueshalae stares at you. The balor behind her stares at you. Then she throws back her head and laughs, delighted, the way she used to laugh at the mess-tent jokes she pretended not to understand.{/n}
+    a("start", '''{n}Arueshalae stares at you. The balor behind her stares at you. Then she throws back her head and laughs, delighted, as if you had just told her the best joke of the war.{/n}
 "Home? Darling, I am home. I have a lair, and boys who'd die for me, and a balor who sits outside my door at night." {n}She licks her lip, slowly, and looks you over the way she used to look over a crowded street.{/n} "And you walked all the way down here to take my pulse. You still remember what my hand costs, and you're still holding yours out. That's either very brave or very stupid, doctor. It was always one or the other with you."''',
       c('[Keep your hand out, palm up] "Then come and take it. The war\'s more fun than this hole, and you know it."',
         native_next=OFFER_CUE, flags=(P + "evil.home_offered",))),
@@ -524,7 +524,7 @@ hub(P + "terms", "Both of me", 5, '"You wanted to ask me something."', [
 hub(P + "terms_again", "Seven days", 5, '"It\'s been a week."', [
     a("start", '''"Seven days. I counted twice, and then I made the novice who sweeps the chapel count, because I didn't trust myself." {n}She doesn't smile.{/n}
 "Before I answer, I want one promise from you, and you won't like it. The next time I'm dying, you don't decide for me. No wrist held out like a bowl while I'm too far gone to spit it out, and nobody dragged up from the cells to be eaten. If you want a thread in me for next time, you come and ask for it while I'm alive to bite you for asking, and look me in the eye while you do it."''',
-      c('[Promise] "No more doctoring you in your sleep. I swear it."', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
+      c('''[Promise] "No more doctoring without your say. I swear it."''', "yes", flags=(COMMITTED, NO_SECOND_JOKE)),
       c('"I can\'t promise that."', "no", flags=(CLOSED, REFUSED))),
     a("yes", '''{n}She watches you the way she watches strangers in the market, trying to read what they are.{/n} "Then yes. All of it. For as long as what you didn't kill of me lasts." {n}She almost laughs.{/n} "Which is a terrible thing to say to someone you love. I'll work on it."''', c()),
     a("no", '''"Then we're done asking each other things." {n}She says it gently. That is the worst part.{/n}''', c()),
@@ -607,7 +607,7 @@ evil_hub(FALLEN_MET, "House call", '[Take her wrist through her sleeve before sh
 "Oh, look at you. Still playing doctor." {n}She leans in until her mouth is at your ear.{/n} "I'm cured, darling. Not of the hunger. Of the cure. I worship one god now, and she's standing right here, and she's starving."''',
       c("Continue", "candles", requires=(TREATED,)),
       c("Continue", "price", forbids=(TREATED,))),
-    a("candles", '''"All that reading in the shrine library at the second bell. All those prices worked out in the margins." {n}She runs one long nail down the inside of your wrist, over the pulse, the way you used to.{/n} "I burned the daybook, you know. In the lair, the night I came back to myself. It went up beautifully. All those little lists of things I wanted that weren't people." {n}She smiles with too many teeth.{/n} "They were all people, doctor. Every one. I was just too frightened to eat them."''',
+    a("candles", '''"All that reading in the shrine library at the second bell. All those prices worked out in the margins." {n}She draws one long nail along your cuff, over the pulse beneath it. The cloth catches on its point.{/n} "I burned the daybook, you know. It went up beautifully. All those careful little notes about mortals." {n}She smiles with too many teeth.{/n} "I remember what I was trying so hard not to want. I was just too frightened to eat it."''',
       c("Continue", "price")),
     a("price", '''"So. Since you insist on making house calls." {n}She sits on the edge of the map table, crosses her legs, and looks at you the way she looks at a crowded street.{/n} "There's a fee. Somebody's life, a little of it. Yours, or anyone's; I'm not fussy. You keep a whole citadel full of people who'd never be missed. Choose."''',
       c('[Hold out your wrist] "Just a taste."', "taste", flags=(FED_ON_YOU,), requires=(FED_ON_YOU,), forbids=(FED_ON_YOU,)),   # retired

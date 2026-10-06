@@ -70,10 +70,10 @@ hub(FORTY, "Number forty", 3, '"How\'s the list?"', [
 
 hub(WATCHED, "Observations of a Commander eating", 3, '"You\'ve been watching me at meals."', [
     a("start", '''"Of course I have. You told me to watch people eat three times a day. You eat three times a day. Sometimes." {n}She has the daybook open, and she is completely unrepentant.{/n}
-"You're my most interesting subject. Everyone else eats as if they're at a meal. You eat as if you expect to be ambushed in the next four minutes. You keep your back to the wall. You never finish. Last night you gave half your bread to whoever was next to you, and didn't look to see who it was."''',
+"You're my most interesting subject. Everyone else eats as if they're at a meal. You eat as if you expect to be ambushed in the next four minutes. You keep your back to the wall. You never finish. Last night your supper went cold on the map table. You ate it anyway, still reading the dispatches."''',
         c("Continue", "notes")),
     a("notes", '''{n}She turns a page, and reads it out flatly, the way she once read out other people's letters to her mistress.{/n} "You told the quartermaster a joke about a goat that was not funny, and he laughed." {n}She looks up.{/n} "I know every reason a man laughs at a joke that isn't funny. Fear. Pay. Hope of promotion. I sat in the Upper City for years watching guests laugh for all three. I watched him for a week to find out which it was."
-"It was none of them. He laughs because you're the one telling it." {n}She closes the book.{/n} "And then I watched you hand that bread away without looking, and I wanted to be the one sitting next to you. I've never wanted a seat at a table before. Only what was on it."''',
+"It was none of them. He laughs because you're the one telling it." {n}She closes the book.{/n} "Then I watched you eat that cold supper over the dispatches, and I wanted to be the one sitting next to you. I've never wanted a seat at a table before. Only what was on it."''',
         c('"And what are you going to do about it?"', "do", flags=(WATCHED,)),
         c('"Tell the quartermaster the goat joke was very funny."', "goat", flags=(WATCHED,))),
     a("do", '''"Keep watching." {n}She smiles, very small.{/n} "For now. Watching is what I do instead of taking. One day I'll put the book down and sit beside you at the mess table instead. I almost did today." {n}She tucks the book into her belt.{/n} "I'll let you know. Probably by accident."''', c()),
@@ -137,7 +137,7 @@ hub(CHAIR, "The second chair", 5, '"You bought furniture?"', [
     a("why", '''"In the Upper City a chair at the table meant you might be dinner." {n}She runs her thumb along the rush seat, where the joiner's chalk mark still shows.{/n} "Here it means you're expected. I bought it for you, and I'm already sorry I showed it to you." {n}She lets go of it.{/n} "Sit down. Let's see if it works."''',
         c("[Sit in the chair.]", "sit", flags=(CHAIR,)),
         c("[Turn the chair round and sit astride it, arms on the back, like a soldier in a mess tent.]", "astride", flags=(CHAIR,))),
-    nar("sit", '''{n}You sit. The rush seat creaks. She sits down opposite you in her own chair, very carefully, and puts her hands flat on the table, and looks at you across it the way you have seen her look at the net-menders' bench, and the bakery, and the cat.{/n}
+    nar("sit", '''{n}You sit. The rush seat creaks. She sits down opposite you in her own chair, very carefully, and puts her hands flat on the table, and watches your face across the table.{/n}
 "It works," {n}she says, very quietly.{/n} "Nobody at this table is the one being eaten. It works."''', c()),
     a("astride", '''{n}She stares at you, then laughs so hard she has to hold on to the table.{/n} "You're impossible. I buy you a chair, the first chair I have ever bought anyone, and you sit on it backwards." {n}She turns her own chair round and sits on it the same way, facing you over its back, chin on her folded arms.{/n} "There. Now it's a proper table. A barracks table. I've always wanted one of those."''', c()),
 ], (COMMITTED, MORNING), delay=48, chapters=(5,))
@@ -167,10 +167,11 @@ hub(RAIN, "Nothing happening", 5, '"It\'s raining."', [
     a("stay", '''"It's wonderful." {n}She sounds almost frightened by how wonderful it is.{/n} "I keep expecting someone to call for me, and nobody does. In the Abyss, every moment is a move in a game. In the crusade, every moment is a war. This is the first moment that isn't anything." {n}She pats the edge of the cot.{/n} "Stay. Be bored with me. Doctor's orders. Mine, this time."''',
         c("[Lie down beside her and watch the rain.]", "lie", flags=(RAIN,)),
         c("[Sit on the floor with your back to the cot, and report on the rain.]", "floor", flags=(RAIN,))),
-    nar("lie", '''{n}You lie down beside her, on top of the blankets, careful of the wings. Neither of you says anything for a very long time. The rain goes on. Somewhere a bell rings the hour, and then the next hour. At some point she takes your hand through a fold of the blanket, the way she has learned to, and neither of you lets go.{/n}
-"This," {n}she says eventually, drowsily,{/n} "is the best thing I have ever been prescribed."''', c()),
-    nar("floor", '''{n}You sit on the floor with your back against the cot and read the rain aloud in the voice of a staff officer delivering a situation report. "Rain, ongoing. Strength, moderate. Enemy intentions, unknown." She laughs into the pillow until she has to wipe her eyes, and then goes quiet, and then, to her own astonishment, falls asleep.{/n}
-{n}She does not sleep, as a rule. You sit very still, so as not to wake her, until the rain stops.{/n}''', c()),
+    nar("lie", '''{n}You lie beside her on top of the blankets, careful of her wings. The rain goes on. Somewhere a bell rings the hour, and then the next. She takes your hand through a fold of the blanket and holds it there.{/n}
+"This," {n}she says softly,{/n} "is the best thing I have ever been prescribed."''', c()),
+    nar("floor", '''{n}You sit with your back against the cot and give the rain a staff officer's report: strength, advance, enemy intentions. She laughs into the pillow until she has to wipe her eyes. Then she lies quiet, watching the water run down the shutters.{/n}
+"No march," {n}she murmurs.{/n} "No one calling for me. I could get used to this."
+{n}You stay until the rain stops. She watches it with you.{/n}''', c()),
 ], (FORTY, MORNING), delay=24, chapters=(5,))
 
 
@@ -248,14 +249,14 @@ hub(SCAR, "Do succubi scar?", 3, '"Let me see your hand."', [
 # --- The chaplain prays -------------------------------------------------------------------------------------
 
 hub(PRAYER, "Asking", 5, '"You were at the altar a long time."', [
-    a("start", '''"I prayed." {n}She says it as if confessing to a theft.{/n} "To Desna. For myself, this time, not for anyone at the rail. I told you once that I try not to trouble her. That she'd done more for me than I deserved and asking more would be impudent."
-"But I'm the chaplain now. The second company asks me to pray for them every day. And it seemed very rude to keep asking her for things on their behalf when I'd never once asked her anything on my own."''',
+    a("start", '''"I prayed to Desna. For myself, this time." {n}She rubs a fleck of incense from her sleeve.{/n} "I used to ask her for a dream. Then I would feel ashamed of asking for more, after everything she'd done."
+"The second company asks me to pray for them every day. Their wounds. Their families. Tomorrow's march." {n}She glances toward the altar.{/n} "Today I told her about being their chaplain. And about you. That was harder."''',
         c("Continue", "what")),
-    a("what", '''"So I knelt, and I told her about the censer, and the boy who ran at Kenabres, and the soldiers at the rail. And then I told her about you." {n}Her mouth twists.{/n} "I said, 'Tender of Dreams, the Commander has made me into a chaplain as a joke, and I have been doing it properly, and I think the joke is on both of us.'"
-"And then I asked her what I dream of. She asked me first, a long time ago. I thought it was time I asked her back."''',
+    a("what", '''"I told her about the censer, and the boy who ran at Kenabres, and the soldiers at the rail." {n}Her mouth twists.{/n} "Then I said, 'Tender of Dreams, the Commander made me a chaplain as a joke. I've been trying to do it properly. I think the joke is on both of us.'"
+"I asked what to do about you." {n}She looks away.{/n} "I know what to do when a soldier brings me a sword. You are considerably more trouble."''',
         c('"What did she say?"', "said")),
-    a("said", '''"Nothing." {n}She smiles.{/n} "She never does, not out loud. But I sat there for an hour, and nothing happened, and I wasn't hungry, and I wasn't afraid, and when I got up the second company was waiting at the rail with their swords, and one of them said, 'Chaplain, you look like you've been somewhere nice.'"
-{n}She lifts her hands, and drops them.{/n} "So I think she answered. I think the answer was, 'Go and bless their swords.' Which is a very Desnan answer. She likes people to find out for themselves."''',
+    a("said", '''"Nothing. Not tonight." {n}She smiles.{/n} "I sat there until the incense burned out. When I got up, the second company was waiting with their swords. One of them said, 'Chaplain, you look like you've been somewhere nice.'"
+{n}She brushes the last ash from her sleeve.{/n} "I hadn't gone anywhere. I blessed his sword. Tomorrow I'll have to see you again, and I still won't know what to say."''',
         c("[Walk her back to the rail.]", flags=(PRAYER,))),
 ], (CHAPLAIN, CENSER), delay=48, chapters=(5,))
 

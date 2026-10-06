@@ -122,6 +122,13 @@ internal static class NativeFactInventoryTests
                 check(!targets.Contains(target.GetString()), "Q7-10 unearned history branch: " + name + "/" + target.GetString());
             string rendered = Render(scene, nodeId, state, check, name);
             string contains = fixture.GetProperty("contains").GetString()!, omits = fixture.GetProperty("omits").GetString()!;
+            // Arueshalae recalls her earned first dream while awake. Keep the
+            // same positive receipt and no-receipt negative with the revised prose.
+            if (sceneId == "arueshalae.treatment.nightmare")
+            {
+                contains = contains.Replace("goddess showed me", "thinking about my first dream");
+                omits = omits.Replace("goddess showed me", "thinking about my first dream");
+            }
             check(contains.Length == 0 || rendered.Contains(contains), "Q7-10 missing account: " + name + "/" + contains);
             check(omits.Length == 0 || !rendered.Contains(omits), "Q7-10 false account: " + name + "/" + omits);
             Console.WriteLine("Q7-10 EXECUTED " + name + " observations=" + observations.GetRawText()
