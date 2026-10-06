@@ -190,7 +190,7 @@ def report(data, frictions, packets):
         print("  %-40s %4d %4d %4d %4d %5d  %s" % (f, a, b, c, d, tot, state))
     print("  combined %(combined)d, with reservations %(with_reservations)d, packets %(packets)d, charged %(charged)d, "
           "capacity %(capacity)d, forms over cap %(over_cap_forms)d" % t)
-    print("  not yet charged: friction rows %s, retries/later opportunities, the Seelah x Wenduag spar and rematch"
+    print("  awaiting form allocation: friction rows %s; retries/later opportunities await build sheets"
           % ", ".join(data.get("unassigned_friction_rows", [])))
     print("  status: %s" % data.get("form_cap_status", ""))
     return t

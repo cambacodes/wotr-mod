@@ -64,10 +64,12 @@ def roster_fixture(story, data):
 
 
 def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=16, conditional=False,
-             rematch=False, fallback=False, late_s06=False):
+             rematch=False, fallback=False, late_s06=False, arueshalae_state="redeemed"):
     """Share E9 rests with route letters; protected and pair allowances run concurrently.
     Eligibility and named obligation gates come from the walk, never from an outcome's proposed flag name.
     """
+    if arueshalae_state not in ('redeemed', 'corrupted'):
+        raise ValueError('Unknown Arueshalae classification')
     start5 = sum(float(route_run['chapter_days'].get(ch, 0)) * 24 for ch in range(5))
     arrivals = dict(arrivals or route_run.get('eligible_hours', {}))
     gate_hours = gate_hours or {}
@@ -87,8 +89,8 @@ def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=
     for order, row in enumerate(data['schedule']):
         if not row.get('count') or row.get('status') == 'retired':
             continue
-        if row.get('keys') == ['arueshalae.corrupted']:
-            continue  # redeemed ideal profile; branch alternatives are exercised in the roster fixture
+        if (row.get('keys') and not any(key == 'arueshalae.' + arueshalae_state for key in row['keys'])):
+            continue  # Mutually exclusive classification histories, never both in one run.
         chapter = row['chapter']
         if row['ref'] == 'S06.ack' and late_s06:
             chapter = 5
@@ -200,7 +202,7 @@ def simulate(story, data, route_run, *, arrivals=None, gate_hours=None, cadence=
                              reserved_pair=reserved_pair, rests_available=rests, rests_needed=needed,
                              load=round(needed / max(1, rests), 3), deadline_misses=missed, slots=slots))
         # end eng7-f3
-    return dict(conditional=conditional, rematch=rematch, fallback=fallback, blocked=blocked, chapters=chapters,
+    return dict(conditional=conditional, arueshalae_state=arueshalae_state, rematch=rematch, fallback=fallback, blocked=blocked, chapters=chapters,
                 completed=completed, pair_complete='S02.morning' in completed,
                 pair_eligibility=pair_ready, paragraphs=2 * len(data['schedule']))
 
@@ -209,6 +211,7 @@ def report(result, emit=print):
     emit('ER-H3 %s load model; spar %s; packets %s' %
          ('conditional' if result['conditional'] else 'walk-timed', 'rematch' if result['rematch'] else 'success',
           'fallback' if result['fallback'] else 'consolidated'))
+    emit('Arueshalae classification: ' + result['arueshalae_state'])
     for row in result['chapters']:
         emit('Ch%d: %d household beats, %d/%d rests needed/available, load %.3f, deadline misses %s' %
              (row['chapter'], row['household_beats'], row['rests_needed'], row['rests_available'], row['load'], row['deadline_misses']))
@@ -358,7 +361,7 @@ def main(argv=None):
         dict(id='walk-success', rematch=False), dict(id='walk-rematch', rematch=True)]
     for profile in profiles:
         print('Scenario: ' + profile['id'])
-        options = {k: profile[k] for k in ('rematch', 'fallback', 'late_s06') if k in profile}
+        options = {k: profile[k] for k in ('rematch', 'fallback', 'late_s06', 'arueshalae_state') if k in profile}
         result = simulate(story, data, route_run, arrivals=walk.get('eligibility_hours'), gate_hours=walk.get('gate_hours'),
                           conditional=args.conditional, **options)
         report(result)

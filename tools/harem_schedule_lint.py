@@ -185,6 +185,7 @@ def delayed_clock_errors(scene, story):
     timestamped = set(story.get("Latches", {})) | {s["Id"] for s in story.get("Scenes", [])}
     timestamped |= {flag for s in story.get("Scenes", []) for n in s.get("Nodes", [])
                     for c in n.get("Choices", []) for flag in c.get("Set", [])}
+    timestamped |= {flag for s in story.get("Scenes", []) for n in s.get("Nodes", []) for flag in n.get("EnterSet", [])}
     if any(flag in timestamped for flag in scene.get("Requires", [])):
         return []
     if any(group and all(flag in timestamped for flag in group) for group in scene.get("RequiresAnyGroups", [])):

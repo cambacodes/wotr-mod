@@ -23,7 +23,7 @@ are appended (AGENTS.md hard rules).
 PREFIX = "household.pair.seelah_wenduag."
 PAIR = ("seelah", "wenduag")
 CHAPTERS = (5,)          # Wenduag's courtship and commit are Ch5 (06 registry), and table_entry needs both eligible
-STEP_DELAY = 48          # one optional pair beat per rest (§8b); narrative "the next evening" does not advance the clock
+STEP_DELAY = 48          # deed clocks; ER-H1 separately limits completion per successful rest
 MORNING_DELAY = 8
 STAGES = ("rival", "respect", "friend", "lover")
 FORBIDDEN_TOKENS = (".harem.attitude.", ".strain.", ".enmity.", ".tolerated", ".stance.", ".closed", ".committed",
@@ -80,8 +80,8 @@ NOT_REQUIRED = ("Wenduag converts", "Wenduag renounces ambition", "Wenduag becom
 BOUNDARY = dict(
     flag=P("boundary.prisoners_kept_alive"),
     scope="every enemy who surrenders or is captured on their SHARED operations",
-    rule="goes alive to guarded crusade custody",
-    gives_up=("private interrogation by injury", "trophy killings", "having one of her hunters do either for her"),
+    rule="goes alive and unmaimed to guarded crusade custody",
+    gives_up=("torture", "private interrogation by injury", "maiming", "trophy killings", "having one of her hunters do either for her"),
     allows="force against active resistance; invented resistance or a staged escape is a breach",
     not_a="pardon, sentence, canon law, redemption, conversion, or obedience bought with sex",
     her_reason=("Seelah has proved a strong fighting partner (spar, watch); fighting her over every bound prisoner would "
@@ -110,9 +110,10 @@ DEBT = dict(
     cost=P("cost.hunt_forgone"),
     terms="one dangerous watch at Seelah's request; buys service, never affection or access to her body",
     called_in="Rusk's next overnight watch, against an extraction attempt, the night Wenduag had named for her own hunt",
+    her_reason="pays a fighter's debt in full rather than concede weakness (W5); keeps command of her hunters and refuses a Commander gift with a hidden leash",
     outstanding_reader=dict(requires=(P("stood.debt_owed"),), forbids=(P("stood.debt_paid"),)),
 )
-COSTS = (P("cost.kill_yielded"), P("cost.seelah_first_watch"), P("cost.hunt_forgone"))
+COSTS = (P("cost.kill_yielded"), P("cost.seelah_first_watch"), P("cost.hunt_forgone"), P("cost.seelah_wounded"))
 
 # --- The step sheet (doc 16 §8b, revised by §8c.6) ---------------------------------------------------------------------
 # outcomes: {choice index: {"label", "next" or terminal flags}}; checks list success/failure flag sets. Every flag here is
@@ -127,14 +128,14 @@ _RESTRAINT = dict(
 )
 _STOOD = dict(
     check=("SkillAthletics", 18),   # the Commander's covering move: decides rescue vs scramble, never whether Seelah tries
-    success=(P("stood.seen"), P("stood_witnessed"), P("stood.debt_owed")),
-    failure=(P("stood.seen"), P("stood.failed")),
+    success=(P("stood.seen"), P("stood_witnessed"), P("stood.debt_owed"), P("cost.seelah_wounded")),
+    failure=(P("stood.seen"), P("stood.failed"), P("cost.seelah_wounded")),
 )
 
 STEPS = [
     dict(id=P("init"), kind="derived", requires=("seelah.harem.eligible", "wenduag.harem.eligible"), flags=(),
          note="Derived canon start (both rival); the integrator's producer, listed so the chain is complete"),
-    dict(id=P("spar"), requires=(att("seelah", "wenduag", "rival"), att("wenduag", "seelah", "rival")),
+    dict(id=P("spar"), requires=(P("invited"), att("seelah", "wenduag", "rival"), att("wenduag", "seelah", "rival")),
          forbids=(att("seelah", "wenduag", "respect"), att("wenduag", "seelah", "respect"), P("spar.seen")), delay=0,
          check=("SkillAthletics", 20), choice=0,
          success=(P("spar.seen"), P("spar.held")), failure=(P("spar.seen"), P("spar.failed")),
@@ -145,8 +146,9 @@ STEPS = [
          delay=STEP_DELAY, check=("SkillPerception", 18),
          success=(P("rematch.seen"), P("rematch.held")),
          failure=(P("rematch.seen"), P("rematch.failed")),   # permanent player-caused outcome, stated in the Ledger
-         outcomes={}),
-    dict(id=P("watch"), requires=(att("seelah", "wenduag", "respect"), att("wenduag", "seelah", "respect")),
+         outcomes={0: dict(label="Referee it"),
+                   1: dict(label='"No more fighting in my tavern."', flags=(P("rematch.seen"), P("rematch.declined")))}),
+    dict(id=P("watch"), any_groups=((P("spar.held"), P("rematch.held")),), requires=(att("seelah", "wenduag", "respect"), att("wenduag", "seelah", "respect")),
          forbids=(P("watch.seen"),), delay=STEP_DELAY,
          outcomes={0: dict(label="Continue", flags=(P("watch.seen"), P("watch.done")))},
          optional_reads=("wenduag.trickster.claim.given", "wenduag.trickster.claim.knelt", "wenduag.trickster.claim.struck"),
@@ -168,23 +170,54 @@ STEPS = [
     dict(id=P("debt_repayment"),
          requires=(P("restraint_witnessed"), P("stood_witnessed"), BOUNDARY["flag"], CAPTIVE["custody_flag"], DEBT["owed"]),
          forbids=(DEBT["paid"],), delay=STEP_DELAY,
-         outcomes={0: dict(label="Continue", flags=(DEBT["paid"], DEBT["cost"]))},
+         outcomes={0: dict(label="Continue", flags=(P("debt_repayment.seen"), DEBT["paid"], DEBT["cost"], P("boundary.kept"))),
+                   1: dict(label='"He could die escaping. Nobody would ask."',
+                           flags=(P("debt_repayment.seen"), DEBT["paid"], DEBT["cost"], P("boundary.kept"), P("boundary.trick_refused"))),
+                   2: dict(label='"Then I will do it."',
+                           flags=(P("debt_repayment.seen"), P("captive.rusk_dead"), P("debt.betrayed")))},
          note="appended; narrates the completed watch and the lost hunt; no attitude change, no erotic reward"),
     dict(id=P("choice"),
          requires=(att("seelah", "wenduag", "friend"), att("wenduag", "seelah", "friend"), P("restraint_witnessed"),
-                   P("stood_witnessed"), BOUNDARY["flag"], CAPTIVE["custody_flag"], DEBT["owed"], DEBT["paid"], DEBT["cost"]),
-         forbids=(att("seelah", "wenduag", "lover"), att("wenduag", "seelah", "lover"), P("choice.seen")),
+                   P("stood_witnessed"), BOUNDARY["flag"], CAPTIVE["custody_flag"], DEBT["owed"], DEBT["paid"], DEBT["cost"], P("boundary.kept")),
+         forbids=(att("seelah", "wenduag", "lover"), att("wenduag", "seelah", "lover"), P("choice.seen"),
+                  P("debt.betrayed"), P("captive.rusk_dead"), P("boundary.breached")),
          delay=STEP_DELAY,
-         outcomes={0: dict(label="the quiet table and the back-room key",
-                           flags=(P("choice.seen"), P("choice.back_room")),
+         outcomes={0: dict(label="taking their shared watch until dawn",
+                           flags=(P("choice.seen"), P("choice.watch_taken")),
                            mutual=P("choice.both_yes")),   # set only when BOTH women say yes inside [0]
                    1: dict(label="a household evening", flags=(P("choice.seen"), P("choice.household_evening")))},
          note="recalls the repayment without replaying it; Seelah's objection names the cruelty, the kept rule and her own "
               "desire, never a reformation"),
     dict(id=P("morning"), requires=(P("choice.both_yes"),), forbids=(P("morning.seen"),), delay=MORNING_DELAY,
-         outcomes={0: dict(label="Continue", flags=(P("morning.seen"),))},
-         note="intimacy contract: threshold in the back room above the tavern, cut at the first explicit act, this morning"),
+         outcomes={0: dict(label="Continue", flags=(P("morning.seen"), P("morning.done")))},
+         note="intimacy contract: Wenduag initiates at their shared lower-wall watch post; cut at the first explicit act, then this morning"),
 ]
+
+# A1-A10 approved amendments, DATA ONLY. Append the invitation without moving any existing step ID.
+STEPS.append(dict(id=P("invite"), kind="invitation", remote=True, sender="Wenduag", delay=0,
+                  requires=("seelah.harem.eligible", "wenduag.harem.eligible"),
+                  forbids=(P("invite.seen"),),
+                  outcomes={0: dict(label="Reply", flags=(P("invite.seen"), P("invited")))}))
+for _entry in STEPS:
+    if _entry.get("kind") == "derived":
+        continue
+    _entry.setdefault("kind", "morning" if _entry["id"] == P("morning") else "table")
+    _entry["participants"] = PAIR
+    _entry["rest_allowance"] = (None if _entry["kind"] == "invitation" else
+                                "household.protected" if _entry["id"] in (P("spar"), P("rematch")) else "household.pair")
+    _entry["seen"] = _entry.get("wrapper_of", _entry["id"]) + ".seen"
+    # Abort is an appended exit. It writes no flags and never spends the allowance.
+    if _entry["id"] != P("watch") and _entry["id"] != P("morning"):
+        _index = len(_entry["outcomes"])
+        if "check" in _entry and not _index:
+            _entry["outcomes"][0] = dict(label="Continue")
+            _index = 1
+        _entry["outcomes"][_index] = dict(label="Later", abort=True, flags=())
+del _entry, _index
+
+# A10 reserves a future breach witness; this sheet does not fabricate its producer.
+RESERVED_READS = (P("boundary.breached"),)
+SEATING_NOTES = (dict(id="boundary_breached", requires=RESERVED_READS),)
 
 # Which witness flag the integrator may read for each directional advance (§8b); it writes the stage, not this module.
 LADDER = (
@@ -200,6 +233,8 @@ LADDER = (
 LAST_CALL = (
     dict(id="debt_repaid", requires=(DEBT["paid"], DEBT["cost"])),
     dict(id="morning", requires=(P("morning.seen"),)),
+    dict(id="debt_betrayed", requires=(P("debt.betrayed"), P("captive.rusk_dead"))),
+    dict(id="boundary_breached", requires=RESERVED_READS),
 )
 
 # Native/RRT state a later beat may read. Native outcomes only through SelectedAnswers/SeenCues, never Started-only etudes.
@@ -310,10 +345,31 @@ def _validate(partners, steps):
         for f in reads:
             if f.startswith(PREFIX) and f not in produced:
                 errors.append("%s requires %s, which no step produces" % (sid, f))
-        if step["id"] != P("spar"):
-            want = MORNING_DELAY if step["id"] == P("morning") else STEP_DELAY
-            if step.get("delay", 0) < want:
-                errors.append("%s: delay %s < %s" % (sid, step.get("delay", 0), want))
+        kind = step.get("kind")
+        if kind not in ("table", "morning", "invitation"):
+            errors.append("%s: invalid step kind" % sid)
+        want = 0 if kind == "invitation" or sid == P("spar") else MORNING_DELAY if kind == "morning" else STEP_DELAY
+        if step.get("delay", 0) < want or kind == "invitation" and step.get("delay") != 0:
+            errors.append("%s: delay %s < %s or invalid invitation delay" % (sid, step.get("delay", 0), want))
+        if tuple(step.get("participants", ())) != PAIR:
+            errors.append("%s: every step needs both participants" % sid)
+        allowance = None if kind == "invitation" else "household.protected" if sid in (P("spar"), P("rematch")) else "household.pair"
+        if step.get("rest_allowance") != allowance:
+            errors.append("%s: wrong rest allowance category" % sid)
+        if kind == "invitation" and (not step.get("remote") or step.get("sender") != "Wenduag"):
+            errors.append("%s: invitation must be Wenduag's remote letter" % sid)
+        terminals = [step[key] for key in ("success", "failure") if key in step]
+        for index, outcome in step.get("outcomes", {}).items():
+            if outcome.get("abort"):
+                if outcome.get("flags") or outcome.get("mutual"):
+                    errors.append("%s: Abort writes nothing" % sid)
+            elif "flags" in outcome:
+                terminals.append(outcome["flags"])
+            elif "check" not in step or index != step.get("choice", 0):
+                errors.append("%s: terminal needs seen and an outcome" % sid)
+        for flags in terminals:
+            if step.get("seen") not in flags or len(set(flags) - {step.get("seen")}) < 1:
+                errors.append("%s: terminal needs seen and an outcome" % sid)
         if "check" in step:
             skill, dc = step["check"]
             if skill not in ("SkillAthletics", "SkillPerception") or not step.get("success") or not step.get("failure"):
@@ -355,13 +411,37 @@ def _validate(partners, steps):
         errors.append("hunt_forgone may be written only by debt_repayment")
     choice = _step(P("choice"), steps)
     if choice:
-        for f in (DEBT["owed"], DEBT["paid"], DEBT["cost"], BOUNDARY["flag"], CAPTIVE["custody_flag"]):
+        for f in (DEBT["owed"], DEBT["paid"], DEBT["cost"], BOUNDARY["flag"], CAPTIVE["custody_flag"], P("boundary.kept")):
             if f not in choice.get("requires", ()):
                 errors.append("choice must require " + f)
+        for f in (P("debt.betrayed"), P("captive.rusk_dead"), P("boundary.breached")):
+            if f not in choice.get("forbids", ()):
+                errors.append("choice must forbid " + f)
+    watch = _step(P("watch"), steps)
+    if watch and watch.get("any_groups") != ((P("spar.held"), P("rematch.held")),):
+        errors.append("watch needs both alternative respect clocks")
+    for sid in (P("stood"), P("stood.after_restraint")):
+        for terminal in ("success", "failure"):
+            if P("cost.seelah_wounded") not in (_step(sid, steps) or {}).get(terminal, ()):
+                errors.append("%s: %s must record Seelah wounded" % (sid, terminal))
     for sid in (P("restraint"), P("restraint.after_stood")):
         hang = (_step(sid, steps) or {}).get("outcomes", {}).get(1, {}).get("flags", ())
         if set(hang) & {P("restraint_witnessed"), BOUNDARY["flag"], CAPTIVE["custody_flag"], P("cost.kill_yielded")}:
             errors.append('%s "Hang him" must not record restraint, boundary, custody or a mercy cost' % sid)
+    debt = _step(P("debt_repayment"), steps)
+    if debt:
+        outcomes = debt.get("outcomes", {})
+        kept = {P("debt_repayment.seen"), DEBT["paid"], DEBT["cost"], P("boundary.kept")}
+        if not kept <= set(outcomes.get(0, {}).get("flags", ())):
+            errors.append("debt_repayment must record the kept boundary and complete cost")
+        if not kept | {P("boundary.trick_refused")} <= set(outcomes.get(1, {}).get("flags", ())):
+            errors.append("trick refusal must keep the boundary and pay the debt")
+        betrayed = set(outcomes.get(2, {}).get("flags", ()))
+        if betrayed != {P("debt_repayment.seen"), P("captive.rusk_dead"), P("debt.betrayed")}:
+            errors.append("betrayal must record death, never a paid debt or kept boundary")
+    if choice and (P("choice.watch_taken") not in choice.get("outcomes", {}).get(0, {}).get("flags", ())
+                   or choice.get("outcomes", {}).get(0, {}).get("mutual") != P("choice.both_yes")):
+        errors.append("choice needs the watch deed and both women's answers")
     for line in LAST_CALL:
         if line["id"] == "debt_repaid" and set(line["requires"]) != {DEBT["paid"], DEBT["cost"]}:
             errors.append("Last Call's repaid-debt recall requires debt_paid and hunt_forgone")
