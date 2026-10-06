@@ -1,0 +1,34 @@
+{
+  "arueshalae": {
+    "device_class": "act_before_confession",
+    "setting": "Drezen citadel wall after the no-hands interval, then roofless bell tower",
+    "payoff_shape": "chosen safe closeness precedes a future question; she retains her cottage and daybook",
+    "canon_hooks": [
+      {
+        "guid": "dfe6239854ce1794597d93af86986c53",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Arueshalae/Cue_0094.jbp",
+        "key": "219237f7-2dde-43a4-a57c-22a980353940",
+        "native_excerpt": "{n}Arueshalae's voice grows soft, and you barely hear her words.{/n} \"I should like to kiss someone again... But only as a mortal. Not as a demon.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "0cb8bb696bff85a42ab5345280a9fe1c",
+        "path": "World/Dialogs/Companions/CompanionDialogues/Arueshalae/Cue_0083.jbp",
+        "key": "dd6a18d0-4b87-418b-83cc-58763193ed2c",
+        "native_excerpt": "\"Not just the kiss. Any caress, of any kind, sucks the life from mortals. And there's nothing I can do about it.\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      },
+      {
+        "guid": "8ad7c2ba0e060e545b12269cc5ced777",
+        "path": "World/Dialogs/Companions/CompanionQuests/Arueshalae/Q3/BackToReality/Cue_0025.jbp",
+        "key": "876f888a-9b7d-4cc9-af6a-586c841632a8",
+        "native_excerpt": "\"Freedom. Finally, after all these years... I can feel it — the Abyss has released me from its clutches. I have solved Desna's riddle and have found my dream. I have found you. I am not a monster anymore!\"",
+        "scope": "Characterization/campaign evidence. Citing this cue is not a claim that the Commander heard it in every Trickster history; authored courtship uses only actually known facts."
+      }
+    ],
+    "chapter": [
+      3,
+      5
+    ]
+  }
+}
