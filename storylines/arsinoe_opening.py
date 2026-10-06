@@ -111,7 +111,6 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
       c('[Enter the shop.]', "counter"),
       c('"I must postpone our visit. I am sorry."', abort=True)),
     n("counter", "Narrator", '''{n}Tovin spreads the view beside a stack of uncolored sheets. Arsinoe places her receipt beside it. The sight of both together makes him glance toward the door.{/n}
-{n}"I am not here to inspect your business," you tell him.{/n}
 {n}"Then I am very glad to see you, Commander."{/n}
 {n}He says it so quickly that Arsinoe almost smiles.{/n}''',
       c('"Tell us about the coastal engraving beneath this new title."', "source", requires=("arsinoe.print_source_found",)),
@@ -150,7 +149,7 @@ s("arsinoe_printers_view", "The view he can sell", '"Shall we visit your printer
       c('"Wait for the street view. Let your recommendation mean you have seen his own work."', "street", flags=("arsinoe.print_street",), forbids=("arsinoe.print_fantasy",))),
     n("fantasy", "Arsinoe", '''"Then show me the corrected title before you offer another copy. And tell your earlier customers what they bought if they return."
 {n}Tovin finds a blank strip and tries a few words with his pen. After two attempts, he writes A CITY IMAGINED.{/n}
-"Drezen can still be the place where you imagined it," {n}you say.{/n}
+"Drezen can still be the place where you imagined it," {n}Arsinoe says.{/n}
 "I wish someone had suggested that before I paid for the lettering."
 {n}Arsinoe examines the strip, then sets it across the false title.{/n}
 "This I can recommend as a curiosity. Not as a view."
@@ -248,7 +247,7 @@ s("arsinoe_roofs", "An evening above the street", '"You offered to show me the v
       c('"I would like to take this slowly."', "slow"),
       c('"I enjoy your company as a friend."', "friend")),
     n("touch", "Arsinoe", '''"Very personal."
-{n}She turns her hand palm upward beside the basket. When you take it, her fingers close around yours.{/n}
+{n}She turns her hand palm upward beside the basket. She grips your hand firmly, then looks from it to your face with undisguised satisfaction.{/n}
 "I am pleased you came."
 {n}A shout rises from the stair below. Tovin wants to know whether you need a lamp to come down.{/n}
 {n}Arsinoe closes her eyes for a moment, amused rather than embarrassed.{/n}
@@ -390,7 +389,7 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 "Come closer. I have been thinking about your mouth instead of listening to my own good advice."''',
       c('[Kiss her.]', "kiss"),
       c('"Hold my hand a moment. I would like that tonight."', "hand")),
-    n("kiss", "Narrator", '''{n}She comes close enough that you feel the warmth of her before her lips touch yours. The first kiss is brief. When you stay near, she smiles and kisses you again, less cautiously.{/n}
+    n("kiss", "Narrator", '''{n}She comes close enough that you feel the warmth of her before her lips touch yours. The first kiss is brief. When you stay near, she grips your sleeve and kisses you again, firmly enough to make you forget the book.{/n}
 {n}The book slips against her arm. You catch its lower edge, and she laughs softly against your cheek.{/n}
 {n}"Thank you. I should hate to discover that the governor was useful only as a weight."{/n}
 {n}She settles the book securely, then keeps her hand in yours a little longer.{/n}''', c('[Walk the last few steps with her.]', "parting", flags=("arsinoe.first_kiss",))),
@@ -411,3 +410,21 @@ s("arsinoe_hours_of_her_own", "When her work is finished", '"Have you time for o
 "Good night."
 {n}After a few steps she looks back. Finding you still there, she smiles without trying to disguise it.{/n}''', c('[Wish her a good night.]', flags=("arsinoe.opening_kept",))),
 ], requires=("arsinoe.first_impression_kept",), delay=24)
+
+
+# Round 2: an interrupted observation/selection remains the same on return.
+_city = next(s for s in SCENES if s["Id"] == "arsinoe_city_on_paper")
+_pages = {page["Id"]: page for page in _city["Nodes"]}
+_results = ("arsinoe.print_source_found", "arsinoe.print_source_uncertain")
+_pages["picture"]["Choices"][0]["Forbids"].extend(_results)
+for _flag, _target in zip(_results, ("recognized", "uncertain")):
+    _pages["picture"]["Choices"].append(c('[Recall the view you already examined.]', _target,
+        requires=(_flag,), forbids=tuple(f for f in _results if f != _flag)))
+_impression = next(s for s in SCENES if s["Id"] == "arsinoe_first_impression")
+_omission = next(page for page in _impression["Nodes"] if page["Id"] == "omission")
+_selections = ("arsinoe.picture_open_space", "arsinoe.picture_stall")
+for _choice in _omission["Choices"]:
+    _choice["Forbids"].extend(_selections)
+for _flag, _target in zip(_selections, ("open", "stall")):
+    _omission["Choices"].append(c('[Keep the decision you made.]', _target,
+        requires=(_flag,), forbids=tuple(f for f in _selections if f != _flag)))
