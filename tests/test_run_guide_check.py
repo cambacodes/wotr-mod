@@ -1,6 +1,9 @@
 """The guide is an executable choice contract, including visible player directions."""
 import json
+from pathlib import Path
+import tempfile
 import unittest
+from unittest.mock import patch
 
 from tools import run_guide_check as guide
 
@@ -35,7 +38,7 @@ class RunGuideCheckTests(unittest.TestCase):
                 self.check(self.mutate_first_step(lambda r: r["choices"].__setitem__(0, value)))
 
     def test_unknown_flag_in_handwritten_walkthrough_is_rejected(self):
-        changed = self.text.replace("`ember.present`", "`ember.guide_typo`", 1)
+        changed = "Handwritten reference: `ember.guide_typo`.\n\n" + self.text
         with self.assertRaisesRegex(ValueError, "Unknown flag"):
             self.check(changed)
 
@@ -43,8 +46,85 @@ class RunGuideCheckTests(unittest.TestCase):
         for old, new in (("PASS SkillAthletics DC 12", "PASS SkillAthletics DC 99"),
                          ("crusade Finances -200", "crusade Finances -1")):
             self.assertIn(old, self.text)
-            with self.subTest(old=old), self.assertRaisesRegex(ValueError, "Visible choices"):
+            with self.subTest(old=old), self.assertRaisesRegex(ValueError, "Visible choices.*\n.*--update"):
                 self.check(self.text.replace(old, new, 1))
+
+    def test_update_refreshes_every_derived_block_and_manifest(self):
+        changed = self.text
+        for begin, end, _ in guide.derived_blocks(self.model, self.trace).values():
+            start, stop = guide.block_bounds(changed, begin, end)
+            changed = changed[:start] + "\nSTALE\n" + changed[stop:]
+        changed = guide.META.sub('<!-- rrt-guide {"profile":"old","sources":{}} -->', changed)
+        updated = guide.update_text(changed, self.model, self.trace, self.sources)
+        self.assertEqual(updated, self.text)
+        self.assertEqual(guide.update_text(updated, self.model, self.trace, self.sources), updated)
+
+    def test_unmarked_utf8_narrative_and_line_endings_are_preserved(self):
+        for newline in ("\n", "\r\n"):
+            with self.subTest(newline=newline), tempfile.TemporaryDirectory(prefix="rrt-guide-test-") as scratch:
+                path = Path(scratch) / "guide.md"
+                original = ("Handwritten — Shyka's bargain.\n\n" + self.text + "\nUnmarked ending: é.\n").replace("\n", newline)
+                path.write_bytes(original.encode("utf-8"))
+                guide.update_guide(path, self.model, self.trace, self.sources)
+                self.assertEqual(path.read_bytes(), original.encode("utf-8"))
+
+    def test_mixed_newlines_in_unmarked_prose_are_preserved(self):
+        with tempfile.TemporaryDirectory(prefix="rrt-guide-test-") as scratch:
+            path = Path(scratch) / "guide.md"
+            original = ("Handwritten LF — é.\n\n" + self.text.replace("\n", "\r\n") + "\nUnmarked LF ending.\n")
+            path.write_bytes(original.encode("utf-8"))
+            guide.update_guide(path, self.model, self.trace, self.sources)
+            self.assertEqual(path.read_bytes(), original.encode("utf-8"))
+
+    def test_each_reference_section_rejects_stale_rendered_content(self):
+        sections = (guide.render_resources(self.model, guide.records(self.trace)),
+                    guide.render_steps(self.model, guide.records(self.trace)), guide.render_routes(self.model),
+                    guide.render_presences(self.model), guide.render_native_plan(self.model))
+        for section in sections:
+            with self.subTest(section=section.splitlines()[0]):
+                changed = self.text.replace(section, section + "\nStale direction.", 1)
+                self.assertNotEqual(changed, self.text)
+                with self.assertRaisesRegex(ValueError, "Visible choices.*\n.*--update"):
+                    self.check(changed)
+                self.assertEqual(guide.update_text(changed, self.model, self.trace, self.sources), self.text)
+
+    def test_invalid_run_cannot_overwrite_guide(self):
+        changed = json.loads(json.dumps(self.trace))
+        changed["log"] = [row for row in changed["log"] if row["id"] != "delamere.lastcall.call"]
+        with tempfile.TemporaryDirectory(prefix="rrt-guide-test-") as scratch:
+            path = Path(scratch) / "guide.md"
+            original = self.text.replace("PASS SkillAthletics DC 12", "PASS SkillAthletics DC 99", 1).encode("utf-8")
+            path.write_bytes(original)
+            with self.assertRaisesRegex(ValueError, "all 22 Last Call call-ins"):
+                guide.update_guide(path, self.model, changed, self.sources)
+            self.assertEqual(path.read_bytes(), original)
+
+    def test_stale_checklists_and_calendar_are_rejected_with_update_hint(self):
+        for name, (begin, end, _) in guide.derived_blocks(self.model, self.trace).items():
+            if name == "checked":
+                continue
+            with self.subTest(block=name):
+                start, stop = guide.block_bounds(self.text, begin, end)
+                changed = self.text[:start] + "\nSTALE\n" + self.text[stop:]
+                with self.assertRaisesRegex(ValueError, f"Derived {name} is stale.*\n.*--update"):
+                    self.check(changed)
+
+    def test_missing_or_reversed_markers_cannot_overwrite_narrative(self):
+        begin, end, _ = guide.derived_blocks(self.model, self.trace)["calendar"]
+        reversed_markers = self.text.replace(begin, "MARKER_SWAP", 1).replace(end, begin, 1).replace("MARKER_SWAP", end, 1)
+        for text in (self.text.replace(end, "", 1), reversed_markers):
+            with self.subTest(text=text[:80]), self.assertRaisesRegex(ValueError, "marker|pair"):
+                guide.update_text(text, self.model, self.trace, self.sources)
+
+    def test_cli_update_uses_current_trace_and_sources(self):
+        with tempfile.TemporaryDirectory(prefix="rrt-guide-test-") as scratch:
+            path = Path(scratch) / "guide.md"
+            path.write_text(self.text.replace("PASS SkillAthletics DC 12", "PASS SkillAthletics DC 99", 1), encoding="utf-8")
+            with patch("sys.argv", ["run_guide_check.py", "--update", "--guide", str(path)]), \
+                    patch.object(guide, "run_kit", return_value=self.trace), \
+                    patch.object(guide, "manifest", return_value=self.sources):
+                self.assertEqual(guide.main(), 0)
+            self.assertEqual(path.read_text(encoding="utf-8"), self.text)
 
     def test_kit_order_and_branch_drift_are_rejected(self):
         for mutate in (lambda rows: rows.reverse(), lambda rows: rows[0]["choices"].pop()):
@@ -55,8 +135,15 @@ class RunGuideCheckTests(unittest.TestCase):
 
     def test_stale_rules_or_kit_input_requires_review(self):
         changed = dict(self.sources, **{"src/Story.cs": "changed"})
-        with self.assertRaisesRegex(ValueError, "Rules/verifier/active kit changed"):
+        with self.assertRaisesRegex(ValueError, "Rules/verifier/active kit changed.*\n.*--update"):
             guide.validate(self.text, self.model, self.trace, changed)
+
+    def test_commitment_tables_follow_executed_witnesses(self):
+        steps = guide.records(self.trace)
+        for step in steps:
+            if step["scene"] == "delamere.trickster.woods.second_hunt":
+                step["chapter"] = 5
+        self.assertEqual(guide.commitment_chapters(self.model, steps)["delamere"], 5)
 
     def test_missing_last_call_creditor_is_rejected(self):
         changed = json.loads(json.dumps(self.trace))
