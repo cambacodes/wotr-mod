@@ -71,11 +71,10 @@ internal static class ShamiraTricksterTests
         Scene S(string id) => story.Scenes.Single(s => s.Id == id);
         bool Avail(Scene s, Snapshot w) => Rules.Available(story, s, w);
         Choice Ch(Scene s, string node, int index) => s.Nodes.Single(n => n.Id == node).Choices[index];
-        // Every outcome that passed through the given choice (its flags set, and the scene completed or aborted there).
+        // Every outcome that actually passed through the selected answer.
         List<Snapshot> Through(Scene scene, Snapshot w, string node, int index)
         {
-            var chosen = Ch(scene, node, index);
-            var hits = Program.Walk(scene, w).Where(r => chosen.Set.All(r.Has) && (chosen.Set.Length > 0 || r.Has(scene.Id))).ToList();
+            var hits = Program.WalkVia(scene, w, node, index);
             check(hits.Count > 0, "No outcome through " + scene.Id + "/" + node + "[" + index + "]");
             return hits;
         }
@@ -329,7 +328,14 @@ internal static class ShamiraTricksterTests
         var search = harem.Nodes.Single(n => n.Id == "search").Choices;
         check(search.All(c => c.Text.StartsWith("[", StringComparison.Ordinal) && !c.Text.Contains('"')),
             "Trk_Shamira_Commit: something is spoken in the game.");
-        check(Through(harem, hw, "search", 0).All(r => r.Has(Committed) && r.Has(P + "lost_on_purpose")), "Trk_Shamira_Commit: losing on purpose does not commit.");
+        var stanceOutcomes = Through(harem, hw, "search", 0).ToArray();
+        check(stanceOutcomes.All(r => r.Has(P + "lost_on_purpose")
+              && ((r.Has(Committed) && (r.Has("shamira.partner_stance.share") || r.Has("shamira.partner_stance.secret")))
+                  || (r.Has(Closed) && r.Has("shamira.partner_stance.exclusive")))),
+            "Trk_Shamira_Commit: commitment bypasses partner terms or a refused exclusive demand.");
+        check(stanceOutcomes.Any(r => r.Has(Committed) && !r.Has(Closed))
+              && stanceOutcomes.Any(r => r.Has(Closed) && !r.Has(Committed)),
+            "Trk_Shamira_Commit: no accepted terms or no exclusive refusal.");
         check(Through(harem, hw, "search", 1).All(r => r.Has(P + "ally") && !r.Has(Committed) && !r.Has(Closed)), "Trk_Shamira_Won: winning is not the soft no.");
         check(Through(harem, hw, "search", 2).All(r => r.Has(Closed) && !r.Has(Committed)), "Trk_Shamira_Thrown: throwing her out is not the hard no.");
         var committers = own.Where(s => s.Nodes.SelectMany(n => n.Choices).Any(c => c.Set.Contains(Committed))).Select(s => s.Id).ToArray();
@@ -387,7 +393,7 @@ internal static class ShamiraTricksterTests
               && retiredReactions.All(r => !Avail(r, World(story, 5, new[] { "trickster", "trickster.ever", Returned, Heard })))
               && reactions.Except(retiredReactions).Select(r => r.Owner).Distinct().OrderBy(o => o).SequenceEqual(new[] { "Arueshalae", "Shyka" }),
             "The live reactions are not Shyka and Arueshalae, or a retired reactor still speaks.");
-        check(pages.Length == 11 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => c.Set.Length == 0 && c.Crusade == null && c.Alignment == null))),
+        check(pages.Length == 11 && pages.All(p => p.MinChapter == 6 && p.Nodes.All(n => n.Choices.All(c => (p.Id == P + "epilogue.late" ? c.Set.All(f => f.StartsWith("shamira.partner", StringComparison.Ordinal) || f == Closed) : c.Set.Length == 0) && c.Crusade == null && c.Alignment == null))),
             "The epilogue pages carry effects or are missing.");
         // The pages folded into others (05 §4.2) are never delivered on a new road; every other page opens.
         var folded = new[] { P + "mind.council", P + "mind.her_lady", P + "mind.almost", P + "mind.waking", P + "after.first_company", P + "after.eve",
