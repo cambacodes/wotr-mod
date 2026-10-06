@@ -347,14 +347,14 @@ letter(P + "dead.woken", "The hide splits", [
 
 SCENES.append(scene(P + "flight.pact", "A better story", "Devarra", 3, '[Speak from cover, before the dwarf moves] "That story has a better ending. Mine."', [
     nar("cover", '''{n}Greybor's hand closes on your arm: now, while she is thinking. You do not move. Instead you point him along the ledge to the left, where the rock runs out over her flank and the soft place under her wing: strike from there, when I step out. He goes, quiet as a cat, and the old elf's voice and the drip of the cave swallow whatever is said behind him.{/n}
-{n}You have had the whole of the old elf's story to look at her from behind the rocks, and you have spent it looking. The wounds of the Grimwood ambush are still open along her flank; she has licked them and not let them close. A woundwyrm this size has the whole Worldwound to heal in and a sky to do it under, and she is lying hurt in a hunted country, within reach of a crusade, with a meal in her claws she cannot be bothered to finish. Dragons do not stay for gold. They can always find more gold. Something of hers is close, and somebody else is holding it.{/n}''',
+{n}While the old elf speaks, you watch the blood seep between the scales on her flank. She was wounded in the forest, and now the hunters have reached her lair. Why stay within reach of the crusade when she has wings? Perhaps there is something here she will not leave behind.{/n}''',
         c('[Pay her tariff before the dwarf moves] "The old man\'s story is about a crook with a ring. Mine is about you."', "tariff"),
         c('"Never mind."', abort=True)),
     dv("tariff", '''"Another voice from the rocks." {n}She does not turn her head. The claw around the old elf's ankle does not loosen.{/n} "One of the little parasites who bled me in the forest. I know your smell. Come out and I will eat you second, after the storyteller. Or stay where you are and impress me, and I will decide how long you keep your legs."''',
         c('[Tell it as a fable, loud enough for the dwarf to think you are stalling]', "fable"),
         c('"Never mind."', abort=True)),
     nar("fable", '''{n}You tell it the way the old elf tells his, with a voice for every part, pitched to carry to her and no further. Out on the ledge, Greybor will hear a voice from the rocks telling a hungry beast a fable to hold her still. That is what he is waiting for.{/n}
-"Once there was a dragon who was hunted, and wounded, and still would not leave the country where they hunted her. The hunters said she was stubborn. One of them said that somebody had something of hers. A dragon does not stay for gold. She stays for the one thing she cannot steal again."
+"Once there was a dragon who was hunted, and wounded, and still would not leave the country where they hunted her. The hunters said she was stubborn. One of them said that somebody had something of hers. The dragon had wings. She could leave the hunters behind. Yet she stayed, and the hunter began to wonder what she could not take with her."
 {n}The tail, which has been sweeping slowly across the stones all this while, stops.{/n}''',
         c("Continue", "named")),
     dv("named", '''"Go on." {n}Very quietly. The old elf, who cannot see her face, has stopped breathing.{/n} "No. I will tell this part, since you have been clever enough to earn it. In the house of ivory there is a chamber, and in it two stone things with a man's voice in their mouths, and under their fists there is a clutch that is mine. Xanthir's pupils put a charm on me with their schematics. When it calls, I go, and I fight what the stone points me at, or the fists close."
@@ -416,13 +416,13 @@ letter(P + "flight.eggs", "What a dragon does with a promise", [
         c("Continue", "said_destroyed", requires=("eggs.destroyed",)),
         c("Continue", "said_left", requires=(CLUTCH_LEFT, LEASH), forbids=EGGS),
         c("Continue", "said_collected", requires=(LEASH,), forbids=EGGS + (CLUTCH_LEFT,))),
-    dv("said_omelet", '''"Your city ate my children with herbs." {n}She says it very quietly.{/n} "I lay on a mountain and did not answer the stone, so that a crusader could carry my eggs out from under its fists and down to his kitchens. Every citizen had a plate. I can smell it on your city's breath, and on the stones of its gate. Someone salted them."''',
+    dv("said_omelet", '''"Your city ate my children with herbs." {n}She says it very quietly.{/n} "I lay on a mountain and did not answer the stone, so that you could carry my eggs out from under its fists and down to your kitchens. Every citizen had a plate. I can smell it on your city's breath, and on the stones of its gate. Someone salted them."''',
         c("Continue", "clutch")),
     dv("said_druids", '''"You took them out from under the fists. Then you gave them to men who smelled of gold, and of lies." {n}Her claws close on the cart, and it splits.{/n} "I followed them for a day and a night and lost them at a river, and I do not lose things."''',
         c("Continue", "clutch")),
     dv("said_project", '''"They are in your vaults. I can hear them." {n}Her head turns, very slowly, toward Drezen, and stays there.{/n} "You cut the leash, and then you put a lock where the leash had been. Keep them warm, crusader. If they are cold when I come for them, Drezen will be warm enough."''',
         c("Continue", "clutch")),
-    dv("said_destroyed", '''"Slop on a golem's fist." {n}Nothing in her voice moves at all.{/n} "You said you would be in that house before the stone knew I was late. You were. I lay on my mountain and did not go, and you were there, and my clutch is slop on the floor of that chamber anyway."''',
+    dv("said_destroyed", '''"Slop on a golem's fist." {n}Nothing in her voice moves at all.{/n} "You said you would stop the fists. You stood in that chamber. I lay on my mountain and did not go, and you were there, and my clutch is slop on the floor of that chamber anyway."''',
         c("Continue", "clutch")),
     dv("said_left", '''"They were where you left them. Warm." {n}Her breath goes out of her, long, and the picket fires lean away from it.{/n} "The stone stood over them with its hands down, like a beggar, and said nothing when I took them. And somebody had wedged the door open for me with a corpse. I noticed that."''',
         c("Continue", "clutch")),
@@ -519,7 +519,7 @@ storyteller(P + "after.tithe", "What a woundwyrm eats", '"You have been up the r
         c('"She\'s the bane of the Worldwound. Let her hunt it. Feed her from the outer farms until she finds her first demon."', "ending_free",
           crusade=("Materials", -200), flags=(HUNTS,)),
         c('"She\'ll eat when I say so."', "owned", flags=(CLOSED, "devarra.trickster.refused"))),
-    teller("ending_free", '''"The second question is older." {n}He turns his face toward the ridge.{/n} "You told her a story once, from behind a rock in her lair: a dragon who would not leave a hunted country, and a thief who reached the stone before it knew she was late. She says a story that stops at the thief keeping the bargain is not finished. She wants what happens next. She will judge it. I am to carry it up word for word, and I warn you: she has eaten better storytellers than either of us."''',
+    teller("ending_free", '''"The second question is older." {n}He turns his face toward the ridge.{/n} "You told her a story once, from behind a rock in her lair: a dragon who would not leave a hunted country, and a thief who stood before Xanthir's stone. She says a story that stops at the thief keeping the bargain is not finished. She wants what happens next. She will judge it. I am to carry it up word for word, and I warn you: she has eaten better storytellers than either of us."''',
         c('[Tell it true] "The dragon flew. The thief kept the bargain. Now they have to live within sight of each other, and neither of them knows how that ends."',
           flags=(TESTED, TRUE)),
         c('[Flatter her] "The dragon eats the thief, and it is the best meal of her life."', flags=(TESTED, FLATTERED)),

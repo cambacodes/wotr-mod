@@ -266,6 +266,49 @@ internal static class NidalynnTricksterTests
             "Trk_Nidalynn_Custody: Devarra has no beat when her twelfth egg is taken, or it closes something.");
         var dv = Later(story, World(story, 3, "trickster", "trickster.ever", "devarra.trickster.returned", "devarra.started", "nidalynn.trickster.confessed"), 25);
         check(Avail(smallest, dv) && Program.Walk(smallest, dv).All(r => r.Has(Bill)), "Trk_Nidalynn_Bill: the bill never lands.");
+        // Devarra polish: use the executed kiln confession, before the later claim question.
+        // Her bill recalls the place of confession without granting a new custody choice.
+        void DevarraRecall(Snapshot confession, bool corrected)
+        {
+            check(confession.Has(P + "confessed") && !confession.Has(P + "cost.claim_given_up"),
+                "Devarra recall fixture must come from confession before renunciation.");
+            var returned = With(confession, "devarra.trickster.returned", "devarra.started");
+            var delayed = Later(story, returned, 7 * 24 + smallest.DelayHours);
+            check(Avail(smallest, delayed), "Devarra's delayed bill is unavailable after confession.");
+            var heard = Visited(smallest, delayed);
+            check(heard.Contains(corrected ? "stole_muster" : "stole_lane")
+                  && !heard.Contains(corrected ? "stole_lane" : "stole_muster") && heard.Contains("stole"),
+                "Devarra recalls the wrong public confession.");
+            var accusation = smallest.Nodes.Single(n => n.Id == "stole");
+            check(accusation.Choices.Count == 3 && accusation.Choices.All(c => Rules.ChoiceAvailable(c, delayed))
+                  && accusation.Choices[0].Text == "\"The silver is raising her.\"",
+                "Devarra's saved accusation requires an unperformed renunciation or loses an old answer.");
+            check(Program.Walk(smallest, delayed).All(r => r.Has(Bill)),
+                "The confession recollection alters Devarra's bill.");
+        }
+        DevarraRecall(Program.WalkVia(hatching, lane, "her", 0).First(), false);
+        DevarraRecall(Program.WalkVia(owed, Later(story, lied, 49), "salt", 0).First(), true);
+        check(!Avail(smallest, Later(story, With(kept, "devarra.trickster.returned", "devarra.started"), 7 * 24)),
+            "Devarra's confession callback opens when the lie was kept.");
+        // Seven saved inflows, both confession histories and both annual-bite histories.
+        foreach (string incoming in new[] { "kept_eleven", "omelet", "druids", "vault", "destroyed", "eleven", "druids_straw" })
+        foreach (bool corrected in new[] { false, true })
+        foreach (bool bitten in new[] { false, true })
+        {
+            var history = Program.Copy(dv);
+            if (corrected) history.Flags.Add(P + "lied_at_kiln");
+            if (bitten) history.Flags.Add("devarra.trickster.cost.bitten");
+            var answers = smallest.Nodes.Single(n => n.Id == incoming).Choices;
+            var selectable = answers.Where(c => Rules.ChoiceAvailable(c, history)).ToArray();
+            check(answers.Count == 2 && selectable.Length == 1
+                  && selectable[0].Next == (corrected ? "stole_muster" : "stole_lane")
+                  && answers.All(c => c.Set.Length == 0 && c.Crusade == null && c.Check == null),
+                "Devarra's saved inflow has no answer, both recalls, or an extra cost: " + incoming);
+            var recall = smallest.Nodes.Single(n => n.Id == selectable[0].Next);
+            check(recall.Choices.Count == 1 && recall.Choices[0].Next == "stole"
+                  && Rules.ChoiceAvailable(recall.Choices[0], history) && recall.Paragraphs.Count == 0,
+                "Devarra's recollection does not return unconditionally to the saved accusation.");
+        }
         foreach (var s in mine)
             check(!s.Requires.Concat(s.RequiresAnyGroups.SelectMany(g => g)).Any(k => k.StartsWith("devarra.", StringComparison.Ordinal)),
                 "A Nidalynn scene is gated on Devarra (ledger 05 row 5: node reads only): " + s.Id);
@@ -320,6 +363,7 @@ internal static class NidalynnTricksterTests
               && Program.WalkVia(widow, vaultStep, "rock", 1).Count == 0,
             "Trk_Nidalynn_History: the vault's Commander tells the widow about the golems.");
         var vaultLane = Later(story, World(story, 3, "trickster", "trickster.ever", P + "primed", P + "egg.vault", P + "met", "nidalynn.started", P + "kiln"), 49);
+        DevarraRecall(Program.WalkVia(hatching, vaultLane, "her", 3).First(), false);
         var vaultConfessions = Visited(hatching, vaultLane);
         check(vaultConfessions.Contains("confess_vault") && !vaultConfessions.Contains("confess")
               && Program.Walk(hatching, vaultLane).Any(r => r.Has(P + "confessed") && r.Has(P + "hatched")),
@@ -430,6 +474,7 @@ internal static class NidalynnTricksterTests
               && Program.Walk(hearth, strawHearth).Any(r => r.Has(P + "kiln_agreed")),
             "Trk_Nidalynn_Straw: the hearth asks the straw's Commander about the golems or the vault, or never reaches the kiln.");
         var strawLane = Later(story, World(story, 3, "trickster", "trickster.ever", P + "egg.straw", P + "cost.slate", P + "hearth.grey_stone", P + "met", "nidalynn.started", P + "kiln", P + "quartermaster_knew"), 49);
+        DevarraRecall(Program.WalkVia(hatching, strawLane, "her", 4).First(), false);
         var strawConfessions = Visited(hatching, strawLane);
         check(strawConfessions.Contains("confess_straw") && !strawConfessions.Contains("confess") && !strawConfessions.Contains("confess_vault")
               && strawConfessions.Contains("quartermaster") && !strawConfessions.Contains("clerk")
