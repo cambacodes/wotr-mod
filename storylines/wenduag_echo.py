@@ -82,12 +82,12 @@ Lann stands beyond her reach, watching the hook as though it has caught somethin
         c("[Bind the wound. Keep her death as the enemy's story.]", "hidden"),
         c("[Bind the wound openly.]", "open")),
     nar("hidden", '''{n}Lann watches you cover her face from the demon's followers.{/n}
-{n}"So his people get a dead daughter, and you get Wendu under a cloth.
-I was standing where you needed me. That's what I was for."{/n}''',
+{n}"We rehearsed the catching. Not this funeral. His people can take their story home.
+Mine hear the truth from me. I'm not telling Sull she died while you carry her off."{/n}''',
         c("[Finish the dressing.]", "shelter", flags=(E + "cost.used_lann",))),
     nar("open", '''{n}Lann watches you bind her side.{/n}
-{n}"You're saving her in front of everybody. Fine.
-Don't tell me we were trying to do the same thing."{/n}''',
+{n}"Good. Let them see her breathing. I helped you catch her; I know what we agreed.
+Keep that knife away from her hand until we're clear. I haven't agreed to a third attack."{/n}''',
         c("[Finish the dressing.]", "shelter", flags=(E + "cost.used_lann",))),
     nar("shelter", '''{n}You work a healing draught between her teeth.
 When her breathing steadies, you ease the shaft free. Her hand closes on the broken belt.
@@ -113,13 +113,13 @@ And when I come at you, uplander, I'll remember to cut the belt first."''',
 ], requires=(E + "rescued", E + "return_available"), forbids=(E + "returned",), Areas=[DREZEN],
     ContactUnit=UNIT, InteractionHub="wenduag.echo", TricksterDevice=True, TricksterState="echo_abyss"),
 authored("trust", "What Lann gave you", 5, '"About Wenduag."', [
-    n("start", "conversant", '''"I knew you'd try to save her. I even showed you how.
-That's the part I keep turning over. You had a use for everything I knew about Wendu.
-I thought we were talking about keeping me alive."''',
-        c('"We were. I wanted both of you alive, and I used what you gave me."', "owed"),
-        c('"You were the one person she would forget herself to kill. I needed you there."', "owed")),
-    n("owed", "conversant", '''"I'm still fighting beside you.
-Next time you ask me about somebody I grew up with, I'll want to know what you're buying."''',
+    n("start", "conversant", '''"I showed you how to catch her. I'd do it again.
+Now she's in Drezen, armed, with my people sleeping a stair away.
+She tried to kill me, Commander. Saving her didn't settle what happens next."''',
+        c('"I brought her here. You helped save her; you did not invite her into your home."', "owed"),
+        c('"I will answer for bringing her here. Keep your bow beside you."', "owed")),
+    n("owed", "conversant", '''"I'll keep it beside me. And I'll tell Sull she's here. No mourning somebody who might walk into the cellar tomorrow.
+I'm still fighting beside you. But don't ask me to lower that bow because you like her teeth."''',
         c("[Leave him to his bow.]", flags=(E + "trust_paid",))),
 ], requires=(E + "returned", E + "cost.used_lann", "lann.in_party"),
     forbids=(E + "trust_paid",) + LANN_GONE, AnswerLists=[HUB], NativeReturnCue=BACK)]
@@ -286,6 +286,8 @@ def _lastcall_variants():
     partner["paragraphs"] = list(partner["paragraphs"])
     original = partner["paragraphs"][1]
     original["Forbids"].append(E + "returned")
+    # The no-old-cairn account must not duplicate this earned echo funeral.
+    partner["paragraphs"][7]["Forbids"].append(E + "returned")
     partner["paragraphs"].append(p(
         "{n}The world buried an empty coffin for the Commander. Wenduag listened from the cellar stair, turning the torn belt in her hands. "
         "Then she packed a niche in the catacombs with loose stones and laid the hooked shaft across it. Nobody was allowed to touch it.{/n}",

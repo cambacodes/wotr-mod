@@ -1,0 +1,16 @@
+{
+  "voice": "WENDUAG: an adult female mongrel hunter and native companion. Predatory, blunt, crude, competitive, opportunistic; she values strength and survival, takes pleasure in a successful counter-move, and initiates pursuit. Affection remains possessive and chosen; she does not become merciful, dutiful or grateful property. Short dialogue, concrete action, no maxims, therapy language, fate explanations or copied canon lines. Hosilla coerced her in the past; that history must never be framed as love or permission for the present. Write new dialogue from these traits. Physical facts: female mongrel, hunter; do not invent reproductive anatomy or add mutation-based sexual claims.",
+  "speakers": {
+    "W": "Wenduag"
+  },
+  "example": "N: Wenduag sets her knife on the stone and catches your sleeve.\nW: Leave the map. You can stare at it tomorrow.\nN: She waits for you to rise, then takes the lead.",
+  "commander": "player-defined; use second person and no imposed speech",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "scene": "SCENE: Authored Trickster alternate courtship, Chapter 5 Drezen, after the existing wall-gong visit. Wenduag and Commander leave the wall for the cellar stair and private quarters. A sentry stays on the wall; no observer enters the private scene. This reserved later intimate encounter follows a performed cairn night and must read as a return, not a second first night or reward for charity. Non-graphic continuity direction only. Required beats: carry the preceding saw/stronger branch truth; her father and Savamelekh were discussed but she does not repeat a confession or become good; she chooses to leave the watch and return to the Commander; both willingly continue; she stays beside the Commander when the watch changes. Keep the war audible through the watch, not cosmic fate or a vision. Do not introduce new injuries, anatomy, an unplayed Hosilla encounter, new partner promises, medical cures or price settlement. Keep the father admission private. No Lann or Brask interruption, no mutual triad assumption. When no first night has been performed, this passage is not used: retain the charged invitation and old exit. Preserve branch-specific gongs completion effects on the existing ending answer.",
+  "last_line": "N: When the watch changes, she is still beside you."
+}

@@ -128,13 +128,19 @@ class WenduagPartnerStanceTests(unittest.TestCase):
                      {stance.SECRET}, {stance.SECRET, stance.DISCOVERED, stance.SEPARATED})
         fixed = {"trickster", "trickster.ever", "trickster.now", "trickster.commander_back", W + "native"}
         for original in originals:
+            # Hold finalized body/payoff eligibility true while varying the
+            # partner state and stance. Those independent engine guards are not
+            # the selection partition this matrix is testing.
+            eligible = fixed | (set(original["Requires"]) - {
+                stance.COMMITTED, stance.LANN_IN, *stance.LANN_GONE,
+                *stance.STANCES, stance.SHARED, stance.SEPARATED, stance.DISCOVERED})
             variants = [s for s in self.story["Scenes"] if s["Id"] == original["Id"]
                         or s["Id"].startswith(original["Id"] + ".partner.")]
             commitments = (True,) if stance.COMMITTED in original["Requires"] else (False, True)
             if stance.COMMITTED in original["Forbids"]:
                 commitments = (False,)
             for bits, position, committed in itertools.product(itertools.product((False, True), repeat=4), positions, commitments):
-                flags = fixed | position | {f for f, bit in zip((stance.LANN_IN, *stance.LANN_GONE), bits) if bit}
+                flags = eligible | position | {f for f, bit in zip((stance.LANN_IN, *stance.LANN_GONE), bits) if bit}
                 if committed:
                     flags.add(stance.COMMITTED)
                 enabled = [s for s in variants if self.enabled(s, flags)]

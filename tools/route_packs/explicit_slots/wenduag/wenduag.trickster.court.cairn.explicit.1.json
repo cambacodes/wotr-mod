@@ -1,0 +1,16 @@
+{
+  "voice": "WENDUAG: an adult female mongrel hunter and native companion. Predatory, blunt, crude, competitive, opportunistic; she values strength and survival, takes pleasure in a successful counter-move, and initiates pursuit. Affection remains possessive and chosen; she does not become merciful, dutiful or grateful property. Short dialogue, concrete action, no maxims, therapy language, fate explanations or copied canon lines. Hosilla coerced her in the past; that history must never be framed as love or permission for the present. Write new dialogue from these traits. Physical facts: female mongrel, hunter; do not invent reproductive anatomy or add mutation-based sexual claims.",
+  "speakers": {
+    "W": "Wenduag"
+  },
+  "example": "N: Wenduag sets her knife on the stone and catches your sleeve.\nW: Leave the map. You can stare at it tomorrow.\nN: She waits for you to rise, then takes the lead.",
+  "commander": "player-defined; use second person and no imposed speech",
+  "commander_variants": [
+    "a man",
+    "a woman"
+  ],
+  "min_lines": 10,
+  "max_lines": 16,
+  "scene": "SCENE: Authored Trickster alternate courtship, Chapter 5, the self-built cairn in the catacombs beneath Drezen; Wenduag and Commander alone after the accepted captured-Brask claim. Brask has left. This is one mutually chosen first intimate encounter, reserved for separate production; this brief supplies non-graphic continuity direction, not explicit prose. Required beats: she chooses the ground and actively chooses the Commander; the Commander responds willingly; strength and a successful counter-move remain her pleasure, not obedience bought by rescue. The lamp was extinguished once before arrival. The preceding decide/knife/roll branches must reconcile garments and hand positions; the knife is laid down before this passage. Do not restore the lamp, belt or leathers mid-passage. History variants: burial only remembers an actually performed burial; echo recalls a caught belt and a cairn she later built, never being buried; orchard and kept-companion histories also use her own construction. Do not assert that a deep wound was harmless or repaid. No new injury, confession, partner, witness, payment or receipt. The first night is not native-romance content, and no magic earns willingness. The subsequent morning has the lit lamp, marked stone, neathers, Brask outcome, Lann scent reaction and her return with food. End on the watch bell with no repeated first-night claim.",
+  "last_line": "N: Above the stair, the watch bell sounds."
+}
