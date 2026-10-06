@@ -1,0 +1,441 @@
+{
+  "status": "staged for coordinator; not installed in protected shared registries",
+  "departure_surfaces": [
+    {
+      "scene": "soana.partner.reply",
+      "letter": false
+    },
+    {
+      "scene": "soana.partner.reply.returned",
+      "letter": false
+    },
+    {
+      "scene": "soana.trickster.epilogue.living_late",
+      "letter": false
+    }
+  ],
+  "stance_guards": [
+    {
+      "route": "soana",
+      "requires": [],
+      "forbids": [
+        "soana.partner.corven_known_alive",
+        "soana.round2.family_reply"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          0
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.corven_together"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          1
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.corven_separated"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          2
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.corven_distant"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          3
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.quiet_homecoming"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          4
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.share"
+      ],
+      "forbids": [
+        "soana.partner.corven_known_alive"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          5
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.exclusive"
+      ],
+      "forbids": [
+        "soana.partner.exclusive_chosen"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          6
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.exclusive",
+        "soana.partner.exclusive_chosen"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          7
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.secret"
+      ],
+      "forbids": [
+        "soana.partner.affair_exposed"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          8
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.secret",
+        "soana.partner.affair_exposed"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          9
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.held"
+      ],
+      "forbids": [
+        "soana.partner.corven_known_alive"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          10
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.buried"
+      ],
+      "forbids": [
+        "soana.partner.corven_known_alive"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          11
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [],
+      "forbids": [
+        "soana.partner_stance.share",
+        "soana.partner_stance.exclusive",
+        "soana.partner_stance.secret"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "start",
+          12
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [],
+      "forbids": [
+        "soana.partner.corven_known_alive",
+        "soana.round2.family_reply"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          0
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.corven_together"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          1
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.corven_separated"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          2
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.corven_distant"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          3
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.quiet_homecoming"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          4
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.share"
+      ],
+      "forbids": [
+        "soana.partner.corven_known_alive"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          5
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.exclusive"
+      ],
+      "forbids": [
+        "soana.partner.exclusive_chosen"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          6
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.exclusive",
+        "soana.partner.exclusive_chosen"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          7
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.secret"
+      ],
+      "forbids": [
+        "soana.partner.affair_exposed"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          8
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner_stance.secret",
+        "soana.partner.affair_exposed"
+      ],
+      "forbids": [],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          9
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.held"
+      ],
+      "forbids": [
+        "soana.partner.corven_known_alive"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          10
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [
+        "soana.partner.buried"
+      ],
+      "forbids": [
+        "soana.partner.corven_known_alive"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          11
+        ]
+      ]
+    },
+    {
+      "route": "soana",
+      "requires": [],
+      "forbids": [
+        "soana.partner_stance.share",
+        "soana.partner_stance.exclusive",
+        "soana.partner_stance.secret"
+      ],
+      "any_groups": [],
+      "surfaces": [
+        [
+          "soana.trickster.epilogue.living_late",
+          "round2_morning",
+          12
+        ]
+      ]
+    }
+  ],
+  "late_acceptance": "soana.round2.postwar_accepted",
+  "escalation": "Separate soana.trickster.late_committed readiness from actual accepted payoff in tools/payoff_contracts.json; integrate living fallback acceptance into household and Last Call readers."
+}

@@ -316,7 +316,7 @@ s("a_voice_in_the_dark", "A voice in the dark", '"Is everything ready for the wo
 "So did I," {n}Meret says.{/n}
 {n}Meret stands beside her without touching the tree. After a while Soana returns to the sealed bowl.{/n}
 "We close the shrine before we rest. I do not intend to pay twice because I was tired after the first payment."''', c('[Help close the old invitation and secure the sealed bowl on dry stone.]', flags=("soana.nursery_lost", "soana.ridge_used", "soana.working_done"))),
-], "soana.the_inherited_debt", delay=48)
+], "soana.the_inherited_debt", delay=24)
 
 s("what_followed_home", "What followed home", '"I came to see what the working left behind."', [
     n("start", "Soana", '''{n}Meret sits outside the cave, cutting the damaged cord into short lengths. She lays each piece on bare stone. Soana sits farther inside, beyond the sunlight.{/n}
@@ -345,7 +345,7 @@ s("what_followed_home", "What followed home", '"I came to see what the working l
 "Meret sat outside until I slept this morning. She is going back to her camp before dark. I sent her."
 {n}She knocks the foot of her stick against the stone beside her.{/n}
 "Sit there a while. Talk if you have something to say. And if I fall asleep, do not wake me to ask about it."''', c('[Sit on the stone beside her.]', "visitors")),
-    n("interrupted", "Soana", '''"The trees. All those nights carrying water. And now I must find someone who can hold a lid without deciding he knows better than the shaman."
+    n("interrupted", "Soana", '''"The trees. All those nights carrying water. And now I must find someone who can hold a lid without deciding you know better than the shaman."
 {n}Her hands tighten on the stick.{/n}
 "I saw your signal. I broke the line anyway."
 "Yes. You did."
@@ -421,7 +421,7 @@ s("what_followed_home", "What followed home", '"I came to see what the working l
 "Come back when the cord is burnt and the clay has dried. There is something else. I have let a bowl and two hunters keep my tongue busy long enough."
 "I will come."
 {n}Her hand drops. Beside the cup, the green branch casts a thin shadow over a scrap of bark.{/n}''', c('[Tell her you will come back.]', flags=("soana.aftermath_heard",))),
-], "soana.working_done", delay=48)
+], "soana.working_done", delay=24)
 
 s("a_promise_still_spoken", "A promise still spoken", '"You wanted to finish a conversation."', [
     n("start", "Soana", '''{n}A strip of bark lies on Soana's lap. Charcoal words crowd one end. The other bears a black smear where she has rubbed the writing out.{/n}
@@ -499,7 +499,7 @@ s("a_promise_still_spoken", "A promise still spoken", '"You wanted to finish a c
 "Come back when I have finished with the shrine. We will take the upper path. There are things in this forest worth looking at before they go wrong."
 "I look forward to it."
 "Bring food. Looking makes a hunter hungry, and I am tired of feeding you."''', c('[Tell her you will return as her friend.]', flags=("soana.later_friends", "soana.promise_spoken"))),
-], "soana.aftermath_heard", delay=48)
+], "soana.aftermath_heard", delay=24)
 
 s("the_unwelcome_path", "The unwelcome path", '"Meret said you wanted me to hear a proposal of hers."', [
     n("start", "Soana", '''{n}Meret has brought a second hunter, a broad-shouldered man called Varn who keeps his bow on the ground while speaking to Soana. He does not look comfortable without it.{/n}
@@ -588,7 +588,7 @@ s("the_unwelcome_path", "The unwelcome path", '"Meret said you wanted me to hear
 "This crossing. These travelers. Do not arrive tomorrow with an army and quote me at myself."
 "I understood the limits."
 "Then we may get on tolerably well."''', c('[Return to the cave. Varn has a crossing and rules to keep.]', flags=("soana.path_flood", "soana.path_agreed"))),
-], "soana.promise_spoken", delay=48)
+], "soana.promise_spoken", delay=24)
 
 s("after_the_last_visitor", "After the last visitor", '"You asked me to come when the others had gone."', [
     n("start", "Soana", '''{n}Soana watches two birds quarrel over a branch. A clean shawl covers her shoulders, held by the old clasp. She has a pine needle caught in its hem.{/n}
@@ -686,4 +686,4 @@ s("after_the_last_visitor", "After the last visitor", '"You asked me to come whe
 {n}She walks you to the entrance and takes up her stick.{/n}
 "The war will take you far from these woods. Come back with something to tell me when you can. Do not swear it. I have heard enough fine oaths to last me."
 {n}She taps the path with her stick, then turns back to the folded blanket.{/n}''', c('[Take your leave as her friend.]', flags=("soana.later_friend_evening", "soana.progression_kept"))),
-], "soana.path_agreed", delay=48)
+], "soana.path_agreed", delay=24)
