@@ -88,6 +88,20 @@ class SaveCompatibilityTests(unittest.TestCase):
         choices[0]["Id"] = "replacement"
         self.assertTrue(savecompat.check(after, baseline))
 
+    def test_explicit_legacy_exit_cannot_gain_mechanics(self):
+        before = sample()
+        before["Scenes"][0]["Owner"] = "Epilogue"
+        before["Scenes"][0]["Nodes"][0]["Choices"] = [{"Text": "Continue"}]
+        baseline = savecompat.inventory(before)
+        for key in savecompat.EXIT_MECHANICS:
+            with self.subTest(mechanic=key):
+                after = copy.deepcopy(before)
+                choices = after["Scenes"][0]["Nodes"][0]["Choices"]
+                choices[0].update(Id="continue", **{key: ["changed"]})
+                choices.append({"Text": "New stance", "Next": "end"})
+                self.assertEqual(["Legacy ending exit mechanics changed: route.scene/start"],
+                                 savecompat.check(after, baseline))
+
     def test_codas_keep_their_original_registration_anchors(self):
         from expansion import make_expansion
         ids = [scene["Id"] for scene in make_expansion()["Scenes"]]

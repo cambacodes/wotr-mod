@@ -10,6 +10,10 @@ from pathlib import Path
 BASELINE_PATH = Path(__file__).with_name("savecompat_baseline.json")
 BASELINE_REVISION = "a68bb988"
 
+# A frozen .continue exit is inert, even when new answers follow it.
+EXIT_MECHANICS = ("Next", "Check", "Requires", "Forbids", "Set", "Abort", "Revive",
+                  "NativeNext", "Mythic", "Alignment", "Crusade", "RemoveItem", "StartEtude")
+
 
 def choice_identities(scene, node):
     choices = node.get("Choices", [])
@@ -67,6 +71,11 @@ def check(story, baseline=None):
             if nid not in nodes:
                 failures.append("Missing node: " + location)
                 continue
+            choices = nodes[nid].get("Choices", [])
+            if (len(old_choices) == 1
+                    and old_choices[0]["GuidFor"] == "answer.%s.%s.continue" % (sid, nid)
+                    and choices and any(choices[0].get(key) for key in EXIT_MECHANICS)):
+                failures.append("Legacy ending exit mechanics changed: " + location)
             current = choice_identities(scene, nodes[nid])
             if len(current) < len(old_choices):
                 failures.append("Choice count shrank: %s (%d -> %d)" %
@@ -77,3 +86,16 @@ def check(story, baseline=None):
                     failures.append("Choice identity changed: %s[%d] (%r -> %r)" %
                                     (location, index, old, new))
     return failures
+
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--story", type=Path,
+                        default=Path(__file__).resolve().parents[1] / "development/Story.json")
+    args = parser.parse_args()
+    failures = check(json.loads(args.story.read_text(encoding="utf-8-sig")))
+    for failure in failures:
+        print(failure)
+    print("Save compatibility: %d hard failures" % len(failures))
+    raise SystemExit(bool(failures))

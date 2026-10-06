@@ -152,7 +152,7 @@ def partner_paragraphs(condition="body"):
         p('''{n}The affair had been exposed before Shamira's court. To keep her, the Commander had named their bed and her lady's rule over Alushinyrra in public. Shamira made the Commander stand beside her whenever the court repeated those words. The announcement had bought no forgiveness.{/n}''', requires=(SECRET, EXPOSED, PAID), forbids=(BROKEN,)),
         p('''{n}The secret had reached Shamira's court while her old lover remained unanswered. A forged message had brought an enemy to light; it had not settled her claim. Shamira kept the culprit alive long enough to learn who else knew.{/n}''', requires=(SECRET, EXPOSED), forbids=(PAID, BROKEN)),
         p('''{n}When the affair was exposed, the Commander refused to name it before the court. Shamira ended it herself. She took only the coal owed for her body, and left the Commander's bed cold.{/n}''', requires=(BROKEN,)),
-        p('''{n}The Commander never settled a lover's claim against Shamira's lady. Shamira's old bond was no promise of a place for anyone else.{/n}''', forbids=(SHARE, EXCLUSIVE, SECRET)),
+        p('''{n}No arrangement with the Commander had been settled. Shamira's bond with her lady was no promise of a place for anyone else.{/n}''', forbids=(SHARE, EXCLUSIVE, SECRET)),
     )
     # Return receipts and the native defeat flag are separate inputs. Keep
     # both serializations covered, without claiming a second physical return.
@@ -280,7 +280,8 @@ def integrate(payload):
 
     late = scenes[P + "epilogue.late"]
     late["Nodes"][0]["Text"] = '''{n}The war ended before Shamira could finish her game. A month after Threshold she came to the Commander's window, her red hair smelling of the Abyss. She said she had come for the round she was owed, and took the Commander through the wardrobe to her Harem. Before she reached into the Commander's thoughts, she held out one hand and waited.{/n}'''
-    late["Nodes"][0]["Choices"][0]["Next"] = "partner_status"
+    # Preserve the saved exit; the new invitation follows it at index one.
+    late["Nodes"][0]["Choices"].append(c("[Take her hand. Speak of her lady.]", "partner_status"))
     late["Nodes"][0]["Choices"][0]["Id"] = "continue"  # saves reference the legacy .continue answer
     late["Nodes"].extend(terms_nodes(late=True))
     late["Nodes"].extend([

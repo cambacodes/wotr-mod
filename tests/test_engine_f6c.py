@@ -74,7 +74,15 @@ class EngineF6cTests(unittest.TestCase):
         for cue, relationship, suffix, location, when, text in engine_f6c.EDITS:
             with self.subTest(cue=cue):
                 edit = self.story["NativeEpilogueEdits"][cue]
-                self.assertEqual(edit["When"], when)
+                expected_when = when
+                if relationship == "irabeth":
+                    # The stance merge keeps these published selectors for
+                    # the original wife state; appended variants read the others.
+                    retirement = ["!irabeth.partner_stance.share", "!irabeth.partner_stance.secret",
+                                  "!irabeth.partner_stance.exclusive", "!anevia_dead",
+                                  "!anevia.trickster.returned", "!anevia_gone"]
+                    expected_when = [group + retirement for group in when]
+                self.assertEqual(edit["When"], expected_when)
                 original = self.expectations["Fixtures"][cue]
                 self.assertEqual(original["Key"], edit["Key"])
                 self.assertFalse(original["Data"]["ShowOnce"])

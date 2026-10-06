@@ -293,7 +293,13 @@ internal static partial class NativeEpilogueEditManagedTests
             playing.Clear();
             playing.UnionWith(row.Etudes);
             if (row.Flags == null) current = null;
-            else { current = new Snapshot { Chapter = 6 }; current.Flags.UnionWith(row.Flags); }
+            else
+            {
+                current = new Snapshot { Chapter = 6 };
+                current.Flags.UnionWith(row.Flags);
+                // Snapshot and archive cue must agree on the current native state.
+                current.Flags.UnionWith(story.Etudes.Where(pair => playing.Contains(pair.Value)).Select(pair => pair.Key));
+            }
             var shown = Shown();
             check(shown.SequenceEqual(new[] { row.Plays }), "Tirabade slide, " + row.What + ": plays [" + string.Join(", ", shown) + "], expected " + row.Plays);
             var played = page.Cues.Select(r => byGuid[r.Guid]).Where(entry => entry.Name == row.Plays).Select(entry => entry.Cue).FirstOrDefault();
